@@ -4,8 +4,8 @@ description: Displays a menu of actions triggered by a right click.
 base: react-aria
 component: true
 links:
-  doc: https://base-ui.com/react/components/context-menu
-  api: https://base-ui.com/react/components/context-menu#api-reference
+  doc: https://react-aria.adobe.com/Menu
+  api: https://react-aria.adobe.com/Menu#api
 ---
 
 <ComponentPreview
@@ -61,22 +61,24 @@ npm install react-aria-components
 ```tsx showLineNumbers
 import {
   ContextMenu,
-  ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu"
+import { Pressable } from "react-aria-components"
 ```
 
 ```tsx showLineNumbers
-<ContextMenu>
-  <ContextMenuTrigger>Right click here</ContextMenuTrigger>
-  <ContextMenuContent>
+<ContextMenuTrigger>
+  <Pressable>
+    <div role="button">Right click here</div>
+  </Pressable>
+  <ContextMenu>
     <ContextMenuItem>Profile</ContextMenuItem>
     <ContextMenuItem>Billing</ContextMenuItem>
     <ContextMenuItem>Team</ContextMenuItem>
     <ContextMenuItem>Subscription</ContextMenuItem>
-  </ContextMenuContent>
-</ContextMenu>
+  </ContextMenu>
+</ContextMenuTrigger>
 ```
 
 ## Examples
@@ -113,13 +115,13 @@ Combine icons with labels for quick scanning.
 
 ### Checkboxes
 
-Use `ContextMenuCheckboxItem` for toggles.
+Use `selectionMode="multiple"` for toggles.
 
 <ComponentPreview styleName="react-aria-nova" name="context-menu-checkboxes" />
 
 ### Radio
 
-Use `ContextMenuRadioItem` for exclusive choices.
+Use `selectionMode="single"` for exclusive choices.
 
 <ComponentPreview styleName="react-aria-nova" name="context-menu-radio" />
 
@@ -148,17 +150,19 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 Use `side="inline-end"` to place the menu on the logical right side of the trigger.
 
 ```tsx showLineNumbers
-<ContextMenu>
-  <ContextMenuTrigger>Right click here</ContextMenuTrigger>
+<ContextMenuTrigger>
+  <Pressable>
+    <div role="button">Right click here</div>
+  </Pressable>
   <ContextMenuContent side="inline-end">
     <ContextMenuItem>Profile</ContextMenuItem>
     <ContextMenuItem>Billing</ContextMenuItem>
     <ContextMenuItem>Team</ContextMenuItem>
     <ContextMenuItem>Subscription</ContextMenuItem>
   </ContextMenuContent>
-</ContextMenu>
+</ContextMenuTrigger>
 ```
 
 ## API Reference
 
-See the [Base UI](https://base-ui.com/react/components/context-menu#api-reference) documentation for more information.
+See the [React Aria](https://react-aria.adobe.com/Menu#api) documentation for more information.

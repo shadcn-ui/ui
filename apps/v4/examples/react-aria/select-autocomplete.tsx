@@ -2,17 +2,19 @@
 
 import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
-  Combobox,
-  ComboboxContent,
-  ComboboxEmpty,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxList,
-  ComboboxValue,
-} from "@/styles/react-aria-nova/ui/combobox"
+  Select,
+  SelectPopover,
+  SelectList,
+  SelectGroup,
+  SelectEmpty,
+  SelectInput,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/styles/react-aria-nova/ui/select"
+import { Autocomplete, useFilter } from "react-aria-components"
 
 const countries = [
-  { code: "", value: "", continent: "", label: "Select country" },
   {
     code: "ar",
     value: "argentina",
@@ -64,26 +66,30 @@ const countries = [
   },
 ]
 
-export function ComboboxPopup() {
+export function SelectAutocomplete() {
+  const {contains} = useFilter({sensitivity: 'base'})
   return (
-    <>
-      <Combobox defaultValue={countries[0].code} allowsEmptyCollection>
-        <Button variant="outline" className="w-64 justify-between font-normal">
-          <ComboboxValue />
-        </Button>
-        <ComboboxContent>
-          <ComboboxInput showTrigger={false} placeholder="Search" />
-
-          <ComboboxList
-            items={countries}
+    <Select placeholder="Select country">
+      <SelectTrigger className="w-full max-w-48">
+        <SelectValue />
+      </SelectTrigger>
+      <Autocomplete filter={contains}>
+        <SelectPopover>
+          <SelectInput />
+          <SelectList
             renderEmptyState={() => (
-              <ComboboxEmpty>No items found.</ComboboxEmpty>
-            )}
-          >
-            {(item) => <ComboboxItem id={item.code}>{item.label}</ComboboxItem>}
-          </ComboboxList>
-        </ComboboxContent>
-      </Combobox>
-    </>
+              <SelectEmpty>No items found.</SelectEmpty>
+            )}>
+            <SelectGroup items={countries}>
+              {(item) => (
+                <SelectItem id={item.value}>
+                  {item.label}
+                </SelectItem>
+              )}
+            </SelectGroup>
+          </SelectList>
+        </SelectPopover>
+      </Autocomplete>
+    </Select>
   )
 }

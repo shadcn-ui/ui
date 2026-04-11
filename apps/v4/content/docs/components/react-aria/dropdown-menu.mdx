@@ -5,8 +5,8 @@ featured: true
 base: react-aria
 component: true
 links:
-  doc: https://base-ui.com/react/components/menu
-  api: https://base-ui.com/react/components/menu#api-reference
+  doc: https://react-aria.adobe.com/Menu
+  api: https://react-aria.adobe.com/Menu#api
 ---
 
 <ComponentPreview
@@ -63,7 +63,6 @@ npm install react-aria-components
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
@@ -73,23 +72,23 @@ import {
 ```
 
 ```tsx showLineNumbers
-<DropdownMenu>
-  <DropdownMenuTrigger render={<Button variant="outline" />}>
+<DropdownMenuTrigger>
+  <Button variant="outline">
     Open
-  </DropdownMenuTrigger>
-  <DropdownMenuContent>
+  </Button>
+  <DropdownMenu>
     <DropdownMenuGroup>
       <DropdownMenuLabel>My Account</DropdownMenuLabel>
       <DropdownMenuItem>Profile</DropdownMenuItem>
       <DropdownMenuItem>Billing</DropdownMenuItem>
-      <DropdownMenuSeparator />
     </DropdownMenuGroup>
+    <DropdownMenuSeparator />
     <DropdownMenuGroup>
       <DropdownMenuItem>Team</DropdownMenuItem>
       <DropdownMenuItem>Subscription</DropdownMenuItem>
     </DropdownMenuGroup>
-  </DropdownMenuContent>
-</DropdownMenu>
+  </DropdownMenu>
+</DropdownMenuTrigger>
 ```
 
 ## Examples
@@ -120,7 +119,7 @@ Combine icons with labels for quick scanning.
 
 ### Checkboxes
 
-Use `DropdownMenuCheckboxItem` for toggles.
+Use `selectionMode="multiple"` for toggles.
 
 <ComponentPreview styleName="react-aria-nova" name="dropdown-menu-checkboxes" />
 
@@ -135,7 +134,7 @@ Add icons to checkbox items.
 
 ### Radio Group
 
-Use `DropdownMenuRadioGroup` for exclusive choices.
+Use `selectionMode="single"` for exclusive choices.
 
 <ComponentPreview
   styleName="react-aria-nova"
@@ -184,4 +183,4 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Base UI documentation](https://base-ui.com/react/components/menu) for the full API reference.
+See the [React Aria documentation](https://react-aria.adobe.com/Menu) for the full API reference.

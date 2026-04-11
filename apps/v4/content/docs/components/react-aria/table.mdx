@@ -3,6 +3,9 @@ title: Table
 description: A responsive table component.
 base: react-aria
 component: true
+links:
+  doc: https://react-aria.adobe.com/Table
+  api: https://react-aria.adobe.com/Table#api
 ---
 
 <ComponentPreview
@@ -65,12 +68,10 @@ import {
 <Table>
   <TableCaption>A list of your recent invoices.</TableCaption>
   <TableHeader>
-    <TableRow>
-      <TableHead isRowHeader className="w-[100px]">Invoice</TableHead>
-      <TableHead>Status</TableHead>
-      <TableHead>Method</TableHead>
-      <TableHead className="text-right">Amount</TableHead>
-    </TableRow>
+    <TableHead isRowHeader className="w-[100px]">Invoice</TableHead>
+    <TableHead>Status</TableHead>
+    <TableHead>Method</TableHead>
+    <TableHead className="text-right">Amount</TableHead>
   </TableHeader>
   <TableBody>
     <TableRow>

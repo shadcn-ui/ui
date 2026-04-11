@@ -5,8 +5,8 @@ featured: true
 base: react-aria
 component: true
 links:
-  doc: https://base-ui.com/react/components/dialog
-  api: https://base-ui.com/react/components/dialog#api-reference
+  doc: https://react-aria.adobe.com/Modal
+  api: https://react-aria.adobe.com/Modal#api
 ---
 
 <ComponentPreview
@@ -62,18 +62,18 @@ npm install react-aria-components
 ```tsx showLineNumbers
 import {
   Dialog,
-  DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import {Button} from "@/components/ui/button"
 ```
 
 ```tsx showLineNumbers
-<Dialog>
-  <DialogTrigger>Open</DialogTrigger>
-  <DialogContent>
+<DialogTrigger>
+  <Button>Open</Button>
+  <Dialog>
     <DialogHeader>
       <DialogTitle>Are you absolutely sure?</DialogTitle>
       <DialogDescription>
@@ -81,8 +81,8 @@ import {
         and remove your data from our servers.
       </DialogDescription>
     </DialogHeader>
-  </DialogContent>
-</Dialog>
+  </Dialog>
+</DialogTrigger>
 ```
 
 ## Examples
@@ -126,4 +126,4 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Base UI](https://base-ui.com/react/components/dialog#api-reference) documentation for more information.
+See the [React Aria](https://react-aria.adobe.com/Modal#api) documentation for more information.

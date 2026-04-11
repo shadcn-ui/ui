@@ -5,8 +5,8 @@ base: react-aria
 component: true
 featured: true
 links:
-  doc: https://base-ui.com/react/components/collapsible
-  api: https://base-ui.com/react/components/collapsible#api-reference
+  doc: https://react-aria.adobe.com/Disclosure
+  api: https://react-aria.adobe.com/Disclosure#api
 ---
 
 <ComponentPreview
@@ -79,7 +79,7 @@ import {
 
 ## Controlled State
 
-Use the `open` and `onOpenChange` props to control the state.
+Use the `isExpanded` and `onExpandedChange` props to control the state.
 
 ```tsx showLineNumbers
 import * as React from "react"
@@ -88,7 +88,7 @@ export function Example() {
   const [open, setOpen] = React.useState(false)
 
   return (
-    <Collapsible open={open} onOpenChange={setOpen}>
+    <Collapsible isExpanded={open} onExpandedChange={setOpen}>
       <CollapsibleTrigger>Toggle</CollapsibleTrigger>
       <CollapsibleContent>Content</CollapsibleContent>
     </Collapsible>
@@ -135,4 +135,4 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Base UI](https://base-ui.com/react/components/collapsible#api-reference) documentation for more information.
+See the [React Aria](https://react-aria.adobe.com/Disclosure#api) documentation for more information.

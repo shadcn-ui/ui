@@ -1,5 +1,7 @@
 "use client"
 
+import { Autocomplete, useFilter } from "react-aria-components"
+
 import {
   Example,
   ExampleWrapper,
@@ -32,9 +34,13 @@ import {
 import {
   Select,
   SelectContent,
+  SelectEmpty,
   SelectGroup,
+  SelectInput,
   SelectItem,
   SelectLabel,
+  SelectList,
+  SelectPopover,
   SelectSeparator,
   SelectTrigger,
   SelectValue,
@@ -45,6 +51,7 @@ export default function SelectExample() {
   return (
     <ExampleWrapper>
       <SelectBasic />
+      <SelectAutocomplete />
       <SelectSides />
       <SelectWithIcons />
       <SelectWithGroups />
@@ -706,6 +713,89 @@ function SelectInDialog() {
           </Select>
         </Dialog>
       </DialogTrigger>
+    </Example>
+  )
+}
+
+const countries = [
+  {
+    code: "ar",
+    value: "argentina",
+    label: "Argentina",
+    continent: "South America",
+  },
+  { code: "au", value: "australia", label: "Australia", continent: "Oceania" },
+  { code: "br", value: "brazil", label: "Brazil", continent: "South America" },
+  { code: "ca", value: "canada", label: "Canada", continent: "North America" },
+  { code: "cn", value: "china", label: "China", continent: "Asia" },
+  {
+    code: "co",
+    value: "colombia",
+    label: "Colombia",
+    continent: "South America",
+  },
+  { code: "eg", value: "egypt", label: "Egypt", continent: "Africa" },
+  { code: "fr", value: "france", label: "France", continent: "Europe" },
+  { code: "de", value: "germany", label: "Germany", continent: "Europe" },
+  { code: "it", value: "italy", label: "Italy", continent: "Europe" },
+  { code: "jp", value: "japan", label: "Japan", continent: "Asia" },
+  { code: "ke", value: "kenya", label: "Kenya", continent: "Africa" },
+  { code: "mx", value: "mexico", label: "Mexico", continent: "North America" },
+  {
+    code: "nz",
+    value: "new-zealand",
+    label: "New Zealand",
+    continent: "Oceania",
+  },
+  { code: "ng", value: "nigeria", label: "Nigeria", continent: "Africa" },
+  {
+    code: "za",
+    value: "south-africa",
+    label: "South Africa",
+    continent: "Africa",
+  },
+  { code: "kr", value: "south-korea", label: "South Korea", continent: "Asia" },
+  {
+    code: "gb",
+    value: "united-kingdom",
+    label: "United Kingdom",
+    continent: "Europe",
+  },
+  {
+    code: "us",
+    value: "united-states",
+    label: "United States",
+    continent: "North America",
+  },
+]
+
+function SelectAutocomplete() {
+  const {contains} = useFilter({sensitivity: 'base'})
+
+  return (
+    <Example title="With Autocomplete">
+      <Select placeholder="Select country">
+        <SelectTrigger className="w-full max-w-48">
+          <SelectValue />
+        </SelectTrigger>
+        <Autocomplete filter={contains}>
+          <SelectPopover>
+            <SelectInput />
+            <SelectList
+              renderEmptyState={() => (
+                <SelectEmpty>No items found.</SelectEmpty>
+              )}>
+              <SelectGroup items={countries}>
+                {(item) => (
+                  <SelectItem id={item.value}>
+                    {item.label}
+                  </SelectItem>
+                )}
+              </SelectGroup>
+            </SelectList>
+          </SelectPopover>
+        </Autocomplete>
+      </Select>
     </Example>
   )
 }

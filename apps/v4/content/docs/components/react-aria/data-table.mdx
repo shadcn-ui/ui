@@ -211,10 +211,7 @@ export function DataTable<TData, TValue>({
         </TableHeader>
         <TableBody renderEmptyState={() => 'No results.'}>
           {table.getRowModel().rows.map((row) => (
-            <TableRow
-              key={row.id}
-              data-state={row.getIsSelected() && "selected"}
-            >
+            <TableRow key={row.id} id={row.id}>
               {row.getVisibleCells().map((cell) => (
                 <TableCell key={cell.id}>
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -531,7 +528,7 @@ We can now update the `email` header cell to add sorting controls.
 
 import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown } from "lucide-react"
-import { buttonVariants } from "@/styles/radix-nova/ui/button"
+import { buttonVariants } from "@/styles/react-aria-nova/ui/button"
 
 export const columns: ColumnDef<Payment>[] = [
   {

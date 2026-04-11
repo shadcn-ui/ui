@@ -28,6 +28,7 @@ export function SliderRtl() {
 
   return (
     <Slider
+      aria-label="RTL slider"
       defaultValue={[75]}
       maxValue={100}
       step={1}

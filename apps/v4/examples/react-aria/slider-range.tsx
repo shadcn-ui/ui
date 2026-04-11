@@ -3,6 +3,7 @@ import { Slider } from "@/styles/react-aria-nova/ui/slider"
 export function SliderRange() {
   return (
     <Slider
+      aria-label="Range"
       defaultValue={[25, 50]}
       maxValue={100}
       step={5}

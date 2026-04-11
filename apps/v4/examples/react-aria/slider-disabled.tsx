@@ -3,6 +3,7 @@ import { Slider } from "@/styles/react-aria-nova/ui/slider"
 export function SliderDisabled() {
   return (
     <Slider
+      aria-label="Disabled slider"
       defaultValue={[50]}
       maxValue={100}
       step={1}

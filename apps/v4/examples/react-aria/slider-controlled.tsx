@@ -17,6 +17,7 @@ export function SliderControlled() {
         </span>
       </div>
       <Slider
+        aria-label="Temperature"
         id="slider-demo-temperature"
         value={value}
         onChange={(value) => setValue(value as number[])}

@@ -4,6 +4,9 @@ description: Displays a button or a component that looks like a button.
 featured: true
 base: react-aria
 component: true
+links:
+  doc: https://react-aria.adobe.com/Button
+  api: https://react-aria.adobe.com/Button#api
 ---
 
 <ComponentPreview styleName="react-aria-nova" name="button-demo" />
@@ -139,7 +142,7 @@ To create a button group, use the `ButtonGroup` component. See the [Button Group
 
 You can use the `buttonVariants` helper to make a link look like a button.
 
-**Do not use `<Button render={<a />} nativeButton={false} />` for links.** The Base UI `Button` component always applies `role="button"`, which overrides the semantic link role on `<a>` elements. Use `buttonVariants` with a plain `<a>` tag instead.
+**Do not use `<Button render={<a />} nativeButton={false} />` for links.** The React Aria `Button` component always applies `role="button"`, which overrides the semantic link role on `<a>` elements. Use `buttonVariants` with a plain `<a>` tag instead.
 
 <ComponentPreview styleName="react-aria-nova" name="button-render" />
 
@@ -163,3 +166,5 @@ The `Button` component is a wrapper around the `button` element that adds a vari
 | --------- | ------------------------------------------------------------------------------------ | ----------- |
 | `variant` | `"default" \| "outline" \| "ghost" \| "destructive" \| "secondary" \| "link"`        | `"default"` |
 | `size`    | `"default" \| "xs" \| "sm" \| "lg" \| "icon" \| "icon-xs" \| "icon-sm" \| "icon-lg"` | `"default"` |
+
+See the [React Aria](https://react-aria.adobe.com/Button#api) documentation for more information.

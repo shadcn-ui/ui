@@ -12801,19 +12801,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "combobox-auto-highlight": {
-      name: "combobox-auto-highlight",
-      filePath: "examples/react-aria/combobox-auto-highlight.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./react-aria/combobox-auto-highlight")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-auto-highlight"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "combobox-basic": {
       name: "combobox-basic",
       filePath: "examples/react-aria/combobox-basic.tsx",
@@ -12928,19 +12915,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "combobox-multiple"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-popup": {
-      name: "combobox-popup",
-      filePath: "examples/react-aria/combobox-popup.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./react-aria/combobox-popup")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-popup"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -15268,6 +15242,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "scroll-area-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "select-autocomplete": {
+      name: "select-autocomplete",
+      filePath: "examples/react-aria/select-autocomplete.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./react-aria/select-autocomplete")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "select-autocomplete"
         return { default: mod.default || mod[exportName] }
       }),
     },

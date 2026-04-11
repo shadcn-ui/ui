@@ -4,7 +4,8 @@ description: Command menu for search and quick actions.
 base: react-aria
 component: true
 links:
-  doc: https://github.com/dip/cmdk
+  doc: https://react-aria.adobe.com/Autocomplete
+  api: https://react-aria.adobe.com/Autocomplete#api
 ---
 
 <ComponentPreview
@@ -13,10 +14,6 @@ links:
   align="start"
   previewClassName="h-[24.5rem]"
 />
-
-## About
-
-The `<Command />` component uses the [`cmdk`](https://github.com/dip/cmdk) component by [Dip](https://www.dip.org/).
 
 ## Installation
 
@@ -41,7 +38,7 @@ npx shadcn@latest add command
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install cmdk
+npm install react-aria-components
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -79,8 +76,7 @@ import {
 ```tsx showLineNumbers
 <Command className="max-w-sm rounded-lg border">
   <CommandInput placeholder="Type a command or search..." />
-  <CommandList>
-    <CommandEmpty>No results found.</CommandEmpty>
+  <CommandList renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}>
     <CommandGroup heading="Suggestions">
       <CommandItem>Calendar</CommandItem>
       <CommandItem>Search Emoji</CommandItem>
@@ -134,4 +130,4 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [cmdk](https://github.com/dip/cmdk) documentation for more information.
+See the [React Aria](https://react-aria.adobe.com/Autocomplete) documentation for more information.

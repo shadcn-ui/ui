@@ -206,7 +206,7 @@ Use this component to display text within a button group.
 
 | Prop      | Type      | Default |
 | --------- | --------- | ------- |
-| `asChild` | `boolean` | `false` |
+| `render` | `boolean` | `false` |
 
 ```tsx
 <ButtonGroup>
@@ -215,7 +215,7 @@ Use this component to display text within a button group.
 </ButtonGroup>
 ```
 
-Use the `asChild` prop to render a custom component as the text, for example a label.
+Use the `render` prop to render a custom component as the text, for example a label.
 
 ```tsx showLineNumbers
 import { ButtonGroupText } from "@/components/ui/button-group"
@@ -224,9 +224,7 @@ import { Label } from "@/components/ui/label"
 export function ButtonGroupTextDemo() {
   return (
     <ButtonGroup>
-      <ButtonGroupText asChild>
-        <Label htmlFor="name">Text</Label>
-      </ButtonGroupText>
+      <ButtonGroupText render={props => <Label {...props} htmlFor="name">Text</Label>} />
       <Input placeholder="Type something here..." id="name" />
     </ButtonGroup>
   )

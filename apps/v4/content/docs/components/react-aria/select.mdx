@@ -5,8 +5,8 @@ base: react-aria
 component: true
 featured: true
 links:
-  doc: https://base-ui.com/react/components/select
-  api: https://base-ui.com/react/components/select#api-reference
+  doc: https://react-aria.adobe.com/Select
+  api: https://react-aria.adobe.com/Select#api
 ---
 
 <ComponentPreview styleName="react-aria-nova" name="select-demo" />
@@ -73,14 +73,14 @@ const items = [
   { label: "System", value: "system" },
 ]
 
-<Select items={items}>
+<Select placeholder="Theme">
   <SelectTrigger className="w-[180px]">
-    <SelectValue placeholder="Theme" />
+    <SelectValue />
   </SelectTrigger>
   <SelectContent>
     <SelectGroup>
       {items.map((item) => (
-        <SelectItem key={item.value} value={item.value}>
+        <SelectItem key={item.value} id={item.value}>
           {item.label}
         </SelectItem>
       ))}
@@ -90,12 +90,6 @@ const items = [
 ```
 
 ## Examples
-
-### Align Item With Trigger
-
-Use `alignItemWithTrigger` on `SelectContent` to control whether the selected item aligns with the trigger. When `true` (default), the popup positions so the selected item appears over the trigger. When `false`, the popup aligns to the trigger edge.
-
-<ComponentPreview styleName="react-aria-nova" name="select-align-item" />
 
 ### Groups
 
@@ -115,18 +109,24 @@ A select with many items that scrolls.
 
 ### Invalid
 
-Add the `data-invalid` attribute to the `Field` component and the `aria-invalid` attribute to the `SelectTrigger` component to show an error state.
+Add the `data-invalid` attribute to the `Field` component and the `isInvalid` prop to the `SelectTrigger` component to show an error state.
 
 ```tsx showLineNumbers /data-invalid/ /aria-invalid/
 <Field data-invalid>
   <FieldLabel>Fruit</FieldLabel>
-  <SelectTrigger aria-invalid>
-    <SelectValue />
-  </SelectTrigger>
+  <Select isInvalid>
+    {/* ... */}
+  </Select>
 </Field>
 ```
 
 <ComponentPreview styleName="react-aria-nova" name="select-invalid" />
+
+### Searchable
+
+Use the [Autocomplete](https://react-aria.adobe.com/Autocomplete) component from React Aria to add search support.
+
+<ComponentPreview styleName="react-aria-nova" name="select-autocomplete" />
 
 ## RTL
 
@@ -140,4 +140,4 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Base UI Select](https://base-ui.com/react/components/select#api-reference) documentation.
+See the [React Aria Select](https://react-aria.adobe.com/Select#api) documentation.

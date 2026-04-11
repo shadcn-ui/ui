@@ -4,8 +4,8 @@ description: A set of layered sections of content—known as tab panels—that a
 base: react-aria
 component: true
 links:
-  doc: https://base-ui.com/react/components/tabs
-  api: https://base-ui.com/react/components/tabs#api-reference
+  doc: https://react-aria.adobe.com/Tabs
+  api: https://react-aria.adobe.com/Tabs#api
 ---
 
 <ComponentPreview
@@ -63,13 +63,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 ```
 
 ```tsx showLineNumbers
-<Tabs defaultValue="account" className="w-[400px]">
+<Tabs defaultSelectedKey="account" className="w-[400px]">
   <TabsList>
-    <TabsTrigger value="account">Account</TabsTrigger>
-    <TabsTrigger value="password">Password</TabsTrigger>
+    <TabsTrigger id="account">Account</TabsTrigger>
+    <TabsTrigger id="password">Password</TabsTrigger>
   </TabsList>
-  <TabsContent value="account">Make changes to your account here.</TabsContent>
-  <TabsContent value="password">Change your password here.</TabsContent>
+  <TabsContent id="account">Make changes to your account here.</TabsContent>
+  <TabsContent id="password">Change your password here.</TabsContent>
 </Tabs>
 ```
 
@@ -103,4 +103,4 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Base UI Tabs](https://base-ui.com/react/components/tabs#api-reference) documentation.
+See the [React Aria Tabs](https://react-aria.adobe.com/Tabs#api) documentation.

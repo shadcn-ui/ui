@@ -4,8 +4,8 @@ description: Autocomplete input with a list of suggestions.
 base: react-aria
 component: true
 links:
-  doc: https://base-ui.com/react/components/combobox
-  api: https://base-ui.com/react/components/combobox#api-reference
+  doc: https://react-aria.adobe.com/ComboBox
+  api: https://react-aria.adobe.com/ComboBox#api
 ---
 
 <ComponentPreview
@@ -73,16 +73,18 @@ const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"]
 
 export function ExampleCombobox() {
   return (
-    <Combobox items={frameworks}>
+    <Combobox allowsEmptyCollection>
       <ComboboxInput placeholder="Select a framework" />
       <ComboboxContent>
-        <ComboboxEmpty>No items found.</ComboboxEmpty>
-        <ComboboxList>
-          {(item) => (
-            <ComboboxItem key={item} value={item}>
+        <ComboboxList
+          renderEmptyState={() => (
+            <ComboboxEmpty>No items found.</ComboboxEmpty>
+          )}>
+          {frameworks.map((item) => (
+            <ComboboxItem key={item} id={item}>
               {item}
             </ComboboxItem>
-          )}
+          ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
@@ -119,16 +121,16 @@ const frameworks: Framework[] = [
 
 export function ExampleComboboxCustomItems() {
   return (
-    <Combobox
-      items={frameworks}
-      itemToStringValue={(framework) => framework.label}
-    >
+    <Combobox allowsEmptyCollection>
       <ComboboxInput placeholder="Select a framework" />
       <ComboboxContent>
-        <ComboboxEmpty>No items found.</ComboboxEmpty>
-        <ComboboxList>
+        <ComboboxList
+          renderEmptyState={() => (
+            <ComboboxEmpty>No items found.</ComboboxEmpty>
+          )}
+          items={frameworks}>
           {(framework) => (
-            <ComboboxItem key={framework.value} value={framework}>
+            <ComboboxItem id={framework.value}>
               {framework.label}
             </ComboboxItem>
           )}
@@ -150,13 +152,13 @@ import {
   Combobox,
   ComboboxChip,
   ComboboxChips,
+  ComboboxChipList,
   ComboboxChipsInput,
   ComboboxContent,
   ComboboxEmpty,
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-  ComboboxValue,
 } from "@/components/ui/combobox"
 
 const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"]
@@ -166,27 +168,30 @@ export function ExampleComboboxMultiple() {
 
   return (
     <Combobox
-      items={frameworks}
-      multiple
+      selectionMode="multiple"
       value={value}
-      onValueChange={setValue}
+      onChange={setValue}
+      allowsEmptyCollection
     >
       <ComboboxChips>
-        <ComboboxValue>
-          {value.map((item) => (
-            <ComboboxChip key={item}>{item}</ComboboxChip>
-          ))}
-        </ComboboxValue>
+        <ComboboxChipList<{ name: string }>>
+          {(value) => (
+            <ComboboxChip id={value.name}>{value.name}</ComboboxChip>
+          )}
+        </ComboboxChipList>
         <ComboboxChipsInput placeholder="Add framework" />
       </ComboboxChips>
       <ComboboxContent>
-        <ComboboxEmpty>No items found.</ComboboxEmpty>
-        <ComboboxList>
-          {(item) => (
-            <ComboboxItem key={item} value={item}>
+        <ComboboxList
+          renderEmptyState={() => (
+            <ComboboxEmpty>No items found.</ComboboxEmpty>
+          )}
+        >
+          {frameworks.map((item) => (
+            <ComboboxItem key={item} id={item}>
               {item}
             </ComboboxItem>
-          )}
+          ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
@@ -228,27 +233,15 @@ You can render custom component inside `ComboboxItem`.
 
 ### Invalid
 
-Use the `aria-invalid` prop to make the combobox invalid.
+Use the `isInvalid` prop to make the combobox invalid.
 
 <ComponentPreview styleName="react-aria-nova" name="combobox-invalid" />
 
 ### Disabled
 
-Use the `disabled` prop to disable the combobox.
+Use the `isDisabled` prop to disable the combobox.
 
 <ComponentPreview styleName="react-aria-nova" name="combobox-disabled" />
-
-### Auto Highlight
-
-Use the `autoHighlight` prop automatically highlight the first item on filter.
-
-<ComponentPreview styleName="react-aria-nova" name="combobox-auto-highlight" />
-
-### Popup
-
-You can trigger the combobox from a button or any other component by using the `render` prop. Move the `ComboboxInput` inside the `ComboboxContent`.
-
-<ComponentPreview styleName="react-aria-nova" name="combobox-popup" />
 
 ### Input Group
 
@@ -269,4 +262,4 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Base UI](https://base-ui.com/react/components/combobox#api-reference) documentation for more information.
+See the [React Aria](https://react-aria.adobe.com/ComboBox#api) documentation for more information.

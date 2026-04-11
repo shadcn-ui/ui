@@ -4,8 +4,8 @@ description: A control that allows the user to toggle between checked and not ch
 base: react-aria
 component: true
 links:
-  doc: https://base-ui.com/react/components/checkbox
-  api: https://base-ui.com/react/components/checkbox#api-reference
+  doc: https://react-aria.adobe.com/Checkbox
+  api: https://react-aria.adobe.com/Checkbox#api
 ---
 
 <ComponentPreview
@@ -68,8 +68,8 @@ import { Checkbox } from "@/components/ui/checkbox"
 
 ## Checked State
 
-Use `defaultChecked` for uncontrolled checkboxes, or `checked` and
-`onCheckedChange` to control the state.
+Use `defaultSelected` for uncontrolled checkboxes, or `isSelected` and
+`onChange` to control the state.
 
 ```tsx showLineNumbers
 import * as React from "react"
@@ -77,13 +77,13 @@ import * as React from "react"
 export function Example() {
   const [checked, setChecked] = React.useState(false)
 
-  return <Checkbox checked={checked} onCheckedChange={setChecked} />
+  return <Checkbox isSelected={checked} onChange={setChecked} />
 }
 ```
 
 ## Invalid State
 
-Set `aria-invalid` on the checkbox and `data-invalid` on the field wrapper to
+Set `isInvalid` on the checkbox and `data-invalid` on the field wrapper to
 show the invalid styles.
 
 <ComponentPreview styleName="react-aria-nova" name="checkbox-invalid" />
@@ -104,7 +104,7 @@ Use `FieldContent` and `FieldDescription` for helper text.
 
 ### Disabled
 
-Use the `disabled` prop to prevent interaction and add the `data-disabled` attribute to the `<Field>` component for disabled styles.
+Use the `isDisabled` prop to prevent interaction and add the `data-disabled` attribute to the `<Field>` component for disabled styles.
 
 <ComponentPreview styleName="react-aria-nova" name="checkbox-disabled" />
 
@@ -135,4 +135,4 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Base UI](https://base-ui.com/react/components/checkbox#api-reference) documentation for more information.
+See the [React Aria](https://react-aria.adobe.com/Checkbox#api) documentation for more information.

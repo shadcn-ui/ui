@@ -9,12 +9,15 @@ import {
   ListBox as ListBoxPrimitive,
   ListBoxSection as ListBoxSectionPrimitive,
   Popover as PopoverPrimitive,
+  SearchField,
   Select as SelectPrimitive,
   SelectValue as SelectValuePrimitive,
   Separator as SeparatorPrimitive,
+  type ListBoxProps,
   type ListBoxSectionProps as SelectGroupProps,
   type SelectProps,
   type SelectValueProps,
+  type SearchFieldProps,
 } from "react-aria-components"
 
 import {
@@ -23,6 +26,11 @@ import {
   type PlacementAlign,
   type PlacementSide,
 } from "@/registry/bases/react-aria/lib/utils"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/registry/bases/react-aria/ui/input-group"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Select<T extends object, M extends "single" | "multiple" = "single">({
@@ -122,6 +130,34 @@ function SelectContent({
   sideOffset?: number
 }) {
   return (
+    <SelectPopover {...props}>
+      <SelectList>
+        {children}
+      </SelectList>
+    </SelectPopover>
+  )
+}
+
+function SelectPopover({
+  className,
+  children,
+  side = "bottom",
+  sideOffset = 4,
+  align = "start",
+  alignOffset = 0,
+  ...props
+}: Omit<
+  React.ComponentProps<typeof PopoverPrimitive>,
+  "className" | "children" | "placement" | "offset" | "crossOffset"
+> & {
+  className?: string
+  children?: React.ReactNode
+  align?: PlacementAlign
+  alignOffset?: number
+  side?: PlacementSide
+  sideOffset?: number
+}) {
+  return (
     <PopoverPrimitive
       data-slot="select-content"
       placement={getPlacement(side, align)}
@@ -141,10 +177,52 @@ function SelectContent({
       )}
       {...props}
     >
-      <ListBoxPrimitive className="max-h-[inherit] overflow-x-hidden overflow-y-auto p-0 outline-hidden">
-        {children}
-      </ListBoxPrimitive>
+      {children}
     </PopoverPrimitive>
+  )
+}
+
+function SelectList<T extends object>({
+  className,
+  ...props
+}: ListBoxProps<T>) {
+  return (
+    <ListBoxPrimitive
+      data-slot="select-list"
+      className={cn(
+        "group/select-list max-h-[inherit] overflow-x-hidden overflow-y-auto p-0 outline-hidden",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function SelectInput({ className, ...props }: SearchFieldProps) {
+  return (
+    <SearchField
+      {...props}
+      autoFocus
+      data-slot="select-input-wrapper"
+      className={cn("p-1 pb-0", className)}
+    >
+      <InputGroup>
+        <InputGroupInput
+          data-slot="select-input"
+          className="[&::-webkit-search-cancel-button]:hidden"
+        />
+        <InputGroupAddon>
+          <IconPlaceholder
+            lucide="SearchIcon"
+            tabler="IconSearch"
+            hugeicons="SearchIcon"
+            phosphor="MagnifyingGlassIcon"
+            remixicon="RiSearchLine"
+            className="cn-command-input-icon"
+          />
+        </InputGroupAddon>
+      </InputGroup>
+    </SearchField>
   )
 }
 
@@ -212,13 +290,27 @@ function SelectSeparator({
   )
 }
 
+function SelectEmpty({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="select-empty"
+      className={cn("cn-select-empty", className)}
+      {...props}
+    />
+  )
+}
+
 export {
   Select,
   SelectContent,
   SelectGroup,
+  SelectInput,
   SelectItem,
   SelectLabel,
+  SelectList,
+  SelectPopover,
   SelectSeparator,
   SelectTrigger,
   SelectValue,
+  SelectEmpty,
 }

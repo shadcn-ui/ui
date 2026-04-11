@@ -10,8 +10,9 @@ export function ProgressControlled() {
 
   return (
     <div className="flex w-full max-w-sm flex-col gap-4">
-      <Progress value={value} className="w-full" />
+      <Progress aria-label="Loading" value={value} className="w-full" />
       <Slider
+        aria-label="Progress"
         value={value}
         onChange={(value) => setValue(value as number)}
         minValue={0}

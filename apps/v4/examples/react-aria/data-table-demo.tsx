@@ -283,7 +283,6 @@ export function DataTableDemo() {
               <TableRow
                 key={row.id}
                 id={row.id}
-                data-state={row.getIsSelected() && "selected"}
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>

@@ -4,8 +4,8 @@ description: Displays rich content in a portal, triggered by a button.
 base: react-aria
 component: true
 links:
-  doc: https://base-ui.com/react/components/popover
-  api: https://base-ui.com/react/components/popover#api-reference
+  doc: https://react-aria.adobe.com/Popover
+  api: https://react-aria.adobe.com/Popover#api
 ---
 
 <ComponentPreview styleName="react-aria-nova" name="popover-demo" />
@@ -57,7 +57,6 @@ npm install react-aria-components
 ```tsx showLineNumbers
 import {
   Popover,
-  PopoverContent,
   PopoverDescription,
   PopoverHeader,
   PopoverTitle,
@@ -66,17 +65,17 @@ import {
 ```
 
 ```tsx showLineNumbers
-<Popover>
-  <PopoverTrigger render={<Button variant="outline" />}>
+<PopoverTrigger>
+  <Button variant="outline">
     Open Popover
-  </PopoverTrigger>
-  <PopoverContent>
+  </Button>
+  <Popover>
     <PopoverHeader>
       <PopoverTitle>Title</PopoverTitle>
       <PopoverDescription>Description text here.</PopoverDescription>
     </PopoverHeader>
-  </PopoverContent>
-</Popover>
+  </Popover>
+</PopoverTrigger>
 ```
 
 ## Examples
@@ -111,4 +110,4 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Base UI Popover](https://base-ui.com/react/components/popover#api-reference) documentation.
+See the [React Aria Popover](https://react-aria.adobe.com/Popover#api) documentation.

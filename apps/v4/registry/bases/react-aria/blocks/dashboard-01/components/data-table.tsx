@@ -508,7 +508,6 @@ export function DataTable({
                   key={row.id}
                   id={row.id}
                   value={row.original}
-                  data-state={row.getIsSelected() && "selected"}
                   className="relative z-0 data-[dragging=true]:z-10 data-[dragging=true]:opacity-80"
                 >
                   {row.getVisibleCells().map((cell) => (

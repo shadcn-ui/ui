@@ -238,19 +238,17 @@ Use the `SidebarHeader` component to add a sticky header to the sidebar.
   <SidebarHeader>
     <SidebarMenu>
       <SidebarMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <SidebarMenuButton>
-              Select Workspace
-              <ChevronDown className="ml-auto" />
-            </SidebarMenuButton>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-[--radix-popper-anchor-width]">
+        <DropdownMenuTrigger>
+          <SidebarMenuButton>
+            Select Workspace
+            <ChevronDown className="ml-auto" />
+          </SidebarMenuButton>
+          <DropdownMenu className="w-[--trigger-width]">
             <DropdownMenuItem>
               <span>Acme Inc</span>
             </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          </DropdownMenu>
+        </DropdownMenuTrigger>
       </SidebarMenuItem>
     </SidebarMenu>
   </SidebarHeader>

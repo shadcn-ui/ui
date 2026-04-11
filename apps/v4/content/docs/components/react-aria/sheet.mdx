@@ -4,8 +4,8 @@ description: Extends the Dialog component to display content that complements th
 base: react-aria
 component: true
 links:
-  doc: https://base-ui.com/react/components/dialog
-  api: https://base-ui.com/react/components/dialog#api-reference
+  doc: https://react-aria.adobe.com/Modal
+  api: https://react-aria.adobe.com/Modal#api
 ---
 
 <ComponentPreview styleName="react-aria-nova" name="sheet-demo" />
@@ -58,7 +58,6 @@ npm install react-aria-components
 import {
   Sheet,
   SheetClose,
-  SheetContent,
   SheetDescription,
   SheetFooter,
   SheetHeader,
@@ -68,15 +67,15 @@ import {
 ```
 
 ```tsx showLineNumbers
-<Sheet>
-  <SheetTrigger>Open</SheetTrigger>
-  <SheetContent>
+<SheetTrigger>
+  <Button>Open</Button>
+  <Sheet>
     <SheetHeader>
       <SheetTitle>Are you absolutely sure?</SheetTitle>
       <SheetDescription>This action cannot be undone.</SheetDescription>
     </SheetHeader>
-  </SheetContent>
-</Sheet>
+  </Sheet>
+</SheetTrigger>
 ```
 
 ## Examples
@@ -105,4 +104,4 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Base UI Dialog](https://base-ui.com/react/components/dialog#api-reference) documentation.
+See the [React Aria Modal](https://react-aria.adobe.com/Modal#api) documentation.

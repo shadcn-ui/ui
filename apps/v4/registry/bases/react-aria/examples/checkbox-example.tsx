@@ -191,7 +191,6 @@ function CheckboxInTable() {
           {tableData.map((row) => (
             <TableRow
               key={row.id}
-              data-state={selectedRows.has(row.id) ? "selected" : undefined}
             >
               <TableCell>
                 <Checkbox

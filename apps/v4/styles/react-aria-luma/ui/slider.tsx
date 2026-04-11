@@ -4,6 +4,7 @@ import {
   Slider as SliderPrimitive,
   SliderThumb,
   SliderTrack,
+  useLocale,
   type SliderProps as SliderPrimitiveProps,
 } from "react-aria-components"
 
@@ -21,6 +22,7 @@ function Slider<T extends SliderValue = SliderValue>({
   className,
   ...props
 }: SliderProps<T>) {
+  const { direction } = useLocale()
   return (
     <SliderPrimitive
       className={cn(
@@ -58,7 +60,8 @@ function Slider<T extends SliderValue = SliderValue>({
                         width: "100%",
                       }
                     : {
-                        left: `${startPercent}%`,
+                        [direction === "rtl" ? "right" : "left"]:
+                          `${startPercent}%`,
                         width: `${sizePercent}%`,
                         height: "100%",
                       }

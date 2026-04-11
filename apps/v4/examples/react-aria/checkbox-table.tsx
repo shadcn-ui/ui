@@ -40,39 +40,14 @@ const tableData = [
 ]
 
 export function CheckboxInTable() {
-  const [selectedRows, setSelectedRows] = React.useState<Set<string>>(
-    new Set(["1"])
-  )
-
-  const selectAll = selectedRows.size === tableData.length
-
-  const handleSelectAll = (checked: boolean) => {
-    if (checked) {
-      setSelectedRows(new Set(tableData.map((row) => row.id)))
-    } else {
-      setSelectedRows(new Set())
-    }
-  }
-
-  const handleSelectRow = (id: string, checked: boolean) => {
-    const newSelected = new Set(selectedRows)
-    if (checked) {
-      newSelected.add(id)
-    } else {
-      newSelected.delete(id)
-    }
-    setSelectedRows(newSelected)
-  }
-
   return (
-    <Table>
+    <Table selectionMode="multiple">
       <TableHeader>
         <TableHead className="w-8">
           <Checkbox
             id="select-all-checkbox"
             name="select-all-checkbox"
-            isSelected={selectAll}
-            onChange={handleSelectAll}
+            slot="selection"
           />
         </TableHead>
         <TableHead isRowHeader>Name</TableHead>
@@ -83,16 +58,12 @@ export function CheckboxInTable() {
         {tableData.map((row) => (
           <TableRow
             key={row.id}
-            data-state={selectedRows.has(row.id) ? "selected" : undefined}
           >
             <TableCell>
               <Checkbox
                 id={`row-${row.id}-checkbox`}
                 name={`row-${row.id}-checkbox`}
-                isSelected={selectedRows.has(row.id)}
-                onChange={(checked) =>
-                  handleSelectRow(row.id, checked === true)
-                }
+                slot="selection"
               />
             </TableCell>
             <TableCell className="font-medium">{row.name}</TableCell>

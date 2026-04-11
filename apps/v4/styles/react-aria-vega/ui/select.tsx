@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { CheckIcon, ChevronDownIcon } from "lucide-react"
+import { CheckIcon, ChevronDownIcon, SearchIcon } from "lucide-react"
 import {
   Button as ButtonPrimitive,
   composeRenderProps,
@@ -10,9 +10,12 @@ import {
   ListBox as ListBoxPrimitive,
   ListBoxSection as ListBoxSectionPrimitive,
   Popover as PopoverPrimitive,
+  SearchField,
   Select as SelectPrimitive,
   SelectValue as SelectValuePrimitive,
   Separator as SeparatorPrimitive,
+  type ListBoxProps,
+  type SearchFieldProps,
   type ListBoxSectionProps as SelectGroupProps,
   type SelectProps,
   type SelectValueProps,
@@ -24,6 +27,11 @@ import {
   type PlacementAlign,
   type PlacementSide,
 } from "@/lib/utils"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/styles/react-aria-vega/ui/input-group"
 
 function Select<T extends object, M extends "single" | "multiple" = "single">({
   className,
@@ -115,6 +123,32 @@ function SelectContent({
   sideOffset?: number
 }) {
   return (
+    <SelectPopover {...props}>
+      <SelectList>{children}</SelectList>
+    </SelectPopover>
+  )
+}
+
+function SelectPopover({
+  className,
+  children,
+  side = "bottom",
+  sideOffset = 4,
+  align = "start",
+  alignOffset = 0,
+  ...props
+}: Omit<
+  React.ComponentProps<typeof PopoverPrimitive>,
+  "className" | "children" | "placement" | "offset" | "crossOffset"
+> & {
+  className?: string
+  children?: React.ReactNode
+  align?: PlacementAlign
+  alignOffset?: number
+  side?: PlacementSide
+  sideOffset?: number
+}) {
+  return (
     <PopoverPrimitive
       data-slot="select-content"
       placement={getPlacement(side, align)}
@@ -134,10 +168,45 @@ function SelectContent({
       )}
       {...props}
     >
-      <ListBoxPrimitive className="max-h-[inherit] overflow-x-hidden overflow-y-auto p-0 outline-hidden">
-        {children}
-      </ListBoxPrimitive>
+      {children}
     </PopoverPrimitive>
+  )
+}
+
+function SelectList<T extends object>({
+  className,
+  ...props
+}: ListBoxProps<T>) {
+  return (
+    <ListBoxPrimitive
+      data-slot="select-list"
+      className={cn(
+        "group/select-list max-h-[inherit] overflow-x-hidden overflow-y-auto p-0 outline-hidden",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function SelectInput({ className, ...props }: SearchFieldProps) {
+  return (
+    <SearchField
+      {...props}
+      autoFocus
+      data-slot="select-input-wrapper"
+      className={cn("p-1 pb-0", className)}
+    >
+      <InputGroup>
+        <InputGroupInput
+          data-slot="select-input"
+          className="[&::-webkit-search-cancel-button]:hidden"
+        />
+        <InputGroupAddon>
+          <SearchIcon className="size-4 shrink-0 opacity-50" />
+        </InputGroupAddon>
+      </InputGroup>
+    </SearchField>
   )
 }
 
@@ -164,7 +233,7 @@ function SelectItem({
       data-slot="select-item"
       textValue={typeof children === "string" ? children : undefined}
       className={cn(
-        "relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+        "relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50 data-highlighted:bg-accent data-highlighted:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
         className
       )}
       {...props}
@@ -196,13 +265,30 @@ function SelectSeparator({
   )
 }
 
+function SelectEmpty({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="select-empty"
+      className={cn(
+        "hidden w-full justify-center py-2 text-center text-sm text-muted-foreground group-data-empty/select-list:flex",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
 export {
   Select,
   SelectContent,
   SelectGroup,
+  SelectInput,
   SelectItem,
   SelectLabel,
+  SelectList,
+  SelectPopover,
   SelectSeparator,
   SelectTrigger,
   SelectValue,
+  SelectEmpty,
 }

@@ -5,8 +5,8 @@ featured: true
 base: react-aria
 component: true
 links:
-  doc: https://base-ui.com/react/components/alert-dialog
-  api: https://base-ui.com/react/components/alert-dialog#api-reference
+  doc: https://react-aria.adobe.com/Modal
+  api: https://react-aria.adobe.com/Modal#api
 ---
 
 <ComponentPreview
@@ -64,7 +64,6 @@ import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
@@ -74,11 +73,11 @@ import {
 ```
 
 ```tsx showLineNumbers
-<AlertDialog>
-  <AlertDialogTrigger render={<Button variant="outline" />}>
+<AlertDialogTrigger>
+  <Button variant="outline">
     Show Dialog
-  </AlertDialogTrigger>
-  <AlertDialogContent>
+  </Button>
+  <AlertDialog>
     <AlertDialogHeader>
       <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
       <AlertDialogDescription>
@@ -90,8 +89,8 @@ import {
       <AlertDialogCancel>Cancel</AlertDialogCancel>
       <AlertDialogAction>Continue</AlertDialogAction>
     </AlertDialogFooter>
-  </AlertDialogContent>
-</AlertDialog>
+  </AlertDialog>
+</AlertDialogTrigger>
 ```
 
 ## Examples
@@ -167,4 +166,4 @@ Use the `size` props on the `AlertDialogContent` component to control the size o
 | ------ | ------------------- | ----------- |
 | `size` | `"default" \| "sm"` | `"default"` |
 
-For more information about the other components and their props, see the [Base UI documentation](https://base-ui.com/react/components/alert-dialog#api-reference).
+For more information about the other components and their props, see the [React Aria documentation](https://react-aria.adobe.com/Modal#api).
