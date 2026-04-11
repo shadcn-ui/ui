@@ -81,6 +81,31 @@ import { Pressable } from "react-aria-components"
 </ContextMenuTrigger>
 ```
 
+## Composition
+
+Use the following composition to build a `ContextMenu`:
+
+```text
+ContextMenuTrigger
+├── Pressable
+└── ContextMenuContent
+    ├── ContextMenuGroup
+    │   ├── ContextMenuLabel
+    │   ├── ContextMenuItem
+    │   └── ContextMenuItem
+    ├── ContextMenuSeparator
+    ├── ContextMenuGroup
+    │   ├── ContextMenuLabel
+    │   ├── ContextMenuItem
+    │   └── ContextMenuItem
+    └── ContextMenuSub
+        ├── ContextMenuSubTrigger
+        └── ContextMenuSubContent
+            └── ContextMenuGroup
+                ├── ContextMenuItem
+                └── ContextMenuItem
+```
+
 ## Examples
 
 ### Basic

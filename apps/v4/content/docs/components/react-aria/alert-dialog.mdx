@@ -93,6 +93,23 @@ import {
 </AlertDialogTrigger>
 ```
 
+## Composition
+
+Use the following composition to build an `AlertDialog`:
+
+```text
+AlertDialogTrigger
+├── Button
+└── AlertDialog
+    ├── AlertDialogHeader
+    │   ├── AlertDialogMedia
+    │   ├── AlertDialogTitle
+    │   └── AlertDialogDescription
+    └── AlertDialogFooter
+        ├── AlertDialogCancel
+        └── AlertDialogAction
+```
+
 ## Examples
 
 ### Basic

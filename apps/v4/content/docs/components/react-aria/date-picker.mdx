@@ -58,6 +58,17 @@ export function DatePickerDemo() {
 
 See the [React Aria](https://react-aria.adobe.com/Calendar) documentation for more information.
 
+## Composition
+
+A date picker is built from `Popover` and `Calendar` (there is no `DatePicker` root component):
+
+```text
+PopoverTrigger
+├── Button
+└── Popover
+    └── Calendar
+```
+
 ## Examples
 
 ### Basic

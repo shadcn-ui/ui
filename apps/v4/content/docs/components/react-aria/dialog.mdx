@@ -85,6 +85,20 @@ import {Button} from "@/components/ui/button"
 </DialogTrigger>
 ```
 
+## Composition
+
+Use the following composition to build a `Dialog`:
+
+```text
+DialogTrigger
+├── Button
+└── Dialog
+    ├── DialogHeader
+    │   ├── DialogTitle
+    │   └── DialogDescription
+    └── DialogFooter
+```
+
 ## Examples
 
 ### Custom Close Button

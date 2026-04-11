@@ -89,6 +89,26 @@ const items = [
 </Select>
 ```
 
+## Composition
+
+Use the following composition to build a `Select`:
+
+```text
+Select
+├── SelectTrigger
+│   └── SelectValue
+└── SelectContent
+    ├── SelectGroup
+    │   ├── SelectLabel
+    │   ├── SelectItem
+    │   └── SelectItem
+    ├── SelectSeparator
+    └── SelectGroup
+        ├── SelectLabel
+        ├── SelectItem
+        └── SelectItem
+```
+
 ## Examples
 
 ### Groups
