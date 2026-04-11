@@ -504,21 +504,33 @@ export function buildTailwindThemeColorsFromCssVars(
   const result: Record<string, any> = {}
 
   for (const key of Object.keys(cssVars)) {
+    const value = cssVars[key]
     const parts = key.split("-")
     const colorName = parts[0]
     const subType = parts.slice(1).join("-")
 
+    // Determine the correct CSS function wrapper based on the value format
+    let wrapper: string
+    if (value.startsWith("oklch")) {
+      wrapper = `oklch(var(--${key}))`
+    } else if (value.startsWith("hsl") || value.startsWith("rgb") || value.startsWith("#")) {
+      wrapper = value // Use the value as-is if it already has a CSS color function
+    } else {
+      wrapper = `hsl(var(--${key}))` // Default to hsl for raw HSL component values
+    }
+
     if (subType === "") {
       if (typeof result[colorName] === "object") {
-        result[colorName].DEFAULT = `hsl(var(--${key}))`
+        result[colorName].DEFAULT = wrapper
       } else {
-        result[colorName] = `hsl(var(--${key}))`
+        result[colorName] = wrapper
       }
     } else {
       if (typeof result[colorName] !== "object") {
+        // Use hsl wrapper for the DEFAULT even if subType values use oklch
         result[colorName] = { DEFAULT: `hsl(var(--${colorName}))` }
       }
-      result[colorName][subType] = `hsl(var(--${key}))`
+      result[colorName][subType] = wrapper
     }
   }
 
