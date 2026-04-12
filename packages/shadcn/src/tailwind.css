@@ -92,13 +92,13 @@
 }
 
 @custom-variant data-invalid {
-  &:where([data-invalid="true"], [aria-invalid="true"]) {
+  &:is([data-invalid="true"], [aria-invalid="true"]) {
     @slot;
   }
 }
 
 @custom-variant data-highlighted {
-  &:where([data-highlighted], [data-focused]) {
+  &:is([data-highlighted], [data-focused]) {
     @slot;
   }
 }
