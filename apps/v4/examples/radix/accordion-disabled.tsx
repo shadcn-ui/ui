@@ -3,7 +3,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/examples/radix/ui/accordion"
+} from "@/styles/radix-nova/ui/accordion"
 
 export default function AccordionDisabled() {
   return (

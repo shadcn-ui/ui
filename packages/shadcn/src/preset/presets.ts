@@ -3,6 +3,7 @@ import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
 import { REGISTRY_URL, SHADCN_URL } from "@/src/registry/constants"
 import { type registryConfigSchema } from "@/src/registry/schema"
+import { isUrl } from "@/src/registry/utils"
 import { createConfig } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -20,8 +21,10 @@ export const DEFAULT_PRESETS = {
     theme: "neutral",
     iconLibrary: "lucide",
     font: "geist",
+    fontHeading: "inherit",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
+
     radius: "default",
     rtl: false,
   },
@@ -33,8 +36,10 @@ export const DEFAULT_PRESETS = {
     theme: "neutral",
     iconLibrary: "lucide",
     font: "inter",
+    fontHeading: "inherit",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
+
     radius: "default",
     rtl: false,
   },
@@ -46,8 +51,10 @@ export const DEFAULT_PRESETS = {
     theme: "neutral",
     iconLibrary: "hugeicons",
     font: "figtree",
+    fontHeading: "inherit",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
+
     radius: "default",
     rtl: false,
   },
@@ -59,8 +66,10 @@ export const DEFAULT_PRESETS = {
     theme: "neutral",
     iconLibrary: "phosphor",
     font: "jetbrains-mono",
+    fontHeading: "inherit",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
+
     radius: "default",
     rtl: false,
   },
@@ -72,8 +81,25 @@ export const DEFAULT_PRESETS = {
     theme: "neutral",
     iconLibrary: "hugeicons",
     font: "inter",
+    fontHeading: "inherit",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
+
+    radius: "default",
+    rtl: false,
+  },
+  luma: {
+    title: "Luma",
+    description: "Lucide / Inter",
+    style: "luma",
+    baseColor: "neutral",
+    theme: "neutral",
+    iconLibrary: "lucide",
+    font: "inter",
+    fontHeading: "inherit",
+    menuAccent: "subtle" as const,
+    menuColor: "default" as const,
+
     radius: "default",
     rtl: false,
   },
@@ -104,20 +130,50 @@ export function resolveCreateUrl(
   return url.toString()
 }
 
+export async function promptToOpenPresetBuilder(options: {
+  createUrl: string
+  followUp: string
+  prompt?: boolean
+}) {
+  logger.break()
+  logger.log(
+    `  Build your custom preset on ${highlighter.info(options.createUrl)}`
+  )
+  logger.log(`  ${options.followUp}`)
+  logger.break()
+
+  if (options.prompt === false) {
+    return
+  }
+
+  const { proceed } = await prompts({
+    type: "confirm",
+    name: "proceed",
+    message: "Open in browser?",
+    initial: true,
+  })
+
+  if (proceed) {
+    await open(options.createUrl)
+  }
+}
+
 export function resolveInitUrl(
   preset: {
     base: string
     style: string
     baseColor: string
     theme: string
+    chartColor?: string
     iconLibrary: string
     font: string
+    fontHeading?: string
     rtl: boolean
     menuAccent: string
     menuColor: string
     radius: string
   },
-  options?: { template?: string }
+  options?: { template?: string; preset?: string }
 ) {
   const params = new URLSearchParams({
     base: preset.base,
@@ -132,9 +188,26 @@ export function resolveInitUrl(
     radius: preset.radius,
   })
 
+  if (preset.chartColor) {
+    params.set("chartColor", preset.chartColor)
+  }
+
+  if (preset.fontHeading && preset.fontHeading !== "inherit") {
+    params.set("fontHeading", preset.fontHeading)
+  }
+
+  // Pass the original preset code so the server can apply
+  // version-specific backward-compat fixups.
+  if (options?.preset) {
+    params.set("preset", options.preset)
+  }
+
   if (options?.template) {
     params.set("template", options.template)
   }
+
+  // Signal the server to record this init run.
+  params.set("track", "1")
 
   return `${SHADCN_URL}/init?${params.toString()}`
 }
@@ -189,25 +262,12 @@ export async function promptForPreset(options: {
       base: options.base,
       ...(options.template && { template: options.template }),
     })
-    logger.break()
-    logger.log(`  Build your custom preset on ${highlighter.info(createUrl)}`)
-    logger.log(
-      `  Then ${highlighter.info(
+    await promptToOpenPresetBuilder({
+      createUrl,
+      followUp: `Then ${highlighter.info(
         "copy and run the command"
-      )} from ui.shadcn.com.`
-    )
-    logger.break()
-
-    const { proceed } = await prompts({
-      type: "confirm",
-      name: "proceed",
-      message: "Open in browser?",
-      initial: true,
+      )} from ui.shadcn.com.`,
     })
-
-    if (proceed) {
-      await open(createUrl)
-    }
 
     process.exit(0)
   }
@@ -261,13 +321,31 @@ export async function resolveRegistryBaseConfig(
 
   const [item] = await getRegistryItems([initUrl], {
     config: shadowConfig,
+    useCache: true,
   })
 
   const registryBaseConfig =
     item?.type === "registry:base" && item.config ? item.config : undefined
 
+  // Strip the track param so subsequent fetches don't re-trigger tracking.
+  let cleanUrl = initUrl
+  if (isShadcnInitUrl(initUrl)) {
+    const url = new URL(initUrl)
+    url.searchParams.delete("track")
+    cleanUrl = url.toString()
+  }
+
   return {
     registryBaseConfig,
     installStyleIndex: item?.extends !== "none",
+    url: cleanUrl,
+  }
+}
+
+function isShadcnInitUrl(url: string) {
+  try {
+    return new URL(url).pathname === "/init" && url.startsWith(SHADCN_URL)
+  } catch {
+    return false
   }
 }

@@ -1,13 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/radix/ui-rtl/button"
-import { Calendar } from "@/examples/radix/ui-rtl/calendar"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/examples/radix/ui-rtl/popover"
 import { format } from "date-fns"
 import { arSA, he } from "date-fns/locale"
 import { ChevronDownIcon } from "lucide-react"
@@ -20,6 +13,13 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Button } from "@/styles/radix-nova/ui-rtl/button"
+import { Calendar } from "@/styles/radix-nova/ui-rtl/calendar"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/styles/radix-nova/ui-rtl/popover"
 
 const translations: Translations = {
   en: {

@@ -1,9 +1,12 @@
+import { IconCheck, IconInfoCircle, IconPlus } from "@tabler/icons-react"
+import { ArrowUpIcon, Search } from "lucide-react"
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/radix/ui/dropdown-menu"
+} from "@/styles/radix-nova/ui/dropdown-menu"
 import {
   InputGroup,
   InputGroupAddon,
@@ -11,15 +14,13 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/examples/radix/ui/input-group"
-import { Separator } from "@/examples/radix/ui/separator"
+} from "@/styles/radix-nova/ui/input-group"
+import { Separator } from "@/styles/radix-nova/ui/separator"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/radix/ui/tooltip"
-import { IconCheck, IconInfoCircle, IconPlus } from "@tabler/icons-react"
-import { ArrowUpIcon, Search } from "lucide-react"
+} from "@/styles/radix-nova/ui/tooltip"
 
 export function InputGroupDemo() {
   return (
@@ -88,7 +89,7 @@ export function InputGroupDemo() {
         <InputGroupInput placeholder="@shadcn" />
         <InputGroupAddon align="inline-end">
           <div className="flex size-4 items-center justify-center rounded-full bg-primary text-foreground">
-            <IconCheck className="size-3 text-white" />
+            <IconCheck className="size-3 text-background" />
           </div>
         </InputGroupAddon>
       </InputGroup>

@@ -16,7 +16,7 @@ jobs:
   check-registry-sync:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    name: Check registry sync
+    name: check-registry-sync
     permissions:
       contents: read
       pull-requests: write
@@ -65,6 +65,44 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
+
+      - name: Block reserved registry namespaces
+        env:
+          RESERVED_NAMESPACES: "@shadcn,@ui,@blocks,@components,@block,@component,@util,@utils,@registry,@lib,@hook,@hooks,@theme,@themes,@chart,@charts"
+        run: |
+          node <<'EOF'
+          const fs = require("node:fs")
+
+          const files = [
+            "apps/v4/public/r/registries.json",
+            "apps/v4/registry/directory.json",
+          ]
+          const reservedNamespaces = new Set(
+            process.env.RESERVED_NAMESPACES.split(",").filter(Boolean)
+          )
+
+          function readNames(filePath) {
+            return JSON.parse(fs.readFileSync(filePath, "utf8")).map(
+              (entry) => entry.name
+            )
+          }
+
+          const violations = files.flatMap((filePath) => {
+            return readNames(filePath)
+              .filter((name) => reservedNamespaces.has(name))
+              .map((name) => `${filePath}: ${name}`)
+          })
+
+          if (violations.length > 0) {
+            console.error("Reserved registry namespaces are not allowed:")
+
+            for (const violation of violations) {
+              console.error(`- ${violation}`)
+            }
+
+            process.exit(1)
+          }
+          EOF
 
       - uses: pnpm/action-setup@v4
         name: Install pnpm
