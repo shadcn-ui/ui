@@ -30,6 +30,7 @@ import { Label } from "@/registry/bases/radix/ui/label"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -107,7 +108,11 @@ function ButtonGroupWithText() {
           <ButtonGroupText asChild>
             <Label htmlFor="input-text">GPU Size</Label>
           </ButtonGroupText>
-          <Input id="input-text" placeholder="Type something here..." />
+          <Input
+            id="input-text"
+            placeholder="Type something here..."
+            className="style-luma:border-border"
+          />
         </ButtonGroup>
       </div>
     </Example>
@@ -127,6 +132,8 @@ function ButtonGroupWithDropdown() {
                   lucide="ChevronDownIcon"
                   tabler="IconChevronDown"
                   hugeicons="ArrowDown01Icon"
+                  phosphor="CaretDownIcon"
+                  remixicon="RiArrowDownSLine"
                 />
               </Button>
             </DropdownMenuTrigger>
@@ -147,6 +154,8 @@ function ButtonGroupWithDropdown() {
                   lucide="ChevronDownIcon"
                   tabler="IconChevronDown"
                   hugeicons="ArrowDown01Icon"
+                  phosphor="CaretDownIcon"
+                  remixicon="RiArrowDownSLine"
                 />
               </Button>
             </DropdownMenuTrigger>
@@ -157,6 +166,8 @@ function ButtonGroupWithDropdown() {
                     lucide="VolumeOffIcon"
                     tabler="IconVolume"
                     hugeicons="VolumeOffIcon"
+                    phosphor="SpeakerSlashIcon"
+                    remixicon="RiVolumeMuteLine"
                   />
                   Mute Conversation
                 </DropdownMenuItem>
@@ -165,6 +176,8 @@ function ButtonGroupWithDropdown() {
                     lucide="CheckIcon"
                     tabler="IconCheck"
                     hugeicons="Tick02Icon"
+                    phosphor="CheckIcon"
+                    remixicon="RiCheckLine"
                   />
                   Mark as Read
                 </DropdownMenuItem>
@@ -173,6 +186,8 @@ function ButtonGroupWithDropdown() {
                     lucide="AlertTriangleIcon"
                     tabler="IconAlertTriangle"
                     hugeicons="AlertCircleIcon"
+                    phosphor="WarningIcon"
+                    remixicon="RiErrorWarningLine"
                   />
                   Report Conversation
                 </DropdownMenuItem>
@@ -181,6 +196,8 @@ function ButtonGroupWithDropdown() {
                     lucide="UserRoundXIcon"
                     tabler="IconUserX"
                     hugeicons="UserRemove01Icon"
+                    phosphor="UserMinusIcon"
+                    remixicon="RiUserUnfollowLine"
                   />
                   Block User
                 </DropdownMenuItem>
@@ -189,6 +206,8 @@ function ButtonGroupWithDropdown() {
                     lucide="ShareIcon"
                     tabler="IconShare"
                     hugeicons="Share03Icon"
+                    phosphor="ShareIcon"
+                    remixicon="RiShareLine"
                   />
                   Share Conversation
                 </DropdownMenuItem>
@@ -197,6 +216,8 @@ function ButtonGroupWithDropdown() {
                     lucide="CopyIcon"
                     tabler="IconCopy"
                     hugeicons="Copy01Icon"
+                    phosphor="CopyIcon"
+                    remixicon="RiFileCopyLine"
                   />
                   Copy Conversation
                 </DropdownMenuItem>
@@ -208,6 +229,8 @@ function ButtonGroupWithDropdown() {
                     lucide="TrashIcon"
                     tabler="IconTrash"
                     hugeicons="Delete02Icon"
+                    phosphor="TrashIcon"
+                    remixicon="RiDeleteBinLine"
                   />
                   Delete Conversation
                 </DropdownMenuItem>
@@ -233,9 +256,11 @@ function ButtonGroupWithSelect() {
               <SelectValue />
             </SelectTrigger>
             <SelectContent align="start">
-              <SelectItem value="$">$</SelectItem>
-              <SelectItem value="€">€</SelectItem>
-              <SelectItem value="£">£</SelectItem>
+              <SelectGroup>
+                <SelectItem value="$">$</SelectItem>
+                <SelectItem value="€">€</SelectItem>
+                <SelectItem value="£">£</SelectItem>
+              </SelectGroup>
             </SelectContent>
           </Select>
           <Input placeholder="Enter amount to send" />
@@ -244,6 +269,8 @@ function ButtonGroupWithSelect() {
               lucide="ArrowRightIcon"
               tabler="IconArrowRight"
               hugeicons="ArrowRight01Icon"
+              phosphor="ArrowRightIcon"
+              remixicon="RiArrowRightLine"
             />
           </Button>
         </ButtonGroup>
@@ -262,6 +289,8 @@ function ButtonGroupWithIcons() {
               lucide="FlipHorizontalIcon"
               tabler="IconFlipHorizontal"
               hugeicons="FlipHorizontalIcon"
+              phosphor="ArrowsHorizontalIcon"
+              remixicon="RiArrowLeftRightLine"
             />
           </Button>
           <Button variant="outline">
@@ -269,6 +298,8 @@ function ButtonGroupWithIcons() {
               lucide="FlipVerticalIcon"
               tabler="IconFlipVertical"
               hugeicons="FlipVerticalIcon"
+              phosphor="ArrowsVerticalIcon"
+              remixicon="RiArrowUpDownLine"
             />
           </Button>
           <Button variant="outline">
@@ -276,6 +307,8 @@ function ButtonGroupWithIcons() {
               lucide="RotateCwIcon"
               tabler="IconRotateClockwise2"
               hugeicons="Rotate01Icon"
+              phosphor="ArrowClockwiseIcon"
+              remixicon="RiRefreshLine"
             />
           </Button>
         </ButtonGroup>
@@ -298,6 +331,8 @@ function ButtonGroupWithInputGroup() {
               lucide="SearchIcon"
               tabler="IconSearch"
               hugeicons="Search01Icon"
+              phosphor="MagnifyingGlassIcon"
+              remixicon="RiSearchLine"
             />
           </InputGroupAddon>
         </InputGroup>
@@ -330,6 +365,8 @@ function ButtonGroupWithFields() {
                 lucide="MinusIcon"
                 tabler="IconMinus"
                 hugeicons="MinusSignIcon"
+                phosphor="MinusIcon"
+                remixicon="RiSubtractLine"
               />
             </Button>
             <Button variant="outline" size="icon">
@@ -337,6 +374,8 @@ function ButtonGroupWithFields() {
                 lucide="PlusIcon"
                 tabler="IconPlus"
                 hugeicons="PlusSignIcon"
+                phosphor="PlusIcon"
+                remixicon="RiAddLine"
               />
             </Button>
           </ButtonGroup>
@@ -355,6 +394,8 @@ function ButtonGroupWithLike() {
             lucide="HeartIcon"
             tabler="IconBell"
             hugeicons="Notification02Icon"
+            phosphor="HeartIcon"
+            remixicon="RiHeartLine"
             data-icon="inline-start"
           />{" "}
           Like
@@ -376,9 +417,11 @@ function ButtonGroupWithSelectAndInput() {
             <SelectValue placeholder="Select duration" />
           </SelectTrigger>
           <SelectContent align="start">
-            <SelectItem value="hours">Hours</SelectItem>
-            <SelectItem value="days">Days</SelectItem>
-            <SelectItem value="weeks">Weeks</SelectItem>
+            <SelectGroup>
+              <SelectItem value="hours">Hours</SelectItem>
+              <SelectItem value="days">Days</SelectItem>
+              <SelectItem value="weeks">Weeks</SelectItem>
+            </SelectGroup>
           </SelectContent>
         </Select>
         <Input />
@@ -397,6 +440,8 @@ function ButtonGroupNested() {
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
+              phosphor="PlusIcon"
+              remixicon="RiAddLine"
             />
           </Button>
         </ButtonGroup>
@@ -410,6 +455,8 @@ function ButtonGroupNested() {
                     lucide="AudioLinesIcon"
                     tabler="IconHeadphones"
                     hugeicons="AudioWave01Icon"
+                    phosphor="MicrophoneIcon"
+                    remixicon="RiMicLine"
                   />
                 </InputGroupAddon>
               </TooltipTrigger>
@@ -431,6 +478,8 @@ function ButtonGroupPagination() {
             lucide="ArrowLeftIcon"
             tabler="IconArrowLeft"
             hugeicons="ArrowLeft01Icon"
+            phosphor="ArrowLeftIcon"
+            remixicon="RiArrowLeftLine"
             data-icon="inline-start"
           />
           Previous
@@ -456,6 +505,8 @@ function ButtonGroupPagination() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight01Icon"
+            phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -491,6 +542,8 @@ function ButtonGroupPaginationSplit() {
               lucide="ArrowLeftIcon"
               tabler="IconArrowLeft"
               hugeicons="ArrowLeft01Icon"
+              phosphor="ArrowLeftIcon"
+              remixicon="RiArrowLeftLine"
             />
           </Button>
           <Button variant="outline" size="icon-xs">
@@ -498,6 +551,8 @@ function ButtonGroupPaginationSplit() {
               lucide="ArrowRightIcon"
               tabler="IconArrowRight"
               hugeicons="ArrowRight01Icon"
+              phosphor="ArrowRightIcon"
+              remixicon="RiArrowRightLine"
             />
           </Button>
         </ButtonGroup>
@@ -516,6 +571,8 @@ function ButtonGroupNavigation() {
               lucide="ArrowLeftIcon"
               tabler="IconArrowLeft"
               hugeicons="ArrowLeft01Icon"
+              phosphor="ArrowLeftIcon"
+              remixicon="RiArrowLeftLine"
             />
           </Button>
           <Button variant="outline">
@@ -523,6 +580,8 @@ function ButtonGroupNavigation() {
               lucide="ArrowRightIcon"
               tabler="IconArrowRight"
               hugeicons="ArrowRight01Icon"
+              phosphor="ArrowRightIcon"
+              remixicon="RiArrowRightLine"
             />
           </Button>
         </ButtonGroup>
@@ -532,6 +591,8 @@ function ButtonGroupNavigation() {
               lucide="ArrowLeftIcon"
               tabler="IconArrowLeft"
               hugeicons="ArrowLeft01Icon"
+              phosphor="ArrowLeftIcon"
+              remixicon="RiArrowLeftLine"
             />
           </Button>
         </ButtonGroup>
@@ -578,6 +639,8 @@ function ButtonGroupVertical() {
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
+              phosphor="PlusIcon"
+              remixicon="RiAddLine"
             />
           </Button>
           <Button variant="outline" size="icon">
@@ -585,6 +648,8 @@ function ButtonGroupVertical() {
               lucide="MinusIcon"
               tabler="IconMinus"
               hugeicons="MinusSignIcon"
+              phosphor="MinusIcon"
+              remixicon="RiSubtractLine"
             />
           </Button>
         </ButtonGroup>
@@ -603,6 +668,8 @@ function ButtonGroupVerticalNested() {
               lucide="SearchIcon"
               tabler="IconSearch"
               hugeicons="Search01Icon"
+              phosphor="MagnifyingGlassIcon"
+              remixicon="RiSearchLine"
             />
           </Button>
           <Button variant="outline" size="icon">
@@ -610,6 +677,8 @@ function ButtonGroupVerticalNested() {
               lucide="CopyIcon"
               tabler="IconCopy"
               hugeicons="Copy01Icon"
+              phosphor="CopyIcon"
+              remixicon="RiFileCopyLine"
             />
           </Button>
           <Button variant="outline" size="icon">
@@ -617,6 +686,8 @@ function ButtonGroupVerticalNested() {
               lucide="ShareIcon"
               tabler="IconShare"
               hugeicons="Share03Icon"
+              phosphor="ShareIcon"
+              remixicon="RiShareLine"
             />
           </Button>
         </ButtonGroup>
@@ -626,6 +697,8 @@ function ButtonGroupVerticalNested() {
               lucide="FlipHorizontalIcon"
               tabler="IconFlipHorizontal"
               hugeicons="FlipHorizontalIcon"
+              phosphor="ArrowsHorizontalIcon"
+              remixicon="RiArrowLeftRightLine"
             />
           </Button>
           <Button variant="outline" size="icon">
@@ -633,6 +706,8 @@ function ButtonGroupVerticalNested() {
               lucide="FlipVerticalIcon"
               tabler="IconFlipVertical"
               hugeicons="FlipVerticalIcon"
+              phosphor="ArrowsVerticalIcon"
+              remixicon="RiArrowUpDownLine"
             />
           </Button>
           <Button variant="outline" size="icon">
@@ -640,6 +715,8 @@ function ButtonGroupVerticalNested() {
               lucide="RotateCwIcon"
               tabler="IconRotateClockwise2"
               hugeicons="Rotate01Icon"
+              phosphor="ArrowClockwiseIcon"
+              remixicon="RiRefreshLine"
             />
           </Button>
         </ButtonGroup>
@@ -649,6 +726,8 @@ function ButtonGroupVerticalNested() {
               lucide="TrashIcon"
               tabler="IconTrash"
               hugeicons="Delete02Icon"
+              phosphor="TrashIcon"
+              remixicon="RiDeleteBinLine"
             />
           </Button>
         </ButtonGroup>

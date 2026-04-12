@@ -37,8 +37,8 @@ export default function ContextMenuExample() {
   return (
     <ExampleWrapper>
       <ContextMenuBasic />
-      <ContextMenuWithSides />
       <ContextMenuWithIcons />
+      <ContextMenuWithSides />
       <ContextMenuWithShortcuts />
       <ContextMenuWithSubmenu />
       <ContextMenuWithGroups />
@@ -46,6 +46,7 @@ export default function ContextMenuExample() {
       <ContextMenuWithRadio />
       <ContextMenuWithDestructive />
       <ContextMenuInDialog />
+      <ContextMenuWithInset />
     </ExampleWrapper>
   )
 }
@@ -83,6 +84,8 @@ function ContextMenuWithIcons() {
                 lucide="CopyIcon"
                 tabler="IconCopy"
                 hugeicons="CopyIcon"
+                phosphor="CopyIcon"
+                remixicon="RiFileCopyLine"
               />
               Copy
             </ContextMenuItem>
@@ -91,6 +94,8 @@ function ContextMenuWithIcons() {
                 lucide="ScissorsIcon"
                 tabler="IconCut"
                 hugeicons="ScissorIcon"
+                phosphor="ScissorsIcon"
+                remixicon="RiScissorsLine"
               />
               Cut
             </ContextMenuItem>
@@ -99,6 +104,8 @@ function ContextMenuWithIcons() {
                 lucide="ClipboardPasteIcon"
                 tabler="IconClipboard"
                 hugeicons="ClipboardIcon"
+                phosphor="ClipboardIcon"
+                remixicon="RiClipboardLine"
               />
               Paste
             </ContextMenuItem>
@@ -110,6 +117,8 @@ function ContextMenuWithIcons() {
                 lucide="TrashIcon"
                 tabler="IconTrash"
                 hugeicons="DeleteIcon"
+                phosphor="TrashIcon"
+                remixicon="RiDeleteBinLine"
               />
               Delete
             </ContextMenuItem>
@@ -338,6 +347,8 @@ function ContextMenuWithDestructive() {
                 lucide="PencilIcon"
                 tabler="IconPencil"
                 hugeicons="EditIcon"
+                phosphor="PencilIcon"
+                remixicon="RiPencilLine"
               />
               Edit
             </ContextMenuItem>
@@ -346,6 +357,8 @@ function ContextMenuWithDestructive() {
                 lucide="ShareIcon"
                 tabler="IconShare"
                 hugeicons="ShareIcon"
+                phosphor="ShareIcon"
+                remixicon="RiShareLine"
               />
               Share
             </ContextMenuItem>
@@ -357,6 +370,8 @@ function ContextMenuWithDestructive() {
                 lucide="ArchiveIcon"
                 tabler="IconArchive"
                 hugeicons="Archive02Icon"
+                phosphor="ArchiveIcon"
+                remixicon="RiArchiveLine"
               />
               Archive
             </ContextMenuItem>
@@ -365,6 +380,8 @@ function ContextMenuWithDestructive() {
                 lucide="TrashIcon"
                 tabler="IconTrash"
                 hugeicons="DeleteIcon"
+                phosphor="TrashIcon"
+                remixicon="RiDeleteBinLine"
               />
               Delete
             </ContextMenuItem>
@@ -377,56 +394,31 @@ function ContextMenuWithDestructive() {
 
 function ContextMenuWithSides() {
   return (
-    <Example title="With Sides">
-      <div className="grid grid-cols-2 gap-6">
-        <ContextMenu>
-          <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-            Right click (top)
-          </ContextMenuTrigger>
-          <ContextMenuContent side="top">
-            <ContextMenuGroup>
-              <ContextMenuItem>Back</ContextMenuItem>
-              <ContextMenuItem>Forward</ContextMenuItem>
-              <ContextMenuItem>Reload</ContextMenuItem>
-            </ContextMenuGroup>
-          </ContextMenuContent>
-        </ContextMenu>
-        <ContextMenu>
-          <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-            Right click (right)
-          </ContextMenuTrigger>
-          <ContextMenuContent side="right">
-            <ContextMenuGroup>
-              <ContextMenuItem>Back</ContextMenuItem>
-              <ContextMenuItem>Forward</ContextMenuItem>
-              <ContextMenuItem>Reload</ContextMenuItem>
-            </ContextMenuGroup>
-          </ContextMenuContent>
-        </ContextMenu>
-        <ContextMenu>
-          <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-            Right click (bottom)
-          </ContextMenuTrigger>
-          <ContextMenuContent side="bottom">
-            <ContextMenuGroup>
-              <ContextMenuItem>Back</ContextMenuItem>
-              <ContextMenuItem>Forward</ContextMenuItem>
-              <ContextMenuItem>Reload</ContextMenuItem>
-            </ContextMenuGroup>
-          </ContextMenuContent>
-        </ContextMenu>
-        <ContextMenu>
-          <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-            Right click (left)
-          </ContextMenuTrigger>
-          <ContextMenuContent side="left">
-            <ContextMenuGroup>
-              <ContextMenuItem>Back</ContextMenuItem>
-              <ContextMenuItem>Forward</ContextMenuItem>
-              <ContextMenuItem>Reload</ContextMenuItem>
-            </ContextMenuGroup>
-          </ContextMenuContent>
-        </ContextMenu>
+    <Example title="With Sides" containerClassName="col-span-2">
+      <div className="flex flex-wrap justify-center gap-2">
+        {(
+          [
+            "inline-start",
+            "left",
+            "top",
+            "bottom",
+            "right",
+            "inline-end",
+          ] as const
+        ).map((side) => (
+          <ContextMenu key={side}>
+            <ContextMenuTrigger className="flex aspect-[2/0.5] items-center justify-center rounded-lg border p-4 text-sm capitalize">
+              {side.replace("-", " ")}
+            </ContextMenuTrigger>
+            <ContextMenuContent side={side}>
+              <ContextMenuGroup>
+                <ContextMenuItem>Back</ContextMenuItem>
+                <ContextMenuItem>Forward</ContextMenuItem>
+                <ContextMenuItem>Reload</ContextMenuItem>
+              </ContextMenuGroup>
+            </ContextMenuContent>
+          </ContextMenu>
+        ))}
       </div>
     </Example>
   )
@@ -457,6 +449,8 @@ function ContextMenuInDialog() {
                     lucide="CopyIcon"
                     tabler="IconCopy"
                     hugeicons="CopyIcon"
+                    phosphor="CopyIcon"
+                    remixicon="RiFileCopyLine"
                   />
                   Copy
                 </ContextMenuItem>
@@ -465,6 +459,8 @@ function ContextMenuInDialog() {
                     lucide="ScissorsIcon"
                     tabler="IconCut"
                     hugeicons="ScissorIcon"
+                    phosphor="ScissorsIcon"
+                    remixicon="RiScissorsLine"
                   />
                   Cut
                 </ContextMenuItem>
@@ -473,6 +469,8 @@ function ContextMenuInDialog() {
                     lucide="ClipboardPasteIcon"
                     tabler="IconClipboard"
                     hugeicons="ClipboardIcon"
+                    phosphor="ClipboardIcon"
+                    remixicon="RiClipboardLine"
                   />
                   Paste
                 </ContextMenuItem>
@@ -499,6 +497,8 @@ function ContextMenuInDialog() {
                     lucide="TrashIcon"
                     tabler="IconTrash"
                     hugeicons="DeleteIcon"
+                    phosphor="TrashIcon"
+                    remixicon="RiDeleteBinLine"
                   />
                   Delete
                 </ContextMenuItem>
@@ -507,6 +507,91 @@ function ContextMenuInDialog() {
           </ContextMenu>
         </DialogContent>
       </Dialog>
+    </Example>
+  )
+}
+
+function ContextMenuWithInset() {
+  const [showBookmarks, setShowBookmarks] = React.useState(true)
+  const [showUrls, setShowUrls] = React.useState(false)
+  const [theme, setTheme] = React.useState("system")
+
+  return (
+    <Example title="With Inset">
+      <ContextMenu>
+        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
+          Right click here
+        </ContextMenuTrigger>
+        <ContextMenuContent className="w-44">
+          <ContextMenuGroup>
+            <ContextMenuLabel>Actions</ContextMenuLabel>
+            <ContextMenuItem>
+              <IconPlaceholder
+                lucide="CopyIcon"
+                tabler="IconCopy"
+                hugeicons="CopyIcon"
+                phosphor="CopyIcon"
+                remixicon="RiFileCopyLine"
+              />
+              Copy
+            </ContextMenuItem>
+            <ContextMenuItem>
+              <IconPlaceholder
+                lucide="ScissorsIcon"
+                tabler="IconCut"
+                hugeicons="ScissorIcon"
+                phosphor="ScissorsIcon"
+                remixicon="RiScissorsLine"
+              />
+              Cut
+            </ContextMenuItem>
+            <ContextMenuItem inset>Paste</ContextMenuItem>
+          </ContextMenuGroup>
+          <ContextMenuSeparator />
+          <ContextMenuGroup>
+            <ContextMenuLabel inset>Appearance</ContextMenuLabel>
+            <ContextMenuCheckboxItem
+              inset
+              checked={showBookmarks}
+              onCheckedChange={setShowBookmarks}
+            >
+              Bookmarks
+            </ContextMenuCheckboxItem>
+            <ContextMenuCheckboxItem
+              inset
+              checked={showUrls}
+              onCheckedChange={setShowUrls}
+            >
+              Full URLs
+            </ContextMenuCheckboxItem>
+          </ContextMenuGroup>
+          <ContextMenuSeparator />
+          <ContextMenuGroup>
+            <ContextMenuLabel inset>Theme</ContextMenuLabel>
+            <ContextMenuRadioGroup value={theme} onValueChange={setTheme}>
+              <ContextMenuRadioItem inset value="light">
+                Light
+              </ContextMenuRadioItem>
+              <ContextMenuRadioItem inset value="dark">
+                Dark
+              </ContextMenuRadioItem>
+              <ContextMenuRadioItem inset value="system">
+                System
+              </ContextMenuRadioItem>
+            </ContextMenuRadioGroup>
+          </ContextMenuGroup>
+          <ContextMenuSeparator />
+          <ContextMenuSub>
+            <ContextMenuSubTrigger inset>More Options</ContextMenuSubTrigger>
+            <ContextMenuSubContent>
+              <ContextMenuGroup>
+                <ContextMenuItem>Save Page...</ContextMenuItem>
+                <ContextMenuItem>Create Shortcut...</ContextMenuItem>
+              </ContextMenuGroup>
+            </ContextMenuSubContent>
+          </ContextMenuSub>
+        </ContextMenuContent>
+      </ContextMenu>
     </Example>
   )
 }

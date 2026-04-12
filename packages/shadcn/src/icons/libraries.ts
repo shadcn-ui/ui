@@ -24,6 +24,22 @@ export const iconLibraries = {
     usage: "<HugeiconsIcon icon={ICON} strokeWidth={2} />",
     export: "@hugeicons/core-free-icons",
   },
+  phosphor: {
+    name: "phosphor",
+    title: "Phosphor Icons",
+    packages: ["@phosphor-icons/react"],
+    import: "import { ICON } from '@phosphor-icons/react'",
+    usage: "<ICON strokeWidth={2} />",
+    export: "@phosphor-icons/react",
+  },
+  remixicon: {
+    name: "remixicon",
+    title: "Remix Icon",
+    packages: ["@remixicon/react"],
+    import: "import { ICON } from '@remixicon/react'",
+    usage: "<ICON />",
+    export: "@remixicon/react",
+  },
 } as const
 
 export type IconLibraries = typeof iconLibraries

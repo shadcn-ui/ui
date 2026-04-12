@@ -1,6 +1,11 @@
 import path from "path"
 import { initOptionsSchema } from "@/src/commands/init"
 import * as ERRORS from "@/src/utils/errors"
+import {
+  formatMonorepoMessage,
+  getMonorepoTargets,
+  isMonorepoRoot,
+} from "@/src/utils/get-monorepo-info"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -54,10 +59,26 @@ export async function preFlightInit(
   const frameworkSpinner = spinner(`Verifying framework.`, {
     silent: options.silent,
   }).start()
-  const projectInfo = await getProjectInfo(options.cwd)
+  const tailwind = options.existingConfig?.tailwind as
+    | Record<string, unknown>
+    | undefined
+  const projectInfo = await getProjectInfo(options.cwd, {
+    configCssFile: typeof tailwind?.css === "string" ? tailwind.css : undefined,
+  })
   if (!projectInfo || projectInfo?.framework.name === "manual") {
     errors[ERRORS.UNSUPPORTED_FRAMEWORK] = true
     frameworkSpinner?.fail()
+
+    // Check if we're in a monorepo root.
+    // Skip when --monorepo is set.
+    if (!options.monorepo && (await isMonorepoRoot(options.cwd))) {
+      const targets = await getMonorepoTargets(options.cwd)
+      if (targets.length > 0) {
+        formatMonorepoMessage("init", targets)
+        process.exit(1)
+      }
+    }
+
     logger.break()
     if (projectInfo?.framework.links.installation) {
       logger.error(
@@ -81,7 +102,7 @@ export async function preFlightInit(
   let tailwindSpinnerMessage = "Validating Tailwind CSS."
 
   if (projectInfo.tailwindVersion === "v4") {
-    tailwindSpinnerMessage = `Validating Tailwind CSS config. Found ${highlighter.info(
+    tailwindSpinnerMessage = `Validating Tailwind CSS. Found ${highlighter.info(
       "v4"
     )}.`
   }

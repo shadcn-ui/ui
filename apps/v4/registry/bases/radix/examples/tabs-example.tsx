@@ -112,6 +112,9 @@ function TabsWithIcons() {
               lucide="AppWindowIcon"
               tabler="IconAppWindow"
               hugeicons="CursorInWindowIcon"
+              phosphor="AppWindowIcon"
+              remixicon="RiWindowLine"
+              data-icon="inline-start"
             />
             Preview
           </TabsTrigger>
@@ -120,6 +123,9 @@ function TabsWithIcons() {
               lucide="CodeIcon"
               tabler="IconCode"
               hugeicons="CodeIcon"
+              phosphor="CodeIcon"
+              remixicon="RiCodeLine"
+              data-icon="inline-start"
             />
             Code
           </TabsTrigger>
@@ -139,6 +145,8 @@ function TabsIconOnly() {
               lucide="HomeIcon"
               tabler="IconHome"
               hugeicons="HomeIcon"
+              phosphor="HouseIcon"
+              remixicon="RiHomeLine"
             />
           </TabsTrigger>
           <TabsTrigger value="search">
@@ -146,6 +154,8 @@ function TabsIconOnly() {
               lucide="SearchIcon"
               tabler="IconSearch"
               hugeicons="SearchIcon"
+              phosphor="MagnifyingGlassIcon"
+              remixicon="RiSearchLine"
             />
           </TabsTrigger>
           <TabsTrigger value="settings">
@@ -153,6 +163,8 @@ function TabsIconOnly() {
               lucide="SettingsIcon"
               tabler="IconSettings"
               hugeicons="SettingsIcon"
+              phosphor="GearIcon"
+              remixicon="RiSettingsLine"
             />
           </TabsTrigger>
         </TabsList>
@@ -185,7 +197,7 @@ function TabsWithContent() {
           <TabsTrigger value="password">Password</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
         </TabsList>
-        <div className="style-nova:p-4 style-vega:p-6 style-maia:p-6 style-mira:p-4 style-lyra:p-4 style-nova:rounded-lg style-vega:rounded-lg style-maia:rounded-xl style-mira:rounded-md style-lyra:rounded-none border">
+        <div className="border style-vega:rounded-lg style-vega:p-6 style-nova:rounded-lg style-nova:p-4 style-lyra:rounded-none style-lyra:p-4 style-maia:rounded-xl style-maia:p-6 style-mira:rounded-md style-mira:p-4 style-luma:rounded-xl style-luma:p-6">
           <TabsContent value="account">
             Manage your account preferences and profile information.
           </TabsContent>
@@ -210,7 +222,7 @@ function TabsLineWithContent() {
           <TabsTrigger value="password">Password</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
         </TabsList>
-        <div className="style-nova:p-4 style-vega:p-6 style-maia:p-6 style-mira:p-4 style-lyra:p-4 style-nova:rounded-lg style-vega:rounded-lg style-maia:rounded-xl style-mira:rounded-md style-lyra:rounded-none border">
+        <div className="border style-vega:rounded-lg style-vega:p-6 style-nova:rounded-lg style-nova:p-4 style-lyra:rounded-none style-lyra:p-4 style-maia:rounded-xl style-maia:p-6 style-mira:rounded-md style-mira:p-4 style-luma:rounded-xl style-luma:p-6">
           <TabsContent value="account">
             Manage your account preferences and profile information.
           </TabsContent>
@@ -259,6 +271,8 @@ function TabsWithDropdown() {
                   lucide="MoreHorizontalIcon"
                   tabler="IconDots"
                   hugeicons="MoreHorizontalCircle01Icon"
+                  phosphor="DotsThreeIcon"
+                  remixicon="RiMoreLine"
                 />
                 <span className="sr-only">More options</span>
               </Button>
@@ -272,7 +286,7 @@ function TabsWithDropdown() {
           </DropdownMenu>
         </div>
 
-        <div className="style-nova:p-4 style-vega:p-6 style-maia:p-6 style-mira:p-4 style-lyra:p-4 style-nova:rounded-lg style-vega:rounded-lg style-maia:rounded-xl style-mira:rounded-md style-lyra:rounded-none border">
+        <div className="border style-vega:rounded-lg style-vega:p-6 style-nova:rounded-lg style-nova:p-4 style-lyra:rounded-none style-lyra:p-4 style-maia:rounded-xl style-maia:p-6 style-mira:rounded-md style-mira:p-4 style-luma:rounded-xl style-luma:p-6">
           <TabsContent value="overview">
             View your dashboard metrics and key performance indicators.
           </TabsContent>
@@ -297,7 +311,7 @@ function TabsVertical() {
           <TabsTrigger value="password">Password</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
         </TabsList>
-        <div className="style-nova:p-4 style-vega:p-6 style-maia:p-6 style-mira:p-4 style-lyra:p-4 style-nova:rounded-lg style-vega:rounded-lg style-maia:rounded-xl style-mira:rounded-md style-lyra:rounded-none border">
+        <div className="border style-vega:rounded-lg style-vega:p-6 style-nova:rounded-lg style-nova:p-4 style-lyra:rounded-none style-lyra:p-4 style-maia:rounded-xl style-maia:p-6 style-mira:rounded-md style-mira:p-4 style-luma:rounded-xl style-luma:p-6">
           <TabsContent value="account">
             Manage your account preferences and profile information.
           </TabsContent>
@@ -330,7 +344,7 @@ function TabsWithInputAndButton() {
             <Button>Action</Button>
           </div>
         </div>
-        <div className="style-nova:p-4 style-vega:p-6 style-maia:p-6 style-mira:p-4 style-lyra:p-4 style-nova:rounded-lg style-vega:rounded-lg style-maia:rounded-xl style-mira:rounded-md style-lyra:rounded-none border">
+        <div className="border style-vega:rounded-lg style-vega:p-6 style-nova:rounded-lg style-nova:p-4 style-lyra:rounded-none style-lyra:p-4 style-maia:rounded-xl style-maia:p-6 style-mira:rounded-md style-mira:p-4 style-luma:rounded-xl style-luma:p-6">
           <TabsContent value="overview">
             View your dashboard metrics and key performance indicators.
           </TabsContent>

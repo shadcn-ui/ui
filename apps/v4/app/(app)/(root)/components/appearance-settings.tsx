@@ -3,8 +3,8 @@
 import * as React from "react"
 import { IconMinus, IconPlus } from "@tabler/icons-react"
 
-import { Button } from "@/registry/new-york-v4/ui/button"
-import { ButtonGroup } from "@/registry/new-york-v4/ui/button-group"
+import { Button } from "@/styles/radix-nova/ui/button"
+import { ButtonGroup } from "@/styles/radix-nova/ui/button-group"
 import {
   Field,
   FieldContent,
@@ -15,13 +15,10 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/registry/new-york-v4/ui/field"
-import { Input } from "@/registry/new-york-v4/ui/input"
-import {
-  RadioGroup,
-  RadioGroupItem,
-} from "@/registry/new-york-v4/ui/radio-group"
-import { Switch } from "@/registry/new-york-v4/ui/switch"
+} from "@/styles/radix-nova/ui/field"
+import { Input } from "@/styles/radix-nova/ui/input"
+import { RadioGroup, RadioGroupItem } from "@/styles/radix-nova/ui/radio-group"
+import { Switch } from "@/styles/radix-nova/ui/switch"
 
 export function AppearanceSettings() {
   const [gpuCount, setGpuCount] = React.useState(8)
@@ -97,7 +94,7 @@ export function AppearanceSettings() {
               value={gpuCount}
               onChange={handleGpuInputChange}
               size={3}
-              className="h-8 !w-14 font-mono"
+              className="h-7 w-14! font-mono"
               maxLength={3}
             />
             <Button

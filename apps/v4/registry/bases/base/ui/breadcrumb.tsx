@@ -21,7 +21,7 @@ function BreadcrumbList({ className, ...props }: React.ComponentProps<"ol">) {
     <ol
       data-slot="breadcrumb-list"
       className={cn(
-        "cn-breadcrumb-list flex flex-wrap items-center break-words",
+        "cn-breadcrumb-list flex flex-wrap items-center wrap-break-word",
         className
       )}
       {...props}
@@ -90,6 +90,9 @@ function BreadcrumbSeparator({
           lucide="ChevronRightIcon"
           tabler="IconChevronRight"
           hugeicons="ArrowRight01Icon"
+          phosphor="CaretRightIcon"
+          remixicon="RiArrowRightSLine"
+          className="cn-rtl-flip"
         />
       )}
     </li>
@@ -115,6 +118,8 @@ function BreadcrumbEllipsis({
         lucide="MoreHorizontalIcon"
         tabler="IconDots"
         hugeicons="MoreHorizontalCircle01Icon"
+        phosphor="DotsThreeIcon"
+        remixicon="RiMoreLine"
       />
       <span className="sr-only">More</span>
     </span>

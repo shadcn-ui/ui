@@ -60,7 +60,7 @@ export default function SidebarFloatingExample() {
         ],
       },
       {
-        title: "Building Your Application",
+        title: "Build Your Application",
         url: "#",
         items: [
           {
@@ -205,6 +205,8 @@ export default function SidebarFloatingExample() {
                           lucide="MoreHorizontalIcon"
                           tabler="IconDots"
                           hugeicons="MoreHorizontalCircle01Icon"
+                          phosphor="DotsThreeOutlineIcon"
+                          remixicon="RiMoreLine"
                           className="ml-auto"
                         />
                       </SidebarMenuButton>
@@ -242,7 +244,7 @@ export default function SidebarFloatingExample() {
                   <Field>
                     <SidebarInput type="email" placeholder="Email" />
                     <Button
-                      className="bg-sidebar-primary text-sidebar-primary-foreground w-full"
+                      className="w-full bg-sidebar-primary text-sidebar-primary-foreground"
                       size="sm"
                     >
                       Subscribe
@@ -261,11 +263,11 @@ export default function SidebarFloatingExample() {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
+            <div className="aspect-video rounded-xl bg-muted/50" />
+            <div className="aspect-video rounded-xl bg-muted/50" />
+            <div className="aspect-video rounded-xl bg-muted/50" />
           </div>
-          <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+          <div className="min-h-screen flex-1 rounded-xl bg-muted/50 md:min-h-min" />
         </div>
       </SidebarInset>
     </SidebarProvider>

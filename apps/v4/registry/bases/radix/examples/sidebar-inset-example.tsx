@@ -38,6 +38,8 @@ export default function SidebarInsetExample() {
             lucide="HomeIcon"
             tabler="IconHome"
             hugeicons="Home01Icon"
+            phosphor="HouseIcon"
+            remixicon="RiHomeLine"
           />
         ),
         isActive: true,
@@ -60,6 +62,8 @@ export default function SidebarInsetExample() {
             lucide="ChartLineIcon"
             tabler="IconChartLine"
             hugeicons="ChartIcon"
+            phosphor="ChartLineIcon"
+            remixicon="RiLineChartLine"
           />
         ),
         items: [
@@ -81,6 +85,8 @@ export default function SidebarInsetExample() {
             lucide="ShoppingBagIcon"
             tabler="IconShoppingBag"
             hugeicons="ShoppingBag01Icon"
+            phosphor="BagIcon"
+            remixicon="RiShoppingBagLine"
           />
         ),
         items: [
@@ -106,6 +112,8 @@ export default function SidebarInsetExample() {
             lucide="ShoppingCartIcon"
             tabler="IconShoppingCart"
             hugeicons="ShoppingCart01Icon"
+            phosphor="ShoppingCartIcon"
+            remixicon="RiShoppingCartLine"
           />
         ),
         items: [
@@ -127,6 +135,8 @@ export default function SidebarInsetExample() {
             lucide="FileIcon"
             tabler="IconFile"
             hugeicons="File01Icon"
+            phosphor="FileIcon"
+            remixicon="RiFileLine"
           />
         ),
       },
@@ -138,6 +148,8 @@ export default function SidebarInsetExample() {
             lucide="UserIcon"
             tabler="IconUser"
             hugeicons="UserIcon"
+            phosphor="UserIcon"
+            remixicon="RiUserLine"
           />
         ),
       },
@@ -149,6 +161,8 @@ export default function SidebarInsetExample() {
             lucide="Settings2Icon"
             tabler="IconSettings"
             hugeicons="Settings05Icon"
+            phosphor="GearIcon"
+            remixicon="RiSettingsLine"
           />
         ),
       },
@@ -162,6 +176,8 @@ export default function SidebarInsetExample() {
             lucide="LifeBuoy"
             tabler="IconLifebuoy"
             hugeicons="ChartRingIcon"
+            phosphor="LifebuoyIcon"
+            remixicon="RiLifebuoyLine"
           />
         ),
       },
@@ -173,6 +189,8 @@ export default function SidebarInsetExample() {
             lucide="Send"
             tabler="IconSend"
             hugeicons="SentIcon"
+            phosphor="PaperPlaneTiltIcon"
+            remixicon="RiSendPlaneLine"
           />
         ),
       },
@@ -211,6 +229,8 @@ export default function SidebarInsetExample() {
                               lucide="ChevronRightIcon"
                               tabler="IconChevronRight"
                               hugeicons="ArrowRight01Icon"
+                              phosphor="CaretRightIcon"
+                              remixicon="RiArrowRightSLine"
                             />
                             <span className="sr-only">Toggle</span>
                           </SidebarMenuAction>
@@ -260,11 +280,11 @@ export default function SidebarInsetExample() {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
+            <div className="aspect-video rounded-xl bg-muted/50" />
+            <div className="aspect-video rounded-xl bg-muted/50" />
+            <div className="aspect-video rounded-xl bg-muted/50" />
           </div>
-          <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
         </div>
       </SidebarInset>
     </SidebarProvider>

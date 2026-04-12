@@ -4,7 +4,7 @@ export const STYLES = [
   {
     name: "vega",
     title: "Vega",
-    description: "The classic shadcn/ui look. Clean, neutral, and familiar.",
+    description: "Clean, neutral, and familiar",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +26,7 @@ export const STYLES = [
   {
     name: "nova",
     title: "Nova",
-    description: "Reduced padding and margins for compact layouts.",
+    description: "Reduced padding and margins",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@ export const STYLES = [
   {
     name: "maia",
     title: "Maia",
-    description: "Soft and rounded, with generous spacing.",
+    description: "Rounded, with generous spacing.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +74,7 @@ export const STYLES = [
   {
     name: "lyra",
     title: "Lyra",
-    description: "Boxy and sharp. Pairs well with mono fonts.",
+    description: "Boxy and sharp. For mono fonts.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +96,7 @@ export const STYLES = [
   {
     name: "mira",
     title: "Mira",
-    description: "Compact. Made for dense interfaces.",
+    description: "Made for compact interfaces.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -109,6 +109,29 @@ export const STYLES = [
       >
         <path
           d="M5.92089 5.92089C8.15836 3.68342 9.2771 2.56468 10.5857 2.19562C11.5105 1.93479 12.4895 1.93479 13.4143 2.19562C14.7229 2.56468 15.8416 3.68342 18.0791 5.92089C20.3166 8.15836 21.4353 9.2771 21.8044 10.5857C22.0652 11.5105 22.0652 12.4895 21.8044 13.4143C21.4353 14.7229 20.3166 15.8416 18.0791 18.0791C15.8416 20.3166 14.7229 21.4353 13.4143 21.8044C12.4895 22.0652 11.5105 22.0652 10.5857 21.8044C9.2771 21.4353 8.15836 20.3166 5.92089 18.0791C3.68342 15.8416 2.56468 14.7229 2.19562 13.4143C1.93479 12.4895 1.93479 11.5105 2.19562 10.5857C2.56468 9.2771 3.68342 8.15836 5.92089 5.92089Z"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinejoin="round"
+        ></path>
+      </svg>
+    ),
+  },
+  {
+    name: "luma",
+    title: "Luma",
+    description: "Fluid, luminous, and glassy.",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="128"
+        height="128"
+        viewBox="0 0 24 24"
+        fill="none"
+        role="img"
+        color="currentColor"
+      >
+        <path
+          d="M2 12C2 8.134 5.134 5 9 5H15C18.866 5 22 8.134 22 12C22 15.866 18.866 19 15 19H9C5.134 19 2 15.866 2 12Z"
           stroke="currentColor"
           strokeWidth="2"
           strokeLinejoin="round"

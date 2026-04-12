@@ -2,7 +2,7 @@ import { cn } from "@/registry/bases/base/lib/utils"
 
 function ExampleWrapper({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div className="bg-background w-full">
+    <div className="w-full bg-muted dark:bg-background">
       <div
         data-slot="example-wrapper"
         className={cn(
@@ -23,7 +23,7 @@ function Example({
   containerClassName,
   ...props
 }: React.ComponentProps<"div"> & {
-  title: string
+  title?: string
   containerClassName?: string
 }) {
   return (
@@ -35,13 +35,15 @@ function Example({
       )}
       {...props}
     >
-      <div className="text-muted-foreground px-1.5 py-2 text-xs font-medium">
-        {title}
-      </div>
+      {title && (
+        <div className="px-1.5 py-2 text-xs font-medium text-muted-foreground">
+          {title}
+        </div>
+      )}
       <div
         data-slot="example-content"
         className={cn(
-          "bg-background text-foreground flex min-w-0 flex-1 flex-col items-start gap-6 border border-dashed p-4 sm:p-6 *:[div:not([class*='w-'])]:w-full",
+          "flex min-w-0 flex-1 flex-col items-start gap-6 rounded-xl bg-card p-12 text-foreground *:[div:not([class*='w-'])]:w-full",
           className
         )}
       >

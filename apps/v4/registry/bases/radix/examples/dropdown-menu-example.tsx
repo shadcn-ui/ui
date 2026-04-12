@@ -54,6 +54,7 @@ export default function DropdownMenuExample() {
       <DropdownMenuWithDestructive />
       <DropdownMenuWithAvatar />
       <DropdownMenuInDialog />
+      <DropdownMenuWithInset />
     </ExampleWrapper>
   )
 }
@@ -77,8 +78,8 @@ function DropdownMenuBasic() {
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem>GitHub</DropdownMenuItem>
-            <DropdownMenuItem>Support</DropdownMenuItem>
             <DropdownMenuItem disabled>API</DropdownMenuItem>
+            <DropdownMenuItem>Support</DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -102,6 +103,8 @@ function DropdownMenuWithIcons() {
                 lucide="UserIcon"
                 tabler="IconUser"
                 hugeicons="UserIcon"
+                phosphor="UserIcon"
+                remixicon="RiUserLine"
               />
               Profile
             </DropdownMenuItem>
@@ -110,6 +113,8 @@ function DropdownMenuWithIcons() {
                 lucide="CreditCardIcon"
                 tabler="IconCreditCard"
                 hugeicons="CreditCardIcon"
+                phosphor="CreditCardIcon"
+                remixicon="RiBankCardLine"
               />
               Billing
             </DropdownMenuItem>
@@ -118,6 +123,8 @@ function DropdownMenuWithIcons() {
                 lucide="SettingsIcon"
                 tabler="IconSettings"
                 hugeicons="SettingsIcon"
+                phosphor="GearIcon"
+                remixicon="RiSettingsLine"
               />
               Settings
             </DropdownMenuItem>
@@ -129,6 +136,8 @@ function DropdownMenuWithIcons() {
                 lucide="LogOutIcon"
                 tabler="IconLogout"
                 hugeicons="LogoutIcon"
+                phosphor="SignOutIcon"
+                remixicon="RiLogoutBoxLine"
               />
               Log out
             </DropdownMenuItem>
@@ -243,6 +252,8 @@ function DropdownMenuWithCheckboxes() {
                 lucide="LayoutIcon"
                 tabler="IconLayout"
                 hugeicons="LayoutIcon"
+                phosphor="LayoutIcon"
+                remixicon="RiLayoutLine"
               />
               Status Bar
             </DropdownMenuCheckboxItem>
@@ -255,6 +266,8 @@ function DropdownMenuWithCheckboxes() {
                 lucide="ActivityIcon"
                 tabler="IconActivity"
                 hugeicons="ActivityIcon"
+                phosphor="ActivityIcon"
+                remixicon="RiPulseLine"
               />
               Activity Bar
             </DropdownMenuCheckboxItem>
@@ -266,6 +279,8 @@ function DropdownMenuWithCheckboxes() {
                 lucide="PanelLeftIcon"
                 tabler="IconLayoutSidebar"
                 hugeicons="LayoutLeftIcon"
+                phosphor="SidebarIcon"
+                remixicon="RiSideBarLine"
               />
               Panel
             </DropdownMenuCheckboxItem>
@@ -299,6 +314,8 @@ function DropdownMenuWithRadio() {
                   lucide="ArrowUpIcon"
                   tabler="IconArrowUp"
                   hugeicons="ArrowUp01Icon"
+                  phosphor="ArrowUpIcon"
+                  remixicon="RiArrowUpLine"
                 />
                 Top
               </DropdownMenuRadioItem>
@@ -307,6 +324,8 @@ function DropdownMenuWithRadio() {
                   lucide="ArrowDownIcon"
                   tabler="IconArrowDown"
                   hugeicons="ArrowDown01Icon"
+                  phosphor="ArrowDownIcon"
+                  remixicon="RiArrowDownLine"
                 />
                 Bottom
               </DropdownMenuRadioItem>
@@ -315,6 +334,8 @@ function DropdownMenuWithRadio() {
                   lucide="ArrowRightIcon"
                   tabler="IconArrowRight"
                   hugeicons="ArrowRight01Icon"
+                  phosphor="ArrowRightIcon"
+                  remixicon="RiArrowRightLine"
                 />
                 Right
               </DropdownMenuRadioItem>
@@ -354,6 +375,8 @@ function DropdownMenuWithCheckboxesIcons() {
                 lucide="MailIcon"
                 tabler="IconMail"
                 hugeicons="MailIcon"
+                phosphor="EnvelopeIcon"
+                remixicon="RiMailLine"
               />
               Email notifications
             </DropdownMenuCheckboxItem>
@@ -367,6 +390,8 @@ function DropdownMenuWithCheckboxesIcons() {
                 lucide="MessageSquareIcon"
                 tabler="IconMessage"
                 hugeicons="MessageIcon"
+                phosphor="ChatCircleIcon"
+                remixicon="RiChat1Line"
               />
               SMS notifications
             </DropdownMenuCheckboxItem>
@@ -380,6 +405,8 @@ function DropdownMenuWithCheckboxesIcons() {
                 lucide="BellIcon"
                 tabler="IconBell"
                 hugeicons="NotificationIcon"
+                phosphor="BellIcon"
+                remixicon="RiNotificationLine"
               />
               Push notifications
             </DropdownMenuCheckboxItem>
@@ -411,6 +438,8 @@ function DropdownMenuWithRadioIcons() {
                   lucide="CreditCardIcon"
                   tabler="IconCreditCard"
                   hugeicons="CreditCardIcon"
+                  phosphor="CreditCardIcon"
+                  remixicon="RiBankCardLine"
                 />
                 Credit Card
               </DropdownMenuRadioItem>
@@ -419,6 +448,8 @@ function DropdownMenuWithRadioIcons() {
                   lucide="WalletIcon"
                   tabler="IconWallet"
                   hugeicons="WalletIcon"
+                  phosphor="WalletIcon"
+                  remixicon="RiWalletLine"
                 />
                 PayPal
               </DropdownMenuRadioItem>
@@ -427,6 +458,8 @@ function DropdownMenuWithRadioIcons() {
                   lucide="Building2Icon"
                   tabler="IconBuildingBank"
                   hugeicons="BankIcon"
+                  phosphor="BankIcon"
+                  remixicon="RiBankLine"
                 />
                 Bank Transfer
               </DropdownMenuRadioItem>
@@ -454,6 +487,8 @@ function DropdownMenuWithDestructive() {
                 lucide="PencilIcon"
                 tabler="IconPencil"
                 hugeicons="EditIcon"
+                phosphor="PencilIcon"
+                remixicon="RiPencilLine"
               />
               Edit
             </DropdownMenuItem>
@@ -462,6 +497,8 @@ function DropdownMenuWithDestructive() {
                 lucide="ShareIcon"
                 tabler="IconShare"
                 hugeicons="ShareIcon"
+                phosphor="ShareIcon"
+                remixicon="RiShareLine"
               />
               Share
             </DropdownMenuItem>
@@ -473,6 +510,8 @@ function DropdownMenuWithDestructive() {
                 lucide="ArchiveIcon"
                 tabler="IconArchive"
                 hugeicons="Archive02Icon"
+                phosphor="ArchiveIcon"
+                remixicon="RiArchiveLine"
               />
               Archive
             </DropdownMenuItem>
@@ -481,6 +520,8 @@ function DropdownMenuWithDestructive() {
                 lucide="TrashIcon"
                 tabler="IconTrash"
                 hugeicons="DeleteIcon"
+                phosphor="TrashIcon"
+                remixicon="RiDeleteBinLine"
               />
               Delete
             </DropdownMenuItem>
@@ -500,6 +541,8 @@ function DropdownMenuWithAvatar() {
             lucide="BadgeCheckIcon"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadgeIcon"
+            phosphor="CheckCircleIcon"
+            remixicon="RiCheckboxCircleLine"
           />
           Account
         </DropdownMenuItem>
@@ -508,6 +551,8 @@ function DropdownMenuWithAvatar() {
             lucide="CreditCardIcon"
             tabler="IconCreditCard"
             hugeicons="CreditCardIcon"
+            phosphor="CreditCardIcon"
+            remixicon="RiBankCardLine"
           />
           Billing
         </DropdownMenuItem>
@@ -516,6 +561,8 @@ function DropdownMenuWithAvatar() {
             lucide="BellIcon"
             tabler="IconBell"
             hugeicons="NotificationIcon"
+            phosphor="BellIcon"
+            remixicon="RiNotificationLine"
           />
           Notifications
         </DropdownMenuItem>
@@ -527,6 +574,8 @@ function DropdownMenuWithAvatar() {
             lucide="LogOutIcon"
             tabler="IconLogout"
             hugeicons="LogoutIcon"
+            phosphor="SignOutIcon"
+            remixicon="RiLogoutBoxLine"
           />
           Sign Out
         </DropdownMenuItem>
@@ -549,7 +598,7 @@ function DropdownMenuWithAvatar() {
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">shadcn</span>
-                <span className="text-muted-foreground truncate text-xs">
+                <span className="truncate text-xs text-muted-foreground">
                   shadcn@example.com
                 </span>
               </div>
@@ -557,7 +606,9 @@ function DropdownMenuWithAvatar() {
                 lucide="ChevronsUpDownIcon"
                 tabler="IconSelector"
                 hugeicons="UnfoldMoreIcon"
-                className="text-muted-foreground ml-auto"
+                phosphor="CaretUpDownIcon"
+                remixicon="RiArrowUpDownLine"
+                className="ml-auto text-muted-foreground"
               />
             </Button>
           </DropdownMenuTrigger>
@@ -610,6 +661,8 @@ function DropdownMenuInDialog() {
                     lucide="CopyIcon"
                     tabler="IconCopy"
                     hugeicons="CopyIcon"
+                    phosphor="CopyIcon"
+                    remixicon="RiFileCopyLine"
                   />
                   Copy
                 </DropdownMenuItem>
@@ -618,6 +671,8 @@ function DropdownMenuInDialog() {
                     lucide="ScissorsIcon"
                     tabler="IconCut"
                     hugeicons="ScissorIcon"
+                    phosphor="ScissorsIcon"
+                    remixicon="RiScissorsLine"
                   />
                   Cut
                 </DropdownMenuItem>
@@ -626,6 +681,8 @@ function DropdownMenuInDialog() {
                     lucide="ClipboardPasteIcon"
                     tabler="IconClipboard"
                     hugeicons="ClipboardIcon"
+                    phosphor="ClipboardIcon"
+                    remixicon="RiClipboardLine"
                   />
                   Paste
                 </DropdownMenuItem>
@@ -654,6 +711,8 @@ function DropdownMenuInDialog() {
                     lucide="TrashIcon"
                     tabler="IconTrash"
                     hugeicons="DeleteIcon"
+                    phosphor="TrashIcon"
+                    remixicon="RiDeleteBinLine"
                   />
                   Delete
                 </DropdownMenuItem>
@@ -666,13 +725,98 @@ function DropdownMenuInDialog() {
   )
 }
 
+function DropdownMenuWithInset() {
+  const [showBookmarks, setShowBookmarks] = React.useState(true)
+  const [showUrls, setShowUrls] = React.useState(false)
+  const [theme, setTheme] = React.useState("system")
+
+  return (
+    <Example title="With Inset">
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" className="w-fit">
+            Open
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-44">
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuItem>
+              <IconPlaceholder
+                lucide="CopyIcon"
+                tabler="IconCopy"
+                hugeicons="CopyIcon"
+                phosphor="CopyIcon"
+                remixicon="RiFileCopyLine"
+              />
+              Copy
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <IconPlaceholder
+                lucide="ScissorsIcon"
+                tabler="IconCut"
+                hugeicons="ScissorIcon"
+                phosphor="ScissorsIcon"
+                remixicon="RiScissorsLine"
+              />
+              Cut
+            </DropdownMenuItem>
+            <DropdownMenuItem inset>Paste</DropdownMenuItem>
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <DropdownMenuLabel inset>Appearance</DropdownMenuLabel>
+            <DropdownMenuCheckboxItem
+              inset
+              checked={showBookmarks}
+              onCheckedChange={setShowBookmarks}
+            >
+              Bookmarks
+            </DropdownMenuCheckboxItem>
+            <DropdownMenuCheckboxItem
+              inset
+              checked={showUrls}
+              onCheckedChange={setShowUrls}
+            >
+              Full URLs
+            </DropdownMenuCheckboxItem>
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <DropdownMenuLabel inset>Theme</DropdownMenuLabel>
+            <DropdownMenuRadioGroup value={theme} onValueChange={setTheme}>
+              <DropdownMenuRadioItem inset value="light">
+                Light
+              </DropdownMenuRadioItem>
+              <DropdownMenuRadioItem inset value="dark">
+                Dark
+              </DropdownMenuRadioItem>
+              <DropdownMenuRadioItem inset value="system">
+                System
+              </DropdownMenuRadioItem>
+            </DropdownMenuRadioGroup>
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator />
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger inset>More Options</DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>Save Page...</DropdownMenuItem>
+                  <DropdownMenuItem>Create Shortcut...</DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </Example>
+  )
+}
+
 function DropdownMenuComplex() {
-  const [notifications, setNotifications] = React.useState({
-    email: true,
-    sms: false,
-    push: true,
-  })
-  const [theme, setTheme] = React.useState("light")
+  const [showSidebar, setShowSidebar] = React.useState(true)
+  const [showStatusBar, setShowStatusBar] = React.useState(false)
 
   return (
     <Example title="Complex">
@@ -682,205 +826,16 @@ function DropdownMenuComplex() {
             Complex Menu
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="style-maia:w-56 style-mira:w-48 style-nova:w-48 style-vega:w-56 style-lyra:w-48">
+        <DropdownMenuContent className="w-56">
           <DropdownMenuGroup>
-            <DropdownMenuLabel>File</DropdownMenuLabel>
-            <DropdownMenuItem>
-              <IconPlaceholder
-                lucide="FileIcon"
-                tabler="IconFile"
-                hugeicons="FileIcon"
-              />
-              New File
-              <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <IconPlaceholder
-                lucide="FolderIcon"
-                tabler="IconFolder"
-                hugeicons="FolderIcon"
-              />
-              New Folder
-              <DropdownMenuShortcut>⇧⌘N</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuSub>
-              <DropdownMenuSubTrigger>
-                <IconPlaceholder
-                  lucide="FolderOpenIcon"
-                  tabler="IconFolderOpen"
-                  hugeicons="FolderOpenIcon"
-                />
-                Open Recent
-              </DropdownMenuSubTrigger>
-              <DropdownMenuPortal>
-                <DropdownMenuSubContent>
-                  <DropdownMenuGroup>
-                    <DropdownMenuLabel>Recent Projects</DropdownMenuLabel>
-                    <DropdownMenuItem>
-                      <IconPlaceholder
-                        lucide="FileCodeIcon"
-                        tabler="IconFileCode"
-                        hugeicons="CodeIcon"
-                      />
-                      Project Alpha
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <IconPlaceholder
-                        lucide="FileCodeIcon"
-                        tabler="IconFileCode"
-                        hugeicons="CodeIcon"
-                      />
-                      Project Beta
-                    </DropdownMenuItem>
-                    <DropdownMenuSub>
-                      <DropdownMenuSubTrigger>
-                        <IconPlaceholder
-                          lucide="MoreHorizontalIcon"
-                          tabler="IconDots"
-                          hugeicons="MoreHorizontalCircle01Icon"
-                        />
-                        More Projects
-                      </DropdownMenuSubTrigger>
-                      <DropdownMenuPortal>
-                        <DropdownMenuSubContent>
-                          <DropdownMenuItem>
-                            <IconPlaceholder
-                              lucide="FileCodeIcon"
-                              tabler="IconFileCode"
-                              hugeicons="CodeIcon"
-                            />
-                            Project Gamma
-                          </DropdownMenuItem>
-                          <DropdownMenuItem>
-                            <IconPlaceholder
-                              lucide="FileCodeIcon"
-                              tabler="IconFileCode"
-                              hugeicons="CodeIcon"
-                            />
-                            Project Delta
-                          </DropdownMenuItem>
-                        </DropdownMenuSubContent>
-                      </DropdownMenuPortal>
-                    </DropdownMenuSub>
-                  </DropdownMenuGroup>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                      <IconPlaceholder
-                        lucide="FolderSearchIcon"
-                        tabler="IconFolderSearch"
-                        hugeicons="SearchIcon"
-                      />
-                      Browse...
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                </DropdownMenuSubContent>
-              </DropdownMenuPortal>
-            </DropdownMenuSub>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <IconPlaceholder
-                lucide="SaveIcon"
-                tabler="IconDeviceFloppy"
-                hugeicons="FloppyDiskIcon"
-              />
-              Save
-              <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <IconPlaceholder
-                lucide="DownloadIcon"
-                tabler="IconDownload"
-                hugeicons="DownloadIcon"
-              />
-              Export
-              <DropdownMenuShortcut>⇧⌘E</DropdownMenuShortcut>
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuLabel>View</DropdownMenuLabel>
-            <DropdownMenuCheckboxItem
-              checked={notifications.email}
-              onCheckedChange={(checked) =>
-                setNotifications({ ...notifications, email: checked === true })
-              }
-            >
-              <IconPlaceholder
-                lucide="EyeIcon"
-                tabler="IconEye"
-                hugeicons="EyeIcon"
-              />
-              Show Sidebar
-            </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem
-              checked={notifications.sms}
-              onCheckedChange={(checked) =>
-                setNotifications({ ...notifications, sms: checked === true })
-              }
-            >
-              <IconPlaceholder
-                lucide="LayoutIcon"
-                tabler="IconLayout"
-                hugeicons="LayoutIcon"
-              />
-              Show Status Bar
-            </DropdownMenuCheckboxItem>
-            <DropdownMenuSub>
-              <DropdownMenuSubTrigger>
-                <IconPlaceholder
-                  lucide="PaletteIcon"
-                  tabler="IconPalette"
-                  hugeicons="PaintBoardIcon"
-                />
-                Theme
-              </DropdownMenuSubTrigger>
-              <DropdownMenuPortal>
-                <DropdownMenuSubContent>
-                  <DropdownMenuGroup>
-                    <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-                    <DropdownMenuRadioGroup
-                      value={theme}
-                      onValueChange={setTheme}
-                    >
-                      <DropdownMenuRadioItem value="light">
-                        <IconPlaceholder
-                          lucide="SunIcon"
-                          tabler="IconSun"
-                          hugeicons="SunIcon"
-                        />
-                        Light
-                      </DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem value="dark">
-                        <IconPlaceholder
-                          lucide="MoonIcon"
-                          tabler="IconMoon"
-                          hugeicons="MoonIcon"
-                        />
-                        Dark
-                      </DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem value="system">
-                        <IconPlaceholder
-                          lucide="MonitorIcon"
-                          tabler="IconDeviceDesktop"
-                          hugeicons="ComputerIcon"
-                        />
-                        System
-                      </DropdownMenuRadioItem>
-                    </DropdownMenuRadioGroup>
-                  </DropdownMenuGroup>
-                </DropdownMenuSubContent>
-              </DropdownMenuPortal>
-            </DropdownMenuSub>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuLabel>Account</DropdownMenuLabel>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuItem>
               <IconPlaceholder
                 lucide="UserIcon"
                 tabler="IconUser"
                 hugeicons="UserIcon"
+                phosphor="UserIcon"
+                remixicon="RiUserLine"
               />
               Profile
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
@@ -890,99 +845,102 @@ function DropdownMenuComplex() {
                 lucide="CreditCardIcon"
                 tabler="IconCreditCard"
                 hugeicons="CreditCardIcon"
+                phosphor="CreditCardIcon"
+                remixicon="RiBankCardLine"
               />
               Billing
+              <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
             </DropdownMenuItem>
+            <DropdownMenuItem>
+              <IconPlaceholder
+                lucide="SettingsIcon"
+                tabler="IconSettings"
+                hugeicons="SettingsIcon"
+                phosphor="GearIcon"
+                remixicon="RiSettingsLine"
+              />
+              Settings
+              <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>View</DropdownMenuLabel>
+            <DropdownMenuCheckboxItem
+              checked={showSidebar}
+              onCheckedChange={setShowSidebar}
+            >
+              <IconPlaceholder
+                lucide="PanelLeftIcon"
+                tabler="IconLayoutSidebar"
+                hugeicons="LayoutLeftIcon"
+                phosphor="SidebarIcon"
+                remixicon="RiSideBarLine"
+              />
+              Sidebar
+            </DropdownMenuCheckboxItem>
+            <DropdownMenuCheckboxItem
+              checked={showStatusBar}
+              onCheckedChange={setShowStatusBar}
+            >
+              <IconPlaceholder
+                lucide="LayoutIcon"
+                tabler="IconLayout"
+                hugeicons="LayoutIcon"
+                phosphor="LayoutIcon"
+                remixicon="RiLayoutLine"
+              />
+              Status Bar
+            </DropdownMenuCheckboxItem>
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>
                 <IconPlaceholder
-                  lucide="SettingsIcon"
-                  tabler="IconSettings"
-                  hugeicons="SettingsIcon"
+                  lucide="UsersIcon"
+                  tabler="IconUsers"
+                  hugeicons="UserGroupIcon"
+                  phosphor="UsersIcon"
+                  remixicon="RiTeamLine"
                 />
-                Settings
+                Invite Users
               </DropdownMenuSubTrigger>
               <DropdownMenuPortal>
                 <DropdownMenuSubContent>
                   <DropdownMenuGroup>
-                    <DropdownMenuLabel>Preferences</DropdownMenuLabel>
                     <DropdownMenuItem>
                       <IconPlaceholder
-                        lucide="KeyboardIcon"
-                        tabler="IconKeyboard"
-                        hugeicons="KeyboardIcon"
+                        lucide="MailIcon"
+                        tabler="IconMail"
+                        hugeicons="MailIcon"
+                        phosphor="EnvelopeIcon"
+                        remixicon="RiMailLine"
                       />
-                      Keyboard Shortcuts
+                      Email
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                       <IconPlaceholder
-                        lucide="LanguagesIcon"
-                        tabler="IconLanguage"
-                        hugeicons="LanguageCircleIcon"
+                        lucide="MessageSquareIcon"
+                        tabler="IconMessage"
+                        hugeicons="MessageIcon"
+                        phosphor="ChatCircleIcon"
+                        remixicon="RiChat1Line"
                       />
-                      Language
+                      Message
                     </DropdownMenuItem>
-                    <DropdownMenuSub>
-                      <DropdownMenuSubTrigger>
-                        <IconPlaceholder
-                          lucide="BellIcon"
-                          tabler="IconBell"
-                          hugeicons="NotificationIcon"
-                        />
-                        Notifications
-                      </DropdownMenuSubTrigger>
-                      <DropdownMenuPortal>
-                        <DropdownMenuSubContent>
-                          <DropdownMenuGroup>
-                            <DropdownMenuLabel>
-                              Notification Types
-                            </DropdownMenuLabel>
-                            <DropdownMenuCheckboxItem
-                              checked={notifications.push}
-                              onCheckedChange={(checked) =>
-                                setNotifications({
-                                  ...notifications,
-                                  push: checked === true,
-                                })
-                              }
-                            >
-                              <IconPlaceholder
-                                lucide="BellIcon"
-                                tabler="IconBell"
-                                hugeicons="NotificationIcon"
-                              />
-                              Push Notifications
-                            </DropdownMenuCheckboxItem>
-                            <DropdownMenuCheckboxItem
-                              checked={notifications.email}
-                              onCheckedChange={(checked) =>
-                                setNotifications({
-                                  ...notifications,
-                                  email: checked === true,
-                                })
-                              }
-                            >
-                              <IconPlaceholder
-                                lucide="MailIcon"
-                                tabler="IconMail"
-                                hugeicons="MailIcon"
-                              />
-                              Email Notifications
-                            </DropdownMenuCheckboxItem>
-                          </DropdownMenuGroup>
-                        </DropdownMenuSubContent>
-                      </DropdownMenuPortal>
-                    </DropdownMenuSub>
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
                     <DropdownMenuItem>
                       <IconPlaceholder
-                        lucide="ShieldIcon"
-                        tabler="IconShield"
-                        hugeicons="ShieldIcon"
+                        lucide="PlusCircleIcon"
+                        tabler="IconCirclePlus"
+                        hugeicons="AddCircleIcon"
+                        phosphor="PlusCircleIcon"
+                        remixicon="RiAddCircleLine"
                       />
-                      Privacy & Security
+                      More...
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                 </DropdownMenuSubContent>
@@ -996,25 +954,18 @@ function DropdownMenuComplex() {
                 lucide="HelpCircleIcon"
                 tabler="IconHelpCircle"
                 hugeicons="HelpCircleIcon"
+                phosphor="QuestionIcon"
+                remixicon="RiQuestionLine"
               />
-              Help & Support
+              Support
             </DropdownMenuItem>
-            <DropdownMenuItem>
-              <IconPlaceholder
-                lucide="FileTextIcon"
-                tabler="IconFileText"
-                hugeicons="File01Icon"
-              />
-              Documentation
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
             <DropdownMenuItem variant="destructive">
               <IconPlaceholder
                 lucide="LogOutIcon"
                 tabler="IconLogout"
                 hugeicons="LogoutIcon"
+                phosphor="SignOutIcon"
+                remixicon="RiLogoutBoxLine"
               />
               Sign Out
               <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>

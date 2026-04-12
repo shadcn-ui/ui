@@ -15,7 +15,7 @@ import {
 describe("shadcn add", () => {
   it("should add item to project", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
     await npxShadcn(fixturePath, ["add", "button"])
     expect(
       await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
@@ -24,7 +24,7 @@ describe("shadcn add", () => {
 
   it("should add multiple items to project", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
     await npxShadcn(fixturePath, ["add", "button", "card"])
     expect(
       await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
@@ -36,7 +36,7 @@ describe("shadcn add", () => {
 
   it("should add item from url", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
     const registryUrl = getRegistryUrl()
     const url = `${registryUrl}/styles/new-york-v4/login-01.json`
     await npxShadcn(fixturePath, ["add", url])
@@ -60,7 +60,7 @@ describe("shadcn add", () => {
 
   it("should add component from local file", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
     await npxShadcn(fixturePath, [
       "add",
       "../../fixtures/registry/example-component.json",
@@ -75,7 +75,7 @@ describe("shadcn add", () => {
 
   it("should add registry:page to the correct path", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
     await npxShadcn(fixturePath, ["add", "login-03"])
     expect(
       await fs.pathExists(path.join(fixturePath, "app/login/page.tsx"))
@@ -84,7 +84,7 @@ describe("shadcn add", () => {
 
   it("should add item with registryDependencies", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
     await npxShadcn(fixturePath, ["add", "alert-dialog"])
     expect(
       await fs.pathExists(
@@ -98,7 +98,7 @@ describe("shadcn add", () => {
 
   it("should add item with npm dependencies", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
     await npxShadcn(fixturePath, [
       "add",
       "../../fixtures/registry/example-style.json",
@@ -112,7 +112,7 @@ describe("shadcn add", () => {
 
   it("should install cssVars", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
     await npxShadcn(fixturePath, [
       "add",
       "../../fixtures/registry/example-style.json",
@@ -153,7 +153,7 @@ describe("shadcn add", () => {
 
   it("should add item with target", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
     await npxShadcn(fixturePath, [
       "add",
       "../../fixtures/registry/example-item.json",
@@ -168,7 +168,7 @@ describe("shadcn add", () => {
 
   it("should add item with target to src", async () => {
     const fixturePath = await createFixtureTestDirectory("vite-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
     await npxShadcn(fixturePath, [
       "add",
       "../../fixtures/registry/example-item.json",
@@ -183,7 +183,7 @@ describe("shadcn add", () => {
 
   it("should add item with target to root", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
     await npxShadcn(fixturePath, [
       "add",
       "../../fixtures/registry/example-item-to-root.json",
@@ -198,7 +198,7 @@ describe("shadcn add", () => {
 
   it("should add item with target to root when src", async () => {
     const fixturePath = await createFixtureTestDirectory("vite-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
     await npxShadcn(fixturePath, [
       "add",
       "../../fixtures/registry/example-item-to-root.json",
@@ -213,7 +213,7 @@ describe("shadcn add", () => {
 
   it("should add item with envVars", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
     await npxShadcn(fixturePath, [
       "add",
       "../../fixtures/registry/example-env-vars.json",
@@ -232,7 +232,7 @@ describe("shadcn add", () => {
 
   it("should add NOT update existing envVars", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
 
     await fs.writeFile(
       path.join(fixturePath, ".env.local"),
@@ -257,7 +257,7 @@ describe("shadcn add", () => {
 
   it("should use existing .env if it exists", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
 
     await fs.writeFile(
       path.join(fixturePath, ".env"),
@@ -299,49 +299,43 @@ describe("shadcn add", () => {
 
   it("should add component to custom file path", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
-    await npxShadcn(fixturePath, [
-      "add",
-      "button",
-      "--path=custom/my-button.tsx",
-    ])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
+    await npxShadcn(fixturePath, ["add", "card", "--path=custom/my-card.tsx"])
 
     expect(
-      await fs.pathExists(path.join(fixturePath, "custom/my-button.tsx"))
+      await fs.pathExists(path.join(fixturePath, "custom/my-card.tsx"))
     ).toBe(true)
     expect(
-      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
+      await fs.pathExists(path.join(fixturePath, "components/ui/card.tsx"))
     ).toBe(false)
   })
 
   it("should add component to custom directory", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
-    await npxShadcn(fixturePath, ["add", "button", "--path=custom/components"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
+    await npxShadcn(fixturePath, ["add", "card", "--path=custom/components"])
 
     expect(
-      await fs.pathExists(
-        path.join(fixturePath, "custom/components/button.tsx")
-      )
+      await fs.pathExists(path.join(fixturePath, "custom/components/card.tsx"))
     ).toBe(true)
     expect(
-      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
+      await fs.pathExists(path.join(fixturePath, "components/ui/card.tsx"))
     ).toBe(false)
   })
 
   it("should add multiple files to custom directory", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
-    await npxShadcn(fixturePath, ["add", "button", "card", "--path=custom/ui"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
+    await npxShadcn(fixturePath, ["add", "input", "card", "--path=custom/ui"])
 
     expect(
-      await fs.pathExists(path.join(fixturePath, "custom/ui/button.tsx"))
+      await fs.pathExists(path.join(fixturePath, "custom/ui/input.tsx"))
     ).toBe(true)
     expect(
       await fs.pathExists(path.join(fixturePath, "custom/ui/card.tsx"))
     ).toBe(true)
     expect(
-      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
+      await fs.pathExists(path.join(fixturePath, "components/ui/input.tsx"))
     ).toBe(false)
     expect(
       await fs.pathExists(path.join(fixturePath, "components/ui/card.tsx"))
@@ -373,5 +367,98 @@ describe("shadcn add", () => {
         },
       ])
     ).toBe(true)
+  })
+})
+
+describe("shadcn registry add", () => {
+  it("should add registry from index to components.json", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--defaults"])
+    await npxShadcn(fixturePath, ["registry", "add", "@magicui"])
+
+    const componentsJson = await fs.readJson(
+      path.join(fixturePath, "components.json")
+    )
+    expect(componentsJson.registries).toBeDefined()
+    expect(componentsJson.registries["@magicui"]).toBeDefined()
+    expect(componentsJson.registries["@magicui"]).toContain("{name}")
+  })
+
+  it("should add custom registry with URL", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--defaults"])
+    await npxShadcn(fixturePath, [
+      "registry",
+      "add",
+      "@mycompany=https://example.com/r/{name}.json",
+    ])
+
+    const componentsJson = await fs.readJson(
+      path.join(fixturePath, "components.json")
+    )
+    expect(componentsJson.registries["@mycompany"]).toBe(
+      "https://example.com/r/{name}.json"
+    )
+  })
+
+  it("should add multiple registries", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--defaults"])
+    await npxShadcn(fixturePath, ["registry", "add", "@magicui", "@aceternity"])
+
+    const componentsJson = await fs.readJson(
+      path.join(fixturePath, "components.json")
+    )
+    expect(componentsJson.registries["@magicui"]).toBeDefined()
+    expect(componentsJson.registries["@aceternity"]).toBeDefined()
+  })
+
+  it("should skip already configured registries", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--defaults"])
+    await npxShadcn(fixturePath, ["registry", "add", "@magicui"])
+
+    // Add again - should not error.
+    await npxShadcn(fixturePath, ["registry", "add", "@magicui"])
+
+    const componentsJson = await fs.readJson(
+      path.join(fixturePath, "components.json")
+    )
+    expect(componentsJson.registries["@magicui"]).toBeDefined()
+  })
+
+  it("should error for registry not in index without URL", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--defaults"])
+
+    const result = await npxShadcn(fixturePath, [
+      "registry",
+      "add",
+      "@nonexistent-registry-12345",
+    ])
+    expect(result.exitCode).toBe(1)
+    expect(result.stdout).toContain("not found")
+  })
+
+  it("should error for invalid URL missing {name}", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--defaults"])
+
+    const result = await npxShadcn(fixturePath, [
+      "registry",
+      "add",
+      "@foo=https://example.com/bad.json",
+    ])
+    expect(result.exitCode).toBe(1)
+    expect(result.stdout).toContain("{name}")
+  })
+
+  it("should require components.json for adding registries", async () => {
+    const fixturePath = await createFixtureTestDirectory("no-framework")
+
+    // No init, so no components.json.
+    const result = await npxShadcn(fixturePath, ["registry", "add", "@magicui"])
+    expect(result.exitCode).toBe(1)
+    expect(result.stdout).toContain("components.json")
   })
 })

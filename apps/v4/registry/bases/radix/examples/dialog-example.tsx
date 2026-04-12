@@ -43,6 +43,7 @@ import {
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectSeparator,
   SelectTrigger,
@@ -132,11 +133,11 @@ function DialogScrollableContent() {
               This is a dialog with scrollable content.
             </DialogDescription>
           </DialogHeader>
-          <div className="style-nova:-mx-4 style-nova:px-4 no-scrollbar style-vega:px-6 style-mira:px-4 style-maia:px-6 style-vega:-mx-6 style-maia:-mx-6 style-mira:-mx-4 style-lyra:-mx-4 style-lyra:px-4 max-h-[70vh] overflow-y-auto">
+          <div className="no-scrollbar max-h-[70vh] overflow-y-auto style-vega:-mx-6 style-vega:px-6 style-nova:-mx-4 style-nova:px-4 style-lyra:-mx-4 style-lyra:px-4 style-maia:-mx-6 style-maia:px-6 style-mira:-mx-4 style-mira:px-4 style-luma:-mx-6 style-luma:px-6">
             {Array.from({ length: 10 }).map((_, index) => (
               <p
                 key={index}
-                className="style-lyra:mb-2 style-lyra:leading-relaxed mb-4 leading-normal"
+                className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
               >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -168,11 +169,11 @@ function DialogWithStickyFooter() {
               This is a dialog with scrollable content.
             </DialogDescription>
           </DialogHeader>
-          <div className="style-nova:-mx-4 style-nova:px-4 no-scrollbar style-vega:px-6 style-mira:px-4 style-maia:px-6 style-vega:-mx-6 style-maia:-mx-6 style-mira:-mx-4 style-lyra:-mx-4 style-lyra:px-4 max-h-[70vh] overflow-y-auto">
+          <div className="no-scrollbar max-h-[70vh] overflow-y-auto style-vega:-mx-6 style-vega:px-6 style-nova:-mx-4 style-nova:px-4 style-lyra:-mx-4 style-lyra:px-4 style-maia:-mx-6 style-maia:px-6 style-mira:-mx-4 style-mira:px-4 style-luma:-mx-6 style-luma:px-6">
             {Array.from({ length: 10 }).map((_, index) => (
               <p
                 key={index}
-                className="style-lyra:mb-2 style-lyra:leading-relaxed mb-4 leading-normal"
+                className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
               >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -297,7 +298,7 @@ function DialogChatSettings() {
                 </TabsTrigger>
                 <TabsTrigger value="security">Security</TabsTrigger>
               </TabsList>
-              <div className="style-nova:p-4 style-vega:p-6 style-maia:p-6 style-mira:p-4 style-lyra:p-4 style-vega:min-h-[550px] style-maia:min-h-[550px] style-mira:min-h-[450px] style-lyra:min-h-[450px] style-nova:min-h-[460px] style-nova:rounded-lg style-vega:rounded-lg style-maia:rounded-xl style-mira:rounded-md style-lyra:rounded-none border [&_[data-slot=select-trigger]]:min-w-[125px]">
+              <div className="border style-vega:min-h-[550px] style-vega:rounded-lg style-vega:p-6 style-nova:min-h-[460px] style-nova:rounded-lg style-nova:p-4 style-lyra:min-h-[450px] style-lyra:rounded-none style-lyra:p-4 style-maia:min-h-[550px] style-maia:rounded-xl style-maia:p-6 style-mira:min-h-[450px] style-mira:rounded-md style-mira:p-4 style-luma:min-h-[550px] style-luma:rounded-xl style-luma:p-6 [&_[data-slot=select-trigger]]:min-w-[125px]">
                 <TabsContent value="general">
                   <FieldSet>
                     <FieldGroup>
@@ -308,9 +309,11 @@ function DialogChatSettings() {
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
                           <SelectContent align="end">
-                            <SelectItem value="light">Light</SelectItem>
-                            <SelectItem value="dark">Dark</SelectItem>
-                            <SelectItem value="system">System</SelectItem>
+                            <SelectGroup>
+                              <SelectItem value="light">Light</SelectItem>
+                              <SelectItem value="dark">Dark</SelectItem>
+                              <SelectItem value="system">System</SelectItem>
+                            </SelectGroup>
                           </SelectContent>
                         </Select>
                       </Field>
@@ -327,30 +330,32 @@ function DialogChatSettings() {
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
                           <SelectContent align="end">
-                            <SelectItem value="default">
-                              <div className="size-3 rounded-full bg-neutral-500 dark:bg-neutral-400" />
-                              Default
-                            </SelectItem>
-                            <SelectItem value="red">
-                              <div className="size-3 rounded-full bg-red-500 dark:bg-red-400" />
-                              Red
-                            </SelectItem>
-                            <SelectItem value="blue">
-                              <div className="size-3 rounded-full bg-blue-500 dark:bg-blue-400" />
-                              Blue
-                            </SelectItem>
-                            <SelectItem value="green">
-                              <div className="size-3 rounded-full bg-green-500 dark:bg-green-400" />
-                              Green
-                            </SelectItem>
-                            <SelectItem value="purple">
-                              <div className="size-3 rounded-full bg-purple-500 dark:bg-purple-400" />
-                              Purple
-                            </SelectItem>
-                            <SelectItem value="pink">
-                              <div className="size-3 rounded-full bg-pink-500 dark:bg-pink-400" />
-                              Pink
-                            </SelectItem>
+                            <SelectGroup>
+                              <SelectItem value="default">
+                                <div className="size-3 rounded-full bg-neutral-500 dark:bg-neutral-400" />
+                                Default
+                              </SelectItem>
+                              <SelectItem value="red">
+                                <div className="size-3 rounded-full bg-red-500 dark:bg-red-400" />
+                                Red
+                              </SelectItem>
+                              <SelectItem value="blue">
+                                <div className="size-3 rounded-full bg-blue-500 dark:bg-blue-400" />
+                                Blue
+                              </SelectItem>
+                              <SelectItem value="green">
+                                <div className="size-3 rounded-full bg-green-500 dark:bg-green-400" />
+                                Green
+                              </SelectItem>
+                              <SelectItem value="purple">
+                                <div className="size-3 rounded-full bg-purple-500 dark:bg-purple-400" />
+                                Purple
+                              </SelectItem>
+                              <SelectItem value="pink">
+                                <div className="size-3 rounded-full bg-pink-500 dark:bg-pink-400" />
+                                Pink
+                              </SelectItem>
+                            </SelectGroup>
                           </SelectContent>
                         </Select>
                       </Field>
@@ -374,16 +379,20 @@ function DialogChatSettings() {
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
                           <SelectContent align="end" position="item-aligned">
-                            <SelectItem value="auto">Auto</SelectItem>
+                            <SelectGroup>
+                              <SelectItem value="auto">Auto</SelectItem>
+                            </SelectGroup>
                             <SelectSeparator />
-                            {spokenLanguages.map((language) => (
-                              <SelectItem
-                                key={language.value}
-                                value={language.value}
-                              >
-                                {language.label}
-                              </SelectItem>
-                            ))}
+                            <SelectGroup>
+                              {spokenLanguages.map((language) => (
+                                <SelectItem
+                                  key={language.value}
+                                  value={language.value}
+                                >
+                                  {language.label}
+                                </SelectItem>
+                              ))}
+                            </SelectGroup>
                           </SelectContent>
                         </Select>
                       </Field>
@@ -395,11 +404,16 @@ function DialogChatSettings() {
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
                           <SelectContent align="end" position="item-aligned">
-                            {voices.map((voice) => (
-                              <SelectItem key={voice.value} value={voice.value}>
-                                {voice.label}
-                              </SelectItem>
-                            ))}
+                            <SelectGroup>
+                              {voices.map((voice) => (
+                                <SelectItem
+                                  key={voice.value}
+                                  value={voice.value}
+                                >
+                                  {voice.label}
+                                </SelectItem>
+                              ))}
+                            </SelectGroup>
                           </SelectContent>
                         </Select>
                       </Field>
@@ -471,6 +485,8 @@ function DialogChatSettings() {
                                   lucide="InfoIcon"
                                   tabler="IconInfoCircle"
                                   hugeicons="AlertCircleIcon"
+                                  phosphor="InfoIcon"
+                                  remixicon="RiInformationLine"
                                 />
                               </InputGroupButton>
                             </TooltipTrigger>

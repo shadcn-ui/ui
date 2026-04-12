@@ -26,6 +26,7 @@ export default function PopoverExample() {
   return (
     <ExampleWrapper>
       <PopoverBasic />
+      <PopoverSides />
       <PopoverWithForm />
       <PopoverAlignments />
       <PopoverInDialog />
@@ -49,6 +50,47 @@ function PopoverBasic() {
           </PopoverHeader>
         </PopoverContent>
       </Popover>
+    </Example>
+  )
+}
+
+function PopoverSides() {
+  return (
+    <Example title="Sides">
+      <div className="flex flex-col gap-2">
+        <div className="flex flex-wrap gap-2">
+          {(["inline-start", "left", "top"] as const).map((side) => (
+            <Popover key={side}>
+              <PopoverTrigger
+                render={
+                  <Button variant="outline" className="w-fit capitalize" />
+                }
+              >
+                {side.replace("-", " ")}
+              </PopoverTrigger>
+              <PopoverContent side={side} className="w-40">
+                <p>Popover on {side.replace("-", " ")}</p>
+              </PopoverContent>
+            </Popover>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {(["bottom", "right", "inline-end"] as const).map((side) => (
+            <Popover key={side}>
+              <PopoverTrigger
+                render={
+                  <Button variant="outline" className="w-fit capitalize" />
+                }
+              >
+                {side.replace("-", " ")}
+              </PopoverTrigger>
+              <PopoverContent side={side} className="w-40">
+                <p>Popover on {side.replace("-", " ")}</p>
+              </PopoverContent>
+            </Popover>
+          ))}
+        </div>
+      </div>
     </Example>
   )
 }

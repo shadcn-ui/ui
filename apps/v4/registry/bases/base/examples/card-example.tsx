@@ -113,6 +113,8 @@ function CardMeetingNotes() {
                 lucide="CaptionsIcon"
                 tabler="IconTextCaption"
                 hugeicons="TextCheckIcon"
+                phosphor="TextTIcon"
+                remixicon="RiTextWrap"
                 data-icon="inline-start"
               />
               Transcribe
@@ -164,7 +166,7 @@ function CardWithImage() {
   return (
     <Example title="With Image">
       <Card size="default" className="relative mx-auto w-full max-w-sm pt-0">
-        <div className="bg-primary absolute inset-0 z-30 aspect-video opacity-50 mix-blend-color" />
+        <div className="absolute inset-0 z-30 aspect-video bg-primary opacity-50 mix-blend-color" />
         <img
           src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Photo by mymind on Unsplash"
@@ -183,6 +185,8 @@ function CardWithImage() {
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="Add01Icon"
+              phosphor="PlusIcon"
+              remixicon="RiAddLine"
               data-icon="inline-start"
             />
             Button
@@ -197,7 +201,7 @@ function CardWithImageSmall() {
   return (
     <Example title="With Image (Small)">
       <Card size="sm" className="relative mx-auto w-full max-w-sm pt-0">
-        <div className="bg-primary absolute inset-0 z-30 aspect-video opacity-50 mix-blend-color" />
+        <div className="absolute inset-0 z-30 aspect-video bg-primary opacity-50 mix-blend-color" />
         <img
           src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Photo by mymind on Unsplash"
@@ -216,6 +220,8 @@ function CardWithImageSmall() {
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="Add01Icon"
+              phosphor="PlusIcon"
+              remixicon="RiAddLine"
               data-icon="inline-start"
             />
             Button

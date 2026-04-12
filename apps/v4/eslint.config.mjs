@@ -1,19 +1,26 @@
 import nextVitals from "eslint-config-next/core-web-vitals"
-import { defineConfig, globalIgnores } from "eslint/config"
 import tseslint from "typescript-eslint"
 
-const eslintConfig = defineConfig([
-  ...nextVitals,
+const eslintConfig = tseslint.config(
+  // Remove the @typescript-eslint plugin from next/typescript to prevent
+  // duplicate registration with tseslint.configs.recommended.
+  ...nextVitals.map((config) =>
+    config.name === "next/typescript"
+      ? { ...config, plugins: {} }
+      : config
+  ),
   ...tseslint.configs.recommended,
-  globalIgnores([
-    "node_modules/**",
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-    ".source/**",
-    "**/__index__.tsx",
-  ]),
+  {
+    ignores: [
+      "node_modules/**",
+      ".next/**",
+      "out/**",
+      "build/**",
+      "next-env.d.ts",
+      ".source/**",
+      "**/__index__.tsx",
+    ],
+  },
   {
     rules: {
       "react-hooks/incompatible-library": "off",
@@ -30,6 +37,6 @@ const eslintConfig = defineConfig([
       ],
     },
   },
-])
+)
 
 export default eslintConfig

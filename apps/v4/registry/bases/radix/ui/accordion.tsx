@@ -53,6 +53,8 @@ function AccordionTrigger({
           tabler="IconChevronDown"
           data-slot="accordion-trigger-icon"
           hugeicons="ArrowDown01Icon"
+          phosphor="CaretDownIcon"
+          remixicon="RiArrowDownSLine"
           className="cn-accordion-trigger-icon pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
         />
         <IconPlaceholder
@@ -60,6 +62,8 @@ function AccordionTrigger({
           tabler="IconChevronUp"
           data-slot="accordion-trigger-icon"
           hugeicons="ArrowUp01Icon"
+          phosphor="CaretUpIcon"
+          remixicon="RiArrowUpSLine"
           className="cn-accordion-trigger-icon pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
         />
       </AccordionPrimitive.Trigger>
@@ -80,7 +84,7 @@ function AccordionContent({
     >
       <div
         className={cn(
-          "cn-accordion-content-inner [&_a]:hover:text-foreground h-(--radix-accordion-content-height) [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4",
+          "cn-accordion-content-inner h-(--radix-accordion-content-height) [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4",
           className
         )}
       >
