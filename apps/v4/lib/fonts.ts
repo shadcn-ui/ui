@@ -3,6 +3,7 @@ import {
   Noto_Sans as FontNotoSans,
   Noto_Sans_Arabic as FontNotoSansArabic,
   Noto_Sans_Hebrew as FontNotoSansHebrew,
+  Noto_Serif as FontNotoSerif,
   Geist as FontSans,
   Inter,
   Playfair_Display,
@@ -31,6 +32,11 @@ const fontNotoSans = FontNotoSans({
   variable: "--font-noto-sans",
 })
 
+const fontNotoSerif = FontNotoSerif({
+  subsets: ["latin"],
+  variable: "--font-noto-serif",
+})
+
 const fontNotoSansArabic = FontNotoSansArabic({
   subsets: ["latin"],
   variable: "--font-ar",
@@ -41,9 +47,9 @@ const fontNotoSansHebrew = FontNotoSansHebrew({
   variable: "--font-he",
 })
 
-const fontSerif = Playfair_Display({
+const fontPlayfairDisplay = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-serif",
+  variable: "--font-playfair-display",
 })
 
 export const fontVariables = cn(
@@ -51,7 +57,8 @@ export const fontVariables = cn(
   fontMono.variable,
   fontInter.variable,
   fontNotoSans.variable,
+  fontNotoSerif.variable,
   fontNotoSansArabic.variable,
   fontNotoSansHebrew.variable,
-  fontSerif.variable
+  fontPlayfairDisplay.variable
 )

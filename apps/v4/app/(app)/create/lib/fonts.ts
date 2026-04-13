@@ -6,6 +6,7 @@ import {
   Geist_Mono,
   IBM_Plex_Sans,
   Instrument_Sans,
+  Instrument_Serif,
   Inter,
   JetBrains_Mono,
   Lora,
@@ -155,6 +156,12 @@ const ebGaramond = EB_Garamond({
   variable: "--font-eb-garamond",
 })
 
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-instrument-serif",
+})
+
 const PREVIEW_FONTS = {
   geist: geistSans,
   inter,
@@ -181,6 +188,7 @@ const PREVIEW_FONTS = {
   lora,
   "playfair-display": playfairDisplay,
   "eb-garamond": ebGaramond,
+  "instrument-serif": instrumentSerif,
 } satisfies Record<FontName, PreviewFont>
 
 function createFontOption(name: FontName) {
@@ -224,6 +232,7 @@ export const FONTS = [
   createFontOption("lora"),
   createFontOption("playfair-display"),
   createFontOption("eb-garamond"),
+  createFontOption("instrument-serif"),
 ] as const
 
 export type Font = (typeof FONTS)[number]

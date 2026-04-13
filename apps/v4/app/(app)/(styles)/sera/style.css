@@ -1,11 +1,11 @@
 @layer base {
   .cn-font-heading {
-    font-family: var(--font-serif);
+    font-family: var(--font-playfair-display);
   }
 
   .preview {
     --font-sans: var(--font-noto-sans);
-    --font-heading: var(--font-serif);
+    --font-heading: var(--font-playfair-display);
   }
 
   .theme-taupe {

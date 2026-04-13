@@ -55,7 +55,7 @@ export function ThemeSwitcher() {
 
   return (
     <div className="fixed inset-x-0 bottom-4 z-50 flex justify-center px-4">
-      <div className="w-full max-w-fit rounded-full border-0 bg-neutral-950/80 p-1.5 text-neutral-100 shadow-lg ring-1 ring-neutral-950/80 backdrop-blur-xl dark:bg-neutral-800/90 dark:ring-neutral-700/50">
+      <div className="w-full max-w-[60vw] rounded-full border-0 bg-neutral-950/80 p-1.5 text-neutral-100 shadow-lg ring-1 ring-neutral-950/80 backdrop-blur-xl sm:max-w-fit dark:bg-neutral-800/90 dark:ring-neutral-700/50">
         <div className="no-scrollbar flex snap-x snap-mandatory items-center gap-1 overflow-x-auto">
           {THEME_OPTIONS.map((option) => (
             <button

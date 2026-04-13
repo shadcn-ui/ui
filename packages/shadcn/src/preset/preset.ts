@@ -110,6 +110,7 @@ export const PRESET_FONTS = [
   "source-sans-3",
   "instrument-sans",
   "eb-garamond",
+  "instrument-serif",
 ] as const
 export const PRESET_FONT_HEADINGS = ["inherit", ...PRESET_FONTS] as const
 

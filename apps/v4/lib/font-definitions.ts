@@ -313,6 +313,19 @@ export const FONT_DEFINITIONS = [
     dependency: "@fontsource-variable/eb-garamond",
     subsets: ["latin"],
   },
+  {
+    name: "instrument-serif",
+    title: "Instrument Serif",
+    type: "serif",
+    family: "'Instrument Serif', serif",
+    registryVariable: "--font-serif",
+    previewVariable: "--font-instrument-serif",
+    provider: "google",
+    import: "Instrument_Serif",
+    dependency: "@fontsource/instrument-serif",
+    subsets: ["latin"],
+    weight: ["400"],
+  },
 ] as const satisfies readonly FontDefinition[]
 
 export type FontName = (typeof FONT_DEFINITIONS)[number]["name"]

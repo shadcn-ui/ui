@@ -167,7 +167,7 @@
   }
 
   .cn-button-variant-link {
-    @apply text-primary underline-offset-4 hover:underline;
+    @apply text-primary underline-offset-4 hover:underline underline;
   }
 
   .cn-button-size-xs {
@@ -738,7 +738,7 @@
 
   /* MARK: Label */
   .cn-label {
-    @apply gap-2 text-sm leading-relaxed font-medium group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 peer-data-[slot=checkbox]:font-normal peer-data-[slot=radio-group-item]:font-normal peer-data-[slot=switch]:font-normal;
+    @apply gap-2 peer-data-[slot=checkbox]:text-sm peer-data-[slot=radio-group-item]:text-sm peer-data-[slot=switch]:text-sm leading-relaxed font-medium group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 peer-data-[slot=checkbox]:font-normal peer-data-[slot=radio-group-item]:font-normal peer-data-[slot=switch]:font-normal uppercase text-xs tracking-wide;
   }
 
   /* MARK: Menubar */

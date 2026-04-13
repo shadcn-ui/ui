@@ -3188,6 +3188,20 @@
       }
     },
     {
+      "name": "font-instrument-serif",
+      "title": "Instrument Serif",
+      "type": "registry:font",
+      "font": {
+        "family": "'Instrument Serif', serif",
+        "provider": "google",
+        "import": "Instrument_Serif",
+        "variable": "--font-serif",
+        "weight": ["400"],
+        "subsets": ["latin"],
+        "dependency": "@fontsource/instrument-serif"
+      }
+    },
+    {
       "name": "font-heading-geist",
       "title": "Geist (Heading)",
       "type": "registry:font",
@@ -3510,6 +3524,20 @@
         "variable": "--font-heading",
         "subsets": ["latin"],
         "dependency": "@fontsource-variable/eb-garamond"
+      }
+    },
+    {
+      "name": "font-heading-instrument-serif",
+      "title": "Instrument Serif (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Instrument Serif', serif",
+        "provider": "google",
+        "import": "Instrument_Serif",
+        "variable": "--font-heading",
+        "weight": ["400"],
+        "subsets": ["latin"],
+        "dependency": "@fontsource/instrument-serif"
       }
     }
   ]

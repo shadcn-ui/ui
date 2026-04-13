@@ -105,13 +105,13 @@ export const DEFAULT_PRESETS = {
   },
   sera: {
     title: "Sera",
-    description: "Lucide / Noto Sans + EB Garamond",
+    description: "Lucide / Noto Sans + Playfair Display",
     style: "sera",
     baseColor: "taupe",
     theme: "taupe",
     iconLibrary: "lucide",
     font: "noto-sans",
-    fontHeading: "eb-garamond",
+    fontHeading: "playfair-display",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
 

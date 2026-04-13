@@ -152,27 +152,62 @@ export function EditorWorkspace() {
             <Button variant="ghost" size="icon-sm" aria-label="Underline">
               <UnderlineIcon />
             </Button>
-            <Button variant="ghost" size="icon-sm" aria-label="Strikethrough">
+            <Button
+              variant="ghost"
+              size="icon-sm"
+              aria-label="Strikethrough"
+              className="hidden md:flex"
+            >
               <StrikethroughIcon />
             </Button>
-            <Button variant="ghost" size="icon-sm" aria-label="Code">
+            <Button
+              variant="ghost"
+              size="icon-sm"
+              aria-label="Code"
+              className="hidden md:flex"
+            >
               <Code2Icon />
             </Button>
-            <ButtonGroupSeparator className="mx-2 data-vertical:h-4 data-vertical:self-center" />
-            <Button variant="ghost" size="icon-sm" aria-label="Align Left">
+            <ButtonGroupSeparator className="mx-2 hidden md:flex data-vertical:h-4 data-vertical:self-center" />
+            <Button
+              variant="ghost"
+              size="icon-sm"
+              aria-label="Align Left"
+              className="hidden md:flex"
+            >
               <AlignLeftIcon />
             </Button>
-            <Button variant="ghost" size="icon-sm" aria-label="Align Center">
+            <Button
+              variant="ghost"
+              size="icon-sm"
+              aria-label="Align Center"
+              className="hidden md:flex"
+            >
               <AlignCenterIcon />
             </Button>
-            <Button variant="ghost" size="icon-sm" aria-label="Align Right">
+            <Button
+              variant="ghost"
+              size="icon-sm"
+              aria-label="Align Right"
+              className="hidden md:flex"
+            >
               <AlignRightIcon />
             </Button>
-            <ButtonGroupSeparator className="mx-2 data-vertical:h-4 data-vertical:self-center" />
-            <Button variant="ghost" size="icon-sm" aria-label="Link">
+            <ButtonGroupSeparator className="mx-2 hidden md:flex data-vertical:h-4 data-vertical:self-center" />
+            <Button
+              variant="ghost"
+              size="icon-sm"
+              aria-label="Link"
+              className="hidden md:flex"
+            >
               <LinkIcon />
             </Button>
-            <Button variant="ghost" size="icon-sm" aria-label="Image">
+            <Button
+              variant="ghost"
+              size="icon-sm"
+              aria-label="Image"
+              className="hidden md:flex"
+            >
               <ImageIcon />
             </Button>
           </ButtonGroup>
@@ -185,8 +220,8 @@ export function EditorWorkspace() {
             </Button>
           </ButtonGroup>
         </div>
-        <div className="mx-auto flex max-w-2xl flex-1 flex-col gap-8 px-10 py-10 md:px-14">
-          <h1 className="font-heading text-4xl tracking-wide uppercase">
+        <div className="mx-auto flex max-w-2xl flex-1 flex-col gap-8 px-10 py-10 leading-loose md:px-14 lg:py-24">
+          <h1 className="font-heading text-4xl leading-12 font-medium tracking-wide uppercase">
             The Future of Sustainable Architecture
           </h1>
           <p>
@@ -237,8 +272,8 @@ export function EditorWorkspace() {
           </p>
         </div>
       </section>
-      <aside className="flex flex-col gap-(--gap)">
-        <Card>
+      <aside className="grid grid-cols-12 gap-(--gap) xl:flex xl:flex-col">
+        <Card className="col-span-full md:col-span-6 lg:col-span-4">
           <CardHeader>
             <CardTitle>Article Details</CardTitle>
           </CardHeader>
@@ -268,7 +303,7 @@ export function EditorWorkspace() {
             </FieldGroup>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="col-span-full md:col-span-6 lg:col-span-4">
           <CardHeader>
             <CardTitle>Publication Flow</CardTitle>
           </CardHeader>
@@ -298,7 +333,7 @@ export function EditorWorkspace() {
             </FieldGroup>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="col-span-full lg:col-span-4">
           <CardHeader>
             <CardTitle>Word Count</CardTitle>
           </CardHeader>

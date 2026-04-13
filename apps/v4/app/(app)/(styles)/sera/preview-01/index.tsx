@@ -8,7 +8,7 @@ import { TrafficOverview } from "./components/traffic-overview"
 
 export function Preview01() {
   return (
-    <div className="preview theme-taupe @container/preview w-full flex-1 bg-muted pt-4 font-sans ring-1 ring-foreground/5 [--gap:--spacing(4)] sm:pt-0 md:[--gap:--spacing(6)] xl:[--gap:--spacing(8)] **:[.container]:px-(--gap)">
+    <div className="preview theme-taupe @container/preview w-full flex-1 bg-muted pt-4 font-sans ring-1 ring-foreground/5 [--gap:--spacing(4)] sm:pt-0 md:[--gap:--spacing(6)] xl:[--gap:--spacing(8)] 2xl:py-8 **:[.container]:px-(--gap)">
       <PreviewHeader />
       <Separator className="hidden sm:block" />
       <div className="container grid grid-cols-12 gap-(--gap) py-(--gap)">
