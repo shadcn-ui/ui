@@ -23,8 +23,7 @@ export const server = new Server(
     version: "1.0.0",
   },
   {
-    capabilities: {
-      resources: {},
+    capabilities: {      
       tools: {},
     },
   }
