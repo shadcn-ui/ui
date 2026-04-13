@@ -18,7 +18,7 @@ export function RadioFields() {
     <FieldGroup>
       <FieldSet>
         <FieldLegend variant="label">Subscription Plan</FieldLegend>
-        <RadioGroup defaultValue="free">
+        <RadioGroup aria-label="Subscription Plan" defaultValue="free">
           <Field orientation="horizontal">
             <RadioGroupItem value="free" id="radio-free" />
             <FieldLabel htmlFor="radio-free" className="font-normal">
@@ -44,7 +44,7 @@ export function RadioFields() {
         <FieldDescription>
           Choose your preferred battery level.
         </FieldDescription>
-        <RadioGroup>
+        <RadioGroup aria-label="Battery Level">
           <Field orientation="horizontal">
             <RadioGroupItem value="high" id="battery-high" />
             <FieldLabel htmlFor="battery-high">High</FieldLabel>
@@ -59,7 +59,7 @@ export function RadioFields() {
           </Field>
         </RadioGroup>
       </FieldSet>
-      <RadioGroup className="gap-6">
+      <RadioGroup aria-label="Security" className="gap-6">
         <Field orientation="horizontal">
           <RadioGroupItem value="option1" id="radio-content-1" />
           <FieldContent>
@@ -82,7 +82,7 @@ export function RadioFields() {
           </FieldContent>
         </Field>
       </RadioGroup>
-      <RadioGroup className="gap-3">
+      <RadioGroup aria-label="Security" className="gap-3">
         <FieldLabel htmlFor="radio-title-1">
           <Field orientation="horizontal">
             <RadioGroupItem value="title1" id="radio-title-1" />
@@ -111,7 +111,7 @@ export function RadioFields() {
       </RadioGroup>
       <FieldSet>
         <FieldLegend variant="label">Invalid Radio Group</FieldLegend>
-        <RadioGroup isInvalid>
+        <RadioGroup aria-label="Invalid Radio Group" isInvalid>
           <Field data-invalid orientation="horizontal">
             <RadioGroupItem value="invalid1" id="radio-invalid-1" />
             <FieldLabel htmlFor="radio-invalid-1">Invalid Option 1</FieldLabel>
@@ -124,7 +124,7 @@ export function RadioFields() {
       </FieldSet>
       <FieldSet>
         <FieldLegend variant="label">Disabled Radio Group</FieldLegend>
-        <RadioGroup isDisabled>
+        <RadioGroup aria-label="Disabled Radio Group" isDisabled>
           <Field data-disabled orientation="horizontal">
             <RadioGroupItem
               value="disabled1"

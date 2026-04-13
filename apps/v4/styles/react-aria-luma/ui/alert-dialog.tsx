@@ -39,7 +39,7 @@ function AlertDialogOverlay({
       render={(renderProps, state: ModalRenderProps) => (
         <div
           {...renderProps}
-          data-open={state.isEntering}
+          data-open={!state.isExiting}
           data-closed={state.isExiting}
         />
       )}
@@ -74,7 +74,7 @@ function AlertDialog({
         render={(renderProps, state: ModalRenderProps) => (
           <div
             {...renderProps}
-            data-open={state.isEntering}
+            data-open={!state.isExiting}
             data-closed={state.isExiting}
           />
         )}

@@ -16,8 +16,8 @@ export function SelectDisabled() {
     { label: "Pineapple", value: "pineapple" },
   ]
   return (
-    <Select isDisabled placeholder="Select a fruit">
-      <SelectTrigger className="w-full max-w-48">
+    <Select isDisabled placeholder="Select a fruit" className="w-full max-w-48">
+      <SelectTrigger>
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

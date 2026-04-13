@@ -60,8 +60,8 @@ const items = [
 
 export function SelectScrollable() {
   return (
-    <Select placeholder="Select a timezone">
-      <SelectTrigger className="w-full max-w-64">
+    <Select placeholder="Select a timezone" className="w-full max-w-64">
+      <SelectTrigger>
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

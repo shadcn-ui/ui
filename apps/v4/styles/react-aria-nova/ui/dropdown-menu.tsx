@@ -56,20 +56,20 @@ function DropdownMenu({
       offset={sideOffset}
       crossOffset={alignOffset}
       className={cn(
-        "cn-menu-target cn-menu-translucent z-50 max-h-(--available-height) w-(--trigger-width) min-w-32 origin-(--trigger-anchor-point) overflow-x-hidden overflow-y-auto rounded-lg bg-popover p-1 text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 outline-none data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:overflow-hidden data-closed:fade-out-0 data-closed:zoom-out-95",
+        "cn-menu-target cn-menu-translucent z-50 w-(--trigger-width) min-w-32 origin-(--trigger-anchor-point) overflow-x-hidden overflow-y-auto rounded-lg bg-popover p-1 text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 outline-none data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:overflow-hidden data-closed:fade-out-0 data-closed:zoom-out-95",
         className
       )}
       render={(renderProps, state) => (
         <div
           {...renderProps}
           data-side={state.placement}
-          data-open={state.isEntering}
+          data-open={!state.isExiting}
           data-closed={state.isExiting}
         />
       )}
     >
       <MenuPrimitive
-        className="max-h-(--available-height) overflow-x-hidden overflow-y-auto outline-hidden"
+        className="max-h-[inherit] overflow-x-hidden overflow-y-auto outline-hidden"
         {...props}
       >
         {children}
@@ -195,7 +195,7 @@ function DropdownMenuSubTrigger({
 function DropdownMenuSubContent({
   align = "start",
   alignOffset = -3,
-  side = "right",
+  side = "inline-start",
   sideOffset = 0,
   className,
   ...props

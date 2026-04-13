@@ -17,7 +17,7 @@ export function RadioGroupFieldset() {
       <FieldDescription>
         Yearly and lifetime plans offer significant savings.
       </FieldDescription>
-      <RadioGroup defaultValue="monthly">
+      <RadioGroup aria-label="Subscription Plan" defaultValue="monthly">
         <Field orientation="horizontal">
           <RadioGroupItem value="monthly" id="plan-monthly" />
           <FieldLabel htmlFor="plan-monthly" className="font-normal">

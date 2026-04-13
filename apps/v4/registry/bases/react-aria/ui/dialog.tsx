@@ -55,7 +55,7 @@ function DialogOverlay({
       render={(renderProps, state: ModalRenderProps) => (
         <div
           {...renderProps}
-          data-open={state.isEntering}
+          data-open={!state.isExiting}
           data-closed={state.isExiting}
         />
       )}
@@ -89,7 +89,7 @@ function Dialog({
         render={(renderProps, state: ModalRenderProps) => (
           <div
             {...renderProps}
-            data-open={state.isEntering}
+            data-open={!state.isExiting}
             data-closed={state.isExiting}
           />
         )}
@@ -118,19 +118,6 @@ function Dialog({
         </DialogPrimitive>
       </ModalPrimitive>
     </DialogOverlay>
-  )
-}
-
-function DialogContent({
-  className,
-  children,
-  showCloseButton = true,
-  ...props
-}: React.ComponentProps<typeof Dialog>) {
-  return (
-    <Dialog className={className} showCloseButton={showCloseButton} {...props}>
-      {children}
-    </Dialog>
   )
 }
 
@@ -199,7 +186,6 @@ export type { DialogPrimitiveProps, DialogTriggerPrimitiveProps }
 export {
   Dialog,
   DialogClose,
-  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,

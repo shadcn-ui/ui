@@ -63,11 +63,10 @@ The `Calendar` component uses the `Button` component. Make sure you have it inst
 
 ```tsx showLineNumbers
 import { Calendar } from "@/components/ui/calendar"
+import {type CalendarDate, today, getLocalTimeZone} from '@internationalized/date';
 ```
 
 ```tsx showLineNumbers
-import {type CalendarDate, today, getLocalTimeZone} from '@internationalized/date';
-
 const [date, setDate] = React.useState<CalendarDate | null>(today(getLocalTimeZone()))
 
 return (

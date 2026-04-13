@@ -57,7 +57,7 @@ export function RadioGroupRtl() {
   const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <RadioGroup defaultValue="comfortable" className="w-fit" dir={dir}>
+    <RadioGroup aria-label="Density" defaultValue="comfortable" className="w-fit" dir={dir}>
       <Field orientation="horizontal">
         <RadioGroupItem value="default" id="r1-rtl" dir={dir} />
         <FieldContent>

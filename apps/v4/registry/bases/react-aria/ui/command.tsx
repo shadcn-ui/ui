@@ -6,7 +6,6 @@ import {
   Input,
   Menu,
   MenuItem,
-  Keyboard,
   Separator,
   MenuSection,
   composeRenderProps,
@@ -103,7 +102,11 @@ function CommandInput({
   ...props
 }: InputProps) {
   return (
-    <SearchField autoFocus data-slot="command-input-wrapper" className="cn-command-input-wrapper">
+    <SearchField
+      autoFocus
+      aria-label={props.placeholder || 'Search'}
+      data-slot="command-input-wrapper"
+      className="cn-command-input-wrapper">
       <InputGroup className="cn-command-input-group">
         <Input
           {...props}
@@ -232,7 +235,7 @@ function CommandShortcut({
   ...props
 }: React.ComponentProps<"span">) {
   return (
-    <Keyboard
+    <span
       data-slot="command-shortcut"
       className={cn("cn-command-shortcut", className)}
       {...props}

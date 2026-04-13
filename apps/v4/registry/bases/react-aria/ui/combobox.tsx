@@ -76,6 +76,10 @@ function ComboboxClear({
   ...props
 }: React.ComponentProps<typeof InputGroupButton>) {
   const state = React.useContext(ComboBoxStateContext)
+  if (state?.inputValue === '') {
+    return null;
+  }
+
   return (
     <InputGroupButton
       data-slot="combobox-clear"
@@ -85,6 +89,7 @@ function ComboboxClear({
       onPress={() => {
         state?.setValue(null)
       }}
+      slot={null}
       {...props}
     >
       <IconPlaceholder
@@ -165,16 +170,16 @@ function ComboboxContent({
       offset={sideOffset}
       crossOffset={alignOffset}
       triggerRef={anchor}
-      render={(props, { placement, isEntering, isExiting }) => (
+      render={(props, { placement, isExiting }) => (
         <div
           {...props}
           data-side={placement}
-          data-open={isEntering}
+          data-open={!isExiting}
           data-closed={isExiting}
         />
       )}
       className={cn(
-        "cn-combobox-content cn-combobox-content-logical cn-menu-target cn-menu-translucent relative isolate z-50 w-(--trigger-width) origin-(--trigger-anchor-point) data-[chips=true]:min-w-(--anchor-width)",
+        "cn-combobox-content cn-combobox-content-logical cn-menu-target cn-menu-translucent relative isolate z-50 w-(--trigger-width) origin-(--trigger-anchor-point)",
         className
       )}
       {...props}

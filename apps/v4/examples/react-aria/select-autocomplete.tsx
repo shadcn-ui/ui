@@ -69,8 +69,8 @@ const countries = [
 export function SelectAutocomplete() {
   const {contains} = useFilter({sensitivity: 'base'})
   return (
-    <Select placeholder="Select country">
-      <SelectTrigger className="w-full max-w-48">
+    <Select placeholder="Select country" className="w-full max-w-48">
+      <SelectTrigger>
         <SelectValue />
       </SelectTrigger>
       <Autocomplete filter={contains}>

@@ -22,8 +22,8 @@ export function SelectGroups() {
   ]
   const allItems = [...fruits, ...vegetables]
   return (
-    <Select placeholder="Select a fruit">
-      <SelectTrigger className="w-full max-w-48">
+    <Select placeholder="Select a fruit" className="w-full max-w-48">
+      <SelectTrigger>
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

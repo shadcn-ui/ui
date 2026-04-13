@@ -41,17 +41,17 @@ function Popover({
       placement={getPlacement(side, align)}
       offset={sideOffset}
       crossOffset={alignOffset}
-      render={(props, { placement, isEntering, isExiting }) => (
+      render={(props, { placement, isExiting }) => (
         // compatibility with existing themes
         <div
           {...props}
           data-side={placement}
-          data-open={isEntering}
+          data-open={!isExiting}
           data-closed={isExiting}
         />
       )}
       className={cn(
-        "cn-popover-content cn-popover-content-logical z-50 w-72 origin-(--trigger-anchor-point) outline-hidden data-entering:animate-in data-entering:fade-in-0 data-entering:zoom-in-95 data-exiting:animate-out data-exiting:fade-out-0 data-exiting:zoom-out-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=end]:slide-in-from-left-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=start]:slide-in-from-right-2 data-[placement=top]:slide-in-from-bottom-2",
+        "cn-popover-content cn-popover-content-logical z-50 w-72 origin-(--trigger-anchor-point) outline-hidden",
         className
       )}
       {...props}

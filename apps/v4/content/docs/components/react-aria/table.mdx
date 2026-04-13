@@ -66,7 +66,6 @@ import {
 
 ```tsx showLineNumbers
 <Table>
-  <TableCaption>A list of your recent invoices.</TableCaption>
   <TableHeader>
     <TableHead isRowHeader className="w-[100px]">Invoice</TableHead>
     <TableHead>Status</TableHead>
@@ -82,6 +81,7 @@ import {
     </TableRow>
   </TableBody>
 </Table>
+<TableCaption>A list of your recent invoices.</TableCaption>
 ```
 
 ## Composition
@@ -90,7 +90,6 @@ Use the following composition to build a `Table`:
 
 ```text
 Table
-├── TableCaption
 ├── TableHeader
 │   ├── TableHead
 │   ├── TableHead

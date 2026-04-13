@@ -145,7 +145,7 @@ Combobox
 
 ## Custom Items
 
-Use `itemToStringValue` when your items are objects.
+Use `textValue` when your items render JSX children.
 
 ```tsx showLineNumbers
 import * as React from "react"
@@ -181,8 +181,8 @@ export function ExampleComboboxCustomItems() {
           )}
           items={frameworks}>
           {(framework) => (
-            <ComboboxItem id={framework.value}>
-              {framework.label}
+            <ComboboxItem id={framework.value} textValue={framework.label}>
+              <span>{framework.label}</span>
             </ComboboxItem>
           )}
         </ComboboxList>

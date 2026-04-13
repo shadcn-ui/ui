@@ -142,7 +142,7 @@ To create a button group, use the `ButtonGroup` component. See the [Button Group
 
 You can use the `buttonVariants` helper to make a link look like a button.
 
-**Do not use `<Button render={<a />} nativeButton={false} />` for links.** The React Aria `Button` component always applies `role="button"`, which overrides the semantic link role on `<a>` elements. Use `buttonVariants` with a plain `<a>` tag instead.
+**Do not use `<Button>` for links.** The React Aria `Button` component always applies `role="button"`, which overrides the semantic link role on `<a>` elements. Use `buttonVariants` with a plain `<a>` tag instead.
 
 <ComponentPreview styleName="react-aria-nova" name="button-render" />
 

@@ -9,7 +9,6 @@ import {
   Dialog as SheetPrimitive,
   DialogTrigger as SheetTriggerPrimitive,
   type ModalOverlayProps as ModalOverlayPrimitiveProps,
-  type ModalRenderProps,
   type DialogProps as SheetPrimitiveProps,
   type DialogTriggerProps as SheetTriggerPrimitiveProps,
 } from "react-aria-components"
@@ -56,12 +55,8 @@ function SheetOverlay({
         className
       )}
       // Keep existing data-open/data-closed selectors working with RAC state.
-      render={(renderProps, state: ModalRenderProps) => (
-        <div
-          {...renderProps}
-          data-open={state.isEntering}
-          data-closed={state.isExiting}
-        />
+      render={(renderProps, { isExiting }) => (
+        <div {...renderProps} data-open={!isExiting} data-closed={isExiting} />
       )}
       {...props}
     >
@@ -93,11 +88,11 @@ function Sheet({
           className
         )}
         // Keep existing data-open/data-closed selectors working with RAC state.
-        render={(renderProps, state: ModalRenderProps) => (
+        render={(renderProps, { isExiting }) => (
           <div
             {...renderProps}
-            data-open={state.isEntering}
-            data-closed={state.isExiting}
+            data-open={!isExiting}
+            data-closed={isExiting}
           />
         )}
       >

@@ -163,11 +163,11 @@ function SelectPopover({
       placement={getPlacement(side, align)}
       offset={sideOffset}
       crossOffset={alignOffset}
-      render={(props, { placement, isEntering, isExiting }) => (
+      render={(props, { placement, isExiting }) => (
         <div
           {...props}
           data-side={placement}
-          data-open={isEntering}
+          data-open={!isExiting}
           data-closed={isExiting}
         />
       )}

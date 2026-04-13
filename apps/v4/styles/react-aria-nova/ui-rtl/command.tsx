@@ -8,7 +8,6 @@ import {
   composeRenderProps,
   Header,
   Input,
-  Keyboard,
   Menu,
   MenuItem,
   MenuSection,
@@ -103,6 +102,7 @@ function CommandInput({ className, ...props }: InputProps) {
   return (
     <SearchField
       autoFocus
+      aria-label={props.placeholder || "Search"}
       data-slot="command-input-wrapper"
       className="p-1 pb-0"
     >
@@ -219,7 +219,7 @@ function CommandShortcut({
   ...props
 }: React.ComponentProps<"span">) {
   return (
-    <Keyboard
+    <span
       data-slot="command-shortcut"
       className={cn(
         "ms-auto text-xs tracking-widest text-muted-foreground group-data-selected/command-item:text-foreground",

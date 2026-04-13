@@ -12,7 +12,7 @@ import {
 
 export function RadioGroupChoiceCard() {
   return (
-    <RadioGroup defaultValue="plus" className="max-w-sm">
+    <RadioGroup aria-label="Plans" defaultValue="plus" className="max-w-sm">
       <FieldLabel htmlFor="plus-plan">
         <Field orientation="horizontal">
           <FieldContent>

@@ -95,8 +95,9 @@ export function SelectRtl() {
       value={selectedFruit}
       onChange={setSelectedFruit}
       placeholder={t.selectFruit}
+      className="w-32"
     >
-      <SelectTrigger className="w-32" dir={dir}>
+      <SelectTrigger dir={dir}>
         <SelectValue />
       </SelectTrigger>
       <SelectContent dir={dir} data-lang={dir === "rtl" ? language : undefined}>

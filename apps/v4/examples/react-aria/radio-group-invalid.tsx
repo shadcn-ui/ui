@@ -17,7 +17,7 @@ export function RadioGroupInvalid() {
       <FieldDescription>
         Choose how you want to receive notifications.
       </FieldDescription>
-      <RadioGroup defaultValue="email" isInvalid>
+      <RadioGroup aria-label="Notification Preferences" defaultValue="email" isInvalid>
         <Field orientation="horizontal" data-invalid>
           <RadioGroupItem value="email" id="invalid-email" />
           <FieldLabel htmlFor="invalid-email" className="font-normal">
