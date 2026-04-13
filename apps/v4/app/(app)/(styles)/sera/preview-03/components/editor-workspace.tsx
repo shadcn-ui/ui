@@ -1,19 +1,67 @@
 "use client"
 
-import * as React from "react"
-import { BoldIcon, Code2Icon, LinkIcon } from "lucide-react"
+import {
+  AlignCenterIcon,
+  AlignLeftIcon,
+  AlignRightIcon,
+  BoldIcon,
+  ChevronDownIcon,
+  Code2Icon,
+  Heading1Icon,
+  Heading2Icon,
+  Heading3Icon,
+  ImageIcon,
+  ItalicIcon,
+  LinkIcon,
+  ListIcon,
+  ListOrderedIcon,
+  RedoIcon,
+  StrikethroughIcon,
+  TypeIcon,
+  UnderlineIcon,
+  UndoIcon,
+} from "lucide-react"
 
 import { Button } from "@/styles/base-sera/ui/button"
 import {
+  ButtonGroup,
+  ButtonGroupSeparator,
+} from "@/styles/base-sera/ui/button-group"
+import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/styles/base-sera/ui/card"
 import { Checkbox } from "@/styles/base-sera/ui/checkbox"
-import { Progress, ProgressValue } from "@/styles/base-sera/ui/progress"
-import { Separator } from "@/styles/base-sera/ui/separator"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/styles/base-sera/ui/dropdown-menu"
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+  FieldLegend,
+  FieldSet,
+} from "@/styles/base-sera/ui/field"
+import { Input } from "@/styles/base-sera/ui/input"
+import {
+  Progress,
+  ProgressLabel,
+  ProgressValue,
+} from "@/styles/base-sera/ui/progress"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/styles/base-sera/ui/select"
+import { Textarea } from "@/styles/base-sera/ui/textarea"
 
 type Milestone = {
   name: string
@@ -45,160 +93,222 @@ const MILESTONES: Milestone[] = [
   },
 ]
 
+const ISSUES = [
+  { label: "Spring Issue 2024", value: "spring-2024" },
+  { label: "Summer Issue 2024", value: "summer-2024" },
+  { label: "Autumn Issue 2024", value: "autumn-2024" },
+  { label: "Winter Issue 2024", value: "winter-2024" },
+]
+
 export function EditorWorkspace() {
   return (
     <div className="grid grid-cols-1 items-start gap-6 xl:grid-cols-[minmax(0,1fr)_300px]">
-      <section className="flex min-h-[980px] flex-col border border-border/70 bg-background">
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border/70 px-4 py-3">
-          <div className="flex flex-wrap items-center gap-1">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="h-7 px-2 text-[10px] font-semibold tracking-[0.16em] text-muted-foreground uppercase"
-            >
-              Normal Text
+      <section className="flex flex-col border border-border/70 bg-background">
+        <div className="flex border-b p-2">
+          <ButtonGroup>
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                render={
+                  <Button variant="ghost" size="sm">
+                    Normal Text
+                    <ChevronDownIcon data-icon="inline-end" />
+                  </Button>
+                }
+              />
+              <DropdownMenuContent>
+                <DropdownMenuItem>
+                  <TypeIcon />
+                  Normal Text
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Heading1Icon />
+                  Heading 1
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Heading2Icon />
+                  Heading 2
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Heading3Icon />
+                  Heading 3
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <ListIcon />
+                  Bullet List
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <ListOrderedIcon />
+                  Numbered List
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <ButtonGroupSeparator className="mx-2 data-vertical:h-4 data-vertical:self-center" />
+            <Button variant="ghost" size="icon-sm" aria-label="Bold">
+              <BoldIcon />
             </Button>
-            <Separator orientation="vertical" className="h-4" />
-            <Button variant="ghost" size="icon-sm" className="size-7">
-              <BoldIcon className="size-3.5" />
+            <Button variant="ghost" size="icon-sm" aria-label="Italic">
+              <ItalicIcon />
             </Button>
-            <Button variant="ghost" size="icon-sm" className="size-7">
-              <Code2Icon className="size-3.5" />
+            <Button variant="ghost" size="icon-sm" aria-label="Underline">
+              <UnderlineIcon />
             </Button>
-            <Button variant="ghost" size="icon-sm" className="size-7">
-              <LinkIcon className="size-3.5" />
+            <Button variant="ghost" size="icon-sm" aria-label="Strikethrough">
+              <StrikethroughIcon />
             </Button>
-          </div>
-          <p className="text-[10px] font-semibold tracking-[0.16em] text-muted-foreground uppercase">
-            1,402 words
-          </p>
+            <Button variant="ghost" size="icon-sm" aria-label="Code">
+              <Code2Icon />
+            </Button>
+            <ButtonGroupSeparator className="mx-2 data-vertical:h-4 data-vertical:self-center" />
+            <Button variant="ghost" size="icon-sm" aria-label="Align Left">
+              <AlignLeftIcon />
+            </Button>
+            <Button variant="ghost" size="icon-sm" aria-label="Align Center">
+              <AlignCenterIcon />
+            </Button>
+            <Button variant="ghost" size="icon-sm" aria-label="Align Right">
+              <AlignRightIcon />
+            </Button>
+            <ButtonGroupSeparator className="mx-2 data-vertical:h-4 data-vertical:self-center" />
+            <Button variant="ghost" size="icon-sm" aria-label="Link">
+              <LinkIcon />
+            </Button>
+            <Button variant="ghost" size="icon-sm" aria-label="Image">
+              <ImageIcon />
+            </Button>
+          </ButtonGroup>
+          <ButtonGroup className="ml-auto">
+            <Button variant="ghost" size="icon-sm" aria-label="Undo">
+              <UndoIcon />
+            </Button>
+            <Button variant="ghost" size="icon-sm" aria-label="Redo">
+              <RedoIcon />
+            </Button>
+          </ButtonGroup>
         </div>
-
-        <div className="flex flex-1 flex-col gap-8 px-10 py-10 md:px-14">
-          <p className="max-w-[72ch] text-[29px] leading-[1.65] text-foreground/95">
-            As cities continue to expand at an unprecedented rate, the architectural
-            paradigm is shifting from mere expansion to sustainable integration. The
-            concrete jungles of the 20th century are making way for structures that
-            breathe, adapt, and give back to their environments.
+        <div className="mx-auto flex max-w-2xl flex-1 flex-col gap-8 px-10 py-10 md:px-14">
+          <h1 className="font-heading text-4xl tracking-wide uppercase">
+            The Future of Sustainable Architecture
+          </h1>
+          <p>
+            As cities continue to expand at an unprecedented rate, the
+            architectural paradigm is shifting from mere expansion to
+            sustainable integration. The concrete jungles of the 20th century
+            are making way for structures that breathe, adapt, and give back to
+            their environments.
           </p>
-
-          <p className="max-w-[72ch] text-[29px] leading-[1.65] text-foreground/95">
-            Historically, urban development has been a zero-sum game with nature. We
-            paved over wetlands, redirected rivers, and constructed imposing glass towers
-            that guzzled energy. However, a new generation of architects, like Alistair
-            Sterling, are proposing a radical rethink of our built environment.
+          <p>
+            Historically, urban development has been a zero-sum game with
+            nature. We paved over wetlands, redirected rivers, and constructed
+            imposing glass towers that guzzled energy. However, a new generation
+            of architects, like Alistair Sterling, are proposing a radical
+            rethink of our built environment.
           </p>
-
-          <h2 className="font-heading text-4xl tracking-tight uppercase">
+          <h2 className="font-heading text-2xl tracking-wide uppercase">
             The Living Building Challenge
           </h2>
-
-          <p className="max-w-[72ch] text-[29px] leading-[1.65] text-foreground/95">
-            Sterling's latest project in downtown Seattle is a testament to this new
-            philosophy. "We are no longer designing static structures," Sterling
-            explained during a recent site visit. "We are engineering localized
-            ecosystems."
+          <p>
+            Sterling&apos;s latest project in downtown Seattle is a testament to
+            this new philosophy. &quot;We are no longer designing static
+            structures,&quot; Sterling explained during a recent site visit.
+            &quot;We are engineering localized ecosystems.&quot;
           </p>
-
-          <p className="max-w-[72ch] text-[29px] leading-[1.65] text-foreground/95">
-            The building features a facade of responsive biomaterials that adjust their
-            porosity based on humidity and temperature, significantly reducing the need
-            for artificial climate control. Rainwater is not merely channeled away but
-            captured, filtered through a series of integrated rooftop wetlands, and
-            reused within the building's greywater system.
+          <p>
+            The building features a facade of responsive biomaterials that
+            adjust their porosity based on humidity and temperature,
+            significantly reducing the need for artificial climate control.
+            Rainwater is not merely channeled away but captured, filtered
+            through a series of integrated rooftop wetlands, and reused within
+            the building&apos;s greywater system.
           </p>
-
-          <p className="max-w-[72ch] text-[29px] leading-[1.65] text-foreground/95">
-            This shift requires more than just innovative materials; it demands a
-            fundamental change in how we value space. The metric of success is no longer
-            simply cost per square foot, but the building's overall environmental impact
-            over its lifecycle.
+          <p>
+            This shift requires more than just innovative materials; it demands
+            a fundamental change in how we value space. The metric of success is
+            no longer simply cost per square foot, but the building&apos;s
+            overall environmental impact over its lifecycle.
           </p>
-
-          <p className="max-w-[72ch] text-[25px] italic leading-[1.6] text-muted-foreground">
-            Integration of solar passive design elements needs more elaboration here.
-            Check with engineering team for specific stats.
+          <p>
+            Integration of solar passive design elements needs more elaboration
+            here. Check with engineering team for specific stats.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            This shift requires more than just innovative materials; it demands
+            a fundamental change in how we value space. Check with engineering
+            team for specific stats.
           </p>
         </div>
       </section>
-
-      <aside className="flex min-h-[980px] flex-col gap-6">
-        <Card className="gap-0 py-0">
-          <CardHeader className="border-b border-border/70 py-5">
+      <aside className="flex flex-col gap-(--gap)">
+        <Card>
+          <CardHeader>
             <CardTitle>Article Details</CardTitle>
           </CardHeader>
-          <CardContent className="flex flex-col gap-5 py-5">
-            <div className="flex flex-col gap-1">
-              <p className="text-[10px] font-semibold tracking-[0.16em] text-muted-foreground uppercase">
-                Issue
-              </p>
-              <p className="font-medium">Summer Issue 2024</p>
-            </div>
-            <div className="flex flex-col gap-1">
-              <p className="text-[10px] font-semibold tracking-[0.16em] text-muted-foreground uppercase">
-                Author
-              </p>
-              <p className="font-medium">Elena Rostova</p>
-            </div>
-            <div className="flex flex-col gap-2">
-              <p className="text-[10px] font-semibold tracking-[0.16em] text-muted-foreground uppercase">
-                Target Word Count
-              </p>
-              <Progress value={70}>
-                <ProgressValue className="w-full text-right text-[10px] font-medium tracking-[0.12em] text-muted-foreground uppercase">
-                  1.4k / 2.0k
-                </ProgressValue>
-              </Progress>
-            </div>
+          <CardContent>
+            <FieldGroup>
+              <Field>
+                <FieldLabel>Issue</FieldLabel>
+                <Select items={ISSUES} defaultValue="summer-2024">
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      {ISSUES.map((issue) => (
+                        <SelectItem key={issue.value} value={issue.value}>
+                          {issue.label}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </Field>
+              <Field>
+                <FieldLabel>Author</FieldLabel>
+                <Input defaultValue="Elena Rostova" />
+              </Field>
+            </FieldGroup>
           </CardContent>
         </Card>
-
-        <Card className="gap-0 py-0">
-          <CardHeader className="border-b border-border/70 py-5">
+        <Card>
+          <CardHeader>
             <CardTitle>Publication Flow</CardTitle>
           </CardHeader>
-          <CardContent className="flex flex-col gap-5 py-5">
-            <div className="flex flex-col gap-2">
-              <p className="text-[10px] font-semibold tracking-[0.16em] text-muted-foreground uppercase">
-                Editorial Progress
-              </p>
-              <Progress value={45}>
-                <ProgressValue className="w-full text-right text-[10px] font-medium tracking-[0.12em] text-muted-foreground uppercase">
-                  45%
-                </ProgressValue>
-              </Progress>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <p className="text-[10px] font-semibold tracking-[0.16em] text-muted-foreground uppercase">
-                Required Milestones
-              </p>
-              {MILESTONES.map((milestone) => (
-                <label
-                  key={milestone.name}
-                  className="grid grid-cols-[18px_1fr] items-start gap-2.5"
-                >
-                  <Checkbox checked={milestone.complete} />
-                  <span className="flex flex-col gap-0.5">
-                    <span className="text-sm text-foreground">{milestone.name}</span>
-                    <span className="text-[10px] tracking-[0.12em] text-muted-foreground uppercase">
-                      {milestone.note ?? ""}
-                    </span>
-                  </span>
-                </label>
-              ))}
-            </div>
+          <CardContent>
+            <FieldGroup>
+              <FieldSet>
+                <FieldLegend>Required Milestones</FieldLegend>
+                <Field>
+                  {MILESTONES.map((milestone) => (
+                    <Field key={milestone.name} orientation="horizontal">
+                      <Checkbox
+                        defaultChecked={milestone.complete}
+                        name={milestone.name}
+                        id={milestone.name}
+                      />
+                      <FieldLabel htmlFor={milestone.name}>
+                        {milestone.name}
+                      </FieldLabel>
+                    </Field>
+                  ))}
+                </Field>
+              </FieldSet>
+              <Field>
+                <FieldLabel>Add note for editor</FieldLabel>
+                <Textarea placeholder="This article needs to be revised for clarity and accuracy." />
+              </Field>
+            </FieldGroup>
           </CardContent>
         </Card>
-
-        <CardFooter className="mt-auto border border-border/70 bg-background py-4">
-          <Button
-            variant="outline"
-            className="w-full text-[10px] font-semibold tracking-[0.16em]"
-          >
-            Add Note for Editor
-          </Button>
-        </CardFooter>
+        <Card>
+          <CardHeader>
+            <CardTitle>Word Count</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Progress value={70}>
+              <ProgressLabel>1,402 / 2,000 words</ProgressLabel>
+              <ProgressValue />
+            </Progress>
+          </CardContent>
+        </Card>
       </aside>
     </div>
   )

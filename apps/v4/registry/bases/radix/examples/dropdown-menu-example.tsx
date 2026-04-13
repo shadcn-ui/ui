@@ -173,7 +173,7 @@ function DropdownMenuWithShortcuts() {
               <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              Keyboard shortcuts
+              Shortcuts
               <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
             </DropdownMenuItem>
           </DropdownMenuGroup>

@@ -13,8 +13,6 @@ import { ThemeSwitcher } from "./components/theme-switcher"
 import { Preview01 } from "./preview-01"
 import { Preview02 } from "./preview-02"
 import { Preview03 } from "./preview-03"
-import { Preview04 } from "./preview-04"
-import { Preview05 } from "./preview-05"
 
 import "./style.css"
 
@@ -66,8 +64,6 @@ export default function SeraPage() {
           <Preview01 />
           <Preview02 />
           <Preview03 />
-          <Preview04 />
-          <Preview05 />
         </div>
       </div>
       <ThemeSwitcher />

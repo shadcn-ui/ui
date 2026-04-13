@@ -120,7 +120,7 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="field-label"
       className={cn(
-        "flex w-fit items-center gap-2 text-xs font-semibold tracking-wide uppercase group-data-[disabled=true]/field:opacity-50",
+        "flex w-fit items-center gap-2 leading-normal font-medium group-data-[disabled=true]/field:opacity-50",
         className
       )}
       {...props}
