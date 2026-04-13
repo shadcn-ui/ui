@@ -595,11 +595,34 @@ function processRule(parent: Root | AtRule, selector: string, properties: any) {
 
         existingDecl ? existingDecl.replaceWith(decl) : rule.append(decl)
       } else if (typeof value === "object") {
-        // Nested selector (including & selectors).
-        const nestedSelector = prop.startsWith("&")
-          ? selector.replace(/^([^:]+)/, `$1${prop.substring(1)}`)
-          : prop // Use the original selector for other nested elements.
-        processRule(parent, nestedSelector, value)
+        // Check if this is a nested at-rule with a body (e.g., @media).
+        if (prop.startsWith("@")) {
+          const atRuleMatch = prop.match(/@([a-zA-Z-]+)\s*(.*)/)
+          if (atRuleMatch) {
+            const [, atRuleName, atRuleParams] = atRuleMatch
+            
+            // Create the at-rule inside the current rule
+            const atRule = postcss.atRule({
+              name: atRuleName,
+              params: atRuleParams,
+              raws: { semicolon: true, between: " ", before: "\n    " },
+            })
+            rule.append(atRule)
+            
+            // Process the nested content inside the at-rule
+            for (const [nestedProp, nestedValue] of Object.entries(value)) {
+              processRule(atRule, nestedProp, nestedValue)
+            }
+          }
+        } else {
+          // Nested selector (including & selectors).
+          const nestedSelector = prop.startsWith("&")
+            ? selector.replace(/^([^:]+)/, `$1${prop.substring(1)}`)
+            : prop // Use the original selector for other nested elements.
+          processRule(parent, nestedSelector, value)
+        }
+      }
+
       }
     }
   } else if (typeof properties === "string") {
