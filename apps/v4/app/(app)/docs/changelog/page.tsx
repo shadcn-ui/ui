@@ -10,6 +10,8 @@ import { Button } from "@/styles/radix-nova/ui/button"
 export const revalidate = false
 export const dynamic = "force-static"
 
+const NUMBER_OF_LATEST_PAGES = 2
+
 export function generateMetadata() {
   return {
     title: "Changelog",
@@ -34,8 +36,8 @@ export function generateMetadata() {
 
 export default function ChangelogPage() {
   const pages = getChangelogPages()
-  const latestPages = pages.slice(0, 5)
-  const olderPages = pages.slice(5)
+  const latestPages = pages.slice(0, NUMBER_OF_LATEST_PAGES)
+  const olderPages = pages.slice(NUMBER_OF_LATEST_PAGES)
 
   return (
     <div
@@ -44,7 +46,7 @@ export default function ChangelogPage() {
     >
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="h-(--top-spacing) shrink-0" />
-        <div className="mx-auto flex w-full max-w-[40rem] min-w-0 flex-1 flex-col gap-6 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
+        <div className="mx-auto flex w-full max-w-160 min-w-0 flex-1 flex-col gap-6 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between">
               <h1 className="scroll-m-24 text-4xl font-semibold tracking-tight sm:text-3xl">
