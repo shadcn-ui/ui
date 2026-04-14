@@ -1,5 +1,3 @@
-"use client"
-
 import { Checkbox } from "@/styles/base-nova/ui/checkbox"
 import {
   Field,
