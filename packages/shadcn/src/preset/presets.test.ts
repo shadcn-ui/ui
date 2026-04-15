@@ -79,6 +79,12 @@ describe("buildInitUrl", () => {
     expect(parsed.searchParams.get("chartColor")).toBe("emerald")
   })
 
+  it("should not include chartColor when it is neutral", () => {
+    const url = resolveInitUrl({ ...mockPreset, chartColor: "neutral" })
+    const parsed = new URL(url)
+    expect(parsed.searchParams.has("chartColor")).toBe(false)
+  })
+
   it("should not include chartColor when not provided", () => {
     const url = resolveInitUrl(mockPreset)
     const parsed = new URL(url)

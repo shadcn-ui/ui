@@ -1,5 +1,6 @@
 import { existsSync } from "fs"
 import path from "path"
+import { resolveProjectPreset } from "@/src/preset/resolve"
 import { SHADCN_URL } from "@/src/registry/constants"
 import { getBase, getConfig } from "@/src/utils/get-config"
 import {
@@ -64,7 +65,7 @@ export const info = new Command()
       const config = await getConfig(cwd)
       const components = await getProjectComponents(cwd)
       const base = getBase(config?.style)
-      const data = collectInfo(projectInfo, config, components, base)
+      const data = await collectInfo(projectInfo, config, components, base)
 
       if (opts.json) {
         console.log(JSON.stringify(data, null, 2))
@@ -91,12 +92,16 @@ function getRegistries(
   return result
 }
 
-function collectInfo(
+export async function collectInfo(
   projectInfo: ProjectInfo | null,
   config: Awaited<ReturnType<typeof getConfig>>,
   components: string[],
   base: string
 ) {
+  const preset = config
+    ? await resolveProjectPreset(config, projectInfo)
+    : null
+
   return {
     project: projectInfo
       ? {
@@ -142,6 +147,7 @@ function collectInfo(
           registries: getRegistries(config.registries),
         }
       : null,
+    preset,
     components,
     links: {
       docs: `${SHADCN_URL}/docs`,
@@ -153,7 +159,7 @@ function collectInfo(
   }
 }
 
-function printInfo(data: ReturnType<typeof collectInfo>) {
+export function printInfo(data: Awaited<ReturnType<typeof collectInfo>>) {
   // Project.
   logger.log(highlighter.info("Project"))
   if (data.project) {
@@ -186,6 +192,29 @@ function printInfo(data: ReturnType<typeof collectInfo>) {
       menuColor: data.config.menuColor ?? "-",
       menuAccent: data.config.menuAccent ?? "-",
     })
+
+    logger.break()
+    logger.log(highlighter.info("Preset"))
+    if (!data.preset?.code) {
+      printEntries({
+        "--preset": "-",
+      })
+    } else {
+      printEntries({
+        "--preset": data.preset.code,
+        url: `${SHADCN_URL}/create?preset=${data.preset.code}`,
+        style: data.preset.values?.style ?? "-",
+        baseColor: data.preset.values?.baseColor ?? "-",
+        theme: data.preset.values?.theme ?? "-",
+        chartColor: data.preset.values?.chartColor ?? "-",
+        iconLibrary: data.preset.values?.iconLibrary ?? "-",
+        font: data.preset.values?.font ?? "-",
+        fontHeading: data.preset.values?.fontHeading ?? "-",
+        radius: data.preset.values?.radius ?? "-",
+        menuAccent: data.preset.values?.menuAccent ?? "-",
+        menuColor: data.preset.values?.menuColor ?? "-",
+      })
+    }
 
     // Aliases.
     logger.break()
