@@ -28,6 +28,13 @@
     "logo": "<svg width='53' height='64' viewBox='0 0 53 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M3.37163 27.7823C13.8466 26.0536 22.0585 17.3818 23.7786 6.88966L24.3558 1.84681C24.4986 1.04545 23.9557 -0.0707301 22.9442 0.00940596C15.0295 0.627599 7.56046 3.24347 3.40592 4.9435C1.34294 5.79065 0 7.79405 0 10.0264V26.4772C0 27.4503 0.874338 28.1944 1.8344 28.0399L3.37163 27.788V27.7823Z' fill='var(--foreground)'/><path d='M28.8312 6.89002C30.557 17.3821 38.7689 26.054 49.2381 27.7826L50.7753 28.0345C51.7354 28.1948 52.6097 27.4507 52.6097 26.4718V10.0211C52.6097 7.78869 51.2668 5.78529 49.2038 4.93814C45.0436 3.23238 37.5803 0.622239 29.6655 0.00404612C28.6483 -0.07609 28.1282 1.05154 28.2483 1.84145L28.8254 6.8843L28.8312 6.89002Z' fill='var(--foreground)'/><path d='M49.2301 32.3907C34.915 35.2184 28.2689 44.7488 28.2689 62.7909C28.2689 63.6953 29.166 64.3249 29.9204 63.8212C36.5036 59.3737 50.9902 47.7654 52.4818 33.2436C52.5389 31.4176 50.2588 32.2762 49.2301 32.3907Z' fill='var(--foreground)'/><path d='M3.37691 32.3907C17.6921 35.2184 24.3382 44.7488 24.3382 62.7909C24.3382 63.6953 23.441 64.3249 22.6867 63.8212C16.1034 59.3737 1.6168 47.7654 0.125285 33.2436C0.0681382 31.4176 2.34828 32.2762 3.37691 32.3907Z' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@ark-cn",
+    "homepage": "https://ark-cn.vercel.app",
+    "url": "https://ark-cn.vercel.app/r/{name}.json",
+    "description": "Accessible shadcn/ui components built with React, TypeScript, and Tailwind CSS. Copy-paste ready, and customizable. Built by ARK UI.",
+    "logo": "<svg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'><circle cx='128' cy='128' r='128' fill='white'/><line x1='94' y1='178' x2='128' y2='82' stroke-width='15' stroke-linecap='round' stroke='#1a1a1a'/><line x1='162' y1='178' x2='128' y2='82' stroke-width='15' stroke-linecap='round' stroke='#1a1a1a'/><path d='M 104 143 Q 128 118 152 143' fill='none' stroke-width='13' stroke-linecap='round' stroke='#1a1a1a'/></svg>"
+  },
+  {
     "name": "@abui",
     "homepage": "https://abui.io",
     "url": "https://abui.io/r/{name}.json",
