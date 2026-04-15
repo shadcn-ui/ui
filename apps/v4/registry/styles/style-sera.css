@@ -285,7 +285,7 @@
   }
 
   .cn-combobox-label {
-    @apply px-3 py-2 text-[0.625rem] uppercase tracking-wider text-muted-foreground;
+    @apply px-3 py-2 text-xs uppercase tracking-wider font-semibold text-muted-foreground;
   }
 
   .cn-combobox-item {
@@ -309,7 +309,7 @@
   }
 
   .cn-combobox-separator {
-    @apply bg-border -mx-1.5 my-1.5 h-px;
+    @apply bg-border/50 -mx-1.5 my-1.5 h-px;
   }
 
   .cn-combobox-trigger {
@@ -366,11 +366,11 @@
   }
 
   .cn-command-group {
-    @apply text-foreground **:[[cmdk-group-heading]]:text-foreground overflow-hidden p-1.5 **:[[cmdk-group-heading]]:px-3 **:[[cmdk-group-heading]]:py-2 **:[[cmdk-group-heading]]:text-[0.625rem] **:[[cmdk-group-heading]]:font-semibold **:[[cmdk-group-heading]]:uppercase **:[[cmdk-group-heading]]:tracking-wider;
+    @apply text-foreground **:[[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1.5 **:[[cmdk-group-heading]]:px-3 **:[[cmdk-group-heading]]:py-2 **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:font-semibold **:[[cmdk-group-heading]]:uppercase **:[[cmdk-group-heading]]:tracking-wider;
   }
 
   .cn-command-separator {
-    @apply bg-border/50 my-1 h-px;
+    @apply bg-border/50 -mx-1.5 my-1.5 h-px;
   }
 
   .cn-command-item {
@@ -407,7 +407,7 @@
   }
 
   .cn-context-menu-label {
-    @apply px-3 py-2 text-[0.625rem] uppercase tracking-wider data-inset:pl-9.5 font-semibold text-foreground;
+    @apply px-3 py-2 text-xs uppercase tracking-wider data-inset:pl-9.5 font-semibold text-muted-foreground;
   }
 
   .cn-context-menu-separator {
@@ -514,7 +514,7 @@
   }
 
   .cn-dropdown-menu-label {
-    @apply px-3 py-2 text-[0.625rem] uppercase tracking-wider data-inset:pl-9.5 font-semibold text-foreground;
+    @apply px-3 py-2 text-xs uppercase tracking-wider data-inset:pl-9.5 font-semibold text-muted-foreground;
   }
 
   .cn-dropdown-menu-separator {
@@ -596,7 +596,7 @@
   }
 
   .cn-field-title {
-    @apply gap-2 group-data-[disabled=true]/field:opacity-50 leading-normal font-medium;
+    @apply gap-2 group-data-[disabled=true]/field:opacity-50 leading-normal font-semibold in-data-[slot=field-label]:font-semibold;
   }
 
   .cn-field-description {
@@ -738,7 +738,7 @@
 
   /* MARK: Label */
   .cn-label {
-    @apply gap-2 peer-data-[slot=checkbox]:text-sm peer-data-[slot=radio-group-item]:text-sm peer-data-[slot=switch]:text-sm leading-relaxed font-medium group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 peer-data-[slot=checkbox]:font-normal peer-data-[slot=radio-group-item]:font-normal peer-data-[slot=switch]:font-normal uppercase text-xs tracking-wide;
+    @apply gap-2 font-semibold peer-data-[slot=checkbox]:text-sm peer-data-[slot=radio-group-item]:text-sm peer-data-[slot=switch]:text-sm leading-relaxed group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 peer-data-[slot=checkbox]:font-normal peer-data-[slot=radio-group-item]:font-normal peer-data-[slot=switch]:font-normal uppercase text-xs tracking-wide peer-data-[slot=checkbox]:normal-case peer-data-[slot=checkbox]:tracking-normal peer-data-[slot=radio-group-item]:normal-case peer-data-[slot=radio-group-item]:tracking-normal peer-data-[slot=switch]:normal-case peer-data-[slot=switch]:tracking-normal;
   }
 
   /* MARK: Menubar */
@@ -779,11 +779,11 @@
   }
 
   .cn-menubar-label {
-    @apply px-3.5 py-2 text-[0.625rem] uppercase tracking-wider data-inset:pl-9.5 font-semibold text-foreground;
+    @apply px-3.5 py-2 text-xs uppercase tracking-wider data-inset:pl-9.5 font-semibold text-muted-foreground;
   }
 
   .cn-menubar-separator {
-    @apply bg-border/50;
+    @apply bg-border/50 -mx-1.5 my-1.5 h-px;
   }
 
   .cn-menubar-shortcut {
@@ -964,7 +964,7 @@
   }
 
   .cn-select-label {
-    @apply px-3 py-2 text-[0.625rem] uppercase tracking-wider text-muted-foreground;
+    @apply px-3 py-2 text-xs uppercase tracking-wider font-semibold text-muted-foreground;
   }
 
   .cn-select-item {
@@ -984,7 +984,7 @@
   }
 
   .cn-select-separator {
-    @apply bg-border -mx-1.5 my-1.5 h-px;
+    @apply bg-border/50 -mx-1.5 my-1.5 h-px;
   }
 
   .cn-select-scroll-up-button {

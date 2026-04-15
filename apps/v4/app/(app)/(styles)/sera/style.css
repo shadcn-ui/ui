@@ -1,7 +1,7 @@
 @layer base {
-  .cn-font-heading {
+  /* .cn-font-heading {
     font-family: var(--font-playfair-display);
-  }
+  } */
 
   .preview {
     --font-sans: var(--font-noto-sans);

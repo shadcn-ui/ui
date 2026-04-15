@@ -180,7 +180,7 @@ function ComboboxLabel({
     <ComboboxPrimitive.GroupLabel
       data-slot="combobox-label"
       className={cn(
-        "px-3 py-2 text-[0.625rem] tracking-wider text-muted-foreground uppercase",
+        "px-3 py-2 text-xs font-semibold tracking-wider text-muted-foreground uppercase",
         className
       )}
       {...props}
@@ -214,7 +214,7 @@ function ComboboxSeparator({
   return (
     <ComboboxPrimitive.Separator
       data-slot="combobox-separator"
-      className={cn("-mx-1.5 my-1.5 h-px bg-border", className)}
+      className={cn("-mx-1.5 my-1.5 h-px bg-border/50", className)}
       {...props}
     />
   )
