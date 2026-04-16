@@ -72,9 +72,7 @@ export const ASSETS: Asset[] = [
     uploadedByInitials: "ER",
     uploadedOn: "Oct 18, 2024",
     tags: ["video", "interview", "film"],
-    usedIn: [
-      { title: "The Aesthetics of Isolation", role: "Featured Video" },
-    ],
+    usedIn: [{ title: "The Aesthetics of Isolation", role: "Featured Video" }],
   },
   {
     id: "5",
@@ -87,9 +85,7 @@ export const ASSETS: Asset[] = [
     uploadedByInitials: "MC",
     uploadedOn: "Oct 15, 2024",
     tags: ["ceramics", "kyoto", "craft"],
-    usedIn: [
-      { title: "Kyoto's Oldest Kilns", role: "Hero Image" },
-    ],
+    usedIn: [{ title: "Kyoto's Oldest Kilns", role: "Hero Image" }],
   },
   {
     id: "6",
@@ -141,7 +137,9 @@ export const ASSETS: Asset[] = [
     uploadedByInitials: "CD",
     uploadedOn: "Oct 09, 2024",
     tags: ["milan", "lighting", "studio"],
-    usedIn: [{ title: "Milan's Most Elusive Lighting Designer", role: "Hero Image" }],
+    usedIn: [
+      { title: "Milan's Most Elusive Lighting Designer", role: "Hero Image" },
+    ],
   },
   {
     id: "10",
@@ -154,7 +152,9 @@ export const ASSETS: Asset[] = [
     uploadedByInitials: "AI",
     uploadedOn: "Oct 14, 2024",
     tags: ["lisbon", "food", "editorial"],
-    usedIn: [{ title: "Lisbon's Quiet Culinary Renaissance", role: "Inline Gallery" }],
+    usedIn: [
+      { title: "Lisbon's Quiet Culinary Renaissance", role: "Inline Gallery" },
+    ],
   },
   {
     id: "11",
@@ -181,6 +181,8 @@ export const ASSETS: Asset[] = [
     uploadedByInitials: "TR",
     uploadedOn: "Sep 30, 2024",
     tags: ["video", "furniture", "trailer"],
-    usedIn: [{ title: "Collecting the New Avant-Garde", role: "Featured Video" }],
+    usedIn: [
+      { title: "Collecting the New Avant-Garde", role: "Featured Video" },
+    ],
   },
 ]

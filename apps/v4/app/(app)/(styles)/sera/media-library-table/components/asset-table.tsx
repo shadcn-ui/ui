@@ -86,9 +86,9 @@ export function AssetTable() {
   }, [])
 
   return (
-    <Card className="gap-0">
-      <CardHeader className="border-b py-5">
-        <InputGroup className="w-full md:max-w-sm">
+    <Card>
+      <CardHeader>
+        <InputGroup className="w-full">
           <InputGroupAddon>
             <SearchIcon />
           </InputGroupAddon>

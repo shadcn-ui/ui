@@ -7,72 +7,57 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { Button } from "@/registry/new-york-v4/ui/button"
+import { Button } from "@/styles/radix-sera/ui/button"
 
-import { ArticleDirectory } from "./article-directory"
 import { AudienceAnalytics } from "./audience-analytics"
-import { ThemeSwitcher } from "./components/theme-switcher"
-import { EditArticle } from "./edit-article"
-import { EmptyState } from "./empty-state"
-import { MediaLibrary } from "./media-library"
-import { MediaLibraryTable } from "./media-library-table"
+import { LazyPreview } from "./components/lazy-preview"
 
 import "./style.css"
 
+import { ArrowRightIcon } from "lucide-react"
+
+import { ImagePreview } from "./components/image-preview"
+
 const title = "Introducing Sera"
 const description =
-  "Minimal and editorial. Underline controls, uppercase headings, and wide tracking for a refined typographic hierarchy."
+  "Minimal. Editorial. Typographic. Underline controls and uppercase headings shaped by print design principles"
 
 export const metadata: Metadata = {
   title,
   description,
-  openGraph: {
-    images: [
-      {
-        url: `/og?title=${encodeURIComponent(
-          title
-        )}&description=${encodeURIComponent(description)}`,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    images: [
-      {
-        url: `/og?title=${encodeURIComponent(
-          title
-        )}&description=${encodeURIComponent(description)}`,
-      },
-    ],
-  },
 }
 
 export default function SeraPage() {
   return (
     <>
       <PageHeader>
-        <PageHeaderHeading>{title}</PageHeaderHeading>
-        <PageHeaderDescription>{description}</PageHeaderDescription>
+        <PageHeaderHeading className="font-(family-name:--font-playfair-display) text-[2.875rem] tracking-tight!">
+          {title}
+        </PageHeaderHeading>
+        <PageHeaderDescription className="max-w-2xl text-pretty md:text-balance">
+          {description}
+        </PageHeaderDescription>
         <PageActions className="**:[.container]:justify-start">
           <Button asChild size="sm">
-            <Link href="/create?preset=b4xFeBLg4O">New Project</Link>
-          </Button>
-          <Button asChild variant="ghost" size="sm">
-            <Link href="/create?preset=b4xFeBLg4O">Explore Sera</Link>
+            <Link href="/create?preset=b4xFeBLg4O">
+              Open in shadcn/create
+              <ArrowRightIcon data-icon="inline-end" />
+            </Link>
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="container-wrapper flex flex-1 flex-col section-soft px-0 md:px-2 md:py-12">
+      <ImagePreview />
+      <div className="container-wrapper hidden flex-1 flex-col section-soft px-0 md:flex md:px-2 md:py-12">
         <div className="container flex flex-1 flex-col gap-10 px-0 3xl:max-w-[2000px] md:px-6">
           <AudienceAnalytics />
-          <ArticleDirectory />
-          <EmptyState />
-          <EditArticle />
-          <MediaLibrary />
-          <MediaLibraryTable />
+          <LazyPreview name="articleDirectory" />
+          <LazyPreview name="emptyState" />
+          <LazyPreview name="editArticle" />
+          <LazyPreview name="mediaLibrary" />
+          <LazyPreview name="mediaLibraryTable" />
         </div>
       </div>
-      <ThemeSwitcher />
+      {/* <ThemeSwitcher /> */}
     </>
   )
 }

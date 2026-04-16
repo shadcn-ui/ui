@@ -60,7 +60,7 @@ export function AssetGrid({
   return (
     <Card>
       <CardHeader>
-        <InputGroup className="w-full md:max-w-sm">
+        <InputGroup className="w-full">
           <InputGroupAddon>
             <SearchIcon />
           </InputGroupAddon>

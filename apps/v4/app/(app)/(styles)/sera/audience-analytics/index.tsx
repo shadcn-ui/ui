@@ -4,7 +4,7 @@ import { Demographics } from "./components/demographics"
 import { MetricsGrid } from "./components/metrics-grid"
 import { PreviewHeader } from "./components/preview-header"
 import { TopEditorial } from "./components/top-editorial"
-import { TrafficOverview } from "./components/traffic-overview"
+import { TrafficOverviewDeferred } from "./components/traffic-overview-deferred"
 
 export function AudienceAnalytics() {
   return (
@@ -13,7 +13,7 @@ export function AudienceAnalytics() {
       <Separator className="hidden sm:block" />
       <div className="container grid grid-cols-12 gap-(--gap) py-(--gap)">
         <MetricsGrid />
-        <TrafficOverview className="col-span-full md:col-span-6 lg:col-span-8" />
+        <TrafficOverviewDeferred className="col-span-full md:col-span-6 lg:col-span-8" />
         <Demographics className="col-span-full md:col-span-6 lg:col-span-4" />
         <TopEditorial className="col-span-full" />
       </div>

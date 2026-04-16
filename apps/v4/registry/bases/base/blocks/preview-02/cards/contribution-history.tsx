@@ -51,9 +51,6 @@ export function ContributionHistory() {
       <CardHeader>
         <CardTitle>Contribution History</CardTitle>
         <CardDescription>Last 6 months of activity</CardDescription>
-        <CardAction>
-          <Badge variant="secondary">+12% vs last month</Badge>
-        </CardAction>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="h-[200px] w-full">

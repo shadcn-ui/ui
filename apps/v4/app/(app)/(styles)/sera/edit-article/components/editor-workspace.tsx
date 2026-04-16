@@ -220,7 +220,7 @@ export function EditorWorkspace() {
             </Button>
           </ButtonGroup>
         </div>
-        <div className="mx-auto flex max-w-2xl flex-1 flex-col gap-8 px-10 py-10 leading-loose md:px-14 lg:py-24">
+        <div className="mx-auto flex max-w-2xl flex-1 flex-col gap-8 px-10 py-10 leading-loose md:px-14 lg:py-18">
           <h1 className="font-heading text-4xl leading-12 font-medium tracking-wide uppercase">
             The Future of Sustainable Architecture
           </h1>
@@ -233,10 +233,7 @@ export function EditorWorkspace() {
           </p>
           <p>
             Historically, urban development has been a zero-sum game with
-            nature. We paved over wetlands, redirected rivers, and constructed
-            imposing glass towers that guzzled energy. However, a new generation
-            of architects, like Alistair Sterling, are proposing a radical
-            rethink of our built environment.
+            nature.
           </p>
           <h2 className="font-heading text-2xl tracking-wide uppercase">
             The Living Building Challenge
@@ -254,16 +251,6 @@ export function EditorWorkspace() {
             Rainwater is not merely channeled away but captured, filtered
             through a series of integrated rooftop wetlands, and reused within
             the building&apos;s greywater system.
-          </p>
-          <p>
-            This shift requires more than just innovative materials; it demands
-            a fundamental change in how we value space. The metric of success is
-            no longer simply cost per square foot, but the building&apos;s
-            overall environmental impact over its lifecycle.
-          </p>
-          <p>
-            Integration of solar passive design elements needs more elaboration
-            here. Check with engineering team for specific stats.
           </p>
           <p className="text-sm text-muted-foreground">
             This shift requires more than just innovative materials; it demands

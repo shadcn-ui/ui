@@ -27,22 +27,22 @@ import {
 } from "@/styles/base-sera/ui/chart"
 
 const TRAFFIC_OVERVIEW_DATA = [
-  { date: "2025-10-01", pageviews: 2600, unique: 1600 },
-  { date: "2025-10-04", pageviews: 4500, unique: 3000 },
-  { date: "2025-10-08", pageviews: 3500, unique: 2500 },
-  { date: "2025-10-10", pageviews: 6400, unique: 4500 },
-  { date: "2025-10-13", pageviews: 5400, unique: 4000 },
-  { date: "2025-10-15", pageviews: 8300, unique: 6500 },
-  { date: "2025-10-17", pageviews: 7400, unique: 6000 },
-  { date: "2025-10-18", pageviews: 9240, unique: 7105 },
-  { date: "2025-10-22", pageviews: 7700, unique: 6400 },
-  { date: "2025-10-26", pageviews: 8800, unique: 7000 },
-  { date: "2025-10-29", pageviews: 9800, unique: 8400 },
+  { date: "2025-10-01", views: 2600, unique: 1600 },
+  { date: "2025-10-04", views: 4500, unique: 3000 },
+  { date: "2025-10-08", views: 3500, unique: 2500 },
+  { date: "2025-10-10", views: 6400, unique: 4500 },
+  { date: "2025-10-13", views: 5400, unique: 4000 },
+  { date: "2025-10-15", views: 8300, unique: 6500 },
+  { date: "2025-10-17", views: 7400, unique: 6000 },
+  { date: "2025-10-18", views: 9240, unique: 7105 },
+  { date: "2025-10-22", views: 7700, unique: 6400 },
+  { date: "2025-10-26", views: 8800, unique: 7000 },
+  { date: "2025-10-29", views: 9800, unique: 8400 },
 ]
 
 const TRAFFIC_CHART_CONFIG = {
-  pageviews: {
-    label: "Pageviews",
+  views: {
+    label: "Views",
     theme: {
       light: "var(--chart-5)",
       dark: "var(--chart-1)",
@@ -125,11 +125,11 @@ export function TrafficOverview({
             <ChartTooltip content={<ChartTooltipContent />} />
             <Line
               type="linear"
-              dataKey="pageviews"
-              stroke="var(--color-pageviews)"
+              dataKey="views"
+              stroke="var(--color-views)"
               strokeWidth={2.2}
               dot={false}
-              activeDot={{ r: 3.5, fill: "var(--color-pageviews)" }}
+              activeDot={{ r: 3.5, fill: "var(--color-views)" }}
             />
             <Line
               type="linear"
@@ -144,8 +144,8 @@ export function TrafficOverview({
               x="2025-10-18"
               y={9240}
               r={2.5}
-              fill="var(--color-pageviews)"
-              stroke="var(--color-pageviews)"
+              fill="var(--color-views)"
+              stroke="var(--color-views)"
             />
           </LineChart>
         </ChartContainer>

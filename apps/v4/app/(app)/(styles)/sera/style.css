@@ -1,11 +1,9 @@
 @layer base {
-  /* .cn-font-heading {
-    font-family: var(--font-playfair-display);
-  } */
-
   .preview {
     --font-sans: var(--font-noto-sans);
     --font-heading: var(--font-playfair-display);
+    contain-intrinsic-size: auto 900px;
+    content-visibility: auto;
   }
 
   .theme-taupe {

@@ -30,7 +30,7 @@
   }
 
   .cn-alert-title {
-    @apply font-medium group-has-[>svg]/alert:col-start-2 font-sans;
+    @apply font-semibold group-has-[>svg]/alert:col-start-2 text-sm;
   }
 
   .cn-alert-description {
@@ -59,7 +59,7 @@
   }
 
   .cn-alert-dialog-title {
-    @apply text-lg sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2 uppercase tracking-wider;
+    @apply text-lg font-semibold sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2 uppercase tracking-wider;
   }
 
   .cn-alert-dialog-description {
@@ -233,7 +233,11 @@
   }
 
   .cn-calendar-caption-label {
-    @apply h-8 pr-2 pl-3;
+    @apply h-8 pr-2 pl-3 text-xs font-semibold uppercase tracking-wide;
+  }
+
+  .cn-calendar-caption {
+    @apply text-xs font-semibold uppercase tracking-wide;
   }
 
   /* MARK: Card */
@@ -246,7 +250,7 @@
   }
 
   .cn-card-title {
-    @apply text-lg tracking-wider uppercase;
+    @apply text-lg font-semibold tracking-wider uppercase;
   }
 
   .cn-card-description {
@@ -289,7 +293,7 @@
   }
 
   .cn-combobox-item {
-    @apply data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground gap-2.5 rounded-none py-2 pr-8 pl-3 text-xs font-medium uppercase tracking-wider [&_svg:not([class*='size-'])]:size-3.5;
+    @apply data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground gap-2.5 rounded-none py-2 pr-8 pl-3 text-sm [&_svg:not([class*='size-'])]:size-3.5;
   }
 
   .cn-combobox-item-indicator {
@@ -452,7 +456,7 @@
   }
 
   .cn-dialog-title {
-    @apply text-lg leading-none uppercase tracking-wider;
+    @apply text-lg font-semibold leading-none uppercase tracking-wider;
   }
 
   .cn-dialog-description {
@@ -477,7 +481,7 @@
   }
 
   .cn-drawer-title {
-    @apply text-foreground text-lg uppercase tracking-wider;
+    @apply text-foreground text-lg font-semibold uppercase tracking-wider;
   }
 
   .cn-drawer-description {
@@ -559,7 +563,7 @@
   }
 
   .cn-empty-title {
-    @apply text-lg tracking-wider uppercase;
+    @apply text-lg font-semibold tracking-wider uppercase;
   }
 
   .cn-empty-description {
@@ -596,7 +600,7 @@
   }
 
   .cn-field-title {
-    @apply gap-2 group-data-[disabled=true]/field:opacity-50 leading-normal font-semibold in-data-[slot=field-label]:font-semibold;
+    @apply gap-2 group-data-[disabled=true]/field:opacity-50 leading-normal font-semibold uppercase in-data-[slot=field-label]:font-semibold text-xs;
   }
 
   .cn-field-description {
@@ -700,7 +704,7 @@
   }
 
   .cn-item-title {
-    @apply gap-2 text-sm leading-snug font-semibold tracking-wide underline-offset-4;
+    @apply gap-2 text-xs leading-snug font-semibold uppercase underline-offset-4;
   }
 
   .cn-item-description {
@@ -883,7 +887,7 @@
   }
 
   .cn-popover-title {
-    @apply text-sm font-semibold tracking-wide;
+    @apply text-xs font-semibold uppercase;
   }
 
   .cn-popover-description {
@@ -968,7 +972,7 @@
   }
 
   .cn-select-item {
-    @apply focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground gap-2.5 rounded-none py-2 pr-8 pl-3 text-xs font-medium uppercase tracking-wider [&_svg:not([class*='size-'])]:size-3.5 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2;
+    @apply focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground gap-2.5 rounded-none py-2 pr-8 pl-3 text-sm [&_svg:not([class*='size-'])]:size-3.5 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2;
   }
 
   .cn-select-item-indicator {
@@ -1030,7 +1034,7 @@
   }
 
   .cn-sheet-title {
-    @apply text-foreground text-lg uppercase tracking-wider;
+    @apply text-foreground text-lg font-semibold uppercase tracking-wider;
   }
 
   .cn-sheet-description {
@@ -1087,7 +1091,7 @@
   }
 
   .cn-sidebar-group-label {
-    @apply text-sidebar-foreground/70 ring-sidebar-ring h-8 rounded-none px-3 text-xs font-medium transition-[margin,opacity] duration-200 ease-linear group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0 focus-visible:ring-2 [&>svg]:size-3.5;
+    @apply text-sidebar-foreground/70 ring-sidebar-ring h-8 rounded-none px-3 text-xs font-semibold uppercase tracking-wider transition-[margin,opacity] duration-200 ease-linear group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0 focus-visible:ring-2 [&>svg]:size-3.5;
   }
 
   .cn-sidebar-group-action {

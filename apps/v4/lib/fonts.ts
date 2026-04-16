@@ -1,4 +1,5 @@
 import {
+  Lora as FontLora,
   Geist_Mono as FontMono,
   Noto_Sans as FontNotoSans,
   Noto_Sans_Arabic as FontNotoSansArabic,
@@ -47,6 +48,11 @@ const fontNotoSansHebrew = FontNotoSansHebrew({
   variable: "--font-he",
 })
 
+const fontLora = FontLora({
+  subsets: ["latin"],
+  variable: "--font-lora",
+})
+
 const fontPlayfairDisplay = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair-display",
@@ -60,5 +66,6 @@ export const fontVariables = cn(
   fontNotoSerif.variable,
   fontNotoSansArabic.variable,
   fontNotoSansHebrew.variable,
-  fontPlayfairDisplay.variable
+  fontPlayfairDisplay.variable,
+  fontLora.variable
 )

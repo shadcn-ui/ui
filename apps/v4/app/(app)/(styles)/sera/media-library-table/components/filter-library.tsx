@@ -1,30 +1,45 @@
 "use client"
 
-import { FilterIcon, XIcon } from "lucide-react"
+import * as React from "react"
+import { addDays, format } from "date-fns"
+import { CalendarIcon, FilterIcon, XIcon } from "lucide-react"
+import { type DateRange } from "react-day-picker"
 
-import { Badge } from "@/styles/base-sera/ui/badge"
 import { Button } from "@/styles/base-sera/ui/button"
+import { Calendar } from "@/styles/base-sera/ui/calendar"
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
+  CardTitle,
 } from "@/styles/base-sera/ui/card"
 import { Checkbox } from "@/styles/base-sera/ui/checkbox"
 import {
+  Combobox,
+  ComboboxChip,
+  ComboboxChips,
+  ComboboxChipsInput,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxItem,
+  ComboboxList,
+  ComboboxValue,
+  useComboboxAnchor,
+} from "@/styles/base-sera/ui/combobox"
+import {
   Field,
-  FieldDescription,
   FieldGroup,
   FieldLabel,
   FieldLegend,
   FieldSet,
 } from "@/styles/base-sera/ui/field"
-import { Input } from "@/styles/base-sera/ui/input"
 import {
-  RadioGroup,
-  RadioGroupItem,
-} from "@/styles/base-sera/ui/radio-group"
-import { Separator } from "@/styles/base-sera/ui/separator"
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/styles/base-sera/ui/popover"
+import { RadioGroup, RadioGroupItem } from "@/styles/base-sera/ui/radio-group"
 import { Slider } from "@/styles/base-sera/ui/slider"
 
 const FILE_TYPES = [
@@ -57,36 +72,48 @@ const DATE_OPTIONS = [
   { value: "month", label: "Past month" },
 ]
 
-const TAGS = ["architecture", "brutalism", "exterior", "summer-issue"]
+const TAGS = [
+  "architecture",
+  "brutalism",
+  "ceramics",
+  "design-week",
+  "editorial",
+  "exterior",
+  "film",
+  "food",
+  "furniture",
+  "interior",
+  "kyoto",
+  "minimalism",
+  "print",
+  "sustainability",
+  "summer-issue",
+  "video",
+] as const
 
 export function FilterLibrary() {
+  const tagAnchor = useComboboxAnchor()
+  const [dateRange, setDateRange] = React.useState<DateRange | undefined>({
+    from: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+    to: addDays(
+      new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+      21
+    ),
+  })
+
   return (
-    <Card className="gap-0">
+    <Card>
       <CardHeader className="border-b">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <FilterIcon className="size-4" />
-            <h2 className="font-heading text-lg tracking-wider uppercase">
-              Filter Library
-            </h2>
-          </div>
-          <Button variant="ghost" size="icon-sm" aria-label="Close filters">
-            <XIcon />
-          </Button>
-        </div>
+        <CardTitle>Filter Library</CardTitle>
       </CardHeader>
-      <CardContent className="py-6">
+      <CardContent>
         <FieldGroup>
           <FieldSet>
             <FieldLegend>File Type</FieldLegend>
-            <Separator className="-mt-2 mb-2" />
             <Field>
               {FILE_TYPES.map((type) => (
                 <Field key={type.id} orientation="horizontal">
-                  <Checkbox
-                    id={type.id}
-                    defaultChecked={type.defaultChecked}
-                  />
+                  <Checkbox id={type.id} defaultChecked={type.defaultChecked} />
                   <FieldLabel htmlFor={type.id}>{type.label}</FieldLabel>
                 </Field>
               ))}
@@ -94,7 +121,6 @@ export function FilterLibrary() {
           </FieldSet>
           <FieldSet>
             <FieldLegend>Date Uploaded</FieldLegend>
-            <Separator className="-mt-2 mb-2" />
             <RadioGroup defaultValue="any">
               {DATE_OPTIONS.map((option) => (
                 <Field key={option.value} orientation="horizontal">
@@ -108,25 +134,46 @@ export function FilterLibrary() {
                 </Field>
               ))}
             </RadioGroup>
-            <Field className="mt-3">
-              <FieldLabel
-                htmlFor="date-from"
-                className="text-xs font-normal tracking-normal text-muted-foreground normal-case"
-              >
-                Custom Range
-              </FieldLabel>
-              <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2">
-                <Input id="date-from" type="date" aria-label="From date" />
-                <span className="text-muted-foreground" aria-hidden>
-                  —
-                </span>
-                <Input id="date-to" type="date" aria-label="To date" />
-              </div>
-            </Field>
           </FieldSet>
+          <Field>
+            <FieldLabel htmlFor="custom-range">Custom Range</FieldLabel>
+            <Popover>
+              <PopoverTrigger
+                render={
+                  <Button
+                    variant="outline"
+                    id="custom-range"
+                    className="w-full"
+                  />
+                }
+              >
+                <CalendarIcon data-icon="inline-start" />
+                {dateRange?.from ? (
+                  dateRange.to ? (
+                    <>
+                      {format(dateRange.from, "LLL dd, y")} –{" "}
+                      {format(dateRange.to, "LLL dd, y")}
+                    </>
+                  ) : (
+                    format(dateRange.from, "LLL dd, y")
+                  )
+                ) : (
+                  <span>Pick a date range</span>
+                )}
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0" align="end">
+                <Calendar
+                  mode="range"
+                  defaultMonth={dateRange?.from}
+                  selected={dateRange}
+                  onSelect={setDateRange}
+                  numberOfMonths={2}
+                />
+              </PopoverContent>
+            </Popover>
+          </Field>
           <FieldSet>
             <FieldLegend>File Size</FieldLegend>
-            <Separator className="-mt-2 mb-2" />
             <div className="flex flex-col gap-3">
               <div className="flex items-center justify-between text-xs font-medium tracking-wider text-muted-foreground uppercase">
                 <span>0 MB</span>
@@ -141,28 +188,45 @@ export function FilterLibrary() {
           </FieldSet>
           <FieldSet>
             <FieldLegend>Tags</FieldLegend>
-            <Separator className="-mt-2 mb-2" />
             <Field>
-              <Input placeholder="Filter by tag..." />
-              <FieldDescription>
-                <div className="flex flex-wrap gap-x-4 gap-y-2">
-                  {TAGS.map((tag) => (
-                    <Badge key={tag}>{tag}</Badge>
-                  ))}
-                </div>
-              </FieldDescription>
+              <Combobox
+                multiple
+                autoHighlight
+                items={TAGS}
+                defaultValue={["architecture", "brutalism"]}
+              >
+                <ComboboxChips ref={tagAnchor}>
+                  <ComboboxValue>
+                    {(values) => (
+                      <React.Fragment>
+                        {values.map((value: string) => (
+                          <ComboboxChip key={value}>{value}</ComboboxChip>
+                        ))}
+                        <ComboboxChipsInput placeholder="Filter by tag..." />
+                      </React.Fragment>
+                    )}
+                  </ComboboxValue>
+                </ComboboxChips>
+                <ComboboxContent anchor={tagAnchor}>
+                  <ComboboxEmpty>No tags found.</ComboboxEmpty>
+                  <ComboboxList>
+                    {(item) => (
+                      <ComboboxItem key={item} value={item}>
+                        {item}
+                      </ComboboxItem>
+                    )}
+                  </ComboboxList>
+                </ComboboxContent>
+              </Combobox>
             </Field>
           </FieldSet>
         </FieldGroup>
       </CardContent>
-      <CardFooter className="flex gap-2 border-t pt-6">
-        <Button
-          variant="outline"
-          className="flex-1 bg-background hover:bg-background/80"
-        >
+      <CardFooter className="flex flex-col gap-2 border-t">
+        <Button className="w-full">Apply Filters</Button>
+        <Button variant="ghost" className="w-full">
           Reset
         </Button>
-        <Button className="flex-1">Apply Filters</Button>
       </CardFooter>
     </Card>
   )
