@@ -86,6 +86,7 @@ import { Label } from "@/registry/new-york-v4/ui/label"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -275,10 +276,12 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
               <SelectValue placeholder="Assign reviewer" />
             </SelectTrigger>
             <SelectContent align="end">
-              <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
-              <SelectItem value="Jamik Tashpulatov">
-                Jamik Tashpulatov
-              </SelectItem>
+              <SelectGroup>
+                <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
+                <SelectItem value="Jamik Tashpulatov">
+                  Jamik Tashpulatov
+                </SelectItem>
+              </SelectGroup>
             </SelectContent>
           </Select>
         </>
@@ -419,10 +422,12 @@ export function DataTable({
             <SelectValue placeholder="Select a view" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="outline">Outline</SelectItem>
-            <SelectItem value="past-performance">Past Performance</SelectItem>
-            <SelectItem value="key-personnel">Key Personnel</SelectItem>
-            <SelectItem value="focus-documents">Focus Documents</SelectItem>
+            <SelectGroup>
+              <SelectItem value="outline">Outline</SelectItem>
+              <SelectItem value="past-performance">Past Performance</SelectItem>
+              <SelectItem value="key-personnel">Key Personnel</SelectItem>
+              <SelectItem value="focus-documents">Focus Documents</SelectItem>
+            </SelectGroup>
           </SelectContent>
         </Select>
         <TabsList className="hidden **:data-[slot=badge]:size-5 **:data-[slot=badge]:rounded-full **:data-[slot=badge]:bg-muted-foreground/30 **:data-[slot=badge]:px-1 @4xl/main:flex">
@@ -552,11 +557,13 @@ export function DataTable({
                   />
                 </SelectTrigger>
                 <SelectContent side="top">
-                  {[10, 20, 30, 40, 50].map((pageSize) => (
-                    <SelectItem key={pageSize} value={`${pageSize}`}>
-                      {pageSize}
-                    </SelectItem>
-                  ))}
+                  <SelectGroup>
+                    {[10, 20, 30, 40, 50].map((pageSize) => (
+                      <SelectItem key={pageSize} value={`${pageSize}`}>
+                        {pageSize}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
                 </SelectContent>
               </Select>
             </div>
@@ -735,22 +742,24 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                     <SelectValue placeholder="Select a type" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Table of Contents">
-                      Table of Contents
-                    </SelectItem>
-                    <SelectItem value="Executive Summary">
-                      Executive Summary
-                    </SelectItem>
-                    <SelectItem value="Technical Approach">
-                      Technical Approach
-                    </SelectItem>
-                    <SelectItem value="Design">Design</SelectItem>
-                    <SelectItem value="Capabilities">Capabilities</SelectItem>
-                    <SelectItem value="Focus Documents">
-                      Focus Documents
-                    </SelectItem>
-                    <SelectItem value="Narrative">Narrative</SelectItem>
-                    <SelectItem value="Cover Page">Cover Page</SelectItem>
+                    <SelectGroup>
+                      <SelectItem value="Table of Contents">
+                        Table of Contents
+                      </SelectItem>
+                      <SelectItem value="Executive Summary">
+                        Executive Summary
+                      </SelectItem>
+                      <SelectItem value="Technical Approach">
+                        Technical Approach
+                      </SelectItem>
+                      <SelectItem value="Design">Design</SelectItem>
+                      <SelectItem value="Capabilities">Capabilities</SelectItem>
+                      <SelectItem value="Focus Documents">
+                        Focus Documents
+                      </SelectItem>
+                      <SelectItem value="Narrative">Narrative</SelectItem>
+                      <SelectItem value="Cover Page">Cover Page</SelectItem>
+                    </SelectGroup>
                   </SelectContent>
                 </Select>
               </div>
@@ -761,9 +770,11 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                     <SelectValue placeholder="Select a status" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Done">Done</SelectItem>
-                    <SelectItem value="In Progress">In Progress</SelectItem>
-                    <SelectItem value="Not Started">Not Started</SelectItem>
+                    <SelectGroup>
+                      <SelectItem value="Done">Done</SelectItem>
+                      <SelectItem value="In Progress">In Progress</SelectItem>
+                      <SelectItem value="Not Started">Not Started</SelectItem>
+                    </SelectGroup>
                   </SelectContent>
                 </Select>
               </div>
@@ -785,11 +796,13 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                   <SelectValue placeholder="Select a reviewer" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
-                  <SelectItem value="Jamik Tashpulatov">
-                    Jamik Tashpulatov
-                  </SelectItem>
-                  <SelectItem value="Emily Whalen">Emily Whalen</SelectItem>
+                  <SelectGroup>
+                    <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
+                    <SelectItem value="Jamik Tashpulatov">
+                      Jamik Tashpulatov
+                    </SelectItem>
+                    <SelectItem value="Emily Whalen">Emily Whalen</SelectItem>
+                  </SelectGroup>
                 </SelectContent>
               </Select>
             </div>

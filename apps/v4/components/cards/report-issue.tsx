@@ -15,6 +15,7 @@ import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -46,11 +47,13 @@ export function CardsReportIssue() {
                   <SelectValue placeholder="Select" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="team">Team</SelectItem>
-                  <SelectItem value="billing">Billing</SelectItem>
-                  <SelectItem value="account">Account</SelectItem>
-                  <SelectItem value="deployments">Deployments</SelectItem>
-                  <SelectItem value="support">Support</SelectItem>
+                  <SelectGroup>
+                    <SelectItem value="team">Team</SelectItem>
+                    <SelectItem value="billing">Billing</SelectItem>
+                    <SelectItem value="account">Account</SelectItem>
+                    <SelectItem value="deployments">Deployments</SelectItem>
+                    <SelectItem value="support">Support</SelectItem>
+                  </SelectGroup>
                 </SelectContent>
               </Select>
             </Field>
@@ -67,10 +70,12 @@ export function CardsReportIssue() {
                   <SelectValue placeholder="Select level" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="1">Severity 1 (Highest)</SelectItem>
-                  <SelectItem value="2">Severity 2</SelectItem>
-                  <SelectItem value="3">Severity 3</SelectItem>
-                  <SelectItem value="4">Severity 4 (Lowest)</SelectItem>
+                  <SelectGroup>
+                    <SelectItem value="1">Severity 1 (Highest)</SelectItem>
+                    <SelectItem value="2">Severity 2</SelectItem>
+                    <SelectItem value="3">Severity 3</SelectItem>
+                    <SelectItem value="4">Severity 4 (Lowest)</SelectItem>
+                  </SelectGroup>
                 </SelectContent>
               </Select>
             </Field>

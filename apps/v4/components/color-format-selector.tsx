@@ -8,6 +8,7 @@ import { useColors } from "@/hooks/use-colors"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
 } from "@/registry/new-york-v4/ui/select"
@@ -41,18 +42,20 @@ export function ColorFormatSelector({
         <span className="font-mono text-muted-foreground">{format}</span>
       </SelectTrigger>
       <SelectContent align="end" position="popper" className="rounded-xl">
-        {Object.entries(formats).map(([format, value]) => (
-          <SelectItem
-            key={format}
-            value={format}
-            className="gap-2 rounded-lg [&>span]:flex [&>span]:items-center [&>span]:gap-2"
-          >
-            <span className="font-medium">{format}</span>
-            <span className="font-mono text-xs text-muted-foreground">
-              {value}
-            </span>
-          </SelectItem>
-        ))}
+        <SelectGroup>
+          {Object.entries(formats).map(([format, value]) => (
+            <SelectItem
+              key={format}
+              value={format}
+              className="gap-2 rounded-lg [&>span]:flex [&>span]:items-center [&>span]:gap-2"
+            >
+              <span className="font-medium">{format}</span>
+              <span className="font-mono text-xs text-muted-foreground">
+                {value}
+              </span>
+            </SelectItem>
+          ))}
+        </SelectGroup>
       </SelectContent>
     </Select>
   )
