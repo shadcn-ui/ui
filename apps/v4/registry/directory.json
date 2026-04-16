@@ -738,7 +738,7 @@
   {
     "name": "@shadcn-editor",
     "homepage": "https://shadcn-editor.vercel.app",
-    "url": "https://shadcn-editor.vercel.app/r/{name}.json",
+    "url": "https://raw.githubusercontent.com/htmujahid/shadcn-editor/refs/heads/main/public/r/{name}.json",
     "description": "Accessible, Customizable, Rich Text Editor. Made with Lexical and Shadcn/UI. Open Source. Open Code.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' class='fill-none!' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-baseline-icon lucide-baseline'><path d='M4 20h16'/><path d='m6 16 6-12 6 12'/><path d='M8 12h8'/></svg>"
   },
