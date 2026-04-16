@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 4.3.0
+
+### Minor Changes
+
+- [#10416](https://github.com/shadcn-ui/ui/pull/10416) [`101741046813622d48c081dfc19c40d0aa76484b`](https://github.com/shadcn-ui/ui/commit/101741046813622d48c081dfc19c40d0aa76484b) Thanks [@shadcn](https://github.com/shadcn)! - add style sera
+
 ## 4.2.0
 
 ### Minor Changes
