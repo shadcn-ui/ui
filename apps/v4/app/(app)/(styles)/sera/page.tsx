@@ -25,6 +25,15 @@ const description =
 export const metadata: Metadata = {
   title,
   description,
+  openGraph: {
+    title,
+    description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 }
 
 export default function SeraPage() {
