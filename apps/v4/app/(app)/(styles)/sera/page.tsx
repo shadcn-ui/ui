@@ -20,7 +20,7 @@ import { ImagePreview } from "./components/image-preview"
 
 const title = "Introducing Sera"
 const description =
-  "Minimal. Editorial. Typographic. Underline controls and uppercase headings shaped by print design principles"
+  "Minimal. Editorial. Typographic. Underline Controls and Uppercase Headings. Shaped by Print Design Principles."
 
 export const metadata: Metadata = {
   title,
