@@ -26,6 +26,7 @@ import { Label } from "@/registry/new-york-v4/ui/label"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -102,8 +103,10 @@ export function CardsShare() {
                       <SelectValue placeholder="Select" />
                     </SelectTrigger>
                     <SelectContent align="end">
-                      <SelectItem value="edit">Can edit</SelectItem>
-                      <SelectItem value="view">Can view</SelectItem>
+                      <SelectGroup>
+                        <SelectItem value="edit">Can edit</SelectItem>
+                        <SelectItem value="view">Can view</SelectItem>
+                      </SelectGroup>
                     </SelectContent>
                   </Select>
                 </ItemActions>

@@ -25,6 +25,7 @@ import {
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectSeparator,
   SelectTrigger,
@@ -125,16 +126,20 @@ export default function FormTanstackSelect() {
                         <SelectValue placeholder="Select" />
                       </SelectTrigger>
                       <SelectContent position="item-aligned">
-                        <SelectItem value="auto">Auto</SelectItem>
+                        <SelectGroup>
+                          <SelectItem value="auto">Auto</SelectItem>
+                        </SelectGroup>
                         <SelectSeparator />
-                        {spokenLanguages.map((language) => (
-                          <SelectItem
-                            key={language.value}
-                            value={language.value}
-                          >
-                            {language.label}
-                          </SelectItem>
-                        ))}
+                        <SelectGroup>
+                          {spokenLanguages.map((language) => (
+                            <SelectItem
+                              key={language.value}
+                              value={language.value}
+                            >
+                              {language.label}
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
                       </SelectContent>
                     </Select>
                   </Field>

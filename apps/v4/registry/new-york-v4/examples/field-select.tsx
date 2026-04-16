@@ -6,6 +6,7 @@ import {
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -21,14 +22,16 @@ export default function FieldSelect() {
             <SelectValue placeholder="Choose department" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="engineering">Engineering</SelectItem>
-            <SelectItem value="design">Design</SelectItem>
-            <SelectItem value="marketing">Marketing</SelectItem>
-            <SelectItem value="sales">Sales</SelectItem>
-            <SelectItem value="support">Customer Support</SelectItem>
-            <SelectItem value="hr">Human Resources</SelectItem>
-            <SelectItem value="finance">Finance</SelectItem>
-            <SelectItem value="operations">Operations</SelectItem>
+            <SelectGroup>
+              <SelectItem value="engineering">Engineering</SelectItem>
+              <SelectItem value="design">Design</SelectItem>
+              <SelectItem value="marketing">Marketing</SelectItem>
+              <SelectItem value="sales">Sales</SelectItem>
+              <SelectItem value="support">Customer Support</SelectItem>
+              <SelectItem value="hr">Human Resources</SelectItem>
+              <SelectItem value="finance">Finance</SelectItem>
+              <SelectItem value="operations">Operations</SelectItem>
+            </SelectGroup>
           </SelectContent>
         </Select>
         <FieldDescription>

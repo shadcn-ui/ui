@@ -29,6 +29,7 @@ import { Label } from "@/registry/bases/radix/ui/label"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -284,10 +285,12 @@ function AlertExample5() {
                 <SelectValue placeholder="Select a framework" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="next">Next.js</SelectItem>
-                <SelectItem value="remix">Remix</SelectItem>
-                <SelectItem value="astro">Astro</SelectItem>
-                <SelectItem value="nuxt">Nuxt</SelectItem>
+                <SelectGroup>
+                  <SelectItem value="next">Next.js</SelectItem>
+                  <SelectItem value="remix">Remix</SelectItem>
+                  <SelectItem value="astro">Astro</SelectItem>
+                  <SelectItem value="nuxt">Nuxt</SelectItem>
+                </SelectGroup>
               </SelectContent>
             </Select>
           </div>
