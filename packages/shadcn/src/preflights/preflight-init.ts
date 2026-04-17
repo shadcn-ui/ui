@@ -65,7 +65,17 @@ export async function preFlightInit(
   const projectInfo = await getProjectInfo(options.cwd, {
     configCssFile: typeof tailwind?.css === "string" ? tailwind.css : undefined,
   })
-  if (!projectInfo || projectInfo?.framework.name === "manual") {
+  // When an existing components.json is already present (re-init or the
+  // `apply` command), the project has been configured for shadcn. This is
+  // common for UI-library workspaces in monorepos (e.g. `packages/ui`) which
+  // don't ship their own framework config. Trust the existing config and
+  // skip the framework check rather than failing with
+  // UNSUPPORTED_FRAMEWORK.
+  const hasExistingConfig = Boolean(options.existingConfig)
+  if (
+    !hasExistingConfig &&
+    (!projectInfo || projectInfo?.framework.name === "manual")
+  ) {
     errors[ERRORS.UNSUPPORTED_FRAMEWORK] = true
     frameworkSpinner?.fail()
 
@@ -93,15 +103,19 @@ export async function preFlightInit(
     logger.break()
     process.exit(1)
   }
-  frameworkSpinner?.succeed(
-    `Verifying framework. Found ${highlighter.info(
-      projectInfo.framework.label
-    )}.`
-  )
+  if (projectInfo && projectInfo.framework.name !== "manual") {
+    frameworkSpinner?.succeed(
+      `Verifying framework. Found ${highlighter.info(
+        projectInfo.framework.label
+      )}.`
+    )
+  } else {
+    frameworkSpinner?.succeed(`Verifying framework.`)
+  }
 
   let tailwindSpinnerMessage = "Validating Tailwind CSS."
 
-  if (projectInfo.tailwindVersion === "v4") {
+  if (projectInfo?.tailwindVersion === "v4") {
     tailwindSpinnerMessage = `Validating Tailwind CSS. Found ${highlighter.info(
       "v4"
     )}.`
@@ -111,18 +125,18 @@ export async function preFlightInit(
     silent: options.silent,
   }).start()
   if (
-    projectInfo.tailwindVersion === "v3" &&
+    projectInfo?.tailwindVersion === "v3" &&
     (!projectInfo?.tailwindConfigFile || !projectInfo?.tailwindCssFile)
   ) {
     errors[ERRORS.TAILWIND_NOT_CONFIGURED] = true
     tailwindSpinner?.fail()
   } else if (
-    projectInfo.tailwindVersion === "v4" &&
+    projectInfo?.tailwindVersion === "v4" &&
     !projectInfo?.tailwindCssFile
   ) {
     errors[ERRORS.TAILWIND_NOT_CONFIGURED] = true
     tailwindSpinner?.fail()
-  } else if (!projectInfo.tailwindVersion) {
+  } else if (!projectInfo?.tailwindVersion) {
     errors[ERRORS.TAILWIND_NOT_CONFIGURED] = true
     tailwindSpinner?.fail()
   } else {
