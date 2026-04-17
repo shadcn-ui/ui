@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { type Style, type StyleName } from "@/registry/config"
+import { PRESETS, type Style, type StyleName } from "@/registry/config"
 import { LockButton } from "@/app/(app)/create/components/lock-button"
 import {
   Picker,
@@ -53,7 +53,24 @@ export function StylePicker({
           <PickerRadioGroup
             value={currentStyle?.name}
             onValueChange={(value) => {
-              setParams({ style: value as StyleName })
+              const styleName = value as StyleName
+              const preset = PRESETS.find(
+                (p) => p.base === params.base && p.style === styleName
+              )
+              setParams({
+                style: styleName,
+                ...(preset && {
+                  baseColor: preset.baseColor,
+                  theme: preset.theme,
+                  chartColor: preset.chartColor,
+                  iconLibrary: preset.iconLibrary,
+                  font: preset.font,
+                  fontHeading: preset.fontHeading,
+                  menuAccent: preset.menuAccent,
+                  menuColor: preset.menuColor,
+                  radius: preset.radius,
+                }),
+              })
             }}
           >
             <PickerGroup>

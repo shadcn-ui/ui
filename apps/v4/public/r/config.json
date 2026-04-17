@@ -215,6 +215,42 @@
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
+    },
+    {
+      "name": "radix-sera",
+      "title": "Sera (Radix)",
+      "description": "Sera / Lucide / Noto Sans + Playfair Display",
+      "base": "radix",
+      "style": "sera",
+      "baseColor": "taupe",
+      "theme": "taupe",
+      "chartColor": "taupe",
+      "iconLibrary": "lucide",
+      "font": "noto-sans",
+      "fontHeading": "playfair-display",
+      "item": "Item",
+      "rtl": false,
+      "menuAccent": "subtle",
+      "menuColor": "default",
+      "radius": "default"
+    },
+    {
+      "name": "base-sera",
+      "title": "Sera (Base)",
+      "description": "Sera / Lucide / Noto Sans + Playfair Display",
+      "base": "base",
+      "style": "sera",
+      "baseColor": "taupe",
+      "theme": "taupe",
+      "chartColor": "taupe",
+      "iconLibrary": "lucide",
+      "font": "noto-sans",
+      "fontHeading": "playfair-display",
+      "item": "Item",
+      "rtl": false,
+      "menuAccent": "subtle",
+      "menuColor": "default",
+      "radius": "default"
     }
   ]
 }

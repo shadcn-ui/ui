@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "pnpm registry:build && pnpm icons:dev & next dev --turbopack --port 4000",
+    "dev": "pnpm icons:dev & next dev --turbopack --port 4000",
     "build": "pnpm registry:build && next build",
     "start": "next start --port 4000",
     "preview": "pnpm registry:build && next build && next start --port 4000",
@@ -76,7 +76,7 @@
     "rehype-pretty-code": "^0.14.1",
     "rimraf": "^6.0.1",
     "server-only": "^0.0.1",
-    "shadcn": "4.2.0",
+    "shadcn": "4.3.0",
     "shiki": "^1.10.1",
     "sonner": "^2.0.0",
     "swr": "^2.3.6",

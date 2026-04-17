@@ -67,7 +67,7 @@ export function Preferences() {
               </SelectContent>
             </Select>
           </Field>
-          <FieldSeparator className="-my-4" />
+          <FieldSeparator className="-my-4 style-sera:hidden" />
           <Field orientation="horizontal">
             <FieldContent>
               <FieldLabel htmlFor="public-statistics">
@@ -80,7 +80,7 @@ export function Preferences() {
             </FieldContent>
             <Switch id="public-statistics" defaultChecked />
           </Field>
-          <FieldSeparator className="-my-4" />
+          <FieldSeparator className="-my-4 style-sera:hidden" />
           <Field orientation="horizontal">
             <FieldContent>
               <FieldLabel htmlFor="email-notifications">
