@@ -19,6 +19,7 @@ export const PRESET_STYLES = [
   "lyra",
   "mira",
   "luma",
+  "sera",
 ] as const
 
 export const PRESET_BASE_COLORS = [
@@ -108,6 +109,8 @@ export const PRESET_FONTS = [
   "ibm-plex-sans",
   "source-sans-3",
   "instrument-sans",
+  "eb-garamond",
+  "instrument-serif",
 ] as const
 export const PRESET_FONT_HEADINGS = ["inherit", ...PRESET_FONTS] as const
 
