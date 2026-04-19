@@ -166,6 +166,39 @@ describe("shadcn add", () => {
     ).toBe("Foo Bar")
   })
 
+  it("should preview add changes without writing files", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+
+    const result = await npxShadcn(fixturePath, ["add", "button", "--dry-run"])
+
+    expect(result.exitCode).toBe(0)
+    expect(result.stdout).toContain("shadcn add button (dry run)")
+    expect(result.stdout).toContain("components/ui/button.tsx")
+    expect(result.stdout).toContain("Run without --dry-run to apply.")
+    expect(
+      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
+    ).toBe(false)
+  })
+
+  it("should show no changes for identical files with diff", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+
+    await npxShadcn(fixturePath, ["add", "button", "--yes"])
+
+    const result = await npxShadcn(fixturePath, [
+      "add",
+      "button",
+      "--diff",
+      "button",
+      "--yes",
+    ])
+
+    expect(result.exitCode).toBe(0)
+    expect(result.stdout).toContain("shadcn add button (dry run)")
+    expect(result.stdout).toContain("components/ui/button.tsx (skip)")
+    expect(result.stdout).toContain("No changes.")
+  })
+
   it("should add item with target to src", async () => {
     const fixturePath = await createFixtureTestDirectory("vite-app")
     await npxShadcn(fixturePath, ["init", "--defaults"])
@@ -182,12 +215,12 @@ describe("shadcn add", () => {
   })
 
   it("should add item with target to root", async () => {
-    const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--defaults"])
-    await npxShadcn(fixturePath, [
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+    const result = await npxShadcn(fixturePath, [
       "add",
       "../../fixtures/registry/example-item-to-root.json",
     ])
+    expect(result.exitCode).toBe(0)
     expect(await fs.pathExists(path.join(fixturePath, "config.json"))).toBe(
       true
     )
@@ -229,6 +262,105 @@ describe("shadcn add", () => {
       "
     `)
   })
+
+  it("should add monorepo components and rewrite app-local imports with package imports", async () => {
+    const fixturePath = await createFixtureTestDirectory(
+      "vite-monorepo-imports"
+    )
+
+    const result = await npxShadcn(
+      fixturePath,
+      ["add", "login-03", "-c", "apps/web", "--yes"],
+      { timeout: 300000 }
+    )
+
+    expect(result.exitCode).toBe(0)
+
+    expect(
+      await fs.pathExists(
+        path.join(fixturePath, "apps/web/src/components/login-form.tsx")
+      )
+    ).toBe(true)
+    expect(
+      await fs.pathExists(
+        path.join(fixturePath, "packages/ui/src/components/button.tsx")
+      )
+    ).toBe(true)
+    expect(
+      await fs.pathExists(
+        path.join(fixturePath, "apps/web/src/components/ui/button.tsx")
+      )
+    ).toBe(false)
+
+    const loginFormContent = await fs.readFile(
+      path.join(fixturePath, "apps/web/src/components/login-form.tsx"),
+      "utf-8"
+    )
+    expect(loginFormContent).toContain(
+      'import { cn } from "@workspace/ui/lib/utils"'
+    )
+    expect(loginFormContent).toContain(
+      'import { Button } from "@workspace/ui/components/button"'
+    )
+
+    const buttonContent = await fs.readFile(
+      path.join(fixturePath, "packages/ui/src/components/button.tsx"),
+      "utf-8"
+    )
+    expect(buttonContent).toContain('import { cn } from "#lib/utils.ts"')
+  }, 300000)
+
+  it("should preview monorepo adds without writing files", async () => {
+    const fixturePath = await createFixtureTestDirectory(
+      "vite-monorepo-imports"
+    )
+
+    const result = await npxShadcn(
+      fixturePath,
+      ["add", "login-03", "-c", "apps/web", "--dry-run", "--yes"],
+      { timeout: 300000 }
+    )
+
+    expect(result.exitCode).toBe(0)
+    expect(result.stdout).toContain("shadcn add login-03 (dry run)")
+    expect(result.stdout).toContain(
+      "../../packages/ui/src/components/button.tsx"
+    )
+    expect(result.stdout).toContain("src/components/login-form.tsx")
+    expect(
+      await fs.pathExists(
+        path.join(fixturePath, "apps/web/src/components/login-form.tsx")
+      )
+    ).toBe(false)
+    expect(
+      await fs.pathExists(
+        path.join(fixturePath, "packages/ui/src/components/button.tsx")
+      )
+    ).toBe(false)
+  }, 300000)
+
+  it("should show no changes for identical monorepo files with diff", async () => {
+    const fixturePath = await createFixtureTestDirectory(
+      "vite-monorepo-imports"
+    )
+
+    await npxShadcn(
+      fixturePath,
+      ["add", "login-03", "-c", "apps/web", "--yes"],
+      { timeout: 300000 }
+    )
+
+    const result = await npxShadcn(
+      fixturePath,
+      ["add", "login-03", "-c", "apps/web", "--diff", "login-form", "--yes"],
+      { timeout: 300000 }
+    )
+
+    expect(result.exitCode).toBe(0)
+    expect(result.stdout).toContain("shadcn add login-03 (dry run)")
+    expect(result.stdout).toContain("src/components/login-form.tsx (skip)")
+    expect(result.stdout).toContain("No changes.")
+  }, 300000)
 
   it("should add NOT update existing envVars", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")

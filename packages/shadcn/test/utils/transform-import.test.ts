@@ -34,6 +34,49 @@ test('transform nested workspace folder for utils, website/src/utils', async () 
 
 })
 
+test.each([
+  {
+    name: "bare aliases",
+    aliases: {
+      components: "components",
+      ui: "components/ui",
+      lib: "lib",
+      utils: "lib/utils",
+    },
+    buttonImport: `import { Button } from "components/ui/button"`,
+    utilsImport: `import { cn } from "lib/utils"`,
+  },
+  {
+    name: "path-like aliases",
+    aliases: {
+      components: "website/src/components",
+      ui: "website/src/components/ui",
+      lib: "website/src/lib",
+      utils: "website/src/lib/utils",
+    },
+    buttonImport: `import { Button } from "website/src/components/ui/button"`,
+    utilsImport: `import { cn } from "website/src/lib/utils"`,
+  },
+])("transform import with non-sigil aliases: $name", async ({
+  aliases,
+  buttonImport,
+  utilsImport,
+}) => {
+  const result = await transform({
+    filename: "test.ts",
+    raw: `import { Button } from "@/registry/new-york/ui/button"
+import { cn } from "@/lib/utils"
+`,
+    config: {
+      tsx: true,
+      aliases,
+    },
+  })
+
+  expect(result).toContain(buttonImport)
+  expect(result).toContain(utilsImport)
+})
+
 test("transform import", async () => {
   expect(
     await transform({
@@ -176,6 +219,53 @@ import { Foo } from "bar"
   ).toMatchSnapshot()
 })
 
+test("transform import with configured package-import aliases", async () => {
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import { Button } from "#app/components/ui/button"
+import { cn } from "#app/lib/utils"
+`,
+      config: {
+        tsx: true,
+        aliases: {
+          components: "#app/components",
+          ui: "#app/components/ui",
+          lib: "#app/lib",
+          utils: "#app/lib/utils",
+        },
+      },
+    })
+  ).toMatchInlineSnapshot(`
+    "import { Button } from "#app/components/ui/button"
+    import { cn } from "#app/lib/utils"
+    "
+  `)
+})
+
+test("transform import keeps exact #utils aliases", async () => {
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import { cn } from "@/lib/utils"
+`,
+      config: {
+        tsx: true,
+        aliases: {
+          components: "#components",
+          utils: "#utils",
+          ui: "#components/ui",
+          lib: "#lib",
+          hooks: "#hooks",
+        },
+      },
+    })
+  ).toMatchInlineSnapshot(`
+    "import { cn } from "#utils"
+    "
+  `)
+})
+
 test("transform import for monorepo", async () => {
   expect(
     await transform({
@@ -226,6 +316,160 @@ import { Foo } from "bar"
       },
     })
   ).toMatchSnapshot()
+})
+
+test("transform package import aliases and #registry placeholders", async () => {
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import { Button } from "#registry/new-york/ui/button"
+import { Card } from "#/registry/new-york/ui/card"
+import * as RegistryRoot from "#registry"
+import * as RegistryRootCompat from "#/registry"
+import { cn } from "#utils"
+import { helper } from "#lib/helpers"
+import { useThing } from "#hooks/use-thing"
+`,
+      config: {
+        tsx: true,
+        aliases: {
+          components: "#components",
+          ui: "#components/ui",
+          utils: "#utils",
+          lib: "#lib",
+          hooks: "#hooks",
+        },
+      },
+    })
+  ).toContain(`import { Button } from "#components/ui/button"`)
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import { Button } from "#registry/new-york/ui/button"
+import { Card } from "#/registry/new-york/ui/card"
+import * as RegistryRoot from "#registry"
+import * as RegistryRootCompat from "#/registry"
+import { cn } from "#utils"
+import { helper } from "#lib/helpers"
+import { useThing } from "#hooks/use-thing"
+`,
+      config: {
+        tsx: true,
+        aliases: {
+          components: "#components",
+          ui: "#components/ui",
+          utils: "#utils",
+          lib: "#lib",
+          hooks: "#hooks",
+        },
+      },
+    })
+  ).toContain(`import { Card } from "#components/ui/card"`)
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import { Button } from "#registry/new-york/ui/button"
+import { Card } from "#/registry/new-york/ui/card"
+import * as RegistryRoot from "#registry"
+import * as RegistryRootCompat from "#/registry"
+import { cn } from "#utils"
+import { helper } from "#lib/helpers"
+import { useThing } from "#hooks/use-thing"
+`,
+      config: {
+        tsx: true,
+        aliases: {
+          components: "#components",
+          ui: "#components/ui",
+          utils: "#utils",
+          lib: "#lib",
+          hooks: "#hooks",
+        },
+      },
+    })
+  ).toContain(`import { cn } from "#utils"`)
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as RegistryRoot from "#registry"
+import * as RegistryRootCompat from "#/registry"
+`,
+      config: {
+        tsx: true,
+        aliases: {
+          components: "#components",
+          ui: "#components/ui",
+          utils: "#utils",
+          lib: "#lib",
+          hooks: "#hooks",
+        },
+      },
+    })
+  ).toContain(`import * as RegistryRoot from "#components"`)
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as RegistryRoot from "#registry"
+import * as RegistryRootCompat from "#/registry"
+`,
+      config: {
+        tsx: true,
+        aliases: {
+          components: "#components",
+          ui: "#components/ui",
+          utils: "#utils",
+          lib: "#lib",
+          hooks: "#hooks",
+        },
+      },
+    })
+  ).toContain(`import * as RegistryRootCompat from "#components"`)
+})
+
+test("prefers explicit workspace utils alias over local lib alias", async () => {
+  expect(
+    await transform({
+      filename: "test.tsx",
+      raw: `import { cn } from "@/lib/utils"
+import { helper } from "@/lib/helper"
+`,
+      config: {
+        tsx: true,
+        aliases: {
+          components: "#components",
+          lib: "#lib",
+          hooks: "#hooks",
+          ui: "@workspace/ui/components",
+          utils: "@workspace/ui/lib/utils",
+        },
+      },
+    })
+  ).toContain(`import { cn } from "@workspace/ui/lib/utils"`)
+})
+
+test("prefers explicit utils alias for registry lib utils imports", async () => {
+  expect(
+    await transform({
+      filename: "login-form.tsx",
+      raw: `import { cn } from "@/registry/new-york-v4/lib/utils"
+import { Button } from "@/registry/new-york-v4/ui/button"
+`,
+      config: {
+        tsx: true,
+        aliases: {
+          components: "#components",
+          lib: "#lib",
+          hooks: "#hooks",
+          ui: "@workspace/ui/components",
+          utils: "@workspace/ui/lib/utils",
+        },
+      },
+    })
+  ).toContain(`import { cn } from "@workspace/ui/lib/utils"`)
 })
 
 test("transform async/dynamic imports", async () => {
