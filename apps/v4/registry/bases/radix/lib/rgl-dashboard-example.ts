@@ -3,7 +3,7 @@ import { createDefaultLayout, createDefaultWidgets } from "@/registry/bases/radi
 
 /**
  * Canonical dashboard spec for docs and examples: one object holds `layout` + `widgets` for every tile.
- * Pass this to `<DashboardDemo initialDashboard={DASHBOARD_EXAMPLE_SPEC} persistToStorage={false} />`.
+ * This is the default seed for `<DashboardDemo />` when no `storageKey` is provided.
  */
 export const DASHBOARD_EXAMPLE_SPEC: DashboardRecord = {
   id: "main",

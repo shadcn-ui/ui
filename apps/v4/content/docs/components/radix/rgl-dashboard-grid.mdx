@@ -151,8 +151,8 @@ Client wrapper around `WidthProvider(GridLayout)` from `react-grid-layout`.
 | Prop | Type | Description |
 |------|------|-------------|
 | `embedded` | `boolean` | Tighter padding for inline docs previews |
-| `initialDashboard` | `DashboardRecord` | Seed layout + widgets for all tiles; combine with `persistToStorage={false}` |
-| `persistToStorage` | `boolean` | Default `true` (localStorage). `false` = session-only state that resets on refresh |
+| `initialDashboard` | `DashboardRecord` | Seed layout + widgets for all tiles; defaults to `DASHBOARD_EXAMPLE_SPEC` |
+| `storageKey` | `string \| false` | `false` (default): in-memory only. Pass a string to persist under that localStorage key. |
 
 ### DashboardTile / TileByWidget
 
@@ -168,10 +168,12 @@ Supported `type` values: `intro` · `kpi` · `chart` · `bar` · `table` · `met
 
 ### DASHBOARD_EXAMPLE_SPEC
 
-A canonical `DashboardRecord` exported from `@/lib/dashboard-example` — same shape as the live state JSON (fields: `id`, `name`, `layout`, `widgets`). Pass it directly to `DashboardDemo` for a reproducible demo state.
+A canonical `DashboardRecord` exported from `@/lib/dashboard-example` — same shape as the live state JSON (fields: `id`, `name`, `layout`, `widgets`). This is the default seed for `DashboardDemo` when no `storageKey` is set.
 
 ```tsx
 import { DASHBOARD_EXAMPLE_SPEC } from "@/lib/dashboard-example"
 
-<DashboardDemo initialDashboard={DASHBOARD_EXAMPLE_SPEC} persistToStorage={false} />
+<DashboardDemo initialDashboard={DASHBOARD_EXAMPLE_SPEC} />
+// or simply:
+<DashboardDemo />
 ```

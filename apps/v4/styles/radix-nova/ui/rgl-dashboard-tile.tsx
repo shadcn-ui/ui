@@ -181,11 +181,7 @@ function AreaChartTile() {
                   stopColor="var(--primary)"
                   stopOpacity={0.35}
                 />
-                <stop
-                  offset="95%"
-                  stopColor="var(--primary)"
-                  stopOpacity={0}
-                />
+                <stop offset="95%" stopColor="var(--primary)" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid stroke="var(--border)" vertical={false} />
@@ -261,11 +257,7 @@ function BarChartTile() {
                 color: "var(--popover-foreground)",
               }}
             />
-            <Bar
-              dataKey="sales"
-              fill="var(--chart-2)"
-              radius={[4, 4, 0, 0]}
-            />
+            <Bar dataKey="sales" fill="var(--chart-2)" radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </CardContent>

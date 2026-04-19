@@ -5,8 +5,6 @@ import {
   inferWidgetType,
 } from "@/registry/new-york-v4/lib/rgl-dashboard-types"
 
-const KEY = "dashboard-demo:v2"
-
 function uid() {
   return crypto.randomUUID()
 }
@@ -26,33 +24,13 @@ function migrateRecord(raw: unknown): DashboardRecord | null {
   return { id: d.id, name: d.name, layout, widgets }
 }
 
-export function loadPersisted(): PersistedDashboards {
+export function loadPersisted(key: string): PersistedDashboards {
   if (typeof window === "undefined") {
     return seed()
   }
   try {
-    const raw = localStorage.getItem(KEY)
+    const raw = localStorage.getItem(key)
     if (!raw) {
-      const legacy = localStorage.getItem("dashboard-demo:v1")
-      if (legacy) {
-        try {
-          const parsed = JSON.parse(legacy) as PersistedDashboards
-          const dashboards = parsed.dashboards
-            .map((x) => migrateRecord(x))
-            .filter(Boolean) as DashboardRecord[]
-          if (dashboards.length && parsed.activeDashboardId) {
-            const data: PersistedDashboards = {
-              dashboards,
-              activeDashboardId: parsed.activeDashboardId,
-            }
-            savePersisted(data)
-            localStorage.removeItem("dashboard-demo:v1")
-            return data
-          }
-        } catch {
-          /* ignore legacy parse errors */
-        }
-      }
       return seed()
     }
     const parsed = JSON.parse(raw) as PersistedDashboards
@@ -73,8 +51,8 @@ export function loadPersisted(): PersistedDashboards {
   }
 }
 
-export function savePersisted(data: PersistedDashboards) {
-  localStorage.setItem(KEY, JSON.stringify(data))
+export function savePersisted(key: string, data: PersistedDashboards) {
+  localStorage.setItem(key, JSON.stringify(data))
 }
 
 function seed(): PersistedDashboards {

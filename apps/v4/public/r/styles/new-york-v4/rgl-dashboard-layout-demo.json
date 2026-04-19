@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/rgl-dashboard-layout-demo.tsx",
-      "content": "\"use client\"\n\nimport { DashboardDemo } from \"@/registry/new-york-v4/blocks/rgl-dashboard/components/rgl-dashboard-demo\"\n\nexport default function RglDashboardLayoutDemo() {\n  return <DashboardDemo embedded persistToStorage={false} />\n}\n",
+      "content": "\"use client\"\n\nimport { DashboardDemo } from \"@/registry/new-york-v4/blocks/rgl-dashboard/components/rgl-dashboard-demo\"\n\nexport default function RglDashboardLayoutDemo() {\n  return <DashboardDemo embedded />\n}\n",
       "type": "registry:example"
     }
   ],

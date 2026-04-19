@@ -5,6 +5,7 @@ import type { Layout } from "react-grid-layout"
 import { Plus, Trash2, X } from "lucide-react"
 import { toast } from "sonner"
 
+import { DASHBOARD_EXAMPLE_SPEC } from "@/registry/new-york-v4/lib/rgl-dashboard-example"
 import { createDashboard, loadPersisted, savePersisted } from "@/registry/new-york-v4/lib/rgl-dashboard-storage"
 import type { DashboardRecord, PersistedDashboards, WidgetType } from "@/registry/new-york-v4/lib/rgl-dashboard-types"
 import { defaultLayoutItemForNewTile } from "@/registry/new-york-v4/lib/rgl-dashboard-types"
@@ -50,18 +51,19 @@ const WIDGET_OPTIONS: { value: WidgetType; label: string }[] = [
 
 export type DashboardDemoProps = {
   embedded?: boolean
-  /** One object with layout + widgets for all tiles. Prefer with persistToStorage false for docs. */
+  /** Example/demo seed: one object with `layout` + `widgets` for all tiles. Defaults to `DASHBOARD_EXAMPLE_SPEC`. */
   initialDashboard?: DashboardRecord
-  /** Default true: localStorage. False: in-memory only (seed from initialDashboard or a new dashboard). */
-  persistToStorage?: boolean
+  /** `false` (default): in-memory only. Pass a string to persist to that localStorage key. */
+  storageKey?: string | false
 }
 
 export function DashboardDemo({
   embedded = false,
-  initialDashboard,
-  persistToStorage = true,
+  initialDashboard = DASHBOARD_EXAMPLE_SPEC,
+  storageKey = false,
 }: DashboardDemoProps) {
-  const saveToDisk = persistToStorage
+  const persistKey = typeof storageKey === "string" ? storageKey : null
+  const saveToDisk = persistKey !== null
 
   const initialSnapshotRef = React.useRef(initialDashboard)
   React.useEffect(() => {
@@ -69,7 +71,7 @@ export function DashboardDemo({
   }, [initialDashboard])
 
   const [data, setData] = React.useState<PersistedDashboards | null>(() => {
-    if (!saveToDisk && initialDashboard) {
+    if (!saveToDisk) {
       return { dashboards: [initialDashboard], activeDashboardId: initialDashboard.id }
     }
     return null
@@ -83,22 +85,17 @@ export function DashboardDemo({
   const [newTileType, setNewTileType] = React.useState<WidgetType>("kpi")
 
   React.useEffect(() => {
-    if (saveToDisk) {
-      setData(loadPersisted())
-      return
+    if (saveToDisk && persistKey) {
+      setData(loadPersisted(persistKey))
     }
-    if (!initialDashboard) {
-      const d = createDashboard("Main")
-      setData({ dashboards: [d], activeDashboardId: d.id })
-    }
-  }, [saveToDisk, initialDashboard])
+  }, [saveToDisk, persistKey])
 
   const commit = React.useCallback(
     (next: PersistedDashboards) => {
       setData(next)
-      if (saveToDisk) savePersisted(next)
+      if (saveToDisk && persistKey) savePersisted(persistKey, next)
     },
-    [saveToDisk]
+    [saveToDisk, persistKey]
   )
 
   const active = data?.dashboards.find((d) => d.id === data.activeDashboardId)
@@ -320,10 +317,9 @@ export function DashboardDemo({
               <DropdownMenuItem
                 onClick={() => {
                   if (!data) return
-                  if (saveToDisk) {
-                    localStorage.removeItem("dashboard-demo:v1")
-                    localStorage.removeItem("dashboard-demo:v2")
-                    setData(loadPersisted())
+                  if (saveToDisk && persistKey) {
+                    localStorage.removeItem(persistKey)
+                    setData(loadPersisted(persistKey))
                     toast.message("Storage reset")
                     return
                   }
