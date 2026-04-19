@@ -1,5 +1,29 @@
 # @shadcn/ui
 
+## 4.3.0
+
+### Minor Changes
+
+- [#10416](https://github.com/shadcn-ui/ui/pull/10416) [`101741046813622d48c081dfc19c40d0aa76484b`](https://github.com/shadcn-ui/ui/commit/101741046813622d48c081dfc19c40d0aa76484b) Thanks [@shadcn](https://github.com/shadcn)! - add style sera
+
+## 4.2.0
+
+### Minor Changes
+
+- [#10313](https://github.com/shadcn-ui/ui/pull/10313) [`c1e29824cd7a6809448e45b6b7fe8f7be71ecb0f`](https://github.com/shadcn-ui/ui/commit/c1e29824cd7a6809448e45b6b7fe8f7be71ecb0f) Thanks [@shadcn](https://github.com/shadcn)! - add shadcn apply command
+
+## 4.1.2
+
+### Patch Changes
+
+- [#10246](https://github.com/shadcn-ui/ui/pull/10246) [`44c09a19b0658cf8e72ac84bbba5b76e05192a0d`](https://github.com/shadcn-ui/ui/commit/44c09a19b0658cf8e72ac84bbba5b76e05192a0d) Thanks [@shadcn](https://github.com/shadcn)! - add style luma
+
+## 4.1.1
+
+### Patch Changes
+
+- [#10202](https://github.com/shadcn-ui/ui/pull/10202) [`12b49c986fcf7e6db9be7f515df6142f822f2236`](https://github.com/shadcn-ui/ui/commit/12b49c986fcf7e6db9be7f515df6142f822f2236) Thanks [@shadcn](https://github.com/shadcn)! - fix packageManager in package.json
+
 ## 4.1.0
 
 ### Minor Changes

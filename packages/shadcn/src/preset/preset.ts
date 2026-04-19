@@ -12,7 +12,15 @@
 // Value arrays — order matters for backward compat. Never reorder, only append.
 export const PRESET_BASES = ["radix", "base"] as const
 
-export const PRESET_STYLES = ["nova", "vega", "maia", "lyra", "mira"] as const
+export const PRESET_STYLES = [
+  "nova",
+  "vega",
+  "maia",
+  "lyra",
+  "mira",
+  "luma",
+  "sera",
+] as const
 
 export const PRESET_BASE_COLORS = [
   "neutral",
@@ -101,6 +109,8 @@ export const PRESET_FONTS = [
   "ibm-plex-sans",
   "source-sans-3",
   "instrument-sans",
+  "eb-garamond",
+  "instrument-serif",
 ] as const
 export const PRESET_FONT_HEADINGS = ["inherit", ...PRESET_FONTS] as const
 

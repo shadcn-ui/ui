@@ -8,7 +8,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   outputFileTracingIncludes: {
-    "/*": ["./registry/**/*"],
+    "/*": ["./registry/**/*", "./styles/**/*"],
   },
   images: {
     remotePatterns: [
@@ -125,6 +125,11 @@ const nextConfig = {
       {
         source: "/cli",
         destination: "/docs/cli",
+        permanent: true,
+      },
+      {
+        source: "/themes",
+        destination: "/create",
         permanent: true,
       },
     ]

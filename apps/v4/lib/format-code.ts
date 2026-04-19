@@ -85,10 +85,25 @@ export async function formatCode(code: string, styleName: string) {
 
   for (const base of BASES) {
     code = code.replaceAll(`@/registry/bases/${base.name}/`, "@/components/")
+    code = code.replaceAll(
+      `@/examples/${base.name}/ui-rtl/`,
+      "@/components/ui/"
+    )
     code = code.replaceAll(`@/examples/${base.name}/ui/`, "@/components/ui/")
     code = code.replaceAll(`@/examples/${base.name}/lib/`, "@/lib/")
     code = code.replaceAll(`@/examples/${base.name}/hooks/`, "@/hooks/")
   }
+
+  code = code.replace(
+    /@\/styles\/([\w-]+)\/(ui-rtl|ui)\/([\w-]+)/g,
+    (match, _styleName, type, component) => {
+      if (type === "ui" || type === "ui-rtl") {
+        return `@/components/ui/${component}`
+      }
+
+      return match
+    }
+  )
 
   code = code.replaceAll("export default", "export")
 

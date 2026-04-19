@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-heading-nunito-sans",
+  "title": "Nunito Sans (Heading)",
+  "type": "registry:font",
+  "font": {
+    "family": "'Nunito Sans Variable', sans-serif",
+    "provider": "google",
+    "import": "Nunito_Sans",
+    "variable": "--font-heading",
+    "subsets": [
+      "latin"
+    ],
+    "dependency": "@fontsource-variable/nunito-sans"
+  }
+}
