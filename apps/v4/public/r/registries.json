@@ -1030,5 +1030,11 @@
     "homepage": "https://www.remocn.dev/",
     "url": "https://www.remocn.dev/r/{name}.json",
     "description": "Production-ready components for Remotion - text animations, backgrounds, transitions, UI blocks, and full scene compositions"
+  },
+  {
+    "name": "@styleui",
+    "homepage": "https://www.styleui.dev/",
+    "url": "https://www.styleui.dev/r/{name}.json",
+    "description": "Expertly crafted layouts and components for your next big idea"
   }
 ]
