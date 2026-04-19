@@ -51,12 +51,19 @@ export async function fetchRegistry(
           // Get headers from context for this URL.
           const headers = getRegistryHeadersFromContext(url)
 
-          const response = await fetch(url, {
-            agent,
-            headers: {
-              ...headers,
-            },
-          })
+          const controller = new AbortController()
+          const timeoutId = setTimeout(() => controller.abort(), 30000) // 30 second timeout
+
+          try {
+            const response = await fetch(url, {
+              agent,
+              headers: {
+                ...headers,
+              },
+              signal: controller.signal,
+            })
+
+            clearTimeout(timeoutId)
 
           if (!response.ok) {
             let messageFromServer = undefined
@@ -110,7 +117,18 @@ export async function fetchRegistry(
           }
 
           return response.json()
-        })()
+          })()
+        } catch (error) {
+          clearTimeout(timeoutId)
+          if (error.name === 'AbortError') {
+            throw new RegistryFetchError(
+              url,
+              0,
+              'Request timed out after 30 seconds. Please check your network connection.'
+            )
+          }
+          throw error
+        }
 
         if (options.useCache) {
           registryCache.set(url, fetchPromise)
