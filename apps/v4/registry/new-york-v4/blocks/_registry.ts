@@ -89,6 +89,62 @@ export const blocks: Registry["items"] = [
     },
   },
   {
+    name: "rgl-dashboard",
+    type: "registry:block",
+    description:
+      "RGL Dashboard — draggable, resizable tiles (react-grid-layout), CRUD, tile management, and Sonner toasts.",
+    dependencies: [
+      "react-grid-layout@1.5.3",
+      "react-resizable",
+      "recharts@3.8.0",
+      "sonner",
+      "lucide-react",
+    ],
+    registryDependencies: [
+      "rgl-dashboard-grid",
+      "rgl-dashboard-tile",
+      "button",
+      "card",
+      "dialog",
+      "dropdown-menu",
+      "input",
+      "label",
+      "select",
+      "separator",
+      "switch",
+      "badge",
+      "sonner",
+    ],
+    files: [
+      {
+        path: "blocks/rgl-dashboard/page.tsx",
+        type: "registry:page",
+        target: "app/rgl-dashboard/page.tsx",
+      },
+      {
+        path: "blocks/rgl-dashboard/components/rgl-dashboard-demo.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/rgl-dashboard/components/tile-widgets.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "lib/rgl-dashboard-types.ts",
+        type: "registry:lib",
+      },
+      {
+        path: "lib/rgl-dashboard-storage.ts",
+        type: "registry:lib",
+      },
+      {
+        path: "lib/rgl-dashboard-example.ts",
+        type: "registry:lib",
+      },
+    ],
+    categories: ["dashboard"],
+  },
+  {
     name: "sidebar-01",
     type: "registry:block",
     description: "A simple sidebar with navigation grouped by section.",
