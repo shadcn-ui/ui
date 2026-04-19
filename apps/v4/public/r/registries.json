@@ -1030,5 +1030,11 @@
     "homepage": "https://www.remocn.dev/",
     "url": "https://www.remocn.dev/r/{name}.json",
     "description": "Production-ready components for Remotion - text animations, backgrounds, transitions, UI blocks, and full scene compositions"
+  },
+  {
+    "name": "@buzzform",
+    "homepage": "https://form.buildnbuzz.com",
+    "url": "https://form.buildnbuzz.com/r/{name}.json",
+    "description": "Type-safe, schema-based forms for shadcn/ui apps. Auto-generate UI with validation and state out-of-the-box with minimal boilerplate."
   }
 ]
