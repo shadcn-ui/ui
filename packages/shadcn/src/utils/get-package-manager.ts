@@ -1,37 +1,39 @@
 import { detect } from "@antfu/ni"
 
+function normalizePackageManager(packageManager?: string | null) {
+  if (!packageManager) {
+    return null
+  }
+
+  if (packageManager.startsWith("yarn")) return "yarn"
+  if (packageManager.startsWith("pnpm")) return "pnpm"
+  if (packageManager.startsWith("bun")) return "bun"
+  if (packageManager.startsWith("deno")) return "deno"
+  if (packageManager.startsWith("npm")) return "npm"
+
+  return null
+}
+
 export async function getPackageManager(
   targetDir: string,
   { withFallback }: { withFallback?: boolean } = {
     withFallback: false,
   }
 ): Promise<"yarn" | "pnpm" | "bun" | "npm" | "deno"> {
-  const packageManager = await detect({ programmatic: true, cwd: targetDir })
+  const packageManager = normalizePackageManager(
+    await detect({ programmatic: true, cwd: targetDir })
+  )
 
-  if (packageManager === "yarn@berry") return "yarn"
-  if (packageManager === "pnpm@6") return "pnpm"
-  if (packageManager === "bun") return "bun"
-  if (packageManager === "deno") return "deno"
+  if (packageManager) {
+    return packageManager
+  }
+
   if (!withFallback) {
-    return packageManager ?? "npm"
+    return "npm"
   }
 
   // Fallback to user agent if not detected.
-  const userAgent = process.env.npm_config_user_agent || ""
-
-  if (userAgent.startsWith("yarn")) {
-    return "yarn"
-  }
-
-  if (userAgent.startsWith("pnpm")) {
-    return "pnpm"
-  }
-
-  if (userAgent.startsWith("bun")) {
-    return "bun"
-  }
-
-  return "npm"
+  return normalizePackageManager(process.env.npm_config_user_agent) ?? "npm"
 }
 
 export async function getPackageRunner(cwd: string) {
