@@ -10,6 +10,7 @@ import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest"
 
+import { clearRegistryContext, setRegistryHeaders } from "./context"
 import { clearRegistryCache, fetchRegistry } from "./fetcher"
 
 const server = setupServer(
@@ -223,7 +224,68 @@ describe("fetchRegistry", () => {
     expect(acceptHeader).toBe(
       "application/vnd.shadcn.v1+json, application/json;q=0.9"
     )
-    expect(userAgentHeader).toBe("shadcn-ui")
+    expect(userAgentHeader).toBe("shadcn")
+  })
+
+  it("should allow per-registry headers to override the default Accept and User-Agent", async () => {
+    let acceptHeader: string | null = null
+    let userAgentHeader: string | null = null
+    server.use(
+      http.get(`${REGISTRY_URL}/override-test.json`, ({ request }) => {
+        acceptHeader = request.headers.get("accept")
+        userAgentHeader = request.headers.get("user-agent")
+        return HttpResponse.json({
+          name: "override-test",
+          type: "registry:ui",
+        })
+      })
+    )
+
+    setRegistryHeaders({
+      [`${REGISTRY_URL}/override-test.json`]: {
+        Accept: "application/custom+json",
+        "User-Agent": "custom-client/1.0",
+      },
+    })
+
+    await fetchRegistry(["override-test.json"], { useCache: false })
+
+    expect(acceptHeader).toBe("application/custom+json")
+    expect(userAgentHeader).toBe("custom-client/1.0")
+
+    clearRegistryContext()
+  })
+
+  it("should allow lowercase per-registry headers to override the default Accept and User-Agent", async () => {
+    let acceptHeader: string | null = null
+    let userAgentHeader: string | null = null
+    server.use(
+      http.get(
+        `${REGISTRY_URL}/lowercase-override-test.json`,
+        ({ request }) => {
+          acceptHeader = request.headers.get("accept")
+          userAgentHeader = request.headers.get("user-agent")
+          return HttpResponse.json({
+            name: "lowercase-override-test",
+            type: "registry:ui",
+          })
+        }
+      )
+    )
+
+    setRegistryHeaders({
+      [`${REGISTRY_URL}/lowercase-override-test.json`]: {
+        accept: "application/custom+json",
+        "user-agent": "custom-client/1.0",
+      },
+    })
+
+    await fetchRegistry(["lowercase-override-test.json"], { useCache: false })
+
+    expect(acceptHeader).toBe("application/custom+json")
+    expect(userAgentHeader).toBe("custom-client/1.0")
+
+    clearRegistryContext()
   })
 
   it("should send specific Accept header for direct external URLs", async () => {
