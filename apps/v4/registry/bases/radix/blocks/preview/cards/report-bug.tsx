@@ -82,9 +82,14 @@ export function ReportBug() {
         </FieldGroup>
       </CardContent>
       <CardFooter>
-        <Field orientation="horizontal" className="justify-end">
-          <Button variant="outline">Attach File</Button>
-          <Button>Submit Bug</Button>
+        <Field
+          orientation="horizontal"
+          className="justify-end style-sera:justify-center"
+        >
+          <Button variant="outline" className="style-sera:flex-1">
+            Attach File
+          </Button>
+          <Button className="style-sera:flex-1">Submit Bug</Button>
         </Field>
       </CardFooter>
     </Card>

@@ -3,7 +3,7 @@ name: Write Beta Release comment
 
 on:
   workflow_run:
-    workflows: ["Release - Beta"]
+    workflows: ["Release"]
     types:
       - completed
 
@@ -11,12 +11,13 @@ jobs:
   comment:
     if: |
       github.repository_owner == 'shadcn-ui' &&
-      ${{ github.event.workflow_run.conclusion == 'success' }}
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     name: Write comment to the PR
     steps:
       - name: "Comment on PR"
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -53,7 +54,7 @@ jobs:
             ```
 
       - name: "Remove the autorelease label once published"
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |

@@ -1030,5 +1030,17 @@
     "homepage": "https://www.remocn.dev/",
     "url": "https://www.remocn.dev/r/{name}.json",
     "description": "Production-ready components for Remotion - text animations, backgrounds, transitions, UI blocks, and full scene compositions"
+  },
+  {
+    "name": "@exabase",
+    "homepage": "https://exawizards.com/exabase/design/",
+    "url": "https://exawizards.com/exabase/design/registry/{name}.json",
+    "description": "A collection of UI components based on the exaBase Design System, built with React and Tailwind CSS."
+  },
+  {
+    "name": "@aicanvas",
+    "homepage": "https://aicanvas.me",
+    "url": "https://aicanvas.me/r/{name}.json",
+    "description": "54 animated React components with AI reproduction prompts for Claude Code, Lovable, and v0. Free and open source."
   }
 ]

@@ -606,6 +606,8 @@ export async function runInit(
     projectInfo = await getProjectInfo(options.cwd)
   }
 
+  const didCreateProject = Boolean(newProjectTemplate)
+
   // Use the template from project creation if available,
   // or fall back to the explicit --template flag.
   const templateKey = newProjectTemplate ?? explicitTemplate
@@ -632,8 +634,10 @@ export async function runInit(
       silent: options.silent,
     })
 
-    // Run postInit for new projects (e.g. git init).
-    await selectedTemplate.postInit({ projectPath: options.cwd })
+    // Run postInit only for newly scaffolded projects (e.g. git init).
+    if (didCreateProject) {
+      await selectedTemplate.postInit({ projectPath: options.cwd })
+    }
 
     return result
   }
@@ -770,8 +774,8 @@ export async function runInit(
       options.isNewProject || projectInfo?.framework.name === "next-app",
   })
 
-  // Run postInit for new projects without a custom init (e.g. git init).
-  if (selectedTemplate) {
+  // Run postInit for newly scaffolded projects without a custom init (e.g. git init).
+  if (selectedTemplate && didCreateProject) {
     await selectedTemplate.postInit({ projectPath: options.cwd })
   }
 

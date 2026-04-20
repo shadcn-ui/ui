@@ -56,7 +56,9 @@ export function ContributionsActivity() {
         </form>
       </CardContent>
       <CardFooter>
-        <Button form="contributions-activity">Save Changes</Button>
+        <Button form="contributions-activity" className="style-sera:w-full">
+          Save Changes
+        </Button>
       </CardFooter>
     </Card>
   )
