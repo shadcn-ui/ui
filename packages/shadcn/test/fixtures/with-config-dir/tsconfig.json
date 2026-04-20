@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "baseUrl": "${configDir}",
+    "paths": {
+      "@/*": ["${configDir}/src/*"],
+      "~/components/*": ["${configDir}/src/components/*"],
+      "~/lib": ["${configDir}/src/lib"]
+    }
+  }
+}

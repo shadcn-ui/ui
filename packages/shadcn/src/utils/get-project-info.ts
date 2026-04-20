@@ -6,9 +6,9 @@ import { rawConfigSchema } from "@/src/schema"
 import { Framework, FRAMEWORKS } from "@/src/utils/frameworks"
 import { Config, getConfig, resolveConfigPaths } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
+import { loadTsConfig } from "@/src/utils/resolve-import"
 import fg from "fast-glob"
 import fs from "fs-extra"
-import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
 
 export type TailwindVersion = "v3" | "v4" | null
@@ -299,7 +299,7 @@ export async function getTailwindConfigFile(cwd: string) {
 }
 
 export async function getTsConfigAliasPrefix(cwd: string) {
-  const tsConfig = await loadConfig(cwd)
+  const tsConfig = await loadTsConfig(cwd)
 
   if (
     tsConfig?.resultType === "failed" ||

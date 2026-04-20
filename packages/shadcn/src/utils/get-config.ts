@@ -7,10 +7,9 @@ import {
 } from "@/src/schema"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
-import { resolveImport } from "@/src/utils/resolve-import"
+import { loadTsConfig, resolveImport } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
 import fg from "fast-glob"
-import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
 
 export const DEFAULT_STYLE = "default"
@@ -54,7 +53,7 @@ export async function resolveConfigPaths(
   }
 
   // Read tsconfig.json.
-  const tsConfig = await loadConfig(cwd)
+  const tsConfig = await loadTsConfig(cwd)
 
   if (tsConfig.resultType === "failed") {
     throw new Error(

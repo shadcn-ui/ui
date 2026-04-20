@@ -15,7 +15,7 @@ import { Config } from "@/src/utils/get-config"
 import { getProjectInfo, ProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import { resolveImport } from "@/src/utils/resolve-import"
+import { loadTsConfig, resolveImport } from "@/src/utils/resolve-import"
 import { spinner } from "@/src/utils/spinner"
 import { transform } from "@/src/utils/transformers"
 import { transformAsChild } from "@/src/utils/transformers/transform-aschild"
@@ -31,7 +31,6 @@ import { transformRtl } from "@/src/utils/transformers/transform-rtl"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import prompts from "prompts"
 import { Project, ScriptKind } from "ts-morph"
-import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
 
 export async function updateFiles(
@@ -524,7 +523,7 @@ async function resolveImports(filePaths: string[], config: Config) {
     compilerOptions: {},
   })
   const projectInfo = await getProjectInfo(config.resolvedPaths.cwd)
-  const tsConfig = loadConfig(config.resolvedPaths.cwd)
+  const tsConfig = loadTsConfig(config.resolvedPaths.cwd)
   const updatedFiles = []
 
   if (!projectInfo || tsConfig.resultType === "failed") {
