@@ -98,7 +98,7 @@ export const designSystemConfigSchema = z
     theme: z.enum(THEMES.map((t) => t.name) as [ThemeName, ...ThemeName[]]),
     chartColor: z
       .enum(THEMES.map((t) => t.name) as [ChartColorName, ...ChartColorName[]])
-      .default("neutral"),
+      .optional(),
     font: z.enum(fontValues).default("inter"),
     fontHeading: z.enum(fontHeadingValues).default("inherit"),
     item: z.string().optional(),
@@ -136,6 +136,10 @@ export const designSystemConfigSchema = z
       .default("next")
       .optional(),
   })
+  .transform((data) => ({
+    ...data,
+    chartColor: data.chartColor ?? data.theme,
+  }))
   .refine(
     (data) => {
       const availableThemes = getThemesForBaseColor(data.baseColor)
@@ -396,6 +400,43 @@ export const PRESETS: Preset[] = [
     iconLibrary: "lucide",
     font: "inter",
     fontHeading: "inherit",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  // Sera.
+  {
+    name: "radix-sera",
+    title: "Sera (Radix)",
+    description: "Sera / Lucide / Noto Sans + Playfair Display",
+    base: "radix",
+    style: "sera",
+    baseColor: "taupe",
+    theme: "taupe",
+    chartColor: "taupe",
+    iconLibrary: "lucide",
+    font: "noto-sans",
+    fontHeading: "playfair-display",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  {
+    name: "base-sera",
+    title: "Sera (Base)",
+    description: "Sera / Lucide / Noto Sans + Playfair Display",
+    base: "base",
+    style: "sera",
+    baseColor: "taupe",
+    theme: "taupe",
+    chartColor: "taupe",
+    iconLibrary: "lucide",
+    font: "noto-sans",
+    fontHeading: "playfair-display",
     item: "Item",
     rtl: false,
     menuAccent: "subtle",

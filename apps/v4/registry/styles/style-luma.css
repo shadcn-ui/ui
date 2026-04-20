@@ -358,11 +358,11 @@
   }
 
   .cn-field-label {
-    @apply has-data-checked:bg-input/30 gap-2 group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-2xl has-[>[data-slot=field]]:border *:data-[slot=field]:p-4;
+    @apply has-data-checked:bg-input/30 gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-2xl has-[>[data-slot=field]]:border *:data-[slot=field]:p-4;
   }
 
   .cn-field-title {
-    @apply gap-2 text-sm font-medium group-data-[disabled=true]/field:opacity-50;
+    @apply gap-2 leading-snug text-sm font-medium group-data-[disabled=true]/field:opacity-50;
   }
 
   .cn-field-description {

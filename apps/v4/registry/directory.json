@@ -1203,5 +1203,19 @@
     "url": "https://www.remocn.dev/r/{name}.json",
     "description": "Production-ready components for Remotion - text animations, backgrounds, transitions, UI blocks, and full scene compositions",
     "logo": "<svg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='100' height='100' rx='14' fill='black'/><path d='M83.9141 45.7661C86.9141 47.4982 86.9141 51.829 83.9141 53.561L31.4141 83.8716C28.4141 85.6036 24.6641 83.4382 24.6641 79.9741L24.6641 19.353C24.6641 15.8889 28.4141 13.7235 31.4141 15.4556L83.9141 45.7661Z' fill='white' stroke='white'/><path d='M68.998 31.3979C68.998 50.3798 68.998 63.307 68.998 67.3979' stroke='black' stroke-width='10'/><path d='M53.0625 16.75C53.0625 48.2803 53.0625 69.7535 53.0625 76.5488' stroke='black' stroke-width='10'/><path d='M37.127 9.88379C37.127 51.1081 37.127 79.1833 37.127 88.0679' stroke='black' stroke-width='10'/><path d='M31.1318 15.8618L43.1074 22.7646' stroke='white' stroke-width='2'/><path d='M63.291 34.439L75.2617 41.3579' stroke='white' stroke-width='2'/><path d='M46.6641 74.4712L59.208 67.2573' stroke='white' stroke-width='2'/><path d='M76.0205 57.5371L82.9848 53.5226' stroke='white' stroke-width='2'/></svg>"
+  },
+  {
+    "name": "@exabase",
+    "homepage": "https://exawizards.com/exabase/design/",
+    "url": "https://exawizards.com/exabase/design/registry/{name}.json",
+    "description": "A collection of UI components based on the exaBase Design System, built with React and Tailwind CSS.",
+    "logo": "<svg width='189' height='287' viewBox='0 0 189 287' fill='#1400C8'><path d='M15.077 103.074L14.579 104.228C-4.78838 149.063 -4.78838 152.305 14.579 197.167C21.5789 213.431 47.7538 274.025 47.7538 274.025L48.2518 272.872C67.6192 228.036 67.6192 224.795 48.2518 179.959C41.2519 163.696 15.077 103.074 15.077 103.074Z'></path><path d='M53.0599 0.607147L52.6725 1.76099C33.3052 46.5962 33.3052 49.8379 52.6725 94.7006L135.288 286.321L135.786 285.168C155.154 240.332 155.154 237.091 135.786 192.256L53.0599 0.607147Z'></path><path d='M140.594 12.9031L140.096 14.057C120.729 58.8922 120.729 62.1339 140.096 106.997C147.096 123.26 173.271 183.855 173.271 183.855L173.769 182.701C193.137 137.866 193.137 134.624 173.769 89.7889C166.769 73.5252 140.594 12.9031 140.594 12.9031Z'></path></svg>"
+  },
+  {
+    "name": "@aicanvas",
+    "homepage": "https://aicanvas.me",
+    "url": "https://aicanvas.me/r/{name}.json",
+    "description": "54 animated React components with AI reproduction prompts for Claude Code, Lovable, and v0. Free and open source.",
+    "logo": "<svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M19.8513 0C20.5626 0 21.2204 0.377823 21.5788 0.992258L22.75 3L26.8243 9.98452C27.5508 11.23 27.5508 12.77 26.8243 14.0155L22.75 21L21.5788 23.0077C21.2204 23.6222 20.5626 24 19.8513 24H8.14874C7.43741 24 6.7796 23.6222 6.42118 23.0077L0.587849 13.0077C0.224593 12.385 0.224593 11.615 0.58785 10.9923L6.42118 0.992257C6.7796 0.377822 7.43741 0 8.14874 0H19.8513ZM4 12L9 21H18.25L13 12L18.25 3H9L4 12Z\" fill=\"url(#paint0_linear_185_248)\"/><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M9 21L4 12H13L18.25 21H9Z\" fill=\"#1E1E1E\"/><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M13 12H4L9 3H18.25L13 12Z\" fill=\"#4F4F4C\"/><defs><linearGradient id=\"paint0_linear_185_248\" x1=\"9\" y1=\"3\" x2=\"24.8756\" y2=\"17\" gradientUnits=\"userSpaceOnUse\"><stop stop-color=\"#666662\"/><stop offset=\"1\" stop-color=\"#4F4F4C\"/></linearGradient></defs></svg>"
   }
 ]
