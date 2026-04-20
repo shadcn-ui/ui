@@ -98,7 +98,7 @@ export const designSystemConfigSchema = z
     theme: z.enum(THEMES.map((t) => t.name) as [ThemeName, ...ThemeName[]]),
     chartColor: z
       .enum(THEMES.map((t) => t.name) as [ChartColorName, ...ChartColorName[]])
-      .default("neutral"),
+      .optional(),
     font: z.enum(fontValues).default("inter"),
     fontHeading: z.enum(fontHeadingValues).default("inherit"),
     item: z.string().optional(),
@@ -136,6 +136,10 @@ export const designSystemConfigSchema = z
       .default("next")
       .optional(),
   })
+  .transform((data) => ({
+    ...data,
+    chartColor: data.chartColor ?? data.theme,
+  }))
   .refine(
     (data) => {
       const availableThemes = getThemesForBaseColor(data.baseColor)
