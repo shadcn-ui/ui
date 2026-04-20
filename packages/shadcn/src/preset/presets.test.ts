@@ -1,7 +1,7 @@
 import { REGISTRY_URL } from "@/src/registry/constants"
 import { describe, expect, it } from "vitest"
 
-import { resolveCreateUrl, resolveInitUrl } from "./presets"
+import { DEFAULT_PRESETS, resolveCreateUrl, resolveInitUrl } from "./presets"
 
 const SHADCN_URL = REGISTRY_URL.replace(/\/r\/?$/, "")
 
@@ -77,6 +77,12 @@ describe("buildInitUrl", () => {
     const url = resolveInitUrl({ ...mockPreset, chartColor: "emerald" })
     const parsed = new URL(url)
     expect(parsed.searchParams.get("chartColor")).toBe("emerald")
+  })
+
+  it("should include chartColor from default presets", () => {
+    const url = resolveInitUrl({ ...DEFAULT_PRESETS.sera, base: "base" })
+    const parsed = new URL(url)
+    expect(parsed.searchParams.get("chartColor")).toBe("taupe")
   })
 
   it("should not include chartColor when not provided", () => {
