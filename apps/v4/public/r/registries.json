@@ -348,6 +348,12 @@
     "description": "Modern UI Library for building media players in React. Powered by Shaka Player."
   },
   {
+    "name": "@loading-ui",
+    "homepage": "https://loading-ui.com",
+    "url": "https://loading-ui.com/r/{name}.json",
+    "description": "Spinners, loaders, and loading animations for modern web apps. Free and open-source."
+  },
+  {
     "name": "@lmscn",
     "homepage": "https://lmscn.vercel.app",
     "url": "https://lmscn.vercel.app/r/{name}.json",
@@ -1042,5 +1048,11 @@
     "homepage": "https://aicanvas.me",
     "url": "https://aicanvas.me/r/{name}.json",
     "description": "54 animated React components with AI reproduction prompts for Claude Code, Lovable, and v0. Free and open source."
+  },
+  {
+    "name": "@xcn",
+    "homepage": "https://ui.radiumcoders.com",
+    "url": "https://ui.radiumcoders.com/r/xcn/{name}.json",
+    "description": "Hand-crafted, beautiful, and minimal UI components built with Tailwind CSS and Motion."
   }
 ]
