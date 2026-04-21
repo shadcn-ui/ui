@@ -37,7 +37,7 @@
     "pub:beta": "cd packages/shadcn && pnpm pub:beta",
     "pub:release": "cd packages/shadcn && pnpm pub:release",
     "test:dev": "turbo run test --filter=!shadcn-ui --force",
-    "test": "start-server-and-test v4:dev http://localhost:4000 test:dev",
+    "test": "pnpm --filter=v4 registry:build && start-server-and-test v4:dev http://localhost:4000 test:dev",
     "validate:registries": "pnpm --filter=v4 validate:registries",
     "test:apps": "pnpm --filter=v4 test:apps"
   },
@@ -69,7 +69,7 @@
     "tailwindcss": "^3.4.18",
     "tsx": "^4.1.4",
     "turbo": "^1.9.9",
-    "vite": "^7.1.12",
+    "vite": "^7.3.2",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^2.1.9"
   },
