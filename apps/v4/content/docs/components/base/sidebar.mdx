@@ -127,6 +127,7 @@ SidebarProvider
 │   ├── SidebarFooter
 │   └── SidebarRail
 ├── SidebarInset
+│   └── SidebarInsetFooter
 └── SidebarTrigger
 ```
 
@@ -141,6 +142,7 @@ SidebarProvider
 - **SidebarMenu** / **SidebarMenuItem** — Menu structure for links, badges, actions, and nested submenus.
 - **SidebarRail** — Resize handle for adjusting sidebar width when applicable.
 - **SidebarInset** — Wraps main content when using the `inset` variant.
+- **SidebarInsetFooter** — Pins a container (e.g. a chat prompt input) to the bottom of `SidebarInset`.
 - **SidebarTrigger** — Control that toggles the sidebar open or collapsed.
 
 <Image
@@ -232,6 +234,69 @@ The main `Sidebar` component used to render a collapsible sidebar.
     <main>{children}</main>
   </SidebarInset>
 </SidebarProvider>
+```
+
+### SidebarInsetFooter
+
+Use the `SidebarInsetFooter` component to pin a container to the bottom of `SidebarInset`. This is useful for persistent UI such as a chat prompt input, a cookie notice, or a toolbar.
+
+For the footer to stay visually pinned while the main content scrolls, the content above it should be allowed to grow and scroll (e.g. `flex-1 overflow-auto`).
+
+```tsx showLineNumbers
+<SidebarProvider>
+  <Sidebar />
+  <SidebarInset>
+    <div className="flex-1 overflow-auto">{children}</div>
+    <SidebarInsetFooter>
+      <form>{/* chat prompt, etc. */}</form>
+    </SidebarInsetFooter>
+  </SidebarInset>
+</SidebarProvider>
+```
+
+### Controlling a right sidebar from anywhere
+
+To render both a left and a right sidebar and toggle each one independently — including from a standalone button placed outside the right sidebar — nest a second `SidebarProvider` around the right `Sidebar` and use the controlled `open` / `onOpenChange` props. Each provider owns its own state, so any button that sets that state can act as a trigger.
+
+```tsx showLineNumbers
+"use client"
+
+import * as React from "react"
+
+export function Layout({ children }: { children: React.ReactNode }) {
+  const [rightOpen, setRightOpen] = React.useState(false)
+
+  return (
+    <SidebarProvider>
+      <Sidebar side="left">{/* ... */}</Sidebar>
+
+      <SidebarInset>
+        <header className="flex h-14 items-center gap-2 border-b px-4">
+          {/* Toggles the left sidebar via the nearest provider. */}
+          <SidebarTrigger />
+
+          {/* Standalone button that toggles the right sidebar. */}
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            onClick={() => setRightOpen((open) => !open)}
+            className="ml-auto"
+          >
+            <PanelRightIcon />
+            <span className="sr-only">Toggle right sidebar</span>
+          </Button>
+        </header>
+
+        <div className="flex-1 overflow-auto">{children}</div>
+      </SidebarInset>
+
+      {/* A second provider owns the right sidebar's state. */}
+      <SidebarProvider open={rightOpen} onOpenChange={setRightOpen}>
+        <Sidebar side="right">{/* ... */}</Sidebar>
+      </SidebarProvider>
+    </SidebarProvider>
+  )
+}
 ```
 
 ## useSidebar
