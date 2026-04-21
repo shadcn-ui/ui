@@ -1,5 +1,15 @@
 # @shadcn/ui
 
+## 4.4.0
+
+### Minor Changes
+
+- [#10451](https://github.com/shadcn-ui/ui/pull/10451) [`e456fed9d3f0b7aacf7084aecc02a75e8fde622d`](https://github.com/shadcn-ui/ui/commit/e456fed9d3f0b7aacf7084aecc02a75e8fde622d) Thanks [@shadcn](https://github.com/shadcn)! - add apply --only
+
+### Patch Changes
+
+- [`9c572ab778b5a0ab42693eb07bc4a75d0c24603e`](https://github.com/shadcn-ui/ui/commit/9c572ab778b5a0ab42693eb07bc4a75d0c24603e) Thanks [@shadcn](https://github.com/shadcn)! - fix chartColor in presets
+
 ## 4.3.1
 
 ### Patch Changes
