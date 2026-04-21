@@ -2,7 +2,7 @@
   "name": "shadcn",
   "displayName": "shadcn/ui",
   "version": "1.0.0",
-  "description": "Official shadcn/ui Cursor plugin. Loads the shadcn agent skill (skills/shadcn/SKILL.md) and registers the shadcn MCP server (npx shadcn@latest mcp) so Cursor agents can browse registries, search, view, install, and audit components.",
+  "description": "UI component and design system framework. Search registries, install components as source code, and audit your project.",
   "author": {
     "name": "shadcn"
   },
