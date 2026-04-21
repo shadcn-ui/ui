@@ -16,7 +16,7 @@
     "@remixicon/react": "^4.9.0",
     "@workspace/ui": "workspace:*",
     "isbot": "^5.1.31",
-    "react": "^19.2.4",
+    "react": "^19.2.5",
     "react-dom": "^19.2.4",
     "react-router": "7.12.0"
   },
