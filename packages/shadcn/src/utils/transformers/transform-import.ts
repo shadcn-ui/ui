@@ -10,7 +10,7 @@ export const transformImport: Transformer = async ({
   const utilsAlias = config.aliases?.utils
   const workspaceAlias =
     typeof utilsAlias === "string" && utilsAlias.includes("/")
-      ? utilsAlias.split("/")[0]
+      ? getUtilsWorkspacePrefix(utilsAlias)
       : "@"
   const utilsImport = `${workspaceAlias}/lib/utils`
 
@@ -50,6 +50,32 @@ export const transformImport: Transformer = async ({
   return sourceFile
 }
 
+/**
+ * Extracts the workspace prefix from a utils alias so that appending
+ * `/lib/utils` reconstructs the full utils path.
+ *
+ * The utils alias is expected to end with `/lib/utils`. Everything before
+ * that suffix is the workspace prefix.
+ *
+ * Examples:
+ *   "@workspace/ui/lib/utils" → "@workspace/ui"
+ *   "@custom-alias/lib/utils" → "@custom-alias"
+ *   "~/src/utils"             → "~"  (no /lib/utils suffix – fall back to first segment)
+ *   "@/lib/utils"             → "@"
+ */
+function getUtilsWorkspacePrefix(utilsAlias: string): string {
+  const libUtilsSuffix = "/lib/utils"
+  if (utilsAlias.endsWith(libUtilsSuffix)) {
+    return utilsAlias.slice(0, -libUtilsSuffix.length)
+  }
+  // Fallback: strip everything after the first path segment
+  if (utilsAlias.startsWith("@/")) return "@"
+  if (utilsAlias.startsWith("@")) {
+    return utilsAlias.split("/")[0]
+  }
+  return utilsAlias.split("/")[0]
+}
+
 function updateImportAliases(
   moduleSpecifier: string,
   config: Config,
@@ -68,7 +94,16 @@ function updateImportAliases(
   // Not a registry import.
   if (!moduleSpecifier.startsWith("@/registry/")) {
     // We fix the alias and return.
-    const alias = config.aliases.components.split("/")[0]
+    // For scoped packages with sub-paths (e.g. @scope/pkg/sub), extract the
+    // package name (first two segments). For two-segment scoped aliases
+    // (e.g. @custom-alias/components) or non-scoped aliases, use only the
+    // first segment as the root.
+    const componentsAlias = config.aliases.components
+    const segments = componentsAlias.split("/")
+    const alias =
+      segments[0].startsWith("@") && segments.length > 2
+        ? segments.slice(0, 2).join("/")
+        : segments[0]
     return moduleSpecifier.replace(/^@\//, `${alias}/`)
   }
 
