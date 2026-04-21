@@ -127,6 +127,94 @@ export function formatMonorepoMessage(
   logger.break()
 }
 
+// Categorizes monorepo targets by type (framework apps vs UI libraries).
+export function categorizeMonorepoTargets(
+  targets: { name: string; hasConfig: boolean }[]
+) {
+  const frameworkApps: { name: string; hasConfig: boolean }[] = []
+  const uiLibraries: { name: string; hasConfig: boolean }[] = []
+
+  for (const target of targets) {
+    // Heuristic: packages/* directories are typically UI libraries
+    // apps/* directories are typically full framework apps
+    if (target.name.startsWith("packages/")) {
+      uiLibraries.push(target)
+    } else {
+      frameworkApps.push(target)
+    }
+  }
+
+  return { frameworkApps, uiLibraries }
+}
+
+// Formats and logs enhanced monorepo detection message with guidance.
+export function formatMonorepoMessageWithGuidance(
+  command: string,
+  targets: { name: string; hasConfig: boolean }[],
+  targetCwd: string,
+  options?: {
+    cwdFlag?: string
+  }
+) {
+  const cwdFlag = options?.cwdFlag ?? "-c"
+  const { frameworkApps, uiLibraries } = categorizeMonorepoTargets(targets)
+
+  logger.break()
+  logger.log(
+    `It looks like you are running ${highlighter.info(
+      command
+    )} from a monorepo.`
+  )
+
+  // If the target cwd starts with "packages/", provide specific guidance
+  if (targetCwd.startsWith("packages/")) {
+    logger.break()
+    logger.warn(
+      `The directory ${highlighter.info(
+        targetCwd
+      )} appears to be a UI library package.`
+    )
+    logger.warn(
+      `The ${highlighter.info(
+        command
+      )} command works best with full framework apps (Next.js, Vite, Astro, etc.).`
+    )
+
+    if (frameworkApps.length > 0) {
+      logger.break()
+      logger.log(
+        `Try running the command on one of these framework apps instead:`
+      )
+      logger.break()
+      for (const app of frameworkApps) {
+        logger.log(`  shadcn ${command} ${cwdFlag} ${app.name}`)
+      }
+    } else {
+      logger.break()
+      logger.log(
+        `No framework apps detected in this monorepo. Look for directories with framework config files like:`
+      )
+      logger.log(`  - next.config.js (Next.js)`)
+      logger.log(`  - vite.config.js (Vite)`)
+      logger.log(`  - astro.config.mjs (Astro)`)
+    }
+  } else {
+    // Standard messaging for non-packages targets
+    logger.log(
+      `To use shadcn in a specific workspace, use the ${highlighter.info(
+        cwdFlag
+      )} flag:`
+    )
+    logger.break()
+
+    for (const target of targets) {
+      logger.log(`  shadcn ${command} ${cwdFlag} ${target.name}`)
+    }
+  }
+
+  logger.break()
+}
+
 async function getWorkspacePatterns(cwd: string) {
   const patterns: string[] = []
 

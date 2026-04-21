@@ -2,7 +2,9 @@ import path from "path"
 import { initOptionsSchema } from "@/src/commands/init"
 import * as ERRORS from "@/src/utils/errors"
 import {
+  categorizeMonorepoTargets,
   formatMonorepoMessage,
+  formatMonorepoMessageWithGuidance,
   getMonorepoTargets,
   isMonorepoRoot,
 } from "@/src/utils/get-monorepo-info"
@@ -74,7 +76,8 @@ export async function preFlightInit(
     if (!options.monorepo && (await isMonorepoRoot(options.cwd))) {
       const targets = await getMonorepoTargets(options.cwd)
       if (targets.length > 0) {
-        formatMonorepoMessage("init", targets)
+        // Use enhanced messaging with guidance for better user experience
+        formatMonorepoMessageWithGuidance("init", targets, options.cwd)
         process.exit(1)
       }
     }
