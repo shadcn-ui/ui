@@ -39,6 +39,7 @@ export async function updateFiles(
   config: Config,
   options: {
     overwrite?: boolean
+    noOverwrite?: boolean
     force?: boolean
     silent?: boolean
     rootSpinner?: ReturnType<typeof spinner>
@@ -57,6 +58,7 @@ export async function updateFiles(
   }
   options = {
     overwrite: false,
+    noOverwrite: false,
     force: false,
     silent: false,
     isRemote: false,
@@ -192,6 +194,11 @@ export async function updateFiles(
 
     // Skip overwrite prompt for .env files - we'll handle them specially
     if (existingFile && !options.overwrite && !isEnvFile(filePath)) {
+      if (options.noOverwrite) {
+        filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
+        continue
+      }
+
       filesCreatedSpinner.stop()
       if (options.rootSpinner) {
         options.rootSpinner.stop()
@@ -313,7 +320,11 @@ export async function updateFiles(
     spinner(
       `Skipped ${filesSkipped.length} ${
         filesSkipped.length === 1 ? "file" : "files"
-      }: (files might be identical, use --overwrite to overwrite)`,
+      }: ${
+        options.noOverwrite
+          ? "skipped existing files, use --overwrite to overwrite"
+          : "files might be identical, use --overwrite to overwrite"
+      }`,
       {
         silent: options.silent,
       }

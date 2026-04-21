@@ -36,6 +36,7 @@ export async function addComponents(
   config: Config,
   options: {
     overwrite?: boolean
+    noOverwrite?: boolean
     overwriteCssVars?: boolean
     silent?: boolean
     isNewProject?: boolean
@@ -75,6 +76,7 @@ async function addProjectComponents(
   config: z.infer<typeof configSchema>,
   options: {
     overwrite?: boolean
+    noOverwrite?: boolean
     overwriteCssVars?: boolean
     silent?: boolean
     isNewProject?: boolean
@@ -134,6 +136,7 @@ async function addProjectComponents(
 
   await updateFiles(tree.files, config, {
     overwrite: options.overwrite,
+    noOverwrite: options.noOverwrite,
     silent: options.silent,
     path: options.path,
     supportedFontMarkers,
@@ -142,8 +145,10 @@ async function addProjectComponents(
   // Write CSS last so the file watcher triggers a rebuild
   // after all component files and dependencies are in place.
   const overwriteCssVars = tree.cssVars
-    ? (options.overwriteCssVars ??
-      (await shouldOverwriteCssVars(components, config)))
+    ? options.noOverwrite
+      ? false
+      : (options.overwriteCssVars ??
+          (await shouldOverwriteCssVars(components, config)))
     : undefined
   await updateCss(tree.css, config, {
     silent: options.silent,
@@ -165,6 +170,7 @@ async function addWorkspaceComponents(
   workspaceConfig: z.infer<typeof workspaceConfigSchema>,
   options: {
     overwrite?: boolean
+    noOverwrite?: boolean
     overwriteCssVars?: boolean
     silent?: boolean
     isNewProject?: boolean
@@ -294,6 +300,7 @@ async function addWorkspaceComponents(
     // Update files for this type.
     const files = await updateFiles(typeFiles, targetConfig, {
       overwrite: options.overwrite,
+      noOverwrite: options.noOverwrite,
       silent: true,
       rootSpinner,
       isRemote: options.isRemote,
@@ -322,8 +329,10 @@ async function addWorkspaceComponents(
   // 6. Write CSS last so the file watcher triggers a rebuild
   // after all component files and dependencies are in place.
   const overwriteCssVars = tree.cssVars
-    ? (options.overwriteCssVars ??
-      (await shouldOverwriteCssVars(components, config)))
+    ? options.noOverwrite
+      ? false
+      : (options.overwriteCssVars ??
+          (await shouldOverwriteCssVars(components, config)))
     : undefined
   await updateCss(tree.css, mainTargetConfig, {
     silent: true,
@@ -386,7 +395,11 @@ async function addWorkspaceComponents(
     spinner(
       `Skipped ${dedupedSkipped.length} ${
         dedupedSkipped.length === 1 ? "file" : "files"
-      }: (use --overwrite to overwrite)`,
+      }: ${
+        options.noOverwrite
+          ? "existing files preserved; use --overwrite to overwrite"
+          : "use --overwrite to overwrite"
+      }`,
       {
         silent: options.silent,
       }
