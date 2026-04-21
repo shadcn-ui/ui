@@ -65,6 +65,23 @@ describe("buildRegistryBase", () => {
     expect(result.chartColor).toBe("neutral")
   })
 
+  it("defaults chartColor to the selected theme when omitted", () => {
+    const result = designSystemConfigSchema.parse({
+      base: "base",
+      style: "sera",
+      iconLibrary: "lucide",
+      baseColor: "taupe",
+      theme: "taupe",
+      font: "noto-sans",
+      fontHeading: "playfair-display",
+      menuAccent: "subtle",
+      menuColor: "default",
+      radius: "default",
+    })
+
+    expect(result.chartColor).toBe("taupe")
+  })
+
   it("rejects chartColor values that are unavailable for the selected base color", () => {
     const result = designSystemConfigSchema.safeParse({
       base: "radix",

@@ -144,6 +144,106 @@ npm run dev
 
 Your files will now be served at `http://localhost:3000/r/[NAME].json` eg. `http://localhost:3000/r/hello-world.json`.
 
+## Content negotiation
+
+The `shadcn` CLI supports **HTTP Content Negotiation**. This allows you to host your registry at any endpoint — including the root of your domain — and serve different content depending on who is asking.
+
+From a single URL, you can serve:
+
+- **HTML** to browsers — a landing page, documentation, or marketing site.
+- **JSON** to the `shadcn` CLI — an installable registry item.
+- **Markdown** to AI agents and LLMs — a machine-readable version of your content.
+
+The client signals its preference using the `Accept` request header, and your server decides what to return.
+
+### Request headers
+
+When the CLI makes a request to a registry, it sends the following headers:
+
+- **User-Agent**: `shadcn`
+- **Accept**: `application/vnd.shadcn.v1+json, application/json;q=0.9`
+
+### Root hosting
+
+By checking these headers on your server, you can route CLI traffic to an installable registry item while keeping browser traffic flowing to your documentation or homepage.
+
+The examples below assume your built registry item is served at `/r/index.json`. Adjust the path to match your output.
+
+In Next.js, express this as a rewrite in `next.config.ts`. This keeps the negotiation in the routing layer and avoids a Proxy function for this static rewrite:
+
+```typescript title="next.config.ts" showLineNumbers
+import type { NextConfig } from "next"
+
+const nextConfig: NextConfig = {
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: "/",
+          has: [
+            {
+              type: "header",
+              key: "accept",
+              value: "(.*)application/vnd\\.shadcn\\.v1\\+json(.*)",
+            },
+          ],
+          destination: "/r/index.json",
+        },
+        {
+          source: "/",
+          has: [
+            {
+              type: "header",
+              key: "user-agent",
+              value: "shadcn",
+            },
+          ],
+          destination: "/r/index.json",
+        },
+      ],
+    }
+  },
+  async headers() {
+    return [
+      {
+        source: "/",
+        headers: [{ key: "Vary", value: "Accept, User-Agent" }],
+      },
+    ]
+  },
+}
+
+export default nextConfig
+```
+
+Or, in an Express.js server:
+
+```javascript title="server.js" showLineNumbers
+app.get("/", (req, res) => {
+  res.vary("Accept")
+  res.vary("User-Agent")
+
+  // Check if the client prefers the shadcn vendor type.
+  if (req.accepts("application/vnd.shadcn.v1+json")) {
+    return res.json(registryData)
+  }
+
+  // Optional: Secondary check for the User-Agent.
+  if (req.get("User-Agent") === "shadcn") {
+    return res.json(registryData)
+  }
+
+  // Otherwise, serve your documentation or homepage.
+  res.send(htmlContent)
+})
+```
+
+This enables:
+
+- **Branded Registry URLs**: `shadcn add https://ui.example.com`
+- **Shorter URLs**: Users type your domain root, not `/r/` or `/registry/` sub-paths.
+- **Easy Mnemonics**: Easier for users to remember and share your registry.
+
 ## Publish your registry
 
 To make your registry available to other developers, you can publish it by deploying your project to a public URL.
