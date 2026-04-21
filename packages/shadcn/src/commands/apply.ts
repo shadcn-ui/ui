@@ -33,15 +33,27 @@ export const applyOptionsSchema = z.object({
   cwd: z.string(),
   positionalPreset: z.string().optional(),
   preset: z.string().optional(),
+  only: z.union([z.boolean(), z.string()]).optional(),
   yes: z.boolean(),
   silent: z.boolean(),
 })
+
+const APPLY_ONLY_VALUES = ["theme", "font"] as const
+type ApplyOnlyValue = (typeof APPLY_ONLY_VALUES)[number]
+
+class ApplyOnlyError extends Error {
+  constructor(message: string) {
+    super(message)
+    this.name = "ApplyOnlyError"
+  }
+}
 
 export const apply = new Command()
   .name("apply")
   .description("apply a preset to an existing project")
   .argument("[preset]", "the preset to apply")
   .option("--preset <preset>", "preset configuration to apply")
+  .option("--only [parts]", "apply only parts of a preset: theme, font")
   .option("-y, --yes", "skip confirmation prompt.", false)
   .option(
     "-c, --cwd <cwd>",
@@ -58,6 +70,8 @@ export const apply = new Command()
       })
 
       const preset = resolveApplyPreset(options)
+      const explicitOnly = resolveApplyOnly(options.only)
+      validateApplyOnlyPreset({ preset, only: explicitOnly })
 
       const preflight = await preFlightApply(options)
 
@@ -114,26 +128,43 @@ export const apply = new Command()
 
       validatePreset(preset)
 
-      const reinstallComponents = await getProjectComponents(options.cwd)
+      const only = explicitOnly ?? resolveApplyOnly(getPresetUrlOnly(preset))
+      const shouldReinstallComponents = !only
+      const reinstallComponents = shouldReinstallComponents
+        ? await getProjectComponents(options.cwd)
+        : []
 
       if (!options.yes) {
         logger.break()
-        logger.warn(
-          highlighter.warn(
-            `Applying a new preset will overwrite existing UI components, fonts, and CSS variables.`
+        if (!only) {
+          logger.warn(
+            highlighter.warn(
+              `Applying a new preset will overwrite existing UI components, fonts, and CSS variables.`
+            )
           )
-        )
+        } else {
+          logger.warn(
+            highlighter.warn(
+              `Applying the selected preset parts will update your project configuration and styles.`
+            )
+          )
+        }
         logger.warn(
           `Commit or stash your changes before continuing so you can easily go back.`
         )
-        logger.break()
-        logger.log("  The following components will be re-installed:")
-        if (reinstallComponents.length) {
-          for (let i = 0; i < reinstallComponents.length; i += 8) {
-            logger.log(`  - ${reinstallComponents.slice(i, i + 8).join(", ")}`)
+
+        if (shouldReinstallComponents) {
+          logger.break()
+          logger.log("  The following components will be re-installed:")
+          if (reinstallComponents.length) {
+            for (let i = 0; i < reinstallComponents.length; i += 8) {
+              logger.log(
+                `  - ${reinstallComponents.slice(i, i + 8).join(", ")}`
+              )
+            }
+          } else {
+            logger.log("  - No installed UI components were detected.")
           }
-        } else {
-          logger.log("  - No installed UI components were detected.")
         }
         logger.break()
 
@@ -156,6 +187,7 @@ export const apply = new Command()
       const initUrl = resolveApplyInitUrl(preset, currentBase, {
         template,
         rtl,
+        only: only?.join(","),
       })
 
       await withFileBackup(
@@ -171,17 +203,23 @@ export const apply = new Command()
               | undefined,
           })
 
+          const applyRegistryBaseConfig = resolveApplyRegistryBaseConfig({
+            registryBaseConfig,
+            existingConfig,
+            only,
+          })
+
           await runInit({
             cwd: options.cwd,
             yes: true,
             force: false,
-            reinstall: true,
+            reinstall: shouldReinstallComponents,
             defaults: false,
             silent: options.silent,
             isNewProject: false,
             cssVariables: true,
             installStyleIndex,
-            registryBaseConfig,
+            registryBaseConfig: applyRegistryBaseConfig,
             existingConfig,
             components: [cleanUrl, ...reinstallComponents],
           })
@@ -201,6 +239,14 @@ export const apply = new Command()
       logger.log("Preset applied successfully.")
       logger.break()
     } catch (error) {
+      if (error instanceof ApplyOnlyError) {
+        for (const line of error.message.split("\n")) {
+          logger.error(line)
+        }
+        logger.break()
+        process.exit(1)
+      }
+
       logger.break()
       handleError(error)
     } finally {
@@ -223,6 +269,118 @@ function resolveApplyPreset(options: z.infer<typeof applyOptionsSchema>) {
   }
 
   return flagPreset ?? positionalPreset
+}
+
+export function getPresetUrlOnly(preset: string) {
+  if (!isUrl(preset)) {
+    return undefined
+  }
+
+  const url = new URL(preset)
+  if (url.pathname !== "/init") {
+    return undefined
+  }
+
+  return url.searchParams.get("only") ?? undefined
+}
+
+export function resolveApplyOnly(
+  value: z.infer<typeof applyOptionsSchema>["only"]
+) {
+  if (value === undefined || value === false) {
+    return undefined
+  }
+
+  if (value === true) {
+    throw new ApplyOnlyError(
+      [
+        "Missing value for --only.",
+        `Use one or more of: ${APPLY_ONLY_VALUES.join(", ")}.`,
+        "Example: shadcn apply <preset> --only theme,font.",
+      ].join("\n")
+    )
+  }
+
+  return parseApplyOnlyParts(value)
+}
+
+export function parseApplyOnlyParts(value: string) {
+  const aliases: Record<string, ApplyOnlyValue> = {
+    theme: "theme",
+    font: "font",
+    fonts: "font",
+  }
+  const parts = value
+    .split(",")
+    .map((part) => part.trim().toLowerCase())
+    .filter(Boolean)
+  const invalid = parts.filter((part) => !aliases[part])
+
+  if (!parts.length || invalid.length) {
+    throw new ApplyOnlyError(
+      [
+        `Invalid value for --only: ${value}.`,
+        `Use one or more of: ${APPLY_ONLY_VALUES.join(", ")}.`,
+        "Example: shadcn apply <preset> --only theme,font.",
+      ].join("\n")
+    )
+  }
+
+  return Array.from(new Set(parts.map((part) => aliases[part])))
+}
+
+export function validateApplyOnlyPreset(options: {
+  preset?: string
+  only?: ApplyOnlyValue[]
+}) {
+  if (!options.only || options.preset) {
+    return
+  }
+
+  throw new ApplyOnlyError(
+    [
+      "Missing preset for --only.",
+      "Use: shadcn apply <preset> --only theme,font.",
+    ].join("\n")
+  )
+}
+
+function resolveApplyRegistryBaseConfig(options: {
+  registryBaseConfig: Record<string, unknown> | undefined
+  existingConfig: Record<string, unknown>
+  only: ApplyOnlyValue[] | undefined
+}) {
+  if (!options.only || options.only.includes("theme")) {
+    return options.registryBaseConfig
+  }
+
+  const existingTailwind =
+    typeof options.existingConfig.tailwind === "object" &&
+    options.existingConfig.tailwind !== null
+      ? options.existingConfig.tailwind
+      : {}
+  const registryTailwind =
+    typeof options.registryBaseConfig?.tailwind === "object" &&
+    options.registryBaseConfig.tailwind !== null
+      ? options.registryBaseConfig.tailwind
+      : {}
+  const config: Record<string, unknown> = {
+    ...options.registryBaseConfig,
+    tailwind: {
+      ...existingTailwind,
+      ...registryTailwind,
+    },
+  }
+
+  if (options.existingConfig.menuColor) {
+    config.menuColor = options.existingConfig.menuColor
+  }
+
+  if (options.existingConfig.menuAccent) {
+    config.menuAccent = options.existingConfig.menuAccent
+  }
+
+  return config
 }
 
 function validatePreset(preset: string) {
@@ -251,7 +409,7 @@ async function resolveApplyTemplate(cwd: string) {
 export function resolveApplyInitUrl(
   preset: string,
   currentBase: "radix" | "base",
-  options: { template?: string; rtl?: boolean } = {}
+  options: { template?: string; rtl?: boolean; only?: string } = {}
 ) {
   if (isUrl(preset)) {
     const url = new URL(preset)
@@ -262,6 +420,9 @@ export function resolveApplyInitUrl(
 
     url.searchParams.set("base", currentBase)
     url.searchParams.set("rtl", String(options.rtl ?? false))
+    if (options.only) {
+      url.searchParams.set("only", options.only)
+    }
 
     return url.toString()
   }
@@ -280,7 +441,7 @@ export function resolveApplyInitUrl(
         base: currentBase,
         rtl: options.rtl ?? false,
       },
-      { preset, template: options.template }
+      { preset, template: options.template, only: options.only }
     )
   }
 
@@ -292,7 +453,7 @@ export function resolveApplyInitUrl(
       base: currentBase,
       rtl: options.rtl ?? resolvedPreset.rtl,
     },
-    { template: options.template }
+    { template: options.template, only: options.only }
   )
 }
 
