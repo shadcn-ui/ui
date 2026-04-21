@@ -1,4 +1,5 @@
 import Link from "next/link"
+
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -7,7 +8,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/examples/base/ui/breadcrumb"
+} from "@/styles/base-nova/ui/breadcrumb"
 
 export function BreadcrumbEllipsisDemo() {
   return (

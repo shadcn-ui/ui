@@ -48,14 +48,11 @@
       "cache": false
     },
     "test": {
+      "dependsOn": ["^build"],
       "cache": false,
       "outputs": []
     },
     "registry:build": {
-      "cache": false,
-      "outputs": []
-    },
-    "registry": {
       "outputs": []
     }
   }

@@ -1,5 +1,47 @@
 # @shadcn/ui
 
+## 4.4.0
+
+### Minor Changes
+
+- [#10451](https://github.com/shadcn-ui/ui/pull/10451) [`e456fed9d3f0b7aacf7084aecc02a75e8fde622d`](https://github.com/shadcn-ui/ui/commit/e456fed9d3f0b7aacf7084aecc02a75e8fde622d) Thanks [@shadcn](https://github.com/shadcn)! - add apply --only
+
+### Patch Changes
+
+- [`9c572ab778b5a0ab42693eb07bc4a75d0c24603e`](https://github.com/shadcn-ui/ui/commit/9c572ab778b5a0ab42693eb07bc4a75d0c24603e) Thanks [@shadcn](https://github.com/shadcn)! - fix chartColor in presets
+
+## 4.3.1
+
+### Patch Changes
+
+- [#10436](https://github.com/shadcn-ui/ui/pull/10436) [`b7cfc364aca36bc90f8efa86773bc81011502036`](https://github.com/shadcn-ui/ui/commit/b7cfc364aca36bc90f8efa86773bc81011502036) Thanks [@shadcn](https://github.com/shadcn)! - Ensure `init` only runs template post-init hooks for newly created projects.
+
+- [#10179](https://github.com/shadcn-ui/ui/pull/10179) [`d00605c5fb5fe3cfbcb68cea65398430cdd819f8`](https://github.com/shadcn-ui/ui/commit/d00605c5fb5fe3cfbcb68cea65398430cdd819f8) Thanks [@EthanThatOneKid](https://github.com/EthanThatOneKid)! - Send `Accept: application/vnd.shadcn.v1+json, application/json;q=0.9` and `User-Agent: shadcn` on registry fetches so servers using HTTP content negotiation can reliably serve JSON to the CLI. Fixes #10164.
+
+## 4.3.0
+
+### Minor Changes
+
+- [#10416](https://github.com/shadcn-ui/ui/pull/10416) [`101741046813622d48c081dfc19c40d0aa76484b`](https://github.com/shadcn-ui/ui/commit/101741046813622d48c081dfc19c40d0aa76484b) Thanks [@shadcn](https://github.com/shadcn)! - add style sera
+
+## 4.2.0
+
+### Minor Changes
+
+- [#10313](https://github.com/shadcn-ui/ui/pull/10313) [`c1e29824cd7a6809448e45b6b7fe8f7be71ecb0f`](https://github.com/shadcn-ui/ui/commit/c1e29824cd7a6809448e45b6b7fe8f7be71ecb0f) Thanks [@shadcn](https://github.com/shadcn)! - add shadcn apply command
+
+## 4.1.2
+
+### Patch Changes
+
+- [#10246](https://github.com/shadcn-ui/ui/pull/10246) [`44c09a19b0658cf8e72ac84bbba5b76e05192a0d`](https://github.com/shadcn-ui/ui/commit/44c09a19b0658cf8e72ac84bbba5b76e05192a0d) Thanks [@shadcn](https://github.com/shadcn)! - add style luma
+
+## 4.1.1
+
+### Patch Changes
+
+- [#10202](https://github.com/shadcn-ui/ui/pull/10202) [`12b49c986fcf7e6db9be7f515df6142f822f2236`](https://github.com/shadcn-ui/ui/commit/12b49c986fcf7e6db9be7f515df6142f822f2236) Thanks [@shadcn](https://github.com/shadcn)! - fix packageManager in package.json
+
 ## 4.1.0
 
 ### Minor Changes

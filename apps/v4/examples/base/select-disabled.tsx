@@ -5,7 +5,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/examples/base/ui/select"
+} from "@/styles/base-nova/ui/select"
 
 export function SelectDisabled() {
   const items = [

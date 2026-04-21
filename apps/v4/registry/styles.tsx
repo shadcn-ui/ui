@@ -1,5 +1,3 @@
-import * as React from "react"
-
 export const STYLES = [
   {
     name: "vega",
@@ -113,6 +111,54 @@ export const STYLES = [
           strokeWidth="2"
           strokeLinejoin="round"
         ></path>
+      </svg>
+    ),
+  },
+  {
+    name: "luma",
+    title: "Luma",
+    description: "Fluid, luminous, and soft.",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="128"
+        height="128"
+        viewBox="0 0 24 24"
+        fill="none"
+        role="img"
+        color="currentColor"
+      >
+        <path
+          d="M2 12C2 8.134 5.134 5 9 5H15C18.866 5 22 8.134 22 12C22 15.866 18.866 19 15 19H9C5.134 19 2 15.866 2 12Z"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinejoin="round"
+        ></path>
+      </svg>
+    ),
+  },
+  {
+    name: "sera",
+    title: "Sera",
+    description: "Editorial and typographic.",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="128"
+        height="128"
+        viewBox="0 0 24 24"
+        fill="none"
+        role="img"
+        color="currentColor"
+      >
+        <rect
+          x="3"
+          y="3"
+          width="18"
+          height="18"
+          stroke="currentColor"
+          strokeWidth="2"
+        ></rect>
       </svg>
     ),
   },

@@ -1,11 +1,20 @@
 "use client"
 
 import {
+  FrameIcon,
+  LifeBuoyIcon,
+  MapIcon,
+  MoreHorizontalIcon,
+  PieChartIcon,
+  SendIcon,
+} from "lucide-react"
+
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/base/ui/dropdown-menu"
+} from "@/styles/base-nova/ui/dropdown-menu"
 import {
   Sidebar,
   SidebarContent,
@@ -17,15 +26,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/examples/base/ui/sidebar"
-import {
-  FrameIcon,
-  LifeBuoyIcon,
-  MapIcon,
-  MoreHorizontalIcon,
-  PieChartIcon,
-  SendIcon,
-} from "lucide-react"
+} from "@/styles/base-nova/ui/sidebar"
 
 const projects = [
   {
