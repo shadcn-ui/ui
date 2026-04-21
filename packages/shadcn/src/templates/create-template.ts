@@ -10,6 +10,17 @@ import fs from "fs-extra"
 const GITHUB_REPO_URL =
   process.env.SHADCN_GITHUB_URL ?? "https://github.com/shadcn-ui/ui.git"
 
+/**
+ * Returns true if the given filename is an AppleDouble metadata file.
+ * AppleDouble files (prefixed with "._") are created by macOS HFS+ on
+ * non-native filesystems (e.g. FAT32, exFAT) and on network shares.
+ * Filtering them out prevents stray metadata files from appearing on
+ * WSL2 or other non-macOS filesystems during template copy.
+ */
+function isAppleDouble(file: string) {
+  return path.basename(file).startsWith("._")
+}
+
 export interface TemplateOptions {
   projectPath: string
   packageManager: string
@@ -233,7 +244,11 @@ function defaultScaffold({
         // Use local template directory for development.
         const localTemplatePath = path.resolve(localTemplateDir, templateDir)
         await fs.copy(localTemplatePath, projectPath, {
-          filter: (src) => !src.includes("node_modules"),
+          // Skip node_modules and AppleDouble metadata files (._*) that macOS
+          // creates on non-native filesystems; they are not real project files
+          // and cause noise on WSL2 or non-macOS environments.
+          filter: (src) =>
+            !src.includes("node_modules") && !isAppleDouble(src),
         })
       } else {
         // Clone only the template directory from GitHub using sparse checkout.
@@ -308,5 +323,5 @@ async function defaultPostInit({ projectPath }: { projectPath: string }) {
     await execa("git", ["commit", "-m", "feat: initial commit"], {
       cwd: projectPath,
     })
-  } catch {}
+  } catch { }
 }
