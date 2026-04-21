@@ -1042,5 +1042,11 @@
     "homepage": "https://aicanvas.me",
     "url": "https://aicanvas.me/r/{name}.json",
     "description": "54 animated React components with AI reproduction prompts for Claude Code, Lovable, and v0. Free and open source."
+  },
+  {
+    "name": "@xcn",
+    "homepage": "https://ui.radiumcoders.com",
+    "url": "https://ui.radiumcoders.com/r/xcn/{name}.json",
+    "description": "Hand-crafted, beautiful, and minimal UI components built with Tailwind CSS and Motion."
   }
 ]
