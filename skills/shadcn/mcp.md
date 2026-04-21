@@ -69,6 +69,66 @@ Returns a checklist for verifying components (imports, deps, lint, TypeScript).
 
 **Input:** none
 
+### `shadcn:get_project_info`
+
+Returns framework, Tailwind config, import aliases, installed components, and `components.json` settings. Use before adding or modifying components to understand the project structure.
+
+**Input:** none
+
+### `shadcn:get_component_docs`
+
+Returns documentation links for shadcn components — official docs, API reference, and source code.
+
+**Input:** `components` (string[]) — e.g. `["button", "card"]`
+
+### `shadcn:get_skills_context`
+
+Returns shadcn best practices from skills files installed in the project (styling, forms, icons, composition, etc). If no skills are installed, returns installation instructions.
+
+**Input:** `topics` (string[], optional) — `styling | forms | icons | composition | base-vs-radix | cli | customization | mcp`
+
+### `shadcn:dry_run_add`
+
+Preview what `shadcn add` would change without writing anything. Returns files to create/overwrite/skip, npm dependencies, CSS variables, and env vars.
+
+**Input:** `components` (string[]), `overwrite` (boolean, optional)
+
+### `shadcn:add_component`
+
+Install components into the project. Writes files, installs npm dependencies, updates CSS. Use `dry_run_add` first to preview changes.
+
+**Input:** `components` (string[]), `overwrite` (boolean, optional)
+
+### `shadcn:get_component_diff`
+
+Show a per-file diff between what is in the project and what `shadcn add` would write — without making any changes.
+
+- New files: full content shown in a code block
+- Changed files: unified diff (current → incoming)
+- Unchanged files: listed as skipped
+
+Show this diff to the user and ask which files to accept or skip, then call `apply_component_diff` with their choices.
+
+**Input:** `components` (string[])
+
+### `shadcn:apply_component_diff`
+
+Apply per-file resolutions from `get_component_diff`. Writes accepted files, skips rejected ones. Always installs dependencies and updates CSS/env vars regardless of file resolutions.
+
+**Input:** `components` (string[])`, `resolutions` (Array<`{ path: string, resolution: "accept" | "skip" }`>)
+
+---
+
+## Selective Updates
+
+To update a component while keeping local changes in specific files:
+
+1. Call `get_component_diff` with the component name — get a per-file diff
+2. Show the diff to the user and ask which files to accept or skip
+3. Call `apply_component_diff` with their choices
+
+Dependencies and CSS updates always apply regardless of which files are accepted.
+
 ---
 
 ## Configuring Registries
