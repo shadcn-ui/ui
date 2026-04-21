@@ -5,7 +5,7 @@ description: Adding dark mode to your TanStack Start app.
 
 <Steps>
 
-## Create a theme provider
+### Create a theme provider
 
 TanStack Start uses `ScriptOnce` from `@tanstack/react-router` to inject a script that runs before React hydrates, preventing flash of unstyled content (FOUC).
 
@@ -26,12 +26,32 @@ type ThemeProviderState = {
   setTheme: (theme: Theme) => void
 }
 
-const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'&&t!=='system'){t='system'}var d=matchMedia('(prefers-color-scheme: dark)').matches;var r=t==='system'?(d?'dark':'light'):t;var e=document.documentElement;e.classList.add(r);e.style.colorScheme=r}catch(e){}})();`
+function getThemeScript(storageKey: string, defaultTheme: Theme) {
+  const key = JSON.stringify(storageKey)
+  const fallback = JSON.stringify(defaultTheme)
+
+  return `(function(){try{var t=localStorage.getItem(${key});if(t!=='light'&&t!=='dark'&&t!=='system'){t=${fallback}}var d=matchMedia('(prefers-color-scheme: dark)').matches;var r=t==='system'?(d?'dark':'light'):t;var e=document.documentElement;e.classList.add(r);e.style.colorScheme=r}catch(e){}})();`
+}
 
 const ThemeProviderContext = createContext<ThemeProviderState>({
   theme: "system",
   setTheme: () => {},
 })
+
+function applyTheme(theme: Theme) {
+  const root = document.documentElement
+  root.classList.remove("light", "dark")
+
+  const resolved =
+    theme === "system"
+      ? window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light"
+      : theme
+
+  root.classList.add(resolved)
+  root.style.colorScheme = resolved
+}
 
 export function ThemeProvider({
   children,
@@ -39,43 +59,31 @@ export function ThemeProvider({
   storageKey = "theme",
 }: ThemeProviderProps) {
   const [theme, setThemeState] = useState<Theme>(defaultTheme)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     const stored = localStorage.getItem(storageKey)
-    if (stored === "light" || stored === "dark" || stored === "system") {
-      setThemeState(stored)
-    }
-  }, [storageKey])
+    setThemeState(
+      stored === "light" || stored === "dark" || stored === "system"
+        ? stored
+        : defaultTheme
+    )
+    setMounted(true)
+  }, [defaultTheme, storageKey])
 
   useEffect(() => {
-    const root = document.documentElement
-    root.classList.remove("light", "dark")
-
-    const resolved =
-      theme === "system"
-        ? window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light"
-        : theme
-
-    root.classList.add(resolved)
-    root.style.colorScheme = resolved
-  }, [theme])
+    if (!mounted) return
+    applyTheme(theme)
+  }, [theme, mounted])
 
   useEffect(() => {
-    if (theme !== "system") return undefined
+    if (!mounted || theme !== "system") return
 
     const media = window.matchMedia("(prefers-color-scheme: dark)")
-    const onChange = () => {
-      const root = document.documentElement
-      root.classList.remove("light", "dark")
-      const resolved = media.matches ? "dark" : "light"
-      root.classList.add(resolved)
-      root.style.colorScheme = resolved
-    }
+    const onChange = () => applyTheme("system")
     media.addEventListener("change", onChange)
     return () => media.removeEventListener("change", onChange)
-  }, [theme])
+  }, [theme, mounted])
 
   const setTheme = (next: Theme) => {
     localStorage.setItem(storageKey, next)
@@ -84,7 +92,7 @@ export function ThemeProvider({
 
   return (
     <ThemeProviderContext value={{ theme, setTheme }}>
-      <ScriptOnce>{themeScript}</ScriptOnce>
+      <ScriptOnce>{getThemeScript(storageKey, defaultTheme)}</ScriptOnce>
       {children}
     </ThemeProviderContext>
   )
@@ -98,7 +106,7 @@ export function useTheme() {
 }
 ```
 
-## Wrap your root layout
+### Wrap your root layout
 
 Add the `ThemeProvider` to your root layout and add the `suppressHydrationWarning` prop to the `html` tag.
 
@@ -136,7 +144,7 @@ function RootComponent() {
 }
 ```
 
-## Add a mode toggle
+### Add a mode toggle
 
 Place a mode toggle on your site to toggle between light and dark mode.
 
