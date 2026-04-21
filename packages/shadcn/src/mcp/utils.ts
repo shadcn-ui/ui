@@ -11,13 +11,25 @@ export async function npxShadcn(command: string) {
 }
 
 export async function getMcpConfig(cwd = process.cwd()) {
-  const config = await getRegistriesConfig(cwd, {
-    useCache: false,
-  })
+  const { promises: fs } = await import("fs")
+  const path = await import("path")
 
-  return {
-    registries: config.registries,
+  let searchDir = cwd
+  while (true) {
+    const configPath = path.join(searchDir, "components.json")
+    try {
+      await fs.access(configPath)
+      const config = await getRegistriesConfig(searchDir, { useCache: false })
+      return { registries: config.registries }
+    } catch {
+      const parent = path.dirname(searchDir)
+      if (parent === searchDir) break
+      searchDir = parent
+    }
   }
+
+  const config = await getRegistriesConfig(cwd, { useCache: false })
+  return { registries: config.registries }
 }
 
 export function formatSearchResultsWithPagination(
