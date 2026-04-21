@@ -195,7 +195,7 @@ export function resolveInitUrl(
     menuColor: string
     radius: string
   },
-  options?: { template?: string; preset?: string }
+  options?: { template?: string; preset?: string; only?: string }
 ) {
   const params = new URLSearchParams({
     base: preset.base,
@@ -226,6 +226,10 @@ export function resolveInitUrl(
 
   if (options?.template) {
     params.set("template", options.template)
+  }
+
+  if (options?.only) {
+    params.set("only", options.only)
   }
 
   // Signal the server to record this init run.
