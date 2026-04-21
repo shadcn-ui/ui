@@ -1,9 +1,11 @@
 import { describe, expect, it } from "vitest"
 
+import publicSchema from "../public/schema.json"
 import {
   buildRegistryBase,
   DEFAULT_CONFIG,
   designSystemConfigSchema,
+  PRESETS,
 } from "./config"
 
 describe("buildRegistryBase", () => {
@@ -80,6 +82,12 @@ describe("buildRegistryBase", () => {
     })
 
     expect(result.chartColor).toBe("taupe")
+  })
+
+  it("exposes every preset style in the public schema", () => {
+    expect(publicSchema.properties.style.enum).toEqual(
+      expect.arrayContaining(PRESETS.map((preset) => preset.name))
+    )
   })
 
   it("rejects chartColor values that are unavailable for the selected base color", () => {
