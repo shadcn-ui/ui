@@ -6,9 +6,13 @@
   "type": "module",
   "scripts": {
     "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist temp coverage"
   },
   "dependencies": {
     "shadcn": "workspace:*"
@@ -21,6 +25,8 @@
     "rimraf": "^6.0.1",
     "typescript": "^5.5.3",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^2.1.9"
+    "vitest": "^2.1.9",
+    "@vitest/ui": "^2.1.9",
+    "@vitest/coverage-v8": "^2.1.9"
   }
 }
