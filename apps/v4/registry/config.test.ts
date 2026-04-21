@@ -149,6 +149,7 @@ describe("buildPartialRegistryBase", () => {
         baseColor: "taupe",
       },
     })
+    expect(result.cssVars?.light?.radius).toBe("0.875rem")
     expect(result.cssVars?.light).toBeDefined()
     expect(result.cssVars?.dark).toBeDefined()
     expect(result.registryDependencies).toBeUndefined()
@@ -198,6 +199,7 @@ describe("buildPartialRegistryBase", () => {
 
     expect(result.config?.tailwind?.baseColor).toBe("neutral")
     expect(result.registryDependencies).toEqual(["font-figtree"])
+    expect(result.cssVars?.light?.radius).toBe("0.625rem")
     expect(result.cssVars?.light).toBeDefined()
     expect(result.cssVars?.theme?.["--font-heading"]).toBe("var(--font-sans)")
   })

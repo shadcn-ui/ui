@@ -42,6 +42,7 @@ describe("GET /init", () => {
       },
     })
     expect(json.cssVars.light).toBeDefined()
+    expect(json.cssVars.light.radius).toBe("0.625rem")
     expect(json.dependencies).toBeUndefined()
     expect(json.registryDependencies).toBeUndefined()
   })
