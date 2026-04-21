@@ -351,7 +351,7 @@
     "name": "@loading-ui",
     "homepage": "https://loading-ui.com",
     "url": "https://loading-ui.com/r/{name}.json",
-    "description": "Collection of spinners, loaders, and loading animations for modern web apps. Free and open-source."
+    "description": "Spinners, loaders, and loading animations for modern web apps. Free and open-source."
   },
   {
     "name": "@lmscn",
