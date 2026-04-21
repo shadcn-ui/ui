@@ -8,6 +8,8 @@ import {
   PRESETS,
 } from "./config"
 
+const legacyPublicSchemaStyles = ["default", "new-york"] as const
+
 describe("buildRegistryBase", () => {
   it("seeds a font-heading fallback when heading inherits the body font", () => {
     const result = buildRegistryBase(DEFAULT_CONFIG)
@@ -84,9 +86,12 @@ describe("buildRegistryBase", () => {
     expect(result.chartColor).toBe("taupe")
   })
 
-  it("exposes every preset style in the public schema", () => {
-    expect(publicSchema.properties.style.enum).toEqual(
-      expect.arrayContaining(PRESETS.map((preset) => preset.name))
+  it("keeps the public schema style enum in sync with presets", () => {
+    expect([...publicSchema.properties.style.enum].sort()).toEqual(
+      [
+        ...legacyPublicSchemaStyles,
+        ...PRESETS.map((preset) => preset.name),
+      ].sort()
     )
   })
 
