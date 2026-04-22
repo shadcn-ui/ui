@@ -19,6 +19,7 @@ export const DEFAULT_PRESETS = {
     style: "nova",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "lucide",
     font: "geist",
     fontHeading: "inherit",
@@ -34,6 +35,7 @@ export const DEFAULT_PRESETS = {
     style: "vega",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "lucide",
     font: "inter",
     fontHeading: "inherit",
@@ -49,6 +51,7 @@ export const DEFAULT_PRESETS = {
     style: "maia",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "hugeicons",
     font: "figtree",
     fontHeading: "inherit",
@@ -64,6 +67,7 @@ export const DEFAULT_PRESETS = {
     style: "lyra",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "phosphor",
     font: "jetbrains-mono",
     fontHeading: "inherit",
@@ -79,6 +83,7 @@ export const DEFAULT_PRESETS = {
     style: "mira",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "hugeicons",
     font: "inter",
     fontHeading: "inherit",
@@ -94,9 +99,26 @@ export const DEFAULT_PRESETS = {
     style: "luma",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "lucide",
     font: "inter",
     fontHeading: "inherit",
+    menuAccent: "subtle" as const,
+    menuColor: "default" as const,
+
+    radius: "default",
+    rtl: false,
+  },
+  sera: {
+    title: "Sera",
+    description: "Lucide / Noto Sans + Playfair Display",
+    style: "sera",
+    baseColor: "taupe",
+    theme: "taupe",
+    chartColor: "taupe",
+    iconLibrary: "lucide",
+    font: "noto-sans",
+    fontHeading: "playfair-display",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
 
@@ -173,7 +195,7 @@ export function resolveInitUrl(
     menuColor: string
     radius: string
   },
-  options?: { template?: string; preset?: string }
+  options?: { template?: string; preset?: string; only?: string }
 ) {
   const params = new URLSearchParams({
     base: preset.base,
@@ -204,6 +226,10 @@ export function resolveInitUrl(
 
   if (options?.template) {
     params.set("template", options.template)
+  }
+
+  if (options?.only) {
+    params.set("only", options.only)
   }
 
   // Signal the server to record this init run.
