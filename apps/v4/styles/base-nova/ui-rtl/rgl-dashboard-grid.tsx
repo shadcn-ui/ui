@@ -33,11 +33,9 @@ export function DashboardGrid({
         "w-full min-w-0",
         "[&_.react-grid-placeholder]:rounded-lg [&_.react-grid-placeholder]:border-2 [&_.react-grid-placeholder]:border-dotted [&_.react-grid-placeholder]:border-primary/50 [&_.react-grid-placeholder]:bg-primary/5",
         "[&_.react-resizable-handle]:z-10 [&_.react-resizable-handle]:!m-0 [&_.react-resizable-handle]:box-border [&_.react-resizable-handle]:!transform-none [&_.react-resizable-handle]:p-0",
-        "[&_.react-resizable-handle]:size-5 [&_.react-resizable-handle]:bg-transparent [&_.react-resizable-handle]:[background-image:none]",
+        "[&_.react-resizable-handle]:size-5 [&_.react-resizable-handle]:!bg-transparent [&_.react-resizable-handle]:![background-image:none]",
         "[&_.react-resizable-handle]:opacity-80 [&_.react-resizable-handle]:transition-opacity hover:[&_.react-resizable-handle]:opacity-100",
         "[&_.react-resizable-handle-se]:cursor-nwse-resize [&_.react-resizable-handle-se]:rounded-ee-md [&_.react-resizable-handle-se]:border-e-2 [&_.react-resizable-handle-se]:border-b-2 [&_.react-resizable-handle-se]:border-foreground/90",
-        "[&_.react-resizable-handle-sw]:cursor-nesw-resize [&_.react-resizable-handle-sw]:rounded-es-md [&_.react-resizable-handle-sw]:border-s-2 [&_.react-resizable-handle-sw]:border-b-2 [&_.react-resizable-handle-sw]:border-foreground/90",
-        "[&_.react-resizable-handle-nw]:cursor-nwse-resize [&_.react-resizable-handle-nw]:rounded-ss-md [&_.react-resizable-handle-nw]:border-s-2 [&_.react-resizable-handle-nw]:border-t-2 [&_.react-resizable-handle-nw]:border-foreground/90",
         className
       )}
       layout={layout}
