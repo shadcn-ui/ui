@@ -1,12 +1,16 @@
 import { describe, expect, it } from "vitest"
 
+import publicSchema from "../public/schema.json"
 import {
   buildPartialRegistryBase,
   buildRegistryBase,
   DEFAULT_CONFIG,
   designSystemConfigSchema,
   parseRegistryBaseParts,
+  PRESETS,
 } from "./config"
+
+const legacyPublicSchemaStyles = ["default", "new-york"] as const
 
 describe("buildRegistryBase", () => {
   it("seeds a font-heading fallback when heading inherits the body font", () => {
@@ -82,6 +86,15 @@ describe("buildRegistryBase", () => {
     })
 
     expect(result.chartColor).toBe("taupe")
+  })
+
+  it("keeps the public schema style enum in sync with presets", () => {
+    expect([...publicSchema.properties.style.enum].sort()).toEqual(
+      [
+        ...legacyPublicSchemaStyles,
+        ...PRESETS.map((preset) => preset.name),
+      ].sort()
+    )
   })
 
   it("rejects chartColor values that are unavailable for the selected base color", () => {
