@@ -126,8 +126,17 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
       {
+        path: "blocks/rgl-dashboard/components/rgl-dashboard.tsx",
+        type: "registry:component",
+      },
+      {
         path: "blocks/rgl-dashboard/components/tile-widgets.tsx",
         type: "registry:component",
+      },
+      {
+        path: "blocks/rgl-dashboard/rgl-dashboard.context.md",
+        type: "registry:file",
+        target: "docs/rgl-dashboard.context.md",
       },
       {
         path: "lib/rgl-dashboard-types.ts",

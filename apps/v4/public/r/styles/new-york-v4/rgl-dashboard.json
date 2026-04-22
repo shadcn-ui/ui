@@ -37,9 +37,20 @@
       "type": "registry:component"
     },
     {
+      "path": "registry/new-york-v4/blocks/rgl-dashboard/components/rgl-dashboard.tsx",
+      "content": "export { DashboardDemo as RglDashboard } from \"./rgl-dashboard-demo\"\nexport type {\n  DashboardDemoProps as RglDashboardProps,\n} from \"./rgl-dashboard-demo\"\n",
+      "type": "registry:component"
+    },
+    {
       "path": "registry/new-york-v4/blocks/rgl-dashboard/components/tile-widgets.tsx",
       "content": "export { TileByWidget, DashboardTile, TileById } from \"@/registry/new-york-v4/ui/rgl-dashboard-tile\"\n",
       "type": "registry:component"
+    },
+    {
+      "path": "registry/new-york-v4/blocks/rgl-dashboard/rgl-dashboard.context.md",
+      "content": "# RglDashboard AI Context\n\n## What this block is\n\n`RglDashboard` is a draggable and resizable dashboard built on `react-grid-layout`.\nIt includes:\n\n- Dashboard state and CRUD flows.\n- Tile rendering by widget type.\n- Edit mode with drag and resize.\n- Optional local persistence via `storageKey`.\n\nUse it when you need a ready-to-extend dashboard shell with sensible defaults.\n\n## Installed files and ownership\n\n- `components/rgl-dashboard/rgl-dashboard.tsx`: public facade export (`RglDashboard`).\n- `components/rgl-dashboard/rgl-dashboard-demo.tsx`: stateful implementation.\n- `components/rgl-dashboard/tile-widgets.tsx`: tile helper re-exports.\n- `components/ui/rgl-dashboard-grid.tsx`: grid wrapper and handle styles.\n- `components/ui/rgl-dashboard-tile.tsx`: tile primitives.\n- `lib/rgl-dashboard-types.ts`: dashboard and widget types.\n- `lib/rgl-dashboard-storage.ts`: load/save helpers for local persistence.\n- `lib/rgl-dashboard-example.ts`: default seed spec (`DASHBOARD_EXAMPLE_SPEC`).\n\n## Public component API\n\n`RglDashboardProps` (aliased from `DashboardDemoProps`):\n\n- `embedded?: boolean` - tighter layout for embedded contexts.\n- `initialDashboard?: DashboardRecord` - initial seed; defaults to `DASHBOARD_EXAMPLE_SPEC`.\n- `storageKey?: string | false` - `false` by default (memory-only). Provide a string to persist to `localStorage`.\n\n## Common usage patterns\n\n### Basic\n\n```tsx\nimport { RglDashboard } from \"@/components/rgl-dashboard/rgl-dashboard\"\n\nexport default function Page() {\n  return <RglDashboard />\n}\n```\n\n### Persisted\n\n```tsx\n<RglDashboard storageKey=\"my-app-dashboard\" />\n```\n\n### Deterministic seeded data\n\n```tsx\n<RglDashboard initialDashboard={mySeed} storageKey={false} />\n```\n\n## Safe extension points\n\n- Add new widget type definitions in `rgl-dashboard-types`.\n- Extend tile rendering in `rgl-dashboard-tile`.\n- Add toolbar or actions in `rgl-dashboard-demo`.\n- Customize grid sizing/spacing in `rgl-dashboard-grid`.\n\n## Avoid\n\n- Mutating `DASHBOARD_EXAMPLE_SPEC` directly; clone and pass your own seed.\n- Hard-coding `localStorage` keys in library code; use `storageKey`.\n- Changing `react-grid-layout` internals without checking drag/resize behavior.\n",
+      "type": "registry:file",
+      "target": "docs/rgl-dashboard.context.md"
     },
     {
       "path": "registry/new-york-v4/lib/rgl-dashboard-types.ts",

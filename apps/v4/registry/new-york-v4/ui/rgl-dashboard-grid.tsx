@@ -47,6 +47,7 @@ export function DashboardGrid({
       draggableCancel=".rgl-no-drag"
       isDraggable={isDraggable}
       isResizable={isResizable}
+      resizeHandles={["se"]}
       onLayoutChange={onLayoutChange}
     >
       {children}

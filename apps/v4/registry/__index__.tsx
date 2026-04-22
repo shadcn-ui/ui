@@ -1593,9 +1593,19 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
         {
+          path: "registry/new-york-v4/blocks/rgl-dashboard/components/rgl-dashboard.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
           path: "registry/new-york-v4/blocks/rgl-dashboard/components/tile-widgets.tsx",
           type: "registry:component",
           target: "",
+        },
+        {
+          path: "registry/new-york-v4/blocks/rgl-dashboard/rgl-dashboard.context.md",
+          type: "registry:file",
+          target: "docs/rgl-dashboard.context.md",
         },
         {
           path: "registry/new-york-v4/lib/rgl-dashboard-types.ts",
