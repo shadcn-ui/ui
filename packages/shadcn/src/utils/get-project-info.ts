@@ -302,26 +302,40 @@ export async function getTsConfigAliasPrefix(cwd: string) {
   const tsConfig = await loadConfig(cwd)
 
   if (
-    tsConfig?.resultType === "failed" ||
-    !Object.entries(tsConfig?.paths).length
+    tsConfig?.resultType === "success" &&
+    Object.keys(tsConfig?.paths || {}).length > 0
   ) {
+    for (const [alias, paths] of Object.entries(tsConfig.paths)) {
+      if (
+        paths.includes("./*") ||
+        paths.includes("./src/*") ||
+        paths.includes("./app/*") ||
+        paths.includes("./resources/js/*") // Laravel.
+      ) {
+        return alias.replace(/\/\*$/, "") ?? null
+      }
+    }
+    return Object.keys(tsConfig?.paths)?.[0].replace(/\/\*$/, "") ?? null
+  }
+
+  const fallbackConfig = await getTsConfig(cwd)
+  const paths = fallbackConfig?.compilerOptions?.paths
+  if (!paths || !Object.keys(paths).length) {
     return null
   }
 
-  // This assume that the first alias is the prefix.
-  for (const [alias, paths] of Object.entries(tsConfig.paths)) {
+  for (const [alias, aliasPaths] of Object.entries(paths)) {
     if (
-      paths.includes("./*") ||
-      paths.includes("./src/*") ||
-      paths.includes("./app/*") ||
-      paths.includes("./resources/js/*") // Laravel.
+      aliasPaths.includes("./*") ||
+      aliasPaths.includes("./src/*") ||
+      aliasPaths.includes("./app/*") ||
+      aliasPaths.includes("./resources/js/*") // Laravel.
     ) {
       return alias.replace(/\/\*$/, "") ?? null
     }
   }
 
-  // Use the first alias as the prefix.
-  return Object.keys(tsConfig?.paths)?.[0].replace(/\/\*$/, "") ?? null
+  return Object.keys(paths)?.[0].replace(/\/\*$/, "") ?? null
 }
 
 export async function isTypeScriptProject(cwd: string) {
