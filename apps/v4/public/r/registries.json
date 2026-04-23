@@ -162,6 +162,12 @@
     "description": "A framework-agnostic API client, pluggable storage adapters (LocalStorage, Convex, Supabase, PostgreSQL, MySQL), and React components for generating developer activity reports."
   },
   {
+    "name": "@cognicatch",
+    "homepage": "https://cognicatch.dev",
+    "url": "https://cognicatch.dev/registry/{name}.json",
+    "description": "Adaptive Error Boundaries and graceful fallback UIs (Banners, Modals, Toasts)."
+  },
+  {
     "name": "@commercn",
     "homepage": "https://commercn.com",
     "url": "https://commercn.com/r/{name}.json",
