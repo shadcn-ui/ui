@@ -597,7 +597,7 @@
     "name": "@shadcnblocks",
     "homepage": "https://shadcnblocks.com",
     "url": "https://shadcnblocks.com/r/{name}.json",
-    "description": "A registry with hundreds of extra blocks for shadcn ui."
+    "description": "A shadcn/ui registry with 1429 blocks, 1189 component variants, 14 templates, themes, and admin dashboard patterns."
   },
   {
     "name": "@shadcndesign",
