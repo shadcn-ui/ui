@@ -1,7 +1,11 @@
 import { cn } from "@/registry/bases/radix/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
+function Spinner({
+  className,
+  strokeWidth = 2,
+  ...props
+}: React.ComponentProps<"svg"> & { strokeWidth?: number }) {
   return (
     <IconPlaceholder
       lucide="Loader2Icon"
@@ -12,6 +16,7 @@ function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
       role="status"
       aria-label="Loading"
       className={cn("size-4 animate-spin", className)}
+      strokeWidth={strokeWidth}
       {...props}
     />
   )
