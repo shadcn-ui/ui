@@ -1054,5 +1054,11 @@
     "homepage": "https://ui.radiumcoders.com",
     "url": "https://ui.radiumcoders.com/r/xcn/{name}.json",
     "description": "Hand-crafted, beautiful, and minimal UI components built with Tailwind CSS and Motion."
+  },
+  {
+    "name": "@agent-elements",
+    "homepage": "https://agent-elements.21st.dev",
+    "url": "https://agent-elements.21st.dev/r/{name}.json",
+    "description": "21st.dev Agent Elements — open-source registry of agent UI primitives. Chat shell, tool-call cards (Bash, Edit, Search, Todo, Plan), clarifying questions, input bar, streaming markdown. Built on React 19, Tailwind v4, and the Vercel AI SDK."
   }
 ]
