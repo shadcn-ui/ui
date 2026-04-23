@@ -13,7 +13,7 @@
     "typecheck": "astro check"
   },
   "dependencies": {
-    "@astrojs/react": "^4.4.2",
+    "@astrojs/react": "^5.0.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@workspace/ui": "workspace:*",
