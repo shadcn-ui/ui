@@ -1,3 +1,4 @@
+import path from "path"
 import { getRegistriesConfig } from "@/src/registry/api"
 import { registryItemSchema, searchResultsSchema } from "@/src/schema"
 import { getPackageRunner } from "@/src/utils/get-package-manager"
@@ -10,8 +11,12 @@ export async function npxShadcn(command: string) {
   return `${packageRunner} ${SHADCN_CLI_COMMAND} ${command}`
 }
 
+export function resolveMcpCwd(cwd?: string) {
+  return path.resolve(cwd ?? process.cwd())
+}
+
 export async function getMcpConfig(cwd = process.cwd()) {
-  const config = await getRegistriesConfig(cwd, {
+  const config = await getRegistriesConfig(resolveMcpCwd(cwd), {
     useCache: false,
   })
 
