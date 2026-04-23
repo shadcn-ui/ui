@@ -967,6 +967,13 @@
     "logo": "<svg fill='none' viewBox='0 0 156 166' xmlns='http://www.w3.org/2000/svg'><path clipRule='evenodd' d='m78.091 0 5.967 5.676c15.038 14.306 35.323 23.067 57.663 23.067.356 0 .711-.002 1.065-.006l6.363-.08 1.988 6.072a102.026 102.026 0 0 1 5.045 31.782c0 47.391-32.269 87.19-75.928 98.477l-2.163.559-2.163-.559C32.27 153.701 0 113.902 0 66.511c0-11.085 1.769-21.772 5.045-31.782l1.988-6.072 6.363.08c.354.004.71.006 1.065.006 22.34 0 42.625-8.761 57.664-23.067L78.09 0Z' fill='#8b5cf6' fillRule='evenodd'/><circle cx='58' cy='78' fill='white' r='14'/><circle cx='98' cy='78' fill='white' r='14'/><circle cx='61' cy='82' fill='black' r='5.5'/><circle cx='95' cy='82' fill='black' r='5.5'/></svg>"
   },
   {
+    "name": "@herocn",
+    "homepage": "https://herocn.dev/",
+    "url": "https://herocn.dev/r/{name}.json",
+    "description": "HeroUI's design system, shadcn's abstraction.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 156 156' fill='none'><title>herocn Logo</title><path d='M25 45v35l30 20V65l25-15v85l40-15V35L80 50V10zm95 35-40 45m40-80L80 90' stroke='currentColor' stroke-width='16' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+  },
+  {
     "name": "@darx",
     "homepage": "https://darshitdev.in/arts",
     "url": "https://darshitdev.in/r/{name}.json",
