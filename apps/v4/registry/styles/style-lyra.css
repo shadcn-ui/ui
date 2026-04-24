@@ -1141,11 +1141,11 @@
 
   /* MARK: Slider */
   .cn-slider {
-    @apply data-vertical:min-h-40;
+    @apply data-[orientation=vertical]:min-h-40;
   }
 
   .cn-slider-track {
-    @apply bg-muted rounded-none data-horizontal:h-1 data-horizontal:w-full data-vertical:h-full data-vertical:w-1;
+    @apply bg-muted rounded-none data-[orientation=horizontal]:h-1 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1;
   }
 
   .cn-slider-range {

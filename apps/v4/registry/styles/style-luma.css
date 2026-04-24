@@ -1,11 +1,11 @@
 .style-luma {
   /* MARK: Slider */
   .cn-slider {
-    @apply data-vertical:min-h-40;
+    @apply data-[orientation=vertical]:min-h-40;
   }
 
   .cn-slider-track {
-    @apply bg-input/90 rounded-full data-horizontal:h-2 data-horizontal:w-full data-vertical:h-full data-vertical:w-2;
+    @apply bg-input/90 rounded-full data-[orientation=horizontal]:h-2 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2;
   }
 
   .cn-slider-range {
@@ -13,7 +13,7 @@
   }
 
   .cn-slider-thumb {
-    @apply ring-black/10 not-dark:bg-clip-padding ring-1 h-4 w-6 rounded-full bg-white shadow-md transition-[color,box-shadow,background-color] hover:ring-4 hover:ring-ring/30 focus-visible:ring-4 focus-visible:ring-ring/30 focus-visible:outline-hidden data-vertical:h-6 data-vertical:w-4;
+    @apply ring-black/10 not-dark:bg-clip-padding ring-1 h-4 w-6 rounded-full bg-white shadow-md transition-[color,box-shadow,background-color] hover:ring-4 hover:ring-ring/30 focus-visible:ring-4 focus-visible:ring-ring/30 focus-visible:outline-hidden data-[orientation=vertical]:h-6 data-[orientation=vertical]:w-4;
   }
 
   /* MARK: Switch */
