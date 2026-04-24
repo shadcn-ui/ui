@@ -93,6 +93,14 @@ Use the `apply` command to apply a preset to an existing project.
 npx shadcn@latest apply --preset a2r6bw
 ```
 
+You can apply only the theme or fonts from a preset without reinstalling UI components:
+
+```bash
+npx shadcn@latest apply --preset a2r6bw --only theme
+```
+
+Supported values for `--only` are `theme` and `font`.
+
 **Options**
 
 ```bash
@@ -105,6 +113,7 @@ Arguments:
 
 Options:
   --preset <preset>  preset configuration to apply
+  --only [parts]     apply only parts of a preset: theme, font
   -y, --yes          skip confirmation prompt. (default: false)
   -c, --cwd <cwd>    the working directory. defaults to the current directory.
   -s, --silent       mute output. (default: false)
