@@ -179,7 +179,7 @@
     },
     {
       "name": "chart",
-      "dependencies": ["recharts@2.15.4", "lucide-react"],
+      "dependencies": ["recharts@3.8.0", "lucide-react"],
       "registryDependencies": ["card"],
       "files": [
         {
@@ -3691,6 +3691,47 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/field-responsive.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "form-next-demo",
+      "registryDependencies": [
+        "field",
+        "input",
+        "textarea",
+        "button",
+        "card",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-next-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "form-next-complex",
+      "registryDependencies": [
+        "field",
+        "input",
+        "textarea",
+        "button",
+        "card",
+        "spinner",
+        "checkbox",
+        "dialog",
+        "radio-group",
+        "select",
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-next-complex.tsx",
           "type": "registry:example"
         }
       ],

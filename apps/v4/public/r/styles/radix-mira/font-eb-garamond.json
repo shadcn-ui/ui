@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-eb-garamond",
+  "title": "EB Garamond",
+  "type": "registry:font",
+  "font": {
+    "family": "'EB Garamond Variable', serif",
+    "provider": "google",
+    "import": "EB_Garamond",
+    "variable": "--font-serif",
+    "subsets": [
+      "latin"
+    ],
+    "dependency": "@fontsource-variable/eb-garamond"
+  }
+}

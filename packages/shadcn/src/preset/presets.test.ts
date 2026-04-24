@@ -1,7 +1,7 @@
 import { REGISTRY_URL } from "@/src/registry/constants"
 import { describe, expect, it } from "vitest"
 
-import { resolveCreateUrl, resolveInitUrl } from "./presets"
+import { DEFAULT_PRESETS, resolveCreateUrl, resolveInitUrl } from "./presets"
 
 const SHADCN_URL = REGISTRY_URL.replace(/\/r\/?$/, "")
 
@@ -15,6 +15,7 @@ const mockPreset = {
   theme: "default",
   iconLibrary: "lucide",
   font: "inter",
+  fontHeading: "inherit",
   rtl: false,
   menuAccent: "subtle" as const,
   menuColor: "default" as const,
@@ -70,5 +71,50 @@ describe("buildInitUrl", () => {
     const url = resolveInitUrl(mockPreset)
     const parsed = new URL(url)
     expect(parsed.searchParams.has("template")).toBe(false)
+  })
+
+  it("should include chartColor when provided", () => {
+    const url = resolveInitUrl({ ...mockPreset, chartColor: "emerald" })
+    const parsed = new URL(url)
+    expect(parsed.searchParams.get("chartColor")).toBe("emerald")
+  })
+
+  it("should include chartColor from default presets", () => {
+    const url = resolveInitUrl({ ...DEFAULT_PRESETS.sera, base: "base" })
+    const parsed = new URL(url)
+    expect(parsed.searchParams.get("chartColor")).toBe("taupe")
+  })
+
+  it("should not include chartColor when not provided", () => {
+    const url = resolveInitUrl(mockPreset)
+    const parsed = new URL(url)
+    expect(parsed.searchParams.has("chartColor")).toBe(false)
+  })
+
+  it("should include fontHeading when it is explicitly set", () => {
+    const url = resolveInitUrl({
+      ...mockPreset,
+      fontHeading: "playfair-display",
+    })
+    const parsed = new URL(url)
+    expect(parsed.searchParams.get("fontHeading")).toBe("playfair-display")
+  })
+
+  it("should not include fontHeading when it inherits the body font", () => {
+    const url = resolveInitUrl(mockPreset)
+    const parsed = new URL(url)
+    expect(parsed.searchParams.has("fontHeading")).toBe(false)
+  })
+
+  it("should include preset code when provided", () => {
+    const url = resolveInitUrl(mockPreset, { preset: "a0" })
+    const parsed = new URL(url)
+    expect(parsed.searchParams.get("preset")).toBe("a0")
+  })
+
+  it("should not include preset when not provided", () => {
+    const url = resolveInitUrl(mockPreset)
+    const parsed = new URL(url)
+    expect(parsed.searchParams.has("preset")).toBe(false)
   })
 })

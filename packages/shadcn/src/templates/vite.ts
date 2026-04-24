@@ -29,8 +29,6 @@ export default App;
   ],
   monorepo: {
     templateDir: "vite-monorepo",
-    packageManager: "pnpm",
-    installArgs: ["--no-frozen-lockfile"],
     init: fontsourceMonorepoInit,
     files: [
       {
