@@ -189,7 +189,7 @@
     "name": "@delta-components",
     "homepage": "https://deltacomponents.dev",
     "url": "https://deltacomponents.dev/r/{name}.json",
-    "description": "Production-ready React components for modern web applications — LLM chat, interactive media, code blocks, and pre-built blocks. Built on shadcn/ui."
+    "description": "A shadcn registry for AI and media-rich interfaces — streaming LLM chat, zoomable images, swipeable card decks, interactive maps, plus dashboard and landing-page blocks."
   },
   {
     "name": "@diceui",
