@@ -3882,6 +3882,18 @@
       ]
     },
     {
+      "name": "form-tanstack-combobox",
+      "type": "registry:example",
+      "dependencies": ["@tanstack/react-form", "zod"],
+      "registryDependencies": ["field", "combobox", "button", "card"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-combobox.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "form-tanstack-textarea",
       "type": "registry:example",
       "dependencies": ["@tanstack/react-form", "zod"],

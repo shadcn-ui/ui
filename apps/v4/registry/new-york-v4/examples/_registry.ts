@@ -1121,6 +1121,18 @@ export const examples: Registry["items"] = [
     dependencies: ["@tanstack/react-form", "zod"],
   },
   {
+    name: "form-tanstack-combobox",
+    type: "registry:example",
+    registryDependencies: ["field", "combobox", "button", "card"],
+    files: [
+      {
+        path: "examples/form-tanstack-combobox.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@tanstack/react-form", "zod"],
+  },
+  {
     name: "form-tanstack-textarea",
     type: "registry:example",
     registryDependencies: ["field", "textarea", "button", "card"],
