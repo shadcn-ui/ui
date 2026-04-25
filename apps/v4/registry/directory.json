@@ -1205,6 +1205,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256'><script/><rect x='16' y='16' width='224' height='224' rx='28' stroke='#000' stroke-width='7'/><path d='m42 56 32 24-32 24' stroke='#fff' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='m208.8 156.8-48 48M199.2 104 108 195.2' stroke='#fff' stroke-width='19.2' stroke-linecap='round' fill='none'/></svg>"
   },
   {
+    "name": "@ratneshc",
+    "homepage": "https://ratneshc.com/components",
+    "url": "https://ratneshc.com/r/{name}.json",
+    "description": "A curated component registry built on shadcn/ui.",
+    "logo": "<svg width='79' height='79' viewBox='0 0 79 79' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='39.5' cy='39.5' r='39.5' fill='url(#paint0_radial_76_2)'/><defs><radialGradient id='paint0_radial_76_2' cx='0' cy='0' r='1' gradientUnits='userSpaceOnUse' gradientTransform='translate(40 84.5) rotate(-90) scale(92)'><stop stop-color='white'/><stop offset='0.5' stop-color='#8932F8'/><stop offset='1'/></radialGradient></defs></svg>"
+  },
+  {
     "name": "@remocn",
     "homepage": "https://www.remocn.dev/",
     "url": "https://www.remocn.dev/r/{name}.json",

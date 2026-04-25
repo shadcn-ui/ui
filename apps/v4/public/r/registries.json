@@ -1032,6 +1032,12 @@
     "description": "Beautiful terminal UIs, made simple. Ready to use, customizable terminal UI components for React."
   },
   {
+    "name": "@ratneshc",
+    "homepage": "https://ratneshc.com/components",
+    "url": "https://ratneshc.com/r/{name}.json",
+    "description": "A curated component registry built on shadcn/ui."
+  },
+  {
     "name": "@remocn",
     "homepage": "https://www.remocn.dev/",
     "url": "https://www.remocn.dev/r/{name}.json",
