@@ -4,6 +4,7 @@ import * as ERRORS from "@/src/utils/errors"
 import { getConfig } from "@/src/utils/get-config"
 import {
   formatMonorepoMessage,
+  formatMonorepoMessageWithGuidance,
   getMonorepoTargets,
   isMonorepoRoot,
 } from "@/src/utils/get-monorepo-info"
@@ -29,9 +30,13 @@ export async function preFlightApply(options: { cwd: string }) {
     if (await isMonorepoRoot(options.cwd)) {
       const targets = await getMonorepoTargets(options.cwd)
       if (targets.length > 0) {
-        formatMonorepoMessage("apply --preset <preset>", targets, {
-          cwdFlag: "-c",
-        })
+        // Use enhanced messaging with guidance
+        formatMonorepoMessageWithGuidance(
+          "apply --preset <preset>",
+          targets,
+          options.cwd,
+          { cwdFlag: "-c" }
+        )
         process.exit(1)
       }
     }
