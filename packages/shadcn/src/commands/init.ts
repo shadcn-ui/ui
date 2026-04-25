@@ -60,7 +60,7 @@ import { spinner } from "@/src/utils/spinner"
 import { Command } from "commander"
 import deepmerge from "deepmerge"
 import fsExtra from "fs-extra"
-import prompts from "prompts"
+import prompts from "@/src/utils/prompts"
 import { z } from "zod"
 
 export const initOptionsSchema = z.object({

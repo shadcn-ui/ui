@@ -26,7 +26,7 @@ import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { Command } from "commander"
-import prompts from "prompts"
+import prompts from "@/src/utils/prompts"
 import { z } from "zod"
 
 export const applyOptionsSchema = z.object({
