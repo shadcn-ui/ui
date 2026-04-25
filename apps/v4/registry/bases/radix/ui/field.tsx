@@ -110,7 +110,7 @@ function FieldLabel({
 function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      data-slot="field-label"
+      data-slot="field-title"
       className={cn("cn-field-title flex w-fit items-center", className)}
       {...props}
     />
