@@ -1,6 +1,8 @@
-import { afterEach, describe, expect, test, vi } from "vitest"
-
 import type { Config } from "../../src/utils/get-config"
+import { afterEach, describe, expect, test, vi } from "vitest"
+import * as fsPromises from "node:fs/promises"
+import { ensureRegistriesInConfig } from "../../src/utils/registries"
+
 
 // Mock dependencies.
 vi.mock("../../src/registry/namespaces", () => ({
@@ -23,14 +25,9 @@ vi.mock("../../src/utils/spinner", () => ({
   }),
 }))
 
-vi.mock("fs-extra", () => ({
-  default: {
-    writeFile: vi.fn().mockResolvedValue(undefined),
-  },
+vi.mock("node:fs/promises", () => ({
+  writeFile: vi.fn().mockResolvedValue(undefined),
 }))
-
-import { ensureRegistriesInConfig } from "../../src/utils/registries"
-import fs from "fs-extra"
 
 afterEach(() => {
   vi.clearAllMocks()
@@ -83,7 +80,7 @@ describe("ensureRegistriesInConfig", () => {
     )
 
     // Should NOT have written to disk.
-    expect(fs.writeFile).not.toHaveBeenCalled()
+    expect(fsPromises.writeFile).not.toHaveBeenCalled()
   })
 
   test("writes to disk when writeFile is true", async () => {
@@ -91,8 +88,8 @@ describe("ensureRegistriesInConfig", () => {
       writeFile: true,
     })
 
-    expect(fs.writeFile).toHaveBeenCalledTimes(1)
-    expect(fs.writeFile).toHaveBeenCalledWith(
+    expect(fsPromises.writeFile).toHaveBeenCalledTimes(1)
+    expect(fsPromises.writeFile).toHaveBeenCalledWith(
       expect.stringContaining("components.json"),
       expect.any(String),
       "utf-8"
@@ -102,7 +99,7 @@ describe("ensureRegistriesInConfig", () => {
   test("writes to disk by default (writeFile not specified)", async () => {
     await ensureRegistriesInConfig(["@foo/bar"], baseConfig)
 
-    expect(fs.writeFile).toHaveBeenCalledTimes(1)
+    expect(fsPromises.writeFile).toHaveBeenCalledTimes(1)
   })
 
   test("does not write when no new registries are found", async () => {
@@ -118,6 +115,6 @@ describe("ensureRegistriesInConfig", () => {
     })
 
     // No new registries, so no write.
-    expect(fs.writeFile).not.toHaveBeenCalled()
+    expect(fsPromises.writeFile).not.toHaveBeenCalled()
   })
 })

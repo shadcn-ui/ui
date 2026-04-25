@@ -5,7 +5,7 @@ import { resolveRegistryNamespaces } from "@/src/registry/namespaces"
 import { rawConfigSchema } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { spinner } from "@/src/utils/spinner"
-import fs from "fs-extra"
+import * as fsPromises from "node:fs/promises"
 
 export async function ensureRegistriesInConfig(
   components: string[],
@@ -86,7 +86,7 @@ export async function ensureRegistriesInConfig(
       silent: options.silent,
     }).start()
     const updatedConfig = rawConfigSchema.parse(configWithoutResolvedPaths)
-    await fs.writeFile(
+    await fsPromises.writeFile(
       path.resolve(config.resolvedPaths.cwd, "components.json"),
       JSON.stringify(updatedConfig, null, 2) + "\n",
       "utf-8"

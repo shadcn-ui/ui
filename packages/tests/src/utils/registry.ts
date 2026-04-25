@@ -1,6 +1,7 @@
 import { createServer } from "http"
+import * as fs from "node:fs"
 import path from "path"
-import fs from "fs-extra"
+import fsExtra from "fs-extra"
 
 export async function createRegistryServer(
   items: Array<{ name: string; type: string } & Record<string, unknown>>,
@@ -259,15 +260,15 @@ export async function configureRegistries(
   fixturePath: string,
   payload: Record<string, any>
 ) {
-  if (!fs.pathExistsSync(path.join(fixturePath, "components.json"))) {
-    await fs.writeJSON(path.join(fixturePath, "components.json"), {
+  if (!fs.existsSync(path.join(fixturePath, "components.json"))) {
+    await fsExtra.writeJSON(path.join(fixturePath, "components.json"), {
       registries: payload,
     })
   }
 
-  const componentsJson = await fs.readJSON(
+  const componentsJson = await fsExtra.readJSON(
     path.join(fixturePath, "components.json")
   )
   componentsJson.registries = payload
-  await fs.writeJSON(path.join(fixturePath, "components.json"), componentsJson)
+  await fsExtra.writeJSON(path.join(fixturePath, "components.json"), componentsJson)
 }

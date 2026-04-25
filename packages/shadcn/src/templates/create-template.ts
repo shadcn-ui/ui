@@ -1,11 +1,13 @@
 import os from "os"
 import path from "path"
+import * as fs from "node:fs"
+import * as fsPromises from "node:fs/promises"
 import type { RegistryItem } from "@/src/registry/schema"
 import type { Config } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { spinner } from "@/src/utils/spinner"
-import { execa } from "execa"
-import fs from "fs-extra"
+import { x } from "tinyexec"
+import fsExtra from "fs-extra"
 
 const GITHUB_REPO_URL =
   process.env.SHADCN_GITHUB_URL ?? "https://github.com/shadcn-ui/ui.git"
@@ -119,7 +121,7 @@ async function adaptWorkspaceConfig(
   // Remove pnpm-lock.yaml.
   const lockFilePath = path.join(projectPath, "pnpm-lock.yaml")
   if (fs.existsSync(lockFilePath)) {
-    await fs.remove(lockFilePath)
+    await fsExtra.remove(lockFilePath)
   }
 
   const isMonorepo = fs.existsSync(pnpmWorkspacePath)
@@ -127,7 +129,7 @@ async function adaptWorkspaceConfig(
   // Update root package.json: update "packageManager" field for the
   // target package manager, and add "workspaces" for npm/bun/yarn.
   if (fs.existsSync(packageJsonPath)) {
-    const packageJsonContent = await fs.readFile(packageJsonPath, "utf8")
+    const packageJsonContent = await fsPromises.readFile(packageJsonPath, "utf8")
     const packageJson = JSON.parse(packageJsonContent)
 
     if (isMonorepo) {
@@ -141,7 +143,7 @@ async function adaptWorkspaceConfig(
 
     if (isMonorepo) {
       // Read workspace patterns from pnpm-workspace.yaml.
-      const workspaceContent = await fs.readFile(pnpmWorkspacePath, "utf8")
+      const workspaceContent = await fsPromises.readFile(pnpmWorkspacePath, "utf8")
       const patterns: string[] = []
       for (const line of workspaceContent.split("\n")) {
         const match = line.match(/^\s*-\s*["']?(.+?)["']?\s*$/)
@@ -151,10 +153,10 @@ async function adaptWorkspaceConfig(
       }
 
       packageJson.workspaces = patterns
-      await fs.remove(pnpmWorkspacePath)
+      await fsExtra.remove(pnpmWorkspacePath)
     }
 
-    await fs.writeFile(
+    await fsPromises.writeFile(
       packageJsonPath,
       JSON.stringify(packageJson, null, 2) + "\n"
     )
@@ -171,7 +173,7 @@ async function adaptWorkspaceConfig(
 // Get the package manager name and version string (e.g. "bun@1.2.0").
 async function getPackageManagerVersion(packageManager: string) {
   try {
-    const { stdout } = await execa(packageManager, ["--version"])
+    const { stdout } = await x(packageManager, ["--version"], { throwOnError:true })
     return `${packageManager}@${stdout.trim()}`
   } catch {
     return `${packageManager}@*`
@@ -181,14 +183,14 @@ async function getPackageManagerVersion(packageManager: string) {
 // Recursively find all package.json files and replace workspace: protocol
 // version specifiers with "*", which npm understands.
 async function rewriteWorkspaceProtocol(dir: string) {
-  const entries = await fs.readdir(dir, { withFileTypes: true })
+  const entries = await fsPromises.readdir(dir, { withFileTypes: true })
   for (const entry of entries) {
     if (entry.name === "node_modules") continue
     const fullPath = path.join(dir, entry.name)
     if (entry.isDirectory()) {
       await rewriteWorkspaceProtocol(fullPath)
     } else if (entry.name === "package.json") {
-      const content = await fs.readFile(fullPath, "utf8")
+      const content = await fsPromises.readFile(fullPath, "utf8")
       if (!content.includes("workspace:")) continue
       const pkg = JSON.parse(content)
       let changed = false
@@ -208,7 +210,7 @@ async function rewriteWorkspaceProtocol(dir: string) {
         }
       }
       if (changed) {
-        await fs.writeFile(fullPath, JSON.stringify(pkg, null, 2) + "\n")
+        await fsPromises.writeFile(fullPath, JSON.stringify(pkg, null, 2) + "\n")
       }
     }
   }
@@ -232,7 +234,7 @@ function defaultScaffold({
       if (localTemplateDir) {
         // Use local template directory for development.
         const localTemplatePath = path.resolve(localTemplateDir, templateDir)
-        await fs.copy(localTemplatePath, projectPath, {
+        await fsExtra.copy(localTemplatePath, projectPath, {
           filter: (src) => !src.includes("node_modules"),
         })
       } else {
@@ -241,7 +243,7 @@ function defaultScaffold({
           os.tmpdir(),
           `shadcn-template-${Date.now()}`
         )
-        await execa("git", [
+        await x("git", [
           "clone",
           "--depth",
           "1",
@@ -249,22 +251,26 @@ function defaultScaffold({
           "--sparse",
           GITHUB_REPO_URL,
           templatePath,
-        ])
-        await execa("git", [
+        ], {
+          throwOnError: true,
+        })
+        await x("git", [
           "-C",
           templatePath,
           "sparse-checkout",
           "set",
           `templates/${templateDir}`,
-        ])
+        ], {
+          throwOnError: true,
+        })
 
         const extractedPath = path.resolve(
           templatePath,
           "templates",
           templateDir
         )
-        await fs.move(extractedPath, projectPath)
-        await fs.remove(templatePath)
+        await fsExtra.move(extractedPath, projectPath)
+        await fsExtra.remove(templatePath)
       }
 
       // Adapt workspace config and lockfiles for the target package manager.
@@ -273,17 +279,20 @@ function defaultScaffold({
       // Run install.
       const installArgs = getInstallArgs(packageManager)
       const args = ["install", ...installArgs]
-      await execa(packageManager, args, {
-        cwd: projectPath,
+      await x(packageManager, args, {
+        nodeOptions: {
+          cwd: projectPath,
+        },
+        throwOnError: true
       })
 
       // Write project name to the package.json.
       const packageJsonPath = path.join(projectPath, "package.json")
       if (fs.existsSync(packageJsonPath)) {
-        const packageJsonContent = await fs.readFile(packageJsonPath, "utf8")
+        const packageJsonContent = await fsPromises.readFile(packageJsonPath, "utf8")
         const packageJson = JSON.parse(packageJsonContent)
         packageJson.name = path.basename(projectPath)
-        await fs.writeFile(
+        await fsPromises.writeFile(
           packageJsonPath,
           JSON.stringify(packageJson, null, 2) + "\n"
         )
@@ -303,10 +312,11 @@ function defaultScaffold({
 // Silently ignores failures (e.g. git not installed).
 async function defaultPostInit({ projectPath }: { projectPath: string }) {
   try {
-    await execa("git", ["init"], { cwd: projectPath })
-    await execa("git", ["add", "-A"], { cwd: projectPath })
-    await execa("git", ["commit", "-m", "feat: initial commit"], {
-      cwd: projectPath,
+    await x("git", ["init"], { nodeOptions: { cwd: projectPath }, throwOnError: true })
+    await x("git", ["add", "-A"], { nodeOptions: { cwd: projectPath }, throwOnError: true })
+    await x("git", ["commit", "-m", "feat: initial commit"], {
+      nodeOptions: { cwd: projectPath },
+      throwOnError: true,
     })
   } catch {}
 }

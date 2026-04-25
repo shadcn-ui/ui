@@ -1,12 +1,16 @@
+import * as fs from "node:fs"
+import * as fsPromises from "node:fs/promises"
 import path from "path"
 import { createTemplate } from "@/src/templates/create-template"
 import { spinner } from "@/src/utils/spinner"
-import { execa } from "execa"
-import fs from "fs-extra"
+import { x } from "tinyexec"
+import fsExtra from "fs-extra"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
+vi.mock("node:fs")
+vi.mock("node:fs/promises")
 vi.mock("fs-extra")
-vi.mock("execa")
+vi.mock("tinyexec")
 vi.mock("@/src/utils/spinner")
 vi.mock("@/src/utils/logger", () => ({
   logger: { break: vi.fn(), error: vi.fn(), info: vi.fn() },
@@ -21,14 +25,16 @@ function setupMocks() {
     fail: vi.fn().mockReturnThis(),
   }
 
-  vi.mocked(fs.ensureDir).mockResolvedValue(undefined)
-  vi.mocked(fs.writeFile).mockResolvedValue(undefined)
-  vi.mocked(fs.move).mockResolvedValue(undefined)
-  vi.mocked(fs.remove).mockResolvedValue(undefined)
-  vi.mocked(fs.existsSync).mockReturnValue(false)
-  vi.mocked(fs.copy).mockResolvedValue(undefined)
+  vi.mocked(fsExtra.move).mockResolvedValue(undefined)
+  vi.mocked(fsExtra.remove).mockResolvedValue(undefined)
+  vi.mocked(fsExtra.copy).mockResolvedValue(undefined)
 
-  vi.mocked(execa).mockResolvedValue({
+  vi.mocked(fs.existsSync).mockReturnValue(false)
+  vi.mocked(fsPromises.mkdir).mockResolvedValue(undefined)
+  vi.mocked(fsPromises.writeFile).mockResolvedValue(undefined)
+  vi.mocked(fsPromises.mkdir).mockResolvedValue(undefined)
+
+  vi.mocked(x).mockResolvedValue({
     stdout: "",
     stderr: "",
     exitCode: 0,
@@ -78,7 +84,7 @@ describe("defaultScaffold", () => {
     })
 
     // Should clone with --depth 1, --filter=blob:none, --sparse.
-    expect(vi.mocked(execa)).toHaveBeenCalledWith("git", [
+    expect(vi.mocked(x)).toHaveBeenCalledWith("git", [
       "clone",
       "--depth",
       "1",
@@ -86,16 +92,16 @@ describe("defaultScaffold", () => {
       "--sparse",
       "https://github.com/shadcn-ui/ui.git",
       expect.stringContaining("shadcn-template-"),
-    ])
+    ], { throwOnError: true })
 
     // Should set sparse-checkout to the template directory.
-    expect(vi.mocked(execa)).toHaveBeenCalledWith("git", [
+    expect(vi.mocked(x)).toHaveBeenCalledWith("git", [
       "-C",
       expect.stringContaining("shadcn-template-"),
       "sparse-checkout",
       "set",
       "templates/next-app",
-    ])
+    ], { throwOnError: true })
   })
 
   it("should move template directory to project path", async () => {
@@ -107,7 +113,7 @@ describe("defaultScaffold", () => {
       cwd: "/test",
     })
 
-    expect(vi.mocked(fs.move)).toHaveBeenCalledWith(
+    expect(vi.mocked(fsExtra.move)).toHaveBeenCalledWith(
       expect.stringContaining(path.join("templates", "next-app")),
       "/test/my-app"
     )
@@ -122,7 +128,7 @@ describe("defaultScaffold", () => {
       cwd: "/test",
     })
 
-    expect(vi.mocked(fs.remove)).toHaveBeenCalledWith(
+    expect(vi.mocked(fsExtra.remove)).toHaveBeenCalledWith(
       expect.stringContaining("shadcn-template-")
     )
   })
@@ -139,14 +145,14 @@ describe("defaultScaffold", () => {
     })
 
     // Should not call git clone.
-    const execaCalls = vi.mocked(execa).mock.calls
+    const tinyexecCalls = vi.mocked(x).mock.calls
     expect(
-      execaCalls.some(
+      tinyexecCalls.some(
         (call) => call[0] === "git" && (call[1] as string[]).includes("clone")
       )
     ).toBe(false)
 
-    expect(vi.mocked(fs.copy)).toHaveBeenCalledWith(
+    expect(vi.mocked(fsExtra.copy)).toHaveBeenCalledWith(
       path.resolve("/local/templates", "next-app"),
       "/test/my-app",
       expect.objectContaining({ filter: expect.any(Function) })
@@ -154,7 +160,7 @@ describe("defaultScaffold", () => {
   })
 
   it("should exit on git clone failure", async () => {
-    vi.mocked(execa).mockRejectedValueOnce(new Error("git clone failed"))
+    vi.mocked(x).mockRejectedValueOnce(new Error("git clone failed"))
 
     const template = createTestTemplate()
 
@@ -181,7 +187,7 @@ describe("defaultScaffold", () => {
       cwd: "/test",
     })
 
-    expect(vi.mocked(fs.remove)).toHaveBeenCalledWith(
+    expect(vi.mocked(fsExtra.remove)).toHaveBeenCalledWith(
       path.join("/test/my-app", "pnpm-lock.yaml")
     )
   })
@@ -198,7 +204,7 @@ describe("defaultScaffold", () => {
     })
 
     // fs.remove is called for temp dir cleanup, but not for pnpm-lock.yaml.
-    const removeCalls = vi.mocked(fs.remove).mock.calls
+    const removeCalls = vi.mocked(fsExtra.remove).mock.calls
     expect(
       removeCalls.some((call) => call[0].toString().includes("pnpm-lock.yaml"))
     ).toBe(false)
@@ -213,8 +219,11 @@ describe("defaultScaffold", () => {
       cwd: "/test",
     })
 
-    expect(vi.mocked(execa)).toHaveBeenCalledWith("bun", ["install"], {
-      cwd: "/test/my-app",
+    expect(vi.mocked(x)).toHaveBeenCalledWith("bun", ["install"], {
+      nodeOptions: {
+        cwd: "/test/my-app",
+      },
+      throwOnError: true,
     })
   })
 
@@ -227,10 +236,15 @@ describe("defaultScaffold", () => {
       cwd: "/test",
     })
 
-    expect(vi.mocked(execa)).toHaveBeenCalledWith(
+    expect(vi.mocked(x)).toHaveBeenCalledWith(
       "pnpm",
       ["install", "--no-frozen-lockfile"],
-      { cwd: "/test/my-app" }
+      {
+        nodeOptions: {
+          cwd: "/test/my-app",
+        },
+        throwOnError: true
+      }
     )
   })
 
@@ -238,7 +252,7 @@ describe("defaultScaffold", () => {
     vi.mocked(fs.existsSync).mockImplementation((p: any) =>
       p.toString().includes("package.json")
     )
-    vi.mocked(fs.readFile).mockResolvedValue(
+    vi.mocked(fsPromises.readFile).mockResolvedValue(
       JSON.stringify({
         name: "my-app",
         packageManager: "pnpm@9.0.0",
@@ -254,7 +268,7 @@ describe("defaultScaffold", () => {
     })
 
     // The first writeFile call is from adaptWorkspaceConfig.
-    const writeCalls = vi.mocked(fs.writeFile).mock.calls
+    const writeCalls = vi.mocked(fsPromises.writeFile).mock.calls
     const adaptCall = writeCalls.find(
       (call) => call[0] === path.join("/test/my-app", "package.json")
     )
@@ -270,7 +284,7 @@ describe("defaultScaffold", () => {
     })
 
     // Return different content based on which file is being read.
-    vi.mocked(fs.readFile).mockImplementation(((filePath: string) => {
+    vi.mocked(fsPromises.readFile).mockImplementation(((filePath: string) => {
       if (filePath.includes("pnpm-workspace.yaml")) {
         return Promise.resolve("packages:\n  - 'apps/*'\n  - 'packages/*'\n")
       }
@@ -279,8 +293,8 @@ describe("defaultScaffold", () => {
       )
     }) as any)
 
-    // Mock execa to return a version for bun --version.
-    vi.mocked(execa).mockImplementation(((cmd: string, args: string[]) => {
+    // Mock tinyexec to return a version for bun --version.
+    vi.mocked(x).mockImplementation(((cmd: string, args: string[]) => {
       if (cmd === "bun" && args[0] === "--version") {
         return Promise.resolve({ stdout: "1.2.0" } as any)
       }
@@ -296,12 +310,12 @@ describe("defaultScaffold", () => {
     })
 
     // Should remove pnpm-workspace.yaml.
-    expect(vi.mocked(fs.remove)).toHaveBeenCalledWith(
+    expect(vi.mocked(fsExtra.remove)).toHaveBeenCalledWith(
       path.join("/test/my-app", "pnpm-workspace.yaml")
     )
 
     // Should write workspaces array to package.json.
-    const writeCalls = vi.mocked(fs.writeFile).mock.calls
+    const writeCalls = vi.mocked(fsPromises.writeFile).mock.calls
     const adaptCall = writeCalls.find(
       (call) => call[0] === path.join("/test/my-app", "package.json")
     )
@@ -326,7 +340,7 @@ describe("defaultScaffold", () => {
       dependencies: { "@workspace/ui": "workspace:*" },
     })
 
-    vi.mocked(fs.readFile).mockImplementation(((filePath: string) => {
+    vi.mocked(fsPromises.readFile).mockImplementation(((filePath: string) => {
       if (filePath.includes("pnpm-workspace.yaml")) {
         return Promise.resolve("packages:\n  - 'apps/*'\n")
       }
@@ -337,7 +351,7 @@ describe("defaultScaffold", () => {
     }) as any)
 
     // Mock readdir for the recursive rewriteWorkspaceProtocol walk.
-    vi.mocked(fs.readdir).mockImplementation(((dir: string) => {
+    vi.mocked(fsPromises.readdir).mockImplementation(((dir: string) => {
       if (dir === "/test/my-app") {
         return Promise.resolve([
           { name: "apps", isDirectory: () => true },
@@ -361,7 +375,7 @@ describe("defaultScaffold", () => {
     })
 
     // Should have rewritten workspace:* to * in nested package.json.
-    const writeCalls = vi.mocked(fs.writeFile).mock.calls
+    const writeCalls = vi.mocked(fsPromises.writeFile).mock.calls
     const nestedWrite = writeCalls.find(
       (call) =>
         (call[0] as string).includes("apps") &&
@@ -378,7 +392,7 @@ describe("defaultScaffold", () => {
       return s.includes("pnpm-workspace.yaml") || s.includes("package.json")
     })
 
-    vi.mocked(fs.readFile).mockImplementation(((filePath: string) => {
+    vi.mocked(fsPromises.readFile).mockImplementation(((filePath: string) => {
       if (filePath.includes("pnpm-workspace.yaml")) {
         return Promise.resolve("packages:\n  - 'apps/*'\n")
       }
@@ -396,7 +410,7 @@ describe("defaultScaffold", () => {
     })
 
     // readdir should not be called since rewriteWorkspaceProtocol is skipped for bun.
-    expect(vi.mocked(fs.readdir)).not.toHaveBeenCalled()
+    expect(vi.mocked(fsPromises.readdir)).not.toHaveBeenCalled()
   })
 
   it("should set packageManager to detected version for monorepo with bun", async () => {
@@ -405,7 +419,7 @@ describe("defaultScaffold", () => {
       return s.includes("pnpm-workspace.yaml") || s.includes("package.json")
     })
 
-    vi.mocked(fs.readFile).mockImplementation(((filePath: string) => {
+    vi.mocked(fsPromises.readFile).mockImplementation(((filePath: string) => {
       if (filePath.includes("pnpm-workspace.yaml")) {
         return Promise.resolve("packages:\n  - 'apps/*'\n")
       }
@@ -414,7 +428,7 @@ describe("defaultScaffold", () => {
       )
     }) as any)
 
-    vi.mocked(execa).mockImplementation(((cmd: string, args: string[]) => {
+    vi.mocked(x).mockImplementation(((cmd: string, args: string[]) => {
       if (cmd === "bun" && args[0] === "--version") {
         return Promise.resolve({ stdout: "1.2.5" } as any)
       }
@@ -429,7 +443,7 @@ describe("defaultScaffold", () => {
       cwd: "/test",
     })
 
-    const writeCalls = vi.mocked(fs.writeFile).mock.calls
+    const writeCalls = vi.mocked(fsPromises.writeFile).mock.calls
     const adaptCall = writeCalls.find(
       (call) => call[0] === path.join("/test/my-app", "package.json")
     )
@@ -444,7 +458,7 @@ describe("defaultScaffold", () => {
       return s.includes("pnpm-workspace.yaml") || s.includes("package.json")
     })
 
-    vi.mocked(fs.readFile).mockImplementation(((filePath: string) => {
+    vi.mocked(fsPromises.readFile).mockImplementation(((filePath: string) => {
       if (filePath.includes("pnpm-workspace.yaml")) {
         return Promise.resolve("packages:\n  - 'apps/*'\n")
       }
@@ -454,9 +468,9 @@ describe("defaultScaffold", () => {
     }) as any)
 
     // Mock readdir for rewriteWorkspaceProtocol.
-    vi.mocked(fs.readdir).mockResolvedValue([] as any)
+    vi.mocked(fsPromises.readdir).mockResolvedValue([] as any)
 
-    vi.mocked(execa).mockImplementation(((cmd: string, args: string[]) => {
+    vi.mocked(x).mockImplementation(((cmd: string, args: string[]) => {
       if (cmd === "npm" && args[0] === "--version") {
         return Promise.resolve({ stdout: "10.8.1" } as any)
       }
@@ -471,7 +485,7 @@ describe("defaultScaffold", () => {
       cwd: "/test",
     })
 
-    const writeCalls = vi.mocked(fs.writeFile).mock.calls
+    const writeCalls = vi.mocked(fsPromises.writeFile).mock.calls
     const adaptCall = writeCalls.find(
       (call) => call[0] === path.join("/test/my-app", "package.json")
     )
@@ -486,7 +500,7 @@ describe("defaultScaffold", () => {
       return s.includes("pnpm-workspace.yaml") || s.includes("package.json")
     })
 
-    vi.mocked(fs.readFile).mockImplementation(((filePath: string) => {
+    vi.mocked(fsPromises.readFile).mockImplementation(((filePath: string) => {
       if (filePath.includes("pnpm-workspace.yaml")) {
         return Promise.resolve("packages:\n  - 'apps/*'\n")
       }
@@ -495,7 +509,7 @@ describe("defaultScaffold", () => {
       )
     }) as any)
 
-    vi.mocked(execa).mockImplementation(((cmd: string, args: string[]) => {
+    vi.mocked(x).mockImplementation(((cmd: string, args: string[]) => {
       if (cmd === "yarn" && args[0] === "--version") {
         return Promise.resolve({ stdout: "4.6.0" } as any)
       }
@@ -510,7 +524,7 @@ describe("defaultScaffold", () => {
       cwd: "/test",
     })
 
-    const writeCalls = vi.mocked(fs.writeFile).mock.calls
+    const writeCalls = vi.mocked(fsPromises.writeFile).mock.calls
     const adaptCall = writeCalls.find(
       (call) => call[0] === path.join("/test/my-app", "package.json")
     )
@@ -525,7 +539,7 @@ describe("defaultScaffold", () => {
       return s.includes("pnpm-workspace.yaml") || s.includes("package.json")
     })
 
-    vi.mocked(fs.readFile).mockImplementation(((filePath: string) => {
+    vi.mocked(fsPromises.readFile).mockImplementation(((filePath: string) => {
       if (filePath.includes("pnpm-workspace.yaml")) {
         return Promise.resolve("packages:\n  - 'apps/*'\n")
       }
@@ -534,7 +548,7 @@ describe("defaultScaffold", () => {
       )
     }) as any)
 
-    vi.mocked(execa).mockImplementation(((cmd: string, args: string[]) => {
+    vi.mocked(x).mockImplementation(((cmd: string, args: string[]) => {
       if (args[0] === "--version") {
         return Promise.reject(new Error("command not found"))
       }
@@ -549,7 +563,7 @@ describe("defaultScaffold", () => {
       cwd: "/test",
     })
 
-    const writeCalls = vi.mocked(fs.writeFile).mock.calls
+    const writeCalls = vi.mocked(fsPromises.writeFile).mock.calls
     const adaptCall = writeCalls.find(
       (call) => call[0] === path.join("/test/my-app", "package.json")
     )
@@ -562,7 +576,7 @@ describe("defaultScaffold", () => {
     vi.mocked(fs.existsSync).mockImplementation((p: any) =>
       p.toString().includes("package.json")
     )
-    vi.mocked(fs.readFile).mockResolvedValue(
+    vi.mocked(fsPromises.readFile).mockResolvedValue(
       JSON.stringify({ name: "template-name" }) as any
     )
 
@@ -574,7 +588,7 @@ describe("defaultScaffold", () => {
       cwd: "/test",
     })
 
-    expect(vi.mocked(fs.writeFile)).toHaveBeenCalledWith(
+    expect(vi.mocked(fsPromises.writeFile)).toHaveBeenCalledWith(
       path.join("/test/my-app", "package.json"),
       JSON.stringify({ name: "my-app" }, null, 2) + "\n"
     )

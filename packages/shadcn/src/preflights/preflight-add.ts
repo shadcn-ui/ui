@@ -10,7 +10,7 @@ import {
 } from "@/src/utils/get-monorepo-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import fs from "fs-extra"
+import * as fs from "node:fs"
 import { z } from "zod"
 
 export async function preFlightAdd(options: z.infer<typeof addOptionsSchema>) {

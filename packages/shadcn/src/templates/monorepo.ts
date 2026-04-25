@@ -10,7 +10,7 @@ import { updateCss } from "@/src/utils/updaters/update-css"
 import { updateCssVars } from "@/src/utils/updaters/update-css-vars"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import deepmerge from "deepmerge"
-import fs from "fs-extra"
+import fsExtra from "fs-extra"
 
 import type { TemplateInitOptions } from "./create-template"
 
@@ -22,7 +22,7 @@ export async function fontsourceMonorepoInit(options: TemplateInitOptions) {
 
   // Update packages/ui/components.json.
   const packagesUiConfigPath = path.resolve(packagesUiPath, "components.json")
-  let packagesUiConfig = await fs.readJson(packagesUiConfigPath)
+  let packagesUiConfig = await fsExtra.readJson(packagesUiConfigPath)
   if (options.registryBaseConfig) {
     packagesUiConfig = deepmerge(packagesUiConfig, options.registryBaseConfig)
   }
@@ -39,13 +39,13 @@ export async function fontsourceMonorepoInit(options: TemplateInitOptions) {
   if (options.iconLibrary) {
     packagesUiConfig.iconLibrary = options.iconLibrary
   }
-  await fs.writeJson(packagesUiConfigPath, packagesUiConfig, {
+  await fsExtra.writeJson(packagesUiConfigPath, packagesUiConfig, {
     spaces: 2,
   })
 
   // Update apps/web/components.json.
   const appsWebConfigPath = path.resolve(appsWebPath, "components.json")
-  let appsWebConfig = await fs.readJson(appsWebConfigPath)
+  let appsWebConfig = await fsExtra.readJson(appsWebConfigPath)
   if (options.registryBaseConfig) {
     appsWebConfig = deepmerge(appsWebConfig, options.registryBaseConfig)
   }
@@ -62,7 +62,7 @@ export async function fontsourceMonorepoInit(options: TemplateInitOptions) {
   if (options.iconLibrary) {
     appsWebConfig.iconLibrary = options.iconLibrary
   }
-  await fs.writeJson(appsWebConfigPath, appsWebConfig, { spaces: 2 })
+  await fsExtra.writeJson(appsWebConfigPath, appsWebConfig, { spaces: 2 })
 
   // Apply preset CSS/style to packages/ui directly.
   // We use the packages/ui config so addProjectComponents runs

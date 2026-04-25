@@ -1,4 +1,4 @@
-import { promises as fs } from "fs"
+import * as fsPromises from "node:fs/promises"
 import path from "path"
 import { server } from "@/src/mcp"
 import { loadEnvFiles } from "@/src/utils/env-loader"
@@ -12,8 +12,7 @@ import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { Command } from "commander"
 import deepmerge from "deepmerge"
-import { execa } from "execa"
-import fsExtra from "fs-extra"
+import { x } from "tinyexec"
 import prompts from "prompts"
 import z from "zod"
 
@@ -163,11 +162,14 @@ mcp
           const devFlag = packageManager === "npm" ? "--save-dev" : "-D"
 
           const installSpinner = spinner("Installing dependencies...").start()
-          await execa(
+          await x(
             packageManager,
             [installCommand, devFlag, ...DEPENDENCIES],
             {
-              cwd: options.cwd,
+              nodeOptions: {
+                cwd: options.cwd,
+              },
+              throwOnError: true
             }
           )
           installSpinner.succeed("Installing dependencies.")
@@ -206,11 +208,14 @@ args = ["shadcn@${SHADCN_MCP_VERSION}", "mcp"]`)
         const devFlag = packageManager === "npm" ? "--save-dev" : "-D"
 
         const installSpinner = spinner("Installing dependencies...").start()
-        await execa(
+        await x(
           packageManager,
           [installCommand, devFlag, ...DEPENDENCIES],
           {
-            cwd: options.cwd,
+            nodeOptions: {
+              cwd: options.cwd,
+            },
+            throwOnError: true
           }
         )
         installSpinner.succeed("Installing dependencies.")
@@ -240,12 +245,12 @@ async function runMcpInit(options: z.infer<typeof mcpInitOptionsSchema>) {
 
   const configPath = path.join(cwd, clientInfo.configPath)
   const dir = path.dirname(configPath)
-  await fsExtra.ensureDir(dir)
+  await fsPromises.mkdir(dir, { recursive: true })
 
   // Handle JSON format.
   let existingConfig = {}
   try {
-    const content = await fs.readFile(configPath, "utf-8")
+    const content = await fsPromises.readFile(configPath, "utf-8")
     existingConfig = JSON.parse(content)
   } catch {}
 
@@ -255,7 +260,7 @@ async function runMcpInit(options: z.infer<typeof mcpInitOptionsSchema>) {
     { arrayMerge: overwriteMerge }
   )
 
-  await fs.writeFile(
+  await fsPromises.writeFile(
     configPath,
     JSON.stringify(mergedConfig, null, 2) + "\n",
     "utf-8"

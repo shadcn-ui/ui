@@ -1,9 +1,10 @@
 import path from "path"
+import * as fs from "node:fs"
+import * as fsPromises from "node:fs/promises"
 import { buildOptionsSchema } from "@/src/commands/build"
 import * as ERRORS from "@/src/utils/errors"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import fs from "fs-extra"
 import { z } from "zod"
 
 export async function preFlightBuild(
@@ -23,7 +24,7 @@ export async function preFlightBuild(
   }
 
   // Create output directory if it doesn't exist.
-  await fs.mkdir(resolvePaths.outputDir, { recursive: true })
+  await fsPromises.mkdir(resolvePaths.outputDir, { recursive: true })
 
   if (Object.keys(errors).length > 0) {
     if (errors[ERRORS.BUILD_MISSING_REGISTRY_FILE]) {

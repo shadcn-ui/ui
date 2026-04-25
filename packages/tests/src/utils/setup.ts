@@ -1,5 +1,6 @@
+import * as fsPromises from "node:fs/promises"
 import path from "path"
-import fs from "fs-extra"
+import fsExtra from "fs-extra"
 import { rimraf } from "rimraf"
 
 export const TEMP_DIR = path.join(__dirname, "../../temp")
@@ -20,13 +21,13 @@ async function waitForCondition(
 }
 
 export default async function setup() {
-  await fs.ensureDir(TEMP_DIR)
+  await fsPromises.mkdir(TEMP_DIR, { recursive: true })
 
   // The v4 dev script runs `pnpm --filter=shadcn build` in the background
   // while `next dev` starts immediately. On fast CI runs the server can be
   // ready before the CLI binary is built, so we wait for it explicitly.
   await waitForCondition("shadcn CLI binary", () =>
-    fs.pathExists(SHADCN_CLI_PATH)
+    fsExtra.pathExists(SHADCN_CLI_PATH)
   )
 
   // The CLI's first request goes to the dynamic /init route. On a cold Next.js

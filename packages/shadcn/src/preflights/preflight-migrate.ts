@@ -6,7 +6,7 @@ import * as ERRORS from "@/src/utils/errors"
 import { getConfig } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import fs from "fs-extra"
+import * as fs from "node:fs"
 import { z } from "zod"
 
 export async function preFlightMigrate(

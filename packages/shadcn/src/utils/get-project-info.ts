@@ -1,4 +1,5 @@
-import { promises as fsPromises } from "fs"
+import * as fs from "node:fs"
+import * as fsPromises from "node:fs/promises"
 import path from "path"
 import { getShadcnRegistryIndex } from "@/src/registry/api"
 import { SHADCN_URL } from "@/src/registry/constants"
@@ -6,8 +7,8 @@ import { rawConfigSchema } from "@/src/schema"
 import { Framework, FRAMEWORKS } from "@/src/utils/frameworks"
 import { Config, getConfig, resolveConfigPaths } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
-import fg from "fast-glob"
-import fs from "fs-extra"
+import { glob } from "tinyglobby"
+import fsExtra from "fs-extra"
 import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
 
@@ -53,7 +54,7 @@ export async function getProjectInfo(
     aliasPrefix,
     packageJson,
   ] = await Promise.all([
-    fg.glob(
+    glob(
       "**/{next,vite,astro,app}.config.*|gatsby-config.*|composer.json|react-router.config.*",
       {
         cwd,
@@ -61,7 +62,7 @@ export async function getProjectInfo(
         ignore: PROJECT_SHARED_IGNORE,
       }
     ),
-    fs.pathExists(path.resolve(cwd, "src")),
+    fsExtra.pathExists(path.resolve(cwd, "src")),
     isTypeScriptProject(cwd),
     getTailwindConfigFile(cwd),
     getTailwindCssFile(cwd, opts?.configCssFile),
@@ -70,7 +71,7 @@ export async function getProjectInfo(
     getPackageInfo(cwd, false),
   ])
 
-  const isUsingAppDir = await fs.pathExists(
+  const isUsingAppDir = await fsExtra.pathExists(
     path.resolve(cwd, `${isSrcDir ? "src/" : ""}app`)
   )
 
@@ -158,7 +159,7 @@ export async function getProjectInfo(
   // They are vite-based, and the same configurations used for Vite should work flawlessly
   const appConfig = configFiles.find((file) => file.startsWith("app.config"))
   if (appConfig?.length) {
-    const appConfigContents = await fs.readFile(
+    const appConfigContents = await fsPromises.readFile(
       path.resolve(cwd, appConfig),
       "utf8"
     )
@@ -250,13 +251,13 @@ export async function getTailwindCssFile(cwd: string, configCssFile?: string) {
   // If the existing config has a known CSS file, check it first.
   if (configCssFile) {
     const resolvedPath = path.resolve(cwd, configCssFile)
-    if (await fs.pathExists(resolvedPath)) {
+    if (await fsExtra.pathExists(resolvedPath)) {
       return configCssFile
     }
   }
 
   const [files, tailwindVersion] = await Promise.all([
-    fg.glob(["**/*.css", "**/*.scss"], {
+    glob(["**/*.css", "**/*.scss"], {
       cwd,
       deep: 5,
       ignore: PROJECT_SHARED_IGNORE,
@@ -271,7 +272,7 @@ export async function getTailwindCssFile(cwd: string, configCssFile?: string) {
   const needle =
     tailwindVersion === "v4" ? `@import "tailwindcss"` : "@tailwind base"
   for (const file of files) {
-    const contents = await fs.readFile(path.resolve(cwd, file), "utf8")
+    const contents = await fsPromises.readFile(path.resolve(cwd, file), "utf8")
     if (
       contents.includes(`@import "tailwindcss"`) ||
       contents.includes(`@import 'tailwindcss'`) ||
@@ -285,7 +286,7 @@ export async function getTailwindCssFile(cwd: string, configCssFile?: string) {
 }
 
 export async function getTailwindConfigFile(cwd: string) {
-  const files = await fg.glob("tailwind.config.*", {
+  const files = await glob("tailwind.config.*", {
     cwd,
     deep: 3,
     ignore: PROJECT_SHARED_IGNORE,
@@ -325,7 +326,7 @@ export async function getTsConfigAliasPrefix(cwd: string) {
 }
 
 export async function isTypeScriptProject(cwd: string) {
-  const files = await fg.glob("tsconfig.*", {
+  const files = await glob("tsconfig.*", {
     cwd,
     deep: 1,
     ignore: PROJECT_SHARED_IGNORE,
@@ -341,12 +342,12 @@ export async function getTsConfig(cwd: string) {
     "tsconfig.app.json",
   ]) {
     const filePath = path.resolve(cwd, fallback)
-    if (!(await fs.pathExists(filePath))) {
+    if (!(await fsExtra.pathExists(filePath))) {
       continue
     }
 
     // We can't use fs.readJSON because it doesn't support comments.
-    const contents = await fs.readFile(filePath, "utf8")
+    const contents = await fsPromises.readFile(filePath, "utf8")
     const cleanedContents = contents.replace(/\/\*\s*\*\//g, "")
     const result = TS_CONFIG_SCHEMA.safeParse(JSON.parse(cleanedContents))
 
