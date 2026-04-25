@@ -186,6 +186,12 @@
     "description": "Cult UI is a rare, curated set of shadcn-compatible, headless and composable components—tastefully animated with Framer Motion."
   },
   {
+    "name": "@delta-components",
+    "homepage": "https://deltacomponents.dev",
+    "url": "https://deltacomponents.dev/r/{name}.json",
+    "description": "A shadcn registry for AI and media-rich interfaces — streaming LLM chat, zoomable images, swipeable card decks, interactive maps, plus dashboard and landing-page blocks."
+  },
+  {
     "name": "@diceui",
     "homepage": "https://www.diceui.com/",
     "url": "https://diceui.com/r/{name}.json",
