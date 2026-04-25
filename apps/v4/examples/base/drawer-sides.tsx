@@ -10,7 +10,7 @@ import {
   DrawerTrigger,
 } from "@/styles/base-nova/ui/drawer"
 
-const DRAWER_SIDES = ["top", "right", "bottom", "left"] as const
+const DRAWER_SIDES = ["up", "right", "down", "left"] as const
 
 export function DrawerWithSides() {
   return (
@@ -18,16 +18,16 @@ export function DrawerWithSides() {
       {DRAWER_SIDES.map((side) => (
         <Drawer
           key={side}
-          direction={
-            side === "bottom" ? undefined : (side as "top" | "right" | "left")
+          swipeDirection={
+            side === "down" ? undefined : (side as "up" | "right" | "left")
           }
         >
-          <DrawerTrigger asChild>
-            <Button variant="outline" className="capitalize">
-              {side}
-            </Button>
+          <DrawerTrigger
+            render={<Button variant="outline" className="capitalize" />}
+          >
+            {side}
           </DrawerTrigger>
-          <DrawerContent className="data-[vaul-drawer-direction=bottom]:max-h-[50vh] data-[vaul-drawer-direction=top]:max-h-[50vh]">
+          <DrawerContent className="data-[swipe-direction=down]:max-h-[50vh] data-[swipe-direction=up]:max-h-[50vh]">
             <DrawerHeader>
               <DrawerTitle>Move Goal</DrawerTitle>
               <DrawerDescription>
@@ -50,8 +50,8 @@ export function DrawerWithSides() {
             </div>
             <DrawerFooter>
               <Button>Submit</Button>
-              <DrawerClose asChild>
-                <Button variant="outline">Cancel</Button>
+              <DrawerClose render={<Button variant="outline" />}>
+                Cancel
               </DrawerClose>
             </DrawerFooter>
           </DrawerContent>

@@ -67,8 +67,8 @@ export function DrawerDemo() {
 
   return (
     <Drawer>
-      <DrawerTrigger asChild>
-        <Button variant="outline">Open Drawer</Button>
+      <DrawerTrigger render={<Button variant="outline" />}>
+        Open Drawer
       </DrawerTrigger>
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
@@ -124,8 +124,8 @@ export function DrawerDemo() {
           </div>
           <DrawerFooter>
             <Button>Submit</Button>
-            <DrawerClose asChild>
-              <Button variant="outline">Cancel</Button>
+            <DrawerClose render={<Button variant="outline" />}>
+              Cancel
             </DrawerClose>
           </DrawerFooter>
         </div>
