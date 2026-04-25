@@ -132,11 +132,12 @@ export function resolveCreateUrl(
     command: "create" | "init"
     template: string
     rtl: boolean
+    pointer: boolean
     base: string
   }>
 ) {
   const url = new URL(`${SHADCN_URL}/create`)
-  const { rtl, ...params } = searchParams ?? {}
+  const { rtl, pointer, ...params } = searchParams ?? {}
 
   for (const [key, value] of Object.entries(params)) {
     if (value !== undefined) {
@@ -147,6 +148,10 @@ export function resolveCreateUrl(
   // Do not set rtl if it's false.
   if (rtl) {
     url.searchParams.set("rtl", "true")
+  }
+
+  if (pointer) {
+    url.searchParams.set("pointer", "true")
   }
 
   return url.toString()
@@ -195,7 +200,12 @@ export function resolveInitUrl(
     menuColor: string
     radius: string
   },
-  options?: { template?: string; preset?: string; only?: string }
+  options?: {
+    template?: string
+    preset?: string
+    only?: string
+    pointer?: boolean
+  }
 ) {
   const params = new URLSearchParams({
     base: preset.base,
@@ -232,6 +242,10 @@ export function resolveInitUrl(
     params.set("only", options.only)
   }
 
+  if (options?.pointer) {
+    params.set("pointer", "true")
+  }
+
   // Signal the server to record this init run.
   params.set("track", "1")
 
@@ -256,6 +270,7 @@ export async function promptForPreset(options: {
   rtl: boolean
   base: string
   template?: string
+  pointer?: boolean
 }) {
   const presets = Object.entries(DEFAULT_PRESETS)
 
@@ -285,6 +300,7 @@ export async function promptForPreset(options: {
     const createUrl = resolveCreateUrl({
       command: "init",
       rtl: options.rtl,
+      pointer: options.pointer,
       base: options.base,
       ...(options.template && { template: options.template }),
     })
@@ -308,6 +324,7 @@ export async function promptForPreset(options: {
       { ...preset, base: options.base, rtl: options.rtl },
       {
         template: options.template,
+        pointer: options.pointer,
       }
     ),
     base: options.base,
