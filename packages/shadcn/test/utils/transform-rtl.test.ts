@@ -1,4 +1,5 @@
 import { describe, expect, test } from "vitest"
+import ts from "typescript"
 
 import { transform } from "../../src/utils/transformers"
 import { applyRtlMapping } from "../../src/utils/transformers/transform-rtl"
@@ -347,6 +348,47 @@ export function Foo() {
     expect(result).toContain("ms-2")
     expect(result).toContain("me-4")
     expect(result).toContain("text-start")
+  })
+
+  test("escapes transformed string literals that contain double quotes", async () => {
+    const result = await transform({
+      filename: "test.tsx",
+      raw: String.raw`import * as React from "react"
+export function Foo() {
+  return <div className='ml-1 after:content-["\""]' />
+}
+`,
+      config: {
+        rtl: true,
+        tailwind: {
+          baseColor: "neutral",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+    })
+
+    const sourceFile = ts.createSourceFile(
+      "test.tsx",
+      result,
+      ts.ScriptTarget.Latest,
+      true,
+      ts.ScriptKind.TSX
+    )
+    const stringLiterals: string[] = []
+
+    function visit(node: ts.Node) {
+      if (ts.isStringLiteral(node)) {
+        stringLiterals.push(node.text)
+      }
+      ts.forEachChild(node, visit)
+    }
+    visit(sourceFile)
+
+    expect(sourceFile.parseDiagnostics).toHaveLength(0)
+    expect(stringLiterals).toContain('ms-1 after:content-["\\""]')
   })
 
   test("does not transform when rtl is false", async () => {
