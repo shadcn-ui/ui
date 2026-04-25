@@ -1,5 +1,13 @@
 # @shadcn/ui
 
+## 4.5.0
+
+### Minor Changes
+
+- [#10488](https://github.com/shadcn-ui/ui/pull/10488) [`eb6e783fb3861aba3b35289a473954080e6f1607`](https://github.com/shadcn-ui/ui/commit/eb6e783fb3861aba3b35289a473954080e6f1607) Thanks [@shadcn](https://github.com/shadcn)! - add --pointer option to cli.
+
+  npx shadcn init --pointer will enable cursor: pointer on buttons.
+
 ## 4.4.0
 
 ### Minor Changes
