@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rgl-dashboard-tile-more-demo",
+  "registryDependencies": [
+    "rgl-dashboard-tile"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/rgl-dashboard-tile-more-demo.tsx",
+      "content": "import { TileByWidget } from \"@/registry/new-york-v4/ui/rgl-dashboard-tile\"\n\n/** Bar, table, and metric widget types in one preview. */\nexport default function RglDashboardTileMoreDemo() {\n  return (\n    <div className=\"flex w-full min-w-0 flex-col gap-4\">\n      <div className=\"min-h-[200px]\">\n        <TileByWidget id=\"bar\" type=\"bar\" />\n      </div>\n      <div className=\"min-h-[220px]\">\n        <TileByWidget id=\"table\" type=\"table\" />\n      </div>\n      <div className=\"min-h-[160px]\">\n        <TileByWidget id=\"metric\" type=\"metric\" />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
