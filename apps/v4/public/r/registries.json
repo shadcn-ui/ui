@@ -234,6 +234,12 @@
     "description": "An open-source, modern UI component library for React, built with TypeScript, Tailwind CSS, and Framer Motion. Eldora UI offers beautifully crafted, reusable components designed for performance and elegance."
   },
   {
+    "name": "@evilcharts",
+    "homepage": "https://evilcharts.com",
+    "url": "https://evilcharts.com/r/{name}.json",
+    "description": "EvilCharts is an open-source chart UI website built with shadcn and Recharts, beautifully designed and handcrafted."
+  },
+  {
     "name": "@formcn",
     "homepage": "https://formcn.dev",
     "url": "https://formcn.dev/r/{name}.json",
