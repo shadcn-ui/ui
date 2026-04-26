@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://leadbank.com/schemas/sourceExceptions.schema.json",
+  "title": "Lead design-system source exceptions",
+  "description": "Known source-data issues with scheduled upstream resolution. See DESIGN-DECISIONS.md §4.3.3 and §5.3, and cli-spec.md §1.5.",
+  "type": "object",
+  "required": ["exceptions"],
+  "properties": {
+    "$description": {
+      "type": "string",
+      "description": "Human-readable description of this file's purpose."
+    },
+    "exceptions": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/exception" }
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "exception": {
+      "type": "object",
+      "required": ["tokenPath", "rule", "reason", "resolvedBy"],
+      "properties": {
+        "tokenPath": {
+          "type": "string",
+          "pattern": "^[a-z][a-zA-Z0-9]*(\\.[a-z0-9][a-zA-Z0-9-]*)+$",
+          "description": "Dotted token path, e.g. typography.roles.body-sm"
+        },
+        "rule": {
+          "type": "string",
+          "enum": ["L5-size-floor", "L7-weight-mismatch", "L7-tracking-mismatch"]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resolvedBy": {
+          "type": "string",
+          "oneOf": [
+            {
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "ISO date YYYY-MM-DD"
+            },
+            {
+              "pattern": "^\\d{4}-Q[1-4]$",
+              "description": "Quarter shorthand YYYY-QN"
+            }
+          ]
+        },
+        "tiebreak": {
+          "type": "string",
+          "enum": ["leading", "no-leading"]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "rule": { "enum": ["L7-weight-mismatch", "L7-tracking-mismatch"] }
+            }
+          },
+          "then": { "required": ["tiebreak"] },
+          "else": { "not": { "required": ["tiebreak"] } }
+        }
+      ],
+      "additionalProperties": false
+    }
+  }
+}

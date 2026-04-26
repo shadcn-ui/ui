@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://leadbank.com/schemas/paperTokens.schema.json",
+  "title": "Lead design-system paper token source",
+  "description": "Canonical structured source for paper-authored design tokens. Markdown sections explain intent; this JSON file is what the CLI imports.",
+  "type": "object",
+  "required": ["version", "modes", "primitives", "semantic", "spacing", "radius", "typography"],
+  "properties": {
+    "$description": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.-]+)?$"
+    },
+    "modes": {
+      "type": "object",
+      "required": ["theme", "density", "defaultDensity"],
+      "properties": {
+        "theme": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "density": {
+          "type": "array",
+          "items": { "enum": ["comfortable", "snug", "compact"] },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "defaultDensity": {
+          "enum": ["comfortable", "snug", "compact"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "primitives": {
+      "type": "object",
+      "required": ["colors", "numbers"],
+      "properties": {
+        "colors": { "$ref": "#/definitions/tokenTree" },
+        "numbers": { "$ref": "#/definitions/tokenTree" }
+      },
+      "additionalProperties": false
+    },
+    "semantic": {
+      "type": "object",
+      "required": ["foundation", "feedback", "interactive"],
+      "properties": {
+        "foundation": { "$ref": "#/definitions/tokenTree" },
+        "feedback": { "$ref": "#/definitions/tokenTree" },
+        "interactive": { "$ref": "#/definitions/tokenTree" }
+      },
+      "additionalProperties": false
+    },
+    "spacing": {
+      "type": "object",
+      "required": ["gap", "padding"],
+      "properties": {
+        "gap": { "$ref": "#/definitions/tokenTree" },
+        "padding": { "$ref": "#/definitions/tokenTree" }
+      },
+      "additionalProperties": false
+    },
+    "radius": { "$ref": "#/definitions/tokenTree" },
+    "typography": {
+      "type": "object",
+      "required": ["roles", "sizes", "lineHeights"],
+      "properties": {
+        "roles": { "$ref": "#/definitions/tokenTree" },
+        "sizes": { "$ref": "#/definitions/tokenTree" },
+        "lineHeights": { "$ref": "#/definitions/tokenTree" }
+      },
+      "additionalProperties": false
+    },
+    "components": { "$ref": "#/definitions/tokenTree" },
+    "domain": { "$ref": "#/definitions/tokenTree" }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "tokenTree": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          { "$ref": "#/definitions/token" },
+          { "$ref": "#/definitions/tokenTree" }
+        ]
+      }
+    },
+    "token": {
+      "type": "object",
+      "required": ["$value", "$type"],
+      "properties": {
+        "$value": {},
+        "$type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "$description": {
+          "type": "string"
+        },
+        "$extensions": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

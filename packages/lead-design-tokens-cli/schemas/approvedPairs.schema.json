@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://leadbank.com/schemas/approvedPairs.schema.json",
+  "title": "Lead design-system approved contrast pairs",
+  "description": "Declared foreground/background pairs for WCAG validation. See DESIGN-DECISIONS.md §6.2 and cli-spec.md §4 rule L6.",
+  "type": "object",
+  "required": ["pairs"],
+  "properties": {
+    "$description": {
+      "type": "string"
+    },
+    "pairs": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/pair" }
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "pair": {
+      "type": "object",
+      "required": ["fg", "bg", "textSize", "targetLevel", "usage"],
+      "properties": {
+        "fg": {
+          "type": "string",
+          "pattern": "^[a-z][a-zA-Z0-9]*(\\.[a-z0-9][a-zA-Z0-9-]*)+$",
+          "description": "Token path for the foreground color."
+        },
+        "bg": {
+          "type": "string",
+          "pattern": "^[a-z][a-zA-Z0-9]*(\\.[a-z0-9][a-zA-Z0-9-]*)+$",
+          "description": "Token path for the background color."
+        },
+        "textSize": {
+          "type": "string",
+          "enum": ["normal", "large", "non-text"],
+          "description": "WCAG size classification. 'non-text' follows WCAG 1.4.11 (3:1)."
+        },
+        "targetLevel": {
+          "type": "string",
+          "enum": ["AA", "AAA"]
+        },
+        "usage": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Human-readable description. Does not affect lint math."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

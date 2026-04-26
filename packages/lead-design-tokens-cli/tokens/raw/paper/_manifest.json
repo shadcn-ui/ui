@@ -1,0 +1,48 @@
+{
+  "importedAt": "2026-04-25T01:21:54.179Z",
+  "sourceKind": "paper",
+  "source": "tokens/source/paper",
+  "destination": "tokens/raw/paper",
+  "sources": [
+    {
+      "from": "tokens/source/paper/README.md",
+      "to": "README.md",
+      "sha256": "0e05f3d7e72227e64be756d1adb2541f3745abe27e5a636679cec698a9160cdd"
+    },
+    {
+      "from": "tokens/source/paper/sections/01-primitives.md",
+      "to": "sections/01-primitives.md",
+      "sha256": "ffca00413ca3e0eeb47439e9f69b0ff2e2762c30db618a0a6a24062a5660262f"
+    },
+    {
+      "from": "tokens/source/paper/sections/02-semantic.md",
+      "to": "sections/02-semantic.md",
+      "sha256": "c6000ec57353b1f07939fca0710584dec2c64cd8329288cf4d8b8ca12dfa70dd"
+    },
+    {
+      "from": "tokens/source/paper/sections/03-spacing-radius.md",
+      "to": "sections/03-spacing-radius.md",
+      "sha256": "cd332d826fc5e9daef659882b1006e28f345054165c71dfb4705322c2f06c2c1"
+    },
+    {
+      "from": "tokens/source/paper/sections/04-typography.md",
+      "to": "sections/04-typography.md",
+      "sha256": "b21759da2ca0bb6b98c4135fb9c3862ca847cbb4b7e8d1dac47d411f9bc414ad"
+    },
+    {
+      "from": "tokens/source/paper/sections/05-accessibility.md",
+      "to": "sections/05-accessibility.md",
+      "sha256": "23ead8c20639e665ddf2c9e666dd45d7897adf5e0551a2d3d6092b5d29611f3a"
+    },
+    {
+      "from": "tokens/source/paper/sections/06-components-domain.md",
+      "to": "sections/06-components-domain.md",
+      "sha256": "201b379e709020cefb5d659cdb50be9dae3466bef7acd928e206c5bc0c2db39f"
+    },
+    {
+      "from": "tokens/source/paper/tokens.paper.json",
+      "to": "tokens.paper.json",
+      "sha256": "951a5a08fc9fe12b54e1abd5f957b1979d0b2fad0a236c6eb76f65978e82c487"
+    }
+  ]
+}

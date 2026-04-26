@@ -1,0 +1,19 @@
+{
+  "$description": "Designer-approved foreground/background pairs for contrast linting. Edit this file directly.",
+  "pairs": [
+    {
+      "fg": "semantic.foundation.content.default",
+      "bg": "semantic.foundation.surface.0",
+      "textSize": "normal",
+      "targetLevel": "AA",
+      "usage": "body text on default surface"
+    },
+    {
+      "fg": "semantic.interactive.primary",
+      "bg": "semantic.foundation.surface.1",
+      "textSize": "normal",
+      "targetLevel": "AA",
+      "usage": "links and primary CTAs"
+    }
+  ]
+}

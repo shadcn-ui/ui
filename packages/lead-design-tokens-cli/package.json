@@ -1,0 +1,38 @@
+{
+  "name": "@leadbank/design-tokens-cli",
+  "version": "0.0.1",
+  "description": "Lead design system token pipeline: import, normalize, lint, build.",
+  "type": "module",
+  "bin": {
+    "design-tokens": "./bin/design-tokens.js"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "check-decisions": "node bin/design-tokens.js check-decisions",
+    "lint:schemas": "node scripts/validate-schemas.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "schemas/",
+    "scripts/"
+  ],
+  "keywords": [
+    "design-tokens",
+    "design-system",
+    "lead-bank"
+  ],
+  "author": "Lead Bank Design Systems",
+  "license": "UNLICENSED",
+  "private": true
+}

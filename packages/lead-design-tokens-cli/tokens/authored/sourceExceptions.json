@@ -1,0 +1,4 @@
+{
+  "$description": "Known temporary source-data exceptions. Keep empty unless a rule violation is intentionally tolerated.",
+  "exceptions": []
+}

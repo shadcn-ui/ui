@@ -1,0 +1,147 @@
+{
+  "$description": "Canonical paper-authored source for the Lead design token library. Markdown sections explain intent; this JSON file is imported by the CLI.",
+  "version": "0.1.0",
+  "modes": {
+    "theme": ["light"],
+    "density": ["comfortable", "snug", "compact"],
+    "defaultDensity": "snug"
+  },
+  "primitives": {
+    "colors": {
+      "grey": {
+        "0": { "$value": "#FFFFFF", "$type": "color" },
+        "50": { "$value": "#F7F7F8", "$type": "color" },
+        "100": { "$value": "#121215", "$type": "color" },
+        "500": { "$value": "#494D5A", "$type": "color" },
+        "700": { "$value": "#7E8395", "$type": "color" }
+      },
+      "blue": {
+        "600": { "$value": "#3237FF", "$type": "color" }
+      },
+      "red": {
+        "700": { "$value": "#F52512", "$type": "color" }
+      },
+      "green": {
+        "700": { "$value": "#149421", "$type": "color" }
+      },
+      "yellow": {
+        "700": { "$value": "#A87900", "$type": "color" }
+      },
+      "muted-blue": {
+        "600": { "$value": "#707EB2", "$type": "color" }
+      },
+      "shift": {
+        "400": { "$value": "#4B5B9F", "$type": "color" }
+      }
+    },
+    "numbers": {
+      "2": { "$value": 2, "$type": "number" },
+      "4": { "$value": 4, "$type": "number" },
+      "8": { "$value": 8, "$type": "number" },
+      "12": { "$value": 12, "$type": "number" },
+      "16": { "$value": 16, "$type": "number" },
+      "20": { "$value": 20, "$type": "number" },
+      "24": { "$value": 24, "$type": "number" },
+      "32": { "$value": 32, "$type": "number" },
+      "48": { "$value": 48, "$type": "number" },
+      "128": { "$value": 128, "$type": "number" }
+    }
+  },
+  "semantic": {
+    "foundation": {
+      "surface": {
+        "0": { "$value": "{primitives.colors.grey.50}", "$type": "color" },
+        "1": { "$value": "{primitives.colors.grey.0}", "$type": "color" }
+      },
+      "content": {
+        "emphasis": { "$value": "{primitives.colors.grey.100}", "$type": "color" },
+        "default": { "$value": "{primitives.colors.grey.500}", "$type": "color" },
+        "muted": { "$value": "{primitives.colors.grey.700}", "$type": "color" },
+        "contrast": { "$value": "{primitives.colors.grey.0}", "$type": "color" }
+      },
+      "shift": {
+        "default": { "$value": "{primitives.colors.shift.400}", "$type": "color" }
+      }
+    },
+    "feedback": {
+      "alert": { "$value": "{primitives.colors.red.700}", "$type": "color" },
+      "success": { "$value": "{primitives.colors.green.700}", "$type": "color" },
+      "warning": { "$value": "{primitives.colors.yellow.700}", "$type": "color" },
+      "info": { "$value": "{primitives.colors.muted-blue.600}", "$type": "color" }
+    },
+    "interactive": {
+      "primary": { "$value": "{primitives.colors.blue.600}", "$type": "color" }
+    }
+  },
+  "spacing": {
+    "gap": {
+      "min": { "$value": 2, "$type": "dimension" },
+      "2x-sm": { "$value": 4, "$type": "dimension" },
+      "x-sm": { "$value": 8, "$type": "dimension" },
+      "sm": { "$value": 12, "$type": "dimension" },
+      "med": { "$value": 16, "$type": "dimension" },
+      "lrg": { "$value": 20, "$type": "dimension" },
+      "x-lrg": { "$value": 24, "$type": "dimension" },
+      "2x-lrg": { "$value": 32, "$type": "dimension" },
+      "max": { "$value": 48, "$type": "dimension" }
+    },
+    "padding": {
+      "min": { "$value": 2, "$type": "dimension" },
+      "2x-sm": { "$value": 4, "$type": "dimension" },
+      "x-sm": { "$value": 8, "$type": "dimension" },
+      "sm": { "$value": 12, "$type": "dimension" },
+      "med": { "$value": 16, "$type": "dimension" },
+      "lrg": { "$value": 20, "$type": "dimension" },
+      "x-lrg": { "$value": 24, "$type": "dimension" },
+      "2x-lrg": { "$value": 32, "$type": "dimension" },
+      "max": { "$value": 48, "$type": "dimension" }
+    }
+  },
+  "radius": {
+    "min": { "$value": 2, "$type": "dimension" },
+    "x-sm": { "$value": 4, "$type": "dimension" },
+    "sm": { "$value": 8, "$type": "dimension" },
+    "med": { "$value": 12, "$type": "dimension" },
+    "lrg": { "$value": 16, "$type": "dimension" },
+    "x-lrg": { "$value": 20, "$type": "dimension" },
+    "max": { "$value": 128, "$type": "dimension" }
+  },
+  "typography": {
+    "roles": {
+      "body": { "$value": { "family": "Lead Sans Variable", "weight": "Regular", "tracking": 0, "case": "original" }, "$type": "typography-role" },
+      "body-emphasis": { "$value": { "family": "Lead Sans Variable", "weight": "Medium", "tracking": 0, "case": "original" }, "$type": "typography-role" },
+      "title": { "$value": { "family": "Lead Sans Variable", "weight": "Regular", "tracking": 0, "case": "original" }, "$type": "typography-role" },
+      "title-emphasis": { "$value": { "family": "Lead Sans Variable", "weight": "DemiBold", "tracking": 0, "case": "original" }, "$type": "typography-role" },
+      "heading": { "$value": { "family": "Lead Sans Variable", "weight": "Regular", "tracking": 0, "case": "original" }, "$type": "typography-role" },
+      "display": { "$value": { "family": "Lead Sans Variable", "weight": "Regular", "tracking": 0, "case": "original" }, "$type": "typography-role" },
+      "caption": { "$value": { "family": "Lead Sans Variable", "weight": "DemiBold", "tracking": 0, "case": "original" }, "$type": "typography-role" },
+      "code": { "$value": { "family": "Lead Sans Variable", "weight": "Medium", "tracking": 0, "case": "uppercase" }, "$type": "typography-role" }
+    },
+    "sizes": {
+      "code-xs": { "$value": 10, "$type": "dimension", "$extensions": { "leadbank.nonText": true } },
+      "code-md": { "$value": 14, "$type": "dimension" },
+      "caption-sm": { "$value": 12, "$type": "dimension" },
+      "caption-md": { "$value": 12, "$type": "dimension" },
+      "body-sm": { "$value": 14, "$type": "dimension" },
+      "body-md": { "$value": 16, "$type": "dimension" },
+      "body-lg": { "$value": 18, "$type": "dimension" },
+      "title-sm": { "$value": 20, "$type": "dimension" },
+      "title-md": { "$value": 22, "$type": "dimension" },
+      "title-lg": { "$value": 25, "$type": "dimension" },
+      "heading-sm": { "$value": 28, "$type": "dimension" },
+      "heading-md": { "$value": 32, "$type": "dimension" },
+      "heading-lg": { "$value": 36, "$type": "dimension" },
+      "display-sm": { "$value": 40, "$type": "dimension" },
+      "display-md": { "$value": 45, "$type": "dimension" },
+      "display-lg": { "$value": 50, "$type": "dimension" },
+      "display-xl": { "$value": 60, "$type": "dimension" }
+    },
+    "lineHeights": {
+      "tight": { "$value": 1, "$type": "number" },
+      "snug": { "$value": 1.25, "$type": "number" },
+      "normal": { "$value": 1.5, "$type": "number" }
+    }
+  },
+  "components": {},
+  "domain": {}
+}
