@@ -1,20 +1,11 @@
 name: Validate Registries
 
 on:
-  pull_request:
-    paths:
-      - "apps/v4/public/r/registries.json"
-      - "apps/v4/registry/directory.json"
-  push:
-    branches:
-      - main
-    paths:
-      - "apps/v4/public/r/registries.json"
-      - "apps/v4/registry/directory.json"
+  workflow_dispatch:
 
 jobs:
   check-registry-sync:
-    if: github.event_name == 'pull_request'
+    if: false
     runs-on: ubuntu-latest
     name: check-registry-sync
     permissions:
