@@ -1,7 +1,6 @@
 {
   "codeConnect": {
     "include": [
-      "apps/v4/**/*.figma.{js,jsx,ts,tsx}",
       "packages/**/*.figma.{js,jsx,ts,tsx}"
     ],
     "exclude": [
