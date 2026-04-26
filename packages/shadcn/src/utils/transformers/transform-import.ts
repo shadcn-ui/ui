@@ -55,6 +55,13 @@ function updateImportAliases(
   config: Config,
   isRemote: boolean = false
 ) {
+  // Normalize subpath imports (#) to @/ prefix.
+  if (moduleSpecifier.startsWith("#/")) {
+    moduleSpecifier = moduleSpecifier.replace(/^#\//, "@/")
+  } else if (moduleSpecifier.startsWith("#")) {
+    moduleSpecifier = moduleSpecifier.replace(/^#/, "@/")
+  }
+
   // Not a local import.
   if (!moduleSpecifier.startsWith("@/") && !isRemote) {
     return moduleSpecifier
