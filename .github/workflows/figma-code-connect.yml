@@ -1,0 +1,29 @@
+name: Figma Code Connect
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "figma.config.json"
+      - "**/*.figma.js"
+      - "**/*.figma.jsx"
+      - "**/*.figma.ts"
+      - "**/*.figma.tsx"
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    if: ${{ vars.FIGMA_CODE_CONNECT_ENABLED == 'true' }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Publish Code Connect mappings
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+        run: npx figma connect publish

@@ -41,7 +41,9 @@
     "test:apps": "pnpm --filter=v4 test:apps",
     "lead:tokens:test": "npm test --prefix packages/lead-design-tokens-cli --workspaces=false",
     "lead:tokens:check-decisions": "npm run check-decisions --prefix packages/lead-design-tokens-cli --workspaces=false",
-    "lead:tokens:lint-schemas": "npm run lint:schemas --prefix packages/lead-design-tokens-cli --workspaces=false"
+    "lead:tokens:lint-schemas": "npm run lint:schemas --prefix packages/lead-design-tokens-cli --workspaces=false",
+    "figma:code-connect:publish": "npx figma connect publish",
+    "figma:code-connect:dry-run": "npx figma connect publish --dry-run"
   },
   "packageManager": "pnpm@9.0.6",
   "dependencies": {
