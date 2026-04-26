@@ -39,9 +39,9 @@
     "test": "pnpm --filter=v4 registry:build && start-server-and-test v4:dev http://localhost:4000 test:dev",
     "validate:registries": "pnpm --filter=v4 validate:registries",
     "test:apps": "pnpm --filter=v4 test:apps",
-    "lead:tokens:test": "npm test --prefix packages/lead-design-tokens-cli",
-    "lead:tokens:check-decisions": "npm run check-decisions --prefix packages/lead-design-tokens-cli",
-    "lead:tokens:lint-schemas": "npm run lint:schemas --prefix packages/lead-design-tokens-cli"
+    "lead:tokens:test": "npm test --prefix packages/lead-design-tokens-cli --workspaces=false",
+    "lead:tokens:check-decisions": "npm run check-decisions --prefix packages/lead-design-tokens-cli --workspaces=false",
+    "lead:tokens:lint-schemas": "npm run lint:schemas --prefix packages/lead-design-tokens-cli --workspaces=false"
   },
   "packageManager": "pnpm@9.0.6",
   "dependencies": {

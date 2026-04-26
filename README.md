@@ -15,8 +15,8 @@ This repository is based on the public `shadcn-ui/ui` codebase so we can keep th
 
 ```bash
 pnpm install
-npm ci --prefix packages/lead-design-tokens-cli
-npm test --prefix packages/lead-design-tokens-cli
+npm ci --prefix packages/lead-design-tokens-cli --workspaces=false
+npm test --prefix packages/lead-design-tokens-cli --workspaces=false
 ```
 
 Useful Lead token commands:
