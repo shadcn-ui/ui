@@ -45,3 +45,4 @@ tsconfig.tsbuildinfo
 .playwright-mcp
 shadcn-workspace
 .codex-artifacts
+.claude/worktrees/

@@ -1,9 +1,7 @@
 # Security Policy
 
-If you believe you have found a security vulnerability, we encourage you to let us know right away.
+If you believe you have found a security vulnerability in the Lead Design System, please report it privately to the Lead Bank Design Systems team rather than opening a public issue or pull request.
 
-We will investigate all legitimate reports and do our best to quickly fix the problem.
+Use GitHub private vulnerability reporting on this repository through the Security tab, or contact the Design Systems maintainers directly.
 
-Our preference is that you make use of GitHub's private vulnerability reporting feature to disclose potential security vulnerabilities in our Open Source Software. 
-
-To do this, please visit the security tab of the repository and click the [Report a vulnerability](https://github.com/shadcn-ui/ui/security/advisories/new) button.
+We will investigate legitimate reports and work to remediate confirmed issues promptly.
