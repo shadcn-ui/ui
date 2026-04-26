@@ -42,6 +42,8 @@ Start here:
 
 The companion Figma staging file is organized as a CLI-ready design system library with foundations, documentation, component pages, Lead Blocks pages, and local variables for light/dark modes.
 
+For the Figma-to-code release process, see [docs/figma-to-code-sync.md](docs/figma-to-code-sync.md).
+
 ## Upstream
 
 The `upstream` git remote points at `https://github.com/shadcn-ui/ui.git` for history and future reference. Lead-owned changes should be made on branches in this repository and reviewed before merging.
