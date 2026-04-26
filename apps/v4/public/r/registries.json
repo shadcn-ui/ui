@@ -270,6 +270,12 @@
     "description": "A shadcn-ui compatible registry distributing 40+ glassmorphic React/TypeScript components with Apple-inspired design. Components include enhanced visual effects (glow, shimmer, ripple), theme support, and customizable glassmorphism styling."
   },
   {
+    "name": "@glasscn",
+    "homepage": "https://glasscn.vercel.app/",
+    "url": "https://glasscn-components.vercel.app/r/{name}.json",
+    "description": "A shadcn-compatible registry of glassmorphism components inspired by Apple"
+  },
+  {
     "name": "@ha-components",
     "homepage": "https://hacomponents.keshuac.com",
     "url": "https://hacomponents.keshuac.com/r/{name}.json",
