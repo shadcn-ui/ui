@@ -3,46 +3,33 @@ name: Test
 on:
   pull_request:
     branches: ["*"]
+  push:
+    branches: ["main"]
 
 jobs:
-  test:
+  lead-tokens:
     runs-on: ubuntu-latest
-    name: pnpm test
-    env:
-      NEXT_PUBLIC_APP_URL: http://localhost:4000
-      NEXT_PUBLIC_V0_URL: https://v0.dev
+    name: lead token CLI checks
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+          cache-dependency-path: packages/lead-design-tokens-cli/package-lock.json
 
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 9.0.6
-          run_install: false
+      - name: Install token CLI dependencies
+        run: npm ci --prefix packages/lead-design-tokens-cli --workspaces=false
 
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-      - name: Install Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Run token tests
+        run: npm run lead:tokens:test
 
-      - name: Install dependencies
-        run: pnpm install
+      - name: Lint token schemas
+        run: npm run lead:tokens:lint-schemas
 
-      - run: pnpm test
+      - name: Check decision references
+        run: npm run lead:tokens:check-decisions
