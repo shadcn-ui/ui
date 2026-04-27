@@ -122,4 +122,32 @@ describe("Alert composition", () => {
       screen.getByText("Your trial ends in 3 days.")
     ).toBeInTheDocument()
   })
+
+  it("does not render an icon slot by default", () => {
+    render(
+      <Alert>
+        <AlertTitle>x</AlertTitle>
+      </Alert>
+    )
+    const alertEl = screen.getByText("x").closest(".lead-Alert") as HTMLElement
+    expect(alertEl).toHaveAttribute("data-with-icon", "false")
+    expect(alertEl.querySelector(".lead-Alert__icon")).toBeNull()
+  })
+
+  it("renders the caller-supplied icon as aria-hidden inside an icon slot", () => {
+    render(
+      <Alert variant="info" icon={<span data-testid="icon">ℹ</span>}>
+        <AlertTitle>Info</AlertTitle>
+        <AlertDescription>Body</AlertDescription>
+      </Alert>
+    )
+    const alertEl = screen
+      .getByText("Info")
+      .closest(".lead-Alert") as HTMLElement
+    expect(alertEl).toHaveAttribute("data-with-icon", "true")
+    const slot = alertEl.querySelector(".lead-Alert__icon") as HTMLElement
+    expect(slot).not.toBeNull()
+    expect(slot).toHaveAttribute("aria-hidden", "true")
+    expect(slot.querySelector("[data-testid='icon']")).not.toBeNull()
+  })
 })

@@ -38,7 +38,7 @@ As of the latest merge to `main`, the package exports the following components:
 | Component | Backed by | Notes |
 |---|---|---|
 | `Badge` | none (Lead) | Variants `neutral`/`brand`/`success`/`warning`/`danger`, sizes `sm`/`md`/`lg`, optional `dot`. |
-| `Alert` family | none (Lead) | `Alert`, `AlertTitle`, `AlertDescription`. Variants `neutral`/`info`/`success` use `role="status"`; `warning`/`danger` use `role="alert"`. |
+| `Alert` family | none (Lead) | `Alert`, `AlertTitle`, `AlertDescription`. Variants `neutral`/`info`/`success` use `role="status"`; `warning`/`danger` use `role="alert"`. Optional caller-supplied `icon?: ReactNode` slot (no default icons). |
 | `Skeleton` | none (Lead) | Shapes `text`/`rect`/`circle`. Decorative by default (`role="none"`, `aria-hidden=true`); set `decorative={false}` for `role="status"`. |
 | `Progress` | `@radix-ui/react-progress` | Sizes `sm`/`md`/`lg`, variants `default`/`success`/`warning`/`danger`, indeterminate when `value` is omitted/null. |
 
@@ -257,23 +257,80 @@ When the consumer build pipeline is properly set up (named ESM imports + tree-sh
 
 ---
 
-## 8. Open API decisions
+## 8. Resolved API decisions
 
-Items flagged for revisit before they propagate further into the surface.
+Decisions made and recorded here are now binding policy. New components and PRs are reviewed against this section.
+
+### 8.1 Button polymorphism — **Decision: defer; ship a separate `LinkButton` when needed**
+
+`Button` will not expose `asChild` and will not accept an `as` prop in the foreseeable future.
+
+**Why:** Both options leak React-typing complexity into the public API (forwardRef + generic `as` constraints; or Radix's Slot pattern leaking into a component that has no other Radix surface). Neither pays its cost yet — the only known concrete need is "link styled as a button," which is better served by a dedicated `LinkButton` component when it lands.
+
+**Rules:**
+- Do not add `asChild` to `Button` without explicit re-decision in this section.
+- When the link-as-button use case becomes real, add a separate `LinkButton` component that renders an `<a>` and shares `Button`'s `data-*` styling contract via shared CSS (`.lead-Button` selector).
+- Until then, callers wrap an `<a>` themselves and apply the `lead-Button` class manually if absolutely necessary. This is intentionally inconvenient — it discourages the pattern.
+
+### 8.2 Tooltip semantics — **Decision: tooltip as supplemental description only**
+
+A Tooltip in `@leadbank/ui` is **always supplemental**. The user must be able to understand and operate the underlying control without ever seeing the tooltip.
+
+**Why:** Tooltips are unavailable to keyboard-only users on touch devices, often miss in noisy hover environments, and can be hidden by viewport boundaries. Treating a tooltip as the *only* affordance breaks accessibility on every input modality except mouse-on-desktop.
+
+**Rules:**
+- ✅ **Use Tooltip for:** extra context on an already-labeled control ("Why is this disabled?", "What does this metric mean?", expanded help on a `?` icon).
+- ❌ **Do not use Tooltip for:** the accessible name of an icon-only button (use `aria-label` directly), required-info disclosure (use `FieldDescription`), error messages (use `FieldError`), or content the user must read to understand state.
+- Icon-only triggers should set their own `aria-label`. The Tooltip then *describes*, not labels.
+- This is enforced by review and convention, not at runtime — Radix supports both modes; Lead's policy is "we use the description mode."
+
+### 8.3 Bundle budget — **Decision: 60 kB / 75 kB / 90 kB gzipped JS thresholds**
+
+Soft budget for `@leadbank/ui` `dist/index.js` gzipped size, measured at every component-introducing PR.
+
+| Threshold | At | Action |
+|---|---|---|
+| 🟢 OK | < 60 kB | No action; record the new size in §7. |
+| 🟡 Warn | 60 kB ≤ size < 75 kB | PR description must include a one-paragraph justification: what the component adds, whether tree-shaking already addresses it, whether a smaller alternative exists. Reviewer scrutinizes. |
+| 🟠 Review | 75 kB ≤ size < 90 kB | PR cannot merge without a documented review of the bundle size in `API-CONSISTENCY.md`. The review must consider splitting the package, switching off Radix for that component, or deferring the component. |
+| 🔴 Block | ≥ 90 kB | PR cannot merge without an explicit, named approval recorded in this document. |
+
+**Current size:** 47.21 kB gzipped JS (after Skeleton + Progress merge). 🟢 OK with ~13 kB of headroom before the warn threshold.
+
+**Notes:**
+- Budget covers the `dist/index.js` "import everything" worst case. Properly tree-shaken consumer builds will be smaller; that does not exempt the budget.
+- The thresholds are chosen so the next two Radix overlays (Popover, DropdownMenu) — predicted at +7-15 kB each based on the post-overlay-tax pattern — fit comfortably under the warn line.
+
+### 8.4 Select content width — **Decision: match trigger width by default; never expand silently**
+
+`SelectContent` continues to use `min-width: var(--radix-select-trigger-width)` so the listbox is at least as wide as the trigger. This is the default and only behavior shipped.
+
+**Rules:**
+- The listbox **may grow taller** than the trigger to fit available items (Radix handles this).
+- The listbox **does not grow wider** than the trigger by default — long labels truncate inside the trigger and inside the items, with `text-overflow: ellipsis` if needed.
+- Callers who specifically need a wider listbox (e.g. the trigger is a small icon button) override via `className` on `SelectContent` and accept the visual responsibility. This is intentionally a manual opt-in, not a prop.
+- No new `width` prop will be added to `SelectContent` for now. Revisit only if a real product need surfaces.
+
+### 8.5 Alert icon slot — **Decision: caller-supplied `icon?: ReactNode`; no default icons**
+
+`Alert` accepts an optional `icon?: ReactNode` prop. When provided, the icon is rendered in a fixed-size slot (20×20) at the start of the alert with `aria-hidden="true"` so screen readers don't double-announce it alongside the title/description.
+
+**Rules:**
+- No variant-default icons ship in `@leadbank/ui`. Lead does not yet have an icon system; shipping defaults would couple `Alert` to a particular library and bloat the package.
+- The icon slot is **purely visual**. The role policy (assertive for `warning`/`danger`, polite otherwise) is unchanged.
+- `aria-hidden="true"` is set by `Alert` on the slot wrapper, regardless of what the caller passes. Callers should still ensure their icon is itself decorative (e.g. an SVG with `aria-hidden`).
+- `data-with-icon` exposes `"true"` / `"false"` for callers who need to adjust surrounding layout.
+- Backwards compatible — existing call sites that don't pass an `icon` render identically (apart from a small layout refactor to use a flex row + body column, which preserves visual output).
+
+---
+
+## 8b. Still-open API decisions
+
+These remain open and are tracked as future work.
 
 1. **Variant-color literals in `Badge.css` / `Alert.css`.** Status colors (success-green, warning-amber, danger-red) are currently hard-coded hex. Replace with generated tokens once `lead-design-tokens-cli build` emits the status color group. Mechanical replacement; no API change.
 
-2. **`Alert` icon slot.** `Alert.css` reserves layout space for a future leading icon, but no `icon` prop exists yet. Decision pending: accept a `ReactNode` slot or default to variant-keyed icons (info circle / check / warning triangle / error octagon) shipped from the package?
-
-3. **`Field` orientation interaction with `FieldError` placement.** When `Field orientation="horizontal"`, the error renders to the right of the control, which can wrap awkwardly. Decision pending: introduce a `<FieldErrorContainer>` slot below the row, or restrict horizontal orientation to fields without errors?
-
-4. **`Button` `as` prop / polymorphism.** Currently `Button` is always a `<button>`. Several real-world cases want it to render as an `<a>` (link styled as button). Either expose `asChild`, accept an `as` prop, or ship a separate `LinkButton`. Not blocking, but worth a decision before downstream consumers diverge.
-
-5. **`Tooltip` content as a label vs. description.** Some triggers benefit from the tooltip *being* their accessible name (e.g. icon-only buttons), and some benefit from the tooltip being a *description* (e.g. extra context on a labeled control). Radix has both modes; Lead currently passes through whatever the caller wires. Worth documenting a recommendation.
-
-6. **`Select` width vs. trigger width.** `SelectContent` currently uses `min-width: var(--radix-select-trigger-width)`. There's a design question whether tall menus with long labels should expand beyond the trigger or stay clipped. Open.
-
-7. **Bundle size budget.** Gzipped JS is 44.9 kB after Select. No formal budget set. Decision: set one before adding more overlays?
+2. **`Field` orientation interaction with `FieldError` placement.** When `Field orientation="horizontal"`, the error renders to the right of the control, which can wrap awkwardly. Decision pending: introduce a `<FieldErrorContainer>` slot below the row, or restrict horizontal orientation to fields without errors?
 
 ---
 
@@ -297,4 +354,4 @@ Before merging a PR that adds a component, confirm:
 
 ---
 
-*Last updated: PR for Skeleton + Progress (Slice 3 of overnight worker run).*
+*Last updated: API decisions PR — resolved Button polymorphism, Tooltip semantics, bundle budget, Select width, Alert icon slot.*
