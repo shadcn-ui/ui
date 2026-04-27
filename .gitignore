@@ -18,6 +18,11 @@ build
 .eslintcache
 *.pem
 
+# macOS Finder accidental duplicates ("Foo 2.tsx", "package 2.json", etc.).
+# These are working-tree noise; never commit them.
+* 2.*
+* 2
+
 # debug
 npm-debug.log*
 yarn-debug.log*
