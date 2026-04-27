@@ -67,7 +67,7 @@ npm run lead:storybook:dev    # http://localhost:6006
 npm run lead:storybook:build  # static build at apps/storybook/storybook-static
 ```
 
-GitHub Pages deployment of the static build is scheduled as a follow-up slice.
+The static build is deployed to GitHub Pages on every push to `main` by `.github/workflows/storybook-deploy.yml`. Live URL: <https://jnanthak83.github.io/lead-design-system/>. The workflow can also be re-run manually via `workflow_dispatch`.
 
 ## Figma Pairing
 
