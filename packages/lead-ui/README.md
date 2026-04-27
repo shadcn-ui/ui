@@ -18,6 +18,12 @@ PR #1 skeleton. One component (`Button`) wired against placeholder CSS variables
   - `FieldDescription` — paragraph that auto-wires its id into the control's `aria-describedby`.
   - `FieldError` — `role="alert"` paragraph; only contributes to `aria-describedby` when the surrounding Field is `invalid`.
   - `FieldControl` — slot that propagates id, disabled, invalid, and aria-describedby to its single child control without overriding caller-supplied values.
+- `Card` family — layout container with semantic subcomponents:
+  - `Card` — root container; padding (`none`/`sm`/`md`/`lg`) and variant (`default`/`muted`/`outline`).
+  - `CardHeader`, `CardContent`, `CardFooter` (align `start`/`end`/`between`).
+  - `CardTitle` — heading element; `level` selects `h1`–`h6` (default `h3`).
+  - `CardDescription` — muted paragraph for sub-headings.
+- `Separator` — 1px divider, horizontal or vertical, `default` or `strong` variant. Decorative by default (`role="none"`); set `decorative={false}` for a semantic `role="separator"` with `aria-orientation`.
 
 ## Setup
 
