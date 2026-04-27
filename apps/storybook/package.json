@@ -1,0 +1,30 @@
+{
+  "name": "@leadbank/storybook",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Lead design system Storybook — visual catalog for @leadbank/ui.",
+  "type": "module",
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build -o storybook-static",
+    "preview": "storybook dev -p 6006 --no-open"
+  },
+  "dependencies": {
+    "@leadbank/ui": "file:../../packages/lead-ui",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "^9.0.0",
+    "@storybook/react-vite": "^9.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "storybook": "^9.0.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -60,3 +60,39 @@ jobs:
 
       - name: Build lead-ui
         run: npm run lead:ui:build
+
+  storybook:
+    runs-on: ubuntu-latest
+    name: storybook build
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            packages/lead-ui/package-lock.json
+            apps/storybook/package-lock.json
+
+      - name: Install lead-ui dependencies
+        run: npm ci --prefix packages/lead-ui --workspaces=false
+
+      - name: Build lead-ui
+        run: npm run lead:ui:build
+
+      - name: Install Storybook dependencies
+        run: npm ci --prefix apps/storybook --workspaces=false
+
+      - name: Build Storybook
+        run: npm run lead:storybook:build
+
+      - name: Upload storybook-static artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: storybook-static
+          path: apps/storybook/storybook-static
+          retention-days: 7

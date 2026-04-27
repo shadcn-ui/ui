@@ -12,3 +12,7 @@ updates:
     directory: "/packages/lead-ui"
     schedule:
       interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/apps/storybook"
+    schedule:
+      interval: "weekly"
