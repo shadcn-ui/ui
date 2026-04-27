@@ -279,6 +279,70 @@ export function Component() {
     })
   })
 
+  describe("phosphor library", () => {
+    test("uses the SSR entrypoint for server component files", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
+
+export function Component() {
+  return <div><IconPlaceholder phosphor="CaretRightIcon" /></div>
+}`,
+            config: {
+              ...testConfig,
+              rsc: true,
+              iconLibrary: "phosphor",
+            },
+          },
+          [transformIcons]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+        import { CaretRightIcon } from "@phosphor-icons/react/ssr"
+
+        export function Component() {
+          return <div><CaretRightIcon /></div>
+        }"
+      `)
+    })
+
+    test("keeps the client entrypoint for use client files", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `"use client"
+
+import * as React from "react"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
+
+export function Component() {
+  return <div><IconPlaceholder phosphor="CaretRightIcon" /></div>
+}`,
+            config: {
+              ...testConfig,
+              rsc: true,
+              iconLibrary: "phosphor",
+            },
+          },
+          [transformIcons]
+        )
+      ).toMatchInlineSnapshot(`
+        ""use client"
+
+        import * as React from "react"
+        import { CaretRightIcon } from "@phosphor-icons/react"
+
+        export function Component() {
+          return <div><CaretRightIcon /></div>
+        }"
+      `)
+    })
+  })
+
   describe("hugeicons library", () => {
     test("transforms IconPlaceholder to HugeiconsIcon wrapper", async () => {
       expect(
