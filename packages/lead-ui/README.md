@@ -9,6 +9,8 @@ PR #1 skeleton. One component (`Button`) wired against placeholder CSS variables
 ## Components
 
 - `Button` — variants `primary` / `secondary` / `outline` / `ghost` / `danger`, sizes `sm` / `md` / `lg`, plus `disabled` and `loading` states.
+- `Input` — variants `default` / `error`, sizes `sm` / `md` / `lg`, plus `disabled` and `invalid` states. Maps `invalid` to `aria-invalid`.
+- `Label` — sizes `sm` / `md` / `lg`, plus `disabled` and `required` states. Pairs with `Input` via `htmlFor`.
 
 ## Setup
 
