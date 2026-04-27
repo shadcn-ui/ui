@@ -13,7 +13,6 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./tokens.css": "./dist/tokens.css",
     "./styles.css": "./dist/leadui.css"
   },
   "files": [

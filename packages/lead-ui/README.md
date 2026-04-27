@@ -35,6 +35,8 @@ The repo root exposes the same commands as `lead:ui:build`, `lead:ui:typecheck`,
 - `index.d.ts` — type declarations.
 - `leadui.css` — combined component + token CSS, exported as `@leadbank/ui/styles.css`.
 
+Token CSS is currently bundled into `@leadbank/ui/styles.css` alongside component styles. A separate `@leadbank/ui/tokens.css` export will be added once the token CLI's `build` command emits a real `tokens.css` artifact this package can re-export.
+
 ## Tokens
 
 Until the token build pipeline emits real CSS, this package ships a small `src/tokens.css` placeholder declaring the Lead variable names the components consume. Component CSS is written against those names directly, so swapping the placeholder for the generated file later is a one-file change.

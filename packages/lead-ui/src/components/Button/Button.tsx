@@ -47,6 +47,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
+        {...rest}
         type={type}
         className={classes}
         data-variant={variant}
@@ -55,7 +56,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         data-loading={loading ? "true" : "false"}
         disabled={isInactive}
         aria-busy={loading || undefined}
-        {...rest}
       >
         {loading ? (
           <span

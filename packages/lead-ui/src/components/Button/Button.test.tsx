@@ -90,4 +90,35 @@ describe("Button", () => {
     expect(btn.className).toContain("lead-Button")
     expect(btn.className).toContain("custom")
   })
+
+  it("passes through normal attributes like data-testid and aria-label", () => {
+    render(
+      <Button data-testid="save-btn" aria-label="Save changes">
+        Save
+      </Button>
+    )
+    const btn = screen.getByTestId("save-btn")
+    expect(btn).toHaveAttribute("aria-label", "Save changes")
+  })
+
+  it("does not let user-supplied data-* attributes override internal state", () => {
+    render(
+      <Button
+        variant="primary"
+        size="md"
+        loading
+        data-variant="hacked"
+        data-size="xl"
+        data-disabled="false"
+        data-loading="false"
+      >
+        Save
+      </Button>
+    )
+    const btn = screen.getByRole("button")
+    expect(btn).toHaveAttribute("data-variant", "primary")
+    expect(btn).toHaveAttribute("data-size", "md")
+    expect(btn).toHaveAttribute("data-disabled", "true")
+    expect(btn).toHaveAttribute("data-loading", "true")
+  })
 })
