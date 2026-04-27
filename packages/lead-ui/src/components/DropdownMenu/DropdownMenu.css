@@ -1,0 +1,93 @@
+.lead-DropdownMenu__content,
+.lead-DropdownMenu__subContent {
+  min-width: 220px;
+  background-color: var(--lead-color-surface-default);
+  color: var(--lead-color-text-default);
+  border: 1px solid var(--lead-color-border-default);
+  border-radius: var(--lead-radius-md);
+  box-shadow: 0 12px 28px rgba(21, 22, 26, 0.16);
+  padding: var(--lead-space-1);
+  font-family: var(--lead-font-family-sans);
+  z-index: 60;
+}
+
+.lead-DropdownMenuItem,
+.lead-DropdownMenuCheckboxItem,
+.lead-DropdownMenuRadioItem,
+.lead-DropdownMenuSubTrigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--lead-space-2);
+  padding: var(--lead-space-2);
+  border-radius: var(--lead-radius-sm);
+  font-size: var(--lead-font-size-md);
+  font-weight: var(--lead-font-weight-medium);
+  line-height: var(--lead-line-height-tight);
+  color: var(--lead-color-text-default);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+.lead-DropdownMenuCheckboxItem,
+.lead-DropdownMenuRadioItem {
+  padding-left: calc(var(--lead-space-2) + 18px + var(--lead-space-2));
+}
+
+.lead-DropdownMenuItem[data-highlighted],
+.lead-DropdownMenuCheckboxItem[data-highlighted],
+.lead-DropdownMenuRadioItem[data-highlighted],
+.lead-DropdownMenuSubTrigger[data-highlighted],
+.lead-DropdownMenuSubTrigger[data-state="open"] {
+  background-color: var(--lead-color-action-secondary-default);
+  color: var(--lead-color-action-secondary-text);
+}
+
+.lead-DropdownMenuItem[data-disabled],
+.lead-DropdownMenuCheckboxItem[data-disabled],
+.lead-DropdownMenuRadioItem[data-disabled],
+.lead-DropdownMenuSubTrigger[data-disabled] {
+  color: var(--lead-color-text-disabled);
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+.lead-DropdownMenu__indicator {
+  position: absolute;
+  left: var(--lead-space-2);
+  top: 0;
+  bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  color: var(--lead-color-action-primary-default);
+}
+
+.lead-DropdownMenu__indicator__icon {
+  width: 14px;
+  height: 14px;
+}
+
+.lead-DropdownMenuLabel {
+  padding: var(--lead-space-2) var(--lead-space-2) var(--lead-space-1);
+  font-size: var(--lead-font-size-sm);
+  font-weight: var(--lead-font-weight-semibold);
+  color: var(--lead-color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.lead-DropdownMenuSeparator {
+  height: 1px;
+  background-color: var(--lead-color-border-default);
+  margin: var(--lead-space-1) 0;
+}
+
+.lead-DropdownMenuSubTrigger__chevron {
+  margin-left: auto;
+  width: 12px;
+  height: 12px;
+  color: var(--lead-color-text-muted);
+}

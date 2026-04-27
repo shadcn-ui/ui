@@ -31,6 +31,8 @@
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.4",
+    "@radix-ui/react-dropdown-menu": "^2.1.4",
+    "@radix-ui/react-popover": "^1.1.4",
     "@radix-ui/react-progress": "^1.1.1",
     "@radix-ui/react-radio-group": "^1.2.2",
     "@radix-ui/react-select": "^2.1.4",
