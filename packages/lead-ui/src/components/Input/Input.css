@@ -1,0 +1,74 @@
+.lead-Input {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  border-radius: var(--lead-radius-md);
+  border: 1px solid var(--lead-color-border-default);
+  background-color: var(--lead-color-surface-default);
+  color: var(--lead-color-text-default);
+  font-family: var(--lead-font-family-sans);
+  font-weight: var(--lead-font-weight-medium);
+  line-height: var(--lead-line-height-tight);
+  transition:
+    border-color var(--lead-duration-fast) var(--lead-easing-standard),
+    box-shadow var(--lead-duration-fast) var(--lead-easing-standard),
+    background-color var(--lead-duration-fast) var(--lead-easing-standard);
+  outline: none;
+}
+
+.lead-Input::placeholder {
+  color: var(--lead-color-text-muted);
+}
+
+.lead-Input:hover:not([data-disabled="true"]):not([data-invalid="true"]) {
+  border-color: var(--lead-color-border-strong);
+}
+
+.lead-Input:focus-visible {
+  outline: 2px solid var(--lead-color-focus-ring);
+  outline-offset: 1px;
+  border-color: var(--lead-color-focus-ring);
+}
+
+.lead-Input[data-invalid="true"] {
+  border-color: var(--lead-color-action-danger-default);
+}
+
+.lead-Input[data-invalid="true"]:focus-visible {
+  outline-color: var(--lead-color-action-danger-default);
+  border-color: var(--lead-color-action-danger-default);
+}
+
+.lead-Input[data-disabled="true"] {
+  cursor: not-allowed;
+  background-color: var(--lead-color-surface-muted);
+  color: var(--lead-color-text-disabled);
+  border-color: var(--lead-color-border-default);
+}
+
+.lead-Input[data-disabled="true"]::placeholder {
+  color: var(--lead-color-text-disabled);
+}
+
+/* Sizes */
+.lead-Input[data-size="sm"] {
+  height: 28px;
+  padding: 0 var(--lead-space-2);
+  font-size: var(--lead-font-size-sm);
+}
+.lead-Input[data-size="md"] {
+  height: 36px;
+  padding: 0 var(--lead-space-3);
+  font-size: var(--lead-font-size-md);
+}
+.lead-Input[data-size="lg"] {
+  height: 44px;
+  padding: 0 var(--lead-space-4);
+  font-size: var(--lead-font-size-lg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lead-Input {
+    transition: none;
+  }
+}

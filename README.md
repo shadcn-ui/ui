@@ -5,8 +5,8 @@ Lead's design-system monorepo: the CLI-ready token pipeline that feeds the Figma
 ## What's Here
 
 - `packages/lead-design-tokens-cli/` contains the Lead token pipeline: import, normalize, lint, build, decision checks, schemas, and authored token inputs.
-- `packages/lead-ui/` contains `@leadbank/ui`, the React component library. Currently a skeleton with one component (`Button`); see the package README for status.
-- `apps/storybook/` contains the Storybook visual catalog for `@leadbank/ui`, with a `Foundations/Tokens` page and `Components/Button` stories.
+- `packages/lead-ui/` contains `@leadbank/ui`, the React component library. Components today: `Button`, `Input`, `Label`. See the package README for the full surface.
+- `apps/storybook/` contains the Storybook visual catalog for `@leadbank/ui`, with a `Foundations/Tokens` page and stories for every component.
 - `docs/figma-to-code-sync.md` documents the Figma-to-code release process.
 - `figma.config.json` and `.github/workflows/figma-code-connect.yml` drive Figma Code Connect publishing.
 
@@ -39,7 +39,7 @@ Start here:
 
 ## Component Package
 
-`packages/lead-ui/` is the first coded component surface. It is a private, package-local React library (`@leadbank/ui`) that consumes Lead token CSS variables. It is intentionally minimal — one component (`Button`) and a placeholder `tokens.css` — so the pipeline can be exercised end to end before the surface area grows. Storybook, GitHub Pages deploy, and Figma Code Connect mappings are scheduled as follow-up PRs.
+`packages/lead-ui/` is the coded component surface. It is a private, package-local React library (`@leadbank/ui`) that consumes Lead token CSS variables. The package ships `Button`, `Input`, and `Label` today; additional core components are tracked in subsequent PRs. A placeholder `tokens.css` ships with the package and will be replaced by generated output once the token CLI's `build` command lands.
 
 The package manages its own dependencies via npm with an isolated `package-lock.json`, matching the tokens CLI pattern. Useful commands from the repo root:
 
