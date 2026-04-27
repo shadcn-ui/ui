@@ -5,14 +5,13 @@ import "@testing-library/jest-dom/vitest"
 // resolved coordinates. See Tooltip.test.tsx for the policy.
 
 if (typeof globalThis.ResizeObserver === "undefined") {
-  // eslint-disable-next-line @typescript-eslint/no-extraneous-class
   class StubResizeObserver {
     observe() {}
     unobserve() {}
     disconnect() {}
   }
-  // @ts-expect-error - stub for jsdom
-  globalThis.ResizeObserver = StubResizeObserver
+  globalThis.ResizeObserver =
+    StubResizeObserver as unknown as typeof ResizeObserver
 }
 
 if (typeof globalThis.IntersectionObserver === "undefined") {
@@ -27,22 +26,22 @@ if (typeof globalThis.IntersectionObserver === "undefined") {
       return []
     }
   }
-  // @ts-expect-error - stub for jsdom
-  globalThis.IntersectionObserver = StubIntersectionObserver
+  globalThis.IntersectionObserver =
+    StubIntersectionObserver as unknown as typeof IntersectionObserver
 }
 
 if (
   typeof Element !== "undefined" &&
   typeof Element.prototype.hasPointerCapture !== "function"
 ) {
-  // @ts-expect-error - stub for jsdom
-  Element.prototype.hasPointerCapture = () => false
+  Element.prototype.hasPointerCapture =
+    (() => false) as Element["hasPointerCapture"]
 }
 
 if (
   typeof Element !== "undefined" &&
   typeof Element.prototype.scrollIntoView !== "function"
 ) {
-  // @ts-expect-error - stub for jsdom
-  Element.prototype.scrollIntoView = () => {}
+  Element.prototype.scrollIntoView =
+    (() => {}) as Element["scrollIntoView"]
 }
