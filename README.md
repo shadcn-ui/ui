@@ -28,7 +28,7 @@ pnpm lead:tokens:check-decisions
 
 ## Token Pipeline
 
-The token CLI is intentionally scaffold-first. It has tested implementations for importing paper-authored tokens, checking source exceptions, and checking `[D##]` decision references. The transform-heavy commands (`normalize`, `lint`, `build`) are ready to fill in against the documented contract.
+The token CLI has tested implementations for importing paper-authored tokens, checking source exceptions, checking `[D##]` decision references, and **build v1** — which emits a single `tokens.css` artifact with flattened CSS custom properties from a normalized-token JSON file. `@leadbank/ui` consumes the generated file at `packages/lead-ui/src/generated/tokens.css` (committed) so consumers work from a clean checkout without running the CLI first. Run `npm run lead:tokens:build` to regenerate after editing the token source. The transform-heavy commands `normalize` and `lint` are still scaffold-only and ready to fill in against the documented contract.
 
 Start here:
 

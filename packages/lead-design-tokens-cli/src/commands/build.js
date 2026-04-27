@@ -1,30 +1,79 @@
 // src/commands/build.js
-// Implements: design-tokens build [--out <path>]
+// Implements: design-tokens build [--input <path>] [--out <path>]
 // Spec: docs/cli-spec.md §5
 //
-// Emits (see cli-spec.md §5.4):
-//   /generated/tokens.css            CSS custom properties, mode-cascaded
-//   /generated/token-types.d.ts      TypeScript types
-//   /generated/tailwind.tokens.ts    Tailwind theme extension
-//   /generated/token-reference.generated.md
-//   /DESIGN.md                       Agent-facing token inventory [D32]
+// v1 scope (this file):
+//   - Reads a single normalized-token JSON file.
+//   - Emits one CSS file at <out> containing a :root { ... } block of
+//     flattened CSS custom properties (one per leaf token).
+//   - Stamps a header with version + "generated, do not edit" warning.
 //
-// Every output is stamped with version header [D26].
+// Out of v1 scope (tracked for v2):
+//   - token-types.d.ts, tailwind.tokens.ts, DESIGN.md, CHANGELOG.md.
+//   - Density / theme mode cascades. v1 emits a single :root block; the
+//     spec says density blocks emit identical values in v1 anyway [D17],
+//     so the value is purely structural and is deferred without loss.
+//   - Lint precondition. The spec requires `lint` to pass first; that
+//     command is still a stub. v1 builds whatever the input file says.
+//   - Reading from /tokens/normalized/. v1 takes any JSON file via
+//     --input, so callers can point it at a fixture during development
+//     and at /tokens/normalized/ once normalize lands.
 
-import { parseFlags } from '../shared/flags.js';
+import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { dirname, resolve } from "node:path";
+
+import { parseFlags } from "../shared/flags.js";
+import { flattenTokens, renderCssFile } from "../shared/build-css.js";
+import { readPackageVersion } from "../shared/version.js";
+
+const DEFAULT_INPUT = "test/fixtures/tokens.normalized.fixture.json";
+const DEFAULT_OUT = "../lead-ui/src/generated/tokens.css";
 
 export async function run(argv) {
   const flags = parseFlags(argv, {
-    out: { type: 'string', default: './generated' },
+    input: { type: "string", default: DEFAULT_INPUT },
+    out: { type: "string", default: DEFAULT_OUT },
   });
 
-  // TODO: implement per cli-spec.md §5.5
-  //   - Verify lint passed (or was explicitly skipped with --force)
-  //   - Read version from package.json (or tokens/version.json when we decide)
-  //   - Emit all artifacts with version header
-  //   - Generate DESIGN.md from normalized state
-  throw new Error(
-    `'build' not yet implemented. ` +
-    `See docs/cli-spec.md §5 for the contract. Flags parsed: ${JSON.stringify(flags)}`
+  const cwd = process.cwd();
+  const inputPath = resolve(cwd, flags.input);
+  const outPath = resolve(cwd, flags.out);
+
+  let raw;
+  try {
+    raw = await readFile(inputPath, "utf8");
+  } catch (err) {
+    throw new Error(
+      `build: failed to read input "${flags.input}" — ${err.message}`
+    );
+  }
+
+  let tokens;
+  try {
+    tokens = JSON.parse(raw);
+  } catch (err) {
+    throw new Error(
+      `build: input "${flags.input}" is not valid JSON — ${err.message}`
+    );
+  }
+
+  const pairs = flattenTokens(tokens);
+  if (pairs.length === 0) {
+    throw new Error(`build: input "${flags.input}" produced zero tokens.`);
+  }
+
+  const version = await readPackageVersion();
+  const css = renderCssFile(pairs, {
+    version,
+    generator: "design-tokens build",
+    header: `source: ${flags.input}`,
+  });
+
+  await mkdir(dirname(outPath), { recursive: true });
+  await writeFile(outPath, css, "utf8");
+
+  console.log(
+    `build: wrote ${pairs.length} CSS variables -> ${flags.out}`
   );
+  return 0;
 }

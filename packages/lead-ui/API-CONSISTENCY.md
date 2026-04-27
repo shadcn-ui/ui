@@ -157,7 +157,9 @@ Tests pin this for every component.
 
 ### 2.8 Lead CSS variables
 
-All component styling reads from `src/tokens.css` (the placeholder until `lead-design-tokens-cli build` lands). Variable names follow `--lead-{group}-{token}` (e.g. `--lead-color-action-primary-default`, `--lead-space-3`, `--lead-font-size-md`). No Tailwind, no inline color literals, no hard-coded hex except a small set in `Badge.css` / `Alert.css` for variant tints which are flagged for replacement when the token build emits status colors.
+All component styling reads from `src/tokens.css`, which is now a thin `@import` wrapper around the **generated** `src/generated/tokens.css` emitted by `@leadbank/design-tokens-cli build` (Token Build Pipeline v1). The generated file is committed so consumers (Storybook, Vite library build, future external apps) work from a clean checkout without running the token CLI first. Variable names follow `--lead-{group}-{token}` (e.g. `--lead-color-action-primary-default`, `--lead-space-3`, `--lead-font-size-md`). No Tailwind, no inline color literals, no hard-coded hex except a small set in `Badge.css` / `Alert.css` for variant tints which are flagged for replacement when build v2 emits status colors.
+
+**To regenerate** after editing the token source: `npm run lead:tokens:build`. The token source today is a fixture at `packages/lead-design-tokens-cli/test/fixtures/tokens.normalized.fixture.json`; when `normalize` lands, the build will read from `/tokens/normalized/` instead.
 
 ---
 
