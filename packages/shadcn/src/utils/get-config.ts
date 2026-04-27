@@ -1,5 +1,5 @@
 import path from "path"
-import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
+import { BUILTIN_REGISTRIES, FALLBACK_STYLE } from "@/src/registry/constants"
 import {
   configSchema,
   rawConfigSchema,
@@ -210,10 +210,19 @@ export function findCommonRoot(cwd: string, resolvedPath: string) {
   return commonParts.join(path.sep)
 }
 
+const LEGACY_SHADCN_STYLES = new Set(["default", "new-york"])
+
 // TODO: Cache this call.
 export async function getTargetStyleFromConfig(cwd: string, fallback: string) {
   const projectInfo = await getProjectInfo(cwd)
-  return projectInfo?.tailwindVersion === "v4" ? "new-york-v4" : fallback
+
+  if (projectInfo?.tailwindVersion !== "v4") {
+    return fallback
+  }
+
+  return !fallback || LEGACY_SHADCN_STYLES.has(fallback)
+    ? FALLBACK_STYLE
+    : fallback
 }
 
 export function getBase(style: string | undefined) {
