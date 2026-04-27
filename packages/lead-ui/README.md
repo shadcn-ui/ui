@@ -27,6 +27,8 @@ PR #1 skeleton. One component (`Button`) wired against placeholder CSS variables
 - `Checkbox` — Radix-backed checkbox; sizes `sm` / `md` / `lg`, plus `disabled`, `invalid`, and tri-state `indeterminate`. Controlled (`checked` + `onCheckedChange`) or uncontrolled (`defaultChecked`).
 - `Switch` — Radix-backed toggle; sizes `sm` / `md` / `lg`, plus `disabled`. Same control patterns as `Checkbox`.
 - `RadioGroup` / `RadioGroupItem` — Radix-backed radio group; sizes propagate from group to items via context (overridable per-item). Supports controlled (`value` + `onValueChange`), uncontrolled (`defaultValue`), and group-wide or per-item `disabled`.
+- `Badge` — non-interactive `<span>` for status/labels; variants `neutral` / `brand` / `success` / `warning` / `danger`, sizes `sm` / `md` / `lg`, optional leading `dot`.
+- `Alert` family — inline alert composed of `Alert`, `AlertTitle`, `AlertDescription`. Variants `neutral` / `info` / `success` (polite, `role="status"`) and `warning` / `danger` (assertive, `role="alert"`). Callers can override `role` for special cases.
 
 ## Setup
 

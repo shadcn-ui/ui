@@ -1,0 +1,58 @@
+.lead-Alert {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lead-space-1);
+  padding: var(--lead-space-4);
+  border: 1px solid transparent;
+  border-radius: var(--lead-radius-md);
+  font-family: var(--lead-font-family-sans);
+  color: var(--lead-color-text-default);
+  /* Reserve a leading column for a future icon slot without forcing it now. */
+  background-position: var(--lead-space-4) var(--lead-space-4);
+  background-repeat: no-repeat;
+}
+
+.lead-Alert[data-variant="neutral"] {
+  background-color: var(--lead-color-surface-muted);
+  border-color: var(--lead-color-border-default);
+}
+
+.lead-Alert[data-variant="info"] {
+  background-color: var(--lead-color-action-secondary-default);
+  border-color: var(--lead-color-action-secondary-hover);
+  color: var(--lead-color-action-secondary-text);
+}
+
+.lead-Alert[data-variant="success"] {
+  background-color: #e6f4ec;
+  border-color: #b9e0c8;
+  color: #0c5d35;
+}
+
+.lead-Alert[data-variant="warning"] {
+  background-color: #fff5dc;
+  border-color: #f3d99a;
+  color: #7a4a07;
+}
+
+.lead-Alert[data-variant="danger"] {
+  background-color: #fde7e7;
+  border-color: #f0bcbc;
+  color: #871e1e;
+}
+
+.lead-AlertTitle {
+  margin: 0;
+  font-size: var(--lead-font-size-md);
+  font-weight: var(--lead-font-weight-semibold);
+  line-height: var(--lead-line-height-tight);
+  color: inherit;
+}
+
+.lead-AlertDescription {
+  margin: 0;
+  font-size: var(--lead-font-size-sm);
+  font-weight: var(--lead-font-weight-medium);
+  line-height: 1.4;
+  color: inherit;
+}
