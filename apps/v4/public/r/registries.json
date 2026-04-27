@@ -234,6 +234,12 @@
     "description": "An open-source, modern UI component library for React, built with TypeScript, Tailwind CSS, and Framer Motion. Eldora UI offers beautifully crafted, reusable components designed for performance and elegance."
   },
   {
+    "name": "@evilcharts",
+    "homepage": "https://evilcharts.com",
+    "url": "https://evilcharts.com/r/{name}.json",
+    "description": "EvilCharts is an open-source chart UI website built with shadcn and Recharts, beautifully designed and handcrafted."
+  },
+  {
     "name": "@formcn",
     "homepage": "https://formcn.dev",
     "url": "https://formcn.dev/r/{name}.json",
@@ -268,6 +274,12 @@
     "homepage": "https://glass-ui.crenspire.com",
     "url": "https://glass-ui.crenspire.com/r/{name}.json",
     "description": "A shadcn-ui compatible registry distributing 40+ glassmorphic React/TypeScript components with Apple-inspired design. Components include enhanced visual effects (glow, shimmer, ripple), theme support, and customizable glassmorphism styling."
+  },
+  {
+    "name": "@glasscn",
+    "homepage": "https://glasscn.vercel.app/",
+    "url": "https://glasscn-components.vercel.app/r/{name}.json",
+    "description": "A shadcn-compatible registry of glassmorphism components inspired by Apple"
   },
   {
     "name": "@ha-components",
@@ -1060,5 +1072,11 @@
     "homepage": "https://ui.radiumcoders.com",
     "url": "https://ui.radiumcoders.com/r/xcn/{name}.json",
     "description": "Hand-crafted, beautiful, and minimal UI components built with Tailwind CSS and Motion."
+  },
+  {
+    "name": "@dotmatrix",
+    "homepage": "https://dotmatrix.zzzzshawn.cloud",
+    "url": "https://dotmatrix.zzzzshawn.cloud/r/{name}.json",
+    "description": "Production-ready dot-matrix loading components for React, featuring square, circular, and triangle animations with polished motion."
   }
 ]

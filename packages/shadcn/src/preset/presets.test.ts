@@ -31,9 +31,14 @@ describe("createPresetUrl", () => {
   })
 
   it("should append search params when provided", () => {
-    const url = resolveCreateUrl({ rtl: true, template: "next" })
+    const url = resolveCreateUrl({
+      rtl: true,
+      pointer: true,
+      template: "next",
+    })
     const parsed = new URL(url)
     expect(parsed.searchParams.get("rtl")).toBe("true")
+    expect(parsed.searchParams.get("pointer")).toBe("true")
     expect(parsed.searchParams.get("template")).toBe("next")
   })
 })
@@ -79,6 +84,12 @@ describe("buildInitUrl", () => {
     expect(parsed.searchParams.get("chartColor")).toBe("emerald")
   })
 
+  it("should not include chartColor when it is neutral", () => {
+    const url = resolveInitUrl({ ...mockPreset, chartColor: "neutral" })
+    const parsed = new URL(url)
+    expect(parsed.searchParams.has("chartColor")).toBe(false)
+  })
+
   it("should include chartColor from default presets", () => {
     const url = resolveInitUrl({ ...DEFAULT_PRESETS.sera, base: "base" })
     const parsed = new URL(url)
@@ -116,5 +127,24 @@ describe("buildInitUrl", () => {
     const url = resolveInitUrl(mockPreset)
     const parsed = new URL(url)
     expect(parsed.searchParams.has("preset")).toBe(false)
+  })
+
+  it("should include pointer when enabled", () => {
+    const url = resolveInitUrl(mockPreset, { pointer: true })
+    const parsed = new URL(url)
+    expect(parsed.searchParams.get("pointer")).toBe("true")
+  })
+
+  it("should not include pointer when disabled", () => {
+    const url = resolveInitUrl(mockPreset, { pointer: false })
+    const parsed = new URL(url)
+    expect(parsed.searchParams.has("pointer")).toBe(false)
+  })
+
+  it("should include pointer with preset codes", () => {
+    const url = resolveInitUrl(mockPreset, { preset: "a0", pointer: true })
+    const parsed = new URL(url)
+    expect(parsed.searchParams.get("preset")).toBe("a0")
+    expect(parsed.searchParams.get("pointer")).toBe("true")
   })
 })

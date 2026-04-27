@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest"
 
-import { buildRegistryBase, DEFAULT_CONFIG } from "@/registry/config"
+import {
+  buildRegistryBase,
+  DEFAULT_CONFIG,
+  POINTER_CURSOR_SELECTOR,
+} from "@/registry/config"
 
 import { GET } from "./route"
 
@@ -26,6 +30,17 @@ describe("GET /init", () => {
 
     expect(response.status).toBe(200)
     expect(json).toEqual(buildRegistryBase(DEFAULT_CONFIG))
+    expect(json.css["@layer base"][POINTER_CURSOR_SELECTOR]).toBeUndefined()
+  })
+
+  it("returns pointer cursor css when pointer is enabled", async () => {
+    const response = await GET(createRequest("?pointer=true"))
+    const json = await response.json()
+
+    expect(response.status).toBe(200)
+    expect(json.css["@layer base"][POINTER_CURSOR_SELECTOR]).toEqual({
+      cursor: "pointer",
+    })
   })
 
   it("returns a sparse registry base when only is provided", async () => {
