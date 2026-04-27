@@ -1,6 +1,0 @@
-packages:
-  - "packages/*"
-  - "!**/test/**"
-  - "!**/fixtures/**"
-  - "!**/temp/**"
-  - "!packages/lead-design-tokens-cli/**"

@@ -7,20 +7,7 @@
   "author": {
     "name": "Lead Bank Design Systems"
   },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "lint:fix": "turbo run lint:fix",
-    "preview": "turbo run preview",
-    "typecheck": "turbo run typecheck",
-    "format:write": "turbo run format:write",
-    "format:check": "turbo run format:check",
-    "check": "turbo lint typecheck format:check",
     "test": "npm run lead:tokens:test && npm run lead:tokens:lint-schemas && npm run lead:tokens:check-decisions",
     "lead:tokens:test": "npm test --prefix packages/lead-design-tokens-cli --workspaces=false",
     "lead:tokens:check-decisions": "npm run check-decisions --prefix packages/lead-design-tokens-cli --workspaces=false",
@@ -28,7 +15,6 @@
     "figma:code-connect:publish": "npx figma connect publish",
     "figma:code-connect:dry-run": "npx figma connect publish --dry-run"
   },
-  "packageManager": "pnpm@9.0.6",
   "dependencies": {
     "@babel/core": "^7.22.1",
     "@changesets/changelog-github": "^0.4.8",
@@ -67,11 +53,5 @@
     "@types/react-dom": "^18.2.22",
     "start-server-and-test": "^2.0.12",
     "typescript": "^5.5.3"
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "19.2.2",
-      "@types/react-dom": "19.2.2"
-    }
   }
 }
