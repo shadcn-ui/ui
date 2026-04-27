@@ -79,3 +79,22 @@ export type {
   RadioGroupProps,
   RadioGroupSize,
 } from "./components/RadioGroup/RadioGroup"
+
+export { Badge } from "./components/Badge/Badge"
+export type {
+  BadgeProps,
+  BadgeSize,
+  BadgeVariant,
+} from "./components/Badge/Badge"
+
+export {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "./components/Alert/Alert"
+export type {
+  AlertDescriptionProps,
+  AlertProps,
+  AlertTitleProps,
+  AlertVariant,
+} from "./components/Alert/Alert"

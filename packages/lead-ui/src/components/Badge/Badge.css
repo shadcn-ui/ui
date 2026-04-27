@@ -1,0 +1,65 @@
+.lead-Badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lead-space-1);
+  border-radius: 9999px;
+  font-family: var(--lead-font-family-sans);
+  font-weight: var(--lead-font-weight-semibold);
+  line-height: 1;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  user-select: none;
+}
+
+/* Sizes */
+.lead-Badge[data-size="sm"] {
+  height: 18px;
+  padding: 0 var(--lead-space-2);
+  font-size: 11px;
+}
+.lead-Badge[data-size="md"] {
+  height: 22px;
+  padding: 0 var(--lead-space-3);
+  font-size: var(--lead-font-size-sm);
+}
+.lead-Badge[data-size="lg"] {
+  height: 26px;
+  padding: 0 var(--lead-space-3);
+  font-size: var(--lead-font-size-md);
+}
+
+/* Variants — soft tint background, ring border, accessible text contrast. */
+.lead-Badge[data-variant="neutral"] {
+  background-color: var(--lead-color-surface-muted);
+  color: var(--lead-color-text-default);
+  border-color: var(--lead-color-border-default);
+}
+.lead-Badge[data-variant="brand"] {
+  background-color: var(--lead-color-action-secondary-default);
+  color: var(--lead-color-action-secondary-text);
+  border-color: var(--lead-color-action-secondary-hover);
+}
+.lead-Badge[data-variant="success"] {
+  background-color: #e6f4ec;
+  color: #0c5d35;
+  border-color: #b9e0c8;
+}
+.lead-Badge[data-variant="warning"] {
+  background-color: #fff5dc;
+  color: #7a4a07;
+  border-color: #f3d99a;
+}
+.lead-Badge[data-variant="danger"] {
+  background-color: #fde7e7;
+  color: #871e1e;
+  border-color: #f0bcbc;
+}
+
+.lead-Badge__dot {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
