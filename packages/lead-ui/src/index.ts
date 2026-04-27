@@ -60,3 +60,22 @@ export type {
   SeparatorProps,
   SeparatorVariant,
 } from "./components/Separator/Separator"
+
+export { Checkbox } from "./components/Checkbox/Checkbox"
+export type {
+  CheckboxProps,
+  CheckboxSize,
+} from "./components/Checkbox/Checkbox"
+
+export { Switch } from "./components/Switch/Switch"
+export type { SwitchProps, SwitchSize } from "./components/Switch/Switch"
+
+export {
+  RadioGroup,
+  RadioGroupItem,
+} from "./components/RadioGroup/RadioGroup"
+export type {
+  RadioGroupItemProps,
+  RadioGroupProps,
+  RadioGroupSize,
+} from "./components/RadioGroup/RadioGroup"

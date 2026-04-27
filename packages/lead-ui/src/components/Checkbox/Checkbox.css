@@ -1,0 +1,87 @@
+.lead-Checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: var(--lead-radius-sm);
+  border: 1px solid var(--lead-color-border-default);
+  background-color: var(--lead-color-surface-default);
+  color: var(--lead-color-text-onPrimary);
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  transition:
+    background-color var(--lead-duration-fast) var(--lead-easing-standard),
+    border-color var(--lead-duration-fast) var(--lead-easing-standard);
+}
+
+.lead-Checkbox:hover:not([data-disabled]) {
+  border-color: var(--lead-color-border-strong);
+}
+
+.lead-Checkbox:focus-visible {
+  outline: 2px solid var(--lead-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.lead-Checkbox[data-state="checked"],
+.lead-Checkbox[data-state="indeterminate"] {
+  background-color: var(--lead-color-action-primary-default);
+  border-color: var(--lead-color-action-primary-default);
+}
+
+.lead-Checkbox[data-disabled] {
+  cursor: not-allowed;
+  background-color: var(--lead-color-surface-muted);
+  border-color: var(--lead-color-border-default);
+  color: var(--lead-color-text-disabled);
+}
+
+.lead-Checkbox[data-disabled][data-state="checked"],
+.lead-Checkbox[data-disabled][data-state="indeterminate"] {
+  background-color: var(--lead-color-text-disabled);
+  border-color: var(--lead-color-text-disabled);
+}
+
+.lead-Checkbox[data-invalid="true"] {
+  border-color: var(--lead-color-action-danger-default);
+}
+
+.lead-Checkbox[data-invalid="true"][data-state="checked"],
+.lead-Checkbox[data-invalid="true"][data-state="indeterminate"] {
+  background-color: var(--lead-color-action-danger-default);
+  border-color: var(--lead-color-action-danger-default);
+}
+
+.lead-Checkbox[data-size="sm"] {
+  width: 14px;
+  height: 14px;
+}
+.lead-Checkbox[data-size="md"] {
+  width: 18px;
+  height: 18px;
+}
+.lead-Checkbox[data-size="lg"] {
+  width: 22px;
+  height: 22px;
+}
+
+.lead-Checkbox__indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.lead-Checkbox__icon {
+  width: 80%;
+  height: 80%;
+  color: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lead-Checkbox {
+    transition: none;
+  }
+}
