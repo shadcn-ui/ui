@@ -1,15 +1,31 @@
 .lead-Alert {
   display: flex;
-  flex-direction: column;
-  gap: var(--lead-space-1);
+  align-items: flex-start;
+  gap: var(--lead-space-3);
   padding: var(--lead-space-4);
   border: 1px solid transparent;
   border-radius: var(--lead-radius-md);
   font-family: var(--lead-font-family-sans);
   color: var(--lead-color-text-default);
-  /* Reserve a leading column for a future icon slot without forcing it now. */
-  background-position: var(--lead-space-4) var(--lead-space-4);
-  background-repeat: no-repeat;
+}
+
+.lead-Alert__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: inherit;
+}
+
+.lead-Alert__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lead-space-1);
+  min-width: 0;
+  flex: 1;
 }
 
 .lead-Alert[data-variant="neutral"] {

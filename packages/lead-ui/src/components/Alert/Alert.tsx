@@ -1,5 +1,5 @@
 import { forwardRef } from "react"
-import type { HTMLAttributes } from "react"
+import type { HTMLAttributes, ReactNode } from "react"
 
 import "../../tokens.css"
 import "./Alert.css"
@@ -13,6 +13,17 @@ export type AlertVariant =
 
 export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
   variant?: AlertVariant
+  /**
+   * Optional caller-supplied leading icon. Rendered in a fixed-size
+   * slot at the start of the alert (visually only — Lead does not
+   * ship default icons for any variant). When provided, the icon is
+   * marked `aria-hidden` so screen readers don't double-announce it
+   * alongside the title/description text.
+   *
+   * Variant-default icons are explicitly out of scope today; revisit
+   * once an icon system lands.
+   */
+  icon?: ReactNode
 }
 
 /**
@@ -36,7 +47,7 @@ const ROLE_FOR_VARIANT: Record<AlertVariant, "alert" | "status"> = {
 }
 
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
-  { variant = "neutral", className, role, ...rest },
+  { variant = "neutral", icon, className, role, children, ...rest },
   ref
 ) {
   const classes = ["lead-Alert", className].filter(Boolean).join(" ")
@@ -48,7 +59,15 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
       {...rest}
       className={classes}
       data-variant={variant}
-    />
+      data-with-icon={icon ? "true" : "false"}
+    >
+      {icon && (
+        <span className="lead-Alert__icon" aria-hidden="true">
+          {icon}
+        </span>
+      )}
+      <div className="lead-Alert__body">{children}</div>
+    </div>
   )
 })
 
