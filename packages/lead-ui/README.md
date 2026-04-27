@@ -11,6 +11,13 @@ PR #1 skeleton. One component (`Button`) wired against placeholder CSS variables
 - `Button` — variants `primary` / `secondary` / `outline` / `ghost` / `danger`, sizes `sm` / `md` / `lg`, plus `disabled` and `loading` states.
 - `Input` — variants `default` / `error`, sizes `sm` / `md` / `lg`, plus `disabled` and `invalid` states. Maps `invalid` to `aria-invalid`.
 - `Label` — sizes `sm` / `md` / `lg`, plus `disabled` and `required` states. Pairs with `Input` via `htmlFor`.
+- `Field` family — composes Label + Input + Description + Error with shared ids and `aria-describedby` wiring:
+  - `Field` — root container; provides id/disabled/invalid via context. Vertical or horizontal orientation.
+  - `FieldGroup` — stacks multiple `Field`s with consistent spacing; `role="group"` by default.
+  - `FieldLabel` — Field-aware Label that inherits `htmlFor` from context.
+  - `FieldDescription` — paragraph that auto-wires its id into the control's `aria-describedby`.
+  - `FieldError` — `role="alert"` paragraph; only contributes to `aria-describedby` when the surrounding Field is `invalid`.
+  - `FieldControl` — slot that propagates id, disabled, invalid, and aria-describedby to its single child control without overriding caller-supplied values.
 
 ## Setup
 
