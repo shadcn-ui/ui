@@ -1,11 +1,14 @@
 {
   "codeConnect": {
+    "parser": "react",
     "include": [
       "packages/**/*.figma.{js,jsx,ts,tsx}"
     ],
     "exclude": [
       "node_modules/**",
-      "packages/lead-design-tokens-cli/node_modules/**"
+      "packages/lead-design-tokens-cli/node_modules/**",
+      "packages/lead-ui/node_modules/**",
+      "apps/storybook/node_modules/**"
     ]
   }
 }
