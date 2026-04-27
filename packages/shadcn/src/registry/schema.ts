@@ -225,6 +225,12 @@ export const registryBaseColorSchema = z.object({
     light: z.record(z.string(), z.string()),
     dark: z.record(z.string(), z.string()),
   }),
+  inlineColorUtilities: z
+    .object({
+      light: z.record(z.string(), z.string()),
+      dark: z.record(z.string(), z.string()),
+    })
+    .optional(),
   cssVars: registryItemCssVarsSchema,
   cssVarsV4: registryItemCssVarsSchema.optional(),
   inlineColorsTemplate: z.string(),

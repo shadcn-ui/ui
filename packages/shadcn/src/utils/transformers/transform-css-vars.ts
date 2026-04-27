@@ -13,6 +13,9 @@ export const transformCssVars: Transformer = async ({
     return sourceFile
   }
 
+  // Use utility mappings if available, otherwise fall back to inlineColors.
+  const colorMapping = baseColor.inlineColorUtilities || baseColor.inlineColors
+
   // Find jsx attributes with the name className.
   // const openingElements = sourceFile.getDescendantsOfKind(SyntaxKind.JsxElement)
   // console.log(openingElements)
@@ -32,7 +35,7 @@ export const transformCssVars: Transformer = async ({
   // }
   sourceFile.getDescendantsOfKind(SyntaxKind.StringLiteral).forEach((node) => {
     const raw = node.getLiteralText()
-    const mapped = applyColorMapping(raw, baseColor.inlineColors).trim()
+    const mapped = applyColorMapping(raw, colorMapping).trim()
     if (mapped !== raw) {
       node.setLiteralValue(mapped)
     }
@@ -147,6 +150,14 @@ export function splitClassName(className: string): (string | null)[] {
 
 const PREFIXES = ["bg-", "text-", "border-", "ring-offset-", "ring-"]
 
+// Detect if mapping contains utilities (Tailwind classes) or raw values (oklch).
+function isUtilityMapping(
+  mapping: z.infer<typeof registryBaseColorSchema>["inlineColors"]
+): boolean {
+  const firstValue = Object.values(mapping.light)[0]
+  return firstValue && !firstValue.includes("oklch(") && firstValue.includes("-")
+}
+
 export function applyColorMapping(
   input: string,
   mapping: z.infer<typeof registryBaseColorSchema>["inlineColors"]
@@ -155,6 +166,9 @@ export function applyColorMapping(
   if (input.includes(" border ")) {
     input = input.replace(" border ", " border border-border ")
   }
+
+  // Check if we're using utility mappings or raw oklch values.
+  const usesUtilities = isUtilityMapping(mapping)
 
   // Build color mappings.
   const classNames = input.split(" ")
@@ -172,14 +186,24 @@ export function applyColorMapping(
 
     const needle = value?.replace(prefix, "")
     if (needle && needle in mapping.light) {
+      // If using utilities, the mapping already contains the full utility class.
+      // If using oklch, we need to prepend the prefix.
+      const mappedValue = usesUtilities 
+        ? mapping.light[needle] 
+        : `${prefix}${mapping.light[needle]}`
+      
       lightMode.add(
-        [variant, `${prefix}${mapping.light[needle]}`]
+        [variant, mappedValue]
           .filter(Boolean)
           .join(":") + (modifier ? `/${modifier}` : "")
       )
 
+      const darkMappedValue = usesUtilities
+        ? mapping.dark[needle]
+        : `${prefix}${mapping.dark[needle]}`
+      
       darkMode.add(
-        ["dark", variant, `${prefix}${mapping.dark[needle]}`]
+        ["dark", variant, darkMappedValue]
           .filter(Boolean)
           .join(":") + (modifier ? `/${modifier}` : "")
       )

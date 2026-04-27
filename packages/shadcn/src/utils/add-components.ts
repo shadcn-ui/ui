@@ -113,9 +113,25 @@ async function addProjectComponents(
 
   const supportedFontMarkers = getSupportedFontMarkers([tree])
 
-  await updateDependencies(tree.dependencies, tree.devDependencies, config, {
-    silent: options.silent,
-  })
+  const hasDependencies = tree.dependencies?.length > 0
+  const hasDevDependencies = tree.devDependencies?.length > 0
+
+  if (hasDependencies || hasDevDependencies) {
+    await updateDependencies(tree.dependencies, tree.devDependencies, config, {
+      silent: options.silent,
+    })
+    if (!options.silent) {
+      logger.log(
+        `✓ Installed ${tree.dependencies?.length || 0} dependency${
+          tree.dependencies?.length !== 1 ? 'ies' : 'y'
+        } and ${tree.devDependencies?.length || 0} dev dependency${
+          tree.devDependencies?.length !== 1 ? 'ies' : 'y'
+        }`
+      )
+    }
+  } else if (!options.silent) {
+    logger.log(`ℹ No dependencies to install for ${components.join(', ')}`)
+  }
 
   await updateTailwindConfig(tree.tailwind?.config, config, {
     silent: options.silent,
@@ -217,14 +233,28 @@ async function addWorkspaceComponents(
   const supportedFontMarkers = getSupportedFontMarkers([tree])
 
   // 1. Update dependencies.
-  await updateDependencies(
-    tree.dependencies,
-    tree.devDependencies,
-    mainTargetConfig,
-    {
-      silent: true,
-    }
-  )
+  const hasDependencies = tree.dependencies?.length > 0
+  const hasDevDependencies = tree.devDependencies?.length > 0
+
+  if (hasDependencies || hasDevDependencies) {
+    await updateDependencies(
+      tree.dependencies,
+      tree.devDependencies,
+      mainTargetConfig,
+      {
+        silent: true,
+      }
+    )
+    logger.log(
+      `✓ Installed ${tree.dependencies?.length || 0} dependency${
+        tree.dependencies?.length !== 1 ? 'ies' : 'y'
+      } and ${tree.devDependencies?.length || 0} dev dependency${
+        tree.devDependencies?.length !== 1 ? 'ies' : 'y'
+      } to ${path.basename(mainTargetConfig.resolvedPaths.cwd)}`
+    )
+  } else {
+    logger.log(`ℹ No dependencies to install for ${components.join(', ')}`)
+  }
 
   // 2. Update tailwind config.
   if (tree.tailwind?.config) {
