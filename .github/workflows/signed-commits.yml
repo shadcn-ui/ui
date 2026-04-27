@@ -9,8 +9,7 @@ on:
       - ready_for_review
 
 permissions:
-  issues: write
-  pull-requests: read
+  pull-requests: write
 
 jobs:
   signed-commits:
