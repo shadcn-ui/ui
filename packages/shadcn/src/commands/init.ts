@@ -21,6 +21,7 @@ import {
   templates,
 } from "@/src/templates/index"
 import { addComponents } from "@/src/utils/add-components"
+import { getInitAliasDefaults } from "@/src/utils/alias"
 import { createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
@@ -588,6 +589,7 @@ export async function runInit(
   }
 ) {
   let projectInfo
+  let projectConfig
   let newProjectTemplate: keyof typeof templates | undefined
 
   // Resolve the effective template if --monorepo is set.
@@ -629,7 +631,7 @@ export async function runInit(
     projectInfo = await getProjectInfo(options.cwd)
   }
 
-  const didCreateProject = Boolean(newProjectTemplate)
+  projectConfig = await getProjectConfig(options.cwd, projectInfo)
 
   // Use the template from project creation if available,
   // or fall back to the explicit --template flag.
@@ -644,6 +646,9 @@ export async function runInit(
     // Add button component for new template-based projects.
     ...(selectedTemplate ? ["button"] : []),
   ]
+  const templatePostInit = options.isNewProject
+    ? selectedTemplate?.postInit
+    : undefined
 
   if (selectedTemplate?.init) {
     const result = await selectedTemplate.init({
@@ -657,17 +662,15 @@ export async function runInit(
       silent: options.silent,
     })
 
-    // Run postInit only for newly scaffolded projects (e.g. git init).
-    if (didCreateProject) {
-      await selectedTemplate.postInit({ projectPath: options.cwd })
+    if (templatePostInit) {
+      // Run postInit for newly scaffolded projects (e.g. git init).
+      await templatePostInit({ projectPath: options.cwd })
     }
 
     return result
   }
 
   // Standard init path for existing projects.
-  const projectConfig = await getProjectConfig(options.cwd, projectInfo)
-
   let config = projectConfig
     ? await promptForMinimalConfig(projectConfig, options)
     : await promptForConfig(await getConfig(options.cwd))
@@ -797,9 +800,9 @@ export async function runInit(
       options.isNewProject || projectInfo?.framework.name === "next-app",
   })
 
-  // Run postInit for newly scaffolded projects without a custom init (e.g. git init).
-  if (selectedTemplate && didCreateProject) {
-    await selectedTemplate.postInit({ projectPath: options.cwd })
+  // Run postInit only for newly scaffolded projects.
+  if (templatePostInit) {
+    await templatePostInit({ projectPath: options.cwd })
   }
 
   return fullConfig
@@ -884,12 +887,6 @@ async function promptForConfig(defaultConfig: Config | null = null) {
       initial: defaultConfig?.aliases["components"] ?? DEFAULT_COMPONENTS,
     },
     {
-      type: "text",
-      name: "utils",
-      message: `Configure the import alias for ${highlighter.info("utils")}:`,
-      initial: defaultConfig?.aliases["utils"] ?? DEFAULT_UTILS,
-    },
-    {
       type: "toggle",
       name: "rsc",
       message: `Are you using ${highlighter.info("React Server Components")}?`,
@@ -902,6 +899,16 @@ async function promptForConfig(defaultConfig: Config | null = null) {
   if (!options.style) {
     process.exit(1)
   }
+
+  const existingAliases =
+    defaultConfig && defaultConfig.aliases.components === options.components
+      ? defaultConfig.aliases
+      : undefined
+
+  const aliasDefaults = getInitAliasDefaults(
+    options.components,
+    existingAliases
+  )
 
   return rawConfigSchema.parse({
     $schema: "https://ui.shadcn.com/schema.json",
@@ -916,11 +923,11 @@ async function promptForConfig(defaultConfig: Config | null = null) {
     rsc: options.rsc,
     tsx: options.typescript,
     aliases: {
-      utils: options.utils,
       components: options.components,
-      // TODO: fix this.
-      lib: options.components.replace(/\/components$/, "lib"),
-      hooks: options.components.replace(/\/components$/, "hooks"),
+      ui: aliasDefaults.ui,
+      lib: aliasDefaults.lib,
+      hooks: aliasDefaults.hooks,
+      utils: aliasDefaults.utils,
     },
   })
 }

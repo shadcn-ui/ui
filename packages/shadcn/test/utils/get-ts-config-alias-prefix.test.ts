@@ -29,6 +29,14 @@ describe("get ts config alias prefix", async () => {
       name: "next-app-custom-alias",
       prefix: "@custom-alias",
     },
+    {
+      name: "vite-partial-imports",
+      prefix: "#components",
+    },
+    {
+      name: "vite-root-paths",
+      prefix: "@",
+    },
   ])(`getTsConfigAliasPrefix($name) -> $prefix`, async ({ name, prefix }) => {
     expect(
       await getTsConfigAliasPrefix(
