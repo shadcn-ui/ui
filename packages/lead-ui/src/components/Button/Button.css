@@ -1,0 +1,133 @@
+.lead-Button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--lead-space-2);
+  border-radius: var(--lead-radius-md);
+  border: 1px solid transparent;
+  font-family: var(--lead-font-family-sans);
+  font-weight: var(--lead-font-weight-semibold);
+  line-height: var(--lead-line-height-tight);
+  cursor: pointer;
+  transition:
+    background-color var(--lead-duration-fast) var(--lead-easing-standard),
+    border-color var(--lead-duration-fast) var(--lead-easing-standard),
+    color var(--lead-duration-fast) var(--lead-easing-standard);
+  user-select: none;
+  white-space: nowrap;
+}
+
+.lead-Button:focus-visible {
+  outline: 2px solid var(--lead-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.lead-Button[data-disabled="true"] {
+  cursor: not-allowed;
+  color: var(--lead-color-text-disabled);
+  background-color: var(--lead-color-surface-muted);
+  border-color: var(--lead-color-border-default);
+}
+
+.lead-Button[data-loading="true"] {
+  cursor: progress;
+}
+
+/* Sizes */
+.lead-Button[data-size="sm"] {
+  height: 28px;
+  padding: 0 var(--lead-space-3);
+  font-size: var(--lead-font-size-sm);
+}
+.lead-Button[data-size="md"] {
+  height: 36px;
+  padding: 0 var(--lead-space-4);
+  font-size: var(--lead-font-size-md);
+}
+.lead-Button[data-size="lg"] {
+  height: 44px;
+  padding: 0 var(--lead-space-5);
+  font-size: var(--lead-font-size-lg);
+}
+
+/* Variants */
+.lead-Button[data-variant="primary"]:not([data-disabled="true"]) {
+  background-color: var(--lead-color-action-primary-default);
+  color: var(--lead-color-text-onPrimary);
+}
+.lead-Button[data-variant="primary"]:not([data-disabled="true"]):hover {
+  background-color: var(--lead-color-action-primary-hover);
+}
+.lead-Button[data-variant="primary"]:not([data-disabled="true"]):active {
+  background-color: var(--lead-color-action-primary-active);
+}
+
+.lead-Button[data-variant="secondary"]:not([data-disabled="true"]) {
+  background-color: var(--lead-color-action-secondary-default);
+  color: var(--lead-color-action-secondary-text);
+}
+.lead-Button[data-variant="secondary"]:not([data-disabled="true"]):hover {
+  background-color: var(--lead-color-action-secondary-hover);
+}
+.lead-Button[data-variant="secondary"]:not([data-disabled="true"]):active {
+  background-color: var(--lead-color-action-secondary-active);
+}
+
+.lead-Button[data-variant="outline"]:not([data-disabled="true"]) {
+  background-color: transparent;
+  color: var(--lead-color-text-default);
+  border-color: var(--lead-color-border-default);
+}
+.lead-Button[data-variant="outline"]:not([data-disabled="true"]):hover {
+  background-color: var(--lead-color-surface-muted);
+}
+.lead-Button[data-variant="outline"]:not([data-disabled="true"]):active {
+  border-color: var(--lead-color-border-strong);
+}
+
+.lead-Button[data-variant="ghost"]:not([data-disabled="true"]) {
+  background-color: transparent;
+  color: var(--lead-color-text-default);
+}
+.lead-Button[data-variant="ghost"]:not([data-disabled="true"]):hover {
+  background-color: var(--lead-color-surface-muted);
+}
+.lead-Button[data-variant="ghost"]:not([data-disabled="true"]):active {
+  background-color: var(--lead-color-action-secondary-default);
+}
+
+.lead-Button[data-variant="danger"]:not([data-disabled="true"]) {
+  background-color: var(--lead-color-action-danger-default);
+  color: var(--lead-color-text-onDanger);
+}
+.lead-Button[data-variant="danger"]:not([data-disabled="true"]):hover {
+  background-color: var(--lead-color-action-danger-hover);
+}
+.lead-Button[data-variant="danger"]:not([data-disabled="true"]):active {
+  background-color: var(--lead-color-action-danger-active);
+}
+
+/* Spinner */
+.lead-Button__spinner {
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: lead-Button-spin 0.7s linear infinite;
+}
+
+@keyframes lead-Button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lead-Button {
+    transition: none;
+  }
+  .lead-Button__spinner {
+    animation-duration: 2s;
+  }
+}

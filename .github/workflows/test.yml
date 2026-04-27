@@ -33,3 +33,30 @@ jobs:
 
       - name: Check decision references
         run: npm run lead:tokens:check-decisions
+
+  lead-ui:
+    runs-on: ubuntu-latest
+    name: lead-ui checks
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: packages/lead-ui/package-lock.json
+
+      - name: Install lead-ui dependencies
+        run: npm ci --prefix packages/lead-ui --workspaces=false
+
+      - name: Typecheck lead-ui
+        run: npm run lead:ui:typecheck
+
+      - name: Test lead-ui
+        run: npm run lead:ui:test
+
+      - name: Build lead-ui
+        run: npm run lead:ui:build

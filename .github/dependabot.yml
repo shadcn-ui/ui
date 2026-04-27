@@ -8,3 +8,7 @@ updates:
     directory: "/packages/lead-design-tokens-cli"
     schedule:
       interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/packages/lead-ui"
+    schedule:
+      interval: "weekly"

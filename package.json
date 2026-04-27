@@ -8,10 +8,13 @@
     "name": "Lead Bank Design Systems"
   },
   "scripts": {
-    "test": "npm run lead:tokens:test && npm run lead:tokens:lint-schemas && npm run lead:tokens:check-decisions",
+    "test": "npm run lead:tokens:test && npm run lead:tokens:lint-schemas && npm run lead:tokens:check-decisions && npm run lead:ui:test",
     "lead:tokens:test": "npm test --prefix packages/lead-design-tokens-cli --workspaces=false",
     "lead:tokens:check-decisions": "npm run check-decisions --prefix packages/lead-design-tokens-cli --workspaces=false",
     "lead:tokens:lint-schemas": "npm run lint:schemas --prefix packages/lead-design-tokens-cli --workspaces=false",
+    "lead:ui:build": "npm run build --prefix packages/lead-ui --workspaces=false",
+    "lead:ui:typecheck": "npm run typecheck --prefix packages/lead-ui --workspaces=false",
+    "lead:ui:test": "npm test --prefix packages/lead-ui --workspaces=false",
     "figma:code-connect:publish": "npx figma connect publish",
     "figma:code-connect:dry-run": "npx figma connect publish --dry-run"
   }
