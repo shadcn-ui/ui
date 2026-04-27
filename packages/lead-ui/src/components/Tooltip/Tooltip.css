@@ -1,0 +1,17 @@
+.lead-Tooltip__content {
+  background-color: var(--lead-color-text-default);
+  color: var(--lead-color-text-onPrimary);
+  border-radius: var(--lead-radius-sm);
+  padding: var(--lead-space-1) var(--lead-space-2);
+  font-family: var(--lead-font-family-sans);
+  font-size: var(--lead-font-size-sm);
+  font-weight: var(--lead-font-weight-medium);
+  line-height: 1.3;
+  max-width: 280px;
+  z-index: 60;
+  box-shadow: 0 4px 12px rgba(21, 22, 26, 0.18);
+}
+
+.lead-Tooltip__arrow {
+  fill: var(--lead-color-text-default);
+}

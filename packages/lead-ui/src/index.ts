@@ -98,3 +98,39 @@ export type {
   AlertTitleProps,
   AlertVariant,
 } from "./components/Alert/Alert"
+
+export {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./components/Dialog/Dialog"
+export type {
+  DialogCloseProps,
+  DialogContentProps,
+  DialogDescriptionProps,
+  DialogFooterAlign,
+  DialogFooterProps,
+  DialogHeaderProps,
+  DialogProps,
+  DialogSize,
+  DialogTitleProps,
+  DialogTriggerProps,
+} from "./components/Dialog/Dialog"
+
+export {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./components/Tooltip/Tooltip"
+export type {
+  TooltipContentProps,
+  TooltipProps,
+  TooltipProviderProps,
+  TooltipTriggerProps,
+} from "./components/Tooltip/Tooltip"

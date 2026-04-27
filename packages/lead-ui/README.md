@@ -29,6 +29,8 @@ PR #1 skeleton. One component (`Button`) wired against placeholder CSS variables
 - `RadioGroup` / `RadioGroupItem` — Radix-backed radio group; sizes propagate from group to items via context (overridable per-item). Supports controlled (`value` + `onValueChange`), uncontrolled (`defaultValue`), and group-wide or per-item `disabled`.
 - `Badge` — non-interactive `<span>` for status/labels; variants `neutral` / `brand` / `success` / `warning` / `danger`, sizes `sm` / `md` / `lg`, optional leading `dot`.
 - `Alert` family — inline alert composed of `Alert`, `AlertTitle`, `AlertDescription`. Variants `neutral` / `info` / `success` (polite, `role="status"`) and `warning` / `danger` (assertive, `role="alert"`). Callers can override `role` for special cases.
+- `Dialog` family — Radix-backed modal dialog. Compose `Dialog` + `DialogTrigger` + `DialogContent` (size `sm` / `md` / `lg`) + `DialogHeader` / `DialogTitle` / `DialogDescription` / `DialogFooter` (align `start` / `end` / `between`) + `DialogClose`. Includes overlay, focus trap, ESC-to-close, and proper `aria-labelledby` / `aria-describedby` wiring. `DialogTrigger` and `DialogClose` expose Radix's `asChild` so you can wrap any focusable element (typically a Lead `Button`) without an extra wrapper.
+- `Tooltip` family — Radix-backed tooltip. Wrap your app once with `TooltipProvider` (set `delayDuration` here), then compose `Tooltip` + `TooltipTrigger` + `TooltipContent` at each anchor. Supports `side` (top/right/bottom/left), `align` (start/center/end), `sideOffset`, and an opt-out `withArrow` prop. `TooltipTrigger` exposes `asChild` for the same reason as `DialogTrigger`.
 
 ## Setup
 
