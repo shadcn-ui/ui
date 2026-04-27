@@ -77,16 +77,22 @@ export async function resolveProjectPreset(
 ) {
   const style = normalizePresetStyle(config.style)
   if (!style) {
-    return { code: null, values: null }
+    return { code: null, fallbacks: [], values: null }
   }
 
   const defaults = DEFAULT_PRESETS[style]
   const cssState = await readCssState(config.resolvedPaths.tailwindCss)
 
-  const baseColor = asPresetBaseColor(config.tailwind.baseColor)
+  const baseColor = asPresetValue<PresetConfig["baseColor"]>(
+    PRESET_BASE_COLOR_SET,
+    config.tailwind.baseColor
+  )
   const theme = matchTheme(cssState)
   const chartColor = matchChartColor(cssState)
-  const iconLibrary = asPresetIconLibrary(config.iconLibrary)
+  const iconLibrary = asPresetValue<PresetConfig["iconLibrary"]>(
+    PRESET_ICON_LIBRARY_SET,
+    config.iconLibrary
+  )
   let resolvedFont: PresetConfig["font"] | null = resolveBodyFont(
     cssState,
     EMPTY_NEXT_FONT_STATE
@@ -121,8 +127,14 @@ export async function resolveProjectPreset(
     defaults.fontHeading
   )
   const radius = matchRadius(cssState.rootVars["--radius"])
-  const menuAccent = asPresetMenuAccent(config.menuAccent)
-  const menuColor = asPresetMenuColor(config.menuColor)
+  const menuAccent = asPresetValue<PresetConfig["menuAccent"]>(
+    PRESET_MENU_ACCENT_SET,
+    config.menuAccent
+  )
+  const menuColor = asPresetValue<PresetConfig["menuColor"]>(
+    PRESET_MENU_COLOR_SET,
+    config.menuColor
+  )
 
   const values = {
     style,
@@ -712,6 +724,7 @@ function getStringContent(node: Node) {
     fragments.push(literal.getLiteralValue())
   }
 
+  // Last-resort heuristic for dynamic className expressions.
   return fragments.length > 0 ? fragments.join(" ") : node.getText()
 }
 
@@ -790,26 +803,9 @@ function normalizeCssValue(value: string | undefined) {
     .toLowerCase()
 }
 
-function asPresetBaseColor(value: string | undefined) {
-  return PRESET_BASE_COLOR_SET.has(value ?? "")
-    ? (value as PresetConfig["baseColor"])
-    : null
-}
-
-function asPresetIconLibrary(value: string | undefined) {
-  return PRESET_ICON_LIBRARY_SET.has(value ?? "")
-    ? (value as PresetConfig["iconLibrary"])
-    : null
-}
-
-function asPresetMenuAccent(value: string | undefined) {
-  return PRESET_MENU_ACCENT_SET.has(value ?? "")
-    ? (value as PresetConfig["menuAccent"])
-    : null
-}
-
-function asPresetMenuColor(value: string | undefined) {
-  return PRESET_MENU_COLOR_SET.has(value ?? "")
-    ? (value as PresetConfig["menuColor"])
-    : null
+function asPresetValue<T extends string>(
+  set: Set<string>,
+  value: string | undefined
+) {
+  return value && set.has(value) ? (value as T) : null
 }

@@ -322,7 +322,7 @@ export default function App({ Component, pageProps }) {
     expect(result.code).toBe(encodePreset(result.values!))
   })
 
-  it("returns null for unsupported legacy styles", async () => {
+  it("returns an empty preset for unsupported legacy styles", async () => {
     const config = await createTestConfig({
       style: "new-york",
       css: `:root { --radius: 0.625rem; }`,
@@ -330,6 +330,7 @@ export default function App({ Component, pageProps }) {
 
     await expect(resolveProjectPreset(config)).resolves.toEqual({
       code: null,
+      fallbacks: [],
       values: null,
     })
   })
