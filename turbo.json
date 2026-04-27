@@ -1,7 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalEnv": ["NODE_ENV"],
-  "pipeline": {
+  "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "env": [
@@ -42,6 +42,7 @@
     },
     "typecheck": {},
     "dev": {
+      "persistent": true,
       "cache": false
     },
     "check": {
