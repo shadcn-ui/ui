@@ -1072,5 +1072,11 @@
     "homepage": "https://dotmatrix.zzzzshawn.cloud",
     "url": "https://dotmatrix.zzzzshawn.cloud/r/{name}.json",
     "description": "Production-ready dot-matrix loading components for React, featuring square, circular, and triangle animations with polished motion."
+  },
+  {
+    "name": "@delta",
+    "homepage": "https://deltacomponents.dev",
+    "url": "https://deltacomponents.dev/r/{name}.json",
+    "description": "A shadcn registry for AI and media-rich interfaces — streaming LLM chat, zoomable images, swipeable card decks, interactive maps, plus dashboard and landing-page blocks."
   }
 ]
