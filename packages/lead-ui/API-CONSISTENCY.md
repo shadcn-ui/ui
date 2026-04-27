@@ -39,6 +39,8 @@ As of the latest merge to `main`, the package exports the following components:
 |---|---|---|
 | `Badge` | none (Lead) | Variants `neutral`/`brand`/`success`/`warning`/`danger`, sizes `sm`/`md`/`lg`, optional `dot`. |
 | `Alert` family | none (Lead) | `Alert`, `AlertTitle`, `AlertDescription`. Variants `neutral`/`info`/`success` use `role="status"`; `warning`/`danger` use `role="alert"`. |
+| `Skeleton` | none (Lead) | Shapes `text`/`rect`/`circle`. Decorative by default (`role="none"`, `aria-hidden=true`); set `decorative={false}` for `role="status"`. |
+| `Progress` | `@radix-ui/react-progress` | Sizes `sm`/`md`/`lg`, variants `default`/`success`/`warning`/`danger`, indeterminate when `value` is omitted/null. |
 
 ### Overlays
 | Component | Backed by | Notes |
@@ -166,7 +168,7 @@ Lead-owned components consume Radix primitives where Radix solves an accessibili
 | `Select` family | `@radix-ui/react-select` |
 
 ### Components that do NOT use Radix
-- `Button`, `Input`, `Label`, `Field` family, `Card` family, `Separator`, `Badge`, `Alert` family — pure React + CSS variables.
+- `Button`, `Input`, `Label`, `Field` family, `Card` family, `Separator`, `Badge`, `Alert` family, `Skeleton` — pure React + CSS variables.
 
 ### What Lead exposes vs. what Lead hides
 
@@ -184,6 +186,9 @@ Lead's wrappers forward Radix's controlled-state props (`open`/`onOpenChange`, `
 | `FieldError` | `role="alert"` (only when it has children). |
 | `Separator` (decorative) | `role="none"`, no `aria-orientation`. |
 | `Separator` (semantic, `decorative={false}`) | `role="separator"` + `aria-orientation`. |
+| `Skeleton` (decorative) | `role="none"` + `aria-hidden="true"`. |
+| `Skeleton` (semantic, `decorative={false}`) | `role="status"`, caller provides `aria-label`. |
+| `Progress` | Radix manages `role="progressbar"`, `aria-valuemin`, `aria-valuemax`, `aria-valuenow`. Caller provides `aria-label`/`aria-labelledby`. |
 | `FieldGroup` | `role="group"` by default; overridable to `radiogroup` etc. |
 | `Dialog` | Radix manages `role="dialog"`, `aria-modal`, `aria-labelledby` (via `DialogTitle`), `aria-describedby` (via `DialogDescription`). |
 | `Tooltip` | Radix manages `role="tooltip"` on the SR helper span. |
@@ -244,6 +249,7 @@ Tracked at every Radix-introducing PR. Numbers are unminified `dist/index.js` (E
 | Badge + Alert | 42.6 kB | 11.1 kB | 18.1 kB | 2.8 kB | +1.3 kB |
 | Radix Dialog + Tooltip | 134.6 kB | 37.1 kB | 20.1 kB | 3.0 kB | **+92.0 kB** (one-time overlay tax) |
 | Radix Select | 168.2 kB | 44.9 kB | 24.1 kB | 3.5 kB | +33.6 kB |
+| Skeleton + Radix Progress | TBD per build | TBD | TBD | TBD | small (filled in below) |
 
 **Pattern:** the first Radix PR in a primitive family pays a one-time tax for shared internals (`react-portal`, `react-presence`, `react-popper`, `floating-ui`, etc.). Subsequent components in the same family add their behavioral cost only. Per-component cost is **falling**: future overlays (Popover, DropdownMenu) should each add 10–20 kB, not 30+.
 
@@ -291,4 +297,4 @@ Before merging a PR that adds a component, confirm:
 
 ---
 
-*Last updated: PR #18 merge (Select family) — `origin/main` at `242d5fb2c`.*
+*Last updated: PR for Skeleton + Progress (Slice 3 of overnight worker run).*
