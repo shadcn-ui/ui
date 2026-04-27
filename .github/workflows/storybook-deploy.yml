@@ -1,0 +1,60 @@
+name: Deploy Storybook to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    name: build and deploy
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            packages/lead-ui/package-lock.json
+            apps/storybook/package-lock.json
+
+      - name: Install lead-ui dependencies
+        run: npm ci --prefix packages/lead-ui --workspaces=false
+
+      - name: Build lead-ui
+        run: npm run lead:ui:build
+
+      - name: Install Storybook dependencies
+        run: npm ci --prefix apps/storybook --workspaces=false
+
+      - name: Build Storybook
+        run: npm run lead:storybook:build
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/storybook/storybook-static
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
