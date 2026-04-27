@@ -1,6 +1,5 @@
 {
   "name": "vite-monorepo-imports",
   "private": true,
-  "packageManager": "pnpm@10.0.0",
   "workspaces": ["apps/*", "packages/*"]
 }
