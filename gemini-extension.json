@@ -1,0 +1,10 @@
+{
+  "name": "shadcn",
+  "version": "1.0.0",
+  "mcpServers": {
+    "shadcn": {
+      "command": "npx",
+      "args": ["shadcn@latest", "mcp"]
+    }
+  }
+}
