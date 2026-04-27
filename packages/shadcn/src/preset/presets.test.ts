@@ -84,6 +84,12 @@ describe("buildInitUrl", () => {
     expect(parsed.searchParams.get("chartColor")).toBe("emerald")
   })
 
+  it("should not include chartColor when it is neutral", () => {
+    const url = resolveInitUrl({ ...mockPreset, chartColor: "neutral" })
+    const parsed = new URL(url)
+    expect(parsed.searchParams.has("chartColor")).toBe(false)
+  })
+
   it("should include chartColor from default presets", () => {
     const url = resolveInitUrl({ ...DEFAULT_PRESETS.sera, base: "base" })
     const parsed = new URL(url)
