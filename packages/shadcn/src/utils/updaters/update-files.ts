@@ -667,56 +667,66 @@ export async function rewriteResolvedImportsInContent({
     return content
   }
 
-  const workingSourceFile =
-    sourceFile ??
-    project.createSourceFile(
-      path.join(
-        tmpdir(),
-        `shadcn-${Math.random().toString(36).slice(2)}${ext || ".tsx"}`
-      ),
-      content,
-      {
-        scriptKind: ScriptKind.TSX,
-        overwrite: true,
+  const createdSourceFile =
+    sourceFile === undefined
+      ? project.createSourceFile(
+          path.join(
+            tmpdir(),
+            `shadcn-${Math.random().toString(36).slice(2)}${ext || ".tsx"}`
+          ),
+          content,
+          {
+            scriptKind: ScriptKind.TSX,
+            overwrite: true,
+          }
+        )
+      : null
+  const workingSourceFile = sourceFile ?? createdSourceFile!
+
+  try {
+    let hasChanges = false
+
+    for (const importDeclaration of workingSourceFile.getImportDeclarations()) {
+      const moduleSpecifier = importDeclaration.getModuleSpecifierValue()
+
+      if (
+        !isLocalAliasImport(moduleSpecifier, projectInfo.aliasPrefix ?? null)
+      ) {
+        continue
       }
-    )
 
-  let hasChanges = false
+      const resolvedImportFilePath = await resolveImportFilePathForRewrite(
+        moduleSpecifier,
+        filePaths,
+        config,
+        tsConfig
+      )
 
-  for (const importDeclaration of workingSourceFile.getImportDeclarations()) {
-    const moduleSpecifier = importDeclaration.getModuleSpecifierValue()
+      if (!resolvedImportFilePath) {
+        continue
+      }
 
-    if (!isLocalAliasImport(moduleSpecifier, projectInfo.aliasPrefix ?? null)) {
-      continue
+      const newImport = toAliasedImport(
+        resolvedImportFilePath,
+        config,
+        projectInfo,
+        resolvedPath
+      )
+
+      if (!newImport || newImport === moduleSpecifier) {
+        continue
+      }
+
+      importDeclaration.setModuleSpecifier(newImport)
+      hasChanges = true
     }
 
-    const resolvedImportFilePath = await resolveImportFilePathForRewrite(
-      moduleSpecifier,
-      filePaths,
-      config,
-      tsConfig
-    )
-
-    if (!resolvedImportFilePath) {
-      continue
+    return hasChanges ? workingSourceFile.getFullText() : content
+  } finally {
+    if (createdSourceFile) {
+      project.removeSourceFile(createdSourceFile)
     }
-
-    const newImport = toAliasedImport(
-      resolvedImportFilePath,
-      config,
-      projectInfo,
-      resolvedPath
-    )
-
-    if (!newImport || newImport === moduleSpecifier) {
-      continue
-    }
-
-    importDeclaration.setModuleSpecifier(newImport)
-    hasChanges = true
   }
-
-  return hasChanges ? workingSourceFile.getFullText() : content
 }
 
 async function resolveImportFilePathForRewrite(

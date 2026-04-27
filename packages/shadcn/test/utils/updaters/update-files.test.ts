@@ -2,6 +2,7 @@ import { existsSync, promises as fs } from "fs"
 import path from "path"
 import { afterAll, afterEach, describe, expect, test, vi } from "vitest"
 import prompts from "prompts"
+import { Project } from "ts-morph"
 
 import { getConfig } from "../../../src/utils/get-config"
 import {
@@ -9,6 +10,7 @@ import {
   resolveFilePath,
   resolveModuleByProbablePath,
   resolveNestedFilePath,
+  rewriteResolvedImportsInContent,
   toAliasedImport,
   updateFiles,
 } from "../../../src/utils/updaters/update-files"
@@ -1364,6 +1366,38 @@ export function Button() {
       writeFileMock.mockResolvedValue(undefined)
       await fsActual.rm(tempDir, { recursive: true, force: true }).catch(() => {})
     }
+  })
+
+  test("should remove temporary source files after rewriting content", async () => {
+    const project = new Project({
+      compilerOptions: {},
+    })
+    const content = "export const value = 1\n"
+
+    await expect(
+      rewriteResolvedImportsInContent({
+        content,
+        resolvedPath: "/tmp/example.ts",
+        filePaths: [],
+        config: {
+          aliases: {},
+          resolvedPaths: {
+            cwd: "/tmp",
+          },
+        } as any,
+        projectInfo: {
+          aliasPrefix: "#",
+        } as any,
+        tsConfig: {
+          resultType: "success",
+          absoluteBaseUrl: "/tmp",
+          paths: {},
+        } as any,
+        project,
+      })
+    ).resolves.toBe(content)
+
+    expect(project.getSourceFiles()).toHaveLength(0)
   })
 
   test("should mark .env file as created when it doesn't exist", async () => {

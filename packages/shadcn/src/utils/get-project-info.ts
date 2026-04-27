@@ -387,7 +387,7 @@ export async function getTsConfig(cwd: string) {
     let parsed
 
     try {
-      parsed = JSON.parse(stripJsonComments(contents))
+      parsed = JSON.parse(stripJsonCommentsAndTrailingCommas(contents))
     } catch {
       continue
     }
@@ -404,7 +404,7 @@ export async function getTsConfig(cwd: string) {
   return null
 }
 
-function stripJsonComments(value: string) {
+function stripJsonCommentsAndTrailingCommas(value: string) {
   let result = ""
   let inString = false
   let escaped = false
@@ -468,6 +468,50 @@ function stripJsonComments(value: string) {
       }
 
       continue
+    }
+
+    if (current === ",") {
+      let nextIndex = index + 1
+
+      while (nextIndex < value.length) {
+        while (/\s/.test(value[nextIndex] ?? "")) {
+          nextIndex++
+        }
+
+        if (value[nextIndex] === "/" && value[nextIndex + 1] === "/") {
+          nextIndex += 2
+
+          while (
+            nextIndex < value.length &&
+            value[nextIndex] !== "\n" &&
+            value[nextIndex] !== "\r"
+          ) {
+            nextIndex++
+          }
+
+          continue
+        }
+
+        if (value[nextIndex] === "/" && value[nextIndex + 1] === "*") {
+          nextIndex += 2
+
+          while (
+            nextIndex < value.length &&
+            !(value[nextIndex] === "*" && value[nextIndex + 1] === "/")
+          ) {
+            nextIndex++
+          }
+
+          nextIndex += 2
+          continue
+        }
+
+        break
+      }
+
+      if (value[nextIndex] === "}" || value[nextIndex] === "]") {
+        continue
+      }
     }
 
     result += current
