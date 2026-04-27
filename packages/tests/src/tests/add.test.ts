@@ -12,6 +12,19 @@ import {
 // Note: The tests here intentionally do not use a mocked registry.
 // We test this against the real registry.
 
+function expectCommandSuccess(result: Awaited<ReturnType<typeof npxShadcn>>) {
+  expect(
+    result.exitCode,
+    [
+      `Expected command to exit with 0, got ${result.exitCode}.`,
+      "stdout:",
+      result.stdout || "<empty>",
+      "stderr:",
+      result.stderr || "<empty>",
+    ].join("\n")
+  ).toBe(0)
+}
+
 describe("shadcn add", () => {
   it("should add item to project", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
@@ -171,7 +184,7 @@ describe("shadcn add", () => {
 
     const result = await npxShadcn(fixturePath, ["add", "button", "--dry-run"])
 
-    expect(result.exitCode).toBe(0)
+    expectCommandSuccess(result)
     expect(result.stdout).toContain("shadcn add button (dry run)")
     expect(result.stdout).toContain("components/ui/button.tsx")
     expect(result.stdout).toContain("Run without --dry-run to apply.")
@@ -193,7 +206,7 @@ describe("shadcn add", () => {
       "--yes",
     ])
 
-    expect(result.exitCode).toBe(0)
+    expectCommandSuccess(result)
     expect(result.stdout).toContain("shadcn add button (dry run)")
     expect(result.stdout).toContain("components/ui/button.tsx (skip)")
     expect(result.stdout).toContain("No changes.")
@@ -220,7 +233,7 @@ describe("shadcn add", () => {
       "add",
       "../../fixtures/registry/example-item-to-root.json",
     ])
-    expect(result.exitCode).toBe(0)
+    expectCommandSuccess(result)
     expect(await fs.pathExists(path.join(fixturePath, "config.json"))).toBe(
       true
     )
@@ -274,7 +287,7 @@ describe("shadcn add", () => {
       { timeout: 300000 }
     )
 
-    expect(result.exitCode).toBe(0)
+    expectCommandSuccess(result)
 
     expect(
       await fs.pathExists(
@@ -344,11 +357,12 @@ describe("shadcn add", () => {
       "vite-monorepo-imports"
     )
 
-    await npxShadcn(
+    const setupResult = await npxShadcn(
       fixturePath,
       ["add", "login-03", "-c", "apps/web", "--yes"],
       { timeout: 300000 }
     )
+    expectCommandSuccess(setupResult)
 
     const result = await npxShadcn(
       fixturePath,
@@ -356,7 +370,7 @@ describe("shadcn add", () => {
       { timeout: 300000 }
     )
 
-    expect(result.exitCode).toBe(0)
+    expectCommandSuccess(result)
     expect(result.stdout).toContain("shadcn add login-03 (dry run)")
     expect(result.stdout).toContain("src/components/login-form.tsx (skip)")
     expect(result.stdout).toContain("No changes.")
