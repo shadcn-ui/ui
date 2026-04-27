@@ -1,0 +1,44 @@
+.lead-FieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lead-space-4);
+  font-family: var(--lead-font-family-sans);
+}
+
+.lead-Field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lead-space-1);
+}
+
+.lead-Field[data-orientation="horizontal"] {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--lead-space-3);
+}
+
+.lead-FieldDescription {
+  color: var(--lead-color-text-muted);
+  font-family: var(--lead-font-family-sans);
+  font-size: var(--lead-font-size-sm);
+  font-weight: var(--lead-font-weight-medium);
+  line-height: var(--lead-line-height-tight);
+  margin: 0;
+}
+
+.lead-FieldDescription[data-disabled="true"] {
+  color: var(--lead-color-text-disabled);
+}
+
+.lead-FieldError {
+  color: var(--lead-color-action-danger-default);
+  font-family: var(--lead-font-family-sans);
+  font-size: var(--lead-font-size-sm);
+  font-weight: var(--lead-font-weight-semibold);
+  line-height: var(--lead-line-height-tight);
+  margin: 0;
+}
+
+.lead-FieldError[data-disabled="true"] {
+  color: var(--lead-color-text-disabled);
+}
