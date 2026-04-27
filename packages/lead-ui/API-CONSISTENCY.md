@@ -47,6 +47,14 @@ As of the latest merge to `main`, the package exports the following components:
 |---|---|---|
 | `Dialog` family | `@radix-ui/react-dialog` | `Dialog`, `DialogTrigger`, `DialogContent`, `DialogHeader`, `DialogTitle`, `DialogDescription`, `DialogFooter`, `DialogClose`. Sizes `sm`/`md`/`lg`. |
 | `Tooltip` family | `@radix-ui/react-tooltip` | `Tooltip`, `TooltipTrigger`, `TooltipContent`, `TooltipProvider`. Side/align props passthrough. |
+| `Popover` family | `@radix-ui/react-popover` | `Popover`, `PopoverTrigger`, `PopoverContent`, `PopoverClose`, `PopoverAnchor`. Side/align/sideOffset passthrough; opt-out `withArrow`. |
+| `DropdownMenu` family | `@radix-ui/react-dropdown-menu` | Trigger + Content + Item / CheckboxItem / RadioGroup+RadioItem / Label / Separator / Group + submenus via Sub/SubTrigger/SubContent. |
+
+### Layout / structural
+| Component | Backed by | Notes |
+|---|---|---|
+| `Tabs` family | `@radix-ui/react-tabs` | `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent`. Sizes `sm`/`md`/`lg` cascade via context (overridable per trigger). Horizontal (default) or vertical orientation. |
+| `Accordion` family | `@radix-ui/react-accordion` | `Accordion`, `AccordionItem`, `AccordionTrigger`, `AccordionContent`. `type="single"` (with `collapsible`) or `type="multiple"`. Built-in chevron indicator on the trigger. |
 
 ---
 
@@ -166,6 +174,10 @@ Lead-owned components consume Radix primitives where Radix solves an accessibili
 | `Dialog` family | `@radix-ui/react-dialog` |
 | `Tooltip` family | `@radix-ui/react-tooltip` |
 | `Select` family | `@radix-ui/react-select` |
+| `Popover` family | `@radix-ui/react-popover` |
+| `DropdownMenu` family | `@radix-ui/react-dropdown-menu` |
+| `Tabs` family | `@radix-ui/react-tabs` |
+| `Accordion` family | `@radix-ui/react-accordion` |
 
 ### Components that do NOT use Radix
 - `Button`, `Input`, `Label`, `Field` family, `Card` family, `Separator`, `Badge`, `Alert` family, `Skeleton` — pure React + CSS variables.
@@ -243,6 +255,14 @@ Two specific jsdom gaps documented inline:
 
 Submenu open/close (`DropdownMenuSub*`) is also not tested for the same reasons; covered visually in Storybook.
 
+### Tabs — `Tabs.test.tsx`
+Tests cover list/triggers/content rendering, `defaultValue`, controlled `value` + `onValueChange` (via external opener), disabled trigger `data-disabled`, vertical orientation `data-orientation`, size context propagation + per-trigger override, ref forwarding, and className passthrough.
+
+**Tabs-specific testing surprise:** `fireEvent.click` on a `TabsTrigger` does **not** activate the tab under jsdom — Radix Tabs wires its own pointerdown handler that jsdom does not faithfully simulate (same pattern as Select / DropdownMenu). The "activates a different tab" test uses **focus + Enter** keyboard activation instead (Radix supports both equally). The controlled `onValueChange` test drives state via an external opener button rather than clicking a trigger directly. Visual coverage of click activation lives in Storybook.
+
+### Accordion — `Accordion.test.tsx`
+Tests cover trigger rendering, default open state via `defaultValue`, click-to-open + collapse (single + collapsible), single-mode auto-close-on-open-other, multiple mode with multiple items open, disabled item, chevron `data-state` reflection, controlled `value` + `onValueChange`, ref forwarding, and className passthrough. **No animation-height assertions** — Radix uses CSS variables for height transitions that jsdom doesn't compute. Open/closed state is asserted via `aria-expanded` and `data-state`, not visible content presence.
+
 ---
 
 ## 7. Bundle size
@@ -261,9 +281,13 @@ Tracked at every Radix-introducing PR. Numbers are unminified `dist/index.js` (E
 | Radix Select | 168.2 kB | 44.9 kB | 24.1 kB | 3.5 kB | +33.6 kB |
 | Skeleton + Radix Progress | 175.7 kB | 47.2 kB | 26.0 kB | 3.8 kB | +7.5 kB |
 | API decisions (Alert icon slot) | 175.97 kB | 47.28 kB | 26.17 kB | 3.83 kB | +0.07 kB |
-| Radix Popover + DropdownMenu | **215.1 kB** | **54.73 kB** | **29.1 kB** | **4.11 kB** | +7.45 kB |
+| Radix Popover + DropdownMenu | 215.1 kB | 54.73 kB | 29.1 kB | 4.11 kB | +7.45 kB |
+| Skeleton + Radix Progress | 175.7 kB | 47.2 kB | 26.0 kB | 3.8 kB | +7.5 kB |
+| API decisions (Alert icon slot) | 175.97 kB | 47.28 kB | 26.17 kB | 3.83 kB | +0.07 kB |
+| Radix Popover + DropdownMenu | 215.1 kB | 54.73 kB | 29.1 kB | 4.11 kB | +7.45 kB |
+| Radix Tabs + Accordion | **230.20 kB** | **57.70 kB** 🟢 | **33.86 kB** | **4.58 kB** | +2.97 kB |
 
-**Pattern confirmed:** the first Radix PR in a primitive family pays a one-time tax for shared internals (`react-portal`, `react-presence`, `react-popper`, `floating-ui`, etc.). Subsequent components in the same family add their behavioral cost only. Per-component cost is **falling**: Popover + DropdownMenu added only +7.45 kB gzipped JS combined despite shipping 18 new component exports — they share overlay internals already paid for by Dialog/Tooltip/Select. Current 54.73 kB gzipped is 🟢 OK against the §8.3 budget (warn at 60).
+**Pattern confirmed.** The first Radix PR in a primitive family pays a one-time tax for shared internals (`react-portal`, `react-presence`, `react-popper`, `floating-ui`, etc.). Subsequent components in the same family add their behavioral cost only. Tabs and Accordion added just **+2.97 kB gzipped JS** combined (8 new component exports) because they reuse `react-roving-focus` (Tabs), `react-collapsible` (Accordion), and the same context/composition helpers already in the bundle. Current **57.70 kB gzipped is 🟢 OK** against the §8.3 budget (warn at 60). Headroom is now ~2.30 kB — the next single Radix component will likely cross the 🟡 warn line; that's expected and documented, not a failure.
 
 When the consumer build pipeline is properly set up (named ESM imports + tree-shaking), unused components are excluded. The `dist/` numbers above are the worst-case "import everything" baseline.
 

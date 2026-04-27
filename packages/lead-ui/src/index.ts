@@ -207,6 +207,33 @@ export type {
   DropdownMenuTriggerProps,
 } from "./components/DropdownMenu/DropdownMenu"
 
+export {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "./components/Tabs/Tabs"
+export type {
+  TabsContentProps,
+  TabsListProps,
+  TabsProps,
+  TabsSize,
+  TabsTriggerProps,
+} from "./components/Tabs/Tabs"
+
+export {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./components/Accordion/Accordion"
+export type {
+  AccordionContentProps,
+  AccordionItemProps,
+  AccordionProps,
+  AccordionTriggerProps,
+} from "./components/Accordion/Accordion"
+
 export { Skeleton } from "./components/Skeleton/Skeleton"
 export type {
   SkeletonProps,

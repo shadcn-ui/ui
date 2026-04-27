@@ -36,6 +36,8 @@ PR #1 skeleton. One component (`Button`) wired against placeholder CSS variables
 - `Progress` — Radix-backed progress bar; sizes `sm`/`md`/`lg`, variants `default`/`success`/`warning`/`danger`, plus indeterminate when `value` is omitted or `null`. Always pair with `aria-label` or `aria-labelledby`.
 - `Popover` family — Radix-backed popover. Compose `Popover` + `PopoverTrigger` + `PopoverContent` + (optional) `PopoverClose` + `PopoverAnchor`. Side/align/sideOffset passthrough; opt-out `withArrow`. Trigger and Close expose `asChild`.
 - `DropdownMenu` family — Radix-backed menu with `DropdownMenuTrigger`, `DropdownMenuContent`, `DropdownMenuItem`, `DropdownMenuLabel`, `DropdownMenuSeparator`, `DropdownMenuGroup`, plus state-bearing `DropdownMenuCheckboxItem` and `DropdownMenuRadioGroup` + `DropdownMenuRadioItem`. Submenus via `DropdownMenuSub` + `DropdownMenuSubTrigger` + `DropdownMenuSubContent`. Trigger exposes `asChild`.
+- `Tabs` family — Radix-backed tabs. Compose `Tabs` + `TabsList` + `TabsTrigger` + `TabsContent`. Sizes (`sm`/`md`/`lg`) cascade from `Tabs` root via context (overridable per trigger). Supports horizontal (default) and vertical orientation via Radix's `orientation` prop. Active state styled via `data-state="active"`.
+- `Accordion` family — Radix-backed accordion. Compose `Accordion` + `AccordionItem` + `AccordionTrigger` + `AccordionContent`. `type="single"` (with `collapsible`) for one-open-at-a-time; `type="multiple"` for any combination open. Built-in chevron rotates on open via `data-state`.
 
 ## Setup
 
