@@ -270,6 +270,12 @@
     "description": "A shadcn-ui compatible registry distributing 40+ glassmorphic React/TypeScript components with Apple-inspired design. Components include enhanced visual effects (glow, shimmer, ripple), theme support, and customizable glassmorphism styling."
   },
   {
+    "name": "@glasscn",
+    "homepage": "https://glasscn.vercel.app/",
+    "url": "https://glasscn-components.vercel.app/r/{name}.json",
+    "description": "A shadcn-compatible registry of glassmorphism components inspired by Apple"
+  },
+  {
     "name": "@ha-components",
     "homepage": "https://hacomponents.keshuac.com",
     "url": "https://hacomponents.keshuac.com/r/{name}.json",
@@ -346,6 +352,12 @@
     "homepage": "https://limeplay.winoffrg.dev",
     "url": "https://limeplay.winoffrg.dev/r/{name}.json",
     "description": "Modern UI Library for building media players in React. Powered by Shaka Player."
+  },
+  {
+    "name": "@loading-ui",
+    "homepage": "https://loading-ui.com",
+    "url": "https://loading-ui.com/r/{name}.json",
+    "description": "Spinners, loaders, and loading animations for modern web apps. Free and open-source."
   },
   {
     "name": "@lmscn",
@@ -591,7 +603,7 @@
     "name": "@shadcnblocks",
     "homepage": "https://shadcnblocks.com",
     "url": "https://shadcnblocks.com/r/{name}.json",
-    "description": "A registry with hundreds of extra blocks for shadcn ui."
+    "description": "A shadcn/ui registry with 1429 blocks, 1189 component variants, 14 templates, themes, and admin dashboard patterns."
   },
   {
     "name": "@shadcndesign",
@@ -1030,5 +1042,29 @@
     "homepage": "https://www.remocn.dev/",
     "url": "https://www.remocn.dev/r/{name}.json",
     "description": "Production-ready components for Remotion - text animations, backgrounds, transitions, UI blocks, and full scene compositions"
+  },
+  {
+    "name": "@exabase",
+    "homepage": "https://exawizards.com/exabase/design/",
+    "url": "https://exawizards.com/exabase/design/registry/{name}.json",
+    "description": "A collection of UI components based on the exaBase Design System, built with React and Tailwind CSS."
+  },
+  {
+    "name": "@aicanvas",
+    "homepage": "https://aicanvas.me",
+    "url": "https://aicanvas.me/r/{name}.json",
+    "description": "54 animated React components with AI reproduction prompts for Claude Code, Lovable, and v0. Free and open source."
+  },
+  {
+    "name": "@xcn",
+    "homepage": "https://ui.radiumcoders.com",
+    "url": "https://ui.radiumcoders.com/r/xcn/{name}.json",
+    "description": "Hand-crafted, beautiful, and minimal UI components built with Tailwind CSS and Motion."
+  },
+  {
+    "name": "@dotmatrix",
+    "homepage": "https://dotmatrix.zzzzshawn.cloud",
+    "url": "https://dotmatrix.zzzzshawn.cloud/r/{name}.json",
+    "description": "Production-ready dot-matrix loading components for React, featuring square, circular, and triangle animations with polished motion."
   }
 ]

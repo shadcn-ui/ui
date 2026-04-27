@@ -76,6 +76,7 @@ export const initOptionsSchema = z.object({
   isNewProject: z.boolean().default(false),
   cssVariables: z.boolean().default(true),
   rtl: z.boolean().optional(),
+  pointer: z.boolean().optional(),
   base: z.enum(["radix", "base"]).optional(),
   template: z.string().optional(),
   monorepo: z.boolean().optional(),
@@ -93,6 +94,25 @@ export const initOptionsSchema = z.object({
   menuAccent: z.enum(["subtle", "bold"]).optional(),
   iconLibrary: z.string().optional(),
 })
+
+export function applyInitUrlOptions(
+  url: URL,
+  options: Pick<z.infer<typeof initOptionsSchema>, "rtl" | "pointer">
+) {
+  if (options.rtl) {
+    url.searchParams.set("rtl", "true")
+  } else if (options.rtl === false) {
+    url.searchParams.delete("rtl")
+  }
+
+  if (options.pointer) {
+    url.searchParams.set("pointer", "true")
+  } else if (options.pointer === false) {
+    url.searchParams.delete("pointer")
+  }
+
+  return url
+}
 
 export const init = new Command()
   .name("init")
@@ -125,6 +145,8 @@ export const init = new Command()
   .option("--no-css-variables", "do not use css variables for theming.")
   .option("--rtl", "enable RTL support.")
   .option("--no-rtl", "disable RTL support.")
+  .option("--pointer", "enable pointer cursor for buttons.")
+  .option("--no-pointer", "disable pointer cursor for buttons.")
   .option("--reinstall", "re-install existing UI components.")
   .option("--no-reinstall", "do not re-install existing UI components.")
   .action(async (components, opts) => {
@@ -369,6 +391,7 @@ export const init = new Command()
             rtl: options.rtl ?? false,
             template: options.template,
             base: options.base!,
+            pointer: options.pointer,
           })
           components = [result.url, ...components]
           presetBase = result.base
@@ -379,11 +402,7 @@ export const init = new Command()
 
           if (isUrl(presetArg)) {
             const url = new URL(presetArg)
-            if (options.rtl) {
-              url.searchParams.set("rtl", "true")
-            } else if (options.rtl === false) {
-              url.searchParams.delete("rtl")
-            }
+            applyInitUrlOptions(url, options)
             if (url.pathname === "/init" && presetArg.startsWith(SHADCN_URL)) {
               url.searchParams.set("track", "1")
             }
@@ -406,7 +425,11 @@ export const init = new Command()
                 base: "radix",
                 rtl: options.rtl ?? false,
               },
-              { template: options.template, preset: presetArg }
+              {
+                template: options.template,
+                preset: presetArg,
+                pointer: options.pointer,
+              }
             )
             presetBase = undefined
           } else {
@@ -420,7 +443,7 @@ export const init = new Command()
                 base: options.base ?? "radix",
                 rtl: options.rtl ?? preset.rtl,
               },
-              { template: options.template }
+              { template: options.template, pointer: options.pointer }
             )
             presetBase = undefined
           }
@@ -459,7 +482,7 @@ export const init = new Command()
             base: resolvedBase,
             rtl: options.rtl ?? false,
           },
-          { template: options.template }
+          { template: options.template, pointer: options.pointer }
         )
         components = [initUrl, ...components]
       }
@@ -606,6 +629,8 @@ export async function runInit(
     projectInfo = await getProjectInfo(options.cwd)
   }
 
+  const didCreateProject = Boolean(newProjectTemplate)
+
   // Use the template from project creation if available,
   // or fall back to the explicit --template flag.
   const templateKey = newProjectTemplate ?? explicitTemplate
@@ -632,8 +657,10 @@ export async function runInit(
       silent: options.silent,
     })
 
-    // Run postInit for new projects (e.g. git init).
-    await selectedTemplate.postInit({ projectPath: options.cwd })
+    // Run postInit only for newly scaffolded projects (e.g. git init).
+    if (didCreateProject) {
+      await selectedTemplate.postInit({ projectPath: options.cwd })
+    }
 
     return result
   }
@@ -770,8 +797,8 @@ export async function runInit(
       options.isNewProject || projectInfo?.framework.name === "next-app",
   })
 
-  // Run postInit for new projects without a custom init (e.g. git init).
-  if (selectedTemplate) {
+  // Run postInit for newly scaffolded projects without a custom init (e.g. git init).
+  if (selectedTemplate && didCreateProject) {
     await selectedTemplate.postInit({ projectPath: options.cwd })
   }
 

@@ -17,6 +17,7 @@ export default function SwitchExample() {
     <ExampleWrapper>
       <SwitchBasic />
       <SwitchWithDescription />
+      <SwitchWithLabel />
       <SwitchDisabled />
       <SwitchSizes />
     </ExampleWrapper>
