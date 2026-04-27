@@ -44,13 +44,10 @@ export const TAILWIND_COLOR_FAMILIES = [
 export type TailwindColorScale = (typeof TAILWIND_COLOR_SCALES)[number]
 export type TailwindColorFamily = (typeof TAILWIND_COLOR_FAMILIES)[number]
 
-function parseCatalog<T>(catalog: string) {
-  return JSON.parse(catalog) as T
-}
-
-export const TAILWIND_COLORS = parseCatalog<
-  Record<TailwindColorFamily, Record<TailwindColorScale, string>>
->(String.raw`{
+export const TAILWIND_COLORS: Record<
+  TailwindColorFamily,
+  Record<TailwindColorScale, string>
+> = {
   "red": {
     "50": "oklch(97.1% 0.013 17.38)",
     "100": "oklch(93.6% 0.032 17.717)",
@@ -389,8 +386,10 @@ export const TAILWIND_COLORS = parseCatalog<
     "900": "oklch(21.4% 0.009 43.1)",
     "950": "oklch(14.7% 0.004 49.3)"
   }
-}`)
+}
 
+// Old preset codes only carried one theme value, so these legacy chart HSLs
+// should resolve to a neutral fallback family instead of a separate theme.
 const LEGACY_COLOR_FAMILY_ALIASES: Record<string, TailwindColorFamily> = {
   "220.9 39.3% 11%": "gray",
   "210 20% 98%": "gray",
