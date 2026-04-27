@@ -134,8 +134,14 @@ function transformStringLiteralNode(node: {
   getText(): string
   replaceWithText(text: string): void
 }) {
-  const text = stripQuotes(node.getText() ?? "")
-  node.replaceWithText(`"${applyRtlMapping(text)}"`)
+  const originalText = node.getText() ?? ""
+  const quoteChar = originalText.startsWith("'") ? "'" : '"'
+  const text = stripQuotes(originalText)
+  const escaped = applyRtlMapping(text).replace(
+    new RegExp(quoteChar, "g"),
+    `\\${quoteChar}`
+  )
+  node.replaceWithText(`${quoteChar}${escaped}${quoteChar}`)
 }
 
 export function applyRtlMapping(input: string) {
@@ -421,10 +427,12 @@ function applyRtlTransformToSourceFile(sourceFile: SourceFile) {
       return
     }
 
-    const currentValue = stripQuotes(sideValue.getText() ?? "")
+    const originalText = sideValue.getText() ?? ""
+    const quoteChar = originalText.startsWith("'") ? "'" : '"'
+    const currentValue = stripQuotes(originalText)
     const mappedValue = RTL_SIDE_PROP_MAPPINGS[currentValue]
     if (mappedValue) {
-      sideValue.replaceWithText(`"${mappedValue}"`)
+      sideValue.replaceWithText(`${quoteChar}${mappedValue}${quoteChar}`)
     }
   })
 
@@ -450,10 +458,12 @@ function applyRtlTransformToSourceFile(sourceFile: SourceFile) {
       return
     }
 
-    const currentValue = stripQuotes(initializer.getText() ?? "")
+    const originalText = initializer.getText() ?? ""
+    const quoteChar = originalText.startsWith("'") ? "'" : '"'
+    const currentValue = stripQuotes(originalText)
     const mappedValue = RTL_SIDE_PROP_MAPPINGS[currentValue]
     if (mappedValue) {
-      initializer.replaceWithText(`"${mappedValue}"`)
+      initializer.replaceWithText(`${quoteChar}${mappedValue}${quoteChar}`)
     }
   })
 }
