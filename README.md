@@ -1,15 +1,12 @@
 # Lead Design System
 
-Lead's design-system monorepo: component-library source, registry tooling, and the CLI-ready token pipeline that feeds the Figma library and downstream app builds.
-
-This repository is based on the public `shadcn-ui/ui` codebase so we can keep the component-registry structure, templates, and CLI patterns while layering Lead-owned tokens, governance, and documentation on top.
+Lead's design-system monorepo: the CLI-ready token pipeline that feeds the Figma library and downstream app builds, plus the Figma Code Connect publishing pipeline.
 
 ## What's Here
 
-- `apps/v4/` contains the upstream documentation and registry app structure that the component library builds from.
-- `packages/shadcn/` contains the upstream component CLI package that this fork can evolve into a Lead-flavored library surface.
-- `packages/lead-design-tokens-cli/` contains the Lead token pipeline scaffold: import, normalize, lint, build, decision checks, schemas, and authored token inputs.
-- `templates/` contains starter app templates inherited from the upstream library.
+- `packages/lead-design-tokens-cli/` contains the Lead token pipeline: import, normalize, lint, build, decision checks, schemas, and authored token inputs.
+- `docs/figma-to-code-sync.md` documents the Figma-to-code release process.
+- `figma.config.json` and `.github/workflows/figma-code-connect.yml` drive Figma Code Connect publishing.
 
 ## Quick Start
 
@@ -43,7 +40,3 @@ Start here:
 The companion Figma staging file is organized as a CLI-ready design system library with foundations, documentation, component pages, Lead Blocks pages, and local variables for light/dark modes.
 
 For the Figma-to-code release process, see [docs/figma-to-code-sync.md](docs/figma-to-code-sync.md).
-
-## Upstream
-
-The `upstream` git remote points at `https://github.com/shadcn-ui/ui.git` for history and future reference. Lead-owned changes should be made on branches in this repository and reviewed before merging.
