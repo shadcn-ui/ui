@@ -1,0 +1,43 @@
+.lead-Skeleton {
+  display: block;
+  background-color: var(--lead-color-surface-muted);
+  background-image: linear-gradient(
+    90deg,
+    var(--lead-color-surface-muted) 0%,
+    rgba(214, 216, 224, 0.6) 50%,
+    var(--lead-color-surface-muted) 100%
+  );
+  background-size: 200% 100%;
+  animation: lead-Skeleton-shimmer 1.4s linear infinite;
+}
+
+@keyframes lead-Skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Shapes */
+.lead-Skeleton[data-shape="text"] {
+  height: 1em;
+  border-radius: var(--lead-radius-sm);
+  width: 100%;
+}
+
+.lead-Skeleton[data-shape="rect"] {
+  border-radius: var(--lead-radius-md);
+}
+
+.lead-Skeleton[data-shape="circle"] {
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lead-Skeleton {
+    animation: none;
+  }
+}

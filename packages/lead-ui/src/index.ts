@@ -160,3 +160,16 @@ export type {
   SelectTriggerProps,
   SelectValueProps,
 } from "./components/Select/Select"
+
+export { Skeleton } from "./components/Skeleton/Skeleton"
+export type {
+  SkeletonProps,
+  SkeletonShape,
+} from "./components/Skeleton/Skeleton"
+
+export { Progress } from "./components/Progress/Progress"
+export type {
+  ProgressProps,
+  ProgressSize,
+  ProgressVariant,
+} from "./components/Progress/Progress"

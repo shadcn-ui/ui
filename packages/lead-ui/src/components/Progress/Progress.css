@@ -1,0 +1,66 @@
+.lead-Progress {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--lead-color-surface-muted);
+  border-radius: 9999px;
+  width: 100%;
+  height: 8px;
+  /* Fix overflow clipping issue on iOS / Safari. */
+  transform: translateZ(0);
+}
+
+.lead-Progress[data-size="sm"] {
+  height: 6px;
+}
+.lead-Progress[data-size="md"] {
+  height: 8px;
+}
+.lead-Progress[data-size="lg"] {
+  height: 12px;
+}
+
+.lead-Progress__indicator {
+  width: 100%;
+  height: 100%;
+  background-color: var(--lead-color-action-primary-default);
+  transition:
+    transform 240ms var(--lead-easing-standard),
+    background-color var(--lead-duration-fast) var(--lead-easing-standard);
+}
+
+.lead-Progress[data-state="indeterminate"] .lead-Progress__indicator {
+  width: 35%;
+  animation: lead-Progress-indeterminate 1.2s infinite linear;
+  transform: translateX(-100%);
+}
+
+.lead-Progress[data-variant="success"] .lead-Progress__indicator {
+  background-color: #138a4a;
+}
+.lead-Progress[data-variant="warning"] .lead-Progress__indicator {
+  background-color: #b87a14;
+}
+.lead-Progress[data-variant="danger"] .lead-Progress__indicator {
+  background-color: var(--lead-color-action-danger-default);
+}
+
+@keyframes lead-Progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(285%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lead-Progress__indicator {
+    transition: none;
+  }
+  .lead-Progress[data-state="indeterminate"] .lead-Progress__indicator {
+    animation: none;
+    width: 100%;
+    transform: translateX(0);
+    opacity: 0.6;
+  }
+}
