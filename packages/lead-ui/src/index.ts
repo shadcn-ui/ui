@@ -134,3 +134,29 @@ export type {
   TooltipProviderProps,
   TooltipTriggerProps,
 } from "./components/Tooltip/Tooltip"
+
+export {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from "./components/Select/Select"
+export type {
+  SelectContentProps,
+  SelectGroupProps,
+  SelectItemProps,
+  SelectLabelProps,
+  SelectProps,
+  SelectScrollDownButtonProps,
+  SelectScrollUpButtonProps,
+  SelectSeparatorProps,
+  SelectSize,
+  SelectTriggerProps,
+  SelectValueProps,
+} from "./components/Select/Select"
