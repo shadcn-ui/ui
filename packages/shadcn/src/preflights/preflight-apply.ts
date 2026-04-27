@@ -29,7 +29,7 @@ export async function preFlightApply(options: { cwd: string }) {
   if (!fs.existsSync(path.resolve(options.cwd, "components.json"))) {
     if (await isMonorepoRoot(options.cwd)) {
       const targets = await getMonorepoTargets(options.cwd)
-      const applyTargets = []
+      const applyTargets: typeof targets = []
 
       for (const target of targets) {
         const projectInfo = await getProjectInfo(

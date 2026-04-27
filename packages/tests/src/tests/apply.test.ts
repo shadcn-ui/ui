@@ -493,6 +493,58 @@ describe("shadcn apply", () => {
   })
 
   itIfNotCi(
+    "should keep the app config updated when linked workspace sync fails",
+    async () => {
+      const { projectPath, rootDir } = await createInitializedMonorepoProject()
+      const presetUrl = `${getRegistryUrl().replace(/\/r\/?$/, "")}/init?base=base&style=lyra&baseColor=neutral&theme=neutral&iconLibrary=phosphor&font=manrope&rtl=true&menuAccent=bold&menuColor=inverted&radius=default`
+      const appConfigPath = path.join(projectPath, "apps/web/components.json")
+      const uiConfigPath = path.join(projectPath, "packages/ui/components.json")
+      const buttonPath = path.join(
+        projectPath,
+        "packages/ui/src/components/button.tsx"
+      )
+      const originalButton = await fs.readFile(buttonPath, "utf8")
+
+      await fs.ensureDir(`${uiConfigPath}.bak`)
+
+      try {
+        const result = await npxShadcn(
+          projectPath,
+          ["apply", "--preset", presetUrl, "-y", "-c", "apps/web"],
+          {
+            timeout: 300000,
+          }
+        )
+
+        expect(result.exitCode).toBe(1)
+        expect(result.stdout).toContain(
+          "Failed to sync linked workspace configs"
+        )
+
+        const appConfig = await fs.readJson(appConfigPath)
+        const uiConfig = await fs.readJson(uiConfigPath)
+        expect(appConfig.style).toBe("radix-lyra")
+        expect(appConfig.iconLibrary).toBe("phosphor")
+        expect(appConfig.menuColor).toBe("inverted")
+        expect(appConfig.menuAccent).toBe("bold")
+        expect(appConfig.rtl).toBe(false)
+
+        expect(uiConfig.style).toBe("radix-nova")
+        expect(uiConfig.tailwind.baseColor).toBe("neutral")
+        expect(uiConfig.tailwind.cssVariables).toBe(true)
+        expect(uiConfig.iconLibrary).toBe("phosphor")
+        expect(uiConfig.menuColor).toBe("inverted")
+        expect(uiConfig.menuAccent).toBe("bold")
+        expect(uiConfig.rtl).toBe(false)
+        expect(await fs.readFile(buttonPath, "utf8")).not.toBe(originalButton)
+      } finally {
+        await fs.remove(rootDir)
+      }
+    },
+    300000
+  )
+
+  itIfNotCi(
     "should sync linked workspace configs when applying from apps/web",
     async () => {
       const { projectPath, rootDir } = await createInitializedMonorepoProject()

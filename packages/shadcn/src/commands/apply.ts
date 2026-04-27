@@ -16,7 +16,13 @@ import { isUrl } from "@/src/registry/utils"
 import { getTemplateForFramework } from "@/src/templates/index"
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
-import { FileBackupError, withFileBackup } from "@/src/utils/file-helper"
+import {
+  createFileBackup,
+  deleteFileBackup,
+  FileBackupError,
+  restoreFileBackup,
+  withFileBackup,
+} from "@/src/utils/file-helper"
 import {
   getBase,
   getWorkspaceConfig,
@@ -50,6 +56,13 @@ class ApplyOnlyError extends Error {
   constructor(message: string) {
     super(message)
     this.name = "ApplyOnlyError"
+  }
+}
+
+class ApplyWorkspaceSyncError extends Error {
+  constructor(message: string) {
+    super(message)
+    this.name = "ApplyWorkspaceSyncError"
   }
 }
 
@@ -195,7 +208,7 @@ export const apply = new Command()
         only: only?.join(","),
       })
 
-      await withFileBackup(
+      const config = await withFileBackup(
         path.resolve(options.cwd, "components.json"),
         async () => {
           const {
@@ -214,7 +227,7 @@ export const apply = new Command()
             only,
           })
 
-          const config = await runInit({
+          return await runInit({
             cwd: options.cwd,
             yes: true,
             force: false,
@@ -228,10 +241,10 @@ export const apply = new Command()
             existingConfig,
             components: [cleanUrl, ...reinstallComponents],
           })
-
-          await syncApplyWorkspaceConfigs(config, { only })
         }
       )
+
+      await syncApplyWorkspaceConfigs(config, { only })
 
       logger.break()
       logger.log("Preset applied successfully.")
@@ -249,6 +262,12 @@ export const apply = new Command()
         logger.error(
           `Could not back up ${highlighter.info("components.json")}. Aborting.`
         )
+        logger.break()
+        process.exit(1)
+      }
+
+      if (error instanceof ApplyWorkspaceSyncError) {
+        logger.error(error.message)
         logger.break()
         process.exit(1)
       }
@@ -439,6 +458,8 @@ async function syncApplyWorkspaceConfigs(
     ...(config.menuAccent ? { menuAccent: config.menuAccent } : {}),
   }
 
+  const workspaceConfigs = []
+
   for (const linkedConfig of linkedConfigs) {
     const configPath = path.resolve(
       linkedConfig.resolvedPaths.cwd,
@@ -448,18 +469,45 @@ async function syncApplyWorkspaceConfigs(
       continue
     }
 
-    const existingConfig = await fs.readJson(configPath)
-    await fs.writeJson(
+    workspaceConfigs.push({
       configPath,
-      {
-        ...existingConfig,
-        ...patch,
-        tailwind: {
-          ...existingConfig.tailwind,
-          ...patch.tailwind,
+      existingConfig: await fs.readJson(configPath),
+    })
+  }
+
+  try {
+    for (const workspaceConfig of workspaceConfigs) {
+      const backupPath = createFileBackup(workspaceConfig.configPath)
+      if (!backupPath) {
+        throw new FileBackupError(workspaceConfig.configPath)
+      }
+    }
+
+    for (const workspaceConfig of workspaceConfigs) {
+      await fs.writeJson(
+        workspaceConfig.configPath,
+        {
+          ...workspaceConfig.existingConfig,
+          ...patch,
+          tailwind: {
+            ...workspaceConfig.existingConfig.tailwind,
+            ...patch.tailwind,
+          },
         },
-      },
-      { spaces: 2 }
+        { spaces: 2 }
+      )
+    }
+
+    for (const workspaceConfig of workspaceConfigs) {
+      deleteFileBackup(workspaceConfig.configPath)
+    }
+  } catch (error) {
+    for (const workspaceConfig of [...workspaceConfigs].reverse()) {
+      restoreFileBackup(workspaceConfig.configPath)
+    }
+
+    throw new ApplyWorkspaceSyncError(
+      `Failed to sync linked workspace configs.${error instanceof Error ? ` ${error.message}` : ""}`
     )
   }
 }
