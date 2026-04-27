@@ -50,7 +50,7 @@ npm run lead:ui:typecheck
 npm run lead:ui:test
 ```
 
-See `packages/lead-ui/README.md` for status, exports, and what's planned.
+See `packages/lead-ui/README.md` for status, exports, and what's planned. For the cross-component API conventions, see [`packages/lead-ui/API-CONSISTENCY.md`](packages/lead-ui/API-CONSISTENCY.md).
 
 ## Storybook
 
