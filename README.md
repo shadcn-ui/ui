@@ -76,3 +76,5 @@ Storybook now also includes an **Examples** section (`Examples/Settings Panel`, 
 The companion Figma staging file is organized as a CLI-ready design system library with foundations, documentation, component pages, Lead Blocks pages, and local variables for light/dark modes.
 
 For the Figma-to-code release process, see [docs/figma-to-code-sync.md](docs/figma-to-code-sync.md).
+
+Before enabling Figma Code Connect publishing, see [docs/code-connect-publish-readiness.md](docs/code-connect-publish-readiness.md) — the mapping inventory, dry-run requirement, and safe enablement checklist.
