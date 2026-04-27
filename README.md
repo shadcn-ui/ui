@@ -6,6 +6,7 @@ Lead's design-system monorepo: the CLI-ready token pipeline that feeds the Figma
 
 - `packages/lead-design-tokens-cli/` contains the Lead token pipeline: import, normalize, lint, build, decision checks, schemas, and authored token inputs.
 - `packages/lead-ui/` contains `@leadbank/ui`, the React component library. Currently a skeleton with one component (`Button`); see the package README for status.
+- `apps/storybook/` contains the Storybook visual catalog for `@leadbank/ui`, with a `Foundations/Tokens` page and `Components/Button` stories.
 - `docs/figma-to-code-sync.md` documents the Figma-to-code release process.
 - `figma.config.json` and `.github/workflows/figma-code-connect.yml` drive Figma Code Connect publishing.
 
@@ -50,6 +51,23 @@ npm run lead:ui:test
 ```
 
 See `packages/lead-ui/README.md` for status, exports, and what's planned.
+
+## Storybook
+
+`apps/storybook/` hosts the visual catalog for `@leadbank/ui` — Storybook + Vite + React, package-local tooling (no pnpm/turbo). It consumes `@leadbank/ui` via a `file:` dependency, so `packages/lead-ui` must be built before Storybook can resolve it.
+
+```bash
+# One-time / after changes to packages/lead-ui:
+npm install --prefix packages/lead-ui
+npm run lead:ui:build
+
+# Then run Storybook:
+npm install --prefix apps/storybook
+npm run lead:storybook:dev    # http://localhost:6006
+npm run lead:storybook:build  # static build at apps/storybook/storybook-static
+```
+
+GitHub Pages deployment of the static build is scheduled as a follow-up slice.
 
 ## Figma Pairing
 
