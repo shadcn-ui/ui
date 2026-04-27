@@ -1,0 +1,170 @@
+.lead-SelectTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--lead-space-2);
+  width: 100%;
+  border-radius: var(--lead-radius-md);
+  border: 1px solid var(--lead-color-border-default);
+  background-color: var(--lead-color-surface-default);
+  color: var(--lead-color-text-default);
+  font-family: var(--lead-font-family-sans);
+  font-weight: var(--lead-font-weight-medium);
+  line-height: var(--lead-line-height-tight);
+  cursor: pointer;
+  outline: none;
+  text-align: left;
+  transition:
+    border-color var(--lead-duration-fast) var(--lead-easing-standard);
+}
+
+.lead-SelectTrigger:hover:not([data-disabled]):not([data-invalid="true"]) {
+  border-color: var(--lead-color-border-strong);
+}
+
+.lead-SelectTrigger:focus-visible,
+.lead-SelectTrigger[data-state="open"] {
+  outline: 2px solid var(--lead-color-focus-ring);
+  outline-offset: 1px;
+  border-color: var(--lead-color-focus-ring);
+}
+
+.lead-SelectTrigger[data-invalid="true"] {
+  border-color: var(--lead-color-action-danger-default);
+}
+.lead-SelectTrigger[data-invalid="true"]:focus-visible,
+.lead-SelectTrigger[data-invalid="true"][data-state="open"] {
+  outline-color: var(--lead-color-action-danger-default);
+  border-color: var(--lead-color-action-danger-default);
+}
+
+.lead-SelectTrigger[data-disabled] {
+  cursor: not-allowed;
+  background-color: var(--lead-color-surface-muted);
+  color: var(--lead-color-text-disabled);
+}
+
+.lead-SelectTrigger[data-placeholder] .lead-SelectValue {
+  color: var(--lead-color-text-muted);
+}
+
+.lead-SelectTrigger[data-size="sm"] {
+  height: 28px;
+  padding: 0 var(--lead-space-2);
+  font-size: var(--lead-font-size-sm);
+}
+.lead-SelectTrigger[data-size="md"] {
+  height: 36px;
+  padding: 0 var(--lead-space-3);
+  font-size: var(--lead-font-size-md);
+}
+.lead-SelectTrigger[data-size="lg"] {
+  height: 44px;
+  padding: 0 var(--lead-space-4);
+  font-size: var(--lead-font-size-lg);
+}
+
+.lead-SelectTrigger__icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  color: var(--lead-color-text-muted);
+  transition: transform var(--lead-duration-fast) var(--lead-easing-standard);
+}
+
+.lead-SelectTrigger[data-state="open"] .lead-SelectTrigger__icon {
+  transform: rotate(180deg);
+}
+
+.lead-SelectContent {
+  background-color: var(--lead-color-surface-default);
+  color: var(--lead-color-text-default);
+  border: 1px solid var(--lead-color-border-default);
+  border-radius: var(--lead-radius-md);
+  box-shadow: 0 12px 28px rgba(21, 22, 26, 0.16);
+  font-family: var(--lead-font-family-sans);
+  z-index: 60;
+  overflow: hidden;
+  min-width: var(--radix-select-trigger-width);
+  max-height: var(--radix-select-content-available-height);
+}
+
+.lead-SelectViewport {
+  padding: var(--lead-space-1);
+}
+
+.lead-SelectItem {
+  display: flex;
+  align-items: center;
+  gap: var(--lead-space-2);
+  padding: var(--lead-space-1) var(--lead-space-2);
+  border-radius: var(--lead-radius-sm);
+  font-size: var(--lead-font-size-md);
+  font-weight: var(--lead-font-weight-medium);
+  line-height: var(--lead-line-height-tight);
+  color: var(--lead-color-text-default);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+.lead-SelectItem[data-highlighted] {
+  background-color: var(--lead-color-action-secondary-default);
+  color: var(--lead-color-action-secondary-text);
+}
+
+.lead-SelectItem[data-state="checked"] {
+  background-color: var(--lead-color-action-secondary-default);
+  color: var(--lead-color-action-secondary-text);
+}
+
+.lead-SelectItem[data-disabled] {
+  color: var(--lead-color-text-disabled);
+  cursor: not-allowed;
+}
+
+.lead-SelectItemIndicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.lead-SelectItemIndicator__icon {
+  width: 12px;
+  height: 12px;
+}
+
+.lead-SelectLabel {
+  padding: var(--lead-space-2) var(--lead-space-2) var(--lead-space-1);
+  font-size: var(--lead-font-size-sm);
+  font-weight: var(--lead-font-weight-semibold);
+  color: var(--lead-color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.lead-SelectSeparator {
+  height: 1px;
+  background-color: var(--lead-color-border-default);
+  margin: var(--lead-space-1) 0;
+}
+
+.lead-SelectScrollButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  background-color: var(--lead-color-surface-default);
+  color: var(--lead-color-text-muted);
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lead-SelectTrigger,
+  .lead-SelectTrigger__icon {
+    transition: none;
+  }
+}
