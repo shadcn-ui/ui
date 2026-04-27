@@ -1,0 +1,85 @@
+.lead-Switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background-color: var(--lead-color-border-default);
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  transition: background-color var(--lead-duration-fast) var(--lead-easing-standard);
+}
+
+.lead-Switch:focus-visible {
+  outline: 2px solid var(--lead-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.lead-Switch[data-state="checked"] {
+  background-color: var(--lead-color-action-primary-default);
+}
+
+.lead-Switch[data-disabled] {
+  cursor: not-allowed;
+  background-color: var(--lead-color-text-disabled);
+  opacity: 0.6;
+}
+
+.lead-Switch__thumb {
+  display: block;
+  background-color: var(--lead-color-surface-default);
+  border-radius: 9999px;
+  transition: transform var(--lead-duration-fast) var(--lead-easing-standard);
+  pointer-events: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  will-change: transform;
+}
+
+/* Sizes — track + thumb dimensions match a 2-px inset thumb */
+.lead-Switch[data-size="sm"] {
+  width: 28px;
+  height: 16px;
+}
+.lead-Switch[data-size="sm"] .lead-Switch__thumb {
+  width: 12px;
+  height: 12px;
+  transform: translateX(2px);
+}
+.lead-Switch[data-size="sm"][data-state="checked"] .lead-Switch__thumb {
+  transform: translateX(14px);
+}
+
+.lead-Switch[data-size="md"] {
+  width: 36px;
+  height: 20px;
+}
+.lead-Switch[data-size="md"] .lead-Switch__thumb {
+  width: 16px;
+  height: 16px;
+  transform: translateX(2px);
+}
+.lead-Switch[data-size="md"][data-state="checked"] .lead-Switch__thumb {
+  transform: translateX(18px);
+}
+
+.lead-Switch[data-size="lg"] {
+  width: 44px;
+  height: 24px;
+}
+.lead-Switch[data-size="lg"] .lead-Switch__thumb {
+  width: 20px;
+  height: 20px;
+  transform: translateX(2px);
+}
+.lead-Switch[data-size="lg"][data-state="checked"] .lead-Switch__thumb {
+  transform: translateX(22px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lead-Switch,
+  .lead-Switch__thumb {
+    transition: none;
+  }
+}

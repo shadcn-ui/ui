@@ -24,6 +24,9 @@ PR #1 skeleton. One component (`Button`) wired against placeholder CSS variables
   - `CardTitle` — heading element; `level` selects `h1`–`h6` (default `h3`).
   - `CardDescription` — muted paragraph for sub-headings.
 - `Separator` — 1px divider, horizontal or vertical, `default` or `strong` variant. Decorative by default (`role="none"`); set `decorative={false}` for a semantic `role="separator"` with `aria-orientation`.
+- `Checkbox` — Radix-backed checkbox; sizes `sm` / `md` / `lg`, plus `disabled`, `invalid`, and tri-state `indeterminate`. Controlled (`checked` + `onCheckedChange`) or uncontrolled (`defaultChecked`).
+- `Switch` — Radix-backed toggle; sizes `sm` / `md` / `lg`, plus `disabled`. Same control patterns as `Checkbox`.
+- `RadioGroup` / `RadioGroupItem` — Radix-backed radio group; sizes propagate from group to items via context (overridable per-item). Supports controlled (`value` + `onValueChange`), uncontrolled (`defaultValue`), and group-wide or per-item `disabled`.
 
 ## Setup
 
