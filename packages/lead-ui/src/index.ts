@@ -32,3 +32,31 @@ export type {
   FieldOrientation,
   FieldProps,
 } from "./components/Field"
+
+export {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./components/Card/Card"
+export type {
+  CardContentProps,
+  CardDescriptionProps,
+  CardFooterAlign,
+  CardFooterProps,
+  CardHeaderProps,
+  CardPadding,
+  CardProps,
+  CardTitleLevel,
+  CardTitleProps,
+  CardVariant,
+} from "./components/Card/Card"
+
+export { Separator } from "./components/Separator/Separator"
+export type {
+  SeparatorOrientation,
+  SeparatorProps,
+  SeparatorVariant,
+} from "./components/Separator/Separator"

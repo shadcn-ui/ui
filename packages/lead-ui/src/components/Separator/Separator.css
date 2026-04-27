@@ -1,0 +1,21 @@
+.lead-Separator {
+  background-color: var(--lead-color-border-default);
+  border: 0;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.lead-Separator[data-orientation="horizontal"] {
+  width: 100%;
+  height: 1px;
+}
+
+.lead-Separator[data-orientation="vertical"] {
+  width: 1px;
+  height: 100%;
+  align-self: stretch;
+}
+
+.lead-Separator[data-variant="strong"] {
+  background-color: var(--lead-color-border-strong);
+}
