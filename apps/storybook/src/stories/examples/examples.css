@@ -1,0 +1,90 @@
+/* Storybook-only layout helpers for composition examples. */
+
+.lead-Example {
+  font-family: var(--lead-font-family-sans);
+  color: var(--lead-color-text-default);
+}
+
+.lead-Example__title {
+  margin: 0 0 var(--lead-space-1);
+  font-size: var(--lead-font-size-lg);
+  font-weight: var(--lead-font-weight-semibold);
+  line-height: var(--lead-line-height-tight);
+}
+
+.lead-Example__subtitle {
+  margin: 0;
+  color: var(--lead-color-text-muted);
+  font-size: var(--lead-font-size-sm);
+}
+
+.lead-Example--frame {
+  width: 480px;
+}
+
+.lead-Example--narrow {
+  width: 400px;
+}
+
+.lead-Example__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--lead-space-3);
+}
+
+.lead-Example__row--start {
+  align-items: flex-start;
+}
+
+.lead-Example__row__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.lead-Example__row__title {
+  font-size: var(--lead-font-size-md);
+  font-weight: var(--lead-font-weight-semibold);
+  line-height: var(--lead-line-height-tight);
+}
+
+.lead-Example__row__caption {
+  font-size: var(--lead-font-size-sm);
+  color: var(--lead-color-text-muted);
+  line-height: var(--lead-line-height-tight);
+}
+
+.lead-Example__plan {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--lead-space-3);
+  padding: var(--lead-space-3);
+  border: 1px solid var(--lead-color-border-default);
+  border-radius: var(--lead-radius-md);
+}
+
+.lead-Example__plan[data-active="true"] {
+  border-color: var(--lead-color-action-primary-default);
+  background-color: var(--lead-color-action-secondary-default);
+}
+
+.lead-Example__plan__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.lead-Example__plan__title {
+  font-size: var(--lead-font-size-md);
+  font-weight: var(--lead-font-weight-semibold);
+  line-height: var(--lead-line-height-tight);
+}
+
+.lead-Example__plan__caption {
+  font-size: var(--lead-font-size-sm);
+  color: var(--lead-color-text-muted);
+  line-height: var(--lead-line-height-tight);
+}

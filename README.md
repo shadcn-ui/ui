@@ -69,6 +69,8 @@ npm run lead:storybook:build  # static build at apps/storybook/storybook-static
 
 The static build is deployed to GitHub Pages on every push to `main` by `.github/workflows/storybook-deploy.yml`. Live URL: <https://jnanthak83.github.io/lead-design-system/>. The workflow can also be re-run manually via `workflow_dispatch`.
 
+Storybook now also includes an **Examples** section (`Examples/Settings Panel`, `Examples/Signup Form`, `Examples/Preferences Form`) that composes the components into realistic product UI — useful for spotting integration gaps that single-component stories don't catch.
+
 ## Figma Pairing
 
 The companion Figma staging file is organized as a CLI-ready design system library with foundations, documentation, component pages, Lead Blocks pages, and local variables for light/dark modes.
