@@ -30,7 +30,7 @@ export function resolveLocalPathTarget(target: unknown) {
     const value = queue.shift()
 
     if (typeof value === "string") {
-      if (value.startsWith(".")) {
+      if (value.startsWith("./")) {
         return value
       }
 

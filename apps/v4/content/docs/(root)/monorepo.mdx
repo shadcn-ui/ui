@@ -189,7 +189,9 @@ For example, an app workspace can use local package imports:
   "private": true,
   "type": "module",
   "imports": {
-    "#*": "./src/*"
+    "#components/*": "./src/components/*.tsx",
+    "#lib/*": "./src/lib/*.ts",
+    "#hooks/*": "./src/hooks/*.ts"
   },
   "dependencies": {
     "@workspace/ui": "workspace:*"
@@ -217,7 +219,9 @@ And the shared UI package can expose its install targets with `exports`:
   "private": true,
   "type": "module",
   "imports": {
-    "#*": "./src/*"
+    "#components/*": "./src/components/*.tsx",
+    "#lib/*": "./src/lib/*.ts",
+    "#hooks/*": "./src/hooks/*.ts"
   },
   "exports": {
     "./globals.css": "./src/styles/globals.css",

@@ -7,6 +7,7 @@ import {
   resolveImport,
   resolveImportWithMetadata,
 } from "../../src/utils/resolve-import"
+import { resolvePackageImport } from "../../src/utils/package-imports"
 
 test("resolve import", async () => {
   expect(
@@ -130,6 +131,10 @@ describe("resolve package imports", () => {
     expect(await resolveImport("#dep", config)).toEqual(
       path.resolve(cwd, "dep-polyfill.js")
     )
+  })
+
+  test("ignores package import targets outside the package", async () => {
+    expect(resolvePackageImport("#outside/file", cwd)).toBeNull()
   })
 
   test("falls back to tsconfig paths when package imports do not match", async () => {
