@@ -7,71 +7,12 @@
   "author": {
     "name": "Lead Bank Design Systems"
   },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "lint:fix": "turbo run lint:fix",
-    "preview": "turbo run preview",
-    "typecheck": "turbo run typecheck",
-    "format:write": "turbo run format:write",
-    "format:check": "turbo run format:check",
-    "check": "turbo lint typecheck format:check",
     "test": "npm run lead:tokens:test && npm run lead:tokens:lint-schemas && npm run lead:tokens:check-decisions",
     "lead:tokens:test": "npm test --prefix packages/lead-design-tokens-cli --workspaces=false",
     "lead:tokens:check-decisions": "npm run check-decisions --prefix packages/lead-design-tokens-cli --workspaces=false",
     "lead:tokens:lint-schemas": "npm run lint:schemas --prefix packages/lead-design-tokens-cli --workspaces=false",
     "figma:code-connect:publish": "npx figma connect publish",
     "figma:code-connect:dry-run": "npx figma connect publish --dry-run"
-  },
-  "packageManager": "pnpm@9.0.6",
-  "dependencies": {
-    "@babel/core": "^7.22.1",
-    "@changesets/changelog-github": "^0.4.8",
-    "@changesets/cli": "^2.26.1",
-    "@commitlint/cli": "^20.1.0",
-    "@commitlint/config-conventional": "^17.6.3",
-    "@ianvs/prettier-plugin-sort-imports": "^4.6.1",
-    "@manypkg/cli": "^0.20.0",
-    "@typescript-eslint/eslint-plugin": "^8.49.0",
-    "@typescript-eslint/parser": "^8.49.0",
-    "autoprefixer": "^10.4.14",
-    "chokidar": "^4.0.3",
-    "concurrently": "^8.0.1",
-    "cross-env": "^7.0.3",
-    "eslint": "^9.26.0",
-    "eslint-config-next": "^15.0.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-config-turbo": "^1.9.9",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-tailwindcss": "3.13.1",
-    "motion": "^12.12.1",
-    "prettier": "^3.4.2",
-    "pretty-quick": "^4.0.0",
-    "puppeteer": "^23.6.0",
-    "tailwindcss": "^3.4.18",
-    "tsx": "^4.1.4",
-    "turbo": "^1.9.9",
-    "vite": "^7.3.2",
-    "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^2.1.9"
-  },
-  "devDependencies": {
-    "@types/hast": "^3.0.4",
-    "@types/node": "^20.11.27",
-    "@types/react": "^18.2.65",
-    "@types/react-dom": "^18.2.22",
-    "start-server-and-test": "^2.0.12",
-    "typescript": "^5.5.3"
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "19.2.2",
-      "@types/react-dom": "19.2.2"
-    }
   }
 }
