@@ -1,0 +1,25 @@
+.lead-Popover__content {
+  background-color: var(--lead-color-surface-default);
+  color: var(--lead-color-text-default);
+  border: 1px solid var(--lead-color-border-default);
+  border-radius: var(--lead-radius-md);
+  box-shadow: 0 12px 28px rgba(21, 22, 26, 0.16);
+  padding: var(--lead-space-4);
+  font-family: var(--lead-font-family-sans);
+  font-size: var(--lead-font-size-md);
+  line-height: 1.4;
+  width: max-content;
+  max-width: 360px;
+  z-index: 60;
+  outline: none;
+}
+
+.lead-Popover__content:focus-visible {
+  outline: 2px solid var(--lead-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.lead-Popover__arrow {
+  fill: var(--lead-color-surface-default);
+  stroke: var(--lead-color-border-default);
+}

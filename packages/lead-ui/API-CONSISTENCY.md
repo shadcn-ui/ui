@@ -233,6 +233,16 @@ Tests cover trigger surface, controlled/uncontrolled value, disabled states, and
 ### Dialog — `Dialog.test.tsx`
 Tests cover open/close via trigger and close button, controlled `open` + `onOpenChange`, sizes, aria wiring, and structural rendering. Radix may emit a warning when a `DialogContent` is rendered without a `DialogDescription`; this is advisory and does not fail the test.
 
+### Popover — `Popover.test.tsx`
+Tests cover open/close via trigger, `defaultOpen`, `PopoverClose`, controlled `open` + `onOpenChange`, side/align props, `withArrow` opt-in/opt-out, className passthrough, and ref forwarding. Resolved popper coordinates and `sideOffset` are not asserted — visual coverage in Storybook.
+
+### DropdownMenu — `DropdownMenu.test.tsx`
+Two specific jsdom gaps documented inline:
+1. **Click-on-trigger does not open the menu under jsdom.** Radix uses `pointerdown`/`pointerup` interception, not click events. Tests use `defaultOpen` or controlled `open` instead. Visual coverage in Storybook.
+2. **Selecting an item auto-closes the menu** (Radix default). For radio-group state changes, tests assert the `onValueChange` callback fires rather than re-querying the DOM after the menu has unmounted.
+
+Submenu open/close (`DropdownMenuSub*`) is also not tested for the same reasons; covered visually in Storybook.
+
 ---
 
 ## 7. Bundle size
@@ -249,9 +259,11 @@ Tracked at every Radix-introducing PR. Numbers are unminified `dist/index.js` (E
 | Badge + Alert | 42.6 kB | 11.1 kB | 18.1 kB | 2.8 kB | +1.3 kB |
 | Radix Dialog + Tooltip | 134.6 kB | 37.1 kB | 20.1 kB | 3.0 kB | **+92.0 kB** (one-time overlay tax) |
 | Radix Select | 168.2 kB | 44.9 kB | 24.1 kB | 3.5 kB | +33.6 kB |
-| Skeleton + Radix Progress | TBD per build | TBD | TBD | TBD | small (filled in below) |
+| Skeleton + Radix Progress | 175.7 kB | 47.2 kB | 26.0 kB | 3.8 kB | +7.5 kB |
+| API decisions (Alert icon slot) | 175.97 kB | 47.28 kB | 26.17 kB | 3.83 kB | +0.07 kB |
+| Radix Popover + DropdownMenu | **215.1 kB** | **54.73 kB** | **29.1 kB** | **4.11 kB** | +7.45 kB |
 
-**Pattern:** the first Radix PR in a primitive family pays a one-time tax for shared internals (`react-portal`, `react-presence`, `react-popper`, `floating-ui`, etc.). Subsequent components in the same family add their behavioral cost only. Per-component cost is **falling**: future overlays (Popover, DropdownMenu) should each add 10–20 kB, not 30+.
+**Pattern confirmed:** the first Radix PR in a primitive family pays a one-time tax for shared internals (`react-portal`, `react-presence`, `react-popper`, `floating-ui`, etc.). Subsequent components in the same family add their behavioral cost only. Per-component cost is **falling**: Popover + DropdownMenu added only +7.45 kB gzipped JS combined despite shipping 18 new component exports — they share overlay internals already paid for by Dialog/Tooltip/Select. Current 54.73 kB gzipped is 🟢 OK against the §8.3 budget (warn at 60).
 
 When the consumer build pipeline is properly set up (named ESM imports + tree-shaking), unused components are excluded. The `dist/` numbers above are the worst-case "import everything" baseline.
 
