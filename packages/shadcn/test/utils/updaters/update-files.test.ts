@@ -2372,4 +2372,27 @@ describe("toAliasedImport", () => {
 
     expect(toAliasedImport(filePath, config, projectInfo)).toBe("#hooks")
   })
+
+  test("should prefer exact package import aliases over parent directory aliases", () => {
+    const filePath = "src/lib/utils.ts"
+    const config = {
+      resolvedPaths: {
+        cwd: path.resolve(__dirname, "../../fixtures/config-imports"),
+        lib: path.resolve(__dirname, "../../fixtures/config-imports/src/lib"),
+        utils: path.resolve(
+          __dirname,
+          "../../fixtures/config-imports/src/lib/utils.ts"
+        ),
+      },
+      aliases: {
+        lib: "#lib",
+        utils: "#utils",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "#",
+    }
+
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe("#utils")
+  })
 })

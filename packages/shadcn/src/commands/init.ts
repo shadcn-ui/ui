@@ -646,7 +646,10 @@ export async function runInit(
     // Add button component for new template-based projects.
     ...(selectedTemplate ? ["button"] : []),
   ]
-  const templatePostInit = options.isNewProject
+  // Tie postInit to actual project creation in this run (createProject
+  // sets newProjectTemplate). A caller-provided `options.isNewProject`
+  // alone should not trigger postInit.
+  const templatePostInit = newProjectTemplate
     ? selectedTemplate?.postInit
     : undefined
 

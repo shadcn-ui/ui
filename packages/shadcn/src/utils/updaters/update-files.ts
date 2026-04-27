@@ -39,6 +39,7 @@ import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 import { z } from "zod"
 
 const CODE_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx"]
+const NON_ALIAS_RESOLVED_PATH_KEYS = new Set(["tailwindConfig", "tailwindCss"])
 
 export async function updateFiles(
   files: RegistryItem["files"],
@@ -835,9 +836,32 @@ export function toAliasedImport(
   // 1️⃣ Find the longest matching alias root in resolvedPaths
   //    e.g. key="ui", root="/…/components/ui" beats key="components"
   const matches = Object.entries(config.resolvedPaths)
-    .filter(
-      ([, root]) => root && abs.startsWith(path.normalize(root + path.sep))
-    )
+    .filter(([key, root]) => {
+      if (!root || NON_ALIAS_RESOLVED_PATH_KEYS.has(key)) {
+        return false
+      }
+
+      const normalizedRoot = path.normalize(root)
+
+      if (abs === normalizedRoot) {
+        // Only allow exact-equality match for true exact-key package imports
+        // (e.g. `#utils` → `./src/lib/utils.ts`). Path-style aliases that
+        // resolve through a wildcard (e.g. `#lib/utils` via `#lib/*`) must
+        // fall back to the directory alias so the wildcard's emit-mode
+        // (preserve/strip extension) is honored.
+        const aliasValue = config.aliases[key as keyof typeof config.aliases]
+        if (typeof aliasValue !== "string" || !aliasValue.startsWith("#")) {
+          return true
+        }
+        const resolved = resolvePackageImport(
+          aliasValue,
+          config.resolvedPaths.cwd
+        )
+        return resolved !== null && !resolved.matchedAlias.includes("*")
+      }
+
+      return abs.startsWith(path.normalize(root + path.sep))
+    })
     .sort((a, b) => b[1].length - a[1].length)
 
   if (matches.length === 0) {

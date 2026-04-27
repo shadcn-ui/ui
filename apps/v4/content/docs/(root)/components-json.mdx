@@ -176,9 +176,9 @@ Recommended setup for a single-package app:
 ```json title="package.json"
 {
   "imports": {
-    "#components/*": "./src/components/*",
-    "#lib/*": "./src/lib/*",
-    "#hooks/*": "./src/hooks/*"
+    "#components/*": "./src/components/*.tsx",
+    "#lib/*": "./src/lib/*.ts",
+    "#hooks/*": "./src/hooks/*.ts"
   }
 }
 ```
@@ -211,9 +211,11 @@ provides the runtime and TypeScript resolution for those `#...` specifiers.
 The matched `imports` target also controls whether generated `#...` imports keep
 file extensions:
 
-- `"#components/*": "./src/components/*"` can generate imports like
+- `"#components/*": "./src/components/*"` preserves source extensions and can
+  generate imports like
   `#components/button.tsx`
-- `"#components/*": "./src/components/*.tsx"` generates imports like
+- `"#components/*": "./src/components/*.tsx"` strips source extensions and
+  generates imports like
   `#components/button`
 
 For monorepos, see the <Link href="/docs/monorepo">monorepo docs</Link>. Local

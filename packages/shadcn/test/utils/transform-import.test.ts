@@ -266,6 +266,29 @@ test("transform import keeps exact #utils aliases", async () => {
   `)
 })
 
+test("transform import keeps #lib/utils aliases", async () => {
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import { cn } from "@/lib/utils"
+`,
+      config: {
+        tsx: true,
+        aliases: {
+          components: "#components",
+          utils: "#lib/utils",
+          ui: "#components/ui",
+          lib: "#lib",
+          hooks: "#hooks",
+        },
+      },
+    })
+  ).toMatchInlineSnapshot(`
+    "import { cn } from "#lib/utils"
+    "
+  `)
+})
+
 test("transform import for monorepo", async () => {
   expect(
     await transform({
