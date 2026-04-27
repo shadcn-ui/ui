@@ -25,7 +25,7 @@ export default function DrawerExample() {
   )
 }
 
-const DRAWER_SIDES = ["top", "right", "bottom", "left"] as const
+const DRAWER_SIDES = ["up", "right", "down", "left"] as const
 
 function DrawerWithSides() {
   return (
@@ -34,16 +34,16 @@ function DrawerWithSides() {
         {DRAWER_SIDES.map((side) => (
           <Drawer
             key={side}
-            direction={
-              side === "bottom" ? undefined : (side as "top" | "right" | "left")
+            swipeDirection={
+              side === "down" ? undefined : (side as "up" | "right" | "left")
             }
           >
-            <DrawerTrigger asChild>
-              <Button variant="outline" className="capitalize">
-                {side}
-              </Button>
+            <DrawerTrigger
+              render={<Button variant="outline" className="capitalize" />}
+            >
+              {side}
             </DrawerTrigger>
-            <DrawerContent className="data-[vaul-drawer-direction=bottom]:max-h-[50vh] data-[vaul-drawer-direction=top]:max-h-[50vh]">
+            <DrawerContent className="data-[swipe-direction=down]:max-h-[50vh] data-[swipe-direction=up]:max-h-[50vh]">
               <DrawerHeader>
                 <DrawerTitle>Move Goal</DrawerTitle>
                 <DrawerDescription>
@@ -69,8 +69,8 @@ function DrawerWithSides() {
               </div>
               <DrawerFooter>
                 <Button>Submit</Button>
-                <DrawerClose asChild>
-                  <Button variant="outline">Cancel</Button>
+                <DrawerClose render={<Button variant="outline" />}>
+                  Cancel
                 </DrawerClose>
               </DrawerFooter>
             </DrawerContent>
@@ -84,9 +84,9 @@ function DrawerWithSides() {
 function DrawerScrollableContent() {
   return (
     <Example title="Scrollable Content">
-      <Drawer direction="right">
-        <DrawerTrigger asChild>
-          <Button variant="outline">Scrollable Content</Button>
+      <Drawer swipeDirection="right">
+        <DrawerTrigger render={<Button variant="outline" />}>
+          Scrollable Content
         </DrawerTrigger>
         <DrawerContent>
           <DrawerHeader>
@@ -111,8 +111,8 @@ function DrawerScrollableContent() {
           </div>
           <DrawerFooter>
             <Button>Submit</Button>
-            <DrawerClose asChild>
-              <Button variant="outline">Cancel</Button>
+            <DrawerClose render={<Button variant="outline" />}>
+              Cancel
             </DrawerClose>
           </DrawerFooter>
         </DrawerContent>

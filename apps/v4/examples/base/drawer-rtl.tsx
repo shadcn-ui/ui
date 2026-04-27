@@ -117,8 +117,8 @@ export function DrawerRtl() {
 
   return (
     <Drawer>
-      <DrawerTrigger asChild>
-        <Button variant="outline">{t.trigger}</Button>
+      <DrawerTrigger render={<Button variant="outline" />}>
+        {t.trigger}
       </DrawerTrigger>
       <DrawerContent dir={dir} data-lang={dir === "rtl" ? language : undefined}>
         <div className="mx-auto w-full max-w-sm">
@@ -182,8 +182,8 @@ export function DrawerRtl() {
           </div>
           <DrawerFooter>
             <Button>{t.submit}</Button>
-            <DrawerClose asChild>
-              <Button variant="outline">{t.cancel}</Button>
+            <DrawerClose render={<Button variant="outline" />}>
+              {t.cancel}
             </DrawerClose>
           </DrawerFooter>
         </div>

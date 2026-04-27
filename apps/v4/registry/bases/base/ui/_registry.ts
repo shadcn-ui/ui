@@ -351,7 +351,7 @@ export const ui: Registry["items"] = [
   {
     name: "drawer",
     type: "registry:ui",
-    dependencies: ["vaul"],
+    dependencies: ["@base-ui/react"],
     files: [
       {
         path: "ui/drawer.tsx",
@@ -363,7 +363,7 @@ export const ui: Registry["items"] = [
         docs: "https://ui.shadcn.com/docs/components/base/drawer",
         examples:
           "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/drawer-example.tsx",
-        api: "https://vaul.emilkowal.ski/getting-started",
+        api: "https://base-ui.com/react/components/drawer.md",
       },
     },
   },
