@@ -1,0 +1,85 @@
+.lead-Accordion {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--lead-font-family-sans);
+  color: var(--lead-color-text-default);
+  width: 100%;
+}
+
+.lead-AccordionItem {
+  border-bottom: 1px solid var(--lead-color-border-default);
+}
+
+.lead-AccordionItem:first-of-type {
+  border-top: 1px solid var(--lead-color-border-default);
+}
+
+.lead-AccordionHeader {
+  display: flex;
+  margin: 0;
+}
+
+.lead-AccordionTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  padding: var(--lead-space-3) var(--lead-space-1);
+  color: var(--lead-color-text-default);
+  font-family: var(--lead-font-family-sans);
+  font-size: var(--lead-font-size-md);
+  font-weight: var(--lead-font-weight-semibold);
+  line-height: var(--lead-line-height-tight);
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  gap: var(--lead-space-2);
+  transition: color var(--lead-duration-fast) var(--lead-easing-standard);
+}
+
+.lead-AccordionTrigger:hover:not([data-disabled]) {
+  color: var(--lead-color-action-primary-default);
+}
+
+.lead-AccordionTrigger:focus-visible {
+  outline: 2px solid var(--lead-color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--lead-radius-sm);
+}
+
+.lead-AccordionTrigger[data-disabled] {
+  color: var(--lead-color-text-disabled);
+  cursor: not-allowed;
+}
+
+.lead-AccordionTrigger__chevron {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: var(--lead-color-text-muted);
+  transition: transform var(--lead-duration-fast) var(--lead-easing-standard);
+}
+
+.lead-AccordionTrigger[data-state="open"] .lead-AccordionTrigger__chevron {
+  transform: rotate(180deg);
+}
+
+.lead-AccordionContent {
+  overflow: hidden;
+  font-size: var(--lead-font-size-md);
+  line-height: 1.5;
+  color: var(--lead-color-text-muted);
+}
+
+.lead-AccordionContent__inner {
+  padding: 0 var(--lead-space-1) var(--lead-space-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lead-AccordionTrigger,
+  .lead-AccordionTrigger__chevron {
+    transition: none;
+  }
+}
