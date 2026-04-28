@@ -309,6 +309,84 @@ A `registry:hook` item is a custom React hook.
 }
 ```
 
+## Target Placeholders
+
+Use `files[].target` placeholders when a registry item should install files
+under the user's configured shadcn directories. The available placeholders are
+`@components/`, `@ui/`, `@lib/` and `@hooks/`.
+
+The placeholders are resolved from `components.json`, so the same registry item
+works in projects using `@/`, custom TypeScript aliases, package imports or
+workspace package exports.
+
+```json title="alias-child.json" showLineNumbers {9,15}
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alias-child",
+  "type": "registry:item",
+  "files": [
+    {
+      "path": "registry/new-york/alias/target-alias-button.tsx",
+      "type": "registry:ui",
+      "target": "@ui/target-alias-button.tsx",
+      "content": "..."
+    },
+    {
+      "path": "registry/new-york/alias/target-alias-helper.ts",
+      "type": "registry:lib",
+      "target": "@lib/target-alias-helper.ts",
+      "content": "..."
+    }
+  ]
+}
+```
+
+Registry dependencies can use target placeholders too. In the following example,
+the child item installs a UI component and a helper, while the parent item
+installs an app component and a hook.
+
+```json title="alias-parent.json" showLineNumbers {7,13}
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alias-parent",
+  "type": "registry:item",
+  "registryDependencies": ["https://example.com/r/alias-child.json"],
+  "files": [
+    {
+      "path": "registry/new-york/alias/target-alias-panel.tsx",
+      "type": "registry:component",
+      "target": "@components/target-alias-panel.tsx",
+      "content": "..."
+    },
+    {
+      "path": "registry/new-york/alias/use-target-alias.ts",
+      "type": "registry:hook",
+      "target": "@hooks/use-target-alias.ts",
+      "content": "..."
+    }
+  ]
+}
+```
+
+The `target` controls where the file is written, even when it differs from the
+file `type`.
+
+```json title="type-mismatch.json" showLineNumbers {9}
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "type-mismatch",
+  "type": "registry:item",
+  "files": [
+    {
+      "path": "registry/new-york/example/format-date.ts",
+      "type": "registry:ui",
+      "target": "@lib/format-date.ts",
+      "content": "..."
+    }
+  ]
+}
+```
+
 ## registry:font
 
 ### Custom font
