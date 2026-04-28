@@ -18,8 +18,7 @@ import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { Command } from "commander"
 
-const GITHUB_RAW_BASE =
-  "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases"
+const CODE_BASE = `${SHADCN_URL}/code/apps/v4/registry/bases`
 
 export const info = new Command()
   .name("info")
@@ -150,9 +149,9 @@ export async function collectInfo(
     links: {
       docs: `${SHADCN_URL}/docs`,
       components: `${SHADCN_URL}/docs/components/${base}/[component].md`,
-      ui: `${GITHUB_RAW_BASE}/${base}/ui/[component].tsx`,
-      examples: `${GITHUB_RAW_BASE}/${base}/examples/[component]-example.tsx`,
-      schema: "https://ui.shadcn.com/schema.json",
+      ui: `${CODE_BASE}/${base}/ui/[component].tsx`,
+      examples: `${CODE_BASE}/${base}/examples/[component]-example.tsx`,
+      schema: `${SHADCN_URL}/schema.json`,
     },
   }
 }
