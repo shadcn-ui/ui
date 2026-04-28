@@ -29,10 +29,15 @@ Preset
   url          https://ui.shadcn.com/create?preset=b0
 ```
 
-Use `preset resolve` in an existing project to see the preset that matches your current configuration. It works with monorepos too.
+Use `preset resolve` in an existing project to see the preset that matches your current configuration.
 
 ```bash
 npx shadcn@latest preset resolve
+```
+
+It works with monorepos too:
+
+```bash
 npx shadcn@latest preset resolve -c apps/web
 ```
 
