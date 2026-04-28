@@ -23,7 +23,17 @@ jobs:
         with:
           node-version: 22
 
+      - name: Install lead-ui dependencies
+        run: npm ci --prefix packages/lead-ui --workspaces=false
+
+      - name: Validate Code Connect mappings (dry-run)
+        working-directory: packages/lead-ui
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+        run: npx figma connect publish --dry-run
+
       - name: Publish Code Connect mappings
+        working-directory: packages/lead-ui
         env:
           FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
         run: npx figma connect publish
