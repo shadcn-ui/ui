@@ -995,6 +995,13 @@
     "logo": "<svg width='75' height='43' viewBox='0 0 75 43' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M0 5H6.23601V37H0V5Z' fill='var(--foreground)'/><rect x='6.23602' y='37' width='23.1623' height='5' fill='var(--foreground)'/><rect x='6.23602' width='23.1623' height='5' fill='var(--foreground)'/><rect width='4.8923' height='17.1299' transform='matrix(0.932438 -0.361329 0.293952 0.95582 29.4029 4.76758)' fill='var(--foreground)'/><rect width='4.88783' height='17.1429' transform='matrix(0.937045 0.349208 -0.283616 0.958938 34.2604 21)' fill='var(--foreground)'/><rect x='49' width='22' height='5' fill='var(--foreground)'/><rect x='44' y='5' width='5' height='17' fill='var(--foreground)'/><path d='M49 22H71V27H49V22Z' fill='var(--foreground)'/><rect x='71' y='25' width='4' height='13' fill='var(--foreground)'/><rect x='49' y='38' width='22' height='5' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@devl",
+    "homepage": "https://devl.dev",
+    "url": "https://devl.dev/r/{name}.json",
+    "description": "Hand-crafted layouts and UI primitives for shipping fast.",
+    "logo": "<svg width=\"256\" height=\"256\" viewBox=\"0 0 256 256\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"14\" y=\"160\" font-family=\"ui-monospace, SFMono-Regular, Menlo, monospace\" font-size=\"84\" font-weight=\"700\" letter-spacing=\"-4\" fill=\"#0A0A0A\">devl</text><rect x=\"208\" y=\"128\" width=\"16\" height=\"32\" fill=\"#0A0A0A\"><animate attributeName=\"opacity\" values=\"1;0;1\" dur=\"1s\" repeatCount=\"indefinite\"/></rect></svg>"
+  },
+  {
     "name": "@beste-ui",
     "homepage": "https://ui.beste.co",
     "url": "https://ui.beste.co/r/{name}.json",
