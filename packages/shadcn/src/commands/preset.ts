@@ -65,31 +65,16 @@ export function decodePresetCode(code: string): PresetDecodeResult {
 }
 
 export function printPresetDecode(result: PresetDecodeResult) {
-  const formatValue = (key: string, value: string) => {
-    const suffix = result.derived.includes(key) ? "*" : ""
-    return `${value}${suffix}`
-  }
-
-  printEntries({
-    code: result.code,
-    version: result.version,
-    style: result.values.style,
-    baseColor: result.values.baseColor,
-    theme: result.values.theme,
-    chartColor: formatValue("chartColor", result.values.chartColor),
-    iconLibrary: result.values.iconLibrary,
-    font: result.values.font,
-    fontHeading: result.values.fontHeading,
-    radius: result.values.radius,
-    menuAccent: result.values.menuAccent,
-    menuColor: result.values.menuColor,
-    url: result.url,
-  })
-
-  if (result.derived.length > 0) {
-    logger.break()
-    logger.log("* Compatibility value for older preset versions.")
-  }
+  printPresetInfo(
+    {
+      code: result.code,
+      fallbacks: result.derived,
+      values: result.values,
+    },
+    {
+      fallbackNote: "  * Compatibility value for older preset versions.",
+    }
+  )
 }
 
 export const decode = new Command()
@@ -237,13 +222,6 @@ export const preset = new Command()
   .action(() => {
     preset.outputHelp()
   })
-
-function printEntries(entries: Record<string, string>) {
-  const maxKeyLength = Math.max(...Object.keys(entries).map((k) => k.length))
-  for (const [key, value] of Object.entries(entries)) {
-    logger.log(`${key.padEnd(maxKeyLength + 2)}${value}`)
-  }
-}
 
 function handlePresetError(error: unknown) {
   if (error instanceof Error) {

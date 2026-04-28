@@ -246,7 +246,10 @@ export function printInfo(data: Awaited<ReturnType<typeof collectInfo>>) {
 }
 
 export function printPresetInfo(
-  preset: Awaited<ReturnType<typeof collectInfo>>["preset"]
+  preset: Awaited<ReturnType<typeof collectInfo>>["preset"],
+  options: {
+    fallbackNote?: string
+  } = {}
 ) {
   logger.log(highlighter.info("Preset"))
   if (!preset?.code) {
@@ -278,7 +281,8 @@ export function printPresetInfo(
     if (fallbacks.length > 0) {
       logger.log("")
       logger.log(
-        "  * Uses preset defaults for values not available as options on shadcn/create."
+        options.fallbackNote ??
+          "  * Uses preset defaults for values not available as options on shadcn/create."
       )
     }
   }

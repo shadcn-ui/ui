@@ -138,13 +138,36 @@ describe("preset commands", () => {
   it("prints compatibility markers in human output", () => {
     printPresetDecode(decodePresetCode("a0"))
 
-    expect(logger.log).not.toHaveBeenCalledWith("Preset")
-    expect(logger.log).toHaveBeenCalledWith("code         a0")
-    expect(logger.log).toHaveBeenCalledWith("version      a")
-    expect(logger.log).toHaveBeenCalledWith("chartColor   blue*")
+    expect(logger.log).toHaveBeenCalledWith("Preset")
+    expect(logger.log).toHaveBeenCalledWith("  --preset     a0")
     expect(logger.log).toHaveBeenCalledWith(
-      "* Compatibility value for older preset versions."
+      `  url          ${getPresetUrl("a0")}`
     )
+    expect(logger.log).toHaveBeenCalledWith("  chartColor   blue*")
+    expect(logger.log).toHaveBeenCalledWith(
+      "  * Compatibility value for older preset versions."
+    )
+  })
+
+  it("matches decoded preset output ordering to resolved preset output", () => {
+    printPresetDecode(decodePresetCode("b0"))
+
+    expect(logger.log).toHaveBeenCalledWith("Preset")
+    expect(vi.mocked(logger.log).mock.calls.map((call) => call[0])).toEqual([
+      "Preset",
+      "  --preset     b0",
+      `  url          ${getPresetUrl("b0")}`,
+      "  style        nova",
+      "  baseColor    neutral",
+      "  theme        neutral",
+      "  chartColor   neutral",
+      "  iconLibrary  lucide",
+      "  font         inter",
+      "  fontHeading  inherit",
+      "  radius       default",
+      "  menuAccent   subtle",
+      "  menuColor    default",
+    ])
   })
 
   it("prints decoded preset JSON with derived values", async () => {
