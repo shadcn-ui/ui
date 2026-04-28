@@ -127,6 +127,17 @@ const nextConfig = {
         destination: "/docs/cli",
         permanent: true,
       },
+      {
+        source: "/themes",
+        destination: "/create",
+        permanent: true,
+      },
+      {
+        source: "/code/:path*",
+        destination:
+          "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/:path*",
+        permanent: false,
+      },
     ]
   },
   rewrites() {

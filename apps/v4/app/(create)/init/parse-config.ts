@@ -4,7 +4,7 @@ import {
   designSystemConfigSchema,
   type DesignSystemConfig,
 } from "@/registry/config"
-import { resolvePresetOverrides } from "@/app/(create)/lib/preset-query"
+import { resolvePresetOverrides } from "@/app/(app)/create/lib/preset-query"
 
 // Parses design system config from URL search params.
 export function parseDesignSystemConfig(searchParams: URLSearchParams) {
@@ -23,6 +23,7 @@ export function parseDesignSystemConfig(searchParams: URLSearchParams) {
       base: searchParams.get("base") ?? "radix",
       template: searchParams.get("template") ?? undefined,
       rtl: searchParams.get("rtl") === "true",
+      pointer: searchParams.get("pointer") === "true",
     }
   } else {
     configInput = {
@@ -39,6 +40,7 @@ export function parseDesignSystemConfig(searchParams: URLSearchParams) {
       radius: searchParams.get("radius"),
       template: searchParams.get("template") ?? undefined,
       rtl: searchParams.get("rtl") === "true",
+      pointer: searchParams.get("pointer") === "true",
     }
   }
 

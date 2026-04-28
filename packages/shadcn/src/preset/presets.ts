@@ -12,94 +12,21 @@ import open from "open"
 import prompts from "prompts"
 import { type z } from "zod"
 
-export const DEFAULT_PRESETS = {
-  nova: {
-    title: "Nova",
-    description: "Lucide / Geist",
-    style: "nova",
-    baseColor: "neutral",
-    theme: "neutral",
-    iconLibrary: "lucide",
-    font: "geist",
-    fontHeading: "inherit",
-    menuAccent: "subtle" as const,
-    menuColor: "default" as const,
+import { DEFAULT_PRESETS } from "./defaults"
 
-    radius: "default",
-    rtl: false,
-  },
-  vega: {
-    title: "Vega",
-    description: "Lucide / Inter",
-    style: "vega",
-    baseColor: "neutral",
-    theme: "neutral",
-    iconLibrary: "lucide",
-    font: "inter",
-    fontHeading: "inherit",
-    menuAccent: "subtle" as const,
-    menuColor: "default" as const,
-
-    radius: "default",
-    rtl: false,
-  },
-  maia: {
-    title: "Maia",
-    description: "Hugeicons / Figtree",
-    style: "maia",
-    baseColor: "neutral",
-    theme: "neutral",
-    iconLibrary: "hugeicons",
-    font: "figtree",
-    fontHeading: "inherit",
-    menuAccent: "subtle" as const,
-    menuColor: "default" as const,
-
-    radius: "default",
-    rtl: false,
-  },
-  lyra: {
-    title: "Lyra",
-    description: "Phosphor / JetBrains Mono",
-    style: "lyra",
-    baseColor: "neutral",
-    theme: "neutral",
-    iconLibrary: "phosphor",
-    font: "jetbrains-mono",
-    fontHeading: "inherit",
-    menuAccent: "subtle" as const,
-    menuColor: "default" as const,
-
-    radius: "default",
-    rtl: false,
-  },
-  mira: {
-    title: "Mira",
-    description: "Hugeicons / Inter",
-    style: "mira",
-    baseColor: "neutral",
-    theme: "neutral",
-    iconLibrary: "hugeicons",
-    font: "inter",
-    fontHeading: "inherit",
-    menuAccent: "subtle" as const,
-    menuColor: "default" as const,
-
-    radius: "default",
-    rtl: false,
-  },
-}
+export { DEFAULT_PRESETS } from "./defaults"
 
 export function resolveCreateUrl(
   searchParams?: Partial<{
     command: "create" | "init"
     template: string
     rtl: boolean
+    pointer: boolean
     base: string
   }>
 ) {
   const url = new URL(`${SHADCN_URL}/create`)
-  const { rtl, ...params } = searchParams ?? {}
+  const { rtl, pointer, ...params } = searchParams ?? {}
 
   for (const [key, value] of Object.entries(params)) {
     if (value !== undefined) {
@@ -112,7 +39,39 @@ export function resolveCreateUrl(
     url.searchParams.set("rtl", "true")
   }
 
+  if (pointer) {
+    url.searchParams.set("pointer", "true")
+  }
+
   return url.toString()
+}
+
+export async function promptToOpenPresetBuilder(options: {
+  createUrl: string
+  followUp: string
+  prompt?: boolean
+}) {
+  logger.break()
+  logger.log(
+    `  Build your custom preset on ${highlighter.info(options.createUrl)}`
+  )
+  logger.log(`  ${options.followUp}`)
+  logger.break()
+
+  if (options.prompt === false) {
+    return
+  }
+
+  const { proceed } = await prompts({
+    type: "confirm",
+    name: "proceed",
+    message: "Open in browser?",
+    initial: true,
+  })
+
+  if (proceed) {
+    await open(options.createUrl)
+  }
 }
 
 export function resolveInitUrl(
@@ -130,7 +89,12 @@ export function resolveInitUrl(
     menuColor: string
     radius: string
   },
-  options?: { template?: string; preset?: string }
+  options?: {
+    template?: string
+    preset?: string
+    only?: string
+    pointer?: boolean
+  }
 ) {
   const params = new URLSearchParams({
     base: preset.base,
@@ -145,7 +109,7 @@ export function resolveInitUrl(
     radius: preset.radius,
   })
 
-  if (preset.chartColor) {
+  if (preset.chartColor && preset.chartColor !== "neutral") {
     params.set("chartColor", preset.chartColor)
   }
 
@@ -161,6 +125,14 @@ export function resolveInitUrl(
 
   if (options?.template) {
     params.set("template", options.template)
+  }
+
+  if (options?.only) {
+    params.set("only", options.only)
+  }
+
+  if (options?.pointer) {
+    params.set("pointer", "true")
   }
 
   // Signal the server to record this init run.
@@ -187,6 +159,7 @@ export async function promptForPreset(options: {
   rtl: boolean
   base: string
   template?: string
+  pointer?: boolean
 }) {
   const presets = Object.entries(DEFAULT_PRESETS)
 
@@ -216,28 +189,16 @@ export async function promptForPreset(options: {
     const createUrl = resolveCreateUrl({
       command: "init",
       rtl: options.rtl,
+      pointer: options.pointer,
       base: options.base,
       ...(options.template && { template: options.template }),
     })
-    logger.break()
-    logger.log(`  Build your custom preset on ${highlighter.info(createUrl)}`)
-    logger.log(
-      `  Then ${highlighter.info(
+    await promptToOpenPresetBuilder({
+      createUrl,
+      followUp: `Then ${highlighter.info(
         "copy and run the command"
-      )} from ui.shadcn.com.`
-    )
-    logger.break()
-
-    const { proceed } = await prompts({
-      type: "confirm",
-      name: "proceed",
-      message: "Open in browser?",
-      initial: true,
+      )} from ui.shadcn.com.`,
     })
-
-    if (proceed) {
-      await open(createUrl)
-    }
 
     process.exit(0)
   }
@@ -252,6 +213,7 @@ export async function promptForPreset(options: {
       { ...preset, base: options.base, rtl: options.rtl },
       {
         template: options.template,
+        pointer: options.pointer,
       }
     ),
     base: options.base,

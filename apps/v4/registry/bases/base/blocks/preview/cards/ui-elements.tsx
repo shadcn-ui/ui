@@ -135,8 +135,10 @@ export function UIElements() {
         <div className="flex items-center gap-4">
           <AlertDialog>
             <AlertDialogTrigger render={<Button variant="outline" />}>
-              <span className="hidden md:block">Alert Dialog</span>
-              <span className="block md:hidden">Dialog</span>
+              <span className="hidden md:flex style-sera:md:hidden">
+                Alert Dialog
+              </span>
+              <span className="flex md:hidden style-sera:md:flex">Dialog</span>
             </AlertDialogTrigger>
             <AlertDialogContent size="sm">
               <AlertDialogHeader>
@@ -153,7 +155,10 @@ export function UIElements() {
             </AlertDialogContent>
           </AlertDialog>
           <ButtonGroup>
-            <Button variant="outline">Button Group</Button>
+            <Button variant="outline">
+              <span className="style-sera:hidden">Button Group</span>
+              <span className="hidden style-sera:block">Group</span>
+            </Button>
             <DropdownMenu>
               <DropdownMenuTrigger
                 render={<Button variant="outline" size="icon" />}
