@@ -1,0 +1,35 @@
+---
+title: April 2026 - Preset Commands
+description: Decode, share, open, and resolve preset codes from the shadcn CLI.
+date: 2026-04-28
+---
+
+We added `shadcn preset` commands for working with preset codes.
+
+You can decode a preset code to see exactly what it contains:
+
+```bash
+npx shadcn@latest preset decode b2D0vQ7G4
+```
+
+Use `preset resolve` in an existing project to see the preset that matches your current configuration. It works with monorepos too.
+
+```bash
+npx shadcn@latest preset resolve
+npx shadcn@latest preset resolve -c apps/web
+```
+
+You can also print or open the preset builder URL:
+
+```bash
+npx shadcn@latest preset url b2D0vQ7G4
+npx shadcn@latest preset open b2D0vQ7G4
+```
+
+This makes presets easier to inspect, share, and hand off to coding agents without manually decoding codes or building URLs.
+
+<Button asChild size="sm">
+  <Link href="/create" className="mt-6 no-underline!">
+    Try a Preset
+  </Link>
+</Button>
