@@ -9,7 +9,24 @@ We added `shadcn preset` commands for working with preset codes.
 You can decode a preset code to see exactly what it contains:
 
 ```bash
-npx shadcn@latest preset decode b2D0vQ7G4
+npx shadcn@latest preset decode b0
+```
+
+```txt
+Preset
+  code         b0
+  version      b
+  style        nova
+  baseColor    neutral
+  theme        neutral
+  chartColor   neutral
+  iconLibrary  lucide
+  font         inter
+  fontHeading  inherit
+  radius       default
+  menuAccent   subtle
+  menuColor    default
+  url          https://ui.shadcn.com/create?preset=b0
 ```
 
 Use `preset resolve` in an existing project to see the preset that matches your current configuration. It works with monorepos too.
@@ -22,8 +39,8 @@ npx shadcn@latest preset resolve -c apps/web
 You can also print or open the preset builder URL:
 
 ```bash
-npx shadcn@latest preset url b2D0vQ7G4
-npx shadcn@latest preset open b2D0vQ7G4
+npx shadcn@latest preset url b0
+npx shadcn@latest preset open b0
 ```
 
 This makes presets easier to inspect, share, and hand off to coding agents without manually decoding codes or building URLs.
