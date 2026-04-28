@@ -4,7 +4,24 @@
   "properties": {
     "style": {
       "type": "string",
-      "enum": ["default", "new-york", "radix-vega", "radix-nova", "radix-maia", "radix-lyra", "radix-mira", "radix-luma", "base-vega", "base-nova", "base-maia", "base-lyra", "base-mira", "base-luma"]
+      "enum": [
+        "default",
+        "new-york",
+        "radix-vega",
+        "radix-nova",
+        "radix-maia",
+        "radix-lyra",
+        "radix-mira",
+        "radix-luma",
+        "radix-sera",
+        "base-vega",
+        "base-nova",
+        "base-maia",
+        "base-lyra",
+        "base-mira",
+        "base-luma",
+        "base-sera"
+      ]
     },
     "tailwind": {
       "type": "object",
@@ -59,7 +76,12 @@
     },
     "menuColor": {
       "type": "string",
-      "enum": ["default", "inverted", "default-translucent", "inverted-translucent"]
+      "enum": [
+        "default",
+        "inverted",
+        "default-translucent",
+        "inverted-translucent"
+      ]
     },
     "menuAccent": {
       "type": "string",

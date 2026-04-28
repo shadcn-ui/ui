@@ -1,5 +1,57 @@
 # @shadcn/ui
 
+## 4.6.0
+
+### Minor Changes
+
+- [#10530](https://github.com/shadcn-ui/ui/pull/10530) [`ea6086cbcc33b359bb876651374e26f643ea85b1`](https://github.com/shadcn-ui/ui/commit/ea6086cbcc33b359bb876651374e26f643ea85b1) Thanks [@shadcn](https://github.com/shadcn)! - add shadcn preset commands
+
+- [#10516](https://github.com/shadcn-ui/ui/pull/10516) [`c236d0c009b4ff87c77a04c618d2b348cac7cdcb`](https://github.com/shadcn-ui/ui/commit/c236d0c009b4ff87c77a04c618d2b348cac7cdcb) Thanks [@shadcn](https://github.com/shadcn)! - add preset info to npx shadcn info
+
+### Patch Changes
+
+- [#10526](https://github.com/shadcn-ui/ui/pull/10526) [`55fd4dc71be9e6410a528d6ce6bc7287ffba262c`](https://github.com/shadcn-ui/ui/commit/55fd4dc71be9e6410a528d6ce6bc7287ffba262c) Thanks [@shadcn](https://github.com/shadcn)! - update docs and info urls
+
+- [#10524](https://github.com/shadcn-ui/ui/pull/10524) [`6dea65ebcbbdb8773b3072ca74c9cee4e386988b`](https://github.com/shadcn-ui/ui/commit/6dea65ebcbbdb8773b3072ca74c9cee4e386988b) Thanks [@shadcn](https://github.com/shadcn)! - fix apply in monorepo
+
+## 4.5.0
+
+### Minor Changes
+
+- [#10488](https://github.com/shadcn-ui/ui/pull/10488) [`eb6e783fb3861aba3b35289a473954080e6f1607`](https://github.com/shadcn-ui/ui/commit/eb6e783fb3861aba3b35289a473954080e6f1607) Thanks [@shadcn](https://github.com/shadcn)! - add --pointer option to cli.
+
+  npx shadcn init --pointer will enable cursor: pointer on buttons.
+
+## 4.4.0
+
+### Minor Changes
+
+- [#10451](https://github.com/shadcn-ui/ui/pull/10451) [`e456fed9d3f0b7aacf7084aecc02a75e8fde622d`](https://github.com/shadcn-ui/ui/commit/e456fed9d3f0b7aacf7084aecc02a75e8fde622d) Thanks [@shadcn](https://github.com/shadcn)! - add apply --only
+
+### Patch Changes
+
+- [`9c572ab778b5a0ab42693eb07bc4a75d0c24603e`](https://github.com/shadcn-ui/ui/commit/9c572ab778b5a0ab42693eb07bc4a75d0c24603e) Thanks [@shadcn](https://github.com/shadcn)! - fix chartColor in presets
+
+## 4.3.1
+
+### Patch Changes
+
+- [#10436](https://github.com/shadcn-ui/ui/pull/10436) [`b7cfc364aca36bc90f8efa86773bc81011502036`](https://github.com/shadcn-ui/ui/commit/b7cfc364aca36bc90f8efa86773bc81011502036) Thanks [@shadcn](https://github.com/shadcn)! - Ensure `init` only runs template post-init hooks for newly created projects.
+
+- [#10179](https://github.com/shadcn-ui/ui/pull/10179) [`d00605c5fb5fe3cfbcb68cea65398430cdd819f8`](https://github.com/shadcn-ui/ui/commit/d00605c5fb5fe3cfbcb68cea65398430cdd819f8) Thanks [@EthanThatOneKid](https://github.com/EthanThatOneKid)! - Send `Accept: application/vnd.shadcn.v1+json, application/json;q=0.9` and `User-Agent: shadcn` on registry fetches so servers using HTTP content negotiation can reliably serve JSON to the CLI. Fixes #10164.
+
+## 4.3.0
+
+### Minor Changes
+
+- [#10416](https://github.com/shadcn-ui/ui/pull/10416) [`101741046813622d48c081dfc19c40d0aa76484b`](https://github.com/shadcn-ui/ui/commit/101741046813622d48c081dfc19c40d0aa76484b) Thanks [@shadcn](https://github.com/shadcn)! - add style sera
+
+## 4.2.0
+
+### Minor Changes
+
+- [#10313](https://github.com/shadcn-ui/ui/pull/10313) [`c1e29824cd7a6809448e45b6b7fe8f7be71ecb0f`](https://github.com/shadcn-ui/ui/commit/c1e29824cd7a6809448e45b6b7fe8f7be71ecb0f) Thanks [@shadcn](https://github.com/shadcn)! - add shadcn apply command
+
 ## 4.1.2
 
 ### Patch Changes

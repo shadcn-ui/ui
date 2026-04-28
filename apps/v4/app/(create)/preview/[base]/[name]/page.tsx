@@ -10,6 +10,7 @@ import { ActionMenuScript } from "@/app/(app)/create/components/action-menu"
 import { DesignSystemProvider } from "@/app/(app)/create/components/design-system-provider"
 import { HistoryScript } from "@/app/(app)/create/components/history-buttons"
 import { DarkModeScript } from "@/app/(app)/create/components/mode-switcher"
+import { OpenPresetScript } from "@/app/(app)/create/components/open-preset"
 import { PreviewStyle } from "@/app/(app)/create/components/preview-style"
 import { RandomizeScript } from "@/app/(app)/create/components/random-button"
 import {
@@ -139,6 +140,7 @@ export default async function BlockPage({
       <PreventScrollOnFocusScript />
       <PreviewStyle />
       <ActionMenuScript />
+      <OpenPresetScript />
       <RandomizeScript />
       <HistoryScript />
       <DarkModeScript />
