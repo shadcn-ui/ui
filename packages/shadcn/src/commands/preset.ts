@@ -108,6 +108,7 @@ export const decode = new Command()
               code: result.code,
               version: result.version,
               values: result.values,
+              derived: result.derived,
               url: result.url,
             },
             null,
@@ -129,9 +130,7 @@ export const url = new Command()
   .argument("<code>", "the preset code")
   .action((code) => {
     try {
-      logger.break()
-      logger.log(`  ${decodePresetCode(code).url}`)
-      logger.break()
+      logger.log(decodePresetCode(code).url)
     } catch (error) {
       handlePresetError(error)
     }
@@ -157,8 +156,9 @@ export const openCommand = new Command()
 
     try {
       await open(presetUrl)
-    } catch {
-      handlePresetError(new Error("Failed to open preset URL."))
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error)
+      handlePresetError(new Error(`Failed to open preset URL: ${message}`))
     }
   })
 

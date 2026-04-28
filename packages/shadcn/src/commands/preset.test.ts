@@ -147,6 +147,32 @@ describe("preset commands", () => {
     )
   })
 
+  it("prints decoded preset JSON with derived values", async () => {
+    const log = vi.spyOn(console, "log").mockImplementation(() => {})
+
+    await presetCommand.parseAsync(["decode", "a0", "--json"], { from: "user" })
+
+    expect(JSON.parse(log.mock.calls[0][0] as string)).toEqual({
+      code: "a0",
+      version: "a",
+      values: {
+        style: "nova",
+        baseColor: "neutral",
+        theme: "neutral",
+        chartColor: "blue",
+        iconLibrary: "lucide",
+        font: "inter",
+        fontHeading: "inherit",
+        radius: "default",
+        menuAccent: "subtle",
+        menuColor: "default",
+      },
+      derived: ["chartColor"],
+      url: getPresetUrl("a0"),
+    })
+    log.mockRestore()
+  })
+
   it("rejects invalid codes", () => {
     expect(() => decodePresetCode("c0")).toThrow("Invalid preset code: c0")
   })
@@ -160,8 +186,8 @@ describe("preset commands", () => {
   it("prints the create URL from preset url", async () => {
     await url.parseAsync(["a0"], { from: "user" })
 
-    expect(logger.break).toHaveBeenCalledTimes(2)
-    expect(logger.log).toHaveBeenCalledWith(`  ${getPresetUrl("a0")}`)
+    expect(logger.break).not.toHaveBeenCalled()
+    expect(logger.log).toHaveBeenCalledWith(getPresetUrl("a0"))
   })
 
   it("prints the create URL before opening it", async () => {
@@ -208,7 +234,9 @@ describe("preset commands", () => {
     expect(logger.log).toHaveBeenCalledWith(
       `  Opening ${getPresetUrl("a0")} in your browser.`
     )
-    expect(logger.error).toHaveBeenCalledWith("Failed to open preset URL.")
+    expect(logger.error).toHaveBeenCalledWith(
+      "Failed to open preset URL: open failed"
+    )
     exit.mockRestore()
   })
 
@@ -269,6 +297,36 @@ describe("preset commands", () => {
         radius: "large",
         menuAccent: "bold",
         menuColor: "inverted",
+      },
+    })
+    log.mockRestore()
+  })
+
+  it("prints fallback metadata in resolved preset JSON", async () => {
+    const log = vi.spyOn(console, "log").mockImplementation(() => {})
+    vi.mocked(resolveProjectPreset).mockResolvedValueOnce({
+      code: "b123",
+      fallbacks: ["theme"],
+      values: {
+        style: "luma",
+        baseColor: "mist",
+        theme: "neutral",
+        chartColor: "emerald",
+        iconLibrary: "phosphor",
+        font: "inter",
+        fontHeading: "lora",
+        radius: "large",
+        menuAccent: "bold",
+        menuColor: "inverted",
+      },
+    })
+
+    await resolveCommand.parseAsync(["--json"], { from: "user" })
+
+    expect(JSON.parse(log.mock.calls[0][0] as string)).toMatchObject({
+      fallbacks: ["theme"],
+      values: {
+        theme: "neutral",
       },
     })
     log.mockRestore()
@@ -342,6 +400,61 @@ describe("preset commands", () => {
       targets
     )
     expect(getConfig).not.toHaveBeenCalled()
+    exit.mockRestore()
+  })
+
+  it("prints monorepo-root JSON for preset resolve --json", async () => {
+    const exit = mockProcessExit()
+    const log = vi.spyOn(console, "log").mockImplementation(() => {})
+    const targets = [{ name: "apps/web" }]
+    vi.mocked(existsSync).mockReturnValue(false)
+    vi.mocked(isMonorepoRoot).mockResolvedValue(true)
+    vi.mocked(getMonorepoTargets).mockResolvedValue(targets as never)
+
+    await expect(
+      resolveCommand.parseAsync(["--json"], { from: "user" })
+    ).rejects.toThrow("process.exit:1")
+
+    expect(JSON.parse(log.mock.calls[0][0] as string)).toEqual({
+      error: "monorepo_root",
+      message:
+        "You are running preset resolve from a monorepo root. Use the -c flag to specify a workspace.",
+      targets: ["apps/web"],
+    })
+    expect(formatMonorepoMessage).not.toHaveBeenCalled()
+    expect(getConfig).not.toHaveBeenCalled()
+    log.mockRestore()
+    exit.mockRestore()
+  })
+
+  it("prints help when no preset subcommand is provided", async () => {
+    const outputHelp = vi
+      .spyOn(presetCommand, "outputHelp")
+      .mockImplementation(() => {})
+
+    await presetCommand.parseAsync([], { from: "user" })
+
+    expect(outputHelp).toHaveBeenCalledOnce()
+    outputHelp.mockRestore()
+  })
+
+  it("errors on unknown preset subcommands", async () => {
+    const exit = mockProcessExit()
+    const outputHelp = vi
+      .spyOn(presetCommand, "outputHelp")
+      .mockImplementation(() => {})
+    const writeErr = vi
+      .spyOn(process.stderr, "write")
+      .mockImplementation(() => true)
+
+    await expect(
+      presetCommand.parseAsync(["bogus"], { from: "user" })
+    ).rejects.toThrow("process.exit:1")
+
+    expect(outputHelp).not.toHaveBeenCalled()
+    expect(writeErr.mock.calls.join("")).toContain("too many arguments")
+    writeErr.mockRestore()
+    outputHelp.mockRestore()
     exit.mockRestore()
   })
 })
