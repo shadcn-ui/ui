@@ -281,6 +281,50 @@ describe("shadcn add", () => {
     ).toBe(true)
   })
 
+  it("should add registryDependencies with registry target aliases", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+    const result = await npxShadcn(fixturePath, [
+      "add",
+      "../../fixtures/registry/example-target-alias-parent.json",
+    ])
+
+    expectCommandSuccess(result)
+    expect(
+      await fs.pathExists(
+        path.join(fixturePath, "components/ui/dependency-button.tsx")
+      )
+    ).toBe(true)
+    expect(
+      await fs.pathExists(path.join(fixturePath, "lib/dependency-helper.ts"))
+    ).toBe(true)
+    expect(
+      await fs.pathExists(
+        path.join(fixturePath, "components/dependency-panel.tsx")
+      )
+    ).toBe(true)
+    expect(
+      await fs.pathExists(path.join(fixturePath, "hooks/use-dependency.ts"))
+    ).toBe(true)
+  })
+
+  it("should prefer registry target aliases over the file type", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+    const result = await npxShadcn(fixturePath, [
+      "add",
+      "../../fixtures/registry/example-target-alias-type-mismatch.json",
+    ])
+
+    expectCommandSuccess(result)
+    expect(
+      await fs.pathExists(path.join(fixturePath, "lib/target-from-ui-type.ts"))
+    ).toBe(true)
+    expect(
+      await fs.pathExists(
+        path.join(fixturePath, "components/ui/target-from-ui-type.ts")
+      )
+    ).toBe(false)
+  })
+
   it("should add item with envVars", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, ["init", "--defaults"])
@@ -387,10 +431,7 @@ describe("shadcn add", () => {
     ).toBe(true)
     expect(
       await fs.pathExists(
-        path.join(
-          fixturePath,
-          "apps/web/src/components/ui/target-button.tsx"
-        )
+        path.join(fixturePath, "apps/web/src/components/ui/target-button.tsx")
       )
     ).toBe(false)
   }, 300000)
