@@ -267,11 +267,11 @@
 
   /* MARK: Carousel */
   .cn-carousel-previous {
-    @apply rounded-full;
+    @apply rounded-full after:content-[''] after:absolute after:-inset-4;
   }
 
   .cn-carousel-next {
-    @apply rounded-full;
+    @apply rounded-full after:content-[''] after:absolute after:-inset-4;
   }
 
   /* MARK: Chart */
