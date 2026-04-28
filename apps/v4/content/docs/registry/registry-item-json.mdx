@@ -226,6 +226,8 @@ By default, the `shadcn` cli will read a project's `components.json` file to det
 
 Use `~` to refer to the root of the project e.g `~/foo.config.js`.
 
+Use registry target placeholders `@components/`, `@ui/`, `@lib/` and `@hooks/` to refer to the corresponding aliases configured in `components.json`. These placeholders are independent of the project's import prefix.
+
 ### tailwind
 
 **DEPRECATED:** Use `cssVars.theme` instead for Tailwind v4 projects.
