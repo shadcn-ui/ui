@@ -254,7 +254,7 @@ export function printPresetInfo(
   logger.log(highlighter.info("Preset"))
   if (!preset?.code) {
     printEntries({
-      "--preset": "-",
+      code: "-",
     })
   } else {
     const fallbacks = preset.fallbacks ?? []
@@ -264,8 +264,8 @@ export function printPresetInfo(
     }
 
     printEntries({
-      "--preset": preset.code,
-      url: `${SHADCN_URL}/create?preset=${preset.code}`,
+      code: preset.code,
+      version: preset.code[0],
       style: preset.values?.style ?? "-",
       baseColor: formatPresetValue("baseColor", preset.values?.baseColor),
       theme: formatPresetValue("theme", preset.values?.theme),
@@ -276,6 +276,7 @@ export function printPresetInfo(
       radius: formatPresetValue("radius", preset.values?.radius),
       menuAccent: formatPresetValue("menuAccent", preset.values?.menuAccent),
       menuColor: formatPresetValue("menuColor", preset.values?.menuColor),
+      url: `${SHADCN_URL}/create?preset=${preset.code}`,
     })
 
     if (fallbacks.length > 0) {
@@ -289,7 +290,9 @@ export function printPresetInfo(
 }
 
 function printEntries(entries: Record<string, string>) {
-  const maxKeyLength = Math.max(...Object.keys(entries).map((k) => k.length))
+  const maxKeyLength = Math.max(
+    ...Object.keys(entries).map((key) => key.length)
+  )
   for (const [key, value] of Object.entries(entries)) {
     logger.log(`  ${key.padEnd(maxKeyLength + 2)}${value}`)
   }

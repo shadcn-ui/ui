@@ -139,11 +139,12 @@ describe("preset commands", () => {
     printPresetDecode(decodePresetCode("a0"))
 
     expect(logger.log).toHaveBeenCalledWith("Preset")
-    expect(logger.log).toHaveBeenCalledWith("  --preset     a0")
+    expect(logger.log).toHaveBeenCalledWith("  code         a0")
+    expect(logger.log).toHaveBeenCalledWith("  version      a")
+    expect(logger.log).toHaveBeenCalledWith("  chartColor   blue*")
     expect(logger.log).toHaveBeenCalledWith(
       `  url          ${getPresetUrl("a0")}`
     )
-    expect(logger.log).toHaveBeenCalledWith("  chartColor   blue*")
     expect(logger.log).toHaveBeenCalledWith(
       "  * Compatibility value for older preset versions."
     )
@@ -155,8 +156,8 @@ describe("preset commands", () => {
     expect(logger.log).toHaveBeenCalledWith("Preset")
     expect(vi.mocked(logger.log).mock.calls.map((call) => call[0])).toEqual([
       "Preset",
-      "  --preset     b0",
-      `  url          ${getPresetUrl("b0")}`,
+      "  code         b0",
+      "  version      b",
       "  style        nova",
       "  baseColor    neutral",
       "  theme        neutral",
@@ -167,6 +168,7 @@ describe("preset commands", () => {
       "  radius       default",
       "  menuAccent   subtle",
       "  menuColor    default",
+      `  url          ${getPresetUrl("b0")}`,
     ])
   })
 
@@ -267,7 +269,8 @@ describe("preset commands", () => {
     await resolveCommand.parseAsync([], { from: "user" })
 
     expect(logger.log).toHaveBeenCalledWith("Preset")
-    expect(logger.log).toHaveBeenCalledWith(expect.stringContaining("--preset"))
+    expect(logger.log).toHaveBeenCalledWith("  code         b123")
+    expect(logger.log).toHaveBeenCalledWith("  version      b")
     expect(logger.log).toHaveBeenCalledWith(expect.stringContaining("b123"))
     expect(logger.log).toHaveBeenCalledWith(
       expect.stringContaining("https://ui.shadcn.com/create?preset=b123")
