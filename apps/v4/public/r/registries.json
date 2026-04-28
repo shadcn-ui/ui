@@ -846,6 +846,12 @@
     "description": "Magic 3D Tabs component featuring mouse-interactive 3D rotation, floating particles background effect, and smooth spring animations."
   },
   {
+    "name": "@devl",
+    "homepage": "https://devl.dev",
+    "url": "https://devl.dev/r/{name}.json",
+    "description": "Hand-crafted layouts and UI primitives for shipping fast."
+  },
+  {
     "name": "@beste-ui",
     "homepage": "https://ui.beste.co",
     "url": "https://ui.beste.co/r/{name}.json",
