@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Copy01Icon, Globe02Icon, Tick02Icon } from "@hugeicons/core-free-icons"
+import {
+  Copy01Icon,
+  Globe02Icon,
+  HandPointingRight04Icon,
+  Tick02Icon,
+} from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { cn } from "@/lib/utils"
@@ -85,7 +90,8 @@ export function ProjectForm({
     const templateFlag = ` --template ${framework}`
     const monorepoFlag = isMonorepo ? " --monorepo" : ""
     const rtlFlag = params.rtl ? " --rtl" : ""
-    const flags = `${presetFlag}${baseFlag}${templateFlag}${monorepoFlag}${rtlFlag}`
+    const pointerFlag = params.pointer ? " --pointer" : ""
+    const flags = `${presetFlag}${baseFlag}${templateFlag}${monorepoFlag}${rtlFlag}${pointerFlag}`
 
     return IS_LOCAL_DEV
       ? {
@@ -100,7 +106,14 @@ export function ProjectForm({
           yarn: `yarn dlx shadcn${SHADCN_VERSION} init${flags}`,
           bun: `bunx --bun shadcn${SHADCN_VERSION} init${flags}`,
         }
-  }, [framework, isMonorepo, params.base, params.rtl, presetCode])
+  }, [
+    framework,
+    isMonorepo,
+    params.base,
+    params.pointer,
+    params.rtl,
+    presetCode,
+  ])
 
   const command = commands[packageManager]
 
@@ -154,6 +167,23 @@ export function ProjectForm({
               <FieldLegend variant="label" className="sr-only">
                 Options
               </FieldLegend>
+              <Field orientation="horizontal">
+                <FieldLabel htmlFor="pointer">
+                  <HugeiconsIcon
+                    icon={HandPointingRight04Icon}
+                    className="size-4 -rotate-90"
+                  />
+                  Use pointer on buttons
+                </FieldLabel>
+                <Switch
+                  id="pointer"
+                  checked={params.pointer}
+                  onCheckedChange={(checked) =>
+                    setParams({ pointer: checked === true })
+                  }
+                />
+              </Field>
+              <FieldSeparator className="-mx-6" />
               <Field
                 orientation="horizontal"
                 data-disabled={hasMonorepo ? undefined : "true"}

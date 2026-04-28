@@ -3,15 +3,12 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { Announcement } from "@/components/announcement"
-import { ExamplesNav } from "@/components/examples-nav"
 import {
   PageActions,
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { PageNav } from "@/components/page-nav"
-import { ThemeSelector } from "@/components/theme-selector"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
 import { RootComponents } from "./components"

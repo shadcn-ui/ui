@@ -3175,6 +3175,33 @@
       }
     },
     {
+      "name": "font-eb-garamond",
+      "title": "EB Garamond",
+      "type": "registry:font",
+      "font": {
+        "family": "'EB Garamond Variable', serif",
+        "provider": "google",
+        "import": "EB_Garamond",
+        "variable": "--font-serif",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/eb-garamond"
+      }
+    },
+    {
+      "name": "font-instrument-serif",
+      "title": "Instrument Serif",
+      "type": "registry:font",
+      "font": {
+        "family": "'Instrument Serif', serif",
+        "provider": "google",
+        "import": "Instrument_Serif",
+        "variable": "--font-serif",
+        "weight": ["400"],
+        "subsets": ["latin"],
+        "dependency": "@fontsource/instrument-serif"
+      }
+    },
+    {
       "name": "font-heading-geist",
       "title": "Geist (Heading)",
       "type": "registry:font",
@@ -3484,6 +3511,33 @@
         "variable": "--font-heading",
         "subsets": ["latin"],
         "dependency": "@fontsource-variable/playfair-display"
+      }
+    },
+    {
+      "name": "font-heading-eb-garamond",
+      "title": "EB Garamond (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'EB Garamond Variable', serif",
+        "provider": "google",
+        "import": "EB_Garamond",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/eb-garamond"
+      }
+    },
+    {
+      "name": "font-heading-instrument-serif",
+      "title": "Instrument Serif (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Instrument Serif', serif",
+        "provider": "google",
+        "import": "Instrument_Serif",
+        "variable": "--font-heading",
+        "weight": ["400"],
+        "subsets": ["latin"],
+        "dependency": "@fontsource/instrument-serif"
       }
     }
   ]
