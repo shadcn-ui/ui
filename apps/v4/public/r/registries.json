@@ -420,6 +420,12 @@
     "description": "Beautifully designed motions components. Easy copy-paste. Customizable. Open Source. Built for engineers and designers."
   },
   {
+    "name": "@nordaun",
+    "homepage": "https://ui.nordaun.com",
+    "url": "https://ui.nordaun.com/r/{name}.json",
+    "description": "Simple components for your extraordinary creations."
+  },
+  {
     "name": "@ncdai",
     "homepage": "https://chanhdai.com/components",
     "url": "https://chanhdai.com/r/{name}.json",
