@@ -1266,5 +1266,12 @@
     "url": "https://shieldcn.dev/r/{name}.json",
     "description": "Beautiful README badges as a service. A shields.io alternative with the visual quality of shadcn/ui. Drop-in SVG badge components for npm, GitHub, Discord, and more.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 129.7 132' fill='var(--foreground)'><path d='M99.5,107.6c4.4,0,8-3.6,8-8v-26.1l-34.1,34.1h26.1Z'/><path d='M83.9,24.4H30.2c-4.4,0-8,3.6-8,8v53.7l61.7-61.7Z'/><path d='M104.5,26.2c-1-.8-2.4-.2-2.8,1s-1,2.5-2,3.5L25.7,104.6c-.3.3-.6.6-1,.8,1.4,1.3,3.4,2.2,5.5,2.2h25.1c-.2-2.2.6-4.5,2.2-6.2l38.9-38.9c3-3,8-3,11,0v-30c0-2.5-1.2-4.8-3-6.3Z'/></svg>"
+  },
+  {
+    "name": "@evilbuttons",
+    "homepage": "https://evilbuttons.radiumcoders.com/docs",
+    "url": "https://evilbuttons.radiumcoders.com/r/{name}.json",
+    "description": "A shadcn/ui registry featuring a collection of animated buttons built with Motion. Each component is designed to add punchy, interactive feedback to your UI with minimal setup.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 270 270' fill='var(--foreground)'><circle cx='135' cy='135' r='135' fill='black'/><path d='M161.057 161.35L186.181 221.846L164.141 231.05L139.018 170.853L102.75 207.419V52.945L211.663 161.281L161.057 161.35Z' fill='white'/><path d='M160.5 64.8521C158.1 81.2521 135.5 84.5187 126 83.3521C130.167 92.0187 140.8 112.352 156 112.352C175 112.352 163.5 44.3521 160.5 64.8521Z' fill='white' stroke='white'/><path d='M71.1794 99.9477C83.9367 110.529 102.918 97.8346 109.197 90.6108C111.9 99.8395 117.603 122.065 106.307 132.236C92.1875 144.949 55.2328 86.7206 71.1794 99.9477Z' fill='white' stroke='white'/><circle cx='121' cy='122' r='5' fill='black'/><circle cx='141' cy='112' r='5' fill='black'/></svg>"
   }
 ]
