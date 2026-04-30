@@ -8,6 +8,48 @@ import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import prompts from "prompts"
 
+function normalizePackageDependencies(
+  dependencies: RegistryItem["dependencies"] = []
+) {
+  return Array.from(new Set(dependencies.map(normalizePackageDependency)))
+}
+
+function normalizePackageDependency(dependency: string) {
+  const trimmedDependency = dependency.trim()
+
+  if (
+    !trimmedDependency ||
+    shouldPreserveDependencySpecifier(trimmedDependency)
+  ) {
+    return dependency
+  }
+
+  const segments = trimmedDependency.split("/")
+
+  if (trimmedDependency.startsWith("@")) {
+    if (segments.length <= 2 || segments[1]?.includes("@")) {
+      return dependency
+    }
+
+    return `${segments[0]}/${segments[1]}`
+  }
+
+  if (segments.length <= 1 || segments[0]?.includes("@")) {
+    return dependency
+  }
+
+  return segments[0]
+}
+
+function shouldPreserveDependencySpecifier(dependency: string) {
+  return (
+    /^[a-zA-Z][a-zA-Z\d+.-]*:/.test(dependency) ||
+    /^(?:\.{1,2}\/|~\/|\/)/.test(dependency) ||
+    dependency.includes("#") ||
+    dependency.includes("\\")
+  )
+}
+
 export async function updateDependencies(
   dependencies: RegistryItem["dependencies"],
   devDependencies: RegistryItem["devDependencies"],
@@ -16,8 +58,8 @@ export async function updateDependencies(
     silent?: boolean
   }
 ) {
-  dependencies = Array.from(new Set(dependencies))
-  devDependencies = Array.from(new Set(devDependencies))
+  dependencies = normalizePackageDependencies(dependencies)
+  devDependencies = normalizePackageDependencies(devDependencies)
 
   if (!dependencies?.length && !devDependencies?.length) {
     return
