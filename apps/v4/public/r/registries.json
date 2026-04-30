@@ -1080,6 +1080,12 @@
     "description": "Hand-crafted, beautiful, and minimal UI components built with Tailwind CSS and Motion."
   },
   {
+    "name": "@saaskit",
+    "homepage": "https://saaskit-theta.vercel.app",
+    "url": "https://saaskit-theta.vercel.app/r/{name}.json",
+    "description": "10 essential shadcn/ui components for B2B SaaS: Pricing, Billing, Usage, and Onboarding. Minimalist Soft Brutalist design."
+  },
+  {
     "name": "@dotmatrix",
     "homepage": "https://dotmatrix.zzzzshawn.cloud",
     "url": "https://dotmatrix.zzzzshawn.cloud/r/{name}.json",
