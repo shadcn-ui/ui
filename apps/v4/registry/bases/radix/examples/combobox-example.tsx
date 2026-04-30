@@ -1132,7 +1132,7 @@ function ComboboxInDialog() {
 
   return (
     <Example title="Combobox in Dialog">
-      <Dialog open={open} onOpenChange={setOpen} modal={false}>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button variant="outline">Open Dialog</Button>
         </DialogTrigger>
