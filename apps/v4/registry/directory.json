@@ -1285,7 +1285,7 @@
     "name": "@evilbuttons",
     "homepage": "https://evilbuttons.radiumcoders.com/docs",
     "url": "https://evilbuttons.radiumcoders.com/r/{name}.json",
-    "description": "A shadcn/ui registry featuring a collection of animated buttons built with Motion. Each component is designed to add punchy, interactive feedback to your UI with minimal setup.",
+    "description": "A shadcn/ui registry featuring a large collection of animated buttons built with Motion. Each component is designed to add punchy, interactive feedback to your UI with minimal setup.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 270 270' fill='var(--foreground)'><circle cx='135' cy='135' r='135' fill='black'/><path d='M161.057 161.35L186.181 221.846L164.141 231.05L139.018 170.853L102.75 207.419V52.945L211.663 161.281L161.057 161.35Z' fill='white'/><path d='M160.5 64.8521C158.1 81.2521 135.5 84.5187 126 83.3521C130.167 92.0187 140.8 112.352 156 112.352C175 112.352 163.5 44.3521 160.5 64.8521Z' fill='white' stroke='white'/><path d='M71.1794 99.9477C83.9367 110.529 102.918 97.8346 109.197 90.6108C111.9 99.8395 117.603 122.065 106.307 132.236C92.1875 144.949 55.2328 86.7206 71.1794 99.9477Z' fill='white' stroke='white'/><circle cx='121' cy='122' r='5' fill='black'/><circle cx='141' cy='112' r='5' fill='black'/></svg>"
   }
 ]
