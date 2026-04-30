@@ -9,6 +9,7 @@ export const revalidate = false
 
 const FEATURED_BLOCKS = [
   "dashboard-01",
+  "rgl-dashboard",
   "sidebar-07",
   "sidebar-03",
   "login-03",

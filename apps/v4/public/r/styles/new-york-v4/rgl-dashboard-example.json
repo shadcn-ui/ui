@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rgl-dashboard-example",
+  "registryDependencies": [
+    "rgl-dashboard-types"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/lib/rgl-dashboard-example.ts",
+      "content": "import type { DashboardRecord } from \"@/registry/new-york-v4/lib/rgl-dashboard-types\"\nimport { createDefaultLayout, createDefaultWidgets } from \"@/registry/new-york-v4/lib/rgl-dashboard-types\"\n\n/**\n * Canonical dashboard spec for docs and examples: one object holds `layout` + `widgets` for every tile.\n * This is the default seed for `<DashboardDemo />` when no `storageKey` is provided.\n */\nexport const DASHBOARD_EXAMPLE_SPEC: DashboardRecord = {\n  id: \"main\",\n  name: \"Main\",\n  layout: createDefaultLayout(),\n  widgets: createDefaultWidgets(),\n}\n",
+      "type": "registry:lib"
+    }
+  ],
+  "type": "registry:lib"
+}

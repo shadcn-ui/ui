@@ -16,6 +16,9 @@ export function ComponentPreview({
   styleName = "new-york-v4",
   direction = "ltr",
   caption,
+  /** When set, "View code" shows this file instead of the example named `name` (path from app root, e.g. `registry/.../foo.tsx`). */
+  sourceSrc,
+  sourceTitle,
   ...props
 }: React.ComponentProps<"div"> & {
   name: string
@@ -28,6 +31,8 @@ export function ComponentPreview({
   previewClassName?: string
   direction?: "ltr" | "rtl"
   caption?: string
+  sourceSrc?: string
+  sourceTitle?: string
 }) {
   if (type === "block") {
     const content = (
@@ -89,14 +94,18 @@ export function ComponentPreview({
       component={React.createElement(Component)}
       source={
         <ComponentSource
-          name={name}
+          name={sourceSrc ? undefined : name}
+          src={sourceSrc}
+          title={sourceTitle}
           collapsible={false}
           styleName={styleName}
         />
       }
       sourcePreview={
         <ComponentSource
-          name={name}
+          name={sourceSrc ? undefined : name}
+          src={sourceSrc}
+          title={sourceTitle}
           collapsible={false}
           styleName={styleName}
           maxLines={3}

@@ -140,6 +140,7 @@ When adding or modifying components, please ensure that:
 1. You make the changes for every style.
 2. You update the documentation.
 3. You run `pnpm registry:build` to update the registry.
+4. For **new registry blocks** (for example under `apps/v4/registry/new-york-v4/blocks`), follow [Requests for new components](#requests-for-new-components): open a [discussion](https://github.com/shadcn-ui/ui/discussions) when proposing a new block, and reference that discussion in your PR description when applicable.
 
 ## Commit Convention
 

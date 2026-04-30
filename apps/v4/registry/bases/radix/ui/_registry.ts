@@ -330,6 +330,29 @@ export const ui: Registry["items"] = [
     },
   },
   {
+    name: "rgl-dashboard-grid",
+    type: "registry:ui",
+    dependencies: ["react-grid-layout@1.5.3", "react-resizable"],
+    files: [
+      {
+        path: "ui/rgl-dashboard-grid.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "rgl-dashboard-tile",
+    type: "registry:ui",
+    dependencies: ["recharts@3.8.0", "lucide-react"],
+    registryDependencies: ["card", "badge", "rgl-dashboard-types"],
+    files: [
+      {
+        path: "ui/rgl-dashboard-tile.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "dialog",
     type: "registry:ui",
     registryDependencies: ["button"],

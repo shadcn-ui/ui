@@ -4126,6 +4126,84 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "rgl-dashboard-debug-demo": {
+      name: "rgl-dashboard-debug-demo",
+      filePath: "examples/radix/rgl-dashboard-debug-demo.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/rgl-dashboard-debug-demo")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-debug-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "rgl-dashboard-layout-demo": {
+      name: "rgl-dashboard-layout-demo",
+      filePath: "examples/radix/rgl-dashboard-layout-demo.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/rgl-dashboard-layout-demo")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-layout-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "rgl-dashboard-split-demo": {
+      name: "rgl-dashboard-split-demo",
+      filePath: "examples/radix/rgl-dashboard-split-demo.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/rgl-dashboard-split-demo")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-split-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "rgl-dashboard-static-demo": {
+      name: "rgl-dashboard-static-demo",
+      filePath: "examples/radix/rgl-dashboard-static-demo.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/rgl-dashboard-static-demo")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-static-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "rgl-dashboard-tile-demo": {
+      name: "rgl-dashboard-tile-demo",
+      filePath: "examples/radix/rgl-dashboard-tile-demo.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/rgl-dashboard-tile-demo")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "rgl-dashboard-tile-more-demo": {
+      name: "rgl-dashboard-tile-more-demo",
+      filePath: "examples/radix/rgl-dashboard-tile-more-demo.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/rgl-dashboard-tile-more-demo")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile-more-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "scroll-area-demo": {
       name: "scroll-area-demo",
       filePath: "examples/radix/scroll-area-demo.tsx",
@@ -9754,6 +9832,84 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "resizable-vertical"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "rgl-dashboard-debug-demo": {
+      name: "rgl-dashboard-debug-demo",
+      filePath: "examples/base/rgl-dashboard-debug-demo.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/rgl-dashboard-debug-demo")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-debug-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "rgl-dashboard-layout-demo": {
+      name: "rgl-dashboard-layout-demo",
+      filePath: "examples/base/rgl-dashboard-layout-demo.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/rgl-dashboard-layout-demo")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-layout-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "rgl-dashboard-split-demo": {
+      name: "rgl-dashboard-split-demo",
+      filePath: "examples/base/rgl-dashboard-split-demo.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/rgl-dashboard-split-demo")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-split-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "rgl-dashboard-static-demo": {
+      name: "rgl-dashboard-static-demo",
+      filePath: "examples/base/rgl-dashboard-static-demo.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/rgl-dashboard-static-demo")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-static-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "rgl-dashboard-tile-demo": {
+      name: "rgl-dashboard-tile-demo",
+      filePath: "examples/base/rgl-dashboard-tile-demo.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/rgl-dashboard-tile-demo")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "rgl-dashboard-tile-more-demo": {
+      name: "rgl-dashboard-tile-more-demo",
+      filePath: "examples/base/rgl-dashboard-tile-more-demo.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/rgl-dashboard-tile-more-demo")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile-more-demo"
         return { default: mod.default || mod[exportName] }
       }),
     },
