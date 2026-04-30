@@ -118,6 +118,31 @@ describe("updateDependencies", () => {
       expectedArgs: ["install", "first"],
       expectedDevArgs: ["install", "-D", "second"],
     },
+    {
+      description: "normalizes package subpath dependencies before installing",
+      options: { silent: true },
+      dependencies: [
+        "react-aria-components/Button",
+        "react-aria-components/composeRenderProps",
+        "@scope/pkg/subpath",
+        "@scope/pkg/other",
+        "tailwind-variants",
+      ],
+      devDependencies: ["eslint/use-at-your-own-risk", "@types/react"],
+      config: {
+        resolvedPaths: {
+          cwd: path.resolve(__dirname, "../../fixtures/project-npm"),
+        },
+      },
+      expectedPackageManager: "npm",
+      expectedArgs: [
+        "install",
+        "react-aria-components",
+        "@scope/pkg",
+        "tailwind-variants",
+      ],
+      expectedDevArgs: ["install", "-D", "eslint", "@types/react"],
+    },
   ])(
     "$description",
     async ({
