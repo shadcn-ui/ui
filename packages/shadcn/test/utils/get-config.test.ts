@@ -1,3 +1,5 @@
+import { promises as fs } from "fs"
+import { tmpdir } from "os"
 import path from "path"
 import { describe, expect, test } from "vitest"
 
@@ -6,6 +8,7 @@ import {
   getBase,
   getConfig,
   getRawConfig,
+  getTargetStyleFromConfig,
 } from "../../src/utils/get-config"
 
 test("get raw config", async () => {
@@ -195,6 +198,89 @@ test("get config", async () => {
     registries: {
       "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
     },
+  })
+})
+
+async function createTargetStyleProject(style: string) {
+  const cwd = await fs.mkdtemp(path.join(tmpdir(), "shadcn-target-style-"))
+
+  await fs.mkdir(path.join(cwd, "src", "styles"), { recursive: true })
+  await fs.writeFile(
+    path.join(cwd, "package.json"),
+    JSON.stringify({ devDependencies: { tailwindcss: "^4.0.0" } })
+  )
+  await fs.writeFile(
+    path.join(cwd, "tsconfig.json"),
+    JSON.stringify({
+      compilerOptions: {
+        baseUrl: ".",
+        paths: {
+          "@/*": ["./src/*"],
+        },
+      },
+    })
+  )
+  await fs.writeFile(
+    path.join(cwd, "components.json"),
+    JSON.stringify({
+      style,
+      rsc: false,
+      tsx: true,
+      tailwind: {
+        config: "",
+        css: "src/styles/globals.css",
+        baseColor: "neutral",
+        cssVariables: true,
+      },
+      aliases: {
+        components: "@/components",
+        utils: "@/lib/utils",
+        ui: "@/components/ui",
+        lib: "@/lib",
+        hooks: "@/hooks",
+      },
+      registries: {
+        "@reui": "https://reui.io/r/{style}/{name}.json",
+      },
+    })
+  )
+  await fs.writeFile(
+    path.join(cwd, "src", "styles", "globals.css"),
+    '@import "tailwindcss";\n'
+  )
+
+  return cwd
+}
+
+async function removeTargetStyleProject(cwd: string) {
+  await fs.rm(cwd, { recursive: true, force: true })
+}
+
+describe("getTargetStyleFromConfig", () => {
+  test("upgrades legacy shadcn styles for Tailwind v4 projects", async () => {
+    for (const style of ["default", "new-york"]) {
+      const cwd = await createTargetStyleProject(style)
+
+      try {
+        await expect(getTargetStyleFromConfig(cwd, style)).resolves.toBe(
+          "new-york-v4"
+        )
+      } finally {
+        await removeTargetStyleProject(cwd)
+      }
+    }
+  })
+
+  test("preserves custom styles for Tailwind v4 projects", async () => {
+    const cwd = await createTargetStyleProject("base-nova")
+
+    try {
+      await expect(getTargetStyleFromConfig(cwd, "base-nova")).resolves.toBe(
+        "base-nova"
+      )
+    } finally {
+      await removeTargetStyleProject(cwd)
+    }
   })
 })
 
