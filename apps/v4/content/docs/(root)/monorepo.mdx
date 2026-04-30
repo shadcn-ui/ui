@@ -164,3 +164,89 @@ turbo.json
 4. **For Tailwind CSS v4, leave the `tailwind` config empty in the `components.json` file.**
 
 By following these requirements, the CLI will be able to install ui components, blocks, libs and hooks to the correct paths and handle imports for you.
+
+<Callout className="mt-6">
+  `package.json#imports` works well for package-local aliases inside a
+  workspace, for example inside `packages/ui`. For shared workspace imports such
+  as `@workspace/ui/components`, keep explicit aliases in `components.json`. The
+  CLI uses those aliases to route files across workspace boundaries.
+</Callout>
+
+## Using `package.json#imports`
+
+For a monorepo that uses package imports and does not rely on
+`tsconfig.json` `paths`, use:
+
+- local `#...` aliases for files inside each workspace
+- workspace package `exports` for shared imports such as
+  `@workspace/ui/components`
+
+For example, an app workspace can use local package imports:
+
+```json showLineNumbers title="apps/web/package.json"
+{
+  "name": "web",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#components/*": "./src/components/*.tsx",
+    "#lib/*": "./src/lib/*.ts",
+    "#hooks/*": "./src/hooks/*.ts"
+  },
+  "dependencies": {
+    "@workspace/ui": "workspace:*"
+  }
+}
+```
+
+```json showLineNumbers title="apps/web/components.json"
+{
+  "aliases": {
+    "components": "#components",
+    "ui": "@workspace/ui/components",
+    "lib": "#lib",
+    "hooks": "#hooks",
+    "utils": "@workspace/ui/lib/utils"
+  }
+}
+```
+
+And the shared UI package can expose its install targets with `exports`:
+
+```json showLineNumbers title="packages/ui/package.json"
+{
+  "name": "@workspace/ui",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#components/*": "./src/components/*.tsx",
+    "#lib/*": "./src/lib/*.ts",
+    "#hooks/*": "./src/hooks/*.ts"
+  },
+  "exports": {
+    "./globals.css": "./src/styles/globals.css",
+    "./components/*": "./src/components/*.tsx",
+    "./lib/*": "./src/lib/*.ts",
+    "./hooks/*": "./src/hooks/*.ts"
+  }
+}
+```
+
+```json showLineNumbers title="packages/ui/components.json"
+{
+  "aliases": {
+    "components": "#components",
+    "ui": "#components",
+    "lib": "#lib",
+    "hooks": "#hooks",
+    "utils": "#lib/utils"
+  }
+}
+```
+
+In this setup:
+
+- files added from the app to the shared UI package are routed through
+  `@workspace/ui/...`
+- files added inside `packages/ui` use the package-local `#...` aliases
+- the shared package must export any path referenced by another workspace
