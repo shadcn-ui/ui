@@ -1,0 +1,12 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "dev": {
+      "with": ["v4#icons:dev"]
+    },
+    "icons:dev": {
+      "persistent": true,
+      "cache": false
+    }
+  }
+}
