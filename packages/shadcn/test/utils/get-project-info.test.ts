@@ -146,6 +146,34 @@ describe("get project info", async () => {
         aliasPrefix: null,
       },
     },
+    {
+      name: "vite-v4-references",
+      type: {
+        framework: FRAMEWORKS["vite"],
+        isSrcDir: true,
+        isRSC: false,
+        isTsx: true,
+        tailwindConfigFile: null,
+        tailwindCssFile: "src/index.css",
+        tailwindVersion: "v4",
+        frameworkVersion: null,
+        aliasPrefix: "@",
+      },
+    },
+    {
+      name: "vite-v4-config-only",
+      type: {
+        framework: FRAMEWORKS["vite"],
+        isSrcDir: true,
+        isRSC: false,
+        isTsx: true,
+        tailwindConfigFile: null,
+        tailwindCssFile: "src/index.css",
+        tailwindVersion: "v4",
+        frameworkVersion: null,
+        aliasPrefix: "@",
+      },
+    },
   ])(`getProjectType($name) -> $type`, async ({ name, type }) => {
     expect(
       await getProjectInfo(
