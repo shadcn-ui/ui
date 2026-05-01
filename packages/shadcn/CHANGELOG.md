@@ -1,5 +1,37 @@
 # @shadcn/ui
 
+## 4.6.0
+
+### Minor Changes
+
+- [#10530](https://github.com/shadcn-ui/ui/pull/10530) [`ea6086cbcc33b359bb876651374e26f643ea85b1`](https://github.com/shadcn-ui/ui/commit/ea6086cbcc33b359bb876651374e26f643ea85b1) Thanks [@shadcn](https://github.com/shadcn)! - add shadcn preset commands
+
+- [#10516](https://github.com/shadcn-ui/ui/pull/10516) [`c236d0c009b4ff87c77a04c618d2b348cac7cdcb`](https://github.com/shadcn-ui/ui/commit/c236d0c009b4ff87c77a04c618d2b348cac7cdcb) Thanks [@shadcn](https://github.com/shadcn)! - add preset info to npx shadcn info
+
+### Patch Changes
+
+- [#10526](https://github.com/shadcn-ui/ui/pull/10526) [`55fd4dc71be9e6410a528d6ce6bc7287ffba262c`](https://github.com/shadcn-ui/ui/commit/55fd4dc71be9e6410a528d6ce6bc7287ffba262c) Thanks [@shadcn](https://github.com/shadcn)! - update docs and info urls
+
+- [#10524](https://github.com/shadcn-ui/ui/pull/10524) [`6dea65ebcbbdb8773b3072ca74c9cee4e386988b`](https://github.com/shadcn-ui/ui/commit/6dea65ebcbbdb8773b3072ca74c9cee4e386988b) Thanks [@shadcn](https://github.com/shadcn)! - fix apply in monorepo
+
+## 4.5.0
+
+### Minor Changes
+
+- [#10488](https://github.com/shadcn-ui/ui/pull/10488) [`eb6e783fb3861aba3b35289a473954080e6f1607`](https://github.com/shadcn-ui/ui/commit/eb6e783fb3861aba3b35289a473954080e6f1607) Thanks [@shadcn](https://github.com/shadcn)! - add --pointer option to cli.
+
+  npx shadcn init --pointer will enable cursor: pointer on buttons.
+
+## 4.4.0
+
+### Minor Changes
+
+- [#10451](https://github.com/shadcn-ui/ui/pull/10451) [`e456fed9d3f0b7aacf7084aecc02a75e8fde622d`](https://github.com/shadcn-ui/ui/commit/e456fed9d3f0b7aacf7084aecc02a75e8fde622d) Thanks [@shadcn](https://github.com/shadcn)! - add apply --only
+
+### Patch Changes
+
+- [`9c572ab778b5a0ab42693eb07bc4a75d0c24603e`](https://github.com/shadcn-ui/ui/commit/9c572ab778b5a0ab42693eb07bc4a75d0c24603e) Thanks [@shadcn](https://github.com/shadcn)! - fix chartColor in presets
+
 ## 4.3.1
 
 ### Patch Changes
