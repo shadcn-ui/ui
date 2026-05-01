@@ -63,7 +63,7 @@
     "next": "16.1.6",
     "next-themes": "0.4.6",
     "nuqs": "^2.8.9",
-    "postcss": "^8.5.1",
+    "postcss": "^8.5.10",
     "radix-ui": "^1.4.3",
     "react": "19.2.3",
     "react-day-picker": "^9.7.0",
