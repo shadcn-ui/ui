@@ -844,4 +844,62 @@ function Sidebar({
     expect(result).toContain('side = "right"')
     expect(result).not.toContain('side = "inline-end"')
   })
+
+  test("escapes inner double quotes in string literals when converting from single to double quotes", async () => {
+    // Regression test for https://github.com/shadcn-ui/ui/issues/10493
+    // When a string literal contains inner double quotes and the transformer
+    // wraps it in double quotes, the inner quotes must be escaped.
+    const result = await transform({
+      filename: "test.tsx",
+      raw: `import { cn } from "@/lib/utils"
+export function Foo({ className }) {
+  return <div className={cn('ml-2 mr-4 data-[foo="bar"]', className)}>foo</div>
+}
+`,
+      config: {
+        rtl: true,
+        tailwind: {
+          baseColor: "neutral",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+    })
+
+    // The RTL transformation should work
+    expect(result).toContain("ms-2")
+    expect(result).toContain("me-4")
+    // The inner quotes should be escaped to produce valid JS
+    // The original string 'ml-2 mr-4 data-[foo="bar"]' should become
+    // "ml-2 mr-4 data-[foo=\\"bar\\"]" after wrapping in double quotes
+    expect(result).toContain('data-[foo=\\"bar\\"]')
+  })
+
+  test("transforms className with unescaped inner quotes", async () => {
+    // Test case where inner quotes are NOT escaped in source (edge case that should be handled)
+    // Note: This is unusual in practice but the transformer should not break on it
+    const result = await transform({
+      filename: "test.tsx",
+      raw: `import * as React from "react"
+export function Foo() {
+  return <div className="ml-2 mr-4">foo</div>
+}
+`,
+      config: {
+        rtl: true,
+        tailwind: {
+          baseColor: "neutral",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+    })
+
+    expect(result).toContain('ms-2')
+    expect(result).toContain('me-4')
+  })
 })
