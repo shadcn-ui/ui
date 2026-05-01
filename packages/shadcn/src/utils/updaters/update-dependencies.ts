@@ -8,6 +8,54 @@ import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import prompts from "prompts"
 
+/**
+ * Extracts the package name from a dependency specifier string.
+ *
+ * Handles both regular and scoped packages:
+ *   "recharts@3.8.0"       → "recharts"
+ *   "@base-ui/react@^1.4.1" → "@base-ui/react"
+ *   "class-variance-authority" → "class-variance-authority"
+ *   "@base-ui/react"        → "@base-ui/react"
+ */
+function getPackageName(dep: string): string {
+  if (dep.startsWith("@")) {
+    // Scoped package: "@scope/name@version" — split on the "@" after the scope.
+    const secondAt = dep.indexOf("@", 1)
+    return secondAt === -1 ? dep : dep.slice(0, secondAt)
+  }
+  // Regular package: "name@version" — split on the first "@".
+  const atIndex = dep.indexOf("@")
+  return atIndex === -1 ? dep : dep.slice(0, atIndex)
+}
+
+/**
+ * Deduplicates a dependency list by package name.
+ *
+ * When the same package appears both with and without a version specifier
+ * (e.g. "recharts" and "recharts@3.8.0"), keeping both corrupts package.json
+ * because the package manager may apply the wrong specifier to the wrong
+ * package on subsequent installs. We resolve conflicts by preferring the
+ * entry that carries an explicit version over a bare package name.
+ */
+function deduplicateDependencies(deps: string[]): string[] {
+  const seen = new Map<string, string>()
+  for (const dep of deps) {
+    const name = getPackageName(dep)
+    const existing = seen.get(name)
+    if (!existing) {
+      seen.set(name, dep)
+    } else {
+      // Prefer the specifier that includes an explicit version.
+      const existingHasVersion = existing !== name
+      const depHasVersion = dep !== name
+      if (!existingHasVersion && depHasVersion) {
+        seen.set(name, dep)
+      }
+    }
+  }
+  return Array.from(seen.values())
+}
+
 export async function updateDependencies(
   dependencies: RegistryItem["dependencies"],
   devDependencies: RegistryItem["devDependencies"],
@@ -16,8 +64,8 @@ export async function updateDependencies(
     silent?: boolean
   }
 ) {
-  dependencies = Array.from(new Set(dependencies))
-  devDependencies = Array.from(new Set(devDependencies))
+  dependencies = deduplicateDependencies(Array.from(new Set(dependencies)))
+  devDependencies = deduplicateDependencies(Array.from(new Set(devDependencies)))
 
   if (!dependencies?.length && !devDependencies?.length) {
     return
