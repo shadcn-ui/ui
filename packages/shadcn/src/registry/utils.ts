@@ -8,13 +8,12 @@ import {
 } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { getProjectInfo, ProjectInfo } from "@/src/utils/get-project-info"
-import { resolveImport } from "@/src/utils/resolve-import"
+import { loadTsConfig, resolveImport } from "@/src/utils/resolve-import"
 import {
   findCommonRoot,
   resolveFilePath,
 } from "@/src/utils/updaters/update-files"
 import { Project, ScriptKind } from "ts-morph"
-import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
 
 const FILE_EXTENSIONS_FOR_LOOKUP = [".tsx", ".ts", ".jsx", ".js", ".css"]
@@ -96,7 +95,7 @@ export async function recursivelyResolveFileImports(
   const sourceFile = project.createSourceFile(tempFile, content, {
     scriptKind: ScriptKind.TSX,
   })
-  const tsConfig = await loadConfig(config.resolvedPaths.cwd)
+  const tsConfig = await loadTsConfig(config.resolvedPaths.cwd)
   if (tsConfig.resultType === "failed") {
     return { dependencies: [], files: [] }
   }
