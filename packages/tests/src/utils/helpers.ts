@@ -1,8 +1,9 @@
 import { randomUUID } from "crypto"
+import { Readable } from "node:stream"
 import path from "path"
 import { fileURLToPath } from "url"
-import { execa } from "execa"
 import fs from "fs-extra"
+import { x } from "tinyexec"
 
 import { TEMP_DIR } from "./setup"
 
@@ -37,18 +38,20 @@ export async function runCommand(
   }
 ) {
   try {
-    const childProcess = execa("node", [SHADCN_CLI_PATH, ...args], {
-      cwd,
-      env: {
-        ...process.env,
-        FORCE_COLOR: "0",
-        CI: "true",
-        ...options?.env,
-      },
-      input: options?.input,
-      reject: false,
+    const childProcess = x("node", [SHADCN_CLI_PATH, ...args], {
+      throwOnError: false,
       timeout: options?.timeout ?? 60000,
+      nodeOptions: {
+        cwd,
+        env: {
+          ...process.env,
+          FORCE_COLOR: "0",
+          CI: "true",
+          ...options?.env,
+        },
+      },
     })
+    childProcess.process?.stdin?.end(options?.input)
 
     const result = await childProcess
 

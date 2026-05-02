@@ -6,7 +6,7 @@ import { rawConfigSchema } from "@/src/schema"
 import { Framework, FRAMEWORKS } from "@/src/utils/frameworks"
 import { Config, getConfig, resolveConfigPaths } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
-import fg from "fast-glob"
+import { glob } from "tinyglobby"
 import fs from "fs-extra"
 import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
@@ -53,7 +53,7 @@ export async function getProjectInfo(
     aliasPrefix,
     packageJson,
   ] = await Promise.all([
-    fg.glob(
+    glob(
       "**/{next,vite,astro,app}.config.*|gatsby-config.*|composer.json|react-router.config.*",
       {
         cwd,
@@ -256,7 +256,7 @@ export async function getTailwindCssFile(cwd: string, configCssFile?: string) {
   }
 
   const [files, tailwindVersion] = await Promise.all([
-    fg.glob(["**/*.css", "**/*.scss"], {
+    glob(["**/*.css", "**/*.scss"], {
       cwd,
       deep: 5,
       ignore: PROJECT_SHARED_IGNORE,
@@ -285,7 +285,7 @@ export async function getTailwindCssFile(cwd: string, configCssFile?: string) {
 }
 
 export async function getTailwindConfigFile(cwd: string) {
-  const files = await fg.glob("tailwind.config.*", {
+  const files = await glob("tailwind.config.*", {
     cwd,
     deep: 3,
     ignore: PROJECT_SHARED_IGNORE,
@@ -325,7 +325,7 @@ export async function getTsConfigAliasPrefix(cwd: string) {
 }
 
 export async function isTypeScriptProject(cwd: string) {
-  const files = await fg.glob("tsconfig.*", {
+  const files = await glob("tsconfig.*", {
     cwd,
     deep: 1,
     ignore: PROJECT_SHARED_IGNORE,
