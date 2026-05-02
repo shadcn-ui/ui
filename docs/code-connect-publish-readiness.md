@@ -1,6 +1,47 @@
 # Figma Code Connect — Publish Readiness Audit
 
-**Status (as of merge `293ef2679`, 2026-04-27):** publishing remains **disabled**. All known mappings are dry-run-validated against live Figma. This document is the single-source checklist for enabling publish — read it end-to-end before flipping any flag.
+**Status (updated 2026-05-02):** publishing remains **disabled** and is **blocked Figma-side**. Workflow infrastructure is verified working (PR #33). Three real publish attempts failed with HTTP 403 from `https://api.figma.com/v1/code_connect`. Screenshot-confirmed: the **Figma PAT generation modal does not expose a "Code Connect" write scope** — meaning no personal access token from this account can be granted the scope required to publish, regardless of what's checked at generation time. See §0 for the active blocker and admin checklist before any retry.
+
+---
+
+## 0. Active blocker — Figma-side scope unavailability
+
+**Symptom:** Workflow run [25242612995](https://github.com/jnanthak83/lead-design-system/actions/runs/25242612995) (and two earlier attempts) reach `Uploading to https://api.figma.com/v1/code_connect` and immediately fail with:
+
+```
+Failed to upload to Figma (403): 403 Invalid scope(s): Please ensure that you
+have selected both the File Read scope and the Code Connect Write scope when
+generating the token.
+```
+
+Three different tokens (`figd_AlF…vi2p`, `figd_1FM…QUx`, `figd_-Rd…cT4`) all returned the **same** error. Dry-run passed for every one of them — dry-run only exercises File Read; only real publish exercises Code Connect Write.
+
+**Confirmed:** the Figma PAT generation modal does not show a "Code Connect" scope checkbox at all. Token holders cannot opt in to a scope the UI doesn't surface.
+
+**`file_dev_resources:write` is NOT sufficient.** That scope governs Dev Resources (a separate Figma feature). Code Connect requires its own dedicated `code_connect:write` scope (or however Figma names it in the modal once available).
+
+**Do NOT generate / retry more File-Read-only tokens.** Three identical failures = systemic issue, not per-token user error. The workflow is wired correctly; further retries with the current scope availability will only repeat the same 403.
+
+### Required admin checks before any retry
+
+The Figma org owner / billing admin needs to confirm:
+
+1. **Plan tier.** Code Connect requires Figma **Organization** or **Enterprise** plan. Professional and lower do not include it.
+2. **Code Connect feature toggle.** Even on the right plan, Code Connect must be explicitly **enabled** for the workspace/team that owns this design file (`f2gKVfCJNOS0MeLUk4CM8u`).
+3. **User seat type.** The token-generating user needs a **Full** or **Dev** seat — viewer seats can't publish.
+4. **Membership status.** The token-generating user must be an **Organization member**, not a guest. Guest accounts cannot hold Code Connect Write scope.
+5. **PAT modal verification.** After the first four are confirmed, re-open the personal access token generation modal. The "Code Connect" scope checkbox must be **visible and selectable**. If it still isn't, escalate with Figma support — the workspace state is misconfigured.
+
+**Publishing remains disabled until item 5 is verified.** Once the scope is selectable, generate a token with both **File content** (read) **and** **Code Connect** (write) checked, then return to the enablement sequence in §5.
+
+### Current repo state (safe)
+
+| | |
+|---|---|
+| `FIGMA_CODE_CONNECT_ENABLED` variable | `false` |
+| `FIGMA_ACCESS_TOKEN` secret | present (currently File-Read-only — works for dry-run, fails publish) |
+| Mappings published to Figma | **zero** (all three attempts failed at upload boundary, before any registry write) |
+| Workflow infrastructure (PR #33) | verified — install + dry-run + publish steps all reach the right code paths |
 
 ---
 
