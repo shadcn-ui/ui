@@ -1,32 +1,151 @@
 // src/commands/normalize.js
-// Implements: design-tokens normalize [--dry-run] [--report <path>]
+// Implements: design-tokens normalize [--from <kind>] [--input <path>] [--out <path>] [--force]
 // Spec: docs/cli-spec.md §3
 //
-// Step outline (see cli-spec.md §3.5 for details):
-//   1. Load and validate /tokens/raw/paper/tokens.paper.json
-//   2. Split primitives into primitives.colors.json + primitives.numbers.json
-//   3. Split semantic into foundation, feedback, interactive [D2]
-//   4. Emit spacing.gap.json, spacing.padding.json, radius.json [D7, D8]
-//   5. Emit typography roles, sizes, line-heights [D9-D11]
-//   6. Stub density modes with identical values [D13, D17]
-//   7. Preserve sourceExceptionApplied metadata when exceptions are used [D36, D38]
-//   8. Emit _normalization-report.json
+// v1 modes:
+//
+//   --from figma  (Lane 2 v1, default)
+//     1. Read /tokens/raw/figma/variables.raw.json (or --input <path>).
+//     2. Convert via normalizeFigmaVariables() into the nested-token shape
+//        that `build` consumes.
+//     3. Write the result to /tokens/normalized/tokens.json (or --out <path>)
+//        as deterministic, sorted JSON.
+//
+//   --from paper  (NOT YET IMPLEMENTED)
+//     Throws a clear error pointing at docs/cli-spec.md §3 — the paper
+//     normalize path is documented but out of scope for Lane 2 v1.
+
+import { mkdir, readFile, writeFile, access } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
 
 import { parseFlags } from '../shared/flags.js';
+import { normalizeFigmaVariables } from '../shared/figma-normalize.js';
+
+const FIGMA_DEFAULT_INPUT = 'tokens/raw/figma/variables.raw.json';
+const FIGMA_DEFAULT_OUT = 'tokens/normalized/tokens.json';
 
 export async function run(argv) {
   const flags = parseFlags(argv, {
+    from: { type: 'string', default: 'figma' },
+    input: { type: 'string', default: null },
+    out: { type: 'string', default: null },
+    force: { type: 'boolean', default: false },
     'dry-run': { type: 'boolean', default: false },
-    report: { type: 'string', default: null },
   });
 
-  // TODO: implement per cli-spec.md §3.5
-  //   - First call resolveExceptions() to get the resolved exception set
-  //   - Read /tokens/raw/paper/tokens.paper.json
-  //   - Split the canonical paper source into normalized family files
-  //   - Emit $extensions["leadbank.sourceExceptionApplied"] if paper source records a tiebreak [D38]
-  throw new Error(
-    `'normalize' not yet implemented. ` +
-    `See docs/cli-spec.md §3 for the contract. Flags parsed: ${JSON.stringify(flags)}`
-  );
+  if (flags.from === 'paper') {
+    throw new Error(
+      "normalize --from paper is not yet implemented. See docs/cli-spec.md §3 for the paper normalize contract."
+    );
+  }
+
+  if (flags.from !== 'figma') {
+    throw new Error(
+      `normalize: unknown --from "${flags.from}". Expected "figma" or "paper".`
+    );
+  }
+
+  const result = await normalizeFigmaArtifact({
+    cwd: process.cwd(),
+    input: flags.input ?? FIGMA_DEFAULT_INPUT,
+    out: flags.out ?? FIGMA_DEFAULT_OUT,
+    force: flags.force,
+    dryRun: flags['dry-run'],
+  });
+
+  if (result.dryRun) {
+    console.log(
+      `normalize (dry-run): would write ${result.tokenCount} token(s) to ${result.outRelative}.`
+    );
+  } else {
+    console.log(
+      `normalize: wrote ${result.tokenCount} token(s) -> ${result.outRelative}.`
+    );
+  }
+  return 0;
+}
+
+/**
+ * Read a raw figma artifact and write the normalized token tree.
+ *
+ * @param {object} opts
+ * @param {string} [opts.cwd]
+ * @param {string} [opts.input]
+ * @param {string} [opts.out]
+ * @param {boolean} [opts.force]
+ * @param {boolean} [opts.dryRun]
+ * @returns {Promise<{
+ *   inputRelative: string,
+ *   outRelative: string,
+ *   tokenCount: number,
+ *   dryRun: boolean,
+ *   tree: Record<string, unknown>,
+ * }>}
+ */
+export async function normalizeFigmaArtifact({
+  cwd = process.cwd(),
+  input = FIGMA_DEFAULT_INPUT,
+  out = FIGMA_DEFAULT_OUT,
+  force = false,
+  dryRun = false,
+} = {}) {
+  const inputPath = resolve(cwd, input);
+  const outPath = resolve(cwd, out);
+
+  let raw;
+  try {
+    raw = JSON.parse(await readFile(inputPath, 'utf-8'));
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      throw new Error(
+        `normalize: raw figma artifact not found at ${input}. Run \`design-tokens import --from figma --figma-export <path>\` first.`
+      );
+    }
+    throw new Error(
+      `normalize: raw figma artifact at ${input} is not valid JSON: ${err.message}`
+    );
+  }
+
+  const tree = normalizeFigmaVariables(raw);
+  const tokenCount = countLeaves(tree);
+
+  if (!dryRun) {
+    if (await pathExists(outPath) && !force) {
+      throw new Error(
+        `normalize: output already exists at ${out}. Use --force to overwrite.`
+      );
+    }
+    await mkdir(dirname(outPath), { recursive: true });
+    await writeFile(outPath, `${JSON.stringify(tree, null, 2)}\n`, 'utf-8');
+  }
+
+  return {
+    inputRelative: input,
+    outRelative: out,
+    tokenCount,
+    dryRun,
+    tree,
+  };
+}
+
+function countLeaves(node) {
+  if (!isPlainObject(node)) return 1;
+  let total = 0;
+  for (const key of Object.keys(node)) {
+    total += countLeaves(node[key]);
+  }
+  return total;
+}
+
+function isPlainObject(v) {
+  return v !== null && typeof v === 'object' && !Array.isArray(v);
+}
+
+async function pathExists(p) {
+  try {
+    await access(p);
+    return true;
+  } catch {
+    return false;
+  }
 }

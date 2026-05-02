@@ -25,8 +25,13 @@ const usage = `
 design-tokens <command> [options]
 
 Commands:
-  import             Snapshot paper token source into /tokens/raw/paper/, seed authored files.
-  normalize          Transform raw paper source into normalized tokens.
+  import             Snapshot token source into /tokens/raw/.
+                       --from paper (default): snapshot paper token source, seed authored files.
+                       --from figma --figma-export <path>: snapshot a local Figma variables JSON export.
+  normalize          Transform raw token source into normalized tokens.
+                       --from figma (default): convert /tokens/raw/figma/variables.raw.json
+                         into /tokens/normalized/tokens.json (consumed by 'build').
+                       --from paper: not yet implemented.
   lint               Validate normalized tokens against design-system rules.
   build              Emit consumer artifacts (CSS, types, Tailwind, DESIGN.md).
   check-exceptions   Parse and validate /tokens/authored/sourceExceptions.json.
