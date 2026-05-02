@@ -78,3 +78,5 @@ The companion Figma staging file is organized as a CLI-ready design system libra
 For the Figma-to-code release process, see [docs/figma-to-code-sync.md](docs/figma-to-code-sync.md).
 
 Before enabling Figma Code Connect publishing, see [docs/code-connect-publish-readiness.md](docs/code-connect-publish-readiness.md) — the mapping inventory, dry-run requirement, and safe enablement checklist.
+
+For the longer-horizon plan covering token publishing, component spec auditing, and eventual code generation, see [docs/figma-to-code-automation-roadmap.md](docs/figma-to-code-automation-roadmap.md).
