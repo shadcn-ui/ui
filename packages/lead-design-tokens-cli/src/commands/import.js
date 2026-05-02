@@ -1,12 +1,20 @@
 // src/commands/import.js
-// Implements: design-tokens import [--source <path>] [--force]
+// Implements: design-tokens import [--from paper|figma] [--source <path>] [--figma-export <path>] [--force]
 // Spec: docs/cli-spec.md §2
 //
-// Responsibilities:
-//   1. Copy paper-authored token source into /tokens/raw/paper/
-//   2. Validate tokens.paper.json before snapshotting
-//   3. Seed /tokens/authored/ files if missing [D37]
-//   4. Write _manifest.json with sha256 hashes
+// Two modes:
+//   --from paper  (default; existing behavior)
+//     1. Copy paper-authored token source into /tokens/raw/paper/
+//     2. Validate tokens.paper.json before snapshotting
+//     3. Seed /tokens/authored/ files if missing [D37]
+//     4. Write _manifest.json with sha256 hashes
+//
+//   --from figma  (Lane 2 v1)
+//     1. Read a local Figma variables JSON export from --figma-export <path>
+//     2. Validate it parses through parseFigmaVariablesExport()
+//     3. Write the validated raw artifact to /tokens/raw/figma/variables.raw.json
+//     4. Write /tokens/raw/figma/_manifest.json with the source path + sha256
+//     v1 does not call the Figma API directly — file-based input only.
 
 import { createHash } from 'node:crypto';
 import {
@@ -24,11 +32,15 @@ import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 
 import { parseFlags } from '../shared/flags.js';
+import { parseFigmaVariablesExport } from '../shared/figma-import.js';
 
 const DEFAULT_SOURCE = 'tokens/source/paper';
 const RAW_DEST = 'tokens/raw/paper';
 const PAPER_SOURCE_FILE = 'tokens.paper.json';
 const PAPER_SCHEMA = 'schemas/paperTokens.schema.json';
+
+const FIGMA_RAW_DEST = 'tokens/raw/figma';
+const FIGMA_RAW_FILE = 'variables.raw.json';
 
 const AUTHORED_FILES = {
   'approvedPairs.json': {
@@ -65,9 +77,34 @@ const AUTHORED_SCHEMAS = {
 
 export async function run(argv) {
   const flags = parseFlags(argv, {
+    from: { type: 'string', default: 'paper' },
     source: { type: 'string', default: DEFAULT_SOURCE },
+    'figma-export': { type: 'string', default: null },
     force: { type: 'boolean', default: false },
   });
+
+  if (flags.from === 'figma') {
+    if (!flags['figma-export']) {
+      throw new Error(
+        "import --from figma requires --figma-export <path> to a local Figma variables JSON export."
+      );
+    }
+    const result = await importFigmaExport({
+      cwd: process.cwd(),
+      exportPath: flags['figma-export'],
+      force: flags.force,
+    });
+    console.log(
+      `imported ${result.variableCount} variable(s) and ${result.collectionCount} collection(s) from ${result.source} into ${FIGMA_RAW_DEST}/.`
+    );
+    return 0;
+  }
+
+  if (flags.from !== 'paper') {
+    throw new Error(
+      `import: unknown --from "${flags.from}". Expected "paper" or "figma".`
+    );
+  }
 
   const result = await importPaperSource({
     cwd: process.cwd(),
@@ -83,6 +120,89 @@ export async function run(argv) {
     `imported ${result.files.length} file(s) from ${result.source} into ${RAW_DEST}/; ${seededSummary}.`
   );
   return 0;
+}
+
+/**
+ * Import a local Figma variables JSON export into /tokens/raw/figma/.
+ * v1: file-based input only; no direct Figma API calls.
+ *
+ * @param {object} opts
+ * @param {string} [opts.cwd]
+ * @param {string} opts.exportPath - path to a local Figma export JSON
+ * @param {boolean} [opts.force]
+ * @returns {Promise<{
+ *   source: string,
+ *   destination: string,
+ *   variableCount: number,
+ *   collectionCount: number,
+ *   sha256: string,
+ * }>}
+ */
+export async function importFigmaExport({
+  cwd = process.cwd(),
+  exportPath,
+  force = false,
+} = {}) {
+  if (!exportPath) {
+    throw new Error('importFigmaExport: exportPath is required.');
+  }
+  const sourceFullPath = resolve(cwd, exportPath);
+  await assertFile(sourceFullPath, `figma export file not found: ${exportPath}`);
+
+  let parsed;
+  let bytes;
+  try {
+    bytes = await readFile(sourceFullPath);
+    parsed = JSON.parse(bytes.toString('utf-8'));
+  } catch (err) {
+    throw new Error(
+      `figma export "${exportPath}" is not valid JSON: ${err.message}`
+    );
+  }
+
+  // Validate by parsing through the shared shape parser. Throws on bad shape.
+  const raw = parseFigmaVariablesExport(parsed);
+
+  const destDir = resolve(cwd, FIGMA_RAW_DEST);
+  const destFile = resolve(destDir, FIGMA_RAW_FILE);
+  if (await exists(destFile) && !force) {
+    throw new Error(
+      `raw figma snapshot already exists at ${FIGMA_RAW_DEST}/${FIGMA_RAW_FILE}. Use --force to overwrite.`
+    );
+  }
+
+  await mkdir(destDir, { recursive: true });
+  // Write deterministic JSON with stable key order (parseFigmaVariablesExport
+  // already sorts variables/collections by id).
+  await writeFile(
+    destFile,
+    `${JSON.stringify(raw, null, 2)}\n`,
+    'utf-8'
+  );
+
+  const sourceHash = sha256(bytes);
+  const manifest = {
+    importedAt: new Date().toISOString(),
+    sourceKind: 'figma',
+    source: relative(cwd, sourceFullPath),
+    destination: `${FIGMA_RAW_DEST}/${FIGMA_RAW_FILE}`,
+    sourceSha256: sourceHash,
+    variableCount: raw.variables.length,
+    collectionCount: raw.collections.length,
+  };
+  await writeFile(
+    resolve(destDir, '_manifest.json'),
+    `${JSON.stringify(manifest, null, 2)}\n`,
+    'utf-8'
+  );
+
+  return {
+    source: relative(cwd, sourceFullPath),
+    destination: `${FIGMA_RAW_DEST}/${FIGMA_RAW_FILE}`,
+    variableCount: raw.variables.length,
+    collectionCount: raw.collections.length,
+    sha256: sourceHash,
+  };
 }
 
 /**

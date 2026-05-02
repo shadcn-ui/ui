@@ -4,14 +4,37 @@ Lead design system token pipeline — the CLI that transforms a paper-authored t
 
 ## Status
 
-**Build pipeline v1 + paper-first scaffold.** Four commands are real and tested today:
+**Build pipeline v1 + Lane 2 v1 (Figma → code) + paper-first scaffold.** Five commands are real and tested today:
 
-- `import` snapshots `tokens/source/paper/` into `tokens/raw/paper/`, validates `tokens.paper.json`, writes a manifest, and seeds authored files.
+- `import` snapshots either:
+  - `--from paper` (default): `tokens/source/paper/` → `tokens/raw/paper/` (validates `tokens.paper.json`, seeds authored files).
+  - `--from figma --figma-export <path>`: a local Figma variables JSON export → `tokens/raw/figma/variables.raw.json` (Lane 2 v1; file-based input only — no direct Figma API call yet).
+- `normalize --from figma` (Lane 2 v1): reads the raw figma artifact and writes `tokens/normalized/tokens.json` in the nested-token shape that `build` consumes. Supports `COLOR` (RGBA → hex/rgba) and `FLOAT` (number passthrough); errors clearly on `VARIABLE_ALIAS`, `STRING`, or `BOOLEAN`. `--from paper` is documented in the spec but not yet implemented.
 - `check-exceptions` validates `/tokens/authored/sourceExceptions.json`.
 - `check-decisions` validates `[D##]` references in the docs.
 - **`build` (v1)** — reads a normalized-token JSON file and emits a single `tokens.css` artifact with a `:root { ... }` block of flattened CSS custom properties. See [`docs/cli-spec.md` §5](docs/cli-spec.md) for the full v2+ contract.
 
-The remaining two (`normalize`, `lint`) have real signatures, real flag parsing, and detailed TODOs pointing at the spec — but throw `not implemented` when run.
+`lint` still has a real signature and detailed TODOs but throws `not implemented` when run.
+
+### Lane 2 v1 — end-to-end Figma → code
+
+```bash
+# 1. Drop a Figma variables export at any path you like.
+#    (Get this from Figma's REST API or a manual export — v1 is file-based.)
+
+# 2. Snapshot the raw export:
+design-tokens import --from figma --figma-export ./figma-export.json
+# writes tokens/raw/figma/variables.raw.json + _manifest.json
+
+# 3. Normalize into the build-shape:
+design-tokens normalize --from figma
+# writes tokens/normalized/tokens.json
+
+# 4. Build CSS:
+design-tokens build --input tokens/normalized/tokens.json --out ./out/tokens.css
+```
+
+**v1 does NOT call the Figma API.** It expects a pre-fetched JSON file (the response body of `GET /v1/files/:key/variables/local`, or the bare `meta` object). Direct API calls are deferred to a later slice — see [`docs/figma-to-code-automation-roadmap.md`](../../docs/figma-to-code-automation-roadmap.md) for the full plan.
 
 ### `build` v1 scope
 
