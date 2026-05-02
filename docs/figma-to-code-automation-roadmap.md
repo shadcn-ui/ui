@@ -115,7 +115,7 @@ Treating these as one pipeline means the slowest, riskiest lane gates the fastes
 
 1. **Keep Code Connect parked.** `FIGMA_CODE_CONNECT_ENABLED=false`. No more retries until the Figma scope is selectable.
 2. **Finish token CLI `import` and `normalize`** — the remaining gaps in `packages/lead-design-tokens-cli`. These are pure-function CLI commands with unit tests; low-risk to build. **(Done — PR #36, merge `29491fe32`.)**
-3. **Add a GitHub Action for Lane 2.** Manual `workflow_dispatch` only at first. **Design proposal:** see [`token-publishing-action-design.md`](./token-publishing-action-design.md) (JES-74). The action:
+3. **Add a GitHub Action for Lane 2.** Manual `workflow_dispatch` only at first. **Design:** [`token-publishing-action-design.md`](./token-publishing-action-design.md). **Implementation:** [`.github/workflows/token-publishing.yml`](../.github/workflows/token-publishing.yml) (JES-74). The action:
    - Fetches/imports Figma tokens.
    - Runs `import → normalize → lint → build`.
    - Opens a PR with the regenerated `tokens.css` and JSON manifest.
