@@ -461,6 +461,7 @@ function updateThemePlugin(cssVars: z.infer<typeof registryItemCssVarsSchema>) {
           isLocalHSLValue(value) || isColorValue(value)
             ? `--color-${variable.replace(/^--/, "")}`
             : `--${variable.replace(/^--/, "")}`
+            
         if (prop === "--color-sidebar-background") {
           prop = "--color-sidebar"
         }
@@ -479,6 +480,7 @@ function updateThemePlugin(cssVars: z.infer<typeof registryItemCssVarsSchema>) {
           (node): node is postcss.Declaration =>
             node.type === "decl" && node.prop === cssVarNode.prop
         )
+
         if (!existingDecl) {
           if (themeVarNodes?.length) {
             themeNode?.insertAfter(
@@ -742,6 +744,7 @@ function updateTailwindConfigAnimationPlugin(
       const parsedAnimationValue = z
         .record(z.string(), z.string())
         .safeParse(tailwindConfig.theme.extend.animation)
+        
       if (!parsedAnimationValue.success) {
         return
       }
