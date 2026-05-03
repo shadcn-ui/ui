@@ -1101,6 +1101,12 @@
     "name": "@evilbuttons",
     "homepage": "https://evilbuttons.radiumcoders.com/docs",
     "url": "https://evilbuttons.radiumcoders.com/r/{name}.json",
-    "description": "A shadcn/ui registry featuring a collection of animated buttons built with Motion. Each component is designed to add punchy, interactive feedback to your UI with minimal setup."  
+    "description": "A shadcn/ui registry featuring a collection of animated buttons built with Motion. Each component is designed to add punchy, interactive feedback to your UI with minimal setup."
+  },
+  {
+    "name": "@text-ui",
+    "homepage": "https://joelachance.github.io/text-ui/docs",
+    "url": "https://joelachance.github.io/text-ui/r/{name}.json",
+    "description": "A React component with layered, outlined text that follows the pointer. Use for logos, footers, or any text you want to make interactive."
   }
 ]
