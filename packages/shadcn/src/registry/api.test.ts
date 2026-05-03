@@ -1347,12 +1347,12 @@ describe("getRegistriesConfig", () => {
     await fs.writeFile(configFile, "{ invalid json }")
 
     try {
-      // Malformed JSON should throw an error from cosmiconfig
+      // Malformed JSON should throw an error from lilconfig
       await getRegistriesConfig(tempDir)
       expect.fail("Should have thrown an error")
     } catch (error) {
-      // cosmiconfig throws a JSONError for malformed JSON
-      expect((error as Error).message).toContain("JSON Error")
+      // lilconfig throws a SyntaxError for malformed JSON
+      expect(error as Error).instanceOf(SyntaxError)
     } finally {
       await fs.unlink(configFile)
       await fs.rmdir(tempDir)
