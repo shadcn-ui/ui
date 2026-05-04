@@ -1968,4 +1968,84 @@ describe("toAliasedImport", () => {
     }
     expect(toAliasedImport(filePath, config, projectInfo)).toBe("@/pages/home")
   })
+
+  test("should keep code extension for # subpath import alias", () => {
+    const filePath = "components/ui/button.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+      },
+      aliases: {
+        components: "#/src/components",
+        ui: "#/src/components/ui",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "#",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "#/src/components/ui/button.tsx"
+    )
+  })
+
+  test("should keep .ts extension for # subpath import alias", () => {
+    const filePath = "lib/utils.ts"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        lib: "/foo/bar/lib",
+      },
+      aliases: {
+        lib: "#/src/lib",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "#",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "#/src/lib/utils.ts"
+    )
+  })
+
+  test("should still strip extension for @ alias (existing behavior)", () => {
+    const filePath = "components/ui/button.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+      },
+      aliases: {
+        components: "@/components",
+        ui: "@/components/ui",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "@",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "@/components/ui/button"
+    )
+  })
+
+  test("should keep css extension for # alias (non-code ext always kept)", () => {
+    const filePath = "components/styles/theme.css"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+      },
+      aliases: {
+        components: "#/src/components",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "#",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "#/src/components/styles/theme.css"
+    )
+  })
 })

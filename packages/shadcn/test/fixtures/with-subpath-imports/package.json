@@ -1,0 +1,13 @@
+{
+  "name": "test-subpath-imports",
+  "type": "module",
+  "imports": {
+    "#src/*": "./src/*",
+    "#components/*": "./src/components/*",
+    "#hooks": "./src/hooks/index.ts",
+    "#dep": {
+      "node": "dep-node-native",
+      "default": "./dep-polyfill.js"
+    }
+  }
+}
