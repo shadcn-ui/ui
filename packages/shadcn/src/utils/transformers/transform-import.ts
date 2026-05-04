@@ -2,6 +2,17 @@ import { Config } from "@/src/utils/get-config"
 import { Transformer } from "@/src/utils/transformers"
 import { SyntaxKind } from "ts-morph"
 
+function getBaseAlias(alias: string): string {
+  // For scoped packages like @scope/pkg/path, return @scope/pkg
+  if (alias.startsWith("@") && !alias.startsWith("@/")) {
+    const parts = alias.split("/")
+    // @scope/pkg or @scope/pkg/... → @scope/pkg
+    return parts.length >= 2 ? `${parts[0]}/${parts[1]}` : parts[0]
+  }
+  // For non-scoped like ~/path or @/path, return the first segment
+  return alias.split("/")[0]
+}
+
 export const transformImport: Transformer = async ({
   sourceFile,
   config,
@@ -10,7 +21,7 @@ export const transformImport: Transformer = async ({
   const utilsAlias = config.aliases?.utils
   const workspaceAlias =
     typeof utilsAlias === "string" && utilsAlias.includes("/")
-      ? utilsAlias.split("/")[0]
+      ? getBaseAlias(utilsAlias)
       : "@"
   const utilsImport = `${workspaceAlias}/lib/utils`
 
@@ -68,7 +79,7 @@ function updateImportAliases(
   // Not a registry import.
   if (!moduleSpecifier.startsWith("@/registry/")) {
     // We fix the alias and return.
-    const alias = config.aliases.components.split("/")[0]
+    const alias = getBaseAlias(config.aliases.components)
     return moduleSpecifier.replace(/^@\//, `${alias}/`)
   }
 
