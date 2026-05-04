@@ -3698,6 +3698,33 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "preview-03": {
+      name: "preview-03",
+      title: "Preview 03",
+      description: "",
+      type: "registry:block",
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/bases/radix/blocks/preview-03/index.tsx",
+          type: "registry:block",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/bases/radix/blocks/preview-03/index"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "preview-03"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "login-01": {
       name: "login-01",
       title: "Login 01",
@@ -8587,6 +8614,33 @@ export const Index: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "preview-02"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "preview-03": {
+      name: "preview-03",
+      title: "Preview 03",
+      description: "",
+      type: "registry:block",
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/bases/base/blocks/preview-03/index.tsx",
+          type: "registry:block",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/bases/base/blocks/preview-03/index"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "preview-03"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,

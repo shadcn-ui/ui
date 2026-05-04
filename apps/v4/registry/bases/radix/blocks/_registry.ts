@@ -85,6 +85,18 @@ export const blocks: Registry["items"] = [
     ],
   },
   {
+    name: "preview-03",
+    title: "Preview 03",
+    type: "registry:block",
+    registryDependencies: [],
+    files: [
+      {
+        path: "blocks/preview-03/index.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
     name: "login-01",
     title: "Login 01",
     description: "A simple login form.",
