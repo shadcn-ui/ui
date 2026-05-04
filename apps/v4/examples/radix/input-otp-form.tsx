@@ -1,4 +1,6 @@
-import { Button } from "@/examples/radix/ui/button"
+import { RefreshCwIcon } from "lucide-react"
+
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   Card,
   CardContent,
@@ -6,15 +8,18 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/radix/ui/card"
-import { Field, FieldDescription, FieldLabel } from "@/examples/radix/ui/field"
+} from "@/styles/radix-nova/ui/card"
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/styles/radix-nova/ui/field"
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/examples/radix/ui/input-otp"
-import { RefreshCwIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/input-otp"
 
 export function InputOTPForm() {
   return (
@@ -60,11 +65,11 @@ export function InputOTPForm() {
           <Button type="submit" className="w-full">
             Verify
           </Button>
-          <div className="text-muted-foreground text-sm">
+          <div className="text-sm text-muted-foreground">
             Having trouble signing in?{" "}
             <a
               href="#"
-              className="hover:text-primary underline underline-offset-4 transition-colors"
+              className="underline underline-offset-4 transition-colors hover:text-primary"
             >
               Contact support
             </a>

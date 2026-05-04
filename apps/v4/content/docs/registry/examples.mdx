@@ -44,7 +44,7 @@ The following registry item is a custom style that extends shadcn/ui. On `npx sh
 
 The following registry item is a custom style that doesn't extend shadcn/ui. See the `extends: none` field.
 
-It can be used to create a new style from scratch i.e custom components, css vars, dependencies, etc.
+It can be used to create a new style from scratch, i.e. custom components, css vars, dependencies, etc.
 
 On `npx shadcn add`, the following will:
 
@@ -69,21 +69,21 @@ On `npx shadcn add`, the following will:
   ],
   "cssVars": {
     "theme": {
-      "font-sans": "Inter, sans-serif",
-    }
+      "font-sans": "Inter, sans-serif"
+    },
     "light": {
       "main": "#88aaee",
       "bg": "#dfe5f2",
       "border": "#000",
       "text": "#000",
-      "ring": "#000",
+      "ring": "#000"
     },
     "dark": {
       "main": "#88aaee",
       "bg": "#272933",
       "border": "#000",
       "text": "#e6e6e6",
-      "ring": "#fff",
+      "ring": "#fff"
     }
   }
 }
@@ -147,7 +147,7 @@ The following style will init using shadcn/ui defaults and then add a custom `br
 
 ### Custom block
 
-This blocks installs the `login-01` block from the shadcn/ui registry.
+This block installs the `login-01` block from the shadcn/ui registry.
 
 ```json title="login-01.json" showLineNumbers
 {
@@ -174,7 +174,7 @@ This blocks installs the `login-01` block from the shadcn/ui registry.
 
 ### Install a block and override primitives
 
-You can install a block fromt the shadcn/ui registry and override the primitives using your custom ones.
+You can install a block from the shadcn/ui registry and override the primitives using your custom ones.
 
 On `npx shadcn add`, the following will:
 
@@ -191,6 +191,372 @@ On `npx shadcn add`, the following will:
     "https://example.com/r/button.json",
     "https://example.com/r/input.json",
     "https://example.com/r/label.json"
+  ]
+}
+```
+
+## registry:ui
+
+### UI component
+
+A `registry:ui` item is a reusable UI component. It can have dependencies, registry dependencies, and CSS variables.
+
+```json title="button.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "type": "registry:ui",
+  "dependencies": ["radix-ui"],
+  "files": [
+    {
+      "path": "ui/button.tsx",
+      "content": "...",
+      "type": "registry:ui"
+    }
+  ]
+}
+```
+
+### UI component with CSS variables
+
+```json title="sidebar.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar",
+  "type": "registry:ui",
+  "dependencies": ["radix-ui"],
+  "registryDependencies": ["button", "separator", "sheet", "tooltip"],
+  "files": [
+    {
+      "path": "ui/sidebar.tsx",
+      "content": "...",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "light": {
+      "sidebar-background": "oklch(0.985 0 0)",
+      "sidebar-foreground": "oklch(0.141 0.005 285.823)",
+      "sidebar-border": "oklch(0.92 0.004 286.32)"
+    },
+    "dark": {
+      "sidebar-background": "oklch(0.141 0.005 285.823)",
+      "sidebar-foreground": "oklch(0.985 0 0)",
+      "sidebar-border": "oklch(0.274 0.006 286.033)"
+    }
+  }
+}
+```
+
+## registry:lib
+
+### Utility library
+
+A `registry:lib` item is a utility library. Use it to share helper functions, constants, or other non-component code.
+
+```json title="utils.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "utils",
+  "type": "registry:lib",
+  "dependencies": ["clsx", "tailwind-merge"],
+  "files": [
+    {
+      "path": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}",
+      "type": "registry:lib"
+    }
+  ]
+}
+```
+
+## registry:hook
+
+### Custom hook
+
+A `registry:hook` item is a custom React hook.
+
+```json title="use-mobile.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-mobile",
+  "type": "registry:hook",
+  "files": [
+    {
+      "path": "hooks/use-mobile.ts",
+      "content": "...",
+      "type": "registry:hook"
+    }
+  ]
+}
+```
+
+### Hook with dependencies
+
+```json title="use-debounce.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-debounce",
+  "type": "registry:hook",
+  "dependencies": ["react"],
+  "files": [
+    {
+      "path": "hooks/use-debounce.ts",
+      "content": "...",
+      "type": "registry:hook"
+    }
+  ]
+}
+```
+
+## registry:font
+
+### Custom font
+
+A `registry:font` item installs a Google Font. The `font` field is required and configures the font family, provider, import name, and CSS variable.
+
+```json title="font-inter.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-inter",
+  "type": "registry:font",
+  "font": {
+    "family": "'Inter Variable', sans-serif",
+    "provider": "google",
+    "import": "Inter",
+    "variable": "--font-sans",
+    "subsets": ["latin"],
+    "dependency": "@fontsource-variable/inter"
+  }
+}
+```
+
+### Monospace font
+
+```json title="font-jetbrains-mono.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-jetbrains-mono",
+  "type": "registry:font",
+  "font": {
+    "family": "'JetBrains Mono Variable', monospace",
+    "provider": "google",
+    "import": "JetBrains_Mono",
+    "variable": "--font-mono",
+    "weight": ["400", "500", "600", "700"],
+    "subsets": ["latin"],
+    "dependency": "@fontsource-variable/jetbrains-mono"
+  }
+}
+```
+
+### Serif font
+
+```json title="font-lora.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-lora",
+  "type": "registry:font",
+  "font": {
+    "family": "'Lora Variable', serif",
+    "provider": "google",
+    "import": "Lora",
+    "variable": "--font-serif",
+    "subsets": ["latin"],
+    "dependency": "@fontsource-variable/lora"
+  }
+}
+```
+
+### Font with custom selector
+
+Use the `selector` field to apply a font to specific CSS selectors instead of globally on `html`. This is useful for heading fonts or other targeted font applications.
+
+```json title="font-playfair-display.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-playfair-display",
+  "type": "registry:font",
+  "font": {
+    "family": "'Playfair Display Variable', serif",
+    "provider": "google",
+    "import": "Playfair_Display",
+    "variable": "--font-heading",
+    "subsets": ["latin"],
+    "selector": "h1, h2, h3, h4, h5, h6",
+    "dependency": "@fontsource-variable/playfair-display"
+  }
+}
+```
+
+When `selector` is set, the font utility class (e.g. `font-heading`) is applied via CSS `@apply` on the specified selector within `@layer base`, instead of being added to the `<html>` element. The CSS variable is still injected on `<html>` so it's available globally.
+
+## registry:base
+
+### Custom base
+
+A `registry:base` item is a complete design system base. It defines the full set of dependencies, CSS variables, and configuration for a project. The `config` field is unique to `registry:base` items.
+
+The `config` field accepts the following properties (all optional):
+
+| Property             | Type                                                                         | Description                                                     |
+| -------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `style`              | `string`                                                                     | The style name for the base.                                    |
+| `iconLibrary`        | `string`                                                                     | The icon library to use (e.g. `lucide`).                        |
+| `rsc`                | `boolean`                                                                    | Whether to enable React Server Components. Defaults to `false`. |
+| `tsx`                | `boolean`                                                                    | Whether to use TypeScript. Defaults to `true`.                  |
+| `rtl`                | `boolean`                                                                    | Whether to enable right-to-left support. Defaults to `false`.   |
+| `menuColor`          | `"default" \| "inverted" \| "default-translucent" \| "inverted-translucent"` | The menu color scheme. Defaults to `"default"`.                 |
+| `menuAccent`         | `"subtle" \| "bold"`                                                         | The menu accent style. Defaults to `"subtle"`.                  |
+| `tailwind.baseColor` | `string`                                                                     | The base color name (e.g. `neutral`, `slate`, `zinc`).          |
+| `tailwind.css`       | `string`                                                                     | Path to the Tailwind CSS file.                                  |
+| `tailwind.prefix`    | `string`                                                                     | A prefix to add to all Tailwind classes.                        |
+| `aliases.components` | `string`                                                                     | Import alias for components.                                    |
+| `aliases.utils`      | `string`                                                                     | Import alias for utilities.                                     |
+| `aliases.ui`         | `string`                                                                     | Import alias for UI components.                                 |
+| `aliases.lib`        | `string`                                                                     | Import alias for lib.                                           |
+| `aliases.hooks`      | `string`                                                                     | Import alias for hooks.                                         |
+| `registries`         | `Record<string, string \| object>`                                           | Custom registry URLs. Keys must start with `@`.                 |
+
+```json title="custom-base.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "custom-base",
+  "type": "registry:base",
+  "config": {
+    "style": "custom-base",
+    "iconLibrary": "lucide",
+    "tailwind": {
+      "baseColor": "neutral"
+    }
+  },
+  "dependencies": [
+    "class-variance-authority",
+    "tw-animate-css",
+    "lucide-react"
+  ],
+  "registryDependencies": ["utils", "font-inter"],
+  "cssVars": {
+    "light": {
+      "background": "oklch(1 0 0)",
+      "foreground": "oklch(0.141 0.005 285.823)",
+      "primary": "oklch(0.21 0.006 285.885)",
+      "primary-foreground": "oklch(0.985 0 0)"
+    },
+    "dark": {
+      "background": "oklch(0.141 0.005 285.823)",
+      "foreground": "oklch(0.985 0 0)",
+      "primary": "oklch(0.985 0 0)",
+      "primary-foreground": "oklch(0.21 0.006 285.885)"
+    }
+  },
+  "css": {
+    "@import \"tw-animate-css\"": {},
+    "@layer base": {
+      "*": {
+        "@apply border-border outline-ring/50": {}
+      },
+      "body": {
+        "@apply bg-background text-foreground": {}
+      }
+    }
+  }
+}
+```
+
+### Base from scratch
+
+Use `extends: none` to create a base that doesn't extend shadcn/ui defaults.
+
+```json title="custom-base.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "my-design-system",
+  "extends": "none",
+  "type": "registry:base",
+  "config": {
+    "style": "my-design-system",
+    "iconLibrary": "lucide",
+    "tailwind": {
+      "baseColor": "slate"
+    }
+  },
+  "dependencies": ["tailwind-merge", "clsx", "tw-animate-css", "lucide-react"],
+  "registryDependencies": ["utils", "font-geist"],
+  "cssVars": {
+    "light": {
+      "background": "oklch(1 0 0)",
+      "foreground": "oklch(0.141 0.005 285.823)"
+    },
+    "dark": {
+      "background": "oklch(0.141 0.005 285.823)",
+      "foreground": "oklch(0.985 0 0)"
+    }
+  }
+}
+```
+
+## Common Fields
+
+### Author
+
+Use the `author` field to add attribution to your registry items.
+
+```json title="example-item.json" showLineNumbers {5}
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "custom-component",
+  "type": "registry:ui",
+  "author": "shadcn",
+  "files": [
+    {
+      "path": "ui/custom-component.tsx",
+      "content": "...",
+      "type": "registry:ui"
+    }
+  ]
+}
+```
+
+### Dev dependencies
+
+Use the `devDependencies` field to install packages as dev dependencies.
+
+```json title="example-item.json" showLineNumbers {5}
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "custom-item",
+  "type": "registry:item",
+  "devDependencies": ["@types/mdx"],
+  "files": [
+    {
+      "path": "lib/mdx.ts",
+      "content": "...",
+      "type": "registry:lib"
+    }
+  ]
+}
+```
+
+### Metadata
+
+Use the `meta` field to attach arbitrary metadata to your registry items. This can be used to store custom data that your tools or scripts can use.
+
+```json title="example-item.json" showLineNumbers {5-8}
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "custom-component",
+  "type": "registry:ui",
+  "meta": {
+    "category": "forms",
+    "version": "2.0.0"
+  },
+  "files": [
+    {
+      "path": "ui/custom-component.tsx",
+      "content": "...",
+      "type": "registry:ui"
+    }
   ]
 }
 ```
@@ -511,7 +877,7 @@ Note: you need to define both `@keyframes` in css and `theme` in cssVars to use 
 You can add environment variables using the `envVars` field.
 
 ```json title="example-item.json" showLineNumbers {5-9}
-{»
+{
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "custom-item",
   "type": "registry:item",
@@ -555,7 +921,7 @@ Here's an example of a registry item that installs custom Cursor rules for _pyth
 }
 ```
 
-Here's another example for installation custom ESLint config:
+Here's another example for installing a custom ESLint config:
 
 ```json title=".eslintrc.json" showLineNumbers {9}
 {
@@ -578,7 +944,7 @@ You can also have a universal item that installs multiple files:
 ```json title="my-custom-starter-template.json" showLineNumbers {9}
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "my-custom-start-template",
+  "name": "my-custom-starter-template",
   "type": "registry:item",
   "dependencies": ["better-auth"],
   "files": [

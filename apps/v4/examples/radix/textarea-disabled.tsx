@@ -1,5 +1,5 @@
-import { Field, FieldLabel } from "@/examples/radix/ui/field"
-import { Textarea } from "@/examples/radix/ui/textarea"
+import { Field, FieldLabel } from "@/styles/radix-nova/ui/field"
+import { Textarea } from "@/styles/radix-nova/ui/textarea"
 
 export function TextareaDisabled() {
   return (

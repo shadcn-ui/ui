@@ -1,10 +1,8 @@
-import * as React from "react"
-
 export const STYLES = [
   {
     name: "vega",
     title: "Vega",
-    description: "The classic shadcn/ui look. Clean, neutral, and familiar.",
+    description: "Clean, neutral, and familiar",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +24,7 @@ export const STYLES = [
   {
     name: "nova",
     title: "Nova",
-    description: "Reduced padding and margins for compact layouts.",
+    description: "Reduced padding and margins",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +47,7 @@ export const STYLES = [
   {
     name: "maia",
     title: "Maia",
-    description: "Soft and rounded, with generous spacing.",
+    description: "Rounded, with generous spacing.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +72,7 @@ export const STYLES = [
   {
     name: "lyra",
     title: "Lyra",
-    description: "Boxy and sharp. Pairs well with mono fonts.",
+    description: "Boxy and sharp. For mono fonts.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +94,7 @@ export const STYLES = [
   {
     name: "mira",
     title: "Mira",
-    description: "Compact. Made for dense interfaces.",
+    description: "Made for compact interfaces.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -113,6 +111,54 @@ export const STYLES = [
           strokeWidth="2"
           strokeLinejoin="round"
         ></path>
+      </svg>
+    ),
+  },
+  {
+    name: "luma",
+    title: "Luma",
+    description: "Fluid, luminous, and soft.",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="128"
+        height="128"
+        viewBox="0 0 24 24"
+        fill="none"
+        role="img"
+        color="currentColor"
+      >
+        <path
+          d="M2 12C2 8.134 5.134 5 9 5H15C18.866 5 22 8.134 22 12C22 15.866 18.866 19 15 19H9C5.134 19 2 15.866 2 12Z"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinejoin="round"
+        ></path>
+      </svg>
+    ),
+  },
+  {
+    name: "sera",
+    title: "Sera",
+    description: "Editorial and typographic.",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="128"
+        height="128"
+        viewBox="0 0 24 24"
+        fill="none"
+        role="img"
+        color="currentColor"
+      >
+        <rect
+          x="3"
+          y="3"
+          width="18"
+          height="18"
+          stroke="currentColor"
+          strokeWidth="2"
+        ></rect>
       </svg>
     ),
   },

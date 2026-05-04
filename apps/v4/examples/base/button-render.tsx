@@ -1,9 +1,12 @@
-import { Button } from "@/examples/base/ui/button"
+import { buttonVariants } from "@/styles/base-nova/ui/button"
 
 export default function ButtonRender() {
   return (
-    <Button nativeButton={false} render={<a href="#" />}>
+    <a
+      href="#"
+      className={buttonVariants({ variant: "secondary", size: "sm" })}
+    >
       Login
-    </Button>
+    </a>
   )
 }

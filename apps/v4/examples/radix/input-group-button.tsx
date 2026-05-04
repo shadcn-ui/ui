@@ -2,17 +2,6 @@
 
 import * as React from "react"
 import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-} from "@/examples/radix/ui/input-group"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/examples/radix/ui/popover"
-import {
   IconCheck,
   IconCopy,
   IconInfoCircle,
@@ -20,6 +9,17 @@ import {
 } from "@tabler/icons-react"
 
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "@/styles/radix-nova/ui/input-group"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/styles/radix-nova/ui/popover"
 
 export default function InputGroupButtonExample() {
   const { copyToClipboard, isCopied } = useCopyToClipboard()
@@ -59,7 +59,7 @@ export default function InputGroupButtonExample() {
             <p>You should not enter any sensitive information on this site.</p>
           </PopoverContent>
         </Popover>
-        <InputGroupAddon className="text-muted-foreground pl-1.5">
+        <InputGroupAddon className="pl-1.5 text-muted-foreground">
           https://
         </InputGroupAddon>
         <InputGroupInput id="input-secure-19" />

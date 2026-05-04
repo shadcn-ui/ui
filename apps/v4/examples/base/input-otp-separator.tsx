@@ -3,7 +3,7 @@ import {
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/examples/base/ui/input-otp"
+} from "@/styles/base-nova/ui/input-otp"
 
 export default function InputOTPWithSeparator() {
   return (

@@ -1,8 +1,16 @@
 "use client"
 
 import * as React from "react"
-import { Field, FieldDescription, FieldLabel } from "@/examples/radix/ui/field"
-import { ToggleGroup, ToggleGroupItem } from "@/examples/radix/ui/toggle-group"
+
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/styles/radix-nova/ui/field"
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/styles/radix-nova/ui/toggle-group"
 
 export function ToggleGroupFontWeightSelector() {
   const [fontWeight, setFontWeight] = React.useState("normal")
@@ -23,7 +31,7 @@ export function ToggleGroupFontWeightSelector() {
           className="flex size-16 flex-col items-center justify-center rounded-xl"
         >
           <span className="text-2xl leading-none font-light">Aa</span>
-          <span className="text-muted-foreground text-xs">Light</span>
+          <span className="text-xs text-muted-foreground">Light</span>
         </ToggleGroupItem>
         <ToggleGroupItem
           value="normal"
@@ -31,7 +39,7 @@ export function ToggleGroupFontWeightSelector() {
           className="flex size-16 flex-col items-center justify-center rounded-xl"
         >
           <span className="text-2xl leading-none font-normal">Aa</span>
-          <span className="text-muted-foreground text-xs">Normal</span>
+          <span className="text-xs text-muted-foreground">Normal</span>
         </ToggleGroupItem>
         <ToggleGroupItem
           value="medium"
@@ -39,7 +47,7 @@ export function ToggleGroupFontWeightSelector() {
           className="flex size-16 flex-col items-center justify-center rounded-xl"
         >
           <span className="text-2xl leading-none font-medium">Aa</span>
-          <span className="text-muted-foreground text-xs">Medium</span>
+          <span className="text-xs text-muted-foreground">Medium</span>
         </ToggleGroupItem>
         <ToggleGroupItem
           value="bold"
@@ -47,12 +55,12 @@ export function ToggleGroupFontWeightSelector() {
           className="flex size-16 flex-col items-center justify-center rounded-xl"
         >
           <span className="text-2xl leading-none font-bold">Aa</span>
-          <span className="text-muted-foreground text-xs">Bold</span>
+          <span className="text-xs text-muted-foreground">Bold</span>
         </ToggleGroupItem>
       </ToggleGroup>
       <FieldDescription>
         Use{" "}
-        <code className="bg-muted rounded-md px-1 py-0.5 font-mono">
+        <code className="rounded-md bg-muted px-1 py-0.5 font-mono">
           font-{fontWeight}
         </code>{" "}
         to set the font weight.

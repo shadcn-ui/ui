@@ -12,6 +12,18 @@
     "description": "A set of beautifully designed components designed for developers who want niche, high-utility UI elements that you won't find in standard libraries."
   },
   {
+    "name": "@unlumen-ui",
+    "homepage": "https://ui.unlumen.com",
+    "url": "https://ui.unlumen.com/r/{name}.json",
+    "description": "Primitives and components with serious attention to animation and design. Copy, own, ship."
+  },
+  {
+    "name": "@auth0",
+    "homepage": "https://auth0.com",
+    "url": "https://ui.auth0.com/r/{name}.json",
+    "description": "Official Auth0 Universal Components for Web. Accelerate development with pre-built, embeddable UI for enterprise SSO, MFA, and organization management"
+  },
+  {
     "name": "@abui",
     "homepage": "https://abui.io",
     "url": "https://abui.io/r/{name}.json",
@@ -24,6 +36,12 @@
     "description": "A collection of React components for the most common crypto patterns"
   },
   {
+    "name": "@arc",
+    "homepage": "https://witharc.co/components",
+    "url": "https://witharc.co/r/{name}.json",
+    "description": "Animated, accessible UI components built with React and Tailwind CSS."
+  },
+  {
     "name": "@aceternity",
     "homepage": "https://ui.aceternity.com",
     "url": "https://ui.aceternity.com/registry/{name}.json",
@@ -31,8 +49,8 @@
   },
   {
     "name": "@agents-ui",
-    "homepage": "https://livekit.io/ui",
-    "url": "https://livekit.io/ui/r/{name}.json",
+    "homepage": "https://livekit.com/ui",
+    "url": "https://livekit.com/ui/r/{name}.json",
     "description": "This is a shadcn/ui component registry that distributes copy-paste React components for building LiveKit AI Agent interfaces."
   },
   {
@@ -102,10 +120,16 @@
     "description": "BillingSDK is an open-source React and Next.js component library for SaaS billing and payments. It offers ready-to-use, customizable components for subscriptions, invoices, usage-based pricing and billing - fully compatible with Dodo Payments and Stripe."
   },
   {
-    "name": "@blocks",
+    "name": "@blocks-so",
     "homepage": "https://blocks.so",
     "url": "https://blocks.so/r/{name}.json",
     "description": "A set of clean, modern application building blocks for you in your applications. Free and Open Source"
+  },
+  {
+    "name": "@boldkit",
+    "homepage": "https://boldkit.dev",
+    "url": "https://boldkit.dev/r/{name}.json",
+    "description": "Neubrutalism component library with 43 components, 42 SVG shapes, thick borders, and hard shadows. Supports React, Vue, and Nuxt. Built on shadcn/ui."
   },
   {
     "name": "@bundui",
@@ -130,6 +154,12 @@
     "homepage": "https://clerk.com/docs/guides/development/shadcn-cli",
     "url": "https://clerk.com/r/{name}.json",
     "description": "The easiest way to add authentication and user management to your application. Purpose-built for React, Next.js, Remix, and The Modern Web."
+  },
+  {
+    "name": "@ramonclaudio-coderabbit",
+    "homepage": "https://ramonclaudio.com/registries/coderabbit",
+    "url": "https://coderabbit-shadcn-registry.vercel.app/r/{name}.json",
+    "description": "A framework-agnostic API client, pluggable storage adapters (LocalStorage, Convex, Supabase, PostgreSQL, MySQL), and React components for generating developer activity reports."
   },
   {
     "name": "@commercn",
@@ -168,6 +198,12 @@
     "description": "A collection of beautiful, reusable component blocks built with React"
   },
   {
+    "name": "@dsikeres1",
+    "homepage": "https://dsikeres1.github.io/react-date-range-picker/",
+    "url": "https://dsikeres1.github.io/react-date-range-picker/r/{name}.json",
+    "description": "A headless, composable date & date range picker for React. 5 picker types, 15 locales, dark mode, accessible. Zero dependencies."
+  },
+  {
     "name": "@elements",
     "homepage": "https://www.tryelements.dev",
     "url": "https://www.tryelements.dev/r/{name}.json",
@@ -198,10 +234,22 @@
     "description": "An open-source, modern UI component library for React, built with TypeScript, Tailwind CSS, and Framer Motion. Eldora UI offers beautifully crafted, reusable components designed for performance and elegance."
   },
   {
+    "name": "@evilcharts",
+    "homepage": "https://evilcharts.com",
+    "url": "https://evilcharts.com/r/{name}.json",
+    "description": "EvilCharts is an open-source chart UI website built with shadcn and Recharts, beautifully designed and handcrafted."
+  },
+  {
     "name": "@formcn",
     "homepage": "https://formcn.dev",
     "url": "https://formcn.dev/r/{name}.json",
     "description": "Build production-ready forms with a few clicks using shadcn components and modern tools."
+  },
+  {
+    "name": "@flightcn",
+    "homepage": "https://flightcn.yencheng.dev",
+    "url": "https://flightcn.yencheng.dev/r/{name}.json",
+    "description": "Flight routes on interactive maps with great-circle arcs, airport markers, multi-leg journeys, and optional animation, built for mapcn."
   },
   {
     "name": "@gaia",
@@ -210,10 +258,28 @@
     "description": "Production-ready UI components designed for building beautiful AI assistants and conversational interfaces, from the team behind GAIA."
   },
   {
+    "name": "@gc-solid",
+    "homepage": "https://binnodon.github.io/gc-solid-ui",
+    "url": "https://binnodon.github.io/gc-solid-ui/r/{name}.json",
+    "description": "SolidJS port of shadcn-ui components built with Kobalte primitives. 57+ components with full TypeScript support and Vega theme."
+  },
+  {
+    "name": "@gamifykit",
+    "homepage": "https://gamifykit.com",
+    "url": "https://gamifykit.com/r/{name}.json",
+    "description": "A collection of fully composable components that extend shadcn/ui with a focus on common gamification UI patterns."
+  },
+  {
     "name": "@glass-ui",
     "homepage": "https://glass-ui.crenspire.com",
     "url": "https://glass-ui.crenspire.com/r/{name}.json",
     "description": "A shadcn-ui compatible registry distributing 40+ glassmorphic React/TypeScript components with Apple-inspired design. Components include enhanced visual effects (glow, shimmer, ripple), theme support, and customizable glassmorphism styling."
+  },
+  {
+    "name": "@glasscn",
+    "homepage": "https://glasscn.vercel.app/",
+    "url": "https://glasscn-components.vercel.app/r/{name}.json",
+    "description": "A shadcn-compatible registry of glassmorphism components inspired by Apple"
   },
   {
     "name": "@ha-components",
@@ -228,9 +294,9 @@
     "description": "Ready-to-use foundation components/blocks built on top of shadcn/ui."
   },
   {
-    "name": "@hooks",
-    "homepage": "https://shadcn-hooks.vercel.app",
-    "url": "https://shadcn-hooks.vercel.app/r/{name}.json",
+    "name": "@shadcnhooks",
+    "homepage": "https://shadcn-hooks.com",
+    "url": "https://shadcn-hooks.com/r/{name}.json",
     "description": "A comprehensive React Hooks Collection built with Shadcn."
   },
   {
@@ -246,6 +312,12 @@
     "description": "Accessible React component library to copy, customize, and own your UI."
   },
   {
+    "name": "@jalco",
+    "homepage": "https://ui.justinlevine.me",
+    "url": "https://ui.justinlevine.me/r/{name}.json",
+    "description": "A curated collection of GitHub-integrated, documentation, and developer-facing components. Self-contained, zero-dependency, and production-ready."
+  },
+  {
     "name": "@kibo-ui",
     "homepage": "https://www.kibo-ui.com/",
     "url": "https://www.kibo-ui.com/r/{name}.json",
@@ -258,10 +330,22 @@
     "description": "A set of perfect-designed components built on top of React Aria and Motion."
   },
   {
+    "name": "@kapwa",
+    "homepage": "https://kapwa-two.vercel.app",
+    "url": "https://kapwa-two.vercel.app/r/{name}.json",
+    "description": "Cleanly designed components purposely built for open-source government portals."
+  },
+  {
     "name": "@kokonutui",
     "homepage": "https://kokonutui.com",
     "url": "https://kokonutui.com/r/{name}.json",
     "description": "Collection of stunning components built with Tailwind CSS, shadcn/ui and Motion to use on your websites."
+  },
+  {
+    "name": "@launchui",
+    "homepage": "https://www.launchuicomponents.com/",
+    "url": "https://www.launchuicomponents.com/r/{name}.json",
+    "description": "Carefully crafted landing page components and templates built with React, Shadcn/ui and Tailwind."
   },
   {
     "name": "@lens-blocks",
@@ -274,6 +358,18 @@
     "homepage": "https://limeplay.winoffrg.dev",
     "url": "https://limeplay.winoffrg.dev/r/{name}.json",
     "description": "Modern UI Library for building media players in React. Powered by Shaka Player."
+  },
+  {
+    "name": "@loading-ui",
+    "homepage": "https://loading-ui.com",
+    "url": "https://loading-ui.com/r/{name}.json",
+    "description": "Spinners, loaders, and loading animations for modern web apps. Free and open-source."
+  },
+  {
+    "name": "@lmscn",
+    "homepage": "https://lmscn.vercel.app",
+    "url": "https://lmscn.vercel.app/r/{name}.json",
+    "description": "LMS components for building interactive learning experiences — quiz, flashcards, matching, fill-in-the-blank, word scramble, sequencing, reading comprehension, spaced repetition and more."
   },
   {
     "name": "@lucide-animated",
@@ -324,6 +420,12 @@
     "description": "Beautifully designed motions components. Easy copy-paste. Customizable. Open Source. Built for engineers and designers."
   },
   {
+    "name": "@nordaun",
+    "homepage": "https://ui.nordaun.com",
+    "url": "https://ui.nordaun.com/r/{name}.json",
+    "description": "Simple components for your extraordinary creations."
+  },
+  {
     "name": "@ncdai",
     "homepage": "https://chanhdai.com/components",
     "url": "https://chanhdai.com/r/{name}.json",
@@ -346,6 +448,12 @@
     "homepage": "https://www.neobrutalism.dev",
     "url": "https://www.neobrutalism.dev/r/{name}.json",
     "description": "A collection of neobrutalism-styled components based on shadcn/ui"
+  },
+  {
+    "name": "@nessra-ui",
+    "homepage": "https://nessra-ui.vercel.app",
+    "url": "https://nessra-ui.vercel.app/r/{name}.json",
+    "description": "Beautiful, accessible components built with Tailwind CSS v4 and Radix UI. Includes auth blocks, data tables, and TanStack Form integration."
   },
   {
     "name": "@nexus-elements",
@@ -376,6 +484,12 @@
     "homepage": "https://ui.pacekit.dev",
     "url": "https://ui.pacekit.dev/r/{name}.json",
     "description": "Carefully built UI blocks for real apps and dashboards, designed to integrate smoothly from early ideas to production releases."
+  },
+  {
+    "name": "@pacekit-gsap",
+    "homepage": "https://gsap.pacekit.dev",
+    "url": "https://gsap.pacekit.dev/r/{name}.json",
+    "description": "Animated GSAP components crafted for smooth interaction and rich detail."
   },
   {
     "name": "@pastecn",
@@ -426,6 +540,18 @@
     "description": "A large collection of animated, interactive & fully customizable React components for building memorable websites. From smooth text animations all the way to eye-catching backgrounds, you can find it here."
   },
   {
+    "name": "@react-easy-modals",
+    "homepage": "https://react-easy-modals-docs.vercel.app",
+    "url": "https://react-easy-modals-docs.vercel.app/r/styles/{style}/{name}.json",
+    "description": "Modal component for react-easy-modals. Integrates with shadcn Dialog for a simple, powerful modal system with TypeScript support and promise-based API."
+  },
+  {
+    "name": "@react-slot",
+    "homepage": "https://react-slot.vercel.app/",
+    "url": "https://react-slot.vercel.app/r/{name}.json",
+    "description": "Vue-style slot composition for React - Fine-grained control over component composition"
+  },
+  {
     "name": "@retroui",
     "homepage": "https://retroui.dev",
     "url": "https://retroui.dev/r/{name}.json",
@@ -442,6 +568,12 @@
     "homepage": "https://www.scrollxui.dev",
     "url": "https://www.scrollxui.dev/registry/{name}.json",
     "description": "ScrollX UI is an open-source React and shadcn-compatible component library for animated, interactive, and customizable user interfaces. It offers motion-driven components that blend seamlessly with modern ShadCN setups."
+  },
+  {
+    "name": "@spell",
+    "homepage": "https://spell.sh",
+    "url": "https://spell.sh/r/{name}.json",
+    "description": "Beautiful, sophisticated UI components designed for modern React and Tailwind CSS applications."
   },
   {
     "name": "@square-ui",
@@ -483,13 +615,25 @@
     "name": "@shadcnblocks",
     "homepage": "https://shadcnblocks.com",
     "url": "https://shadcnblocks.com/r/{name}.json",
-    "description": "A registry with hundreds of extra blocks for shadcn ui."
+    "description": "A shadcn/ui registry with 1429 blocks, 1189 component variants, 14 templates, themes, and admin dashboard patterns."
   },
   {
     "name": "@shadcndesign",
     "homepage": "https://www.shadcndesign.com",
     "url": "https://shadcndesign-free.vercel.app/r/{name}.json",
     "description": "A growing collection of high-quality blocks and themes for shadcn/ui."
+  },
+  {
+    "name": "@shadcnmaps",
+    "homepage": "https://shadcnmaps.com",
+    "url": "https://shadcnmaps.com/r/{name}.json",
+    "description": "Beautiful map components powered by pure SVG."
+  },
+  {
+    "name": "@shadcnstore",
+    "homepage": "https://www.shadcnstore.com",
+    "url": "https://shadcnstore.com/r/{name}.json",
+    "description": "A growing collection of shadcn/ui components, blocks, and templates for building modern web apps."
   },
   {
     "name": "@shadcn-map",
@@ -504,9 +648,15 @@
     "description": "An open-source set of shadcn/ui components, blocks, and templates with a powerful theme generator."
   },
   {
+    "name": "@waves-cn",
+    "homepage": "https://waves-cn.vercel.app",
+    "url": "https://waves-cn.vercel.app/r/{name}.json",
+    "description": "A collection of wave players and waveform components built with wavesurfer.js and shadcn/ui."
+  },
+  {
     "name": "@shadcn-editor",
     "homepage": "https://shadcn-editor.vercel.app",
-    "url": "https://shadcn-editor.vercel.app/r/{name}.json",
+    "url": "https://raw.githubusercontent.com/htmujahid/shadcn-editor/refs/heads/main/public/r/{name}.json",
     "description": "Accessible, Customizable, Rich Text Editor. Made with Lexical and Shadcn/UI. Open Source. Open Code."
   },
   {
@@ -516,10 +666,22 @@
     "description": "A collection of premium, production-ready shadcn/ui blocks, components and templates."
   },
   {
-    "name": "@shadcraft",
-    "homepage": "https://free.shadcraft.com",
-    "url": "https://free.shadcraft.com/r/{name}.json",
-    "description": "A collection of polished shadcn/ui components and marketing blocks built to production standards. Fast to use, easy to extend, and ready for any modern web project."
+    "name": "@shadcnuikit",
+    "homepage": "https://shadcnuikit.com",
+    "url": "https://shadcnuikit.com/r/{name}.json",
+    "description": "Launch your projects faster with admin dashboards, website templates, components, blocks, and pre-built real-world examples."
+  },
+  {
+    "name": "@shadcncraft",
+    "homepage": "https://shadcncraft.com",
+    "url": "https://shadcncraft.com/r/{name}.json",
+    "description": "A starter collection of polished shadcn/ui components and blocks built to production standards. Part of a larger Figma + React system designed to scale with your product."
+  },
+  {
+    "name": "@shark",
+    "homepage": "https://shark.vini.one",
+    "url": "https://shark.vini.one/r/{name}.json",
+    "description": "shadcn/ui-style components built on Ark UI."
   },
   {
     "name": "@smoothui",
@@ -558,6 +720,12 @@
     "description": "Beautifully designed, accessible components that you can copy and paste into your apps. Made with React Aria Components and Shadcn tokens."
   },
   {
+    "name": "@terrae",
+    "homepage": "https://www.terrae.dev",
+    "url": "https://www.terrae.dev/{name}.json",
+    "description": "Composable, animated map components for React. Built with TypeScript, Tailwind CSS, Mapbox GL JS, and MapLibre GL. Perfect companion for shadcn/ui."
+  },
+  {
     "name": "@thegridcn",
     "homepage": "https://thegridcn.com",
     "url": "https://thegridcn.com/r/{name}.json",
@@ -580,6 +748,12 @@
     "homepage": "https://utilcn.dev",
     "url": "https://utilcn.dev/r/{name}.json",
     "description": "Fullstack registry items to start those big features. Utilcn has ChatGPT Apps, file uploading (with progress bars) and downloading, and a way to make your env vars typesafe on the backend."
+  },
+  {
+    "name": "@w3-kit",
+    "homepage": "https://w3-kit.com",
+    "url": "https://w3-kit.com/registry/{name}.json",
+    "description": "Web3 UI components for blockchain dApps. Includes wallet connection, token swaps, NFT cards, staking interfaces, and 20+ more crypto components."
   },
   {
     "name": "@wandry-ui",
@@ -660,12 +834,6 @@
     "description": "ShadcnSpace is a collection of extra-ordinary, highly customizable shadcn/ui components, blocks, and themes to build modern UIs with speed and clarity."
   },
   {
-    "name": "@shadcn-dashboard",
-    "homepage": "https://shadcn-dashboard.com",
-    "url": "https://shadcn-dashboard.com/r/{name}.json",
-    "description": "ShadcnDashboard is a collection of modern, production-ready dashboard layouts, components, and UI patterns built on top of shadcn/ui and Tailwind CSS. It’s designed to help developers build clean, scalable, and data-driven dashboards faster—without compromising on performance, accessibility, or customization."
-  },
-  {
     "name": "@icons-animated",
     "homepage": "https://icons.lndev.me",
     "url": "https://icons.lndev.me/r/{name}.json",
@@ -682,6 +850,12 @@
     "homepage": "https://darshitdev.in/arts",
     "url": "https://darshitdev.in/r/{name}.json",
     "description": "Magic 3D Tabs component featuring mouse-interactive 3D rotation, floating particles background effect, and smooth spring animations."
+  },
+  {
+    "name": "@devl",
+    "homepage": "https://devl.dev",
+    "url": "https://devl.dev/r/{name}.json",
+    "description": "Hand-crafted layouts and UI primitives for shipping fast."
   },
   {
     "name": "@beste-ui",
@@ -760,5 +934,179 @@
     "homepage": "https://sona-ui.vercel.app",
     "url": "https://sona-ui.vercel.app/r/{name}.json",
     "description": "A modern UI component library built with React and TailwindCSS to help you build beautiful and accessible web applications faster."
+  },
+  {
+    "name": "@soundcn",
+    "homepage": "https://soundcn.xyz",
+    "url": "https://soundcn.xyz/r/{name}.json",
+    "description": "Large collection of game, interface, retro, and voice sound effects for web applications"
+  },
+  {
+    "name": "@pixelact-ui",
+    "homepage": "https://pixelactui.com",
+    "url": "https://pixelactui.com/r/{name}.json",
+    "description": "Playful pixel art style components library built on top of shadcn. Perfect for retro style projects and games."
+  },
+  {
+    "name": "@emerald-ui",
+    "homepage": "https://emerald-ui.com",
+    "url": "https://emerald-ui.com/r/{name}.json",
+    "description": "Emerald UI - collection of components built with Motion, GSAP, Tailwind CSS and shadcn/ui."
+  },
+  {
+    "name": "@iconiq",
+    "homepage": "https://iconiqui.com",
+    "url": "https://iconiqui.com/r/{name}.json",
+    "description": "Iconiq is a collection of icons designed for web applications. It is a modern, clean, and minimalistic icon set that is perfect for web applications."
+  },
+  {
+    "name": "@fonttrio",
+    "homepage": "https://www.fonttrio.xyz",
+    "url": "https://www.fonttrio.xyz/r/{name}.json",
+    "description": "Curated font pairing registry for shadcn. Three fonts. One command. Install perfectly configured typography (heading + body + mono) with shadcn add. Includes editorial-grade type scales, CSS variables, and a live preview site."
+  },
+  {
+    "name": "@componentry",
+    "homepage": "https://componentry.fun",
+    "url": "https://componentry.fun/r/{name}.json",
+    "description": "Beautiful, interactive React + Tailwind components for modern product UIs."
+  },
+  {
+    "name": "@paletteui",
+    "homepage": "https://paletteui.xyz",
+    "url": "https://paletteui.xyz/r/{name}.json",
+    "description": "Curated OKLCH color themes for shadcn/ui + visual theme editor with CSS, Tailwind v4, and Figma export."
+  },
+  {
+    "name": "@fluid",
+    "homepage": "https://www.fluidfunctionalism.com",
+    "url": "https://www.fluidfunctionalism.com/r/{name}.json",
+    "description": "Fluid components used exclusively in service of functional clarity. Proximity hover, spring animations, font-weight transitions, and animated focus rings."
+  },
+  {
+    "name": "@gammaui",
+    "homepage": "https://www.gammaui.com",
+    "url": "https://www.gammaui.com/r/{name}.json",
+    "description": "Beautifully designed landing page components built with React & Tailwind CSS & Motion."
+  },
+  {
+    "name": "@flx",
+    "homepage": "https://ui.flexnative.com",
+    "url": "https://ui.flexnative.com/r/{name}.json",
+    "description": "A collection of customizable UI blocks with interactive live previews"
+  },
+  {
+    "name": "@tailgrids",
+    "homepage": "https://tailgrids.com",
+    "url": "https://tailgrids.com/docs/r/{name}.json",
+    "description": "React UI Components, Powered by Tailwind CSS"
+  },
+  {
+    "name": "@nexus-ui",
+    "homepage": "https://nexus-ui.dev",
+    "url": "https://nexus-ui.dev/r/{name}.json",
+    "description": "Open-source component library of composable, copy-paste primitives for building AI interfaces (chat, streaming, multimodal)"
+  },
+  {
+    "name": "@sabraman",
+    "homepage": "https://sabraman.ru/components",
+    "url": "https://sabraman.ru/r/{name}.json",
+    "description": "Legacy skeuomorphic UI components and blocks for shadcn."
+  },
+  {
+    "name": "@odysseyui",
+    "homepage": "https://www.odysseyui.com/docs",
+    "url": "https://www.odysseyui.com/r/{name}.json",
+    "description": "A design focused component library for Next.js, built for speed, flexibility and developer experience."
+  },
+  {
+    "name": "@pulkitxm",
+    "homepage": "https://pulkitxm.com",
+    "url": "https://pulkitxm.com/components/{name}.json",
+    "description": "Animated shadcn components powered by GSAP and Framer Motion. Built for expressive UIs."
+  },
+  {
+    "name": "@rescript-shadcn",
+    "homepage": "https://rescript-shadcn.miriad.studio",
+    "url": "https://rescript-shadcn.miriad.studio/r/{name}.json",
+    "description": "Shadcn components rewritten in Rescript, compatible with shadcn CLI."
+  },
+  {
+    "name": "@openpolicy",
+    "homepage": "https://www.openpolicy.sh",
+    "url": "https://www.openpolicy.sh/r/{name}.json",
+    "description": "Open-source components for building terms, privacy policies and cookie banners."
+  },
+  {
+    "name": "@mksingh",
+    "homepage": "https://mksingh.dev/docs",
+    "url": "https://mksingh.dev/r/{name}.json",
+    "description": "A personal registry of production-ready ShadCN components and utilities. Everything is built to drop into your existing ShadCN project with no extra setup."
+  },
+  {
+    "name": "@flowkit-ui",
+    "homepage": "https://flowkit-ui.vzkiss.com",
+    "url": "https://flowkit-ui.vzkiss.com/r/{name}.json",
+    "description": "Opinionated, accessible components on Base UI and shadcn-style primitives — starting with a Creatable Combobox."
+  },
+  {
+    "name": "@termcn",
+    "homepage": "https://termcn.vercel.app",
+    "url": "https://termcn.vercel.app/r/{name}.json",
+    "description": "Beautiful terminal UIs, made simple. Ready to use, customizable terminal UI components for React."
+  },
+  {
+    "name": "@remocn",
+    "homepage": "https://www.remocn.dev/",
+    "url": "https://www.remocn.dev/r/{name}.json",
+    "description": "Production-ready components for Remotion - text animations, backgrounds, transitions, UI blocks, and full scene compositions"
+  },
+  {
+    "name": "@exabase",
+    "homepage": "https://exawizards.com/exabase/design/",
+    "url": "https://exawizards.com/exabase/design/registry/{name}.json",
+    "description": "A collection of UI components based on the exaBase Design System, built with React and Tailwind CSS."
+  },
+  {
+    "name": "@aicanvas",
+    "homepage": "https://aicanvas.me",
+    "url": "https://aicanvas.me/r/{name}.json",
+    "description": "54 animated React components with AI reproduction prompts for Claude Code, Lovable, and v0. Free and open source."
+  },
+  {
+    "name": "@xcn",
+    "homepage": "https://ui.radiumcoders.com",
+    "url": "https://ui.radiumcoders.com/r/xcn/{name}.json",
+    "description": "Hand-crafted, beautiful, and minimal UI components built with Tailwind CSS and Motion."
+  },
+  {
+    "name": "@dotmatrix",
+    "homepage": "https://dotmatrix.zzzzshawn.cloud",
+    "url": "https://dotmatrix.zzzzshawn.cloud/r/{name}.json",
+    "description": "Production-ready dot-matrix loading components for React, featuring square, circular, and triangle animations with polished motion."
+  },
+  {
+    "name": "@delta",
+    "homepage": "https://deltacomponents.dev",
+    "url": "https://deltacomponents.dev/r/{name}.json",
+    "description": "A shadcn registry for AI and media-rich interfaces — streaming LLM chat, zoomable images, swipeable card decks, interactive maps, plus dashboard and landing-page blocks."
+  },
+  {
+    "name": "@shieldcn",
+    "homepage": "https://shieldcn.dev",
+    "url": "https://shieldcn.dev/r/{name}.json",
+    "description": "Beautiful README badges as a service. A shields.io alternative with the visual quality of shadcn/ui. Drop-in SVG badge components for npm, GitHub, Discord, and more."
+  },
+  {
+    "name": "@evilbuttons",
+    "homepage": "https://evilbuttons.radiumcoders.com/docs",
+    "url": "https://evilbuttons.radiumcoders.com/r/{name}.json",
+    "description": "A shadcn/ui registry featuring a collection of animated buttons built with Motion. Each component is designed to add punchy, interactive feedback to your UI with minimal setup."
+  },
+  {
+    "name": "@stepper",
+    "homepage": "https://francozeta-stepper.vercel.app",
+    "url": "https://francozeta-stepper.vercel.app/{name}.json",
+    "description": "A modern, accessible and composable Stepper component for React and Tailwind CSS. Built for shadcn/ui-style workflows with registry-first distribution."
   }
 ]

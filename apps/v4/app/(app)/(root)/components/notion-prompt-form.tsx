@@ -1,8 +1,24 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/radix/ui/avatar"
-import { Badge } from "@/examples/radix/ui/badge"
+import {
+  IconApps,
+  IconArrowUp,
+  IconAt,
+  IconBook,
+  IconCircleDashedPlus,
+  IconPaperclip,
+  IconPlus,
+  IconWorld,
+  IconX,
+} from "@tabler/icons-react"
+
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/styles/radix-nova/ui/avatar"
+import { Badge } from "@/styles/radix-nova/ui/badge"
 import {
   Command,
   CommandEmpty,
@@ -10,7 +26,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/examples/radix/ui/command"
+} from "@/styles/radix-nova/ui/command"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -23,36 +39,25 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/examples/radix/ui/dropdown-menu"
-import { Field, FieldLabel } from "@/examples/radix/ui/field"
+} from "@/styles/radix-nova/ui/dropdown-menu"
+import { Field, FieldLabel } from "@/styles/radix-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupTextarea,
-} from "@/examples/radix/ui/input-group"
+} from "@/styles/radix-nova/ui/input-group"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/examples/radix/ui/popover"
-import { Switch } from "@/examples/radix/ui/switch"
+} from "@/styles/radix-nova/ui/popover"
+import { Switch } from "@/styles/radix-nova/ui/switch"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/radix/ui/tooltip"
-import {
-  IconApps,
-  IconArrowUp,
-  IconAt,
-  IconBook,
-  IconCircleDashedPlus,
-  IconPaperclip,
-  IconPlus,
-  IconWorld,
-  IconX,
-} from "@tabler/icons-react"
+} from "@/styles/radix-nova/ui/tooltip"
 
 const SAMPLE_DATA = {
   mentionable: [
@@ -247,7 +252,7 @@ export function NotionPromptForm() {
                 </Command>
               </PopoverContent>
             </Popover>
-            <div className="no-scrollbar -m-1.5 flex gap-1 overflow-y-auto p-1.5">
+            <div className="-m-1.5 no-scrollbar flex gap-1 overflow-y-auto p-1.5">
               {mentions.map((mention) => {
                 const item = SAMPLE_DATA.mentionable.find(
                   (item) => item.title === mention
@@ -262,7 +267,7 @@ export function NotionPromptForm() {
                     key={mention}
                     size="sm"
                     variant="secondary"
-                    className="rounded-full !pl-2"
+                    className="rounded-full pl-2!"
                     onClick={() => {
                       setMentions((prev) => prev.filter((m) => m !== mention))
                     }}
@@ -302,9 +307,13 @@ export function NotionPromptForm() {
                 </TooltipTrigger>
                 <TooltipContent>Select AI model</TooltipContent>
               </Tooltip>
-              <DropdownMenuContent side="top" align="start" className="w-48">
-                <DropdownMenuGroup className="w-48">
-                  <DropdownMenuLabel className="text-muted-foreground text-xs">
+              <DropdownMenuContent
+                side="top"
+                align="start"
+                className="min-w-48"
+              >
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel className="text-xs text-muted-foreground">
                     Select Agent Mode
                   </DropdownMenuLabel>
                   {SAMPLE_DATA.models.map((model) => (
@@ -422,7 +431,7 @@ export function NotionPromptForm() {
                   <DropdownMenuItem>
                     <IconPlus /> Connect Apps
                   </DropdownMenuItem>
-                  <DropdownMenuLabel className="text-muted-foreground text-xs">
+                  <DropdownMenuLabel className="text-xs text-muted-foreground">
                     We&apos;ll only search in the sources selected here.
                   </DropdownMenuLabel>
                 </DropdownMenuGroup>

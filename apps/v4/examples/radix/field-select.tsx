@@ -1,4 +1,8 @@
-import { Field, FieldDescription, FieldLabel } from "@/examples/radix/ui/field"
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/styles/radix-nova/ui/field"
 import {
   Select,
   SelectContent,
@@ -6,7 +10,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/examples/radix/ui/select"
+} from "@/styles/radix-nova/ui/select"
 
 export default function FieldSelect() {
   return (

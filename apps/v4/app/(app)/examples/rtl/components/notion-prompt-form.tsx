@@ -2,47 +2,6 @@
 
 import { useMemo, useState } from "react"
 import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/examples/base/ui-rtl/avatar"
-import { Badge } from "@/examples/base/ui-rtl/badge"
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/examples/base/ui-rtl/command"
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "@/examples/base/ui-rtl/dropdown-menu"
-import { Field, FieldLabel } from "@/examples/base/ui-rtl/field"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupTextarea,
-} from "@/examples/base/ui-rtl/input-group"
-import { Popover, PopoverContent } from "@/examples/base/ui-rtl/popover"
-import { Switch } from "@/examples/base/ui-rtl/switch"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/examples/base/ui-rtl/tooltip"
-import {
   IconApps,
   IconArrowUp,
   IconAt,
@@ -55,6 +14,47 @@ import {
 } from "@tabler/icons-react"
 
 import { useLanguageContext } from "@/components/language-selector"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/styles/base-nova/ui-rtl/avatar"
+import { Badge } from "@/styles/base-nova/ui-rtl/badge"
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/styles/base-nova/ui-rtl/command"
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/styles/base-nova/ui-rtl/dropdown-menu"
+import { Field, FieldLabel } from "@/styles/base-nova/ui-rtl/field"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupTextarea,
+} from "@/styles/base-nova/ui-rtl/input-group"
+import { Popover, PopoverContent } from "@/styles/base-nova/ui-rtl/popover"
+import { Switch } from "@/styles/base-nova/ui-rtl/switch"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/styles/base-nova/ui-rtl/tooltip"
 
 const translations = {
   ar: {
@@ -288,7 +288,7 @@ export function NotionPromptForm() {
                   </Command>
                 </PopoverContent>
               </Popover>
-              <div className="no-scrollbar -m-1.5 flex gap-1 overflow-y-auto p-1.5">
+              <div className="-m-1.5 no-scrollbar flex gap-1 overflow-y-auto p-1.5">
                 {mentions.map((mention) => {
                   const item = SAMPLE_DATA.mentionable.find(
                     (item) => item.title === mention
@@ -303,7 +303,7 @@ export function NotionPromptForm() {
                       key={mention}
                       size="sm"
                       variant="secondary"
-                      className="rounded-full !pr-2"
+                      className="rounded-full pr-2!"
                       onClick={() => {
                         setMentions((prev) => prev.filter((m) => m !== mention))
                       }}
@@ -352,7 +352,7 @@ export function NotionPromptForm() {
                   dir={t.dir}
                 >
                   <DropdownMenuGroup className="w-48">
-                    <DropdownMenuLabel className="text-muted-foreground text-xs">
+                    <DropdownMenuLabel className="text-xs text-muted-foreground">
                       {t.selectAgentMode}
                     </DropdownMenuLabel>
                     {SAMPLE_DATA.models.map((model) => (
@@ -493,7 +493,7 @@ export function NotionPromptForm() {
                     <DropdownMenuItem>
                       <IconPlus /> {t.connectApps}
                     </DropdownMenuItem>
-                    <DropdownMenuLabel className="text-muted-foreground text-xs">
+                    <DropdownMenuLabel className="text-xs text-muted-foreground">
                       {t.searchSourcesNote}
                     </DropdownMenuLabel>
                   </DropdownMenuGroup>

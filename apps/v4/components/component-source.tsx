@@ -1,10 +1,9 @@
-import fs from "node:fs/promises"
-import path from "node:path"
 import * as React from "react"
 
+import { formatCode } from "@/lib/format-code"
 import { highlightCode } from "@/lib/highlight-code"
+import { readFileFromRoot } from "@/lib/read-file"
 import { getDemoItem, getRegistryItem } from "@/lib/registry"
-import { formatCode } from "@/lib/rehype"
 import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CopyButton } from "@/components/copy-button"
@@ -42,8 +41,7 @@ export async function ComponentSource({
   }
 
   if (src) {
-    const file = await fs.readFile(path.join(process.cwd(), src), "utf-8")
-    code = file
+    code = await readFileFromRoot(src)
   }
 
   if (!code) {
@@ -102,7 +100,7 @@ function ComponentCode({
       {title && (
         <figcaption
           data-rehype-pretty-code-title=""
-          className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
+          className="flex items-center gap-2 text-code-foreground [&_svg]:size-4 [&_svg]:text-code-foreground [&_svg]:opacity-70"
           data-language={language}
         >
           {getIconForLanguageExtension(language)}

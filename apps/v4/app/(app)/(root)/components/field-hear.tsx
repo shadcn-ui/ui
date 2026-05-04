@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@/examples/radix/ui/card"
-import { Checkbox } from "@/examples/radix/ui/checkbox"
+import { Card, CardContent } from "@/styles/radix-nova/ui/card"
+import { Checkbox } from "@/styles/radix-nova/ui/checkbox"
 import {
   Field,
   FieldDescription,
@@ -8,7 +8,7 @@ import {
   FieldLegend,
   FieldSet,
   FieldTitle,
-} from "@/examples/radix/ui/field"
+} from "@/styles/radix-nova/ui/field"
 
 const options = [
   {
@@ -46,7 +46,7 @@ export function FieldHear() {
                   <FieldLabel
                     htmlFor={option.value}
                     key={option.value}
-                    className="!w-fit"
+                    className="w-fit!"
                   >
                     <Field
                       orientation="horizontal"

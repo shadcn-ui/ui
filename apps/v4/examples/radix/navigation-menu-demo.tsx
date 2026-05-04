@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,7 +11,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/examples/radix/ui/navigation-menu"
+} from "@/styles/radix-nova/ui/navigation-menu"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -108,7 +109,7 @@ function ListItem({
         <Link href={href}>
           <div className="flex flex-col gap-1 text-sm">
             <div className="leading-none font-medium">{title}</div>
-            <div className="text-muted-foreground line-clamp-2">{children}</div>
+            <div className="line-clamp-2 text-muted-foreground">{children}</div>
           </div>
         </Link>
       </NavigationMenuLink>

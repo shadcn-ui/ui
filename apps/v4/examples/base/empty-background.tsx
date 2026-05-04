@@ -1,4 +1,7 @@
-import { Button } from "@/examples/base/ui/button"
+import { IconBell } from "@tabler/icons-react"
+import { RefreshCcwIcon } from "lucide-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -6,13 +9,11 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/examples/base/ui/empty"
-import { IconBell } from "@tabler/icons-react"
-import { RefreshCcwIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/empty"
 
 export function EmptyMuted() {
   return (
-    <Empty className="bg-muted/30 h-full">
+    <Empty className="h-full bg-muted/30">
       <EmptyHeader>
         <EmptyMedia variant="icon">
           <IconBell />

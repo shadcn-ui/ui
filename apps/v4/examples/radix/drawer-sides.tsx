@@ -1,4 +1,4 @@
-import { Button } from "@/examples/radix/ui/button"
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   Drawer,
   DrawerClose,
@@ -8,7 +8,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/examples/radix/ui/drawer"
+} from "@/styles/radix-nova/ui/drawer"
 
 const DRAWER_SIDES = ["top", "right", "bottom", "left"] as const
 
@@ -38,7 +38,7 @@ export function DrawerWithSides() {
               {Array.from({ length: 10 }).map((_, index) => (
                 <p
                   key={index}
-                  className="style-lyra:mb-2 style-lyra:leading-relaxed mb-4 leading-normal"
+                  className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
                 >
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
