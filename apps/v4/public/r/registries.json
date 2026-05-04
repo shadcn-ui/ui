@@ -1108,5 +1108,11 @@
     "homepage": "https://francozeta-stepper.vercel.app",
     "url": "https://francozeta-stepper.vercel.app/{name}.json",
     "description": "A modern, accessible and composable Stepper component for React and Tailwind CSS. Built for shadcn/ui-style workflows with registry-first distribution."
+  },
+  {
+    "name": "@text-ui",
+    "homepage": "https://joelachance.github.io/text-ui/docs",
+    "url": "https://joelachance.github.io/text-ui/r/{name}.json",
+    "description": "A shadcn/ui registry with EchoText (`echo-text`): layered stroke text that follows the pointer—minimal setup, drop-in component."
   }
 ]
