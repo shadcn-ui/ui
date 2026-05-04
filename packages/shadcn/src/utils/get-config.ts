@@ -8,8 +8,8 @@ import {
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { resolveImport } from "@/src/utils/resolve-import"
-import { cosmiconfig } from "cosmiconfig"
-import fg from "fast-glob"
+import { lilconfig } from "lilconfig"
+import { glob } from "tinyglobby"
 import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
 
@@ -20,9 +20,9 @@ export const DEFAULT_TAILWIND_CSS = "app/globals.css"
 export const DEFAULT_TAILWIND_CONFIG = "tailwind.config.js"
 export const DEFAULT_TAILWIND_BASE_COLOR = "slate"
 
-// TODO: Figure out if we want to support all cosmiconfig formats.
+// TODO: Figure out if we want to support all lilconfig formats.
 // A simple components.json file would be nice.
-export const explorer = cosmiconfig("components", {
+export const explorer = lilconfig("components", {
   searchPlaces: ["components.json"],
 })
 
@@ -173,7 +173,7 @@ export async function findPackageRoot(cwd: string, resolvedPath: string) {
   const commonRoot = findCommonRoot(cwd, resolvedPath)
   const relativePath = path.relative(commonRoot, resolvedPath)
 
-  const packageRoots = await fg.glob("**/package.json", {
+  const packageRoots = await glob("**/package.json", {
     cwd: commonRoot,
     deep: 3,
     ignore: ["**/node_modules/**", "**/dist/**", "**/build/**", "**/public/**"],
