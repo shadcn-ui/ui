@@ -1,0 +1,12 @@
+/*
+ * AlertDialog visual styles are inherited entirely from Dialog.css —
+ * the lead-Dialog__overlay, lead-Dialog__content, lead-DialogHeader,
+ * lead-DialogTitle, lead-DialogDescription, and lead-DialogFooter
+ * classes do double duty for both Dialog and AlertDialog by design.
+ *
+ * This file exists so AlertDialog.tsx can co-locate any
+ * AlertDialog-specific style rules without polluting Dialog.css. There
+ * are none today; the auto-stacked-footer rule (decision §2) lives in
+ * Dialog.css because it applies to both component families and Dialog
+ * is the canonical home for shared dialog chrome.
+ */
