@@ -65,6 +65,8 @@ The generated command will look similar to this:
 npx shadcn@latest init --preset [CODE] --template rsbuild
 ```
 
+The exact command will include your selected options such as `--base` or `--rtl`.
+
 ### Add Components
 
 Add the `Card` component to your project:
@@ -126,6 +128,36 @@ Add the `Card` component to your project:
 npx shadcn@latest add card
 ```
 
+The command above will add the `Card` component to your project. You can then import it like this:
+
+```tsx showLineNumbers title="src/App.tsx"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
+function App() {
+  return (
+    <Card className="max-w-sm">
+      <CardHeader>
+        <CardTitle>Project Overview</CardTitle>
+        <CardDescription>
+          Track progress and recent activity for your Rsbuild app.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        Your design system is ready. Start building your next component.
+      </CardContent>
+    </Card>
+  )
+}
+
+export default App
+```
+
 </Steps>
 
 <div id="existing-rsbuild-project" className="scroll-mt-24" />
@@ -171,7 +203,7 @@ export default {
 
 If your project already has the `@/*` alias configured, skip this step.
 
-```ts title="tsconfig.json" showLineNumbers
+```ts title="tsconfig.json" showLineNumbers {3-6}
 {
   "compilerOptions": {
     "baseUrl": ".",
@@ -190,7 +222,7 @@ Install `@types/node` and update `rsbuild.config.ts` so Rsbuild can resolve the 
 pnpm add -D @types/node
 ```
 
-```typescript title="rsbuild.config.ts" showLineNumbers
+```typescript title="rsbuild.config.ts" showLineNumbers {1,7-11}
 import path from "path"
 import { defineConfig } from "@rsbuild/core"
 import { pluginReact } from "@rsbuild/plugin-react"
@@ -219,6 +251,22 @@ You can now start adding components to your project.
 
 ```bash
 npx shadcn@latest add button
+```
+
+The command above will add the `Button` component to your project. You can then import it like this:
+
+```tsx showLineNumbers title="src/App.tsx"
+import { Button } from "@/components/ui/button"
+
+function App() {
+  return (
+    <div className="flex min-h-svh flex-col items-center justify-center">
+      <Button>Click me</Button>
+    </div>
+  )
+}
+
+export default App
 ```
 
 </Steps>
