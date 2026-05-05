@@ -44,7 +44,7 @@ export function getFramework(template: string) {
 }
 
 // Frameworks that don't support the monorepo template.
-export const NO_MONOREPO_FRAMEWORKS = ["laravel"] as const
+export const NO_MONOREPO_FRAMEWORKS = ["laravel", "rsbuild"] as const
 
 // Build the full template value from a framework and monorepo flag.
 export function getTemplateValue(framework: string, monorepo: boolean) {
