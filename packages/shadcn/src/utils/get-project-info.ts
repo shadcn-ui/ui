@@ -58,7 +58,7 @@ export async function getProjectInfo(
     packageJson,
   ] = await Promise.all([
     fg.glob(
-      "**/{next,vite,astro,app}.config.*|gatsby-config.*|composer.json|react-router.config.*",
+      "**/{next,vite,astro,app,rsbuild}.config.*|gatsby-config.*|composer.json|react-router.config.*",
       {
         cwd,
         deep: 3,
@@ -155,6 +155,12 @@ export async function getProjectInfo(
   // We'll assume that it got caught by the Remix check above.
   if (configFiles.find((file) => file.startsWith("vite.config."))?.length) {
     type.framework = FRAMEWORKS["vite"]
+    return type
+  }
+
+  // Rsbuild.
+  if (configFiles.find((file) => file.startsWith("rsbuild.config."))?.length) {
+    type.framework = FRAMEWORKS["rsbuild"]
     return type
   }
 
