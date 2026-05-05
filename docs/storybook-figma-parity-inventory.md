@@ -1,8 +1,13 @@
 # Storybook ↔ Figma Visual Parity Inventory
 
-**Status:** snapshot as of 2026-05-05. Tracks Linear `JES-91`. See [`storybook-figma-parity-standard.md`](./storybook-figma-parity-standard.md) for the working standard each row in this inventory is being measured against.
+**Status:** snapshot updated 2026-05-05 after JES-92 merged. Tracks Linear `JES-91`. See [`storybook-figma-parity-standard.md`](./storybook-figma-parity-standard.md) for the working standard each row in this inventory is being measured against.
 
 This is the canonical list of every Lead component, its Figma source node, and its current Storybook parity status. New parity work picks rows from here in the recommended batch order at the bottom.
+
+## Recent updates
+
+- **2026-05-05 — JES-92 / Batch A merged** ([PR #46](https://github.com/jnanthak83/lead-design-system/pull/46), merge `55714fbc4`). Five components moved to 🟢: Separator, Progress, Skeleton, Alert, Badge. Three documented non-parity exceptions (all API-shape): Skeleton `Default`/`Card` caller compositions, Alert Icon slot, Badge Outline missing. See PR for full per-component delta.
+- **2026-05-05 — JES-90 / JES-91 merged.** This doc and the parity standard landed on `main`.
 
 ---
 
@@ -18,11 +23,11 @@ This is the canonical list of every Lead component, its Figma source node, and i
 | Component | Figma node | Production story | Experimental export | Parity stories | Status | Notes |
 |---|---|---|---|---|---|---|
 | **Accordion** | [`29:66202`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66202) (root) + [`29:66236`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66236) (item) | ✅ `Accordion.stories.tsx` | — | — | 🟠 | Compositional. Likely needs item-level parity story showing trigger states. |
-| **Alert** | [`29:66418`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66418) | ✅ `Alert.stories.tsx` | — | — | 🟠 | Inline status, not modal. Figma's Icon-boolean → React `icon?: ReactNode` is a decided exception (see `Alert.figma.tsx`). |
+| **Alert** | [`29:66418`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66418) | ✅ `Alert.stories.tsx` | — | ✅ `Figma parity (Default + Destructive)` | 🟢 | JES-92. Documented non-parity: Icon=true → caller-supplied `icon?: ReactNode` (API-CONSISTENCY §8.5). |
 | **AlertDialog** | [`29:66659`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66659) (symbol) + [`29:66660`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66660) (md) + [`29:66667`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66667) (sm) | ✅ `AlertDialog.stories.tsx` (4 stories) | ✅ `AlertDialog.figma-export.stories.tsx` | ✅ `Figma parity (md)`, `Figma parity (sm)` | 🟢 | **Reference pattern.** Decision doc `alert-dialog-primitive-decision.md`. Two non-parity exceptions: button order (decision §4), sm width (compact 360px vs Figma 512px). |
-| **Badge** | [`29:66938`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66938) | ✅ `Badge.stories.tsx` | ✅ `Badge.figma-export.stories.tsx` | — | 🟡 | Outline variant approximated in experimental story. Production parity stories not yet added; if the team wants production `variant="outline"`, that's an API decision PR first. |
+| **Badge** | [`29:66938`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66938) | ✅ `Badge.stories.tsx` | ✅ `Badge.figma-export.stories.tsx` | ✅ `Figma parity (Default / Secondary / Destructive / Verified)` | 🟢 | JES-92. Documented non-parity: Outline has no Lead variant (lives in experimental export only). |
 | **Button** | [`29:67711`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-67711) (root, see also `29:383`/`29:384`/`29:636` referenced in design context) | ✅ `Button.stories.tsx` | — | — | 🟠 | High-traffic component. Many variants (primary/secondary/outline/ghost/danger). Worth careful per-variant parity. |
-| **Card** | [`29:72255`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-72255) | ✅ `Card.stories.tsx` | ✅ `Card.figma-export.stories.tsx` | — | 🟡 | Compositional. Image-card variant approximated; Avatar component absent. |
+| **Card** | [`29:72255`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-72255) | ✅ `Card.stories.tsx` | ✅ `Card.figma-export.stories.tsx` | — | 🟠 | Compositional. Production parity story pending Batch C (JES-94). Experimental export still exists at `Experimental / Figma Export / Card` — image-card variant approximated; Avatar component absent. |
 | **Checkbox** | [`29:85556`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-85556) | ✅ `Checkbox.stories.tsx` | — | — | 🟠 | |
 | **Dialog** | [`29:91865`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-91865) | ✅ `Dialog.stories.tsx` | — | — | 🟠 | Distinct from AlertDialog. Stacked-footer-at-sm consistency rule already applied (PR #43). |
 | **DropdownMenu** | [`29:92788`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92788) (root), [`29:92680`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92680) (content), [`29:92735`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92735) (item), [`29:92802`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92802) (label), [`29:92856`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92856) (separator), [`29:92869`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92869) (sub-trigger) | ✅ `DropdownMenu.stories.tsx` | — | — | 🟠 | Highest-complexity inventory entry: variant-as-component-switch already documented in Code Connect mapping. Parity stories should mirror Default/Checkbox/Radio/Icon variants. |
@@ -30,20 +35,20 @@ This is the canonical list of every Lead component, its Figma source node, and i
 | **Input** | [`29:95030`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-95030) | ✅ `Input.stories.tsx` | — | — | 🟠 | |
 | **Label** | — (compositional; no standalone Figma node) | ✅ `Label.stories.tsx` | — | — | 🔵 | Same as Field — embedded labels exist within trigger/control variants but no standalone source node. |
 | **Popover** | [`29:96969`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-96969) | ✅ `Popover.stories.tsx` | — | — | 🟠 | Code Connect mapping is example-only (no Figma text/enum props). Parity story should mirror canonical positioning + arrow. |
-| **Progress** | [`29:97110`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-97110) | ✅ `Progress.stories.tsx` | — | — | 🟠 | Figma `Percent` enum (0/25/50/75/100) maps to React `value` per Code Connect mapping. |
+| **Progress** | [`29:97110`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-97110) | ✅ `Progress.stories.tsx` | — | ✅ `Figma parity (Percent variants)` | 🟢 | JES-92. No documented non-parity — Figma `Percent` enum is discrete subset of Lead's continuous `value`. |
 | **RadioGroup** | [`29:97236`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-97236) (item) | ✅ `RadioGroup.stories.tsx` | — | — | 🟠 | Figma node is item-level; group-level Figma node may not exist (similar to Field/Label). |
 | **Select** | [`29:98157`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-98157) (trigger/control), [`29:97998`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-97998) (item), [`29:97936`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-97936) (label), [`29:98193`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-98193) (menu) | ✅ `Select.stories.tsx` | — | — | 🟠 | Compositional with multiple Figma nodes. Trigger/control node represents the *whole labeled field*, not just the button — see `Select.figma.tsx` for the mapping rationale. |
-| **Separator** | [`29:98862`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-98862) | ✅ `Separator.stories.tsx` | — | — | 🟠 | Cleanest 1:1 mapping in the inventory. Likely a fast parity story. |
-| **Skeleton** | [`29:103198`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-103198) | ✅ `Skeleton.stories.tsx` | — | — | 🟠 | Figma `Default`/`Card` variants intentionally unmapped (Code Connect mapping documents this). |
+| **Separator** | [`29:98862`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-98862) | ✅ `Separator.stories.tsx` | — | ✅ `Figma parity (horizontal + vertical)` | 🟢 | JES-92. Clean 1:1 mapping; no documented non-parity. |
+| **Skeleton** | [`29:103198`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-103198) | ✅ `Skeleton.stories.tsx` | — | ✅ `Figma parity (Default / Card / Text compositions)` | 🟢 | JES-92. Documented non-parity: Figma `Default`/`Card` are caller-side compositions of Lead's `text`/`rect`/`circle` shape primitives. |
 | **Switch** | [`29:103697`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-103697) | ✅ `Switch.stories.tsx` | — | — | 🟠 | |
 | **Tabs** | [`29:105685`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-105685) (root), [`29:105668`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-105668) (trigger) | ✅ `Tabs.stories.tsx` | — | — | 🟠 | |
 | **Tooltip** | [`29:107066`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-107066) | ✅ `Tooltip.stories.tsx` | — | — | 🟠 | Side enum maps cleanly. |
 
-**Summary counts:**
+**Summary counts (after JES-92 / Batch A):**
 
-- 🟢 Done: **1** (AlertDialog)
-- 🟡 Has experimental: **2** (Badge, Card)
-- 🟠 Production-only: **16** (Accordion, Alert, Button, Checkbox, Dialog, DropdownMenu, Input, Popover, Progress, RadioGroup, Select, Separator, Skeleton, Switch, Tabs, Tooltip)
+- 🟢 Done: **6** (AlertDialog, Alert, Badge, Progress, Separator, Skeleton)
+- 🟡 Has experimental: **0** (Card moved to 🟠 — its experimental export still exists, but its production-parity stories are now scheduled in Batch C / JES-94 alongside other compositional content components, so it's tracked under the same status as the other Batch C rows)
+- 🟠 Production-only: **13** (Accordion, Button, Card, Checkbox, Dialog, DropdownMenu, Input, Popover, RadioGroup, Select, Switch, Tabs, Tooltip)
 - 🔵 Blocked: **2** (Field, Label — intentional, awaiting Figma source nodes)
 
 ---
@@ -54,18 +59,9 @@ Each batch is a Linear issue (JES-92 through JES-95). Batch order is set by **ri
 
 Inside each batch, components are independently ship-able as separate PRs — the batching is for prioritization, not bundling.
 
-### Batch A — JES-92: visual primitives (lowest risk)
+### Batch A — JES-92: visual primitives ✅ DONE
 
-Single-element components with simple Figma surface and no compositional substructure. Likely fastest parity wins; serves as the canonical pattern for non-AlertDialog parity.
-
-| Component | Figma node | Reason |
-|---|---|---|
-| **Separator** | `29:98862` | Cleanest 1:1 mapping. Single orientation enum. |
-| **Skeleton** | `29:103198` | Figma `Default`/`Card` variants intentionally unmapped — well-documented exceptions, easy parity story. |
-| **Progress** | `29:97110` | Numeric value maps from Percent enum. Bar visual is straightforward. |
-| **Badge** | `29:66938` | Has experimental export already (Outline approximation documented). Convert into production parity stories with the documented exception. |
-
-**Estimated:** 4 PRs, each Storybook-stories-only.
+Shipped 2026-05-05 in [PR #46](https://github.com/jnanthak83/lead-design-system/pull/46) (merge `55714fbc4`). Five components moved to 🟢: Separator, Progress, Skeleton, Alert, Badge. Three documented non-parity exceptions (all API-shape, all permanent design-system choices): Skeleton `Default`/`Card` caller compositions, Alert Icon slot, Badge Outline missing. The batch shipped as a single Storybook-only PR rather than the originally-estimated 4-5 separate PRs — bundle-by-batch turned out lower-overhead than per-component PRs at this scope.
 
 ### Batch B — JES-93: form controls (low risk, likely no decision docs)
 
