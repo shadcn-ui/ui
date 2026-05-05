@@ -437,6 +437,44 @@ describe("shadcn add", () => {
     ).toBe(false)
   }, 300000)
 
+  it("should prefer registry target aliases over the file type in monorepos", async () => {
+    const fixturePath = await createFixtureTestDirectory(
+      "vite-monorepo-imports"
+    )
+
+    const result = await npxShadcn(
+      fixturePath,
+      [
+        "add",
+        "../../fixtures/registry/example-target-alias-type-mismatch.json",
+        "-c",
+        "apps/web",
+        "--yes",
+      ],
+      { timeout: 300000 }
+    )
+
+    expectCommandSuccess(result)
+    expect(
+      await fs.pathExists(
+        path.join(fixturePath, "apps/web/src/lib/target-from-ui-type.ts")
+      )
+    ).toBe(true)
+    expect(
+      await fs.pathExists(
+        path.join(fixturePath, "packages/ui/src/lib/target-from-ui-type.ts")
+      )
+    ).toBe(false)
+    expect(
+      await fs.pathExists(
+        path.join(
+          fixturePath,
+          "packages/ui/src/components/target-from-ui-type.ts"
+        )
+      )
+    ).toBe(false)
+  }, 300000)
+
   it("should preview monorepo adds without writing files", async () => {
     const fixturePath = await createFixtureTestDirectory(
       "vite-monorepo-imports"
