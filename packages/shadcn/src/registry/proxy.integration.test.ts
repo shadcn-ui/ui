@@ -143,19 +143,15 @@ beforeAll(async () => {
   })
   originUrl = await listen(originServer)
 
+  // The test proxy is CONNECT-only — it tunnels TCP via the `connect` handler
+  // below. Direct HTTP requests (treating the proxy as an origin server) are
+  // not a path undici exercises, so we reject them with 502 rather than
+  // returning content that no test would assert on.
   proxyServer = createServer((req, res) => {
     proxyHits.push({ url: req.url ?? "", method: req.method ?? "" })
-    const body = JSON.stringify({ from: "proxy-direct" })
-    res.writeHead(200, {
-      "Content-Type": "application/json",
-      "Content-Length": Buffer.byteLength(body).toString(),
-      Connection: "close",
-    })
-    res.end(body)
+    res.writeHead(502, { Connection: "close" })
+    res.end("Bad Gateway: this proxy only supports CONNECT tunneling")
   })
-  // Real CONNECT-tunneling proxy: when undici sends `CONNECT host:port`, open
-  // a TCP socket to that destination and pipe bytes both ways. This matches
-  // real corporate proxies and undici's default proxy behavior.
   proxyServer.on("connect", (req, clientSocket, head) => {
     proxyHits.push({ url: req.url ?? "", method: "CONNECT" })
     const [host, portStr] = (req.url ?? "").split(":")
@@ -220,6 +216,17 @@ afterEach(() => {
   }
 })
 
+describe("test proxy server contract", () => {
+  // Documents the test proxy's intended behavior so future edits to the
+  // request handler don't silently introduce a code path that no test
+  // exercises. The proxy implements CONNECT tunneling only — direct HTTP
+  // requests to it (treating it as an origin server) are not supported.
+  it("responds 502 to direct (non-CONNECT) HTTP requests", async () => {
+    const response = await fetch(`${proxyUrl}/anything`)
+    expect(response.status).toBe(502)
+  })
+})
+
 describe("proxy dispatcher integration", () => {
   it("makes direct requests when no proxy env is set", async () => {
     const dispatcher = createProxyDispatcher()
@@ -269,8 +276,8 @@ describe("proxy dispatcher integration", () => {
     const response = await fetch(`${originUrl}/test.json`, { dispatcher })
     const body = (await response.json()) as { from: string }
     expect(body.from).toBe("origin")
-    expect(proxyHits).toHaveLength(1)
-    expect(proxyHits[0].method).toBe("CONNECT")
+    const originHost = new URL(originUrl).host
+    expect(proxyHits).toEqual([{ url: originHost, method: "CONNECT" }])
   })
 
   describe("SOCKS via ALL_PROXY", () => {
