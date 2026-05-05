@@ -209,3 +209,121 @@ export const WithItemPreview: Story = {
     },
   },
 }
+
+/* ── Figma parity stories (JES-89) ─────────────────────────────────
+ *
+ * The two stories below mirror the Figma `15 Lead UI - Alert Dialog`
+ * page (45:61255) verbatim, so reviewers can compare Storybook against
+ * the source-of-truth design without translation. Use these as the
+ * pixel-comparison stories; the destructive/save stories above are
+ * meaningful in-context usage.
+ */
+
+export const FigmaParityMd: Story = {
+  name: "Figma parity (md)",
+  render: () => (
+    <AlertDialog defaultOpen>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Title Text</AlertDialogTitle>
+          <AlertDialogDescription>
+            This is an alert dialog description.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        {/*
+          Figma's md variant includes a nested shaded panel with
+          a duplicated title + description. In real use this panel
+          previews the specific item being acted on — see the
+          `WithItemPreview` story for a meaningful example. Here it
+          mirrors the Figma mockup verbatim for visual comparison.
+        */}
+        <div
+          style={{
+            padding: 16,
+            background: "var(--lead-color-surface-muted)",
+            border: "1px solid var(--lead-color-border-default)",
+            borderRadius: "var(--lead-radius-md)",
+            display: "flex",
+            flexDirection: "column",
+            gap: 8,
+          }}
+        >
+          <strong style={{ fontSize: 16 }}>Title Text</strong>
+          <span style={{ fontSize: 14, color: "var(--lead-color-text-muted)" }}>
+            This is an alert dialog description.
+          </span>
+        </div>
+        <AlertDialogFooter>
+          <AlertDialogCancel asChild>
+            <Button variant="outline">Cancel</Button>
+          </AlertDialogCancel>
+          <AlertDialogAction asChild>
+            <Button variant="primary">Continue</Button>
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Mirrors Figma `15 Lead UI - Alert Dialog` md breakpoint " +
+          "(symbol 29:66660) as closely as the production primitives " +
+          "allow. Open the source: " +
+          "https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66660",
+      },
+    },
+  },
+}
+
+export const FigmaParitySm: Story = {
+  name: "Figma parity (sm)",
+  render: () => (
+    <AlertDialog defaultOpen>
+      <AlertDialogContent size="sm">
+        <AlertDialogHeader>
+          <AlertDialogTitle>Title Text</AlertDialogTitle>
+          <AlertDialogDescription>
+            This is an alert dialog description.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          {/*
+            Production renders Cancel first, primary action last, on
+            every breakpoint — see decision §4. Figma's sm mockup
+            puts Continue first; production deliberately deviates per
+            the Cancel-first standardization decision. This is the
+            documented non-parity exception.
+          */}
+          <AlertDialogCancel asChild>
+            <Button variant="outline">Cancel</Button>
+          </AlertDialogCancel>
+          <AlertDialogAction asChild>
+            <Button variant="primary">Continue</Button>
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Mirrors Figma `15 Lead UI - Alert Dialog` sm breakpoint " +
+          "(symbol 29:66667). Visual differences from the source: " +
+          "**(1) header text auto-centers** at sm via the new " +
+          "AlertDialog-scoped CSS rule (matches Figma); **(2) button " +
+          "order is Cancel → primary** rather than Figma's primary → " +
+          "Cancel — this is the documented non-parity exception per " +
+          "the AlertDialog decision doc §4 (Cancel-first " +
+          "standardization across breakpoints for keyboard tab-order " +
+          "and macOS/Stripe/Linear convention alignment); **(3) sm " +
+          "max-width remains Lead Dialog's 360px** rather than " +
+          "Figma's 512px — keeping AlertDialog's primitives aligned " +
+          "with Dialog's size enum. Open the source: " +
+          "https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66667",
+      },
+    },
+  },
+}

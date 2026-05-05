@@ -106,7 +106,20 @@ export const AlertDialogContent = forwardRef<
   { size = "md", withOverlay = true, className, children, ...rest },
   ref
 ) {
-  const classes = ["lead-Dialog__content", className].filter(Boolean).join(" ")
+  // Two classes: `lead-Dialog__content` provides the shared visual
+  // chrome (sizing, surface, footer auto-stacking at sm) — `lead-
+  // AlertDialog__content` adds the AlertDialog-only sm centered-text
+  // treatment that matches the Figma source. Keeping these as separate
+  // classes (rather than promoting the centering into Dialog) prevents
+  // generic Dialog instances from inheriting AlertDialog-specific
+  // visual choices.
+  const classes = [
+    "lead-Dialog__content",
+    "lead-AlertDialog__content",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ")
   return (
     <RadixAlertDialog.Portal>
       {withOverlay && (

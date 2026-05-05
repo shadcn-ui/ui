@@ -1,12 +1,29 @@
 /*
- * AlertDialog visual styles are inherited entirely from Dialog.css —
+ * AlertDialog visual styles mostly inherit from Dialog.css —
  * the lead-Dialog__overlay, lead-Dialog__content, lead-DialogHeader,
  * lead-DialogTitle, lead-DialogDescription, and lead-DialogFooter
  * classes do double duty for both Dialog and AlertDialog by design.
  *
- * This file exists so AlertDialog.tsx can co-locate any
- * AlertDialog-specific style rules without polluting Dialog.css. There
- * are none today; the auto-stacked-footer rule (decision §2) lives in
- * Dialog.css because it applies to both component families and Dialog
- * is the canonical home for shared dialog chrome.
+ * AlertDialog-specific rules below are scoped to the additional
+ * `lead-AlertDialog__content` class added to AlertDialogContent. This
+ * prevents generic Dialog instances from inheriting AlertDialog-only
+ * visual choices.
+ *
+ * The shared auto-stacked-footer rule (decision §2) lives in
+ * Dialog.css because it applies to both component families.
  */
+
+/*
+ * sm breakpoint — center-align title and description.
+ *
+ * Figma source-of-truth (page 45:61255, sm symbol 29:66667) centers
+ * the header text at the small breakpoint, distinguishing the
+ * compact alert presentation from the left-aligned md variant. This
+ * rule matches that visual choice without affecting generic Dialog,
+ * which keeps left alignment at every size.
+ */
+.lead-AlertDialog__content[data-size="sm"] .lead-DialogHeader,
+.lead-AlertDialog__content[data-size="sm"] .lead-DialogTitle,
+.lead-AlertDialog__content[data-size="sm"] .lead-DialogDescription {
+  text-align: center;
+}
