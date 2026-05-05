@@ -2,12 +2,12 @@ import path from "path"
 import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 import { describe, expect, test } from "vitest"
 
+import { resolvePackageImport } from "../../src/utils/package-imports"
 import {
   isLocalAliasImport,
   resolveImport,
   resolveImportWithMetadata,
 } from "../../src/utils/resolve-import"
-import { resolvePackageImport } from "../../src/utils/package-imports"
 
 test("resolve import", async () => {
   expect(
@@ -94,7 +94,10 @@ describe("resolve package imports", () => {
   }
 
   test("resolves wildcard imports that preserve extensions", async () => {
-    const result = await resolveImportWithMetadata("#components/button.tsx", config)
+    const result = await resolveImportWithMetadata(
+      "#components/button.tsx",
+      config
+    )
 
     expect(result).toEqual({
       path: path.resolve(cwd, "src/components/button.tsx"),
@@ -106,7 +109,10 @@ describe("resolve package imports", () => {
   })
 
   test("resolves wildcard imports that strip extensions", async () => {
-    const result = await resolveImportWithMetadata("#components-ext/button", config)
+    const result = await resolveImportWithMetadata(
+      "#components-ext/button",
+      config
+    )
 
     expect(result).toEqual({
       path: path.resolve(cwd, "src/components/button.tsx"),
@@ -153,6 +159,36 @@ describe("resolve package imports", () => {
       matchedTarget: "./src/components/ui",
       emitMode: "strip_extension",
     })
+  })
+
+  test("resolves @/ via tsconfig paths and #/ via package imports in a mixed project", async () => {
+    const tsconfigPath = await resolveImportWithMetadata(
+      "@/components/button",
+      {
+        absoluteBaseUrl: cwd,
+        cwd,
+        paths: {
+          "@/*": ["./src/*"],
+        },
+      }
+    )
+    expect(tsconfigPath?.source).toBe("tsconfig_paths")
+    expect(tsconfigPath?.path).toBe(path.resolve(cwd, "src/components/button"))
+
+    const packageImportPath = await resolveImportWithMetadata(
+      "#components/button.tsx",
+      {
+        absoluteBaseUrl: cwd,
+        cwd,
+        paths: {
+          "@/*": ["./src/*"],
+        },
+      }
+    )
+    expect(packageImportPath?.source).toBe("package_imports")
+    expect(packageImportPath?.path).toBe(
+      path.resolve(cwd, "src/components/button.tsx")
+    )
   })
 })
 

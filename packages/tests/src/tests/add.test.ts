@@ -8,6 +8,7 @@ import {
   getRegistryUrl,
   npxShadcn,
 } from "../utils/helpers"
+import { configureRegistries, createRegistryServer } from "../utils/registry"
 
 // Note: The tests here intentionally do not use a mocked registry.
 // We test this against the real registry.
@@ -486,6 +487,146 @@ describe("shadcn add", () => {
     expect(
       await fs.pathExists(path.join(fixturePath, "components/ui/card.tsx"))
     ).toBe(false)
+  })
+
+  it("should add component to a single-package #imports project", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-imports")
+
+    const result = await npxShadcn(fixturePath, ["add", "button", "--yes"])
+
+    expectCommandSuccess(result)
+
+    const buttonPath = path.join(fixturePath, "src/components/ui/button.tsx")
+    expect(await fs.pathExists(buttonPath)).toBe(true)
+
+    const buttonContent = await fs.readFile(buttonPath, "utf-8")
+    expect(buttonContent).toContain('import { cn } from "#utils"')
+    expect(buttonContent).not.toContain("@/lib/utils")
+    expect(buttonContent).not.toContain("@/registry/")
+  })
+
+  it("should add multi-file block to a single-package #imports project", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-imports")
+
+    const result = await npxShadcn(fixturePath, ["add", "login-03", "--yes"])
+
+    expectCommandSuccess(result)
+
+    const loginFormPath = path.join(
+      fixturePath,
+      "src/components/login-form.tsx"
+    )
+    const buttonPath = path.join(fixturePath, "src/components/ui/button.tsx")
+    expect(await fs.pathExists(loginFormPath)).toBe(true)
+    expect(await fs.pathExists(buttonPath)).toBe(true)
+
+    const loginFormContent = await fs.readFile(loginFormPath, "utf-8")
+    expect(loginFormContent).toContain('import { cn } from "#utils"')
+    expect(loginFormContent).toContain(
+      'import { Button } from "#components/ui/button"'
+    )
+    expect(loginFormContent).not.toContain("@/registry/")
+  })
+
+  it("should preview --dry-run for a single-package #imports project", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-imports")
+
+    const result = await npxShadcn(fixturePath, [
+      "add",
+      "button",
+      "--dry-run",
+      "--yes",
+    ])
+
+    expectCommandSuccess(result)
+    expect(result.stdout).toContain("shadcn add button (dry run)")
+    expect(result.stdout).toContain("src/components/ui/button.tsx")
+    expect(result.stdout).toContain("Run without --dry-run to apply.")
+    expect(
+      await fs.pathExists(
+        path.join(fixturePath, "src/components/ui/button.tsx")
+      )
+    ).toBe(false)
+  })
+
+  it("should show --diff no-op for identical content in a #imports project", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-imports")
+
+    const setup = await npxShadcn(fixturePath, ["add", "button", "--yes"])
+    expectCommandSuccess(setup)
+
+    const result = await npxShadcn(fixturePath, [
+      "add",
+      "button",
+      "--diff",
+      "button",
+      "--yes",
+    ])
+
+    expectCommandSuccess(result)
+    expect(result.stdout).toContain("shadcn add button (dry run)")
+    expect(result.stdout).toContain("src/components/ui/button.tsx (skip)")
+    expect(result.stdout).toContain("No changes.")
+  })
+
+  it("should add namespaced registry item to a #imports project", async () => {
+    const registry = await createRegistryServer(
+      [
+        {
+          name: "fancy-card",
+          type: "registry:component",
+          registryDependencies: ["button"],
+          files: [
+            {
+              path: "components/fancy-card.tsx",
+              type: "registry:component",
+              content: `import { Button } from "@/registry/new-york-v4/ui/button"
+import { cn } from "@/lib/utils"
+
+export function FancyCard() {
+  return <Button className={cn("rounded-lg")}>Fancy</Button>
+}
+`,
+            },
+          ],
+        },
+      ],
+      {
+        port: 4454,
+      }
+    )
+    await registry.start()
+
+    try {
+      const fixturePath = await createFixtureTestDirectory("next-app-imports")
+      await configureRegistries(fixturePath, {
+        "@one": "http://localhost:4454/r/{name}",
+      })
+
+      const result = await npxShadcn(fixturePath, [
+        "add",
+        "@one/fancy-card",
+        "--yes",
+      ])
+
+      expectCommandSuccess(result)
+
+      const cardPath = path.join(fixturePath, "src/components/fancy-card.tsx")
+      const buttonPath = path.join(fixturePath, "src/components/ui/button.tsx")
+
+      expect(await fs.pathExists(cardPath)).toBe(true)
+      expect(await fs.pathExists(buttonPath)).toBe(true)
+
+      const cardContent = await fs.readFile(cardPath, "utf-8")
+      expect(cardContent).toContain(
+        'import { Button } from "#components/ui/button"'
+      )
+      expect(cardContent).toContain('import { cn } from "#utils"')
+      expect(cardContent).not.toContain("@/registry/")
+      expect(cardContent).not.toContain("@/lib/utils")
+    } finally {
+      await registry.stop()
+    }
   })
 
   it("should add at-property", async () => {

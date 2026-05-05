@@ -52,6 +52,7 @@ export async function updateFiles(
     isRemote?: boolean
     isWorkspace?: boolean
     path?: string
+    plannedFiles?: RegistryItem["files"]
     supportedFontMarkers?: string[]
   }
 ) {
@@ -81,11 +82,15 @@ export async function updateFiles(
       : Promise.resolve(undefined),
   ])
   const tsConfig = loadConfig(config.resolvedPaths.cwd)
-  const plannedFilePaths = getPlannedFilePaths(files, config, {
-    isSrcDir: projectInfo?.isSrcDir,
-    framework: projectInfo?.framework.name,
-    path: options.path,
-  })
+  const plannedFilePaths = getPlannedFilePaths(
+    options.plannedFiles ?? files,
+    config,
+    {
+      isSrcDir: projectInfo?.isSrcDir,
+      framework: projectInfo?.framework.name,
+      path: options.path,
+    }
+  )
   const importRewriteProject = new Project({
     compilerOptions: {},
   })
@@ -286,7 +291,7 @@ export async function updateFiles(
   }
 
   const allFiles = [...filesCreated, ...filesUpdated, ...filesSkipped]
-  const updatedFiles = await resolveImports(allFiles, config)
+  const updatedFiles = await resolveImports(allFiles, config, plannedFilePaths)
 
   // Let's update filesUpdated with the updated files.
   filesUpdated.push(...updatedFiles)
@@ -544,7 +549,11 @@ export function resolvePageTarget(
   return ""
 }
 
-async function resolveImports(filePaths: string[], config: Config) {
+async function resolveImports(
+  filePaths: string[],
+  config: Config,
+  plannedFilePaths: string[] = filePaths
+) {
   const project = new Project({
     compilerOptions: {},
   })
@@ -582,7 +591,7 @@ async function resolveImports(filePaths: string[], config: Config) {
     const rewrittenContent = await rewriteResolvedImportsInContent({
       config,
       content,
-      filePaths,
+      filePaths: plannedFilePaths,
       project,
       projectInfo,
       resolvedPath,
