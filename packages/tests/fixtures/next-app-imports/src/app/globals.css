@@ -1,81 +1,16 @@
----
-title: Manual Installation
-description: Add dependencies to your project manually.
----
-
-<Steps>
-
-### Add Tailwind CSS
-
-Components are styled using Tailwind CSS. You need to install Tailwind CSS in your project.
-
-[Follow the Tailwind CSS installation instructions to get started.](https://tailwindcss.com/docs/installation)
-
-### Add dependencies
-
-Add the following dependencies to your project:
-
-```bash
-npm install shadcn class-variance-authority clsx tailwind-merge lucide-react tw-animate-css
-```
-
-### Configure import aliases
-
-Choose one of the following alias setups.
-
-#### Option A: `tsconfig.json` paths
-
-```json {3-6} title="tsconfig.json" showLineNumbers
-{
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    }
-  }
-}
-```
-
-#### Option B: `package.json#imports`
-
-```json title="package.json" showLineNumbers
-{
-  "imports": {
-    "#components/*": "./src/components/*.tsx",
-    "#lib/*": "./src/lib/*.ts",
-    "#hooks/*": "./src/hooks/*.ts"
-  }
-}
-```
-
-```json title="tsconfig.json" showLineNumbers
-{
-  "compilerOptions": {
-    "moduleResolution": "bundler",
-    "resolvePackageJsonImports": true
-  }
-}
-```
-
-The `@` alias is a preference. You can use other aliases if you want. If you
-use `package.json#imports`, keep the matching alias roots in `components.json`.
-See the <Link href="/docs/package-imports">package imports guide</Link> for
-framework-specific setup.
-
-### Configure styles
-
-Add the following to your styles/globals.css file. You can learn more about using CSS variables for theming in the [theming section](/docs/theming).
-
-<CodeCollapsibleWrapper>
-
-```css showLineNumbers title="src/styles/globals.css"
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -91,7 +26,6 @@ Add the following to your styles/globals.css file. You can learn more about usin
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -100,13 +34,6 @@ Add the following to your styles/globals.css file. You can learn more about usin
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -194,65 +121,3 @@ Add the following to your styles/globals.css file. You can learn more about usin
     @apply bg-background text-foreground;
   }
 }
-```
-
-</CodeCollapsibleWrapper>
-
-### Add a cn helper
-
-```ts showLineNumbers title="lib/utils.ts"
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
-```
-
-### Create a `components.json` file
-
-Create a `components.json` file in the root of your project.
-
-```json title="components.json" showLineNumbers
-{
-  "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "radix-nova",
-  "rsc": false,
-  "tsx": true,
-  "tailwind": {
-    "config": "",
-    "css": "src/styles/globals.css",
-    "baseColor": "neutral",
-    "cssVariables": true,
-    "prefix": ""
-  },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils",
-    "ui": "@/components/ui",
-    "lib": "@/lib",
-    "hooks": "@/hooks"
-  },
-  "iconLibrary": "lucide"
-}
-```
-
-If you're using `package.json#imports`, use the corresponding `#...` aliases instead:
-
-```json title="components.json" showLineNumbers
-{
-  "aliases": {
-    "components": "#components",
-    "utils": "#lib/utils",
-    "ui": "#components/ui",
-    "lib": "#lib",
-    "hooks": "#hooks"
-  }
-}
-```
-
-### That's it
-
-You can now start adding components to your project.
-
-</Steps>

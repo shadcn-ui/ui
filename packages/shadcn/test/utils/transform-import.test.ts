@@ -2,8 +2,7 @@ import { expect, test } from "vitest"
 
 import { transform } from "../../src/utils/transformers"
 
-
-test('transform nested workspace folder for utils, website/src/utils', async () => {
+test("transform nested workspace folder for utils, website/src/utils", async () => {
   expect(
     await transform({
       filename: "test.ts",
@@ -31,7 +30,6 @@ test('transform nested workspace folder for utils, website/src/utils', async () 
           import { cn } from "website/src/utils"
         "
   `)
-
 })
 
 test.each([
@@ -57,25 +55,24 @@ test.each([
     buttonImport: `import { Button } from "website/src/components/ui/button"`,
     utilsImport: `import { cn } from "website/src/lib/utils"`,
   },
-])("transform import with non-sigil aliases: $name", async ({
-  aliases,
-  buttonImport,
-  utilsImport,
-}) => {
-  const result = await transform({
-    filename: "test.ts",
-    raw: `import { Button } from "@/registry/new-york/ui/button"
+])(
+  "transform import with non-sigil aliases: $name",
+  async ({ aliases, buttonImport, utilsImport }) => {
+    const result = await transform({
+      filename: "test.ts",
+      raw: `import { Button } from "@/registry/new-york/ui/button"
 import { cn } from "@/lib/utils"
 `,
-    config: {
-      tsx: true,
-      aliases,
-    },
-  })
+      config: {
+        tsx: true,
+        aliases,
+      },
+    })
 
-  expect(result).toContain(buttonImport)
-  expect(result).toContain(utilsImport)
-})
+    expect(result).toContain(buttonImport)
+    expect(result).toContain(utilsImport)
+  }
+)
 
 test("transform import", async () => {
   expect(
@@ -589,6 +586,64 @@ async function loadMultiple() {
       },
     })
   ).toMatchSnapshot()
+})
+
+test("does not rewrite foreign scoped package imports when project uses # aliases", async () => {
+  const result = await transform({
+    filename: "test.tsx",
+    raw: `import { Analytics } from "@vercel/analytics/react"
+import posthog from "posthog-js"
+import { motion } from "motion/react"
+import { Button } from "@/registry/new-york-v4/ui/button"
+`,
+    config: {
+      tsx: true,
+      aliases: {
+        components: "#components",
+        ui: "#components/ui",
+        utils: "#utils",
+        lib: "#lib",
+        hooks: "#hooks",
+      },
+    },
+  })
+
+  expect(result).toContain(
+    `import { Analytics } from "@vercel/analytics/react"`
+  )
+  expect(result).toContain(`import posthog from "posthog-js"`)
+  expect(result).toContain(`import { motion } from "motion/react"`)
+  expect(result).toContain(`import { Button } from "#components/ui/button"`)
+})
+
+test("does not rewrite workspace package exports when project uses # aliases", async () => {
+  const result = await transform({
+    filename: "test.tsx",
+    raw: `import { Card } from "@workspace/ui/components/card"
+import { useTheme } from "@workspace/ui/hooks/use-theme"
+import { Button } from "@/registry/new-york-v4/ui/button"
+`,
+    config: {
+      tsx: true,
+      aliases: {
+        components: "#components",
+        ui: "@workspace/ui/components",
+        utils: "@workspace/ui/lib/utils",
+        lib: "#lib",
+        hooks: "#hooks",
+      },
+    },
+  })
+
+  expect(result).toContain(
+    `import { Card } from "@workspace/ui/components/card"`
+  )
+  expect(result).toContain(
+    `import { useTheme } from "@workspace/ui/hooks/use-theme"`
+  )
+  expect(result).toContain(
+    `import { Button } from "@workspace/ui/components/button"`
+  )
 })
 
 test("transform re-exports with dynamic imports", async () => {
