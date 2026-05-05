@@ -7,7 +7,7 @@ import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { Command } from "commander"
 import fs from "fs-extra"
-import prompts from "prompts"
+import prompts from "@/src/utils/prompts"
 import { z } from "zod"
 
 const addOptionsSchema = z.object({
