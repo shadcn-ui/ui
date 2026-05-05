@@ -40,6 +40,9 @@ import { z } from "zod"
 
 const CODE_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx"]
 const NON_ALIAS_RESOLVED_PATH_KEYS = new Set(["tailwindConfig", "tailwindCss"])
+const TARGET_ALIAS_KEYS = ["components", "ui", "lib", "hooks"] as const
+
+type TargetAliasKey = (typeof TARGET_ALIAS_KEYS)[number]
 
 export async function updateFiles(
   files: RegistryItem["files"],
@@ -412,6 +415,15 @@ export function resolveFilePath(
     }
 
     let target = file.target
+    const aliasTarget = resolveAliasTarget(target, config)
+
+    if (aliasTarget?.resolvedPath) {
+      return aliasTarget.resolvedPath
+    }
+
+    if (aliasTarget?.target) {
+      target = aliasTarget.target
+    }
 
     if (file.type === "registry:page") {
       target = resolvePageTarget(target, options.framework)
@@ -429,6 +441,42 @@ export function resolveFilePath(
 
   const relativePath = resolveNestedFilePath(file.path, targetDir)
   return path.join(targetDir, relativePath)
+}
+
+function resolveAliasTarget(target: string, config: Config) {
+  const match = target.match(/^@([^/]+)\/(.+)$/)
+
+  if (!match) {
+    return null
+  }
+
+  const [, aliasKey, targetPath] = match
+
+  if (!isTargetAliasKey(aliasKey)) {
+    return {
+      target: `${aliasKey}/${targetPath}`,
+    }
+  }
+
+  const aliasRoot = path.resolve(config.resolvedPaths[aliasKey])
+  const resolvedPath = path.resolve(aliasRoot, targetPath)
+
+  if (
+    resolvedPath !== aliasRoot &&
+    !resolvedPath.startsWith(`${aliasRoot}${path.sep}`)
+  ) {
+    throw new Error(
+      `Invalid target path "${target}". Target paths using @${aliasKey}/ must stay within the ${aliasKey} alias root.`
+    )
+  }
+
+  return {
+    resolvedPath,
+  }
+}
+
+function isTargetAliasKey(aliasKey: string): aliasKey is TargetAliasKey {
+  return TARGET_ALIAS_KEYS.includes(aliasKey as TargetAliasKey)
 }
 
 function resolveFileTargetDirectory(

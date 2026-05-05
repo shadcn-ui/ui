@@ -254,36 +254,52 @@ async function addWorkspaceComponents(
     silent: true,
   })
 
-  // 5. Group files by their type to determine target config and update files.
-  const filesByType = new Map<string, typeof tree.files>()
-
-  for (const file of tree.files ?? []) {
-    const type = file.type || "registry:ui"
-    if (!filesByType.has(type)) {
-      filesByType.set(type, [])
-    }
-    filesByType.get(type)!.push(file)
-  }
-
-  const FILE_TYPE_TO_CONFIG_KEY: Record<string, string> = {
+  // 5. Group files by their target config and update files.
+  const TARGET_ALIAS_KEYS = ["components", "ui", "lib", "hooks"] as const
+  type TargetAliasKey = (typeof TARGET_ALIAS_KEYS)[number]
+  const filesByTarget = new Map<TargetAliasKey, typeof tree.files>()
+  const FILE_TYPE_TO_CONFIG_KEY: Record<string, TargetAliasKey> = {
     "registry:ui": "ui",
     "registry:hook": "hooks",
     "registry:lib": "lib",
   }
-  const getTargetConfigForType = (type: string) => {
-    const configKey = FILE_TYPE_TO_CONFIG_KEY[type]
+  const isTargetAliasKey = (key: string): key is TargetAliasKey => {
+    return TARGET_ALIAS_KEYS.includes(key as TargetAliasKey)
+  }
+  const getTargetAliasKey = (target?: string) => {
+    const match = target?.match(/^@([^/]+)\//)
+    return match && isTargetAliasKey(match[1]) ? match[1] : null
+  }
+  const getTargetConfigKeyForFile = (
+    file: z.infer<typeof registryItemFileSchema>
+  ) => {
+    return (
+      getTargetAliasKey(file.target) ??
+      FILE_TYPE_TO_CONFIG_KEY[file.type || "registry:ui"] ??
+      "components"
+    )
+  }
+  const getTargetConfigForKey = (configKey: TargetAliasKey) => {
     return configKey && workspaceConfig[configKey]
       ? workspaceConfig[configKey]
       : config
   }
 
-  // Process each type of component with its appropriate target config.
-  for (const type of Array.from(filesByType.keys())) {
-    const typeFiles = filesByType.get(type)!
-    const targetConfig = getTargetConfigForType(type)
+  for (const file of tree.files ?? []) {
+    const targetKey = getTargetConfigKeyForFile(file)
+    if (!filesByTarget.has(targetKey)) {
+      filesByTarget.set(targetKey, [])
+    }
+    filesByTarget.get(targetKey)!.push(file)
+  }
+
+  // Process each target config with its appropriate workspace config.
+  for (const targetKey of Array.from(filesByTarget.keys())) {
+    const targetFiles = filesByTarget.get(targetKey)!
+    const targetConfig = getTargetConfigForKey(targetKey)
     const plannedFiles = (tree.files ?? []).filter((file) => {
-      const fileTargetConfig = getTargetConfigForType(
-        file.type || "registry:ui"
+      const fileTargetConfig = getTargetConfigForKey(
+        getTargetConfigKeyForFile(file)
       )
 
       return (
@@ -301,8 +317,8 @@ async function addWorkspaceComponents(
         targetConfig.resolvedPaths.cwd
       )) ?? targetConfig.resolvedPaths.cwd
 
-    // Update files for this type.
-    const files = await updateFiles(typeFiles, targetConfig, {
+    // Update files for this target config.
+    const files = await updateFiles(targetFiles, targetConfig, {
       overwrite: options.overwrite,
       silent: true,
       rootSpinner,
