@@ -27,7 +27,7 @@ import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { spinner } from "@/src/utils/spinner"
 import { updateAppIndex } from "@/src/utils/update-app-index"
 import { Command } from "commander"
-import prompts from "prompts"
+import prompts from "@/src/utils/prompts"
 import { z } from "zod"
 
 export const addOptionsSchema = z.object({

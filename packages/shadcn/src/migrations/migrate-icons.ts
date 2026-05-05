@@ -11,7 +11,7 @@ import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import fg from "fast-glob"
-import prompts from "prompts"
+import prompts from "@/src/utils/prompts"
 import { Project, ScriptKind, SyntaxKind } from "ts-morph"
 import { z } from "zod"
 
