@@ -1,5 +1,39 @@
 # @shadcn/ui
 
+## 4.7.0
+
+### Minor Changes
+
+- [#10519](https://github.com/shadcn-ui/ui/pull/10519) [`eb42ae25fda81e90e621f1e334e5126b1f22371d`](https://github.com/shadcn-ui/ui/commit/eb42ae25fda81e90e621f1e334e5126b1f22371d) Thanks [@shadcn](https://github.com/shadcn)! - add support for package imports
+
+- [#10528](https://github.com/shadcn-ui/ui/pull/10528) [`309d95017fce3936548c15d2ef827c84560cc45a`](https://github.com/shadcn-ui/ui/commit/309d95017fce3936548c15d2ef827c84560cc45a) Thanks [@shadcn](https://github.com/shadcn)! - allow alias placeholders in target for registry items
+
+### Patch Changes
+
+- [#10559](https://github.com/shadcn-ui/ui/pull/10559) [`28b3e5f36086677b0533583817407d8f936a567b`](https://github.com/shadcn-ui/ui/commit/28b3e5f36086677b0533583817407d8f936a567b) Thanks [@shadcn](https://github.com/shadcn)! - add previous version error suggestion
+
+## 4.6.0
+
+### Minor Changes
+
+- [#10530](https://github.com/shadcn-ui/ui/pull/10530) [`ea6086cbcc33b359bb876651374e26f643ea85b1`](https://github.com/shadcn-ui/ui/commit/ea6086cbcc33b359bb876651374e26f643ea85b1) Thanks [@shadcn](https://github.com/shadcn)! - add shadcn preset commands
+
+- [#10516](https://github.com/shadcn-ui/ui/pull/10516) [`c236d0c009b4ff87c77a04c618d2b348cac7cdcb`](https://github.com/shadcn-ui/ui/commit/c236d0c009b4ff87c77a04c618d2b348cac7cdcb) Thanks [@shadcn](https://github.com/shadcn)! - add preset info to npx shadcn info
+
+### Patch Changes
+
+- [#10526](https://github.com/shadcn-ui/ui/pull/10526) [`55fd4dc71be9e6410a528d6ce6bc7287ffba262c`](https://github.com/shadcn-ui/ui/commit/55fd4dc71be9e6410a528d6ce6bc7287ffba262c) Thanks [@shadcn](https://github.com/shadcn)! - update docs and info urls
+
+- [#10524](https://github.com/shadcn-ui/ui/pull/10524) [`6dea65ebcbbdb8773b3072ca74c9cee4e386988b`](https://github.com/shadcn-ui/ui/commit/6dea65ebcbbdb8773b3072ca74c9cee4e386988b) Thanks [@shadcn](https://github.com/shadcn)! - fix apply in monorepo
+
+## 4.5.0
+
+### Minor Changes
+
+- [#10488](https://github.com/shadcn-ui/ui/pull/10488) [`eb6e783fb3861aba3b35289a473954080e6f1607`](https://github.com/shadcn-ui/ui/commit/eb6e783fb3861aba3b35289a473954080e6f1607) Thanks [@shadcn](https://github.com/shadcn)! - add --pointer option to cli.
+
+  npx shadcn init --pointer will enable cursor: pointer on buttons.
+
 ## 4.4.0
 
 ### Minor Changes
