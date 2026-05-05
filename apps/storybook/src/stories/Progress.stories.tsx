@@ -110,3 +110,68 @@ export const InCardUploadState: Story = {
     </Card>
   ),
 }
+
+/**
+ * Figma parity story (JES-92, batch A).
+ *
+ * Mirrors the Figma `Lead UI - Progress` page (component symbol
+ * 29:97110). Figma's `Percent` variant has 5 discrete values
+ * (0%, 25%, 50%, 75%, 100%) — see the existing Code Connect
+ * mapping (Progress.figma.tsx) for the enum-to-number translation.
+ *
+ * Lead's `<Progress>` accepts a continuous `value` prop (0–100), so
+ * the Figma enum is a strict subset. Rendered here at all 5 documented
+ * percentages.
+ *
+ * Source:
+ *   https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-97110
+ *
+ * Parity standard: docs/storybook-figma-parity-standard.md.
+ */
+export const FigmaParity: Story = {
+  name: "Figma parity (Percent variants)",
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 12,
+        width: 360,
+        padding: 16,
+        background: "var(--lead-color-surface-default)",
+      }}
+    >
+      {[100, 75, 50, 25, 0].map((value) => (
+        <div
+          key={value}
+          style={{ display: "flex", alignItems: "center", gap: 12 }}
+        >
+          <span
+            style={{
+              fontSize: 12,
+              minWidth: 40,
+              color: "var(--lead-color-text-muted)",
+              fontVariantNumeric: "tabular-nums",
+            }}
+          >
+            {value}%
+          </span>
+          <div style={{ flex: 1 }}>
+            <Progress value={value} />
+          </div>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Mirrors Figma `Lead UI - Progress` (29:97110). Renders all " +
+          "5 documented Percent variants (0/25/50/75/100). The Figma " +
+          "enum is a discrete subset of Lead's continuous `value` " +
+          "prop. No documented non-parity exceptions.",
+      },
+    },
+  },
+}

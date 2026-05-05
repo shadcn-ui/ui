@@ -202,3 +202,98 @@ export const WithIcon: Story = {
     </div>
   ),
 }
+
+/**
+ * Figma parity story (JES-92, batch A).
+ *
+ * Mirrors the Figma `Lead UI - Alert` page (component symbol
+ * 29:66418). Figma documents two Variant values (Default and
+ * Destructive) and an Icon BOOLEAN; Lead's `<Alert>` exposes five
+ * variants (neutral, info, success, warning, danger) and an
+ * `icon?: ReactNode` prop where the caller supplies their own icon.
+ *
+ * Source:
+ *   https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66418
+ *
+ * Mapped surfaces:
+ *   - Figma Variant=Default     → Lead variant="neutral"
+ *   - Figma Variant=Destructive → Lead variant="danger"
+ *   - Figma "Title Text"        → <AlertTitle> children
+ *   - Figma "Description Text"  → <AlertDescription> children
+ *   - Figma Icon=true (built-in) → Lead's `icon` prop receives a
+ *     caller-supplied React element (no built-in icon ships with Lead)
+ *
+ * **Documented non-parity exception:**
+ *
+ * - **Difference:** Figma exposes Icon as a built-in boolean toggle;
+ *   Lead's `icon?: ReactNode` requires the caller to supply the icon.
+ * - **Reason:** API shape — Lead deliberately does not ship default
+ *   icons. The §8.5 API decision in `API-CONSISTENCY.md` chose a
+ *   slot-based approach so the design system isn't responsible for
+ *   maintaining an icon library.
+ * - **Authority:** `packages/lead-ui/API-CONSISTENCY.md` §8.5; the
+ *   Code Connect mapping at `Alert.figma.tsx` documents the same.
+ * - **Resolution:** Permanent. Lead callers supply their own icon
+ *   elements (e.g. from lucide, heroicons) per their app's icon
+ *   conventions.
+ *
+ * Parity standard: docs/storybook-figma-parity-standard.md.
+ */
+export const FigmaParity: Story = {
+  name: "Figma parity (Default + Destructive)",
+  render: () => {
+    // Caller-supplied check-circle icon, matching the Figma Icon boolean.
+    const CheckCircle = (
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="9 12 11 14 15 10" />
+      </svg>
+    )
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 16,
+          padding: 16,
+          background: "var(--lead-color-surface-default)",
+          width: 480,
+        }}
+      >
+        <Alert variant="neutral" icon={CheckCircle}>
+          <AlertTitle>Alert Title</AlertTitle>
+          <AlertDescription>This is an alert description.</AlertDescription>
+        </Alert>
+        <Alert variant="danger" icon={CheckCircle}>
+          <AlertTitle>Alert Title</AlertTitle>
+          <AlertDescription>This is an alert description.</AlertDescription>
+        </Alert>
+      </div>
+    )
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Mirrors Figma `Lead UI - Alert` (29:66418). Figma's two " +
+          "documented variants (Default, Destructive) map to Lead's " +
+          "`neutral` and `danger`. Caller supplies the icon element " +
+          "via Lead's `icon?: ReactNode` prop; Figma's Icon boolean " +
+          "is a documented non-parity exception (API shape — see " +
+          "story header). Lead's additional `info`/`success`/" +
+          "`warning` variants have no Figma counterpart in this " +
+          "manifest and are not rendered here.",
+      },
+    },
+  },
+}
