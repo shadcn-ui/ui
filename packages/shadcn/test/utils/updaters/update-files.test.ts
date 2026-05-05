@@ -111,6 +111,178 @@ describe("resolveFilePath", () => {
 
   test.each([
     {
+      description: "should resolve @components target aliases",
+      target: "@components/charts/pie.tsx",
+      resolvedPath: "/foo/bar/components/charts/pie.tsx",
+    },
+    {
+      description: "should resolve @ui target aliases",
+      target: "@ui/button.tsx",
+      resolvedPath: "/foo/bar/components/ui/button.tsx",
+    },
+    {
+      description: "should resolve @lib target aliases",
+      target: "@lib/format.ts",
+      resolvedPath: "/foo/bar/lib/format.ts",
+    },
+    {
+      description: "should resolve @hooks target aliases",
+      target: "@hooks/use-theme.ts",
+      resolvedPath: "/foo/bar/hooks/use-theme.ts",
+    },
+  ])("$description", ({ target, resolvedPath }) => {
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/ui/button.tsx",
+          type: "registry:ui",
+          target,
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/components",
+            ui: "/foo/bar/components/ui",
+            lib: "/foo/bar/lib",
+            hooks: "/foo/bar/hooks",
+          },
+        },
+        {
+          isSrcDir: true,
+        }
+      )
+    ).toBe(resolvedPath)
+  })
+
+  test("should resolve target aliases with package import backed aliases", () => {
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/ui/button.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+        {
+          aliases: {
+            components: "#components",
+            ui: "#components/ui",
+            lib: "#lib",
+            hooks: "#hooks",
+          },
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/src/components",
+            ui: "/foo/bar/src/components/ui",
+            lib: "/foo/bar/src/lib",
+            hooks: "/foo/bar/src/hooks",
+          },
+        },
+        {
+          isSrcDir: false,
+        }
+      )
+    ).toBe("/foo/bar/src/components/ui/button.tsx")
+  })
+
+  test("should fall back to normal target resolution for unknown aliases", () => {
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/ui/button.tsx",
+          type: "registry:ui",
+          target: "@foo/bar.ts",
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/components",
+            ui: "/foo/bar/components/ui",
+            lib: "/foo/bar/lib",
+            hooks: "/foo/bar/hooks",
+          },
+        },
+        {
+          isSrcDir: true,
+        }
+      )
+    ).toBe("/foo/bar/src/foo/bar.ts")
+  })
+
+  test("should not resolve embedded alias-like path segments", () => {
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/ui/button.tsx",
+          type: "registry:ui",
+          target: "components/@ui/button.tsx",
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/components",
+            ui: "/foo/bar/components/ui",
+            lib: "/foo/bar/lib",
+            hooks: "/foo/bar/hooks",
+          },
+        },
+        {
+          isSrcDir: false,
+        }
+      )
+    ).toBe("/foo/bar/components/@ui/button.tsx")
+  })
+
+  test("should bypass page target mapping for target aliases", () => {
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/app/login/page.tsx",
+          type: "registry:page",
+          target: "@ui/page.tsx",
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/src/components",
+            ui: "/foo/bar/src/primitives",
+            lib: "/foo/bar/src/lib",
+            hooks: "/foo/bar/src/hooks",
+          },
+        },
+        {
+          isSrcDir: true,
+          framework: "next-pages",
+        }
+      )
+    ).toBe("/foo/bar/src/primitives/page.tsx")
+  })
+
+  test("should reject target aliases that escape the alias root", () => {
+    expect(() =>
+      resolveFilePath(
+        {
+          path: "hello-world/ui/button.tsx",
+          type: "registry:ui",
+          target: "@ui/../../page.tsx",
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/components",
+            ui: "/foo/bar/components/ui",
+            lib: "/foo/bar/lib",
+            hooks: "/foo/bar/hooks",
+          },
+        },
+        {
+          isSrcDir: false,
+        }
+      )
+    ).toThrow('Invalid target path "@ui/../../page.tsx".')
+  })
+
+  test.each([
+    {
       description: "should use src directory when provided",
       file: {
         path: "hello-world/ui/button.tsx",
