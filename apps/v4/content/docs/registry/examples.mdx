@@ -319,7 +319,11 @@ The placeholders are resolved from `components.json`, so the same registry item
 works in projects using `@/`, custom TypeScript aliases, package imports or
 workspace package exports.
 
-```json title="alias-child.json" showLineNumbers {9,15}
+Anything after the placeholder is preserved. For example,
+`@ui/ai/prompt-input.tsx` installs under the user's configured `ui` directory
+at `ai/prompt-input.tsx`.
+
+```json title="alias-child.json" showLineNumbers {9,15,21}
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "alias-child",
@@ -335,6 +339,12 @@ workspace package exports.
       "path": "registry/new-york/alias/target-alias-helper.ts",
       "type": "registry:lib",
       "target": "@lib/target-alias-helper.ts",
+      "content": "..."
+    },
+    {
+      "path": "registry/new-york/alias/prompt-input.tsx",
+      "type": "registry:ui",
+      "target": "@ui/ai/prompt-input.tsx",
       "content": "..."
     }
   ]

@@ -241,7 +241,9 @@ components with `@/`, `#`, package imports or workspace exports.
 
 Use these placeholders when you want a registry item to install into the
 project's configured shadcn directories without hardcoding `components`, `src`
-or workspace package paths.
+or workspace package paths. Anything after the placeholder is preserved, so
+`@ui/ai/prompt-input.tsx` installs under the user's configured `ui` directory
+at `ai/prompt-input.tsx`.
 
 ```json title="registry-item.json" showLineNumbers
 {
@@ -250,6 +252,11 @@ or workspace package paths.
       "path": "registry/new-york/example/button.tsx",
       "type": "registry:ui",
       "target": "@ui/button.tsx"
+    },
+    {
+      "path": "registry/new-york/example/prompt-input.tsx",
+      "type": "registry:ui",
+      "target": "@ui/ai/prompt-input.tsx"
     },
     {
       "path": "registry/new-york/example/card.tsx",
