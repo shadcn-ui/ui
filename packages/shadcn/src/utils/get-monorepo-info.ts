@@ -127,7 +127,7 @@ export function formatMonorepoMessage(
   logger.break()
 }
 
-async function getWorkspacePatterns(cwd: string) {
+export async function getWorkspacePatterns(cwd: string) {
   const patterns: string[] = []
 
   // Read pnpm-workspace.yaml.
