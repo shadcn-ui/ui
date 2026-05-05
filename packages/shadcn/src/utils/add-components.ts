@@ -270,16 +270,26 @@ async function addWorkspaceComponents(
     "registry:hook": "hooks",
     "registry:lib": "lib",
   }
+  const getTargetConfigForType = (type: string) => {
+    const configKey = FILE_TYPE_TO_CONFIG_KEY[type]
+    return configKey && workspaceConfig[configKey]
+      ? workspaceConfig[configKey]
+      : config
+  }
 
   // Process each type of component with its appropriate target config.
   for (const type of Array.from(filesByType.keys())) {
     const typeFiles = filesByType.get(type)!
+    const targetConfig = getTargetConfigForType(type)
+    const plannedFiles = (tree.files ?? []).filter((file) => {
+      const fileTargetConfig = getTargetConfigForType(
+        file.type || "registry:ui"
+      )
 
-    const configKey = FILE_TYPE_TO_CONFIG_KEY[type]
-    const targetConfig =
-      configKey && workspaceConfig[configKey]
-        ? workspaceConfig[configKey]
-        : config
+      return (
+        fileTargetConfig.resolvedPaths.cwd === targetConfig.resolvedPaths.cwd
+      )
+    })
 
     const typeWorkspaceRoot = findCommonRoot(
       config.resolvedPaths.cwd,
@@ -299,6 +309,7 @@ async function addWorkspaceComponents(
       isRemote: options.isRemote,
       isWorkspace: true,
       path: options.path,
+      plannedFiles,
       supportedFontMarkers,
     })
 
