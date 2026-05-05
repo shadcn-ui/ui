@@ -77,3 +77,24 @@
 .lead-DialogFooter[data-align="between"] {
   justify-content: space-between;
 }
+
+/*
+ * Auto-stacked footer at size="sm" — consistency fix from
+ * docs/alert-dialog-primitive-decision.md §2. Applies to BOTH Dialog
+ * and AlertDialog footers because they share the lead-DialogFooter
+ * class. The rule is keyed off the parent content element's data-size
+ * attribute, so no new React prop is required.
+ *
+ * The .lead-DialogFooter[data-align] rules above only apply when the
+ * footer is laid out horizontally (size="md" or "lg"); at sm size,
+ * align is overridden by the stacked layout.
+ */
+.lead-Dialog__content[data-size="sm"] .lead-DialogFooter {
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--lead-space-2);
+}
+
+.lead-Dialog__content[data-size="sm"] .lead-DialogFooter > * {
+  width: 100%;
+}
