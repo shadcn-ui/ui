@@ -88,7 +88,7 @@ Treating these as one pipeline means the slowest, riskiest lane gates the fastes
 
 **Critical rule:** this lane never auto-edits React components. It only reports. Humans decide what the API change should be.
 
-**Status:** not built. Should be built only after Lane 2 is shipping reliably.
+**Status:** Storybook export prototypes shipped — Badge (JES-82), Card (JES-84), Alert Dialog (JES-83). The Alert Dialog export surfaced a real production gap (no `<AlertDialog>` primitive); the resulting decision is documented in [`alert-dialog-primitive-decision.md`](./alert-dialog-primitive-decision.md) (JES-85). Production implementation follows in a separate issue.
 
 ---
 
