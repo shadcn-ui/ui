@@ -1294,5 +1294,12 @@
     "url": "https://francozeta-stepper.vercel.app/{name}.json",
     "description": "A modern, accessible and composable Stepper component for React and Tailwind CSS. Built for shadcn/ui-style workflows with registry-first distribution.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='currentColor'><path d='M139 32a7 7 0 0 1 14 0v104.6c0 18.3-8.8 35.4-23.7 46L55.8 235H22l93.4-66.6A30.2 30.2 0 0 0 128 143.8V32h11Z'/><path d='M160 42c14.2-5.8 27.9 11.3 50 6.6-8.6 12.4-21.8 18-36.2 16.1-5.8-.8-10-2.5-13.8-4.2V42Z'/><path d='M163 82.8 210 99v105c0 18.2-14.8 33-33 33h-74.7l43.7-31.2c15.6-11.1 24.9-29.1 24.9-48.2V103.8L163 101V82.8Zm20 59.2a7 7 0 0 1 14 0v24h-14v-24Z'/><path d='M84 87.5 122 77v50H66V99.8l18-4.9v-7.4Zm-31 43.5h71v22H53a7 7 0 0 1-7-7v-8a7 7 0 0 1 7-7Zm-32 33h77v22H21a7 7 0 0 1-7-7v-8a7 7 0 0 1 7-7Zm-10 33h62v22H11a7 7 0 0 1-7-7v-8a7 7 0 0 1 7-7Z'/><circle cx='42' cy='116' r='13'/></svg>"
+  },
+  {
+    "name": "@framecn",
+    "homepage": "https://framecn.vercel.app",
+    "url": "https://framecn.vercel.app/r/{name}.json",
+    "description": "Beautiful videos, made simple. Ready to use, customizable video components for React.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4'/><g stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'><path d='M6.72 4.36v2.36M27.96 25.6H25.6m-4.13 0H13.8c-3.337 0-5.007 0-6.043-1.037S6.72 21.857 6.72 18.52v-7.67M25.6 27.96v-11.8c0-4.45 0-6.675-1.383-8.057S20.61 6.72 16.16 6.72H4.36' stroke-width='1.77'/><path d='m21.824 16.16-5.664 5.664M20.691 9.93 9.93 20.69' stroke-width='2.266'/></g></svg>"
   }
 ]
