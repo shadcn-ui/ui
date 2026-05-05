@@ -88,7 +88,7 @@ Treating these as one pipeline means the slowest, riskiest lane gates the fastes
 
 **Critical rule:** this lane never auto-edits React components. It only reports. Humans decide what the API change should be.
 
-**Status:** Storybook export prototypes shipped — Badge (JES-82), Card (JES-84), Alert Dialog (JES-83). The Alert Dialog export surfaced a real production gap (no `<AlertDialog>` primitive); the resulting decision is documented in [`alert-dialog-primitive-decision.md`](./alert-dialog-primitive-decision.md) (JES-85). Production implementation follows in a separate issue.
+**Status:** Storybook export prototypes shipped — Badge (JES-82), Card (JES-84), Alert Dialog (JES-83). The Alert Dialog export surfaced a real production gap (no `<AlertDialog>` primitive); the resulting decision is documented in [`alert-dialog-primitive-decision.md`](./alert-dialog-primitive-decision.md) (JES-85), and the production primitive plus visual parity stories shipped in JES-86 and JES-89. The lane-wide standard and remaining-component inventory are at [`storybook-figma-parity-standard.md`](./storybook-figma-parity-standard.md) (JES-90) and [`storybook-figma-parity-inventory.md`](./storybook-figma-parity-inventory.md) (JES-91).
 
 ---
 
