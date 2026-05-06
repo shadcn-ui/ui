@@ -1,5 +1,17 @@
 # @shadcn/ui
 
+## 4.7.0
+
+### Minor Changes
+
+- [#10519](https://github.com/shadcn-ui/ui/pull/10519) [`eb42ae25fda81e90e621f1e334e5126b1f22371d`](https://github.com/shadcn-ui/ui/commit/eb42ae25fda81e90e621f1e334e5126b1f22371d) Thanks [@shadcn](https://github.com/shadcn)! - add support for package imports
+
+- [#10528](https://github.com/shadcn-ui/ui/pull/10528) [`309d95017fce3936548c15d2ef827c84560cc45a`](https://github.com/shadcn-ui/ui/commit/309d95017fce3936548c15d2ef827c84560cc45a) Thanks [@shadcn](https://github.com/shadcn)! - allow alias placeholders in target for registry items
+
+### Patch Changes
+
+- [#10559](https://github.com/shadcn-ui/ui/pull/10559) [`28b3e5f36086677b0533583817407d8f936a567b`](https://github.com/shadcn-ui/ui/commit/28b3e5f36086677b0533583817407d8f936a567b) Thanks [@shadcn](https://github.com/shadcn)! - add previous version error suggestion
+
 ## 4.6.0
 
 ### Minor Changes
