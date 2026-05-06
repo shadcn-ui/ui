@@ -172,3 +172,75 @@ export const NoArrow: Story = {
     </Popover>
   ),
 }
+
+/**
+ * Figma parity story (JES-95, batch D).
+ *
+ * Mirrors the Figma `Lead UI - Popover` page (component symbol
+ * 29:96969). Per the existing Code Connect mapping
+ * (Popover.figma.tsx), the Figma node has **no documented text or
+ * enum properties** — the mapping is example-only because Popover's
+ * Figma surface is essentially "the trigger + content shape." The
+ * caller fills the content; the primitive doesn't constrain it.
+ *
+ * Lead's `<Popover>` is *compositional* — `<PopoverTrigger>` /
+ * `<PopoverContent>` are children. `<PopoverContent>`'s `side`,
+ * `align`, and `sideOffset` are Lead-side layout tuning knobs, not
+ * Figma properties.
+ *
+ * Source:
+ *   https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-96969
+ *
+ * No documented non-parity — there are no Figma props to map. This
+ * story renders the canonical compositional shape the Code Connect
+ * mapping documents as "example-only," with placeholder content.
+ *
+ * Parity standard: docs/storybook-figma-parity-standard.md.
+ */
+export const FigmaParity: Story = {
+  name: "Figma parity (canonical compositional shape)",
+  render: () => (
+    <div
+      style={{
+        padding: 64,
+        background: "var(--lead-color-surface-default)",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <Popover defaultOpen>
+        <PopoverTrigger asChild>
+          <Button variant="secondary">Open popover</Button>
+        </PopoverTrigger>
+        <PopoverContent>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <strong style={{ fontSize: 14 }}>Popover content</strong>
+            <span
+              style={{
+                fontSize: 13,
+                color: "var(--lead-color-text-muted)",
+              }}
+            >
+              Caller-provided body. The Lead primitive supplies the
+              trigger/content scaffold and arrow; the caller fills the
+              content.
+            </span>
+          </div>
+        </PopoverContent>
+      </Popover>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Mirrors Figma `Lead UI - Popover` (29:96969). The Figma " +
+          "Popover surface has no documented text or enum properties — " +
+          "the Code Connect mapping is example-only. Renders Lead's " +
+          "canonical `<Popover>` + `<PopoverTrigger>` + " +
+          "`<PopoverContent>` shape with placeholder content. No " +
+          "documented non-parity — there are no Figma props to map.",
+      },
+    },
+  },
+}
