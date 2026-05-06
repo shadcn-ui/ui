@@ -159,3 +159,116 @@ export const WithSeparator: Story = {
     </Card>
   ),
 }
+
+/**
+ * Figma parity story (JES-94, batch C).
+ *
+ * Mirrors the Figma `Lead UI - Card` page (component symbol
+ * 29:72255). Per the existing Code Connect mapping
+ * (Card.figma.tsx) and the experimental export at
+ * `Experimental / Figma Export / Card` (JES-84):
+ *
+ *   - Card Title       (TEXT)
+ *   - Card Description (TEXT)
+ *   - Card Header      (BOOLEAN — show/hide section)
+ *   - Card Content     (BOOLEAN — show/hide section)
+ *   - Card Footer      (BOOLEAN — show/hide section)
+ *
+ * Lead's Card is *compositional* in React: header/content/footer are
+ * subcomponents you include or omit. The Figma boolean toggles map to
+ * composition decisions, not React props.
+ *
+ * Source:
+ *   https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-72255
+ *
+ * **Documented non-parity exception:**
+ *
+ * - **Difference:** Figma's boolean toggles `Card Header` /
+ *   `Card Content` / `Card Footer` (and instance-swap props
+ *   `swapContent` / `swapFooter`) have no React-prop equivalents on
+ *   `<Card>`. Lead's API expresses presence-or-absence via inclusion
+ *   or omission of the subcomponent.
+ * - **Reason:** API shape — compositional substructure is more
+ *   flexible than boolean-toggle props for slot layouts. The same
+ *   Figma surface drove AlertDialog's compositional pattern; Card
+ *   follows the same convention.
+ * - **Authority:** `Card.figma.tsx` mapping decisions; the
+ *   experimental export at `Experimental / Figma Export / Card`
+ *   demonstrates each Figma example composition.
+ * - **Resolution:** Permanent.
+ *
+ * Additional approximations carried forward from the experimental
+ * export (JES-84):
+ *
+ *   - Image asset in image-card composition → gradient placeholder
+ *     (asset not retrievable from Figma MCP).
+ *   - Avatar circles in notes-card composition → `<Badge size="sm">`
+ *     initials (Lead has no `<Avatar>` component).
+ *
+ * Parity standard: docs/storybook-figma-parity-standard.md.
+ */
+export const FigmaParity: Story = {
+  name: "Figma parity (default header + content + footer)",
+  render: () => (
+    <div
+      style={{
+        padding: 16,
+        background: "var(--lead-color-surface-default)",
+        width: "fit-content",
+      }}
+    >
+      <Card style={{ width: 420 }}>
+        <CardHeader>
+          <CardTitle>Card Title</CardTitle>
+          <CardDescription>This is a card description.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div
+            style={{
+              padding: 16,
+              background: "var(--lead-color-surface-muted)",
+              borderRadius: "var(--lead-radius-md)",
+              border: "1px dashed var(--lead-color-border-default)",
+              fontSize: 13,
+              color: "var(--lead-color-text-muted)",
+              textAlign: "center",
+            }}
+          >
+            Slot — replace with your content
+          </div>
+        </CardContent>
+        <CardFooter>
+          <div
+            style={{
+              padding: 12,
+              background: "var(--lead-color-surface-muted)",
+              borderRadius: "var(--lead-radius-md)",
+              border: "1px dashed var(--lead-color-border-default)",
+              fontSize: 13,
+              color: "var(--lead-color-text-muted)",
+              textAlign: "center",
+              width: "100%",
+            }}
+          >
+            Slot — replace with your footer
+          </div>
+        </CardFooter>
+      </Card>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Mirrors Figma `Lead UI - Card` (29:72255) default — title + " +
+          "description + content slot + footer slot. The Figma boolean " +
+          "toggles map to compositional inclusion in React (see story " +
+          "header for the documented non-parity exception). For " +
+          "real-world variants (Login, Notes, Image, Buttons " +
+          "compositions) see the experimental export at " +
+          "`Experimental / Figma Export / Card` — that lane shows the " +
+          "same surface with meaningful in-context content.",
+      },
+    },
+  },
+}

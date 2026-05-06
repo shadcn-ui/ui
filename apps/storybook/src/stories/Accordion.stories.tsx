@@ -164,3 +164,80 @@ export const InCard: Story = {
     </Card>
   ),
 }
+
+/**
+ * Figma parity story (JES-94, batch C).
+ *
+ * Mirrors the Figma `Lead UI - Accordion` (root 29:66202, item
+ * 29:66236). Per the existing Code Connect mapping
+ * (Accordion.figma.tsx), Figma's documented item properties are:
+ *
+ *   - Trigger Text (TEXT)
+ *   - Content Text (TEXT)
+ *   - Active       (BOOLEAN-as-VARIANT): Off, On
+ *   - State        (VARIANT): Default, Hover, Focus, Pressed
+ *
+ * Lead's `<AccordionItem>` renders trigger + content; `<Accordion>`'s
+ * `defaultValue` (or `value` in controlled mode) determines which
+ * items are open. The `Active=On|Off` Figma toggle maps to whether
+ * the item's `value` is in the parent's open list. State=Hover/Focus/
+ * Pressed are runtime CSS states.
+ *
+ * Source:
+ *   https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66202
+ *
+ * **Documented non-parity exception:**
+ *
+ * - **Difference:** Figma's `Active=On|Off` is a per-item toggle;
+ *   Lead's React API expresses open state through parent
+ *   `<Accordion value>` / `<Accordion defaultValue>` matching the
+ *   item's `value`. Figma's `State=Hover|Focus|Pressed` are runtime
+ *   CSS states, not React props.
+ * - **Reason:** API shape — Radix's accordion primitive (which Lead
+ *   wraps) treats open state as a single source of truth on the
+ *   parent (single or multiple values, depending on `type`). Per-
+ *   item `active` props would conflict with controlled/uncontrolled
+ *   value semantics.
+ * - **Authority:** `Accordion.figma.tsx` deliberate-unmapped block.
+ * - **Resolution:** Permanent.
+ *
+ * Parity standard: docs/storybook-figma-parity-standard.md.
+ */
+export const FigmaParity: Story = {
+  name: "Figma parity (Active On/Off + Trigger Text + Content Text)",
+  render: () => (
+    <div
+      style={{
+        padding: 16,
+        background: "var(--lead-color-surface-default)",
+        width: 480,
+      }}
+    >
+      <Accordion type="single" collapsible defaultValue="active">
+        <AccordionItem value="inactive">
+          <AccordionTrigger>Trigger Text (Active=Off)</AccordionTrigger>
+          <AccordionContent>Content Text — collapsed by default.</AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="active">
+          <AccordionTrigger>Trigger Text (Active=On)</AccordionTrigger>
+          <AccordionContent>
+            Content Text — open because the parent's `defaultValue` matches
+            this item's `value`.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Mirrors Figma `Lead UI - Accordion` (29:66202 root + " +
+          "29:66236 item). Renders the documented Active=Off / Active=On " +
+          "states with Trigger Text and Content Text. Figma's per-item " +
+          "Active boolean and State=Hover/Focus/Pressed are documented " +
+          "non-parity (see story header for the API-shape exception).",
+      },
+    },
+  },
+}
