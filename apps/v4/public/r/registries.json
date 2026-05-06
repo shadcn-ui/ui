@@ -1120,5 +1120,11 @@
     "homepage": "https://francozeta-stepper.vercel.app",
     "url": "https://francozeta-stepper.vercel.app/{name}.json",
     "description": "A modern, accessible and composable Stepper component for React and Tailwind CSS. Built for shadcn/ui-style workflows with registry-first distribution."
+  },
+  {
+    "name": "@qiyang",
+    "homepage": "https://qiyang.dev/components",
+    "url": "https://qiyang.dev/r/{name}.json",
+    "description": "A focused shadcn-compatible registry for reusable React components and interface blocks."
   }
 ]
