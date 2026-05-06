@@ -717,6 +717,16 @@
       "type": "registry:ui"
     },
     {
+      "name": "wireframe",
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/wireframe.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "dashboard-01",
       "description": "A dashboard with sidebar, charts and data table.",
       "dependencies": [
@@ -5360,6 +5370,17 @@
         "mobile": "component"
       },
       "categories": ["calendar", "date"],
+      "type": "registry:example"
+    },
+    {
+      "name": "wireframe-demo",
+      "registryDependencies": ["wireframe"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/wireframe-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
       "type": "registry:example"
     },
     {
