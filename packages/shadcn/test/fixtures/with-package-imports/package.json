@@ -1,0 +1,15 @@
+{
+  "name": "with-package-imports",
+  "type": "module",
+  "imports": {
+    "#components/*": "./src/components/*",
+    "#components-ext/*": "./src/components/*.tsx",
+    "#hooks": "./src/hooks/index.ts",
+    "#utils": "./src/lib/utils.ts",
+    "#outside/*": "../outside/*",
+    "#dep": {
+      "node": "dep-node-native",
+      "default": "./dep-polyfill.js"
+    }
+  }
+}
