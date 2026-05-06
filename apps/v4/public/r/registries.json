@@ -162,6 +162,12 @@
     "description": "A framework-agnostic API client, pluggable storage adapters (LocalStorage, Convex, Supabase, PostgreSQL, MySQL), and React components for generating developer activity reports."
   },
   {
+    "name": "@cognicatch",
+    "homepage": "https://cognicatch.dev",
+    "url": "https://cognicatch.dev/registry/{name}.json",
+    "description": "Adaptive Error Boundaries and graceful fallback UIs (Banners, Modals, Toasts)."
+  },
+  {
     "name": "@commercn",
     "homepage": "https://commercn.com",
     "url": "https://commercn.com/r/{name}.json",
@@ -304,6 +310,12 @@
     "homepage": "https://ui.inference.sh",
     "url": "https://ui.inference.sh/r/{name}.json",
     "description": "batteries-included agent components by inference.sh. chat interfaces with streaming, tool invocation rendering, syntax-highlighted code blocks, markdown renderer, and more."
+  },
+  {
+    "name": "@indiacn",
+    "homepage": "https://indiacn.in",
+    "url": "https://indiacn.in/r/{name}.json",
+    "description": "UX4G 2.0 design system for India — many accessible React components and an 8-color theme preset for native apps."
   },
   {
     "name": "@intentui",

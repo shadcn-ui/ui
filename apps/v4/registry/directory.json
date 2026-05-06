@@ -189,6 +189,13 @@
     "logo": "<svg width='1201' height='1200' viewBox='0 0 1201 1200' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M600.867 1200C932.238 1200 1200.87 931.37 1200.87 600C1200.87 268.629 932.238 -0.000488281 600.867 -0.000488281C269.496 -0.000488281 0.867188 268.629 0.867188 600C0.867188 931.37 269.496 1200 600.867 1200Z' fill='#FF570A'/><path d='M1008.3 500.615C1008.3 500.615 924.706 393.751 819.62 387.639C751.807 383.636 735.379 392.696 732.434 399.444C728.226 364.456 698.322 202.361 491.729 168.008C518.102 357.589 627.02 308.191 691.161 438.86C691.161 438.86 582.921 291.734 404.969 345.903C404.969 345.903 469.83 482.07 661.676 509.891C661.676 509.891 677.05 562.586 681.684 571.862C681.684 571.862 386.224 417.779 296.512 713.505C229.747 698.382 207.352 770.859 284.09 820.369C284.09 820.369 297.147 768.519 328.943 753.131C328.943 753.131 260.711 829.226 340.946 920.36H628.925C635.883 908.834 666.68 848.19 590.514 802.285C644.278 801.516 688.042 902.932 735.128 921.058H803.61C805.927 915.428 810.771 898.567 799.395 883.395C781.857 863.278 743.46 866.002 743.802 828.8C757.062 655.746 1016.55 708.888 1008.3 500.615Z' fill='#FEFEFE'/></svg>"
   },
   {
+    "name": "@cognicatch",
+    "homepage": "https://cognicatch.dev",
+    "url": "https://cognicatch.dev/registry/{name}.json",
+    "description": "Adaptive Error Boundaries and graceful fallback UIs (Banners, Modals, Toasts).",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z'/><path d='M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z'/><path d='M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4'/><path d='M17.599 6.5a3 3 0 0 0 .399-1.375'/><path d='M6.002 5.125A3 3 0 0 0 6.401 6.5'/><path d='M3.477 10.896a4 4 0 0 1 .585-.396'/><path d='M19.938 10.5a4 4 0 0 1 .585.396'/><path d='M6 18a4 4 0 0 1-1.967-.516'/><path d='M19.967 17.484A4 4 0 0 1 18 18'/></svg>"
+  },
+  {
     "name": "@commercn",
     "homepage": "https://commercn.com",
     "url": "https://commercn.com/r/{name}.json",
@@ -356,6 +363,13 @@
     "url": "https://ui.inference.sh/r/{name}.json",
     "description": "batteries-included agent components by inference.sh. chat interfaces with streaming, tool invocation rendering, syntax-highlighted code blocks, markdown renderer, and more.",
     "logo": "<svg width='18' height='16' viewBox='0 0 18 16' fill='none' xmlns='http://www.w3.org/2000/svg'><path fill='none' d='M16.837 12.659L10.105 1H8.781c-.433 0-.834.232-1.05.608L1 13.266l.662 1.146c.217.375.618.607 1.051.607h13.463l.662-1.146a1.215 1.215 0 000-1.213v-.001z' stroke='var(--foreground)' stroke-width='0.3' stroke-miterlimit='10'/><path fill='none' d='M6.057 11.515v0l3.977-6.888a.08.08 0 01.14 0l6.002 10.392' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/><path fill='none' d='M1 13.266h12.001a.08.08 0 00.07-.122L9.09 6.256' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/><path fill='none' d='M12.13 11.514H4.173a.08.08 0 01-.07-.121L10.105 1' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/></svg>"
+  },
+  {
+    "name": "@indiacn",
+    "homepage": "https://indiacn.in",
+    "url": "https://indiacn.in/r/{name}.json",
+    "description": "UX4G 2.0 design system for India — many accessible React components and an 8-color theme preset for native apps.",
+    "logo": "<svg width='512' height='512' viewBox='0 0 512 512' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='512' height='512' rx='120' fill='var(--foreground)'/><rect x='76' y='92' width='360' height='92' rx='28' fill='#FF9933'/><rect x='76' y='210' width='360' height='92' rx='28' fill='#fff'/><rect x='76' y='328' width='360' height='92' rx='28' fill='#138808'/><circle cx='256' cy='256' r='38' stroke='#0F3D91' stroke-width='12'/><path d='M256 214V298M214 256H298' stroke='#0F3D91' stroke-width='12' stroke-linecap='round'/></svg>"
   },
   {
     "name": "@intentui",
@@ -1285,7 +1299,7 @@
     "name": "@evilbuttons",
     "homepage": "https://evilbuttons.radiumcoders.com/docs",
     "url": "https://evilbuttons.radiumcoders.com/r/{name}.json",
-    "description": "A shadcn/ui registry featuring a collection of animated buttons built with Motion. Each component is designed to add punchy, interactive feedback to your UI with minimal setup.",  
+    "description": "A shadcn/ui registry featuring a collection of animated buttons built with Motion. Each component is designed to add punchy, interactive feedback to your UI with minimal setup.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 270 270' fill='var(--foreground)'><circle cx='135' cy='135' r='135' fill='black'/><path d='M161.057 161.35L186.181 221.846L164.141 231.05L139.018 170.853L102.75 207.419V52.945L211.663 161.281L161.057 161.35Z' fill='white'/><path d='M160.5 64.8521C158.1 81.2521 135.5 84.5187 126 83.3521C130.167 92.0187 140.8 112.352 156 112.352C175 112.352 163.5 44.3521 160.5 64.8521Z' fill='white' stroke='white'/><path d='M71.1794 99.9477C83.9367 110.529 102.918 97.8346 109.197 90.6108C111.9 99.8395 117.603 122.065 106.307 132.236C92.1875 144.949 55.2328 86.7206 71.1794 99.9477Z' fill='white' stroke='white'/><circle cx='121' cy='122' r='5' fill='black'/><circle cx='141' cy='112' r='5' fill='black'/></svg>"
   },
   {
