@@ -234,6 +234,12 @@
     "description": "An open-source, modern UI component library for React, built with TypeScript, Tailwind CSS, and Framer Motion. Eldora UI offers beautifully crafted, reusable components designed for performance and elegance."
   },
   {
+    "name": "@evilcharts",
+    "homepage": "https://evilcharts.com",
+    "url": "https://evilcharts.com/r/{name}.json",
+    "description": "EvilCharts is an open-source chart UI website built with shadcn and Recharts, beautifully designed and handcrafted."
+  },
+  {
     "name": "@formcn",
     "homepage": "https://formcn.dev",
     "url": "https://formcn.dev/r/{name}.json",
@@ -268,6 +274,12 @@
     "homepage": "https://glass-ui.crenspire.com",
     "url": "https://glass-ui.crenspire.com/r/{name}.json",
     "description": "A shadcn-ui compatible registry distributing 40+ glassmorphic React/TypeScript components with Apple-inspired design. Components include enhanced visual effects (glow, shimmer, ripple), theme support, and customizable glassmorphism styling."
+  },
+  {
+    "name": "@glasscn",
+    "homepage": "https://glasscn.vercel.app/",
+    "url": "https://glasscn-components.vercel.app/r/{name}.json",
+    "description": "A shadcn-compatible registry of glassmorphism components inspired by Apple"
   },
   {
     "name": "@ha-components",
@@ -348,6 +360,12 @@
     "description": "Modern UI Library for building media players in React. Powered by Shaka Player."
   },
   {
+    "name": "@loading-ui",
+    "homepage": "https://loading-ui.com",
+    "url": "https://loading-ui.com/r/{name}.json",
+    "description": "Spinners, loaders, and loading animations for modern web apps. Free and open-source."
+  },
+  {
     "name": "@lmscn",
     "homepage": "https://lmscn.vercel.app",
     "url": "https://lmscn.vercel.app/r/{name}.json",
@@ -400,6 +418,12 @@
     "homepage": "https://www.motion-primitives.com",
     "url": "https://motion-primitives.com/c/{name}.json",
     "description": "Beautifully designed motions components. Easy copy-paste. Customizable. Open Source. Built for engineers and designers."
+  },
+  {
+    "name": "@nordaun",
+    "homepage": "https://ui.nordaun.com",
+    "url": "https://ui.nordaun.com/r/{name}.json",
+    "description": "Simple components for your extraordinary creations."
   },
   {
     "name": "@ncdai",
@@ -591,7 +615,7 @@
     "name": "@shadcnblocks",
     "homepage": "https://shadcnblocks.com",
     "url": "https://shadcnblocks.com/r/{name}.json",
-    "description": "A registry with hundreds of extra blocks for shadcn ui."
+    "description": "A shadcn/ui registry with 1429 blocks, 1189 component variants, 14 templates, themes, and admin dashboard patterns."
   },
   {
     "name": "@shadcndesign",
@@ -632,7 +656,7 @@
   {
     "name": "@shadcn-editor",
     "homepage": "https://shadcn-editor.vercel.app",
-    "url": "https://shadcn-editor.vercel.app/r/{name}.json",
+    "url": "https://raw.githubusercontent.com/htmujahid/shadcn-editor/refs/heads/main/public/r/{name}.json",
     "description": "Accessible, Customizable, Rich Text Editor. Made with Lexical and Shadcn/UI. Open Source. Open Code."
   },
   {
@@ -826,6 +850,12 @@
     "homepage": "https://darshitdev.in/arts",
     "url": "https://darshitdev.in/r/{name}.json",
     "description": "Magic 3D Tabs component featuring mouse-interactive 3D rotation, floating particles background effect, and smooth spring animations."
+  },
+  {
+    "name": "@devl",
+    "homepage": "https://devl.dev",
+    "url": "https://devl.dev/r/{name}.json",
+    "description": "Hand-crafted layouts and UI primitives for shipping fast."
   },
   {
     "name": "@beste-ui",
@@ -1030,5 +1060,53 @@
     "homepage": "https://www.remocn.dev/",
     "url": "https://www.remocn.dev/r/{name}.json",
     "description": "Production-ready components for Remotion - text animations, backgrounds, transitions, UI blocks, and full scene compositions"
+  },
+  {
+    "name": "@exabase",
+    "homepage": "https://exawizards.com/exabase/design/",
+    "url": "https://exawizards.com/exabase/design/registry/{name}.json",
+    "description": "A collection of UI components based on the exaBase Design System, built with React and Tailwind CSS."
+  },
+  {
+    "name": "@aicanvas",
+    "homepage": "https://aicanvas.me",
+    "url": "https://aicanvas.me/r/{name}.json",
+    "description": "54 animated React components with AI reproduction prompts for Claude Code, Lovable, and v0. Free and open source."
+  },
+  {
+    "name": "@xcn",
+    "homepage": "https://ui.radiumcoders.com",
+    "url": "https://ui.radiumcoders.com/r/xcn/{name}.json",
+    "description": "Hand-crafted, beautiful, and minimal UI components built with Tailwind CSS and Motion."
+  },
+  {
+    "name": "@dotmatrix",
+    "homepage": "https://dotmatrix.zzzzshawn.cloud",
+    "url": "https://dotmatrix.zzzzshawn.cloud/r/{name}.json",
+    "description": "Production-ready dot-matrix loading components for React, featuring square, circular, and triangle animations with polished motion."
+  },
+  {
+    "name": "@delta",
+    "homepage": "https://deltacomponents.dev",
+    "url": "https://deltacomponents.dev/r/{name}.json",
+    "description": "A shadcn registry for AI and media-rich interfaces — streaming LLM chat, zoomable images, swipeable card decks, interactive maps, plus dashboard and landing-page blocks."
+  },
+  {
+    "name": "@shieldcn",
+    "homepage": "https://shieldcn.dev",
+    "url": "https://shieldcn.dev/r/{name}.json",
+    "description": "Beautiful README badges as a service. A shields.io alternative with the visual quality of shadcn/ui. Drop-in SVG badge components for npm, GitHub, Discord, and more."
+  },
+  {
+    "name": "@evilbuttons",
+    "homepage": "https://evilbuttons.radiumcoders.com/docs",
+    "url": "https://evilbuttons.radiumcoders.com/r/{name}.json",
+    "description": "A shadcn/ui registry featuring a collection of animated buttons built with Motion. Each component is designed to add punchy, interactive feedback to your UI with minimal setup."
+  },
+  {
+    "name": "@stepper",
+    "homepage": "https://francozeta-stepper.vercel.app",
+    "url": "https://francozeta-stepper.vercel.app/{name}.json",
+    "description": "A modern, accessible and composable Stepper component for React and Tailwind CSS. Built for shadcn/ui-style workflows with registry-first distribution."
   }
 ]

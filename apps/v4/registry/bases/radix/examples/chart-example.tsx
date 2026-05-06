@@ -41,6 +41,7 @@ import {
   type ChartConfig,
 } from "@/registry/bases/radix/ui/chart"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 const areaChartData = [
   { month: "January", desktop: 186 },
@@ -159,6 +160,9 @@ const barChartConfig = {
 } satisfies ChartConfig
 
 function ChartBarExample() {
+  const [params] = useDesignSystemSearchParams()
+  const isRounded = !["lyra", "sera"].includes(params.style)
+
   return (
     <Example title="Bar Chart">
       <Card className="w-full">
@@ -181,8 +185,16 @@ function ChartBarExample() {
                 cursor={false}
                 content={<ChartTooltipContent indicator="dashed" />}
               />
-              <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-              <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+              <Bar
+                dataKey="desktop"
+                fill="var(--color-desktop)"
+                radius={isRounded ? 4 : 0}
+              />
+              <Bar
+                dataKey="mobile"
+                fill="var(--color-mobile)"
+                radius={isRounded ? 4 : 0}
+              />
             </BarChart>
           </ChartContainer>
         </CardContent>

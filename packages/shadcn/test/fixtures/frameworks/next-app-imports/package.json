@@ -1,0 +1,21 @@
+{
+  "name": "next-app-imports",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.0.0"
+  },
+  "imports": {
+    "#components/*": "./src/components/*",
+    "#components/ui/*": "./src/components/ui/*",
+    "#lib/*": "./src/lib/*",
+    "#hooks": "./src/hooks/index.ts",
+    "#utils": "./src/lib/utils.ts"
+  }
+}
