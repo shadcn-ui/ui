@@ -203,3 +203,89 @@ export const SettingsCard: Story = {
     </Card>
   ),
 }
+
+/**
+ * Figma parity story (JES-94, batch C).
+ *
+ * Mirrors the Figma `Lead UI - Tabs` (root 29:105685, trigger
+ * 29:105668). Per the existing Code Connect mapping
+ * (Tabs.figma.tsx), Figma's documented trigger properties are:
+ *
+ *   - Tab Text (TEXT)
+ *   - Active   (BOOLEAN-as-VARIANT): Off, On
+ *   - State    (VARIANT): Default, Focus, Disabled
+ *
+ * Lead's `<TabsTrigger>` renders a button whose `value` is matched
+ * against parent `<Tabs>` `value` / `defaultValue` to determine
+ * active state. `disabled` is mapped from State=Disabled. The
+ * remaining state values (Default, Focus) are runtime CSS states.
+ *
+ * Source:
+ *   https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-105685
+ *
+ * **Documented non-parity exception:**
+ *
+ * - **Difference:** Figma's `Active=On|Off` is a per-trigger toggle;
+ *   Lead's React API expresses active state through parent
+ *   `<Tabs value>`/`<Tabs defaultValue>` matching the trigger's
+ *   `value`. Figma's `State=Focus` is a runtime CSS state, not a
+ *   React prop.
+ * - **Reason:** API shape — Radix's tabs primitive (which Lead
+ *   wraps) requires a single source of truth for which tab is
+ *   active. Promoting per-trigger Active to a prop would conflict
+ *   with controlled/uncontrolled value semantics.
+ * - **Authority:** `Tabs.figma.tsx` deliberate-unmapped block.
+ * - **Resolution:** Permanent.
+ *
+ * Parity standard: docs/storybook-figma-parity-standard.md.
+ */
+export const FigmaParity: Story = {
+  name: "Figma parity (Active + Disabled trigger states)",
+  render: () => (
+    <div
+      style={{
+        padding: 16,
+        background: "var(--lead-color-surface-default)",
+        width: "fit-content",
+      }}
+    >
+      <Tabs defaultValue="active">
+        <TabsList>
+          <TabsTrigger value="inactive">Active=Off</TabsTrigger>
+          <TabsTrigger value="active">Active=On (selected)</TabsTrigger>
+          <TabsTrigger value="disabled" disabled>
+            State=Disabled
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="inactive">
+          <p style={{ fontSize: 13, color: "var(--lead-color-text-muted)" }}>
+            Inactive tab content.
+          </p>
+        </TabsContent>
+        <TabsContent value="active">
+          <p style={{ fontSize: 13, color: "var(--lead-color-text-muted)" }}>
+            Active tab content (this is what designers see when Active=On).
+          </p>
+        </TabsContent>
+        <TabsContent value="disabled">
+          <p style={{ fontSize: 13, color: "var(--lead-color-text-muted)" }}>
+            Disabled tab content (unreachable via the trigger).
+          </p>
+        </TabsContent>
+      </Tabs>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Mirrors Figma `Lead UI - Tabs` (29:105685 root + 29:105668 " +
+          "trigger). Renders the documented trigger states Lead's React " +
+          "API expresses: Active (selected via parent value), Disabled. " +
+          "Figma's per-trigger Active boolean and State=Focus are " +
+          "documented non-parity (see story header for the API-shape " +
+          "exception).",
+      },
+    },
+  },
+}
