@@ -191,58 +191,7 @@ export function printInfo(data: Awaited<ReturnType<typeof collectInfo>>) {
     })
 
     logger.break()
-    logger.log(highlighter.info("Preset"))
-    if (!data.preset?.code) {
-      printEntries({
-        "--preset": "-",
-      })
-    } else {
-      const fallbacks = data.preset.fallbacks ?? []
-      const formatPresetValue = (key: string, value: string | undefined) => {
-        const suffix = fallbacks.includes(key) ? "*" : ""
-        return `${value ?? "-"}${suffix}`
-      }
-
-      printEntries({
-        "--preset": data.preset.code,
-        url: `${SHADCN_URL}/create?preset=${data.preset.code}`,
-        style: data.preset.values?.style ?? "-",
-        baseColor: formatPresetValue(
-          "baseColor",
-          data.preset.values?.baseColor
-        ),
-        theme: formatPresetValue("theme", data.preset.values?.theme),
-        chartColor: formatPresetValue(
-          "chartColor",
-          data.preset.values?.chartColor
-        ),
-        iconLibrary: formatPresetValue(
-          "iconLibrary",
-          data.preset.values?.iconLibrary
-        ),
-        font: formatPresetValue("font", data.preset.values?.font),
-        fontHeading: formatPresetValue(
-          "fontHeading",
-          data.preset.values?.fontHeading
-        ),
-        radius: formatPresetValue("radius", data.preset.values?.radius),
-        menuAccent: formatPresetValue(
-          "menuAccent",
-          data.preset.values?.menuAccent
-        ),
-        menuColor: formatPresetValue(
-          "menuColor",
-          data.preset.values?.menuColor
-        ),
-      })
-
-      if (fallbacks.length > 0) {
-        logger.log("")
-        logger.log(
-          "  * Uses preset defaults for values not available as options on shadcn/create."
-        )
-      }
-    }
+    printPresetInfo(data.preset)
 
     // Aliases.
     logger.break()
@@ -296,8 +245,54 @@ export function printInfo(data: Awaited<ReturnType<typeof collectInfo>>) {
   logger.break()
 }
 
+export function printPresetInfo(
+  preset: Awaited<ReturnType<typeof collectInfo>>["preset"],
+  options: {
+    fallbackNote?: string
+  } = {}
+) {
+  logger.log(highlighter.info("Preset"))
+  if (!preset?.code) {
+    printEntries({
+      code: "-",
+    })
+  } else {
+    const fallbacks = preset.fallbacks ?? []
+    const formatPresetValue = (key: string, value: string | undefined) => {
+      const suffix = fallbacks.includes(key) ? "*" : ""
+      return `${value ?? "-"}${suffix}`
+    }
+
+    printEntries({
+      code: preset.code,
+      version: preset.code[0],
+      style: preset.values?.style ?? "-",
+      baseColor: formatPresetValue("baseColor", preset.values?.baseColor),
+      theme: formatPresetValue("theme", preset.values?.theme),
+      chartColor: formatPresetValue("chartColor", preset.values?.chartColor),
+      iconLibrary: formatPresetValue("iconLibrary", preset.values?.iconLibrary),
+      font: formatPresetValue("font", preset.values?.font),
+      fontHeading: formatPresetValue("fontHeading", preset.values?.fontHeading),
+      radius: formatPresetValue("radius", preset.values?.radius),
+      menuAccent: formatPresetValue("menuAccent", preset.values?.menuAccent),
+      menuColor: formatPresetValue("menuColor", preset.values?.menuColor),
+      url: `${SHADCN_URL}/create?preset=${preset.code}`,
+    })
+
+    if (fallbacks.length > 0) {
+      logger.log("")
+      logger.log(
+        options.fallbackNote ??
+          "  * Uses preset defaults for values not available as options on shadcn/create."
+      )
+    }
+  }
+}
+
 function printEntries(entries: Record<string, string>) {
-  const maxKeyLength = Math.max(...Object.keys(entries).map((k) => k.length))
+  const maxKeyLength = Math.max(
+    ...Object.keys(entries).map((key) => key.length)
+  )
   for (const [key, value] of Object.entries(entries)) {
     logger.log(`  ${key.padEnd(maxKeyLength + 2)}${value}`)
   }
