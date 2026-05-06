@@ -1113,6 +1113,6 @@
     "name": "@framecn",
     "homepage": "https://framecn.vercel.app",
     "url": "https://framecn.vercel.app/r/{name}.json",
-    "description": "Beautiful videos, made simple. Ready to use, customizable video components for React.",
+    "description": "Beautiful videos, made simple. Ready to use, customizable video components for React."
   }
 ]
