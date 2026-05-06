@@ -5,6 +5,7 @@ import {
   FieldError,
   FieldGroup,
   FieldLabel,
+  Label,
   RadioGroup,
   RadioGroupItem,
 } from "@leadbank/ui"
@@ -121,4 +122,115 @@ export const InFieldWithError: Story = {
       </FieldGroup>
     </Field>
   ),
+}
+
+/**
+ * Figma parity story (JES-93, batch B).
+ *
+ * Mirrors the Figma `Lead UI - Radio Group / Item` (item symbol
+ * 29:97236). Per the existing Code Connect mapping
+ * (RadioGroup.figma.tsx), Figma's documented item properties are:
+ *
+ *   - Active (VARIANT): Off, On
+ *   - Type   (VARIANT): Default, Box
+ *   - Font Weight (VARIANT): Medium, Regular
+ *   - State  (VARIANT): Default, Focus
+ *
+ * Lead's `<RadioGroupItem>` exposes `value` (required identifier),
+ * `disabled`, and inherits `checked` state from the parent
+ * `<RadioGroup>` value/defaultValue. No item-level `Type`, `Font
+ * Weight`, or `State` props.
+ *
+ * Source:
+ *   https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-97236
+ *
+ * **Documented non-parity exception:**
+ *
+ * - **Difference:** Figma exposes `Type=Box` (boxed item layout) and
+ *   `Font Weight=Medium|Regular` as variants on the item; Lead has
+ *   neither as a React prop on `<RadioGroupItem>`.
+ * - **Reason:** API shape — label typography is a caller styling
+ *   concern via the surrounding `<Label>` / `<Field>` composition,
+ *   not an item-level prop. The `Type=Box` boxed visual is a
+ *   stylistic alternate not adopted as Lead's canonical look.
+ * - **Authority:** `RadioGroup.figma.tsx` deliberate-unmapped block;
+ *   the group-root Figma node `29:97178` is also intentionally
+ *   unmapped in that file (no clean mapping target).
+ * - **Resolution:** Permanent. Item layout/typography variants are
+ *   caller composition concerns.
+ *
+ * Parity standard: docs/storybook-figma-parity-standard.md.
+ */
+export const FigmaParity: Story = {
+  name: "Figma parity (Active On/Off + Disabled)",
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 16,
+        padding: 16,
+        background: "var(--lead-color-surface-default)",
+        width: "fit-content",
+      }}
+    >
+      <span
+        style={{
+          fontSize: 11,
+          fontWeight: 600,
+          textTransform: "uppercase",
+          letterSpacing: "0.04em",
+          color: "var(--lead-color-text-muted)",
+        }}
+      >
+        Default group
+      </span>
+      <RadioGroup defaultValue="active">
+        <Field orientation="horizontal">
+          <RadioGroupItem id="parity-inactive" value="inactive" />
+          <Label htmlFor="parity-inactive">Active=Off (Inactive)</Label>
+        </Field>
+        <Field orientation="horizontal">
+          <RadioGroupItem id="parity-active" value="active" />
+          <Label htmlFor="parity-active">Active=On (selected)</Label>
+        </Field>
+      </RadioGroup>
+
+      <span
+        style={{
+          fontSize: 11,
+          fontWeight: 600,
+          textTransform: "uppercase",
+          letterSpacing: "0.04em",
+          color: "var(--lead-color-text-muted)",
+          marginTop: 8,
+        }}
+      >
+        Disabled group
+      </span>
+      <RadioGroup defaultValue="active2" disabled>
+        <Field orientation="horizontal">
+          <RadioGroupItem id="parity-inactive-disabled" value="inactive2" />
+          <Label htmlFor="parity-inactive-disabled">Active=Off, disabled</Label>
+        </Field>
+        <Field orientation="horizontal">
+          <RadioGroupItem id="parity-active-disabled" value="active2" />
+          <Label htmlFor="parity-active-disabled">Active=On, disabled</Label>
+        </Field>
+      </RadioGroup>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Mirrors Figma `Lead UI - Radio Group / Item` (29:97236). " +
+          "Renders the Active × Disabled combinations Lead's React " +
+          "API expresses. Figma's Type=Box and Font Weight variants " +
+          "are not Lead props (see story header for the documented " +
+          "non-parity exception); label typography and item layout " +
+          "are caller composition concerns.",
+      },
+    },
+  },
 }
