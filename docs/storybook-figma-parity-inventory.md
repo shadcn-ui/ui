@@ -1,11 +1,12 @@
 # Storybook ↔ Figma Visual Parity Inventory
 
-**Status:** snapshot updated 2026-05-06 after JES-93 merged. Tracks Linear `JES-91`. See [`storybook-figma-parity-standard.md`](./storybook-figma-parity-standard.md) for the working standard each row in this inventory is being measured against.
+**Status:** snapshot updated 2026-05-06 after JES-94 merged. Tracks Linear `JES-91`. See [`storybook-figma-parity-standard.md`](./storybook-figma-parity-standard.md) for the working standard each row in this inventory is being measured against.
 
 This is the canonical list of every Lead component, its Figma source node, and its current Storybook parity status. New parity work picks rows from here in the recommended batch order at the bottom.
 
 ## Recent updates
 
+- **2026-05-06 — JES-94 / Batch C merged** ([PR #50](https://github.com/jnanthak83/lead-design-system/pull/50), merge `3aa6a21be`). Three components moved to 🟢: Card, Tabs, Accordion. Three documented non-parity exceptions (all API-shape): Card section booleans → React composition, Tabs/Accordion per-element Active is parent-value-driven (Radix controlled-value semantics). Live Figma MCP unavailable; sourced from Code Connect mappings. **Lane 3 milestone now at 14/21 components 🟢 (67%).**
 - **2026-05-06 — JES-93 / Batch B merged** ([PR #48](https://github.com/jnanthak83/lead-design-system/pull/48), merge `5252b0814`). Five components moved to 🟢: Checkbox, Switch, RadioGroupItem, Input, Tooltip. Four documented non-parity exceptions (all API-shape): Checkbox Focus/Pressed runtime CSS, Switch Type=Box / Side variants, RadioGroupItem Type / Font Weight caller styling, Input Variant=File + runtime Focus/Filled states. Tooltip is the lane's first "no exception" parity (Figma surface maps 1:1 to `<TooltipContent>` props). Live Figma MCP unavailable; sourced from Code Connect mappings (parity-standard fallback path).
 - **2026-05-05 — JES-92 / Batch A merged** ([PR #46](https://github.com/jnanthak83/lead-design-system/pull/46), merge `55714fbc4`). Five components moved to 🟢: Separator, Progress, Skeleton, Alert, Badge. Three documented non-parity exceptions (all API-shape): Skeleton `Default`/`Card` caller compositions, Alert Icon slot, Badge Outline missing. See PR for full per-component delta.
 - **2026-05-05 — JES-90 / JES-91 merged.** This doc and the parity standard landed on `main`.
@@ -23,12 +24,12 @@ This is the canonical list of every Lead component, its Figma source node, and i
 
 | Component | Figma node | Production story | Experimental export | Parity stories | Status | Notes |
 |---|---|---|---|---|---|---|
-| **Accordion** | [`29:66202`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66202) (root) + [`29:66236`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66236) (item) | ✅ `Accordion.stories.tsx` | — | — | 🟠 | Compositional. Likely needs item-level parity story showing trigger states. |
+| **Accordion** | [`29:66202`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66202) (root) + [`29:66236`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66236) (item) | ✅ `Accordion.stories.tsx` | — | ✅ `Figma parity (Active On/Off + Trigger Text + Content Text)` | 🟢 | JES-94. Documented non-parity: per-item Active is parent-value-driven (Radix controlled value); State=Hover/Focus/Pressed are runtime CSS. |
 | **Alert** | [`29:66418`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66418) | ✅ `Alert.stories.tsx` | — | ✅ `Figma parity (Default + Destructive)` | 🟢 | JES-92. Documented non-parity: Icon=true → caller-supplied `icon?: ReactNode` (API-CONSISTENCY §8.5). |
 | **AlertDialog** | [`29:66659`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66659) (symbol) + [`29:66660`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66660) (md) + [`29:66667`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66667) (sm) | ✅ `AlertDialog.stories.tsx` (4 stories) | ✅ `AlertDialog.figma-export.stories.tsx` | ✅ `Figma parity (md)`, `Figma parity (sm)` | 🟢 | **Reference pattern.** Decision doc `alert-dialog-primitive-decision.md`. Two non-parity exceptions: button order (decision §4), sm width (compact 360px vs Figma 512px). |
 | **Badge** | [`29:66938`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66938) | ✅ `Badge.stories.tsx` | ✅ `Badge.figma-export.stories.tsx` | ✅ `Figma parity (Default / Secondary / Destructive / Verified)` | 🟢 | JES-92. Documented non-parity: Outline has no Lead variant (lives in experimental export only). |
 | **Button** | [`29:67711`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-67711) (root, see also `29:383`/`29:384`/`29:636` referenced in design context) | ✅ `Button.stories.tsx` | — | — | 🟠 | High-traffic component. Many variants (primary/secondary/outline/ghost/danger). Worth careful per-variant parity. |
-| **Card** | [`29:72255`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-72255) | ✅ `Card.stories.tsx` | ✅ `Card.figma-export.stories.tsx` | — | 🟠 | Compositional. Production parity story pending Batch C (JES-94). Experimental export still exists at `Experimental / Figma Export / Card` — image-card variant approximated; Avatar component absent. |
+| **Card** | [`29:72255`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-72255) | ✅ `Card.stories.tsx` | ✅ `Card.figma-export.stories.tsx` | ✅ `Figma parity (default header + content + footer)` | 🟢 | JES-94. Documented non-parity: section booleans (Card Header / Card Content / Card Footer) and instance-swap props map to React composition, not props. Image asset and Avatar approximations carry from JES-84 experimental export. |
 | **Checkbox** | [`29:85556`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-85556) | ✅ `Checkbox.stories.tsx` | — | ✅ `Figma parity (Status + State)` | 🟢 | JES-93. Documented non-parity: Figma State=Focus/Pressed are runtime CSS states, not React props. |
 | **Dialog** | [`29:91865`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-91865) | ✅ `Dialog.stories.tsx` | — | — | 🟠 | Distinct from AlertDialog. Stacked-footer-at-sm consistency rule already applied (PR #43). |
 | **DropdownMenu** | [`29:92788`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92788) (root), [`29:92680`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92680) (content), [`29:92735`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92735) (item), [`29:92802`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92802) (label), [`29:92856`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92856) (separator), [`29:92869`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92869) (sub-trigger) | ✅ `DropdownMenu.stories.tsx` | — | — | 🟠 | Highest-complexity inventory entry: variant-as-component-switch already documented in Code Connect mapping. Parity stories should mirror Default/Checkbox/Radio/Icon variants. |
@@ -42,14 +43,14 @@ This is the canonical list of every Lead component, its Figma source node, and i
 | **Separator** | [`29:98862`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-98862) | ✅ `Separator.stories.tsx` | — | ✅ `Figma parity (horizontal + vertical)` | 🟢 | JES-92. Clean 1:1 mapping; no documented non-parity. |
 | **Skeleton** | [`29:103198`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-103198) | ✅ `Skeleton.stories.tsx` | — | ✅ `Figma parity (Default / Card / Text compositions)` | 🟢 | JES-92. Documented non-parity: Figma `Default`/`Card` are caller-side compositions of Lead's `text`/`rect`/`circle` shape primitives. |
 | **Switch** | [`29:103697`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-103697) | ✅ `Switch.stories.tsx` | — | ✅ `Figma parity (Active On/Off + Disabled)` | 🟢 | JES-93. Documented non-parity: Type=Box and Side=Left|Right are not Lead props (label placement is caller composition). |
-| **Tabs** | [`29:105685`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-105685) (root), [`29:105668`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-105668) (trigger) | ✅ `Tabs.stories.tsx` | — | — | 🟠 | |
+| **Tabs** | [`29:105685`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-105685) (root), [`29:105668`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-105668) (trigger) | ✅ `Tabs.stories.tsx` | — | ✅ `Figma parity (Active + Disabled trigger states)` | 🟢 | JES-94. Documented non-parity: per-trigger Active is parent-value-driven (Radix controlled value); State=Focus is runtime CSS. |
 | **Tooltip** | [`29:107066`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-107066) | ✅ `Tooltip.stories.tsx` | — | ✅ `Figma parity (all four sides)` | 🟢 | JES-93. Clean 1:1 mapping; no documented non-parity (lane's first non-AlertDialog component to ship parity with zero exceptions). |
 
-**Summary counts (after JES-93 / Batch B):**
+**Summary counts (after JES-94 / Batch C):**
 
-- 🟢 Done: **11** (AlertDialog, Alert, Badge, Checkbox, Input, Progress, RadioGroup, Separator, Skeleton, Switch, Tooltip)
+- 🟢 Done: **14** (Accordion, AlertDialog, Alert, Badge, Card, Checkbox, Input, Progress, RadioGroup, Separator, Skeleton, Switch, Tabs, Tooltip)
 - 🟡 Has experimental: **0**
-- 🟠 Production-only: **8** (Accordion, Button, Card, Dialog, DropdownMenu, Popover, Select, Tabs)
+- 🟠 Production-only: **5** (Button, Dialog, DropdownMenu, Popover, Select)
 - 🔵 Blocked: **2** (Field, Label — intentional, awaiting Figma source nodes)
 
 ---
@@ -70,18 +71,13 @@ Shipped 2026-05-06 in [PR #48](https://github.com/jnanthak83/lead-design-system/
 
 Live Figma MCP was unavailable during authoring; the batch sourced from existing Code Connect mappings instead — the parity standard's documented fallback path. Each parity story includes the Figma node URL inline for reviewer visual comparison against the live design.
 
-### Batch C — JES-94: compositional content (medium risk)
+### Batch C — JES-94: compositional content ✅ DONE
 
-Compositional or content-heavy components. May reveal Figma surface that needs decision-doc treatment (similar to AlertDialog) before parity stories can ship.
+Shipped 2026-05-06 in [PR #50](https://github.com/jnanthak83/lead-design-system/pull/50) (merge `3aa6a21be`). Three components moved to 🟢: Card, Tabs, Accordion. Three documented non-parity exceptions (all API-shape, all permanent): Card section booleans → React composition, Tabs per-trigger Active is parent-value-driven, Accordion per-item Active is parent-value-driven. The Card row carried Image and Avatar approximations from JES-84's experimental export.
 
-| Component | Figma node | Reason |
-|---|---|---|
-| **Alert** | `29:66418` | Inline status. Icon-prop exception already documented. |
-| **Card** | `29:72255` | Has experimental export. Multiple compositions to mirror; image asset and Avatar may need API decisions or stay approximated. |
-| **Tabs** | `29:105685` + `29:105668` | Trigger states (default/active/disabled) and orientation. |
-| **Accordion** | `29:66202` + `29:66236` | Item-state visual changes (open/closed/disabled). |
+The Tabs and Accordion exceptions both reduce to one Radix concept: **state is owned by the parent, not the child** — controlled vs. uncontrolled value semantics. Originally this section also listed Alert, but Alert was completed in Batch A (JES-92) and never needed Batch C treatment; that stale reference is removed.
 
-**Estimated:** 4 PRs. Card and Accordion may spawn decision doc PRs first.
+No decision PRs were needed (initial estimate flagged Card/Accordion as possible decision-doc candidates; in practice the existing Code Connect mappings authoritatively documented the API-shape exceptions, so parity stories shipped story-only).
 
 ### Batch D — JES-95: overlays + complex (highest risk)
 
