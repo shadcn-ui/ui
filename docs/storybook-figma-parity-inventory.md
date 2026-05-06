@@ -1,11 +1,12 @@
 # Storybook ↔ Figma Visual Parity Inventory
 
-**Status:** snapshot updated 2026-05-05 after JES-92 merged. Tracks Linear `JES-91`. See [`storybook-figma-parity-standard.md`](./storybook-figma-parity-standard.md) for the working standard each row in this inventory is being measured against.
+**Status:** snapshot updated 2026-05-06 after JES-93 merged. Tracks Linear `JES-91`. See [`storybook-figma-parity-standard.md`](./storybook-figma-parity-standard.md) for the working standard each row in this inventory is being measured against.
 
 This is the canonical list of every Lead component, its Figma source node, and its current Storybook parity status. New parity work picks rows from here in the recommended batch order at the bottom.
 
 ## Recent updates
 
+- **2026-05-06 — JES-93 / Batch B merged** ([PR #48](https://github.com/jnanthak83/lead-design-system/pull/48), merge `5252b0814`). Five components moved to 🟢: Checkbox, Switch, RadioGroupItem, Input, Tooltip. Four documented non-parity exceptions (all API-shape): Checkbox Focus/Pressed runtime CSS, Switch Type=Box / Side variants, RadioGroupItem Type / Font Weight caller styling, Input Variant=File + runtime Focus/Filled states. Tooltip is the lane's first "no exception" parity (Figma surface maps 1:1 to `<TooltipContent>` props). Live Figma MCP unavailable; sourced from Code Connect mappings (parity-standard fallback path).
 - **2026-05-05 — JES-92 / Batch A merged** ([PR #46](https://github.com/jnanthak83/lead-design-system/pull/46), merge `55714fbc4`). Five components moved to 🟢: Separator, Progress, Skeleton, Alert, Badge. Three documented non-parity exceptions (all API-shape): Skeleton `Default`/`Card` caller compositions, Alert Icon slot, Badge Outline missing. See PR for full per-component delta.
 - **2026-05-05 — JES-90 / JES-91 merged.** This doc and the parity standard landed on `main`.
 
@@ -28,27 +29,27 @@ This is the canonical list of every Lead component, its Figma source node, and i
 | **Badge** | [`29:66938`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-66938) | ✅ `Badge.stories.tsx` | ✅ `Badge.figma-export.stories.tsx` | ✅ `Figma parity (Default / Secondary / Destructive / Verified)` | 🟢 | JES-92. Documented non-parity: Outline has no Lead variant (lives in experimental export only). |
 | **Button** | [`29:67711`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-67711) (root, see also `29:383`/`29:384`/`29:636` referenced in design context) | ✅ `Button.stories.tsx` | — | — | 🟠 | High-traffic component. Many variants (primary/secondary/outline/ghost/danger). Worth careful per-variant parity. |
 | **Card** | [`29:72255`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-72255) | ✅ `Card.stories.tsx` | ✅ `Card.figma-export.stories.tsx` | — | 🟠 | Compositional. Production parity story pending Batch C (JES-94). Experimental export still exists at `Experimental / Figma Export / Card` — image-card variant approximated; Avatar component absent. |
-| **Checkbox** | [`29:85556`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-85556) | ✅ `Checkbox.stories.tsx` | — | — | 🟠 | |
+| **Checkbox** | [`29:85556`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-85556) | ✅ `Checkbox.stories.tsx` | — | ✅ `Figma parity (Status + State)` | 🟢 | JES-93. Documented non-parity: Figma State=Focus/Pressed are runtime CSS states, not React props. |
 | **Dialog** | [`29:91865`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-91865) | ✅ `Dialog.stories.tsx` | — | — | 🟠 | Distinct from AlertDialog. Stacked-footer-at-sm consistency rule already applied (PR #43). |
 | **DropdownMenu** | [`29:92788`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92788) (root), [`29:92680`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92680) (content), [`29:92735`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92735) (item), [`29:92802`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92802) (label), [`29:92856`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92856) (separator), [`29:92869`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92869) (sub-trigger) | ✅ `DropdownMenu.stories.tsx` | — | — | 🟠 | Highest-complexity inventory entry: variant-as-component-switch already documented in Code Connect mapping. Parity stories should mirror Default/Checkbox/Radio/Icon variants. |
 | **Field** | — (compositional wrapper; no standalone Figma node yet) | ✅ `Field.stories.tsx` | — | — | 🔵 | Used inside other components' compositions (e.g. Select). Per `figma-to-code-automation-roadmap.md` §6, intentional unmapped — wait for design to publish source-of-truth nodes before adding parity stories. |
-| **Input** | [`29:95030`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-95030) | ✅ `Input.stories.tsx` | — | — | 🟠 | |
+| **Input** | [`29:95030`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-95030) | ✅ `Input.stories.tsx` | — | ✅ `Figma parity (Default / Filled / Disabled / Error)` | 🟢 | JES-93. Documented non-parity: Variant=File and runtime Focus/Filled states are not React props. |
 | **Label** | — (compositional; no standalone Figma node) | ✅ `Label.stories.tsx` | — | — | 🔵 | Same as Field — embedded labels exist within trigger/control variants but no standalone source node. |
 | **Popover** | [`29:96969`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-96969) | ✅ `Popover.stories.tsx` | — | — | 🟠 | Code Connect mapping is example-only (no Figma text/enum props). Parity story should mirror canonical positioning + arrow. |
 | **Progress** | [`29:97110`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-97110) | ✅ `Progress.stories.tsx` | — | ✅ `Figma parity (Percent variants)` | 🟢 | JES-92. No documented non-parity — Figma `Percent` enum is discrete subset of Lead's continuous `value`. |
-| **RadioGroup** | [`29:97236`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-97236) (item) | ✅ `RadioGroup.stories.tsx` | — | — | 🟠 | Figma node is item-level; group-level Figma node may not exist (similar to Field/Label). |
+| **RadioGroup** | [`29:97236`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-97236) (item) | ✅ `RadioGroup.stories.tsx` | — | ✅ `Figma parity (Active On/Off + Disabled)` | 🟢 | JES-93. Documented non-parity: Type=Box and Font Weight are caller styling concerns, not item-level Lead props. Group-root Figma node `29:97178` remains unmapped per `RadioGroup.figma.tsx`. |
 | **Select** | [`29:98157`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-98157) (trigger/control), [`29:97998`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-97998) (item), [`29:97936`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-97936) (label), [`29:98193`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-98193) (menu) | ✅ `Select.stories.tsx` | — | — | 🟠 | Compositional with multiple Figma nodes. Trigger/control node represents the *whole labeled field*, not just the button — see `Select.figma.tsx` for the mapping rationale. |
 | **Separator** | [`29:98862`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-98862) | ✅ `Separator.stories.tsx` | — | ✅ `Figma parity (horizontal + vertical)` | 🟢 | JES-92. Clean 1:1 mapping; no documented non-parity. |
 | **Skeleton** | [`29:103198`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-103198) | ✅ `Skeleton.stories.tsx` | — | ✅ `Figma parity (Default / Card / Text compositions)` | 🟢 | JES-92. Documented non-parity: Figma `Default`/`Card` are caller-side compositions of Lead's `text`/`rect`/`circle` shape primitives. |
-| **Switch** | [`29:103697`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-103697) | ✅ `Switch.stories.tsx` | — | — | 🟠 | |
+| **Switch** | [`29:103697`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-103697) | ✅ `Switch.stories.tsx` | — | ✅ `Figma parity (Active On/Off + Disabled)` | 🟢 | JES-93. Documented non-parity: Type=Box and Side=Left|Right are not Lead props (label placement is caller composition). |
 | **Tabs** | [`29:105685`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-105685) (root), [`29:105668`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-105668) (trigger) | ✅ `Tabs.stories.tsx` | — | — | 🟠 | |
-| **Tooltip** | [`29:107066`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-107066) | ✅ `Tooltip.stories.tsx` | — | — | 🟠 | Side enum maps cleanly. |
+| **Tooltip** | [`29:107066`](https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-107066) | ✅ `Tooltip.stories.tsx` | — | ✅ `Figma parity (all four sides)` | 🟢 | JES-93. Clean 1:1 mapping; no documented non-parity (lane's first non-AlertDialog component to ship parity with zero exceptions). |
 
-**Summary counts (after JES-92 / Batch A):**
+**Summary counts (after JES-93 / Batch B):**
 
-- 🟢 Done: **6** (AlertDialog, Alert, Badge, Progress, Separator, Skeleton)
-- 🟡 Has experimental: **0** (Card moved to 🟠 — its experimental export still exists, but its production-parity stories are now scheduled in Batch C / JES-94 alongside other compositional content components, so it's tracked under the same status as the other Batch C rows)
-- 🟠 Production-only: **13** (Accordion, Button, Card, Checkbox, Dialog, DropdownMenu, Input, Popover, RadioGroup, Select, Switch, Tabs, Tooltip)
+- 🟢 Done: **11** (AlertDialog, Alert, Badge, Checkbox, Input, Progress, RadioGroup, Separator, Skeleton, Switch, Tooltip)
+- 🟡 Has experimental: **0**
+- 🟠 Production-only: **8** (Accordion, Button, Card, Dialog, DropdownMenu, Popover, Select, Tabs)
 - 🔵 Blocked: **2** (Field, Label — intentional, awaiting Figma source nodes)
 
 ---
@@ -63,19 +64,11 @@ Inside each batch, components are independently ship-able as separate PRs — th
 
 Shipped 2026-05-05 in [PR #46](https://github.com/jnanthak83/lead-design-system/pull/46) (merge `55714fbc4`). Five components moved to 🟢: Separator, Progress, Skeleton, Alert, Badge. Three documented non-parity exceptions (all API-shape, all permanent design-system choices): Skeleton `Default`/`Card` caller compositions, Alert Icon slot, Badge Outline missing. The batch shipped as a single Storybook-only PR rather than the originally-estimated 4-5 separate PRs — bundle-by-batch turned out lower-overhead than per-component PRs at this scope.
 
-### Batch B — JES-93: form controls (low risk, likely no decision docs)
+### Batch B — JES-93: form controls ✅ DONE
 
-Standalone form controls with single Figma surface. Likely match cleanly; if not, the gap is usually a token issue (token PR), not an API decision.
+Shipped 2026-05-06 in [PR #48](https://github.com/jnanthak83/lead-design-system/pull/48) (merge `5252b0814`). Five components moved to 🟢: Checkbox, Switch, RadioGroupItem, Input, Tooltip. Four documented non-parity exceptions (all API-shape, all permanent design-system choices): Checkbox Focus/Pressed runtime CSS, Switch Type=Box / Side variants, RadioGroupItem Type / Font Weight, Input Variant=File + runtime Focus/Filled states. Tooltip shipped with **zero exceptions** — Figma's surface maps 1:1 to Lead's `<TooltipContent>` props.
 
-| Component | Figma node | Reason |
-|---|---|---|
-| **Checkbox** | `29:85556` | |
-| **Switch** | `29:103697` | |
-| **RadioGroup** | `29:97236` (item) | Figma node is item-level; group composition is React-side. |
-| **Input** | `29:95030` | |
-| **Tooltip** | `29:107066` | Side enum maps cleanly. |
-
-**Estimated:** 5 PRs, each Storybook-stories-only.
+Live Figma MCP was unavailable during authoring; the batch sourced from existing Code Connect mappings instead — the parity standard's documented fallback path. Each parity story includes the Figma node URL inline for reviewer visual comparison against the live design.
 
 ### Batch C — JES-94: compositional content (medium risk)
 
