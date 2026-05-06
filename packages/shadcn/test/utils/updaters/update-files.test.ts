@@ -1,6 +1,8 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
 import { afterAll, afterEach, describe, expect, test, vi } from "vitest"
+import prompts from "prompts"
+import { Project } from "ts-morph"
 
 import { getConfig } from "../../../src/utils/get-config"
 import {
@@ -8,6 +10,7 @@ import {
   resolveFilePath,
   resolveModuleByProbablePath,
   resolveNestedFilePath,
+  rewriteResolvedImportsInContent,
   toAliasedImport,
   updateFiles,
 } from "../../../src/utils/updaters/update-files"
@@ -104,6 +107,178 @@ describe("resolveFilePath", () => {
         projectInfo
       )
     ).toBe(resolvedPath)
+  })
+
+  test.each([
+    {
+      description: "should resolve @components target aliases",
+      target: "@components/charts/pie.tsx",
+      resolvedPath: "/foo/bar/components/charts/pie.tsx",
+    },
+    {
+      description: "should resolve @ui target aliases",
+      target: "@ui/button.tsx",
+      resolvedPath: "/foo/bar/components/ui/button.tsx",
+    },
+    {
+      description: "should resolve @lib target aliases",
+      target: "@lib/format.ts",
+      resolvedPath: "/foo/bar/lib/format.ts",
+    },
+    {
+      description: "should resolve @hooks target aliases",
+      target: "@hooks/use-theme.ts",
+      resolvedPath: "/foo/bar/hooks/use-theme.ts",
+    },
+  ])("$description", ({ target, resolvedPath }) => {
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/ui/button.tsx",
+          type: "registry:ui",
+          target,
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/components",
+            ui: "/foo/bar/components/ui",
+            lib: "/foo/bar/lib",
+            hooks: "/foo/bar/hooks",
+          },
+        },
+        {
+          isSrcDir: true,
+        }
+      )
+    ).toBe(resolvedPath)
+  })
+
+  test("should resolve target aliases with package import backed aliases", () => {
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/ui/button.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+        {
+          aliases: {
+            components: "#components",
+            ui: "#components/ui",
+            lib: "#lib",
+            hooks: "#hooks",
+          },
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/src/components",
+            ui: "/foo/bar/src/components/ui",
+            lib: "/foo/bar/src/lib",
+            hooks: "/foo/bar/src/hooks",
+          },
+        },
+        {
+          isSrcDir: false,
+        }
+      )
+    ).toBe("/foo/bar/src/components/ui/button.tsx")
+  })
+
+  test("should fall back to normal target resolution for unknown aliases", () => {
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/ui/button.tsx",
+          type: "registry:ui",
+          target: "@foo/bar.ts",
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/components",
+            ui: "/foo/bar/components/ui",
+            lib: "/foo/bar/lib",
+            hooks: "/foo/bar/hooks",
+          },
+        },
+        {
+          isSrcDir: true,
+        }
+      )
+    ).toBe("/foo/bar/src/foo/bar.ts")
+  })
+
+  test("should not resolve embedded alias-like path segments", () => {
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/ui/button.tsx",
+          type: "registry:ui",
+          target: "components/@ui/button.tsx",
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/components",
+            ui: "/foo/bar/components/ui",
+            lib: "/foo/bar/lib",
+            hooks: "/foo/bar/hooks",
+          },
+        },
+        {
+          isSrcDir: false,
+        }
+      )
+    ).toBe("/foo/bar/components/@ui/button.tsx")
+  })
+
+  test("should bypass page target mapping for target aliases", () => {
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/app/login/page.tsx",
+          type: "registry:page",
+          target: "@ui/page.tsx",
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/src/components",
+            ui: "/foo/bar/src/primitives",
+            lib: "/foo/bar/src/lib",
+            hooks: "/foo/bar/src/hooks",
+          },
+        },
+        {
+          isSrcDir: true,
+          framework: "next-pages",
+        }
+      )
+    ).toBe("/foo/bar/src/primitives/page.tsx")
+  })
+
+  test("should reject target aliases that escape the alias root", () => {
+    expect(() =>
+      resolveFilePath(
+        {
+          path: "hello-world/ui/button.tsx",
+          type: "registry:ui",
+          target: "@ui/../../page.tsx",
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/components",
+            ui: "/foo/bar/components/ui",
+            lib: "/foo/bar/lib",
+            hooks: "/foo/bar/hooks",
+          },
+        },
+        {
+          isSrcDir: false,
+        }
+      )
+    ).toThrow('Invalid target path "@ui/../../page.tsx".')
   })
 
   test.each([
@@ -1073,6 +1248,330 @@ return <div>Hello World</div>
     `)
   })
 
+  test("should rewrite exact package-import subpaths to valid relative imports", async () => {
+    const tempDir = path.join(
+      path.resolve(__dirname, "../../fixtures"),
+      "temp-package-import-exact-hook"
+    )
+    const fsActual = (await vi.importActual(
+      "fs/promises"
+    )) as typeof import("fs/promises")
+    const fsModuleActual = (await vi.importActual("fs")) as typeof import("fs")
+    const writeFileMock = fs.writeFile as any
+
+    try {
+      writeFileMock.mockImplementation(fsModuleActual.promises.writeFile as any)
+
+      await fsActual.rm(tempDir, { recursive: true, force: true })
+      await fsActual.mkdir(path.join(tempDir, "src", "app"), { recursive: true })
+      await fsActual.mkdir(path.join(tempDir, "src", "hooks"), {
+        recursive: true,
+      })
+      await fsActual.mkdir(path.join(tempDir, "src", "lib"), { recursive: true })
+
+      await fsActual.writeFile(
+        path.join(tempDir, "package.json"),
+        JSON.stringify(
+          {
+            name: "temp-package-import-exact-hook",
+            type: "module",
+            imports: {
+              "#components/*": "./src/components/*",
+              "#hooks": "./src/hooks/index.ts",
+              "#utils": "./src/lib/utils.ts",
+            },
+          },
+          null,
+          2
+        ),
+        "utf-8"
+      )
+
+      await fsActual.writeFile(
+        path.join(tempDir, "tsconfig.json"),
+        JSON.stringify(
+          {
+            compilerOptions: {
+              module: "esnext",
+              moduleResolution: "bundler",
+              resolvePackageJsonImports: true,
+            },
+          },
+          null,
+          2
+        ),
+        "utf-8"
+      )
+
+      await fsActual.writeFile(
+        path.join(tempDir, "components.json"),
+        JSON.stringify(
+          {
+            $schema: "https://ui.shadcn.com/schema.json",
+            style: "new-york",
+            rsc: true,
+            tsx: true,
+            tailwind: {
+              config: "",
+              css: "src/app/globals.css",
+              baseColor: "zinc",
+              cssVariables: true,
+            },
+            aliases: {
+              components: "#components",
+              hooks: "#hooks",
+              utils: "#utils",
+            },
+          },
+          null,
+          2
+        ),
+        "utf-8"
+      )
+
+      await fsActual.writeFile(
+        path.join(tempDir, "src", "app", "globals.css"),
+        '@import "tailwindcss";\n',
+        "utf-8"
+      )
+      await fsActual.writeFile(
+        path.join(tempDir, "src", "hooks", "index.ts"),
+        'export * from "./use-thing"\n',
+        "utf-8"
+      )
+      await fsActual.writeFile(
+        path.join(tempDir, "src", "lib", "utils.ts"),
+        "export function cn() {}\n",
+        "utf-8"
+      )
+
+      const config = await getConfig(tempDir)
+      if (!config) {
+        throw new Error("Failed to get config")
+      }
+
+      await updateFiles(
+        [
+          {
+            path: "components/example-card.tsx",
+            type: "registry:component",
+            content: `import { useThing } from "@/hooks/use-thing"
+
+export function ExampleCard() {
+  useThing()
+  return null
+}
+`,
+          },
+          {
+            path: "hooks/use-thing.ts",
+            type: "registry:hook",
+            content: `export function useThing() {
+  return true
+}
+`,
+          },
+        ],
+        config,
+        {
+          overwrite: true,
+          silent: true,
+        }
+      )
+
+      const componentContents = await fsActual.readFile(
+        path.join(tempDir, "src", "components", "example-card.tsx"),
+        "utf-8"
+      )
+
+      expect(componentContents).toContain(`from "../hooks/use-thing"`)
+      expect(componentContents).not.toContain(`from "#hooks/use-thing"`)
+    } finally {
+      writeFileMock.mockResolvedValue(undefined)
+      await fsActual.rm(tempDir, { recursive: true, force: true }).catch(() => {})
+    }
+  })
+
+  test("should skip existing package-import files when final content is identical", async () => {
+    const tempDir = path.join(
+      path.resolve(__dirname, "../../fixtures"),
+      "temp-package-import-same-content"
+    )
+    const fsActual = (await vi.importActual(
+      "fs/promises"
+    )) as typeof import("fs/promises")
+    const fsModuleActual = (await vi.importActual("fs")) as typeof import("fs")
+    const writeFileMock = fs.writeFile as any
+
+    try {
+      writeFileMock.mockImplementation(fsModuleActual.promises.writeFile as any)
+
+      await fsActual.rm(tempDir, { recursive: true, force: true })
+      await fsActual.mkdir(path.join(tempDir, "src", "components", "ui"), {
+        recursive: true,
+      })
+      await fsActual.mkdir(path.join(tempDir, "src", "lib"), {
+        recursive: true,
+      })
+
+      await fsActual.writeFile(
+        path.join(tempDir, "package.json"),
+        JSON.stringify(
+          {
+            name: "temp-package-import-same-content",
+            type: "module",
+            imports: {
+              "#components/*": "./src/components/*",
+              "#lib/*": "./src/lib/*",
+            },
+          },
+          null,
+          2
+        ),
+        "utf-8"
+      )
+
+      await fsActual.writeFile(
+        path.join(tempDir, "tsconfig.json"),
+        JSON.stringify(
+          {
+            files: [],
+            references: [{ path: "./tsconfig.app.json" }],
+          },
+          null,
+          2
+        ),
+        "utf-8"
+      )
+
+      await fsActual.writeFile(
+        path.join(tempDir, "tsconfig.app.json"),
+        JSON.stringify(
+          {
+            compilerOptions: {
+              module: "esnext",
+              moduleResolution: "bundler",
+              baseUrl: ".",
+              paths: {
+                "#components/*": ["./src/components/*"],
+                "#lib/*": ["./src/lib/*"],
+              },
+            },
+          },
+          null,
+          2
+        ),
+        "utf-8"
+      )
+
+      await fsActual.writeFile(
+        path.join(tempDir, "components.json"),
+        JSON.stringify(
+          {
+            $schema: "https://ui.shadcn.com/schema.json",
+            style: "new-york",
+            rsc: false,
+            tsx: true,
+            tailwind: {
+              config: "",
+              css: "src/index.css",
+              baseColor: "zinc",
+              cssVariables: true,
+            },
+            aliases: {
+              components: "#components",
+              ui: "#components/ui",
+              lib: "#lib",
+              utils: "#lib/utils",
+            },
+          },
+          null,
+          2
+        ),
+        "utf-8"
+      )
+
+      await fsActual.writeFile(
+        path.join(tempDir, "src", "index.css"),
+        '@import "tailwindcss";\n',
+        "utf-8"
+      )
+
+      await fsActual.writeFile(
+        path.join(tempDir, "src", "lib", "utils.ts"),
+        "export function cn(...inputs: unknown[]) {\n  return inputs\n}\n",
+        "utf-8"
+      )
+
+      const config = await getConfig(tempDir)
+      if (!config) {
+        throw new Error("Failed to get config")
+      }
+
+      const buttonFile = {
+        path: "registry/default/ui/button.tsx",
+        type: "registry:ui" as const,
+        content: `import { cn } from "@/lib/utils"
+
+export function Button() {
+  return <button>{cn("button")}</button>
+}
+`,
+      }
+
+      await updateFiles([buttonFile], config, {
+        overwrite: true,
+        silent: true,
+      })
+
+      vi.mocked(prompts).mockClear()
+
+      const result = await updateFiles([buttonFile], config, {
+        overwrite: false,
+        silent: true,
+      })
+
+      expect(result.filesSkipped).toEqual(["src/components/ui/button.tsx"])
+      expect(result.filesUpdated).toEqual([])
+      expect(vi.mocked(prompts)).not.toHaveBeenCalled()
+    } finally {
+      writeFileMock.mockResolvedValue(undefined)
+      await fsActual.rm(tempDir, { recursive: true, force: true }).catch(() => {})
+    }
+  })
+
+  test("should remove temporary source files after rewriting content", async () => {
+    const project = new Project({
+      compilerOptions: {},
+    })
+    const content = "export const value = 1\n"
+
+    await expect(
+      rewriteResolvedImportsInContent({
+        content,
+        resolvedPath: "/tmp/example.ts",
+        filePaths: [],
+        config: {
+          aliases: {},
+          resolvedPaths: {
+            cwd: "/tmp",
+          },
+        } as any,
+        projectInfo: {
+          aliasPrefix: "#",
+        } as any,
+        tsConfig: {
+          resultType: "success",
+          absoluteBaseUrl: "/tmp",
+          paths: {},
+        } as any,
+        project,
+      })
+    ).resolves.toBe(content)
+
+    expect(project.getSourceFiles()).toHaveLength(0)
+  })
+
   test("should mark .env file as created when it doesn't exist", async () => {
     const config = await getConfig(
       path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
@@ -1097,6 +1596,48 @@ ANOTHER_NEW_KEY=another_value`,
 
     expect(result.filesCreated).toContain(".env")
     expect(result.filesUpdated).not.toContain(".env")
+  })
+
+  test("should rewrite app-local files to workspace utils aliases in monorepos without tsconfig paths", async () => {
+    const config = await getConfig(
+      path.resolve(
+        __dirname,
+        "../../fixtures/frameworks/vite-monorepo-imports/apps/web"
+      )
+    )
+
+    if (!config) {
+      throw new Error("Failed to get monorepo app config")
+    }
+
+    const result = await updateFiles(
+      [
+        {
+          path: "registry/components/login-form.tsx",
+          type: "registry:component",
+          content: `import { cn } from "@/lib/utils"
+
+export function LoginForm() {
+  return <div>{cn("login")}</div>
+}
+`,
+        },
+      ],
+      config,
+      {
+        overwrite: true,
+        silent: true,
+      }
+    )
+
+    expect(result.filesCreated).toContain("src/components/login-form.tsx")
+
+    const writtenContent = (fs.writeFile as any).mock.calls.find((call: any) =>
+      call[0].endsWith("src/components/login-form.tsx")
+    )?.[1]
+
+    expect(writtenContent).toContain(`from "@workspace/ui/lib/utils"`)
+    expect(writtenContent).not.toContain(`from "#lib/utils"`)
   })
 
   test("should mark .env file as updated when merging content", async () => {
@@ -1967,5 +2508,97 @@ describe("toAliasedImport", () => {
       aliasPrefix: "@",
     }
     expect(toAliasedImport(filePath, config, projectInfo)).toBe("@/pages/home")
+  })
+
+  test("should preserve extensions for package imports that target bare wildcards", () => {
+    const filePath = "src/components/ui/button.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: path.resolve(__dirname, "../../fixtures/config-imports"),
+        components: path.resolve(
+          __dirname,
+          "../../fixtures/config-imports/src/components"
+        ),
+        ui: path.resolve(
+          __dirname,
+          "../../fixtures/config-imports/src/components/ui"
+        ),
+      },
+      aliases: {
+        components: "#components",
+        ui: "#components/ui",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "#",
+    }
+
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "#components/ui/button.tsx"
+    )
+  })
+
+  test("should strip extensions for package imports whose target already includes them", () => {
+    const filePath = "src/components/button.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: path.resolve(__dirname, "../../fixtures/with-package-imports"),
+        components: path.resolve(
+          __dirname,
+          "../../fixtures/with-package-imports/src/components"
+        ),
+      },
+      aliases: {
+        components: "#components-ext",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "#",
+    }
+
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "#components-ext/button"
+    )
+  })
+
+  test("should keep exact package import aliases for index files", () => {
+    const filePath = "src/hooks/index.ts"
+    const config = {
+      resolvedPaths: {
+        cwd: path.resolve(__dirname, "../../fixtures/config-imports"),
+        hooks: path.resolve(__dirname, "../../fixtures/config-imports/src/hooks"),
+      },
+      aliases: {
+        hooks: "#hooks",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "#",
+    }
+
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe("#hooks")
+  })
+
+  test("should prefer exact package import aliases over parent directory aliases", () => {
+    const filePath = "src/lib/utils.ts"
+    const config = {
+      resolvedPaths: {
+        cwd: path.resolve(__dirname, "../../fixtures/config-imports"),
+        lib: path.resolve(__dirname, "../../fixtures/config-imports/src/lib"),
+        utils: path.resolve(
+          __dirname,
+          "../../fixtures/config-imports/src/lib/utils.ts"
+        ),
+      },
+      aliases: {
+        lib: "#lib",
+        utils: "#utils",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "#",
+    }
+
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe("#utils")
   })
 })
