@@ -312,6 +312,12 @@
     "description": "batteries-included agent components by inference.sh. chat interfaces with streaming, tool invocation rendering, syntax-highlighted code blocks, markdown renderer, and more."
   },
   {
+    "name": "@indiacn",
+    "homepage": "https://indiacn.in",
+    "url": "https://indiacn.in/r/{name}.json",
+    "description": "UX4G 2.0 design system for India — many accessible React components and an 8-color theme preset for native apps."
+  },
+  {
     "name": "@intentui",
     "homepage": "https://intentui.com",
     "url": "https://intentui.com/r/{name}",
