@@ -185,3 +185,65 @@ export const NoArrow: Story = {
     </TooltipProvider>
   ),
 }
+
+/**
+ * Figma parity story (JES-93, batch B).
+ *
+ * Mirrors the Figma `Lead UI - Tooltip` page (component symbol
+ * 29:107066). Per the existing Code Connect mapping
+ * (Tooltip.figma.tsx), Figma's documented properties are:
+ *
+ *   - Tooltip Text (TEXT)
+ *   - Side         (VARIANT): Top, Right, Bottom, Left
+ *
+ * Both map cleanly: `Tooltip Text` → `<TooltipContent>` children;
+ * `Side` → `<TooltipContent side>` (matches Radix's
+ * "top"|"right"|"bottom"|"left" union exactly).
+ *
+ * Source:
+ *   https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-107066
+ *
+ * No documented non-parity — Figma's surface maps 1:1 to Lead's
+ * Tooltip props.
+ *
+ * Parity standard: docs/storybook-figma-parity-standard.md.
+ */
+export const FigmaParity: Story = {
+  name: "Figma parity (all four sides)",
+  render: () => (
+    <TooltipProvider>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 48,
+          padding: 64,
+          placeItems: "center",
+          background: "var(--lead-color-surface-default)",
+          width: "fit-content",
+        }}
+      >
+        {(["top", "right", "bottom", "left"] as const).map((side) => (
+          <Tooltip key={side} defaultOpen>
+            <TooltipTrigger asChild>
+              <Button variant="secondary">Side={side}</Button>
+            </TooltipTrigger>
+            <TooltipContent side={side}>Tooltip Text</TooltipContent>
+          </Tooltip>
+        ))}
+      </div>
+    </TooltipProvider>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Mirrors Figma `Lead UI - Tooltip` (29:107066). Renders all " +
+          "four Side variants (Top, Right, Bottom, Left) with the " +
+          "Figma default Tooltip Text. No documented non-parity — " +
+          "Figma's surface maps 1:1 to Lead's `<TooltipContent>` " +
+          "props.",
+      },
+    },
+  },
+}
