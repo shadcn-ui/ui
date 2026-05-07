@@ -98,6 +98,13 @@
     "logo": "<svg width='251' height='251' viewBox='0 0 251 251' xmlns='http://www.w3.org/2000/svg'><path d='M251 133.637C251 104.974 227.775 81.7511 199.109 81.7511H192.561L174.235 33.4682C166.603 13.3308 147.312 0.0235526 125.783 0H125.712C104.206 0 84.9386 13.2601 77.2362 33.3505L58.7221 81.7511H51.8912C23.225 81.7511 0 104.974 0 133.637C0 151.396 8.92727 167.059 22.5184 176.409L20.9402 180.554C10.6939 207.31 24.0966 237.316 50.8784 247.561C77.6366 257.783 107.645 244.405 117.892 217.626L125.547 197.63L133.085 217.508C140.952 238.235 160.667 251 181.608 251C187.732 251 193.95 249.917 200.004 247.608C226.786 237.434 240.283 207.475 230.107 180.672L228.482 176.409C242.073 167.059 251 151.396 251 133.637Z' fill='currentColor'/></svg>"
   },
   {
+    "name": "@amplo",
+    "homepage": "https://amplo.ale.design",
+    "url": "https://amplo.ale.design/r/{name}.json",
+    "description": "OKLCH-native, Display-P3-aware composable fill picker with WCAG/APCA contrast metrics, gamut detection, and full keyboard accessibility.",
+    "logo": "<svg width='895' height='895' viewBox='0 0 895 895' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='895' height='895' fill='black'/><path d='M380.79 189.029C421.229 162.325 473.701 162.325 514.14 189.029C531.143 200.258 545.035 215.598 554.528 233.628L781.952 665.571C791.275 683.278 790.861 704.531 780.855 721.861C770.445 739.892 751.206 751 730.385 751H662.099C656.813 751 651.551 750.307 646.445 748.939C629.806 744.481 615.857 733.139 608.099 717.759L470.471 444.948C461.059 425.882 433.871 425.882 424.459 444.948L286.831 717.759C279.072 733.139 265.124 744.481 248.485 748.939C243.379 750.307 238.116 751 232.83 751H164.545C143.724 751 124.485 739.892 114.075 721.861C104.069 704.531 103.654 683.278 112.978 665.571L340.401 233.628C349.894 215.598 363.786 200.258 380.79 189.029Z' fill='var(--foreground)' fill-opacity='0.4'/><path d='M407.522 193.008C432.972 181.802 461.958 181.802 487.407 193.008C506.787 201.541 522.924 216.055 533.456 234.426L780.597 665.528C790.709 683.166 790.676 704.852 780.51 722.459C770.313 740.12 751.469 751 731.076 751H692.359C687.18 751 682.024 750.321 677.021 748.98C660.322 744.506 646.41 732.963 638.931 717.377L505.376 439.081C502.394 432.869 498.773 426.985 494.57 421.524C470.776 390.606 424.153 390.606 400.359 421.524C396.157 426.985 392.535 432.869 389.554 439.082L255.999 717.378C248.519 732.963 234.607 744.506 217.909 748.98C212.906 750.321 207.749 751 202.57 751H163.854C143.461 751 124.617 740.12 114.42 722.459C104.254 704.852 104.221 683.166 114.333 665.528L361.474 234.426C372.005 216.055 388.143 201.541 407.522 193.008Z' fill='var(--foreground)' stroke='black' stroke-opacity='0.2' stroke-width='1.6795'/></svg>"
+  },
+  {
     "name": "@animate-ui",
     "homepage": "https://animate-ui.com",
     "url": "https://animate-ui.com/r/{name}.json",
@@ -187,6 +194,13 @@
     "url": "https://coderabbit-shadcn-registry.vercel.app/r/{name}.json",
     "description": "A framework-agnostic API client, pluggable storage adapters (LocalStorage, Convex, Supabase, PostgreSQL, MySQL), and React components for generating developer activity reports.",
     "logo": "<svg width='1201' height='1200' viewBox='0 0 1201 1200' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M600.867 1200C932.238 1200 1200.87 931.37 1200.87 600C1200.87 268.629 932.238 -0.000488281 600.867 -0.000488281C269.496 -0.000488281 0.867188 268.629 0.867188 600C0.867188 931.37 269.496 1200 600.867 1200Z' fill='#FF570A'/><path d='M1008.3 500.615C1008.3 500.615 924.706 393.751 819.62 387.639C751.807 383.636 735.379 392.696 732.434 399.444C728.226 364.456 698.322 202.361 491.729 168.008C518.102 357.589 627.02 308.191 691.161 438.86C691.161 438.86 582.921 291.734 404.969 345.903C404.969 345.903 469.83 482.07 661.676 509.891C661.676 509.891 677.05 562.586 681.684 571.862C681.684 571.862 386.224 417.779 296.512 713.505C229.747 698.382 207.352 770.859 284.09 820.369C284.09 820.369 297.147 768.519 328.943 753.131C328.943 753.131 260.711 829.226 340.946 920.36H628.925C635.883 908.834 666.68 848.19 590.514 802.285C644.278 801.516 688.042 902.932 735.128 921.058H803.61C805.927 915.428 810.771 898.567 799.395 883.395C781.857 863.278 743.46 866.002 743.802 828.8C757.062 655.746 1016.55 708.888 1008.3 500.615Z' fill='#FEFEFE'/></svg>"
+  },
+  {
+    "name": "@cognicatch",
+    "homepage": "https://cognicatch.dev",
+    "url": "https://cognicatch.dev/registry/{name}.json",
+    "description": "Adaptive Error Boundaries and graceful fallback UIs (Banners, Modals, Toasts).",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z'/><path d='M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z'/><path d='M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4'/><path d='M17.599 6.5a3 3 0 0 0 .399-1.375'/><path d='M6.002 5.125A3 3 0 0 0 6.401 6.5'/><path d='M3.477 10.896a4 4 0 0 1 .585-.396'/><path d='M19.938 10.5a4 4 0 0 1 .585.396'/><path d='M6 18a4 4 0 0 1-1.967-.516'/><path d='M19.967 17.484A4 4 0 0 1 18 18'/></svg>"
   },
   {
     "name": "@commercn",
@@ -356,6 +370,13 @@
     "url": "https://ui.inference.sh/r/{name}.json",
     "description": "batteries-included agent components by inference.sh. chat interfaces with streaming, tool invocation rendering, syntax-highlighted code blocks, markdown renderer, and more.",
     "logo": "<svg width='18' height='16' viewBox='0 0 18 16' fill='none' xmlns='http://www.w3.org/2000/svg'><path fill='none' d='M16.837 12.659L10.105 1H8.781c-.433 0-.834.232-1.05.608L1 13.266l.662 1.146c.217.375.618.607 1.051.607h13.463l.662-1.146a1.215 1.215 0 000-1.213v-.001z' stroke='var(--foreground)' stroke-width='0.3' stroke-miterlimit='10'/><path fill='none' d='M6.057 11.515v0l3.977-6.888a.08.08 0 01.14 0l6.002 10.392' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/><path fill='none' d='M1 13.266h12.001a.08.08 0 00.07-.122L9.09 6.256' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/><path fill='none' d='M12.13 11.514H4.173a.08.08 0 01-.07-.121L10.105 1' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/></svg>"
+  },
+  {
+    "name": "@indiacn",
+    "homepage": "https://indiacn.in",
+    "url": "https://indiacn.in/r/{name}.json",
+    "description": "UX4G 2.0 design system for India — many accessible React components and an 8-color theme preset for native apps.",
+    "logo": "<svg width='512' height='512' viewBox='0 0 512 512' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='512' height='512' rx='120' fill='var(--foreground)'/><rect x='76' y='92' width='360' height='92' rx='28' fill='#FF9933'/><rect x='76' y='210' width='360' height='92' rx='28' fill='#fff'/><rect x='76' y='328' width='360' height='92' rx='28' fill='#138808'/><circle cx='256' cy='256' r='38' stroke='#0F3D91' stroke-width='12'/><path d='M256 214V298M214 256H298' stroke='#0F3D91' stroke-width='12' stroke-linecap='round'/></svg>"
   },
   {
     "name": "@intentui",
@@ -1292,7 +1313,7 @@
     "name": "@evilbuttons",
     "homepage": "https://evilbuttons.radiumcoders.com/docs",
     "url": "https://evilbuttons.radiumcoders.com/r/{name}.json",
-    "description": "A shadcn/ui registry featuring a collection of animated buttons built with Motion. Each component is designed to add punchy, interactive feedback to your UI with minimal setup.",  
+    "description": "A shadcn/ui registry featuring a collection of animated buttons built with Motion. Each component is designed to add punchy, interactive feedback to your UI with minimal setup.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 270 270' fill='var(--foreground)'><circle cx='135' cy='135' r='135' fill='black'/><path d='M161.057 161.35L186.181 221.846L164.141 231.05L139.018 170.853L102.75 207.419V52.945L211.663 161.281L161.057 161.35Z' fill='white'/><path d='M160.5 64.8521C158.1 81.2521 135.5 84.5187 126 83.3521C130.167 92.0187 140.8 112.352 156 112.352C175 112.352 163.5 44.3521 160.5 64.8521Z' fill='white' stroke='white'/><path d='M71.1794 99.9477C83.9367 110.529 102.918 97.8346 109.197 90.6108C111.9 99.8395 117.603 122.065 106.307 132.236C92.1875 144.949 55.2328 86.7206 71.1794 99.9477Z' fill='white' stroke='white'/><circle cx='121' cy='122' r='5' fill='black'/><circle cx='141' cy='112' r='5' fill='black'/></svg>"
   },
   {
@@ -1301,5 +1322,12 @@
     "url": "https://francozeta-stepper.vercel.app/{name}.json",
     "description": "A modern, accessible and composable Stepper component for React and Tailwind CSS. Built for shadcn/ui-style workflows with registry-first distribution.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='currentColor'><path d='M139 32a7 7 0 0 1 14 0v104.6c0 18.3-8.8 35.4-23.7 46L55.8 235H22l93.4-66.6A30.2 30.2 0 0 0 128 143.8V32h11Z'/><path d='M160 42c14.2-5.8 27.9 11.3 50 6.6-8.6 12.4-21.8 18-36.2 16.1-5.8-.8-10-2.5-13.8-4.2V42Z'/><path d='M163 82.8 210 99v105c0 18.2-14.8 33-33 33h-74.7l43.7-31.2c15.6-11.1 24.9-29.1 24.9-48.2V103.8L163 101V82.8Zm20 59.2a7 7 0 0 1 14 0v24h-14v-24Z'/><path d='M84 87.5 122 77v50H66V99.8l18-4.9v-7.4Zm-31 43.5h71v22H53a7 7 0 0 1-7-7v-8a7 7 0 0 1 7-7Zm-32 33h77v22H21a7 7 0 0 1-7-7v-8a7 7 0 0 1 7-7Zm-10 33h62v22H11a7 7 0 0 1-7-7v-8a7 7 0 0 1 7-7Z'/><circle cx='42' cy='116' r='13'/></svg>"
+  },
+  {
+    "name": "@text-ui",
+    "homepage": "https://joelachance.github.io/text-ui/docs",
+    "url": "https://joelachance.github.io/text-ui/r/{name}.json",
+    "description": "A shadcn/ui registry with EchoText (`echo-text`): layered stroke text that follows the pointer—minimal setup, drop-in component.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' fill='none'><rect width='120' height='120' rx='24' fill='var(--foreground, currentColor)' fill-opacity='0.08'/><g transform='translate(35.64 45.3)'><g transform='translate(24.36 14.7) scale(1 -1) translate(-24.36 -14.7)'><path fill='var(--foreground, currentColor)' d='M13.65 -0.67C17.43 -0.67 20.16 2.14 20.16 5.96L20.16 21.42C20.16 23.06 21.46 24.36 23.1 24.36C24.53 24.4 25.62 25.49 25.62 26.88C25.62 28.27 24.53 29.36 23.1 29.4L4.2 29.4C2.77 29.36 1.68 28.27 1.68 26.88C1.68 25.49 2.77 24.4 4.2 24.36C5.84 24.36 7.14 23.06 7.14 21.42L7.14 5.96C7.14 2.14 9.87 -0.67 13.65 -0.67ZM28.98 27.55L28.98 7.98C28.98 3.19 32.17 0 36.96 0L44.94 0L44.94 0.04C46.16 0.25 47.04 1.3 47.04 2.52C47.04 3.74 46.16 4.79 44.94 5L44.94 5.04C43.3 5.04 42 6.34 42 7.98L42 16.38C42 18.02 43.3 19.32 44.94 19.32C46.37 19.36 47.46 20.45 47.46 21.84C47.46 23.23 46.37 24.36 44.94 24.36L37.38 24.36C35.2 24.36 34.02 25.49 34.02 27.55C34.02 28.98 32.84 30.07 31.5 30.07C30.11 30.07 28.98 28.98 28.98 27.55Z'/></g></g></svg>"
   }
 ]
