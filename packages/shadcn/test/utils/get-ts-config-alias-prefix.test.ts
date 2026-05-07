@@ -71,4 +71,54 @@ describe("get ts config alias prefix", async () => {
       await fs.remove(cwd)
     }
   })
+
+  test("prefers longest app-style alias when multiple match", async () => {
+    const cwd = await fs.mkdtemp(
+      path.join(tmpdir(), "shadcn-tsconfig-preferred-app-path-")
+    )
+
+    try {
+      await fs.writeFile(
+        path.join(cwd, "tsconfig.json"),
+        JSON.stringify({
+          compilerOptions: {
+            baseUrl: ".",
+            paths: {
+              "@/*": ["./src/*"],
+              "@workspace/extra/*": ["./src/*"],
+            },
+          },
+        }),
+        "utf8"
+      )
+
+      expect(await getTsConfigAliasPrefix(cwd)).toBe("@workspace/extra")
+    } finally {
+      await fs.remove(cwd)
+    }
+  })
+
+  test("prefers longest key among non-app path patterns", async () => {
+    const cwd = await fs.mkdtemp(path.join(tmpdir(), "shadcn-tsconfig-scoped-fallback-"))
+
+    try {
+      await fs.writeFile(
+        path.join(cwd, "tsconfig.json"),
+        JSON.stringify({
+          compilerOptions: {
+            baseUrl: ".",
+            paths: {
+              "@packages/*": ["../../packages/*/src/*"],
+              "@packages/intent-ui/*": ["../../packages/intent-ui/src/*"],
+            },
+          },
+        }),
+        "utf8"
+      )
+
+      expect(await getTsConfigAliasPrefix(cwd)).toBe("@packages/intent-ui")
+    } finally {
+      await fs.remove(cwd)
+    }
+  })
 })
