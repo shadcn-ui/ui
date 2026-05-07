@@ -84,6 +84,12 @@
     "description": "I create digital experiences that connect and inspire. I build apps, websites, brands, and products end-to-end."
   },
   {
+    "name": "@amplo",
+    "homepage": "https://amplo.ale.design",
+    "url": "https://amplo.ale.design/r/{name}.json",
+    "description": "OKLCH-native, Display-P3-aware composable fill picker with WCAG/APCA contrast metrics, gamut detection, and full keyboard accessibility."
+  },
+  {
     "name": "@animate-ui",
     "homepage": "https://animate-ui.com",
     "url": "https://animate-ui.com/r/{name}.json",
@@ -160,6 +166,12 @@
     "homepage": "https://ramonclaudio.com/registries/coderabbit",
     "url": "https://coderabbit-shadcn-registry.vercel.app/r/{name}.json",
     "description": "A framework-agnostic API client, pluggable storage adapters (LocalStorage, Convex, Supabase, PostgreSQL, MySQL), and React components for generating developer activity reports."
+  },
+  {
+    "name": "@cognicatch",
+    "homepage": "https://cognicatch.dev",
+    "url": "https://cognicatch.dev/registry/{name}.json",
+    "description": "Adaptive Error Boundaries and graceful fallback UIs (Banners, Modals, Toasts)."
   },
   {
     "name": "@commercn",
@@ -304,6 +316,12 @@
     "homepage": "https://ui.inference.sh",
     "url": "https://ui.inference.sh/r/{name}.json",
     "description": "batteries-included agent components by inference.sh. chat interfaces with streaming, tool invocation rendering, syntax-highlighted code blocks, markdown renderer, and more."
+  },
+  {
+    "name": "@indiacn",
+    "homepage": "https://indiacn.in",
+    "url": "https://indiacn.in/r/{name}.json",
+    "description": "UX4G 2.0 design system for India — many accessible React components and an 8-color theme preset for native apps."
   },
   {
     "name": "@intentui",
@@ -1108,5 +1126,11 @@
     "homepage": "https://francozeta-stepper.vercel.app",
     "url": "https://francozeta-stepper.vercel.app/{name}.json",
     "description": "A modern, accessible and composable Stepper component for React and Tailwind CSS. Built for shadcn/ui-style workflows with registry-first distribution."
+  },
+  {
+    "name": "@text-ui",
+    "homepage": "https://joelachance.github.io/text-ui/docs",
+    "url": "https://joelachance.github.io/text-ui/r/{name}.json",
+    "description": "A shadcn/ui registry with EchoText (`echo-text`): layered stroke text that follows the pointer—minimal setup, drop-in component."
   }
 ]
