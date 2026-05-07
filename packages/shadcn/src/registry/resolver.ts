@@ -23,6 +23,7 @@ import {
 import {
   RegistryFontItem,
   registryItemCommonSchema,
+  registryItemCssVarsSchema,
   registryItemFontSchema,
   registryItemSchema,
   registryItemTypeSchema,
@@ -118,6 +119,10 @@ const registryItemWithSourceSchema = registryItemCommonSchema
     config: z.any().optional(),
   })
   .passthrough()
+
+const legacyRegistryBaseColorSchema = z.object({
+  cssVars: registryItemCssVarsSchema,
+})
 
 // Resolves a list of registry items with all their dependencies and returns
 // a complete installation bundle with merged configuration.
@@ -500,11 +505,14 @@ async function resolveRegistryDependencies(
 }
 
 async function registryGetTheme(name: string, config: Config) {
-  const [baseColor, tailwindVersion] = await Promise.all([
-    getRegistryBaseColor(name),
-    getProjectTailwindVersionFromConfig(config),
-  ])
-  if (!baseColor) {
+  const tailwindVersion = await getProjectTailwindVersionFromConfig(config)
+  const currentBaseColor =
+    tailwindVersion === "v4" ? await getRegistryBaseColor(name) : null
+  const legacyBaseColor =
+    tailwindVersion === "v4" ? null : await getLegacyRegistryBaseColor(name)
+  const cssVars = currentBaseColor?.cssVars ?? legacyBaseColor?.cssVars
+
+  if (!cssVars) {
     return null
   }
 
@@ -538,41 +546,52 @@ async function registryGetTheme(name: string, config: Config) {
   if (config.tailwind.cssVariables) {
     theme.tailwind.config.theme.extend.colors = {
       ...theme.tailwind.config.theme.extend.colors,
-      ...buildTailwindThemeColorsFromCssVars(baseColor.cssVars.dark ?? {}),
+      ...buildTailwindThemeColorsFromCssVars(cssVars.dark ?? {}),
     }
     theme.cssVars = {
       theme: {
-        ...baseColor.cssVars.theme,
+        ...cssVars.theme,
         ...theme.cssVars.theme,
       },
       light: {
-        ...baseColor.cssVars.light,
+        ...cssVars.light,
         ...theme.cssVars.light,
       },
       dark: {
-        ...baseColor.cssVars.dark,
+        ...cssVars.dark,
         ...theme.cssVars.dark,
       },
     }
 
-    if (tailwindVersion === "v4" && baseColor.cssVarsV4) {
+    if (tailwindVersion === "v4" && currentBaseColor?.cssVarsV4) {
       theme.cssVars = {
         theme: {
-          ...baseColor.cssVarsV4.theme,
+          ...currentBaseColor.cssVarsV4.theme,
           ...theme.cssVars.theme,
         },
         light: {
           radius: "0.625rem",
-          ...baseColor.cssVarsV4.light,
+          ...currentBaseColor.cssVarsV4.light,
         },
         dark: {
-          ...baseColor.cssVarsV4.dark,
+          ...currentBaseColor.cssVarsV4.dark,
         },
       }
     }
   }
 
   return theme
+}
+
+async function getLegacyRegistryBaseColor(name: string) {
+  try {
+    const [result] = await fetchRegistry([
+      resolveRegistryUrl(`themes/${name}.json`),
+    ])
+    return legacyRegistryBaseColorSchema.parse(result)
+  } catch {
+    return null
+  }
 }
 
 function computeItemHash(
