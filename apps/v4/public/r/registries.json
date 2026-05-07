@@ -1132,5 +1132,11 @@
     "homepage": "https://joelachance.github.io/text-ui/docs",
     "url": "https://joelachance.github.io/text-ui/r/{name}.json",
     "description": "A shadcn/ui registry with EchoText (`echo-text`): layered stroke text that follows the pointer—minimal setup, drop-in component."
+  },
+  {
+    "name": "@turbopills-ui",
+    "homepage": "https://www.turbopills.com/ui/docs",
+    "url": "https://ui.turbopills.com/r/{name}.json",
+    "description": "Beautiful, accessible, and customizable React components for your telehealth applications."
   }
 ]
