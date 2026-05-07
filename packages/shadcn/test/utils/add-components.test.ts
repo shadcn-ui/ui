@@ -1,6 +1,14 @@
+import os from "os"
+import path from "path"
+import fs from "fs-extra"
 import { afterEach, describe, expect, test, vi } from "vitest"
 
+import { resolveRegistryTree } from "../../src/registry/resolver"
+import { addComponents } from "../../src/utils/add-components"
 import type { Config } from "../../src/utils/get-config"
+import { findPackageRoot, getWorkspaceConfig } from "../../src/utils/get-config"
+import { updateFiles } from "../../src/utils/updaters/update-files"
+import { updateFonts } from "../../src/utils/updaters/update-fonts"
 
 // Mock all external dependencies.
 vi.mock("../../src/registry/resolver", () => ({
@@ -18,13 +26,20 @@ vi.mock("../../src/utils/get-config", async () => {
   }
 })
 
-vi.mock("../../src/utils/updaters/update-files", () => ({
-  updateFiles: vi.fn().mockResolvedValue({
-    filesCreated: [],
-    filesUpdated: [],
-    filesSkipped: [],
-  }),
-}))
+vi.mock("../../src/utils/updaters/update-files", async () => {
+  const actual = (await vi.importActual(
+    "../../src/utils/updaters/update-files"
+  )) as typeof import("../../src/utils/updaters/update-files")
+
+  return {
+    ...actual,
+    updateFiles: vi.fn().mockResolvedValue({
+      filesCreated: [],
+      filesUpdated: [],
+      filesSkipped: [],
+    }),
+  }
+})
 
 vi.mock("../../src/utils/updaters/update-dependencies", () => ({
   updateDependencies: vi.fn().mockResolvedValue(undefined),
@@ -47,9 +62,16 @@ vi.mock("../../src/utils/updaters/update-css", () => ({
   updateCss: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("../../src/utils/get-project-info", () => ({
-  getProjectTailwindVersionFromConfig: vi.fn().mockResolvedValue("4"),
-}))
+vi.mock("../../src/utils/get-project-info", async () => {
+  const actual = (await vi.importActual(
+    "../../src/utils/get-project-info"
+  )) as typeof import("../../src/utils/get-project-info")
+
+  return {
+    ...actual,
+    getProjectTailwindVersionFromConfig: vi.fn().mockResolvedValue("4"),
+  }
+})
 
 vi.mock("../../src/utils/spinner", () => ({
   spinner: vi.fn().mockReturnValue({
@@ -69,17 +91,13 @@ vi.mock("../../src/utils/logger", () => ({
   },
 }))
 
-import { addComponents } from "../../src/utils/add-components"
-import { resolveRegistryTree } from "../../src/registry/resolver"
-import {
-  findPackageRoot,
-  getWorkspaceConfig,
-} from "../../src/utils/get-config"
-import { updateFiles } from "../../src/utils/updaters/update-files"
-import { updateFonts } from "../../src/utils/updaters/update-fonts"
-
 afterEach(() => {
   vi.clearAllMocks()
+  vi.mocked(updateFiles).mockResolvedValue({
+    filesCreated: [],
+    filesUpdated: [],
+    filesSkipped: [],
+  })
 })
 
 function createMockConfig(overrides: Partial<Config> = {}): Config {
@@ -112,6 +130,79 @@ function createMockConfig(overrides: Partial<Config> = {}): Config {
     },
     ...overrides,
   } as Config
+}
+
+function createPackageImportConfig(
+  cwd: string,
+  overrides: Partial<Config> = {}
+): Config {
+  return {
+    $schema: "https://ui.shadcn.com/schema.json",
+    style: "new-york",
+    rsc: false,
+    tsx: true,
+    tailwind: {
+      config: "",
+      css: "src/index.css",
+      baseColor: "",
+      cssVariables: true,
+    },
+    aliases: {
+      components: "#components",
+      ui: "#components/ui",
+      lib: "#lib",
+      hooks: "#hooks",
+      utils: "#utils",
+    },
+    resolvedPaths: {
+      cwd,
+      tailwindConfig: "",
+      tailwindCss: path.resolve(cwd, "src/index.css"),
+      components: path.resolve(cwd, "src/components"),
+      ui: path.resolve(cwd, "src/components/ui"),
+      lib: path.resolve(cwd, "src/lib"),
+      hooks: path.resolve(cwd, "src/hooks"),
+      utils: path.resolve(cwd, "src/lib/utils.ts"),
+    },
+    registries: {},
+    ...overrides,
+  } as Config
+}
+
+async function writePackageImportProject(cwd: string) {
+  await fs.ensureDir(path.resolve(cwd, "src"))
+  await fs.writeJson(
+    path.resolve(cwd, "package.json"),
+    {
+      name: path.basename(cwd),
+      type: "module",
+      dependencies: {
+        tailwindcss: "^4.0.0",
+      },
+      imports: {
+        "#components/*": "./src/components/*",
+        "#hooks": "./src/hooks/index.ts",
+        "#utils": "./src/lib/utils.ts",
+      },
+    },
+    { spaces: 2 }
+  )
+  await fs.writeJson(
+    path.resolve(cwd, "tsconfig.json"),
+    {
+      compilerOptions: {
+        module: "esnext",
+        moduleResolution: "bundler",
+        resolvePackageJsonImports: true,
+      },
+    },
+    { spaces: 2 }
+  )
+  await fs.writeFile(
+    path.resolve(cwd, "src/index.css"),
+    '@import "tailwindcss";\n'
+  )
+  await fs.writeFile(path.resolve(cwd, "vite.config.ts"), "export default {}\n")
 }
 
 describe("addComponents workspace routing", () => {
@@ -710,6 +801,74 @@ describe("addComponents workspace routing", () => {
       hooksPackageConfig,
       expect.any(Object)
     )
+  })
+
+  test("should rewrite cross-type imports when files target the same workspace package", async () => {
+    const actualUpdateFiles = (await vi.importActual(
+      "../../src/utils/updaters/update-files"
+    )) as typeof import("../../src/utils/updaters/update-files")
+    vi.mocked(updateFiles).mockImplementation(actualUpdateFiles.updateFiles)
+
+    const root = await fs.mkdtemp(path.join(os.tmpdir(), "shadcn-cross-type-"))
+    const appCwd = path.resolve(root, "apps/web")
+    const uiCwd = path.resolve(root, "packages/ui")
+
+    try {
+      await writePackageImportProject(appCwd)
+      await writePackageImportProject(uiCwd)
+
+      const appConfig = createPackageImportConfig(appCwd)
+      const uiConfig = createPackageImportConfig(uiCwd)
+
+      vi.mocked(getWorkspaceConfig).mockResolvedValue({
+        components: appConfig,
+        ui: uiConfig,
+        lib: appConfig,
+        hooks: appConfig,
+      })
+
+      vi.mocked(resolveRegistryTree).mockResolvedValue({
+        name: "example-card",
+        files: [
+          {
+            path: "registry/components/example-card.tsx",
+            type: "registry:component",
+            content: `import { useThing } from "@/hooks/use-thing"
+
+export function ExampleCard() {
+  useThing()
+  return null
+}
+`,
+          },
+          {
+            path: "registry/hooks/use-thing.ts",
+            type: "registry:hook",
+            content: `export function useThing() {
+  return true
+}
+`,
+          },
+        ],
+        dependencies: [],
+        devDependencies: [],
+      })
+
+      await addComponents(["example-card"], appConfig, {
+        overwrite: true,
+        silent: true,
+      })
+
+      const componentContent = await fs.readFile(
+        path.resolve(appCwd, "src/components/example-card.tsx"),
+        "utf-8"
+      )
+
+      expect(componentContent).toContain(`from "../hooks/use-thing"`)
+      expect(componentContent).not.toContain(`from "#hooks/use-thing"`)
+    } finally {
+      await fs.remove(root)
+    }
   })
 
   test("should call updateFonts with app config, not workspace config", async () => {

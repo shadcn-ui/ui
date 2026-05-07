@@ -4,6 +4,7 @@
     "index",
     "[Installation](/docs/installation)",
     "components-json",
+    "package-imports",
     "theming",
     "[Dark Mode](/docs/dark-mode)",
     "[RTL](/docs/rtl)",
