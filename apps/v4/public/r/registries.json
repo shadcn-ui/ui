@@ -1128,10 +1128,10 @@
     "description": "A modern, accessible and composable Stepper component for React and Tailwind CSS. Built for shadcn/ui-style workflows with registry-first distribution."
   },
   {
-    "name": "@framecn",
-    "homepage": "https://framecn.vercel.app",
-    "url": "https://framecn.vercel.app/r/{name}.json",
-    "description": "Beautiful videos, made simple. Ready to use, customizable video components for React."
+    "name": "@text-ui",
+    "homepage": "https://joelachance.github.io/text-ui/docs",
+    "url": "https://joelachance.github.io/text-ui/r/{name}.json",
+    "description": "A shadcn/ui registry with EchoText (`echo-text`): layered stroke text that follows the pointer—minimal setup, drop-in component."
   },
   {
     "name": "@framecn",
