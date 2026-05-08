@@ -16,8 +16,18 @@ import { isUrl } from "@/src/registry/utils"
 import { getTemplateForFramework } from "@/src/templates/index"
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
-import { withFileBackup } from "@/src/utils/file-helper"
-import { getBase } from "@/src/utils/get-config"
+import {
+  createFileBackup,
+  deleteFileBackup,
+  FileBackupError,
+  restoreFileBackup,
+  withFileBackup,
+} from "@/src/utils/file-helper"
+import {
+  getBase,
+  getWorkspaceConfig,
+  type Config,
+} from "@/src/utils/get-config"
 import {
   getProjectComponents,
   getProjectInfo,
@@ -26,6 +36,7 @@ import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { Command } from "commander"
+import fs from "fs-extra"
 import prompts from "prompts"
 import { z } from "zod"
 
@@ -45,6 +56,13 @@ class ApplyOnlyError extends Error {
   constructor(message: string) {
     super(message)
     this.name = "ApplyOnlyError"
+  }
+}
+
+class ApplyWorkspaceSyncError extends Error {
+  constructor(message: string) {
+    super(message)
+    this.name = "ApplyWorkspaceSyncError"
   }
 }
 
@@ -190,7 +208,7 @@ export const apply = new Command()
         only: only?.join(","),
       })
 
-      await withFileBackup(
+      const config = await withFileBackup(
         path.resolve(options.cwd, "components.json"),
         async () => {
           const {
@@ -209,7 +227,7 @@ export const apply = new Command()
             only,
           })
 
-          await runInit({
+          return await runInit({
             cwd: options.cwd,
             yes: true,
             force: false,
@@ -223,17 +241,10 @@ export const apply = new Command()
             existingConfig,
             components: [cleanUrl, ...reinstallComponents],
           })
-        },
-        {
-          onBackupFailure: () => {
-            logger.error(
-              `Could not back up ${highlighter.info(
-                "components.json"
-              )}. Aborting.`
-            )
-          },
         }
       )
+
+      await syncApplyWorkspaceConfigs(config, { only })
 
       logger.break()
       logger.log("Preset applied successfully.")
@@ -243,6 +254,20 @@ export const apply = new Command()
         for (const line of error.message.split("\n")) {
           logger.error(line)
         }
+        logger.break()
+        process.exit(1)
+      }
+
+      if (error instanceof FileBackupError) {
+        logger.error(
+          `Could not back up ${highlighter.info("components.json")}. Aborting.`
+        )
+        logger.break()
+        process.exit(1)
+      }
+
+      if (error instanceof ApplyWorkspaceSyncError) {
+        logger.error(error.message)
         logger.break()
         process.exit(1)
       }
@@ -404,6 +429,108 @@ function validatePreset(preset: string) {
 async function resolveApplyTemplate(cwd: string) {
   const projectInfo = await getProjectInfo(cwd)
   return getTemplateForFramework(projectInfo?.framework.name)
+}
+
+async function syncApplyWorkspaceConfigs(
+  config: Config,
+  options?: {
+    only?: string[]
+  }
+) {
+  if (options?.only && !options.only.includes("theme")) {
+    return
+  }
+
+  const linkedConfigs = await getApplyWorkspaceConfigs(config)
+  if (!linkedConfigs.length) {
+    return
+  }
+
+  const patch = {
+    style: config.style,
+    tailwind: {
+      baseColor: config.tailwind.baseColor,
+      cssVariables: config.tailwind.cssVariables,
+    },
+    ...(config.iconLibrary ? { iconLibrary: config.iconLibrary } : {}),
+    ...(config.rtl !== undefined ? { rtl: config.rtl } : {}),
+    ...(config.menuColor ? { menuColor: config.menuColor } : {}),
+    ...(config.menuAccent ? { menuAccent: config.menuAccent } : {}),
+  }
+
+  const workspaceConfigs = []
+
+  for (const linkedConfig of linkedConfigs) {
+    const configPath = path.resolve(
+      linkedConfig.resolvedPaths.cwd,
+      "components.json"
+    )
+    if (!(await fs.pathExists(configPath))) {
+      continue
+    }
+
+    workspaceConfigs.push({
+      configPath,
+      existingConfig: await fs.readJson(configPath),
+    })
+  }
+
+  try {
+    for (const workspaceConfig of workspaceConfigs) {
+      const backupPath = createFileBackup(workspaceConfig.configPath)
+      if (!backupPath) {
+        throw new FileBackupError(workspaceConfig.configPath)
+      }
+    }
+
+    for (const workspaceConfig of workspaceConfigs) {
+      await fs.writeJson(
+        workspaceConfig.configPath,
+        {
+          ...workspaceConfig.existingConfig,
+          ...patch,
+          tailwind: {
+            ...workspaceConfig.existingConfig.tailwind,
+            ...patch.tailwind,
+          },
+        },
+        { spaces: 2 }
+      )
+    }
+
+    for (const workspaceConfig of workspaceConfigs) {
+      deleteFileBackup(workspaceConfig.configPath)
+    }
+  } catch (error) {
+    for (const workspaceConfig of [...workspaceConfigs].reverse()) {
+      restoreFileBackup(workspaceConfig.configPath)
+    }
+
+    throw new ApplyWorkspaceSyncError(
+      `Failed to sync linked workspace configs.${error instanceof Error ? ` ${error.message}` : ""}`
+    )
+  }
+}
+
+async function getApplyWorkspaceConfigs(config: Config) {
+  const workspaceConfig = await getWorkspaceConfig(config)
+  if (!workspaceConfig) {
+    return []
+  }
+
+  const linkedConfigs = new Map<string, Config>()
+
+  for (const linkedConfig of Object.values(workspaceConfig)) {
+    if (linkedConfig.resolvedPaths.cwd === config.resolvedPaths.cwd) {
+      continue
+    }
+
+    linkedConfigs.set(linkedConfig.resolvedPaths.cwd, linkedConfig)
+  }
+
+  return Array.from(linkedConfigs.values()).sort((a, b) =>
+    a.resolvedPaths.cwd.localeCompare(b.resolvedPaths.cwd)
+  )
 }
 
 export function resolveApplyInitUrl(
