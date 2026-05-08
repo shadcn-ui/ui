@@ -3,6 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 
 import { cn } from "@/registry/bases/radix/lib/utils"
+import { Skeleton } from "@/registry/bases/radix/ui/skeleton"
 
 const badgeVariants = cva(
   "cn-badge group/badge inline-flex w-fit shrink-0 items-center justify-center overflow-hidden whitespace-nowrap focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none",
@@ -27,9 +28,13 @@ function Badge({
   className,
   variant = "default",
   asChild = false,
+  isLoading,
   ...props
 }: React.ComponentProps<"span"> &
-  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
+  VariantProps<typeof badgeVariants> & { asChild?: boolean; isLoading?: boolean }) {
+  if (isLoading) {
+    return <Skeleton className="h-6 w-16" />
+  }
   const Comp = asChild ? Slot.Root : "span"
 
   return (

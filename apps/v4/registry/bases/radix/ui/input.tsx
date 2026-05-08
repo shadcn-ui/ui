@@ -1,8 +1,12 @@
 import * as React from "react"
 
 import { cn } from "@/registry/bases/radix/lib/utils"
+import { Skeleton } from "@/registry/bases/radix/ui/skeleton"
 
-function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+function Input({ className, type, isLoading, ...props }: React.ComponentProps<"input"> & { isLoading?: boolean }) {
+  if (isLoading) {
+    return <Skeleton className="h-9 w-full" />
+  }
   return (
     <input
       type={type}
