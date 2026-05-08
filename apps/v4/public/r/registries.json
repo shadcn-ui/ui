@@ -1134,6 +1134,12 @@
     "description": "A shadcn/ui registry with EchoText (`echo-text`): layered stroke text that follows the pointer—minimal setup, drop-in component."
   },
   {
+    "name": "@framecn",
+    "homepage": "https://framecn.vercel.app",
+    "url": "https://framecn.vercel.app/r/{name}.json",
+    "description": "Beautiful videos, made simple. Ready to use, customizable video components for React."
+  },
+  {
     "name": "@turbopills-ui",
     "homepage": "https://www.turbopills.com/ui/docs",
     "url": "https://ui.turbopills.com/r/{name}.json",
