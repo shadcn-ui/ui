@@ -1,8 +1,26 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
+import { Skeleton } from "@/registry/new-york-v4/ui/skeleton"
 
-function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+function Input({
+  className,
+  type,
+  isLoading = false,
+  ...props
+}: React.ComponentProps<"input"> & { isLoading?: boolean }) {
+  if (isLoading) {
+    return (
+      <Skeleton
+        className={cn(
+          "h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none md:text-sm dark:bg-input/30",
+          className
+        )}
+        {...props as any}
+      />
+    )
+  }
+
   return (
     <input
       type={type}

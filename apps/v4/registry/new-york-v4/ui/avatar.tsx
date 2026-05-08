@@ -4,14 +4,30 @@ import * as React from "react"
 import { Avatar as AvatarPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
+import { Skeleton } from "@/registry/new-york-v4/ui/skeleton"
 
 function Avatar({
   className,
   size = "default",
+  isLoading = false,
   ...props
 }: React.ComponentProps<typeof AvatarPrimitive.Root> & {
   size?: "default" | "sm" | "lg"
+  isLoading?: boolean
 }) {
+  if (isLoading) {
+    return (
+      <Skeleton
+        className={cn(
+          "flex size-8 shrink-0 rounded-full data-[size=lg]:size-10 data-[size=sm]:size-6",
+          className
+        )}
+        data-size={size}
+        {...props as any}
+      />
+    )
+  }
+
   return (
     <AvatarPrimitive.Root
       data-slot="avatar"

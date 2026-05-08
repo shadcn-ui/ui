@@ -4,14 +4,30 @@ import * as React from "react"
 import { Switch as SwitchPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
+import { Skeleton } from "@/registry/new-york-v4/ui/skeleton"
 
 function Switch({
   className,
   size = "default",
+  isLoading = false,
   ...props
 }: React.ComponentProps<typeof SwitchPrimitive.Root> & {
   size?: "sm" | "default"
+  isLoading?: boolean
 }) {
+  if (isLoading) {
+    return (
+      <Skeleton
+        className={cn(
+          "inline-flex shrink-0 items-center rounded-full data-[size=default]:h-[1.15rem] data-[size=default]:w-8 data-[size=sm]:h-3.5 data-[size=sm]:w-6",
+          className
+        )}
+        data-size={size}
+        {...props as any}
+      />
+    )
+  }
+
   return (
     <SwitchPrimitive.Root
       data-slot="switch"

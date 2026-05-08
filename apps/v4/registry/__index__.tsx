@@ -35,7 +35,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["skeleton"],
       files: [
         {
           path: "registry/new-york-v4/ui/alert.tsx",
@@ -110,7 +110,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["skeleton"],
       files: [
         {
           path: "registry/new-york-v4/ui/avatar.tsx",
@@ -135,7 +135,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["skeleton"],
       files: [
         {
           path: "registry/new-york-v4/ui/badge.tsx",
@@ -185,7 +185,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["skeleton"],
       files: [
         {
           path: "registry/new-york-v4/ui/button.tsx",
@@ -260,7 +260,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["skeleton"],
       files: [
         {
           path: "registry/new-york-v4/ui/card.tsx",
@@ -335,7 +335,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["skeleton"],
       files: [
         {
           path: "registry/new-york-v4/ui/checkbox.tsx",
@@ -635,7 +635,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["skeleton"],
       files: [
         {
           path: "registry/new-york-v4/ui/input.tsx",
@@ -1168,7 +1168,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["skeleton"],
       files: [
         {
           path: "registry/new-york-v4/ui/switch.tsx",
@@ -1243,7 +1243,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["skeleton"],
       files: [
         {
           path: "registry/new-york-v4/ui/textarea.tsx",
