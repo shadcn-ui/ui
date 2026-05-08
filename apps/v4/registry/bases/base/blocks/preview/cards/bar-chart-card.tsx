@@ -20,6 +20,7 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/registry/bases/base/ui/chart"
+import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 
 const barChartData = [
   { month: "January", desktop: 186, mobile: 80 },
@@ -49,6 +50,9 @@ const desktopDelta = Math.round(
 const desktopDeltaPrefix = desktopDelta > 0 ? "+" : ""
 
 export function BarChartCard() {
+  const [params] = useDesignSystemSearchParams()
+  const isRounded = !["lyra", "sera"].includes(params.style)
+
   return (
     <Card>
       <CardHeader>
@@ -84,12 +88,12 @@ export function BarChartCard() {
             <Bar
               dataKey="desktop"
               fill="var(--color-desktop)"
-              radius={[6, 6, 0, 0]}
+              radius={isRounded ? [6, 6, 0, 0] : 0}
             />
             <Bar
               dataKey="mobile"
               fill="var(--color-mobile)"
-              radius={[6, 6, 0, 0]}
+              radius={isRounded ? [6, 6, 0, 0] : 0}
             />
           </BarChart>
         </ChartContainer>

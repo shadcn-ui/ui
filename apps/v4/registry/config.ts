@@ -3,6 +3,7 @@ import {
   type IconLibrary,
   type IconLibraryName,
 } from "shadcn/icons"
+import { type RegistryItem } from "shadcn/schema"
 import { z } from "zod"
 
 import { BASE_COLORS, type BaseColor } from "@/registry/base-colors"
@@ -25,6 +26,10 @@ export type StyleName = Style["name"]
 export type ThemeName = Theme["name"]
 export type BaseColorName = BaseColor["name"]
 export type ChartColorName = Theme["name"]
+export const REGISTRY_BASE_PARTS = ["theme", "font"] as const
+export type RegistryBasePart = (typeof REGISTRY_BASE_PARTS)[number]
+export const POINTER_CURSOR_SELECTOR =
+  'button:not(:disabled), [role="button"]:not(:disabled)'
 
 // Derive font values from registry fonts (e.g., "font-inter" -> "inter").
 const fontValues = bodyFonts.map((f) => f.name.replace("font-", "")) as [
@@ -98,11 +103,12 @@ export const designSystemConfigSchema = z
     theme: z.enum(THEMES.map((t) => t.name) as [ThemeName, ...ThemeName[]]),
     chartColor: z
       .enum(THEMES.map((t) => t.name) as [ChartColorName, ...ChartColorName[]])
-      .default("neutral"),
+      .optional(),
     font: z.enum(fontValues).default("inter"),
     fontHeading: z.enum(fontHeadingValues).default("inherit"),
     item: z.string().optional(),
     rtl: z.boolean().default(false),
+    pointer: z.boolean().default(false),
     menuAccent: z
       .enum(
         MENU_ACCENTS.map((a) => a.value) as [
@@ -136,6 +142,10 @@ export const designSystemConfigSchema = z
       .default("next")
       .optional(),
   })
+  .transform((data) => ({
+    ...data,
+    chartColor: data.chartColor ?? data.theme,
+  }))
   .refine(
     (data) => {
       const availableThemes = getThemesForBaseColor(data.baseColor)
@@ -170,6 +180,7 @@ export const DEFAULT_CONFIG: DesignSystemConfig = {
   fontHeading: "inherit",
   item: "Item",
   rtl: false,
+  pointer: false,
   menuAccent: "subtle",
   menuColor: "default",
   radius: "default",
@@ -180,7 +191,7 @@ export type Preset = {
   name: string
   title: string
   description: string
-} & DesignSystemConfig
+} & Omit<DesignSystemConfig, "pointer">
 
 export const PRESETS: Preset[] = [
   // Radix.
@@ -493,6 +504,43 @@ export const PRESETS: Preset[] = [
     menuColor: "default",
     radius: "default",
   },
+  // Sera.
+  {
+    name: "radix-sera",
+    title: "Sera (Radix)",
+    description: "Sera / Lucide / Noto Sans + Playfair Display",
+    base: "radix",
+    style: "sera",
+    baseColor: "taupe",
+    theme: "taupe",
+    chartColor: "taupe",
+    iconLibrary: "lucide",
+    font: "noto-sans",
+    fontHeading: "playfair-display",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  {
+    name: "base-sera",
+    title: "Sera (Base)",
+    description: "Sera / Lucide / Noto Sans + Playfair Display",
+    base: "base",
+    style: "sera",
+    baseColor: "taupe",
+    theme: "taupe",
+    chartColor: "taupe",
+    iconLibrary: "lucide",
+    font: "noto-sans",
+    fontHeading: "playfair-display",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
 ]
 
 export function getThemesForBaseColor(baseColorName: string) {
@@ -524,6 +572,35 @@ export function getBaseColor(name: BaseColorName) {
 
 export function getIconLibrary(name: IconLibraryName) {
   return iconLibraries[name]
+}
+
+export function parseRegistryBaseParts(value: string | null) {
+  if (value === null) {
+    return { success: true as const, parts: undefined }
+  }
+
+  const aliases: Record<string, RegistryBasePart> = {
+    theme: "theme",
+    font: "font",
+    fonts: "font",
+  }
+  const rawParts = value
+    .split(",")
+    .map((part) => part.trim().toLowerCase())
+    .filter(Boolean)
+  const invalid = rawParts.filter((part) => !aliases[part])
+
+  if (!rawParts.length || invalid.length) {
+    return {
+      success: false as const,
+      error: `Invalid only value. Use one or more of: ${REGISTRY_BASE_PARTS.join(", ")}`,
+    }
+  }
+
+  return {
+    success: true as const,
+    parts: Array.from(new Set(rawParts.map((part) => aliases[part]))),
+  }
 }
 
 // Builds a registry:theme item from a design system config.
@@ -657,10 +734,80 @@ export function buildRegistryBase(config: DesignSystemConfig) {
       "@layer base": {
         "*": { "@apply border-border outline-ring/50": {} },
         body: { "@apply bg-background text-foreground": {} },
+        ...(config.pointer && {
+          [POINTER_CURSOR_SELECTOR]: {
+            cursor: "pointer",
+          },
+        }),
       },
     },
     ...(config.rtl && {
       docs: `To learn how to set up the RTL provider and fonts for your app, see https://ui.shadcn.com/docs/rtl/${config.template === "next-monorepo" ? "next" : (config.template ?? "next")}`,
     }),
   }
+}
+
+export function buildPartialRegistryBase(
+  config: DesignSystemConfig,
+  parts: RegistryBasePart[]
+) {
+  const uniqueParts = Array.from(new Set(parts))
+  const normalizedFontHeading =
+    config.fontHeading === config.font ? "inherit" : config.fontHeading
+  const partialConfig: {
+    menuColor?: DesignSystemConfig["menuColor"]
+    menuAccent?: DesignSystemConfig["menuAccent"]
+    tailwind?: {
+      baseColor?: string
+    }
+  } = {}
+  const registryDependencies: string[] = []
+  const cssVars: NonNullable<RegistryItem["cssVars"]> = {}
+
+  if (uniqueParts.includes("theme")) {
+    const registryTheme = buildRegistryTheme(config)
+
+    partialConfig.menuColor = config.menuColor
+    partialConfig.menuAccent = config.menuAccent
+    partialConfig.tailwind = {
+      baseColor: config.baseColor,
+    }
+
+    if (registryTheme.cssVars.theme) {
+      cssVars.theme = {
+        ...(cssVars.theme ?? {}),
+        ...registryTheme.cssVars.theme,
+      }
+    }
+    cssVars.light = {
+      ...(cssVars.light ?? {}),
+      ...registryTheme.cssVars.light,
+    }
+    cssVars.dark = {
+      ...(cssVars.dark ?? {}),
+      ...registryTheme.cssVars.dark,
+    }
+  }
+
+  if (uniqueParts.includes("font")) {
+    registryDependencies.push(`font-${config.font}`)
+
+    if (normalizedFontHeading !== "inherit") {
+      registryDependencies.push(`font-heading-${normalizedFontHeading}`)
+    } else {
+      cssVars.theme = {
+        ...(cssVars.theme ?? {}),
+        "--font-heading": getInheritedHeadingFontValue(config.font),
+      }
+    }
+  }
+
+  return {
+    name: `${config.base}-${config.style}-${uniqueParts.join("-")}`,
+    extends: "none",
+    type: "registry:base" as const,
+    ...(Object.keys(partialConfig).length > 0 && { config: partialConfig }),
+    ...(registryDependencies.length > 0 && { registryDependencies }),
+    ...(Object.keys(cssVars).length > 0 && { cssVars }),
+  } satisfies RegistryItem
 }
