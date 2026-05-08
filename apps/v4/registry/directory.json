@@ -1322,5 +1322,12 @@
     "url": "https://joelachance.github.io/text-ui/r/{name}.json",
     "description": "A shadcn/ui registry with EchoText (`echo-text`): layered stroke text that follows the pointer—minimal setup, drop-in component.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' fill='none'><rect width='120' height='120' rx='24' fill='var(--foreground, currentColor)' fill-opacity='0.08'/><g transform='translate(35.64 45.3)'><g transform='translate(24.36 14.7) scale(1 -1) translate(-24.36 -14.7)'><path fill='var(--foreground, currentColor)' d='M13.65 -0.67C17.43 -0.67 20.16 2.14 20.16 5.96L20.16 21.42C20.16 23.06 21.46 24.36 23.1 24.36C24.53 24.4 25.62 25.49 25.62 26.88C25.62 28.27 24.53 29.36 23.1 29.4L4.2 29.4C2.77 29.36 1.68 28.27 1.68 26.88C1.68 25.49 2.77 24.4 4.2 24.36C5.84 24.36 7.14 23.06 7.14 21.42L7.14 5.96C7.14 2.14 9.87 -0.67 13.65 -0.67ZM28.98 27.55L28.98 7.98C28.98 3.19 32.17 0 36.96 0L44.94 0L44.94 0.04C46.16 0.25 47.04 1.3 47.04 2.52C47.04 3.74 46.16 4.79 44.94 5L44.94 5.04C43.3 5.04 42 6.34 42 7.98L42 16.38C42 18.02 43.3 19.32 44.94 19.32C46.37 19.36 47.46 20.45 47.46 21.84C47.46 23.23 46.37 24.36 44.94 24.36L37.38 24.36C35.2 24.36 34.02 25.49 34.02 27.55C34.02 28.98 32.84 30.07 31.5 30.07C30.11 30.07 28.98 28.98 28.98 27.55Z'/></g></g></svg>"
+  },
+  {
+    "name": "@framecn",
+    "homepage": "https://framecn.vercel.app",
+    "url": "https://framecn.vercel.app/r/{name}.json",
+    "description": "Beautiful videos, made simple. Ready to use, customizable video components for React.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4'/><g stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'><path d='M6.72 4.36v2.36M27.96 25.6H25.6m-4.13 0H13.8c-3.337 0-5.007 0-6.043-1.037S6.72 21.857 6.72 18.52v-7.67M25.6 27.96v-11.8c0-4.45 0-6.675-1.383-8.057S20.61 6.72 16.16 6.72H4.36' stroke-width='1.77'/><path d='m21.824 16.16-5.664 5.664M20.691 9.93 9.93 20.69' stroke-width='2.266'/></g></svg>"
   }
 ]
