@@ -171,3 +171,120 @@ export const WithSubmenu: Story = {
     </DropdownMenu>
   ),
 }
+
+/**
+ * Figma parity story (JES-95, batch D).
+ *
+ * Mirrors the Figma `Lead UI - DropdownMenu` (root 29:92788, content
+ * 29:92680, item 29:92735, label 29:92802, separator 29:92856,
+ * sub-trigger 29:92869). The highest-complexity inventory entry —
+ * 8 `figma.connect()` calls in `DropdownMenu.figma.tsx` covering the
+ * variant-as-component-switch pattern.
+ *
+ * Per the existing Code Connect mapping, Figma's documented item
+ * properties are:
+ *
+ *   - Dropdown Menu Item Text (TEXT)
+ *   - Show Icon (BOOLEAN)
+ *   - Shortcut Text (TEXT) + Show Shortcut (BOOLEAN)
+ *   - Variant (VARIANT): Default, Checkbox, Radio, Icon
+ *   - State (VARIANT): Default, Hover, Disabled, Error
+ *
+ * Figma's `Variant` property switches *which React component is used*,
+ * not which prop value is passed:
+ *
+ *   - Variant=Default  → `<DropdownMenuItem>`
+ *   - Variant=Checkbox → `<DropdownMenuCheckboxItem>`
+ *   - Variant=Radio    → `<DropdownMenuRadioItem>` (in `<DropdownMenuRadioGroup>`)
+ *   - Variant=Icon     → no Lead equivalent (no icon-leading slot on items today)
+ *
+ * Source:
+ *   https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-92788
+ *
+ * **Documented non-parity exceptions:**
+ *
+ * 1. **Figma Variant=Icon has no Lead equivalent.**
+ *    - **Difference:** Figma documents an item with leading icon as
+ *      a Variant value; Lead's items have no icon-leading prop.
+ *    - **Reason:** API shape — same icon-slot decision as Alert
+ *      (§8.5). Adding icon support to dropdown items is a deliberate
+ *      API decision PR (out of scope for parity work).
+ *    - **Authority:** `DropdownMenu.figma.tsx` deliberate-unmapped
+ *      block.
+ *    - **Resolution:** Permanent unless an icon-slot API decision
+ *      changes it.
+ *
+ * 2. **Figma Show Shortcut / Shortcut Text have no Lead equivalent.**
+ *    - **Difference:** Figma documents keyboard shortcut display
+ *      slots; Lead's `<DropdownMenuItem>` has no shortcut prop.
+ *    - **Reason:** API shape — caller composes shortcuts via styled
+ *      `<span>` children if desired.
+ *    - **Authority:** `DropdownMenu.figma.tsx` deliberate-unmapped.
+ *    - **Resolution:** Permanent unless a `<DropdownMenuShortcut>`
+ *      subcomponent becomes a separate API decision.
+ *
+ * 3. **Figma State=Hover/Error are runtime/semantic states**, not
+ *    React props. Same pattern as other batches.
+ *
+ * Parity standard: docs/storybook-figma-parity-standard.md.
+ */
+export const FigmaParity: Story = {
+  name: "Figma parity (Variant=Default / Checkbox / Radio + Disabled)",
+  render: () => (
+    <div
+      style={{
+        padding: 24,
+        background: "var(--lead-color-surface-default)",
+        display: "flex",
+        justifyContent: "flex-start",
+      }}
+    >
+      <DropdownMenu defaultOpen>
+        <DropdownMenuTrigger asChild>
+          <Button variant="secondary">Open menu</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          {/* Variant=Default → DropdownMenuItem */}
+          <DropdownMenuLabel>Variant=Default</DropdownMenuLabel>
+          <DropdownMenuItem>Default item</DropdownMenuItem>
+          <DropdownMenuItem disabled>State=Disabled</DropdownMenuItem>
+
+          <DropdownMenuSeparator />
+
+          {/* Variant=Checkbox → DropdownMenuCheckboxItem */}
+          <DropdownMenuLabel>Variant=Checkbox</DropdownMenuLabel>
+          <DropdownMenuCheckboxItem checked>
+            Checked item
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem>Unchecked item</DropdownMenuCheckboxItem>
+
+          <DropdownMenuSeparator />
+
+          {/* Variant=Radio → DropdownMenuRadioItem in RadioGroup */}
+          <DropdownMenuLabel>Variant=Radio</DropdownMenuLabel>
+          <DropdownMenuRadioGroup value="one">
+            <DropdownMenuRadioItem value="one">Radio one</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="two">Radio two</DropdownMenuRadioItem>
+          </DropdownMenuRadioGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Mirrors Figma `Lead UI - DropdownMenu` (29:92788 root). " +
+          "Demonstrates the variant-as-component-switch pattern: " +
+          "Default → `<DropdownMenuItem>`, Checkbox → " +
+          "`<DropdownMenuCheckboxItem>`, Radio → " +
+          "`<DropdownMenuRadioItem>` (in `<DropdownMenuRadioGroup>`). " +
+          "Includes `<DropdownMenuLabel>` section headings and " +
+          "`<DropdownMenuSeparator>` between groups. Figma's Variant=" +
+          "Icon, Show Shortcut/Shortcut Text, and State=Hover/Error " +
+          "are documented non-parity (see story header for the " +
+          "API-shape exceptions).",
+      },
+    },
+  },
+}

@@ -216,3 +216,80 @@ export const LargeSize: Story = {
     </Dialog>
   ),
 }
+
+/**
+ * Figma parity story (JES-95, batch D).
+ *
+ * Mirrors the Figma `Lead UI - Dialog` page (component symbol
+ * 29:91865). Per the existing Code Connect mapping (Dialog.figma.tsx),
+ * Figma's documented properties are:
+ *
+ *   - Title Text       (TEXT)
+ *   - Description Text (TEXT)
+ *
+ * Lead's `<Dialog>` is *compositional* — `<DialogTrigger>` /
+ * `<DialogContent>` / `<DialogHeader>` / `<DialogTitle>` /
+ * `<DialogDescription>` / `<DialogFooter>` are children. Title and
+ * description are rendered as locals into the canonical composition.
+ *
+ * Source:
+ *   https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-91865
+ *
+ * **Documented non-parity exception:**
+ *
+ * - **Difference:** Figma's `Breakpoint` variant (responsive sizing)
+ *   and slot instance-swap props don't map to React props on
+ *   `<Dialog>`. Lead's `<DialogContent size>` (`sm`/`md`/`lg`) is the
+ *   closest analog but doesn't share Figma's breakpoint names.
+ * - **Reason:** API shape — Figma breakpoint names are layout-
+ *   density tokens; Lead's `size` is content density. Mapping them
+ *   would assert an equivalence the manifest doesn't document.
+ * - **Authority:** `Dialog.figma.tsx` deliberate-unmapped block.
+ * - **Resolution:** Permanent. Lead's auto-stacked-footer behavior
+ *   at `size="sm"` (shipped in PR #43) covers the small-breakpoint
+ *   case for AlertDialog and Dialog uniformly.
+ *
+ * Parity standard: docs/storybook-figma-parity-standard.md.
+ */
+export const FigmaParity: Story = {
+  name: "Figma parity (default — title + description + footer)",
+  render: () => (
+    <Dialog defaultOpen>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Title Text</DialogTitle>
+          <DialogDescription>This is a dialog description.</DialogDescription>
+        </DialogHeader>
+        <p
+          style={{
+            fontSize: 13,
+            color: "var(--lead-color-text-default)",
+          }}
+        >
+          Body content slot — replace with your form, message, or composition.
+        </p>
+        <DialogFooter>
+          <DialogClose asChild>
+            <Button variant="outline">Cancel</Button>
+          </DialogClose>
+          <Button variant="primary">Continue</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Mirrors Figma `Lead UI - Dialog` (29:91865). Renders the " +
+          "canonical Lead composition: header + body + footer with " +
+          "Title Text / Description Text from the Figma surface. " +
+          "Figma's Breakpoint variant has no direct Lead equivalent; " +
+          "Lead's `<DialogContent size>` is the closest analog (see " +
+          "story header for the documented non-parity exception). " +
+          "Auto-stacked footer behavior at `size=\"sm\"` is shared " +
+          "with AlertDialog (PR #43).",
+      },
+    },
+  },
+}

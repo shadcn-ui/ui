@@ -261,3 +261,95 @@ export const InFormCard: Story = {
     </Card>
   ),
 }
+
+/**
+ * Figma parity story (JES-95, batch D).
+ *
+ * Mirrors the Figma `Lead UI - Select` (trigger/control 29:98157,
+ * item 29:97998, label 29:97936, menu 29:98193). Per the existing
+ * Code Connect mapping (Select.figma.tsx), the Figma trigger/control
+ * node represents the *whole labeled field* — Label / Description /
+ * Placeholder text + State variant — not just the button. Lead's
+ * React API spreads this across `<Field>` + `<FieldLabel>` + `<Select>`
+ * + `<SelectTrigger>` + `<SelectValue>` + `<FieldDescription>`.
+ *
+ * Source:
+ *   https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=29-98157
+ *
+ * **Documented non-parity exception:**
+ *
+ * - **Difference:** Figma exposes `Show Label` / `Show Description` /
+ *   `Show Icon` as boolean visibility toggles on the trigger/control;
+ *   Lead's compositional API has no "show" prop — caller includes or
+ *   omits the subcomponent. Figma's State variants `Focus` / `Filled`
+ *   / `Filled (Focus)` are runtime states, not React props. Figma's
+ *   item-level `Show Icon` / `Type=Simple|Icon` / `Variant=Default|
+ *   Checkbox` similarly have no Lead `<SelectItem>` props (Lead
+ *   always renders a check indicator for the selected option; no
+ *   icon-leading prop today).
+ * - **Reason:** API shape — same compositional/runtime-state pattern
+ *   as Card and Tabs in Batch C. Adding "show" props or runtime-state
+ *   props would conflate caller composition with primitive state.
+ * - **Authority:** `Select.figma.tsx` deliberate-unmapped block.
+ * - **Resolution:** Permanent. Caller composes label/description via
+ *   `<Field>` siblings; runtime states ship via CSS.
+ *
+ * Parity standard: docs/storybook-figma-parity-standard.md.
+ */
+export const FigmaParity: Story = {
+  name: "Figma parity (labeled field with placeholder + disabled)",
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 24,
+        padding: 16,
+        background: "var(--lead-color-surface-default)",
+        width: 360,
+      }}
+    >
+      <Field>
+        <FieldLabel>Label Text</FieldLabel>
+        <Select>
+          <SelectTrigger>
+            <SelectValue placeholder="Placeholder" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="one">Select Item Text</SelectItem>
+            <SelectItem value="two">Another item</SelectItem>
+          </SelectContent>
+        </Select>
+        <FieldDescription>This is a description.</FieldDescription>
+      </Field>
+
+      <Field>
+        <FieldLabel>State=Disabled</FieldLabel>
+        <Select disabled>
+          <SelectTrigger>
+            <SelectValue placeholder="Placeholder" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="one">Select Item Text</SelectItem>
+          </SelectContent>
+        </Select>
+      </Field>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Mirrors Figma `Lead UI - Select` (29:98157 trigger/control). " +
+          "The Figma trigger/control node represents the *whole labeled " +
+          "field*; renders here as the canonical Lead `<Field>` + " +
+          "`<FieldLabel>` + `<Select>` + `<SelectTrigger>` + " +
+          "`<SelectValue>` + `<FieldDescription>` composition. Figma's " +
+          "Show Label/Show Description/Show Icon booleans, item-level " +
+          "Show Icon/Type/Variant=Checkbox, and runtime State variants " +
+          "are documented non-parity (see story header for the " +
+          "API-shape exception).",
+      },
+    },
+  },
+}
