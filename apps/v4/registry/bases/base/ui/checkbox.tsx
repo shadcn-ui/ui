@@ -4,8 +4,22 @@ import { Checkbox as CheckboxPrimitive } from "@base-ui/react/checkbox"
 
 import { cn } from "@/registry/bases/base/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+import { Skeleton } from "@/registry/bases/base/ui/skeleton"
 
-function Checkbox({ className, ...props }: CheckboxPrimitive.Root.Props) {
+function Checkbox({
+  className,
+  isLoading = false,
+  ...props
+}: CheckboxPrimitive.Root.Props & { isLoading?: boolean }) {
+  if (isLoading) {
+    return (
+      <Skeleton
+        className={cn("size-4 shrink-0 border border-input", className)}
+        {...props as any}
+      />
+    )
+  }
+
   return (
     <CheckboxPrimitive.Root
       data-slot="checkbox"
