@@ -309,7 +309,7 @@ function buildPackageJson(dependencies: string[]) {
     "date-fns": "4.1.0",
     "embla-carousel-react": "8.5.1",
     "input-otp": "1.4.1",
-    "react-day-picker": "9.8.0",
+    "@daypicker/react": "10.0.0",
     "react-resizable-panels": "^2.1.7",
     recharts: "2.15.4",
     sonner: "^1.7.4",

@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { addDays, format } from "date-fns"
-import { type DateRange } from "react-day-picker"
-import { es } from "react-day-picker/locale"
+import { type DateRange } from "@daypicker/react"
+import { es } from "@daypicker/react/locale"
 
 import {
   Example,
