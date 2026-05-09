@@ -15,7 +15,11 @@ import { Config } from "@/src/utils/get-config"
 import { getProjectInfo, ProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import { resolveImport } from "@/src/utils/resolve-import"
+import { resolvePackageImport } from "@/src/utils/package-imports"
+import {
+  isLocalAliasImport,
+  resolveImportWithMetadata,
+} from "@/src/utils/resolve-import"
 import { spinner } from "@/src/utils/spinner"
 import { transform } from "@/src/utils/transformers"
 import { transformAsChild } from "@/src/utils/transformers/transform-aschild"
@@ -31,8 +35,14 @@ import { transformRtl } from "@/src/utils/transformers/transform-rtl"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import prompts from "prompts"
 import { Project, ScriptKind } from "ts-morph"
-import { loadConfig } from "tsconfig-paths"
+import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 import { z } from "zod"
+
+const CODE_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx"]
+const NON_ALIAS_RESOLVED_PATH_KEYS = new Set(["tailwindConfig", "tailwindCss"])
+const TARGET_ALIAS_KEYS = ["components", "ui", "lib", "hooks"] as const
+
+type TargetAliasKey = (typeof TARGET_ALIAS_KEYS)[number]
 
 export async function updateFiles(
   files: RegistryItem["files"],
@@ -45,6 +55,7 @@ export async function updateFiles(
     isRemote?: boolean
     isWorkspace?: boolean
     path?: string
+    plannedFiles?: RegistryItem["files"]
     supportedFontMarkers?: string[]
   }
 ) {
@@ -73,6 +84,19 @@ export async function updateFiles(
       ? getRegistryBaseColor(config.tailwind.baseColor)
       : Promise.resolve(undefined),
   ])
+  const tsConfig = loadConfig(config.resolvedPaths.cwd)
+  const plannedFilePaths = getPlannedFilePaths(
+    options.plannedFiles ?? files,
+    config,
+    {
+      isSrcDir: projectInfo?.isSrcDir,
+      framework: projectInfo?.framework.name,
+      path: options.path,
+    }
+  )
+  const importRewriteProject = new Project({
+    compilerOptions: {},
+  })
 
   let filesCreated: string[] = []
   let filesUpdated: string[] = []
@@ -176,10 +200,19 @@ export async function updateFiles(
     // Skip the file if it already exists and the content is the same.
     // Exception: Don't skip .env files as we merge content instead of replacing
     if (existingFile && !isEnvFile(filePath)) {
+      const resolvedContent = await rewriteResolvedImportsInContent({
+        config,
+        content,
+        filePaths: plannedFilePaths,
+        project: importRewriteProject,
+        projectInfo,
+        resolvedPath: filePath,
+        tsConfig,
+      })
       const existingFileContent = await fs.readFile(filePath, "utf-8")
 
       if (
-        isContentSame(existingFileContent, content, {
+        isContentSame(existingFileContent, resolvedContent, {
           // Ignore import differences for workspace components.
           // TODO: figure out if we always want this.
           ignoreImports: options.isWorkspace,
@@ -261,7 +294,7 @@ export async function updateFiles(
   }
 
   const allFiles = [...filesCreated, ...filesUpdated, ...filesSkipped]
-  const updatedFiles = await resolveImports(allFiles, config)
+  const updatedFiles = await resolveImports(allFiles, config, plannedFilePaths)
 
   // Let's update filesUpdated with the updated files.
   filesUpdated.push(...updatedFiles)
@@ -382,6 +415,15 @@ export function resolveFilePath(
     }
 
     let target = file.target
+    const aliasTarget = resolveAliasTarget(target, config)
+
+    if (aliasTarget?.resolvedPath) {
+      return aliasTarget.resolvedPath
+    }
+
+    if (aliasTarget?.target) {
+      target = aliasTarget.target
+    }
 
     if (file.type === "registry:page") {
       target = resolvePageTarget(target, options.framework)
@@ -399,6 +441,42 @@ export function resolveFilePath(
 
   const relativePath = resolveNestedFilePath(file.path, targetDir)
   return path.join(targetDir, relativePath)
+}
+
+function resolveAliasTarget(target: string, config: Config) {
+  const match = target.match(/^@([^/]+)\/(.+)$/)
+
+  if (!match) {
+    return null
+  }
+
+  const [, aliasKey, targetPath] = match
+
+  if (!isTargetAliasKey(aliasKey)) {
+    return {
+      target: `${aliasKey}/${targetPath}`,
+    }
+  }
+
+  const aliasRoot = path.resolve(config.resolvedPaths[aliasKey])
+  const resolvedPath = path.resolve(aliasRoot, targetPath)
+
+  if (
+    resolvedPath !== aliasRoot &&
+    !resolvedPath.startsWith(`${aliasRoot}${path.sep}`)
+  ) {
+    throw new Error(
+      `Invalid target path "${target}". Target paths using @${aliasKey}/ must stay within the ${aliasKey} alias root.`
+    )
+  }
+
+  return {
+    resolvedPath,
+  }
+}
+
+function isTargetAliasKey(aliasKey: string): aliasKey is TargetAliasKey {
+  return TARGET_ALIAS_KEYS.includes(aliasKey as TargetAliasKey)
 }
 
 function resolveFileTargetDirectory(
@@ -519,7 +597,11 @@ export function resolvePageTarget(
   return ""
 }
 
-async function resolveImports(filePaths: string[], config: Config) {
+async function resolveImports(
+  filePaths: string[],
+  config: Config,
+  plannedFilePaths: string[] = filePaths
+) {
   const project = new Project({
     compilerOptions: {},
   })
@@ -554,47 +636,138 @@ async function resolveImports(filePaths: string[], config: Config) {
     if (![".tsx", ".ts", ".jsx", ".js"].includes(sourceFile.getExtension())) {
       continue
     }
+    const rewrittenContent = await rewriteResolvedImportsInContent({
+      config,
+      content,
+      filePaths: plannedFilePaths,
+      project,
+      projectInfo,
+      resolvedPath,
+      sourceFile,
+      tsConfig,
+    })
 
-    const importDeclarations = sourceFile.getImportDeclarations()
-    for (const importDeclaration of importDeclarations) {
+    if (rewrittenContent === content) {
+      continue
+    }
+
+    await fs.writeFile(resolvedPath, rewrittenContent, "utf-8")
+    updatedFiles.push(filepath)
+  }
+
+  return updatedFiles
+}
+
+export function getPlannedFilePaths(
+  files: RegistryItem["files"],
+  config: Config,
+  options: {
+    isSrcDir?: boolean
+    framework?: ProjectInfo["framework"]["name"]
+    path?: string
+  }
+) {
+  return (files ?? [])
+    ?.filter((file): file is NonNullable<typeof file> => !!file?.content)
+    .map((file, index) => {
+      let filePath = resolveFilePath(file, config, {
+        isSrcDir: options.isSrcDir,
+        framework: options.framework,
+        commonRoot: findCommonRoot(
+          (files ?? []).map((entry) => entry.path),
+          file.path
+        ),
+        path: options.path,
+        fileIndex: index,
+      })
+
+      if (!filePath) {
+        return null
+      }
+
+      if (!config.tsx) {
+        filePath = filePath.replace(/\.tsx?$/, (match) =>
+          match === ".tsx" ? ".jsx" : ".js"
+        )
+      }
+
+      return path.relative(config.resolvedPaths.cwd, filePath)
+    })
+    .filter((filePath): filePath is string => !!filePath)
+}
+
+export async function rewriteResolvedImportsInContent({
+  content,
+  resolvedPath,
+  filePaths,
+  config,
+  projectInfo,
+  tsConfig,
+  project,
+  sourceFile,
+}: {
+  content: string
+  resolvedPath: string
+  filePaths: string[]
+  config: Config
+  projectInfo: ProjectInfo | null
+  tsConfig: ReturnType<typeof loadConfig>
+  project: Project
+  sourceFile?: ReturnType<Project["createSourceFile"]>
+}) {
+  if (!projectInfo || tsConfig.resultType === "failed") {
+    return content
+  }
+
+  const ext = path.extname(resolvedPath)
+  if (![".tsx", ".ts", ".jsx", ".js"].includes(ext)) {
+    return content
+  }
+
+  const createdSourceFile =
+    sourceFile === undefined
+      ? project.createSourceFile(
+          path.join(
+            tmpdir(),
+            `shadcn-${Math.random().toString(36).slice(2)}${ext || ".tsx"}`
+          ),
+          content,
+          {
+            scriptKind: ScriptKind.TSX,
+            overwrite: true,
+          }
+        )
+      : null
+  const workingSourceFile = sourceFile ?? createdSourceFile!
+
+  try {
+    let hasChanges = false
+
+    for (const importDeclaration of workingSourceFile.getImportDeclarations()) {
       const moduleSpecifier = importDeclaration.getModuleSpecifierValue()
 
-      // Filter out non-local imports.
       if (
-        projectInfo?.aliasPrefix &&
-        !moduleSpecifier.startsWith(`${projectInfo.aliasPrefix}/`)
+        !isLocalAliasImport(moduleSpecifier, projectInfo.aliasPrefix ?? null)
       ) {
         continue
       }
 
-      // Find the probable import file path.
-      // This is where we expect to find the file on disk.
-      const probableImportFilePath = await resolveImport(
+      const resolvedImportFilePath = await resolveImportFilePathForRewrite(
         moduleSpecifier,
-        tsConfig
-      )
-
-      if (!probableImportFilePath) {
-        continue
-      }
-
-      // Find the actual import file path.
-      // This is the path where the file has been installed.
-      const resolvedImportFilePath = resolveModuleByProbablePath(
-        probableImportFilePath,
         filePaths,
-        config
+        config,
+        tsConfig
       )
 
       if (!resolvedImportFilePath) {
         continue
       }
 
-      // Convert the resolved import file path to an aliased import.
       const newImport = toAliasedImport(
         resolvedImportFilePath,
         config,
-        projectInfo
+        projectInfo,
+        resolvedPath
       )
 
       if (!newImport || newImport === moduleSpecifier) {
@@ -602,16 +775,44 @@ async function resolveImports(filePaths: string[], config: Config) {
       }
 
       importDeclaration.setModuleSpecifier(newImport)
+      hasChanges = true
+    }
 
-      // Write the updated content to the file.
-      await fs.writeFile(resolvedPath, sourceFile.getFullText(), "utf-8")
-
-      // Track the updated file.
-      updatedFiles.push(filepath)
+    return hasChanges ? workingSourceFile.getFullText() : content
+  } finally {
+    if (createdSourceFile) {
+      project.removeSourceFile(createdSourceFile)
     }
   }
+}
 
-  return updatedFiles
+async function resolveImportFilePathForRewrite(
+  moduleSpecifier: string,
+  filePaths: string[],
+  config: Config,
+  tsConfig: Pick<ConfigLoaderSuccessResult, "absoluteBaseUrl" | "paths">
+) {
+  const probableImportFilePath = (
+    await resolveImportWithMetadata(moduleSpecifier, {
+      ...tsConfig,
+      cwd: config.resolvedPaths.cwd,
+    })
+  )?.path
+
+  const fallbackImportFilePath =
+    !probableImportFilePath && !moduleSpecifier.startsWith(".")
+      ? resolveImportFromConfiguredAliases(moduleSpecifier, config)
+      : null
+
+  if (!probableImportFilePath && !fallbackImportFilePath) {
+    return null
+  }
+
+  return resolveModuleByProbablePath(
+    probableImportFilePath ?? fallbackImportFilePath!,
+    filePaths,
+    config
+  )
 }
 
 /**
@@ -694,16 +895,40 @@ export function resolveModuleByProbablePath(
 export function toAliasedImport(
   filePath: string,
   config: Config,
-  projectInfo: ProjectInfo
+  projectInfo: ProjectInfo,
+  importerPath?: string
 ): string | null {
   const abs = path.normalize(path.join(config.resolvedPaths.cwd, filePath))
 
   // 1️⃣ Find the longest matching alias root in resolvedPaths
   //    e.g. key="ui", root="/…/components/ui" beats key="components"
   const matches = Object.entries(config.resolvedPaths)
-    .filter(
-      ([, root]) => root && abs.startsWith(path.normalize(root + path.sep))
-    )
+    .filter(([key, root]) => {
+      if (!root || NON_ALIAS_RESOLVED_PATH_KEYS.has(key)) {
+        return false
+      }
+
+      const normalizedRoot = path.normalize(root)
+
+      if (abs === normalizedRoot) {
+        // Only allow exact-equality match for true exact-key package imports
+        // (e.g. `#utils` → `./src/lib/utils.ts`). Path-style aliases that
+        // resolve through a wildcard (e.g. `#lib/utils` via `#lib/*`) must
+        // fall back to the directory alias so the wildcard's emit-mode
+        // (preserve/strip extension) is honored.
+        const aliasValue = config.aliases[key as keyof typeof config.aliases]
+        if (typeof aliasValue !== "string" || !aliasValue.startsWith("#")) {
+          return true
+        }
+        const resolved = resolvePackageImport(
+          aliasValue,
+          config.resolvedPaths.cwd
+        )
+        return resolved !== null && !resolved.matchedAlias.includes("*")
+      }
+
+      return abs.startsWith(path.normalize(root + path.sep))
+    })
     .sort((a, b) => b[1].length - a[1].length)
 
   if (matches.length === 0) {
@@ -716,10 +941,31 @@ export function toAliasedImport(
   // force POSIX-style separators
   rel = rel.split(path.sep).join("/") // e.g. "button/index.tsx"
 
+  const aliasBase =
+    aliasKey === "cwd"
+      ? projectInfo.aliasPrefix
+      : config.aliases[aliasKey as keyof typeof config.aliases]
+  if (!aliasBase) {
+    return null
+  }
+
+  if (aliasBase.startsWith("#")) {
+    const packageImport = resolvePackageImport(
+      aliasBase,
+      config.resolvedPaths.cwd
+    )
+
+    if (packageImport) {
+      return (
+        toPackageImport(aliasBase, rel, packageImport) ??
+        (importerPath ? toRelativeImport(importerPath, abs) : null)
+      )
+    }
+  }
+
   // 3️⃣ Strip code-file extensions, keep others (css, json, etc.)
   const ext = path.posix.extname(rel)
-  const codeExts = [".ts", ".tsx", ".js", ".jsx"]
-  const keepExt = codeExts.includes(ext) ? "" : ext
+  const keepExt = CODE_EXTENSIONS.includes(ext) ? "" : ext
   let noExt = rel.slice(0, rel.length - ext.length)
 
   // 4️⃣ Collapse "/index" to its directory
@@ -728,24 +974,136 @@ export function toAliasedImport(
   }
 
   // 5️⃣ Build the aliased path
-  //    config.aliases[aliasKey] is e.g. "@/components/ui"
-  const aliasBase =
-    aliasKey === "cwd"
-      ? projectInfo.aliasPrefix
-      : config.aliases[aliasKey as keyof typeof config.aliases]
-  if (!aliasBase) {
-    return null
-  }
-  // if noExt is empty (i.e. file was exactly at the root), we import the root
   let suffix = noExt === "" ? "" : `/${noExt}`
 
   // Remove /src from suffix.
   // Alias will handle this.
   suffix = suffix.replace("/src", "")
 
-  // 6️⃣ Prepend the prefix from projectInfo (e.g. "@") if needed
-  //    but usually config.aliases already include it.
   return `${aliasBase}${suffix}${keepExt}`
+}
+
+function toPackageImport(
+  aliasBase: string,
+  relativePath: string,
+  packageImport: ReturnType<typeof resolvePackageImport> extends infer T
+    ? Exclude<T, null>
+    : never
+) {
+  const ext = path.posix.extname(relativePath)
+  const keepExt =
+    CODE_EXTENSIONS.includes(ext) &&
+    packageImport.emitMode === "strip_extension"
+      ? ""
+      : ext
+  const normalizedRelativePath = relativePath
+    ? relativePath.slice(0, relativePath.length - ext.length) + keepExt
+    : ""
+
+  if (!packageImport.matchedAlias.includes("*")) {
+    return normalizedRelativePath === "" || normalizedRelativePath === "index"
+      ? aliasBase
+      : null
+  }
+
+  return normalizedRelativePath
+    ? `${aliasBase}/${normalizedRelativePath}`
+    : aliasBase
+}
+
+function resolveImportFromConfiguredAliases(
+  moduleSpecifier: string,
+  config: Config
+) {
+  const aliasEntries = getConfiguredAliasEntries(config)
+
+  for (const entry of aliasEntries) {
+    if (
+      moduleSpecifier === entry.alias ||
+      moduleSpecifier === entry.canonical
+    ) {
+      return entry.rootPath
+    }
+
+    if (moduleSpecifier.startsWith(`${entry.alias}/`)) {
+      return path.join(
+        entry.rootPath,
+        moduleSpecifier.slice(entry.alias.length + 1)
+      )
+    }
+
+    if (moduleSpecifier.startsWith(`${entry.canonical}/`)) {
+      return path.join(
+        entry.rootPath,
+        moduleSpecifier.slice(entry.canonical.length + 1)
+      )
+    }
+  }
+
+  return null
+}
+
+function getConfiguredAliasEntries(config: Config) {
+  return [
+    {
+      alias: config.aliases.ui,
+      canonical: "@/components/ui",
+      rootPath: config.resolvedPaths.ui,
+    },
+    {
+      alias: config.aliases.components,
+      canonical: "@/components",
+      rootPath: config.resolvedPaths.components,
+    },
+    {
+      alias: config.aliases.hooks,
+      canonical: "@/hooks",
+      rootPath: config.resolvedPaths.hooks,
+    },
+    {
+      alias: config.aliases.lib,
+      canonical: "@/lib",
+      rootPath: config.resolvedPaths.lib,
+    },
+    {
+      alias: config.aliases.utils,
+      canonical: "@/lib/utils",
+      rootPath: config.resolvedPaths.utils,
+    },
+  ]
+    .filter(
+      (
+        entry
+      ): entry is {
+        alias: string
+        canonical: string
+        rootPath: string
+      } => typeof entry.alias === "string" && typeof entry.rootPath === "string"
+    )
+    .sort(
+      (a, b) =>
+        b.alias.length - a.alias.length ||
+        b.canonical.length - a.canonical.length
+    )
+}
+
+function toRelativeImport(fromFilePath: string, targetFilePath: string) {
+  let rel = path.relative(path.dirname(fromFilePath), targetFilePath)
+  rel = rel.split(path.sep).join("/")
+
+  const ext = path.posix.extname(rel)
+  const keepExt = CODE_EXTENSIONS.includes(ext) ? "" : ext
+  let noExt = rel.slice(0, rel.length - ext.length)
+
+  if (noExt.endsWith("/index")) {
+    noExt = noExt.slice(0, -"/index".length)
+  }
+
+  if (!noExt.startsWith(".")) {
+    noExt = `./${noExt}`
+  }
+
+  return `${noExt}${keepExt}`
 }
 
 function _isNext16Middleware(
