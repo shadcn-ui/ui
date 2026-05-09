@@ -1,6 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { Input, Label } from "@leadbank/ui"
 
+/**
+ * Label — Storybook stories.
+ *
+ * Includes Figma-parity stories matching the source design at:
+ *   https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=213-116
+ *
+ * Parity reference: docs/storybook-figma-parity-standard.md.
+ */
+
 const meta: Meta<typeof Label> = {
   title: "Components/Label",
   component: Label,
@@ -75,4 +84,41 @@ export const PairedWithInput: Story = {
     children: "Email",
     required: true,
   },
+}
+
+export const FigmaParitySizeRequiredState: Story = {
+  name: "Figma parity (Size × Required × State)",
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Mirrors the standalone Label source component created in Figma at https://www.figma.com/design/f2gKVfCJNOS0MeLUk4CM8u/Lead-Design-System---CLI-Ready-Staging?node-id=213-116. Mapped surfaces: Size → `size`, Required → `required`, and State=Disabled → `disabled`. No documented non-parity exceptions: the Figma source was created from Lead React's Label API.",
+      },
+    },
+  },
+  render: () => (
+    <div
+      style={{
+        display: "grid",
+        gap: "var(--lead-space-4)",
+        gridTemplateColumns: "repeat(4, minmax(120px, max-content))",
+        alignItems: "center",
+      }}
+    >
+      {(["sm", "md", "lg"] as const).map((size) => (
+        <div key={size} style={{ display: "contents" }}>
+          <Label size={size}>Label</Label>
+          <Label size={size} disabled>
+            Label
+          </Label>
+          <Label size={size} required>
+            Label
+          </Label>
+          <Label size={size} required disabled>
+            Label
+          </Label>
+        </div>
+      ))}
+    </div>
+  ),
 }

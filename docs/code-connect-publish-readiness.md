@@ -150,8 +150,8 @@ Follow these in order. Stop at the first failure.
 
 | Component | Reason unmapped | Path forward |
 |---|---|---|
-| `Field` (form field group) | Compositional wrapper; Figma file has no `Field` source-of-truth node distinct from individual control nodes (Input/Select/Checkbox already map their containers). Mapping `Field` would require a Figma node that doesn't exist in the manifest yet. | Wait for design to publish a `Field` component in Figma, then add a mapping PR. |
-| `Label` | Same — used inside other components' `figma.connect()` examples (`Field` + `FieldLabel`), but no standalone `Label` Figma node distinct from the labels embedded in trigger/control variants. | Same — add when Figma exposes a standalone `Label` component. |
+| `Field` (form field group) | **No longer missing a Figma node.** JES-108 created standalone source components in Figma: Field component set `216:1154` and FieldGroup `216:1155`. It remains unmapped only because Code Connect work is parked until the Figma-side scope blockers are resolved. | Add a dedicated `Field.figma.tsx` mapping PR when Lane 1 resumes. Keep publish disabled until the existing Code Connect prerequisite gates are met. |
+| `Label` | **No longer missing a Figma node.** JES-108 created standalone source component set `213:116`. It remains unmapped only because Code Connect work is parked until the Figma-side scope blockers are resolved. | Add a dedicated `Label.figma.tsx` mapping PR when Lane 1 resumes. Keep publish disabled until the existing Code Connect prerequisite gates are met. |
 
 **Variant gaps within mapped components** (documented in each `.figma.tsx` file):
 - Badge `Outline` — no Lead variant.
