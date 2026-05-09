@@ -1,0 +1,83 @@
+---
+title: Text
+description: A typographic primitive for rendering text with semantic variants and size scales.
+base: base
+component: true
+---
+
+<ComponentPreview styleName="base-nova" name="text-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add text
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="text"
+  title="components/ui/text.tsx"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Text } from "@/components/ui/text"
+```
+
+```tsx
+<Text variant="muted" size="sm">Helper text</Text>
+```
+
+## Examples
+
+### Sizes
+
+Use the `size` prop to control the font size and line height.
+
+<ComponentPreview styleName="base-nova" name="text-demo" />
+
+### As Child
+
+Use `asChild` to render `Text` styles on a different element such as `h1`, `span`, or `label`.
+
+```tsx
+<Text variant="primary" size="xl" asChild>
+  <h1>Page Title</h1>
+</Text>
+```
+
+## API Reference
+
+### Text
+
+| Prop        | Type                                                                                    | Default     |
+| ----------- | --------------------------------------------------------------------------------------- | ----------- |
+| `variant`   | `"default" \| "primary" \| "secondary" \| "destructive" \| "muted" \| "accent"`        | `"default"` |
+| `size`      | `"xs" \| "sm" \| "default" \| "lg" \| "xl"`                                            | `"default"` |
+| `asChild`   | `boolean`                                                                               | `false`     |
+| `className` | `string`                                                                                | -           |
