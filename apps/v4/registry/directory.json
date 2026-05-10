@@ -338,7 +338,7 @@
   },
   {
     "name": "@glasscn",
-    "homepage": "https://glasscn.vercel.app/",
+    "homepage": "https://glasscn-components.vercel.app/",
     "url": "https://glasscn-components.vercel.app/r/{name}.json",
     "description": "A shadcn-compatible registry of glassmorphism components inspired by Apple",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' fill='none'><rect x='0.5' y='0.5' width='51' height='51' rx='13.5' fill='var(--background)' fill-opacity='.08' stroke='var(--foreground)' stroke-opacity='.2'/><rect x='14.5' y='14.5' width='51' height='51' rx='13.5' fill='var(--background)' fill-opacity='.12' stroke='var(--foreground)' stroke-opacity='.3'/><rect x='28.5' y='28.5' width='51' height='51' rx='13.5' fill='var(--background)' fill-opacity='.18' stroke='var(--foreground)' stroke-opacity='.45'/><line x1='34' y1='36' x2='34' y2='56' stroke='var(--foreground)' stroke-opacity='.35' stroke-width='1.5' stroke-linecap='round'/></svg>"
