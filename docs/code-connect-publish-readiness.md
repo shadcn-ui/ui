@@ -47,7 +47,7 @@ The Figma org owner / billing admin needs to confirm:
 
 ## 1. Current mapping inventory
 
-**18 mapping files. 30 logical `figma.connect()` calls. 9 components fully mapped, 9 component families with multiple subcomponent mappings, 2 components intentionally unmapped (see §6).**
+**18 mapping files. 30 logical `figma.connect()` calls. 9 components fully mapped, 9 component families with multiple subcomponent mappings.** Field and Label have standalone Figma source nodes as of [JES-108](https://linear.app/39-west-design/issue/JES-108/) (PR #54, merge `6d40c7aa2`) but are not yet mapped in Code Connect — their mappings remain parked alongside the rest of Lane 1 until the Figma org-side scope blocker (§0) is resolved. See §6 for the full per-component status.
 
 | Component | File | `figma.connect()` calls | Notes |
 |---|---|---|---|
