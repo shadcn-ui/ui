@@ -289,7 +289,7 @@
   },
   {
     "name": "@glasscn",
-    "homepage": "https://glasscn.vercel.app/",
+    "homepage": "https://glasscn-components.vercel.app/",
     "url": "https://glasscn-components.vercel.app/r/{name}.json",
     "description": "A shadcn-compatible registry of glassmorphism components inspired by Apple"
   },
