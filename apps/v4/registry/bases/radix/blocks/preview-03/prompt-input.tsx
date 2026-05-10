@@ -12,6 +12,7 @@ import {
   ComboboxItem,
   ComboboxLabel,
   ComboboxList,
+  ComboboxSeparator,
   ComboboxTrigger,
   ComboboxValue,
 } from "@/registry/bases/radix/ui/combobox"
@@ -455,7 +456,9 @@ export function PromptInput() {
                 phosphor="CodeIcon"
                 remixicon="RiCodeLine"
               />
-              <ComboboxValue />
+              <span className="max-w-32 truncate">
+                <ComboboxValue />
+              </span>
             </ComboboxTrigger>
             <ComboboxContent className="w-fit" align="end">
               <ComboboxInput
@@ -464,6 +467,19 @@ export function PromptInput() {
               />
               <ComboboxEmpty>No branches found.</ComboboxEmpty>
               <ComboboxList className="max-h-72">
+                <ComboboxGroup>
+                  <ComboboxItem>
+                    <IconPlaceholder
+                      lucide="PlusIcon"
+                      tabler="IconPlus"
+                      hugeicons="Add01Icon"
+                      phosphor="PlusIcon"
+                      remixicon="RiAddLine"
+                    />
+                    Create and checkout new branch…
+                  </ComboboxItem>
+                </ComboboxGroup>
+                <ComboboxSeparator />
                 <ComboboxGroup items={branches}>
                   <ComboboxLabel className="sr-only">Branches</ComboboxLabel>
                   <ComboboxCollection>
@@ -476,28 +492,6 @@ export function PromptInput() {
                             hugeicons="GitBranchIcon"
                             phosphor="GitBranchIcon"
                             remixicon="RiGitBranchLine"
-                          />
-                          {item.label}
-                        </ComboboxItem>
-                      )
-                    }}
-                  </ComboboxCollection>
-                </ComboboxGroup>
-                <ComboboxGroup
-                  items={[createBranchItem]}
-                  className="sticky bottom-0 z-10 border-t border-border bg-popover pt-1"
-                >
-                  <ComboboxLabel className="sr-only">Other actions</ComboboxLabel>
-                  <ComboboxCollection>
-                    {(item: Branch) => {
-                      return (
-                        <ComboboxItem key={item.value} value={item}>
-                          <IconPlaceholder
-                            lucide="PlusIcon"
-                            tabler="IconPlus"
-                            hugeicons="Add01Icon"
-                            phosphor="PlusIcon"
-                            remixicon="RiAddLine"
                           />
                           {item.label}
                         </ComboboxItem>

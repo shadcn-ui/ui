@@ -1,12 +1,12 @@
 import * as React from "react"
 
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 import { Kbd } from "@/registry/bases/radix/ui/kbd"
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/registry/bases/radix/ui/sidebar"
+import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export function SidebarMainNav() {
   return (
@@ -19,7 +19,7 @@ export function SidebarMainNav() {
             tabler="IconPlus"
             hugeicons="Add01Icon"
             phosphor="PlusIcon"
-            remixicon="RiPlusLine"
+            remixicon="RiAddLine"
           />
           New Chat{" "}
           <Kbd className="ml-auto" data-icon="inline-end">
