@@ -114,6 +114,12 @@
     "description": "Simple and easy file uploads for React. Upload directly to any S3-compatible service with minimal setup."
   },
   {
+    "name": "@baraile",
+    "homepage": "https://shadcn-braille-loader.vercel.app",
+    "url": "https://shadcn-braille-loader.vercel.app/r/{name}.json",
+    "description": "A simple braille-inspired loader components for shadcn/ui."
+  },
+  {
     "name": "@basecn",
     "homepage": "https://basecn.dev",
     "url": "https://basecn.dev/r/{name}.json",
@@ -447,7 +453,7 @@
     "name": "@ncdai",
     "homepage": "https://chanhdai.com/components",
     "url": "https://chanhdai.com/r/{name}.json",
-    "description": "A collection of reusable components."
+    "description": "Pixel-perfect, uniquely crafted."
   },
   {
     "name": "@nteract",
