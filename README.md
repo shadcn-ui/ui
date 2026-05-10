@@ -80,3 +80,11 @@ For the Figma-to-code release process, see [docs/figma-to-code-sync.md](docs/fig
 Before enabling Figma Code Connect publishing, see [docs/code-connect-publish-readiness.md](docs/code-connect-publish-readiness.md) — the mapping inventory, dry-run requirement, and safe enablement checklist.
 
 For the longer-horizon plan covering token publishing, component spec auditing, and eventual code generation, see [docs/figma-to-code-automation-roadmap.md](docs/figma-to-code-automation-roadmap.md).
+
+## Storybook Component Parity
+
+All 21 Lead components have production parity stories aligned to the Figma source file. Figma is the visual source of truth; Storybook renders working Lead components, and any deliberate divergence is documented inline as an accessibility, product, or API exception.
+
+- **Working contract:** [docs/storybook-figma-parity-standard.md](docs/storybook-figma-parity-standard.md) — required story shape, exception format, verification checklist.
+- **Per-component status:** [docs/storybook-figma-parity-inventory.md](docs/storybook-figma-parity-inventory.md) — Figma node URLs, parity story names, documented exceptions.
+- **Live site:** <https://jnanthak83.github.io/lead-design-system/> — every merge to `main` redeploys.
