@@ -1,0 +1,257 @@
+#!/usr/bin/env node
+// packages/lead-design-tokens-cli/scripts/audit-button-spec.mjs
+//
+// JES-77 prototype — Button-only read-only spec audit.
+//
+// Reads two local files (no Figma API, no network):
+//   - packages/lead-ui/src/components/Button/Button.tsx
+//   - packages/lead-ui/src/components/Button/Button.figma.tsx
+//
+// Emits one markdown report at:
+//   packages/lead-design-tokens-cli/docs/audits/button-spec-audit.md
+//
+// Scope is hard-coded to Button by design (per JES-77 narrow scope).
+// Adding another component is a deliberate follow-up ticket, not a
+// flag/glob change here.
+
+import { readFile, writeFile, mkdir } from "node:fs/promises"
+import { execSync } from "node:child_process"
+import { dirname, resolve } from "node:path"
+import { fileURLToPath } from "node:url"
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const PKG_ROOT = resolve(__dirname, "..")
+const REPO_ROOT = resolve(PKG_ROOT, "..", "..")
+
+const REACT_PATH = resolve(
+  REPO_ROOT,
+  "packages/lead-ui/src/components/Button/Button.tsx",
+)
+const FIGMA_PATH = resolve(
+  REPO_ROOT,
+  "packages/lead-ui/src/components/Button/Button.figma.tsx",
+)
+const OUT_PATH = resolve(PKG_ROOT, "docs/audits/button-spec-audit.md")
+
+// ── React side ────────────────────────────────────────────────────────────
+
+async function parseReactProps(path) {
+  const src = await readFile(path, "utf8")
+  const m = src.match(/export interface ButtonProps\b[^{]*\{([\s\S]*?)\n\}/)
+  if (!m) throw new Error(`could not find ButtonProps interface in ${path}`)
+  const body = m[1]
+  const props = []
+  for (const line of body.split("\n")) {
+    const propMatch = line.match(/^\s*(\w+)\??:/)
+    if (propMatch) props.push(propMatch[1])
+  }
+  return props
+}
+
+// ── Figma side ────────────────────────────────────────────────────────────
+
+async function parseFigmaSurface(path) {
+  const src = await readFile(path, "utf8")
+
+  // VARIANT lines in the header comment.
+  const documented = {}
+  for (const m of src.matchAll(
+    /^\s*\*\s+-\s+(\w+)\s*\(VARIANT\):\s*([^\n]+)/gm,
+  )) {
+    documented[m[1].trim()] = m[2].split(",").map((s) => s.trim())
+  }
+
+  // TEXT properties in the header comment.
+  const texts = [...src.matchAll(/^\s*\*\s+-\s+([^\(\n]+)\(TEXT\):/gm)].map(
+    (m) => m[1].trim(),
+  )
+
+  // Explicitly-not-mapped list from the header comment.
+  const notMappedMatch = src.match(/^\s*\*\s+-\s+(.+):\s*not mapped\s*$/m)
+  const notMapped = notMappedMatch
+    ? notMappedMatch[1].split("/").map((s) => s.trim())
+    : []
+
+  // figma.enum() calls inside `props: {}`.
+  const enums = []
+  for (const m of src.matchAll(
+    /(\w+):\s*figma\.enum\("([^"]+)",\s*\{([\s\S]*?)\}\s*\)/g,
+  )) {
+    const mappedValues = [
+      ...m[3].matchAll(/^\s*"?([\w-]+)"?\s*:/gm),
+    ].map((v) => v[1])
+    enums.push({ reactKey: m[1], figmaProp: m[2], mappedValues })
+  }
+
+  // figma.string() calls inside `props: {}`.
+  const strings = [
+    ...src.matchAll(/(\w+):\s*figma\.string\("([^"]+)"\)/g),
+  ].map((m) => ({ reactKey: m[1], figmaText: m[2] }))
+
+  return { documented, texts, notMapped, enums, strings }
+}
+
+// ── Compare ──────────────────────────────────────────────────────────────
+
+function diff(reactProps, figma) {
+  const mappedReactKeys = new Set([
+    ...figma.enums.map((e) => e.reactKey),
+    ...figma.strings.map((s) => s.reactKey),
+  ])
+
+  // Mapped = React props that appear as keys in the figma props mapping.
+  const mapped = reactProps.filter((p) => mappedReactKeys.has(p))
+  // `label` is the Code Connect convention name; it renders as children in
+  // the example. Surface this alias explicitly.
+  const labelString = figma.strings.find((s) => s.reactKey === "label")
+  if (labelString) {
+    mapped.push(`children ← label (Figma TEXT: "${labelString.figmaText}")`)
+  }
+
+  const unmappedReact = reactProps.filter((p) => !mappedReactKeys.has(p))
+
+  // Per-property unmapped Figma values: documented values not present in any
+  // figma.enum mapping for the same Figma property.
+  const unmappedFigma = []
+  for (const [prop, values] of Object.entries(figma.documented)) {
+    const enumForProp = figma.enums.filter((e) => e.figmaProp === prop)
+    const mapped = new Set(enumForProp.flatMap((e) => e.mappedValues))
+    const missing = values.filter((v) => !mapped.has(v))
+    if (missing.length) unmappedFigma.push({ prop, missing })
+  }
+  if (figma.notMapped.length) {
+    unmappedFigma.push({
+      prop: "Other (explicitly not mapped in pilot)",
+      missing: figma.notMapped,
+    })
+  }
+
+  return { mapped, unmappedReact, unmappedFigma }
+}
+
+// ── Render ───────────────────────────────────────────────────────────────
+
+function render(result, sha) {
+  const { mapped, unmappedReact, unmappedFigma } = result
+  const figmaTotal = unmappedFigma.reduce((n, e) => n + e.missing.length, 0)
+  const lines = []
+  lines.push("# Button spec audit")
+  lines.push("")
+  lines.push(
+    "> Read-only audit comparing the Lead `<Button>` React API to its Figma",
+  )
+  lines.push(
+    "> source surface. Generated by `npm run audit:button-spec`. Per JES-77,",
+  )
+  lines.push(
+    "> this prototype is Button-only and read-only — no Figma API calls, no",
+  )
+  lines.push("> production code changes, no automated code-change PRs.")
+  lines.push("")
+
+  lines.push(`## Mapped (${mapped.length})`)
+  lines.push("")
+  lines.push("React surface that has a corresponding Figma source mapping.")
+  lines.push("")
+  if (mapped.length) {
+    for (const m of mapped) lines.push(`- \`${m}\``)
+  } else {
+    lines.push("_(none)_")
+  }
+  lines.push("")
+
+  lines.push(`## Unmapped React props (${unmappedReact.length})`)
+  lines.push("")
+  lines.push(
+    "React props on `<Button>` with no corresponding Figma surface today.",
+  )
+  lines.push("")
+  if (unmappedReact.length) {
+    for (const p of unmappedReact) lines.push(`- \`${p}\``)
+  } else {
+    lines.push("_(none)_")
+  }
+  lines.push("")
+  lines.push(
+    "Plus `HTMLButtonAttributes` pass-through (e.g. `type`, `aria-*`, " +
+      "`onClick`) — not enumerated here.",
+  )
+  lines.push("")
+
+  lines.push(`## Unmapped Figma props / naming drift (${figmaTotal})`)
+  lines.push("")
+  lines.push(
+    "Figma values documented in the `Button.figma.tsx` header comment but " +
+      "not present in the `props: { ... }` mapping. Exact-name comparison " +
+      "only; no fuzzy matching.",
+  )
+  lines.push("")
+  if (unmappedFigma.length) {
+    for (const e of unmappedFigma) {
+      lines.push(
+        `- **${e.prop}:** ${e.missing.map((v) => `\`${v}\``).join(", ")}`,
+      )
+    }
+  } else {
+    lines.push("_(none)_")
+  }
+  lines.push("")
+  lines.push(
+    "_Note: `State=Default` in Figma is the implicit baseline (no `disabled` " +
+      "and no `loading`); it's listed above for completeness but has an " +
+      "implicit React mapping via the default false values._",
+  )
+  lines.push("")
+
+  lines.push("---")
+  lines.push("")
+  lines.push("### Sources")
+  lines.push("")
+  lines.push(
+    "- React API: `packages/lead-ui/src/components/Button/Button.tsx`",
+  )
+  lines.push(
+    "- Figma surface: `packages/lead-ui/src/components/Button/Button.figma.tsx` " +
+      "(read locally; no Figma API call)",
+  )
+  lines.push("")
+  lines.push(`Generated at commit \`${sha}\`.`)
+  lines.push("")
+  return lines.join("\n")
+}
+
+// ── Main ─────────────────────────────────────────────────────────────────
+
+async function main() {
+  const reactProps = await parseReactProps(REACT_PATH)
+  const figma = await parseFigmaSurface(FIGMA_PATH)
+  const result = diff(reactProps, figma)
+
+  let sha
+  try {
+    sha = execSync("git rev-parse --short HEAD", {
+      cwd: REPO_ROOT,
+      encoding: "utf8",
+    }).trim()
+  } catch {
+    sha = "(unknown)"
+  }
+
+  await mkdir(dirname(OUT_PATH), { recursive: true })
+  await writeFile(OUT_PATH, render(result, sha), "utf8")
+
+  console.log(`audit-button-spec: wrote ${OUT_PATH}`)
+  console.log(`  mapped: ${result.mapped.length}`)
+  console.log(`  unmapped React props: ${result.unmappedReact.length}`)
+  console.log(
+    `  unmapped Figma values: ${result.unmappedFigma.reduce(
+      (n, e) => n + e.missing.length,
+      0,
+    )}`,
+  )
+}
+
+main().catch((err) => {
+  console.error("audit-button-spec failed:", err.message)
+  process.exit(1)
+})

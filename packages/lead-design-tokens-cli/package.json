@@ -10,7 +10,8 @@
     "test": "node --test test/*.test.js",
     "check-decisions": "node bin/design-tokens.js check-decisions",
     "lint:schemas": "node scripts/validate-schemas.js",
-    "build": "node bin/design-tokens.js build"
+    "build": "node bin/design-tokens.js build",
+    "audit:button-spec": "node scripts/audit-button-spec.mjs"
   },
   "engines": {
     "node": ">=20.0.0"
