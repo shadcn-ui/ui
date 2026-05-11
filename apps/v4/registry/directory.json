@@ -345,7 +345,7 @@
   },
   {
     "name": "@glasscn",
-    "homepage": "https://glasscn.vercel.app/",
+    "homepage": "https://glasscn-components.vercel.app/",
     "url": "https://glasscn-components.vercel.app/r/{name}.json",
     "description": "A shadcn-compatible registry of glassmorphism components inspired by Apple",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' fill='none'><rect x='0.5' y='0.5' width='51' height='51' rx='13.5' fill='var(--background)' fill-opacity='.08' stroke='var(--foreground)' stroke-opacity='.2'/><rect x='14.5' y='14.5' width='51' height='51' rx='13.5' fill='var(--background)' fill-opacity='.12' stroke='var(--foreground)' stroke-opacity='.3'/><rect x='28.5' y='28.5' width='51' height='51' rx='13.5' fill='var(--background)' fill-opacity='.18' stroke='var(--foreground)' stroke-opacity='.45'/><line x1='34' y1='36' x2='34' y2='56' stroke='var(--foreground)' stroke-opacity='.35' stroke-width='1.5' stroke-linecap='round'/></svg>"
@@ -1336,5 +1336,12 @@
     "url": "https://framecn.vercel.app/r/{name}.json",
     "description": "Beautiful videos, made simple. Ready to use, customizable video components for React.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4'/><g stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'><path d='M6.72 4.36v2.36M27.96 25.6H25.6m-4.13 0H13.8c-3.337 0-5.007 0-6.043-1.037S6.72 21.857 6.72 18.52v-7.67M25.6 27.96v-11.8c0-4.45 0-6.675-1.383-8.057S20.61 6.72 16.16 6.72H4.36' stroke-width='1.77'/><path d='m21.824 16.16-5.664 5.664M20.691 9.93 9.93 20.69' stroke-width='2.266'/></g></svg>"
+  },
+  {
+    "name": "@turbopills-ui",
+    "homepage": "https://www.turbopills.com/ui/docs",
+    "url": "https://ui.turbopills.com/r/{name}.json",
+    "description": "Beautiful, accessible, and customizable React components for your telehealth applications.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' version='1.0' width='597.000000pt' height='525.000000pt' viewBox='0 0 597.000000 525.000000' preserveAspectRatio='xMidYMid meet'><g transform='translate(0.000000,525.000000) scale(0.100000,-0.100000)' fill='var(--foreground, currentColor)' stroke='none'><path d='M1816 5223 l-1809 -3 6 -108 c24 -383 241 -748 579 -969 113 -74 205   -118 338 -162 178 -58 237 -64 678 -70 l404 -6 14 33 c56 136 213 367 364 538   283 320 747 605 1163 716 48 12 87 26 87 30 0 5 -3 7 -7 6 -5 -2 -822 -4   -1817 -5z'/><path d='M4630 5209 c-983 -101 -1863 -612 -2297 -1334 -249 -414 -394 -925   -462 -1625 -28 -287 -29 -310 -19 -304 4 3 8 12 8 20 0 19 87 192 163 324 413   718 1068 1274 1797 1522 228 78 466 118 703 118 506 0 811 110 1079 389 135   139 217 274 283 462 43 123 60 208 70 342 l7 97 -623 -1 c-343 -1 -662 -6   -709 -10z'/><path d='M3876 3584 c-339 -138 -733 -410 -1041 -719 -347 -347 -596 -694   -840 -1170 -188 -367 -356 -851 -435 -1250 -31 -157 -60 -344 -60 -389 l0 -39   183 7 c224 8 336 20 497 52 676 135 1179 580 1326 1174 19 74 56 257 83 405   94 515 222 1211 256 1390 50 268 97 545 93 555 -2 4 -29 -2 -62 -16z'/></g></svg>"
   }
 ]
