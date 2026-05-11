@@ -56,7 +56,7 @@
     "input-otp": "^1.4.2",
     "jotai": "^2.15.0",
     "little-date": "^1.0.0",
-    "lodash": "^4.17.23",
+    "lodash": "^4.18.1",
     "lru-cache": "^11.2.4",
     "lucide-react": "0.474.0",
     "motion": "^12.12.1",
