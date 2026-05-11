@@ -14,7 +14,7 @@ export function Callout({
   ...props
 }: React.ComponentProps<typeof Alert> & {
   icon?: React.ReactNode
-  variant?: "default" | "info" | "attention"
+  variant?: "default" | "informational" | "attention"
 }) {
   return (
     <Alert
