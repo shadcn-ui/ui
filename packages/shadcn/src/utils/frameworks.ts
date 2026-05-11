@@ -42,6 +42,14 @@ export const FRAMEWORKS = {
       tailwind: "https://tailwindcss.com/docs/guides/vite",
     },
   },
+  rsbuild: {
+    name: "rsbuild",
+    label: "Rsbuild",
+    links: {
+      installation: `${SHADCN_URL}/docs/installation/vite`,
+      tailwind: "https://tailwindcss.com/docs/guides/vite",
+    },
+  },
   astro: {
     name: "astro",
     label: "Astro",

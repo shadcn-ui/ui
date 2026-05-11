@@ -8,7 +8,7 @@ export const vite = createTemplate({
   title: "Vite",
   defaultProjectName: "vite-app",
   templateDir: "vite-app",
-  frameworks: ["vite"],
+  frameworks: ["vite", "rsbuild"],
   create: async () => {
     // Empty for now.
   },

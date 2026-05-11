@@ -58,7 +58,7 @@ export async function getProjectInfo(
     packageJson,
   ] = await Promise.all([
     fg.glob(
-      "**/{next,vite,astro,app}.config.*|gatsby-config.*|composer.json|react-router.config.*",
+      "**/{next,vite,rsbuild,astro,app}.config.*|gatsby-config.*|composer.json|react-router.config.*",
       {
         cwd,
         deep: 3,
@@ -147,6 +147,16 @@ export async function getProjectInfo(
     configFiles.find((file) => file.startsWith("react-router.config."))?.length
   ) {
     type.framework = FRAMEWORKS["react-router"]
+    return type
+  }
+
+  // Rsbuild.
+  // Some rsbuild projects may also have a vite.config.* file.
+  // We check rsbuild.config.* first to avoid false positives.
+  if (
+    configFiles.find((file) => file.startsWith("rsbuild.config."))?.length
+  ) {
+    type.framework = FRAMEWORKS["rsbuild"]
     return type
   }
 
