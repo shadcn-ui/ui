@@ -447,7 +447,7 @@
     "name": "@ncdai",
     "homepage": "https://chanhdai.com/components",
     "url": "https://chanhdai.com/r/{name}.json",
-    "description": "A collection of reusable components."
+	  "description": "A collection of reusable components."
   },
   {
     "name": "@nteract",
@@ -676,6 +676,12 @@
     "homepage": "https://shadcn-editor.vercel.app",
     "url": "https://raw.githubusercontent.com/htmujahid/shadcn-editor/refs/heads/main/public/r/{name}.json",
     "description": "Accessible, Customizable, Rich Text Editor. Made with Lexical and Shadcn/UI. Open Source. Open Code."
+  },
+  {
+    "name": "@shadcn-waitlist",
+    "homepage": "https://shadcn-waitlist.maryojo.me",
+    "url": "https://shadcn-waitlist.maryojo.me/r/{name}.json",
+    "description": "A collection of accessible, premium shadcn/ui components and blocks for building waitlists."
   },
   {
     "name": "@shadcnui-blocks",
