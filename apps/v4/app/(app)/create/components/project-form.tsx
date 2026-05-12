@@ -312,6 +312,7 @@ export function ProjectForm({
               }
               aria-label="Project type"
               spacing={2}
+              className="**:data-[slot=toggle-group-item]:data-pressed:bg-neutral-700/70"
             >
               <ToggleGroupItem value="new-project">New Project</ToggleGroupItem>
               <ToggleGroupItem value="existing-project">
