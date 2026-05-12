@@ -12,16 +12,19 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { BASES, type BaseName } from "@/registry/config"
-import { Badge } from "@/styles/base-nova/ui/badge"
+import {
+  BASES,
+  buildThemeForPreset,
+  DEFAULT_CONFIG,
+  type BaseName,
+  type DesignSystemConfig,
+} from "@/registry/config"
 import { Button } from "@/styles/base-nova/ui/button"
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/styles/base-nova/ui/dialog"
 import {
@@ -94,6 +97,26 @@ const APPLY_MODES = [
   },
 ] as const
 type ApplyMode = (typeof APPLY_MODES)[number]["value"]
+type ProjectFormTab = "new-project" | "existing-project" | "theme"
+type CopyTarget = "command" | "apply" | "theme"
+type ThemeCssVars = NonNullable<
+  ReturnType<typeof buildThemeForPreset>["cssVars"]
+>
+
+function formatCssVarsRule(selector: string, cssVars?: Record<string, string>) {
+  const declarations = Object.entries(cssVars ?? {})
+    .map(([key, value]) => `  --${key}: ${value};`)
+    .join("\n")
+
+  return `${selector} {\n${declarations}\n}`
+}
+
+function formatThemeCss(cssVars: ThemeCssVars) {
+  return [
+    formatCssVarsRule(":root", cssVars.light),
+    formatCssVarsRule(".dark", cssVars.dark),
+  ].join("\n\n")
+}
 
 export function ProjectForm({
   className,
@@ -102,11 +125,12 @@ export function ProjectForm({
   const [params, setParams] = useDesignSystemSearchParams()
   const presetCode = usePresetCode()
   const [config, setConfig] = useConfig()
-  const [hasCopied, setHasCopied] = React.useState(false)
+  const [copiedTarget, setCopiedTarget] = React.useState<CopyTarget | null>(
+    null
+  )
   const [applyMode, setApplyMode] = React.useState<ApplyMode>("full")
-  const [activeTab, setActiveTab] = React.useState<
-    "new-project" | "existing-project"
-  >("new-project")
+  const [activeTab, setActiveTab] =
+    React.useState<ProjectFormTab>("new-project")
 
   const packageManager = (config.packageManager || "pnpm") as PackageManager
   const framework = React.useMemo(
@@ -181,14 +205,59 @@ export function ProjectForm({
   }, [applyMode, presetCode])
 
   const applyCommand = applyCommands[packageManager]
-  const currentApplyMode = APPLY_MODES.find((m) => m.value === applyMode)
+  const themeConfig = React.useMemo<DesignSystemConfig>(() => {
+    const isRadiusLocked = params.style === "lyra" || params.style === "sera"
+
+    return {
+      ...DEFAULT_CONFIG,
+      base: params.base,
+      style: params.style,
+      baseColor: params.baseColor,
+      theme: params.theme,
+      chartColor: params.chartColor,
+      iconLibrary: params.iconLibrary,
+      font: params.font,
+      fontHeading: params.fontHeading,
+      menuAccent: params.menuAccent,
+      menuColor: params.menuColor,
+      radius: isRadiusLocked ? "none" : params.radius,
+      template: params.template,
+      rtl: params.rtl,
+      pointer: params.pointer,
+    }
+  }, [
+    params.base,
+    params.baseColor,
+    params.chartColor,
+    params.font,
+    params.fontHeading,
+    params.iconLibrary,
+    params.menuAccent,
+    params.menuColor,
+    params.pointer,
+    params.radius,
+    params.rtl,
+    params.style,
+    params.template,
+    params.theme,
+  ])
+
+  const themeCss = React.useMemo(() => {
+    const theme = buildThemeForPreset(themeConfig)
+
+    if (!theme.cssVars) {
+      return ""
+    }
+
+    return formatThemeCss(theme.cssVars)
+  }, [themeConfig])
 
   React.useEffect(() => {
-    if (hasCopied) {
-      const timer = setTimeout(() => setHasCopied(false), 2000)
+    if (copiedTarget) {
+      const timer = setTimeout(() => setCopiedTarget(null), 2000)
       return () => clearTimeout(timer)
     }
-  }, [hasCopied])
+  }, [copiedTarget])
 
   const handleCopy = React.useCallback(() => {
     const properties: Record<string, string> = {
@@ -201,7 +270,7 @@ export function ProjectForm({
       name: "copy_npm_command",
       properties,
     })
-    setHasCopied(true)
+    setCopiedTarget("command")
   }, [command, params.template])
 
   const handleCopyApply = React.useCallback(() => {
@@ -212,15 +281,28 @@ export function ProjectForm({
         applyMode,
       },
     })
-    setHasCopied(true)
+    setCopiedTarget("apply")
   }, [applyCommand, applyMode])
+
+  const handleCopyTheme = React.useCallback(() => {
+    copyToClipboardWithMeta(themeCss, {
+      name: "copy_theme_code",
+      properties: {
+        preset: presetCode,
+        baseColor: params.baseColor,
+        theme: params.theme,
+        format: "css",
+      },
+    })
+    setCopiedTarget("theme")
+  }, [params.baseColor, params.theme, presetCode, themeCss])
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger render={<Button className={cn(className)} />}>
         Get Code
       </DialogTrigger>
-      <DialogContent className="dark top-[64px] no-scrollbar flex max-h-[calc(100svh-2rem)] translate-y-0 flex-col rounded-2xl p-0 shadow-xl **:data-[slot=dialog-close]:top-4.5 **:data-[slot=dialog-close]:right-4 **:data-[slot=field-separator]:h-2 sm:max-w-sm">
+      <DialogContent className="dark top-[64px] no-scrollbar flex max-h-[calc(100svh-2rem)] translate-y-0 flex-col rounded-2xl p-0 shadow-xl **:data-[slot=dialog-close]:top-4.5 **:data-[slot=dialog-close]:right-4 **:data-[slot=field-separator]:h-2 sm:max-w-md">
         <div className="flex min-w-0 flex-1 flex-col gap-0 overflow-hidden rounded-2xl">
           <DialogHeader className="border-b px-6 py-5">
             <ToggleGroup
@@ -235,6 +317,7 @@ export function ProjectForm({
               <ToggleGroupItem value="existing-project">
                 Existing Project
               </ToggleGroupItem>
+              <ToggleGroupItem value="theme">Theme</ToggleGroupItem>
             </ToggleGroup>
           </DialogHeader>
           {activeTab === "new-project" && (
@@ -352,7 +435,7 @@ export function ProjectForm({
                         className="ml-auto"
                         onClick={handleCopy}
                       >
-                        {hasCopied ? (
+                        {copiedTarget === "command" ? (
                           <HugeiconsIcon icon={Tick02Icon} />
                         ) : (
                           <HugeiconsIcon icon={Copy01Icon} />
@@ -375,7 +458,7 @@ export function ProjectForm({
                     })}
                   </Tabs>
                   <Button onClick={handleCopy} className="h-9 w-full">
-                    {hasCopied ? "Copied" : "Copy Command"}
+                    {copiedTarget === "command" ? "Copied" : "Copy Command"}
                   </Button>
                 </div>
               </DialogFooter>
@@ -424,7 +507,7 @@ export function ProjectForm({
                         className="ml-auto"
                         onClick={handleCopyApply}
                       >
-                        {hasCopied ? (
+                        {copiedTarget === "apply" ? (
                           <HugeiconsIcon icon={Tick02Icon} />
                         ) : (
                           <HugeiconsIcon icon={Copy01Icon} />
@@ -447,9 +530,51 @@ export function ProjectForm({
                     })}
                   </Tabs>
                   <Button onClick={handleCopyApply} className="h-9 w-full">
-                    {hasCopied ? "Copied" : "Copy Command"}
+                    {copiedTarget === "apply" ? "Copied" : "Copy Command"}
                   </Button>
                 </div>
+              </DialogFooter>
+            </div>
+          )}
+          {activeTab === "theme" && (
+            <div className="no-scrollbar overflow-y-auto">
+              <FieldGroup className="min-w-0 px-6 py-4">
+                <FieldSet className="min-w-0 gap-3">
+                  <FieldLegend variant="label">Theme Tokens</FieldLegend>
+                  <FieldDescription>
+                    Copy the CSS variables for this preset.
+                  </FieldDescription>
+                  <div className="w-full min-w-0 overflow-hidden rounded-xl border-0 ring-1 ring-border">
+                    <div className="flex items-center gap-2 py-1 pr-1.5 pl-3">
+                      <div className="min-w-0 truncate font-mono text-sm text-muted-foreground">
+                        globals.css
+                      </div>
+                      <Button
+                        size="icon-sm"
+                        variant="ghost"
+                        className="ml-auto"
+                        onClick={handleCopyTheme}
+                      >
+                        {copiedTarget === "theme" ? (
+                          <HugeiconsIcon icon={Tick02Icon} />
+                        ) : (
+                          <HugeiconsIcon icon={Copy01Icon} />
+                        )}
+                        <span className="sr-only">Copy theme</span>
+                      </Button>
+                    </div>
+                    <div className="relative no-scrollbar max-h-[45svh] overflow-auto border-t bg-popover p-3">
+                      <pre className="min-w-max font-mono leading-normal whitespace-pre">
+                        <code>{themeCss}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </FieldSet>
+              </FieldGroup>
+              <DialogFooter className="m-0 min-w-0 p-6">
+                <Button onClick={handleCopyTheme} className="h-9 w-full">
+                  {copiedTarget === "theme" ? "Copied" : "Copy Theme"}
+                </Button>
               </DialogFooter>
             </div>
           )}
