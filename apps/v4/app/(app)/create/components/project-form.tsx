@@ -43,6 +43,10 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/styles/base-nova/ui/tabs"
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/styles/base-nova/ui/toggle-group"
 import { usePresetCode } from "@/app/(app)/create/hooks/use-design-system"
 import {
   useDesignSystemSearchParams,
@@ -100,6 +104,9 @@ export function ProjectForm({
   const [config, setConfig] = useConfig()
   const [hasCopied, setHasCopied] = React.useState(false)
   const [applyMode, setApplyMode] = React.useState<ApplyMode>("full")
+  const [activeTab, setActiveTab] = React.useState<
+    "new-project" | "existing-project"
+  >("new-project")
 
   const packageManager = (config.packageManager || "pnpm") as PackageManager
   const framework = React.useMemo(
@@ -214,232 +221,239 @@ export function ProjectForm({
         Get Code
       </DialogTrigger>
       <DialogContent className="dark top-[64px] no-scrollbar flex max-h-[calc(100svh-2rem)] translate-y-0 flex-col rounded-2xl p-0 shadow-xl **:data-[slot=dialog-close]:top-4.5 **:data-[slot=dialog-close]:right-4 **:data-[slot=field-separator]:h-2 sm:max-w-sm">
-        <Tabs className="min-w-0 flex-1 gap-0 overflow-hidden rounded-2xl">
-          <DialogHeader className="border-b px-6 py-4">
-            <TabsList>
-              <TabsTrigger value="new-project">New Project</TabsTrigger>
-              <TabsTrigger value="existing-project">
+        <div className="flex min-w-0 flex-1 flex-col gap-0 overflow-hidden rounded-2xl">
+          <DialogHeader className="border-b px-6 py-5">
+            <ToggleGroup
+              value={[activeTab]}
+              onValueChange={(values) =>
+                setActiveTab((values[0] as typeof activeTab) ?? "new-project")
+              }
+              aria-label="Project type"
+              spacing={2}
+            >
+              <ToggleGroupItem value="new-project">New Project</ToggleGroupItem>
+              <ToggleGroupItem value="existing-project">
                 Existing Project
-              </TabsTrigger>
-            </TabsList>
+              </ToggleGroupItem>
+            </ToggleGroup>
           </DialogHeader>
-          <TabsContent
-            value="new-project"
-            className="no-scrollbar overflow-y-auto"
-          >
-            <FieldGroup className="px-6 py-4">
-              <Field className="gap-3">
-                <FieldLabel>Template</FieldLabel>
-                <TemplateGrid
-                  template={params.template}
-                  setParams={setParams}
-                />
-              </Field>
-              <FieldSeparator className="-mx-6" />
-              <Field>
-                <FieldLabel>Base</FieldLabel>
-                <BaseGrid base={params.base} setParams={setParams} />
-              </Field>
-              <FieldSeparator className="-mx-6" />
-              <FieldSet>
-                <FieldLegend variant="label" className="sr-only">
-                  Options
-                </FieldLegend>
-                <Field orientation="horizontal">
-                  <FieldLabel htmlFor="pointer">
-                    <HugeiconsIcon
-                      icon={HandPointingRight04Icon}
-                      className="size-4 -rotate-90"
-                    />
-                    Use pointer on buttons
-                  </FieldLabel>
-                  <Switch
-                    id="pointer"
-                    checked={params.pointer}
-                    onCheckedChange={(checked) =>
-                      setParams({ pointer: checked === true })
-                    }
+          {activeTab === "new-project" && (
+            <div className="no-scrollbar overflow-y-auto">
+              <FieldGroup className="px-6 py-4">
+                <Field className="gap-3">
+                  <FieldLabel>Template</FieldLabel>
+                  <TemplateGrid
+                    template={params.template}
+                    setParams={setParams}
                   />
                 </Field>
                 <FieldSeparator className="-mx-6" />
-                <Field
-                  orientation="horizontal"
-                  data-disabled={hasMonorepo ? undefined : "true"}
-                >
-                  <FieldLabel htmlFor="monorepo">
-                    <span
-                      className="size-4 text-neutral-100 [&_svg]:size-4 [&_svg]:fill-current"
-                      dangerouslySetInnerHTML={{
-                        __html: TURBOREPO_LOGO,
+                <Field>
+                  <FieldLabel>Base</FieldLabel>
+                  <BaseGrid base={params.base} setParams={setParams} />
+                </Field>
+                <FieldSeparator className="-mx-6" />
+                <FieldSet>
+                  <FieldLegend variant="label" className="sr-only">
+                    Options
+                  </FieldLegend>
+                  <Field orientation="horizontal">
+                    <FieldLabel htmlFor="pointer">
+                      <HugeiconsIcon
+                        icon={HandPointingRight04Icon}
+                        className="size-4 -rotate-90"
+                      />
+                      Use pointer on buttons
+                    </FieldLabel>
+                    <Switch
+                      id="pointer"
+                      checked={params.pointer}
+                      onCheckedChange={(checked) =>
+                        setParams({ pointer: checked === true })
+                      }
+                    />
+                  </Field>
+                  <FieldSeparator className="-mx-6" />
+                  <Field
+                    orientation="horizontal"
+                    data-disabled={hasMonorepo ? undefined : "true"}
+                  >
+                    <FieldLabel htmlFor="monorepo">
+                      <span
+                        className="size-4 text-neutral-100 [&_svg]:size-4 [&_svg]:fill-current"
+                        dangerouslySetInnerHTML={{
+                          __html: TURBOREPO_LOGO,
+                        }}
+                      />
+                      Create a monorepo
+                    </FieldLabel>
+                    <Switch
+                      id="monorepo"
+                      checked={params.template?.endsWith("-monorepo") ?? false}
+                      disabled={!hasMonorepo}
+                      onCheckedChange={(checked) => {
+                        const framework = getFramework(
+                          params.template ?? "next"
+                        )
+                        setParams({
+                          template: getTemplateValue(
+                            framework,
+                            checked === true
+                          ) as typeof params.template,
+                        })
                       }}
                     />
-                    Create a monorepo
-                  </FieldLabel>
-                  <Switch
-                    id="monorepo"
-                    checked={params.template?.endsWith("-monorepo") ?? false}
-                    disabled={!hasMonorepo}
-                    onCheckedChange={(checked) => {
-                      const framework = getFramework(params.template ?? "next")
-                      setParams({
-                        template: getTemplateValue(
-                          framework,
-                          checked === true
-                        ) as typeof params.template,
-                      })
+                  </Field>
+                  <FieldSeparator className="-mx-6" />
+                  <Field orientation="horizontal">
+                    <FieldLabel htmlFor="rtl">
+                      <HugeiconsIcon icon={Globe02Icon} className="size-4" />
+                      Enable RTL support
+                    </FieldLabel>
+                    <Switch
+                      id="rtl"
+                      checked={params.rtl}
+                      onCheckedChange={(checked) =>
+                        setParams({ rtl: checked === true })
+                      }
+                    />
+                  </Field>
+                </FieldSet>
+              </FieldGroup>
+              <DialogFooter className="m-0 min-w-0 p-6">
+                <div className="flex w-full min-w-0 flex-col gap-3">
+                  <Tabs
+                    value={packageManager}
+                    onValueChange={(value) => {
+                      setConfig((prev) => ({
+                        ...prev,
+                        packageManager: value as PackageManager,
+                      }))
                     }}
-                  />
-                </Field>
-                <FieldSeparator className="-mx-6" />
-                <Field orientation="horizontal">
-                  <FieldLabel htmlFor="rtl">
-                    <HugeiconsIcon icon={Globe02Icon} className="size-4" />
-                    Enable RTL support
-                  </FieldLabel>
-                  <Switch
-                    id="rtl"
-                    checked={params.rtl}
-                    onCheckedChange={(checked) =>
-                      setParams({ rtl: checked === true })
-                    }
-                  />
-                </Field>
-              </FieldSet>
-            </FieldGroup>
-            <DialogFooter className="m-0 min-w-0 p-6">
-              <div className="flex w-full min-w-0 flex-col gap-3">
-                <Tabs
-                  value={packageManager}
-                  onValueChange={(value) => {
-                    setConfig((prev) => ({
-                      ...prev,
-                      packageManager: value as PackageManager,
-                    }))
-                  }}
-                  className="min-w-0 gap-0 overflow-hidden rounded-xl border-0 ring-1 ring-border"
-                >
-                  <div className="flex items-center gap-2 py-1 pr-1.5 pl-1">
-                    <TabsList className="bg-transparent font-mono">
-                      {PACKAGE_MANAGERS.map((manager) => {
-                        return (
-                          <TabsTrigger
-                            key={manager}
-                            value={manager}
-                            className="py-0 leading-none data-[state=active]:shadow-none"
-                          >
-                            {manager}
-                          </TabsTrigger>
-                        )
-                      })}
-                    </TabsList>
-                    <Button
-                      size="icon-sm"
-                      variant="ghost"
-                      className="ml-auto"
-                      onClick={handleCopy}
-                    >
-                      {hasCopied ? (
-                        <HugeiconsIcon icon={Tick02Icon} />
-                      ) : (
-                        <HugeiconsIcon icon={Copy01Icon} />
-                      )}
-                      <span className="sr-only">Copy command</span>
-                    </Button>
-                  </div>
-                  {Object.entries(commands).map(([key, cmd]) => {
-                    return (
-                      <TabsContent key={key} value={key}>
-                        <div className="relative overflow-hidden border-t bg-popover p-3">
-                          <div className="no-scrollbar overflow-x-auto">
-                            <code className="font-mono text-sm whitespace-nowrap">
-                              {cmd}
-                            </code>
+                    className="min-w-0 gap-0 overflow-hidden rounded-xl border-0 ring-1 ring-border"
+                  >
+                    <div className="flex items-center gap-2 py-1 pr-1.5 pl-1">
+                      <TabsList className="bg-transparent font-mono">
+                        {PACKAGE_MANAGERS.map((manager) => {
+                          return (
+                            <TabsTrigger
+                              key={manager}
+                              value={manager}
+                              className="py-0 leading-none data-[state=active]:shadow-none"
+                            >
+                              {manager}
+                            </TabsTrigger>
+                          )
+                        })}
+                      </TabsList>
+                      <Button
+                        size="icon-sm"
+                        variant="ghost"
+                        className="ml-auto"
+                        onClick={handleCopy}
+                      >
+                        {hasCopied ? (
+                          <HugeiconsIcon icon={Tick02Icon} />
+                        ) : (
+                          <HugeiconsIcon icon={Copy01Icon} />
+                        )}
+                        <span className="sr-only">Copy command</span>
+                      </Button>
+                    </div>
+                    {Object.entries(commands).map(([key, cmd]) => {
+                      return (
+                        <TabsContent key={key} value={key}>
+                          <div className="relative overflow-hidden border-t bg-popover p-3">
+                            <div className="no-scrollbar overflow-x-auto">
+                              <code className="font-mono text-sm whitespace-nowrap">
+                                {cmd}
+                              </code>
+                            </div>
                           </div>
-                        </div>
-                      </TabsContent>
-                    )
-                  })}
-                </Tabs>
-                <Button onClick={handleCopy} className="h-9 w-full">
-                  {hasCopied ? "Copied" : "Copy Command"}
-                </Button>
-              </div>
-            </DialogFooter>
-          </TabsContent>
-          <TabsContent
-            value="existing-project"
-            className="no-scrollbar overflow-y-auto"
-          >
-            <FieldGroup className="px-6 py-4">
-              <FieldSet className="gap-3">
-                <FieldLegend variant="label">Apply Preset</FieldLegend>
-                <FieldDescription>
-                  Pick which parts of the preset to apply.
-                </FieldDescription>
-                <ApplyModeGrid mode={applyMode} setMode={setApplyMode} />
-              </FieldSet>
-            </FieldGroup>
-            <DialogFooter className="m-0 min-w-0 p-6">
-              <div className="flex w-full min-w-0 flex-col gap-3">
-                <Tabs
-                  value={packageManager}
-                  onValueChange={(value) => {
-                    setConfig((prev) => ({
-                      ...prev,
-                      packageManager: value as PackageManager,
-                    }))
-                  }}
-                  className="min-w-0 gap-0 overflow-hidden rounded-xl border-0 ring-1 ring-border"
-                >
-                  <div className="flex items-center gap-2 py-1 pr-1.5 pl-1">
-                    <TabsList className="bg-transparent font-mono">
-                      {PACKAGE_MANAGERS.map((manager) => {
-                        return (
-                          <TabsTrigger
-                            key={manager}
-                            value={manager}
-                            className="py-0 leading-none data-[state=active]:shadow-none"
-                          >
-                            {manager}
-                          </TabsTrigger>
-                        )
-                      })}
-                    </TabsList>
-                    <Button
-                      size="icon-sm"
-                      variant="ghost"
-                      className="ml-auto"
-                      onClick={handleCopyApply}
-                    >
-                      {hasCopied ? (
-                        <HugeiconsIcon icon={Tick02Icon} />
-                      ) : (
-                        <HugeiconsIcon icon={Copy01Icon} />
-                      )}
-                      <span className="sr-only">Copy command</span>
-                    </Button>
-                  </div>
-                  {Object.entries(applyCommands).map(([key, cmd]) => {
-                    return (
-                      <TabsContent key={key} value={key}>
-                        <div className="relative overflow-hidden border-t bg-popover p-3">
-                          <div className="no-scrollbar overflow-x-auto">
-                            <code className="font-mono text-sm whitespace-nowrap">
-                              {cmd}
-                            </code>
+                        </TabsContent>
+                      )
+                    })}
+                  </Tabs>
+                  <Button onClick={handleCopy} className="h-9 w-full">
+                    {hasCopied ? "Copied" : "Copy Command"}
+                  </Button>
+                </div>
+              </DialogFooter>
+            </div>
+          )}
+          {activeTab === "existing-project" && (
+            <div className="no-scrollbar overflow-y-auto">
+              <FieldGroup className="px-6 py-4">
+                <FieldSet className="gap-3">
+                  <FieldLegend variant="label">Apply Preset</FieldLegend>
+                  <FieldDescription>
+                    Pick which parts of the preset to apply.
+                  </FieldDescription>
+                  <ApplyModeGrid mode={applyMode} setMode={setApplyMode} />
+                </FieldSet>
+              </FieldGroup>
+              <DialogFooter className="m-0 min-w-0 p-6">
+                <div className="flex w-full min-w-0 flex-col gap-3">
+                  <Tabs
+                    value={packageManager}
+                    onValueChange={(value) => {
+                      setConfig((prev) => ({
+                        ...prev,
+                        packageManager: value as PackageManager,
+                      }))
+                    }}
+                    className="min-w-0 gap-0 overflow-hidden rounded-xl border-0 ring-1 ring-border"
+                  >
+                    <div className="flex items-center gap-2 py-1 pr-1.5 pl-1">
+                      <TabsList className="bg-transparent font-mono">
+                        {PACKAGE_MANAGERS.map((manager) => {
+                          return (
+                            <TabsTrigger
+                              key={manager}
+                              value={manager}
+                              className="py-0 leading-none data-[state=active]:shadow-none"
+                            >
+                              {manager}
+                            </TabsTrigger>
+                          )
+                        })}
+                      </TabsList>
+                      <Button
+                        size="icon-sm"
+                        variant="ghost"
+                        className="ml-auto"
+                        onClick={handleCopyApply}
+                      >
+                        {hasCopied ? (
+                          <HugeiconsIcon icon={Tick02Icon} />
+                        ) : (
+                          <HugeiconsIcon icon={Copy01Icon} />
+                        )}
+                        <span className="sr-only">Copy command</span>
+                      </Button>
+                    </div>
+                    {Object.entries(applyCommands).map(([key, cmd]) => {
+                      return (
+                        <TabsContent key={key} value={key}>
+                          <div className="relative overflow-hidden border-t bg-popover p-3">
+                            <div className="no-scrollbar overflow-x-auto">
+                              <code className="font-mono text-sm whitespace-nowrap">
+                                {cmd}
+                              </code>
+                            </div>
                           </div>
-                        </div>
-                      </TabsContent>
-                    )
-                  })}
-                </Tabs>
-                <Button onClick={handleCopyApply} className="h-9 w-full">
-                  {hasCopied ? "Copied" : "Copy Command"}
-                </Button>
-              </div>
-            </DialogFooter>
-          </TabsContent>
-        </Tabs>
+                        </TabsContent>
+                      )
+                    })}
+                  </Tabs>
+                  <Button onClick={handleCopyApply} className="h-9 w-full">
+                    {hasCopied ? "Copied" : "Copy Command"}
+                  </Button>
+                </div>
+              </DialogFooter>
+            </div>
+          )}
+        </div>
       </DialogContent>
     </Dialog>
   )
