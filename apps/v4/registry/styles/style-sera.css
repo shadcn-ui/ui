@@ -26,7 +26,7 @@
   }
 
   .cn-alert-variant-destructive {
-    @apply text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current after:bg-destructive;
+    @apply text-destructive bg-card *:data-[slot=alert-description]:text-destructive *:[svg]:text-current after:bg-destructive;
   }
 
   .cn-alert-title {
