@@ -13,16 +13,6 @@ import {
   resolveFilePath,
 } from "@/src/utils/updaters/update-files"
 
-const CRITICAL_FILES = [
-  "tailwind.config.ts",
-  "tailwind.config.js",
-  "tailwind.config.mjs",
-  "tailwind.config.cjs",
-  "globals.css",
-  "app/globals.css",
-  "lib/utils.ts",
-]
-
 export async function removeComponents(
   components: string[],
   config: Config,
@@ -107,10 +97,28 @@ export async function removeComponents(
     plannedCountByComponent.set(item.name, count)
   }
 
-  const critical = planned.filter((p) => {
-    const rel = path.relative(config.resolvedPaths.cwd, p.absolutePath)
-    return CRITICAL_FILES.some((c) => rel === c || rel.endsWith(`/${c}`))
-  })
+  /**
+   * 
+   * I added critical files because some registry could include one of the critical files in its files, 
+   * and it wouldn’t be good if the user accidentally removed them
+   * 
+   * UPD: I thought about it more, and maybe this check is unnecessary. 
+   * If the responsibility is on the user, then they should verify what was removed themselves. 
+   * Besides, there’s Git and the ability to restore changes
+   * 
+   * UPD 2: Although Git isn’t always that reliable, and 
+   * it’s probably better to prevent the problem than deal with it afterward
+   * 
+   * */
+
+  const criticalPaths = new Set(
+    [
+      config.resolvedPaths.utils,
+      config.resolvedPaths.tailwindCss,
+      config.resolvedPaths.tailwindConfig,
+    ].filter(Boolean)
+  )
+  const critical = planned.filter((p) => criticalPaths.has(p.absolutePath))
 
   if (critical.length > 0 && !options.force) {
     logger.error(
