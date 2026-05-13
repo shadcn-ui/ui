@@ -75,6 +75,7 @@
   --color-code-number: var(--code-number);
   --color-selection: var(--selection);
   --color-selection-foreground: var(--selection-foreground);
+  --color-overlay: hsl(var(--overlay));
 }
 
 :root {
