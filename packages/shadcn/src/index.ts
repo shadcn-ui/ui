@@ -10,6 +10,7 @@ import { mcp } from "@/src/commands/mcp"
 import { migrate } from "@/src/commands/migrate"
 import { preset } from "@/src/commands/preset"
 import { registry } from "@/src/commands/registry"
+import { remove } from "@/src/commands/remove"
 import { search } from "@/src/commands/search"
 import { view } from "@/src/commands/view"
 import { Command } from "commander"
@@ -33,6 +34,7 @@ async function main() {
     .addCommand(init)
     .addCommand(apply)
     .addCommand(add)
+    .addCommand(remove)
     .addCommand(diff)
     .addCommand(docs)
     .addCommand(view)
