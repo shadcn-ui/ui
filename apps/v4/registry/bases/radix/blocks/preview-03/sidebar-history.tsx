@@ -1,6 +1,6 @@
 "use client"
 
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+import { cn } from "@/registry/bases/radix/lib/utils"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,7 +12,6 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/registry/bases/radix/ui/dropdown-menu"
-import { cn } from "@/registry/bases/radix/lib/utils"
 import {
   SidebarGroup,
   SidebarGroupAction,
@@ -24,6 +23,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/registry/bases/radix/ui/sidebar"
+import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 import type { SidebarSearchProjectChats } from "./sidebar-search"
 
@@ -42,11 +42,11 @@ function ProjectGroupOverflowMenu({ projectLabel }: { projectLabel: string }) {
           type="button"
           title={`Actions for ${projectLabel}`}
           className={cn(
-            "aria-expanded:bg-muted transition-opacity duration-150",
+            "transition-opacity duration-150 aria-expanded:bg-muted",
             "opacity-100 focus-visible:opacity-100 aria-expanded:opacity-100",
             "md:opacity-0",
             "group-hover/sidebar-history-project:opacity-100",
-            "group-focus-within/sidebar-history-project:opacity-100",
+            "group-focus-within/sidebar-history-project:opacity-100"
           )}
         >
           <IconPlaceholder
@@ -131,7 +131,9 @@ function MoveToProjectSubmenu({
         <DropdownMenuSubContent className="min-w-48">
           {moveToProjectTargets.map((project) => {
             return (
-              <DropdownMenuItem key={project.id}>{project.name}</DropdownMenuItem>
+              <DropdownMenuItem key={project.id}>
+                {project.name}
+              </DropdownMenuItem>
             )
           })}
         </DropdownMenuSubContent>
@@ -201,7 +203,7 @@ export function SidebarHistory({ chatsByProject }: SidebarHistoryProps) {
         id: project.projectId,
         name: project.projectName,
       }
-    },
+    }
   )
 
   return (
