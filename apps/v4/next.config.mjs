@@ -1,3 +1,4 @@
+import path from "path"
 import { createMDX } from "fumadocs-mdx/next"
 
 /** @type {import('next').NextConfig} */
@@ -7,7 +8,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   outputFileTracingIncludes: {
-    "/*": ["./registry/**/*"],
+    "/*": ["./registry/**/*", "./styles/**/*"],
   },
   images: {
     remotePatterns: [
@@ -24,6 +25,9 @@ const nextConfig = {
         hostname: "avatar.vercel.sh",
       },
     ],
+  },
+  turbopack: {
+    root: path.resolve(import.meta.dirname, "../.."),
   },
   experimental: {
     turbopackFileSystemCacheForDev: true,
@@ -122,6 +126,17 @@ const nextConfig = {
         source: "/cli",
         destination: "/docs/cli",
         permanent: true,
+      },
+      {
+        source: "/themes",
+        destination: "/create",
+        permanent: true,
+      },
+      {
+        source: "/code/:path*",
+        destination:
+          "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/:path*",
+        permanent: false,
       },
     ]
   },

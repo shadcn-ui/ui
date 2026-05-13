@@ -5,7 +5,7 @@ description: Use the shadcn CLI to add components to your project.
 
 ## init
 
-Use the `init` command to initialize configuration and dependencies for a new project.
+Use the `init` command to initialize configuration and dependencies for an existing project, or create a new project with `--name`.
 
 The `init` command installs dependencies, adds the `cn` util and configures CSS variables for the project.
 
@@ -21,26 +21,28 @@ Usage: shadcn init [options] [components...]
 initialize your project and install dependencies
 
 Arguments:
-  components              name, url or local path to component
+  components                 names, url or local path to component
 
 Options:
   -t, --template <template>  the template to use. (next, vite, start, react-router, laravel, astro)
   -b, --base <base>          the component library to use. (radix, base)
-  -p, --preset [name]        use a preset configuration. (name, URL, or preset code)
-  -n, --name <name>          the name for the new project.
-  -d, --defaults             use default configuration. (default: false)
+  -p, --preset [name]        use a preset configuration
   -y, --yes                  skip confirmation prompt. (default: true)
+  -d, --defaults             use default configuration: --template=next --preset=nova (default: false)
   -f, --force                force overwrite of existing configuration. (default: false)
   -c, --cwd <cwd>            the working directory. defaults to the current directory.
+  -n, --name <name>          the name for the new project.
   -s, --silent               mute output. (default: false)
-  --monorepo                 scaffold a monorepo project.
-  --no-monorepo              skip the monorepo prompt.
-  --reinstall                re-install existing UI components.
-  --no-reinstall             do not re-install existing UI components.
-  --rtl                      enable RTL support.
-  --no-rtl                   disable RTL support.
   --css-variables            use css variables for theming. (default: true)
   --no-css-variables         do not use css variables for theming.
+  --monorepo                 scaffold a monorepo project.
+  --no-monorepo              skip the monorepo prompt.
+  --rtl                      enable RTL support.
+  --no-rtl                   disable RTL support.
+  --pointer                  enable pointer cursor for buttons.
+  --no-pointer               disable pointer cursor for buttons.
+  --reinstall                re-install existing UI components.
+  --no-reinstall             do not re-install existing UI components.
   -h, --help                 display help for command
 ```
 
@@ -81,6 +83,147 @@ Options:
   --diff [path]        show diff for a file.
   --view [path]        show file contents.
   -h, --help           display help for command
+```
+
+---
+
+## apply
+
+Use the `apply` command to apply a preset to an existing project.
+
+```bash
+npx shadcn@latest apply a2r6bw
+```
+
+You can apply only the theme or fonts from a preset without reinstalling UI components:
+
+```bash
+npx shadcn@latest apply a2r6bw --only theme
+```
+
+Supported values for `--only` are `theme` and `font`.
+
+**Options**
+
+```bash
+Usage: shadcn apply [options] [preset]
+
+apply a preset to an existing project
+
+Arguments:
+  preset             the preset to apply
+
+Options:
+  --preset <preset>  preset configuration to apply
+  --only [parts]     apply only parts of a preset: theme, font
+  -y, --yes          skip confirmation prompt. (default: false)
+  -c, --cwd <cwd>    the working directory. defaults to the current directory.
+  -s, --silent       mute output. (default: false)
+  -h, --help         display help for command
+```
+
+---
+
+## preset
+
+Use the `preset` command to inspect preset codes and resolve the preset for an existing project.
+
+```bash
+npx shadcn@latest preset decode a2r6bw
+```
+
+### preset decode
+
+Use `preset decode` to decode a preset code.
+
+```bash
+npx shadcn@latest preset decode a2r6bw
+```
+
+**Options**
+
+```bash
+Usage: shadcn preset decode [options] <code>
+
+decode a preset code
+
+Arguments:
+  code        the preset code to decode
+
+Options:
+  --json      output as JSON. (default: false)
+  -h, --help  display help for command
+```
+
+### preset resolve
+
+Use `preset resolve` to resolve the preset from the current project.
+
+```bash
+npx shadcn@latest preset resolve
+```
+
+The `preset info` command is an alias for `preset resolve`:
+
+```bash
+npx shadcn@latest preset info
+```
+
+**Options**
+
+```bash
+Usage: shadcn preset resolve|info [options]
+
+resolve a preset from your project
+
+Options:
+  -c, --cwd <cwd>  the working directory. defaults to the current directory.
+  --json            output as JSON. (default: false)
+  -h, --help        display help for command
+```
+
+### preset url
+
+Use `preset url` to print the create URL for a preset code.
+
+```bash
+npx shadcn@latest preset url a2r6bw
+```
+
+**Options**
+
+```bash
+Usage: shadcn preset url [options] <code>
+
+get the create URL for a preset code
+
+Arguments:
+  code        the preset code
+
+Options:
+  -h, --help  display help for command
+```
+
+### preset open
+
+Use `preset open` to open a preset code in the browser.
+
+```bash
+npx shadcn@latest preset open a2r6bw
+```
+
+**Options**
+
+```bash
+Usage: shadcn preset open [options] <code>
+
+open a preset code in the browser
+
+Arguments:
+  code        the preset code
+
+Options:
+  -h, --help  display help for command
 ```
 
 ---

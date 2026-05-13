@@ -124,12 +124,20 @@ async function adaptWorkspaceConfig(
 
   const isMonorepo = fs.existsSync(pnpmWorkspacePath)
 
-  // Update root package.json: strip "packageManager" field to avoid
-  // triggering Corepack, and add "workspaces" for npm/bun/yarn.
+  // Update root package.json: update "packageManager" field for the
+  // target package manager, and add "workspaces" for npm/bun/yarn.
   if (fs.existsSync(packageJsonPath)) {
     const packageJsonContent = await fs.readFile(packageJsonPath, "utf8")
     const packageJson = JSON.parse(packageJsonContent)
-    delete packageJson.packageManager
+
+    if (isMonorepo) {
+      // Monorepo templates use turbo which requires packageManager.
+      // Replace the pnpm value with the target package manager.
+      packageJson.packageManager =
+        await getPackageManagerVersion(packageManager)
+    } else {
+      delete packageJson.packageManager
+    }
 
     if (isMonorepo) {
       // Read workspace patterns from pnpm-workspace.yaml.
@@ -157,6 +165,16 @@ async function adaptWorkspaceConfig(
   // rewrite for npm monorepo templates.
   if (isMonorepo && packageManager === "npm") {
     await rewriteWorkspaceProtocol(projectPath)
+  }
+}
+
+// Get the package manager name and version string (e.g. "bun@1.2.0").
+async function getPackageManagerVersion(packageManager: string) {
+  try {
+    const { stdout } = await execa(packageManager, ["--version"])
+    return `${packageManager}@${stdout.trim()}`
+  } catch {
+    return `${packageManager}@*`
   }
 }
 

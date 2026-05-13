@@ -1,4 +1,6 @@
 import Link from "next/link"
+import { DotIcon } from "lucide-react"
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,8 +8,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/examples/radix/ui/breadcrumb"
-import { DotIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/breadcrumb"
 
 export function BreadcrumbSeparatorDemo() {
   return (

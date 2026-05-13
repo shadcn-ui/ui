@@ -1,9 +1,14 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { track } from "@vercel/analytics/server"
-import { encodePreset, isPresetCode } from "shadcn/preset"
+import { isPresetCode } from "shadcn/preset"
 import { registryItemSchema } from "shadcn/schema"
 
-import { buildRegistryBase } from "@/registry/config"
+import {
+  buildPartialRegistryBase,
+  buildRegistryBase,
+  parseRegistryBaseParts,
+} from "@/registry/config"
+import { getPresetCode } from "@/app/(app)/create/lib/preset-code"
 import { parseDesignSystemConfig } from "@/app/(create)/init/parse-config"
 
 export async function GET(request: NextRequest) {
@@ -15,23 +20,20 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: result.error }, { status: 400 })
     }
 
-    // Use the preset code from the URL if provided, otherwise encode one.
-    const presetParam = searchParams.get("preset")
-    const presetCode =
-      presetParam && isPresetCode(presetParam)
-        ? presetParam
-        : encodePreset({
-            style: result.data.style,
-            baseColor: result.data.baseColor,
-            theme: result.data.theme,
-            iconLibrary: result.data.iconLibrary,
-            font: result.data.font,
-            radius: result.data.radius,
-            menuAccent: result.data.menuAccent,
-            menuColor: result.data.menuColor,
-          } as Parameters<typeof encodePreset>[0])
+    const onlyResult = parseRegistryBaseParts(searchParams.get("only"))
+    if (!onlyResult.success) {
+      return NextResponse.json({ error: onlyResult.error }, { status: 400 })
+    }
 
-    const registryBase = buildRegistryBase(result.data)
+    const rawPreset = searchParams.get("preset")
+    const presetCode =
+      rawPreset && isPresetCode(rawPreset)
+        ? rawPreset
+        : getPresetCode(result.data)
+
+    const registryBase = onlyResult.parts
+      ? buildPartialRegistryBase(result.data, onlyResult.parts)
+      : buildRegistryBase(result.data)
     const parseResult = registryItemSchema.safeParse(registryBase)
 
     if (!parseResult.success) {

@@ -1,10 +1,11 @@
 "use client"
 
+import * as React from "react"
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
+import { Button } from "@/registry/bases/base/ui/button"
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -19,10 +20,7 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/registry/bases/base/ui/chart"
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/registry/bases/base/ui/toggle-group"
+import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 
 const barChartData = [
   { month: "January", desktop: 186, mobile: 80 },
@@ -52,27 +50,19 @@ const desktopDelta = Math.round(
 const desktopDeltaPrefix = desktopDelta > 0 ? "+" : ""
 
 export function BarChartCard() {
+  const [params] = useDesignSystemSearchParams()
+  const isRounded = !["lyra", "sera"].includes(params.style)
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Traffic Channels</CardTitle>
-        <CardDescription>
-          Desktop vs mobile over the last 6 months
+        <CardTitle className="text-lg">Traffic channels</CardTitle>
+        <CardDescription className="line-clamp-2 text-sm leading-snug">
+          Monthly desktop and mobile traffic for the last six months—compare
+          volume and mix across platforms and devices at a glance.
         </CardDescription>
-        <CardAction>
-          <ToggleGroup
-            aria-label="Time range"
-            multiple={false}
-            defaultValue={["6m"]}
-            variant="outline"
-            size="sm"
-          >
-            <ToggleGroupItem value="6m">6M</ToggleGroupItem>
-            <ToggleGroupItem value="12m">12M</ToggleGroupItem>
-          </ToggleGroup>
-        </CardAction>
       </CardHeader>
-      <CardContent className="pt-0">
+      <CardContent className="flex flex-col gap-4 pt-0">
         <ChartContainer
           config={barChartConfig}
           className="max-h-[180px] w-full"
@@ -98,17 +88,15 @@ export function BarChartCard() {
             <Bar
               dataKey="desktop"
               fill="var(--color-desktop)"
-              radius={[6, 6, 0, 0]}
+              radius={isRounded ? [6, 6, 0, 0] : 0}
             />
             <Bar
               dataKey="mobile"
               fill="var(--color-mobile)"
-              radius={[6, 6, 0, 0]}
+              radius={isRounded ? [6, 6, 0, 0] : 0}
             />
           </BarChart>
         </ChartContainer>
-      </CardContent>
-      <CardFooter>
         <div className="grid w-full grid-cols-3 divide-x divide-border/60">
           <div className="px-2 text-center">
             <div className="text-[0.65rem] text-muted-foreground uppercase">
@@ -136,6 +124,9 @@ export function BarChartCard() {
             </div>
           </div>
         </div>
+      </CardContent>
+      <CardFooter>
+        <Button className="w-full">View report</Button>
       </CardFooter>
     </Card>
   )

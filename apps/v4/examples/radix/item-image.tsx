@@ -1,4 +1,5 @@
 import Image from "next/image"
+
 import {
   Item,
   ItemContent,
@@ -6,7 +7,7 @@ import {
   ItemGroup,
   ItemMedia,
   ItemTitle,
-} from "@/examples/radix/ui/item"
+} from "@/styles/radix-nova/ui/item"
 
 const music = [
   {

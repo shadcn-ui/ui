@@ -219,6 +219,7 @@ function ToggleGroupWithIcons() {
             hugeicons="StarIcon"
             phosphor="StarIcon"
             remixicon="RiStarLine"
+            data-icon="inline-start"
           />
           Star
         </ToggleGroupItem>
@@ -233,6 +234,7 @@ function ToggleGroupWithIcons() {
             hugeicons="FavouriteIcon"
             phosphor="HeartIcon"
             remixicon="RiHeartLine"
+            data-icon="inline-start"
           />
           Heart
         </ToggleGroupItem>
@@ -247,6 +249,7 @@ function ToggleGroupWithIcons() {
             hugeicons="BookmarkIcon"
             phosphor="BookmarkIcon"
             remixicon="RiBookmarkLine"
+            data-icon="inline-start"
           />
           Bookmark
         </ToggleGroupItem>
@@ -319,6 +322,7 @@ function ToggleGroupSort() {
             hugeicons="ArrowDownIcon"
             phosphor="ArrowDownIcon"
             remixicon="RiArrowDownLine"
+            data-icon="inline-start"
           />
           Newest
         </ToggleGroupItem>
@@ -329,6 +333,7 @@ function ToggleGroupSort() {
             hugeicons="ArrowUpIcon"
             phosphor="ArrowUpIcon"
             remixicon="RiArrowUpLine"
+            data-icon="inline-start"
           />
           Oldest
         </ToggleGroupItem>
@@ -339,6 +344,7 @@ function ToggleGroupSort() {
             hugeicons="TradeUpIcon"
             phosphor="TrendUpIcon"
             remixicon="RiLineChartLine"
+            data-icon="inline-start"
           />
           Popular
         </ToggleGroupItem>
