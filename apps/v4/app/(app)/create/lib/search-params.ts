@@ -88,6 +88,7 @@ const designSystemSearchParams = {
     "vite-monorepo",
     "astro",
     "astro-monorepo",
+    "rsbuild",
     "laravel",
   ] as const).withDefault("next"),
   rtl: parseAsBoolean.withDefault(false),
