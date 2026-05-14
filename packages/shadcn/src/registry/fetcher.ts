@@ -12,14 +12,15 @@ import {
   RegistryParseError,
   RegistryUnauthorizedError,
 } from "@/src/registry/errors"
+import { createProxyDispatcher } from "@/src/registry/proxy"
 import { registryItemSchema } from "@/src/schema"
-import { HttpsProxyAgent } from "https-proxy-agent"
-import fetch, { Headers } from "node-fetch"
+import { type Dispatcher } from "undici"
 import { z } from "zod"
 
-const agent = process.env.https_proxy
-  ? new HttpsProxyAgent(process.env.https_proxy)
-  : undefined
+// MSW's Node adapter patches `globalThis.fetch`, so we keep using it here.
+// `dispatcher` is an undici-specific fetch option not declared on DOM's
+// RequestInit; we type it locally to pass it through without casting.
+const dispatcher: Dispatcher | undefined = createProxyDispatcher()
 
 const registryCache = new Map<string, Promise<any>>()
 
@@ -59,10 +60,11 @@ export async function fetchRegistry(
             requestHeaders.set(key, value)
           }
 
-          const response = await fetch(url, {
-            agent,
+          const init: RequestInit & { dispatcher?: Dispatcher } = {
             headers: requestHeaders,
-          })
+            dispatcher,
+          }
+          const response = await fetch(url, init)
 
           if (!response.ok) {
             let messageFromServer = undefined
