@@ -510,6 +510,12 @@
     "description": "Animated GSAP components crafted for smooth interaction and rich detail."
   },
   {
+    "name": "@paddle",
+    "homepage": "https://developer.paddle.com/",
+    "url": "https://developer.paddle.com/r/{name}.json",
+    "description": "Drop-in components for building checkouts, pricing pages, and subscription management screens using Paddle Billing."
+  },
+  {
     "name": "@pastecn",
     "homepage": "https://pastecn.com",
     "url": "https://pastecn.com/r/{name}",
