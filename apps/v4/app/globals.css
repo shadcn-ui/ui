@@ -120,7 +120,7 @@
   --code-number: oklch(0.56 0 0);
   --selection: oklch(0.145 0 0);
   --selection-foreground: oklch(1 0 0);
-  --overlay: hsl(0 100% 50%) !important;
+  --overlay: hsl(0 0% 0%) !important;
 }
 
 .dark {
@@ -164,7 +164,7 @@
   --code-number: oklch(0.72 0 0);
   --selection: oklch(0.922 0 0);
   --selection-foreground: oklch(0.205 0 0);
- --overlay: hsl(0 100% 50%);
+ --overlay: hsl(0 0% 0%);
 }
 
 @layer base {
