@@ -8,6 +8,7 @@ import {
   getBase,
   getConfig,
   getRawConfig,
+  getTargetStyleFromConfig,
   getWorkspaceConfig,
 } from "../../src/utils/get-config"
 import { getProjectConfig } from "../../src/utils/get-project-info"
@@ -119,7 +120,10 @@ test("get project config from generic package import prefix", async () => {
 })
 
 test("get project config from root package imports", async () => {
-  const cwd = path.resolve(__dirname, "../fixtures/frameworks/vite-root-imports")
+  const cwd = path.resolve(
+    __dirname,
+    "../fixtures/frameworks/vite-root-imports"
+  )
 
   expect(await getProjectConfig(cwd)).toEqual({
     $schema: "https://ui.shadcn.com/schema.json",
@@ -649,6 +653,28 @@ describe("getBase", () => {
 
   test("returns radix for undefined", () => {
     expect(getBase(undefined)).toBe("radix")
+  })
+})
+
+describe("getTargetStyleFromConfig", () => {
+  const tailwindV4Cwd = path.resolve(
+    __dirname,
+    "../fixtures/frameworks/vite-monorepo-imports/apps/web"
+  )
+
+  test.each(["default", "new-york", "new-york-v4"])(
+    "uses new-york-v4 for built-in %s style in Tailwind v4 projects",
+    async (style) => {
+      await expect(
+        getTargetStyleFromConfig(tailwindV4Cwd, style)
+      ).resolves.toBe("new-york-v4")
+    }
+  )
+
+  test("preserves custom registry styles in Tailwind v4 projects", async () => {
+    await expect(
+      getTargetStyleFromConfig(tailwindV4Cwd, "base-nova")
+    ).resolves.toBe("base-nova")
   })
 })
 
