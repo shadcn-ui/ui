@@ -82,6 +82,23 @@ import {
 </NavigationMenu>
 ```
 
+## Composition
+
+Use the following composition to build a `NavigationMenu`:
+
+```text
+NavigationMenu
+├── NavigationMenuList
+│   ├── NavigationMenuItem
+│   │   ├── NavigationMenuTrigger
+│   │   └── NavigationMenuContent
+│   │       ├── NavigationMenuLink
+│   │       └── NavigationMenuLink
+│   └── NavigationMenuItem
+│       └── NavigationMenuLink
+└── NavigationMenuIndicator
+```
+
 ## Link Component
 
 Use the `render` prop to compose a custom link component such as Next.js `Link`.

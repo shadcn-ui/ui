@@ -5,4 +5,4 @@ build
 .contentlayer
 **/fixtures
 deprecated
-packages
+apps/v4/registry/styles/**/*.css

@@ -1,8 +1,24 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/radix/ui/avatar"
-import { Badge } from "@/examples/radix/ui/badge"
+import {
+  IconApps,
+  IconArrowUp,
+  IconAt,
+  IconBook,
+  IconCircleDashedPlus,
+  IconPaperclip,
+  IconPlus,
+  IconWorld,
+  IconX,
+} from "@tabler/icons-react"
+
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/styles/radix-nova/ui/avatar"
+import { Badge } from "@/styles/radix-nova/ui/badge"
 import {
   Command,
   CommandEmpty,
@@ -10,7 +26,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/examples/radix/ui/command"
+} from "@/styles/radix-nova/ui/command"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -23,36 +39,25 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/examples/radix/ui/dropdown-menu"
-import { Field, FieldLabel } from "@/examples/radix/ui/field"
+} from "@/styles/radix-nova/ui/dropdown-menu"
+import { Field, FieldLabel } from "@/styles/radix-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupTextarea,
-} from "@/examples/radix/ui/input-group"
+} from "@/styles/radix-nova/ui/input-group"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/examples/radix/ui/popover"
-import { Switch } from "@/examples/radix/ui/switch"
+} from "@/styles/radix-nova/ui/popover"
+import { Switch } from "@/styles/radix-nova/ui/switch"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/radix/ui/tooltip"
-import {
-  IconApps,
-  IconArrowUp,
-  IconAt,
-  IconBook,
-  IconCircleDashedPlus,
-  IconPaperclip,
-  IconPlus,
-  IconWorld,
-  IconX,
-} from "@tabler/icons-react"
+} from "@/styles/radix-nova/ui/tooltip"
 
 const SAMPLE_DATA = {
   mentionable: [

@@ -34,10 +34,10 @@ The `registry-item.json` schema is used to define your custom registry items.
       "font-heading": "Poppins, sans-serif"
     },
     "light": {
-      "brand": "20 14.3% 4.1%"
+      "brand": "oklch(0.205 0.015 18)"
     },
     "dark": {
-      "brand": "20 14.3% 4.1%"
+      "brand": "oklch(0.205 0.015 18)"
     }
   }
 }
@@ -103,18 +103,20 @@ The `type` property is used to specify the type of your registry item. This is u
 
 The following types are supported:
 
-| Type                 | Description                                      |
-| -------------------- | ------------------------------------------------ |
-| `registry:block`     | Use for complex components with multiple files.  |
-| `registry:component` | Use for simple components.                       |
-| `registry:lib`       | Use for lib and utils.                           |
-| `registry:hook`      | Use for hooks.                                   |
-| `registry:ui`        | Use for UI components and single-file primitives |
-| `registry:page`      | Use for page or file-based routes.               |
-| `registry:file`      | Use for miscellaneous files.                     |
-| `registry:style`     | Use for registry styles. eg. `new-york`          |
-| `registry:theme`     | Use for themes.                                  |
-| `registry:item`      | Use for universal registry items.                |
+| Type                 | Description                                       |
+| -------------------- | ------------------------------------------------- |
+| `registry:base`      | Use for entire design systems.                    |
+| `registry:block`     | Use for complex components with multiple files.   |
+| `registry:component` | Use for simple components.                        |
+| `registry:font`      | Use for fonts.                                    |
+| `registry:lib`       | Use for lib and utils.                            |
+| `registry:hook`      | Use for hooks.                                    |
+| `registry:ui`        | Use for UI components and single-file primitives. |
+| `registry:page`      | Use for page or file-based routes.                |
+| `registry:file`      | Use for miscellaneous files.                      |
+| `registry:style`     | Use for registry styles. eg. `new-york`.          |
+| `registry:theme`     | Use for themes.                                   |
+| `registry:item`      | Use for universal registry items.                 |
 
 ### author
 
@@ -223,6 +225,80 @@ The `target` property is used to indicate where the file should be placed in a p
 By default, the `shadcn` cli will read a project's `components.json` file to determine the target path. For some files, such as routes or config you can specify the target path manually.
 
 Use `~` to refer to the root of the project e.g `~/foo.config.js`.
+
+You can also use registry target placeholders to place files under the
+directories configured by the user's `components.json`. These placeholders are
+only supported at the start of `target` and are independent of the project's
+import prefix. For example, `@ui/button.tsx` works whether the project imports
+components with `@/`, `#`, package imports or workspace exports.
+
+| Placeholder    | Resolves to          |
+| -------------- | -------------------- |
+| `@components/` | `aliases.components` |
+| `@ui/`         | `aliases.ui`         |
+| `@lib/`        | `aliases.lib`        |
+| `@hooks/`      | `aliases.hooks`      |
+
+Use these placeholders when you want a registry item to install into the
+project's configured shadcn directories without hardcoding `components`, `src`
+or workspace package paths. Anything after the placeholder is preserved, so
+`@ui/ai/prompt-input.tsx` installs under the user's configured `ui` directory
+at `ai/prompt-input.tsx`.
+
+```json title="registry-item.json" showLineNumbers
+{
+  "files": [
+    {
+      "path": "registry/new-york/example/button.tsx",
+      "type": "registry:ui",
+      "target": "@ui/button.tsx"
+    },
+    {
+      "path": "registry/new-york/example/prompt-input.tsx",
+      "type": "registry:ui",
+      "target": "@ui/ai/prompt-input.tsx"
+    },
+    {
+      "path": "registry/new-york/example/card.tsx",
+      "type": "registry:component",
+      "target": "@components/card.tsx"
+    },
+    {
+      "path": "registry/new-york/example/helper.ts",
+      "type": "registry:lib",
+      "target": "@lib/helper.ts"
+    },
+    {
+      "path": "registry/new-york/example/use-demo.ts",
+      "type": "registry:hook",
+      "target": "@hooks/use-demo.ts"
+    }
+  ]
+}
+```
+
+The `target` property decides where the file is written. It can point to a
+different shadcn directory than the file `type`.
+
+```json title="registry-item.json" showLineNumbers
+{
+  "files": [
+    {
+      "path": "registry/new-york/example/format-date.ts",
+      "type": "registry:ui",
+      "target": "@lib/format-date.ts"
+    }
+  ]
+}
+```
+
+Unknown placeholders are treated as regular target paths. For example,
+`@foo/bar.ts` is written as `foo/bar.ts`. Embedded placeholders such as
+`components/@ui/button.tsx` are also treated as regular paths.
+
+<Callout>
+  `@utils/` is not supported because `utils` points to a file, not a directory.
+</Callout>
 
 ### tailwind
 
@@ -336,6 +412,34 @@ Environment variables are added to the `.env.local` or `.env` file. Existing var
 **IMPORTANT:** Use `envVars` to add development or example variables. Do NOT use it to add production variables.
 
 </Callout>
+
+### font
+
+The `font` property is required for `registry:font` items. It configures the font family, provider, import name, CSS variable, and the npm package to install for non-Next.js projects.
+
+```json title="registry-item.json" showLineNumbers
+{
+  "font": {
+    "family": "'Inter Variable', sans-serif",
+    "provider": "google",
+    "import": "Inter",
+    "variable": "--font-sans",
+    "subsets": ["latin"],
+    "dependency": "@fontsource-variable/inter"
+  }
+}
+```
+
+| Property     | Type       | Required | Description                                                                               |
+| ------------ | ---------- | -------- | ----------------------------------------------------------------------------------------- |
+| `family`     | `string`   | Yes      | The CSS font-family value.                                                                |
+| `provider`   | `string`   | Yes      | The font provider. Currently only `google` is supported.                                  |
+| `import`     | `string`   | Yes      | The import name for the font from `next/font/google`.                                     |
+| `variable`   | `string`   | Yes      | The CSS variable name for the font (e.g., `--font-sans`, `--font-mono`).                  |
+| `weight`     | `string[]` | No       | Array of font weights to include.                                                         |
+| `subsets`    | `string[]` | No       | Array of font subsets to include.                                                         |
+| `selector`   | `string`   | No       | CSS selector to apply the font to. Defaults to `html`.                                    |
+| `dependency` | `string`   | No       | The npm package to install for non-Next.js projects (e.g., `@fontsource-variable/inter`). |
 
 ### docs
 

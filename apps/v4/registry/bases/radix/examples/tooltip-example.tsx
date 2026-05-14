@@ -52,7 +52,10 @@ function TooltipSides() {
         {(["top", "right", "bottom", "left"] as const).map((side) => (
           <Tooltip key={side}>
             <TooltipTrigger asChild>
-              <Button variant="outline" className="w-fit capitalize">
+              <Button
+                variant="outline"
+                className="w-fit capitalize style-sera:uppercase"
+              >
                 {side}
               </Button>
             </TooltipTrigger>
@@ -142,10 +145,8 @@ function TooltipWithKeyboard() {
             />
           </Button>
         </TooltipTrigger>
-        <TooltipContent className="pr-1.5">
-          <div className="flex items-center gap-2">
-            Save Changes <Kbd>S</Kbd>
-          </div>
+        <TooltipContent>
+          Save Changes <Kbd>S</Kbd>
         </TooltipContent>
       </Tooltip>
     </Example>

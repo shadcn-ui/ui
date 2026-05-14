@@ -3,15 +3,12 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { Announcement } from "@/components/announcement"
-import { ExamplesNav } from "@/components/examples-nav"
 import {
   PageActions,
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { PageNav } from "@/components/page-nav"
-import { ThemeSelector } from "@/components/theme-selector"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
 import { RootComponents } from "./components"
@@ -56,18 +53,14 @@ export default function IndexPage() {
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm" className="h-[31px] rounded-lg">
-            <Link href="/docs/installation">Get Started</Link>
+            <Link href="/create">New Project</Link>
           </Button>
           <Button asChild size="sm" variant="ghost" className="rounded-lg">
             <Link href="/docs/components">View Components</Link>
           </Button>
         </PageActions>
       </PageHeader>
-      <PageNav className="hidden md:flex">
-        <ExamplesNav className="flex-1 overflow-hidden [&>a:first-child]:text-primary" />
-        <ThemeSelector className="mr-4 hidden md:flex" />
-      </PageNav>
-      <div className="container-wrapper flex-1 section-soft pb-6">
+      <div className="container-wrapper flex-1 pb-6">
         <div className="container overflow-hidden">
           <section className="-mx-4 w-[160vw] overflow-hidden rounded-lg border border-border/50 md:hidden md:w-[150vw]">
             <Image

@@ -185,7 +185,7 @@ export function CommandMenu({
     return (
       <CommandGroup
         heading="Pages"
-        className="p-0! [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:p-3! [&_[cmdk-group-heading]]:pb-1!"
+        className="p-0! **:[[cmdk-group-heading]]:scroll-mt-16 **:[[cmdk-group-heading]]:p-3! **:[[cmdk-group-heading]]:pb-1!"
       >
         {navItems.map((item) => (
           <CommandMenuItem
@@ -230,7 +230,7 @@ export function CommandMenu({
         <CommandGroup
           key={group.$id}
           heading={group.name}
-          className="p-0! [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:p-3! [&_[cmdk-group-heading]]:pb-1!"
+          className="p-0! **:[[cmdk-group-heading]]:scroll-mt-16 **:[[cmdk-group-heading]]:p-3! **:[[cmdk-group-heading]]:pb-1!"
         >
           {pages.map((item) => {
             const isComponent = item.url.includes("/components/")
@@ -268,7 +268,7 @@ export function CommandMenu({
         heading={
           colorPalette.name.charAt(0).toUpperCase() + colorPalette.name.slice(1)
         }
-        className="p-0! [&_[cmdk-group-heading]]:p-3!"
+        className="p-0! **:[[cmdk-group-heading]]:p-3!"
       >
         {colorPalette.colors.map((color) => (
           <CommandMenuItem
@@ -307,7 +307,7 @@ export function CommandMenu({
     return (
       <CommandGroup
         heading="Blocks"
-        className="p-0! [&_[cmdk-group-heading]]:p-3!"
+        className="p-0! **:[[cmdk-group-heading]]:p-3!"
       >
         {blocks.map((block) => (
           <CommandMenuItem
@@ -391,13 +391,13 @@ export function CommandMenu({
         <Button
           variant="outline"
           className={cn(
-            "relative h-8 w-full justify-start rounded-lg pl-3 font-normal text-foreground shadow-none hover:bg-muted/50 sm:pr-12 md:w-48 lg:w-56 xl:w-64 dark:bg-card"
+            "relative h-8 w-full justify-start rounded-lg pl-3 font-normal text-foreground shadow-none hover:bg-muted/50 sm:pr-12 md:w-48 lg:w-40 xl:w-64 dark:bg-card"
           )}
           onClick={() => setOpen(true)}
           {...props}
         >
-          <span className="hidden lg:inline-flex">Search documentation...</span>
-          <span className="inline-flex lg:hidden">Search...</span>
+          <span className="hidden xl:inline-flex">Search documentation...</span>
+          <span className="inline-flex xl:hidden">Search...</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="rounded-xl border-none bg-clip-padding p-2 pb-11 shadow-2xl ring-4 ring-neutral-200/80 dark:bg-neutral-900 dark:ring-neutral-800">
@@ -555,7 +555,7 @@ function SearchResults({
 
   return (
     <CommandGroup
-      className="px-0! [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:p-3! [&_[cmdk-group-heading]]:pb-1!"
+      className="px-0! **:[[cmdk-group-heading]]:scroll-mt-16 **:[[cmdk-group-heading]]:p-3! **:[[cmdk-group-heading]]:pb-1!"
       heading="Search Results"
     >
       {uniqueResults.map((item) => {

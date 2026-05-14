@@ -1,6 +1,14 @@
 "use client"
 
 import {
+  FrameIcon,
+  LifeBuoyIcon,
+  MapIcon,
+  PieChartIcon,
+  SendIcon,
+} from "lucide-react"
+
+import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
@@ -10,14 +18,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/examples/base/ui/sidebar"
-import {
-  FrameIcon,
-  LifeBuoyIcon,
-  MapIcon,
-  PieChartIcon,
-  SendIcon,
-} from "lucide-react"
+} from "@/styles/base-nova/ui/sidebar"
 
 const projects = [
   {
