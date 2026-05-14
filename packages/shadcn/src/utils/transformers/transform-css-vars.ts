@@ -1,7 +1,31 @@
 import { registryBaseColorSchema } from "@/src/schema"
 import { Transformer } from "@/src/utils/transformers"
-import { ScriptKind, SyntaxKind } from "ts-morph"
+import { Node, ScriptKind, SyntaxKind } from "ts-morph"
 import { z } from "zod"
+
+function isInClassNameContext(node: Node): boolean {
+  let current = node.getParent()
+  while (current) {
+    const kind = current.getKind()
+    if (kind === SyntaxKind.JsxAttribute) {
+      const nameNode = current.getFirstChildByKind(SyntaxKind.Identifier)
+      if (nameNode?.getText() === "className") {
+        return true
+      }
+    }
+    if (kind === SyntaxKind.CallExpression) {
+      const callee = current.getChildAtIndex(0)
+      if (
+        callee?.getKind() === SyntaxKind.Identifier &&
+        ["cn", "clsx", "cva"].includes(callee.getText())
+      ) {
+        return true
+      }
+    }
+    current = current.getParent()
+  }
+  return false
+}
 
 export const transformCssVars: Transformer = async ({
   sourceFile,
@@ -31,6 +55,7 @@ export const transformCssVars: Transformer = async ({
   //   }
   // }
   sourceFile.getDescendantsOfKind(SyntaxKind.StringLiteral).forEach((node) => {
+    if (!isInClassNameContext(node)) return
     const raw = node.getLiteralText()
     const mapped = applyColorMapping(raw, baseColor.inlineColors).trim()
     if (mapped !== raw) {
