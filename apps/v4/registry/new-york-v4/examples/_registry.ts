@@ -673,6 +673,72 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "rgl-dashboard-layout-demo",
+    type: "registry:example",
+    registryDependencies: ["rgl-dashboard-grid", "rgl-dashboard-tile"],
+    files: [
+      {
+        path: "examples/rgl-dashboard-layout-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "rgl-dashboard-split-demo",
+    type: "registry:example",
+    registryDependencies: ["rgl-dashboard-grid", "rgl-dashboard-tile"],
+    files: [
+      {
+        path: "examples/rgl-dashboard-split-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "rgl-dashboard-static-demo",
+    type: "registry:example",
+    registryDependencies: ["rgl-dashboard-grid", "rgl-dashboard-tile"],
+    files: [
+      {
+        path: "examples/rgl-dashboard-static-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "rgl-dashboard-debug-demo",
+    type: "registry:example",
+    registryDependencies: ["rgl-dashboard-grid", "rgl-dashboard-tile", "card", "separator"],
+    files: [
+      {
+        path: "examples/rgl-dashboard-debug-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "rgl-dashboard-tile-demo",
+    type: "registry:example",
+    registryDependencies: ["rgl-dashboard-tile"],
+    files: [
+      {
+        path: "examples/rgl-dashboard-tile-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "rgl-dashboard-tile-more-demo",
+    type: "registry:example",
+    registryDependencies: ["rgl-dashboard-tile"],
+    files: [
+      {
+        path: "examples/rgl-dashboard-tile-more-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "date-picker-demo",
     type: "registry:example",
     registryDependencies: ["button", "calendar", "popover"],

@@ -455,6 +455,56 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "rgl-dashboard-grid": {
+      name: "rgl-dashboard-grid",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/new-york-v4/ui/rgl-dashboard-grid.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/ui/rgl-dashboard-grid")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-grid"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-tile": {
+      name: "rgl-dashboard-tile",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card", "badge", "rgl-dashboard-types"],
+      files: [
+        {
+          path: "registry/new-york-v4/ui/rgl-dashboard-tile.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/ui/rgl-dashboard-tile")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     dialog: {
       name: "dialog",
       title: "undefined",
@@ -1509,6 +1559,83 @@ export const Index: Record<string, Record<string, any>> = {
       }),
       categories: ["dashboard"],
       meta: { iframeHeight: "1000px" },
+    },
+    "rgl-dashboard": {
+      name: "rgl-dashboard",
+      title: "undefined",
+      description:
+        "RGL Dashboard — draggable, resizable tiles (react-grid-layout), CRUD, tile management, and Sonner toasts.",
+      type: "registry:block",
+      registryDependencies: [
+        "rgl-dashboard-grid",
+        "rgl-dashboard-tile",
+        "button",
+        "card",
+        "dialog",
+        "dropdown-menu",
+        "input",
+        "label",
+        "select",
+        "separator",
+        "switch",
+        "badge",
+        "sonner",
+      ],
+      files: [
+        {
+          path: "registry/new-york-v4/blocks/rgl-dashboard/page.tsx",
+          type: "registry:page",
+          target: "app/rgl-dashboard/page.tsx",
+        },
+        {
+          path: "registry/new-york-v4/blocks/rgl-dashboard/components/rgl-dashboard-demo.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/new-york-v4/blocks/rgl-dashboard/components/rgl-dashboard.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/new-york-v4/blocks/rgl-dashboard/components/tile-widgets.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/new-york-v4/blocks/rgl-dashboard/rgl-dashboard.context.md",
+          type: "registry:file",
+          target: "docs/rgl-dashboard.context.md",
+        },
+        {
+          path: "registry/new-york-v4/lib/rgl-dashboard-types.ts",
+          type: "registry:lib",
+          target: "",
+        },
+        {
+          path: "registry/new-york-v4/lib/rgl-dashboard-storage.ts",
+          type: "registry:lib",
+          target: "",
+        },
+        {
+          path: "registry/new-york-v4/lib/rgl-dashboard-example.ts",
+          type: "registry:lib",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/blocks/rgl-dashboard/page"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["dashboard"],
+      meta: undefined,
     },
     "sidebar-01": {
       name: "sidebar-01",
@@ -4522,6 +4649,87 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "rgl-dashboard-types": {
+      name: "rgl-dashboard-types",
+      title: "undefined",
+      description: "",
+      type: "registry:lib",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/new-york-v4/lib/rgl-dashboard-types.ts",
+          type: "registry:lib",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/lib/rgl-dashboard-types"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-types"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-storage": {
+      name: "rgl-dashboard-storage",
+      title: "undefined",
+      description: "",
+      type: "registry:lib",
+      registryDependencies: ["rgl-dashboard-types"],
+      files: [
+        {
+          path: "registry/new-york-v4/lib/rgl-dashboard-storage.ts",
+          type: "registry:lib",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/lib/rgl-dashboard-storage"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-storage"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-example": {
+      name: "rgl-dashboard-example",
+      title: "undefined",
+      description: "",
+      type: "registry:lib",
+      registryDependencies: ["rgl-dashboard-types"],
+      files: [
+        {
+          path: "registry/new-york-v4/lib/rgl-dashboard-example.ts",
+          type: "registry:lib",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/lib/rgl-dashboard-example"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-example"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "use-mobile": {
       name: "use-mobile",
       title: "undefined",
@@ -6167,6 +6375,173 @@ export const Index: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "data-table-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-layout-demo": {
+      name: "rgl-dashboard-layout-demo",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["rgl-dashboard-grid", "rgl-dashboard-tile"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/rgl-dashboard-layout-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/rgl-dashboard-layout-demo"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-layout-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-split-demo": {
+      name: "rgl-dashboard-split-demo",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["rgl-dashboard-grid", "rgl-dashboard-tile"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/rgl-dashboard-split-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/rgl-dashboard-split-demo"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-split-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-static-demo": {
+      name: "rgl-dashboard-static-demo",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["rgl-dashboard-grid", "rgl-dashboard-tile"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/rgl-dashboard-static-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/rgl-dashboard-static-demo"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-static-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-debug-demo": {
+      name: "rgl-dashboard-debug-demo",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "rgl-dashboard-grid",
+        "rgl-dashboard-tile",
+        "card",
+        "separator",
+      ],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/rgl-dashboard-debug-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/rgl-dashboard-debug-demo"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-debug-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-tile-demo": {
+      name: "rgl-dashboard-tile-demo",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["rgl-dashboard-tile"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/rgl-dashboard-tile-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/rgl-dashboard-tile-demo"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-tile-more-demo": {
+      name: "rgl-dashboard-tile-more-demo",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["rgl-dashboard-tile"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/rgl-dashboard-tile-more-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/rgl-dashboard-tile-more-demo"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile-more-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -11267,6 +11642,56 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "rgl-dashboard-grid": {
+      name: "rgl-dashboard-grid",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/base-nova/ui/rgl-dashboard-grid.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/rgl-dashboard-grid")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-grid"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-tile": {
+      name: "rgl-dashboard-tile",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card", "badge", "rgl-dashboard-types"],
+      files: [
+        {
+          path: "styles/base-nova/ui/rgl-dashboard-tile.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/rgl-dashboard-tile")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     dialog: {
       name: "dialog",
       title: "undefined",
@@ -13014,6 +13439,56 @@ export const Index: Record<string, Record<string, any>> = {
           api: "https://www.radix-ui.com/docs/primitives/components/context-menu.md",
         },
       },
+    },
+    "rgl-dashboard-grid": {
+      name: "rgl-dashboard-grid",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/radix-nova/ui/rgl-dashboard-grid.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/rgl-dashboard-grid")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-grid"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-tile": {
+      name: "rgl-dashboard-tile",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card", "badge", "rgl-dashboard-types"],
+      files: [
+        {
+          path: "styles/radix-nova/ui/rgl-dashboard-tile.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/rgl-dashboard-tile")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
     },
     dialog: {
       name: "dialog",
@@ -14763,6 +15238,56 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "rgl-dashboard-grid": {
+      name: "rgl-dashboard-grid",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/radix-vega/ui/rgl-dashboard-grid.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/rgl-dashboard-grid")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-grid"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-tile": {
+      name: "rgl-dashboard-tile",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card", "badge", "rgl-dashboard-types"],
+      files: [
+        {
+          path: "styles/radix-vega/ui/rgl-dashboard-tile.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/rgl-dashboard-tile")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     dialog: {
       name: "dialog",
       title: "undefined",
@@ -16510,6 +17035,56 @@ export const Index: Record<string, Record<string, any>> = {
           api: "https://www.radix-ui.com/docs/primitives/components/context-menu.md",
         },
       },
+    },
+    "rgl-dashboard-grid": {
+      name: "rgl-dashboard-grid",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/radix-maia/ui/rgl-dashboard-grid.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/rgl-dashboard-grid")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-grid"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-tile": {
+      name: "rgl-dashboard-tile",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card", "badge", "rgl-dashboard-types"],
+      files: [
+        {
+          path: "styles/radix-maia/ui/rgl-dashboard-tile.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/rgl-dashboard-tile")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
     },
     dialog: {
       name: "dialog",
@@ -18259,6 +18834,56 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "rgl-dashboard-grid": {
+      name: "rgl-dashboard-grid",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/radix-lyra/ui/rgl-dashboard-grid.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/rgl-dashboard-grid")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-grid"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-tile": {
+      name: "rgl-dashboard-tile",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card", "badge", "rgl-dashboard-types"],
+      files: [
+        {
+          path: "styles/radix-lyra/ui/rgl-dashboard-tile.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/rgl-dashboard-tile")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     dialog: {
       name: "dialog",
       title: "undefined",
@@ -20007,6 +20632,56 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "rgl-dashboard-grid": {
+      name: "rgl-dashboard-grid",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/radix-mira/ui/rgl-dashboard-grid.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/rgl-dashboard-grid")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-grid"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-tile": {
+      name: "rgl-dashboard-tile",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card", "badge", "rgl-dashboard-types"],
+      files: [
+        {
+          path: "styles/radix-mira/ui/rgl-dashboard-tile.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/rgl-dashboard-tile")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     dialog: {
       name: "dialog",
       title: "undefined",
@@ -21754,6 +22429,56 @@ export const Index: Record<string, Record<string, any>> = {
           api: "https://www.radix-ui.com/docs/primitives/components/context-menu.md",
         },
       },
+    },
+    "rgl-dashboard-grid": {
+      name: "rgl-dashboard-grid",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/radix-luma/ui/rgl-dashboard-grid.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-luma/ui/rgl-dashboard-grid")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-grid"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-tile": {
+      name: "rgl-dashboard-tile",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card", "badge", "rgl-dashboard-types"],
+      files: [
+        {
+          path: "styles/radix-luma/ui/rgl-dashboard-tile.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-luma/ui/rgl-dashboard-tile")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
     },
     dialog: {
       name: "dialog",
@@ -25250,6 +25975,56 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "rgl-dashboard-grid": {
+      name: "rgl-dashboard-grid",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/base-vega/ui/rgl-dashboard-grid.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/rgl-dashboard-grid")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-grid"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-tile": {
+      name: "rgl-dashboard-tile",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card", "badge", "rgl-dashboard-types"],
+      files: [
+        {
+          path: "styles/base-vega/ui/rgl-dashboard-tile.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/rgl-dashboard-tile")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     dialog: {
       name: "dialog",
       title: "undefined",
@@ -26996,6 +27771,56 @@ export const Index: Record<string, Record<string, any>> = {
           api: "https://base-ui.com/react/components/context-menu.md",
         },
       },
+    },
+    "rgl-dashboard-grid": {
+      name: "rgl-dashboard-grid",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/base-maia/ui/rgl-dashboard-grid.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/rgl-dashboard-grid")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-grid"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-tile": {
+      name: "rgl-dashboard-tile",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card", "badge", "rgl-dashboard-types"],
+      files: [
+        {
+          path: "styles/base-maia/ui/rgl-dashboard-tile.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/rgl-dashboard-tile")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
     },
     dialog: {
       name: "dialog",
@@ -28744,6 +29569,56 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "rgl-dashboard-grid": {
+      name: "rgl-dashboard-grid",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/base-lyra/ui/rgl-dashboard-grid.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/rgl-dashboard-grid")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-grid"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-tile": {
+      name: "rgl-dashboard-tile",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card", "badge", "rgl-dashboard-types"],
+      files: [
+        {
+          path: "styles/base-lyra/ui/rgl-dashboard-tile.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/rgl-dashboard-tile")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     dialog: {
       name: "dialog",
       title: "undefined",
@@ -30491,6 +31366,56 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "rgl-dashboard-grid": {
+      name: "rgl-dashboard-grid",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/base-mira/ui/rgl-dashboard-grid.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/rgl-dashboard-grid")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-grid"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-tile": {
+      name: "rgl-dashboard-tile",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card", "badge", "rgl-dashboard-types"],
+      files: [
+        {
+          path: "styles/base-mira/ui/rgl-dashboard-tile.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/rgl-dashboard-tile")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     dialog: {
       name: "dialog",
       title: "undefined",
@@ -32237,6 +33162,56 @@ export const Index: Record<string, Record<string, any>> = {
           api: "https://base-ui.com/react/components/context-menu.md",
         },
       },
+    },
+    "rgl-dashboard-grid": {
+      name: "rgl-dashboard-grid",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/base-luma/ui/rgl-dashboard-grid.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-luma/ui/rgl-dashboard-grid")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-grid"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "rgl-dashboard-tile": {
+      name: "rgl-dashboard-tile",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card", "badge", "rgl-dashboard-types"],
+      files: [
+        {
+          path: "styles/base-luma/ui/rgl-dashboard-tile.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-luma/ui/rgl-dashboard-tile")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "rgl-dashboard-tile"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
     },
     dialog: {
       name: "dialog",

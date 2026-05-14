@@ -363,6 +363,29 @@
       "type": "registry:ui"
     },
     {
+      "name": "rgl-dashboard-grid",
+      "dependencies": ["react-grid-layout@1.5.3", "react-resizable"],
+      "files": [
+        {
+          "path": "registry/base-mira/ui/rgl-dashboard-grid.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "rgl-dashboard-tile",
+      "dependencies": ["recharts@3.8.0", "lucide-react"],
+      "registryDependencies": ["card", "badge", "rgl-dashboard-types"],
+      "files": [
+        {
+          "path": "registry/base-mira/ui/rgl-dashboard-tile.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "dialog",
       "registryDependencies": ["button"],
       "files": [
@@ -1937,6 +1960,17 @@
       "files": [
         {
           "path": "registry/base-mira/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "type": "registry:lib"
+    },
+    {
+      "name": "rgl-dashboard-types",
+      "dependencies": ["react-grid-layout@1.5.3"],
+      "files": [
+        {
+          "path": "registry/base-mira/lib/rgl-dashboard-types.ts",
           "type": "registry:lib"
         }
       ],

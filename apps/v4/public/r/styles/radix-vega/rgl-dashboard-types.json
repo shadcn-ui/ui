@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rgl-dashboard-types",
+  "dependencies": [
+    "react-grid-layout@1.5.3"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-vega/lib/rgl-dashboard-types.ts",
+      "content": "import type { Layout } from \"react-grid-layout\"\n\n/** Widget kinds — each tile renders from this + pre-written demo data */\nexport type WidgetType = \"intro\" | \"kpi\" | \"chart\" | \"bar\" | \"table\" | \"metric\"\n\nexport type DashboardRecord = {\n  id: string\n  name: string\n  layout: Layout[]\n  /** Maps tile id (`layout[].i`) → widget type */\n  widgets: Record<string, { type: WidgetType }>\n}\n\nexport type PersistedDashboards = {\n  dashboards: DashboardRecord[]\n  activeDashboardId: string\n}\n\nconst LEGACY_TILE_TYPES: Record<string, WidgetType> = {\n  \"tile-intro\": \"intro\",\n  \"tile-kpi\": \"kpi\",\n  \"tile-chart\": \"chart\",\n  \"tile-bar\": \"bar\",\n  \"tile-table\": \"table\",\n  \"tile-metric\": \"metric\",\n}\n\nexport function inferWidgetType(tileId: string): WidgetType {\n  return LEGACY_TILE_TYPES[tileId] ?? \"kpi\"\n}\n\nexport function createDefaultLayout(): Layout[] {\n  return [\n    { i: \"tile-intro\", x: 0, y: 0, w: 12, h: 2, minW: 4, minH: 2 },\n    { i: \"tile-kpi\", x: 0, y: 2, w: 3, h: 3, minW: 2, minH: 2 },\n    { i: \"tile-chart\", x: 3, y: 2, w: 6, h: 5, minW: 4, minH: 3 },\n    { i: \"tile-bar\", x: 9, y: 2, w: 3, h: 5, minW: 2, minH: 3 },\n    { i: \"tile-table\", x: 0, y: 7, w: 7, h: 5, minW: 4, minH: 3 },\n    {\n      i: \"tile-metric\",\n      x: 7,\n      y: 7,\n      w: 5,\n      h: 4,\n      minW: 2,\n      minH: 2,\n      static: true,\n    },\n  ]\n}\n\nexport function createDefaultWidgets(): Record<string, { type: WidgetType }> {\n  return {\n    \"tile-intro\": { type: \"intro\" },\n    \"tile-kpi\": { type: \"kpi\" },\n    \"tile-chart\": { type: \"chart\" },\n    \"tile-bar\": { type: \"bar\" },\n    \"tile-table\": { type: \"table\" },\n    \"tile-metric\": { type: \"metric\" },\n  }\n}\n\n/** New user-added tile: place below existing rows */\nexport function defaultLayoutItemForNewTile(\n  id: string,\n  layout: Layout[]\n): Layout {\n  const bottom = layout.reduce((max, l) => Math.max(max, l.y + l.h), 0)\n  return {\n    i: id,\n    x: 0,\n    y: bottom,\n    w: 4,\n    h: 3,\n    minW: 2,\n    minH: 2,\n  }\n}\n",
+      "type": "registry:lib"
+    }
+  ],
+  "type": "registry:lib"
+}

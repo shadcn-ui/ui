@@ -139,5 +139,10 @@
     "name": "sidebar-16",
     "description": "A sidebar with a sticky site header.",
     "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "rgl-dashboard",
+    "description": "RGL Dashboard — draggable, resizable tiles (react-grid-layout), CRUD, tile management, and Sonner toasts.",
+    "categories": ["dashboard"]
   }
 ]
