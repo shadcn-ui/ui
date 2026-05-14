@@ -118,7 +118,9 @@ function findMatchingTsPathPattern(
   importPath: string,
   paths: ConfigLoaderSuccessResult["paths"]
 ) {
-  for (const [key, targets] of Object.entries(paths)) {
+  const ordered = Object.entries(paths).sort((a, b) => b[0].length - a[0].length)
+
+  for (const [key, targets] of ordered) {
     const targetList = Array.isArray(targets) ? targets : [targets]
     const wildcardValue = getPatternWildcardValue(importPath, key)
 

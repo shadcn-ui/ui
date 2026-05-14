@@ -492,6 +492,24 @@ import { Button } from "@/registry/new-york-v4/ui/button"
   ).toContain(`import { cn } from "@workspace/ui/lib/utils"`)
 })
 
+test("bare @/lib imports keep full multi-segment scoped package in path", async () => {
+  expect(
+    await transform({
+      filename: "button.tsx",
+      raw: `import { cx } from "@/lib/primitive"
+`,
+      config: {
+        tsx: true,
+        aliases: {
+          components: "@packages/intent-ui/components",
+          ui: "@packages/intent-ui/components/ui",
+          utils: "@packages/intent-ui/lib/primitive",
+        },
+      },
+    })
+  ).toContain(`import { cx } from "@packages/intent-ui/lib/primitive"`)
+})
+
 test("transform async/dynamic imports", async () => {
   expect(
     await transform({
