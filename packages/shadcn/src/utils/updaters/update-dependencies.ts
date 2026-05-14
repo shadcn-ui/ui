@@ -1,3 +1,4 @@
+import path from "path"
 import { SHADCN_URL } from "@/src/registry/constants"
 import { RegistryItem } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
@@ -6,6 +7,7 @@ import { getPackageManager } from "@/src/utils/get-package-manager"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
+import fs from "fs-extra"
 import prompts from "prompts"
 
 export async function updateDependencies(
@@ -124,15 +126,30 @@ async function installWithPackageManager(
     return installWithExpo(dependencies, devDependencies, cwd)
   }
 
+  const workspaceRootFlag =
+    packageManager === "pnpm" && isPnpmWorkspaceRoot(cwd)
+      ? ["--workspace-root"]
+      : []
+
   if (dependencies?.length) {
-    await execa(packageManager, ["add", ...dependencies], {
-      cwd,
-    })
+    await execa(
+      packageManager,
+      ["add", ...workspaceRootFlag, ...dependencies],
+      { cwd }
+    )
   }
 
   if (devDependencies?.length) {
-    await execa(packageManager, ["add", "-D", ...devDependencies], { cwd })
+    await execa(
+      packageManager,
+      ["add", ...workspaceRootFlag, "-D", ...devDependencies],
+      { cwd }
+    )
   }
+}
+
+function isPnpmWorkspaceRoot(cwd: string) {
+  return fs.existsSync(path.resolve(cwd, "pnpm-workspace.yaml"))
 }
 
 async function installWithNpm(
