@@ -1099,7 +1099,7 @@
   },
   {
     "name": "@xcn",
-    "homepage": "https://ui.radiumcoders.com",
+    "homepage": "http://ui.radiumcoders.com",
     "url": "https://ui.radiumcoders.com/r/xcn/{name}.json",
     "description": "Hand-crafted, beautiful, and minimal UI components built with Tailwind CSS and Motion."
   },
