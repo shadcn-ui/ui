@@ -33,8 +33,8 @@ const frameworks = [
     label: "Nuxt.js",
   },
   {
-    value: "remix",
-    label: "Remix",
+    value: "react-router",
+    label: "React Router",
   },
   {
     value: "astro",
