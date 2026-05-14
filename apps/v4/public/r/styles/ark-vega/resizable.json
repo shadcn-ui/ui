@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "resizable",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/ark-vega/ui/resizable.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Splitter } from \"@ark-ui/react/splitter\"\n\nimport { cn } from \"@/registry/ark-vega/lib/utils\"\n\n// --- Root ---\n\nconst SplitterRoot = React.forwardRef<\n  React.ComponentRef<typeof Splitter.Root>,\n  React.ComponentProps<typeof Splitter.Root>\n>(({ className, ...props }, ref) => (\n  <Splitter.Root\n    ref={ref}\n    data-slot=\"splitter\"\n    className={cn(\n      \"flex h-full w-full data-[orientation=vertical]:flex-col\",\n      className\n    )}\n    {...props}\n  />\n))\nSplitterRoot.displayName = \"SplitterRoot\"\n\n// --- Panel ---\n\nconst SplitterPanel = React.forwardRef<\n  React.ComponentRef<typeof Splitter.Panel>,\n  React.ComponentProps<typeof Splitter.Panel>\n>(({ className, ...props }, ref) => (\n  <Splitter.Panel\n    ref={ref}\n    data-slot=\"splitter-panel\"\n    className={cn(\"overflow-hidden\", className)}\n    {...props}\n  />\n))\nSplitterPanel.displayName = \"SplitterPanel\"\n\n// --- ResizeTrigger ---\n\nconst SplitterResizeTrigger = React.forwardRef<\n  React.ComponentRef<typeof Splitter.ResizeTrigger>,\n  React.ComponentProps<typeof Splitter.ResizeTrigger> & {\n    withHandle?: boolean\n  }\n>(({ withHandle, className, ...props }, ref) => (\n  <Splitter.ResizeTrigger\n    ref={ref}\n    data-slot=\"splitter-resize-trigger\"\n    className={cn(\n      \"relative grid place-items-center bg-transparent outline-none\",\n      \"before:absolute before:bg-border\",\n      \"data-[orientation=vertical]:-my-1 data-[orientation=vertical]:min-h-2 data-[orientation=vertical]:cursor-row-resize\",\n      \"data-[orientation=vertical]:before:inset-x-0 data-[orientation=vertical]:before:top-auto data-[orientation=vertical]:before:bottom-1 data-[orientation=vertical]:before:h-px\",\n      \"data-[orientation=horizontal]:-mx-1 data-[orientation=horizontal]:min-w-2 data-[orientation=horizontal]:cursor-col-resize\",\n      \"data-[orientation=horizontal]:before:inset-y-0 data-[orientation=horizontal]:before:right-1 data-[orientation=horizontal]:before:left-auto data-[orientation=horizontal]:before:w-px\",\n      \"focus-visible:ring-1 focus-visible:ring-ring\",\n      className\n    )}\n    {...props}\n  >\n    {withHandle && (\n      <div\n        className={cn(\n          \"relative z-10 h-6 w-1 rounded-full border bg-background shadow-xs\",\n          \"[[data-orientation=horizontal]>&]:h-6 [[data-orientation=horizontal]>&]:w-full\",\n          \"[[data-orientation=vertical]>&]:h-full [[data-orientation=vertical]>&]:w-6\"\n        )}\n      />\n    )}\n  </Splitter.ResizeTrigger>\n))\nSplitterResizeTrigger.displayName = \"SplitterResizeTrigger\"\n\nexport { SplitterRoot, SplitterPanel, SplitterResizeTrigger }\n\nexport { useSplitter, useSplitterContext } from \"@ark-ui/react/splitter\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

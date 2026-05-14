@@ -428,6 +428,18 @@
     }
   },
   {
+    "name": "date-picker",
+    "type": "registry:ui",
+    "dependencies": ["@ark-ui/react", "@internationalized/date"],
+    "registryDependencies": ["button"],
+    "files": [
+      {
+        "path": "ui/date-picker.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "dialog",
     "type": "registry:ui",
     "registryDependencies": ["button"],

@@ -1,0 +1,133 @@
+---
+title: Pagination
+description: Pagination with page navigation, next and previous links.
+base: ark
+component: true
+---
+
+<ComponentPreview styleName="ark-nova" name="pagination-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add pagination
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="pagination"
+  title="components/ui/pagination.tsx"
+  styleName="ark-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Pagination,
+  PaginationContext,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
+```
+
+```tsx showLineNumbers
+<Pagination count={100} pageSize={10} siblingCount={1}>
+  <PaginationPrevious />
+  <PaginationContext>
+    {(api) =>
+      api.pages.map((page, index) =>
+        page.type === "page" ? (
+          <PaginationItem key={index} {...page}>
+            {page.value}
+          </PaginationItem>
+        ) : (
+          <PaginationEllipsis key={index} index={index}>
+            &#8230;
+          </PaginationEllipsis>
+        )
+      )
+    }
+  </PaginationContext>
+  <PaginationNext />
+</Pagination>
+```
+
+## Examples
+
+### Simple
+
+A simple pagination with only page numbers.
+
+<ComponentPreview styleName="ark-nova" name="pagination-simple" />
+
+### Icons Only
+
+Use just the previous and next buttons without page numbers. This is useful for data tables with a rows per page selector.
+
+<ComponentPreview styleName="ark-nova" name="pagination-icons-only" />
+
+## RTL
+
+To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="pagination-rtl"
+  direction="rtl"
+/>
+
+## Changelog
+
+### RTL Support
+
+If you're upgrading from a previous version of the `Pagination` component, you'll need to apply the following updates to add the `text` prop:
+
+<Steps>
+
+<Step>Update `PaginationPrevious`.</Step>
+
+```diff
+  function PaginationPrevious({
+    className,
++   text = "Previous",
+    ...props
+  })
+```
+
+<Step>Update `PaginationNext`.</Step>
+
+```diff
+  function PaginationNext({
+    className,
++   text = "Next",
+    ...props
+  })
+```
+
+</Steps>
