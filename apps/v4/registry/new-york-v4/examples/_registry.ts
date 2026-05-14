@@ -1314,6 +1314,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "inline-edit-demo",
+    type: "registry:example",
+    registryDependencies: ["inline-edit", "textarea"],
+    files: [
+      {
+        path: "examples/inline-edit-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "input-demo",
     type: "registry:example",
     registryDependencies: ["input"],
