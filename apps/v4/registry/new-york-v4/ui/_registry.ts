@@ -702,4 +702,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       },
     ],
   },
+  {
+    name: "wireframe",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/wireframe.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]
