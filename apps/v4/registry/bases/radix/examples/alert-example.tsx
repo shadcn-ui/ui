@@ -244,7 +244,7 @@ function AlertExample4() {
             handles extended text content.
           </AlertDescription>
           <AlertAction>
-            <Button size="xs">Undo</Button>
+            <Button variant="outline" size="xs">Undo</Button>
           </AlertAction>
         </Alert>
       </div>
