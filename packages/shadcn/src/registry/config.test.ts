@@ -61,6 +61,22 @@ describe("configWithDefaults", () => {
     expect(result.style).toBe(FALLBACK_STYLE)
   })
 
+  it("should use FALLBACK_STYLE when style is default and tailwind.config is empty", () => {
+    const config = createConfig({
+      style: "default",
+      tailwind: {
+        config: "",
+        css: "app/globals.css",
+        baseColor: "slate",
+        cssVariables: true,
+      },
+    })
+
+    const result = configWithDefaults(config)
+
+    expect(result.style).toBe(FALLBACK_STYLE)
+  })
+
   it("should keep new-york style when tailwind.config is not empty", () => {
     const config = createConfig({
       style: "new-york",
@@ -77,11 +93,11 @@ describe("configWithDefaults", () => {
     expect(result.style).toBe("new-york")
   })
 
-  it("should preserve non-new-york styles regardless of tailwind config", () => {
+  it("should preserve legacy default style when tailwind.config is not empty", () => {
     const config1 = createConfig({
       style: "default",
       tailwind: {
-        config: "",
+        config: "tailwind.config.js",
         css: "app/globals.css",
         baseColor: "slate",
         cssVariables: true,
@@ -90,7 +106,9 @@ describe("configWithDefaults", () => {
 
     const result1 = configWithDefaults(config1)
     expect(result1.style).toBe("default")
+  })
 
+  it("should preserve custom styles regardless of tailwind config", () => {
     const config2 = createConfig({
       style: "miami",
       tailwind: {
