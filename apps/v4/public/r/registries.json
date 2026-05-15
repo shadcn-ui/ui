@@ -84,6 +84,12 @@
     "description": "I create digital experiences that connect and inspire. I build apps, websites, brands, and products end-to-end."
   },
   {
+    "name": "@amplo",
+    "homepage": "https://amplo.ale.design",
+    "url": "https://amplo.ale.design/r/{name}.json",
+    "description": "OKLCH-native, Display-P3-aware composable fill picker with WCAG/APCA contrast metrics, gamut detection, and full keyboard accessibility."
+  },
+  {
     "name": "@animate-ui",
     "homepage": "https://animate-ui.com",
     "url": "https://animate-ui.com/r/{name}.json",
@@ -283,7 +289,7 @@
   },
   {
     "name": "@glasscn",
-    "homepage": "https://glasscn.vercel.app/",
+    "homepage": "https://glasscn-components.vercel.app/",
     "url": "https://glasscn-components.vercel.app/r/{name}.json",
     "description": "A shadcn-compatible registry of glassmorphism components inspired by Apple"
   },
@@ -441,7 +447,7 @@
     "name": "@ncdai",
     "homepage": "https://chanhdai.com/components",
     "url": "https://chanhdai.com/r/{name}.json",
-    "description": "A collection of reusable components."
+    "description": "Pixel-perfect, uniquely crafted."
   },
   {
     "name": "@nteract",
@@ -502,6 +508,12 @@
     "homepage": "https://gsap.pacekit.dev",
     "url": "https://gsap.pacekit.dev/r/{name}.json",
     "description": "Animated GSAP components crafted for smooth interaction and rich detail."
+  },
+  {
+    "name": "@paddle",
+    "homepage": "https://developer.paddle.com/",
+    "url": "https://developer.paddle.com/r/{name}.json",
+    "description": "Drop-in components for building checkouts, pricing pages, and subscription management screens using Paddle Billing."
   },
   {
     "name": "@pastecn",
@@ -1120,5 +1132,23 @@
     "homepage": "https://francozeta-stepper.vercel.app",
     "url": "https://francozeta-stepper.vercel.app/{name}.json",
     "description": "A modern, accessible and composable Stepper component for React and Tailwind CSS. Built for shadcn/ui-style workflows with registry-first distribution."
+  },
+  {
+    "name": "@text-ui",
+    "homepage": "https://joelachance.github.io/text-ui/docs",
+    "url": "https://joelachance.github.io/text-ui/r/{name}.json",
+    "description": "A shadcn/ui registry with EchoText (`echo-text`): layered stroke text that follows the pointer—minimal setup, drop-in component."
+  },
+  {
+    "name": "@framecn",
+    "homepage": "https://framecn.vercel.app",
+    "url": "https://framecn.vercel.app/r/{name}.json",
+    "description": "Beautiful videos, made simple. Ready to use, customizable video components for React."
+  },
+  {
+    "name": "@turbopills-ui",
+    "homepage": "https://www.turbopills.com/ui/docs",
+    "url": "https://ui.turbopills.com/r/{name}.json",
+    "description": "Beautiful, accessible, and customizable React components for your telehealth applications."
   }
 ]

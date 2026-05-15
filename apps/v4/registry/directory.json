@@ -98,6 +98,13 @@
     "logo": "<svg width='251' height='251' viewBox='0 0 251 251' xmlns='http://www.w3.org/2000/svg'><path d='M251 133.637C251 104.974 227.775 81.7511 199.109 81.7511H192.561L174.235 33.4682C166.603 13.3308 147.312 0.0235526 125.783 0H125.712C104.206 0 84.9386 13.2601 77.2362 33.3505L58.7221 81.7511H51.8912C23.225 81.7511 0 104.974 0 133.637C0 151.396 8.92727 167.059 22.5184 176.409L20.9402 180.554C10.6939 207.31 24.0966 237.316 50.8784 247.561C77.6366 257.783 107.645 244.405 117.892 217.626L125.547 197.63L133.085 217.508C140.952 238.235 160.667 251 181.608 251C187.732 251 193.95 249.917 200.004 247.608C226.786 237.434 240.283 207.475 230.107 180.672L228.482 176.409C242.073 167.059 251 151.396 251 133.637Z' fill='currentColor'/></svg>"
   },
   {
+    "name": "@amplo",
+    "homepage": "https://amplo.ale.design",
+    "url": "https://amplo.ale.design/r/{name}.json",
+    "description": "OKLCH-native, Display-P3-aware composable fill picker with WCAG/APCA contrast metrics, gamut detection, and full keyboard accessibility.",
+    "logo": "<svg width='895' height='895' viewBox='0 0 895 895' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='895' height='895' fill='black'/><path d='M380.79 189.029C421.229 162.325 473.701 162.325 514.14 189.029C531.143 200.258 545.035 215.598 554.528 233.628L781.952 665.571C791.275 683.278 790.861 704.531 780.855 721.861C770.445 739.892 751.206 751 730.385 751H662.099C656.813 751 651.551 750.307 646.445 748.939C629.806 744.481 615.857 733.139 608.099 717.759L470.471 444.948C461.059 425.882 433.871 425.882 424.459 444.948L286.831 717.759C279.072 733.139 265.124 744.481 248.485 748.939C243.379 750.307 238.116 751 232.83 751H164.545C143.724 751 124.485 739.892 114.075 721.861C104.069 704.531 103.654 683.278 112.978 665.571L340.401 233.628C349.894 215.598 363.786 200.258 380.79 189.029Z' fill='var(--foreground)' fill-opacity='0.4'/><path d='M407.522 193.008C432.972 181.802 461.958 181.802 487.407 193.008C506.787 201.541 522.924 216.055 533.456 234.426L780.597 665.528C790.709 683.166 790.676 704.852 780.51 722.459C770.313 740.12 751.469 751 731.076 751H692.359C687.18 751 682.024 750.321 677.021 748.98C660.322 744.506 646.41 732.963 638.931 717.377L505.376 439.081C502.394 432.869 498.773 426.985 494.57 421.524C470.776 390.606 424.153 390.606 400.359 421.524C396.157 426.985 392.535 432.869 389.554 439.082L255.999 717.378C248.519 732.963 234.607 744.506 217.909 748.98C212.906 750.321 207.749 751 202.57 751H163.854C143.461 751 124.617 740.12 114.42 722.459C104.254 704.852 104.221 683.166 114.333 665.528L361.474 234.426C372.005 216.055 388.143 201.541 407.522 193.008Z' fill='var(--foreground)' stroke='black' stroke-opacity='0.2' stroke-width='1.6795'/></svg>"
+  },
+  {
     "name": "@animate-ui",
     "homepage": "https://animate-ui.com",
     "url": "https://animate-ui.com/r/{name}.json",
@@ -331,7 +338,7 @@
   },
   {
     "name": "@glasscn",
-    "homepage": "https://glasscn.vercel.app/",
+    "homepage": "https://glasscn-components.vercel.app/",
     "url": "https://glasscn-components.vercel.app/r/{name}.json",
     "description": "A shadcn-compatible registry of glassmorphism components inspired by Apple",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' fill='none'><rect x='0.5' y='0.5' width='51' height='51' rx='13.5' fill='var(--background)' fill-opacity='.08' stroke='var(--foreground)' stroke-opacity='.2'/><rect x='14.5' y='14.5' width='51' height='51' rx='13.5' fill='var(--background)' fill-opacity='.12' stroke='var(--foreground)' stroke-opacity='.3'/><rect x='28.5' y='28.5' width='51' height='51' rx='13.5' fill='var(--background)' fill-opacity='.18' stroke='var(--foreground)' stroke-opacity='.45'/><line x1='34' y1='36' x2='34' y2='56' stroke='var(--foreground)' stroke-opacity='.35' stroke-width='1.5' stroke-linecap='round'/></svg>"
@@ -515,7 +522,7 @@
     "name": "@ncdai",
     "homepage": "https://chanhdai.com/components",
     "url": "https://chanhdai.com/r/{name}.json",
-    "description": "A collection of reusable components.",
+    "description": "Pixel-perfect, uniquely crafted.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 640 640'><path fill='var(--foreground)' d='M0 0h640v640H0z'/><path fill='var(--background)' d='M256 448H128v-64h128v64ZM512 256H384v128h128v64H320V192h192v64ZM128 384H64V256h64v128ZM576 384h-64V256h64v128ZM256 256H128v-64h128v64Z'/></svg>"
   },
   {
@@ -587,6 +594,13 @@
     "url": "https://gsap.pacekit.dev/r/{name}.json",
     "description": "Animated GSAP components crafted for smooth interaction and rich detail.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' fill='none' viewBox='0 0 512 512'><g clip-path='url(#clip0_832_289)'><path fill='var(--foregorund)' d='M256 0C51.2 0 0 51.2 0 256s51.2 256 256 256 256-51.2 256-256S460.8 0 256 0'/><path stroke='var(--background)' stroke-width='24' d='M381.631 89.102 156.848 226.934c-1.77 1.101-3.439 2.653-4.844 4.505s-2.5 3.94-3.177 6.062c-.673 2.062-.875 4.084-.584 5.83.288 1.658 1.077 2.946 2.257 3.686l98.286 32.478-122.2 137.576a7.9 7.9 0 0 0-1.306 2.72c-.234.895-.22 1.742.04 2.404q.369 1.032 1.341 1.214c.64.125 1.387-.039 2.127-.468l224.795-137.85c1.77-1.102 3.438-2.654 4.844-4.506 1.405-1.852 2.5-3.94 3.177-6.061.666-2.057.864-4.072.571-5.813-.282-1.663-1.066-2.957-2.245-3.704l-87.131-44.529L383.845 94.953a7.9 7.9 0 0 0 1.306-2.72c.233-.895.219-1.741-.04-2.404-.257-.632-.727-1.058-1.341-1.214-.641-.125-1.4.058-2.139.487Z'/></g></svg>"
+  },
+  {
+    "name": "@paddle",
+    "homepage": "https://developer.paddle.com/",
+    "url": "https://developer.paddle.com/r/{name}.json",
+    "description": "Drop-in components for building checkouts, pricing pages, and subscription management screens using Paddle Billing.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><path fill='var(--foreground)' d='M28 0H4C1.79086 0 0 1.79086 0 4V28C0 30.2091 1.79086 32 4 32H28C30.2091 32 32 30.2091 32 28V4C32 1.79086 30.2091 0 28 0Z'/><path fill='var(--background)' d='M26 15.0174V16.9696C24.8052 16.9699 23.6222 17.2038 22.5186 17.6579C21.415 18.1119 20.4124 18.7773 19.5682 19.616C18.7239 20.4546 18.0546 21.4501 17.5985 22.5455C17.1423 23.641 16.9082 24.8148 16.9097 26H15.0903C15.0897 23.6086 14.1318 21.3154 12.4272 19.6244C10.7225 17.9334 8.41072 16.9832 6 16.9826V15.0304C7.19478 15.0301 8.37779 14.7962 9.48141 14.3421C10.585 13.8881 11.5876 13.2227 12.4318 12.384C13.2761 11.5453 13.9454 10.5499 14.4015 9.45445C14.8577 8.35904 15.0917 7.18519 15.0903 6H16.9097C16.9103 8.39137 17.8682 10.6846 19.5728 12.3756C21.2775 14.0666 23.5893 15.0168 26 15.0174Z'/></svg>"
   },
   {
     "name": "@pastecn",
@@ -1308,5 +1322,26 @@
     "url": "https://francozeta-stepper.vercel.app/{name}.json",
     "description": "A modern, accessible and composable Stepper component for React and Tailwind CSS. Built for shadcn/ui-style workflows with registry-first distribution.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='currentColor'><path d='M139 32a7 7 0 0 1 14 0v104.6c0 18.3-8.8 35.4-23.7 46L55.8 235H22l93.4-66.6A30.2 30.2 0 0 0 128 143.8V32h11Z'/><path d='M160 42c14.2-5.8 27.9 11.3 50 6.6-8.6 12.4-21.8 18-36.2 16.1-5.8-.8-10-2.5-13.8-4.2V42Z'/><path d='M163 82.8 210 99v105c0 18.2-14.8 33-33 33h-74.7l43.7-31.2c15.6-11.1 24.9-29.1 24.9-48.2V103.8L163 101V82.8Zm20 59.2a7 7 0 0 1 14 0v24h-14v-24Z'/><path d='M84 87.5 122 77v50H66V99.8l18-4.9v-7.4Zm-31 43.5h71v22H53a7 7 0 0 1-7-7v-8a7 7 0 0 1 7-7Zm-32 33h77v22H21a7 7 0 0 1-7-7v-8a7 7 0 0 1 7-7Zm-10 33h62v22H11a7 7 0 0 1-7-7v-8a7 7 0 0 1 7-7Z'/><circle cx='42' cy='116' r='13'/></svg>"
+  },
+  {
+    "name": "@text-ui",
+    "homepage": "https://joelachance.github.io/text-ui/docs",
+    "url": "https://joelachance.github.io/text-ui/r/{name}.json",
+    "description": "A shadcn/ui registry with EchoText (`echo-text`): layered stroke text that follows the pointer—minimal setup, drop-in component.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' fill='none'><rect width='120' height='120' rx='24' fill='var(--foreground, currentColor)' fill-opacity='0.08'/><g transform='translate(35.64 45.3)'><g transform='translate(24.36 14.7) scale(1 -1) translate(-24.36 -14.7)'><path fill='var(--foreground, currentColor)' d='M13.65 -0.67C17.43 -0.67 20.16 2.14 20.16 5.96L20.16 21.42C20.16 23.06 21.46 24.36 23.1 24.36C24.53 24.4 25.62 25.49 25.62 26.88C25.62 28.27 24.53 29.36 23.1 29.4L4.2 29.4C2.77 29.36 1.68 28.27 1.68 26.88C1.68 25.49 2.77 24.4 4.2 24.36C5.84 24.36 7.14 23.06 7.14 21.42L7.14 5.96C7.14 2.14 9.87 -0.67 13.65 -0.67ZM28.98 27.55L28.98 7.98C28.98 3.19 32.17 0 36.96 0L44.94 0L44.94 0.04C46.16 0.25 47.04 1.3 47.04 2.52C47.04 3.74 46.16 4.79 44.94 5L44.94 5.04C43.3 5.04 42 6.34 42 7.98L42 16.38C42 18.02 43.3 19.32 44.94 19.32C46.37 19.36 47.46 20.45 47.46 21.84C47.46 23.23 46.37 24.36 44.94 24.36L37.38 24.36C35.2 24.36 34.02 25.49 34.02 27.55C34.02 28.98 32.84 30.07 31.5 30.07C30.11 30.07 28.98 28.98 28.98 27.55Z'/></g></g></svg>"
+  },
+  {
+    "name": "@framecn",
+    "homepage": "https://framecn.vercel.app",
+    "url": "https://framecn.vercel.app/r/{name}.json",
+    "description": "Beautiful videos, made simple. Ready to use, customizable video components for React.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4'/><g stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'><path d='M6.72 4.36v2.36M27.96 25.6H25.6m-4.13 0H13.8c-3.337 0-5.007 0-6.043-1.037S6.72 21.857 6.72 18.52v-7.67M25.6 27.96v-11.8c0-4.45 0-6.675-1.383-8.057S20.61 6.72 16.16 6.72H4.36' stroke-width='1.77'/><path d='m21.824 16.16-5.664 5.664M20.691 9.93 9.93 20.69' stroke-width='2.266'/></g></svg>"
+  },
+  {
+    "name": "@turbopills-ui",
+    "homepage": "https://www.turbopills.com/ui/docs",
+    "url": "https://ui.turbopills.com/r/{name}.json",
+    "description": "Beautiful, accessible, and customizable React components for your telehealth applications.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' version='1.0' width='597.000000pt' height='525.000000pt' viewBox='0 0 597.000000 525.000000' preserveAspectRatio='xMidYMid meet'><g transform='translate(0.000000,525.000000) scale(0.100000,-0.100000)' fill='var(--foreground, currentColor)' stroke='none'><path d='M1816 5223 l-1809 -3 6 -108 c24 -383 241 -748 579 -969 113 -74 205   -118 338 -162 178 -58 237 -64 678 -70 l404 -6 14 33 c56 136 213 367 364 538   283 320 747 605 1163 716 48 12 87 26 87 30 0 5 -3 7 -7 6 -5 -2 -822 -4   -1817 -5z'/><path d='M4630 5209 c-983 -101 -1863 -612 -2297 -1334 -249 -414 -394 -925   -462 -1625 -28 -287 -29 -310 -19 -304 4 3 8 12 8 20 0 19 87 192 163 324 413   718 1068 1274 1797 1522 228 78 466 118 703 118 506 0 811 110 1079 389 135   139 217 274 283 462 43 123 60 208 70 342 l7 97 -623 -1 c-343 -1 -662 -6   -709 -10z'/><path d='M3876 3584 c-339 -138 -733 -410 -1041 -719 -347 -347 -596 -694   -840 -1170 -188 -367 -356 -851 -435 -1250 -31 -157 -60 -344 -60 -389 l0 -39   183 7 c224 8 336 20 497 52 676 135 1179 580 1326 1174 19 74 56 257 83 405   94 515 222 1211 256 1390 50 268 97 545 93 555 -2 4 -29 -2 -62 -16z'/></g></svg>"
   }
 ]
