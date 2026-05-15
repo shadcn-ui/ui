@@ -8,7 +8,6 @@ import {
   AlertDescription,
   AlertTitle,
 } from "@/registry/bases/base/ui/alert"
-import { Badge } from "@/registry/bases/base/ui/badge"
 import { Button } from "@/registry/bases/base/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
@@ -218,7 +217,7 @@ function AlertExample4() {
             handles extended text content.
           </AlertDescription>
           <AlertAction>
-            <Badge variant="secondary">Badge</Badge>
+            <Button size="xs">Undo</Button>
           </AlertAction>
         </Alert>
       </div>
