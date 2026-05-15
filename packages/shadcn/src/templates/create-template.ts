@@ -104,6 +104,38 @@ function getInstallArgs(packageManager: string): string[] {
   }
 }
 
+async function getPnpmWorkspacePatterns(pnpmWorkspacePath: string) {
+  if (!fs.existsSync(pnpmWorkspacePath)) {
+    return []
+  }
+
+  const workspaceContent = await fs.readFile(pnpmWorkspacePath, "utf8")
+  const patterns: string[] = []
+  let readingPackages = false
+
+  for (const line of workspaceContent.split("\n")) {
+    if (/^packages:\s*$/.test(line)) {
+      readingPackages = true
+      continue
+    }
+
+    if (readingPackages && /^\S/.test(line)) {
+      readingPackages = false
+    }
+
+    if (!readingPackages) {
+      continue
+    }
+
+    const match = line.match(/^\s*-\s*["']?(.+?)["']?\s*$/)
+    if (match) {
+      patterns.push(match[1])
+    }
+  }
+
+  return patterns
+}
+
 // Adapt a pnpm-based monorepo template to the target package manager.
 async function adaptWorkspaceConfig(
   projectPath: string,
@@ -122,7 +154,9 @@ async function adaptWorkspaceConfig(
     await fs.remove(lockFilePath)
   }
 
-  const isMonorepo = fs.existsSync(pnpmWorkspacePath)
+  const hasPnpmWorkspaceConfig = fs.existsSync(pnpmWorkspacePath)
+  const workspacePatterns = await getPnpmWorkspacePatterns(pnpmWorkspacePath)
+  const isMonorepo = workspacePatterns.length > 0
 
   // Update root package.json: update "packageManager" field for the
   // target package manager, and add "workspaces" for npm/bun/yarn.
@@ -140,24 +174,17 @@ async function adaptWorkspaceConfig(
     }
 
     if (isMonorepo) {
-      // Read workspace patterns from pnpm-workspace.yaml.
-      const workspaceContent = await fs.readFile(pnpmWorkspacePath, "utf8")
-      const patterns: string[] = []
-      for (const line of workspaceContent.split("\n")) {
-        const match = line.match(/^\s*-\s*["']?(.+?)["']?\s*$/)
-        if (match) {
-          patterns.push(match[1])
-        }
-      }
-
-      packageJson.workspaces = patterns
-      await fs.remove(pnpmWorkspacePath)
+      packageJson.workspaces = workspacePatterns
     }
 
     await fs.writeFile(
       packageJsonPath,
       JSON.stringify(packageJson, null, 2) + "\n"
     )
+  }
+
+  if (hasPnpmWorkspaceConfig) {
+    await fs.remove(pnpmWorkspacePath)
   }
 
   // Rewrite workspace: protocol references in nested package.json files.
