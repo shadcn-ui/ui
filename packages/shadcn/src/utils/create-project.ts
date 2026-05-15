@@ -5,7 +5,7 @@ import { getPackageManager } from "@/src/utils/get-package-manager"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import fs from "fs-extra"
-import prompts from "prompts"
+import prompts from "@/src/utils/prompts"
 import { z } from "zod"
 
 export async function createProject(
