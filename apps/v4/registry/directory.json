@@ -1343,5 +1343,12 @@
     "url": "https://ui.turbopills.com/r/{name}.json",
     "description": "Beautiful, accessible, and customizable React components for your telehealth applications.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' version='1.0' width='597.000000pt' height='525.000000pt' viewBox='0 0 597.000000 525.000000' preserveAspectRatio='xMidYMid meet'><g transform='translate(0.000000,525.000000) scale(0.100000,-0.100000)' fill='var(--foreground, currentColor)' stroke='none'><path d='M1816 5223 l-1809 -3 6 -108 c24 -383 241 -748 579 -969 113 -74 205   -118 338 -162 178 -58 237 -64 678 -70 l404 -6 14 33 c56 136 213 367 364 538   283 320 747 605 1163 716 48 12 87 26 87 30 0 5 -3 7 -7 6 -5 -2 -822 -4   -1817 -5z'/><path d='M4630 5209 c-983 -101 -1863 -612 -2297 -1334 -249 -414 -394 -925   -462 -1625 -28 -287 -29 -310 -19 -304 4 3 8 12 8 20 0 19 87 192 163 324 413   718 1068 1274 1797 1522 228 78 466 118 703 118 506 0 811 110 1079 389 135   139 217 274 283 462 43 123 60 208 70 342 l7 97 -623 -1 c-343 -1 -662 -6   -709 -10z'/><path d='M3876 3584 c-339 -138 -733 -410 -1041 -719 -347 -347 -596 -694   -840 -1170 -188 -367 -356 -851 -435 -1250 -31 -157 -60 -344 -60 -389 l0 -39   183 7 c224 8 336 20 497 52 676 135 1179 580 1326 1174 19 74 56 257 83 405   94 515 222 1211 256 1390 50 268 97 545 93 555 -2 4 -29 -2 -62 -16z'/></g></svg>"
+  },
+    {
+    "name": "@lema-ds",
+    "homepage": "https://ds.lema.ufpb.br",
+    "url": "https://ds.lema.ufpb.br/r/{name}.json",
+    "description": "Enterprise-grade design system and component library for LEMA-UFPB",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='#f57c00'/><path fill='#d35400' d='M2 50 20 20l35 35-35 35z'/><path fill='none' stroke='#fff' stroke-width='8' d='M22 25h48v18M22 75h48V57M22 25l28 30-28 30' stroke-linejoin='miter'/></svg>"
   }
 ]
