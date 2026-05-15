@@ -1242,6 +1242,122 @@ export const examples: Registry["items"] = [
     dependencies: ["@tanstack/react-form", "zod"],
   },
   {
+    name: "form-formisch-demo",
+    type: "registry:example",
+    registryDependencies: ["field", "input", "input-group", "button", "card"],
+    files: [
+      {
+        path: "examples/form-formisch-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@formisch/react", "valibot"],
+  },
+  {
+    name: "form-formisch-input",
+    type: "registry:example",
+    registryDependencies: ["field", "input", "button", "card"],
+    files: [
+      {
+        path: "examples/form-formisch-input.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@formisch/react", "valibot"],
+  },
+  {
+    name: "form-formisch-textarea",
+    type: "registry:example",
+    registryDependencies: ["field", "textarea", "button", "card"],
+    files: [
+      {
+        path: "examples/form-formisch-textarea.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@formisch/react", "valibot"],
+  },
+  {
+    name: "form-formisch-select",
+    type: "registry:example",
+    registryDependencies: ["field", "select", "button", "card"],
+    files: [
+      {
+        path: "examples/form-formisch-select.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@formisch/react", "valibot"],
+  },
+  {
+    name: "form-formisch-checkbox",
+    type: "registry:example",
+    registryDependencies: ["field", "checkbox", "button", "card"],
+    files: [
+      {
+        path: "examples/form-formisch-checkbox.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@formisch/react", "valibot"],
+  },
+  {
+    name: "form-formisch-radiogroup",
+    type: "registry:example",
+    registryDependencies: ["field", "radio-group", "button", "card"],
+    files: [
+      {
+        path: "examples/form-formisch-radiogroup.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@formisch/react", "valibot"],
+  },
+  {
+    name: "form-formisch-switch",
+    type: "registry:example",
+    registryDependencies: ["field", "switch", "button", "card"],
+    files: [
+      {
+        path: "examples/form-formisch-switch.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@formisch/react", "valibot"],
+  },
+  {
+    name: "form-formisch-array",
+    type: "registry:example",
+    registryDependencies: ["field", "input", "input-group", "button", "card"],
+    files: [
+      {
+        path: "examples/form-formisch-array.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@formisch/react", "valibot"],
+  },
+  {
+    name: "form-formisch-complex",
+    type: "registry:example",
+    registryDependencies: [
+      "field",
+      "button",
+      "card",
+      "checkbox",
+      "radio-group",
+      "select",
+      "switch",
+    ],
+    files: [
+      {
+        path: "examples/form-formisch-complex.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@formisch/react", "valibot"],
+  },
+  {
     name: "drawer-dialog",
     type: "registry:example",
     registryDependencies: ["drawer", "dialog"],
