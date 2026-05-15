@@ -1150,5 +1150,11 @@
     "homepage": "https://www.turbopills.com/ui/docs",
     "url": "https://ui.turbopills.com/r/{name}.json",
     "description": "Beautiful, accessible, and customizable React components for your telehealth applications."
+  },
+  {
+    "name": "@slidecn",
+    "homepage": "https://slidecn.vercel.app",
+    "url": "https://slidecn.vercel.app/r/{name}.json",
+    "description": "Beautiful presentations, made simple. Ready to use, customizable presentation components for React.",
   }
 ]
