@@ -189,8 +189,8 @@ function AlertExample3() {
 function AlertExample4() {
   return (
     <Example title="With Actions">
-      <div className="mx-auto flex w-full max-w-lg flex-col gap-4">
-        <Alert>
+      <div className="mx-auto flex items-center w-full max-w-lg flex-col gap-4">
+        <Alert className="items-center [&>svg]:translate-y-0">
           <IconPlaceholder
             lucide="CircleAlertIcon"
             tabler="IconExclamationCircle"
@@ -199,25 +199,8 @@ function AlertExample4() {
             remixicon="RiErrorWarningLine"
           />
           <AlertTitle>The selected emails have been marked as spam.</AlertTitle>
-          <AlertAction>
-            <Button size="xs">Undo</Button>
-          </AlertAction>
-        </Alert>
-        <Alert>
-          <IconPlaceholder
-            lucide="CircleAlertIcon"
-            tabler="IconExclamationCircle"
-            hugeicons="AlertCircleIcon"
-            phosphor="WarningCircleIcon"
-            remixicon="RiErrorWarningLine"
-          />
-          <AlertTitle>The selected emails have been marked as spam.</AlertTitle>
-          <AlertDescription>
-            This is a very long alert title that demonstrates how the component
-            handles extended text content.
-          </AlertDescription>
-          <AlertAction>
-            <Button variant="outline" size="xs">Undo</Button>
+          <AlertAction className="top-1/2 -translate-y-1/2">
+            <Button variant="outline">Undo</Button>
           </AlertAction>
         </Alert>
       </div>
