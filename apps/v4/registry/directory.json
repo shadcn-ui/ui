@@ -1268,6 +1268,11 @@
     "logo": "<svg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='100' height='100' rx='14' fill='black'/><path d='M83.9141 45.7661C86.9141 47.4982 86.9141 51.829 83.9141 53.561L31.4141 83.8716C28.4141 85.6036 24.6641 83.4382 24.6641 79.9741L24.6641 19.353C24.6641 15.8889 28.4141 13.7235 31.4141 15.4556L83.9141 45.7661Z' fill='white' stroke='white'/><path d='M68.998 31.3979C68.998 50.3798 68.998 63.307 68.998 67.3979' stroke='black' stroke-width='10'/><path d='M53.0625 16.75C53.0625 48.2803 53.0625 69.7535 53.0625 76.5488' stroke='black' stroke-width='10'/><path d='M37.127 9.88379C37.127 51.1081 37.127 79.1833 37.127 88.0679' stroke='black' stroke-width='10'/><path d='M31.1318 15.8618L43.1074 22.7646' stroke='white' stroke-width='2'/><path d='M63.291 34.439L75.2617 41.3579' stroke='white' stroke-width='2'/><path d='M46.6641 74.4712L59.208 67.2573' stroke='white' stroke-width='2'/><path d='M76.0205 57.5371L82.9848 53.5226' stroke='white' stroke-width='2'/></svg>"
   },
   {
+    "name": "@nostalgia-ui",
+    "homepage": "https://nostalgia-ui.com",
+    "url": "https://nostalgia-ui.com/r/{name}.json",
+    "description": "Mac OS 9 styled components for React. 60 retro UI primitives with platinum bevels, system fonts, and pixel-perfect details. Pure CSS, zero images.",
+    "logo": "<svg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='4' width='28' height='22' rx='0' fill='var(--foreground)'/><rect x='8' y='6' width='24' height='18' rx='0' fill='var(--background)'/><rect x='15' y='27' width='10' height='3' rx='0' fill='var(--foreground)'/><rect x='11' y='30' width='18' height='2' rx='0' fill='var(--foreground)'/><rect x='12' y='8' width='16' height='2' rx='0' fill='var(--foreground)'/></svg>"
     "name": "@exabase",
     "homepage": "https://exawizards.com/exabase/design/",
     "url": "https://exawizards.com/exabase/design/registry/{name}.json",
