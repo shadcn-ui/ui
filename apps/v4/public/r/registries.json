@@ -792,6 +792,12 @@
     "description": "A collection of accessible components built for use with Shadcn."
   },
   {
+    "name": "@wensity",
+    "homepage": "https://wensity.com",
+    "url": "https://raw.githubusercontent.com/ksparth12/wensity-shadcn-registry/main/{name}.json",
+    "description": "Motion-rich React components for AI interfaces, SaaS blocks, and cinematic interactions. Free Wensity components only."
+  },
+  {
     "name": "@wigggle-ui",
     "homepage": "https://wigggle-ui.vercel.app",
     "url": "https://wigggle-ui.vercel.app/r/{name}.json",
