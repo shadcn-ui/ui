@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-upload-max-size",
+  "registryDependencies": [
+    "image-upload"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/image-upload-max-size.tsx",
+      "content": "import { ImageUpload } from \"@/registry/new-york-v4/ui/image-upload\"\n\nexport default function ImageUploadMaxSize() {\n  return <ImageUpload maxSize={1 * 1024 * 1024} />\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
