@@ -3,8 +3,8 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+import { registryCategories } from "@/lib/categories"
 import { ScrollArea, ScrollBar } from "@/registry/new-york-v4/ui/scroll-area"
-import { registryCategories } from "@/registry/registry-categories"
 
 export function BlocksNav() {
   const pathname = usePathname()
@@ -46,7 +46,7 @@ function BlocksNavLink({
     <Link
       href={`/blocks/${category.slug}`}
       key={category.slug}
-      className="text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 items-center justify-center px-4 text-center text-base font-medium transition-colors"
+      className="flex h-7 items-center justify-center px-4 text-center text-base font-medium text-muted-foreground transition-colors hover:text-primary data-[active=true]:text-primary"
       data-active={isActive}
     >
       {category.name}

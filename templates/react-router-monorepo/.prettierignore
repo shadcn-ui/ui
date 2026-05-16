@@ -1,0 +1,8 @@
+dist/
+build/
+node_modules/
+.turbo/
+.react-router/
+coverage/
+pnpm-lock.yaml
+.pnpm-store/

@@ -1,9 +1,9 @@
-import fs from "node:fs/promises"
-import path from "node:path"
 import * as React from "react"
 
+import { formatCode } from "@/lib/format-code"
 import { highlightCode } from "@/lib/highlight-code"
-import { getRegistryItem } from "@/lib/registry"
+import { readFileFromRoot } from "@/lib/read-file"
+import { getDemoItem, getRegistryItem } from "@/lib/registry"
 import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CopyButton } from "@/components/copy-button"
@@ -16,12 +16,16 @@ export async function ComponentSource({
   language,
   collapsible = true,
   className,
+  styleName = "new-york-v4",
+  maxLines,
 }: React.ComponentProps<"div"> & {
   name?: string
   src?: string
   title?: string
   language?: string
   collapsible?: boolean
+  styleName?: string
+  maxLines?: number
 }) {
   if (!name && !src) {
     return null
@@ -30,26 +34,27 @@ export async function ComponentSource({
   let code: string | undefined
 
   if (name) {
-    const item = await getRegistryItem(name)
+    const item =
+      (await getDemoItem(name, styleName)) ??
+      (await getRegistryItem(name, styleName))
     code = item?.files?.[0]?.content
   }
 
   if (src) {
-    const file = await fs.readFile(path.join(process.cwd(), src), "utf-8")
-    code = file
+    code = await readFileFromRoot(src)
   }
 
   if (!code) {
     return null
   }
 
-  // Fix imports.
-  // Replace @/registry/new-york-v4/ with @/components/.
-  code = code.replaceAll("@/registry/new-york-v4/", "@/components/")
-
-  // Replace export default with export.
-  code = code.replaceAll("export default", "export")
+  code = await formatCode(code, styleName)
   code = code.replaceAll("/* eslint-disable react/no-children-prop */\n", "")
+
+  // Truncate code if maxLines is set.
+  if (maxLines) {
+    code = code.split("\n").slice(0, maxLines).join("\n")
+  }
 
   const lang = language ?? title?.split(".").pop() ?? "tsx"
   const highlightedCode = await highlightCode(code, lang)
@@ -95,7 +100,7 @@ function ComponentCode({
       {title && (
         <figcaption
           data-rehype-pretty-code-title=""
-          className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
+          className="flex items-center gap-2 text-code-foreground [&_svg]:size-4 [&_svg]:text-code-foreground [&_svg]:opacity-70"
           data-language={language}
         >
           {getIconForLanguageExtension(language)}

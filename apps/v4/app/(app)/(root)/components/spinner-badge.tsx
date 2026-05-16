@@ -1,9 +1,9 @@
-import { Badge } from "@/registry/new-york-v4/ui/badge"
-import { Spinner } from "@/registry/new-york-v4/ui/spinner"
+import { Badge } from "@/styles/radix-nova/ui/badge"
+import { Spinner } from "@/styles/radix-nova/ui/spinner"
 
 export function SpinnerBadge() {
   return (
-    <div className="flex items-center gap-2 [--radius:1.2rem]">
+    <div className="flex items-center gap-2">
       <Badge>
         <Spinner />
         Syncing

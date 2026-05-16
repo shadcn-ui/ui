@@ -16,6 +16,12 @@ const eventSchema = z.object({
     "copy_chart_data",
     "copy_color",
     "set_layout",
+    "search_query",
+    "create_app",
+    "copy_create_share_url",
+    "copy_registry_add_command",
+    "copy_preset_command",
+    "copy_apply_command",
   ]),
   // declare type AllowedPropertyValues = string | number | boolean | null
   properties: z

@@ -24,7 +24,7 @@ export default function FieldInput() {
             <FieldDescription>
               Must be at least 8 characters long.
             </FieldDescription>
-            <Input id="password" type="password" placeholder="********" />
+            <Input id="password" type="password" placeholder="••••••••" />
           </Field>
         </FieldGroup>
       </FieldSet>

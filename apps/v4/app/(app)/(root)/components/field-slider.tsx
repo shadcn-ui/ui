@@ -6,8 +6,8 @@ import {
   Field,
   FieldDescription,
   FieldTitle,
-} from "@/registry/new-york-v4/ui/field"
-import { Slider } from "@/registry/new-york-v4/ui/slider"
+} from "@/styles/radix-nova/ui/field"
+import { Slider } from "@/styles/radix-nova/ui/slider"
 
 export function FieldSlider() {
   const [value, setValue] = useState([200, 800])

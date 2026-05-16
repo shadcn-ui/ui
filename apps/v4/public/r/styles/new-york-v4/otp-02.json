@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "otp-02",
-  "type": "registry:block",
   "description": "A two column OTP page with a cover image.",
   "registryDependencies": [
     "button",
@@ -25,5 +24,6 @@
   "categories": [
     "authentication",
     "otp"
-  ]
+  ],
+  "type": "registry:block"
 }

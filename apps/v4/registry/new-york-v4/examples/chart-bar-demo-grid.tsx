@@ -2,7 +2,10 @@
 
 import { Bar, BarChart, CartesianGrid } from "recharts"
 
-import { ChartConfig, ChartContainer } from "@/registry/new-york-v4/ui/chart"
+import {
+  ChartContainer,
+  type ChartConfig,
+} from "@/registry/new-york-v4/ui/chart"
 
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },

@@ -6,6 +6,7 @@ import { getRegistryHeadersFromContext } from "@/src/registry/context"
 import {
   RegistryFetchError,
   RegistryForbiddenError,
+  RegistryGoneError,
   RegistryLocalFileError,
   RegistryNotFoundError,
   RegistryParseError,
@@ -13,7 +14,7 @@ import {
 } from "@/src/registry/errors"
 import { registryItemSchema } from "@/src/schema"
 import { HttpsProxyAgent } from "https-proxy-agent"
-import fetch from "node-fetch"
+import fetch, { Headers } from "node-fetch"
 import { z } from "zod"
 
 const agent = process.env.https_proxy
@@ -49,12 +50,18 @@ export async function fetchRegistry(
         const fetchPromise = (async () => {
           // Get headers from context for this URL.
           const headers = getRegistryHeadersFromContext(url)
+          const requestHeaders = new Headers({
+            Accept: "application/vnd.shadcn.v1+json, application/json;q=0.9",
+            "User-Agent": "shadcn",
+          })
+
+          for (const [key, value] of Object.entries(headers)) {
+            requestHeaders.set(key, value)
+          }
 
           const response = await fetch(url, {
             agent,
-            headers: {
-              ...headers,
-            },
+            headers: requestHeaders,
           })
 
           if (!response.ok) {
@@ -91,6 +98,10 @@ export async function fetchRegistry(
 
             if (response.status === 404) {
               throw new RegistryNotFoundError(url, messageFromServer)
+            }
+
+            if (response.status === 410) {
+              throw new RegistryGoneError(url, messageFromServer)
             }
 
             if (response.status === 403) {

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "calendar-20",
-  "type": "registry:block",
   "description": "With time presets",
   "registryDependencies": [
     "calendar",
@@ -23,5 +22,6 @@
   "categories": [
     "calendar",
     "date"
-  ]
+  ],
+  "type": "registry:block"
 }

@@ -1,4 +1,8 @@
-import { fetchRegistry } from "@/src/registry/fetcher"
+import {
+  getPackageManager,
+  getPackageManagerFromUserAgent,
+  getPackageRunnerCommand,
+} from "@/src/utils/get-package-manager"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
@@ -13,15 +17,16 @@ import {
   type MockInstance,
 } from "vitest"
 
-import { TEMPLATES, createProject } from "./create-project"
+import { createProject } from "./create-project"
 
 // Mock dependencies
 vi.mock("fs-extra")
 vi.mock("execa")
 vi.mock("prompts")
-vi.mock("@/src/registry/fetcher")
 vi.mock("@/src/utils/get-package-manager", () => ({
   getPackageManager: vi.fn().mockResolvedValue("npm"),
+  getPackageManagerFromUserAgent: vi.fn(() => "npm"),
+  getPackageRunnerCommand: vi.fn(() => "npx"),
 }))
 vi.mock("@/src/utils/spinner")
 vi.mock("@/src/utils/logger", () => ({
@@ -37,6 +42,9 @@ describe("createProject", () => {
 
   beforeEach(() => {
     vi.clearAllMocks()
+    vi.mocked(getPackageManager).mockResolvedValue("npm")
+    vi.mocked(getPackageManagerFromUserAgent).mockReturnValue("npm")
+    vi.mocked(getPackageRunnerCommand).mockReturnValue("npx")
 
     // Reset all fs mocks
     vi.mocked(fs.access).mockResolvedValue(undefined)
@@ -46,7 +54,7 @@ describe("createProject", () => {
     vi.mocked(fs.move).mockResolvedValue(undefined)
     vi.mocked(fs.remove).mockResolvedValue(undefined)
 
-    // Mock execa to resolve immediately without actual execution
+    // Mock execa for git clone and package manager install.
     vi.mocked(execa).mockResolvedValue({
       stdout: "",
       stderr: "",
@@ -61,17 +69,8 @@ describe("createProject", () => {
       killed: false,
     } as any)
 
-    // Mock fetch for monorepo template
-    global.fetch = vi.fn().mockResolvedValue({
-      ok: true,
-      arrayBuffer: () => Promise.resolve(new ArrayBuffer(0)),
-    } as any)
-
     // Reset prompts mock
     vi.mocked(prompts).mockResolvedValue({ type: "next", name: "my-app" })
-
-    // Reset registry mock
-    vi.mocked(fetchRegistry).mockResolvedValue([])
 
     // Mock spinner function
     const mockSpinner = {
@@ -101,7 +100,6 @@ describe("createProject", () => {
   afterEach(() => {
     vi.resetAllMocks()
     mockExit?.mockRestore()
-    delete (global as any).fetch
   })
 
   it("should create a Next.js project with default options", async () => {
@@ -110,55 +108,42 @@ describe("createProject", () => {
     const result = await createProject({
       cwd: "/test",
       force: false,
-      srcDir: false,
     })
 
     expect(result).toEqual({
       projectPath: "/test/my-app",
       projectName: "my-app",
-      template: TEMPLATES.next,
+      template: "next",
     })
-
-    expect(execa).toHaveBeenCalledWith(
-      "npx",
-      expect.arrayContaining(["create-next-app@latest", "/test/my-app"]),
-      expect.any(Object)
-    )
   })
 
-  it("should create a monorepo project when selected", async () => {
+  it("should create a monorepo project with --monorepo flag", async () => {
     vi.mocked(prompts).mockResolvedValue({
-      type: "next-monorepo",
+      type: "next",
       name: "my-monorepo",
     })
 
     const result = await createProject({
       cwd: "/test",
       force: false,
-      srcDir: false,
+      monorepo: true,
     })
 
     expect(result).toEqual({
       projectPath: "/test/my-monorepo",
       projectName: "my-monorepo",
-      template: TEMPLATES["next-monorepo"],
+      template: "next",
     })
   })
 
-  it("should handle remote components and force next template", async () => {
-    vi.mocked(fetchRegistry).mockResolvedValue([
-      {
-        meta: { nextVersion: "13.0.0" },
-      },
-    ])
-
+  it("should force next template for remote components", async () => {
     const result = await createProject({
       cwd: "/test",
       force: true,
       components: ["/chat/b/some-component"],
     })
 
-    expect(result.template).toBe(TEMPLATES.next)
+    expect(result.template).toBe("next")
   })
 
   it("should throw error if project path already exists", async () => {

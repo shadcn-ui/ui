@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { SliderProps } from "@radix-ui/react-slider"
+import type { Slider as SliderPrimitive } from "radix-ui"
 
 import {
   HoverCard,
@@ -12,7 +12,9 @@ import { Label } from "@/registry/new-york-v4/ui/label"
 import { Slider } from "@/registry/new-york-v4/ui/slider"
 
 interface MaxLengthSelectorProps {
-  defaultValue: SliderProps["defaultValue"]
+  defaultValue: React.ComponentProps<
+    typeof SliderPrimitive.Root
+  >["defaultValue"]
 }
 
 export function MaxLengthSelector({ defaultValue }: MaxLengthSelectorProps) {
@@ -25,7 +27,7 @@ export function MaxLengthSelector({ defaultValue }: MaxLengthSelectorProps) {
           <div className="grid gap-4">
             <div className="flex items-center justify-between">
               <Label htmlFor="maxlength">Maximum Length</Label>
-              <span className="text-muted-foreground hover:border-border w-12 rounded-md border border-transparent px-2 py-0.5 text-right text-sm">
+              <span className="w-12 rounded-md border border-transparent px-2 py-0.5 text-right text-sm text-muted-foreground hover:border-border">
                 {value}
               </span>
             </div>

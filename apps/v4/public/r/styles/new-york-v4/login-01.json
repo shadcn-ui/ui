@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "login-01",
-  "type": "registry:block",
   "description": "A simple login form.",
   "registryDependencies": [
     "button",
@@ -26,5 +25,6 @@
   "categories": [
     "authentication",
     "login"
-  ]
+  ],
+  "type": "registry:block"
 }

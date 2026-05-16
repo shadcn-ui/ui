@@ -7,8 +7,14 @@ export const transformImport: Transformer = async ({
   config,
   isRemote,
 }) => {
-  const workspaceAlias = config.aliases?.utils?.split("/")[0]?.slice(1)
-  const utilsImport = `@${workspaceAlias}/lib/utils`
+  const utilsAlias = config.aliases?.utils
+  const workspaceAlias =
+    typeof utilsAlias === "string"
+      ? getWorkspaceAliasFromUtilsAlias(utilsAlias)
+      : "@"
+  const utilsImport = workspaceAlias
+    ? `${workspaceAlias}/lib/utils`
+    : "@/lib/utils"
 
   if (![".tsx", ".ts", ".jsx", ".js"].includes(sourceFile.getExtension())) {
     return sourceFile
@@ -31,7 +37,9 @@ export const transformImport: Transformer = async ({
         ?.getNamedImports()
         .some((namedImport) => namedImport.getName() === "cn")
 
-      if (!isCnImport) continue
+      if (!isCnImport || !config.aliases.utils) {
+        continue
+      }
 
       specifier.setLiteralValue(
         utilsImport === updated
@@ -49,6 +57,8 @@ function updateImportAliases(
   config: Config,
   isRemote: boolean = false
 ) {
+  moduleSpecifier = normalizeImportSpecifier(moduleSpecifier, config)
+
   // Not a local import.
   if (!moduleSpecifier.startsWith("@/") && !isRemote) {
     return moduleSpecifier
@@ -59,9 +69,41 @@ function updateImportAliases(
     moduleSpecifier = moduleSpecifier.replace(/^@\//, `@/registry/new-york/`)
   }
 
+  if (moduleSpecifier === "@/registry") {
+    return config.aliases.components
+  }
+
   // Not a registry import.
   if (!moduleSpecifier.startsWith("@/registry/")) {
-    // We fix the alias and return.
+    if (moduleSpecifier === "@/lib/utils" && config.aliases.utils) {
+      return config.aliases.utils
+    }
+
+    if (
+      config.aliases.ui &&
+      moduleSpecifier.match(/^@\/components\/ui(?=\/|$)/)
+    ) {
+      return moduleSpecifier.replace(/^@\/components\/ui/, config.aliases.ui)
+    }
+
+    if (
+      config.aliases.components &&
+      moduleSpecifier.match(/^@\/components(?=\/|$)/)
+    ) {
+      return moduleSpecifier.replace(
+        /^@\/components/,
+        config.aliases.components
+      )
+    }
+
+    if (config.aliases.hooks && moduleSpecifier.match(/^@\/hooks(?=\/|$)/)) {
+      return moduleSpecifier.replace(/^@\/hooks/, config.aliases.hooks)
+    }
+
+    if (config.aliases.lib && moduleSpecifier.match(/^@\/lib(?=\/|$)/)) {
+      return moduleSpecifier.replace(/^@\/lib/, config.aliases.lib)
+    }
+
     const alias = config.aliases.components.split("/")[0]
     return moduleSpecifier.replace(/^@\//, `${alias}/`)
   }
@@ -71,6 +113,13 @@ function updateImportAliases(
       /^@\/registry\/(.+)\/ui/,
       config.aliases.ui ?? `${config.aliases.components}/ui`
     )
+  }
+
+  if (
+    config.aliases.utils &&
+    moduleSpecifier.match(/^@\/registry\/(.+)\/lib\/utils$/)
+  ) {
+    return config.aliases.utils
   }
 
   if (
@@ -104,4 +153,72 @@ function updateImportAliases(
     /^@\/registry\/[^/]+/,
     config.aliases.components
   )
+}
+
+function getWorkspaceAliasFromUtilsAlias(utilsAlias: string) {
+  // `#...` utils aliases are handled by package-import normalization and should
+  // not be treated as workspace package roots.
+  if (utilsAlias.startsWith("#")) {
+    return ""
+  }
+
+  if (utilsAlias.endsWith("/lib/utils")) {
+    return utilsAlias.slice(0, -"/lib/utils".length)
+  }
+
+  if (utilsAlias.startsWith("@")) {
+    const [scope, name] = utilsAlias.split("/")
+    return scope && name ? `${scope}/${name}` : utilsAlias
+  }
+
+  const slashIndex = utilsAlias.indexOf("/")
+  return slashIndex === -1 ? utilsAlias : utilsAlias.slice(0, slashIndex)
+}
+
+function normalizeImportSpecifier(moduleSpecifier: string, config: Config) {
+  if (moduleSpecifier === "#registry") {
+    return "@/registry"
+  }
+
+  if (moduleSpecifier.startsWith("#/")) {
+    return moduleSpecifier.replace(/^#\//, "@/")
+  }
+
+  if (moduleSpecifier.startsWith("#registry/")) {
+    return moduleSpecifier.replace(/^#registry\//, "@/registry/")
+  }
+
+  // We only normalize the standard shadcn alias slots here so the rest of the
+  // transformer can keep operating on the canonical `@/...` forms it already
+  // understands.
+  for (const { alias, normalized } of getConfigAliasNormalizations(config)) {
+    if (moduleSpecifier === alias) {
+      return normalized
+    }
+
+    if (moduleSpecifier.startsWith(`${alias}/`)) {
+      return `${normalized}${moduleSpecifier.slice(alias.length)}`
+    }
+  }
+
+  return moduleSpecifier
+}
+
+function getConfigAliasNormalizations(config: Config) {
+  if (!config.aliases) {
+    return []
+  }
+
+  return [
+    { alias: config.aliases.ui, normalized: "@/components/ui" },
+    { alias: config.aliases.components, normalized: "@/components" },
+    { alias: config.aliases.hooks, normalized: "@/hooks" },
+    { alias: config.aliases.lib, normalized: "@/lib" },
+    { alias: config.aliases.utils, normalized: "@/lib/utils" },
+  ]
+    .filter(
+      (entry): entry is { alias: string; normalized: string } =>
+        typeof entry.alias === "string" && entry.alias.startsWith("#")
+    )
+    .sort((a, b) => b.alias.length - a.alias.length)
 }
