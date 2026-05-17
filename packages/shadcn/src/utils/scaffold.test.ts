@@ -311,6 +311,43 @@ describe("defaultScaffold", () => {
     expect(written.packageManager).toBe("bun@1.2.0")
   })
 
+  it("should remove pnpm-only workspace config for non-pnpm templates", async () => {
+    vi.mocked(fs.existsSync).mockImplementation((p: any) => {
+      const s = p.toString()
+      return s.includes("pnpm-workspace.yaml") || s.includes("package.json")
+    })
+
+    vi.mocked(fs.readFile).mockImplementation(((filePath: string) => {
+      if (filePath.includes("pnpm-workspace.yaml")) {
+        return Promise.resolve("allowBuilds:\n  esbuild: true\n")
+      }
+      return Promise.resolve(
+        JSON.stringify({ name: "my-app", packageManager: "pnpm@9.0.0" })
+      )
+    }) as any)
+
+    const template = createTestTemplate()
+
+    await template.scaffold({
+      projectPath: "/test/my-app",
+      packageManager: "bun",
+      cwd: "/test",
+    })
+
+    expect(vi.mocked(fs.remove)).toHaveBeenCalledWith(
+      path.join("/test/my-app", "pnpm-workspace.yaml")
+    )
+
+    const writeCalls = vi.mocked(fs.writeFile).mock.calls
+    const adaptCall = writeCalls.find(
+      (call) => call[0] === path.join("/test/my-app", "package.json")
+    )
+    expect(adaptCall).toBeDefined()
+    const written = JSON.parse(adaptCall![1] as string)
+    expect(written.packageManager).toBeUndefined()
+    expect(written.workspaces).toBeUndefined()
+  })
+
   it("should rewrite workspace: protocol refs to * for npm monorepo", async () => {
     vi.mocked(fs.existsSync).mockImplementation((p: any) => {
       const s = p.toString()
