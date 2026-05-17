@@ -135,7 +135,12 @@ function transformStringLiteralNode(node: {
   replaceWithText(text: string): void
 }) {
   const text = stripQuotes(node.getText() ?? "")
-  node.replaceWithText(`"${applyRtlMapping(text)}"`)
+  const transformed = applyRtlMapping(text)
+  // Escape any unescaped double quotes before wrapping in double quotes.
+  // This prevents corrupted className strings when RTL is enabled and
+  // the original string contains inner double quotes (e.g., data-[foo="bar"]).
+  const escaped = transformed.replace(/(?<!\\)"/g, '\\"')
+  node.replaceWithText(`"${escaped}"`)
 }
 
 export function applyRtlMapping(input: string) {
