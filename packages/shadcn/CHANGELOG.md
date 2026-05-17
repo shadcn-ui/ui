@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 4.7.1
+
+### Patch Changes
+
+- [#10567](https://github.com/shadcn-ui/ui/pull/10567) [`1c4a53a37adeba36dbd5c07980c5bb6d295cea9e`](https://github.com/shadcn-ui/ui/commit/1c4a53a37adeba36dbd5c07980c5bb6d295cea9e) Thanks [@shadcn](https://github.com/shadcn)! - fix failing version derivation test
+
 ## 4.7.0
 
 ### Minor Changes
