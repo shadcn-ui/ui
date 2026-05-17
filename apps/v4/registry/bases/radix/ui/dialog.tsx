@@ -48,9 +48,11 @@ function DialogContent({
   className,
   children,
   showCloseButton = true,
+  closeLabel = "Close",
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean
+  closeLabel?: React.ReactNode
 }) {
   return (
     <DialogPortal>
@@ -74,7 +76,7 @@ function DialogContent({
                 phosphor="XIcon"
                 remixicon="RiCloseLine"
               />
-              <span className="sr-only">Close</span>
+              <span className="sr-only">{closeLabel}</span>
             </Button>
           </DialogPrimitive.Close>
         )}
@@ -96,10 +98,12 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
 function DialogFooter({
   className,
   showCloseButton = false,
+  closeLabel = "Close",
   children,
   ...props
 }: React.ComponentProps<"div"> & {
   showCloseButton?: boolean
+  closeLabel?: React.ReactNode
 }) {
   return (
     <div
@@ -113,7 +117,7 @@ function DialogFooter({
       {children}
       {showCloseButton && (
         <DialogPrimitive.Close asChild>
-          <Button variant="outline">Close</Button>
+          <Button variant="outline">{closeLabel}</Button>
         </DialogPrimitive.Close>
       )}
     </div>
