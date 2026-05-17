@@ -1150,5 +1150,11 @@
     "homepage": "https://www.turbopills.com/ui/docs",
     "url": "https://ui.turbopills.com/r/{name}.json",
     "description": "Beautiful, accessible, and customizable React components for your telehealth applications."
+  },
+  {
+    "name": "@lema-ds",
+    "homepage": "https://ds.lema.ufpb.br",
+    "url": "https://ds.lema.ufpb.br/r/{name}.json",
+    "description": "Enterprise-grade design system and component library for LEMA-UFPB",
   }
 ]
