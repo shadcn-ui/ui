@@ -180,6 +180,12 @@
     "description": "Shadcn UI Blocks for Ecommerce websites"
   },
   {
+    "name": "@corr",
+    "homepage": "https://ui.corr.sh",
+    "url": "https://ui.corr.sh/r/{name}.json",
+    "description": "A collection of shadcn-based React components, charts, animated components, and blocks built over time."
+  },
+  {
     "name": "@coss",
     "homepage": "https://coss.com/ui",
     "url": "https://coss.com/ui/r/{name}.json",
