@@ -23,6 +23,8 @@
   },
   "dependencies": {
     "@base-ui/react": "1.3.0",
+    "@daypicker/persian": "^10.0.0",
+    "@daypicker/react": "^10.0.0",
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/modifiers": "^9.0.0",
     "@dnd-kit/sortable": "^10.0.0",
@@ -66,7 +68,6 @@
     "postcss": "^8.5.1",
     "radix-ui": "^1.4.3",
     "react": "19.2.3",
-    "react-day-picker": "^9.7.0",
     "react-dom": "19.2.3",
     "react-hook-form": "^7.62.0",
     "react-qr-code": "^2.0.18",

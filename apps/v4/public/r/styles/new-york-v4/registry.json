@@ -145,7 +145,7 @@
     },
     {
       "name": "calendar",
-      "dependencies": ["react-day-picker@latest", "date-fns"],
+      "dependencies": ["@daypicker/react@latest", "date-fns"],
       "registryDependencies": ["button"],
       "files": [
         {
@@ -5347,6 +5347,7 @@
     {
       "name": "calendar-hijri",
       "description": "A Persian calendar.",
+      "dependencies": ["@daypicker/persian"],
       "registryDependencies": ["calendar"],
       "files": [
         {
