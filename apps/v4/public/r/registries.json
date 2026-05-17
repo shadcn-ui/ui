@@ -84,6 +84,12 @@
     "description": "I create digital experiences that connect and inspire. I build apps, websites, brands, and products end-to-end."
   },
   {
+    "name": "@amplo",
+    "homepage": "https://amplo.ale.design",
+    "url": "https://amplo.ale.design/r/{name}.json",
+    "description": "OKLCH-native, Display-P3-aware composable fill picker with WCAG/APCA contrast metrics, gamut detection, and full keyboard accessibility."
+  },
+  {
     "name": "@animate-ui",
     "homepage": "https://animate-ui.com",
     "url": "https://animate-ui.com/r/{name}.json",
@@ -162,6 +168,12 @@
     "description": "A framework-agnostic API client, pluggable storage adapters (LocalStorage, Convex, Supabase, PostgreSQL, MySQL), and React components for generating developer activity reports."
   },
   {
+    "name": "@cognicatch",
+    "homepage": "https://cognicatch.dev",
+    "url": "https://cognicatch.dev/registry/{name}.json",
+    "description": "Adaptive Error Boundaries and graceful fallback UIs (Banners, Modals, Toasts)."
+  },
+  {
     "name": "@commercn",
     "homepage": "https://commercn.com",
     "url": "https://commercn.com/r/{name}.json",
@@ -234,6 +246,12 @@
     "description": "An open-source, modern UI component library for React, built with TypeScript, Tailwind CSS, and Framer Motion. Eldora UI offers beautifully crafted, reusable components designed for performance and elegance."
   },
   {
+    "name": "@evilcharts",
+    "homepage": "https://evilcharts.com",
+    "url": "https://evilcharts.com/r/{name}.json",
+    "description": "EvilCharts is an open-source chart UI website built with shadcn and Recharts, beautifully designed and handcrafted."
+  },
+  {
     "name": "@formcn",
     "homepage": "https://formcn.dev",
     "url": "https://formcn.dev/r/{name}.json",
@@ -271,7 +289,7 @@
   },
   {
     "name": "@glasscn",
-    "homepage": "https://glasscn.vercel.app/",
+    "homepage": "https://glasscn-components.vercel.app/",
     "url": "https://glasscn-components.vercel.app/r/{name}.json",
     "description": "A shadcn-compatible registry of glassmorphism components inspired by Apple"
   },
@@ -298,6 +316,12 @@
     "homepage": "https://ui.inference.sh",
     "url": "https://ui.inference.sh/r/{name}.json",
     "description": "batteries-included agent components by inference.sh. chat interfaces with streaming, tool invocation rendering, syntax-highlighted code blocks, markdown renderer, and more."
+  },
+  {
+    "name": "@indiacn",
+    "homepage": "https://indiacn.in",
+    "url": "https://indiacn.in/r/{name}.json",
+    "description": "UX4G 2.0 design system for India — many accessible React components and an 8-color theme preset for native apps."
   },
   {
     "name": "@intentui",
@@ -414,10 +438,16 @@
     "description": "Beautifully designed motions components. Easy copy-paste. Customizable. Open Source. Built for engineers and designers."
   },
   {
+    "name": "@nordaun",
+    "homepage": "https://ui.nordaun.com",
+    "url": "https://ui.nordaun.com/r/{name}.json",
+    "description": "Simple components for your extraordinary creations."
+  },
+  {
     "name": "@ncdai",
     "homepage": "https://chanhdai.com/components",
     "url": "https://chanhdai.com/r/{name}.json",
-    "description": "A collection of reusable components."
+    "description": "Pixel-perfect, uniquely crafted."
   },
   {
     "name": "@nteract",
@@ -478,6 +508,12 @@
     "homepage": "https://gsap.pacekit.dev",
     "url": "https://gsap.pacekit.dev/r/{name}.json",
     "description": "Animated GSAP components crafted for smooth interaction and rich detail."
+  },
+  {
+    "name": "@paddle",
+    "homepage": "https://developer.paddle.com/",
+    "url": "https://developer.paddle.com/r/{name}.json",
+    "description": "Drop-in components for building checkouts, pricing pages, and subscription management screens using Paddle Billing."
   },
   {
     "name": "@pastecn",
@@ -840,6 +876,12 @@
     "description": "Magic 3D Tabs component featuring mouse-interactive 3D rotation, floating particles background effect, and smooth spring animations."
   },
   {
+    "name": "@devl",
+    "homepage": "https://devl.dev",
+    "url": "https://devl.dev/r/{name}.json",
+    "description": "Hand-crafted layouts and UI primitives for shipping fast."
+  },
+  {
     "name": "@beste-ui",
     "homepage": "https://ui.beste.co",
     "url": "https://ui.beste.co/r/{name}.json",
@@ -1066,5 +1108,47 @@
     "homepage": "https://dotmatrix.zzzzshawn.cloud",
     "url": "https://dotmatrix.zzzzshawn.cloud/r/{name}.json",
     "description": "Production-ready dot-matrix loading components for React, featuring square, circular, and triangle animations with polished motion."
+  },
+  {
+    "name": "@delta",
+    "homepage": "https://deltacomponents.dev",
+    "url": "https://deltacomponents.dev/r/{name}.json",
+    "description": "A shadcn registry for AI and media-rich interfaces — streaming LLM chat, zoomable images, swipeable card decks, interactive maps, plus dashboard and landing-page blocks."
+  },
+  {
+    "name": "@shieldcn",
+    "homepage": "https://shieldcn.dev",
+    "url": "https://shieldcn.dev/r/{name}.json",
+    "description": "Beautiful README badges as a service. A shields.io alternative with the visual quality of shadcn/ui. Drop-in SVG badge components for npm, GitHub, Discord, and more."
+  },
+  {
+    "name": "@evilbuttons",
+    "homepage": "https://evilbuttons.radiumcoders.com/docs",
+    "url": "https://evilbuttons.radiumcoders.com/r/{name}.json",
+    "description": "A shadcn/ui registry featuring a collection of animated buttons built with Motion. Each component is designed to add punchy, interactive feedback to your UI with minimal setup."
+  },
+  {
+    "name": "@stepper",
+    "homepage": "https://francozeta-stepper.vercel.app",
+    "url": "https://francozeta-stepper.vercel.app/{name}.json",
+    "description": "A modern, accessible and composable Stepper component for React and Tailwind CSS. Built for shadcn/ui-style workflows with registry-first distribution."
+  },
+  {
+    "name": "@text-ui",
+    "homepage": "https://joelachance.github.io/text-ui/docs",
+    "url": "https://joelachance.github.io/text-ui/r/{name}.json",
+    "description": "A shadcn/ui registry with EchoText (`echo-text`): layered stroke text that follows the pointer—minimal setup, drop-in component."
+  },
+  {
+    "name": "@framecn",
+    "homepage": "https://framecn.vercel.app",
+    "url": "https://framecn.vercel.app/r/{name}.json",
+    "description": "Beautiful videos, made simple. Ready to use, customizable video components for React."
+  },
+  {
+    "name": "@turbopills-ui",
+    "homepage": "https://www.turbopills.com/ui/docs",
+    "url": "https://ui.turbopills.com/r/{name}.json",
+    "description": "Beautiful, accessible, and customizable React components for your telehealth applications."
   }
 ]

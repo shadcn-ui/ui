@@ -1,0 +1,8 @@
+{
+  "name": "config-imports-extensions",
+  "type": "module",
+  "imports": {
+    "#components/*": "./src/components/*.tsx",
+    "#lib/*": "./src/lib/*.ts"
+  }
+}
