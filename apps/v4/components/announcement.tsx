@@ -7,7 +7,7 @@ export function Announcement() {
   return (
     <Badge asChild variant="secondary" className="bg-muted">
       <Link href="/docs/changelog">
-        Introducing Luma <ArrowRightIcon />
+        New preset commands <ArrowRightIcon />
       </Link>
     </Badge>
   )
