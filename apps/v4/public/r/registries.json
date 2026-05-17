@@ -1086,6 +1086,10 @@
     "description": "Production-ready components for Remotion - text animations, backgrounds, transitions, UI blocks, and full scene compositions"
   },
   {
+    "name": "@nostalgia-ui",
+    "homepage": "https://nostalgia-ui.com",
+    "url": "https://nostalgia-ui.com/r/{name}.json",
+    "description": "Mac OS 9 styled components for React. 60 retro UI primitives with platinum bevels, system fonts, and pixel-perfect details. Pure CSS, zero images."
     "name": "@exabase",
     "homepage": "https://exawizards.com/exabase/design/",
     "url": "https://exawizards.com/exabase/design/registry/{name}.json",
