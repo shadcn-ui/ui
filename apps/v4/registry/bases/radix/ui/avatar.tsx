@@ -4,14 +4,20 @@ import * as React from "react"
 import { Avatar as AvatarPrimitive } from "radix-ui"
 
 import { cn } from "@/registry/bases/radix/lib/utils"
+import { Skeleton } from "@/registry/bases/radix/ui/skeleton"
 
 function Avatar({
   className,
   size = "default",
+  isLoading,
   ...props
 }: React.ComponentProps<typeof AvatarPrimitive.Root> & {
   size?: "default" | "sm" | "lg"
+  isLoading?: boolean
 }) {
+  if (isLoading) {
+    return <Skeleton data-size={size} className="cn-avatar size-10 rounded-full" />
+  }
   return (
     <AvatarPrimitive.Root
       data-slot="avatar"

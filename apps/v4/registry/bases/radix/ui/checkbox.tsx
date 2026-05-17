@@ -4,12 +4,17 @@ import * as React from "react"
 import { Checkbox as CheckboxPrimitive } from "radix-ui"
 
 import { cn } from "@/registry/bases/radix/lib/utils"
+import { Skeleton } from "@/registry/bases/radix/ui/skeleton"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Checkbox({
   className,
+  isLoading,
   ...props
-}: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
+}: React.ComponentProps<typeof CheckboxPrimitive.Root> & { isLoading?: boolean }) {
+  if (isLoading) {
+    return <Skeleton className="size-4 rounded" />
+  }
   return (
     <CheckboxPrimitive.Root
       data-slot="checkbox"

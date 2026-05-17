@@ -22,6 +22,7 @@ export const ui: Registry["items"] = [
   {
     name: "alert",
     type: "registry:ui",
+    registryDependencies: ["skeleton"],
     files: [
       {
         path: "ui/alert.tsx",
@@ -76,6 +77,7 @@ export const ui: Registry["items"] = [
   {
     name: "avatar",
     type: "registry:ui",
+    registryDependencies: ["skeleton"],
     files: [
       {
         path: "ui/avatar.tsx",
@@ -94,6 +96,7 @@ export const ui: Registry["items"] = [
   {
     name: "badge",
     type: "registry:ui",
+    registryDependencies: ["skeleton"],
     files: [
       {
         path: "ui/badge.tsx",
@@ -128,6 +131,7 @@ export const ui: Registry["items"] = [
   {
     name: "button",
     type: "registry:ui",
+    registryDependencies: ["skeleton"],
     files: [
       {
         path: "ui/button.tsx",
@@ -183,6 +187,7 @@ export const ui: Registry["items"] = [
   {
     name: "card",
     type: "registry:ui",
+    registryDependencies: ["skeleton"],
     files: [
       {
         path: "ui/card.tsx",
@@ -238,6 +243,7 @@ export const ui: Registry["items"] = [
   {
     name: "checkbox",
     type: "registry:ui",
+    registryDependencies: ["skeleton"],
     files: [
       {
         path: "ui/checkbox.tsx",
@@ -445,6 +451,7 @@ export const ui: Registry["items"] = [
   {
     name: "input",
     type: "registry:ui",
+    registryDependencies: ["skeleton"],
     files: [
       {
         path: "ui/input.tsx",
@@ -832,6 +839,7 @@ export const ui: Registry["items"] = [
   {
     name: "switch",
     type: "registry:ui",
+    registryDependencies: ["skeleton"],
     files: [
       {
         path: "ui/switch.tsx",
@@ -885,6 +893,7 @@ export const ui: Registry["items"] = [
   {
     name: "textarea",
     type: "registry:ui",
+    registryDependencies: ["skeleton"],
     files: [
       {
         path: "ui/textarea.tsx",
