@@ -1,3 +1,5 @@
+import fs from "fs-extra"
+import { tmpdir } from "os"
 import path from "path"
 import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 import { describe, expect, test } from "vitest"
@@ -189,6 +191,35 @@ describe("resolve package imports", () => {
     expect(packageImportPath?.path).toBe(
       path.resolve(cwd, "src/components/button.tsx")
     )
+  })
+
+  test("tsconfig path matching prefers the longest alias key", async () => {
+    const base = await fs.mkdtemp(path.join(tmpdir(), "shadcn-resolve-order-"))
+    try {
+      await fs.outputFile(
+        path.join(base, "packages/intent-ui/src/lib/primitive.ts"),
+        ""
+      )
+
+      const result = await resolveImportWithMetadata(
+        "@packages/intent-ui/lib/primitive",
+        {
+          absoluteBaseUrl: base,
+          cwd: base,
+          paths: {
+            "@packages/*": ["./packages/*/src/*"],
+            "@packages/intent-ui/*": ["./packages/intent-ui/src/*"],
+          },
+        }
+      )
+
+      expect(result?.matchedAlias).toBe("@packages/intent-ui/*")
+      expect(result?.path).toBe(
+        path.join(base, "packages/intent-ui/src/lib/primitive")
+      )
+    } finally {
+      await fs.remove(base)
+    }
   })
 })
 

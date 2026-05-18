@@ -313,22 +313,36 @@ export async function getTsConfigAliasPrefix(cwd: string) {
     return null
   }
 
-  // This assume that the first alias is the prefix.
+  const appStyleTargets = new Set([
+    "./*",
+    "./src/*",
+    "./app/*",
+    "./resources/js/*",
+  ])
+
+  const normalizeKey = (key: string) => key.replace(/\/\*$/, "")
+
+  const preferred: string[] = []
   for (const [alias, targets] of Object.entries(paths)) {
     const values = Array.isArray(targets) ? targets : [targets]
-
-    if (
-      values.includes("./*") ||
-      values.includes("./src/*") ||
-      values.includes("./app/*") ||
-      values.includes("./resources/js/*") // Laravel.
-    ) {
-      return alias.replace(/\/\*$/, "") ?? null
+    if (values.some((v) => appStyleTargets.has(v))) {
+      const normalized = normalizeKey(alias)
+      if (normalized.length > 0) {
+        preferred.push(normalized)
+      }
     }
   }
 
-  // Use the first alias as the prefix.
-  return Object.keys(paths)?.[0].replace(/\/\*$/, "") ?? null
+  if (preferred.length > 0) {
+    return preferred.sort((a, b) => b.length - a.length)[0] ?? null
+  }
+
+  const fallback = Object.keys(paths)
+    .map(normalizeKey)
+    .filter((k) => k.length > 0)
+    .sort((a, b) => b.length - a.length)
+
+  return fallback[0] ?? null
 }
 
 export async function getProjectAliasInfo(cwd: string) {

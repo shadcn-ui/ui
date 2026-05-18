@@ -104,7 +104,9 @@ function updateImportAliases(
       return moduleSpecifier.replace(/^@\/lib/, config.aliases.lib)
     }
 
-    const alias = config.aliases.components.split("/")[0]
+    const alias = bareAtAliasPrefixFromComponentsAlias(
+      config.aliases.components
+    )
     return moduleSpecifier.replace(/^@\//, `${alias}/`)
   }
 
@@ -153,6 +155,22 @@ function updateImportAliases(
     /^@\/registry\/[^/]+/,
     config.aliases.components
   )
+}
+
+function bareAtAliasPrefixFromComponentsAlias(componentsAlias: string) {
+  const suffix = "/components"
+  if (!componentsAlias.endsWith(suffix)) {
+    return componentsAlias.split("/")[0]
+  }
+
+  const base = componentsAlias.slice(0, -suffix.length)
+  const parts = base.split("/")
+
+  if (parts.length === 1 || (parts.length === 2 && parts[0].startsWith("@"))) {
+    return base
+  }
+
+  return componentsAlias.split("/")[0]
 }
 
 function getWorkspaceAliasFromUtilsAlias(utilsAlias: string) {
