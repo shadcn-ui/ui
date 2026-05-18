@@ -7,7 +7,7 @@ links:
 
 import { InfoIcon } from "lucide-react"
 
-This guide covers building forms with [Formisch](https://formisch.dev), the modular and type-safe form library for React. We'll create forms with the `<Field />` component, validate them with Valibot schemas, handle errors, and ensure accessibility.
+This guide covers building forms with [Formisch](https://formisch.dev), the lightweight, schema-first, and fully type-safe form library for React. We'll create forms with the `<Field />` component, validate them with Valibot schemas, handle errors, and ensure accessibility.
 
 ## Demo
 
@@ -34,6 +34,29 @@ This form leverages Formisch for headless, schema-first form handling. We'll bui
 - `<Field />` render-prop component for controlled inputs.
 - Schema validation using [Valibot](https://valibot.dev).
 - Type-safe field paths inferred from the schema.
+
+## Form Methods
+
+Formisch exposes form operations as **top-level functions** rather than methods on a form object. Import only what you need:
+
+```ts
+import { getInput, reset, insert, submit } from "@formisch/react"
+```
+
+Every method follows the same signature: the **first parameter is always the form store**, and the **second parameter (if necessary) is always a config object**.
+
+```ts
+// Read a field value
+const email = getInput(form, { path: ["email"] })
+
+// Reset the form with new initial values
+reset(form, { initialInput: { email: "", password: "" } })
+
+// Move an item in a field array
+move(form, { path: ["items"], from: 0, to: 3 })
+```
+
+This design keeps the API flexible and consistent across all methods. You'll see the same `(form, config)` shape used throughout this guide for reading state (`getInput`, `getErrors`), writing state (`setInput`, `setErrors`), form control (`submit`, `validate`, `focus`), and array operations (`insert`, `remove`, `move`, `swap`, `replace`). See the [full methods reference](https://formisch.dev/react/guides/form-methods) for details.
 
 ## Anatomy
 
@@ -505,9 +528,7 @@ Here is an example of a more complex form with multiple fields and validation.
 Formisch exposes a top-level `reset` function. Pass the form store to reset it to its initial input.
 
 ```tsx showLineNumbers
-import { reset } from "@formisch/react"
-
-;<Button type="button" variant="outline" onClick={() => reset(form)}>
+<Button type="button" variant="outline" onClick={() => reset(form)}>
   Reset
 </Button>
 ```
@@ -586,9 +607,7 @@ Wrap your array fields in a `<FieldSet />` with a `<FieldLegend />` and `<FieldD
 Use the `insert` function to add new items to the array. By default new items are appended to the end. You can also pass an `at` index to insert at a specific position.
 
 ```tsx showLineNumbers title="form.tsx"
-import { insert } from "@formisch/react"
-
-;<Button
+<Button
   type="button"
   variant="outline"
   size="sm"
