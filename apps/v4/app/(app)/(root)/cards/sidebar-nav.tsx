@@ -1,6 +1,6 @@
 "use client"
 
-import { Card } from "@/registry/bases/base/ui/card"
+import { Card } from "@/styles/base-rhea/ui/card"
 import {
   Sidebar,
   SidebarContent,
@@ -12,20 +12,20 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   SidebarSeparator,
-} from "@/registry/bases/base/ui/sidebar"
+} from "@/styles/base-rhea/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export function SidebarNav() {
   return (
-    <div className="grid grid-cols-2 items-start gap-6">
-      <Card className="overflow-hidden py-0">
+    <div className="grid w-full items-start gap-4 xl:grid-cols-2 xl:gap-6">
+      <Card className="w-full overflow-hidden rounded-3xl py-0">
         <SidebarProvider className="min-h-0">
           <Sidebar collapsible="none" className="w-full bg-transparent">
             <SidebarContent className="gap-0">
               <SidebarGroup className="pb-1">
                 <SidebarGroupLabel>Overview</SidebarGroupLabel>
                 <SidebarGroupContent>
-                  <SidebarMenu>
+                  <SidebarMenu className="gap-1">
                     <SidebarMenuItem>
                       <SidebarMenuButton isActive>
                         <IconPlaceholder
@@ -89,11 +89,11 @@ export function SidebarNav() {
                   </SidebarMenu>
                 </SidebarGroupContent>
               </SidebarGroup>
-              <SidebarSeparator className="w-auto!" />
+              <SidebarSeparator className="-mx-2 w-auto!" />
               <SidebarGroup className="pt-1">
                 <SidebarGroupLabel>Planning</SidebarGroupLabel>
                 <SidebarGroupContent>
-                  <SidebarMenu>
+                  <SidebarMenu className="gap-1">
                     <SidebarMenuItem>
                       <SidebarMenuButton>
                         <IconPlaceholder
@@ -149,14 +149,14 @@ export function SidebarNav() {
           </Sidebar>
         </SidebarProvider>
       </Card>
-      <Card className="overflow-hidden py-0">
+      <Card className="hidden w-full overflow-hidden rounded-3xl py-0 xl:flex">
         <SidebarProvider className="min-h-0">
           <Sidebar collapsible="none" className="w-full bg-transparent">
             <SidebarContent className="gap-0">
               <SidebarGroup className="pb-1">
                 <SidebarGroupLabel>Account</SidebarGroupLabel>
                 <SidebarGroupContent>
-                  <SidebarMenu>
+                  <SidebarMenu className="gap-1">
                     <SidebarMenuItem>
                       <SidebarMenuButton>
                         <IconPlaceholder
@@ -220,11 +220,11 @@ export function SidebarNav() {
                   </SidebarMenu>
                 </SidebarGroupContent>
               </SidebarGroup>
-              <SidebarSeparator className="w-auto!" />
+              <SidebarSeparator className="-mx-2 w-auto!" />
               <SidebarGroup className="pt-1">
                 <SidebarGroupLabel>Support</SidebarGroupLabel>
                 <SidebarGroupContent>
-                  <SidebarMenu>
+                  <SidebarMenu className="gap-1">
                     <SidebarMenuItem>
                       <SidebarMenuButton>
                         <IconPlaceholder

@@ -11,7 +11,7 @@ import {
 } from "@/components/page-header"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
-import { RootComponents } from "./components"
+import { CardsDemo } from "./cards"
 
 const title = "The Foundation for your Design System"
 const description =
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 export default function IndexPage() {
   return (
     <div className="flex flex-1 flex-col">
-      <PageHeader>
+      <PageHeader className="md:**:[.container]:pb-8 lg:**:[.container]:pb-12">
         <Announcement />
         <PageHeaderHeading className="max-w-4xl">{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
@@ -60,8 +60,8 @@ export default function IndexPage() {
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="container-wrapper flex-1 pb-6">
-        <div className="container overflow-hidden">
+      <div className="container-wrapper flex-1 pb-6 md:px-0">
+        <div className="container overflow-hidden md:px-0 lg:max-w-none">
           <section className="-mx-4 w-[160vw] overflow-hidden rounded-lg border border-border/50 md:hidden md:w-[150vw]">
             <Image
               src="/r/styles/new-york-v4/dashboard-01-light.png"
@@ -80,8 +80,8 @@ export default function IndexPage() {
               priority
             />
           </section>
-          <section className="hidden theme-container md:block">
-            <RootComponents />
+          <section className="hidden md:block">
+            <CardsDemo />
           </section>
         </div>
       </div>
