@@ -447,7 +447,7 @@
     "name": "@ncdai",
     "homepage": "https://chanhdai.com/components",
     "url": "https://chanhdai.com/r/{name}.json",
-    "description": "A collection of reusable components."
+    "description": "Pixel-perfect, uniquely crafted."
   },
   {
     "name": "@nteract",
@@ -508,6 +508,12 @@
     "homepage": "https://gsap.pacekit.dev",
     "url": "https://gsap.pacekit.dev/r/{name}.json",
     "description": "Animated GSAP components crafted for smooth interaction and rich detail."
+  },
+  {
+    "name": "@paddle",
+    "homepage": "https://developer.paddle.com/",
+    "url": "https://developer.paddle.com/r/{name}.json",
+    "description": "Drop-in components for building checkouts, pricing pages, and subscription management screens using Paddle Billing."
   },
   {
     "name": "@pastecn",
