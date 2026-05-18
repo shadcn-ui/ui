@@ -3,7 +3,7 @@ import {
   type IconLibrary,
   type IconLibraryName,
 } from "shadcn/icons"
-import { type RegistryItem } from "shadcn/schema"
+import { registryItemSchema, type RegistryItem } from "shadcn/schema"
 import { z } from "zod"
 
 import { BASE_COLORS, type BaseColor } from "@/registry/base-colors"
@@ -13,6 +13,7 @@ import { STYLES, type Style } from "@/registry/styles"
 import { THEMES, type Theme } from "@/registry/themes"
 
 const SHADCN_VERSION = "latest"
+const DEFAULT_RADIUS_VALUE = "0.625rem"
 
 export { BASES, type Base }
 export { STYLES, type Style }
@@ -575,6 +576,28 @@ export function buildRegistryTheme(config: DesignSystemConfig) {
       dark: darkVars,
     },
   }
+}
+
+export function buildThemeForPreset(config: DesignSystemConfig) {
+  const registryTheme = buildRegistryTheme(config)
+  const radius = RADII.find((r) => r.name === config.radius)
+  const radiusValue =
+    config.radius === "default"
+      ? (registryTheme.cssVars?.light?.radius ?? DEFAULT_RADIUS_VALUE)
+      : (radius?.value ?? registryTheme.cssVars?.light?.radius)
+
+  return registryItemSchema.parse({
+    $schema: "https://ui.shadcn.com/schema/registry-item.json",
+    name: registryTheme.name,
+    type: "registry:theme",
+    cssVars: {
+      ...registryTheme.cssVars,
+      light: {
+        ...registryTheme.cssVars.light,
+        ...(radiusValue && { radius: radiusValue }),
+      },
+    },
+  })
 }
 
 // Builds a registry:base item from a design system config.

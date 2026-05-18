@@ -5,7 +5,7 @@ import { notFound } from "next/navigation"
 import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { BASES, type Base, type BaseName } from "@/registry/config"
+import { BASES, type Base } from "@/registry/config"
 import { ActionMenuScript } from "@/app/(app)/create/components/action-menu"
 import { DesignSystemProvider } from "@/app/(app)/create/components/design-system-provider"
 import { HistoryScript } from "@/app/(app)/create/components/history-buttons"
@@ -13,15 +13,13 @@ import { DarkModeScript } from "@/app/(app)/create/components/mode-switcher"
 import { OpenPresetScript } from "@/app/(app)/create/components/open-preset"
 import { PreviewStyle } from "@/app/(app)/create/components/preview-style"
 import { RandomizeScript } from "@/app/(app)/create/components/random-button"
-import {
-  getBaseComponent,
-  getBaseItem,
-  getItemsForBase,
-} from "@/app/(app)/create/lib/api"
+import { getBaseComponent, getBaseItem } from "@/app/(app)/create/lib/api"
 
 export const revalidate = false
 export const dynamic = "force-static"
-export const dynamicParams = false
+export const dynamicParams = true
+
+const STATIC_PREVIEW_ITEMS = ["preview", "preview-02"] as const
 
 function PreventScrollOnFocusScript() {
   return (
@@ -96,19 +94,12 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const params: Array<{ base: string; name: string }> = []
-
-  for (const base of BASES) {
-    const items = await getItemsForBase(base.name as BaseName)
-    for (const item of items) {
-      params.push({
-        base: base.name,
-        name: item.name,
-      })
-    }
-  }
-
-  return params
+  return BASES.flatMap((base) =>
+    STATIC_PREVIEW_ITEMS.map((name) => ({
+      base: base.name,
+      name,
+    }))
+  )
 }
 
 export default async function BlockPage({
