@@ -9,6 +9,12 @@ export {
 export { searchRegistries } from "./search"
 
 export {
+  loadRegistry,
+  loadRegistryItem,
+  type LoadRegistryOptions,
+} from "./loader"
+
+export {
   RegistryError,
   RegistryNotFoundError,
   RegistryUnauthorizedError,
