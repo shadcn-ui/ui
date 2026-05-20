@@ -6,9 +6,7 @@ import {
   createRegistryItem,
   readRegistryWithIncludes,
 } from "@/src/registry/loader"
-import { registryItemSchema } from "@/src/schema"
 import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { Command } from "commander"
@@ -47,6 +45,7 @@ export const build = new Command()
         resolvePaths.registryFile,
         {
           cwd: resolvePaths.cwd,
+          warn: logger.warn,
         }
       )
       const resolvedRegistry = registryResult.registry
@@ -70,21 +69,13 @@ export const build = new Command()
           resolvePaths.cwd
         )
 
-        // Validate the registry item.
-        const result = registryItemSchema.safeParse(registryItemForBuild)
-        if (!result.success) {
-          logger.error(
-            `Invalid registry item found for ${highlighter.info(
-              registryItem.name
-            )}.`
-          )
-          continue
-        }
-
         // Write the registry item to the output directory.
         await fs.writeFile(
-          path.resolve(resolvePaths.outputDir, `${result.data.name}.json`),
-          JSON.stringify(result.data, null, 2)
+          path.resolve(
+            resolvePaths.outputDir,
+            `${registryItemForBuild.name}.json`
+          ),
+          JSON.stringify(registryItemForBuild, null, 2)
         )
       }
 

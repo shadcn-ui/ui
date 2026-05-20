@@ -80,16 +80,11 @@ describe("readRegistryWithIncludes", () => {
     })
     expect(result.registry).not.toHaveProperty("include")
     expect(
-      getRegistryItemFileSource(
-        { name: "button" },
-        "button.tsx",
-        result.itemSources,
-        cwd
-      )
+      getRegistryItemFileSource("button", "button.tsx", result.itemSources, cwd)
     ).toBe(path.join(cwd, "registry/ui/button.tsx"))
     expect(
       getRegistryItemFileRootPath(
-        { name: "button" },
+        "button",
         "button.tsx",
         result.itemSources,
         cwd,
@@ -144,6 +139,124 @@ describe("readRegistryWithIncludes", () => {
     await expect(
       readRegistryWithIncludes("registry.json", { cwd })
     ).rejects.toThrow('Use a path like "./registry/ui/registry.json"')
+    await expect(
+      readRegistryWithIncludes("registry.json", { cwd })
+    ).rejects.toBeInstanceOf(RegistryValidationError)
+  })
+
+  it("rejects remote include paths", async () => {
+    const cwd = await createFixture({
+      "registry.json": JSON.stringify({
+        name: "example",
+        homepage: "https://example.com",
+        include: ["https://example.com/registry.json"],
+        items: [],
+      }),
+    })
+
+    await expect(
+      readRegistryWithIncludes("registry.json", { cwd })
+    ).rejects.toThrow("remote includes are not supported")
+    await expect(
+      readRegistryWithIncludes("registry.json", { cwd })
+    ).rejects.toBeInstanceOf(RegistryValidationError)
+  })
+
+  it("rejects absolute include paths", async () => {
+    const cwd = await createFixture({
+      "registry/ui/registry.json": JSON.stringify({
+        items: [],
+      }),
+    })
+    await fs.writeFile(
+      path.join(cwd, "registry.json"),
+      JSON.stringify({
+        name: "example",
+        homepage: "https://example.com",
+        include: [path.join(cwd, "registry/ui/registry.json")],
+        items: [],
+      })
+    )
+
+    await expect(
+      readRegistryWithIncludes("registry.json", { cwd })
+    ).rejects.toThrow("include paths must be relative")
+    await expect(
+      readRegistryWithIncludes("registry.json", { cwd })
+    ).rejects.toBeInstanceOf(RegistryValidationError)
+  })
+
+  it("rejects include cycles", async () => {
+    const cwd = await createFixture({
+      "registry.json": JSON.stringify({
+        name: "example",
+        homepage: "https://example.com",
+        include: ["./registry.json"],
+        items: [],
+      }),
+    })
+
+    await expect(
+      readRegistryWithIncludes("registry.json", { cwd })
+    ).rejects.toThrow("Registry include cycle detected")
+    await expect(
+      readRegistryWithIncludes("registry.json", { cwd })
+    ).rejects.toBeInstanceOf(RegistryValidationError)
+  })
+
+  it("rejects include trees that exceed the maximum depth", async () => {
+    const files: Record<string, string> = {
+      "registry.json": JSON.stringify({
+        name: "example",
+        homepage: "https://example.com",
+        include: ["registry-1/registry.json"],
+        items: [],
+      }),
+    }
+
+    for (let index = 1; index <= 33; index++) {
+      const registryPath = `${Array.from(
+        { length: index },
+        (_, nestedIndex) => `registry-${nestedIndex + 1}`
+      ).join("/")}/registry.json`
+      files[registryPath] = JSON.stringify({
+        include:
+          index < 33 ? [`registry-${index + 1}/registry.json`] : undefined,
+        items: [],
+      })
+    }
+
+    const cwd = await createFixture(files)
+
+    await expect(
+      readRegistryWithIncludes("registry.json", { cwd })
+    ).rejects.toThrow("Registry include tree is too deep")
+    await expect(
+      readRegistryWithIncludes("registry.json", { cwd })
+    ).rejects.toBeInstanceOf(RegistryValidationError)
+  })
+
+  it("rejects duplicate include files before duplicate item validation", async () => {
+    const cwd = await createFixture({
+      "registry.json": JSON.stringify({
+        name: "example",
+        homepage: "https://example.com",
+        include: ["registry/ui/registry.json", "registry/ui/./registry.json"],
+        items: [],
+      }),
+      "registry/ui/registry.json": JSON.stringify({
+        items: [
+          {
+            name: "button",
+            type: "registry:ui",
+          },
+        ],
+      }),
+    })
+
+    await expect(
+      readRegistryWithIncludes("registry.json", { cwd })
+    ).rejects.toThrow("Registry file included more than once")
     await expect(
       readRegistryWithIncludes("registry.json", { cwd })
     ).rejects.toBeInstanceOf(RegistryValidationError)
@@ -273,8 +386,8 @@ describe("readRegistryWithIncludes", () => {
     expect(registry.items[0].files?.[0].path).toBe("components/button.tsx")
   })
 
-  it("warns for non-namespaced dependencies missing from the resolved catalog", async () => {
-    const warn = vi.spyOn(console, "warn").mockImplementation(() => {})
+  it("warns when a warning handler is provided for missing non-namespaced dependencies", async () => {
+    const warn = vi.fn()
     const cwd = await createFixture({
       "registry.json": JSON.stringify({
         name: "example",
@@ -291,16 +404,74 @@ describe("readRegistryWithIncludes", () => {
             type: "registry:block",
             registryDependencies: ["button"],
           },
+          {
+            name: "signup-form",
+            type: "registry:block",
+            registryDependencies: ["button"],
+          },
+        ],
+      }),
+    })
+
+    await readRegistryWithIncludes("registry.json", { cwd, warn })
+
+    expect(warn).toHaveBeenCalledWith(
+      expect.stringContaining('dependency "button"')
+    )
+    expect(warn).toHaveBeenCalledTimes(1)
+  })
+
+  it("does not warn by default for missing non-namespaced dependencies", async () => {
+    const warn = vi.fn()
+    const cwd = await createFixture({
+      "registry.json": JSON.stringify({
+        name: "example",
+        homepage: "https://example.com",
+        include: ["registry/blocks/registry.json"],
+        items: [],
+      }),
+      "registry/blocks/registry.json": JSON.stringify({
+        items: [
+          {
+            name: "login-form",
+            type: "registry:block",
+            registryDependencies: ["button"],
+          },
         ],
       }),
     })
 
     await readRegistryWithIncludes("registry.json", { cwd })
 
-    expect(warn).toHaveBeenCalledWith(
-      expect.stringContaining('depends on "button"')
-    )
-    warn.mockRestore()
+    expect(warn).not.toHaveBeenCalled()
+  })
+
+  it("does not warn for namespaced or URL registry dependencies", async () => {
+    const warn = vi.fn()
+    const cwd = await createFixture({
+      "registry.json": JSON.stringify({
+        name: "example",
+        homepage: "https://example.com",
+        include: ["registry/blocks/registry.json"],
+        items: [],
+      }),
+      "registry/blocks/registry.json": JSON.stringify({
+        items: [
+          {
+            name: "login-form",
+            type: "registry:block",
+            registryDependencies: [
+              "@acme/button",
+              "https://example.com/r/input.json",
+            ],
+          },
+        ],
+      }),
+    })
+
+    await readRegistryWithIncludes("registry.json", { cwd, warn })
+
+    expect(warn).not.toHaveBeenCalled()
   })
 
   it("resolves a local registry catalog for dynamic registry routes", async () => {

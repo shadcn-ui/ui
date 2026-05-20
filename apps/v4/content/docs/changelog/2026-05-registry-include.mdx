@@ -35,8 +35,9 @@ hooks
 }
 ```
 
-Each included file is a regular `registry.json`, so it can also be opened,
-validated, and built on its own.
+Included `registry.json` files are valid registry files for composition and may
+omit `name` and `homepage`. Only the root `registry.json` must define the
+registry metadata.
 
 ```json title="components/ui/registry.json" showLineNumbers
 {
@@ -69,18 +70,16 @@ The `shadcn/registry` package also exports `loadRegistry` and
 `loadRegistryItem` for dynamic registry routes.
 
 ```ts title="app/r/registry.json/route.ts" showLineNumbers
-import { NextResponse } from "next/server"
 import { loadRegistry } from "shadcn/registry"
 
 export async function GET() {
   const registry = await loadRegistry()
 
-  return NextResponse.json(registry)
+  return Response.json(registry)
 }
 ```
 
 ```ts title="app/r/[name].json/route.ts" showLineNumbers
-import { NextResponse } from "next/server"
 import { loadRegistryItem } from "shadcn/registry"
 
 export async function GET(
@@ -90,7 +89,7 @@ export async function GET(
   const { name } = await params
   const item = await loadRegistryItem(name)
 
-  return NextResponse.json(item)
+  return Response.json(item)
 }
 ```
 

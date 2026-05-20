@@ -13,6 +13,7 @@ import {
   RegistryNotFoundError,
   RegistryParseError,
   RegistryUnauthorizedError,
+  RegistryValidationError,
 } from "@/src/registry/errors"
 import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
@@ -861,6 +862,36 @@ describe("getRegistry", () => {
     expect(result.items).toHaveLength(0)
   })
 
+  it("should reject source registries that use include", async () => {
+    server.use(
+      http.get("https://source.com/registry.json", () => {
+        return HttpResponse.json({
+          name: "@source/registry",
+          homepage: "https://source.com",
+          include: ["registry/ui/registry.json"],
+          items: [],
+        })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@source": {
+          url: "https://source.com/{name}.json",
+        },
+      },
+    } as any
+
+    await expect(
+      getRegistry("@source", { config: mockConfig })
+    ).rejects.toThrow(RegistryValidationError)
+    await expect(
+      getRegistry("@source", { config: mockConfig })
+    ).rejects.toThrow("must serve a resolved registry catalog")
+  })
+
   it("should handle 404 error from registry endpoint", async () => {
     server.use(
       http.get("https://notfound.com/registry.json", () => {
@@ -1172,6 +1203,28 @@ describe("getRegistry", () => {
         { name: "card", type: "registry:ui" },
       ],
     })
+  })
+
+  it("should reject direct URL source registries that use include", async () => {
+    const registryUrl = "https://example.com/source-registry.json"
+
+    server.use(
+      http.get(registryUrl, () => {
+        return HttpResponse.json({
+          name: "source-registry",
+          homepage: "https://example.com",
+          include: ["registry/ui/registry.json"],
+          items: [],
+        })
+      })
+    )
+
+    await expect(getRegistry(registryUrl)).rejects.toThrow(
+      RegistryValidationError
+    )
+    await expect(getRegistry(registryUrl)).rejects.toThrow(
+      "must serve a resolved registry catalog"
+    )
   })
 
   it("should handle malformed URL gracefully", async () => {
