@@ -138,6 +138,12 @@
     "description": "Neubrutalism component library with 43 components, 42 SVG shapes, thick borders, and hard shadows. Supports React, Vue, and Nuxt. Built on shadcn/ui."
   },
   {
+    "name": "@bklit",
+    "homepage": "https://ui.bklit.com",
+    "url": "https://ui.bklit.com/r/{name}.json",
+    "description": "Open-source composable chart components for React — line, area, bar, pie, radar, maps, and more. Built with Visx, Motion, and shadcn/ui."
+  },
+  {
     "name": "@bundui",
     "homepage": "https://bundui.io",
     "url": "https://bundui.io/r/{name}.json",
