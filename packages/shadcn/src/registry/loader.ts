@@ -1,10 +1,15 @@
 import * as fs from "fs/promises"
 import * as path from "path"
+import {
+  RegistryItemNotFoundError,
+  RegistryLocalFileError,
+  RegistryParseError,
+  RegistryValidationError,
+} from "@/src/registry/errors"
 import { isUrl } from "@/src/registry/utils"
 import {
   registryChunkSchema,
   registryItemSchema,
-  registrySchema,
   type Registry,
   type RegistryItem,
 } from "@/src/schema"
@@ -50,7 +55,7 @@ export async function loadRegistryItem(
   const item = result.registry.items.find((item) => item.name === itemName)
 
   if (!item) {
-    throw new Error(`Registry item "${itemName}" was not found.`)
+    throw new RegistryItemNotFoundError(itemName)
   }
 
   const rootDir = getRegistryRootDir(result, cwd, registryFile)
@@ -92,8 +97,9 @@ export async function readRegistryWithIncludes(
   }
 
   if (path.basename(rootFile) !== "registry.json") {
-    throw new Error(
-      `Invalid registry file at ${rootFile}: registries that use include must be named registry.json.`
+    throw new RegistryValidationError(
+      `Invalid registry file at ${rootFile}: registries that use include must be named registry.json.`,
+      { registryFile: rootFile }
     )
   }
 
@@ -159,13 +165,40 @@ export async function createRegistryItem(
       result.itemSources,
       fallbackDir
     )
-    ;(file as typeof file & { content?: string }).content = await fs.readFile(
-      sourcePath,
-      "utf-8"
-    )
+    ;(file as typeof file & { content?: string }).content =
+      await readRegistryItemFileContent(
+        item,
+        sourceFile.path,
+        sourcePath,
+        result.itemSources
+      )
   }
 
   return registryItemSchema.parse(registryItem)
+}
+
+async function readRegistryItemFileContent(
+  item: Pick<RegistryItem, "name">,
+  filePath: string,
+  sourcePath: string,
+  itemSources: Map<string, RegistryItemSource>
+) {
+  try {
+    return await fs.readFile(sourcePath, "utf-8")
+  } catch (error) {
+    throw new RegistryLocalFileError(sourcePath, error, {
+      message: `Failed to read file "${filePath}" for registry item "${item.name}" (${formatItemSource(
+        itemSources.get(item.name)
+      )}). Expected file at ${sourcePath}.`,
+      context: {
+        itemName: item.name,
+        itemFilePath: filePath,
+        sourcePath,
+      },
+      suggestion:
+        "Make sure the file path is relative to the registry.json file that declares the item.",
+    })
+  }
 }
 
 export function normalizeRegistryItemFilePaths(
@@ -229,7 +262,12 @@ async function readRegistryFile(
   validateRegistryFileWithinRoot(registryFile, context.cwd)
 
   if (chain.includes(registryFile)) {
-    throw new Error(formatIncludeCycle([...chain, registryFile]))
+    throw new RegistryValidationError(
+      formatIncludeCycle([...chain, registryFile]),
+      {
+        registryFile,
+      }
+    )
   }
 
   const nextChain = [...chain, registryFile]
@@ -278,11 +316,12 @@ async function readRegistryJson(registryFile: string) {
   try {
     return await fs.readFile(registryFile, "utf-8")
   } catch (error) {
-    throw new Error(
-      `Failed to read registry file at ${registryFile}: ${
-        error instanceof Error ? error.message : "Unknown error"
-      }`
-    )
+    throw new RegistryLocalFileError(registryFile, error, {
+      message: `Failed to read registry file at ${registryFile}.`,
+      context: { registryFile },
+      suggestion:
+        "Check that the registry.json file exists and that the path is correct.",
+    })
   }
 }
 
@@ -291,19 +330,26 @@ function parseRegistry(content: string, registryFile: string) {
   try {
     json = JSON.parse(content)
   } catch (error) {
-    throw new Error(
-      `Invalid JSON in registry file at ${registryFile}: ${
-        error instanceof Error ? error.message : "Unknown error"
-      }`
-    )
+    throw new RegistryParseError(registryFile, error, {
+      subject: "registry file",
+      context: { registryFile },
+      suggestion:
+        "Fix the JSON syntax in the registry.json file and try again.",
+    })
   }
 
   const result = registryChunkSchema.safeParse(json)
   if (!result.success) {
-    throw new Error(
+    throw new RegistryValidationError(
       `Invalid registry file at ${registryFile}:\n${formatZodIssues(
         result.error
-      )}`
+      )}`,
+      {
+        registryFile,
+        cause: result.error,
+        suggestion:
+          "Update the registry.json file so it matches the registry schema.",
+      }
     )
   }
 
@@ -325,10 +371,11 @@ function validateRootRegistry(
   }
 
   if (missingFields.length) {
-    throw new Error(
-      `Invalid root registry file at ${registryFile}: missing required field${missingFields.length > 1 ? "s" : ""} ${missingFields
+    throw new RegistryValidationError(
+      `Invalid root registry file at ${registryFile}: root registry.json must define ${missingFields
         .map((field) => `"${field}"`)
-        .join(", ")}.`
+        .join(" and ")}. Included registry.json files may omit these fields.`,
+      { registryFile }
     )
   }
 }
@@ -340,26 +387,42 @@ function resolveIncludePath(
   registryFile: string
 ) {
   if (isUrl(includePath)) {
-    throw new Error(
-      `Invalid include "${includePath}" in ${registryFile}: remote includes are not supported by shadcn build.`
+    throw new RegistryValidationError(
+      `Invalid include "${includePath}" in ${registryFile}: remote includes are not supported by shadcn build. Use a relative path to a registry.json file in the same repository.`,
+      {
+        registryFile,
+        context: { includePath },
+      }
     )
   }
 
   if (path.isAbsolute(includePath)) {
-    throw new Error(
-      `Invalid include "${includePath}" in ${registryFile}: include paths must be relative.`
+    throw new RegistryValidationError(
+      `Invalid include "${includePath}" in ${registryFile}: include paths must be relative. Use a path like "./registry/ui/registry.json".`,
+      {
+        registryFile,
+        context: { includePath },
+      }
     )
   }
 
   if (hasParentTraversal(includePath)) {
-    throw new Error(
-      `Invalid include "${includePath}" in ${registryFile}: include paths cannot use parent-directory traversal.`
+    throw new RegistryValidationError(
+      `Invalid include "${includePath}" in ${registryFile}: include paths cannot use parent-directory traversal. Keep included registry.json files inside the registry root.`,
+      {
+        registryFile,
+        context: { includePath },
+      }
     )
   }
 
   if (path.basename(includePath) !== "registry.json") {
-    throw new Error(
-      `Invalid include "${includePath}" in ${registryFile}: include paths must explicitly reference a registry.json file.`
+    throw new RegistryValidationError(
+      `Invalid include "${includePath}" in ${registryFile}: include paths must explicitly reference a registry.json file. Use a path like "./registry/ui/registry.json".`,
+      {
+        registryFile,
+        context: { includePath },
+      }
     )
   }
 
@@ -371,8 +434,12 @@ function resolveIncludePath(
 
 function validateRegistryFileWithinRoot(registryFile: string, cwd: string) {
   if (!isPathInside(registryFile, cwd)) {
-    throw new Error(
-      `Invalid registry file at ${registryFile}: registry includes must stay inside ${cwd}.`
+    throw new RegistryValidationError(
+      `Invalid registry file at ${registryFile}: registry includes must stay inside ${cwd}.`,
+      {
+        registryFile,
+        context: { cwd },
+      }
     )
   }
 }
@@ -401,27 +468,43 @@ function validateRegistryItemFiles(
 ) {
   for (const file of item.files ?? []) {
     if (isUrl(file.path)) {
-      throw new Error(
-        `Invalid file path "${file.path}" for item "${item.name}" in ${registryFile}: remote file paths are not supported by shadcn build.`
+      throw new RegistryValidationError(
+        `Invalid file path "${file.path}" for item "${item.name}" in ${registryFile}: remote file paths are not supported by shadcn build.`,
+        {
+          registryFile,
+          context: { itemName: item.name, filePath: file.path },
+        }
       )
     }
 
     if (path.isAbsolute(file.path)) {
-      throw new Error(
-        `Invalid file path "${file.path}" for item "${item.name}" in ${registryFile}: file paths must be relative.`
+      throw new RegistryValidationError(
+        `Invalid file path "${file.path}" for item "${item.name}" in ${registryFile}: file paths must be relative.`,
+        {
+          registryFile,
+          context: { itemName: item.name, filePath: file.path },
+        }
       )
     }
 
     if (hasParentTraversal(file.path)) {
-      throw new Error(
-        `Invalid file path "${file.path}" for item "${item.name}" in ${registryFile}: file paths cannot use parent-directory traversal.`
+      throw new RegistryValidationError(
+        `Invalid file path "${file.path}" for item "${item.name}" in ${registryFile}: file paths cannot use parent-directory traversal.`,
+        {
+          registryFile,
+          context: { itemName: item.name, filePath: file.path },
+        }
       )
     }
 
     const resolvedPath = path.resolve(registryDir, file.path)
     if (!isPathInside(resolvedPath, registryDir)) {
-      throw new Error(
-        `Invalid file path "${file.path}" for item "${item.name}" in ${registryFile}: file paths must stay inside the registry chunk directory.`
+      throw new RegistryValidationError(
+        `Invalid file path "${file.path}" for item "${item.name}" in ${registryFile}: file paths must stay inside the registry chunk directory.`,
+        {
+          registryFile,
+          context: { itemName: item.name, filePath: file.path },
+        }
       )
     }
   }
@@ -442,10 +525,18 @@ function validateDuplicateItems(
 
     const firstSource = itemSources.get(existing)
     const secondSource = itemSources.get(item)
-    throw new Error(
+    throw new RegistryValidationError(
       `Duplicate registry item name "${item.name}". Registry item names must be unique.\n` +
         `  - ${formatItemSource(firstSource)}\n` +
-        `  - ${formatItemSource(secondSource)}`
+        `  - ${formatItemSource(secondSource)}\n` +
+        `Rename one of these items so each name is unique across the resolved registry.`,
+      {
+        context: {
+          itemName: item.name,
+          firstSource: formatItemSource(firstSource),
+          secondSource: formatItemSource(secondSource),
+        },
+      }
     )
   }
 }

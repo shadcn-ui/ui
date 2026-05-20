@@ -15,6 +15,7 @@ export {
 } from "./loader"
 
 export {
+  RegistryErrorCode,
   RegistryError,
   RegistryNotFoundError,
   RegistryUnauthorizedError,
@@ -23,6 +24,8 @@ export {
   RegistryNotConfiguredError,
   RegistryLocalFileError,
   RegistryParseError,
+  RegistryValidationError,
+  RegistryItemNotFoundError,
   RegistriesIndexParseError,
   RegistryMissingEnvironmentVariablesError,
   RegistryInvalidNamespaceError,

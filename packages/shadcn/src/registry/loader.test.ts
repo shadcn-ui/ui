@@ -4,6 +4,13 @@ import * as path from "path"
 import { describe, expect, it, vi } from "vitest"
 
 import {
+  RegistryErrorCode,
+  RegistryItemNotFoundError,
+  RegistryLocalFileError,
+  RegistryParseError,
+  RegistryValidationError,
+} from "./errors"
+import {
   getRegistryItemFileRootPath,
   getRegistryItemFileSource,
   loadRegistry,
@@ -103,7 +110,20 @@ describe("readRegistryWithIncludes", () => {
 
     await expect(
       readRegistryWithIncludes("registry.json", { cwd })
-    ).rejects.toThrow('missing required fields "name", "homepage"')
+    ).rejects.toThrow('root registry.json must define "name" and "homepage"')
+    await expect(
+      readRegistryWithIncludes("registry.json", { cwd })
+    ).rejects.toBeInstanceOf(RegistryValidationError)
+  })
+
+  it("reports invalid registry JSON as a parse error", async () => {
+    const cwd = await createFixture({
+      "registry.json": "{",
+    })
+
+    await expect(
+      readRegistryWithIncludes("registry.json", { cwd })
+    ).rejects.toBeInstanceOf(RegistryParseError)
   })
 
   it("rejects include targets that are not registry.json files", async () => {
@@ -123,7 +143,10 @@ describe("readRegistryWithIncludes", () => {
 
     await expect(
       readRegistryWithIncludes("registry.json", { cwd })
-    ).rejects.toThrow("must explicitly reference a registry.json file")
+    ).rejects.toThrow('Use a path like "./registry/ui/registry.json"')
+    await expect(
+      readRegistryWithIncludes("registry.json", { cwd })
+    ).rejects.toBeInstanceOf(RegistryValidationError)
   })
 
   it("rejects duplicate item names in the resolved catalog", async () => {
@@ -153,7 +176,10 @@ describe("readRegistryWithIncludes", () => {
 
     await expect(
       readRegistryWithIncludes("registry.json", { cwd })
-    ).rejects.toThrow('Duplicate registry item name "button"')
+    ).rejects.toThrow("Rename one of these items")
+    await expect(
+      readRegistryWithIncludes("registry.json", { cwd })
+    ).rejects.toBeInstanceOf(RegistryValidationError)
   })
 
   it("rejects parent traversal in item file paths for include composition", async () => {
@@ -185,6 +211,9 @@ describe("readRegistryWithIncludes", () => {
     await expect(
       readRegistryWithIncludes("registry.json", { cwd })
     ).rejects.toThrow("file paths cannot use parent-directory traversal")
+    await expect(
+      readRegistryWithIncludes("registry.json", { cwd })
+    ).rejects.toBeInstanceOf(RegistryValidationError)
   })
 
   it("keeps legacy single-file registries compatible", async () => {
@@ -355,6 +384,55 @@ describe("readRegistryWithIncludes", () => {
           content: "export function Button() {}",
         },
       ],
+    })
+  })
+
+  it("reports missing item files with item and source context", async () => {
+    const cwd = await createFixture({
+      "registry.json": JSON.stringify({
+        name: "example",
+        homepage: "https://example.com",
+        include: ["registry/ui/registry.json"],
+      }),
+      "registry/ui/registry.json": JSON.stringify({
+        items: [
+          {
+            name: "button",
+            type: "registry:ui",
+            files: [
+              {
+                path: "button.tsx",
+                type: "registry:ui",
+              },
+            ],
+          },
+        ],
+      }),
+    })
+
+    await expect(loadRegistryItem("button", { cwd })).rejects.toThrow(
+      'Failed to read file "button.tsx" for registry item "button"'
+    )
+    await expect(loadRegistryItem("button", { cwd })).rejects.toBeInstanceOf(
+      RegistryLocalFileError
+    )
+  })
+
+  it("throws a typed error when a registry item is not found", async () => {
+    const cwd = await createFixture({
+      "registry.json": JSON.stringify({
+        name: "example",
+        homepage: "https://example.com",
+        items: [],
+      }),
+    })
+
+    await expect(loadRegistryItem("button", { cwd })).rejects.toBeInstanceOf(
+      RegistryItemNotFoundError
+    )
+    await expect(loadRegistryItem("button", { cwd })).rejects.toMatchObject({
+      code: RegistryErrorCode.NOT_FOUND,
+      itemName: "button",
     })
   })
 })
