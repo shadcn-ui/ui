@@ -897,6 +897,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-binoculars-icon lucide-binoculars fill-none!'><path d='M10 10h4'/><path d='M19 7V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3'/><path d='M20 21a2 2 0 0 0 2-2v-3.851c0-1.39-2-2.962-2-4.829V8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2z'/><path d='M 22 16 L 2 16'/><path d='M4 21a2 2 0 0 1-2-2v-3.851c0-1.39 2-2.962 2-4.829V8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2z'/><path d='M9 7V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v3'/></svg>"
   },
   {
+    "name": "@trophy-ui",
+    "homepage": "https://ui.trophy.so",
+    "url": "https://ui.trophy.so/r/{name}.json",
+    "description": "Open-source gamification UI components for streaks, achievements, leaderboards, points, and more. Built on shadcn/ui and Tailwind CSS.",
+    "logo": "<svg width='32' height='51' viewBox='0 0 40 64' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='32' y='70.75' width='13' height='15' transform='rotate(180 28 64.75)' fill='var(--foreground)'/><rect x='32' y='55.75' width='13' height='13' transform='rotate(180 28 49.75)' fill='var(--foreground)'/><rect x='19' y='55.75' width='15' height='13' transform='rotate(180 15 49.75)' fill='var(--foreground)'/><rect x='53.5' y='49.25' width='13' height='15' transform='rotate(180 49.5 43.25)' fill='var(--foreground)'/><rect x='53.5' y='34.25' width='13' height='13' transform='rotate(180 49.5 28.25)' fill='var(--foreground)'/><rect x='40.5' y='34.25' width='15' height='13' transform='rotate(180 36.5 28.25)' fill='var(--foreground)'/></svg>"
+  },
+  {
     "name": "@uitripled",
     "homepage": "https://ui.tripled.work",
     "url": "https://ui.tripled.work/r/{name}.json",

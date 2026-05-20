@@ -768,6 +768,12 @@
     "description": "A component for building onboarding tours. Designed to integrate with shadcn/ui."
   },
   {
+    "name": "@trophy-ui",
+    "homepage": "https://ui.trophy.so",
+    "url": "https://ui.trophy.so/r/{name}.json",
+    "description": "Open-source gamification UI components for streaks, achievements, leaderboards, points, and more. Built on shadcn/ui and Tailwind CSS."
+  },
+  {
     "name": "@uitripled",
     "homepage": "https://ui.tripled.work",
     "url": "https://ui.tripled.work/r/{name}.json",
