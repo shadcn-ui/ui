@@ -1,7 +1,7 @@
 import * as fs from "fs/promises"
 import { tmpdir } from "os"
 import * as path from "path"
-import { describe, expect, it, vi } from "vitest"
+import { describe, expect, it } from "vitest"
 
 import {
   RegistryErrorCode,
@@ -386,8 +386,7 @@ describe("readRegistryWithIncludes", () => {
     expect(registry.items[0].files?.[0].path).toBe("components/button.tsx")
   })
 
-  it("warns when a warning handler is provided for missing non-namespaced dependencies", async () => {
-    const warn = vi.fn()
+  it("preserves registry dependencies for install-time resolution", async () => {
     const cwd = await createFixture({
       "registry.json": JSON.stringify({
         name: "example",
@@ -402,65 +401,8 @@ describe("readRegistryWithIncludes", () => {
           {
             name: "login-form",
             type: "registry:block",
-            registryDependencies: ["button"],
-          },
-          {
-            name: "signup-form",
-            type: "registry:block",
-            registryDependencies: ["button"],
-          },
-        ],
-      }),
-    })
-
-    await readRegistryWithIncludes("registry.json", { cwd, warn })
-
-    expect(warn).toHaveBeenCalledWith(
-      expect.stringContaining('dependency "button"')
-    )
-    expect(warn).toHaveBeenCalledTimes(1)
-  })
-
-  it("does not warn by default for missing non-namespaced dependencies", async () => {
-    const warn = vi.fn()
-    const cwd = await createFixture({
-      "registry.json": JSON.stringify({
-        name: "example",
-        homepage: "https://example.com",
-        include: ["registry/blocks/registry.json"],
-        items: [],
-      }),
-      "registry/blocks/registry.json": JSON.stringify({
-        items: [
-          {
-            name: "login-form",
-            type: "registry:block",
-            registryDependencies: ["button"],
-          },
-        ],
-      }),
-    })
-
-    await readRegistryWithIncludes("registry.json", { cwd })
-
-    expect(warn).not.toHaveBeenCalled()
-  })
-
-  it("does not warn for namespaced or URL registry dependencies", async () => {
-    const warn = vi.fn()
-    const cwd = await createFixture({
-      "registry.json": JSON.stringify({
-        name: "example",
-        homepage: "https://example.com",
-        include: ["registry/blocks/registry.json"],
-        items: [],
-      }),
-      "registry/blocks/registry.json": JSON.stringify({
-        items: [
-          {
-            name: "login-form",
-            type: "registry:block",
             registryDependencies: [
+              "button",
               "@acme/button",
               "https://example.com/r/input.json",
             ],
@@ -469,9 +411,13 @@ describe("readRegistryWithIncludes", () => {
       }),
     })
 
-    await readRegistryWithIncludes("registry.json", { cwd, warn })
+    const result = await readRegistryWithIncludes("registry.json", { cwd })
 
-    expect(warn).not.toHaveBeenCalled()
+    expect(result.registry.items[0].registryDependencies).toEqual([
+      "button",
+      "@acme/button",
+      "https://example.com/r/input.json",
+    ])
   })
 
   it("resolves a local registry catalog for dynamic registry routes", async () => {

@@ -65,7 +65,6 @@ export async function readRegistryWithIncludes(
   registryFile: string,
   options: {
     cwd: string
-    warn?: (message: string) => void
   }
 ) {
   const rootFile = path.resolve(options.cwd, registryFile)
@@ -108,13 +107,6 @@ export async function readRegistryWithIncludes(
   const result = await readRegistryFile(rootFile, rootRegistry, context, [])
 
   validateDuplicateItems(result.items, context.itemSourcesByItem)
-  if (options.warn) {
-    validateRegistryDependencies(
-      result.items,
-      context.itemSources,
-      options.warn
-    )
-  }
 
   const { include, ...registry } = result
   validateRootRegistry(registry, rootFile)
@@ -589,39 +581,6 @@ function validateDuplicateItems(
         },
       }
     )
-  }
-}
-
-function validateRegistryDependencies(
-  items: RegistryItem[],
-  itemSources: Map<string, RegistryItemSource>,
-  warn: (message: string) => void
-) {
-  const itemNames = new Set(items.map((item) => item.name))
-  const warnedDependencies = new Set<string>()
-
-  for (const item of items) {
-    for (const dependency of item.registryDependencies ?? []) {
-      if (
-        dependency.startsWith("@") ||
-        isUrl(dependency) ||
-        itemNames.has(dependency)
-      ) {
-        continue
-      }
-
-      if (warnedDependencies.has(dependency)) {
-        continue
-      }
-
-      warnedDependencies.add(dependency)
-      const source = itemSources.get(item.name)
-      warn(
-        `Warning: Registry dependency "${dependency}" was not found in the resolved registry catalog (${formatItemSource(
-          source
-        )}). It will be resolved externally during install.`
-      )
-    }
   }
 }
 

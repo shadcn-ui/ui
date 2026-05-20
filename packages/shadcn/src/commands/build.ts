@@ -45,7 +45,6 @@ export const build = new Command()
         resolvePaths.registryFile,
         {
           cwd: resolvePaths.cwd,
-          warn: logger.warn,
         }
       )
       const resolvedRegistry = registryResult.registry
