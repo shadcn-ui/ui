@@ -7431,6 +7431,257 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "form-formisch-demo": {
+      name: "form-formisch-demo",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "input", "input-group", "button", "card"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-formisch-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-formisch-demo"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-formisch-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-formisch-input": {
+      name: "form-formisch-input",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "input", "button", "card"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-formisch-input.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-formisch-input"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-formisch-input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-formisch-textarea": {
+      name: "form-formisch-textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "textarea", "button", "card"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-formisch-textarea.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-formisch-textarea"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-formisch-textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-formisch-select": {
+      name: "form-formisch-select",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "select", "button", "card"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-formisch-select.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-formisch-select"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-formisch-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-formisch-checkbox": {
+      name: "form-formisch-checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "checkbox", "button", "card"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-formisch-checkbox.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-formisch-checkbox"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-formisch-checkbox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-formisch-radiogroup": {
+      name: "form-formisch-radiogroup",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "radio-group", "button", "card"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-formisch-radiogroup.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-formisch-radiogroup"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-formisch-radiogroup"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-formisch-switch": {
+      name: "form-formisch-switch",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "switch", "button", "card"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-formisch-switch.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-formisch-switch"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-formisch-switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-formisch-array": {
+      name: "form-formisch-array",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "input", "input-group", "button", "card"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-formisch-array.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-formisch-array"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-formisch-array"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-formisch-complex": {
+      name: "form-formisch-complex",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "field",
+        "button",
+        "card",
+        "checkbox",
+        "radio-group",
+        "select",
+        "switch",
+      ],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-formisch-complex.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-formisch-complex"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-formisch-complex"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "drawer-dialog": {
       name: "drawer-dialog",
       title: "undefined",

@@ -124,6 +124,7 @@
 - [Forms Overview](https://ui.shadcn.com/docs/forms): Guide to building forms with shadcn/ui.
 - [React Hook Form](https://ui.shadcn.com/docs/forms/react-hook-form): Using shadcn/ui with React Hook Form.
 - [TanStack Form](https://ui.shadcn.com/docs/forms/tanstack-form): Using shadcn/ui with TanStack Form.
+- [Formisch](https://ui.shadcn.com/docs/forms/formisch): Using shadcn/ui with Formisch.
 - [Forms - Next.js](https://ui.shadcn.com/docs/forms/next): Building forms in Next.js with Server Actions.
 
 ## Advanced

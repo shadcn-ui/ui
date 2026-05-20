@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-formisch-input",
+  "dependencies": [
+    "@formisch/react",
+    "valibot"
+  ],
+  "registryDependencies": [
+    "field",
+    "input",
+    "button",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/form-formisch-input.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Form, Field as FormischField, reset, useForm } from \"@formisch/react\"\nimport type { SubmitHandler } from \"@formisch/react\"\nimport { toast } from \"sonner\"\nimport * as v from \"valibot\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/new-york-v4/ui/card\"\nimport {\n  Field,\n  FieldDescription,\n  FieldError,\n  FieldGroup,\n  FieldLabel,\n} from \"@/registry/new-york-v4/ui/field\"\nimport { Input } from \"@/registry/new-york-v4/ui/input\"\n\nconst FormSchema = v.object({\n  username: v.pipe(\n    v.string(),\n    v.minLength(3, \"Username must be at least 3 characters.\"),\n    v.maxLength(10, \"Username must be at most 10 characters.\"),\n    v.regex(\n      /^[a-zA-Z0-9_]+$/,\n      \"Username can only contain letters, numbers, and underscores.\"\n    )\n  ),\n})\n\nexport default function FormFormischInput() {\n  const form = useForm({\n    schema: FormSchema,\n    initialInput: {\n      username: \"\",\n    },\n  })\n\n  const handleSubmit: SubmitHandler<typeof FormSchema> = (output) => {\n    toast(\"You submitted the following values:\", {\n      description: (\n        <pre className=\"mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground\">\n          <code>{JSON.stringify(output, null, 2)}</code>\n        </pre>\n      ),\n      position: \"bottom-right\",\n      classNames: {\n        content: \"flex flex-col gap-2\",\n      },\n      style: {\n        \"--border-radius\": \"calc(var(--radius)  + 4px)\",\n      } as React.CSSProperties,\n    })\n  }\n\n  return (\n    <Card className=\"w-full sm:max-w-md\">\n      <CardHeader>\n        <CardTitle>Profile Settings</CardTitle>\n        <CardDescription>\n          Update your profile information below.\n        </CardDescription>\n      </CardHeader>\n      <CardContent>\n        <Form of={form} id=\"form-formisch-input\" onSubmit={handleSubmit}>\n          <FieldGroup>\n            <FormischField of={form} path={[\"username\"]}>\n              {(field) => (\n                <Field data-invalid={field.errors !== null}>\n                  <FieldLabel htmlFor=\"form-formisch-input-username\">\n                    Username\n                  </FieldLabel>\n                  <Input\n                    {...field.props}\n                    id=\"form-formisch-input-username\"\n                    value={field.input ?? \"\"}\n                    aria-invalid={field.errors !== null}\n                    placeholder=\"shadcn\"\n                    autoComplete=\"username\"\n                  />\n                  <FieldDescription>\n                    This is your public display name. Must be between 3 and 10\n                    characters. Must only contain letters, numbers, and\n                    underscores.\n                  </FieldDescription>\n                  {field.errors && (\n                    <FieldError\n                      errors={field.errors.map((message) => ({ message }))}\n                    />\n                  )}\n                </Field>\n              )}\n            </FormischField>\n          </FieldGroup>\n        </Form>\n      </CardContent>\n      <CardFooter>\n        <Field orientation=\"horizontal\">\n          <Button type=\"button\" variant=\"outline\" onClick={() => reset(form)}>\n            Reset\n          </Button>\n          <Button type=\"submit\" form=\"form-formisch-input\">\n            Save\n          </Button>\n        </Field>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
