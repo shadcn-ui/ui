@@ -1174,13 +1174,5 @@
     "homepage": "https://wensity.com",
     "url": "https://raw.githubusercontent.com/ksparth12/wensity-shadcn-registry/main/{name}.json",
     "description": "Motion-rich React components for AI interfaces, SaaS blocks, and cinematic interactions. Free Wensity components only."
-  },
-  {
-  "name": "@nexus-labs",
-  "homepage": "https://nexus-ui.com",
-  "url": "https://nexus-ui.com/r/{name}.json",
-  "registry": "https://nexus-ui.com/registry.json",
-  "description": "Production-ready components and full-page Next.js templates with cinematic Framer Motion animations, Tailwind CSS v4, and TypeScript."
-}
-
+  }
 ]
