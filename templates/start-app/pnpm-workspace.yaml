@@ -2,4 +2,5 @@ packages: []
 
 allowBuilds:
   esbuild: true
+  unrs-resolver: true
   msw: false
