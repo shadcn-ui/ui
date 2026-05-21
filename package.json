@@ -41,7 +41,7 @@
     "validate:registries": "pnpm --filter=v4 validate:registries",
     "test:apps": "pnpm --filter=v4 test:apps"
   },
-  "packageManager": "pnpm@9.0.6",
+  "packageManager": "pnpm@10.33.4",
   "dependencies": {
     "@babel/core": "^7.22.1",
     "@changesets/changelog-github": "^0.4.8",
