@@ -1,8 +1,8 @@
 export const PAGES_NEW = [
   "/create",
-  "/docs/cli",
+  "/docs/registry",
+  "/docs/registry/getting-started",
   "/docs/changelog",
-  "/docs/skills",
 ]
 
 export const PAGES_UPDATED = ["/docs/components/button"]

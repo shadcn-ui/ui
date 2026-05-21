@@ -198,11 +198,37 @@ export type RegistryBaseItem = Extract<RegistryItem, { type: "registry:base" }>
 // Helper type for registry:font items specifically.
 export type RegistryFontItem = Extract<RegistryItem, { type: "registry:font" }>
 
-export const registrySchema = z.object({
-  name: z.string(),
-  homepage: z.string(),
-  items: z.array(registryItemSchema),
-})
+const registryBaseSchema = z
+  .object({
+    $schema: z.string().optional(),
+    name: z.string().optional(),
+    homepage: z.string().optional(),
+    include: z.array(z.string()).optional(),
+    items: z.array(registryItemSchema).optional(),
+  })
+  .refine(
+    (registry) =>
+      registry.items !== undefined || registry.include !== undefined,
+    {
+      message: "Registry must define at least one of `items` or `include`.",
+      path: ["items"],
+    }
+  )
+
+export const registryChunkSchema = registryBaseSchema.transform((registry) => ({
+  ...registry,
+  items: registry.items ?? [],
+}))
+
+export const registrySchema = registryChunkSchema.pipe(
+  z.object({
+    $schema: z.string().optional(),
+    name: z.string(),
+    homepage: z.string(),
+    include: z.array(z.string()).optional(),
+    items: z.array(registryItemSchema),
+  })
+)
 
 export type Registry = z.infer<typeof registrySchema>
 
