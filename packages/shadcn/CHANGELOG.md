@@ -1,5 +1,17 @@
 # @shadcn/ui
 
+## 4.8.0
+
+### Minor Changes
+
+- [#10715](https://github.com/shadcn-ui/ui/pull/10715) [`51e3cfaf32faeff2589e5c74d81ffd109f509e93`](https://github.com/shadcn-ui/ui/commit/51e3cfaf32faeff2589e5c74d81ffd109f509e93) Thanks [@shadcn](https://github.com/shadcn)! - add shadcn registry validate command
+
+- [#10708](https://github.com/shadcn-ui/ui/pull/10708) [`c8ab3801ecf97c0350ac0234a25e61f19ccaba62`](https://github.com/shadcn-ui/ui/commit/c8ab3801ecf97c0350ac0234a25e61f19ccaba62) Thanks [@shadcn](https://github.com/shadcn)! - add include to registry.json
+
+### Patch Changes
+
+- [#10567](https://github.com/shadcn-ui/ui/pull/10567) [`1c4a53a37adeba36dbd5c07980c5bb6d295cea9e`](https://github.com/shadcn-ui/ui/commit/1c4a53a37adeba36dbd5c07980c5bb6d295cea9e) Thanks [@shadcn](https://github.com/shadcn)! - fix failing version derivation test
+
 ## 4.7.0
 
 ### Minor Changes
