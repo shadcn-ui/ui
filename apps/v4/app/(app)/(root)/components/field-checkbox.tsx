@@ -1,5 +1,5 @@
-import { Checkbox } from "@/registry/new-york-v4/ui/checkbox"
-import { Field, FieldLabel } from "@/registry/new-york-v4/ui/field"
+import { Checkbox } from "@/styles/radix-nova/ui/checkbox"
+import { Field, FieldLabel } from "@/styles/radix-nova/ui/field"
 
 export function FieldCheckbox() {
   return (

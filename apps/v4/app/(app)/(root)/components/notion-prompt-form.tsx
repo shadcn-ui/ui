@@ -17,8 +17,8 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/registry/new-york-v4/ui/avatar"
-import { Badge } from "@/registry/new-york-v4/ui/badge"
+} from "@/styles/radix-nova/ui/avatar"
+import { Badge } from "@/styles/radix-nova/ui/badge"
 import {
   Command,
   CommandEmpty,
@@ -26,7 +26,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/registry/new-york-v4/ui/command"
+} from "@/styles/radix-nova/ui/command"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -39,25 +39,25 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/new-york-v4/ui/dropdown-menu"
-import { Field, FieldLabel } from "@/registry/new-york-v4/ui/field"
+} from "@/styles/radix-nova/ui/dropdown-menu"
+import { Field, FieldLabel } from "@/styles/radix-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupTextarea,
-} from "@/registry/new-york-v4/ui/input-group"
+} from "@/styles/radix-nova/ui/input-group"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/new-york-v4/ui/popover"
-import { Switch } from "@/registry/new-york-v4/ui/switch"
+} from "@/styles/radix-nova/ui/popover"
+import { Switch } from "@/styles/radix-nova/ui/switch"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/new-york-v4/ui/tooltip"
+} from "@/styles/radix-nova/ui/tooltip"
 
 const SAMPLE_DATA = {
   mentionable: [
@@ -190,17 +190,17 @@ export function NotionPromptForm() {
   const hasMentions = mentions.length > 0
 
   return (
-    <form className="[--radius:1.2rem]">
+    <form>
       <Field>
         <FieldLabel htmlFor="notion-prompt" className="sr-only">
           Prompt
         </FieldLabel>
-        <InputGroup>
+        <InputGroup className="rounded-xl">
           <InputGroupTextarea
             id="notion-prompt"
             placeholder="Ask, search, or make anything..."
           />
-          <InputGroupAddon align="block-start">
+          <InputGroupAddon align="block-start" className="pt-3">
             <Popover
               open={mentionPopoverOpen}
               onOpenChange={setMentionPopoverOpen}
@@ -214,7 +214,7 @@ export function NotionPromptForm() {
                     <InputGroupButton
                       variant="outline"
                       size={!hasMentions ? "sm" : "icon-sm"}
-                      className="rounded-full transition-transform"
+                      className="transition-transform"
                     >
                       <IconAt /> {!hasMentions && "Add context"}
                     </InputGroupButton>
@@ -222,7 +222,7 @@ export function NotionPromptForm() {
                 </TooltipTrigger>
                 <TooltipContent>Mention a person, page, or date</TooltipContent>
               </Tooltip>
-              <PopoverContent className="p-0 [--radius:1.2rem]" align="start">
+              <PopoverContent className="p-0" align="start">
                 <Command>
                   <CommandInput placeholder="Search pages..." />
                   <CommandList>
@@ -240,6 +240,7 @@ export function NotionPromptForm() {
                               setMentions((prev) => [...prev, currentValue])
                               setMentionPopoverOpen(false)
                             }}
+                            className="rounded-lg"
                           >
                             <MentionableIcon item={item} />
                             {item.title}
@@ -251,7 +252,7 @@ export function NotionPromptForm() {
                 </Command>
               </PopoverContent>
             </Popover>
-            <div className="no-scrollbar -m-1.5 flex gap-1 overflow-y-auto p-1.5">
+            <div className="-m-1.5 no-scrollbar flex gap-1 overflow-y-auto p-1.5">
               {mentions.map((mention) => {
                 const item = SAMPLE_DATA.mentionable.find(
                   (item) => item.title === mention
@@ -266,7 +267,7 @@ export function NotionPromptForm() {
                     key={mention}
                     size="sm"
                     variant="secondary"
-                    className="rounded-full !pl-2"
+                    className="rounded-full pl-2!"
                     onClick={() => {
                       setMentions((prev) => prev.filter((m) => m !== mention))
                     }}
@@ -309,10 +310,10 @@ export function NotionPromptForm() {
               <DropdownMenuContent
                 side="top"
                 align="start"
-                className="[--radius:1rem]"
+                className="min-w-48"
               >
-                <DropdownMenuGroup className="w-42">
-                  <DropdownMenuLabel className="text-muted-foreground text-xs">
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel className="text-xs text-muted-foreground">
                     Select Agent Mode
                   </DropdownMenuLabel>
                   {SAMPLE_DATA.models.map((model) => (
@@ -346,11 +347,7 @@ export function NotionPromptForm() {
                   <IconWorld /> All Sources
                 </InputGroupButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent
-                side="top"
-                align="end"
-                className="[--radius:1rem]"
-              >
+              <DropdownMenuContent side="top" align="end" className="w-72">
                 <DropdownMenuGroup>
                   <DropdownMenuItem
                     asChild
@@ -434,7 +431,7 @@ export function NotionPromptForm() {
                   <DropdownMenuItem>
                     <IconPlus /> Connect Apps
                   </DropdownMenuItem>
-                  <DropdownMenuLabel className="text-muted-foreground text-xs">
+                  <DropdownMenuLabel className="text-xs text-muted-foreground">
                     We&apos;ll only search in the sources selected here.
                   </DropdownMenuLabel>
                 </DropdownMenuGroup>

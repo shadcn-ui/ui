@@ -1,7 +1,7 @@
 import { registryItemSchema, type Registry } from "shadcn/schema"
 import { z } from "zod"
 
-import { themes } from "../themes"
+import { themes } from "../_legacy-themes"
 import { blocks } from "./blocks/_registry"
 import { charts } from "./charts/_registry"
 import { examples } from "./examples/_registry"
@@ -22,9 +22,21 @@ const DEPRECATED_ITEMS = [
 // Shared between index and style for backward compatibility.
 const NEW_YORK_V4_STYLE = {
   type: "registry:style",
-  dependencies: ["class-variance-authority", "lucide-react"],
-  devDependencies: ["tw-animate-css"],
+  dependencies: ["class-variance-authority", "lucide-react", "radix-ui"],
+  devDependencies: ["tw-animate-css", "shadcn"],
   registryDependencies: ["utils"],
+  css: {
+    '@import "tw-animate-css"': {},
+    '@import "shadcn/tailwind.css"': {},
+    "@layer base": {
+      "*": {
+        "@apply border-border outline-ring/50": {},
+      },
+      body: {
+        "@apply bg-background text-foreground": {},
+      },
+    },
+  },
   cssVars: {},
   files: [],
 }
@@ -50,21 +62,8 @@ export const registry = {
       ...themes,
       ...examples,
       ...internal,
-    ]
-      .filter((item) => {
-        return !DEPRECATED_ITEMS.includes(item.name)
-      })
-      .map((item) => {
-        // Temporary fix for dashboard-01.
-        if (item.name === "dashboard-01") {
-          item.dependencies?.push("@tabler/icons-react")
-        }
-
-        if (item.name === "accordion" && "tailwind" in item) {
-          delete item.tailwind
-        }
-
-        return item
-      })
+    ].filter((item) => {
+      return !DEPRECATED_ITEMS.includes(item.name)
+    })
   ),
 } satisfies Registry

@@ -1,23 +1,19 @@
 import Link from "next/link"
 
 import { PAGES_NEW } from "@/lib/docs"
-import { source } from "@/lib/source"
+import { getPagesFromFolder, type PageTreeFolder } from "@/lib/page-tree"
 
-export function ComponentsList() {
-  const components = source.pageTree.children.find(
-    (page) => page.$id === "components"
-  )
-
-  if (components?.type !== "folder") {
-    return
-  }
-
-  const list = components.children.filter(
-    (component) => component.type === "page"
-  )
+export function ComponentsList({
+  componentsFolder,
+  currentBase,
+}: {
+  componentsFolder: PageTreeFolder
+  currentBase: string
+}) {
+  const list = getPagesFromFolder(componentsFolder, currentBase)
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20">
+    <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20">
       {list.map((component) => (
         <Link
           key={component.$id}

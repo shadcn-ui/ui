@@ -1,12 +1,22 @@
 "use client"
 
 import * as React from "react"
+import Script from "next/script"
 import { useTheme } from "next-themes"
 
+import { cn } from "@/lib/utils"
 import { useMetaColor } from "@/hooks/use-meta-color"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
-export function ModeSwitcher() {
+export const DARK_MODE_FORWARD_TYPE = "dark-mode-forward"
+
+export function ModeSwitcher({
+  variant = "ghost",
+  className,
+}: {
+  variant?: React.ComponentProps<typeof Button>["variant"]
+  className?: React.ComponentProps<typeof Button>["className"]
+}) {
   const { setTheme, resolvedTheme } = useTheme()
   const { setMetaColor, metaColor } = useMetaColor()
 
@@ -20,11 +30,10 @@ export function ModeSwitcher() {
 
   return (
     <Button
-      variant="ghost"
+      variant={variant}
       size="icon"
-      className="group/toggle extend-touch-target size-8"
+      className={cn("group/toggle extend-touch-target size-8", className)}
       onClick={toggleTheme}
-      title="Toggle theme"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -47,5 +56,42 @@ export function ModeSwitcher() {
       </svg>
       <span className="sr-only">Toggle theme</span>
     </Button>
+  )
+}
+
+export function DarkModeScript() {
+  return (
+    // eslint-disable-next-line @next/next/no-before-interactive-script-outside-document
+    <Script
+      id="dark-mode-listener"
+      strategy="beforeInteractive"
+      dangerouslySetInnerHTML={{
+        __html: `
+            (function() {
+              // Forward D key
+              document.addEventListener('keydown', function(e) {
+                if ((e.key === 'd' || e.key === 'D') && !e.metaKey && !e.ctrlKey && !e.altKey) {
+                  if (
+                    (e.target instanceof HTMLElement && e.target.isContentEditable) ||
+                    e.target instanceof HTMLInputElement ||
+                    e.target instanceof HTMLTextAreaElement ||
+                    e.target instanceof HTMLSelectElement
+                  ) {
+                    return;
+                  }
+                  e.preventDefault();
+                  if (window.parent && window.parent !== window) {
+                    window.parent.postMessage({
+                      type: '${DARK_MODE_FORWARD_TYPE}',
+                      key: e.key
+                    }, '*');
+                  }
+                }
+              });
+
+            })();
+          `,
+      }}
+    />
   )
 }

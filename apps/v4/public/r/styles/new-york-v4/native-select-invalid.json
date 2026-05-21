@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "native-select-invalid",
-  "type": "registry:example",
   "registryDependencies": [
     "native-select"
   ],
@@ -11,5 +10,6 @@
       "content": "import {\n  NativeSelect,\n  NativeSelectOption,\n} from \"@/registry/new-york-v4/ui/native-select\"\n\nexport default function NativeSelectInvalid() {\n  return (\n    <NativeSelect aria-invalid=\"true\">\n      <NativeSelectOption value=\"\">Select role</NativeSelectOption>\n      <NativeSelectOption value=\"admin\">Admin</NativeSelectOption>\n      <NativeSelectOption value=\"editor\">Editor</NativeSelectOption>\n      <NativeSelectOption value=\"viewer\">Viewer</NativeSelectOption>\n      <NativeSelectOption value=\"guest\">Guest</NativeSelectOption>\n    </NativeSelect>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

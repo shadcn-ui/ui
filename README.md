@@ -6,7 +6,7 @@ A set of beautifully designed components that you can customize, extend, and bui
 
 ## Documentation
 
-Visit http://ui.shadcn.com/docs to view the documentation.
+Visit https://ui.shadcn.com/docs to view the documentation.
 
 ## Contributing
 
@@ -14,4 +14,4 @@ Please read the [contributing guide](/CONTRIBUTING.md).
 
 ## License
 
-Licensed under the [MIT license](https://github.com/shadcn/ui/blob/main/LICENSE.md).
+Licensed under the [MIT license](./LICENSE.md).

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "textarea-demo",
-  "type": "registry:example",
   "registryDependencies": [
     "textarea"
   ],
@@ -11,5 +10,6 @@
       "content": "import { Textarea } from \"@/registry/new-york-v4/ui/textarea\"\n\nexport default function TextareaDemo() {\n  return <Textarea placeholder=\"Type your message here.\" />\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

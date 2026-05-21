@@ -80,7 +80,7 @@ function searchItems<
     description?: string
     addCommandArgument?: string
     [key: string]: any
-  } = SearchableItem
+  } = SearchableItem,
 >(
   items: T[],
   options: {

@@ -30,12 +30,8 @@ export const siteConfig = {
       label: "Directory",
     },
     {
-      href: "/themes",
-      label: "Themes",
-    },
-    {
-      href: "/colors",
-      label: "Colors",
+      href: "/create",
+      label: "Create",
     },
   ],
 }

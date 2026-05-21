@@ -1,0 +1,45 @@
+{
+  "name": "start-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev --port 3000",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.2.1",
+    "@tanstack/react-devtools": "^0.10.0",
+    "@tanstack/react-router": "^1.167.4",
+    "@tanstack/react-router-devtools": "^1.166.9",
+    "@tanstack/react-router-ssr-query": "^1.166.9",
+    "@tanstack/react-start": "^1.166.15",
+    "@tanstack/router-plugin": "^1.166.13",
+    "nitro": "latest",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.2.1",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "devDependencies": {
+    "@tanstack/devtools-vite": "^0.6.0",
+    "@tanstack/eslint-config": "^0.4.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^22.19.15",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.2.0",
+    "jsdom": "^27.4.0",
+    "prettier": "^3.8.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vitest": "^3.2.4",
+    "web-vitals": "^5.1.0"
+  }
+}

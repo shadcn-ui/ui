@@ -15,6 +15,7 @@ build
 
 # misc
 .DS_Store
+.eslintcache
 *.pem
 
 # debug
@@ -39,3 +40,8 @@ tsconfig.tsbuildinfo
 .idea
 .fleet
 .vscode
+
+.notes
+.playwright-mcp
+shadcn-workspace
+.codex-artifacts

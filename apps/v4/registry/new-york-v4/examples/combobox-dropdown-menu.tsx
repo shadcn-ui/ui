@@ -43,7 +43,7 @@ export default function ComboboxDropdownMenu() {
   return (
     <div className="flex w-full flex-col items-start justify-between rounded-md border px-4 py-3 sm:flex-row sm:items-center">
       <p className="text-sm leading-none font-medium">
-        <span className="bg-primary text-primary-foreground mr-2 rounded-lg px-2 py-1 text-xs">
+        <span className="mr-2 rounded-lg bg-primary px-2 py-1 text-xs text-primary-foreground">
           {label}
         </span>
         <span className="text-muted-foreground">Create a new project</span>
