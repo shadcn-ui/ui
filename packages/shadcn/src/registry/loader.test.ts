@@ -535,6 +535,42 @@ describe("readRegistryWithIncludes", () => {
     )
   })
 
+  it("uses the selected item source when duplicate names exist in a flat registry", async () => {
+    const cwd = await createFixture({
+      "registry.json": JSON.stringify({
+        name: "example",
+        homepage: "https://example.com",
+        items: [
+          {
+            name: "button",
+            type: "registry:ui",
+            files: [
+              {
+                path: "missing-button.tsx",
+                type: "registry:ui",
+              },
+            ],
+          },
+          {
+            name: "button",
+            type: "registry:ui",
+            files: [
+              {
+                path: "button.tsx",
+                type: "registry:ui",
+              },
+            ],
+          },
+        ],
+      }),
+      "button.tsx": "export function Button() {}",
+    })
+
+    await expect(loadRegistryItem("button", { cwd })).rejects.toThrow(
+      "registry.json items[0]"
+    )
+  })
+
   it("throws a typed error when a registry item is not found", async () => {
     const cwd = await createFixture({
       "registry.json": JSON.stringify({

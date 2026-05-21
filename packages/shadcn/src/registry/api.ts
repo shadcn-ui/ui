@@ -108,7 +108,11 @@ function parseRegistryCatalog(name: string, result: unknown) {
       throw error
     }
 
-    throw new RegistryParseError(name, error)
+    throw new RegistryParseError(name, error, {
+      subject: "registry catalog",
+      suggestion:
+        "The registry catalog may be corrupted or have an invalid format. Please make sure it returns a valid registry.json object. See https://ui.shadcn.com/schema/registry.json.",
+    })
   }
 }
 

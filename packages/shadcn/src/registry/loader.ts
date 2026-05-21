@@ -28,6 +28,7 @@ type RegistryItemSource = {
 type RegistryLoadResult = {
   registry: Registry
   itemSources: Map<string, RegistryItemSource>
+  itemSourcesByItem: Map<RegistryItem, RegistryItemSource>
   usesInclude: boolean
 }
 
@@ -93,6 +94,7 @@ export async function readRegistryWithIncludes(
     return {
       registry: rootRegistry,
       itemSources: context.itemSources,
+      itemSourcesByItem: context.itemSourcesByItem,
       usesInclude,
     }
   }
@@ -114,6 +116,7 @@ export async function readRegistryWithIncludes(
   return {
     registry,
     itemSources: context.itemSources,
+    itemSourcesByItem: context.itemSourcesByItem,
     usesInclude,
   }
 }
@@ -129,7 +132,7 @@ export function createRegistryCatalog(
       stripRegistryItemFileContent(
         rewriteRegistryItemFilePaths(
           item,
-          result.itemSources,
+          result.itemSourcesByItem,
           rootDir,
           fallbackDir
         )
@@ -147,7 +150,7 @@ export async function createRegistryItem(
   const registryItem = {
     ...rewriteRegistryItemFilePaths(
       item,
-      result.itemSources,
+      result.itemSourcesByItem,
       rootDir,
       fallbackDir
     ),
@@ -161,17 +164,18 @@ export async function createRegistryItem(
       continue
     }
 
-    const sourcePath = getRegistryItemFileSource(
-      item.name,
+    const source = result.itemSourcesByItem.get(item)
+    const sourcePath = getRegistryItemFileSourceForItem(
+      item,
       sourceFile.path,
-      result.itemSources,
+      result.itemSourcesByItem,
       fallbackDir
     )
     file.content = await readRegistryItemFileContent(
       item.name,
       sourceFile.path,
       sourcePath,
-      result.itemSources
+      source
     )
   }
 
@@ -182,14 +186,14 @@ async function readRegistryItemFileContent(
   itemName: string,
   filePath: string,
   sourcePath: string,
-  itemSources: Map<string, RegistryItemSource>
+  source: RegistryItemSource | undefined
 ) {
   try {
     return await fs.readFile(sourcePath, "utf-8")
   } catch (error) {
     throw new RegistryLocalFileError(sourcePath, error, {
       message: `Failed to read file "${filePath}" for registry item "${itemName}" (${formatItemSource(
-        itemSources.get(itemName)
+        source
       )}). Expected file at ${sourcePath}.`,
       context: {
         itemName,
@@ -204,7 +208,7 @@ async function readRegistryItemFileContent(
 
 function rewriteRegistryItemFilePaths(
   item: RegistryItem,
-  itemSources: Map<string, RegistryItemSource>,
+  itemSourcesByItem: Map<RegistryItem, RegistryItemSource>,
   rootDir: string,
   fallbackDir: string
 ) {
@@ -212,10 +216,10 @@ function rewriteRegistryItemFilePaths(
     ...item,
     files: item.files?.map((file) => ({
       ...file,
-      path: getRegistryItemFileRootPath(
-        item.name,
+      path: getRegistryItemFileRootPathForItem(
+        item,
         file.path,
-        itemSources,
+        itemSourcesByItem,
         rootDir,
         fallbackDir
       ),
@@ -240,6 +244,16 @@ export function getRegistryItemFileSource(
   return path.resolve(source?.registryDir ?? fallbackDir, filePath)
 }
 
+function getRegistryItemFileSourceForItem(
+  item: RegistryItem,
+  filePath: string,
+  itemSourcesByItem: Map<RegistryItem, RegistryItemSource>,
+  fallbackDir: string
+) {
+  const source = itemSourcesByItem.get(item)
+  return path.resolve(source?.registryDir ?? fallbackDir, filePath)
+}
+
 export function getRegistryItemFileRootPath(
   itemName: string,
   filePath: string,
@@ -251,6 +265,23 @@ export function getRegistryItemFileRootPath(
     itemName,
     filePath,
     itemSources,
+    fallbackDir
+  )
+
+  return path.relative(rootDir, sourcePath).split(path.sep).join("/")
+}
+
+function getRegistryItemFileRootPathForItem(
+  item: RegistryItem,
+  filePath: string,
+  itemSourcesByItem: Map<RegistryItem, RegistryItemSource>,
+  rootDir: string,
+  fallbackDir: string
+) {
+  const sourcePath = getRegistryItemFileSourceForItem(
+    item,
+    filePath,
+    itemSourcesByItem,
     fallbackDir
   )
 

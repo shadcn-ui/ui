@@ -1127,9 +1127,12 @@ describe("getRegistry", () => {
     } catch (error) {
       expect(error).toBeInstanceOf(RegistryParseError)
       if (error instanceof RegistryParseError) {
-        expect(error.message).toContain("Failed to parse registry")
+        expect(error.message).toContain("Failed to parse registry catalog")
         expect(error.message).toContain("@parsetest/registry")
         expect(error.context?.item).toBe("@parsetest/registry")
+        expect(error.suggestion).toContain(
+          "https://ui.shadcn.com/schema/registry.json"
+        )
         expect(error.parseError).toBeDefined()
         if (error.parseError instanceof z.ZodError) {
           expect(error.parseError.errors.length).toBeGreaterThan(0)
