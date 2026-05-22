@@ -103,7 +103,7 @@
     "node-fetch": "^3.3.2",
     "open": "^11.0.0",
     "ora": "^8.2.0",
-    "postcss": "^8.5.6",
+    "postcss": "^8.5.10",
     "postcss-selector-parser": "^7.1.0",
     "prompts": "^2.4.2",
     "recast": "^0.23.11",
