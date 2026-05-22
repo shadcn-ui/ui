@@ -32,6 +32,7 @@
     "@hookform/resolvers": "^3.10.0",
     "@hugeicons/core-free-icons": "^1.2.1",
     "@hugeicons/react": "^1.1.1",
+    "@inertiajs/react": "^3.0.0",
     "@paper-design/shaders-react": "^0.0.72",
     "@phosphor-icons/react": "^2.1.10",
     "@remixicon/react": "^4.7.0",

@@ -1,3 +1,3 @@
 {
-  "pages": ["react-hook-form", "tanstack-form", "formisch"]
+  "pages": ["react-hook-form", "tanstack-form", "formisch", "inertia"]
 }
