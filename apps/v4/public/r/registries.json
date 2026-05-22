@@ -306,6 +306,12 @@
     "description": "A shadcn-compatible registry of glassmorphism components inspired by Apple"
   },
   {
+    "name": "@gymnopedies",
+    "homepage": "https://gymnopedies.shoota.work",
+    "url": "https://gymnopedies.shoota.work/r/{name}.json",
+    "description": "A dark, serif, glow-leaning shadcn registry of read-only components for blogs, essays, and long-form reading experiences — inspired by the quiet, candlelit cabaret of Erik Satie's Gymnopédies."
+  },
+  {
     "name": "@ha-components",
     "homepage": "https://hacomponents.keshuac.com",
     "url": "https://hacomponents.keshuac.com/r/{name}.json",
