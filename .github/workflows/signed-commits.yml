@@ -22,7 +22,21 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const body = "Can you sign the commits please? See https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits. Thank you."
+            const REASON_MESSAGES = {
+              unsigned: "Commit is not signed",
+              no_user: "No GitHub user is associated with the committer email",
+              unverified_email: "Committer email is not verified on any GitHub account",
+              bad_email: "Committer email does not match the signing key",
+              unknown_key: "Signing key is not associated with any GitHub account",
+              expired_key: "Signing key has expired",
+              not_signing_key: "Key is not configured as a signing key on GitHub",
+              gpgverify_error: "Signature verification failed",
+              gpgverify_unavailable: "Signature verification is currently unavailable",
+              malformed_signature: "Signature is malformed",
+              invalid: "Signature is invalid",
+              unknown_signature_type: "Unknown signature type",
+            }
+            const intro = "Can you sign the commits please? See https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits. Thank you."
 
             const { owner, repo } = context.repo
             const pullNumber = context.payload.pull_request.number
@@ -34,9 +48,20 @@ jobs:
               per_page: 100,
             })
 
-            const unsignedCommits = commits.filter((commit) => {
-              return commit.commit.verification?.reason === "unsigned"
+            const unverifiedCommits = commits.filter((commit) => {
+              return commit.commit.verification?.verified === false
             })
+
+            const reasons = [...new Set(
+              unverifiedCommits.map((commit) => commit.commit.verification?.reason ?? "unknown")
+            )]
+
+            const reasonLines = reasons.map((reason) => {
+              const explanation = REASON_MESSAGES[reason] ?? `Unverified (${reason}).`
+              return `- ${explanation}`
+            })
+
+            const body = [intro, "", ...reasonLines].join("\n")
 
             const comments = await github.paginate(github.rest.issues.listComments, {
               owner,
@@ -46,11 +71,11 @@ jobs:
             })
 
             const existingComments = comments.filter((comment) => {
-              return comment.user.type === "Bot" && comment.body.trim() === body
+              return comment.user.type === "Bot" && comment.body.trim().startsWith(intro)
             })
 
-            if (unsignedCommits.length > 0) {
-              core.info(`Found ${unsignedCommits.length} unsigned commits.`)
+            if (unverifiedCommits.length > 0) {
+              core.info(`Found ${unverifiedCommits.length} unverified commits.`)
 
               if (existingComments.length === 0) {
                 await github.rest.issues.createComment({
