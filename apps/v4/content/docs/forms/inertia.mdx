@@ -39,23 +39,25 @@ Inertia's `useForm` keeps form state on the client and ships it to the server in
 
 Here's a basic example of an Inertia field wired to the shadcn `<Field />`
 
-```tsx showLineNumbers {1-15}
-<Field data-invalid={!!form.errors.title}>
-  <FieldLabel htmlFor="form-title">Bug Title</FieldLabel>
-  <Input
-    id="form-title"
-    name="title"
-    value={form.data.title}
-    onChange={(e) => form.setData("title", e.target.value)}
-    aria-invalid={!!form.errors.title}
-    placeholder="Login button not working on mobile"
-    autoComplete="off"
-  />
-  <FieldDescription>Provide a concise title for your bug report</FieldDescription>
-  {form.errors.title && (
-    <FieldError errors={[{ message: form.errors.title }]} />
-  )}
-</Field>
+```tsx showLineNumbers {2-17}
+<form onSubmit={handleSubmit}>
+  <Field data-invalid={!!form.errors.title}>
+    <FieldLabel htmlFor="form-title">Bug Title</FieldLabel>
+    <Input
+      id="form-title"
+      name="title"
+      value={form.data.title}
+      onChange={(e) => form.setData("title", e.target.value)}
+      aria-invalid={!!form.errors.title}
+      placeholder="Login button not working on mobile"
+      autoComplete="off"
+    />
+    <FieldDescription>Provide a concise title for your bug report</FieldDescription>
+    {form.errors.title && (
+      <FieldError errors={[{ message: form.errors.title }]} />
+    )}
+  </Field>
+</form>
 ```
 
 <Callout icon={<InfoIcon />}>
@@ -71,7 +73,7 @@ Here's a basic example of an Inertia field wired to the shadcn `<Field />`
 
 Use the `useForm` hook from `@inertiajs/react` to create your form. Pass an object with the initial values for every field. There is no resolver step and no client schema by default
 
-```tsx showLineNumbers title="form.tsx" {1,4-8}
+```tsx showLineNumbers title="form.tsx" {1,4-7,11-14}
 import { useForm } from "@inertiajs/react"
 
 export function BugReportForm() {
@@ -135,7 +137,6 @@ function handleSubmit(e: React.FormEvent) {
   form.post("/login", {
     preserveScroll: true,
     onError: (errors) => {
-      // errors === form.errors, same shape: { fieldName: "message" }
       console.log(errors)
     },
   })
@@ -144,7 +145,8 @@ function handleSubmit(e: React.FormEvent) {
 
 A few things to know
 
-- `form.errors` is `{ fieldName: string }`, not arrays. Wrap as `[{ message: form.errors.x }]` when passing to `<FieldError />`
+- `form.errors` is `{ fieldName: string }`, not arrays. 
+<br/>Wrap as `[{ message: form.errors.x }]` when passing to `<FieldError />`
 - `form.hasErrors` is a boolean shortcut you can use anywhere
 - `form.clearErrors()` clears all errors, `form.clearErrors("email", "password")` clears specific ones
 - Use `preserveScroll: true` so the page does not jump when errors arrive
@@ -161,7 +163,7 @@ npm install laravel-precognition-react-inertia
 
 The hook is a drop-in replacement for `useForm` with a different signature: you pass the HTTP method, the URL, and the initial data
 
-```tsx showLineNumbers title="form.tsx" {1,4-7,12-18,21-27}
+```tsx showLineNumbers title="form.tsx" {1,4-7,11-14,19,21-29}
 import { useForm } from "laravel-precognition-react-inertia"
 
 export function CreateUserForm() {
@@ -215,7 +217,7 @@ use Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests;
 
 Route::post("/users", function (StoreUserRequest $request) {
   // ...
-})->middleware([HandlePrecognitiveRequests::class]);
+}) ->middleware([HandlePrecognitiveRequests::class]);
 ```
 
 If you have expensive rules (database lookups, external API checks) and want to skip them during precognitive requests, use `$this->isPrecognitive()` inside your `FormRequest::rules()`
@@ -226,7 +228,7 @@ public function rules(): array
   return [
     "password" => [
       "required",
-      $this->isPrecognitive()
+      $this ->isPrecognitive()
         ? Password::min(8)
         : Password::min(8)->uncompromised(),
     ],
@@ -245,7 +247,7 @@ Display errors next to the field using `<FieldError />`. Inertia returns each er
 - Add the `data-invalid` prop to the `<Field />` component
 - Add the `aria-invalid` prop to the form control (`<Input />`, `<SelectTrigger />`, `<Checkbox />`, etc)
 
-```tsx showLineNumbers title="form.tsx" {1,8,10-12}
+```tsx showLineNumbers title="form.tsx" {1,8,11-12}
 <Field data-invalid={!!form.errors.email}>
   <FieldLabel htmlFor="form-email">Email</FieldLabel>
   <Input
@@ -335,7 +337,7 @@ Display errors next to the field using `<FieldError />`. Inertia returns each er
   chromeLessOnMobile
 />
 
-```tsx showLineNumbers title="form.tsx" {14-18}
+```tsx showLineNumbers title="form.tsx" {13-14}
 <Field orientation="responsive" data-invalid={!!form.errors.language}>
   <FieldContent>
     <FieldLabel htmlFor="form-language">Spoken Language</FieldLabel>
@@ -378,7 +380,7 @@ Display errors next to the field using `<FieldError />`. Inertia returns each er
   chromeLessOnMobile
 />
 
-```tsx showLineNumbers title="form.tsx" {15,18-30}
+```tsx showLineNumbers title="form.tsx" {15,18-27}
 <FieldSet data-invalid={!!form.errors.tasks}>
   <FieldLegend variant="label">Tasks</FieldLegend>
   <FieldDescription>
@@ -433,7 +435,7 @@ Display errors next to the field using `<FieldError />`. Inertia returns each er
   chromeLessOnMobile
 />
 
-```tsx showLineNumbers title="form.tsx" {8-12,20}
+```tsx showLineNumbers title="form.tsx" {8-9}
 <FieldSet>
   <FieldLegend>Plan</FieldLegend>
   <FieldDescription>
@@ -480,7 +482,7 @@ Display errors next to the field using `<FieldError />`. Inertia returns each er
   chromeLessOnMobile
 />
 
-```tsx showLineNumbers title="form.tsx" {15-19}
+```tsx showLineNumbers title="form.tsx" {15-17}
 <Field orientation="horizontal" data-invalid={!!form.errors.twoFactor}>
   <FieldContent>
     <FieldLabel htmlFor="form-twoFactor">
@@ -517,7 +519,7 @@ Here is an example of a more complex form with multiple fields and validation
 
 Inertia handles file uploads with no extra configuration. Store the `File` in `form.data` via `setData` and Inertia automatically converts the payload to `FormData` on submit. Track upload progress with `form.progress`
 
-```tsx showLineNumbers title="form.tsx" {3,11-13,20-24}
+```tsx showLineNumbers title="form.tsx" {1-3,8,17-19,24}
 const form = useForm({
   name: "",
   avatar: null as File | null,
@@ -594,7 +596,7 @@ form.resetAndClearErrors()
 
 Inertia v3 ships an alternative `<Form />` component that reads field values directly from the DOM via `FormData`. You do not have to mirror state in React, you just write standard form markup
 
-```tsx showLineNumbers title="form.tsx" {1,5-13}
+```tsx showLineNumbers title="form.tsx" {1,5-6}
 import { Form } from "@inertiajs/react"
 
 export function CreateUserForm() {
