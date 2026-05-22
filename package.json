@@ -41,7 +41,7 @@
     "validate:registries": "pnpm --filter=v4 validate:registries",
     "test:apps": "pnpm --filter=v4 test:apps"
   },
-  "packageManager": "pnpm@9.0.6",
+  "packageManager": "pnpm@10.33.4",
   "dependencies": {
     "@babel/core": "^7.22.1",
     "@changesets/changelog-github": "^0.4.8",
@@ -78,6 +78,7 @@
     "@types/node": "^20.11.27",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.22",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "start-server-and-test": "^2.0.12",
     "typescript": "^5.5.3"
   },
