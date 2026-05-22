@@ -79,7 +79,7 @@ export function DocsSidebar({
     >
       <div className="h-9" />
       <div className="absolute top-8 z-10 h-8 w-(--sidebar-menu-width) shrink-0 bg-linear-to-b from-background via-background/80 to-background/50 blur-xs" />
-      <SidebarContent className="no-scrollbar w-(--sidebar-menu-width) overflow-x-hidden px-2">
+      <SidebarContent className="no-scrollbar w-(--sidebar-menu-width) overflow-x-hidden px-2.5">
         <SidebarGroup className="pt-6">
           <SidebarGroupLabel className="font-medium text-muted-foreground">
             Sections
