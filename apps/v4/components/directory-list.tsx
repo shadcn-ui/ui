@@ -160,6 +160,18 @@ function DirectoryPaginationNext({
 }
 
 export function DirectoryList() {
+  return (
+    <DirectoryAddProvider>
+      <div className="mt-6">
+        <React.Suspense fallback={<DirectoryListSkeleton />}>
+          <DirectoryListContent />
+        </React.Suspense>
+      </div>
+    </DirectoryAddProvider>
+  )
+}
+
+function DirectoryListContent() {
   const pathname = usePathname()
   const {
     isLoading,
@@ -204,119 +216,115 @@ export function DirectoryList() {
     [page, setPage]
   )
 
+  if (isLoading) {
+    return <DirectoryListSkeleton />
+  }
+
   return (
-    <DirectoryAddProvider>
-      <div className="mt-6">
-        {isLoading ? (
-          <DirectoryListSkeleton />
-        ) : (
-          <>
-            <SearchDirectory
-              query={query}
-              registriesCount={registries.length}
-              setQuery={setQuery}
-            />
-            <ItemGroup className="my-8">
-              {paginatedRegistries.map((registry, index) => (
-                <React.Fragment key={registry.name}>
-                  <Item className="group/item relative gap-6 px-0">
-                    <ItemMedia
-                      variant="image"
-                      dangerouslySetInnerHTML={{ __html: registry.logo }}
-                      className="grayscale *:[svg]:size-8 *:[svg]:fill-foreground"
-                    />
-                    <ItemContent>
-                      <ItemTitle>
-                        <a
-                          href={getHomepageUrl(registry.homepage)}
-                          target="_blank"
-                          rel="noopener noreferrer external"
-                          className="group flex items-center gap-1"
-                        >
-                          {registry.name}{" "}
-                          <IconArrowUpRight className="size-4 opacity-0 group-hover:opacity-100" />
-                        </a>
-                      </ItemTitle>
-                      {registry.description && (
-                        <ItemDescription className="text-pretty">
-                          {registry.description}
-                        </ItemDescription>
-                      )}
-                    </ItemContent>
-                    <ItemActions className="relative z-10 hidden self-start sm:flex">
-                      <DirectoryAddButton registry={registry} />
-                    </ItemActions>
-                    <ItemFooter className="justify-start pl-16 sm:hidden">
-                      <Button size="sm" variant="outline">
-                        View <IconArrowUpRight />
-                      </Button>
-                      <DirectoryAddButton registry={registry} />
-                    </ItemFooter>
-                  </Item>
-                  {index < paginatedRegistries.length - 1 && (
-                    <ItemSeparator className="my-1" />
-                  )}
-                </React.Fragment>
-              ))}
-            </ItemGroup>
-            {totalPages > 1 && (
-              <Pagination>
-                <PaginationContent>
-                  <PaginationItem>
-                    <DirectoryPaginationPrevious
-                      href={previousHref}
-                      aria-disabled={page <= 1 || undefined}
-                      tabIndex={page <= 1 ? -1 : undefined}
-                      onClick={(event) =>
-                        handlePageChange(event, page - 1, page <= 1)
-                      }
-                      className={cn(
-                        page <= 1
-                          ? "pointer-events-none opacity-50"
-                          : "cursor-pointer"
-                      )}
-                    />
-                  </PaginationItem>
-                  {getPageNumbers(page, totalPages).map((p, i) =>
-                    p === "ellipsis" ? (
-                      <PaginationItem key={`ellipsis-${i}`}>
-                        <PaginationEllipsis />
-                      </PaginationItem>
-                    ) : (
-                      <PaginationItem key={p}>
-                        <DirectoryPaginationLink
-                          href={getPageHref(pathname, query, p)}
-                          isActive={p === page}
-                          onClick={(event) => handlePageChange(event, p)}
-                          className="cursor-pointer"
-                        >
-                          {p}
-                        </DirectoryPaginationLink>
-                      </PaginationItem>
-                    )
-                  )}
-                  <PaginationItem>
-                    <DirectoryPaginationNext
-                      href={nextHref}
-                      aria-disabled={page >= totalPages || undefined}
-                      tabIndex={page >= totalPages ? -1 : undefined}
-                      onClick={(event) =>
-                        handlePageChange(event, page + 1, page >= totalPages)
-                      }
-                      className={cn(
-                        page >= totalPages
-                          ? "pointer-events-none opacity-50"
-                          : "cursor-pointer"
-                      )}
-                    />
-                  </PaginationItem>
-                </PaginationContent>
-              </Pagination>
+    <>
+      <SearchDirectory
+        query={query}
+        registriesCount={registries.length}
+        setQuery={setQuery}
+      />
+      <ItemGroup className="my-8">
+        {paginatedRegistries.map((registry, index) => (
+          <React.Fragment key={registry.name}>
+            <Item className="group/item relative gap-6 px-0">
+              <ItemMedia
+                variant="image"
+                dangerouslySetInnerHTML={{ __html: registry.logo }}
+                className="grayscale *:[svg]:size-8 *:[svg]:fill-foreground"
+              />
+              <ItemContent>
+                <ItemTitle>
+                  <a
+                    href={getHomepageUrl(registry.homepage)}
+                    target="_blank"
+                    rel="noopener noreferrer external"
+                    className="group flex items-center gap-1"
+                  >
+                    {registry.name}{" "}
+                    <IconArrowUpRight className="size-4 opacity-0 group-hover:opacity-100" />
+                  </a>
+                </ItemTitle>
+                {registry.description && (
+                  <ItemDescription className="text-pretty">
+                    {registry.description}
+                  </ItemDescription>
+                )}
+              </ItemContent>
+              <ItemActions className="relative z-10 hidden self-start sm:flex">
+                <DirectoryAddButton registry={registry} />
+              </ItemActions>
+              <ItemFooter className="justify-start pl-16 sm:hidden">
+                <Button size="sm" variant="outline">
+                  View <IconArrowUpRight />
+                </Button>
+                <DirectoryAddButton registry={registry} />
+              </ItemFooter>
+            </Item>
+            {index < paginatedRegistries.length - 1 && (
+              <ItemSeparator className="my-1" />
             )}
-          </>
-        )}
-      </div>
-    </DirectoryAddProvider>
+          </React.Fragment>
+        ))}
+      </ItemGroup>
+      {totalPages > 1 && (
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <DirectoryPaginationPrevious
+                href={previousHref}
+                aria-disabled={page <= 1 || undefined}
+                tabIndex={page <= 1 ? -1 : undefined}
+                onClick={(event) =>
+                  handlePageChange(event, page - 1, page <= 1)
+                }
+                className={cn(
+                  page <= 1
+                    ? "pointer-events-none opacity-50"
+                    : "cursor-pointer"
+                )}
+              />
+            </PaginationItem>
+            {getPageNumbers(page, totalPages).map((p, i) =>
+              p === "ellipsis" ? (
+                <PaginationItem key={`ellipsis-${i}`}>
+                  <PaginationEllipsis />
+                </PaginationItem>
+              ) : (
+                <PaginationItem key={p}>
+                  <DirectoryPaginationLink
+                    href={getPageHref(pathname, query, p)}
+                    isActive={p === page}
+                    onClick={(event) => handlePageChange(event, p)}
+                    className="cursor-pointer"
+                  >
+                    {p}
+                  </DirectoryPaginationLink>
+                </PaginationItem>
+              )
+            )}
+            <PaginationItem>
+              <DirectoryPaginationNext
+                href={nextHref}
+                aria-disabled={page >= totalPages || undefined}
+                tabIndex={page >= totalPages ? -1 : undefined}
+                onClick={(event) =>
+                  handlePageChange(event, page + 1, page >= totalPages)
+                }
+                className={cn(
+                  page >= totalPages
+                    ? "pointer-events-none opacity-50"
+                    : "cursor-pointer"
+                )}
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      )}
+    </>
   )
 }
 
