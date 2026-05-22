@@ -138,6 +138,12 @@
     "description": "Neubrutalism component library with 43 components, 42 SVG shapes, thick borders, and hard shadows. Supports React, Vue, and Nuxt. Built on shadcn/ui."
   },
   {
+    "name": "@bklit",
+    "homepage": "https://ui.bklit.com",
+    "url": "https://ui.bklit.com/r/{name}.json",
+    "description": "Open-source composable chart components for React — line, area, bar, pie, radar, maps, and more. Built with Visx, Motion, and shadcn/ui."
+  },
+  {
     "name": "@bundui",
     "homepage": "https://bundui.io",
     "url": "https://bundui.io/r/{name}.json",
@@ -178,6 +184,12 @@
     "homepage": "https://commercn.com",
     "url": "https://commercn.com/r/{name}.json",
     "description": "Shadcn UI Blocks for Ecommerce websites"
+  },
+  {
+    "name": "@corr",
+    "homepage": "https://ui.corr.sh",
+    "url": "https://ui.corr.sh/r/{name}.json",
+    "description": "A collection of shadcn-based React components, charts, animated components, and blocks built over time."
   },
   {
     "name": "@coss",
@@ -292,6 +304,12 @@
     "homepage": "https://glasscn-components.vercel.app/",
     "url": "https://glasscn-components.vercel.app/r/{name}.json",
     "description": "A shadcn-compatible registry of glassmorphism components inspired by Apple"
+  },
+  {
+    "name": "@gymnopedies",
+    "homepage": "https://gymnopedies.shoota.work",
+    "url": "https://gymnopedies.shoota.work/r/{name}.json",
+    "description": "A dark, serif, glow-leaning shadcn registry of read-only components for blogs, essays, and long-form reading experiences — inspired by the quiet, candlelit cabaret of Erik Satie's Gymnopédies."
   },
   {
     "name": "@ha-components",
@@ -760,6 +778,12 @@
     "homepage": "https://onboarding-tour.vercel.app",
     "url": "https://onboarding-tour.vercel.app/r/{name}.json",
     "description": "A component for building onboarding tours. Designed to integrate with shadcn/ui."
+  },
+  {
+    "name": "@trophy-ui",
+    "homepage": "https://ui.trophy.so",
+    "url": "https://ui.trophy.so/r/{name}.json",
+    "description": "Open-source gamification UI components for streaks, achievements, leaderboards, points, and more. Built on shadcn/ui and Tailwind CSS."
   },
   {
     "name": "@uitripled",
