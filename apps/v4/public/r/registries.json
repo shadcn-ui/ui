@@ -204,6 +204,12 @@
     "description": "A collection of open-source UI components, blocks and AI Agents. Integrate them in v0, Lovable, Claude or in your application."
   },
   {
+    "name": "@cnippet",
+    "homepage": "https://ui.cnippet.dev/",
+    "url": "https://ui.cnippet.dev/r/{name}.json",
+    "description": "Cnippet UI is a production-ready, curated set of accessible and composable React components—built with Base UI and Tailwind CSS. Copy, paste, and ship stunning interfaces faster."
+  },
+  {
     "name": "@cult-ui",
     "homepage": "https://www.cult-ui.com",
     "url": "https://cult-ui.com/r/{name}.json",
