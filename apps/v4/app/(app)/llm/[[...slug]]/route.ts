@@ -6,6 +6,8 @@ import { source } from "@/lib/source"
 import { getActiveStyle, type Style } from "@/registry/_legacy-styles"
 
 export const revalidate = false
+export const dynamic = "force-static"
+export const dynamicParams = true
 
 function getStyleFromSlug(slug: string[] | undefined, fallbackStyle: string) {
   // Detect base from URL: /docs/components/base/... or /docs/components/radix/...
@@ -47,5 +49,5 @@ export async function GET(
 }
 
 export function generateStaticParams() {
-  return source.generateParams()
+  return []
 }

@@ -5,6 +5,7 @@ import * as React from "react"
 import {
   buildRegistryTheme,
   DEFAULT_CONFIG,
+  POINTER_CURSOR_SELECTOR,
   type DesignSystemConfig,
 } from "@/registry/config"
 import { useIframeMessageListener } from "@/app/(app)/create/hooks/use-iframe-sync"
@@ -16,6 +17,12 @@ import {
 
 const THEME_STYLE_ELEMENT_ID = "design-system-theme-vars"
 const MANAGED_BODY_CLASS_PREFIXES = ["style-", "base-color-"] as const
+const POINTER_CURSOR_CSS = `@layer base {
+  ${POINTER_CURSOR_SELECTOR} {
+    cursor: pointer;
+  }
+}
+`
 
 type RegistryThemeCssVars = NonNullable<
   ReturnType<typeof buildRegistryTheme>["cssVars"]
@@ -44,14 +51,17 @@ function buildCssRule(selector: string, cssVars?: Record<string, string>) {
   return `${selector} {\n${declarations}\n}\n`
 }
 
-function buildThemeCssText(cssVars: RegistryThemeCssVars) {
+function buildThemeCssText(cssVars: RegistryThemeCssVars, pointer: boolean) {
   return [
     buildCssRule(":root", {
       ...(cssVars.theme ?? {}),
       ...(cssVars.light ?? {}),
     }),
     buildCssRule(".dark", cssVars.dark),
-  ].join("\n")
+    pointer ? POINTER_CURSOR_CSS : "",
+  ]
+    .filter(Boolean)
+    .join("\n")
 }
 
 export function DesignSystemProvider({
@@ -73,6 +83,7 @@ export function DesignSystemProvider({
     chartColor,
     menuAccent,
     menuColor,
+    pointer,
     radius,
   } = searchParams
   const effectiveRadius = style === "lyra" ? "none" : radius
@@ -208,8 +219,8 @@ export function DesignSystemProvider({
       document.head.appendChild(styleElement)
     }
 
-    styleElement.textContent = buildThemeCssText(registryTheme.cssVars)
-  }, [registryTheme])
+    styleElement.textContent = buildThemeCssText(registryTheme.cssVars, pointer)
+  }, [registryTheme, pointer])
 
   // Handle menu color inversion by adding/removing dark class to elements with cn-menu-target.
   // useLayoutEffect to apply classes synchronously before paint, avoiding flash.

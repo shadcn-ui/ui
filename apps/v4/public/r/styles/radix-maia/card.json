@@ -11,7 +11,7 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/radix/card",
-      "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/card-example.tsx"
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/card-example.tsx"
     }
   },
   "type": "registry:ui"
