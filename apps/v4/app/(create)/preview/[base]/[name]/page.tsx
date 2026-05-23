@@ -3,7 +3,7 @@ import { type Metadata } from "next"
 import { notFound } from "next/navigation"
 
 import { siteConfig } from "@/lib/config"
-import { absoluteUrl } from "@/lib/utils"
+import { absoluteUrl, cn } from "@/lib/utils"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { BASES, type Base } from "@/registry/config"
 import { ActionMenuScript } from "@/app/(app)/create/components/action-menu"
@@ -14,6 +14,9 @@ import { OpenPresetScript } from "@/app/(app)/create/components/open-preset"
 import { PreviewStyle } from "@/app/(app)/create/components/preview-style"
 import { RandomizeScript } from "@/app/(app)/create/components/random-button"
 import { getBaseComponent, getBaseItem } from "@/app/(app)/create/lib/api"
+import { previewFontVariables } from "@/app/(create)/lib/fonts"
+
+import "@/app/style-registry.css"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -127,7 +130,7 @@ export default async function BlockPage({
   }
 
   return (
-    <div className="relative bg-background">
+    <div className={cn("relative bg-background", previewFontVariables)}>
       <PreventScrollOnFocusScript />
       <PreviewStyle />
       <ActionMenuScript />

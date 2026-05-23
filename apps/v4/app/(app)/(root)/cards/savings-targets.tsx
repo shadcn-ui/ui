@@ -31,7 +31,11 @@ export function SavingsTargets() {
       </CardHeader>
       <CardContent>
         <ItemGroup className="gap-3">
-          <Item variant="muted" className="flex-col items-stretch">
+          <Item
+            role="listitem"
+            variant="muted"
+            className="flex-col items-stretch"
+          >
             <ItemContent className="gap-3">
               <ItemDescription className="cn-font-heading text-xs font-medium tracking-wider text-muted-foreground uppercase">
                 Retirement
@@ -39,7 +43,7 @@ export function SavingsTargets() {
               <span className="text-3xl font-semibold tabular-nums">
                 $420,000
               </span>
-              <Progress value={65} />
+              <Progress value={65} aria-label="Retirement savings progress" />
             </ItemContent>
             <ItemFooter>
               <span className="text-sm text-muted-foreground">
@@ -48,7 +52,11 @@ export function SavingsTargets() {
               <span className="text-sm font-medium tabular-nums">$273,000</span>
             </ItemFooter>
           </Item>
-          <Item variant="muted" className="flex-col items-stretch">
+          <Item
+            role="listitem"
+            variant="muted"
+            className="flex-col items-stretch"
+          >
             <ItemContent className="gap-3">
               <ItemDescription className="cn-font-heading text-xs font-medium tracking-wider text-muted-foreground uppercase">
                 Real Estate
@@ -56,7 +64,7 @@ export function SavingsTargets() {
               <span className="text-3xl font-semibold tabular-nums">
                 $85,000
               </span>
-              <Progress value={32} />
+              <Progress value={32} aria-label="Real estate savings progress" />
             </ItemContent>
             <ItemFooter>
               <span className="text-sm text-muted-foreground">

@@ -46,7 +46,13 @@ export function Payments() {
             <BreadcrumbItem>
               <DropdownMenu>
                 <DropdownMenuTrigger
-                  render={<Button size="icon-sm" variant="ghost" />}
+                  render={
+                    <Button
+                      size="icon-sm"
+                      variant="ghost"
+                      aria-label="Account options"
+                    />
+                  }
                 >
                   <HugeiconsIcon
                     icon={MoreHorizontalCircle01Icon}
@@ -72,54 +78,60 @@ export function Payments() {
       </CardHeader>
       <CardContent>
         <ItemGroup>
-          <Item variant="muted" render={<a href="#" />}>
-            <ItemMedia variant="icon">
-              <HugeiconsIcon icon={Settings01Icon} strokeWidth={2} />
-            </ItemMedia>
-            <ItemContent>
-              <ItemTitle>Change transfer limit</ItemTitle>
-              <ItemDescription>
-                Adjust how much you can send from your balance.
-              </ItemDescription>
-            </ItemContent>
-            <HugeiconsIcon
-              icon={ArrowRight01Icon}
-              className="size-4 shrink-0 text-muted-foreground"
-              strokeWidth={2}
-            />
-          </Item>
-          <Item variant="muted" render={<a href="#" />}>
-            <ItemMedia variant="icon">
-              <HugeiconsIcon icon={Calendar03Icon} strokeWidth={2} />
-            </ItemMedia>
-            <ItemContent>
-              <ItemTitle>Scheduled transfers</ItemTitle>
-              <ItemDescription>
-                Set up a transfer to send at a later date.
-              </ItemDescription>
-            </ItemContent>
-            <HugeiconsIcon
-              icon={ArrowRight01Icon}
-              className="size-4 shrink-0 text-muted-foreground"
-              strokeWidth={2}
-            />
-          </Item>
-          <Item variant="muted" render={<a href="#" />}>
-            <ItemMedia variant="icon">
-              <HugeiconsIcon icon={RefreshIcon} strokeWidth={2} />
-            </ItemMedia>
-            <ItemContent>
-              <ItemTitle>Recurring card payments</ItemTitle>
-              <ItemDescription>
-                Manage your repeated card transactions.
-              </ItemDescription>
-            </ItemContent>
-            <HugeiconsIcon
-              icon={ArrowRight01Icon}
-              className="size-4 shrink-0 text-muted-foreground"
-              strokeWidth={2}
-            />
-          </Item>
+          <div role="listitem" className="w-full">
+            <Item variant="muted" render={<a href="#" />}>
+              <ItemMedia variant="icon">
+                <HugeiconsIcon icon={Settings01Icon} strokeWidth={2} />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Change transfer limit</ItemTitle>
+                <ItemDescription>
+                  Adjust how much you can send from your balance.
+                </ItemDescription>
+              </ItemContent>
+              <HugeiconsIcon
+                icon={ArrowRight01Icon}
+                className="size-4 shrink-0 text-muted-foreground"
+                strokeWidth={2}
+              />
+            </Item>
+          </div>
+          <div role="listitem" className="w-full">
+            <Item variant="muted" render={<a href="#" />}>
+              <ItemMedia variant="icon">
+                <HugeiconsIcon icon={Calendar03Icon} strokeWidth={2} />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Scheduled transfers</ItemTitle>
+                <ItemDescription>
+                  Set up a transfer to send at a later date.
+                </ItemDescription>
+              </ItemContent>
+              <HugeiconsIcon
+                icon={ArrowRight01Icon}
+                className="size-4 shrink-0 text-muted-foreground"
+                strokeWidth={2}
+              />
+            </Item>
+          </div>
+          <div role="listitem" className="w-full">
+            <Item variant="muted" render={<a href="#" />}>
+              <ItemMedia variant="icon">
+                <HugeiconsIcon icon={RefreshIcon} strokeWidth={2} />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Recurring card payments</ItemTitle>
+                <ItemDescription>
+                  Manage your repeated card transactions.
+                </ItemDescription>
+              </ItemContent>
+              <HugeiconsIcon
+                icon={ArrowRight01Icon}
+                className="size-4 shrink-0 text-muted-foreground"
+                strokeWidth={2}
+              />
+            </Item>
+          </div>
         </ItemGroup>
       </CardContent>
     </Card>

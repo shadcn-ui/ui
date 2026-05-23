@@ -237,6 +237,10 @@ export const FONTS = [
 
 export type Font = (typeof FONTS)[number]
 
+export const previewFontVariables = FONTS.map(
+  (font) => font.font.variable
+).join(" ")
+
 export const FONT_HEADING_OPTIONS = [
   {
     name: "Inherit",

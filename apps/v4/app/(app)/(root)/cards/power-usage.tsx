@@ -67,7 +67,7 @@ export function PowerUsage() {
       <CardFooter className="flex-col items-start gap-1">
         <span className="text-sm text-muted-foreground">Battery Level</span>
         <div className="flex w-full items-center gap-2">
-          <Progress value={85} className="flex-1" />
+          <Progress value={85} className="flex-1" aria-label="Battery level" />
           <span className="text-sm font-medium tabular-nums">85%</span>
         </div>
       </CardFooter>

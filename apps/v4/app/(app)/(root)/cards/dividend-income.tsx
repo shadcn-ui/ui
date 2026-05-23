@@ -74,7 +74,12 @@ export function DividendIncome() {
           Quarterly dividend payouts across your portfolio holdings.
         </CardDescription>
         <CardAction>
-          <Button variant="ghost" size="icon-sm" className="bg-muted">
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            className="bg-muted"
+            aria-label="Dismiss dividend income"
+          >
             <HugeiconsIcon icon={Cancel01Icon} strokeWidth={2} />
           </Button>
         </CardAction>
@@ -82,7 +87,7 @@ export function DividendIncome() {
       <CardContent>
         <ItemGroup>
           {HOLDINGS.map((holding) => (
-            <Item key={holding.name} variant="muted">
+            <Item key={holding.name} role="listitem" variant="muted">
               <ItemContent>
                 <ItemTitle>{holding.name}</ItemTitle>
                 <ItemDescription>{holding.shares}</ItemDescription>

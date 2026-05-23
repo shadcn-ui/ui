@@ -25,7 +25,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/styles/base-rhea/ui/select"
-import { Slider } from "@/styles/base-rhea/ui/slider"
 import { Textarea } from "@/styles/base-rhea/ui/textarea"
 
 const CURRENCIES = [
@@ -34,6 +33,8 @@ const CURRENCIES = [
   { label: "GBP — British Pound", value: "gbp" },
   { label: "JPY — Japanese Yen", value: "jpy" },
 ]
+
+const MIN_PAYOUT_PERCENT = "24.6%"
 
 export function PayoutThreshold() {
   return (
@@ -44,7 +45,12 @@ export function PayoutThreshold() {
           Set the minimum balance required before a payout is triggered.
         </CardDescription>
         <CardAction>
-          <Button variant="ghost" size="icon-sm" className="bg-muted">
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            className="bg-muted"
+            aria-label="Dismiss payout threshold"
+          >
             <HugeiconsIcon icon={Cancel01Icon} strokeWidth={2} />
           </Button>
         </CardAction>
@@ -79,13 +85,30 @@ export function PayoutThreshold() {
                 $2500.00
               </span>
             </div>
-            <Slider
-              id="min-payout"
-              defaultValue={[2500]}
-              min={50}
-              max={10000}
-              step={50}
-            />
+            <div className="group relative flex h-4 w-full items-center">
+              <input
+                id="min-payout"
+                type="range"
+                defaultValue={2500}
+                min={50}
+                max={10000}
+                step={50}
+                className="peer absolute inset-0 z-10 h-4 w-full cursor-pointer opacity-0"
+              />
+              <div
+                aria-hidden="true"
+                className="relative h-1 w-full rounded-full bg-input/90"
+              >
+                <div
+                  className="h-full rounded-full bg-primary"
+                  style={{ width: MIN_PAYOUT_PERCENT }}
+                />
+                <div
+                  className="absolute top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-md ring-1 ring-black/10 group-focus-within:ring-4 group-focus-within:ring-ring/30"
+                  style={{ left: MIN_PAYOUT_PERCENT }}
+                />
+              </div>
+            </div>
             <div className="flex items-center justify-between">
               <FieldDescription>$50 (MIN)</FieldDescription>
               <FieldDescription>$10,000 (MAX)</FieldDescription>

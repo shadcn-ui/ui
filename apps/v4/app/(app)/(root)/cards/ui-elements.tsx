@@ -45,7 +45,6 @@ import {
   ItemTitle,
 } from "@/styles/base-rhea/ui/item"
 import { RadioGroup, RadioGroupItem } from "@/styles/base-rhea/ui/radio-group"
-import { Slider } from "@/styles/base-rhea/ui/slider"
 import { Switch } from "@/styles/base-rhea/ui/switch"
 import { Textarea } from "@/styles/base-rhea/ui/textarea"
 
@@ -71,14 +70,6 @@ export function UIElements() {
             </ItemMedia>
           </Item>
         </div>
-        <Slider
-          defaultValue={[500]}
-          max={1000}
-          min={0}
-          step={10}
-          className="flex-1"
-          aria-label="Slider"
-        />
         <FieldGroup>
           <Field>
             <InputGroup>
@@ -102,15 +93,26 @@ export function UIElements() {
               Outline
             </Badge>
           </div>
-          <RadioGroup defaultValue="apple" className="ml-auto flex w-fit gap-3">
-            <RadioGroupItem value="apple" />
-            <RadioGroupItem value="banana" />
+          <RadioGroup
+            defaultValue="apple"
+            className="ml-auto flex w-fit gap-3"
+            aria-label="Fruit preference"
+          >
+            <RadioGroupItem value="apple" aria-label="Apple" />
+            <RadioGroupItem value="banana" aria-label="Banana" />
           </RadioGroup>
           <div className="flex gap-3">
-            <Checkbox defaultChecked />
-            <Checkbox className="hidden 4xl:flex" />
+            <Checkbox defaultChecked aria-label="Enable email alerts" />
+            <Checkbox
+              className="hidden 4xl:flex"
+              aria-label="Enable push alerts"
+            />
           </div>
-          <Switch defaultChecked className="ml-auto flex 4xl:hidden" />
+          <Switch
+            defaultChecked
+            className="ml-auto flex 4xl:hidden"
+            aria-label="Enable compact notifications"
+          />
         </div>
         <div className="flex items-center gap-4">
           <AlertDialog>
@@ -141,7 +143,13 @@ export function UIElements() {
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger
-                render={<Button variant="outline" size="icon" />}
+                render={
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    aria-label="Open quick actions"
+                  />
+                }
               >
                 <HugeiconsIcon icon={ArrowUp01Icon} strokeWidth={2} />
               </DropdownMenuTrigger>
@@ -161,7 +169,11 @@ export function UIElements() {
               </DropdownMenuContent>
             </DropdownMenu>
           </ButtonGroup>
-          <Switch defaultChecked className="ml-auto hidden 4xl:flex" />
+          <Switch
+            defaultChecked
+            className="ml-auto hidden 4xl:flex"
+            aria-label="Enable advanced setting"
+          />
         </div>
       </CardContent>
     </Card>
