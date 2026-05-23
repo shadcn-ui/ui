@@ -121,8 +121,7 @@ function ComboboxContent({
         align={align}
         alignOffset={alignOffset}
         anchor={anchor}
-        className="isolate z-50"
-        style={{ pointerEvents: "auto" }}
+        className="isolate z-50 pointer-events-auto"
       >
         <ComboboxPrimitive.Popup
           data-slot="combobox-content"
