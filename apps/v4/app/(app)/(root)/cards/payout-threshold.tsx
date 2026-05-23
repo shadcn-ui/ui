@@ -1,6 +1,5 @@
-"use client"
-
-import * as React from "react"
+import { Cancel01Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 
 import { Button } from "@/styles/base-rhea/ui/button"
 import {
@@ -28,7 +27,6 @@ import {
 } from "@/styles/base-rhea/ui/select"
 import { Slider } from "@/styles/base-rhea/ui/slider"
 import { Textarea } from "@/styles/base-rhea/ui/textarea"
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const CURRENCIES = [
   { label: "USD — United States Dollar", value: "usd" },
@@ -38,8 +36,6 @@ const CURRENCIES = [
 ]
 
 export function PayoutThreshold() {
-  const [amount, setAmount] = React.useState([2500])
-
   return (
     <Card>
       <CardHeader>
@@ -49,13 +45,7 @@ export function PayoutThreshold() {
         </CardDescription>
         <CardAction>
           <Button variant="ghost" size="icon-sm" className="bg-muted">
-            <IconPlaceholder
-              lucide="XIcon"
-              tabler="IconX"
-              hugeicons="Cancel01Icon"
-              phosphor="XIcon"
-              remixicon="RiCloseLine"
-            />
+            <HugeiconsIcon icon={Cancel01Icon} strokeWidth={2} />
           </Button>
         </CardAction>
       </CardHeader>
@@ -86,15 +76,12 @@ export function PayoutThreshold() {
                 Minimum Payout Amount
               </FieldLabel>
               <span className="text-2xl font-semibold tabular-nums">
-                ${amount[0].toFixed(2)}
+                $2500.00
               </span>
             </div>
             <Slider
               id="min-payout"
-              value={amount}
-              onValueChange={(value) =>
-                setAmount(Array.isArray(value) ? [...value] : [value])
-              }
+              defaultValue={[2500]}
               min={50}
               max={10000}
               step={50}

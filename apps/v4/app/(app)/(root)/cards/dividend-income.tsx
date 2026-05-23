@@ -1,6 +1,5 @@
-"use client"
-
-import { Bar, BarChart, XAxis } from "recharts"
+import { Cancel01Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 
 import { Button } from "@/styles/base-rhea/ui/button"
 import {
@@ -12,24 +11,16 @@ import {
   CardTitle,
 } from "@/styles/base-rhea/ui/card"
 import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig,
-} from "@/styles/base-rhea/ui/chart"
-import {
   Item,
   ItemContent,
   ItemDescription,
   ItemGroup,
   ItemTitle,
 } from "@/styles/base-rhea/ui/item"
-import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const HOLDINGS = [
   {
-    name: "Vanguard VIG",
+    name: "Vanguard",
     shares: "450 Shares",
     amount: "$1,842.10",
     data: [
@@ -74,17 +65,7 @@ const HOLDINGS = [
   },
 ]
 
-const miniChartConfig = {
-  value: {
-    label: "Dividend",
-    color: "var(--chart-2)",
-  },
-} satisfies ChartConfig
-
 export function DividendIncome() {
-  const [params] = useDesignSystemSearchParams()
-  const isRounded = !["lyra", "sera"].includes(params.style)
-
   return (
     <Card>
       <CardHeader>
@@ -94,13 +75,7 @@ export function DividendIncome() {
         </CardDescription>
         <CardAction>
           <Button variant="ghost" size="icon-sm" className="bg-muted">
-            <IconPlaceholder
-              lucide="XIcon"
-              tabler="IconX"
-              hugeicons="Cancel01Icon"
-              phosphor="XIcon"
-              remixicon="RiCloseLine"
-            />
+            <HugeiconsIcon icon={Cancel01Icon} strokeWidth={2} />
           </Button>
         </CardAction>
       </CardHeader>
@@ -112,25 +87,21 @@ export function DividendIncome() {
                 <ItemTitle>{holding.name}</ItemTitle>
                 <ItemDescription>{holding.shares}</ItemDescription>
               </ItemContent>
-              <ChartContainer
-                config={miniChartConfig}
-                className="hidden h-8 w-24 md:block"
+              <div
+                className="hidden h-8 w-24 items-end gap-1 md:flex"
+                role="img"
+                aria-label={`${holding.name} quarterly dividends`}
               >
-                <BarChart
-                  data={holding.data}
-                  margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-                >
-                  <ChartTooltip
-                    cursor={false}
-                    content={<ChartTooltipContent hideLabel />}
+                {holding.data.map((item) => (
+                  <div
+                    key={item.q}
+                    className="min-h-1 flex-1 rounded-t-sm bg-chart-2"
+                    style={{
+                      height: `${(item.value / Math.max(...holding.data.map((point) => point.value))) * 100}%`,
+                    }}
                   />
-                  <Bar
-                    dataKey="value"
-                    fill="var(--color-value)"
-                    radius={isRounded ? [3, 3, 0, 0] : 0}
-                  />
-                </BarChart>
-              </ChartContainer>
+                ))}
+              </div>
               <span className="hidden text-sm font-semibold tabular-nums md:block">
                 {holding.amount}
               </span>

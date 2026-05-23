@@ -1,4 +1,11 @@
-"use client"
+import {
+  ArrowRight01Icon,
+  Calendar03Icon,
+  MoreHorizontalCircle01Icon,
+  RefreshIcon,
+  Settings01Icon,
+} from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 
 import {
   Breadcrumb,
@@ -25,7 +32,6 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/styles/base-rhea/ui/item"
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export function Payments() {
   return (
@@ -42,12 +48,9 @@ export function Payments() {
                 <DropdownMenuTrigger
                   render={<Button size="icon-sm" variant="ghost" />}
                 >
-                  <IconPlaceholder
-                    lucide="MoreHorizontalIcon"
-                    tabler="IconDots"
-                    hugeicons="MoreHorizontalCircle01Icon"
-                    phosphor="DotsThreeIcon"
-                    remixicon="RiMoreLine"
+                  <HugeiconsIcon
+                    icon={MoreHorizontalCircle01Icon}
+                    strokeWidth={2}
                   />
                   <span className="sr-only">Account options</span>
                 </DropdownMenuTrigger>
@@ -71,13 +74,7 @@ export function Payments() {
         <ItemGroup>
           <Item variant="muted" render={<a href="#" />}>
             <ItemMedia variant="icon">
-              <IconPlaceholder
-                lucide="GaugeIcon"
-                tabler="IconGauge"
-                hugeicons="Settings01Icon"
-                phosphor="GaugeIcon"
-                remixicon="RiDashboardLine"
-              />
+              <HugeiconsIcon icon={Settings01Icon} strokeWidth={2} />
             </ItemMedia>
             <ItemContent>
               <ItemTitle>Change transfer limit</ItemTitle>
@@ -85,24 +82,15 @@ export function Payments() {
                 Adjust how much you can send from your balance.
               </ItemDescription>
             </ItemContent>
-            <IconPlaceholder
-              lucide="ChevronRightIcon"
-              tabler="IconChevronRight"
-              hugeicons="ArrowRight01Icon"
-              phosphor="CaretRightIcon"
-              remixicon="RiArrowRightSLine"
+            <HugeiconsIcon
+              icon={ArrowRight01Icon}
               className="size-4 shrink-0 text-muted-foreground"
+              strokeWidth={2}
             />
           </Item>
           <Item variant="muted" render={<a href="#" />}>
             <ItemMedia variant="icon">
-              <IconPlaceholder
-                lucide="CalendarIcon"
-                tabler="IconCalendar"
-                hugeicons="Calendar03Icon"
-                phosphor="CalendarIcon"
-                remixicon="RiCalendarLine"
-              />
+              <HugeiconsIcon icon={Calendar03Icon} strokeWidth={2} />
             </ItemMedia>
             <ItemContent>
               <ItemTitle>Scheduled transfers</ItemTitle>
@@ -110,24 +98,15 @@ export function Payments() {
                 Set up a transfer to send at a later date.
               </ItemDescription>
             </ItemContent>
-            <IconPlaceholder
-              lucide="ChevronRightIcon"
-              tabler="IconChevronRight"
-              hugeicons="ArrowRight01Icon"
-              phosphor="CaretRightIcon"
-              remixicon="RiArrowRightSLine"
+            <HugeiconsIcon
+              icon={ArrowRight01Icon}
               className="size-4 shrink-0 text-muted-foreground"
+              strokeWidth={2}
             />
           </Item>
           <Item variant="muted" render={<a href="#" />}>
             <ItemMedia variant="icon">
-              <IconPlaceholder
-                lucide="RefreshCwIcon"
-                tabler="IconRefresh"
-                hugeicons="RepeatIcon"
-                phosphor="ArrowsClockwiseIcon"
-                remixicon="RiRefreshLine"
-              />
+              <HugeiconsIcon icon={RefreshIcon} strokeWidth={2} />
             </ItemMedia>
             <ItemContent>
               <ItemTitle>Recurring card payments</ItemTitle>
@@ -135,13 +114,10 @@ export function Payments() {
                 Manage your repeated card transactions.
               </ItemDescription>
             </ItemContent>
-            <IconPlaceholder
-              lucide="ChevronRightIcon"
-              tabler="IconChevronRight"
-              hugeicons="ArrowRight01Icon"
-              phosphor="CaretRightIcon"
-              remixicon="RiArrowRightSLine"
+            <HugeiconsIcon
+              icon={ArrowRight01Icon}
               className="size-4 shrink-0 text-muted-foreground"
+              strokeWidth={2}
             />
           </Item>
         </ItemGroup>

@@ -1,7 +1,3 @@
-"use client"
-
-import { Bar, BarChart, XAxis } from "recharts"
-
 import { Badge } from "@/styles/base-rhea/ui/badge"
 import { Button } from "@/styles/base-rhea/ui/button"
 import {
@@ -13,14 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/styles/base-rhea/ui/card"
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig,
-} from "@/styles/base-rhea/ui/chart"
 import { Item, ItemContent, ItemDescription } from "@/styles/base-rhea/ui/item"
-import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 
 const chartData = [
   { month: "Dec", amount: 800 },
@@ -31,16 +20,8 @@ const chartData = [
   { month: "May", amount: 1400 },
 ]
 
-const chartConfig = {
-  amount: {
-    label: "Contribution",
-    color: "var(--chart-2)",
-  },
-} satisfies ChartConfig
-
 export function ContributionHistory() {
-  const [params] = useDesignSystemSearchParams()
-  const isRounded = !["lyra", "sera"].includes(params.style)
+  const maxAmount = Math.max(...chartData.map((item) => item.amount))
 
   return (
     <Card>
@@ -49,30 +30,26 @@ export function ContributionHistory() {
         <CardDescription>Last 6 months of activity</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[200px] w-full">
-          <BarChart
-            accessibilityLayer
-            data={chartData}
-            margin={{ left: 0, right: 0, top: 8, bottom: 0 }}
-          >
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              tickMargin={8}
-              axisLine={false}
-            />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel className="min-w-40" />}
-            />
-            <Bar
-              dataKey="amount"
-              fill="var(--color-amount)"
-              radius={isRounded ? [6, 6, 0, 0] : 0}
-              maxBarSize={40}
-            />
-          </BarChart>
-        </ChartContainer>
+        <div
+          className="flex h-[200px] w-full items-end gap-3"
+          role="img"
+          aria-label="Last 6 months of contribution activity"
+        >
+          {chartData.map((item) => (
+            <div
+              key={item.month}
+              className="flex h-full flex-1 flex-col justify-end gap-2"
+            >
+              <div
+                className="min-h-2 rounded-t-md bg-chart-2"
+                style={{ height: `${(item.amount / maxAmount) * 100}%` }}
+              />
+              <span className="text-center text-xs text-muted-foreground">
+                {item.month}
+              </span>
+            </div>
+          ))}
+        </div>
       </CardContent>
       <CardContent>
         <div className="grid w-full grid-cols-1 gap-3 xl:grid-cols-2">

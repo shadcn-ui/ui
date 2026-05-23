@@ -10,12 +10,24 @@ import {
 import { Item, ItemContent } from "@/styles/base-rhea/ui/item"
 import { Separator } from "@/styles/base-rhea/ui/separator"
 
+const netRoyalties = 1248.75
+const processingFee = 37.46
+const totalClaimable = netRoyalties - processingFee
+
+const formatCurrency = (amount: number) =>
+  amount.toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })
+
 export function ClaimableBalance() {
   return (
     <Card>
       <CardHeader>
         <CardDescription>Claimable Balance</CardDescription>
-        <CardTitle className="text-5xl tabular-nums">$0.00</CardTitle>
+        <CardTitle className="text-5xl tabular-nums">
+          ${formatCurrency(totalClaimable)}
+        </CardTitle>
         <Badge variant="outline">
           <span className="size-2 rounded-full bg-yellow-500" />
           Pending Setup
@@ -28,13 +40,17 @@ export function ClaimableBalance() {
               <span className="text-sm text-muted-foreground">
                 Net Royalties
               </span>
-              <span className="text-sm font-medium tabular-nums">$0.00</span>
+              <span className="text-sm font-medium tabular-nums">
+                ${formatCurrency(netRoyalties)}
+              </span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm text-muted-foreground">
                 Processing Fee
               </span>
-              <span className="text-sm font-medium tabular-nums">-$0.00</span>
+              <span className="text-sm font-medium tabular-nums">
+                -${formatCurrency(processingFee)}
+              </span>
             </div>
             <Separator />
             <div className="flex items-center justify-between">
@@ -42,7 +58,7 @@ export function ClaimableBalance() {
                 Total Ready to Claim
               </span>
               <span className="text-sm font-semibold tabular-nums">
-                $0.00 USD
+                ${formatCurrency(totalClaimable)} USD
               </span>
             </div>
           </ItemContent>

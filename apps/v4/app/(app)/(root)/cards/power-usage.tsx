@@ -1,7 +1,3 @@
-"use client"
-
-import { Bar, BarChart, XAxis } from "recharts"
-
 import {
   Card,
   CardContent,
@@ -10,15 +6,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/styles/base-rhea/ui/card"
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig,
-} from "@/styles/base-rhea/ui/chart"
 import { Progress } from "@/styles/base-rhea/ui/progress"
 import { Separator } from "@/styles/base-rhea/ui/separator"
-import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 
 const chartData = [
   { hour: "6a", usage: 1.2 },
@@ -31,16 +20,8 @@ const chartData = [
   { hour: "8p", usage: 3.2 },
 ]
 
-const chartConfig = {
-  usage: {
-    label: "Usage (kW)",
-    color: "var(--chart-2)",
-  },
-} satisfies ChartConfig
-
 export function PowerUsage() {
-  const [params] = useDesignSystemSearchParams()
-  const isRounded = !["lyra", "sera"].includes(params.style)
+  const maxUsage = Math.max(...chartData.map((item) => item.usage))
 
   return (
     <Card>
@@ -49,29 +30,26 @@ export function PowerUsage() {
         <CardDescription>Whole Home</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
-        <ChartContainer config={chartConfig} className="h-[140px] w-full">
-          <BarChart
-            data={chartData}
-            margin={{ left: 0, right: 0, top: 4, bottom: 0 }}
-          >
-            <XAxis
-              dataKey="hour"
-              tickLine={false}
-              tickMargin={6}
-              axisLine={false}
-              className="text-xs"
-            />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            <Bar
-              dataKey="usage"
-              fill="var(--color-usage)"
-              radius={isRounded ? [4, 4, 0, 0] : 0}
-            />
-          </BarChart>
-        </ChartContainer>
+        <div
+          className="flex h-[140px] w-full items-end gap-2"
+          role="img"
+          aria-label="Power usage by hour"
+        >
+          {chartData.map((item) => (
+            <div
+              key={item.hour}
+              className="flex h-full flex-1 flex-col justify-end gap-1.5"
+            >
+              <div
+                className="min-h-2 rounded-t bg-chart-2"
+                style={{ height: `${(item.usage / maxUsage) * 100}%` }}
+              />
+              <span className="text-center text-xs text-muted-foreground">
+                {item.hour}
+              </span>
+            </div>
+          ))}
+        </div>
         <Separator />
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-0.5">

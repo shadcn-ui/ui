@@ -1,6 +1,9 @@
-"use client"
-
-import * as React from "react"
+import {
+  ArrowUp01Icon,
+  Search01Icon,
+  SecurityIcon,
+} from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 
 import {
   AlertDialog,
@@ -36,36 +39,23 @@ import {
 } from "@/styles/base-rhea/ui/input-group"
 import {
   Item,
-  ItemActions,
   ItemContent,
   ItemDescription,
+  ItemMedia,
   ItemTitle,
 } from "@/styles/base-rhea/ui/item"
 import { RadioGroup, RadioGroupItem } from "@/styles/base-rhea/ui/radio-group"
 import { Slider } from "@/styles/base-rhea/ui/slider"
 import { Switch } from "@/styles/base-rhea/ui/switch"
 import { Textarea } from "@/styles/base-rhea/ui/textarea"
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export function UIElements() {
-  const [sliderValue, setSliderValue] = React.useState<number[]>([500])
-  const handleSliderValueChange = React.useCallback(
-    (value: number | readonly number[]) => {
-      if (typeof value === "number") {
-        setSliderValue([value])
-      } else {
-        setSliderValue([...value])
-      }
-    },
-    []
-  )
-
   return (
     <Card className="w-full">
       <CardContent className="flex flex-col gap-6">
         <div className="flex flex-col gap-4">
-          <div className="flex flex-wrap gap-2">
-            <Button>Button</Button>
+          <div className="flex gap-2">
+            <Button className="flex-1">Get Started</Button>
             <Button variant="secondary">Secondary</Button>
             <Button variant="outline">Outline</Button>
           </div>
@@ -76,16 +66,13 @@ export function UIElements() {
                 Verify via email or phone number.
               </ItemDescription>
             </ItemContent>
-            <ItemActions className="hidden md:flex">
-              <Button size="sm" variant="secondary">
-                Enable
-              </Button>
-            </ItemActions>
+            <ItemMedia>
+              <HugeiconsIcon icon={SecurityIcon} strokeWidth={2} />
+            </ItemMedia>
           </Item>
         </div>
         <Slider
-          value={sliderValue}
-          onValueChange={handleSliderValueChange}
+          defaultValue={[500]}
           max={1000}
           min={0}
           step={10}
@@ -98,13 +85,7 @@ export function UIElements() {
               <InputGroupInput placeholder="Name" />
               <InputGroupAddon align="inline-end">
                 <InputGroupText>
-                  <IconPlaceholder
-                    lucide="SearchIcon"
-                    tabler="IconSearch"
-                    hugeicons="Search01Icon"
-                    phosphor="MagnifyingGlassIcon"
-                    remixicon="RiSearchLine"
-                  />
+                  <HugeiconsIcon icon={Search01Icon} strokeWidth={2} />
                 </InputGroupText>
               </InputGroupAddon>
             </InputGroup>
@@ -162,13 +143,7 @@ export function UIElements() {
               <DropdownMenuTrigger
                 render={<Button variant="outline" size="icon" />}
               >
-                <IconPlaceholder
-                  lucide="ChevronUpIcon"
-                  tabler="IconChevronUp"
-                  hugeicons="ArrowUp01Icon"
-                  phosphor="CaretUpIcon"
-                  remixicon="RiArrowUpSLine"
-                />
+                <HugeiconsIcon icon={ArrowUp01Icon} strokeWidth={2} />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" side="top" className="w-40">
                 <DropdownMenuGroup>
@@ -176,13 +151,6 @@ export function UIElements() {
                   <DropdownMenuItem>Mute Conversation</DropdownMenuItem>
                   <DropdownMenuItem>Mark as Read</DropdownMenuItem>
                   <DropdownMenuItem>Block User</DropdownMenuItem>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  <DropdownMenuLabel>Conversation</DropdownMenuLabel>
-                  <DropdownMenuItem>Share Conversation</DropdownMenuItem>
-                  <DropdownMenuItem>Copy Conversation</DropdownMenuItem>
-                  <DropdownMenuItem>Report Conversation</DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>

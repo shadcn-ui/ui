@@ -1,3 +1,6 @@
+import { Add01Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
+
 import { Button } from "@/styles/base-rhea/ui/button"
 import { Card, CardContent } from "@/styles/base-rhea/ui/card"
 import {
@@ -8,7 +11,6 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/styles/base-rhea/ui/empty"
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export function EmptyDistributeTrack() {
   return (
@@ -16,13 +18,7 @@ export function EmptyDistributeTrack() {
       <CardContent>
         <Empty className="p-4">
           <EmptyMedia variant="icon">
-            <IconPlaceholder
-              lucide="PlusIcon"
-              tabler="IconPlus"
-              hugeicons="Add01Icon"
-              phosphor="PlusIcon"
-              remixicon="RiAddLine"
-            />
+            <HugeiconsIcon icon={Add01Icon} strokeWidth={2} />
           </EmptyMedia>
           <EmptyHeader>
             <EmptyTitle>Distribute Track</EmptyTitle>

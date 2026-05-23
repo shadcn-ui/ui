@@ -1,4 +1,9 @@
-"use client"
+import {
+  AlertCircleIcon,
+  ArrowRight01Icon,
+  SquareLock02Icon,
+} from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 
 import { Button } from "@/styles/base-rhea/ui/button"
 import {
@@ -18,7 +23,6 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/styles/base-rhea/ui/item"
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export function AccountAccess() {
   return (
@@ -61,24 +65,15 @@ export function AccountAccess() {
       </CardContent>
       <CardFooter className="flex-col gap-4">
         <Button className="w-full">
-          <IconPlaceholder
-            lucide="LockKeyholeIcon"
-            tabler="IconLock"
-            hugeicons="SquareLock02Icon"
-            phosphor="LockKeyIcon"
-            remixicon="RiLockLine"
-          />
+          <HugeiconsIcon icon={SquareLock02Icon} strokeWidth={2} />
           Update Security
         </Button>
         <Item variant="muted" render={<a href="#" />}>
           <ItemMedia variant="icon">
-            <IconPlaceholder
-              lucide="AlertCircleIcon"
-              tabler="IconAlertCircle"
-              hugeicons="AlertCircleIcon"
-              phosphor="WarningCircleIcon"
-              remixicon="RiErrorWarningLine"
+            <HugeiconsIcon
+              icon={AlertCircleIcon}
               className="text-destructive"
+              strokeWidth={2}
             />
           </ItemMedia>
           <ItemContent>
@@ -87,13 +82,10 @@ export function AccountAccess() {
               Archive account and remove catalog
             </ItemDescription>
           </ItemContent>
-          <IconPlaceholder
-            lucide="ArrowRightIcon"
-            tabler="IconArrowRight"
-            hugeicons="ArrowRight01Icon"
-            phosphor="ArrowRightIcon"
-            remixicon="RiArrowRightLine"
+          <HugeiconsIcon
+            icon={ArrowRight01Icon}
             className="size-4"
+            strokeWidth={2}
           />
         </Item>
       </CardFooter>

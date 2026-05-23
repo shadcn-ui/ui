@@ -1,3 +1,6 @@
+import { Cancel01Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
+
 import { Button } from "@/styles/base-rhea/ui/button"
 import {
   Card,
@@ -25,7 +28,6 @@ import {
   SelectValue,
 } from "@/styles/base-rhea/ui/select"
 import { Separator } from "@/styles/base-rhea/ui/separator"
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const FROM_ACCOUNTS = [
   { label: "Main Checking (··8402) — $12,450.00", value: "checking" },
@@ -47,13 +49,7 @@ export function TransferFunds() {
         </CardDescription>
         <CardAction>
           <Button variant="ghost" size="icon-sm" className="bg-muted">
-            <IconPlaceholder
-              lucide="XIcon"
-              tabler="IconX"
-              hugeicons="Cancel01Icon"
-              phosphor="XIcon"
-              remixicon="RiCloseLine"
-            />
+            <HugeiconsIcon icon={Cancel01Icon} strokeWidth={2} />
           </Button>
         </CardAction>
       </CardHeader>

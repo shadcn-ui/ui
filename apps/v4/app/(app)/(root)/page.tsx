@@ -1,6 +1,7 @@
 import { type Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import { IconArrowRight } from "@tabler/icons-react"
 
 import { Announcement } from "@/components/announcement"
 import {
@@ -9,7 +10,7 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { Button } from "@/registry/new-york-v4/ui/button"
+import { Button } from "@/styles/radix-nova/ui/button"
 
 import { CardsDemo } from "./cards"
 
@@ -52,11 +53,10 @@ export default function IndexPage() {
         <PageHeaderHeading className="max-w-4xl">{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
-          <Button asChild size="sm" className="h-[31px] rounded-lg">
-            <Link href="/create">New Project</Link>
-          </Button>
-          <Button asChild size="sm" variant="ghost" className="rounded-lg">
-            <Link href="/docs/components">View Components</Link>
+          <Button asChild className="h-[31px] rounded-lg">
+            <Link href="/create?preset=b27GcrRo">
+              Build Your Own <IconArrowRight data-icon="inline-end" />
+            </Link>
           </Button>
         </PageActions>
       </PageHeader>

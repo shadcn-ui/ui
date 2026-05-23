@@ -1,7 +1,3 @@
-"use client"
-
-import * as React from "react"
-
 import { Button } from "@/styles/base-rhea/ui/button"
 import {
   Card,
@@ -48,48 +44,21 @@ const NOTIFICATIONS = [
 ]
 
 export function NotificationSettings() {
-  const [checked, setChecked] = React.useState<Record<string, boolean>>(
-    Object.fromEntries(NOTIFICATIONS.map((n) => [n.id, n.defaultChecked]))
-  )
-
-  const allChecked = NOTIFICATIONS.every((n) => checked[n.id])
-  const someChecked = NOTIFICATIONS.some((n) => checked[n.id]) && !allChecked
-
-  const handleSelectAll = (value: boolean) => {
-    setChecked(Object.fromEntries(NOTIFICATIONS.map((n) => [n.id, value])))
-  }
-
-  const handleToggle = (id: string, value: boolean) => {
-    setChecked((prev) => ({ ...prev, [id]: value }))
-  }
-
   return (
     <Card>
       <CardHeader>
         <CardTitle>Notifications</CardTitle>
         <CardDescription>
-          Choose what you want to be notified about.
+          Choose which email and push alerts you want to receive.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <FieldGroup>
-          <Field orientation="horizontal">
-            <Checkbox
-              id="notify-all"
-              checked={allChecked}
-              indeterminate={someChecked}
-              onCheckedChange={(v) => handleSelectAll(!!v)}
-            />
-            <FieldContent>
-              <FieldLabel htmlFor="notify-all">Select all</FieldLabel>
-            </FieldContent>
-          </Field>
           {NOTIFICATIONS.map((n) => (
             <Field key={n.id} orientation="horizontal">
               <Checkbox
                 id={`notify-${n.id}`}
-                checked={checked[n.id]}
-                onCheckedChange={(v) => handleToggle(n.id, !!v)}
+                defaultChecked={n.defaultChecked}
               />
               <FieldContent>
                 <FieldLabel htmlFor={`notify-${n.id}`}>{n.label}</FieldLabel>

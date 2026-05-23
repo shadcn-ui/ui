@@ -1,5 +1,3 @@
-"use client"
-
 import { Button } from "@/styles/base-rhea/ui/button"
 import {
   Card,
