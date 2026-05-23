@@ -78,6 +78,7 @@ export function DatePickerNaturalLanguage() {
               className="w-auto overflow-hidden p-0"
               align="end"
               sideOffset={8}
+              onClick={(e) => e.stopPropagation()}
             >
               <Calendar
                 mode="single"
