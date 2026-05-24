@@ -86,7 +86,7 @@ export function ChartBarMixed() {
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey="visitors" radius={5} />
+            <Bar dataKey="visitors" radius={[0, 5, 5, 0]} />
           </BarChart>
         </ChartContainer>
       </CardContent>

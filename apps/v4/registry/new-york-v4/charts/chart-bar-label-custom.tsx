@@ -75,7 +75,7 @@ export function ChartBarLabelCustom() {
               cursor={false}
               content={<ChartTooltipContent indicator="line" />}
             />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4}>
+            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={[4, 4, 0, 0]}>
               <LabelList
                 dataKey="month"
                 position="insideLeft"
