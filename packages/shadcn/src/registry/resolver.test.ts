@@ -387,6 +387,85 @@ describe("resolveRegistryItemsFromRegistries", () => {
   })
 })
 
+describe("resolveRegistryTree - dependency normalization", async () => {
+  const dependencyRegistry = await createRegistryServer(
+    [
+      {
+        name: "tailwind-button",
+        type: "registry:ui",
+        dependencies: [
+          "react-aria-components/Button",
+          "react-aria-components/Dialog",
+          "react-aria/chain",
+          "react",
+          "tailwind-variants",
+        ],
+        devDependencies: ["@scope/tool/cli", "@scope/tool"],
+        files: [
+          {
+            path: "ui/button.tsx",
+            content: "export const Button = () => <button />",
+            type: "registry:ui",
+          },
+        ],
+      },
+    ],
+    { port: 4461 }
+  )
+
+  beforeAll(async () => {
+    await dependencyRegistry.start()
+  })
+
+  afterAll(async () => {
+    await dependencyRegistry.stop()
+  })
+
+  test("should collapse package subpath dependencies before installation", async () => {
+    const config = {
+      style: "default",
+      rsc: false,
+      tsx: false,
+      aliases: {
+        components: "./components",
+        utils: "./lib/utils",
+        ui: "./components/ui",
+      },
+      tailwind: {
+        baseColor: "neutral",
+        css: "globals.css",
+        cssVariables: false,
+      },
+      registries: {
+        "@normalize": "http://localhost:4461/r/{name}.json",
+      },
+      resolvedPaths: {
+        cwd: process.cwd(),
+        tailwindConfig: "./tailwind.config.js",
+        tailwindCss: "./globals.css",
+        utils: "./lib/utils",
+        components: "./components",
+        lib: "./lib",
+        hooks: "./hooks",
+        ui: "./components/ui",
+      },
+    }
+
+    const result = await resolveRegistryTree(
+      ["@normalize/tailwind-button"],
+      config
+    )
+
+    expect(result?.dependencies).toEqual([
+      "react-aria-components",
+      "react-aria",
+      "react",
+      "tailwind-variants",
+    ])
+    expect(result?.devDependencies).toEqual(["@scope/tool"])
+  })
+})
+
 describe("resolveRegistryItems with URL dependencies", () => {
   it("should resolve URL dependencies from local files", async () => {
     const dependencyUrl = "https://example.com/dependency.json"
