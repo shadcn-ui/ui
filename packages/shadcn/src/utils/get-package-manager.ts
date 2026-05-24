@@ -8,18 +8,25 @@ export async function getPackageManager(
     withFallback: false,
   }
 ): Promise<PackageManager> {
-  const packageManager = await detect({ programmatic: true, cwd: targetDir })
+  let packageManager: Awaited<ReturnType<typeof detect>> | undefined
+
+  try {
+    packageManager = await detect({ programmatic: true, cwd: targetDir })
+  } catch (error) {
+    if (!withFallback) {
+      throw error
+    }
+  }
 
   if (packageManager === "yarn@berry") return "yarn"
   if (packageManager === "pnpm@6") return "pnpm"
   if (packageManager === "bun") return "bun"
   if (packageManager === "deno") return "deno"
-  if (!withFallback) {
-    return packageManager ?? "npm"
+  if (packageManager) {
+    return packageManager
   }
 
-  // Fallback to user agent if not detected.
-  return getPackageManagerFromUserAgent() ?? "npm"
+  return withFallback ? (getPackageManagerFromUserAgent() ?? "npm") : "npm"
 }
 
 export function getPackageManagerFromUserAgent(
