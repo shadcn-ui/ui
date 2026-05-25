@@ -912,6 +912,12 @@
     "description": "Production-ready UI blocks for landing pages, dashboards, and web apps."
   },
   {
+    "name": "@toc-cn",
+    "homepage": "https://tocn.vercel.app",
+    "url": "https://tocn.vercel.app/r/{name}.json",
+    "description": "Documentation-style in-page table of contents with scroll spy, animated SVG tree indicator, and mobile sticky collapsible."
+  },
+  {
     "name": "@tokenui",
     "homepage": "https://www.tokenui.dev",
     "url": "https://www.tokenui.dev/r/{name}.json",
