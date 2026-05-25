@@ -17,6 +17,7 @@ import {
   FieldGroup,
   FieldLabel,
 } from "@/styles/base-rhea/ui/field"
+import { Progress } from "@/styles/base-rhea/ui/progress"
 import {
   Select,
   SelectContent,
@@ -25,7 +26,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/styles/base-rhea/ui/select"
-import { Slider } from "@/styles/base-rhea/ui/slider"
 import { Textarea } from "@/styles/base-rhea/ui/textarea"
 
 const CURRENCIES = [
@@ -77,19 +77,17 @@ export function PayoutThreshold() {
           </Field>
           <Field>
             <div className="flex items-baseline justify-between">
-              <FieldLabel htmlFor="min-payout">
+              <FieldLabel id="min-payout-label">
                 Minimum Payout Amount
               </FieldLabel>
               <span className="text-2xl font-semibold tabular-nums">
                 $2500.00
               </span>
             </div>
-            <Slider
-              id="min-payout"
-              defaultValue={[2500]}
-              min={50}
-              max={10000}
-              step={50}
+            <Progress
+              value={25}
+              aria-labelledby="min-payout-label"
+              aria-valuetext="$2,500 of $10,000"
             />
             <div className="flex items-center justify-between">
               <FieldDescription>$50 (MIN)</FieldDescription>

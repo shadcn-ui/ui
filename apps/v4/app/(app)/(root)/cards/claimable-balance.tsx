@@ -25,7 +25,7 @@ export function ClaimableBalance() {
     <Card>
       <CardHeader>
         <CardDescription>Claimable Balance</CardDescription>
-        <CardTitle className="text-5xl tabular-nums">
+        <CardTitle className="text-4xl tabular-nums">
           ${formatCurrency(totalClaimable)}
         </CardTitle>
         <Badge variant="outline">
