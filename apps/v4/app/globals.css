@@ -17,7 +17,6 @@
 
 @theme inline {
   --breakpoint-3xl: 1600px;
-  --breakpoint-3xxl: 1700px;
   --breakpoint-4xl: 2000px;
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);

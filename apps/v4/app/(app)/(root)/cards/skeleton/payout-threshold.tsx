@@ -13,9 +13,6 @@ export function PayoutThreshold() {
       <CardHeader className="gap-2">
         <Skeleton className="h-5 w-44 rounded-md" />
         <Skeleton className="h-4 w-72 rounded-md" />
-        <CardAction>
-          <Skeleton className="size-8 rounded-md" />
-        </CardAction>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">

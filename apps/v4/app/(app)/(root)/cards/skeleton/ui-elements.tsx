@@ -11,15 +11,13 @@ export function UIElements() {
             <Skeleton className="h-9 w-24 rounded-lg" />
             <Skeleton className="h-9 w-20 rounded-lg" />
           </div>
-          <div className="flex items-center gap-3 rounded-xl border p-3">
+          <div className="flex items-center gap-3 rounded-xl">
             <div className="flex flex-1 flex-col gap-2">
               <Skeleton className="h-4 w-44 rounded-md" />
               <Skeleton className="h-3 w-56 rounded-md xl:hidden 2xl:block" />
             </div>
-            <Skeleton className="hidden h-8 w-20 rounded-lg md:block" />
           </div>
         </div>
-        <Skeleton className="h-2 w-full rounded-full" />
         <div className="flex flex-col gap-3">
           <Skeleton className="h-9 w-full rounded-lg" />
           <Skeleton className="h-20 w-full rounded-lg" />

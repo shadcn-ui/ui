@@ -1,4 +1,5 @@
 import {
+  ArrowRight02Icon,
   ArrowUp01Icon,
   Search01Icon,
   SecurityIcon,
@@ -54,15 +55,22 @@ export function UIElements() {
       <CardContent className="flex flex-col gap-6">
         <div className="flex flex-col gap-4">
           <div className="flex gap-2">
-            <Button className="flex-1">Get Started</Button>
+            <Button>
+              Button{" "}
+              <HugeiconsIcon
+                icon={ArrowRight02Icon}
+                strokeWidth={2}
+                data-icon="inline-end"
+              />
+            </Button>
             <Button variant="secondary">Secondary</Button>
             <Button variant="outline">Outline</Button>
           </div>
           <Item variant="outline">
             <ItemContent>
               <ItemTitle>Two-factor authentication</ItemTitle>
-              <ItemDescription className="text-pretty xl:hidden 2xl:block">
-                Verify via email or phone number.
+              <ItemDescription className="text-pretty">
+                Enable to protect your account.
               </ItemDescription>
             </ItemContent>
             <ItemMedia>
@@ -110,7 +118,7 @@ export function UIElements() {
           </div>
           <Switch
             defaultChecked
-            className="ml-auto flex 4xl:hidden"
+            className="flex 4xl:hidden"
             aria-label="Enable compact notifications"
           />
         </div>
@@ -136,7 +144,7 @@ export function UIElements() {
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
-          <ButtonGroup>
+          <ButtonGroup className="ml-auto">
             <Button variant="outline">
               <span className="style-sera:hidden">Button Group</span>
               <span className="hidden style-sera:block">Group</span>
@@ -171,7 +179,7 @@ export function UIElements() {
           </ButtonGroup>
           <Switch
             defaultChecked
-            className="ml-auto hidden 4xl:flex"
+            className="hidden 4xl:flex"
             aria-label="Enable advanced setting"
           />
         </div>

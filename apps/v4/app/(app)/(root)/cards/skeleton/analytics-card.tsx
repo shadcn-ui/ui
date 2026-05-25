@@ -1,8 +1,4 @@
-import {
-  Card,
-  CardAction,
-  CardHeader,
-} from "@/styles/base-rhea/ui/card"
+import { Card, CardAction, CardHeader } from "@/styles/base-rhea/ui/card"
 import { Skeleton } from "@/styles/base-rhea/ui/skeleton"
 
 export function AnalyticsCard() {

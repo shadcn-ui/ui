@@ -59,7 +59,7 @@ export function ContributionHistory() {
                 Upcoming
               </ItemDescription>
               <span className="cn-font-heading text-base font-semibold">
-                May 25, 2024
+                May 2024
               </span>
               <span className="text-sm text-muted-foreground">
                 $1,000 scheduled
@@ -72,7 +72,7 @@ export function ContributionHistory() {
           >
             <ItemContent className="gap-1">
               <ItemDescription className="text-xs font-medium tracking-wider text-muted-foreground uppercase">
-                Auto-Save Plan
+                Savings Plan
               </ItemDescription>
               <span className="cn-font-heading text-base font-semibold">
                 Accelerated
