@@ -14,7 +14,7 @@ import { OpenPresetScript } from "@/app/(app)/create/components/open-preset"
 import { PreviewStyle } from "@/app/(app)/create/components/preview-style"
 import { RandomizeScript } from "@/app/(app)/create/components/random-button"
 import { getBaseComponent, getBaseItem } from "@/app/(app)/create/lib/api"
-import { previewFontVariables } from "@/app/(create)/lib/fonts"
+import { previewFontVariables } from "@/app/(create)/preview/fonts"
 
 import "@/app/style-registry.css"
 
