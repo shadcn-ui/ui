@@ -53,7 +53,7 @@ const useFormField = () => {
     throw new Error("useFormField should be used within <FormField>")
   }
 
-  const { id, hasDescription } = itemContext
+  const { id, hasDescription, hasErrorMessage } = itemContext
 
   return {
     id,
@@ -62,6 +62,7 @@ const useFormField = () => {
     formDescriptionId: `${id}-form-item-description`,
     formMessageId: `${id}-form-item-message`,
     hasDescription,
+    hasErrorMessage,
     ...fieldState,
   }
 }
@@ -70,6 +71,8 @@ type FormItemContextValue = {
   id: string
   hasDescription: boolean
   setHasDescription: (value: boolean) => void
+  hasErrorMessage: boolean
+  setHasErrorMessage: (value: boolean) => void
 }
 
 const FormItemContext = React.createContext<FormItemContextValue>(
@@ -79,9 +82,18 @@ const FormItemContext = React.createContext<FormItemContextValue>(
 function FormItem({ className, ...props }: React.ComponentProps<"div">) {
   const id = React.useId()
   const [hasDescription, setHasDescription] = React.useState(false)
+  const [hasErrorMessage, setHasErrorMessage] = React.useState(false)
 
   return (
-    <FormItemContext.Provider value={{ id, hasDescription, setHasDescription }}>
+    <FormItemContext.Provider
+      value={{
+        id,
+        hasDescription,
+        setHasDescription,
+        hasErrorMessage,
+        setHasErrorMessage,
+      }}
+    >
       <div
         data-slot="form-item"
         className={cn("grid gap-2", className)}
@@ -115,11 +127,12 @@ function FormControl({ ...props }: React.ComponentProps<typeof Slot.Root>) {
     formDescriptionId,
     formMessageId,
     hasDescription,
+    hasErrorMessage,
   } = useFormField()
 
   const ariaDescribedBy = [
     hasDescription ? formDescriptionId : "",
-    error ? formMessageId : "",
+    hasErrorMessage ? formMessageId : "",
   ]
     .filter(Boolean)
     .join(" ")
@@ -156,7 +169,13 @@ function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
 
 function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
   const { error, formMessageId } = useFormField()
+  const { setHasErrorMessage } = React.useContext(FormItemContext)
   const body = error ? String(error?.message ?? "") : props.children
+
+  React.useLayoutEffect(() => {
+    setHasErrorMessage(Boolean(body))
+    return () => setHasErrorMessage(false)
+  }, [body, setHasErrorMessage])
 
   if (!body) {
     return null
