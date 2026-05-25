@@ -53,7 +53,7 @@ const useFormField = () => {
     throw new Error("useFormField should be used within <FormField>")
   }
 
-  const { id } = itemContext
+  const { id, hasDescription } = itemContext
 
   return {
     id,
@@ -61,12 +61,15 @@ const useFormField = () => {
     formItemId: `${id}-form-item`,
     formDescriptionId: `${id}-form-item-description`,
     formMessageId: `${id}-form-item-message`,
+    hasDescription,
     ...fieldState,
   }
 }
 
 type FormItemContextValue = {
   id: string
+  hasDescription: boolean
+  setHasDescription: (value: boolean) => void
 }
 
 const FormItemContext = React.createContext<FormItemContextValue>(
@@ -75,9 +78,10 @@ const FormItemContext = React.createContext<FormItemContextValue>(
 
 function FormItem({ className, ...props }: React.ComponentProps<"div">) {
   const id = React.useId()
+  const [hasDescription, setHasDescription] = React.useState(false)
 
   return (
-    <FormItemContext.Provider value={{ id }}>
+    <FormItemContext.Provider value={{ id, hasDescription, setHasDescription }}>
       <div
         data-slot="form-item"
         className={cn("grid gap-2", className)}
@@ -105,17 +109,26 @@ function FormLabel({
 }
 
 function FormControl({ ...props }: React.ComponentProps<typeof Slot.Root>) {
-  const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
+  const {
+    error,
+    formItemId,
+    formDescriptionId,
+    formMessageId,
+    hasDescription,
+  } = useFormField()
+
+  const ariaDescribedBy = [
+    hasDescription ? formDescriptionId : "",
+    error ? formMessageId : "",
+  ]
+    .filter(Boolean)
+    .join(" ")
 
   return (
     <Slot.Root
       data-slot="form-control"
       id={formItemId}
-      aria-describedby={
-        !error
-          ? `${formDescriptionId}`
-          : `${formDescriptionId} ${formMessageId}`
-      }
+      aria-describedby={ariaDescribedBy || undefined}
       aria-invalid={!!error}
       {...props}
     />
@@ -124,6 +137,12 @@ function FormControl({ ...props }: React.ComponentProps<typeof Slot.Root>) {
 
 function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
   const { formDescriptionId } = useFormField()
+  const { setHasDescription } = React.useContext(FormItemContext)
+
+  React.useEffect(() => {
+    setHasDescription(true)
+    return () => setHasDescription(false)
+  }, [setHasDescription])
 
   return (
     <p
