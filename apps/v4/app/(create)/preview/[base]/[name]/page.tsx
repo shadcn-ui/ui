@@ -15,6 +15,8 @@ import { PreviewStyle } from "@/app/(app)/create/components/preview-style"
 import { RandomizeScript } from "@/app/(app)/create/components/random-button"
 import { getBaseComponent, getBaseItem } from "@/app/(app)/create/lib/api"
 
+import "@/app/style-registry.css"
+
 export const revalidate = false
 export const dynamic = "force-static"
 export const dynamicParams = true

@@ -7,7 +7,7 @@ export function Announcement() {
   return (
     <Badge asChild variant="secondary" className="bg-muted">
       <Link href="/docs/changelog">
-        New preset commands <ArrowRightIcon />
+        Introducing Rhea <ArrowRightIcon />
       </Link>
     </Badge>
   )
