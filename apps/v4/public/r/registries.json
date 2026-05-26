@@ -1199,6 +1199,7 @@
     "url": "https://dominikkoch.dev/r/{name}.json",
     "description": "Opinionated components and tools for building modern AI interfaces."
   },
+  {
     "name": "@blockus",
     "homepage": "https://blockus.lndevui.com",
     "url": "https://blockus.lndevui.com/r/{name}.json",
