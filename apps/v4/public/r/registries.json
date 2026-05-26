@@ -1192,5 +1192,11 @@
     "homepage": "https://wensity.com",
     "url": "https://raw.githubusercontent.com/ksparth12/wensity-shadcn-registry/main/{name}.json",
     "description": "Motion-rich React components for AI interfaces, SaaS blocks, and cinematic interactions. Free Wensity components only."
+  },
+  {
+    "name": "@dominik-ui",
+    "homepage": "https://dominikkoch.dev",
+    "url": "https://dominikkoch.dev/r/{name}.json",
+    "description": "Opinionated components and tools for building modern AI interfaces."
   }
 ]
