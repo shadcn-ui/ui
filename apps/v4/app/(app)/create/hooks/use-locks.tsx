@@ -24,15 +24,10 @@ const LocksContext = React.createContext<LocksContextValue | null>(null)
 
 export function LocksProvider({ children }: { children: React.ReactNode }) {
   const [locks, setLocks] = React.useState<Set<LockableParam>>(new Set())
-  const locksRef = React.useRef(locks)
-  React.useEffect(() => {
-    locksRef.current = locks
-  }, [locks])
 
-  // Stable callback — reads from ref so it doesn't change on every lock toggle.
   const isLocked = React.useCallback(
-    (param: LockableParam) => locksRef.current.has(param),
-    []
+    (param: LockableParam) => locks.has(param),
+    [locks]
   )
 
   const toggleLock = React.useCallback((param: LockableParam) => {
