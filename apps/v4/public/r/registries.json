@@ -198,6 +198,12 @@
     "description": "A new, modern UI component library built on top of Base UI. Built for developers and AI."
   },
   {
+    "name": "@corecn",
+    "homepage": "https://corecn.vercel.app",
+    "url": "https://corecn.vercel.app/r/{name}.json",
+    "description": "A collection of shadcn-based React components, charts, animated components, and blocks built by corecn."
+  },
+  {
     "name": "@creative-tim",
     "homepage": "https://www.creative-tim.com/ui",
     "url": "https://www.creative-tim.com/ui/r/{name}.json",
