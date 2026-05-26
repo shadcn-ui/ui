@@ -306,6 +306,12 @@
     "description": "A shadcn-compatible registry of glassmorphism components inspired by Apple"
   },
   {
+    "name": "@gymnopedies",
+    "homepage": "https://gymnopedies.shoota.work",
+    "url": "https://gymnopedies.shoota.work/r/{name}.json",
+    "description": "A dark, serif, glow-leaning shadcn registry of read-only components for blogs, essays, and long-form reading experiences — inspired by the quiet, candlelit cabaret of Erik Satie's Gymnopédies."
+  },
+  {
     "name": "@ha-components",
     "homepage": "https://hacomponents.keshuac.com",
     "url": "https://hacomponents.keshuac.com/r/{name}.json",
@@ -904,6 +910,12 @@
     "homepage": "https://ui.beste.co",
     "url": "https://ui.beste.co/r/{name}.json",
     "description": "Production-ready UI blocks for landing pages, dashboards, and web apps."
+  },
+  {
+    "name": "@toc-cn",
+    "homepage": "https://tocn.vercel.app",
+    "url": "https://tocn.vercel.app/r/{name}.json",
+    "description": "Documentation-style in-page table of contents with scroll spy, animated SVG tree indicator, and mobile sticky collapsible."
   },
   {
     "name": "@tokenui",
