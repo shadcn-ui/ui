@@ -1192,5 +1192,11 @@
     "homepage": "https://wensity.com",
     "url": "https://raw.githubusercontent.com/ksparth12/wensity-shadcn-registry/main/{name}.json",
     "description": "Motion-rich React components for AI interfaces, SaaS blocks, and cinematic interactions. Free Wensity components only."
+  },
+  {
+    "name": "@blockus",
+    "homepage": "https://blockus.lndevui.com",
+    "url": "https://blockus.lndevui.com/r/{name}.json",
+    "description": "Production-ready React blocks built on shadcn/ui and Tailwind — drop them in, swap the copy, ship the page. Heroes, pricing and footer sections crafted by hand."
   }
 ]

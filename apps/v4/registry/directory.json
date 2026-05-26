@@ -1392,5 +1392,12 @@
     "url": "https://raw.githubusercontent.com/ksparth12/wensity-shadcn-registry/main/{name}.json",
     "description": "Motion-rich React components for AI interfaces, SaaS blocks, and cinematic interactions. Free Wensity components only.",
     "logo": "<svg width='512' height='512' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'><rect width='512' height='512' rx='112' fill='var(--foreground)'/><path d='M112 152h58l36 160 43-160h49l43 160 36-160h58l-62 208h-62l-38-141-38 141h-62L112 152Z' fill='var(--background)'/></svg>"
+  },
+  {
+    "name": "@blockus",
+    "homepage": "https://blockus.lndevui.com",
+    "url": "https://blockus.lndevui.com/r/{name}.json",
+    "description": "Production-ready React blocks built on shadcn/ui and Tailwind — drop them in, swap the copy, ship the page. Heroes, pricing and footer sections crafted by hand.",
+    "logo": "<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 24 A24 24 0 0 1 24 0 L24 24 Z' fill='var(--foreground)'/></svg>"
   }
 ]
