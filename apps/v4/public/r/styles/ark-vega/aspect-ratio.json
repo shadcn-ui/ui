@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-ratio",
+  "files": [
+    {
+      "path": "registry/ark-vega/ui/aspect-ratio.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { ark } from \"@ark-ui/react/factory\"\n\nfunction AspectRatio({\n  ratio = 1 / 1,\n  className,\n  style,\n  ...props\n}: React.ComponentProps<typeof ark.div> & { ratio?: number }) {\n  return (\n    <ark.div\n      data-slot=\"aspect-ratio\"\n      style={{\n        position: \"relative\",\n        width: \"100%\",\n        paddingBottom: `${100 / ratio}%`,\n        ...style,\n      }}\n    >\n      <ark.div\n        className={className}\n        style={{\n          position: \"absolute\",\n          top: 0,\n          right: 0,\n          bottom: 0,\n          left: 0,\n        }}\n        {...props}\n      />\n    </ark.div>\n  )\n}\n\nexport { AspectRatio }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

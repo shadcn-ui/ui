@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "files": [
+    {
+      "path": "registry/ark-nova/ui/collapsible.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport {\n  Collapsible as CollapsiblePrimitive,\n  useCollapsible,\n  useCollapsibleContext,\n  type CollapsibleOpenChangeDetails,\n} from \"@ark-ui/react/collapsible\"\n\nimport { cn } from \"@/registry/ark-nova/lib/utils\"\n\nconst Collapsible = React.forwardRef<\n  React.ElementRef<typeof CollapsiblePrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Root>\n>(({ ...props }, ref) => (\n  <CollapsiblePrimitive.Root ref={ref} data-slot=\"collapsible\" {...props} />\n))\nCollapsible.displayName = \"Collapsible\"\n\nconst CollapsibleTrigger = React.forwardRef<\n  React.ElementRef<typeof CollapsiblePrimitive.Trigger>,\n  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Trigger>\n>(({ ...props }, ref) => (\n  <CollapsiblePrimitive.Trigger\n    ref={ref}\n    data-slot=\"collapsible-trigger\"\n    {...props}\n  />\n))\nCollapsibleTrigger.displayName = \"CollapsibleTrigger\"\n\nconst CollapsibleContent = React.forwardRef<\n  React.ElementRef<typeof CollapsiblePrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Content>\n>(({ className, ...props }, ref) => (\n  <CollapsiblePrimitive.Content\n    ref={ref}\n    data-slot=\"collapsible-content\"\n    className={cn(\n      \"overflow-hidden data-open:animate-accordion-down data-closed:animate-accordion-up\",\n      className\n    )}\n    {...props}\n  />\n))\nCollapsibleContent.displayName = \"CollapsibleContent\"\n\nconst CollapsibleIndicator = React.forwardRef<\n  React.ElementRef<typeof CollapsiblePrimitive.Indicator>,\n  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Indicator>\n>(({ className, ...props }, ref) => (\n  <CollapsiblePrimitive.Indicator\n    ref={ref}\n    data-slot=\"collapsible-indicator\"\n    className={cn(className)}\n    {...props}\n  />\n))\nCollapsibleIndicator.displayName = \"CollapsibleIndicator\"\n\nconst CollapsibleContext = CollapsiblePrimitive.Context\nconst CollapsibleRootProvider = CollapsiblePrimitive.RootProvider\n\nexport {\n  Collapsible,\n  CollapsibleContent,\n  CollapsibleContext,\n  CollapsibleIndicator,\n  CollapsibleRootProvider,\n  CollapsibleTrigger,\n  useCollapsible,\n  useCollapsibleContext,\n  type CollapsibleOpenChangeDetails,\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

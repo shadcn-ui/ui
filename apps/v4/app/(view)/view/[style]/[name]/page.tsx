@@ -90,7 +90,7 @@ export async function generateStaticParams() {
 
   for (const style of legacyStyles) {
     // Check if this is a base-prefixed style (e.g., base-nova, radix-nova).
-    const baseMatch = style.name.match(/^(base|radix)-/)
+    const baseMatch = style.name.match(/^(base|radix|ark)-/)
     if (baseMatch) {
       const baseName = baseMatch[1]
 

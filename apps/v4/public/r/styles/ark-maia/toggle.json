@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle",
+  "files": [
+    {
+      "path": "registry/ark-maia/ui/toggle.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Toggle as TogglePrimitive } from \"@ark-ui/react/toggle\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/registry/ark-maia/lib/utils\"\n\nconst toggleVariants = cva(\n  \"group/toggle inline-flex items-center justify-center gap-1 rounded-4xl text-sm font-medium whitespace-nowrap transition-colors outline-none hover:bg-muted hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 aria-pressed:bg-muted dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-transparent\",\n        outline: \"border border-input bg-transparent hover:bg-muted\",\n      },\n      size: {\n        default: \"h-9 min-w-9 rounded-[min(var(--radius-2xl),12px)] px-2.5\",\n        sm: \"h-8 min-w-8 px-3\",\n        lg: \"h-10 min-w-10 px-2.5\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Toggle({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  ...props\n}: React.ComponentProps<typeof TogglePrimitive.Root> &\n  VariantProps<typeof toggleVariants>) {\n  return (\n    <TogglePrimitive.Root\n      data-slot=\"toggle\"\n      className={cn(toggleVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nfunction ToggleIndicator({\n  className,\n  ...props\n}: React.ComponentProps<typeof TogglePrimitive.Indicator>) {\n  return (\n    <TogglePrimitive.Indicator\n      data-slot=\"toggle-indicator\"\n      className={cn(className)}\n      {...props}\n    />\n  )\n}\n\nconst ToggleContext = TogglePrimitive.Context\n\nexport { Toggle, toggleVariants, ToggleContext, ToggleIndicator }\nexport { useToggle, useToggleContext } from \"@ark-ui/react/toggle\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

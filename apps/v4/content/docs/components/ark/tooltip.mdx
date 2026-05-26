@@ -1,0 +1,109 @@
+---
+title: Tooltip
+description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+base: ark
+component: true
+links:
+  doc: https://ark-ui.com/docs/components/tooltip
+  api: https://ark-ui.com/docs/components/tooltip#api-reference
+---
+
+<ComponentPreview styleName="ark-nova" name="tooltip-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add tooltip
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="tooltip"
+  title="components/ui/tooltip.tsx"
+  styleName="ark-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+```
+
+```tsx showLineNumbers
+<Tooltip>
+  <TooltipTrigger>Hover</TooltipTrigger>
+  <TooltipContent>
+    <p>Add to library</p>
+  </TooltipContent>
+</Tooltip>
+```
+
+Ark UI's Tooltip does not require a provider — it works out of the box.
+
+## Examples
+
+### Side
+
+Use the `positioning` prop to change the placement of the tooltip.
+
+```tsx showLineNumbers /positioning/
+<Tooltip positioning={{ placement: "right" }}>
+  <TooltipTrigger>Hover</TooltipTrigger>
+  <TooltipContent>Right tooltip</TooltipContent>
+</Tooltip>
+```
+
+<ComponentPreview styleName="ark-nova" name="tooltip-sides" />
+
+### With Keyboard Shortcut
+
+<ComponentPreview styleName="ark-nova" name="tooltip-keyboard" />
+
+### Disabled Button
+
+Show a tooltip on a disabled button by wrapping it with a span.
+
+<ComponentPreview styleName="ark-nova" name="tooltip-disabled" />
+
+## RTL
+
+To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview styleName="ark-nova" name="tooltip-rtl" direction="rtl" />
+
+## API Reference
+
+See the [Ark UI Tooltip](https://ark-ui.com/docs/components/tooltip#api-reference) documentation.

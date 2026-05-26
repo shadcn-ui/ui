@@ -1,0 +1,265 @@
+---
+title: Carousel
+description: A carousel with motion and swipe built on top of Ark UI's Carousel primitive.
+base: ark
+component: true
+links:
+  doc: https://ark-ui.com/docs/components/carousel
+  api: https://ark-ui.com/docs/components/carousel#api-reference
+---
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="carousel-demo"
+  previewClassName="h-80 sm:h-[32rem]"
+/>
+
+## About
+
+The carousel component is built using the [Ark UI Carousel](https://ark-ui.com/docs/components/carousel) primitive.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add carousel
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="carousel"
+  title="components/ui/carousel.tsx"
+  styleName="ark-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Carousel,
+  CarouselContent,
+  CarouselControl,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+```
+
+```tsx showLineNumbers
+<Carousel slideCount={5}>
+  <CarouselControl>
+    <CarouselPrevious />
+    <CarouselContent>
+      <CarouselItem index={0}>...</CarouselItem>
+      <CarouselItem index={1}>...</CarouselItem>
+      <CarouselItem index={2}>...</CarouselItem>
+    </CarouselContent>
+    <CarouselNext />
+  </CarouselControl>
+</Carousel>
+```
+
+## Examples
+
+### Sizes
+
+Use the `slidesPerPage` prop to show multiple slides at once.
+
+<ComponentPreview styleName="ark-nova" name="carousel-size" />
+
+```tsx showLineNumbers /slidesPerPage/
+<Carousel slideCount={5} slidesPerPage={3}>
+  <CarouselControl>
+    <CarouselPrevious />
+    <CarouselContent>
+      <CarouselItem index={0}>...</CarouselItem>
+      <CarouselItem index={1}>...</CarouselItem>
+      <CarouselItem index={2}>...</CarouselItem>
+    </CarouselContent>
+    <CarouselNext />
+  </CarouselControl>
+</Carousel>
+```
+
+### Spacing
+
+Use the `spacing` prop on `Carousel` to set the gap between slides. Default is `1rem`.
+
+<ComponentPreview styleName="ark-nova" name="carousel-spacing" />
+
+```tsx showLineNumbers /spacing/
+<Carousel slideCount={5} spacing="16px" slidesPerPage={2}>
+  <CarouselControl>
+    <CarouselPrevious />
+    <CarouselContent>
+      <CarouselItem index={0}>...</CarouselItem>
+      <CarouselItem index={1}>...</CarouselItem>
+    </CarouselContent>
+    <CarouselNext />
+  </CarouselControl>
+</Carousel>
+```
+
+### Orientation
+
+Use the `orientation` prop to set the orientation of the carousel.
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="carousel-orientation"
+  previewClassName="h-[32rem]"
+/>
+
+```tsx showLineNumbers /orientation/
+<Carousel slideCount={5} orientation="vertical">
+  <CarouselContent className="h-80">
+    <CarouselItem index={0}>...</CarouselItem>
+    <CarouselItem index={1}>...</CarouselItem>
+  </CarouselContent>
+  <CarouselControl className="justify-between">
+    <CarouselPrevious>
+      <ChevronUpIcon />
+    </CarouselPrevious>
+    <CarouselNext>
+      <ChevronDownIcon />
+    </CarouselNext>
+  </CarouselControl>
+</Carousel>
+```
+
+### Options
+
+Pass options directly as props on `Carousel`. See the [Ark UI Carousel docs](https://ark-ui.com/docs/components/carousel) for all available props.
+
+```tsx showLineNumbers
+<Carousel
+  slideCount={5}
+  loop
+  slidesPerPage={2}
+  slidesPerMove={1}
+  spacing="16px"
+  allowMouseDrag
+>
+  ...
+</Carousel>
+```
+
+### Autoplay
+
+Use the `autoplay` prop to enable automatic slide advancement.
+
+<ComponentPreview styleName="ark-nova" name="carousel-plugin" />
+
+```tsx showLineNumbers /autoplay/
+<Carousel slideCount={5} autoplay={{ delay: 2000 }}>
+  ...
+</Carousel>
+```
+
+### API
+
+Use the `useCarouselApi` hook with `CarouselRootProvider` for programmatic control.
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="carousel-api"
+  previewClassName="sm:h-[32rem]"
+/>
+
+```tsx showLineNumbers
+import { CarouselRootProvider, useCarouselApi } from "@/components/ui/carousel"
+
+export function Example() {
+  const carousel = useCarouselApi({ slideCount: 5 })
+
+  return (
+    <CarouselRootProvider value={carousel}>
+      <CarouselControl>
+        <CarouselPrevious />
+        <CarouselContent>
+          <CarouselItem index={0}>...</CarouselItem>
+        </CarouselContent>
+        <CarouselNext />
+      </CarouselControl>
+      <p>Slide {carousel.page + 1} of {carousel.pageSnapPoints.length}</p>
+    </CarouselRootProvider>
+  )
+}
+```
+
+### Indicators
+
+Use `CarouselIndicatorGroup` and `CarouselIndicator` for dot pagination.
+
+```tsx showLineNumbers
+<Carousel slideCount={5}>
+  <CarouselContent>...</CarouselContent>
+  <CarouselControl>
+    <CarouselPrevious />
+    <CarouselIndicatorGroup>
+      {Array.from({ length: 5 }).map((_, index) => (
+        <CarouselIndicator key={index} index={index} />
+      ))}
+    </CarouselIndicatorGroup>
+    <CarouselNext />
+  </CarouselControl>
+</Carousel>
+```
+
+## RTL
+
+To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="carousel-rtl"
+  direction="rtl"
+  previewClassName="h-80 sm:h-[32rem]"
+/>
+
+Pass the `dir` prop to the `Carousel` component for RTL support.
+
+```tsx showLineNumbers /dir/
+<Carousel slideCount={5} dir="rtl">
+  <CarouselControl>
+    <CarouselPrevious />
+    <CarouselContent>
+      <CarouselItem index={0}>...</CarouselItem>
+    </CarouselContent>
+    <CarouselNext />
+  </CarouselControl>
+</Carousel>
+```
+
+## API Reference
+
+See the [Ark UI Carousel](https://ark-ui.com/docs/components/carousel#api-reference) documentation for the full API reference.
