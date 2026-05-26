@@ -1,5 +1,4 @@
 import * as React from "react"
-
 import {
   ActivityIcon,
   Analytics01Icon,
@@ -137,7 +136,7 @@ export function SidebarNav() {
 
       <SidebarSection
         label="Support"
-        className="hidden xl:flex xl:col-start-2 xl:row-start-1"
+        className="hidden xl:col-start-2 xl:row-start-1 xl:flex"
       >
         <SidebarMenuItem>
           <SidebarMenuButton>
@@ -167,7 +166,7 @@ export function SidebarNav() {
 
       <SidebarSection
         label="Account"
-        className="hidden xl:flex xl:col-start-2 xl:row-start-2"
+        className="hidden xl:col-start-2 xl:row-start-2 xl:flex"
       >
         <SidebarMenuItem>
           <SidebarMenuButton>

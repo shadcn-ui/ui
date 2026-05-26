@@ -6,9 +6,6 @@
     "name": "preview-02"
   },
   {
-    "name": "preview-03"
-  },
-  {
     "name": "login-01",
     "description": "A simple login form.",
     "categories": ["authentication", "login"]

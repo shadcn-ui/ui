@@ -6,7 +6,6 @@ import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-param
 const PREVIEW_ITEMS = [
   { label: "01", value: "preview-02" },
   { label: "02", value: "preview" },
-  { label: "03", value: "preview-03" },
 ]
 
 export function PreviewSwitcher() {
