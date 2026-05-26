@@ -1198,5 +1198,10 @@
     "homepage": "https://dominikkoch.dev",
     "url": "https://dominikkoch.dev/r/{name}.json",
     "description": "Opinionated components and tools for building modern AI interfaces."
+  },
+    "name": "@blockus",
+    "homepage": "https://blockus.lndevui.com",
+    "url": "https://blockus.lndevui.com/r/{name}.json",
+    "description": "Production-ready React blocks built on shadcn/ui and Tailwind — drop them in, swap the copy, ship the page. Heroes, pricing and footer sections crafted by hand."
   }
 ]
