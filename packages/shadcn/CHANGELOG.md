@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 4.8.1
+
+### Patch Changes
+
+- [#10779](https://github.com/shadcn-ui/ui/pull/10779) [`df1752dfe092957f84aa467d2270436139e3ecc7`](https://github.com/shadcn-ui/ui/commit/df1752dfe092957f84aa467d2270436139e3ecc7) Thanks [@shadcn](https://github.com/shadcn)! - add style rhea
+
 ## 4.8.0
 
 ### Minor Changes
