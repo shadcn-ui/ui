@@ -1,8 +1,9 @@
+"use client"
+
 import {
   ArrowRight02Icon,
   ArrowUp01Icon,
   Search01Icon,
-  SecurityIcon,
 } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
@@ -38,45 +39,31 @@ import {
   InputGroupInput,
   InputGroupText,
 } from "@/styles/base-rhea/ui/input-group"
-import {
-  Item,
-  ItemContent,
-  ItemDescription,
-  ItemMedia,
-  ItemTitle,
-} from "@/styles/base-rhea/ui/item"
 import { RadioGroup, RadioGroupItem } from "@/styles/base-rhea/ui/radio-group"
 import { Switch } from "@/styles/base-rhea/ui/switch"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/styles/base-rhea/ui/tabs"
 import { Textarea } from "@/styles/base-rhea/ui/textarea"
 
 export function UIElements() {
   return (
     <Card className="w-full">
       <CardContent className="flex flex-col gap-6">
-        <div className="flex flex-col gap-4">
-          <div className="flex gap-2">
-            <Button>
-              Button{" "}
-              <HugeiconsIcon
-                icon={ArrowRight02Icon}
-                strokeWidth={2}
-                data-icon="inline-end"
-              />
-            </Button>
-            <Button variant="secondary">Secondary</Button>
-            <Button variant="outline">Outline</Button>
-          </div>
-          <Item variant="outline">
-            <ItemContent>
-              <ItemTitle>Two-factor authentication</ItemTitle>
-              <ItemDescription className="text-pretty">
-                Enable to protect your account.
-              </ItemDescription>
-            </ItemContent>
-            <ItemMedia>
-              <HugeiconsIcon icon={SecurityIcon} strokeWidth={2} />
-            </ItemMedia>
-          </Item>
+        <div className="flex gap-2">
+          <Button>
+            Button{" "}
+            <HugeiconsIcon
+              icon={ArrowRight02Icon}
+              strokeWidth={2}
+              data-icon="inline-end"
+            />
+          </Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="outline">Outline</Button>
         </div>
         <FieldGroup>
           <Field>

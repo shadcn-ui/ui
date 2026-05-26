@@ -5,18 +5,11 @@ export function UIElements() {
   return (
     <Card className="w-full">
       <CardContent className="flex flex-col gap-6">
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-wrap gap-2">
-            <Skeleton className="h-9 w-20 rounded-lg" />
-            <Skeleton className="h-9 w-24 rounded-lg" />
-            <Skeleton className="h-9 w-20 rounded-lg" />
-          </div>
-          <div className="flex items-center gap-3 rounded-xl">
-            <div className="flex flex-1 flex-col gap-2">
-              <Skeleton className="h-4 w-44 rounded-md" />
-              <Skeleton className="h-3 w-56 rounded-md xl:hidden 2xl:block" />
-            </div>
-          </div>
+        <Skeleton className="h-8 w-full rounded-2xl" />
+        <div className="flex flex-wrap gap-2">
+          <Skeleton className="h-9 w-20 rounded-lg" />
+          <Skeleton className="h-9 w-24 rounded-lg" />
+          <Skeleton className="h-9 w-20 rounded-lg" />
         </div>
         <div className="flex flex-col gap-3">
           <Skeleton className="h-9 w-full rounded-lg" />

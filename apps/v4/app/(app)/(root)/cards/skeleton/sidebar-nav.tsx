@@ -2,7 +2,7 @@ import { Card } from "@/styles/base-rhea/ui/card"
 import { Skeleton } from "@/styles/base-rhea/ui/skeleton"
 
 const groupA = [0, 1, 2, 3, 4]
-const groupB = [0, 1, 2, 3]
+const groupB = [0, 1, 2, 3, 4]
 
 function NavSkeleton({ groups }: { groups: number[][] }) {
   return (

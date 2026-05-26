@@ -79,7 +79,7 @@ export function CardsDemo() {
   return (
     <div
       data-slot="demo"
-      className="theme-neutral relative flex w-full max-w-none flex-col gap-(--gap) overflow-hidden bg-muted p-12 pb-0! [--gap:--spacing(8)] 3xl:[--gap:--spacing(8)] min-[1900px]:[--gap:--spacing(10)]! lg:p-8 lg:[--gap:--spacing(6)] xl:p-12 dark:bg-muted/30"
+      className="theme-neutral relative flex w-full max-w-none flex-col gap-(--gap) overflow-hidden bg-muted p-12 pb-0! [--gap:--spacing(8)] 3xl:[--gap:--spacing(8)] min-[1900px]:[--gap:--spacing(10)]! lg:p-8 lg:[--gap:--spacing(6)] xl:p-12 dark:bg-background"
     >
       <CardsSkeletonRails />
       <div className="relative z-10 mx-auto grid gap-(--gap) **:data-[slot=card]:w-full min-[1400px]:grid-cols-4! min-[1900px]:grid-cols-5! md:max-w-3xl md:grid-cols-2 lg:max-w-none lg:grid-cols-3 xl:max-w-[1600px] 2xl:max-w-[1900px]">
@@ -110,8 +110,8 @@ export function CardsDemo() {
           <PowerUsage />
         </div>
       </div>
-      <div className="absolute inset-x-0 top-0 z-1 h-120 bg-linear-to-b from-background via-muted to-transparent dark:via-muted/30" />
-      <div className="absolute inset-x-0 bottom-0 z-20 h-48 bg-linear-to-t from-background via-muted to-transparent lg:h-80 xl:h-48 dark:via-muted/30" />
+      <div className="absolute inset-x-0 top-0 z-1 h-120 bg-linear-to-b from-background via-muted to-transparent dark:hidden" />
+      <div className="absolute inset-x-0 bottom-0 z-20 h-48 bg-linear-to-t from-background via-muted/80 to-transparent lg:h-80 xl:h-64 dark:via-background/80" />
     </div>
   )
 }

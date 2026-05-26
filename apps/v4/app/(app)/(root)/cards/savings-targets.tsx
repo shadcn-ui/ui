@@ -1,7 +1,5 @@
-import { Button } from "@/styles/base-rhea/ui/button"
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -22,12 +20,10 @@ export function SavingsTargets() {
     <Card>
       <CardHeader>
         <CardTitle>Savings Targets</CardTitle>
-        <CardDescription>Active milestones for 2024</CardDescription>
-        <CardAction>
-          <Button variant="outline" size="sm">
-            New Goal
-          </Button>
-        </CardAction>
+        <CardDescription>
+          Active milestones for 2024 across your portfolio. Monitor how close
+          you are to each savings goal.
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <ItemGroup className="gap-3">

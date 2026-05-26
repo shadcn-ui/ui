@@ -1,6 +1,5 @@
 import {
   Card,
-  CardAction,
   CardContent,
   CardFooter,
   CardHeader,
@@ -14,10 +13,10 @@ export function SavingsTargets() {
     <Card>
       <CardHeader className="gap-2">
         <Skeleton className="h-5 w-36 rounded-md" />
-        <Skeleton className="h-4 w-48 rounded-md" />
-        <CardAction>
-          <Skeleton className="h-7 w-20 rounded-lg" />
-        </CardAction>
+        <div className="flex flex-col gap-1.5">
+          <Skeleton className="h-4 w-full max-w-64 rounded-md" />
+          <Skeleton className="h-4 w-48 rounded-md" />
+        </div>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-3">

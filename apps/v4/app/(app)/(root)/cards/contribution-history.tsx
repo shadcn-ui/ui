@@ -61,9 +61,7 @@ export function ContributionHistory() {
               <span className="cn-font-heading text-base font-semibold">
                 May 2024
               </span>
-              <span className="text-sm text-muted-foreground">
-                $1,000 scheduled
-              </span>
+              <span className="text-sm text-muted-foreground">Scheduled</span>
             </ItemContent>
           </Item>
           <Item
@@ -77,9 +75,7 @@ export function ContributionHistory() {
               <span className="cn-font-heading text-base font-semibold">
                 Accelerated
               </span>
-              <span className="text-sm text-muted-foreground">
-                Recurring weekly
-              </span>
+              <span className="text-sm text-muted-foreground">Recurring</span>
             </ItemContent>
           </Item>
         </div>

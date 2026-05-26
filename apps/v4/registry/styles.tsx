@@ -165,7 +165,7 @@ export const STYLES = [
   {
     name: "rhea",
     title: "Rhea",
-    description: "Luminous, but compact.",
+    description: "Like Luma but compact.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"

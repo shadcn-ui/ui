@@ -6,9 +6,11 @@ import {
   ArrowDataTransferHorizontalIcon,
   BankIcon,
   BookOpen02Icon,
+  Calendar03Icon,
   ChartBarLineIcon,
   CreditCardIcon,
   File02Icon,
+  Globe02Icon,
   HelpCircleIcon,
   Message01Icon,
   Notification03Icon,
@@ -132,6 +134,12 @@ export function SidebarNav() {
             Goals
           </SidebarMenuButton>
         </SidebarMenuItem>
+        <SidebarMenuItem>
+          <SidebarMenuButton>
+            <HugeiconsIcon icon={Calendar03Icon} strokeWidth={2} />
+            Calendar
+          </SidebarMenuButton>
+        </SidebarMenuItem>
       </SidebarSection>
 
       <SidebarSection
@@ -160,6 +168,12 @@ export function SidebarNav() {
           <SidebarMenuButton>
             <HugeiconsIcon icon={ActivityIcon} strokeWidth={2} />
             Status
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+        <SidebarMenuItem>
+          <SidebarMenuButton>
+            <HugeiconsIcon icon={Globe02Icon} strokeWidth={2} />
+            Community
           </SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarSection>
