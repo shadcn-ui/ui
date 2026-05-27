@@ -2,4 +2,4 @@
 "shadcn": patch
 ---
 
-Fix pnpm workspace parsing for template scaffolds.
+Update template handling.
