@@ -1,5 +1,6 @@
 import { existsSync } from "fs"
 import path from "path"
+import { resolveProjectPreset } from "@/src/preset/resolve"
 import { SHADCN_URL } from "@/src/registry/constants"
 import { getBase, getConfig } from "@/src/utils/get-config"
 import {
@@ -17,8 +18,7 @@ import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { Command } from "commander"
 
-const GITHUB_RAW_BASE =
-  "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases"
+const CODE_BASE = `${SHADCN_URL}/code/apps/v4/registry/bases`
 
 export const info = new Command()
   .name("info")
@@ -64,7 +64,7 @@ export const info = new Command()
       const config = await getConfig(cwd)
       const components = await getProjectComponents(cwd)
       const base = getBase(config?.style)
-      const data = collectInfo(projectInfo, config, components, base)
+      const data = await collectInfo(projectInfo, config, components, base)
 
       if (opts.json) {
         console.log(JSON.stringify(data, null, 2))
@@ -91,12 +91,14 @@ function getRegistries(
   return result
 }
 
-function collectInfo(
+export async function collectInfo(
   projectInfo: ProjectInfo | null,
   config: Awaited<ReturnType<typeof getConfig>>,
   components: string[],
   base: string
 ) {
+  const preset = config ? await resolveProjectPreset(config, projectInfo) : null
+
   return {
     project: projectInfo
       ? {
@@ -142,18 +144,19 @@ function collectInfo(
           registries: getRegistries(config.registries),
         }
       : null,
+    preset,
     components,
     links: {
       docs: `${SHADCN_URL}/docs`,
       components: `${SHADCN_URL}/docs/components/${base}/[component].md`,
-      ui: `${GITHUB_RAW_BASE}/${base}/ui/[component].tsx`,
-      examples: `${GITHUB_RAW_BASE}/${base}/examples/[component]-example.tsx`,
-      schema: "https://ui.shadcn.com/schema.json",
+      ui: `${CODE_BASE}/${base}/ui/[component].tsx`,
+      examples: `${CODE_BASE}/${base}/examples/[component]-example.tsx`,
+      schema: `${SHADCN_URL}/schema.json`,
     },
   }
 }
 
-function printInfo(data: ReturnType<typeof collectInfo>) {
+export function printInfo(data: Awaited<ReturnType<typeof collectInfo>>) {
   // Project.
   logger.log(highlighter.info("Project"))
   if (data.project) {
@@ -186,6 +189,9 @@ function printInfo(data: ReturnType<typeof collectInfo>) {
       menuColor: data.config.menuColor ?? "-",
       menuAccent: data.config.menuAccent ?? "-",
     })
+
+    logger.break()
+    printPresetInfo(data.preset)
 
     // Aliases.
     logger.break()
@@ -239,8 +245,54 @@ function printInfo(data: ReturnType<typeof collectInfo>) {
   logger.break()
 }
 
+export function printPresetInfo(
+  preset: Awaited<ReturnType<typeof collectInfo>>["preset"],
+  options: {
+    fallbackNote?: string
+  } = {}
+) {
+  logger.log(highlighter.info("Preset"))
+  if (!preset?.code) {
+    printEntries({
+      code: "-",
+    })
+  } else {
+    const fallbacks = preset.fallbacks ?? []
+    const formatPresetValue = (key: string, value: string | undefined) => {
+      const suffix = fallbacks.includes(key) ? "*" : ""
+      return `${value ?? "-"}${suffix}`
+    }
+
+    printEntries({
+      code: preset.code,
+      version: preset.code[0],
+      style: preset.values?.style ?? "-",
+      baseColor: formatPresetValue("baseColor", preset.values?.baseColor),
+      theme: formatPresetValue("theme", preset.values?.theme),
+      chartColor: formatPresetValue("chartColor", preset.values?.chartColor),
+      iconLibrary: formatPresetValue("iconLibrary", preset.values?.iconLibrary),
+      font: formatPresetValue("font", preset.values?.font),
+      fontHeading: formatPresetValue("fontHeading", preset.values?.fontHeading),
+      radius: formatPresetValue("radius", preset.values?.radius),
+      menuAccent: formatPresetValue("menuAccent", preset.values?.menuAccent),
+      menuColor: formatPresetValue("menuColor", preset.values?.menuColor),
+      url: `${SHADCN_URL}/create?preset=${preset.code}`,
+    })
+
+    if (fallbacks.length > 0) {
+      logger.log("")
+      logger.log(
+        options.fallbackNote ??
+          "  * Uses preset defaults for values not available as options on shadcn/create."
+      )
+    }
+  }
+}
+
 function printEntries(entries: Record<string, string>) {
-  const maxKeyLength = Math.max(...Object.keys(entries).map((k) => k.length))
+  const maxKeyLength = Math.max(
+    ...Object.keys(entries).map((key) => key.length)
+  )
   for (const [key, value] of Object.entries(entries)) {
     logger.log(`  ${key.padEnd(maxKeyLength + 2)}${value}`)
   }

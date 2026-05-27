@@ -10,24 +10,23 @@
     "format": "prettier --write \"**/*.{ts,tsx}\""
   },
   "dependencies": {
-    "@react-router/node": "7.13.1",
-    "@react-router/serve": "7.13.1",
-    "isbot": "^5.1.36",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "react-router": "7.13.1"
+    "@react-router/node": "7.15.1",
+    "@react-router/serve": "7.15.1",
+    "isbot": "^5",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-router": "7.15.1"
   },
   "devDependencies": {
-    "@react-router/dev": "7.13.1",
-    "@tailwindcss/vite": "^4.2.1",
+    "@react-router/dev": "7.15.1",
+    "@tailwindcss/vite": "^4",
     "@types/node": "^22",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "prettier": "^3.8.1",
-    "prettier-plugin-tailwindcss": "^0.7.2",
-    "tailwindcss": "^4.2.1",
-    "typescript": "^5.9.3",
-    "vite": "^7.3.1",
-    "vite-tsconfig-paths": "^5.1.4"
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "prettier": "^3.8.3",
+    "prettier-plugin-tailwindcss": "^0.8.0",
+    "tailwindcss": "^4",
+    "typescript": "^6",
+    "vite": "^8"
   }
 }
