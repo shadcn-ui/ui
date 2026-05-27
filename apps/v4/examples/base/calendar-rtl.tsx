@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { arSA, he } from "react-day-picker/locale"
+import { arSA, he } from "@daypicker/react/locale"
 
 import {
   useTranslation,

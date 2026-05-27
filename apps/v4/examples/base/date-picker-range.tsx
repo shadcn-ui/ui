@@ -3,7 +3,7 @@
 import * as React from "react"
 import { addDays, format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
-import { type DateRange } from "react-day-picker"
+import { type DateRange } from "@daypicker/react"
 
 import { Button } from "@/styles/base-nova/ui/button"
 import { Calendar } from "@/styles/base-nova/ui/calendar"

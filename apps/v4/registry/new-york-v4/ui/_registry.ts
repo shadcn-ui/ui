@@ -103,7 +103,7 @@ export const ui: Registry["items"] = [
   {
     name: "calendar",
     type: "registry:ui",
-    dependencies: ["react-day-picker@latest", "date-fns"],
+    dependencies: ["@daypicker/react@latest", "date-fns"],
     registryDependencies: ["button"],
     files: [
       {

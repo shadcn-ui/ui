@@ -7,7 +7,7 @@ import { ChevronDownIcon } from "lucide-react"
 import {
   arSA as arSADayPicker,
   he as heDayPicker,
-} from "react-day-picker/locale"
+} from "@daypicker/react/locale"
 
 import {
   useTranslation,

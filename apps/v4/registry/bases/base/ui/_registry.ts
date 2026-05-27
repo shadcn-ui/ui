@@ -162,7 +162,7 @@ export const ui: Registry["items"] = [
   {
     name: "calendar",
     type: "registry:ui",
-    dependencies: ["react-day-picker@latest", "date-fns"],
+    dependencies: ["@daypicker/react@latest", "date-fns"],
     registryDependencies: ["button"],
     files: [
       {
@@ -175,7 +175,7 @@ export const ui: Registry["items"] = [
         docs: "https://ui.shadcn.com/docs/components/base/calendar",
         examples:
           "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/calendar-example.tsx",
-        api: "https://react-day-picker.js.org",
+        api: "https://daypicker.dev",
       },
     },
   },

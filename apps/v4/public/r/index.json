@@ -209,7 +209,7 @@
   {
     "name": "calendar",
     "type": "registry:ui",
-    "dependencies": ["react-day-picker@latest", "date-fns"],
+    "dependencies": ["@daypicker/react@latest", "date-fns"],
     "registryDependencies": ["button"],
     "files": [
       {
@@ -222,12 +222,12 @@
         "radix": {
           "docs": "https://ui.shadcn.com/docs/components/radix/calendar",
           "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/calendar-example.tsx",
-          "api": "https://react-day-picker.js.org"
+          "api": "https://daypicker.dev"
         },
         "base": {
           "docs": "https://ui.shadcn.com/docs/components/base/calendar",
           "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/calendar-example.tsx",
-          "api": "https://react-day-picker.js.org"
+          "api": "https://daypicker.dev"
         }
       }
     }

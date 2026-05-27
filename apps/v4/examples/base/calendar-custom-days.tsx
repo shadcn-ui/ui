@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { addDays } from "date-fns"
-import { type DateRange } from "react-day-picker"
+import { type DateRange } from "@daypicker/react"
 
 import { Calendar, CalendarDayButton } from "@/styles/base-nova/ui/calendar"
 import { Card, CardContent } from "@/styles/base-nova/ui/card"

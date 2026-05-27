@@ -4,7 +4,7 @@ description: A calendar component that allows users to select a date or a range 
 base: radix
 component: true
 links:
-  doc: https://react-day-picker.js.org
+  doc: https://daypicker.dev
 ---
 
 <ComponentPreview
@@ -36,7 +36,7 @@ npx shadcn@latest add calendar
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install react-day-picker date-fns
+npm install @daypicker/react date-fns
 ```
 
 <Step>Add the `Button` component to your project.</Step>
@@ -78,11 +78,11 @@ return (
 )
 ```
 
-See the [React DayPicker](https://react-day-picker.js.org) documentation for more information.
+See the [React DayPicker](https://daypicker.dev) documentation for more information.
 
 ## About
 
-The `Calendar` component is built on top of [React DayPicker](https://react-day-picker.js.org).
+The `Calendar` component is built on top of [React DayPicker](https://daypicker.dev).
 
 ## Date Picker
 
@@ -90,11 +90,11 @@ You can use the `<Calendar>` component to build a date picker. See the [Date Pic
 
 ## Persian / Hijri / Jalali Calendar
 
-To use the Persian calendar, edit `components/ui/calendar.tsx` and replace `react-day-picker` with `react-day-picker/persian`.
+To use the Persian calendar, edit `components/ui/calendar.tsx` and replace `@daypicker/react` with `@daypicker/persian`.
 
 ```diff
-- import { DayPicker } from "react-day-picker"
-+ import { DayPicker } from "react-day-picker/persian"
+- import { DayPicker } from "@daypicker/react"
++ import { DayPicker } from "@daypicker/persian"
 ```
 
 <ComponentPreview
@@ -244,10 +244,10 @@ See also the [Hijri Guide](#persian--hijri--jalali-calendar) for enabling the Pe
   previewClassName="h-96"
 />
 
-When using RTL, import the locale from `react-day-picker/locale` and pass both the `locale` and `dir` props to the Calendar component:
+When using RTL, import the locale from `@daypicker/react/locale` and pass both the `locale` and `dir` props to the Calendar component:
 
 ```tsx showLineNumbers
-import { arSA } from "react-day-picker/locale"
+import { arSA } from "@daypicker/react/locale"
 
 ;<Calendar
   mode="single"
@@ -260,7 +260,7 @@ import { arSA } from "react-day-picker/locale"
 
 ## API Reference
 
-See the [React DayPicker](https://react-day-picker.js.org) documentation for more information on the `Calendar` component.
+See the [React DayPicker](https://daypicker.dev) documentation for more information on the `Calendar` component.
 
 ## Changelog
 
@@ -272,7 +272,7 @@ If you're upgrading from a previous version of the `Calendar` component, you'll 
 
 <Step>Import the `Locale` type.</Step>
 
-Add `Locale` to your imports from `react-day-picker`:
+Add `Locale` to your imports from `@daypicker/react`:
 
 ```diff
   import {
@@ -280,7 +280,7 @@ Add `Locale` to your imports from `react-day-picker`:
     getDefaultClassNames,
     type DayButton,
 +   type Locale,
-  } from "react-day-picker"
+  } from "@daypicker/react"
 ```
 
 <Step>Add `locale` prop to the Calendar component.</Step>
@@ -398,7 +398,7 @@ Replace directional classes with logical properties for better RTL support:
 After applying these changes, you can use the `locale` prop to provide locale-specific formatting:
 
 ```tsx
-import { enUS } from "react-day-picker/locale"
+import { enUS } from "@daypicker/react/locale"
 
 ;<Calendar mode="single" selected={date} onSelect={setDate} locale={enUS} />
 ```

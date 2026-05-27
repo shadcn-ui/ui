@@ -2749,6 +2749,7 @@ export const examples: Registry["items"] = [
     name: "calendar-hijri",
     description: "A Persian calendar.",
     type: "registry:example",
+    dependencies: ["@daypicker/persian"],
     registryDependencies: ["calendar"],
     files: [
       {

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { es } from "react-day-picker/locale"
+import { es } from "@daypicker/react/locale"
 
 import { Calendar } from "@/styles/radix-nova/ui/calendar"
 import { Card, CardContent } from "@/styles/radix-nova/ui/card"
