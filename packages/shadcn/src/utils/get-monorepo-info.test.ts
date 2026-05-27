@@ -6,6 +6,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 import {
   formatMonorepoMessage,
   getMonorepoTargets,
+  getWorkspacePatterns,
   isMonorepoRoot,
 } from "./get-monorepo-info"
 
@@ -65,6 +66,29 @@ describe("isMonorepoRoot", () => {
 
   it("should return false for an empty directory", async () => {
     expect(await isMonorepoRoot(tmpDir)).toBe(false)
+  })
+})
+
+describe("getWorkspacePatterns", () => {
+  it("should read only the packages section from pnpm-workspace.yaml", async () => {
+    await fs.writeFile(
+      path.join(tmpDir, "pnpm-workspace.yaml"),
+      [
+        "packages:",
+        "  - apps/*",
+        "  - packages/*",
+        "",
+        "ignoredBuiltDependencies:",
+        "  - sharp",
+        "  - unrs-resolver",
+        "",
+      ].join("\n")
+    )
+
+    await expect(getWorkspacePatterns(tmpDir)).resolves.toEqual([
+      "apps/*",
+      "packages/*",
+    ])
   })
 })
 

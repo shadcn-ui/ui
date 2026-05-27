@@ -11,24 +11,22 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
-    "@react-router/node": "7.12.0",
-    "@react-router/serve": "7.12.0",
-    "@remixicon/react": "^4.9.0",
+    "@react-router/node": "7.15.1",
+    "@react-router/serve": "7.15.1",
     "@workspace/ui": "workspace:*",
-    "isbot": "^5.1.31",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "react-router": "7.12.0"
+    "isbot": "^5",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-router": "7.15.1"
   },
   "devDependencies": {
-    "@react-router/dev": "7.12.0",
-    "@tailwindcss/vite": "^4.1.18",
-    "@types/node": "^25.1.0",
-    "@types/react": "^19.2.10",
-    "@types/react-dom": "^19.2.3",
-    "tailwindcss": "^4.1.18",
-    "typescript": "^5.9.3",
-    "vite": "^7.3.2",
-    "vite-tsconfig-paths": "^5.1.4"
+    "@react-router/dev": "7.15.1",
+    "@tailwindcss/vite": "^4",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tailwindcss": "^4",
+    "typescript": "^6",
+    "vite": "^8"
   }
 }
