@@ -19,7 +19,7 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    name: ${{ matrix.package-manager }} ${{ matrix.template }}
+    name: ${{ matrix.package-manager == 'pnpm' && format('pnpm {0}', matrix.pnpm-version) || matrix.package-manager }} ${{ matrix.template }}
     permissions:
       contents: read
     timeout-minutes: 45
@@ -28,11 +28,20 @@ jobs:
       matrix:
         template: [next, vite, astro, start, react-router]
         package-manager: [pnpm, bun, npm, yarn]
+        pnpm-version: [10.33.4, 11]
+        exclude:
+          - package-manager: bun
+            pnpm-version: 11
+          - package-manager: npm
+            pnpm-version: 11
+          - package-manager: yarn
+            pnpm-version: 11
     env:
       NEXT_PUBLIC_APP_URL: http://localhost:4000
       NEXT_PUBLIC_V0_URL: https://v0.dev
       REGISTRY_URL: http://localhost:4000/r
-      TEMPLATE_PNPM_VERSION: 10.33.4
+      ROOT_PNPM_VERSION: 10.33.4
+      TEMPLATE_PNPM_VERSION: ${{ matrix.pnpm-version }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -48,7 +57,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 10.33.4
+          version: ${{ env.ROOT_PNPM_VERSION }}
           run_install: false
 
       - name: Install Bun
