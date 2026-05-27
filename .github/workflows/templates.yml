@@ -48,6 +48,9 @@ jobs:
           version: 10.33.4
           run_install: false
 
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
