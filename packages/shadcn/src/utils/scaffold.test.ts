@@ -234,6 +234,22 @@ describe("defaultScaffold", () => {
     )
   })
 
+  it("should pass --no-immutable for yarn", async () => {
+    const template = createTestTemplate()
+
+    await template.scaffold({
+      projectPath: "/test/my-app",
+      packageManager: "yarn",
+      cwd: "/test",
+    })
+
+    expect(vi.mocked(execa)).toHaveBeenCalledWith(
+      "yarn",
+      ["install", "--no-immutable"],
+      { cwd: "/test/my-app" }
+    )
+  })
+
   it("should strip packageManager field from package.json for non-pnpm non-monorepo", async () => {
     vi.mocked(fs.existsSync).mockImplementation((p: any) =>
       p.toString().includes("package.json")
@@ -272,7 +288,18 @@ describe("defaultScaffold", () => {
     // Return different content based on which file is being read.
     vi.mocked(fs.readFile).mockImplementation(((filePath: string) => {
       if (filePath.includes("pnpm-workspace.yaml")) {
-        return Promise.resolve("packages:\n  - 'apps/*'\n  - 'packages/*'\n")
+        return Promise.resolve(
+          [
+            "packages:",
+            "  - 'apps/*'",
+            "  - 'packages/*'",
+            "",
+            "ignoredBuiltDependencies:",
+            "  - sharp",
+            "  - unrs-resolver",
+            "",
+          ].join("\n")
+        )
       }
       return Promise.resolve(
         JSON.stringify({ name: "my-mono", packageManager: "pnpm@9.0.0" })

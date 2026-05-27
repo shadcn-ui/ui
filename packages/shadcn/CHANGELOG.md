@@ -1,5 +1,17 @@
 # @shadcn/ui
 
+## 4.8.2
+
+### Patch Changes
+
+- [#10786](https://github.com/shadcn-ui/ui/pull/10786) [`55ea86f2525e63c2d0373754314f0e31212572d2`](https://github.com/shadcn-ui/ui/commit/55ea86f2525e63c2d0373754314f0e31212572d2) Thanks [@shadcn](https://github.com/shadcn)! - Update template handling.
+
+## 4.8.1
+
+### Patch Changes
+
+- [#10779](https://github.com/shadcn-ui/ui/pull/10779) [`df1752dfe092957f84aa467d2270436139e3ecc7`](https://github.com/shadcn-ui/ui/commit/df1752dfe092957f84aa467d2270436139e3ecc7) Thanks [@shadcn](https://github.com/shadcn)! - add style rhea
+
 ## 4.8.0
 
 ### Minor Changes

@@ -2,6 +2,7 @@ import os from "os"
 import path from "path"
 import type { RegistryItem } from "@/src/registry/schema"
 import type { Config } from "@/src/utils/get-config"
+import { parsePnpmWorkspacePackages } from "@/src/utils/get-monorepo-info"
 import { handleError } from "@/src/utils/handle-error"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
@@ -99,41 +100,13 @@ function getInstallArgs(packageManager: string): string[] {
       // pnpm enables frozen lockfile in CI by default.
       // The template lockfile may drift, so force-disable it explicitly.
       return ["--no-frozen-lockfile"]
+    case "yarn":
+      // Yarn enables immutable installs in CI by default.
+      // New template projects need to create their lockfile on first install.
+      return ["--no-immutable"]
     default:
       return []
   }
-}
-
-async function getPnpmWorkspacePatterns(pnpmWorkspacePath: string) {
-  if (!fs.existsSync(pnpmWorkspacePath)) {
-    return []
-  }
-
-  const workspaceContent = await fs.readFile(pnpmWorkspacePath, "utf8")
-  const patterns: string[] = []
-  let readingPackages = false
-
-  for (const line of workspaceContent.split("\n")) {
-    if (/^packages:\s*$/.test(line)) {
-      readingPackages = true
-      continue
-    }
-
-    if (readingPackages && /^\S/.test(line)) {
-      readingPackages = false
-    }
-
-    if (!readingPackages) {
-      continue
-    }
-
-    const match = line.match(/^\s*-\s*["']?(.+?)["']?\s*$/)
-    if (match) {
-      patterns.push(match[1])
-    }
-  }
-
-  return patterns
 }
 
 // Adapt a pnpm-based monorepo template to the target package manager.
@@ -155,7 +128,9 @@ async function adaptWorkspaceConfig(
   }
 
   const hasPnpmWorkspaceConfig = fs.existsSync(pnpmWorkspacePath)
-  const workspacePatterns = await getPnpmWorkspacePatterns(pnpmWorkspacePath)
+  const workspacePatterns = hasPnpmWorkspaceConfig
+    ? parsePnpmWorkspacePackages(await fs.readFile(pnpmWorkspacePath, "utf8"))
+    : []
   const isMonorepo = workspacePatterns.length > 0
 
   // Update root package.json: update "packageManager" field for the

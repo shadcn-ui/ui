@@ -2,4 +2,4 @@
 "shadcn": patch
 ---
 
-add allowBuilds for pnpm 11
+update template handling
