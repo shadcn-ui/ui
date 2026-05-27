@@ -19,18 +19,20 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    name: pnpm ${{ matrix.pnpm-version }}
+    name: ${{ matrix.package-manager }} ${{ matrix.template }}
     permissions:
       contents: read
-    timeout-minutes: 120
+    timeout-minutes: 45
     strategy:
       fail-fast: false
       matrix:
-        pnpm-version: ["10.33.4"]
+        template: [next, vite, astro, start, react-router]
+        package-manager: [pnpm, bun, npm, yarn]
     env:
       NEXT_PUBLIC_APP_URL: http://localhost:4000
       NEXT_PUBLIC_V0_URL: https://v0.dev
       REGISTRY_URL: http://localhost:4000/r
+      TEMPLATE_PNPM_VERSION: 10.33.4
     steps:
       - uses: actions/checkout@v4
         with:
@@ -53,6 +55,7 @@ jobs:
         uses: oven-sh/setup-bun@v2
 
       - name: Install Yarn
+        if: matrix.package-manager == 'yarn'
         run: |
           corepack enable
           COREPACK_ENABLE_PROJECT_SPEC=0 corepack prepare yarn@4.12.0 --activate
@@ -80,7 +83,8 @@ jobs:
 
       - name: Validate templates
         env:
-          TEMPLATE_PNPM_VERSION: ${{ matrix.pnpm-version }}
+          TEMPLATE: ${{ matrix.template }}
+          TEMPLATE_PACKAGE_MANAGER: ${{ matrix.package-manager }}
           SHADCN_TEMPLATE_DIR: ${{ github.workspace }}/templates
         run: |
           set -euo pipefail
@@ -100,16 +104,14 @@ jobs:
           PNPM
           chmod +x "$bin_dir/pnpm"
           export PATH="$bin_dir:$PATH"
-          export npm_config_user_agent="pnpm/${TEMPLATE_PNPM_VERSION}"
 
           echo "Using template pnpm $(pnpm --version)"
 
           cli="$GITHUB_WORKSPACE/packages/shadcn/dist/index.js"
-          template_root="$RUNNER_TEMP/generated-templates-pnpm-${TEMPLATE_PNPM_VERSION}"
+          template_root="$RUNNER_TEMP/generated-template-${TEMPLATE_PACKAGE_MANAGER}-${TEMPLATE}"
           rm -rf "$template_root"
           mkdir -p "$template_root"
 
-          templates=(next vite astro start react-router)
           modes=(app monorepo)
 
           has_script() {
@@ -124,39 +126,6 @@ jobs:
               echo "No $script script found; skipping."
             fi
           }
-
-          for template in "${templates[@]}"; do
-            for mode in "${modes[@]}"; do
-              project="test-${template}-${mode}"
-              project_path="$template_root/$project"
-
-              echo "::group::${template} ${mode}"
-              args=(
-                init
-                --defaults
-                --name "$project"
-                --template "$template"
-                --cwd "$template_root"
-                --silent
-              )
-
-              if [ "$mode" = "monorepo" ]; then
-                args+=(--monorepo)
-              else
-                args+=(--no-monorepo)
-              fi
-
-              SHADCN_TEMPLATE_DIR="$SHADCN_TEMPLATE_DIR" \
-                REGISTRY_URL="$REGISTRY_URL" \
-                node "$cli" "${args[@]}"
-
-              cd "$project_path"
-              pnpm install --frozen-lockfile
-              run_script_if_present typecheck
-              run_script_if_present build
-              echo "::endgroup::"
-            done
-          done
 
           validate_non_pnpm_project() {
             local package_manager="$1"
@@ -228,79 +197,76 @@ jobs:
           NODE
           }
 
-          validate_non_pnpm_templates() {
-            local package_manager="$1"
-            local template_root="$RUNNER_TEMP/generated-templates-${package_manager}"
+          for mode in "${modes[@]}"; do
+            project="test-${TEMPLATE}-${mode}-${TEMPLATE_PACKAGE_MANAGER}"
+            project_path="$template_root/$project"
 
-            rm -rf "$template_root"
-            mkdir -p "$template_root"
+            echo "::group::${TEMPLATE} ${mode} ${TEMPLATE_PACKAGE_MANAGER}"
+            args=(
+              init
+              --defaults
+              --name "$project"
+              --template "$TEMPLATE"
+              --cwd "$template_root"
+              --silent
+            )
 
-            for template in "${templates[@]}"; do
-              for mode in "${modes[@]}"; do
-                project="test-${template}-${mode}-${package_manager}"
-                project_path="$template_root/$project"
+            if [ "$mode" = "monorepo" ]; then
+              args+=(--monorepo)
+            else
+              args+=(--no-monorepo)
+            fi
 
-                echo "::group::${template} ${mode} ${package_manager}"
-                args=(
-                  init
-                  --defaults
-                  --name "$project"
-                  --template "$template"
-                  --cwd "$template_root"
-                  --silent
+            case "$TEMPLATE_PACKAGE_MANAGER" in
+              pnpm)
+                SHADCN_TEMPLATE_DIR="$SHADCN_TEMPLATE_DIR" \
+                  REGISTRY_URL="$REGISTRY_URL" \
+                  npm_config_user_agent="pnpm/${TEMPLATE_PNPM_VERSION}" \
+                  node "$cli" "${args[@]}"
+
+                cd "$project_path"
+                pnpm install --frozen-lockfile
+                run_script_if_present typecheck
+                run_script_if_present build
+                ;;
+              bun)
+                (
+                  cd "$template_root"
+                  SHADCN_TEMPLATE_DIR="$SHADCN_TEMPLATE_DIR" \
+                    REGISTRY_URL="$REGISTRY_URL" \
+                    npm_config_user_agent="bun/$(bun --version)" \
+                    bunx --bun --package "$GITHUB_WORKSPACE/packages/shadcn" \
+                      shadcn "${args[@]}"
                 )
+                validate_non_pnpm_project "bun" "$project_path" "false"
+                ;;
+              npm)
+                (
+                  cd "$template_root"
+                  SHADCN_TEMPLATE_DIR="$SHADCN_TEMPLATE_DIR" \
+                    REGISTRY_URL="$REGISTRY_URL" \
+                    npm_config_user_agent="npm/$(npm --version)" \
+                    npx --yes --package "$GITHUB_WORKSPACE/packages/shadcn" \
+                      shadcn "${args[@]}"
+                )
+                validate_non_pnpm_project "npm" "$project_path" "true"
+                ;;
+              yarn)
+                (
+                  cd "$template_root"
+                  SHADCN_TEMPLATE_DIR="$SHADCN_TEMPLATE_DIR" \
+                    REGISTRY_URL="$REGISTRY_URL" \
+                    COREPACK_ENABLE_PROJECT_SPEC=0 \
+                    npm_config_user_agent="yarn/$(COREPACK_ENABLE_PROJECT_SPEC=0 yarn --version)" \
+                    yarn dlx --package "$GITHUB_WORKSPACE/packages/shadcn" \
+                      shadcn "${args[@]}"
+                )
+                validate_non_pnpm_project "yarn" "$project_path" "false"
+                ;;
+            esac
 
-                if [ "$mode" = "monorepo" ]; then
-                  args+=(--monorepo)
-                else
-                  args+=(--no-monorepo)
-                fi
-
-                case "$package_manager" in
-                  bun)
-                    (
-                      cd "$template_root"
-                      SHADCN_TEMPLATE_DIR="$SHADCN_TEMPLATE_DIR" \
-                        REGISTRY_URL="$REGISTRY_URL" \
-                        npm_config_user_agent="bun/$(bun --version)" \
-                        bunx --bun --package "$GITHUB_WORKSPACE/packages/shadcn" \
-                          shadcn "${args[@]}"
-                    )
-                    validate_non_pnpm_project "bun" "$project_path" "false"
-                    ;;
-                  npm)
-                    (
-                      cd "$template_root"
-                      SHADCN_TEMPLATE_DIR="$SHADCN_TEMPLATE_DIR" \
-                        REGISTRY_URL="$REGISTRY_URL" \
-                        npm_config_user_agent="npm/$(npm --version)" \
-                        npx --yes --package "$GITHUB_WORKSPACE/packages/shadcn" \
-                          shadcn "${args[@]}"
-                    )
-                    validate_non_pnpm_project "npm" "$project_path" "true"
-                    ;;
-                  yarn)
-                    (
-                      cd "$template_root"
-                      SHADCN_TEMPLATE_DIR="$SHADCN_TEMPLATE_DIR" \
-                        REGISTRY_URL="$REGISTRY_URL" \
-                        COREPACK_ENABLE_PROJECT_SPEC=0 \
-                        npm_config_user_agent="yarn/$(COREPACK_ENABLE_PROJECT_SPEC=0 yarn --version)" \
-                        yarn dlx --package "$GITHUB_WORKSPACE/packages/shadcn" \
-                          shadcn "${args[@]}"
-                    )
-                    validate_non_pnpm_project "yarn" "$project_path" "false"
-                    ;;
-                esac
-
-                echo "::endgroup::"
-              done
-            done
-          }
-
-          validate_non_pnpm_templates bun
-          validate_non_pnpm_templates npm
-          validate_non_pnpm_templates yarn
+            echo "::endgroup::"
+          done
           BASH
 
           "$root_pnpm" exec start-server-and-test \
