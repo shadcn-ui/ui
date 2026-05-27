@@ -25,7 +25,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        pnpm-version: ["9.15.9", "10.33.4"]
+        pnpm-version: ["10.33.4"]
     env:
       NEXT_PUBLIC_APP_URL: http://localhost:4000
       NEXT_PUBLIC_V0_URL: https://v0.dev
