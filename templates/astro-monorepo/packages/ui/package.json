@@ -16,7 +16,7 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",
     "@turbo/gen": "^2.8.1",
-    "@types/node": "^25.1.0",
+    "@types/node": "^25.5.0",
     "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
     "@eslint/js": "^9.39.2",
