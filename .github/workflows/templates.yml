@@ -11,6 +11,7 @@ on:
       - "packages/shadcn/src/commands/init.ts"
       - "packages/shadcn/src/templates/**"
       - "packages/shadcn/src/utils/create-project.ts"
+      - "packages/shadcn/src/utils/get-monorepo-info.ts"
       - "packages/shadcn/src/utils/get-package-manager.ts"
       - "pnpm-lock.yaml"
       - "templates/**"
@@ -151,6 +152,138 @@ jobs:
               echo "::endgroup::"
             done
           done
+
+          bun_template_root="$RUNNER_TEMP/generated-templates-bun"
+          rm -rf "$bun_template_root"
+          mkdir -p "$bun_template_root"
+
+          for mode in app monorepo; do
+            project="test-next-${mode}-bun"
+            project_path="$bun_template_root/$project"
+
+            echo "::group::next ${mode} bun"
+            args=(
+              init
+              --defaults
+              --name "$project"
+              --template next
+              --cwd "$bun_template_root"
+              --silent
+            )
+
+            if [ "$mode" = "monorepo" ]; then
+              args+=(--monorepo)
+            else
+              args+=(--no-monorepo)
+            fi
+
+            SHADCN_TEMPLATE_DIR="$SHADCN_TEMPLATE_DIR" \
+              REGISTRY_URL="$REGISTRY_URL" \
+              npm_config_user_agent="bun/$(bun --version)" \
+              bunx --bun --package "$GITHUB_WORKSPACE/packages/shadcn" \
+                shadcn "${args[@]}"
+
+            cd "$project_path"
+            test ! -f pnpm-workspace.yaml
+            test ! -f pnpm-lock.yaml
+
+            node <<'NODE'
+          const fs = require("node:fs")
+
+          const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"))
+          const workspaces = pkg.workspaces ?? []
+          const invalidWorkspaces = ["sharp", "unrs-resolver", "esbuild"]
+
+          if (!Array.isArray(workspaces)) {
+            throw new Error("Expected package.json workspaces to be an array.")
+          }
+
+          for (const workspace of invalidWorkspaces) {
+            if (workspaces.includes(workspace)) {
+              throw new Error(`Unexpected workspace entry: ${workspace}`)
+            }
+          }
+
+          if (!pkg.packageManager?.startsWith("bun@")) {
+            throw new Error(`Expected packageManager to use bun, got ${pkg.packageManager}`)
+          }
+          NODE
+
+            bun install
+            echo "::endgroup::"
+          done
+
+          npm_template_root="$RUNNER_TEMP/generated-templates-npm"
+          npm_project="test-next-monorepo-npm"
+          npm_project_path="$npm_template_root/$npm_project"
+          rm -rf "$npm_template_root"
+          mkdir -p "$npm_template_root"
+
+          echo "::group::next monorepo npm"
+          SHADCN_TEMPLATE_DIR="$SHADCN_TEMPLATE_DIR" \
+            REGISTRY_URL="$REGISTRY_URL" \
+            npm_config_user_agent="npm/$(npm --version)" \
+            npx --yes --package "$GITHUB_WORKSPACE/packages/shadcn" \
+              shadcn \
+              init \
+              --defaults \
+              --name "$npm_project" \
+              --template next \
+              --cwd "$npm_template_root" \
+              --silent \
+              --monorepo
+
+          cd "$npm_project_path"
+          test ! -f pnpm-workspace.yaml
+          test ! -f pnpm-lock.yaml
+
+          node <<'NODE'
+          const fs = require("node:fs")
+          const path = require("node:path")
+
+          const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"))
+          const workspaces = pkg.workspaces ?? []
+
+          if (!Array.isArray(workspaces)) {
+            throw new Error("Expected package.json workspaces to be an array.")
+          }
+
+          for (const workspace of ["sharp", "unrs-resolver", "esbuild"]) {
+            if (workspaces.includes(workspace)) {
+              throw new Error(`Unexpected workspace entry: ${workspace}`)
+            }
+          }
+
+          if (!pkg.packageManager?.startsWith("npm@")) {
+            throw new Error(`Expected packageManager to use npm, got ${pkg.packageManager}`)
+          }
+
+          const packageJsonFiles = []
+          function collectPackageJsonFiles(dir) {
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              if (entry.name === "node_modules") {
+                continue
+              }
+
+              const fullPath = path.join(dir, entry.name)
+              if (entry.isDirectory()) {
+                collectPackageJsonFiles(fullPath)
+              } else if (entry.name === "package.json") {
+                packageJsonFiles.push(fullPath)
+              }
+            }
+          }
+
+          collectPackageJsonFiles(process.cwd())
+
+          for (const file of packageJsonFiles) {
+            const json = fs.readFileSync(file, "utf8")
+            if (json.includes("workspace:")) {
+              throw new Error(`Unexpected workspace: protocol in ${file}`)
+            }
+          }
+          NODE
+          echo "::endgroup::"
           BASH
 
           "$root_pnpm" exec start-server-and-test \
