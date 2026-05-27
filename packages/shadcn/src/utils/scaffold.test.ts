@@ -272,7 +272,18 @@ describe("defaultScaffold", () => {
     // Return different content based on which file is being read.
     vi.mocked(fs.readFile).mockImplementation(((filePath: string) => {
       if (filePath.includes("pnpm-workspace.yaml")) {
-        return Promise.resolve("packages:\n  - 'apps/*'\n  - 'packages/*'\n")
+        return Promise.resolve(
+          [
+            "packages:",
+            "  - 'apps/*'",
+            "  - 'packages/*'",
+            "",
+            "ignoredBuiltDependencies:",
+            "  - sharp",
+            "  - unrs-resolver",
+            "",
+          ].join("\n")
+        )
       }
       return Promise.resolve(
         JSON.stringify({ name: "my-mono", packageManager: "pnpm@9.0.0" })

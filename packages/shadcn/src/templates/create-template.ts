@@ -2,6 +2,7 @@ import os from "os"
 import path from "path"
 import type { RegistryItem } from "@/src/registry/schema"
 import type { Config } from "@/src/utils/get-config"
+import { parsePnpmWorkspacePackages } from "@/src/utils/get-monorepo-info"
 import { handleError } from "@/src/utils/handle-error"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
@@ -142,13 +143,7 @@ async function adaptWorkspaceConfig(
     if (isMonorepo) {
       // Read workspace patterns from pnpm-workspace.yaml.
       const workspaceContent = await fs.readFile(pnpmWorkspacePath, "utf8")
-      const patterns: string[] = []
-      for (const line of workspaceContent.split("\n")) {
-        const match = line.match(/^\s*-\s*["']?(.+?)["']?\s*$/)
-        if (match) {
-          patterns.push(match[1])
-        }
-      }
+      const patterns = parsePnpmWorkspacePackages(workspaceContent)
 
       packageJson.workspaces = patterns
       await fs.remove(pnpmWorkspacePath)
