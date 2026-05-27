@@ -1,15 +1,24 @@
+"use client"
+
 import Link from "next/link"
 
 import { PAGES_NEW } from "@/lib/docs"
 import { getPagesFromFolder, type PageTreeFolder } from "@/lib/page-tree"
+import { useConfig } from "@/hooks/use-config"
+import React from "react"
 
+// Links for each component, currentBase is setted to the last selected base or default to radix.
 export function ComponentsList({
   componentsFolder,
-  currentBase,
 }: {
   componentsFolder: PageTreeFolder
-  currentBase: string
 }) {
+  const [config] = useConfig()
+
+  const currentBase = React.useMemo(() => {
+    return config.currentBase || "radix"
+  }, [config])
+  
   const list = getPagesFromFolder(componentsFolder, currentBase)
 
   return (
