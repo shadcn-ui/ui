@@ -100,6 +100,10 @@ function getInstallArgs(packageManager: string): string[] {
       // pnpm enables frozen lockfile in CI by default.
       // The template lockfile may drift, so force-disable it explicitly.
       return ["--no-frozen-lockfile"]
+    case "yarn":
+      // Yarn enables immutable installs in CI by default.
+      // New template projects need to create their lockfile on first install.
+      return ["--no-immutable"]
     default:
       return []
   }

@@ -103,16 +103,6 @@ jobs:
           exec npx -y "pnpm@${TEMPLATE_PNPM_VERSION}" "$@"
           PNPM
           chmod +x "$bin_dir/pnpm"
-
-          real_yarn="$(command -v yarn || true)"
-          if [ -n "$real_yarn" ]; then
-            cat > "$bin_dir/yarn" <<YARN
-          #!/usr/bin/env bash
-          exec env YARN_ENABLE_HARDENED_MODE=0 YARN_ENABLE_IMMUTABLE_INSTALLS=0 COREPACK_ENABLE_PROJECT_SPEC=0 "$real_yarn" "\$@"
-          YARN
-            chmod +x "$bin_dir/yarn"
-          fi
-
           export PATH="$bin_dir:$PATH"
 
           echo "Using template pnpm $(pnpm --version)"
@@ -264,12 +254,11 @@ jobs:
               yarn)
                 (
                   cd "$template_root"
-                  yarn_version="$(COREPACK_ENABLE_PROJECT_SPEC=0 "$real_yarn" --version)"
                   SHADCN_TEMPLATE_DIR="$SHADCN_TEMPLATE_DIR" \
                     REGISTRY_URL="$REGISTRY_URL" \
                     COREPACK_ENABLE_PROJECT_SPEC=0 \
-                    npm_config_user_agent="yarn/${yarn_version}" \
-                    "$real_yarn" dlx --package "$GITHUB_WORKSPACE/packages/shadcn" \
+                    npm_config_user_agent="yarn/$(COREPACK_ENABLE_PROJECT_SPEC=0 yarn --version)" \
+                    yarn dlx --package "$GITHUB_WORKSPACE/packages/shadcn" \
                       shadcn "${args[@]}"
                 )
                 validate_non_pnpm_project "yarn" "$project_path" "false"
