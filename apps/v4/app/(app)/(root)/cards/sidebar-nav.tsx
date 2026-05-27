@@ -144,7 +144,7 @@ export function SidebarNav() {
 
       <SidebarSection
         label="Support"
-        className="hidden xl:col-start-2 xl:row-start-1 xl:flex"
+        className="flex xl:col-start-2 xl:row-start-1"
       >
         <SidebarMenuItem>
           <SidebarMenuButton>
@@ -180,7 +180,7 @@ export function SidebarNav() {
 
       <SidebarSection
         label="Account"
-        className="hidden xl:col-start-2 xl:row-start-2 xl:flex"
+        className="flex xl:col-start-2 xl:row-start-2"
       >
         <SidebarMenuItem>
           <SidebarMenuButton>
