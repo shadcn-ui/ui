@@ -132,6 +132,12 @@ const nextConfig = {
         destination: "/create",
         permanent: true,
       },
+      {
+        source: "/code/:path*",
+        destination:
+          "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/:path*",
+        permanent: false,
+      },
     ]
   },
   rewrites() {

@@ -1,5 +1,6 @@
 import { Transformer } from "@/src/utils/transformers"
 import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
+import type { StringLiteral } from "ts-morph"
 
 import { splitClassName } from "./transform-css-vars"
 
@@ -130,12 +131,9 @@ function stripQuotes(str: string) {
 }
 
 // Transforms a string literal node by applying RTL mappings.
-function transformStringLiteralNode(node: {
-  getText(): string
-  replaceWithText(text: string): void
-}) {
-  const text = stripQuotes(node.getText() ?? "")
-  node.replaceWithText(`"${applyRtlMapping(text)}"`)
+function transformStringLiteralNode(node: StringLiteral) {
+  const text = node.getLiteralText()
+  node.setLiteralValue(applyRtlMapping(text))
 }
 
 export function applyRtlMapping(input: string) {

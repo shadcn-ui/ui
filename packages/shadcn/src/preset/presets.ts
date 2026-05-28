@@ -12,131 +12,21 @@ import open from "open"
 import prompts from "prompts"
 import { type z } from "zod"
 
-export const DEFAULT_PRESETS = {
-  nova: {
-    title: "Nova",
-    description: "Lucide / Geist",
-    style: "nova",
-    baseColor: "neutral",
-    theme: "neutral",
-    chartColor: "neutral",
-    iconLibrary: "lucide",
-    font: "geist",
-    fontHeading: "inherit",
-    menuAccent: "subtle" as const,
-    menuColor: "default" as const,
+import { DEFAULT_PRESETS } from "./defaults"
 
-    radius: "default",
-    rtl: false,
-  },
-  vega: {
-    title: "Vega",
-    description: "Lucide / Inter",
-    style: "vega",
-    baseColor: "neutral",
-    theme: "neutral",
-    chartColor: "neutral",
-    iconLibrary: "lucide",
-    font: "inter",
-    fontHeading: "inherit",
-    menuAccent: "subtle" as const,
-    menuColor: "default" as const,
-
-    radius: "default",
-    rtl: false,
-  },
-  maia: {
-    title: "Maia",
-    description: "Hugeicons / Figtree",
-    style: "maia",
-    baseColor: "neutral",
-    theme: "neutral",
-    chartColor: "neutral",
-    iconLibrary: "hugeicons",
-    font: "figtree",
-    fontHeading: "inherit",
-    menuAccent: "subtle" as const,
-    menuColor: "default" as const,
-
-    radius: "default",
-    rtl: false,
-  },
-  lyra: {
-    title: "Lyra",
-    description: "Phosphor / JetBrains Mono",
-    style: "lyra",
-    baseColor: "neutral",
-    theme: "neutral",
-    chartColor: "neutral",
-    iconLibrary: "phosphor",
-    font: "jetbrains-mono",
-    fontHeading: "inherit",
-    menuAccent: "subtle" as const,
-    menuColor: "default" as const,
-
-    radius: "default",
-    rtl: false,
-  },
-  mira: {
-    title: "Mira",
-    description: "Hugeicons / Inter",
-    style: "mira",
-    baseColor: "neutral",
-    theme: "neutral",
-    chartColor: "neutral",
-    iconLibrary: "hugeicons",
-    font: "inter",
-    fontHeading: "inherit",
-    menuAccent: "subtle" as const,
-    menuColor: "default" as const,
-
-    radius: "default",
-    rtl: false,
-  },
-  luma: {
-    title: "Luma",
-    description: "Lucide / Inter",
-    style: "luma",
-    baseColor: "neutral",
-    theme: "neutral",
-    chartColor: "neutral",
-    iconLibrary: "lucide",
-    font: "inter",
-    fontHeading: "inherit",
-    menuAccent: "subtle" as const,
-    menuColor: "default" as const,
-
-    radius: "default",
-    rtl: false,
-  },
-  sera: {
-    title: "Sera",
-    description: "Lucide / Noto Sans + Playfair Display",
-    style: "sera",
-    baseColor: "taupe",
-    theme: "taupe",
-    chartColor: "taupe",
-    iconLibrary: "lucide",
-    font: "noto-sans",
-    fontHeading: "playfair-display",
-    menuAccent: "subtle" as const,
-    menuColor: "default" as const,
-
-    radius: "default",
-    rtl: false,
-  },
-}
+export { DEFAULT_PRESETS } from "./defaults"
 
 export function resolveCreateUrl(
   searchParams?: Partial<{
     command: "create" | "init"
     template: string
     rtl: boolean
+    pointer: boolean
     base: string
   }>
 ) {
   const url = new URL(`${SHADCN_URL}/create`)
-  const { rtl, ...params } = searchParams ?? {}
+  const { rtl, pointer, ...params } = searchParams ?? {}
 
   for (const [key, value] of Object.entries(params)) {
     if (value !== undefined) {
@@ -147,6 +37,10 @@ export function resolveCreateUrl(
   // Do not set rtl if it's false.
   if (rtl) {
     url.searchParams.set("rtl", "true")
+  }
+
+  if (pointer) {
+    url.searchParams.set("pointer", "true")
   }
 
   return url.toString()
@@ -195,7 +89,12 @@ export function resolveInitUrl(
     menuColor: string
     radius: string
   },
-  options?: { template?: string; preset?: string; only?: string }
+  options?: {
+    template?: string
+    preset?: string
+    only?: string
+    pointer?: boolean
+  }
 ) {
   const params = new URLSearchParams({
     base: preset.base,
@@ -210,7 +109,7 @@ export function resolveInitUrl(
     radius: preset.radius,
   })
 
-  if (preset.chartColor) {
+  if (preset.chartColor && preset.chartColor !== "neutral") {
     params.set("chartColor", preset.chartColor)
   }
 
@@ -230,6 +129,10 @@ export function resolveInitUrl(
 
   if (options?.only) {
     params.set("only", options.only)
+  }
+
+  if (options?.pointer) {
+    params.set("pointer", "true")
   }
 
   // Signal the server to record this init run.
@@ -256,6 +159,7 @@ export async function promptForPreset(options: {
   rtl: boolean
   base: string
   template?: string
+  pointer?: boolean
 }) {
   const presets = Object.entries(DEFAULT_PRESETS)
 
@@ -285,6 +189,7 @@ export async function promptForPreset(options: {
     const createUrl = resolveCreateUrl({
       command: "init",
       rtl: options.rtl,
+      pointer: options.pointer,
       base: options.base,
       ...(options.template && { template: options.template }),
     })
@@ -308,6 +213,7 @@ export async function promptForPreset(options: {
       { ...preset, base: options.base, rtl: options.rtl },
       {
         template: options.template,
+        pointer: options.pointer,
       }
     ),
     base: options.base,

@@ -3,7 +3,7 @@ import {
   type IconLibrary,
   type IconLibraryName,
 } from "shadcn/icons"
-import { type RegistryItem } from "shadcn/schema"
+import { registryItemSchema, type RegistryItem } from "shadcn/schema"
 import { z } from "zod"
 
 import { BASE_COLORS, type BaseColor } from "@/registry/base-colors"
@@ -13,6 +13,7 @@ import { STYLES, type Style } from "@/registry/styles"
 import { THEMES, type Theme } from "@/registry/themes"
 
 const SHADCN_VERSION = "latest"
+const DEFAULT_RADIUS_VALUE = "0.625rem"
 
 export { BASES, type Base }
 export { STYLES, type Style }
@@ -28,6 +29,8 @@ export type BaseColorName = BaseColor["name"]
 export type ChartColorName = Theme["name"]
 export const REGISTRY_BASE_PARTS = ["theme", "font"] as const
 export type RegistryBasePart = (typeof REGISTRY_BASE_PARTS)[number]
+export const POINTER_CURSOR_SELECTOR =
+  'button:not(:disabled), [role="button"]:not(:disabled)'
 
 // Derive font values from registry fonts (e.g., "font-inter" -> "inter").
 const fontValues = bodyFonts.map((f) => f.name.replace("font-", "")) as [
@@ -106,6 +109,7 @@ export const designSystemConfigSchema = z
     fontHeading: z.enum(fontHeadingValues).default("inherit"),
     item: z.string().optional(),
     rtl: z.boolean().default(false),
+    pointer: z.boolean().default(false),
     menuAccent: z
       .enum(
         MENU_ACCENTS.map((a) => a.value) as [
@@ -177,6 +181,7 @@ export const DEFAULT_CONFIG: DesignSystemConfig = {
   fontHeading: "inherit",
   item: "Item",
   rtl: false,
+  pointer: false,
   menuAccent: "subtle",
   menuColor: "default",
   radius: "default",
@@ -187,7 +192,7 @@ export type Preset = {
   name: string
   title: string
   description: string
-} & DesignSystemConfig
+} & Omit<DesignSystemConfig, "pointer">
 
 export const PRESETS: Preset[] = [
   // Radix.
@@ -409,6 +414,43 @@ export const PRESETS: Preset[] = [
     menuColor: "default",
     radius: "default",
   },
+  // Rhea.
+  {
+    name: "radix-rhea",
+    title: "Rhea (Radix)",
+    description: "Rhea / Lucide / Inter",
+    base: "radix",
+    style: "rhea",
+    baseColor: "neutral",
+    theme: "neutral",
+    chartColor: "neutral",
+    iconLibrary: "lucide",
+    font: "inter",
+    fontHeading: "inherit",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  {
+    name: "base-rhea",
+    title: "Rhea (Base)",
+    description: "Rhea / Lucide / Inter",
+    base: "base",
+    style: "rhea",
+    baseColor: "neutral",
+    theme: "neutral",
+    chartColor: "neutral",
+    iconLibrary: "lucide",
+    font: "inter",
+    fontHeading: "inherit",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
   // Sera.
   {
     name: "radix-sera",
@@ -573,6 +615,28 @@ export function buildRegistryTheme(config: DesignSystemConfig) {
   }
 }
 
+export function buildThemeForPreset(config: DesignSystemConfig) {
+  const registryTheme = buildRegistryTheme(config)
+  const radius = RADII.find((r) => r.name === config.radius)
+  const radiusValue =
+    config.radius === "default"
+      ? (registryTheme.cssVars?.light?.radius ?? DEFAULT_RADIUS_VALUE)
+      : (radius?.value ?? registryTheme.cssVars?.light?.radius)
+
+  return registryItemSchema.parse({
+    $schema: "https://ui.shadcn.com/schema/registry-item.json",
+    name: registryTheme.name,
+    type: "registry:theme",
+    cssVars: {
+      ...registryTheme.cssVars,
+      light: {
+        ...registryTheme.cssVars.light,
+        ...(radiusValue && { radius: radiusValue }),
+      },
+    },
+  })
+}
+
 // Builds a registry:base item from a design system config.
 export function buildRegistryBase(config: DesignSystemConfig) {
   const baseItem = getBase(config.base)
@@ -639,6 +703,11 @@ export function buildRegistryBase(config: DesignSystemConfig) {
       "@layer base": {
         "*": { "@apply border-border outline-ring/50": {} },
         body: { "@apply bg-background text-foreground": {} },
+        ...(config.pointer && {
+          [POINTER_CURSOR_SELECTOR]: {
+            cursor: "pointer",
+          },
+        }),
       },
     },
     ...(config.rtl && {

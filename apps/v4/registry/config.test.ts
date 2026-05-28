@@ -4,9 +4,11 @@ import publicSchema from "../public/schema.json"
 import {
   buildPartialRegistryBase,
   buildRegistryBase,
+  buildThemeForPreset,
   DEFAULT_CONFIG,
   designSystemConfigSchema,
   parseRegistryBaseParts,
+  POINTER_CURSOR_SELECTOR,
   PRESETS,
 } from "./config"
 
@@ -71,6 +73,41 @@ describe("buildRegistryBase", () => {
     expect(result.chartColor).toBe("neutral")
   })
 
+  it("defaults pointer to false when omitted", () => {
+    const result = designSystemConfigSchema.parse({
+      base: "radix",
+      style: "nova",
+      iconLibrary: "lucide",
+      theme: "neutral",
+      font: "inter",
+      fontHeading: "inherit",
+      menuAccent: "subtle",
+      menuColor: "default",
+      radius: "default",
+    })
+
+    expect(result.pointer).toBe(false)
+  })
+
+  it("does not include pointer cursor css by default", () => {
+    const result = buildRegistryBase(DEFAULT_CONFIG)
+
+    expect(
+      result.css?.["@layer base"]?.[POINTER_CURSOR_SELECTOR]
+    ).toBeUndefined()
+  })
+
+  it("includes pointer cursor css when pointer is enabled", () => {
+    const result = buildRegistryBase({
+      ...DEFAULT_CONFIG,
+      pointer: true,
+    })
+
+    expect(result.css?.["@layer base"]?.[POINTER_CURSOR_SELECTOR]).toEqual({
+      cursor: "pointer",
+    })
+  })
+
   it("defaults chartColor to the selected theme when omitted", () => {
     const result = designSystemConfigSchema.parse({
       base: "base",
@@ -113,6 +150,31 @@ describe("buildRegistryBase", () => {
     })
 
     expect(result.success).toBe(false)
+  })
+})
+
+describe("buildThemeForPreset", () => {
+  it("builds a copyable registry theme item", () => {
+    const result = buildThemeForPreset({
+      ...DEFAULT_CONFIG,
+      baseColor: "taupe",
+      theme: "taupe",
+      chartColor: "taupe",
+      menuAccent: "bold",
+      radius: "large",
+    })
+
+    expect(result).toMatchObject({
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "taupe-taupe",
+      type: "registry:theme",
+    })
+    expect(result.cssVars?.light?.radius).toBe("0.875rem")
+    expect(result.cssVars?.light?.accent).toBe(result.cssVars?.light?.primary)
+    expect(result.cssVars?.dark?.accent).toBe(result.cssVars?.dark?.primary)
+    expect(result.cssVars?.light?.background).toBeDefined()
+    expect(result.cssVars?.dark?.background).toBeDefined()
+    expect(result.css).toBeUndefined()
   })
 })
 

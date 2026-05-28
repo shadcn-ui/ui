@@ -14,7 +14,7 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/base/dialog",
-      "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/dialog-example.tsx",
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/dialog-example.tsx",
       "api": "https://base-ui.com/react/components/dialog.md"
     }
   },

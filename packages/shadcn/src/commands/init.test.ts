@@ -14,7 +14,7 @@ import {
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
-import { runInit } from "./init"
+import { applyInitUrlOptions, initOptionsSchema, runInit } from "./init"
 
 vi.mock("@/src/preflights/preflight-init", () => ({
   preFlightInit: vi.fn(),
@@ -250,5 +250,34 @@ describe("runInit", () => {
 
     expect(createProject).not.toHaveBeenCalled()
     expect(postInit).not.toHaveBeenCalled()
+  })
+})
+
+describe("init options", () => {
+  it("parses pointer flags", () => {
+    const result = initOptionsSchema.parse({
+      ...createInitOptions("/tmp/project"),
+      pointer: true,
+    })
+
+    expect(result.pointer).toBe(true)
+  })
+
+  it("applies pointer to raw init urls", () => {
+    const url = applyInitUrlOptions(
+      new URL("https://ui.shadcn.com/init?preset=a0"),
+      { pointer: true }
+    )
+
+    expect(url.searchParams.get("pointer")).toBe("true")
+  })
+
+  it("removes pointer from raw init urls when disabled", () => {
+    const url = applyInitUrlOptions(
+      new URL("https://ui.shadcn.com/init?preset=a0&pointer=true"),
+      { pointer: false }
+    )
+
+    expect(url.searchParams.has("pointer")).toBe(false)
   })
 })
