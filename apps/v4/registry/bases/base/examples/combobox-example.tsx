@@ -909,7 +909,7 @@ function ComboboxInPopup() {
           render={
             <Button
               variant="outline"
-              className="w-64 justify-between font-normal"
+              className="w-64 justify-between font-normal style-luma:rounded-3xl style-luma:border-transparent style-luma:bg-input/50 style-luma:hover:bg-input/50"
             />
           }
         >
