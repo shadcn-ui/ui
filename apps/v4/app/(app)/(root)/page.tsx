@@ -60,23 +60,23 @@ export default function IndexPage() {
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="container-wrapper flex-1 pb-6 md:px-0">
+      <div className="container-wrapper flex-1 p-0">
         <div className="container overflow-hidden md:px-0 lg:max-w-none">
-          <section className="-mx-4 w-[160vw] overflow-hidden rounded-lg border border-border/50 md:hidden md:w-[150vw]">
+          <section className="-mx-4 w-[140vw] overflow-hidden md:hidden">
             <Image
-              src="/r/styles/new-york-v4/dashboard-01-light.png"
-              width={1400}
-              height={875}
+              src="/images/full-light.png"
+              width={2560}
+              height={2764}
               alt="Dashboard"
-              className="block dark:hidden"
+              className="block h-auto w-full dark:hidden"
               priority
             />
             <Image
-              src="/r/styles/new-york-v4/dashboard-01-dark.png"
-              width={1400}
-              height={875}
+              src="/images/full-dark.png"
+              width={2560}
+              height={2764}
               alt="Dashboard"
-              className="hidden dark:block"
+              className="hidden h-auto w-full dark:block"
               priority
             />
           </section>
