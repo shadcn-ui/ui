@@ -41,6 +41,7 @@ import {
   type ChartConfig,
 } from "@/registry/bases/radix/ui/chart"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 const areaChartData = [
   { month: "January", desktop: 186 },
@@ -64,6 +65,7 @@ export default function ChartExample() {
       <ChartAreaExample />
       <ChartBarExample />
       <ChartLineExample />
+      <ChartPieExample />
       <ChartRadialExample />
       <ChartRadarExample />
     </ExampleWrapper>
@@ -126,7 +128,7 @@ function ChartAreaExample() {
                   className="size-4"
                 />
               </div>
-              <div className="text-muted-foreground flex items-center gap-2 leading-none">
+              <div className="flex items-center gap-2 leading-none text-muted-foreground">
                 January - June 2024
               </div>
             </div>
@@ -158,6 +160,9 @@ const barChartConfig = {
 } satisfies ChartConfig
 
 function ChartBarExample() {
+  const [params] = useDesignSystemSearchParams()
+  const isRounded = !["lyra", "sera"].includes(params.style)
+
   return (
     <Example title="Bar Chart">
       <Card className="w-full">
@@ -180,8 +185,16 @@ function ChartBarExample() {
                 cursor={false}
                 content={<ChartTooltipContent indicator="dashed" />}
               />
-              <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-              <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+              <Bar
+                dataKey="desktop"
+                fill="var(--color-desktop)"
+                radius={isRounded ? 4 : 0}
+              />
+              <Bar
+                dataKey="mobile"
+                fill="var(--color-mobile)"
+                radius={isRounded ? 4 : 0}
+              />
             </BarChart>
           </ChartContainer>
         </CardContent>
@@ -197,7 +210,7 @@ function ChartBarExample() {
               className="size-4"
             />
           </div>
-          <div className="text-muted-foreground leading-none">
+          <div className="leading-none text-muted-foreground">
             Showing total visitors for the last 6 months
           </div>
         </CardFooter>
@@ -284,7 +297,7 @@ function ChartLineExample() {
                   className="size-4"
                 />
               </div>
-              <div className="text-muted-foreground flex items-center gap-2 leading-none">
+              <div className="flex items-center gap-2 leading-none text-muted-foreground">
                 Showing total visitors for the last 6 months
               </div>
             </div>
@@ -403,7 +416,7 @@ function ChartPieExample() {
               className="size-4"
             />
           </div>
-          <div className="text-muted-foreground leading-none">
+          <div className="leading-none text-muted-foreground">
             Showing total visitors for the last 6 months
           </div>
         </CardFooter>
@@ -475,7 +488,7 @@ function ChartRadarExample() {
               className="size-4"
             />
           </div>
-          <div className="text-muted-foreground flex items-center gap-2 leading-none">
+          <div className="flex items-center gap-2 leading-none text-muted-foreground">
             January - June 2024
           </div>
         </CardFooter>
@@ -514,8 +527,8 @@ function ChartRadialExample() {
             <RadialBarChart
               data={radialChartData}
               endAngle={100}
-              innerRadius={80}
-              outerRadius={140}
+              innerRadius={64}
+              outerRadius={94}
             >
               <PolarGrid
                 gridType="circle"
@@ -571,7 +584,7 @@ function ChartRadialExample() {
               className="size-4"
             />
           </div>
-          <div className="text-muted-foreground leading-none">
+          <div className="leading-none text-muted-foreground">
             Showing total visitors for the last 6 months
           </div>
         </CardFooter>

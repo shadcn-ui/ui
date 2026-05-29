@@ -17,6 +17,7 @@ import {
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -167,9 +168,11 @@ function InputWithSelect() {
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="usd">USD</SelectItem>
-            <SelectItem value="eur">EUR</SelectItem>
-            <SelectItem value="gbp">GBP</SelectItem>
+            <SelectGroup>
+              <SelectItem value="usd">USD</SelectItem>
+              <SelectItem value="eur">EUR</SelectItem>
+              <SelectItem value="gbp">GBP</SelectItem>
+            </SelectGroup>
           </SelectContent>
         </Select>
       </div>
@@ -239,9 +242,11 @@ function InputForm() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="us">United States</SelectItem>
-                  <SelectItem value="uk">United Kingdom</SelectItem>
-                  <SelectItem value="ca">Canada</SelectItem>
+                  <SelectGroup>
+                    <SelectItem value="us">United States</SelectItem>
+                    <SelectItem value="uk">United Kingdom</SelectItem>
+                    <SelectItem value="ca">Canada</SelectItem>
+                  </SelectGroup>
                 </SelectContent>
               </Select>
             </Field>

@@ -1,10 +1,12 @@
 "use client"
 
+import { ChevronDownIcon, LifeBuoyIcon, SendIcon } from "lucide-react"
+
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/base/ui/collapsible"
+} from "@/styles/base-nova/ui/collapsible"
 import {
   Sidebar,
   SidebarContent,
@@ -15,8 +17,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/examples/base/ui/sidebar"
-import { ChevronDownIcon, LifeBuoyIcon, SendIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/sidebar"
 
 export default function AppSidebar() {
   return (
@@ -27,7 +28,7 @@ export default function AppSidebar() {
             <SidebarGroup>
               <SidebarGroupLabel
                 render={<CollapsibleTrigger />}
-                className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm"
+                className="text-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
               >
                 Help
                 <ChevronDownIcon className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />

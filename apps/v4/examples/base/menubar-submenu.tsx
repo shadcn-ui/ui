@@ -9,7 +9,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "@/examples/base/ui/menubar"
+} from "@/styles/base-nova/ui/menubar"
 
 export function MenubarSubmenu() {
   return (

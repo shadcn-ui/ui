@@ -1,7 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/radix/ui/button"
+
+import { cn } from "@/lib/utils"
+import { useMediaQuery } from "@/hooks/use-media-query"
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -9,7 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/radix/ui/dialog"
+} from "@/styles/radix-nova/ui/dialog"
 import {
   Drawer,
   DrawerClose,
@@ -19,12 +22,9 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/examples/radix/ui/drawer"
-import { Input } from "@/examples/radix/ui/input"
-import { Label } from "@/examples/radix/ui/label"
-
-import { cn } from "@/lib/utils"
-import { useMediaQuery } from "@/hooks/use-media-query"
+} from "@/styles/radix-nova/ui/drawer"
+import { Input } from "@/styles/radix-nova/ui/input"
+import { Label } from "@/styles/radix-nova/ui/label"
 
 export function DrawerDialogDemo() {
   const [open, setOpen] = React.useState(false)

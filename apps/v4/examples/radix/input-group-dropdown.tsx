@@ -1,17 +1,18 @@
+import { ChevronDownIcon, MoreHorizontal } from "lucide-react"
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/radix/ui/dropdown-menu"
+} from "@/styles/radix-nova/ui/dropdown-menu"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/radix/ui/input-group"
-import { ChevronDownIcon, MoreHorizontal } from "lucide-react"
+} from "@/styles/radix-nova/ui/input-group"
 
 export default function InputGroupDropdown() {
   return (
@@ -44,7 +45,7 @@ export default function InputGroupDropdown() {
         <InputGroupAddon align="inline-end">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <InputGroupButton variant="ghost" className="!pr-1.5 text-xs">
+              <InputGroupButton variant="ghost" className="pr-1.5! text-xs">
                 Search In... <ChevronDownIcon className="size-3" />
               </InputGroupButton>
             </DropdownMenuTrigger>

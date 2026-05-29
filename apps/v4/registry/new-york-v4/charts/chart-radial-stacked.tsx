@@ -1,7 +1,13 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts"
+import {
+  Label,
+  PolarGrid,
+  PolarRadiusAxis,
+  RadialBar,
+  RadialBarChart,
+} from "recharts"
 
 import {
   Card,
@@ -20,7 +26,7 @@ import {
 
 export const description = "A radial chart with stacked sections"
 
-const chartData = [{ month: "january", desktop: 1260, mobile: 570 }]
+const chartData = [{ month: "january", mobile: 570, desktop: 1260 }]
 
 const chartConfig = {
   desktop: {
@@ -51,8 +57,22 @@ export function ChartRadialStacked() {
             data={chartData}
             endAngle={180}
             innerRadius={80}
-            outerRadius={130}
+            outerRadius={110}
           >
+            <RadialBar
+              dataKey="mobile"
+              fill="var(--color-mobile)"
+              stackId="a"
+              cornerRadius={5}
+              className="stroke-transparent stroke-2"
+            />
+            <RadialBar
+              dataKey="desktop"
+              stackId="a"
+              cornerRadius={5}
+              fill="var(--color-desktop)"
+              className="stroke-transparent stroke-2"
+            />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
@@ -83,20 +103,6 @@ export function ChartRadialStacked() {
                 }}
               />
             </PolarRadiusAxis>
-            <RadialBar
-              dataKey="desktop"
-              stackId="a"
-              cornerRadius={5}
-              fill="var(--color-desktop)"
-              className="stroke-transparent stroke-2"
-            />
-            <RadialBar
-              dataKey="mobile"
-              fill="var(--color-mobile)"
-              stackId="a"
-              cornerRadius={5}
-              className="stroke-transparent stroke-2"
-            />
           </RadialBarChart>
         </ChartContainer>
       </CardContent>
@@ -104,7 +110,7 @@ export function ChartRadialStacked() {
         <div className="flex items-center gap-2 leading-none font-medium">
           Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
         </div>
-        <div className="text-muted-foreground leading-none">
+        <div className="leading-none text-muted-foreground">
           Showing total visitors for the last 6 months
         </div>
       </CardFooter>

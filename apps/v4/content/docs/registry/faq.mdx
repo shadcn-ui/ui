@@ -36,7 +36,7 @@ Here's an example of a complex component that installs a page, two components, a
     },
     {
       "path": "registry/new-york/hello-world/lib/format-date.ts",
-      "type": "registry:utils"
+      "type": "registry:lib"
     },
     {
       "path": "registry/new-york/hello-world/hello.config.ts",
@@ -63,12 +63,12 @@ To add a new color you need to add it to `cssVars` under `light` and `dark` keys
   ],
   "cssVars": {
     "light": {
-      "brand-background": "20 14.3% 4.1%",
-      "brand-accent": "20 14.3% 4.1%"
+      "brand-background": "oklch(0.205 0.015 18)",
+      "brand-accent": "oklch(0.205 0.015 18)"
     },
     "dark": {
-      "brand-background": "20 14.3% 4.1%",
-      "brand-accent": "20 14.3% 4.1%"
+      "brand-background": "oklch(0.205 0.015 18)",
+      "brand-accent": "oklch(0.205 0.015 18)"
     }
   }
 }

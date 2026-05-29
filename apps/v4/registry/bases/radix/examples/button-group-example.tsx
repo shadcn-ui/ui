@@ -30,6 +30,7 @@ import { Label } from "@/registry/bases/radix/ui/label"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -107,7 +108,11 @@ function ButtonGroupWithText() {
           <ButtonGroupText asChild>
             <Label htmlFor="input-text">GPU Size</Label>
           </ButtonGroupText>
-          <Input id="input-text" placeholder="Type something here..." />
+          <Input
+            id="input-text"
+            placeholder="Type something here..."
+            className="style-luma:border-border"
+          />
         </ButtonGroup>
       </div>
     </Example>
@@ -251,9 +256,11 @@ function ButtonGroupWithSelect() {
               <SelectValue />
             </SelectTrigger>
             <SelectContent align="start">
-              <SelectItem value="$">$</SelectItem>
-              <SelectItem value="€">€</SelectItem>
-              <SelectItem value="£">£</SelectItem>
+              <SelectGroup>
+                <SelectItem value="$">$</SelectItem>
+                <SelectItem value="€">€</SelectItem>
+                <SelectItem value="£">£</SelectItem>
+              </SelectGroup>
             </SelectContent>
           </Select>
           <Input placeholder="Enter amount to send" />
@@ -410,9 +417,11 @@ function ButtonGroupWithSelectAndInput() {
             <SelectValue placeholder="Select duration" />
           </SelectTrigger>
           <SelectContent align="start">
-            <SelectItem value="hours">Hours</SelectItem>
-            <SelectItem value="days">Days</SelectItem>
-            <SelectItem value="weeks">Weeks</SelectItem>
+            <SelectGroup>
+              <SelectItem value="hours">Hours</SelectItem>
+              <SelectItem value="days">Days</SelectItem>
+              <SelectItem value="weeks">Weeks</SelectItem>
+            </SelectGroup>
           </SelectContent>
         </Select>
         <Input />

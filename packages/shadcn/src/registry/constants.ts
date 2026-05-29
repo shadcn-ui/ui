@@ -4,16 +4,14 @@ import { z } from "zod"
 export const REGISTRY_URL =
   process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"
 
+export const SHADCN_URL = REGISTRY_URL.replace(/\/r\/?$/, "")
+
 export const FALLBACK_STYLE = "new-york-v4"
 
 export const BASE_COLORS = [
   {
     name: "neutral",
     label: "Neutral",
-  },
-  {
-    name: "gray",
-    label: "Gray",
   },
   {
     name: "zinc",
@@ -24,8 +22,20 @@ export const BASE_COLORS = [
     label: "Stone",
   },
   {
-    name: "slate",
-    label: "Slate",
+    name: "mauve",
+    label: "Mauve",
+  },
+  {
+    name: "olive",
+    label: "Olive",
+  },
+  {
+    name: "mist",
+    label: "Mist",
+  },
+  {
+    name: "taupe",
+    label: "Taupe",
   },
 ] as const
 

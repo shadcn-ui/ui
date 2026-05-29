@@ -1,11 +1,11 @@
-import { Button } from "@/examples/radix/ui/button"
-import { Input } from "@/examples/radix/ui/input"
-import { Label } from "@/examples/radix/ui/label"
+import { Button } from "@/styles/radix-nova/ui/button"
+import { Input } from "@/styles/radix-nova/ui/input"
+import { Label } from "@/styles/radix-nova/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/examples/radix/ui/popover"
+} from "@/styles/radix-nova/ui/popover"
 
 export default function PopoverDemo() {
   return (
@@ -17,7 +17,7 @@ export default function PopoverDemo() {
         <div className="grid gap-4">
           <div className="space-y-2">
             <h4 className="leading-none font-medium">Dimensions</h4>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-sm text-muted-foreground">
               Set the dimensions for the layer.
             </p>
           </div>

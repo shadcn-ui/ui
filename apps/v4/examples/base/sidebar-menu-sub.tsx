@@ -12,7 +12,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   SidebarProvider,
-} from "@/examples/base/ui/sidebar"
+} from "@/styles/base-nova/ui/sidebar"
 
 const items = [
   {
@@ -30,7 +30,7 @@ const items = [
     ],
   },
   {
-    title: "Building Your Application",
+    title: "Build Your Application",
     url: "#",
     items: [
       {

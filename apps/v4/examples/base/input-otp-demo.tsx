@@ -2,7 +2,7 @@ import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@/examples/base/ui/input-otp"
+} from "@/styles/base-nova/ui/input-otp"
 
 export function InputOTPDemo() {
   return (

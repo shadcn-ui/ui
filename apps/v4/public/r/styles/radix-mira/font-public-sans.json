@@ -4,12 +4,13 @@
   "title": "Public Sans",
   "type": "registry:font",
   "font": {
-    "family": "'Public Sans', sans-serif",
+    "family": "'Public Sans Variable', sans-serif",
     "provider": "google",
     "import": "Public_Sans",
     "variable": "--font-sans",
     "subsets": [
       "latin"
-    ]
+    ],
+    "dependency": "@fontsource-variable/public-sans"
   }
 }

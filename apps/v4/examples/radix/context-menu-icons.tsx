@@ -1,17 +1,18 @@
 import {
+  ClipboardPasteIcon,
+  CopyIcon,
+  ScissorsIcon,
+  TrashIcon,
+} from "lucide-react"
+
+import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuGroup,
   ContextMenuItem,
   ContextMenuSeparator,
   ContextMenuTrigger,
-} from "@/examples/radix/ui/context-menu"
-import {
-  ClipboardPasteIcon,
-  CopyIcon,
-  ScissorsIcon,
-  TrashIcon,
-} from "lucide-react"
+} from "@/styles/radix-nova/ui/context-menu"
 
 export function ContextMenuIcons() {
   return (

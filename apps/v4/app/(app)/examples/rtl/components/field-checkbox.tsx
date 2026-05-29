@@ -1,9 +1,8 @@
 "use client"
 
-import { Checkbox } from "@/examples/base/ui-rtl/checkbox"
-import { Field, FieldLabel } from "@/examples/base/ui-rtl/field"
-
 import { useLanguageContext } from "@/components/language-selector"
+import { Checkbox } from "@/styles/base-nova/ui-rtl/checkbox"
+import { Field, FieldLabel } from "@/styles/base-nova/ui-rtl/field"
 
 const translations = {
   ar: {

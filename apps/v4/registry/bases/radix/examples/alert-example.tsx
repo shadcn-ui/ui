@@ -10,6 +10,31 @@ import {
 } from "@/registry/bases/radix/ui/alert"
 import { Badge } from "@/registry/bases/radix/ui/badge"
 import { Button } from "@/registry/bases/radix/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/registry/bases/radix/ui/card"
+import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
+import { Input } from "@/registry/bases/radix/ui/input"
+import {
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemMedia,
+  ItemTitle,
+} from "@/registry/bases/radix/ui/item"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/bases/radix/ui/select"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function AlertExample() {
@@ -19,13 +44,14 @@ export default function AlertExample() {
       <AlertExample2 />
       <AlertExample3 />
       <AlertExample4 />
+      <AlertExample5 />
     </ExampleWrapper>
   )
 }
 
 function AlertExample1() {
   return (
-    <Example title="Basic">
+    <Example title="Basic" className="style-sera:bg-transparent">
       <div className="mx-auto flex w-full max-w-lg flex-col gap-4">
         <Alert>
           <AlertTitle>Success! Your changes have been saved.</AlertTitle>
@@ -48,7 +74,7 @@ function AlertExample1() {
 
 function AlertExample2() {
   return (
-    <Example title="With Icons">
+    <Example title="With Icons" className="style-sera:bg-transparent">
       <div className="mx-auto flex w-full max-w-lg flex-col gap-4">
         <Alert>
           <IconPlaceholder
@@ -146,7 +172,7 @@ function AlertExample2() {
 
 function AlertExample3() {
   return (
-    <Example title="Destructive">
+    <Example title="Destructive" className="style-sera:bg-transparent">
       <div className="mx-auto flex w-full max-w-lg flex-col gap-4">
         <Alert variant="destructive">
           <IconPlaceholder
@@ -189,7 +215,7 @@ function AlertExample3() {
 
 function AlertExample4() {
   return (
-    <Example title="With Actions">
+    <Example title="With Actions" className="style-sera:bg-transparent">
       <div className="mx-auto flex w-full max-w-lg flex-col gap-4">
         <Alert>
           <IconPlaceholder
@@ -222,6 +248,78 @@ function AlertExample4() {
           </AlertAction>
         </Alert>
       </div>
+    </Example>
+  )
+}
+
+function AlertExample5() {
+  return (
+    <Example title="Inside Card" className="style-sera:bg-transparent">
+      <Card className="mx-auto w-full max-w-lg">
+        <CardHeader>
+          <CardTitle>Create project</CardTitle>
+          <CardDescription>
+            Fill in the form below to create a new project.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-4 style-sera:gap-8">
+          <Alert>
+            <IconPlaceholder
+              lucide="CircleAlertIcon"
+              tabler="IconExclamationCircle"
+              hugeicons="AlertCircleIcon"
+              phosphor="WarningCircleIcon"
+              remixicon="RiErrorWarningLine"
+            />
+            <AlertTitle>
+              You have reached the limit of 3 free projects.
+            </AlertTitle>
+            <AlertDescription>
+              Upgrade to Pro to create unlimited projects.
+            </AlertDescription>
+          </Alert>
+          <FieldGroup>
+            <Field>
+              <FieldLabel htmlFor="project-name">Name</FieldLabel>
+              <Input id="project-name" placeholder="My project" />
+            </Field>
+            <Field>
+              <FieldLabel htmlFor="project-framework">Framework</FieldLabel>
+              <Select>
+                <SelectTrigger id="project-framework">
+                  <SelectValue placeholder="Select a framework" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value="next">Next.js</SelectItem>
+                    <SelectItem value="remix">Remix</SelectItem>
+                    <SelectItem value="astro">Astro</SelectItem>
+                    <SelectItem value="nuxt">Nuxt</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </Field>
+          </FieldGroup>
+          <Item variant="outline">
+            <ItemMedia variant="image" className="border">
+              <IconPlaceholder
+                lucide="FolderIcon"
+                tabler="IconFolder"
+                hugeicons="Folder01Icon"
+                phosphor="FolderIcon"
+                remixicon="RiFolderLine"
+              />
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle>Project Alpha</ItemTitle>
+              <ItemDescription>Created 2 days ago</ItemDescription>
+            </ItemContent>
+          </Item>
+        </CardContent>
+        <CardFooter>
+          <Button className="w-full">Create project</Button>
+        </CardFooter>
+      </Card>
     </Example>
   )
 }

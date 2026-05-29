@@ -1,6 +1,8 @@
 "use client"
 
 import * as React from "react"
+
+import { cn } from "@/lib/utils"
 import {
   Select,
   SelectContent,
@@ -8,9 +10,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/examples/base/ui/select"
-
-import { cn } from "@/lib/utils"
+} from "@/styles/base-nova/ui/select"
 
 export type Language = "en" | "ar" | "he"
 
@@ -108,7 +108,7 @@ export function LanguageSelector({
       </SelectTrigger>
       <SelectContent
         dir="ltr"
-        className="data-closed:animate-none data-open:animate-none"
+        className="data-open:animate-none data-closed:animate-none"
       >
         <SelectGroup>
           {languageOptions

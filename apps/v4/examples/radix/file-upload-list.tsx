@@ -1,6 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { FileIcon } from "lucide-react"
+
 import {
   Item,
   ItemActions,
@@ -8,9 +10,8 @@ import {
   ItemGroup,
   ItemMedia,
   ItemTitle,
-} from "@/examples/radix/ui/item"
-import { Progress } from "@/examples/radix/ui/progress"
-import { FileIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/item"
+import { Progress } from "@/styles/radix-nova/ui/progress"
 
 export function FileUploadList() {
   const files = React.useMemo(
@@ -57,7 +58,7 @@ export function FileUploadList() {
             <Progress value={file.progress} className="w-32" />
           </ItemContent>
           <ItemActions className="w-16 justify-end">
-            <span className="text-muted-foreground text-sm">
+            <span className="text-sm text-muted-foreground">
               {file.timeRemaining}
             </span>
           </ItemActions>

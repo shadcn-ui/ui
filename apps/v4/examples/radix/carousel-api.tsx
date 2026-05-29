@@ -1,7 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Card, CardContent } from "@/examples/radix/ui/card"
+
+import { Card, CardContent } from "@/styles/radix-nova/ui/card"
 import {
   Carousel,
   CarouselContent,
@@ -9,7 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
   type CarouselApi,
-} from "@/examples/radix/ui/carousel"
+} from "@/styles/radix-nova/ui/carousel"
 
 export default function CarouselDApiDemo() {
   const [api, setApi] = React.useState<CarouselApi>()
@@ -46,7 +47,7 @@ export default function CarouselDApiDemo() {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <div className="text-muted-foreground py-2 text-center text-sm">
+      <div className="py-2 text-center text-sm text-muted-foreground">
         Slide {current} of {count}
       </div>
     </div>

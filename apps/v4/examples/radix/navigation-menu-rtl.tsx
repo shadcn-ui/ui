@@ -2,6 +2,11 @@
 
 import * as React from "react"
 import Link from "next/link"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,12 +15,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/examples/radix/ui-rtl/navigation-menu"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/radix-nova/ui-rtl/navigation-menu"
 
 const translations: Translations = {
   en: {
@@ -226,7 +226,7 @@ function ListItem({
         <Link href={href}>
           <div className="flex flex-col gap-1 text-sm">
             <div className="leading-none font-medium">{title}</div>
-            <div className="text-muted-foreground line-clamp-2">{children}</div>
+            <div className="line-clamp-2 text-muted-foreground">{children}</div>
           </div>
         </Link>
       </NavigationMenuLink>

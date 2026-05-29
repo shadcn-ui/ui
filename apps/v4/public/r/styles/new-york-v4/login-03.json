@@ -12,7 +12,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/blocks/login-03/page.tsx",
-      "content": "import { GalleryVerticalEnd } from \"lucide-react\"\n\nimport { LoginForm } from \"@/registry/new-york-v4/blocks/login-03/components/login-form\"\n\nexport default function LoginPage() {\n  return (\n    <div className=\"bg-muted flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10\">\n      <div className=\"flex w-full max-w-sm flex-col gap-6\">\n        <a href=\"#\" className=\"flex items-center gap-2 self-center font-medium\">\n          <div className=\"bg-primary text-primary-foreground flex size-6 items-center justify-center rounded-md\">\n            <GalleryVerticalEnd className=\"size-4\" />\n          </div>\n          Acme Inc.\n        </a>\n        <LoginForm />\n      </div>\n    </div>\n  )\n}\n",
+      "content": "import { GalleryVerticalEnd } from \"lucide-react\"\n\nimport { LoginForm } from \"@/registry/new-york-v4/blocks/login-03/components/login-form\"\n\nexport default function LoginPage() {\n  return (\n    <div className=\"flex min-h-svh flex-col items-center justify-center gap-6 bg-muted p-6 md:p-10\">\n      <div className=\"flex w-full max-w-sm flex-col gap-6\">\n        <a href=\"#\" className=\"flex items-center gap-2 self-center font-medium\">\n          <div className=\"flex size-6 items-center justify-center rounded-md bg-primary text-primary-foreground\">\n            <GalleryVerticalEnd className=\"size-4\" />\n          </div>\n          Acme Inc.\n        </a>\n        <LoginForm />\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:page",
       "target": "app/login/page.tsx"
     },

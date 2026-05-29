@@ -1,7 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/radix/ui/button"
+import { Minus, Plus } from "lucide-react"
+import { Bar, BarChart, ResponsiveContainer } from "recharts"
+
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   Drawer,
   DrawerClose,
@@ -11,9 +14,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/examples/radix/ui/drawer"
-import { Minus, Plus } from "lucide-react"
-import { Bar, BarChart, ResponsiveContainer } from "recharts"
+} from "@/styles/radix-nova/ui/drawer"
 
 const data = [
   {
@@ -91,7 +92,7 @@ export function DrawerDemo() {
                 <div className="text-7xl font-bold tracking-tighter">
                   {goal}
                 </div>
-                <div className="text-muted-foreground text-[0.70rem] uppercase">
+                <div className="text-[0.70rem] text-muted-foreground uppercase">
                   Calories/day
                 </div>
               </div>

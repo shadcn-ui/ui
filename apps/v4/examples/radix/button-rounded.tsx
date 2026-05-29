@@ -1,5 +1,6 @@
-import { Button } from "@/examples/radix/ui/button"
 import { ArrowUpIcon } from "lucide-react"
+
+import { Button } from "@/styles/radix-nova/ui/button"
 
 export default function ButtonRounded() {
   return (

@@ -1,21 +1,22 @@
 "use client"
 
 import * as React from "react"
-import { Calendar } from "@/examples/base/ui/calendar"
-import { Field, FieldLabel } from "@/examples/base/ui/field"
+import { parseDate } from "chrono-node"
+import { CalendarIcon } from "lucide-react"
+
+import { Calendar } from "@/styles/base-nova/ui/calendar"
+import { Field, FieldLabel } from "@/styles/base-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/base/ui/input-group"
+} from "@/styles/base-nova/ui/input-group"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/examples/base/ui/popover"
-import { parseDate } from "chrono-node"
-import { CalendarIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/popover"
 
 function formatDate(date: Date | undefined) {
   if (!date) {
@@ -93,7 +94,7 @@ export function DatePickerNaturalLanguage() {
           </Popover>
         </InputGroupAddon>
       </InputGroup>
-      <div className="text-muted-foreground px-1 text-sm">
+      <div className="px-1 text-sm text-muted-foreground">
         Your post will be published on{" "}
         <span className="font-medium">{formatDate(date)}</span>.
       </div>

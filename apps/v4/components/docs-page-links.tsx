@@ -17,11 +17,11 @@ export function DocsPageLinks({ page, url }: { page: string; url: string }) {
 
   return (
     <div className="flex flex-col gap-3 px-6">
-      <ul className="text-muted-foreground flex flex-col gap-2 text-[0.8rem]">
+      <ul className="flex flex-col gap-2 text-[0.8rem] text-muted-foreground">
         <li>
           <button
             onClick={() => copyToClipboard(page)}
-            className="hover:text-foreground inline-flex items-center gap-2 transition-colors"
+            className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
           >
             {isCopied ? (
               <IconCheck className="size-4" />
@@ -36,7 +36,7 @@ export function DocsPageLinks({ page, url }: { page: string; url: string }) {
             href={`${url}.md`}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-foreground inline-flex items-center gap-2 transition-colors"
+            className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
           >
             <svg strokeLinejoin="round" viewBox="0 0 22 16" className="size-4">
               <path
@@ -54,7 +54,7 @@ export function DocsPageLinks({ page, url }: { page: string; url: string }) {
             href={getPromptUrl("https://v0.dev", url)}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-foreground inline-flex items-center gap-2 transition-colors"
+            className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +72,7 @@ export function DocsPageLinks({ page, url }: { page: string; url: string }) {
             href={getPromptUrl("https://chatgpt.com", url)}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-foreground inline-flex items-center gap-2 transition-colors"
+            className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +92,7 @@ export function DocsPageLinks({ page, url }: { page: string; url: string }) {
             href={getPromptUrl("https://claude.ai/new", url)}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-foreground inline-flex items-center gap-2 transition-colors"
+            className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +112,7 @@ export function DocsPageLinks({ page, url }: { page: string; url: string }) {
             href={getPromptUrl("https://scira.ai/", url)}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-foreground inline-flex items-center gap-2 transition-colors"
+            className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
           >
             <svg
               width="910"

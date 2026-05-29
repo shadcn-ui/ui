@@ -312,6 +312,170 @@ export function Component() {
     `)
   })
 
+  describe("menuColor is default-translucent", () => {
+    test("inlines cn-menu-translucent styles", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+
+export function Component() {
+  return <div className="cn-menu-target cn-menu-translucent p-4">Content</div>
+}`,
+            config: {
+              ...testConfig,
+              menuColor: "default-translucent",
+            },
+          },
+          [transformMenu]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+
+        export function Component() {
+          return <div className="p-4 animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!">Content</div>
+        }"
+      `)
+    })
+
+    test("inlines cn-menu-translucent styles in cn() call", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+
+export function Component() {
+  return <div className={cn("cn-menu-target cn-menu-translucent", "p-4")}>Content</div>
+}`,
+            config: {
+              ...testConfig,
+              menuColor: "default-translucent",
+            },
+          },
+          [transformMenu]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+
+        export function Component() {
+          return <div className={cn("animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!","p-4")}>Content</div>
+        }"
+      `)
+    })
+  })
+
+  describe("menuColor is inverted-translucent", () => {
+    test("replaces cn-menu-target with dark and inlines cn-menu-translucent", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+
+export function Component() {
+  return <div className="cn-menu-target cn-menu-translucent p-4">Content</div>
+}`,
+            config: {
+              ...testConfig,
+              menuColor: "inverted-translucent",
+            },
+          },
+          [transformMenu]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+
+        export function Component() {
+          return <div className="dark p-4 animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!">Content</div>
+        }"
+      `)
+    })
+
+    test("replaces cn-menu-target with dark and inlines cn-menu-translucent in cn() call", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+
+export function Component() {
+  return <div className={cn("cn-menu-target cn-menu-translucent", "p-4")}>Content</div>
+}`,
+            config: {
+              ...testConfig,
+              menuColor: "inverted-translucent",
+            },
+          },
+          [transformMenu]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+
+        export function Component() {
+          return <div className={cn("dark animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!", "p-4")}>Content</div>
+        }"
+      `)
+    })
+  })
+
+  describe("menuColor is inverted removes cn-menu-translucent", () => {
+    test("replaces cn-menu-target with dark and removes cn-menu-translucent", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+
+export function Component() {
+  return <div className="cn-menu-target cn-menu-translucent p-4">Content</div>
+}`,
+            config: {
+              ...testConfig,
+              menuColor: "inverted",
+            },
+          },
+          [transformMenu]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+
+        export function Component() {
+          return <div className="dark p-4">Content</div>
+        }"
+      `)
+    })
+  })
+
+  describe("menuColor is default removes cn-menu-translucent", () => {
+    test("removes both cn-menu-target and cn-menu-translucent", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+
+export function Component() {
+  return <div className="cn-menu-target cn-menu-translucent p-4">Content</div>
+}`,
+            config: {
+              ...testConfig,
+              menuColor: "default",
+            },
+          },
+          [transformMenu]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+
+        export function Component() {
+          return <div className="p-4">Content</div>
+        }"
+      `)
+    })
+  })
+
   test("preserves semicolons", async () => {
     expect(
       await transform(

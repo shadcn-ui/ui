@@ -22,7 +22,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 9.0.6
+          version: 10.33.4
           run_install: false
 
       - name: Get pnpm store directory
@@ -58,7 +58,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 9.0.6
+          version: 10.33.4
           run_install: false
 
       - name: Get pnpm store directory
@@ -76,6 +76,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Build packages
+        run: pnpm --filter=shadcn build
 
       - run: pnpm format:check
 
@@ -96,7 +99,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 9.0.6
+          version: 10.33.4
           run_install: false
 
       - name: Get pnpm store directory

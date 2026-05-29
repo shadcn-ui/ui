@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Separator } from "@/examples/radix/ui-rtl/separator"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Separator } from "@/styles/radix-nova/ui-rtl/separator"
 
 const translations: Translations = {
   en: {

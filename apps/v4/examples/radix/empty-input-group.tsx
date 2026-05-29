@@ -1,17 +1,18 @@
+import { SearchIcon } from "lucide-react"
+
 import {
   Empty,
   EmptyContent,
   EmptyDescription,
   EmptyHeader,
   EmptyTitle,
-} from "@/examples/radix/ui/empty"
+} from "@/styles/radix-nova/ui/empty"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/radix/ui/input-group"
-import { Kbd } from "@/examples/radix/ui/kbd"
-import { SearchIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/input-group"
+import { Kbd } from "@/styles/radix-nova/ui/kbd"
 
 export default function EmptyInputGroup() {
   return (

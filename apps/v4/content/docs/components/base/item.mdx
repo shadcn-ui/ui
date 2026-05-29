@@ -73,6 +73,22 @@ import {
 </Item>
 ```
 
+## Composition
+
+Use the following composition to build an `Item`:
+
+```text
+ItemGroup
+└── Item
+    ├── ItemHeader
+    ├── ItemMedia
+    ├── ItemContent
+    │   ├── ItemTitle
+    │   └── ItemDescription
+    ├── ItemActions
+    └── ItemFooter
+```
+
 ## Item vs Field
 
 Use `Field` if you need to display a form input such as a checkbox, input, radio, or select.

@@ -1,9 +1,9 @@
-import { Kbd, KbdGroup } from "@/examples/base/ui/kbd"
+import { Kbd, KbdGroup } from "@/styles/base-nova/ui/kbd"
 
 export default function KbdGroupExample() {
   return (
     <div className="flex flex-col items-center gap-4">
-      <p className="text-muted-foreground text-sm">
+      <p className="text-sm text-muted-foreground">
         Use{" "}
         <KbdGroup>
           <Kbd>Ctrl + B</Kbd>

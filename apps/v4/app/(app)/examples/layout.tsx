@@ -65,12 +65,12 @@ export default function ExamplesLayout({
         </PageActions>
       </PageHeader>
       <PageNav id="examples" className="hidden md:flex">
-        <ExamplesNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
+        <ExamplesNav className="flex-1 overflow-hidden [&>a:first-child]:text-primary" />
         <ThemeSelector className="mr-4 hidden md:flex" />
       </PageNav>
-      <div className="container-wrapper section-soft flex flex-1 flex-col pb-6">
-        <div className="theme-container container flex flex-1 scroll-mt-20 flex-col">
-          <div className="bg-background flex flex-col overflow-hidden rounded-lg border bg-clip-padding has-[[data-slot=rtl-components]]:overflow-visible has-[[data-slot=rtl-components]]:border-0 has-[[data-slot=rtl-components]]:bg-transparent md:flex-1 xl:rounded-xl">
+      <div className="container-wrapper flex flex-1 flex-col section-soft pb-6">
+        <div className="container flex flex-1 scroll-mt-20 flex-col theme-container">
+          <div className="flex flex-col overflow-hidden rounded-lg border bg-background bg-clip-padding has-[[data-slot=rtl-components]]:overflow-visible has-[[data-slot=rtl-components]]:border-0 has-[[data-slot=rtl-components]]:bg-transparent md:flex-1 xl:rounded-xl">
             {children}
           </div>
         </div>

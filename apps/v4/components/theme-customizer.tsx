@@ -66,7 +66,7 @@ export function ThemeCustomizer({ className }: React.ComponentProps<"div">) {
               variant="link"
               size="sm"
               data-active={activeTheme === theme.name}
-              className="text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 cursor-pointer items-center justify-center px-4 text-center text-base font-medium capitalize transition-colors hover:no-underline"
+              className="flex h-7 cursor-pointer items-center justify-center px-4 text-center text-base font-medium text-muted-foreground capitalize transition-colors hover:text-primary hover:no-underline data-[active=true]:text-primary"
               onClick={() => setActiveTheme(theme.name)}
             >
               {theme.name === "neutral" ? "Default" : theme.name}
@@ -198,10 +198,10 @@ function CustomizerCode({ themeName }: { themeName: string }) {
         <TabsContent value="v4-oklch">
           <figure
             data-rehype-pretty-code-figure
-            className="!mx-0 mt-0 rounded-lg"
+            className="mx-0! mt-0 rounded-lg"
           >
             <figcaption
-              className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
+              className="flex items-center gap-2 text-code-foreground [&_svg]:size-4 [&_svg]:text-code-foreground [&_svg]:opacity-70"
               data-rehype-pretty-code-title=""
               data-language="css"
               data-theme="github-dark github-light-default"
@@ -214,7 +214,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 data-slot="copy-button"
                 size="icon"
                 variant="ghost"
-                className="bg-code text-code-foreground absolute top-3 right-2 z-10 size-7 shadow-none hover:opacity-100 focus-visible:opacity-100"
+                className="absolute top-3 right-2 z-10 size-7 bg-code text-code-foreground shadow-none hover:opacity-100 focus-visible:opacity-100"
                 onClick={() => {
                   copyToClipboardWithMeta(
                     getThemeCodeOKLCH(activeThemeOKLCH, 0.65),
@@ -278,10 +278,10 @@ function CustomizerCode({ themeName }: { themeName: string }) {
         <TabsContent value="v4-hsl">
           <figure
             data-rehype-pretty-code-figure
-            className="!mx-0 mt-0 rounded-lg"
+            className="mx-0! mt-0 rounded-lg"
           >
             <figcaption
-              className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
+              className="flex items-center gap-2 text-code-foreground [&_svg]:size-4 [&_svg]:text-code-foreground [&_svg]:opacity-70"
               data-rehype-pretty-code-title=""
               data-language="css"
               data-theme="github-dark github-light-default"
@@ -294,7 +294,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 data-slot="copy-button"
                 size="icon"
                 variant="ghost"
-                className="bg-code text-code-foreground absolute top-3 right-2 z-10 size-7 shadow-none hover:opacity-100 focus-visible:opacity-100"
+                className="absolute top-3 right-2 z-10 size-7 bg-code text-code-foreground shadow-none hover:opacity-100 focus-visible:opacity-100"
                 onClick={() => {
                   copyToClipboardWithMeta(
                     getThemeCodeHSLV4(activeTheme, 0.65),
@@ -362,10 +362,10 @@ function CustomizerCode({ themeName }: { themeName: string }) {
         <TabsContent value="v3">
           <figure
             data-rehype-pretty-code-figure
-            className="!mx-0 mt-0 rounded-lg"
+            className="mx-0! mt-0 rounded-lg"
           >
             <figcaption
-              className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
+              className="flex items-center gap-2 text-code-foreground [&_svg]:size-4 [&_svg]:text-code-foreground [&_svg]:opacity-70"
               data-rehype-pretty-code-title=""
               data-language="css"
               data-theme="github-dark github-light-default"
@@ -378,7 +378,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 data-slot="copy-button"
                 size="icon"
                 variant="ghost"
-                className="bg-code text-code-foreground absolute top-3 right-2 z-10 size-7 shadow-none hover:opacity-100 focus-visible:opacity-100"
+                className="absolute top-3 right-2 z-10 size-7 bg-code text-code-foreground shadow-none hover:opacity-100 focus-visible:opacity-100"
                 onClick={() => {
                   copyToClipboardWithMeta(getThemeCode(activeTheme, 0.5), {
                     name: "copy_theme_code",
@@ -632,7 +632,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
 function ColorIndicator({ color }: { color: string }) {
   return (
     <span
-      className="border-border/50 inline-block size-3 border"
+      className="inline-block size-3 border border-border/50"
       style={{ backgroundColor: color }}
     />
   )

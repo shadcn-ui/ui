@@ -1,9 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { Calendar } from "@/examples/radix/ui/calendar"
-import { Card, CardContent } from "@/examples/radix/ui/card"
 import { es } from "react-day-picker/locale"
+
+import { Calendar } from "@/styles/radix-nova/ui/calendar"
+import { Card, CardContent } from "@/styles/radix-nova/ui/card"
 
 export function CalendarBookedDates() {
   const [date, setDate] = React.useState<Date | undefined>(

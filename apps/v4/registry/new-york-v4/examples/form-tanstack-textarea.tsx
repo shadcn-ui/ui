@@ -41,7 +41,7 @@ export default function FormTanstackTextarea() {
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
         description: (
-          <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
+          <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),

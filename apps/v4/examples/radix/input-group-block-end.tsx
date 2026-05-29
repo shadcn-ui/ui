@@ -3,7 +3,7 @@ import {
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/examples/radix/ui/field"
+} from "@/styles/radix-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
@@ -11,7 +11,7 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/examples/radix/ui/input-group"
+} from "@/styles/radix-nova/ui/input-group"
 
 export function InputGroupBlockEnd() {
   return (

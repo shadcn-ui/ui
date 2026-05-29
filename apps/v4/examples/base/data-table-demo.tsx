@@ -1,27 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
-import { Checkbox } from "@/examples/base/ui/checkbox"
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/examples/base/ui/dropdown-menu"
-import { Input } from "@/examples/base/ui/input"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/examples/base/ui/table"
 import {
   flexRender,
   getCoreRowModel,
@@ -35,6 +14,28 @@ import {
   type VisibilityState,
 } from "@tanstack/react-table"
 import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
+import { Checkbox } from "@/styles/base-nova/ui/checkbox"
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/styles/base-nova/ui/dropdown-menu"
+import { Input } from "@/styles/base-nova/ui/input"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/styles/base-nova/ui/table"
 
 const data: Payment[] = [
   {
@@ -290,7 +291,7 @@ export function DataTableDemo() {
         </Table>
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
-        <div className="text-muted-foreground flex-1 text-sm">
+        <div className="flex-1 text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>

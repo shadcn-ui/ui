@@ -5,9 +5,9 @@ base: base
 component: true
 ---
 
-<Callout>
+<Callout className="mt-4">
 
-**Note:** We're working on upgrading to Recharts v3. In the meantime, if you'd like to start testing v3, see the code in the comment [here](https://github.com/shadcn-ui/ui/issues/7669#issuecomment-2998299159). We'll have an official release soon.
+**Updated:** The `chart` component now uses Recharts v3. If you're upgrading existing chart code, see [Updating to Recharts v3](#updating-to-recharts-v3).
 
 </Callout>
 
@@ -50,6 +50,15 @@ export function MyChart() {
 We do not wrap Recharts. This means you're not locked into an abstraction. When a new Recharts version is released, you can follow the official upgrade path to upgrade your charts.
 
 **The components are yours**.
+
+## Updating to Recharts v3
+
+If you're updating older chart code to Recharts v3:
+
+- Use `var(--chart-1)` instead of `hsl(var(--chart-1))` when you reference chart tokens from your CSS variables.
+- Use `ChartTooltip.defaultIndex` for initial tooltip state only. Keep persistent active shapes in your own chart state.
+- Remove `layout` from `<Bar>` when the parent `<BarChart>` already defines it.
+- Keep a height, `min-h-*`, or `aspect-*` on `ChartContainer` so `ResponsiveContainer` can measure on first render.
 
 ## Installation
 
@@ -384,7 +393,7 @@ Charts have built-in support for theming. You can use css variables (recommended
     --chart-2: oklch(0.6 0.118 184.704);
   }
 
-  .dark: {
+  .dark {
     --chart-1: oklch(0.488 0.243 264.376);
     --chart-2: oklch(0.696 0.17 162.48);
   }
@@ -455,7 +464,7 @@ const chartData = [
 #### Tailwind
 
 ```tsx title="components/example-chart.tsx"
-<LabelList className="fill-[--color-desktop]" />
+<LabelList className="fill-(--color-desktop)" />
 ```
 
 ## Tooltip
@@ -510,11 +519,11 @@ const chartConfig = {
   },
   chrome: {
     label: "Chrome",
-    color: "hsl(var(--chart-1))",
+    color: "var(--chart-1)",
   },
   safari: {
     label: "Safari",
-    color: "hsl(var(--chart-2))",
+    color: "var(--chart-2)",
   },
 } satisfies ChartConfig
 ```
@@ -556,11 +565,11 @@ const chartData = [
 const chartConfig = {
   chrome: {
     label: "Chrome",
-    color: "hsl(var(--chart-1))",
+    color: "var(--chart-1)",
   },
   safari: {
     label: "Safari",
-    color: "hsl(var(--chart-2))",
+    color: "var(--chart-2)",
   },
 } satisfies ChartConfig
 ```

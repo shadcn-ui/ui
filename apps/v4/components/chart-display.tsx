@@ -32,7 +32,7 @@ export function ChartDisplay({
         chart={chart}
         className="relative z-20 flex justify-end px-3 py-2.5"
       />
-      <div className="bg-background relative z-10 overflow-hidden rounded-xl">
+      <div className="relative z-10 overflow-hidden rounded-xl bg-background">
         <ChartIframe
           src={`/view/${style}/${chart.name}`}
           height={460}

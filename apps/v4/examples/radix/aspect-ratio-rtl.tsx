@@ -2,12 +2,12 @@
 
 import * as React from "react"
 import Image from "next/image"
-import { AspectRatio } from "@/examples/radix/ui-rtl/aspect-ratio"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { AspectRatio } from "@/styles/radix-nova/ui-rtl/aspect-ratio"
 
 const translations: Translations = {
   en: {
@@ -35,7 +35,7 @@ export function AspectRatioRtl() {
 
   return (
     <figure className="w-full max-w-sm" dir={dir}>
-      <AspectRatio ratio={16 / 9} className="bg-muted rounded-lg">
+      <AspectRatio ratio={16 / 9} className="rounded-lg bg-muted">
         <Image
           src="https://avatar.vercel.sh/shadcn1"
           alt="Photo"
@@ -43,7 +43,7 @@ export function AspectRatioRtl() {
           className="w-full rounded-lg object-cover grayscale dark:brightness-20"
         />
       </AspectRatio>
-      <figcaption className="text-muted-foreground mt-2 text-center text-sm">
+      <figcaption className="mt-2 text-center text-sm text-muted-foreground">
         {t.caption}
       </figcaption>
     </figure>

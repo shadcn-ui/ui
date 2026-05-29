@@ -27,118 +27,142 @@ export const transformAsChild: Transformer = async ({ sourceFile, config }) => {
     return sourceFile
   }
 
-  // Collect all transformations first, then apply them in reverse order.
-  // This prevents issues with invalidated nodes when modifying the tree.
-  const transformations: TransformInfo[] = []
+  // Process asChild elements iteratively, starting from leaf-level elements.
+  // Each iteration transforms only elements with no asChild descendants,
+  // ensuring inner transforms complete before outer ones read the tree.
+  const MAX_ITERATIONS = 10
+  for (let i = 0; i < MAX_ITERATIONS; i++) {
+    const jsxElements = sourceFile.getDescendantsOfKind(SyntaxKind.JsxElement)
 
-  // Find all JSX elements with asChild attribute.
-  const jsxElements = sourceFile.getDescendantsOfKind(SyntaxKind.JsxElement)
-
-  for (const jsxElement of jsxElements) {
-    const openingElement = jsxElement.getOpeningElement()
-    const asChildAttr = openingElement.getAttribute("asChild")
-
-    if (!asChildAttr) {
-      continue
-    }
-
-    const parentTagName = openingElement.getTagNameNode().getText()
-    const children = jsxElement.getJsxChildren()
-
-    // Find the first JSX element child (skip whitespace/text).
-    const childElement = children.find(
-      (child) =>
-        child.getKind() === SyntaxKind.JsxElement ||
-        child.getKind() === SyntaxKind.JsxSelfClosingElement
+    // Find all JSX elements with asChild attribute.
+    const asChildElements = jsxElements.filter((el) =>
+      el.getOpeningElement().getAttribute("asChild")
     )
 
-    if (!childElement) {
-      // No child element found, just remove asChild.
-      asChildAttr.remove()
-      continue
+    if (asChildElements.length === 0) {
+      break
     }
 
-    // Get child element info.
-    let childTagName: string
-    let childProps: string
-    let childChildren: string
-
-    if (childElement.getKind() === SyntaxKind.JsxSelfClosingElement) {
-      const selfClosing = childElement.asKindOrThrow(
-        SyntaxKind.JsxSelfClosingElement
+    // Filter to leaf-only: elements with no asChild descendants.
+    const leafElements = asChildElements.filter((el) => {
+      const descendants = el.getDescendantsOfKind(SyntaxKind.JsxElement)
+      return !descendants.some((d) =>
+        d.getOpeningElement().getAttribute("asChild")
       )
-      childTagName = selfClosing.getTagNameNode().getText()
-      childProps = selfClosing
-        .getAttributes()
-        .map((attr) => attr.getText())
-        .join(" ")
-      childChildren = ""
-    } else {
-      const jsxChild = childElement.asKindOrThrow(SyntaxKind.JsxElement)
-      const openingEl = jsxChild.getOpeningElement()
-      childTagName = openingEl.getTagNameNode().getText()
-      childProps = openingEl
-        .getAttributes()
-        .map((attr) => attr.getText())
-        .join(" ")
-      // Get the children's text content.
-      childChildren = jsxChild
-        .getJsxChildren()
-        .map((c) => c.getText())
-        .join("")
-    }
-
-    // Determine if we need nativeButton={false}.
-    // Add it when the child element is a non-button element.
-    const needsNativeButton =
-      ELEMENTS_REQUIRING_NATIVE_BUTTON_FALSE.includes(childTagName)
-
-    transformations.push({
-      parentElement: jsxElement,
-      parentTagName,
-      childTagName,
-      childProps,
-      childChildren,
-      needsNativeButton,
     })
-  }
 
-  // Apply transformations in reverse order to preserve node validity.
-  for (const info of transformations.reverse()) {
-    const openingElement = info.parentElement.getOpeningElement()
-    const closingElement = info.parentElement.getClosingElement()
+    // Collect all transformations first, then apply them in reverse order.
+    // This prevents issues with invalidated nodes when modifying the tree.
+    const transformations: TransformInfo[] = []
 
-    // Get existing attributes (excluding asChild).
-    const existingAttrs = openingElement
-      .getAttributes()
-      .filter((attr) => {
-        if (attr.getKind() === SyntaxKind.JsxAttribute) {
-          const jsxAttr = attr.asKindOrThrow(SyntaxKind.JsxAttribute)
-          return jsxAttr.getNameNode().getText() !== "asChild"
-        }
-        return true
+    for (const jsxElement of leafElements) {
+      const openingElement = jsxElement.getOpeningElement()
+      const asChildAttr = openingElement.getAttribute("asChild")
+
+      if (!asChildAttr) {
+        continue
+      }
+
+      const parentTagName = openingElement.getTagNameNode().getText()
+      const children = jsxElement.getJsxChildren()
+
+      // Find the first JSX element child (skip whitespace/text).
+      const childElement = children.find(
+        (child) =>
+          child.getKind() === SyntaxKind.JsxElement ||
+          child.getKind() === SyntaxKind.JsxSelfClosingElement
+      )
+
+      if (!childElement) {
+        // No child element found, just remove asChild.
+        asChildAttr.remove()
+        continue
+      }
+
+      // Get child element info.
+      let childTagName: string
+      let childProps: string
+      let childChildren: string
+
+      if (childElement.getKind() === SyntaxKind.JsxSelfClosingElement) {
+        const selfClosing = childElement.asKindOrThrow(
+          SyntaxKind.JsxSelfClosingElement
+        )
+        childTagName = selfClosing.getTagNameNode().getText()
+        childProps = selfClosing
+          .getAttributes()
+          .map((attr) => attr.getText())
+          .join(" ")
+        childChildren = ""
+      } else {
+        const jsxChild = childElement.asKindOrThrow(SyntaxKind.JsxElement)
+        const openingEl = jsxChild.getOpeningElement()
+        childTagName = openingEl.getTagNameNode().getText()
+        childProps = openingEl
+          .getAttributes()
+          .map((attr) => attr.getText())
+          .join(" ")
+        // Get the children's text content.
+        childChildren = jsxChild
+          .getJsxChildren()
+          .map((c) => c.getText())
+          .join("")
+      }
+
+      // Determine if we need nativeButton={false}.
+      // Only add it on Button when the child is a non-button element.
+      const needsNativeButton =
+        parentTagName === "Button" &&
+        ELEMENTS_REQUIRING_NATIVE_BUTTON_FALSE.includes(childTagName)
+
+      transformations.push({
+        parentElement: jsxElement,
+        parentTagName,
+        childTagName,
+        childProps,
+        childChildren,
+        needsNativeButton,
       })
-      .map((attr) => attr.getText())
-      .join(" ")
-
-    // Build the render prop value.
-    const renderValue = info.childProps
-      ? `{<${info.childTagName} ${info.childProps} />}`
-      : `{<${info.childTagName} />}`
-
-    // Build new attributes.
-    let newAttrs = existingAttrs ? `${existingAttrs} ` : ""
-    newAttrs += `render=${renderValue}`
-    if (info.needsNativeButton) {
-      newAttrs += ` nativeButton={false}`
     }
 
-    // Build the new element text.
-    const newChildren = info.childChildren.trim() ? `${info.childChildren}` : ""
+    // Apply transformations in reverse order to preserve node validity.
+    for (const info of transformations.reverse()) {
+      const openingElement = info.parentElement.getOpeningElement()
 
-    const newElementText = `<${info.parentTagName} ${newAttrs}>${newChildren}</${info.parentTagName}>`
+      // Get existing attributes (excluding asChild).
+      const existingAttrs = openingElement
+        .getAttributes()
+        .filter((attr) => {
+          if (attr.getKind() === SyntaxKind.JsxAttribute) {
+            const jsxAttr = attr.asKindOrThrow(SyntaxKind.JsxAttribute)
+            return jsxAttr.getNameNode().getText() !== "asChild"
+          }
+          return true
+        })
+        .map((attr) => attr.getText())
+        .join(" ")
 
-    info.parentElement.replaceWithText(newElementText)
+      // Build the render prop value.
+      const renderValue = info.childProps
+        ? `{<${info.childTagName} ${info.childProps} />}`
+        : `{<${info.childTagName} />}`
+
+      // Build new attributes.
+      let newAttrs = existingAttrs ? `${existingAttrs} ` : ""
+      newAttrs += `render=${renderValue}`
+      if (info.needsNativeButton) {
+        newAttrs += ` nativeButton={false}`
+      }
+
+      // Build the new element text.
+      const newChildren = info.childChildren.trim()
+        ? `${info.childChildren}`
+        : ""
+
+      const newElementText = `<${info.parentTagName} ${newAttrs}>${newChildren}</${info.parentTagName}>`
+
+      info.parentElement.replaceWithText(newElementText)
+    }
   }
 
   return sourceFile

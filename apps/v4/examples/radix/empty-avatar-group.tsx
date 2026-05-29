@@ -1,5 +1,11 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/radix/ui/avatar"
-import { Button } from "@/examples/radix/ui/button"
+import { PlusIcon } from "lucide-react"
+
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/styles/radix-nova/ui/avatar"
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -7,15 +13,14 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/examples/radix/ui/empty"
-import { PlusIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/empty"
 
 export default function EmptyAvatarGroup() {
   return (
     <Empty>
       <EmptyHeader>
         <EmptyMedia>
-          <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
+          <div className="flex -space-x-2 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:grayscale">
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
               <AvatarFallback>CN</AvatarFallback>

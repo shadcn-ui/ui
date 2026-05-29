@@ -21,7 +21,7 @@ import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function EmptyExample() {
   return (
-    <ExampleWrapper>
+    <ExampleWrapper className="grid-cols-1!">
       <EmptyBasic />
       <EmptyWithMutedBackground />
       <EmptyWithBorder />

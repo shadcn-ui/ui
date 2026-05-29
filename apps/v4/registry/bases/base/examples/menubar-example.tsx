@@ -21,6 +21,7 @@ import {
   MenubarContent,
   MenubarGroup,
   MenubarItem,
+  MenubarLabel,
   MenubarMenu,
   MenubarRadioGroup,
   MenubarRadioItem,
@@ -47,6 +48,7 @@ export default function MenubarExample() {
       <MenubarInsert />
       <MenubarDestructive />
       <MenubarInDialog />
+      <MenubarWithInset />
     </ExampleWrapper>
   )
 }
@@ -682,6 +684,91 @@ function MenubarInDialog() {
           </Menubar>
         </DialogContent>
       </Dialog>
+    </Example>
+  )
+}
+
+function MenubarWithInset() {
+  const [showBookmarks, setShowBookmarks] = React.useState(true)
+  const [showUrls, setShowUrls] = React.useState(false)
+  const [theme, setTheme] = React.useState("system")
+
+  return (
+    <Example title="With Inset">
+      <Menubar>
+        <MenubarMenu>
+          <MenubarTrigger>View</MenubarTrigger>
+          <MenubarContent className="w-44">
+            <MenubarGroup>
+              <MenubarLabel>Actions</MenubarLabel>
+              <MenubarItem>
+                <IconPlaceholder
+                  lucide="CopyIcon"
+                  tabler="IconCopy"
+                  hugeicons="CopyIcon"
+                  phosphor="CopyIcon"
+                  remixicon="RiFileCopyLine"
+                />
+                Copy
+              </MenubarItem>
+              <MenubarItem>
+                <IconPlaceholder
+                  lucide="ScissorsIcon"
+                  tabler="IconCut"
+                  hugeicons="ScissorIcon"
+                  phosphor="ScissorsIcon"
+                  remixicon="RiScissorsLine"
+                />
+                Cut
+              </MenubarItem>
+              <MenubarItem inset>Paste</MenubarItem>
+            </MenubarGroup>
+            <MenubarSeparator />
+            <MenubarGroup>
+              <MenubarLabel inset>Appearance</MenubarLabel>
+              <MenubarCheckboxItem
+                inset
+                checked={showBookmarks}
+                onCheckedChange={setShowBookmarks}
+              >
+                Bookmarks
+              </MenubarCheckboxItem>
+              <MenubarCheckboxItem
+                inset
+                checked={showUrls}
+                onCheckedChange={setShowUrls}
+              >
+                Full URLs
+              </MenubarCheckboxItem>
+            </MenubarGroup>
+            <MenubarSeparator />
+            <MenubarGroup>
+              <MenubarLabel inset>Theme</MenubarLabel>
+              <MenubarRadioGroup value={theme} onValueChange={setTheme}>
+                <MenubarRadioItem inset value="light">
+                  Light
+                </MenubarRadioItem>
+                <MenubarRadioItem inset value="dark">
+                  Dark
+                </MenubarRadioItem>
+                <MenubarRadioItem inset value="system">
+                  System
+                </MenubarRadioItem>
+              </MenubarRadioGroup>
+            </MenubarGroup>
+            <MenubarSeparator />
+            <MenubarSub>
+              <MenubarSubTrigger inset>More Options</MenubarSubTrigger>
+              <MenubarSubContent>
+                <MenubarGroup>
+                  <MenubarItem>Save Page...</MenubarItem>
+                  <MenubarItem>Create Shortcut...</MenubarItem>
+                </MenubarGroup>
+              </MenubarSubContent>
+            </MenubarSub>
+          </MenubarContent>
+        </MenubarMenu>
+      </Menubar>
     </Example>
   )
 }

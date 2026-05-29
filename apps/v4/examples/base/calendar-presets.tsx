@@ -1,10 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
-import { Calendar } from "@/examples/base/ui/calendar"
-import { Card, CardContent, CardFooter } from "@/examples/base/ui/card"
 import { addDays } from "date-fns"
+
+import { Button } from "@/styles/base-nova/ui/button"
+import { Calendar } from "@/styles/base-nova/ui/calendar"
+import { Card, CardContent, CardFooter } from "@/styles/base-nova/ui/card"
 
 export function CalendarWithPresets() {
   const [date, setDate] = React.useState<Date | undefined>(

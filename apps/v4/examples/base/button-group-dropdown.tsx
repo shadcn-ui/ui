@@ -1,15 +1,5 @@
 "use client"
 
-import { Button } from "@/examples/base/ui/button"
-import { ButtonGroup } from "@/examples/base/ui/button-group"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/examples/base/ui/dropdown-menu"
 import {
   AlertTriangleIcon,
   CheckIcon,
@@ -21,13 +11,24 @@ import {
   VolumeOffIcon,
 } from "lucide-react"
 
+import { Button } from "@/styles/base-nova/ui/button"
+import { ButtonGroup } from "@/styles/base-nova/ui/button-group"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/styles/base-nova/ui/dropdown-menu"
+
 export default function ButtonGroupDropdown() {
   return (
     <ButtonGroup>
       <Button variant="outline">Follow</Button>
       <DropdownMenu>
         <DropdownMenuTrigger
-          render={<Button variant="outline" className="!pl-2" />}
+          render={<Button variant="outline" className="pl-2!" />}
         >
           <ChevronDownIcon />
         </DropdownMenuTrigger>

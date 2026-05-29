@@ -96,7 +96,7 @@ export function CardsActivityGoal() {
             <div className="text-4xl font-bold tracking-tighter tabular-nums">
               {goal}
             </div>
-            <div className="text-muted-foreground text-xs uppercase">
+            <div className="text-xs text-muted-foreground uppercase">
               Calories/day
             </div>
           </div>

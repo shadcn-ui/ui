@@ -40,7 +40,15 @@ export const rawConfigSchema = z
     }),
     iconLibrary: z.string().optional(),
     rtl: z.coerce.boolean().default(false).optional(),
-    menuColor: z.enum(["default", "inverted"]).default("default").optional(),
+    menuColor: z
+      .enum([
+        "default",
+        "inverted",
+        "default-translucent",
+        "inverted-translucent",
+      ])
+      .default("default")
+      .optional(),
     menuAccent: z.enum(["subtle", "bold"]).default("subtle").optional(),
     aliases: z.object({
       components: z.string(),
@@ -142,6 +150,8 @@ export const registryItemFontSchema = z.object({
   variable: z.string(),
   weight: z.array(z.string()).optional(),
   subsets: z.array(z.string()).optional(),
+  selector: z.string().optional(),
+  dependency: z.string().optional(),
 })
 
 // Common fields shared by all registry items.
@@ -188,11 +198,37 @@ export type RegistryBaseItem = Extract<RegistryItem, { type: "registry:base" }>
 // Helper type for registry:font items specifically.
 export type RegistryFontItem = Extract<RegistryItem, { type: "registry:font" }>
 
-export const registrySchema = z.object({
-  name: z.string(),
-  homepage: z.string(),
-  items: z.array(registryItemSchema),
-})
+const registryBaseSchema = z
+  .object({
+    $schema: z.string().optional(),
+    name: z.string().optional(),
+    homepage: z.string().optional(),
+    include: z.array(z.string()).optional(),
+    items: z.array(registryItemSchema).optional(),
+  })
+  .refine(
+    (registry) =>
+      registry.items !== undefined || registry.include !== undefined,
+    {
+      message: "Registry must define at least one of `items` or `include`.",
+      path: ["items"],
+    }
+  )
+
+export const registryChunkSchema = registryBaseSchema.transform((registry) => ({
+  ...registry,
+  items: registry.items ?? [],
+}))
+
+export const registrySchema = registryChunkSchema.pipe(
+  z.object({
+    $schema: z.string().optional(),
+    name: z.string(),
+    homepage: z.string(),
+    include: z.array(z.string()).optional(),
+    items: z.array(registryItemSchema),
+  })
+)
 
 export type Registry = z.infer<typeof registrySchema>
 
@@ -289,7 +325,12 @@ export const presetSchema = z.object({
   font: z.string(),
   rtl: z.coerce.boolean().default(false),
   menuAccent: z.enum(["subtle", "bold"]),
-  menuColor: z.enum(["default", "inverted"]),
+  menuColor: z.enum([
+    "default",
+    "inverted",
+    "default-translucent",
+    "inverted-translucent",
+  ]),
   radius: z.string(),
 })
 

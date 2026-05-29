@@ -1,24 +1,24 @@
 "use client"
 
 import * as React from "react"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/examples/radix/ui-rtl/card"
+} from "@/styles/radix-nova/ui-rtl/card"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/examples/radix/ui-rtl/tabs"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/radix-nova/ui-rtl/tabs"
 
 const translations: Translations = {
   en: {
@@ -115,7 +115,7 @@ export function TabsRtl() {
             <CardTitle>{t.overviewTitle}</CardTitle>
             <CardDescription>{t.overviewDesc}</CardDescription>
           </CardHeader>
-          <CardContent className="text-muted-foreground text-sm">
+          <CardContent className="text-sm text-muted-foreground">
             {t.overviewContent}
           </CardContent>
         </Card>
@@ -126,7 +126,7 @@ export function TabsRtl() {
             <CardTitle>{t.analyticsTitle}</CardTitle>
             <CardDescription>{t.analyticsDesc}</CardDescription>
           </CardHeader>
-          <CardContent className="text-muted-foreground text-sm">
+          <CardContent className="text-sm text-muted-foreground">
             {t.analyticsContent}
           </CardContent>
         </Card>
@@ -137,7 +137,7 @@ export function TabsRtl() {
             <CardTitle>{t.reportsTitle}</CardTitle>
             <CardDescription>{t.reportsDesc}</CardDescription>
           </CardHeader>
-          <CardContent className="text-muted-foreground text-sm">
+          <CardContent className="text-sm text-muted-foreground">
             {t.reportsContent}
           </CardContent>
         </Card>
@@ -148,7 +148,7 @@ export function TabsRtl() {
             <CardTitle>{t.settingsTitle}</CardTitle>
             <CardDescription>{t.settingsDesc}</CardDescription>
           </CardHeader>
-          <CardContent className="text-muted-foreground text-sm">
+          <CardContent className="text-sm text-muted-foreground">
             {t.settingsContent}
           </CardContent>
         </Card>

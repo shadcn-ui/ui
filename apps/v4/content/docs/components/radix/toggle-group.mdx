@@ -66,6 +66,16 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 </ToggleGroup>
 ```
 
+## Composition
+
+Use the following composition to build a `ToggleGroup`:
+
+```text
+ToggleGroup
+├── ToggleGroupItem
+└── ToggleGroupItem
+```
+
 ## Examples
 
 ### Outline
@@ -96,6 +106,16 @@ Use `orientation="vertical"` for vertical toggle groups.
 
 <ComponentPreview styleName="radix-nova" name="toggle-group-disabled" />
 
+### Custom
+
+A custom toggle group example.
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="toggle-group-font-weight-selector"
+  previewClassName="*:data-[slot=field]:max-w-xs"
+/>
+
 ## RTL
 
 To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
@@ -109,3 +129,9 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 ## API Reference
 
 See the [Radix Toggle Group](https://www.radix-ui.com/docs/primitives/components/toggle-group#api-reference) documentation.
+
+## Changelog
+
+### 2026-05-17 Default Spacing
+
+Changed the default `spacing` from `0` to `2` so toggle groups render with space between items by default. Use `spacing={0}` for connected items.

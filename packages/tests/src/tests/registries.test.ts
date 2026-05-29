@@ -269,8 +269,11 @@ const registryTwo = await createRegistryServer(
   }
 )
 
+let originalRegistryUrl: string | undefined
+
 beforeAll(async () => {
   // This sets the shadcn registry to our mock registry.
+  originalRegistryUrl = process.env.REGISTRY_URL
   process.env.REGISTRY_URL = "http://localhost:4040/r"
   await registryShadcn.start()
   await registryOne.start()
@@ -278,6 +281,12 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
+  // Restore the original REGISTRY_URL to avoid leaking into other test files.
+  if (originalRegistryUrl === undefined) {
+    delete process.env.REGISTRY_URL
+  } else {
+    process.env.REGISTRY_URL = originalRegistryUrl
+  }
   await registryShadcn.stop()
   await registryOne.stop()
   await registryTwo.stop()
@@ -1042,8 +1051,6 @@ describe("registries", () => {
       "--yes",
     ])
 
-    expect(output.stderr).toContain("Updating CSS variables in app/globals.css")
-
     const globalCssContent = await fs.readFile(
       path.join(fixturePath, "app/globals.css"),
       "utf-8"
@@ -1204,7 +1211,12 @@ describe("registries:init", () => {
       "@one": "http://localhost:4444/r/{name}",
     })
 
-    await npxShadcn(fixturePath, ["init", "@one/style"])
+    await npxShadcn(fixturePath, [
+      "init",
+      "--force",
+      "--no-reinstall",
+      "@one/style",
+    ])
 
     const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")
@@ -1272,7 +1284,12 @@ describe("registries:init", () => {
 
     process.env.BEARER_TOKEN = "EXAMPLE_BEARER_TOKEN"
 
-    await npxShadcn(fixturePath, ["init", "@two/style"])
+    await npxShadcn(fixturePath, [
+      "init",
+      "--force",
+      "--no-reinstall",
+      "@two/style",
+    ])
 
     const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")

@@ -1,5 +1,9 @@
-import { Field, FieldDescription, FieldLabel } from "@/examples/base/ui/field"
-import { Input } from "@/examples/base/ui/input"
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/styles/base-nova/ui/field"
+import { Input } from "@/styles/base-nova/ui/input"
 
 export function InputField() {
   return (

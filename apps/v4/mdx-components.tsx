@@ -55,69 +55,156 @@ function ComponentsListWrapper() {
   )
 }
 
+function getNodeText(node: React.ReactNode): string {
+  if (typeof node === "string" || typeof node === "number") {
+    return String(node)
+  }
+
+  if (Array.isArray(node)) {
+    return node.map((child) => getNodeText(child)).join("")
+  }
+
+  if (React.isValidElement<{ children?: React.ReactNode }>(node)) {
+    return getNodeText(node.props.children)
+  }
+
+  return ""
+}
+
+function getHeadingId(children: React.ReactNode) {
+  const id = getNodeText(children)
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/'/g, "")
+    .replace(/\?/g, "")
+    .toLowerCase()
+
+  return id || undefined
+}
+
+function HeadingAnchor({
+  id,
+  children,
+}: {
+  id?: string
+  children: React.ReactNode
+}) {
+  if (!id) {
+    return children
+  }
+
+  return (
+    <a className="group no-underline" href={`#${id}`}>
+      <span className="underline-offset-4 group-hover:underline">
+        {children}
+      </span>
+      <span
+        aria-hidden="true"
+        className="ml-2 text-muted-foreground opacity-0 group-hover:opacity-100"
+      >
+        #
+      </span>
+    </a>
+  )
+}
+
 export const mdxComponents = {
-  h1: ({ className, ...props }: React.ComponentProps<"h1">) => (
-    <h1
-      className={cn(
-        "font-heading mt-2 scroll-m-28 text-3xl font-bold tracking-tight",
-        className
-      )}
-      {...props}
-    />
-  ),
-  h2: ({ className, ...props }: React.ComponentProps<"h2">) => {
+  h1: ({ className, children, id, ...props }: React.ComponentProps<"h1">) => {
+    const headingId = id ?? getHeadingId(children)
+
     return (
-      <h2
-        id={props.children
-          ?.toString()
-          .replace(/ /g, "-")
-          .replace(/'/g, "")
-          .replace(/\?/g, "")
-          .toLowerCase()}
+      <h1
+        id={headingId}
         className={cn(
-          "font-heading [&+]*:[code]:text-xl mt-10 scroll-m-28 text-xl font-medium tracking-tight first:mt-0 lg:mt-12 [&+.steps]:!mt-0 [&+.steps>h3]:!mt-4 [&+h3]:!mt-6 [&+p]:!mt-4",
+          "mt-2 scroll-m-28 font-heading text-3xl font-bold tracking-tight",
           className
         )}
         {...props}
-      />
+      >
+        <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
+      </h1>
     )
   },
-  h3: ({ className, ...props }: React.ComponentProps<"h3">) => (
-    <h3
-      className={cn(
-        "font-heading mt-12 scroll-m-28 text-lg font-medium tracking-tight [&+p]:!mt-4 *:[code]:text-xl",
-        className
-      )}
-      {...props}
-    />
-  ),
-  h4: ({ className, ...props }: React.ComponentProps<"h4">) => (
-    <h4
-      className={cn(
-        "font-heading mt-8 scroll-m-28 text-base font-medium tracking-tight",
-        className
-      )}
-      {...props}
-    />
-  ),
-  h5: ({ className, ...props }: React.ComponentProps<"h5">) => (
-    <h5
-      className={cn(
-        "mt-8 scroll-m-28 text-base font-medium tracking-tight",
-        className
-      )}
-      {...props}
-    />
-  ),
-  h6: ({ className, ...props }: React.ComponentProps<"h6">) => (
-    <h6
-      className={cn(
-        "mt-8 scroll-m-28 text-base font-medium tracking-tight",
-        className
-      )}
-      {...props}
-    />
-  ),
+  h2: ({ className, children, id, ...props }: React.ComponentProps<"h2">) => {
+    const headingId = id ?? getHeadingId(children)
+
+    return (
+      <h2
+        id={headingId}
+        className={cn(
+          "[&+]*:[code]:text-xl mt-10 scroll-m-28 font-heading text-xl font-medium tracking-tight first:mt-0 lg:mt-12 [&+.steps]:mt-0! [&+.steps>h3]:mt-4! [&+h3]:mt-6! [&+p]:mt-4!",
+          className
+        )}
+        {...props}
+      >
+        <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
+      </h2>
+    )
+  },
+  h3: ({ className, children, id, ...props }: React.ComponentProps<"h3">) => {
+    const headingId = id ?? getHeadingId(children)
+
+    return (
+      <h3
+        id={headingId}
+        className={cn(
+          "mt-12 scroll-m-28 font-heading text-lg font-medium tracking-tight [&+p]:mt-4! *:[code]:text-xl",
+          className
+        )}
+        {...props}
+      >
+        <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
+      </h3>
+    )
+  },
+  h4: ({ className, children, id, ...props }: React.ComponentProps<"h4">) => {
+    const headingId = id ?? getHeadingId(children)
+
+    return (
+      <h4
+        id={headingId}
+        className={cn(
+          "mt-8 scroll-m-28 font-heading text-base font-medium tracking-tight",
+          className
+        )}
+        {...props}
+      >
+        <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
+      </h4>
+    )
+  },
+  h5: ({ className, children, id, ...props }: React.ComponentProps<"h5">) => {
+    const headingId = id ?? getHeadingId(children)
+
+    return (
+      <h5
+        id={headingId}
+        className={cn(
+          "mt-8 scroll-m-28 text-base font-medium tracking-tight",
+          className
+        )}
+        {...props}
+      >
+        <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
+      </h5>
+    )
+  },
+  h6: ({ className, children, id, ...props }: React.ComponentProps<"h6">) => {
+    const headingId = id ?? getHeadingId(children)
+
+    return (
+      <h6
+        id={headingId}
+        className={cn(
+          "mt-8 scroll-m-28 text-base font-medium tracking-tight",
+          className
+        )}
+        {...props}
+      >
+        <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
+      </h6>
+    )
+  },
   a: ({ className, ...props }: React.ComponentProps<"a">) => (
     <a
       className={cn("font-medium underline underline-offset-4", className)}
@@ -155,7 +242,7 @@ export const mdxComponents = {
     <hr className="my-4 md:my-8" {...props} />
   ),
   table: ({ className, ...props }: React.ComponentProps<"table">) => (
-    <div className="no-scrollbar my-6 w-full overflow-y-auto rounded-xl border">
+    <div className="my-6 no-scrollbar w-full overflow-y-auto rounded-xl border">
       <table
         className={cn(
           "relative w-full overflow-hidden border-none text-sm [&_tbody_tr:last-child]:border-b-0",
@@ -215,7 +302,7 @@ export const mdxComponents = {
     return (
       <figcaption
         className={cn(
-          "text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70",
+          "flex items-center gap-2 text-code-foreground [&_svg]:size-4 [&_svg]:text-code-foreground [&_svg]:opacity-70",
           className
         )}
         {...props}
@@ -247,7 +334,7 @@ export const mdxComponents = {
       return (
         <code
           className={cn(
-            "bg-muted relative rounded-md px-[0.3rem] py-[0.2rem] font-mono text-[0.8rem] break-words outline-none",
+            "relative rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-[0.8rem] break-words outline-none",
             className
           )}
           {...props}
@@ -279,7 +366,7 @@ export const mdxComponents = {
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn(
-        "font-heading mt-8 scroll-m-32 text-lg font-medium tracking-tight",
+        "mt-8 scroll-m-32 font-heading text-lg font-medium tracking-tight",
         className
       )}
       {...props}
@@ -288,7 +375,7 @@ export const mdxComponents = {
   Steps: ({ className, ...props }: React.ComponentProps<"div">) => (
     <div
       className={cn(
-        "[&>h3]:step steps mb-12 [counter-reset:step] md:ml-4 md:border-l md:pl-8",
+        "steps mb-12 [counter-reset:step] md:ml-4 md:border-l md:pl-8 [&>h3]:step",
         className
       )}
       {...props}
@@ -332,7 +419,7 @@ export const mdxComponents = {
   }: React.ComponentProps<typeof TabsTrigger>) => (
     <TabsTrigger
       className={cn(
-        "text-muted-foreground data-[state=active]:text-foreground data-[state=active]:border-primary dark:data-[state=active]:border-primary hover:text-primary rounded-none border-0 border-b-2 border-transparent bg-transparent px-0 pb-3 text-base data-[state=active]:bg-transparent data-[state=active]:shadow-none! dark:data-[state=active]:bg-transparent",
+        "rounded-none border-0 border-b-2 border-transparent bg-transparent px-0 pb-3 text-base text-muted-foreground hover:text-primary data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:text-foreground data-[state=active]:shadow-none! dark:data-[state=active]:border-primary dark:data-[state=active]:bg-transparent",
         className
       )}
       {...props}
@@ -378,7 +465,7 @@ export const mdxComponents = {
   LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
       className={cn(
-        "bg-surface text-surface-foreground hover:bg-surface/80 flex w-full flex-col items-center rounded-xl p-6 transition-colors sm:p-10",
+        "flex w-full flex-col items-center rounded-xl bg-surface p-6 text-surface-foreground transition-colors hover:bg-surface/80 sm:p-10",
         className
       )}
       {...props}

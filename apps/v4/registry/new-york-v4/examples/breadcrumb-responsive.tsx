@@ -34,7 +34,7 @@ import {
 const items = [
   { href: "#", label: "Home" },
   { href: "#", label: "Documentation" },
-  { href: "#", label: "Building Your Application" },
+  { href: "#", label: "Build Your Application" },
   { href: "#", label: "Data Fetching" },
   { label: "Caching and Revalidating" },
 ]

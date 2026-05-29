@@ -1,26 +1,6 @@
 "use client"
 
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/examples/base/ui-rtl/dropdown-menu"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-  InputGroupText,
-  InputGroupTextarea,
-} from "@/examples/base/ui-rtl/input-group"
-import { Separator } from "@/examples/base/ui-rtl/separator"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/examples/base/ui-rtl/tooltip"
-import {
   IconCheck,
   IconChevronDown,
   IconInfoCircle,
@@ -29,6 +9,26 @@ import {
 import { ArrowUpIcon, Search } from "lucide-react"
 
 import { useLanguageContext } from "@/components/language-selector"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/styles/base-nova/ui-rtl/dropdown-menu"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/styles/base-nova/ui-rtl/input-group"
+import { Separator } from "@/styles/base-nova/ui-rtl/separator"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/styles/base-nova/ui-rtl/tooltip"
 
 const translations = {
   ar: {
@@ -116,7 +116,7 @@ export function InputGroupDemo() {
             </DropdownMenuContent>
           </DropdownMenu>
           <InputGroupText className="ms-auto">{t.used}</InputGroupText>
-          <Separator orientation="vertical" className="!h-4" />
+          <Separator orientation="vertical" className="h-4!" />
           <InputGroupButton
             variant="default"
             className="rounded-full"
@@ -130,7 +130,7 @@ export function InputGroupDemo() {
       <InputGroup>
         <InputGroupInput placeholder="shadcn" />
         <InputGroupAddon align="inline-end">
-          <div className="bg-primary text-foreground flex size-4 items-center justify-center rounded-full">
+          <div className="flex size-4 items-center justify-center rounded-full bg-primary text-foreground">
             <IconCheck className="size-3 text-white" />
           </div>
         </InputGroupAddon>

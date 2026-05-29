@@ -1,11 +1,12 @@
+import { PlusIcon } from "lucide-react"
+
 import {
   Avatar,
   AvatarFallback,
   AvatarGroup,
   AvatarGroupCount,
   AvatarImage,
-} from "@/examples/radix/ui/avatar"
-import { PlusIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/avatar"
 
 export function AvatarGroupCountIconExample() {
   return (
