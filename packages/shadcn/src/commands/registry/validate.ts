@@ -1,4 +1,7 @@
+import * as fs from "fs/promises"
 import * as path from "path"
+import { resolveGitHubRegistrySource } from "@/src/registry/address"
+import { validateGitHubRegistrySource } from "@/src/registry/github"
 import { validateRegistry } from "@/src/registry/validate"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
@@ -11,6 +14,8 @@ const validateOptionsSchema = z.object({
   cwd: z.string(),
   registryFile: z.string(),
 })
+
+type RegistryValidationReport = Awaited<ReturnType<typeof validateRegistry>>
 
 export const validate = new Command()
   .name("validate")
@@ -29,8 +34,14 @@ export const validate = new Command()
         cwd: path.resolve(opts.cwd),
         registryFile,
       })
+      const githubSource = await resolveGitHubRegistryValidationSource(
+        registryFile,
+        options.cwd
+      )
       validationSpinner = spinner("Validating registry.").start()
-      const report = await validateRegistry(options)
+      const report = githubSource
+        ? await validateGitHubRegistrySource(githubSource)
+        : await validateRegistry(options)
 
       printRegistryValidationReport(report, validationSpinner)
 
@@ -45,7 +56,7 @@ export const validate = new Command()
   })
 
 function printRegistryValidationReport(
-  report: Awaited<ReturnType<typeof validateRegistry>>,
+  report: RegistryValidationReport,
   validationSpinner: ReturnType<typeof spinner>
 ) {
   if (report.valid) {
@@ -75,7 +86,7 @@ function printRegistryValidationReport(
 }
 
 function printRegistryValidationStats(
-  report: Awaited<ReturnType<typeof validateRegistry>>,
+  report: RegistryValidationReport,
   options: {
     success?: boolean
   } = {}
@@ -97,9 +108,7 @@ function printRegistryValidationStats(
   }
 }
 
-function groupDiagnostics(
-  report: Awaited<ReturnType<typeof validateRegistry>>
-) {
+function groupDiagnostics(report: RegistryValidationReport) {
   const groups = new Map<string, typeof report.diagnostics>()
 
   for (const diagnostic of report.diagnostics) {
@@ -112,9 +121,7 @@ function groupDiagnostics(
 }
 
 function formatDiagnostic(
-  diagnostic: Awaited<
-    ReturnType<typeof validateRegistry>
-  >["diagnostics"][number]
+  diagnostic: RegistryValidationReport["diagnostics"][number]
 ) {
   const context = []
 
@@ -165,4 +172,36 @@ function printSuccess(message: string) {
 
 function formatCount(count: number, singular: string, plural: string) {
   return `${count} ${count === 1 ? singular : plural}`
+}
+
+async function resolveGitHubRegistryValidationSource(
+  registry: string,
+  cwd: string
+) {
+  if (isLocalRegistryPath(registry)) {
+    return null
+  }
+
+  if (await fileExists(path.resolve(cwd, registry))) {
+    return null
+  }
+
+  return resolveGitHubRegistrySource(registry)
+}
+
+function isLocalRegistryPath(registry: string) {
+  return (
+    registry.startsWith(".") ||
+    path.isAbsolute(registry) ||
+    registry.endsWith(".json")
+  )
+}
+
+async function fileExists(filePath: string) {
+  try {
+    await fs.access(filePath)
+    return true
+  } catch {
+    return false
+  }
 }

@@ -2,7 +2,7 @@ import type {
   ResolvedGitHubRegistrySource,
   ResolvedItemAddress,
 } from "@/src/registry/address"
-import { RegistrySourceFileError } from "@/src/registry/errors"
+import { RegistryError, RegistrySourceFileError } from "@/src/registry/errors"
 import { resolveGitHubRef } from "@/src/registry/github-ref"
 import type { GitHubSource } from "@/src/registry/github-ref"
 import {
@@ -20,6 +20,16 @@ const agent = process.env.https_proxy
   : undefined
 
 type GitHubItemAddress = Extract<ResolvedItemAddress, { scheme: "github" }>
+
+type GitHubRegistryValidationDiagnostic = {
+  registryFile: string
+  message: string
+  suggestion?: string
+  itemName?: string
+  itemIndex?: number
+  includePath?: string
+  filePath?: string
+}
 
 export type GitHubSourceOptions = {
   useCache?: boolean
@@ -58,16 +68,92 @@ export async function fetchGitHubRegistryCatalog(
   })
 }
 
+export async function validateGitHubRegistrySource(
+  source: ResolvedGitHubRegistrySource,
+  options: GitHubSourceOptions = {}
+) {
+  const sourceLabel = formatGitHubSource(source)
+  const registryFile = `${sourceLabel}/registry.json`
+  const registryFiles = new Set<string>()
+  const sourceCache = options.sourceCache ?? new Map<string, Promise<string>>()
+  const sourceOptions = {
+    ...options,
+    sourceCache,
+  }
+  const sourceReader = createGitHubRegistrySourceReader(source, sourceOptions)
+  const trackingReader: RegistrySourceReader = {
+    async readText(filePath) {
+      if (filePath.endsWith("registry.json")) {
+        registryFiles.add(`${sourceLabel}/${filePath}`)
+      }
+
+      return sourceReader.readText(filePath)
+    },
+  }
+
+  try {
+    const registry = await loadRegistryCatalogFromSource(trackingReader, {
+      source: sourceLabel,
+    })
+    const itemDiagnostics = await Promise.all(
+      registry.items.map(async (item, itemIndex) => {
+        try {
+          await loadRegistryItemFromSource(item.name, trackingReader, {
+            source: sourceLabel,
+          })
+          return null
+        } catch (error) {
+          return createGitHubValidationDiagnostic(error, {
+            defaultRegistryFile: registryFile,
+            itemName: item.name,
+            itemIndex,
+            sourceLabel,
+          })
+        }
+      })
+    )
+    const diagnostics = itemDiagnostics.filter(
+      (diagnostic): diagnostic is GitHubRegistryValidationDiagnostic =>
+        diagnostic !== null
+    )
+
+    return {
+      valid: diagnostics.length === 0,
+      cwd: sourceLabel,
+      registryFiles: registryFiles.size,
+      registryFilePaths: Array.from(registryFiles),
+      items: registry.items.length,
+      diagnostics,
+    }
+  } catch (error) {
+    return {
+      valid: false,
+      cwd: sourceLabel,
+      registryFiles: registryFiles.size || 1,
+      registryFilePaths: registryFiles.size
+        ? Array.from(registryFiles)
+        : [registryFile],
+      items: 0,
+      diagnostics: [
+        createGitHubValidationDiagnostic(error, {
+          defaultRegistryFile: registryFile,
+          sourceLabel,
+        }),
+      ],
+    }
+  }
+}
+
 function createGitHubRegistrySourceReader(
   address: GitHubSource,
   options: GitHubSourceOptions
-): RegistrySourceReader {
+) {
   const shaPromise = resolveGitHubRef(address, {
     cache: options.sourceCache,
   })
 
   return {
-    async readText(filePath) {
+    async readText(filePath: string) {
       const sha = await shaPromise
       const url = buildGitHubRawUrl(address, sha, filePath)
 
@@ -106,12 +192,13 @@ async function fetchGitHubSourceFile(
         address
       )}.`,
       context: {
+        reason: "github-source-file",
         url,
         source: formatGitHubSource(address),
         filePath,
       },
       suggestion:
-        "Check your network connection and that raw.githubusercontent.com is accessible.",
+        "GitHub ref resolution succeeded, but the CLI could not fetch from raw.githubusercontent.com. Check that raw.githubusercontent.com is accessible from this network.",
     })
   }
 
@@ -121,6 +208,7 @@ async function fetchGitHubSourceFile(
         address
       )}.`,
       context: {
+        reason: "github-source-file",
         url,
         statusCode: response.status,
         source: formatGitHubSource(address),
@@ -128,7 +216,7 @@ async function fetchGitHubSourceFile(
       },
       suggestion:
         filePath === "registry.json"
-          ? "Check that the public GitHub repository has a registry.json file at its root."
+          ? "The GitHub repository and ref were resolved, but raw.githubusercontent.com did not return a root registry.json file. Check that the public repository has registry.json at its root and that raw.githubusercontent.com is accessible from this network."
           : "Check that the file path exists in the public GitHub repository.",
     })
   }
@@ -151,4 +239,52 @@ function buildGitHubRawUrl(
 
 function formatGitHubSource(address: GitHubSource) {
   return `${address.owner}/${address.repo}#${address.ref ?? "HEAD"}`
+}
+
+function createGitHubValidationDiagnostic(
+  error: unknown,
+  options: {
+    defaultRegistryFile: string
+    itemName?: string
+    itemIndex?: number
+    sourceLabel: string
+  }
+) {
+  if (error instanceof RegistryError) {
+    const registryFile =
+      typeof error.context?.registryFile === "string"
+        ? `${options.sourceLabel}/${error.context.registryFile}`
+        : options.defaultRegistryFile
+    const diagnostic: GitHubRegistryValidationDiagnostic = {
+      registryFile,
+      itemName: options.itemName,
+      itemIndex:
+        typeof error.context?.itemIndex === "number"
+          ? error.context.itemIndex
+          : options.itemIndex,
+      filePath:
+        typeof error.context?.itemFilePath === "string"
+          ? error.context.itemFilePath
+          : typeof error.context?.filePath === "string"
+            ? error.context.filePath
+            : undefined,
+      includePath:
+        typeof error.context?.includePath === "string"
+          ? error.context.includePath
+          : undefined,
+      message: error.message,
+      suggestion: error.suggestion,
+    }
+
+    return diagnostic
+  }
+
+  const diagnostic: GitHubRegistryValidationDiagnostic = {
+    registryFile: options.defaultRegistryFile,
+    itemName: options.itemName,
+    itemIndex: options.itemIndex,
+    message: error instanceof Error ? error.message : "Unknown error.",
+  }
+
+  return diagnostic
 }

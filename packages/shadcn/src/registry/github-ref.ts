@@ -31,7 +31,10 @@ export async function resolveGitHubRef(
     return options.cache.get(cacheKey)!
   }
 
-  const promise = resolveGitHubRefUncached(address, ref)
+  const promise = resolveGitHubRefUncached(address, ref).catch((error) => {
+    options.cache?.delete(cacheKey)
+    throw error
+  })
   options.cache?.set(cacheKey, promise)
 
   return promise

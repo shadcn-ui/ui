@@ -198,17 +198,25 @@ async function readRegistryItemFileContent(
   try {
     return await reader.readText(sourcePath)
   } catch (error) {
+    const isGitHubSourceFileError =
+      error instanceof RegistrySourceFileError &&
+      error.context?.reason === "github-source-file"
+
     throw new RegistrySourceFileError(sourcePath, error, {
       message: `Failed to read file "${filePath}" for registry item "${itemName}" (${formatItemSource(
         source
       )}). Expected file at ${sourcePath}.`,
       context: {
+        registryFile: source?.registryFile,
+        itemIndex: source?.itemIndex,
         itemName,
         itemFilePath: filePath,
         sourcePath,
       },
       suggestion:
-        "Make sure the file path is relative to the registry.json file that declares the item.",
+        isGitHubSourceFileError && error.suggestion
+          ? error.suggestion
+          : "Make sure the file path is relative to the registry.json file that declares the item.",
     })
   }
 }
@@ -370,7 +378,8 @@ async function readRegistryJson(
   } catch (error) {
     if (
       error instanceof RegistrySourceFileError &&
-      error.context?.reason === "github-ref-resolution"
+      (error.context?.reason === "github-ref-resolution" ||
+        error.context?.reason === "github-source-file")
     ) {
       throw error
     }

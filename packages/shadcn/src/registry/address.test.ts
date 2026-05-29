@@ -98,6 +98,8 @@ describe("resolveItemAddress", () => {
     ["foo/bar", { scheme: "shadcn", item: "foo/bar" }],
     ["-owner/repo/button", { scheme: "shadcn", item: "-owner/repo/button" }],
     ["owner-/repo/button", { scheme: "shadcn", item: "owner-/repo/button" }],
+    ["owner/./button", { scheme: "shadcn", item: "owner/./button" }],
+    ["owner/../button", { scheme: "shadcn", item: "owner/../button" }],
     [
       "owner/repo with space/button",
       { scheme: "shadcn", item: "owner/repo with space/button" },
@@ -108,6 +110,13 @@ describe("resolveItemAddress", () => {
       expect(resolveItemAddress(input)).toEqual(expected)
     }
   )
+
+  it("keeps .json addresses classified as file paths", () => {
+    expect(resolveItemAddress("owner/repo/data/schema.json")).toEqual({
+      scheme: "file",
+      path: "owner/repo/data/schema.json",
+    })
+  })
 
   it("rejects empty GitHub refs", () => {
     expect(() => resolveItemAddress("acme/ui/button#")).toThrow(
@@ -134,10 +143,14 @@ describe("resolveGitHubRegistrySource", () => {
     expect(resolveGitHubRegistrySource(input)).toEqual(expected)
   })
 
-  it.each(["acme", "acme/ui/button", "@acme/ui", "https://example.com"])(
-    "does not resolve non-GitHub registry source %s",
-    (input) => {
-      expect(resolveGitHubRegistrySource(input)).toBeNull()
-    }
-  )
+  it.each([
+    "acme",
+    "acme/ui/button",
+    "@acme/ui",
+    "https://example.com",
+    "owner/.",
+    "owner/..",
+  ])("does not resolve non-GitHub registry source %s", (input) => {
+    expect(resolveGitHubRegistrySource(input)).toBeNull()
+  })
 })

@@ -108,6 +108,26 @@ describe("GitHub ref resolution", () => {
     expect(vi.mocked(execa)).toHaveBeenCalledTimes(1)
   })
 
+  it("removes failed ref resolutions from the command-local cache", async () => {
+    const cache = new Map<string, Promise<string>>()
+    vi.mocked(execa)
+      .mockRejectedValueOnce(
+        Object.assign(new Error("timed out"), { timedOut: true })
+      )
+      .mockResolvedValueOnce({
+        stdout: "1111111111111111111111111111111111111111\tHEAD",
+      } as any)
+
+    await expect(
+      resolveGitHubRef({ owner: "acme", repo: "ui" }, { cache })
+    ).rejects.toThrow('Failed to resolve GitHub ref "HEAD"')
+    await expect(
+      resolveGitHubRef({ owner: "acme", repo: "ui" }, { cache })
+    ).resolves.toBe("1111111111111111111111111111111111111111")
+
+    expect(vi.mocked(execa)).toHaveBeenCalledTimes(2)
+  })
+
   it("returns a clear missing git suggestion", async () => {
     vi.mocked(execa).mockRejectedValueOnce(
       Object.assign(new Error("spawn git ENOENT"), { code: "ENOENT" })

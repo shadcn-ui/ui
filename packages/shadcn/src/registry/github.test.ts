@@ -13,6 +13,7 @@ import {
 } from "vitest"
 
 import { RegistrySourceFileError, RegistryValidationError } from "./errors"
+import { validateGitHubRegistrySource } from "./github"
 import {
   fetchRegistryItems,
   resolveRegistryItemsFromRegistries,
@@ -237,6 +238,24 @@ describe("GitHub registry items", () => {
     ).rejects.toThrow("registry.json")
   })
 
+  it("explains raw.githubusercontent.com failures after ref resolution", async () => {
+    server.use(
+      http.get(
+        "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/registry.json",
+        () => {
+          return HttpResponse.error()
+        }
+      )
+    )
+
+    await expect(
+      fetchRegistryItems(["acme/ui/button"], {} as any)
+    ).rejects.toMatchObject({
+      suggestion:
+        "GitHub ref resolution succeeded, but the CLI could not fetch from raw.githubusercontent.com. Check that raw.githubusercontent.com is accessible from this network.",
+    })
+  })
+
   it("validates root registry item file paths", async () => {
     server.use(
       http.get(
@@ -356,6 +375,232 @@ describe("GitHub registry items", () => {
       "button.tsx",
       "input.tsx",
       "login-form.tsx",
+    ])
+  })
+
+  it("resolves tagged and SHA-pinned GitHub dependencies", async () => {
+    server.use(
+      http.get(
+        "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/registry.json",
+        () => {
+          return HttpResponse.json({
+            name: "acme-ui",
+            homepage: "https://github.com/acme/ui",
+            items: [
+              {
+                name: "login-form",
+                type: "registry:block",
+                registryDependencies: [
+                  "acme/ui/button#v1.2.0",
+                  `acme/ui/card#${FULL_SHA}`,
+                ],
+                files: [
+                  {
+                    path: "login-form.tsx",
+                    type: "registry:block",
+                  },
+                ],
+              },
+            ],
+          })
+        }
+      ),
+      http.get(
+        "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/login-form.tsx",
+        () => {
+          return HttpResponse.text("export function LoginForm() {}")
+        }
+      ),
+      http.get(
+        "https://raw.githubusercontent.com/acme/ui/2222222222222222222222222222222222222222/registry.json",
+        () => {
+          return HttpResponse.json({
+            name: "acme-ui",
+            homepage: "https://github.com/acme/ui",
+            items: [
+              {
+                name: "button",
+                type: "registry:ui",
+                files: [
+                  {
+                    path: "button.tsx",
+                    type: "registry:ui",
+                  },
+                ],
+              },
+            ],
+          })
+        }
+      ),
+      http.get(
+        "https://raw.githubusercontent.com/acme/ui/2222222222222222222222222222222222222222/button.tsx",
+        () => {
+          return HttpResponse.text("export function Button() {}")
+        }
+      ),
+      http.get(
+        "https://raw.githubusercontent.com/acme/ui/5555555555555555555555555555555555555555/registry.json",
+        () => {
+          return HttpResponse.json({
+            name: "acme-ui",
+            homepage: "https://github.com/acme/ui",
+            items: [
+              {
+                name: "card",
+                type: "registry:ui",
+                files: [
+                  {
+                    path: "card.tsx",
+                    type: "registry:ui",
+                  },
+                ],
+              },
+            ],
+          })
+        }
+      ),
+      http.get(
+        "https://raw.githubusercontent.com/acme/ui/5555555555555555555555555555555555555555/card.tsx",
+        () => {
+          return HttpResponse.text("export function Card() {}")
+        }
+      )
+    )
+
+    const result = await resolveRegistryTree(["acme/ui/login-form"], {
+      style: "new-york-v4",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      resolvedPaths: {
+        cwd: process.cwd(),
+        tailwindCss: "globals.css",
+        tailwindConfig: "tailwind.config.js",
+        components: "components",
+        ui: "components/ui",
+        lib: "lib",
+        utils: "lib/utils",
+        hooks: "hooks",
+      },
+    } as any)
+
+    expect(result?.files?.map((file) => file.path)).toEqual([
+      "button.tsx",
+      "card.tsx",
+      "login-form.tsx",
+    ])
+    expect(vi.mocked(execa)).toHaveBeenCalledTimes(2)
+  })
+
+  it("validates a GitHub source registry with include and checks item files", async () => {
+    server.use(
+      http.get(
+        "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/registry.json",
+        () => {
+          return HttpResponse.json({
+            name: "acme-ui",
+            homepage: "https://github.com/acme/ui",
+            include: ["components/ui/registry.json"],
+          })
+        }
+      ),
+      http.get(
+        "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/components/ui/registry.json",
+        () => {
+          return HttpResponse.json({
+            items: [
+              {
+                name: "button",
+                type: "registry:ui",
+                files: [
+                  {
+                    path: "button.tsx",
+                    type: "registry:ui",
+                  },
+                ],
+              },
+            ],
+          })
+        }
+      ),
+      http.get(
+        "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/components/ui/button.tsx",
+        () => {
+          return HttpResponse.text("export function Button() {}")
+        }
+      )
+    )
+
+    const result = await validateGitHubRegistrySource({
+      owner: "acme",
+      repo: "ui",
+    })
+
+    expect(result).toMatchObject({
+      valid: true,
+      cwd: "acme/ui#HEAD",
+      registryFiles: 2,
+      registryFilePaths: [
+        "acme/ui#HEAD/registry.json",
+        "acme/ui#HEAD/components/ui/registry.json",
+      ],
+      items: 1,
+      diagnostics: [],
+    })
+  })
+
+  it("reports invalid GitHub source registry item files", async () => {
+    server.use(
+      http.get(
+        "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/registry.json",
+        () => {
+          return HttpResponse.json({
+            name: "acme-ui",
+            homepage: "https://github.com/acme/ui",
+            include: ["components/ui/registry.json"],
+          })
+        }
+      ),
+      http.get(
+        "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/components/ui/registry.json",
+        () => {
+          return HttpResponse.json({
+            items: [
+              {
+                name: "button",
+                type: "registry:ui",
+                files: [
+                  {
+                    path: "missing.tsx",
+                    type: "registry:ui",
+                  },
+                ],
+              },
+            ],
+          })
+        }
+      ),
+      http.get(
+        "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/components/ui/missing.tsx",
+        () => {
+          return new HttpResponse(null, { status: 404 })
+        }
+      )
+    )
+
+    const result = await validateGitHubRegistrySource({
+      owner: "acme",
+      repo: "ui",
+    })
+
+    expect(result.valid).toBe(false)
+    expect(result.diagnostics).toEqual([
+      expect.objectContaining({
+        registryFile: "acme/ui#HEAD/components/ui/registry.json",
+        itemName: "button",
+        itemIndex: 0,
+        filePath: "missing.tsx",
+        suggestion:
+          "Check that the file path exists in the public GitHub repository.",
+      }),
     ])
   })
 

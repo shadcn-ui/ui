@@ -5,6 +5,7 @@ import { isLocalFile, isUrl } from "@/src/registry/utils"
 const GITHUB_OWNER_PATTERN =
   /^(?!.*--)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,37}[a-zA-Z0-9])?$/
 const GITHUB_REPO_PATTERN = /^[a-zA-Z0-9._-]+$/
+const INVALID_GITHUB_REPO_NAMES = new Set([".", ".."])
 const CONTROL_CHARACTER_PATTERN = /[\x00-\x1F\x7F]/
 
 export type ResolvedItemAddress =
@@ -39,19 +40,19 @@ export type ResolvedGitHubRegistrySource = {
   ref?: string
 }
 
-export function resolveItemAddress(address: string): ResolvedItemAddress {
+export function resolveItemAddress(address: string) {
   if (isUrl(address)) {
     return {
       scheme: "url",
       url: address,
-    }
+    } satisfies ResolvedItemAddress
   }
 
   if (isLocalFile(address)) {
     return {
       scheme: "file",
       path: address,
-    }
+    } satisfies ResolvedItemAddress
   }
 
   const { registry, item } = parseRegistryAndItemFromString(address)
@@ -60,7 +61,7 @@ export function resolveItemAddress(address: string): ResolvedItemAddress {
       scheme: "namespace",
       namespace: registry,
       item,
-    }
+    } satisfies ResolvedItemAddress
   }
 
   const githubAddress = resolveGitHubItemAddress(address)
@@ -71,16 +72,14 @@ export function resolveItemAddress(address: string): ResolvedItemAddress {
   return {
     scheme: "shadcn",
     item: address,
-  }
+  } satisfies ResolvedItemAddress
 }
 
 export function isGitHubItemAddress(address: string) {
   return resolveItemAddress(address).scheme === "github"
 }
 
-export function resolveGitHubRegistrySource(
-  source: string
-): ResolvedGitHubRegistrySource | null {
+export function resolveGitHubRegistrySource(source: string) {
   const hashIndex = source.indexOf("#")
   const path = hashIndex === -1 ? source : source.slice(0, hashIndex)
   const ref = hashIndex === -1 ? undefined : source.slice(hashIndex + 1)
@@ -113,16 +112,14 @@ export function resolveGitHubRegistrySource(
     owner,
     repo,
     ref,
-  }
+  } satisfies ResolvedGitHubRegistrySource
 }
 
 export function isGitHubRegistrySource(source: string) {
   return resolveGitHubRegistrySource(source) !== null
 }
 
-function resolveGitHubItemAddress(
-  address: string
-): Extract<ResolvedItemAddress, { scheme: "github" }> | null {
+function resolveGitHubItemAddress(address: string) {
   const hashIndex = address.indexOf("#")
   const source = hashIndex === -1 ? address : address.slice(0, hashIndex)
   const ref = hashIndex === -1 ? undefined : address.slice(hashIndex + 1)
@@ -162,7 +159,7 @@ function resolveGitHubItemAddress(
     repo,
     item,
     ref,
-  }
+  } satisfies Extract<ResolvedItemAddress, { scheme: "github" }>
 }
 
 function isGitHubOwner(owner: string) {
@@ -170,7 +167,7 @@ function isGitHubOwner(owner: string) {
 }
 
 function isGitHubRepo(repo: string) {
-  return GITHUB_REPO_PATTERN.test(repo)
+  return GITHUB_REPO_PATTERN.test(repo) && !INVALID_GITHUB_REPO_NAMES.has(repo)
 }
 
 function isValidGitHubRef(ref: string) {
