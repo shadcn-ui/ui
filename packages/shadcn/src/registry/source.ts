@@ -1,9 +1,8 @@
-import * as fs from "fs/promises"
-import * as path from "path"
+import path from "path"
 import {
   RegistryItemNotFoundError,
-  RegistryLocalFileError,
   RegistryParseError,
+  RegistrySourceFileError,
   RegistryValidationError,
 } from "@/src/registry/errors"
 import { isUrl } from "@/src/registry/utils"
@@ -17,63 +16,74 @@ import { z } from "zod"
 
 type RegistryChunk = z.infer<typeof registryChunkSchema>
 
-const MAX_INCLUDE_DEPTH = 32
-
 type RegistryItemSource = {
   registryFile: string
   registryDir: string
   itemIndex: number
 }
 
-type RegistryLoadResult = {
+type SourceRegistryLoadResult = {
   registry: Registry
   itemSources: Map<string, RegistryItemSource>
   itemSourcesByItem: Map<RegistryItem, RegistryItemSource>
   usesInclude: boolean
 }
 
-export type LoadRegistryOptions = {
-  cwd?: string
-  registryFile?: string
+export type RegistrySourceReader = {
+  readText(filePath: string): Promise<string>
 }
 
-export async function loadRegistry(options?: LoadRegistryOptions) {
-  const { cwd, registryFile } = resolveLoadRegistryOptions(options)
-  const result = await readRegistryWithIncludes(registryFile, { cwd })
-  const rootDir = getRegistryRootDir(result, cwd, registryFile)
-
-  return createRegistryCatalog(result, rootDir, cwd)
-}
-
-export async function loadRegistryItem(
+export async function loadRegistryItemFromSource(
   itemName: string,
-  options?: LoadRegistryOptions
+  reader: RegistrySourceReader,
+  options: {
+    registryFile?: string
+    source?: string
+  } = {}
 ) {
-  const { cwd, registryFile } = resolveLoadRegistryOptions(options)
-  const result = await readRegistryWithIncludes(registryFile, { cwd })
+  const registryFile = normalizeSourcePath(
+    options.registryFile ?? "registry.json"
+  )
+  const result = await readSourceRegistryWithIncludes(registryFile, reader, {
+    source: options.source,
+  })
   const item = result.registry.items.find((item) => item.name === itemName)
 
   if (!item) {
     throw new RegistryItemNotFoundError(itemName)
   }
 
-  const rootDir = getRegistryRootDir(result, cwd, registryFile)
-
-  return createRegistryItem(item, result, rootDir, cwd)
+  return createRegistryItemFromSource(item, result, reader)
 }
 
-export async function readRegistryWithIncludes(
-  registryFile: string,
+export async function loadRegistryCatalogFromSource(
+  reader: RegistrySourceReader,
   options: {
-    cwd: string
-  }
+    registryFile?: string
+    source?: string
+  } = {}
 ) {
-  const rootFile = path.resolve(options.cwd, registryFile)
-  const content = await readRegistryJson(rootFile)
-  const rootRegistry = parseRegistry(content, rootFile)
-  validateRootRegistry(rootRegistry, rootFile)
+  const registryFile = normalizeSourcePath(
+    options.registryFile ?? "registry.json"
+  )
+  const result = await readSourceRegistryWithIncludes(registryFile, reader, {
+    source: options.source,
+  })
+
+  return createRegistryCatalogFromSource(result)
+}
+
+async function readSourceRegistryWithIncludes(
+  registryFile: string,
+  reader: RegistrySourceReader,
+  options: {
+    source?: string
+  } = {}
+) {
+  const content = await readRegistryJson(registryFile, reader, options)
+  const rootRegistry = parseRegistry(content, registryFile)
+  validateRootRegistry(rootRegistry, registryFile)
   const context = {
-    cwd: path.resolve(options.cwd),
     itemSources: new Map<string, RegistryItemSource>(),
     itemSourcesByItem: new Map<RegistryItem, RegistryItemSource>(),
     firstIncludedFrom: new Map<string, string>(),
@@ -81,10 +91,14 @@ export async function readRegistryWithIncludes(
   const usesInclude = !!rootRegistry.include?.length
 
   if (!usesInclude) {
+    const registryDir = getSourceDir(registryFile)
+
     rootRegistry.items.forEach((item, itemIndex) => {
+      validateRegistryItemFiles(item, registryFile, registryDir)
+
       const source = {
-        registryFile: rootFile,
-        registryDir: context.cwd,
+        registryFile,
+        registryDir,
         itemIndex,
       }
       context.itemSources.set(item.name, source)
@@ -99,19 +113,25 @@ export async function readRegistryWithIncludes(
     }
   }
 
-  if (path.basename(rootFile) !== "registry.json") {
+  if (path.posix.basename(registryFile) !== "registry.json") {
     throw new RegistryValidationError(
-      `Invalid registry file at ${rootFile}: registries that use include must be named registry.json.`,
-      { registryFile: rootFile }
+      `Invalid source registry file at ${registryFile}: registries that use include must be named registry.json.`,
+      { registryFile }
     )
   }
 
-  const result = await readRegistryFile(rootFile, rootRegistry, context, [])
+  const result = await readRegistryFile(
+    registryFile,
+    rootRegistry,
+    reader,
+    context,
+    []
+  )
 
   validateDuplicateItems(result.items, context.itemSourcesByItem)
 
   const { include, ...registry } = result
-  validateRootRegistry(registry, rootFile)
+  validateRootRegistry(registry, registryFile)
 
   return {
     registry,
@@ -121,39 +141,13 @@ export async function readRegistryWithIncludes(
   }
 }
 
-export function createRegistryCatalog(
-  result: RegistryLoadResult,
-  rootDir: string,
-  fallbackDir: string
-) {
-  return {
-    ...result.registry,
-    items: result.registry.items.map((item) =>
-      stripRegistryItemFileContent(
-        rewriteRegistryItemFilePaths(
-          item,
-          result.itemSourcesByItem,
-          rootDir,
-          fallbackDir
-        )
-      )
-    ),
-  }
-}
-
-export async function createRegistryItem(
+async function createRegistryItemFromSource(
   item: RegistryItem,
-  result: RegistryLoadResult,
-  rootDir: string,
-  fallbackDir: string
+  result: SourceRegistryLoadResult,
+  reader: RegistrySourceReader
 ) {
   const registryItem = {
-    ...rewriteRegistryItemFilePaths(
-      item,
-      result.itemSourcesByItem,
-      rootDir,
-      fallbackDir
-    ),
+    ...rewriteRegistryItemFilePaths(item, result.itemSourcesByItem),
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
   }
 
@@ -168,14 +162,14 @@ export async function createRegistryItem(
       const sourcePath = getRegistryItemFileSourceForItem(
         item,
         sourceFile.path,
-        result.itemSourcesByItem,
-        fallbackDir
+        result.itemSourcesByItem
       )
       file.content = await readRegistryItemFileContent(
         item.name,
         sourceFile.path,
         sourcePath,
-        source
+        source,
+        reader
       )
     })
   )
@@ -183,16 +177,28 @@ export async function createRegistryItem(
   return registryItemSchema.parse(registryItem)
 }
 
+function createRegistryCatalogFromSource(result: SourceRegistryLoadResult) {
+  return {
+    ...result.registry,
+    items: result.registry.items.map((item) =>
+      stripRegistryItemFileContent(
+        rewriteRegistryItemFilePaths(item, result.itemSourcesByItem)
+      )
+    ),
+  }
+}
+
 async function readRegistryItemFileContent(
   itemName: string,
   filePath: string,
   sourcePath: string,
-  source: RegistryItemSource | undefined
+  source: RegistryItemSource | undefined,
+  reader: RegistrySourceReader
 ) {
   try {
-    return await fs.readFile(sourcePath, "utf-8")
+    return await reader.readText(sourcePath)
   } catch (error) {
-    throw new RegistryLocalFileError(sourcePath, error, {
+    throw new RegistrySourceFileError(sourcePath, error, {
       message: `Failed to read file "${filePath}" for registry item "${itemName}" (${formatItemSource(
         source
       )}). Expected file at ${sourcePath}.`,
@@ -209,9 +215,7 @@ async function readRegistryItemFileContent(
 
 function rewriteRegistryItemFilePaths(
   item: RegistryItem,
-  itemSourcesByItem: Map<RegistryItem, RegistryItemSource>,
-  rootDir: string,
-  fallbackDir: string
+  itemSourcesByItem: Map<RegistryItem, RegistryItemSource>
 ) {
   return {
     ...item,
@@ -220,9 +224,7 @@ function rewriteRegistryItemFilePaths(
       path: getRegistryItemFileRootPathForItem(
         item,
         file.path,
-        itemSourcesByItem,
-        rootDir,
-        fallbackDir
+        itemSourcesByItem
       ),
     })),
   }
@@ -235,80 +237,49 @@ function stripRegistryItemFileContent(item: RegistryItem) {
   }
 }
 
-export function getRegistryItemFileSource(
-  itemName: string,
-  filePath: string,
-  itemSources: Map<string, RegistryItemSource>,
-  fallbackDir: string
-) {
-  const source = itemSources.get(itemName)
-  return path.resolve(source?.registryDir ?? fallbackDir, filePath)
-}
-
 function getRegistryItemFileSourceForItem(
   item: RegistryItem,
   filePath: string,
-  itemSourcesByItem: Map<RegistryItem, RegistryItemSource>,
-  fallbackDir: string
+  itemSourcesByItem: Map<RegistryItem, RegistryItemSource>
 ) {
   const source = itemSourcesByItem.get(item)
-  return path.resolve(source?.registryDir ?? fallbackDir, filePath)
-}
-
-export function getRegistryItemFileRootPath(
-  itemName: string,
-  filePath: string,
-  itemSources: Map<string, RegistryItemSource>,
-  rootDir: string,
-  fallbackDir: string
-) {
-  const sourcePath = getRegistryItemFileSource(
-    itemName,
-    filePath,
-    itemSources,
-    fallbackDir
-  )
-
-  return path.relative(rootDir, sourcePath).split(path.sep).join("/")
+  return joinSourcePath(source?.registryDir ?? ".", filePath)
 }
 
 function getRegistryItemFileRootPathForItem(
   item: RegistryItem,
   filePath: string,
-  itemSourcesByItem: Map<RegistryItem, RegistryItemSource>,
-  rootDir: string,
-  fallbackDir: string
+  itemSourcesByItem: Map<RegistryItem, RegistryItemSource>
 ) {
   const sourcePath = getRegistryItemFileSourceForItem(
     item,
     filePath,
-    itemSourcesByItem,
-    fallbackDir
+    itemSourcesByItem
   )
 
-  return path.relative(rootDir, sourcePath).split(path.sep).join("/")
+  return relativeSourcePath(".", sourcePath)
 }
 
 async function readRegistryFile(
   registryFile: string,
   registry: RegistryChunk,
+  reader: RegistrySourceReader,
   context: {
-    cwd: string
     itemSources: Map<string, RegistryItemSource>
     itemSourcesByItem: Map<RegistryItem, RegistryItemSource>
     firstIncludedFrom: Map<string, string>
   },
   chain: string[]
 ): Promise<RegistryChunk> {
-  validateRegistryFileWithinRoot(registryFile, context.cwd)
+  validateRegistryFileWithinRoot(registryFile)
 
-  if (chain.length >= MAX_INCLUDE_DEPTH) {
+  if (chain.length >= 32) {
     throw new RegistryValidationError(
-      `Registry include tree is too deep at ${registryFile}. The maximum include depth is ${MAX_INCLUDE_DEPTH}.`,
+      `Registry include tree is too deep at ${registryFile}. The maximum include depth is 32.`,
       {
         registryFile,
         context: {
-          maxDepth: MAX_INCLUDE_DEPTH,
+          maxDepth: 32,
         },
         suggestion:
           "Flatten part of the registry include tree or reduce nested include depth.",
@@ -346,28 +317,28 @@ async function readRegistryFile(
   context.firstIncludedFrom.set(registryFile, includedFrom)
 
   const nextChain = [...chain, registryFile]
-  const registryDir = path.dirname(registryFile)
+  const registryDir = getSourceDir(registryFile)
 
   const includedItems: RegistryItem[] = []
   for (const includePath of registry.include ?? []) {
     const includedRegistryFile = resolveIncludePath(
       includePath,
       registryDir,
-      context.cwd,
       registryFile
     )
-    const content = await readRegistryJson(includedRegistryFile)
+    const content = await readRegistryJson(includedRegistryFile, reader)
     const parsedRegistry = parseRegistry(content, includedRegistryFile)
     const includedRegistry = await readRegistryFile(
       includedRegistryFile,
       parsedRegistry,
+      reader,
       context,
       nextChain
     )
     includedItems.push(...includedRegistry.items)
   }
 
-  registry.items.forEach((item, itemIndex) => {
+  registry.items?.forEach((item, itemIndex) => {
     validateRegistryItemFiles(item, registryFile, registryDir)
     context.itemSources.set(item.name, {
       registryFile,
@@ -383,19 +354,37 @@ async function readRegistryFile(
 
   return {
     ...registry,
-    items: [...includedItems, ...registry.items],
+    items: [...includedItems, ...(registry.items ?? [])],
   }
 }
 
-async function readRegistryJson(registryFile: string) {
+async function readRegistryJson(
+  registryFile: string,
+  reader: RegistrySourceReader,
+  options: {
+    source?: string
+  } = {}
+) {
   try {
-    return await fs.readFile(registryFile, "utf-8")
+    return await reader.readText(registryFile)
   } catch (error) {
-    throw new RegistryLocalFileError(registryFile, error, {
-      message: `Failed to read registry file at ${registryFile}.`,
-      context: { registryFile },
+    if (
+      error instanceof RegistrySourceFileError &&
+      error.context?.reason === "github-ref-resolution"
+    ) {
+      throw error
+    }
+
+    throw new RegistrySourceFileError(registryFile, error, {
+      message: `Failed to read source registry file at ${formatSourcePath(
+        registryFile,
+        options.source
+      )}.`,
+      context: { registryFile, source: options.source },
       suggestion:
-        "Check that the registry.json file exists and that the path is correct.",
+        registryFile === "registry.json"
+          ? "Check that the repository has a registry.json file at its root."
+          : "Check that the included registry.json file exists and that the include path is correct.",
     })
   }
 }
@@ -458,7 +447,6 @@ function validateRootRegistry(
 function resolveIncludePath(
   includePath: string,
   registryDir: string,
-  cwd: string,
   registryFile: string
 ) {
   if (isUrl(includePath)) {
@@ -471,7 +459,7 @@ function resolveIncludePath(
     )
   }
 
-  if (path.isAbsolute(includePath)) {
+  if (path.posix.isAbsolute(includePath)) {
     throw new RegistryValidationError(
       `Invalid include "${includePath}" in ${registryFile}: include paths must be relative. Use a path like "./registry/ui/registry.json".`,
       {
@@ -491,7 +479,7 @@ function resolveIncludePath(
     )
   }
 
-  if (path.basename(includePath) !== "registry.json") {
+  if (path.posix.basename(includePath) !== "registry.json") {
     throw new RegistryValidationError(
       `Invalid include "${includePath}" in ${registryFile}: include paths must explicitly reference a registry.json file. Use a path like "./registry/ui/registry.json".`,
       {
@@ -501,39 +489,21 @@ function resolveIncludePath(
     )
   }
 
-  const resolvedPath = path.resolve(registryDir, includePath)
-  validateRegistryFileWithinRoot(resolvedPath, cwd)
+  const resolvedPath = joinSourcePath(registryDir, includePath)
+  validateRegistryFileWithinRoot(resolvedPath)
 
   return resolvedPath
 }
 
-function validateRegistryFileWithinRoot(registryFile: string, cwd: string) {
-  if (!isPathInside(registryFile, cwd)) {
+function validateRegistryFileWithinRoot(registryFile: string) {
+  if (!isSourcePathInsideRoot(registryFile)) {
     throw new RegistryValidationError(
-      `Invalid registry file at ${registryFile}: registry includes must stay inside ${cwd}.`,
+      `Invalid registry file at ${registryFile}: registry includes must stay inside the source registry root.`,
       {
         registryFile,
-        context: { cwd },
       }
     )
   }
-}
-
-function resolveLoadRegistryOptions(options?: LoadRegistryOptions) {
-  return {
-    cwd: path.resolve(options?.cwd ?? process.cwd()),
-    registryFile: options?.registryFile ?? "registry.json",
-  }
-}
-
-function getRegistryRootDir(
-  result: Pick<RegistryLoadResult, "usesInclude">,
-  cwd: string,
-  registryFile: string
-) {
-  return result.usesInclude
-    ? path.dirname(path.resolve(cwd, registryFile))
-    : cwd
 }
 
 function validateRegistryItemFiles(
@@ -552,7 +522,7 @@ function validateRegistryItemFiles(
       )
     }
 
-    if (path.isAbsolute(file.path)) {
+    if (path.posix.isAbsolute(file.path)) {
       throw new RegistryValidationError(
         `Invalid file path "${file.path}" for item "${item.name}" in ${registryFile}: file paths must be relative.`,
         {
@@ -572,8 +542,8 @@ function validateRegistryItemFiles(
       )
     }
 
-    const resolvedPath = path.resolve(registryDir, file.path)
-    if (!isPathInside(resolvedPath, registryDir)) {
+    const resolvedPath = joinSourcePath(registryDir, file.path)
+    if (!isSourcePathInsideRoot(resolvedPath, registryDir)) {
       throw new RegistryValidationError(
         `Invalid file path "${file.path}" for item "${item.name}" in ${registryFile}: file paths must stay inside the registry chunk directory.`,
         {
@@ -616,13 +586,35 @@ function validateDuplicateItems(
   }
 }
 
-function hasParentTraversal(filePath: string) {
-  return filePath.split(/[\\/]+/).includes("..")
+function getSourceDir(filePath: string) {
+  const dirname = path.posix.dirname(filePath)
+  return dirname === "." ? "." : dirname
 }
 
-function isPathInside(filePath: string, root: string) {
-  const relative = path.relative(root, filePath)
-  return !!relative && !relative.startsWith("..") && !path.isAbsolute(relative)
+function joinSourcePath(...segments: string[]) {
+  const normalized = path.posix.normalize(path.posix.join(...segments))
+  return normalized === "." ? "" : normalized
+}
+
+function normalizeSourcePath(filePath: string) {
+  const normalized = path.posix.normalize(filePath)
+  return normalized.startsWith("./") ? normalized.slice(2) : normalized
+}
+
+function relativeSourcePath(from: string, to: string) {
+  const relative = path.posix.relative(from, to)
+  return relative || path.posix.basename(to)
+}
+
+function isSourcePathInsideRoot(filePath: string, root = ".") {
+  const relative = path.posix.relative(root, filePath)
+  return (
+    !!relative && !relative.startsWith("..") && !path.posix.isAbsolute(relative)
+  )
+}
+
+function hasParentTraversal(filePath: string) {
+  return filePath.split(/[\\/]+/).includes("..")
 }
 
 function formatIncludeCycle(chain: string[]) {
@@ -637,6 +629,10 @@ function formatItemSource(source: RegistryItemSource | undefined) {
   }
 
   return `${source.registryFile} items[${source.itemIndex}]`
+}
+
+function formatSourcePath(registryFile: string, source?: string) {
+  return source ? `${source}/${registryFile}` : registryFile
 }
 
 function formatZodIssues(error: z.ZodError) {
