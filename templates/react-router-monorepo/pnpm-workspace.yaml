@@ -2,6 +2,6 @@ packages:
   - "apps/*"
   - "packages/*"
 
-ignoredBuiltDependencies:
-  - esbuild
-
+allowBuilds:
+  esbuild: true
+  msw: false

@@ -140,6 +140,7 @@ jobs:
             local package_manager="$1"
             local project_path="$2"
             local check_workspace_protocol="$3"
+            local is_monorepo="$4"
 
             cd "$project_path"
             test ! -f pnpm-workspace.yaml
@@ -147,6 +148,7 @@ jobs:
 
             EXPECTED_PACKAGE_MANAGER="$package_manager" \
               CHECK_WORKSPACE_PROTOCOL="$check_workspace_protocol" \
+              IS_MONOREPO="$is_monorepo" \
               node <<'NODE'
           const fs = require("node:fs")
           const path = require("node:path")
@@ -154,27 +156,41 @@ jobs:
           const expectedPackageManager = process.env.EXPECTED_PACKAGE_MANAGER
           const checkWorkspaceProtocol =
             process.env.CHECK_WORKSPACE_PROTOCOL === "true"
+          const isMonorepo = process.env.IS_MONOREPO === "true"
           const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"))
-          const workspaces = pkg.workspaces ?? []
 
-          if (!Array.isArray(workspaces)) {
-            throw new Error("Expected package.json workspaces to be an array.")
-          }
+          if (isMonorepo) {
+            const workspaces = pkg.workspaces ?? []
 
-          if (workspaces.length === 0) {
-            throw new Error("Expected package.json workspaces to have entries.")
-          }
-
-          for (const workspace of ["sharp", "unrs-resolver", "esbuild"]) {
-            if (workspaces.includes(workspace)) {
-              throw new Error(`Unexpected workspace entry: ${workspace}`)
+            if (!Array.isArray(workspaces)) {
+              throw new Error("Expected package.json workspaces to be an array.")
             }
-          }
 
-          if (!pkg.packageManager?.startsWith(`${expectedPackageManager}@`)) {
-            throw new Error(
-              `Expected packageManager to use ${expectedPackageManager}, got ${pkg.packageManager}`
-            )
+            if (workspaces.length === 0) {
+              throw new Error("Expected package.json workspaces to have entries.")
+            }
+
+            for (const workspace of ["sharp", "unrs-resolver", "esbuild"]) {
+              if (workspaces.includes(workspace)) {
+                throw new Error(`Unexpected workspace entry: ${workspace}`)
+              }
+            }
+
+            if (!pkg.packageManager?.startsWith(`${expectedPackageManager}@`)) {
+              throw new Error(
+                `Expected packageManager to use ${expectedPackageManager}, got ${pkg.packageManager}`
+              )
+            }
+          } else {
+            if (pkg.workspaces !== undefined) {
+              throw new Error("Did not expect package.json workspaces for app template.")
+            }
+
+            if (pkg.packageManager !== undefined) {
+              throw new Error(
+                `Did not expect packageManager for app template, got ${pkg.packageManager}`
+              )
+            }
           }
 
           if (checkWorkspaceProtocol) {
@@ -222,8 +238,10 @@ jobs:
 
             if [ "$mode" = "monorepo" ]; then
               args+=(--monorepo)
+              is_monorepo="true"
             else
               args+=(--no-monorepo)
+              is_monorepo="false"
             fi
 
             case "$TEMPLATE_PACKAGE_MANAGER" in
@@ -247,7 +265,11 @@ jobs:
                     bunx --bun --package "$GITHUB_WORKSPACE/packages/shadcn" \
                       shadcn "${args[@]}"
                 )
-                validate_non_pnpm_project "bun" "$project_path" "false"
+                validate_non_pnpm_project \
+                  "bun" \
+                  "$project_path" \
+                  "false" \
+                  "$is_monorepo"
                 ;;
               npm)
                 (
@@ -258,7 +280,11 @@ jobs:
                     npx --yes --package "$GITHUB_WORKSPACE/packages/shadcn" \
                       shadcn "${args[@]}"
                 )
-                validate_non_pnpm_project "npm" "$project_path" "true"
+                validate_non_pnpm_project \
+                  "npm" \
+                  "$project_path" \
+                  "true" \
+                  "$is_monorepo"
                 ;;
               yarn)
                 (
@@ -270,7 +296,11 @@ jobs:
                     yarn dlx --package "$GITHUB_WORKSPACE/packages/shadcn" \
                       shadcn "${args[@]}"
                 )
-                validate_non_pnpm_project "yarn" "$project_path" "false"
+                validate_non_pnpm_project \
+                  "yarn" \
+                  "$project_path" \
+                  "false" \
+                  "$is_monorepo"
                 ;;
             esac
 
