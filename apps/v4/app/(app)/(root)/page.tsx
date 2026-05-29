@@ -60,7 +60,7 @@ export default function IndexPage() {
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="container-wrapper flex-1 pb-6 md:px-0">
+      <div className="container-wrapper flex-1 p-0 md:p-0">
         <div className="container overflow-hidden md:px-0 lg:max-w-none">
           <section className="-mx-4 w-[140vw] overflow-hidden md:hidden">
             <Image
