@@ -127,7 +127,11 @@ async function adaptWorkspaceConfig(
     await fs.remove(lockFilePath)
   }
 
-  const isMonorepo = fs.existsSync(pnpmWorkspacePath)
+  const hasPnpmWorkspaceConfig = fs.existsSync(pnpmWorkspacePath)
+  const workspacePatterns = hasPnpmWorkspaceConfig
+    ? parsePnpmWorkspacePackages(await fs.readFile(pnpmWorkspacePath, "utf8"))
+    : []
+  const isMonorepo = workspacePatterns.length > 0
 
   // Update root package.json: update "packageManager" field for the
   // target package manager, and add "workspaces" for npm/bun/yarn.
@@ -145,18 +149,17 @@ async function adaptWorkspaceConfig(
     }
 
     if (isMonorepo) {
-      // Read workspace patterns from pnpm-workspace.yaml.
-      const workspaceContent = await fs.readFile(pnpmWorkspacePath, "utf8")
-      const patterns = parsePnpmWorkspacePackages(workspaceContent)
-
-      packageJson.workspaces = patterns
-      await fs.remove(pnpmWorkspacePath)
+      packageJson.workspaces = workspacePatterns
     }
 
     await fs.writeFile(
       packageJsonPath,
       JSON.stringify(packageJson, null, 2) + "\n"
     )
+  }
+
+  if (hasPnpmWorkspaceConfig) {
+    await fs.remove(pnpmWorkspacePath)
   }
 
   // Rewrite workspace: protocol references in nested package.json files.
