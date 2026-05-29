@@ -143,6 +143,11 @@ export function DesignSystemProvider({
   React.useEffect(() => {
     if (style === "lyra" || (style === "sera" && radius !== "none")) {
       setSearchParams({ radius: "none" })
+      return
+    }
+
+    if (style === "rhea" && radius === "large") {
+      setSearchParams({ radius: "default" })
     }
   }, [style, radius, setSearchParams])
 

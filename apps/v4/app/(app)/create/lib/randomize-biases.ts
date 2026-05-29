@@ -76,6 +76,11 @@ export const RANDOMIZE_BIASES: RandomizeBiases = {
       return radii.filter((radius) => radius.name === "none")
     }
 
+    // Rhea does not support the "large" radius.
+    if (context.style === "rhea") {
+      return radii.filter((radius) => radius.name !== "large")
+    }
+
     return radii
   },
   chartColors: (chartColors, context) => {
