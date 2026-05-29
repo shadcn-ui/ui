@@ -147,7 +147,7 @@
   }
 
   .cn-button-variant-default {
-    @apply bg-primary text-primary-foreground [a]:hover:bg-primary/80;
+    @apply bg-primary text-primary-foreground hover:bg-primary/80;
   }
 
   .cn-button-variant-outline {
