@@ -9,6 +9,7 @@ import {
 import {
   Table,
   TableBody,
+  TableFooter,
   TableCaption,
   TableCell,
   TableHead,
@@ -136,11 +137,13 @@ export function TableRtl() {
               <TableCell className="text-right">{invoice.totalAmount}</TableCell>
             </TableRow>
           ))}
-          <TableRow isFooter>
+        </TableBody>
+        <TableFooter>
+          <TableRow>
             <TableCell colSpan={3}>{t.total}</TableCell>
             <TableCell className="text-right">$2,500.00</TableCell>
           </TableRow>
-        </TableBody>
+        </TableFooter>
       </Table>
       <TableCaption>{t.caption}</TableCaption>
     </figure>

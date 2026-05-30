@@ -35,6 +35,7 @@ export default function CalendarExample() {
   return (
     <ExampleWrapper>
       <CalendarSingle />
+      <CalendarMultiple />
       <CalendarBookedDates />
       <CalendarRange />
       <CalendarRangeMultipleMonths />
@@ -104,6 +105,20 @@ function CalendarSingle() {
   )
 }
 
+function CalendarMultiple() {
+  return (
+    <Example title="Multiple">
+      <Card className="mx-auto w-fit p-0">
+        <CardContent className="p-0">
+          <Calendar
+            selectionMode="multiple"
+          />
+        </CardContent>
+      </Card>
+    </Example>
+  )
+}
+
 function CalendarRange() {
   const [dateRange, setDateRange] = React.useState<DateRange | undefined>({
     start: new CalendarDate(new Date().getFullYear(), 1, 12),
@@ -149,6 +164,7 @@ function CalendarRangeMultipleMonths() {
               value={range}
               onChange={setRange}
               numberOfMonths={3}
+              weeksInMonth={6}
             />
           </I18nProvider>
         </CardContent>
@@ -299,6 +315,7 @@ function CalendarWithPresets() {
             onChange={setDate}
             focusedValue={currentMonth}
             onFocusChange={setCurrentMonth}
+            weeksInMonth={6}
             className="p-0 [--cell-size:--spacing(9.5)]"
           />
         </CardContent>

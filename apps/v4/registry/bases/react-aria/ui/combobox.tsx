@@ -8,6 +8,7 @@ import {
   ComboBoxStateContext,
   ComboBoxValue as ComboBoxValuePrimitive,
   composeRenderProps,
+  Group,
   Header as HeaderPrimitive,
   Input as InputPrimitive,
   ListBoxItem as ListBoxItemPrimitive,
@@ -19,6 +20,7 @@ import {
   TagList as TagListPrimitive,
   Tag as TagPrimitive,
   type ButtonProps,
+  type GroupProps,
   type HeaderProps,
   type InputProps,
   type ListBoxItemProps,
@@ -148,7 +150,7 @@ function ComboboxContent({
   className,
   side = "bottom",
   sideOffset = 6,
-  align = "start",
+  align = "center",
   alignOffset = 0,
   anchor,
   ...props
@@ -286,15 +288,15 @@ function ComboboxChips({
   children,
   className,
   ...props
-}: React.ComponentProps<"div">) {
+}: GroupProps) {
   return (
-    <div
+    <Group
       data-slot="combobox-chips"
       className={cn("cn-combobox-chips", className)}
       {...props}
     >
       {children}
-    </div>
+    </Group>
   )
 }
 

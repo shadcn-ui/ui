@@ -12307,6 +12307,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "calendar-multiple": {
+      name: "calendar-multiple",
+      filePath: "examples/react-aria/calendar-multiple.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./react-aria/calendar-multiple")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "calendar-multiple"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "calendar-presets": {
       name: "calendar-presets",
       filePath: "examples/react-aria/calendar-presets.tsx",

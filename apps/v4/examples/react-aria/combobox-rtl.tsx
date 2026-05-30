@@ -16,8 +16,6 @@ import {
   ComboboxEmpty,
   ComboboxItem,
   ComboboxList,
-  ComboboxValue,
-  useComboboxAnchor,
 } from "@/styles/react-aria-nova/ui-rtl/combobox"
 import { Field, FieldLabel } from "@/styles/react-aria-nova/ui-rtl/field"
 
@@ -77,7 +75,6 @@ const translations: Translations = {
 
 export function ComboboxRtl() {
   const { dir, t, language } = useTranslation(translations, "ar")
-  const anchor = useComboboxAnchor()
 
   const categoryLabels: Record<string, string> = {
     technology: t.technology,
@@ -96,7 +93,7 @@ export function ComboboxRtl() {
         defaultValue={[categories[0]]}
         allowsEmptyCollection
       >
-        <ComboboxChips ref={anchor}>
+        <ComboboxChips>
           <ComboboxChipList<{ name: string }>>
             {(value) => (
               <ComboboxChip id={value.name}>
@@ -107,7 +104,6 @@ export function ComboboxRtl() {
           <ComboboxChipsInput placeholder={t.placeholder} />
         </ComboboxChips>
         <ComboboxContent
-          anchor={anchor}
           dir={dir}
           data-lang={dir === "rtl" ? language : undefined}
         >

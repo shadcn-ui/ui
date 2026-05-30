@@ -9,16 +9,14 @@ import {
   CalendarGrid,
   CalendarGridBody,
   CalendarHeaderCell,
-  Heading,
-  CalendarStateContext,
-  RangeCalendarStateContext,
-  useLocale,
   type CalendarProps,
   type DateValue,
   type RangeCalendarProps,
   type CalendarCellRenderProps,
+  CalendarMonthPicker,
+  CalendarYearPicker,
+  CalendarHeading,
 } from 'react-aria-components';
-import { type CalendarDate } from "@internationalized/date";
 import { cva } from "class-variance-authority"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
@@ -56,7 +54,7 @@ const cellVariants = cva(
   }
 )
 
-function Calendar<T extends DateValue>(props: Omit<CalendarProps<T>, 'visibleDuration'> & {
+function Calendar<T extends DateValue, M extends 'single' | 'multiple' = 'single'>(props: Omit<CalendarProps<T, M>, 'visibleDuration'> & {
   buttonVariant?: React.ComponentProps<typeof Button>["variant"],
   captionLayout?: 'label' | 'dropdown',
   numberOfMonths?: number,
@@ -149,7 +147,7 @@ function CalendarInner({
                 <MonthDropdown format={headerFormat} />
                 <YearDropdown format={headerFormat} />
               </>)
-              : <MonthHeading offset={i} format={headerFormat} />}
+              : <CalendarHeading offset={{months: i}} format={headerFormat} className="font-medium select-none text-sm" />}
           </div>
           <CalendarGrid className="w-full border-collapse" offset={{months: i}}>
             <AriaCalendarGridHeader>
@@ -187,130 +185,43 @@ function CalendarInner({
   )
 }
 
-function MonthHeading({offset, format}: {offset: number, format?: Intl.DateTimeFormatOptions}) {
-  const calendarState = React.useContext(CalendarStateContext);
-  const rangeCalendarState = React.useContext(RangeCalendarStateContext);
-  const state = calendarState || rangeCalendarState!;
-  const currentMonth = state.visibleRange.start.add({months: offset});
-  const {locale} = useLocale();
-  const formatter = React.useMemo(() => new Intl.DateTimeFormat(locale, {
-    month: format?.month || 'long',
-    year: format?.year || 'numeric',
-    era: currentMonth && currentMonth.calendar.identifier === 'gregory' && currentMonth.era === 'BC' ? 'short' : undefined,
-    calendar: state.visibleRange?.start.calendar.identifier,
-    timeZone: state.timeZone
-  }), [format, locale, currentMonth, state.visibleRange, state.timeZone]);
-
+function MonthDropdown({format}: {format?: Intl.DateTimeFormatOptions}) {
   return (
-    <Heading className="font-medium select-none text-sm">
-      {formatter.format(currentMonth.toDate(state.timeZone))}
-    </Heading>
-  )
-}
-
-interface MonthItem {
-  id: number,
-  date: CalendarDate,
-  formatted: string
-}
-
-export function MonthDropdown({format}: {format?: Intl.DateTimeFormatOptions}) {
-  const calendarState = React.useContext(CalendarStateContext);
-  const rangeCalendarState = React.useContext(RangeCalendarStateContext);
-  const state = calendarState || rangeCalendarState!;
-  const {locale} = useLocale();
-  const formatter = React.useMemo(() => new Intl.DateTimeFormat(locale, {
-    month: format?.month || 'short',
-    timeZone: state.timeZone
-  }), [format, locale, state.timeZone]);
-
-  // Format the name of each month in the year according to the
-  // current locale and calendar system. Note that in some calendar
-  // systems, such as the Hebrew, the number of months may differ
-  // between years.
-  const months: MonthItem[] = [];
-  const numMonths = state.focusedDate.calendar.getMonthsInYear(state.focusedDate);
-  for (let i = 1; i <= numMonths; i++) {
-    const date = state.focusedDate.set({month: i});
-    months.push({
-      id: i,
-      date,
-      formatted: formatter.format(date.toDate(state.timeZone))
-    });
-  }
-
-  return (
-    <Select
-      aria-label="Month"
-      className="relative"
-      value={state.focusedDate.month}
-      onChange={key => {
-        if (typeof key === 'number') {
-          state.setFocusedDate(months[key - 1].date);
-        }
-      }}>
-       <SelectTrigger>
-        <SelectValue />
-      </SelectTrigger>
-      <SelectContent className="min-w-0">
-        <SelectGroup>
-          {months.map(item => <SelectItem key={item.id} id={item.id}>{item.formatted}</SelectItem>)}
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+    <CalendarMonthPicker format={format?.month}>
+      {props => (
+        <Select
+          {...props}
+          className="relative">
+          <SelectTrigger>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent className="min-w-0">
+            <SelectGroup>
+              {props.items.map(item => <SelectItem key={item.id} id={item.id}>{item.formatted}</SelectItem>)}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      )}
+    </CalendarMonthPicker>
   );
 }
 
-interface YearItem {
-  id: number,
-  date: CalendarDate,
-  formatted: string
-}
-
-export function YearDropdown({format}: {format?: Intl.DateTimeFormatOptions}) {
-  const calendarState = React.useContext(CalendarStateContext);
-  const rangeCalendarState = React.useContext(RangeCalendarStateContext);
-  const state = calendarState || rangeCalendarState!;
-  const {locale} = useLocale();
-  const formatter = React.useMemo(() => new Intl.DateTimeFormat(locale, {
-    year: format?.year || 'numeric',
-    timeZone: state.timeZone
-  }), [format, locale, state.timeZone]);
-
-  // Format 20 years on each side of the current year according
-  // to the current locale and calendar system.
-  const years: YearItem[] = [];
-  for (let i = -10; i <= 10; i++) {
-    const date = state.focusedDate.add({years: i});
-    years.push({
-      // Use the index as the id so we can retrieve the full
-      // date object from the list in onChange. We cannot only
-      // store the year number, because in some calendars, such
-      // as the Japanese, the era may also change.
-      id: years.length,
-      date,
-      formatted: formatter.format(date.toDate(state.timeZone))
-    });
-  }
-
+function YearDropdown({format}: {format?: Intl.DateTimeFormatOptions}) {
   return (
-    <Select
-      aria-label="Year"
-      className="relative"
-      // The selected year is always at the center of the 20 year range we display.
-      value={10}
-      onChange={key => {
-        if (typeof key === 'number') {
-          state.setFocusedDate(years[key].date);
-        }
-      }}>
-       <SelectTrigger>
-        <SelectValue />
-      </SelectTrigger>
-      <SelectContent className="min-w-0">
-        {years.map(item => <SelectItem key={item.id} id={item.id}>{item.formatted}</SelectItem>)}
-      </SelectContent>
-    </Select>
+    <CalendarYearPicker format={format}>
+      {props => (
+        <Select
+          {...props}
+          className="relative">
+          <SelectTrigger>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent className="min-w-0">
+            {props.items.map(item => <SelectItem key={item.id} id={item.id}>{item.formatted}</SelectItem>)}
+          </SelectContent>
+        </Select>
+      )}
+    </CalendarYearPicker>
   );
 }
 

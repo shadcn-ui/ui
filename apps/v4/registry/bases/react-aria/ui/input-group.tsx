@@ -7,12 +7,12 @@ import { cn } from "@/registry/bases/react-aria/lib/utils"
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import { Input } from "@/registry/bases/react-aria/ui/input"
 import { Textarea } from "@/registry/bases/react-aria/ui/textarea"
+import { Group, type GroupProps } from "react-aria-components";
 
-function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
+function InputGroup({ className, ...props }: GroupProps) {
   return (
-    <div
+    <Group
       data-slot="input-group"
-      role="group"
       className={cn(
         "group/input-group cn-input-group relative flex w-full min-w-0 items-center outline-none has-[>textarea]:h-auto",
         className

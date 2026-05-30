@@ -1,18 +1,19 @@
 "use client"
 
 import * as React from "react"
-import { cva } from "class-variance-authority"
 import {
   Cell as CellPrimitive,
   Column as ColumnPrimitive,
   Row as RowPrimitive,
   TableBody as TableBodyPrimitive,
+  TableFooter as TableFooterPrimitive,
   TableHeader as TableHeaderPrimitive,
   Table as TablePrimitive,
   type CellProps,
   type ColumnProps,
   type RowProps,
   type TableBodyProps,
+  type TableFooterProps,
   type TableHeaderProps,
   type TableProps,
 } from "react-aria-components"
@@ -34,10 +35,7 @@ function Table({ className, ...props }: TableProps) {
   )
 }
 
-function TableHeader<T extends object>({
-  className,
-  ...props
-}: TableHeaderProps<T>) {
+function TableHeader<T>({ className, ...props }: TableHeaderProps<T>) {
   return (
     <TableHeaderPrimitive
       data-slot="table-header"
@@ -47,10 +45,7 @@ function TableHeader<T extends object>({
   )
 }
 
-function TableBody<T extends object>({
-  className,
-  ...props
-}: TableBodyProps<T>) {
+function TableBody<T>({ className, ...props }: TableBodyProps<T>) {
   return (
     <TableBodyPrimitive
       data-slot="table-body"
@@ -63,26 +58,27 @@ function TableBody<T extends object>({
   )
 }
 
-const rowVariants = cva(
-  "border-b transition-colors hover:bg-muted/50 has-aria-expanded:bg-muted/50 data-selected:bg-muted",
-  {
-    variants: {
-      isFooter: {
-        true: "border-t bg-muted/50 font-medium [&>tr]:last:border-b-0",
-      },
-    },
-  }
-)
+function TableFooter<T>({ className, ...props }: TableFooterProps<T>) {
+  return (
+    <TableFooterPrimitive
+      data-slot="table-footer"
+      className={cn(
+        "border-t bg-muted/50 font-medium [&>tr]:last:border-b-0",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
-function TableRow<T extends object>({
-  className,
-  isFooter,
-  ...props
-}: RowProps<T> & { isFooter?: boolean }) {
+function TableRow<T>({ className, ...props }: RowProps<T>) {
   return (
     <RowPrimitive
       data-slot="table-row"
-      className={cn(rowVariants({ isFooter }), className)}
+      className={cn(
+        "border-b transition-colors hover:bg-muted/50 has-aria-expanded:bg-muted/50 data-selected:bg-muted",
+        className
+      )}
       {...props}
     />
   )
@@ -134,6 +130,7 @@ export {
   Table,
   TableHeader,
   TableBody,
+  TableFooter,
   TableHead,
   TableRow,
   TableCell,

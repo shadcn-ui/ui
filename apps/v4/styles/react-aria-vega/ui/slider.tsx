@@ -1,10 +1,10 @@
 "use client"
 
 import {
+  SliderFill,
   Slider as SliderPrimitive,
   SliderThumb,
   SliderTrack,
-  useLocale,
   type SliderProps as SliderPrimitiveProps,
 } from "react-aria-components"
 
@@ -22,7 +22,6 @@ function Slider<T extends SliderValue = SliderValue>({
   className,
   ...props
 }: SliderProps<T>) {
-  const { direction } = useLocale()
   return (
     <SliderPrimitive
       className={cn(
@@ -32,40 +31,16 @@ function Slider<T extends SliderValue = SliderValue>({
       data-slot="slider"
       {...props}
     >
-      {({ isDisabled, orientation, state }) => {
-        const hasValues = state.values.length > 0
-        const startPercent =
-          hasValues && state.values.length > 1
-            ? state.getThumbPercent(0) * 100
-            : 0
-        const endPercent = hasValues
-          ? state.getThumbPercent(state.values.length - 1) * 100
-          : 0
-        const sizePercent = Math.max(0, endPercent - startPercent)
-
+      {({ state }) => {
         return (
           <>
             <SliderTrack
               data-slot="slider-track"
               className="relative grow overflow-hidden rounded-full bg-muted select-none data-horizontal:h-1.5 data-horizontal:w-full data-vertical:h-full data-vertical:w-1.5"
             >
-              <div
+              <SliderFill
                 data-slot="slider-range"
                 className="absolute bg-primary select-none data-horizontal:h-full data-vertical:w-full"
-                style={
-                  orientation === "vertical"
-                    ? {
-                        bottom: `${startPercent}%`,
-                        height: `${sizePercent}%`,
-                        width: "100%",
-                      }
-                    : {
-                        [direction === "rtl" ? "right" : "left"]:
-                          `${startPercent}%`,
-                        width: `${sizePercent}%`,
-                        height: "100%",
-                      }
-                }
               />
             </SliderTrack>
             {state.values.map((_, index) => (

@@ -27,8 +27,6 @@ import {
   ComboboxLabel,
   ComboboxList,
   ComboboxSeparator,
-  ComboboxValue,
-  useComboboxAnchor,
 } from "@/registry/bases/react-aria/ui/combobox"
 import {
   Dialog,
@@ -938,8 +936,6 @@ function ComboxboxInputAddon() {
 }
 
 function ComboboxMultiple() {
-  const anchor = useComboboxAnchor()
-
   return (
     <Example title="Combobox Multiple">
       <Combobox
@@ -947,7 +943,7 @@ function ComboboxMultiple() {
         defaultValue={[frameworks[0]]}
         allowsEmptyCollection
       >
-        <ComboboxChips ref={anchor}>
+        <ComboboxChips>
           <ComboboxChipList<{ name: string }>>
             {(value) => (
               <ComboboxChip id={value.name}>{value.name}</ComboboxChip>
@@ -955,7 +951,7 @@ function ComboboxMultiple() {
           </ComboboxChipList>
           <ComboboxChipsInput />
         </ComboboxChips>
-        <ComboboxContent anchor={anchor}>
+        <ComboboxContent>
           <ComboboxList
             renderEmptyState={() => (
               <ComboboxEmpty>No items found.</ComboboxEmpty>
@@ -974,8 +970,6 @@ function ComboboxMultiple() {
 }
 
 function ComboboxMultipleDisabled() {
-  const anchor = useComboboxAnchor()
-
   return (
     <Example title="Combobox Multiple Disabled">
       <Combobox
@@ -984,7 +978,7 @@ function ComboboxMultipleDisabled() {
         isDisabled
         allowsEmptyCollection
       >
-        <ComboboxChips ref={anchor}>
+        <ComboboxChips>
           <ComboboxChipList<{ name: string }>>
             {(value) => (
               <ComboboxChip id={value.name}>{value.name}</ComboboxChip>
@@ -992,7 +986,7 @@ function ComboboxMultipleDisabled() {
           </ComboboxChipList>
           <ComboboxChipsInput />
         </ComboboxChips>
-        <ComboboxContent anchor={anchor}>
+        <ComboboxContent>
           <ComboboxList
             renderEmptyState={() => (
               <ComboboxEmpty>No items found.</ComboboxEmpty>
@@ -1011,9 +1005,6 @@ function ComboboxMultipleDisabled() {
 }
 
 function ComboboxMultipleInvalid() {
-  const anchor1 = useComboboxAnchor()
-  const anchor2 = useComboboxAnchor()
-
   return (
     <Example title="Combobox Multiple Invalid">
       <div className="flex flex-col gap-4">
@@ -1023,7 +1014,7 @@ function ComboboxMultipleInvalid() {
           allowsEmptyCollection
           isInvalid
         >
-          <ComboboxChips ref={anchor1}>
+          <ComboboxChips>
             <ComboboxChipList<{ name: string }>>
               {(value) => (
                 <ComboboxChip id={value.name}>{value.name}</ComboboxChip>
@@ -1031,7 +1022,7 @@ function ComboboxMultipleInvalid() {
             </ComboboxChipList>
             <ComboboxChipsInput />
           </ComboboxChips>
-          <ComboboxContent anchor={anchor1}>
+          <ComboboxContent>
             <ComboboxList
               renderEmptyState={() => (
                 <ComboboxEmpty>No items found.</ComboboxEmpty>
@@ -1055,7 +1046,7 @@ function ComboboxMultipleInvalid() {
             allowsEmptyCollection
             isInvalid
           >
-            <ComboboxChips ref={anchor2}>
+            <ComboboxChips>
               <ComboboxChipList<{ name: string }>>
                 {(value) => (
                   <ComboboxChip id={value.name}>{value.name}</ComboboxChip>
@@ -1063,7 +1054,7 @@ function ComboboxMultipleInvalid() {
               </ComboboxChipList>
               <ComboboxChipsInput id="combobox-multiple-invalid" />
             </ComboboxChips>
-            <ComboboxContent anchor={anchor2}>
+            <ComboboxContent>
               <ComboboxList
                 renderEmptyState={() => (
                   <ComboboxEmpty>No items found.</ComboboxEmpty>
@@ -1088,8 +1079,6 @@ function ComboboxMultipleInvalid() {
 }
 
 function ComboboxMultipleNoRemove() {
-  const anchor = useComboboxAnchor()
-
   return (
     <Example title="Combobox Multiple (No Remove)">
       <Combobox
@@ -1097,7 +1086,7 @@ function ComboboxMultipleNoRemove() {
         defaultValue={[frameworks[0], frameworks[1]]}
         allowsEmptyCollection
       >
-        <ComboboxChips ref={anchor}>
+        <ComboboxChips>
           <ComboboxChipList<{ name: string }>>
             {(value) => (
               <ComboboxChip id={value.name} showRemove={false}>
@@ -1107,7 +1096,7 @@ function ComboboxMultipleNoRemove() {
           </ComboboxChipList>
           <ComboboxChipsInput />
         </ComboboxChips>
-        <ComboboxContent anchor={anchor}>
+        <ComboboxContent>
           <ComboboxList
             renderEmptyState={() => (
               <ComboboxEmpty>No items found.</ComboboxEmpty>

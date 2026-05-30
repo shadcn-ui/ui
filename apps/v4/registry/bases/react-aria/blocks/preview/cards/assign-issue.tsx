@@ -26,7 +26,6 @@ import {
   ComboboxEmpty,
   ComboboxItem,
   ComboboxList,
-  useComboboxAnchor,
 } from "@/registry/bases/react-aria/ui/combobox"
 import { Tooltip, TooltipTrigger } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
@@ -43,7 +42,6 @@ const users = [
 ]
 
 export function AssignIssue() {
-  const anchor = useComboboxAnchor()
   return (
     <Card className="w-full max-w-sm" size="sm">
       <CardHeader className="border-b">
@@ -72,7 +70,7 @@ export function AssignIssue() {
           defaultValue={[users[0]]}
           allowsEmptyCollection
         >
-          <ComboboxChips ref={anchor}>
+          <ComboboxChips>
             <ComboboxChipList<{ username: string }>>
               {(value: { username: string }) => (
                 <ComboboxChip id={value.username}>
@@ -89,7 +87,7 @@ export function AssignIssue() {
             </ComboboxChipList>
             <ComboboxChipsInput placeholder="Select a item..." />
           </ComboboxChips>
-          <ComboboxContent anchor={anchor}>
+          <ComboboxContent>
             <ComboboxList
               renderEmptyState={() => (
                 <ComboboxEmpty>No users found.</ComboboxEmpty>

@@ -12,7 +12,6 @@ import {
   ComboboxEmpty,
   ComboboxItem,
   ComboboxList,
-  useComboboxAnchor,
 } from "@/styles/react-aria-nova/ui/combobox"
 
 const frameworks = [
@@ -24,21 +23,19 @@ const frameworks = [
 ] as const
 
 export function ComboboxMultiple() {
-  const anchor = useComboboxAnchor()
-
   return (
     <Combobox
       selectionMode="multiple"
       defaultValue={[frameworks[0]]}
       allowsEmptyCollection
     >
-      <ComboboxChips ref={anchor} className="w-full max-w-xs">
+      <ComboboxChips className="w-full max-w-xs">
         <ComboboxChipList<{ name: string }>>
           {(value) => <ComboboxChip id={value.name}>{value.name}</ComboboxChip>}
         </ComboboxChipList>
         <ComboboxChipsInput />
       </ComboboxChips>
-      <ComboboxContent anchor={anchor}>
+      <ComboboxContent>
         <ComboboxList
           renderEmptyState={() => (
             <ComboboxEmpty>No items found.</ComboboxEmpty>

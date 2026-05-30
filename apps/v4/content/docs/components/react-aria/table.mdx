@@ -90,29 +90,32 @@ Use the following composition to build a `Table`:
 
 ```text
 Table
+├── TableCaption
 ├── TableHeader
-│   ├── TableHead
-│   ├── TableHead
-│   ├── TableHead
-│   └── TableHead
-└── TableBody
-    ├── TableRow
-    │   ├── TableCell
-    │   ├── TableCell
-    │   ├── TableCell
-    │   └── TableCell
-    └── TableRow
-        ├── TableCell
-        ├── TableCell
-        ├── TableCell
-        └── TableCell
+│   └── TableRow
+│       ├── TableHead
+│       ├── TableHead
+│       ├── TableHead
+│       └── TableHead
+├── TableBody
+│   ├── TableRow
+│   │   ├── TableCell
+│   │   ├── TableCell
+│   │   ├── TableCell
+│   │   └── TableCell
+│   └── TableRow
+│       ├── TableCell
+│       ├── TableCell
+│       ├── TableCell
+│       └── TableCell
+└── TableFooter
 ```
 
 ## Examples
 
 ### Footer
 
-Use the `isFooter` prop mark a row as a footer.
+Use the `<TableFooter />` component to add a footer to the table.
 
 <ComponentPreview styleName="react-aria-nova" name="table-footer" />
 
