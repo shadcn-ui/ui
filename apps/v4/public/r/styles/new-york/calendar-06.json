@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-06",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "Range selection with minimum days",
+  "registryDependencies": [
+    "calendar"
+  ],
+  "files": [
+    {
+      "path": "blocks/calendar-06.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { type DateRange } from \"react-day-picker\"\n\nimport { Calendar } from \"@/registry/new-york/ui/calendar\"\n\nexport default function Calendar06() {\n  const [dateRange, setDateRange] = React.useState<DateRange | undefined>({\n    from: new Date(2025, 5, 12),\n    to: new Date(2025, 5, 26),\n  })\n\n  return (\n    <div className=\"flex min-w-0 flex-col gap-2\">\n      <Calendar\n        mode=\"range\"\n        defaultMonth={dateRange?.from}\n        selected={dateRange}\n        onSelect={setDateRange}\n        numberOfMonths={1}\n        min={5}\n        className=\"rounded-lg border shadow-sm\"\n      />\n      <div className=\"text-muted-foreground text-center text-xs\">\n        A minimum of 5 days is required\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "meta": {
+    "iframeHeight": "600px",
+    "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    "mobile": "component"
+  },
+  "categories": [
+    "calendar",
+    "date"
+  ]
+}

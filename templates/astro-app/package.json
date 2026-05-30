@@ -1,0 +1,41 @@
+{
+  "name": "astro-app",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.{ts,tsx,astro}\"",
+    "typecheck": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/react": "^5",
+    "@tailwindcss/vite": "^4",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "astro": "^6",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "tailwindcss": "^4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9",
+    "@eslint/js": "^10",
+    "eslint": "^10",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17",
+    "prettier": "^3.8.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.8.0",
+    "typescript": "~6",
+    "typescript-eslint": "^8"
+  }
+}

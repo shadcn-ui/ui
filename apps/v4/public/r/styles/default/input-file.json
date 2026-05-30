@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-file",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "input"
+  ],
+  "files": [
+    {
+      "path": "examples/input-file.tsx",
+      "content": "import { Input } from \"@/registry/default/ui/input\"\nimport { Label } from \"@/registry/default/ui/label\"\n\nexport default function InputFile() {\n  return (\n    <div className=\"grid w-full max-w-sm items-center gap-1.5\">\n      <Label htmlFor=\"picture\">Picture</Label>\n      <Input id=\"picture\" type=\"file\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

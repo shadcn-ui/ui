@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-large",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "files": [
+    {
+      "path": "examples/typography-large.tsx",
+      "content": "export default function TypographyLarge() {\n  return <div className=\"text-lg font-semibold\">Are you absolutely sure?</div>\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}
