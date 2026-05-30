@@ -38,6 +38,22 @@ describe("parseStyle", () => {
     `)
   })
 
+  it("maps button-group separators to border color", () => {
+    const css = `
+      .cn-button-group-separator {
+        @apply bg-border;
+      }
+    `
+
+    const result = createStyleMap(css)
+
+    expect(result).toMatchInlineSnapshot(`
+      {
+        "cn-button-group-separator": "bg-border",
+      }
+    `)
+  })
+
   it("handles variant classes", () => {
     const css = `
       .cn-button-variant-default {
