@@ -151,9 +151,7 @@ function CheckboxInTable() {
       <Table>
         <TableHeader>
           <TableHead className="w-8">
-            <Checkbox
-              slot="selection"
-            />
+            <Checkbox slot="selection" />
           </TableHead>
           <TableHead isRowHeader>Name</TableHead>
           <TableHead>Email</TableHead>
@@ -163,10 +161,7 @@ function CheckboxInTable() {
           {tableData.map((row) => (
             <TableRow key={row.id}>
               <TableCell>
-                <Checkbox
-                  id={`row-${row.id}`}
-                  slot="selection"
-                />
+                <Checkbox id={`row-${row.id}`} slot="selection" />
               </TableCell>
               <TableCell className="font-medium">{row.name}</TableCell>
               <TableCell>{row.email}</TableCell>
