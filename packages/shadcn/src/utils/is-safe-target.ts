@@ -24,7 +24,7 @@ export function isSafeTarget(targetPath: string, cwd: string): boolean {
   // Normalize both paths to handle different path separators.
   // Convert Windows backslashes to forward slashes for consistent handling.
   const normalizedTarget = path.normalize(decodedPath.replace(/\\/g, "/"))
-  const normalizedRoot = path.normalize(cwd)
+  const normalizedRoot = path.resolve(cwd)
 
   // Check for explicit path traversal sequences in both encoded and decoded forms.
   // Allow [...] pattern which is common in framework routing (e.g., [...slug])
@@ -85,12 +85,12 @@ export function isSafeTarget(targetPath: string, cwd: string): boolean {
   }
 
   // If it's an absolute path, ensure it's within the project root.
+  const resolvedPath = path.resolve(normalizedRoot, normalizedTarget)
   if (path.isAbsolute(normalizedTarget)) {
-    return normalizedTarget.startsWith(normalizedRoot + path.sep)
+    return resolvedPath.startsWith(normalizedRoot + path.sep) || resolvedPath === normalizedRoot
   }
 
   // For relative paths, resolve and check if within project bounds.
-  const resolvedPath = path.resolve(normalizedRoot, normalizedTarget)
   return (
     resolvedPath.startsWith(normalizedRoot + path.sep) ||
     resolvedPath === normalizedRoot
