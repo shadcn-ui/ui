@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "input-demo",
-  "type": "registry:example",
   "registryDependencies": [
     "input"
   ],
@@ -11,5 +10,6 @@
       "content": "import { Input } from \"@/registry/new-york-v4/ui/input\"\n\nexport default function InputDemo() {\n  return <Input type=\"email\" placeholder=\"Email\" />\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

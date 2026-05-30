@@ -5,4 +5,5 @@ packages:
   - "!**/fixtures/**"
   - "!**/temp/**"
   - "!packages/tests/temp/**"
-  - "!deprecated/**"
+
+minimumReleaseAge: 2880

@@ -13,7 +13,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
-import { ChartConfig, ChartContainer } from "@/registry/new-york-v4/ui/chart"
+import {
+  ChartContainer,
+  type ChartConfig,
+} from "@/registry/new-york-v4/ui/chart"
 
 const data = [
   {
@@ -93,7 +96,7 @@ export function CardsActivityGoal() {
             <div className="text-4xl font-bold tracking-tighter tabular-nums">
               {goal}
             </div>
-            <div className="text-muted-foreground text-xs uppercase">
+            <div className="text-xs text-muted-foreground uppercase">
               Calories/day
             </div>
           </div>

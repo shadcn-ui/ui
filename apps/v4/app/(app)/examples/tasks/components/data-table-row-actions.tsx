@@ -1,6 +1,6 @@
 "use client"
 
-import { Row } from "@tanstack/react-table"
+import { type Row } from "@tanstack/react-table"
 import { MoreHorizontal } from "lucide-react"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -36,7 +36,7 @@ export function DataTableRowActions<TData>({
         <Button
           variant="ghost"
           size="icon"
-          className="data-[state=open]:bg-muted size-8"
+          className="size-8 data-[state=open]:bg-muted"
         >
           <MoreHorizontal />
           <span className="sr-only">Open menu</span>

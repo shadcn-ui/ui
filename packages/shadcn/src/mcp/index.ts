@@ -186,8 +186,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                 For example: \`${await npxShadcn(
                   "view @shadcn"
                 )}\` or \`${await npxShadcn(
-                "view @shadcn @acme"
-              )}\` to view multiple registries.
+                  "view @shadcn @acme"
+                )}\` to view multiple registries.
                 `,
             },
           ],

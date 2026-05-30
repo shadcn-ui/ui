@@ -13,8 +13,9 @@ import {
   RegistryNotFoundError,
   RegistryParseError,
   RegistryUnauthorizedError,
+  RegistryValidationError,
 } from "@/src/registry/errors"
-import { HttpResponse, http } from "msw"
+import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
 import {
   afterAll,
@@ -28,6 +29,7 @@ import {
 import { z } from "zod"
 
 import {
+  getRegistries,
   getRegistriesConfig,
   getRegistriesIndex,
   getRegistry,
@@ -104,11 +106,24 @@ const server = setupServer(
     })
   }),
   http.get(`${REGISTRY_URL}/registries.json`, () => {
-    return HttpResponse.json({
-      "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
-      "@example": "https://example.com/registry/styles/{style}/{name}.json",
-      "@test": "https://test.com/registry/{name}.json",
-    })
+    return HttpResponse.json([
+      {
+        name: "@shadcn",
+        url: "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+        description: "The official shadcn/ui registry.",
+      },
+      {
+        name: "@example",
+        homepage: "https://example.com",
+        url: "https://example.com/registry/styles/{style}/{name}.json",
+        description: "An example registry for testing.",
+      },
+      {
+        name: "@test",
+        url: "https://test.com/registry/{name}.json",
+        description: "A test registry.",
+      },
+    ])
   })
 )
 
@@ -847,6 +862,36 @@ describe("getRegistry", () => {
     expect(result.items).toHaveLength(0)
   })
 
+  it("should reject source registries that use include", async () => {
+    server.use(
+      http.get("https://source.com/registry.json", () => {
+        return HttpResponse.json({
+          name: "@source/registry",
+          homepage: "https://source.com",
+          include: ["registry/ui/registry.json"],
+          items: [],
+        })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@source": {
+          url: "https://source.com/{name}.json",
+        },
+      },
+    } as any
+
+    await expect(
+      getRegistry("@source", { config: mockConfig })
+    ).rejects.toThrow(RegistryValidationError)
+    await expect(
+      getRegistry("@source", { config: mockConfig })
+    ).rejects.toThrow("must serve a resolved registry catalog")
+  })
+
   it("should handle 404 error from registry endpoint", async () => {
     server.use(
       http.get("https://notfound.com/registry.json", () => {
@@ -1082,9 +1127,12 @@ describe("getRegistry", () => {
     } catch (error) {
       expect(error).toBeInstanceOf(RegistryParseError)
       if (error instanceof RegistryParseError) {
-        expect(error.message).toContain("Failed to parse registry")
+        expect(error.message).toContain("Failed to parse registry catalog")
         expect(error.message).toContain("@parsetest/registry")
         expect(error.context?.item).toBe("@parsetest/registry")
+        expect(error.suggestion).toContain(
+          "https://ui.shadcn.com/schema/registry.json"
+        )
         expect(error.parseError).toBeDefined()
         if (error.parseError instanceof z.ZodError) {
           expect(error.parseError.errors.length).toBeGreaterThan(0)
@@ -1158,6 +1206,28 @@ describe("getRegistry", () => {
         { name: "card", type: "registry:ui" },
       ],
     })
+  })
+
+  it("should reject direct URL source registries that use include", async () => {
+    const registryUrl = "https://example.com/source-registry.json"
+
+    server.use(
+      http.get(registryUrl, () => {
+        return HttpResponse.json({
+          name: "source-registry",
+          homepage: "https://example.com",
+          include: ["registry/ui/registry.json"],
+          items: [],
+        })
+      })
+    )
+
+    await expect(getRegistry(registryUrl)).rejects.toThrow(
+      RegistryValidationError
+    )
+    await expect(getRegistry(registryUrl)).rejects.toThrow(
+      "must serve a resolved registry catalog"
+    )
   })
 
   it("should handle malformed URL gracefully", async () => {
@@ -1664,10 +1734,70 @@ describe("getRegistriesConfig", () => {
     })
   })
 
+  describe("getRegistries", () => {
+    it("should fetch and parse registries successfully", async () => {
+      const result = await getRegistries()
+
+      expect(result).toEqual([
+        {
+          name: "@shadcn",
+          url: "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+          description: "The official shadcn/ui registry.",
+        },
+        {
+          name: "@example",
+          homepage: "https://example.com",
+          url: "https://example.com/registry/styles/{style}/{name}.json",
+          description: "An example registry for testing.",
+        },
+        {
+          name: "@test",
+          url: "https://test.com/registry/{name}.json",
+          description: "A test registry.",
+        },
+      ])
+    })
+
+    it("should respect cache options", async () => {
+      const result1 = await getRegistries({ useCache: false })
+      expect(result1).toBeDefined()
+
+      const result2 = await getRegistries({ useCache: true })
+      expect(result2).toBeDefined()
+
+      expect(result1).toEqual(result2)
+    })
+
+    it("should handle network errors properly", async () => {
+      server.use(
+        http.get(`${REGISTRY_URL}/registries.json`, () => {
+          return new HttpResponse(null, { status: 500 })
+        })
+      )
+
+      await expect(getRegistries({ useCache: false })).rejects.toThrow()
+    })
+
+    it("should handle invalid JSON response", async () => {
+      server.use(
+        http.get(`${REGISTRY_URL}/registries.json`, () => {
+          return HttpResponse.json({
+            invalid: "format",
+          })
+        })
+      )
+
+      await expect(getRegistries({ useCache: false })).rejects.toThrow(
+        RegistriesIndexParseError
+      )
+    })
+  })
+
   describe("getRegistriesIndex", () => {
     it("should fetch and parse the registries index successfully", async () => {
       const result = await getRegistriesIndex()
 
+      // getRegistriesIndex transforms array format to object format.
       expect(result).toEqual({
         "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
         "@example": "https://example.com/registry/styles/{style}/{name}.json",
