@@ -400,7 +400,7 @@ export function CommandMenu({
           <span className="inline-flex xl:hidden">Search...</span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="rounded-xl border-none bg-clip-padding p-2 pb-11 shadow-2xl ring-4 ring-neutral-200/80 dark:bg-neutral-900 dark:ring-neutral-800">
+      <DialogContent className="rounded-xl border-none bg-clip-padding p-2 pb-11 shadow-2xl bg-popover ring-4 ring-foreground/5 dark:ring-foreground/10">
         <DialogHeader className="sr-only">
           <DialogTitle>Search documentation...</DialogTitle>
           <DialogDescription>Search for a command to run...</DialogDescription>
@@ -439,7 +439,7 @@ export function CommandMenu({
             ) : null}
           </CommandList>
         </Command>
-        <div className="absolute inset-x-0 bottom-0 z-20 flex h-10 items-center gap-2 rounded-b-xl border-t border-t-neutral-100 bg-neutral-50 px-4 text-xs font-medium text-muted-foreground dark:border-t-neutral-700 dark:bg-neutral-800">
+        <div className="absolute inset-x-0 bottom-0 z-20 flex h-10 items-center gap-2 rounded-b-xl border-t border-border bg-muted/50 px-4 text-xs font-medium text-muted-foreground">
           <div className="flex items-center gap-2">
             <CommandMenuKbd>
               <CornerDownLeftIcon />
