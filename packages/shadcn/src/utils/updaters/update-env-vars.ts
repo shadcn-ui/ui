@@ -5,6 +5,7 @@ import {
   findExistingEnvFile,
   getNewEnvKeys,
   mergeEnvContent,
+  toPosixPath,
 } from "@/src/utils/env-helpers"
 import { Config } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
@@ -39,7 +40,7 @@ export async function updateEnvVars(
   const projectRoot = config.resolvedPaths.cwd
 
   // Find existing env file or use .env.local as default.
-  let envFilePath = path.join(projectRoot, ".env.local")
+  let envFilePath = toPosixPath(path.join(projectRoot, ".env.local"))
   const existingEnvFile = findExistingEnvFile(projectRoot)
 
   if (existingEnvFile) {
@@ -65,7 +66,7 @@ export async function updateEnvVars(
 
     if (envVarsAdded.length > 0) {
       await fs.writeFile(envFilePath, mergedContent, "utf-8")
-      envFileUpdated = path.relative(projectRoot, envFilePath)
+      envFileUpdated = path.relative(projectRoot, envFilePath).split(path.sep).join("/")
 
       envSpinner?.succeed(
         `Added the following variables to ${highlighter.info(envFileName)}:`
@@ -82,7 +83,7 @@ export async function updateEnvVars(
   } else {
     // Create new env file
     await fs.writeFile(envFilePath, newEnvContent + "\n", "utf-8")
-    envFileCreated = path.relative(projectRoot, envFilePath)
+    envFileCreated = path.relative(projectRoot, envFilePath).split(path.sep).join("/")
     envVarsAdded = Object.keys(envVars)
 
     envSpinner?.succeed(

@@ -6,6 +6,10 @@ export function isEnvFile(filePath: string) {
   return /^\.env(\.|$)/.test(fileName)
 }
 
+export function toPosixPath(filePath: string) {
+  return filePath.split(path.sep).join(path.posix.sep)
+}
+
 /**
  * Finds a file variant in the project.
  * TODO: abstract this to a more generic function.
@@ -19,7 +23,7 @@ export function findExistingEnvFile(targetDir: string) {
   ]
 
   for (const variant of variants) {
-    const filePath = path.join(targetDir, variant)
+    const filePath = toPosixPath(path.join(targetDir, variant))
     if (existsSync(filePath)) {
       return filePath
     }
