@@ -47,8 +47,30 @@ export async function getProjectInfo(
   cwd: string,
   opts?: { configCssFile?: string }
 ): Promise<ProjectInfo | null> {
+  let configFiles: string[] = []
+
+  try {
+    configFiles = await fg.glob(
+      "**/{next,vite,astro,app}.config.*|gatsby-config.*|composer.json|react-router.config.*",
+      {
+        cwd,
+        deep: 3,
+        ignore: PROJECT_SHARED_IGNORE,
+      }
+    )
+  } catch (error) {
+    if (
+      !(error instanceof Error) ||
+      // Permission errors can occur when scanning directories owned by other users.
+      (error as { code?: string }).code !== "EACCES"
+    ) {
+      throw error
+    }
+
+    configFiles = []
+  }
+
   const [
-    configFiles,
     isSrcDir,
     isTsx,
     tailwindConfigFile,
@@ -57,14 +79,6 @@ export async function getProjectInfo(
     aliasPrefixInfo,
     packageJson,
   ] = await Promise.all([
-    fg.glob(
-      "**/{next,vite,astro,app}.config.*|gatsby-config.*|composer.json|react-router.config.*",
-      {
-        cwd,
-        deep: 3,
-        ignore: PROJECT_SHARED_IGNORE,
-      }
-    ),
     fs.pathExists(path.resolve(cwd, "src")),
     isTypeScriptProject(cwd),
     getTailwindConfigFile(cwd),
@@ -87,7 +101,7 @@ export async function getProjectInfo(
     tailwindCssFile,
     tailwindVersion,
     frameworkVersion: null,
-    aliasPrefix: aliasPrefixInfo.prefix,
+    aliasPrefix: aliasPrefixInfo?.prefix ?? null,
   }
 
   // Next.js.
