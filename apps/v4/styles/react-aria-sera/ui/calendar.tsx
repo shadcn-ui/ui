@@ -172,7 +172,7 @@ function CalendarInner({
               <CalendarHeading
                 offset={{ months: i }}
                 format={headerFormat}
-                className="text-sm font-medium select-none"
+                className="text-sm font-medium tracking-wide uppercase select-none"
               />
             )}
           </div>

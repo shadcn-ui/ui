@@ -43,7 +43,7 @@ export function UpcomingPayments() {
           <Calendar
             value={date}
             onChange={setDate}
-            className="w-full [--cell-size:--spacing(8)] md:[--cell-size:--spacing(10)]"
+            className="w-full [--cell-size:--spacing(8)] md:[--cell-size:--spacing(10)] style-sera:md:[--cell-size:--spacing(9)]"
           />
         </Item>
         <ItemGroup className="w-full">

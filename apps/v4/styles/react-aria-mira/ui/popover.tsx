@@ -76,7 +76,7 @@ function PopoverTitle({
   return (
     <Heading
       data-slot="popover-title"
-      className={cn("cn-font-heading text-sm font-medium", className)}
+      className={cn("text-sm font-medium", className)}
       {...props}
     />
   )

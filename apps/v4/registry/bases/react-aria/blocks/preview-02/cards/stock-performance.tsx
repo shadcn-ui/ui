@@ -106,7 +106,7 @@ export function StockPerformance() {
             </Combobox>
           </Field>
         </FieldGroup>
-        <Separator />
+        <Separator className="style-sera:hidden" />
         <ChartContainer config={chartConfig} className="h-[200px] w-full">
           <AreaChart
             accessibilityLayer

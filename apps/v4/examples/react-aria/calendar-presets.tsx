@@ -23,6 +23,7 @@ export function CalendarWithPresets() {
           onChange={setDate}
           focusedValue={currentMonth}
           onFocusChange={setCurrentMonth}
+          weeksInMonth={6}
           className="p-0 [--cell-size:--spacing(9.5)]"
         />
       </CardContent>

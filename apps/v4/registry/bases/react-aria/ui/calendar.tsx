@@ -186,7 +186,7 @@ function CalendarInner({
               <CalendarHeading
                 offset={{ months: i }}
                 format={headerFormat}
-                className="text-sm font-medium select-none"
+                className="cn-calendar-caption text-sm font-medium select-none"
               />
             )}
           </div>

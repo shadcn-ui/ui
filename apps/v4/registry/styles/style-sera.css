@@ -143,7 +143,7 @@
 
   /* MARK: Button */
   .cn-button {
-    @apply focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-none border border-transparent bg-clip-padding text-xs font-semibold uppercase tracking-widest focus-visible:ring-2 aria-invalid:ring-2 active:not-aria-[haspopup]:translate-y-px [&_svg:not([class*='size-'])]:size-3.5;
+    @apply focus-visible:border-ring focus-visible:ring-ring/30 data-invalid:ring-destructive/20 dark:data-invalid:ring-destructive/40 data-invalid:border-destructive dark:data-invalid:border-destructive/50 rounded-none border border-transparent bg-clip-padding text-xs font-semibold uppercase tracking-widest focus-visible:ring-2 data-invalid:ring-2 active:not-aria-[haspopup]:translate-y-px [&_svg:not([class*='size-'])]:size-3.5;
   }
 
   .cn-button-variant-default {
@@ -272,7 +272,7 @@
 
   /* MARK: Checkbox */
   .cn-checkbox {
-    @apply border-input bg-transparent data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary data-checked:border-primary aria-invalid:aria-checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-4.5 items-center justify-center rounded-none border transition-shadow group-has-disabled/field:opacity-50 focus-visible:ring-2 aria-invalid:ring-2;
+    @apply border-input bg-transparent data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary data-checked:border-primary data-invalid:aria-checked:border-primary data-invalid:border-destructive dark:data-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/30 data-invalid:ring-destructive/20 dark:data-invalid:ring-destructive/40 flex size-4.5 items-center justify-center rounded-none border transition-shadow group-has-disabled/field:opacity-50 focus-visible:ring-2 data-invalid:ring-2;
   }
 
   .cn-checkbox-indicator {
@@ -325,7 +325,7 @@
   }
 
   .cn-combobox-chips {
-    @apply border-transparent border-b-input bg-transparent focus-within:border-b-ring has-aria-invalid:border-b-destructive dark:has-aria-invalid:border-b-destructive/50 flex min-h-10 flex-wrap items-center gap-1.5 rounded-none border bg-clip-padding px-0 py-1.5 text-sm transition-[color,border-color] has-data-[slot=combobox-chip]:px-0;
+    @apply border-transparent border-b-input bg-transparent focus-within:border-b-ring has-data-invalid:border-b-destructive dark:has-data-invalid:border-b-destructive/50 flex min-h-10 flex-wrap items-center gap-1.5 rounded-none border bg-clip-padding px-0 py-1.5 text-sm transition-[color,border-color] has-data-[slot=combobox-chip]:px-0;
   }
 
   .cn-combobox-chip {
@@ -630,7 +630,7 @@
 
   /* MARK: Input */
   .cn-input {
-    @apply border-transparent border-b-input bg-transparent focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 border px-0 py-1 text-base transition-[color,border-color] file:h-7 file:text-sm file:font-medium md:text-sm;
+    @apply border-transparent border-b-input bg-transparent focus-visible:border-b-ring data-invalid:border-b-destructive dark:data-invalid:border-b-destructive/50 h-10 border px-0 py-1 text-base transition-[color,border-color] file:h-7 file:text-sm file:font-medium md:text-sm;
   }
 
   /* MARK: Input OTP */
@@ -639,11 +639,11 @@
   }
 
   .cn-input-otp-group {
-    @apply has-aria-invalid:border-b-destructive dark:has-aria-invalid:border-b-destructive/50 rounded-none gap-1;
+    @apply has-data-invalid:border-b-destructive dark:has-data-invalid:border-b-destructive/50 rounded-none gap-1;
   }
 
   .cn-input-otp-slot {
-    @apply border-transparent border-b-input bg-transparent data-[active=true]:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 size-10 border text-sm transition-[color,border-color] outline-none first:rounded-none last:rounded-none;
+    @apply border-transparent border-b-input bg-transparent data-[active=true]:border-b-ring data-invalid:border-b-destructive dark:data-invalid:border-b-destructive/50 size-10 border text-sm transition-[color,border-color] outline-none first:rounded-none last:rounded-none;
   }
 
   .cn-input-otp-caret-line {
@@ -742,7 +742,7 @@
 
   /* MARK: Label */
   .cn-label {
-    @apply gap-2 font-semibold peer-data-[slot=checkbox]:text-sm peer-data-[slot=radio-group-item]:text-sm peer-data-[slot=switch]:text-sm leading-relaxed group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 peer-data-[slot=checkbox]:font-normal peer-data-[slot=radio-group-item]:font-normal peer-data-[slot=switch]:font-normal uppercase text-xs tracking-wide peer-data-[slot=checkbox]:normal-case peer-data-[slot=checkbox]:tracking-normal peer-data-[slot=radio-group-item]:normal-case peer-data-[slot=radio-group-item]:tracking-normal peer-data-[slot=switch]:normal-case peer-data-[slot=switch]:tracking-normal;
+    @apply gap-2 font-semibold peer-data-[slot=checkbox]:text-sm peer-data-[slot=radio-group-item]:text-sm peer-data-[slot=switch]:text-sm leading-relaxed group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 peer-data-disabled:opacity-50 peer-data-[slot=checkbox]:font-normal peer-data-[slot=radio-group-item]:font-normal peer-data-[slot=switch]:font-normal uppercase text-xs tracking-wide peer-data-[slot=checkbox]:normal-case peer-data-[slot=checkbox]:tracking-normal peer-data-[slot=radio-group-item]:normal-case peer-data-[slot=radio-group-item]:tracking-normal peer-data-[slot=switch]:normal-case peer-data-[slot=switch]:tracking-normal;
   }
 
   /* MARK: Menubar */
@@ -849,7 +849,7 @@
 
   /* MARK: Native Select */
   .cn-native-select {
-    @apply border-transparent border-b-input bg-transparent placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 w-full min-w-0 appearance-none rounded-none border py-2 pr-8 pl-0 text-sm transition-[color,border-color] select-none data-[size=sm]:h-9;
+    @apply border-transparent border-b-input bg-transparent placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground focus-visible:border-b-ring data-invalid:border-b-destructive dark:data-invalid:border-b-destructive/50 h-10 w-full min-w-0 appearance-none rounded-none border py-2 pr-8 pl-0 text-sm transition-[color,border-color] select-none data-[size=sm]:h-9;
   }
 
   .cn-native-select-icon {
@@ -921,7 +921,7 @@
   }
 
   .cn-radio-group-item {
-    @apply border-input bg-transparent data-checked:border-foreground aria-invalid:aria-checked:border-foreground aria-invalid:border-destructive focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 dark:aria-invalid:border-destructive/50 flex size-4.5 rounded-full border focus-visible:ring-2 aria-invalid:ring-2;
+    @apply border-input bg-transparent data-checked:border-foreground data-invalid:aria-checked:border-foreground data-invalid:border-destructive focus-visible:border-ring focus-visible:ring-ring/30 data-invalid:ring-destructive/20 dark:data-invalid:ring-destructive/40 dark:data-invalid:border-destructive/50 flex size-4.5 rounded-full border focus-visible:ring-2 data-invalid:ring-2;
   }
 
   .cn-radio-group-indicator {
@@ -948,11 +948,11 @@
 
   /* MARK: Select */
   .cn-select-trigger {
-    @apply border-transparent border-b-input bg-transparent data-placeholder:text-muted-foreground focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 gap-1.5 rounded-none border py-2 px-0 text-sm transition-[color,border-color] data-[size=default]:h-10 data-[size=sm]:h-9 *:data-[slot=select-value]:flex *:data-[slot=select-value]:gap-1.5 [&_svg:not([class*='size-'])]:size-3.5;
+    @apply border-transparent border-b-input bg-transparent data-placeholder:text-muted-foreground focus-visible:border-b-ring data-invalid:border-b-destructive dark:data-invalid:border-b-destructive/50 gap-1.5 rounded-none border py-2 px-0 text-sm transition-[color,border-color] data-[size=default]:h-10 data-[size=sm]:h-9 *:data-[slot=select-value]:flex *:data-[slot=select-value]:gap-1.5 [&_svg:not([class*='size-'])]:size-3.5;
   }
 
   .cn-select-value {
-    @apply flex flex-1 text-left;
+    @apply flex flex-1 text-left data-placeholder:text-muted-foreground;
   }
 
   .cn-select-trigger-icon {
@@ -972,7 +972,7 @@
   }
 
   .cn-select-item {
-    @apply focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground gap-2.5 rounded-none py-2 pr-8 pl-3 text-sm [&_svg:not([class*='size-'])]:size-3.5 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2;
+    @apply focus:bg-accent focus:text-accent-foreground data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground gap-2.5 rounded-none py-2 pr-8 pl-3 text-sm [&_svg:not([class*='size-'])]:size-3.5 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2;
   }
 
   .cn-select-item-indicator {
@@ -997,6 +997,10 @@
 
   .cn-select-scroll-down-button {
     @apply bg-popover z-10 flex cursor-default items-center justify-center py-1 [&_svg:not([class*='size-'])]:size-3.5;
+  }
+
+  .cn-select-empty {
+    @apply text-muted-foreground hidden w-full justify-center py-2 text-center text-sm group-data-empty/select-list:flex;
   }
 
   /* MARK: Separator */
@@ -1179,7 +1183,7 @@
 
   /* MARK: Switch */
   .cn-switch {
-    @apply data-checked:bg-primary data-unchecked:bg-input data-checked:border-primary border data-unchecked:border-input/50 focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 shrink-0 rounded-none focus-visible:ring-2 aria-invalid:ring-2 data-[size=default]:h-4.5 data-[size=default]:w-8.25 data-[size=sm]:h-3.5 data-[size=sm]:w-6.25;
+    @apply data-checked:bg-primary data-unchecked:bg-input data-checked:border-primary border data-unchecked:border-input/50 focus-visible:border-ring focus-visible:ring-ring/30 data-invalid:ring-destructive/20 dark:data-invalid:ring-destructive/40 data-invalid:border-destructive dark:data-invalid:border-destructive/50 shrink-0 rounded-none focus-visible:ring-2 data-invalid:ring-2 data-[size=default]:h-4.5 data-[size=default]:w-8.25 data-[size=sm]:h-3.5 data-[size=sm]:w-6.25;
   }
 
   .cn-switch-thumb {
@@ -1208,15 +1212,15 @@
   }
 
   .cn-table-row {
-    @apply hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors;
+    @apply hover:bg-muted/50 data-selected:bg-muted border-b transition-colors;
   }
 
   .cn-table-head {
-    @apply text-muted-foreground h-12 px-3 text-left align-middle text-xs font-medium uppercase tracking-wider whitespace-nowrap [&:has([role=checkbox])]:pr-0;
+    @apply text-muted-foreground h-12 px-3 text-left align-middle text-xs font-medium uppercase tracking-wider whitespace-nowrap [&:has([data-slot=checkbox])]:pr-0;
   }
 
   .cn-table-cell {
-    @apply p-3 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0;
+    @apply p-3 align-middle whitespace-nowrap [&:has([data-slot=checkbox])]:pr-0;
   }
 
   .cn-table-caption {
@@ -1242,12 +1246,12 @@
 
   /* MARK: Textarea */
   .cn-textarea {
-    @apply border-transparent border-b-input bg-transparent focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 resize-none rounded-none border px-0 py-3 text-base transition-[color,border-color] md:text-sm;
+    @apply border-transparent border-b-input bg-transparent focus-visible:border-b-ring data-invalid:border-b-destructive dark:data-invalid:border-b-destructive/50 resize-none rounded-none border px-0 py-3 text-base transition-[color,border-color] md:text-sm;
   }
 
   /* MARK: Toggle */
   .cn-toggle {
-    @apply hover:text-foreground aria-pressed:bg-muted focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive gap-1.5 rounded-none text-xs font-semibold uppercase tracking-widest transition-colors [&_svg:not([class*='size-'])]:size-3.5;
+    @apply hover:text-foreground aria-pressed:bg-muted focus-visible:border-ring focus-visible:ring-ring/30 data-invalid:ring-destructive/20 dark:data-invalid:ring-destructive/40 data-invalid:border-destructive data-[state=on]:bg-muted data-[selected]:bg-muted gap-1.5 rounded-none text-xs font-semibold uppercase tracking-widest transition-colors [&_svg:not([class*='size-'])]:size-3.5;
   }
 
   .cn-toggle-variant-default {
@@ -1342,11 +1346,11 @@
   }
 
   .cn-input-group-input {
-    @apply border-0 bg-transparent ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent group-has-[>[data-align=inline-start]]/input-group:pl-2 group-has-[>[data-align=inline-end]]/input-group:pr-2;
+    @apply border-0 bg-transparent ring-0 focus-visible:ring-0 data-invalid:ring-0 dark:bg-transparent group-has-[>[data-align=inline-start]]/input-group:pl-2 group-has-[>[data-align=inline-end]]/input-group:pr-2;
   }
 
   .cn-input-group-textarea {
-    @apply border-0 bg-transparent py-2.5 ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent;
+    @apply border-0 bg-transparent py-2.5 ring-0 focus-visible:ring-0 data-invalid:ring-0 dark:bg-transparent;
   }
 
   /* MARK: Menu Translucent */

@@ -133,8 +133,10 @@ export function UIElements() {
         <div className="flex items-center gap-4">
           <AlertDialogTrigger>
             <Button variant="outline">
-              <span className="hidden md:block">Alert Dialog</span>
-              <span className="block md:hidden">Dialog</span>
+              <span className="hidden md:flex style-sera:md:hidden">
+                Alert Dialog
+              </span>
+              <span className="flex md:hidden style-sera:md:flex">Dialog</span>
             </Button>
             <AlertDialog size="sm">
               <AlertDialogHeader>
@@ -151,7 +153,10 @@ export function UIElements() {
             </AlertDialog>
           </AlertDialogTrigger>
           <ButtonGroup>
-            <Button variant="outline">Button Group</Button>
+            <Button variant="outline">
+              <span className="style-sera:hidden">Button Group</span>
+              <span className="hidden style-sera:block">Group</span>
+            </Button>
 
             <DropdownMenuTrigger>
               <Button variant="outline" size="icon">
@@ -163,7 +168,7 @@ export function UIElements() {
                   remixicon="RiArrowUpSLine"
                 />
               </Button>
-              <DropdownMenu align="end" side="top" className="w-40">
+              <DropdownMenu align="end" side="top" className="w-fit">
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
                   <DropdownMenuItem>Mute Conversation</DropdownMenuItem>
