@@ -1,7 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { type CalendarDate, getLocalTimeZone, today } from "@internationalized/date"
+import {
+  getLocalTimeZone,
+  today,
+  type CalendarDate,
+} from "@internationalized/date"
 
 import { Badge } from "@/registry/bases/react-aria/ui/badge"
 import { Calendar } from "@/registry/bases/react-aria/ui/calendar"
@@ -22,7 +26,9 @@ import {
 } from "@/registry/bases/react-aria/ui/item"
 
 export function UpcomingPayments() {
-  const [date, setDate] = React.useState<CalendarDate | undefined>(today(getLocalTimeZone()))
+  const [date, setDate] = React.useState<CalendarDate | undefined>(
+    today(getLocalTimeZone())
+  )
 
   return (
     <Card>

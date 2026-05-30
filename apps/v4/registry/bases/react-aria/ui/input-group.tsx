@@ -2,12 +2,12 @@
 
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
+import { Group, type GroupProps } from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import { Input } from "@/registry/bases/react-aria/ui/input"
 import { Textarea } from "@/registry/bases/react-aria/ui/textarea"
-import { Group, type GroupProps } from "react-aria-components";
 
 function InputGroup({ className, ...props }: GroupProps) {
   return (

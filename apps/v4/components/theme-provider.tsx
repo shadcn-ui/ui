@@ -15,7 +15,8 @@ function ThemeShortcut() {
         !e.altKey
       ) {
         if (
-          (document.activeElement instanceof HTMLElement && document.activeElement.isContentEditable) ||
+          (document.activeElement instanceof HTMLElement &&
+            document.activeElement.isContentEditable) ||
           document.activeElement instanceof HTMLInputElement ||
           document.activeElement instanceof HTMLTextAreaElement ||
           document.activeElement instanceof HTMLSelectElement

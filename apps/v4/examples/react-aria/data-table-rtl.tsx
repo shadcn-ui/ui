@@ -175,12 +175,8 @@ export function DataTableRtl() {
     () => [
       {
         id: "select",
-        header: ({ table }) => (
-          <Checkbox slot="selection" />
-        ),
-        cell: ({ row }) => (
-          <Checkbox  slot="selection" />
-        ),
+        header: ({ table }) => <Checkbox slot="selection" />,
+        cell: ({ row }) => <Checkbox slot="selection" />,
         enableSorting: false,
         enableHiding: false,
       },
@@ -202,7 +198,7 @@ export function DataTableRtl() {
         accessorKey: "email",
         header: () => {
           return (
-            <div className={buttonVariants({variant: 'ghost'})}>
+            <div className={buttonVariants({ variant: "ghost" })}>
               {t.email}
               <ArrowUpDown />
             </div>
@@ -307,12 +303,10 @@ export function DataTableRtl() {
           >
             <DropdownMenuGroup
               selectionMode="multiple"
-              selectedKeys={
-                table
-                  .getVisibleFlatColumns()
-                  .filter((column) => column.getCanHide())
-                  .map(column => column.id)
-              }
+              selectedKeys={table
+                .getVisibleFlatColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => column.id)}
               onSelectionChange={(keys) => {
                 table.setColumnVisibility(
                   Object.fromEntries(
@@ -348,11 +342,13 @@ export function DataTableRtl() {
         <Table
           aria-label="Tasks"
           selectionMode="multiple"
-          onSelectionChange={selection => {
-            if (selection === 'all') {
+          onSelectionChange={(selection) => {
+            if (selection === "all") {
               table.toggleAllRowsSelected()
             } else {
-              table.setRowSelection(Object.fromEntries([...selection].map(key => [key, true])))
+              table.setRowSelection(
+                Object.fromEntries([...selection].map((key) => [key, true]))
+              )
             }
           }}
           sortDescriptor={
@@ -369,11 +365,17 @@ export function DataTableRtl() {
                 id: "" + sortDescriptor.column,
                 desc: sortDescriptor.direction === "descending",
               },
-            ]);
-          }}>
+            ])
+          }}
+        >
           <TableHeader>
             {table.getFlatHeaders().map((header) => (
-              <TableHead key={header.id} id={header.id} isRowHeader={header.index === 1} allowsSorting={header.column.getCanSort()}>
+              <TableHead
+                key={header.id}
+                id={header.id}
+                isRowHeader={header.index === 1}
+                allowsSorting={header.column.getCanSort()}
+              >
                 {header.isPlaceholder
                   ? null
                   : flexRender(
@@ -385,16 +387,10 @@ export function DataTableRtl() {
           </TableHeader>
           <TableBody renderEmptyState={() => t.noResults}>
             {table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                id={row.id}
-              >
+              <TableRow key={row.id} id={row.id}>
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
-                    {flexRender(
-                      cell.column.columnDef.cell,
-                      cell.getContext()
-                    )}
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
               </TableRow>

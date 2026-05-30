@@ -1,18 +1,19 @@
 "use client"
 
+import { Autocomplete, useFilter } from "react-aria-components"
+
 import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Select,
-  SelectPopover,
-  SelectList,
-  SelectGroup,
   SelectEmpty,
+  SelectGroup,
   SelectInput,
   SelectItem,
+  SelectList,
+  SelectPopover,
   SelectTrigger,
   SelectValue,
 } from "@/styles/react-aria-nova/ui/select"
-import { Autocomplete, useFilter } from "react-aria-components"
 
 const countries = [
   {
@@ -67,7 +68,7 @@ const countries = [
 ]
 
 export function SelectAutocomplete() {
-  const {contains} = useFilter({sensitivity: 'base'})
+  const { contains } = useFilter({ sensitivity: "base" })
   return (
     <Select placeholder="Select country" className="w-full max-w-48">
       <SelectTrigger>
@@ -77,15 +78,10 @@ export function SelectAutocomplete() {
         <SelectPopover>
           <SelectInput />
           <SelectList
-            renderEmptyState={() => (
-              <SelectEmpty>No items found.</SelectEmpty>
-            )}>
+            renderEmptyState={() => <SelectEmpty>No items found.</SelectEmpty>}
+          >
             <SelectGroup items={countries}>
-              {(item) => (
-                <SelectItem id={item.value}>
-                  {item.label}
-                </SelectItem>
-              )}
+              {(item) => <SelectItem id={item.value}>{item.label}</SelectItem>}
             </SelectGroup>
           </SelectList>
         </SelectPopover>

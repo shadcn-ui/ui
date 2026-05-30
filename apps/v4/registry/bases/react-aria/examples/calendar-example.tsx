@@ -1,8 +1,14 @@
 "use client"
 
 import * as React from "react"
+import {
+  CalendarDate,
+  getLocalTimeZone,
+  isSameDay,
+  isWeekend,
+  today,
+} from "@internationalized/date"
 import { I18nProvider, useLocale, type DateRange } from "react-aria-components"
-import { CalendarDate, getLocalTimeZone, isSameDay, isWeekend, today } from "@internationalized/date"
 
 import {
   Example,
@@ -94,11 +100,7 @@ function CalendarSingle() {
     <Example title="Single">
       <Card className="mx-auto w-fit p-0">
         <CardContent className="p-0">
-          <Calendar
-            value={date}
-            onChange={setDate}
-            captionLayout="dropdown"
-          />
+          <Calendar value={date} onChange={setDate} captionLayout="dropdown" />
         </CardContent>
       </Card>
     </Example>
@@ -110,9 +112,7 @@ function CalendarMultiple() {
     <Example title="Multiple">
       <Card className="mx-auto w-fit p-0">
         <CardContent className="p-0">
-          <Calendar
-            selectionMode="multiple"
-          />
+          <Calendar selectionMode="multiple" />
         </CardContent>
       </Card>
     </Example>
@@ -122,7 +122,7 @@ function CalendarMultiple() {
 function CalendarRange() {
   const [dateRange, setDateRange] = React.useState<DateRange | undefined>({
     start: new CalendarDate(new Date().getFullYear(), 1, 12),
-    end: new CalendarDate(new Date().getFullYear(), 1, 12).add({days: 30}),
+    end: new CalendarDate(new Date().getFullYear(), 1, 12).add({ days: 30 }),
   })
 
   return (
@@ -148,7 +148,7 @@ function CalendarRange() {
 function CalendarRangeMultipleMonths() {
   const [range, setRange] = React.useState<DateRange | undefined>({
     start: new CalendarDate(new Date().getFullYear(), 4, 12),
-    end: new CalendarDate(new Date().getFullYear(), 4, 12).add({days: 60}),
+    end: new CalendarDate(new Date().getFullYear(), 4, 12).add({ days: 60 }),
   })
 
   return (
@@ -189,7 +189,9 @@ function CalendarBookedDates() {
           <Calendar
             value={date}
             onChange={setDate}
-            isDateUnavailable={date => bookedDates.some(d => isSameDay(date, d))}
+            isDateUnavailable={(date) =>
+              bookedDates.some((d) => isSameDay(date, d))
+            }
           />
         </CardContent>
       </Card>
@@ -206,11 +208,7 @@ function CalendarWithTime() {
     <Example title="With Time">
       <Card size="sm" className="mx-auto w-fit">
         <CardContent>
-          <Calendar
-            value={date}
-            onChange={setDate}
-            className="p-0"
-          />
+          <Calendar value={date} onChange={setDate} className="p-0" />
         </CardContent>
         <CardFooter className="border-t bg-card">
           <FieldGroup>
@@ -266,10 +264,10 @@ function CalendarWithTime() {
 }
 
 function CalendarCustomDays() {
-  const {locale} = useLocale();
+  const { locale } = useLocale()
   const [range, setRange] = React.useState<DateRange | undefined>({
     start: new CalendarDate(new Date().getFullYear(), 12, 8),
-    end: new CalendarDate(new Date().getFullYear(), 12, 8).add({days: 10}),
+    end: new CalendarDate(new Date().getFullYear(), 12, 8).add({ days: 10 }),
   })
 
   return (
@@ -282,8 +280,8 @@ function CalendarCustomDays() {
             numberOfMonths={1}
             captionLayout="dropdown"
             className="[--cell-size:--spacing(10)] md:[--cell-size:--spacing(12)]"
-            headerFormat={{month: 'long'}}
-            renderCell={({isOutsideMonth, date, defaultChildren}) => (
+            headerFormat={{ month: "long" }}
+            renderCell={({ isOutsideMonth, date, defaultChildren }) => (
               <>
                 {defaultChildren}
                 {!isOutsideMonth && (
@@ -333,7 +331,9 @@ function CalendarWithPresets() {
               size="sm"
               className="flex-1"
               onPress={() => {
-                const newDate = today(getLocalTimeZone()).add({days: preset.value})
+                const newDate = today(getLocalTimeZone()).add({
+                  days: preset.value,
+                })
                 setDate(newDate)
                 setCurrentMonth(newDate)
               }}
@@ -368,7 +368,13 @@ function DatePickerSimple() {
               remixicon="RiCalendarLine"
               data-icon="inline-start"
             />
-            {date ? date.toDate(getLocalTimeZone()).toLocaleDateString(undefined, {dateStyle: 'long'}) : <span>Pick a date</span>}
+            {date ? (
+              date
+                .toDate(getLocalTimeZone())
+                .toLocaleDateString(undefined, { dateStyle: "long" })
+            ) : (
+              <span>Pick a date</span>
+            )}
           </Button>
           <Popover className="w-auto p-0" align="start">
             <Calendar value={date} onChange={setDate} />
@@ -382,7 +388,7 @@ function DatePickerSimple() {
 function DatePickerWithRange() {
   const [date, setDate] = React.useState<DateRange | undefined>({
     start: new CalendarDate(new Date().getFullYear(), 1, 20),
-    end: new CalendarDate(new Date().getFullYear(), 1, 20).add({days: 20}),
+    end: new CalendarDate(new Date().getFullYear(), 1, 20).add({ days: 20 }),
   })
 
   return (
@@ -403,16 +409,19 @@ function DatePickerWithRange() {
               remixicon="RiCalendarLine"
               data-icon="inline-start"
             />
-            {date?.start && date.end 
-              ? new Intl.DateTimeFormat(undefined, {dateStyle: 'long'}).formatRange(date.start.toDate(getLocalTimeZone()), date.end.toDate(getLocalTimeZone()))
-              : <span>Pick a date</span>}
+            {date?.start && date.end ? (
+              new Intl.DateTimeFormat(undefined, {
+                dateStyle: "long",
+              }).formatRange(
+                date.start.toDate(getLocalTimeZone()),
+                date.end.toDate(getLocalTimeZone())
+              )
+            ) : (
+              <span>Pick a date</span>
+            )}
           </Button>
           <Popover className="w-auto p-0" align="start">
-            <RangeCalendar
-              value={date}
-              onChange={setDate}
-              numberOfMonths={2}
-            />
+            <RangeCalendar value={date} onChange={setDate} numberOfMonths={2} />
           </Popover>
         </PopoverTrigger>
       </Field>
@@ -436,7 +445,13 @@ function DataPickerWithDropdowns() {
             id="date-picker-with-dropdowns-desktop"
             className="justify-start px-2.5 font-normal"
           >
-            {date ? date.toDate(getLocalTimeZone()).toLocaleDateString(undefined, {dateStyle: 'long'}) : <span>Pick a date</span>}
+            {date ? (
+              date
+                .toDate(getLocalTimeZone())
+                .toLocaleDateString(undefined, { dateStyle: "long" })
+            ) : (
+              <span>Pick a date</span>
+            )}
             <IconPlaceholder
               lucide="ChevronDownIcon"
               tabler="IconChevronDown"

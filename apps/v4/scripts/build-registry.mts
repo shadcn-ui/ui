@@ -1,8 +1,10 @@
 import { spawn } from "child_process"
 import { createHash } from "crypto"
 import { promises as fs } from "fs"
+import { createRequire } from "module"
 import { availableParallelism } from "os"
 import path from "path"
+import { fileURLToPath } from "url"
 import prettier from "prettier"
 import { rimraf } from "rimraf"
 import { registrySchema, type RegistryItem } from "shadcn/schema"
@@ -72,7 +74,7 @@ const CLI_BUILD_CONCURRENCY = Math.max(
   1,
   Math.min(Math.floor(CPU_COUNT / 2), 4)
 )
-const TRANSFORM_CACHE_VERSION = "2"
+const TRANSFORM_CACHE_VERSION = "3"
 const CACHE_ROOT = path.join(
   process.cwd(),
   "node_modules/.cache/build-registry"
@@ -82,10 +84,21 @@ const TRANSFORM_CACHE_MANIFEST_PATH = path.join(
   CACHE_ROOT,
   "transform-manifest.json"
 )
+const GENERATED_REGISTRY_CACHE_PATHS = new Set([
+  "registry/__blocks__.json",
+  "registry/__index__.tsx",
+  "registry/bases/__index__.tsx",
+])
 
-const transformCacheManifest = new Map<string, string>()
+type TransformCacheManifestEntry = {
+  inputHash: string
+  outputHash: string
+}
+
+const transformCacheManifest = new Map<string, TransformCacheManifestEntry>()
 let transformCacheDirty = false
 let prettierConfigPromise: Promise<prettier.Options | null> | null = null
+const resolveFromScript = createRequire(import.meta.url).resolve
 
 const iconProject = new Project({
   compilerOptions: {},
@@ -153,6 +166,88 @@ function hashContent(...parts: string[]) {
   return hash.digest("hex")
 }
 
+async function getTransformCacheHash() {
+  const [implementationHash, registryHash] = await Promise.all([
+    getTransformImplementationHash(),
+    getAuthoredRegistryHash(),
+  ])
+
+  return hashContent(implementationHash, registryHash)
+}
+
+async function getTransformImplementationHash() {
+  const dependencyFiles = [
+    fileURLToPath(import.meta.url),
+    resolveFromScript("shadcn/utils"),
+    path.resolve(process.cwd(), "../../pnpm-lock.yaml"),
+  ]
+  const dependencyContent = await Promise.all(
+    dependencyFiles.map(async (filePath) => {
+      const content = await readFileIfExists(filePath)
+      const relativePath = toPosixPath(path.relative(process.cwd(), filePath))
+
+      return `${relativePath}\0${content ?? "missing"}`
+    })
+  )
+
+  return hashContent(...dependencyContent)
+}
+
+async function getAuthoredRegistryHash() {
+  const registryRoot = path.join(process.cwd(), "registry")
+  const filePaths = await getCacheableRegistryFiles(registryRoot)
+  const fileContent = await Promise.all(
+    filePaths.map(async (filePath) => {
+      const relativePath = toPosixPath(path.relative(process.cwd(), filePath))
+      const content = await fs.readFile(filePath, "utf8")
+
+      return `${relativePath}\0${content}`
+    })
+  )
+
+  return hashContent(...fileContent)
+}
+
+async function getCacheableRegistryFiles(dirPath: string): Promise<string[]> {
+  const entries = await readDirectoryEntries(dirPath)
+  const files = await Promise.all(
+    entries.map(async (entry) => {
+      const entryPath = path.join(dirPath, entry.name)
+      const relativePath = toPosixPath(path.relative(process.cwd(), entryPath))
+
+      if (shouldSkipRegistryCachePath(relativePath)) {
+        return []
+      }
+
+      if (entry.isDirectory()) {
+        return getCacheableRegistryFiles(entryPath)
+      }
+
+      if (!entry.isFile()) {
+        return []
+      }
+
+      return [entryPath]
+    })
+  )
+
+  return files.flat().sort((a, b) => a.localeCompare(b))
+}
+
+function shouldSkipRegistryCachePath(relativePath: string) {
+  if (GENERATED_REGISTRY_CACHE_PATHS.has(relativePath)) {
+    return true
+  }
+
+  return STYLE_COMBINATIONS.some((style) =>
+    relativePath.startsWith(`registry/${style.name}/`)
+  )
+}
+
+function toPosixPath(filePath: string) {
+  return filePath.split(path.sep).join("/")
+}
+
 async function readFileIfExists(filePath: string) {
   try {
     return await fs.readFile(filePath, "utf8")
@@ -200,11 +295,26 @@ async function loadTransformCache() {
     return
   }
 
-  const payload = JSON.parse(existingManifest) as Record<string, string>
+  const payload = JSON.parse(existingManifest) as Record<string, unknown>
 
   for (const [key, value] of Object.entries(payload)) {
-    transformCacheManifest.set(key, value)
+    if (isTransformCacheManifestEntry(value)) {
+      transformCacheManifest.set(key, value)
+    }
   }
+}
+
+function isTransformCacheManifestEntry(
+  value: unknown
+): value is TransformCacheManifestEntry {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "inputHash" in value &&
+    "outputHash" in value &&
+    typeof value.inputHash === "string" &&
+    typeof value.outputHash === "string"
+  )
 }
 
 async function saveTransformCache() {
@@ -234,6 +344,7 @@ async function getCachedStyledContent({
   filePath,
   source,
   styleHash,
+  transformCacheHash,
   styleMap,
 }: {
   styleName: string
@@ -241,6 +352,7 @@ async function getCachedStyledContent({
   filePath: string
   source: string
   styleHash: string
+  transformCacheHash: string
   styleMap: Record<string, string>
 }) {
   const cacheKey = `${styleName}:${filePath}`
@@ -250,13 +362,18 @@ async function getCachedStyledContent({
     styleName,
     baseName,
     filePath,
+    transformCacheHash,
     styleHash,
     source
   )
 
-  if (transformCacheManifest.get(cacheKey) === inputHash) {
+  const cachedEntry = transformCacheManifest.get(cacheKey)
+  if (cachedEntry?.inputHash === inputHash) {
     const cachedContent = await readFileIfExists(cachePath)
-    if (cachedContent !== null) {
+    if (
+      cachedContent !== null &&
+      hashContent(cachedContent) === cachedEntry.outputHash
+    ) {
       return cachedContent
     }
   }
@@ -274,8 +391,13 @@ async function getCachedStyledContent({
   await fs.mkdir(path.dirname(cachePath), { recursive: true })
   await fs.writeFile(cachePath, transformedContent)
 
-  if (transformCacheManifest.get(cacheKey) !== inputHash) {
-    transformCacheManifest.set(cacheKey, inputHash)
+  const outputHash = hashContent(transformedContent)
+  const nextEntry = { inputHash, outputHash }
+  if (
+    cachedEntry?.inputHash !== nextEntry.inputHash ||
+    cachedEntry?.outputHash !== nextEntry.outputHash
+  ) {
+    transformCacheManifest.set(cacheKey, nextEntry)
     transformCacheDirty = true
   }
 
@@ -342,9 +464,6 @@ try {
 
   console.log("\n📦 Building public/r/index.json...")
   await buildIndex()
-
-  console.log("\n📋 Building public/r/registries.json...")
-  await buildRegistriesJson()
 
   console.log("\n🎨 Building public/r/colors...")
   await buildColors()
@@ -457,7 +576,7 @@ export const Index: Record<string, Record<string, any>> = {`
 }
 
 async function buildBases(bases: Base[]) {
-  const [baseImports, styleMaps] = await Promise.all([
+  const [baseImports, styleMaps, transformCacheHash] = await Promise.all([
     Promise.all(
       bases.map(async (base) => {
         const { registry: baseRegistry } = await import(
@@ -516,6 +635,7 @@ async function buildBases(bases: Base[]) {
         }
       })
     ),
+    getTransformCacheHash(),
   ])
 
   const combinations: Array<{
@@ -525,6 +645,7 @@ async function buildBases(bases: Base[]) {
     registryItems: (typeof baseImports)[number]["registryItems"]
     sourceFiles: (typeof baseImports)[number]["sourceFiles"]
     styleHash: string
+    transformCacheHash: string
     styleMap: Record<string, string>
   }> = []
 
@@ -542,6 +663,7 @@ async function buildBases(bases: Base[]) {
         registryItems,
         sourceFiles,
         styleHash,
+        transformCacheHash,
         styleMap,
       })
     }
@@ -557,6 +679,7 @@ async function buildBases(bases: Base[]) {
       registryItems,
       sourceFiles,
       styleHash,
+      transformCacheHash,
       styleMap,
     }) => {
       const styleName = `${base.name}-${style.name}`
@@ -597,6 +720,7 @@ async function buildBases(bases: Base[]) {
                 filePath: file.path,
                 source,
                 styleHash,
+                transformCacheHash,
                 styleMap,
               })
             : source
@@ -1047,32 +1171,6 @@ async function buildIndex() {
 
   const outputPath = path.join(process.cwd(), "public/r/index.json")
   await writeIfChanged(outputPath, await formatGeneratedJson(index, outputPath))
-}
-
-async function buildRegistriesJson() {
-  const directoryPath = path.join(process.cwd(), "registry/directory.json")
-  const directoryContent = await fs.readFile(directoryPath, "utf8")
-  const directory = JSON.parse(directoryContent) as Array<{
-    name: string
-    homepage?: string
-    url: string
-    description?: string
-    featured?: boolean
-    logo?: string
-  }>
-
-  const registries = directory.map((entry) => ({
-    name: entry.name,
-    homepage: entry.homepage,
-    url: entry.url,
-    description: entry.description,
-  }))
-
-  const outputPath = path.join(process.cwd(), "public/r/registries.json")
-  await writeIfChanged(
-    outputPath,
-    await formatGeneratedJson(registries, outputPath)
-  )
 }
 
 async function readDirectoryEntries(dirPath: string) {

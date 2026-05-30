@@ -2,19 +2,19 @@
 
 import * as React from "react"
 import { Vazirmatn } from "next/font/google"
+import { CalendarDate } from "@internationalized/date"
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
 } from "lucide-react"
+import { I18nProvider } from "react-aria-components"
 import { getDefaultClassNames, type DayButton } from "react-day-picker"
 import { DayPicker } from "react-day-picker/persian"
 
 import { cn } from "@/lib/utils"
-import { Button, buttonVariants } from "@/styles/react-aria-nova/ui/button"
 import { Calendar } from "@/styles/react-aria-nova/ui-rtl/calendar"
-import { CalendarDate } from "@internationalized/date"
-import { I18nProvider } from "react-aria-components"
+import { Button, buttonVariants } from "@/styles/react-aria-nova/ui/button"
 
 const vazirmatn = Vazirmatn({ subsets: ["arabic"] })
 

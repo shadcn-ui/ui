@@ -1,9 +1,9 @@
 import {
   Table,
   TableBody,
-  TableFooter,
   TableCaption,
   TableCell,
+  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -59,7 +59,9 @@ export function TableFooterExample() {
     <figure className="w-full">
       <Table aria-label="Invoices">
         <TableHeader>
-          <TableHead isRowHeader className="w-[100px]">Invoice</TableHead>
+          <TableHead isRowHeader className="w-[100px]">
+            Invoice
+          </TableHead>
           <TableHead>Status</TableHead>
           <TableHead>Method</TableHead>
           <TableHead className="text-right">Amount</TableHead>
@@ -70,7 +72,9 @@ export function TableFooterExample() {
               <TableCell className="font-medium">{invoice.invoice}</TableCell>
               <TableCell>{invoice.paymentStatus}</TableCell>
               <TableCell>{invoice.paymentMethod}</TableCell>
-              <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+              <TableCell className="text-right">
+                {invoice.totalAmount}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

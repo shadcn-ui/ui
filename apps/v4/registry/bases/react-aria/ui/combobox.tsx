@@ -78,8 +78,8 @@ function ComboboxClear({
   ...props
 }: React.ComponentProps<typeof InputGroupButton>) {
   const state = React.useContext(ComboBoxStateContext)
-  if (state?.inputValue === '') {
-    return null;
+  if (state?.inputValue === "") {
+    return null
   }
 
   return (
@@ -284,11 +284,7 @@ function ComboboxSeparator({ className, ...props }: SeparatorProps) {
   )
 }
 
-function ComboboxChips({
-  children,
-  className,
-  ...props
-}: GroupProps) {
+function ComboboxChips({ children, className, ...props }: GroupProps) {
   return (
     <Group
       data-slot="combobox-chips"

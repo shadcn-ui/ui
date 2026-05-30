@@ -1,15 +1,15 @@
 "use client"
 
 import * as React from "react"
+import { CalendarDate } from "@internationalized/date"
 import { type DateRange } from "react-aria-components"
 
 import { RangeCalendar } from "@/styles/react-aria-nova/ui/calendar"
-import { CalendarDate } from "@internationalized/date"
 
 export function CalendarRange() {
   const [dateRange, setDateRange] = React.useState<DateRange | undefined>({
     start: new CalendarDate(new Date().getFullYear(), 1, 12),
-    end: new CalendarDate(new Date().getFullYear(), 1, 12).add({days: 30}),
+    end: new CalendarDate(new Date().getFullYear(), 1, 12).add({ days: 30 }),
   })
 
   return (

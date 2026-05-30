@@ -62,19 +62,22 @@ The `Calendar` component uses the `Button` component. Make sure you have it inst
 ## Usage
 
 ```tsx showLineNumbers
+import {
+  getLocalTimeZone,
+  today,
+  type CalendarDate,
+} from "@internationalized/date"
+
 import { Calendar } from "@/components/ui/calendar"
-import {type CalendarDate, today, getLocalTimeZone} from '@internationalized/date';
 ```
 
 ```tsx showLineNumbers
-const [date, setDate] = React.useState<CalendarDate | null>(today(getLocalTimeZone()))
+const [date, setDate] = React.useState<CalendarDate | null>(
+  today(getLocalTimeZone())
+)
 
 return (
-  <Calendar
-    value={date}
-    onChange={setDate}
-    className="rounded-lg border"
-  />
+  <Calendar value={date} onChange={setDate} className="rounded-lg border" />
 )
 ```
 

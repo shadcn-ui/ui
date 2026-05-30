@@ -15,10 +15,14 @@ import {
   type SortingState,
   type VisibilityState,
 } from "@tanstack/react-table"
+import {
+  DropIndicator,
+  useDragAndDrop,
+  useListData,
+} from "react-aria-components"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 import { toast } from "sonner"
 import { z } from "zod"
-import { DropIndicator, useDragAndDrop, useListData } from "react-aria-components"
 
 import { useIsMobile } from "@/registry/bases/react-aria/hooks/use-mobile"
 import { Badge } from "@/registry/bases/react-aria/ui/badge"
@@ -289,8 +293,11 @@ export function DataTable({
 }: {
   data: z.infer<typeof schema>[]
 }) {
-  const list = useListData({initialItems: initialData, getKey: item => String(item.id)})
-  const data = list.items;
+  const list = useListData({
+    initialItems: initialData,
+    getKey: (item) => String(item.id),
+  })
+  const data = list.items
   const [rowSelection, setRowSelection] = React.useState({})
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
@@ -326,20 +333,26 @@ export function DataTable({
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
   })
-  const {dragAndDropHooks} = useDragAndDrop({
-    getItems: (keys, items: z.infer<typeof schema>[]) => items.map(item => ({
-      'text/plain': item.header
-    })),
+  const { dragAndDropHooks } = useDragAndDrop({
+    getItems: (keys, items: z.infer<typeof schema>[]) =>
+      items.map((item) => ({
+        "text/plain": item.header,
+      })),
     onReorder(e) {
       console.log(e)
-      if (e.target.dropPosition === 'before') {
-        list.moveBefore(e.target.key, e.keys);
-      } else if (e.target.dropPosition === 'after') {
-        list.moveAfter(e.target.key, e.keys);
+      if (e.target.dropPosition === "before") {
+        list.moveBefore(e.target.key, e.keys)
+      } else if (e.target.dropPosition === "after") {
+        list.moveAfter(e.target.key, e.keys)
       }
     },
     renderDropIndicator(target) {
-      return <DropIndicator target={target} className="data-drop-target:outline-1 outline-blue-400" />
+      return (
+        <DropIndicator
+          target={target}
+          className="outline-blue-400 data-drop-target:outline-1"
+        />
+      )
     },
   })
 
@@ -465,11 +478,13 @@ export function DataTable({
             aria-label="Tasks"
             dragAndDropHooks={dragAndDropHooks}
             selectionMode="multiple"
-            onSelectionChange={selection => {
-              if (selection === 'all') {
+            onSelectionChange={(selection) => {
+              if (selection === "all") {
                 table.toggleAllRowsSelected()
               } else {
-                table.setRowSelection(Object.fromEntries([...selection].map(key => [key, true])))
+                table.setRowSelection(
+                  Object.fromEntries([...selection].map((key) => [key, true]))
+                )
               }
             }}
             sortDescriptor={
@@ -486,11 +501,17 @@ export function DataTable({
                   id: "" + sortDescriptor.column,
                   desc: sortDescriptor.direction === "descending",
                 },
-              ]);
-            }}>
+              ])
+            }}
+          >
             <TableHeader className="sticky top-0 z-10 bg-muted">
               {table.getFlatHeaders().map((header) => (
-                <TableHead key={header.id} id={header.id} isRowHeader={header.index === 1} allowsSorting={header.column.getCanSort()}>
+                <TableHead
+                  key={header.id}
+                  id={header.id}
+                  isRowHeader={header.index === 1}
+                  allowsSorting={header.column.getCanSort()}
+                >
                   {header.isPlaceholder
                     ? null
                     : flexRender(
@@ -501,8 +522,9 @@ export function DataTable({
               ))}
             </TableHeader>
             <TableBody
-              className="**:data-[slot=table-cell]:first:w-8 data-empty:text-center data-empty:h-24"
-              renderEmptyState={() => 'No results.'}>
+              className="data-empty:h-24 data-empty:text-center **:data-[slot=table-cell]:first:w-8"
+              renderEmptyState={() => "No results."}
+            >
               {table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
@@ -512,7 +534,10 @@ export function DataTable({
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
                     </TableCell>
                   ))}
                 </TableRow>
@@ -767,7 +792,11 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col gap-3">
                 <Label htmlFor="type">Type</Label>
-                <Select placeholder="Select a type" aria-label="Type" defaultValue={item.type}>
+                <Select
+                  placeholder="Select a type"
+                  aria-label="Type"
+                  defaultValue={item.type}
+                >
                   <SelectTrigger id="type" className="w-full">
                     <SelectValue />
                   </SelectTrigger>

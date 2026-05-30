@@ -15,7 +15,7 @@ import {
 } from "@tanstack/react-table"
 import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react"
 
-import { Button } from "@/styles/react-aria-nova/ui/button"
+import { Button, buttonVariants } from "@/styles/react-aria-nova/ui/button"
 import { Checkbox } from "@/styles/react-aria-nova/ui/checkbox"
 import {
   DropdownMenu,
@@ -34,7 +34,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/styles/react-aria-nova/ui/table"
-import { buttonVariants } from "@/styles/react-aria-nova/ui/button"
 
 const data: Payment[] = [
   {
@@ -79,12 +78,8 @@ export type Payment = {
 export const columns: ColumnDef<Payment>[] = [
   {
     id: "select",
-    header: () => (
-      <Checkbox slot="selection" />
-    ),
-    cell: () => (
-      <Checkbox slot="selection" />
-    ),
+    header: () => <Checkbox slot="selection" />,
+    cell: () => <Checkbox slot="selection" />,
     enableSorting: false,
     enableHiding: false,
   },
@@ -99,7 +94,7 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "email",
     header: () => {
       return (
-        <div className={buttonVariants({variant: 'ghost'})}>
+        <div className={buttonVariants({ variant: "ghost" })}>
           Email
           <ArrowUpDown />
         </div>
@@ -201,12 +196,10 @@ export function DataTableDemo() {
           <DropdownMenu align="end" className="w-44">
             <DropdownMenuGroup
               selectionMode="multiple"
-              selectedKeys={
-                table
-                  .getVisibleFlatColumns()
-                  .filter((column) => column.getCanHide())
-                  .map(column => column.id)
-              }
+              selectedKeys={table
+                .getVisibleFlatColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => column.id)}
               onSelectionChange={(keys) => {
                 table.setColumnVisibility(
                   Object.fromEntries(
@@ -242,12 +235,14 @@ export function DataTableDemo() {
         <Table
           aria-label="Tasks"
           selectionMode="multiple"
-          selectedKeys={table.getSelectedRowModel().rows.map(row => row.id)}
-          onSelectionChange={selection => {
-            if (selection === 'all') {
+          selectedKeys={table.getSelectedRowModel().rows.map((row) => row.id)}
+          onSelectionChange={(selection) => {
+            if (selection === "all") {
               table.toggleAllRowsSelected()
             } else {
-              table.setRowSelection(Object.fromEntries([...selection].map(key => [key, true])))
+              table.setRowSelection(
+                Object.fromEntries([...selection].map((key) => [key, true]))
+              )
             }
           }}
           sortDescriptor={
@@ -264,11 +259,17 @@ export function DataTableDemo() {
                 id: "" + sortDescriptor.column,
                 desc: sortDescriptor.direction === "descending",
               },
-            ]);
-          }}>
+            ])
+          }}
+        >
           <TableHeader>
             {table.getFlatHeaders().map((header) => (
-              <TableHead key={header.id} id={header.id} isRowHeader={header.index === 1} allowsSorting={header.column.getCanSort()}>
+              <TableHead
+                key={header.id}
+                id={header.id}
+                isRowHeader={header.index === 1}
+                allowsSorting={header.column.getCanSort()}
+              >
                 {header.isPlaceholder
                   ? null
                   : flexRender(
@@ -278,18 +279,12 @@ export function DataTableDemo() {
               </TableHead>
             ))}
           </TableHeader>
-          <TableBody renderEmptyState={() => 'No results.'}>
+          <TableBody renderEmptyState={() => "No results."}>
             {table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                id={row.id}
-              >
+              <TableRow key={row.id} id={row.id}>
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
-                    {flexRender(
-                      cell.column.columnDef.cell,
-                      cell.getContext()
-                    )}
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
               </TableRow>

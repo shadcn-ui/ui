@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { getLocalTimeZone, type CalendarDate } from "@internationalized/date"
 import { ChevronDownIcon } from "lucide-react"
-import { type CalendarDate, getLocalTimeZone } from "@internationalized/date"
 
 import { Button } from "@/styles/react-aria-nova/ui/button"
 import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
@@ -28,7 +28,9 @@ export function DatePickerTime() {
             id="date-picker-optional"
             className="w-32 justify-between font-normal"
           >
-            {date ? date.toDate(getLocalTimeZone()).toLocaleDateString() : "Select date"}
+            {date
+              ? date.toDate(getLocalTimeZone()).toLocaleDateString()
+              : "Select date"}
             <ChevronDownIcon data-icon="inline-end" />
           </Button>
           <Popover className="w-auto overflow-hidden p-0" align="start">

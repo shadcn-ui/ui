@@ -1,13 +1,19 @@
 "use client"
 
 import * as React from "react"
-import { type CalendarDate, getLocalTimeZone, today } from "@internationalized/date"
+import {
+  getLocalTimeZone,
+  today,
+  type CalendarDate,
+} from "@internationalized/date"
 import { I18nProvider } from "react-aria-components"
 
 import { Calendar } from "@/styles/react-aria-nova/ui-rtl/calendar"
 
 export function CalendarRtl() {
-  const [date, setDate] = React.useState<CalendarDate | undefined>(today(getLocalTimeZone()))
+  const [date, setDate] = React.useState<CalendarDate | undefined>(
+    today(getLocalTimeZone())
+  )
 
   return (
     <I18nProvider locale="ar">

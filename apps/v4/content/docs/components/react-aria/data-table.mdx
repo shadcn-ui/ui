@@ -199,7 +199,8 @@ export function DataTable<TData, TValue>({
             <TableHead
               key={header.id}
               id={header.id}
-              isRowHeader={header.index === 0}>
+              isRowHeader={header.index === 0}
+            >
               {header.isPlaceholder
                 ? null
                 : flexRender(
@@ -209,7 +210,7 @@ export function DataTable<TData, TValue>({
             </TableHead>
           ))}
         </TableHeader>
-        <TableBody renderEmptyState={() => 'No results.'}>
+        <TableBody renderEmptyState={() => "No results."}>
           {table.getRowModel().rows.map((row) => (
             <TableRow key={row.id} id={row.id}>
               {row.getVisibleCells().map((cell) => (
@@ -528,6 +529,7 @@ We can now update the `email` header cell to add sorting controls.
 
 import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown } from "lucide-react"
+
 import { buttonVariants } from "@/styles/react-aria-nova/ui/button"
 
 export const columns: ColumnDef<Payment>[] = [
@@ -535,7 +537,7 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "email",
     header: ({ column }) => {
       return (
-        <div className={buttonVariants({variant: 'ghost'})}>
+        <div className={buttonVariants({ variant: "ghost" })}>
           Email
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </div>
@@ -771,12 +773,8 @@ import { Checkbox } from "@/components/ui/checkbox"
 export const columns: ColumnDef<Payment>[] = [
   {
     id: "select",
-    header: () => (
-      <Checkbox slot="selection" />
-    ),
-    cell: () => (
-      <Checkbox slot="selection" />
-    ),
+    header: () => <Checkbox slot="selection" />,
+    cell: () => <Checkbox slot="selection" />,
     enableSorting: false,
     enableHiding: false,
   },
@@ -822,14 +820,17 @@ export function DataTable<TData, TValue>({
       <div className="overflow-hidden rounded-md border">
         <Table
           selectionMode="multiple"
-          selectedKeys={table.getSelectedRowModel().rows.map(row => row.id)}
-          onSelectionChange={selection => {
-            if (selection === 'all') {
+          selectedKeys={table.getSelectedRowModel().rows.map((row) => row.id)}
+          onSelectionChange={(selection) => {
+            if (selection === "all") {
               table.toggleAllRowsSelected()
             } else {
-              table.setRowSelection(Object.fromEntries([...selection].map(key => [key, true])))
+              table.setRowSelection(
+                Object.fromEntries([...selection].map((key) => [key, true]))
+              )
             }
-          }} />
+          }}
+        />
       </div>
     </div>
   )

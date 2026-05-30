@@ -19,9 +19,11 @@ Add the following dependencies to your project:
 npm install shadcn class-variance-authority clsx tailwind-merge lucide-react tw-animate-css
 ```
 
-### Configure path aliases
+### Configure import aliases
 
-Configure the path aliases in your `tsconfig.json` file.
+Choose one of the following alias setups.
+
+#### Option A: `tsconfig.json` paths
 
 ```json {3-6} title="tsconfig.json" showLineNumbers
 {
@@ -34,7 +36,31 @@ Configure the path aliases in your `tsconfig.json` file.
 }
 ```
 
-The `@` alias is a preference. You can use other aliases if you want.
+#### Option B: `package.json#imports`
+
+```json title="package.json" showLineNumbers
+{
+  "imports": {
+    "#components/*": "./src/components/*.tsx",
+    "#lib/*": "./src/lib/*.ts",
+    "#hooks/*": "./src/hooks/*.ts"
+  }
+}
+```
+
+```json title="tsconfig.json" showLineNumbers
+{
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "resolvePackageJsonImports": true
+  }
+}
+```
+
+The `@` alias is a preference. You can use other aliases if you want. If you
+use `package.json#imports`, keep the matching alias roots in `components.json`.
+See the <Link href="/docs/package-imports">package imports guide</Link> for
+framework-specific setup.
 
 ### Configure styles
 
@@ -208,6 +234,20 @@ Create a `components.json` file in the root of your project.
     "hooks": "@/hooks"
   },
   "iconLibrary": "lucide"
+}
+```
+
+If you're using `package.json#imports`, use the corresponding `#...` aliases instead:
+
+```json title="components.json" showLineNumbers
+{
+  "aliases": {
+    "components": "#components",
+    "utils": "#lib/utils",
+    "ui": "#components/ui",
+    "lib": "#lib",
+    "hooks": "#hooks"
+  }
 }
 ```
 

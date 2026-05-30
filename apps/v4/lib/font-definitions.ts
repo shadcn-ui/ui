@@ -301,6 +301,31 @@ export const FONT_DEFINITIONS = [
     dependency: "@fontsource-variable/playfair-display",
     subsets: ["latin"],
   },
+  {
+    name: "eb-garamond",
+    title: "EB Garamond",
+    type: "serif",
+    family: "'EB Garamond Variable', serif",
+    registryVariable: "--font-serif",
+    previewVariable: "--font-eb-garamond",
+    provider: "google",
+    import: "EB_Garamond",
+    dependency: "@fontsource-variable/eb-garamond",
+    subsets: ["latin"],
+  },
+  {
+    name: "instrument-serif",
+    title: "Instrument Serif",
+    type: "serif",
+    family: "'Instrument Serif', serif",
+    registryVariable: "--font-serif",
+    previewVariable: "--font-instrument-serif",
+    provider: "google",
+    import: "Instrument_Serif",
+    dependency: "@fontsource/instrument-serif",
+    subsets: ["latin"],
+    weight: ["400"],
+  },
 ] as const satisfies readonly FontDefinition[]
 
 export type FontName = (typeof FONT_DEFINITIONS)[number]["name"]

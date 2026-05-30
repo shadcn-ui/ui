@@ -19,10 +19,10 @@ import {
 } from "@/registry/bases/react-aria/ui/dropdown-menu"
 import {
   Table,
-  TableHead,
-  TableHeader,
   TableBody,
   TableCell,
+  TableHead,
+  TableHeader,
   TableRow,
 } from "@/registry/bases/react-aria/ui/table"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"

@@ -19,7 +19,7 @@ See installation instructions for the [Popover](/docs/components/react-aria/popo
 "use client"
 
 import * as React from "react"
-import { type CalendarDate, getLocalTimeZone } from "@internationalized/date"
+import { getLocalTimeZone, type CalendarDate } from "@internationalized/date"
 import { Calendar as CalendarIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -38,7 +38,13 @@ export function DatePickerDemo() {
         className="justify-start text-left font-normal data-[empty=true]:text-muted-foreground"
       >
         <CalendarIcon />
-        {date ? date.toDate(getLocalTimeZone()).toLocaleDateString(undefined, {dateStyle: 'long'}) : <span>Pick a date</span>}
+        {date ? (
+          date
+            .toDate(getLocalTimeZone())
+            .toLocaleDateString(undefined, { dateStyle: "long" })
+        ) : (
+          <span>Pick a date</span>
+        )}
       </Button>
       <Popover className="w-auto p-0">
         <Calendar value={date} onChange={setDate} />

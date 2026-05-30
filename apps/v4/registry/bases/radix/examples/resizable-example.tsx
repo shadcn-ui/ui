@@ -30,7 +30,7 @@ function ResizableHorizontal() {
     <Example title="Horizontal">
       <ResizablePanelGroup
         orientation="horizontal"
-        className="min-h-[200px] rounded-lg border"
+        className="min-h-[200px] rounded-lg border style-lyra:rounded-none style-sera:rounded-none"
       >
         <ResizablePanel defaultSize="25%">
           <div className="flex h-full items-center justify-center p-6">
@@ -53,7 +53,7 @@ function ResizableVertical() {
     <Example title="Vertical">
       <ResizablePanelGroup
         orientation="vertical"
-        className="min-h-[200px] rounded-lg border"
+        className="min-h-[200px] rounded-lg border style-lyra:rounded-none style-sera:rounded-none"
       >
         <ResizablePanel defaultSize="25%">
           <div className="flex h-full items-center justify-center p-6">
@@ -76,7 +76,7 @@ function ResizableWithHandle() {
     <Example title="With Handle">
       <ResizablePanelGroup
         orientation="horizontal"
-        className="min-h-[200px] rounded-lg border"
+        className="min-h-[200px] rounded-lg border style-lyra:rounded-none style-sera:rounded-none"
       >
         <ResizablePanel defaultSize="25%">
           <div className="flex h-full items-center justify-center p-6">
@@ -99,7 +99,7 @@ function ResizableNested() {
     <Example title="Nested">
       <ResizablePanelGroup
         orientation="horizontal"
-        className="rounded-lg border"
+        className="rounded-lg border style-lyra:rounded-none style-sera:rounded-none"
       >
         <ResizablePanel defaultSize="50%">
           <div className="flex h-[200px] items-center justify-center p-6">
@@ -134,7 +134,7 @@ function ResizableControlled() {
     <Example title="Controlled">
       <ResizablePanelGroup
         orientation="horizontal"
-        className="min-h-[200px] rounded-lg border"
+        className="min-h-[200px] rounded-lg border style-lyra:rounded-none style-sera:rounded-none"
         onLayoutChange={setLayout}
       >
         <ResizablePanel defaultSize="30%" id="left" minSize="20%">

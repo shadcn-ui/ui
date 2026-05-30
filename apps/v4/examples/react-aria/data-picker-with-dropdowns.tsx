@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { ChevronDownIcon } from "lucide-react"
 import { getLocalTimeZone, type CalendarDate } from "@internationalized/date"
+import { ChevronDownIcon } from "lucide-react"
 
 import { Button } from "@/styles/react-aria-nova/ui/button"
 import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
@@ -15,9 +15,7 @@ export function DataPickerWithDropdowns() {
 
   return (
     <Field className="mx-auto w-72">
-      <FieldLabel htmlFor="date-picker-with-dropdowns-desktop">
-        Date
-      </FieldLabel>
+      <FieldLabel htmlFor="date-picker-with-dropdowns-desktop">Date</FieldLabel>
       <PopoverTrigger isOpen={open} onOpenChange={setOpen}>
         <Button
           variant="outline"
@@ -25,14 +23,16 @@ export function DataPickerWithDropdowns() {
           className="justify-start px-2.5 font-normal"
         >
           <ChevronDownIcon className="ml-auto" />
-          {date ? date.toDate(getLocalTimeZone()).toLocaleDateString(undefined, {dateStyle: 'long'}) : <span>Pick a date</span>}
+          {date ? (
+            date
+              .toDate(getLocalTimeZone())
+              .toLocaleDateString(undefined, { dateStyle: "long" })
+          ) : (
+            <span>Pick a date</span>
+          )}
         </Button>
         <Popover className="w-auto p-0" align="start">
-          <Calendar
-            value={date}
-            onChange={setDate}
-            captionLayout="dropdown"
-          />
+          <Calendar value={date} onChange={setDate} captionLayout="dropdown" />
           <div className="flex gap-2 border-t p-2">
             <Button
               variant="outline"

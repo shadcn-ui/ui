@@ -14,10 +14,10 @@ import {
   SelectValue as SelectValuePrimitive,
   Separator as SeparatorPrimitive,
   type ListBoxProps,
+  type SearchFieldProps,
   type ListBoxSectionProps as SelectGroupProps,
   type SelectProps,
   type SelectValueProps,
-  type SearchFieldProps,
 } from "react-aria-components"
 
 import {
@@ -131,9 +131,7 @@ function SelectContent({
 }) {
   return (
     <SelectPopover {...props}>
-      <SelectList>
-        {children}
-      </SelectList>
+      <SelectList>{children}</SelectList>
     </SelectPopover>
   )
 }

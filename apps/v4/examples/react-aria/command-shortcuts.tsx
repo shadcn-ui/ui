@@ -26,7 +26,11 @@ export function CommandWithShortcuts() {
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Command>
           <CommandInput placeholder="Type a command or search..." />
-          <CommandList renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}>
+          <CommandList
+            renderEmptyState={() => (
+              <CommandEmpty>No results found.</CommandEmpty>
+            )}
+          >
             <CommandGroup heading="Settings">
               <CommandItem textValue="Profile">
                 <UserIcon />

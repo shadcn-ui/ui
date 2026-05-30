@@ -21,7 +21,9 @@ export function CalendarBookedDates() {
         <Calendar
           value={date}
           onChange={setDate}
-          isDateUnavailable={date => bookedDates.some(d => isSameDay(date, d))}
+          isDateUnavailable={(date) =>
+            bookedDates.some((d) => isSameDay(date, d))
+          }
         />
       </CardContent>
     </Card>

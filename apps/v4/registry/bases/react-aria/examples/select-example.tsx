@@ -770,7 +770,7 @@ const countries = [
 ]
 
 function SelectAutocomplete() {
-  const {contains} = useFilter({sensitivity: 'base'})
+  const { contains } = useFilter({ sensitivity: "base" })
 
   return (
     <Example title="With Autocomplete">
@@ -784,12 +784,11 @@ function SelectAutocomplete() {
             <SelectList
               renderEmptyState={() => (
                 <SelectEmpty>No items found.</SelectEmpty>
-              )}>
+              )}
+            >
               <SelectGroup items={countries}>
                 {(item) => (
-                  <SelectItem id={item.value}>
-                    {item.label}
-                  </SelectItem>
+                  <SelectItem id={item.value}>{item.label}</SelectItem>
                 )}
               </SelectGroup>
             </SelectList>

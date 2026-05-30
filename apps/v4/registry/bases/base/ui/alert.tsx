@@ -35,7 +35,7 @@ function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="alert-title"
       className={cn(
-        "cn-alert-title cn-font-heading [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground",
+        "cn-alert-title [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground",
         className
       )}
       {...props}

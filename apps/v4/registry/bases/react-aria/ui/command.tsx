@@ -3,22 +3,22 @@
 import * as React from "react"
 import {
   Autocomplete,
+  Collection,
+  composeRenderProps,
+  Header,
   Input,
   Menu,
   MenuItem,
-  Separator,
   MenuSection,
-  composeRenderProps,
-  type InputProps,
-  type AutocompleteProps,
-  type MenuItemProps,
-  type SeparatorProps,
-  type MenuSectionProps,
-  type MenuProps,
-  Header,
-  Collection,
+  SearchField,
+  Separator,
   useFilter,
-  SearchField
+  type AutocompleteProps,
+  type InputProps,
+  type MenuItemProps,
+  type MenuProps,
+  type MenuSectionProps,
+  type SeparatorProps,
 } from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
@@ -39,7 +39,7 @@ function Command({
   style,
   ...props
 }: AutocompleteProps & React.HTMLAttributes<HTMLDivElement>) {
-  const {contains} = useFilter({sensitivity: 'base'});
+  const { contains } = useFilter({ sensitivity: "base" })
   return (
     <div
       data-slot="command"
@@ -47,7 +47,8 @@ function Command({
         "cn-command flex size-full flex-col overflow-hidden",
         className
       )}
-      style={style}>
+      style={style}
+    >
       <Autocomplete {...props} filter={props.filter || contains}>
         {props.children}
       </Autocomplete>
@@ -97,16 +98,14 @@ function CommandDialog({
   )
 }
 
-function CommandInput({
-  className,
-  ...props
-}: InputProps) {
+function CommandInput({ className, ...props }: InputProps) {
   return (
     <SearchField
       autoFocus
-      aria-label={props.placeholder || 'Search'}
+      aria-label={props.placeholder || "Search"}
       data-slot="command-input-wrapper"
-      className="cn-command-input-wrapper">
+      className="cn-command-input-wrapper"
+    >
       <InputGroup className="cn-command-input-group">
         <Input
           {...props}
@@ -131,10 +130,7 @@ function CommandInput({
   )
 }
 
-function CommandList<T extends object>({
-  className,
-  ...props
-}: MenuProps<T>) {
+function CommandList<T extends object>({ className, ...props }: MenuProps<T>) {
   return (
     <Menu
       {...props}
@@ -147,10 +143,7 @@ function CommandList<T extends object>({
   )
 }
 
-function CommandEmpty({
-  className,
-  ...props
-}: React.ComponentProps<'div'>) {
+function CommandEmpty({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="command-empty"
@@ -166,24 +159,20 @@ function CommandGroup<T extends object>({
   items,
   heading,
   ...props
-}: MenuSectionProps<T> & {heading?: string}) {
+}: MenuSectionProps<T> & { heading?: string }) {
   return (
     <MenuSection
       data-slot="command-group"
       className={cn("cn-command-group", className)}
-      {...props}>
+      {...props}
+    >
       {heading && <Header cmdk-group-heading="">{heading}</Header>}
-      <Collection items={items}>
-        {children}
-      </Collection>
+      <Collection items={items}>{children}</Collection>
     </MenuSection>
   )
 }
 
-function CommandSeparator({
-  className,
-  ...props
-}: SeparatorProps) {
+function CommandSeparator({ className, ...props }: SeparatorProps) {
   return (
     <Separator
       data-slot="command-separator"
@@ -207,25 +196,31 @@ function CommandItem<T extends object>({
         "cn-command-item group/command-item data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
-      textValue={textValue || (typeof children === 'string' ? children : undefined)}
+      textValue={
+        textValue || (typeof children === "string" ? children : undefined)
+      }
       // Add data-selected attribute for compatibility with cmdk
-      render={(props, {isFocused}) => (
-        'href' in props
-          ? <a {...props}  data-selected={isFocused || undefined} />
-          : <div {...props} data-selected={isFocused || undefined} />
-      )}
+      render={(props, { isFocused }) =>
+        "href" in props ? (
+          <a {...props} data-selected={isFocused || undefined} />
+        ) : (
+          <div {...props} data-selected={isFocused || undefined} />
+        )
+      }
     >
-      {composeRenderProps(children, (children) => (<>
-        {children}
-        <IconPlaceholder
-          lucide="CheckIcon"
-          tabler="IconCheck"
-          hugeicons="Tick02Icon"
-          phosphor="CheckIcon"
-          remixicon="RiCheckLine"
-          className="cn-command-item-indicator ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100"
-        />
-      </>))}
+      {composeRenderProps(children, (children) => (
+        <>
+          {children}
+          <IconPlaceholder
+            lucide="CheckIcon"
+            tabler="IconCheck"
+            hugeicons="Tick02Icon"
+            phosphor="CheckIcon"
+            remixicon="RiCheckLine"
+            className="cn-command-item-indicator ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100"
+          />
+        </>
+      ))}
     </MenuItem>
   )
 }

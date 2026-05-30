@@ -40,7 +40,11 @@ function CommandInline() {
         <CardContent className="p-0">
           <Command>
             <CommandInput placeholder="Type a command or search..." />
-            <CommandList renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}>
+            <CommandList
+              renderEmptyState={() => (
+                <CommandEmpty>No results found.</CommandEmpty>
+              )}
+            >
               <CommandGroup heading="Suggestions">
                 <CommandItem textValue="Calendar">
                   <IconPlaceholder
@@ -133,7 +137,11 @@ function CommandBasic() {
         <CommandDialog open={open} onOpenChange={setOpen}>
           <Command>
             <CommandInput placeholder="Type a command or search..." />
-            <CommandList renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}>
+            <CommandList
+              renderEmptyState={() => (
+                <CommandEmpty>No results found.</CommandEmpty>
+              )}
+            >
               <CommandGroup heading="Suggestions">
                 <CommandItem>Calendar</CommandItem>
                 <CommandItem>Search Emoji</CommandItem>
@@ -163,7 +171,11 @@ function CommandWithShortcuts() {
         <CommandDialog open={open} onOpenChange={setOpen}>
           <Command>
             <CommandInput placeholder="Type a command or search..." />
-            <CommandList renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}>
+            <CommandList
+              renderEmptyState={() => (
+                <CommandEmpty>No results found.</CommandEmpty>
+              )}
+            >
               <CommandGroup heading="Settings">
                 <CommandItem textValue="Profile">
                   <IconPlaceholder
@@ -223,7 +235,11 @@ function CommandWithGroups() {
         <CommandDialog open={open} onOpenChange={setOpen}>
           <Command>
             <CommandInput placeholder="Type a command or search..." />
-            <CommandList renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}>
+            <CommandList
+              renderEmptyState={() => (
+                <CommandEmpty>No results found.</CommandEmpty>
+              )}
+            >
               <CommandGroup heading="Suggestions">
                 <CommandItem textValue="Calendar">
                   <IconPlaceholder
@@ -316,7 +332,11 @@ function CommandManyItems() {
         <CommandDialog open={open} onOpenChange={setOpen}>
           <Command>
             <CommandInput placeholder="Type a command or search..." />
-            <CommandList renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}>
+            <CommandList
+              renderEmptyState={() => (
+                <CommandEmpty>No results found.</CommandEmpty>
+              )}
+            >
               <CommandGroup heading="Navigation">
                 <CommandItem textValue="Home">
                   <IconPlaceholder

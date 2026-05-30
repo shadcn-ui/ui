@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { type CalendarDate, getLocalTimeZone } from "@internationalized/date"
+import { getLocalTimeZone, type CalendarDate } from "@internationalized/date"
 
 import { Button } from "@/styles/react-aria-nova/ui/button"
 import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
@@ -21,7 +21,9 @@ export function DatePickerSimple() {
           id="date"
           className="justify-start font-normal"
         >
-          {date ? date.toDate(getLocalTimeZone()).toLocaleDateString() : "Select date"}
+          {date
+            ? date.toDate(getLocalTimeZone()).toLocaleDateString()
+            : "Select date"}
         </Button>
         <Popover className="w-auto overflow-hidden p-0" align="start">
           <Calendar

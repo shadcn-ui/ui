@@ -1,8 +1,14 @@
 "use client"
 
 import * as React from "react"
+import {
+  fromDate,
+  getLocalTimeZone,
+  parseDate,
+  toCalendarDate,
+  type CalendarDate,
+} from "@internationalized/date"
 import { CalendarIcon } from "lucide-react"
-import { type CalendarDate, fromDate, getLocalTimeZone, parseDate, toCalendarDate } from "@internationalized/date"
 
 import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
 import { Field, FieldLabel } from "@/styles/react-aria-nova/ui/field"
@@ -39,7 +45,9 @@ export function DatePickerInput() {
     parseDate("2025-06-01")
   )
   const [month, setMonth] = React.useState<CalendarDate>(date!)
-  const [value, setValue] = React.useState(formatDate(date?.toDate(getLocalTimeZone())))
+  const [value, setValue] = React.useState(
+    formatDate(date?.toDate(getLocalTimeZone()))
+  )
 
   return (
     <Field className="mx-auto w-48">

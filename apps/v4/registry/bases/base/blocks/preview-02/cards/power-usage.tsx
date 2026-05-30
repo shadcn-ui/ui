@@ -18,6 +18,7 @@ import {
 } from "@/registry/bases/base/ui/chart"
 import { Progress } from "@/registry/bases/base/ui/progress"
 import { Separator } from "@/registry/bases/base/ui/separator"
+import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 
 const chartData = [
   { hour: "6a", usage: 1.2 },
@@ -38,6 +39,9 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function PowerUsage() {
+  const [params] = useDesignSystemSearchParams()
+  const isRounded = !["lyra", "sera"].includes(params.style)
+
   return (
     <Card>
       <CardHeader>
@@ -64,7 +68,7 @@ export function PowerUsage() {
             <Bar
               dataKey="usage"
               fill="var(--color-usage)"
-              radius={[4, 4, 0, 0]}
+              radius={isRounded ? [4, 4, 0, 0] : 0}
             />
           </BarChart>
         </ChartContainer>

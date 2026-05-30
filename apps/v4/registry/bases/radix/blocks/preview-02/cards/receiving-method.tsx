@@ -18,6 +18,7 @@ import {
   FieldLabel,
   FieldLegend,
   FieldSet,
+  FieldTitle,
 } from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
 import {
@@ -59,15 +60,13 @@ export function ReceivingMethod() {
             <FieldLegend variant="label">Receiving Method</FieldLegend>
             <RadioGroup
               defaultValue="bank"
-              className="grid grid-cols-1 items-start gap-3 md:grid-cols-2"
+              className="grid grid-cols-1 items-start gap-3 md:grid-cols-2 style-sera:grid-cols-1"
             >
               <FieldLabel htmlFor="method-bank">
                 <Field orientation="horizontal" className="pb-2.5">
                   <RadioGroupItem value="bank" id="method-bank" />
                   <FieldContent>
-                    <FieldDescription className="font-medium text-foreground">
-                      Bank Transfer
-                    </FieldDescription>
+                    <FieldTitle>Bank Transfer</FieldTitle>
                     <FieldDescription>SWIFT / IBAN</FieldDescription>
                   </FieldContent>
                 </Field>
@@ -76,9 +75,7 @@ export function ReceivingMethod() {
                 <Field orientation="horizontal" className="pb-2.5">
                   <RadioGroupItem value="paypal" id="method-paypal" />
                   <FieldContent>
-                    <FieldDescription className="font-medium text-foreground">
-                      PayPal
-                    </FieldDescription>
+                    <FieldTitle>PayPal</FieldTitle>
                     <FieldDescription className="line-clamp-1">
                       Instant Payout
                     </FieldDescription>

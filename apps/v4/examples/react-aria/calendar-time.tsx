@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Clock2Icon } from "lucide-react"
 import { CalendarDate } from "@internationalized/date"
+import { Clock2Icon } from "lucide-react"
 
 import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
 import { Card, CardContent, CardFooter } from "@/styles/react-aria-nova/ui/card"
@@ -25,11 +25,7 @@ export function CalendarWithTime() {
   return (
     <Card size="sm" className="mx-auto w-fit">
       <CardContent>
-        <Calendar
-          value={date}
-          onChange={setDate}
-          className="p-0"
-        />
+        <Calendar value={date} onChange={setDate} className="p-0" />
       </CardContent>
       <CardFooter className="border-t bg-card">
         <FieldGroup>

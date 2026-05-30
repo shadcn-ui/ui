@@ -16,7 +16,7 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/base/input-group",
-      "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-group-example.tsx"
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/input-group-example.tsx"
     }
   },
   "type": "registry:ui"

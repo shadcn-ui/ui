@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { getLocalTimeZone, type CalendarDate } from "@internationalized/date"
 import { ChevronDownIcon } from "lucide-react"
-import { type CalendarDate, getLocalTimeZone } from "@internationalized/date"
 import { I18nProvider } from "react-aria-components"
 
 import {
@@ -49,15 +49,18 @@ export function DatePickerRtl() {
         className="w-[212px] justify-between text-left font-normal data-[empty=true]:text-muted-foreground"
         dir={dir}
       >
-        {date ? date.toDate(getLocalTimeZone()).toLocaleDateString(language, {dateStyle: 'long'}) : <span>{t.placeholder}</span>}
+        {date ? (
+          date
+            .toDate(getLocalTimeZone())
+            .toLocaleDateString(language, { dateStyle: "long" })
+        ) : (
+          <span>{t.placeholder}</span>
+        )}
         <ChevronDownIcon data-icon="inline-end" />
       </Button>
       <Popover className="w-auto p-0" align="start" dir={dir}>
         <I18nProvider locale={language}>
-          <Calendar
-            value={date}
-            onChange={setDate}
-          />
+          <Calendar value={date} onChange={setDate} />
         </I18nProvider>
       </Popover>
     </PopoverTrigger>

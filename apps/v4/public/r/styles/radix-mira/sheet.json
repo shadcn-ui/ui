@@ -14,7 +14,7 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/radix/sheet",
-      "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sheet-example.tsx",
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/sheet-example.tsx",
       "api": "https://www.radix-ui.com/docs/primitives/components/dialog.md"
     }
   },

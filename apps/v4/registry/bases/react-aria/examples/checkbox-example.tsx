@@ -189,9 +189,7 @@ function CheckboxInTable() {
         </TableHeader>
         <TableBody>
           {tableData.map((row) => (
-            <TableRow
-              key={row.id}
-            >
+            <TableRow key={row.id}>
               <TableCell>
                 <Checkbox
                   id={`row-${row.id}`}

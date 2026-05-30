@@ -24,7 +24,9 @@ export function CommandDemo() {
   return (
     <Command className="max-w-sm rounded-lg border">
       <CommandInput placeholder="Type a command or search..." />
-      <CommandList renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}>
+      <CommandList
+        renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}
+      >
         <CommandGroup heading="Suggestions">
           <CommandItem textValue="Calendar">
             <Calendar />

@@ -2,20 +2,20 @@
 
 import * as React from "react"
 import {
-  Table as TablePrimitive,
-  TableHeader as TableHeaderPrimitive,
+  Cell as CellPrimitive,
+  Column as ColumnPrimitive,
+  Row as RowPrimitive,
   TableBody as TableBodyPrimitive,
   TableFooter as TableFooterPrimitive,
-  Row as RowPrimitive,
-  Column as ColumnPrimitive,
-  Cell as CellPrimitive,
-  type TableProps,
-  type TableHeaderProps,
+  TableHeader as TableHeaderPrimitive,
+  Table as TablePrimitive,
+  type CellProps,
+  type ColumnProps,
+  type RowProps,
   type TableBodyProps,
   type TableFooterProps,
-  type RowProps,
-  type ColumnProps,
-  type CellProps
+  type TableHeaderProps,
+  type TableProps,
 } from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
@@ -46,7 +46,10 @@ function TableBody<T>({ className, ...props }: TableBodyProps<T>) {
   return (
     <TableBodyPrimitive
       data-slot="table-body"
-      className={cn("cn-table-body data-empty:text-center data-empty:h-24", className)}
+      className={cn(
+        "cn-table-body data-empty:h-24 data-empty:text-center",
+        className
+      )}
       {...props}
     />
   )

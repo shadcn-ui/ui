@@ -16,7 +16,7 @@ const ToggleGroupContext = React.createContext<
 >({
   size: "default",
   variant: "default",
-  spacing: 0,
+  spacing: 2,
   orientation: "horizontal",
 })
 
@@ -24,7 +24,7 @@ function ToggleGroup({
   className,
   variant,
   size,
-  spacing = 0,
+  spacing = 2,
   orientation = "horizontal",
   children,
   ...props

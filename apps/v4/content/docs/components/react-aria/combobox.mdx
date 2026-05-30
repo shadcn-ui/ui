@@ -79,7 +79,8 @@ export function ExampleCombobox() {
         <ComboboxList
           renderEmptyState={() => (
             <ComboboxEmpty>No items found.</ComboboxEmpty>
-          )}>
+          )}
+        >
           {frameworks.map((item) => (
             <ComboboxItem key={item} id={item}>
               {item}
@@ -179,7 +180,8 @@ export function ExampleComboboxCustomItems() {
           renderEmptyState={() => (
             <ComboboxEmpty>No items found.</ComboboxEmpty>
           )}
-          items={frameworks}>
+          items={frameworks}
+        >
           {(framework) => (
             <ComboboxItem id={framework.value} textValue={framework.label}>
               <span>{framework.label}</span>
@@ -202,8 +204,8 @@ import * as React from "react"
 import {
   Combobox,
   ComboboxChip,
-  ComboboxChips,
   ComboboxChipList,
+  ComboboxChips,
   ComboboxChipsInput,
   ComboboxContent,
   ComboboxEmpty,
@@ -226,9 +228,7 @@ export function ExampleComboboxMultiple() {
     >
       <ComboboxChips>
         <ComboboxChipList<{ name: string }>>
-          {(value) => (
-            <ComboboxChip id={value.name}>{value.name}</ComboboxChip>
-          )}
+          {(value) => <ComboboxChip id={value.name}>{value.name}</ComboboxChip>}
         </ComboboxChipList>
         <ComboboxChipsInput placeholder="Add framework" />
       </ComboboxChips>

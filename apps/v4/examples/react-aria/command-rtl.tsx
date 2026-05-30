@@ -76,7 +76,9 @@ export function CommandRtl() {
   return (
     <Command className="max-w-sm rounded-lg border" dir={dir}>
       <CommandInput placeholder={t.placeholder} dir={dir} />
-      <CommandList renderEmptyState={() => <CommandEmpty>{t.empty}</CommandEmpty>}>
+      <CommandList
+        renderEmptyState={() => <CommandEmpty>{t.empty}</CommandEmpty>}
+      >
         <CommandGroup heading={t.suggestions}>
           <CommandItem textValue={t.calendar}>
             <Calendar />

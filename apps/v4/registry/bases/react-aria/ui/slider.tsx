@@ -1,8 +1,8 @@
 "use client"
 
 import {
-  Slider as SliderPrimitive,
   SliderFill,
+  Slider as SliderPrimitive,
   SliderThumb,
   SliderTrack,
   type SliderProps as SliderPrimitiveProps,

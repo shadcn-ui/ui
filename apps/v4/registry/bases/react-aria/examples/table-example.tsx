@@ -97,7 +97,9 @@ function TableBasic() {
       <figure>
         <Table>
           <TableHeader>
-            <TableHead isRowHeader className="w-[100px]">Invoice</TableHead>
+            <TableHead isRowHeader className="w-[100px]">
+              Invoice
+            </TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Method</TableHead>
             <TableHead className="text-right">Amount</TableHead>
@@ -127,7 +129,9 @@ function TableWithFooter() {
       <figure>
         <Table>
           <TableHeader>
-            <TableHead isRowHeader className="w-[100px]">Invoice</TableHead>
+            <TableHead isRowHeader className="w-[100px]">
+              Invoice
+            </TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Method</TableHead>
             <TableHead className="text-right">Amount</TableHead>

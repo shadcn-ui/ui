@@ -20,13 +20,16 @@ export function DatePickerSimple() {
           id="date-picker-simple"
           className="justify-start font-normal"
         >
-          {date ? date.toDate(getLocalTimeZone()).toLocaleDateString(undefined, {dateStyle: 'long'}) : <span>Pick a date</span>}
+          {date ? (
+            date
+              .toDate(getLocalTimeZone())
+              .toLocaleDateString(undefined, { dateStyle: "long" })
+          ) : (
+            <span>Pick a date</span>
+          )}
         </Button>
         <Popover className="w-auto p-0" align="start">
-          <Calendar
-            value={date}
-            onChange={setDate}
-          />
+          <Calendar value={date} onChange={setDate} />
         </Popover>
       </PopoverTrigger>
     </Field>

@@ -24,7 +24,11 @@ export function CommandBasic() {
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Command>
           <CommandInput placeholder="Type a command or search..." />
-          <CommandList renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}>
+          <CommandList
+            renderEmptyState={() => (
+              <CommandEmpty>No results found.</CommandEmpty>
+            )}
+          >
             <CommandGroup heading="Suggestions">
               <CommandItem>Calendar</CommandItem>
               <CommandItem>Search Emoji</CommandItem>

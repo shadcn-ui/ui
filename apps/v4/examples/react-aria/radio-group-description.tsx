@@ -11,7 +11,11 @@ import {
 
 export function RadioGroupDescription() {
   return (
-    <RadioGroup aria-label="Density" defaultValue="comfortable" className="w-fit">
+    <RadioGroup
+      aria-label="Density"
+      defaultValue="comfortable"
+      className="w-fit"
+    >
       <Field orientation="horizontal">
         <RadioGroupItem value="default" id="desc-r1" />
         <FieldContent>

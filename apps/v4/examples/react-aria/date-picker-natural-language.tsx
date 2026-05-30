@@ -1,9 +1,14 @@
 "use client"
 
 import * as React from "react"
+import {
+  fromDate,
+  getLocalTimeZone,
+  toCalendarDate,
+  type CalendarDate,
+} from "@internationalized/date"
 import { parseDate as parseNaturalLanguage } from "chrono-node"
 import { CalendarIcon } from "lucide-react"
-import { type CalendarDate, fromDate, getLocalTimeZone, toCalendarDate } from "@internationalized/date"
 
 import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
 import { Field, FieldLabel } from "@/styles/react-aria-nova/ui/field"
@@ -17,7 +22,7 @@ import { Popover, PopoverTrigger } from "@/styles/react-aria-nova/ui/popover"
 
 function parseDate(value: string) {
   const date = parseNaturalLanguage(value)
-    return date ? toCalendarDate(fromDate(date, getLocalTimeZone())) : undefined
+  return date ? toCalendarDate(fromDate(date, getLocalTimeZone())) : undefined
 }
 
 function formatDate(calendarDate: CalendarDate | undefined) {
@@ -36,7 +41,9 @@ function formatDate(calendarDate: CalendarDate | undefined) {
 export function DatePickerNaturalLanguage() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("In 2 days")
-  const [date, setDate] = React.useState<CalendarDate | undefined>(() => parseDate(value))
+  const [date, setDate] = React.useState<CalendarDate | undefined>(() =>
+    parseDate(value)
+  )
 
   return (
     <Field className="mx-auto max-w-xs">

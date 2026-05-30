@@ -55,12 +55,8 @@ function SheetOverlay({
         className
       )}
       // Keep existing data-open/data-closed selectors working with RAC state.
-      render={(renderProps, {isExiting}) => (
-        <div
-          {...renderProps}
-          data-open={!isExiting}
-          data-closed={isExiting}
-        />
+      render={(renderProps, { isExiting }) => (
+        <div {...renderProps} data-open={!isExiting} data-closed={isExiting} />
       )}
       {...props}
     >
@@ -92,7 +88,7 @@ function Sheet({
           className
         )}
         // Keep existing data-open/data-closed selectors working with RAC state.
-        render={(renderProps, {isExiting}) => (
+        render={(renderProps, { isExiting }) => (
           <div
             {...renderProps}
             data-open={!isExiting}

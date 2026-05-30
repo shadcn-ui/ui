@@ -9,9 +9,9 @@ import {
 import {
   Table,
   TableBody,
-  TableFooter,
   TableCaption,
   TableCell,
+  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -123,7 +123,9 @@ export function TableRtl() {
     <figure className="w-full">
       <Table dir={dir} aria-label={t.caption}>
         <TableHeader>
-          <TableHead isRowHeader className="w-[100px]">{t.invoice}</TableHead>
+          <TableHead isRowHeader className="w-[100px]">
+            {t.invoice}
+          </TableHead>
           <TableHead>{t.status}</TableHead>
           <TableHead>{t.method}</TableHead>
           <TableHead className="text-right">{t.amount}</TableHead>
@@ -134,7 +136,9 @@ export function TableRtl() {
               <TableCell className="font-medium">{invoice.invoice}</TableCell>
               <TableCell>{t[invoice.paymentStatus]}</TableCell>
               <TableCell>{t[invoice.paymentMethod]}</TableCell>
-              <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+              <TableCell className="text-right">
+                {invoice.totalAmount}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

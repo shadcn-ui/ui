@@ -40,7 +40,9 @@ export function CalendarWithPresets() {
             size="sm"
             className="flex-1"
             onPress={() => {
-              const newDate = today(getLocalTimeZone()).add({days: preset.value})
+              const newDate = today(getLocalTimeZone()).add({
+                days: preset.value,
+              })
               setDate(newDate)
               setCurrentMonth(newDate)
             }}

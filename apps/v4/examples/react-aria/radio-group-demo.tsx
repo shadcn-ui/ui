@@ -6,7 +6,11 @@ import {
 
 export function RadioGroupDemo() {
   return (
-    <RadioGroup aria-label="Density" defaultValue="comfortable" className="w-fit">
+    <RadioGroup
+      aria-label="Density"
+      defaultValue="comfortable"
+      className="w-fit"
+    >
       <div className="flex items-center gap-3">
         <RadioGroupItem value="default" id="r1" />
         <Label htmlFor="r1">Default</Label>
