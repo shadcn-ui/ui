@@ -392,7 +392,7 @@ async function resolveDependenciesRecursively(
   options: RegistryFetchOptions = {},
   visited: Set<string> = new Set()
 ) {
-  const items: z.infer<typeof registryItemSchema>[] = []
+  const items: z.infer<typeof registryItemWithSourceSchema>[] = []
   const registryNames: string[] = []
 
   for (const dep of dependencies) {
@@ -407,7 +407,10 @@ async function resolveDependenciesRecursively(
     if (resolvedAddress.scheme === "github") {
       const [item] = await fetchRegistryItems([dep], config, options)
       if (item) {
-        items.push(item)
+        items.push({
+          ...item,
+          _source: dep,
+        })
         if (item.registryDependencies) {
           const resolvedDeps = config?.registries
             ? resolveRegistryItemsFromRegistries(

@@ -29,7 +29,7 @@ export const search = new Command()
   .description("search items from registries")
   .argument(
     "<registries...>",
-    "the registry names or urls to search items from. Names must be prefixed with @."
+    "the registry addresses to search. Supports namespaces, GitHub sources and URLs."
   )
   .option(
     "-c, --cwd <cwd>",

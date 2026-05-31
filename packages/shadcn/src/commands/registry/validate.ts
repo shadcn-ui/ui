@@ -20,7 +20,11 @@ type RegistryValidationReport = Awaited<ReturnType<typeof validateRegistry>>
 export const validate = new Command()
   .name("validate")
   .description("validate a shadcn registry")
-  .argument("[registry]", "path to registry.json file", "./registry.json")
+  .argument(
+    "[registry]",
+    "registry address to validate. Supports registry.json paths and GitHub sources.",
+    "./registry.json"
+  )
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",

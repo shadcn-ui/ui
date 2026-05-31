@@ -490,6 +490,114 @@ describe("GitHub registry items", () => {
     expect(vi.mocked(execa)).toHaveBeenCalledTimes(2)
   })
 
+  it("keeps same-name GitHub dependencies from different repositories distinct", async () => {
+    server.use(
+      http.get(
+        "https://raw.githubusercontent.com/acme/app/1111111111111111111111111111111111111111/registry.json",
+        () => {
+          return HttpResponse.json({
+            name: "acme-app",
+            homepage: "https://github.com/acme/app",
+            items: [
+              {
+                name: "page",
+                type: "registry:block",
+                registryDependencies: ["acme/ui/button", "craft/ui/button"],
+                files: [
+                  {
+                    path: "page.tsx",
+                    type: "registry:block",
+                  },
+                ],
+              },
+            ],
+          })
+        }
+      ),
+      http.get(
+        "https://raw.githubusercontent.com/acme/app/1111111111111111111111111111111111111111/page.tsx",
+        () => {
+          return HttpResponse.text("export function Page() {}")
+        }
+      ),
+      http.get(
+        "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/registry.json",
+        () => {
+          return HttpResponse.json({
+            name: "acme-ui",
+            homepage: "https://github.com/acme/ui",
+            items: [
+              {
+                name: "button",
+                type: "registry:ui",
+                files: [
+                  {
+                    path: "button.tsx",
+                    type: "registry:ui",
+                  },
+                ],
+              },
+            ],
+          })
+        }
+      ),
+      http.get(
+        "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/button.tsx",
+        () => {
+          return HttpResponse.text("export function AcmeButton() {}")
+        }
+      ),
+      http.get(
+        "https://raw.githubusercontent.com/craft/ui/1111111111111111111111111111111111111111/registry.json",
+        () => {
+          return HttpResponse.json({
+            name: "craft-ui",
+            homepage: "https://github.com/craft/ui",
+            items: [
+              {
+                name: "button",
+                type: "registry:ui",
+                files: [
+                  {
+                    path: "craft-button.tsx",
+                    type: "registry:ui",
+                  },
+                ],
+              },
+            ],
+          })
+        }
+      ),
+      http.get(
+        "https://raw.githubusercontent.com/craft/ui/1111111111111111111111111111111111111111/craft-button.tsx",
+        () => {
+          return HttpResponse.text("export function CraftButton() {}")
+        }
+      )
+    )
+
+    const result = await resolveRegistryTree(["acme/app/page"], {
+      style: "new-york-v4",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      resolvedPaths: {
+        cwd: process.cwd(),
+        tailwindCss: "globals.css",
+        tailwindConfig: "tailwind.config.js",
+        components: "components",
+        ui: "components/ui",
+        lib: "lib",
+        utils: "lib/utils",
+        hooks: "hooks",
+      },
+    } as any)
+
+    expect(result?.files?.map((file) => file.path)).toEqual([
+      "button.tsx",
+      "craft-button.tsx",
+      "page.tsx",
+    ])
+  })
+
   it("validates a GitHub source registry with include and checks item files", async () => {
     server.use(
       http.get(
