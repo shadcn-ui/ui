@@ -1,5 +1,11 @@
 # shadcn
 
+## 4.9.0
+
+### Minor Changes
+
+- [#10834](https://github.com/shadcn-ui/ui/pull/10834) [`8e2d2d1439f54260aa0c51747261c220334ec641`](https://github.com/shadcn-ui/ui/commit/8e2d2d1439f54260aa0c51747261c220334ec641) Thanks [@shadcn](https://github.com/shadcn)! - add npx shadcn eject
+
 ## 4.8.3
 
 ### Patch Changes
