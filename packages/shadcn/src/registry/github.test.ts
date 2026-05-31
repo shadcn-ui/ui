@@ -655,6 +655,45 @@ describe("GitHub registry items", () => {
     })
   })
 
+  it("reports duplicate item names in a root GitHub source registry", async () => {
+    server.use(
+      http.get(
+        "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/registry.json",
+        () => {
+          return HttpResponse.json({
+            name: "acme-ui",
+            homepage: "https://github.com/acme/ui",
+            items: [
+              {
+                name: "button",
+                type: "registry:ui",
+              },
+              {
+                name: "button",
+                type: "registry:ui",
+              },
+            ],
+          })
+        }
+      )
+    )
+
+    const result = await validateGitHubRegistrySource({
+      owner: "acme",
+      repo: "ui",
+    })
+
+    expect(result.valid).toBe(false)
+    expect(result.diagnostics).toEqual([
+      expect.objectContaining({
+        registryFile: "acme/ui#HEAD/registry.json",
+        message: expect.stringContaining(
+          'Duplicate registry item name "button"'
+        ),
+      }),
+    ])
+  })
+
   it("reports invalid GitHub source registry item files", async () => {
     server.use(
       http.get(

@@ -187,7 +187,9 @@ When reasoning about a registry item string, classify it first.
 | `acme/ui/forms/login#main`          | github    | Item `forms/login` from GitHub repo `acme/ui` at ref `main`. |
 
 For namespace and GitHub addresses, slashful item names are allowed and are item
-names, not file paths.
+names, not file paths. Addresses ending in `.json` keep file-address
+precedence, so `acme/ui/data/schema.json` is treated as a file path, not a
+GitHub item address.
 
 ## GitHub Registries
 

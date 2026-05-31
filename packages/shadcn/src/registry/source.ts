@@ -104,6 +104,7 @@ async function readSourceRegistryWithIncludes(
       context.itemSources.set(item.name, source)
       context.itemSourcesByItem.set(item, source)
     })
+    validateDuplicateItems(rootRegistry.items, context.itemSourcesByItem)
 
     return {
       registry: rootRegistry,
