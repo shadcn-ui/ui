@@ -164,8 +164,8 @@ Use `@version` to specify the version of the package.
 Used for registry dependencies. Each entry is an item address.
 
 - For `shadcn/ui` registry items such as `button`, `input`, `select`, etc use the name eg. `['button', 'input', 'select']`.
-- For namespaced registry items such as `@acme` use the name eg. `['@acme/input-form']`.
-- For GitHub item addresses use `owner/repo/item-name` eg. `['acme/ui/button']`. For published registries, prefer a tag or full commit SHA eg. `['acme/ui/button#v1.2.0']`.
+- For namespaced registry items, use `@namespace/item-name` eg. `['@acme/input-form']`.
+- For GitHub registry items, use `owner/repo/item-name` eg. `['acme/ui/button']`. For published registries, prefer a tag or full commit SHA eg. `['acme/ui/button#v1.2.0']`.
 - For custom registry items use the URL of the registry item eg. `['https://example.com/r/hello-world.json']`.
 - For local registry item files use a file path eg. `['./hello-world.json']`.
 
@@ -187,6 +187,8 @@ same-repository GitHub dependencies, use the full GitHub item address.
 
 Refs are not inherited across dependencies. If a GitHub dependency should be
 reproducible, pin that dependency to its own tag or full commit SHA.
+
+See the [GitHub registry](/docs/registry/github) docs for more information.
 
 ### files
 
