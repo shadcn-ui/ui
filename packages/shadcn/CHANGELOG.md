@@ -1,4 +1,4 @@
-# @shadcn/ui
+# shadcn
 
 ## 4.8.3
 

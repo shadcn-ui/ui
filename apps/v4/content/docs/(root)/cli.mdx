@@ -3,6 +3,8 @@ title: shadcn
 description: Use the shadcn CLI to add components to your project.
 ---
 
+import { TriangleAlertIcon } from "lucide-react"
+
 ## init
 
 Use the `init` command to initialize configuration and dependencies for an existing project, or create a new project with `--name`.
@@ -503,3 +505,87 @@ npx shadcn@latest migrate radix "src/components/ui/**"
 If no path is provided, the migration will transform all files in your `ui` directory (from `components.json`).
 
 Once complete, you can remove any unused `@radix-ui/react-*` packages from your `package.json`.
+
+---
+
+## eject
+
+When you run `init`, shadcn adds `@import "shadcn/tailwind.css"` to your global CSS file. This import provides shared Tailwind v4 utilities such as custom variants (`data-open:`, `data-closed:`, etc.) and accordion animations.
+
+Use the `eject` command to inline `shadcn/tailwind.css` into your global CSS file and remove the `shadcn` dependency from your project.
+
+<Callout icon={<TriangleAlertIcon />}>
+  **Note: This action is irreversible.** After ejecting, future shadcn CLI
+  updates to `shadcn/tailwind.css` will not apply automatically.
+</Callout>
+
+```bash
+npx shadcn@latest eject
+```
+
+**Before**
+
+```css
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+```
+
+**After**
+
+```css
+@import "tailwindcss";
+@import "tw-animate-css";
+/* ejected from shadcn@4.8.3 */
+@theme inline {
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(
+        --radix-accordion-content-height,
+        var(--accordion-panel-height, auto)
+      );
+    }
+  }
+}
+
+@custom-variant data-open {
+  &:where([data-state="open"]),
+  &:where([data-open]:not([data-open="false"])) {
+    @slot;
+  }
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+```
+
+**Monorepo**
+
+In a monorepo, run the command from the workspace that contains your `components.json` and global CSS file:
+
+```bash
+npx shadcn@latest eject -c packages/ui
+```
+
+**Options**
+
+```bash
+Usage: shadcn eject [options]
+
+inline shadcn/tailwind.css and remove the shadcn dependency
+
+Options:
+  -c, --cwd <cwd>  the working directory. defaults to the current directory.
+  -y, --yes        skip confirmation prompt. (default: false)
+  -s, --silent     mute output. (default: false)
+  -h, --help       display help for command
+```
