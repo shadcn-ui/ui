@@ -130,6 +130,12 @@ describe("resolveItemAddress", () => {
     )
   })
 
+  it("rejects GitHub refs with whitespace", () => {
+    expect(() => resolveItemAddress("acme/ui/button#my tag")).toThrow(
+      RegistryValidationError
+    )
+  })
+
   it("rejects GitHub refs that look like git options", () => {
     expect(() =>
       resolveItemAddress("acme/ui/button#--upload-pack=/bin/false")
@@ -164,5 +170,11 @@ describe("resolveGitHubRegistrySource", () => {
     expect(() =>
       resolveGitHubRegistrySource("acme/ui#--upload-pack=/bin/false")
     ).toThrow(RegistryValidationError)
+  })
+
+  it("rejects refs with whitespace", () => {
+    expect(() => resolveGitHubRegistrySource("acme/ui#my tag")).toThrow(
+      RegistryValidationError
+    )
   })
 })
