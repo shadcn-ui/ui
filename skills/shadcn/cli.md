@@ -68,7 +68,8 @@ If no preset is provided, the CLI offers to open the custom preset builder on `u
 npx shadcn@latest add [components...] [options]
 ```
 
-Accepts component names, registry-prefixed names (`@magicui/shimmer-button`), URLs, or local paths.
+Accepts component names, registry-prefixed names (`@magicui/shimmer-button`),
+GitHub item addresses (`owner/repo/item`), URLs, or local paths.
 
 | Flag            | Short | Description                                                                                                          | Default |
 | --------------- | ----- | -------------------------------------------------------------------------------------------------------------------- | ------- |
@@ -105,6 +106,9 @@ npx shadcn@latest add button --view button.tsx
 # Works with URLs too.
 npx shadcn@latest add https://api.npoint.io/abc123 --dry-run
 
+# Works with public GitHub registries too.
+npx shadcn@latest add owner/repo/item --dry-run
+
 # CSS diffs.
 npx shadcn@latest add button --diff globals.css
 ```
@@ -129,7 +133,9 @@ See [Updating Components in SKILL.md](./SKILL.md#updating-components) for the fu
 npx shadcn@latest search <registries...> [options]
 ```
 
-Fuzzy search across registries. Also aliased as `npx shadcn@latest list`. Without `-q`, lists all items.
+Fuzzy search across registries. Also aliased as `npx shadcn@latest list`.
+Supports namespaces (`@acme`), public GitHub registry sources (`owner/repo`),
+and registry catalog URLs. Without `-q`, lists all items.
 
 | Flag                | Short | Description            | Default |
 | ------------------- | ----- | ---------------------- | ------- |
@@ -144,7 +150,9 @@ Fuzzy search across registries. Also aliased as `npx shadcn@latest list`. Withou
 npx shadcn@latest view <items...> [options]
 ```
 
-Displays item info including file contents. Example: `npx shadcn@latest view @shadcn/button`.
+Displays item info including file contents. Examples:
+`npx shadcn@latest view @shadcn/button`,
+`npx shadcn@latest view owner/repo/item`.
 
 ### `docs` — Get component documentation URLs
 
@@ -231,6 +239,9 @@ npx shadcn@latest build [registry] [options]
 ```
 
 Builds `registry.json` into individual JSON files for distribution. Default input: `./registry.json`, default output: `./public/r`.
+
+For authoring rules, `include`, item definitions, `registryDependencies`, and
+GitHub registry behavior, see [registry.md](./registry.md).
 
 | Flag              | Short | Description       | Default      |
 | ----------------- | ----- | ----------------- | ------------ |
