@@ -460,6 +460,67 @@ describe("resolveRegistryItems with URL dependencies", () => {
     }
   })
 
+  it("should order URL dependencies by source when file name differs from item name", async () => {
+    const componentUrl = "https://example.com/component-with-renamed-dep.json"
+    const dependencyUrl = "https://example.com/renamed-dependency.json"
+
+    const mockServer = setupServer(
+      http.get(componentUrl, () => {
+        return HttpResponse.json({
+          name: "component-with-renamed-dep",
+          type: "registry:ui",
+          registryDependencies: [dependencyUrl],
+          files: [
+            {
+              path: "ui/component-with-renamed-dep.tsx",
+              content: "// component content",
+              type: "registry:ui",
+            },
+          ],
+        })
+      }),
+      http.get(dependencyUrl, () => {
+        return HttpResponse.json({
+          name: "actual-dependency-name",
+          type: "registry:ui",
+          files: [
+            {
+              path: "ui/actual-dependency-name.tsx",
+              content: "// dependency content",
+              type: "registry:ui",
+            },
+          ],
+        })
+      })
+    )
+
+    mockServer.listen({ onUnhandledRequest: "bypass" })
+
+    try {
+      const result = await resolveRegistryTree([componentUrl], {
+        style: "new-york",
+        tailwind: { baseColor: "neutral", cssVariables: true },
+        resolvedPaths: {
+          cwd: process.cwd(),
+          tailwindConfig: "./tailwind.config.js",
+          tailwindCss: "./globals.css",
+          utils: "./lib/utils",
+          components: "./components",
+          lib: "./lib",
+          hooks: "./hooks",
+          ui: "./components/ui",
+        },
+      } as any)
+
+      expect(result?.files?.map((file) => file.path)).toEqual([
+        "ui/actual-dependency-name.tsx",
+        "ui/component-with-renamed-dep.tsx",
+      ])
+    } finally {
+      mockServer.close()
+    }
+  })
+
   it("should resolve namespace syntax in registryDependencies", async () => {
     // Mock a namespace registry endpoint
     const namespaceUrl = "https://custom-registry.com/custom-component.json"

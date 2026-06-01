@@ -434,7 +434,10 @@ async function resolveDependenciesRecursively(
     else if (isUrl(dep) || isLocalFile(dep)) {
       const [item] = await fetchRegistryItems([dep], config, options)
       if (item) {
-        items.push(item)
+        items.push({
+          ...item,
+          _source: dep,
+        })
         if (item.registryDependencies) {
           // Resolve namespaced dependencies to set proper headers.
           const resolvedDeps = config?.registries
