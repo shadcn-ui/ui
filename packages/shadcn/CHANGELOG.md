@@ -1,5 +1,11 @@
 # shadcn
 
+## 4.10.0
+
+### Minor Changes
+
+- [#10842](https://github.com/shadcn-ui/ui/pull/10842) [`7c63c467361dee9e20631b2999040912439b35d4`](https://github.com/shadcn-ui/ui/commit/7c63c467361dee9e20631b2999040912439b35d4) Thanks [@shadcn](https://github.com/shadcn)! - add support for GitHub registries
+
 ## 4.9.0
 
 ### Minor Changes
