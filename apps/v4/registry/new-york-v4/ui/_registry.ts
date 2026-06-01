@@ -169,6 +169,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "color-picker",
+    type: "registry:ui",
+    dependencies: ["react-color-strip"],
+    files: [
+      {
+        path: "ui/color-picker.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "combobox",
     type: "registry:ui",
     dependencies: ["@base-ui/react"],
