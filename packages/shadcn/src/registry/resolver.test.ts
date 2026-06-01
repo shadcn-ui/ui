@@ -521,6 +521,74 @@ describe("resolveRegistryItems with URL dependencies", () => {
     }
   })
 
+  it("should order local file dependencies by source when file name differs from item name", async () => {
+    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "registry-test-"))
+    const componentFile = path.join(tempDir, "component-with-renamed-dep.json")
+    const dependencyFile = path.join(tempDir, "renamed-dependency.json")
+
+    await fs.writeFile(
+      componentFile,
+      JSON.stringify(
+        {
+          name: "component-with-renamed-dep",
+          type: "registry:ui",
+          registryDependencies: [dependencyFile],
+          files: [
+            {
+              path: "ui/component-with-renamed-dep.tsx",
+              content: "// component content",
+              type: "registry:ui",
+            },
+          ],
+        },
+        null,
+        2
+      )
+    )
+    await fs.writeFile(
+      dependencyFile,
+      JSON.stringify(
+        {
+          name: "actual-dependency-name",
+          type: "registry:ui",
+          files: [
+            {
+              path: "ui/actual-dependency-name.tsx",
+              content: "// dependency content",
+              type: "registry:ui",
+            },
+          ],
+        },
+        null,
+        2
+      )
+    )
+
+    try {
+      const result = await resolveRegistryTree([componentFile], {
+        style: "new-york",
+        tailwind: { baseColor: "neutral", cssVariables: true },
+        resolvedPaths: {
+          cwd: process.cwd(),
+          tailwindConfig: "./tailwind.config.js",
+          tailwindCss: "./globals.css",
+          utils: "./lib/utils",
+          components: "./components",
+          lib: "./lib",
+          hooks: "./hooks",
+          ui: "./components/ui",
+        },
+      } as any)
+
+      expect(result?.files?.map((file) => file.path)).toEqual([
+        "ui/actual-dependency-name.tsx",
+        "ui/component-with-renamed-dep.tsx",
+      ])
+    } finally {
+      await fs.rm(tempDir, { force: true, recursive: true })
+    }
+  })
+
   it("should resolve namespace syntax in registryDependencies", async () => {
     // Mock a namespace registry endpoint
     const namespaceUrl = "https://custom-registry.com/custom-component.json"
