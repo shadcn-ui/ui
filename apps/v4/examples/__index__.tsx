@@ -1552,6 +1552,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "color-picker-demo": {
+      name: "color-picker-demo",
+      filePath: "examples/radix/color-picker-demo.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/color-picker-demo")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "color-picker-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "combobox-auto-highlight": {
       name: "combobox-auto-highlight",
       filePath: "examples/radix/combobox-auto-highlight.tsx",
@@ -7180,6 +7193,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "collapsible-settings"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "color-picker-demo": {
+      name: "color-picker-demo",
+      filePath: "examples/base/color-picker-demo.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/color-picker-demo")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "color-picker-demo"
         return { default: mod.default || mod[exportName] }
       }),
     },
