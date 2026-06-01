@@ -48,7 +48,7 @@ async function resolveGitHubRefUncached(address: GitHubSource, ref: string) {
   try {
     const result = await execa(
       "git",
-      ["ls-remote", "--symref", repoUrl, ...candidates],
+      ["ls-remote", "--symref", "--", repoUrl, ...candidates],
       {
         env: {
           GIT_TERMINAL_PROMPT: "0",

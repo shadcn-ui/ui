@@ -129,6 +129,12 @@ describe("resolveItemAddress", () => {
       RegistryValidationError
     )
   })
+
+  it("rejects GitHub refs that look like git options", () => {
+    expect(() =>
+      resolveItemAddress("acme/ui/button#--upload-pack=/bin/false")
+    ).toThrow(RegistryValidationError)
+  })
 })
 
 describe("resolveGitHubRegistrySource", () => {
@@ -152,5 +158,11 @@ describe("resolveGitHubRegistrySource", () => {
     "owner/..",
   ])("does not resolve non-GitHub registry source %s", (input) => {
     expect(resolveGitHubRegistrySource(input)).toBeNull()
+  })
+
+  it("rejects refs that look like git options", () => {
+    expect(() =>
+      resolveGitHubRegistrySource("acme/ui#--upload-pack=/bin/false")
+    ).toThrow(RegistryValidationError)
   })
 })

@@ -7,6 +7,7 @@ const GITHUB_OWNER_PATTERN =
 const GITHUB_REPO_PATTERN = /^[a-zA-Z0-9._-]+$/
 const INVALID_GITHUB_REPO_NAMES = new Set([".", ".."])
 const CONTROL_CHARACTER_PATTERN = /[\x00-\x1F\x7F]/
+const GITHUB_REF_OPTION_PATTERN = /^-/
 
 export type ResolvedItemAddress =
   | {
@@ -103,7 +104,7 @@ export function resolveGitHubRegistrySource(source: string) {
           ref,
         },
         suggestion:
-          "Use a non-empty branch, tag, or commit SHA without control characters.",
+          "Use a non-empty branch, tag, or commit SHA without control characters or leading dashes.",
       }
     )
   }
@@ -148,7 +149,7 @@ function resolveGitHubItemAddress(address: string) {
           ref,
         },
         suggestion:
-          "Use a non-empty branch, tag, or commit SHA without control characters.",
+          "Use a non-empty branch, tag, or commit SHA without control characters or leading dashes.",
       }
     )
   }
@@ -171,5 +172,9 @@ function isGitHubRepo(repo: string) {
 }
 
 function isValidGitHubRef(ref: string) {
-  return !!ref && !CONTROL_CHARACTER_PATTERN.test(ref)
+  return (
+    !!ref &&
+    !CONTROL_CHARACTER_PATTERN.test(ref) &&
+    !GITHUB_REF_OPTION_PATTERN.test(ref)
+  )
 }

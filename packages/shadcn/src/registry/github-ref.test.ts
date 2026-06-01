@@ -30,7 +30,7 @@ describe("GitHub ref resolution", () => {
     )
     expect(vi.mocked(execa)).toHaveBeenCalledWith(
       "git",
-      ["ls-remote", "--symref", "https://github.com/acme/ui.git", "HEAD"],
+      ["ls-remote", "--symref", "--", "https://github.com/acme/ui.git", "HEAD"],
       {
         env: {
           GIT_TERMINAL_PROMPT: "0",
@@ -86,6 +86,7 @@ describe("GitHub ref resolution", () => {
       [
         "ls-remote",
         "--symref",
+        "--",
         "https://github.com/acme/ui.git",
         "refs/heads/abc1234",
         "refs/tags/abc1234^{}",
