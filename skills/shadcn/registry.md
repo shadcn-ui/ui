@@ -1,4 +1,4 @@
-# Implementing Registries
+# Registry Authoring and Addresses
 
 Use this reference when the user wants to create, fix, publish, or reason about
 a shadcn registry.
@@ -14,6 +14,10 @@ A registry has two forms:
 
 The CLI installer consumes registry item payloads. A source registry is a way to
 author those payloads from real files.
+
+Registry items are not limited to React components. They can distribute
+components, hooks, utilities, design tokens, pages, config files, docs, rules,
+workflows, templates, MCP files, and other project files.
 
 ## Root `registry.json`
 
@@ -68,7 +72,7 @@ Include rules:
 - Include paths must explicitly point to a `registry.json` file.
 - Do not use remote URLs, absolute paths, or parent traversal (`..`).
 - Item file paths are relative to the registry file that declares the item.
-- Duplicate item names after includes are resolved should fail.
+- Duplicate item names fail across the resolved registry.
 
 Example included file:
 
@@ -205,8 +209,10 @@ Rules:
 - The first two path segments are GitHub owner and repo.
 - All remaining path segments are the registry item name.
 - The source entrypoint is always root `registry.json`.
+- GitHub registries are source registries consumed directly by the CLI. They do
+  not require `shadcn build` or generated item JSON files.
 - `include` follows the same source-registry rules as local registries.
-- In v1, support public `github.com` repositories only.
+- Currently, GitHub addresses support public `github.com` repositories only.
 - Private repos and GitHub Enterprise require explicit product decisions.
 
 When implementing GitHub registry fetching, resolve refs to a commit SHA before
@@ -226,6 +232,10 @@ owner/repo[#ref]
 
 This keeps a command on one consistent repository snapshot.
 
+Full 40-character commit SHAs are already stable and can be used directly.
+Branches, tags, and short refs require Git so the CLI can resolve them to a
+commit SHA first.
+
 ## Build and Verify
 
 Use the CLI to build source registries:
@@ -242,6 +252,17 @@ npx shadcn@latest list @acme
 npx shadcn@latest search @acme -q "login"
 npx shadcn@latest view @acme/login-form
 npx shadcn@latest add @acme/login-form --dry-run
+npx shadcn@latest registry validate ./registry.json
+```
+
+Use GitHub addresses directly for public GitHub registries:
+
+```bash
+npx shadcn@latest list owner/repo
+npx shadcn@latest search owner/repo -q "login"
+npx shadcn@latest view owner/repo/item
+npx shadcn@latest add owner/repo/item --dry-run
+npx shadcn@latest registry validate owner/repo
 ```
 
 When working on registry implementation in the shadcn/ui codebase:
