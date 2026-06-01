@@ -72,20 +72,20 @@ pnpm install
 
 ### Run a workspace
 
-You can use the `pnpm --filter=[WORKSPACE]` command to start the development process for a workspace.
+You can pass a workspace filter to the root `dev` script to start the development process for a workspace.
 
 #### Examples
 
 1. To run the `ui.shadcn.com` website:
 
 ```bash
-pnpm --filter=v4 dev
+pnpm dev --filter=v4
 ```
 
 2. To run the `shadcn` package:
 
 ```bash
-pnpm --filter=shadcn dev
+pnpm dev --filter=shadcn
 ```
 
 ## Running the CLI Locally
@@ -117,7 +117,7 @@ This workflow ensures that you are running the most recent version of the regist
 The documentation for this project is located in the `v4` workspace. You can run the documentation locally by running the following command:
 
 ```bash
-pnpm --filter=v4 dev
+pnpm dev --filter=v4
 ```
 
 Documentation is written using [MDX](https://mdxjs.com). You can find the documentation files in the `apps/v4/content/docs` directory.
