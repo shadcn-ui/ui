@@ -655,6 +655,57 @@ describe("GitHub registry items", () => {
     })
   })
 
+  it("bounds item validation concurrency for GitHub source registries", async () => {
+    const items = Array.from({ length: 16 }, (_, index) => ({
+      name: `item-${index}`,
+      type: "registry:ui",
+      files: [
+        {
+          path: `item-${index}.tsx`,
+          type: "registry:ui",
+        },
+      ],
+    }))
+    let activeRequests = 0
+    let maxActiveRequests = 0
+
+    server.use(
+      http.get(
+        "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/:file",
+        async ({ params }) => {
+          const file = String(params.file)
+
+          if (file === "registry.json") {
+            return HttpResponse.json({
+              name: "acme-ui",
+              homepage: "https://github.com/acme/ui",
+              items,
+            })
+          }
+
+          activeRequests += 1
+          maxActiveRequests = Math.max(maxActiveRequests, activeRequests)
+          await new Promise((resolve) => setTimeout(resolve, 10))
+          activeRequests -= 1
+
+          return HttpResponse.text(
+            `export const ${file.replace(/\W/g, "_")} = {}`
+          )
+        }
+      )
+    )
+
+    const result = await validateGitHubRegistrySource({
+      owner: "acme",
+      repo: "ui",
+    })
+
+    expect(result.valid).toBe(true)
+    expect(result.items).toBe(items.length)
+    expect(maxActiveRequests).toBeLessThanOrEqual(8)
+    expect(maxActiveRequests).toBeGreaterThan(1)
+  })
+
   it("reports duplicate item names in a root GitHub source registry", async () => {
     server.use(
       http.get(

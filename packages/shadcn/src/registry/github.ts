@@ -14,6 +14,7 @@ import { HttpsProxyAgent } from "https-proxy-agent"
 import fetch, { Headers } from "node-fetch"
 
 const GITHUB_RAW_URL = "https://raw.githubusercontent.com"
+const GITHUB_VALIDATION_CONCURRENCY = 8
 
 const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
@@ -95,8 +96,10 @@ export async function validateGitHubRegistrySource(
     const registry = await loadRegistryCatalogFromSource(trackingReader, {
       source: sourceLabel,
     })
-    const itemDiagnostics = await Promise.all(
-      registry.items.map(async (item, itemIndex) => {
+    const itemDiagnostics = await mapWithConcurrency(
+      registry.items,
+      GITHUB_VALIDATION_CONCURRENCY,
+      async (item, itemIndex) => {
         try {
           await loadRegistryItemFromSource(item.name, trackingReader, {
             source: sourceLabel,
@@ -110,7 +113,7 @@ export async function validateGitHubRegistrySource(
             sourceLabel,
           })
         }
-      })
+      }
     )
     const diagnostics = itemDiagnostics.filter(
       (diagnostic): diagnostic is GitHubRegistryValidationDiagnostic =>
@@ -235,6 +238,26 @@ function buildGitHubRawUrl(
     .join("/")
 
   return `${GITHUB_RAW_URL}/${address.owner}/${address.repo}/${resolvedSha}/${file}`
+}
+
+async function mapWithConcurrency<T, TResult>(
+  items: T[],
+  concurrency: number,
+  mapper: (item: T, index: number) => Promise<TResult>
+) {
+  const results = new Array<TResult>(items.length)
+  let nextIndex = 0
+  const workerCount = Math.min(concurrency, items.length)
+  const workers = Array.from({ length: workerCount }, async () => {
+    while (nextIndex < items.length) {
+      const itemIndex = nextIndex++
+      results[itemIndex] = await mapper(items[itemIndex]!, itemIndex)
+    }
+  })
+
+  await Promise.all(workers)
+
+  return results
 }
 
 function formatGitHubSource(address: GitHubSource) {
