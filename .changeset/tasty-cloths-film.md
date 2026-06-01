@@ -2,4 +2,4 @@
 "shadcn": minor
 ---
 
-add support for github registries
+add support for GitHub registries

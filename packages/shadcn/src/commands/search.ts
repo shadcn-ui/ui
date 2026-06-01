@@ -1,5 +1,4 @@
 import path from "path"
-import { isGitHubRegistrySource } from "@/src/registry/address"
 import { configWithDefaults } from "@/src/registry/config"
 import { clearRegistryContext } from "@/src/registry/context"
 import { searchRegistries } from "@/src/registry/search"
@@ -89,7 +88,7 @@ export const search = new Command()
       const { config: updatedConfig, newRegistries } =
         await ensureRegistriesInConfig(
           registries
-            .filter((registry) => !isGitHubRegistrySource(registry))
+            .filter((registry) => registry.startsWith("@"))
             .map((registry) => `${registry}/registry`),
           config,
           {
