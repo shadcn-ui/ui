@@ -161,23 +161,34 @@ Use `@version` to specify the version of the package.
 
 ### registryDependencies
 
-Used for registry dependencies. Can be names, namespaced or URLs.
+Used for registry dependencies. Each entry is an item address.
 
 - For `shadcn/ui` registry items such as `button`, `input`, `select`, etc use the name eg. `['button', 'input', 'select']`.
-- For namespaced registry items such as `@acme` use the name eg. `['@acme/input-form']`.
+- For namespaced registry items, use `@namespace/item-name` eg. `['@acme/input-form']`.
+- For GitHub registry items, use `owner/repo/item-name` eg. `['acme/ui/button']`. For published registries, prefer a tag or full commit SHA eg. `['acme/ui/button#v1.2.0']`.
 - For custom registry items use the URL of the registry item eg. `['https://example.com/r/hello-world.json']`.
+- For local registry item files use a file path eg. `['./hello-world.json']`.
 
 ```json title="registry-item.json" showLineNumbers
 {
   "registryDependencies": [
     "button",
     "@acme/input-form",
-    "https://example.com/r/editor.json"
+    "acme/ui/button#v1.2.0",
+    "https://example.com/r/editor.json",
+    "./editor.json"
   ]
 }
 ```
 
-Note: The CLI will automatically resolve remote registry dependencies.
+Note: Bare names keep their existing behavior. `button` means the built-in
+shadcn `button` item, not an item from the same GitHub repository. For
+same-repository GitHub dependencies, use the full GitHub item address.
+
+Refs are not inherited across dependencies. If a GitHub dependency should be
+reproducible, pin that dependency to its own tag or full commit SHA.
+
+See the [GitHub registry](/docs/registry/github) docs for more information.
 
 ### files
 
@@ -225,6 +236,80 @@ The `target` property is used to indicate where the file should be placed in a p
 By default, the `shadcn` cli will read a project's `components.json` file to determine the target path. For some files, such as routes or config you can specify the target path manually.
 
 Use `~` to refer to the root of the project e.g `~/foo.config.js`.
+
+You can also use registry target placeholders to place files under the
+directories configured by the user's `components.json`. These placeholders are
+only supported at the start of `target` and are independent of the project's
+import prefix. For example, `@ui/button.tsx` works whether the project imports
+components with `@/`, `#`, package imports or workspace exports.
+
+| Placeholder    | Resolves to          |
+| -------------- | -------------------- |
+| `@components/` | `aliases.components` |
+| `@ui/`         | `aliases.ui`         |
+| `@lib/`        | `aliases.lib`        |
+| `@hooks/`      | `aliases.hooks`      |
+
+Use these placeholders when you want a registry item to install into the
+project's configured shadcn directories without hardcoding `components`, `src`
+or workspace package paths. Anything after the placeholder is preserved, so
+`@ui/ai/prompt-input.tsx` installs under the user's configured `ui` directory
+at `ai/prompt-input.tsx`.
+
+```json title="registry-item.json" showLineNumbers
+{
+  "files": [
+    {
+      "path": "registry/new-york/example/button.tsx",
+      "type": "registry:ui",
+      "target": "@ui/button.tsx"
+    },
+    {
+      "path": "registry/new-york/example/prompt-input.tsx",
+      "type": "registry:ui",
+      "target": "@ui/ai/prompt-input.tsx"
+    },
+    {
+      "path": "registry/new-york/example/card.tsx",
+      "type": "registry:component",
+      "target": "@components/card.tsx"
+    },
+    {
+      "path": "registry/new-york/example/helper.ts",
+      "type": "registry:lib",
+      "target": "@lib/helper.ts"
+    },
+    {
+      "path": "registry/new-york/example/use-demo.ts",
+      "type": "registry:hook",
+      "target": "@hooks/use-demo.ts"
+    }
+  ]
+}
+```
+
+The `target` property decides where the file is written. It can point to a
+different shadcn directory than the file `type`.
+
+```json title="registry-item.json" showLineNumbers
+{
+  "files": [
+    {
+      "path": "registry/new-york/example/format-date.ts",
+      "type": "registry:ui",
+      "target": "@lib/format-date.ts"
+    }
+  ]
+}
+```
+
+Unknown placeholders are treated as regular target paths. For example,
+`@foo/bar.ts` is written as `foo/bar.ts`. Embedded placeholders such as
+`components/@ui/button.tsx` are also treated as regular paths.
+
+<Callout>
+  `@utils/` is not supported because `utils` points to a file, not a directory.
+</Callout>
 
 ### tailwind
 

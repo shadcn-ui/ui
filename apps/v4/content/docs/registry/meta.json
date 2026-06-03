@@ -3,11 +3,12 @@
   "pages": [
     "index",
     "getting-started",
+    "github",
+    "registry-index",
+    "examples",
     "namespace",
     "authentication",
-    "examples",
     "mcp",
-    "registry-index",
     "open-in-v0",
     "registry-json",
     "registry-item-json"

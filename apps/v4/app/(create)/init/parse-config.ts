@@ -23,6 +23,7 @@ export function parseDesignSystemConfig(searchParams: URLSearchParams) {
       base: searchParams.get("base") ?? "radix",
       template: searchParams.get("template") ?? undefined,
       rtl: searchParams.get("rtl") === "true",
+      pointer: searchParams.get("pointer") === "true",
     }
   } else {
     configInput = {
@@ -39,6 +40,7 @@ export function parseDesignSystemConfig(searchParams: URLSearchParams) {
       radius: searchParams.get("radius"),
       template: searchParams.get("template") ?? undefined,
       rtl: searchParams.get("rtl") === "true",
+      pointer: searchParams.get("pointer") === "true",
     }
   }
 
