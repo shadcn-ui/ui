@@ -820,6 +820,11 @@ export async function runInit(
     await templatePostInit({ projectPath: options.cwd })
   }
 
+  await promptInstallShadcnSkills({
+    cwd: options.cwd,
+    silent: options.silent,
+  })
+
   return fullConfig
 }
 
