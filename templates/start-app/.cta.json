@@ -2,15 +2,15 @@
   "projectName": "start-app",
   "mode": "file-router",
   "typescript": true,
-  "tailwind": true,
   "packageManager": "pnpm",
+  "includeExamples": false,
+  "tailwind": true,
   "addOnOptions": {},
+  "envVarValues": {},
   "git": true,
+  "install": true,
+  "routerOnly": false,
   "version": 1,
-  "framework": "react-cra",
-  "chosenAddOns": [
-    "eslint",
-    "nitro",
-    "start"
-  ]
+  "framework": "react",
+  "chosenAddOns": ["eslint"]
 }

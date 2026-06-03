@@ -3,6 +3,7 @@
   "pages": [
     "index",
     "getting-started",
+    "github",
     "registry-index",
     "examples",
     "namespace",
