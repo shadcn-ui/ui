@@ -465,9 +465,6 @@ try {
   console.log("\n📦 Building public/r/index.json...")
   await buildIndex()
 
-  console.log("\n📋 Building public/r/registries.json...")
-  await buildRegistriesJson()
-
   console.log("\n🎨 Building public/r/colors...")
   await buildColors()
 
@@ -1174,32 +1171,6 @@ async function buildIndex() {
 
   const outputPath = path.join(process.cwd(), "public/r/index.json")
   await writeIfChanged(outputPath, await formatGeneratedJson(index, outputPath))
-}
-
-async function buildRegistriesJson() {
-  const directoryPath = path.join(process.cwd(), "registry/directory.json")
-  const directoryContent = await fs.readFile(directoryPath, "utf8")
-  const directory = JSON.parse(directoryContent) as Array<{
-    name: string
-    homepage?: string
-    url: string
-    description?: string
-    featured?: boolean
-    logo?: string
-  }>
-
-  const registries = directory.map((entry) => ({
-    name: entry.name,
-    homepage: entry.homepage,
-    url: entry.url,
-    description: entry.description,
-  }))
-
-  const outputPath = path.join(process.cwd(), "public/r/registries.json")
-  await writeIfChanged(
-    outputPath,
-    await formatGeneratedJson(registries, outputPath)
-  )
 }
 
 async function readDirectoryEntries(dirPath: string) {
