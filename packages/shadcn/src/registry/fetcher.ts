@@ -13,12 +13,11 @@ import {
   RegistryUnauthorizedError,
 } from "@/src/registry/errors"
 import { registryItemSchema } from "@/src/schema"
-import { HttpsProxyAgent } from "https-proxy-agent"
-import fetch, { Headers } from "node-fetch"
+import { ProxyAgent, type Dispatcher } from "undici"
 import { z } from "zod"
 
-const agent = process.env.https_proxy
-  ? new HttpsProxyAgent(process.env.https_proxy)
+const dispatcher: Dispatcher | undefined = process.env.https_proxy
+  ? new ProxyAgent(process.env.https_proxy)
   : undefined
 
 const registryCache = new Map<string, Promise<any>>()
@@ -60,9 +59,9 @@ export async function fetchRegistry(
           }
 
           const response = await fetch(url, {
-            agent,
+            dispatcher,
             headers: requestHeaders,
-          })
+          } as RequestInit & { dispatcher?: Dispatcher })
 
           if (!response.ok) {
             let messageFromServer = undefined
