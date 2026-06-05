@@ -1,19 +1,20 @@
 "use client"
 
-import { Button } from "@/examples/base/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/examples/base/ui/dropdown-menu"
 import {
   CreditCardIcon,
   LogOutIcon,
   SettingsIcon,
   UserIcon,
 } from "lucide-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/styles/base-nova/ui/dropdown-menu"
 
 export function DropdownMenuIcons() {
   return (

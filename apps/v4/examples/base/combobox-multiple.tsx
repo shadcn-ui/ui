@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+
 import {
   Combobox,
   ComboboxChip,
@@ -12,7 +13,7 @@ import {
   ComboboxList,
   ComboboxValue,
   useComboboxAnchor,
-} from "@/examples/base/ui/combobox"
+} from "@/styles/base-nova/ui/combobox"
 
 const frameworks = [
   "Next.js",

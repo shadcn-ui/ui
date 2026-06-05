@@ -4,13 +4,13 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/examples/base/ui/card"
+} from "@/styles/base-nova/ui/card"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/examples/base/ui/tabs"
+} from "@/styles/base-nova/ui/tabs"
 
 export function TabsDemo() {
   return (

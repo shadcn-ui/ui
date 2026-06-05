@@ -1,7 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
+
+import { cn } from "@/lib/utils"
+import { useMediaQuery } from "@/hooks/use-media-query"
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -9,7 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/base/ui/dialog"
+} from "@/styles/base-nova/ui/dialog"
 import {
   Drawer,
   DrawerClose,
@@ -19,12 +22,9 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/examples/base/ui/drawer"
-import { Input } from "@/examples/base/ui/input"
-import { Label } from "@/examples/base/ui/label"
-
-import { cn } from "@/lib/utils"
-import { useMediaQuery } from "@/hooks/use-media-query"
+} from "@/styles/base-nova/ui/drawer"
+import { Input } from "@/styles/base-nova/ui/input"
+import { Label } from "@/styles/base-nova/ui/label"
 
 export function DrawerDialogDemo() {
   const [open, setOpen] = React.useState(false)

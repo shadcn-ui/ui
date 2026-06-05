@@ -229,8 +229,8 @@ export default function SidebarFloatingExample() {
           </SidebarGroup>
         </SidebarContent>
         <SidebarFooter>
-          <SidebarGroup>
-            <Card size="sm" className="-mx-2">
+          <SidebarGroup className="pb-1">
+            <Card size="sm" className="-mx-1">
               <CardHeader>
                 <CardTitle className="text-sm">
                   Subscribe to our newsletter
@@ -267,7 +267,7 @@ export default function SidebarFloatingExample() {
             <div className="aspect-video rounded-xl bg-muted/50" />
             <div className="aspect-video rounded-xl bg-muted/50" />
           </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
+          <div className="min-h-screen flex-1 rounded-xl bg-muted/50 md:min-h-min" />
         </div>
       </SidebarInset>
     </SidebarProvider>

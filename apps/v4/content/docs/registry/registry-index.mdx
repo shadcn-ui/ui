@@ -1,5 +1,5 @@
 ---
-title: Add a Registry
+title: Registry Directory
 description: Open Source Registry Index
 ---
 
@@ -9,15 +9,19 @@ When you run `shadcn add` or `shadcn search`, the CLI will automatically check t
 
 You can see the full list at [https://ui.shadcn.com/r/registries.json](https://ui.shadcn.com/r/registries.json).
 
+You do not need to submit a public GitHub registry to the registry directory to
+use it with `owner/repo/item` addresses. The registry directory is for
+namespaces such as `@acme`.
+
 ## Adding a Registry
 
 1. Add your registry to [`apps/v4/registry/directory.json`](https://github.com/shadcn-ui/ui/blob/main/apps/v4/registry/directory.json)
-2. Run `pnpm registry:build` to update `registries.json` file.
+2. Run `pnpm validate:registries` to validate the registry directory.
 3. Create a pull request to https://github.com/shadcn-ui/ui
 
 Once you have submitted your request, it will be validated and reviewed by the team.
 
-### Requirements
+## Requirements
 
 1. The registry must be open source and publicly accessible.
 2. The registry must be a valid JSON file that conforms to the [registry schema specification](/docs/registry/registry-json).
@@ -55,7 +59,6 @@ Here's an example of a valid registry:
           "type": "registry:component"
         }
       ]
-    }
     }
   ]
 }

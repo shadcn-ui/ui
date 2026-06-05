@@ -1,22 +1,23 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
+import { MaximizeIcon, MinimizeIcon } from "lucide-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/examples/base/ui/card"
+} from "@/styles/base-nova/ui/card"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/base/ui/collapsible"
-import { Field, FieldGroup, FieldLabel } from "@/examples/base/ui/field"
-import { Input } from "@/examples/base/ui/input"
-import { MaximizeIcon, MinimizeIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/collapsible"
+import { Field, FieldGroup, FieldLabel } from "@/styles/base-nova/ui/field"
+import { Input } from "@/styles/base-nova/ui/input"
 
 export function CollapsibleSettings() {
   const [isOpen, setIsOpen] = React.useState(false)

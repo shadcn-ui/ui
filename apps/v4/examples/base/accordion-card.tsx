@@ -3,14 +3,14 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/examples/base/ui/accordion"
+} from "@/styles/base-nova/ui/accordion"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/examples/base/ui/card"
+} from "@/styles/base-nova/ui/card"
 
 const items = [
   {

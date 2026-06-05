@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Skeleton } from "@/examples/base/ui-rtl/skeleton"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Skeleton } from "@/styles/base-nova/ui-rtl/skeleton"
 
 const translations: Translations = {
   en: {

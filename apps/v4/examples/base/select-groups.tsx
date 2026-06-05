@@ -7,7 +7,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@/examples/base/ui/select"
+} from "@/styles/base-nova/ui/select"
 
 export function SelectGroups() {
   const fruits = [

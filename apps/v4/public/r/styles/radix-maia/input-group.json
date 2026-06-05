@@ -13,5 +13,11 @@
       "type": "registry:ui"
     }
   ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/radix/input-group",
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/input-group-example.tsx"
+    }
+  },
   "type": "registry:ui"
 }

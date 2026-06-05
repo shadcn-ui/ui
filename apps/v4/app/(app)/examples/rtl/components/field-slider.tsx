@@ -1,14 +1,14 @@
 "use client"
 
 import { useState } from "react"
+
+import { useLanguageContext } from "@/components/language-selector"
 import {
   Field,
   FieldDescription,
   FieldTitle,
-} from "@/examples/base/ui-rtl/field"
-import { Slider } from "@/examples/base/ui-rtl/slider"
-
-import { useLanguageContext } from "@/components/language-selector"
+} from "@/styles/base-nova/ui-rtl/field"
+import { Slider } from "@/styles/base-nova/ui-rtl/slider"
 
 const translations = {
   ar: {

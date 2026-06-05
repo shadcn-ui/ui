@@ -1,26 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/radix/ui/button"
-import { Checkbox } from "@/examples/radix/ui/checkbox"
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from "@/examples/radix/ui/dropdown-menu"
-import { Input } from "@/examples/radix/ui/input"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/examples/radix/ui/table"
 import {
   flexRender,
   getCoreRowModel,
@@ -34,6 +14,27 @@ import {
   type VisibilityState,
 } from "@tanstack/react-table"
 import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react"
+
+import { Button } from "@/styles/radix-nova/ui/button"
+import { Checkbox } from "@/styles/radix-nova/ui/checkbox"
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/styles/radix-nova/ui/dropdown-menu"
+import { Input } from "@/styles/radix-nova/ui/input"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/styles/radix-nova/ui/table"
 
 const data: Payment[] = [
   {

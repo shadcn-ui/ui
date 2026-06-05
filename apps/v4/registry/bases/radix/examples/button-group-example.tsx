@@ -108,7 +108,11 @@ function ButtonGroupWithText() {
           <ButtonGroupText asChild>
             <Label htmlFor="input-text">GPU Size</Label>
           </ButtonGroupText>
-          <Input id="input-text" placeholder="Type something here..." />
+          <Input
+            id="input-text"
+            placeholder="Type something here..."
+            className="style-luma:border-border"
+          />
         </ButtonGroup>
       </div>
     </Example>

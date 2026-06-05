@@ -11,13 +11,17 @@ export default defineConfig({
     "src/mcp/index.ts",
     "src/utils/index.ts",
     "src/icons/index.ts",
+    "src/preset/index.ts",
   ],
   format: ["esm"],
-  sourcemap: true,
+  sourcemap: false,
   minify: true,
   target: "esnext",
   outDir: "dist",
   treeshake: true,
+  // Bundle @antfu/ni and its dependency tinyexec to avoid
+  // module resolution failures with npx temporary installs.
+  noExternal: ["@antfu/ni", "tinyexec"],
   onSuccess: async () => {
     copyFileSync("src/tailwind.css", "dist/tailwind.css")
   },

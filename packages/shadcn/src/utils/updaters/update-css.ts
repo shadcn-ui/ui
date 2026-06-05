@@ -1,14 +1,21 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { registryItemCssSchema } from "@/src/schema"
+import {
+  registryItemCssSchema,
+  registryItemCssVarsSchema,
+  registryItemTailwindSchema,
+} from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
+import { TailwindVersion } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { spinner } from "@/src/utils/spinner"
+import { transformCssVars } from "@/src/utils/updaters/update-css-vars"
 import postcss from "postcss"
 import AtRule from "postcss/lib/at-rule"
 import Declaration from "postcss/lib/declaration"
 import Root from "postcss/lib/root"
 import Rule from "postcss/lib/rule"
+import { twMerge } from "tailwind-merge"
 import { z } from "zod"
 
 export async function updateCss(
@@ -16,13 +23,17 @@ export async function updateCss(
   config: Config,
   options: {
     silent?: boolean
+    cssVars?: z.infer<typeof registryItemCssVarsSchema>
+    cleanupDefaultNextStyles?: boolean
+    overwriteCssVars?: boolean
+    tailwindVersion?: TailwindVersion
+    tailwindConfig?: z.infer<typeof registryItemTailwindSchema>["config"]
   }
 ) {
-  if (
-    !config.resolvedPaths.tailwindCss ||
-    !css ||
-    Object.keys(css).length === 0
-  ) {
+  const hasCss = css && Object.keys(css).length > 0
+  const hasCssVars = Object.keys(options.cssVars ?? {}).length > 0
+
+  if (!config.resolvedPaths.tailwindCss || (!hasCss && !hasCssVars)) {
     return
   }
 
@@ -43,8 +54,23 @@ export async function updateCss(
     }
   ).start()
 
-  const raw = await fs.readFile(cssFilepath, "utf8")
-  let output = await transformCss(raw, css)
+  let output = await fs.readFile(cssFilepath, "utf8")
+
+  // Apply CSS vars transform first if provided.
+  if (hasCssVars) {
+    output = await transformCssVars(output, options.cssVars!, config, {
+      cleanupDefaultNextStyles: options.cleanupDefaultNextStyles,
+      tailwindVersion: options.tailwindVersion,
+      tailwindConfig: options.tailwindConfig,
+      overwriteCssVars: options.overwriteCssVars,
+    })
+  }
+
+  // Apply CSS transform if provided.
+  if (hasCss) {
+    output = await transformCss(output, css!)
+  }
+
   await fs.writeFile(cssFilepath, output, "utf8")
   cssSpinner.succeed()
 }
@@ -532,6 +558,20 @@ function processRule(parent: Root | AtRule, selector: string, properties: any) {
           )
 
           if (!existingAtRule) {
+            // For @apply, merge with existing @apply instead of creating a duplicate.
+            if (atRuleName === "apply") {
+              const existingApply = rule.nodes?.find(
+                (node): node is AtRule =>
+                  node.type === "atrule" && node.name === "apply"
+              )
+              if (existingApply) {
+                existingApply.params = twMerge(
+                  existingApply.params,
+                  atRuleParams
+                )
+                continue
+              }
+            }
             const atRule = postcss.atRule({
               name: atRuleName,
               params: atRuleParams,

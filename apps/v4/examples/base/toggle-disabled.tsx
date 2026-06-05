@@ -1,4 +1,4 @@
-import { Toggle } from "@/examples/base/ui/toggle"
+import { Toggle } from "@/styles/base-nova/ui/toggle"
 
 export function ToggleDisabled() {
   return (

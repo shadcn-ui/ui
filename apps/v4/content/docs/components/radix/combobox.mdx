@@ -90,6 +90,62 @@ export function ExampleCombobox() {
 }
 ```
 
+## Composition
+
+### Simple
+
+A single-line input and a flat list (see [Basic](#basic)).
+
+```text
+Combobox
+├── ComboboxInput
+└── ComboboxContent
+    ├── ComboboxEmpty
+    └── ComboboxList
+        ├── ComboboxItem
+        └── ComboboxItem
+```
+
+### With chips
+
+Multi-select with `multiple`, chips, and a chips input (see [Multiple](#multiple)).
+
+```text
+Combobox
+├── ComboboxChips
+│   ├── ComboboxValue
+│   │   └── ComboboxChip
+│   └── ComboboxChipsInput
+└── ComboboxContent
+    ├── ComboboxEmpty
+    └── ComboboxList
+        ├── ComboboxItem
+        └── ComboboxItem
+```
+
+### With groups and collection
+
+Nested items per group using `ComboboxCollection` inside each `ComboboxGroup`, with a separator between groups (see [Groups](#groups)).
+
+```text
+Combobox
+├── ComboboxInput
+└── ComboboxContent
+    ├── ComboboxEmpty
+    └── ComboboxList
+        ├── ComboboxGroup
+        │   ├── ComboboxLabel
+        │   └── ComboboxCollection
+        │       ├── ComboboxItem
+        │       └── ComboboxItem
+        ├── ComboboxSeparator
+        └── ComboboxGroup
+            ├── ComboboxLabel
+            └── ComboboxCollection
+                ├── ComboboxItem
+                └── ComboboxItem
+```
+
 ## Custom Items
 
 Use `itemToStringValue` when your items are objects.
@@ -222,7 +278,7 @@ Use `ComboboxGroup` and `ComboboxSeparator` to group items.
 
 ### Custom Items
 
-You can render custom component inside `ComboboxItem`.
+You can render a custom component inside `ComboboxItem`.
 
 <ComponentPreview styleName="base-nova" name="combobox-custom" />
 
@@ -240,7 +296,7 @@ Use the `disabled` prop to disable the combobox.
 
 ### Auto Highlight
 
-Use the `autoHighlight` prop automatically highlight the first item on filter.
+Use the `autoHighlight` prop to automatically highlight the first item on filter.
 
 <ComponentPreview styleName="base-nova" name="combobox-auto-highlight" />
 

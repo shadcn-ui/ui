@@ -2,12 +2,12 @@
 
 import * as React from "react"
 import Image from "next/image"
-import { AspectRatio } from "@/examples/base/ui-rtl/aspect-ratio"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { AspectRatio } from "@/styles/base-nova/ui-rtl/aspect-ratio"
 
 const translations: Translations = {
   en: {

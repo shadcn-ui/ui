@@ -1,21 +1,16 @@
-import fs, { promises as fsPromises } from "fs"
+import fs from "fs"
 import path from "path"
 import { ExamplesIndex } from "@/examples/__index__"
-import {
-  createStyleMap,
-  transformIcons,
-  transformMenu,
-  transformRender,
-  transformStyle,
-} from "shadcn/utils"
-import { Project, ScriptKind } from "ts-morph"
 import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
 
+import { formatCode } from "@/lib/format-code"
 import { Index as StylesIndex } from "@/registry/__index__"
 import { getActiveStyle } from "@/registry/_legacy-styles"
 import { BASES } from "@/registry/bases"
 import { Index as BasesIndex } from "@/registry/bases/__index__"
+
+export { formatCode } from "@/lib/format-code"
 
 function getBaseForStyle(styleName: string) {
   for (const base of BASES) {
@@ -23,125 +18,26 @@ function getBaseForStyle(styleName: string) {
       return base.name
     }
   }
+
   return null
 }
 
 function getDemoFilePath(name: string, styleName: string) {
   const base = getBaseForStyle(styleName)
-  if (!base) return null
-
-  const demo = ExamplesIndex[base]?.[name]
+  const demo =
+    ExamplesIndex[styleName]?.[name] ??
+    (base ? ExamplesIndex[base]?.[name] : undefined)
   if (!demo) return null
 
-  return path.join(process.cwd(), demo.filePath)
+  return demo.filePath
 }
 
-function getIndexForStyle(styleName: string) {
+function getRegistryEntry(name: string, styleName: string) {
   const base = getBaseForStyle(styleName)
-  if (base) {
-    return { index: BasesIndex, key: base }
-  }
-  return { index: StylesIndex, key: styleName }
-}
-
-function getStyleFromStyleName(styleName: string) {
-  const parts = styleName.split("-")
-  return parts.length > 1 ? parts.slice(1).join("-") : styleName
-}
-
-function buildDisplayConfig(styleName: string) {
-  return {
-    $schema: "https://ui.shadcn.com/schema.json",
-    style: styleName,
-    rsc: true,
-    tsx: true,
-    tailwind: {
-      config: "",
-      css: "",
-      baseColor: "neutral",
-      cssVariables: true,
-      prefix: "",
-    },
-    iconLibrary: "lucide",
-    aliases: {
-      components: "@/components",
-      utils: "@/lib/utils",
-      ui: "@/components/ui",
-      lib: "@/lib",
-      hooks: "@/hooks",
-    },
-    resolvedPaths: {
-      cwd: "/",
-      tailwindConfig: "",
-      tailwindCss: "",
-      utils: "@/lib/utils",
-      components: "@/components",
-      lib: "@/lib",
-      hooks: "@/hooks",
-      ui: "@/components/ui",
-    },
-  }
-}
-
-const styleMapCache = new Map<string, Record<string, string>>()
-
-async function getStyleMap(styleName: string) {
-  const style = getStyleFromStyleName(styleName)
-
-  if (styleMapCache.has(style)) {
-    return styleMapCache.get(style)!
-  }
-
-  try {
-    const cssPath = path.join(
-      process.cwd(),
-      `registry/styles/style-${style}.css`
-    )
-    const css = await fsPromises.readFile(cssPath, "utf-8")
-    const styleMap = createStyleMap(css)
-    styleMapCache.set(style, styleMap)
-    return styleMap
-  } catch {
-    return {}
-  }
-}
-
-export async function formatCode(code: string, styleName: string) {
-  code = code.replaceAll(`@/registry/${styleName}/`, "@/components/")
-
-  for (const base of BASES) {
-    code = code.replaceAll(`@/registry/bases/${base.name}/`, "@/components/")
-    code = code.replaceAll(`@/examples/${base.name}/ui/`, "@/components/ui/")
-    code = code.replaceAll(`@/examples/${base.name}/lib/`, "@/lib/")
-    code = code.replaceAll(`@/examples/${base.name}/hooks/`, "@/hooks/")
-  }
-
-  code = code.replaceAll("export default", "export")
-
-  try {
-    const styleMap = await getStyleMap(styleName)
-    const transformed = await transformStyle(code, { styleMap })
-    const config = buildDisplayConfig(styleName)
-    const project = new Project({ compilerOptions: {} })
-    const sourceFile = project.createSourceFile("component.tsx", transformed, {
-      scriptKind: ScriptKind.TSX,
-    })
-
-    const transformers = [transformIcons, transformMenu, transformRender]
-    for (const transformer of transformers) {
-      await transformer({
-        filename: "component.tsx",
-        raw: transformed,
-        sourceFile,
-        config,
-      })
-    }
-
-    return sourceFile.getText()
-  } catch (error) {
-    console.error("Transform failed:", error)
-    return code
-  }
+  return (
+    StylesIndex[styleName]?.[name] ??
+    (base ? BasesIndex[base]?.[name] : undefined)
+  )
 }
 
 interface UnistNode {
@@ -243,8 +139,11 @@ export function rehypeComponent() {
             src = getDemoFilePath(item.name, item.styleName)
 
             if (!src) {
-              const { index, key } = getIndexForStyle(item.styleName)
-              const component = index[key]?.[item.name]
+              const component = getRegistryEntry(item.name, item.styleName)
+
+              if (!component?.files) {
+                return
+              }
 
               if (item.type === "ComponentSource" && item.fileName) {
                 src =
@@ -267,7 +166,7 @@ export function rehypeComponent() {
             return
           }
 
-          const raw = fs.readFileSync(src, "utf8")
+          const raw = fs.readFileSync(path.join(process.cwd(), src), "utf8")
           const source = await formatCode(raw, item.styleName)
 
           item.node.children?.push(

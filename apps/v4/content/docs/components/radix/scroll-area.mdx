@@ -59,13 +59,22 @@ npm install radix-ui
 ## Usage
 
 ```tsx showLineNumbers
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 ```
 
 ```tsx showLineNumbers
 <ScrollArea className="h-[200px] w-[350px] rounded-md border p-4">
   Your scrollable content here.
 </ScrollArea>
+```
+
+## Composition
+
+Use the following composition to build a `ScrollArea`:
+
+```text
+ScrollArea
+└── ScrollBar
 ```
 
 ## Examples

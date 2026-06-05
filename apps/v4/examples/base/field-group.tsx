@@ -1,4 +1,4 @@
-import { Checkbox } from "@/examples/base/ui/checkbox"
+import { Checkbox } from "@/styles/base-nova/ui/checkbox"
 import {
   Field,
   FieldDescription,
@@ -6,7 +6,7 @@ import {
   FieldLabel,
   FieldSeparator,
   FieldSet,
-} from "@/examples/base/ui/field"
+} from "@/styles/base-nova/ui/field"
 
 export default function FieldGroupExample() {
   return (

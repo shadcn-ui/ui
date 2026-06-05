@@ -7,13 +7,13 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@/examples/base/ui/combobox"
+} from "@/styles/base-nova/ui/combobox"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/examples/base/ui/item"
+} from "@/styles/base-nova/ui/item"
 
 const countries = [
   { code: "", value: "", continent: "", label: "Select country" },

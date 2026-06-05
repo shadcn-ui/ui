@@ -8,5 +8,11 @@
       "type": "registry:ui"
     }
   ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/radix/badge",
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/badge-example.tsx"
+    }
+  },
   "type": "registry:ui"
 }

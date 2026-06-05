@@ -27,12 +27,20 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/installation",
   },
   {
-    name: "Directory",
-    href: "/docs/directory",
+    name: "Theming",
+    href: "/docs/theming",
+  },
+  {
+    name: "CLI",
+    href: "/docs/cli",
   },
   {
     name: "RTL",
     href: "/docs/rtl",
+  },
+  {
+    name: "Skills",
+    href: "/docs/skills",
   },
   {
     name: "MCP Server",
@@ -110,9 +118,6 @@ export function MobileNav({
               Menu
             </div>
             <div className="flex flex-col gap-3">
-              <MobileLink href="/" onOpenChange={setOpen}>
-                Home
-              </MobileLink>
               {items.map((item, index) => (
                 <MobileLink key={index} href={item.href} onOpenChange={setOpen}>
                   {item.label}

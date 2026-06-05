@@ -1,0 +1,21 @@
+.DS_Store
+.env*
+node_modules
+
+# turbo
+.turbo
+
+# React Router
+.react-router
+build
+dist
+
+# typescript
+*.tsbuildinfo
+
+# misc
+*.pem
+
+# debug
+npm-debug.log*
+pnpm-debug.log*

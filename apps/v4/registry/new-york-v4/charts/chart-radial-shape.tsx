@@ -53,8 +53,8 @@ export function ChartRadialShape() {
           <RadialBarChart
             data={chartData}
             endAngle={100}
-            innerRadius={80}
-            outerRadius={140}
+            innerRadius={65}
+            outerRadius={95}
           >
             <PolarGrid
               gridType="circle"

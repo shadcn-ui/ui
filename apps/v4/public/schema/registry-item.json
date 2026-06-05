@@ -90,7 +90,7 @@
           },
           "target": {
             "type": "string",
-            "description": "The target path of the file. This is the path to the file in the project."
+            "description": "The target path of the file. This is the path to the file in the project. Supports registry target placeholders @components/, @ui/, @lib/, and @hooks/, which resolve to the corresponding aliases configured in components.json. These placeholders are independent of the project's import prefix."
           }
         },
         "if": {
@@ -246,6 +246,14 @@
             "type": "string"
           },
           "description": "Array of font subsets to include (e.g., ['latin', 'latin-ext'])."
+        },
+        "selector": {
+          "type": "string",
+          "description": "CSS selector to apply the font utility class to (e.g., 'h1, h2, h3'). Defaults to 'html'."
+        },
+        "dependency": {
+          "type": "string",
+          "description": "The npm package to install for the font in non-Next.js projects (e.g., '@fontsource-variable/inter', '@fontsource/lato')."
         }
       },
       "required": ["family", "provider", "import", "variable"]

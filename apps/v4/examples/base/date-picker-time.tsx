@@ -1,17 +1,18 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
-import { Calendar } from "@/examples/base/ui/calendar"
-import { Field, FieldGroup, FieldLabel } from "@/examples/base/ui/field"
-import { Input } from "@/examples/base/ui/input"
+import { format } from "date-fns"
+import { ChevronDownIcon } from "lucide-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
+import { Calendar } from "@/styles/base-nova/ui/calendar"
+import { Field, FieldGroup, FieldLabel } from "@/styles/base-nova/ui/field"
+import { Input } from "@/styles/base-nova/ui/input"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/examples/base/ui/popover"
-import { format } from "date-fns"
-import { ChevronDownIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/popover"
 
 export function DatePickerTime() {
   const [open, setOpen] = React.useState(false)

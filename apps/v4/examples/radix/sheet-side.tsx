@@ -1,4 +1,4 @@
-import { Button } from "@/examples/radix/ui/button"
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   Sheet,
   SheetClose,
@@ -8,7 +8,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/examples/radix/ui/sheet"
+} from "@/styles/radix-nova/ui/sheet"
 
 const SHEET_SIDES = ["top", "right", "bottom", "left"] as const
 

@@ -3,6 +3,7 @@ import { Config } from "@/src/utils/get-config"
 import fuzzysort from "fuzzysort"
 import { z } from "zod"
 
+import { resolveGitHubRegistrySource } from "./address"
 import { getRegistry } from "./api"
 
 export async function searchRegistries(
@@ -80,7 +81,7 @@ function searchItems<
     description?: string
     addCommandArgument?: string
     [key: string]: any
-  } = SearchableItem
+  } = SearchableItem,
 >(
   items: T[],
   options: {
@@ -120,6 +121,12 @@ export function buildRegistryItemNameFromRegistry(
   name: string,
   registry: string
 ) {
+  const githubSource = resolveGitHubRegistrySource(registry)
+  if (githubSource) {
+    const itemAddress = `${githubSource.owner}/${githubSource.repo}/${name}`
+    return githubSource.ref ? `${itemAddress}#${githubSource.ref}` : itemAddress
+  }
+
   // If registry is not a URL, return namespace format.
   if (!isUrl(registry)) {
     return `${registry}/${name}`
