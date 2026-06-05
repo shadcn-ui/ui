@@ -15,6 +15,7 @@ import { getStyle, legacyStyles, type Style } from "@/registry/_legacy-styles"
 import "@/app/legacy-themes.css"
 
 import { ComponentPreview } from "./component-preview"
+import { PreviewWheelForwarder } from "./preview-wheel-forwarder"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -182,6 +183,7 @@ export default async function BlockPage({
 
   return (
     <ComponentPreview>
+      <PreviewWheelForwarder />
       <Component />
     </ComponentPreview>
   )
