@@ -1,6 +1,6 @@
 {
   "name": "shadcn",
-  "version": "4.7.0",
+  "version": "4.10.0",
   "description": "Add components to your apps.",
   "publishConfig": {
     "access": "public"
@@ -73,6 +73,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "release": "changeset version",
     "pub:beta": "pnpm build && pnpm publish --no-git-checks --access public --tag beta",
+    "pub:rc": "pnpm build && pnpm publish --no-git-checks --access public --tag rc",
     "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
     "pub:release": "pnpm build && pnpm publish --access public",
     "test": "vitest run",

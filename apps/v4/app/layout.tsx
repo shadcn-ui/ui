@@ -4,7 +4,6 @@ import { NuqsAdapter } from "nuqs/adapters/next/app"
 import { META_THEME_COLORS, siteConfig } from "@/lib/config"
 import { fontVariables } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
-import { LayoutProvider } from "@/hooks/use-layout"
 import { ActiveThemeProvider } from "@/components/active-theme"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
@@ -81,9 +80,6 @@ export default function RootLayout({
                 if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                   document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
                 }
-                if (localStorage.layout) {
-                  document.documentElement.classList.add('layout-' + localStorage.layout)
-                }
               } catch (_) {}
             `,
           }}
@@ -92,24 +88,22 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "group/body overscroll-none antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]"
+          "group/body overscroll-none antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] lg:[--header-height:calc(var(--spacing)*16)] xl:[--footer-height:calc(var(--spacing)*24)]"
         )}
       >
         <ThemeProvider>
-          <LayoutProvider>
-            <ActiveThemeProvider>
-              <NuqsAdapter>
-                <BaseTooltipProvider delay={0}>
-                  <RadixTooltipProvider delayDuration={0}>
-                    {children}
-                    <Toaster position="top-center" />
-                  </RadixTooltipProvider>
-                </BaseTooltipProvider>
-              </NuqsAdapter>
-              <TailwindIndicator />
-              <Analytics />
-            </ActiveThemeProvider>
-          </LayoutProvider>
+          <ActiveThemeProvider>
+            <NuqsAdapter>
+              <BaseTooltipProvider delay={0}>
+                <RadixTooltipProvider delayDuration={0}>
+                  {children}
+                  <Toaster position="top-center" />
+                </RadixTooltipProvider>
+              </BaseTooltipProvider>
+            </NuqsAdapter>
+            <TailwindIndicator />
+            <Analytics />
+          </ActiveThemeProvider>
         </ThemeProvider>
       </body>
     </html>
