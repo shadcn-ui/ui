@@ -681,7 +681,7 @@
     "name": "@shadcn-waitlist",
     "homepage": "https://shadcn-waitlist.maryojo.me",
     "url": "https://shadcn-waitlist.maryojo.me/r/{name}.json",
-    "description": "A collection of accessible, premium shadcn/ui components and blocks for building waitlists."
+    "description": "A collection of accessible, premium shadcn/ui components and blocks for building waitlists and early access landing pages."
   },
   {
     "name": "@shadcnui-blocks",
