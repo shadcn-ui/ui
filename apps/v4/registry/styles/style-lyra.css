@@ -230,11 +230,11 @@
 
   /* MARK: Card */
   .cn-card {
-    @apply ring-foreground/10 bg-card text-card-foreground gap-4 overflow-hidden rounded-none py-4 text-xs/relaxed ring-1 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-2 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-none *:[img:last-child]:rounded-none;
+    @apply ring-foreground/10 bg-card text-card-foreground gap-(--card-spacing) overflow-hidden rounded-none py-(--card-spacing) text-xs/relaxed ring-1 [--card-spacing:--spacing(4)] has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(3)] data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-none *:[img:last-child]:rounded-none;
   }
 
   .cn-card-header {
-    @apply gap-1 rounded-none px-4 group-data-[size=sm]/card:px-3 [.border-b]:pb-4 group-data-[size=sm]/card:[.border-b]:pb-3;
+    @apply gap-1 rounded-none px-(--card-spacing) [.border-b]:pb-(--card-spacing);
   }
 
   .cn-card-title {
@@ -246,11 +246,11 @@
   }
 
   .cn-card-content {
-    @apply px-4 group-data-[size=sm]/card:px-3;
+    @apply px-(--card-spacing);
   }
 
   .cn-card-footer {
-    @apply rounded-none border-t p-4 group-data-[size=sm]/card:p-3;
+    @apply rounded-none border-t p-(--card-spacing);
   }
 
   /* MARK: Chart */
