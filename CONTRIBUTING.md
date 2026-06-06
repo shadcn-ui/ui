@@ -141,6 +141,11 @@ When adding or modifying components, please ensure that:
 2. You update the documentation.
 3. You run `pnpm registry:build` to update the registry.
 
+See [`apps/v4/registry/README.md`](apps/v4/registry/README.md) for how the
+registry pipeline is structured and for the faster targeted build modes
+(`--style`, `--registry`, `--examples`, `--indexes`) you can use while
+iterating locally. Always run the full `pnpm registry:build` before committing.
+
 ## Commit Convention
 
 Before you create a Pull Request, please check whether your commits comply with
