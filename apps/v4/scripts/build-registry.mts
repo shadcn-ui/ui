@@ -565,26 +565,7 @@ try {
   process.exit(1)
 }
 
-async function buildShadcnPackage() {
-  console.log("📦 Building shadcn package...")
-  await new Promise<void>((resolve, reject) => {
-    const proc = spawn("pnpm", ["--filter=shadcn", "build"], {
-      cwd: process.cwd(),
-      stdio: "inherit",
-    })
-    proc.on("close", (code) => {
-      if (code !== 0) {
-        reject(new Error(`shadcn build exited with code ${code}`))
-      } else {
-        resolve()
-      }
-    })
-    proc.on("error", reject)
-  })
-}
-
 async function runFullBuild() {
-  await buildShadcnPackage()
   await loadTransformCache()
 
   console.log("\n🏗️ Building bases...")
@@ -637,12 +618,6 @@ async function runTargetedBuild(options: BuildOptions) {
   // Targeted builds are for quick dev iteration: skip prettier on generated
   // output. The full (prod) build re-formats everything to its canonical state.
   shouldFormatOutput = false
-
-  // Only the registry export shells out to ../../packages/shadcn/dist/index.js,
-  // so we only rebuild the shadcn package when a registry target is requested.
-  if (options.registry !== null) {
-    await buildShadcnPackage()
-  }
 
   await loadTransformCache()
 
