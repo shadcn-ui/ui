@@ -1170,6 +1170,13 @@
     "logo": "<svg width='256' height='256' viewBox='0 0 256 256' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M0 18.5887C0 8.32245 8.32244 0 18.5887 0H237.411C247.678 0 256 8.32244 256 18.5887V237.411C256 247.678 247.678 256 237.411 256H18.5887C8.32245 256 0 247.678 0 237.411V18.5887Z' fill='black'/> <path d='M128.001 30.0059C128.001 83.7034 171.192 127.313 224.728 127.991L225.994 128L224.728 128.008C171.192 128.686 128.001 172.296 128.001 225.994V256H128V225.994C128 171.873 84.1271 128 30.0068 128L31.273 127.991C84.8099 127.314 128 83.7036 128 30.0059V0.000488281H128.001V30.0059Z' fill='#D9D9D9'/></svg>"
   },
   {
+    "name": "@sora-ui",
+    "homepage": "https://ui.soralabs.io.vn",
+    "url": "https://ui.soralabs.io.vn/r/{name}.json",
+    "description": "Motion-first React primitives and animated UI components for shadcn/ui. Copy, customize, and ship fluid interfaces.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='currentColor'><g transform='translate(100 100) scale(0.8292) translate(-100 -100)'><path d='M 150.245 -0.676 L 150.658 49.581 L 49.237 49.477 L 49.714 -0.758 L 150.245 -0.676 Z M 49.342 150.419 L 49.237 49.477 L -1.04 49.794 L -1.304 150.337 L 49.342 150.419 Z M 150.763 150.523 L 150.658 49.581 L 201.304 49.663 L 201.04 150.206 L 150.763 150.523 Z M 150.763 150.523 L 49.342 150.419 L 49.755 200.676 L 150.286 200.758 L 150.763 150.523 Z'/></g></svg>"
+  },
+  {
     "name": "@soundcn",
     "homepage": "https://soundcn.xyz",
     "url": "https://soundcn.xyz/r/{name}.json",
