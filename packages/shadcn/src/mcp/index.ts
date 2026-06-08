@@ -15,6 +15,7 @@ import {
   formatSearchResultsWithPagination,
   getMcpConfig,
   npxShadcn,
+  resolveMcpCwd,
 } from "./utils"
 
 export const server = new Server(
@@ -30,6 +31,17 @@ export const server = new Server(
   }
 )
 
+const cwdSchema = z
+  .string()
+  .optional()
+  .describe(
+    "Project directory to use when resolving components.json. Defaults to the MCP server working directory."
+  )
+
+function getToolCwd(args?: { cwd?: string }) {
+  return resolveMcpCwd(args?.cwd)
+}
+
 server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: [
@@ -37,7 +49,11 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         name: "get_project_registries",
         description:
           "Get configured registry names from components.json - Returns error if no components.json exists (use init_project to create one)",
-        inputSchema: zodToJsonSchema(z.object({})),
+        inputSchema: zodToJsonSchema(
+          z.object({
+            cwd: cwdSchema,
+          })
+        ),
       },
       {
         name: "list_items_in_registries",
@@ -85,6 +101,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
               .number()
               .optional()
               .describe("Number of items to skip for pagination"),
+            cwd: cwdSchema,
           })
         ),
       },
@@ -99,6 +116,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
               .describe(
                 "Array of item names with registry prefix (e.g., ['@shadcn/button', '@shadcn/card'])"
               ),
+            cwd: cwdSchema,
           })
         ),
       },
@@ -118,6 +136,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
               .describe(
                 "Search query for examples (e.g., 'accordion-demo', 'button demo', 'card example', 'tooltip-demo', 'example-booking-form', 'example-hero'). Common patterns: '{item-name}-demo', '{item-name} example', 'example {item-name}'"
               ),
+            cwd: cwdSchema,
           })
         ),
       },
@@ -153,7 +172,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
     switch (request.params.name) {
       case "get_project_registries": {
-        const config = await getMcpConfig(process.cwd())
+        const args = z.object({ cwd: cwdSchema }).parse(request.params.arguments)
+        const config = await getMcpConfig(getToolCwd(args))
 
         if (!config?.registries) {
           return {
@@ -200,6 +220,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           query: z.string(),
           limit: z.number().optional(),
           offset: z.number().optional(),
+          cwd: cwdSchema,
         })
 
         const args = inputSchema.parse(request.params.arguments)
@@ -207,7 +228,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           query: args.query,
           limit: args.limit,
           offset: args.offset,
-          config: await getMcpConfig(process.cwd()),
+          config: await getMcpConfig(getToolCwd(args)),
           useCache: false,
         })
 
@@ -251,7 +272,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         const results = await searchRegistries(args.registries, {
           limit: args.limit,
           offset: args.offset,
-          config: await getMcpConfig(process.cwd()),
+          config: await getMcpConfig(getToolCwd(args)),
           useCache: false,
         })
 
@@ -283,11 +304,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       case "view_items_in_registries": {
         const inputSchema = z.object({
           items: z.array(z.string()),
+          cwd: cwdSchema,
         })
 
         const args = inputSchema.parse(request.params.arguments)
         const registryItems = await getRegistryItems(args.items, {
-          config: await getMcpConfig(process.cwd()),
+          config: await getMcpConfig(getToolCwd(args)),
           useCache: false,
         })
 
@@ -322,10 +344,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         const inputSchema = z.object({
           query: z.string(),
           registries: z.array(z.string()),
+          cwd: cwdSchema,
         })
 
         const args = inputSchema.parse(request.params.arguments)
-        const config = await getMcpConfig()
+        const config = await getMcpConfig(getToolCwd(args))
 
         const results = await searchRegistries(args.registries, {
           query: args.query,
