@@ -1,7 +1,18 @@
 import { describe, expect, it, vi } from "vitest"
 
 import { getRegistry } from "./api"
-import { buildRegistryItemNameFromRegistry, searchRegistries } from "./search"
+import {
+  buildRegistryItemNameFromRegistry,
+  findUnknownSearchTypes,
+  formatSearchResultDescription,
+  formatSearchResultType,
+  printSearchResults,
+  resolveSearchRegistries,
+  SEARCH_CONCURRENCY,
+  SEARCH_RESULT_DESCRIPTION_MAX_LENGTH,
+  SEARCHABLE_TYPES,
+  searchRegistries,
+} from "./search"
 
 describe("searchRegistries", () => {
   it("should fetch and return registries in flat format", async () => {
@@ -148,6 +159,177 @@ describe("searchRegistries", () => {
     await expect(searchRegistries(["@unknown"])).rejects.toThrow(
       "Registry not found"
     )
+
+    mockGetRegistry.mockRestore()
+  })
+
+  it("collects errors and continues when continueOnError is set", async () => {
+    vi.mock("./api", () => ({
+      getRegistry: vi.fn(),
+    }))
+
+    const mockGetRegistry = vi.mocked(getRegistry)
+
+    mockGetRegistry.mockImplementation(async (name: string) => {
+      if (name === "@ok") {
+        return {
+          name: "ok/registry",
+          homepage: "https://ok.com",
+          items: [
+            { name: "button", type: "registry:ui", description: "A button" },
+          ],
+        }
+      }
+      throw new Error(`Registry not found: ${name}`)
+    })
+
+    const results = await searchRegistries(["@ok", "@broken"], {
+      continueOnError: true,
+    })
+
+    // Items from the working registry are still returned.
+    expect(results.items).toHaveLength(1)
+    expect(results.items[0].name).toBe("button")
+
+    // The failing registry is recorded in errors instead of throwing.
+    expect(results.errors).toEqual([
+      {
+        registry: "@broken",
+        message: "Registry not found: @broken",
+      },
+    ])
+
+    mockGetRegistry.mockRestore()
+  })
+
+  it("preserves argument order even when responses resolve out of order", async () => {
+    vi.mock("./api", () => ({
+      getRegistry: vi.fn(),
+    }))
+
+    const mockGetRegistry = vi.mocked(getRegistry)
+
+    // @slow resolves after @fast, but its items must still come first because
+    // it is listed first. Guards the parallel fetch / ordered processing.
+    mockGetRegistry.mockImplementation(async (name: string) => {
+      if (name === "@slow") {
+        await new Promise((resolve) => setTimeout(resolve, 20))
+        return {
+          name: "slow",
+          homepage: "https://slow.com",
+          items: [{ name: "slow-item", type: "registry:ui", description: "" }],
+        }
+      }
+      if (name === "@fast") {
+        return {
+          name: "fast",
+          homepage: "https://fast.com",
+          items: [{ name: "fast-item", type: "registry:ui", description: "" }],
+        }
+      }
+      throw new Error(`Unknown registry: ${name}`)
+    })
+
+    const results = await searchRegistries(["@slow", "@fast"])
+
+    expect(results.items.map((item) => item.name)).toEqual([
+      "slow-item",
+      "fast-item",
+    ])
+
+    mockGetRegistry.mockRestore()
+  })
+
+  it("caps how many registries are fetched concurrently", async () => {
+    vi.mock("./api", () => ({
+      getRegistry: vi.fn(),
+    }))
+
+    const mockGetRegistry = vi.mocked(getRegistry)
+
+    let active = 0
+    let maxActive = 0
+    mockGetRegistry.mockImplementation(async (name: string) => {
+      active++
+      maxActive = Math.max(maxActive, active)
+      await new Promise((resolve) => setTimeout(resolve, 10))
+      active--
+      return {
+        name,
+        homepage: "https://test.com",
+        items: [{ name: `${name}-item`, type: "registry:ui", description: "" }],
+      }
+    })
+
+    const registries = Array.from({ length: 20 }, (_, i) => `@r${i}`)
+    const results = await searchRegistries(registries)
+
+    // All registries are still fetched...
+    expect(results.items).toHaveLength(20)
+    // ...but never more than the concurrency cap at once.
+    expect(maxActive).toBeLessThanOrEqual(SEARCH_CONCURRENCY)
+
+    mockGetRegistry.mockRestore()
+  })
+
+  it("filters by type (shorthand and full namespace, multiple)", async () => {
+    vi.mock("./api", () => ({
+      getRegistry: vi.fn(),
+    }))
+
+    const mockGetRegistry = vi.mocked(getRegistry)
+
+    mockGetRegistry.mockImplementation(async () => ({
+      name: "test/registry",
+      homepage: "https://test.com",
+      items: [
+        { name: "button", type: "registry:ui", description: "" },
+        { name: "dashboard", type: "registry:block", description: "" },
+        { name: "use-foo", type: "registry:hook", description: "" },
+      ],
+    }))
+
+    // Shorthand, multiple types.
+    const multiple = await searchRegistries(["@test"], {
+      types: ["ui", "hook"],
+    })
+    expect(multiple.items.map((item) => item.name)).toEqual([
+      "button",
+      "use-foo",
+    ])
+
+    // Full namespaced form is accepted too.
+    const full = await searchRegistries(["@test"], {
+      types: ["registry:block"],
+    })
+    expect(full.items.map((item) => item.name)).toEqual(["dashboard"])
+
+    mockGetRegistry.mockRestore()
+  })
+
+  it("combines a type filter with a query", async () => {
+    vi.mock("./api", () => ({
+      getRegistry: vi.fn(),
+    }))
+
+    const mockGetRegistry = vi.mocked(getRegistry)
+
+    mockGetRegistry.mockImplementation(async () => ({
+      name: "test/registry",
+      homepage: "https://test.com",
+      items: [
+        { name: "button", type: "registry:ui", description: "A button" },
+        { name: "button-group", type: "registry:block", description: "" },
+      ],
+    }))
+
+    const results = await searchRegistries(["@test"], {
+      query: "button",
+      types: ["ui"],
+    })
+
+    // Both match the query, but only the ui item survives the type filter.
+    expect(results.items.map((item) => item.name)).toEqual(["button"])
 
     mockGetRegistry.mockRestore()
   })
@@ -651,5 +833,257 @@ describe("buildRegistryItemNameFromRegistry", () => {
   it.each(testCases)("$name", ({ itemName, registry, expected }) => {
     const result = buildRegistryItemNameFromRegistry(itemName, registry)
     expect(result).toBe(expected)
+  })
+})
+
+describe("formatSearchResultType", () => {
+  it("strips the registry prefix", () => {
+    expect(formatSearchResultType("registry:ui")).toBe("ui")
+    expect(formatSearchResultType("registry:block")).toBe("block")
+  })
+
+  it("returns other types unchanged", () => {
+    expect(formatSearchResultType("custom:type")).toBe("custom:type")
+    expect(formatSearchResultType(undefined)).toBe("")
+  })
+})
+
+describe("formatSearchResultDescription", () => {
+  it("returns short descriptions unchanged", () => {
+    expect(formatSearchResultDescription("A simple login form.")).toBe(
+      "A simple login form."
+    )
+  })
+
+  it("truncates long descriptions with an ellipsis", () => {
+    const description =
+      "A dashboard with sidebar, charts, data table, filters, and many other widgets for managing your application."
+
+    const formatted = formatSearchResultDescription(description)
+
+    expect(formatted.length).toBeLessThanOrEqual(
+      SEARCH_RESULT_DESCRIPTION_MAX_LENGTH
+    )
+    expect(formatted.endsWith("...")).toBe(true)
+    expect(formatted).not.toBe(description)
+  })
+})
+
+describe("printSearchResults", () => {
+  it("prints type and description inline", async () => {
+    const log = vi.spyOn(console, "log").mockImplementation(() => {})
+
+    printSearchResults(
+      {
+        pagination: {
+          total: 2,
+          offset: 0,
+          limit: 100,
+          hasMore: false,
+        },
+        items: [
+          {
+            name: "button",
+            type: "registry:ui",
+            description: "A button component",
+            registry: "@shadcn",
+            addCommandArgument: "@shadcn/button",
+          },
+          {
+            name: "card",
+            type: "registry:ui",
+            registry: "@shadcn",
+            addCommandArgument: "@shadcn/card",
+          },
+        ],
+      },
+      {
+        query: "button",
+        registries: ["@shadcn"],
+      }
+    )
+
+    expect(log).toHaveBeenCalledWith(
+      expect.stringContaining('Found 2 items matching "button" in @shadcn')
+    )
+    expect(log).toHaveBeenCalledWith(
+      expect.stringContaining("Showing 1-2 of 2")
+    )
+    expect(log).toHaveBeenCalledWith(
+      expect.stringMatching(
+        /- @shadcn\/button \(ui\) — A button component\n- @shadcn\/card \(ui\)$/
+      )
+    )
+
+    log.mockRestore()
+  })
+
+  it("includes the type filter in the header (normalized for display)", async () => {
+    const log = vi.spyOn(console, "log").mockImplementation(() => {})
+
+    printSearchResults(
+      {
+        pagination: { total: 1, offset: 0, limit: 100, hasMore: false },
+        items: [
+          {
+            name: "button",
+            type: "registry:ui",
+            registry: "@shadcn",
+            addCommandArgument: "@shadcn/button",
+          },
+        ],
+      },
+      {
+        // Full namespaced form on input is shown as the shorthand.
+        types: ["registry:ui"],
+        registries: ["@shadcn"],
+      }
+    )
+
+    expect(log).toHaveBeenCalledWith(
+      expect.stringContaining("Found 1 item of type ui in @shadcn")
+    )
+
+    log.mockRestore()
+  })
+
+  it("prints registry when searching multiple registries", async () => {
+    const log = vi.spyOn(console, "log").mockImplementation(() => {})
+
+    printSearchResults(
+      {
+        pagination: {
+          total: 1,
+          offset: 0,
+          limit: 100,
+          hasMore: false,
+        },
+        items: [
+          {
+            name: "header",
+            type: "registry:component",
+            description: "A header component",
+            registry: "@custom",
+            addCommandArgument: "@custom/header",
+          },
+        ],
+      },
+      {
+        registries: ["@shadcn", "@custom"],
+      }
+    )
+
+    expect(log).toHaveBeenCalledWith(
+      expect.stringMatching(
+        /- @custom\/header \(component\) · @custom — A header component/
+      )
+    )
+
+    log.mockRestore()
+  })
+
+  it("prints a warning for each skipped registry", async () => {
+    const log = vi.spyOn(console, "log").mockImplementation(() => {})
+
+    printSearchResults(
+      {
+        pagination: {
+          total: 1,
+          offset: 0,
+          limit: 100,
+          hasMore: false,
+        },
+        items: [
+          {
+            name: "button",
+            type: "registry:ui",
+            registry: "@ok",
+            addCommandArgument: "@ok/button",
+          },
+        ],
+        errors: [{ registry: "@broken", message: "Not found" }],
+      },
+      {
+        registries: ["@ok", "@broken"],
+      }
+    )
+
+    expect(log).toHaveBeenCalledWith(
+      expect.stringContaining("Skipped @broken: Not found")
+    )
+
+    log.mockRestore()
+  })
+
+  it("prints a warning when no items are found", async () => {
+    const log = vi.spyOn(console, "log").mockImplementation(() => {})
+
+    printSearchResults(
+      {
+        pagination: {
+          total: 0,
+          offset: 0,
+          limit: 100,
+          hasMore: false,
+        },
+        items: [],
+      },
+      {
+        query: "missing",
+        registries: ["@shadcn"],
+      }
+    )
+
+    expect(log).toHaveBeenCalledWith(
+      expect.stringContaining('No items found matching "missing" in @shadcn')
+    )
+
+    log.mockRestore()
+  })
+})
+
+describe("resolveSearchRegistries", () => {
+  it("returns explicitly provided registries unchanged", () => {
+    expect(
+      resolveSearchRegistries(["@one", "@two"], {
+        registries: { "@shadcn": "x/{name}.json", "@one": "y/{name}.json" },
+      })
+    ).toEqual(["@one", "@two"])
+  })
+
+  it("returns all configured registries (excluding builtins) when none given", () => {
+    expect(
+      resolveSearchRegistries([], {
+        registries: {
+          "@shadcn": "x/{name}.json",
+          "@one": "y/{name}.json",
+          "@two": "z/{name}.json",
+        },
+      })
+    ).toEqual(["@one", "@two"])
+  })
+
+  it("returns empty when none given and nothing is configured", () => {
+    expect(resolveSearchRegistries([], { registries: {} })).toEqual([])
+    expect(resolveSearchRegistries([], undefined)).toEqual([])
+  })
+})
+
+describe("findUnknownSearchTypes", () => {
+  it("accepts known types in shorthand and full form", () => {
+    expect(findUnknownSearchTypes(["ui", "registry:block", "HOOK"])).toEqual([])
+  })
+
+  it("returns the unknown types", () => {
+    expect(findUnknownSearchTypes(["ui", "bogus", "blok"])).toEqual([
+      "bogus",
+      "blok",
+    ])
+  })
+
+  it("does not offer internal-only types", () => {
+    expect(SEARCHABLE_TYPES).not.toContain("example")
+    expect(SEARCHABLE_TYPES).not.toContain("internal")
+    expect(findUnknownSearchTypes(["internal"])).toEqual(["internal"])
   })
 })
