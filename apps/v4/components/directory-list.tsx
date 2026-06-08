@@ -258,7 +258,18 @@ function DirectoryListContent() {
                 <DirectoryAddButton registry={registry} />
               </ItemActions>
               <ItemFooter className="justify-start pl-16 sm:hidden">
-                <Button size="sm" variant="outline">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  nativeButton={false}
+                  render={
+                    <a
+                      href={getHomepageUrl(registry.homepage)}
+                      target="_blank"
+                      rel="noopener noreferrer external"
+                    />
+                  }
+                >
                   View <IconArrowUpRight />
                 </Button>
                 <DirectoryAddButton registry={registry} />
