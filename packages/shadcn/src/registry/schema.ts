@@ -287,6 +287,11 @@ export const searchResultItemSchema = z.object({
   addCommandArgument: z.string(),
 })
 
+export const searchResultErrorSchema = z.object({
+  registry: z.string(),
+  message: z.string(),
+})
+
 export const searchResultsSchema = z.object({
   pagination: z.object({
     total: z.number(),
@@ -295,6 +300,10 @@ export const searchResultsSchema = z.object({
     hasMore: z.boolean(),
   }),
   items: z.array(searchResultItemSchema),
+  // Registries that failed to load during the search. Only present when a
+  // search tolerates per-registry failures (see searchRegistries'
+  // continueOnError) and at least one registry was skipped.
+  errors: z.array(searchResultErrorSchema).optional(),
 })
 
 // Legacy schema for getRegistriesIndex() backward compatibility.
