@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toast-with-action",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "toast"
+  ],
+  "files": [
+    {
+      "path": "examples/toast-with-action.tsx",
+      "content": "\"use client\"\n\nimport { useToast } from \"@/registry/new-york/hooks/use-toast\"\nimport { Button } from \"@/registry/new-york/ui/button\"\nimport { ToastAction } from \"@/registry/new-york/ui/toast\"\n\nexport default function ToastWithAction() {\n  const { toast } = useToast()\n\n  return (\n    <Button\n      variant=\"outline\"\n      onClick={() => {\n        toast({\n          title: \"Uh oh! Something went wrong.\",\n          description: \"There was a problem with your request.\",\n          action: <ToastAction altText=\"Try again\">Try again</ToastAction>,\n        })\n      }}\n    >\n      Show Toast\n    </Button>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

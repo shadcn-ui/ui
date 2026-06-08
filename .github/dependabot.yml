@@ -1,0 +1,46 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/templates/astro-app"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/templates/astro-monorepo"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/templates/next-app"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/templates/next-monorepo"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/templates/react-router-app"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/templates/react-router-monorepo"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/templates/start-app"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/templates/start-monorepo"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/templates/vite-app"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/templates/vite-monorepo"
+    schedule:
+      interval: "weekly"

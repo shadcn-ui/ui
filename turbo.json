@@ -1,0 +1,59 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["NODE_ENV"],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "env": [
+        "NEXT_PUBLIC_APP_URL",
+        "UPSTASH_REDIS_REST_URL",
+        "UPSTASH_REDIS_REST_TOKEN",
+        "COMPONENTS_REGISTRY_URL",
+        "REGISTRY_URL",
+        "npm_config_user_agent",
+        "https_proxy",
+        "V0_URL",
+        "V0_EDIT_SECRET",
+        "DEPLOYMENT_PROTECTION_BYPASS"
+      ],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "preview": {
+      "env": ["NEXT_PUBLIC_APP_URL"],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "start": {
+      "dependsOn": ["^build"]
+    },
+    "lint": {
+      "cache": false,
+      "outputs": []
+    },
+    "lint:fix": {
+      "cache": false,
+      "outputs": []
+    },
+    "format:check": {
+      "cache": false,
+      "outputs": []
+    },
+    "format:write": {
+      "outputs": []
+    },
+    "typecheck": {},
+    "dev": {
+      "cache": false
+    },
+    "check": {
+      "cache": false
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "outputs": []
+    },
+    "registry:build": {
+      "outputs": []
+    }
+  }
+}

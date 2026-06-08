@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox-popover",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "combobox",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "examples/combobox-popover.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport {\n  ArrowUpCircle,\n  CheckCircle2,\n  Circle,\n  HelpCircle,\n  LucideIcon,\n  XCircle,\n} from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/registry/default/ui/button\"\nimport {\n  Command,\n  CommandEmpty,\n  CommandGroup,\n  CommandInput,\n  CommandItem,\n  CommandList,\n} from \"@/registry/default/ui/command\"\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from \"@/registry/default/ui/popover\"\n\ntype Status = {\n  value: string\n  label: string\n  icon: LucideIcon\n}\n\nconst statuses: Status[] = [\n  {\n    value: \"backlog\",\n    label: \"Backlog\",\n    icon: HelpCircle,\n  },\n  {\n    value: \"todo\",\n    label: \"Todo\",\n    icon: Circle,\n  },\n  {\n    value: \"in progress\",\n    label: \"In Progress\",\n    icon: ArrowUpCircle,\n  },\n  {\n    value: \"done\",\n    label: \"Done\",\n    icon: CheckCircle2,\n  },\n  {\n    value: \"canceled\",\n    label: \"Canceled\",\n    icon: XCircle,\n  },\n]\n\nexport default function ComboboxPopover() {\n  const [open, setOpen] = React.useState(false)\n  const [selectedStatus, setSelectedStatus] = React.useState<Status | null>(\n    null\n  )\n\n  return (\n    <div className=\"flex items-center space-x-4\">\n      <p className=\"text-sm text-muted-foreground\">Status</p>\n      <Popover open={open} onOpenChange={setOpen}>\n        <PopoverTrigger asChild>\n          <Button\n            variant=\"outline\"\n            size=\"sm\"\n            className=\"w-[150px] justify-start\"\n          >\n            {selectedStatus ? (\n              <>\n                <selectedStatus.icon className=\"mr-2 h-4 w-4 shrink-0\" />\n                {selectedStatus.label}\n              </>\n            ) : (\n              <>+ Set status</>\n            )}\n          </Button>\n        </PopoverTrigger>\n        <PopoverContent className=\"p-0\" side=\"right\" align=\"start\">\n          <Command>\n            <CommandInput placeholder=\"Change status...\" />\n            <CommandList>\n              <CommandEmpty>No results found.</CommandEmpty>\n              <CommandGroup>\n                {statuses.map((status) => (\n                  <CommandItem\n                    key={status.value}\n                    value={status.value}\n                    onSelect={(value) => {\n                      setSelectedStatus(\n                        statuses.find((priority) => priority.value === value) ||\n                          null\n                      )\n                      setOpen(false)\n                    }}\n                  >\n                    <status.icon\n                      className={cn(\n                        \"mr-2 h-4 w-4\",\n                        status.value === selectedStatus?.value\n                          ? \"opacity-100\"\n                          : \"opacity-40\"\n                      )}\n                    />\n                    <span>{status.label}</span>\n                  </CommandItem>\n                ))}\n              </CommandGroup>\n            </CommandList>\n          </Command>\n        </PopoverContent>\n      </Popover>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}
