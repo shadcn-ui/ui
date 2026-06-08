@@ -1170,7 +1170,7 @@
     "logo": "<svg width='256' height='256' viewBox='0 0 256 256' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M0 18.5887C0 8.32245 8.32244 0 18.5887 0H237.411C247.678 0 256 8.32244 256 18.5887V237.411C256 247.678 247.678 256 237.411 256H18.5887C8.32245 256 0 247.678 0 237.411V18.5887Z' fill='black'/> <path d='M128.001 30.0059C128.001 83.7034 171.192 127.313 224.728 127.991L225.994 128L224.728 128.008C171.192 128.686 128.001 172.296 128.001 225.994V256H128V225.994C128 171.873 84.1271 128 30.0068 128L31.273 127.991C84.8099 127.314 128 83.7036 128 30.0059V0.000488281H128.001V30.0059Z' fill='#D9D9D9'/></svg>"
   },
    {
-    "name": "@sora-ui",
+    "name": "@soralabs",
     "homepage": "https://ui.soralabs.io.vn",
     "url": "https://ui.soralabs.io.vn/r/{name}.json",
     "description": "Motion-first React primitives and animated UI components for shadcn/ui. Copy, customize, and ship fluid interfaces.",
