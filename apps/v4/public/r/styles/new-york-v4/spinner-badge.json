@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/spinner-badge.tsx",
-      "content": "import { Badge } from \"@/registry/new-york-v4/ui/badge\"\nimport { Spinner } from \"@/registry/new-york-v4/ui/spinner\"\n\nexport default function SpinnerBadge() {\n  return (\n    <div className=\"flex items-center gap-4 [--radius:1.2rem]\">\n      <Badge>\n        <Spinner />\n        Syncing\n      </Badge>\n      <Badge variant=\"secondary\">\n        <Spinner />\n        Updating\n      </Badge>\n      <Badge variant=\"outline\">\n        <Spinner />\n        Processing\n      </Badge>\n    </div>\n  )\n}\n",
+      "content": "import { Badge } from \"@/registry/new-york-v4/ui/badge\"\r\nimport { Spinner } from \"@/registry/new-york-v4/ui/spinner\"\r\n\r\nexport default function SpinnerBadge() {\r\n  return (\r\n    <div className=\"flex items-center gap-4 [--radius:1.2rem]\">\r\n      <Badge>\r\n        <Spinner />\r\n        Syncing\r\n      </Badge>\r\n      <Badge variant=\"secondary\">\r\n        <Spinner />\r\n        Updating\r\n      </Badge>\r\n      <Badge variant=\"outline\">\r\n        <Spinner />\r\n        Processing\r\n      </Badge>\r\n    </div>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ],
