@@ -21,13 +21,21 @@ export async function fetchWithProxy(url: string | URL, init?: RequestInit) {
     } as RequestInit)
   } catch (error) {
     // Native fetch reports network failures as a generic "fetch failed"
-    // TypeError with the actual reason buried in `cause`.
-    if (error instanceof TypeError && error.cause) {
-      throw new Error(
-        `Request to ${url} failed, reason: ${getFailureReason(error.cause)}`,
-        { cause: error.cause }
-      )
+    // TypeError with the actual reason buried in `cause`. The casts are
+    // needed because the configured TS lib predates Error.cause.
+    const cause =
+      error instanceof TypeError
+        ? (error as TypeError & { cause?: unknown }).cause
+        : undefined
+
+    if (cause) {
+      const enriched = new Error(
+        `Request to ${url} failed, reason: ${getFailureReason(cause)}`
+      ) as Error & { cause?: unknown }
+      enriched.cause = cause
+      throw enriched
     }
+
     throw error
   }
 }
@@ -44,9 +52,7 @@ function getFailureReason(cause: unknown): string {
 
   if (cause instanceof Error) {
     return (
-      cause.message ||
-      (cause as NodeJS.ErrnoException).code ||
-      "unknown error"
+      cause.message || (cause as NodeJS.ErrnoException).code || "unknown error"
     )
   }
 
