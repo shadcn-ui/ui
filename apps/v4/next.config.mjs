@@ -29,9 +29,6 @@ const nextConfig = {
   turbopack: {
     root: path.resolve(import.meta.dirname, "../.."),
   },
-  experimental: {
-    turbopackFileSystemCacheForDev: true,
-  },
   redirects() {
     return [
       // Form redirects to /docs/forms.
