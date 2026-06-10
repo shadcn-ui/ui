@@ -287,6 +287,13 @@
     "logo": "<svg width='75' height='43' viewBox='0 0 75 43' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M0 5H6.23601V37H0V5Z' fill='var(--foreground)'/><rect x='6.23602' y='37' width='23.1623' height='5' fill='var(--foreground)'/><rect x='6.23602' width='23.1623' height='5' fill='var(--foreground)'/><rect width='4.8923' height='17.1299' transform='matrix(0.932438 -0.361329 0.293952 0.95582 29.4029 4.76758)' fill='var(--foreground)'/><rect width='4.88783' height='17.1429' transform='matrix(0.937045 0.349208 -0.283616 0.958938 34.2604 21)' fill='var(--foreground)'/><rect x='49' width='22' height='5' fill='var(--foreground)'/><rect x='44' y='5' width='5' height='17' fill='var(--foreground)'/><path d='M49 22H71V27H49V22Z' fill='var(--foreground)'/><rect x='71' y='25' width='4' height='13' fill='var(--foreground)'/><rect x='49' y='38' width='22' height='5' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@delego",
+    "homepage": "https://github.com/Delego-Dev/registry",
+    "url": "https://raw.githubusercontent.com/Delego-Dev/registry/main/public/r/{name}.json",
+    "description": "Design-system registry for Delego — intent-bound action authorization for AI agents. Theme (OKLCH) plus signature components: decision pill, signed receipt, status badge, field.",
+    "logo": "<svg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='37' height='37' rx='11' fill='#4B3DF5'/><rect x='1.5' y='1.5' width='37' height='37' rx='11' fill='url(#dg_sheen)' fill-opacity='0.55'/><rect x='2' y='2' width='36' height='36' rx='10.5' stroke='#fff' stroke-opacity='0.12'/><path d='M11 21.2L17.4 27.4' stroke='#fff' stroke-opacity='0.94' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/><path d='M17.4 27.4L29 12.4' stroke='#15E0A0' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/><defs><linearGradient id='dg_sheen' x1='2' y1='2' x2='38' y2='38' gradientUnits='userSpaceOnUse'><stop stop-color='#6A5FF6'/><stop offset='1' stop-color='#3A2DE0'/></linearGradient></defs></svg>"
+  },
+  {
     "name": "@delta",
     "homepage": "https://deltacomponents.dev",
     "url": "https://deltacomponents.dev/r/{name}.json",
