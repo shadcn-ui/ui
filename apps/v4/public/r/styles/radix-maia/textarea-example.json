@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-example",
+  "title": "Textarea",
+  "registryDependencies": [
+    "field",
+    "textarea",
+    "example"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-maia/examples/textarea-example.tsx",
+      "content": "import {\n  Example,\n  ExampleWrapper,\n} from \"@/registry/radix-maia/components/example\"\nimport {\n  Field,\n  FieldDescription,\n  FieldLabel,\n} from \"@/registry/radix-maia/ui/field\"\nimport { Textarea } from \"@/registry/radix-maia/ui/textarea\"\n\nexport default function TextareaExample() {\n  return (\n    <ExampleWrapper>\n      <TextareaBasic />\n      <TextareaInvalid />\n      <TextareaWithLabel />\n      <TextareaWithDescription />\n      <TextareaDisabled />\n    </ExampleWrapper>\n  )\n}\n\nfunction TextareaBasic() {\n  return (\n    <Example title=\"Basic\">\n      <Textarea placeholder=\"Type your message here.\" />\n    </Example>\n  )\n}\n\nfunction TextareaInvalid() {\n  return (\n    <Example title=\"Invalid\">\n      <Textarea placeholder=\"Type your message here.\" aria-invalid=\"true\" />\n    </Example>\n  )\n}\n\nfunction TextareaWithLabel() {\n  return (\n    <Example title=\"With Label\">\n      <Field>\n        <FieldLabel htmlFor=\"textarea-demo-message\">Message</FieldLabel>\n        <Textarea\n          id=\"textarea-demo-message\"\n          placeholder=\"Type your message here.\"\n          rows={6}\n        />\n      </Field>\n    </Example>\n  )\n}\n\nfunction TextareaWithDescription() {\n  return (\n    <Example title=\"With Description\">\n      <Field>\n        <FieldLabel htmlFor=\"textarea-demo-message-2\">Message</FieldLabel>\n        <Textarea\n          id=\"textarea-demo-message-2\"\n          placeholder=\"Type your message here.\"\n          rows={6}\n        />\n        <FieldDescription>\n          Type your message and press enter to send.\n        </FieldDescription>\n      </Field>\n    </Example>\n  )\n}\n\nfunction TextareaDisabled() {\n  return (\n    <Example title=\"Disabled\">\n      <Field>\n        <FieldLabel htmlFor=\"textarea-demo-disabled\">Message</FieldLabel>\n        <Textarea\n          id=\"textarea-demo-disabled\"\n          placeholder=\"Type your message here.\"\n          disabled\n        />\n      </Field>\n    </Example>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

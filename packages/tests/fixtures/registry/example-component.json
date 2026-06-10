@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "example-component",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "example/hello-world.tsx",
+      "type": "registry:component",
+      "content": "console.log('Hello, world!')"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-group-demo",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "toggle-group"
+  ],
+  "files": [
+    {
+      "path": "examples/toggle-group-demo.tsx",
+      "content": "import { Bold, Italic, Underline } from \"lucide-react\"\n\nimport {\n  ToggleGroup,\n  ToggleGroupItem,\n} from \"@/registry/new-york/ui/toggle-group\"\n\nexport default function ToggleGroupDemo() {\n  return (\n    <ToggleGroup type=\"multiple\">\n      <ToggleGroupItem value=\"bold\" aria-label=\"Toggle bold\">\n        <Bold className=\"h-4 w-4\" />\n      </ToggleGroupItem>\n      <ToggleGroupItem value=\"italic\" aria-label=\"Toggle italic\">\n        <Italic className=\"h-4 w-4\" />\n      </ToggleGroupItem>\n      <ToggleGroupItem value=\"strikethrough\" aria-label=\"Toggle strikethrough\">\n        <Underline className=\"h-4 w-4\" />\n      </ToggleGroupItem>\n    </ToggleGroup>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

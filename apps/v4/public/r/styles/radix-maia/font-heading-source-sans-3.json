@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-heading-source-sans-3",
+  "title": "Source Sans 3 (Heading)",
+  "type": "registry:font",
+  "font": {
+    "family": "'Source Sans 3 Variable', sans-serif",
+    "provider": "google",
+    "import": "Source_Sans_3",
+    "variable": "--font-heading",
+    "subsets": [
+      "latin"
+    ],
+    "dependency": "@fontsource-variable/source-sans-3"
+  }
+}

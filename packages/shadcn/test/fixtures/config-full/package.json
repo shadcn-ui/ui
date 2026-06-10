@@ -1,0 +1,7 @@
+{
+  "name": "test-cli-config-full",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "shadcn",
+  "license": "MIT"
+}
