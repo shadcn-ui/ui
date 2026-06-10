@@ -61,7 +61,7 @@ function scanIconUsage() {
 function generateIconFiles(iconUsage: IconUsage) {
   const outputDir = path.join(process.cwd(), "registry/icons")
 
-  console.log("✓ Generated icon files:")
+  const written: string[] = []
 
   Object.entries(iconLibraries).forEach(([libraryName, config]) => {
     const icons = Array.from(iconUsage[libraryName as IconLibraryName]).sort()
@@ -75,10 +75,25 @@ ${icons.map((icon) => `export { ${icon} } from "${config.export}"`).join("\n")}
 `
 
     const filename = `__${libraryName}__.ts`
-    fs.writeFileSync(path.join(outputDir, filename), content)
+    const filepath = path.join(outputDir, filename)
 
-    console.log(`  - ${config.title}: ${icons.length} icons`)
+    // Skip unchanged files to avoid mtime bumps that trigger
+    // unnecessary Turbopack invalidations in watch mode.
+    if (
+      fs.existsSync(filepath) &&
+      fs.readFileSync(filepath, "utf-8") === content
+    ) {
+      return
+    }
+
+    fs.writeFileSync(filepath, content)
+    written.push(`  - ${config.title}: ${icons.length} icons`)
   })
+
+  if (written.length > 0) {
+    console.log("✓ Generated icon files:")
+    written.forEach((line) => console.log(line))
+  }
 }
 
 function main() {
