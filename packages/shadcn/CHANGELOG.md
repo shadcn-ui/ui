@@ -1,4 +1,26 @@
-# @shadcn/ui
+# shadcn
+
+## 4.11.0
+
+### Minor Changes
+
+- [#10886](https://github.com/shadcn-ui/ui/pull/10886) [`05eb2b968bdc769ad78df9628dc2260e1dec903c`](https://github.com/shadcn-ui/ui/commit/05eb2b968bdc769ad78df9628dc2260e1dec903c) Thanks [@shadcn](https://github.com/shadcn)! - improve search command
+
+### Patch Changes
+
+- [#10851](https://github.com/shadcn-ui/ui/pull/10851) [`7dfd933102fdb881f8abd24fc1ef11a669682b94`](https://github.com/shadcn-ui/ui/commit/7dfd933102fdb881f8abd24fc1ef11a669682b94) Thanks [@harshithasompura](https://github.com/harshithasompura)! - move msw to devDependencies
+
+## 4.10.0
+
+### Minor Changes
+
+- [#10842](https://github.com/shadcn-ui/ui/pull/10842) [`7c63c467361dee9e20631b2999040912439b35d4`](https://github.com/shadcn-ui/ui/commit/7c63c467361dee9e20631b2999040912439b35d4) Thanks [@shadcn](https://github.com/shadcn)! - add support for GitHub registries
+
+## 4.9.0
+
+### Minor Changes
+
+- [#10834](https://github.com/shadcn-ui/ui/pull/10834) [`8e2d2d1439f54260aa0c51747261c220334ec641`](https://github.com/shadcn-ui/ui/commit/8e2d2d1439f54260aa0c51747261c220334ec641) Thanks [@shadcn](https://github.com/shadcn)! - add npx shadcn eject
 
 ## 4.8.3
 
