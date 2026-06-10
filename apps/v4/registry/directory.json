@@ -1401,6 +1401,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='32'><path d='M0 0 C10.56 0 21.12 0 32 0 C32 10.56 32 21.12 32 32 C21.44 32 10.88 32 0 32 C0 21.44 0 10.88 0 0 Z ' fill='var(--foreground)' transform='translate(0,0)'/><path d='M0 0 C5.28 0 10.56 0 16 0 C16 0.99 16 1.98 16 3 C10.72 3 5.44 3 0 3 C0 2.01 0 1.02 0 0 Z ' fill='var(--background)' transform='translate(8,20)'/><path d='M0 0 C3.96 0 7.92 0 12 0 C12 0.99 12 1.98 12 3 C8.04 3 4.08 3 0 3 C0 2.01 0 1.02 0 0 Z ' fill='var(--background)' transform='translate(10,16)'/><path d='M0 0 C3.96 0 7.92 0 12 0 C12 0.99 12 1.98 12 3 C8.04 3 4.08 3 0 3 C0 2.01 0 1.02 0 0 Z ' fill='var(--background)' transform='translate(10,12)'/></svg>"
   },
   {
+    "name": "@vllnt",
+    "homepage": "https://ui.vllnt.ai",
+    "url": "https://ui.vllnt.ai/r/{name}.json",
+    "description": "VLLNT UI — agent-first React components for AI-native products, from UI primitives to finance and ops domains. Accessible, Radix + Tailwind, you own the code.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='128' height='128' rx='28' fill='var(--foreground)'/><text x='64' y='64' text-anchor='middle' dominant-baseline='central' font-family='ui-sans-serif, system-ui, sans-serif' font-size='26' font-weight='700' letter-spacing='-1' fill='var(--background)'>VLLNT</text></svg>"
+  },
+  {
     "name": "@w3-kit",
     "homepage": "https://w3-kit.com",
     "url": "https://w3-kit.com/registry/{name}.json",
