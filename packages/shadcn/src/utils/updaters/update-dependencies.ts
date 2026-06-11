@@ -68,7 +68,8 @@ export async function updateDependencies(
     dependencies,
     devDependencies,
     config.resolvedPaths.cwd,
-    flag
+    flag,
+    options.silent
   )
 
   dependenciesSpinner?.succeed()
@@ -110,7 +111,8 @@ async function installWithPackageManager(
   dependencies: string[],
   devDependencies: string[],
   cwd: string,
-  flag?: string
+  flag?: string,
+  silent?: boolean
 ) {
   if (packageManager === "npm") {
     return installWithNpm(dependencies, devDependencies, cwd, flag)
@@ -122,6 +124,15 @@ async function installWithPackageManager(
 
   if (packageManager === "expo") {
     return installWithExpo(dependencies, devDependencies, cwd)
+  }
+
+  if (packageManager === "pnpm") {
+    await installWithPnpm(dependencies, cwd, { silent: !!silent })
+    await installWithPnpm(devDependencies, cwd, {
+      silent: !!silent,
+      marker: "-D",
+    })
+    return
   }
 
   if (dependencies?.length) {
@@ -176,6 +187,102 @@ async function installWithDeno(
       { cwd }
     )
   }
+}
+
+async function installWithPnpm(
+  packages: string[],
+  cwd: string,
+  options: {
+    silent: boolean
+    marker?: string
+  }
+) {
+  const { marker = "", silent } = options
+  if (!packages.length) {
+    return
+  }
+
+  const args = [marker, ...packages].filter(Boolean)
+  try {
+    await execa("pnpm", ["add", ...args], {
+      cwd,
+    })
+    return
+  } catch (error) {
+    if (
+      marker !== "--ignore-scripts" &&
+      isPnpmIgnoredBuildScriptsError(error)
+    ) {
+      const shouldIgnoreScripts = await confirmPnpmIgnoreScripts(error, silent)
+      if (!shouldIgnoreScripts) {
+        throw error
+      }
+
+      await execa("pnpm", [
+        "add",
+        "--ignore-scripts",
+        ...(marker ? [marker] : []),
+        ...packages,
+      ], { cwd })
+      return
+    }
+
+    throw error
+  }
+}
+
+async function confirmPnpmIgnoreScripts(
+  error: unknown,
+  silent: boolean
+) {
+  if (silent) {
+    logger.warn(
+      `\n${formatPnpmIgnoredScriptsMessage(error)}\nContinuing with --ignore-scripts.`
+    )
+    return true
+  }
+
+  const output = formatPnpmIgnoredScriptsMessage(error)
+  const confirmation = await prompts({
+    type: "confirm",
+    name: "ignoreScripts",
+    initial: true,
+    message: `${output}\n\nSkip package lifecycle scripts and continue installation?`,
+  })
+
+  return !!confirmation?.ignoreScripts
+}
+
+function isPnpmIgnoredBuildScriptsError(error: unknown) {
+  const message = getErrorOutput(error)
+  return message.includes("ERR_PNPM_IGNORED_BUILDS")
+}
+
+function formatPnpmIgnoredScriptsMessage(error: unknown) {
+  const message = getErrorOutput(error)
+  if (!message) {
+    return "pnpm reported ignored build scripts and canceled installation."
+  }
+
+  return `pnpm reported an ignored build script error:
+${message.trim()}`
+}
+
+function getErrorOutput(error: unknown) {
+  if (typeof error !== "object" || error === null) {
+    return ""
+  }
+
+  const value = (error as { stderr?: string | Buffer | null; message?: string }).stderr
+  if (typeof value === "string") {
+    return value
+  }
+
+  if (Buffer.isBuffer(value)) {
+    return value.toString()
+  }
+
+  return (error as { message?: string }).message ?? ""
 }
 
 async function installWithExpo(

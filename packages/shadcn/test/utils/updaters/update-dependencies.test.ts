@@ -9,6 +9,20 @@ vi.mock("execa")
 vi.mock("prompts")
 
 describe("updateDependencies", () => {
+  const mockExecaSuccess = {
+    stdout: "",
+    stderr: "",
+    exitCode: 0,
+    signal: undefined,
+    signalDescription: undefined,
+    command: "",
+    escapedCommand: "",
+    failed: false,
+    timedOut: false,
+    isCanceled: false,
+    killed: false,
+  }
+
   afterEach(() => {
     vi.restoreAllMocks()
   })
@@ -154,4 +168,104 @@ describe("updateDependencies", () => {
       )
     }
   )
+
+  test("pnpm installation continues with --ignore-scripts when build scripts are denied", async () => {
+    const deniedBuildScriptsError = new Error("Command failed with exit code 1")
+    Object.assign(deniedBuildScriptsError, {
+      stderr:
+        "ERR_PNPM_IGNORED_BUILDS\nIgnored build scripts: msw@2.14.6",
+    })
+    const cwd = path.resolve(__dirname, "../../fixtures/project-pnpm")
+
+    vi.mocked(execa)
+      .mockRejectedValueOnce(deniedBuildScriptsError)
+      .mockResolvedValueOnce(mockExecaSuccess)
+      .mockResolvedValueOnce(mockExecaSuccess)
+
+    vi.mocked(prompts).mockResolvedValue({ ignoreScripts: true })
+
+    await updateDependencies(
+      ["first", "second", "third"],
+      ["fourth"],
+      {
+        resolvedPaths: {
+          cwd,
+        },
+      },
+      {}
+    )
+
+    expect(execa).toHaveBeenNthCalledWith(1, "pnpm", ["add", "first", "second", "third"], {
+      cwd,
+    })
+    expect(execa).toHaveBeenNthCalledWith(
+      2,
+      "pnpm",
+      ["add", "--ignore-scripts", "first", "second", "third"],
+      { cwd }
+    )
+    expect(execa).toHaveBeenCalledWith("pnpm", ["add", "-D", "fourth"], { cwd })
+    expect(prompts).toHaveBeenCalled()
+  })
+
+  test("pnpm installation fails when user declines to skip build scripts", async () => {
+    const deniedBuildScriptsError = new Error("Command failed with exit code 1")
+    Object.assign(deniedBuildScriptsError, {
+      stderr:
+        "ERR_PNPM_IGNORED_BUILDS\nIgnored build scripts: msw@2.14.6",
+    })
+    const cwd = path.resolve(__dirname, "../../fixtures/project-pnpm")
+
+    vi.mocked(execa).mockRejectedValueOnce(deniedBuildScriptsError)
+    vi.mocked(prompts).mockResolvedValue({ ignoreScripts: false })
+
+    await expect(
+      updateDependencies(
+        ["first", "second", "third"],
+        ["fourth"],
+        {
+          resolvedPaths: {
+            cwd,
+          },
+        },
+        {}
+      )
+    ).rejects.toThrow("Command failed with exit code 1")
+
+    expect(prompts).toHaveBeenCalled()
+    expect(execa).toHaveBeenCalledTimes(1)
+  })
+
+  test("pnpm installation auto-retries with --ignore-scripts in silent mode", async () => {
+    const deniedBuildScriptsError = new Error("Command failed with exit code 1")
+    Object.assign(deniedBuildScriptsError, {
+      stderr:
+        "ERR_PNPM_IGNORED_BUILDS\nIgnored build scripts: msw@2.14.6",
+    })
+    const cwd = path.resolve(__dirname, "../../fixtures/project-pnpm")
+
+    vi.mocked(execa)
+      .mockRejectedValueOnce(deniedBuildScriptsError)
+      .mockResolvedValueOnce(mockExecaSuccess)
+      .mockResolvedValueOnce(mockExecaSuccess)
+
+    await updateDependencies(
+      ["first", "second", "third"],
+      ["fourth"],
+      {
+        resolvedPaths: {
+          cwd,
+        },
+      },
+      { silent: true }
+    )
+
+    expect(execa).toHaveBeenNthCalledWith(
+      2,
+      "pnpm",
+      ["add", "--ignore-scripts", "first", "second", "third"],
+      { cwd }
+    )
+    expect(prompts).not.toHaveBeenCalled()
+  })
 })
