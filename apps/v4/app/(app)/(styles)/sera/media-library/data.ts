@@ -1,0 +1,188 @@
+export type AssetType = "JPEG" | "PNG" | "WEBP" | "MP4" | "PDF"
+
+export type Asset = {
+  id: string
+  name: string
+  date: string
+  size: string
+  type: AssetType
+  dimensions: string
+  duration?: string
+  uploadedBy: string
+  uploadedByInitials: string
+  uploadedOn: string
+  tags: string[]
+  usedIn: { title: string; role: string }[]
+}
+
+export const ASSETS: Asset[] = [
+  {
+    id: "1",
+    name: "brutalism-facade-01.jpg",
+    date: "Oct 24",
+    size: "4.2 MB",
+    type: "JPEG",
+    dimensions: "4000 × 3000",
+    uploadedBy: "Marcus Chen",
+    uploadedByInitials: "MC",
+    uploadedOn: "Oct 24, 2024",
+    tags: ["architecture", "brutalism", "exterior", "summer-issue"],
+    usedIn: [
+      { title: "Brutalism's Second Act", role: "Cover Image" },
+      { title: "Autumn Sartorial Code", role: "Inline Gallery" },
+    ],
+  },
+  {
+    id: "2",
+    name: "brutalism-interior-raw.jpg",
+    date: "Oct 24",
+    size: "3.8 MB",
+    type: "JPEG",
+    dimensions: "3800 × 2850",
+    uploadedBy: "Marcus Chen",
+    uploadedByInitials: "MC",
+    uploadedOn: "Oct 24, 2024",
+    tags: ["architecture", "brutalism", "interior"],
+    usedIn: [{ title: "Brutalism's Second Act", role: "Inline Gallery" }],
+  },
+  {
+    id: "3",
+    name: "seattle-living-building-diagram.png",
+    date: "Oct 22",
+    size: "1.1 MB",
+    type: "PNG",
+    dimensions: "2000 × 1500",
+    uploadedBy: "Sarah Jenkins",
+    uploadedByInitials: "SJ",
+    uploadedOn: "Oct 22, 2024",
+    tags: ["diagram", "sustainability", "seattle"],
+    usedIn: [
+      { title: "The Future of Sustainable Architecture", role: "Diagram" },
+    ],
+  },
+  {
+    id: "4",
+    name: "interview-sofia-coppola-clip1.mp4",
+    date: "Oct 18",
+    size: "45.0 MB",
+    type: "MP4",
+    dimensions: "1920 × 1080",
+    duration: "0:45",
+    uploadedBy: "Emma Ross",
+    uploadedByInitials: "ER",
+    uploadedOn: "Oct 18, 2024",
+    tags: ["video", "interview", "film"],
+    usedIn: [{ title: "The Aesthetics of Isolation", role: "Featured Video" }],
+  },
+  {
+    id: "5",
+    name: "kyoto-kilns-pottery-detail.jpg",
+    date: "Oct 15",
+    size: "5.6 MB",
+    type: "JPEG",
+    dimensions: "4500 × 3000",
+    uploadedBy: "Marcus Chen",
+    uploadedByInitials: "MC",
+    uploadedOn: "Oct 15, 2024",
+    tags: ["ceramics", "kyoto", "craft"],
+    usedIn: [{ title: "Kyoto's Oldest Kilns", role: "Hero Image" }],
+  },
+  {
+    id: "6",
+    name: "copenhagen-design-week-street.jpg",
+    date: "Oct 12",
+    size: "3.2 MB",
+    type: "JPEG",
+    dimensions: "3600 × 2400",
+    uploadedBy: "Noah Bennett",
+    uploadedByInitials: "NB",
+    uploadedOn: "Oct 12, 2024",
+    tags: ["copenhagen", "design-week", "street"],
+    usedIn: [{ title: "Field Notes from Copenhagen", role: "Inline Gallery" }],
+  },
+  {
+    id: "7",
+    name: "minimalist-chair-render.webp",
+    date: "Oct 10",
+    size: "0.8 MB",
+    type: "WEBP",
+    dimensions: "2400 × 1600",
+    uploadedBy: "Claire Duval",
+    uploadedByInitials: "CD",
+    uploadedOn: "Oct 10, 2024",
+    tags: ["furniture", "minimalism", "render"],
+    usedIn: [{ title: "The New Vanguard", role: "Product Shot" }],
+  },
+  {
+    id: "8",
+    name: "autumn-issue-style-guide.pdf",
+    date: "Oct 05",
+    size: "12.4 MB",
+    type: "PDF",
+    dimensions: "N/A",
+    uploadedBy: "Emma Ross",
+    uploadedByInitials: "ER",
+    uploadedOn: "Oct 05, 2024",
+    tags: ["guidelines", "internal", "autumn"],
+    usedIn: [{ title: "Autumn Issue 2024", role: "Reference" }],
+  },
+  {
+    id: "9",
+    name: "milan-lighting-studio-visit.jpg",
+    date: "Oct 09",
+    size: "6.1 MB",
+    type: "JPEG",
+    dimensions: "5200 × 3466",
+    uploadedBy: "Claire Duval",
+    uploadedByInitials: "CD",
+    uploadedOn: "Oct 09, 2024",
+    tags: ["milan", "lighting", "studio"],
+    usedIn: [
+      { title: "Milan's Most Elusive Lighting Designer", role: "Hero Image" },
+    ],
+  },
+  {
+    id: "10",
+    name: "lisbon-culinary-scene-raw.webp",
+    date: "Oct 14",
+    size: "2.4 MB",
+    type: "WEBP",
+    dimensions: "3000 × 2000",
+    uploadedBy: "Amara Iqbal",
+    uploadedByInitials: "AI",
+    uploadedOn: "Oct 14, 2024",
+    tags: ["lisbon", "food", "editorial"],
+    usedIn: [
+      { title: "Lisbon's Quiet Culinary Renaissance", role: "Inline Gallery" },
+    ],
+  },
+  {
+    id: "11",
+    name: "print-magazine-covers-mo...",
+    date: "Sep 26",
+    size: "8.9 MB",
+    type: "PNG",
+    dimensions: "3200 × 2400",
+    uploadedBy: "Mina Okafor",
+    uploadedByInitials: "MO",
+    uploadedOn: "Sep 26, 2024",
+    tags: ["print", "magazine", "covers"],
+    usedIn: [{ title: "The Return of Print", role: "Cover Image" }],
+  },
+  {
+    id: "12",
+    name: "avant-garde-furniture-trailer.mp4",
+    date: "Sep 30",
+    size: "78.2 MB",
+    type: "MP4",
+    dimensions: "3840 × 2160",
+    duration: "1:12",
+    uploadedBy: "Tommy Rhodes",
+    uploadedByInitials: "TR",
+    uploadedOn: "Sep 30, 2024",
+    tags: ["video", "furniture", "trailer"],
+    usedIn: [
+      { title: "Collecting the New Avant-Garde", role: "Featured Video" },
+    ],
+  },
+]
