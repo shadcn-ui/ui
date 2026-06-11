@@ -130,19 +130,22 @@ See [Updating Components in SKILL.md](./SKILL.md#updating-components) for the fu
 ### `search` — Search registries
 
 ```bash
-npx shadcn@latest search <registries...> [options]
+npx shadcn@latest search [registries...] [options]
 ```
 
 Fuzzy search across registries. Also aliased as `npx shadcn@latest list`.
 Supports namespaces (`@acme`), public GitHub registry sources (`owner/repo`),
-and registry catalog URLs. Without `-q`, lists all items.
+and registry catalog URLs. Without `-q`, lists all items. When no registries are
+passed, searches every registry configured in `components.json`.
 
-| Flag                | Short | Description            | Default |
-| ------------------- | ----- | ---------------------- | ------- |
-| `--query <query>`   | `-q`  | Search query           | —       |
-| `--limit <number>`  | `-l`  | Max items per registry | `100`   |
-| `--offset <number>` | `-o`  | Items to skip          | `0`     |
-| `--cwd <cwd>`       | `-c`  | Working directory      | current |
+| Flag                | Short | Description                                       | Default |
+| ------------------- | ----- | ------------------------------------------------- | ------- |
+| `--query <query>`   | `-q`  | Search query                                      | —       |
+| `--type <type>`     | `-t`  | Filter by item type (e.g. `ui`, `block`, `hook`); comma-separated | —       |
+| `--limit <number>`  | `-l`  | Max items to display                              | `100`   |
+| `--offset <number>` | `-o`  | Items to skip                                     | `0`     |
+| `--json`            |       | Output as JSON                                    | `false` |
+| `--cwd <cwd>`       | `-c`  | Working directory                                 | current |
 
 ### `view` — View item details
 
