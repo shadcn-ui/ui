@@ -161,6 +161,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' fill='none' viewBox='0 0 512 512'><rect id='a' width='512' height='512' x='0' y='0' fill='var(--foreground)' stroke='var(--background)' stroke-opacity='100%' stroke-width='0' paint-order='stroke' rx='128'/><svg xmlns='http://www.w3.org/2000/svg' width='385' height='385' x='63.5' y='63.5' alignment-baseline='middle' style='color:var(--background);width:385px;height:385px' viewBox='0 0 16 16'><path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M1.75 11.75v.5a2 2 0 0 0 2 2h8.5a2 2 0 0 0 2-2v-.5M8 10.25v-8.5m0 0 3.25 3.5M8 1.75l-3.25 3.5'/></svg></svg>"
   },
   {
+    "name": "@beui",
+    "homepage": "https://beui.saura3h.xyz",
+    "url": "https://beui.saura3h.xyz/r/{name}.json",
+    "description": "Bespoke motion components for React. Copy-paste components with shadcn-compatible installs, Tailwind CSS v4, and Motion.",
+    "logo": ""
+  },
+  {
     "name": "@billingsdk",
     "homepage": "https://billingsdk.com",
     "url": "https://billingsdk.com/r/{name}.json",
