@@ -45,7 +45,7 @@ function Calendar({
         ...formatters,
       }}
       classNames={{
-        root: cn("w-fit", defaultClassNames.root),
+        root: cn("w-full min-w-0", defaultClassNames.root),
         months: cn(
           "relative flex flex-col gap-4 md:flex-row",
           defaultClassNames.months
@@ -88,10 +88,13 @@ function Calendar({
             : "flex h-8 items-center gap-1 rounded-md pr-1 pl-2 text-sm [&>svg]:size-3.5 [&>svg]:text-muted-foreground",
           defaultClassNames.caption_label
         ),
-        table: "w-full border-collapse",
-        weekdays: cn("flex", defaultClassNames.weekdays),
+        month_grid: cn(
+          "w-full border-collapse table-fixed",
+          defaultClassNames.month_grid
+        ),
+        weekdays: cn("flex w-full", defaultClassNames.weekdays),
         weekday: cn(
-          "flex-1 rounded-md text-[0.8rem] font-normal text-muted-foreground select-none",
+          "min-w-0 flex-1 rounded-md text-[0.8rem] font-normal text-muted-foreground select-none",
           defaultClassNames.weekday
         ),
         week: cn("mt-2 flex w-full", defaultClassNames.week),
@@ -104,7 +107,7 @@ function Calendar({
           defaultClassNames.week_number
         ),
         day: cn(
-          "group/day relative aspect-square h-full w-full p-0 text-center select-none [&:last-child[data-selected=true]_button]:rounded-r-md",
+          "group/day relative aspect-square h-full min-w-0 w-full flex-1 p-0 text-center select-none [&:last-child[data-selected=true]_button]:rounded-r-md",
           props.showWeekNumber
             ? "[&:nth-child(2)[data-selected=true]_button]:rounded-l-md"
             : "[&:first-child[data-selected=true]_button]:rounded-l-md",
