@@ -245,6 +245,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='120 120 272 272' fill='currentColor'><path d='M120 160Q120 120 160 120H260Q300 120 300 160V220H352Q392 220 392 260V352Q392 392 352 392H260Q220 392 220 352V292H160Q120 292 120 252Z'/></svg>"
   },
   {
+    "name": "@contentbit",
+    "homepage": "https://contentbit.dev",
+    "url": "https://contentbit.dev/r/{name}.json",
+    "description": "React components that render Content Blocks: plain Markdown with schema-validated directive blocks. Built for content written by humans, CMSes, and LLMs.",
+    "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"400\" viewBox=\"0 0 512 512\"><rect width=\"512\" height=\"512\" fill=\"var(--foreground)\"/><g fill=\"var(--background)\"><rect x=\"128\" y=\"160\" width=\"64\" height=\"64\"/><rect x=\"128\" y=\"288\" width=\"64\" height=\"64\"/><rect x=\"224\" y=\"160\" width=\"64\" height=\"64\"/><rect x=\"224\" y=\"288\" width=\"64\" height=\"64\"/><rect x=\"320\" y=\"160\" width=\"64\" height=\"64\"/><rect x=\"320\" y=\"288\" width=\"64\" height=\"64\"/></g></svg>"
+  },
+  {
     "name": "@corr",
     "homepage": "https://ui.corr.sh",
     "url": "https://ui.corr.sh/r/{name}.json",
