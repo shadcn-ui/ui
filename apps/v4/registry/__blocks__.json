@@ -1,0 +1,143 @@
+[
+  {
+    "name": "preview"
+  },
+  {
+    "name": "preview-02"
+  },
+  {
+    "name": "login-01",
+    "description": "A simple login form.",
+    "categories": ["authentication", "login"]
+  },
+  {
+    "name": "login-02",
+    "description": "A two column login page with a cover image.",
+    "categories": ["authentication", "login"]
+  },
+  {
+    "name": "login-03",
+    "description": "A login page with a muted background color.",
+    "categories": ["authentication", "login"]
+  },
+  {
+    "name": "login-04",
+    "description": "A login page with form and image.",
+    "categories": ["authentication", "login"]
+  },
+  {
+    "name": "login-05",
+    "description": "A simple email-only login page.",
+    "categories": ["authentication", "login"]
+  },
+  {
+    "name": "signup-01",
+    "description": "A simple signup form.",
+    "categories": ["authentication", "signup"]
+  },
+  {
+    "name": "signup-02",
+    "description": "A two column signup page with a cover image.",
+    "categories": ["authentication", "signup"]
+  },
+  {
+    "name": "signup-03",
+    "description": "A signup page with a muted background color.",
+    "categories": ["authentication", "signup"]
+  },
+  {
+    "name": "signup-04",
+    "description": "A signup page with form and image.",
+    "categories": ["authentication", "signup"]
+  },
+  {
+    "name": "signup-05",
+    "description": "A simple signup form with social providers.",
+    "categories": ["authentication", "signup"]
+  },
+  {
+    "name": "dashboard-01",
+    "description": "A dashboard with sidebar, charts and data table.",
+    "categories": ["dashboard"]
+  },
+  {
+    "name": "sidebar-01",
+    "description": "A simple sidebar with navigation grouped by section.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-02",
+    "description": "A sidebar with collapsible sections.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-03",
+    "description": "A sidebar with submenus.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-04",
+    "description": "A floating sidebar with submenus.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-05",
+    "description": "A sidebar with collapsible submenus.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-06",
+    "description": "A sidebar with submenus as dropdowns.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-07",
+    "description": "A sidebar that collapses to icons.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-08",
+    "description": "An inset sidebar with secondary navigation.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-09",
+    "description": "Collapsible nested sidebars.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-10",
+    "description": "A sidebar in a popover.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-11",
+    "description": "A sidebar with a collapsible file tree.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-12",
+    "description": "A sidebar with a calendar.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-13",
+    "description": "A sidebar in a dialog.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-14",
+    "description": "A sidebar on the right.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-15",
+    "description": "A left and right sidebar.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-16",
+    "description": "A sidebar with a sticky site header.",
+    "categories": ["sidebar", "dashboard"]
+  }
+]
