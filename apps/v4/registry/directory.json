@@ -172,7 +172,7 @@
     "homepage": "https://beui.saura3h.xyz",
     "url": "https://beui.saura3h.xyz/r/{name}.json",
     "description": "Bespoke motion components for React. Copy-paste components with shadcn-compatible installs, Tailwind CSS v4, and Motion.",
-    "logo": ""
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' fill='none' viewBox='0 0 512 512'><rect width='512' height='512' fill='var(--foreground)' rx='128'/><rect x='86' y='86' width='340' height='340' fill='var(--background)' rx='122'/><rect x='171' y='171' width='170' height='170' fill='var(--foreground)' rx='46'/></svg>"
   },
   {
     "name": "@billingsdk",
