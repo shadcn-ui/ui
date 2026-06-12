@@ -238,10 +238,14 @@ function resolvePresetParams(
 // Wraps nuqs useQueryStates with transparent preset encoding/decoding.
 // - Reads: if ?preset=CODE is in the URL, decodes it and returns individual values.
 // - Writes: when design system params are set, encodes them into a preset code.
+//
+// Default options use shallow: true so picker selections do not trigger a full
+// Next.js server navigation. This prevents the customizer panel from flickering
+// or resetting while the URL update propagates (#10910).
 export function useDesignSystemSearchParams(options: Options = {}) {
   const searchParams = useSearchParams()
   const [rawParams, rawSetParams] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
+    shallow: true,
     history: "push",
     ...options,
   })
