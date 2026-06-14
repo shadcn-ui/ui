@@ -1,0 +1,22 @@
+---
+title: July 2025 - Local File Support
+description: Initialize projects and add components from local JSON files.
+date: 2025-07-07
+---
+
+The shadcn CLI now supports local files. Initialize projects and add components, themes, hooks, utils and more from local JSON files.
+
+```bash
+# Initialize a project from a local file
+npx shadcn init ./template.json
+
+# Add a component from a local file
+npx shadcn add ./block.json
+```
+
+This feature enables powerful new workflows:
+
+- **Zero setup** - No remote registries required
+- **Faster development** - Test registry items locally before publishing
+- **Enhanced workflow for agents and MCP** - Generate and run registry items locally
+- **Private components** - Keep proprietary components local and private.

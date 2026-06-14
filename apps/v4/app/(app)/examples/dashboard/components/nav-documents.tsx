@@ -52,7 +52,7 @@ export function NavDocuments({
               <DropdownMenuTrigger asChild>
                 <SidebarMenuAction
                   showOnHover
-                  className="data-[state=open]:bg-accent rounded-sm"
+                  className="rounded-sm data-[state=open]:bg-accent"
                 >
                   <IconDots />
                   <span className="sr-only">More</span>

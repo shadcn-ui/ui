@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "calendar-13",
-  "type": "registry:block",
   "description": "With Month and Year Dropdown",
   "registryDependencies": [
     "calendar",
@@ -23,5 +22,6 @@
   "categories": [
     "calendar",
     "date"
-  ]
+  ],
+  "type": "registry:block"
 }

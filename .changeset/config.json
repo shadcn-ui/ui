@@ -7,5 +7,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["www", "v4", "tests"]
+  "ignore": ["v4", "tests"]
 }

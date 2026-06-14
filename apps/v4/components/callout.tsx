@@ -10,12 +10,17 @@ export function Callout({
   children,
   icon,
   className,
+  variant = "default",
   ...props
-}: React.ComponentProps<typeof Alert> & { icon?: React.ReactNode }) {
+}: React.ComponentProps<typeof Alert> & {
+  icon?: React.ReactNode
+  variant?: "default" | "info" | "warning"
+}) {
   return (
     <Alert
+      data-variant={variant}
       className={cn(
-        "bg-surface text-surface-foreground mt-6 w-auto border-none md:-mx-1",
+        "mt-6 w-auto rounded-xl border-surface bg-surface text-surface-foreground md:-mx-1 **:[code]:border",
         className
       )}
       {...props}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "example-at-property",
+  "type": "registry:style",
+  "css": {
+    "@property --foo": {
+      "syntax": "'<number>'",
+      "inherits": "false",
+      "initial-value": "0"
+    }
+  }
+}

@@ -1,29 +1,32 @@
 import Link from "next/link"
 
-import { source } from "@/lib/source"
+import { PAGES_NEW } from "@/lib/docs"
+import { getPagesFromFolder, type PageTreeFolder } from "@/lib/page-tree"
 
-export function ComponentsList() {
-  const components = source.pageTree.children.find(
-    (page) => page.$id === "components"
-  )
-
-  if (components?.type !== "folder") {
-    return
-  }
-
-  const list = components.children.filter(
-    (component) => component.type === "page"
-  )
+export function ComponentsList({
+  componentsFolder,
+  currentBase,
+}: {
+  componentsFolder: PageTreeFolder
+  currentBase: string
+}) {
+  const list = getPagesFromFolder(componentsFolder, currentBase)
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20">
+    <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20">
       {list.map((component) => (
         <Link
           key={component.$id}
           href={component.url}
-          className="text-lg font-medium underline-offset-4 hover:underline md:text-base"
+          className="inline-flex items-center gap-2 text-lg font-medium underline-offset-4 hover:underline md:text-base"
         >
           {component.name}
+          {PAGES_NEW.includes(component.url) && (
+            <span
+              className="flex size-2 rounded-full bg-blue-500"
+              title="New"
+            />
+          )}
         </Link>
       ))}
     </div>

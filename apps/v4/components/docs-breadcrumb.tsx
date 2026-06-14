@@ -4,7 +4,7 @@ import { Fragment } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useBreadcrumb } from "fumadocs-core/breadcrumb"
-import type { PageTree } from "fumadocs-core/server"
+import type { Root } from "fumadocs-core/page-tree"
 
 import {
   Breadcrumb,
@@ -19,7 +19,7 @@ export function DocsBreadcrumb({
   tree,
   className,
 }: {
-  tree: PageTree.Root
+  tree: Root
   className?: string
 }) {
   const pathname = usePathname()
@@ -46,7 +46,7 @@ export function DocsBreadcrumb({
                 <BreadcrumbLink asChild>
                   <Link
                     href={item.url}
-                    className="hover:text-accent-foreground truncate"
+                    className="truncate hover:text-accent-foreground"
                   >
                     {item.name}
                   </Link>

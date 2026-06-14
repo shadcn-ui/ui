@@ -22,7 +22,7 @@ export function SidebarOptInForm() {
           <div className="grid gap-2.5">
             <SidebarInput type="email" placeholder="Email" />
             <Button
-              className="bg-sidebar-primary text-sidebar-primary-foreground w-full shadow-none"
+              className="w-full bg-sidebar-primary text-sidebar-primary-foreground shadow-none"
               size="sm"
             >
               Subscribe

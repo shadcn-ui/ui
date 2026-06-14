@@ -1,12 +1,12 @@
 "use client"
 
-import { ColumnDef } from "@tanstack/react-table"
+import { type ColumnDef } from "@tanstack/react-table"
 
 import { Badge } from "@/registry/new-york-v4/ui/badge"
 import { Checkbox } from "@/registry/new-york-v4/ui/checkbox"
 
 import { labels, priorities, statuses } from "../data/data"
-import { Task } from "../data/schema"
+import { type Task } from "../data/schema"
 import { DataTableColumnHeader } from "./data-table-column-header"
 import { DataTableRowActions } from "./data-table-row-actions"
 
@@ -79,7 +79,7 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className="flex w-[100px] items-center gap-2">
           {status.icon && (
-            <status.icon className="text-muted-foreground size-4" />
+            <status.icon className="size-4 text-muted-foreground" />
           )}
           <span>{status.label}</span>
         </div>
@@ -106,7 +106,7 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className="flex items-center gap-2">
           {priority.icon && (
-            <priority.icon className="text-muted-foreground size-4" />
+            <priority.icon className="size-4 text-muted-foreground" />
           )}
           <span>{priority.label}</span>
         </div>

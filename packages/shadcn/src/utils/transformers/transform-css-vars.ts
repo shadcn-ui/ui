@@ -99,35 +99,50 @@ export const transformCssVars: Transformer = async ({
 // //   return classNames
 // // }
 
-// Splits a className into variant-name-alpha.
+// Splits a className into [variant, name, alpha].
 // eg. hover:bg-primary-100 -> [hover, bg-primary, 100]
+// eg. sm:group-data-[size=default]/alert-dialog-content:text-left -> [sm:group-data-[size=default]/alert-dialog-content, text-left, null]
 export function splitClassName(className: string): (string | null)[] {
   if (!className.includes("/") && !className.includes(":")) {
     return [null, className, null]
   }
 
-  const parts: (string | null)[] = []
-  // First we split to find the alpha.
-  let [rest, alpha] = className.split("/")
-
-  // Check if rest has a colon.
-  if (!rest.includes(":")) {
-    return [null, rest, alpha]
+  // Find the last colon that's not inside brackets to split variant from name.
+  let lastColonIndex = -1
+  let bracketDepth = 0
+  for (let i = className.length - 1; i >= 0; i--) {
+    const char = className[i]
+    if (char === "]") bracketDepth++
+    else if (char === "[") bracketDepth--
+    else if (char === ":" && bracketDepth === 0) {
+      lastColonIndex = i
+      break
+    }
   }
 
-  // Next we split the rest by the colon.
-  const split = rest.split(":")
+  let variant: string | null = null
+  let nameWithAlpha: string
 
-  // We take the last item from the split as the name.
-  const name = split.pop()
+  if (lastColonIndex === -1) {
+    // No colon outside brackets, entire string is the name (possibly with alpha).
+    nameWithAlpha = className
+  } else {
+    variant = className.slice(0, lastColonIndex)
+    nameWithAlpha = className.slice(lastColonIndex + 1)
+  }
 
-  // We glue back the rest of the split.
-  const variant = split.join(":")
+  // Now split nameWithAlpha by "/" for alpha modifier.
+  // Alpha modifiers are numeric (e.g., /50) or arbitrary (e.g., /[50%]).
+  // Named groups like /alert-dialog-content would have been part of variant.
+  const slashIndex = nameWithAlpha.lastIndexOf("/")
+  if (slashIndex === -1) {
+    return [variant, nameWithAlpha, null]
+  }
 
-  // Finally we push the variant, name and alpha.
-  parts.push(variant ?? null, name ?? null, alpha ?? null)
+  const name = nameWithAlpha.slice(0, slashIndex)
+  const alpha = nameWithAlpha.slice(slashIndex + 1)
 
-  return parts
+  return [variant, name, alpha]
 }
 
 const PREFIXES = ["bg-", "text-", "border-", "ring-offset-", "ring-"]
