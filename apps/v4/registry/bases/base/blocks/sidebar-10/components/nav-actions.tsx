@@ -195,7 +195,7 @@ export function NavActions() {
       <div className="hidden font-medium text-muted-foreground md:inline-block">
         Edit Oct 08
       </div>
-      <Button variant="ghost" size="icon" className="h-7 w-7">
+      <Button variant="ghost" size="icon" className="size-7">
         <IconPlaceholder
           lucide="StarIcon"
           tabler="IconStar"
@@ -210,7 +210,7 @@ export function NavActions() {
             <Button
               variant="ghost"
               size="icon"
-              className="h-7 w-7 data-open:bg-accent"
+              className="size-7 data-open:bg-accent"
             />
           }
         >
