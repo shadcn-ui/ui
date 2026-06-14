@@ -1,4 +1,5 @@
 import path from "path"
+import { resolveGitHubRegistrySource } from "@/src/registry/address"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
 import {
@@ -19,6 +20,7 @@ import {
   RegistryValidationError,
 } from "@/src/registry/errors"
 import { fetchRegistry } from "@/src/registry/fetcher"
+import { fetchGitHubRegistryCatalog } from "@/src/registry/github"
 import {
   fetchRegistryItems,
   resolveRegistryTree,
@@ -53,6 +55,11 @@ export async function getRegistry(
   if (isUrl(name)) {
     const [result] = await fetchRegistry([name], { useCache })
     return parseRegistryCatalog(name, result)
+  }
+
+  const githubSource = resolveGitHubRegistrySource(name)
+  if (githubSource) {
+    return fetchGitHubRegistryCatalog(githubSource, { useCache })
   }
 
   if (!name.startsWith("@")) {
