@@ -242,11 +242,11 @@
 
   /* MARK: Card */
   .cn-card {
-    @apply bg-card text-card-foreground ring-foreground/5 gap-8 overflow-hidden py-8 text-sm shadow-sm ring-1 has-[>img:first-child]:pt-0 data-[size=sm]:gap-5 data-[size=sm]:py-5 *:[img:first-child]:rounded-none *:[img:last-child]:rounded-none;
+    @apply bg-card text-card-foreground ring-foreground/5 gap-(--card-spacing) overflow-hidden py-(--card-spacing) text-sm shadow-sm ring-1 [--card-spacing:--spacing(8)] has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(5)] *:[img:first-child]:rounded-none *:[img:last-child]:rounded-none;
   }
 
   .cn-card-header {
-    @apply gap-1.5 rounded-none px-8 group-data-[size=sm]/card:px-5 [.border-b]:pb-8 group-data-[size=sm]/card:[.border-b]:pb-5;
+    @apply gap-1.5 rounded-none px-(--card-spacing) [.border-b]:pb-(--card-spacing);
   }
 
   .cn-card-title {
@@ -258,11 +258,11 @@
   }
 
   .cn-card-content {
-    @apply px-8 group-data-[size=sm]/card:px-5;
+    @apply px-(--card-spacing);
   }
 
   .cn-card-footer {
-    @apply px-8 group-data-[size=sm]/card:px-5 [.border-t]:pt-8 group-data-[size=sm]/card:[.border-t]:pt-5;
+    @apply px-(--card-spacing) [.border-t]:pt-(--card-spacing);
   }
 
   /* MARK: Chart */
@@ -1354,4 +1354,3 @@
     @apply animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!;
   }
 }
-

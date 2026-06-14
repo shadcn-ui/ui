@@ -284,6 +284,14 @@
     }
   }
 
+  [data-rehype-pretty-code-figure] code,
+  [data-rehype-pretty-code-figure] code span {
+    font-variant-ligatures: none;
+    font-feature-settings:
+      "liga" 0,
+      "calt" 0;
+  }
+
   [data-rehype-pretty-code-title] {
     border-bottom: color-mix(in oklab, var(--border) 30%, transparent);
     border-bottom-width: 1px;

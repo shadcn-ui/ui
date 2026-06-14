@@ -1,6 +1,6 @@
 {
   "name": "shadcn",
-  "version": "4.9.0",
+  "version": "4.11.0",
   "description": "Add components to your apps.",
   "publishConfig": {
     "access": "public"
@@ -100,7 +100,6 @@
     "fuzzysort": "^3.1.0",
     "https-proxy-agent": "^7.0.6",
     "kleur": "^4.1.5",
-    "msw": "^2.10.4",
     "node-fetch": "^3.3.2",
     "open": "^11.0.0",
     "ora": "^8.2.0",
@@ -125,6 +124,7 @@
     "rimraf": "^6.0.1",
     "tsup": "^8.5.0",
     "type-fest": "^4.41.0",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "msw": "^2.10.4"
   }
 }
