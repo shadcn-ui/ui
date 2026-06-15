@@ -122,6 +122,25 @@ You can combine the `Dialog` and `Drawer` components to create a responsive dial
 
 <ComponentPreview styleName="base-nova" name="drawer-dialog" />
 
+### Non-modal Drawer
+
+By default, the Drawer traps focus inside when open and blocks interaction with the rest of the page. To allow users to focus inputs or interact with elements outside the drawer while it remains open, set `modal={false}` on `<Drawer>` and `showOverlay={false}` on `<DrawerContent>`.
+
+<ComponentPreview styleName="base-nova" name="drawer-non-modal" />
+
+```tsx showLineNumbers
+<Drawer modal={false}>
+  <DrawerTrigger asChild>
+    <Button variant="outline">Open</Button>
+  </DrawerTrigger>
+  <DrawerContent showOverlay={false}>
+    {/* ... */}
+  </DrawerContent>
+</Drawer>
+```
+
+`modal={false}` disables vaul's focus trap so keyboard focus can leave the drawer freely. `showOverlay={false}` removes the backdrop so the rest of the page remains fully visible and clickable.
+
 ## RTL
 
 To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).

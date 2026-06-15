@@ -2217,6 +2217,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "drawer-non-modal": {
+      name: "drawer-non-modal",
+      filePath: "examples/radix/drawer-non-modal.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/drawer-non-modal")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "drawer-non-modal"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "drawer-rtl": {
       name: "drawer-rtl",
       filePath: "examples/radix/drawer-rtl.tsx",
@@ -7871,6 +7884,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "drawer-dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "drawer-non-modal": {
+      name: "drawer-non-modal",
+      filePath: "examples/base/drawer-non-modal.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/drawer-non-modal")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "drawer-non-modal"
         return { default: mod.default || mod[exportName] }
       }),
     },
