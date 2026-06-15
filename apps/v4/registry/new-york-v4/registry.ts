@@ -9,6 +9,7 @@ import { hooks } from "./hooks/_registry"
 import { internal } from "./internal/_registry"
 import { lib } from "./lib/_registry"
 import { ui } from "./ui/_registry"
+import { fonts } from "@/registry/fonts"
 
 const DEPRECATED_ITEMS = [
   "toast",
@@ -62,6 +63,7 @@ export const registry = {
       ...themes,
       ...examples,
       ...internal,
+      ...fonts,
     ].filter((item) => {
       return !DEPRECATED_ITEMS.includes(item.name)
     })
