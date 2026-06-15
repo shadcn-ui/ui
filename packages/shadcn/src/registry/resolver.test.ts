@@ -2529,4 +2529,48 @@ describe("resolveRegistryTree - last wins behavior", async () => {
       "--primary": "#0066cc", // From override (new property)
     })
   })
+
+  test("should deduplicate identical docs strings", async () => {
+    const config = {
+      style: "default",
+      rsc: false,
+      tsx: false,
+      aliases: {
+        components: "./components",
+        utils: "./lib/utils",
+        ui: "./components/ui",
+      },
+      tailwind: {
+        baseColor: "neutral",
+        css: "globals.css",
+        cssVariables: false,
+      },
+      registries: {
+        "@override": "http://localhost:4460/r/{name}.json",
+      },
+      resolvedPaths: {
+        cwd: process.cwd(),
+        tailwindConfig: "./tailwind.config.js",
+        tailwindCss: "./globals.css",
+        utils: "./lib/utils",
+        components: "./components",
+        lib: "./lib",
+        hooks: "./hooks",
+        ui: "./components/ui",
+      },
+    }
+
+    // base-component appears twice in payload once directly and once as a dependency of override-component
+    const result = await resolveRegistryTree(
+      ["@override/base-component", "@override/override-component"],
+      config
+    )
+
+    // base-component documentation should appear exactly once
+     expect(result?.docs).toMatchInlineSnapshot(`
+      "Base component documentation
+      Override component documentation
+      "
+    `)
+  })
 })
