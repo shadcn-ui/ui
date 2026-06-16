@@ -1478,6 +1478,13 @@
     "logo": "<svg width='512' height='512' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'> <rect x='64' y='64' width='384' height='384' rx='80' fill='var(--foreground)'/> <rect x='144' y='144' width='224' height='224' rx='40' fill='none' stroke='var(--background)' stroke-width='16'/> </svg>"
   },
   {
+    "name": "@heatmap",
+    "homepage": "https://shadcn-heatmap.pages.dev",
+    "url": "https://shadcn-heatmap.pages.dev/r/{name}.json",
+    "description": "Beautiful, accessible heatmap components for React: GitHub-style calendar, weekday x hour matrix, date x hour, and status timeline. Built with shadcn/ui conventions.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='2' y='2' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.15'/><rect x='12' y='2' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.35'/><rect x='22' y='2' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.75'/><rect x='2' y='12' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.55'/><rect x='12' y='12' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='1'/><rect x='22' y='12' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.35'/><rect x='2' y='22' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.9'/><rect x='12' y='22' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.15'/><rect x='22' y='22' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.55'/></svg>"
+  },
+  {
     "name": "@xcn",
     "homepage": "https://ui.radiumcoders.com",
     "url": "https://ui.radiumcoders.com/r/xcn/{name}.json",
