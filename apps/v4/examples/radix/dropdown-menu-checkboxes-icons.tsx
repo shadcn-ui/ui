@@ -3,7 +3,7 @@
 import * as React from "react"
 import { BellIcon, MailIcon, MessageSquareIcon } from "lucide-react"
 
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/styles/radix-force-ui/ui/button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -11,7 +11,7 @@ import {
   DropdownMenuGroup,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@/styles/radix-nova/ui/dropdown-menu"
+} from "@/styles/radix-force-ui/ui/dropdown-menu"
 
 export function DropdownMenuCheckboxesIcons() {
   const [notifications, setNotifications] = React.useState({

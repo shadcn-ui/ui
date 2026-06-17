@@ -1,5 +1,5 @@
-import { Button } from "@/styles/base-nova/ui/button"
-import { Checkbox } from "@/styles/base-nova/ui/checkbox"
+import { Button } from "@/styles/base-force-ui/ui/button"
+import { Checkbox } from "@/styles/base-force-ui/ui/checkbox"
 import {
   Field,
   FieldDescription,
@@ -8,8 +8,8 @@ import {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-} from "@/styles/base-nova/ui/field"
-import { Input } from "@/styles/base-nova/ui/input"
+} from "@/styles/base-force-ui/ui/field"
+import { Input } from "@/styles/base-force-ui/ui/input"
 import {
   Select,
   SelectContent,
@@ -17,8 +17,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/styles/base-nova/ui/select"
-import { Textarea } from "@/styles/base-nova/ui/textarea"
+} from "@/styles/base-force-ui/ui/select"
+import { Textarea } from "@/styles/base-force-ui/ui/textarea"
 
 const months = [
   { label: "MM", value: null },

@@ -9,13 +9,13 @@ import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/styles/base-nova/ui-rtl/input-group"
-import { Label } from "@/styles/base-nova/ui-rtl/label"
+} from "@/styles/base-force-ui/ui-rtl/input-group"
+import { Label } from "@/styles/base-force-ui/ui-rtl/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/styles/base-nova/ui-rtl/popover"
+} from "@/styles/base-force-ui/ui-rtl/popover"
 
 const translations = {
   ar: {

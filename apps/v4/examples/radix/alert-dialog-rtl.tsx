@@ -18,8 +18,8 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/styles/radix-nova/ui-rtl/alert-dialog"
-import { Button } from "@/styles/radix-nova/ui-rtl/button"
+} from "@/styles/radix-force-ui/ui-rtl/alert-dialog"
+import { Button } from "@/styles/radix-force-ui/ui-rtl/button"
 
 const translations: Translations = {
   en: {

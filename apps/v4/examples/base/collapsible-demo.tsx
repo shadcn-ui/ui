@@ -3,12 +3,12 @@
 import * as React from "react"
 import { ChevronsUpDown } from "lucide-react"
 
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/styles/base-nova/ui/collapsible"
+} from "@/styles/base-force-ui/ui/collapsible"
 
 export default function CollapsibleDemo() {
   const [isOpen, setIsOpen] = React.useState(false)

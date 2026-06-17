@@ -5,8 +5,8 @@ import {
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
-} from "@/styles/radix-nova/ui/input-group"
-import { Spinner } from "@/styles/radix-nova/ui/spinner"
+} from "@/styles/radix-force-ui/ui/input-group"
+import { Spinner } from "@/styles/radix-force-ui/ui/spinner"
 
 export default function InputGroupSpinner() {
   return (

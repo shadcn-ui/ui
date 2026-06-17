@@ -1,6 +1,6 @@
 import { IconGitBranch } from "@tabler/icons-react"
 
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/styles/radix-force-ui/ui/button"
 
 export default function ButtonWithIcon() {
   return (

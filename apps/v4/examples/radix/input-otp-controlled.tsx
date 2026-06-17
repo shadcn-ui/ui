@@ -6,7 +6,7 @@ import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@/styles/radix-nova/ui/input-otp"
+} from "@/styles/radix-force-ui/ui/input-otp"
 
 export default function InputOTPControlled() {
   const [value, setValue] = React.useState("")

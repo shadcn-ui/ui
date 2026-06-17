@@ -3,16 +3,16 @@
 import * as React from "react"
 import { ArrowRightIcon } from "lucide-react"
 
-import { Button } from "@/styles/base-nova/ui/button"
-import { ButtonGroup } from "@/styles/base-nova/ui/button-group"
-import { Input } from "@/styles/base-nova/ui/input"
+import { Button } from "@/styles/base-force-ui/ui/button"
+import { ButtonGroup } from "@/styles/base-force-ui/ui/button-group"
+import { Input } from "@/styles/base-force-ui/ui/input"
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
   SelectTrigger,
-} from "@/styles/base-nova/ui/select"
+} from "@/styles/base-force-ui/ui/select"
 
 const CURRENCIES = [
   { label: "US Dollar", value: "$" },

@@ -1,8 +1,8 @@
 "use client"
 
 import { useLanguageContext } from "@/components/language-selector"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
-import { Checkbox } from "@/styles/base-nova/ui-rtl/checkbox"
+import { Button } from "@/styles/base-force-ui/ui-rtl/button"
+import { Checkbox } from "@/styles/base-force-ui/ui-rtl/checkbox"
 import {
   Field,
   FieldDescription,
@@ -11,8 +11,8 @@ import {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-} from "@/styles/base-nova/ui-rtl/field"
-import { Input } from "@/styles/base-nova/ui-rtl/input"
+} from "@/styles/base-force-ui/ui-rtl/field"
+import { Input } from "@/styles/base-force-ui/ui-rtl/input"
 import {
   Select,
   SelectContent,
@@ -20,8 +20,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/styles/base-nova/ui-rtl/select"
-import { Textarea } from "@/styles/base-nova/ui-rtl/textarea"
+} from "@/styles/base-force-ui/ui-rtl/select"
+import { Textarea } from "@/styles/base-force-ui/ui-rtl/textarea"
 
 const translations = {
   ar: {

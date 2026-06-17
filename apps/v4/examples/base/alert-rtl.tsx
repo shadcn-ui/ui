@@ -11,7 +11,7 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@/styles/base-nova/ui-rtl/alert"
+} from "@/styles/base-force-ui/ui-rtl/alert"
 
 const translations: Translations = {
   en: {

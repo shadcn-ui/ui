@@ -14,8 +14,8 @@ import {
 } from "lucide-react"
 
 import { useLanguageContext } from "@/components/language-selector"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
-import { ButtonGroup } from "@/styles/base-nova/ui-rtl/button-group"
+import { Button } from "@/styles/base-force-ui/ui-rtl/button"
+import { ButtonGroup } from "@/styles/base-force-ui/ui-rtl/button-group"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,7 +29,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/styles/base-nova/ui-rtl/dropdown-menu"
+} from "@/styles/base-force-ui/ui-rtl/dropdown-menu"
 
 const translations = {
   ar: {

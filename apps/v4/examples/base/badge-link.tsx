@@ -1,6 +1,6 @@
 import { ArrowUpRightIcon } from "lucide-react"
 
-import { Badge } from "@/styles/base-nova/ui/badge"
+import { Badge } from "@/styles/base-force-ui/ui/badge"
 
 export function BadgeAsLink() {
   return (

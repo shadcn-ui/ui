@@ -13,7 +13,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "@/styles/radix-nova/ui/context-menu"
+} from "@/styles/radix-force-ui/ui/context-menu"
 
 export function ContextMenuDemo() {
   return (

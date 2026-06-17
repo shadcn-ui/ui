@@ -1,6 +1,6 @@
 import { ExternalLinkIcon, MailIcon } from "lucide-react"
 
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/styles/radix-force-ui/ui/button"
 import {
   Card,
   CardContent,
@@ -8,16 +8,16 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/styles/radix-nova/ui/card"
-import { Field, FieldGroup, FieldLabel } from "@/styles/radix-nova/ui/field"
-import { Input } from "@/styles/radix-nova/ui/input"
+} from "@/styles/radix-force-ui/ui/card"
+import { Field, FieldGroup, FieldLabel } from "@/styles/radix-force-ui/ui/field"
+import { Input } from "@/styles/radix-force-ui/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/styles/radix-nova/ui/input-group"
+} from "@/styles/radix-force-ui/ui/input-group"
 
 export function InputGroupInCard() {
   return (

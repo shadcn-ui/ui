@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -10,7 +10,7 @@ import {
   DropdownMenuGroup,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@/styles/base-nova/ui/dropdown-menu"
+} from "@/styles/base-force-ui/ui/dropdown-menu"
 
 export function DropdownMenuCheckboxes() {
   const [showStatusBar, setShowStatusBar] = React.useState(true)

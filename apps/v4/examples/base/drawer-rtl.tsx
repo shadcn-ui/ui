@@ -8,7 +8,7 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
+import { Button } from "@/styles/base-force-ui/ui-rtl/button"
 import {
   Drawer,
   DrawerClose,
@@ -18,7 +18,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/styles/base-nova/ui-rtl/drawer"
+} from "@/styles/base-force-ui/ui-rtl/drawer"
 
 const data = [
   {

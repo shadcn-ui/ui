@@ -15,7 +15,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/styles/base-nova/ui-rtl/table"
+} from "@/styles/base-force-ui/ui-rtl/table"
 
 const translations: Translations = {
   en: {

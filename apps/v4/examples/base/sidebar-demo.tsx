@@ -30,12 +30,12 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/styles/base-nova/ui/avatar"
+} from "@/styles/base-force-ui/ui/avatar"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/styles/base-nova/ui/collapsible"
+} from "@/styles/base-force-ui/ui/collapsible"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -45,7 +45,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/styles/base-nova/ui/dropdown-menu"
+} from "@/styles/base-force-ui/ui/dropdown-menu"
 import {
   Sidebar,
   SidebarContent,
@@ -65,7 +65,7 @@ import {
   SidebarRail,
   SidebarTrigger,
   useSidebar,
-} from "@/styles/base-nova/ui/sidebar"
+} from "@/styles/base-force-ui/ui/sidebar"
 
 // This is sample data.
 const data = {

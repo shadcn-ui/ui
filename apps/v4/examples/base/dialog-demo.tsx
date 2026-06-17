@@ -1,4 +1,4 @@
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -8,10 +8,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/styles/base-nova/ui/dialog"
-import { Field, FieldGroup } from "@/styles/base-nova/ui/field"
-import { Input } from "@/styles/base-nova/ui/input"
-import { Label } from "@/styles/base-nova/ui/label"
+} from "@/styles/base-force-ui/ui/dialog"
+import { Field, FieldGroup } from "@/styles/base-force-ui/ui/field"
+import { Input } from "@/styles/base-force-ui/ui/input"
+import { Label } from "@/styles/base-force-ui/ui/label"
 
 export function DialogDemo() {
   return (

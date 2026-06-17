@@ -6,7 +6,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/styles/radix-nova/ui/collapsible"
+} from "@/styles/radix-force-ui/ui/collapsible"
 import {
   Sidebar,
   SidebarContent,
@@ -19,7 +19,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   SidebarProvider,
-} from "@/styles/radix-nova/ui/sidebar"
+} from "@/styles/radix-force-ui/ui/sidebar"
 
 const items = [
   {

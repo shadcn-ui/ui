@@ -4,7 +4,7 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   useInitUrl,
   usePresetCode,

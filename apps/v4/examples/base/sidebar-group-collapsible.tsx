@@ -6,7 +6,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/styles/base-nova/ui/collapsible"
+} from "@/styles/base-force-ui/ui/collapsible"
 import {
   Sidebar,
   SidebarContent,
@@ -17,7 +17,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/styles/base-nova/ui/sidebar"
+} from "@/styles/base-force-ui/ui/sidebar"
 
 export default function AppSidebar() {
   return (

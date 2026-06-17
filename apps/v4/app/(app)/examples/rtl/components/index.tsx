@@ -5,8 +5,8 @@ import {
   LanguageSelector,
   useLanguageContext,
 } from "@/components/language-selector"
-import { DirectionProvider } from "@/styles/base-nova/ui-rtl/direction"
-import { FieldSeparator } from "@/styles/base-nova/ui-rtl/field"
+import { DirectionProvider } from "@/styles/base-force-ui/ui-rtl/direction"
+import { FieldSeparator } from "@/styles/base-force-ui/ui-rtl/field"
 
 import { AppearanceSettings } from "./appearance-settings"
 import { ButtonGroupDemo } from "./button-group-demo"

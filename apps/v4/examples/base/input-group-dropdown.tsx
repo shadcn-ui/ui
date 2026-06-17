@@ -8,13 +8,13 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/styles/base-nova/ui/dropdown-menu"
+} from "@/styles/base-force-ui/ui/dropdown-menu"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/styles/base-nova/ui/input-group"
+} from "@/styles/base-force-ui/ui/input-group"
 
 export function InputGroupDropdown() {
   return (

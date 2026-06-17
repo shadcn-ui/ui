@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Building2Icon, CreditCardIcon, WalletIcon } from "lucide-react"
 
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,7 +12,7 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from "@/styles/base-nova/ui/dropdown-menu"
+} from "@/styles/base-force-ui/ui/dropdown-menu"
 
 export function DropdownMenuRadioIcons() {
   const [paymentMethod, setPaymentMethod] = React.useState("card")

@@ -3,14 +3,14 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/styles/radix-nova/ui/accordion"
+} from "@/styles/radix-force-ui/ui/accordion"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/styles/radix-nova/ui/card"
+} from "@/styles/radix-force-ui/ui/card"
 
 const items = [
   {

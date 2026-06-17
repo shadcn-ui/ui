@@ -7,7 +7,7 @@ import {
   ItemGroup,
   ItemMedia,
   ItemTitle,
-} from "@/styles/base-nova/ui/item"
+} from "@/styles/base-force-ui/ui/item"
 
 const music = [
   {

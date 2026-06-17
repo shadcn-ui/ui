@@ -1,6 +1,6 @@
 import { ChevronRightIcon } from "lucide-react"
 
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   Card,
   CardContent,
@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/styles/base-nova/ui/card"
+} from "@/styles/base-force-ui/ui/card"
 
 export function CardSmall() {
   const featureName = "Scheduled reports"

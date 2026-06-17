@@ -13,7 +13,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/styles/radix-nova/ui-rtl/chart"
+} from "@/styles/radix-force-ui/ui-rtl/chart"
 
 const translations: Translations = {
   en: {

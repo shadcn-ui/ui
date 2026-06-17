@@ -7,7 +7,7 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Toggle } from "@/styles/radix-nova/ui-rtl/toggle"
+import { Toggle } from "@/styles/radix-force-ui/ui-rtl/toggle"
 
 const translations: Translations = {
   en: {

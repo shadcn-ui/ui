@@ -11,7 +11,7 @@ import {
   MenubarRadioItem,
   MenubarSeparator,
   MenubarTrigger,
-} from "@/styles/base-nova/ui/menubar"
+} from "@/styles/base-force-ui/ui/menubar"
 
 export function MenubarRadio() {
   const [user, setUser] = React.useState("benoit")

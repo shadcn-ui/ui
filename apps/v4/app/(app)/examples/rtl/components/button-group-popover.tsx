@@ -3,15 +3,15 @@
 import { BotIcon, ChevronDownIcon } from "lucide-react"
 
 import { useLanguageContext } from "@/components/language-selector"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
-import { ButtonGroup } from "@/styles/base-nova/ui-rtl/button-group"
+import { Button } from "@/styles/base-force-ui/ui-rtl/button"
+import { ButtonGroup } from "@/styles/base-force-ui/ui-rtl/button-group"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/styles/base-nova/ui-rtl/popover"
-import { Separator } from "@/styles/base-nova/ui-rtl/separator"
-import { Textarea } from "@/styles/base-nova/ui-rtl/textarea"
+} from "@/styles/base-force-ui/ui-rtl/popover"
+import { Separator } from "@/styles/base-force-ui/ui-rtl/separator"
+import { Textarea } from "@/styles/base-force-ui/ui-rtl/textarea"
 
 const translations = {
   ar: {

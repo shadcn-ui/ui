@@ -6,7 +6,7 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/styles/radix-nova/ui/item"
+} from "@/styles/radix-force-ui/ui/item"
 
 export function ItemVariant() {
   return (

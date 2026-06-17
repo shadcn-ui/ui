@@ -1,14 +1,14 @@
 import { BotIcon, ChevronDownIcon } from "lucide-react"
 
-import { Button } from "@/styles/radix-nova/ui/button"
-import { ButtonGroup } from "@/styles/radix-nova/ui/button-group"
+import { Button } from "@/styles/radix-force-ui/ui/button"
+import { ButtonGroup } from "@/styles/radix-force-ui/ui/button-group"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/styles/radix-nova/ui/popover"
-import { Separator } from "@/styles/radix-nova/ui/separator"
-import { Textarea } from "@/styles/radix-nova/ui/textarea"
+} from "@/styles/radix-force-ui/ui/popover"
+import { Separator } from "@/styles/radix-force-ui/ui/separator"
+import { Textarea } from "@/styles/radix-force-ui/ui/textarea"
 
 export function ButtonGroupPopover() {
   return (

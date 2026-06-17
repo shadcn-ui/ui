@@ -13,13 +13,13 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
-import { Calendar } from "@/styles/base-nova/ui-rtl/calendar"
+import { Button } from "@/styles/base-force-ui/ui-rtl/button"
+import { Calendar } from "@/styles/base-force-ui/ui-rtl/calendar"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/styles/base-nova/ui-rtl/popover"
+} from "@/styles/base-force-ui/ui-rtl/popover"
 
 const translations: Translations = {
   en: {

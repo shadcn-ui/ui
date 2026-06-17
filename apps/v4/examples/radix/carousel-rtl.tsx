@@ -4,14 +4,14 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Card, CardContent } from "@/styles/radix-nova/ui-rtl/card"
+import { Card, CardContent } from "@/styles/radix-force-ui/ui-rtl/card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/styles/radix-nova/ui-rtl/carousel"
+} from "@/styles/radix-force-ui/ui-rtl/carousel"
 
 const translations: Translations = {
   en: {

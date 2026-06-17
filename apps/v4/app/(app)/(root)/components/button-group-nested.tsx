@@ -2,8 +2,8 @@
 
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
 
-import { Button } from "@/styles/radix-nova/ui/button"
-import { ButtonGroup } from "@/styles/radix-nova/ui/button-group"
+import { Button } from "@/styles/radix-force-ui/ui/button"
+import { ButtonGroup } from "@/styles/radix-force-ui/ui/button-group"
 
 export function ButtonGroupNested() {
   return (

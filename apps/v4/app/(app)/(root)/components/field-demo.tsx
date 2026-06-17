@@ -1,5 +1,5 @@
-import { Button } from "@/styles/radix-nova/ui/button"
-import { Checkbox } from "@/styles/radix-nova/ui/checkbox"
+import { Button } from "@/styles/radix-force-ui/ui/button"
+import { Checkbox } from "@/styles/radix-force-ui/ui/checkbox"
 import {
   Field,
   FieldDescription,
@@ -8,8 +8,8 @@ import {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-} from "@/styles/radix-nova/ui/field"
-import { Input } from "@/styles/radix-nova/ui/input"
+} from "@/styles/radix-force-ui/ui/field"
+import { Input } from "@/styles/radix-force-ui/ui/input"
 import {
   Select,
   SelectContent,
@@ -17,8 +17,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/styles/radix-nova/ui/select"
-import { Textarea } from "@/styles/radix-nova/ui/textarea"
+} from "@/styles/radix-force-ui/ui/select"
+import { Textarea } from "@/styles/radix-force-ui/ui/textarea"
 
 export function FieldDemo() {
   return (

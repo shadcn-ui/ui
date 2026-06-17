@@ -6,8 +6,8 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Checkbox } from "@/styles/base-nova/ui-rtl/checkbox"
-import { Label } from "@/styles/base-nova/ui-rtl/label"
+import { Checkbox } from "@/styles/base-force-ui/ui-rtl/checkbox"
+import { Label } from "@/styles/base-force-ui/ui-rtl/label"
 
 const translations: Translations = {
   en: {

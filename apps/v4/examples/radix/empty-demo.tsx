@@ -1,7 +1,7 @@
 import { IconFolderCode } from "@tabler/icons-react"
 import { ArrowUpRightIcon } from "lucide-react"
 
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/styles/radix-force-ui/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -9,7 +9,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/styles/radix-nova/ui/empty"
+} from "@/styles/radix-force-ui/ui/empty"
 
 export default function EmptyDemo() {
   return (

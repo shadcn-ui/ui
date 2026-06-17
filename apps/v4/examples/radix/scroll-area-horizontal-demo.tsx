@@ -1,7 +1,7 @@
 import * as React from "react"
 import Image from "next/image"
 
-import { ScrollArea, ScrollBar } from "@/styles/radix-nova/ui/scroll-area"
+import { ScrollArea, ScrollBar } from "@/styles/radix-force-ui/ui/scroll-area"
 
 export interface Artwork {
   artist: string

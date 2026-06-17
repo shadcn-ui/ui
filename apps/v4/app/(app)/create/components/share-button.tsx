@@ -6,7 +6,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 
 import { getAppUrl } from "@/lib/utils"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import { usePresetCode } from "@/app/(app)/create/hooks/use-design-system"
 import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 

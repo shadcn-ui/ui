@@ -11,7 +11,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/styles/base-nova/ui/collapsible"
+} from "@/styles/base-force-ui/ui/collapsible"
 import {
   Sidebar,
   SidebarContent,
@@ -20,7 +20,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/styles/base-nova/ui/sidebar"
+} from "@/styles/base-force-ui/ui/sidebar"
 import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 import { groupItemsByType } from "@/app/(app)/create/lib/utils"
 

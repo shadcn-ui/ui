@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { Checkbox } from "@/styles/radix-nova/ui/checkbox"
+import { Checkbox } from "@/styles/radix-force-ui/ui/checkbox"
 import {
   Table,
   TableBody,
@@ -10,7 +10,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/styles/radix-nova/ui/table"
+} from "@/styles/radix-force-ui/ui/table"
 
 const tableData = [
   {

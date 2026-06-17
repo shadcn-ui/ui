@@ -1,6 +1,6 @@
 import { RefreshCwIcon } from "lucide-react"
 
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/styles/radix-force-ui/ui/button"
 import {
   Card,
   CardContent,
@@ -8,18 +8,18 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/styles/radix-nova/ui/card"
+} from "@/styles/radix-force-ui/ui/card"
 import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/styles/radix-nova/ui/field"
+} from "@/styles/radix-force-ui/ui/field"
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/styles/radix-nova/ui/input-otp"
+} from "@/styles/radix-force-ui/ui/input-otp"
 
 export function InputOTPForm() {
   return (

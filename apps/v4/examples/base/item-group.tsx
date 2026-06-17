@@ -5,8 +5,8 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/styles/base-nova/ui/avatar"
-import { Button } from "@/styles/base-nova/ui/button"
+} from "@/styles/base-force-ui/ui/avatar"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   Item,
   ItemActions,
@@ -16,7 +16,7 @@ import {
   ItemMedia,
   ItemSeparator,
   ItemTitle,
-} from "@/styles/base-nova/ui/item"
+} from "@/styles/base-force-ui/ui/item"
 
 const people = [
   {

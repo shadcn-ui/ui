@@ -2,7 +2,7 @@
 
 import { Bar, BarChart } from "recharts"
 
-import { ChartContainer, type ChartConfig } from "@/styles/base-nova/ui/chart"
+import { ChartContainer, type ChartConfig } from "@/styles/base-force-ui/ui/chart"
 
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },

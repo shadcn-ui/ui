@@ -4,7 +4,7 @@ import Script from "next/script"
 import { Redo02Icon, Undo02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import { useHistory } from "@/app/(app)/create/hooks/use-history"
 
 export const UNDO_FORWARD_TYPE = "undo-forward"

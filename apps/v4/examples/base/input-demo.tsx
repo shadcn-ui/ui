@@ -2,8 +2,8 @@ import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/styles/base-nova/ui/field"
-import { Input } from "@/styles/base-nova/ui/input"
+} from "@/styles/base-force-ui/ui/field"
+import { Input } from "@/styles/base-force-ui/ui/input"
 
 export function InputDemo() {
   return (

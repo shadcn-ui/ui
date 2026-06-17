@@ -4,7 +4,7 @@ import * as React from "react"
 import { Minus, Plus } from "lucide-react"
 import { Bar, BarChart, ResponsiveContainer } from "recharts"
 
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   Drawer,
   DrawerClose,
@@ -14,7 +14,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/styles/base-nova/ui/drawer"
+} from "@/styles/base-force-ui/ui/drawer"
 
 const data = [
   {

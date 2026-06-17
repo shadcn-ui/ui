@@ -7,7 +7,7 @@ import {
   ContextMenuItem,
   ContextMenuSeparator,
   ContextMenuTrigger,
-} from "@/styles/radix-nova/ui/context-menu"
+} from "@/styles/radix-force-ui/ui/context-menu"
 
 export function ContextMenuDestructive() {
   return (

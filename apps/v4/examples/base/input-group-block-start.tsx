@@ -5,7 +5,7 @@ import {
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/styles/base-nova/ui/field"
+} from "@/styles/base-force-ui/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
@@ -13,7 +13,7 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/styles/base-nova/ui/input-group"
+} from "@/styles/base-force-ui/ui/input-group"
 
 export function InputGroupBlockStart() {
   return (

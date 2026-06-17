@@ -1,13 +1,13 @@
 import { MoreHorizontalIcon } from "lucide-react"
 
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/styles/base-nova/ui/dropdown-menu"
+} from "@/styles/base-force-ui/ui/dropdown-menu"
 import {
   Table,
   TableBody,
@@ -15,7 +15,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/styles/base-nova/ui/table"
+} from "@/styles/base-force-ui/ui/table"
 
 export function TableActions() {
   return (

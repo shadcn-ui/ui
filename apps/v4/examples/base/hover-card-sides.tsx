@@ -1,9 +1,9 @@
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/styles/base-nova/ui/hover-card"
+} from "@/styles/base-force-ui/ui/hover-card"
 
 const HOVER_CARD_SIDES = ["left", "top", "bottom", "right"] as const
 

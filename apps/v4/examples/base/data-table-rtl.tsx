@@ -19,8 +19,8 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
-import { Checkbox } from "@/styles/base-nova/ui-rtl/checkbox"
+import { Button } from "@/styles/base-force-ui/ui-rtl/button"
+import { Checkbox } from "@/styles/base-force-ui/ui-rtl/checkbox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -30,8 +30,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/styles/base-nova/ui-rtl/dropdown-menu"
-import { Input } from "@/styles/base-nova/ui-rtl/input"
+} from "@/styles/base-force-ui/ui-rtl/dropdown-menu"
+import { Input } from "@/styles/base-force-ui/ui-rtl/input"
 import {
   Table,
   TableBody,
@@ -39,7 +39,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/styles/base-nova/ui-rtl/table"
+} from "@/styles/base-force-ui/ui-rtl/table"
 
 const translations: Translations = {
   en: {

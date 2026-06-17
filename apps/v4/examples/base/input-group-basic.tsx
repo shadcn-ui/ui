@@ -1,6 +1,6 @@
-import { Field, FieldGroup, FieldLabel } from "@/styles/base-nova/ui/field"
-import { Input } from "@/styles/base-nova/ui/input"
-import { InputGroup, InputGroupInput } from "@/styles/base-nova/ui/input-group"
+import { Field, FieldGroup, FieldLabel } from "@/styles/base-force-ui/ui/field"
+import { Input } from "@/styles/base-force-ui/ui/input"
+import { InputGroup, InputGroupInput } from "@/styles/base-force-ui/ui/input-group"
 
 export function InputGroupBasic() {
   return (

@@ -1,11 +1,11 @@
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/styles/base-nova/ui/field"
-import { Input } from "@/styles/base-nova/ui/input"
+} from "@/styles/base-force-ui/ui/field"
+import { Input } from "@/styles/base-force-ui/ui/input"
 import {
   Select,
   SelectContent,
@@ -13,7 +13,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/styles/base-nova/ui/select"
+} from "@/styles/base-force-ui/ui/select"
 
 export function InputForm() {
   const countries = [

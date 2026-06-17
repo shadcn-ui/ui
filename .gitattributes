@@ -1,0 +1,39 @@
+# =============================================================================
+# Force UI — Git merge strategy overrides
+# =============================================================================
+# merge=ours: on conflict, always keep OUR version.
+#
+# Applied ONLY to:
+#   - Files upstream never touches (our packages, our assets, our docs)
+#   - Generated files we rebuild after every merge
+#
+# Do NOT add files that mix [FORCE-UI] blocks with upstream content — those
+# need manual review after every merge:
+#   apps/v4/app/globals.css
+#   apps/v4/registry/themes.ts
+#   apps/v4/registry/styles.tsx
+#   apps/v4/registry/bases.ts
+#   apps/v4/registry/config.ts
+#
+# NOTE: merge=ours requires the driver to be registered in each clone.
+# The sync script (scripts/sync-upstream.sh) does this automatically via:
+#   git config merge.ours.driver true
+# =============================================================================
+
+# --- Fully ours: Force UI brand packages ---
+packages/theme-force-ui/**             merge=ours
+packages/registry-ember/**             merge=ours
+packages/registry-vue/**               merge=ours
+packages/registry-svelte/**            merge=ours
+
+# --- Fully ours: Force UI component styles ---
+apps/v4/registry/styles/style-force-ui.css  merge=ours
+
+# --- Fully ours: project documentation ---
+CLAUDE.md                              merge=ours
+CONTRIBUTING.md                        merge=ours
+
+# --- Generated: rebuilt by `pnpm --filter=v4 registry:build` after merge ---
+apps/v4/registry/__index__.tsx         merge=ours
+apps/v4/registry/bases/__index__.tsx   merge=ours
+apps/v4/public/r/**                    merge=ours

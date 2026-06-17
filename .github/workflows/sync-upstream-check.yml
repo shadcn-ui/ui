@@ -1,0 +1,138 @@
+name: Upstream Sync Check
+
+on:
+  schedule:
+    # Every Monday at 09:00 UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+    inputs:
+      force_notify:
+        description: 'Create/update issue even if already up to date'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check-upstream:
+    name: Check for unmerged upstream commits
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout our main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Add upstream remote and fetch
+        run: |
+          git remote add upstream https://github.com/shadcn-ui/ui.git
+          git fetch upstream main --no-tags
+
+      - name: Count unmerged upstream commits
+        id: count
+        run: |
+          AHEAD=$(git rev-list --count main..upstream/main)
+          UPSTREAM_SHA=$(git rev-parse upstream/main)
+          UPSTREAM_SHORT=$(git rev-parse --short upstream/main)
+          OUR_SHORT=$(git rev-parse --short main)
+          echo "ahead=$AHEAD" >> "$GITHUB_OUTPUT"
+          echo "upstream_sha=$UPSTREAM_SHA" >> "$GITHUB_OUTPUT"
+          echo "upstream_short=$UPSTREAM_SHORT" >> "$GITHUB_OUTPUT"
+          echo "our_short=$OUR_SHORT" >> "$GITHUB_OUTPUT"
+
+          LOG=$(git log --oneline main..upstream/main | head -20)
+          echo "commit_log<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$LOG" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Report status
+        run: |
+          echo "Upstream ahead by: ${{ steps.count.outputs.ahead }} commits"
+          echo "Upstream HEAD: ${{ steps.count.outputs.upstream_short }}"
+          echo "Our main HEAD: ${{ steps.count.outputs.our_short }}"
+
+      - name: Create or update tracking issue
+        if: steps.count.outputs.ahead != '0' || github.event.inputs.force_notify == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const ahead = parseInt('${{ steps.count.outputs.ahead }}', 10);
+            const upstreamSha = '${{ steps.count.outputs.upstream_sha }}';
+            const upstreamShort = '${{ steps.count.outputs.upstream_short }}';
+            const ourShort = '${{ steps.count.outputs.our_short }}';
+            const commitLog = `${{ steps.count.outputs.commit_log }}`;
+            const today = new Date().toISOString().split('T')[0];
+
+            const ISSUE_TITLE = '[Sync] Upstream shadcn-ui has unmerged commits';
+            const UPSTREAM_URL = 'https://github.com/shadcn-ui/ui';
+            const COMPARE_URL = `${UPSTREAM_URL}/compare/${ourShort}...${upstreamShort}`;
+
+            const body = [
+              `## Upstream sync required`,
+              ``,
+              `| | |`,
+              `|---|---|`,
+              `| **Detected** | ${today} |`,
+              `| **Upstream HEAD** | [\`${upstreamShort}\`](${UPSTREAM_URL}/commit/${upstreamSha}) |`,
+              `| **Our main HEAD** | \`${ourShort}\` |`,
+              `| **Commits behind** | ${ahead} |`,
+              ``,
+              `**[View changes on upstream →](${COMPARE_URL})**`,
+              ``,
+              `### Most recent upstream commits`,
+              '```',
+              commitLog || '(none)',
+              '```',
+              ``,
+              `### How to sync`,
+              ``,
+              '```bash',
+              'git checkout main && git pull origin main',
+              './scripts/sync-upstream.sh',
+              '```',
+              ``,
+              `See \`CONTRIBUTING.md\` → "Syncing from upstream shadcn" for full conflict resolution guidance.`,
+              ``,
+              `---`,
+              `_Close this issue after the merge PR lands on main._`,
+            ].join('\n');
+
+            // Search for an existing open issue with the upstream-sync label.
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'upstream-sync',
+            });
+
+            const existing = issues.find(i => i.title === ISSUE_TITLE);
+
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body: [
+                  `**Updated ${today}:** upstream now has **${ahead} unmerged commits** (HEAD \`${upstreamShort}\`).`,
+                  `[Compare →](${COMPARE_URL})`,
+                ].join('\n'),
+              });
+              core.info(`Updated existing issue #${existing.number}`);
+            } else {
+              const { data: created } = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: ISSUE_TITLE,
+                body,
+                labels: ['upstream-sync'],
+              });
+              core.info(`Created issue #${created.number}: ${created.html_url}`);
+            }
+
+      - name: All up to date
+        if: steps.count.outputs.ahead == '0' && github.event.inputs.force_notify != 'true'
+        run: echo "✓ Force UI main is up to date with upstream shadcn-ui/ui."

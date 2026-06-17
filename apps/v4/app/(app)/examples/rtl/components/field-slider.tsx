@@ -7,8 +7,8 @@ import {
   Field,
   FieldDescription,
   FieldTitle,
-} from "@/styles/base-nova/ui-rtl/field"
-import { Slider } from "@/styles/base-nova/ui-rtl/slider"
+} from "@/styles/base-force-ui/ui-rtl/field"
+import { Slider } from "@/styles/base-force-ui/ui-rtl/slider"
 
 const translations = {
   ar: {

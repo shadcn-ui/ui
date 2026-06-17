@@ -14,7 +14,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/styles/base-nova/ui-rtl/dropdown-menu"
+} from "@/styles/base-force-ui/ui-rtl/dropdown-menu"
 import {
   InputGroup,
   InputGroupAddon,
@@ -22,13 +22,13 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/styles/base-nova/ui-rtl/input-group"
-import { Separator } from "@/styles/base-nova/ui-rtl/separator"
+} from "@/styles/base-force-ui/ui-rtl/input-group"
+import { Separator } from "@/styles/base-force-ui/ui-rtl/separator"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/styles/base-nova/ui-rtl/tooltip"
+} from "@/styles/base-force-ui/ui-rtl/tooltip"
 
 const translations = {
   ar: {

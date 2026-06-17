@@ -4,7 +4,7 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@/styles/radix-nova/ui/alert"
+} from "@/styles/radix-force-ui/ui/alert"
 
 export default function AlertColors() {
   return (

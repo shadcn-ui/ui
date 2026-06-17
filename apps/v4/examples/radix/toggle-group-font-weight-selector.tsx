@@ -6,11 +6,11 @@ import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/styles/radix-nova/ui/field"
+} from "@/styles/radix-force-ui/ui/field"
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from "@/styles/radix-nova/ui/toggle-group"
+} from "@/styles/radix-force-ui/ui/toggle-group"
 
 export function ToggleGroupFontWeightSelector() {
   const [fontWeight, setFontWeight] = React.useState("normal")

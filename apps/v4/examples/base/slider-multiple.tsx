@@ -1,4 +1,4 @@
-import { Slider } from "@/styles/base-nova/ui/slider"
+import { Slider } from "@/styles/base-force-ui/ui/slider"
 
 export function SliderMultiple() {
   return (

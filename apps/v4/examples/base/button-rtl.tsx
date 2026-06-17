@@ -6,8 +6,8 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
-import { Spinner } from "@/styles/base-nova/ui-rtl/spinner"
+import { Button } from "@/styles/base-force-ui/ui-rtl/button"
+import { Spinner } from "@/styles/base-force-ui/ui-rtl/spinner"
 
 const translations: Translations = {
   en: {

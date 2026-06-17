@@ -1,4 +1,4 @@
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/styles/radix-force-ui/ui/button"
 import {
   Drawer,
   DrawerClose,
@@ -8,7 +8,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/styles/radix-nova/ui/drawer"
+} from "@/styles/radix-force-ui/ui/drawer"
 
 const DRAWER_SIDES = ["top", "right", "bottom", "left"] as const
 

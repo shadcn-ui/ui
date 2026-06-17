@@ -1,4 +1,4 @@
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   Card,
   CardAction,
@@ -7,9 +7,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/styles/base-nova/ui/card"
-import { Input } from "@/styles/base-nova/ui/input"
-import { Label } from "@/styles/base-nova/ui/label"
+} from "@/styles/base-force-ui/ui/card"
+import { Input } from "@/styles/base-force-ui/ui/input"
+import { Label } from "@/styles/base-force-ui/ui/label"
 
 export default function CardDemo() {
   return (

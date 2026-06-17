@@ -1,5 +1,5 @@
-import { Checkbox } from "@/styles/base-nova/ui/checkbox"
-import { Field, FieldGroup, FieldLabel } from "@/styles/base-nova/ui/field"
+import { Checkbox } from "@/styles/base-force-ui/ui/checkbox"
+import { Field, FieldGroup, FieldLabel } from "@/styles/base-force-ui/ui/field"
 
 export function CheckboxInvalid() {
   return (

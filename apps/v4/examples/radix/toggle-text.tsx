@@ -1,6 +1,6 @@
 import { ItalicIcon } from "lucide-react"
 
-import { Toggle } from "@/styles/radix-nova/ui/toggle"
+import { Toggle } from "@/styles/radix-force-ui/ui/toggle"
 
 export function ToggleText() {
   return (

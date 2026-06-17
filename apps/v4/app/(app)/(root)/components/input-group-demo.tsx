@@ -6,7 +6,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/styles/radix-nova/ui/dropdown-menu"
+} from "@/styles/radix-force-ui/ui/dropdown-menu"
 import {
   InputGroup,
   InputGroupAddon,
@@ -14,13 +14,13 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/styles/radix-nova/ui/input-group"
-import { Separator } from "@/styles/radix-nova/ui/separator"
+} from "@/styles/radix-force-ui/ui/input-group"
+import { Separator } from "@/styles/radix-force-ui/ui/separator"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/styles/radix-nova/ui/tooltip"
+} from "@/styles/radix-force-ui/ui/tooltip"
 
 export function InputGroupDemo() {
   return (

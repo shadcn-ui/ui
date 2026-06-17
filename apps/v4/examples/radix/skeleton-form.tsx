@@ -1,4 +1,4 @@
-import { Skeleton } from "@/styles/radix-nova/ui/skeleton"
+import { Skeleton } from "@/styles/radix-force-ui/ui/skeleton"
 
 export function SkeletonForm() {
   return (

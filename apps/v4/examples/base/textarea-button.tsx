@@ -1,5 +1,5 @@
-import { Button } from "@/styles/base-nova/ui/button"
-import { Textarea } from "@/styles/base-nova/ui/textarea"
+import { Button } from "@/styles/base-force-ui/ui/button"
+import { Textarea } from "@/styles/base-force-ui/ui/textarea"
 
 export function TextareaButton() {
   return (

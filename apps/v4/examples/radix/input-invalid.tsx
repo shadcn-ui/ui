@@ -2,8 +2,8 @@ import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/styles/radix-nova/ui/field"
-import { Input } from "@/styles/radix-nova/ui/input"
+} from "@/styles/radix-force-ui/ui/field"
+import { Input } from "@/styles/radix-force-ui/ui/input"
 
 export function InputInvalid() {
   return (

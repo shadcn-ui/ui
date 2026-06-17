@@ -2,13 +2,13 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/styles/base-nova/ui/avatar"
-import { Button } from "@/styles/base-nova/ui/button"
+} from "@/styles/base-force-ui/ui/avatar"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/styles/base-nova/ui/hover-card"
+} from "@/styles/base-force-ui/ui/hover-card"
 
 export default function HoverCardDemo() {
   return (

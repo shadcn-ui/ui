@@ -4,12 +4,12 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Button } from "@/styles/radix-nova/ui-rtl/button"
+import { Button } from "@/styles/radix-force-ui/ui-rtl/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/styles/radix-nova/ui-rtl/tooltip"
+} from "@/styles/radix-force-ui/ui-rtl/tooltip"
 
 const translations: Translations = {
   en: {

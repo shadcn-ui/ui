@@ -1,8 +1,8 @@
 "use client"
 
 import { useLanguageContext } from "@/components/language-selector"
-import { Badge } from "@/styles/base-nova/ui-rtl/badge"
-import { Spinner } from "@/styles/base-nova/ui-rtl/spinner"
+import { Badge } from "@/styles/base-force-ui/ui-rtl/badge"
+import { Spinner } from "@/styles/base-force-ui/ui-rtl/spinner"
 
 const translations = {
   ar: {

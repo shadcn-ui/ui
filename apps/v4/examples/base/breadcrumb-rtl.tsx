@@ -14,14 +14,14 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/styles/base-nova/ui-rtl/breadcrumb"
+} from "@/styles/base-force-ui/ui-rtl/breadcrumb"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/styles/base-nova/ui-rtl/dropdown-menu"
+} from "@/styles/base-force-ui/ui-rtl/dropdown-menu"
 
 const translations: Translations = {
   en: {

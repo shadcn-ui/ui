@@ -14,7 +14,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/styles/base-nova/ui/sidebar"
+} from "@/styles/base-force-ui/ui/sidebar"
 
 export default function AppSidebar() {
   return (

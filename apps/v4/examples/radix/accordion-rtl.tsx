@@ -9,7 +9,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/styles/radix-nova/ui-rtl/accordion"
+} from "@/styles/radix-force-ui/ui-rtl/accordion"
 
 const translations: Translations = {
   en: {

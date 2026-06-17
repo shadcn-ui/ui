@@ -7,7 +7,7 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Badge } from "@/styles/base-nova/ui-rtl/badge"
+import { Badge } from "@/styles/base-force-ui/ui-rtl/badge"
 
 const translations: Translations = {
   en: {

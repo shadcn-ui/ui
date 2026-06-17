@@ -1,11 +1,11 @@
-import { Button } from "@/styles/base-nova/ui/button"
-import { ButtonGroup } from "@/styles/base-nova/ui/button-group"
-import { Kbd, KbdGroup } from "@/styles/base-nova/ui/kbd"
+import { Button } from "@/styles/base-force-ui/ui/button"
+import { ButtonGroup } from "@/styles/base-force-ui/ui/button-group"
+import { Kbd, KbdGroup } from "@/styles/base-force-ui/ui/kbd"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/styles/base-nova/ui/tooltip"
+} from "@/styles/base-force-ui/ui/tooltip"
 
 export default function KbdTooltip() {
   return (

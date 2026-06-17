@@ -11,8 +11,8 @@ import {
   FieldContent,
   FieldDescription,
   FieldLabel,
-} from "@/styles/base-nova/ui-rtl/field"
-import { Switch } from "@/styles/base-nova/ui-rtl/switch"
+} from "@/styles/base-force-ui/ui-rtl/field"
+import { Switch } from "@/styles/base-force-ui/ui-rtl/switch"
 
 const translations: Translations = {
   en: {

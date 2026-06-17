@@ -8,7 +8,7 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Button } from "@/styles/radix-nova/ui-rtl/button"
+import { Button } from "@/styles/radix-force-ui/ui-rtl/button"
 import {
   Drawer,
   DrawerClose,
@@ -18,7 +18,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/styles/radix-nova/ui-rtl/drawer"
+} from "@/styles/radix-force-ui/ui-rtl/drawer"
 
 const data = [
   {

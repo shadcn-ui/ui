@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { Checkbox } from "@/styles/base-nova/ui/checkbox"
+import { Checkbox } from "@/styles/base-force-ui/ui/checkbox"
 import {
   Table,
   TableBody,
@@ -10,7 +10,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/styles/base-nova/ui/table"
+} from "@/styles/base-force-ui/ui/table"
 
 const tableData = [
   {

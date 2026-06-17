@@ -13,7 +13,7 @@ import {
   ComboboxList,
   ComboboxValue,
   useComboboxAnchor,
-} from "@/styles/base-nova/ui/combobox"
+} from "@/styles/base-force-ui/ui/combobox"
 
 const frameworks = [
   "Next.js",

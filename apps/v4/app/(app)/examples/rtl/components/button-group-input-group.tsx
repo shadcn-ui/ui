@@ -4,19 +4,19 @@ import * as React from "react"
 import { AudioLinesIcon, PlusIcon } from "lucide-react"
 
 import { useLanguageContext } from "@/components/language-selector"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
-import { ButtonGroup } from "@/styles/base-nova/ui-rtl/button-group"
+import { Button } from "@/styles/base-force-ui/ui-rtl/button"
+import { ButtonGroup } from "@/styles/base-force-ui/ui-rtl/button-group"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/styles/base-nova/ui-rtl/input-group"
+} from "@/styles/base-force-ui/ui-rtl/input-group"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/styles/base-nova/ui-rtl/tooltip"
+} from "@/styles/base-force-ui/ui-rtl/tooltip"
 
 const translations = {
   ar: {

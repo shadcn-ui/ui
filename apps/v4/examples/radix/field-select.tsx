@@ -2,7 +2,7 @@ import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/styles/radix-nova/ui/field"
+} from "@/styles/radix-force-ui/ui/field"
 import {
   Select,
   SelectContent,
@@ -10,7 +10,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/styles/radix-nova/ui/select"
+} from "@/styles/radix-force-ui/ui/select"
 
 export default function FieldSelect() {
   return (

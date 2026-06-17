@@ -4,12 +4,12 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
+import { Button } from "@/styles/base-force-ui/ui-rtl/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/styles/base-nova/ui-rtl/tooltip"
+} from "@/styles/base-force-ui/ui-rtl/tooltip"
 
 const translations: Translations = {
   en: {

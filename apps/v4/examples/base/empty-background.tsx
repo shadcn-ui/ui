@@ -1,7 +1,7 @@
 import { IconBell } from "@tabler/icons-react"
 import { RefreshCcwIcon } from "lucide-react"
 
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -9,7 +9,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/styles/base-nova/ui/empty"
+} from "@/styles/base-force-ui/ui/empty"
 
 export function EmptyMuted() {
   return (

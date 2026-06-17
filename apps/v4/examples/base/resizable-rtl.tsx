@@ -10,7 +10,7 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/styles/base-nova/ui-rtl/resizable"
+} from "@/styles/base-force-ui/ui-rtl/resizable"
 
 const translations: Translations = {
   en: {

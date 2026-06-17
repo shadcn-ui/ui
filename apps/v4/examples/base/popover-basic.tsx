@@ -1,4 +1,4 @@
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   Popover,
   PopoverContent,
@@ -6,7 +6,7 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/styles/base-nova/ui/popover"
+} from "@/styles/base-force-ui/ui/popover"
 
 export function PopoverBasic() {
   return (

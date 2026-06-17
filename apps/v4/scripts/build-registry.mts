@@ -59,7 +59,7 @@ function getBaseSrcDir(baseName: string): string {
  * 4. Build examples/__index__.tsx from authored demos.
  * 5. Export public/r/* for every style through the shadcn CLI.
  * 6. Copy compiled ui/* from the temporary registries into styles/<style>/ui.
- * 7. Build styles/<style>/ui-rtl for base-nova and radix-nova only.
+ * 7. Build styles/<style>/ui-rtl for base-force-ui and radix-force-ui.
  * 8. Format the generated persistent outputs.
  * 9. Clean up the temporary registry/<base-style> trees and registry-*.json.
  */
@@ -140,7 +140,7 @@ function normalizeRegistryFiles(item: RegistryItem): Array<{
 }
 
 function shouldGenerateRtlStyles(styleName: string) {
-  return styleName === "base-nova" || styleName === "radix-nova"
+  return styleName === "base-force-ui" || styleName === "radix-force-ui" // [FORCE-UI]
 }
 
 function getTemporaryRegistryRoot(styleName: string) {

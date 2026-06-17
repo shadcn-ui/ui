@@ -8,8 +8,8 @@ import {
   AvatarFallback,
   AvatarGroup,
   AvatarImage,
-} from "@/styles/base-nova/ui-rtl/avatar"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
+} from "@/styles/base-force-ui/ui-rtl/avatar"
+import { Button } from "@/styles/base-force-ui/ui-rtl/button"
 import {
   Empty,
   EmptyContent,
@@ -17,7 +17,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/styles/base-nova/ui-rtl/empty"
+} from "@/styles/base-force-ui/ui-rtl/empty"
 
 const translations = {
   ar: {

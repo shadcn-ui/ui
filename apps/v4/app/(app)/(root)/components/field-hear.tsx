@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@/styles/radix-nova/ui/card"
-import { Checkbox } from "@/styles/radix-nova/ui/checkbox"
+import { Card, CardContent } from "@/styles/radix-force-ui/ui/card"
+import { Checkbox } from "@/styles/radix-force-ui/ui/checkbox"
 import {
   Field,
   FieldDescription,
@@ -8,7 +8,7 @@ import {
   FieldLegend,
   FieldSet,
   FieldTitle,
-} from "@/styles/radix-nova/ui/field"
+} from "@/styles/radix-force-ui/ui/field"
 
 const options = [
   {

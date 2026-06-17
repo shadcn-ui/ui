@@ -6,8 +6,8 @@ import {
   InputGroupButton,
   InputGroupInput,
   InputGroupTextarea,
-} from "@/styles/radix-nova/ui/input-group"
-import { Spinner } from "@/styles/radix-nova/ui/spinner"
+} from "@/styles/radix-force-ui/ui/input-group"
+import { Spinner } from "@/styles/radix-force-ui/ui/spinner"
 
 export function SpinnerInputGroup() {
   return (

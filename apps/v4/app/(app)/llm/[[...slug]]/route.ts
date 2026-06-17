@@ -11,7 +11,7 @@ function getStyleFromSlug(slug: string[] | undefined, fallbackStyle: string) {
   // Detect base from URL: /docs/components/base/... or /docs/components/radix/...
   if (slug && slug[0] === "components" && slug[1]) {
     if (slug[1] === "base") {
-      return "base-nova"
+      return "base-force-ui"
     }
     if (slug[1] === "radix") {
       return "new-york-v4"

@@ -9,7 +9,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "@/styles/radix-nova/ui/menubar"
+} from "@/styles/radix-force-ui/ui/menubar"
 
 export function MenubarSubmenu() {
   return (

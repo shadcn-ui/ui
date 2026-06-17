@@ -16,7 +16,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "@/styles/base-nova/ui/command"
+} from "@/styles/base-force-ui/ui/command"
 
 export function CommandDemo() {
   return (

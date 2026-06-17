@@ -7,7 +7,7 @@ import {
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from "@/styles/radix-nova/ui-rtl/toggle-group"
+} from "@/styles/radix-force-ui/ui-rtl/toggle-group"
 
 const translations: Translations = {
   en: {

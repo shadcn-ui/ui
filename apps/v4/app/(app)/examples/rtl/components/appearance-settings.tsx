@@ -4,8 +4,8 @@ import * as React from "react"
 import { IconMinus, IconPlus } from "@tabler/icons-react"
 
 import { useLanguageContext } from "@/components/language-selector"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
-import { ButtonGroup } from "@/styles/base-nova/ui-rtl/button-group"
+import { Button } from "@/styles/base-force-ui/ui-rtl/button"
+import { ButtonGroup } from "@/styles/base-force-ui/ui-rtl/button-group"
 import {
   Field,
   FieldContent,
@@ -16,13 +16,13 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/styles/base-nova/ui-rtl/field"
-import { Input } from "@/styles/base-nova/ui-rtl/input"
+} from "@/styles/base-force-ui/ui-rtl/field"
+import { Input } from "@/styles/base-force-ui/ui-rtl/input"
 import {
   RadioGroup,
   RadioGroupItem,
-} from "@/styles/base-nova/ui-rtl/radio-group"
-import { Switch } from "@/styles/base-nova/ui-rtl/switch"
+} from "@/styles/base-force-ui/ui-rtl/radio-group"
+import { Switch } from "@/styles/base-force-ui/ui-rtl/switch"
 
 const translations = {
   ar: {

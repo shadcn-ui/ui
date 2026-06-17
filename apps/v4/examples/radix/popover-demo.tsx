@@ -1,11 +1,11 @@
-import { Button } from "@/styles/radix-nova/ui/button"
-import { Input } from "@/styles/radix-nova/ui/input"
-import { Label } from "@/styles/radix-nova/ui/label"
+import { Button } from "@/styles/radix-force-ui/ui/button"
+import { Input } from "@/styles/radix-force-ui/ui/input"
+import { Label } from "@/styles/radix-force-ui/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/styles/radix-nova/ui/popover"
+} from "@/styles/radix-force-ui/ui/popover"
 
 export default function PopoverDemo() {
   return (

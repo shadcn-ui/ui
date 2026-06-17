@@ -1,4 +1,4 @@
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/styles/radix-force-ui/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/styles/radix-nova/ui/dialog"
+} from "@/styles/radix-force-ui/ui/dialog"
 
 export function DialogStickyFooter() {
   return (

@@ -61,7 +61,7 @@ describe("buildV0Payload", () => {
             type: "registry:ui",
             files: [
               {
-                path: `registry/base-nova/ui/${name}.tsx`,
+                path: `registry/base-force-ui/ui/${name}.tsx`,
                 type: "registry:ui",
                 content: `import * as React from "react"\n\nexport function Component() {\n  return <div className="cn-font-heading text-xl" />\n}\n`,
               },

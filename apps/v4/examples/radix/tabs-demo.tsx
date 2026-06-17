@@ -4,13 +4,13 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/styles/radix-nova/ui/card"
+} from "@/styles/radix-force-ui/ui/card"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/styles/radix-nova/ui/tabs"
+} from "@/styles/radix-force-ui/ui/tabs"
 
 export function TabsDemo() {
   return (

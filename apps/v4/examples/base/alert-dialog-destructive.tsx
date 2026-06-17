@@ -11,8 +11,8 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/styles/base-nova/ui/alert-dialog"
-import { Button } from "@/styles/base-nova/ui/button"
+} from "@/styles/base-force-ui/ui/alert-dialog"
+import { Button } from "@/styles/base-force-ui/ui/button"
 
 export function AlertDialogDestructive() {
   return (

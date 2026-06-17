@@ -5,7 +5,7 @@ import {
   AvatarBadge,
   AvatarFallback,
   AvatarImage,
-} from "@/styles/base-nova/ui/avatar"
+} from "@/styles/base-force-ui/ui/avatar"
 
 export function AvatarBadgeIconExample() {
   return (

@@ -4,7 +4,7 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
+import { Button } from "@/styles/base-force-ui/ui-rtl/button"
 import {
   Popover,
   PopoverContent,
@@ -12,7 +12,7 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/styles/base-nova/ui-rtl/popover"
+} from "@/styles/base-force-ui/ui-rtl/popover"
 
 const translations: Translations = {
   en: {

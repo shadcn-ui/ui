@@ -4,7 +4,7 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@/styles/base-nova/ui/alert"
+} from "@/styles/base-force-ui/ui/alert"
 
 export default function AlertBasic() {
   return (

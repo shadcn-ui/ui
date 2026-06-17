@@ -11,7 +11,7 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@/styles/radix-nova/ui-rtl/alert"
+} from "@/styles/radix-force-ui/ui-rtl/alert"
 
 const translations: Translations = {
   en: {

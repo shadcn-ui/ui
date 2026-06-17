@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   Combobox,
   ComboboxContent,
@@ -10,7 +10,7 @@ import {
   ComboboxList,
   ComboboxTrigger,
   ComboboxValue,
-} from "@/styles/base-nova/ui/combobox"
+} from "@/styles/base-force-ui/ui/combobox"
 
 const countries = [
   { code: "", value: "", continent: "", label: "Select country" },

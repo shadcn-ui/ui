@@ -1,6 +1,6 @@
 "use client"
 
-import { Checkbox } from "@/styles/base-nova/ui/checkbox"
+import { Checkbox } from "@/styles/base-force-ui/ui/checkbox"
 import {
   Field,
   FieldContent,
@@ -8,8 +8,8 @@ import {
   FieldGroup,
   FieldLabel,
   FieldTitle,
-} from "@/styles/base-nova/ui/field"
-import { Label } from "@/styles/base-nova/ui/label"
+} from "@/styles/base-force-ui/ui/field"
+import { Label } from "@/styles/base-force-ui/ui/label"
 
 export default function CheckboxDemo() {
   return (

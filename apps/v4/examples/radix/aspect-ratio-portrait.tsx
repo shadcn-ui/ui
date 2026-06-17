@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-import { AspectRatio } from "@/styles/radix-nova/ui/aspect-ratio"
+import { AspectRatio } from "@/styles/radix-force-ui/ui/aspect-ratio"
 
 export function AspectRatioPortrait() {
   return (

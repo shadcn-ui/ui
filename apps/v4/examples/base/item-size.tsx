@@ -6,7 +6,7 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/styles/base-nova/ui/item"
+} from "@/styles/base-force-ui/ui/item"
 
 export function ItemSizeDemo() {
   return (

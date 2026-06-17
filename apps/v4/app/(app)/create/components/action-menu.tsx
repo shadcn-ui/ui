@@ -11,7 +11,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/styles/base-nova/ui/command"
+} from "@/styles/base-force-ui/ui/command"
 import { useActionMenu } from "@/app/(app)/create/hooks/use-action-menu"
 
 export const CMD_K_FORWARD_TYPE = "cmd-k-forward"

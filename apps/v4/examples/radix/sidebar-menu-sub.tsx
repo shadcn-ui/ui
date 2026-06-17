@@ -12,7 +12,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   SidebarProvider,
-} from "@/styles/radix-nova/ui/sidebar"
+} from "@/styles/radix-force-ui/ui/sidebar"
 
 const items = [
   {

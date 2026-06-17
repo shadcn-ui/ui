@@ -18,8 +18,8 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/styles/base-nova/ui-rtl/avatar"
-import { Badge } from "@/styles/base-nova/ui-rtl/badge"
+} from "@/styles/base-force-ui/ui-rtl/avatar"
+import { Badge } from "@/styles/base-force-ui/ui-rtl/badge"
 import {
   Command,
   CommandEmpty,
@@ -27,7 +27,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/styles/base-nova/ui-rtl/command"
+} from "@/styles/base-force-ui/ui-rtl/command"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -40,21 +40,21 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/styles/base-nova/ui-rtl/dropdown-menu"
-import { Field, FieldLabel } from "@/styles/base-nova/ui-rtl/field"
+} from "@/styles/base-force-ui/ui-rtl/dropdown-menu"
+import { Field, FieldLabel } from "@/styles/base-force-ui/ui-rtl/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupTextarea,
-} from "@/styles/base-nova/ui-rtl/input-group"
-import { Popover, PopoverContent } from "@/styles/base-nova/ui-rtl/popover"
-import { Switch } from "@/styles/base-nova/ui-rtl/switch"
+} from "@/styles/base-force-ui/ui-rtl/input-group"
+import { Popover, PopoverContent } from "@/styles/base-force-ui/ui-rtl/popover"
+import { Switch } from "@/styles/base-force-ui/ui-rtl/switch"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/styles/base-nova/ui-rtl/tooltip"
+} from "@/styles/base-force-ui/ui-rtl/tooltip"
 
 const translations = {
   ar: {

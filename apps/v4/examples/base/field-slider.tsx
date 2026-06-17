@@ -6,8 +6,8 @@ import {
   Field,
   FieldDescription,
   FieldTitle,
-} from "@/styles/base-nova/ui/field"
-import { Slider } from "@/styles/base-nova/ui/slider"
+} from "@/styles/base-force-ui/ui/field"
+import { Slider } from "@/styles/base-force-ui/ui/slider"
 
 export default function FieldSlider() {
   const [value, setValue] = React.useState([200, 800])

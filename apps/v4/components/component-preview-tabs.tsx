@@ -20,7 +20,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/styles/base-nova/ui/popover"
+} from "@/styles/base-force-ui/ui/popover"
 
 export function ComponentPreviewTabs({
   className,

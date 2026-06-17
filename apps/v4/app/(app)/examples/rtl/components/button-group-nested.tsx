@@ -3,8 +3,8 @@
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
 
 import { useLanguageContext } from "@/components/language-selector"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
-import { ButtonGroup } from "@/styles/base-nova/ui-rtl/button-group"
+import { Button } from "@/styles/base-force-ui/ui-rtl/button"
+import { ButtonGroup } from "@/styles/base-force-ui/ui-rtl/button-group"
 
 const translations = {
   ar: {

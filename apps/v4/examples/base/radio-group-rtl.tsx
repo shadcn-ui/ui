@@ -11,11 +11,11 @@ import {
   FieldContent,
   FieldDescription,
   FieldLabel,
-} from "@/styles/base-nova/ui-rtl/field"
+} from "@/styles/base-force-ui/ui-rtl/field"
 import {
   RadioGroup,
   RadioGroupItem,
-} from "@/styles/base-nova/ui-rtl/radio-group"
+} from "@/styles/base-force-ui/ui-rtl/radio-group"
 
 const translations: Translations = {
   en: {

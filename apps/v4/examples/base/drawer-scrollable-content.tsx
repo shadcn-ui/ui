@@ -1,4 +1,4 @@
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   Drawer,
   DrawerClose,
@@ -8,7 +8,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/styles/base-nova/ui/drawer"
+} from "@/styles/base-force-ui/ui/drawer"
 
 export function DrawerScrollableContent() {
   return (

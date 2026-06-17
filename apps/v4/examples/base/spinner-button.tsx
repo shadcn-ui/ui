@@ -1,5 +1,5 @@
-import { Button } from "@/styles/base-nova/ui/button"
-import { Spinner } from "@/styles/base-nova/ui/spinner"
+import { Button } from "@/styles/base-force-ui/ui/button"
+import { Spinner } from "@/styles/base-force-ui/ui/spinner"
 
 export function SpinnerButton() {
   return (

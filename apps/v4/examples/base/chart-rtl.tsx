@@ -13,7 +13,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/styles/base-nova/ui-rtl/chart"
+} from "@/styles/base-force-ui/ui-rtl/chart"
 
 const translations: Translations = {
   en: {

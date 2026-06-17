@@ -11,7 +11,7 @@ import {
   SendIcon,
 } from "lucide-react"
 
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/styles/radix-force-ui/ui/button"
 import {
   Sidebar,
   SidebarContent,
@@ -23,7 +23,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/styles/radix-nova/ui/sidebar"
+} from "@/styles/radix-force-ui/ui/sidebar"
 
 const projects = [
   {

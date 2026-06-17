@@ -30,12 +30,12 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/styles/radix-nova/ui/avatar"
+} from "@/styles/radix-force-ui/ui/avatar"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/styles/radix-nova/ui/collapsible"
+} from "@/styles/radix-force-ui/ui/collapsible"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -45,7 +45,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/styles/radix-nova/ui/dropdown-menu"
+} from "@/styles/radix-force-ui/ui/dropdown-menu"
 import {
   Sidebar,
   SidebarContent,
@@ -65,7 +65,7 @@ import {
   SidebarRail,
   SidebarTrigger,
   useSidebar,
-} from "@/styles/radix-nova/ui/sidebar"
+} from "@/styles/radix-force-ui/ui/sidebar"
 
 // This is sample data.
 const data = {

@@ -4,13 +4,13 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/styles/base-nova/ui/card"
+} from "@/styles/base-force-ui/ui/card"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/styles/base-nova/ui/tabs"
+} from "@/styles/base-force-ui/ui/tabs"
 
 export function TabsDemo() {
   return (

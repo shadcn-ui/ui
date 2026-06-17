@@ -1,13 +1,13 @@
 import { MoreHorizontalIcon } from "lucide-react"
 
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/styles/radix-force-ui/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/styles/radix-nova/ui/dropdown-menu"
+} from "@/styles/radix-force-ui/ui/dropdown-menu"
 import {
   Table,
   TableBody,
@@ -15,7 +15,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/styles/radix-nova/ui/table"
+} from "@/styles/radix-force-ui/ui/table"
 
 export function TableActions() {
   return (

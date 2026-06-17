@@ -1,4 +1,4 @@
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/styles/radix-force-ui/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -8,10 +8,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/styles/radix-nova/ui/dialog"
-import { Field, FieldGroup } from "@/styles/radix-nova/ui/field"
-import { Input } from "@/styles/radix-nova/ui/input"
-import { Label } from "@/styles/radix-nova/ui/label"
+} from "@/styles/radix-force-ui/ui/dialog"
+import { Field, FieldGroup } from "@/styles/radix-force-ui/ui/field"
+import { Input } from "@/styles/radix-force-ui/ui/input"
+import { Label } from "@/styles/radix-force-ui/ui/label"
 
 export function DialogDemo() {
   return (

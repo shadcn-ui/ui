@@ -4,12 +4,12 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Button } from "@/styles/radix-nova/ui-rtl/button"
+import { Button } from "@/styles/radix-force-ui/ui-rtl/button"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/styles/radix-nova/ui-rtl/hover-card"
+} from "@/styles/radix-force-ui/ui-rtl/hover-card"
 
 const translations: Translations = {
   en: {

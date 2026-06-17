@@ -1,4 +1,4 @@
-import { Kbd, KbdGroup } from "@/styles/base-nova/ui/kbd"
+import { Kbd, KbdGroup } from "@/styles/base-force-ui/ui/kbd"
 
 export default function KbdDemo() {
   return (

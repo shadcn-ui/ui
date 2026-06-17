@@ -2,7 +2,7 @@
 
 import { Bar, BarChart } from "recharts"
 
-import { ChartContainer, type ChartConfig } from "@/styles/radix-nova/ui/chart"
+import { ChartContainer, type ChartConfig } from "@/styles/radix-force-ui/ui/chart"
 
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },

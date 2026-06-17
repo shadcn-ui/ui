@@ -8,13 +8,13 @@ import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/styles/radix-nova/ui/input-group"
-import { Label } from "@/styles/radix-nova/ui/label"
+} from "@/styles/radix-force-ui/ui/input-group"
+import { Label } from "@/styles/radix-force-ui/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/styles/radix-nova/ui/popover"
+} from "@/styles/radix-force-ui/ui/popover"
 
 export function InputGroupButtonExample() {
   const [isFavorite, setIsFavorite] = React.useState(false)

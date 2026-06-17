@@ -2,7 +2,7 @@ import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/styles/base-nova/ui/field"
+} from "@/styles/base-force-ui/ui/field"
 import {
   Select,
   SelectContent,
@@ -10,7 +10,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/styles/base-nova/ui/select"
+} from "@/styles/base-force-ui/ui/select"
 
 const items = [
   { label: "Choose department", value: null },

@@ -1,6 +1,6 @@
-import { Button } from "@/styles/base-nova/ui/button"
-import { Field } from "@/styles/base-nova/ui/field"
-import { Input } from "@/styles/base-nova/ui/input"
+import { Button } from "@/styles/base-force-ui/ui/button"
+import { Field } from "@/styles/base-force-ui/ui/field"
+import { Input } from "@/styles/base-force-ui/ui/input"
 
 export function InputInline() {
   return (

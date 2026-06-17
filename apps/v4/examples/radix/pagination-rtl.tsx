@@ -14,7 +14,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/styles/radix-nova/ui-rtl/pagination"
+} from "@/styles/radix-force-ui/ui-rtl/pagination"
 
 const translations: Translations = {
   en: {

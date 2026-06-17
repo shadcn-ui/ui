@@ -8,7 +8,7 @@ import { cn, getAppUrl } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { BASES, type BaseName } from "@/registry/config"
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -17,7 +17,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/styles/base-nova/ui/dialog"
+} from "@/styles/base-force-ui/ui/dialog"
 import {
   Field,
   FieldContent,
@@ -27,15 +27,15 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/styles/base-nova/ui/field"
-import { RadioGroup, RadioGroupItem } from "@/styles/base-nova/ui/radio-group"
-import { Switch } from "@/styles/base-nova/ui/switch"
+} from "@/styles/base-force-ui/ui/field"
+import { RadioGroup, RadioGroupItem } from "@/styles/base-force-ui/ui/radio-group"
+import { Switch } from "@/styles/base-force-ui/ui/switch"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/styles/base-nova/ui/tabs"
+} from "@/styles/base-force-ui/ui/tabs"
 import { useInitUrl } from "@/app/(app)/create/hooks/use-design-system"
 import {
   useDesignSystemSearchParams,

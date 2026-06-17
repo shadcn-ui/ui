@@ -1,4 +1,4 @@
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/styles/radix-force-ui/ui/button"
 import {
   Item,
   ItemActions,
@@ -6,7 +6,7 @@ import {
   ItemDescription,
   ItemGroup,
   ItemTitle,
-} from "@/styles/radix-nova/ui/item"
+} from "@/styles/radix-force-ui/ui/item"
 
 export function MutedItemGroup() {
   return (

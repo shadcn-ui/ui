@@ -1,5 +1,5 @@
-import { Button } from "@/styles/radix-nova/ui/button"
-import { Textarea } from "@/styles/radix-nova/ui/textarea"
+import { Button } from "@/styles/radix-force-ui/ui/button"
+import { Textarea } from "@/styles/radix-force-ui/ui/textarea"
 
 export function TextareaButton() {
   return (

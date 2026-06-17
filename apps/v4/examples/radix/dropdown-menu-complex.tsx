@@ -29,7 +29,7 @@ import {
   UserIcon,
 } from "lucide-react"
 
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/styles/radix-force-ui/ui/button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -46,7 +46,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/styles/radix-nova/ui/dropdown-menu"
+} from "@/styles/radix-force-ui/ui/dropdown-menu"
 
 export function DropdownMenuComplex() {
   const [notifications, setNotifications] = React.useState({

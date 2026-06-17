@@ -12,13 +12,13 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/styles/radix-nova/ui-rtl/card"
+} from "@/styles/radix-force-ui/ui-rtl/card"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/styles/radix-nova/ui-rtl/tabs"
+} from "@/styles/radix-force-ui/ui-rtl/tabs"
 
 const translations: Translations = {
   en: {

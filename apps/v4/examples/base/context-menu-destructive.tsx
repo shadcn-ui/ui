@@ -7,7 +7,7 @@ import {
   ContextMenuItem,
   ContextMenuSeparator,
   ContextMenuTrigger,
-} from "@/styles/base-nova/ui/context-menu"
+} from "@/styles/base-force-ui/ui/context-menu"
 
 export function ContextMenuDestructive() {
   return (

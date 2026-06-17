@@ -3,12 +3,12 @@
 import * as React from "react"
 import { ChevronsUpDown } from "lucide-react"
 
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/styles/radix-force-ui/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/styles/radix-nova/ui/collapsible"
+} from "@/styles/radix-force-ui/ui/collapsible"
 
 export default function CollapsibleDemo() {
   const [isOpen, setIsOpen] = React.useState(false)

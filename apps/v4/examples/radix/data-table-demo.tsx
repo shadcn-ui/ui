@@ -15,8 +15,8 @@ import {
 } from "@tanstack/react-table"
 import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react"
 
-import { Button } from "@/styles/radix-nova/ui/button"
-import { Checkbox } from "@/styles/radix-nova/ui/checkbox"
+import { Button } from "@/styles/radix-force-ui/ui/button"
+import { Checkbox } from "@/styles/radix-force-ui/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -25,8 +25,8 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@/styles/radix-nova/ui/dropdown-menu"
-import { Input } from "@/styles/radix-nova/ui/input"
+} from "@/styles/radix-force-ui/ui/dropdown-menu"
+import { Input } from "@/styles/radix-force-ui/ui/input"
 import {
   Table,
   TableBody,
@@ -34,7 +34,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/styles/radix-nova/ui/table"
+} from "@/styles/radix-force-ui/ui/table"
 
 const data: Payment[] = [
   {

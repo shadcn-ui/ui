@@ -7,7 +7,7 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Calendar } from "@/styles/base-nova/ui-rtl/calendar"
+import { Calendar } from "@/styles/base-force-ui/ui-rtl/calendar"
 
 const translations: Translations = {
   en: {

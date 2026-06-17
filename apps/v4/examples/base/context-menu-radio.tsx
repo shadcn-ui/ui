@@ -11,7 +11,7 @@ import {
   ContextMenuRadioItem,
   ContextMenuSeparator,
   ContextMenuTrigger,
-} from "@/styles/base-nova/ui/context-menu"
+} from "@/styles/base-force-ui/ui/context-menu"
 
 export function ContextMenuRadio() {
   const [user, setUser] = React.useState("pedro")

@@ -7,7 +7,7 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Toggle } from "@/styles/base-nova/ui-rtl/toggle"
+import { Toggle } from "@/styles/base-force-ui/ui-rtl/toggle"
 
 const translations: Translations = {
   en: {

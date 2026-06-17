@@ -5,7 +5,7 @@ import { DiceFaces05Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import { useRandom } from "@/app/(app)/create/hooks/use-random"
 import { RESET_FORWARD_TYPE } from "@/app/(app)/create/hooks/use-reset"
 

@@ -20,7 +20,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/styles/base-nova/ui-rtl/navigation-menu"
+} from "@/styles/base-force-ui/ui-rtl/navigation-menu"
 
 const translations: Translations = {
   en: {

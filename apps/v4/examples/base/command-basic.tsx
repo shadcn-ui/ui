@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   Command,
   CommandDialog,
@@ -11,7 +11,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/styles/base-nova/ui/command"
+} from "@/styles/base-force-ui/ui/command"
 
 export function CommandBasic() {
   const [open, setOpen] = React.useState(false)

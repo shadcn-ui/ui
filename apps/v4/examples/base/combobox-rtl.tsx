@@ -17,8 +17,8 @@ import {
   ComboboxList,
   ComboboxValue,
   useComboboxAnchor,
-} from "@/styles/base-nova/ui-rtl/combobox"
-import { Field, FieldLabel } from "@/styles/base-nova/ui-rtl/field"
+} from "@/styles/base-force-ui/ui-rtl/combobox"
+import { Field, FieldLabel } from "@/styles/base-force-ui/ui-rtl/field"
 
 const categories = [
   "technology",

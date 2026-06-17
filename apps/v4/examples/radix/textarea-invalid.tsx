@@ -2,8 +2,8 @@ import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/styles/radix-nova/ui/field"
-import { Textarea } from "@/styles/radix-nova/ui/textarea"
+} from "@/styles/radix-force-ui/ui/field"
+import { Textarea } from "@/styles/radix-force-ui/ui/textarea"
 
 export function TextareaInvalid() {
   return (

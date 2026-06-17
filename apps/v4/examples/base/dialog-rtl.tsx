@@ -4,7 +4,7 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
+import { Button } from "@/styles/base-force-ui/ui-rtl/button"
 import {
   Dialog,
   DialogClose,
@@ -14,10 +14,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/styles/base-nova/ui-rtl/dialog"
-import { Field, FieldGroup } from "@/styles/base-nova/ui-rtl/field"
-import { Input } from "@/styles/base-nova/ui-rtl/input"
-import { Label } from "@/styles/base-nova/ui-rtl/label"
+} from "@/styles/base-force-ui/ui-rtl/dialog"
+import { Field, FieldGroup } from "@/styles/base-force-ui/ui-rtl/field"
+import { Input } from "@/styles/base-force-ui/ui-rtl/input"
+import { Label } from "@/styles/base-force-ui/ui-rtl/label"
 
 const translations: Translations = {
   en: {

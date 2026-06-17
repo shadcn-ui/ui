@@ -1,13 +1,13 @@
 import { ChevronRightIcon, FileIcon, FolderIcon } from "lucide-react"
 
-import { Button } from "@/styles/radix-nova/ui/button"
-import { Card, CardContent, CardHeader } from "@/styles/radix-nova/ui/card"
+import { Button } from "@/styles/radix-force-ui/ui/button"
+import { Card, CardContent, CardHeader } from "@/styles/radix-force-ui/ui/card"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/styles/radix-nova/ui/collapsible"
-import { Tabs, TabsList, TabsTrigger } from "@/styles/radix-nova/ui/tabs"
+} from "@/styles/radix-force-ui/ui/collapsible"
+import { Tabs, TabsList, TabsTrigger } from "@/styles/radix-force-ui/ui/tabs"
 
 type FileTreeItem = { name: string } | { name: string; items: FileTreeItem[] }
 

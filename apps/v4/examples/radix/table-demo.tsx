@@ -7,7 +7,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/styles/radix-nova/ui/table"
+} from "@/styles/radix-force-ui/ui/table"
 
 const invoices = [
   {

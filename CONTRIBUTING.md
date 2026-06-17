@@ -146,6 +146,21 @@ refactor(registry): move ember port to packages/registry-ember
 
 Categories: `feat`, `fix`, `refactor`, `docs`, `build`, `test`, `ci`, `chore`
 
+## Keeping `sync/upstream-main` current
+
+`sync/upstream-main` is a local branch that mirrors `upstream/main` exactly — it never receives our commits. It exists so you can run `git log sync/upstream-main` or `git diff main...sync/upstream-main` without needing the upstream remote configured.
+
+The sync script updates it automatically. To update it manually:
+
+```bash
+git fetch upstream
+git checkout sync/upstream-main
+git reset --hard upstream/main
+git checkout main
+```
+
+Never commit directly to `sync/upstream-main`. If you find it ahead of `upstream/main`, reset it.
+
 ## Running tests
 
 ```bash

@@ -12,7 +12,7 @@ import {
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/styles/radix-nova/ui-rtl/field"
+} from "@/styles/radix-force-ui/ui-rtl/field"
 import {
   InputGroup,
   InputGroupAddon,
@@ -20,8 +20,8 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/styles/radix-nova/ui-rtl/input-group"
-import { Spinner } from "@/styles/radix-nova/ui-rtl/spinner"
+} from "@/styles/radix-force-ui/ui-rtl/input-group"
+import { Spinner } from "@/styles/radix-force-ui/ui-rtl/spinner"
 
 const translations: Translations = {
   en: {

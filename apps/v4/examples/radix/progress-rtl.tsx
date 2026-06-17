@@ -6,8 +6,8 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Field, FieldLabel } from "@/styles/radix-nova/ui-rtl/field"
-import { Progress } from "@/styles/radix-nova/ui-rtl/progress"
+import { Field, FieldLabel } from "@/styles/radix-force-ui/ui-rtl/field"
+import { Progress } from "@/styles/radix-force-ui/ui-rtl/progress"
 
 const translations: Translations = {
   en: {

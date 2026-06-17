@@ -2,7 +2,7 @@ import {
   Progress,
   ProgressLabel,
   ProgressValue,
-} from "@/styles/base-nova/ui/progress"
+} from "@/styles/base-force-ui/ui/progress"
 
 export function ProgressWithLabel() {
   return (

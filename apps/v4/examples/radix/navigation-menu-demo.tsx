@@ -11,7 +11,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/styles/radix-nova/ui/navigation-menu"
+} from "@/styles/radix-force-ui/ui/navigation-menu"
 
 const components: { title: string; href: string; description: string }[] = [
   {

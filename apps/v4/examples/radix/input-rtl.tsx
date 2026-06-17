@@ -10,8 +10,8 @@ import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/styles/radix-nova/ui-rtl/field"
-import { Input } from "@/styles/radix-nova/ui-rtl/input"
+} from "@/styles/radix-force-ui/ui-rtl/field"
+import { Input } from "@/styles/radix-force-ui/ui-rtl/input"
 
 const translations: Translations = {
   en: {

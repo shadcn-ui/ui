@@ -10,8 +10,8 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
-} from "@/styles/base-nova/ui/card"
-import { FieldGroup, FieldSeparator } from "@/styles/base-nova/ui/field"
+} from "@/styles/base-force-ui/ui/card"
+import { FieldGroup, FieldSeparator } from "@/styles/base-force-ui/ui/field"
 import { MenuAccentPicker } from "@/app/(app)/create/components/accent-picker"
 import { ActionMenu } from "@/app/(app)/create/components/action-menu"
 import { BaseColorPicker } from "@/app/(app)/create/components/base-color-picker"

@@ -1,4 +1,4 @@
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/styles/radix-force-ui/ui/button"
 import {
   Sheet,
   SheetContent,
@@ -6,7 +6,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/styles/radix-nova/ui/sheet"
+} from "@/styles/radix-force-ui/ui/sheet"
 
 export default function SheetNoCloseButton() {
   return (

@@ -6,7 +6,7 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Skeleton } from "@/styles/base-nova/ui-rtl/skeleton"
+import { Skeleton } from "@/styles/base-force-ui/ui-rtl/skeleton"
 
 const translations: Translations = {
   en: {

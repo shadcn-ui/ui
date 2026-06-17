@@ -4,8 +4,8 @@ import {
   FieldLabel,
   FieldLegend,
   FieldSet,
-} from "@/styles/radix-nova/ui/field"
-import { RadioGroup, RadioGroupItem } from "@/styles/radix-nova/ui/radio-group"
+} from "@/styles/radix-force-ui/ui/field"
+import { RadioGroup, RadioGroupItem } from "@/styles/radix-force-ui/ui/radio-group"
 
 export function RadioGroupInvalid() {
   return (
