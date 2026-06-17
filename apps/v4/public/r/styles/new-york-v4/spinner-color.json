@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/spinner-color.tsx",
-      "content": "import { Spinner } from \"@/registry/new-york-v4/ui/spinner\"\n\nexport default function SpinnerColor() {\n  return (\n    <div className=\"flex items-center gap-6\">\n      <Spinner className=\"size-6 text-red-500\" />\n      <Spinner className=\"size-6 text-green-500\" />\n      <Spinner className=\"size-6 text-blue-500\" />\n      <Spinner className=\"size-6 text-yellow-500\" />\n      <Spinner className=\"size-6 text-purple-500\" />\n    </div>\n  )\n}\n",
+      "content": "import { Spinner } from \"@/registry/new-york-v4/ui/spinner\"\r\n\r\nexport default function SpinnerColor() {\r\n  return (\r\n    <div className=\"flex items-center gap-6\">\r\n      <Spinner className=\"size-6 text-red-500\" />\r\n      <Spinner className=\"size-6 text-green-500\" />\r\n      <Spinner className=\"size-6 text-blue-500\" />\r\n      <Spinner className=\"size-6 text-yellow-500\" />\r\n      <Spinner className=\"size-6 text-purple-500\" />\r\n    </div>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ],

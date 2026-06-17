@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/button-group-input.tsx",
-      "content": "import { SearchIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport { ButtonGroup } from \"@/registry/new-york-v4/ui/button-group\"\nimport { Input } from \"@/registry/new-york-v4/ui/input\"\n\nexport default function ButtonGroupInput() {\n  return (\n    <ButtonGroup>\n      <Input placeholder=\"Search...\" />\n      <Button variant=\"outline\" aria-label=\"Search\">\n        <SearchIcon />\n      </Button>\n    </ButtonGroup>\n  )\n}\n",
+      "content": "import { SearchIcon } from \"lucide-react\"\r\n\r\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\r\nimport { ButtonGroup } from \"@/registry/new-york-v4/ui/button-group\"\r\nimport { Input } from \"@/registry/new-york-v4/ui/input\"\r\n\r\nexport default function ButtonGroupInput() {\r\n  return (\r\n    <ButtonGroup>\r\n      <Input placeholder=\"Search...\" />\r\n      <Button variant=\"outline\" aria-label=\"Search\">\r\n        <SearchIcon />\r\n      </Button>\r\n    </ButtonGroup>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ],
