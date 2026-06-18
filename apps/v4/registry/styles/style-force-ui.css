@@ -643,8 +643,26 @@
 
   /* MARK: Input */
   .cn-input {
-    @apply dark:bg-input/30 border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border bg-transparent px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-3 aria-invalid:ring-3 md:text-sm;
+    @apply focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-3 aria-invalid:ring-3 md:text-sm [&[readonly]]:bg-muted [&[readonly]]:border-border;
   }
+
+  /* [FORCE-UI-START] */
+  .cn-input-variant-outline {
+    @apply border-border bg-transparent hover:border-input;
+  }
+
+  .cn-input-variant-filled {
+    @apply border-border bg-muted hover:border-input dark:bg-muted;
+  }
+
+  .cn-input-variant-underline {
+    @apply rounded-none border-0 border-b border-input bg-transparent px-0;
+  }
+
+  .cn-input-variant-ghost {
+    @apply border-transparent bg-transparent hover:bg-muted/50;
+  }
+  /* [FORCE-UI-END] */
 
   /* MARK: Input OTP */
   .cn-input-otp {
