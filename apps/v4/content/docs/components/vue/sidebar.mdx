@@ -55,14 +55,14 @@ A `Sidebar` component is composed of the following parts:
   width="716"
   height="420"
   alt="Sidebar Structure"
-  class="border dark:hidden rounded-lg overflow-hidden mt-6 w-full"
+  class="mt-6 w-full overflow-hidden rounded-lg border dark:hidden"
 />
 <img
   src="/images/sidebar-structure-dark.png"
   width="716"
   height="420"
   alt="Sidebar Structure"
-  class="border hidden dark:block rounded-lg overflow-hidden mt-6 w-full"
+  class="mt-6 hidden w-full overflow-hidden rounded-lg border dark:block"
 />
 
 ## Usage
@@ -84,7 +84,7 @@ import {
   SidebarProvider,
   SidebarRail,
   SidebarTrigger,
-} from '@/components/ui/sidebar'
+} from "@/components/ui/sidebar"
 </script>
 
 <template>
@@ -94,7 +94,9 @@ import {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg">
-              <div class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+              <div
+                class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
+              >
                 <GalleryVerticalEnd class="size-4" />
               </div>
               <div class="grid flex-1 text-left text-sm leading-tight">
@@ -126,7 +128,9 @@ import {
       <SidebarRail />
     </Sidebar>
     <SidebarInset>
-      <header class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+      <header
+        class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12"
+      >
         <div class="flex items-center gap-2 px-4">
           <SidebarTrigger class="-ml-1" />
         </div>
@@ -148,119 +152,120 @@ import {
 
 Let's start with the most basic sidebar A collapsible sidebar with a menu.
 
-  Add a `SidebarProvider` and `SidebarTrigger` at the root of your application
+Add a `SidebarProvider` and `SidebarTrigger` at the root of your application
 
-  ```vue showLineNumbers
-  <script setup lang="ts">
-  import AppSidebar from '@/components/AppSidebar.vue'
-  import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
-  </script>
+```vue showLineNumbers
+<script setup lang="ts">
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import AppSidebar from "@/components/AppSidebar.vue"
+</script>
 
-  <template>
-    <SidebarProvider>
-      <AppSidebar />
-      <main>
-        <SidebarTrigger />
-        <slot />
-      </main>
-    </SidebarProvider>
-  </template>
-  ```
+<template>
+  <SidebarProvider>
+    <AppSidebar />
+    <main>
+      <SidebarTrigger />
+      <slot />
+    </main>
+  </SidebarProvider>
+</template>
+```
 
-  Create a new sidebar component at `@/components/AppSidebar.vue`
+Create a new sidebar component at `@/components/AppSidebar.vue`
 
-  ```vue showLineNumbers
-  <script setup lang="ts">
-  import { Sidebar, SidebarContent } from '@/components/ui/sidebar'
-  </script>
+```vue showLineNumbers
+<script setup lang="ts">
+import { Sidebar, SidebarContent } from "@/components/ui/sidebar"
+</script>
 
-  <template>
-    <Sidebar>
-      <SidebarContent />
-    </Sidebar>
-  </template>
-  ```
+<template>
+  <Sidebar>
+    <SidebarContent />
+  </Sidebar>
+</template>
+```
 
-  Now, let's add a `SidebarMenu` to the sidebar
+Now, let's add a `SidebarMenu` to the sidebar
 
-  We'll use the `SidebarMenu` component in a `SidebarGroup`.
+We'll use the `SidebarMenu` component in a `SidebarGroup`.
 
-  ```vue showLineNumbers
-  <script setup lang="ts">
-  import { Calendar, Home, Inbox, Search, Settings } from 'lucide-vue-next'
-  import {
-    Sidebar,
-    SidebarContent,
-    SidebarGroup,
-    SidebarGroupContent,
-    SidebarGroupLabel,
-    SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-  } from '@/components/ui/sidebar'
+```vue showLineNumbers
+<script setup lang="ts">
+import { Calendar, Home, Inbox, Search, Settings } from "lucide-vue-next"
 
-  // Menu items.
-  const items = [
-    {
-      title: 'Home',
-      url: '#',
-      icon: Home,
-    },
-    {
-      title: 'Inbox',
-      url: '#',
-      icon: Inbox,
-    },
-    {
-      title: 'Calendar',
-      url: '#',
-      icon: Calendar,
-    },
-    {
-      title: 'Search',
-      url: '#',
-      icon: Search,
-    },
-    {
-      title: 'Settings',
-      url: '#',
-      icon: Settings,
-    },
-  ]
-  </script>
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@/components/ui/sidebar"
 
-  <template>
-    <Sidebar>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem v-for="item in items" :key="item.title">
-                <SidebarMenuButton as-child>
-                  <a :href="item.url">
-                    <component :is="item.icon" />
-                    <span>{{ item.title }}</span>
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-    </Sidebar>
-  </template>
-  ```
+// Menu items.
+const items = [
+  {
+    title: "Home",
+    url: "#",
+    icon: Home,
+  },
+  {
+    title: "Inbox",
+    url: "#",
+    icon: Inbox,
+  },
+  {
+    title: "Calendar",
+    url: "#",
+    icon: Calendar,
+  },
+  {
+    title: "Search",
+    url: "#",
+    icon: Search,
+  },
+  {
+    title: "Settings",
+    url: "#",
+    icon: Settings,
+  },
+]
+</script>
 
-  You've created your first sidebar.
+<template>
+  <Sidebar>
+    <SidebarContent>
+      <SidebarGroup>
+        <SidebarGroupLabel>Application</SidebarGroupLabel>
+        <SidebarGroupContent>
+          <SidebarMenu>
+            <SidebarMenuItem v-for="item in items" :key="item.title">
+              <SidebarMenuButton as-child>
+                <a :href="item.url">
+                  <component :is="item.icon" />
+                  <span>{{ item.title }}</span>
+                </a>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroupContent>
+      </SidebarGroup>
+    </SidebarContent>
+  </Sidebar>
+</template>
+```
 
-  You should see something like this:
+You've created your first sidebar.
+
+You should see something like this:
 
 <ComponentPreview framework="vue" name="sidebar-demo" />
 
-  <figcaption class="text-center text-sm text-gray-500">
-    Your first sidebar
-  </figcaption>
+<figcaption class="text-center text-sm text-gray-500">
+  Your first sidebar
+</figcaption>
 ## Components
 
 The components in the `Sidebar*.vue` files are built to be composable i.e you build your sidebar by putting the provided components together. They also compose well with other shadcn-vue components such as `DropdownMenu`, `Collapsible`, `Dialog`, etc.
@@ -281,7 +286,7 @@ Use the `defaultOpen`, `open`, and `onOpenChange` props to control the open stat
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue"
 
 const open = ref(false)
 </script>
@@ -396,7 +401,7 @@ The `useSidebar` hook is used to control the sidebar.
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import { useSidebar } from '@/components/ui/sidebar'
+import { useSidebar } from "@/components/ui/sidebar"
 
 const {
   state,
@@ -758,15 +763,13 @@ You can create a custom trigger using the `useSidebar` hook.
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import { useSidebar } from '@/components/ui/sidebar'
+import { useSidebar } from "@/components/ui/sidebar"
 
 const { toggleSidebar } = useSidebar()
 </script>
 
 <template>
-  <Button @click="toggleSidebar">
-    Toggle Sidebar
-  </Button>
+  <Button @click="toggleSidebar"> Toggle Sidebar </Button>
 </template>
 ```
 
@@ -789,7 +792,7 @@ Use the `open` and `onOpenChange` props to control the sidebar.
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue"
 
 const open = ref(false)
 </script>

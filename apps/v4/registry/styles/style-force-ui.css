@@ -29,20 +29,6 @@
     @apply text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current;
   }
 
-  /* [FORCE-UI-START] */
-  .cn-alert-variant-warning {
-    @apply text-warning bg-warning/10 *:data-[slot=alert-description]:text-warning/90 *:[svg]:text-current;
-  }
-
-  .cn-alert-variant-success {
-    @apply text-success bg-success/10 *:data-[slot=alert-description]:text-success/90 *:[svg]:text-current;
-  }
-
-  .cn-alert-variant-info {
-    @apply text-info bg-info/10 *:data-[slot=alert-description]:text-info/90 *:[svg]:text-current;
-  }
-  /* [FORCE-UI-END] */
-
   .cn-alert-title {
     @apply font-medium group-has-[>svg]/alert:col-start-2;
   }
@@ -128,14 +114,6 @@
 
   .cn-badge-variant-warning {
     @apply bg-warning/10 [a]:hover:bg-warning/20 focus-visible:ring-warning/20 dark:focus-visible:ring-warning/40 text-warning dark:bg-warning/20;
-  }
-
-  .cn-badge-variant-success {
-    @apply bg-success/10 [a]:hover:bg-success/20 focus-visible:ring-success/20 dark:focus-visible:ring-success/40 text-success dark:bg-success/20;
-  }
-
-  .cn-badge-variant-info {
-    @apply bg-info/10 [a]:hover:bg-info/20 focus-visible:ring-info/20 dark:focus-visible:ring-info/40 text-info dark:bg-info/20;
   }
 
   .cn-badge-variant-ghost {
@@ -768,8 +746,18 @@
 
   /* MARK: Kbd */
   .cn-kbd {
-    @apply bg-muted text-muted-foreground in-data-[slot=tooltip-content]:bg-background/20 in-data-[slot=tooltip-content]:text-background dark:in-data-[slot=tooltip-content]:bg-background/10 h-5 w-fit min-w-5 gap-1 rounded-sm px-1 font-sans text-xs font-medium [&_svg:not([class*='size-'])]:size-3;
+    @apply in-data-[slot=tooltip-content]:bg-background/20 in-data-[slot=tooltip-content]:text-background dark:in-data-[slot=tooltip-content]:bg-background/10 h-5 w-fit min-w-5 gap-1 rounded-sm px-1 font-sans text-xs font-medium [&_svg:not([class*='size-'])]:size-3;
   }
+
+  /* [FORCE-UI-START] */
+  .cn-kbd-variant-default {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  .cn-kbd-variant-primary {
+    @apply bg-background/20 text-background dark:bg-background/10;
+  }
+  /* [FORCE-UI-END] */
 
   .cn-kbd-group {
     @apply gap-1;
@@ -1207,43 +1195,6 @@
     @apply border-ring ring-ring/50 relative size-3 rounded-full border bg-white transition-[color,box-shadow] after:absolute after:-inset-2 hover:ring-3 focus-visible:ring-3 focus-visible:outline-hidden active:ring-3;
   }
 
-  /* MARK: Spinner */
-  .cn-spinner {
-    @apply motion-reduce:animate-none;
-  }
-
-  .cn-spinner-color-default {
-    @apply text-muted-foreground;
-  }
-
-  .cn-spinner-color-primary {
-    @apply text-primary;
-  }
-
-  .cn-spinner-color-onPrimary {
-    @apply text-primary-foreground;
-  }
-
-  .cn-spinner-color-inherit {
-    @apply text-current;
-  }
-
-  .cn-spinner-size-xs {
-    @apply size-3;
-  }
-
-  .cn-spinner-size-sm {
-    @apply size-4;
-  }
-
-  .cn-spinner-size-md {
-    @apply size-6;
-  }
-
-  .cn-spinner-size-lg {
-    @apply size-10;
-  }
-
   /* MARK: Sonner */
   .cn-toast {
     @apply rounded-2xl;
@@ -1314,26 +1265,8 @@
 
   /* MARK: Textarea */
   .cn-textarea {
-    @apply dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 rounded-lg border px-2.5 py-2 text-base transition-colors focus-visible:ring-3 aria-invalid:ring-3 md:text-sm [&[readonly]]:bg-muted [&[readonly]]:border-border;
+    @apply border-input dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 rounded-lg border bg-transparent px-2.5 py-2 text-base transition-colors focus-visible:ring-3 aria-invalid:ring-3 md:text-sm;
   }
-
-  /* [FORCE-UI-START] */
-  .cn-textarea-variant-outline {
-    @apply border-border bg-transparent hover:border-input;
-  }
-
-  .cn-textarea-variant-filled {
-    @apply border-border bg-muted hover:border-input dark:bg-muted;
-  }
-
-  .cn-textarea-variant-underline {
-    @apply rounded-none border-0 border-b border-input bg-transparent px-0;
-  }
-
-  .cn-textarea-variant-ghost {
-    @apply border-transparent bg-transparent hover:bg-muted/50;
-  }
-  /* [FORCE-UI-END] */
 
   /* MARK: Toggle */
   .cn-toggle {
@@ -1388,26 +1321,8 @@
 
   /* MARK: Input Group */
   .cn-input-group {
-    @apply dark:bg-input/30 has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[[data-slot][aria-invalid=true]]:border-destructive dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40 has-disabled:bg-input/50 dark:has-disabled:bg-input/80 h-8 transition-colors in-data-[slot=combobox-content]:focus-within:border-inherit in-data-[slot=combobox-content]:focus-within:ring-0 has-disabled:opacity-50 has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot][aria-invalid=true]]:ring-3 has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pr-1.5 has-[>[data-align=inline-start]]:[&>input]:pl-1.5;
+    @apply border-input dark:bg-input/30 has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[[data-slot][aria-invalid=true]]:border-destructive dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40 has-disabled:bg-input/50 dark:has-disabled:bg-input/80 h-8 rounded-lg border transition-colors in-data-[slot=combobox-content]:focus-within:border-inherit in-data-[slot=combobox-content]:focus-within:ring-0 has-disabled:opacity-50 has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot][aria-invalid=true]]:ring-3 has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pr-1.5 has-[>[data-align=inline-start]]:[&>input]:pl-1.5;
   }
-
-  /* [FORCE-UI-START] */
-  .cn-input-group-variant-outline {
-    @apply rounded-lg border border-border hover:border-input;
-  }
-
-  .cn-input-group-variant-filled {
-    @apply rounded-lg border border-border bg-muted hover:border-input;
-  }
-
-  .cn-input-group-variant-underline {
-    @apply border-0 border-b border-input;
-  }
-
-  .cn-input-group-variant-ghost {
-    @apply rounded-lg border border-transparent hover:bg-muted/50;
-  }
-  /* [FORCE-UI-END] */
 
   .cn-input-group-addon {
     @apply text-muted-foreground h-auto gap-2 py-1.5 text-sm font-medium group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4;

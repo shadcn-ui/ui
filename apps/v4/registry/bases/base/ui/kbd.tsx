@@ -1,13 +1,32 @@
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+
 import { cn } from "@/registry/bases/base/lib/utils"
 
-function Kbd({ className, ...props }: React.ComponentProps<"kbd">) {
+const kbdVariants = cva(
+  "cn-kbd pointer-events-none inline-flex items-center justify-center select-none",
+  {
+    variants: {
+      variant: {
+        default: "cn-kbd-variant-default",  // [FORCE-UI]
+        primary: "cn-kbd-variant-primary",  // [FORCE-UI]
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+function Kbd({
+  className,
+  variant,
+  ...props
+}: React.ComponentProps<"kbd"> & VariantProps<typeof kbdVariants>) {
   return (
     <kbd
       data-slot="kbd"
-      className={cn(
-        "cn-kbd pointer-events-none inline-flex items-center justify-center select-none",
-        className
-      )}
+      className={cn(kbdVariants({ variant }), className)}
       {...props}
     />
   )
@@ -23,4 +42,4 @@ function KbdGroup({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-export { Kbd, KbdGroup }
+export { Kbd, KbdGroup, kbdVariants }
