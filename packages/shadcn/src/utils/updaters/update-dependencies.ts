@@ -16,8 +16,19 @@ export async function updateDependencies(
     silent?: boolean
   }
 ) {
-  dependencies = Array.from(new Set(dependencies))
-  devDependencies = Array.from(new Set(devDependencies))
+  const packageInfo = getPackageInfo(config.resolvedPaths.cwd, false)
+  const packageManager = await getUpdateDependenciesPackageManager(config)
+
+  // Expo resolves its own SDK-compatible versions via `expo install`, so for
+  // Expo projects we still dedupe requests but must not skip already declared
+  // dependencies — otherwise we'd block intentional version alignment.
+  const skipInstalled = packageManager !== "expo"
+  dependencies = normalizeDependencyRequests(dependencies, packageInfo, {
+    skipInstalled,
+  })
+  devDependencies = normalizeDependencyRequests(devDependencies, packageInfo, {
+    skipInstalled,
+  })
 
   if (!dependencies?.length && !devDependencies?.length) {
     return
@@ -31,7 +42,6 @@ export async function updateDependencies(
   const dependenciesSpinner = spinner(`Installing dependencies.`, {
     silent: options.silent,
   })?.start()
-  const packageManager = await getUpdateDependenciesPackageManager(config)
 
   // Offer to use --force or --legacy-peer-deps if using React 19 with npm.
   let flag = ""
@@ -72,6 +82,88 @@ export async function updateDependencies(
   )
 
   dependenciesSpinner?.succeed()
+}
+
+/**
+ * The registry hands us bare package names (e.g. "recharts"). Forwarding a bare
+ * name to `pnpm add` / `npm install` re-resolves it to the current `latest` and
+ * overwrites whatever specifier is already declared in package.json. Re-running
+ * `shadcn add` therefore silently rewrites existing dependency ranges (#10525).
+ *
+ * To keep the operation idempotent we drop bare requests for packages that are
+ * already declared, while still installing explicit specs (e.g. "recharts@3.8.0")
+ * so a registry item can intentionally pin a version. Within a single request we
+ * also dedupe by package name, preferring the explicit spec over a bare one.
+ */
+function normalizeDependencyRequests(
+  dependencies: RegistryItem["dependencies"] = [],
+  packageInfo: ReturnType<typeof getPackageInfo>,
+  { skipInstalled = true }: { skipInstalled?: boolean } = {}
+) {
+  const installedDependencies = new Set([
+    ...Object.keys(packageInfo?.dependencies ?? {}),
+    ...Object.keys(packageInfo?.devDependencies ?? {}),
+    ...Object.keys(packageInfo?.optionalDependencies ?? {}),
+    ...Object.keys(packageInfo?.peerDependencies ?? {}),
+  ])
+
+  const installRequests = new Map<
+    string,
+    { dependency: string; hasSpecifier: boolean }
+  >()
+
+  for (const dependency of dependencies) {
+    const packageRequest = parsePackageRequest(dependency)
+
+    // Protocol/alias specs (file:, workspace:, git+https:, npm:, etc.) are kept
+    // as-is since we cannot reliably reason about their declared version.
+    if (!packageRequest) {
+      installRequests.set(dependency, { dependency, hasSpecifier: true })
+      continue
+    }
+
+    // Bare name that is already declared in package.json -> skip so we never
+    // rewrite the existing specifier (this is the #10525 fix).
+    if (
+      skipInstalled &&
+      !packageRequest.hasSpecifier &&
+      installedDependencies.has(packageRequest.name)
+    ) {
+      continue
+    }
+
+    const existing = installRequests.get(packageRequest.name)
+    if (!existing || (!existing.hasSpecifier && packageRequest.hasSpecifier)) {
+      installRequests.set(packageRequest.name, {
+        dependency,
+        hasSpecifier: packageRequest.hasSpecifier,
+      })
+    }
+  }
+
+  return Array.from(installRequests.values()).map(
+    ({ dependency }) => dependency
+  )
+}
+
+function parsePackageRequest(dependency: string) {
+  // Protocol-prefixed specs: file:, workspace:, link:, git+https:, npm:, etc.
+  if (/^[a-z][a-z0-9+.-]*:/i.test(dependency)) {
+    return null
+  }
+
+  const match = dependency.startsWith("@")
+    ? dependency.match(/^(@[^/]+\/[^@/]+)(@.+)?$/)
+    : dependency.match(/^([^@/]+)(@.+)?$/)
+
+  if (!match) {
+    return null
+  }
+
+  return {
+    name: match[1],
+    hasSpecifier: Boolean(match[2]),
+  }
 }
 
 function shouldPromptForNpmFlag(config: Config) {
