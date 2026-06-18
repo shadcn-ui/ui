@@ -9,6 +9,8 @@
 				secondary: "cn-badge-variant-secondary",
 				destructive: "cn-badge-variant-destructive",
 				warning: "cn-badge-variant-warning",
+				success: "cn-badge-variant-success",
+				info: "cn-badge-variant-info",
 				outline: "cn-badge-variant-outline",
 				ghost: "cn-badge-variant-ghost",
 				link: "cn-badge-variant-link",
