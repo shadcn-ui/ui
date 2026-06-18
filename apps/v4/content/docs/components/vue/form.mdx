@@ -50,7 +50,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
+} from "@/components/ui/form"
 </script>
 
 <template>
@@ -60,9 +60,7 @@ import {
       <FormControl>
         <Input placeholder="shadcn" v-bind="componentField" />
       </FormControl>
-      <FormDescription>
-        This is your public display name.
-      </FormDescription>
+      <FormDescription> This is your public display name. </FormDescription>
       <FormMessage />
     </FormItem>
   </FormField>
@@ -71,155 +69,150 @@ import {
 
 ### Create a form schema
 
-  Define the shape of your form using a Zod schema. You can read more about using Zod in the [Zod documentation](https://zod.dev).
+Define the shape of your form using a Zod schema. You can read more about using Zod in the [Zod documentation](https://zod.dev).
 
-  Use `@vee-validate/zod` to integrate Zod schema validation with `vee-validate`
+Use `@vee-validate/zod` to integrate Zod schema validation with `vee-validate`
 
-  `toTypedSchema` also makes the form values and submitted values typed automatically and caters for both input and output types of that schema.
+`toTypedSchema` also makes the form values and submitted values typed automatically and caters for both input and output types of that schema.
 
-  ```vue showLineNumbers {2-3,5-7}
-  <script setup lang="ts">
-  import { toTypedSchema } from '@vee-validate/zod'
-  import * as z from 'zod'
+```vue showLineNumbers {2-3,5-7}
+<script setup lang="ts">
+import { toTypedSchema } from "@vee-validate/zod"
+import * as z from "zod"
 
-  const formSchema = toTypedSchema(z.object({
+const formSchema = toTypedSchema(
+  z.object({
     username: z.string().min(2).max(50),
-  }))
-  </script>
-  ```
+  })
+)
+</script>
+```
 
 ### Define a form
 
-  Use the `useForm` composable from `vee-validate` or use `<Form />` component to create a form.
+Use the `useForm` composable from `vee-validate` or use `<Form />` component to create a form.
 
-```vue showLineNumbers {2,19-21}
-    <script setup lang="ts">
-    import { useForm } from 'vee-validate'
-    import { toTypedSchema } from '@vee-validate/zod'
-    import * as z from 'zod'
+````vue showLineNumbers {2,19-21}
+<script setup lang="ts">
+import { toTypedSchema } from "@vee-validate/zod"
+import { useForm } from "vee-validate"
+import * as z from "zod"
 
-    import {
-      FormControl,
-      FormDescription,
-      FormField,
-      FormItem,
-      FormLabel,
-      FormMessage
-    } from '@/components/ui/form'
+import {
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
 
-    const formSchema = toTypedSchema(z.object({
-      username: z.string().min(2).max(50),
-    }))
-
-    const form = useForm({
-      validationSchema: formSchema,
-    })
-
-    const onSubmit = form.handleSubmit((values) => {
-      console.log('Form submitted!', values)
-    })
-    </script>
-
-    <template>
-      <form @submit="onSubmit">
-        ...
-      </form>
-    </template>
-    ```
-
-```vue showLineNumbers {5,24-26}
-    <script setup lang="ts">
-    import { toTypedSchema } from '@vee-validate/zod'
-    import * as z from 'zod'
-    import {
-      Form,
-      FormControl,
-      FormDescription,
-      FormField,
-      FormItem,
-      FormLabel,
-      FormMessage
-    } from '@/components/ui/form'
-
-    const formSchema = toTypedSchema(z.object({
-      username: z.string().min(2).max(50),
-    }))
-
-    function onSubmit(values) {
-      console.log('Form submitted!', values)
-    }
-    </script>
-
-    <template>
-      <Form :validation-schema="formSchema" @submit="onSubmit">
-        ...
-      </Form>
-    </template>
-    ```
-
-### Build your form
-
-  Based on last step we can either use `<Form />` component or `useForm` composable
-  `useForm` is recommended because values are typed automatically
-
-  ```vue showLineNumbers {2}
-  <script setup lang="ts">
-  import { toTypedSchema } from '@vee-validate/zod'
-  import { useForm } from 'vee-validate'
-  import * as z from 'zod'
-
-  import { Button } from '@/components/ui/button'
-  import {
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-  } from '@/components/ui/form'
-  import { Input } from '@/components/ui/input'
-
-  const formSchema = toTypedSchema(z.object({
+const formSchema = toTypedSchema(
+  z.object({
     username: z.string().min(2).max(50),
-  }))
-
-  const form = useForm({
-    validationSchema: formSchema,
   })
+)
 
-  const onSubmit = form.handleSubmit((values) => {
-    console.log('Form submitted!', values)
+const form = useForm({
+  validationSchema: formSchema,
+})
+
+const onSubmit = form.handleSubmit((values) => {
+  console.log("Form submitted!", values)
+})
+</script>
+
+<template>
+  <form @submit="onSubmit">...</form>
+</template>
+``` ```vue showLineNumbers {5,24-26}
+<script setup lang="ts">
+import { toTypedSchema } from "@vee-validate/zod"
+import * as z from "zod"
+
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+
+const formSchema = toTypedSchema(
+  z.object({
+    username: z.string().min(2).max(50),
   })
-  </script>
+)
 
-  <template>
-    <form @submit="onSubmit">
-      <FormField v-slot="{ componentField }" name="username">
-        <FormItem>
-          <FormLabel>Username</FormLabel>
-          <FormControl>
-            <Input type="text" placeholder="shadcn" v-bind="componentField" />
-          </FormControl>
-          <FormDescription>
-            This is your public display name.
-          </FormDescription>
-          <FormMessage />
-        </FormItem>
-      </FormField>
-      <Button type="submit">
-        Submit
-      </Button>
-    </form>
-  </template>
-  ```
+function onSubmit(values) {
+  console.log("Form submitted!", values)
+}
+</script>
+
+<template>
+  <Form :validation-schema="formSchema" @submit="onSubmit"> ... </Form>
+</template>
+``` ### Build your form Based on last step we can either use `
+<Form />
+` component or `useForm` composable `useForm` is recommended because values are
+typed automatically ```vue showLineNumbers {2}
+<script setup lang="ts">
+import { toTypedSchema } from "@vee-validate/zod"
+import { useForm } from "vee-validate"
+import * as z from "zod"
+
+import { Button } from "@/components/ui/button"
+import {
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+
+const formSchema = toTypedSchema(
+  z.object({
+    username: z.string().min(2).max(50),
+  })
+)
+
+const form = useForm({
+  validationSchema: formSchema,
+})
+
+const onSubmit = form.handleSubmit((values) => {
+  console.log("Form submitted!", values)
+})
+</script>
+
+<template>
+  <form @submit="onSubmit">
+    <FormField v-slot="{ componentField }" name="username">
+      <FormItem>
+        <FormLabel>Username</FormLabel>
+        <FormControl>
+          <Input type="text" placeholder="shadcn" v-bind="componentField" />
+        </FormControl>
+        <FormDescription> This is your public display name. </FormDescription>
+        <FormMessage />
+      </FormItem>
+    </FormField>
+    <Button type="submit"> Submit </Button>
+  </form>
+</template>
+````
 
 ### Done
 
-  That's it. You now have a fully accessible form that is type-safe with client-side validation.
+That's it. You now have a fully accessible form that is type-safe with client-side validation.
 
 <ComponentPreview framework="vue" name="input-form" />
 
-{/* ## Extras
+{/\* ## Extras
 
 This example shows how to add motion to your forms with [Formkit AutoAnimate](https://auto-animate.formkit.com/)
 

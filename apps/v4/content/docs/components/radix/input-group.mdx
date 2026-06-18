@@ -203,6 +203,16 @@ Here's an example of a custom resizable textarea from a third-party library.
   previewClassName="h-56"
 />
 
+### Variants
+
+Use the `variant` prop to match standalone Input variants.
+
+<ComponentPreview
+  styleName="radix-force-ui"
+  name="input-group-example"
+  previewClassName="h-56"
+/>
+
 ## RTL
 
 To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
@@ -220,9 +230,10 @@ To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
 
 The main component that wraps inputs and addons.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
+| Prop        | Type                                                    | Default     |
+| ----------- | ------------------------------------------------------- | ----------- |
+| `variant`   | `"outline" \| "filled" \| "underline" \| "ghost"`       | `"outline"` |
+| `className` | `string`                                                |             |
 
 ```tsx
 <InputGroup>

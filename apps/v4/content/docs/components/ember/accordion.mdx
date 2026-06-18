@@ -5,7 +5,6 @@ base: ember
 component: true
 ---
 
-
 <ComponentPreview framework="ember" name="accordion-demo" />
 
 ## Installation
@@ -40,13 +39,11 @@ pnpm add ember-provide-consume-context
 
 <Step>Update the import paths to match your project setup.</Step>
 
-
 </Steps>
 
 </TabsContent>
 
 </CodeTabs>
-
 
 ## Usage
 
@@ -60,13 +57,13 @@ import {
 ```
 
 ```hbs showLineNumbers
-<Accordion @type='single' @collapsible={{true}}>
-  <AccordionItem @value='item-1'>
+<Accordion @type="single" @collapsible={{true}}>
+  <AccordionItem @value="item-1">
     <AccordionTrigger>Is it accessible?</AccordionTrigger>
     <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
   </AccordionItem>
 
-  <AccordionItem @value='item-2'>
+  <AccordionItem @value="item-2">
     <AccordionTrigger>Is it styled?</AccordionTrigger>
     <AccordionContent>
       Yes. It comes with default styles that matches the other components'
@@ -74,7 +71,7 @@ import {
     </AccordionContent>
   </AccordionItem>
 
-  <AccordionItem @value='item-3'>
+  <AccordionItem @value="item-3">
     <AccordionTrigger>Is it animated?</AccordionTrigger>
     <AccordionContent>
       Yes. It's animated by default, but you can disable it if you prefer.

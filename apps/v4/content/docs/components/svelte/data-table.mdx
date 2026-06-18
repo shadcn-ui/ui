@@ -45,11 +45,11 @@ We're going to build a table to show recent payments. Here's what our data looks
 
 ```ts showLineNumbers
 type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
-};
+  id: string
+  amount: number
+  status: "pending" | "processing" | "success" | "failed"
+  email: string
+}
 
 export const data: Payment[] = [
   {
@@ -65,7 +65,7 @@ export const data: Payment[] = [
     email: "example@gmail.com",
   },
   // ...
-];
+]
 ```
 
 ## Project Structure
@@ -101,16 +101,16 @@ Let's start by building a basic table.
 First, we'll define our columns.
 
 ```ts showLineNumbers {1,12-25} title="routes/payments/columns.ts"
-import type { ColumnDef } from "@tanstack/table-core";
+import type { ColumnDef } from "@tanstack/table-core"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 export type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
-};
+  id: string
+  amount: number
+  status: "pending" | "processing" | "success" | "failed"
+  email: string
+}
 
 export const columns: ColumnDef<Payment>[] = [
   {
@@ -125,7 +125,7 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "amount",
     header: "Amount",
   },
-];
+]
 ```
 
 ### `<DataTable />` Component
@@ -206,10 +206,10 @@ Finally, we'll render our table in our page component.
 ```ts showLineNumbers title="routes/payments/+page.server.ts"
 export async function load() {
   // logic to fetch payments data here
-  const payments = await getPayments();
+  const payments = await getPayments()
   return {
     payments,
-  };
+  }
 }
 ```
 
@@ -237,9 +237,9 @@ Let's format the amount cell to display the dollar amount. We'll also align the 
 Update the `header` and `cell` definitions for amount as follows:
 
 ```ts showLineNumbers title="routes/payments/columns.ts"
-import type { ColumnDef } from "@tanstack/table-core";
-import { createRawSnippet } from "svelte";
-import { renderSnippet } from "$lib/components/ui/data-table/index.js";
+import type { ColumnDef } from "@tanstack/table-core"
+import { renderSnippet } from "$lib/components/ui/data-table/index.js"
+import { createRawSnippet } from "svelte"
 
 export const columns: ColumnDef<Payment>[] = [
   {
@@ -247,32 +247,32 @@ export const columns: ColumnDef<Payment>[] = [
     header: () => {
       const amountHeaderSnippet = createRawSnippet(() => ({
         render: () => `<div class="text-end">Amount</div>`,
-      }));
-      return renderSnippet(amountHeaderSnippet);
+      }))
+      return renderSnippet(amountHeaderSnippet)
     },
     cell: ({ row }) => {
       const formatter = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
-      });
+      })
 
       const amountCellSnippet = createRawSnippet<[{ amount: number }]>(
         (getAmount) => {
-          const { amount } = getAmount();
-          const formatted = formatter.format(amount);
+          const { amount } = getAmount()
+          const formatted = formatter.format(amount)
           return {
             render: () =>
               `<div class="text-end font-medium">${formatted}</div>`,
-          };
+          }
         }
-      );
+      )
 
       return renderSnippet(amountCellSnippet, {
         amount: row.original.amount,
-      });
+      })
     },
   },
-];
+]
 ```
 
 We're using the `createRawSnippet` function to create a Svelte Snippet for rendering simple HTML elements that don't require full lifecycle and state capabilities like a component. We then use the `renderSnippet` helper function to render the snippet.
@@ -322,9 +322,10 @@ We'll start by defining the actions menu in our `data-table-actions.svelte` comp
 Now that we've defined the `<DataTableActions />` component, let's update our `actions` column definition to use it.
 
 ```ts showLineNumbers title="routes/payments/columns.ts"
-import type { ColumnDef } from "@tanstack/table-core";
-import { renderComponent } from "$lib/components/ui/data-table/index.js";
-import DataTableActions from "./data-table-actions.svelte";
+import type { ColumnDef } from "@tanstack/table-core"
+import { renderComponent } from "$lib/components/ui/data-table/index.js"
+
+import DataTableActions from "./data-table-actions.svelte"
 
 export const columns: ColumnDef<Payment>[] = [
   // ...
@@ -332,10 +333,10 @@ export const columns: ColumnDef<Payment>[] = [
     id: "actions",
     cell: ({ row }) => {
       // You can pass whatever you need from `row.original` to the component
-      return renderComponent(DataTableActions, { id: row.original.id });
+      return renderComponent(DataTableActions, { id: row.original.id })
     },
   },
-];
+]
 ```
 
 You can access the row data using `row.original` in the `cell` function. Use this to handle actions for your row eg. use the `id` to make a DELETE call to your API.
@@ -540,9 +541,10 @@ We'll start by creating a component to render a sortable email header button.
 We can now update the `email` header cell to add sorting controls.
 
 ```ts showLineNumbers title="src/routes/payments/columns.ts"
-import type { ColumnDef } from "@tanstack/table-core";
-import { renderComponent } from "$lib/components/ui/data-table/index.js";
-import DataTableEmailButton from "./data-table-email-button.svelte";
+import type { ColumnDef } from "@tanstack/table-core"
+import { renderComponent } from "$lib/components/ui/data-table/index.js"
+
+import DataTableEmailButton from "./data-table-email-button.svelte"
 
 export const columns: ColumnDef<Payment>[] = [
   // ...
@@ -553,7 +555,7 @@ export const columns: ColumnDef<Payment>[] = [
         onclick: column.getToggleSortingHandler(),
       }),
   },
-];
+]
 ```
 
 This will automatically sort the table (asc and desc) when the user toggles on the header cell.
@@ -810,9 +812,9 @@ We'll start by defining the checkbox component in our `data-table-checkbox.svelt
 Now that we have a new component, we can add a `select` column definition to render a checkbox.
 
 ```ts showLineNumbers title="routes/payments/columns.ts"
-import type { ColumnDef } from "@tanstack/table-core";
-import { renderComponent } from "$lib/components/ui/data-table/index.js";
-import { Checkbox } from "$lib/components/ui/checkbox/index.js";
+import type { ColumnDef } from "@tanstack/table-core"
+import { Checkbox } from "$lib/components/ui/checkbox/index.js"
+import { renderComponent } from "$lib/components/ui/data-table/index.js"
 
 export const columns: ColumnDef<Payment>[] = [
   // ...
@@ -836,7 +838,7 @@ export const columns: ColumnDef<Payment>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-];
+]
 ```
 
 ### Update `<DataTable />`

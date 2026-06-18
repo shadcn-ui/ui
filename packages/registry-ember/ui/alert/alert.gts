@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 interface AlertSignature {
   Element: HTMLDivElement;
   Args: {
-    variant?: 'default' | 'destructive';
+    variant?: 'default' | 'destructive' | 'warning' | 'success' | 'info';
     class?: string;
   };
   Blocks: {
@@ -41,6 +41,9 @@ class Alert extends Component<AlertSignature> {
       default: 'bg-card text-card-foreground',
       destructive:
         'text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90',
+      warning: 'cn-alert-variant-warning',
+      success: 'cn-alert-variant-success',
+      info: 'cn-alert-variant-info',
     };
 
     return variants[variant];

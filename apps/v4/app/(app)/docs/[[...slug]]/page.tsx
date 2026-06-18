@@ -8,10 +8,10 @@ import { replaceComponentsList } from "@/lib/llm"
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
 import { DocsBaseSwitcher } from "@/components/docs-base-switcher"
-import { isReactBase } from "@/registry/frameworks"
 import { DocsCopyPage } from "@/components/docs-copy-page"
 import { DocsTableOfContents } from "@/components/docs-toc"
 import { OpenInV0Cta } from "@/components/open-in-v0-cta"
+import { isReactBase } from "@/registry/frameworks"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
 export const revalidate = false

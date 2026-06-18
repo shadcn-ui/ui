@@ -43,9 +43,10 @@ npx shadcn@latest add @force-ui-vue/combobox
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import { CheckIcon, ChevronsUpDownIcon } from 'lucide-vue-next'
-import { ref } from 'vue'
-import { Button } from '@/components/ui/button'
+import { CheckIcon, ChevronsUpDownIcon } from "lucide-vue-next"
+import { ref } from "vue"
+
+import { Button } from "@/components/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -53,23 +54,23 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@/components/ui/command'
+} from "@/components/ui/command"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
+} from "@/components/ui/popover"
 
 const frameworks = [
-  { value: 'next.js', label: 'Next.js' },
-  { value: 'sveltekit', label: 'SvelteKit' },
-  { value: 'nuxt.js', label: 'Nuxt.js' },
-  { value: 'remix', label: 'Remix' },
-  { value: 'astro', label: 'Astro' },
+  { value: "next.js", label: "Next.js" },
+  { value: "sveltekit", label: "SvelteKit" },
+  { value: "nuxt.js", label: "Nuxt.js" },
+  { value: "remix", label: "Remix" },
+  { value: "astro", label: "Astro" },
 ]
 
 const open = ref(false)
-const value = ref('')
+const value = ref("")
 </script>
 
 <template>
@@ -83,8 +84,8 @@ const value = ref('')
       >
         {{
           value
-            ? frameworks.find(framework => framework.value === value)?.label
-            : 'Select framework...'
+            ? frameworks.find((framework) => framework.value === value)?.label
+            : "Select framework..."
         }}
         <ChevronsUpDownIcon class="ml-2 h-4 w-4 shrink-0 opacity-50" />
       </Button>
@@ -99,16 +100,20 @@ const value = ref('')
               v-for="framework in frameworks"
               :key="framework.value"
               :value="framework.value"
-              @select="() => {
-                value = value === framework.value ? '' : framework.value
-                open = false
-              }"
+              @select="
+                () => {
+                  value = value === framework.value ? '' : framework.value
+                  open = false
+                }
+              "
             >
               <CheckIcon
-                :class="cn(
-                  'mr-2 h-4 w-4',
-                  value === framework.value ? 'opacity-100' : 'opacity-0',
-                )"
+                :class="
+                  cn(
+                    'mr-2 h-4 w-4',
+                    value === framework.value ? 'opacity-100' : 'opacity-0'
+                  )
+                "
               />
               {{ framework.label }}
             </CommandItem>

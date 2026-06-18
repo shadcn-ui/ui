@@ -43,7 +43,7 @@ npx shadcn@latest add @force-ui-vue/kbd
 
 ```vue
 <script setup lang="ts">
-import { Kbd } from '@/components/ui/kbd'
+import { Kbd } from "@/components/ui/kbd"
 </script>
 
 <template>
@@ -83,9 +83,10 @@ You can use the `Kbd` component inside a `InputGroupAddon` component to display 
 
 Use the `Kbd` component to display a keyboard key.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `class` | `string` | ``      |
+| Prop      | Type                     | Default     |
+| --------- | ------------------------ | ----------- |
+| `variant` | `"default" \| "primary"` | `"default"` |
+| `class`   | `string`                 | ``          |
 
 ```vue
 <Kbd>
@@ -97,8 +98,8 @@ Ctrl
 
 Use the `KbdGroup` component to group `Kbd` components together.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
 | `class` | `string` | ``      |
 
 ```vue

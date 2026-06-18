@@ -2,7 +2,10 @@
 
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
-import { ChartContainer, type ChartConfig } from "@/styles/radix-force-ui/ui/chart"
+import {
+  ChartContainer,
+  type ChartConfig,
+} from "@/styles/radix-force-ui/ui/chart"
 
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },

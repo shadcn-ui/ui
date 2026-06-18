@@ -10,6 +10,7 @@ export default function BadgeExample() {
   return (
     <ExampleWrapper className="lg:grid-cols-1">
       <BadgeVariants />
+      <BadgeStatusVariants />
       <BadgeSolidVariants />
       <BadgeWithIconLeft />
       <BadgeWithIconRight />
@@ -18,6 +19,19 @@ export default function BadgeExample() {
       <BadgeLongText />
       <BadgeCustomColors />
     </ExampleWrapper>
+  )
+}
+
+function BadgeStatusVariants() {
+  return (
+    <Example title="Status Variants">
+      <div className="flex flex-wrap gap-2">
+        <Badge variant="success">Success</Badge>
+        <Badge variant="info">Info</Badge>
+        <Badge variant="warning">Warning</Badge>
+        <Badge variant="destructive">Destructive</Badge>
+      </div>
+    </Example>
   )
 }
 

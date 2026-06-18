@@ -43,15 +43,17 @@ npx shadcn@latest add @force-ui-vue/badge
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import { Badge } from '@/components/ui/badge'
+import { Badge } from "@/components/ui/badge"
 </script>
 
 <template>
-  <Badge variant="default | outline | secondary | destructive">
-    Badge
-  </Badge>
+  <Badge variant="default | outline | secondary | destructive"> Badge </Badge>
 </template>
 ```
+
+### Status Variants
+
+<ComponentPreview framework="vue" name="badge-example" />
 
 ### Solid Status Variants
 
@@ -63,9 +65,9 @@ Use solid variants for maximum-attention states like critical counts or overdue 
 
 ### Badge
 
-| Prop      | Type                                                                                                                                                               | Default     |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
-| `variant` | `"default" \| "secondary" \| "destructive" \| "outline" \| "ghost" \| "link" \| "warning" \| "success-solid" \| "warning-solid" \| "info-solid" \| "error-solid"` | `"default"` |
+| Prop      | Type                                                                                                                                                                                       | Default     |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| `variant` | `"default" \| "secondary" \| "destructive" \| "outline" \| "ghost" \| "link" \| "warning" \| "success" \| "info" \| "success-solid" \| "warning-solid" \| "info-solid" \| "error-solid"` | `"default"` |
 
 ### Link
 
@@ -73,7 +75,7 @@ You can use the `as-child` prop to make another component look like a badge. Her
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import { Badge } from '@/components/ui/badge'
+import { Badge } from "@/components/ui/badge"
 </script>
 
 <template>

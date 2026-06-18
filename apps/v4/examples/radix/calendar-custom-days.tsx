@@ -4,7 +4,10 @@ import * as React from "react"
 import { addDays } from "date-fns"
 import { type DateRange } from "react-day-picker"
 
-import { Calendar, CalendarDayButton } from "@/styles/radix-force-ui/ui/calendar"
+import {
+  Calendar,
+  CalendarDayButton,
+} from "@/styles/radix-force-ui/ui/calendar"
 import { Card, CardContent } from "@/styles/radix-force-ui/ui/card"
 
 export function CalendarCustomDays() {
