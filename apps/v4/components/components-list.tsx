@@ -30,14 +30,14 @@ export function ComponentsList({
   // For non-React frameworks, build a URL map for available components.
   const availableUrlMap = new Map<string, string>()
   for (const page of availableComponents) {
-    availableUrlMap.set(page.name, page.url)
+    availableUrlMap.set(String(page.name), String(page.url))
   }
 
   return (
     <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20">
       {allComponents.map((component) => {
         const isAvailable = availableNames.has(component.name)
-        const href = availableUrlMap.get(component.name) ?? component.url
+        const href = availableUrlMap.get(String(component.name)) ?? component.url
 
         if (!isAvailable) {
           return (

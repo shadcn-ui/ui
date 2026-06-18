@@ -20,6 +20,12 @@ const eslintConfig = tseslint.config(
       ".source/**",
       "**/__index__.tsx",
       "**/__components__.tsx",
+      // [FORCE-UI] build outputs + non-React framework ports (linted by their own toolchains)
+      "public/preview/**",
+      "preview-server/dist/**",
+      "styles/vue-force-ui/**",
+      "styles/svelte-force-ui/**",
+      "styles/ember-force-ui/**",
     ],
   },
   {

@@ -33,5 +33,12 @@
     "next.config.mjs",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "styles/vue-force-ui",
+    "styles/svelte-force-ui",
+    "styles/ember-force-ui",
+    "preview-server/dist",
+    "public/preview"
+  ]
 }

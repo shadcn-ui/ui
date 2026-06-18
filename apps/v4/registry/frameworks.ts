@@ -33,7 +33,7 @@ export function getFrameworkForBase(base: string): Framework {
   if (REACT_BASES.has(base)) {
     return FRAMEWORKS[0]
   }
-  const fw = FRAMEWORKS.find((f) => f.bases.includes(base))
+  const fw = FRAMEWORKS.find((f) => (f.bases as readonly string[]).includes(base))
   return fw ?? FRAMEWORKS[0]
 }
 
