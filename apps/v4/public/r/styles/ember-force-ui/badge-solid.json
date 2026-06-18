@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-solid",
+  "title": "Badge Solid",
+  "dependencies": [],
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/badge-solid.gts",
+      "content": "import { Badge } from '@/ui/badge';\n\n<template>\n  <div class=\"flex flex-wrap gap-2\">\n    <Badge @variant=\"success-solid\">Success</Badge>\n    <Badge @variant=\"warning-solid\">Warning</Badge>\n    <Badge @variant=\"info-solid\">Info</Badge>\n    <Badge @variant=\"error-solid\">Error</Badge>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

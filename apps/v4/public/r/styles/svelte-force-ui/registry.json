@@ -2390,6 +2390,30 @@
       "type": "registry:example"
     },
     {
+      "name": "badge-solid",
+      "title": "Badge Solid",
+      "registryDependencies": ["badge"],
+      "files": [
+        {
+          "path": "registry/svelte-force-ui/examples/badge-solid.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "badge-status",
+      "title": "Badge Status",
+      "registryDependencies": ["badge"],
+      "files": [
+        {
+          "path": "registry/svelte-force-ui/examples/badge-status.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "breadcrumb-demo",
       "title": "Breadcrumb Demo",
       "registryDependencies": ["breadcrumb", "dropdown-menu"],
@@ -3826,6 +3850,18 @@
       "type": "registry:example"
     },
     {
+      "name": "input-group-variants",
+      "title": "Input Group Variants",
+      "registryDependencies": ["input-group"],
+      "files": [
+        {
+          "path": "registry/svelte-force-ui/examples/input-group-variants.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "input-invalid",
       "title": "Input Invalid",
       "registryDependencies": ["input"],
@@ -3942,6 +3978,18 @@
       "files": [
         {
           "path": "registry/svelte-force-ui/examples/input-with-text.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-variants",
+      "title": "Input Variants",
+      "registryDependencies": ["input"],
+      "files": [
+        {
+          "path": "registry/svelte-force-ui/examples/input-variants.svelte",
           "type": "registry:example"
         }
       ],
@@ -4553,6 +4601,18 @@
       "type": "registry:example"
     },
     {
+      "name": "spinner-colors",
+      "title": "Spinner Colors",
+      "registryDependencies": ["spinner"],
+      "files": [
+        {
+          "path": "registry/svelte-force-ui/examples/spinner-colors.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "spinner-custom-demo",
       "title": "Spinner Custom Demo",
       "registryDependencies": ["utils"],
@@ -4619,6 +4679,18 @@
       "files": [
         {
           "path": "registry/svelte-force-ui/examples/spinner-size-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-sizes",
+      "title": "Spinner Sizes",
+      "registryDependencies": ["spinner"],
+      "files": [
+        {
+          "path": "registry/svelte-force-ui/examples/spinner-sizes.svelte",
           "type": "registry:example"
         }
       ],
@@ -4705,6 +4777,18 @@
       "files": [
         {
           "path": "registry/svelte-force-ui/examples/textarea-form.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-variants",
+      "title": "Textarea Variants",
+      "registryDependencies": ["textarea"],
+      "files": [
+        {
+          "path": "registry/svelte-force-ui/examples/textarea-variants.svelte",
           "type": "registry:example"
         }
       ],

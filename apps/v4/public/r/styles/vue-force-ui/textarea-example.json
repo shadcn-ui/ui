@@ -16,6 +16,11 @@
       "path": "registry/vue-force-ui/examples/textarea/TextareaDisabled.vue",
       "content": "<script setup lang=\"ts\">\nimport { Textarea } from \"@/ui/textarea\"\n</script>\n\n<template>\n  <Textarea disabled placeholder=\"Type your message here.\" />\n</template>\n",
       "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/textarea/TextareaVariants.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Textarea } from \"@/ui/textarea\"\n</script>\n\n<template>\n  <div class=\"flex w-full flex-col gap-4\">\n    <Textarea variant=\"outline\" placeholder=\"Outline\" />\n    <Textarea variant=\"filled\" placeholder=\"Filled\" />\n    <Textarea variant=\"underline\" placeholder=\"Underline\" />\n    <Textarea variant=\"ghost\" placeholder=\"Ghost\" />\n  </div>\n</template>\n",
+      "type": "registry:example"
     }
   ],
   "type": "registry:example"

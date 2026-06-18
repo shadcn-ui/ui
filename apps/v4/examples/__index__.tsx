@@ -161,9 +161,17 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "badge-rtl",
       filePath: "examples/radix/badge-rtl.tsx",
     },
+    "badge-solid": {
+      name: "badge-solid",
+      filePath: "examples/radix/badge-solid.tsx",
+    },
     "badge-spinner": {
       name: "badge-spinner",
       filePath: "examples/radix/badge-spinner.tsx",
+    },
+    "badge-status": {
+      name: "badge-status",
+      filePath: "examples/radix/badge-status.tsx",
     },
     "badge-variants": {
       name: "badge-variants",
@@ -969,6 +977,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "input-group-tooltip",
       filePath: "examples/radix/input-group-tooltip.tsx",
     },
+    "input-group-variants": {
+      name: "input-group-variants",
+      filePath: "examples/radix/input-group-variants.tsx",
+    },
     "input-group-with-addons": {
       name: "input-group-with-addons",
       filePath: "examples/radix/input-group-with-addons.tsx",
@@ -1044,6 +1056,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "input-rtl": {
       name: "input-rtl",
       filePath: "examples/radix/input-rtl.tsx",
+    },
+    "input-variants": {
+      name: "input-variants",
+      filePath: "examples/radix/input-variants.tsx",
     },
     "item-avatar": {
       name: "item-avatar",
@@ -1493,6 +1509,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "spinner-button",
       filePath: "examples/radix/spinner-button.tsx",
     },
+    "spinner-colors": {
+      name: "spinner-colors",
+      filePath: "examples/radix/spinner-colors.tsx",
+    },
     "spinner-custom": {
       name: "spinner-custom",
       filePath: "examples/radix/spinner-custom.tsx",
@@ -1516,6 +1536,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "spinner-size": {
       name: "spinner-size",
       filePath: "examples/radix/spinner-size.tsx",
+    },
+    "spinner-sizes": {
+      name: "spinner-sizes",
+      filePath: "examples/radix/spinner-sizes.tsx",
     },
     "switch-choice-card": {
       name: "switch-choice-card",
@@ -1608,6 +1632,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "textarea-rtl": {
       name: "textarea-rtl",
       filePath: "examples/radix/textarea-rtl.tsx",
+    },
+    "textarea-variants": {
+      name: "textarea-variants",
+      filePath: "examples/radix/textarea-variants.tsx",
     },
     "toggle-demo": {
       name: "toggle-demo",
@@ -1903,9 +1931,17 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "badge-rtl",
       filePath: "examples/base/badge-rtl.tsx",
     },
+    "badge-solid": {
+      name: "badge-solid",
+      filePath: "examples/base/badge-solid.tsx",
+    },
     "badge-spinner": {
       name: "badge-spinner",
       filePath: "examples/base/badge-spinner.tsx",
+    },
+    "badge-status": {
+      name: "badge-status",
+      filePath: "examples/base/badge-status.tsx",
     },
     "badge-variants": {
       name: "badge-variants",
@@ -2711,6 +2747,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "input-group-tooltip",
       filePath: "examples/base/input-group-tooltip.tsx",
     },
+    "input-group-variants": {
+      name: "input-group-variants",
+      filePath: "examples/base/input-group-variants.tsx",
+    },
     "input-group-with-addons": {
       name: "input-group-with-addons",
       filePath: "examples/base/input-group-with-addons.tsx",
@@ -2786,6 +2826,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "input-rtl": {
       name: "input-rtl",
       filePath: "examples/base/input-rtl.tsx",
+    },
+    "input-variants": {
+      name: "input-variants",
+      filePath: "examples/base/input-variants.tsx",
     },
     "item-avatar": {
       name: "item-avatar",
@@ -3235,6 +3279,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "spinner-button",
       filePath: "examples/base/spinner-button.tsx",
     },
+    "spinner-colors": {
+      name: "spinner-colors",
+      filePath: "examples/base/spinner-colors.tsx",
+    },
     "spinner-custom": {
       name: "spinner-custom",
       filePath: "examples/base/spinner-custom.tsx",
@@ -3258,6 +3306,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "spinner-size": {
       name: "spinner-size",
       filePath: "examples/base/spinner-size.tsx",
+    },
+    "spinner-sizes": {
+      name: "spinner-sizes",
+      filePath: "examples/base/spinner-sizes.tsx",
     },
     "switch-choice-card": {
       name: "switch-choice-card",
@@ -3350,6 +3402,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "textarea-rtl": {
       name: "textarea-rtl",
       filePath: "examples/base/textarea-rtl.tsx",
+    },
+    "textarea-variants": {
+      name: "textarea-variants",
+      filePath: "examples/base/textarea-variants.tsx",
     },
     "toggle-demo": {
       name: "toggle-demo",

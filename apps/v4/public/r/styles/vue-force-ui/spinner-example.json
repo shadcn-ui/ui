@@ -64,6 +64,16 @@
       "path": "registry/vue-force-ui/examples/spinner/SpinnerSizeDemo.vue",
       "content": "<script setup lang=\"ts\">\nimport { Spinner } from \"@/ui/spinner\"\n</script>\n\n<template>\n  <div class=\"flex items-center gap-6\">\n    <Spinner class=\"size-3\" />\n    <Spinner class=\"size-4\" />\n    <Spinner class=\"size-6\" />\n    <Spinner class=\"size-8\" />\n  </div>\n</template>\n",
       "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/spinner/SpinnerColors.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Spinner } from \"@/ui/spinner\"\n</script>\n\n<template>\n  <div class=\"flex items-center gap-6\">\n    <Spinner color=\"default\" />\n    <Spinner color=\"primary\" />\n    <Spinner color=\"inherit\" />\n    <div class=\"rounded-md bg-primary p-2\">\n      <Spinner color=\"onPrimary\" />\n    </div>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/spinner/SpinnerSizes.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Spinner } from \"@/ui/spinner\"\n</script>\n\n<template>\n  <div class=\"flex items-center gap-6\">\n    <Spinner size=\"xs\" />\n    <Spinner size=\"sm\" />\n    <Spinner size=\"md\" />\n    <Spinner size=\"lg\" />\n  </div>\n</template>\n",
+      "type": "registry:example"
     }
   ],
   "type": "registry:example"

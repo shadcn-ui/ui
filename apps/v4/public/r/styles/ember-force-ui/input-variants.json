@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-variants",
+  "title": "Input Variants",
+  "dependencies": [],
+  "registryDependencies": [
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/input-variants.gts",
+      "content": "import { Input } from '@/ui/input';\n\n<template>\n  <div class=\"flex w-full flex-col gap-4\">\n    <Input @variant=\"outline\" placeholder=\"Outline\" />\n    <Input @variant=\"filled\" placeholder=\"Filled\" />\n    <Input @variant=\"underline\" placeholder=\"Underline\" />\n    <Input @variant=\"ghost\" placeholder=\"Ghost\" />\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

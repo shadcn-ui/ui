@@ -10081,6 +10081,16 @@ export const Index: Record<string, Record<string, any>> = {
           type: "registry:example",
           target: "",
         },
+        {
+          path: "registry/bases/vue/examples/badge/BadgeStatus.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/examples/badge/BadgeSolid.vue",
+          type: "registry:example",
+          target: "",
+        },
       ],
       categories: undefined,
       meta: undefined,
@@ -10825,6 +10835,11 @@ export const Index: Record<string, Record<string, any>> = {
           type: "registry:example",
           target: "",
         },
+        {
+          path: "registry/bases/vue/examples/input/InputVariants.vue",
+          type: "registry:example",
+          target: "",
+        },
       ],
       categories: undefined,
       meta: undefined,
@@ -10897,6 +10912,11 @@ export const Index: Record<string, Record<string, any>> = {
         },
         {
           path: "registry/bases/vue/examples/input-group/InputGroupWithTooltip.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/examples/input-group/InputGroupVariants.vue",
           type: "registry:example",
           target: "",
         },
@@ -11487,6 +11507,16 @@ export const Index: Record<string, Record<string, any>> = {
           type: "registry:example",
           target: "",
         },
+        {
+          path: "registry/bases/vue/examples/spinner/SpinnerColors.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/examples/spinner/SpinnerSizes.vue",
+          type: "registry:example",
+          target: "",
+        },
       ],
       categories: undefined,
       meta: undefined,
@@ -11672,6 +11702,11 @@ export const Index: Record<string, Record<string, any>> = {
         },
         {
           path: "registry/bases/vue/examples/textarea/TextareaDisabled.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/examples/textarea/TextareaVariants.vue",
           type: "registry:example",
           target: "",
         },
@@ -14847,6 +14882,38 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "badge-solid": {
+      name: "badge-solid",
+      title: "Badge Solid",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["badge"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/badge-solid.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "badge-status": {
+      name: "badge-status",
+      title: "Badge Status",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["badge"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/badge-status.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     "breadcrumb-demo": {
       name: "breadcrumb-demo",
       title: "Breadcrumb Demo",
@@ -16714,6 +16781,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "input-group-variants": {
+      name: "input-group-variants",
+      title: "Input Group Variants",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-group-variants.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     "input-invalid": {
       name: "input-invalid",
       title: "Input Invalid",
@@ -16867,6 +16950,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/svelte/examples/input-with-text.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-variants": {
+      name: "input-variants",
+      title: "Input Variants",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-variants.svelte",
           type: "registry:example",
           target: "",
         },
@@ -17674,6 +17773,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "spinner-colors": {
+      name: "spinner-colors",
+      title: "Spinner Colors",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["spinner"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/spinner-colors.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     "spinner-custom-demo": {
       name: "spinner-custom-demo",
       title: "Spinner Custom Demo",
@@ -17763,6 +17878,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/svelte/examples/spinner-size-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "spinner-sizes": {
+      name: "spinner-sizes",
+      title: "Spinner Sizes",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["spinner"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/spinner-sizes.svelte",
           type: "registry:example",
           target: "",
         },
@@ -17875,6 +18006,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/svelte/examples/textarea-form.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "textarea-variants": {
+      name: "textarea-variants",
+      title: "Textarea Variants",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["textarea"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/textarea-variants.svelte",
           type: "registry:example",
           target: "",
         },
@@ -19583,6 +19730,38 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "badge-solid": {
+      name: "badge-solid",
+      title: "Badge Solid",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["badge"],
+      files: [
+        {
+          path: "registry/bases/ember/examples/badge-solid.gts",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "badge-status": {
+      name: "badge-status",
+      title: "Badge Status",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["badge"],
+      files: [
+        {
+          path: "registry/bases/ember/examples/badge-status.gts",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     "breadcrumb-demo": {
       name: "breadcrumb-demo",
       title: "Breadcrumb Demo",
@@ -20910,6 +21089,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "input-group-variants": {
+      name: "input-group-variants",
+      title: "Input Group Variants",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "registry/bases/ember/examples/input-group-variants.gts",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     "input-otp-controlled": {
       name: "input-otp-controlled",
       title: "Input Otp Controlled",
@@ -20983,6 +21178,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/ember/examples/input-otp-separator.gts",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-variants": {
+      name: "input-variants",
+      title: "Input Variants",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input"],
+      files: [
+        {
+          path: "registry/bases/ember/examples/input-variants.gts",
           type: "registry:example",
           target: "",
         },
@@ -21896,6 +22107,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "spinner-colors": {
+      name: "spinner-colors",
+      title: "Spinner Colors",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["spinner"],
+      files: [
+        {
+          path: "registry/bases/ember/examples/spinner-colors.gts",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     "spinner-custom": {
       name: "spinner-custom",
       title: "Spinner Custom",
@@ -21992,6 +22219,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "spinner-sizes": {
+      name: "spinner-sizes",
+      title: "Spinner Sizes",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["spinner"],
+      files: [
+        {
+          path: "registry/bases/ember/examples/spinner-sizes.gts",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     "switch-demo": {
       name: "switch-demo",
       title: "Switch Demo",
@@ -22065,6 +22308,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/ember/examples/textarea-disabled.gts",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "textarea-variants": {
+      name: "textarea-variants",
+      title: "Textarea Variants",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["textarea"],
+      files: [
+        {
+          path: "registry/bases/ember/examples/textarea-variants.gts",
           type: "registry:example",
           target: "",
         },
