@@ -16,8 +16,9 @@ export async function updateDependencies(
     silent?: boolean
   }
 ) {
-  dependencies = Array.from(new Set(dependencies))
-  devDependencies = Array.from(new Set(devDependencies))
+  const packageInfo = getPackageInfo(config.resolvedPaths.cwd, false)
+  dependencies = normalizeDependencyRequests(dependencies, packageInfo)
+  devDependencies = normalizeDependencyRequests(devDependencies, packageInfo)
 
   if (!dependencies?.length && !devDependencies?.length) {
     return
@@ -72,6 +73,72 @@ export async function updateDependencies(
   )
 
   dependenciesSpinner?.succeed()
+}
+
+function normalizeDependencyRequests(
+  dependencies: RegistryItem["dependencies"] = [],
+  packageInfo: ReturnType<typeof getPackageInfo>
+) {
+  const installedDependencies = new Set([
+    ...Object.keys(packageInfo?.dependencies ?? {}),
+    ...Object.keys(packageInfo?.devDependencies ?? {}),
+    ...Object.keys(packageInfo?.optionalDependencies ?? {}),
+    ...Object.keys(packageInfo?.peerDependencies ?? {}),
+  ])
+  const installRequests = new Map<
+    string,
+    { dependency: string; hasSpecifier: boolean }
+  >()
+
+  for (const dependency of dependencies) {
+    const packageRequest = parsePackageRequest(dependency)
+
+    if (!packageRequest) {
+      installRequests.set(dependency, {
+        dependency,
+        hasSpecifier: true,
+      })
+      continue
+    }
+
+    if (
+      !packageRequest.hasSpecifier &&
+      installedDependencies.has(packageRequest.name)
+    ) {
+      continue
+    }
+
+    const existing = installRequests.get(packageRequest.name)
+    if (!existing || (!existing.hasSpecifier && packageRequest.hasSpecifier)) {
+      installRequests.set(packageRequest.name, {
+        dependency,
+        hasSpecifier: packageRequest.hasSpecifier,
+      })
+    }
+  }
+
+  return Array.from(installRequests.values()).map(
+    ({ dependency }) => dependency
+  )
+}
+
+function parsePackageRequest(dependency: string) {
+  if (/^[a-z][a-z0-9+.-]*:/i.test(dependency)) {
+    return null
+  }
+
+  const match = dependency.startsWith("@")
+    ? dependency.match(/^(@[^/]+\/[^@/]+)(@.+)?$/)
+    : dependency.match(/^([^@/]+)(@.+)?$/)
+
+  if (!match) {
+    return null
+  }
+
+  return {
+    name: match[1],
+    hasSpecifier: Boolean(match[2]),
+  }
 }
 
 function shouldPromptForNpmFlag(config: Config) {
