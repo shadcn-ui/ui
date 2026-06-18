@@ -46,3 +46,4 @@ tsconfig.tsbuildinfo
 .playwright-cli
 shadcn-workspace
 .codex-artifacts
+.claude/worktrees/
