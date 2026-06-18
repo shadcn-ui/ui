@@ -154,4 +154,76 @@ describe("updateDependencies", () => {
       )
     }
   )
+
+  test("skips bare dependencies already declared in package.json (#10525)", async () => {
+    const cwd = path.resolve(
+      __dirname,
+      "../../fixtures/project-pnpm-existing-deps"
+    )
+
+    await updateDependencies(
+      // @base-ui/react, class-variance-authority and recharts are already
+      // declared in the fixture; only react-is and the explicit recharts@3.8.0
+      // spec should reach the package manager.
+      [
+        "@base-ui/react",
+        "class-variance-authority",
+        "react-is",
+        "recharts@3.8.0",
+      ],
+      ["@tailwindcss/postcss", "typescript"],
+      { resolvedPaths: { cwd } } as any,
+      { silent: true }
+    )
+
+    expect(execa).toHaveBeenCalledTimes(2)
+    expect(execa).toHaveBeenCalledWith(
+      "pnpm",
+      ["add", "react-is", "recharts@3.8.0"],
+      { cwd }
+    )
+    expect(execa).toHaveBeenCalledWith("pnpm", ["add", "-D", "typescript"], {
+      cwd,
+    })
+  })
+
+  test("prefers explicit specs over duplicate bare requests", async () => {
+    const cwd = path.resolve(__dirname, "../../fixtures/project-pnpm")
+
+    await updateDependencies(
+      ["recharts", "recharts@3.8.0", "@base-ui/react", "@base-ui/react@1.4.1"],
+      [],
+      { resolvedPaths: { cwd } } as any,
+      { silent: true }
+    )
+
+    expect(execa).toHaveBeenCalledTimes(1)
+    expect(execa).toHaveBeenCalledWith(
+      "pnpm",
+      ["add", "recharts@3.8.0", "@base-ui/react@1.4.1"],
+      { cwd }
+    )
+  })
+
+  test("does not skip already declared deps for expo projects", async () => {
+    const cwd = path.resolve(
+      __dirname,
+      "../../fixtures/project-expo-existing-deps"
+    )
+
+    // recharts is already declared, but `expo install` must still see it so it
+    // can align the version with the installed SDK. Duplicates are still deduped.
+    await updateDependencies(
+      ["recharts", "recharts", "react-is"],
+      [],
+      { resolvedPaths: { cwd } } as any,
+      { silent: true }
+    )
+
+    expect(execa).toHaveBeenCalledWith(
+      "npx",
+      ["expo", "install", "recharts", "react-is"],
+      { cwd }
+    )
+  })
 })
