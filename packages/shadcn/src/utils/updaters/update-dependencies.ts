@@ -19,6 +19,10 @@ export async function updateDependencies(
   dependencies = Array.from(new Set(dependencies))
   devDependencies = Array.from(new Set(devDependencies))
 
+  const packageInfo = getPackageInfo(config.resolvedPaths.cwd, false)
+  dependencies = filterMissingDependencies(dependencies, packageInfo)
+  devDependencies = filterMissingDependencies(devDependencies, packageInfo)
+
   if (!dependencies?.length && !devDependencies?.length) {
     return
   }
@@ -72,6 +76,45 @@ export async function updateDependencies(
   )
 
   dependenciesSpinner?.succeed()
+}
+
+function filterMissingDependencies(
+  dependencies: string[],
+  packageInfo: ReturnType<typeof getPackageInfo>
+) {
+  const existingDependencies = new Set([
+    ...Object.keys(packageInfo?.dependencies ?? {}),
+    ...Object.keys(packageInfo?.devDependencies ?? {}),
+    ...Object.keys(packageInfo?.optionalDependencies ?? {}),
+    ...Object.keys(packageInfo?.peerDependencies ?? {}),
+  ])
+
+  return dependencies.filter(
+    (dependency) =>
+      hasExplicitDependencySpecifier(dependency) ||
+      !existingDependencies.has(getDependencyName(dependency))
+  )
+}
+
+function hasExplicitDependencySpecifier(dependency: string) {
+  if (dependency.startsWith("npm:")) {
+    return hasExplicitDependencySpecifier(dependency.slice(4))
+  }
+
+  const packageName = getDependencyName(dependency)
+  return dependency.charAt(packageName.length) === "@"
+}
+
+function getDependencyName(dependency: string) {
+  if (dependency.startsWith("npm:")) {
+    return getDependencyName(dependency.slice(4))
+  }
+
+  if (dependency.startsWith("@")) {
+    return dependency.match(/^(@[^/]+\/[^@/]+)/)?.[1] ?? dependency
+  }
+
+  return dependency.split("@")[0].split("/")[0]
 }
 
 function shouldPromptForNpmFlag(config: Config) {

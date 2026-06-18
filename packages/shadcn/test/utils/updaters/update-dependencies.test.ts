@@ -154,4 +154,33 @@ describe("updateDependencies", () => {
       )
     }
   )
+
+  test("skips unversioned dependencies already declared in package.json", async () => {
+    const cwd = path.resolve(
+      __dirname,
+      "../../fixtures/project-pnpm-existing-deps"
+    )
+
+    await updateDependencies(
+      [
+        "@base-ui/react",
+        "class-variance-authority",
+        "react-is",
+        "recharts@3.8.0",
+      ],
+      ["@tailwindcss/postcss", "typescript"],
+      { resolvedPaths: { cwd } },
+      { silent: true }
+    )
+
+    expect(execa).toHaveBeenCalledTimes(2)
+    expect(execa).toHaveBeenCalledWith(
+      "pnpm",
+      ["add", "react-is", "recharts@3.8.0"],
+      { cwd }
+    )
+    expect(execa).toHaveBeenCalledWith("pnpm", ["add", "-D", "typescript"], {
+      cwd,
+    })
+  })
 })
