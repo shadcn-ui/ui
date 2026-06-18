@@ -746,8 +746,18 @@
 
   /* MARK: Kbd */
   .cn-kbd {
-    @apply bg-muted text-muted-foreground in-data-[slot=tooltip-content]:bg-background/20 in-data-[slot=tooltip-content]:text-background dark:in-data-[slot=tooltip-content]:bg-background/10 h-5 w-fit min-w-5 gap-1 rounded-sm px-1 font-sans text-xs font-medium [&_svg:not([class*='size-'])]:size-3;
+    @apply in-data-[slot=tooltip-content]:bg-background/20 in-data-[slot=tooltip-content]:text-background dark:in-data-[slot=tooltip-content]:bg-background/10 h-5 w-fit min-w-5 gap-1 rounded-sm px-1 font-sans text-xs font-medium [&_svg:not([class*='size-'])]:size-3;
   }
+
+  /* [FORCE-UI-START] */
+  .cn-kbd-variant-default {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  .cn-kbd-variant-primary {
+    @apply bg-background/20 text-background dark:bg-background/10;
+  }
+  /* [FORCE-UI-END] */
 
   .cn-kbd-group {
     @apply gap-1;
