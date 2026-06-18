@@ -6,7 +6,11 @@ module.exports = {
   tabWidth: 2,
   trailingComma: "es5",
   printWidth: 80,
-  overrides: [{ files: "*.svelte", options: { parser: "svelte" } }],
+  overrides: [
+    { files: "*.svelte", options: { parser: "svelte" } },
+    // MDX files: disable tailwindcss plugin — it mangles {/* */} JSX comments into {/\* */}
+    { files: "*.mdx", options: { plugins: ["@ianvs/prettier-plugin-sort-imports"] } },
+  ],
   importOrder: [
     "^(react/(.*)$)|^(react$)",
     "^(next/(.*)$)|^(next$)",
