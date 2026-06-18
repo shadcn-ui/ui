@@ -1314,8 +1314,26 @@
 
   /* MARK: Textarea */
   .cn-textarea {
-    @apply border-input dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 rounded-lg border bg-transparent px-2.5 py-2 text-base transition-colors focus-visible:ring-3 aria-invalid:ring-3 md:text-sm;
+    @apply dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 rounded-lg border px-2.5 py-2 text-base transition-colors focus-visible:ring-3 aria-invalid:ring-3 md:text-sm [&[readonly]]:bg-muted [&[readonly]]:border-border;
   }
+
+  /* [FORCE-UI-START] */
+  .cn-textarea-variant-outline {
+    @apply border-border bg-transparent hover:border-input;
+  }
+
+  .cn-textarea-variant-filled {
+    @apply border-border bg-muted hover:border-input dark:bg-muted;
+  }
+
+  .cn-textarea-variant-underline {
+    @apply rounded-none border-0 border-b border-input bg-transparent px-0;
+  }
+
+  .cn-textarea-variant-ghost {
+    @apply border-transparent bg-transparent hover:bg-muted/50;
+  }
+  /* [FORCE-UI-END] */
 
   /* MARK: Toggle */
   .cn-toggle {

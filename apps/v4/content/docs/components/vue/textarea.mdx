@@ -43,10 +43,19 @@ npx shadcn@latest add @force-ui-vue/textarea
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import { Textarea } from '@/components/ui/textarea'
+import { Textarea } from "@/components/ui/textarea"
 </script>
 
 <template>
   <Textarea placeholder="Type your message here." />
 </template>
 ```
+
+## API Reference
+
+### Textarea
+
+| Prop      | Type                                              | Default     |
+| --------- | ------------------------------------------------- | ----------- |
+| `variant` | `"outline" \| "filled" \| "underline" \| "ghost"` | `"outline"` |
+| `class`   | `string`                                          | -           |
