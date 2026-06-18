@@ -54,7 +54,7 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from '@/components/ui/field'
+} from "@/components/ui/field"
 </script>
 
 <template>
@@ -63,24 +63,20 @@ import {
     <FieldDescription>This appears on invoices and emails.</FieldDescription>
     <FieldGroup>
       <Field>
-        <FieldLabel for="name">
-          Full name
-        </FieldLabel>
+        <FieldLabel for="name"> Full name </FieldLabel>
         <Input id="name" autocomplete="off" placeholder="Evil Rabbit" />
-        <FieldDescription>This appears on invoices and emails.</FieldDescription>
+        <FieldDescription
+          >This appears on invoices and emails.</FieldDescription
+        >
       </Field>
       <Field>
-        <FieldLabel for="username">
-          Username
-        </FieldLabel>
+        <FieldLabel for="username"> Username </FieldLabel>
         <Input id="username" autocomplete="off" aria-invalid />
         <FieldError>Choose another username.</FieldError>
       </Field>
       <Field orientation="horizontal">
         <Switch id="newsletter" />
-        <FieldLabel for="newsletter">
-          Subscribe to the newsletter
-        </FieldLabel>
+        <FieldLabel for="newsletter"> Subscribe to the newsletter </FieldLabel>
       </Field>
     </FieldGroup>
   </FieldSet>
@@ -94,9 +90,7 @@ The `Field` family is designed for composing accessible forms. A typical field i
 ```vue showLineNumbers
 <template>
   <Field>
-    <FieldLabel for="input-id">
-      Label
-    </FieldLabel>
+    <FieldLabel for="input-id"> Label </FieldLabel>
     <!-- Input, Select, Switch, etc. -->
     <FieldDescription>Optional helper text.</FieldDescription>
     <FieldError>Validation message.</FieldError>
@@ -173,9 +167,7 @@ If you are in tailwindcss v3 you need to install [`@tailwindcss/container-querie
 ```vue showLineNumbers /data-invalid/ /aria-invalid/
 <template>
   <Field data-invalid>
-    <FieldLabel for="email">
-      Email
-    </FieldLabel>
+    <FieldLabel for="email"> Email </FieldLabel>
     <Input id="email" type="email" aria-invalid />
     <FieldError>Enter a valid email address.</FieldError>
   </Field>
@@ -184,9 +176,9 @@ If you are in tailwindcss v3 you need to install [`@tailwindcss/container-querie
 
 ## Accessibility
 
-  - `FieldSet` and `FieldLegend` keep related controls grouped for keyboard and assistive tech users.
-  - `Field` outputs `role="group"` so nested controls inherit labeling from `FieldLabel` and `FieldLegend` when combined.
-  - Apply `FieldSeparator` sparingly to ensure screen readers encounter clear section boundaries.
+- `FieldSet` and `FieldLegend` keep related controls grouped for keyboard and assistive tech users.
+- `Field` outputs `role="group"` so nested controls inherit labeling from `FieldLabel` and `FieldLegend` when combined.
+- Apply `FieldSeparator` sparingly to ensure screen readers encounter clear section boundaries.
 
 ## API Reference
 
@@ -194,8 +186,8 @@ If you are in tailwindcss v3 you need to install [`@tailwindcss/container-querie
 
 Container that renders a semantic `fieldset` with spacing presets.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
 | `class` | `string` |         |
 
 ```vue
@@ -213,10 +205,10 @@ Container that renders a semantic `fieldset` with spacing presets.
 
 Legend element for a `FieldSet`. Switch to the `label` variant to align with label sizing.
 
-| Prop        | Type                  | Default    |
-| ----------- | --------------------- | ---------- |
-| `variant`   | `"legend" \| "label"` | `"legend"` |
-| `class` | `string`              |            |
+| Prop      | Type                  | Default    |
+| --------- | --------------------- | ---------- |
+| `variant` | `"legend" \| "label"` | `"legend"` |
+| `class`   | `string`              |            |
 
 ```vue
 <FieldLegend variant="label">
@@ -230,8 +222,8 @@ The `FieldLegend` has two variants: `legend` and `label`. The `label` variant ap
 
 Layout wrapper that stacks `Field` components and enables container queries for responsive orientations.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
 | `class` | `string` |         |
 
 ```vue
@@ -250,7 +242,7 @@ The core wrapper for a single field. Provides orientation control, invalid state
 | Prop           | Type                                         | Default      |
 | -------------- | -------------------------------------------- | ------------ |
 | `orientation`  | `"vertical" \| "horizontal" \| "responsive"` | `"vertical"` |
-| `class`    | `string`                                     |              |
+| `class`        | `string`                                     |              |
 | `data-invalid` | `boolean`                                    |              |
 
 ```vue
@@ -264,8 +256,8 @@ The core wrapper for a single field. Provides orientation control, invalid state
 
 Flex column that groups control and descriptions when the label sits beside the control. Not required if you have no description.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
 | `class` | `string` |         |
 
 ```vue
@@ -282,10 +274,10 @@ Flex column that groups control and descriptions when the label sits beside the 
 
 Label styled for both direct inputs and nested `Field` children.
 
-| Prop        | Type      | Default |
-| ----------- | --------- | ------- |
-| `class` | `string`  |         |
-| `asChild`   | `boolean` | `false` |
+| Prop      | Type      | Default |
+| --------- | --------- | ------- |
+| `class`   | `string`  |         |
+| `asChild` | `boolean` | `false` |
 
 ```vue
 <FieldLabel for="email">
@@ -297,8 +289,8 @@ Email
 
 Renders a title with label styling inside `FieldContent`.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
 | `class` | `string` |         |
 
 ```vue
@@ -312,8 +304,8 @@ Renders a title with label styling inside `FieldContent`.
 
 Helper text slot that automatically balances long lines in horizontal layouts.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
 | `class` | `string` |         |
 
 ```vue
@@ -326,8 +318,8 @@ We never share your email with anyone.
 
 Visual divider to separate sections inside a `FieldGroup`. Accepts optional inline content.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
 | `class` | `string` |         |
 
 ```vue
@@ -340,10 +332,10 @@ Or continue with
 
 Accessible error container that accepts children or an `errors` array (e.g., from `vee-validate`).
 
-| Prop        | Type                                       | Default |
-| ----------- | ------------------------------------------ | ------- |
-| `errors`    | `Array<{ message?: string } \| undefined>` |         |
-| `class` | `string`                                   |         |
+| Prop     | Type                                       | Default |
+| -------- | ------------------------------------------ | ------- |
+| `errors` | `Array<{ message?: string } \| undefined>` |         |
+| `class`  | `string`                                   |         |
 
 ```vue
 <FieldError :errors="errors.username" />

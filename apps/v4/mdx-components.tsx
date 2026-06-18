@@ -14,8 +14,8 @@ import { ComponentSource } from "@/components/component-source"
 import { ComponentsList } from "@/components/components-list"
 import { CopyButton } from "@/components/copy-button"
 import { DirectoryList } from "@/components/directory-list"
-import { RegistryConfigBlock } from "@/components/registry-config-block"
 import { getIconForLanguageExtension } from "@/components/icons"
+import { RegistryConfigBlock } from "@/components/registry-config-block"
 import {
   Accordion,
   AccordionContent,

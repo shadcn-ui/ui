@@ -136,10 +136,10 @@ export function UIElements() {
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button variant="outline">
-                <span className="hidden md:flex style-sera:md:hidden">
+                <span className="style-sera:md:hidden hidden md:flex">
                   Alert Dialog
                 </span>
-                <span className="flex md:hidden style-sera:md:flex">
+                <span className="style-sera:md:flex flex md:hidden">
                   Dialog
                 </span>
               </Button>
@@ -161,7 +161,7 @@ export function UIElements() {
           <ButtonGroup>
             <Button variant="outline">
               <span className="style-sera:hidden">Button Group</span>
-              <span className="hidden style-sera:block">Group</span>
+              <span className="style-sera:block hidden">Group</span>
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

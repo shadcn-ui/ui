@@ -54,7 +54,7 @@ function TooltipSides() {
             <TooltipTrigger asChild>
               <Button
                 variant="outline"
-                className="w-fit capitalize style-sera:uppercase"
+                className="style-sera:uppercase w-fit capitalize"
               >
                 {side}
               </Button>

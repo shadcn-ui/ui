@@ -48,7 +48,7 @@ import {
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from '@/components/ui/input-otp'
+} from "@/components/ui/input-otp"
 </script>
 
 <template>
@@ -78,15 +78,13 @@ Use the `pattern` prop to define a custom pattern for the OTP input.
 
 ```vue showLineNumbers {2,9}
 <script setup lang="ts">
-import { REGEXP_ONLY_DIGITS_AND_CHARS } from 'vue-input-otp'
+import { REGEXP_ONLY_DIGITS_AND_CHARS } from "vue-input-otp"
+
 // ...
 </script>
 
 <template>
-  <InputOTP
-    maxlength="6"
-    :pattern="REGEXP_ONLY_DIGITS_AND_CHARS"
-  >
+  <InputOTP maxlength="6" :pattern="REGEXP_ONLY_DIGITS_AND_CHARS">
     <InputOTPGroup>
       <InputOTPSlot :index="0" />
       <!-- ... -->
@@ -96,6 +94,7 @@ import { REGEXP_ONLY_DIGITS_AND_CHARS } from 'vue-input-otp'
 ```
 
 ### Separator
+
 You can use the `<InputOTPSeparator />` component to add a separator between the input groups.
 
 <ComponentPreview framework="vue" name="input-otp-separator-demo" />
@@ -107,7 +106,8 @@ import {
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from '@/components/ui/input-otp'
+} from "@/components/ui/input-otp"
+
 // ...
 </script>
 
@@ -127,6 +127,7 @@ import {
 ```
 
 ### Controlled
+
 You can use the `v-model` directive to control the input value.
 
 <ComponentPreview framework="vue" name="input-otp-controlled-demo" />

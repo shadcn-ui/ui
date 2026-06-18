@@ -37,7 +37,7 @@ export function UpcomingPayments() {
             mode="single"
             selected={date}
             onSelect={setDate}
-            className="w-full [--cell-size:--spacing(8)] md:[--cell-size:--spacing(10)] style-sera:md:[--cell-size:--spacing(9)]"
+            className="style-sera:md:[--cell-size:--spacing(9)] w-full [--cell-size:--spacing(8)] md:[--cell-size:--spacing(10)]"
           />
         </Item>
         <ItemGroup className="w-full">

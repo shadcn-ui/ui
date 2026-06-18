@@ -148,7 +148,7 @@ function CardCustomSpacing() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-2 rounded-lg bg-muted/50 p-3 text-sm style-lyra:rounded-none style-sera:rounded-none">
+            <div className="style-lyra:rounded-none style-sera:rounded-none grid gap-2 rounded-lg bg-muted/50 p-3 text-sm">
               <div className="flex items-center justify-between gap-2">
                 <span className="text-muted-foreground">Checks passed</span>
                 <span className="font-medium">24 / 26</span>
@@ -209,7 +209,7 @@ function CardLogin() {
           <Button variant="outline" className="w-full">
             Login with Google
           </Button>
-          <div className="mt-4 text-center style-nova:mt-2">
+          <div className="style-nova:mt-2 mt-4 text-center">
             Don&apos;t have an account?{" "}
             <a href="#" className="underline underline-offset-4">
               Sign up

@@ -5,7 +5,11 @@ import {
   type Translations,
 } from "@/components/language-selector"
 import { Button } from "@/styles/base-force-ui/ui-rtl/button"
-import { Field, FieldGroup, FieldLabel } from "@/styles/base-force-ui/ui-rtl/field"
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+} from "@/styles/base-force-ui/ui-rtl/field"
 import { Input } from "@/styles/base-force-ui/ui-rtl/input"
 import {
   Sheet,

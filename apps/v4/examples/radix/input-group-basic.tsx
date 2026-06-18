@@ -1,6 +1,9 @@
 import { Field, FieldGroup, FieldLabel } from "@/styles/radix-force-ui/ui/field"
 import { Input } from "@/styles/radix-force-ui/ui/input"
-import { InputGroup, InputGroupInput } from "@/styles/radix-force-ui/ui/input-group"
+import {
+  InputGroup,
+  InputGroupInput,
+} from "@/styles/radix-force-ui/ui/input-group"
 
 export function InputGroupBasic() {
   return (

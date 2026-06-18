@@ -262,7 +262,7 @@ function AlertExample5() {
             Fill in the form below to create a new project.
           </CardDescription>
         </CardHeader>
-        <CardContent className="flex flex-col gap-4 style-sera:gap-8">
+        <CardContent className="style-sera:gap-8 flex flex-col gap-4">
           <Alert>
             <IconPlaceholder
               lucide="CircleAlertIcon"

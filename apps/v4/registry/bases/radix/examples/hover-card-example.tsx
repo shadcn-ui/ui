@@ -37,14 +37,14 @@ function HoverCardSides() {
             <HoverCardTrigger asChild>
               <Button
                 variant="outline"
-                className="capitalize style-sera:uppercase"
+                className="style-sera:uppercase capitalize"
               >
                 {side}
               </Button>
             </HoverCardTrigger>
             <HoverCardContent side={side} className="w-64">
-              <div className="flex flex-col style-vega:gap-2 style-nova:gap-1.5 style-lyra:gap-1 style-maia:gap-2 style-mira:gap-1 style-luma:gap-2 style-sera:gap-2">
-                <h4 className="font-medium style-sera:font-heading style-sera:font-semibold style-sera:tracking-wide">
+              <div className="style-vega:gap-2 style-nova:gap-1.5 style-lyra:gap-1 style-maia:gap-2 style-mira:gap-1 style-luma:gap-2 style-sera:gap-2 flex flex-col">
+                <h4 className="style-sera:font-heading style-sera:font-semibold style-sera:tracking-wide font-medium">
                   Hover Card
                 </h4>
                 <p className="style-sera:leading-relaxed">
@@ -80,8 +80,8 @@ function HoverCardInDialog() {
               </Button>
             </HoverCardTrigger>
             <HoverCardContent className="w-64">
-              <div className="flex flex-col style-vega:gap-2 style-nova:gap-1.5 style-lyra:gap-1 style-maia:gap-2 style-mira:gap-1 style-luma:gap-2 style-sera:gap-2">
-                <h4 className="font-medium style-sera:font-heading style-sera:font-semibold style-sera:tracking-wide">
+              <div className="style-vega:gap-2 style-nova:gap-1.5 style-lyra:gap-1 style-maia:gap-2 style-mira:gap-1 style-luma:gap-2 style-sera:gap-2 flex flex-col">
+                <h4 className="style-sera:font-heading style-sera:font-semibold style-sera:tracking-wide font-medium">
                   Hover Card
                 </h4>
                 <p className="style-sera:leading-relaxed">

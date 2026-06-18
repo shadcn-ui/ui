@@ -5,7 +5,10 @@ import {
   FieldLabel,
   FieldTitle,
 } from "@/styles/radix-force-ui/ui/field"
-import { RadioGroup, RadioGroupItem } from "@/styles/radix-force-ui/ui/radio-group"
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@/styles/radix-force-ui/ui/radio-group"
 
 export function RadioGroupChoiceCard() {
   return (

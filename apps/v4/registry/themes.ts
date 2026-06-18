@@ -1,6 +1,6 @@
-import { type RegistryItem } from "shadcn/schema"
 // [FORCE-UI] Brand theme — edit in packages/theme-force-ui/src/index.ts
 import { forceUITheme } from "@force-ui/theme"
+import { type RegistryItem } from "shadcn/schema"
 
 export const THEMES: RegistryItem[] = [
   forceUITheme,

@@ -116,7 +116,7 @@ function CollapsibleFileTree() {
               {fileItem.name}
             </Button>
           </CollapsibleTrigger>
-          <CollapsibleContent className="mt-1 ml-5 style-lyra:ml-4">
+          <CollapsibleContent className="style-lyra:ml-4 mt-1 ml-5">
             <div className="flex flex-col gap-1">
               {fileItem.items.map((child) => renderItem(child))}
             </div>

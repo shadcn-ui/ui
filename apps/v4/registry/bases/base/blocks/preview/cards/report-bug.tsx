@@ -100,7 +100,7 @@ export function ReportBug() {
       <CardFooter>
         <Field
           orientation="horizontal"
-          className="justify-end style-sera:justify-center"
+          className="style-sera:justify-center justify-end"
         >
           <Button variant="outline" className="style-sera:flex-1">
             Attach File

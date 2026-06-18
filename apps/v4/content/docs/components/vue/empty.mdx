@@ -43,8 +43,9 @@ npx shadcn@latest add @force-ui-vue/empty
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import { FolderOpen } from 'lucide-vue-next'
-import { Button } from '@/registry/default/ui/button'
+import { FolderOpen } from "lucide-vue-next"
+
+import { Button } from "@/registry/default/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -52,7 +53,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from '@/registry/default/ui/empty'
+} from "@/registry/default/ui/empty"
 </script>
 
 <template>
@@ -109,8 +110,8 @@ You can add an `InputGroup` component to the `EmptyContent` component.
 
 The main component of the empty state. Wraps the `EmptyHeader` and `EmptyContent` components.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
 | `class` | `string` |         |
 
 ```vue
@@ -126,8 +127,8 @@ The main component of the empty state. Wraps the `EmptyHeader` and `EmptyContent
 
 The `EmptyHeader` component wraps the empty media, title, and description.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
 | `class` | `string` |         |
 
 ```vue
@@ -144,10 +145,10 @@ The `EmptyHeader` component wraps the empty media, title, and description.
 
 Use the `EmptyMedia` component to display the media of the empty state such as an icon or an image. You can also use it to display other components such as an avatar.
 
-| Prop        | Type                  | Default   |
-| ----------- | --------------------- | --------- |
-| `variant`   | `"default" \| "icon"` | `default` |
-| `class` | `string`              |           |
+| Prop      | Type                  | Default   |
+| --------- | --------------------- | --------- |
+| `variant` | `"default" \| "icon"` | `default` |
+| `class`   | `string`              |           |
 
 ```vue
 <template>
@@ -172,8 +173,8 @@ Use the `EmptyMedia` component to display the media of the empty state such as a
 
 Use the `EmptyTitle` component to display the title of the empty state.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
 | `class` | `string` |         |
 
 ```vue
@@ -186,8 +187,8 @@ Use the `EmptyTitle` component to display the title of the empty state.
 
 Use the `EmptyDescription` component to display the description of the empty state.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
 | `class` | `string` |         |
 
 ```vue
@@ -200,8 +201,8 @@ Use the `EmptyDescription` component to display the description of the empty sta
 
 Use the `EmptyContent` component to display the content of the empty state such as a button, input or a link.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
 | `class` | `string` |         |
 
 ```vue

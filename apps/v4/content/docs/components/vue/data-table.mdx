@@ -47,22 +47,22 @@ We are going to build a table to show recent payments. Here's what our data look
 interface Payment {
   id: string
   amount: number
-  status: 'pending' | 'processing' | 'success' | 'failed'
+  status: "pending" | "processing" | "success" | "failed"
   email: string
 }
 
 export const payments: Payment[] = [
   {
-    id: '728ed52f',
+    id: "728ed52f",
     amount: 100,
-    status: 'pending',
-    email: 'm@example.com',
+    status: "pending",
+    email: "m@example.com",
   },
   {
-    id: '489e1d42',
+    id: "489e1d42",
     amount: 125,
-    status: 'processing',
-    email: 'example@gmail.com',
+    status: "processing",
+    email: "example@gmail.com",
   },
   // ...
 ]
@@ -99,22 +99,22 @@ Let's start by building a basic table.
 First, we'll define our columns in the `columns.ts` file.
 
 ```ts showLineNumbers
-import { h } from 'vue'
+import { h } from "vue"
 
 export const columns: ColumnDef<Payment>[] = [
   {
-    accessorKey: 'amount',
-    header: () => h('div', { class: 'text-right' }, 'Amount'),
+    accessorKey: "amount",
+    header: () => h("div", { class: "text-right" }, "Amount"),
     cell: ({ row }) => {
-      const amount = Number.parseFloat(row.getValue('amount'))
-      const formatted = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
+      const amount = Number.parseFloat(row.getValue("amount"))
+      const formatted = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
       }).format(amount)
 
-      return h('div', { class: 'text-right font-medium' }, formatted)
+      return h("div", { class: "text-right font-medium" }, formatted)
     },
-  }
+  },
 ]
 ```
 
@@ -128,12 +128,8 @@ Next, we'll create a `<DataTable />` component to render our table.
 
 ```vue
 <script setup lang="ts" generic="TData, TValue">
-import type { ColumnDef } from '@tanstack/vue-table'
-import {
-  FlexRender,
-  getCoreRowModel,
-  useVueTable,
-} from '@tanstack/vue-table'
+import type { ColumnDef } from "@tanstack/vue-table"
+import { FlexRender, getCoreRowModel, useVueTable } from "@tanstack/vue-table"
 
 import {
   Table,
@@ -142,7 +138,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from "@/components/ui/table"
 
 const props = defineProps<{
   columns: ColumnDef<TData, TValue>[]
@@ -150,20 +146,28 @@ const props = defineProps<{
 }>()
 
 const table = useVueTable({
-  get data() { return props.data },
-  get columns() { return props.columns },
+  get data() {
+    return props.data
+  },
+  get columns() {
+    return props.columns
+  },
   getCoreRowModel: getCoreRowModel(),
 })
 </script>
 
 <template>
-  <div class="border rounded-md">
+  <div class="rounded-md border">
     <Table>
       <TableHeader>
-        <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
+        <TableRow
+          v-for="headerGroup in table.getHeaderGroups()"
+          :key="headerGroup.id"
+        >
           <TableHead v-for="header in headerGroup.headers" :key="header.id">
             <FlexRender
-              v-if="!header.isPlaceholder" :render="header.column.columnDef.header"
+              v-if="!header.isPlaceholder"
+              :render="header.column.columnDef.header"
               :props="header.getContext()"
             />
           </TableHead>
@@ -172,11 +176,15 @@ const table = useVueTable({
       <TableBody>
         <template v-if="table.getRowModel().rows?.length">
           <TableRow
-            v-for="row in table.getRowModel().rows" :key="row.id"
+            v-for="row in table.getRowModel().rows"
+            :key="row.id"
             :data-state="row.getIsSelected() ? 'selected' : undefined"
           >
             <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
-              <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
+              <FlexRender
+                :render="cell.column.columnDef.cell"
+                :props="cell.getContext()"
+              />
             </TableCell>
           </TableRow>
         </template>
@@ -194,7 +202,7 @@ const table = useVueTable({
 ```
 
 > **Tip**: If you find yourself using `<DataTable />` in multiple places, this is the component you could make reusable by extracting it to `components/ui/data-table.vue`.
-> 
+>
 > `<DataTable :columns="columns" :data="data" />`
 
 ### Render the table
@@ -203,10 +211,11 @@ Finally, we'll render our table in our index component.
 
 ```vue
 <script setup lang="ts">
-import type { Payment } from './components/columns'
-import { onMounted, ref } from 'vue'
-import { columns } from './components/columns'
-import DataTable from './components/DataTable.vue'
+import { onMounted, ref } from "vue"
+
+import type { Payment } from "./components/columns"
+import { columns } from "./components/columns"
+import DataTable from "./components/DataTable.vue"
 
 const data = ref<Payment[]>([])
 
@@ -214,10 +223,10 @@ async function getData(): Promise<Payment[]> {
   // Fetch data from your API here.
   return [
     {
-      id: '728ed52f',
+      id: "728ed52f",
       amount: 100,
-      status: 'pending',
-      email: 'm@example.com',
+      status: "pending",
+      email: "m@example.com",
     },
     // ...
   ]
@@ -229,7 +238,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="container py-10 mx-auto">
+  <div class="container mx-auto py-10">
     <DataTable :columns="columns" :data="data" />
   </div>
 </template>
@@ -248,25 +257,27 @@ Let's format the amount cell to display the dollar amount. We'll also align the 
 Update the `header` and `cell` definitions for amount as follows:
 
 ```ts
-import { h } from 'vue'
+import { h } from "vue"
 
 export const columns: ColumnDef<Payment>[] = [
   {
-    accessorKey: 'amount',
-    header: () => h('div', { class: 'text-right' }, 'Amount'),
+    accessorKey: "amount",
+    header: () => h("div", { class: "text-right" }, "Amount"),
     cell: ({ row }) => {
-      const amount = Number.parseFloat(row.getValue('amount'))
-      const formatted = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
+      const amount = Number.parseFloat(row.getValue("amount"))
+      const formatted = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
       }).format(amount)
 
-      return h('div', { class: 'text-right font-medium' }, formatted)
+      return h("div", { class: "text-right font-medium" }, formatted)
     },
-  }
+  },
 ]
 ```
+
 You can use the same approach to format other cells and headers.
+
 </Steps>
 
 ## Row Actions
@@ -279,9 +290,17 @@ Let's add row actions to our table. We'll use a `<Dropdown />` component for thi
 
 ```vue
 <script setup lang="ts">
-import { MoreHorizontal } from 'lucide-vue-next'
-import { Button } from '@/components/ui/button'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { MoreHorizontal } from "lucide-vue-next"
+
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 defineProps<{
   payment: {
@@ -297,9 +316,9 @@ function copy(id: string) {
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
-      <Button variant="ghost" class="w-8 h-8 p-0">
+      <Button variant="ghost" class="h-8 w-8 p-0">
         <span class="sr-only">Open menu</span>
-        <MoreHorizontal class="w-4 h-4" />
+        <MoreHorizontal class="h-4 w-4" />
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent align="end">
@@ -320,20 +339,25 @@ function copy(id: string) {
 Update our columns definition to add a new `actions` column. The `actions` cell returns a `<Dropdown />` component.
 
 ```ts
-import { ColumnDef } from '@tanstack/vue-table'
-import DropdownAction from '@/components/DataTableDropDown.vue'
+import { ColumnDef } from "@tanstack/vue-table"
+
+import DropdownAction from "@/components/DataTableDropDown.vue"
 
 export const columns: ColumnDef<Payment>[] = [
   // ...
   {
-    id: 'actions',
+    id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
       const payment = row.original
 
-      return h('div', { class: 'relative' }, h(DropdownAction, {
-        payment,
-      }))
+      return h(
+        "div",
+        { class: "relative" },
+        h(DropdownAction, {
+          payment,
+        })
+      )
     },
   },
 ]
@@ -353,17 +377,21 @@ Next, we'll add pagination to our table.
 
 ```ts showLineNumbers {4,12}
 import {
-    FlexRender,
-    getCoreRowModel,
-    getPaginationRowModel,
-    useVueTable,
+  FlexRender,
+  getCoreRowModel,
+  getPaginationRowModel,
+  useVueTable,
 } from "@tanstack/vue-table"
 
 const table = useVueTable({
-    get data() { return props.data },
-    get columns() { return props.columns },
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
+  get data() {
+    return props.data
+  },
+  get columns() {
+    return props.columns
+  },
+  getCoreRowModel: getCoreRowModel(),
+  getPaginationRowModel: getPaginationRowModel(),
 })
 ```
 
@@ -375,11 +403,15 @@ We can add pagination controls to our table using the `<Button />` component and
 
 ```vue
 <script lang="ts" generic="TData, TValue">
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button"
 
 const table = useVueTable({
-  get data() { return props.data },
-  get columns() { return props.columns },
+  get data() {
+    return props.data
+  },
+  get columns() {
+    return props.columns
+  },
   getCoreRowModel: getCoreRowModel(),
   getPaginationRowModel: getPaginationRowModel(),
 })
@@ -387,12 +419,10 @@ const table = useVueTable({
 
 <template>
   <div>
-    <div class="border rounded-md">
-      <Table>
-        { // .... }
-      </Table>
+    <div class="rounded-md border">
+      <Table> { // .... } </Table>
     </div>
-    <div class="flex items-center justify-end py-4 space-x-2">
+    <div class="flex items-center justify-end space-x-2 py-4">
       <Button
         variant="outline"
         size="sm"
@@ -427,12 +457,11 @@ Let's make the email column sortable.
 ### Add the following into your `utils` file
 
 ```ts
-import type { Updater } from '@tanstack/vue-table'
-import type { ClassValue } from 'clsx'
-
-import type { Ref } from 'vue'
-import { clsx } from 'clsx'
-import { twMerge } from 'tailwind-merge'
+import type { Updater } from "@tanstack/vue-table"
+import type { ClassValue } from "clsx"
+import { clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+import type { Ref } from "vue"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -443,22 +472,16 @@ export function cn(...inputs: ClassValue[]) {
 
 ```vue showLineNumbers {4,14,17,33,40-44}
 <script setup lang="ts" generic="TData, TValue">
-import type {
-  ColumnDef,
-  SortingState,
-} from '@tanstack/vue-table'
-
-import { ArrowUpDown, ChevronDown } from 'lucide-vue-next'
-import { h, ref } from 'vue'
-
+import type { ColumnDef, SortingState } from "@tanstack/vue-table"
 import {
   FlexRender,
   getCoreRowModel,
   getPaginationRowModel,
   getSortedRowModel,
   useVueTable,
-} from '@tanstack/vue-table'
-import { valueUpdater } from '@/components/ui/table/utils'
+} from "@tanstack/vue-table"
+import { ArrowUpDown, ChevronDown } from "lucide-vue-next"
+import { h, ref } from "vue"
 
 import {
   Table,
@@ -467,7 +490,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from "@/components/ui/table"
+import { valueUpdater } from "@/components/ui/table/utils"
 
 const props = defineProps<{
   columns: ColumnDef<TData, TValue>[]
@@ -477,21 +501,27 @@ const props = defineProps<{
 const sorting = ref<SortingState>([])
 
 const table = useVueTable({
-  get data() { return props.data },
-  get columns() { return props.columns },
+  get data() {
+    return props.data
+  },
+  get columns() {
+    return props.columns
+  },
   getCoreRowModel: getCoreRowModel(),
   getPaginationRowModel: getPaginationRowModel(),
   getSortedRowModel: getSortedRowModel(),
-  onSortingChange: updaterOrValue => valueUpdater(updaterOrValue, sorting),
+  onSortingChange: (updaterOrValue) => valueUpdater(updaterOrValue, sorting),
   state: {
-    get sorting() { return sorting.value },
+    get sorting() {
+      return sorting.value
+    },
   },
 })
 </script>
 
 <template>
   <div>
-    <div class="border rounded-md">
+    <div class="rounded-md border">
       <Table>{ ... }</Table>
     </div>
   </div>
@@ -506,23 +536,26 @@ We can now update the `email` header cell to add sorting controls.
 
 ```ts showLineNumbers {5,10-17}
 // components/payments/columns.ts
-import type {
-  ColumnDef,
-} from '@tanstack/vue-table'
-import { ArrowUpDown, ChevronDown } from 'lucide-vue-next'
-import { Button } from '@/components/ui/button'
+import type { ColumnDef } from "@tanstack/vue-table"
+import { ArrowUpDown, ChevronDown } from "lucide-vue-next"
+
+import { Button } from "@/components/ui/button"
 
 export const columns: ColumnDef<Payment>[] = [
-    {
-        accessorKey: 'email',
-        header: ({ column }) => {
-            return h(Button, {
-                variant: 'ghost',
-                onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
-            }, () => ['Email', h(ArrowUpDown, { class: 'ml-2 h-4 w-4' })])
+  {
+    accessorKey: "email",
+    header: ({ column }) => {
+      return h(
+        Button,
+        {
+          variant: "ghost",
+          onClick: () => column.toggleSorting(column.getIsSorted() === "asc"),
         },
-        cell: ({ row }) => h('div', { class: 'lowercase' }, row.getValue('email')),
+        () => ["Email", h(ArrowUpDown, { class: "ml-2 h-4 w-4" })]
+      )
     },
+    cell: ({ row }) => h("div", { class: "lowercase" }, row.getValue("email")),
+  },
 ]
 ```
 
@@ -544,71 +577,78 @@ import type {
   ColumnDef,
   ColumnFiltersState,
   SortingState,
-} from '@tanstack/vue-table'
-
-import { valueUpdater } from '@/components/ui/table/utils'
-
-import { ArrowUpDown, ChevronDown } from 'lucide-vue-next'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import { h, ref } from 'vue'
-
-import {
-    FlexRender,
-    getCoreRowModel,
-    getPaginationRowModel,
-    getFilteredRowModel,
-    getSortedRowModel,
-    useVueTable,
 } from "@tanstack/vue-table"
-
 import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
+  FlexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useVueTable,
+} from "@tanstack/vue-table"
+import { ArrowUpDown, ChevronDown } from "lucide-vue-next"
+import { h, ref } from "vue"
+
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from "@/components/ui/table"
+import { valueUpdater } from "@/components/ui/table/utils"
 
 const props = defineProps<{
-    columns: ColumnDef<TData, TValue>[]
-    data: TData[]
+  columns: ColumnDef<TData, TValue>[]
+  data: TData[]
 }>()
 
 const sorting = ref<SortingState>([])
 const columnFilters = ref<ColumnFiltersState>([])
 
 const table = useVueTable({
-    get data() { return props.data },
-    get columns() { return props.columns },
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    onSortingChange: updaterOrValue => valueUpdater(updaterOrValue, sorting),
-    onColumnFiltersChange: updaterOrValue => valueUpdater(updaterOrValue, columnFilters),
-    getFilteredRowModel: getFilteredRowModel(),
-    state: {
-        get sorting() { return sorting.value },
-        get columnFilters() { return columnFilters.value },
+  get data() {
+    return props.data
+  },
+  get columns() {
+    return props.columns
+  },
+  getCoreRowModel: getCoreRowModel(),
+  getPaginationRowModel: getPaginationRowModel(),
+  getSortedRowModel: getSortedRowModel(),
+  onSortingChange: (updaterOrValue) => valueUpdater(updaterOrValue, sorting),
+  onColumnFiltersChange: (updaterOrValue) =>
+    valueUpdater(updaterOrValue, columnFilters),
+  getFilteredRowModel: getFilteredRowModel(),
+  state: {
+    get sorting() {
+      return sorting.value
     },
+    get columnFilters() {
+      return columnFilters.value
+    },
+  },
 })
-
 </script>
 
 <template>
-    <div>
-        <div class="flex items-center py-4">
-            <Input class="max-w-sm" placeholder="Filter emails..."
-                :model-value="table.getColumn('email')?.getFilterValue() as string"
-                @update:model-value=" table.getColumn('email')?.setFilterValue($event)" />
-        </div>
-        <div class="border rounded-md">
-            <Table>{ ... }</Table>
-        </div>
+  <div>
+    <div class="flex items-center py-4">
+      <Input
+        class="max-w-sm"
+        placeholder="Filter emails..."
+        :model-value="table.getColumn('email')?.getFilterValue() as string"
+        @update:model-value="table.getColumn('email')?.setFilterValue($event)"
+      />
     </div>
+    <div class="rounded-md border">
+      <Table>{ ... }</Table>
+    </div>
+  </div>
 </template>
-
 ```
 
 Filtering is now enabled for the `email` column. You can add filters to other columns as well. See the [filtering docs](https://tanstack.com/table/v8/docs/guide/filters) for more information on customizing filters.
@@ -630,43 +670,39 @@ import type {
   ColumnFiltersState,
   SortingState,
   VisibilityState,
-} from '@tanstack/vue-table'
+} from "@tanstack/vue-table"
+import {
+  FlexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useVueTable,
+} from "@tanstack/vue-table"
+import { ArrowUpDown, ChevronDown } from "lucide-vue-next"
+import { h, ref } from "vue"
 
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-
-import { valueUpdater } from '@/components/ui/table/utils'
-
-import { ArrowUpDown, ChevronDown } from 'lucide-vue-next'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import { h, ref } from 'vue'
-
+} from "@/components/ui/dropdown-menu"
+import { Input } from "@/components/ui/input"
 import {
-    FlexRender,
-    getCoreRowModel,
-    getPaginationRowModel,
-    getFilteredRowModel,
-    getSortedRowModel,
-    useVueTable,
-} from "@tanstack/vue-table"
-
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from "@/components/ui/table"
+import { valueUpdater } from "@/components/ui/table/utils"
 
 const props = defineProps<{
-    columns: ColumnDef<TData, TValue>[]
-    data: TData[]
+  columns: ColumnDef<TData, TValue>[]
+  data: TData[]
 }>()
 
 const sorting = ref<SortingState>([])
@@ -674,80 +710,113 @@ const columnFilters = ref<ColumnFiltersState>([])
 const columnVisibility = ref<VisibilityState>({})
 
 const table = useVueTable({
-    get data() { return props.data },
-    get columns() { return props.columns },
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    onSortingChange: updaterOrValue => valueUpdater(updaterOrValue, sorting),
-    onColumnFiltersChange: updaterOrValue => valueUpdater(updaterOrValue, columnFilters),
-    onColumnVisibilityChange: updaterOrValue => valueUpdater(updaterOrValue, columnVisibility),
-    state: {
-        get sorting() { return sorting.value },
-        get columnFilters() { return columnFilters.value },
-        get columnVisibility() { return columnVisibility.value },
+  get data() {
+    return props.data
+  },
+  get columns() {
+    return props.columns
+  },
+  getCoreRowModel: getCoreRowModel(),
+  getPaginationRowModel: getPaginationRowModel(),
+  getSortedRowModel: getSortedRowModel(),
+  getFilteredRowModel: getFilteredRowModel(),
+  onSortingChange: (updaterOrValue) => valueUpdater(updaterOrValue, sorting),
+  onColumnFiltersChange: (updaterOrValue) =>
+    valueUpdater(updaterOrValue, columnFilters),
+  onColumnVisibilityChange: (updaterOrValue) =>
+    valueUpdater(updaterOrValue, columnVisibility),
+  state: {
+    get sorting() {
+      return sorting.value
     },
+    get columnFilters() {
+      return columnFilters.value
+    },
+    get columnVisibility() {
+      return columnVisibility.value
+    },
+  },
 })
-
 </script>
 
 <template>
-    <div>
-        <div class="flex items-center py-4">
-            <Input class="max-w-sm" placeholder="Filter emails..."
-                :model-value="table.getColumn('email')?.getFilterValue() as string"
-                @update:model-value=" table.getColumn('email')?.setFilterValue($event)" />
-            <DropdownMenu>
-                <DropdownMenuTrigger as-child>
-                    <Button variant="outline" class="ml-auto">
-                        Columns
-                        <ChevronDown class="w-4 h-4 ml-2" />
-                    </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                    <DropdownMenuCheckboxItem
-                        v-for="column in table.getAllColumns().filter((column) => column.getCanHide())" :key="column.id"
-                        class="capitalize" :modelValue="column.getIsVisible()" @update:modelValue="(value) => {
-                            column.toggleVisibility(!!value)
-                        }">
-                        {{ column.id }}
-                    </DropdownMenuCheckboxItem>
-                </DropdownMenuContent>
-            </DropdownMenu>
-        </div>
-        <div class="border rounded-md">
-            <Table>
-                <TableHeader>
-                    <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
-                        <TableHead v-for="header in headerGroup.headers" :key="header.id">
-                            <FlexRender v-if="!header.isPlaceholder" :render="header.column.columnDef.header"
-                                :props="header.getContext()" />
-                        </TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    <template v-if="table.getRowModel().rows?.length">
-                        <TableRow v-for="row in table.getRowModel().rows" :key="row.id"
-                            :data-state="row.getIsSelected() ? 'selected' : undefined">
-                            <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
-                                <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
-                            </TableCell>
-                        </TableRow>
-                    </template>
-                    <template v-else>
-                        <TableRow>
-                            <TableCell :colSpan="columns.length" class="h-24 text-center">
-                                No results.
-                            </TableCell>
-                        </TableRow>
-                    </template>
-                </TableBody>
-            </Table>
-        </div>
+  <div>
+    <div class="flex items-center py-4">
+      <Input
+        class="max-w-sm"
+        placeholder="Filter emails..."
+        :model-value="table.getColumn('email')?.getFilterValue() as string"
+        @update:model-value="table.getColumn('email')?.setFilterValue($event)"
+      />
+      <DropdownMenu>
+        <DropdownMenuTrigger as-child>
+          <Button variant="outline" class="ml-auto">
+            Columns
+            <ChevronDown class="ml-2 h-4 w-4" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuCheckboxItem
+            v-for="column in table
+              .getAllColumns()
+              .filter((column) => column.getCanHide())"
+            :key="column.id"
+            class="capitalize"
+            :modelValue="column.getIsVisible()"
+            @update:modelValue="
+              (value) => {
+                column.toggleVisibility(!!value)
+              }
+            "
+          >
+            {{ column.id }}
+          </DropdownMenuCheckboxItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
+    <div class="rounded-md border">
+      <Table>
+        <TableHeader>
+          <TableRow
+            v-for="headerGroup in table.getHeaderGroups()"
+            :key="headerGroup.id"
+          >
+            <TableHead v-for="header in headerGroup.headers" :key="header.id">
+              <FlexRender
+                v-if="!header.isPlaceholder"
+                :render="header.column.columnDef.header"
+                :props="header.getContext()"
+              />
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <template v-if="table.getRowModel().rows?.length">
+            <TableRow
+              v-for="row in table.getRowModel().rows"
+              :key="row.id"
+              :data-state="row.getIsSelected() ? 'selected' : undefined"
+            >
+              <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
+                <FlexRender
+                  :render="cell.column.columnDef.cell"
+                  :props="cell.getContext()"
+                />
+              </TableCell>
+            </TableRow>
+          </template>
+          <template v-else>
+            <TableRow>
+              <TableCell :colSpan="columns.length" class="h-24 text-center">
+                No results.
+              </TableCell>
+            </TableRow>
+          </template>
+        </TableBody>
+      </Table>
+    </div>
+  </div>
 </template>
-
 ```
 
 This adds a dropdown menu that you can use to toggle column visibility.
@@ -763,26 +832,29 @@ Next, we're going to add row selection to our table.
 ### Update column definitions
 
 ```ts showLineNumbers {3,6-20}
-import type { ColumnDef } from '@tanstack/vue-table'
+import type { ColumnDef } from "@tanstack/vue-table"
 
-import { Checkbox } from '@/components/ui/checkbox'
+import { Checkbox } from "@/components/ui/checkbox"
 
 export const columns: ColumnDef<Payment>[] = [
-    {
-        id: 'select',
-        header: ({ table }) => h(Checkbox, {
-            'modelValue': table.getIsAllPageRowsSelected(),
-            'onUpdate:modelValue': (value: boolean) => table.toggleAllPageRowsSelected(!!value),
-            'ariaLabel': 'Select all',
-        }),
-        cell: ({ row }) => h(Checkbox, {
-            'modelValue': row.getIsSelected(),
-            'onUpdate:modelValue': (value: boolean) => row.toggleSelected(!!value),
-            'ariaLabel': 'Select row',
-        }),
-        enableSorting: false,
-        enableHiding: false,
-    },
+  {
+    id: "select",
+    header: ({ table }) =>
+      h(Checkbox, {
+        modelValue: table.getIsAllPageRowsSelected(),
+        "onUpdate:modelValue": (value: boolean) =>
+          table.toggleAllPageRowsSelected(!!value),
+        ariaLabel: "Select all",
+      }),
+    cell: ({ row }) =>
+      h(Checkbox, {
+        modelValue: row.getIsSelected(),
+        "onUpdate:modelValue": (value: boolean) => row.toggleSelected(!!value),
+        ariaLabel: "Select row",
+      }),
+    enableSorting: false,
+    enableHiding: false,
+  },
 ]
 ```
 
@@ -791,8 +863,8 @@ export const columns: ColumnDef<Payment>[] = [
 ```vue showLineNumbers {10,22,27}
 <script setup lang="ts" generic="TData, TValue">
 const props = defineProps<{
-    columns: ColumnDef<TData, TValue>[]
-    data: TData[]
+  columns: ColumnDef<TData, TValue>[]
+  data: TData[]
 }>()
 
 const sorting = ref<SortingState>([])
@@ -801,34 +873,47 @@ const columnVisibility = ref<VisibilityState>({})
 const rowSelection = ref({})
 
 const table = useVueTable({
-    get data() { return props.data },
-    get columns() { return props.columns },
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    onSortingChange: updaterOrValue => valueUpdater(updaterOrValue, sorting),
-    onColumnFiltersChange: updaterOrValue => valueUpdater(updaterOrValue, columnFilters),
-    onColumnVisibilityChange: updaterOrValue => valueUpdater(updaterOrValue, columnVisibility),
-    onRowSelectionChange: updaterOrValue => valueUpdater(updaterOrValue, rowSelection),
-    state: {
-        get sorting() { return sorting.value },
-        get columnFilters() { return columnFilters.value },
-        get columnVisibility() { return columnVisibility.value },
-        get rowSelection() { return rowSelection.value },
+  get data() {
+    return props.data
+  },
+  get columns() {
+    return props.columns
+  },
+  getCoreRowModel: getCoreRowModel(),
+  getPaginationRowModel: getPaginationRowModel(),
+  getSortedRowModel: getSortedRowModel(),
+  getFilteredRowModel: getFilteredRowModel(),
+  onSortingChange: (updaterOrValue) => valueUpdater(updaterOrValue, sorting),
+  onColumnFiltersChange: (updaterOrValue) =>
+    valueUpdater(updaterOrValue, columnFilters),
+  onColumnVisibilityChange: (updaterOrValue) =>
+    valueUpdater(updaterOrValue, columnVisibility),
+  onRowSelectionChange: (updaterOrValue) =>
+    valueUpdater(updaterOrValue, rowSelection),
+  state: {
+    get sorting() {
+      return sorting.value
     },
+    get columnFilters() {
+      return columnFilters.value
+    },
+    get columnVisibility() {
+      return columnVisibility.value
+    },
+    get rowSelection() {
+      return rowSelection.value
+    },
+  },
 })
-
 </script>
 
 <template>
   <div>
-    <div class="border rounded-md">
-        <Table />
+    <div class="rounded-md border">
+      <Table />
     </div>
   </div>
 </template>
-
 ```
 
 This adds a checkbox to each row and a checkbox in the header to select all rows.
@@ -840,8 +925,8 @@ You can show the number of selected rows using the `table.getFilteredSelectedRow
 ```vue showLineNumbers {8-11}
 <template>
   <div>
-    <div class="border rounded-md">
-        <Table />
+    <div class="rounded-md border">
+      <Table />
     </div>
 
     <div class="flex items-center justify-end space-x-2 py-4">
@@ -855,7 +940,6 @@ You can show the number of selected rows using the `table.getFilteredSelectedRow
     </div>
   </div>
 </template>
-
 ```
 
 </Steps>
@@ -873,38 +957,35 @@ Let's make rows expandable.
 import type {
   ColumnDef,
   ColumnFiltersState,
+  ExpandedState,
   SortingState,
   VisibilityState,
-  ExpandedState,
-} from '@tanstack/vue-table'
+} from "@tanstack/vue-table"
+import {
+  FlexRender,
+  getCoreRowModel,
+  getExpandedRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useVueTable,
+} from "@tanstack/vue-table"
+import { ArrowUpDown, ChevronDown } from "lucide-vue-next"
+import { h, ref } from "vue"
 
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-
-import { valueUpdater } from '@/components/ui/table/utils'
-
-import { ArrowUpDown, ChevronDown } from 'lucide-vue-next'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import { h, ref } from 'vue'
-
-import {
-    FlexRender,
-    getCoreRowModel,
-    getPaginationRowModel,
-    getFilteredRowModel,
-    getSortedRowModel,
-    getExpandedRowModel,
-    useVueTable,
-} from "@tanstack/vue-table"
+} from "@/components/ui/dropdown-menu"
+import { Input } from "@/components/ui/input"
+import { valueUpdater } from "@/components/ui/table/utils"
 
 const props = defineProps<{
-    columns: ColumnDef<TData, TValue>[]
-    data: TData[]
+  columns: ColumnDef<TData, TValue>[]
+  data: TData[]
 }>()
 
 const sorting = ref<SortingState>([])
@@ -914,88 +995,127 @@ const rowSelection = ref({})
 const expanded = ref<ExpandedState>({})
 
 const table = useVueTable({
-    get data() { return props.data },
-    get columns() { return props.columns },
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getExpandedRowModel: getExpandedRowModel(),
-    onSortingChange: updaterOrValue => valueUpdater(updaterOrValue, sorting),
-    onColumnFiltersChange: updaterOrValue => valueUpdater(updaterOrValue, columnFilters),
-    onColumnVisibilityChange: updaterOrValue => valueUpdater(updaterOrValue, columnVisibility),
-    onRowSelectionChange: updaterOrValue => valueUpdater(updaterOrValue, rowSelection),
-    onExpandedChange: updaterOrValue => valueUpdater(updaterOrValue, expanded),
-    state: {
-        get sorting() { return sorting.value },
-        get columnFilters() { return columnFilters.value },
-        get columnVisibility() { return columnVisibility.value },
-        get rowSelection() { return rowSelection.value },
-        get expanded() { return expanded.value },
+  get data() {
+    return props.data
+  },
+  get columns() {
+    return props.columns
+  },
+  getCoreRowModel: getCoreRowModel(),
+  getPaginationRowModel: getPaginationRowModel(),
+  getSortedRowModel: getSortedRowModel(),
+  getFilteredRowModel: getFilteredRowModel(),
+  getExpandedRowModel: getExpandedRowModel(),
+  onSortingChange: (updaterOrValue) => valueUpdater(updaterOrValue, sorting),
+  onColumnFiltersChange: (updaterOrValue) =>
+    valueUpdater(updaterOrValue, columnFilters),
+  onColumnVisibilityChange: (updaterOrValue) =>
+    valueUpdater(updaterOrValue, columnVisibility),
+  onRowSelectionChange: (updaterOrValue) =>
+    valueUpdater(updaterOrValue, rowSelection),
+  onExpandedChange: (updaterOrValue) => valueUpdater(updaterOrValue, expanded),
+  state: {
+    get sorting() {
+      return sorting.value
     },
+    get columnFilters() {
+      return columnFilters.value
+    },
+    get columnVisibility() {
+      return columnVisibility.value
+    },
+    get rowSelection() {
+      return rowSelection.value
+    },
+    get expanded() {
+      return expanded.value
+    },
+  },
 })
 </script>
 
 <template>
-    <div>
-        <div class="flex items-center py-4">
-            <Input class="max-w-sm" placeholder="Filter emails..."
-                :model-value="table.getColumn('email')?.getFilterValue() as string"
-                @update:model-value=" table.getColumn('email')?.setFilterValue($event)" />
-            <DropdownMenu>
-                <DropdownMenuTrigger as-child>
-                    <Button variant="outline" class="ml-auto">
-                        Columns
-                        <ChevronDown class="w-4 h-4 ml-2" />
-                    </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                    <DropdownMenuCheckboxItem
-                        v-for="column in table.getAllColumns().filter((column) => column.getCanHide())" :key="column.id"
-                        class="capitalize" :modelValue="column.getIsVisible()" @update:modelValue="(value) => {
-                            column.toggleVisibility(!!value)
-                        }">
-                        {{ column.id }}
-                    </DropdownMenuCheckboxItem>
-                </DropdownMenuContent>
-            </DropdownMenu>
-        </div>
-        <div class="border rounded-md">
-            <Table>
-                <TableHeader>
-                    <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
-                        <TableHead v-for="header in headerGroup.headers" :key="header.id">
-                            <FlexRender v-if="!header.isPlaceholder" :render="header.column.columnDef.header"
-                                :props="header.getContext()" />
-                        </TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    <template v-if="table.getRowModel().rows?.length">
-                      <template v-for="row in table.getRowModel().rows" :key="row.id">
-                        <TableRow :data-state="row.getIsSelected() ? 'selected' : undefined">
-                            <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
-                                <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
-                            </TableCell>
-                        </TableRow>
-                        <TableRow v-if="row.getIsExpanded()">
-                          <TableCell :colspan="row.getAllCells().length">
-                            {{ JSON.stringify(row.original) }}
-                          </TableCell>
-                        </TableRow>
-                      </template>
-                    </template>
-                    <template v-else>
-                        <TableRow>
-                            <TableCell :colSpan="columns.length" class="h-24 text-center">
-                                No results.
-                            </TableCell>
-                        </TableRow>
-                    </template>
-                </TableBody>
-            </Table>
-        </div>
+  <div>
+    <div class="flex items-center py-4">
+      <Input
+        class="max-w-sm"
+        placeholder="Filter emails..."
+        :model-value="table.getColumn('email')?.getFilterValue() as string"
+        @update:model-value="table.getColumn('email')?.setFilterValue($event)"
+      />
+      <DropdownMenu>
+        <DropdownMenuTrigger as-child>
+          <Button variant="outline" class="ml-auto">
+            Columns
+            <ChevronDown class="ml-2 h-4 w-4" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuCheckboxItem
+            v-for="column in table
+              .getAllColumns()
+              .filter((column) => column.getCanHide())"
+            :key="column.id"
+            class="capitalize"
+            :modelValue="column.getIsVisible()"
+            @update:modelValue="
+              (value) => {
+                column.toggleVisibility(!!value)
+              }
+            "
+          >
+            {{ column.id }}
+          </DropdownMenuCheckboxItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
+    <div class="rounded-md border">
+      <Table>
+        <TableHeader>
+          <TableRow
+            v-for="headerGroup in table.getHeaderGroups()"
+            :key="headerGroup.id"
+          >
+            <TableHead v-for="header in headerGroup.headers" :key="header.id">
+              <FlexRender
+                v-if="!header.isPlaceholder"
+                :render="header.column.columnDef.header"
+                :props="header.getContext()"
+              />
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <template v-if="table.getRowModel().rows?.length">
+            <template v-for="row in table.getRowModel().rows" :key="row.id">
+              <TableRow
+                :data-state="row.getIsSelected() ? 'selected' : undefined"
+              >
+                <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
+                  <FlexRender
+                    :render="cell.column.columnDef.cell"
+                    :props="cell.getContext()"
+                  />
+                </TableCell>
+              </TableRow>
+              <TableRow v-if="row.getIsExpanded()">
+                <TableCell :colspan="row.getAllCells().length">
+                  {{ JSON.stringify(row.original) }}
+                </TableCell>
+              </TableRow>
+            </template>
+          </template>
+          <template v-else>
+            <TableRow>
+              <TableCell :colSpan="columns.length" class="h-24 text-center">
+                No results.
+              </TableCell>
+            </TableRow>
+          </template>
+        </TableBody>
+      </Table>
+    </div>
+  </div>
 </template>
 ```
 
@@ -1003,9 +1123,17 @@ const table = useVueTable({
 
 ```vue showLineNumbers {12-14,34-36}
 <script setup lang="ts">
-import { MoreHorizontal } from 'lucide-vue-next'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
-import { Button } from '@/components/ui/button'
+import { MoreHorizontal } from "lucide-vue-next"
+
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 defineProps<{
   payment: {
@@ -1014,7 +1142,7 @@ defineProps<{
 }>()
 
 defineEmits<{
-  (e: 'expand'): void
+  (e: "expand"): void
 }>()
 
 function copy(id: string) {
@@ -1025,9 +1153,9 @@ function copy(id: string) {
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
-      <Button variant="ghost" class="w-8 h-8 p-0">
+      <Button variant="ghost" class="h-8 w-8 p-0">
         <span class="sr-only">Open menu</span>
-        <MoreHorizontal class="w-4 h-4" />
+        <MoreHorizontal class="h-4 w-4" />
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent align="end">
@@ -1035,9 +1163,7 @@ function copy(id: string) {
       <DropdownMenuItem @click="copy(payment.id)">
         Copy payment ID
       </DropdownMenuItem>
-      <DropdownMenuItem @click="$emit('expand')">
-        Expand
-      </DropdownMenuItem>
+      <DropdownMenuItem @click="$emit('expand')"> Expand </DropdownMenuItem>
       <DropdownMenuSeparator />
       <DropdownMenuItem>View customer</DropdownMenuItem>
       <DropdownMenuItem>View payment details</DropdownMenuItem>
@@ -1054,20 +1180,23 @@ Now we can update the action cell to add the expand control.
 <script setup lang="ts">
 export const columns: ColumnDef<Payment>[] = [
   {
-    id: 'actions',
+    id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
       const payment = row.original
 
-      return h('div', { class: 'relative' }, h(DropdownAction, {
-        payment,
-        onExpand: row.toggleExpanded,
-      }))
+      return h(
+        "div",
+        { class: "relative" },
+        h(DropdownAction, {
+          payment,
+          onExpand: row.toggleExpanded,
+        })
+      )
     },
   },
 ]
 </script>
-
 ```
 
 </Steps>
@@ -1082,22 +1211,23 @@ Make any column header sortable and hideable.
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import type { Column } from '@tanstack/vue-table'
-import { type Task } from '../data/schema'
-import ArrowDownIcon from '~icons/radix-icons/arrow-down'
-import ArrowUpIcon from '~icons/radix-icons/arrow-up'
-import CaretSortIcon from '~icons/radix-icons/caret-sort'
-import EyeNoneIcon from '~icons/radix-icons/eye-none'
+import type { Column } from "@tanstack/vue-table"
+import ArrowDownIcon from "~icons/radix-icons/arrow-down"
+import ArrowUpIcon from "~icons/radix-icons/arrow-up"
+import CaretSortIcon from "~icons/radix-icons/caret-sort"
+import EyeNoneIcon from "~icons/radix-icons/eye-none"
 
-import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from "@/components/ui/dropdown-menu"
+
+import { type Task } from "../data/schema"
 
 interface DataTableColumnHeaderProps {
   column: Column<Task, any>
@@ -1114,7 +1244,10 @@ export default {
 </script>
 
 <template>
-  <div v-if="column.getCanSort()" :class="cn('flex items-center space-x-2', $attrs.class ?? '')">
+  <div
+    v-if="column.getCanSort()"
+    :class="cn('flex items-center space-x-2', $attrs.class ?? '')"
+  >
     <DropdownMenu>
       <DropdownMenuTrigger as-child>
         <Button
@@ -1123,9 +1256,15 @@ export default {
           class="-ml-3 h-8 data-[state=open]:bg-accent"
         >
           <span>{{ title }}</span>
-          <ArrowDownIcon v-if="column.getIsSorted() === 'desc'" class="w-4 h-4 ml-2" />
-          <ArrowUpIcon v-else-if=" column.getIsSorted() === 'asc'" class="w-4 h-4 ml-2" />
-          <CaretSortIcon v-else class="w-4 h-4 ml-2" />
+          <ArrowDownIcon
+            v-if="column.getIsSorted() === 'desc'"
+            class="ml-2 h-4 w-4"
+          />
+          <ArrowUpIcon
+            v-else-if="column.getIsSorted() === 'asc'"
+            class="ml-2 h-4 w-4"
+          />
+          <CaretSortIcon v-else class="ml-2 h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
@@ -1150,19 +1289,17 @@ export default {
     {{ title }}
   </div>
 </template>
-
 ```
 
 ```ts showLineNumbers
 export const columns = [
   {
     accessorKey: "email",
-    header: ({ column }) => (
-        h(DataTableColumnHeader, {
-            column: column,
-            title: 'Email'
-        })
-    ),
+    header: ({ column }) =>
+      h(DataTableColumnHeader, {
+        column: column,
+        title: "Email",
+      }),
   },
 ]
 ```
@@ -1173,21 +1310,22 @@ Add pagination controls to your table including page size and selection count.
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import { type Table } from '@tanstack/vue-table'
-import { type Task } from '../data/schema'
-import ChevronLeftIcon from '~icons/radix-icons/chevron-left'
-import ChevronRightIcon from '~icons/radix-icons/chevron-right'
-import DoubleArrowLeftIcon from '~icons/radix-icons/double-arrow-left'
-import DoubleArrowRightIcon from '~icons/radix-icons/double-arrow-right'
+import { type Table } from "@tanstack/vue-table"
+import ChevronLeftIcon from "~icons/radix-icons/chevron-left"
+import ChevronRightIcon from "~icons/radix-icons/chevron-right"
+import DoubleArrowLeftIcon from "~icons/radix-icons/double-arrow-left"
+import DoubleArrowRightIcon from "~icons/radix-icons/double-arrow-right"
 
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
+} from "@/components/ui/select"
+
+import { type Task } from "../data/schema"
 
 interface DataTablePaginationProps {
   table: Table<Task>
@@ -1203,69 +1341,74 @@ defineProps<DataTablePaginationProps>()
     </div>
     <div class="flex items-center space-x-6 lg:space-x-8">
       <div class="flex items-center space-x-2">
-        <p class="text-sm font-medium">
-          Rows per page
-        </p>
+        <p class="text-sm font-medium">Rows per page</p>
         <Select
           :model-value="`${table.getState().pagination.pageSize}`"
           @update:model-value="table.setPageSize"
         >
           <SelectTrigger class="h-8 w-[70px]">
-            <SelectValue :placeholder="`${table.getState().pagination.pageSize}`" />
+            <SelectValue
+              :placeholder="`${table.getState().pagination.pageSize}`"
+            />
           </SelectTrigger>
           <SelectContent side="top">
-            <SelectItem v-for="pageSize in [10, 20, 30, 40, 50]" :key="pageSize" :value="`${pageSize}`">
+            <SelectItem
+              v-for="pageSize in [10, 20, 30, 40, 50]"
+              :key="pageSize"
+              :value="`${pageSize}`"
+            >
               {{ pageSize }}
             </SelectItem>
           </SelectContent>
         </Select>
       </div>
-      <div class="flex w-[100px] items-center justify-center text-sm font-medium">
+      <div
+        class="flex w-[100px] items-center justify-center text-sm font-medium"
+      >
         Page {{ table.getState().pagination.pageIndex + 1 }} of
         {{ table.getPageCount() }}
       </div>
       <div class="flex items-center space-x-2">
         <Button
           variant="outline"
-          class="hidden w-8 h-8 p-0 lg:flex"
+          class="hidden h-8 w-8 p-0 lg:flex"
           :disabled="!table.getCanPreviousPage()"
           @click="table.setPageIndex(0)"
         >
           <span class="sr-only">Go to first page</span>
-          <DoubleArrowLeftIcon class="w-4 h-4" />
+          <DoubleArrowLeftIcon class="h-4 w-4" />
         </Button>
         <Button
           variant="outline"
-          class="w-8 h-8 p-0"
+          class="h-8 w-8 p-0"
           :disabled="!table.getCanPreviousPage()"
           @click="table.previousPage()"
         >
           <span class="sr-only">Go to previous page</span>
-          <ChevronLeftIcon class="w-4 h-4" />
+          <ChevronLeftIcon class="h-4 w-4" />
         </Button>
         <Button
           variant="outline"
-          class="w-8 h-8 p-0"
+          class="h-8 w-8 p-0"
           :disabled="!table.getCanNextPage()"
           @click="table.nextPage()"
         >
           <span class="sr-only">Go to next page</span>
-          <ChevronRightIcon class="w-4 h-4" />
+          <ChevronRightIcon class="h-4 w-4" />
         </Button>
         <Button
           variant="outline"
-          class="hidden w-8 h-8 p-0 lg:flex"
+          class="hidden h-8 w-8 p-0 lg:flex"
           :disabled="!table.getCanNextPage()"
           @click="table.setPageIndex(table.getPageCount() - 1)"
         >
           <span class="sr-only">Go to last page</span>
-          <DoubleArrowRightIcon class="w-4 h-4" />
+          <DoubleArrowRightIcon class="h-4 w-4" />
         </Button>
       </div>
     </div>
   </div>
 </template>
-
 ```
 
 ```vue
@@ -1278,12 +1421,11 @@ A component to toggle column visibility.
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import type { Table } from '@tanstack/vue-table'
-import { computed } from 'vue'
-import { type Task } from '../data/schema'
-import MixerHorizontalIcon from '~icons/radix-icons/mixer-horizontal'
+import type { Table } from "@tanstack/vue-table"
+import MixerHorizontalIcon from "~icons/radix-icons/mixer-horizontal"
+import { computed } from "vue"
 
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -1291,7 +1433,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from "@/components/ui/dropdown-menu"
+
+import { type Task } from "../data/schema"
 
 interface DataTableViewOptionsProps {
   table: Table<Task>
@@ -1299,22 +1443,21 @@ interface DataTableViewOptionsProps {
 
 const props = defineProps<DataTableViewOptionsProps>()
 
-const columns = computed(() => props.table.getAllColumns()
-  .filter(
-    column =>
-      typeof column.accessorFn !== 'undefined' && column.getCanHide(),
-  ))
+const columns = computed(() =>
+  props.table
+    .getAllColumns()
+    .filter(
+      (column) =>
+        typeof column.accessorFn !== "undefined" && column.getCanHide()
+    )
+)
 </script>
 
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
-      <Button
-        variant="outline"
-        size="sm"
-        class="hidden h-8 ml-auto lg:flex"
-      >
-        <MixerHorizontalIcon class="w-4 h-4 mr-2" />
+      <Button variant="outline" size="sm" class="ml-auto hidden h-8 lg:flex">
+        <MixerHorizontalIcon class="mr-2 h-4 w-4" />
         View
       </Button>
     </DropdownMenuTrigger>

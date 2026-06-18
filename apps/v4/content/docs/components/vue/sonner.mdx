@@ -43,14 +43,13 @@ npx shadcn@latest add @force-ui-vue/sonner
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import { toast } from 'vue-sonner'
-import { Button } from '@/components/ui/button'
+import { toast } from "vue-sonner"
+
+import { Button } from "@/components/ui/button"
 </script>
 
 <template>
-  <Button @click="() => toast('My first toast')">
-    Give me a toast
-  </Button>
+  <Button @click="() => toast('My first toast')"> Give me a toast </Button>
 </template>
 ```
 
@@ -60,8 +59,9 @@ The `<Toaster />` component and its specific CSS are required to display toasts.
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import 'vue-sonner/style.css'
-import { Toaster } from '@/components/ui/sonner'
+import "vue-sonner/style.css"
+
+import { Toaster } from "@/components/ui/sonner"
 </script>
 
 <template>

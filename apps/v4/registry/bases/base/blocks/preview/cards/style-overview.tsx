@@ -27,16 +27,16 @@ export function StyleOverview() {
 
   return (
     <Card>
-      <CardContent className="flex flex-col gap-6 style-lyra:gap-4 style-mira:gap-4">
+      <CardContent className="style-lyra:gap-4 style-mira:gap-4 flex flex-col gap-6">
         <div className="flex flex-col gap-1">
-          <div className="cn-font-heading text-2xl font-medium style-lyra:text-lg style-mira:text-lg style-sera:text-lg style-sera:font-semibold style-sera:tracking-wide style-sera:uppercase">
+          <div className="cn-font-heading style-lyra:text-lg style-mira:text-lg style-sera:text-lg style-sera:font-semibold style-sera:tracking-wide style-sera:uppercase text-2xl font-medium">
             {currentStyle?.title} -{" "}
             {currentFontHeading?.name &&
             currentFontHeading.name !== currentFont?.name
               ? currentFontHeading.name
               : currentFont?.name}
           </div>
-          <div className="line-clamp-2 text-base text-muted-foreground style-lyra:text-sm style-mira:text-sm style-sera:text-sm style-sera:leading-relaxed">
+          <div className="style-lyra:text-sm style-mira:text-sm style-sera:text-sm style-sera:leading-relaxed line-clamp-2 text-base text-muted-foreground">
             Designers love packing quirky glyphs into test phrases. This is a
             preview of the typography styles.
           </div>
@@ -61,14 +61,14 @@ export function StyleOverview() {
               className="flex flex-col flex-wrap items-center gap-2"
             >
               <div
-                className="relative aspect-square w-full rounded-lg bg-(--color) after:absolute after:inset-0 after:rounded-lg after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten style-sera:rounded-none style-sera:after:rounded-none"
+                className="style-sera:rounded-none style-sera:after:rounded-none relative aspect-square w-full rounded-lg bg-(--color) after:absolute after:inset-0 after:rounded-lg after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten"
                 style={
                   {
                     "--color": `var(${variant})`,
                   } as React.CSSProperties
                 }
               />
-              <div className="hidden max-w-14 truncate font-mono text-[0.60rem] md:block style-lyra:max-w-10 style-mira:max-w-10">
+              <div className="style-lyra:max-w-10 style-mira:max-w-10 hidden max-w-14 truncate font-mono text-[0.60rem] md:block">
                 {variant}
               </div>
             </div>

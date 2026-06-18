@@ -137,10 +137,10 @@ function NavigationMenuWithoutViewport() {
                   <NavigationMenuLink asChild>
                     <Link href="#">
                       <div className="flex flex-col">
-                        <div className="font-medium style-sera:font-heading style-sera:tracking-wide style-sera:uppercase">
+                        <div className="style-sera:font-heading style-sera:tracking-wide style-sera:uppercase font-medium">
                           Components
                         </div>
-                        <div className="text-muted-foreground style-sera:mt-0.5 style-sera:leading-relaxed">
+                        <div className="style-sera:mt-0.5 style-sera:leading-relaxed text-muted-foreground">
                           Browse all components in the library.
                         </div>
                       </div>
@@ -149,10 +149,10 @@ function NavigationMenuWithoutViewport() {
                   <NavigationMenuLink asChild>
                     <Link href="#">
                       <div className="flex flex-col">
-                        <div className="font-medium style-sera:font-heading style-sera:tracking-wide style-sera:uppercase">
+                        <div className="style-sera:font-heading style-sera:tracking-wide style-sera:uppercase font-medium">
                           Documentation
                         </div>
-                        <div className="text-muted-foreground style-sera:mt-0.5 style-sera:leading-relaxed">
+                        <div className="style-sera:mt-0.5 style-sera:leading-relaxed text-muted-foreground">
                           Learn how to use the library.
                         </div>
                       </div>
@@ -161,10 +161,10 @@ function NavigationMenuWithoutViewport() {
                   <NavigationMenuLink asChild>
                     <Link href="#">
                       <div className="flex flex-col">
-                        <div className="font-medium style-sera:font-heading style-sera:tracking-wide style-sera:uppercase">
+                        <div className="style-sera:font-heading style-sera:tracking-wide style-sera:uppercase font-medium">
                           Blog
                         </div>
-                        <div className="text-muted-foreground style-sera:mt-0.5 style-sera:leading-relaxed">
+                        <div className="style-sera:mt-0.5 style-sera:leading-relaxed text-muted-foreground">
                           Read our latest blog posts.
                         </div>
                       </div>
@@ -253,11 +253,11 @@ function ListItem({
     <li {...props}>
       <NavigationMenuLink asChild>
         <Link href={href}>
-          <div className="flex flex-col gap-1 style-vega:text-sm style-nova:text-sm style-lyra:text-xs style-maia:text-sm style-mira:text-xs style-luma:text-sm">
-            <div className="leading-none font-medium style-sera:font-heading style-sera:tracking-wide style-sera:uppercase">
+          <div className="style-vega:text-sm style-nova:text-sm style-lyra:text-xs style-maia:text-sm style-mira:text-xs style-luma:text-sm flex flex-col gap-1">
+            <div className="style-sera:font-heading style-sera:tracking-wide style-sera:uppercase leading-none font-medium">
               {title}
             </div>
-            <div className="line-clamp-2 text-muted-foreground style-sera:mt-0.5 style-sera:leading-relaxed">
+            <div className="style-sera:mt-0.5 style-sera:leading-relaxed line-clamp-2 text-muted-foreground">
               {children}
             </div>
           </div>

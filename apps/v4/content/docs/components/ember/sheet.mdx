@@ -5,7 +5,6 @@ base: ember
 component: true
 ---
 
-
 <ComponentPreview framework="ember" name="sheet-demo" />
 
 ## Installation
@@ -40,13 +39,11 @@ pnpm add ember-provide-consume-context
 
 <Step>Update the import paths to match your project setup.</Step>
 
-
 </Steps>
 
 </TabsContent>
 
 </CodeTabs>
-
 
 ## Usage
 
@@ -91,7 +88,11 @@ You can adjust the size of the sheet using CSS classes:
 ```hbs showLineNumbers {3}
 <Sheet as |isOpen setOpen|>
   <SheetTrigger @setOpen={{setOpen}}>Open</SheetTrigger>
-  <SheetContent @isOpen={{isOpen}} @setOpen={{setOpen}} @class="w-[400px] sm:w-[540px]">
+  <SheetContent
+    @isOpen={{isOpen}}
+    @setOpen={{setOpen}}
+    @class="w-[400px] sm:w-[540px]"
+  >
     <SheetHeader>
       <SheetTitle>Are you absolutely sure?</SheetTitle>
       <SheetDescription>

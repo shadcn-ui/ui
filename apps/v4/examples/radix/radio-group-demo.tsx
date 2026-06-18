@@ -1,5 +1,8 @@
 import { Label } from "@/styles/radix-force-ui/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/styles/radix-force-ui/ui/radio-group"
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@/styles/radix-force-ui/ui/radio-group"
 
 export function RadioGroupDemo() {
   return (

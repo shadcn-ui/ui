@@ -96,7 +96,7 @@ export function SocialLinks() {
           </Field>
         </FieldGroup>
       </CardContent>
-      <CardFooter className="justify-end gap-2 style-sera:justify-center">
+      <CardFooter className="style-sera:justify-center justify-end gap-2">
         <Button variant="secondary" className="style-sera:flex-1">
           Discard
         </Button>

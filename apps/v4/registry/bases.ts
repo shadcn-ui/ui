@@ -50,7 +50,11 @@ export const BASES: z.infer<typeof registryItemSchema>[] = [
     type: "registry:style",
     title: "Ember",
     description: "A framework for ambitious web applications.",
-    dependencies: ["ember-modifier", "ember-provide-consume-context", "class-variance-authority"],
+    dependencies: [
+      "ember-modifier",
+      "ember-provide-consume-context",
+      "class-variance-authority",
+    ],
   },
   // [FORCE-UI-END]
 ]

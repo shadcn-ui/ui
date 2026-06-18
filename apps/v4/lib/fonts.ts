@@ -1,8 +1,8 @@
 import {
-  Noto_Sans as FontSans,
   Noto_Sans_Mono as FontMono,
   Noto_Sans_Arabic as FontNotoSansArabic,
   Noto_Sans_Hebrew as FontNotoSansHebrew,
+  Noto_Sans as FontSans,
 } from "next/font/google"
 
 import { cn } from "@/lib/utils"
