@@ -124,6 +124,24 @@
     @apply text-primary underline-offset-4 hover:underline;
   }
 
+  /* [FORCE-UI-START] solid status variants */
+  .cn-badge-variant-success-solid {
+    @apply bg-success-solid text-on-success;
+  }
+
+  .cn-badge-variant-warning-solid {
+    @apply bg-warning-solid text-on-warning dark:text-on-warning;
+  }
+
+  .cn-badge-variant-info-solid {
+    @apply bg-info-solid text-on-info;
+  }
+
+  .cn-badge-variant-error-solid {
+    @apply bg-destructive text-on-error;
+  }
+  /* [FORCE-UI-END] */
+
   /* MARK: Breadcrumb */
   .cn-breadcrumb-list {
     @apply text-muted-foreground gap-1.5 text-sm;
@@ -643,26 +661,8 @@
 
   /* MARK: Input */
   .cn-input {
-    @apply focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-3 aria-invalid:ring-3 md:text-sm [&[readonly]]:bg-muted [&[readonly]]:border-border;
+    @apply dark:bg-input/30 border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border bg-transparent px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-3 aria-invalid:ring-3 md:text-sm;
   }
-
-  /* [FORCE-UI-START] */
-  .cn-input-variant-outline {
-    @apply border-border bg-transparent hover:border-input;
-  }
-
-  .cn-input-variant-filled {
-    @apply border-border bg-muted hover:border-input dark:bg-muted;
-  }
-
-  .cn-input-variant-underline {
-    @apply rounded-none border-0 border-b border-input bg-transparent px-0;
-  }
-
-  .cn-input-variant-ghost {
-    @apply border-transparent bg-transparent hover:bg-muted/50;
-  }
-  /* [FORCE-UI-END] */
 
   /* MARK: Input OTP */
   .cn-input-otp {
@@ -764,18 +764,8 @@
 
   /* MARK: Kbd */
   .cn-kbd {
-    @apply in-data-[slot=tooltip-content]:bg-background/20 in-data-[slot=tooltip-content]:text-background dark:in-data-[slot=tooltip-content]:bg-background/10 h-5 w-fit min-w-5 gap-1 rounded-sm px-1 font-sans text-xs font-medium [&_svg:not([class*='size-'])]:size-3;
+    @apply bg-muted text-muted-foreground in-data-[slot=tooltip-content]:bg-background/20 in-data-[slot=tooltip-content]:text-background dark:in-data-[slot=tooltip-content]:bg-background/10 h-5 w-fit min-w-5 gap-1 rounded-sm px-1 font-sans text-xs font-medium [&_svg:not([class*='size-'])]:size-3;
   }
-
-  /* [FORCE-UI-START] */
-  .cn-kbd-variant-default {
-    @apply bg-muted text-muted-foreground;
-  }
-
-  .cn-kbd-variant-primary {
-    @apply bg-background/20 text-background dark:bg-background/10;
-  }
-  /* [FORCE-UI-END] */
 
   .cn-kbd-group {
     @apply gap-1;
