@@ -396,6 +396,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100%;
+  /* [FORCE-UI] 100vh (not 100%) so flex can vertically center — html/body have no explicit height, making min-height:100% collapse to auto */
+  min-height: 100vh;
   padding: 2.5rem;
 }

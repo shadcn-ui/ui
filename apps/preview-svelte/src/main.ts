@@ -1,9 +1,10 @@
 import "./styles.css"
-import { syncTheme, getComponentName } from "./preview-shell"
+import { syncTheme, getComponentName, reportOverlays } from "./preview-shell"
 import { mount } from "svelte"
 
 async function renderPreview() {
   syncTheme()
+  reportOverlays()
 
   const app = document.getElementById("app")
   if (!app) return

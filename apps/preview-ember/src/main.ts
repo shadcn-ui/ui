@@ -1,8 +1,9 @@
 import "./styles.css"
-import { syncTheme, getComponentName } from "./preview-shell"
+import { syncTheme, getComponentName, reportOverlays } from "./preview-shell"
 
 async function renderPreview() {
   syncTheme()
+  reportOverlays()
 
   const app = document.getElementById("app")
   if (!app) return
