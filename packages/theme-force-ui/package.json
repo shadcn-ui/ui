@@ -8,7 +8,9 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "parse-tokens": "tsx scripts/parse-tokens.mts"
+    "parse-tokens": "tsx scripts/parse-tokens.mts",
+    "generate-theme": "tsx scripts/generate-theme.mts",
+    "sync-tokens": "pnpm parse-tokens && pnpm generate-theme"
   },
   "peerDependencies": {
     "shadcn": "workspace:*"
