@@ -1,0 +1,513 @@
+{
+  "$description": "Perforce Force UI — Semantic tokens, light theme. These tokens are shipped as --force-* CSS custom properties. Every UI element references these tokens, never primitives directly.",
+  "$specVersion": "0.13.0",
+
+  "color": {
+    "$type": "color",
+
+    "bg": {
+      "$description": "Background colors. Three-level hierarchy: surface (white) > muted (subtle grey) > emphasis (chrome/nav).",
+      "surface": {
+        "$value": "{color.neutral.0}",
+        "$description": "Primary page background. Use for main content areas, card interiors, modal content. Do NOT use for navigation chrome (use color.bg.emphasis)."
+      },
+      "muted": {
+        "$value": "{color.neutral.50}",
+        "$description": "Secondary background with subtle tint. Use for table headers, empty states, disabled inputs, secondary panels. Do NOT use for primary content areas."
+      },
+      "emphasis": {
+        "$value": "{color.neutral.100}",
+        "$description": "Tertiary background for structural chrome. Use for topbar, sidebar, nav backgrounds. Do NOT use for content areas or cards."
+      },
+      "inverse": {
+        "$value": "{color.neutral.900}",
+        "$description": "Inverted background for high-contrast elements. Use for tooltips, inverted badges. Do NOT use for large content surfaces."
+      },
+      "overlay": {
+        "$value": "{color.alpha.black-50}",
+        "$description": "Modal/dialog overlay scrim. Use only behind modals and drawers. Apply to a full-viewport fixed element."
+      },
+      "interactive-hover": {
+        "$value": "{color.neutral.50}",
+        "$description": "Hover state background for interactive elements (list items, table rows, nav items). Do NOT use as a static background."
+      },
+      "interactive-active": {
+        "$value": "{color.indigo.50}",
+        "$description": "Selected/active state background. Use for active nav items, selected table rows, toggled states. Always pair with color.text.interactive-active for foreground."
+      },
+      "primary": {
+        "$value": "{color.indigo.500}",
+        "$description": "Solid primary brand background. Use for primary CTA buttons, primary badges (strong variant). Always pair with color.text.on-primary for foreground."
+      },
+      "primary-hover": {
+        "$value": "{color.indigo.600}",
+        "$description": "Hover state for solid primary backgrounds. Use only on elements that have color.bg.primary as their default."
+      },
+      "primary-active": {
+        "$value": "{color.indigo.700}",
+        "$description": "Pressed/active state for solid primary backgrounds."
+      },
+      "primary-subtle": {
+        "$value": "{color.indigo.50}",
+        "$description": "Subtle primary-tinted background. Use for primary badges (subtle variant), selected states, focus highlights. Pair with color.text.primary for foreground."
+      },
+      "primary-subtle-hover": {
+        "$value": "{color.indigo.100}",
+        "$description": "Hover state for subtle primary-tinted backgrounds. Use on secondary/confirm button hover (subtle variant), hover on selected/focus-highlighted rows. Only use on elements whose resting background is color.bg.primary-subtle."
+      },
+      "on-brand": {
+        "$value": "{color.alpha.white-10}",
+        "$description": "Resting background for interactive elements placed on a brand-colored surface (topbar, hero, indigo banner). Semi-transparent white reads against brand backgrounds where a solid fill would compete with the surface. Use for primary/onBrand buttons. Do NOT use on standard white or muted surfaces."
+      },
+      "on-brand-hover": {
+        "$value": "{color.alpha.white-20}",
+        "$description": "Hover state for on-brand backgrounds. Use only on elements whose resting background is color.bg.on-brand."
+      },
+      "secondary": {
+        "$value": "{color.cyan.500}",
+        "$description": "Solid secondary brand background (cyan). Use sparingly for secondary accent elements. Pair with color.text.on-secondary (black) — do NOT pair with on-primary (white), which fails WCAG contrast on cyan."
+      },
+      "destructive": {
+        "$value": "{color.cranberry.500}",
+        "$description": "Solid destructive/error background. Use for destructive CTA buttons only. Pair with color.text.on-primary. Do NOT use for error messages (use color.bg.error-subtle)."
+      },
+      "destructive-hover": {
+        "$value": "{color.cranberry.600}",
+        "$description": "Hover state for destructive backgrounds."
+      },
+      "destructive-active": {
+        "$value": "{color.cranberry.700}",
+        "$description": "Pressed state for destructive backgrounds."
+      },
+      "success": {
+        "$value": "{color.green.500}",
+        "$description": "Solid success background. Use for strong success badges and success confirmation CTAs. Pair with color.text.on-success (white). Do NOT use for success alerts or inline success messages (use color.bg.success-subtle)."
+      },
+      "success-hover": {
+        "$value": "{color.green.600}",
+        "$description": "Hover state for solid success backgrounds."
+      },
+      "success-subtle": {
+        "$value": "{color.green.50}",
+        "$description": "Subtle success background. Use for success alerts, success badges, success callouts. Pair with color.text.success for foreground."
+      },
+      "warning": {
+        "$value": "{color.orange.500}",
+        "$description": "Solid warning background. Use for strong warning badges and high-emphasis warning affordances. Pair with color.text.on-warning (black — orange-500 fails WCAG with white). Do NOT use for warning alerts or inline warnings (use color.bg.warning-subtle)."
+      },
+      "warning-hover": {
+        "$value": "{color.orange.600}",
+        "$description": "Hover state for solid warning backgrounds."
+      },
+      "warning-subtle": {
+        "$value": "{color.orange.50}",
+        "$description": "Subtle warning background. Use for warning alerts, warning badges. Pair with color.text.warning for foreground."
+      },
+      "error-subtle": {
+        "$value": "{color.cranberry.50}",
+        "$description": "Subtle error background. Use for error alerts, validation error containers. Pair with color.text.error for foreground."
+      },
+      "info": {
+        "$value": "{color.blue.500}",
+        "$description": "Solid info background. Use for strong info badges and info-variant CTAs. Pair with color.text.on-info (white). Do NOT use for info alerts or inline info messages (use color.bg.info-subtle)."
+      },
+      "info-hover": {
+        "$value": "{color.blue.600}",
+        "$description": "Hover state for solid info backgrounds."
+      },
+      "info-subtle": {
+        "$value": "{color.blue.50}",
+        "$description": "Subtle info background. Use for info alerts, info badges. Pair with color.text.info for foreground."
+      }
+    },
+
+    "text": {
+      "$description": "Text and icon foreground colors.",
+      "primary": {
+        "$value": "{color.base.black}",
+        "$description": "Default body text. Use for all primary readable content, headings, paragraph text. Do NOT use for secondary/helper text."
+      },
+      "secondary": {
+        "$value": "{color.neutral.800}",
+        "$description": "Secondary text. Use for labels, descriptions, sidebar nav text. Do NOT use for disabled states (use color.text.disabled)."
+      },
+      "tertiary": {
+        "$value": "{color.neutral.600}",
+        "$description": "Tertiary text. Use for captions, helper text, timestamps, metadata. Do NOT use for primary readable content."
+      },
+      "disabled": {
+        "$value": "{color.neutral.400}",
+        "$description": "Disabled text and placeholder text. Use when an element is non-interactive. Do NOT use for readable content."
+      },
+      "on-primary": {
+        "$value": "{color.base.white}",
+        "$description": "Text on solid primary and destructive backgrounds. Always white in light mode. Do NOT use on subtle/tinted backgrounds. Do NOT use on color.bg.secondary (use color.text.on-secondary), color.bg.warning (use color.text.on-warning), color.bg.success/info (use color.text.on-success / on-info for clarity, though both resolve to white)."
+      },
+      "on-secondary": {
+        "$value": "{color.base.black}",
+        "$description": "Text on solid secondary (cyan) backgrounds. Black because cyan-500 is too light for white text — white-on-cyan fails WCAG contrast (~1.5:1) while black-on-cyan passes AAA (~12.5:1)."
+      },
+      "on-success": {
+        "$value": "{color.base.white}",
+        "$description": "Text on solid success (green-500) backgrounds. White passes WCAG AA. Use on color.bg.success."
+      },
+      "on-warning": {
+        "$value": "{color.base.black}",
+        "$description": "Text on solid warning (orange-500) backgrounds. Black because orange-500 is too light for white text — white-on-orange-500 fails WCAG AA (~2.6:1) while black-on-orange-500 passes AA (~8:1). Use on color.bg.warning."
+      },
+      "on-info": {
+        "$value": "{color.base.white}",
+        "$description": "Text on solid info (blue-500) backgrounds. White passes WCAG AA. Use on color.bg.info."
+      },
+      "on-error": {
+        "$value": "{color.base.white}",
+        "$description": "Text on solid error/destructive (cranberry-500) backgrounds. White passes WCAG AA (~5.5:1). Use on color.bg.destructive. For badge fills on error-subtle, use color.text.error instead."
+      },
+      "on-inverse": {
+        "$value": "{color.base.white}",
+        "$description": "Text on inverse (dark) backgrounds like tooltips."
+      },
+      "link": {
+        "$value": "{color.indigo.500}",
+        "$description": "Hyperlink text and ghost button text. Use for all clickable text links. Do NOT use for non-interactive colored text. Do NOT use on color.bg.primary — both resolve to indigo-500 (zero contrast)."
+      },
+      "link-hover": {
+        "$value": "{color.indigo.600}",
+        "$description": "Hover state for links."
+      },
+      "interactive-active": {
+        "$value": "{color.indigo.700}",
+        "$description": "Text on interactive-active backgrounds. Use for active nav item text, selected row text. Always pair with color.bg.interactive-active."
+      },
+      "primary-brand": {
+        "$value": "{color.indigo.500}",
+        "$description": "Brand-colored text for emphasis. Use for outline button text, inline accents on neutral/surface/muted backgrounds. Do NOT use for body copy. Do NOT use on color.bg.primary — both resolve to indigo-500 (zero contrast). On solid primary backgrounds, use color.text.on-primary instead."
+      },
+      "success": {
+        "$value": "{color.green.700}",
+        "$description": "Success status text. Use on success-subtle backgrounds. Do NOT use for body text."
+      },
+      "warning": {
+        "$value": "{color.orange.700}",
+        "$description": "Warning status text. Use on warning-subtle backgrounds."
+      },
+      "error": {
+        "$value": "{color.cranberry.700}",
+        "$description": "Error/destructive status text. Use for validation messages, error alerts. Use on error-subtle backgrounds."
+      },
+      "info": {
+        "$value": "{color.blue.700}",
+        "$description": "Informational status text. Use on info-subtle backgrounds."
+      }
+    },
+
+    "border": {
+      "$description": "Border colors for structural and interactive boundaries.",
+      "default": {
+        "$value": "{color.neutral.200}",
+        "$description": "Default border. Use for cards, inputs, table cells, separators. The most common border in the system."
+      },
+      "muted": {
+        "$value": "{color.neutral.100}",
+        "$description": "Subtle border. Use for cards on secondary backgrounds, light dividers within components."
+      },
+      "strong": {
+        "$value": "{color.neutral.300}",
+        "$description": "Emphasized border. Use for hover states on bordered elements, emphasized separators."
+      },
+      "focus": {
+        "$value": "{color.indigo.500}",
+        "$description": "Focus ring border. Applied when an element receives keyboard focus. Always pair with shadow.focus-ring."
+      },
+      "error": {
+        "$value": "{color.cranberry.500}",
+        "$description": "Error state border. Use on inputs with validation errors. Always pair with shadow.focus-ring-error when focused."
+      },
+      "success": {
+        "$value": "{color.green.500}",
+        "$description": "Success accent border. Use for left-border accents on success alerts."
+      },
+      "warning": {
+        "$value": "{color.orange.500}",
+        "$description": "Warning accent border. Use for left-border accents on warning alerts."
+      },
+      "info": {
+        "$value": "{color.blue.500}",
+        "$description": "Info accent border. Use for left-border accents on info alerts."
+      },
+      "primary": {
+        "$value": "{color.indigo.500}",
+        "$description": "Primary brand border. Use for outline buttons, selected/active borders."
+      },
+      "destructive": {
+        "$value": "{color.cranberry.500}",
+        "$description": "Destructive border. Use for outline-danger buttons."
+      },
+      "input": {
+        "$value": "{color.neutral.500}",
+        "$description": "Input/select/textarea/button-secondary boundary. Meets WCAG 1.4.11 ≥3:1 against bg.surface. For decorative dividers use border.default."
+      }
+    },
+
+    "icon": {
+      "$description": "Icon colors. Icons inherit text color by default; use these for explicit overrides.",
+      "default": {
+        "$value": "{color.neutral.600}",
+        "$description": "Default icon color for non-interactive icons."
+      },
+      "interactive": {
+        "$value": "{color.indigo.500}",
+        "$description": "Interactive icon color. Use for clickable standalone icons."
+      },
+      "success": {
+        "$value": "{color.green.500}",
+        "$description": "Success status icon."
+      },
+      "warning": {
+        "$value": "{color.orange.500}",
+        "$description": "Warning status icon."
+      },
+      "error": {
+        "$value": "{color.cranberry.500}",
+        "$description": "Error status icon."
+      },
+      "info": {
+        "$value": "{color.blue.500}",
+        "$description": "Info status icon."
+      },
+      "warning-accessible": {
+        "$value": "{color.orange.700}",
+        "$description": "High-contrast icon variant for use on light/subtle surfaces. Meets ≥3:1 (1.4.11) for icons and ≥4.5:1 for text-as-icon. Use icon.warning (no -accessible suffix) only when the icon is a solid fill on its own ground."
+      },
+      "info-accessible": {
+        "$value": "{color.blue.700}",
+        "$description": "High-contrast icon variant for use on light/subtle surfaces. Meets ≥3:1 (1.4.11) for icons and ≥4.5:1 for text-as-icon. Use icon.info (no -accessible suffix) only when the icon is a solid fill on its own ground."
+      },
+      "success-accessible": {
+        "$value": "{color.green.700}",
+        "$description": "High-contrast icon variant for use on light/subtle surfaces. Meets ≥3:1 (1.4.11) for icons and ≥4.5:1 for text-as-icon. Use icon.success (no -accessible suffix) only when the icon is a solid fill on its own ground."
+      },
+      "error-accessible": {
+        "$value": "{color.cranberry.700}",
+        "$description": "High-contrast icon variant for use on light/subtle surfaces. Meets ≥3:1 (1.4.11) for icons and ≥4.5:1 for text-as-icon. Use icon.error (no -accessible suffix) only when the icon is a solid fill on its own ground."
+      }
+    },
+
+    "chart": {
+      "$description": "Data visualization palette. Use in sequence for multi-series charts.",
+      "1": { "$value": "{color.indigo.500}",    "$description": "Primary chart series. Brand indigo." },
+      "2": { "$value": "{color.cyan.500}",       "$description": "Second chart series. Brand cyan." },
+      "3": { "$value": "{color.green.500}",      "$description": "Third chart series." },
+      "4": { "$value": "{color.orange.500}",     "$description": "Fourth chart series." },
+      "5": { "$value": "{color.cranberry.500}",  "$description": "Fifth chart series." },
+      "6": { "$value": "{color.blue.500}",       "$description": "Sixth chart series." }
+    }
+  },
+
+  "shadow": {
+    "$type": "shadow",
+    "$description": "Elevation shadows. Used ONLY for floating/elevated elements (modals, dropdowns, tooltips, toasts). Do NOT use shadows on cards or content containers — use borders instead.",
+    "xs": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "1px", "blur": "2px",  "spread": "0px", "color": "#00000014" },
+        { "offsetX": "0px", "offsetY": "0px", "blur": "2px",  "spread": "0px", "color": "#0000001a" }
+      ],
+      "$description": "Smallest elevation. Use for dropdown menus. Do NOT use on cards."
+    },
+    "sm": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "2px", "blur": "4px",  "spread": "0px", "color": "#0000001a" },
+        { "offsetX": "0px", "offsetY": "0px", "blur": "2px",  "spread": "0px", "color": "#00000014" }
+      ],
+      "$description": "Small elevation. Use for popovers, select dropdowns."
+    },
+    "md": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "4px", "blur": "8px",  "spread": "0px", "color": "#0000001a" },
+        { "offsetX": "0px", "offsetY": "0px", "blur": "4px",  "spread": "0px", "color": "#00000014" }
+      ],
+      "$description": "Medium elevation. Use for floating panels, persistent popovers."
+    },
+    "lg": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "8px", "blur": "16px", "spread": "0px", "color": "#0000001a" },
+        { "offsetX": "0px", "offsetY": "0px", "blur": "8px",  "spread": "0px", "color": "#00000014" }
+      ],
+      "$description": "Large elevation. Use for modals, drawers."
+    },
+    "xl": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "16px", "blur": "32px", "spread": "0px", "color": "#0000001f" },
+        { "offsetX": "0px", "offsetY": "0px",  "blur": "16px", "spread": "0px", "color": "#00000014" }
+      ],
+      "$description": "Largest elevation. Use for wizard panels, major overlays."
+    },
+    "focus-ring": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "2px", "color": "{color.bg.surface}" },
+        { "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "4px", "color": "{color.indigo.500}" }
+      ],
+      "$description": "Two-stop focus ring; inner spacer matches surface, outer band carries brand contrast — guarantees ≥3:1 (WCAG 1.4.11) against every documented surface. Apply alongside border.focus on keyboard focus. Do NOT use for hover states."
+    },
+    "focus-ring-error": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "2px", "color": "{color.bg.surface}" },
+        { "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "4px", "color": "{color.cranberry.500}" }
+      ],
+      "$description": "Two-stop error focus ring; inner spacer matches surface, outer band carries brand contrast — guarantees ≥3:1 (WCAG 1.4.11) against every documented surface. Apply on focused inputs with validation errors."
+    },
+    "focus-ring-on-brand": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "2px", "color": "{color.bg.primary}" },
+        { "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "4px", "color": "{color.bg.surface}" }
+      ],
+      "$description": "Two-stop focus ring for elements sitting on bg.primary (e.g. primary buttons, on-brand surfaces); inner spacer matches surface, outer band carries brand contrast — guarantees ≥3:1 (WCAG 1.4.11) against every documented surface. Use this when an element sits on bg.primary."
+    }
+  },
+
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "default": {
+        "$value": "{font.family.sans}",
+        "$description": "Default font family for all UI text. Do NOT override per-component."
+      },
+      "code": {
+        "$value": "{font.family.mono}",
+        "$description": "Monospace font for code blocks, technical data, version numbers."
+      }
+    },
+    "size": {
+      "$type": "dimension",
+      "$description": "Semantic font sizes. The default body size is sm (14px) for data-dense enterprise UI.",
+      "xs":   { "$value": "{font.size.xs}",   "$description": "12px. Captions, labels, badges, helper text. Minimum readable size." },
+      "sm":   { "$value": "{font.size.sm}",   "$description": "14px. DEFAULT body text for most UI elements. Do NOT use base (16px) as the default body size." },
+      "base": { "$value": "{font.size.base}",  "$description": "16px. Large body text, page descriptions, marketing content." },
+      "lg":   { "$value": "{font.size.lg}",   "$description": "18px. Subsection headers." },
+      "xl":   { "$value": "{font.size.xl}",   "$description": "20px. Card titles, H2 headings." },
+      "2xl":  { "$value": "{font.size.2xl}",  "$description": "24px. Section headers." },
+      "3xl":  { "$value": "{font.size.3xl}",  "$description": "30px. Page titles (PageHeader component)." },
+      "4xl":  { "$value": "{font.size.4xl}",  "$description": "36px. Dashboard display headings. Use sparingly." }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "regular":  { "$value": "{font.weight.regular}",  "$description": "400. Body text, descriptions. Canonical name; use this unless you need the Tailwind alias." },
+      "normal":   { "$value": "{font.weight.regular}",  "$description": "Alias for regular (400). Aligns with Tailwind's font-normal utility naming. Prefer `regular` as the canonical name." },
+      "medium":   { "$value": "{font.weight.medium}",   "$description": "500. Buttons, nav items, labels, badges, table headers." },
+      "semibold": { "$value": "{font.weight.semibold}", "$description": "600. Card titles, section headings." },
+      "bold":     { "$value": "{font.weight.bold}",     "$description": "700. Page titles, strong emphasis." }
+    },
+    "lineHeight": {
+      "$type": "dimension",
+      "tight":   { "$value": "{font.lineHeight.tight}",   "$description": "1.25. Headings, single-line labels." },
+      "snug":    { "$value": "{font.lineHeight.snug}",    "$description": "1.375. Subheadings, medium text." },
+      "normal":  { "$value": "{font.lineHeight.normal}",  "$description": "1.5. Default for body text." },
+      "relaxed": { "$value": "{font.lineHeight.relaxed}", "$description": "1.75. Long-form content, descriptions." }
+    },
+    "letterSpacing": {
+      "$type": "dimension",
+      "tight":  { "$value": "{font.letterSpacing.tight}",  "$description": "Negative tracking for large headings (3xl+)." },
+      "normal": { "$value": "{font.letterSpacing.normal}", "$description": "Default tracking for body text." },
+      "wide":   { "$value": "{font.letterSpacing.wide}",   "$description": "Wide tracking (0.025em) for uppercase labels and badge text." },
+      "wider":  { "$value": "{font.letterSpacing.wider}",  "$description": "Extra-wide tracking (0.05em) for small uppercase KPI labels (Callout Card labels). Do NOT use for general badge/label text — use wide instead." }
+    }
+  },
+
+  "spacing": {
+    "$type": "dimension",
+    "$description": "Layout spacing. 4px base grid. Every padding, margin, and gap MUST use these values. Do NOT use arbitrary pixel values.",
+    "0":  { "$value": "{spacing.0}",  "$description": "Zero spacing." },
+    "1":  { "$value": "{spacing.1}",  "$description": "4px. Icon-to-label gap, tightest inline spacing." },
+    "2":  { "$value": "{spacing.2}",  "$description": "8px. Component internal gaps, badge inline padding." },
+    "3":  { "$value": "{spacing.3}",  "$description": "12px. Input horizontal padding, small component padding." },
+    "4":  { "$value": "{spacing.4}",  "$description": "16px. Card padding (compact), grid gaps, control bar gaps." },
+    "5":  { "$value": "{spacing.5}",  "$description": "20px. Medium internal padding." },
+    "6":  { "$value": "{spacing.6}",  "$description": "24px. Card padding (default), section gaps, layout content padding." },
+    "8":  { "$value": "{spacing.8}",  "$description": "32px. Section margins." },
+    "10": { "$value": "{spacing.10}", "$description": "40px. Large section separation." },
+    "12": { "$value": "{spacing.12}", "$description": "48px. Major layout breaks." },
+    "16": { "$value": "{spacing.16}", "$description": "64px. Page-level spacing." },
+    "20": { "$value": "{spacing.20}", "$description": "80px. Hero/feature spacing." }
+  },
+
+  "radius": {
+    "$type": "dimension",
+    "$description": "Border radius values. Use semantic aliases (radius.button, radius.card) when available.",
+    "none": { "$value": "{radius.none}", "$description": "No rounding." },
+    "sm":   { "$value": "{radius.sm}",   "$description": "4px. Small rounding for subtle badges." },
+    "md":   { "$value": "{radius.md}",   "$description": "6px. Default for buttons and inputs." },
+    "lg":   { "$value": "{radius.lg}",   "$description": "8px. Cards, containers." },
+    "xl":   { "$value": "{radius.xl}",   "$description": "12px. Modals, large panels." },
+    "full": { "$value": "{radius.full}", "$description": "Pill shape. Pill badges, avatars, tags." },
+    "button": { "$value": "{radius.md}", "$description": "Button border radius. Alias for radius.md." },
+    "input":  { "$value": "{radius.md}", "$description": "Input border radius. Alias for radius.md." },
+    "card":   { "$value": "{radius.lg}", "$description": "Card border radius. Alias for radius.lg." },
+    "modal":  { "$value": "{radius.xl}", "$description": "Modal border radius. Alias for radius.xl." },
+    "badge":  { "$value": "{radius.full}", "$description": "Badge border radius. Pill shape by default." }
+  },
+
+  "duration": {
+    "$type": "duration",
+    "fast":     { "$value": "{duration.fast}",     "$description": "150ms. Hover, color changes, toggles." },
+    "normal":   { "$value": "{duration.normal}",   "$description": "250ms. Panel open/close, fade in/out." },
+    "slow":     { "$value": "{duration.slow}",     "$description": "350ms. Page transitions." },
+    "entrance": { "$value": "{duration.entrance}", "$description": "500ms. First-paint entrance animations." }
+  },
+
+  "easing": {
+    "$type": "cubicBezier",
+    "standard":   { "$value": "{easing.standard}",   "$description": "Default easing for most transitions." },
+    "decelerate": { "$value": "{easing.decelerate}", "$description": "Enter/appear animations." },
+    "accelerate": { "$value": "{easing.accelerate}", "$description": "Exit/leave animations." }
+  },
+
+  "zIndex": {
+    "$type": "number",
+    "$description": "Stacking order. Each layer has a defined purpose. Do NOT use arbitrary z-index values.",
+    "dropdown":      { "$value": 100, "$description": "Dropdown menus, select lists." },
+    "sticky":        { "$value": 200, "$description": "Sticky table headers, section headers." },
+    "fixed":         { "$value": 300, "$description": "Fixed elements (topbar)." },
+    "modal-backdrop": { "$value": 400, "$description": "Modal overlay scrim." },
+    "modal":         { "$value": 500, "$description": "Modal content panel." },
+    "popover":       { "$value": 600, "$description": "Popovers that appear above modals." },
+    "tooltip":       { "$value": 700, "$description": "Tooltips. Highest standard layer." },
+    "toast":         { "$value": 800, "$description": "Toast notifications. Visible above everything." }
+  },
+
+  "opacity": {
+    "$type": "number",
+    "$description": "Opacity values for common states.",
+    "disabled": { "$value": 0.5,  "$description": "Disabled elements. Apply to the entire element, not just text." },
+    "subtle":   { "$value": 0.7,  "$description": "Subtle de-emphasis without full disabled treatment." },
+    "overlay":  { "$value": 0.5,  "$description": "Overlay/scrim opacity." }
+  },
+
+  "blur": {
+    "$type": "dimension",
+    "$description": "Backdrop blur values for glassmorphism and overlay effects.",
+    "sm": { "$value": "8px",  "$description": "Subtle backdrop blur." },
+    "md": { "$value": "16px", "$description": "Medium backdrop blur for overlays." },
+    "lg": { "$value": "24px", "$description": "Strong backdrop blur." },
+    "xl": { "$value": "40px", "$description": "Maximum backdrop blur for frosted glass effects." }
+  },
+
+  "breakpoint": {
+    "$type": "dimension",
+    "$description": "Responsive breakpoints for media queries.",
+    "sm":  { "$value": "576px",  "$description": "Small devices (phones landscape)." },
+    "md":  { "$value": "768px",  "$description": "Medium devices (tablets)." },
+    "lg":  { "$value": "992px",  "$description": "Large devices (small desktops)." },
+    "xl":  { "$value": "1200px", "$description": "Extra large devices (standard desktops)." },
+    "2xl": { "$value": "1400px", "$description": "Wide screens." }
+  },
+
+  "layout": {
+    "$type": "dimension",
+    "$description": "Fixed layout dimensions for the application shell.",
+    "header-height":       { "$value": "4rem",    "$description": "64px. TopBar height." },
+    "sidebar-width":       { "$value": "16rem",   "$description": "256px. Sidebar expanded width." },
+    "sidebar-collapsed":   { "$value": "4rem",    "$description": "64px. Sidebar collapsed width." },
+    "content-max-width":   { "$value": "87.5rem", "$description": "1400px. Optional reading-measure cap for narrow content types (forms, long-form prose, settings columns). Do NOT apply to the main content panel — the shell's content panel fills the available width between the sidebar and viewport edge. Use this token only when constraining an inner column for readability." },
+    "content-padding":     { "$value": "1.5rem",  "$description": "24px. Content area padding (matches spacing.6)." }
+  }
+}

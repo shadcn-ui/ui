@@ -1,0 +1,362 @@
+{
+  "$description": "Perforce Force UI — Semantic tokens, dark theme overrides. Only color tokens change between themes. Typography, spacing, radius, motion, z-index, and layout are theme-invariant and inherited from semantic-light. Applied via [data-theme='dark'] selector.",
+  "$specVersion": "1.0.0",
+
+  "color": {
+    "$type": "color",
+
+    "bg": {
+      "surface": {
+        "$value": "{color.neutral.800}",
+        "$description": "Primary content surface in dark mode."
+      },
+      "muted": {
+        "$value": "{color.neutral.850}",
+        "$description": "Secondary/subtle surface in dark mode. Slightly darker than surface."
+      },
+      "emphasis": {
+        "$value": "{color.neutral.875}",
+        "$description": "Chrome surface in dark mode (topbar, sidebar). Slightly darker than surface — mirrors the subtle light-mode contrast between surface and emphasis."
+      },
+      "inverse": {
+        "$value": "{color.neutral.0}",
+        "$description": "Inverted surface in dark mode. White."
+      },
+      "overlay": {
+        "$value": "{color.alpha.black-50}",
+        "$description": "Modal overlay scrim. Same in both themes."
+      },
+      "interactive-hover": {
+        "$value": "{color.neutral.800}",
+        "$description": "Hover background for interactive elements in dark mode."
+      },
+      "interactive-active": {
+        "$value": "#002a36",
+        "$description": "Active/selected background in dark mode. Deep cyan tint."
+      },
+      "primary": {
+        "$value": "{color.cyan.500}",
+        "$description": "Solid primary background in dark mode. Cyan is the primary brand color in dark mode (#00cfff). Pair with color.text.on-primary (black)."
+      },
+      "primary-hover": {
+        "$value": "{color.cyan.400}",
+        "$description": "Hover state for primary in dark mode. Brighter than resting cyan.500."
+      },
+      "primary-active": {
+        "$value": "{color.cyan.600}",
+        "$description": "Pressed state for primary in dark mode. Darker than resting cyan.500."
+      },
+      "primary-subtle": {
+        "$value": "#002a36",
+        "$description": "Subtle primary-tinted background in dark mode. Deep cyan tint."
+      },
+      "primary-subtle-hover": {
+        "$value": "{color.cyan.800}",
+        "$description": "Hover for subtle primary-tinted backgrounds in dark mode. One palette step lighter than primary-subtle."
+      },
+      "on-brand": {
+        "$value": "{color.alpha.white-10}",
+        "$description": "Resting fill for on-brand buttons over brand backgrounds in dark mode. Semi-transparent white reads against the cyan primary surface."
+      },
+      "on-brand-hover": {
+        "$value": "{color.alpha.white-20}",
+        "$description": "Hover fill for on-brand buttons over cyan primary backgrounds in dark mode."
+      },
+      "secondary": {
+        "$value": "{color.indigo.300}",
+        "$description": "Solid secondary background in dark mode. Indigo is the secondary brand color in dark mode. Pair with color.text.on-secondary (black) — indigo.300 (#a89bff) is light enough that black passes AAA (~9:1) while white fails."
+      },
+      "destructive": {
+        "$value": "{color.cranberry.300}",
+        "$description": "Solid destructive background in dark mode."
+      },
+      "destructive-hover": {
+        "$value": "{color.cranberry.200}",
+        "$description": "Hover for destructive in dark mode."
+      },
+      "destructive-active": {
+        "$value": "{color.cranberry.500}",
+        "$description": "Pressed for destructive in dark mode."
+      },
+      "success": {
+        "$value": "{color.green.300}",
+        "$description": "Solid success background in dark mode. Lighter green for contrast against dark surfaces. Pair with color.text.on-success (black)."
+      },
+      "success-hover": {
+        "$value": "{color.green.200}",
+        "$description": "Hover for solid success backgrounds in dark mode."
+      },
+      "success-subtle": {
+        "$value": "#072c07",
+        "$description": "Success subtle background in dark mode. Dark green tint."
+      },
+      "warning": {
+        "$value": "{color.orange.300}",
+        "$description": "Solid warning background in dark mode. Pair with color.text.on-warning (black)."
+      },
+      "warning-hover": {
+        "$value": "{color.orange.200}",
+        "$description": "Hover for solid warning backgrounds in dark mode."
+      },
+      "warning-subtle": {
+        "$value": "#512105",
+        "$description": "Warning subtle background in dark mode. Dark orange tint."
+      },
+      "error-subtle": {
+        "$value": "#46070c",
+        "$description": "Error subtle background in dark mode. Dark cranberry tint."
+      },
+      "info": {
+        "$value": "{color.blue.300}",
+        "$description": "Solid info background in dark mode. Pair with color.text.on-info (black)."
+      },
+      "info-hover": {
+        "$value": "{color.blue.200}",
+        "$description": "Hover for solid info backgrounds in dark mode."
+      },
+      "info-subtle": {
+        "$value": "#002a4a",
+        "$description": "Info subtle background in dark mode. Dark blue tint."
+      }
+    },
+
+    "text": {
+      "primary": {
+        "$value": "{color.neutral.50}",
+        "$description": "Primary text in dark mode. Near-white."
+      },
+      "secondary": {
+        "$value": "{color.neutral.300}",
+        "$description": "Secondary text in dark mode."
+      },
+      "tertiary": {
+        "$value": "{color.neutral.400}",
+        "$description": "Tertiary/caption text in dark mode."
+      },
+      "disabled": {
+        "$value": "{color.neutral.500}",
+        "$description": "Disabled/placeholder text in dark mode."
+      },
+      "on-primary": {
+        "$value": "{color.base.black}",
+        "$description": "Text on solid primary backgrounds in dark mode. Black for contrast on cyan.500 (#00cfff) — black-on-cyan passes AAA (~12:1)."
+      },
+      "on-secondary": {
+        "$value": "{color.base.black}",
+        "$description": "Text on solid secondary (indigo.300) backgrounds in dark mode. Black — indigo.300 (#a89bff) is light enough that black passes AAA (~9:1) while white fails."
+      },
+      "on-success": {
+        "$value": "{color.base.black}",
+        "$description": "Text on solid success backgrounds in dark mode. Black because bg.success resolves to green-300 (light) in dark mode. Use on color.bg.success."
+      },
+      "on-warning": {
+        "$value": "{color.base.black}",
+        "$description": "Text on solid warning backgrounds in dark mode. Black. Use on color.bg.warning."
+      },
+      "on-info": {
+        "$value": "{color.base.black}",
+        "$description": "Text on solid info backgrounds in dark mode. Black because bg.info resolves to blue-300 (light) in dark mode. Use on color.bg.info."
+      },
+      "on-error": {
+        "$value": "{color.base.black}",
+        "$description": "Text on solid error/destructive (cranberry-300) backgrounds in dark mode. Black passes WCAG AA. Use on color.bg.destructive."
+      },
+      "on-inverse": {
+        "$value": "{color.base.black}",
+        "$description": "Text on inverse (white) backgrounds in dark mode."
+      },
+      "link": {
+        "$value": "{color.cyan.300}",
+        "$description": "Link text in dark mode. Cyan-300 (#99eeff) provides strong contrast on color.bg.surface. Do NOT use on color.bg.primary-hover (both resolve to light cyan, low contrast). Do NOT use on color.bg.primary — use color.text.on-primary instead."
+      },
+      "link-hover": {
+        "$value": "{color.cyan.200}",
+        "$description": "Link hover in dark mode. Lighter than resting cyan.300."
+      },
+      "interactive-active": {
+        "$value": "{color.cyan.300}",
+        "$description": "Active nav/selected item text in dark mode. Pair with color.bg.interactive-active."
+      },
+      "primary-brand": {
+        "$value": "{color.cyan.300}",
+        "$description": "Brand-colored text in dark mode. Cyan-300 (#99eeff) provides strong contrast on color.bg.surface. Do NOT use on color.bg.primary-hover (both resolve to light cyan, low contrast). On solid primary backgrounds, use color.text.on-primary instead."
+      },
+      "success": {
+        "$value": "{color.green.300}",
+        "$description": "Success text in dark mode."
+      },
+      "warning": {
+        "$value": "{color.orange.300}",
+        "$description": "Warning text in dark mode."
+      },
+      "error": {
+        "$value": "{color.cranberry.300}",
+        "$description": "Error text in dark mode."
+      },
+      "info": {
+        "$value": "{color.blue.300}",
+        "$description": "Info text in dark mode."
+      }
+    },
+
+    "border": {
+      "default": {
+        "$value": "{color.neutral.700}",
+        "$description": "Default border in dark mode."
+      },
+      "muted": {
+        "$value": "{color.neutral.800}",
+        "$description": "Subtle border in dark mode."
+      },
+      "strong": {
+        "$value": "{color.neutral.600}",
+        "$description": "Emphasized border in dark mode."
+      },
+      "focus": {
+        "$value": "{color.cyan.400}",
+        "$description": "Focus ring border in dark mode. Cyan-400 for visibility against dark surfaces."
+      },
+      "error": {
+        "$value": "{color.cranberry.300}",
+        "$description": "Error border in dark mode."
+      },
+      "success": {
+        "$value": "{color.green.300}",
+        "$description": "Success accent border in dark mode."
+      },
+      "warning": {
+        "$value": "{color.orange.300}",
+        "$description": "Warning accent border in dark mode."
+      },
+      "info": {
+        "$value": "{color.blue.300}",
+        "$description": "Info accent border in dark mode."
+      },
+      "primary": {
+        "$value": "{color.cyan.400}",
+        "$description": "Primary brand border in dark mode. Cyan-400 for outline buttons and selected/active borders."
+      },
+      "destructive": {
+        "$value": "{color.cranberry.300}",
+        "$description": "Destructive border in dark mode."
+      },
+      "input": {
+        "$value": "{color.neutral.500}",
+        "$description": "Input/select/textarea/button-secondary boundary. Meets WCAG 1.4.11 ≥3:1 against bg.surface. For decorative dividers use border.default."
+      }
+    },
+
+    "icon": {
+      "default": {
+        "$value": "{color.neutral.400}",
+        "$description": "Default icon in dark mode."
+      },
+      "interactive": {
+        "$value": "{color.cyan.400}",
+        "$description": "Interactive icon in dark mode. Cyan-400 for clickable standalone icons."
+      },
+      "success": {
+        "$value": "{color.green.300}",
+        "$description": "Success icon in dark mode."
+      },
+      "warning": {
+        "$value": "{color.orange.300}",
+        "$description": "Warning icon in dark mode."
+      },
+      "error": {
+        "$value": "{color.cranberry.300}",
+        "$description": "Error icon in dark mode."
+      },
+      "info": {
+        "$value": "{color.blue.300}",
+        "$description": "Info icon in dark mode."
+      },
+      "warning-accessible": {
+        "$value": "{color.orange.300}",
+        "$description": "High-contrast icon variant for use on dark/subtle surfaces. Meets ≥3:1 (1.4.11) for icons and ≥4.5:1 for text-as-icon. Use icon.warning (no -accessible suffix) only when the icon is a solid fill on its own ground."
+      },
+      "info-accessible": {
+        "$value": "{color.blue.300}",
+        "$description": "High-contrast icon variant for use on dark/subtle surfaces. Meets ≥3:1 (1.4.11) for icons and ≥4.5:1 for text-as-icon. Use icon.info (no -accessible suffix) only when the icon is a solid fill on its own ground."
+      },
+      "success-accessible": {
+        "$value": "{color.green.300}",
+        "$description": "High-contrast icon variant for use on dark/subtle surfaces. Meets ≥3:1 (1.4.11) for icons and ≥4.5:1 for text-as-icon. Use icon.success (no -accessible suffix) only when the icon is a solid fill on its own ground."
+      },
+      "error-accessible": {
+        "$value": "{color.cranberry.300}",
+        "$description": "High-contrast icon variant for use on dark/subtle surfaces. Meets ≥3:1 (1.4.11) for icons and ≥4.5:1 for text-as-icon. Use icon.error (no -accessible suffix) only when the icon is a solid fill on its own ground."
+      }
+    },
+
+    "chart": {
+      "1": { "$value": "{color.cyan.400}",     "$description": "Primary chart series in dark mode. Cyan is the primary brand color in dark mode." },
+      "2": { "$value": "{color.indigo.300}",   "$description": "Second chart series in dark mode. Indigo is the secondary brand color in dark mode." },
+      "3": { "$value": "{color.green.300}",     "$description": "Third chart series in dark mode." },
+      "4": { "$value": "{color.orange.300}",    "$description": "Fourth chart series in dark mode." },
+      "5": { "$value": "{color.cranberry.300}", "$description": "Fifth chart series in dark mode." },
+      "6": { "$value": "{color.blue.300}",      "$description": "Sixth chart series in dark mode." }
+    }
+  },
+
+  "shadow": {
+    "$type": "shadow",
+    "$description": "Dark mode shadows use stronger opacity for visibility against dark surfaces.",
+    "xs": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "1px", "blur": "2px",  "spread": "0px", "color": "#00000033" },
+        { "offsetX": "0px", "offsetY": "0px", "blur": "2px",  "spread": "0px", "color": "#00000040" }
+      ],
+      "$description": "Smallest elevation in dark mode."
+    },
+    "sm": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "2px", "blur": "4px",  "spread": "0px", "color": "#00000040" },
+        { "offsetX": "0px", "offsetY": "0px", "blur": "2px",  "spread": "0px", "color": "#00000033" }
+      ],
+      "$description": "Small elevation in dark mode."
+    },
+    "md": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "4px", "blur": "8px",  "spread": "0px", "color": "#00000040" },
+        { "offsetX": "0px", "offsetY": "0px", "blur": "4px",  "spread": "0px", "color": "#00000033" }
+      ],
+      "$description": "Medium elevation in dark mode."
+    },
+    "lg": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "8px", "blur": "16px", "spread": "0px", "color": "#00000040" },
+        { "offsetX": "0px", "offsetY": "0px", "blur": "8px",  "spread": "0px", "color": "#00000033" }
+      ],
+      "$description": "Large elevation in dark mode."
+    },
+    "xl": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "16px", "blur": "32px", "spread": "0px", "color": "#0000004d" },
+        { "offsetX": "0px", "offsetY": "0px",  "blur": "16px", "spread": "0px", "color": "#00000040" }
+      ],
+      "$description": "Largest elevation in dark mode."
+    },
+    "focus-ring": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "2px", "color": "{color.bg.surface}" },
+        { "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "4px", "color": "{color.cyan.400}" }
+      ],
+      "$description": "Two-stop focus ring; inner spacer matches surface, outer band carries brand contrast — guarantees ≥3:1 (WCAG 1.4.11) against every documented surface. Dark mode uses cyan-400 for the outer band."
+    },
+    "focus-ring-error": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "2px", "color": "{color.bg.surface}" },
+        { "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "4px", "color": "{color.cranberry.300}" }
+      ],
+      "$description": "Two-stop error focus ring; inner spacer matches surface, outer band carries brand contrast — guarantees ≥3:1 (WCAG 1.4.11) against every documented surface. Dark mode uses cranberry-300 for the outer band."
+    },
+    "focus-ring-on-brand": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "2px", "color": "{color.bg.primary}" },
+        { "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "4px", "color": "{color.bg.surface}" }
+      ],
+      "$description": "Two-stop focus ring for elements sitting on bg.primary; inner spacer matches surface, outer band carries brand contrast — guarantees ≥3:1 (WCAG 1.4.11) against every documented surface. Use this when an element sits on bg.primary."
+    }
+  }
+}
