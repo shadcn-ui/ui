@@ -5,20 +5,15 @@ import type {
 import { RegistryError, RegistrySourceFileError } from "@/src/registry/errors"
 import { resolveGitHubRef } from "@/src/registry/github-ref"
 import type { GitHubSource } from "@/src/registry/github-ref"
+import { fetchWithProxy } from "@/src/registry/proxy"
 import {
   loadRegistryCatalogFromSource,
   loadRegistryItemFromSource,
 } from "@/src/registry/source"
 import type { RegistrySourceReader } from "@/src/registry/source"
-import { HttpsProxyAgent } from "https-proxy-agent"
-import fetch, { Headers } from "node-fetch"
 
 const GITHUB_RAW_URL = "https://raw.githubusercontent.com"
 const GITHUB_VALIDATION_CONCURRENCY = 8
-
-const agent = process.env.https_proxy
-  ? new HttpsProxyAgent(process.env.https_proxy)
-  : undefined
 
 type GitHubItemAddress = Extract<ResolvedItemAddress, { scheme: "github" }>
 
@@ -180,10 +175,9 @@ async function fetchGitHubSourceFile(
   filePath: string,
   address: GitHubSource
 ) {
-  let response: Awaited<ReturnType<typeof fetch>>
+  let response: Response
   try {
-    response = await fetch(url, {
-      agent,
+    response = await fetchWithProxy(url, {
       headers: new Headers({
         "Accept-Encoding": "identity",
         "User-Agent": "shadcn",

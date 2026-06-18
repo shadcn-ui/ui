@@ -42,7 +42,8 @@ export async function getBaseComponent(name: string, base: BaseName) {
     return null
   }
 
-  return index[name].component
+  const { Components } = await import("@/registry/bases/__components__")
+  return Components[base]?.[name] ?? null
 }
 
 export async function getAllItems() {
