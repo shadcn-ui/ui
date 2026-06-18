@@ -38,6 +38,12 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  /* [FORCE-UI-START] interactive state + link + tertiary tokens */
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-subtle: var(--primary-subtle);
+  --color-link: var(--link);
+  --color-tertiary: var(--tertiary);
+  /* [FORCE-UI-END] */
   /* [FORCE-UI-START] semantic status colors */
   --color-warning: var(--warning);
   --color-success: var(--success);
