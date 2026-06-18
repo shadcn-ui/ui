@@ -1,23 +1,41 @@
 <script lang="ts">
 	import { cn, type WithElementRef } from "$lib/utils.js";
+	import { tv } from "tailwind-variants";
 	import type { HTMLAttributes } from "svelte/elements";
+
+	// [FORCE-UI-START]
+	const inputGroupVariants = tv({
+		base: "group/input-group relative flex w-full min-w-0 items-center outline-none h-9 has-[>textarea]:h-auto",
+		variants: {
+			variant: {
+				outline: "cn-input-group-variant-outline border-input dark:bg-input/30 rounded-md border shadow-xs transition-[color,box-shadow]",
+				filled: "cn-input-group-variant-filled",
+				underline: "cn-input-group-variant-underline",
+				ghost: "cn-input-group-variant-ghost",
+			},
+		},
+		defaultVariants: {
+			variant: "outline",
+		},
+	});
+	// [FORCE-UI-END]
 
 	let {
 		ref = $bindable(null),
 		class: className,
+		variant = "outline",
 		children,
 		...props
-	}: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props();
+	}: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
+		variant?: "outline" | "filled" | "underline" | "ghost"; // [FORCE-UI]
+	} = $props();
 </script>
 
 <div
 	bind:this={ref}
 	data-slot="input-group"
 	role="group"
-	class={cn(
-		"group/input-group cn-input-group relative flex w-full min-w-0 items-center outline-none has-[>textarea]:h-auto",
-		className
-	)}
+	class={cn(inputGroupVariants({ variant }), className)}
 	{...props}
 >
 	{@render children?.()}
