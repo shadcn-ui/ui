@@ -1,5 +1,3 @@
-"use client"
-
 import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion"
 
 import { cn } from "@/registry/bases/base/lib/utils"

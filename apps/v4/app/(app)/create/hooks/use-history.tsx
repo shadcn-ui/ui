@@ -1,7 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { Suspense } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 
 type HistoryContextValue = {
   canGoBack: boolean
@@ -12,11 +13,27 @@ type HistoryContextValue = {
 
 const HistoryContext = React.createContext<HistoryContextValue | null>(null)
 
-export function HistoryProvider({ children }: { children: React.ReactNode }) {
-  const router = useRouter()
-  const pathname = usePathname()
+// Reads useSearchParams() in its own Suspense boundary so the
+// provider never blanks out children while search params resolve.
+function PresetSync({
+  onPresetChange,
+}: {
+  onPresetChange: (preset: string) => void
+}) {
   const searchParams = useSearchParams()
   const preset = searchParams.get("preset") ?? ""
+
+  React.useEffect(() => {
+    onPresetChange(preset)
+  }, [preset, onPresetChange])
+
+  return null
+}
+
+export function HistoryProvider({ children }: { children: React.ReactNode }) {
+  const router = useRouter()
+
+  const [preset, setPreset] = React.useState("")
 
   const entriesRef = React.useRef<string[]>([preset])
   const indexRef = React.useRef(0)
@@ -25,6 +42,10 @@ export function HistoryProvider({ children }: { children: React.ReactNode }) {
 
   const [index, setIndex] = React.useState(0)
   const [maxIndex, setMaxIndex] = React.useState(0)
+
+  const onPresetChange = React.useCallback((nextPreset: string) => {
+    setPreset(nextPreset)
+  }, [])
 
   React.useEffect(() => {
     if (isNavigatingRef.current) {
@@ -67,9 +88,10 @@ export function HistoryProvider({ children }: { children: React.ReactNode }) {
     } else {
       params.delete("preset")
     }
+    const pathname = window.location.pathname
     const query = params.toString()
     router.replace(query ? `${pathname}?${query}` : pathname)
-  }, [pathname, router])
+  }, [router])
 
   const goForward = React.useCallback(() => {
     if (indexRef.current >= maxIndexRef.current) {
@@ -88,9 +110,10 @@ export function HistoryProvider({ children }: { children: React.ReactNode }) {
     } else {
       params.delete("preset")
     }
+    const pathname = window.location.pathname
     const query = params.toString()
     router.replace(query ? `${pathname}?${query}` : pathname)
-  }, [pathname, router])
+  }, [router])
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -133,7 +156,14 @@ export function HistoryProvider({ children }: { children: React.ReactNode }) {
     [canGoBack, canGoForward, goBack, goForward]
   )
 
-  return <HistoryContext value={value}>{children}</HistoryContext>
+  return (
+    <HistoryContext value={value}>
+      <Suspense>
+        <PresetSync onPresetChange={onPresetChange} />
+      </Suspense>
+      {children}
+    </HistoryContext>
+  )
 }
 
 export function useHistory() {

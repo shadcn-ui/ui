@@ -25,7 +25,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 9.0.6
+          version: 10.33.4
           run_install: false
 
       - name: Get pnpm store directory
@@ -39,6 +39,9 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+
       - name: Install dependencies
         run: pnpm install
 

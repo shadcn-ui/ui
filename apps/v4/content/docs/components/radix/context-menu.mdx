@@ -79,6 +79,37 @@ import {
 </ContextMenu>
 ```
 
+## Composition
+
+Use the following composition to build a `ContextMenu`:
+
+```text
+ContextMenu
+├── ContextMenuTrigger
+└── ContextMenuContent
+    ├── ContextMenuGroup
+    │   ├── ContextMenuLabel
+    │   ├── ContextMenuItem
+    │   └── ContextMenuItem
+    ├── ContextMenuSeparator
+    ├── ContextMenuGroup
+    │   ├── ContextMenuLabel
+    │   ├── ContextMenuCheckboxItem
+    │   └── ContextMenuCheckboxItem
+    ├── ContextMenuSeparator
+    ├── ContextMenuGroup
+    │   ├── ContextMenuLabel
+    │   └── ContextMenuRadioGroup
+    │       ├── ContextMenuRadioItem
+    │       └── ContextMenuRadioItem
+    └── ContextMenuSub
+        ├── ContextMenuSubTrigger
+        └── ContextMenuSubContent
+            └── ContextMenuGroup
+                ├── ContextMenuItem
+                └── ContextMenuItem
+```
+
 ## Examples
 
 ### Basic

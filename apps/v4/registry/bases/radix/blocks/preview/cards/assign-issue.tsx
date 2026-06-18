@@ -107,7 +107,7 @@ export function AssignIssue() {
           <ComboboxContent anchor={anchor}>
             <ComboboxEmpty>No users found.</ComboboxEmpty>
             <ComboboxList>
-              {(username) => (
+              {(username: string) => (
                 <ComboboxItem key={username} value={username}>
                   <Avatar className="size-5">
                     <AvatarImage

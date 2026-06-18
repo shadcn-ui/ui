@@ -1,0 +1,3 @@
+@reference "./globals.css";
+
+@import "../registry/styles/style-force-ui.css" layer(base);

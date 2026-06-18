@@ -100,8 +100,13 @@ export async function getMonorepoTargets(cwd: string) {
 // Formats and logs the monorepo detection message.
 export function formatMonorepoMessage(
   command: string,
-  targets: { name: string; hasConfig: boolean }[]
+  targets: { name: string; hasConfig: boolean }[],
+  options?: {
+    cwdFlag?: string
+  }
 ) {
+  const cwdFlag = options?.cwdFlag ?? "-c"
+
   logger.break()
   logger.log(
     `It looks like you are running ${highlighter.info(
@@ -110,32 +115,26 @@ export function formatMonorepoMessage(
   )
   logger.log(
     `To use shadcn in a specific workspace, use the ${highlighter.info(
-      "-c"
+      cwdFlag
     )} flag:`
   )
   logger.break()
 
   for (const target of targets) {
-    logger.log(`  shadcn ${command} -c ${target.name}`)
+    logger.log(`  shadcn ${command} ${cwdFlag} ${target.name}`)
   }
 
   logger.break()
 }
 
-async function getWorkspacePatterns(cwd: string) {
+export async function getWorkspacePatterns(cwd: string) {
   const patterns: string[] = []
 
   // Read pnpm-workspace.yaml.
   const pnpmWorkspacePath = path.resolve(cwd, "pnpm-workspace.yaml")
   if (fs.existsSync(pnpmWorkspacePath)) {
     const content = await fs.readFile(pnpmWorkspacePath, "utf8")
-    // Simple regex parse to extract patterns from packages list.
-    const matches = Array.from(
-      content.matchAll(/^\s*-\s*["']?([^"'\n#]+)["']?\s*$/gm)
-    )
-    for (const match of matches) {
-      patterns.push(match[1].trim())
-    }
+    patterns.push(...parsePnpmWorkspacePackages(content))
   }
 
   // Read package.json workspaces.
@@ -156,4 +155,38 @@ async function getWorkspacePatterns(cwd: string) {
   }
 
   return Array.from(new Set(patterns))
+}
+
+export function parsePnpmWorkspacePackages(content: string) {
+  const patterns: string[] = []
+  let inPackages = false
+  let packagesIndent = 0
+
+  for (const line of content.split("\n")) {
+    const trimmed = line.trim()
+
+    if (!trimmed || trimmed.startsWith("#")) {
+      continue
+    }
+
+    const keyMatch = line.match(/^(\s*)([A-Za-z0-9_-]+)\s*:/)
+    if (keyMatch) {
+      packagesIndent = keyMatch[1].length
+      inPackages = keyMatch[2] === "packages"
+      continue
+    }
+
+    if (!inPackages) {
+      continue
+    }
+
+    const itemMatch = line.match(/^(\s*)-\s*(.+?)\s*(?:#.*)?$/)
+    if (!itemMatch || itemMatch[1].length <= packagesIndent) {
+      continue
+    }
+
+    patterns.push(itemMatch[2].trim().replace(/^["']|["']$/g, ""))
+  }
+
+  return patterns
 }

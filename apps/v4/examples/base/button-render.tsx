@@ -1,5 +1,3 @@
-"use client"
-
 import { buttonVariants } from "@/styles/base-force-ui/ui/button"
 
 export default function ButtonRender() {

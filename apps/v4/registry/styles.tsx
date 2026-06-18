@@ -1,5 +1,3 @@
-import * as React from "react"
-
 export const STYLES = [
   // [FORCE-UI-START] force-ui style entry
   {

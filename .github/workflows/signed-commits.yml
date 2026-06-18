@@ -1,0 +1,75 @@
+name: Signed commits
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+
+permissions:
+  pull-requests: write
+
+jobs:
+  signed-commits:
+    if: github.repository_owner == 'shadcn-ui'
+    runs-on: ubuntu-latest
+    name: Signed commits
+    steps:
+      - name: Check PR commits
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const body = "Can you sign the commits please? See https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits. Thank you."
+
+            const { owner, repo } = context.repo
+            const pullNumber = context.payload.pull_request.number
+
+            const commits = await github.paginate(github.rest.pulls.listCommits, {
+              owner,
+              repo,
+              pull_number: pullNumber,
+              per_page: 100,
+            })
+
+            const unsignedCommits = commits.filter((commit) => {
+              return commit.commit.verification?.reason === "unsigned"
+            })
+
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner,
+              repo,
+              issue_number: pullNumber,
+              per_page: 100,
+            })
+
+            const existingComments = comments.filter((comment) => {
+              return comment.user.type === "Bot" && comment.body.trim() === body
+            })
+
+            if (unsignedCommits.length > 0) {
+              core.info(`Found ${unsignedCommits.length} unsigned commits.`)
+
+              if (existingComments.length === 0) {
+                await github.rest.issues.createComment({
+                  owner,
+                  repo,
+                  issue_number: pullNumber,
+                  body,
+                })
+              }
+
+              return
+            }
+
+            core.info("All commits are signed.")
+
+            for (const comment of existingComments) {
+              await github.rest.issues.deleteComment({
+                owner,
+                repo,
+                comment_id: comment.id,
+              })
+            }

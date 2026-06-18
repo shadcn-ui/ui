@@ -77,7 +77,8 @@ These rules are **always enforced**. Each links to a file with Incorrect/Correct
 
 ### CLI
 
-- **Never decode or fetch preset codes manually.** Pass them directly to `npx shadcn@latest init --preset <code>`.
+- **Never decode preset codes or build preset URLs manually.** Use `npx shadcn@latest preset decode <code>`, `preset url <code>`, or `preset open <code>`. For project-aware preset detection, use `npx shadcn@latest preset resolve`.
+- **Apply preset codes directly with the CLI.** Use `npx shadcn@latest apply <code>` for existing projects, or `npx shadcn@latest init --preset <code>` when initializing.
 
 ## Key Patterns
 
@@ -150,6 +151,7 @@ The injected project context contains these key fields:
 - **`resolvedPaths`** → exact file-system destinations for components, utils, hooks, etc.
 - **`framework`** → routing and file conventions (e.g. Next.js App Router vs Vite SPA).
 - **`packageManager`** → use this for any non-shadcn dependency installs (e.g. `pnpm add date-fns` vs `npm install date-fns`).
+- **`preset`** → resolved preset code and values for the current project. Use `npx shadcn@latest preset resolve --json` when you only need preset information.
 
 See [cli.md — `info` command](./cli.md) for the full field reference.
 
@@ -172,12 +174,15 @@ npx shadcn@latest docs button dialog select
 5. **Install or update** — `npx shadcn@latest add`. When updating existing components, use `--dry-run` and `--diff` to preview changes first (see [Updating Components](#updating-components) below).
 6. **Fix imports in third-party components** — After adding components from community registries (e.g. `@bundui`, `@magicui`), check the added non-UI files for hardcoded import paths like `@/components/ui/...`. These won't match the project's actual aliases. Use `npx shadcn@latest info` to get the correct `ui` alias (e.g. `@workspace/ui/components`) and rewrite the imports accordingly. The CLI rewrites imports for its own UI files, but third-party registry components may use default paths that don't match the project.
 7. **Review added components** — After adding a component or block from any registry, **always read the added files and verify they are correct**. Check for missing sub-components (e.g. `SelectItem` without `SelectGroup`), missing imports, incorrect composition, or violations of the [Critical Rules](#critical-rules). Also replace any icon imports with the project's `iconLibrary` from the project context (e.g. if the registry item uses `lucide-react` but the project uses `hugeicons`, swap the imports and icon names accordingly). Fix all issues before moving on.
-8. **Registry must be explicit** — When the user asks to add a block or component, **do not guess the registry**. If no registry is specified (e.g. user says "add a login block" without specifying `@shadcn`, `@tailark`, etc.), ask which registry to use. Never default to a registry on behalf of the user.
-9. **Switching presets** — Ask the user first: **reinstall**, **merge**, or **skip**?
-   - **Reinstall**: `npx shadcn@latest init --preset <code> --force --reinstall`. Overwrites all components.
+8. **Registry must be explicit** — When the user asks to add a block or component, **do not guess the registry**. If no registry is specified (e.g. user says "add a login block" without specifying `@shadcn`, `@tailark`, `owner/repo`, etc.), ask which registry to use. Never default to a registry on behalf of the user.
+9. **Switching presets** — Ask the user first: **overwrite**, **partial**, **merge**, or **skip**?
+   - **Inspect current preset**: `npx shadcn@latest preset resolve`. Use `--json` when you need structured values.
+   - **Inspect incoming preset**: `npx shadcn@latest preset decode <code>`. Use `preset url <code>` or `preset open <code>` to share or open the preset builder.
+   - **Overwrite**: `npx shadcn@latest apply <code>`. Overwrites detected components, fonts, and CSS variables.
+   - **Partial**: `npx shadcn@latest apply <code> --only theme,font`. Updates only the selected preset parts without reinstalling UI components. Supported values are `theme` and `font`; comma-separated combinations are allowed. `icon` is intentionally not supported, because icon changes may require full component reinstall and transforms.
    - **Merge**: `npx shadcn@latest init --preset <code> --force --no-reinstall`, then run `npx shadcn@latest info` to list installed components, then for each installed component use `--dry-run` and `--diff` to [smart merge](#updating-components) it individually.
    - **Skip**: `npx shadcn@latest init --preset <code> --force --no-reinstall`. Only updates config and CSS, leaves components as-is.
-   - **Important**: Always run preset commands inside the user's project directory. The CLI automatically preserves the current base (`base` vs `radix`) from `components.json`. If you must use a scratch/temp directory (e.g. for `--dry-run` comparisons), pass `--base <current-base>` explicitly — preset codes do not encode the base.
+   - **Important**: Always run preset commands inside the user's project directory. `apply` only works in an existing project with a `components.json` file. The CLI automatically preserves the current base (`base` vs `radix`) from `components.json`. If you must use a scratch/temp directory (e.g. for `--dry-run` comparisons), pass `--base <current-base>` explicitly — preset codes do not encode the base.
 
 ## Updating Components
 
@@ -204,32 +209,51 @@ npx shadcn@latest init --name my-app --preset base-nova --template next --monore
 
 # Initialize existing project.
 npx shadcn@latest init --preset base-nova
-npx shadcn@latest init --defaults  # shortcut: --template=next --preset=base-nova
+npx shadcn@latest init --defaults  # shortcut: --template=next --preset=nova (base style implied)
+
+# Apply a preset to an existing project.
+npx shadcn@latest apply a2r6bw
+npx shadcn@latest apply a2r6bw --only theme
+npx shadcn@latest apply a2r6bw --only font
+npx shadcn@latest apply a2r6bw --only theme,font
+
+# Inspect preset codes and project preset state.
+npx shadcn@latest preset decode a2r6bw
+npx shadcn@latest preset url a2r6bw
+npx shadcn@latest preset open a2r6bw
+npx shadcn@latest preset resolve
+npx shadcn@latest preset resolve --json
 
 # Add components.
 npx shadcn@latest add button card dialog
 npx shadcn@latest add @magicui/shimmer-button
+npx shadcn@latest add owner/repo/item
 npx shadcn@latest add --all
 
 # Preview changes before adding/updating.
 npx shadcn@latest add button --dry-run
 npx shadcn@latest add button --diff button.tsx
 npx shadcn@latest add @acme/form --view button.tsx
+npx shadcn@latest add owner/repo/item --dry-run
 
 # Search registries.
 npx shadcn@latest search @shadcn -q "sidebar"
 npx shadcn@latest search @tailark -q "stats"
+npx shadcn@latest search owner/repo -q "login"
+npx shadcn@latest search                          # all configured registries
+npx shadcn@latest search @shadcn -q "menu" -t ui  # filter by item type
 
 # Get component docs and example URLs.
 npx shadcn@latest docs button dialog select
 
 # View registry item details (for items not yet installed).
 npx shadcn@latest view @shadcn/button
+npx shadcn@latest view owner/repo/item
 ```
 
-**Named presets:** `base-nova`, `radix-nova`
+**Named presets:** `nova`, `vega`, `maia`, `lyra`, `mira`, `luma`
 **Templates:** `next`, `vite`, `start`, `react-router`, `astro` (all support `--monorepo`) and `laravel` (not supported for monorepo)
-**Preset codes:** Base62 strings starting with `a` (e.g. `a2r6bw`), from [ui.shadcn.com](https://ui.shadcn.com).
+**Preset codes:** Version-prefixed base62 strings (e.g. `a2r6bw` or `b0`), from [ui.shadcn.com](https://ui.shadcn.com).
 
 ## Detailed References
 
@@ -239,4 +263,5 @@ npx shadcn@latest view @shadcn/button
 - [rules/styling.md](./rules/styling.md) — Semantic colors, variants, className, spacing, size, truncate, dark mode, cn(), z-index
 - [rules/base-vs-radix.md](./rules/base-vs-radix.md) — asChild vs render, Select, ToggleGroup, Slider, Accordion
 - [cli.md](./cli.md) — Commands, flags, presets, templates
+- [registry.md](./registry.md) — Authoring source registries, `include`, item definitions, dependencies, GitHub registry rules
 - [customization.md](./customization.md) — Theming, CSS variables, extending components

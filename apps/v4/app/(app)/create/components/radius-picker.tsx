@@ -24,6 +24,8 @@ export function RadiusPicker({
 }) {
   const [params, setParams] = useDesignSystemSearchParams()
   const selectedRadiusName = params.radius
+  // Force UI has a single style; no style locks the radius. [FORCE-UI]
+  const isRadiusLocked = false
 
   const currentRadius = RADII.find(
     (radius) => radius.name === selectedRadiusName

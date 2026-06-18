@@ -9,3 +9,5 @@ packages:
   - "!**/fixtures/**"
   - "!**/temp/**"
   - "!packages/tests/temp/**"
+
+minimumReleaseAge: 2880

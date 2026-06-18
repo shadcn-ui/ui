@@ -3,7 +3,7 @@
 import * as React from "react"
 import useSWR from "swr"
 
-import { DEFAULT_CONFIG } from "@/registry/config"
+import { DEFAULT_CONFIG, PRESETS } from "@/registry/config"
 import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 
 const RESET_DIALOG_KEY = "create:reset-dialog-open"
@@ -20,22 +20,27 @@ export function useReset() {
     })
 
   const reset = React.useCallback(() => {
+    const preset =
+      PRESETS.find(
+        (preset) => preset.base === params.base && preset.style === params.style
+      ) ?? DEFAULT_CONFIG
+
     setParams({
       base: params.base,
-      style: DEFAULT_CONFIG.style,
-      baseColor: DEFAULT_CONFIG.baseColor,
-      theme: DEFAULT_CONFIG.theme,
-      chartColor: DEFAULT_CONFIG.chartColor,
-      iconLibrary: DEFAULT_CONFIG.iconLibrary,
-      font: DEFAULT_CONFIG.font,
-      fontHeading: DEFAULT_CONFIG.fontHeading,
-      menuAccent: DEFAULT_CONFIG.menuAccent,
-      menuColor: DEFAULT_CONFIG.menuColor,
-      radius: DEFAULT_CONFIG.radius,
+      style: params.style,
+      baseColor: preset.baseColor,
+      theme: preset.theme,
+      chartColor: preset.chartColor,
+      iconLibrary: preset.iconLibrary,
+      font: preset.font,
+      fontHeading: preset.fontHeading,
+      menuAccent: preset.menuAccent,
+      menuColor: preset.menuColor,
+      radius: preset.radius,
       template: DEFAULT_CONFIG.template,
       item: params.item,
     })
-  }, [setParams, params.base, params.item])
+  }, [setParams, params.base, params.style, params.item])
 
   const handleShowResetDialogChange = React.useCallback(
     (open: boolean) => {

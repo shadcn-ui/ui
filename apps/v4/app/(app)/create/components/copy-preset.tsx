@@ -14,6 +14,7 @@ export function CopyPreset({ className }: React.ComponentProps<typeof Button>) {
   const presetCode = usePresetCode()
   const initUrl = useInitUrl()
   const [hasCopied, setHasCopied] = React.useState(false)
+  const label = hasCopied ? "Copied" : `--preset ${presetCode}`
 
   React.useEffect(() => {
     if (hasCopied) {
@@ -36,12 +37,13 @@ export function CopyPreset({ className }: React.ComponentProps<typeof Button>) {
     <Button
       variant="outline"
       onClick={handleCopy}
+      title={label}
       className={cn(
         "touch-manipulation bg-transparent! px-2! py-0! text-sm! transition-none select-none hover:bg-muted! pointer-coarse:h-10!",
         className
       )}
     >
-      <span>{hasCopied ? "Copied" : `--preset ${presetCode}`}</span>
+      <span className="block min-w-0 truncate">{label}</span>
     </Button>
   )
 }

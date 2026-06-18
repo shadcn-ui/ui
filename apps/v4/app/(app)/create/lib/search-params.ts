@@ -45,7 +45,7 @@ const designSystemSearchParams = {
   base: parseAsStringLiteral<BaseName>(BASES.map((b) => b.name)).withDefault(
     DEFAULT_CONFIG.base
   ),
-  item: parseAsString.withDefault("preview").withOptions({ shallow: true }),
+  item: parseAsString.withDefault("preview-02").withOptions({ shallow: true }),
   iconLibrary: parseAsStringLiteral<IconLibraryName>(
     Object.values(iconLibraries).map((i) => i.name)
   ).withDefault(DEFAULT_CONFIG.iconLibrary),
@@ -91,6 +91,7 @@ const designSystemSearchParams = {
     "laravel",
   ] as const).withDefault("next"),
   rtl: parseAsBoolean.withDefault(false),
+  pointer: parseAsBoolean.withDefault(false),
   size: parseAsInteger.withDefault(100),
   custom: parseAsBoolean.withDefault(false),
 }
@@ -126,6 +127,7 @@ const NON_DESIGN_SYSTEM_KEYS = [
   "preset",
   "template",
   "rtl",
+  "pointer",
   "size",
   "custom",
 ] as const
@@ -219,11 +221,14 @@ function resolvePresetParams(
       return normalizeDesignSystemParams({
         ...decoded,
         ...presetOverrides,
+        // Force UI is single-style; decoded presets always map to force-ui. [FORCE-UI]
+        style: "force-ui",
         base: rawParams.base,
         item: rawParams.item,
         preset: rawParams.preset,
         template: rawParams.template,
         rtl: rawParams.rtl,
+        pointer: rawParams.pointer,
         size: rawParams.size,
         custom: rawParams.custom,
       })

@@ -391,7 +391,7 @@ export function CommandMenu({
         <Button
           variant="outline"
           className={cn(
-            "relative h-8 w-full justify-start rounded-lg pl-3 font-normal text-foreground shadow-none hover:bg-muted/50 sm:pr-12 md:w-48 lg:w-40 xl:w-64 dark:bg-card"
+            "relative h-8 w-full justify-start rounded-lg border-none bg-muted pl-3 text-foreground shadow-none transition-colors hover:bg-muted/50 md:w-48 lg:w-40 xl:w-64 dark:bg-card"
           )}
           onClick={() => setOpen(true)}
           {...props}

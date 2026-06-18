@@ -82,6 +82,27 @@ import {
 </InputOTP>
 ```
 
+## Composition
+
+Use the following composition to build an `InputOTP`:
+
+```text
+InputOTP
+├── InputOTPGroup
+│   ├── InputOTPSlot
+│   ├── InputOTPSlot
+│   └── InputOTPSlot
+├── InputOTPSeparator
+├── InputOTPGroup
+│   ├── InputOTPSlot
+│   ├── InputOTPSlot
+│   └── InputOTPSlot
+├── InputOTPSeparator
+└── InputOTPGroup
+    ├── InputOTPSlot
+    └── InputOTPSlot
+```
+
 ## Pattern
 
 Use the `pattern` prop to define a custom pattern for the OTP input.
