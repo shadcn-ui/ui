@@ -21,5 +21,8 @@
       "Bash(git fetch *)",
       "Bash(git stash *)"
     ]
-  }
+  },
+  "disabledMcpjsonServers": [
+    "the-force-design-spec"
+  ]
 }
