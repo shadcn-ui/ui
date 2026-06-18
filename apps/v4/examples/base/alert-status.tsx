@@ -12,9 +12,7 @@ export default function AlertStatus() {
       <Alert variant="success">
         <CheckCircle2Icon />
         <AlertTitle>Payment received</AlertTitle>
-        <AlertDescription>
-          Your invoice has been paid in full.
-        </AlertDescription>
+        <AlertDescription>Your invoice has been paid in full.</AlertDescription>
       </Alert>
       <Alert variant="info">
         <InfoIcon />
