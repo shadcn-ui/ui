@@ -29,6 +29,20 @@
     @apply text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current;
   }
 
+  /* [FORCE-UI-START] */
+  .cn-alert-variant-warning {
+    @apply text-warning bg-warning/10 *:data-[slot=alert-description]:text-warning/90 *:[svg]:text-current;
+  }
+
+  .cn-alert-variant-success {
+    @apply text-success bg-success/10 *:data-[slot=alert-description]:text-success/90 *:[svg]:text-current;
+  }
+
+  .cn-alert-variant-info {
+    @apply text-info bg-info/10 *:data-[slot=alert-description]:text-info/90 *:[svg]:text-current;
+  }
+  /* [FORCE-UI-END] */
+
   .cn-alert-title {
     @apply font-medium group-has-[>svg]/alert:col-start-2;
   }

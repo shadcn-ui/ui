@@ -43,6 +43,7 @@ export default function AlertExample() {
       <AlertExample1 />
       <AlertExample2 />
       <AlertExample3 />
+      <AlertStatusVariants />
       <AlertExample4 />
       <AlertExample5 />
     </ExampleWrapper>
@@ -207,6 +208,48 @@ function AlertExample3() {
               <li>Verify billing address</li>
             </ul>
           </AlertDescription>
+        </Alert>
+      </div>
+    </Example>
+  )
+}
+
+function AlertStatusVariants() {
+  return (
+    <Example title="Status Variants" className="style-sera:bg-transparent">
+      <div className="mx-auto flex w-full max-w-lg flex-col gap-4">
+        <Alert variant="warning">
+          <IconPlaceholder
+            lucide="TriangleAlertIcon"
+            tabler="IconAlertTriangle"
+            hugeicons="AlertDiamondIcon"
+            phosphor="WarningIcon"
+            remixicon="RiAlertLine"
+          />
+          <AlertTitle>Warning</AlertTitle>
+          <AlertDescription>This action cannot be undone.</AlertDescription>
+        </Alert>
+        <Alert variant="success">
+          <IconPlaceholder
+            lucide="CircleCheckIcon"
+            tabler="IconCircleCheck"
+            hugeicons="CheckmarkCircle02Icon"
+            phosphor="CheckCircleIcon"
+            remixicon="RiCheckboxCircleLine"
+          />
+          <AlertTitle>Success</AlertTitle>
+          <AlertDescription>Your changes have been saved.</AlertDescription>
+        </Alert>
+        <Alert variant="info">
+          <IconPlaceholder
+            lucide="InfoIcon"
+            tabler="IconInfoCircle"
+            hugeicons="InformationCircleIcon"
+            phosphor="InfoIcon"
+            remixicon="RiInformationLine"
+          />
+          <AlertTitle>Info</AlertTitle>
+          <AlertDescription>A new version is available.</AlertDescription>
         </Alert>
       </div>
     </Example>
