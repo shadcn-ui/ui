@@ -7,16 +7,16 @@ import { cn } from "@/lib/utils"
 const spinnerVariants = cva("animate-spin", {
   variants: {
     color: {
-      default: "", // [FORCE-UI]
-      primary: "", // [FORCE-UI]
-      onPrimary: "", // [FORCE-UI]
-      inherit: "", // [FORCE-UI]
+      default: "text-muted-foreground", // [FORCE-UI]
+      primary: "text-primary", // [FORCE-UI]
+      onPrimary: "text-primary-foreground", // [FORCE-UI]
+      inherit: "text-current", // [FORCE-UI]
     },
     size: {
-      xs: "", // [FORCE-UI]
-      sm: "", // [FORCE-UI]
-      md: "", // [FORCE-UI]
-      lg: "", // [FORCE-UI]
+      xs: "size-3", // [FORCE-UI]
+      sm: "size-4", // [FORCE-UI]
+      md: "size-6", // [FORCE-UI]
+      lg: "size-10", // [FORCE-UI]
     },
   },
   defaultVariants: {

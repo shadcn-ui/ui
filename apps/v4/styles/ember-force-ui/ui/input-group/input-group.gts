@@ -12,7 +12,7 @@ import type { TOC } from '@ember/component/template-only';
 type InputGroupVariant = 'outline' | 'filled' | 'underline' | 'ghost';
 
 const inputGroupVariantMap: Record<InputGroupVariant, string> = {
-  outline: 'cn-input-group-variant-outline border-input dark:bg-input/30 rounded-md border shadow-xs transition-[color,box-shadow]',
+  outline: 'cn-input-group-variant-outline',
   filled: 'cn-input-group-variant-filled',
   underline: 'cn-input-group-variant-underline',
   ghost: 'cn-input-group-variant-ghost',

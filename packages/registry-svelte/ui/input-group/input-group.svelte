@@ -8,7 +8,7 @@
 		base: "group/input-group relative flex w-full min-w-0 items-center outline-none h-9 has-[>textarea]:h-auto",
 		variants: {
 			variant: {
-				outline: "cn-input-group-variant-outline border-input dark:bg-input/30 rounded-md border shadow-xs transition-[color,box-shadow]",
+				outline: "cn-input-group-variant-outline",
 				filled: "cn-input-group-variant-filled",
 				underline: "cn-input-group-variant-underline",
 				ghost: "cn-input-group-variant-ghost",

@@ -29,6 +29,21 @@
     @apply text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current;
   }
 
+  /* [FORCE-UI-START] status alert variants — mirror destructive (colored text
+     on card surface) for visual consistency with the existing variants. */
+  .cn-alert-variant-success {
+    @apply text-success bg-card *:data-[slot=alert-description]:text-success/90 *:[svg]:text-current;
+  }
+
+  .cn-alert-variant-warning {
+    @apply text-warning bg-card *:data-[slot=alert-description]:text-warning/90 *:[svg]:text-current;
+  }
+
+  .cn-alert-variant-info {
+    @apply text-info bg-card *:data-[slot=alert-description]:text-info/90 *:[svg]:text-current;
+  }
+  /* [FORCE-UI-END] */
+
   .cn-alert-title {
     @apply font-medium group-has-[>svg]/alert:col-start-2;
   }
@@ -672,6 +687,27 @@
     @apply dark:bg-input/30 border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border bg-transparent px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-3 aria-invalid:ring-3 md:text-sm;
   }
 
+  /* [FORCE-UI-START] input variant axis (outline/filled/underline/ghost).
+     Tiered border per pd-p4one: light border-border at rest, border-input on
+     hover, border-ring on focus (from base). Defined after .cn-input so they
+     win over the base border/bg. */
+  .cn-input-variant-outline {
+    @apply border-border hover:border-input;
+  }
+
+  .cn-input-variant-filled {
+    @apply border-border bg-muted hover:border-input dark:bg-muted;
+  }
+
+  .cn-input-variant-underline {
+    @apply rounded-none border-0 border-b border-input bg-transparent px-0 dark:bg-transparent;
+  }
+
+  .cn-input-variant-ghost {
+    @apply border-transparent bg-transparent hover:bg-muted/50 dark:bg-transparent;
+  }
+  /* [FORCE-UI-END] */
+
   /* MARK: Input OTP */
   .cn-input-otp {
     @apply gap-2;
@@ -777,6 +813,49 @@
 
   .cn-kbd-group {
     @apply gap-1;
+  }
+
+  /* [FORCE-UI-START] kbd variant axis. */
+  .cn-kbd-variant-default {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  .cn-kbd-variant-primary {
+    @apply bg-background/20 text-background dark:bg-background/10;
+  }
+  /* [FORCE-UI-END] */
+
+  /* MARK: Spinner */
+  .cn-spinner-color-default {
+    @apply text-muted-foreground;
+  }
+
+  .cn-spinner-color-primary {
+    @apply text-primary;
+  }
+
+  .cn-spinner-color-onPrimary {
+    @apply text-primary-foreground;
+  }
+
+  .cn-spinner-color-inherit {
+    @apply text-current;
+  }
+
+  .cn-spinner-size-xs {
+    @apply size-3;
+  }
+
+  .cn-spinner-size-sm {
+    @apply size-4;
+  }
+
+  .cn-spinner-size-md {
+    @apply size-6;
+  }
+
+  .cn-spinner-size-lg {
+    @apply size-10;
   }
 
   /* MARK: Label */
@@ -1284,6 +1363,24 @@
     @apply border-input dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 rounded-lg border bg-transparent px-2.5 py-2 text-base transition-colors focus-visible:ring-3 aria-invalid:ring-3 md:text-sm;
   }
 
+  /* [FORCE-UI-START] textarea variant axis — mirrors input. */
+  .cn-textarea-variant-outline {
+    @apply border-border hover:border-input;
+  }
+
+  .cn-textarea-variant-filled {
+    @apply border-border bg-muted hover:border-input dark:bg-muted;
+  }
+
+  .cn-textarea-variant-underline {
+    @apply rounded-none border-0 border-b border-input bg-transparent px-0 dark:bg-transparent;
+  }
+
+  .cn-textarea-variant-ghost {
+    @apply border-transparent bg-transparent hover:bg-muted/50 dark:bg-transparent;
+  }
+  /* [FORCE-UI-END] */
+
   /* MARK: Toggle */
   .cn-toggle {
     @apply hover:text-foreground aria-pressed:bg-muted focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive data-[state=on]:bg-muted gap-1 rounded-lg text-sm font-medium transition-all [&_svg:not([class*='size-'])]:size-4;
@@ -1339,6 +1436,26 @@
   .cn-input-group {
     @apply border-input dark:bg-input/30 has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[[data-slot][aria-invalid=true]]:border-destructive dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40 has-disabled:bg-input/50 dark:has-disabled:bg-input/80 h-8 rounded-lg border transition-colors in-data-[slot=combobox-content]:focus-within:border-inherit in-data-[slot=combobox-content]:focus-within:ring-0 has-disabled:opacity-50 has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot][aria-invalid=true]]:ring-3 has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pr-1.5 has-[>[data-align=inline-start]]:[&>input]:pl-1.5;
   }
+
+  /* [FORCE-UI-START] input-group variant axis — mirrors input. focus-within /
+     aria-invalid border rebinds live in the base (has-[] selectors) and apply
+     across all variants. */
+  .cn-input-group-variant-outline {
+    @apply border-border hover:border-input;
+  }
+
+  .cn-input-group-variant-filled {
+    @apply border-border bg-muted hover:border-input dark:bg-muted;
+  }
+
+  .cn-input-group-variant-underline {
+    @apply rounded-none border-0 border-b border-input;
+  }
+
+  .cn-input-group-variant-ghost {
+    @apply border-transparent hover:bg-muted/50 dark:bg-transparent;
+  }
+  /* [FORCE-UI-END] */
 
   .cn-input-group-addon {
     @apply text-muted-foreground h-auto gap-2 py-1.5 text-sm font-medium group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4;

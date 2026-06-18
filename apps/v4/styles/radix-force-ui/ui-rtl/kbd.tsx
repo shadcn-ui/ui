@@ -8,8 +8,8 @@ const kbdVariants = cva(
   {
     variants: {
       variant: {
-        default: "", // [FORCE-UI]
-        primary: "", // [FORCE-UI]
+        default: "bg-muted text-muted-foreground", // [FORCE-UI]
+        primary: "bg-background/20 text-background dark:bg-background/10", // [FORCE-UI]
       },
     },
     defaultVariants: {

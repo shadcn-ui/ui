@@ -11,11 +11,10 @@ export const inputGroupVariants = cva(
   {
     variants: {
       variant: {
-        outline:
-          "rounded-md border border-input shadow-xs transition-[color,box-shadow] dark:bg-input/30",
-        filled: "",
-        underline: "",
-        ghost: "",
+        outline: "border-border hover:border-input",
+        filled: "border-border bg-muted hover:border-input dark:bg-muted",
+        underline: "rounded-none border-0 border-b border-input",
+        ghost: "border-transparent hover:bg-muted/50 dark:bg-transparent",
       },
     },
     defaultVariants: {

@@ -8,10 +8,12 @@ const textareaVariants = cva(
   {
     variants: {
       variant: {
-        outline: "", // [FORCE-UI]
-        filled: "", // [FORCE-UI]
-        underline: "", // [FORCE-UI]
-        ghost: "", // [FORCE-UI]
+        outline: "border-border hover:border-input", // [FORCE-UI]
+        filled: "border-border bg-muted hover:border-input dark:bg-muted", // [FORCE-UI]
+        underline:
+          "rounded-none border-0 border-b border-input bg-transparent px-0 dark:bg-transparent", // [FORCE-UI]
+        ghost:
+          "border-transparent bg-transparent hover:bg-muted/50 dark:bg-transparent", // [FORCE-UI]
       },
     },
     defaultVariants: {
