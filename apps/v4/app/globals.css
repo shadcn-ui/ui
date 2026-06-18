@@ -42,7 +42,23 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
-  /* [FORCE-UI] */ --color-warning: var(--warning);
+  /* [FORCE-UI-START] semantic status colors */
+  --color-warning: var(--warning);
+  --color-success: var(--success);
+  --color-info: var(--info);
+  --color-error: var(--error);
+  --color-warning-subtle: var(--warning-subtle);
+  --color-success-subtle: var(--success-subtle);
+  --color-info-subtle: var(--info-subtle);
+  --color-error-subtle: var(--error-subtle);
+  --color-success-solid: var(--success-solid);
+  --color-warning-solid: var(--warning-solid);
+  --color-info-solid: var(--info-solid);
+  --color-on-success: var(--on-success);
+  --color-on-warning: var(--on-warning);
+  --color-on-info: var(--on-info);
+  --color-on-error: var(--on-error);
+  /* [FORCE-UI-END] */
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
