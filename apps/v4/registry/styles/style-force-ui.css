@@ -26,21 +26,20 @@
   }
 
   .cn-alert-variant-destructive {
-    @apply text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current;
+    @apply bg-error-subtle text-error [&_a]:text-error [&_a]:underline *:[svg]:text-current; /* [FORCE-UI] tinted callout surface; links underlined for WCAG 1.4.1 */
   }
 
-  /* [FORCE-UI-START] status alert variants — mirror destructive (colored text
-     on card surface) for visual consistency with the existing variants. */
+  /* [FORCE-UI-START] status alert variants — tinted callout surface per Force spec subtle pattern */
   .cn-alert-variant-success {
-    @apply text-success bg-card *:data-[slot=alert-description]:text-success/90 *:[svg]:text-current;
+    @apply bg-success-subtle text-success [&_a]:text-success [&_a]:underline *:[svg]:text-current;
   }
 
   .cn-alert-variant-warning {
-    @apply text-warning bg-card *:data-[slot=alert-description]:text-warning/90 *:[svg]:text-current;
+    @apply bg-warning-subtle text-warning [&_a]:text-warning [&_a]:underline *:[svg]:text-current;
   }
 
   .cn-alert-variant-info {
-    @apply text-info bg-card *:data-[slot=alert-description]:text-info/90 *:[svg]:text-current;
+    @apply bg-info-subtle text-info [&_a]:text-info [&_a]:underline *:[svg]:text-current;
   }
   /* [FORCE-UI-END] */
 
@@ -108,7 +107,7 @@
 
   /* MARK: Badge */
   .cn-badge {
-    @apply h-5 gap-1 rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium transition-all has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&>svg]:size-3!;
+    @apply h-5 gap-1 rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium uppercase tracking-wide transition-all has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&>svg]:size-3.5!; /* [FORCE-UI] uppercase+tracking-wide per spec badge text pattern; icon 14px */
   }
 
   .cn-badge-variant-default {
@@ -124,19 +123,19 @@
   }
 
   .cn-badge-variant-destructive {
-    @apply bg-destructive/10 [a]:hover:bg-destructive/20 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 text-destructive dark:bg-destructive/20;
+    @apply bg-error-subtle text-error; /* [FORCE-UI] explicit subtle tokens; per-status focus ring removed (fails WCAG 1.4.11) */
   }
 
   .cn-badge-variant-warning {
-    @apply bg-warning/10 [a]:hover:bg-warning/20 focus-visible:ring-warning/20 dark:focus-visible:ring-warning/40 text-warning dark:bg-warning/20;
+    @apply bg-warning-subtle text-warning; /* [FORCE-UI] */
   }
 
   .cn-badge-variant-success {
-    @apply bg-success/10 [a]:hover:bg-success/20 focus-visible:ring-success/20 dark:focus-visible:ring-success/40 text-success dark:bg-success/20;
+    @apply bg-success-subtle text-success; /* [FORCE-UI] */
   }
 
   .cn-badge-variant-info {
-    @apply bg-info/10 [a]:hover:bg-info/20 focus-visible:ring-info/20 dark:focus-visible:ring-info/40 text-info dark:bg-info/20;
+    @apply bg-info-subtle text-info; /* [FORCE-UI] */
   }
 
   .cn-badge-variant-ghost {
@@ -175,7 +174,7 @@
   }
 
   .cn-breadcrumb-link {
-    @apply hover:text-foreground transition-colors;
+    @apply hover:text-foreground transition-colors rounded-xs focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50; /* [FORCE-UI] WCAG 2.4.7 — no focus indicator existed */
   }
 
   .cn-breadcrumb-page {
@@ -192,31 +191,31 @@
 
   /* MARK: Button */
   .cn-button {
-    @apply focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-lg border border-transparent bg-clip-padding text-sm font-medium focus-visible:ring-3 aria-invalid:ring-3 active:not-aria-[haspopup]:translate-y-px [&_svg:not([class*='size-'])]:size-4;
+    @apply focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-lg border border-transparent bg-clip-padding text-sm font-medium focus-visible:ring-3 aria-invalid:ring-3 active:not-aria-[haspopup]:opacity-60 disabled:opacity-100! disabled:bg-muted disabled:text-muted-foreground [&_svg:not([class*='size-'])]:size-4; /* [FORCE-UI] opacity-60=Figma State=Pressed; disabled tokens via !important override cva base disabled:opacity-50 */
   }
 
   .cn-button-variant-default {
-    @apply bg-primary text-primary-foreground [a]:hover:bg-primary/80;
+    @apply bg-primary text-primary-foreground hover:bg-primary-hover; /* [FORCE-UI] semantic hover token; was [a]:hover:bg-primary/80 */
   }
 
   .cn-button-variant-outline {
-    @apply border-border bg-background hover:bg-muted hover:text-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 aria-expanded:bg-muted aria-expanded:text-foreground;
+    @apply border-border bg-background hover:bg-primary-subtle hover:text-foreground dark:bg-input/30 dark:border-input aria-expanded:bg-primary-subtle aria-expanded:text-foreground; /* [FORCE-UI] on-brand hover tint; removed dark:hover:bg-input/50 */
   }
 
   .cn-button-variant-secondary {
-    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground;
+    @apply bg-secondary text-secondary-foreground hover:bg-primary-subtle aria-expanded:bg-primary-subtle aria-expanded:text-secondary-foreground; /* [FORCE-UI] semantic hover token; was hover:bg-secondary/80 */
   }
 
   .cn-button-variant-ghost {
-    @apply hover:bg-muted hover:text-foreground dark:hover:bg-muted/50 aria-expanded:bg-muted aria-expanded:text-foreground;
+    @apply hover:bg-primary-subtle hover:text-foreground aria-expanded:bg-primary-subtle aria-expanded:text-foreground; /* [FORCE-UI] on-brand hover; removed dark:hover:bg-muted/50 */
   }
 
   .cn-button-variant-destructive {
-    @apply bg-destructive/10 hover:bg-destructive/20 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/20 text-destructive focus-visible:border-destructive/40 dark:hover:bg-destructive/30;
+    @apply bg-error-subtle text-error hover:border-destructive focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40; /* [FORCE-UI] tinted surface AA-verified; hover signals via border edge */
   }
 
   .cn-button-variant-link {
-    @apply text-primary underline-offset-4 hover:underline;
+    @apply text-link underline-offset-4 hover:underline; /* [FORCE-UI] text-link AA-safe in dark; was text-primary */
   }
 
   .cn-button-size-xs {
@@ -326,7 +325,19 @@
 
   /* MARK: Checkbox */
   .cn-checkbox {
-    @apply border-input dark:bg-input/30 data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary data-checked:border-primary aria-invalid:aria-checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-4 items-center justify-center rounded-[4px] border transition-colors group-has-disabled/field:opacity-50 focus-visible:ring-3 aria-invalid:ring-3;
+    @apply border-input dark:bg-input/30
+      data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary;
+    /* [FORCE-UI] indeterminate state — split into separate @apply so inline comments don't break the tokeniser */
+    @apply data-[state=indeterminate]:border-primary data-[state=indeterminate]:bg-primary
+      data-[state=indeterminate]:text-primary-foreground dark:data-[state=indeterminate]:bg-primary;
+    /* [FORCE-UI] 3 hover states per Force spec (unchecked / checked / indeterminate) */
+    @apply enabled:data-[state=unchecked]:hover:bg-primary-subtle
+      enabled:data-checked:hover:bg-primary-hover
+      enabled:data-[state=indeterminate]:hover:bg-primary-hover; /* [FORCE-UI] bg-primary-subtle (not bg-accent) for semantic durability */
+    @apply aria-invalid:aria-checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50
+      focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40
+      flex size-4 items-center justify-center rounded-[4px] border transition-colors
+      group-has-disabled/field:opacity-50 focus-visible:ring-3 aria-invalid:ring-3;
   }
 
   .cn-checkbox-indicator {
@@ -684,7 +695,7 @@
 
   /* MARK: Input */
   .cn-input {
-    @apply dark:bg-input/30 border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border bg-transparent px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-3 aria-invalid:ring-3 md:text-sm;
+    @apply dark:bg-input/30 border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border bg-transparent px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-3 aria-invalid:ring-3 md:text-sm [&[readonly]]:bg-muted [&[readonly]]:border-border; /* [FORCE-UI] read-only: muted fill, light border, stays focusable+copyable */
   }
 
   /* [FORCE-UI-START] input variant axis (outline/filled/underline/ghost).
@@ -1014,11 +1025,11 @@
 
   /* MARK: Progress */
   .cn-progress {
-    @apply bg-muted h-1 rounded-full;
+    @apply bg-primary/20 h-1 rounded-full; /* [FORCE-UI] branded translucent track; was bg-muted (neutral grey) */
   }
 
   .cn-progress-track {
-    @apply bg-muted h-1 rounded-full;
+    @apply bg-primary/20 h-1 rounded-full; /* [FORCE-UI] keep in sync with .cn-progress */
   }
 
   .cn-progress-indicator {
@@ -1066,7 +1077,7 @@
 
   /* MARK: Select */
   .cn-select-trigger {
-    @apply border-input data-placeholder:text-muted-foreground dark:bg-input/30 dark:hover:bg-input/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 gap-1.5 rounded-lg border bg-transparent py-2 pr-2 pl-2.5 text-sm transition-colors select-none focus-visible:ring-3 aria-invalid:ring-3 data-[size=default]:h-8 data-[size=sm]:h-7 data-[size=sm]:rounded-[min(var(--radius-md),10px)] *:data-[slot=select-value]:flex *:data-[slot=select-value]:gap-1.5 [&_svg:not([class*='size-'])]:size-4;
+    @apply border-input data-placeholder:text-muted-foreground dark:bg-input/30 dark:hover:bg-input/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 gap-1.5 rounded-lg border bg-transparent py-2 pr-2 pl-2.5 text-sm transition-colors select-none focus-visible:ring-3 aria-invalid:ring-3 data-[size=default]:h-8 data-[size=sm]:h-7 data-[size=sm]:rounded-[min(var(--radius-md),10px)] *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5 *:data-[slot=select-value]:line-clamp-1 [&_svg:not([class*='size-'])]:size-4; /* [FORCE-UI] added items-center + line-clamp-1 on value slot */
   }
 
   .cn-select-value {
@@ -1270,7 +1281,7 @@
 
   /* MARK: Skeleton */
   .cn-skeleton {
-    @apply bg-muted rounded-md;
+    @apply animate-pulse rounded-md bg-muted motion-reduce:animate-none; /* [FORCE-UI] animation was entirely absent */
   }
 
   /* MARK: Slider */
@@ -1306,7 +1317,7 @@
 
   /* MARK: Table */
   .cn-table-container {
-    @apply relative w-full overflow-x-auto;
+    @apply relative w-full overflow-x-auto rounded-md border border-border; /* [FORCE-UI] framed card container per spec */
   }
 
   .cn-table {
@@ -1314,7 +1325,7 @@
   }
 
   .cn-table-header {
-    @apply [&_tr]:border-b;
+    @apply bg-muted [&_tr]:border-b [&_tr]:border-border; /* [FORCE-UI] muted header + explicit border colour */
   }
 
   .cn-table-body {
@@ -1322,15 +1333,15 @@
   }
 
   .cn-table-footer {
-    @apply bg-muted/50 border-t font-medium [&>tr]:last:border-b-0;
+    @apply bg-muted/50 border-t border-border font-medium [&>tr]:last:border-b-0; /* [FORCE-UI] explicit border colour */
   }
 
   .cn-table-row {
-    @apply hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors;
+    @apply hover:bg-muted/50 data-[state=selected]:bg-primary-subtle border-b border-border transition-colors; /* [FORCE-UI] on-brand selected row; explicit border colour */
   }
 
   .cn-table-head {
-    @apply text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0;
+    @apply h-10 px-2 text-left align-middle text-xs font-medium uppercase tracking-wide whitespace-nowrap text-tertiary [&:has([role=checkbox])]:pr-0; /* [FORCE-UI] Force spec data-table header: small-caps label, tertiary colour */
   }
 
   .cn-table-cell {
@@ -1338,7 +1349,7 @@
   }
 
   .cn-table-caption {
-    @apply text-muted-foreground mt-4 text-sm;
+    @apply text-muted-foreground mt-4 pb-3 text-sm; /* [FORCE-UI] bottom padding per pd-p4one spec */
   }
 
   /* MARK: Tabs */
@@ -1360,7 +1371,7 @@
 
   /* MARK: Textarea */
   .cn-textarea {
-    @apply border-input dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 rounded-lg border bg-transparent px-2.5 py-2 text-base transition-colors focus-visible:ring-3 aria-invalid:ring-3 md:text-sm;
+    @apply border-input dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 rounded-lg border bg-transparent px-2.5 py-2 text-base transition-colors focus-visible:ring-3 aria-invalid:ring-3 md:text-sm [&[readonly]]:bg-muted [&[readonly]]:border-border; /* [FORCE-UI] read-only styling */
   }
 
   /* [FORCE-UI-START] textarea variant axis — mirrors input. */
@@ -1383,7 +1394,7 @@
 
   /* MARK: Toggle */
   .cn-toggle {
-    @apply hover:text-foreground aria-pressed:bg-muted focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive data-[state=on]:bg-muted gap-1 rounded-lg text-sm font-medium transition-all [&_svg:not([class*='size-'])]:size-4;
+    @apply hover:text-foreground aria-pressed:bg-muted focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive data-[state=on]:bg-muted gap-1 rounded-lg text-sm font-medium transition-all [&_svg:not([class*='size-'])]:size-4; /* [FORCE-UI] added ring-3 — WCAG 2.4.7, focus ring had colour but zero size */
   }
 
   .cn-toggle-variant-default {
@@ -1391,7 +1402,7 @@
   }
 
   .cn-toggle-variant-outline {
-    @apply border-input hover:bg-muted border bg-transparent;
+    @apply border-border hover:bg-muted border bg-transparent; /* [FORCE-UI] border-border (light, tiered) to match input/button border pattern; was border-input */
   }
 
   .cn-toggle-size-default {
@@ -1417,7 +1428,7 @@
 
   /* MARK: Tooltip */
   .cn-tooltip-content {
-    @apply data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-[state=delayed-open]:animate-in data-[state=delayed-open]:fade-in-0 data-[state=delayed-open]:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs has-data-[slot=kbd]:pr-1.5 **:data-[slot=kbd]:relative **:data-[slot=kbd]:isolate **:data-[slot=kbd]:z-50 **:data-[slot=kbd]:rounded-sm;
+    @apply data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-[state=delayed-open]:animate-in data-[state=delayed-open]:fade-in-0 data-[state=delayed-open]:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs shadow-sm has-data-[slot=kbd]:pr-1.5 **:data-[slot=kbd]:relative **:data-[slot=kbd]:isolate **:data-[slot=kbd]:z-50 **:data-[slot=kbd]:rounded-sm; /* [FORCE-UI] shadow-sm per Force spec elevation table */
   }
 
   .cn-tooltip-content-logical {
