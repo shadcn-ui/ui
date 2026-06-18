@@ -8,36 +8,56 @@ import { cn } from '@/lib/utils';
 
 import type { TOC } from '@ember/component/template-only';
 
+// [FORCE-UI-START]
+type InputGroupVariant = 'outline' | 'filled' | 'underline' | 'ghost';
+
+const inputGroupVariantMap: Record<InputGroupVariant, string> = {
+  outline: 'cn-input-group-variant-outline border-input dark:bg-input/30 rounded-md border shadow-xs transition-[color,box-shadow]',
+  filled: 'cn-input-group-variant-filled',
+  underline: 'cn-input-group-variant-underline',
+  ghost: 'cn-input-group-variant-ghost',
+};
+// [FORCE-UI-END]
+
 interface InputGroupSignature {
   Element: HTMLDivElement;
   Args: {
     class?: string;
+    variant?: InputGroupVariant; // [FORCE-UI]
   };
   Blocks: {
     default: [];
   };
 }
 
-const InputGroup: TOC<InputGroupSignature> = <template>
-  <div
-    class={{cn
-      "group/input-group border-input dark:bg-input/30 relative flex w-full items-center rounded-md border shadow-xs transition-[color,box-shadow] outline-none"
-      "h-9 min-w-0 has-[>textarea]:h-auto"
-      "has-[>[data-align=inline-start]]:[&>input]:pl-2"
-      "has-[>[data-align=inline-end]]:[&>input]:pr-2"
-      "has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3"
-      "has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3"
-      "has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot=input-group-control]:focus-visible]:ring-[3px]"
-      "has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[[data-slot][aria-invalid=true]]:border-destructive dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40"
-      @class
-    }}
-    data-slot="input-group"
-    role="group"
-    ...attributes
-  >
-    {{yield}}
-  </div>
-</template>;
+class InputGroup extends Component<InputGroupSignature> {
+  get variantClass() {
+    const variant = this.args.variant ?? 'outline';
+    return inputGroupVariantMap[variant];
+  }
+
+  <template>
+    <div
+      class={{cn
+        "group/input-group relative flex w-full min-w-0 items-center outline-none"
+        "h-9 has-[>textarea]:h-auto"
+        "has-[>[data-align=inline-start]]:[&>input]:pl-2"
+        "has-[>[data-align=inline-end]]:[&>input]:pr-2"
+        "has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3"
+        "has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3"
+        "has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot=input-group-control]:focus-visible]:ring-[3px]"
+        "has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[[data-slot][aria-invalid=true]]:border-destructive dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40"
+        this.variantClass
+        @class
+      }}
+      data-slot="input-group"
+      role="group"
+      ...attributes
+    >
+      {{yield}}
+    </div>
+  </template>
+}
 
 type InputGroupAddonAlign =
   | 'inline-start'
