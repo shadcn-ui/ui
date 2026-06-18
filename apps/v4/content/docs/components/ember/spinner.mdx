@@ -59,13 +59,13 @@ You can replace the default spinner icon with any other icon by editing the `Spi
 
 ### Size
 
-Use the `size-*` utility class to change the size of the spinner.
+Use the `@size` arg to change the size of the spinner.
 
 <ComponentPreview framework="ember" name="spinner-size" />
 
 ### Color
 
-Use the `text-` utility class to change the color of the spinner.
+Use the `@color` arg to change the color of the spinner.
 
 <ComponentPreview framework="ember" name="spinner-color" />
 
@@ -103,9 +103,11 @@ Use the spinner inside `<ItemMedia>` to indicate a loading state.
 
 Use the `Spinner` component to display a spinner.
 
-| Prop     | Type     | Default |
-| -------- | -------- | ------- |
-| `@class` | `string` | ``      |
+| Prop     | Type                                               | Default     |
+| -------- | -------------------------------------------------- | ----------- |
+| `@color` | `"default" \| "primary" \| "onPrimary" \| "inherit"` | `"default"` |
+| `@size`  | `"xs" \| "sm" \| "md" \| "lg"`                    | `"sm"`      |
+| `@class` | `string`                                           |             |
 
 ```hbs
 <Spinner />

@@ -4,7 +4,8 @@
  * Usage: npx tsx scripts/sync-theme-css.mts
  *
  * Source of truth: registry/themes.ts (force-ui entry)
- * Targets: app/globals.css, preview-server/src/styles.css
+ * Targets: app/globals.css and the framework preview servers
+ *          (preview-{vue,svelte,ember}/src/styles.css).
  */
 import * as fs from "node:fs"
 import * as path from "node:path"
@@ -16,7 +17,11 @@ const ROOT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".."
 
 const CSS_TARGETS = [
   path.join(ROOT_DIR, "app/globals.css"),
-  path.join(ROOT_DIR, "preview-server/src/styles.css"),
+  // [FORCE-UI] Framework preview servers (Vue/Svelte/Ember). These iframe into
+  // the docs site and must carry the same Force UI :root/.dark palette.
+  path.join(ROOT_DIR, "../preview-vue/src/styles.css"),
+  path.join(ROOT_DIR, "../preview-svelte/src/styles.css"),
+  path.join(ROOT_DIR, "../preview-ember/src/styles.css"),
 ]
 
 function generateVarBlock(vars: Record<string, string>): string {

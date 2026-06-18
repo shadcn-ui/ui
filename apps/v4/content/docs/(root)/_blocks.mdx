@@ -45,13 +45,13 @@ A block can be a single component (eg. a variation of a ui component) or a compl
 
 ### Create a new block
 
-Create a new folder in the `apps/www/registry/new-york/blocks` directory. Make sure the folder is named in kebab-case and under `new-york`.
+Create a new folder in the `apps/v4/registry/bases/radix/blocks` directory. Make sure the folder is named in kebab-case.
 
 ```txt
 apps
 └── www
     └── registry
-        └── new-york
+        └── radix
             └── blocks
                 └── dashboard-01
 ```
@@ -151,7 +151,7 @@ pnpm registry:build
 
 ### View your block
 
-Once the build script is finished, you can view your block at `http://localhost:3333/blocks/[CATEGORY]` or a full screen preview at `http://localhost:3333/view/styles/new-york/dashboard-01`.
+Once the build script is finished, you can view your block at `http://localhost:3333/blocks/[CATEGORY]` or a full screen preview at `http://localhost:3333/view/styles/radix-force-ui/dashboard-01`.
 
 <Image
   src="/images/block-preview-light.png"
@@ -196,7 +196,7 @@ pnpm registry:capture
 
 <Callout className="mt-6">
 
-**Note:** If you've run the capture script before, you might need to delete the existing screenshots (both light and dark) at `apps/www/public/r/styles/new-york` and run the script again.
+**Note:** If you've run the capture script before, you might need to delete the existing screenshots (both light and dark) at `apps/v4/public/r/styles/radix-force-ui` and run the script again.
 
 </Callout>
 
@@ -235,4 +235,4 @@ Here are some guidelines to follow when contributing to the blocks library.
 - Make sure to list all registry dependencies in `registryDependencies`. A registry dependency is the name of the component in the registry eg. `input`, `button`, `card`, etc.
 - Make sure to list all dependencies in `dependencies`. A dependency is the name of the package in the registry eg. `zod`, `sonner`, etc.
 - If your block has a page (optional), it should be the first entry in the `files` array and it should have a `target` property. This helps the CLI place the page in the correct location for file-based routing.
-- **Imports should always use the `@/registry` path.** eg. `import { Input } from "@/registry/new-york/input"`
+- **Imports should always use the `@/registry` path.** eg. `import { Input } from "@/registry/bases/radix/ui/input"`

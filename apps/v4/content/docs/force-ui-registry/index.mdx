@@ -7,12 +7,12 @@ Force UI provides component registries for **React**, **Vue**, **Svelte**, and *
 
 ## Registries
 
-| Registry           | Framework        | Example                                         |
-| ------------------ | ---------------- | ----------------------------------------------- |
-| `@force-ui`        | React (Radix UI) | `npx shadcn@latest add @force-ui/button`        |
-| `@force-ui-vue`    | Vue              | `npx shadcn@latest add @force-ui-vue/button`    |
-| `@force-ui-svelte` | Svelte           | `npx shadcn@latest add @force-ui-svelte/button` |
-| `@force-ui-ember`  | Ember            | `npx shadcn@latest add @force-ui-ember/button`  |
+| Registry | Framework | Example |
+| --- | --- | --- |
+| `@force-ui` | React (Radix UI) | `npx shadcn@latest add @force-ui/button` |
+| `@force-ui-vue` | Vue | `npx shadcn@latest add @force-ui-vue/button` |
+| `@force-ui-svelte` | Svelte | `npx shadcn@latest add @force-ui-svelte/button` |
+| `@force-ui-ember` | Ember | `npx shadcn@latest add @force-ui-ember/button` |
 
 These registries are built-in to the CLI and available without any extra configuration.
 
@@ -36,25 +36,25 @@ The Force UI registries are built-in, so they work out of the box. If you want t
 
 The `{style}` and `{name}` placeholders are resolved automatically by the CLI using your configured style and the component name.
 
-## Styles
+## Style
 
-Force UI ships five design styles. Set the `style` field in your `components.json` to choose one:
+Force UI ships a single design style: **`force-ui`**. The `style` field in your `components.json` is set automatically by `shadcn init` and encodes both the base library and the style name:
 
-| Style  | Description                    |
-| ------ | ------------------------------ |
-| `nova` | Reduced padding and margins    |
-| `vega` | Clean, neutral, and familiar   |
-| `maia` | Rounded, with generous spacing |
-| `lyra` | Boxy and sharp. For mono fonts |
-| `mira` | Made for compact interfaces    |
+| Value | Framework |
+| --- | --- |
+| `radix-force-ui` | React (Radix UI) |
+| `base-force-ui` | React (base, no primitives) |
+| `vue-force-ui` | Vue |
+| `svelte-force-ui` | Svelte |
+| `ember-force-ui` | Ember |
 
 ```json title="components.json"
 {
-  "style": "nova"
+  "style": "radix-force-ui"
 }
 ```
 
-Changing the style affects which variant of each component is installed. For example, `@force-ui-vue/button` with style `nova` fetches from `/styles/vue-nova/button.json`.
+The style value tells the CLI which registry path to fetch from. For example, `@force-ui-vue/button` with style `vue-force-ui` fetches from `/styles/vue-force-ui/button.json`.
 
 ## Adding components
 
@@ -63,10 +63,10 @@ Use the `add` command with the registry namespace for your framework:
 <Tabs defaultValue="react">
 
 <TabsList>
-  <TabsTrigger value="react">React</TabsTrigger>
-  <TabsTrigger value="vue">Vue</TabsTrigger>
-  <TabsTrigger value="svelte">Svelte</TabsTrigger>
-  <TabsTrigger value="ember">Ember</TabsTrigger>
+<TabsTrigger value="react">React</TabsTrigger>
+<TabsTrigger value="vue">Vue</TabsTrigger>
+<TabsTrigger value="svelte">Svelte</TabsTrigger>
+<TabsTrigger value="ember">Ember</TabsTrigger>
 </TabsList>
 
 <TabsContent value="react">
