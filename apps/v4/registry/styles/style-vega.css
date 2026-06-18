@@ -263,11 +263,11 @@
 
   /* MARK: Carousel */
   .cn-carousel-previous {
-    @apply rounded-full;
+    @apply rounded-full transition-transform duration-150 ease-out hover:scale-105 active:scale-95;
   }
 
   .cn-carousel-next {
-    @apply rounded-full;
+    @apply rounded-full transition-transform duration-150 ease-out hover:scale-105 active:scale-95;
   }
 
   /* MARK: Chart */
