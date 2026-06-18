@@ -7,6 +7,9 @@
   "exports": {
     ".": "./src/index.ts"
   },
+  "scripts": {
+    "parse-tokens": "tsx scripts/parse-tokens.mts"
+  },
   "peerDependencies": {
     "shadcn": "workspace:*"
   }

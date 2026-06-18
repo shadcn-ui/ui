@@ -1,0 +1,216 @@
+{
+  "$description": "Perforce Force UI — Primitive tokens. These are hidden aliasing values NOT shipped as CSS custom properties. Only semantic tokens reference these. Style Dictionary filters these out of CSS output.",
+  "$specVersion": "0.9.0",
+
+  "color": {
+    "$type": "color",
+
+    "base": {
+      "white": {
+        "$value": "#ffffff",
+        "$description": "Absolute white. Base for light theme surfaces."
+      },
+      "black": {
+        "$value": "#000000",
+        "$description": "Absolute black. Base for light theme primary text."
+      },
+      "transparent": {
+        "$value": "#00000000",
+        "$description": "Fully transparent. Use for invisible hit areas and ghost element backgrounds."
+      }
+    },
+
+    "neutral": {
+      "$description": "10-step neutral scale with a subtle cool undertone (slight blue cast). Derived from the Perforce grey palette. Steps map to specific UI roles — do not pick arbitrary steps.",
+      "0":   { "$value": "#ffffff",  "$description": "Pure white. Maps to primary surface in light mode." },
+      "50":  { "$value": "#f8f8fd",  "$description": "Near-white with blue cast. Maps to secondary/subtle surfaces." },
+      "100": { "$value": "#f3f3f8",  "$description": "Light grey. Maps to tertiary surfaces (nav chrome, table headers)." },
+      "200": { "$value": "#e9e9ee",  "$description": "Default border color in light mode." },
+      "300": { "$value": "#d5d5dc",  "$description": "Emphasized borders, hover borders." },
+      "400": { "$value": "#9c9ca8",  "$description": "Disabled text, placeholder text." },
+      "500": { "$value": "#717180",  "$description": "Mid-tone. Muted icons, tertiary text." },
+      "600": { "$value": "#525260",  "$description": "Tertiary text (captions, helper text)." },
+      "700": { "$value": "#373742",  "$description": "Secondary text on light backgrounds." },
+      "800": { "$value": "#26262e",  "$description": "Strong secondary text (labels, descriptions)." },
+      "850": { "$value": "#212129",  "$description": "Dark mode muted surfaces." },
+      "875": { "$value": "#1c1c24",  "$description": "Dark mode chrome surfaces (topbar, sidebar)." },
+      "900": { "$value": "#111115",  "$description": "Near-black. Primary body text on light backgrounds." }
+    },
+
+    "indigo": {
+      "$description": "Brand primary hue. Perforce indigo — vibrant purple-blue used for primary interactive elements.",
+      "50":  { "$value": "#f0e8ff", "$description": "Lightest tint. Selected/active backgrounds, hover tints." },
+      "100": { "$value": "#e0d0ff", "$description": "Focus ring shadow, soft accent backgrounds." },
+      "200": { "$value": "#c0a0ff", "$description": "Soft accents, decorative highlights." },
+      "300": { "$value": "#9c6cff", "$description": "Secondary interactive, lighter accents on dark." },
+      "400": { "$value": "#8952ff", "$description": "Mid-tone accent." },
+      "500": { "$value": "#5405ff", "$description": "Primary brand color. CTAs, active states, links." },
+      "600": { "$value": "#4400d8", "$description": "Hover state for primary actions." },
+      "700": { "$value": "#3b00bf", "$description": "Pressed/active state. Dark accent text on light backgrounds." },
+      "800": { "$value": "#22006d", "$description": "Deep brand for dark text-on-light usage." },
+      "900": { "$value": "#1b0052", "$description": "Darkest brand shade." }
+    },
+
+    "cyan": {
+      "$description": "Brand secondary hue. Used for secondary accents and data visualization.",
+      "50":  { "$value": "#eafbff", "$description": "Lightest tint." },
+      "100": { "$value": "#dbf8ff", "$description": "Soft background." },
+      "200": { "$value": "#bcf3ff", "$description": "Light accent." },
+      "300": { "$value": "#99eeff", "$description": "Mid-light accent." },
+      "400": { "$value": "#3cdeff", "$description": "Bright secondary." },
+      "500": { "$value": "#00cfff", "$description": "Secondary brand primary." },
+      "600": { "$value": "#00aad1", "$description": "Hover state." },
+      "700": { "$value": "#009bb0", "$description": "Pressed state." },
+      "800": { "$value": "#007a90", "$description": "Dark secondary text." },
+      "900": { "$value": "#005163", "$description": "Darkest secondary shade." }
+    },
+
+    "green": {
+      "$description": "Success/positive semantic hue.",
+      "50":  { "$value": "#f3fcf3", "$description": "Success tinted background." },
+      "100": { "$value": "#cfefce", "$description": "Success soft background/border." },
+      "200": { "$value": "#a5dfa5", "$description": "Success light accent." },
+      "300": { "$value": "#5ec25e", "$description": "Success mid-tone." },
+      "500": { "$value": "#138613", "$description": "Success primary. Meets WCAG AA on white." },
+      "600": { "$value": "#117911", "$description": "Success hover." },
+      "700": { "$value": "#0f660f", "$description": "Success dark text on light backgrounds." },
+      "800": { "$value": "#0c4c0c", "$description": "Darkest success for high contrast." },
+      "900": { "$value": "#072c07", "$description": "Deepest success shade." }
+    },
+
+    "orange": {
+      "$description": "Warning semantic hue.",
+      "50":  { "$value": "#fffbf7", "$description": "Warning tinted background." },
+      "100": { "$value": "#fee9dc", "$description": "Warning soft background/border." },
+      "200": { "$value": "#ffd4ba", "$description": "Warning light accent." },
+      "300": { "$value": "#fca771", "$description": "Warning mid-tone." },
+      "500": { "$value": "#ff680e", "$description": "Warning primary." },
+      "600": { "$value": "#e25d0c", "$description": "Warning hover." },
+      "700": { "$value": "#c14f0a", "$description": "Warning dark text on light backgrounds." },
+      "800": { "$value": "#943c08", "$description": "Darkest warning for high contrast." },
+      "900": { "$value": "#512105", "$description": "Deepest warning shade." }
+    },
+
+    "cranberry": {
+      "$description": "Error/danger/destructive semantic hue.",
+      "50":  { "$value": "#fdf5f6", "$description": "Error tinted background." },
+      "100": { "$value": "#f8d6da", "$description": "Error soft background/border." },
+      "200": { "$value": "#f2b3b8", "$description": "Error light accent." },
+      "300": { "$value": "#eb6b72", "$description": "Error mid-tone." },
+      "500": { "$value": "#d11323", "$description": "Error primary. Meets WCAG AA on white." },
+      "600": { "$value": "#be111f", "$description": "Error hover." },
+      "700": { "$value": "#a30e1c", "$description": "Error dark text on light backgrounds." },
+      "800": { "$value": "#7a0a15", "$description": "Darkest error for high contrast." },
+      "900": { "$value": "#46070c", "$description": "Deepest error shade." }
+    },
+
+    "blue": {
+      "$description": "Informational semantic hue.",
+      "50":  { "$value": "#f5fbfe", "$description": "Info tinted background." },
+      "100": { "$value": "#d4eafb", "$description": "Info soft background/border." },
+      "200": { "$value": "#add8f7", "$description": "Info light accent." },
+      "300": { "$value": "#63b6f5", "$description": "Info mid-tone." },
+      "500": { "$value": "#0084e8", "$description": "Info primary." },
+      "600": { "$value": "#0077d2", "$description": "Info hover." },
+      "700": { "$value": "#0066b5", "$description": "Info dark text on light backgrounds." },
+      "800": { "$value": "#00508a", "$description": "Darkest info for high contrast." },
+      "900": { "$value": "#002a4a", "$description": "Deepest info shade." }
+    },
+
+    "alpha": {
+      "$description": "Semi-transparent values for overlays and scrims.",
+      "black-50": { "$value": "#00000080", "$description": "50% black. Modal overlay/scrim." },
+      "black-10": { "$value": "#0000001a", "$description": "10% black. Subtle shadow component." },
+      "black-5":  { "$value": "#0000000d", "$description": "5% black. Hover overlay on dark surfaces." },
+      "white-50": { "$value": "#ffffff80", "$description": "50% white. Overlay on dark surfaces." },
+      "white-20": { "$value": "#ffffff33", "$description": "20% white. Hover fill for on-brand buttons over brand backgrounds." },
+      "white-10": { "$value": "#ffffff1a", "$description": "10% white. Hover overlay on dark surfaces; resting fill for on-brand buttons over brand backgrounds." }
+    }
+  },
+
+  "font": {
+    "$description": "Font primitive values.",
+    "family": {
+      "$type": "fontFamily",
+      "sans":  { "$value": ["Noto Sans", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"], "$description": "Primary font stack. Noto Sans is the preferred face." },
+      "mono":  { "$value": ["Noto Sans Mono", "SF Mono", "Monaco", "Cascadia Code", "Consolas", "monospace"], "$description": "Monospace stack for code, data, and technical content." }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "regular":  { "$value": 400, "$description": "Body text, descriptions." },
+      "medium":   { "$value": 500, "$description": "Buttons, nav items, labels, badges." },
+      "semibold": { "$value": 600, "$description": "Card titles, section headings." },
+      "bold":     { "$value": 700, "$description": "Page titles, strong emphasis." }
+    },
+    "size": {
+      "$type": "dimension",
+      "xs":   { "$value": "0.75rem",  "$description": "12px. Captions, labels, badges, helper text." },
+      "sm":   { "$value": "0.875rem", "$description": "14px. Default body text for most UI." },
+      "base":  { "$value": "1rem",     "$description": "16px. Large body text, descriptions." },
+      "lg":   { "$value": "1.125rem", "$description": "18px. Subsection headers." },
+      "xl":   { "$value": "1.25rem",  "$description": "20px. Card titles, H2." },
+      "2xl":  { "$value": "1.5rem",   "$description": "24px. Section headers." },
+      "3xl":  { "$value": "1.875rem", "$description": "30px. Page titles." },
+      "4xl":  { "$value": "2.25rem",  "$description": "36px. Dashboard display headings." }
+    },
+    "lineHeight": {
+      "$type": "dimension",
+      "tight":   { "$value": "1.25",  "$description": "Tight line height. Headings and compact text." },
+      "snug":    { "$value": "1.375", "$description": "Slightly tight. Subheadings." },
+      "normal":  { "$value": "1.5",   "$description": "Default body text line height." },
+      "relaxed": { "$value": "1.75",  "$description": "Relaxed line height. Long-form reading." }
+    },
+    "letterSpacing": {
+      "$type": "dimension",
+      "tight":  { "$value": "-0.01em", "$description": "Tight tracking for large headings." },
+      "normal": { "$value": "0em",     "$description": "Default tracking." },
+      "wide":   { "$value": "0.025em", "$description": "Wide tracking for uppercase labels, badges." },
+      "wider":  { "$value": "0.05em",  "$description": "Extra-wide tracking for small uppercase KPI labels (Callout Card labels)." }
+    }
+  },
+
+  "spacing": {
+    "$type": "dimension",
+    "$description": "4px base unit grid. Use these values for all padding, margin, and gap. Do NOT use arbitrary pixel values.",
+    "0":  { "$value": "0px",  "$description": "Zero spacing." },
+    "1":  { "$value": "0.25rem", "$description": "4px. Icon-to-label gap, tightest inline spacing." },
+    "2":  { "$value": "0.5rem",  "$description": "8px. Component internal gaps, badge inline padding." },
+    "3":  { "$value": "0.75rem", "$description": "12px. Input padding, small component padding." },
+    "4":  { "$value": "1rem",    "$description": "16px. Card padding (small), grid gaps (tight), control bar gaps." },
+    "5":  { "$value": "1.25rem", "$description": "20px. Medium internal padding." },
+    "6":  { "$value": "1.5rem",  "$description": "24px. Card padding (default), section gaps, container padding." },
+    "8":  { "$value": "2rem",    "$description": "32px. Section margins." },
+    "10": { "$value": "2.5rem",  "$description": "40px. Large section separation." },
+    "12": { "$value": "3rem",    "$description": "48px. Major layout breaks." },
+    "16": { "$value": "4rem",    "$description": "64px. Page-level vertical spacing." },
+    "20": { "$value": "5rem",    "$description": "80px. Hero/feature section spacing." }
+  },
+
+  "radius": {
+    "$type": "dimension",
+    "$description": "Border radius scale. Consistent rounding across all components.",
+    "none": { "$value": "0px",     "$description": "No rounding. Sharp corners." },
+    "sm":   { "$value": "0.25rem", "$description": "4px. Badges (subtle), small elements." },
+    "md":   { "$value": "0.375rem","$description": "6px. Buttons, inputs, default components." },
+    "lg":   { "$value": "0.5rem",  "$description": "8px. Cards, containers." },
+    "xl":   { "$value": "0.75rem", "$description": "12px. Modals, large panels." },
+    "full": { "$value": "9999px",  "$description": "Pill shape. Pill badges, avatars, round buttons." }
+  },
+
+  "duration": {
+    "$type": "duration",
+    "$description": "Animation timing. Use the shortest duration that feels responsive.",
+    "fast":     { "$value": "150ms", "$description": "Hover states, color changes, toggles." },
+    "normal":   { "$value": "250ms", "$description": "Panel open/close, fade in/out." },
+    "slow":     { "$value": "350ms", "$description": "Page transitions, complex animations." },
+    "entrance": { "$value": "500ms", "$description": "First-paint entrance animations. Use sparingly." }
+  },
+
+  "easing": {
+    "$type": "cubicBezier",
+    "$description": "Animation easing curves.",
+    "standard":   { "$value": [0.4, 0, 0.2, 1],  "$description": "Default easing for most transitions." },
+    "decelerate": { "$value": [0, 0, 0.2, 1],     "$description": "Enter/appear animations. Fast start, gentle stop." },
+    "accelerate": { "$value": [0.4, 0, 1, 1],     "$description": "Exit/leave animations. Gentle start, fast end." }
+  }
+}
