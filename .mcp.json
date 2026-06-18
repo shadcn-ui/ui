@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "the-force-design-spec": {
+      "type": "http",
+      "url": "https://the-force-design-spec-mcp.public.dev.shared.perforce.com/mcp",
+      "headers": {
+        "Authorization": "Bearer MCP_Perforce-2026"
+      }
+    }
+  }
+}
