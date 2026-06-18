@@ -26,6 +26,7 @@ import {
 export default function InputExample() {
   return (
     <ExampleWrapper>
+      <InputVariants />
       <InputBasic />
       <InputInvalid />
       <InputWithLabel />
@@ -37,6 +38,19 @@ export default function InputExample() {
       <InputWithNativeSelect />
       <InputForm />
     </ExampleWrapper>
+  )
+}
+
+function InputVariants() {
+  return (
+    <Example title="Variants">
+      <div className="flex flex-col gap-3 w-full max-w-sm">
+        <Input placeholder="Outline (default)" variant="outline" />
+        <Input placeholder="Filled" variant="filled" />
+        <Input placeholder="Underline" variant="underline" />
+        <Input placeholder="Ghost" variant="ghost" />
+      </div>
+    </Example>
   )
 }
 
