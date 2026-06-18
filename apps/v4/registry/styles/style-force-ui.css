@@ -1185,6 +1185,43 @@
     @apply border-ring ring-ring/50 relative size-3 rounded-full border bg-white transition-[color,box-shadow] after:absolute after:-inset-2 hover:ring-3 focus-visible:ring-3 focus-visible:outline-hidden active:ring-3;
   }
 
+  /* MARK: Spinner */
+  .cn-spinner {
+    @apply motion-reduce:animate-none;
+  }
+
+  .cn-spinner-color-default {
+    @apply text-muted-foreground;
+  }
+
+  .cn-spinner-color-primary {
+    @apply text-primary;
+  }
+
+  .cn-spinner-color-onPrimary {
+    @apply text-primary-foreground;
+  }
+
+  .cn-spinner-color-inherit {
+    @apply text-current;
+  }
+
+  .cn-spinner-size-xs {
+    @apply size-3;
+  }
+
+  .cn-spinner-size-sm {
+    @apply size-4;
+  }
+
+  .cn-spinner-size-md {
+    @apply size-6;
+  }
+
+  .cn-spinner-size-lg {
+    @apply size-10;
+  }
+
   /* MARK: Sonner */
   .cn-toast {
     @apply rounded-2xl;
