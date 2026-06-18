@@ -29,6 +29,10 @@ export const examples: Registry["items"] = [
         path: "examples/alert/AlertDestructive.vue",
         type: "registry:example",
       },
+      {
+        path: "examples/alert/AlertStatus.vue",
+        type: "registry:example",
+      },
     ],
     registryDependencies: [
       "alert",
@@ -1023,6 +1027,10 @@ export const examples: Registry["items"] = [
       },
       {
         path: "examples/kbd/KbdWithTooltip.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/kbd/KbdPrimary.vue",
         type: "registry:example",
       },
     ],

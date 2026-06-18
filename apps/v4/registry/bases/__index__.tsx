@@ -10002,6 +10002,11 @@ export const Index: Record<string, Record<string, any>> = {
           type: "registry:example",
           target: "",
         },
+        {
+          path: "registry/bases/vue/examples/alert/AlertStatus.vue",
+          type: "registry:example",
+          target: "",
+        },
       ],
       categories: undefined,
       meta: undefined,
@@ -11056,6 +11061,11 @@ export const Index: Record<string, Record<string, any>> = {
         },
         {
           path: "registry/bases/vue/examples/kbd/KbdWithTooltip.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/examples/kbd/KbdPrimary.vue",
           type: "registry:example",
           target: "",
         },
@@ -14786,6 +14796,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "alert-status": {
+      name: "alert-status",
+      title: "Alert Status",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["alert"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/alert-status.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     "aspect-ratio-demo": {
       name: "aspect-ratio-demo",
       title: "Aspect Ratio Demo",
@@ -17190,6 +17216,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/svelte/examples/kbd-input-group-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "kbd-primary": {
+      name: "kbd-primary",
+      title: "Kbd Primary",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["kbd"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/kbd-primary.svelte",
           type: "registry:example",
           target: "",
         },
@@ -19659,6 +19701,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "alert-status": {
+      name: "alert-status",
+      title: "Alert Status",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["alert"],
+      files: [
+        {
+          path: "registry/bases/ember/examples/alert-status.gts",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     "appearance-settings": {
       name: "appearance-settings",
       title: "Appearance Settings",
@@ -21450,6 +21508,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/ember/examples/kbd-input-group.gts",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "kbd-primary": {
+      name: "kbd-primary",
+      title: "Kbd Primary",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["kbd"],
+      files: [
+        {
+          path: "registry/bases/ember/examples/kbd-primary.gts",
           type: "registry:example",
           target: "",
         },

@@ -2513,6 +2513,10 @@
         {
           "path": "registry/vue-force-ui/examples/alert/AlertDestructive.vue",
           "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-force-ui/examples/alert/AlertStatus.vue",
+          "type": "registry:example"
         }
       ],
       "type": "registry:example"
@@ -3391,6 +3395,10 @@
         },
         {
           "path": "registry/vue-force-ui/examples/kbd/KbdWithTooltip.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-force-ui/examples/kbd/KbdPrimary.vue",
           "type": "registry:example"
         }
       ],

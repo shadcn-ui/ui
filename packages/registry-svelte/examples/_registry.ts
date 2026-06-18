@@ -53,6 +53,18 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "alert-status",
+    title: "Alert Status",
+    type: "registry:example",
+    registryDependencies: ["alert"],
+    files: [
+      {
+        path: "examples/alert-status.svelte",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "aspect-ratio-demo",
     title: "Aspect Ratio Demo",
     type: "registry:example",
@@ -2221,6 +2233,18 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/kbd-input-group-demo.svelte",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "kbd-primary",
+    title: "Kbd Primary",
+    type: "registry:example",
+    registryDependencies: ["kbd"],
+    files: [
+      {
+        path: "examples/kbd-primary.svelte",
         type: "registry:example",
       },
     ],

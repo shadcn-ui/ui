@@ -85,6 +85,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "alert-rtl",
       filePath: "examples/radix/alert-rtl.tsx",
     },
+    "alert-status": {
+      name: "alert-status",
+      filePath: "examples/radix/alert-status.tsx",
+    },
     "aspect-ratio-demo": {
       name: "aspect-ratio-demo",
       filePath: "examples/radix/aspect-ratio-demo.tsx",
@@ -1121,6 +1125,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "kbd-input-group",
       filePath: "examples/radix/kbd-input-group.tsx",
     },
+    "kbd-primary": {
+      name: "kbd-primary",
+      filePath: "examples/radix/kbd-primary.tsx",
+    },
     "kbd-rtl": {
       name: "kbd-rtl",
       filePath: "examples/radix/kbd-rtl.tsx",
@@ -1854,6 +1862,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "alert-rtl": {
       name: "alert-rtl",
       filePath: "examples/base/alert-rtl.tsx",
+    },
+    "alert-status": {
+      name: "alert-status",
+      filePath: "examples/base/alert-status.tsx",
     },
     "aspect-ratio-demo": {
       name: "aspect-ratio-demo",
@@ -2890,6 +2902,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "kbd-input-group": {
       name: "kbd-input-group",
       filePath: "examples/base/kbd-input-group.tsx",
+    },
+    "kbd-primary": {
+      name: "kbd-primary",
+      filePath: "examples/base/kbd-primary.tsx",
     },
     "kbd-rtl": {
       name: "kbd-rtl",

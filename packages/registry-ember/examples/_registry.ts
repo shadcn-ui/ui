@@ -48,6 +48,21 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    "name": "alert-status",
+    "title": "Alert Status",
+    "type": "registry:example",
+    "registryDependencies": [
+      "alert"
+    ],
+    "dependencies": [],
+    "files": [
+      {
+        "path": "examples/alert-status.gts",
+        "type": "registry:example"
+      }
+    ]
+  },
+  {
     "name": "appearance-settings",
     "title": "Appearance Settings",
     "type": "registry:example",
@@ -1861,6 +1876,21 @@ export const examples: Registry["items"] = [
     "files": [
       {
         "path": "examples/kbd-input-group.gts",
+        "type": "registry:example"
+      }
+    ]
+  },
+  {
+    "name": "kbd-primary",
+    "title": "Kbd Primary",
+    "type": "registry:example",
+    "registryDependencies": [
+      "kbd"
+    ],
+    "dependencies": [],
+    "files": [
+      {
+        "path": "examples/kbd-primary.gts",
         "type": "registry:example"
       }
     ]

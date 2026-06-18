@@ -2318,6 +2318,18 @@
       "type": "registry:example"
     },
     {
+      "name": "alert-status",
+      "title": "Alert Status",
+      "registryDependencies": ["alert"],
+      "files": [
+        {
+          "path": "registry/svelte-force-ui/examples/alert-status.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "aspect-ratio-demo",
       "title": "Aspect Ratio Demo",
       "registryDependencies": ["aspect-ratio"],
@@ -4158,6 +4170,18 @@
       "files": [
         {
           "path": "registry/svelte-force-ui/examples/kbd-input-group-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-primary",
+      "title": "Kbd Primary",
+      "registryDependencies": ["kbd"],
+      "files": [
+        {
+          "path": "registry/svelte-force-ui/examples/kbd-primary.svelte",
           "type": "registry:example"
         }
       ],

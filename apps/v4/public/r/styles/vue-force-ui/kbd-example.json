@@ -37,6 +37,11 @@
       "path": "registry/vue-force-ui/examples/kbd/KbdWithTooltip.vue",
       "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { ButtonGroup } from \"@/ui/button-group\"\nimport { Kbd, KbdGroup } from \"@/ui/kbd\"\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from \"@/ui/tooltip\"\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-4\">\n    <ButtonGroup>\n      <TooltipProvider>\n        <Tooltip>\n          <TooltipTrigger as-child>\n            <Button size=\"sm\" variant=\"outline\"> Save </Button>\n          </TooltipTrigger>\n          <TooltipContent>\n            <div class=\"flex items-center gap-2\">Save Changes <Kbd>S</Kbd></div>\n          </TooltipContent>\n        </Tooltip>\n      </TooltipProvider>\n      <TooltipProvider>\n        <Tooltip>\n          <TooltipTrigger as-child>\n            <Button size=\"sm\" variant=\"outline\"> Print </Button>\n          </TooltipTrigger>\n          <TooltipContent>\n            <div class=\"flex items-center gap-2\">\n              Print Document\n              <KbdGroup>\n                <Kbd>Ctrl</Kbd>\n                <Kbd>P</Kbd>\n              </KbdGroup>\n            </div>\n          </TooltipContent>\n        </Tooltip>\n      </TooltipProvider>\n    </ButtonGroup>\n  </div>\n</template>\n",
       "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/kbd/KbdPrimary.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Kbd } from \"@/ui/kbd\"\n</script>\n\n<template>\n  <div class=\"flex items-center gap-4\">\n    <Kbd>⌘K</Kbd>\n    <div class=\"rounded-md bg-primary px-3 py-1.5\">\n      <Kbd variant=\"primary\">⌘K</Kbd>\n    </div>\n  </div>\n</template>\n",
+      "type": "registry:example"
     }
   ],
   "type": "registry:example"

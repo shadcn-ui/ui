@@ -187,6 +187,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
         ) || "alert-rtl"
       return { default: mod.default || mod[exportName] }
     }),
+    "alert-status": React.lazy(async () => {
+      const mod = await import("./radix/alert-status")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-status"
+      return { default: mod.default || mod[exportName] }
+    }),
     "aspect-ratio-demo": React.lazy(async () => {
       const mod = await import("./radix/aspect-ratio-demo")
       const exportName =
@@ -2518,6 +2527,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
         ) || "kbd-input-group"
       return { default: mod.default || mod[exportName] }
     }),
+    "kbd-primary": React.lazy(async () => {
+      const mod = await import("./radix/kbd-primary")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "kbd-primary"
+      return { default: mod.default || mod[exportName] }
+    }),
     "kbd-rtl": React.lazy(async () => {
       const mod = await import("./radix/kbd-rtl")
       const exportName =
@@ -4165,6 +4183,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "alert-rtl"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "alert-status": React.lazy(async () => {
+      const mod = await import("./base/alert-status")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-status"
       return { default: mod.default || mod[exportName] }
     }),
     "aspect-ratio-demo": React.lazy(async () => {
@@ -6496,6 +6523,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "kbd-input-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "kbd-primary": React.lazy(async () => {
+      const mod = await import("./base/kbd-primary")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "kbd-primary"
       return { default: mod.default || mod[exportName] }
     }),
     "kbd-rtl": React.lazy(async () => {

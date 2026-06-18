@@ -968,6 +968,19 @@
       "type": "registry:example"
     },
     {
+      "name": "alert-status",
+      "title": "Alert Status",
+      "dependencies": [],
+      "registryDependencies": ["alert"],
+      "files": [
+        {
+          "path": "registry/ember-force-ui/examples/alert-status.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "appearance-settings",
       "title": "Appearance Settings",
       "dependencies": ["@ember/helper", "@ember/modifier"],
@@ -2430,6 +2443,19 @@
       "files": [
         {
           "path": "registry/ember-force-ui/examples/kbd-input-group.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-primary",
+      "title": "Kbd Primary",
+      "dependencies": [],
+      "registryDependencies": ["kbd"],
+      "files": [
+        {
+          "path": "registry/ember-force-ui/examples/kbd-primary.gts",
           "type": "registry:example"
         }
       ],
