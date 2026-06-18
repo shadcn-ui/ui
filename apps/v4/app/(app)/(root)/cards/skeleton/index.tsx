@@ -19,7 +19,7 @@ export function CardsSkeletonDemo() {
   return (
     <div
       data-slot="demo"
-      className="style-force-ui theme-neutral relative flex w-full max-w-none flex-col gap-(--gap) bg-muted p-12 pb-0! [--gap:--spacing(8)] 3xl:[--gap:--spacing(8)] min-[1900px]:[--gap:--spacing(10)]! lg:p-8 lg:[--gap:--spacing(6)] xl:p-12 dark:bg-muted/30"
+      className="style-force-ui theme-default relative flex w-full max-w-none flex-col gap-(--gap) bg-muted p-12 pb-0! [--gap:--spacing(8)] 3xl:[--gap:--spacing(8)] min-[1900px]:[--gap:--spacing(10)]! lg:p-8 lg:[--gap:--spacing(6)] xl:p-12 dark:bg-muted/30"
     >
       <div className="relative z-10 mx-auto grid gap-(--gap) **:data-[slot=card]:w-full min-[1900px]:grid-cols-5! md:max-w-3xl md:grid-cols-2 lg:max-w-none lg:grid-cols-3 xl:max-w-[1600px] xl:grid-cols-4 2xl:max-w-[1900px]">
         <div className="flex flex-col items-start gap-(--gap)">
