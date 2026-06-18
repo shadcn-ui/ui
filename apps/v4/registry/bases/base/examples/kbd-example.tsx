@@ -50,7 +50,7 @@ function KbdVariants() {
     <Example title="Variants">
       <div className="flex items-center gap-4">
         <Kbd variant="default">⌘K</Kbd>
-        <div className="bg-primary rounded-md px-3 py-1.5">
+        <div className="rounded-md bg-primary px-3 py-1.5">
           <Kbd variant="primary">⌘K</Kbd>
         </div>
       </div>

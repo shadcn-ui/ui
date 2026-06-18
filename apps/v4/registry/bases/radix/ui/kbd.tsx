@@ -8,8 +8,8 @@ const kbdVariants = cva(
   {
     variants: {
       variant: {
-        default: "cn-kbd-variant-default",  // [FORCE-UI]
-        primary: "cn-kbd-variant-primary",  // [FORCE-UI]
+        default: "cn-kbd-variant-default", // [FORCE-UI]
+        primary: "cn-kbd-variant-primary", // [FORCE-UI]
       },
     },
     defaultVariants: {

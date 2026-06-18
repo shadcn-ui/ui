@@ -89,7 +89,7 @@ function TextareaDisabled() {
 function TextareaVariants() {
   return (
     <Example title="Variants">
-      <div className="flex flex-col gap-3 w-full max-w-sm">
+      <div className="flex w-full max-w-sm flex-col gap-3">
         <Textarea placeholder="Outline (default)" variant="outline" />
         <Textarea placeholder="Filled" variant="filled" />
         <Textarea placeholder="Underline" variant="underline" />

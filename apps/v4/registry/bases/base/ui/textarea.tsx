@@ -8,10 +8,10 @@ const textareaVariants = cva(
   {
     variants: {
       variant: {
-        outline: "cn-textarea-variant-outline",     // [FORCE-UI]
-        filled: "cn-textarea-variant-filled",       // [FORCE-UI]
+        outline: "cn-textarea-variant-outline", // [FORCE-UI]
+        filled: "cn-textarea-variant-filled", // [FORCE-UI]
         underline: "cn-textarea-variant-underline", // [FORCE-UI]
-        ghost: "cn-textarea-variant-ghost",         // [FORCE-UI]
+        ghost: "cn-textarea-variant-ghost", // [FORCE-UI]
       },
     },
     defaultVariants: {

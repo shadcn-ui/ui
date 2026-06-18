@@ -50,7 +50,7 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from '@/components/ui/input-group'
+} from "@/components/ui/input-group"
 </script>
 
 <template>
@@ -130,7 +130,11 @@ No style is applied to the custom input. Apply your own styles using the `class`
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import { InputGroup, InputGroupAddon, InputGroupButton } from '@/components/ui/input-group'
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+} from "@/components/ui/input-group"
 </script>
 
 <template>
@@ -157,10 +161,10 @@ import { InputGroup, InputGroupAddon, InputGroupButton } from '@/components/ui/i
 
 The main component that wraps inputs and addons.
 
-| Prop        | Type                                              | Default     |
-| ----------- | ------------------------------------------------- | ----------- |
-| `variant`   | `"outline" \| "filled" \| "underline" \| "ghost"` | `"outline"` |
-| `class`     | `string`                                          |             |
+| Prop      | Type                                              | Default     |
+| --------- | ------------------------------------------------- | ----------- |
+| `variant` | `"outline" \| "filled" \| "underline" \| "ghost"` | `"outline"` |
+| `class`   | `string`                                          |             |
 
 ```vue
 <InputGroup>
@@ -176,9 +180,9 @@ Displays icons, text, buttons, or other content alongside inputs.
 > For proper focus navigation, the `InputGroupAddon` component should be placed
 > after the input. Set the `align` prop to position the addon.
 
-| Prop        | Type                                                             | Default          |
-| ----------- | ---------------------------------------------------------------- | ---------------- |
-| `align`     | `"inline-start" \| "inline-end" \| "block-start" \| "block-end"` | `"inline-start"` |
+| Prop    | Type                                                             | Default          |
+| ------- | ---------------------------------------------------------------- | ---------------- |
+| `align` | `"inline-start" \| "inline-end" \| "block-start" \| "block-end"` | `"inline-start"` |
 | `class` | `string`                                                         |                  |
 
 ```vue
@@ -202,11 +206,11 @@ The `InputGroupAddon` component can have multiple `InputGroupButton` components 
 
 Displays buttons within input groups.
 
-| Prop        | Type                                                                          | Default   |
-| ----------- | ----------------------------------------------------------------------------- | --------- |
-| `size`      | `"xs" \| "icon-xs" \| "sm" \| "icon-sm"`                                      | `"xs"`    |
-| `variant`   | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link"` | `"ghost"` |
-| `class` | `string`                                                                      |           |
+| Prop      | Type                                                                          | Default   |
+| --------- | ----------------------------------------------------------------------------- | --------- |
+| `size`    | `"xs" \| "icon-xs" \| "sm" \| "icon-sm"`                                      | `"xs"`    |
+| `variant` | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link"` | `"ghost"` |
+| `class`   | `string`                                                                      |           |
 
 ```vue
 <InputGroupButton>
@@ -222,8 +226,8 @@ Button
 
 Replacement for `<Input />` when building input groups. This component has the input group styles pre-applied and uses the unified `data-slot="input-group-control"` for focus state handling.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
 | `class` | `string` |         |
 
 All other props are passed through to the underlying `<Input />` component.
@@ -241,8 +245,8 @@ All other props are passed through to the underlying `<Input />` component.
 
 Replacement for `<Textarea />` when building input groups. This component has the textarea group styles pre-applied and uses the unified `data-slot="input-group-control"` for focus state handling.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
 | `class` | `string` |         |
 
 All other props are passed through to the underlying `<Textarea />` component.

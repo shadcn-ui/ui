@@ -2,6 +2,7 @@
 export { RiAddCircleFill } from "@remixicon/react"
 export { RiAddCircleLine } from "@remixicon/react"
 export { RiAddLine } from "@remixicon/react"
+export { RiAlertLine } from "@remixicon/react"
 export { RiArchiveLine } from "@remixicon/react"
 export { RiArrowDownLine } from "@remixicon/react"
 export { RiArrowDownSLine } from "@remixicon/react"

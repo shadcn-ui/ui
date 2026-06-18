@@ -7,10 +7,10 @@ import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 const spinnerVariants = cva("cn-spinner animate-spin", {
   variants: {
     color: {
-      default: "cn-spinner-color-default",     // [FORCE-UI]
-      primary: "cn-spinner-color-primary",     // [FORCE-UI]
+      default: "cn-spinner-color-default", // [FORCE-UI]
+      primary: "cn-spinner-color-primary", // [FORCE-UI]
       onPrimary: "cn-spinner-color-onPrimary", // [FORCE-UI]
-      inherit: "cn-spinner-color-inherit",     // [FORCE-UI]
+      inherit: "cn-spinner-color-inherit", // [FORCE-UI]
     },
     size: {
       xs: "cn-spinner-size-xs", // [FORCE-UI]

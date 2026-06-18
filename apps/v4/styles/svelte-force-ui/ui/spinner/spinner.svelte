@@ -1,3 +1,32 @@
+<script lang="ts" module>
+  import { tv, type VariantProps } from "tailwind-variants"
+
+  export const spinnerVariants = tv({
+    base: "cn-spinner animate-spin",
+    variants: {
+      color: {
+        default: "cn-spinner-color-default",
+        primary: "cn-spinner-color-primary",
+        onPrimary: "cn-spinner-color-onPrimary",
+        inherit: "cn-spinner-color-inherit",
+      },
+      size: {
+        xs: "cn-spinner-size-xs",
+        sm: "cn-spinner-size-sm",
+        md: "cn-spinner-size-md",
+        lg: "cn-spinner-size-lg",
+      },
+    },
+    defaultVariants: {
+      color: "default",
+      size: "sm",
+    },
+  })
+
+  export type SpinnerColor = VariantProps<typeof spinnerVariants>["color"]
+  export type SpinnerSize = VariantProps<typeof spinnerVariants>["size"]
+</script>
+
 <script lang="ts">
   import IconPlaceholder from "$lib/components/icon-placeholder/icon-placeholder.svelte"
   import { cn } from "$lib/utils.js"
@@ -6,12 +35,14 @@
   let {
     class: className,
     role = "status",
-    // we add color and stroke for compatibility with different icon libraries props
     color,
-    stroke,
     "aria-label": ariaLabel = "Loading",
+    size,
     ...restProps
-  }: SVGAttributes<SVGSVGElement> = $props()
+  }: SVGAttributes<SVGSVGElement> & {
+    color?: SpinnerColor
+    size?: SpinnerSize
+  } = $props()
 </script>
 
 <IconPlaceholder
@@ -21,9 +52,7 @@
   phosphor="SpinnerIcon"
   remixicon="RiLoaderLine"
   {role}
-  color={color === null ? undefined : color}
-  stroke={stroke === null ? undefined : stroke}
   aria-label={ariaLabel}
-  class={cn("size-4 animate-spin", className)}
+  class={cn(spinnerVariants({ color, size }), className)}
   {...restProps}
 />

@@ -8,10 +8,10 @@ const inputVariants = cva(
   {
     variants: {
       variant: {
-        outline: "cn-input-variant-outline",     // [FORCE-UI]
-        filled: "cn-input-variant-filled",       // [FORCE-UI]
+        outline: "cn-input-variant-outline", // [FORCE-UI]
+        filled: "cn-input-variant-filled", // [FORCE-UI]
         underline: "cn-input-variant-underline", // [FORCE-UI]
-        ghost: "cn-input-variant-ghost",         // [FORCE-UI]
+        ghost: "cn-input-variant-ghost", // [FORCE-UI]
       },
     },
     defaultVariants: {

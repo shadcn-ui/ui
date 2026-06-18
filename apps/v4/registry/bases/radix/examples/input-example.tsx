@@ -44,7 +44,7 @@ export default function InputExample() {
 function InputVariants() {
   return (
     <Example title="Variants">
-      <div className="flex flex-col gap-3 w-full max-w-sm">
+      <div className="flex w-full max-w-sm flex-col gap-3">
         <Input placeholder="Outline (default)" variant="outline" />
         <Input placeholder="Filled" variant="filled" />
         <Input placeholder="Underline" variant="underline" />

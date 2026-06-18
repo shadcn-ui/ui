@@ -1,3 +1,24 @@
+<script lang="ts" module>
+  import { tv, type VariantProps } from "tailwind-variants"
+
+  export const inputVariants = tv({
+    base: "cn-input w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
+    variants: {
+      variant: {
+        outline: "cn-input-variant-outline",
+        filled: "cn-input-variant-filled",
+        underline: "cn-input-variant-underline",
+        ghost: "cn-input-variant-ghost",
+      },
+    },
+    defaultVariants: {
+      variant: "outline",
+    },
+  })
+
+  export type InputVariant = VariantProps<typeof inputVariants>["variant"]
+</script>
+
 <script lang="ts">
   import { cn, type WithElementRef } from "$lib/utils.js"
   import type {
@@ -13,13 +34,16 @@
         | { type: "file"; files?: FileList }
         | { type?: InputType; files?: undefined }
       )
-  >
+  > & {
+    variant?: InputVariant
+  }
 
   let {
     ref = $bindable(null),
     value = $bindable(),
     type,
     files = $bindable(),
+    variant,
     class: className,
     "data-slot": dataSlot = "input",
     ...restProps
@@ -30,10 +54,7 @@
   <input
     bind:this={ref}
     data-slot={dataSlot}
-    class={cn(
-      "cn-input file:text-foreground placeholder:text-muted-foreground w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
-      className
-    )}
+    class={cn(inputVariants({ variant }), className)}
     type="file"
     bind:files
     bind:value
@@ -43,10 +64,7 @@
   <input
     bind:this={ref}
     data-slot={dataSlot}
-    class={cn(
-      "cn-input file:text-foreground placeholder:text-muted-foreground w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
-      className
-    )}
+    class={cn(inputVariants({ variant }), className)}
     {type}
     bind:value
     {...restProps}

@@ -13,10 +13,10 @@ const inputGroupVariants = cva(
   {
     variants: {
       variant: {
-        outline: "cn-input-group-variant-outline",     // [FORCE-UI]
-        filled: "cn-input-group-variant-filled",       // [FORCE-UI]
+        outline: "cn-input-group-variant-outline", // [FORCE-UI]
+        filled: "cn-input-group-variant-filled", // [FORCE-UI]
         underline: "cn-input-group-variant-underline", // [FORCE-UI]
-        ghost: "cn-input-group-variant-ghost",         // [FORCE-UI]
+        ghost: "cn-input-group-variant-ghost", // [FORCE-UI]
       },
     },
     defaultVariants: {

@@ -12,10 +12,10 @@ export const inputGroupVariants = cva(
     variants: {
       variant: {
         outline:
-          "rounded-md border border-input shadow-xs transition-[color,box-shadow] hover:border-input dark:bg-input/30",
-        filled: "rounded-lg border border-border bg-muted hover:border-input",
-        underline: "border-0 border-b border-input",
-        ghost: "rounded-lg border border-transparent hover:bg-muted/50",
+          "rounded-md border border-input shadow-xs transition-[color,box-shadow] dark:bg-input/30",
+        filled: "",
+        underline: "",
+        ghost: "",
       },
     },
     defaultVariants: {

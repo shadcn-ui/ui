@@ -915,7 +915,7 @@ function InputGroupTextareaExamples() {
 function InputGroupVariants() {
   return (
     <Example title="Variants">
-      <div className="flex flex-col gap-4 w-full max-w-sm">
+      <div className="flex w-full max-w-sm flex-col gap-4">
         <InputGroup variant="outline">
           <InputGroupInput placeholder="Outline (default)" />
         </InputGroup>

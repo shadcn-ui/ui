@@ -53,7 +53,7 @@ function SpinnerColors() {
         <Spinner color="default" />
         <Spinner color="primary" />
         <Spinner color="inherit" />
-        <div className="bg-primary rounded-md p-2">
+        <div className="rounded-md bg-primary p-2">
           <Spinner color="onPrimary" />
         </div>
       </div>

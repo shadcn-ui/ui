@@ -8,9 +8,9 @@ const alertVariants = cva("cn-alert group/alert relative w-full", {
     variant: {
       default: "cn-alert-variant-default",
       destructive: "cn-alert-variant-destructive",
-      warning: "cn-alert-variant-warning",  // [FORCE-UI]
-      success: "cn-alert-variant-success",  // [FORCE-UI]
-      info: "cn-alert-variant-info",        // [FORCE-UI]
+      warning: "cn-alert-variant-warning", // [FORCE-UI]
+      success: "cn-alert-variant-success", // [FORCE-UI]
+      info: "cn-alert-variant-info", // [FORCE-UI]
     },
   },
   defaultVariants: {
