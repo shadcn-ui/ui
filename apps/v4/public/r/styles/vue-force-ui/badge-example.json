@@ -28,6 +28,16 @@
       "path": "registry/vue-force-ui/examples/badge/BadgeSecondary.vue",
       "content": "<script setup lang=\"ts\">\nimport { Badge } from \"@/ui/badge\"\n</script>\n\n<template>\n  <Badge variant=\"secondary\"> Secondary </Badge>\n</template>\n",
       "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/badge/BadgeStatus.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Badge } from \"@/ui/badge\"\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-2\">\n    <Badge variant=\"success\"> Success </Badge>\n    <Badge variant=\"info\"> Info </Badge>\n    <Badge variant=\"warning\"> Warning </Badge>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/badge/BadgeSolid.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Badge } from \"@/ui/badge\"\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-2\">\n    <Badge variant=\"success-solid\"> Success </Badge>\n    <Badge variant=\"warning-solid\"> Warning </Badge>\n    <Badge variant=\"info-solid\"> Info </Badge>\n    <Badge variant=\"error-solid\"> Error </Badge>\n  </div>\n</template>\n",
+      "type": "registry:example"
     }
   ],
   "type": "registry:example"

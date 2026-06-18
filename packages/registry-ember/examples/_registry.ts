@@ -116,6 +116,36 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    "name": "badge-solid",
+    "title": "Badge Solid",
+    "type": "registry:example",
+    "registryDependencies": [
+      "badge"
+    ],
+    "dependencies": [],
+    "files": [
+      {
+        "path": "examples/badge-solid.gts",
+        "type": "registry:example"
+      }
+    ]
+  },
+  {
+    "name": "badge-status",
+    "title": "Badge Status",
+    "type": "registry:example",
+    "registryDependencies": [
+      "badge"
+    ],
+    "dependencies": [],
+    "files": [
+      {
+        "path": "examples/badge-status.gts",
+        "type": "registry:example"
+      }
+    ]
+  },
+  {
     "name": "breadcrumb-demo",
     "title": "Breadcrumb Demo",
     "type": "registry:example",
@@ -1470,6 +1500,21 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    "name": "input-group-variants",
+    "title": "Input Group Variants",
+    "type": "registry:example",
+    "registryDependencies": [
+      "input-group"
+    ],
+    "dependencies": [],
+    "files": [
+      {
+        "path": "examples/input-group-variants.gts",
+        "type": "registry:example"
+      }
+    ]
+  },
+  {
     "name": "input-otp-controlled",
     "title": "Input Otp Controlled",
     "type": "registry:example",
@@ -1544,6 +1589,21 @@ export const examples: Registry["items"] = [
     "files": [
       {
         "path": "examples/input-otp-separator.gts",
+        "type": "registry:example"
+      }
+    ]
+  },
+  {
+    "name": "input-variants",
+    "title": "Input Variants",
+    "type": "registry:example",
+    "registryDependencies": [
+      "input"
+    ],
+    "dependencies": [],
+    "files": [
+      {
+        "path": "examples/input-variants.gts",
         "type": "registry:example"
       }
     ]
@@ -2460,6 +2520,21 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    "name": "spinner-colors",
+    "title": "Spinner Colors",
+    "type": "registry:example",
+    "registryDependencies": [
+      "spinner"
+    ],
+    "dependencies": [],
+    "files": [
+      {
+        "path": "examples/spinner-colors.gts",
+        "type": "registry:example"
+      }
+    ]
+  },
+  {
     "name": "spinner-custom",
     "title": "Spinner Custom",
     "type": "registry:example",
@@ -2557,6 +2632,21 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    "name": "spinner-sizes",
+    "title": "Spinner Sizes",
+    "type": "registry:example",
+    "registryDependencies": [
+      "spinner"
+    ],
+    "dependencies": [],
+    "files": [
+      {
+        "path": "examples/spinner-sizes.gts",
+        "type": "registry:example"
+      }
+    ]
+  },
+  {
     "name": "switch-demo",
     "title": "Switch Demo",
     "type": "registry:example",
@@ -2632,6 +2722,21 @@ export const examples: Registry["items"] = [
     "files": [
       {
         "path": "examples/textarea-disabled.gts",
+        "type": "registry:example"
+      }
+    ]
+  },
+  {
+    "name": "textarea-variants",
+    "title": "Textarea Variants",
+    "type": "registry:example",
+    "registryDependencies": [
+      "textarea"
+    ],
+    "dependencies": [],
+    "files": [
+      {
+        "path": "examples/textarea-variants.gts",
         "type": "registry:example"
       }
     ]

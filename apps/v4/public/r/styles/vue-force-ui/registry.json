@@ -2577,6 +2577,14 @@
         {
           "path": "registry/vue-force-ui/examples/badge/BadgeSecondary.vue",
           "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-force-ui/examples/badge/BadgeStatus.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-force-ui/examples/badge/BadgeSolid.vue",
+          "type": "registry:example"
         }
       ],
       "type": "registry:example"
@@ -3201,6 +3209,10 @@
         {
           "path": "registry/vue-force-ui/examples/input/InputWithText.vue",
           "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-force-ui/examples/input/InputVariants.vue",
+          "type": "registry:example"
         }
       ],
       "type": "registry:example"
@@ -3262,6 +3274,10 @@
         },
         {
           "path": "registry/vue-force-ui/examples/input-group/InputGroupWithTooltip.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-force-ui/examples/input-group/InputGroupVariants.vue",
           "type": "registry:example"
         }
       ],
@@ -3740,6 +3756,14 @@
         {
           "path": "registry/vue-force-ui/examples/spinner/SpinnerSizeDemo.vue",
           "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-force-ui/examples/spinner/SpinnerColors.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-force-ui/examples/spinner/SpinnerSizes.vue",
+          "type": "registry:example"
         }
       ],
       "type": "registry:example"
@@ -3893,6 +3917,10 @@
         },
         {
           "path": "registry/vue-force-ui/examples/textarea/TextareaDisabled.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-force-ui/examples/textarea/TextareaVariants.vue",
           "type": "registry:example"
         }
       ],

@@ -125,6 +125,30 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "badge-solid",
+    title: "Badge Solid",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    files: [
+      {
+        path: "examples/badge-solid.svelte",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "badge-status",
+    title: "Badge Status",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    files: [
+      {
+        path: "examples/badge-status.svelte",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "breadcrumb-demo",
     title: "Breadcrumb Demo",
     type: "registry:example",
@@ -1841,6 +1865,18 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "input-group-variants",
+    title: "Input Group Variants",
+    type: "registry:example",
+    registryDependencies: ["input-group"],
+    files: [
+      {
+        path: "examples/input-group-variants.svelte",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "input-invalid",
     title: "Input Invalid",
     type: "registry:example",
@@ -1974,6 +2010,18 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/input-with-text.svelte",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "input-variants",
+    title: "Input Variants",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    files: [
+      {
+        path: "examples/input-variants.svelte",
         type: "registry:example",
       },
     ],
@@ -2665,6 +2713,18 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "spinner-colors",
+    title: "Spinner Colors",
+    type: "registry:example",
+    registryDependencies: ["spinner"],
+    files: [
+      {
+        path: "examples/spinner-colors.svelte",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "spinner-custom-demo",
     title: "Spinner Custom Demo",
     type: "registry:example",
@@ -2747,6 +2807,18 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/spinner-size-demo.svelte",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "spinner-sizes",
+    title: "Spinner Sizes",
+    type: "registry:example",
+    registryDependencies: ["spinner"],
+    files: [
+      {
+        path: "examples/spinner-sizes.svelte",
         type: "registry:example",
       },
     ],
@@ -2856,6 +2928,18 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/textarea-form.svelte",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "textarea-variants",
+    title: "Textarea Variants",
+    type: "registry:example",
+    registryDependencies: ["textarea"],
+    files: [
+      {
+        path: "examples/textarea-variants.svelte",
         type: "registry:example",
       },
     ],

@@ -52,6 +52,11 @@
       "path": "registry/vue-force-ui/examples/input/InputWithText.vue",
       "content": "<script setup lang=\"ts\">\nimport { Input } from \"@/ui/input\"\nimport { Label } from \"@/ui/label\"\n</script>\n\n<template>\n  <div class=\"grid w-full max-w-sm items-center gap-1.5\">\n    <Label for=\"email\">Email</Label>\n    <Input id=\"email\" type=\"email\" placeholder=\"Email\" />\n    <p class=\"text-sm text-muted-foreground\">Enter your email address.</p>\n  </div>\n</template>\n",
       "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/input/InputVariants.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Input } from \"@/ui/input\"\n</script>\n\n<template>\n  <div class=\"flex w-full flex-col gap-4\">\n    <Input variant=\"outline\" placeholder=\"Outline\" />\n    <Input variant=\"filled\" placeholder=\"Filled\" />\n    <Input variant=\"underline\" placeholder=\"Underline\" />\n    <Input variant=\"ghost\" placeholder=\"Ghost\" />\n  </div>\n</template>\n",
+      "type": "registry:example"
     }
   ],
   "type": "registry:example"

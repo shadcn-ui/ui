@@ -104,6 +104,14 @@ export const examples: Registry["items"] = [
         path: "examples/badge/BadgeSecondary.vue",
         type: "registry:example",
       },
+      {
+        path: "examples/badge/BadgeStatus.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/badge/BadgeSolid.vue",
+        type: "registry:example",
+      },
     ],
     registryDependencies: [
       "badge",
@@ -814,6 +822,10 @@ export const examples: Registry["items"] = [
         path: "examples/input/InputWithText.vue",
         type: "registry:example",
       },
+      {
+        path: "examples/input/InputVariants.vue",
+        type: "registry:example",
+      },
     ],
     registryDependencies: [
       "button",
@@ -873,6 +885,10 @@ export const examples: Registry["items"] = [
       },
       {
         path: "examples/input-group/InputGroupWithTooltip.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/input-group/InputGroupVariants.vue",
         type: "registry:example",
       },
     ],
@@ -1440,6 +1456,14 @@ export const examples: Registry["items"] = [
         path: "examples/spinner/SpinnerSizeDemo.vue",
         type: "registry:example",
       },
+      {
+        path: "examples/spinner/SpinnerColors.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/spinner/SpinnerSizes.vue",
+        type: "registry:example",
+      },
     ],
     registryDependencies: [
       "badge",
@@ -1634,6 +1658,10 @@ export const examples: Registry["items"] = [
       },
       {
         path: "examples/textarea/TextareaDisabled.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/textarea/TextareaVariants.vue",
         type: "registry:example",
       },
     ],

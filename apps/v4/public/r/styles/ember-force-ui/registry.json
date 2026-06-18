@@ -1027,6 +1027,32 @@
       "type": "registry:example"
     },
     {
+      "name": "badge-solid",
+      "title": "Badge Solid",
+      "dependencies": [],
+      "registryDependencies": ["badge"],
+      "files": [
+        {
+          "path": "registry/ember-force-ui/examples/badge-solid.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "badge-status",
+      "title": "Badge Status",
+      "dependencies": [],
+      "registryDependencies": ["badge"],
+      "files": [
+        {
+          "path": "registry/ember-force-ui/examples/badge-status.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "breadcrumb-demo",
       "title": "Breadcrumb Demo",
       "dependencies": ["@ember/routing"],
@@ -2111,6 +2137,19 @@
       "type": "registry:example"
     },
     {
+      "name": "input-group-variants",
+      "title": "Input Group Variants",
+      "dependencies": [],
+      "registryDependencies": ["input-group"],
+      "files": [
+        {
+          "path": "registry/ember-force-ui/examples/input-group-variants.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "input-otp-controlled",
       "title": "Input Otp Controlled",
       "dependencies": [],
@@ -2170,6 +2209,19 @@
       "files": [
         {
           "path": "registry/ember-force-ui/examples/input-otp-separator.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-variants",
+      "title": "Input Variants",
+      "dependencies": [],
+      "registryDependencies": ["input"],
+      "files": [
+        {
+          "path": "registry/ember-force-ui/examples/input-variants.gts",
           "type": "registry:example"
         }
       ],
@@ -2914,6 +2966,19 @@
       "type": "registry:example"
     },
     {
+      "name": "spinner-colors",
+      "title": "Spinner Colors",
+      "dependencies": [],
+      "registryDependencies": ["spinner"],
+      "files": [
+        {
+          "path": "registry/ember-force-ui/examples/spinner-colors.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "spinner-custom",
       "title": "Spinner Custom",
       "dependencies": ["@ember/component"],
@@ -2992,6 +3057,19 @@
       "type": "registry:example"
     },
     {
+      "name": "spinner-sizes",
+      "title": "Spinner Sizes",
+      "dependencies": [],
+      "registryDependencies": ["spinner"],
+      "files": [
+        {
+          "path": "registry/ember-force-ui/examples/spinner-sizes.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "switch-demo",
       "title": "Switch Demo",
       "dependencies": [],
@@ -3051,6 +3129,19 @@
       "files": [
         {
           "path": "registry/ember-force-ui/examples/textarea-disabled.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-variants",
+      "title": "Textarea Variants",
+      "dependencies": [],
+      "registryDependencies": ["textarea"],
+      "files": [
+        {
+          "path": "registry/ember-force-ui/examples/textarea-variants.gts",
           "type": "registry:example"
         }
       ],

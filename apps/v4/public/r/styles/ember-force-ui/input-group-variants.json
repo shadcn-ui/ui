@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-variants",
+  "title": "Input Group Variants",
+  "dependencies": [],
+  "registryDependencies": [
+    "input-group"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/input-group-variants.gts",
+      "content": "import { InputGroup, InputGroupInput } from '@/ui/input-group';\n\n<template>\n  <div class=\"flex w-full flex-col gap-4\">\n    <InputGroup @variant=\"outline\">\n      <InputGroupInput placeholder=\"Outline\" />\n    </InputGroup>\n    <InputGroup @variant=\"filled\">\n      <InputGroupInput placeholder=\"Filled\" />\n    </InputGroup>\n    <InputGroup @variant=\"underline\">\n      <InputGroupInput placeholder=\"Underline\" />\n    </InputGroup>\n    <InputGroup @variant=\"ghost\">\n      <InputGroupInput placeholder=\"Ghost\" />\n    </InputGroup>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

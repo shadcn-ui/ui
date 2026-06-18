@@ -358,6 +358,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
         ) || "badge-rtl"
       return { default: mod.default || mod[exportName] }
     }),
+    "badge-solid": React.lazy(async () => {
+      const mod = await import("./radix/badge-solid")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge-solid"
+      return { default: mod.default || mod[exportName] }
+    }),
     "badge-spinner": React.lazy(async () => {
       const mod = await import("./radix/badge-spinner")
       const exportName =
@@ -365,6 +374,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "badge-spinner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "badge-status": React.lazy(async () => {
+      const mod = await import("./radix/badge-status")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge-status"
       return { default: mod.default || mod[exportName] }
     }),
     "badge-variants": React.lazy(async () => {
@@ -2176,6 +2194,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
         ) || "input-group-tooltip"
       return { default: mod.default || mod[exportName] }
     }),
+    "input-group-variants": React.lazy(async () => {
+      const mod = await import("./radix/input-group-variants")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-group-variants"
+      return { default: mod.default || mod[exportName] }
+    }),
     "input-group-with-addons": React.lazy(async () => {
       const mod = await import("./radix/input-group-with-addons")
       const exportName =
@@ -2345,6 +2372,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "input-rtl"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-variants": React.lazy(async () => {
+      const mod = await import("./radix/input-variants")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-variants"
       return { default: mod.default || mod[exportName] }
     }),
     "item-avatar": React.lazy(async () => {
@@ -3355,6 +3391,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
         ) || "spinner-button"
       return { default: mod.default || mod[exportName] }
     }),
+    "spinner-colors": React.lazy(async () => {
+      const mod = await import("./radix/spinner-colors")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner-colors"
+      return { default: mod.default || mod[exportName] }
+    }),
     "spinner-custom": React.lazy(async () => {
       const mod = await import("./radix/spinner-custom")
       const exportName =
@@ -3407,6 +3452,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "spinner-size"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "spinner-sizes": React.lazy(async () => {
+      const mod = await import("./radix/spinner-sizes")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner-sizes"
       return { default: mod.default || mod[exportName] }
     }),
     "switch-choice-card": React.lazy(async () => {
@@ -3614,6 +3668,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "textarea-rtl"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "textarea-variants": React.lazy(async () => {
+      const mod = await import("./radix/textarea-variants")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "textarea-variants"
       return { default: mod.default || mod[exportName] }
     }),
     "toggle-demo": React.lazy(async () => {
@@ -4275,6 +4338,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
         ) || "badge-rtl"
       return { default: mod.default || mod[exportName] }
     }),
+    "badge-solid": React.lazy(async () => {
+      const mod = await import("./base/badge-solid")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge-solid"
+      return { default: mod.default || mod[exportName] }
+    }),
     "badge-spinner": React.lazy(async () => {
       const mod = await import("./base/badge-spinner")
       const exportName =
@@ -4282,6 +4354,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "badge-spinner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "badge-status": React.lazy(async () => {
+      const mod = await import("./base/badge-status")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge-status"
       return { default: mod.default || mod[exportName] }
     }),
     "badge-variants": React.lazy(async () => {
@@ -6093,6 +6174,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
         ) || "input-group-tooltip"
       return { default: mod.default || mod[exportName] }
     }),
+    "input-group-variants": React.lazy(async () => {
+      const mod = await import("./base/input-group-variants")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-group-variants"
+      return { default: mod.default || mod[exportName] }
+    }),
     "input-group-with-addons": React.lazy(async () => {
       const mod = await import("./base/input-group-with-addons")
       const exportName =
@@ -6262,6 +6352,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "input-rtl"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-variants": React.lazy(async () => {
+      const mod = await import("./base/input-variants")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-variants"
       return { default: mod.default || mod[exportName] }
     }),
     "item-avatar": React.lazy(async () => {
@@ -7272,6 +7371,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
         ) || "spinner-button"
       return { default: mod.default || mod[exportName] }
     }),
+    "spinner-colors": React.lazy(async () => {
+      const mod = await import("./base/spinner-colors")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner-colors"
+      return { default: mod.default || mod[exportName] }
+    }),
     "spinner-custom": React.lazy(async () => {
       const mod = await import("./base/spinner-custom")
       const exportName =
@@ -7324,6 +7432,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "spinner-size"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "spinner-sizes": React.lazy(async () => {
+      const mod = await import("./base/spinner-sizes")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner-sizes"
       return { default: mod.default || mod[exportName] }
     }),
     "switch-choice-card": React.lazy(async () => {
@@ -7531,6 +7648,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "textarea-rtl"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "textarea-variants": React.lazy(async () => {
+      const mod = await import("./base/textarea-variants")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "textarea-variants"
       return { default: mod.default || mod[exportName] }
     }),
     "toggle-demo": React.lazy(async () => {

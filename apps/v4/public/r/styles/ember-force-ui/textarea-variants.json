@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-variants",
+  "title": "Textarea Variants",
+  "dependencies": [],
+  "registryDependencies": [
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/textarea-variants.gts",
+      "content": "import { Textarea } from '@/ui/textarea';\n\n<template>\n  <div class=\"flex w-full flex-col gap-4\">\n    <Textarea @variant=\"outline\" placeholder=\"Outline\" />\n    <Textarea @variant=\"filled\" placeholder=\"Filled\" />\n    <Textarea @variant=\"underline\" placeholder=\"Underline\" />\n    <Textarea @variant=\"ghost\" placeholder=\"Ghost\" />\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-colors",
+  "title": "Spinner Colors",
+  "dependencies": [],
+  "registryDependencies": [
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/spinner-colors.gts",
+      "content": "import { Spinner } from '@/ui/spinner';\n\n<template>\n  <div class=\"flex items-center gap-6\">\n    <Spinner @color=\"default\" />\n    <Spinner @color=\"primary\" />\n    <Spinner @color=\"inherit\" />\n    <div class=\"rounded-md bg-primary p-2\">\n      <Spinner @color=\"onPrimary\" />\n    </div>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

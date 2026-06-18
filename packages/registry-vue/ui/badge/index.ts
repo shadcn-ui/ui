@@ -12,6 +12,8 @@ export const badgeVariants = cva(
         secondary: "cn-badge-variant-secondary",
         destructive: "cn-badge-variant-destructive",
         warning: "cn-badge-variant-warning",
+        success: "cn-badge-variant-success",
+        info: "cn-badge-variant-info",
         "success-solid": "cn-badge-variant-success-solid",
         "warning-solid": "cn-badge-variant-warning-solid",
         "info-solid": "cn-badge-variant-info-solid",
