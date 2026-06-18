@@ -50,22 +50,18 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb'
+} from "@/components/ui/breadcrumb"
 </script>
 
 <template>
   <Breadcrumb>
     <BreadcrumbList>
       <BreadcrumbItem>
-        <BreadcrumbLink href="/">
-          Home
-        </BreadcrumbLink>
+        <BreadcrumbLink href="/"> Home </BreadcrumbLink>
       </BreadcrumbItem>
       <BreadcrumbSeparator />
       <BreadcrumbItem>
-        <BreadcrumbLink href="/components">
-          Components
-        </BreadcrumbLink>
+        <BreadcrumbLink href="/components"> Components </BreadcrumbLink>
       </BreadcrumbItem>
       <BreadcrumbSeparator />
       <BreadcrumbItem>
@@ -86,7 +82,8 @@ Use a custom component as `children` for `<BreadcrumbSeparator />` to create a c
 
 ```vue showLineNumbers {2,12-14}
 <script setup lang="ts">
-import { SlashIcon } from 'lucide-vue-next'
+import { SlashIcon } from "lucide-vue-next"
+
 // ...
 </script>
 
@@ -94,26 +91,23 @@ import { SlashIcon } from 'lucide-vue-next'
   <Breadcrumb>
     <BreadcrumbList>
       <BreadcrumbItem>
-        <BreadcrumbLink href="/">
-          Home
-        </BreadcrumbLink>
+        <BreadcrumbLink href="/"> Home </BreadcrumbLink>
       </BreadcrumbItem>
       <BreadcrumbSeparator>
         <SlashIcon />
       </BreadcrumbSeparator>
       <BreadcrumbItem>
-        <BreadcrumbLink href="/components">
-          Components
-        </BreadcrumbLink>
+        <BreadcrumbLink href="/components"> Components </BreadcrumbLink>
       </BreadcrumbItem>
     </BreadcrumbList>
   </Breadcrumb>
 </template>
 ```
 
-----
+---
 
 ### Dropdown
+
 You can compose `<BreadcrumbItem />` with a `<DropdownMenu />` to create a dropdown in the breadcrumb.
 
 <ComponentPreview framework="vue" name="breadcrumb-dropdown-demo" />
@@ -126,15 +120,14 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+
 //...
 </script>
 
 <template>
   <BreadcrumbItem>
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        Components
-      </DropdownMenuTrigger>
+      <DropdownMenuTrigger> Components </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
         <DropdownMenuItem>Documentation</DropdownMenuItem>
         <DropdownMenuItem>Themes</DropdownMenuItem>
@@ -145,7 +138,7 @@ import {
 </template>
 ```
 
-----
+---
 
 ### Collapsed
 
@@ -156,6 +149,7 @@ We provide a `<BreadcrumbEllipsis />` component to show a collapsed state when t
 ```vue showLineNumbers {2,11}
 <script setup lang="ts">
 import { BreadcrumbEllipsis } from "@/components/ui/breadcrumb"
+
 //...
 </script>
 
@@ -166,22 +160,24 @@ import { BreadcrumbEllipsis } from "@/components/ui/breadcrumb"
       <BreadcrumbItem>
         <BreadcrumbEllipsis />
       </BreadcrumbItem>
-    <!-- ... -->
+      <!-- ... -->
     </BreadcrumbList>
   </Breadcrumb>
 </template>
 ```
 
-----
+---
 
 ### Link component
+
 To use a custom link component from your routing library, you can use the `as-child` prop on `<BreadcrumbLink />`.
 
 <ComponentPreview framework="vue" name="breadcrumb-link-demo" />
 
 ```vue showLineNumbers {2,10-12}
 <script setup lang="ts">
-import { NuxtLink } from '#components'
+import { NuxtLink } from "#components"
+
 // ...
 </script>
 
@@ -190,9 +186,7 @@ import { NuxtLink } from '#components'
     <BreadcrumbList>
       <BreadcrumbItem>
         <BreadcrumbLink as-child>
-          <NuxtLink to="/">
-            Home
-          </NuxtLink>
+          <NuxtLink to="/"> Home </NuxtLink>
         </BreadcrumbLink>
       </BreadcrumbItem>
       {/* ... */}
@@ -201,9 +195,10 @@ import { NuxtLink } from '#components'
 </template>
 ```
 
-----
+---
 
 ### Responsive
+
 Here's an example of a responsive breadcrumb that composes `<BreadcrumbItem />` with `<BreadcrumbEllipsis />`, ` <DropdownMenu />`, and `<Drawer />`.
 
 It displays a dropdown on desktop and a drawer on mobile.

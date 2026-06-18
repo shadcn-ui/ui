@@ -7,12 +7,12 @@ Force UI provides component registries for **React**, **Vue**, **Svelte**, and *
 
 ## Registries
 
-| Registry | Framework | Example |
-| --- | --- | --- |
-| `@force-ui` | React (Radix UI) | `npx shadcn@latest add @force-ui/button` |
-| `@force-ui-vue` | Vue | `npx shadcn@latest add @force-ui-vue/button` |
-| `@force-ui-svelte` | Svelte | `npx shadcn@latest add @force-ui-svelte/button` |
-| `@force-ui-ember` | Ember | `npx shadcn@latest add @force-ui-ember/button` |
+| Registry           | Framework        | Example                                         |
+| ------------------ | ---------------- | ----------------------------------------------- |
+| `@force-ui`        | React (Radix UI) | `npx shadcn@latest add @force-ui/button`        |
+| `@force-ui-vue`    | Vue              | `npx shadcn@latest add @force-ui-vue/button`    |
+| `@force-ui-svelte` | Svelte           | `npx shadcn@latest add @force-ui-svelte/button` |
+| `@force-ui-ember`  | Ember            | `npx shadcn@latest add @force-ui-ember/button`  |
 
 These registries are built-in to the CLI and available without any extra configuration.
 
@@ -40,13 +40,13 @@ The `{style}` and `{name}` placeholders are resolved automatically by the CLI us
 
 Force UI ships five design styles. Set the `style` field in your `components.json` to choose one:
 
-| Style | Description |
-| --- | --- |
-| `nova` | Reduced padding and margins |
-| `vega` | Clean, neutral, and familiar |
+| Style  | Description                    |
+| ------ | ------------------------------ |
+| `nova` | Reduced padding and margins    |
+| `vega` | Clean, neutral, and familiar   |
 | `maia` | Rounded, with generous spacing |
 | `lyra` | Boxy and sharp. For mono fonts |
-| `mira` | Made for compact interfaces |
+| `mira` | Made for compact interfaces    |
 
 ```json title="components.json"
 {
@@ -63,10 +63,10 @@ Use the `add` command with the registry namespace for your framework:
 <Tabs defaultValue="react">
 
 <TabsList>
-<TabsTrigger value="react">React</TabsTrigger>
-<TabsTrigger value="vue">Vue</TabsTrigger>
-<TabsTrigger value="svelte">Svelte</TabsTrigger>
-<TabsTrigger value="ember">Ember</TabsTrigger>
+  <TabsTrigger value="react">React</TabsTrigger>
+  <TabsTrigger value="vue">Vue</TabsTrigger>
+  <TabsTrigger value="svelte">Svelte</TabsTrigger>
+  <TabsTrigger value="ember">Ember</TabsTrigger>
 </TabsList>
 
 <TabsContent value="react">

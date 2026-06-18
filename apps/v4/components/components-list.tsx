@@ -37,7 +37,8 @@ export function ComponentsList({
     <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20">
       {allComponents.map((component) => {
         const isAvailable = availableNames.has(component.name)
-        const href = availableUrlMap.get(String(component.name)) ?? component.url
+        const href =
+          availableUrlMap.get(String(component.name)) ?? component.url
 
         if (!isAvailable) {
           return (

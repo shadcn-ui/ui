@@ -5,7 +5,6 @@ base: ember
 component: true
 ---
 
-
 <ComponentPreview framework="ember" name="sidebar-demo" />
 
 Sidebars are one of the most complex components to build. They are central to any application and often contain a lot of moving parts.
@@ -222,8 +221,8 @@ The `SidebarProvider` component is used to provide the sidebar context to the `S
 If you have a single sidebar in your application, you can use the `SIDEBAR_WIDTH` and `SIDEBAR_WIDTH_MOBILE` variables in `sidebar.gts` to set the width of the sidebar.
 
 ```ts
-const SIDEBAR_WIDTH = '16rem';
-const SIDEBAR_WIDTH_MOBILE = '18rem';
+const SIDEBAR_WIDTH = "16rem"
+const SIDEBAR_WIDTH_MOBILE = "18rem"
 ```
 
 For multiple sidebars in your application, you can use the `@style` argument to set the width of the sidebar.
@@ -231,9 +230,7 @@ For multiple sidebars in your application, you can use the `@style` argument to 
 To set the width of the sidebar, you can use the `--sidebar-width` and `--sidebar-width-mobile` CSS variables in the `@style` argument.
 
 ```hbs
-<SidebarProvider
-  @style="--sidebar-width: 20rem; --sidebar-width-mobile: 20rem"
->
+<SidebarProvider @style="--sidebar-width: 20rem; --sidebar-width-mobile: 20rem">
   <Sidebar />
 </SidebarProvider>
 ```
@@ -249,7 +246,7 @@ To trigger the sidebar, you use the `cmd+b` keyboard shortcut on Mac and `ctrl+b
 You can change the keyboard shortcut by updating the `SIDEBAR_KEYBOARD_SHORTCUT` variable.
 
 ```ts
-const SIDEBAR_KEYBOARD_SHORTCUT = 'b';
+const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 ```
 
 ### Persisted State
@@ -259,7 +256,7 @@ The `SidebarProvider` supports persisting the sidebar state across page reloads.
 You can change the name of the cookie by updating the `SIDEBAR_COOKIE_NAME` variable in `sidebar.gts`.
 
 ```ts
-const SIDEBAR_COOKIE_NAME = 'sidebar_state';
+const SIDEBAR_COOKIE_NAME = "sidebar_state"
 ```
 
 ## Sidebar
@@ -306,7 +303,8 @@ Available options are `sidebar`, `floating` and `inset`.
 ```
 
 <Callout>
-  **Note:** If you use the `inset` variant, remember to wrap your main content in a `SidebarInset` component.
+  **Note:** If you use the `inset` variant, remember to wrap your main content
+  in a `SidebarInset` component.
 </Callout>
 
 ```hbs
@@ -574,7 +572,8 @@ import ChevronDown from '~icons/lucide/chevron-down';
 ```
 
 <Callout>
-  **Note:** We wrap the `CollapsibleTrigger` in a `SidebarGroupLabel` to render a button.
+  **Note:** We wrap the `CollapsibleTrigger` in a `SidebarGroupLabel` to render
+  a button.
 </Callout>
 
 ## SidebarGroupAction

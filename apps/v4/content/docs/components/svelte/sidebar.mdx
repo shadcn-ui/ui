@@ -50,9 +50,21 @@ A `Sidebar` component is composed of the following parts:
 - `Sidebar.Group` - Section within the `Sidebar.Content`.
 - `Sidebar.Trigger` - Trigger for the `Sidebar`.
 
-<img src="/img/sidebar/sidebar-structure.png" width="716" height="420" alt="Sidebar structure" class="border dark:hidden rounded-lg overflow-hidden mt-6 w-full" />
+<img
+  src="/img/sidebar/sidebar-structure.png"
+  width="716"
+  height="420"
+  alt="Sidebar structure"
+  class="mt-6 w-full overflow-hidden rounded-lg border dark:hidden"
+/>
 
-<img src="/img/sidebar/sidebar-structure-dark.png" width="716" height="420" alt="Sidebar structure" class="border hidden dark:block rounded-lg overflow-hidden mt-6 w-full" />
+<img
+  src="/img/sidebar/sidebar-structure-dark.png"
+  width="716"
+  height="420"
+  alt="Sidebar structure"
+  class="mt-6 hidden w-full overflow-hidden rounded-lg border dark:block"
+/>
 
 ## Usage
 
@@ -233,8 +245,8 @@ The `Sidebar.Provider` component is used to provide the sidebar context to the `
 If you have a single sidebar in your application, you can use the `SIDEBAR_WIDTH` and `SIDEBAR_WIDTH_MOBILE` constants in `src/lib/components/ui/sidebar/constants.ts` to set the width of the sidebar.
 
 ```ts showLineNumbers title="src/lib/components/ui/sidebar/constants.ts"
-export const SIDEBAR_WIDTH = "16rem";
-export const SIDEBAR_WIDTH_MOBILE = "18rem";
+export const SIDEBAR_WIDTH = "16rem"
+export const SIDEBAR_WIDTH_MOBILE = "18rem"
 ```
 
 For multiple sidebars in your application, you can use the `style` prop to set the width of the sidebar.
@@ -260,7 +272,7 @@ To trigger the sidebar, you use the `cmd+b` keyboard shortcut on Mac and `ctrl+b
 You can change the keyboard shortcut by changing the value of the `SIDEBAR_KEYBOARD_SHORTCUT` variable.
 
 ```ts showLineNumbers title="src/lib/components/ui/sidebar/constants.ts"
-export const SIDEBAR_KEYBOARD_SHORTCUT = "b";
+export const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 ```
 
 ## Sidebar.Root
@@ -529,9 +541,21 @@ The `Sidebar.Menu` component is used for building a menu within a `Sidebar.Group
 
 A `Sidebar.Menu` is composed of `Sidebar.MenuItem`, `Sidebar.MenuButton`, `Sidebar.MenuAction`, and `Sidebar.MenuSub` components.
 
-<img src="/img/sidebar/sidebar-menu.png" width="716" height="420" alt="Sidebar menu" class="border dark:hidden rounded-lg overflow-hidden mt-6 w-full" />
+<img
+  src="/img/sidebar/sidebar-menu.png"
+  width="716"
+  height="420"
+  alt="Sidebar menu"
+  class="mt-6 w-full overflow-hidden rounded-lg border dark:hidden"
+/>
 
-<img src="/img/sidebar/sidebar-menu-dark.png" width="716" height="420" alt="Sidebar menu" class="border hidden dark:block rounded-lg overflow-hidden mt-6 w-full" />
+<img
+  src="/img/sidebar/sidebar-menu-dark.png"
+  width="716"
+  height="420"
+  alt="Sidebar menu"
+  class="mt-6 hidden w-full overflow-hidden rounded-lg border dark:block"
+/>
 
 Here's an example of a `Sidebar.Menu` component rendering a list of projects.
 

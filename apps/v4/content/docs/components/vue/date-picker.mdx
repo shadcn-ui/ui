@@ -43,17 +43,18 @@ npx shadcn@latest add @force-ui-vue/date-picker
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import { DateFormatter, getLocalTimeZone, today } from '@internationalized/date'
-import { CalendarIcon } from 'lucide-vue-next'
-import { ref } from 'vue'
-import { Button } from '@/components/ui/button'
-import { Calendar } from '@/components/ui/calendar'
+import { DateFormatter, getLocalTimeZone, today } from "@internationalized/date"
+import { CalendarIcon } from "lucide-vue-next"
+import { ref } from "vue"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
-import { cn } from '@/lib/utils'
+} from "@/components/ui/popover"
 
 const date = ref<Date>()
 const defaultPlaceholder = today(getLocalTimeZone())
@@ -64,10 +65,12 @@ const defaultPlaceholder = today(getLocalTimeZone())
     <PopoverTrigger as-child>
       <Button
         variant="outline"
-        :class="cn(
-          'w-[280px] justify-start text-left font-normal',
-          !date && 'text-muted-foreground',
-        )"
+        :class="
+          cn(
+            'w-[280px] justify-start text-left font-normal',
+            !date && 'text-muted-foreground'
+          )
+        "
       >
         <CalendarIcon class="mr-2 h-4 w-4" />
         {{ date ? date.toDateString() : "Pick a date" }}
