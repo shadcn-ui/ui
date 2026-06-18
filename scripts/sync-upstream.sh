@@ -205,14 +205,29 @@ else
 fi
 
 echo ""
-info "2/3 — Rebuilding registry..."
+info "2/5 — Enforcing force-ui style allowlist (stripping upstream demo styles)..."
+node scripts/strip-styles.mjs
+success "Style allowlist enforced."
+
+echo ""
+info "3/5 — Regenerating lockfile (upstream dependency bumps)..."
+git checkout --theirs pnpm-lock.yaml 2>/dev/null || true
+pnpm install
+success "Lockfile regenerated."
+
+echo ""
+info "4/5 — Rebuilding registry..."
 pnpm --filter=v4 registry:build
 success "Registry rebuilt."
 
 echo ""
-info "3/3 — Type check..."
+info "5/5 — Type check + lint..."
 pnpm --filter=v4 typecheck
-success "Type check passed."
+pnpm --filter=v4 lint
+success "Type check + lint passed."
+
+# Stage regenerated/stripped artifacts so the merge commit is self-consistent.
+git add -A
 
 # ── Done ──────────────────────────────────────────────────────────────────────
 header "Sync complete ✓"

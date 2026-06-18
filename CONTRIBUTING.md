@@ -112,12 +112,30 @@ Brand colors live in `packages/theme-force-ui/src/index.ts` as OKLCH values. Cha
 
 ## Syncing from upstream shadcn
 
+Preferred: run the scripted workflow, which merges, enforces the style
+allowlist, regenerates the lockfile + registry, and runs typecheck/lint:
+
+```bash
+./scripts/sync-upstream.sh            # full workflow (--dry-run to preview)
+```
+
+Manual equivalent:
+
 ```bash
 git fetch upstream
 git merge upstream/main
-# Then:
-grep -rn "\[FORCE-UI\]" apps/v4/   # find every block that may need attention
+grep -rn "\[FORCE-UI\]" apps/v4/      # find every block that may need attention
+node scripts/strip-styles.mjs         # strip non-force-ui demo styles (idempotent)
+git checkout --theirs pnpm-lock.yaml && pnpm install   # regenerate lockfile
+pnpm --filter=v4 registry:build
+pnpm --filter=v4 typecheck && pnpm --filter=v4 lint
 ```
+
+Upstream regularly ships new demo styles (vega/nova/maia/lyra/mira/luma/sera/rhea/…).
+`scripts/strip-styles.mjs` removes all of them from the v4 app and rewrites stray
+`@/styles/<base>-<demo>` imports to `force-ui`, so most of the per-style merge
+noise resolves itself. Conflicts in deleted style files are resolved by keeping
+them deleted (`git rm`).
 
 The files most likely to have conflicts after a merge are:
 - `apps/v4/app/globals.css` — look for `[FORCE-UI]` blocks
