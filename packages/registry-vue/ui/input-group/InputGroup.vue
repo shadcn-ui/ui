@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
 import { cn } from "@/lib/utils"
+import { inputGroupVariants } from "."
 
 const props = defineProps<{
   class?: HTMLAttributes["class"]
+  variant?: "outline" | "filled" | "underline" | "ghost" // [FORCE-UI]
 }>()
 </script>
 
@@ -12,8 +14,7 @@ const props = defineProps<{
     data-slot="input-group"
     role="group"
     :class="cn(
-      'group/input-group border-input dark:bg-input/30 relative flex w-full items-center rounded-md border shadow-xs transition-[color,box-shadow] outline-none',
-      'h-9 min-w-0 has-[>textarea]:h-auto',
+      inputGroupVariants({ variant: props.variant }),
 
       // Variants based on alignment.
       'has-[>[data-align=inline-start]]:[&>input]:pl-2',

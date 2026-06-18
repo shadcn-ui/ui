@@ -25,6 +25,8 @@ export default function SpinnerExample() {
   return (
     <ExampleWrapper>
       <SpinnerBasic />
+      <SpinnerColors />
+      <SpinnerSizes />
       <SpinnerInButtons />
       <SpinnerInBadges />
       <SpinnerInInputGroup />
@@ -39,6 +41,34 @@ function SpinnerBasic() {
       <div className="flex items-center gap-6">
         <Spinner />
         <Spinner className="size-6" />
+      </div>
+    </Example>
+  )
+}
+
+function SpinnerColors() {
+  return (
+    <Example title="Colors">
+      <div className="flex items-center gap-6">
+        <Spinner color="default" />
+        <Spinner color="primary" />
+        <Spinner color="inherit" />
+        <div className="bg-primary rounded-md p-2">
+          <Spinner color="onPrimary" />
+        </div>
+      </div>
+    </Example>
+  )
+}
+
+function SpinnerSizes() {
+  return (
+    <Example title="Sizes">
+      <div className="flex items-center gap-6">
+        <Spinner size="xs" />
+        <Spinner size="sm" />
+        <Spinner size="md" />
+        <Spinner size="lg" />
       </div>
     </Example>
   )

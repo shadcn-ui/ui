@@ -61,13 +61,13 @@ You can replace the default spinner icon with any other icon by editing the `Spi
 
 ### Size
 
-Use the `size-*` utility class to change the size of the spinner.
+Use the `size` prop to change the size of the spinner.
 
 <ComponentPreview framework="svelte" name="spinner-size-demo" />
 
 ### Color
 
-Use the `text-*` utility class to change the color of the spinner.
+Use the `color` prop to change the color of the spinner.
 
 <ComponentPreview framework="svelte" name="spinner-color-demo" />
 
@@ -98,3 +98,19 @@ Input Group can have spinners inside `<InputGroup.Addon>`.
 Use the spinner inside `<Item.Media>` to indicate a loading state.
 
 <ComponentPreview framework="svelte" name="spinner-item-demo" />
+
+## API Reference
+
+### Spinner
+
+Use the `Spinner` component to display a spinner.
+
+| Prop        | Type                                               | Default     |
+| ----------- | -------------------------------------------------- | ----------- |
+| `color`     | `"default" \| "primary" \| "onPrimary" \| "inherit"` | `"default"` |
+| `size`      | `"xs" \| "sm" \| "md" \| "lg"`                    | `"sm"`      |
+| `class`     | `string`                                           |             |
+
+```svelte
+<Spinner />
+```

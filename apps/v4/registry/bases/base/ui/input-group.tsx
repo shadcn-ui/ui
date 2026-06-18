@@ -8,15 +8,33 @@ import { Button } from "@/registry/bases/base/ui/button"
 import { Input } from "@/registry/bases/base/ui/input"
 import { Textarea } from "@/registry/bases/base/ui/textarea"
 
-function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
+const inputGroupVariants = cva(
+  "group/input-group cn-input-group relative flex w-full min-w-0 items-center outline-none has-[>textarea]:h-auto",
+  {
+    variants: {
+      variant: {
+        outline: "cn-input-group-variant-outline",     // [FORCE-UI]
+        filled: "cn-input-group-variant-filled",       // [FORCE-UI]
+        underline: "cn-input-group-variant-underline", // [FORCE-UI]
+        ghost: "cn-input-group-variant-ghost",         // [FORCE-UI]
+      },
+    },
+    defaultVariants: {
+      variant: "outline",
+    },
+  }
+)
+
+function InputGroup({
+  className,
+  variant,
+  ...props
+}: React.ComponentProps<"div"> & VariantProps<typeof inputGroupVariants>) {
   return (
     <div
       data-slot="input-group"
       role="group"
-      className={cn(
-        "group/input-group cn-input-group relative flex w-full min-w-0 items-center outline-none has-[>textarea]:h-auto",
-        className
-      )}
+      className={cn(inputGroupVariants({ variant }), className)}
       {...props}
     />
   )
@@ -141,6 +159,7 @@ function InputGroupTextarea({
 
 export {
   InputGroup,
+  inputGroupVariants,
   InputGroupAddon,
   InputGroupButton,
   InputGroupText,

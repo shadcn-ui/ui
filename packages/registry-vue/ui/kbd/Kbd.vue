@@ -1,20 +1,35 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
+import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
+export const kbdVariants = cva(
+  "cn-kbd pointer-events-none inline-flex items-center justify-center select-none",
+  {
+    variants: {
+      variant: {
+        default: "cn-kbd-variant-default",
+        primary: "cn-kbd-variant-primary",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+export type KbdVariants = VariantProps<typeof kbdVariants>
+
 const props = defineProps<{
+  variant?: KbdVariants["variant"]
   class?: HTMLAttributes["class"]
 }>()
 </script>
 
 <template>
   <kbd
-    :class="cn(
-      'bg-muted text-muted-foreground pointer-events-none inline-flex h-5 w-fit min-w-5 items-center justify-center gap-1 rounded-sm px-1 font-sans text-xs font-medium select-none',
-      '[&_svg:not([class*=\'size-\'])]:size-3',
-      '[[data-slot=tooltip-content]_&]:bg-background/20 [[data-slot=tooltip-content]_&]:text-background dark:[[data-slot=tooltip-content]_&]:bg-background/10',
-      props.class,
-    )"
+    data-slot="kbd"
+    :class="cn(kbdVariants({ variant }), props.class)"
   >
     <slot />
   </kbd>

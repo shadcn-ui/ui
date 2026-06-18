@@ -4,6 +4,28 @@ import { cva } from "class-variance-authority"
 import type { HTMLAttributes } from "vue"
 
 export { default as InputGroup } from "./InputGroup.vue"
+
+// [FORCE-UI-START]
+export const inputGroupVariants = cva(
+  "group/input-group relative flex h-9 w-full min-w-0 items-center outline-none has-[>textarea]:h-auto",
+  {
+    variants: {
+      variant: {
+        outline:
+          "rounded-md border border-input shadow-xs transition-[color,box-shadow] hover:border-input dark:bg-input/30",
+        filled: "rounded-lg border border-border bg-muted hover:border-input",
+        underline: "border-0 border-b border-input",
+        ghost: "rounded-lg border border-transparent hover:bg-muted/50",
+      },
+    },
+    defaultVariants: {
+      variant: "outline",
+    },
+  }
+)
+
+export type InputGroupRootVariants = VariantProps<typeof inputGroupVariants>
+// [FORCE-UI-END]
 export { default as InputGroupAddon } from "./InputGroupAddon.vue"
 export { default as InputGroupButton } from "./InputGroupButton.vue"
 export { default as InputGroupInput } from "./InputGroupInput.vue"

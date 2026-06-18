@@ -20,6 +20,7 @@ export default function KbdExample() {
   return (
     <ExampleWrapper>
       <KbdBasic />
+      <KbdVariants />
       <KbdModifierKeys />
       <KbdGroupExample />
       <KbdArrowKeys />
@@ -39,6 +40,19 @@ function KbdBasic() {
         <Kbd>Ctrl</Kbd>
         <Kbd>⌘K</Kbd>
         <Kbd>Ctrl + B</Kbd>
+      </div>
+    </Example>
+  )
+}
+
+function KbdVariants() {
+  return (
+    <Example title="Variants">
+      <div className="flex items-center gap-4">
+        <Kbd variant="default">⌘K</Kbd>
+        <div className="bg-primary rounded-md px-3 py-1.5">
+          <Kbd variant="primary">⌘K</Kbd>
+        </div>
       </div>
     </Example>
   )

@@ -90,6 +90,12 @@ You can use the `Kbd` component inside a `InputGroupAddon` component to display 
 
 <ComponentPreview styleName="base-force-ui" name="kbd-input-group" />
 
+### Primary
+
+Use `variant="primary"` when placing a `Kbd` on a solid or brand-coloured surface so the key label remains legible against the background.
+
+<ComponentPreview styleName="base-force-ui" name="kbd-example" />
+
 ## RTL
 
 To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
@@ -102,9 +108,10 @@ To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
 
 Use the `Kbd` component to display a keyboard key.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` | ``      |
+| Prop        | Type                     | Default     |
+| ----------- | ------------------------ | ----------- |
+| `className` | `string`                 | ``          |
+| `variant`   | `"default" \| "primary"` | `"default"` |
 
 ```tsx
 <Kbd>Ctrl</Kbd>

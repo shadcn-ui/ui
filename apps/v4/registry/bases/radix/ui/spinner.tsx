@@ -1,7 +1,36 @@
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+
 import { cn } from "@/registry/bases/radix/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
+const spinnerVariants = cva("cn-spinner animate-spin", {
+  variants: {
+    color: {
+      default: "cn-spinner-color-default",     // [FORCE-UI]
+      primary: "cn-spinner-color-primary",     // [FORCE-UI]
+      onPrimary: "cn-spinner-color-onPrimary", // [FORCE-UI]
+      inherit: "cn-spinner-color-inherit",     // [FORCE-UI]
+    },
+    size: {
+      xs: "cn-spinner-size-xs", // [FORCE-UI]
+      sm: "cn-spinner-size-sm", // [FORCE-UI]
+      md: "cn-spinner-size-md", // [FORCE-UI]
+      lg: "cn-spinner-size-lg", // [FORCE-UI]
+    },
+  },
+  defaultVariants: {
+    color: "default",
+    size: "sm",
+  },
+})
+
+function Spinner({
+  className,
+  color,
+  size,
+  ...props
+}: React.ComponentProps<"svg"> & VariantProps<typeof spinnerVariants>) {
   return (
     <IconPlaceholder
       lucide="Loader2Icon"
@@ -12,10 +41,10 @@ function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
       data-slot="spinner"
       role="status"
       aria-label="Loading"
-      className={cn("size-4 animate-spin", className)}
+      className={cn(spinnerVariants({ color, size }), className)}
       {...props}
     />
   )
 }
 
-export { Spinner }
+export { Spinner, spinnerVariants }

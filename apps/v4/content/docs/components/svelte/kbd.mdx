@@ -76,3 +76,33 @@ You can use the `Kbd.Root` component inside a `Tooltip` component to display a t
 You can use the `Kbd.Root` component inside a `InputGroup.Addon` component to display a keyboard key inside an input group.
 
 <ComponentPreview framework="svelte" name="kbd-input-group-demo" />
+
+## API Reference
+
+### Kbd.Root
+
+Use the `Kbd.Root` component to display a keyboard key.
+
+| Prop      | Type                     | Default     |
+| --------- | ------------------------ | ----------- |
+| `variant` | `"default" \| "primary"` | `"default"` |
+| `class`   | `string`                 | ``          |
+
+```svelte
+<Kbd.Root>Ctrl</Kbd.Root>
+```
+
+### Kbd.Group
+
+Use the `Kbd.Group` component to group `Kbd.Root` components together.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` | ``      |
+
+```svelte
+<Kbd.Group>
+  <Kbd.Root>Ctrl</Kbd.Root>
+  <Kbd.Root>B</Kbd.Root>
+</Kbd.Group>
+```

@@ -121,3 +121,21 @@ Add the `data-slot="input-group-control"` attribute to your custom input for aut
 No style is applied to the custom input. Apply your own styles using the `class` prop.
 
 <ComponentPreview framework="svelte" name="input-group-custom-input-demo" />
+
+## API Reference
+
+### InputGroup
+
+The main component that wraps inputs and addons.
+
+| Prop      | Type                                              | Default     |
+| --------- | ------------------------------------------------- | ----------- |
+| `variant` | `"outline" \| "filled" \| "underline" \| "ghost"` | `"outline"` |
+| `class`   | `string`                                          |             |
+
+```svelte
+<InputGroup.Root variant="filled">
+  <InputGroup.Input />
+  <InputGroup.Addon />
+</InputGroup.Root>
+```

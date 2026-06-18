@@ -17,7 +17,7 @@
     },
     {
       "path": "registry/svelte-force-ui/ui/kbd/kbd.svelte",
-      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLElement>> = $props()\n</script>\n\n<kbd\n  bind:this={ref}\n  data-slot=\"kbd\"\n  class={cn(\n    \"cn-kbd pointer-events-none inline-flex items-center justify-center select-none\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n</kbd>\n",
+      "content": "<script lang=\"ts\" module>\n  import { tv, type VariantProps } from \"tailwind-variants\"\n\n  export const kbdVariants = tv({\n    base: \"cn-kbd pointer-events-none inline-flex items-center justify-center select-none\",\n    variants: {\n      variant: {\n        default: \"cn-kbd-variant-default\",\n        primary: \"cn-kbd-variant-primary\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  })\n\n  export type KbdVariant = VariantProps<typeof kbdVariants>[\"variant\"]\n</script>\n\n<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    variant,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLElement>> & {\n    variant?: KbdVariant\n  } = $props()\n</script>\n\n<kbd\n  bind:this={ref}\n  data-slot=\"kbd\"\n  class={cn(kbdVariants({ variant }), className)}\n  {...restProps}\n>\n  {@render children?.()}\n</kbd>\n",
       "type": "registry:ui"
     }
   ],

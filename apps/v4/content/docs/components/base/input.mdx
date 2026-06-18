@@ -59,6 +59,14 @@ import { Input } from "@/components/ui/input"
 
 ## Examples
 
+### Variants
+
+<ComponentPreview
+  styleName="base-force-ui"
+  name="input-example"
+  previewClassName="*:max-w-sm"
+/>
+
 ### Basic
 
 <ComponentPreview
@@ -199,3 +207,15 @@ To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
   direction="rtl"
   previewClassName="*:max-w-xs"
 />
+
+## API Reference
+
+### Input
+
+The `Input` component renders a styled HTML input element.
+
+| Prop        | Type                                              | Default     |
+| ----------- | ------------------------------------------------- | ----------- |
+| `variant`   | `"outline" \| "filled" \| "underline" \| "ghost"` | `"outline"` |
+| `type`      | `string`                                          | -           |
+| `className` | `string`                                          | -           |

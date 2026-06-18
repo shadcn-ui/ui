@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "registry/vue-force-ui/ui/kbd/Kbd.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <kbd\n    :class=\"\n      cn(\n        'pointer-events-none inline-flex h-5 w-fit min-w-5 items-center justify-center gap-1 rounded-sm bg-muted px-1 font-sans text-xs font-medium text-muted-foreground select-none',\n        '[&_svg:not([class*=\\'size-\\'])]:size-3',\n        '[[data-slot=tooltip-content]_&]:bg-background/20 [[data-slot=tooltip-content]_&]:text-background dark:[[data-slot=tooltip-content]_&]:bg-background/10',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </kbd>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport const kbdVariants = cva(\n  \"cn-kbd pointer-events-none inline-flex items-center justify-center select-none\",\n  {\n    variants: {\n      variant: {\n        default: \"cn-kbd-variant-default\",\n        primary: \"cn-kbd-variant-primary\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\nexport type KbdVariants = VariantProps<typeof kbdVariants>\n\nconst props = defineProps<{\n  variant?: KbdVariants[\"variant\"]\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <kbd data-slot=\"kbd\" :class=\"cn(kbdVariants({ variant }), props.class)\">\n    <slot />\n  </kbd>\n</template>\n",
       "type": "registry:ui"
     },
     {

@@ -17,6 +17,7 @@ export default function TextareaExample() {
       <TextareaWithLabel />
       <TextareaWithDescription />
       <TextareaDisabled />
+      <TextareaVariants />
     </ExampleWrapper>
   )
 }
@@ -81,6 +82,19 @@ function TextareaDisabled() {
           disabled
         />
       </Field>
+    </Example>
+  )
+}
+
+function TextareaVariants() {
+  return (
+    <Example title="Variants">
+      <div className="flex flex-col gap-3 w-full max-w-sm">
+        <Textarea placeholder="Outline (default)" variant="outline" />
+        <Textarea placeholder="Filled" variant="filled" />
+        <Textarea placeholder="Underline" variant="underline" />
+        <Textarea placeholder="Ghost" variant="ghost" />
+      </div>
     </Example>
   )
 }

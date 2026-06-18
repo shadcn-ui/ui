@@ -3,7 +3,7 @@ import Component from '@glimmer/component';
 
 import { cn } from '@/lib/utils';
 
-type Variant = 'default' | 'secondary' | 'destructive' | 'warning' | 'outline';
+type Variant = 'default' | 'secondary' | 'destructive' | 'warning' | 'outline' | 'success-solid' | 'warning-solid' | 'info-solid' | 'error-solid';
 
 interface BadgeSignature {
   Element: HTMLSpanElement;
@@ -29,6 +29,10 @@ function badgeVariants(
     secondary: 'cn-badge-variant-secondary',
     destructive: 'cn-badge-variant-destructive',
     warning: 'cn-badge-variant-warning',
+    'success-solid': 'cn-badge-variant-success-solid',
+    'warning-solid': 'cn-badge-variant-warning-solid',
+    'info-solid': 'cn-badge-variant-info-solid',
+    'error-solid': 'cn-badge-variant-error-solid',
     outline: 'cn-badge-variant-outline',
   };
 

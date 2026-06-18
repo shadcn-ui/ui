@@ -13,6 +13,12 @@ const badgeVariants = cva(
         secondary: "cn-badge-variant-secondary",
         destructive: "cn-badge-variant-destructive",
         warning: "cn-badge-variant-warning",
+        success: "cn-badge-variant-success",  // [FORCE-UI]
+        info: "cn-badge-variant-info",         // [FORCE-UI]
+        "success-solid": "cn-badge-variant-success-solid",  // [FORCE-UI]
+        "warning-solid": "cn-badge-variant-warning-solid",  // [FORCE-UI]
+        "info-solid": "cn-badge-variant-info-solid",         // [FORCE-UI]
+        "error-solid": "cn-badge-variant-error-solid",       // [FORCE-UI]
         outline: "cn-badge-variant-outline",
         ghost: "cn-badge-variant-ghost",
         link: "cn-badge-variant-link",

@@ -71,6 +71,7 @@ export default function InputGroupExample() {
       <InputGroupWithKbd />
       <InputGroupInCard />
       <InputGroupTextareaExamples />
+      <InputGroupVariants />
     </ExampleWrapper>
   )
 }
@@ -909,3 +910,26 @@ function InputGroupTextareaExamples() {
     </Example>
   )
 }
+
+// [FORCE-UI-START]
+function InputGroupVariants() {
+  return (
+    <Example title="Variants">
+      <div className="flex flex-col gap-4 w-full max-w-sm">
+        <InputGroup variant="outline">
+          <InputGroupInput placeholder="Outline (default)" />
+        </InputGroup>
+        <InputGroup variant="filled">
+          <InputGroupInput placeholder="Filled" />
+        </InputGroup>
+        <InputGroup variant="underline">
+          <InputGroupInput placeholder="Underline" />
+        </InputGroup>
+        <InputGroup variant="ghost">
+          <InputGroupInput placeholder="Ghost" />
+        </InputGroup>
+      </div>
+    </Example>
+  )
+}
+// [FORCE-UI-END]

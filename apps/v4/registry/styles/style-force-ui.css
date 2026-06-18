@@ -124,6 +124,24 @@
     @apply text-primary underline-offset-4 hover:underline;
   }
 
+  /* [FORCE-UI-START] solid status variants */
+  .cn-badge-variant-success-solid {
+    @apply bg-success-solid text-on-success;
+  }
+
+  .cn-badge-variant-warning-solid {
+    @apply bg-warning-solid text-on-warning dark:text-on-warning;
+  }
+
+  .cn-badge-variant-info-solid {
+    @apply bg-info-solid text-on-info;
+  }
+
+  .cn-badge-variant-error-solid {
+    @apply bg-destructive text-on-error;
+  }
+  /* [FORCE-UI-END] */
+
   /* MARK: Breadcrumb */
   .cn-breadcrumb-list {
     @apply text-muted-foreground gap-1.5 text-sm;

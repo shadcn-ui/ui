@@ -11,6 +11,9 @@ export const alertVariants = cva("cn-alert w-full relative group/alert", {
     variant: {
       default: "cn-alert-variant-default",
       destructive: "cn-alert-variant-destructive",
+      warning: "cn-alert-variant-warning",
+      success: "cn-alert-variant-success",
+      info: "cn-alert-variant-info",
     },
   },
   defaultVariants: {
