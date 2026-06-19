@@ -5,7 +5,7 @@ export function RegistryConfigBlock() {
 
   const config = JSON.stringify(
     {
-      style: "force-ui",
+      style: "radix-force-ui",
       registries: {
         "@force-ui": `${appUrl}/r/styles/{style}/{name}.json`,
         "@force-ui-vue": `${appUrl}/r/styles/vue-{style}/{name}.json`,

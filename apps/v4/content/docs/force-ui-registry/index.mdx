@@ -1,119 +1,173 @@
 ---
-title: Force UI Registry
-description: Add Force UI components to your project using the registry.
+title: Force UI registry
+description: Set up the hosted Force UI registry with the official shadcn CLI.
 ---
 
-Force UI provides component registries for **React**, **Vue**, **Svelte**, and **Ember**. Each registry contains styled, accessible components that you can add to your project with the CLI.
+Force UI works with the official `shadcn` CLI. Use a Force UI preset URL to install the style, theme, and font, then use the registry to add components.
 
-## Registries
+These steps are written to be copy-pasteable for both humans and coding agents.
 
-| Registry           | Framework        | Example                                         |
-| ------------------ | ---------------- | ----------------------------------------------- |
-| `@force-ui`        | React (Radix UI) | `npx shadcn@latest add @force-ui/button`        |
-| `@force-ui-vue`    | Vue              | `npx shadcn@latest add @force-ui-vue/button`    |
-| `@force-ui-svelte` | Svelte           | `npx shadcn@latest add @force-ui-svelte/button` |
-| `@force-ui-ember`  | Ember            | `npx shadcn@latest add @force-ui-ember/button`  |
+## What installs what
 
-These registries are built-in to the CLI and available without any extra configuration.
+- `shadcn init` with a Force UI preset installs the base setup for a new project.
+- `shadcn apply` with a Force UI preset switches an existing project to Force UI.
+- `shadcn add` installs Force UI component source files.
+- Custom variants ship with the component source. There is no separate variant install step.
 
-## Setup
-
-### 1. Initialize your project
-
-If you haven't already, run `shadcn init` in your project:
+## Hosted URLs
 
 ```bash
-npx shadcn@latest init
+export FORCE_UI_REGISTRY="https://shadcn-force-ui.vercel.app/r"
+export FORCE_UI_PRESET_RADIX="https://shadcn-force-ui.vercel.app/init?base=radix&style=force-ui&baseColor=force-ui&theme=force-ui&chartColor=force-ui&iconLibrary=lucide&font=noto-sans&rtl=false&menuAccent=subtle&menuColor=default&radius=default"
+export FORCE_UI_PRESET_BASE="https://shadcn-force-ui.vercel.app/init?base=base&style=force-ui&baseColor=force-ui&theme=force-ui&chartColor=force-ui&iconLibrary=lucide&font=noto-sans&rtl=false&menuAccent=subtle&menuColor=default&radius=default"
 ```
 
-This creates a `components.json` file with your project configuration.
+## New React project
 
-### 2. Configure the registry
+### Radix UI
 
-The Force UI registries are built-in, so they work out of the box. If you want to add them explicitly or use a custom registry URL, add them to the `registries` field in your `components.json`:
+```bash
+REGISTRY_URL="$FORCE_UI_REGISTRY" \
+npx shadcn@latest init -t vite -b radix -p "$FORCE_UI_PRESET_RADIX" -y
+```
+
+### Base UI
+
+```bash
+REGISTRY_URL="$FORCE_UI_REGISTRY" \
+npx shadcn@latest init -t vite -b base -p "$FORCE_UI_PRESET_BASE" -y
+```
+
+After init, React projects should have one of these style values in `components.json`:
+
+- `radix-force-ui`
+- `base-force-ui`
+
+Do not set the React style to `force-ui`. The hosted React registry paths use `radix-force-ui` and `base-force-ui`.
+
+## Existing React project
+
+### Switch the full project to Force UI
+
+```bash
+REGISTRY_URL="$FORCE_UI_REGISTRY" \
+npx shadcn@latest apply --preset "$FORCE_UI_PRESET_RADIX" -y
+```
+
+Use the Base preset URL instead when your project uses Base UI.
+
+### Update only the theme and font
+
+```bash
+REGISTRY_URL="$FORCE_UI_REGISTRY" \
+npx shadcn@latest apply --preset "$FORCE_UI_PRESET_RADIX" --only theme,font -y
+```
+
+This updates the CSS variables and font setup without reinstalling UI components.
+
+## Configure the registry namespace
+
+After `init` or `apply`, add an explicit registry mapping to `components.json`. The official CLI does not infer the `@force-ui` namespace from the preset alone.
 
 <RegistryConfigBlock />
 
-The `{style}` and `{name}` placeholders are resolved automatically by the CLI using your configured style and the component name.
+For React, keep `style` set to `radix-force-ui` or `base-force-ui`. For the other framework registries, use the matching style value:
 
-## Style
+- `vue-force-ui`
+- `svelte-force-ui`
+- `ember-force-ui`
 
-Force UI ships a single design style: **`force-ui`**. The `style` field in your `components.json` is set automatically by `shadcn init` and encodes both the base library and the style name:
+## Add components
 
-| Value             | Framework                   |
-| ----------------- | --------------------------- |
-| `radix-force-ui`  | React (Radix UI)            |
-| `base-force-ui`   | React (base, no primitives) |
-| `vue-force-ui`    | Vue                         |
-| `svelte-force-ui` | Svelte                      |
-| `ember-force-ui`  | Ember                       |
-
-```json title="components.json"
-{
-  "style": "radix-force-ui"
-}
-```
-
-The style value tells the CLI which registry path to fetch from. For example, `@force-ui-vue/button` with style `vue-force-ui` fetches from `/styles/vue-force-ui/button.json`.
-
-## Adding components
-
-Use the `add` command with the registry namespace for your framework:
-
-<Tabs defaultValue="react">
-
-<TabsList>
-  <TabsTrigger value="react">React</TabsTrigger>
-  <TabsTrigger value="vue">Vue</TabsTrigger>
-  <TabsTrigger value="svelte">Svelte</TabsTrigger>
-  <TabsTrigger value="ember">Ember</TabsTrigger>
-</TabsList>
-
-<TabsContent value="react">
+Once the registry mapping is in place, install components with the official CLI:
 
 ```bash
 npx shadcn@latest add @force-ui/button
 npx shadcn@latest add @force-ui/card @force-ui/dialog
+npx shadcn@latest add @force-ui/badge
 ```
-
-</TabsContent>
-
-<TabsContent value="vue">
-
-```bash
-npx shadcn@latest add @force-ui-vue/button
-npx shadcn@latest add @force-ui-vue/card @force-ui-vue/dialog
-```
-
-</TabsContent>
-
-<TabsContent value="svelte">
-
-```bash
-npx shadcn@latest add @force-ui-svelte/button
-npx shadcn@latest add @force-ui-svelte/card @force-ui-svelte/dialog
-```
-
-</TabsContent>
-
-<TabsContent value="ember">
-
-```bash
-npx shadcn@latest add @force-ui-ember/button
-npx shadcn@latest add @force-ui-ember/card @force-ui-ember/dialog
-```
-
-</TabsContent>
-
-</Tabs>
 
 The CLI will:
 
-1. Fetch the component JSON from the registry
-2. Resolve any dependencies (other components, npm packages)
-3. Write the component files to your configured `aliases.components` path
-4. Install any required npm dependencies
+1. Fetch the registry item.
+2. Resolve registry and npm dependencies.
+3. Write the source files into your project.
+4. Update your CSS imports and variables when needed.
+
+## Install custom variants
+
+Custom variants are installed with the component source.
+
+For example, installing `@force-ui/badge` adds Force UI variants such as `warning`, `success`, `info`, `success-solid`, `warning-solid`, `info-solid`, and `error-solid`.
+
+```tsx
+import { Badge } from "@/components/ui/badge"
+
+export function Example() {
+  return (
+    <div className="flex gap-2">
+      <Badge variant="warning">Warning</Badge>
+      <Badge variant="success">Success</Badge>
+      <Badge variant="info">Info</Badge>
+    </div>
+  )
+}
+```
+
+If you want updated variants for an existing component, reinstall that component from the Force UI registry.
+
+## Notes for coding agents
+
+- For a new Force UI project, run `init` with `REGISTRY_URL` set to `https://shadcn-force-ui.vercel.app/r` and a Force UI preset URL.
+- For an existing project, run `apply` with the same `REGISTRY_URL` and preset URL.
+- For React, use `radix-force-ui` or `base-force-ui` as the style value.
+- Add the `@force-ui` registry mapping to `components.json` before using `npx shadcn@latest add @force-ui/...`.
+- Theme and font changes come from `init` or `apply`. Variants come from the installed component source.
+
+## Copy-paste prompt for coding agents
+
+Use this prompt when you want an AI assistant to set up or work with the hosted Force UI registry in a project.
+
+```text
+Set up this project to use the hosted Force UI registry with the official shadcn CLI.
+
+Rules:
+- Use the official CLI only: `npx shadcn@latest`.
+- Use `REGISTRY_URL=https://shadcn-force-ui.vercel.app/r` for Force UI preset and registry operations.
+- For React, use `radix-force-ui` or `base-force-ui` as the `style` value in `components.json`. Do not use `force-ui` as the React style value.
+- Use this Radix preset URL when the project uses Radix UI:
+  `https://shadcn-force-ui.vercel.app/init?base=radix&style=force-ui&baseColor=force-ui&theme=force-ui&chartColor=force-ui&iconLibrary=lucide&font=noto-sans&rtl=false&menuAccent=subtle&menuColor=default&radius=default`
+- Use this Base preset URL when the project uses Base UI:
+  `https://shadcn-force-ui.vercel.app/init?base=base&style=force-ui&baseColor=force-ui&theme=force-ui&chartColor=force-ui&iconLibrary=lucide&font=noto-sans&rtl=false&menuAccent=subtle&menuColor=default&radius=default`
+- After `init` or `apply`, make sure `components.json` contains:
+  `"registries": { "@force-ui": "https://shadcn-force-ui.vercel.app/r/styles/{style}/{name}.json" }`
+- Install Force UI components with `npx shadcn@latest add @force-ui/<name>`.
+- Theme and font changes come from `init` or `apply`. Custom variants come from the installed component source.
+- Before overwriting existing components, use `--dry-run` or `--diff`.
+
+Tasks:
+1. Detect whether the project should use the Radix or Base preset.
+2. If the project is not initialized, run `shadcn init` with the correct Force UI preset URL.
+3. If the project is already initialized, run `shadcn apply --preset <Force UI preset URL>` instead.
+4. Add the `@force-ui` registry mapping to `components.json` if it is missing.
+5. Install the requested Force UI components.
+6. Read the generated files and confirm the expected Force UI theme tokens or variants were installed.
+```
+
+## Install the shadcn skill
+
+Yes. Today the supported skill install is the generic shadcn skill:
+
+```bash
+npx skills add shadcn/ui
+```
+
+This gives your assistant shadcn CLI, preset, and registry workflow knowledge. It is the right install path today for assistants that support `skills`.
+
+A dedicated Force UI skill does not exist yet. If we add one later, we can use it to encode the Force UI preset URLs, `@force-ui` registry mapping, and component-specific guidance from this page.
+
+Learn more on the [Skills](/docs/skills) page.
 
 ## Browse components
 
-You can browse all available components for each framework in the [Components](/docs/components) section, or use [shadcn/create](/create) to preview components with different styles, themes, and fonts before adding them to your project.
+Browse the [Components](/docs/components) section to find install commands and APIs for each component.
