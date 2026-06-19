@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "range-calendar-demo",
+  "title": "Range Calendar Demo",
+  "dependencies": [
+    "@internationalized/date"
+  ],
+  "registryDependencies": [
+    "range-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/range-calendar-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { getLocalTimeZone, today } from \"@internationalized/date\"\n  import { RangeCalendar } from \"$lib/registry/ui/range-calendar/index.js\"\n\n  const start = today(getLocalTimeZone())\n  const end = start.add({ days: 7 })\n\n  let value = $state({\n    start,\n    end,\n  })\n</script>\n\n<RangeCalendar bind:value class=\"rounded-md border\" />\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -7,10 +7,10 @@ export function RegistryConfigBlock() {
     {
       style: "radix-force-ui",
       registries: {
-        "@force-ui": `${appUrl}/r/styles/{style}/{name}.json`,
-        "@force-ui-vue": `${appUrl}/r/styles/vue-{style}/{name}.json`,
-        "@force-ui-svelte": `${appUrl}/r/styles/svelte-{style}/{name}.json`,
-        "@force-ui-ember": `${appUrl}/r/styles/ember-{style}/{name}.json`,
+        "@force-ui": `${appUrl}/r-react/styles/{style}/{name}.json`,
+        "@force-ui-vue": `${appUrl}/r-vue/styles/{style}/{name}.json`,
+        "@force-ui-svelte": `${appUrl}/r-svelte/styles/{style}/{name}.json`,
+        "@force-ui-ember": `${appUrl}/r-ember/styles/{style}/{name}.json`,
       },
     },
     null,

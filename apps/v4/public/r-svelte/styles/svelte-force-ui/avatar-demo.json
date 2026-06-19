@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-demo",
+  "title": "Avatar Demo",
+  "registryDependencies": [
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/avatar-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Avatar from \"$lib/registry/ui/avatar/index.js\"\n</script>\n\n<div class=\"flex flex-row flex-wrap items-center gap-12\">\n  <Avatar.Root>\n    <Avatar.Image src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n    <Avatar.Fallback>CN</Avatar.Fallback>\n  </Avatar.Root>\n  <Avatar.Root class=\"rounded-lg\">\n    <Avatar.Image src=\"https://github.com/evilrabbit.png\" alt=\"@evilrabbit\" />\n    <Avatar.Fallback>ER</Avatar.Fallback>\n  </Avatar.Root>\n  <div\n    class=\"*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale\"\n  >\n    <Avatar.Root>\n      <Avatar.Image src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n      <Avatar.Fallback>CN</Avatar.Fallback>\n    </Avatar.Root>\n    <Avatar.Root>\n      <Avatar.Image src=\"https://github.com/leerob.png\" alt=\"@leerob\" />\n      <Avatar.Fallback>LR</Avatar.Fallback>\n    </Avatar.Root>\n    <Avatar.Root>\n      <Avatar.Image src=\"https://github.com/evilrabbit.png\" alt=\"@evilrabbit\" />\n      <Avatar.Fallback>ER</Avatar.Fallback>\n    </Avatar.Root>\n  </div>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

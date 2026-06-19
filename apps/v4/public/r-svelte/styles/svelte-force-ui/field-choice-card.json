@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-choice-card",
+  "title": "Field Choice Card",
+  "registryDependencies": [
+    "field",
+    "radio-group"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/field-choice-card.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Field from \"$lib/registry/ui/field/index.js\"\n  import * as RadioGroup from \"$lib/registry/ui/radio-group/index.js\"\n\n  let computeEnvironment = $state(\"kubernetes\")\n</script>\n\n<div class=\"w-full max-w-md\">\n  <Field.Group>\n    <Field.Set>\n      <Field.Label for=\"compute-environment-p8w\"\n        >Compute Environment</Field.Label\n      >\n      <Field.Description\n        >Select the compute environment for your cluster.</Field.Description\n      >\n      <RadioGroup.Root bind:value={computeEnvironment}>\n        <Field.Label for=\"kubernetes-r2h\">\n          <Field.Field orientation=\"horizontal\">\n            <Field.Content>\n              <Field.Title>Kubernetes</Field.Title>\n              <Field.Description>\n                Run GPU workloads on a K8s configured cluster.\n              </Field.Description>\n            </Field.Content>\n            <RadioGroup.Item value=\"kubernetes\" id=\"kubernetes-r2h\" />\n          </Field.Field>\n        </Field.Label>\n        <Field.Label for=\"vm-z4k\">\n          <Field.Field orientation=\"horizontal\">\n            <Field.Content>\n              <Field.Title>Virtual Machine</Field.Title>\n              <Field.Description>\n                Access a VM configured cluster to run GPU workloads.\n              </Field.Description>\n            </Field.Content>\n            <RadioGroup.Item value=\"vm\" id=\"vm-z4k\" />\n          </Field.Field>\n        </Field.Label>\n      </RadioGroup.Root>\n    </Field.Set>\n  </Field.Group>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

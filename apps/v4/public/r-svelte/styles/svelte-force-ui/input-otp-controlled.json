@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-otp-controlled",
+  "title": "Input Otp Controlled",
+  "registryDependencies": [
+    "input-otp"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-otp-controlled.svelte",
+      "content": "<script lang=\"ts\">\n  import * as InputOTP from \"$lib/registry/ui/input-otp/index.js\"\n\n  let value = $state(\"\")\n</script>\n\n<div class=\"space-y-2\">\n  <InputOTP.Root maxlength={6} bind:value>\n    {#snippet children({ cells })}\n      <InputOTP.Group>\n        {#each cells.slice(0, 6) as cell (cell)}\n          <InputOTP.Slot {cell} />\n        {/each}\n      </InputOTP.Group>\n    {/snippet}\n  </InputOTP.Root>\n  <div class=\"text-center text-sm\">\n    {value === \"\" ? \"Enter your one-time password.\" : `You entered: ${value}`}\n  </div>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

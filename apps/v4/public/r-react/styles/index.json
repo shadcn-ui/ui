@@ -1,0 +1,10 @@
+[
+  {
+    "name": "radix-force-ui",
+    "label": "Force UI (Radix)"
+  },
+  {
+    "name": "base-force-ui",
+    "label": "Force UI (Base)"
+  }
+]

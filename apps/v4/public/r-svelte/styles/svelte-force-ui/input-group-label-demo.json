@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-label-demo",
+  "title": "Input Group Label Demo",
+  "registryDependencies": [
+    "input-group",
+    "label",
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-group-label-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import InfoIcon from \"@lucide/svelte/icons/info\"\n  import * as InputGroup from \"$lib/registry/ui/input-group/index.js\"\n  import * as Label from \"$lib/registry/ui/label/index.js\"\n  import * as Tooltip from \"$lib/registry/ui/tooltip/index.js\"\n</script>\n\n<div class=\"grid w-full max-w-sm gap-4\">\n  <InputGroup.Root>\n    <InputGroup.Input id=\"email\" placeholder=\"shadcn\" />\n    <InputGroup.Addon>\n      <Label.Root for=\"email\">@</Label.Root>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root>\n    <InputGroup.Input id=\"email-2\" placeholder=\"shadcn@vercel.com\" />\n    <InputGroup.Addon align=\"block-start\">\n      <Label.Root for=\"email-2\" class=\"text-foreground\">Email</Label.Root>\n      <Tooltip.Root>\n        <Tooltip.Trigger>\n          {#snippet child({ props })}\n            <InputGroup.Button\n              {...props}\n              variant=\"ghost\"\n              aria-label=\"Help\"\n              class=\"ms-auto rounded-full\"\n              size=\"icon-xs\"\n            >\n              <InfoIcon />\n            </InputGroup.Button>\n          {/snippet}\n        </Tooltip.Trigger>\n        <Tooltip.Content>\n          <p>We'll use this to send you notifications</p>\n        </Tooltip.Content>\n      </Tooltip.Root>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

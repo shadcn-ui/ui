@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-custom",
+  "title": "Spinner Custom",
+  "dependencies": [
+    "@ember/component"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/spinner-custom.gts",
+      "content": "import { cn } from '@/lib/utils';\n\nimport type { TOC } from '@ember/component/template-only';\n\nimport Loader from '~icons/lucide/loader';\n\ninterface CustomSpinnerSignature {\n  Element: HTMLOrSVGElement;\n  Args: {\n    class?: string;\n  };\n}\n\nconst CustomSpinner: TOC<CustomSpinnerSignature> = <template>\n  <Loader\n    aria-label=\"Loading\"\n    class={{cn \"size-4 animate-spin\" @class}}\n    role=\"status\"\n    ...attributes\n  />\n</template>;\n\nconst SpinnerCustom: TOC<{ Element: HTMLDivElement }> = <template>\n  <div class=\"flex items-center gap-4\">\n    <CustomSpinner />\n  </div>\n</template>;\n\nexport default SpinnerCustom;\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

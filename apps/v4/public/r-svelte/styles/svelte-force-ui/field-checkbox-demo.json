@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-checkbox-demo",
+  "title": "Field Checkbox Demo",
+  "registryDependencies": [
+    "checkbox",
+    "field"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/field-checkbox-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Checkbox } from \"$lib/registry/ui/checkbox/index.js\"\n  import * as Field from \"$lib/registry/ui/field/index.js\"\n</script>\n\n<div class=\"w-full max-w-md\">\n  <Field.Group>\n    <Field.Set>\n      <Field.Legend variant=\"label\"\n        >Show these items on the desktop</Field.Legend\n      >\n      <Field.Description\n        >Select the items you want to show on the desktop.</Field.Description\n      >\n      <Field.Group class=\"gap-3\">\n        <Field.Field orientation=\"horizontal\">\n          <Checkbox id=\"finder-pref-9k2-hard-disks-ljj\" checked />\n          <Field.Label for=\"finder-pref-9k2-hard-disks-ljj\" class=\"font-normal\">\n            Hard disks\n          </Field.Label>\n        </Field.Field>\n        <Field.Field orientation=\"horizontal\">\n          <Checkbox id=\"finder-pref-9k2-external-disks-1yg\" />\n          <Field.Label\n            for=\"finder-pref-9k2-external-disks-1yg\"\n            class=\"font-normal\"\n          >\n            External disks\n          </Field.Label>\n        </Field.Field>\n        <Field.Field orientation=\"horizontal\">\n          <Checkbox id=\"finder-pref-9k2-cds-dvds-fzt\" />\n          <Field.Label for=\"finder-pref-9k2-cds-dvds-fzt\" class=\"font-normal\">\n            CDs, DVDs, and iPods\n          </Field.Label>\n        </Field.Field>\n        <Field.Field orientation=\"horizontal\">\n          <Checkbox id=\"finder-pref-9k2-connected-servers-6l2\" />\n          <Field.Label\n            for=\"finder-pref-9k2-connected-servers-6l2\"\n            class=\"font-normal\"\n          >\n            Connected servers\n          </Field.Label>\n        </Field.Field>\n      </Field.Group>\n    </Field.Set>\n    <Field.Separator />\n    <Field.Field orientation=\"horizontal\">\n      <Checkbox id=\"finder-pref-9k2-sync-folders-nep\" checked />\n      <Field.Content>\n        <Field.Label for=\"finder-pref-9k2-sync-folders-nep\">\n          Sync Desktop & Documents folders\n        </Field.Label>\n        <Field.Description>\n          Your Desktop & Documents folders are being synced with iCloud Drive.\n          You can access them from other devices.\n        </Field.Description>\n      </Field.Content>\n    </Field.Field>\n  </Field.Group>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

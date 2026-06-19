@@ -1,0 +1,2435 @@
+[
+  {
+    "name": "accordion",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/accordion/Accordion.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/accordion/AccordionContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/accordion/AccordionItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/accordion/AccordionTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/accordion/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/accordion",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/accordion/AccordionDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "alert",
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/alert/Alert.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/alert/AlertAction.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/alert/AlertDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/alert/AlertTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/alert/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/alert",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/alert/AlertDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "alert-dialog",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "registryDependencies": ["button"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/alert-dialog/AlertDialog.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/alert-dialog/AlertDialogAction.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/alert-dialog/AlertDialogCancel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/alert-dialog/AlertDialogContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/alert-dialog/AlertDialogDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/alert-dialog/AlertDialogFooter.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/alert-dialog/AlertDialogHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/alert-dialog/AlertDialogMedia.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/alert-dialog/AlertDialogTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/alert-dialog/AlertDialogTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/alert-dialog/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/alert-dialog",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/alert-dialog/AlertDialogDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "aspect-ratio",
+    "dependencies": ["reka-ui"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/aspect-ratio/AspectRatio.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/aspect-ratio/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/aspect-ratio",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/aspect-ratio/AspectRatioDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "avatar",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/avatar/Avatar.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/avatar/AvatarBadge.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/avatar/AvatarFallback.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/avatar/AvatarGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/avatar/AvatarGroupCount.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/avatar/AvatarImage.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/avatar/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/avatar",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/avatar/AvatarDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "badge",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/badge/Badge.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/badge/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/badge",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/badge/BadgeDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "breadcrumb",
+    "dependencies": ["reka-ui"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/breadcrumb/Breadcrumb.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/breadcrumb/BreadcrumbEllipsis.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/breadcrumb/BreadcrumbItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/breadcrumb/BreadcrumbLink.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/breadcrumb/BreadcrumbList.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/breadcrumb/BreadcrumbPage.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/breadcrumb/BreadcrumbSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/breadcrumb/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/breadcrumb",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/breadcrumb/BreadcrumbDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "button",
+    "dependencies": ["reka-ui"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/button/Button.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/button/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/button",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/button/ButtonDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "button-group",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "registryDependencies": ["separator"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/button-group/ButtonGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/button-group/ButtonGroupSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/button-group/ButtonGroupText.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/button-group/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/button-group",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/button-group/ButtonGroupDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "calendar",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "registryDependencies": ["native-select", "button", "icon-placeholder"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/calendar/Calendar.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/calendar/CalendarCell.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/calendar/CalendarCellTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/calendar/CalendarGrid.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/calendar/CalendarGridBody.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/calendar/CalendarGridHead.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/calendar/CalendarGridRow.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/calendar/CalendarHeadCell.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/calendar/CalendarHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/calendar/CalendarHeading.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/calendar/CalendarNextButton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/calendar/CalendarPrevButton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/calendar/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/calendar",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/calendar/CalendarDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "card",
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/card/Card.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/card/CardAction.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/card/CardContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/card/CardDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/card/CardFooter.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/card/CardHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/card/CardTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/card/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/card",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/card/CardDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "carousel",
+    "dependencies": ["embla-carousel-vue", "@vueuse/core"],
+    "registryDependencies": ["button", "icon-placeholder"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/carousel/Carousel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/carousel/CarouselContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/carousel/CarouselItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/carousel/CarouselNext.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/carousel/CarouselPrevious.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/carousel/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/carousel/interface.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/carousel/useCarousel.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/carousel",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/carousel/CarouselDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "chart",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/chart/ChartContainer.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/chart/ChartLegendContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/chart/ChartStyle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/chart/ChartTooltipContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/chart/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/chart/utils.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/chart",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/chart/ChartDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "checkbox",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/checkbox/Checkbox.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/checkbox/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/checkbox",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/checkbox/CheckboxDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "collapsible",
+    "dependencies": ["reka-ui"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/collapsible/Collapsible.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/collapsible/CollapsibleContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/collapsible/CollapsibleTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/collapsible/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/collapsible",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/collapsible/CollapsibleDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "combobox",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "registryDependencies": ["icon-placeholder"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/combobox/Combobox.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/combobox/ComboboxAnchor.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/combobox/ComboboxEmpty.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/combobox/ComboboxGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/combobox/ComboboxInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/combobox/ComboboxItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/combobox/ComboboxItemIndicator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/combobox/ComboboxList.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/combobox/ComboboxSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/combobox/ComboboxTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/combobox/ComboboxViewport.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/combobox/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/combobox",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/combobox/ComboboxDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "command",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "registryDependencies": ["dialog", "input-group"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/command/Command.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/command/CommandDialog.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/command/CommandEmpty.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/command/CommandGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/command/CommandInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/command/CommandItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/command/CommandList.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/command/CommandSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/command/CommandShortcut.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/command/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/command",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/command/CommandDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "context-menu",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/context-menu/ContextMenu.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/context-menu/ContextMenuCheckboxItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/context-menu/ContextMenuContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/context-menu/ContextMenuGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/context-menu/ContextMenuItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/context-menu/ContextMenuLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/context-menu/ContextMenuPortal.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/context-menu/ContextMenuRadioGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/context-menu/ContextMenuRadioItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/context-menu/ContextMenuSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/context-menu/ContextMenuShortcut.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/context-menu/ContextMenuSub.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/context-menu/ContextMenuSubContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/context-menu/ContextMenuSubTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/context-menu/ContextMenuTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/context-menu/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/context-menu",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/context-menu/ContextMenuDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "dialog",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "registryDependencies": ["button", "icon-placeholder"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/dialog/Dialog.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dialog/DialogClose.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dialog/DialogContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dialog/DialogDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dialog/DialogFooter.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dialog/DialogHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dialog/DialogOverlay.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dialog/DialogScrollContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dialog/DialogTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dialog/DialogTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dialog/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/dialog",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/dialog/DialogDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "drawer",
+    "dependencies": ["vaul-vue", "reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/drawer/Drawer.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/drawer/DrawerClose.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/drawer/DrawerContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/drawer/DrawerDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/drawer/DrawerFooter.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/drawer/DrawerHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/drawer/DrawerOverlay.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/drawer/DrawerTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/drawer/DrawerTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/drawer/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/drawer",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/drawer/DrawerDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "dropdown-menu",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/dropdown-menu/DropdownMenu.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dropdown-menu/DropdownMenuCheckboxItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dropdown-menu/DropdownMenuContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dropdown-menu/DropdownMenuGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dropdown-menu/DropdownMenuItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dropdown-menu/DropdownMenuLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dropdown-menu/DropdownMenuRadioGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dropdown-menu/DropdownMenuRadioItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dropdown-menu/DropdownMenuSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dropdown-menu/DropdownMenuShortcut.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dropdown-menu/DropdownMenuSub.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dropdown-menu/DropdownMenuSubContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dropdown-menu/DropdownMenuSubTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dropdown-menu/DropdownMenuTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/dropdown-menu/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/dropdown-menu",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/dropdown-menu/DropdownMenuDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "empty",
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/empty/Empty.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/empty/EmptyContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/empty/EmptyDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/empty/EmptyHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/empty/EmptyMedia.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/empty/EmptyTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/empty/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/empty",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/empty/EmptyDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "field",
+    "registryDependencies": ["label", "separator"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/field/Field.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/field/FieldContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/field/FieldDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/field/FieldError.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/field/FieldGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/field/FieldLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/field/FieldLegend.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/field/FieldSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/field/FieldSet.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/field/FieldTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/field/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/field",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/field/FieldDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "form",
+    "dependencies": [
+      "reka-ui",
+      "vee-validate",
+      "@vee-validate/zod",
+      "zod@3.25.76"
+    ],
+    "registryDependencies": ["label"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/form/FormControl.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/form/FormDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/form/FormItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/form/FormLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/form/FormMessage.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/form/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/form/injectionKeys.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/form/useFormField.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/form",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/form/FormDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "hover-card",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/hover-card/HoverCard.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/hover-card/HoverCardContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/hover-card/HoverCardTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/hover-card/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/hover-card",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/hover-card/HoverCardDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "input",
+    "dependencies": ["@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/input/Input.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/input/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/input",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/input/InputDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "input-group",
+    "registryDependencies": ["button", "input", "textarea"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/input-group/InputGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/input-group/InputGroupAddon.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/input-group/InputGroupButton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/input-group/InputGroupInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/input-group/InputGroupText.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/input-group/InputGroupTextarea.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/input-group/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/input-group",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/input-group/InputGroupDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "input-otp",
+    "dependencies": ["vue-input-otp", "@vueuse/core", "reka-ui"],
+    "registryDependencies": ["icon-placeholder"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/input-otp/InputOTP.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/input-otp/InputOTPGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/input-otp/InputOTPSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/input-otp/InputOTPSlot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/input-otp/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/input-otp",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/input-otp/InputOtpDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "item",
+    "dependencies": ["reka-ui"],
+    "registryDependencies": ["separator"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/item/Item.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/item/ItemActions.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/item/ItemContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/item/ItemDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/item/ItemFooter.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/item/ItemGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/item/ItemHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/item/ItemMedia.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/item/ItemSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/item/ItemTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/item/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/item",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/item/ItemDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "kbd",
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/kbd/Kbd.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/kbd/KbdGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/kbd/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/kbd",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/kbd/KbdDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "label",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/label/Label.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/label/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/label",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/label/LabelDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "menubar",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "registryDependencies": ["icon-placeholder"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/menubar/Menubar.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/menubar/MenubarCheckboxItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/menubar/MenubarContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/menubar/MenubarGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/menubar/MenubarItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/menubar/MenubarLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/menubar/MenubarMenu.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/menubar/MenubarRadioGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/menubar/MenubarRadioItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/menubar/MenubarSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/menubar/MenubarShortcut.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/menubar/MenubarSub.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/menubar/MenubarSubContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/menubar/MenubarSubTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/menubar/MenubarTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/menubar/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/menubar",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/menubar/MenubarDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "native-select",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "registryDependencies": ["icon-placeholder"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/native-select/NativeSelect.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/native-select/NativeSelectOptGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/native-select/NativeSelectOption.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/native-select/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/native-select",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/native-select/NativeSelectDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "navigation-menu",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "registryDependencies": ["icon-placeholder"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/navigation-menu/NavigationMenu.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/navigation-menu/NavigationMenuContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/navigation-menu/NavigationMenuIndicator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/navigation-menu/NavigationMenuItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/navigation-menu/NavigationMenuLink.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/navigation-menu/NavigationMenuList.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/navigation-menu/NavigationMenuTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/navigation-menu/NavigationMenuViewport.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/navigation-menu/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/navigation-menu",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/navigation-menu/NavigationMenuDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "number-field",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "registryDependencies": ["icon-placeholder"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/number-field/NumberField.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/number-field/NumberFieldContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/number-field/NumberFieldDecrement.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/number-field/NumberFieldIncrement.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/number-field/NumberFieldInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/number-field/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/number-field",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/number-field/NumberFieldDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "pagination",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "registryDependencies": ["button", "icon-placeholder"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/pagination/Pagination.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/pagination/PaginationContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/pagination/PaginationEllipsis.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/pagination/PaginationFirst.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/pagination/PaginationItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/pagination/PaginationLast.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/pagination/PaginationLink.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/pagination/PaginationNext.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/pagination/PaginationPrevious.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/pagination/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/pagination",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/pagination/PaginationDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "pin-input",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "registryDependencies": ["icon-placeholder"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/pin-input/PinInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/pin-input/PinInputGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/pin-input/PinInputSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/pin-input/PinInputSlot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/pin-input/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/pin-input",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/pin-input/PinInputDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "popover",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/popover/Popover.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/popover/PopoverAnchor.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/popover/PopoverContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/popover/PopoverDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/popover/PopoverHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/popover/PopoverTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/popover/PopoverTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/popover/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/popover",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/popover/PopoverDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "progress",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/progress/Progress.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/progress/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/progress",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/progress/ProgressDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "radio-group",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/radio-group/RadioGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/radio-group/RadioGroupItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/radio-group/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/radio-group",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/radio-group/RadioGroupDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "range-calendar",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "registryDependencies": ["button", "icon-placeholder"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/range-calendar/RangeCalendar.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/range-calendar/RangeCalendarCell.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/range-calendar/RangeCalendarCellTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/range-calendar/RangeCalendarGrid.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/range-calendar/RangeCalendarGridBody.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/range-calendar/RangeCalendarGridHead.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/range-calendar/RangeCalendarGridRow.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/range-calendar/RangeCalendarHeadCell.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/range-calendar/RangeCalendarHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/range-calendar/RangeCalendarHeading.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/range-calendar/RangeCalendarNextButton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/range-calendar/RangeCalendarPrevButton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/range-calendar/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/range-calendar"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "resizable",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/resizable/ResizableHandle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/resizable/ResizablePanel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/resizable/ResizablePanelGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/resizable/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/resizable",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/resizable/ResizableDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "scroll-area",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/scroll-area/ScrollArea.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/scroll-area/ScrollBar.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/scroll-area/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/scroll-area",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/scroll-area/ScrollAreaDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "select",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/select/Select.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/select/SelectContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/select/SelectGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/select/SelectItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/select/SelectItemText.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/select/SelectLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/select/SelectScrollDownButton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/select/SelectScrollUpButton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/select/SelectSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/select/SelectTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/select/SelectValue.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/select/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/select",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/select/SelectDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "separator",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/separator/Separator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/separator/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/separator",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/separator/SeparatorDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "sheet",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "registryDependencies": ["button"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/sheet/Sheet.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sheet/SheetClose.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sheet/SheetContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sheet/SheetDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sheet/SheetFooter.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sheet/SheetHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sheet/SheetOverlay.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sheet/SheetTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sheet/SheetTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sheet/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/sheet",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/sheet/SheetDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "sidebar",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "registryDependencies": [
+      "sheet",
+      "input",
+      "tooltip",
+      "skeleton",
+      "separator",
+      "icon-placeholder",
+      "button"
+    ],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/Sidebar.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarFooter.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarGroupAction.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarGroupContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarGroupLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarInset.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarMenu.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarMenuAction.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarMenuBadge.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarMenuButton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarMenuButtonChild.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarMenuItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarMenuSkeleton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarMenuSub.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarMenuSubButton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarMenuSubItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarProvider.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarRail.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/SidebarTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sidebar/utils.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/sidebar",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/sidebar/SidebarDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "skeleton",
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/skeleton/Skeleton.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/skeleton/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/skeleton",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/skeleton/SkeletonDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "slider",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/slider/Slider.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/slider/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/slider",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/slider/SliderDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "sonner",
+    "dependencies": ["vue-sonner"],
+    "registryDependencies": ["icon-placeholder"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/sonner/Sonner.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/sonner/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/sonner",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/sonner/SonnerDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "spinner",
+    "registryDependencies": ["icon-placeholder"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/spinner/Spinner.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/spinner/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/spinner",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/spinner/SpinnerDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "stepper",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/stepper/Stepper.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/stepper/StepperDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/stepper/StepperIndicator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/stepper/StepperItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/stepper/StepperSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/stepper/StepperTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/stepper/StepperTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/stepper/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/stepper",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/stepper/StepperDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "switch",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/switch/Switch.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/switch/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/switch",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/switch/SwitchDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "table",
+    "dependencies": ["@vueuse/core", "@tanstack/vue-table"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/table/Table.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/table/TableBody.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/table/TableCaption.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/table/TableCell.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/table/TableEmpty.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/table/TableFooter.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/table/TableHead.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/table/TableHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/table/TableRow.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/table/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/table/utils.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/table",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/table/TableDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "tabs",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/tabs/Tabs.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/tabs/TabsContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/tabs/TabsList.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/tabs/TabsTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/tabs/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/tabs",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/tabs/TabsDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "tags-input",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "registryDependencies": ["icon-placeholder"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/tags-input/TagsInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/tags-input/TagsInputInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/tags-input/TagsInputItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/tags-input/TagsInputItemDelete.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/tags-input/TagsInputItemText.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/tags-input/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/tags-input",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/tags-input/TagsInputDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "textarea",
+    "dependencies": ["@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/textarea/Textarea.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/textarea/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/textarea",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/textarea/TextareaDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "toggle",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/toggle/Toggle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/toggle/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/toggle",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/toggle/ToggleDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "toggle-group",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "registryDependencies": ["toggle"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/toggle-group/ToggleGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/toggle-group/ToggleGroupItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/toggle-group/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/toggle-group",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/toggle-group/ToggleGroupDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "tooltip",
+    "dependencies": ["reka-ui", "@vueuse/core"],
+    "files": [
+      {
+        "path": "registry/vue-force-ui/ui/tooltip/Tooltip.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/tooltip/TooltipContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/tooltip/TooltipProvider.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/tooltip/TooltipTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/vue-force-ui/ui/tooltip/index.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "docs": "https://shadcn-force-ui.vercel.app/docs/components/vue/tooltip",
+        "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/vue/examples/tooltip/TooltipDemo.vue"
+      }
+    },
+    "type": "registry:ui"
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-example",
+  "title": "Form",
+  "dependencies": [
+    "vee-validate",
+    "zod"
+  ],
+  "registryDependencies": [
+    "button",
+    "form",
+    "input",
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/form/FormDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  FormControl,\n  FormDescription,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormMessage,\n} from \"@/ui/form\"\nimport { Input } from \"@/ui/input\"\nimport { Textarea } from \"@/ui/textarea\"\nimport { toTypedSchema } from \"@vee-validate/zod\"\nimport { useForm } from \"vee-validate\"\nimport { z } from \"zod\"\n\nconst formSchema = toTypedSchema(\n  z.object({\n    username: z.string().min(2, {\n      message: \"Username must be at least 2 characters.\",\n    }),\n    email: z.string().email({\n      message: \"Please enter a valid email address.\",\n    }),\n    bio: z\n      .string()\n      .min(10, {\n        message: \"Bio must be at least 10 characters.\",\n      })\n      .max(160, {\n        message: \"Bio must not be longer than 160 characters.\",\n      }),\n  })\n)\n\nconst form = useForm({\n  validationSchema: formSchema,\n})\n\nconst onSubmit = form.handleSubmit((values) => {\n  console.log(\"Form submitted!\", values)\n})\n</script>\n\n<template>\n  <form class=\"w-full max-w-sm space-y-6\" @submit=\"onSubmit\">\n    <FormField v-slot=\"{ componentField }\" name=\"username\">\n      <FormItem>\n        <FormLabel>Username</FormLabel>\n        <FormControl>\n          <Input type=\"text\" placeholder=\"shadcn\" v-bind=\"componentField\" />\n        </FormControl>\n        <FormDescription> This is your public display name. </FormDescription>\n        <FormMessage />\n      </FormItem>\n    </FormField>\n\n    <FormField v-slot=\"{ componentField }\" name=\"email\">\n      <FormItem>\n        <FormLabel>Email</FormLabel>\n        <FormControl>\n          <Input\n            type=\"email\"\n            placeholder=\"your@email.com\"\n            v-bind=\"componentField\"\n          />\n        </FormControl>\n        <FormDescription>\n          We'll never share your email with anyone else.\n        </FormDescription>\n        <FormMessage />\n      </FormItem>\n    </FormField>\n\n    <FormField v-slot=\"{ componentField }\" name=\"bio\">\n      <FormItem>\n        <FormLabel>Bio</FormLabel>\n        <FormControl>\n          <Textarea\n            placeholder=\"Tell us a little bit about yourself\"\n            class=\"resize-none\"\n            v-bind=\"componentField\"\n          />\n        </FormControl>\n        <FormDescription>\n          You can @mention other users and organizations.\n        </FormDescription>\n        <FormMessage />\n      </FormItem>\n    </FormField>\n\n    <Button type=\"submit\" class=\"w-full\"> Submit </Button>\n  </form>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

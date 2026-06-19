@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox-demo",
+  "title": "Combobox Demo",
+  "registryDependencies": [
+    "button",
+    "command",
+    "popover",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/combobox-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import CheckIcon from \"@lucide/svelte/icons/check\"\n  import ChevronsUpDownIcon from \"@lucide/svelte/icons/chevrons-up-down\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Command from \"$lib/registry/ui/command/index.js\"\n  import * as Popover from \"$lib/registry/ui/popover/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import { tick } from \"svelte\"\n\n  const frameworks = [\n    {\n      value: \"sveltekit\",\n      label: \"SvelteKit\",\n    },\n    {\n      value: \"next.js\",\n      label: \"Next.js\",\n    },\n    {\n      value: \"nuxt.js\",\n      label: \"Nuxt.js\",\n    },\n    {\n      value: \"remix\",\n      label: \"Remix\",\n    },\n    {\n      value: \"astro\",\n      label: \"Astro\",\n    },\n  ]\n\n  let open = $state(false)\n  let value = $state(\"\")\n  let triggerRef = $state<HTMLButtonElement>(null!)\n\n  const selectedValue = $derived(\n    frameworks.find((f) => f.value === value)?.label\n  )\n\n  // We want to refocus the trigger button when the user selects\n  // an item from the list so users can continue navigating the\n  // rest of the form with the keyboard.\n  function closeAndFocusTrigger() {\n    open = false\n    tick().then(() => {\n      triggerRef.focus()\n    })\n  }\n</script>\n\n<Popover.Root bind:open>\n  <Popover.Trigger bind:ref={triggerRef}>\n    {#snippet child({ props })}\n      <Button\n        {...props}\n        variant=\"outline\"\n        class=\"w-[200px] justify-between\"\n        role=\"combobox\"\n        aria-expanded={open}\n      >\n        {selectedValue || \"Select a framework...\"}\n        <ChevronsUpDownIcon class=\"opacity-50\" />\n      </Button>\n    {/snippet}\n  </Popover.Trigger>\n  <Popover.Content class=\"w-[200px] p-0\">\n    <Command.Root>\n      <Command.Input placeholder=\"Search framework...\" />\n      <Command.List>\n        <Command.Empty>No framework found.</Command.Empty>\n        <Command.Group value=\"frameworks\">\n          {#each frameworks as framework (framework.value)}\n            <Command.Item\n              value={framework.value}\n              onSelect={() => {\n                value = framework.value\n                closeAndFocusTrigger()\n              }}\n            >\n              <CheckIcon\n                class={cn(value !== framework.value && \"text-transparent\")}\n              />\n              {framework.label}\n            </Command.Item>\n          {/each}\n        </Command.Group>\n      </Command.List>\n    </Command.Root>\n  </Popover.Content>\n</Popover.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

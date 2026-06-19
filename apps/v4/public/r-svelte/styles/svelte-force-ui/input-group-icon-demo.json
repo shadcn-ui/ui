@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-icon-demo",
+  "title": "Input Group Icon Demo",
+  "registryDependencies": [
+    "input-group"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-group-icon-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import CheckIcon from \"@lucide/svelte/icons/check\"\n  import CreditCardIcon from \"@lucide/svelte/icons/credit-card\"\n  import InfoIcon from \"@lucide/svelte/icons/info\"\n  import MailIcon from \"@lucide/svelte/icons/mail\"\n  import SearchIcon from \"@lucide/svelte/icons/search\"\n  import StarIcon from \"@lucide/svelte/icons/star\"\n  import * as InputGroup from \"$lib/registry/ui/input-group/index.js\"\n</script>\n\n<div class=\"grid w-full max-w-sm gap-6\">\n  <InputGroup.Root>\n    <InputGroup.Input placeholder=\"Search...\" />\n    <InputGroup.Addon>\n      <SearchIcon />\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root>\n    <InputGroup.Input type=\"email\" placeholder=\"Enter your email\" />\n    <InputGroup.Addon>\n      <MailIcon />\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root>\n    <InputGroup.Input placeholder=\"Card number\" />\n    <InputGroup.Addon>\n      <CreditCardIcon />\n    </InputGroup.Addon>\n    <InputGroup.Addon align=\"inline-end\">\n      <CheckIcon />\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root>\n    <InputGroup.Input placeholder=\"Card number\" />\n    <InputGroup.Addon align=\"inline-end\">\n      <StarIcon />\n      <InfoIcon />\n    </InputGroup.Addon>\n  </InputGroup.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

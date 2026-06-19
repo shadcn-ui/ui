@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select-invalid",
+  "title": "Native Select Invalid",
+  "registryDependencies": [
+    "native-select"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/native-select-invalid.svelte",
+      "content": "<script lang=\"ts\">\n  import * as NativeSelect from \"$lib/registry/ui/native-select/index.js\"\n</script>\n\n<NativeSelect.Root aria-invalid=\"true\">\n  <NativeSelect.Option value=\"\">Select role</NativeSelect.Option>\n  <NativeSelect.Option value=\"admin\">Admin</NativeSelect.Option>\n  <NativeSelect.Option value=\"editor\">Editor</NativeSelect.Option>\n  <NativeSelect.Option value=\"viewer\">Viewer</NativeSelect.Option>\n  <NativeSelect.Option value=\"guest\">Guest</NativeSelect.Option>\n</NativeSelect.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

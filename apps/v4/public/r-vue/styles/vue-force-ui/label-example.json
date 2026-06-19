@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label-example",
+  "title": "Label",
+  "dependencies": [],
+  "registryDependencies": [
+    "checkbox",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/label/LabelDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Checkbox } from \"@/ui/checkbox\"\nimport { Label } from \"@/ui/label\"\n</script>\n\n<template>\n  <div class=\"flex items-center space-x-2\">\n    <Checkbox id=\"terms\" />\n    <Label for=\"terms\">Accept terms and conditions</Label>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

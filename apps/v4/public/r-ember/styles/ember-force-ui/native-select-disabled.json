@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select-disabled",
+  "title": "Native Select Disabled",
+  "dependencies": [],
+  "registryDependencies": [
+    "native-select"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/native-select-disabled.gts",
+      "content": "import {\n  NativeSelect,\n  NativeSelectOption,\n} from '@/ui/native-select';\n\n<template>\n  <NativeSelect disabled>\n    <NativeSelectOption value=\"\">Select priority</NativeSelectOption>\n    <NativeSelectOption value=\"low\">Low</NativeSelectOption>\n    <NativeSelectOption value=\"medium\">Medium</NativeSelectOption>\n    <NativeSelectOption value=\"high\">High</NativeSelectOption>\n    <NativeSelectOption value=\"critical\">Critical</NativeSelectOption>\n  </NativeSelect>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

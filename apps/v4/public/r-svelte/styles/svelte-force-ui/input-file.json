@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-file",
+  "title": "Input File",
+  "registryDependencies": [
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-file.svelte",
+      "content": "<script lang=\"ts\">\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n  import { Label } from \"$lib/registry/ui/label/index.js\"\n</script>\n\n<div class=\"grid w-full max-w-sm items-center gap-1.5\">\n  <Label for=\"picture\">Picture</Label>\n  <Input id=\"picture\" type=\"file\" />\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

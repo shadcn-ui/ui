@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-demo",
+  "title": "Button Demo",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/button-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import ArrowUpIcon from \"@lucide/svelte/icons/arrow-up\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n</script>\n\n<div class=\"flex flex-wrap items-center gap-2 md:flex-row\">\n  <Button variant=\"outline\">Button</Button>\n  <Button variant=\"outline\" size=\"icon\" aria-label=\"Submit\">\n    <ArrowUpIcon />\n  </Button>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

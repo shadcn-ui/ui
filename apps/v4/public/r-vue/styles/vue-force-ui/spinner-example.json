@@ -1,0 +1,80 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-example",
+  "title": "Spinner",
+  "dependencies": [
+    "lucide-vue-next"
+  ],
+  "registryDependencies": [
+    "badge",
+    "button",
+    "empty",
+    "input-group",
+    "item",
+    "progress",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/spinner/SpinnerBadgeDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Badge } from \"@/ui/badge\"\nimport { Spinner } from \"@/ui/spinner\"\n</script>\n\n<template>\n  <div class=\"flex items-center gap-4 [--radius:1.2rem]\">\n    <Badge>\n      <Spinner />\n      Syncing\n    </Badge>\n    <Badge variant=\"secondary\">\n      <Spinner />\n      Updating\n    </Badge>\n    <Badge variant=\"outline\">\n      <Spinner />\n      Processing\n    </Badge>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/spinner/SpinnerBasic.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Spinner } from \"@/ui/spinner\"\n</script>\n\n<template>\n  <div class=\"flex flex-col items-center justify-center gap-8\">\n    <Spinner />\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/spinner/SpinnerButtonDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Spinner } from \"@/ui/spinner\"\n</script>\n\n<template>\n  <div class=\"flex flex-col items-center gap-4\">\n    <Button disabled size=\"sm\">\n      <Spinner />\n      Loading...\n    </Button>\n    <Button variant=\"outline\" disabled size=\"sm\">\n      <Spinner />\n      Please wait\n    </Button>\n    <Button variant=\"secondary\" disabled size=\"sm\">\n      <Spinner />\n      Processing\n    </Button>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/spinner/SpinnerColorDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Spinner } from \"@/ui/spinner\"\n</script>\n\n<template>\n  <div class=\"flex items-center gap-6\">\n    <Spinner class=\"size-6 text-red-500\" />\n    <Spinner class=\"size-6 text-green-500\" />\n    <Spinner class=\"size-6 text-blue-500\" />\n    <Spinner class=\"size-6 text-yellow-500\" />\n    <Spinner class=\"size-6 text-purple-500\" />\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/spinner/SpinnerCustomDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { LoaderIcon } from \"lucide-vue-next\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <LoaderIcon\n    role=\"status\"\n    aria-label=\"Loading\"\n    :class=\"cn('size-4 animate-spin', props.class)\"\n  />\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/spinner/SpinnerDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Spinner } from \"@/ui/spinner\"\n</script>\n\n<template>\n  <Button disabled>\n    <Spinner />\n    Processing Payment\n  </Button>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/spinner/SpinnerEmptyDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/ui/empty\"\nimport { Spinner } from \"@/ui/spinner\"\n</script>\n\n<template>\n  <Empty class=\"w-full\">\n    <EmptyHeader>\n      <EmptyMedia variant=\"icon\">\n        <Spinner />\n      </EmptyMedia>\n      <EmptyTitle>Processing your request</EmptyTitle>\n      <EmptyDescription>\n        Please wait while we process your request. Do not refresh the page.\n      </EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <Button variant=\"outline\" size=\"sm\"> Cancel </Button>\n    </EmptyContent>\n  </Empty>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/spinner/SpinnerInputGroupDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupButton,\n  InputGroupInput,\n  InputGroupTextarea,\n} from \"@/ui/input-group\"\nimport { Spinner } from \"@/ui/spinner\"\nimport { ArrowUpIcon } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <div class=\"flex w-full max-w-md flex-col gap-4\">\n    <InputGroup>\n      <InputGroupInput placeholder=\"Send a message...\" disabled />\n      <InputGroupAddon align=\"inline-end\">\n        <Spinner />\n      </InputGroupAddon>\n    </InputGroup>\n    <InputGroup>\n      <InputGroupTextarea placeholder=\"Send a message...\" disabled />\n      <InputGroupAddon align=\"block-end\">\n        <Spinner /> Validating...\n        <InputGroupButton class=\"ml-auto\" variant=\"default\">\n          <ArrowUpIcon />\n          <span class=\"sr-only\">Send</span>\n        </InputGroupButton>\n      </InputGroupAddon>\n    </InputGroup>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/spinner/SpinnerItemDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  Item,\n  ItemActions,\n  ItemContent,\n  ItemDescription,\n  ItemFooter,\n  ItemMedia,\n  ItemTitle,\n} from \"@/ui/item\"\nimport { Progress } from \"@/ui/progress\"\nimport { Spinner } from \"@/ui/spinner\"\n</script>\n\n<template>\n  <div class=\"flex w-full max-w-md flex-col gap-4 [--radius:1rem]\">\n    <Item variant=\"outline\">\n      <ItemMedia variant=\"icon\">\n        <Spinner />\n      </ItemMedia>\n      <ItemContent>\n        <ItemTitle>Downloading...</ItemTitle>\n        <ItemDescription>129 MB / 1000 MB</ItemDescription>\n      </ItemContent>\n      <ItemActions class=\"hidden sm:flex\">\n        <Button variant=\"outline\" size=\"sm\"> Cancel </Button>\n      </ItemActions>\n      <ItemFooter>\n        <Progress :model-value=\"75\" />\n      </ItemFooter>\n    </Item>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/spinner/SpinnerSizeDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Spinner } from \"@/ui/spinner\"\n</script>\n\n<template>\n  <div class=\"flex items-center gap-6\">\n    <Spinner class=\"size-3\" />\n    <Spinner class=\"size-4\" />\n    <Spinner class=\"size-6\" />\n    <Spinner class=\"size-8\" />\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/spinner/SpinnerColors.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Spinner } from \"@/ui/spinner\"\n</script>\n\n<template>\n  <div class=\"flex items-center gap-6\">\n    <Spinner color=\"default\" />\n    <Spinner color=\"primary\" />\n    <Spinner color=\"inherit\" />\n    <div class=\"rounded-md bg-primary p-2\">\n      <Spinner color=\"onPrimary\" />\n    </div>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/spinner/SpinnerSizes.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Spinner } from \"@/ui/spinner\"\n</script>\n\n<template>\n  <div class=\"flex items-center gap-6\">\n    <Spinner size=\"xs\" />\n    <Spinner size=\"sm\" />\n    <Spinner size=\"md\" />\n    <Spinner size=\"lg\" />\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

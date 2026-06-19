@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select-disabled",
+  "title": "Native Select Disabled",
+  "registryDependencies": [
+    "native-select"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/native-select-disabled.svelte",
+      "content": "<script lang=\"ts\">\n  import * as NativeSelect from \"$lib/registry/ui/native-select/index.js\"\n</script>\n\n<NativeSelect.Root disabled>\n  <NativeSelect.Option value=\"\">Select priority</NativeSelect.Option>\n  <NativeSelect.Option value=\"low\">Low</NativeSelect.Option>\n  <NativeSelect.Option value=\"medium\">Medium</NativeSelect.Option>\n  <NativeSelect.Option value=\"high\">High</NativeSelect.Option>\n  <NativeSelect.Option value=\"critical\">Critical</NativeSelect.Option>\n</NativeSelect.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

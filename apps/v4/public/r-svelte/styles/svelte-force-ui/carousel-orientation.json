@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "carousel-orientation",
+  "title": "Carousel Orientation",
+  "registryDependencies": [
+    "card",
+    "carousel"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/carousel-orientation.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Card from \"$lib/registry/ui/card/index.js\"\n  import * as Carousel from \"$lib/registry/ui/carousel/index.js\"\n</script>\n\n<Carousel.Root\n  opts={{\n    align: \"start\",\n  }}\n  orientation=\"vertical\"\n  class=\"w-full max-w-xs\"\n>\n  <Carousel.Content class=\"-mt-1 h-[200px]\">\n    {#each Array(5) as _, i (i)}\n      <Carousel.Item class=\"pt-1 md:basis-1/2\">\n        <div class=\"p-1\">\n          <Card.Root>\n            <Card.Content class=\"flex items-center justify-center p-6\">\n              <span class=\"text-3xl font-semibold\">{i + 1}</span>\n            </Card.Content>\n          </Card.Root>\n        </div>\n      </Carousel.Item>\n    {/each}\n  </Carousel.Content>\n  <Carousel.Previous />\n  <Carousel.Next />\n</Carousel.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-p",
+  "title": "Typography P",
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/typography-p.svelte",
+      "content": "<p class=\"leading-7 [&:not(:first-child)]:mt-6\">\n  The king, seeing how much happier his subjects were, realized the error of his\n  ways and repealed the joke tax.\n</p>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

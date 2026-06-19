@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover-example",
+  "title": "Popover",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "input",
+    "label",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/popover/PopoverDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Input } from \"@/ui/input\"\nimport { Label } from \"@/ui/label\"\nimport { Popover, PopoverContent, PopoverTrigger } from \"@/ui/popover\"\n</script>\n\n<template>\n  <Popover>\n    <PopoverTrigger as-child>\n      <Button variant=\"outline\"> Open popover </Button>\n    </PopoverTrigger>\n    <PopoverContent class=\"w-80\">\n      <div class=\"grid gap-4\">\n        <div class=\"space-y-2\">\n          <h4 class=\"leading-none font-medium\">Dimensions</h4>\n          <p class=\"text-sm text-muted-foreground\">\n            Set the dimensions for the layer.\n          </p>\n        </div>\n        <div class=\"grid gap-2\">\n          <div class=\"grid grid-cols-3 items-center gap-4\">\n            <Label for=\"width\">Width</Label>\n            <Input id=\"width\" default-value=\"100%\" class=\"col-span-2 h-8\" />\n          </div>\n          <div class=\"grid grid-cols-3 items-center gap-4\">\n            <Label for=\"maxWidth\">Max. width</Label>\n            <Input id=\"maxWidth\" default-value=\"300px\" class=\"col-span-2 h-8\" />\n          </div>\n          <div class=\"grid grid-cols-3 items-center gap-4\">\n            <Label for=\"height\">Height</Label>\n            <Input id=\"height\" default-value=\"25px\" class=\"col-span-2 h-8\" />\n          </div>\n          <div class=\"grid grid-cols-3 items-center gap-4\">\n            <Label for=\"maxHeight\">Max. height</Label>\n            <Input id=\"maxHeight\" default-value=\"none\" class=\"col-span-2 h-8\" />\n          </div>\n        </div>\n      </div>\n    </PopoverContent>\n  </Popover>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

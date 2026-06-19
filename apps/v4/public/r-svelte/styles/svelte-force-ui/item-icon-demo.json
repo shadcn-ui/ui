@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-icon-demo",
+  "title": "Item Icon Demo",
+  "registryDependencies": [
+    "button",
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/item-icon-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import ShieldAlertIcon from \"@lucide/svelte/icons/shield-alert\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Item from \"$lib/registry/ui/item/index.js\"\n</script>\n\n<div class=\"flex w-full max-w-lg flex-col gap-6\">\n  <Item.Root variant=\"outline\">\n    <Item.Media variant=\"icon\">\n      <ShieldAlertIcon />\n    </Item.Media>\n    <Item.Content>\n      <Item.Title>Security Alert</Item.Title>\n      <Item.Description\n        >New login detected from unknown device.</Item.Description\n      >\n    </Item.Content>\n    <Item.Actions>\n      <Button size=\"sm\" variant=\"outline\">Review</Button>\n    </Item.Actions>\n  </Item.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

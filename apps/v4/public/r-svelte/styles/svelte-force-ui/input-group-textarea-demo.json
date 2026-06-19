@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-textarea-demo",
+  "title": "Input Group Textarea Demo",
+  "registryDependencies": [
+    "input-group"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-group-textarea-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import IconBrandJavascript from \"@tabler/icons-svelte/icons/brand-javascript\"\n  import IconCopy from \"@tabler/icons-svelte/icons/copy\"\n  import IconCornerDownLeft from \"@tabler/icons-svelte/icons/corner-down-left\"\n  import IconRefresh from \"@tabler/icons-svelte/icons/refresh\"\n  import * as InputGroup from \"$lib/registry/ui/input-group/index.js\"\n</script>\n\n<div class=\"grid w-full max-w-md gap-4\">\n  <InputGroup.Root>\n    <InputGroup.Addon align=\"block-start\" class=\"border-b\">\n      <InputGroup.Text class=\"font-mono font-medium\">\n        <IconBrandJavascript />\n        script.js\n      </InputGroup.Text>\n      <InputGroup.Button class=\"ms-auto\" size=\"icon-xs\">\n        <IconRefresh />\n      </InputGroup.Button>\n      <InputGroup.Button variant=\"ghost\" size=\"icon-xs\">\n        <IconCopy />\n      </InputGroup.Button>\n    </InputGroup.Addon>\n    <InputGroup.Textarea\n      placeholder=\"console.log('Hello, world!');\"\n      class=\"min-h-[200px]\"\n    />\n    <InputGroup.Addon align=\"block-end\" class=\"border-t\">\n      <InputGroup.Text>Line 1, Column 1</InputGroup.Text>\n      <InputGroup.Button size=\"sm\" class=\"ms-auto\" variant=\"default\">\n        Run <IconCornerDownLeft />\n      </InputGroup.Button>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

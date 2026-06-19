@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-default",
+  "title": "Button Default",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/button-default.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n</script>\n\n<Button>Button</Button>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

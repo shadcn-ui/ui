@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-table",
+  "title": "Typography Table",
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/typography-table.svelte",
+      "content": "<div class=\"my-6 w-full overflow-y-auto\">\n  <table class=\"w-full\">\n    <thead>\n      <tr class=\"even:bg-muted m-0 border-t p-0\">\n        <th\n          class=\"border px-4 py-2 text-start font-bold [&[align=center]]:text-center [&[align=right]]:text-end\"\n        >\n          King's Treasury\n        </th>\n        <th\n          class=\"border px-4 py-2 text-start font-bold [&[align=center]]:text-center [&[align=right]]:text-end\"\n        >\n          People's happiness\n        </th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr class=\"even:bg-muted m-0 border-t p-0\">\n        <td\n          class=\"border px-4 py-2 text-start [&[align=center]]:text-center [&[align=right]]:text-end\"\n        >\n          Empty\n        </td>\n        <td\n          class=\"border px-4 py-2 text-start [&[align=center]]:text-center [&[align=right]]:text-end\"\n        >\n          Overflowing\n        </td>\n      </tr>\n      <tr class=\"even:bg-muted m-0 border-t p-0\">\n        <td\n          class=\"border px-4 py-2 text-start [&[align=center]]:text-center [&[align=right]]:text-end\"\n        >\n          Modest\n        </td>\n        <td\n          class=\"border px-4 py-2 text-start [&[align=center]]:text-center [&[align=right]]:text-end\"\n        >\n          Satisfied\n        </td>\n      </tr>\n      <tr class=\"even:bg-muted m-0 border-t p-0\">\n        <td\n          class=\"border px-4 py-2 text-start [&[align=center]]:text-center [&[align=right]]:text-end\"\n        >\n          Full\n        </td>\n        <td\n          class=\"border px-4 py-2 text-start [&[align=center]]:text-center [&[align=right]]:text-end\"\n        >\n          Ecstatic\n        </td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

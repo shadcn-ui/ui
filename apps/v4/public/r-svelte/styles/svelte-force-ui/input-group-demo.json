@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-demo",
+  "title": "Input Group Demo",
+  "registryDependencies": [
+    "dropdown-menu",
+    "input-group",
+    "separator",
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-group-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import ArrowUpIcon from \"@lucide/svelte/icons/arrow-up\"\n  import SearchIcon from \"@lucide/svelte/icons/search\"\n  import IconCheck from \"@tabler/icons-svelte/icons/check\"\n  import IconInfoCircle from \"@tabler/icons-svelte/icons/info-circle\"\n  import IconPlus from \"@tabler/icons-svelte/icons/plus\"\n  import * as DropdownMenu from \"$lib/registry/ui/dropdown-menu/index.js\"\n  import * as InputGroup from \"$lib/registry/ui/input-group/index.js\"\n  import { Separator } from \"$lib/registry/ui/separator/index.js\"\n  import * as Tooltip from \"$lib/registry/ui/tooltip/index.js\"\n</script>\n\n<div class=\"grid w-full max-w-sm gap-6\">\n  <InputGroup.Root>\n    <InputGroup.Input placeholder=\"Search...\" />\n    <InputGroup.Addon>\n      <SearchIcon />\n    </InputGroup.Addon>\n    <InputGroup.Addon align=\"inline-end\">12 results</InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root>\n    <InputGroup.Input placeholder=\"example.com\" class=\"!ps-1\" />\n    <InputGroup.Addon>\n      <InputGroup.Text>https://</InputGroup.Text>\n    </InputGroup.Addon>\n    <InputGroup.Addon align=\"inline-end\">\n      <Tooltip.Root>\n        <Tooltip.Trigger>\n          {#snippet child({ props })}\n            <InputGroup.Button {...props} class=\"rounded-full\" size=\"icon-xs\">\n              <IconInfoCircle />\n            </InputGroup.Button>\n          {/snippet}\n        </Tooltip.Trigger>\n        <Tooltip.Content>This is content in a tooltip.</Tooltip.Content>\n      </Tooltip.Root>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root>\n    <InputGroup.Textarea placeholder=\"Ask, Search or Chat...\" />\n    <InputGroup.Addon align=\"block-end\">\n      <InputGroup.Button variant=\"outline\" class=\"rounded-full\" size=\"icon-xs\">\n        <IconPlus />\n      </InputGroup.Button>\n      <DropdownMenu.Root>\n        <DropdownMenu.Trigger>\n          {#snippet child({ props })}\n            <InputGroup.Button {...props} variant=\"ghost\"\n              >Auto</InputGroup.Button\n            >\n          {/snippet}\n        </DropdownMenu.Trigger>\n        <DropdownMenu.Content\n          side=\"top\"\n          align=\"start\"\n          class=\"[--radius:0.95rem]\"\n        >\n          <DropdownMenu.Item>Auto</DropdownMenu.Item>\n          <DropdownMenu.Item>Agent</DropdownMenu.Item>\n          <DropdownMenu.Item>Manual</DropdownMenu.Item>\n        </DropdownMenu.Content>\n      </DropdownMenu.Root>\n      <InputGroup.Text class=\"ms-auto\">52% used</InputGroup.Text>\n      <Separator orientation=\"vertical\" class=\"!h-4\" />\n      <InputGroup.Button\n        variant=\"default\"\n        class=\"rounded-full\"\n        size=\"icon-xs\"\n        disabled\n      >\n        <ArrowUpIcon />\n        <span class=\"sr-only\">Send</span>\n      </InputGroup.Button>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root>\n    <InputGroup.Input placeholder=\"@shadcn\" />\n    <InputGroup.Addon align=\"inline-end\">\n      <div\n        class=\"bg-primary text-primary-foreground flex size-4 items-center justify-center rounded-full\"\n      >\n        <IconCheck class=\"size-3\" />\n      </div>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

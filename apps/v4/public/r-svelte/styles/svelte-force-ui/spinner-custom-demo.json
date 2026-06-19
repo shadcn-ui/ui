@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-custom-demo",
+  "title": "Spinner Custom Demo",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/spinner-custom-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import LoaderIcon from \"@lucide/svelte/icons/loader\"\n  import { cn } from \"$lib/utils.js\"\n  import type { ComponentProps } from \"svelte\"\n\n  type Props = ComponentProps<typeof LoaderIcon>\n\n  let { class: className, ...restProps }: Props = $props()\n</script>\n\n<LoaderIcon\n  role=\"status\"\n  aria-label=\"Loading\"\n  class={cn(\"size-4 animate-spin\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

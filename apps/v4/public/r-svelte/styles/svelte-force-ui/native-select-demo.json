@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select-demo",
+  "title": "Native Select Demo",
+  "registryDependencies": [
+    "native-select"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/native-select-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as NativeSelect from \"$lib/registry/ui/native-select/index.js\"\n</script>\n\n<NativeSelect.Root>\n  <NativeSelect.Option value=\"\">Select status</NativeSelect.Option>\n  <NativeSelect.Option value=\"todo\">Todo</NativeSelect.Option>\n  <NativeSelect.Option value=\"in-progress\">In Progress</NativeSelect.Option>\n  <NativeSelect.Option value=\"done\">Done</NativeSelect.Option>\n  <NativeSelect.Option value=\"cancelled\">Cancelled</NativeSelect.Option>\n</NativeSelect.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

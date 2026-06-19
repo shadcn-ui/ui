@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-loading",
+  "title": "Button Loading",
+  "registryDependencies": [
+    "button",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/button-loading.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import { Spinner } from \"$lib/registry/ui/spinner/index.js\"\n</script>\n\n<Button size=\"sm\" variant=\"outline\" disabled>\n  <Spinner />\n  Submit\n</Button>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

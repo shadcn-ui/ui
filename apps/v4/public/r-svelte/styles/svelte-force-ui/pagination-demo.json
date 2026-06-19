@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pagination-demo",
+  "title": "Pagination Demo",
+  "registryDependencies": [
+    "pagination"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/pagination-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Pagination from \"$lib/registry/ui/pagination/index.js\"\n</script>\n\n<Pagination.Root count={30} page={2}>\n  {#snippet children({ pages, currentPage })}\n    <Pagination.Content>\n      <Pagination.Item>\n        <Pagination.PrevButton />\n      </Pagination.Item>\n      {#each pages as page (page.key)}\n        {#if page.type === \"ellipsis\"}\n          <Pagination.Item>\n            <Pagination.Ellipsis />\n          </Pagination.Item>\n        {:else}\n          <Pagination.Item>\n            <Pagination.Link {page} isActive={currentPage === page.value}>\n              {page.value}\n            </Pagination.Link>\n          </Pagination.Item>\n        {/if}\n      {/each}\n      <Pagination.Item>\n        <Pagination.Ellipsis />\n      </Pagination.Item>\n      <Pagination.Item>\n        <Pagination.NextButton />\n      </Pagination.Item>\n    </Pagination.Content>\n  {/snippet}\n</Pagination.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

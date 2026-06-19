@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-form-multiple",
+  "title": "Checkbox Form Multiple",
+  "dependencies": [
+    "svelte-sonner",
+    "sveltekit-superforms",
+    "zod"
+  ],
+  "registryDependencies": [
+    "checkbox",
+    "form"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/checkbox-form-multiple.svelte",
+      "content": "<script lang=\"ts\" module>\n  import { z } from \"zod\"\n\n  const items = [\n    {\n      id: \"recents\",\n      label: \"Recents\",\n    },\n    {\n      id: \"home\",\n      label: \"Home\",\n    },\n    {\n      id: \"applications\",\n      label: \"Applications\",\n    },\n    {\n      id: \"desktop\",\n      label: \"Desktop\",\n    },\n    {\n      id: \"downloads\",\n      label: \"Downloads\",\n    },\n    {\n      id: \"documents\",\n      label: \"Documents\",\n    },\n  ] as const\n\n  const formSchema = z.object({\n    items: z.array(z.string()).refine((value) => value.some((item) => item), {\n      message: \"You have to select at least one item.\",\n    }),\n  })\n</script>\n\n<script lang=\"ts\">\n  import { Checkbox } from \"$lib/registry/ui/checkbox/index.js\"\n  import * as Form from \"$lib/registry/ui/form/index.js\"\n  import { toast } from \"svelte-sonner\"\n  import { defaults, superForm } from \"sveltekit-superforms\"\n  import { zod4 } from \"sveltekit-superforms/adapters\"\n\n  const form = superForm(defaults(zod4(formSchema)), {\n    SPA: true,\n    validators: zod4(formSchema),\n    onUpdate: ({ form: f }) => {\n      if (f.valid) {\n        toast.success(`You submitted ${JSON.stringify(f.data, null, 2)}`)\n      } else {\n        toast.error(\"Please fix the errors in the form.\")\n      }\n    },\n  })\n\n  const { form: formData, enhance } = form\n\n  function addItem(id: string) {\n    $formData.items = [...$formData.items, id]\n  }\n\n  function removeItem(id: string) {\n    $formData.items = $formData.items.filter((i) => i !== id)\n  }\n</script>\n\n<form method=\"POST\" class=\"space-y-8\" use:enhance>\n  <Form.Fieldset {form} name=\"items\" class=\"space-y-0\">\n    <div class=\"mb-4\">\n      <Form.Legend class=\"text-base\">Sidebar</Form.Legend>\n      <Form.Description>\n        Select the items you want to display in the sidebar.\n      </Form.Description>\n    </div>\n    <div class=\"space-y-2\">\n      {#each items as item (item.id)}\n        {@const checked = $formData.items.includes(item.id)}\n        <div class=\"flex flex-row items-start space-x-3\">\n          <Form.Control>\n            {#snippet children({ props })}\n              <Checkbox\n                {...props}\n                {checked}\n                value={item.id}\n                onCheckedChange={(v) => {\n                  if (v) {\n                    addItem(item.id)\n                  } else {\n                    removeItem(item.id)\n                  }\n                }}\n              />\n              <Form.Label class=\"font-normal\">\n                {item.label}\n              </Form.Label>\n            {/snippet}\n          </Form.Control>\n        </div>\n      {/each}\n      <Form.FieldErrors />\n    </div>\n  </Form.Fieldset>\n  <Form.Button>Update display</Form.Button>\n</form>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

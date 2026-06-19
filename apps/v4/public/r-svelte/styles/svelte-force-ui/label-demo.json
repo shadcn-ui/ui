@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label-demo",
+  "title": "Label Demo",
+  "registryDependencies": [
+    "checkbox",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/label-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Checkbox } from \"$lib/registry/ui/checkbox/index.js\"\n  import { Label } from \"$lib/registry/ui/label/index.js\"\n</script>\n\n<div>\n  <div class=\"flex items-center space-x-2\">\n    <Checkbox id=\"terms\" />\n    <Label for=\"terms\">Accept terms and conditions</Label>\n  </div>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

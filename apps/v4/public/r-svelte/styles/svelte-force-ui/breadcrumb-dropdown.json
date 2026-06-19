@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-dropdown",
+  "title": "Breadcrumb Dropdown",
+  "registryDependencies": [
+    "breadcrumb",
+    "dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/breadcrumb-dropdown.svelte",
+      "content": "<script lang=\"ts\">\n  import ChevronDownIcon from \"@lucide/svelte/icons/chevron-down\"\n  import SlashIcon from \"@lucide/svelte/icons/slash\"\n  import * as Breadcrumb from \"$lib/registry/ui/breadcrumb/index.js\"\n  import * as DropdownMenu from \"$lib/registry/ui/dropdown-menu/index.js\"\n</script>\n\n<Breadcrumb.Root>\n  <Breadcrumb.List>\n    <Breadcrumb.Item>\n      <Breadcrumb.Link href=\"/\">Home</Breadcrumb.Link>\n    </Breadcrumb.Item>\n    <Breadcrumb.Separator>\n      <SlashIcon />\n    </Breadcrumb.Separator>\n    <Breadcrumb.Item>\n      <DropdownMenu.Root>\n        <DropdownMenu.Trigger class=\"flex items-center gap-1\">\n          Components\n          <ChevronDownIcon class=\"size-4\" />\n        </DropdownMenu.Trigger>\n        <DropdownMenu.Content align=\"start\">\n          <DropdownMenu.Item>Documentation</DropdownMenu.Item>\n          <DropdownMenu.Item>Themes</DropdownMenu.Item>\n          <DropdownMenu.Item>GitHub</DropdownMenu.Item>\n        </DropdownMenu.Content>\n      </DropdownMenu.Root>\n    </Breadcrumb.Item>\n    <Breadcrumb.Separator>\n      <SlashIcon />\n    </Breadcrumb.Separator>\n    <Breadcrumb.Item>\n      <Breadcrumb.Page>Breadcrumb</Breadcrumb.Page>\n    </Breadcrumb.Item>\n  </Breadcrumb.List>\n</Breadcrumb.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

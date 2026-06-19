@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-disabled",
+  "title": "Textarea Disabled",
+  "registryDependencies": [
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/textarea-disabled.svelte",
+      "content": "<script lang=\"ts\">\n  import { Textarea } from \"$lib/registry/ui/textarea/index.js\"\n</script>\n\n<Textarea disabled placeholder=\"Type your message here.\" />\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

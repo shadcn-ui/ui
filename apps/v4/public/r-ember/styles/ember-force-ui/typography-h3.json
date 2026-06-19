@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-h3",
+  "title": "Typography H3",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/typography-h3.gts",
+      "content": "<template>\n  <h3 class=\"scroll-m-20 text-2xl font-semibold tracking-tight\">\n    The Joke Tax\n  </h3>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

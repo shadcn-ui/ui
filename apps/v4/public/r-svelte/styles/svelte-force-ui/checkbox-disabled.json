@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-disabled",
+  "title": "Checkbox Disabled",
+  "registryDependencies": [
+    "checkbox",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/checkbox-disabled.svelte",
+      "content": "<script lang=\"ts\">\n  import { Checkbox } from \"$lib/registry/ui/checkbox/index.js\"\n  import { Label } from \"$lib/registry/ui/label/index.js\"\n</script>\n\n<div class=\"flex items-center space-x-2\">\n  <Checkbox id=\"terms\" disabled />\n  <Label\n    for=\"terms2\"\n    class=\"text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 peer-data-[disabled=true]:cursor-not-allowed peer-data-[disabled=true]:opacity-70\"\n  >\n    Accept terms and conditions\n  </Label>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-demo",
+  "title": "Form Demo",
+  "dependencies": [
+    "svelte-sonner",
+    "sveltekit-superforms",
+    "zod"
+  ],
+  "registryDependencies": [
+    "form",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/form-demo.svelte",
+      "content": "<script lang=\"ts\" module>\n  import { z } from \"zod\"\n\n  const formSchema = z.object({\n    username: z.string().min(2).max(50),\n  })\n</script>\n\n<script lang=\"ts\">\n  import * as Form from \"$lib/registry/ui/form/index.js\"\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n  import { toast } from \"svelte-sonner\"\n  import { defaults, superForm } from \"sveltekit-superforms\"\n  import { zod4 } from \"sveltekit-superforms/adapters\"\n\n  const form = superForm(defaults(zod4(formSchema)), {\n    validators: zod4(formSchema),\n    SPA: true,\n    onUpdate: ({ form: f }) => {\n      if (f.valid) {\n        toast.success(`You submitted ${JSON.stringify(f.data, null, 2)}`)\n      } else {\n        toast.error(\"Please fix the errors in the form.\")\n      }\n    },\n  })\n\n  const { form: formData, enhance } = form\n</script>\n\n<form method=\"POST\" class=\"w-2/3 space-y-6\" use:enhance>\n  <Form.Field {form} name=\"username\">\n    <Form.Control>\n      {#snippet children({ props })}\n        <Form.Label>Username</Form.Label>\n        <Input {...props} bind:value={$formData.username} />\n      {/snippet}\n    </Form.Control>\n    <Form.Description>This is your public display name.</Form.Description>\n    <Form.FieldErrors />\n  </Form.Field>\n  <Form.Button>Submit</Form.Button>\n</form>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

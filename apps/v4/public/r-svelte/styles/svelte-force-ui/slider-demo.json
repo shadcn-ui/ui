@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider-demo",
+  "title": "Slider Demo",
+  "registryDependencies": [
+    "slider"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/slider-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Slider } from \"$lib/registry/ui/slider/index.js\"\n\n  let value = $state(50)\n</script>\n\n<Slider type=\"single\" bind:value max={100} step={1} class=\"max-w-[70%]\" />\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area-demo",
+  "title": "Scroll Area Demo",
+  "registryDependencies": [
+    "scroll-area",
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/scroll-area-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { ScrollArea } from \"$lib/registry/ui/scroll-area/index.js\"\n  import { Separator } from \"$lib/registry/ui/separator/index.js\"\n\n  const tags = Array.from({ length: 50 }).map(\n    (_, i, a) => `v1.2.0-beta.${a.length - i}`\n  )\n</script>\n\n<ScrollArea class=\"h-72 w-48 rounded-md border\">\n  <div class=\"p-4\">\n    <h4 class=\"mb-4 text-sm leading-none font-medium\">Tags</h4>\n    {#each tags as tag (tag)}\n      <div class=\"text-sm\">\n        {tag}\n      </div>\n      <Separator class=\"my-2\" />\n    {/each}\n  </div>\n</ScrollArea>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

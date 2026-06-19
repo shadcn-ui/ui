@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-otp-pattern",
+  "title": "Input Otp Pattern",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "input-otp"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-otp-pattern.svelte",
+      "content": "<script lang=\"ts\">\n  import * as InputOTP from \"$lib/registry/ui/input-otp/index.js\"\n  import { REGEXP_ONLY_DIGITS_AND_CHARS } from \"bits-ui\"\n</script>\n\n<InputOTP.Root maxlength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS}>\n  {#snippet children({ cells })}\n    <InputOTP.Group>\n      {#each cells as cell (cell)}\n        <InputOTP.Slot {cell} />\n      {/each}\n    </InputOTP.Group>\n  {/snippet}\n</InputOTP.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

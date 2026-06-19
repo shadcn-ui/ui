@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible-demo",
+  "title": "Collapsible Demo",
+  "registryDependencies": [
+    "button",
+    "collapsible"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/collapsible-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import ChevronsUpDownIcon from \"@lucide/svelte/icons/chevrons-up-down\"\n  import { buttonVariants } from \"$lib/registry/ui/button/index.js\"\n  import * as Collapsible from \"$lib/registry/ui/collapsible/index.js\"\n</script>\n\n<Collapsible.Root class=\"w-[350px] space-y-2\">\n  <div class=\"flex items-center justify-between space-x-4 px-4\">\n    <h4 class=\"text-sm font-semibold\">@huntabyte starred 3 repositories</h4>\n    <Collapsible.Trigger\n      class={buttonVariants({ variant: \"ghost\", size: \"sm\", class: \"w-9 p-0\" })}\n    >\n      <ChevronsUpDownIcon />\n      <span class=\"sr-only\">Toggle</span>\n    </Collapsible.Trigger>\n  </div>\n  <div class=\"rounded-md border px-4 py-3 font-mono text-sm\">\n    @huntabyte/bits-ui\n  </div>\n  <Collapsible.Content class=\"space-y-2\">\n    <div class=\"rounded-md border px-4 py-3 font-mono text-sm\">\n      @melt-ui/melt-ui\n    </div>\n    <div class=\"rounded-md border px-4 py-3 font-mono text-sm\">\n      @sveltejs/svelte\n    </div>\n  </Collapsible.Content>\n</Collapsible.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

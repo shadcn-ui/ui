@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-menu-dialog",
+  "title": "Dropdown Menu Dialog",
+  "registryDependencies": [
+    "button",
+    "dialog",
+    "dropdown-menu",
+    "field",
+    "input",
+    "label",
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/dropdown-menu-dialog.svelte",
+      "content": "<script lang=\"ts\">\n  import MoreHorizontal from \"@lucide/svelte/icons/more-horizontal\"\n  import { Button, buttonVariants } from \"$lib/registry/ui/button/index.js\"\n  import * as Dialog from \"$lib/registry/ui/dialog/index.js\"\n  import * as DropdownMenu from \"$lib/registry/ui/dropdown-menu/index.js\"\n  import * as Field from \"$lib/registry/ui/field/index.js\"\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n  import { Label } from \"$lib/registry/ui/label/index.js\"\n  import { Textarea } from \"$lib/registry/ui/textarea/index.js\"\n\n  let showNewDialog = $state(false)\n  let showShareDialog = $state(false)\n</script>\n\n<DropdownMenu.Root>\n  <DropdownMenu.Trigger\n    class={buttonVariants({ variant: \"outline\", size: \"icon-sm\" })}\n  >\n    <MoreHorizontal />\n  </DropdownMenu.Trigger>\n  <DropdownMenu.Content class=\"w-40\" align=\"end\">\n    <DropdownMenu.Label>File Actions</DropdownMenu.Label>\n    <DropdownMenu.Group>\n      <DropdownMenu.Item onSelect={() => (showNewDialog = true)}>\n        New File...\n      </DropdownMenu.Item>\n      <DropdownMenu.Item onSelect={() => (showShareDialog = true)}>\n        Share...\n      </DropdownMenu.Item>\n      <DropdownMenu.Item disabled>Download</DropdownMenu.Item>\n    </DropdownMenu.Group>\n  </DropdownMenu.Content>\n</DropdownMenu.Root>\n\n<Dialog.Root bind:open={showNewDialog}>\n  <Dialog.Content class=\"sm:max-w-[425px]\">\n    <Dialog.Header>\n      <Dialog.Title>Create New File</Dialog.Title>\n      <Dialog.Description>\n        Provide a name for your new file. Click create when you&apos;re done.\n      </Dialog.Description>\n    </Dialog.Header>\n    <Field.Group class=\"pb-3\">\n      <Field.Field>\n        <Field.Label for=\"filename\">File Name</Field.Label>\n        <Input id=\"filename\" name=\"filename\" placeholder=\"document.txt\" />\n      </Field.Field>\n    </Field.Group>\n    <Dialog.Footer>\n      <Dialog.Close class={buttonVariants({ variant: \"outline\" })}\n        >Cancel</Dialog.Close\n      >\n      <Button type=\"submit\">Create</Button>\n    </Dialog.Footer>\n  </Dialog.Content>\n</Dialog.Root>\n\n<Dialog.Root bind:open={showShareDialog}>\n  <Dialog.Content class=\"sm:max-w-[425px]\">\n    <Dialog.Header>\n      <Dialog.Title>Share File</Dialog.Title>\n      <Dialog.Description>\n        Anyone with the link will be able to view this file.\n      </Dialog.Description>\n    </Dialog.Header>\n    <Field.Group class=\"py-3\">\n      <Field.Field>\n        <Label for=\"email\">Email Address</Label>\n        <Input\n          id=\"email\"\n          name=\"email\"\n          type=\"email\"\n          placeholder=\"shadcn@vercel.com\"\n        />\n      </Field.Field>\n      <Field.Field>\n        <Field.Label for=\"message\">Message (Optional)</Field.Label>\n        <Textarea\n          id=\"message\"\n          name=\"message\"\n          placeholder=\"Check out this file\"\n        />\n      </Field.Field>\n    </Field.Group>\n    <Dialog.Footer>\n      <Dialog.Close class={buttonVariants({ variant: \"outline\" })}\n        >Cancel</Dialog.Close\n      >\n      <Button type=\"submit\">Send Invite</Button>\n    </Dialog.Footer>\n  </Dialog.Content>\n</Dialog.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

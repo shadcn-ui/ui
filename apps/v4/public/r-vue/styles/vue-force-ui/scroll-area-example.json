@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area-example",
+  "title": "Scroll Area",
+  "dependencies": [],
+  "registryDependencies": [
+    "scroll-area",
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/scroll-area/ScrollAreaDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ScrollArea } from \"@/ui/scroll-area\"\nimport { Separator } from \"@/ui/separator\"\n\nconst tags = Array.from({ length: 50 }).map(\n  (_, i, a) => `v1.2.0-beta.${a.length - i}`\n)\n</script>\n\n<template>\n  <ScrollArea class=\"h-72 w-48 rounded-md border\">\n    <div class=\"p-4\">\n      <h4 class=\"mb-4 text-sm leading-none font-medium\">Tags</h4>\n      <template v-for=\"tag in tags\" :key=\"tag\">\n        <div class=\"text-sm\">\n          {{ tag }}\n        </div>\n        <Separator class=\"my-2\" />\n      </template>\n    </div>\n  </ScrollArea>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

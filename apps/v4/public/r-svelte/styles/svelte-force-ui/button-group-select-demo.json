@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-select-demo",
+  "title": "Button Group Select Demo",
+  "registryDependencies": [
+    "button",
+    "button-group",
+    "input",
+    "select"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/button-group-select-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import ArrowRight from \"@lucide/svelte/icons/arrow-right\"\n  import * as ButtonGroup from \"$lib/registry/ui/button-group/index.js\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n  import * as Select from \"$lib/registry/ui/select/index.js\"\n\n  const CURRENCIES = [\n    {\n      value: \"$\",\n      label: \"US Dollar\",\n    },\n    {\n      value: \"€\",\n      label: \"Euro\",\n    },\n    {\n      value: \"£\",\n      label: \"British Pound\",\n    },\n  ]\n\n  let currency = $state(\"$\")\n</script>\n\n<ButtonGroup.Root>\n  <ButtonGroup.Root>\n    <Select.Root type=\"single\" bind:value={currency}>\n      <Select.Trigger class=\"font-mono\">\n        {currency}\n      </Select.Trigger>\n      <Select.Content class=\"min-w-24\">\n        {#each CURRENCIES as currencyOption (currencyOption.value)}\n          <Select.Item value={currencyOption.value}>\n            {currencyOption.value}\n            <span class=\"text-muted-foreground\">{currencyOption.label}</span>\n          </Select.Item>\n        {/each}\n      </Select.Content>\n    </Select.Root>\n    <Input placeholder=\"10.00\" pattern=\"[0-9]*\" />\n  </ButtonGroup.Root>\n  <ButtonGroup.Root>\n    <Button aria-label=\"Send\" size=\"icon\" variant=\"outline\">\n      <ArrowRight />\n    </Button>\n  </ButtonGroup.Root>\n</ButtonGroup.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

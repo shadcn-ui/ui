@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select-groups",
+  "title": "Native Select Groups",
+  "registryDependencies": [
+    "native-select"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/native-select-groups.svelte",
+      "content": "<script lang=\"ts\">\n  import * as NativeSelect from \"$lib/registry/ui/native-select/index.js\"\n</script>\n\n<NativeSelect.Root>\n  <NativeSelect.Option value=\"\">Select department</NativeSelect.Option>\n  <NativeSelect.OptGroup label=\"Engineering\">\n    <NativeSelect.Option value=\"frontend\">Frontend</NativeSelect.Option>\n    <NativeSelect.Option value=\"backend\">Backend</NativeSelect.Option>\n    <NativeSelect.Option value=\"devops\">DevOps</NativeSelect.Option>\n  </NativeSelect.OptGroup>\n  <NativeSelect.OptGroup label=\"Sales\">\n    <NativeSelect.Option value=\"sales-rep\">Sales Rep</NativeSelect.Option>\n    <NativeSelect.Option value=\"account-manager\"\n      >Account Manager</NativeSelect.Option\n    >\n    <NativeSelect.Option value=\"sales-director\"\n      >Sales Director</NativeSelect.Option\n    >\n  </NativeSelect.OptGroup>\n  <NativeSelect.OptGroup label=\"Operations\">\n    <NativeSelect.Option value=\"support\">Customer Support</NativeSelect.Option>\n    <NativeSelect.Option value=\"product-manager\"\n      >Product Manager</NativeSelect.Option\n    >\n    <NativeSelect.Option value=\"ops-manager\"\n      >Operations Manager</NativeSelect.Option\n    >\n  </NativeSelect.OptGroup>\n</NativeSelect.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

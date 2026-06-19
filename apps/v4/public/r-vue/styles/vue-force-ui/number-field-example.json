@@ -1,0 +1,49 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-field-example",
+  "title": "Number Field",
+  "dependencies": [
+    "vee-validate",
+    "vue-sonner",
+    "zod"
+  ],
+  "registryDependencies": [
+    "button",
+    "field",
+    "label",
+    "number-field"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/number-field/NumberFieldCurrencyDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Label } from \"@/ui/label\"\nimport {\n  NumberField,\n  NumberFieldContent,\n  NumberFieldDecrement,\n  NumberFieldIncrement,\n  NumberFieldInput,\n} from \"@/ui/number-field\"\n</script>\n\n<template>\n  <NumberField\n    id=\"balance\"\n    :default-value=\"1500\"\n    :format-options=\"{\n      style: 'currency',\n      currency: 'EUR',\n      currencyDisplay: 'code',\n      currencySign: 'accounting',\n    }\"\n  >\n    <Label for=\"balance\">Balance</Label>\n    <NumberFieldContent>\n      <NumberFieldDecrement />\n      <NumberFieldInput />\n      <NumberFieldIncrement />\n    </NumberFieldContent>\n  </NumberField>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/number-field/NumberFieldDecimalDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Label } from \"@/ui/label\"\nimport {\n  NumberField,\n  NumberFieldContent,\n  NumberFieldDecrement,\n  NumberFieldIncrement,\n  NumberFieldInput,\n} from \"@/ui/number-field\"\n</script>\n\n<template>\n  <NumberField\n    id=\"number\"\n    :default-value=\"5\"\n    :format-options=\"{\n      signDisplay: 'exceptZero',\n      minimumFractionDigits: 1,\n    }\"\n  >\n    <Label for=\"number\">Number</Label>\n    <NumberFieldContent>\n      <NumberFieldDecrement />\n      <NumberFieldInput />\n      <NumberFieldIncrement />\n    </NumberFieldContent>\n  </NumberField>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/number-field/NumberFieldDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Label } from \"@/ui/label\"\nimport {\n  NumberField,\n  NumberFieldContent,\n  NumberFieldDecrement,\n  NumberFieldIncrement,\n  NumberFieldInput,\n} from \"@/ui/number-field\"\n</script>\n\n<template>\n  <NumberField id=\"age\" :default-value=\"18\" :min=\"0\">\n    <Label for=\"age\">Age</Label>\n    <NumberFieldContent>\n      <NumberFieldDecrement />\n      <NumberFieldInput />\n      <NumberFieldIncrement />\n    </NumberFieldContent>\n  </NumberField>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/number-field/NumberFieldDisabledDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Label } from \"@/ui/label\"\nimport {\n  NumberField,\n  NumberFieldContent,\n  NumberFieldDecrement,\n  NumberFieldIncrement,\n  NumberFieldInput,\n} from \"@/ui/number-field\"\n</script>\n\n<template>\n  <NumberField id=\"age-disabled\" :default-value=\"18\" disabled>\n    <Label for=\"age-disabled\">Age</Label>\n    <NumberFieldContent>\n      <NumberFieldDecrement />\n      <NumberFieldInput />\n      <NumberFieldIncrement />\n    </NumberFieldContent>\n  </NumberField>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/number-field/NumberFieldFormDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Field, FieldDescription, FieldError, FieldLabel } from \"@/ui/field\"\nimport {\n  NumberField,\n  NumberFieldContent,\n  NumberFieldDecrement,\n  NumberFieldIncrement,\n  NumberFieldInput,\n} from \"@/ui/number-field\"\nimport { toTypedSchema } from \"@vee-validate/zod\"\nimport { useForm, Field as VeeField } from \"vee-validate\"\nimport { h } from \"vue\"\nimport { toast } from \"vue-sonner\"\nimport * as z from \"zod\"\n\nconst formSchema = toTypedSchema(\n  z.object({\n    payment: z\n      .number()\n      .min(10, \"Min 10 euros to send payment\")\n      .max(5000, \"Max 5000 euros to send payment\"),\n  })\n)\n\nconst { handleSubmit, setFieldValue } = useForm({\n  validationSchema: formSchema,\n  initialValues: {\n    payment: 10,\n  },\n})\n\nconst onSubmit = handleSubmit((values) => {\n  toast(\"You submitted the following values:\", {\n    description: h(\n      \"pre\",\n      { class: \"mt-2 w-[320px] rounded-md bg-neutral-950 p-4\" },\n      h(\"code\", { class: \"text-white\" }, JSON.stringify(values, null, 2))\n    ),\n  })\n})\n</script>\n\n<template>\n  <form class=\"w-2/3 space-y-6\" @submit=\"onSubmit\">\n    <VeeField v-slot=\"{ value, errors }\" name=\"payment\">\n      <Field class=\"w-[300px]\" :data-invalid=\"!!errors.length\">\n        <FieldLabel for=\"payment\"> Payment </FieldLabel>\n        <NumberField\n          class=\"gap-2\"\n          :min=\"0\"\n          :format-options=\"{\n            style: 'currency',\n            currency: 'EUR',\n            currencyDisplay: 'code',\n            currencySign: 'accounting',\n          }\"\n          :model-value=\"value\"\n          @update:model-value=\"\n            (v) => {\n              if (v) {\n                setFieldValue('payment', v)\n              } else {\n                setFieldValue('payment', undefined)\n              }\n            }\n          \"\n        >\n          <NumberFieldContent>\n            <NumberFieldDecrement />\n            <NumberFieldInput />\n            <NumberFieldIncrement />\n          </NumberFieldContent>\n        </NumberField>\n        <FieldDescription> Enter value between 10 and 5000. </FieldDescription>\n        <FieldError v-if=\"errors.length\" :errors=\"errors\" />\n      </Field>\n    </VeeField>\n    <Button type=\"submit\"> Submit </Button>\n  </form>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/number-field/NumberFieldPercentageDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Label } from \"@/ui/label\"\nimport {\n  NumberField,\n  NumberFieldContent,\n  NumberFieldDecrement,\n  NumberFieldIncrement,\n  NumberFieldInput,\n} from \"@/ui/number-field\"\n</script>\n\n<template>\n  <NumberField\n    id=\"percent\"\n    :default-value=\"0.05\"\n    :step=\"0.01\"\n    :format-options=\"{\n      style: 'percent',\n    }\"\n  >\n    <Label for=\"percent\">Percent</Label>\n    <NumberFieldContent>\n      <NumberFieldDecrement />\n      <NumberFieldInput />\n      <NumberFieldIncrement />\n    </NumberFieldContent>\n  </NumberField>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-menu-radio-group",
+  "title": "Dropdown Menu Radio Group",
+  "registryDependencies": [
+    "button",
+    "dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/dropdown-menu-radio-group.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as DropdownMenu from \"$lib/registry/ui/dropdown-menu/index.js\"\n\n  let position = $state(\"bottom\")\n</script>\n\n<DropdownMenu.Root>\n  <DropdownMenu.Trigger>\n    {#snippet child({ props })}\n      <Button {...props} variant=\"outline\">Open</Button>\n    {/snippet}\n  </DropdownMenu.Trigger>\n  <DropdownMenu.Content class=\"w-56\">\n    <DropdownMenu.Group>\n      <DropdownMenu.Label>Panel Position</DropdownMenu.Label>\n      <DropdownMenu.Separator />\n      <DropdownMenu.RadioGroup bind:value={position}>\n        <DropdownMenu.RadioItem value=\"top\">Top</DropdownMenu.RadioItem>\n        <DropdownMenu.RadioItem value=\"bottom\">Bottom</DropdownMenu.RadioItem>\n        <DropdownMenu.RadioItem value=\"right\">Right</DropdownMenu.RadioItem>\n      </DropdownMenu.RadioGroup>\n    </DropdownMenu.Group>\n  </DropdownMenu.Content>\n</DropdownMenu.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

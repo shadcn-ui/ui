@@ -1,0 +1,44 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-example",
+  "title": "Toggle",
+  "dependencies": [
+    "lucide-vue-next"
+  ],
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/toggle/ToggleDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Toggle } from \"@/ui/toggle\"\nimport { Bold } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <Toggle aria-label=\"Toggle bold\">\n    <Bold class=\"h-4 w-4\" />\n  </Toggle>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/toggle/ToggleDisabledDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Toggle } from \"@/ui/toggle\"\nimport { Underline } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <Toggle aria-label=\"Toggle underline\" disabled>\n    <Underline class=\"h-4 w-4\" />\n  </Toggle>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/toggle/ToggleLargeDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Toggle } from \"@/ui/toggle\"\nimport { Italic } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <Toggle size=\"lg\" aria-label=\"Toggle italic\">\n    <Italic />\n  </Toggle>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/toggle/ToggleOutlineDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Toggle } from \"@/ui/toggle\"\nimport { Bold } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <Toggle variant=\"outline\" aria-label=\"Toggle bold\">\n    <Bold />\n  </Toggle>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/toggle/ToggleSmallDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Toggle } from \"@/ui/toggle\"\nimport { Italic } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <Toggle size=\"sm\" aria-label=\"Toggle italic\">\n    <Italic />\n  </Toggle>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/toggle/ToggleTextDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Toggle } from \"@/ui/toggle\"\nimport { Italic } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <Toggle aria-label=\"Toggle italic\">\n    <Italic />\n    Italic\n  </Toggle>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

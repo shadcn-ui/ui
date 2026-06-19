@@ -1,0 +1,44 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-example",
+  "title": "Badge",
+  "dependencies": [
+    "lucide-vue-next"
+  ],
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/badge/BadgeDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Badge } from \"@/ui/badge\"\nimport { BadgeCheckIcon } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <div class=\"flex flex-col items-center gap-2\">\n    <div class=\"flex w-full flex-wrap gap-2\">\n      <Badge>Badge</Badge>\n      <Badge variant=\"secondary\"> Secondary </Badge>\n      <Badge variant=\"destructive\"> Destructive </Badge>\n      <Badge variant=\"warning\"> Warning </Badge>\n      <Badge variant=\"outline\"> Outline </Badge>\n    </div>\n    <div class=\"flex w-full flex-wrap gap-2\">\n      <Badge\n        variant=\"secondary\"\n        class=\"bg-blue-500 text-white dark:bg-blue-600\"\n      >\n        <BadgeCheckIcon />\n        Verified\n      </Badge>\n      <Badge class=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\">\n        8\n      </Badge>\n      <Badge\n        class=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\"\n        variant=\"destructive\"\n      >\n        99\n      </Badge>\n      <Badge\n        class=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\"\n        variant=\"outline\"\n      >\n        20+\n      </Badge>\n    </div>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/badge/BadgeDestructive.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Badge } from \"@/ui/badge\"\n</script>\n\n<template>\n  <Badge variant=\"destructive\"> Destructive </Badge>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/badge/BadgeOutline.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Badge } from \"@/ui/badge\"\n</script>\n\n<template>\n  <Badge variant=\"outline\"> Outline </Badge>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/badge/BadgeSecondary.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Badge } from \"@/ui/badge\"\n</script>\n\n<template>\n  <Badge variant=\"secondary\"> Secondary </Badge>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/badge/BadgeStatus.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Badge } from \"@/ui/badge\"\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-2\">\n    <Badge variant=\"success\"> Success </Badge>\n    <Badge variant=\"info\"> Info </Badge>\n    <Badge variant=\"warning\"> Warning </Badge>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/badge/BadgeSolid.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Badge } from \"@/ui/badge\"\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-2\">\n    <Badge variant=\"success-solid\"> Success </Badge>\n    <Badge variant=\"warning-solid\"> Warning </Badge>\n    <Badge variant=\"info-solid\"> Info </Badge>\n    <Badge variant=\"error-solid\"> Error </Badge>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

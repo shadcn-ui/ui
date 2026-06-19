@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox-popover",
+  "title": "Combobox Popover",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "button",
+    "command",
+    "popover",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/combobox-popover.svelte",
+      "content": "<script lang=\"ts\">\n  import CircleIcon from \"@lucide/svelte/icons/circle\"\n  import CircleArrowUpIcon from \"@lucide/svelte/icons/circle-arrow-up\"\n  import CircleCheckIcon from \"@lucide/svelte/icons/circle-check\"\n  import CircleHelpIcon from \"@lucide/svelte/icons/circle-help\"\n  import CircleXIcon from \"@lucide/svelte/icons/circle-x\"\n  import { buttonVariants } from \"$lib/registry/ui/button/index.js\"\n  import * as Command from \"$lib/registry/ui/command/index.js\"\n  import * as Popover from \"$lib/registry/ui/popover/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import { useId } from \"bits-ui\"\n  import { tick, type Component } from \"svelte\"\n\n  type Status = {\n    value: string\n    label: string\n    icon: Component\n  }\n\n  const statuses: Status[] = [\n    {\n      value: \"backlog\",\n      label: \"Backlog\",\n      icon: CircleHelpIcon,\n    },\n    {\n      value: \"todo\",\n      label: \"Todo\",\n      icon: CircleIcon,\n    },\n    {\n      value: \"in progress\",\n      label: \"In Progress\",\n      icon: CircleArrowUpIcon,\n    },\n    {\n      value: \"done\",\n      label: \"Done\",\n      icon: CircleCheckIcon,\n    },\n    {\n      value: \"canceled\",\n      label: \"Canceled\",\n      icon: CircleXIcon,\n    },\n  ]\n\n  let open = $state(false)\n  let value = $state(\"\")\n\n  const selectedStatus = $derived(statuses.find((s) => s.value === value))\n\n  // We want to refocus the trigger button when the user selects\n  // an item from the list so users can continue navigating the\n  // rest of the form with the keyboard.\n  function closeAndFocusTrigger(triggerId: string) {\n    open = false\n    tick().then(() => {\n      document.getElementById(triggerId)?.focus()\n    })\n  }\n  const triggerId = useId()\n</script>\n\n<div class=\"flex items-center space-x-4\">\n  <p class=\"text-muted-foreground text-sm\">Status</p>\n  <Popover.Root bind:open>\n    <Popover.Trigger\n      id={triggerId}\n      class={buttonVariants({\n        variant: \"outline\",\n        size: \"sm\",\n        class: \"w-[150px] justify-start\",\n      })}\n    >\n      {#if selectedStatus}\n        {@const Icon = selectedStatus.icon}\n        <Icon class=\"me-2 size-4 shrink-0\" />\n        {selectedStatus.label}\n      {:else}\n        + Set status\n      {/if}\n    </Popover.Trigger>\n    <Popover.Content class=\"w-[200px] p-0\" side=\"right\" align=\"start\">\n      <Command.Root>\n        <Command.Input placeholder=\"Change status...\" />\n        <Command.List>\n          <Command.Empty>No results found.</Command.Empty>\n          <Command.Group>\n            {#each statuses as status (status.value)}\n              <Command.Item\n                value={status.value}\n                onSelect={() => {\n                  value = status.value\n                  closeAndFocusTrigger(triggerId)\n                }}\n              >\n                {@const Icon = status.icon}\n                <Icon\n                  class={cn(\n                    \"me-2 size-4\",\n                    status.value !== selectedStatus?.value &&\n                      \"text-foreground/40\"\n                  )}\n                />\n\n                <span>\n                  {status.label}\n                </span>\n              </Command.Item>\n            {/each}\n          </Command.Group>\n        </Command.List>\n      </Command.Root>\n    </Popover.Content>\n  </Popover.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

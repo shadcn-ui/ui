@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-demo",
+  "title": "Input Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/input-demo.gts",
+      "content": "import { Input } from '@/ui/input';\n\n<template><Input placeholder=\"Email\" type=\"email\" /></template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

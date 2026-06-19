@@ -1,16 +1,11 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 
-import directory from "@/registry/directory.json"
+import { buildRegistriesPayload } from "@/lib/force-ui-registries"
 
-export const dynamic = "force-static"
+export const dynamic = "force-dynamic"
 
-export async function GET() {
-  const registries = directory.map(({ name, homepage, url, description }) => ({
-    name,
-    homepage,
-    url,
-    description,
-  }))
-
-  return NextResponse.json(registries)
+export async function GET(request: NextRequest) {
+  return NextResponse.json(
+    buildRegistriesPayload(request.nextUrl.origin, "legacy")
+  )
 }

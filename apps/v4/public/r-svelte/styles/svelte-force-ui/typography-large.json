@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-large",
+  "title": "Typography Large",
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/typography-large.svelte",
+      "content": "<div class=\"text-lg font-semibold\">Are you sure absolutely sure?</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

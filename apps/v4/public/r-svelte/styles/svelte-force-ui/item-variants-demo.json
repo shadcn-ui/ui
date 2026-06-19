@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-variants-demo",
+  "title": "Item Variants Demo",
+  "registryDependencies": [
+    "button",
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/item-variants-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Item from \"$lib/registry/ui/item/index.js\"\n</script>\n\n<div class=\"flex flex-col gap-6\">\n  <Item.Root>\n    <Item.Content>\n      <Item.Title>Default Variant</Item.Title>\n      <Item.Description>\n        Standard styling with subtle background and borders.\n      </Item.Description>\n    </Item.Content>\n    <Item.Actions>\n      <Button variant=\"outline\" size=\"sm\">Open</Button>\n    </Item.Actions>\n  </Item.Root>\n  <Item.Root variant=\"outline\">\n    <Item.Content>\n      <Item.Title>Outline Variant</Item.Title>\n      <Item.Description>\n        Outlined style with clear borders and transparent background.\n      </Item.Description>\n    </Item.Content>\n    <Item.Actions>\n      <Button variant=\"outline\" size=\"sm\">Open</Button>\n    </Item.Actions>\n  </Item.Root>\n  <Item.Root variant=\"muted\">\n    <Item.Content>\n      <Item.Title>Muted Variant</Item.Title>\n      <Item.Description>\n        Subdued appearance with muted colors for secondary content.\n      </Item.Description>\n    </Item.Content>\n    <Item.Actions>\n      <Button variant=\"outline\" size=\"sm\">Open</Button>\n    </Item.Actions>\n  </Item.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

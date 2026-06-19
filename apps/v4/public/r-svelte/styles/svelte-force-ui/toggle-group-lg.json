@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-group-lg",
+  "title": "Toggle Group Lg",
+  "registryDependencies": [
+    "toggle-group"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/toggle-group-lg.svelte",
+      "content": "<script lang=\"ts\">\n  import BoldIcon from \"@lucide/svelte/icons/bold\"\n  import ItalicIcon from \"@lucide/svelte/icons/italic\"\n  import UnderlineIcon from \"@lucide/svelte/icons/underline\"\n  import * as ToggleGroup from \"$lib/registry/ui/toggle-group/index.js\"\n</script>\n\n<ToggleGroup.Root size=\"lg\" type=\"multiple\">\n  <ToggleGroup.Item value=\"bold\" aria-label=\"Toggle bold\">\n    <BoldIcon class=\"size-4\" />\n  </ToggleGroup.Item>\n  <ToggleGroup.Item value=\"italic\" aria-label=\"Toggle italic\">\n    <ItalicIcon class=\"size-4\" />\n  </ToggleGroup.Item>\n  <ToggleGroup.Item value=\"strikethrough\" aria-label=\"Toggle strikethrough\">\n    <UnderlineIcon class=\"size-4\" />\n  </ToggleGroup.Item>\n</ToggleGroup.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

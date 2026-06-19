@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-picker-demo",
+  "title": "Date Picker Demo",
+  "dependencies": [
+    "@internationalized/date"
+  ],
+  "registryDependencies": [
+    "button",
+    "calendar",
+    "popover",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/date-picker-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import {\n    DateFormatter,\n    getLocalTimeZone,\n    type DateValue,\n  } from \"@internationalized/date\"\n  import CalendarIcon from \"@lucide/svelte/icons/calendar\"\n  import { buttonVariants } from \"$lib/registry/ui/button/index.js\"\n  import { Calendar } from \"$lib/registry/ui/calendar/index.js\"\n  import * as Popover from \"$lib/registry/ui/popover/index.js\"\n  import { cn } from \"$lib/utils.js\"\n\n  const df = new DateFormatter(\"en-US\", {\n    dateStyle: \"long\",\n  })\n\n  let value = $state<DateValue | undefined>()\n  let contentRef = $state<HTMLElement | null>(null)\n</script>\n\n<Popover.Root>\n  <Popover.Trigger\n    class={cn(\n      buttonVariants({\n        variant: \"outline\",\n        class: \"w-[280px] justify-start text-start font-normal\",\n      }),\n      !value && \"text-muted-foreground\"\n    )}\n  >\n    <CalendarIcon />\n    {value ? df.format(value.toDate(getLocalTimeZone())) : \"Pick a date\"}\n  </Popover.Trigger>\n  <Popover.Content bind:ref={contentRef} class=\"w-auto p-0\">\n    <Calendar type=\"single\" bind:value captionLayout=\"dropdown\" />\n  </Popover.Content>\n</Popover.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

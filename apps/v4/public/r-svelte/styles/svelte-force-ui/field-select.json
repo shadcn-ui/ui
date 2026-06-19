@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-select",
+  "title": "Field Select",
+  "registryDependencies": [
+    "field",
+    "select"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/field-select.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Field from \"$lib/registry/ui/field/index.js\"\n  import * as Select from \"$lib/registry/ui/select/index.js\"\n\n  let department = $state<string>()\n\n  const departments = [\n    { value: \"engineering\", label: \"Engineering\" },\n    { value: \"design\", label: \"Design\" },\n    { value: \"marketing\", label: \"Marketing\" },\n    { value: \"sales\", label: \"Sales\" },\n    { value: \"support\", label: \"Customer Support\" },\n    { value: \"hr\", label: \"Human Resources\" },\n    { value: \"finance\", label: \"Finance\" },\n    { value: \"operations\", label: \"Operations\" },\n  ]\n\n  const departmentLabel = $derived(\n    departments.find((d) => d.value === department)?.label ??\n      \"Choose department\"\n  )\n</script>\n\n<div class=\"w-full max-w-md\">\n  <Field.Field>\n    <Field.Label for=\"department\">Department</Field.Label>\n    <Select.Root type=\"single\" bind:value={department}>\n      <Select.Trigger id=\"department\">\n        {departmentLabel}\n      </Select.Trigger>\n      <Select.Content>\n        {#each departments as department (department.value)}\n          <Select.Item {...department} />\n        {/each}\n      </Select.Content>\n    </Select.Root>\n    <Field.Description\n      >Select your department or area of work.</Field.Description\n    >\n  </Field.Field>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

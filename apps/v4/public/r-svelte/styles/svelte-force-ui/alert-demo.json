@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-demo",
+  "title": "Alert Demo",
+  "registryDependencies": [
+    "alert"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/alert-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import AlertCircleIcon from \"@lucide/svelte/icons/alert-circle\"\n  import CheckCircle2Icon from \"@lucide/svelte/icons/check-circle-2\"\n  import PopcornIcon from \"@lucide/svelte/icons/popcorn\"\n  import * as Alert from \"$lib/registry/ui/alert/index.js\"\n</script>\n\n<div class=\"grid w-full max-w-xl items-start gap-4\">\n  <Alert.Root>\n    <CheckCircle2Icon />\n    <Alert.Title>Success! Your changes have been saved</Alert.Title>\n    <Alert.Description\n      >This is an alert with icon, title and description.</Alert.Description\n    >\n  </Alert.Root>\n  <Alert.Root>\n    <PopcornIcon />\n    <Alert.Title\n      >This Alert has a title and an icon. No description.</Alert.Title\n    >\n  </Alert.Root>\n  <Alert.Root variant=\"destructive\">\n    <AlertCircleIcon />\n    <Alert.Title>Unable to process your payment.</Alert.Title>\n    <Alert.Description>\n      <p>Please verify your billing information and try again.</p>\n      <ul class=\"list-inside list-disc text-sm\">\n        <li>Check your card details</li>\n        <li>Ensure sufficient funds</li>\n        <li>Verify billing address</li>\n      </ul>\n    </Alert.Description>\n  </Alert.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

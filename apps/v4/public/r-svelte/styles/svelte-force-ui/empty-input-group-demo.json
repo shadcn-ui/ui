@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-input-group-demo",
+  "title": "Empty Input Group Demo",
+  "registryDependencies": [
+    "empty",
+    "input-group",
+    "kbd"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/empty-input-group-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import SearchIcon from \"@lucide/svelte/icons/search\"\n  import * as Empty from \"$lib/registry/ui/empty/index.js\"\n  import * as InputGroup from \"$lib/registry/ui/input-group/index.js\"\n  import * as Kbd from \"$lib/registry/ui/kbd/index.js\"\n</script>\n\n<Empty.Root>\n  <Empty.Header>\n    <Empty.Title>404 - Not Found</Empty.Title>\n    <Empty.Description>\n      The page you're looking for doesn't exist. Try searching for what you need\n      below.\n    </Empty.Description>\n  </Empty.Header>\n  <Empty.Content>\n    <InputGroup.Root class=\"sm:w-3/4\">\n      <InputGroup.Input placeholder=\"Try searching for pages...\" />\n      <InputGroup.Addon>\n        <SearchIcon />\n      </InputGroup.Addon>\n      <InputGroup.Addon align=\"inline-end\">\n        <Kbd.Root>/</Kbd.Root>\n      </InputGroup.Addon>\n    </InputGroup.Root>\n    <Empty.Description>\n      Need help? <a href=\"#/\">Contact support</a>\n    </Empty.Description>\n  </Empty.Content>\n</Empty.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-example",
+  "title": "Avatar",
+  "dependencies": [],
+  "registryDependencies": [
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/avatar/AvatarDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/ui/avatar\"\n</script>\n\n<template>\n  <div class=\"flex flex-row flex-wrap items-center gap-12\">\n    <Avatar>\n      <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n    <Avatar>\n      <AvatarImage src=\"https://github.com/evilrabbit.png\" alt=\"@evilrabbit\" />\n      <AvatarFallback>ER</AvatarFallback>\n    </Avatar>\n    <div\n      class=\"flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:grayscale\"\n    >\n      <Avatar>\n        <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>\n      <Avatar>\n        <AvatarImage src=\"https://github.com/leerob.png\" alt=\"@leerob\" />\n        <AvatarFallback>LR</AvatarFallback>\n      </Avatar>\n      <Avatar>\n        <AvatarImage\n          src=\"https://github.com/evilrabbit.png\"\n          alt=\"@evilrabbit\"\n        />\n        <AvatarFallback>ER</AvatarFallback>\n      </Avatar>\n    </div>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

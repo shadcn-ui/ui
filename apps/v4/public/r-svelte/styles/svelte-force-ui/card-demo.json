@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-demo",
+  "title": "Card Demo",
+  "registryDependencies": [
+    "button",
+    "card",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/card-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Card from \"$lib/registry/ui/card/index.js\"\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n  import { Label } from \"$lib/registry/ui/label/index.js\"\n</script>\n\n<Card.Root class=\"-my-4 w-full max-w-sm\">\n  <Card.Header>\n    <Card.Title>Login to your account</Card.Title>\n    <Card.Description\n      >Enter your email below to login to your account</Card.Description\n    >\n    <Card.Action>\n      <Button variant=\"link\">Sign Up</Button>\n    </Card.Action>\n  </Card.Header>\n  <Card.Content>\n    <form>\n      <div class=\"flex flex-col gap-6\">\n        <div class=\"grid gap-2\">\n          <Label for=\"email\">Email</Label>\n          <Input id=\"email\" type=\"email\" placeholder=\"m@example.com\" required />\n        </div>\n        <div class=\"grid gap-2\">\n          <div class=\"flex items-center\">\n            <Label for=\"password\">Password</Label>\n            <a\n              href=\"##\"\n              class=\"ms-auto inline-block text-sm underline-offset-4 hover:underline\"\n            >\n              Forgot your password?\n            </a>\n          </div>\n          <Input id=\"password\" type=\"password\" required />\n        </div>\n      </div>\n    </form>\n  </Card.Content>\n  <Card.Footer class=\"flex-col gap-2\">\n    <Button type=\"submit\" class=\"w-full\">Login</Button>\n    <Button variant=\"outline\" class=\"w-full\">Login with Google</Button>\n  </Card.Footer>\n</Card.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

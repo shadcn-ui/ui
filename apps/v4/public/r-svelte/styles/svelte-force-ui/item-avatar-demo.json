@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-avatar-demo",
+  "title": "Item Avatar Demo",
+  "registryDependencies": [
+    "avatar",
+    "button",
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/item-avatar-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import Plus from \"@lucide/svelte/icons/plus\"\n  import * as Avatar from \"$lib/registry/ui/avatar/index.js\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Item from \"$lib/registry/ui/item/index.js\"\n</script>\n\n<div class=\"flex w-full max-w-lg flex-col gap-6\">\n  <Item.Root variant=\"outline\">\n    <Item.Media>\n      <Avatar.Root class=\"size-10\">\n        <Avatar.Image src=\"https://github.com/evilrabbit.png\" />\n        <Avatar.Fallback>ER</Avatar.Fallback>\n      </Avatar.Root>\n    </Item.Media>\n    <Item.Content>\n      <Item.Title>Evil Rabbit</Item.Title>\n      <Item.Description>Last seen 5 months ago</Item.Description>\n    </Item.Content>\n    <Item.Actions>\n      <Button\n        size=\"icon\"\n        variant=\"outline\"\n        class=\"rounded-full\"\n        aria-label=\"Invite\"\n      >\n        <Plus />\n      </Button>\n    </Item.Actions>\n  </Item.Root>\n  <Item.Root variant=\"outline\">\n    <Item.Media>\n      <div\n        class=\"*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale\"\n      >\n        <Avatar.Root class=\"hidden sm:flex\">\n          <Avatar.Image src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n          <Avatar.Fallback>CN</Avatar.Fallback>\n        </Avatar.Root>\n        <Avatar.Root class=\"hidden sm:flex\">\n          <Avatar.Image\n            src=\"https://github.com/maxleiter.png\"\n            alt=\"@maxleiter\"\n          />\n          <Avatar.Fallback>LR</Avatar.Fallback>\n        </Avatar.Root>\n        <Avatar.Root>\n          <Avatar.Image\n            src=\"https://github.com/evilrabbit.png\"\n            alt=\"@evilrabbit\"\n          />\n          <Avatar.Fallback>ER</Avatar.Fallback>\n        </Avatar.Root>\n      </div>\n    </Item.Media>\n    <Item.Content>\n      <Item.Title>No Team Members</Item.Title>\n      <Item.Description\n        >Invite your team to collaborate on this project.</Item.Description\n      >\n    </Item.Content>\n    <Item.Actions>\n      <Button size=\"sm\" variant=\"outline\">Invite</Button>\n    </Item.Actions>\n  </Item.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

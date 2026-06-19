@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-size-demo",
+  "title": "Item Size Demo",
+  "registryDependencies": [
+    "button",
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/item-size-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import BadgeCheckIcon from \"@lucide/svelte/icons/badge-check\"\n  import ChevronRightIcon from \"@lucide/svelte/icons/chevron-right\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Item from \"$lib/registry/ui/item/index.js\"\n</script>\n\n<div class=\"flex w-full max-w-md flex-col gap-6\">\n  <Item.Root variant=\"outline\">\n    <Item.Content>\n      <Item.Title>Basic Item</Item.Title>\n      <Item.Description\n        >A simple item with title and description.</Item.Description\n      >\n    </Item.Content>\n    <Item.Actions>\n      <Button variant=\"outline\" size=\"sm\">Action</Button>\n    </Item.Actions>\n  </Item.Root>\n  <Item.Root variant=\"outline\" size=\"sm\">\n    {#snippet child({ props })}\n      <a href=\"#/\" {...props}>\n        <Item.Media>\n          <BadgeCheckIcon class=\"size-5\" />\n        </Item.Media>\n        <Item.Content>\n          <Item.Title>Your profile has been verified.</Item.Title>\n        </Item.Content>\n        <Item.Actions>\n          <ChevronRightIcon class=\"size-4\" />\n        </Item.Actions>\n      </a>\n    {/snippet}\n  </Item.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

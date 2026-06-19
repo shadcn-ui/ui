@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-invalid",
+  "title": "Input Invalid",
+  "registryDependencies": [
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-invalid.svelte",
+      "content": "<script lang=\"ts\">\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n</script>\n\n<Input\n  aria-invalid\n  type=\"email\"\n  placeholder=\"email\"\n  value=\"shadcn@example\"\n  class=\"max-w-sm\"\n/>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

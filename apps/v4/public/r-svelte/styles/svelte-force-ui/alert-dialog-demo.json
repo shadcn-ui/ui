@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-dialog-demo",
+  "title": "Alert Dialog Demo",
+  "registryDependencies": [
+    "alert-dialog",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/alert-dialog-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as AlertDialog from \"$lib/registry/ui/alert-dialog/index.js\"\n  import { buttonVariants } from \"$lib/registry/ui/button/index.js\"\n</script>\n\n<AlertDialog.Root>\n  <AlertDialog.Trigger class={buttonVariants({ variant: \"outline\" })}>\n    Show Dialog\n  </AlertDialog.Trigger>\n  <AlertDialog.Content>\n    <AlertDialog.Header>\n      <AlertDialog.Title>Are you absolutely sure?</AlertDialog.Title>\n      <AlertDialog.Description>\n        This action cannot be undone. This will permanently delete your account\n        and remove your data from our servers.\n      </AlertDialog.Description>\n    </AlertDialog.Header>\n    <AlertDialog.Footer>\n      <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>\n      <AlertDialog.Action>Continue</AlertDialog.Action>\n    </AlertDialog.Footer>\n  </AlertDialog.Content>\n</AlertDialog.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

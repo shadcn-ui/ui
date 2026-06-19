@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-otp-invalid",
+  "title": "Input Otp Invalid",
+  "registryDependencies": [
+    "input-otp"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-otp-invalid.svelte",
+      "content": "<script lang=\"ts\">\n  import * as InputOTP from \"$lib/registry/ui/input-otp/index.js\"\n</script>\n\n<InputOTP.Root maxlength={6}>\n  {#snippet children({ cells })}\n    <InputOTP.Group>\n      {#each cells.slice(0, 3) as cell (cell)}\n        <InputOTP.Slot aria-invalid {cell} />\n      {/each}\n    </InputOTP.Group>\n    <InputOTP.Separator />\n    <InputOTP.Group>\n      {#each cells.slice(3, 6) as cell (cell)}\n        <InputOTP.Slot aria-invalid {cell} />\n      {/each}\n    </InputOTP.Group>\n  {/snippet}\n</InputOTP.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

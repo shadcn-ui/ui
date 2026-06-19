@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-popover-demo",
+  "title": "Button Group Popover Demo",
+  "registryDependencies": [
+    "button",
+    "button-group",
+    "popover",
+    "separator",
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/button-group-popover-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import Bot from \"@lucide/svelte/icons/bot\"\n  import ChevronDown from \"@lucide/svelte/icons/chevron-down\"\n  import * as ButtonGroup from \"$lib/registry/ui/button-group/index.js\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Popover from \"$lib/registry/ui/popover/index.js\"\n  import { Separator } from \"$lib/registry/ui/separator/index.js\"\n  import { Textarea } from \"$lib/registry/ui/textarea/index.js\"\n</script>\n\n<ButtonGroup.Root>\n  <Button variant=\"outline\" size=\"sm\">\n    <Bot />\n    Copilot\n  </Button>\n  <Popover.Root>\n    <Popover.Trigger>\n      {#snippet child({ props })}\n        <Button\n          {...props}\n          variant=\"outline\"\n          size=\"icon-sm\"\n          aria-label=\"Open Popover\"\n        >\n          <ChevronDown />\n        </Button>\n      {/snippet}\n    </Popover.Trigger>\n    <Popover.Content align=\"end\" class=\"rounded-xl p-0 text-sm\">\n      <div class=\"px-4 py-3\">\n        <div class=\"text-sm font-medium\">Agent Tasks</div>\n      </div>\n      <Separator />\n      <div class=\"p-4 text-sm *:[p:not(:last-child)]:mb-2\">\n        <Textarea\n          placeholder=\"Describe your task in natural language.\"\n          class=\"mb-4 resize-none\"\n        />\n        <p class=\"font-medium\">Start a new task with Copilot</p>\n        <p class=\"text-muted-foreground\">\n          Describe your task in natural language. Copilot will work in the\n          background and open a pull request for your review.\n        </p>\n      </div>\n    </Popover.Content>\n  </Popover.Root>\n</ButtonGroup.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

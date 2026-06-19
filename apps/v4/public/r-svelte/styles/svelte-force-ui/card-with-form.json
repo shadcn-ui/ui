@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-with-form",
+  "title": "Card With Form",
+  "registryDependencies": [
+    "button",
+    "card",
+    "input",
+    "label",
+    "select"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/card-with-form.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Card from \"$lib/registry/ui/card/index.js\"\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n  import { Label } from \"$lib/registry/ui/label/index.js\"\n  import * as Select from \"$lib/registry/ui/select/index.js\"\n\n  const frameworks = [\n    {\n      value: \"sveltekit\",\n      label: \"SvelteKit\",\n    },\n    {\n      value: \"next\",\n      label: \"Next.js\",\n    },\n    {\n      value: \"astro\",\n      label: \"Astro\",\n    },\n    {\n      value: \"nuxt\",\n      label: \"Nuxt.js\",\n    },\n  ]\n\n  let framework = $state(\"\")\n\n  const selectedFramework = $derived(\n    frameworks.find((f) => f.value === framework)?.label ?? \"Select a framework\"\n  )\n</script>\n\n<Card.Root class=\"w-[350px]\">\n  <Card.Header>\n    <Card.Title>Create project</Card.Title>\n    <Card.Description>Deploy your new project in one-click.</Card.Description>\n  </Card.Header>\n  <Card.Content>\n    <form>\n      <div class=\"grid w-full items-center gap-4\">\n        <div class=\"flex flex-col space-y-1.5\">\n          <Label for=\"name\">Name</Label>\n          <Input id=\"name\" placeholder=\"Name of your project\" />\n        </div>\n        <div class=\"flex flex-col space-y-1.5\">\n          <Label for=\"framework\">Framework</Label>\n          <Select.Root type=\"single\" bind:value={framework}>\n            <Select.Trigger id=\"framework\">\n              {selectedFramework}\n            </Select.Trigger>\n            <Select.Content>\n              {#each frameworks as { value, label } (value)}\n                <Select.Item {value} {label} />\n              {/each}\n            </Select.Content>\n          </Select.Root>\n        </div>\n      </div>\n    </form>\n  </Card.Content>\n  <Card.Footer class=\"flex justify-between\">\n    <Button variant=\"outline\">Cancel</Button>\n    <Button>Deploy</Button>\n  </Card.Footer>\n</Card.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

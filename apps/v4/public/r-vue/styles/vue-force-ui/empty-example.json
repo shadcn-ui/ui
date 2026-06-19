@@ -1,0 +1,48 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-example",
+  "title": "Empty",
+  "dependencies": [
+    "lucide-vue-next"
+  ],
+  "registryDependencies": [
+    "avatar",
+    "button",
+    "empty",
+    "input-group",
+    "kbd"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/empty/EmptyAvatarDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/ui/avatar\"\nimport { Button } from \"@/ui/button\"\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/ui/empty\"\n</script>\n\n<template>\n  <Empty>\n    <EmptyHeader>\n      <EmptyMedia variant=\"default\">\n        <Avatar class=\"size-12\">\n          <AvatarImage\n            src=\"https://github.com/zernonia.png\"\n            class=\"grayscale\"\n          />\n          <AvatarFallback>ZN</AvatarFallback>\n        </Avatar>\n      </EmptyMedia>\n      <EmptyTitle>User Offline</EmptyTitle>\n      <EmptyDescription>\n        This user is currently offline. You can leave a message to notify them\n        or try again later.\n      </EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <Button size=\"sm\"> Leave Message </Button>\n    </EmptyContent>\n  </Empty>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/empty/EmptyAvatarGroupDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/ui/avatar\"\nimport { Button } from \"@/ui/button\"\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/ui/empty\"\nimport { Plus } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <Empty>\n    <EmptyHeader>\n      <EmptyMedia variant=\"default\">\n        <div\n          class=\"flex -space-x-2 *:size-12 *:ring-2 *:ring-background *:grayscale\"\n        >\n          <Avatar>\n            <AvatarImage\n              src=\"https://github.com/ace-of-aces.png\"\n              alt=\"@ace-of-aces\"\n            />\n            <AvatarFallback>AA</AvatarFallback>\n          </Avatar>\n          <Avatar>\n            <AvatarImage\n              src=\"https://github.com/sadeghbarati.png\"\n              alt=\"@sadeghbarati\"\n            />\n            <AvatarFallback>SB</AvatarFallback>\n          </Avatar>\n          <Avatar>\n            <AvatarImage\n              src=\"https://github.com/zernonia.png\"\n              alt=\"@zernonia\"\n            />\n            <AvatarFallback>ZN</AvatarFallback>\n          </Avatar>\n        </div>\n      </EmptyMedia>\n      <EmptyTitle>No Team Members</EmptyTitle>\n      <EmptyDescription>\n        Invite your team to collaborate on this project.\n      </EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <Button size=\"sm\">\n        <Plus />\n        Invite Members\n      </Button>\n    </EmptyContent>\n  </Empty>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/empty/EmptyBackgroundDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/ui/empty\"\nimport { Bell, RefreshCcw } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <Empty class=\"h-full bg-gradient-to-b from-muted/50 from-30% to-background\">\n    <EmptyHeader>\n      <EmptyMedia variant=\"icon\">\n        <Bell />\n      </EmptyMedia>\n      <EmptyTitle>No Notifications</EmptyTitle>\n      <EmptyDescription>\n        You're all caught up. New notifications will appear here.\n      </EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <Button variant=\"outline\" size=\"sm\">\n        <RefreshCcw />\n        Refresh\n      </Button>\n    </EmptyContent>\n  </Empty>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/empty/EmptyDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/ui/empty\"\nimport { ArrowUpRightIcon, FolderCode } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <Empty>\n    <EmptyHeader>\n      <EmptyMedia variant=\"icon\">\n        <FolderCode />\n      </EmptyMedia>\n      <EmptyTitle>No Projects Yet</EmptyTitle>\n      <EmptyDescription>\n        You haven't created any projects yet. Get started by creating your first\n        project.\n      </EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <div class=\"flex gap-2\">\n        <Button>Create Project</Button>\n        <Button variant=\"outline\"> Import Project </Button>\n      </div>\n    </EmptyContent>\n    <Button variant=\"link\" as-child class=\"text-muted-foreground\" size=\"sm\">\n      <a href=\"#\"> Learn More <ArrowUpRightIcon /> </a>\n    </Button>\n  </Empty>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/empty/EmptyInputGroupDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyTitle,\n} from \"@/ui/empty\"\nimport { InputGroup, InputGroupAddon, InputGroupInput } from \"@/ui/input-group\"\nimport { Kbd } from \"@/ui/kbd\"\nimport { SearchIcon } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <Empty>\n    <EmptyHeader>\n      <EmptyTitle>404 - Not Found</EmptyTitle>\n      <EmptyDescription>\n        The page you're looking for doesn't exist. Try searching for what you\n        need below.\n      </EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <InputGroup class=\"sm:w-3/4\">\n        <InputGroupInput placeholder=\"Try searching for pages...\" />\n        <InputGroupAddon>\n          <SearchIcon />\n        </InputGroupAddon>\n        <InputGroupAddon align=\"inline-end\">\n          <Kbd>/</Kbd>\n        </InputGroupAddon>\n      </InputGroup>\n      <EmptyDescription>\n        Need help? <a href=\"#\">Contact support</a>\n      </EmptyDescription>\n    </EmptyContent>\n  </Empty>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/empty/EmptyOutlineDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/ui/empty\"\nimport { Cloud } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <Empty class=\"border border-dashed\">\n    <EmptyHeader>\n      <EmptyMedia variant=\"icon\">\n        <Cloud />\n      </EmptyMedia>\n      <EmptyTitle>Cloud Storage Empty</EmptyTitle>\n      <EmptyDescription>\n        Upload files to your cloud storage to access them anywhere.\n      </EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <Button variant=\"outline\" size=\"sm\"> Upload Files </Button>\n    </EmptyContent>\n  </Empty>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

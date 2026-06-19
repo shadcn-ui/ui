@@ -150,6 +150,55 @@ function getStyleCombination(styleName: string) {
   return STYLE_COMBINATIONS.find((style) => style.name === styleName) ?? null
 }
 
+type FrameworkRoot = {
+  id: "react" | "vue" | "svelte" | "ember"
+  dirName: string
+  baseNames: string[]
+  styleEntries: Array<{ name: string; label: string }>
+}
+
+const FRAMEWORK_ROOTS: FrameworkRoot[] = [
+  {
+    id: "react",
+    dirName: "r-react",
+    baseNames: ["radix", "base"],
+    styleEntries: [
+      { name: "radix-force-ui", label: "Force UI (Radix)" },
+      { name: "base-force-ui", label: "Force UI (Base)" },
+    ],
+  },
+  {
+    id: "vue",
+    dirName: "r-vue",
+    baseNames: ["vue"],
+    styleEntries: [{ name: "vue-force-ui", label: "Force UI (Vue)" }],
+  },
+  {
+    id: "svelte",
+    dirName: "r-svelte",
+    baseNames: ["svelte"],
+    styleEntries: [{ name: "svelte-force-ui", label: "Force UI (Svelte)" }],
+  },
+  {
+    id: "ember",
+    dirName: "r-ember",
+    baseNames: ["ember"],
+    styleEntries: [{ name: "ember-force-ui", label: "Force UI (Ember)" }],
+  },
+]
+
+function getFrameworkRootOutputDir(root: FrameworkRoot) {
+  return path.join(process.cwd(), `public/${root.dirName}`)
+}
+
+function getFrameworkRootsForStyleNames(styleNames: Iterable<string>) {
+  const targetStyleNames = new Set(styleNames)
+
+  return FRAMEWORK_ROOTS.filter((root) =>
+    root.styleEntries.some((style) => targetStyleNames.has(style.name))
+  )
+}
+
 type BuildOptions = {
   examples: boolean
   indexes: boolean
@@ -643,6 +692,9 @@ async function runFullBuild() {
   console.log("\n🔄 Building RTL styles...")
   await buildRtlStyles()
 
+  console.log("\n🌲 Building framework registry roots...")
+  await buildFrameworkRoots()
+
   console.log("\n🧹 Cleaning up...")
   await cleanUpTemporaryFiles(stylesToBuild.map((style) => style.name))
   await saveTransformCache()
@@ -691,6 +743,9 @@ async function runIndexesBuild() {
 
   console.log("\n📦 Building public/r/index.json...")
   await buildIndex()
+
+  console.log("\n🌲 Building framework root indexes...")
+  await buildFrameworkRootIndexes()
 }
 
 async function runExamplesBuild() {
@@ -755,6 +810,21 @@ async function runTargetedRegistryBuild(target: "all" | string) {
       console.log(`   ✅ ${style.name}`)
     }
   )
+
+  const affectedRoots = getFrameworkRootsForStyleNames(
+    targetStyles.map((style) => style.name)
+  )
+
+  if (affectedRoots.length > 0) {
+    console.log("\n⚙️ Building public/r/config.json...")
+    await buildConfig()
+
+    console.log("\n🎨 Building public/r/colors...")
+    await buildColors()
+
+    console.log("\n🌲 Building framework registry roots...")
+    await buildFrameworkRoots(affectedRoots)
+  }
 
   console.log("\n🧹 Cleaning up...")
   await cleanUpTemporaryFiles(targetStyles.map((style) => style.name))
@@ -1301,6 +1371,13 @@ async function buildRegistryJsonFile(styleName: string) {
   )
   await writeIfChanged(registryJsonPath, fixedRegistryJson)
 
+  const styleIndex = fixedRegistry.items.filter((item) => item.type === "registry:ui")
+  const styleIndexPath = path.join(outputDir, "components.json")
+  await writeIfChanged(
+    styleIndexPath,
+    await formatGeneratedJson(styleIndex, styleIndexPath)
+  )
+
   const tempRegistryPath = path.join(
     process.cwd(),
     `registry-${styleName}.json`
@@ -1501,19 +1578,21 @@ async function buildRtlStyles(targetStyleNames?: Set<string>) {
   )
 }
 
-async function buildIndex() {
-  const baseUiRegistries = await Promise.all(
-    Array.from(BASES).map(async (base) => {
-      const { ui } = await import(
-        path.join(getBaseSrcDir(base.name), "ui/_registry.ts")
-      )
-      return { baseName: base.name, items: ui as RegistryItem[] }
-    })
-  )
+type IndexItem = Omit<RegistryItem, "meta"> & {
+  meta?: { links?: Record<string, RegistryItem["meta"]> }
+}
 
-  type IndexItem = Omit<RegistryItem, "meta"> & {
-    meta?: { links?: Record<string, RegistryItem["meta"]> }
-  }
+async function buildIndexPayload(baseNames: string[]) {
+  const baseUiRegistries = await Promise.all(
+    Array.from(BASES)
+      .filter((base) => baseNames.includes(base.name))
+      .map(async (base) => {
+        const { ui } = await import(
+          path.join(getBaseSrcDir(base.name), "ui/_registry.ts")
+        )
+        return { baseName: base.name, items: ui as RegistryItem[] }
+      })
+  )
 
   const componentMap = new Map<string, IndexItem>()
   for (const { baseName, items } of baseUiRegistries) {
@@ -1535,12 +1614,105 @@ async function buildIndex() {
     }
   }
 
-  const index = Array.from(componentMap.values()).sort((a, b) =>
+  return Array.from(componentMap.values()).sort((a, b) =>
     a.name.localeCompare(b.name)
   )
+}
 
+async function buildIndex() {
   const outputPath = path.join(process.cwd(), "public/r/index.json")
-  await writeIfChanged(outputPath, await formatGeneratedJson(index, outputPath))
+  await writeIfChanged(
+    outputPath,
+    await formatGeneratedJson(
+      await buildIndexPayload(Array.from(BASES).map((base) => base.name)),
+      outputPath
+    )
+  )
+}
+
+async function buildFrameworkRootIndexes(targetRoots = FRAMEWORK_ROOTS) {
+  await runWithConcurrency(targetRoots, COPY_CONCURRENCY, async (root) => {
+    const outputDir = getFrameworkRootOutputDir(root)
+    await fs.mkdir(outputDir, { recursive: true })
+
+    const outputPath = path.join(outputDir, "index.json")
+    await writeIfChanged(
+      outputPath,
+      await formatGeneratedJson(
+        await buildIndexPayload(root.baseNames),
+        outputPath
+      )
+    )
+  })
+}
+
+async function copyGeneratedFile(fromPath: string, toPath: string) {
+  const content = await fs.readFile(fromPath, "utf8")
+  await writeIfChanged(toPath, content)
+}
+
+async function buildFrameworkRootStylesIndex(root: FrameworkRoot) {
+  const stylesDir = path.join(getFrameworkRootOutputDir(root), "styles")
+  await fs.mkdir(stylesDir, { recursive: true })
+
+  const outputPath = path.join(stylesDir, "index.json")
+  await writeIfChanged(
+    outputPath,
+    await formatGeneratedJson(root.styleEntries, outputPath)
+  )
+}
+
+async function syncFrameworkRootStyles(root: FrameworkRoot) {
+  const stylesDir = path.join(getFrameworkRootOutputDir(root), "styles")
+  await fs.mkdir(stylesDir, { recursive: true })
+
+  const styleNames = new Set(root.styleEntries.map((style) => style.name))
+  const existingEntries = await readDirectoryEntries(stylesDir)
+
+  await Promise.all(
+    existingEntries.map(async (entry) => {
+      if (entry.name === "index.json") {
+        return
+      }
+
+      if (!styleNames.has(entry.name)) {
+        await rimraf(path.join(stylesDir, entry.name))
+      }
+    })
+  )
+
+  await runWithConcurrency(root.styleEntries, COPY_CONCURRENCY, async (style) => {
+    await syncDirectory({
+      fromDir: path.join(process.cwd(), "public/r/styles", style.name),
+      toDir: path.join(stylesDir, style.name),
+    })
+  })
+}
+
+async function buildFrameworkRoots(targetRoots = FRAMEWORK_ROOTS) {
+  await buildFrameworkRootIndexes(targetRoots)
+
+  await runWithConcurrency(targetRoots, COPY_CONCURRENCY, async (root) => {
+    const outputDir = getFrameworkRootOutputDir(root)
+    await fs.mkdir(outputDir, { recursive: true })
+
+    await Promise.all([
+      copyGeneratedFile(
+        path.join(process.cwd(), "public/r/config.json"),
+        path.join(outputDir, "config.json")
+      ),
+      syncDirectory({
+        fromDir: path.join(process.cwd(), "public/r/colors"),
+        toDir: path.join(outputDir, "colors"),
+      }),
+      syncDirectory({
+        fromDir: path.join(process.cwd(), "public/r/icons"),
+        toDir: path.join(outputDir, "icons"),
+      }),
+      buildFrameworkRootStylesIndex(root),
+      syncFrameworkRootStyles(root),
+    ])
+  })
 }
 
 async function readDirectoryEntries(dirPath: string) {

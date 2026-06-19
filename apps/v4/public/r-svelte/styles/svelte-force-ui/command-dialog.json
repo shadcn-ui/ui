@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "command-dialog",
+  "title": "Command Dialog",
+  "registryDependencies": [
+    "command"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/command-dialog.svelte",
+      "content": "<script lang=\"ts\">\n  import CalculatorIcon from \"@lucide/svelte/icons/calculator\"\n  import CalendarIcon from \"@lucide/svelte/icons/calendar\"\n  import CreditCardIcon from \"@lucide/svelte/icons/credit-card\"\n  import SettingsIcon from \"@lucide/svelte/icons/settings\"\n  import SmileIcon from \"@lucide/svelte/icons/smile\"\n  import UserIcon from \"@lucide/svelte/icons/user\"\n  import * as Command from \"$lib/registry/ui/command/index.js\"\n\n  let open = $state(false)\n\n  function handleKeydown(e: KeyboardEvent) {\n    if (e.key === \"j\" && (e.metaKey || e.ctrlKey)) {\n      e.preventDefault()\n      open = !open\n    }\n  }\n</script>\n\n<svelte:document onkeydown={handleKeydown} />\n\n<p class=\"text-muted-foreground text-sm\">\n  Press\n  <kbd\n    class=\"bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none\"\n  >\n    <span class=\"text-xs\">⌘</span>J\n  </kbd>\n</p>\n<Command.Dialog bind:open>\n  <Command.Input placeholder=\"Type a command or search...\" />\n  <Command.List>\n    <Command.Empty>No results found.</Command.Empty>\n    <Command.Group heading=\"Suggestions\">\n      <Command.Item>\n        <CalendarIcon class=\"me-2 size-4\" />\n        <span>Calendar</span>\n      </Command.Item>\n      <Command.Item>\n        <SmileIcon class=\"me-2 size-4\" />\n        <span>Search Emoji</span>\n      </Command.Item>\n      <Command.Item>\n        <CalculatorIcon class=\"me-2 size-4\" />\n        <span>Calculator</span>\n      </Command.Item>\n    </Command.Group>\n    <Command.Separator />\n    <Command.Group heading=\"Settings\">\n      <Command.Item>\n        <UserIcon class=\"me-2 size-4\" />\n        <span>Profile</span>\n        <Command.Shortcut>⌘P</Command.Shortcut>\n      </Command.Item>\n      <Command.Item>\n        <CreditCardIcon class=\"me-2 size-4\" />\n        <span>Billing</span>\n        <Command.Shortcut>⌘B</Command.Shortcut>\n      </Command.Item>\n      <Command.Item>\n        <SettingsIcon class=\"me-2 size-4\" />\n        <span>Settings</span>\n        <Command.Shortcut>⌘S</Command.Shortcut>\n      </Command.Item>\n    </Command.Group>\n  </Command.List>\n</Command.Dialog>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

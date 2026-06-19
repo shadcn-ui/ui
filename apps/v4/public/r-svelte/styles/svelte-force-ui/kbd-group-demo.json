@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd-group-demo",
+  "title": "Kbd Group Demo",
+  "registryDependencies": [
+    "kbd"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/kbd-group-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Kbd from \"$lib/registry/ui/kbd/index.js\"\n</script>\n\n<div class=\"flex flex-col items-center gap-4\">\n  <p class=\"text-muted-foreground text-sm\">\n    Use\n    <Kbd.Group>\n      <Kbd.Root>Ctrl + B</Kbd.Root>\n      <Kbd.Root>Ctrl + K</Kbd.Root>\n    </Kbd.Group>\n    to open the command palette\n  </p>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

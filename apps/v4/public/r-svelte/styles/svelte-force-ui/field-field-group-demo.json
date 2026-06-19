@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-field-group-demo",
+  "title": "Field Field Group Demo",
+  "registryDependencies": [
+    "checkbox",
+    "field"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/field-field-group-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Checkbox } from \"$lib/registry/ui/checkbox/index.js\"\n  import * as Field from \"$lib/registry/ui/field/index.js\"\n</script>\n\n<div class=\"w-full max-w-md\">\n  <Field.Group>\n    <Field.Set>\n      <Field.Label>Responses</Field.Label>\n      <Field.Description>\n        Get notified when ChatGPT responds to requests that take time, like\n        research or image generation.\n      </Field.Description>\n      <Field.Group data-slot=\"checkbox-group\">\n        <Field.Field orientation=\"horizontal\">\n          <Checkbox id=\"push\" checked disabled />\n          <Field.Label for=\"push\" class=\"font-normal\"\n            >Push notifications</Field.Label\n          >\n        </Field.Field>\n      </Field.Group>\n    </Field.Set>\n    <Field.Separator />\n    <Field.Set>\n      <Field.Label>Tasks</Field.Label>\n      <Field.Description>\n        Get notified when tasks you've created have updates.\n        <a href=\"#/\">Manage tasks</a>\n      </Field.Description>\n      <Field.Group data-slot=\"checkbox-group\">\n        <Field.Field orientation=\"horizontal\">\n          <Checkbox id=\"push-tasks\" />\n          <Field.Label for=\"push-tasks\" class=\"font-normal\">\n            Push notifications\n          </Field.Label>\n        </Field.Field>\n        <Field.Field orientation=\"horizontal\">\n          <Checkbox id=\"email-tasks\" />\n          <Field.Label for=\"email-tasks\" class=\"font-normal\">\n            Email notifications\n          </Field.Label>\n        </Field.Field>\n      </Field.Group>\n    </Field.Set>\n  </Field.Group>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

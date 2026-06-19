@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-demo",
+  "title": "Toggle Demo",
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/toggle-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import BookmarkIcon from \"@lucide/svelte/icons/bookmark\"\n  import { Toggle } from \"$lib/registry/ui/toggle/index.js\"\n</script>\n\n<Toggle\n  aria-label=\"Toggle bookmark\"\n  size=\"sm\"\n  variant=\"outline\"\n  class=\"data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-500 data-[state=on]:*:[svg]:stroke-blue-500\"\n>\n  <BookmarkIcon />\n  Bookmark\n</Toggle>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

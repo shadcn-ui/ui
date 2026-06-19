@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-dropdown-demo",
+  "title": "Input Group Dropdown Demo",
+  "registryDependencies": [
+    "dropdown-menu",
+    "input-group"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-group-dropdown-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import ChevronDownIcon from \"@lucide/svelte/icons/chevron-down\"\n  import MoreHorizontalIcon from \"@lucide/svelte/icons/more-horizontal\"\n  import * as DropdownMenu from \"$lib/registry/ui/dropdown-menu/index.js\"\n  import * as InputGroup from \"$lib/registry/ui/input-group/index.js\"\n</script>\n\n<div class=\"grid w-full max-w-sm gap-4\">\n  <InputGroup.Root>\n    <InputGroup.Input placeholder=\"Enter file name\" />\n    <InputGroup.Addon align=\"inline-end\">\n      <DropdownMenu.Root>\n        <DropdownMenu.Trigger>\n          {#snippet child({ props })}\n            <InputGroup.Button\n              {...props}\n              variant=\"ghost\"\n              aria-label=\"More\"\n              size=\"icon-xs\"\n            >\n              <MoreHorizontalIcon />\n            </InputGroup.Button>\n          {/snippet}\n        </DropdownMenu.Trigger>\n        <DropdownMenu.Content align=\"end\">\n          <DropdownMenu.Item>Settings</DropdownMenu.Item>\n          <DropdownMenu.Item>Copy path</DropdownMenu.Item>\n          <DropdownMenu.Item>Open location</DropdownMenu.Item>\n        </DropdownMenu.Content>\n      </DropdownMenu.Root>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root class=\"[--radius:1rem]\">\n    <InputGroup.Input placeholder=\"Enter search query\" />\n    <InputGroup.Addon align=\"inline-end\">\n      <DropdownMenu.Root>\n        <DropdownMenu.Trigger>\n          {#snippet child({ props })}\n            <InputGroup.Button\n              {...props}\n              variant=\"ghost\"\n              class=\"!pe-1.5 text-xs\"\n            >\n              Search In... <ChevronDownIcon class=\"size-3\" />\n            </InputGroup.Button>\n          {/snippet}\n        </DropdownMenu.Trigger>\n        <DropdownMenu.Content align=\"end\" class=\"[--radius:0.95rem]\">\n          <DropdownMenu.Item>Documentation</DropdownMenu.Item>\n          <DropdownMenu.Item>Blog Posts</DropdownMenu.Item>\n          <DropdownMenu.Item>Changelog</DropdownMenu.Item>\n        </DropdownMenu.Content>\n      </DropdownMenu.Root>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

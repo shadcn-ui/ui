@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-icon",
+  "title": "Button Icon",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/button-icon.svelte",
+      "content": "<script lang=\"ts\">\n  import CircleFadingArrowUpIcon from \"@lucide/svelte/icons/circle-fading-arrow-up\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n</script>\n\n<Button variant=\"outline\" size=\"icon\" aria-label=\"Submit\">\n  <CircleFadingArrowUpIcon />\n</Button>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

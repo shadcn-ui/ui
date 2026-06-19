@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip-demo",
+  "title": "Tooltip Demo",
+  "registryDependencies": [
+    "button",
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/tooltip-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Tooltip from \"$lib/registry/ui/tooltip/index.js\"\n\n  import { buttonVariants } from \"../ui/button/index.js\"\n</script>\n\n<Tooltip.Provider>\n  <Tooltip.Root>\n    <Tooltip.Trigger class={buttonVariants({ variant: \"outline\" })}\n      >Hover</Tooltip.Trigger\n    >\n    <Tooltip.Content>\n      <p>Add to library</p>\n    </Tooltip.Content>\n  </Tooltip.Root>\n</Tooltip.Provider>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

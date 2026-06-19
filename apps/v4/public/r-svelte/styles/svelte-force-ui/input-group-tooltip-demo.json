@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-tooltip-demo",
+  "title": "Input Group Tooltip Demo",
+  "registryDependencies": [
+    "input-group",
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-group-tooltip-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import HelpCircleIcon from \"@lucide/svelte/icons/help-circle\"\n  import InfoIcon from \"@lucide/svelte/icons/info\"\n  import * as InputGroup from \"$lib/registry/ui/input-group/index.js\"\n  import * as Tooltip from \"$lib/registry/ui/tooltip/index.js\"\n</script>\n\n<div class=\"grid w-full max-w-sm gap-4\">\n  <InputGroup.Root>\n    <InputGroup.Input placeholder=\"Enter password\" type=\"password\" />\n    <InputGroup.Addon align=\"inline-end\">\n      <Tooltip.Root>\n        <Tooltip.Trigger>\n          {#snippet child({ props })}\n            <InputGroup.Button\n              {...props}\n              variant=\"ghost\"\n              aria-label=\"Info\"\n              size=\"icon-xs\"\n            >\n              <InfoIcon />\n            </InputGroup.Button>\n          {/snippet}\n        </Tooltip.Trigger>\n        <Tooltip.Content>\n          <p>Password must be at least 8 characters</p>\n        </Tooltip.Content>\n      </Tooltip.Root>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root>\n    <InputGroup.Input placeholder=\"Your email address\" />\n    <InputGroup.Addon align=\"inline-end\">\n      <Tooltip.Root>\n        <Tooltip.Trigger>\n          {#snippet child({ props })}\n            <InputGroup.Button\n              {...props}\n              variant=\"ghost\"\n              aria-label=\"Help\"\n              size=\"icon-xs\"\n            >\n              <HelpCircleIcon />\n            </InputGroup.Button>\n          {/snippet}\n        </Tooltip.Trigger>\n        <Tooltip.Content>\n          <p>We'll use this to send you notifications</p>\n        </Tooltip.Content>\n      </Tooltip.Root>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root>\n    <InputGroup.Input placeholder=\"Enter API key\" />\n    <Tooltip.Root>\n      <Tooltip.Trigger>\n        {#snippet child({ props })}\n          <InputGroup.Addon>\n            <InputGroup.Button\n              {...props}\n              variant=\"ghost\"\n              aria-label=\"Help\"\n              size=\"icon-xs\"\n            >\n              <HelpCircleIcon />\n            </InputGroup.Button>\n          </InputGroup.Addon>\n        {/snippet}\n      </Tooltip.Trigger>\n      <Tooltip.Content side=\"left\">\n        <p>Click for help with API keys</p>\n      </Tooltip.Content>\n    </Tooltip.Root>\n  </InputGroup.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

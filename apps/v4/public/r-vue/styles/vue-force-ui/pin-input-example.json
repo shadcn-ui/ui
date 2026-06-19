@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pin-input-example",
+  "title": "Pin Input",
+  "dependencies": [],
+  "registryDependencies": [
+    "pin-input"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/pin-input/PinInputDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  PinInput,\n  PinInputGroup,\n  PinInputSeparator,\n  PinInputSlot,\n} from \"@/ui/pin-input\"\n</script>\n\n<template>\n  <PinInput :max-length=\"6\">\n    <PinInputGroup>\n      <PinInputSlot :index=\"0\" />\n      <PinInputSlot :index=\"1\" />\n      <PinInputSlot :index=\"2\" />\n    </PinInputGroup>\n    <PinInputSeparator />\n    <PinInputGroup>\n      <PinInputSlot :index=\"3\" />\n      <PinInputSlot :index=\"4\" />\n      <PinInputSlot :index=\"5\" />\n    </PinInputGroup>\n  </PinInput>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

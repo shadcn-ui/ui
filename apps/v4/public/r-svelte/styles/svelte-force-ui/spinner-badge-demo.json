@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-badge-demo",
+  "title": "Spinner Badge Demo",
+  "registryDependencies": [
+    "badge",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/spinner-badge-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Badge } from \"$lib/registry/ui/badge/index.js\"\n  import { Spinner } from \"$lib/registry/ui/spinner/index.js\"\n</script>\n\n<div class=\"flex items-center gap-2\">\n  <Badge>\n    <Spinner />\n    Syncing\n  </Badge>\n  <Badge variant=\"secondary\">\n    <Spinner />\n    Updating\n  </Badge>\n  <Badge variant=\"outline\">\n    <Spinner />\n    Loading\n  </Badge>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

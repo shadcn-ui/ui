@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/ui/textarea/index.ts",
+      "content": "import Root from \"./textarea.svelte\"\n\nexport {\n  Root,\n  //\n  Root as Textarea,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-force-ui/ui/textarea/textarea.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef, type WithoutChildren } from \"$lib/utils.js\"\n  import type { HTMLTextareaAttributes } from \"svelte/elements\"\n\n  type Variant = \"outline\" | \"filled\" | \"underline\" | \"ghost\"\n\n  const variantClass: Record<Variant, string> = {\n    outline: \"cn-textarea-variant-outline\",\n    filled: \"cn-textarea-variant-filled\",\n    underline: \"cn-textarea-variant-underline\",\n    ghost: \"cn-textarea-variant-ghost\",\n  }\n\n  let {\n    ref = $bindable(null),\n    value = $bindable(),\n    class: className,\n    variant = \"outline\" as Variant,\n    \"data-slot\": dataSlot = \"textarea\",\n    ...restProps\n  }: WithoutChildren<WithElementRef<HTMLTextareaAttributes>> & {\n    variant?: Variant\n  } = $props()\n</script>\n\n<textarea\n  bind:this={ref}\n  data-slot={dataSlot}\n  class={cn(\n    \"cn-textarea placeholder:text-muted-foreground flex field-sizing-content min-h-16 w-full outline-none disabled:cursor-not-allowed disabled:opacity-50\",\n    variantClass[variant],\n    className\n  )}\n  bind:value\n  {...restProps}\n></textarea>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://shadcn-force-ui.vercel.app/docs/components/svelte/textarea"
+    }
+  },
+  "type": "registry:ui"
+}

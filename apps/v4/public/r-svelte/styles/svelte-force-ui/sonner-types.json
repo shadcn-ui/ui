@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonner-types",
+  "title": "Sonner Types",
+  "dependencies": [
+    "svelte-sonner"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/sonner-types.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import { toast } from \"svelte-sonner\"\n</script>\n\n<div class=\"flex flex-wrap gap-2\">\n  <Button variant=\"outline\" onclick={() => toast(\"Event has been created\")}\n    >Default</Button\n  >\n  <Button\n    variant=\"outline\"\n    onclick={() => toast.success(\"Event has been created\")}\n  >\n    Success\n  </Button>\n  <Button\n    variant=\"outline\"\n    onclick={() =>\n      toast.info(\"Be at the area 10 minutes before the event time\")}\n  >\n    Info\n  </Button>\n  <Button\n    variant=\"outline\"\n    onclick={() => toast.warning(\"Event start time cannot be earlier than 8am\")}\n  >\n    Warning\n  </Button>\n  <Button\n    variant=\"outline\"\n    onclick={() => toast.error(\"Event has not been created\")}\n  >\n    Error\n  </Button>\n  <Button\n    variant=\"outline\"\n    onclick={() => {\n      toast.promise<{ name: string }>(\n        () =>\n          new Promise((resolve) =>\n            setTimeout(() => resolve({ name: \"Event\" }), 2000)\n          ),\n        {\n          loading: \"Loading...\",\n          success: (data) => `${data.name} has been created`,\n          error: \"Error\",\n        }\n      )\n    }}\n  >\n    Promise\n  </Button>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

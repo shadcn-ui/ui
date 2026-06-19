@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-responsive",
+  "title": "Breadcrumb Responsive",
+  "registryDependencies": [
+    "breadcrumb",
+    "button",
+    "drawer",
+    "dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/breadcrumb-responsive.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Breadcrumb from \"$lib/registry/ui/breadcrumb/index.js\"\n  import { buttonVariants } from \"$lib/registry/ui/button/index.js\"\n  import * as Drawer from \"$lib/registry/ui/drawer/index.js\"\n  import * as DropdownMenu from \"$lib/registry/ui/dropdown-menu/index.js\"\n  import { MediaQuery } from \"svelte/reactivity\"\n\n  const items = [\n    { href: \"#\", label: \"Home\" },\n    { href: \"#\", label: \"Documentation\" },\n    { href: \"#\", label: \"Build Your Application\" },\n    { href: \"#\", label: \"Data Fetching\" },\n    { label: \"Caching and Revalidating\" },\n  ]\n\n  const ITEMS_TO_DISPLAY = 3\n\n  let open = $state(false)\n\n  const isDesktop = new MediaQuery(\"(min-width: 768px)\")\n</script>\n\n<Breadcrumb.Root>\n  <Breadcrumb.List>\n    <Breadcrumb.Item>\n      <Breadcrumb.Link href={items[0].href}>\n        {items[0].label}\n      </Breadcrumb.Link>\n    </Breadcrumb.Item>\n    <Breadcrumb.Separator />\n    {#if items.length > ITEMS_TO_DISPLAY}\n      <Breadcrumb.Item>\n        {#if isDesktop.current}\n          <DropdownMenu.Root bind:open>\n            <DropdownMenu.Trigger\n              class=\"flex items-center gap-1\"\n              aria-label=\"Toggle menu\"\n            >\n              <Breadcrumb.Ellipsis class=\"size-4\" />\n            </DropdownMenu.Trigger>\n            <DropdownMenu.Content align=\"start\">\n              {#each items.slice(1, -2) as item, i (i)}\n                <DropdownMenu.Item>\n                  <a href={item.href ? item.href : \"#\"}>\n                    {item.label}\n                  </a>\n                </DropdownMenu.Item>\n              {/each}\n            </DropdownMenu.Content>\n          </DropdownMenu.Root>\n        {:else}\n          <Drawer.Root bind:open>\n            <Drawer.Trigger aria-label=\"Toggle Menu\">\n              <Breadcrumb.Ellipsis class=\"size-4\" />\n            </Drawer.Trigger>\n            <Drawer.Content>\n              <Drawer.Header class=\"text-start\">\n                <Drawer.Title>Navigate to</Drawer.Title>\n                <Drawer.Description>\n                  Select a page to navigate to.\n                </Drawer.Description>\n              </Drawer.Header>\n              <div class=\"grid gap-1 px-4\">\n                {#each items.slice(1, -2) as item, i (i)}\n                  <a href={item.href ? item.href : \"#\"} class=\"py-1 text-sm\">\n                    {item.label}\n                  </a>\n                {/each}\n              </div>\n              <Drawer.Footer class=\"pt-4\">\n                <Drawer.Close class={buttonVariants({ variant: \"outline\" })}>\n                  Close\n                </Drawer.Close>\n              </Drawer.Footer>\n            </Drawer.Content>\n          </Drawer.Root>\n        {/if}\n      </Breadcrumb.Item>\n      <Breadcrumb.Separator />\n    {/if}\n\n    {#each items.slice(-ITEMS_TO_DISPLAY + 1) as item (item.label)}\n      <Breadcrumb.Item>\n        {#if item.href}\n          <Breadcrumb.Link\n            href={item.href}\n            class=\"max-w-20 truncate md:max-w-none\"\n          >\n            {item.label}\n          </Breadcrumb.Link>\n          <Breadcrumb.Separator />\n        {:else}\n          <Breadcrumb.Page class=\"max-w-20 truncate md:max-w-none\">\n            {item.label}\n          </Breadcrumb.Page>\n        {/if}\n      </Breadcrumb.Item>\n    {/each}\n  </Breadcrumb.List>\n</Breadcrumb.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

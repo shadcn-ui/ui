@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-picker-with-presets",
+  "title": "Date Picker With Presets",
+  "registryDependencies": [
+    "button",
+    "calendar",
+    "popover",
+    "select",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/date-picker-with-presets.svelte",
+      "content": "<script lang=\"ts\">\n  import {\n    DateFormatter,\n    getLocalTimeZone,\n    today,\n    type DateValue,\n  } from \"@internationalized/date\"\n  import CalendarIcon from \"@lucide/svelte/icons/calendar\"\n  import { buttonVariants } from \"$lib/registry/ui/button/index.js\"\n  import { Calendar } from \"$lib/registry/ui/calendar/index.js\"\n  import * as Popover from \"$lib/registry/ui/popover/index.js\"\n  import * as Select from \"$lib/registry/ui/select/index.js\"\n  import { cn } from \"$lib/utils.js\"\n\n  const df = new DateFormatter(\"en-US\", {\n    dateStyle: \"long\",\n  })\n\n  let value: DateValue | undefined = $state()\n  const valueString = $derived(\n    value ? df.format(value.toDate(getLocalTimeZone())) : \"\"\n  )\n\n  const items = [\n    { value: 0, label: \"Today\" },\n    { value: 1, label: \"Tomorrow\" },\n    { value: 3, label: \"In 3 days\" },\n    { value: 7, label: \"In a week\" },\n  ]\n</script>\n\n<Popover.Root>\n  <Popover.Trigger\n    class={cn(\n      buttonVariants({\n        variant: \"outline\",\n        class: \"w-[280px] justify-start text-start font-normal\",\n      }),\n      !value && \"text-muted-foreground\"\n    )}\n  >\n    <CalendarIcon class=\"me-2 size-4\" />\n    {value ? df.format(value.toDate(getLocalTimeZone())) : \"Pick a date\"}\n  </Popover.Trigger>\n  <Popover.Content class=\"flex w-auto flex-col space-y-2 p-2\">\n    <Select.Root\n      type=\"single\"\n      bind:value={\n        () => valueString,\n        (v) => {\n          if (!v) return\n          value = today(getLocalTimeZone()).add({ days: Number.parseInt(v) })\n        }\n      }\n    >\n      <Select.Trigger>\n        {valueString}\n      </Select.Trigger>\n      <Select.Content>\n        {#each items as item (item.value)}\n          <Select.Item value={`${item.value}`}>{item.label}</Select.Item>\n        {/each}\n      </Select.Content>\n    </Select.Root>\n    <div class=\"rounded-md border\">\n      <Calendar type=\"single\" bind:value />\n    </div>\n  </Popover.Content>\n</Popover.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

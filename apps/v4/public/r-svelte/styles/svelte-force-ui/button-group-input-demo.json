@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-input-demo",
+  "title": "Button Group Input Demo",
+  "registryDependencies": [
+    "button",
+    "button-group",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/button-group-input-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import Search from \"@lucide/svelte/icons/search\"\n  import * as ButtonGroup from \"$lib/registry/ui/button-group/index.js\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n</script>\n\n<ButtonGroup.Root>\n  <Input placeholder=\"Search...\" />\n  <Button variant=\"outline\" size=\"icon\" aria-label=\"Search\">\n    <Search />\n  </Button>\n</ButtonGroup.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-button-demo",
+  "title": "Spinner Button Demo",
+  "registryDependencies": [
+    "button",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/spinner-button-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import { Spinner } from \"$lib/registry/ui/spinner/index.js\"\n</script>\n\n<div class=\"flex flex-col items-center gap-4\">\n  <Button disabled size=\"sm\">\n    <Spinner />\n    Loading...\n  </Button>\n  <Button variant=\"outline\" disabled size=\"sm\">\n    <Spinner />\n    Please wait\n  </Button>\n  <Button variant=\"secondary\" disabled size=\"sm\">\n    <Spinner />\n    Processing\n  </Button>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

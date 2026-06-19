@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress-example",
+  "title": "Progress",
+  "dependencies": [],
+  "registryDependencies": [
+    "progress"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/progress/ProgressDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Progress } from \"@/ui/progress\"\nimport { onMounted, ref } from \"vue\"\n\nconst progress = ref(13)\n\nonMounted(() => {\n  const timer = setTimeout(() => {\n    progress.value = 66\n  }, 500)\n\n  return () => clearTimeout(timer)\n})\n</script>\n\n<template>\n  <Progress :model-value=\"progress\" class=\"w-[60%]\" />\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

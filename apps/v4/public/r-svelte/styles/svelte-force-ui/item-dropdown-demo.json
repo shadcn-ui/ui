@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-dropdown-demo",
+  "title": "Item Dropdown Demo",
+  "registryDependencies": [
+    "avatar",
+    "button",
+    "dropdown-menu",
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/item-dropdown-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import ChevronDown from \"@lucide/svelte/icons/chevron-down\"\n  import * as Avatar from \"$lib/registry/ui/avatar/index.js\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as DropdownMenu from \"$lib/registry/ui/dropdown-menu/index.js\"\n  import * as Item from \"$lib/registry/ui/item/index.js\"\n\n  const people = [\n    {\n      username: \"shadcn\",\n      avatar: \"https://github.com/shadcn.png\",\n      email: \"shadcn@vercel.com\",\n    },\n    {\n      username: \"maxleiter\",\n      avatar: \"https://github.com/maxleiter.png\",\n      email: \"maxleiter@vercel.com\",\n    },\n    {\n      username: \"evilrabbit\",\n      avatar: \"https://github.com/evilrabbit.png\",\n      email: \"evilrabbit@vercel.com\",\n    },\n  ]\n</script>\n\n<div class=\"flex min-h-64 w-full max-w-md flex-col items-center gap-6\">\n  <DropdownMenu.Root>\n    <DropdownMenu.Trigger>\n      {#snippet child({ props })}\n        <Button {...props} variant=\"outline\" size=\"sm\" class=\"w-fit\">\n          Select <ChevronDown />\n        </Button>\n      {/snippet}\n    </DropdownMenu.Trigger>\n    <DropdownMenu.Content class=\"w-72 [--radius:0.65rem]\" align=\"end\">\n      {#each people as person (person.username)}\n        <DropdownMenu.Item class=\"p-0\">\n          <Item.Root size=\"sm\" class=\"w-full p-2\">\n            <Item.Media>\n              <Avatar.Root class=\"size-8\">\n                <Avatar.Image src={person.avatar} class=\"grayscale\" />\n                <Avatar.Fallback>{person.username.charAt(0)}</Avatar.Fallback>\n              </Avatar.Root>\n            </Item.Media>\n            <Item.Content class=\"gap-0.5\">\n              <Item.Title>{person.username}</Item.Title>\n              <Item.Description>{person.email}</Item.Description>\n            </Item.Content>\n          </Item.Root>\n        </DropdownMenu.Item>\n      {/each}\n    </DropdownMenu.Content>\n  </DropdownMenu.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

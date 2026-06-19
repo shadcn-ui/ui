@@ -1,0 +1,45 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "carousel-example",
+  "title": "Carousel",
+  "dependencies": [
+    "embla-carousel-autoplay"
+  ],
+  "registryDependencies": [
+    "card",
+    "carousel"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/carousel/CarouselApi.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Card, CardContent } from \"@/ui/card\"\nimport type { CarouselApi } from \"@/ui/carousel\"\nimport {\n  Carousel,\n  CarouselContent,\n  CarouselItem,\n  CarouselNext,\n  CarouselPrevious,\n} from \"@/ui/carousel\"\nimport { watchOnce } from \"@vueuse/core\"\nimport { ref } from \"vue\"\n\nconst api = ref<CarouselApi>()\nconst totalCount = ref(0)\nconst current = ref(0)\n\nfunction setApi(val: CarouselApi) {\n  api.value = val\n}\n\nwatchOnce(api, (api) => {\n  if (!api) return\n\n  totalCount.value = api.scrollSnapList().length\n  current.value = api.selectedScrollSnap() + 1\n\n  api.on(\"select\", () => {\n    current.value = api.selectedScrollSnap() + 1\n  })\n})\n</script>\n\n<template>\n  <div class=\"w-full sm:w-auto\">\n    <Carousel class=\"relative w-full max-w-xs\" @init-api=\"setApi\">\n      <CarouselContent>\n        <CarouselItem v-for=\"(_, index) in 5\" :key=\"index\">\n          <div class=\"p-1\">\n            <Card>\n              <CardContent\n                class=\"flex aspect-square items-center justify-center p-6\"\n              >\n                <span class=\"text-4xl font-semibold\">{{ index + 1 }}</span>\n              </CardContent>\n            </Card>\n          </div>\n        </CarouselItem>\n      </CarouselContent>\n      <CarouselPrevious />\n      <CarouselNext />\n    </Carousel>\n\n    <div class=\"py-2 text-center text-sm text-muted-foreground\">\n      Slide {{ current }} of {{ totalCount }}\n    </div>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/carousel/CarouselDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Card, CardContent } from \"@/ui/card\"\nimport {\n  Carousel,\n  CarouselContent,\n  CarouselItem,\n  CarouselNext,\n  CarouselPrevious,\n} from \"@/ui/carousel\"\n</script>\n\n<template>\n  <Carousel class=\"w-full max-w-xs\">\n    <CarouselContent>\n      <CarouselItem v-for=\"i in 5\" :key=\"i\">\n        <div class=\"p-1\">\n          <Card>\n            <CardContent\n              class=\"flex aspect-square items-center justify-center p-6\"\n            >\n              <span class=\"text-4xl font-semibold\">{{ i }}</span>\n            </CardContent>\n          </Card>\n        </div>\n      </CarouselItem>\n    </CarouselContent>\n    <CarouselPrevious />\n    <CarouselNext />\n  </Carousel>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/carousel/CarouselOrientation.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Card, CardContent } from \"@/ui/card\"\nimport {\n  Carousel,\n  CarouselContent,\n  CarouselItem,\n  CarouselNext,\n  CarouselPrevious,\n} from \"@/ui/carousel\"\n</script>\n\n<template>\n  <Carousel\n    orientation=\"vertical\"\n    class=\"relative w-full max-w-xs\"\n    :opts=\"{\n      align: 'start',\n    }\"\n  >\n    <CarouselContent class=\"-mt-1 h-[200px]\">\n      <CarouselItem\n        v-for=\"(_, index) in 5\"\n        :key=\"index\"\n        class=\"p-1 md:basis-1/2\"\n      >\n        <div class=\"p-1\">\n          <Card>\n            <CardContent class=\"flex items-center justify-center p-6\">\n              <span class=\"text-3xl font-semibold\">{{ index + 1 }}</span>\n            </CardContent>\n          </Card>\n        </div>\n      </CarouselItem>\n    </CarouselContent>\n    <CarouselPrevious />\n    <CarouselNext />\n  </Carousel>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/carousel/CarouselPlugin.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Card, CardContent } from \"@/ui/card\"\nimport {\n  Carousel,\n  CarouselContent,\n  CarouselItem,\n  CarouselNext,\n  CarouselPrevious,\n} from \"@/ui/carousel\"\nimport Autoplay from \"embla-carousel-autoplay\"\n\nconst plugin = Autoplay({\n  delay: 2000,\n  stopOnMouseEnter: true,\n  stopOnInteraction: false,\n})\n</script>\n\n<template>\n  <Carousel\n    class=\"relative w-full max-w-xs\"\n    :plugins=\"[plugin]\"\n    @mouseenter=\"plugin.stop\"\n    @mouseleave=\"[plugin.reset(), plugin.play(), console.log('Running')]\"\n  >\n    <CarouselContent>\n      <CarouselItem v-for=\"(_, index) in 5\" :key=\"index\">\n        <div class=\"p-1\">\n          <Card>\n            <CardContent\n              class=\"flex aspect-square items-center justify-center p-6\"\n            >\n              <span class=\"text-4xl font-semibold\">{{ index + 1 }}</span>\n            </CardContent>\n          </Card>\n        </div>\n      </CarouselItem>\n    </CarouselContent>\n    <CarouselPrevious />\n    <CarouselNext />\n  </Carousel>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/carousel/CarouselSize.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Card, CardContent } from \"@/ui/card\"\nimport {\n  Carousel,\n  CarouselContent,\n  CarouselItem,\n  CarouselNext,\n  CarouselPrevious,\n} from \"@/ui/carousel\"\n</script>\n\n<template>\n  <Carousel\n    class=\"relative w-full max-w-xs\"\n    :opts=\"{\n      align: 'start',\n    }\"\n  >\n    <CarouselContent>\n      <CarouselItem\n        v-for=\"(_, index) in 5\"\n        :key=\"index\"\n        class=\"md:basis-1/2 lg:basis-1/3\"\n      >\n        <div class=\"p-1\">\n          <Card>\n            <CardContent\n              class=\"flex aspect-square items-center justify-center p-6\"\n            >\n              <span class=\"text-3xl font-semibold\">{{ index + 1 }}</span>\n            </CardContent>\n          </Card>\n        </div>\n      </CarouselItem>\n    </CarouselContent>\n    <CarouselPrevious />\n    <CarouselNext />\n  </Carousel>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/carousel/CarouselSpacing.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Card, CardContent } from \"@/ui/card\"\nimport {\n  Carousel,\n  CarouselContent,\n  CarouselItem,\n  CarouselNext,\n  CarouselPrevious,\n} from \"@/ui/carousel\"\n</script>\n\n<template>\n  <Carousel\n    class=\"w-full max-w-sm\"\n    :opts=\"{\n      align: 'start',\n    }\"\n  >\n    <CarouselContent class=\"-ml-1\">\n      <CarouselItem\n        v-for=\"(_, index) in 5\"\n        :key=\"index\"\n        class=\"pl-1 md:basis-1/2 lg:basis-1/3\"\n      >\n        <div class=\"p-1\">\n          <Card>\n            <CardContent\n              class=\"flex aspect-square items-center justify-center p-6\"\n            >\n              <span class=\"text-2xl font-semibold\">{{ index + 1 }}</span>\n            </CardContent>\n          </Card>\n        </div>\n      </CarouselItem>\n    </CarouselContent>\n    <CarouselPrevious />\n    <CarouselNext />\n  </Carousel>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-otp-example",
+  "title": "Input Otp",
+  "dependencies": [
+    "vee-validate",
+    "vue-input-otp",
+    "vue-sonner",
+    "zod"
+  ],
+  "registryDependencies": [
+    "button",
+    "field",
+    "input-otp"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/input-otp/InputOTPControlledDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { InputOTP, InputOTPGroup, InputOTPSlot } from \"@/ui/input-otp\"\nimport { ref } from \"vue\"\n\nconst value = ref(\"\")\n</script>\n\n<template>\n  <div class=\"space-y-2\">\n    <InputOTP v-model=\"value\" :maxlength=\"6\">\n      <InputOTPGroup>\n        <InputOTPSlot :index=\"0\" />\n        <InputOTPSlot :index=\"1\" />\n        <InputOTPSlot :index=\"2\" />\n        <InputOTPSlot :index=\"3\" />\n        <InputOTPSlot :index=\"4\" />\n        <InputOTPSlot :index=\"5\" />\n      </InputOTPGroup>\n    </InputOTP>\n    <div class=\"text-center text-sm\">\n      <template v-if=\"value === ''\"> Enter your one-time password. </template>\n      <template v-else> You entered: {{ value }} </template>\n    </div>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/input-otp/InputOTPDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  InputOTP,\n  InputOTPGroup,\n  InputOTPSeparator,\n  InputOTPSlot,\n} from \"@/ui/input-otp\"\n</script>\n\n<template>\n  <InputOTP :maxlength=\"6\">\n    <InputOTPGroup>\n      <InputOTPSlot :index=\"0\" />\n      <InputOTPSlot :index=\"1\" />\n      <InputOTPSlot :index=\"2\" />\n    </InputOTPGroup>\n    <InputOTPSeparator />\n    <InputOTPGroup>\n      <InputOTPSlot :index=\"3\" />\n      <InputOTPSlot :index=\"4\" />\n      <InputOTPSlot :index=\"5\" />\n    </InputOTPGroup>\n  </InputOTP>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/input-otp/InputOTPFormDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  Field,\n  FieldDescription,\n  FieldError,\n  FieldGroup,\n  FieldLabel,\n} from \"@/ui/field\"\nimport { InputOTP, InputOTPGroup, InputOTPSlot } from \"@/ui/input-otp\"\nimport { toTypedSchema } from \"@vee-validate/zod\"\nimport { useForm, Field as VeeField } from \"vee-validate\"\nimport { toast } from \"vue-sonner\"\nimport { z } from \"zod\"\n\nconst formSchema = toTypedSchema(\n  z.object({\n    pin: z.string().min(6, {\n      message: \"Your one-time password must be 6 characters.\",\n    }),\n  })\n)\n\nconst { handleSubmit, submitCount } = useForm({\n  validationSchema: formSchema,\n  initialValues: {\n    pin: \"\",\n  },\n})\n\nconst onSubmit = handleSubmit((data) => {\n  toast(\"You submitted the following values:\", {\n    description: h(\n      \"pre\",\n      { class: \"mt-2 w-[320px] rounded-md bg-neutral-950 p-4\" },\n      h(\"code\", { class: \"text-white\" }, JSON.stringify(data, null, 2))\n    ),\n  })\n})\n</script>\n\n<template>\n  <form id=\"form-otp-demo\" class=\"w-sm space-y-6\" @submit=\"onSubmit\">\n    <FieldGroup>\n      <VeeField\n        v-slot=\"{ componentField, errors }\"\n        name=\"pin\"\n        :validate-on-blur=\"false\"\n        :validate-on-input=\"submitCount > 0\"\n        :validate-on-model-update=\"submitCount > 0\"\n      >\n        <Field :data-invalid=\"!!errors.length\">\n          <FieldLabel for=\"form-otp-demo-pin\"> One-Time Password </FieldLabel>\n          <InputOTP\n            id=\"form-otp-demo-pin\"\n            v-bind=\"componentField\"\n            :maxlength=\"6\"\n            :aria-invalid=\"!!errors.length\"\n          >\n            <InputOTPGroup>\n              <InputOTPSlot :index=\"0\" />\n              <InputOTPSlot :index=\"1\" />\n              <InputOTPSlot :index=\"2\" />\n              <InputOTPSlot :index=\"3\" />\n              <InputOTPSlot :index=\"4\" />\n              <InputOTPSlot :index=\"5\" />\n            </InputOTPGroup>\n          </InputOTP>\n          <FieldDescription>\n            Please enter the one-time password sent to your phone.\n          </FieldDescription>\n          <FieldError v-if=\"errors.length\" :errors=\"errors\" />\n        </Field>\n      </VeeField>\n    </FieldGroup>\n    <Button type=\"submit\" form=\"form-otp-demo\"> Submit </Button>\n  </form>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/input-otp/InputOTPPatternDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { InputOTP, InputOTPGroup, InputOTPSlot } from \"@/ui/input-otp\"\nimport { REGEXP_ONLY_DIGITS_AND_CHARS } from \"vue-input-otp\"\n</script>\n\n<template>\n  <InputOTP :maxlength=\"6\" :pattern=\"REGEXP_ONLY_DIGITS_AND_CHARS\">\n    <InputOTPGroup>\n      <InputOTPSlot :index=\"0\" />\n      <InputOTPSlot :index=\"1\" />\n      <InputOTPSlot :index=\"2\" />\n      <InputOTPSlot :index=\"3\" />\n      <InputOTPSlot :index=\"4\" />\n      <InputOTPSlot :index=\"5\" />\n    </InputOTPGroup>\n  </InputOTP>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/input-otp/InputOTPSeparatorDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  InputOTP,\n  InputOTPGroup,\n  InputOTPSeparator,\n  InputOTPSlot,\n} from \"@/ui/input-otp\"\n</script>\n\n<template>\n  <InputOTP :maxlength=\"6\">\n    <InputOTPGroup>\n      <InputOTPSlot :index=\"0\" />\n      <InputOTPSlot :index=\"1\" />\n    </InputOTPGroup>\n    <InputOTPSeparator />\n    <InputOTPGroup>\n      <InputOTPSlot :index=\"2\" />\n      <InputOTPSlot :index=\"3\" />\n    </InputOTPGroup>\n    <InputOTPSeparator />\n    <InputOTPGroup>\n      <InputOTPSlot :index=\"4\" />\n      <InputOTPSlot :index=\"5\" />\n    </InputOTPGroup>\n  </InputOTP>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

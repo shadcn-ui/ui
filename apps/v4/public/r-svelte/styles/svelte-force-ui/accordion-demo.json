@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-demo",
+  "title": "Accordion Demo",
+  "registryDependencies": [
+    "accordion"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/accordion-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Accordion from \"$lib/registry/ui/accordion/index.js\"\n</script>\n\n<Accordion.Root type=\"single\" class=\"w-full sm:max-w-[70%]\" value=\"item-1\">\n  <Accordion.Item value=\"item-1\">\n    <Accordion.Trigger>Product Information</Accordion.Trigger>\n    <Accordion.Content class=\"flex flex-col gap-4 text-balance\">\n      <p>\n        Our flagship product combines cutting-edge technology with sleek design.\n        Built with premium materials, it offers unparalleled performance and\n        reliability.\n      </p>\n      <p>\n        Key features include advanced processing capabilities, and an intuitive\n        user interface designed for both beginners and experts.\n      </p>\n    </Accordion.Content>\n  </Accordion.Item>\n  <Accordion.Item value=\"item-2\">\n    <Accordion.Trigger>Shipping Details</Accordion.Trigger>\n    <Accordion.Content class=\"flex flex-col gap-4 text-balance\">\n      <p>\n        We offer worldwide shipping through trusted courier partners. Standard\n        delivery takes 3-5 business days, while express shipping ensures\n        delivery within 1-2 business days.\n      </p>\n      <p>\n        All orders are carefully packaged and fully insured. Track your shipment\n        in real-time through our dedicated tracking portal.\n      </p>\n    </Accordion.Content>\n  </Accordion.Item>\n  <Accordion.Item value=\"item-3\">\n    <Accordion.Trigger>Return Policy</Accordion.Trigger>\n    <Accordion.Content class=\"flex flex-col gap-4 text-balance\">\n      <p>\n        We stand behind our products with a comprehensive 30-day return policy.\n        If you&apos;re not completely satisfied, simply return the item in its\n        original condition.\n      </p>\n      <p>\n        Our hassle-free return process includes free return shipping and full\n        refunds processed within 48 hours of receiving the returned item.\n      </p>\n    </Accordion.Content>\n  </Accordion.Item>\n</Accordion.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

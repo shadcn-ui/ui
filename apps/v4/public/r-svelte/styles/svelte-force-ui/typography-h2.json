@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-h2",
+  "title": "Typography H2",
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/typography-h2.svelte",
+      "content": "<h2\n  class=\"scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0\"\n>\n  The People of the Kingdom\n</h2>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

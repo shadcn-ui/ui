@@ -1,0 +1,80 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-example",
+  "title": "Typography",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/typography/TypographyBlockquote.vue",
+      "content": "<template>\n  <blockquote class=\"mt-6 border-l-2 pl-6 italic\">\n    \"After all,\" he said, \"everyone enjoys a good joke, so it's only fair that\n    they should pay for the privilege.\"\n  </blockquote>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/typography/TypographyDemo.vue",
+      "content": "<template>\n  <div>\n    <h1 class=\"scroll-m-20 text-4xl font-extrabold tracking-tight text-balance\">\n      Taxing Laughter: The Joke Tax Chronicles\n    </h1>\n    <p\n      class=\"text-xl leading-7 text-muted-foreground [&:not(:first-child)]:mt-6\"\n    >\n      Once upon a time, in a far-off land, there was a very lazy king who spent\n      all day lounging on his throne. One day, his advisors came to him with a\n      problem: the kingdom was running out of money.\n    </p>\n    <h2\n      class=\"mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0\"\n    >\n      The King's Plan\n    </h2>\n    <p class=\"leading-7 [&:not(:first-child)]:mt-6\">\n      The king thought long and hard, and finally came up with\n      <a href=\"#\" class=\"font-medium text-primary underline underline-offset-4\"\n        >a brilliant plan</a\n      >: he would tax the jokes in the kingdom.\n    </p>\n    <blockquote class=\"mt-6 border-l-2 pl-6 italic\">\n      \"After all,\" he said, \"everyone enjoys a good joke, so it's only fair that\n      they should pay for the privilege.\"\n    </blockquote>\n    <h3 class=\"mt-8 scroll-m-20 text-2xl font-semibold tracking-tight\">\n      The Joke Tax\n    </h3>\n    <p class=\"leading-7 [&:not(:first-child)]:mt-6\">\n      The king's subjects were not amused. They grumbled and complained, but the\n      king was firm:\n    </p>\n    <ul class=\"my-6 ml-6 list-disc [&>li]:mt-2\">\n      <li>1st level of puns: 5 gold coins</li>\n      <li>2nd level of jokes: 10 gold coins</li>\n      <li>3rd level of one-liners : 20 gold coins</li>\n    </ul>\n    <p class=\"leading-7 [&:not(:first-child)]:mt-6\">\n      As a result, people stopped telling jokes, and the kingdom fell into a\n      gloom. But there was one person who refused to let the king's foolishness\n      get him down: a court jester named Jokester.\n    </p>\n    <h3 class=\"mt-8 scroll-m-20 text-2xl font-semibold tracking-tight\">\n      Jokester's Revolt\n    </h3>\n    <p class=\"leading-7 [&:not(:first-child)]:mt-6\">\n      Jokester began sneaking into the castle in the middle of the night and\n      leaving jokes all over the place: under the king's pillow, in his soup,\n      even in the royal toilet. The king was furious, but he couldn't seem to\n      stop Jokester.\n    </p>\n    <p class=\"leading-7 [&:not(:first-child)]:mt-6\">\n      And then, one day, the people of the kingdom discovered that the jokes\n      left by Jokester were so funny that they couldn't help but laugh. And once\n      they started laughing, they couldn't stop.\n    </p>\n    <h3 class=\"mt-8 scroll-m-20 text-2xl font-semibold tracking-tight\">\n      The People's Rebellion\n    </h3>\n    <p class=\"leading-7 [&:not(:first-child)]:mt-6\">\n      The people of the kingdom, feeling uplifted by the laughter, started to\n      tell jokes and puns again, and soon the entire kingdom was in on the joke.\n    </p>\n    <div class=\"my-6 w-full overflow-y-auto\">\n      <table class=\"w-full\">\n        <thead>\n          <tr class=\"m-0 border-t p-0 even:bg-muted\">\n            <th\n              class=\"border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right\"\n            >\n              King's Treasury\n            </th>\n            <th\n              class=\"border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right\"\n            >\n              People's happiness\n            </th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr class=\"m-0 border-t p-0 even:bg-muted\">\n            <td\n              class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n            >\n              Empty\n            </td>\n            <td\n              class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n            >\n              Overflowing\n            </td>\n          </tr>\n          <tr class=\"m-0 border-t p-0 even:bg-muted\">\n            <td\n              class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n            >\n              Modest\n            </td>\n            <td\n              class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n            >\n              Satisfied\n            </td>\n          </tr>\n          <tr class=\"m-0 border-t p-0 even:bg-muted\">\n            <td\n              class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n            >\n              Full\n            </td>\n            <td\n              class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n            >\n              Ecstatic\n            </td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n    <p class=\"leading-7 [&:not(:first-child)]:mt-6\">\n      The king, seeing how much happier his subjects were, realized the error of\n      his ways and repealed the joke tax. Jokester was declared a hero, and the\n      kingdom lived happily ever after.\n    </p>\n    <p class=\"leading-7 [&:not(:first-child)]:mt-6\">\n      The moral of the story is: never underestimate the power of a good laugh\n      and always be careful of bad ideas.\n    </p>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/typography/TypographyH1.vue",
+      "content": "<template>\n  <h1\n    class=\"scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance\"\n  >\n    Taxing Laughter: The Joke Tax Chronicles\n  </h1>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/typography/TypographyH2.vue",
+      "content": "<template>\n  <h2\n    class=\"scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0\"\n  >\n    The People of the Kingdom\n  </h2>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/typography/TypographyH3.vue",
+      "content": "<template>\n  <h3 class=\"scroll-m-20 text-2xl font-semibold tracking-tight\">\n    The Joke Tax\n  </h3>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/typography/TypographyH4.vue",
+      "content": "<template>\n  <h4 class=\"scroll-m-20 text-xl font-semibold tracking-tight\">\n    People stopped telling jokes\n  </h4>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/typography/TypographyInlineCode.vue",
+      "content": "<template>\n  <code\n    class=\"relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold\"\n  >\n    reka-ui\n  </code>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/typography/TypographyLarge.vue",
+      "content": "<template>\n  <div class=\"text-lg font-semibold\">Are you absolutely sure?</div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/typography/TypographyLead.vue",
+      "content": "<template>\n  <p class=\"text-xl text-muted-foreground\">\n    A modal dialog that interrupts the user with important content and expects a\n    response.\n  </p>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/typography/TypographyList.vue",
+      "content": "<template>\n  <ul class=\"my-6 ml-6 list-disc [&>li]:mt-2\">\n    <li>1st level of puns: 5 gold coins</li>\n    <li>2nd level of jokes: 10 gold coins</li>\n    <li>3rd level of one-liners : 20 gold coins</li>\n  </ul>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/typography/TypographyMuted.vue",
+      "content": "<template>\n  <p class=\"text-sm text-muted-foreground\">Enter your email address.</p>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/typography/TypographyP.vue",
+      "content": "<template>\n  <p class=\"leading-7 [&:not(:first-child)]:mt-6\">\n    The king, seeing how much happier his subjects were, realized the error of\n    his ways and repealed the joke tax.\n  </p>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/typography/TypographySmall.vue",
+      "content": "<template>\n  <small class=\"text-sm leading-none font-medium\"> Email address </small>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/typography/TypographyTable.vue",
+      "content": "<template>\n  <div class=\"my-6 w-full overflow-y-auto\">\n    <table class=\"w-full\">\n      <thead>\n        <tr class=\"m-0 border-t p-0 even:bg-muted\">\n          <th\n            class=\"border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right\"\n          >\n            King's Treasury\n          </th>\n          <th\n            class=\"border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right\"\n          >\n            People's happiness\n          </th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr class=\"m-0 border-t p-0 even:bg-muted\">\n          <td\n            class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n          >\n            Empty\n          </td>\n          <td\n            class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n          >\n            Overflowing\n          </td>\n        </tr>\n        <tr class=\"m-0 border-t p-0 even:bg-muted\">\n          <td\n            class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n          >\n            Modest\n          </td>\n          <td\n            class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n          >\n            Satisfied\n          </td>\n        </tr>\n        <tr class=\"m-0 border-t p-0 even:bg-muted\">\n          <td\n            class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n          >\n            Full\n          </td>\n          <td\n            class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n          >\n            Ecstatic\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

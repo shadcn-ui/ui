@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-secondary",
+  "title": "Button Secondary",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/button-secondary.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n</script>\n\n<Button variant=\"secondary\">Secondary</Button>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

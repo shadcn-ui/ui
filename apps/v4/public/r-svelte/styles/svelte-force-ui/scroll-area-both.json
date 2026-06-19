@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area-both",
+  "title": "Scroll Area Both",
+  "registryDependencies": [
+    "scroll-area"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/scroll-area-both.svelte",
+      "content": "<script lang=\"ts\">\n  import { ScrollArea } from \"$lib/registry/ui/scroll-area/index.js\"\n</script>\n\n<ScrollArea\n  class=\"h-[200px] w-[350px] rounded-md border p-4\"\n  orientation=\"both\"\n>\n  <div class=\"w-[400px]\">\n    Jokester began sneaking into the castle in the middle of the night and\n    leaving jokes all over the place: under the king's pillow, in his soup, even\n    in the royal toilet. The king was furious, but he couldn't seem to stop\n    Jokester. And then, one day, the people of the kingdom discovered that the\n    jokes left by Jokester were so funny that they couldn't help but laugh. And\n    once they started laughing, they couldn't stop.\n  </div>\n</ScrollArea>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

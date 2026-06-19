@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "carousel-api",
+  "title": "Carousel Api",
+  "registryDependencies": [
+    "card",
+    "carousel"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/carousel-api.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Card from \"$lib/registry/ui/card/index.js\"\n  import type { CarouselAPI } from \"$lib/registry/ui/carousel/context.js\"\n  import * as Carousel from \"$lib/registry/ui/carousel/index.js\"\n\n  let api = $state<CarouselAPI>()\n\n  const count = $derived(api ? api.scrollSnapList().length : 0)\n  let current = $state(0)\n\n  $effect(() => {\n    if (api) {\n      current = api.selectedScrollSnap() + 1\n      api.on(\"select\", () => {\n        current = api!.selectedScrollSnap() + 1\n      })\n    }\n  })\n</script>\n\n<div>\n  <Carousel.Root\n    setApi={(emblaApi) => (api = emblaApi)}\n    class=\"w-full max-w-xs\"\n  >\n    <Carousel.Content>\n      {#each Array(5) as _, i (i)}\n        <Carousel.Item>\n          <Card.Root>\n            <Card.Content\n              class=\"flex aspect-square items-center justify-center p-6\"\n            >\n              <span class=\"text-4xl font-semibold\">{i + 1}</span>\n            </Card.Content>\n          </Card.Root>\n        </Carousel.Item>\n      {/each}\n    </Carousel.Content>\n    <Carousel.Previous />\n    <Carousel.Next />\n  </Carousel.Root>\n  <div class=\"text-muted-foreground py-2 text-center text-sm\">\n    Slide {current} of {count}\n  </div>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

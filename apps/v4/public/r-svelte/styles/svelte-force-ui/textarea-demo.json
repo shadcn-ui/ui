@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-demo",
+  "title": "Textarea Demo",
+  "registryDependencies": [
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/textarea-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Textarea } from \"$lib/registry/ui/textarea/index.js\"\n</script>\n\n<Textarea placeholder=\"Type your message here.\" />\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

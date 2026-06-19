@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card-demo",
+  "title": "Hover Card Demo",
+  "registryDependencies": [
+    "avatar",
+    "hover-card"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/hover-card-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import CalendarDaysIcon from \"@lucide/svelte/icons/calendar-days\"\n  import * as Avatar from \"$lib/registry/ui/avatar/index.js\"\n  import * as HoverCard from \"$lib/registry/ui/hover-card/index.js\"\n</script>\n\n<HoverCard.Root>\n  <HoverCard.Trigger\n    href=\"https://github.com/sveltejs\"\n    target=\"_blank\"\n    rel=\"noreferrer noopener\"\n    class=\"rounded-sm underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-black\"\n  >\n    @sveltejs\n  </HoverCard.Trigger>\n  <HoverCard.Content class=\"w-80\">\n    <div class=\"flex justify-between space-x-4\">\n      <Avatar.Root>\n        <Avatar.Image src=\"https://github.com/sveltejs.png\" />\n        <Avatar.Fallback>SK</Avatar.Fallback>\n      </Avatar.Root>\n      <div class=\"space-y-1\">\n        <h4 class=\"text-sm font-semibold\">@sveltejs</h4>\n        <p class=\"text-sm\">Cybernetically enhanced web apps.</p>\n        <div class=\"flex items-center pt-2\">\n          <CalendarDaysIcon class=\"me-2 size-4 opacity-70\" />\n          <span class=\"text-muted-foreground text-xs\">\n            Joined September 2022\n          </span>\n        </div>\n      </div>\n    </div>\n  </HoverCard.Content>\n</HoverCard.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

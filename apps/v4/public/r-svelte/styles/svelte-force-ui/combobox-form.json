@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox-form",
+  "title": "Combobox Form",
+  "dependencies": [
+    "bits-ui",
+    "svelte-sonner",
+    "sveltekit-superforms",
+    "zod"
+  ],
+  "registryDependencies": [
+    "button",
+    "command",
+    "form",
+    "popover",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/combobox-form.svelte",
+      "content": "<script lang=\"ts\" module>\n  import { z } from \"zod\"\n\n  const languages = [\n    { label: \"English\", value: \"en\" },\n    { label: \"French\", value: \"fr\" },\n    { label: \"German\", value: \"de\" },\n    { label: \"Spanish\", value: \"es\" },\n    { label: \"Portuguese\", value: \"pt\" },\n    { label: \"Russian\", value: \"ru\" },\n    { label: \"Japanese\", value: \"ja\" },\n    { label: \"Korean\", value: \"ko\" },\n    { label: \"Chinese\", value: \"zh\" },\n  ] as const\n\n  const formSchema = z.object({\n    language: z.enum([\"en\", \"fr\", \"de\", \"es\", \"pt\", \"ru\", \"ja\", \"ko\", \"zh\"]),\n  })\n</script>\n\n<script lang=\"ts\">\n  import CheckIcon from \"@lucide/svelte/icons/check\"\n  import ChevronsUpDownIcon from \"@lucide/svelte/icons/chevrons-up-down\"\n  import { buttonVariants } from \"$lib/registry/ui/button/index.js\"\n  import * as Command from \"$lib/registry/ui/command/index.js\"\n  import * as Form from \"$lib/registry/ui/form/index.js\"\n  import * as Popover from \"$lib/registry/ui/popover/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import { useId } from \"bits-ui\"\n  import { tick } from \"svelte\"\n  import { toast } from \"svelte-sonner\"\n  import { defaults, superForm } from \"sveltekit-superforms\"\n  import { zod4 } from \"sveltekit-superforms/adapters\"\n\n  const form = superForm(defaults(zod4(formSchema)), {\n    validators: zod4(formSchema),\n    SPA: true,\n    onUpdate: ({ form: f }) => {\n      if (f.valid) {\n        toast.success(`You submitted ${JSON.stringify(f.data, null, 2)}`)\n      } else {\n        toast.error(\"Please fix the errors in the form.\")\n      }\n    },\n  })\n\n  const { form: formData, enhance } = form\n\n  let open = false\n\n  // We want to refocus the trigger button when the user selects\n  // an item from the list so users can continue navigating the\n  // rest of the form with the keyboard.\n  function closeAndFocusTrigger(triggerId: string) {\n    open = false\n    tick().then(() => {\n      document.getElementById(triggerId)?.focus()\n    })\n  }\n  const triggerId = useId()\n</script>\n\n<form method=\"POST\" class=\"space-y-6\" use:enhance>\n  <Form.Field {form} name=\"language\" class=\"flex flex-col\">\n    <Popover.Root bind:open>\n      <Form.Control id={triggerId}>\n        {#snippet children({ props })}\n          <Form.Label>Language</Form.Label>\n          <Popover.Trigger\n            class={cn(\n              buttonVariants({ variant: \"outline\" }),\n              \"w-[200px] justify-between\",\n              !$formData.language && \"text-muted-foreground\"\n            )}\n            role=\"combobox\"\n            {...props}\n          >\n            {languages.find((f) => f.value === $formData.language)?.label ??\n              \"Select language\"}\n            <ChevronsUpDownIcon class=\"opacity-50\" />\n          </Popover.Trigger>\n          <input hidden value={$formData.language} name={props.name} />\n        {/snippet}\n      </Form.Control>\n      <Popover.Content class=\"w-[200px] p-0\">\n        <Command.Root>\n          <Command.Input\n            autofocus\n            placeholder=\"Search language...\"\n            class=\"h-9\"\n          />\n          <Command.Empty>No language found.</Command.Empty>\n          <Command.Group value=\"languages\">\n            {#each languages as language (language.value)}\n              <Command.Item\n                value={language.label}\n                onSelect={() => {\n                  $formData.language = language.value\n                  closeAndFocusTrigger(triggerId)\n                }}\n              >\n                {language.label}\n                <CheckIcon\n                  class={cn(\n                    \"ms-auto\",\n                    language.value !== $formData.language && \"text-transparent\"\n                  )}\n                />\n              </Command.Item>\n            {/each}\n          </Command.Group>\n        </Command.Root>\n      </Popover.Content>\n    </Popover.Root>\n    <Form.Description>\n      This is the language that will be used in the dashboard.\n    </Form.Description>\n    <Form.FieldErrors />\n  </Form.Field>\n  <Form.Button>Submit</Form.Button>\n</form>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

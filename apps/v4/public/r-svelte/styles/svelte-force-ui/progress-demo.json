@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress-demo",
+  "title": "Progress Demo",
+  "registryDependencies": [
+    "progress"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/progress-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Progress } from \"$lib/registry/ui/progress/index.js\"\n  import { onMount } from \"svelte\"\n\n  let value = $state(13)\n\n  onMount(() => {\n    const timer = setTimeout(() => (value = 66), 500)\n    return () => clearTimeout(timer)\n  })\n</script>\n\n<Progress {value} max={100} class=\"w-[60%]\" />\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-outline",
+  "title": "Toggle Outline",
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/toggle-outline.svelte",
+      "content": "<script lang=\"ts\">\n  import ItalicIcon from \"@lucide/svelte/icons/italic\"\n  import { Toggle } from \"$lib/registry/ui/toggle/index.js\"\n</script>\n\n<Toggle variant=\"outline\" aria-label=\"Toggle italic\">\n  <ItalicIcon class=\"size-4\" />\n</Toggle>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

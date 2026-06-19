@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-status",
+  "title": "Alert Status",
+  "dependencies": [],
+  "registryDependencies": [
+    "alert"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/alert-status.gts",
+      "content": "import { Alert, AlertDescription, AlertTitle } from '@/ui/alert';\n\nimport CircleCheckBig from '~icons/lucide/circle-check-big';\nimport Info from '~icons/lucide/info';\nimport TriangleAlert from '~icons/lucide/triangle-alert';\n\n<template>\n  <div class=\"flex w-full max-w-md flex-col gap-4\">\n    <Alert @variant=\"success\">\n      <CircleCheckBig />\n      <AlertTitle>Payment received</AlertTitle>\n      <AlertDescription>Your invoice has been paid in full.</AlertDescription>\n    </Alert>\n    <Alert @variant=\"info\">\n      <Info />\n      <AlertTitle>Scheduled maintenance</AlertTitle>\n      <AlertDescription>The service will be unavailable on Sunday from 02:00–04:00 UTC.</AlertDescription>\n    </Alert>\n    <Alert @variant=\"warning\">\n      <TriangleAlert />\n      <AlertTitle>Your subscription expires soon</AlertTitle>\n      <AlertDescription>Renew within 3 days to avoid any interruption to your service.</AlertDescription>\n    </Alert>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

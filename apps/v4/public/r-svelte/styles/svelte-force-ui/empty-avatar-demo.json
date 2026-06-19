@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-avatar-demo",
+  "title": "Empty Avatar Demo",
+  "registryDependencies": [
+    "avatar",
+    "button",
+    "empty"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/empty-avatar-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Avatar from \"$lib/registry/ui/avatar/index.js\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Empty from \"$lib/registry/ui/empty/index.js\"\n</script>\n\n<Empty.Root>\n  <Empty.Header>\n    <Empty.Media variant=\"default\">\n      <Avatar.Root class=\"size-12\">\n        <Avatar.Image src=\"https://github.com/shadcn.png\" class=\"grayscale\" />\n        <Avatar.Fallback>LR</Avatar.Fallback>\n      </Avatar.Root>\n    </Empty.Media>\n    <Empty.Title>User Offline</Empty.Title>\n    <Empty.Description>\n      This user is currently offline. You can leave a message to notify them or\n      try again later.\n    </Empty.Description>\n  </Empty.Header>\n  <Empty.Content>\n    <Button size=\"sm\">Leave Message</Button>\n  </Empty.Content>\n</Empty.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

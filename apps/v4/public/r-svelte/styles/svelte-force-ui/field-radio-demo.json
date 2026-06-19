@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-radio-demo",
+  "title": "Field Radio Demo",
+  "registryDependencies": [
+    "field",
+    "radio-group"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/field-radio-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Field from \"$lib/registry/ui/field/index.js\"\n  import * as RadioGroup from \"$lib/registry/ui/radio-group/index.js\"\n\n  let plan = $state(\"monthly\")\n</script>\n\n<div class=\"w-full max-w-md\">\n  <Field.Set>\n    <Field.Label>Subscription Plan</Field.Label>\n    <Field.Description\n      >Yearly and lifetime plans offer significant savings.</Field.Description\n    >\n    <RadioGroup.Root bind:value={plan}>\n      <Field.Field orientation=\"horizontal\">\n        <RadioGroup.Item value=\"monthly\" id=\"plan-monthly\" />\n        <Field.Label for=\"plan-monthly\" class=\"font-normal\">\n          Monthly ($9.99/month)\n        </Field.Label>\n      </Field.Field>\n      <Field.Field orientation=\"horizontal\">\n        <RadioGroup.Item value=\"yearly\" id=\"plan-yearly\" />\n        <Field.Label for=\"plan-yearly\" class=\"font-normal\">\n          Yearly ($99.99/year)\n        </Field.Label>\n      </Field.Field>\n      <Field.Field orientation=\"horizontal\">\n        <RadioGroup.Item value=\"lifetime\" id=\"plan-lifetime\" />\n        <Field.Label for=\"plan-lifetime\" class=\"font-normal\">\n          Lifetime ($299.99)\n        </Field.Label>\n      </Field.Field>\n    </RadioGroup.Root>\n  </Field.Set>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

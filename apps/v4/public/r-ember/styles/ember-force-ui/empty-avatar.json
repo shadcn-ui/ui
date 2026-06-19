@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-avatar",
+  "title": "Empty Avatar",
+  "dependencies": [],
+  "registryDependencies": [
+    "avatar",
+    "button",
+    "empty"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/empty-avatar.gts",
+      "content": "import { Avatar, AvatarFallback, AvatarImage } from '@/ui/avatar';\nimport { Button } from '@/ui/button';\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from '@/ui/empty';\n\n<template>\n  {{! template-lint-disable no-potential-path-strings }}\n  <Empty>\n    <EmptyHeader>\n      <EmptyMedia @variant=\"default\">\n        <Avatar @class=\"size-12\">\n          <AvatarImage\n            @class=\"grayscale\"\n            @src=\"https://github.com/shadcn.png\"\n          />\n          <AvatarFallback>LR</AvatarFallback>\n        </Avatar>\n      </EmptyMedia>\n      <EmptyTitle>User Offline</EmptyTitle>\n      <EmptyDescription>\n        This user is currently offline. You can leave a message to notify them\n        or try again later.\n      </EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <Button @size=\"sm\">Leave Message</Button>\n    </EmptyContent>\n  </Empty>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

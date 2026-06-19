@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sheet-demo",
+  "title": "Sheet Demo",
+  "registryDependencies": [
+    "button",
+    "input",
+    "label",
+    "sheet"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/sheet-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button, buttonVariants } from \"$lib/registry/ui/button/index.js\"\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n  import { Label } from \"$lib/registry/ui/label/index.js\"\n  import * as Sheet from \"$lib/registry/ui/sheet/index.js\"\n</script>\n\n<Sheet.Root>\n  <Sheet.Trigger class={buttonVariants({ variant: \"outline\" })}\n    >Open</Sheet.Trigger\n  >\n  <Sheet.Content side=\"right\">\n    <Sheet.Header>\n      <Sheet.Title>Edit profile</Sheet.Title>\n      <Sheet.Description>\n        Make changes to your profile here. Click save when you're done.\n      </Sheet.Description>\n    </Sheet.Header>\n    <div class=\"grid flex-1 auto-rows-min gap-6 px-4\">\n      <div class=\"grid gap-3\">\n        <Label for=\"name\" class=\"text-end\">Name</Label>\n        <Input id=\"name\" value=\"Pedro Duarte\" />\n      </div>\n      <div class=\"grid gap-3\">\n        <Label for=\"username\" class=\"text-end\">Username</Label>\n        <Input id=\"username\" value=\"@peduarte\" />\n      </div>\n    </div>\n    <Sheet.Footer>\n      <Button type=\"submit\">Save changes</Button>\n      <Sheet.Close class={buttonVariants({ variant: \"outline\" })}\n        >Close</Sheet.Close\n      >\n    </Sheet.Footer>\n  </Sheet.Content>\n</Sheet.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

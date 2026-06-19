@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dark-mode-dropdown-menu",
+  "title": "Dark Mode Dropdown Menu",
+  "registryDependencies": [
+    "button",
+    "dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/dark-mode-dropdown-menu.svelte",
+      "content": "<script lang=\"ts\">\n  import MoonIcon from \"@lucide/svelte/icons/moon\"\n  import SunIcon from \"@lucide/svelte/icons/sun\"\n  import { buttonVariants } from \"$lib/registry/ui/button/index.js\"\n  import * as DropdownMenu from \"$lib/registry/ui/dropdown-menu/index.js\"\n  import { resetMode, setMode } from \"mode-watcher\"\n</script>\n\n<DropdownMenu.Root>\n  <DropdownMenu.Trigger\n    class={buttonVariants({ variant: \"outline\", size: \"icon\" })}\n  >\n    <SunIcon\n      class=\"h-[1.2rem] w-[1.2rem] scale-100 rotate-0 !transition-all dark:scale-0 dark:-rotate-90\"\n    />\n    <MoonIcon\n      class=\"absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 !transition-all dark:scale-100 dark:rotate-0\"\n    />\n    <span class=\"sr-only\">Toggle theme</span>\n  </DropdownMenu.Trigger>\n  <DropdownMenu.Content align=\"end\">\n    <DropdownMenu.Item onclick={() => setMode(\"light\")}>Light</DropdownMenu.Item\n    >\n    <DropdownMenu.Item onclick={() => setMode(\"dark\")}>Dark</DropdownMenu.Item>\n    <DropdownMenu.Item onclick={() => resetMode()}>System</DropdownMenu.Item>\n  </DropdownMenu.Content>\n</DropdownMenu.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dark-mode-light-switch",
+  "title": "Dark Mode Light Switch",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/dark-mode-light-switch.svelte",
+      "content": "<script lang=\"ts\">\n  import MoonIcon from \"@lucide/svelte/icons/moon\"\n  import SunIcon from \"@lucide/svelte/icons/sun\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import { toggleMode } from \"mode-watcher\"\n</script>\n\n<Button onclick={toggleMode} variant=\"outline\" size=\"icon\">\n  <SunIcon\n    class=\"h-[1.2rem] w-[1.2rem] scale-100 rotate-0 !transition-all dark:scale-0 dark:-rotate-90\"\n  />\n  <MoonIcon\n    class=\"absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 !transition-all dark:scale-100 dark:rotate-0\"\n  />\n  <span class=\"sr-only\">Toggle theme</span>\n</Button>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

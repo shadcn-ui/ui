@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-with-label",
+  "title": "Input With Label",
+  "registryDependencies": [
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-with-label.svelte",
+      "content": "<script lang=\"ts\">\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n  import { Label } from \"$lib/registry/ui/label/index.js\"\n\n  const id = $props.id()\n</script>\n\n<div class=\"flex w-full max-w-sm flex-col gap-1.5\">\n  <Label for=\"email-{id}\">Email</Label>\n  <Input type=\"email\" id=\"email-{id}\" placeholder=\"Email\" />\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

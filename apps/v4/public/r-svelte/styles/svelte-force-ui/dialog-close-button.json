@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog-close-button",
+  "title": "Dialog Close Button",
+  "registryDependencies": [
+    "button",
+    "dialog",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/dialog-close-button.svelte",
+      "content": "<script lang=\"ts\">\n  import { buttonVariants } from \"$lib/registry/ui/button/index.js\"\n  import * as Dialog from \"$lib/registry/ui/dialog/index.js\"\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n  import { Label } from \"$lib/registry/ui/label/index.js\"\n</script>\n\n<Dialog.Root>\n  <Dialog.Trigger class={buttonVariants({ variant: \"outline\" })}\n    >Share</Dialog.Trigger\n  >\n  <Dialog.Content class=\"sm:max-w-md\">\n    <Dialog.Header>\n      <Dialog.Title>Share link</Dialog.Title>\n      <Dialog.Description>\n        Anyone who has this link will be able to view this.\n      </Dialog.Description>\n    </Dialog.Header>\n    <div class=\"flex items-center gap-2\">\n      <div class=\"grid flex-1 gap-2\">\n        <Label for=\"link\" class=\"sr-only\">Link</Label>\n        <Input\n          id=\"link\"\n          defaultValue=\"https://shadcn-svelte.com/docs/installation\"\n        />\n      </div>\n    </div>\n    <Dialog.Footer class=\"sm:justify-start\">\n      <Dialog.Close class={buttonVariants({ variant: \"secondary\" })}\n        >Close</Dialog.Close\n      >\n    </Dialog.Footer>\n  </Dialog.Content>\n</Dialog.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

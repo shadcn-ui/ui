@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-color-demo",
+  "title": "Spinner Color Demo",
+  "registryDependencies": [
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/spinner-color-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Spinner } from \"$lib/registry/ui/spinner/index.js\"\n</script>\n\n<div class=\"flex items-center gap-6\">\n  <Spinner class=\"size-6 text-red-500\" />\n  <Spinner class=\"size-6 text-green-500\" />\n  <Spinner class=\"size-6 text-blue-500\" />\n  <Spinner class=\"size-6 text-yellow-500\" />\n  <Spinner class=\"size-6 text-purple-500\" />\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

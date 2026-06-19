@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-bar-axis-tick-demo",
+  "title": "Chart Bar Axis Tick Demo",
+  "registryDependencies": [
+    "chart"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/chart-bar-axis-tick-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Chart from \"$lib/registry/ui/chart/index.js\"\n  import { scaleBand } from \"d3-scale\"\n  import { BarChart } from \"layerchart\"\n\n  const chartData = [\n    { month: \"January\", desktop: 186, mobile: 80 },\n    { month: \"February\", desktop: 305, mobile: 200 },\n    { month: \"March\", desktop: 237, mobile: 120 },\n    { month: \"April\", desktop: 73, mobile: 190 },\n    { month: \"May\", desktop: 209, mobile: 130 },\n    { month: \"June\", desktop: 214, mobile: 140 },\n  ]\n\n  const chartConfig = {\n    desktop: {\n      label: \"Desktop\",\n      color: \"#2563eb\",\n    },\n    mobile: {\n      label: \"Mobile\",\n      color: \"#60a5fa\",\n    },\n  } satisfies Chart.ChartConfig\n</script>\n\n<Chart.Container config={chartConfig} class=\"min-h-[200px] w-full\">\n  <BarChart\n    data={chartData}\n    xScale={scaleBand().padding(0.25)}\n    x=\"month\"\n    axis=\"x\"\n    tooltip={false}\n    seriesLayout=\"group\"\n    series={[\n      {\n        key: \"desktop\",\n        label: chartConfig.desktop.label,\n        color: chartConfig.desktop.color,\n      },\n      {\n        key: \"mobile\",\n        label: chartConfig.mobile.label,\n        color: chartConfig.mobile.color,\n      },\n    ]}\n    props={{\n      xAxis: {\n        format: (d) => d.slice(0, 3),\n      },\n    }}\n  />\n</Chart.Container>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

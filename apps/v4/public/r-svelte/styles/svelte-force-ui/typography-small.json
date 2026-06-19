@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-small",
+  "title": "Typography Small",
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/typography-small.svelte",
+      "content": "<small class=\"text-sm leading-none font-medium\">Email address</small>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

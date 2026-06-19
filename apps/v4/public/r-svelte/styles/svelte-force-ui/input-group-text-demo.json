@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-text-demo",
+  "title": "Input Group Text Demo",
+  "registryDependencies": [
+    "input-group"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-group-text-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as InputGroup from \"$lib/registry/ui/input-group/index.js\"\n</script>\n\n<div class=\"grid w-full max-w-sm gap-6\">\n  <InputGroup.Root>\n    <InputGroup.Addon>\n      <InputGroup.Text>$</InputGroup.Text>\n    </InputGroup.Addon>\n    <InputGroup.Input placeholder=\"0.00\" />\n    <InputGroup.Addon align=\"inline-end\">\n      <InputGroup.Text>USD</InputGroup.Text>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root>\n    <InputGroup.Addon>\n      <InputGroup.Text>https://</InputGroup.Text>\n    </InputGroup.Addon>\n    <InputGroup.Input placeholder=\"example.com\" class=\"!ps-0.5\" />\n    <InputGroup.Addon align=\"inline-end\">\n      <InputGroup.Text>.com</InputGroup.Text>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root>\n    <InputGroup.Input placeholder=\"Enter your username\" />\n    <InputGroup.Addon align=\"inline-end\">\n      <InputGroup.Text>@company.com</InputGroup.Text>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root>\n    <InputGroup.Textarea placeholder=\"Enter your message\" />\n    <InputGroup.Addon align=\"block-end\">\n      <InputGroup.Text class=\"text-muted-foreground text-xs\">\n        120 characters left\n      </InputGroup.Text>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

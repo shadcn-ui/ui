@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-with-icon",
+  "title": "Button With Icon",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/button-with-icon.svelte",
+      "content": "<script lang=\"ts\">\n  import IconGitBranch from \"@lucide/svelte/icons/git-branch\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n</script>\n\n<Button variant=\"outline\" size=\"sm\">\n  <IconGitBranch /> New Branch\n</Button>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

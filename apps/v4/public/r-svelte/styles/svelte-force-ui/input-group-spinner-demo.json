@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-spinner-demo",
+  "title": "Input Group Spinner Demo",
+  "registryDependencies": [
+    "input-group",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-group-spinner-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import LoaderIcon from \"@lucide/svelte/icons/loader\"\n  import * as InputGroup from \"$lib/registry/ui/input-group/index.js\"\n  import { Spinner } from \"$lib/registry/ui/spinner/index.js\"\n</script>\n\n<div class=\"grid w-full max-w-sm gap-4\">\n  <InputGroup.Root data-disabled>\n    <InputGroup.Input placeholder=\"Searching...\" disabled />\n    <InputGroup.Addon align=\"inline-end\">\n      <Spinner />\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root data-disabled>\n    <InputGroup.Input placeholder=\"Processing...\" disabled />\n    <InputGroup.Addon>\n      <Spinner />\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root data-disabled>\n    <InputGroup.Input placeholder=\"Saving changes...\" disabled />\n    <InputGroup.Addon align=\"inline-end\">\n      <InputGroup.Text>Saving...</InputGroup.Text>\n      <Spinner />\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root data-disabled>\n    <InputGroup.Input placeholder=\"Refreshing data...\" disabled />\n    <InputGroup.Addon>\n      <LoaderIcon class=\"animate-spin\" />\n    </InputGroup.Addon>\n    <InputGroup.Addon align=\"inline-end\">\n      <InputGroup.Text class=\"text-muted-foreground\"\n        >Please wait...</InputGroup.Text\n      >\n    </InputGroup.Addon>\n  </InputGroup.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-input-group-demo",
+  "title": "Button Group Input Group Demo",
+  "registryDependencies": [
+    "button",
+    "button-group",
+    "input-group",
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/button-group-input-group-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import AudioLines from \"@lucide/svelte/icons/audio-lines\"\n  import Plus from \"@lucide/svelte/icons/plus\"\n  import * as ButtonGroup from \"$lib/registry/ui/button-group/index.js\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as InputGroup from \"$lib/registry/ui/input-group/index.js\"\n  import * as Tooltip from \"$lib/registry/ui/tooltip/index.js\"\n\n  let voiceEnabled = $state(false)\n</script>\n\n<ButtonGroup.Root class=\"[--radius:9999rem]\">\n  <ButtonGroup.Root>\n    <Button variant=\"outline\" size=\"icon\">\n      <Plus />\n    </Button>\n  </ButtonGroup.Root>\n  <ButtonGroup.Root class=\"flex-1\">\n    <InputGroup.Root>\n      <InputGroup.Input\n        placeholder={voiceEnabled\n          ? \"Record and send audio...\"\n          : \"Send a message...\"}\n        disabled={voiceEnabled}\n      />\n      <InputGroup.Addon align=\"inline-end\">\n        <Tooltip.Root>\n          <Tooltip.Trigger>\n            {#snippet child({ props })}\n              <InputGroup.Button\n                {...props}\n                onclick={() => (voiceEnabled = !voiceEnabled)}\n                size=\"icon-xs\"\n                data-active={voiceEnabled}\n                class=\"data-[active=true]:bg-orange-100 data-[active=true]:text-orange-700 dark:data-[active=true]:bg-orange-800 dark:data-[active=true]:text-orange-100\"\n                aria-pressed={voiceEnabled}\n              >\n                <AudioLines />\n              </InputGroup.Button>\n            {/snippet}\n          </Tooltip.Trigger>\n          <Tooltip.Content>Voice Mode</Tooltip.Content>\n        </Tooltip.Root>\n      </InputGroup.Addon>\n    </InputGroup.Root>\n  </ButtonGroup.Root>\n</ButtonGroup.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

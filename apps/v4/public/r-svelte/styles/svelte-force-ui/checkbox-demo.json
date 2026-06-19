@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-demo",
+  "title": "Checkbox Demo",
+  "registryDependencies": [
+    "checkbox",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/checkbox-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Checkbox } from \"$lib/registry/ui/checkbox/index.js\"\n  import { Label } from \"$lib/registry/ui/label/index.js\"\n</script>\n\n<div class=\"flex flex-col gap-6\">\n  <div class=\"flex items-center gap-3\">\n    <Checkbox id=\"terms\" />\n    <Label for=\"terms\">Accept terms and conditions</Label>\n  </div>\n  <div class=\"flex items-start gap-3\">\n    <Checkbox id=\"terms-2\" checked />\n    <div class=\"grid gap-2\">\n      <Label for=\"terms-2\">Accept terms and conditions</Label>\n      <p class=\"text-muted-foreground text-sm\">\n        By clicking this checkbox, you agree to the terms and conditions.\n      </p>\n    </div>\n  </div>\n  <div class=\"flex items-start gap-3\">\n    <Checkbox id=\"toggle\" disabled />\n    <Label for=\"toggle\">Enable notifications</Label>\n  </div>\n  <Label\n    class=\"hover:bg-accent/50 flex items-start gap-3 rounded-lg border p-3 has-[[aria-checked=true]]:border-blue-600 has-[[aria-checked=true]]:bg-blue-50 dark:has-[[aria-checked=true]]:border-blue-900 dark:has-[[aria-checked=true]]:bg-blue-950\"\n  >\n    <Checkbox\n      id=\"toggle-2\"\n      checked\n      class=\"data-[state=checked]:border-blue-600 data-[state=checked]:bg-blue-600 data-[state=checked]:text-white dark:data-[state=checked]:border-blue-700 dark:data-[state=checked]:bg-blue-700\"\n    />\n    <div class=\"grid gap-1.5 font-normal\">\n      <p class=\"text-sm leading-none font-medium\">Enable notifications</p>\n      <p class=\"text-muted-foreground text-sm\">\n        You can enable or disable notifications at any time.\n      </p>\n    </div>\n  </Label>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

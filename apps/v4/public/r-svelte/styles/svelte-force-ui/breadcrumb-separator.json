@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-separator",
+  "title": "Breadcrumb Separator",
+  "registryDependencies": [
+    "breadcrumb"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/breadcrumb-separator.svelte",
+      "content": "<script lang=\"ts\">\n  import SlashIcon from \"@lucide/svelte/icons/slash\"\n  import * as Breadcrumb from \"$lib/registry/ui/breadcrumb/index.js\"\n</script>\n\n<Breadcrumb.Root>\n  <Breadcrumb.List>\n    <Breadcrumb.Item>\n      <Breadcrumb.Link href=\"/\">Home</Breadcrumb.Link>\n    </Breadcrumb.Item>\n    <Breadcrumb.Separator>\n      <SlashIcon />\n    </Breadcrumb.Separator>\n    <Breadcrumb.Item>\n      <Breadcrumb.Link href=\"/components\">Components</Breadcrumb.Link>\n    </Breadcrumb.Item>\n    <Breadcrumb.Separator>\n      <SlashIcon />\n    </Breadcrumb.Separator>\n    <Breadcrumb.Item>\n      <Breadcrumb.Page>Breadcrumb</Breadcrumb.Page>\n    </Breadcrumb.Item>\n  </Breadcrumb.List>\n</Breadcrumb.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

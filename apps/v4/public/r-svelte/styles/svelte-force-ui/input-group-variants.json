@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-variants",
+  "title": "Input Group Variants",
+  "registryDependencies": [
+    "input-group"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-group-variants.svelte",
+      "content": "<script lang=\"ts\">\n  import {\n    InputGroup,\n    InputGroupInput,\n  } from \"$lib/registry/ui/input-group/index.js\"\n</script>\n\n<div class=\"flex w-full flex-col gap-4\">\n  <InputGroup variant=\"outline\">\n    <InputGroupInput placeholder=\"Outline\" />\n  </InputGroup>\n  <InputGroup variant=\"filled\">\n    <InputGroupInput placeholder=\"Filled\" />\n  </InputGroup>\n  <InputGroup variant=\"underline\">\n    <InputGroupInput placeholder=\"Underline\" />\n  </InputGroup>\n  <InputGroup variant=\"ghost\">\n    <InputGroupInput placeholder=\"Ghost\" />\n  </InputGroup>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

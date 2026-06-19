@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "command-demo",
+  "title": "Command Demo",
+  "registryDependencies": [
+    "command"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/command-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import CalculatorIcon from \"@lucide/svelte/icons/calculator\"\n  import CalendarIcon from \"@lucide/svelte/icons/calendar\"\n  import CreditCardIcon from \"@lucide/svelte/icons/credit-card\"\n  import SettingsIcon from \"@lucide/svelte/icons/settings\"\n  import SmileIcon from \"@lucide/svelte/icons/smile\"\n  import UserIcon from \"@lucide/svelte/icons/user\"\n  import * as Command from \"$lib/registry/ui/command/index.js\"\n</script>\n\n<Command.Root class=\"rounded-lg border shadow-md md:min-w-[450px]\">\n  <Command.Input placeholder=\"Type a command or search...\" />\n  <Command.List>\n    <Command.Empty>No results found.</Command.Empty>\n    <Command.Group heading=\"Suggestions\">\n      <Command.Item>\n        <CalendarIcon />\n        <span>Calendar</span>\n      </Command.Item>\n      <Command.Item>\n        <SmileIcon />\n        <span>Search Emoji</span>\n      </Command.Item>\n      <Command.Item disabled>\n        <CalculatorIcon />\n        <span>Calculator</span>\n      </Command.Item>\n    </Command.Group>\n    <Command.Separator />\n    <Command.Group heading=\"Settings\">\n      <Command.Item>\n        <UserIcon />\n        <span>Profile</span>\n        <Command.Shortcut>⌘P</Command.Shortcut>\n      </Command.Item>\n      <Command.Item>\n        <CreditCardIcon />\n        <span>Billing</span>\n        <Command.Shortcut>⌘B</Command.Shortcut>\n      </Command.Item>\n      <Command.Item>\n        <SettingsIcon />\n        <span>Settings</span>\n        <Command.Shortcut>⌘S</Command.Shortcut>\n      </Command.Item>\n    </Command.Group>\n  </Command.List>\n</Command.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

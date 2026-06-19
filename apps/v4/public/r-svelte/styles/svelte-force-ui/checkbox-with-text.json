@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-with-text",
+  "title": "Checkbox With Text",
+  "registryDependencies": [
+    "checkbox",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/checkbox-with-text.svelte",
+      "content": "<script lang=\"ts\">\n  import { Checkbox } from \"$lib/registry/ui/checkbox/index.js\"\n  import { Label } from \"$lib/registry/ui/label/index.js\"\n</script>\n\n<div class=\"items-top flex space-x-2\">\n  <Checkbox id=\"terms1\" />\n  <div class=\"grid gap-1.5 leading-none\">\n    <Label\n      for=\"terms1\"\n      class=\"text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70\"\n    >\n      Accept terms and conditions\n    </Label>\n    <p class=\"text-muted-foreground text-sm\">\n      You agree to our Terms of Service and Privacy Policy.\n    </p>\n  </div>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

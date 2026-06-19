@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "drawer-dialog",
+  "title": "Drawer Dialog",
+  "registryDependencies": [
+    "button",
+    "dialog",
+    "drawer",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/drawer-dialog.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button, buttonVariants } from \"$lib/registry/ui/button/index.js\"\n  import * as Dialog from \"$lib/registry/ui/dialog/index.js\"\n  import * as Drawer from \"$lib/registry/ui/drawer/index.js\"\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n  import { Label } from \"$lib/registry/ui/label/index.js\"\n  import { MediaQuery } from \"svelte/reactivity\"\n\n  let open = $state(false)\n  const isDesktop = new MediaQuery(\"(min-width: 768px)\")\n\n  const id = $props.id()\n</script>\n\n{#if isDesktop.current}\n  <Dialog.Root bind:open>\n    <Dialog.Trigger class={buttonVariants({ variant: \"outline\" })}\n      >Edit Profile</Dialog.Trigger\n    >\n    <Dialog.Content class=\"sm:max-w-[425px]\">\n      <Dialog.Header>\n        <Dialog.Title>Edit profile</Dialog.Title>\n        <Dialog.Description>\n          Make changes to your profile here. Click save when you're done.\n        </Dialog.Description>\n      </Dialog.Header>\n      <form class=\"grid items-start gap-4\">\n        <div class=\"grid gap-2\">\n          <Label for=\"email-{id}\">Email</Label>\n          <Input type=\"email\" id=\"email-{id}\" value=\"shadcn@example.com\" />\n        </div>\n        <div class=\"grid gap-2\">\n          <Label for=\"username-{id}\">Username</Label>\n          <Input id=\"username-{id}\" value=\"@shadcn\" />\n        </div>\n        <Button type=\"submit\">Save changes</Button>\n      </form>\n    </Dialog.Content>\n  </Dialog.Root>\n{:else}\n  <Drawer.Root bind:open>\n    <Drawer.Trigger class={buttonVariants({ variant: \"outline\" })}\n      >Edit Profile</Drawer.Trigger\n    >\n    <Drawer.Content>\n      <Drawer.Header class=\"text-start\">\n        <Drawer.Title>Edit profile</Drawer.Title>\n        <Drawer.Description>\n          Make changes to your profile here. Click save when you're done.\n        </Drawer.Description>\n      </Drawer.Header>\n      <form class=\"grid items-start gap-4 px-4\">\n        <div class=\"grid gap-2\">\n          <Label for=\"email-{id}\">Email</Label>\n          <Input type=\"email\" id=\"email-{id}\" value=\"shadcn@example.com\" />\n        </div>\n        <div class=\"grid gap-2\">\n          <Label for=\"username-{id}\">Username</Label>\n          <Input id=\"username-{id}\" value=\"@shadcn\" />\n        </div>\n        <Button type=\"submit\">Save changes</Button>\n      </form>\n      <Drawer.Footer class=\"pt-2\">\n        <Drawer.Close class={buttonVariants({ variant: \"outline\" })}\n          >Cancel</Drawer.Close\n        >\n      </Drawer.Footer>\n    </Drawer.Content>\n  </Drawer.Root>\n{/if}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

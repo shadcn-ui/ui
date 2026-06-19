@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-separator-demo",
+  "title": "Button Group Separator Demo",
+  "registryDependencies": [
+    "button",
+    "button-group"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/button-group-separator-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as ButtonGroup from \"$lib/registry/ui/button-group/index.js\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n</script>\n\n<ButtonGroup.Root>\n  <Button variant=\"secondary\" size=\"sm\">Copy</Button>\n  <ButtonGroup.Separator />\n  <Button variant=\"secondary\" size=\"sm\">Paste</Button>\n</ButtonGroup.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

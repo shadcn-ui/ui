@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-orientation-demo",
+  "title": "Button Group Orientation Demo",
+  "registryDependencies": [
+    "button",
+    "button-group"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/button-group-orientation-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import Minus from \"@lucide/svelte/icons/minus\"\n  import Plus from \"@lucide/svelte/icons/plus\"\n  import * as ButtonGroup from \"$lib/registry/ui/button-group/index.js\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n</script>\n\n<ButtonGroup.Root\n  orientation=\"vertical\"\n  aria-label=\"Media controls\"\n  class=\"h-fit\"\n>\n  <Button variant=\"outline\" size=\"icon\">\n    <Plus />\n  </Button>\n  <Button variant=\"outline\" size=\"icon\">\n    <Minus />\n  </Button>\n</ButtonGroup.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

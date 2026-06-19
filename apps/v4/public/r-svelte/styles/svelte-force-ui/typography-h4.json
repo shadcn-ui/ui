@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-h4",
+  "title": "Typography H4",
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/typography-h4.svelte",
+      "content": "<h4 class=\"scroll-m-20 text-xl font-semibold tracking-tight\">\n  People stopped telling jokes\n</h4>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

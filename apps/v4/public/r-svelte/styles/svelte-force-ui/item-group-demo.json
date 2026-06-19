@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-group-demo",
+  "title": "Item Group Demo",
+  "registryDependencies": [
+    "avatar",
+    "button",
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/item-group-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import Plus from \"@lucide/svelte/icons/plus\"\n  import * as Avatar from \"$lib/registry/ui/avatar/index.js\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Item from \"$lib/registry/ui/item/index.js\"\n\n  const people = [\n    {\n      username: \"shadcn\",\n      avatar: \"https://github.com/shadcn.png\",\n      email: \"shadcn@vercel.com\",\n    },\n    {\n      username: \"maxleiter\",\n      avatar: \"https://github.com/maxleiter.png\",\n      email: \"maxleiter@vercel.com\",\n    },\n    {\n      username: \"evilrabbit\",\n      avatar: \"https://github.com/evilrabbit.png\",\n      email: \"evilrabbit@vercel.com\",\n    },\n  ]\n</script>\n\n<div class=\"flex w-full max-w-md flex-col gap-6\">\n  <Item.Group>\n    {#each people as person, index (person.username)}\n      <Item.Root>\n        <Item.Media>\n          <Avatar.Root>\n            <Avatar.Image src={person.avatar} class=\"grayscale\" />\n            <Avatar.Fallback>{person.username.charAt(0)}</Avatar.Fallback>\n          </Avatar.Root>\n        </Item.Media>\n        <Item.Content class=\"gap-1\">\n          <Item.Title>{person.username}</Item.Title>\n          <Item.Description>{person.email}</Item.Description>\n        </Item.Content>\n        <Item.Actions>\n          <Button variant=\"ghost\" size=\"icon\" class=\"rounded-full\">\n            <Plus />\n          </Button>\n        </Item.Actions>\n      </Item.Root>\n      {#if index !== people.length - 1}\n        <Item.Separator />\n      {/if}\n    {/each}\n  </Item.Group>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

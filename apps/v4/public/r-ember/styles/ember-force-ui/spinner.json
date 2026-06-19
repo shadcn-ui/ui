@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/ui/spinner.gts",
+      "content": "import { cn } from '@/lib/utils';\nimport type { TOC } from '@ember/component/template-only';\nimport Loader2 from '~icons/lucide/loader-2';\n\ntype Color = 'default' | 'primary' | 'onPrimary' | 'inherit';\ntype Size = 'xs' | 'sm' | 'md' | 'lg';\n\nconst colorClasses: Record<Color, string> = {\n  default: 'cn-spinner-color-default',\n  primary: 'cn-spinner-color-primary',\n  onPrimary: 'cn-spinner-color-onPrimary',\n  inherit: 'cn-spinner-color-inherit',\n};\n\nconst sizeClasses: Record<Size, string> = {\n  xs: 'cn-spinner-size-xs',\n  sm: 'cn-spinner-size-sm',\n  md: 'cn-spinner-size-md',\n  lg: 'cn-spinner-size-lg',\n};\n\ninterface SpinnerSignature {\n  Element: HTMLOrSVGElement;\n  Args: {\n    color?: Color;\n    size?: Size;\n    class?: string;\n  };\n}\n\nconst Spinner: TOC<SpinnerSignature> = <template>\n  <Loader2\n    aria-label=\"Loading\"\n    class={{cn\n      \"cn-spinner animate-spin\"\n      (colorClasses[@color ?? \"default\"])\n      (sizeClasses[@size ?? \"sm\"])\n      @class\n    }}\n    role=\"status\"\n    ...attributes\n  />\n</template>;\n\nexport { Spinner };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/spinner",
+      "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/spinner-demo.gts"
+    }
+  },
+  "type": "registry:ui"
+}

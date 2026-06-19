@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tags-input-example",
+  "title": "Tags Input",
+  "dependencies": [
+    "lucide-vue-next",
+    "reka-ui"
+  ],
+  "registryDependencies": [
+    "button",
+    "popover",
+    "tags-input"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/tags-input/TagsInputDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  TagsInput,\n  TagsInputInput,\n  TagsInputItem,\n  TagsInputItemDelete,\n  TagsInputItemText,\n} from \"@/ui/tags-input\"\nimport { ref } from \"vue\"\n\nconst modelValue = ref([\"Apple\", \"Banana\"])\n</script>\n\n<template>\n  <TagsInput v-model=\"modelValue\" class=\"w-[300px]\">\n    <TagsInputItem v-for=\"item in modelValue\" :key=\"item\" :value=\"item\">\n      <TagsInputItemText />\n      <TagsInputItemDelete />\n    </TagsInputItem>\n\n    <TagsInputInput placeholder=\"Fruits...\" />\n  </TagsInput>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/tags-input/TagsInputWithListbox.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  Popover,\n  PopoverAnchor,\n  PopoverContent,\n  PopoverTrigger,\n} from \"@/ui/popover\"\nimport {\n  TagsInput,\n  TagsInputInput,\n  TagsInputItem,\n  TagsInputItemDelete,\n  TagsInputItemText,\n} from \"@/ui/tags-input\"\nimport { CheckIcon, ChevronDown } from \"lucide-vue-next\"\nimport {\n  ListboxContent,\n  ListboxFilter,\n  ListboxItem,\n  ListboxItemIndicator,\n  ListboxRoot,\n  useFilter,\n} from \"reka-ui\"\nimport { ref } from \"vue\"\n\nconst frameworks = [\n  { value: \"next.js\", label: \"Next.js\" },\n  { value: \"sveltekit\", label: \"SvelteKit\" },\n  { value: \"nuxt\", label: \"Nuxt\" },\n  { value: \"remix\", label: \"Remix\" },\n  { value: \"astro\", label: \"Astro\" },\n]\n\nconst searchTerm = ref(\"\")\nconst frameworksRef = ref([\"Nuxt\", \"Remix\"])\nconst open = ref(false)\n\nconst { contains } = useFilter({ sensitivity: \"base\" })\n\nconst filteredFrameworks = computed(() =>\n  searchTerm.value === \"\"\n    ? frameworks\n    : frameworks.filter((option) => contains(option.label, searchTerm.value))\n)\n\nwatch(searchTerm, (f) => {\n  if (f) {\n    open.value = true\n  }\n})\n</script>\n\n<template>\n  <Popover v-model:open=\"open\">\n    <ListboxRoot v-model=\"frameworksRef\" highlight-on-hover multiple>\n      <PopoverAnchor class=\"inline-flex w-[300px]\">\n        <TagsInput\n          v-slot=\"{ modelValue: tags }\"\n          v-model=\"frameworksRef\"\n          class=\"w-full\"\n        >\n          <TagsInputItem\n            v-for=\"item in tags\"\n            :key=\"item.toString()\"\n            :value=\"item.toString()\"\n          >\n            <TagsInputItemText />\n            <TagsInputItemDelete />\n          </TagsInputItem>\n\n          <ListboxFilter v-model=\"searchTerm\" as-child>\n            <TagsInputInput\n              placeholder=\"Frameworks...\"\n              @keydown.enter.prevent\n              @keydown.down=\"open = true\"\n            />\n          </ListboxFilter>\n\n          <PopoverTrigger as-child>\n            <Button\n              size=\"icon-sm\"\n              variant=\"ghost\"\n              class=\"order-last ml-auto self-start\"\n            >\n              <ChevronDown class=\"size-3.5\" />\n            </Button>\n          </PopoverTrigger>\n        </TagsInput>\n      </PopoverAnchor>\n\n      <PopoverContent class=\"p-1\" @open-auto-focus.prevent>\n        <ListboxContent\n          class=\"max-h-[300px] scroll-py-1 overflow-x-hidden overflow-y-auto empty:p-1 empty:after:block empty:after:content-['No_options']\"\n          tabindex=\"0\"\n        >\n          <!-- <CommandEmpty>No results found.</CommandEmpty> -->\n          <ListboxItem\n            v-for=\"item in filteredFrameworks\"\n            :key=\"item.value\"\n            class=\"relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=\\'size-\\'])]:size-4 [&_svg:not([class*=\\'text-\\'])]:text-muted-foreground\"\n            :value=\"item.label\"\n            @select=\"\n              () => {\n                searchTerm = ''\n              }\n            \"\n          >\n            <span>{{ item.label }}</span>\n\n            <ListboxItemIndicator\n              class=\"ml-auto inline-flex items-center justify-center\"\n            >\n              <CheckIcon />\n            </ListboxItemIndicator>\n          </ListboxItem>\n        </ListboxContent>\n      </PopoverContent>\n    </ListboxRoot>\n  </Popover>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

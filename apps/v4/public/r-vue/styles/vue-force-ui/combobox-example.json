@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox-example",
+  "title": "Combobox",
+  "dependencies": [
+    "lucide-vue-next"
+  ],
+  "registryDependencies": [
+    "button",
+    "command",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/combobox/ComboboxDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  Command,\n  CommandEmpty,\n  CommandGroup,\n  CommandInput,\n  CommandItem,\n  CommandList,\n} from \"@/ui/command\"\nimport { Popover, PopoverContent, PopoverTrigger } from \"@/ui/popover\"\nimport { CheckIcon, ChevronsUpDownIcon } from \"lucide-vue-next\"\nimport { computed, ref } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst frameworks = [\n  {\n    value: \"next.js\",\n    label: \"Next.js\",\n  },\n  {\n    value: \"sveltekit\",\n    label: \"SvelteKit\",\n  },\n  {\n    value: \"nuxt.js\",\n    label: \"Nuxt.js\",\n  },\n  {\n    value: \"remix\",\n    label: \"Remix\",\n  },\n  {\n    value: \"astro\",\n    label: \"Astro\",\n  },\n]\n\nconst open = ref(false)\nconst value = ref(\"\")\n\nconst selectedFramework = computed(() =>\n  frameworks.find((framework) => framework.value === value.value)\n)\n\nfunction selectFramework(selectedValue: string) {\n  value.value = selectedValue === value.value ? \"\" : selectedValue\n  open.value = false\n}\n</script>\n\n<template>\n  <Popover v-model:open=\"open\">\n    <PopoverTrigger as-child>\n      <Button\n        variant=\"outline\"\n        role=\"combobox\"\n        :aria-expanded=\"open\"\n        class=\"w-[200px] justify-between\"\n      >\n        {{ selectedFramework?.label || \"Select framework...\" }}\n        <ChevronsUpDownIcon class=\"opacity-50\" />\n      </Button>\n    </PopoverTrigger>\n    <PopoverContent class=\"w-[200px] p-0\">\n      <Command>\n        <CommandInput class=\"h-9\" placeholder=\"Search framework...\" />\n        <CommandList>\n          <CommandEmpty>No framework found.</CommandEmpty>\n          <CommandGroup>\n            <CommandItem\n              v-for=\"framework in frameworks\"\n              :key=\"framework.value\"\n              :value=\"framework.value\"\n              @select=\"\n                (ev) => {\n                  selectFramework(ev.detail.value as string)\n                }\n              \"\n            >\n              {{ framework.label }}\n              <CheckIcon\n                :class=\"\n                  cn(\n                    'ml-auto',\n                    value === framework.value ? 'opacity-100' : 'opacity-0'\n                  )\n                \"\n              />\n            </CommandItem>\n          </CommandGroup>\n        </CommandList>\n      </Command>\n    </PopoverContent>\n  </Popover>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

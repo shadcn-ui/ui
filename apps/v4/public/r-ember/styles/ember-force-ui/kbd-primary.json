@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd-primary",
+  "title": "Kbd Primary",
+  "dependencies": [],
+  "registryDependencies": [
+    "kbd"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/kbd-primary.gts",
+      "content": "import { Kbd } from '@/ui/kbd';\n\n<template>\n  <div class=\"flex items-center gap-4\">\n    <Kbd>⌘K</Kbd>\n    <div class=\"rounded-md bg-primary px-3 py-1.5\">\n      <Kbd @variant=\"primary\">⌘K</Kbd>\n    </div>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group-demo",
+  "title": "Radio Group Demo",
+  "registryDependencies": [
+    "label",
+    "radio-group"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/radio-group-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Label } from \"$lib/registry/ui/label/index.js\"\n  import * as RadioGroup from \"$lib/registry/ui/radio-group/index.js\"\n</script>\n\n<RadioGroup.Root value=\"comfortable\">\n  <div class=\"flex items-center space-x-2\">\n    <RadioGroup.Item value=\"default\" id=\"r1\" />\n    <Label for=\"r1\">Default</Label>\n  </div>\n  <div class=\"flex items-center space-x-2\">\n    <RadioGroup.Item value=\"comfortable\" id=\"r2\" />\n    <Label for=\"r2\">Comfortable</Label>\n  </div>\n  <div class=\"flex items-center space-x-2\">\n    <RadioGroup.Item value=\"compact\" id=\"r3\" />\n    <Label for=\"r3\">Compact</Label>\n  </div>\n</RadioGroup.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

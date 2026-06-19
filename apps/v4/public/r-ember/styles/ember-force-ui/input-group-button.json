@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-button",
+  "title": "Input Group Button",
+  "dependencies": [
+    "@ember/modifier"
+  ],
+  "registryDependencies": [
+    "input-group",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/input-group-button.gts",
+      "content": "import { on } from '@ember/modifier';\nimport Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupButton,\n  InputGroupInput,\n} from '@/ui/input-group';\nimport {\n  Popover,\n  PopoverTrigger,\n  PopoverContent,\n} from '@/ui/popover';\n\nimport Check from '~icons/lucide/check';\nimport Copy from '~icons/lucide/copy';\nimport Info from '~icons/lucide/info';\nimport Star from '~icons/lucide/star';\n\nexport default class InputGroupButtonExample extends Component {\n  @tracked hasCopied = false;\n  @tracked isFavorite = false;\n\n  copyToClipboard = () => {\n    void navigator.clipboard.writeText('https://x.com/shadcn');\n    this.hasCopied = true;\n    setTimeout(() => {\n      this.hasCopied = false;\n    }, 2000);\n  };\n\n  toggleFavorite = () => {\n    this.isFavorite = !this.isFavorite;\n  };\n\n  <template>\n    <div class=\"grid w-full max-w-sm gap-6\">\n      <InputGroup>\n        <InputGroupInput placeholder=\"https://x.com/shadcn\" readonly />\n        <InputGroupAddon @align=\"inline-end\">\n          <InputGroupButton\n            @size=\"icon-xs\"\n            aria-label=\"Copy\"\n            title=\"Copy\"\n            {{on \"click\" this.copyToClipboard}}\n          >\n            {{#if this.hasCopied}}\n              <Check />\n            {{else}}\n              <Copy />\n            {{/if}}\n          </InputGroupButton>\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup @class=\"[--radius:9999px]\">\n        <Popover>\n          <PopoverTrigger @asChild={{true}} as |trigger|>\n            <InputGroupAddon>\n              <InputGroupButton\n                @size=\"icon-xs\"\n                @variant=\"secondary\"\n                {{trigger.modifiers}}\n              >\n                <Info />\n              </InputGroupButton>\n            </InputGroupAddon>\n          </PopoverTrigger>\n          <PopoverContent\n            @align=\"start\"\n            @class=\"flex flex-col gap-1 rounded-xl text-sm\"\n          >\n            <p class=\"font-medium\">Your connection is not secure.</p>\n            <p>You should not enter any sensitive information on this site.</p>\n          </PopoverContent>\n        </Popover>\n        <InputGroupAddon @class=\"text-muted-foreground pl-1.5\">\n          https://\n        </InputGroupAddon>\n        <InputGroupInput id=\"input-secure-19\" />\n        <InputGroupAddon @align=\"inline-end\">\n          <InputGroupButton @size=\"icon-xs\" {{on \"click\" this.toggleFavorite}}>\n            <Star\n              class=\"data-[favorite=true]:fill-blue-600 data-[favorite=true]:stroke-blue-600\"\n              data-favorite={{if this.isFavorite \"true\" \"false\"}}\n            />\n          </InputGroupButton>\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup>\n        <InputGroupInput placeholder=\"Type to search...\" />\n        <InputGroupAddon @align=\"inline-end\">\n          <InputGroupButton @variant=\"secondary\">Search</InputGroupButton>\n        </InputGroupAddon>\n      </InputGroup>\n    </div>\n  </template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

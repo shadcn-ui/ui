@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-disabled",
+  "title": "Input Disabled",
+  "registryDependencies": [
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-disabled.svelte",
+      "content": "<script lang=\"ts\">\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n</script>\n\n<Input disabled type=\"email\" placeholder=\"Email\" class=\"max-w-sm\" />\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

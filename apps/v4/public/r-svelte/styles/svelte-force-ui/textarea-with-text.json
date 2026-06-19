@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-with-text",
+  "title": "Textarea With Text",
+  "registryDependencies": [
+    "label",
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/textarea-with-text.svelte",
+      "content": "<script lang=\"ts\">\n  import { Label } from \"$lib/registry/ui/label/index.js\"\n  import { Textarea } from \"$lib/registry/ui/textarea/index.js\"\n</script>\n\n<div class=\"grid w-full gap-1.5\">\n  <Label for=\"message-2\">Your Message</Label>\n  <Textarea placeholder=\"Type your message here.\" id=\"message-2\" />\n  <p class=\"text-muted-foreground text-sm\">\n    Your message will be copied to the support team.\n  </p>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

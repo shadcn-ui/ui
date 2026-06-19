@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-demo",
+  "title": "Tabs Demo",
+  "registryDependencies": [
+    "button",
+    "card",
+    "input",
+    "label",
+    "tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/tabs-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Card from \"$lib/registry/ui/card/index.js\"\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n  import { Label } from \"$lib/registry/ui/label/index.js\"\n  import * as Tabs from \"$lib/registry/ui/tabs/index.js\"\n</script>\n\n<div class=\"-mb-4 flex w-full max-w-sm flex-col gap-6\">\n  <Tabs.Root value=\"account\">\n    <Tabs.List>\n      <Tabs.Trigger value=\"account\">Account</Tabs.Trigger>\n      <Tabs.Trigger value=\"password\">Password</Tabs.Trigger>\n    </Tabs.List>\n    <Tabs.Content value=\"account\">\n      <Card.Root>\n        <Card.Header>\n          <Card.Title>Account</Card.Title>\n          <Card.Description>\n            Make changes to your account here. Click save when you&apos;re done.\n          </Card.Description>\n        </Card.Header>\n        <Card.Content class=\"grid gap-6\">\n          <div class=\"grid gap-3\">\n            <Label for=\"tabs-demo-name\">Name</Label>\n            <Input id=\"tabs-demo-name\" value=\"Pedro Duarte\" />\n          </div>\n          <div class=\"grid gap-3\">\n            <Label for=\"tabs-demo-username\">Username</Label>\n            <Input id=\"tabs-demo-username\" value=\"@peduarte\" />\n          </div>\n        </Card.Content>\n        <Card.Footer>\n          <Button>Save changes</Button>\n        </Card.Footer>\n      </Card.Root>\n    </Tabs.Content>\n    <Tabs.Content value=\"password\">\n      <Card.Root>\n        <Card.Header>\n          <Card.Title>Password</Card.Title>\n          <Card.Description>\n            Change your password here. After saving, you&apos;ll be logged out.\n          </Card.Description>\n        </Card.Header>\n        <Card.Content class=\"grid gap-6\">\n          <div class=\"grid gap-3\">\n            <Label for=\"tabs-demo-current\">Current password</Label>\n            <Input id=\"tabs-demo-current\" type=\"password\" />\n          </div>\n          <div class=\"grid gap-3\">\n            <Label for=\"tabs-demo-new\">New password</Label>\n            <Input id=\"tabs-demo-new\" type=\"password\" />\n          </div>\n        </Card.Content>\n        <Card.Footer>\n          <Button>Save password</Button>\n        </Card.Footer>\n      </Card.Root>\n    </Tabs.Content>\n  </Tabs.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

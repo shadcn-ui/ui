@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-slider-demo",
+  "title": "Field Slider Demo",
+  "registryDependencies": [
+    "field",
+    "slider"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/field-slider-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Field from \"$lib/registry/ui/field/index.js\"\n  import { Slider } from \"$lib/registry/ui/slider/index.js\"\n\n  let value = $state([200, 800])\n</script>\n\n<div class=\"w-full max-w-md\">\n  <Field.Field>\n    <Field.Label>Price Range</Field.Label>\n    <Field.Description>\n      Set your budget range ($<span class=\"font-medium tabular-nums\"\n        >{value[0]}</span\n      >\n      -\n      <span class=\"font-medium tabular-nums\">{value[1]}</span>).\n    </Field.Description>\n    <Slider\n      type=\"multiple\"\n      bind:value\n      max={1000}\n      min={0}\n      step={10}\n      class=\"mt-2 w-full\"\n      aria-label=\"Price Range\"\n    />\n  </Field.Field>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

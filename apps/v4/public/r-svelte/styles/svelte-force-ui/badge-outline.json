@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-outline",
+  "title": "Badge Outline",
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/badge-outline.svelte",
+      "content": "<script lang=\"ts\">\n  import { Badge } from \"$lib/registry/ui/badge/index.js\"\n</script>\n\n<Badge variant=\"outline\">Outline</Badge>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

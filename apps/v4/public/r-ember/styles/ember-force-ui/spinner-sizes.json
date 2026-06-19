@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-sizes",
+  "title": "Spinner Sizes",
+  "dependencies": [],
+  "registryDependencies": [
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/spinner-sizes.gts",
+      "content": "import { Spinner } from '@/ui/spinner';\n\n<template>\n  <div class=\"flex items-center gap-6\">\n    <Spinner @size=\"xs\" />\n    <Spinner @size=\"sm\" />\n    <Spinner @size=\"md\" />\n    <Spinner @size=\"lg\" />\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-item-demo",
+  "title": "Spinner Item Demo",
+  "registryDependencies": [
+    "button",
+    "item",
+    "progress",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/spinner-item-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Item from \"$lib/registry/ui/item/index.js\"\n  import { Progress } from \"$lib/registry/ui/progress/index.js\"\n  import { Spinner } from \"$lib/registry/ui/spinner/index.js\"\n</script>\n\n<div class=\"flex w-full max-w-md flex-col gap-4 [--radius:1rem]\">\n  <Item.Root variant=\"outline\">\n    <Item.Media variant=\"icon\">\n      <Spinner />\n    </Item.Media>\n    <Item.Content>\n      <Item.Title>Downloading...</Item.Title>\n      <Item.Description>129 MB / 1000 MB</Item.Description>\n    </Item.Content>\n    <Item.Actions class=\"hidden sm:flex\">\n      <Button variant=\"outline\" size=\"sm\">Cancel</Button>\n    </Item.Actions>\n    <Item.Footer>\n      <Progress value={75} />\n    </Item.Footer>\n  </Item.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

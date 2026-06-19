@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-example",
+  "title": "Checkbox",
+  "dependencies": [],
+  "registryDependencies": [
+    "checkbox",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/checkbox/CheckboxDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Checkbox } from \"@/ui/checkbox\"\nimport { Label } from \"@/ui/label\"\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-6\">\n    <div class=\"flex items-center gap-3\">\n      <Checkbox id=\"terms\" />\n      <Label for=\"terms\">Accept terms and conditions</Label>\n    </div>\n    <div class=\"flex items-start gap-3\">\n      <Checkbox id=\"terms-2\" :default-value=\"true\" />\n      <div class=\"grid gap-2\">\n        <Label for=\"terms-2\">Accept terms and conditions</Label>\n        <p class=\"text-sm text-muted-foreground\">\n          By clicking this checkbox, you agree to the terms and conditions.\n        </p>\n      </div>\n    </div>\n    <div class=\"flex items-start gap-3\">\n      <Checkbox id=\"toggle\" disabled />\n      <Label for=\"toggle\">Enable notifications</Label>\n    </div>\n    <Label\n      class=\"flex items-start gap-3 rounded-lg border p-3 hover:bg-accent/50 has-[[aria-checked=true]]:border-blue-600 has-[[aria-checked=true]]:bg-blue-50 dark:has-[[aria-checked=true]]:border-blue-900 dark:has-[[aria-checked=true]]:bg-blue-950\"\n    >\n      <Checkbox\n        id=\"toggle-2\"\n        :default-value=\"true\"\n        class=\"data-[state=checked]:border-blue-600 data-[state=checked]:bg-blue-600 data-[state=checked]:text-white dark:data-[state=checked]:border-blue-700 dark:data-[state=checked]:bg-blue-700\"\n      />\n      <div class=\"grid gap-1.5 font-normal\">\n        <p class=\"text-sm leading-none font-medium\">Enable notifications</p>\n        <p class=\"text-sm text-muted-foreground\">\n          You can enable or disable notifications at any time.\n        </p>\n      </div>\n    </Label>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/checkbox/CheckboxDisabled.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Checkbox } from \"@/ui/checkbox\"\nimport { Label } from \"@/ui/label\"\n</script>\n\n<template>\n  <div class=\"flex items-center space-x-2\">\n    <Checkbox id=\"terms\" disabled />\n    <Label for=\"terms\">Accept terms and conditions</Label>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

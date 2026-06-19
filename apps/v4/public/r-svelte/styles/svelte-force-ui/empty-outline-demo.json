@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-outline-demo",
+  "title": "Empty Outline Demo",
+  "registryDependencies": [
+    "button",
+    "empty"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/empty-outline-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import CloudIcon from \"@tabler/icons-svelte/icons/cloud\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Empty from \"$lib/registry/ui/empty/index.js\"\n</script>\n\n<Empty.Root class=\"border border-dashed\">\n  <Empty.Header>\n    <Empty.Media variant=\"icon\">\n      <CloudIcon />\n    </Empty.Media>\n    <Empty.Title>Cloud Storage Empty</Empty.Title>\n    <Empty.Description>\n      Upload files to your cloud storage to access them anywhere.\n    </Empty.Description>\n  </Empty.Header>\n  <Empty.Content>\n    <Button variant=\"outline\" size=\"sm\">Upload Files</Button>\n  </Empty.Content>\n</Empty.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

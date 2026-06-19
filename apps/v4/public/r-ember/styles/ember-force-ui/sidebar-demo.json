@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-demo",
+  "title": "Sidebar Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "breadcrumb",
+    "separator",
+    "sidebar"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/sidebar-demo.gts",
+      "content": "import {\n  Breadcrumb,\n  BreadcrumbItem,\n  BreadcrumbLink,\n  BreadcrumbList,\n  BreadcrumbPage,\n  BreadcrumbSeparator,\n} from '@/ui/breadcrumb';\nimport { Separator } from '@/ui/separator';\nimport {\n  SidebarInset,\n  SidebarProvider,\n  SidebarTrigger,\n} from '@/ui/sidebar';\n\nimport AppSidebar from './sidebar-07/app-sidebar.gts';\n\n<template>\n  <SidebarProvider class=\"!min-h-full h-full\">\n    <AppSidebar />\n    <SidebarInset>\n      <header\n        class=\"flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12\"\n      >\n        <div class=\"flex items-center gap-2 px-4\">\n          <SidebarTrigger class=\"-ml-1\" />\n          <Separator\n            @class=\"mr-2 data-[orientation=vertical]:h-4\"\n            @orientation=\"vertical\"\n          />\n          <Breadcrumb>\n            <BreadcrumbList>\n              <BreadcrumbItem @class=\"hidden md:block\">\n                <BreadcrumbLink @href=\"#\">\n                  Building Your Application\n                </BreadcrumbLink>\n              </BreadcrumbItem>\n              <BreadcrumbSeparator @class=\"hidden md:block\" />\n              <BreadcrumbItem>\n                <BreadcrumbPage>Data Fetching</BreadcrumbPage>\n              </BreadcrumbItem>\n            </BreadcrumbList>\n          </Breadcrumb>\n        </div>\n      </header>\n      <div class=\"flex flex-1 flex-col gap-4 p-4 pt-0\">\n        <div class=\"grid auto-rows-min gap-4 md:grid-cols-3\">\n          <div class=\"bg-muted/50 aspect-video rounded-xl\"></div>\n          <div class=\"bg-muted/50 aspect-video rounded-xl\"></div>\n          <div class=\"bg-muted/50 aspect-video rounded-xl\"></div>\n        </div>\n        <div\n          class=\"bg-muted/50 min-h-screen flex-1 rounded-xl md:min-h-min\"\n        ></div>\n      </div>\n    </SidebarInset>\n  </SidebarProvider>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

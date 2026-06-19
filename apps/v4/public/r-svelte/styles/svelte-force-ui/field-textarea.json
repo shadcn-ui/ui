@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-textarea",
+  "title": "Field Textarea",
+  "registryDependencies": [
+    "field",
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/field-textarea.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Field from \"$lib/registry/ui/field/index.js\"\n  import { Textarea } from \"$lib/registry/ui/textarea/index.js\"\n</script>\n\n<div class=\"w-full max-w-md\">\n  <Field.Set>\n    <Field.Group>\n      <Field.Field>\n        <Field.Label for=\"feedback\">Feedback</Field.Label>\n        <Textarea\n          id=\"feedback\"\n          placeholder=\"Your feedback helps us improve...\"\n          rows={4}\n        />\n        <Field.Description\n          >Share your thoughts about our service.</Field.Description\n        >\n      </Field.Field>\n    </Field.Group>\n  </Field.Set>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

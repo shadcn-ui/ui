@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-dropdown-menu-demo",
+  "title": "Button Group Dropdown Menu Demo",
+  "registryDependencies": [
+    "button",
+    "button-group",
+    "dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/button-group-dropdown-menu-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import AlertTriangle from \"@lucide/svelte/icons/alert-triangle\"\n  import ChevronDown from \"@lucide/svelte/icons/chevron-down\"\n  import Share from \"@lucide/svelte/icons/share\"\n  import Trash from \"@lucide/svelte/icons/trash\"\n  import UserRoundX from \"@lucide/svelte/icons/user-round-x\"\n  import VolumeOff from \"@lucide/svelte/icons/volume-off\"\n  import CheckIcon from \"@tabler/icons-svelte/icons/check\"\n  import CopyIcon from \"@tabler/icons-svelte/icons/copy\"\n  import * as ButtonGroup from \"$lib/registry/ui/button-group/index.js\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as DropdownMenu from \"$lib/registry/ui/dropdown-menu/index.js\"\n</script>\n\n<ButtonGroup.Root>\n  <Button variant=\"outline\">Follow</Button>\n  <DropdownMenu.Root>\n    <DropdownMenu.Trigger>\n      {#snippet child({ props })}\n        <Button {...props} variant=\"outline\" class=\"!ps-2\">\n          <ChevronDown />\n        </Button>\n      {/snippet}\n    </DropdownMenu.Trigger>\n    <DropdownMenu.Content align=\"end\" class=\"[--radius:1rem]\">\n      <DropdownMenu.Group>\n        <DropdownMenu.Item>\n          <VolumeOff />\n          Mute Conversation\n        </DropdownMenu.Item>\n        <DropdownMenu.Item>\n          <CheckIcon />\n          Mark as Read\n        </DropdownMenu.Item>\n        <DropdownMenu.Item>\n          <AlertTriangle />\n          Report Conversation\n        </DropdownMenu.Item>\n        <DropdownMenu.Item>\n          <UserRoundX />\n          Block User\n        </DropdownMenu.Item>\n        <DropdownMenu.Item>\n          <Share />\n          Share Conversation\n        </DropdownMenu.Item>\n        <DropdownMenu.Item>\n          <CopyIcon />\n          Copy Conversation\n        </DropdownMenu.Item>\n      </DropdownMenu.Group>\n      <DropdownMenu.Separator />\n      <DropdownMenu.Group>\n        <DropdownMenu.Item variant=\"destructive\">\n          <Trash />\n          Delete Conversation\n        </DropdownMenu.Item>\n      </DropdownMenu.Group>\n    </DropdownMenu.Content>\n  </DropdownMenu.Root>\n</ButtonGroup.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-destructive",
+  "title": "Alert Destructive",
+  "registryDependencies": [
+    "alert"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/alert-destructive.svelte",
+      "content": "<script lang=\"ts\">\n  import CircleAlertIcon from \"@lucide/svelte/icons/circle-alert\"\n  import * as Alert from \"$lib/registry/ui/alert/index.js\"\n</script>\n\n<Alert.Root variant=\"destructive\">\n  <CircleAlertIcon class=\"size-4\" />\n  <Alert.Title>Error</Alert.Title>\n  <Alert.Description\n    >Your session has expired. Please login again.</Alert.Description\n  >\n</Alert.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

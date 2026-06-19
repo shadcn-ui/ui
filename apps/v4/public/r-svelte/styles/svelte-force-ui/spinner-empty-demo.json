@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-empty-demo",
+  "title": "Spinner Empty Demo",
+  "registryDependencies": [
+    "button",
+    "empty",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/spinner-empty-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Empty from \"$lib/registry/ui/empty/index.js\"\n  import { Spinner } from \"$lib/registry/ui/spinner/index.js\"\n</script>\n\n<Empty.Root class=\"w-full border md:p-6\">\n  <Empty.Header>\n    <Empty.Media variant=\"icon\">\n      <Spinner />\n    </Empty.Media>\n    <Empty.Title>Processing your request</Empty.Title>\n    <Empty.Description>\n      Please wait while we process your request. Do not refresh the page.\n    </Empty.Description>\n  </Empty.Header>\n  <Empty.Content>\n    <Button variant=\"outline\" size=\"sm\">Cancel</Button>\n  </Empty.Content>\n</Empty.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

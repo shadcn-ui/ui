@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd-tooltip-demo",
+  "title": "Kbd Tooltip Demo",
+  "registryDependencies": [
+    "button",
+    "button-group",
+    "kbd",
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/kbd-tooltip-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as ButtonGroup from \"$lib/registry/ui/button-group/index.js\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Kbd from \"$lib/registry/ui/kbd/index.js\"\n  import * as Tooltip from \"$lib/registry/ui/tooltip/index.js\"\n</script>\n\n<div class=\"flex flex-wrap gap-4\">\n  <ButtonGroup.Root>\n    <Tooltip.Root>\n      <Tooltip.Trigger>\n        {#snippet child({ props })}\n          <Button size=\"sm\" variant=\"outline\" {...props}>Save</Button>\n        {/snippet}\n      </Tooltip.Trigger>\n      <Tooltip.Content>\n        <div class=\"flex items-center gap-2\">\n          Save Changes <Kbd.Root>S</Kbd.Root>\n        </div>\n      </Tooltip.Content>\n    </Tooltip.Root>\n    <Tooltip.Root>\n      <Tooltip.Trigger>\n        {#snippet child({ props })}\n          <Button size=\"sm\" variant=\"outline\" {...props}>Print</Button>\n        {/snippet}\n      </Tooltip.Trigger>\n      <Tooltip.Content>\n        <div class=\"flex items-center gap-2\">\n          Print Document\n          <Kbd.Group>\n            <Kbd.Root>Ctrl</Kbd.Root>\n            <Kbd.Root>P</Kbd.Root>\n          </Kbd.Group>\n        </div>\n      </Tooltip.Content>\n    </Tooltip.Root>\n  </ButtonGroup.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-checkbox",
+  "title": "Field Checkbox",
+  "dependencies": [],
+  "registryDependencies": [
+    "checkbox",
+    "field"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/field-checkbox.gts",
+      "content": "import { Checkbox } from '@/ui/checkbox';\nimport {\n  Field,\n  FieldContent,\n  FieldDescription,\n  FieldGroup,\n  FieldLabel,\n  FieldLegend,\n  FieldSeparator,\n  FieldSet,\n} from '@/ui/field';\n\n<template>\n  <div class=\"w-full max-w-md\">\n    <FieldGroup>\n      <FieldSet>\n        <FieldLegend @variant=\"label\">\n          Show these items on the desktop\n        </FieldLegend>\n        <FieldDescription>\n          Select the items you want to show on the desktop.\n        </FieldDescription>\n        <FieldGroup @class=\"gap-3\">\n          <Field @orientation=\"horizontal\">\n            <Checkbox @checked={{true}} id=\"finder-pref-hard-disks\" />\n            <FieldLabel @class=\"font-normal\" @for=\"finder-pref-hard-disks\">\n              Hard disks\n            </FieldLabel>\n          </Field>\n          <Field @orientation=\"horizontal\">\n            <Checkbox id=\"finder-pref-external-disks\" />\n            <FieldLabel @class=\"font-normal\" @for=\"finder-pref-external-disks\">\n              External disks\n            </FieldLabel>\n          </Field>\n          <Field @orientation=\"horizontal\">\n            <Checkbox id=\"finder-pref-cds-dvds\" />\n            <FieldLabel @class=\"font-normal\" @for=\"finder-pref-cds-dvds\">\n              CDs, DVDs, and iPods\n            </FieldLabel>\n          </Field>\n          <Field @orientation=\"horizontal\">\n            <Checkbox id=\"finder-pref-connected-servers\" />\n            <FieldLabel\n              @class=\"font-normal\"\n              @for=\"finder-pref-connected-servers\"\n            >\n              Connected servers\n            </FieldLabel>\n          </Field>\n        </FieldGroup>\n      </FieldSet>\n      <FieldSeparator />\n      <Field @orientation=\"horizontal\">\n        <Checkbox @checked={{true}} id=\"finder-pref-sync-folders\" />\n        <FieldContent>\n          <FieldLabel @for=\"finder-pref-sync-folders\">\n            Sync Desktop & Documents folders\n          </FieldLabel>\n          <FieldDescription>\n            Your Desktop & Documents folders are being synced with iCloud Drive.\n            You can access them from other devices.\n          </FieldDescription>\n        </FieldContent>\n      </Field>\n    </FieldGroup>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

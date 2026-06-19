@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area-horizontal",
+  "title": "Scroll Area Horizontal",
+  "registryDependencies": [
+    "scroll-area"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/scroll-area-horizontal.svelte",
+      "content": "<script lang=\"ts\">\n  import { ScrollArea } from \"$lib/registry/ui/scroll-area/index.js\"\n\n  type Artwork = {\n    artist: string\n    art: string\n  }\n\n  const works: Artwork[] = [\n    {\n      artist: \"Ornella Binni\",\n      art: \"https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?auto=format&fit=crop&w=300&q=80\",\n    },\n    {\n      artist: \"Tom Byrom\",\n      art: \"https://images.unsplash.com/photo-1548516173-3cabfa4607e9?auto=format&fit=crop&w=300&q=80\",\n    },\n    {\n      artist: \"Vladimir Malyavko\",\n      art: \"https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80\",\n    },\n  ]\n</script>\n\n<ScrollArea\n  class=\"w-96 rounded-md border whitespace-nowrap\"\n  orientation=\"horizontal\"\n>\n  <div class=\"flex w-max space-x-4 p-4\">\n    {#each works as artwork (artwork.artist)}\n      <figure class=\"shrink-0\">\n        <div class=\"overflow-hidden rounded-md\">\n          <img\n            src={artwork.art}\n            alt=\"Photo by {artwork.artist}\"\n            class=\"aspect-[3/4] h-fit w-fit object-cover\"\n            width={300}\n            height={400}\n          />\n        </div>\n        <figcaption class=\"text-muted-foreground pt-2 text-xs\">\n          Photo by\n          <span class=\"text-foreground font-semibold\">\n            {artwork.artist}\n          </span>\n        </figcaption>\n      </figure>\n    {/each}\n  </div>\n</ScrollArea>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

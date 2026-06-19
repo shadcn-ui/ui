@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-menu-demo",
+  "title": "Dropdown Menu Demo",
+  "registryDependencies": [
+    "button",
+    "dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/dropdown-menu-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as DropdownMenu from \"$lib/registry/ui/dropdown-menu/index.js\"\n</script>\n\n<DropdownMenu.Root>\n  <DropdownMenu.Trigger>\n    {#snippet child({ props })}\n      <Button {...props} variant=\"outline\">Open</Button>\n    {/snippet}\n  </DropdownMenu.Trigger>\n  <DropdownMenu.Content class=\"w-56\" align=\"start\">\n    <DropdownMenu.Label>My Account</DropdownMenu.Label>\n    <DropdownMenu.Group>\n      <DropdownMenu.Item>\n        Profile\n        <DropdownMenu.Shortcut>⇧⌘P</DropdownMenu.Shortcut>\n      </DropdownMenu.Item>\n      <DropdownMenu.Item>\n        Billing\n        <DropdownMenu.Shortcut>⌘B</DropdownMenu.Shortcut>\n      </DropdownMenu.Item>\n      <DropdownMenu.Item>\n        Settings\n        <DropdownMenu.Shortcut>⌘S</DropdownMenu.Shortcut>\n      </DropdownMenu.Item>\n      <DropdownMenu.Item>\n        Keyboard shortcuts\n        <DropdownMenu.Shortcut>⌘K</DropdownMenu.Shortcut>\n      </DropdownMenu.Item>\n    </DropdownMenu.Group>\n    <DropdownMenu.Separator />\n    <DropdownMenu.Group>\n      <DropdownMenu.Item>Team</DropdownMenu.Item>\n      <DropdownMenu.Sub>\n        <DropdownMenu.SubTrigger>Invite users</DropdownMenu.SubTrigger>\n        <DropdownMenu.SubContent>\n          <DropdownMenu.Item>Email</DropdownMenu.Item>\n          <DropdownMenu.Item>Message</DropdownMenu.Item>\n          <DropdownMenu.Separator />\n          <DropdownMenu.Item>More...</DropdownMenu.Item>\n        </DropdownMenu.SubContent>\n      </DropdownMenu.Sub>\n      <DropdownMenu.Item>\n        New Team\n        <DropdownMenu.Shortcut>⌘+T</DropdownMenu.Shortcut>\n      </DropdownMenu.Item>\n    </DropdownMenu.Group>\n    <DropdownMenu.Separator />\n    <DropdownMenu.Item>GitHub</DropdownMenu.Item>\n    <DropdownMenu.Item>Support</DropdownMenu.Item>\n    <DropdownMenu.Item disabled>API</DropdownMenu.Item>\n    <DropdownMenu.Separator />\n    <DropdownMenu.Item>\n      Log out\n      <DropdownMenu.Shortcut>⇧⌘Q</DropdownMenu.Shortcut>\n    </DropdownMenu.Item>\n  </DropdownMenu.Content>\n</DropdownMenu.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

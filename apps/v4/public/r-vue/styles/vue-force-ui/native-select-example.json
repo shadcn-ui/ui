@@ -1,0 +1,48 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select-example",
+  "title": "Native Select",
+  "dependencies": [
+    "vee-validate",
+    "vue-sonner",
+    "zod"
+  ],
+  "registryDependencies": [
+    "button",
+    "form",
+    "native-select"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/native-select/NativeSelectDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { NativeSelect, NativeSelectOption } from \"@/ui/native-select\"\n</script>\n\n<template>\n  <NativeSelect>\n    <NativeSelectOption value=\"\"> Select status </NativeSelectOption>\n    <NativeSelectOption value=\"todo\"> Todo </NativeSelectOption>\n    <NativeSelectOption value=\"in-progress\"> In Progress </NativeSelectOption>\n    <NativeSelectOption value=\"done\"> Done </NativeSelectOption>\n    <NativeSelectOption value=\"cancelled\"> Cancelled </NativeSelectOption>\n  </NativeSelect>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/native-select/NativeSelectDisabledDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { NativeSelect, NativeSelectOption } from \"@/ui/native-select\"\n</script>\n\n<template>\n  <NativeSelect disabled>\n    <NativeSelectOption value=\"\"> Select priority </NativeSelectOption>\n    <NativeSelectOption value=\"low\"> Low </NativeSelectOption>\n    <NativeSelectOption value=\"medium\"> Medium </NativeSelectOption>\n    <NativeSelectOption value=\"high\"> High </NativeSelectOption>\n    <NativeSelectOption value=\"critical\"> Critical </NativeSelectOption>\n  </NativeSelect>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/native-select/NativeSelectFormDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  FormControl,\n  FormDescription,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormMessage,\n} from \"@/ui/form\"\nimport { NativeSelect, NativeSelectOption } from \"@/ui/native-select\"\nimport { toTypedSchema } from \"@vee-validate/zod\"\nimport { useForm } from \"vee-validate\"\nimport { toast } from \"vue-sonner\"\nimport { z } from \"zod\"\n\nconst formSchema = toTypedSchema(\n  z.object({\n    country: z.string().min(2, {\n      message: \"Select a country.\",\n    }),\n  })\n)\n\nconst form = useForm({\n  validationSchema: formSchema,\n})\n\nconst onSubmit = form.handleSubmit((values) => {\n  console.log(\"Form submitted!\", values)\n  toast(\"You submitted the following values:\", {\n    description: h(\n      \"pre\",\n      { class: \"mt-2 rounded-md bg-neutral-900 p-4 w-full\" },\n      h(\n        \"code\",\n        { class: \"text-code-foreground\" },\n        JSON.stringify(values, null, 2)\n      )\n    ),\n  })\n})\n</script>\n\n<template>\n  <form class=\"w-full max-w-sm space-y-6\" @submit=\"onSubmit\">\n    <FormField v-slot=\"{ componentField }\" name=\"country\">\n      <FormItem>\n        <FormLabel>Country</FormLabel>\n        <FormControl>\n          <NativeSelect v-bind=\"componentField\">\n            <NativeSelectOption value=\"\"> Select a country </NativeSelectOption>\n            <NativeSelectOption value=\"us\"> United States </NativeSelectOption>\n            <NativeSelectOption value=\"uk\"> United Kingdom </NativeSelectOption>\n            <NativeSelectOption value=\"ca\"> Canada </NativeSelectOption>\n          </NativeSelect>\n        </FormControl>\n        <FormDescription> Select a country </FormDescription>\n        <FormMessage />\n      </FormItem>\n    </FormField>\n\n    <Button type=\"submit\" class=\"w-full\"> Submit </Button>\n  </form>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/native-select/NativeSelectGroupsDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  NativeSelect,\n  NativeSelectOptGroup,\n  NativeSelectOption,\n} from \"@/ui/native-select\"\n</script>\n\n<template>\n  <NativeSelect>\n    <NativeSelectOption value=\"\"> Select department </NativeSelectOption>\n    <NativeSelectOptGroup label=\"Engineering\">\n      <NativeSelectOption value=\"frontend\"> Frontend </NativeSelectOption>\n      <NativeSelectOption value=\"backend\"> Backend </NativeSelectOption>\n      <NativeSelectOption value=\"devops\"> DevOps </NativeSelectOption>\n    </NativeSelectOptGroup>\n    <NativeSelectOptGroup label=\"Sales\">\n      <NativeSelectOption value=\"sales-rep\"> Sales Rep </NativeSelectOption>\n      <NativeSelectOption value=\"account-manager\">\n        Account Manager\n      </NativeSelectOption>\n      <NativeSelectOption value=\"sales-director\">\n        Sales Director\n      </NativeSelectOption>\n    </NativeSelectOptGroup>\n    <NativeSelectOptGroup label=\"Operations\">\n      <NativeSelectOption value=\"support\">\n        Customer Support\n      </NativeSelectOption>\n      <NativeSelectOption value=\"product-manager\">\n        Product Manager\n      </NativeSelectOption>\n      <NativeSelectOption value=\"ops-manager\">\n        Operations Manager\n      </NativeSelectOption>\n    </NativeSelectOptGroup>\n  </NativeSelect>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/native-select/NativeSelectInputGroupDemo.vue",
+      "content": "<script setup lang=\"ts\"></script>\n\n<template>\n  <div>not yet ready</div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/native-select/NativeSelectInvalidDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { NativeSelect, NativeSelectOption } from \"@/ui/native-select\"\n</script>\n\n<template>\n  <NativeSelect aria-invalid=\"true\">\n    <NativeSelectOption value=\"\"> Select role </NativeSelectOption>\n    <NativeSelectOption value=\"admin\"> Admin </NativeSelectOption>\n    <NativeSelectOption value=\"editor\"> Editor </NativeSelectOption>\n    <NativeSelectOption value=\"viewer\"> Viewer </NativeSelectOption>\n    <NativeSelectOption value=\"guest\"> Guest </NativeSelectOption>\n  </NativeSelect>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

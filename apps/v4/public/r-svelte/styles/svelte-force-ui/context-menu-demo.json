@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "context-menu-demo",
+  "title": "Context Menu Demo",
+  "registryDependencies": [
+    "context-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/context-menu-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as ContextMenu from \"$lib/registry/ui/context-menu/index.js\"\n\n  let showBookmarks = $state(false)\n  let showFullURLs = $state(true)\n\n  let value = $state(\"pedro\")\n</script>\n\n<ContextMenu.Root>\n  <ContextMenu.Trigger\n    class=\"flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm\"\n  >\n    Right click here\n  </ContextMenu.Trigger>\n  <ContextMenu.Content class=\"w-52\">\n    <ContextMenu.Item inset>\n      Back\n      <ContextMenu.Shortcut>⌘[</ContextMenu.Shortcut>\n    </ContextMenu.Item>\n    <ContextMenu.Item inset disabled>\n      Forward\n      <ContextMenu.Shortcut>⌘]</ContextMenu.Shortcut>\n    </ContextMenu.Item>\n    <ContextMenu.Item inset>\n      Reload\n      <ContextMenu.Shortcut>⌘R</ContextMenu.Shortcut>\n    </ContextMenu.Item>\n    <ContextMenu.Sub>\n      <ContextMenu.SubTrigger inset>More Tools</ContextMenu.SubTrigger>\n      <ContextMenu.SubContent class=\"w-48\">\n        <ContextMenu.Item>\n          Save Page As...\n          <ContextMenu.Shortcut>⇧⌘S</ContextMenu.Shortcut>\n        </ContextMenu.Item>\n        <ContextMenu.Item>Create Shortcut...</ContextMenu.Item>\n        <ContextMenu.Item>Name Window...</ContextMenu.Item>\n        <ContextMenu.Separator />\n        <ContextMenu.Item>Developer Tools</ContextMenu.Item>\n      </ContextMenu.SubContent>\n    </ContextMenu.Sub>\n    <ContextMenu.Separator />\n    <ContextMenu.CheckboxItem bind:checked={showBookmarks}>\n      Show Bookmarks\n    </ContextMenu.CheckboxItem>\n    <ContextMenu.CheckboxItem bind:checked={showFullURLs}>\n      Show Full URLs\n    </ContextMenu.CheckboxItem>\n    <ContextMenu.Separator />\n    <ContextMenu.RadioGroup bind:value>\n      <ContextMenu.Group>\n        <ContextMenu.GroupHeading inset>People</ContextMenu.GroupHeading>\n        <ContextMenu.RadioItem value=\"pedro\">Pedro Duarte</ContextMenu.RadioItem\n        >\n        <ContextMenu.RadioItem value=\"colm\">Colm Tuite</ContextMenu.RadioItem>\n      </ContextMenu.Group>\n    </ContextMenu.RadioGroup>\n  </ContextMenu.Content>\n</ContextMenu.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

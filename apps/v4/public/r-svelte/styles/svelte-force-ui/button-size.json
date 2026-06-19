@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-size",
+  "title": "Button Size",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/button-size.svelte",
+      "content": "<script lang=\"ts\">\n  import ArrowUpRightIcon from \"@lucide/svelte/icons/arrow-up-right\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n</script>\n\n<div class=\"flex flex-col items-start gap-8 sm:flex-row\">\n  <div class=\"flex items-start gap-2\">\n    <Button size=\"sm\" variant=\"outline\">Small</Button>\n    <Button size=\"icon-sm\" aria-label=\"Submit\" variant=\"outline\">\n      <ArrowUpRightIcon />\n    </Button>\n  </div>\n  <div class=\"flex items-start gap-2\">\n    <Button variant=\"outline\">Default</Button>\n    <Button size=\"icon\" aria-label=\"Submit\" variant=\"outline\">\n      <ArrowUpRightIcon />\n    </Button>\n  </div>\n  <div class=\"flex items-start gap-2\">\n    <Button variant=\"outline\" size=\"lg\">Large</Button>\n    <Button size=\"icon-lg\" aria-label=\"Submit\" variant=\"outline\">\n      <ArrowUpRightIcon />\n    </Button>\n  </div>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-picker-form",
+  "title": "Date Picker Form",
+  "dependencies": [
+    "svelte-sonner",
+    "sveltekit-superforms",
+    "zod"
+  ],
+  "registryDependencies": [
+    "button",
+    "calendar",
+    "form",
+    "popover",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/date-picker-form.svelte",
+      "content": "<script lang=\"ts\" module>\n  import { z } from \"zod\"\n\n  const formSchema = z.object({\n    dob: z\n      .string()\n      .refine((v) => v, { message: \"A date of birth is required.\" }),\n  })\n</script>\n\n<script lang=\"ts\">\n  import {\n    CalendarDate,\n    DateFormatter,\n    getLocalTimeZone,\n    parseDate,\n    today,\n    type DateValue,\n  } from \"@internationalized/date\"\n  import CalendarIcon from \"@lucide/svelte/icons/calendar\"\n  import { Button, buttonVariants } from \"$lib/registry/ui/button/index.js\"\n  import { Calendar } from \"$lib/registry/ui/calendar/index.js\"\n  import * as Form from \"$lib/registry/ui/form/index.js\"\n  import * as Popover from \"$lib/registry/ui/popover/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import { toast } from \"svelte-sonner\"\n  import { defaults, superForm } from \"sveltekit-superforms\"\n  import { zod4 } from \"sveltekit-superforms/adapters\"\n\n  const form = superForm(defaults(zod4(formSchema)), {\n    validators: zod4(formSchema),\n    SPA: true,\n    onUpdate: ({ form: f }) => {\n      if (f.valid) {\n        toast.success(`You submitted ${JSON.stringify(f.data, null, 2)}`)\n      } else {\n        toast.error(\"Please fix the errors in the form.\")\n      }\n    },\n  })\n\n  const { form: formData, enhance } = form\n\n  const df = new DateFormatter(\"en-US\", {\n    dateStyle: \"long\",\n  })\n\n  let value = $derived($formData.dob ? parseDate($formData.dob) : undefined)\n\n  let placeholder = $state<DateValue>(today(getLocalTimeZone()))\n</script>\n\n<form method=\"POST\" class=\"space-y-8\" use:enhance>\n  <Form.Field {form} name=\"dob\" class=\"flex flex-col\">\n    <Form.Control>\n      {#snippet children({ props })}\n        <Form.Label>Date of birth</Form.Label>\n        <Popover.Root>\n          <Popover.Trigger\n            {...props}\n            class={cn(\n              buttonVariants({ variant: \"outline\" }),\n              \"w-[280px] justify-start ps-4 text-start font-normal\",\n              !value && \"text-muted-foreground\"\n            )}\n          >\n            {value\n              ? df.format(value.toDate(getLocalTimeZone()))\n              : \"Pick a date\"}\n            <CalendarIcon class=\"ms-auto size-4 opacity-50\" />\n          </Popover.Trigger>\n          <Popover.Content class=\"w-auto p-0\" side=\"top\">\n            <Calendar\n              type=\"single\"\n              value={value as DateValue}\n              bind:placeholder\n              captionLayout=\"dropdown\"\n              minValue={new CalendarDate(1900, 1, 1)}\n              maxValue={today(getLocalTimeZone())}\n              calendarLabel=\"Date of birth\"\n              onValueChange={(v) => {\n                if (v) {\n                  $formData.dob = v.toString()\n                } else {\n                  $formData.dob = \"\"\n                }\n              }}\n            />\n          </Popover.Content>\n        </Popover.Root>\n        <Form.Description\n          >Your date of birth is used to calculate your age</Form.Description\n        >\n        <Form.FieldErrors />\n        <input hidden value={$formData.dob} name={props.name} />\n      {/snippet}\n    </Form.Control>\n  </Form.Field>\n  <Button type=\"submit\">Submit</Button>\n</form>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

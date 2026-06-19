@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select-demo",
+  "title": "Select Demo",
+  "registryDependencies": [
+    "select"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/select-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Select from \"$lib/registry/ui/select/index.js\"\n\n  const fruits = [\n    { value: \"apple\", label: \"Apple\" },\n    { value: \"banana\", label: \"Banana\" },\n    { value: \"blueberry\", label: \"Blueberry\" },\n    { value: \"grapes\", label: \"Grapes\" },\n    { value: \"pineapple\", label: \"Pineapple\" },\n  ]\n\n  let value = $state(\"\")\n\n  const triggerContent = $derived(\n    fruits.find((f) => f.value === value)?.label ?? \"Select a fruit\"\n  )\n</script>\n\n<Select.Root type=\"single\" name=\"favoriteFruit\" bind:value>\n  <Select.Trigger class=\"w-[180px]\">\n    {triggerContent}\n  </Select.Trigger>\n  <Select.Content>\n    <Select.Group>\n      <Select.Label>Fruits</Select.Label>\n      {#each fruits as fruit (fruit.value)}\n        <Select.Item\n          value={fruit.value}\n          label={fruit.label}\n          disabled={fruit.value === \"grapes\"}\n        >\n          {fruit.label}\n        </Select.Item>\n      {/each}\n    </Select.Group>\n  </Select.Content>\n</Select.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

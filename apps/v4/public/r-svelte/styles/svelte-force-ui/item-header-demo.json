@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-header-demo",
+  "title": "Item Header Demo",
+  "registryDependencies": [
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/item-header-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Item from \"$lib/registry/ui/item/index.js\"\n\n  const models = [\n    {\n      name: \"v0-1.5-sm\",\n      description: \"Everyday tasks and UI generation.\",\n      image:\n        \"https://images.unsplash.com/photo-1650804068570-7fb2e3dbf888?q=80&w=640&auto=format&fit=crop\",\n      credit: \"Valeria Reverdo on Unsplash\",\n    },\n    {\n      name: \"v0-1.5-lg\",\n      description: \"Advanced thinking or reasoning.\",\n      image:\n        \"https://images.unsplash.com/photo-1610280777472-54133d004c8c?q=80&w=640&auto=format&fit=crop\",\n      credit: \"Michael Oeser on Unsplash\",\n    },\n    {\n      name: \"v0-2.0-mini\",\n      description: \"Open Source model for everyone.\",\n      image:\n        \"https://images.unsplash.com/photo-1602146057681-08560aee8cde?q=80&w=640&auto=format&fit=crop\",\n      credit: \"Cherry Laithang on Unsplash\",\n    },\n  ]\n</script>\n\n<div class=\"flex w-full max-w-xl flex-col gap-6\">\n  <Item.Group class=\"grid grid-cols-3 gap-4\">\n    {#each models as model (model.name)}\n      <Item.Root variant=\"outline\">\n        <Item.Header>\n          <img\n            src={model.image}\n            alt={model.name}\n            width=\"128\"\n            height=\"128\"\n            class=\"aspect-square w-full rounded-sm object-cover\"\n          />\n        </Item.Header>\n        <Item.Content>\n          <Item.Title>{model.name}</Item.Title>\n          <Item.Description>{model.description}</Item.Description>\n        </Item.Content>\n      </Item.Root>\n    {/each}\n  </Item.Group>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

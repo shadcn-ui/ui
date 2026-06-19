@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-button",
+  "title": "Spinner Button",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/spinner-button.gts",
+      "content": "import { Button } from '@/ui/button';\nimport { Spinner } from '@/ui/spinner';\n\n<template>\n  <div class=\"flex flex-col items-center gap-4\">\n    <Button @disabled={{true}} @size=\"sm\">\n      <Spinner />\n      Loading...\n    </Button>\n    <Button @disabled={{true}} @size=\"sm\" @variant=\"outline\">\n      <Spinner />\n      Please wait\n    </Button>\n    <Button @disabled={{true}} @size=\"sm\" @variant=\"secondary\">\n      <Spinner />\n      Processing\n    </Button>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

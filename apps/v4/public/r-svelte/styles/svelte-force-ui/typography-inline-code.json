@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-inline-code",
+  "title": "Typography Inline Code",
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/typography-inline-code.svelte",
+      "content": "<code\n  class=\"bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold\"\n>\n  @lucide/svelte\n</code>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

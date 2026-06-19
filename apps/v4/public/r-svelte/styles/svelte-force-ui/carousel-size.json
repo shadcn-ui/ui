@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "carousel-size",
+  "title": "Carousel Size",
+  "registryDependencies": [
+    "card",
+    "carousel"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/carousel-size.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Card from \"$lib/registry/ui/card/index.js\"\n  import * as Carousel from \"$lib/registry/ui/carousel/index.js\"\n</script>\n\n<Carousel.Root\n  opts={{\n    align: \"start\",\n  }}\n  class=\"w-full max-w-sm\"\n>\n  <Carousel.Content>\n    {#each Array(5) as _, i (i)}\n      <Carousel.Item class=\"md:basis-1/2 lg:basis-1/3\">\n        <div class=\"p-1\">\n          <Card.Root>\n            <Card.Content\n              class=\"flex aspect-square items-center justify-center p-6\"\n            >\n              <span class=\"text-3xl font-semibold\">{i + 1}</span>\n            </Card.Content>\n          </Card.Root>\n        </div>\n      </Carousel.Item>\n    {/each}\n  </Carousel.Content>\n  <Carousel.Previous />\n  <Carousel.Next />\n</Carousel.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

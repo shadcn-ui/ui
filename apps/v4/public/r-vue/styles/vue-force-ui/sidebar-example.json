@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-example",
+  "title": "Sidebar",
+  "dependencies": [
+    "lucide-vue-next"
+  ],
+  "registryDependencies": [
+    "sidebar"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/sidebar/SidebarDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  Sidebar,\n  SidebarContent,\n  SidebarGroup,\n  SidebarGroupContent,\n  SidebarGroupLabel,\n  SidebarInset,\n  SidebarMenu,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarProvider,\n  SidebarTrigger,\n} from \"@/ui/sidebar\"\nimport { Calendar, Home, Inbox, Search, Settings } from \"lucide-vue-next\"\n\n// Menu items.\nconst items = [\n  {\n    title: \"Home\",\n    url: \"#\",\n    icon: Home,\n  },\n  {\n    title: \"Inbox\",\n    url: \"#\",\n    icon: Inbox,\n  },\n  {\n    title: \"Calendar\",\n    url: \"#\",\n    icon: Calendar,\n  },\n  {\n    title: \"Search\",\n    url: \"#\",\n    icon: Search,\n  },\n  {\n    title: \"Settings\",\n    url: \"#\",\n    icon: Settings,\n  },\n]\n</script>\n\n<template>\n  <SidebarProvider>\n    <Sidebar>\n      <SidebarContent>\n        <SidebarGroup>\n          <SidebarGroupLabel>Application</SidebarGroupLabel>\n          <SidebarGroupContent>\n            <SidebarMenu>\n              <SidebarMenuItem v-for=\"item in items\" :key=\"item.title\">\n                <SidebarMenuButton as-child>\n                  <a :href=\"item.url\">\n                    <component :is=\"item.icon\" />\n                    <span>{{ item.title }}</span>\n                  </a>\n                </SidebarMenuButton>\n              </SidebarMenuItem>\n            </SidebarMenu>\n          </SidebarGroupContent>\n        </SidebarGroup>\n      </SidebarContent>\n    </Sidebar>\n    <SidebarInset>\n      <header class=\"flex h-12 items-center justify-between px-4\">\n        <SidebarTrigger />\n      </header>\n    </SidebarInset>\n  </SidebarProvider>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

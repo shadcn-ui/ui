@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card-example",
+  "title": "Hover Card",
+  "dependencies": [
+    "lucide-vue-next"
+  ],
+  "registryDependencies": [
+    "avatar",
+    "button",
+    "hover-card"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/hover-card/HoverCardDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/ui/avatar\"\nimport { Button } from \"@/ui/button\"\nimport { HoverCard, HoverCardContent, HoverCardTrigger } from \"@/ui/hover-card\"\nimport { CalendarDaysIcon } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <HoverCard>\n    <HoverCardTrigger as-child>\n      <Button variant=\"link\"> @nuxt </Button>\n    </HoverCardTrigger>\n    <HoverCardContent class=\"w-80\">\n      <div class=\"flex justify-between space-x-4\">\n        <Avatar>\n          <AvatarImage src=\"https://github.com/vercel.png\" />\n          <AvatarFallback>VC</AvatarFallback>\n        </Avatar>\n        <div class=\"space-y-1\">\n          <h4 class=\"text-sm font-semibold\">@nuxt</h4>\n          <p class=\"text-sm\">\n            The Vue Framework – The Progressive Web Framework.\n          </p>\n          <div class=\"flex items-center pt-2\">\n            <CalendarDaysIcon class=\"mr-2 h-4 w-4 opacity-70\" />\n            <span class=\"text-xs text-muted-foreground\">\n              Joined December 2021\n            </span>\n          </div>\n        </div>\n      </div>\n    </HoverCardContent>\n  </HoverCard>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

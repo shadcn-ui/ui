@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-nested-demo",
+  "title": "Button Group Nested Demo",
+  "registryDependencies": [
+    "button",
+    "button-group"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/button-group-nested-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import ArrowLeft from \"@lucide/svelte/icons/arrow-left\"\n  import ArrowRight from \"@lucide/svelte/icons/arrow-right\"\n  import * as ButtonGroup from \"$lib/registry/ui/button-group/index.js\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n</script>\n\n<ButtonGroup.Root>\n  <ButtonGroup.Root>\n    <Button variant=\"outline\" size=\"sm\">1</Button>\n    <Button variant=\"outline\" size=\"sm\">2</Button>\n    <Button variant=\"outline\" size=\"sm\">3</Button>\n    <Button variant=\"outline\" size=\"sm\">4</Button>\n    <Button variant=\"outline\" size=\"sm\">5</Button>\n  </ButtonGroup.Root>\n  <ButtonGroup.Root>\n    <Button variant=\"outline\" size=\"icon-sm\" aria-label=\"Previous\">\n      <ArrowLeft />\n    </Button>\n    <Button variant=\"outline\" size=\"icon-sm\" aria-label=\"Next\">\n      <ArrowRight />\n    </Button>\n  </ButtonGroup.Root>\n</ButtonGroup.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

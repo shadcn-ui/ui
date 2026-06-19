@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table-example",
+  "title": "Table",
+  "dependencies": [],
+  "registryDependencies": [
+    "table"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/table/TableDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  Table,\n  TableBody,\n  TableCaption,\n  TableCell,\n  TableFooter,\n  TableHead,\n  TableHeader,\n  TableRow,\n} from \"@/ui/table\"\n\nconst invoices = [\n  {\n    invoice: \"INV001\",\n    paymentStatus: \"Paid\",\n    totalAmount: \"$250.00\",\n    paymentMethod: \"Credit Card\",\n  },\n  {\n    invoice: \"INV002\",\n    paymentStatus: \"Pending\",\n    totalAmount: \"$150.00\",\n    paymentMethod: \"PayPal\",\n  },\n  {\n    invoice: \"INV003\",\n    paymentStatus: \"Unpaid\",\n    totalAmount: \"$350.00\",\n    paymentMethod: \"Bank Transfer\",\n  },\n  {\n    invoice: \"INV004\",\n    paymentStatus: \"Paid\",\n    totalAmount: \"$450.00\",\n    paymentMethod: \"Credit Card\",\n  },\n  {\n    invoice: \"INV005\",\n    paymentStatus: \"Paid\",\n    totalAmount: \"$550.00\",\n    paymentMethod: \"PayPal\",\n  },\n  {\n    invoice: \"INV006\",\n    paymentStatus: \"Pending\",\n    totalAmount: \"$200.00\",\n    paymentMethod: \"Bank Transfer\",\n  },\n  {\n    invoice: \"INV007\",\n    paymentStatus: \"Unpaid\",\n    totalAmount: \"$300.00\",\n    paymentMethod: \"Credit Card\",\n  },\n]\n</script>\n\n<template>\n  <Table>\n    <TableCaption>A list of your recent invoices.</TableCaption>\n    <TableHeader>\n      <TableRow>\n        <TableHead class=\"w-[100px]\"> Invoice </TableHead>\n        <TableHead>Status</TableHead>\n        <TableHead>Method</TableHead>\n        <TableHead class=\"text-right\"> Amount </TableHead>\n      </TableRow>\n    </TableHeader>\n    <TableBody>\n      <TableRow v-for=\"invoice in invoices\" :key=\"invoice.invoice\">\n        <TableCell class=\"font-medium\">\n          {{ invoice.invoice }}\n        </TableCell>\n        <TableCell>{{ invoice.paymentStatus }}</TableCell>\n        <TableCell>{{ invoice.paymentMethod }}</TableCell>\n        <TableCell class=\"text-right\">\n          {{ invoice.totalAmount }}\n        </TableCell>\n      </TableRow>\n    </TableBody>\n    <TableFooter>\n      <TableRow>\n        <TableCell colspan=\"3\"> Total </TableCell>\n        <TableCell class=\"text-right\"> $2,500.00 </TableCell>\n      </TableRow>\n    </TableFooter>\n  </Table>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

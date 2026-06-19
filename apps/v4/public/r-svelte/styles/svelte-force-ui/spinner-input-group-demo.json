@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-input-group-demo",
+  "title": "Spinner Input Group Demo",
+  "registryDependencies": [
+    "input-group",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/spinner-input-group-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import ArrowUpIcon from \"@lucide/svelte/icons/arrow-up\"\n  import * as InputGroup from \"$lib/registry/ui/input-group/index.js\"\n  import { Spinner } from \"$lib/registry/ui/spinner/index.js\"\n</script>\n\n<div class=\"flex w-full max-w-md flex-col gap-4\">\n  <InputGroup.Root>\n    <InputGroup.Input placeholder=\"Send a message...\" disabled />\n    <InputGroup.Addon align=\"inline-end\">\n      <Spinner />\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root>\n    <InputGroup.Textarea placeholder=\"Send a message...\" disabled />\n    <InputGroup.Addon align=\"block-end\">\n      <Spinner /> Validating...\n      <InputGroup.Button class=\"ms-auto\" variant=\"default\">\n        <ArrowUpIcon />\n        <span class=\"sr-only\">Send</span>\n      </InputGroup.Button>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

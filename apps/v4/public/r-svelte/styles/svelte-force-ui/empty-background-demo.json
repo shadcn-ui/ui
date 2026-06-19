@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-background-demo",
+  "title": "Empty Background Demo",
+  "registryDependencies": [
+    "button",
+    "empty"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/empty-background-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import RefreshCcwIcon from \"@lucide/svelte/icons/refresh-ccw\"\n  import BellIcon from \"@tabler/icons-svelte/icons/bell\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Empty from \"$lib/registry/ui/empty/index.js\"\n</script>\n\n<Empty.Root\n  class=\"from-muted/50 to-background h-full bg-gradient-to-b from-30%\"\n>\n  <Empty.Header>\n    <Empty.Media variant=\"icon\">\n      <BellIcon />\n    </Empty.Media>\n    <Empty.Title>No Notifications</Empty.Title>\n    <Empty.Description>\n      You're all caught up. New notifications will appear here.\n    </Empty.Description>\n  </Empty.Header>\n  <Empty.Content>\n    <Button variant=\"outline\" size=\"sm\">\n      <RefreshCcwIcon />\n      Refresh\n    </Button>\n  </Empty.Content>\n</Empty.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

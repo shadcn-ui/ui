@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-field-set-demo",
+  "title": "Field Field Set Demo",
+  "registryDependencies": [
+    "field",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/field-field-set-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Field from \"$lib/registry/ui/field/index.js\"\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n</script>\n\n<div class=\"w-full max-w-md space-y-6\">\n  <Field.Set>\n    <Field.Legend>Address Information</Field.Legend>\n    <Field.Description\n      >We need your address to deliver your order.</Field.Description\n    >\n    <Field.Group>\n      <Field.Field>\n        <Field.Label for=\"street\">Street Address</Field.Label>\n        <Input id=\"street\" type=\"text\" placeholder=\"123 Main St\" />\n      </Field.Field>\n      <div class=\"grid grid-cols-2 gap-4\">\n        <Field.Field>\n          <Field.Label for=\"city\">City</Field.Label>\n          <Input id=\"city\" type=\"text\" placeholder=\"New York\" />\n        </Field.Field>\n        <Field.Field>\n          <Field.Label for=\"zip\">Postal Code</Field.Label>\n          <Input id=\"zip\" type=\"text\" placeholder=\"90502\" />\n        </Field.Field>\n      </div>\n    </Field.Group>\n  </Field.Set>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

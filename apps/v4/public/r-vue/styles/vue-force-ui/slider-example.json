@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider-example",
+  "title": "Slider",
+  "dependencies": [],
+  "registryDependencies": [
+    "slider"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/slider/SliderDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Slider } from \"@/ui/slider\"\n</script>\n\n<template>\n  <Slider :default-value=\"[50]\" :max=\"100\" :step=\"1\" class=\"w-[60%]\" />\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

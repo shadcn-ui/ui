@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonner-demo",
+  "title": "Sonner Demo",
+  "dependencies": [
+    "svelte-sonner"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/sonner-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import { toast } from \"svelte-sonner\"\n</script>\n\n<Button\n  variant=\"outline\"\n  onclick={() =>\n    toast(\"Event has been created\", {\n      description: \"Sunday, December 03, 2023 at 9:00 AM\",\n      action: {\n        label: \"Undo\",\n        onClick: () => console.info(\"Undo\"),\n      },\n    })}\n>\n  Show Toast\n</Button>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-demo",
+  "title": "Spinner Demo",
+  "registryDependencies": [
+    "item",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/spinner-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Item from \"$lib/registry/ui/item/index.js\"\n  import { Spinner } from \"$lib/registry/ui/spinner/index.js\"\n</script>\n\n<div class=\"flex w-full max-w-xs flex-col gap-4 [--radius:1rem]\">\n  <Item.Root variant=\"muted\">\n    <Item.Media>\n      <Spinner />\n    </Item.Media>\n    <Item.Content>\n      <Item.Title class=\"line-clamp-1\">Processing payment...</Item.Title>\n    </Item.Content>\n    <Item.Content class=\"flex-none justify-end\">\n      <span class=\"text-sm tabular-nums\">$100.00</span>\n    </Item.Content>\n  </Item.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-size-demo",
+  "title": "Button Group Size Demo",
+  "registryDependencies": [
+    "button",
+    "button-group"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/button-group-size-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import Plus from \"@lucide/svelte/icons/plus\"\n  import * as ButtonGroup from \"$lib/registry/ui/button-group/index.js\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n</script>\n\n<div class=\"flex flex-col items-start gap-8\">\n  <ButtonGroup.Root>\n    <Button variant=\"outline\" size=\"sm\">Small</Button>\n    <Button variant=\"outline\" size=\"sm\">Button</Button>\n    <Button variant=\"outline\" size=\"sm\">Group</Button>\n    <Button variant=\"outline\" size=\"icon-sm\">\n      <Plus />\n    </Button>\n  </ButtonGroup.Root>\n  <ButtonGroup.Root>\n    <Button variant=\"outline\">Default</Button>\n    <Button variant=\"outline\">Button</Button>\n    <Button variant=\"outline\">Group</Button>\n    <Button variant=\"outline\" size=\"icon\">\n      <Plus />\n    </Button>\n  </ButtonGroup.Root>\n  <ButtonGroup.Root>\n    <Button variant=\"outline\" size=\"lg\">Large</Button>\n    <Button variant=\"outline\" size=\"lg\">Button</Button>\n    <Button variant=\"outline\" size=\"lg\">Group</Button>\n    <Button variant=\"outline\" size=\"icon-lg\">\n      <Plus />\n    </Button>\n  </ButtonGroup.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

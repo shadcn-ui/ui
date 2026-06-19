@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table-demo",
+  "title": "Table Demo",
+  "registryDependencies": [
+    "table"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/table-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Table from \"$lib/registry/ui/table/index.js\"\n\n  const invoices = [\n    {\n      invoice: \"INV001\",\n      paymentStatus: \"Paid\",\n      totalAmount: \"$250.00\",\n      paymentMethod: \"Credit Card\",\n    },\n    {\n      invoice: \"INV002\",\n      paymentStatus: \"Pending\",\n      totalAmount: \"$150.00\",\n      paymentMethod: \"PayPal\",\n    },\n    {\n      invoice: \"INV003\",\n      paymentStatus: \"Unpaid\",\n      totalAmount: \"$350.00\",\n      paymentMethod: \"Bank Transfer\",\n    },\n    {\n      invoice: \"INV004\",\n      paymentStatus: \"Paid\",\n      totalAmount: \"$450.00\",\n      paymentMethod: \"Credit Card\",\n    },\n    {\n      invoice: \"INV005\",\n      paymentStatus: \"Paid\",\n      totalAmount: \"$550.00\",\n      paymentMethod: \"PayPal\",\n    },\n    {\n      invoice: \"INV006\",\n      paymentStatus: \"Pending\",\n      totalAmount: \"$200.00\",\n      paymentMethod: \"Bank Transfer\",\n    },\n    {\n      invoice: \"INV007\",\n      paymentStatus: \"Unpaid\",\n      totalAmount: \"$300.00\",\n      paymentMethod: \"Credit Card\",\n    },\n  ]\n</script>\n\n<Table.Root>\n  <Table.Caption>A list of your recent invoices.</Table.Caption>\n  <Table.Header>\n    <Table.Row>\n      <Table.Head class=\"w-[100px]\">Invoice</Table.Head>\n      <Table.Head>Status</Table.Head>\n      <Table.Head>Method</Table.Head>\n      <Table.Head class=\"text-end\">Amount</Table.Head>\n    </Table.Row>\n  </Table.Header>\n  <Table.Body>\n    {#each invoices as invoice (invoice)}\n      <Table.Row>\n        <Table.Cell class=\"font-medium\">{invoice.invoice}</Table.Cell>\n        <Table.Cell>{invoice.paymentStatus}</Table.Cell>\n        <Table.Cell>{invoice.paymentMethod}</Table.Cell>\n        <Table.Cell class=\"text-end\">{invoice.totalAmount}</Table.Cell>\n      </Table.Row>\n    {/each}\n  </Table.Body>\n  <Table.Footer>\n    <Table.Row>\n      <Table.Cell colspan={3}>Total</Table.Cell>\n      <Table.Cell class=\"text-end\">$2,500.00</Table.Cell>\n    </Table.Row>\n  </Table.Footer>\n</Table.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

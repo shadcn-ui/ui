@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group-example",
+  "title": "Radio Group",
+  "dependencies": [],
+  "registryDependencies": [
+    "label",
+    "radio-group"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/radio-group/RadioGroupDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Label } from \"@/ui/label\"\nimport { RadioGroup, RadioGroupItem } from \"@/ui/radio-group\"\n</script>\n\n<template>\n  <RadioGroup default-value=\"comfortable\">\n    <div class=\"flex items-center space-x-2\">\n      <RadioGroupItem id=\"r1\" value=\"default\" />\n      <Label for=\"r1\">Default</Label>\n    </div>\n    <div class=\"flex items-center space-x-2\">\n      <RadioGroupItem id=\"r2\" value=\"comfortable\" />\n      <Label for=\"r2\">Comfortable</Label>\n    </div>\n    <div class=\"flex items-center space-x-2\">\n      <RadioGroupItem id=\"r3\" value=\"compact\" />\n      <Label for=\"r3\">Compact</Label>\n    </div>\n  </RadioGroup>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

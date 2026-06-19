@@ -1,0 +1,674 @@
+[
+  {
+    "name": "accordion",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/accordion.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "alert",
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/alert.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "alert-dialog",
+    "dependencies": ["radix-ui"],
+    "registryDependencies": ["button"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/alert-dialog.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "aspect-ratio",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/aspect-ratio.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "avatar",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/avatar.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "badge",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/badge.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "breadcrumb",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/breadcrumb.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "button",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/button.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "button-group",
+    "registryDependencies": ["button", "separator"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/button-group.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "calendar",
+    "dependencies": ["react-day-picker@latest", "date-fns"],
+    "registryDependencies": ["button"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/calendar.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "card",
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/card.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "carousel",
+    "dependencies": ["embla-carousel-react"],
+    "registryDependencies": ["button"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/carousel.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "chart",
+    "dependencies": ["recharts@3.8.0", "lucide-react"],
+    "registryDependencies": ["card"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/chart.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "checkbox",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/checkbox.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "collapsible",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/collapsible.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "combobox",
+    "dependencies": ["@base-ui/react"],
+    "registryDependencies": ["button", "input-group"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/combobox.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "command",
+    "dependencies": ["cmdk"],
+    "registryDependencies": ["dialog"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/command.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "context-menu",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/context-menu.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "dialog",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/dialog.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "drawer",
+    "dependencies": ["vaul"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/drawer.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "dropdown-menu",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/dropdown-menu.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "empty",
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/empty.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "field",
+    "registryDependencies": ["label", "separator"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/field.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "form",
+    "dependencies": [
+      "radix-ui",
+      "@hookform/resolvers",
+      "zod",
+      "react-hook-form"
+    ],
+    "registryDependencies": ["button", "label"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/form.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "hover-card",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/hover-card.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "input",
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/input.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "input-group",
+    "registryDependencies": ["button", "input", "textarea"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/input-group.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "input-otp",
+    "dependencies": ["input-otp"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/input-otp.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "item",
+    "dependencies": ["radix-ui"],
+    "registryDependencies": ["separator"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/item.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "label",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/label.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "menubar",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/menubar.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "navigation-menu",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/navigation-menu.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "pagination",
+    "registryDependencies": ["button"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/pagination.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "popover",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/popover.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "progress",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/progress.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "radio-group",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/radio-group.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "resizable",
+    "dependencies": ["react-resizable-panels@^4"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/resizable.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "scroll-area",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/scroll-area.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "select",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/select.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "separator",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/separator.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "sheet",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/sheet.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "sidebar",
+    "dependencies": ["radix-ui", "class-variance-authority", "lucide-react"],
+    "registryDependencies": [
+      "button",
+      "separator",
+      "sheet",
+      "tooltip",
+      "input",
+      "use-mobile",
+      "skeleton"
+    ],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/sidebar.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "tailwind": {
+      "config": {
+        "theme": {
+          "extend": {
+            "colors": {
+              "sidebar": {
+                "DEFAULT": "hsl(var(--sidebar-background))",
+                "foreground": "hsl(var(--sidebar-foreground))",
+                "primary": "hsl(var(--sidebar-primary))",
+                "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+                "accent": "hsl(var(--sidebar-accent))",
+                "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
+                "border": "hsl(var(--sidebar-border))",
+                "ring": "hsl(var(--sidebar-ring))"
+              }
+            }
+          }
+        }
+      }
+    },
+    "cssVars": {
+      "light": {
+        "sidebar-background": "0 0% 98%",
+        "sidebar-foreground": "240 5.3% 26.1%",
+        "sidebar-primary": "240 5.9% 10%",
+        "sidebar-primary-foreground": "0 0% 98%",
+        "sidebar-accent": "240 4.8% 95.9%",
+        "sidebar-accent-foreground": "240 5.9% 10%",
+        "sidebar-border": "220 13% 91%",
+        "sidebar-ring": "217.2 91.2% 59.8%"
+      },
+      "dark": {
+        "sidebar-background": "240 5.9% 10%",
+        "sidebar-foreground": "240 4.8% 95.9%",
+        "sidebar-primary": "224.3 76.3% 48%",
+        "sidebar-primary-foreground": "0 0% 100%",
+        "sidebar-accent": "240 3.7% 15.9%",
+        "sidebar-accent-foreground": "240 4.8% 95.9%",
+        "sidebar-border": "240 3.7% 15.9%",
+        "sidebar-ring": "217.2 91.2% 59.8%"
+      }
+    },
+    "type": "registry:ui"
+  },
+  {
+    "name": "skeleton",
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/skeleton.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "slider",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/slider.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "sonner",
+    "dependencies": ["sonner", "next-themes"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/sonner.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "spinner",
+    "dependencies": ["class-variance-authority"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/spinner.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "switch",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/switch.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "table",
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/table.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "tabs",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/tabs.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "textarea",
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/textarea.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "toggle",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/toggle.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "toggle-group",
+    "dependencies": ["radix-ui"],
+    "registryDependencies": ["toggle"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/toggle-group.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "tooltip",
+    "dependencies": ["radix-ui"],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/tooltip.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "docs": "The `tooltip` component has been added. Remember to wrap your app with the `TooltipProvider` component.\n\n```tsx title=\"app/layout.tsx\"\nimport { TooltipProvider } from \"@/components/ui/tooltip\"\n\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang=\"en\">\n      <body>\n        <TooltipProvider>{children}</TooltipProvider>\n      </body>\n    </html>\n  )\n}\n```\n",
+    "type": "registry:ui"
+  },
+  {
+    "name": "kbd",
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/kbd.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "native-select",
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/native-select.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "direction",
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/direction.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  }
+]

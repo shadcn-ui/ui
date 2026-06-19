@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-with-button",
+  "title": "Input With Button",
+  "registryDependencies": [
+    "button",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-with-button.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n</script>\n\n<div class=\"flex w-full max-w-sm items-center gap-2\">\n  <Input type=\"email\" placeholder=\"Email\" />\n  <Button type=\"submit\" variant=\"outline\">Subscribe</Button>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

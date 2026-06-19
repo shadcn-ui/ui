@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-variants",
+  "title": "Input Variants",
+  "registryDependencies": [
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-variants.svelte",
+      "content": "<script lang=\"ts\">\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n</script>\n\n<div class=\"flex w-full flex-col gap-4\">\n  <Input variant=\"outline\" placeholder=\"Outline\" />\n  <Input variant=\"filled\" placeholder=\"Filled\" />\n  <Input variant=\"underline\" placeholder=\"Underline\" />\n  <Input variant=\"ghost\" placeholder=\"Ghost\" />\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

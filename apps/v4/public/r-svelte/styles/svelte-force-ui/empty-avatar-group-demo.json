@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-avatar-group-demo",
+  "title": "Empty Avatar Group Demo",
+  "registryDependencies": [
+    "avatar",
+    "button",
+    "empty"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/empty-avatar-group-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import PlusIcon from \"@lucide/svelte/icons/plus\"\n  import * as Avatar from \"$lib/registry/ui/avatar/index.js\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Empty from \"$lib/registry/ui/empty/index.js\"\n</script>\n\n<Empty.Root class=\"flex-none border\">\n  <Empty.Header>\n    <Empty.Media>\n      <Avatar.Group class=\"grayscale\">\n        <Avatar.Root>\n          <Avatar.Image src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n          <Avatar.Fallback>CN</Avatar.Fallback>\n        </Avatar.Root>\n        <Avatar.Root>\n          <Avatar.Image\n            src=\"https://github.com/maxleiter.png\"\n            alt=\"@maxleiter\"\n          />\n          <Avatar.Fallback>LR</Avatar.Fallback>\n        </Avatar.Root>\n        <Avatar.Root>\n          <Avatar.Image\n            src=\"https://github.com/evilrabbit.png\"\n            alt=\"@evilrabbit\"\n          />\n          <Avatar.Fallback>ER</Avatar.Fallback>\n        </Avatar.Root>\n      </Avatar.Group>\n    </Empty.Media>\n    <Empty.Title>No Team Members</Empty.Title>\n    <Empty.Description\n      >Invite your team to collaborate on this project.</Empty.Description\n    >\n  </Empty.Header>\n  <Empty.Content>\n    <Button size=\"sm\">\n      <PlusIcon />\n      Invite Members\n    </Button>\n  </Empty.Content>\n</Empty.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover-demo",
+  "title": "Popover Demo",
+  "registryDependencies": [
+    "button",
+    "input",
+    "label",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/popover-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { buttonVariants } from \"$lib/registry/ui/button/index.js\"\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n  import { Label } from \"$lib/registry/ui/label/index.js\"\n  import * as Popover from \"$lib/registry/ui/popover/index.js\"\n</script>\n\n<Popover.Root>\n  <Popover.Trigger class={buttonVariants({ variant: \"outline\" })}\n    >Open popover</Popover.Trigger\n  >\n  <Popover.Content class=\"w-80\">\n    <div class=\"grid gap-4\">\n      <div class=\"space-y-2\">\n        <h4 class=\"leading-none font-medium\">Dimensions</h4>\n        <p class=\"text-muted-foreground text-sm\">\n          Set the dimensions for the layer.\n        </p>\n      </div>\n      <div class=\"grid gap-2\">\n        <div class=\"grid grid-cols-3 items-center gap-4\">\n          <Label for=\"width\">Width</Label>\n          <Input id=\"width\" value=\"100%\" class=\"col-span-2 h-8\" />\n        </div>\n        <div class=\"grid grid-cols-3 items-center gap-4\">\n          <Label for=\"maxWidth\">Max. width</Label>\n          <Input id=\"maxWidth\" value=\"300px\" class=\"col-span-2 h-8\" />\n        </div>\n        <div class=\"grid grid-cols-3 items-center gap-4\">\n          <Label for=\"height\">Height</Label>\n          <Input id=\"height\" value=\"25px\" class=\"col-span-2 h-8\" />\n        </div>\n        <div class=\"grid grid-cols-3 items-center gap-4\">\n          <Label for=\"maxHeight\">Max. height</Label>\n          <Input id=\"maxHeight\" value=\"none\" class=\"col-span-2 h-8\" />\n        </div>\n      </div>\n    </div>\n  </Popover.Content>\n</Popover.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

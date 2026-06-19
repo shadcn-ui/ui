@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pagination-example",
+  "title": "Pagination",
+  "dependencies": [],
+  "registryDependencies": [
+    "pagination"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/pagination/PaginationDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  Pagination,\n  PaginationContent,\n  PaginationEllipsis,\n  PaginationItem,\n  PaginationNext,\n  PaginationPrevious,\n} from \"@/ui/pagination\"\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-6\">\n    <Pagination\n      v-slot=\"{ page }\"\n      :items-per-page=\"10\"\n      :total=\"30\"\n      :default-page=\"2\"\n    >\n      <PaginationContent v-slot=\"{ items }\">\n        <PaginationPrevious />\n\n        <template v-for=\"(item, index) in items\" :key=\"index\">\n          <PaginationItem\n            v-if=\"item.type === 'page'\"\n            :value=\"item.value\"\n            :is-active=\"item.value === page\"\n          >\n            {{ item.value }}\n          </PaginationItem>\n        </template>\n\n        <PaginationEllipsis :index=\"4\" />\n\n        <PaginationNext />\n      </PaginationContent>\n    </Pagination>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

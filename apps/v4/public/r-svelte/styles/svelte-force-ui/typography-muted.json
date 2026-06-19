@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-muted",
+  "title": "Typography Muted",
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/typography-muted.svelte",
+      "content": "<p class=\"text-muted-foreground text-sm\">Enter your email address.</p>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

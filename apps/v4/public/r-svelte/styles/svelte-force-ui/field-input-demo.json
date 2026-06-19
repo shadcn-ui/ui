@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-input-demo",
+  "title": "Field Input Demo",
+  "registryDependencies": [
+    "field",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/field-input-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Field from \"$lib/registry/ui/field/index.js\"\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n</script>\n\n<div class=\"w-full max-w-md\">\n  <Field.Set>\n    <Field.Group>\n      <Field.Field>\n        <Field.Label for=\"username\">Username</Field.Label>\n        <Input id=\"username\" type=\"text\" placeholder=\"Max Leiter\" />\n        <Field.Description\n          >Choose a unique username for your account.</Field.Description\n        >\n      </Field.Field>\n      <Field.Field>\n        <Field.Label for=\"password\">Password</Field.Label>\n        <Field.Description\n          >Must be at least 8 characters long.</Field.Description\n        >\n        <Input id=\"password\" type=\"password\" placeholder=\"********\" />\n      </Field.Field>\n    </Field.Group>\n  </Field.Set>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "carousel-plugin",
+  "title": "Carousel Plugin",
+  "registryDependencies": [
+    "card",
+    "carousel"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/carousel-plugin.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Card from \"$lib/registry/ui/card/index.js\"\n  import * as Carousel from \"$lib/registry/ui/carousel/index.js\"\n  import Autoplay from \"embla-carousel-autoplay\"\n\n  const plugin = Autoplay({ delay: 2000, stopOnInteraction: true })\n</script>\n\n<Carousel.Root\n  plugins={[plugin]}\n  class=\"w-full max-w-xs\"\n  onmouseenter={plugin.stop}\n  onmouseleave={plugin.reset}\n>\n  <Carousel.Content>\n    {#each Array(5) as _, i (i)}\n      <Carousel.Item>\n        <div class=\"p-1\">\n          <Card.Root>\n            <Card.Content\n              class=\"flex aspect-square items-center justify-center p-6\"\n            >\n              <span class=\"text-4xl font-semibold\">{i + 1}</span>\n            </Card.Content>\n          </Card.Root>\n        </div>\n      </Carousel.Item>\n    {/each}\n  </Carousel.Content>\n  <Carousel.Previous />\n  <Carousel.Next />\n</Carousel.Root>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

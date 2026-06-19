@@ -1,0 +1,44 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-group-example",
+  "title": "Toggle Group",
+  "dependencies": [
+    "lucide-vue-next"
+  ],
+  "registryDependencies": [
+    "toggle-group"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/toggle-group/ToggleGroupDefaultDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ToggleGroup, ToggleGroupItem } from \"@/ui/toggle-group\"\nimport { Bold, Italic, Underline } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <ToggleGroup type=\"multiple\">\n    <ToggleGroupItem value=\"bold\" aria-label=\"Toggle bold\">\n      <Bold class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n    <ToggleGroupItem value=\"italic\" aria-label=\"Toggle italic\">\n      <Italic class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n    <ToggleGroupItem value=\"strikethrough\" aria-label=\"Toggle strikethrough\">\n      <Underline class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n  </ToggleGroup>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/toggle-group/ToggleGroupDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ToggleGroup, ToggleGroupItem } from \"@/ui/toggle-group\"\nimport { Bold, Italic, Underline } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <ToggleGroup variant=\"outline\" type=\"multiple\">\n    <ToggleGroupItem value=\"bold\" aria-label=\"Toggle bold\">\n      <Bold class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n    <ToggleGroupItem value=\"italic\" aria-label=\"Toggle italic\">\n      <Italic class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n    <ToggleGroupItem value=\"underline\" aria-label=\"Toggle underline\">\n      <Underline class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n  </ToggleGroup>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/toggle-group/ToggleGroupDisabledDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ToggleGroup, ToggleGroupItem } from \"@/ui/toggle-group\"\nimport { Bold, Italic, Underline } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <ToggleGroup type=\"multiple\" disabled>\n    <ToggleGroupItem value=\"bold\" aria-label=\"Toggle bold\">\n      <Bold class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n    <ToggleGroupItem value=\"italic\" aria-label=\"Toggle italic\">\n      <Italic class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n    <ToggleGroupItem value=\"underline\" aria-label=\"Toggle underline\">\n      <Underline class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n  </ToggleGroup>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/toggle-group/ToggleGroupLargeDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ToggleGroup, ToggleGroupItem } from \"@/ui/toggle-group\"\nimport { Bold, Italic, Underline } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <ToggleGroup type=\"multiple\" size=\"lg\">\n    <ToggleGroupItem value=\"bold\" aria-label=\"Toggle bold\">\n      <Bold class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n    <ToggleGroupItem value=\"italic\" aria-label=\"Toggle italic\">\n      <Italic class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n    <ToggleGroupItem value=\"underline\" aria-label=\"Toggle underline\">\n      <Underline class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n  </ToggleGroup>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/toggle-group/ToggleGroupSingleDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ToggleGroup, ToggleGroupItem } from \"@/ui/toggle-group\"\nimport { Bold, Italic, Underline } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <ToggleGroup type=\"single\">\n    <ToggleGroupItem value=\"bold\" aria-label=\"Toggle bold\">\n      <Bold class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n    <ToggleGroupItem value=\"italic\" aria-label=\"Toggle italic\">\n      <Italic class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n    <ToggleGroupItem value=\"underline\" aria-label=\"Toggle underline\">\n      <Underline class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n  </ToggleGroup>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/toggle-group/ToggleGroupSmallDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ToggleGroup, ToggleGroupItem } from \"@/ui/toggle-group\"\nimport { Bold, Italic, Underline } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <ToggleGroup type=\"single\" size=\"sm\">\n    <ToggleGroupItem value=\"bold\" aria-label=\"Toggle bold\">\n      <Bold class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n    <ToggleGroupItem value=\"italic\" aria-label=\"Toggle italic\">\n      <Italic class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n    <ToggleGroupItem value=\"underline\" aria-label=\"Toggle underline\">\n      <Underline class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n  </ToggleGroup>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

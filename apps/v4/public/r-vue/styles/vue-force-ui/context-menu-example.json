@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "context-menu-example",
+  "title": "Context Menu",
+  "dependencies": [
+    "lucide-vue-next"
+  ],
+  "registryDependencies": [
+    "context-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/context-menu/ContextMenuDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  ContextMenu,\n  ContextMenuCheckboxItem,\n  ContextMenuContent,\n  ContextMenuItem,\n  ContextMenuLabel,\n  ContextMenuRadioGroup,\n  ContextMenuRadioItem,\n  ContextMenuSeparator,\n  ContextMenuShortcut,\n  ContextMenuSub,\n  ContextMenuSubContent,\n  ContextMenuSubTrigger,\n  ContextMenuTrigger,\n} from \"@/ui/context-menu\"\nimport { Code2Icon, PlusIcon, TrashIcon } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <ContextMenu>\n    <ContextMenuTrigger\n      class=\"flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm\"\n    >\n      Right click here\n    </ContextMenuTrigger>\n    <ContextMenuContent class=\"w-52\">\n      <ContextMenuItem inset>\n        Back\n        <ContextMenuShortcut>⌘[</ContextMenuShortcut>\n      </ContextMenuItem>\n      <ContextMenuItem inset disabled>\n        Forward\n        <ContextMenuShortcut>⌘]</ContextMenuShortcut>\n      </ContextMenuItem>\n      <ContextMenuItem inset>\n        Reload\n        <ContextMenuShortcut>⌘R</ContextMenuShortcut>\n      </ContextMenuItem>\n      <ContextMenuSub>\n        <ContextMenuSubTrigger inset> More Tools </ContextMenuSubTrigger>\n        <ContextMenuSubContent class=\"w-44\">\n          <ContextMenuItem inset>\n            Save Page...\n            <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>\n          </ContextMenuItem>\n          <ContextMenuItem>\n            <PlusIcon />\n            Create Shortcut...\n          </ContextMenuItem>\n          <ContextMenuItem inset> Name Window... </ContextMenuItem>\n          <ContextMenuSeparator />\n          <ContextMenuItem>\n            <Code2Icon />\n            Developer Tools\n          </ContextMenuItem>\n          <ContextMenuSeparator />\n          <ContextMenuItem variant=\"destructive\">\n            <TrashIcon />\n            Delete\n          </ContextMenuItem>\n        </ContextMenuSubContent>\n      </ContextMenuSub>\n      <ContextMenuSeparator />\n      <ContextMenuCheckboxItem :model-value=\"true\">\n        Show Bookmarks\n        <ContextMenuShortcut>⌘⇧B</ContextMenuShortcut>\n      </ContextMenuCheckboxItem>\n      <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>\n      <ContextMenuSeparator />\n      <ContextMenuRadioGroup model-value=\"pedro\">\n        <ContextMenuLabel inset> People </ContextMenuLabel>\n        <ContextMenuRadioItem value=\"pedro\">\n          Pedro Duarte\n        </ContextMenuRadioItem>\n        <ContextMenuRadioItem value=\"colm\"> Colm Tuite </ContextMenuRadioItem>\n      </ContextMenuRadioGroup>\n    </ContextMenuContent>\n  </ContextMenu>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

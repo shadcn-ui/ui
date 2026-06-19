@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-button-demo",
+  "title": "Input Group Button Demo",
+  "registryDependencies": [
+    "input-group",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/input-group-button-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import IconCheck from \"@tabler/icons-svelte/icons/check\"\n  import IconCopy from \"@tabler/icons-svelte/icons/copy\"\n  import IconInfoCircle from \"@tabler/icons-svelte/icons/info-circle\"\n  import IconStar from \"@tabler/icons-svelte/icons/star\"\n  import { UseClipboard } from \"$lib/hooks/use-clipboard.svelte.js\"\n  import * as InputGroup from \"$lib/registry/ui/input-group/index.js\"\n  import * as Popover from \"$lib/registry/ui/popover/index.js\"\n\n  let isFavorite = $state(false)\n\n  const clipboard = new UseClipboard()\n</script>\n\n<div class=\"grid w-full max-w-sm gap-6\">\n  <InputGroup.Root>\n    <InputGroup.Input placeholder=\"https://x.com/shadcn\" readonly />\n    <InputGroup.Addon align=\"inline-end\">\n      <InputGroup.Button\n        aria-label=\"Copy\"\n        title=\"Copy\"\n        size=\"icon-xs\"\n        onclick={() => clipboard.copy(\"https://x.com/shadcn\")}\n      >\n        {#if clipboard.copied}\n          <IconCheck />\n        {:else}\n          <IconCopy />\n        {/if}\n      </InputGroup.Button>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root class=\"[--radius:9999px]\">\n    <Popover.Root>\n      <Popover.Trigger>\n        {#snippet child({ props })}\n          <InputGroup.Addon>\n            <InputGroup.Button {...props} variant=\"secondary\" size=\"icon-xs\">\n              <IconInfoCircle />\n            </InputGroup.Button>\n          </InputGroup.Addon>\n        {/snippet}\n      </Popover.Trigger>\n      <Popover.Content\n        align=\"start\"\n        class=\"flex flex-col gap-1 rounded-xl text-sm\"\n      >\n        <p class=\"font-medium\">Your connection is not secure.</p>\n        <p>You should not enter any sensitive information on this site.</p>\n      </Popover.Content>\n    </Popover.Root>\n    <InputGroup.Addon class=\"text-muted-foreground ps-1.5\">\n      <InputGroup.Text>https://</InputGroup.Text>\n    </InputGroup.Addon>\n    <InputGroup.Input />\n    <InputGroup.Addon align=\"inline-end\">\n      <InputGroup.Button\n        onclick={() => (isFavorite = !isFavorite)}\n        size=\"icon-xs\"\n      >\n        <IconStar class={isFavorite ? \"fill-blue-600 stroke-blue-600\" : \"\"} />\n      </InputGroup.Button>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n  <InputGroup.Root>\n    <InputGroup.Input placeholder=\"Type to search...\" />\n    <InputGroup.Addon align=\"inline-end\">\n      <InputGroup.Button variant=\"secondary\">Search</InputGroup.Button>\n    </InputGroup.Addon>\n  </InputGroup.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonner-example",
+  "title": "Sonner",
+  "dependencies": [
+    "vue-sonner"
+  ],
+  "registryDependencies": [
+    "button",
+    "dialog"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/sonner/SonnerDemo.vue",
+      "content": "<!-- eslint-disable no-console -->\n<!-- eslint-disable no-template-curly-in-string -->\n<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { toast } from \"vue-sonner\"\n</script>\n\n<template>\n  <Button\n    variant=\"outline\"\n    @click=\"\n      () =>\n        toast('Event has been created', {\n          description: 'Sunday, December 03, 2023 at 9:00 AM',\n          action: {\n            label: 'Undo',\n            onClick: () => console.log('Undo'),\n          },\n        })\n    \"\n  >\n    Show Toast\n  </Button>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/sonner/SonnerTypesDemo.vue",
+      "content": "<!-- eslint-disable no-console -->\n<!-- eslint-disable no-template-curly-in-string -->\n<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { toast } from \"vue-sonner\"\n\nfunction handlePromiseClick() {\n  toast.promise<{ name: string }>(\n    () =>\n      new Promise((resolve) =>\n        setTimeout(() => resolve({ name: \"Event\" }), 2000)\n      ),\n    {\n      loading: \"Loading...\",\n      success: (data: { name: string }) => `${data.name} has been created`,\n      error: \"Error\",\n    }\n  )\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-2\">\n    <Button variant=\"outline\" @click=\"() => toast('Event has been created')\">\n      Default\n    </Button>\n    <Button\n      variant=\"outline\"\n      @click=\"() => toast.success('Event has been created')\"\n    >\n      Success\n    </Button>\n    <Button\n      variant=\"outline\"\n      @click=\"\n        () => toast.info('Be at the area 10 minutes before the event time')\n      \"\n    >\n      Info\n    </Button>\n    <Button\n      variant=\"outline\"\n      @click=\"\n        () => toast.warning('Event start time cannot be earlier than 8am')\n      \"\n    >\n      Warning\n    </Button>\n    <Button\n      variant=\"outline\"\n      @click=\"() => toast.error('Event has not been created')\"\n    >\n      Error\n    </Button>\n    <Button variant=\"outline\" @click=\"handlePromiseClick\"> Promise </Button>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-force-ui/examples/sonner/SonnerWithDialogDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  Dialog,\n  DialogContent,\n  DialogDescription,\n  DialogHeader,\n  DialogTitle,\n  DialogTrigger,\n} from \"@/ui/dialog\"\nimport { toast } from \"vue-sonner\"\n</script>\n\n<template>\n  <Dialog>\n    <DialogTrigger as-child>\n      <Button variant=\"outline\"> Dialog with toast </Button>\n    </DialogTrigger>\n    <DialogContent\n      class=\"sm:max-w-md\"\n      @interact-outside=\"\n        (event) => {\n          const target = event.target as HTMLElement\n          if (target?.closest('[data-sonner-toaster]'))\n            return event.preventDefault()\n        }\n      \"\n    >\n      <DialogHeader>\n        <DialogTitle>Vue Sonner Toast</DialogTitle>\n        <DialogDescription> Dialog with toast </DialogDescription>\n      </DialogHeader>\n      <div class=\"grid gap-4\">\n        <Button\n          size=\"sm\"\n          class=\"px-3\"\n          @click=\"\n            () => {\n              toast('Event has been created', {\n                description: 'Sunday, December 03, 2023 at 9:00 AM',\n                action: {\n                  label: 'Undo',\n                  onClick: () => console.log('Undo'),\n                },\n              })\n            }\n          \"\n        >\n          Toast\n        </Button>\n      </div>\n    </DialogContent>\n  </Dialog>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

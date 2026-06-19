@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-hear",
+  "title": "Field Hear",
+  "dependencies": [
+    "@ember/helper"
+  ],
+  "registryDependencies": [
+    "card",
+    "checkbox",
+    "field"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-force-ui/examples/field-hear.gts",
+      "content": "import { fn } from '@ember/helper';\nimport Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport { Card, CardContent } from '@/ui/card';\nimport { Checkbox } from '@/ui/checkbox';\nimport {\n  Field,\n  FieldDescription,\n  FieldGroup,\n  FieldLabel,\n  FieldLegend,\n  FieldSet,\n  FieldTitle,\n} from '@/ui/field';\n\nconst options = [\n  {\n    label: 'Social Media',\n    value: 'social-media',\n  },\n  {\n    label: 'Search Engine',\n    value: 'search-engine',\n  },\n  {\n    label: 'Referral',\n    value: 'referral',\n  },\n  {\n    label: 'Other',\n    value: 'other',\n  },\n];\n\nclass FieldHear extends Component {\n  @tracked checkedOptions = new Set(['social-media']);\n\n  isChecked = (value: string) => {\n    return this.checkedOptions.has(value);\n  };\n\n  handleCheckedChange = (value: string, checked: boolean) => {\n    if (checked) {\n      this.checkedOptions.add(value);\n    } else {\n      this.checkedOptions.delete(value);\n    }\n    this.checkedOptions = new Set(this.checkedOptions);\n  };\n\n  <template>\n    <Card @class=\"py-4 shadow-none\">\n      <CardContent @class=\"px-4\">\n        <form>\n          <FieldGroup>\n            <FieldSet @class=\"gap-4\">\n              <FieldLegend>How did you hear about us?</FieldLegend>\n              <FieldDescription @class=\"line-clamp-1\">\n                Select the option that best describes how you heard about us.\n              </FieldDescription>\n              <FieldGroup\n                @class=\"flex flex-row flex-wrap gap-2 [--radius:9999rem]\"\n              >\n                {{#each options as |option|}}\n                  <FieldLabel @class=\"!w-fit\" @for={{option.value}}>\n                    <Field\n                      @class=\"gap-1.5 overflow-hidden !px-3 !py-1.5 transition-all duration-100 ease-linear group-has-data-[state=checked]/field-label:!px-2\"\n                      @orientation=\"horizontal\"\n                    >\n                      <Checkbox\n                        @checked={{this.isChecked option.value}}\n                        @class=\"-ml-6 -translate-x-1 rounded-full transition-all duration-100 ease-linear data-[state=checked]:ml-0 data-[state=checked]:translate-x-0\"\n                        @onCheckedChange={{fn\n                          this.handleCheckedChange\n                          option.value\n                        }}\n                        id={{option.value}}\n                      />\n                      <FieldTitle>{{option.label}}</FieldTitle>\n                    </Field>\n                  </FieldLabel>\n                {{/each}}\n              </FieldGroup>\n            </FieldSet>\n          </FieldGroup>\n        </form>\n      </CardContent>\n    </Card>\n  </template>\n}\n\nexport default FieldHear;\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

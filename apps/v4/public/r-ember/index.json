@@ -1,0 +1,962 @@
+[
+  {
+    "name": "accordion",
+    "type": "registry:ui",
+    "dependencies": ["ember-modifier", "ember-provide-consume-context"],
+    "files": [
+      {
+        "path": "ui/accordion.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/accordion",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/accordion-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "alert",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/alert/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "ui/alert/alert.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/alert",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/alert-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "alert-dialog",
+    "type": "registry:ui",
+    "dependencies": ["ember-modifier", "ember-provide-consume-context"],
+    "files": [
+      {
+        "path": "ui/alert-dialog.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/alert-dialog",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/alert-dialog-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "aspect-ratio",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/aspect-ratio.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/aspect-ratio",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/aspect-ratio-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "avatar",
+    "type": "registry:ui",
+    "dependencies": ["ember-truth-helpers"],
+    "files": [
+      {
+        "path": "ui/avatar/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "ui/avatar/avatar.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/avatar",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/avatar-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "badge",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/badge/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "ui/badge/badge.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/badge",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/badge-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "breadcrumb",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/breadcrumb.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/breadcrumb",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/breadcrumb-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "button",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/button/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "ui/button/button.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/button",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/button-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "button-group",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/button-group/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "ui/button-group/button-group.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/button-group",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/button-group-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "card",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/card.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/card",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/card-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "checkbox",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/checkbox.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/checkbox",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/checkbox-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "collapsible",
+    "type": "registry:ui",
+    "dependencies": ["ember-provide-consume-context"],
+    "files": [
+      {
+        "path": "ui/collapsible.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/collapsible",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/collapsible-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "command",
+    "type": "registry:ui",
+    "dependencies": [
+      "ember-modifier",
+      "ember-provide-consume-context",
+      "tracked-built-ins"
+    ],
+    "files": [
+      {
+        "path": "ui/command.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/command",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/command-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "context-menu",
+    "type": "registry:ui",
+    "dependencies": [
+      "@floating-ui/dom",
+      "ember-click-outside",
+      "ember-modifier",
+      "ember-provide-consume-context"
+    ],
+    "files": [
+      {
+        "path": "ui/context-menu.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/context-menu",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/context-menu-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "dialog",
+    "type": "registry:ui",
+    "dependencies": ["ember-modifier", "ember-provide-consume-context"],
+    "files": [
+      {
+        "path": "ui/dialog.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/dialog",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/dialog-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "dropdown-menu",
+    "type": "registry:ui",
+    "dependencies": [
+      "@floating-ui/dom",
+      "ember-click-outside",
+      "ember-modifier",
+      "ember-provide-consume-context"
+    ],
+    "files": [
+      {
+        "path": "ui/dropdown-menu.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/dropdown-menu",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/dropdown-menu-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "empty",
+    "type": "registry:ui",
+    "dependencies": ["class-variance-authority"],
+    "files": [
+      {
+        "path": "ui/empty/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "ui/empty/empty.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/empty",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/empty-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "field",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/field/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "ui/field/field.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/field",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/field-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "hover-card",
+    "type": "registry:ui",
+    "dependencies": [
+      "@floating-ui/dom",
+      "ember-modifier",
+      "ember-provide-consume-context"
+    ],
+    "files": [
+      {
+        "path": "ui/hover-card.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/hover-card",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/hover-card-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "input",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/input.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/input",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/input-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "input-group",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/input-group/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "ui/input-group/input-group.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/input-group",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/input-group-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "input-otp",
+    "type": "registry:ui",
+    "dependencies": ["ember-modifier", "ember-provide-consume-context"],
+    "files": [
+      {
+        "path": "ui/input-otp.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/input-otp",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/input-otp-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "item",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/item/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "ui/item/item.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/item",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/item-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "kbd",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/kbd.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/kbd",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/kbd-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "label",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/label.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/label",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/label-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "native-select",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/native-select.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/native-select",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/native-select-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "pagination",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/pagination.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/pagination",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/pagination-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "popover",
+    "type": "registry:ui",
+    "dependencies": [
+      "@floating-ui/dom",
+      "ember-click-outside",
+      "ember-modifier",
+      "ember-provide-consume-context"
+    ],
+    "files": [
+      {
+        "path": "ui/popover.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/popover",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/popover-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "progress",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/progress.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/progress",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/progress-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "radio-group",
+    "type": "registry:ui",
+    "dependencies": ["ember-provide-consume-context"],
+    "files": [
+      {
+        "path": "ui/radio-group.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/radio-group",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/radio-group-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "scroll-area",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/scroll-area.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/scroll-area"
+        }
+      }
+    }
+  },
+  {
+    "name": "select",
+    "type": "registry:ui",
+    "dependencies": [
+      "@floating-ui/dom",
+      "ember-click-outside",
+      "ember-modifier",
+      "ember-provide-consume-context"
+    ],
+    "files": [
+      {
+        "path": "ui/select.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/select",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/select-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "separator",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/separator.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/separator",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/separator-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "sheet",
+    "type": "registry:ui",
+    "dependencies": ["ember-modifier", "ember-provide-consume-context"],
+    "files": [
+      {
+        "path": "ui/sheet.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/sheet",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/sheet-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "sidebar",
+    "type": "registry:ui",
+    "dependencies": [
+      "ember-modifier",
+      "ember-provide-consume-context",
+      "ember-truth-helpers"
+    ],
+    "files": [
+      {
+        "path": "ui/sidebar/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "ui/sidebar/sidebar.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/sidebar",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/sidebar-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "skeleton",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/skeleton.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/skeleton",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/skeleton-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "slider",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/slider.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/slider",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/slider-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "sonner",
+    "type": "registry:ui",
+    "dependencies": [
+      "ember-click-outside",
+      "ember-modifier",
+      "ember-truth-helpers"
+    ],
+    "files": [
+      {
+        "path": "ui/sonner.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/sonner",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/sonner-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "spinner",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/spinner.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/spinner",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/spinner-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "switch",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/switch.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/switch",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/switch-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "table",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/table.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/table",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/table-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "tabs",
+    "type": "registry:ui",
+    "dependencies": ["ember-provide-consume-context"],
+    "files": [
+      {
+        "path": "ui/tabs.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/tabs",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/tabs-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "textarea",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/textarea.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/textarea",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/textarea-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "toggle",
+    "type": "registry:ui",
+    "dependencies": [],
+    "files": [
+      {
+        "path": "ui/toggle/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "ui/toggle/toggle.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/toggle",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/toggle-demo.gts"
+        }
+      }
+    }
+  },
+  {
+    "name": "toggle-group",
+    "type": "registry:ui",
+    "dependencies": ["ember-provide-consume-context"],
+    "files": [
+      {
+        "path": "ui/toggle-group/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "ui/toggle-group/toggle-group.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/toggle-group"
+        }
+      }
+    }
+  },
+  {
+    "name": "tooltip",
+    "type": "registry:ui",
+    "dependencies": [
+      "@floating-ui/dom",
+      "ember-modifier",
+      "ember-provide-consume-context"
+    ],
+    "files": [
+      {
+        "path": "ui/tooltip.gts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "ember": {
+          "docs": "https://shadcn-force-ui.vercel.app/docs/components/ember/tooltip",
+          "examples": "https://raw.githubusercontent.com/lobiklukas/shadcn-ui/refs/heads/main/apps/v4/registry/bases/ember/examples/tooltip-demo.gts"
+        }
+      }
+    }
+  }
+]

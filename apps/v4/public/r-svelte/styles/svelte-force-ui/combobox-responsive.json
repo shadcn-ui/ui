@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox-responsive",
+  "title": "Combobox Responsive",
+  "registryDependencies": [
+    "button",
+    "command",
+    "drawer",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/combobox-responsive.svelte",
+      "content": "<script lang=\"ts\">\n  import { browser } from \"$app/environment\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import * as Command from \"$lib/registry/ui/command/index.js\"\n  import * as Drawer from \"$lib/registry/ui/drawer/index.js\"\n  import * as Popover from \"$lib/registry/ui/popover/index.js\"\n  import { onMount } from \"svelte\"\n\n  type Status = {\n    value: string\n    label: string\n  }\n\n  const statuses: Status[] = [\n    {\n      value: \"backlog\",\n      label: \"Backlog\",\n    },\n    {\n      value: \"todo\",\n      label: \"Todo\",\n    },\n    {\n      value: \"in progress\",\n      label: \"In Progress\",\n    },\n    {\n      value: \"done\",\n      label: \"Done\",\n    },\n    {\n      value: \"canceled\",\n      label: \"Canceled\",\n    },\n  ]\n\n  let open = $state(false)\n  let selectedStatus: Status | null = $state(null)\n  let isDesktop = $state(false)\n\n  function checkScreenSize() {\n    isDesktop = window.innerWidth >= 768\n  }\n\n  onMount(() => {\n    if (browser) {\n      checkScreenSize()\n      window.addEventListener(\"resize\", checkScreenSize)\n      return () => window.removeEventListener(\"resize\", checkScreenSize)\n    }\n  })\n\n  function handleStatusSelect(value: string) {\n    selectedStatus = statuses.find((status) => status.value === value) || null\n    open = false\n  }\n</script>\n\n{#if isDesktop}\n  <Popover.Root bind:open>\n    <Popover.Trigger>\n      <Button variant=\"outline\" class=\"w-[150px] justify-start\">\n        {selectedStatus ? selectedStatus.label : \"+ Set status\"}\n      </Button>\n    </Popover.Trigger>\n    <Popover.Content class=\"w-[200px] p-0\" align=\"start\">\n      <Command.Root>\n        <Command.Input placeholder=\"Filter status...\" />\n        <Command.List>\n          <Command.Empty>No results found.</Command.Empty>\n          <Command.Group>\n            {#each statuses as status (status.value)}\n              <Command.Item\n                value={status.value}\n                onSelect={() => handleStatusSelect(status.value)}\n              >\n                {status.label}\n              </Command.Item>\n            {/each}\n          </Command.Group>\n        </Command.List>\n      </Command.Root>\n    </Popover.Content>\n  </Popover.Root>\n{:else}\n  <Drawer.Root bind:open>\n    <Drawer.Trigger>\n      <Button variant=\"outline\" class=\"w-[150px] justify-start\">\n        {selectedStatus ? selectedStatus.label : \"+ Set status\"}\n      </Button>\n    </Drawer.Trigger>\n    <Drawer.Content>\n      <div class=\"mt-4 border-t\">\n        <Command.Root>\n          <Command.Input placeholder=\"Filter status...\" />\n          <Command.List>\n            <Command.Empty>No results found.</Command.Empty>\n            <Command.Group>\n              {#each statuses as status (status.value)}\n                <Command.Item\n                  value={status.value}\n                  onSelect={() => handleStatusSelect(status.value)}\n                >\n                  {status.label}\n                </Command.Item>\n              {/each}\n            </Command.Group>\n          </Command.List>\n        </Command.Root>\n      </div>\n    </Drawer.Content>\n  </Drawer.Root>\n{/if}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

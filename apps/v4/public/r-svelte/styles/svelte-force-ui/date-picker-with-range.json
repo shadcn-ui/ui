@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-picker-with-range",
+  "title": "Date Picker With Range",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "button",
+    "popover",
+    "range-calendar",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/date-picker-with-range.svelte",
+      "content": "<script lang=\"ts\">\n  import {\n    CalendarDate,\n    DateFormatter,\n    getLocalTimeZone,\n    type DateValue,\n  } from \"@internationalized/date\"\n  import CalendarIcon from \"@lucide/svelte/icons/calendar\"\n  import { buttonVariants } from \"$lib/registry/ui/button/index.js\"\n  import * as Popover from \"$lib/registry/ui/popover/index.js\"\n  import { RangeCalendar } from \"$lib/registry/ui/range-calendar/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import type { DateRange } from \"bits-ui\"\n\n  const df = new DateFormatter(\"en-US\", {\n    dateStyle: \"medium\",\n  })\n\n  let value: DateRange = $state({\n    start: new CalendarDate(2022, 1, 20),\n    end: new CalendarDate(2022, 1, 20).add({ days: 20 }),\n  })\n\n  let startValue: DateValue | undefined = $state(undefined)\n</script>\n\n<div class=\"grid gap-2\">\n  <Popover.Root>\n    <Popover.Trigger\n      class={cn(\n        buttonVariants({ variant: \"outline\" }),\n        !value && \"text-muted-foreground\"\n      )}\n    >\n      <CalendarIcon class=\"me-2 size-4\" />\n      {#if value && value.start}\n        {#if value.end}\n          {df.format(value.start.toDate(getLocalTimeZone()))} - {df.format(\n            value.end.toDate(getLocalTimeZone())\n          )}\n        {:else}\n          {df.format(value.start.toDate(getLocalTimeZone()))}\n        {/if}\n      {:else if startValue}\n        {df.format(startValue.toDate(getLocalTimeZone()))}\n      {:else}\n        Pick a date\n      {/if}\n    </Popover.Trigger>\n    <Popover.Content class=\"w-auto p-0\" align=\"start\">\n      <RangeCalendar\n        bind:value\n        onStartValueChange={(v) => {\n          startValue = v\n        }}\n        numberOfMonths={2}\n      />\n    </Popover.Content>\n  </Popover.Root>\n</div>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

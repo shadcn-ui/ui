@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-picker-example",
+  "title": "Date Picker",
+  "dependencies": [
+    "lucide-vue-next"
+  ],
+  "registryDependencies": [
+    "button",
+    "calendar",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/date-picker/DatePickerDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Calendar } from \"@/ui/calendar\"\nimport { Popover, PopoverContent, PopoverTrigger } from \"@/ui/popover\"\nimport type { DateValue } from \"@internationalized/date\"\nimport { DateFormatter, getLocalTimeZone, today } from \"@internationalized/date\"\nimport { CalendarIcon } from \"lucide-vue-next\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst defaultPlaceholder = today(getLocalTimeZone())\nconst date = ref() as Ref<DateValue>\n\nconst df = new DateFormatter(\"en-US\", {\n  dateStyle: \"long\",\n})\n</script>\n\n<template>\n  <Popover v-slot=\"{ close }\">\n    <PopoverTrigger as-child>\n      <Button\n        variant=\"outline\"\n        :class=\"\n          cn(\n            'w-[240px] justify-start text-left font-normal',\n            !date && 'text-muted-foreground'\n          )\n        \"\n      >\n        <CalendarIcon />\n        {{ date ? df.format(date.toDate(getLocalTimeZone())) : \"Pick a date\" }}\n      </Button>\n    </PopoverTrigger>\n    <PopoverContent class=\"w-auto p-0\" align=\"start\">\n      <Calendar\n        v-model=\"date\"\n        :default-placeholder=\"defaultPlaceholder\"\n        layout=\"month-and-year\"\n        initial-focus\n        @update:model-value=\"close\"\n      />\n    </PopoverContent>\n  </Popover>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-example",
+  "title": "Accordion",
+  "dependencies": [],
+  "registryDependencies": [
+    "accordion"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-force-ui/examples/accordion/AccordionDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/ui/accordion\"\n</script>\n\n<template>\n  <Accordion type=\"single\" collapsible class=\"w-full\" default-value=\"item-1\">\n    <AccordionItem value=\"item-1\">\n      <AccordionTrigger>Product Information</AccordionTrigger>\n      <AccordionContent>\n        <p>\n          Our flagship product combines cutting-edge technology with sleek\n          design. Built with premium materials, it offers unparalleled\n          performance and reliability.\n        </p>\n        <p class=\"mt-2\">\n          Key features include advanced processing capabilities, and an\n          intuitive user interface designed for both beginners and experts.\n        </p>\n      </AccordionContent>\n    </AccordionItem>\n    <AccordionItem value=\"item-2\">\n      <AccordionTrigger>Shipping Details</AccordionTrigger>\n      <AccordionContent>\n        <p>\n          We offer worldwide shipping through trusted courier partners. Standard\n          delivery takes 3-5 business days, while express shipping ensures\n          delivery within 1-2 business days.\n        </p>\n        <p class=\"mt-2\">\n          All orders are carefully packaged and fully insured. Track your\n          shipment in real-time through our dedicated tracking portal.\n        </p>\n      </AccordionContent>\n    </AccordionItem>\n    <AccordionItem value=\"item-3\">\n      <AccordionTrigger>Return Policy</AccordionTrigger>\n      <AccordionContent>\n        <p>\n          We stand behind our products with a comprehensive 30-day return\n          policy. If you're not completely satisfied, simply return the item in\n          its original condition.\n        </p>\n        <p class=\"mt-2\">\n          Our hassle-free return process includes free return shipping and full\n          refunds processed within 48 hours of receiving the returned item.\n        </p>\n      </AccordionContent>\n    </AccordionItem>\n  </Accordion>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

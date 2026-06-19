@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-with-text",
+  "title": "Toggle With Text",
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/toggle-with-text.svelte",
+      "content": "<script lang=\"ts\">\n  import ItalicIcon from \"@lucide/svelte/icons/italic\"\n  import { Toggle } from \"$lib/registry/ui/toggle/index.js\"\n</script>\n\n<Toggle aria-label=\"Toggle italic\">\n  <ItalicIcon class=\"me-2 size-4\" />\n  Italic\n</Toggle>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-secondary",
+  "title": "Badge Secondary",
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/badge-secondary.svelte",
+      "content": "<script lang=\"ts\">\n  import { Badge } from \"$lib/registry/ui/badge/index.js\"\n</script>\n\n<Badge variant=\"secondary\">Secondary</Badge>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

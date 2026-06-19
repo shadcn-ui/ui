@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-demo",
+  "title": "Calendar Demo",
+  "dependencies": [
+    "@internationalized/date"
+  ],
+  "registryDependencies": [
+    "calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/calendar-demo.svelte",
+      "content": "<script lang=\"ts\">\n  import { getLocalTimeZone, today } from \"@internationalized/date\"\n  import { Calendar } from \"$lib/registry/ui/calendar/index.js\"\n\n  let value = today(getLocalTimeZone())\n</script>\n\n<Calendar\n  type=\"single\"\n  bind:value\n  class=\"rounded-md border shadow-sm\"\n  captionLayout=\"dropdown\"\n/>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

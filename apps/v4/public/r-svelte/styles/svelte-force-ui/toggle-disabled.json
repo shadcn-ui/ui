@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-disabled",
+  "title": "Toggle Disabled",
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-force-ui/examples/toggle-disabled.svelte",
+      "content": "<script lang=\"ts\">\n  import UnderlineIcon from \"@lucide/svelte/icons/underline\"\n  import { Toggle } from \"$lib/registry/ui/toggle/index.js\"\n</script>\n\n<Toggle aria-label=\"Toggle underline\" disabled>\n  <UnderlineIcon class=\"size-4\" />\n</Toggle>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
