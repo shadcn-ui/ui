@@ -43,5 +43,6 @@ tsconfig.tsbuildinfo
 
 .notes
 .playwright-mcp
+.playwright-cli
 shadcn-workspace
 .codex-artifacts

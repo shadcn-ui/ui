@@ -175,7 +175,7 @@ export function UIElements() {
                   />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" side="top" className="w-40">
+              <DropdownMenuContent align="end" side="top" className="w-fit">
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
                   <DropdownMenuItem>Mute Conversation</DropdownMenuItem>

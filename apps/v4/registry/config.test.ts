@@ -4,6 +4,7 @@ import publicSchema from "../public/schema.json"
 import {
   buildPartialRegistryBase,
   buildRegistryBase,
+  buildThemeForPreset,
   DEFAULT_CONFIG,
   designSystemConfigSchema,
   parseRegistryBaseParts,
@@ -149,6 +150,31 @@ describe("buildRegistryBase", () => {
     })
 
     expect(result.success).toBe(false)
+  })
+})
+
+describe("buildThemeForPreset", () => {
+  it("builds a copyable registry theme item", () => {
+    const result = buildThemeForPreset({
+      ...DEFAULT_CONFIG,
+      baseColor: "taupe",
+      theme: "taupe",
+      chartColor: "taupe",
+      menuAccent: "bold",
+      radius: "large",
+    })
+
+    expect(result).toMatchObject({
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "taupe-taupe",
+      type: "registry:theme",
+    })
+    expect(result.cssVars?.light?.radius).toBe("0.875rem")
+    expect(result.cssVars?.light?.accent).toBe(result.cssVars?.light?.primary)
+    expect(result.cssVars?.dark?.accent).toBe(result.cssVars?.dark?.primary)
+    expect(result.cssVars?.light?.background).toBeDefined()
+    expect(result.cssVars?.dark?.background).toBeDefined()
+    expect(result.css).toBeUndefined()
   })
 })
 

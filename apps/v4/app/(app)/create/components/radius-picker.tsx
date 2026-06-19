@@ -93,6 +93,7 @@ export function RadiusPicker({
                   key={radius.name}
                   value={radius.name}
                   closeOnClick={isMobile}
+                  disabled={params.style === "rhea" && radius.name === "large"}
                 >
                   {radius.label}
                 </PickerRadioItem>

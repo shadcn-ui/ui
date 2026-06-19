@@ -94,7 +94,9 @@ describe("handleError", () => {
     expect(logger.error).toHaveBeenCalledWith(
       "You can also try a previous version to see if that works:"
     )
-    expect(logger.error).toHaveBeenCalledWith("npx shadcn@4.5.0 add foo")
+    expect(logger.error).toHaveBeenCalledWith(
+      getPreviousMinorCommand(undefined, ["add", "foo"])
+    )
     expect(exit).toHaveBeenCalledWith(1)
   })
 })

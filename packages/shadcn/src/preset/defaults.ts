@@ -106,6 +106,21 @@ export const DEFAULT_PRESETS = {
     radius: "default",
     rtl: false,
   },
+  rhea: {
+    title: "Rhea",
+    description: "Lucide / Inter",
+    style: "rhea",
+    baseColor: "neutral",
+    theme: "neutral",
+    chartColor: "neutral",
+    iconLibrary: "lucide",
+    font: "inter",
+    fontHeading: "inherit",
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+    rtl: false,
+  },
 } satisfies Record<
   PresetConfig["style"],
   PresetConfig & {
