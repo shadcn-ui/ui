@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-image",
+  "type": "registry:example",
+  "registryDependencies": [
+    "empty"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/empty-image.tsx",
+      "content": "import {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/registry/new-york-v4/ui/empty\"\n\nexport default function EmptyImage() {\n  return (\n    <div className=\"grid gap-8 md:grid-cols-2\">\n      <Empty>\n        <EmptyHeader>\n          <EmptyMedia variant=\"image\">\n            <img\n              src=\"https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=64&h=64&fit=crop&crop=face\"\n              alt=\"Empty gallery\"\n              className=\"rounded\"\n            />\n          </EmptyMedia>\n          <EmptyTitle>No photos</EmptyTitle>\n          <EmptyDescription>\n            Upload photos to see them appear in your gallery.\n          </EmptyDescription>\n        </EmptyHeader>\n      </Empty>\n\n      <Empty>\n        <EmptyHeader>\n          <EmptyMedia variant=\"image\">\n            <img\n              src=\"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face\"\n              alt=\"Empty documents\"\n              className=\"rounded\"\n            />\n          </EmptyMedia>\n          <EmptyTitle>No documents</EmptyTitle>\n          <EmptyDescription>\n            Create or upload documents to get started.\n          </EmptyDescription>\n        </EmptyHeader>\n      </Empty>\n\n      <Empty>\n        <EmptyHeader>\n          <EmptyMedia variant=\"image\">\n            <img\n              src=\"https://images.unsplash.com/photo-1494790108755-2616b612b786?w=64&h=64&fit=crop&crop=face\"\n              alt=\"Empty contacts\"\n              className=\"rounded\"\n            />\n          </EmptyMedia>\n          <EmptyTitle>No contacts</EmptyTitle>\n          <EmptyDescription>\n            Add contacts to build your network.\n          </EmptyDescription>\n        </EmptyHeader>\n      </Empty>\n\n      <Empty>\n        <EmptyHeader>\n          <EmptyMedia variant=\"image\">\n            <img\n              src=\"https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=64&h=64&fit=crop&crop=face\"\n              alt=\"Empty profile\"\n              className=\"rounded\"\n            />\n          </EmptyMedia>\n          <EmptyTitle>Profile incomplete</EmptyTitle>\n          <EmptyDescription>\n            Complete your profile to get the most out of the platform.\n          </EmptyDescription>\n        </EmptyHeader>\n      </Empty>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

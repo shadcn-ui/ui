@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-radar-radius",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "card",
+    "chart"
+  ],
+  "files": [
+    {
+      "path": "charts/chart-radar-radius.tsx",
+      "content": "\"use client\"\n\nimport { TrendingUp } from \"lucide-react\"\nimport {\n  PolarAngleAxis,\n  PolarGrid,\n  PolarRadiusAxis,\n  Radar,\n  RadarChart,\n} from \"recharts\"\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/new-york/ui/card\"\nimport {\n  ChartConfig,\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n} from \"@/registry/new-york/ui/chart\"\nconst chartData = [\n  { month: \"January\", desktop: 186, mobile: 80 },\n  { month: \"February\", desktop: 305, mobile: 200 },\n  { month: \"March\", desktop: 237, mobile: 120 },\n  { month: \"April\", desktop: 73, mobile: 190 },\n  { month: \"May\", desktop: 209, mobile: 130 },\n  { month: \"June\", desktop: 214, mobile: 140 },\n]\n\nconst chartConfig = {\n  desktop: {\n    label: \"Desktop\",\n    color: \"hsl(var(--chart-1))\",\n  },\n  mobile: {\n    label: \"Mobile\",\n    color: \"hsl(var(--chart-2))\",\n  },\n} satisfies ChartConfig\n\nexport default function Component() {\n  return (\n    <Card>\n      <CardHeader className=\"items-center pb-4\">\n        <CardTitle>Radar Chart - Radius Axis</CardTitle>\n        <CardDescription>\n          Showing total visitors for the last 6 months\n        </CardDescription>\n      </CardHeader>\n      <CardContent className=\"pb-0\">\n        <ChartContainer\n          config={chartConfig}\n          className=\"mx-auto aspect-square max-h-[250px]\"\n        >\n          <RadarChart data={chartData}>\n            <ChartTooltip\n              cursor={false}\n              content={\n                <ChartTooltipContent indicator=\"line\" labelKey=\"month\" />\n              }\n            />\n            <PolarGrid />\n            <Radar\n              dataKey=\"desktop\"\n              fill=\"var(--color-desktop)\"\n              fillOpacity={0.6}\n            />\n            <Radar dataKey=\"mobile\" fill=\"var(--color-mobile)\" />\n            <PolarRadiusAxis\n              angle={60}\n              stroke=\"hsla(var(--foreground))\"\n              orientation=\"middle\"\n              axisLine={false}\n            />\n          </RadarChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"flex-col gap-2 text-sm\">\n        <div className=\"flex items-center gap-2 font-medium leading-none\">\n          Trending up by 5.2% this month <TrendingUp className=\"h-4 w-4\" />\n        </div>\n        <div className=\"flex items-center gap-2 leading-none text-muted-foreground\">\n          January - June 2024\n        </div>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:block",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "charts",
+    "charts-radar"
+  ]
+}

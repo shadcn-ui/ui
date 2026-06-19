@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonner-example",
+  "title": "Sonner",
+  "registryDependencies": [
+    "sonner",
+    "example"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-maia/examples/sonner-example.tsx",
+      "content": "\"use client\"\n\nimport { toast } from \"sonner\"\n\nimport {\n  Example,\n  ExampleWrapper,\n} from \"@/registry/radix-maia/components/example\"\nimport { Button } from \"@/registry/radix-maia/ui/button\"\n\nexport default function SonnerExample() {\n  return (\n    <ExampleWrapper>\n      <SonnerBasic />\n      <SonnerWithDescription />\n    </ExampleWrapper>\n  )\n}\n\nfunction SonnerBasic() {\n  return (\n    <Example title=\"Basic\" className=\"items-center justify-center\">\n      <Button\n        onClick={() => toast(\"Event has been created\")}\n        variant=\"outline\"\n        className=\"w-fit\"\n      >\n        Show Toast\n      </Button>\n    </Example>\n  )\n}\n\nfunction SonnerWithDescription() {\n  return (\n    <Example title=\"With Description\" className=\"items-center justify-center\">\n      <Button\n        onClick={() =>\n          toast(\"Event has been created\", {\n            description: \"Monday, January 3rd at 6:00pm\",\n          })\n        }\n        variant=\"outline\"\n        className=\"w-fit\"\n      >\n        Show Toast\n      </Button>\n    </Example>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

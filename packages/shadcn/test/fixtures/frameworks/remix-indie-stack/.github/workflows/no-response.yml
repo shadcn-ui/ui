@@ -1,0 +1,34 @@
+name: 🥺 No Response
+
+on:
+  schedule:
+    # Schedule for five minutes after the hour, every hour
+    - cron: "5 * * * *"
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    if: github.repository == 'remix-run/indie-stack'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🥺 Handle Ghosting
+        uses: actions/stale@v9
+        with:
+          days-before-close: 10
+          close-issue-message: >
+            This issue has been automatically closed because we haven't received a
+            response from the original author 🙈. This automation helps keep the issue
+            tracker clean from issues that are unactionable. Please reach out if you
+            have more information for us! 🙂
+          close-pr-message: >
+            This PR has been automatically closed because we haven't received a
+            response from the original author 🙈. This automation helps keep the issue
+            tracker clean from PRs that are unactionable. Please reach out if you
+            have more information for us! 🙂
+          # don't automatically mark issues/PRs as stale
+          days-before-stale: -1
+          stale-issue-label: needs-response
+          stale-pr-label: needs-response
