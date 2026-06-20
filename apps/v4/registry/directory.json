@@ -1526,5 +1526,12 @@
     "url": "https://kaui-shadcn-registry.vercel.app/r/{name}.json",
     "description": "Personal well crafted components for Shadcn ui",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect width='32' height='32' rx='7' fill='#0a0a0a'/><path d='M9 7v18M9 16l14-8M9 16l14 8' stroke='#fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+  },
+  {
+    "name": "@uiable",
+    "homepage": "https://uiable.com",
+    "url": "https://uiable.com/r/{name}.json",
+    "description": "Free, open-source UI component library built with Next.js, React 19, Tailwind CSS v4, and shadcn/ui — beautifully designed components you can copy, customize, and make your own.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect width='32' height='32' rx='7' fill='#0a0a0a'/><path d='M9 7v18M9 16l14-8M9 16l14 8' stroke='#fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/></svg>"
   }
 ]
