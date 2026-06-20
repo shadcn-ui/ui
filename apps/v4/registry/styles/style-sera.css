@@ -630,7 +630,7 @@
 
   /* MARK: Input */
   .cn-input {
-    @apply border-transparent border-b-input bg-transparent focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 border px-0 py-1 text-base transition-[color,border-color] file:h-7 file:text-sm file:font-medium md:text-sm;
+    @apply border-transparent border-b-input bg-transparent focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 border px-0 py-1 text-base transition-[color,border-color] file:h-7 file:text-sm file:font-medium md:text-sm autofill:shadow-[inset_0_0_0px_1000px_var(--color-background)] autofill:[-webkit-text-fill-color:var(--color-foreground)];
   }
 
   /* MARK: Input OTP */
