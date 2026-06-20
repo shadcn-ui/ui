@@ -57,7 +57,8 @@
       "default": "./dist/preset/index.js"
     },
     "./tailwind.css": {
-      "style": "./dist/tailwind.css"
+      "style": "./dist/tailwind.css",
+      "default": "./dist/tailwind.css"
     }
   },
   "bin": "./dist/index.js",
