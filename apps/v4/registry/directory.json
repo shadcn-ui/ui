@@ -44,9 +44,9 @@
   {
     "name": "@agentcn",
     "homepage": "https://agentcn.vercel.app",
-    "url": "https://agentcn.vercel.app/r/{style}/{name}.json",
+    "url": "https://agentcn.vercel.app/r/{name}.json",
     "description": "Production-ready agents, made simple. Ready to use, customizable AI agent recipes. Built on Eve and Flue.",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--background)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M14 18a2 2 0 0 0-4 0m9-7-2.11-6.657a2 2 0 0 0-2.752-1.148l-1.276.61A2 2 0 0 1 12 4H8.5a2 2 0 0 0-1.925 1.456L5 11m-3 0h20'/><circle cx='17' cy='18' r='3'/><circle cx='7' cy='18' r='3'/><path d='M15.46 7.1 13.3 9.26m1.728-4.536-4.104 4.104' stroke-width='1.575'/></svg>"
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' width='24' height='24'><rect width='24' height='24' rx='4' fill='var(--foreground)'/><g stroke='var(--background)'><path d='M14 18a2 2 0 0 0-4 0m9-7-2.11-6.657a2 2 0 0 0-2.752-1.148l-1.276.61A2 2 0 0 1 12 4H8.5a2 2 0 0 0-1.925 1.456L5 11m-3 0h20'/><circle cx='17' cy='18' r='3'/><circle cx='7' cy='18' r='3'/><path d='M15.46 7.1 13.3 9.26m1.728-4.536-4.104 4.104' stroke-width='1.575'/></g></svg>"
   },
   {
     "name": "@agents-ui",
