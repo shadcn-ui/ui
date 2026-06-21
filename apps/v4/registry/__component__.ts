@@ -6,7 +6,7 @@ import "server-only"
 import * as React from "react"
 
 export const Components: Record<string, Record<string, any>> = {
-  "new-york-v4": {
+  "rio-v5": {
     accordion: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/ui/accordion")
       const exportName =
