@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { InfoIcon } from 'lucide-vue-next'
+import InfoIcon from "@material-symbols/svg-400/rounded/info.svg?component"
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '@/ui/input-group'
 import { Label } from '@/ui/label'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/ui/tooltip'

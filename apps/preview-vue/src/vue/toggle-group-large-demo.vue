@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { Bold, Italic, Underline } from 'lucide-vue-next'
+import Bold from "@material-symbols/svg-400/rounded/format_bold.svg?component"
+import Italic from "@material-symbols/svg-400/rounded/format_italic.svg?component"
+import Underline from "@material-symbols/svg-400/rounded/format_underlined.svg?component"
 import { ToggleGroup, ToggleGroupItem } from '@/ui/toggle-group'
 </script>
 

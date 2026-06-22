@@ -2,7 +2,7 @@
 import type { ChartConfig } from '@/ui/chart'
 
 import { VisAxis, VisGroupedBar, VisXYContainer } from '@unovis/vue'
-import { TrendingUp } from 'lucide-vue-next'
+import TrendingUp from "@material-symbols/svg-400/rounded/trending_up.svg?component"
 import {
   Card,
   CardContent,

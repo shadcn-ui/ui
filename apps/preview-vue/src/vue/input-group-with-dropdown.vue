@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ChevronDownIcon, MoreHorizontal } from 'lucide-vue-next'
+import ChevronDownIcon from "@material-symbols/svg-400/rounded/keyboard_arrow_down.svg?component"
+import MoreHorizontal from "@material-symbols/svg-400/rounded/more_horiz.svg?component"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/ui/dropdown-menu'
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '@/ui/input-group'
 </script>

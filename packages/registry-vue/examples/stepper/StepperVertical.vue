@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { Check, Circle, Dot } from 'lucide-vue-next'
+import Check from "@material-symbols/svg-400/rounded/check.svg?component"
+import Circle from "@material-symbols/svg-400/rounded/circle.svg?component"
+import Dot from "@material-symbols/svg-400/rounded/fiber_manual_record.svg?component"
 
 import { Button } from '@/ui/button'
 import { Stepper, StepperDescription, StepperItem, StepperSeparator, StepperTitle, StepperTrigger } from '@/ui/stepper'

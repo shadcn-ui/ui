@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { BadgeCheckIcon, ChevronRightIcon } from 'lucide-vue-next'
+import BadgeCheckIcon from "@material-symbols/svg-400/rounded/verified.svg?component"
+import ChevronRightIcon from "@material-symbols/svg-400/rounded/chevron_right.svg?component"
 import { Button } from '@/ui/button'
 import {
   Item,

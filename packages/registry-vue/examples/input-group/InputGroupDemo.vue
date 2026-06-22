@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { ArrowUpIcon, CheckIcon, InfoIcon, PlusIcon, Search } from 'lucide-vue-next'
+import ArrowUpIcon from "@material-symbols/svg-400/rounded/arrow_upward.svg?component"
+import CheckIcon from "@material-symbols/svg-400/rounded/check.svg?component"
+import InfoIcon from "@material-symbols/svg-400/rounded/info.svg?component"
+import PlusIcon from "@material-symbols/svg-400/rounded/add.svg?component"
+import Search from "@material-symbols/svg-400/rounded/search.svg?component"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/ui/dropdown-menu'
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea } from '@/ui/input-group'
 import { Separator } from '@/ui/separator'

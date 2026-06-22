@@ -30,7 +30,8 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
     <span class="cn-menubar-radio-item-indicator pointer-events-none absolute flex items-center justify-center">
       <MenubarItemIndicator>
         <slot name="indicator-icon">
-          <IconPlaceholder lucide="CheckIcon" tabler="IconCheck" hugeicons="Tick02Icon" phosphor="CheckIcon" remixicon="RiCheckLine" />
+          <IconPlaceholder lucide="CheckIcon"
+      materialSymbols="check" tabler="IconCheck" hugeicons="Tick02Icon" phosphor="CheckIcon" remixicon="RiCheckLine" />
         </slot>
       </MenubarItemIndicator>
     </span>

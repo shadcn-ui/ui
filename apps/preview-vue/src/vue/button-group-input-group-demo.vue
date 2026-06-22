@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { AudioLinesIcon, PlusIcon } from 'lucide-vue-next'
+import AudioLinesIcon from "@material-symbols/svg-400/rounded/graphic_eq.svg?component"
+import PlusIcon from "@material-symbols/svg-400/rounded/add.svg?component"
 import { ref } from 'vue'
 import { Button } from '@/ui/button'
 import { ButtonGroup } from '@/ui/button-group'

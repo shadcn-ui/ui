@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ChevronsUpDown } from 'lucide-vue-next'
+import ChevronsUpDown from "@material-symbols/svg-400/rounded/unfold_more.svg?component"
 import { ref } from 'vue'
 import { Button } from '@/ui/button'
 import {

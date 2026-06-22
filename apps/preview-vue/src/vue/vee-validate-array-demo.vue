@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { toTypedSchema } from '@vee-validate/zod'
-import { X } from 'lucide-vue-next'
+import X from "@material-symbols/svg-400/rounded/close.svg?component"
 import { useFieldArray, useForm, Field as VeeField } from 'vee-validate'
 import { toast } from 'vue-sonner'
 import { z } from 'zod'

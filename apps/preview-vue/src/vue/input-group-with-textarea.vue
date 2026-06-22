@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { BracesIcon, CopyIcon, CornerDownLeftIcon, RefreshCwIcon } from 'lucide-vue-next'
+import BracesIcon from "@material-symbols/svg-400/rounded/code.svg?component"
+import CopyIcon from "@material-symbols/svg-400/rounded/content_copy.svg?component"
+import CornerDownLeftIcon from "@material-symbols/svg-400/rounded/subdirectory_arrow_left.svg?component"
+import RefreshCwIcon from "@material-symbols/svg-400/rounded/refresh.svg?component"
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupText, InputGroupTextarea } from '@/ui/input-group'
 </script>
 

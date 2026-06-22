@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PlusIcon } from 'lucide-vue-next'
+import PlusIcon from "@material-symbols/svg-400/rounded/add.svg?component"
 import { Button } from '@/ui/button'
 import { ButtonGroup, ButtonGroupSeparator } from '@/ui/button-group'
 </script>

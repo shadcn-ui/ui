@@ -16,7 +16,9 @@ import {
   useVueTable,
 } from '@tanstack/vue-table'
 import { createReusableTemplate } from '@vueuse/core'
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from 'lucide-vue-next'
+import ArrowUpDown from "@material-symbols/svg-400/rounded/swap_vert.svg?component"
+import ChevronDown from "@material-symbols/svg-400/rounded/keyboard_arrow_down.svg?component"
+import MoreHorizontal from "@material-symbols/svg-400/rounded/more_horiz.svg?component"
 import { h, ref } from 'vue'
 
 import { valueUpdater } from '@/ui/table/utils'

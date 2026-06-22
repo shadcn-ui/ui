@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core'
-import { CheckIcon, CopyIcon, InfoIcon, StarIcon } from 'lucide-vue-next'
+import CheckIcon from "@material-symbols/svg-400/rounded/check.svg?component"
+import CopyIcon from "@material-symbols/svg-400/rounded/content_copy.svg?component"
+import InfoIcon from "@material-symbols/svg-400/rounded/info.svg?component"
+import StarIcon from "@material-symbols/svg-400/rounded/star.svg?component"
 import { ref } from 'vue'
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '@/ui/input-group'
 import { Popover, PopoverContent, PopoverTrigger } from '@/ui/popover'

@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { Calendar, Home, Inbox, Search, Settings } from 'lucide-vue-next'
+import Calendar from "@material-symbols/svg-400/rounded/calendar_month.svg?component"
+import Home from "@material-symbols/svg-400/rounded/home.svg?component"
+import Inbox from "@material-symbols/svg-400/rounded/inbox.svg?component"
+import Search from "@material-symbols/svg-400/rounded/search.svg?component"
+import Settings from "@material-symbols/svg-400/rounded/settings.svg?component"
 
 import {
   Sidebar,

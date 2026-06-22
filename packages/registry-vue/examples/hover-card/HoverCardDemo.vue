@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CalendarDaysIcon } from 'lucide-vue-next'
+import CalendarDaysIcon from "@material-symbols/svg-400/rounded/calendar_month.svg?component"
 import {
   Avatar,
   AvatarFallback,

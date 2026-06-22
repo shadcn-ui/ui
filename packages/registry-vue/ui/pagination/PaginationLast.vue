@@ -29,6 +29,7 @@ const forwarded = useForwardProps(delegatedProps)
       <span class="cn-pagination-last-text hidden sm:block">Last</span>
       <IconPlaceholder
         lucide="ChevronsRightIcon"
+      materialSymbols="keyboard_double_arrow_right"
         tabler="IconChevronsRight"
         hugeicons="ArrowRightDoubleIcon"
         phosphor="CaretDoubleRightIcon"

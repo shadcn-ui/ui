@@ -75,6 +75,7 @@ onUnmounted(() => {
     <slot />
     <IconPlaceholder
       lucide="CheckIcon"
+      materialSymbols="check"
       tabler="IconCheck"
       hugeicons="Tick02Icon"
       phosphor="CheckIcon"

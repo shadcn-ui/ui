@@ -28,6 +28,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
       <slot v-bind="slotProps">
         <IconPlaceholder
           lucide="CheckIcon"
+      materialSymbols="check"
           tabler="IconCheck"
           hugeicons="Tick02Icon"
           phosphor="CheckIcon"

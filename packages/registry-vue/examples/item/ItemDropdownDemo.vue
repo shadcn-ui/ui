@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ChevronDownIcon } from 'lucide-vue-next'
+import ChevronDownIcon from "@material-symbols/svg-400/rounded/keyboard_arrow_down.svg?component"
 import { Avatar, AvatarFallback, AvatarImage } from '@/ui/avatar'
 import { Button } from '@/ui/button'
 import {

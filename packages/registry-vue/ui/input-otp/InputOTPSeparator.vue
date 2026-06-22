@@ -15,7 +15,8 @@ const forwarded = useForwardProps(props)
     v-bind="forwarded"
   >
     <slot>
-      <IconPlaceholder lucide="MinusIcon" tabler="IconMinus" hugeicons="Minus01Icon" phosphor="MinusIcon" remixicon="RiSubtractLine" />
+      <IconPlaceholder lucide="MinusIcon"
+      materialSymbols="remove" tabler="IconMinus" hugeicons="Minus01Icon" phosphor="MinusIcon" remixicon="RiSubtractLine" />
     </slot>
   </div>
 </template>

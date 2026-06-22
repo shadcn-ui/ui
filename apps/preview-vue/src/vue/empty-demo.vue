@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ArrowUpRightIcon, FolderCode } from 'lucide-vue-next'
+import ArrowUpRightIcon from "@material-symbols/svg-400/rounded/north_east.svg?component"
+import FolderCode from "@material-symbols/svg-400/rounded/folder_code.svg?component"
 import { Button } from '@/ui/button'
 import {
   Empty,

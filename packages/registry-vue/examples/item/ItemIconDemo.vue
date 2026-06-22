@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ShieldAlertIcon } from 'lucide-vue-next'
+import ShieldAlertIcon from "@material-symbols/svg-400/rounded/gpp_maybe.svg?component"
 import { Button } from '@/ui/button'
 import {
   Item,

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BadgeCheckIcon } from 'lucide-vue-next'
+import BadgeCheckIcon from "@material-symbols/svg-400/rounded/verified.svg?component"
 import { Badge } from '@/ui/badge'
 </script>
 

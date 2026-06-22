@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LoaderIcon } from 'lucide-vue-next'
+import LoaderIcon from "@material-symbols/svg-400/rounded/progress_activity.svg?component"
 import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText } from '@/ui/input-group'
 import { Spinner } from '@/ui/spinner'
 </script>

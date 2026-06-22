@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { CheckIcon, CreditCardIcon, InfoIcon, MailIcon, SearchIcon, StarIcon } from 'lucide-vue-next'
+import CheckIcon from "@material-symbols/svg-400/rounded/check.svg?component"
+import CreditCardIcon from "@material-symbols/svg-400/rounded/credit_card.svg?component"
+import InfoIcon from "@material-symbols/svg-400/rounded/info.svg?component"
+import MailIcon from "@material-symbols/svg-400/rounded/mail.svg?component"
+import SearchIcon from "@material-symbols/svg-400/rounded/search.svg?component"
+import StarIcon from "@material-symbols/svg-400/rounded/star.svg?component"
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/ui/input-group'
 </script>
 

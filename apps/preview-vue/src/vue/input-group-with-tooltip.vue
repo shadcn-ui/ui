@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { HelpCircle, InfoIcon } from 'lucide-vue-next'
+import HelpCircle from "@material-symbols/svg-400/rounded/help.svg?component"
+import InfoIcon from "@material-symbols/svg-400/rounded/info.svg?component"
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '@/ui/input-group'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/ui/tooltip'
 </script>

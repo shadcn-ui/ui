@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Link2Icon } from 'lucide-vue-next'
+import Link2Icon from "@material-symbols/svg-400/rounded/link.svg?component"
 import { ButtonGroup, ButtonGroupText } from '@/ui/button-group'
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/ui/input-group'
 import { Label } from '@/ui/label'

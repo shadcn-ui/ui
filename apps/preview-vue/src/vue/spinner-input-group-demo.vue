@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowUpIcon } from 'lucide-vue-next'
+import ArrowUpIcon from "@material-symbols/svg-400/rounded/arrow_upward.svg?component"
 import {
   InputGroup,
   InputGroupAddon,

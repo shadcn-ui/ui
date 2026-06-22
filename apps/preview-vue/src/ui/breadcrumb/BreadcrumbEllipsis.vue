@@ -18,6 +18,7 @@ const props = defineProps<{
     <slot>
       <IconPlaceholder
         lucide="MoreHorizontalIcon"
+      materialSymbols="more_horiz"
         tabler="IconDots"
         hugeicons="MoreHorizontalCircle01Icon"
         phosphor="DotsThreeIcon"

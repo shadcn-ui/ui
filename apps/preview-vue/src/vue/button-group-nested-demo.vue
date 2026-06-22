@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-vue-next'
+import ArrowLeftIcon from "@material-symbols/svg-400/rounded/arrow_left.svg?component"
+import ArrowRightIcon from "@material-symbols/svg-400/rounded/arrow_right.svg?component"
 import { Button } from '@/ui/button'
 import { ButtonGroup } from '@/ui/button-group'
 </script>
