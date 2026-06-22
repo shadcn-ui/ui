@@ -10,6 +10,7 @@ import {
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
 
 import { BASES } from "@/registry/bases"
+import { DEFAULT_CONFIG } from "@/registry/config"
 
 function getStyleFromStyleName(styleName: string) {
   const parts = styleName.split("-")
@@ -29,7 +30,7 @@ function buildDisplayConfig(styleName: string) {
       cssVariables: true,
       prefix: "",
     },
-    iconLibrary: "lucide",
+    iconLibrary: DEFAULT_CONFIG.iconLibrary, // [FORCE-UI] was "lucide"
     aliases: {
       components: "@/components",
       utils: "@/lib/utils",
