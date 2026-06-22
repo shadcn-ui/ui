@@ -40,6 +40,21 @@ export const iconLibraries = {
     usage: "<ICON />",
     export: "@remixicon/react",
   },
+  // [FORCE-UI-START] Material Symbols: raw SVGs imported per-icon via SVGR.
+  // NAME = svg-400 rounded basename (e.g. "keyboard_arrow_down"); ICON = generated identifier.
+  // The ?react query is the SVGR (vite-plugin-svgr) convention that yields a React
+  // component from the raw SVG; consumers must have SVGR configured for it.
+  // The default, path-based import shape is handled specially in build-icons.ts
+  // and transform-icons.ts (it is not a named export from a single module).
+  materialSymbols: {
+    name: "materialSymbols",
+    title: "Material Symbols",
+    packages: ["@material-symbols/svg-400"],
+    import: "import ICON from '@material-symbols/svg-400/rounded/NAME.svg?react'",
+    usage: "<ICON />",
+    export: "@material-symbols/svg-400/rounded",
+  },
+  // [FORCE-UI-END]
 } as const
 
 export type IconLibraries = typeof iconLibraries

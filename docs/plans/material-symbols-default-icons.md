@@ -27,8 +27,9 @@ each framework's iconify equivalent.
 
 ## Consumer distribution model (decided)
 **Push SVGR setup onto consumers.** `transform-icons` emits
-`import X from "@material-symbols/svg-400/rounded/x.svg"` (+ `<X />` usage); the
-consumer's bundler must have SVGR configured. `@material-symbols/svg-400` is a
+`import X from "@material-symbols/svg-400/rounded/x.svg?react"` (+ `<X />` usage);
+the `?react` query is the SVGR convention (vite-plugin-svgr) that yields a React
+component. The consumer's bundler must have SVGR configured to honor `?react`. `@material-symbols/svg-400` is a
 real runtime dependency listed in the registry item. Simplest for us; consumers
 without SVGR get a build error (documented).
 
@@ -50,7 +51,7 @@ install + configure SVGR (vite-plugin-svgr / @svgr/webpack / Next config).
 - **Check:** assert every value in the map exists as a file in `rounded/`; assert all 172 lucide names are covered. Runnable `--check` mode for CI.
 
 ### Phase 1 — Register the library
-- Add `materialSymbols` entry to `packages/shadcn/src/icons/libraries.ts`: `name`, `title: "Material Symbols"`, `packages: ["@material-symbols/svg-400"]`, `export: "@material-symbols/svg-400/rounded"`, `import: "import ICON from '@material-symbols/svg-400/rounded/NAME.svg'"`, `usage: "<ICON />"`. Note the import is **default**, path-based (per-icon SVG file), not a named export — confirm `transform-icons`/`build-icons` handle this shape (see Phase 3).
+- Add `materialSymbols` entry to `packages/shadcn/src/icons/libraries.ts`: `name`, `title: "Material Symbols"`, `packages: ["@material-symbols/svg-400"]`, `export: "@material-symbols/svg-400/rounded"`, `import: "import ICON from '@material-symbols/svg-400/rounded/NAME.svg?react'"`, `usage: "<ICON />"`. The import is **default**, path-based, with the `?react` SVGR query — not a named export. `transform-icons`/`build-icons` handle this shape specially (see Phase 3).
 - Update tests: `packages/shadcn/test/...`, `apps/v4/registry/config.test.ts`.
 
 ### Phase 2 — Inject props (codemod)
