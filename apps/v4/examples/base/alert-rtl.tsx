@@ -1,7 +1,10 @@
 "use client"
 
+import { CheckCircle2Icon, InfoIcon } from "@/examples/material-symbols"
+
 import * as React from "react"
-import { CheckCircle2Icon, InfoIcon } from "lucide-react"
+
+
 
 import {
   useTranslation,

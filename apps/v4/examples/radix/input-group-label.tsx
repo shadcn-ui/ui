@@ -1,4 +1,4 @@
-import { InfoIcon } from "lucide-react"
+import { InfoIcon } from "@/examples/material-symbols"
 
 import {
   InputGroup,

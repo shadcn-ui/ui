@@ -1,4 +1,4 @@
-import { RefreshCwIcon } from "lucide-react"
+import { RefreshCwIcon } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 import {

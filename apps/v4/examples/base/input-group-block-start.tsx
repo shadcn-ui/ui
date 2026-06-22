@@ -1,4 +1,4 @@
-import { CopyIcon, FileCodeIcon } from "lucide-react"
+import { CopyIcon, FileCodeIcon } from "@/examples/material-symbols"
 
 import {
   Field,

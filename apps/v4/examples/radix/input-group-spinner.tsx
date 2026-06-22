@@ -1,4 +1,4 @@
-import { LoaderIcon } from "lucide-react"
+import { LoaderIcon } from "@/examples/material-symbols"
 
 import {
   InputGroup,

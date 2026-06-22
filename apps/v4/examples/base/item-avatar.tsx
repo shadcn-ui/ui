@@ -1,4 +1,4 @@
-import { Plus } from "lucide-react"
+import { Plus } from "@/examples/material-symbols"
 
 import {
   Avatar,

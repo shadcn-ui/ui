@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronRightIcon } from "lucide-react"
+import { ChevronRightIcon } from "@/examples/material-symbols"
 
 import {
   Collapsible,

@@ -1,9 +1,4 @@
-import {
-  IconBrandJavascript,
-  IconCopy,
-  IconCornerDownLeft,
-  IconRefresh,
-} from "@tabler/icons-react"
+import { IconBrandJavascript, IconCopy, IconCornerDownLeft, IconRefresh } from "@/examples/material-symbols"
 
 import {
   InputGroup,

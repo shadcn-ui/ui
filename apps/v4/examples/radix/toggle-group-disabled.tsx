@@ -1,4 +1,4 @@
-import { Bold, Italic, Underline } from "lucide-react"
+import { Bold, Italic, Underline } from "@/examples/material-symbols"
 
 import {
   ToggleGroup,

@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronUpIcon } from "lucide-react"
+import { ChevronUpIcon } from "@/examples/material-symbols"
 
 import {
   DropdownMenu,

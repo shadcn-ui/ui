@@ -1,4 +1,4 @@
-import { CopyIcon, TrashIcon } from "lucide-react"
+import { CopyIcon, TrashIcon } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 import { Field, FieldGroup, FieldLabel } from "@/styles/base-force-ui/ui/field"

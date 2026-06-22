@@ -1,4 +1,4 @@
-import { Link2Icon } from "lucide-react"
+import { Link2Icon } from "@/examples/material-symbols"
 
 import {
   ButtonGroup,

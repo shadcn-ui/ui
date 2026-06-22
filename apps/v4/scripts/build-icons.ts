@@ -4,6 +4,8 @@ import { createRequire } from "module"
 import * as path from "path"
 import { iconLibraries, type IconLibraryName } from "shadcn/icons"
 
+import { materialSymbolNames } from "../examples/material-symbols-map"
+
 type IconUsage = Record<IconLibraryName, Set<string>>
 
 // [FORCE-UI-START] Material Symbols are raw SVGs, not a React-component package,
@@ -90,6 +92,13 @@ function scanIconUsage() {
         }
       }
     }
+  }
+
+  // [FORCE-UI] Docs/examples import Material Symbols directly via
+  // @/examples/material-symbols; include that helper's icons in the inlined
+  // preview barrel so Next can render them without SVGR.
+  for (const iconName of Object.values(materialSymbolNames)) {
+    iconUsage.materialSymbols.add(iconName)
   }
 
   return iconUsage

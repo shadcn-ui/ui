@@ -1,4 +1,4 @@
-import { IconCloud } from "@tabler/icons-react"
+import { IconCloud } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 import {

@@ -1,7 +1,11 @@
 "use client"
 
+import { CreditCardIcon, SettingsIcon, UserIcon } from "@/examples/material-symbols"
+
 import * as React from "react"
-import { CreditCardIcon, SettingsIcon, UserIcon } from "lucide-react"
+
+
+
 
 import {
   useTranslation,

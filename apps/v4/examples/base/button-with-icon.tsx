@@ -1,4 +1,4 @@
-import { IconGitBranch, IconGitFork } from "@tabler/icons-react"
+import { IconGitBranch, IconGitFork } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 

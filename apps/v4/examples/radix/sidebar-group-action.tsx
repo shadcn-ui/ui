@@ -1,6 +1,7 @@
 "use client"
 
-import { FrameIcon, MapIcon, PieChartIcon, PlusIcon } from "lucide-react"
+import { FrameIcon, MapIcon, PieChartIcon, PlusIcon } from "@/examples/material-symbols"
+
 import { toast, Toaster } from "sonner"
 
 import {

@@ -1,4 +1,4 @@
-import { ArrowUpIcon } from "lucide-react"
+import { ArrowUpIcon } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/radix-force-ui/ui/button"
 

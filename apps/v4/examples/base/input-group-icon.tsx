@@ -1,11 +1,4 @@
-import {
-  CheckIcon,
-  CreditCardIcon,
-  InfoIcon,
-  MailIcon,
-  SearchIcon,
-  StarIcon,
-} from "lucide-react"
+import { CheckIcon, CreditCardIcon, InfoIcon, MailIcon, SearchIcon, StarIcon } from "@/examples/material-symbols"
 
 import {
   InputGroup,

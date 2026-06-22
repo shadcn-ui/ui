@@ -1,7 +1,11 @@
 "use client"
 
+import { ArrowLeftIcon, ArrowRightIcon, RotateCwIcon } from "@/examples/material-symbols"
+
 import * as React from "react"
-import { ArrowLeftIcon, ArrowRightIcon, RotateCwIcon } from "lucide-react"
+
+
+
 
 import {
   useTranslation,

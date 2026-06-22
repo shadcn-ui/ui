@@ -1,8 +1,10 @@
 "use client"
 
+import { ArrowUpRightIcon, IconFolderCode } from "@/examples/material-symbols"
+
 import * as React from "react"
-import { IconFolderCode } from "@tabler/icons-react"
-import { ArrowUpRightIcon } from "lucide-react"
+
+
 
 import {
   useTranslation,

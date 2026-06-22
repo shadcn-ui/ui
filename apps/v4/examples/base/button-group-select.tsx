@@ -1,7 +1,9 @@
 "use client"
 
+import { ArrowRightIcon } from "@/examples/material-symbols"
+
 import * as React from "react"
-import { ArrowRightIcon } from "lucide-react"
+
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 import { ButtonGroup } from "@/styles/base-force-ui/ui/button-group"

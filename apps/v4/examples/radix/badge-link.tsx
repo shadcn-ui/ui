@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon } from "lucide-react"
+import { ArrowUpRightIcon } from "@/examples/material-symbols"
 
 import { Badge } from "@/styles/radix-force-ui/ui/badge"
 

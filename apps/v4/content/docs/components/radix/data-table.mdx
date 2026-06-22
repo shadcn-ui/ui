@@ -328,7 +328,7 @@ Update our columns definition to add a new `actions` column. The `actions` cell 
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
-import { MoreHorizontal } from "lucide-react"
+import MoreHorizontal from "@material-symbols/svg-400/rounded/more_horiz.svg?react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -522,7 +522,7 @@ We can now update the `email` header cell to add sorting controls.
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
-import { ArrowUpDown } from "lucide-react"
+import ArrowUpDown from "@material-symbols/svg-400/rounded/swap_vert.svg?react"
 
 export const columns: ColumnDef<Payment>[] = [
   {

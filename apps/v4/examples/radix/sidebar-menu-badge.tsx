@@ -1,12 +1,6 @@
 "use client"
 
-import {
-  FrameIcon,
-  LifeBuoyIcon,
-  MapIcon,
-  PieChartIcon,
-  SendIcon,
-} from "lucide-react"
+import { FrameIcon, LifeBuoyIcon, MapIcon, PieChartIcon, SendIcon } from "@/examples/material-symbols"
 
 import {
   Sidebar,

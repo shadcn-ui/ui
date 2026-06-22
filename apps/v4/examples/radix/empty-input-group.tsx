@@ -1,4 +1,4 @@
-import { SearchIcon } from "lucide-react"
+import { SearchIcon } from "@/examples/material-symbols"
 
 import {
   Empty,

@@ -1,4 +1,4 @@
-import { Search } from "lucide-react"
+import { Search } from "@/examples/material-symbols"
 
 import {
   InputGroup,

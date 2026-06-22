@@ -1,4 +1,4 @@
-import { ExternalLinkIcon, MailIcon } from "lucide-react"
+import { ExternalLinkIcon, MailIcon } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 import {

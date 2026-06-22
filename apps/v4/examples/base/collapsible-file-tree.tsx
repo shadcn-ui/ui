@@ -1,4 +1,4 @@
-import { ChevronRightIcon, FileIcon, FolderIcon } from "lucide-react"
+import { ChevronRightIcon, FileIcon, FolderIcon } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 import { Card, CardContent, CardHeader } from "@/styles/base-force-ui/ui/card"

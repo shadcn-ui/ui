@@ -1,4 +1,4 @@
-import { ArchiveIcon, PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
+import { ArchiveIcon, PencilIcon, ShareIcon, TrashIcon } from "@/examples/material-symbols"
 
 import {
   ContextMenu,

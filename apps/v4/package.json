@@ -21,7 +21,7 @@
     "icons:dev": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-icons.ts --watch",
     "icons:material-map": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-material-symbols-map.ts",
     "icons:material-map:check": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-material-symbols-map.ts --check",
-    "registry:build": "pnpm --filter=shadcn build && bun --conditions=react-server run ./scripts/build-registry.mts",
+    "registry:build": "pnpm --filter=shadcn build && pnpm exec tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-icons.ts && bun --conditions=react-server run ./scripts/build-registry.mts",
     "registry:capture": "tsx --conditions=react-server --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
     "explore:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-explore.mts",
     "validate:registries": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/validate-registries.mts",

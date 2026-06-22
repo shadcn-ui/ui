@@ -1,8 +1,11 @@
 "use client"
 
+import { ChevronDownIcon, DotIcon } from "@/examples/material-symbols"
+
 import * as React from "react"
 import Link from "next/link"
-import { ChevronDownIcon, DotIcon } from "lucide-react"
+
+
 
 import {
   useTranslation,

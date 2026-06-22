@@ -1,6 +1,6 @@
 "use client"
 
-import { GlobeIcon } from "lucide-react"
+import { GlobeIcon } from "@/examples/material-symbols"
 
 import {
   Combobox,

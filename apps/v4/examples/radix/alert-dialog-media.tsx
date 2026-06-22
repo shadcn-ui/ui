@@ -1,4 +1,4 @@
-import { CircleFadingPlusIcon } from "lucide-react"
+import { CircleFadingPlusIcon } from "@/examples/material-symbols"
 
 import {
   AlertDialog,

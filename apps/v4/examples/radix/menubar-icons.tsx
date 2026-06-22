@@ -1,11 +1,4 @@
-import {
-  FileIcon,
-  FolderIcon,
-  HelpCircleIcon,
-  SaveIcon,
-  SettingsIcon,
-  TrashIcon,
-} from "lucide-react"
+import { FileIcon, FolderIcon, HelpCircleIcon, SaveIcon, SettingsIcon, TrashIcon } from "@/examples/material-symbols"
 
 import {
   Menubar,

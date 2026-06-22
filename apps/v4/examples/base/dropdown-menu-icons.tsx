@@ -1,11 +1,6 @@
 "use client"
 
-import {
-  CreditCardIcon,
-  LogOutIcon,
-  SettingsIcon,
-  UserIcon,
-} from "lucide-react"
+import { CreditCardIcon, LogOutIcon, SettingsIcon, UserIcon } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 import {

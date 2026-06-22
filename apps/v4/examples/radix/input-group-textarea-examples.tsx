@@ -1,10 +1,4 @@
-import {
-  ArrowUpIcon,
-  CodeIcon,
-  CopyIcon,
-  InfoIcon,
-  RefreshCwIcon,
-} from "lucide-react"
+import { ArrowUpIcon, CodeIcon, CopyIcon, InfoIcon, RefreshCwIcon } from "@/examples/material-symbols"
 
 import {
   Field,

@@ -1,4 +1,4 @@
-import { PlusIcon } from "lucide-react"
+import { PlusIcon } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 import { ButtonGroup } from "@/styles/base-force-ui/ui/button-group"
