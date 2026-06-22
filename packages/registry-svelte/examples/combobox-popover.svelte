@@ -1,9 +1,9 @@
 <script lang="ts">
-	import CircleIcon from "@lucide/svelte/icons/circle";
-	import CircleArrowUpIcon from "@lucide/svelte/icons/circle-arrow-up";
-	import CircleCheckIcon from "@lucide/svelte/icons/circle-check";
-	import CircleHelpIcon from "@lucide/svelte/icons/circle-help";
-	import CircleXIcon from "@lucide/svelte/icons/circle-x";
+	import CircleIcon from "~icons/ms/circle";
+	import CircleArrowUpIcon from "~icons/ms/arrow_circle_up";
+	import CircleCheckIcon from "~icons/ms/check_circle";
+	import CircleHelpIcon from "~icons/ms/help";
+	import CircleXIcon from "~icons/ms/cancel";
 	import { type Component, tick } from "svelte";
 	import { useId } from "bits-ui";
 	import { cn } from "$lib/utils.js";

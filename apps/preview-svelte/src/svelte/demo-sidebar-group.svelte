@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as Sidebar from "@/svelte-ui/sidebar/index.js";
-	import LifeBuoyIcon from "@lucide/svelte/icons/life-buoy";
-	import SendIcon from "@lucide/svelte/icons/send";
+	import LifeBuoyIcon from "~icons/ms/support";
+	import SendIcon from "~icons/ms/send";
 </script>
 
 <Sidebar.Provider>

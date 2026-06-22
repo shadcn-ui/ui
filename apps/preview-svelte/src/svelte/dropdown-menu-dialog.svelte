@@ -1,5 +1,5 @@
 <script lang="ts">
-	import MoreHorizontal from "@lucide/svelte/icons/more-horizontal";
+	import MoreHorizontal from "~icons/ms/more_horiz";
 
 	import { Button, buttonVariants } from "@/svelte-ui/button/index.js";
 	import * as Dialog from "@/svelte-ui/dialog/index.js";

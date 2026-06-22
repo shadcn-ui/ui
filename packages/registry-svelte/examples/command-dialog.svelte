@@ -1,10 +1,10 @@
 <script lang="ts">
-	import CalculatorIcon from "@lucide/svelte/icons/calculator";
-	import CalendarIcon from "@lucide/svelte/icons/calendar";
-	import CreditCardIcon from "@lucide/svelte/icons/credit-card";
-	import SettingsIcon from "@lucide/svelte/icons/settings";
-	import SmileIcon from "@lucide/svelte/icons/smile";
-	import UserIcon from "@lucide/svelte/icons/user";
+	import CalculatorIcon from "~icons/ms/calculate";
+	import CalendarIcon from "~icons/ms/calendar_month";
+	import CreditCardIcon from "~icons/ms/credit_card";
+	import SettingsIcon from "~icons/ms/settings";
+	import SmileIcon from "~icons/ms/mood";
+	import UserIcon from "~icons/ms/person";
 	import * as Command from "$lib/registry/ui/command/index.js";
 
 	let open = $state(false);

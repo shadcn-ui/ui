@@ -2,7 +2,7 @@
 	import * as ButtonGroup from "@/svelte-ui/button-group/index.js";
 	import * as InputGroup from "@/svelte-ui/input-group/index.js";
 	import * as Label from "@/svelte-ui/label/index.js";
-	import Link2Icon from "@lucide/svelte/icons/link-2";
+	import Link2Icon from "~icons/ms/link";
 </script>
 
 <div class="grid w-full max-w-sm gap-6">

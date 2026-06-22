@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CircleFadingArrowUpIcon from "@lucide/svelte/icons/circle-fading-arrow-up";
+	import CircleFadingArrowUpIcon from "~icons/ms/change_circle";
 	import { Button } from "$lib/registry/ui/button/index.js";
 </script>
 

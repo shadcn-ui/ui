@@ -1,6 +1,6 @@
 <script lang="ts">
-	import CheckIcon from "@lucide/svelte/icons/check";
-	import ChevronsUpDownIcon from "@lucide/svelte/icons/chevrons-up-down";
+	import CheckIcon from "~icons/ms/check";
+	import ChevronsUpDownIcon from "~icons/ms/unfold_more";
 	import { tick } from "svelte";
 	import * as Command from "$lib/registry/ui/command/index.js";
 	import * as Popover from "$lib/registry/ui/popover/index.js";

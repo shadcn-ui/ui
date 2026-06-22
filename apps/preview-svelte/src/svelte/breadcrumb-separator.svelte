@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SlashIcon from "@lucide/svelte/icons/slash";
+	import SlashIcon from "~icons/ms/block";
 	import * as Breadcrumb from "@/svelte-ui/breadcrumb/index.js";
 </script>
 

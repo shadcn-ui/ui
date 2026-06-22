@@ -1,8 +1,8 @@
 <script lang="ts">
 	import * as Item from "$lib/registry/ui/item/index.js";
 	import { Button } from "$lib/registry/ui/button/index.js";
-	import BadgeCheckIcon from "@lucide/svelte/icons/badge-check";
-	import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
+	import BadgeCheckIcon from "~icons/ms/verified";
+	import ChevronRightIcon from "~icons/ms/chevron_right";
 </script>
 
 <div class="flex w-full max-w-md flex-col gap-6">

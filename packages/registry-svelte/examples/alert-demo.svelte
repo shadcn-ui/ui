@@ -1,8 +1,8 @@
 <script lang="ts">
 	import * as Alert from "$lib/registry/ui/alert/index.js";
-	import CheckCircle2Icon from "@lucide/svelte/icons/check-circle-2";
-	import AlertCircleIcon from "@lucide/svelte/icons/alert-circle";
-	import PopcornIcon from "@lucide/svelte/icons/popcorn";
+	import CheckCircle2Icon from "~icons/ms/check_circle";
+	import AlertCircleIcon from "~icons/ms/error";
+	import PopcornIcon from "~icons/ms/theaters";
 </script>
 
 <div class="grid w-full max-w-xl items-start gap-4">

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import * as DropdownMenu from "$lib/registry/ui/dropdown-menu/index.js";
 	import * as InputGroup from "$lib/registry/ui/input-group/index.js";
-	import ChevronDownIcon from "@lucide/svelte/icons/chevron-down";
-	import MoreHorizontalIcon from "@lucide/svelte/icons/more-horizontal";
+	import ChevronDownIcon from "~icons/ms/keyboard_arrow_down";
+	import MoreHorizontalIcon from "~icons/ms/more_horiz";
 </script>
 
 <div class="grid w-full max-w-sm gap-4">

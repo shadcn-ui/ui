@@ -1,5 +1,5 @@
 <script lang="ts">
-	import BookmarkIcon from "@lucide/svelte/icons/bookmark";
+	import BookmarkIcon from "~icons/ms/bookmark";
 	import { Toggle } from "$lib/registry/ui/toggle/index.js";
 </script>
 

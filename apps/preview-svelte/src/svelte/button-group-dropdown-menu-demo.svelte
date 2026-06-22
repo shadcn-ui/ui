@@ -1,12 +1,12 @@
 <script lang="ts">
-	import AlertTriangle from "@lucide/svelte/icons/alert-triangle";
-	import ChevronDown from "@lucide/svelte/icons/chevron-down";
+	import AlertTriangle from "~icons/ms/warning";
+	import ChevronDown from "~icons/ms/keyboard_arrow_down";
 	import CopyIcon from "@tabler/icons-svelte/icons/copy";
 	import CheckIcon from "@tabler/icons-svelte/icons/check";
-	import Share from "@lucide/svelte/icons/share";
-	import Trash from "@lucide/svelte/icons/trash";
-	import UserRoundX from "@lucide/svelte/icons/user-round-x";
-	import VolumeOff from "@lucide/svelte/icons/volume-off";
+	import Share from "~icons/ms/share";
+	import Trash from "~icons/ms/delete";
+	import UserRoundX from "~icons/ms/person_off";
+	import VolumeOff from "~icons/ms/volume_off";
 	import { Button } from "@/svelte-ui/button/index.js";
 	import * as ButtonGroup from "@/svelte-ui/button-group/index.js";
 	import * as DropdownMenu from "@/svelte-ui/dropdown-menu/index.js";

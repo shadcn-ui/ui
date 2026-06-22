@@ -2,7 +2,7 @@
 	import * as Empty from "@/svelte-ui/empty/index.js";
 	import { Button } from "@/svelte-ui/button/index.js";
 	import BellIcon from "@tabler/icons-svelte/icons/bell";
-	import RefreshCcwIcon from "@lucide/svelte/icons/refresh-ccw";
+	import RefreshCcwIcon from "~icons/ms/refresh";
 </script>
 
 <Empty.Root class="from-muted/50 to-background h-full bg-gradient-to-b from-30%">

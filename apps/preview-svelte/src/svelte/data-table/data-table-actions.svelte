@@ -1,5 +1,5 @@
 <script lang="ts">
-	import MoreHorizontalIcon from "@lucide/svelte/icons/more-horizontal";
+	import MoreHorizontalIcon from "~icons/ms/more_horiz";
 	import { Button } from "@/svelte-ui/button/index.js";
 	import * as DropdownMenu from "@/svelte-ui/dropdown-menu/index.js";
 

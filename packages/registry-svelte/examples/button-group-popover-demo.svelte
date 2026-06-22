@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Bot from "@lucide/svelte/icons/bot";
-	import ChevronDown from "@lucide/svelte/icons/chevron-down";
+	import Bot from "~icons/ms/smart_toy";
+	import ChevronDown from "~icons/ms/keyboard_arrow_down";
 	import { Button } from "$lib/registry/ui/button/index.js";
 	import * as ButtonGroup from "$lib/registry/ui/button-group/index.js";
 	import * as Popover from "$lib/registry/ui/popover/index.js";

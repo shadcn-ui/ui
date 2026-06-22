@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CalendarIcon from "@lucide/svelte/icons/calendar";
+	import CalendarIcon from "~icons/ms/calendar_month";
 	import { CalendarDate, getLocalTimeZone, type DateValue } from "@internationalized/date";
 	import { untrack } from "svelte";
 	import Calendar from "@/svelte-ui/calendar/calendar.svelte";

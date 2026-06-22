@@ -2,7 +2,7 @@
 	import * as Empty from "@/svelte-ui/empty/index.js";
 	import { Button } from "@/svelte-ui/button/index.js";
 	import * as Avatar from "@/svelte-ui/avatar/index.js";
-	import PlusIcon from "@lucide/svelte/icons/plus";
+	import PlusIcon from "~icons/ms/add";
 </script>
 
 <Empty.Root class="flex-none border">

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ItalicIcon from "@lucide/svelte/icons/italic";
+	import ItalicIcon from "~icons/ms/format_italic";
 	import { Toggle } from "@/svelte-ui/toggle/index.js";
 </script>
 

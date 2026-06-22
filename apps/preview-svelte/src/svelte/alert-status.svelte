@@ -1,8 +1,8 @@
 <script lang="ts">
 	import * as Alert from "@/svelte-ui/alert/index.js";
-	import CircleCheckBigIcon from "@lucide/svelte/icons/circle-check-big";
-	import InfoIcon from "@lucide/svelte/icons/info";
-	import TriangleAlertIcon from "@lucide/svelte/icons/triangle-alert";
+	import CircleCheckBigIcon from "~icons/ms/check_circle";
+	import InfoIcon from "~icons/ms/info";
+	import TriangleAlertIcon from "~icons/ms/warning";
 </script>
 
 <div class="flex w-full max-w-md flex-col gap-4">

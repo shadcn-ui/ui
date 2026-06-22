@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ChevronDownIcon from "@lucide/svelte/icons/chevron-down";
-	import SlashIcon from "@lucide/svelte/icons/slash";
+	import ChevronDownIcon from "~icons/ms/keyboard_arrow_down";
+	import SlashIcon from "~icons/ms/block";
 	import * as Breadcrumb from "$lib/registry/ui/breadcrumb/index.js";
 	import * as DropdownMenu from "$lib/registry/ui/dropdown-menu/index.js";
 </script>

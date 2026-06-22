@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Search from "@lucide/svelte/icons/search";
+	import Search from "~icons/ms/search";
 	import { Button } from "$lib/registry/ui/button/index.js";
 	import * as ButtonGroup from "$lib/registry/ui/button-group/index.js";
 	import { Input } from "$lib/registry/ui/input/index.js";

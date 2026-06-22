@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Plus from "@lucide/svelte/icons/plus";
+	import Plus from "~icons/ms/add";
 	import { Button } from "@/svelte-ui/button/index.js";
 	import * as ButtonGroup from "@/svelte-ui/button-group/index.js";
 </script>

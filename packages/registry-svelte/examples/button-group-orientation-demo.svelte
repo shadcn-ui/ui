@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Minus from "@lucide/svelte/icons/minus";
-	import Plus from "@lucide/svelte/icons/plus";
+	import Minus from "~icons/ms/remove";
+	import Plus from "~icons/ms/add";
 	import { Button } from "$lib/registry/ui/button/index.js";
 	import * as ButtonGroup from "$lib/registry/ui/button-group/index.js";
 </script>

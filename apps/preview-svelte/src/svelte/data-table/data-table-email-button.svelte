@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ArrowUpDownIcon from "@lucide/svelte/icons/arrow-up-down";
+	import ArrowUpDownIcon from "~icons/ms/swap_vert";
 	import { Button } from "@/svelte-ui/button/index.js";
 
 	let { onclick, ...restProps }: { onclick?: (e: Event) => void } = $props();

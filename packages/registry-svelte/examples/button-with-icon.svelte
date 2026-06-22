@@ -1,5 +1,5 @@
 <script lang="ts">
-	import IconGitBranch from "@lucide/svelte/icons/git-branch";
+	import IconGitBranch from "~icons/ms/account_tree";
 	import { Button } from "$lib/registry/ui/button/index.js";
 </script>
 
