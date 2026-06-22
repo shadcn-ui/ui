@@ -1,0 +1,9 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+  - "!**/test/**"
+  - "!**/fixtures/**"
+  - "!**/temp/**"
+  - "!packages/tests/temp/**"
+
+minimumReleaseAge: 2880

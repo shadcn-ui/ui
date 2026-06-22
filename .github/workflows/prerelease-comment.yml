@@ -1,0 +1,80 @@
+# Adapted from create-t3-app.
+name: Write Prerelease comment
+
+on:
+  workflow_run:
+    workflows: ["Release"]
+    types:
+      - completed
+
+jobs:
+  comment:
+    if: |
+      github.repository_owner == 'shadcn-ui' &&
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    name: Write comment to the PR
+    steps:
+      - name: "Comment on PR"
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: context.payload.workflow_run.id,
+            });
+
+            for (const artifact of allArtifacts.data.artifacts) {
+              // Extract the PR number and package version from the artifact name
+              const match = /^npm-package-shadcn@(.*?)-pr-(\d+)/.exec(artifact.name);
+
+              if (match) {
+                const version = match[1];
+                const channel = version.includes("-rc.") ? "rc" : "beta";
+                require("fs").appendFileSync(
+                  process.env.GITHUB_ENV,
+                  `\nPRERELEASE_PACKAGE_VERSION=${version}` +
+                  `\nPRERELEASE_CHANNEL=${channel}` +
+                  `\nPRERELEASE_LABEL=release: ${channel}` +
+                  `\nWORKFLOW_RUN_PR=${match[2]}` +
+                  `\nWORKFLOW_RUN_ID=${context.payload.workflow_run.id}`
+                );
+                break;
+              }
+            }
+
+      - name: "Comment on PR with Link"
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          number: ${{ env.WORKFLOW_RUN_PR }}
+          message: |
+            A new ${{ env.PRERELEASE_CHANNEL }} prerelease is available for testing:
+
+            ```sh
+            pnpm dlx shadcn@${{ env.PRERELEASE_PACKAGE_VERSION }}
+            ```
+
+            View on npm: https://www.npmjs.com/package/shadcn/v/${{ env.PRERELEASE_PACKAGE_VERSION }}
+
+      - name: "Remove the prerelease label once published"
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            try {
+              await github.rest.issues.removeLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: '${{ env.WORKFLOW_RUN_PR }}',
+                name: '${{ env.PRERELEASE_LABEL }}',
+              });
+            } catch (error) {
+              if (error.status !== 404) {
+                throw error;
+              }
+
+              core.info("The prerelease label was already removed.");
+            }

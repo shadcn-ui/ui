@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-destructive",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "examples/button-destructive.tsx",
+      "content": "import { Button } from \"@/registry/new-york/ui/button\"\n\nexport default function ButtonDestructive() {\n  return <Button variant=\"destructive\">Destructive</Button>\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

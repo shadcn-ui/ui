@@ -1,0 +1,179 @@
+# Adapted from create-t3-app.
+
+name: Release
+
+run-name: ${{ github.event_name == 'pull_request' && format('Release Prerelease - PR {0}', github.event.number) || 'Release Stable' }}
+
+on:
+  pull_request:
+    types: [labeled]
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  prerelease:
+    if: "${{ github.event_name == 'pull_request' && github.repository_owner == 'shadcn-ui' && (contains(github.event.pull_request.labels.*.name, 'release: beta') || contains(github.event.pull_request.labels.*.name, 'release: rc')) }}"
+    name: Publish Prerelease to NPM
+    runs-on: ubuntu-latest
+    environment: Preview
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Select prerelease channel
+        id: prerelease
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prereleaseLabels = [
+              { name: "release: beta", channel: "beta" },
+              { name: "release: rc", channel: "rc" },
+            ];
+            const labels = context.payload.pull_request.labels.map((label) => label.name);
+            const selectedLabels = prereleaseLabels.filter((label) =>
+              labels.includes(label.name)
+            );
+
+            if (selectedLabels.length !== 1) {
+              throw new Error(
+                `Expected exactly one prerelease label, found: ${
+                  selectedLabels.map((label) => label.name).join(", ") || "none"
+                }.`
+              );
+            }
+
+            const selected = selectedLabels[0];
+            const pullRequest = context.payload.pull_request;
+
+            if (
+              selected.channel === "rc" &&
+              (pullRequest.head.ref !== "changeset-release/main" ||
+                pullRequest.title !== "chore(release): version packages")
+            ) {
+              throw new Error(
+                "The release: rc label can only be used on the Changesets version PR from changeset-release/main."
+              );
+            }
+
+            core.setOutput("channel", selected.channel);
+            core.setOutput("label", selected.name);
+
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Use PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
+          cache: "pnpm"
+
+      - name: Update npm for OIDC support
+        run: npm install -g npm@latest
+
+      - name: Install NPM Dependencies
+        run: pnpm install
+
+      - name: Modify package.json version
+        run: node .github/version-script-prerelease.js ${{ steps.prerelease.outputs.channel }} ${{ github.event.pull_request.head.sha }}
+
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+        with:
+          path: packages/shadcn
+
+      - name: Check package version on NPM
+        id: package-exists
+        run: |
+          if npm view "shadcn@${{ steps.package-version.outputs.current-version }}" version >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish Prerelease to NPM
+        if: ${{ steps.package-exists.outputs.exists == 'false' }}
+        run: pnpm pub:${{ steps.prerelease.outputs.channel }}
+
+      - name: Build packaged artifact
+        if: ${{ steps.package-exists.outputs.exists == 'true' }}
+        run: pnpm shadcn:build
+
+      - name: Upload packaged artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-package-shadcn@${{ steps.package-version.outputs.current-version }}-pr-${{ github.event.number }} # encode the PR number into the artifact name
+          path: packages/shadcn/dist/index.js
+
+  release:
+    if: ${{ github.event_name == 'push' && github.repository_owner == 'shadcn-ui' }}
+    name: Create Version PR or Publish Stable Release
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
+          cache: "pnpm"
+
+      - name: Update npm for OIDC support
+        run: npm install -g npm@latest
+
+      - name: Install NPM Dependencies
+        run: pnpm install
+
+      # - name: Check for errors
+      #   run: pnpm check
+
+      - name: Build the package
+        run: pnpm shadcn:build
+
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.RELEASE_GPG_PRIVATE_KEY }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+          git_tag_gpgsign: true
+
+      - name: Create Version PR or Publish to NPM
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          setupGitUser: false
+          commit: "chore(release): version packages"
+          title: "chore(release): version packages"
+          version: node .github/changeset-version.js
+          publish: npx changeset publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_ENV: "production"

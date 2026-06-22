@@ -1,0 +1,15 @@
+{
+  "name": "test-cli-project-pnpm-existing-deps",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "shadcn",
+  "license": "MIT",
+  "dependencies": {
+    "@base-ui/react": "^1.4.1",
+    "class-variance-authority": "^0.7.1",
+    "recharts": "^2.15.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.1"
+  }
+}
