@@ -19,8 +19,8 @@ import {
 } from '@/ui/popover';
 import { cn } from '@/lib/utils';
 
-import CheckIcon from '~icons/material-symbols/check-rounded';
-import ChevronsUpDownIcon from '~icons/material-symbols/unfold-more-rounded';
+import CheckIcon from '~icons/ms/check';
+import ChevronsUpDownIcon from '~icons/ms/unfold_more';
 
 const frameworks = [
   { value: 'next.js', label: 'Next.js' },

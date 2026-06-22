@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 
 import type { TOC } from '@ember/component/template-only';
 
-import X from '~icons/material-symbols/close-rounded';
+import X from '~icons/ms/close';
 
 type Side = 'top' | 'bottom' | 'left' | 'right';
 

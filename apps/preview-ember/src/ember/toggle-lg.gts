@@ -1,6 +1,6 @@
 import { Toggle } from '@/ember-ui/toggle';
 
-import Italic from '~icons/material-symbols/format-italic-rounded';
+import Italic from '~icons/ms/format_italic';
 
 <template>
   <Toggle @size="lg" aria-label="Toggle italic">

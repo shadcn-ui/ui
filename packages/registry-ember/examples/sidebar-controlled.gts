@@ -14,9 +14,9 @@ import {
   SidebarTrigger,
 } from '@/ui/sidebar';
 
-import Home from '~icons/material-symbols/home-outline-rounded';
-import Inbox from '~icons/material-symbols/inbox-outline-rounded';
-import Settings from '~icons/material-symbols/settings-outline-rounded';
+import Home from '~icons/ms/home';
+import Inbox from '~icons/ms/inbox';
+import Settings from '~icons/ms/settings';
 
 const items = [
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

@@ -25,7 +25,7 @@ import { Input } from '@/ui/input';
 import { Label } from '@/ui/label';
 import { Textarea } from '@/ui/textarea';
 
-import MoreHorizontal from '~icons/material-symbols/more-horiz';
+import MoreHorizontal from '~icons/ms/more_horiz';
 
 export default class DropdownMenuDialogDemo extends Component {
   @tracked showNewDialog = false;

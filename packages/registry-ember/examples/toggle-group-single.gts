@@ -1,8 +1,8 @@
 import { ToggleGroup, ToggleGroupItem } from '@/ui/toggle-group';
 
-import Bold from '~icons/material-symbols/format-bold-rounded';
-import Italic from '~icons/material-symbols/format-italic-rounded';
-import Underline from '~icons/material-symbols/format-underlined-rounded';
+import Bold from '~icons/ms/format_bold';
+import Italic from '~icons/ms/format_italic';
+import Underline from '~icons/ms/format_underlined';
 
 <template>
   <ToggleGroup @type="single">

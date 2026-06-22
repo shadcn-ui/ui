@@ -46,15 +46,15 @@ import {
   TooltipTrigger,
 } from '@/ember-ui/tooltip';
 
-import ArrowUp from '~icons/material-symbols/arrow-upward-rounded';
-import At from '~icons/material-symbols/alternate-email-rounded';
-import BookOpen from '~icons/material-symbols/menu-book-outline-rounded';
-import Globe from '~icons/material-symbols/language';
-import Grid3x3 from '~icons/material-symbols/grid-3x3-rounded';
-import Paperclip from '~icons/material-symbols/attach-file-rounded';
-import Plus from '~icons/material-symbols/add-rounded';
-import PlusCircle from '~icons/material-symbols/add-circle-outline-rounded';
-import X from '~icons/material-symbols/close-rounded';
+import ArrowUp from '~icons/ms/arrow_upward';
+import At from '~icons/ms/alternate_email';
+import BookOpen from '~icons/ms/menu_book';
+import Globe from '~icons/ms/globe';
+import Grid3x3 from '~icons/ms/grid_3x3';
+import Paperclip from '~icons/ms/attach_file';
+import Plus from '~icons/ms/add';
+import PlusCircle from '~icons/ms/add_circle';
+import X from '~icons/ms/close';
 
 const SAMPLE_DATA = {
   mentionable: [

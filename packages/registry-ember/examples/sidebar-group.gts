@@ -14,10 +14,10 @@ import {
 
 import type { ComponentLike } from '@glint/template';
 
-import Frame from '~icons/material-symbols/crop-free-rounded';
-import Map from '~icons/material-symbols/map-outline-rounded';
-import PieChart from '~icons/material-symbols/pie-chart';
-import Plus from '~icons/material-symbols/add-rounded';
+import Frame from '~icons/ms/crop_free';
+import Map from '~icons/ms/map';
+import PieChart from '~icons/ms/pie_chart';
+import Plus from '~icons/ms/add';
 
 const projects = [
   { name: 'Design Engineering', url: '#', icon: Frame as ComponentLike },

@@ -6,7 +6,7 @@ import {
 } from '@/ui/input-group';
 import { Label } from '@/ui/label';
 
-import Link2 from '~icons/material-symbols/link-2-rounded';
+import Link2 from '~icons/ms/link_2';
 
 <template>
   <div class="grid w-full max-w-sm gap-6">

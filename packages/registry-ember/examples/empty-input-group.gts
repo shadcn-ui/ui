@@ -12,7 +12,7 @@ import {
 } from '@/ui/input-group';
 import { Kbd } from '@/ui/kbd';
 
-import Search from '~icons/material-symbols/search-rounded';
+import Search from '~icons/ms/search';
 
 <template>
   <Empty>

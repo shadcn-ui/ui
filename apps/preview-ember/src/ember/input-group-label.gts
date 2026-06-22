@@ -11,7 +11,7 @@ import {
   TooltipTrigger,
 } from '@/ember-ui/tooltip';
 
-import Info from '~icons/material-symbols/info-outline-rounded';
+import Info from '~icons/ms/info';
 
 <template>
   <div class="grid w-full max-w-sm gap-4">

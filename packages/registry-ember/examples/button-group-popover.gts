@@ -10,8 +10,8 @@ import {
 import { Separator } from '@/ui/separator';
 import { Textarea } from '@/ui/textarea';
 
-import BotIcon from '~icons/material-symbols/smart-toy-outline-rounded';
-import ChevronDownIcon from '~icons/material-symbols/keyboard-arrow-down-rounded';
+import BotIcon from '~icons/ms/smart_toy';
+import ChevronDownIcon from '~icons/ms/keyboard_arrow_down';
 
 const autofocus = modifier((element: HTMLElement) => {
   element.focus();

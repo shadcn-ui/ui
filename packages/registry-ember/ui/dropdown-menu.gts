@@ -20,8 +20,8 @@ import { cn } from '@/lib/utils';
 
 import type { TOC } from '@ember/component/template-only';
 
-import Check from '~icons/material-symbols/check-rounded';
-import ChevronRight from '~icons/material-symbols/chevron-right-rounded';
+import Check from '~icons/ms/check';
+import ChevronRight from '~icons/ms/chevron_right';
 
 const DropdownMenuContext = 'dropdown-menu-context' as const;
 const DropdownMenuGroupContext = 'dropdown-menu-group-context' as const;

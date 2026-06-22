@@ -13,7 +13,7 @@ import {
   ItemTitle,
 } from '@/ui/item';
 
-import PlusIcon from '~icons/material-symbols/add-rounded';
+import PlusIcon from '~icons/ms/add';
 
 const people = [
   {

@@ -5,7 +5,7 @@ import {
 } from '@/ui/input-group';
 import { Kbd } from '@/ui/kbd';
 
-import SearchIcon from '~icons/material-symbols/search-rounded';
+import SearchIcon from '~icons/ms/search';
 
 <template>
   <div class="flex w-full max-w-xs flex-col gap-6">

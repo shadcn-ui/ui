@@ -9,7 +9,7 @@ import {
   EmptyTitle,
 } from '@/ember-ui/empty';
 
-import Plus from '~icons/material-symbols/add-rounded';
+import Plus from '~icons/ms/add';
 
 <template>
   {{! template-lint-disable no-potential-path-strings }}

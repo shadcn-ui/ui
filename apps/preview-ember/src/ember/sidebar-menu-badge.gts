@@ -12,9 +12,9 @@ import {
   SidebarTrigger,
 } from '@/ember-ui/sidebar';
 
-import Inbox from '~icons/material-symbols/inbox-outline-rounded';
-import MessageSquare from '~icons/material-symbols/chat-outline-rounded';
-import Send from '~icons/material-symbols/send-outline-rounded';
+import Inbox from '~icons/ms/inbox';
+import MessageSquare from '~icons/ms/chat';
+import Send from '~icons/ms/send';
 
 const items = [
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

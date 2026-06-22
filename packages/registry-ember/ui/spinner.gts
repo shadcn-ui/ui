@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import type { TOC } from '@ember/component/template-only';
-import Loader2 from '~icons/material-symbols/progress-activity';
+import Loader2 from '~icons/ms/progress_activity';
 
 type Color = 'default' | 'primary' | 'onPrimary' | 'inherit';
 type Size = 'xs' | 'sm' | 'md' | 'lg';

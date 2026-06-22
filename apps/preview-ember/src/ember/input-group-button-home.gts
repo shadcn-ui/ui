@@ -15,8 +15,8 @@ import {
   PopoverContent,
 } from '@/ember-ui/popover';
 
-import InfoIcon from '~icons/material-symbols/info-outline-rounded';
-import StarIcon from '~icons/material-symbols/star-outline-rounded';
+import InfoIcon from '~icons/ms/info';
+import StarIcon from '~icons/ms/star';
 
 export default class InputGroupButtonHome extends Component {
   @tracked isFavorite = false;

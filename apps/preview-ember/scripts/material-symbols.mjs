@@ -1,21 +1,17 @@
 #!/usr/bin/env node
 /**
- * Ember Material Symbols tooling. Rewrites `~icons/lucide/<name>` imports to
- * `~icons/material-symbols/<name>-(outline-)rounded` (rounded, unfilled), driven
- * by a validated lucide(kebab) -> iconify-name map.
+ * Ember Material Symbols tooling (source: @material-symbols/svg-400, rounded).
+ * Rewrites `~icons/lucide/<kebab>` -> `~icons/ms/<svg400-base>` (unplugin-icons
+ * FileSystemIconLoader; local identifier kept, template unchanged).
  *
- *   node scripts/material-symbols.mjs map      # build + report the map
- *   node scripts/material-symbols.mjs codemod  # rewrite imports
- *   node scripts/material-symbols.mjs check     # CI guard (no writes)
- *
- * Map source of truth: the React registry map (apps/v4/registry/icons/
- * material-symbols-map.json) plus the kebab/override tables below.
+ *   node scripts/material-symbols.mjs map|codemod|check
  */
 import * as fs from "fs"
 import * as path from "path"
 import { fileURLToPath } from "url"
-import { execSync } from "child_process"
+import { createRequire } from "module"
 
+const require = createRequire(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const EMBER_ROOT = path.resolve(__dirname, "..")
 const REPO_ROOT = path.resolve(EMBER_ROOT, "../..")
@@ -25,37 +21,24 @@ const REACT_MAP = JSON.parse(
     "utf-8"
   )
 )
+const ROUNDED_DIR = path.join(
+  path.dirname(require.resolve("@material-symbols/svg-400/package.json")),
+  "rounded"
+)
 const MAP_OUT = path.join(EMBER_ROOT, "scripts/material-symbols-map.json")
 const SCAN_DIRS = [
   path.join(REPO_ROOT, "packages/registry-ember"),
   path.join(EMBER_ROOT, "src"),
 ]
+const LUCIDE_RE = /~icons\/lucide\/([a-z0-9-]+)/g
 
-// Load the iconify material-symbols icon set for validation.
-const iconifyDir = execSync(
-  `find ${REPO_ROOT}/node_modules/.pnpm -maxdepth 4 -type d -path "*@iconify-json+material-symbols*/material-symbols"`
-)
-  .toString()
-  .trim()
-  .split("\n")[0]
-const ICONIFY = JSON.parse(
-  fs.readFileSync(path.join(iconifyDir, "icons.json"), "utf-8")
-).icons
-const hasIconify = (n) => n in ICONIFY
+const existsSvg = (base) => fs.existsSync(path.join(ROUNDED_DIR, `${base}.svg`))
+const kebabToPascal = (k) =>
+  k.split("-").map((p) => p.charAt(0).toUpperCase() + p.slice(1)).join("")
+const pascalToBase = (lucide) =>
+  REACT_MAP[`${lucide}Icon`] ?? REACT_MAP[lucide] ?? null
 
-// React map keys are lucide PascalCase ("ChevronDownIcon"); ember imports use
-// kebab ("chevron-down"). Build a kebab -> svg-400 basename lookup from it.
-const kebabToBase = {}
-for (const [pascal, base] of Object.entries(REACT_MAP)) {
-  const kebab = pascal
-    .replace(/Icon$/, "")
-    .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
-    .replace(/([A-Z]+)([A-Z][a-z])/g, "$1-$2")
-    .toLowerCase()
-  kebabToBase[kebab] = base
-}
-
-// Ember-only icons not covered by the React map (kebab -> svg-400 basename).
+// Ember kebab names not covered by the React map -> svg-400 base.
 const OVERRIDES = {
   "panel-left": "left_panel_open",
   "panel-left-close": "left_panel_close",
@@ -86,7 +69,7 @@ const OVERRIDES = {
   "file-code-2": "code",
   frame: "crop_free",
   "git-branch": "account_tree",
-  globe: "language",
+  globe: "globe",
   "list-filter": "filter_list",
   loader: "progress_activity",
   "loader-2": "progress_activity",
@@ -106,46 +89,46 @@ const OVERRIDES = {
   "audio-waveform": "graphic_eq",
 }
 
-// Pick the rounded-unfilled iconify name. Preference order keeps icons unfilled:
-//   -outline-rounded (rounded, unfilled) -> -rounded (no fill variant exists) ->
-//   plain (outlined unfilled, when the set ships no rounded form).
-function iconifyName(base) {
-  const dashed = base.replace(/_/g, "-")
-  for (const c of [`${dashed}-outline-rounded`, `${dashed}-rounded`, dashed]) {
-    if (hasIconify(c)) return c
-  }
-  return null
+const heuristic = (kebab) => kebab.replace(/-/g, "_")
+
+function resolveBase(kebab) {
+  const base =
+    OVERRIDES[kebab] ?? pascalToBase(kebabToPascal(kebab)) ?? heuristic(kebab)
+  return existsSvg(base) ? base : null
 }
 
-function distinctEmberNames() {
-  const names = new Set()
-  const re = /~icons\/lucide\/([a-z0-9-]+)/g
+function eachFile(fn) {
   const walk = (dir) => {
     if (!fs.existsSync(dir)) return
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
       const full = path.join(dir, entry.name)
       if (entry.name === "node_modules" || entry.name === "dist") continue
       if (entry.isDirectory()) walk(full)
-      else {
-        const content = fs.readFileSync(full, "utf-8")
-        let m
-        while ((m = re.exec(content)) !== null) names.add(m[1])
-      }
+      else if (/\.(gts|gjs|ts|js|hbs)$/.test(entry.name)) fn(full)
     }
   }
   SCAN_DIRS.forEach(walk)
+}
+
+function distinctNames() {
+  const names = new Set()
+  eachFile((file) => {
+    const content = fs.readFileSync(file, "utf-8")
+    let m
+    LUCIDE_RE.lastIndex = 0
+    while ((m = LUCIDE_RE.exec(content)) !== null) names.add(m[1])
+  })
   return [...names].sort()
 }
 
 function buildMap() {
-  const names = distinctEmberNames()
+  const names = distinctNames()
   const map = {}
   const misses = []
   for (const kebab of names) {
-    const base = OVERRIDES[kebab] ?? kebabToBase[kebab] ?? kebab.replace(/-/g, "_")
-    const ms = iconifyName(base)
-    if (ms) map[kebab] = ms
-    else misses.push(`${kebab} (base "${base}")`)
+    const base = resolveBase(kebab)
+    if (base) map[kebab] = base
+    else misses.push(`${kebab} (tried "${OVERRIDES[kebab] ?? heuristic(kebab)}")`)
   }
   return { names, map, misses }
 }
@@ -167,19 +150,6 @@ function cmdMap({ write = true } = {}) {
   return true
 }
 
-function eachFile(fn) {
-  const walk = (dir) => {
-    if (!fs.existsSync(dir)) return
-    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-      const full = path.join(dir, entry.name)
-      if (entry.name === "node_modules" || entry.name === "dist") continue
-      if (entry.isDirectory()) walk(full)
-      else if (/\.(gts|gjs|ts|js|hbs)$/.test(entry.name)) fn(full)
-    }
-  }
-  SCAN_DIRS.forEach(walk)
-}
-
 function cmdCodemod({ check = false } = {}) {
   const { map, misses } = buildMap()
   if (misses.length) {
@@ -187,32 +157,29 @@ function cmdCodemod({ check = false } = {}) {
     process.exit(1)
   }
   let changed = 0
-  const remaining = []
   eachFile((file) => {
     const before = fs.readFileSync(file, "utf-8")
-    const after = before.replace(
-      /(~icons\/)lucide(\/)([a-z0-9-]+)/g,
-      (whole, p1, sep, name) => {
-        const ms = map[name]
-        return ms ? `${p1}material-symbols${sep}${ms}` : whole
-      }
+    const after = before.replace(LUCIDE_RE, (whole, kebab) =>
+      map[kebab] ? `~icons/ms/${map[kebab]}` : whole
     )
     if (after !== before) {
       changed++
-      if (check) remaining.push(path.relative(REPO_ROOT, file))
-      else fs.writeFileSync(file, after)
+      if (!check) fs.writeFileSync(file, after)
     }
   })
   if (check) {
-    if (remaining.length) {
-      console.error(`${remaining.length} file(s) still import ~icons/lucide:`)
-      remaining.forEach((f) => console.error(`  - ${f}`))
+    let leftover = 0
+    eachFile((file) => {
+      if (/~icons\/lucide\//.test(fs.readFileSync(file, "utf-8"))) leftover++
+    })
+    if (leftover) {
+      console.error(`${leftover} file(s) still import ~icons/lucide.`)
       process.exit(1)
     }
     console.log("✓ No ~icons/lucide imports remain.")
     return
   }
-  console.log(`✓ Rewrote lucide -> material-symbols imports in ${changed} file(s).`)
+  console.log(`✓ Rewrote ~icons/lucide -> ~icons/ms in ${changed} file(s).`)
 }
 
 const cmd = process.argv[2]

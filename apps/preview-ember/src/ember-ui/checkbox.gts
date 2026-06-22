@@ -4,7 +4,7 @@ import { tracked } from '@glimmer/tracking';
 
 import { cn } from '@/ember-lib/utils';
 
-import Check from '~icons/material-symbols/check-rounded';
+import Check from '~icons/ms/check';
 
 interface CheckboxSignature {
   Element: HTMLButtonElement;

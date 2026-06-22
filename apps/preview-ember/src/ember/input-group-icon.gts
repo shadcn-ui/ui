@@ -4,12 +4,12 @@ import {
   InputGroupInput,
 } from '@/ember-ui/input-group';
 
-import Check from '~icons/material-symbols/check-rounded';
-import CreditCard from '~icons/material-symbols/credit-card';
-import Info from '~icons/material-symbols/info-outline-rounded';
-import Mail from '~icons/material-symbols/mail-outline-rounded';
-import Search from '~icons/material-symbols/search-rounded';
-import Star from '~icons/material-symbols/star-outline-rounded';
+import Check from '~icons/ms/check';
+import CreditCard from '~icons/ms/credit_card';
+import Info from '~icons/ms/info';
+import Mail from '~icons/ms/mail';
+import Search from '~icons/ms/search';
+import Star from '~icons/ms/star';
 
 <template>
   <div class="grid w-full max-w-sm gap-6">

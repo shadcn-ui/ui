@@ -14,7 +14,7 @@ import {
   ItemTitle,
 } from '@/ember-ui/item';
 
-import ChevronDownIcon from '~icons/material-symbols/keyboard-arrow-down-rounded';
+import ChevronDownIcon from '~icons/ms/keyboard_arrow_down';
 
 const people = [
   {

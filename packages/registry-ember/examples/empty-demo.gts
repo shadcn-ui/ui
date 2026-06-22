@@ -8,8 +8,8 @@ import {
   EmptyTitle,
 } from '@/ui/empty';
 
-import ArrowUpRight from '~icons/material-symbols/north-east-rounded';
-import FolderCode from '~icons/material-symbols/folder-code-outline-rounded';
+import ArrowUpRight from '~icons/ms/north_east';
+import FolderCode from '~icons/ms/folder_code';
 
 <template>
   <Empty>

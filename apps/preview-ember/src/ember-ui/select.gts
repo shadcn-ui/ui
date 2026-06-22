@@ -19,9 +19,9 @@ import { cn } from '@/ember-lib/utils';
 
 import type { TOC } from '@ember/component/template-only';
 
-import Check from '~icons/material-symbols/check-rounded';
-import ChevronDown from '~icons/material-symbols/keyboard-arrow-down-rounded';
-import ChevronUp from '~icons/material-symbols/keyboard-arrow-up-rounded';
+import Check from '~icons/ms/check';
+import ChevronDown from '~icons/ms/keyboard_arrow_down';
+import ChevronUp from '~icons/ms/keyboard_arrow_up';
 
 const SelectContext = 'select-context' as const;
 

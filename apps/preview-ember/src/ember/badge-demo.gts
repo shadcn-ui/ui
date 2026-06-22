@@ -1,6 +1,6 @@
 import { Badge } from '@/ember-ui/badge';
 
-import BadgeCheck from '~icons/material-symbols/verified-outline-rounded';
+import BadgeCheck from '~icons/ms/verified';
 
 <template>
   <div class="flex flex-col items-center gap-2">

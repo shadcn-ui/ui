@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 
 import type { TOC } from '@ember/component/template-only';
 
-import XIcon from '~icons/material-symbols/close-rounded';
+import XIcon from '~icons/ms/close';
 
 const DialogContext = 'dialog-context' as const;
 

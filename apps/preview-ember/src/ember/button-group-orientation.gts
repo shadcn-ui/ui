@@ -1,8 +1,8 @@
 import { Button } from '@/ember-ui/button';
 import { ButtonGroup } from '@/ember-ui/button-group';
 
-import MinusIcon from '~icons/material-symbols/remove-rounded';
-import PlusIcon from '~icons/material-symbols/add-rounded';
+import MinusIcon from '~icons/ms/remove';
+import PlusIcon from '~icons/ms/add';
 
 <template>
   <ButtonGroup

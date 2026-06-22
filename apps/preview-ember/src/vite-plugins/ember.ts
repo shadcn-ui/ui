@@ -3,10 +3,18 @@ import { createRequire } from "node:module"
 import path from "node:path"
 import { babel } from "@rollup/plugin-babel"
 import Icons from "unplugin-icons/vite"
+import { FileSystemIconLoader } from "unplugin-icons/loaders"
 import { Preprocessor } from "content-tag"
 import type { Plugin } from "vite"
 
 const require = createRequire(import.meta.url)
+
+// [FORCE-UI] Serve @material-symbols/svg-400 (rounded) as Ember icon components
+// via `~icons/ms/<basename>`. svg-400 files have no fill, so force currentColor.
+const msRoundedDir = path.join(
+  path.dirname(require.resolve("@material-symbols/svg-400/package.json")),
+  "rounded"
+)
 const emberSourceDir = path.dirname(
   require.resolve("ember-source/package.json")
 )
@@ -73,6 +81,13 @@ export function emberPlugins(stubsDir: string): Plugin[] {
       ],
       include: ["**/ember/**", "**/ember-ui/**", "**/ember-lib/**"],
     }) as Plugin,
-    Icons({ compiler: "ember" }) as Plugin,
+    Icons({
+      compiler: "ember",
+      customCollections: {
+        ms: FileSystemIconLoader(msRoundedDir, (svg) =>
+          svg.replace(/<svg /, '<svg fill="currentColor" ')
+        ),
+      },
+    }) as Plugin,
   ]
 }

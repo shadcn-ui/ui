@@ -1,6 +1,6 @@
 import { Button } from '@/ui/button';
 
-import GitBranch from '~icons/material-symbols/account-tree-outline-rounded';
+import GitBranch from '~icons/ms/account_tree';
 
 <template>
   <Button @size="sm" @variant="outline">

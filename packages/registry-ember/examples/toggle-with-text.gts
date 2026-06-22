@@ -1,6 +1,6 @@
 import { Toggle } from '@/ui/toggle';
 
-import Italic from '~icons/material-symbols/format-italic-rounded';
+import Italic from '~icons/ms/format_italic';
 
 <template>
   <Toggle aria-label="Toggle italic">

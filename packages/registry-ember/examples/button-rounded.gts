@@ -1,6 +1,6 @@
 import { Button } from '@/ui/button';
 
-import ArrowUpRightIcon from '~icons/material-symbols/north-east-rounded';
+import ArrowUpRightIcon from '~icons/ms/north_east';
 
 <template>
   <div class="flex flex-col gap-8">

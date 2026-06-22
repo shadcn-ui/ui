@@ -11,9 +11,9 @@ import {
   SidebarTrigger,
 } from '@/ember-ui/sidebar';
 
-import Frame from '~icons/material-symbols/crop-free-rounded';
-import Map from '~icons/material-symbols/map-outline-rounded';
-import PieChart from '~icons/material-symbols/pie-chart';
+import Frame from '~icons/ms/crop_free';
+import Map from '~icons/ms/map';
+import PieChart from '~icons/ms/pie_chart';
 
 const projects = [
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

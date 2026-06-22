@@ -19,11 +19,11 @@ import {
   TooltipTrigger,
 } from '@/ui/tooltip';
 
-import ArrowUp from '~icons/material-symbols/arrow-upward-rounded';
-import Check from '~icons/material-symbols/check-rounded';
-import InfoCircle from '~icons/material-symbols/info-outline-rounded';
-import Plus from '~icons/material-symbols/add-rounded';
-import Search from '~icons/material-symbols/search-rounded';
+import ArrowUp from '~icons/ms/arrow_upward';
+import Check from '~icons/ms/check';
+import InfoCircle from '~icons/ms/info';
+import Plus from '~icons/ms/add';
+import Search from '~icons/ms/search';
 
 <template>
   <div class="grid w-full max-w-sm gap-6">

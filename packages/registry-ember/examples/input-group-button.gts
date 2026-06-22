@@ -14,10 +14,10 @@ import {
   PopoverContent,
 } from '@/ui/popover';
 
-import Check from '~icons/material-symbols/check-rounded';
-import Copy from '~icons/material-symbols/content-copy-outline-rounded';
-import Info from '~icons/material-symbols/info-outline-rounded';
-import Star from '~icons/material-symbols/star-outline-rounded';
+import Check from '~icons/ms/check';
+import Copy from '~icons/ms/content_copy';
+import Info from '~icons/ms/info';
+import Star from '~icons/ms/star';
 
 export default class InputGroupButtonExample extends Component {
   @tracked hasCopied = false;

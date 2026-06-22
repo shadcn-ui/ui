@@ -14,9 +14,9 @@ import {
   SidebarTrigger,
 } from '@/ui/sidebar';
 
-import Folder from '~icons/material-symbols/folder-outline-rounded';
-import Forward from '~icons/material-symbols/forward-rounded';
-import Trash2 from '~icons/material-symbols/delete-outline-rounded';
+import Folder from '~icons/ms/folder';
+import Forward from '~icons/ms/forward';
+import Trash2 from '~icons/ms/delete';
 
 <template>
   <SidebarProvider class="!min-h-full h-full">

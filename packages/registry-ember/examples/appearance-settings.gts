@@ -20,8 +20,8 @@ import { Input } from '@/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/ui/radio-group';
 import { Switch } from '@/ui/switch';
 
-import Minus from '~icons/material-symbols/remove-rounded';
-import Plus from '~icons/material-symbols/add-rounded';
+import Minus from '~icons/ms/remove';
+import Plus from '~icons/ms/add';
 
 export default class AppearanceSettings extends Component {
   @tracked gpuCount = 8;

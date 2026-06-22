@@ -17,15 +17,15 @@ import {
   DropdownMenuTrigger,
 } from '@/ui/dropdown-menu';
 
-import ArchiveIcon from '~icons/material-symbols/archive-outline-rounded';
-import ArrowLeftIcon from '~icons/material-symbols/arrow-left-rounded';
-import CalendarPlusIcon from '~icons/material-symbols/calendar-add-on-outline-rounded';
-import ClockIcon from '~icons/material-symbols/schedule-outline-rounded';
-import ListFilterIcon from '~icons/material-symbols/filter-list-rounded';
-import MailCheckIcon from '~icons/material-symbols/mark-email-read-outline-rounded';
-import MoreHorizontalIcon from '~icons/material-symbols/more-horiz';
-import TagIcon from '~icons/material-symbols/tag-rounded';
-import Trash2Icon from '~icons/material-symbols/delete-outline-rounded';
+import ArchiveIcon from '~icons/ms/archive';
+import ArrowLeftIcon from '~icons/ms/arrow_left';
+import CalendarPlusIcon from '~icons/ms/calendar_add_on';
+import ClockIcon from '~icons/ms/schedule';
+import ListFilterIcon from '~icons/ms/filter_list';
+import MailCheckIcon from '~icons/ms/mark_email_read';
+import MoreHorizontalIcon from '~icons/ms/more_horiz';
+import TagIcon from '~icons/ms/tag';
+import Trash2Icon from '~icons/ms/delete';
 
 export default class ButtonGroupDemo extends Component {
   @tracked label = 'personal';

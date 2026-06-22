@@ -9,7 +9,7 @@ import {
   CollapsibleContent,
 } from '@/ui/collapsible';
 
-import ChevronsUpDown from '~icons/material-symbols/unfold-more-rounded';
+import ChevronsUpDown from '~icons/ms/unfold_more';
 
 export default class CollapsibleDemo extends Component {
   @tracked isOpen = false;

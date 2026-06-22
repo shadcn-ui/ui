@@ -6,10 +6,10 @@ import {
   InputGroupTextarea,
 } from '@/ui/input-group';
 
-import Copy from '~icons/material-symbols/content-copy-outline-rounded';
-import CornerDownLeft from '~icons/material-symbols/subdirectory-arrow-left-rounded';
-import FileCode from '~icons/material-symbols/code-rounded';
-import Refresh from '~icons/material-symbols/refresh-rounded';
+import Copy from '~icons/ms/content_copy';
+import CornerDownLeft from '~icons/ms/subdirectory_arrow_left';
+import FileCode from '~icons/ms/code';
+import Refresh from '~icons/ms/refresh';
 
 <template>
   <div class="grid w-full max-w-md gap-4">

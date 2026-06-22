@@ -4,7 +4,7 @@ import {
   NativeSelectOption,
 } from '@/ember-ui/native-select';
 
-import DollarSign from '~icons/material-symbols/attach-money-rounded';
+import DollarSign from '~icons/ms/attach_money';
 
 <template>
   <div class="w-full max-w-sm space-y-4">

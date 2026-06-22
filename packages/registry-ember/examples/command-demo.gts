@@ -9,12 +9,12 @@ import {
   CommandShortcut,
 } from '@/ui/command';
 
-import Calculator from '~icons/material-symbols/calculate-outline-rounded';
-import Calendar from '~icons/material-symbols/calendar-month-outline-rounded';
-import CreditCard from '~icons/material-symbols/credit-card';
-import Settings from '~icons/material-symbols/settings-outline-rounded';
-import Smile from '~icons/material-symbols/mood-outline-rounded';
-import User from '~icons/material-symbols/person-outline-rounded';
+import Calculator from '~icons/ms/calculate';
+import Calendar from '~icons/ms/calendar_month';
+import CreditCard from '~icons/ms/credit_card';
+import Settings from '~icons/ms/settings';
+import Smile from '~icons/ms/mood';
+import User from '~icons/ms/person';
 
 <template>
   <Command @class="rounded-lg border shadow-md md:min-w-[450px]">

@@ -7,7 +7,7 @@ import {
 } from '@/ember-ui/input-group';
 import { Spinner } from '@/ember-ui/spinner';
 
-import ArrowUp from '~icons/material-symbols/arrow-upward-rounded';
+import ArrowUp from '~icons/ms/arrow_upward';
 
 <template>
   <div class="flex w-full max-w-md flex-col gap-4">

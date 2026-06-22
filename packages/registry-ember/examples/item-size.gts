@@ -8,8 +8,8 @@ import {
   ItemTitle,
 } from '@/ui/item';
 
-import BadgeCheckIcon from '~icons/material-symbols/verified-outline-rounded';
-import ChevronRightIcon from '~icons/material-symbols/chevron-right-rounded';
+import BadgeCheckIcon from '~icons/ms/verified';
+import ChevronRightIcon from '~icons/ms/chevron_right';
 
 <template>
   <div class="flex w-full max-w-md flex-col gap-6">
