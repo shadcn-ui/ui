@@ -520,8 +520,6 @@ function SelectPlanItem({ plan }: { plan: (typeof plans)[number] }) {
 }
 
 function SelectInDialog() {
-  const [selectOpen, setSelectOpen] = React.useState(false)
-
   return (
     <Example title="In Dialog">
       <Dialog>
@@ -535,23 +533,11 @@ function SelectInDialog() {
               Use the select below to choose a fruit.
             </DialogDescription>
           </DialogHeader>
-          <Select open={selectOpen} onOpenChange={setSelectOpen}>
+          <Select>
             <SelectTrigger>
               <SelectValue placeholder="Select a fruit" />
             </SelectTrigger>
-            <SelectContent
-              onPointerDownOutside={(event) => {
-                const target = event.detail.originalEvent.target
-
-                if (
-                  target instanceof Element &&
-                  target.closest("[data-slot=dialog-content]")
-                ) {
-                  event.preventDefault()
-                  setSelectOpen(false)
-                }
-              }}
-            >
+            <SelectContent>
               <SelectGroup>
                 <SelectItem value="apple">Apple</SelectItem>
                 <SelectItem value="banana">Banana</SelectItem>
