@@ -74,7 +74,12 @@ install + configure SVGR (vite-plugin-svgr / @svgr/webpack / Next config).
 
 ### Phase 6 — Framework ports
 
-**Status:** Ember DONE (6a, committed). Vue + Svelte pending (6b/6c).
+**Status:** DONE — all ports unified on @material-symbols/svg-400, each builds clean.
+- Ember (6a'): unplugin-icons FileSystemIconLoader -> `~icons/ms/<base>` (reworked off iconify).
+- Vue (6b): vite-svg-loader `?component`; placeholder via inline registry.
+- Svelte (6c): unplugin-icons FileSystemIconLoader -> `~icons/ms/<base>`; placeholder via inline registry.
+Each uses a validated lucide->svg-400 basename map + a `check` guard, and forces
+`fill="currentColor"` (svg-400 ships no fill).
 
 Iconify variant convention (validated): rounded-unfilled = `<name>-outline-rounded`;
 icons with no fill variant only have `<name>-rounded` (unfilled-equivalent); a few

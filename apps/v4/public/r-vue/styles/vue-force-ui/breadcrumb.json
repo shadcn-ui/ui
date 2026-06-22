@@ -12,7 +12,7 @@
     },
     {
       "path": "registry/vue-force-ui/ui/breadcrumb/BreadcrumbEllipsis.vue",
-      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <span\n    data-slot=\"breadcrumb-ellipsis\"\n    role=\"presentation\"\n    aria-hidden=\"true\"\n    :class=\"\n      cn('cn-breadcrumb-ellipsis flex items-center justify-center', props.class)\n    \"\n  >\n    <slot>\n      <IconPlaceholder\n        lucide=\"MoreHorizontalIcon\"\n        tabler=\"IconDots\"\n        hugeicons=\"MoreHorizontalCircle01Icon\"\n        phosphor=\"DotsThreeIcon\"\n        remixicon=\"RiMoreLine\"\n      />\n    </slot>\n    <span class=\"sr-only\">More</span>\n  </span>\n</template>\n",
+      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <span\n    data-slot=\"breadcrumb-ellipsis\"\n    role=\"presentation\"\n    aria-hidden=\"true\"\n    :class=\"\n      cn('cn-breadcrumb-ellipsis flex items-center justify-center', props.class)\n    \"\n  >\n    <slot>\n      <IconPlaceholder\n        lucide=\"MoreHorizontalIcon\"\n        materialSymbols=\"more_horiz\"\n        tabler=\"IconDots\"\n        hugeicons=\"MoreHorizontalCircle01Icon\"\n        phosphor=\"DotsThreeIcon\"\n        remixicon=\"RiMoreLine\"\n      />\n    </slot>\n    <span class=\"sr-only\">More</span>\n  </span>\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -37,7 +37,7 @@
     },
     {
       "path": "registry/vue-force-ui/ui/breadcrumb/BreadcrumbSeparator.vue",
-      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <li\n    data-slot=\"breadcrumb-separator\"\n    role=\"presentation\"\n    aria-hidden=\"true\"\n    :class=\"cn('cn-breadcrumb-separator', props.class)\"\n  >\n    <slot>\n      <IconPlaceholder\n        lucide=\"ChevronRightIcon\"\n        tabler=\"IconChevronRight\"\n        hugeicons=\"ArrowRight01Icon\"\n        phosphor=\"CaretRightIcon\"\n        remixicon=\"RiArrowRightSLine\"\n      />\n    </slot>\n  </li>\n</template>\n",
+      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <li\n    data-slot=\"breadcrumb-separator\"\n    role=\"presentation\"\n    aria-hidden=\"true\"\n    :class=\"cn('cn-breadcrumb-separator', props.class)\"\n  >\n    <slot>\n      <IconPlaceholder\n        lucide=\"ChevronRightIcon\"\n        materialSymbols=\"chevron_right\"\n        tabler=\"IconChevronRight\"\n        hugeicons=\"ArrowRight01Icon\"\n        phosphor=\"CaretRightIcon\"\n        remixicon=\"RiArrowRightSLine\"\n      />\n    </slot>\n  </li>\n</template>\n",
       "type": "registry:ui"
     },
     {

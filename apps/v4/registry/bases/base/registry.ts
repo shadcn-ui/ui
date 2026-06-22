@@ -14,7 +14,8 @@ import { ui } from "./ui/_registry"
 // Shared between index and style.
 const BASE_STYLE = {
   type: "registry:style",
-  dependencies: ["class-variance-authority", "lucide-react", "@base-ui/react"],
+  // [FORCE-UI] default icon library is Material Symbols (was lucide-react)
+  dependencies: ["class-variance-authority", "@material-symbols/svg-400", "@base-ui/react"],
   devDependencies: ["tw-animate-css", "shadcn"],
   registryDependencies: ["utils"],
   css: {

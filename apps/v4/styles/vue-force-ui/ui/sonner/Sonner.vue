@@ -22,6 +22,7 @@ const props = defineProps<ToasterProps>()
     <template #success-icon>
       <IconPlaceholder
         lucide="CircleCheckIcon"
+        materialSymbols="check_circle"
         tabler="IconCircleCheck"
         hugeicons="CheckmarkCircle01Icon"
         phosphor="CheckCircleIcon"
@@ -32,6 +33,7 @@ const props = defineProps<ToasterProps>()
     <template #info-icon>
       <IconPlaceholder
         lucide="InfoIcon"
+        materialSymbols="info"
         tabler="IconInfoCircle"
         hugeicons="InformationCircleIcon"
         phosphor="InfoIcon"
@@ -42,6 +44,7 @@ const props = defineProps<ToasterProps>()
     <template #warning-icon>
       <IconPlaceholder
         lucide="TriangleAlertIcon"
+        materialSymbols="warning"
         tabler="IconAlertTriangle"
         hugeicons="Alert02Icon"
         phosphor="WarningIcon"
@@ -52,6 +55,7 @@ const props = defineProps<ToasterProps>()
     <template #error-icon>
       <IconPlaceholder
         lucide="OctagonXIcon"
+        materialSymbols="dangerous"
         tabler="IconOctagonOff"
         hugeicons="CancelCircleIcon"
         phosphor="XCircleIcon"
@@ -63,6 +67,7 @@ const props = defineProps<ToasterProps>()
       <div>
         <IconPlaceholder
           lucide="Loader2Icon"
+          materialSymbols="progress_activity"
           tabler="IconLoader2"
           hugeicons="Loading03Icon"
           phosphor="SpinnerGapIcon"
@@ -74,6 +79,7 @@ const props = defineProps<ToasterProps>()
     <template #close-icon>
       <IconPlaceholder
         lucide="XIcon"
+        materialSymbols="close"
         tabler="IconX"
         hugeicons="Cancel01Icon"
         phosphor="XIcon"

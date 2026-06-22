@@ -34,6 +34,7 @@ const forwardedProps = useForwardProps(delegatedProps)
       <slot>
         <IconPlaceholder
           lucide="CircleIcon"
+          materialSymbols="circle"
           tabler="IconCircle"
           hugeicons="CircleIcon"
           phosphor="CircleIcon"

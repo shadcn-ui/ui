@@ -37,6 +37,7 @@
 >
   <IconPlaceholder
     lucide="ChevronLeftIcon"
+    materialSymbols="chevron_left"
     tabler="IconChevronLeft"
     hugeicons="ArrowLeft01Icon"
     phosphor="CaretLeftIcon"

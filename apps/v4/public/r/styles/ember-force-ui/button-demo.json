@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/ember-force-ui/examples/button-demo.gts",
-      "content": "import { Button } from '@/ui/button';\n\nimport ArrowUpIcon from '~icons/lucide/arrow-up';\n\n<template>\n  <div class=\"flex flex-wrap items-center gap-2 md:flex-row\">\n    <Button @variant=\"outline\">Button</Button>\n    <Button @size=\"icon\" @variant=\"outline\" aria-label=\"Submit\">\n      <ArrowUpIcon />\n    </Button>\n  </div>\n</template>\n",
+      "content": "import { Button } from '@/ui/button';\n\nimport ArrowUpIcon from '~icons/ms/arrow_upward';\n\n<template>\n  <div class=\"flex flex-wrap items-center gap-2 md:flex-row\">\n    <Button @variant=\"outline\">Button</Button>\n    <Button @size=\"icon\" @variant=\"outline\" aria-label=\"Submit\">\n      <ArrowUpIcon />\n    </Button>\n  </div>\n</template>\n",
       "type": "registry:example"
     }
   ],

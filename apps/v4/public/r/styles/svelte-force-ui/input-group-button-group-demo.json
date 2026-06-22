@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/svelte-force-ui/examples/input-group-button-group-demo.svelte",
-      "content": "<script lang=\"ts\">\n  import Link2Icon from \"@lucide/svelte/icons/link-2\"\n  import * as ButtonGroup from \"$lib/registry/ui/button-group/index.js\"\n  import * as InputGroup from \"$lib/registry/ui/input-group/index.js\"\n  import * as Label from \"$lib/registry/ui/label/index.js\"\n</script>\n\n<div class=\"grid w-full max-w-sm gap-6\">\n  <ButtonGroup.Root>\n    <ButtonGroup.Text>\n      <Label.Root for=\"url\">https://</Label.Root>\n    </ButtonGroup.Text>\n    <InputGroup.Root>\n      <InputGroup.Input id=\"url\" />\n      <InputGroup.Addon align=\"inline-end\">\n        <Link2Icon />\n      </InputGroup.Addon>\n    </InputGroup.Root>\n    <ButtonGroup.Text>.com</ButtonGroup.Text>\n  </ButtonGroup.Root>\n</div>\n",
+      "content": "<script lang=\"ts\">\n  import Link2Icon from \"~icons/ms/link\"\n  import * as ButtonGroup from \"$lib/registry/ui/button-group/index.js\"\n  import * as InputGroup from \"$lib/registry/ui/input-group/index.js\"\n  import * as Label from \"$lib/registry/ui/label/index.js\"\n</script>\n\n<div class=\"grid w-full max-w-sm gap-6\">\n  <ButtonGroup.Root>\n    <ButtonGroup.Text>\n      <Label.Root for=\"url\">https://</Label.Root>\n    </ButtonGroup.Text>\n    <InputGroup.Root>\n      <InputGroup.Input id=\"url\" />\n      <InputGroup.Addon align=\"inline-end\">\n        <Link2Icon />\n      </InputGroup.Addon>\n    </InputGroup.Root>\n    <ButtonGroup.Text>.com</ButtonGroup.Text>\n  </ButtonGroup.Root>\n</div>\n",
       "type": "registry:example"
     }
   ],

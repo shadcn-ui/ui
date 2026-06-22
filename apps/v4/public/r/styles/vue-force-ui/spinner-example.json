@@ -3,7 +3,7 @@
   "name": "spinner-example",
   "title": "Spinner",
   "dependencies": [
-    "lucide-vue-next"
+    "@material-symbols/svg-400"
   ],
   "registryDependencies": [
     "badge",
@@ -37,7 +37,7 @@
     },
     {
       "path": "registry/vue-force-ui/examples/spinner/SpinnerCustomDemo.vue",
-      "content": "<script setup lang=\"ts\">\nimport { LoaderIcon } from \"lucide-vue-next\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <LoaderIcon\n    role=\"status\"\n    aria-label=\"Loading\"\n    :class=\"cn('size-4 animate-spin', props.class)\"\n  />\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport LoaderIcon from \"@material-symbols/svg-400/rounded/progress_activity.svg?component\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <LoaderIcon\n    role=\"status\"\n    aria-label=\"Loading\"\n    :class=\"cn('size-4 animate-spin', props.class)\"\n  />\n</template>\n",
       "type": "registry:example"
     },
     {
@@ -52,7 +52,7 @@
     },
     {
       "path": "registry/vue-force-ui/examples/spinner/SpinnerInputGroupDemo.vue",
-      "content": "<script setup lang=\"ts\">\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupButton,\n  InputGroupInput,\n  InputGroupTextarea,\n} from \"@/ui/input-group\"\nimport { Spinner } from \"@/ui/spinner\"\nimport { ArrowUpIcon } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <div class=\"flex w-full max-w-md flex-col gap-4\">\n    <InputGroup>\n      <InputGroupInput placeholder=\"Send a message...\" disabled />\n      <InputGroupAddon align=\"inline-end\">\n        <Spinner />\n      </InputGroupAddon>\n    </InputGroup>\n    <InputGroup>\n      <InputGroupTextarea placeholder=\"Send a message...\" disabled />\n      <InputGroupAddon align=\"block-end\">\n        <Spinner /> Validating...\n        <InputGroupButton class=\"ml-auto\" variant=\"default\">\n          <ArrowUpIcon />\n          <span class=\"sr-only\">Send</span>\n        </InputGroupButton>\n      </InputGroupAddon>\n    </InputGroup>\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupButton,\n  InputGroupInput,\n  InputGroupTextarea,\n} from \"@/ui/input-group\"\nimport { Spinner } from \"@/ui/spinner\"\nimport ArrowUpIcon from \"@material-symbols/svg-400/rounded/arrow_upward.svg?component\"\n</script>\n\n<template>\n  <div class=\"flex w-full max-w-md flex-col gap-4\">\n    <InputGroup>\n      <InputGroupInput placeholder=\"Send a message...\" disabled />\n      <InputGroupAddon align=\"inline-end\">\n        <Spinner />\n      </InputGroupAddon>\n    </InputGroup>\n    <InputGroup>\n      <InputGroupTextarea placeholder=\"Send a message...\" disabled />\n      <InputGroupAddon align=\"block-end\">\n        <Spinner /> Validating...\n        <InputGroupButton class=\"ml-auto\" variant=\"default\">\n          <ArrowUpIcon />\n          <span class=\"sr-only\">Send</span>\n        </InputGroupButton>\n      </InputGroupAddon>\n    </InputGroup>\n  </div>\n</template>\n",
       "type": "registry:example"
     },
     {

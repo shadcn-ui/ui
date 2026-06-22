@@ -3,7 +3,7 @@
   "name": "style",
   "dependencies": [
     "class-variance-authority",
-    "lucide-react",
+    "@material-symbols/svg-400",
     "@base-ui/react"
   ],
   "devDependencies": [

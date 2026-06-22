@@ -2503,7 +2503,7 @@
     {
       "name": "alert-example",
       "title": "Alert",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": ["alert"],
       "files": [
         {
@@ -2563,7 +2563,7 @@
     {
       "name": "badge-example",
       "title": "Badge",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": ["badge"],
       "files": [
         {
@@ -2596,7 +2596,7 @@
     {
       "name": "breadcrumb-example",
       "title": "Breadcrumb",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": [
         "breadcrumb",
         "button",
@@ -2634,7 +2634,7 @@
     {
       "name": "button-example",
       "title": "Button",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": ["button", "spinner"],
       "files": [
         {
@@ -2691,7 +2691,7 @@
     {
       "name": "button-group-example",
       "title": "Button Group",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": [
         "button",
         "button-group",
@@ -2757,7 +2757,7 @@
       "title": "Calendar",
       "dependencies": [
         "chrono-node",
-        "lucide-vue-next",
+        "@material-symbols/svg-400",
         "reka-ui",
         "reka-ui/date"
       ],
@@ -2859,7 +2859,7 @@
     {
       "name": "chart-example",
       "title": "Chart",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": ["card", "chart"],
       "files": [
         {
@@ -2905,7 +2905,7 @@
     {
       "name": "collapsible-example",
       "title": "Collapsible",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": ["button", "collapsible"],
       "files": [
         {
@@ -2918,7 +2918,7 @@
     {
       "name": "combobox-example",
       "title": "Combobox",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": ["button", "command", "popover"],
       "files": [
         {
@@ -2931,7 +2931,7 @@
     {
       "name": "command-example",
       "title": "Command",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": ["command"],
       "files": [
         {
@@ -2944,7 +2944,7 @@
     {
       "name": "context-menu-example",
       "title": "Context Menu",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": ["context-menu"],
       "files": [
         {
@@ -2957,7 +2957,7 @@
     {
       "name": "data-table-example",
       "title": "Data Table",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": [
         "button",
         "checkbox",
@@ -2976,7 +2976,7 @@
     {
       "name": "date-picker-example",
       "title": "Date Picker",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": ["button", "calendar", "popover"],
       "files": [
         {
@@ -3021,7 +3021,7 @@
     {
       "name": "drawer-example",
       "title": "Drawer",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": ["button", "drawer"],
       "files": [
         {
@@ -3047,7 +3047,7 @@
     {
       "name": "empty-example",
       "title": "Empty",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": [
         "avatar",
         "button",
@@ -3166,7 +3166,7 @@
     {
       "name": "hover-card-example",
       "title": "Hover Card",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": ["avatar", "button", "hover-card"],
       "files": [
         {
@@ -3224,7 +3224,7 @@
     {
       "name": "input-group-example",
       "title": "Input Group",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": [
         "button-group",
         "dropdown-menu",
@@ -3319,7 +3319,7 @@
     {
       "name": "item-example",
       "title": "Item",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": ["avatar", "button", "dropdown-menu", "item"],
       "files": [
         {
@@ -3368,7 +3368,7 @@
     {
       "name": "kbd-example",
       "title": "Kbd",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": [
         "button",
         "button-group",
@@ -3466,7 +3466,7 @@
     {
       "name": "navigation-menu-example",
       "title": "Navigation Menu",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": ["navigation-menu"],
       "files": [
         {
@@ -3654,7 +3654,7 @@
     {
       "name": "sidebar-example",
       "title": "Sidebar",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": ["sidebar"],
       "files": [
         {
@@ -3714,7 +3714,7 @@
     {
       "name": "spinner-example",
       "title": "Spinner",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": [
         "badge",
         "button",
@@ -3779,7 +3779,7 @@
     {
       "name": "stepper-example",
       "title": "Stepper",
-      "dependencies": ["lucide-vue-next", "vue-sonner", "zod"],
+      "dependencies": ["@material-symbols/svg-400", "vue-sonner", "zod"],
       "registryDependencies": ["button", "form", "input", "select", "stepper"],
       "files": [
         {
@@ -3843,7 +3843,7 @@
     {
       "name": "tags-input-example",
       "title": "Tags Input",
-      "dependencies": ["lucide-vue-next", "reka-ui"],
+      "dependencies": ["@material-symbols/svg-400", "reka-ui"],
       "registryDependencies": ["button", "popover", "tags-input"],
       "files": [
         {
@@ -3860,7 +3860,7 @@
     {
       "name": "tanstack-form-example",
       "title": "Tanstack Form",
-      "dependencies": ["lucide-vue-next", "vue-sonner", "zod"],
+      "dependencies": ["@material-symbols/svg-400", "vue-sonner", "zod"],
       "registryDependencies": [
         "button",
         "card",
@@ -3937,7 +3937,7 @@
     {
       "name": "toggle-example",
       "title": "Toggle",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": ["toggle"],
       "files": [
         {
@@ -3970,7 +3970,7 @@
     {
       "name": "toggle-group-example",
       "title": "Toggle Group",
-      "dependencies": ["lucide-vue-next"],
+      "dependencies": ["@material-symbols/svg-400"],
       "registryDependencies": ["toggle-group"],
       "files": [
         {
@@ -4081,7 +4081,12 @@
     {
       "name": "vee-validate-example",
       "title": "Vee Validate",
-      "dependencies": ["lucide-vue-next", "vee-validate", "vue-sonner", "zod"],
+      "dependencies": [
+        "@material-symbols/svg-400",
+        "vee-validate",
+        "vue-sonner",
+        "zod"
+      ],
       "registryDependencies": [
         "button",
         "card",

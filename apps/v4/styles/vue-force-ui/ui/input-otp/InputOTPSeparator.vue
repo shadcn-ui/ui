@@ -14,6 +14,7 @@ const forwarded = useForwardProps(props)
     <slot>
       <IconPlaceholder
         lucide="MinusIcon"
+        materialSymbols="remove"
         tabler="IconMinus"
         hugeicons="Minus01Icon"
         phosphor="MinusIcon"

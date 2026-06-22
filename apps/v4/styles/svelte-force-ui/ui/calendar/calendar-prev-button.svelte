@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ChevronLeftIcon from "@lucide/svelte/icons/chevron-left"
+  import ChevronLeftIcon from "~icons/ms/chevron_left"
   import {
     buttonVariants,
     type ButtonVariant,

@@ -30,6 +30,7 @@ const delegatedProps = reactiveOmit(props, "class")
       <slot name="icon">
         <IconPlaceholder
           lucide="ChevronDownIcon"
+          materialSymbols="keyboard_arrow_down"
           tabler="IconChevronDown"
           data-slot="accordion-trigger-icon"
           hugeicons="ArrowDown01Icon"
@@ -39,6 +40,7 @@ const delegatedProps = reactiveOmit(props, "class")
         />
         <IconPlaceholder
           lucide="ChevronUpIcon"
+          materialSymbols="keyboard_arrow_up"
           tabler="IconChevronUp"
           data-slot="accordion-trigger-icon"
           hugeicons="ArrowUp01Icon"

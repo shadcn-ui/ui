@@ -22,7 +22,7 @@
     },
     {
       "path": "registry/vue-force-ui/ui/input-otp/InputOTPSeparator.vue",
-      "content": "<script setup lang=\"ts\">\nimport { useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { IconPlaceholder } from \"@/components/icon-placeholder\"\n\nconst props = defineProps<{ class?: HTMLAttributes[\"class\"] }>()\n\nconst forwarded = useForwardProps(props)\n</script>\n\n<template>\n  <div data-slot=\"input-otp-separator\" role=\"separator\" v-bind=\"forwarded\">\n    <slot>\n      <IconPlaceholder\n        lucide=\"MinusIcon\"\n        tabler=\"IconMinus\"\n        hugeicons=\"Minus01Icon\"\n        phosphor=\"MinusIcon\"\n        remixicon=\"RiSubtractLine\"\n      />\n    </slot>\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport { useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { IconPlaceholder } from \"@/components/icon-placeholder\"\n\nconst props = defineProps<{ class?: HTMLAttributes[\"class\"] }>()\n\nconst forwarded = useForwardProps(props)\n</script>\n\n<template>\n  <div data-slot=\"input-otp-separator\" role=\"separator\" v-bind=\"forwarded\">\n    <slot>\n      <IconPlaceholder\n        lucide=\"MinusIcon\"\n        materialSymbols=\"remove\"\n        tabler=\"IconMinus\"\n        hugeicons=\"Minus01Icon\"\n        phosphor=\"MinusIcon\"\n        remixicon=\"RiSubtractLine\"\n      />\n    </slot>\n  </div>\n</template>\n",
       "type": "registry:ui"
     },
     {

@@ -30,6 +30,7 @@ const forwarded = useForwardProps(delegatedProps)
     <slot>
       <IconPlaceholder
         lucide="MinusIcon"
+        materialSymbols="remove"
         tabler="IconMinus"
         hugeicons="Minus01Icon"
         phosphor="MinusIcon"
