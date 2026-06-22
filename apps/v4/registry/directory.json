@@ -1338,6 +1338,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'><mask id='t-cutout'><rect width='24' height='24' fill='white'/><text x='12' y='18' text-anchor='middle' fill='black' font-size='18' font-weight='600' font-family='system-ui, sans-serif'>t</text></mask><circle cx='12' cy='12' r='11' fill='var(--foreground)' mask='url(#t-cutout)'/></svg>"
   },
   {
+    "name": "@tetra-ui",
+    "homepage": "https://tetra-ui.com",
+    "url": "https://tetra-ui.com/r/{name}.json",
+    "description": "Delightful components for a clean, accessible and modern component library for React Native.",
+    "logo": "<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='24' height='24' fill='black'/><path d='M17.8184 13.9395H21.6972V17.8182H17.8184V13.9395Z' fill='white'/><path d='M13.9396 10.0607H17.8184V13.9395H13.9396V10.0607Z' fill='white'/><path d='M10.0608 6.18188H13.9396V10.0607H10.0608V6.18188Z' fill='white'/><path d='M10.0608 6.18188H13.9396V10.0607H10.0608V6.18188Z' fill='white'/><path d='M2.30322 13.9395H6.18201V17.8182H2.30322V13.9395Z' fill='white'/><path d='M6.18201 10.0607H10.0608V13.9395H6.18201V10.0607Z' fill='white'/></svg>"
+  },
+  {
     "name": "@text-ui",
     "homepage": "https://joelachance.github.io/text-ui/docs",
     "url": "https://joelachance.github.io/text-ui/r/{name}.json",
