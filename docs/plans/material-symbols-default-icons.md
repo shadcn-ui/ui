@@ -73,6 +73,24 @@ install + configure SVGR (vite-plugin-svgr / @svgr/webpack / Next config).
 - `icon-library-picker.tsx`: add Material Symbols entry + logo SVG.
 
 ### Phase 6 — Framework ports
+
+**Status:** Ember DONE (6a, committed). Vue + Svelte pending (6b/6c).
+
+Iconify variant convention (validated): rounded-unfilled = `<name>-outline-rounded`;
+icons with no fill variant only have `<name>-rounded` (unfilled-equivalent); a few
+icons ship only plain `<name>` (outlined). Preference order: `-outline-rounded` →
+`-rounded` → plain. Names differ from svg-400 basenames, so each port validates
+against `@iconify-json/material-symbols`.
+
+Vue/Svelte each have TWO mechanisms to convert:
+- `<IconPlaceholder>` files (Vue 91, Svelte 66): inject `materialSymbols="..."`
+  (mirror React Phase 2) + make the placeholder resolve MS at runtime via
+  `@iconify/vue` / iconify-svelte (dynamic name).
+- direct framework-lucide imports (Vue 162 `lucide-vue-next`, Svelte 187
+  `@lucide/svelte/icons/*`): add unplugin-icons + `@iconify-json/material-symbols`,
+  codemod imports → `~icons/material-symbols/<name>` (identifier kept, markup
+  unchanged). Needs a lucide-export-name → iconify map (handle both `Search` and
+  `SearchIcon` forms).
 - **Vue** (`apps/preview-vue` + `packages/registry-vue`): add MS resolution to `IconPlaceholder.vue` (iconify `@iconify-json/material-symbols` / `~icons/material-symbols/*`), default to MS. Map lucide→MS via Phase 0 map (rounded variant ⇒ `*-rounded` iconify names).
 - **Svelte** (`apps/preview-svelte` + `packages/registry-svelte`): replace the stub to actually resolve names; add MS via iconify; default to MS.
 - **Ember** (`packages/registry-ember`): swap `~icons/lucide/*` imports to `~icons/material-symbols/*-rounded` in `.gts`; add the iconify json dep; verify unplugin-icons resolves them.
