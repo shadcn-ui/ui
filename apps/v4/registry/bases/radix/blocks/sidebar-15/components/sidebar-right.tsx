@@ -64,6 +64,7 @@ export function SidebarRight({
             <SidebarMenuButton>
               <IconPlaceholder
                 lucide="PlusIcon"
+                materialSymbols="add"
                 tabler="IconPlus"
                 hugeicons="PlusSignIcon"
                 phosphor="PlusIcon"

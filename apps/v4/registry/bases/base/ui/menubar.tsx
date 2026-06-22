@@ -127,6 +127,7 @@ function MenubarCheckboxItem({
         <MenuPrimitive.CheckboxItemIndicator>
           <IconPlaceholder
             lucide="CheckIcon"
+            materialSymbols="check"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
@@ -167,6 +168,7 @@ function MenubarRadioItem({
         <MenuPrimitive.RadioItemIndicator>
           <IconPlaceholder
             lucide="CheckIcon"
+            materialSymbols="check"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"

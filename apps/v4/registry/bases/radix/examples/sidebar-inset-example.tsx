@@ -36,6 +36,7 @@ export default function SidebarInsetExample() {
         icon: (
           <IconPlaceholder
             lucide="HomeIcon"
+            materialSymbols="home"
             tabler="IconHome"
             hugeicons="Home01Icon"
             phosphor="HouseIcon"
@@ -60,6 +61,7 @@ export default function SidebarInsetExample() {
         icon: (
           <IconPlaceholder
             lucide="ChartLineIcon"
+            materialSymbols="show_chart"
             tabler="IconChartLine"
             hugeicons="ChartIcon"
             phosphor="ChartLineIcon"
@@ -83,6 +85,7 @@ export default function SidebarInsetExample() {
         icon: (
           <IconPlaceholder
             lucide="ShoppingBagIcon"
+            materialSymbols="shopping_bag"
             tabler="IconShoppingBag"
             hugeicons="ShoppingBag01Icon"
             phosphor="BagIcon"
@@ -110,6 +113,7 @@ export default function SidebarInsetExample() {
         icon: (
           <IconPlaceholder
             lucide="ShoppingCartIcon"
+            materialSymbols="shopping_cart"
             tabler="IconShoppingCart"
             hugeicons="ShoppingCart01Icon"
             phosphor="ShoppingCartIcon"
@@ -133,6 +137,7 @@ export default function SidebarInsetExample() {
         icon: (
           <IconPlaceholder
             lucide="FileIcon"
+            materialSymbols="description"
             tabler="IconFile"
             hugeicons="File01Icon"
             phosphor="FileIcon"
@@ -146,6 +151,7 @@ export default function SidebarInsetExample() {
         icon: (
           <IconPlaceholder
             lucide="UserIcon"
+            materialSymbols="person"
             tabler="IconUser"
             hugeicons="UserIcon"
             phosphor="UserIcon"
@@ -159,6 +165,7 @@ export default function SidebarInsetExample() {
         icon: (
           <IconPlaceholder
             lucide="Settings2Icon"
+            materialSymbols="settings"
             tabler="IconSettings"
             hugeicons="Settings05Icon"
             phosphor="GearIcon"
@@ -174,6 +181,7 @@ export default function SidebarInsetExample() {
         icon: (
           <IconPlaceholder
             lucide="LifeBuoy"
+            materialSymbols="support"
             tabler="IconLifebuoy"
             hugeicons="ChartRingIcon"
             phosphor="LifebuoyIcon"
@@ -187,6 +195,7 @@ export default function SidebarInsetExample() {
         icon: (
           <IconPlaceholder
             lucide="Send"
+            materialSymbols="send"
             tabler="IconSend"
             hugeicons="SentIcon"
             phosphor="PaperPlaneTiltIcon"
@@ -227,6 +236,7 @@ export default function SidebarInsetExample() {
                           <SidebarMenuAction className="data-[state=open]:rotate-90">
                             <IconPlaceholder
                               lucide="ChevronRightIcon"
+                              materialSymbols="chevron_right"
                               tabler="IconChevronRight"
                               hugeicons="ArrowRight01Icon"
                               phosphor="CaretRightIcon"

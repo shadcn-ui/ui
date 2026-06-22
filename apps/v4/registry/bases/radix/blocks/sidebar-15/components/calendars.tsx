@@ -43,6 +43,7 @@ export function Calendars({
                   {calendar.name}{" "}
                   <IconPlaceholder
                     lucide="ChevronRightIcon"
+                    materialSymbols="chevron_right"
                     tabler="IconChevronRight"
                     hugeicons="ArrowRight01Icon"
                     phosphor="CaretRightIcon"
@@ -63,6 +64,7 @@ export function Calendars({
                           >
                             <IconPlaceholder
                               lucide="CheckIcon"
+                              materialSymbols="check"
                               tabler="IconCheck"
                               hugeicons="Tick02Icon"
                               phosphor="CheckIcon"

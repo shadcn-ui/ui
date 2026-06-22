@@ -8,6 +8,7 @@ import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 const PREVIEW_ICONS = [
   {
     lucide: "CopyIcon",
+    materialSymbols: "content_copy",
     tabler: "IconCopy",
     hugeicons: "Copy01Icon",
     phosphor: "CopyIcon",
@@ -15,6 +16,7 @@ const PREVIEW_ICONS = [
   },
   {
     lucide: "CircleAlertIcon",
+    materialSymbols: "error",
     tabler: "IconExclamationCircle",
     hugeicons: "AlertCircleIcon",
     phosphor: "WarningCircleIcon",
@@ -22,6 +24,7 @@ const PREVIEW_ICONS = [
   },
   {
     lucide: "TrashIcon",
+    materialSymbols: "delete",
     tabler: "IconTrash",
     hugeicons: "Delete02Icon",
     phosphor: "TrashIcon",
@@ -29,6 +32,7 @@ const PREVIEW_ICONS = [
   },
   {
     lucide: "ShareIcon",
+    materialSymbols: "share",
     tabler: "IconShare",
     hugeicons: "Share03Icon",
     phosphor: "ShareIcon",
@@ -36,6 +40,7 @@ const PREVIEW_ICONS = [
   },
   {
     lucide: "ShoppingBagIcon",
+    materialSymbols: "shopping_bag",
     tabler: "IconShoppingBag",
     hugeicons: "ShoppingBag01Icon",
     phosphor: "BagIcon",
@@ -43,6 +48,7 @@ const PREVIEW_ICONS = [
   },
   {
     lucide: "MoreHorizontalIcon",
+    materialSymbols: "more_horiz",
     tabler: "IconDots",
     hugeicons: "MoreHorizontalCircle01Icon",
     phosphor: "DotsThreeIcon",
@@ -50,6 +56,7 @@ const PREVIEW_ICONS = [
   },
   {
     lucide: "Loader2Icon",
+    materialSymbols: "progress_activity",
     tabler: "IconLoader",
     hugeicons: "Loading03Icon",
     phosphor: "SpinnerIcon",
@@ -57,6 +64,7 @@ const PREVIEW_ICONS = [
   },
   {
     lucide: "PlusIcon",
+    materialSymbols: "add",
     tabler: "IconPlus",
     hugeicons: "PlusSignIcon",
     phosphor: "PlusIcon",
@@ -64,6 +72,7 @@ const PREVIEW_ICONS = [
   },
   {
     lucide: "MinusIcon",
+    materialSymbols: "remove",
     tabler: "IconMinus",
     hugeicons: "MinusSignIcon",
     phosphor: "MinusIcon",
@@ -71,6 +80,7 @@ const PREVIEW_ICONS = [
   },
   {
     lucide: "ArrowLeftIcon",
+    materialSymbols: "arrow_left",
     tabler: "IconArrowLeft",
     hugeicons: "ArrowLeft02Icon",
     phosphor: "ArrowLeftIcon",
@@ -78,6 +88,7 @@ const PREVIEW_ICONS = [
   },
   {
     lucide: "ArrowRightIcon",
+    materialSymbols: "arrow_right",
     tabler: "IconArrowRight",
     hugeicons: "ArrowRight02Icon",
     phosphor: "ArrowRightIcon",
@@ -85,6 +96,7 @@ const PREVIEW_ICONS = [
   },
   {
     lucide: "CheckIcon",
+    materialSymbols: "check",
     tabler: "IconCheck",
     hugeicons: "Tick02Icon",
     phosphor: "CheckIcon",
@@ -92,6 +104,7 @@ const PREVIEW_ICONS = [
   },
   {
     lucide: "ChevronDownIcon",
+    materialSymbols: "keyboard_arrow_down",
     tabler: "IconChevronDown",
     hugeicons: "ArrowDown01Icon",
     phosphor: "CaretDownIcon",
@@ -99,6 +112,7 @@ const PREVIEW_ICONS = [
   },
   {
     lucide: "ChevronRightIcon",
+    materialSymbols: "chevron_right",
     tabler: "IconChevronRight",
     hugeicons: "ArrowRight01Icon",
     phosphor: "CaretRightIcon",
@@ -106,6 +120,7 @@ const PREVIEW_ICONS = [
   },
   {
     lucide: "SearchIcon",
+    materialSymbols: "search",
     tabler: "IconSearch",
     hugeicons: "Search01Icon",
     phosphor: "MagnifyingGlassIcon",
@@ -113,6 +128,7 @@ const PREVIEW_ICONS = [
   },
   {
     lucide: "SettingsIcon",
+    materialSymbols: "settings",
     tabler: "IconSettings",
     hugeicons: "Settings01Icon",
     phosphor: "GearIcon",
@@ -132,6 +148,7 @@ export function IconPreviewGrid() {
             >
               <IconPlaceholder
                 lucide={icon.lucide}
+                materialSymbols={icon.materialSymbols}
                 tabler={icon.tabler}
                 hugeicons={icon.hugeicons}
                 phosphor={icon.phosphor}

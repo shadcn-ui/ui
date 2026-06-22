@@ -167,6 +167,7 @@ function SpinnerInEmpty() {
             Learn more{" "}
             <IconPlaceholder
               lucide="ArrowRightIcon"
+              materialSymbols="arrow_right"
               tabler="IconArrowRight"
               hugeicons="ArrowRight02Icon"
               phosphor="ArrowRightIcon"

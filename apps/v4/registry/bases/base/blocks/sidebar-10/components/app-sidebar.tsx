@@ -23,6 +23,7 @@ const data = {
       logo: (
         <IconPlaceholder
           lucide="TerminalIcon"
+          materialSymbols="terminal"
           tabler="IconCommand"
           hugeicons="CommandIcon"
           phosphor="CommandIcon"
@@ -36,6 +37,7 @@ const data = {
       logo: (
         <IconPlaceholder
           lucide="AudioLinesIcon"
+          materialSymbols="graphic_eq"
           tabler="IconWaveSine"
           hugeicons="AudioWave01Icon"
           phosphor="WaveformIcon"
@@ -49,6 +51,7 @@ const data = {
       logo: (
         <IconPlaceholder
           lucide="TerminalIcon"
+          materialSymbols="terminal"
           tabler="IconCommand"
           hugeicons="CommandIcon"
           phosphor="CommandIcon"
@@ -65,6 +68,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="SearchIcon"
+          materialSymbols="search"
           tabler="IconSearch"
           hugeicons="SearchIcon"
           phosphor="MagnifyingGlassIcon"
@@ -78,6 +82,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="SparklesIcon"
+          materialSymbols="star_shine"
           tabler="IconSparkles"
           hugeicons="SparklesIcon"
           phosphor="SparkleIcon"
@@ -91,6 +96,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="HomeIcon"
+          materialSymbols="home"
           tabler="IconHome"
           hugeicons="HomeIcon"
           phosphor="HouseIcon"
@@ -105,6 +111,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="InboxIcon"
+          materialSymbols="inbox"
           tabler="IconInbox"
           hugeicons="InboxIcon"
           phosphor="TrayIcon"
@@ -121,6 +128,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="CalendarIcon"
+          materialSymbols="calendar_month"
           tabler="IconCalendar"
           hugeicons="CalendarIcon"
           phosphor="CalendarIcon"
@@ -134,6 +142,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="Settings2Icon"
+          materialSymbols="settings"
           tabler="IconSettings"
           hugeicons="Settings05Icon"
           phosphor="GearIcon"
@@ -147,6 +156,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="BlocksIcon"
+          materialSymbols="widgets"
           tabler="IconCube"
           hugeicons="CubeIcon"
           phosphor="CubeIcon"
@@ -160,6 +170,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="Trash2Icon"
+          materialSymbols="delete"
           tabler="IconTrash"
           hugeicons="Delete02Icon"
           phosphor="TrashIcon"
@@ -173,6 +184,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="MessageCircleQuestionIcon"
+          materialSymbols="quiz"
           tabler="IconMessageQuestion"
           hugeicons="MessageQuestionIcon"
           phosphor="ChatCircleIcon"

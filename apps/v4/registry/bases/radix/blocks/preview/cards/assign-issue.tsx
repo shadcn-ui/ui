@@ -61,6 +61,7 @@ export function AssignIssue() {
               <Button variant="outline" size="icon-xs">
                 <IconPlaceholder
                   lucide="PlusIcon"
+                  materialSymbols="add"
                   tabler="IconPlus"
                   hugeicons="PlusSignIcon"
                   phosphor="PlusIcon"

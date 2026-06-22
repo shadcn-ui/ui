@@ -31,6 +31,7 @@ export function FileUpload() {
             <EmptyMedia variant="icon">
               <IconPlaceholder
                 lucide="UploadCloudIcon"
+                materialSymbols="cloud_upload"
                 tabler="IconCloudUpload"
                 hugeicons="CloudUploadIcon"
                 phosphor="CloudArrowUpIcon"

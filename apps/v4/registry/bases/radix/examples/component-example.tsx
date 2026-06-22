@@ -101,6 +101,7 @@ function CardExample() {
               <Button>
                 <IconPlaceholder
                   lucide="PlusIcon"
+                  materialSymbols="add"
                   tabler="IconPlus"
                   hugeicons="PlusSignIcon"
                   phosphor="PlusIcon"
@@ -115,6 +116,7 @@ function CardExample() {
                 <AlertDialogMedia>
                   <IconPlaceholder
                     lucide="BluetoothIcon"
+                    materialSymbols="bluetooth"
                     tabler="IconBluetooth"
                     hugeicons="BluetoothIcon"
                     phosphor="BluetoothIcon"
@@ -170,6 +172,7 @@ function FormExample() {
                 <Button variant="ghost" size="icon">
                   <IconPlaceholder
                     lucide="MoreVerticalIcon"
+                    materialSymbols="more_vert"
                     tabler="IconDotsVertical"
                     hugeicons="MoreVerticalCircle01Icon"
                     phosphor="DotsThreeVerticalIcon"
@@ -184,6 +187,7 @@ function FormExample() {
                   <DropdownMenuItem>
                     <IconPlaceholder
                       lucide="FileIcon"
+                      materialSymbols="description"
                       tabler="IconFile"
                       hugeicons="FileIcon"
                       phosphor="FileIcon"
@@ -195,6 +199,7 @@ function FormExample() {
                   <DropdownMenuItem>
                     <IconPlaceholder
                       lucide="FolderIcon"
+                      materialSymbols="folder"
                       tabler="IconFolder"
                       hugeicons="FolderIcon"
                       phosphor="FolderIcon"
@@ -207,6 +212,7 @@ function FormExample() {
                     <DropdownMenuSubTrigger>
                       <IconPlaceholder
                         lucide="FolderOpenIcon"
+                        materialSymbols="folder_open"
                         tabler="IconFolderOpen"
                         hugeicons="FolderOpenIcon"
                         phosphor="FolderOpenIcon"
@@ -221,6 +227,7 @@ function FormExample() {
                           <DropdownMenuItem>
                             <IconPlaceholder
                               lucide="FileCodeIcon"
+                              materialSymbols="code"
                               tabler="IconFileCode"
                               hugeicons="CodeIcon"
                               phosphor="CodeIcon"
@@ -231,6 +238,7 @@ function FormExample() {
                           <DropdownMenuItem>
                             <IconPlaceholder
                               lucide="FileCodeIcon"
+                              materialSymbols="code"
                               tabler="IconFileCode"
                               hugeicons="CodeIcon"
                               phosphor="CodeIcon"
@@ -242,6 +250,7 @@ function FormExample() {
                             <DropdownMenuSubTrigger>
                               <IconPlaceholder
                                 lucide="MoreHorizontalIcon"
+                                materialSymbols="more_horiz"
                                 tabler="IconDots"
                                 hugeicons="MoreHorizontalCircle01Icon"
                                 phosphor="DotsThreeOutlineIcon"
@@ -254,6 +263,7 @@ function FormExample() {
                                 <DropdownMenuItem>
                                   <IconPlaceholder
                                     lucide="FileCodeIcon"
+                                    materialSymbols="code"
                                     tabler="IconFileCode"
                                     hugeicons="CodeIcon"
                                     phosphor="CodeIcon"
@@ -264,6 +274,7 @@ function FormExample() {
                                 <DropdownMenuItem>
                                   <IconPlaceholder
                                     lucide="FileCodeIcon"
+                                    materialSymbols="code"
                                     tabler="IconFileCode"
                                     hugeicons="CodeIcon"
                                     phosphor="CodeIcon"
@@ -280,6 +291,7 @@ function FormExample() {
                           <DropdownMenuItem>
                             <IconPlaceholder
                               lucide="FolderSearchIcon"
+                              materialSymbols="folder"
                               tabler="IconFolderSearch"
                               hugeicons="SearchIcon"
                               phosphor="MagnifyingGlassIcon"
@@ -295,6 +307,7 @@ function FormExample() {
                   <DropdownMenuItem>
                     <IconPlaceholder
                       lucide="SaveIcon"
+                      materialSymbols="save"
                       tabler="IconDeviceFloppy"
                       hugeicons="FloppyDiskIcon"
                       phosphor="FloppyDiskIcon"
@@ -306,6 +319,7 @@ function FormExample() {
                   <DropdownMenuItem>
                     <IconPlaceholder
                       lucide="DownloadIcon"
+                      materialSymbols="download"
                       tabler="IconDownload"
                       hugeicons="DownloadIcon"
                       phosphor="DownloadIcon"
@@ -329,6 +343,7 @@ function FormExample() {
                   >
                     <IconPlaceholder
                       lucide="EyeIcon"
+                      materialSymbols="visibility"
                       tabler="IconEye"
                       hugeicons="EyeIcon"
                       phosphor="EyeIcon"
@@ -347,6 +362,7 @@ function FormExample() {
                   >
                     <IconPlaceholder
                       lucide="LayoutIcon"
+                      materialSymbols="dashboard"
                       tabler="IconLayout"
                       hugeicons="LayoutIcon"
                       phosphor="LayoutIcon"
@@ -358,6 +374,7 @@ function FormExample() {
                     <DropdownMenuSubTrigger>
                       <IconPlaceholder
                         lucide="PaletteIcon"
+                        materialSymbols="palette"
                         tabler="IconPalette"
                         hugeicons="PaintBoardIcon"
                         phosphor="PaletteIcon"
@@ -376,6 +393,7 @@ function FormExample() {
                             <DropdownMenuRadioItem value="light">
                               <IconPlaceholder
                                 lucide="SunIcon"
+                                materialSymbols="light_mode"
                                 tabler="IconSun"
                                 hugeicons="SunIcon"
                                 phosphor="SunIcon"
@@ -386,6 +404,7 @@ function FormExample() {
                             <DropdownMenuRadioItem value="dark">
                               <IconPlaceholder
                                 lucide="MoonIcon"
+                                materialSymbols="dark_mode"
                                 tabler="IconMoon"
                                 hugeicons="MoonIcon"
                                 phosphor="MoonIcon"
@@ -396,6 +415,7 @@ function FormExample() {
                             <DropdownMenuRadioItem value="system">
                               <IconPlaceholder
                                 lucide="MonitorIcon"
+                                materialSymbols="monitor"
                                 tabler="IconDeviceDesktop"
                                 hugeicons="ComputerIcon"
                                 phosphor="MonitorIcon"
@@ -415,6 +435,7 @@ function FormExample() {
                   <DropdownMenuItem>
                     <IconPlaceholder
                       lucide="UserIcon"
+                      materialSymbols="person"
                       tabler="IconUser"
                       hugeicons="UserIcon"
                       phosphor="UserIcon"
@@ -426,6 +447,7 @@ function FormExample() {
                   <DropdownMenuItem>
                     <IconPlaceholder
                       lucide="CreditCardIcon"
+                      materialSymbols="credit_card"
                       tabler="IconCreditCard"
                       hugeicons="CreditCardIcon"
                       phosphor="CreditCardIcon"
@@ -437,6 +459,7 @@ function FormExample() {
                     <DropdownMenuSubTrigger>
                       <IconPlaceholder
                         lucide="SettingsIcon"
+                        materialSymbols="settings"
                         tabler="IconSettings"
                         hugeicons="SettingsIcon"
                         phosphor="GearIcon"
@@ -451,6 +474,7 @@ function FormExample() {
                           <DropdownMenuItem>
                             <IconPlaceholder
                               lucide="KeyboardIcon"
+                              materialSymbols="keyboard"
                               tabler="IconKeyboard"
                               hugeicons="KeyboardIcon"
                               phosphor="KeyboardIcon"
@@ -461,6 +485,7 @@ function FormExample() {
                           <DropdownMenuItem>
                             <IconPlaceholder
                               lucide="LanguagesIcon"
+                              materialSymbols="translate"
                               tabler="IconLanguage"
                               hugeicons="LanguageCircleIcon"
                               phosphor="TranslateIcon"
@@ -472,6 +497,7 @@ function FormExample() {
                             <DropdownMenuSubTrigger>
                               <IconPlaceholder
                                 lucide="BellIcon"
+                                materialSymbols="notifications"
                                 tabler="IconBell"
                                 hugeicons="NotificationIcon"
                                 phosphor="BellIcon"
@@ -496,6 +522,7 @@ function FormExample() {
                                   >
                                     <IconPlaceholder
                                       lucide="BellIcon"
+                                      materialSymbols="notifications"
                                       tabler="IconBell"
                                       hugeicons="NotificationIcon"
                                       phosphor="BellIcon"
@@ -514,6 +541,7 @@ function FormExample() {
                                   >
                                     <IconPlaceholder
                                       lucide="MailIcon"
+                                      materialSymbols="mail"
                                       tabler="IconMail"
                                       hugeicons="MailIcon"
                                       phosphor="EnvelopeIcon"
@@ -531,6 +559,7 @@ function FormExample() {
                           <DropdownMenuItem>
                             <IconPlaceholder
                               lucide="ShieldIcon"
+                              materialSymbols="shield"
                               tabler="IconShield"
                               hugeicons="ShieldIcon"
                               phosphor="ShieldIcon"
@@ -548,6 +577,7 @@ function FormExample() {
                   <DropdownMenuItem>
                     <IconPlaceholder
                       lucide="HelpCircleIcon"
+                      materialSymbols="help"
                       tabler="IconHelpCircle"
                       hugeicons="HelpCircleIcon"
                       phosphor="QuestionIcon"
@@ -558,6 +588,7 @@ function FormExample() {
                   <DropdownMenuItem>
                     <IconPlaceholder
                       lucide="FileTextIcon"
+                      materialSymbols="description"
                       tabler="IconFileText"
                       hugeicons="File01Icon"
                       phosphor="FileTextIcon"
@@ -571,6 +602,7 @@ function FormExample() {
                   <DropdownMenuItem variant="destructive">
                     <IconPlaceholder
                       lucide="LogOutIcon"
+                      materialSymbols="logout"
                       tabler="IconLogout"
                       hugeicons="LogoutIcon"
                       phosphor="SignOutIcon"

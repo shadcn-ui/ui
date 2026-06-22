@@ -173,6 +173,7 @@ function AccordionInCard() {
             View plans
             <IconPlaceholder
               lucide="ArrowUpRightIcon"
+              materialSymbols="north_east"
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRight01Icon"
               phosphor="ArrowUpRightIcon"

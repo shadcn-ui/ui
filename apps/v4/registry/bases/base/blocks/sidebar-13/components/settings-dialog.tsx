@@ -37,6 +37,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="BellIcon"
+          materialSymbols="notifications"
           tabler="IconBell"
           hugeicons="NotificationIcon"
           phosphor="BellIcon"
@@ -49,6 +50,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="MenuIcon"
+          materialSymbols="menu"
           tabler="IconMenu"
           hugeicons="Menu09Icon"
           phosphor="ListIcon"
@@ -61,6 +63,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="HomeIcon"
+          materialSymbols="home"
           tabler="IconHome"
           hugeicons="HomeIcon"
           phosphor="HouseIcon"
@@ -73,6 +76,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="PaintbrushIcon"
+          materialSymbols="brush"
           tabler="IconPalette"
           hugeicons="PaintBoardIcon"
           phosphor="PaletteIcon"
@@ -85,6 +89,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="MessageCircleIcon"
+          materialSymbols="chat_bubble"
           tabler="IconMessageQuestion"
           hugeicons="MessageIcon"
           phosphor="ChatCircleIcon"
@@ -97,6 +102,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="GlobeIcon"
+          materialSymbols="globe"
           tabler="IconWorld"
           hugeicons="Globe02Icon"
           phosphor="GlobeIcon"
@@ -109,6 +115,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="KeyboardIcon"
+          materialSymbols="keyboard"
           tabler="IconKeyboard"
           hugeicons="KeyboardIcon"
           phosphor="KeyboardIcon"
@@ -121,6 +128,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="CheckIcon"
+          materialSymbols="check"
           tabler="IconCheck"
           hugeicons="Tick02Icon"
           phosphor="CheckIcon"
@@ -133,6 +141,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="VideoIcon"
+          materialSymbols="videocam"
           tabler="IconVideoPlus"
           hugeicons="RecordIcon"
           phosphor="VideoIcon"
@@ -145,6 +154,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="LinkIcon"
+          materialSymbols="link"
           tabler="IconLink"
           hugeicons="LinkIcon"
           phosphor="LinkIcon"
@@ -157,6 +167,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="LockIcon"
+          materialSymbols="lock"
           tabler="IconLock"
           hugeicons="ShieldIcon"
           phosphor="LockIcon"
@@ -169,6 +180,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="SettingsIcon"
+          materialSymbols="settings"
           tabler="IconSettings"
           hugeicons="SettingsIcon"
           phosphor="GearIcon"

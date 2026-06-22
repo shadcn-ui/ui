@@ -110,6 +110,7 @@ function TabsWithIcons() {
           <TabsTrigger value="preview">
             <IconPlaceholder
               lucide="AppWindowIcon"
+              materialSymbols="web_asset"
               tabler="IconAppWindow"
               hugeicons="CursorInWindowIcon"
               phosphor="AppWindowIcon"
@@ -121,6 +122,7 @@ function TabsWithIcons() {
           <TabsTrigger value="code">
             <IconPlaceholder
               lucide="CodeIcon"
+              materialSymbols="code"
               tabler="IconCode"
               hugeicons="CodeIcon"
               phosphor="CodeIcon"
@@ -143,6 +145,7 @@ function TabsIconOnly() {
           <TabsTrigger value="home">
             <IconPlaceholder
               lucide="HomeIcon"
+              materialSymbols="home"
               tabler="IconHome"
               hugeicons="HomeIcon"
               phosphor="HouseIcon"
@@ -152,6 +155,7 @@ function TabsIconOnly() {
           <TabsTrigger value="search">
             <IconPlaceholder
               lucide="SearchIcon"
+              materialSymbols="search"
               tabler="IconSearch"
               hugeicons="SearchIcon"
               phosphor="MagnifyingGlassIcon"
@@ -161,6 +165,7 @@ function TabsIconOnly() {
           <TabsTrigger value="settings">
             <IconPlaceholder
               lucide="SettingsIcon"
+              materialSymbols="settings"
               tabler="IconSettings"
               hugeicons="SettingsIcon"
               phosphor="GearIcon"
@@ -269,6 +274,7 @@ function TabsWithDropdown() {
               <Button variant="ghost" size="icon" className="size-8">
                 <IconPlaceholder
                   lucide="MoreHorizontalIcon"
+                  materialSymbols="more_horiz"
                   tabler="IconDots"
                   hugeicons="MoreHorizontalCircle01Icon"
                   phosphor="DotsThreeIcon"

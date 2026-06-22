@@ -54,6 +54,7 @@ export function NavUser({
             </div>
             <IconPlaceholder
               lucide="ChevronsUpDownIcon"
+              materialSymbols="unfold_more"
               tabler="IconSelector"
               hugeicons="UnfoldMoreIcon"
               phosphor="CaretUpDownIcon"
@@ -86,6 +87,7 @@ export function NavUser({
               <DropdownMenuItem>
                 <IconPlaceholder
                   lucide="SparklesIcon"
+                  materialSymbols="star_shine"
                   tabler="IconSparkles"
                   hugeicons="SparklesIcon"
                   phosphor="SparkleIcon"
@@ -99,6 +101,7 @@ export function NavUser({
               <DropdownMenuItem>
                 <IconPlaceholder
                   lucide="BadgeCheckIcon"
+                  materialSymbols="verified"
                   tabler="IconRosetteDiscountCheck"
                   hugeicons="CheckmarkBadgeIcon"
                   phosphor="CheckCircleIcon"
@@ -109,6 +112,7 @@ export function NavUser({
               <DropdownMenuItem>
                 <IconPlaceholder
                   lucide="CreditCardIcon"
+                  materialSymbols="credit_card"
                   tabler="IconCreditCard"
                   hugeicons="CreditCardIcon"
                   phosphor="CreditCardIcon"
@@ -119,6 +123,7 @@ export function NavUser({
               <DropdownMenuItem>
                 <IconPlaceholder
                   lucide="BellIcon"
+                  materialSymbols="notifications"
                   tabler="IconBell"
                   hugeicons="NotificationIcon"
                   phosphor="BellIcon"
@@ -132,6 +137,7 @@ export function NavUser({
               <DropdownMenuItem>
                 <IconPlaceholder
                   lucide="LogOutIcon"
+                  materialSymbols="logout"
                   tabler="IconLogout"
                   hugeicons="LogoutIcon"
                   phosphor="SignOutIcon"

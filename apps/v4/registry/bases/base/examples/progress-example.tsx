@@ -116,6 +116,7 @@ function FileUploadList() {
             <ItemMedia variant="icon">
               <IconPlaceholder
                 lucide="FileIcon"
+                materialSymbols="description"
                 tabler="IconFile"
                 hugeicons="FileIcon"
                 phosphor="FileIcon"

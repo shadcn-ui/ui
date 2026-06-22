@@ -149,6 +149,7 @@ function Calendar({
             return (
               <IconPlaceholder
                 lucide="ChevronLeftIcon"
+                materialSymbols="chevron_left"
                 tabler="IconChevronLeft"
                 hugeicons="ArrowLeftIcon"
                 phosphor="CaretLeftIcon"
@@ -163,6 +164,7 @@ function Calendar({
             return (
               <IconPlaceholder
                 lucide="ChevronRightIcon"
+                materialSymbols="chevron_right"
                 tabler="IconChevronRight"
                 hugeicons="ArrowRightIcon"
                 phosphor="CaretRightIcon"
@@ -176,6 +178,7 @@ function Calendar({
           return (
             <IconPlaceholder
               lucide="ChevronDownIcon"
+              materialSymbols="keyboard_arrow_down"
               tabler="IconChevronDown"
               hugeicons="ArrowDownIcon"
               phosphor="CaretDownIcon"

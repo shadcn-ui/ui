@@ -89,6 +89,7 @@ function DefaultVariantItems() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -103,6 +104,7 @@ function DefaultVariantItems() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -120,6 +122,7 @@ function DefaultVariantItems() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -137,6 +140,7 @@ function DefaultVariantItems() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -211,6 +215,7 @@ function OutlineVariantItems() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -225,6 +230,7 @@ function OutlineVariantItems() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -242,6 +248,7 @@ function OutlineVariantItems() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -259,6 +266,7 @@ function OutlineVariantItems() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -333,6 +341,7 @@ function MutedVariantItems() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -347,6 +356,7 @@ function MutedVariantItems() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -364,6 +374,7 @@ function MutedVariantItems() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -381,6 +392,7 @@ function MutedVariantItems() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -459,6 +471,7 @@ function DefaultVariantItemsSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -473,6 +486,7 @@ function DefaultVariantItemsSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -490,6 +504,7 @@ function DefaultVariantItemsSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -507,6 +522,7 @@ function DefaultVariantItemsSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -585,6 +601,7 @@ function OutlineVariantItemsSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -599,6 +616,7 @@ function OutlineVariantItemsSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -616,6 +634,7 @@ function OutlineVariantItemsSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -633,6 +652,7 @@ function OutlineVariantItemsSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -711,6 +731,7 @@ function MutedVariantItemsSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -725,6 +746,7 @@ function MutedVariantItemsSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -742,6 +764,7 @@ function MutedVariantItemsSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -759,6 +782,7 @@ function MutedVariantItemsSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -837,6 +861,7 @@ function DefaultVariantItemsExtraSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -851,6 +876,7 @@ function DefaultVariantItemsExtraSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -868,6 +894,7 @@ function DefaultVariantItemsExtraSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -885,6 +912,7 @@ function DefaultVariantItemsExtraSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -963,6 +991,7 @@ function OutlineVariantItemsExtraSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -977,6 +1006,7 @@ function OutlineVariantItemsExtraSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -994,6 +1024,7 @@ function OutlineVariantItemsExtraSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -1011,6 +1042,7 @@ function OutlineVariantItemsExtraSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -1089,6 +1121,7 @@ function MutedVariantItemsExtraSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -1103,6 +1136,7 @@ function MutedVariantItemsExtraSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -1120,6 +1154,7 @@ function MutedVariantItemsExtraSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -1137,6 +1172,7 @@ function MutedVariantItemsExtraSmall() {
         <ItemMedia variant="icon">
           <IconPlaceholder
             lucide="InboxIcon"
+            materialSymbols="inbox"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
@@ -1193,6 +1229,7 @@ function DefaultLinkItems() {
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
+              materialSymbols="inbox"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="ArchiveIcon"
@@ -1207,6 +1244,7 @@ function DefaultLinkItems() {
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
+              materialSymbols="inbox"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="ArchiveIcon"
@@ -1259,6 +1297,7 @@ function OutlineLinkItems() {
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
+              materialSymbols="inbox"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="ArchiveIcon"
@@ -1273,6 +1312,7 @@ function OutlineLinkItems() {
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
+              materialSymbols="inbox"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="ArchiveIcon"
@@ -1325,6 +1365,7 @@ function MutedLinkItems() {
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
+              materialSymbols="inbox"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="ArchiveIcon"
@@ -1339,6 +1380,7 @@ function MutedLinkItems() {
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
+              materialSymbols="inbox"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="ArchiveIcon"
@@ -1405,6 +1447,7 @@ function OutlineItemGroup() {
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
+              materialSymbols="inbox"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="ArchiveIcon"
@@ -1420,6 +1463,7 @@ function OutlineItemGroup() {
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
+              materialSymbols="inbox"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="ArchiveIcon"
@@ -1435,6 +1479,7 @@ function OutlineItemGroup() {
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
+              materialSymbols="inbox"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="ArchiveIcon"
@@ -1501,6 +1546,7 @@ function ItemSeparatorExample() {
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
+              materialSymbols="inbox"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="ArchiveIcon"
@@ -1517,6 +1563,7 @@ function ItemSeparatorExample() {
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
+              materialSymbols="inbox"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="ArchiveIcon"
@@ -1533,6 +1580,7 @@ function ItemSeparatorExample() {
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
+              materialSymbols="inbox"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="ArchiveIcon"
@@ -1549,6 +1597,7 @@ function ItemSeparatorExample() {
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
+              materialSymbols="inbox"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="ArchiveIcon"

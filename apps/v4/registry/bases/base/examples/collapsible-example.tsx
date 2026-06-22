@@ -103,6 +103,7 @@ function CollapsibleFileTree() {
           >
             <IconPlaceholder
               lucide="ChevronRightIcon"
+              materialSymbols="chevron_right"
               tabler="IconChevronRight"
               hugeicons="ArrowRight01Icon"
               phosphor="CaretRightIcon"
@@ -111,6 +112,7 @@ function CollapsibleFileTree() {
             />
             <IconPlaceholder
               lucide="FolderIcon"
+              materialSymbols="folder"
               tabler="IconFolder"
               hugeicons="Folder01Icon"
               phosphor="FolderIcon"
@@ -135,6 +137,7 @@ function CollapsibleFileTree() {
       >
         <IconPlaceholder
           lucide="FileIcon"
+          materialSymbols="description"
           tabler="IconFile"
           hugeicons="File01Icon"
           phosphor="FileIcon"
@@ -218,6 +221,7 @@ function CollapsibleSettings() {
               {isOpen ? (
                 <IconPlaceholder
                   lucide="MinimizeIcon"
+                  materialSymbols="fullscreen_exit"
                   tabler="IconMinimize"
                   hugeicons="MinusSignIcon"
                   phosphor="MinusIcon"
@@ -226,6 +230,7 @@ function CollapsibleSettings() {
               ) : (
                 <IconPlaceholder
                   lucide="MaximizeIcon"
+                  materialSymbols="fullscreen"
                   tabler="IconMaximize"
                   hugeicons="PlusSignIcon"
                   phosphor="PlusIcon"

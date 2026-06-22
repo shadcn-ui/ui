@@ -51,6 +51,7 @@ export function NavMain({
                     <SidebarMenuAction className="data-[state=open]:rotate-90">
                       <IconPlaceholder
                         lucide="ChevronRightIcon"
+                        materialSymbols="chevron_right"
                         tabler="IconChevronRight"
                         hugeicons="ArrowRight01Icon"
                         phosphor="CaretRightIcon"

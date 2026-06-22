@@ -85,6 +85,7 @@ function BreadcrumbSeparator({
       {children ?? (
         <IconPlaceholder
           lucide="ChevronRightIcon"
+          materialSymbols="chevron_right"
           tabler="IconChevronRight"
           hugeicons="ArrowRight01Icon"
           phosphor="CaretRightIcon"
@@ -113,6 +114,7 @@ function BreadcrumbEllipsis({
     >
       <IconPlaceholder
         lucide="MoreHorizontalIcon"
+        materialSymbols="more_horiz"
         tabler="IconDots"
         hugeicons="MoreHorizontalCircle01Icon"
         phosphor="DotsThreeIcon"

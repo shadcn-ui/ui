@@ -18,6 +18,7 @@ export function EmptyConnectBank() {
           <EmptyMedia variant="icon">
             <IconPlaceholder
               lucide="CreditCardIcon"
+              materialSymbols="credit_card"
               tabler="IconCreditCard"
               hugeicons="CreditCardIcon"
               phosphor="CreditCardIcon"

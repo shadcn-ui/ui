@@ -24,6 +24,7 @@ export function SectionCards() {
             <Badge variant="outline">
               <IconPlaceholder
                 lucide="TrendingUpIcon"
+                materialSymbols="trending_up"
                 tabler="IconTrendingUp"
                 hugeicons="ChartUpIcon"
                 phosphor="TrendUpIcon"
@@ -38,6 +39,7 @@ export function SectionCards() {
             Trending up this month{" "}
             <IconPlaceholder
               lucide="TrendingUpIcon"
+              materialSymbols="trending_up"
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
@@ -60,6 +62,7 @@ export function SectionCards() {
             <Badge variant="outline">
               <IconPlaceholder
                 lucide="TrendingDownIcon"
+                materialSymbols="trending_down"
                 tabler="IconTrendingDown"
                 hugeicons="ChartDownIcon"
                 phosphor="TrendDownIcon"
@@ -74,6 +77,7 @@ export function SectionCards() {
             Down 20% this period{" "}
             <IconPlaceholder
               lucide="TrendingDownIcon"
+              materialSymbols="trending_down"
               tabler="IconTrendingDown"
               hugeicons="ChartDownIcon"
               phosphor="TrendDownIcon"
@@ -96,6 +100,7 @@ export function SectionCards() {
             <Badge variant="outline">
               <IconPlaceholder
                 lucide="TrendingUpIcon"
+                materialSymbols="trending_up"
                 tabler="IconTrendingUp"
                 hugeicons="ChartUpIcon"
                 phosphor="TrendUpIcon"
@@ -110,6 +115,7 @@ export function SectionCards() {
             Strong user retention{" "}
             <IconPlaceholder
               lucide="TrendingUpIcon"
+              materialSymbols="trending_up"
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
@@ -130,6 +136,7 @@ export function SectionCards() {
             <Badge variant="outline">
               <IconPlaceholder
                 lucide="TrendingUpIcon"
+                materialSymbols="trending_up"
                 tabler="IconTrendingUp"
                 hugeicons="ChartUpIcon"
                 phosphor="TrendUpIcon"
@@ -144,6 +151,7 @@ export function SectionCards() {
             Steady performance increase{" "}
             <IconPlaceholder
               lucide="TrendingUpIcon"
+              materialSymbols="trending_up"
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"

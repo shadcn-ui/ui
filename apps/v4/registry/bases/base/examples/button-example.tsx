@@ -97,6 +97,7 @@ function ButtonIconRight() {
           Default{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -108,6 +109,7 @@ function ButtonIconRight() {
           Secondary{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -119,6 +121,7 @@ function ButtonIconRight() {
           Outline{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -130,6 +133,7 @@ function ButtonIconRight() {
           Ghost{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -141,6 +145,7 @@ function ButtonIconRight() {
           Destructive{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -152,6 +157,7 @@ function ButtonIconRight() {
           Link{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -165,6 +171,7 @@ function ButtonIconRight() {
           Default
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -176,6 +183,7 @@ function ButtonIconRight() {
           Secondary{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -187,6 +195,7 @@ function ButtonIconRight() {
           Outline{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -197,6 +206,7 @@ function ButtonIconRight() {
           Ghost{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -208,6 +218,7 @@ function ButtonIconRight() {
           Destructive{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -219,6 +230,7 @@ function ButtonIconRight() {
           Link{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -232,6 +244,7 @@ function ButtonIconRight() {
           Default{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -243,6 +256,7 @@ function ButtonIconRight() {
           Secondary{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -254,6 +268,7 @@ function ButtonIconRight() {
           Outline{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -265,6 +280,7 @@ function ButtonIconRight() {
           Ghost{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -276,6 +292,7 @@ function ButtonIconRight() {
           Destructive{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -287,6 +304,7 @@ function ButtonIconRight() {
           Link{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -300,6 +318,7 @@ function ButtonIconRight() {
           Default{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -311,6 +330,7 @@ function ButtonIconRight() {
           Secondary{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -322,6 +342,7 @@ function ButtonIconRight() {
           Outline{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -333,6 +354,7 @@ function ButtonIconRight() {
           Ghost{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -344,6 +366,7 @@ function ButtonIconRight() {
           Destructive{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -355,6 +378,7 @@ function ButtonIconRight() {
           Link{" "}
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -374,6 +398,7 @@ function ButtonIconLeft() {
         <Button size="xs">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -385,6 +410,7 @@ function ButtonIconLeft() {
         <Button size="xs" variant="secondary">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -396,6 +422,7 @@ function ButtonIconLeft() {
         <Button size="xs" variant="outline">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -407,6 +434,7 @@ function ButtonIconLeft() {
         <Button size="xs" variant="ghost">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -418,6 +446,7 @@ function ButtonIconLeft() {
         <Button size="xs" variant="destructive">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -429,6 +458,7 @@ function ButtonIconLeft() {
         <Button size="xs" variant="link">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -442,6 +472,7 @@ function ButtonIconLeft() {
         <Button size="sm">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -453,6 +484,7 @@ function ButtonIconLeft() {
         <Button size="sm" variant="secondary">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -464,6 +496,7 @@ function ButtonIconLeft() {
         <Button size="sm" variant="outline">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -475,6 +508,7 @@ function ButtonIconLeft() {
         <Button size="sm" variant="ghost">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -486,6 +520,7 @@ function ButtonIconLeft() {
         <Button size="sm" variant="destructive">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -497,6 +532,7 @@ function ButtonIconLeft() {
         <Button size="sm" variant="link">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -510,6 +546,7 @@ function ButtonIconLeft() {
         <Button>
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -521,6 +558,7 @@ function ButtonIconLeft() {
         <Button variant="secondary">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -532,6 +570,7 @@ function ButtonIconLeft() {
         <Button variant="outline">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -543,6 +582,7 @@ function ButtonIconLeft() {
         <Button variant="ghost">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -554,6 +594,7 @@ function ButtonIconLeft() {
         <Button variant="destructive">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -565,6 +606,7 @@ function ButtonIconLeft() {
         <Button variant="link">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -578,6 +620,7 @@ function ButtonIconLeft() {
         <Button size="lg">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -589,6 +632,7 @@ function ButtonIconLeft() {
         <Button size="lg" variant="secondary">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -600,6 +644,7 @@ function ButtonIconLeft() {
         <Button size="lg" variant="outline">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -611,6 +656,7 @@ function ButtonIconLeft() {
         <Button size="lg" variant="ghost">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -622,6 +668,7 @@ function ButtonIconLeft() {
         <Button size="lg" variant="destructive">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -633,6 +680,7 @@ function ButtonIconLeft() {
         <Button size="lg" variant="link">
           <IconPlaceholder
             lucide="ArrowLeftCircleIcon"
+            materialSymbols="arrow_circle_left"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
@@ -653,6 +701,7 @@ function ButtonIconOnly() {
         <Button size="icon-xs">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -662,6 +711,7 @@ function ButtonIconOnly() {
         <Button size="icon-xs" variant="secondary">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -671,6 +721,7 @@ function ButtonIconOnly() {
         <Button size="icon-xs" variant="outline">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -680,6 +731,7 @@ function ButtonIconOnly() {
         <Button size="icon-xs" variant="ghost">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -689,6 +741,7 @@ function ButtonIconOnly() {
         <Button size="icon-xs" variant="destructive">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -698,6 +751,7 @@ function ButtonIconOnly() {
         <Button size="icon-xs" variant="link">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -709,6 +763,7 @@ function ButtonIconOnly() {
         <Button size="icon-sm">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -718,6 +773,7 @@ function ButtonIconOnly() {
         <Button size="icon-sm" variant="secondary">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -727,6 +783,7 @@ function ButtonIconOnly() {
         <Button size="icon-sm" variant="outline">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -736,6 +793,7 @@ function ButtonIconOnly() {
         <Button size="icon-sm" variant="ghost">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -745,6 +803,7 @@ function ButtonIconOnly() {
         <Button size="icon-sm" variant="destructive">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -754,6 +813,7 @@ function ButtonIconOnly() {
         <Button size="icon-sm" variant="link">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -765,6 +825,7 @@ function ButtonIconOnly() {
         <Button size="icon">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -774,6 +835,7 @@ function ButtonIconOnly() {
         <Button size="icon" variant="secondary">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -783,6 +845,7 @@ function ButtonIconOnly() {
         <Button size="icon" variant="outline">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -792,6 +855,7 @@ function ButtonIconOnly() {
         <Button size="icon" variant="ghost">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -801,6 +865,7 @@ function ButtonIconOnly() {
         <Button size="icon" variant="destructive">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -810,6 +875,7 @@ function ButtonIconOnly() {
         <Button size="icon" variant="link">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -821,6 +887,7 @@ function ButtonIconOnly() {
         <Button size="icon-lg">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -830,6 +897,7 @@ function ButtonIconOnly() {
         <Button size="icon-lg" variant="secondary">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -839,6 +907,7 @@ function ButtonIconOnly() {
         <Button size="icon-lg" variant="outline">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -848,6 +917,7 @@ function ButtonIconOnly() {
         <Button size="icon-lg" variant="ghost">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -857,6 +927,7 @@ function ButtonIconOnly() {
         <Button size="icon-lg" variant="destructive">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -866,6 +937,7 @@ function ButtonIconOnly() {
         <Button size="icon-lg" variant="link">
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -887,6 +959,7 @@ function ButtonExamples() {
             Submit{" "}
             <IconPlaceholder
               lucide="ArrowRightIcon"
+              materialSymbols="arrow_right"
               tabler="IconArrowRight"
               hugeicons="ArrowRight02Icon"
               phosphor="ArrowRightIcon"
@@ -900,6 +973,7 @@ function ButtonExamples() {
           <Button size="icon">
             <IconPlaceholder
               lucide="ArrowRightIcon"
+              materialSymbols="arrow_right"
               tabler="IconArrowRight"
               hugeicons="ArrowRight02Icon"
               phosphor="ArrowRightIcon"

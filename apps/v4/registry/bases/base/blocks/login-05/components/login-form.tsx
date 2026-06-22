@@ -28,6 +28,7 @@ export function LoginForm({
               <div className="flex size-8 items-center justify-center rounded-md">
                 <IconPlaceholder
                   lucide="GalleryVerticalEndIcon"
+                  materialSymbols="stacks"
                   tabler="IconLayoutRows"
                   hugeicons="LayoutBottomIcon"
                   phosphor="RowsIcon"

@@ -77,6 +77,7 @@ export default function SidebarIconExample() {
         icon: (
           <IconPlaceholder
             lucide="TerminalSquareIcon"
+            materialSymbols="terminal"
             tabler="IconTerminal2"
             hugeicons="ComputerTerminalIcon"
             phosphor="TerminalIcon"
@@ -105,6 +106,7 @@ export default function SidebarIconExample() {
         icon: (
           <IconPlaceholder
             lucide="BotIcon"
+            materialSymbols="smart_toy"
             tabler="IconRobot"
             hugeicons="RoboticIcon"
             phosphor="RobotIcon"
@@ -132,6 +134,7 @@ export default function SidebarIconExample() {
         icon: (
           <IconPlaceholder
             lucide="BookOpen"
+            materialSymbols="menu_book"
             tabler="IconBook"
             hugeicons="BookOpen02Icon"
             phosphor="BookOpenIcon"
@@ -163,6 +166,7 @@ export default function SidebarIconExample() {
         icon: (
           <IconPlaceholder
             lucide="Settings2Icon"
+            materialSymbols="settings"
             tabler="IconSettings"
             hugeicons="Settings05Icon"
             phosphor="GearIcon"
@@ -196,6 +200,7 @@ export default function SidebarIconExample() {
         icon: (
           <IconPlaceholder
             lucide="FrameIcon"
+            materialSymbols="crop_square"
             tabler="IconFrame"
             hugeicons="CropIcon"
             phosphor="CropIcon"
@@ -209,6 +214,7 @@ export default function SidebarIconExample() {
         icon: (
           <IconPlaceholder
             lucide="PieChartIcon"
+            materialSymbols="pie_chart"
             tabler="IconChartPie"
             hugeicons="PieChartIcon"
             phosphor="ChartPieIcon"
@@ -222,6 +228,7 @@ export default function SidebarIconExample() {
         icon: (
           <IconPlaceholder
             lucide="MapIcon"
+            materialSymbols="map"
             tabler="IconMap"
             hugeicons="MapsIcon"
             phosphor="MapTrifoldIcon"
@@ -292,6 +299,7 @@ export default function SidebarIconExample() {
                   </div>
                   <IconPlaceholder
                     lucide="ChevronsUpDownIcon"
+                    materialSymbols="unfold_more"
                     tabler="IconSelector"
                     hugeicons="UnfoldMoreIcon"
                     phosphor="CaretUpDownIcon"
@@ -335,6 +343,7 @@ export default function SidebarIconExample() {
                       <span>{item.title}</span>
                       <IconPlaceholder
                         lucide="ChevronRightIcon"
+                        materialSymbols="chevron_right"
                         tabler="IconChevronRight"
                         hugeicons="ArrowRight01Icon"
                         phosphor="CaretRightIcon"
@@ -398,6 +407,7 @@ export default function SidebarIconExample() {
                   </div>
                   <IconPlaceholder
                     lucide="ChevronsUpDownIcon"
+                    materialSymbols="unfold_more"
                     tabler="IconSelector"
                     hugeicons="UnfoldMoreIcon"
                     phosphor="CaretUpDownIcon"

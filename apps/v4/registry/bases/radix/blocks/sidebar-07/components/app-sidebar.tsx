@@ -28,6 +28,7 @@ const data = {
       logo: (
         <IconPlaceholder
           lucide="GalleryVerticalEndIcon"
+          materialSymbols="stacks"
           tabler="IconLayoutRows"
           hugeicons="LayoutBottomIcon"
           phosphor="RowsIcon"
@@ -41,6 +42,7 @@ const data = {
       logo: (
         <IconPlaceholder
           lucide="AudioLinesIcon"
+          materialSymbols="graphic_eq"
           tabler="IconWaveSine"
           hugeicons="AudioWave01Icon"
           phosphor="WaveformIcon"
@@ -54,6 +56,7 @@ const data = {
       logo: (
         <IconPlaceholder
           lucide="TerminalIcon"
+          materialSymbols="terminal"
           tabler="IconCommand"
           hugeicons="CommandIcon"
           phosphor="CommandIcon"
@@ -70,6 +73,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="TerminalSquareIcon"
+          materialSymbols="terminal"
           tabler="IconTerminal2"
           hugeicons="ComputerTerminalIcon"
           phosphor="TerminalIcon"
@@ -98,6 +102,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="BotIcon"
+          materialSymbols="smart_toy"
           tabler="IconRobot"
           hugeicons="RoboticIcon"
           phosphor="RobotIcon"
@@ -125,6 +130,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="BookOpenIcon"
+          materialSymbols="menu_book"
           tabler="IconBook"
           hugeicons="BookOpen02Icon"
           phosphor="BookOpenIcon"
@@ -156,6 +162,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="Settings2Icon"
+          materialSymbols="settings"
           tabler="IconSettings"
           hugeicons="Settings05Icon"
           phosphor="GearIcon"
@@ -189,6 +196,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="FrameIcon"
+          materialSymbols="crop_square"
           tabler="IconFrame"
           hugeicons="CropIcon"
           phosphor="CropIcon"
@@ -202,6 +210,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="PieChartIcon"
+          materialSymbols="pie_chart"
           tabler="IconChartPie"
           hugeicons="PieChartIcon"
           phosphor="ChartPieIcon"
@@ -215,6 +224,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="MapIcon"
+          materialSymbols="map"
           tabler="IconMap"
           hugeicons="MapsIcon"
           phosphor="MapTrifoldIcon"

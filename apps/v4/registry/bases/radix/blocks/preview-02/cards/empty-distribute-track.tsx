@@ -18,6 +18,7 @@ export function EmptyDistributeTrack() {
           <EmptyMedia variant="icon">
             <IconPlaceholder
               lucide="PlusIcon"
+              materialSymbols="add"
               tabler="IconPlus"
               hugeicons="Add01Icon"
               phosphor="PlusIcon"

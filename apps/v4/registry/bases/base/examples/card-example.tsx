@@ -233,6 +233,7 @@ function CardMeetingNotes() {
             <Button variant="outline" size="sm">
               <IconPlaceholder
                 lucide="CaptionsIcon"
+                materialSymbols="closed_caption"
                 tabler="IconTextCaption"
                 hugeicons="TextCheckIcon"
                 phosphor="TextTIcon"
@@ -305,6 +306,7 @@ function CardWithImage() {
           <Button className="w-full">
             <IconPlaceholder
               lucide="PlusIcon"
+              materialSymbols="add"
               tabler="IconPlus"
               hugeicons="Add01Icon"
               phosphor="PlusIcon"
@@ -340,6 +342,7 @@ function CardWithImageSmall() {
           <Button size="sm" className="w-full">
             <IconPlaceholder
               lucide="PlusIcon"
+              materialSymbols="add"
               tabler="IconPlus"
               hugeicons="Add01Icon"
               phosphor="PlusIcon"

@@ -121,6 +121,7 @@ function DropdownMenuSubTrigger({
       {children}
       <IconPlaceholder
         lucide="ChevronRightIcon"
+        materialSymbols="chevron_right"
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
@@ -182,6 +183,7 @@ function DropdownMenuCheckboxItem({
         <MenuPrimitive.CheckboxItemIndicator>
           <IconPlaceholder
             lucide="CheckIcon"
+            materialSymbols="check"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
@@ -228,6 +230,7 @@ function DropdownMenuRadioItem({
         <MenuPrimitive.RadioItemIndicator>
           <IconPlaceholder
             lucide="CheckIcon"
+            materialSymbols="check"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"

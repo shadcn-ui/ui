@@ -38,6 +38,7 @@ export function VersionSwitcher({
             <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
               <IconPlaceholder
                 lucide="GalleryVerticalEndIcon"
+                materialSymbols="stacks"
                 tabler="IconLayoutRows"
                 hugeicons="LayoutBottomIcon"
                 phosphor="RowsIcon"
@@ -51,6 +52,7 @@ export function VersionSwitcher({
             </div>
             <IconPlaceholder
               lucide="ChevronsUpDownIcon"
+              materialSymbols="unfold_more"
               tabler="IconSelector"
               hugeicons="UnfoldMoreIcon"
               phosphor="CaretUpDownIcon"
@@ -68,6 +70,7 @@ export function VersionSwitcher({
                 {version === selectedVersion && (
                   <IconPlaceholder
                     lucide="CheckIcon"
+                    materialSymbols="check"
                     tabler="IconCheck"
                     hugeicons="Tick02Icon"
                     phosphor="CheckIcon"

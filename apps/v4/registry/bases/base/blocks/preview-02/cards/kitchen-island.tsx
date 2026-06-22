@@ -89,6 +89,7 @@ export function KitchenIsland() {
             <ItemMedia variant="icon">
               <IconPlaceholder
                 lucide="SunIcon"
+                materialSymbols="light_mode"
                 tabler="IconSun"
                 hugeicons="Sun03Icon"
                 phosphor="SunIcon"
@@ -114,6 +115,7 @@ export function KitchenIsland() {
             <ItemMedia variant="icon">
               <IconPlaceholder
                 lucide="ThermometerIcon"
+                materialSymbols="device_thermostat"
                 tabler="IconThermometer"
                 hugeicons="ThermometerWarmIcon"
                 phosphor="ThermometerIcon"
@@ -138,6 +140,7 @@ export function KitchenIsland() {
             <ItemMedia variant="icon">
               <IconPlaceholder
                 lucide="Volume2Icon"
+                materialSymbols="volume_up"
                 tabler="IconVolume"
                 hugeicons="VolumeHighIcon"
                 phosphor="SpeakerHighIcon"
@@ -162,6 +165,7 @@ export function KitchenIsland() {
             <ItemMedia variant="icon">
               <IconPlaceholder
                 lucide="TimerIcon"
+                materialSymbols="timer"
                 tabler="IconClock"
                 hugeicons="Clock03Icon"
                 phosphor="TimerIcon"

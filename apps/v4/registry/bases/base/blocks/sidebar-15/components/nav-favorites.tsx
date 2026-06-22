@@ -49,6 +49,7 @@ export function NavFavorites({
               >
                 <IconPlaceholder
                   lucide="MoreHorizontalIcon"
+                  materialSymbols="more_horiz"
                   tabler="IconDots"
                   hugeicons="MoreHorizontalCircle01Icon"
                   phosphor="DotsThreeOutlineIcon"
@@ -64,6 +65,7 @@ export function NavFavorites({
                 <DropdownMenuItem>
                   <IconPlaceholder
                     lucide="StarOffIcon"
+                    materialSymbols="star"
                     tabler="IconStarOff"
                     hugeicons="StarOffIcon"
                     phosphor="StarIcon"
@@ -76,6 +78,7 @@ export function NavFavorites({
                 <DropdownMenuItem>
                   <IconPlaceholder
                     lucide="LinkIcon"
+                    materialSymbols="link"
                     tabler="IconLink"
                     hugeicons="LinkIcon"
                     phosphor="LinkIcon"
@@ -87,6 +90,7 @@ export function NavFavorites({
                 <DropdownMenuItem>
                   <IconPlaceholder
                     lucide="ArrowUpRightIcon"
+                    materialSymbols="north_east"
                     tabler="IconArrowUpRight"
                     hugeicons="ArrowUpRightIcon"
                     phosphor="ArrowUpRightIcon"
@@ -99,6 +103,7 @@ export function NavFavorites({
                 <DropdownMenuItem>
                   <IconPlaceholder
                     lucide="Trash2Icon"
+                    materialSymbols="delete"
                     tabler="IconTrash"
                     hugeicons="Delete02Icon"
                     phosphor="TrashIcon"
@@ -115,6 +120,7 @@ export function NavFavorites({
           <SidebarMenuButton className="text-sidebar-foreground/70">
             <IconPlaceholder
               lucide="MoreHorizontalIcon"
+              materialSymbols="more_horiz"
               tabler="IconDots"
               hugeicons="MoreHorizontalCircle01Icon"
               phosphor="DotsThreeOutlineIcon"

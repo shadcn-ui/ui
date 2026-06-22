@@ -69,6 +69,7 @@ function DialogContent({
             <Button variant="ghost" className="cn-dialog-close" size="icon-sm">
               <IconPlaceholder
                 lucide="XIcon"
+                materialSymbols="close"
                 tabler="IconX"
                 hugeicons="Cancel01Icon"
                 phosphor="XIcon"

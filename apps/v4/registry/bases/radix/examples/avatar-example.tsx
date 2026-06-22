@@ -127,6 +127,7 @@ function AvatarWithBadgeIcon() {
           <AvatarBadge>
             <IconPlaceholder
               lucide="PlusIcon"
+              materialSymbols="add"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
@@ -143,6 +144,7 @@ function AvatarWithBadgeIcon() {
           <AvatarBadge>
             <IconPlaceholder
               lucide="PlusIcon"
+              materialSymbols="add"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
@@ -159,6 +161,7 @@ function AvatarWithBadgeIcon() {
           <AvatarBadge>
             <IconPlaceholder
               lucide="PlusIcon"
+              materialSymbols="add"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
@@ -173,6 +176,7 @@ function AvatarWithBadgeIcon() {
           <AvatarBadge>
             <IconPlaceholder
               lucide="CheckIcon"
+              materialSymbols="check"
               tabler="IconCheck"
               hugeicons="Tick02Icon"
               phosphor="CheckIcon"
@@ -185,6 +189,7 @@ function AvatarWithBadgeIcon() {
           <AvatarBadge>
             <IconPlaceholder
               lucide="CheckIcon"
+              materialSymbols="check"
               tabler="IconCheck"
               hugeicons="Tick02Icon"
               phosphor="CheckIcon"
@@ -197,6 +202,7 @@ function AvatarWithBadgeIcon() {
           <AvatarBadge>
             <IconPlaceholder
               lucide="CheckIcon"
+              materialSymbols="check"
               tabler="IconCheck"
               hugeicons="Tick02Icon"
               phosphor="CheckIcon"
@@ -371,6 +377,7 @@ function AvatarGroupWithIconCount() {
         <AvatarGroupCount>
           <IconPlaceholder
             lucide="PlusIcon"
+            materialSymbols="add"
             tabler="IconPlus"
             hugeicons="PlusSignIcon"
             phosphor="PlusIcon"
@@ -400,6 +407,7 @@ function AvatarGroupWithIconCount() {
         <AvatarGroupCount>
           <IconPlaceholder
             lucide="PlusIcon"
+            materialSymbols="add"
             tabler="IconPlus"
             hugeicons="PlusSignIcon"
             phosphor="PlusIcon"
@@ -435,6 +443,7 @@ function AvatarGroupWithIconCount() {
         <AvatarGroupCount>
           <IconPlaceholder
             lucide="PlusIcon"
+            materialSymbols="add"
             tabler="IconPlus"
             hugeicons="PlusSignIcon"
             phosphor="PlusIcon"
@@ -480,6 +489,7 @@ function AvatarInEmpty() {
               <AvatarGroupCount>
                 <IconPlaceholder
                   lucide="PlusIcon"
+                  materialSymbols="add"
                   tabler="IconPlus"
                   hugeicons="PlusSignIcon"
                   phosphor="PlusIcon"
@@ -497,6 +507,7 @@ function AvatarInEmpty() {
           <Button>
             <IconPlaceholder
               lucide="PlusIcon"
+              materialSymbols="add"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"

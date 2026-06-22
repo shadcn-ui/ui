@@ -80,6 +80,7 @@ function InputOTPSeparator({ ...props }: React.ComponentProps<"div">) {
     >
       <IconPlaceholder
         lucide="MinusIcon"
+        materialSymbols="remove"
         tabler="IconMinus"
         hugeicons="MinusSignIcon"
         phosphor="MinusIcon"

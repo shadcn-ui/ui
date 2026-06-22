@@ -19,6 +19,7 @@ export function CatalogToolbar() {
         <InputGroupAddon>
           <IconPlaceholder
             lucide="SearchIcon"
+            materialSymbols="search"
             tabler="IconSearch"
             hugeicons="Search01Icon"
             phosphor="MagnifyingGlassIcon"
@@ -30,6 +31,7 @@ export function CatalogToolbar() {
       <Button>
         <IconPlaceholder
           lucide="PlusIcon"
+          materialSymbols="add"
           tabler="IconPlus"
           hugeicons="Add01Icon"
           phosphor="PlusIcon"

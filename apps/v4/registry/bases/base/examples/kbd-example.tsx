@@ -101,6 +101,7 @@ function KbdWithIcons() {
         <Kbd>
           <IconPlaceholder
             lucide="CircleDashedIcon"
+            materialSymbols="circle"
             tabler="IconCircleDashed"
             hugeicons="DashedLineCircleIcon"
             phosphor="CircleDashedIcon"
@@ -110,6 +111,7 @@ function KbdWithIcons() {
         <Kbd>
           <IconPlaceholder
             lucide="ArrowLeftIcon"
+            materialSymbols="arrow_left"
             tabler="IconArrowLeft"
             hugeicons="ArrowLeft01Icon"
             phosphor="ArrowLeftIcon"
@@ -119,6 +121,7 @@ function KbdWithIcons() {
         <Kbd>
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight01Icon"
             phosphor="ArrowRightIcon"
@@ -137,6 +140,7 @@ function KbdWithIconsAndText() {
         <Kbd>
           <IconPlaceholder
             lucide="ArrowLeftIcon"
+            materialSymbols="arrow_left"
             tabler="IconArrowLeft"
             hugeicons="ArrowLeft01Icon"
             phosphor="ArrowLeftIcon"
@@ -147,6 +151,7 @@ function KbdWithIconsAndText() {
         <Kbd>
           <IconPlaceholder
             lucide="CircleDashedIcon"
+            materialSymbols="circle"
             tabler="IconCircleDashed"
             hugeicons="DashedLineCircleIcon"
             phosphor="CircleDashedIcon"
@@ -179,6 +184,7 @@ function KbdInTooltip() {
         <TooltipTrigger render={<Button size="icon-sm" variant="outline" />}>
           <IconPlaceholder
             lucide="SaveIcon"
+            materialSymbols="save"
             tabler="IconDeviceFloppy"
             hugeicons="FloppyDiskIcon"
             phosphor="FloppyDiskIcon"

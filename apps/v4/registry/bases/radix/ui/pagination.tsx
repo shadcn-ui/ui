@@ -78,6 +78,7 @@ function PaginationPrevious({
     >
       <IconPlaceholder
         lucide="ChevronLeftIcon"
+        materialSymbols="chevron_left"
         tabler="IconChevronLeft"
         hugeicons="ArrowLeft01Icon"
         phosphor="CaretLeftIcon"
@@ -107,6 +108,7 @@ function PaginationNext({
       <span className="cn-pagination-next-text hidden sm:block">{text}</span>
       <IconPlaceholder
         lucide="ChevronRightIcon"
+        materialSymbols="chevron_right"
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
@@ -134,6 +136,7 @@ function PaginationEllipsis({
     >
       <IconPlaceholder
         lucide="MoreHorizontalIcon"
+        materialSymbols="more_horiz"
         tabler="IconDots"
         hugeicons="MoreHorizontalCircle01Icon"
         phosphor="DotsThreeIcon"

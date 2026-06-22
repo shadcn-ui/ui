@@ -30,6 +30,7 @@ export function SidebarNav() {
                       <SidebarMenuButton isActive>
                         <IconPlaceholder
                           lucide="LayoutDashboardIcon"
+                          materialSymbols="dashboard"
                           tabler="IconLayoutDashboard"
                           hugeicons="DashboardSquare01Icon"
                           phosphor="SquaresFourIcon"
@@ -42,6 +43,7 @@ export function SidebarNav() {
                       <SidebarMenuButton>
                         <IconPlaceholder
                           lucide="ArrowLeftRightIcon"
+                          materialSymbols="swap_horiz"
                           tabler="IconArrowsLeftRight"
                           hugeicons="ArrowDataTransferHorizontalIcon"
                           phosphor="ArrowsLeftRightIcon"
@@ -54,6 +56,7 @@ export function SidebarNav() {
                       <SidebarMenuButton>
                         <IconPlaceholder
                           lucide="TrendingUpIcon"
+                          materialSymbols="trending_up"
                           tabler="IconTrendingUp"
                           hugeicons="AnalyticsUpIcon"
                           phosphor="TrendUpIcon"
@@ -66,6 +69,7 @@ export function SidebarNav() {
                       <SidebarMenuButton>
                         <IconPlaceholder
                           lucide="Building2Icon"
+                          materialSymbols="apartment"
                           tabler="IconBuildingBank"
                           hugeicons="BankIcon"
                           phosphor="BankIcon"
@@ -78,6 +82,7 @@ export function SidebarNav() {
                       <SidebarMenuButton>
                         <IconPlaceholder
                           lucide="PieChartIcon"
+                          materialSymbols="pie_chart"
                           tabler="IconChartPie"
                           hugeicons="PieChartIcon"
                           phosphor="ChartPieIcon"
@@ -98,6 +103,7 @@ export function SidebarNav() {
                       <SidebarMenuButton>
                         <IconPlaceholder
                           lucide="TargetIcon"
+                          materialSymbols="target"
                           tabler="IconTarget"
                           hugeicons="Target02Icon"
                           phosphor="TargetIcon"
@@ -110,6 +116,7 @@ export function SidebarNav() {
                       <SidebarMenuButton>
                         <IconPlaceholder
                           lucide="WalletIcon"
+                          materialSymbols="wallet"
                           tabler="IconWallet"
                           hugeicons="Wallet01Icon"
                           phosphor="WalletIcon"
@@ -122,6 +129,7 @@ export function SidebarNav() {
                       <SidebarMenuButton>
                         <IconPlaceholder
                           lucide="FileBarChartIcon"
+                          materialSymbols="bar_chart"
                           tabler="IconReportAnalytics"
                           hugeicons="ChartBarLineIcon"
                           phosphor="ChartBarIcon"
@@ -134,6 +142,7 @@ export function SidebarNav() {
                       <SidebarMenuButton>
                         <IconPlaceholder
                           lucide="FileTextIcon"
+                          materialSymbols="description"
                           tabler="IconFileText"
                           hugeicons="File02Icon"
                           phosphor="FileTextIcon"
@@ -161,6 +170,7 @@ export function SidebarNav() {
                       <SidebarMenuButton>
                         <IconPlaceholder
                           lucide="UserIcon"
+                          materialSymbols="person"
                           tabler="IconUser"
                           hugeicons="UserIcon"
                           phosphor="UserIcon"
@@ -173,6 +183,7 @@ export function SidebarNav() {
                       <SidebarMenuButton isActive>
                         <IconPlaceholder
                           lucide="CreditCardIcon"
+                          materialSymbols="credit_card"
                           tabler="IconCreditCard"
                           hugeicons="CreditCardIcon"
                           phosphor="CreditCardIcon"
@@ -185,6 +196,7 @@ export function SidebarNav() {
                       <SidebarMenuButton>
                         <IconPlaceholder
                           lucide="BellIcon"
+                          materialSymbols="notifications"
                           tabler="IconBell"
                           hugeicons="Notification03Icon"
                           phosphor="BellIcon"
@@ -197,6 +209,7 @@ export function SidebarNav() {
                       <SidebarMenuButton>
                         <IconPlaceholder
                           lucide="ShieldIcon"
+                          materialSymbols="shield"
                           tabler="IconShield"
                           hugeicons="ShieldIcon"
                           phosphor="ShieldIcon"
@@ -209,6 +222,7 @@ export function SidebarNav() {
                       <SidebarMenuButton>
                         <IconPlaceholder
                           lucide="PaintbrushIcon"
+                          materialSymbols="brush"
                           tabler="IconPalette"
                           hugeicons="PaintBoardIcon"
                           phosphor="PaletteIcon"
@@ -229,6 +243,7 @@ export function SidebarNav() {
                       <SidebarMenuButton>
                         <IconPlaceholder
                           lucide="CircleHelpIcon"
+                          materialSymbols="help"
                           tabler="IconHelp"
                           hugeicons="HelpCircleIcon"
                           phosphor="QuestionIcon"
@@ -241,6 +256,7 @@ export function SidebarNav() {
                       <SidebarMenuButton>
                         <IconPlaceholder
                           lucide="MessageSquareIcon"
+                          materialSymbols="chat"
                           tabler="IconMessage"
                           hugeicons="Message01Icon"
                           phosphor="ChatIcon"
@@ -253,6 +269,7 @@ export function SidebarNav() {
                       <SidebarMenuButton>
                         <IconPlaceholder
                           lucide="BookOpenIcon"
+                          materialSymbols="menu_book"
                           tabler="IconBook"
                           hugeicons="BookOpen02Icon"
                           phosphor="BookOpenIcon"
@@ -265,6 +282,7 @@ export function SidebarNav() {
                       <SidebarMenuButton>
                         <IconPlaceholder
                           lucide="ActivityIcon"
+                          materialSymbols="monitor_heart"
                           tabler="IconActivity"
                           hugeicons="ActivityIcon"
                           phosphor="ActivityIcon"

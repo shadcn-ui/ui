@@ -33,6 +33,7 @@ function ComboboxTrigger({
       {children}
       <IconPlaceholder
         lucide="ChevronDownIcon"
+        materialSymbols="keyboard_arrow_down"
         tabler="IconChevronDown"
         hugeicons="ArrowDown01Icon"
         phosphor="CaretDownIcon"
@@ -53,6 +54,7 @@ function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
     >
       <IconPlaceholder
         lucide="XIcon"
+        materialSymbols="close"
         tabler="IconX"
         hugeicons="Cancel01Icon"
         phosphor="XIcon"
@@ -168,6 +170,7 @@ function ComboboxItem({
       >
         <IconPlaceholder
           lucide="CheckIcon"
+          materialSymbols="check"
           tabler="IconCheck"
           hugeicons="Tick02Icon"
           phosphor="CheckIcon"
@@ -271,6 +274,7 @@ function ComboboxChip({
         >
           <IconPlaceholder
             lucide="XIcon"
+            materialSymbols="close"
             tabler="IconX"
             hugeicons="Cancel01Icon"
             phosphor="XIcon"

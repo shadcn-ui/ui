@@ -191,6 +191,7 @@ export default function SidebarExample() {
                       <ItemActions>
                         <IconPlaceholder
                           lucide="ChevronsUpDownIcon"
+                          materialSymbols="unfold_more"
                           tabler="IconSelector"
                           hugeicons="UnfoldMoreIcon"
                           phosphor="CaretUpDownIcon"
@@ -211,6 +212,7 @@ export default function SidebarExample() {
                         {version === selectedVersion && (
                           <IconPlaceholder
                             lucide="CheckIcon"
+                            materialSymbols="check"
                             tabler="IconCheck"
                             hugeicons="Tick02Icon"
                             phosphor="CheckIcon"
@@ -238,6 +240,7 @@ export default function SidebarExample() {
                 />
                 <IconPlaceholder
                   lucide="SearchIcon"
+                  materialSymbols="search"
                   tabler="IconSearch"
                   hugeicons="SearchIcon"
                   phosphor="MagnifyingGlassIcon"

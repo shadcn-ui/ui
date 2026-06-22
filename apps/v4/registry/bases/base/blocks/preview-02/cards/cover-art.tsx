@@ -26,6 +26,7 @@ export function CoverArt() {
           >
             <IconPlaceholder
               lucide="ImageIcon"
+              materialSymbols="image"
               tabler="IconPhoto"
               hugeicons="Image01Icon"
               phosphor="ImageIcon"

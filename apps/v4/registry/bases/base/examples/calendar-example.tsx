@@ -67,6 +67,7 @@ function CalendarInPopover() {
         >
           <IconPlaceholder
             lucide="CalendarIcon"
+            materialSymbols="calendar_month"
             tabler="IconCalendar"
             hugeicons="CalendarIcon"
             phosphor="CalendarBlankIcon"
@@ -237,6 +238,7 @@ function CalendarWithTime() {
                 <InputGroupAddon>
                   <IconPlaceholder
                     lucide="Clock2Icon"
+                    materialSymbols="schedule"
                     tabler="IconClockHour2"
                     hugeicons="Clock03Icon"
                     phosphor="ClockIcon"
@@ -259,6 +261,7 @@ function CalendarWithTime() {
                 <InputGroupAddon>
                   <IconPlaceholder
                     lucide="Clock2Icon"
+                    materialSymbols="schedule"
                     tabler="IconClockHour2"
                     hugeicons="Clock03Icon"
                     phosphor="ClockIcon"
@@ -391,6 +394,7 @@ function DatePickerSimple() {
           >
             <IconPlaceholder
               lucide="CalendarIcon"
+              materialSymbols="calendar_month"
               tabler="IconCalendar"
               hugeicons="CalendarIcon"
               phosphor="CalendarBlankIcon"
@@ -430,6 +434,7 @@ function DatePickerWithRange() {
           >
             <IconPlaceholder
               lucide="CalendarIcon"
+              materialSymbols="calendar_month"
               tabler="IconCalendar"
               hugeicons="CalendarIcon"
               phosphor="CalendarBlankIcon"
@@ -487,6 +492,7 @@ function DataPickerWithDropdowns() {
             {date ? format(date, "PPP") : <span>Pick a date</span>}
             <IconPlaceholder
               lucide="ChevronDownIcon"
+              materialSymbols="keyboard_arrow_down"
               tabler="IconChevronDown"
               hugeicons="ArrowDownIcon"
               phosphor="CaretDownIcon"

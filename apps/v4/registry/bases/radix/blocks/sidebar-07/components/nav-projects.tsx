@@ -49,6 +49,7 @@ export function NavProjects({
                 >
                   <IconPlaceholder
                     lucide="MoreHorizontalIcon"
+                    materialSymbols="more_horiz"
                     tabler="IconDots"
                     hugeicons="MoreHorizontalCircle01Icon"
                     phosphor="DotsThreeOutlineIcon"
@@ -65,6 +66,7 @@ export function NavProjects({
                 <DropdownMenuItem>
                   <IconPlaceholder
                     lucide="FolderIcon"
+                    materialSymbols="folder"
                     tabler="IconFolder"
                     hugeicons="FolderIcon"
                     phosphor="FolderIcon"
@@ -75,6 +77,7 @@ export function NavProjects({
                 <DropdownMenuItem>
                   <IconPlaceholder
                     lucide="ArrowRightIcon"
+                    materialSymbols="arrow_right"
                     tabler="IconArrowForward"
                     hugeicons="ArrowRightIcon"
                     phosphor="ShareFatIcon"
@@ -86,6 +89,7 @@ export function NavProjects({
                 <DropdownMenuItem variant="destructive">
                   <IconPlaceholder
                     lucide="Trash2Icon"
+                    materialSymbols="delete"
                     tabler="IconTrash"
                     hugeicons="Delete02Icon"
                     phosphor="TrashIcon"
@@ -101,6 +105,7 @@ export function NavProjects({
           <SidebarMenuButton className="text-sidebar-foreground/70">
             <IconPlaceholder
               lucide="MoreHorizontalIcon"
+              materialSymbols="more_horiz"
               tabler="IconDots"
               hugeicons="MoreHorizontalCircle01Icon"
               phosphor="DotsThreeOutlineIcon"

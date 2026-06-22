@@ -84,6 +84,7 @@ function CommandInput({
         <InputGroupAddon>
           <IconPlaceholder
             lucide="SearchIcon"
+            materialSymbols="search"
             tabler="IconSearch"
             hugeicons="SearchIcon"
             phosphor="MagnifyingGlassIcon"
@@ -168,6 +169,7 @@ function CommandItem({
       {children}
       <IconPlaceholder
         lucide="CheckIcon"
+        materialSymbols="check"
         tabler="IconCheck"
         hugeicons="Tick02Icon"
         phosphor="CheckIcon"

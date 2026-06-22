@@ -872,6 +872,7 @@ function ComboxboxInputAddon() {
           <InputGroupAddon>
             <IconPlaceholder
               lucide="GlobeIcon"
+              materialSymbols="globe"
               tabler="IconGlobe"
               hugeicons="Globe02Icon"
               phosphor="GlobeIcon"
@@ -1297,6 +1298,7 @@ function ComboboxWithOtherInputs() {
         Select a framework
         <IconPlaceholder
           lucide="ChevronDownIcon"
+          materialSymbols="keyboard_arrow_down"
           tabler="IconSelector"
           hugeicons="UnfoldMoreIcon"
           phosphor="CaretDownIcon"
@@ -1309,6 +1311,7 @@ function ComboboxWithOtherInputs() {
         <InputGroupAddon align="inline-end">
           <IconPlaceholder
             lucide="ChevronDownIcon"
+            materialSymbols="keyboard_arrow_down"
             tabler="IconSelector"
             hugeicons="UnfoldMoreIcon"
             phosphor="CaretDownIcon"

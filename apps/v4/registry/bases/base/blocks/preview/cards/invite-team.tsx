@@ -68,6 +68,7 @@ export function InviteTeam() {
         <Button variant="outline">
           <IconPlaceholder
             lucide="PlusIcon"
+            materialSymbols="add"
             tabler="IconPlus"
             hugeicons="PlusSignIcon"
             phosphor="PlusIcon"
@@ -89,6 +90,7 @@ export function InviteTeam() {
               <InputGroupButton size="icon-xs" aria-label="Copy link">
                 <IconPlaceholder
                   lucide="CopyIcon"
+                  materialSymbols="content_copy"
                   tabler="IconCopy"
                   hugeicons="Copy01Icon"
                   phosphor="CopyIcon"

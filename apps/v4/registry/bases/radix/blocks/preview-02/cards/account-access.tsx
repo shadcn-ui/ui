@@ -63,6 +63,7 @@ export function AccountAccess() {
         <Button className="w-full">
           <IconPlaceholder
             lucide="LockKeyholeIcon"
+            materialSymbols="lock"
             tabler="IconLock"
             hugeicons="SquareLock02Icon"
             phosphor="LockKeyIcon"
@@ -75,6 +76,7 @@ export function AccountAccess() {
             <ItemMedia variant="icon">
               <IconPlaceholder
                 lucide="AlertCircleIcon"
+                materialSymbols="error"
                 tabler="IconAlertCircle"
                 hugeicons="AlertCircleIcon"
                 phosphor="WarningCircleIcon"
@@ -90,6 +92,7 @@ export function AccountAccess() {
             </ItemContent>
             <IconPlaceholder
               lucide="ArrowRightIcon"
+              materialSymbols="arrow_right"
               tabler="IconArrowRight"
               hugeicons="ArrowRight01Icon"
               phosphor="ArrowRightIcon"

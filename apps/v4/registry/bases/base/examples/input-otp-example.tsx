@@ -244,6 +244,7 @@ function InputOTPForm() {
                 <Button variant="outline" size="xs">
                   <IconPlaceholder
                     lucide="RefreshCwIcon"
+                    materialSymbols="refresh"
                     hugeicons="RefreshIcon"
                     tabler="IconRefresh"
                     phosphor="ArrowClockwiseIcon"

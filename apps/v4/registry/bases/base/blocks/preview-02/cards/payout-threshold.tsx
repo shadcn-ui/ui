@@ -51,6 +51,7 @@ export function PayoutThreshold() {
           <Button variant="ghost" size="icon-sm" className="bg-muted">
             <IconPlaceholder
               lucide="XIcon"
+              materialSymbols="close"
               tabler="IconX"
               hugeicons="Cancel01Icon"
               phosphor="XIcon"

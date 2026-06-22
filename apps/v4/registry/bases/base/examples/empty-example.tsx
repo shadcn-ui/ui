@@ -59,6 +59,7 @@ function EmptyBasic() {
             Learn more{" "}
             <IconPlaceholder
               lucide="ArrowUpRightIcon"
+              materialSymbols="north_east"
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRight01Icon"
               phosphor="ArrowUpRightIcon"
@@ -92,6 +93,7 @@ function EmptyWithMutedBackground() {
             Learn more{" "}
             <IconPlaceholder
               lucide="ArrowUpRightIcon"
+              materialSymbols="north_east"
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRight01Icon"
               phosphor="ArrowUpRightIcon"
@@ -121,6 +123,7 @@ function EmptyWithBorder() {
             <InputGroupAddon>
               <IconPlaceholder
                 lucide="CircleDashedIcon"
+                materialSymbols="circle"
                 tabler="IconCircleDashed"
                 hugeicons="DashedLineCircleIcon"
                 phosphor="CircleDashedIcon"
@@ -148,6 +151,7 @@ function EmptyWithIcon() {
           <EmptyMedia variant="icon">
             <IconPlaceholder
               lucide="FolderIcon"
+              materialSymbols="folder"
               tabler="IconFolder"
               hugeicons="Folder01Icon"
               phosphor="FolderIcon"
@@ -164,6 +168,7 @@ function EmptyWithIcon() {
           <Button variant="outline">
             <IconPlaceholder
               lucide="PlusIcon"
+              materialSymbols="add"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
@@ -195,6 +200,7 @@ function EmptyWithMutedBackgroundAlt() {
             <InputGroupAddon>
               <IconPlaceholder
                 lucide="CircleDashedIcon"
+                materialSymbols="circle"
                 tabler="IconCircleDashed"
                 hugeicons="DashedLineCircleIcon"
                 phosphor="CircleDashedIcon"
@@ -222,6 +228,7 @@ function EmptyInCard() {
           <EmptyMedia variant="icon">
             <IconPlaceholder
               lucide="FolderIcon"
+              materialSymbols="folder"
               tabler="IconFolder"
               hugeicons="Folder01Icon"
               phosphor="FolderIcon"
@@ -250,6 +257,7 @@ function EmptyInCard() {
             Learn more{" "}
             <IconPlaceholder
               lucide="ArrowUpRightIcon"
+              materialSymbols="north_east"
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRight01Icon"
               phosphor="ArrowUpRightIcon"

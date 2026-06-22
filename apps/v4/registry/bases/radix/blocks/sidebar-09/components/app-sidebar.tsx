@@ -34,6 +34,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="InboxIcon"
+          materialSymbols="inbox"
           tabler="IconInbox"
           hugeicons="InboxIcon"
           phosphor="TrayIcon"
@@ -48,6 +49,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="FileIcon"
+          materialSymbols="description"
           tabler="IconFile"
           hugeicons="FileIcon"
           phosphor="FileIcon"
@@ -62,6 +64,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="SendIcon"
+          materialSymbols="send"
           tabler="IconSend"
           hugeicons="SentIcon"
           phosphor="PaperPlaneTiltIcon"
@@ -76,6 +79,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="ArchiveXIcon"
+          materialSymbols="archive"
           tabler="IconArchiveOff"
           hugeicons="ArchiveIcon"
           phosphor="ArchiveIcon"
@@ -90,6 +94,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="Trash2Icon"
+          materialSymbols="delete"
           tabler="IconTrash"
           hugeicons="Delete02Icon"
           phosphor="TrashIcon"
@@ -211,6 +216,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                     <IconPlaceholder
                       lucide="TerminalIcon"
+                      materialSymbols="terminal"
                       tabler="IconCommand"
                       hugeicons="CommandIcon"
                       phosphor="CommandIcon"

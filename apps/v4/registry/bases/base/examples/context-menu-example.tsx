@@ -82,6 +82,7 @@ function ContextMenuWithIcons() {
             <ContextMenuItem>
               <IconPlaceholder
                 lucide="CopyIcon"
+                materialSymbols="content_copy"
                 tabler="IconCopy"
                 hugeicons="CopyIcon"
                 phosphor="CopyIcon"
@@ -92,6 +93,7 @@ function ContextMenuWithIcons() {
             <ContextMenuItem>
               <IconPlaceholder
                 lucide="ScissorsIcon"
+                materialSymbols="content_cut"
                 tabler="IconCut"
                 hugeicons="ScissorIcon"
                 phosphor="ScissorsIcon"
@@ -102,6 +104,7 @@ function ContextMenuWithIcons() {
             <ContextMenuItem>
               <IconPlaceholder
                 lucide="ClipboardPasteIcon"
+                materialSymbols="content_paste"
                 tabler="IconClipboard"
                 hugeicons="ClipboardIcon"
                 phosphor="ClipboardIcon"
@@ -115,6 +118,7 @@ function ContextMenuWithIcons() {
             <ContextMenuItem variant="destructive">
               <IconPlaceholder
                 lucide="TrashIcon"
+                materialSymbols="delete"
                 tabler="IconTrash"
                 hugeicons="DeleteIcon"
                 phosphor="TrashIcon"
@@ -345,6 +349,7 @@ function ContextMenuWithDestructive() {
             <ContextMenuItem>
               <IconPlaceholder
                 lucide="PencilIcon"
+                materialSymbols="edit"
                 tabler="IconPencil"
                 hugeicons="EditIcon"
                 phosphor="PencilIcon"
@@ -355,6 +360,7 @@ function ContextMenuWithDestructive() {
             <ContextMenuItem>
               <IconPlaceholder
                 lucide="ShareIcon"
+                materialSymbols="share"
                 tabler="IconShare"
                 hugeicons="ShareIcon"
                 phosphor="ShareIcon"
@@ -368,6 +374,7 @@ function ContextMenuWithDestructive() {
             <ContextMenuItem>
               <IconPlaceholder
                 lucide="ArchiveIcon"
+                materialSymbols="archive"
                 tabler="IconArchive"
                 hugeicons="Archive02Icon"
                 phosphor="ArchiveIcon"
@@ -378,6 +385,7 @@ function ContextMenuWithDestructive() {
             <ContextMenuItem variant="destructive">
               <IconPlaceholder
                 lucide="TrashIcon"
+                materialSymbols="delete"
                 tabler="IconTrash"
                 hugeicons="DeleteIcon"
                 phosphor="TrashIcon"
@@ -447,6 +455,7 @@ function ContextMenuInDialog() {
                 <ContextMenuItem>
                   <IconPlaceholder
                     lucide="CopyIcon"
+                    materialSymbols="content_copy"
                     tabler="IconCopy"
                     hugeicons="CopyIcon"
                     phosphor="CopyIcon"
@@ -457,6 +466,7 @@ function ContextMenuInDialog() {
                 <ContextMenuItem>
                   <IconPlaceholder
                     lucide="ScissorsIcon"
+                    materialSymbols="content_cut"
                     tabler="IconCut"
                     hugeicons="ScissorIcon"
                     phosphor="ScissorsIcon"
@@ -467,6 +477,7 @@ function ContextMenuInDialog() {
                 <ContextMenuItem>
                   <IconPlaceholder
                     lucide="ClipboardPasteIcon"
+                    materialSymbols="content_paste"
                     tabler="IconClipboard"
                     hugeicons="ClipboardIcon"
                     phosphor="ClipboardIcon"
@@ -495,6 +506,7 @@ function ContextMenuInDialog() {
                 <ContextMenuItem variant="destructive">
                   <IconPlaceholder
                     lucide="TrashIcon"
+                    materialSymbols="delete"
                     tabler="IconTrash"
                     hugeicons="DeleteIcon"
                     phosphor="TrashIcon"
@@ -528,6 +540,7 @@ function ContextMenuWithInset() {
             <ContextMenuItem>
               <IconPlaceholder
                 lucide="CopyIcon"
+                materialSymbols="content_copy"
                 tabler="IconCopy"
                 hugeicons="CopyIcon"
                 phosphor="CopyIcon"
@@ -538,6 +551,7 @@ function ContextMenuWithInset() {
             <ContextMenuItem>
               <IconPlaceholder
                 lucide="ScissorsIcon"
+                materialSymbols="content_cut"
                 tabler="IconCut"
                 hugeicons="ScissorIcon"
                 phosphor="ScissorsIcon"

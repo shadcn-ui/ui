@@ -499,6 +499,7 @@ function DialogChatSettings() {
                             >
                               <IconPlaceholder
                                 lucide="InfoIcon"
+                                materialSymbols="info"
                                 tabler="IconInfoCircle"
                                 hugeicons="AlertCircleIcon"
                                 phosphor="InfoIcon"
