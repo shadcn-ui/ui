@@ -40,8 +40,15 @@ import { FONTS } from "@/app/(app)/create/lib/fonts"
 import { getPresetCode } from "@/app/(app)/create/lib/preset-code"
 import { resolvePresetOverrides } from "@/app/(app)/create/lib/preset-query"
 
+// [FORCE-UI] Encoded Force UI defaults; see the preset note on the field below.
+const DEFAULT_PRESET_CODE = getPresetCode(DEFAULT_CONFIG)
+
 const designSystemSearchParams = {
-  preset: parseAsString.withDefault("b0"),
+  // [FORCE-UI] Default preset must encode the Force UI defaults (incl.
+  // iconLibrary: materialSymbols). Derived from DEFAULT_CONFIG so it can't drift
+  // — a stale literal here (e.g. "b0") silently forces lucide/inter via the
+  // preset decode in resolvePresetParams.
+  preset: parseAsString.withDefault(DEFAULT_PRESET_CODE),
   base: parseAsStringLiteral<BaseName>(BASES.map((b) => b.name)).withDefault(
     DEFAULT_CONFIG.base
   ),
