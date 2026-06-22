@@ -6,7 +6,7 @@ import {
 } from '@/ember-ui/input-group';
 import { Label } from '@/ember-ui/label';
 
-import Link2 from '~icons/lucide/link-2';
+import Link2 from '~icons/material-symbols/link-2-rounded';
 
 <template>
   <div class="grid w-full max-w-sm gap-6">

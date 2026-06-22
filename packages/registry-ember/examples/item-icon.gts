@@ -8,7 +8,7 @@ import {
   ItemTitle,
 } from '@/ui/item';
 
-import ShieldAlertIcon from '~icons/lucide/shield-alert';
+import ShieldAlertIcon from '~icons/material-symbols/gpp-maybe-outline-rounded';
 
 <template>
   <div class="flex w-full max-w-lg flex-col gap-6">

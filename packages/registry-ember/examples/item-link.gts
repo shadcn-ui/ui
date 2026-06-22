@@ -6,8 +6,8 @@ import {
   ItemTitle,
 } from '@/ui/item';
 
-import ChevronRightIcon from '~icons/lucide/chevron-right';
-import ExternalLinkIcon from '~icons/lucide/external-link';
+import ChevronRightIcon from '~icons/material-symbols/chevron-right-rounded';
+import ExternalLinkIcon from '~icons/material-symbols/open-in-new-rounded';
 
 <template>
   <div class="flex w-full max-w-md flex-col gap-4">

@@ -6,7 +6,7 @@ import { provide, consume } from 'ember-provide-consume-context';
 
 import { cn } from '@/ember-lib/utils';
 
-import ChevronDown from '~icons/lucide/chevron-down';
+import ChevronDown from '~icons/material-symbols/keyboard-arrow-down-rounded';
 
 const AccordionContext = 'accordion-context' as const;
 const AccordionItemContext = 'accordion-item-context' as const;

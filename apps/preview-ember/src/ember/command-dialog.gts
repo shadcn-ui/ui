@@ -13,12 +13,12 @@ import {
   CommandShortcut,
 } from '@/ember-ui/command';
 
-import Calculator from '~icons/lucide/calculator';
-import Calendar from '~icons/lucide/calendar';
-import CreditCard from '~icons/lucide/credit-card';
-import Settings from '~icons/lucide/settings';
-import Smile from '~icons/lucide/smile';
-import User from '~icons/lucide/user';
+import Calculator from '~icons/material-symbols/calculate-outline-rounded';
+import Calendar from '~icons/material-symbols/calendar-month-outline-rounded';
+import CreditCard from '~icons/material-symbols/credit-card';
+import Settings from '~icons/material-symbols/settings-outline-rounded';
+import Smile from '~icons/material-symbols/mood-outline-rounded';
+import User from '~icons/material-symbols/person-outline-rounded';
 
 export default class CommandDialogDemo extends Component {
   @tracked open = false;

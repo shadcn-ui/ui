@@ -1,8 +1,8 @@
 import { Alert, AlertDescription, AlertTitle } from '@/ember-ui/alert';
 
-import AlertCircle from '~icons/lucide/alert-circle';
-import CheckCircle2 from '~icons/lucide/check-circle-2';
-import Popcorn from '~icons/lucide/popcorn';
+import AlertCircle from '~icons/material-symbols/error-outline-rounded';
+import CheckCircle2 from '~icons/material-symbols/check-circle-outline-rounded';
+import Popcorn from '~icons/material-symbols/theaters-outline-rounded';
 
 <template>
   <div class="grid w-full max-w-xl items-start gap-4">

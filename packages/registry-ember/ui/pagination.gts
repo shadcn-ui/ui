@@ -6,9 +6,9 @@ import { buttonVariants } from './button.gts';
 
 import type { TOC } from '@ember/component/template-only';
 
-import ChevronLeft from '~icons/lucide/chevron-left';
-import ChevronRight from '~icons/lucide/chevron-right';
-import MoreHorizontal from '~icons/lucide/more-horizontal';
+import ChevronLeft from '~icons/material-symbols/chevron-left-rounded';
+import ChevronRight from '~icons/material-symbols/chevron-right-rounded';
+import MoreHorizontal from '~icons/material-symbols/more-horiz';
 
 interface PaginationSignature {
   Element: HTMLElement;

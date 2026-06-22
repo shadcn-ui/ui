@@ -11,7 +11,7 @@ import {
   SelectTrigger,
 } from '@/ui/select';
 
-import ArrowRightIcon from '~icons/lucide/arrow-right';
+import ArrowRightIcon from '~icons/material-symbols/arrow-right-rounded';
 
 const CURRENCIES = [
   {

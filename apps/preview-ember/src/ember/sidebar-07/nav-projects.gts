@@ -19,10 +19,10 @@ import {
 
 import type { ComponentLike } from '@glint/template';
 
-import Folder from '~icons/lucide/folder';
-import Forward from '~icons/lucide/forward';
-import MoreHorizontal from '~icons/lucide/more-horizontal';
-import Trash2 from '~icons/lucide/trash-2';
+import Folder from '~icons/material-symbols/folder-outline-rounded';
+import Forward from '~icons/material-symbols/forward-rounded';
+import MoreHorizontal from '~icons/material-symbols/more-horiz';
+import Trash2 from '~icons/material-symbols/delete-outline-rounded';
 
 const SidebarContext = 'sidebar-context' as const;
 

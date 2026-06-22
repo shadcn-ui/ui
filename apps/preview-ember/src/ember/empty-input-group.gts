@@ -12,7 +12,7 @@ import {
 } from '@/ember-ui/input-group';
 import { Kbd } from '@/ember-ui/kbd';
 
-import Search from '~icons/lucide/search';
+import Search from '~icons/material-symbols/search-rounded';
 
 <template>
   <Empty>

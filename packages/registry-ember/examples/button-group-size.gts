@@ -1,7 +1,7 @@
 import { Button } from '@/ui/button';
 import { ButtonGroup } from '@/ui/button-group';
 
-import PlusIcon from '~icons/lucide/plus';
+import PlusIcon from '~icons/material-symbols/add-rounded';
 
 <template>
   <div class="flex flex-col items-start gap-8">

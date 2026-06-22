@@ -46,15 +46,15 @@ import {
   TooltipTrigger,
 } from '@/ui/tooltip';
 
-import ArrowUp from '~icons/lucide/arrow-up';
-import At from '~icons/lucide/at-sign';
-import BookOpen from '~icons/lucide/book-open';
-import Globe from '~icons/lucide/globe';
-import Grid3x3 from '~icons/lucide/grid-3x3';
-import Paperclip from '~icons/lucide/paperclip';
-import Plus from '~icons/lucide/plus';
-import PlusCircle from '~icons/lucide/plus-circle';
-import X from '~icons/lucide/x';
+import ArrowUp from '~icons/material-symbols/arrow-upward-rounded';
+import At from '~icons/material-symbols/alternate-email-rounded';
+import BookOpen from '~icons/material-symbols/menu-book-outline-rounded';
+import Globe from '~icons/material-symbols/language';
+import Grid3x3 from '~icons/material-symbols/grid-3x3-rounded';
+import Paperclip from '~icons/material-symbols/attach-file-rounded';
+import Plus from '~icons/material-symbols/add-rounded';
+import PlusCircle from '~icons/material-symbols/add-circle-outline-rounded';
+import X from '~icons/material-symbols/close-rounded';
 
 const SAMPLE_DATA = {
   mentionable: [

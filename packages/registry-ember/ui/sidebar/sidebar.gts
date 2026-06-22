@@ -21,7 +21,7 @@ import { cn } from '@/lib/utils';
 
 import type { TOC } from '@ember/component/template-only';
 
-import PanelLeft from '~icons/lucide/panel-left';
+import PanelLeft from '~icons/material-symbols/left-panel-open-outline-rounded';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar_state';
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;

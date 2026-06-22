@@ -17,7 +17,7 @@ import { cn } from '@/lib/utils';
 
 import type { TOC } from '@ember/component/template-only';
 
-import Search from '~icons/lucide/search';
+import Search from '~icons/material-symbols/search-rounded';
 
 const CommandContext = 'command-context' as const;
 const CommandGroupContext = 'command-group-context' as const;

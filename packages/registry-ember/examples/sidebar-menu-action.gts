@@ -18,10 +18,10 @@ import {
   SidebarTrigger,
 } from '@/ui/sidebar';
 
-import Frame from '~icons/lucide/frame';
-import Map from '~icons/lucide/map';
-import MoreHorizontal from '~icons/lucide/more-horizontal';
-import PieChart from '~icons/lucide/pie-chart';
+import Frame from '~icons/material-symbols/crop-free-rounded';
+import Map from '~icons/material-symbols/map-outline-rounded';
+import MoreHorizontal from '~icons/material-symbols/more-horiz';
+import PieChart from '~icons/material-symbols/pie-chart';
 
 const projects = [
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

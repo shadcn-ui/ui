@@ -1,6 +1,6 @@
 import { Button } from '@/ui/button';
 
-import CircleFadingArrowUpIcon from '~icons/lucide/circle-fading-arrow-up';
+import CircleFadingArrowUpIcon from '~icons/material-symbols/change-circle-outline-rounded';
 
 <template>
   <Button @size="icon" @variant="outline" aria-label="Submit">

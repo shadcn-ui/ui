@@ -12,9 +12,9 @@ import {
   SidebarTrigger,
 } from '@/ui/sidebar';
 
-import Inbox from '~icons/lucide/inbox';
-import MessageSquare from '~icons/lucide/message-square';
-import Send from '~icons/lucide/send';
+import Inbox from '~icons/material-symbols/inbox-outline-rounded';
+import MessageSquare from '~icons/material-symbols/chat-outline-rounded';
+import Send from '~icons/material-symbols/send-outline-rounded';
 
 const items = [
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

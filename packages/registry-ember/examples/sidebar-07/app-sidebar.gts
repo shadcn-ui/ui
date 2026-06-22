@@ -13,16 +13,16 @@ import { TeamSwitcher } from './team-switcher.gts';
 
 import type { ComponentLike } from '@glint/template';
 
-import AudioWaveform from '~icons/lucide/audio-waveform';
-import BookOpen from '~icons/lucide/book-open';
-import Bot from '~icons/lucide/bot';
-import Command from '~icons/lucide/command';
-import Frame from '~icons/lucide/frame';
-import GalleryVerticalEnd from '~icons/lucide/gallery-vertical-end';
-import Map from '~icons/lucide/map';
-import PieChart from '~icons/lucide/pie-chart';
-import Settings2 from '~icons/lucide/settings-2';
-import SquareTerminal from '~icons/lucide/square-terminal';
+import AudioWaveform from '~icons/material-symbols/graphic-eq-rounded';
+import BookOpen from '~icons/material-symbols/menu-book-outline-rounded';
+import Bot from '~icons/material-symbols/smart-toy-outline-rounded';
+import Command from '~icons/material-symbols/keyboard-command-key';
+import Frame from '~icons/material-symbols/crop-free-rounded';
+import GalleryVerticalEnd from '~icons/material-symbols/stacks-outline-rounded';
+import Map from '~icons/material-symbols/map-outline-rounded';
+import PieChart from '~icons/material-symbols/pie-chart';
+import Settings2 from '~icons/material-symbols/settings-outline-rounded';
+import SquareTerminal from '~icons/material-symbols/terminal-rounded';
 
 const data = {
   user: {

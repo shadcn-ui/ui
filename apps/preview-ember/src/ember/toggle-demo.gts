@@ -1,6 +1,6 @@
 import { Toggle } from '@/ember-ui/toggle';
 
-import Bookmark from '~icons/lucide/bookmark';
+import Bookmark from '~icons/material-symbols/bookmark-outline-rounded';
 
 <template>
   <Toggle

@@ -10,8 +10,8 @@ import {
   TooltipTrigger,
 } from '@/ember-ui/tooltip';
 
-import HelpCircle from '~icons/lucide/help-circle';
-import Info from '~icons/lucide/info';
+import HelpCircle from '~icons/material-symbols/help-outline-rounded';
+import Info from '~icons/material-symbols/info-outline-rounded';
 
 <template>
   <div class="grid w-full max-w-sm gap-4">

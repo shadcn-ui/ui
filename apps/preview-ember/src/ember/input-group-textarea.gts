@@ -6,10 +6,10 @@ import {
   InputGroupTextarea,
 } from '@/ember-ui/input-group';
 
-import Copy from '~icons/lucide/copy';
-import CornerDownLeft from '~icons/lucide/corner-down-left';
-import FileCode from '~icons/lucide/file-code-2';
-import Refresh from '~icons/lucide/refresh-cw';
+import Copy from '~icons/material-symbols/content-copy-outline-rounded';
+import CornerDownLeft from '~icons/material-symbols/subdirectory-arrow-left-rounded';
+import FileCode from '~icons/material-symbols/code-rounded';
+import Refresh from '~icons/material-symbols/refresh-rounded';
 
 <template>
   <div class="grid w-full max-w-md gap-4">

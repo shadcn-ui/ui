@@ -25,7 +25,7 @@ import { Input } from '@/ember-ui/input';
 import { Label } from '@/ember-ui/label';
 import { Textarea } from '@/ember-ui/textarea';
 
-import MoreHorizontal from '~icons/lucide/more-horizontal';
+import MoreHorizontal from '~icons/material-symbols/more-horiz';
 
 export default class DropdownMenuDialogDemo extends Component {
   @tracked showNewDialog = false;

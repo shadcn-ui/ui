@@ -4,7 +4,7 @@ import {
   ButtonGroupSeparator,
 } from '@/ui/button-group';
 
-import PlusIcon from '~icons/lucide/plus';
+import PlusIcon from '~icons/material-symbols/add-rounded';
 
 <template>
   <ButtonGroup>

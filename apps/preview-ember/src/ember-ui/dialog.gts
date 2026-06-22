@@ -9,7 +9,7 @@ import { cn } from '@/ember-lib/utils';
 
 import type { TOC } from '@ember/component/template-only';
 
-import XIcon from '~icons/lucide/x';
+import XIcon from '~icons/material-symbols/close-rounded';
 
 const DialogContext = 'dialog-context' as const;
 

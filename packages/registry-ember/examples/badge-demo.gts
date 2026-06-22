@@ -1,6 +1,6 @@
 import { Badge } from '@/ui/badge';
 
-import BadgeCheck from '~icons/lucide/badge-check';
+import BadgeCheck from '~icons/material-symbols/verified-outline-rounded';
 
 <template>
   <div class="flex flex-col items-center gap-2">

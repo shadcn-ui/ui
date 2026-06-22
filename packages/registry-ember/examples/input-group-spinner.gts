@@ -6,7 +6,7 @@ import {
 } from '@/ui/input-group';
 import { Spinner } from '@/ui/spinner';
 
-import LoaderIcon from '~icons/lucide/loader';
+import LoaderIcon from '~icons/material-symbols/progress-activity';
 
 <template>
   <div class="grid w-full max-w-sm gap-4">

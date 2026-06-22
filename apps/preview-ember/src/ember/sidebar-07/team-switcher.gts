@@ -20,8 +20,8 @@ import {
 
 import type { ComponentLike } from '@glint/template';
 
-import ChevronsUpDown from '~icons/lucide/chevrons-up-down';
-import Plus from '~icons/lucide/plus';
+import ChevronsUpDown from '~icons/material-symbols/unfold-more-rounded';
+import Plus from '~icons/material-symbols/add-rounded';
 
 const SidebarContext = 'sidebar-context' as const;
 

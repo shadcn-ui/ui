@@ -17,12 +17,12 @@ import {
   SidebarMenuItem,
 } from '@/ember-ui/sidebar';
 
-import BadgeCheck from '~icons/lucide/badge-check';
-import Bell from '~icons/lucide/bell';
-import ChevronsUpDown from '~icons/lucide/chevrons-up-down';
-import CreditCard from '~icons/lucide/credit-card';
-import LogOut from '~icons/lucide/log-out';
-import Sparkles from '~icons/lucide/sparkles';
+import BadgeCheck from '~icons/material-symbols/verified-outline-rounded';
+import Bell from '~icons/material-symbols/notifications-outline-rounded';
+import ChevronsUpDown from '~icons/material-symbols/unfold-more-rounded';
+import CreditCard from '~icons/material-symbols/credit-card';
+import LogOut from '~icons/material-symbols/logout-rounded';
+import Sparkles from '~icons/material-symbols/star-shine-outline-rounded';
 
 const SidebarContext = 'sidebar-context' as const;
 

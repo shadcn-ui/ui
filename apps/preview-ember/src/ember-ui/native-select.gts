@@ -2,7 +2,7 @@ import { cn } from '@/ember-lib/utils';
 
 import type { TOC } from '@ember/component/template-only';
 
-import ChevronDown from '~icons/lucide/chevron-down';
+import ChevronDown from '~icons/material-symbols/keyboard-arrow-down-rounded';
 
 interface NativeSelectSignature {
   Element: HTMLSelectElement;

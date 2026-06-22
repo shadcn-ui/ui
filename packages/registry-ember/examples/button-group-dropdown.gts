@@ -9,14 +9,14 @@ import {
   DropdownMenuTrigger,
 } from '@/ui/dropdown-menu';
 
-import AlertTriangleIcon from '~icons/lucide/alert-triangle';
-import CheckIcon from '~icons/lucide/check';
-import ChevronDownIcon from '~icons/lucide/chevron-down';
-import CopyIcon from '~icons/lucide/copy';
-import ShareIcon from '~icons/lucide/share';
-import TrashIcon from '~icons/lucide/trash';
-import UserRoundXIcon from '~icons/lucide/user-round-x';
-import VolumeOffIcon from '~icons/lucide/volume-off';
+import AlertTriangleIcon from '~icons/material-symbols/warning-outline-rounded';
+import CheckIcon from '~icons/material-symbols/check-rounded';
+import ChevronDownIcon from '~icons/material-symbols/keyboard-arrow-down-rounded';
+import CopyIcon from '~icons/material-symbols/content-copy-outline-rounded';
+import ShareIcon from '~icons/material-symbols/share';
+import TrashIcon from '~icons/material-symbols/delete-outline-rounded';
+import UserRoundXIcon from '~icons/material-symbols/person-off-outline-rounded';
+import VolumeOffIcon from '~icons/material-symbols/volume-off-outline-rounded';
 
 <template>
   <ButtonGroup>

@@ -194,6 +194,9 @@ importers:
       '@iconify-json/lucide':
         specifier: ^1.2.101
         version: 1.2.113
+      '@iconify-json/material-symbols':
+        specifier: ^1.2.79
+        version: 1.2.79
       '@rollup/plugin-babel':
         specifier: ^7.0.0
         version: 7.1.0(@babel/core@7.29.7)(@types/babel__core@7.20.5)(rollup@4.60.1)
@@ -2642,6 +2645,9 @@ packages:
 
   '@iconify-json/lucide@1.2.113':
     resolution: {integrity: sha512-hfHPXZmLAsZkEfSd4kKRPMRM2HOQz1k11XWtSReEWeecOM+nLtZlfHAzv8nSsrJw2scLz3DKqosNMNXd3mP60Q==}
+
+  '@iconify-json/material-symbols@1.2.79':
+    resolution: {integrity: sha512-WRLBReaTNJAeHxsFlD7pJ/K6il2vOZ4va3XTAUdTDkn4rWzRYu6dnI1bAW/4pANlTCt5eemtP65gBBNxt8Xd7Q==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -13167,6 +13173,10 @@ snapshots:
       - supports-color
 
   '@iconify-json/lucide@1.2.113':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/material-symbols@1.2.79':
     dependencies:
       '@iconify/types': 2.0.0
 

@@ -14,9 +14,9 @@ import {
   SidebarTrigger,
 } from '@/ember-ui/sidebar';
 
-import Home from '~icons/lucide/home';
-import Inbox from '~icons/lucide/inbox';
-import Settings from '~icons/lucide/settings';
+import Home from '~icons/material-symbols/home-outline-rounded';
+import Inbox from '~icons/material-symbols/inbox-outline-rounded';
+import Settings from '~icons/material-symbols/settings-outline-rounded';
 
 const items = [
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

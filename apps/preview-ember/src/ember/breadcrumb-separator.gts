@@ -7,7 +7,7 @@ import {
   BreadcrumbSeparator,
 } from '@/ember-ui/breadcrumb';
 
-import SlashIcon from '~icons/lucide/slash';
+import SlashIcon from '~icons/material-symbols/block';
 
 <template>
   <Breadcrumb>

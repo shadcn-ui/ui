@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils';
 
 import type { TOC } from '@ember/component/template-only';
 
-import Loader from '~icons/lucide/loader';
+import Loader from '~icons/material-symbols/progress-activity';
 
 interface CustomSpinnerSignature {
   Element: HTMLOrSVGElement;

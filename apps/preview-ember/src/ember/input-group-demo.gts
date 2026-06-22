@@ -19,11 +19,11 @@ import {
   TooltipTrigger,
 } from '@/ember-ui/tooltip';
 
-import ArrowUp from '~icons/lucide/arrow-up';
-import Check from '~icons/lucide/check';
-import InfoCircle from '~icons/lucide/info';
-import Plus from '~icons/lucide/plus';
-import Search from '~icons/lucide/search';
+import ArrowUp from '~icons/material-symbols/arrow-upward-rounded';
+import Check from '~icons/material-symbols/check-rounded';
+import InfoCircle from '~icons/material-symbols/info-outline-rounded';
+import Plus from '~icons/material-symbols/add-rounded';
+import Search from '~icons/material-symbols/search-rounded';
 
 <template>
   <div class="grid w-full max-w-sm gap-6">

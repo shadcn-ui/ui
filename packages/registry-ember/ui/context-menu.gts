@@ -18,8 +18,8 @@ import { cn } from '@/lib/utils';
 
 import type { TOC } from '@ember/component/template-only';
 
-import Check from '~icons/lucide/check';
-import ChevronRight from '~icons/lucide/chevron-right';
+import Check from '~icons/material-symbols/check-rounded';
+import ChevronRight from '~icons/material-symbols/chevron-right-rounded';
 
 const ContextMenuContext = 'context-menu-context' as const;
 const ContextMenuGroupContext = 'context-menu-group-context' as const;

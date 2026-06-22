@@ -10,8 +10,8 @@ import {
 import { Separator } from '@/ember-ui/separator';
 import { Textarea } from '@/ember-ui/textarea';
 
-import BotIcon from '~icons/lucide/bot';
-import ChevronDownIcon from '~icons/lucide/chevron-down';
+import BotIcon from '~icons/material-symbols/smart-toy-outline-rounded';
+import ChevronDownIcon from '~icons/material-symbols/keyboard-arrow-down-rounded';
 
 const autofocus = modifier((element: HTMLElement) => {
   element.focus();

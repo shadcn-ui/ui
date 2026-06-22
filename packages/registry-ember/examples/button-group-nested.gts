@@ -1,8 +1,8 @@
 import { Button } from '@/ui/button';
 import { ButtonGroup } from '@/ui/button-group';
 
-import ArrowLeftIcon from '~icons/lucide/arrow-left';
-import ArrowRightIcon from '~icons/lucide/arrow-right';
+import ArrowLeftIcon from '~icons/material-symbols/arrow-left-rounded';
+import ArrowRightIcon from '~icons/material-symbols/arrow-right-rounded';
 
 <template>
   <ButtonGroup>

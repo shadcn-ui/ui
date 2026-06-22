@@ -1,6 +1,6 @@
 import { Button } from '@/ember-ui/button';
 
-import ArrowUpRightIcon from '~icons/lucide/arrow-up-right';
+import ArrowUpRightIcon from '~icons/material-symbols/north-east-rounded';
 
 <template>
   <div class="flex flex-col items-start gap-8 sm:flex-row">

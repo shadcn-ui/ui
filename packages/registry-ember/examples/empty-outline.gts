@@ -8,7 +8,7 @@ import {
   EmptyTitle,
 } from '@/ui/empty';
 
-import Cloud from '~icons/lucide/cloud';
+import Cloud from '~icons/material-symbols/cloud';
 
 <template>
   <Empty @class="border border-dashed">

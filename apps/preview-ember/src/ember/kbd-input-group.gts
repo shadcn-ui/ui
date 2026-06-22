@@ -5,7 +5,7 @@ import {
 } from '@/ember-ui/input-group';
 import { Kbd } from '@/ember-ui/kbd';
 
-import SearchIcon from '~icons/lucide/search';
+import SearchIcon from '~icons/material-symbols/search-rounded';
 
 <template>
   <div class="flex w-full max-w-xs flex-col gap-6">

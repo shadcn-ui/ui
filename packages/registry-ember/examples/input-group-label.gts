@@ -11,7 +11,7 @@ import {
   TooltipTrigger,
 } from '@/ui/tooltip';
 
-import Info from '~icons/lucide/info';
+import Info from '~icons/material-symbols/info-outline-rounded';
 
 <template>
   <div class="grid w-full max-w-sm gap-4">

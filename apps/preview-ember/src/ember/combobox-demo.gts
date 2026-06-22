@@ -19,8 +19,8 @@ import {
 } from '@/ember-ui/popover';
 import { cn } from '@/ember-lib/utils';
 
-import CheckIcon from '~icons/lucide/check';
-import ChevronsUpDownIcon from '~icons/lucide/chevrons-up-down';
+import CheckIcon from '~icons/material-symbols/check-rounded';
+import ChevronsUpDownIcon from '~icons/material-symbols/unfold-more-rounded';
 
 const frameworks = [
   { value: 'next.js', label: 'Next.js' },

@@ -11,8 +11,8 @@ import {
   InputGroupInput,
 } from '@/ui/input-group';
 
-import ChevronDown from '~icons/lucide/chevron-down';
-import MoreHorizontal from '~icons/lucide/more-horizontal';
+import ChevronDown from '~icons/material-symbols/keyboard-arrow-down-rounded';
+import MoreHorizontal from '~icons/material-symbols/more-horiz';
 
 <template>
   <div class="grid w-full max-w-sm gap-4">

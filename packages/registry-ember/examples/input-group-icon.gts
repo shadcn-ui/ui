@@ -4,12 +4,12 @@ import {
   InputGroupInput,
 } from '@/ui/input-group';
 
-import Check from '~icons/lucide/check';
-import CreditCard from '~icons/lucide/credit-card';
-import Info from '~icons/lucide/info';
-import Mail from '~icons/lucide/mail';
-import Search from '~icons/lucide/search';
-import Star from '~icons/lucide/star';
+import Check from '~icons/material-symbols/check-rounded';
+import CreditCard from '~icons/material-symbols/credit-card';
+import Info from '~icons/material-symbols/info-outline-rounded';
+import Mail from '~icons/material-symbols/mail-outline-rounded';
+import Search from '~icons/material-symbols/search-rounded';
+import Star from '~icons/material-symbols/star-outline-rounded';
 
 <template>
   <div class="grid w-full max-w-sm gap-6">

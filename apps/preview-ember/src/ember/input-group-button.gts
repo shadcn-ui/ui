@@ -14,10 +14,10 @@ import {
   PopoverContent,
 } from '@/ember-ui/popover';
 
-import Check from '~icons/lucide/check';
-import Copy from '~icons/lucide/copy';
-import Info from '~icons/lucide/info';
-import Star from '~icons/lucide/star';
+import Check from '~icons/material-symbols/check-rounded';
+import Copy from '~icons/material-symbols/content-copy-outline-rounded';
+import Info from '~icons/material-symbols/info-outline-rounded';
+import Star from '~icons/material-symbols/star-outline-rounded';
 
 export default class InputGroupButtonExample extends Component {
   @tracked hasCopied = false;
