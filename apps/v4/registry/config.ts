@@ -176,7 +176,7 @@ export const DEFAULT_CONFIG: DesignSystemConfig = {
   baseColor: "force-ui",
   theme: "force-ui",
   chartColor: "force-ui",
-  iconLibrary: "lucide",
+  iconLibrary: "materialSymbols", // [FORCE-UI]
   font: "noto-sans",
   fontHeading: "inherit",
   item: "Item",
@@ -198,13 +198,13 @@ export const PRESETS: Preset[] = [
   {
     name: "radix-force-ui",
     title: "Force UI (Radix)",
-    description: "Force UI / Lucide / Noto Sans",
+    description: "Force UI / Material Symbols / Noto Sans", // [FORCE-UI]
     base: "radix",
     style: "force-ui",
     baseColor: "force-ui",
     theme: "force-ui",
     chartColor: "force-ui",
-    iconLibrary: "lucide",
+    iconLibrary: "materialSymbols", // [FORCE-UI]
     font: "noto-sans",
     fontHeading: "inherit",
     item: "Item",
@@ -216,13 +216,13 @@ export const PRESETS: Preset[] = [
   {
     name: "base-force-ui",
     title: "Force UI (Base)",
-    description: "Force UI / Lucide / Noto Sans",
+    description: "Force UI / Material Symbols / Noto Sans", // [FORCE-UI]
     base: "base",
     style: "force-ui",
     baseColor: "force-ui",
     theme: "force-ui",
     chartColor: "force-ui",
-    iconLibrary: "lucide",
+    iconLibrary: "materialSymbols", // [FORCE-UI]
     font: "noto-sans",
     fontHeading: "inherit",
     item: "Item",
