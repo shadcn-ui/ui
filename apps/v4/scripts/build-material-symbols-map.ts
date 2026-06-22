@@ -9,8 +9,8 @@
  * derived by snake_case heuristic and validated against the actual svg-400 files.
  */
 import * as fs from "fs"
-import * as path from "path"
 import { createRequire } from "module"
+import * as path from "path"
 
 const require = createRequire(import.meta.url)
 
@@ -256,7 +256,9 @@ function main() {
       ? fs.readFileSync(MAP_PATH, "utf-8")
       : ""
     if (onDisk.trim() !== JSON.stringify(map, null, 2)) {
-      console.error("\nmaterial-symbols-map.json is stale. Re-run without --check.")
+      console.error(
+        "\nmaterial-symbols-map.json is stale. Re-run without --check."
+      )
       process.exit(1)
     }
     console.log("\n✓ Map valid and up to date.")
@@ -271,7 +273,9 @@ function main() {
   fs.writeFileSync(MAP_PATH, JSON.stringify(map, null, 2) + "\n")
   console.log(`\n✓ Wrote ${Object.keys(map).length} entries to ${MAP_PATH}`)
   if (misses.length) {
-    console.log("⚠ Map is INCOMPLETE — curate the misses above into OVERRIDES.")
+    console.log(
+      "⚠ Map is INCOMPLETE — curate the misses above into OVERRIDES."
+    )
   }
 }
 

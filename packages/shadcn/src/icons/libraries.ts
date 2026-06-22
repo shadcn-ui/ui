@@ -50,7 +50,8 @@ export const iconLibraries = {
     name: "materialSymbols",
     title: "Material Symbols",
     packages: ["@material-symbols/svg-400"],
-    import: "import ICON from '@material-symbols/svg-400/rounded/NAME.svg?react'",
+    import:
+      "import ICON from '@material-symbols/svg-400/rounded/NAME.svg?react'",
     usage: "<ICON />",
     export: "@material-symbols/svg-400/rounded",
   },

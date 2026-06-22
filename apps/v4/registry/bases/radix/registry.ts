@@ -15,7 +15,11 @@ import { ui } from "./ui/_registry"
 const RADIX_STYLE = {
   type: "registry:style",
   // [FORCE-UI] default icon library is Material Symbols (was lucide-react)
-  dependencies: ["class-variance-authority", "@material-symbols/svg-400", "radix-ui"],
+  dependencies: [
+    "class-variance-authority",
+    "@material-symbols/svg-400",
+    "radix-ui",
+  ],
   devDependencies: ["tw-animate-css", "shadcn"],
   registryDependencies: ["utils"],
   css: {

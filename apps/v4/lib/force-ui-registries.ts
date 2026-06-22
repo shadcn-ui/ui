@@ -9,10 +9,18 @@ type RegistriesPayloadEntry = {
   description: string
 }
 
-const FORCE_UI_REGISTRY_ROOTS: Record<ForceUiRootId, { path: string; namespaces: string[] }> = {
+const FORCE_UI_REGISTRY_ROOTS: Record<
+  ForceUiRootId,
+  { path: string; namespaces: string[] }
+> = {
   legacy: {
     path: "/r",
-    namespaces: ["@force-ui", "@force-ui-vue", "@force-ui-svelte", "@force-ui-ember"],
+    namespaces: [
+      "@force-ui",
+      "@force-ui-vue",
+      "@force-ui-svelte",
+      "@force-ui-ember",
+    ],
   },
   react: {
     path: "/r-react",
@@ -59,5 +67,8 @@ export function buildRegistriesPayload(
   origin: string,
   rootId: ForceUiRootId
 ): RegistriesPayloadEntry[] {
-  return [...buildForceUiRegistries(origin, rootId), ...buildDirectoryRegistries()]
+  return [
+    ...buildForceUiRegistries(origin, rootId),
+    ...buildDirectoryRegistries(),
+  ]
 }

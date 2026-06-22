@@ -1,7 +1,7 @@
 #!/usr/bin/env tsx
 import * as fs from "fs"
-import * as path from "path"
 import { createRequire } from "module"
+import * as path from "path"
 import { iconLibraries, type IconLibraryName } from "shadcn/icons"
 
 type IconUsage = Record<IconLibraryName, Set<string>>
@@ -23,7 +23,10 @@ function generateMaterialSymbolsBarrel(names: string[]): string {
     const svgPath = path.join(MS_ROUNDED_DIR, `${name}.svg`)
     const svg = fs.readFileSync(svgPath, "utf-8")
     const viewBox = svg.match(/viewBox="([^"]+)"/)?.[1] ?? "0 -960 960 960"
-    const inner = svg.replace(/^<svg[^>]*>/, "").replace(/<\/svg>\s*$/, "").trim()
+    const inner = svg
+      .replace(/^<svg[^>]*>/, "")
+      .replace(/<\/svg>\s*$/, "")
+      .trim()
     return `  ${JSON.stringify(name)}: (props: SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}" width="1em" height="1em" fill="currentColor" {...props}>${inner}</svg>
   ),`

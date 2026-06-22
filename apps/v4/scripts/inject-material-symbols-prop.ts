@@ -67,7 +67,9 @@ function main() {
 
       const attrs = el
         .getAttributes()
-        .filter((a) => a.getKind() === SyntaxKind.JsxAttribute) as JsxAttribute[]
+        .filter(
+          (a) => a.getKind() === SyntaxKind.JsxAttribute
+        ) as JsxAttribute[]
 
       if (getStringAttr(attrs, "materialSymbols")) continue // idempotent
 

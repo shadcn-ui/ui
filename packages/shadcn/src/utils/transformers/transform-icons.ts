@@ -96,7 +96,9 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
 
     if (componentName === "ICON") {
       // [FORCE-UI] Path-import libraries use a derived PascalCase component name.
-      const tagName = isPathImport ? toComponentName(targetIconName) : targetIconName
+      const tagName = isPathImport
+        ? toComponentName(targetIconName)
+        : targetIconName
       // Get remaining user attributes (non-library props)
       const userAttributes = element
         .getAttributes()
