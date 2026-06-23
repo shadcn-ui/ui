@@ -14,7 +14,7 @@ import { Command } from "commander"
 import deepmerge from "deepmerge"
 import { execa } from "execa"
 import fsExtra from "fs-extra"
-import prompts from "prompts"
+import prompts from "@/src/utils/prompts"
 import z from "zod"
 
 const SHADCN_MCP_VERSION = "latest"
