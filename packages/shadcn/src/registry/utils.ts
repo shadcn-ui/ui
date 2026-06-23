@@ -26,6 +26,7 @@ const DEPENDENCY_SKIP_LIST = [
   /^(react|react-dom|next)(\/.*)?$/, // Matches react, react-dom, next and their submodules
   /^(node|jsr|npm):.*$/, // Matches node:, jsr:, and npm: prefixed modules
 ]
+const DEPENDENCY_SPECIFIER_PROTOCOL = /^[a-z][a-z0-9+.-]*:/i
 
 const project = new Project({
   compilerOptions: {},
@@ -41,22 +42,41 @@ export function getDependencyFromModuleSpecifier(
     return null
   }
 
-  // If the module specifier does not start with `@` and has a /, add the dependency first part only.
+  return getPackageNameFromSpecifier(moduleSpecifier)
+}
+
+// This returns the installable package name from a package or subpath import
+// specifier. Protocol-backed dependency specs are preserved as-is.
+export function getPackageNameFromSpecifier(specifier: string): string {
+  if (
+    DEPENDENCY_SPECIFIER_PROTOCOL.test(specifier) ||
+    specifier.startsWith(".")
+  ) {
+    return specifier
+  }
+
+  // If the specifier does not start with `@` and has a /, add the dependency first part only.
   // E.g. `foo/bar` -> `foo`
-  if (!moduleSpecifier.startsWith("@") && moduleSpecifier.includes("/")) {
-    moduleSpecifier = moduleSpecifier.split("/")[0]
+  if (!specifier.startsWith("@") && specifier.includes("/")) {
+    specifier = specifier.split("/")[0]
   }
 
   // For scoped packages, we want to keep the first two parts
   // E.g. `@types/react/dom` -> `@types/react`
-  if (moduleSpecifier.startsWith("@")) {
-    const parts = moduleSpecifier.split("/")
+  if (specifier.startsWith("@")) {
+    const parts = specifier.split("/")
     if (parts.length > 2) {
-      moduleSpecifier = parts.slice(0, 2).join("/")
+      specifier = parts.slice(0, 2).join("/")
     }
   }
 
-  return moduleSpecifier
+  return specifier
+}
+
+export function normalizeRegistryDependencies(
+  dependencies: string[] = []
+): string[] {
+  return Array.from(new Set(dependencies.map(getPackageNameFromSpecifier)))
 }
 
 export async function recursivelyResolveFileImports(
