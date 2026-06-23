@@ -149,6 +149,7 @@ const frameworks = [
 ] as const
 
 const roleItems = [
+  { label: "Select a role", value: null },
   { label: "Developer", value: "developer" },
   { label: "Designer", value: "designer" },
   { label: "Manager", value: "manager" },
