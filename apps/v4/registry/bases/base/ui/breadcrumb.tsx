@@ -107,7 +107,6 @@ function BreadcrumbEllipsis({
     <span
       data-slot="breadcrumb-ellipsis"
       role="presentation"
-      aria-hidden="true"
       className={cn(
         "cn-breadcrumb-ellipsis flex items-center justify-center",
         className
@@ -115,6 +114,7 @@ function BreadcrumbEllipsis({
       {...props}
     >
       <IconPlaceholder
+        aria-hidden="true"
         lucide="MoreHorizontalIcon"
         tabler="IconDots"
         hugeicons="MoreHorizontalCircle01Icon"
