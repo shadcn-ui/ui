@@ -7,6 +7,11 @@ on:
     types:
       - completed
 
+permissions:
+  actions: read
+  issues: write
+  pull-requests: write
+
 jobs:
   comment:
     if: |
