@@ -58,6 +58,24 @@ export const transformTwPrefixes: Transformer = async ({
                     )}"`
                   )
                 }
+
+                const arrayClassNames = node.getInitializerIfKind(
+                  SyntaxKind.ArrayLiteralExpression
+                )
+
+                if (arrayClassNames) {
+                  arrayClassNames
+                    .getDescendantsOfKind(SyntaxKind.StringLiteral)
+                    .forEach((classNames) => {
+                      classNames.replaceWithText(
+                        `"${applyPrefix(
+                          classNames.getText()?.replace(/"|'/g, ""),
+                          config.tailwind.prefix,
+                          tailwindVersion
+                        )}"`
+                      )
+                    })
+                }
               })
           })
       }
