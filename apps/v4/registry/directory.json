@@ -42,6 +42,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='115' height='105' viewBox='0 0 115 105' fill='none'><path d='M111.78 48.3601C117.803 51.2224 113.769 60.4081 105.635 62.3522L72.9714 70.1593C70.4141 70.7705 67.9525 72.2666 66.2322 74.255L44.2597 99.6532C38.7881 105.978 28.7766 105.329 29.0097 98.6642L29.9457 71.9017C30.019 69.8064 28.9714 68.0828 27.0779 67.1829L2.89121 55.6888C-3.13172 52.8266 0.902578 43.6409 9.03642 41.6967L41.7 33.8896C44.2572 33.2784 46.7189 31.7823 48.4391 29.7939L70.4117 4.3957C75.8832 -1.92893 85.8948 -1.27963 85.6617 5.38474L84.7256 32.1472C84.6524 34.2425 85.6999 35.9662 87.5935 36.866L111.78 48.3601Z' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@agentcn",
+    "homepage": "https://agentcn.vercel.app",
+    "url": "https://agentcn.vercel.app/r/{name}.json",
+    "description": "Production-ready agents, made simple. Ready to use, customizable AI agent recipes. Built on Eve and Flue.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' width='24' height='24'><rect width='24' height='24' rx='4' fill='var(--foreground)'/><g stroke='var(--background)'><path d='M14 18a2 2 0 0 0-4 0m9-7-2.11-6.657a2 2 0 0 0-2.752-1.148l-1.276.61A2 2 0 0 1 12 4H8.5a2 2 0 0 0-1.925 1.456L5 11m-3 0h20'/><circle cx='17' cy='18' r='3'/><circle cx='7' cy='18' r='3'/><path d='M15.46 7.1 13.3 9.26m1.728-4.536-4.104 4.104' stroke-width='1.575'/></g></svg>"
+  },
+  {
     "name": "@agents-ui",
     "homepage": "https://livekit.com/ui",
     "url": "https://livekit.com/ui/r/{name}.json",
