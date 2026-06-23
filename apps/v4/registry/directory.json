@@ -1,5 +1,12 @@
 [
   {
+    "name": "@7ovr",
+    "homepage": "https://7ovr.com",
+    "url": "https://7ovr.com/r/{name}.json",
+    "description": "Free, production-ready UI blocks for marketing pages and application dashboards, built on Base UI and installable with the shadcn CLI.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='-1 -1 26 26' fill='var(--foreground)' width='24' height='24'><rect x='3' y='3' width='8' height='8' transform='rotate(-6 7 7)'/><rect x='3' y='13' width='8' height='8' transform='rotate(5 7 17)'/><rect x='13' y='13' width='8' height='8' transform='rotate(-4 17 17)'/><rect x='13' y='3' width='8' height='8' transform='rotate(15 17 7)'/></svg>"
+  },
+  {
     "name": "@8bitcn",
     "homepage": "https://www.8bitcn.com",
     "url": "https://www.8bitcn.com/r/{name}.json",
