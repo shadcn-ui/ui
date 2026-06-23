@@ -50,6 +50,7 @@ export async function ComponentSource({
 
   code = await formatCode(code, styleName)
   code = code.replaceAll("/* eslint-disable react/no-children-prop */\n", "")
+  const fullCode = code
 
   // Truncate code if maxLines is set.
   if (maxLines) {
@@ -67,6 +68,7 @@ export async function ComponentSource({
           highlightedCode={highlightedCode}
           language={lang}
           title={title}
+          fullCode={fullCode}
         />
       </div>
     )
@@ -79,6 +81,7 @@ export async function ComponentSource({
         highlightedCode={highlightedCode}
         language={lang}
         title={title}
+        fullCode={fullCode}
       />
     </CodeCollapsibleWrapper>
   )
@@ -89,12 +92,16 @@ function ComponentCode({
   highlightedCode,
   language,
   title,
+  fullCode,
 }: {
   code: string
   highlightedCode: string
   language: string
   title: string | undefined
+  fullCode?: string
 }) {
+  const copyValue = fullCode ?? code
+
   return (
     <figure data-rehype-pretty-code-figure="" className="[&>pre]:max-h-96">
       {title && (
@@ -107,7 +114,7 @@ function ComponentCode({
           {title}
         </figcaption>
       )}
-      <CopyButton value={code} />
+      <CopyButton value={copyValue} />
       <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
     </figure>
   )
