@@ -57,6 +57,24 @@ export default function RootLayout({ children }: RootLayoutProps) {
 }
 ```
 
+## React 19 and Next.js 16
+
+`next-themes` injects a small inline script so the correct theme applies before hydration. React 19 warns (or errors in dev) when that `<script>` is rendered on the client. The script still runs on the server; **only the client re-render must skip it**.
+
+If you use **pnpm**, apply the same patch this project uses: add [`patches/next-themes@0.4.6.patch`](https://github.com/shadcn-ui/ui/blob/main/patches/next-themes@0.4.6.patch) to your repo and register it:
+
+```json title="package.json"
+{
+  "pnpm": {
+    "patchedDependencies": {
+      "next-themes@0.4.6": "patches/next-themes@0.4.6.patch"
+    }
+  }
+}
+```
+
+Then run `pnpm install` again. Theme behavior (no flash on load) is unchanged; the blocking script is omitted only during client renders.
+
 ## Add a mode toggle
 
 Place a mode toggle on your site to toggle between light and dark mode.
