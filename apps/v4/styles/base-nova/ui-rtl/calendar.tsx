@@ -48,7 +48,7 @@ function Calendar({
         ...formatters,
       }}
       classNames={{
-        root: cn("w-fit", defaultClassNames.root),
+        root: cn("w-full", defaultClassNames.root),
         months: cn(
           "relative flex flex-col gap-4 md:flex-row",
           defaultClassNames.months
@@ -107,7 +107,7 @@ function Calendar({
           defaultClassNames.week_number
         ),
         day: cn(
-          "group/day relative aspect-square h-full w-full rounded-(--cell-radius) p-0 text-center select-none [&:last-child[data-selected=true]_button]:rounded-e-(--cell-radius)",
+          "group/day relative flex-1 aspect-square h-full w-full rounded-(--cell-radius) p-0 text-center select-none [&:last-child[data-selected=true]_button]:rounded-e-(--cell-radius)",
           props.showWeekNumber
             ? "[&:nth-child(2)[data-selected=true]_button]:rounded-s-(--cell-radius)"
             : "[&:first-child[data-selected=true]_button]:rounded-s-(--cell-radius)",
