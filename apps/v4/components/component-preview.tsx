@@ -1,5 +1,4 @@
 import * as React from "react"
-import Image from "next/image"
 
 import { getRegistryComponent } from "@/lib/registry"
 import { ComponentPreviewTabs } from "@/components/component-preview-tabs"
@@ -32,21 +31,7 @@ export function ComponentPreview({
   if (type === "block") {
     const content = (
       <div className="relative mt-6 aspect-[4/2.5] w-full overflow-hidden rounded-xl border md:-mx-1">
-        <Image
-          src={`/r/styles/new-york-v4/${name}-light.png`}
-          alt={name}
-          width={1440}
-          height={900}
-          className="absolute top-0 left-0 z-20 w-[970px] max-w-none bg-background sm:w-[1280px] md:hidden dark:hidden md:dark:hidden"
-        />
-        <Image
-          src={`/r/styles/new-york-v4/${name}-dark.png`}
-          alt={name}
-          width={1440}
-          height={900}
-          className="absolute top-0 left-0 z-20 hidden w-[970px] max-w-none bg-background sm:w-[1280px] md:hidden dark:block md:dark:hidden"
-        />
-        <div className="absolute inset-0 hidden w-[1600px] bg-background md:block">
+        <div className="absolute inset-0 w-[970px] bg-background sm:w-[1280px] md:w-[1600px]">
           <iframe src={`/view/${styleName}/${name}`} className="size-full" />
         </div>
       </div>
