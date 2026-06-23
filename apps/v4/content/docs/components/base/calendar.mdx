@@ -316,7 +316,10 @@ Pass the `locale` prop to the `DayPicker` component:
       formatters={{
         formatMonthDropdown: (date) =>
 -         date.toLocaleString("default", { month: "short" }),
-+         date.toLocaleString(locale?.code, { month: "short" }),
++         date.toLocaleString(
++           (locale as { code?: string } | undefined)?.code,
++           { month: "short" }
++         ),
         ...formatters,
       }}
 ```
@@ -338,14 +341,16 @@ Update the `CalendarDayButton` component signature and pass `locale`:
 
 <Step>Update date formatting in CalendarDayButton.</Step>
 
-Use `locale?.code` in the date formatting:
+Use `(locale as { code?: string } | undefined)?.code` in the date formatting:
 
 ```diff
     <Button
       variant="ghost"
       size="icon"
 -     data-day={day.date.toLocaleDateString()}
-+     data-day={day.date.toLocaleDateString(locale?.code)}
++     data-day={day.date.toLocaleDateString(
++       (locale as { code?: string } | undefined)?.code
++     )}
       ...
     />
 ```
