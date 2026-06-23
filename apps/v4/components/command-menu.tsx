@@ -339,6 +339,11 @@ export function CommandMenu({
     )
   }, [blocks, handleBlockHighlight, runCommand, router])
 
+  const openRef = React.useRef(open)
+  React.useEffect(() => {
+    openRef.current = open
+  }, [open])
+
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || e.key === "/") {
@@ -355,7 +360,12 @@ export function CommandMenu({
         setOpen((open) => !open)
       }
 
-      if (e.key === "c" && (e.metaKey || e.ctrlKey)) {
+      if (
+        e.key === "c" &&
+        (e.metaKey || e.ctrlKey) &&
+        openRef.current &&
+        copyPayload
+      ) {
         runCommand(() => {
           if (selectedType === "color") {
             copyToClipboardWithMeta(copyPayload, {
