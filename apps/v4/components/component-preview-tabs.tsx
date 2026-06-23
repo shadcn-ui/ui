@@ -45,11 +45,22 @@ export function ComponentPreviewTabs({
   direction?: "ltr" | "rtl"
   styleName?: string
 }) {
+  const previewRef = React.useRef<HTMLDivElement>(null)
+
   const [isMobileCodeVisible, setIsMobileCodeVisible] = React.useState(false)
   const base = styleName?.split("-")[0]
 
+  React.useEffect(() => {
+    if (direction !== "rtl") return
+    const scrollY = window.scrollY
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: scrollY })
+    })
+  }, [direction])
+
   return (
     <div
+      ref={previewRef}
       data-slot="component-preview"
       className={cn(
         "group relative mt-4 mb-12 flex flex-col overflow-hidden rounded-xl border",
