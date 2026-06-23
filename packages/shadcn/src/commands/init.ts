@@ -744,13 +744,7 @@ export async function runInit(
     config.rtl = options.rtl
   }
 
-  // Make sure to filter out built-in registries.
-  // TODO: fix this in ensureRegistriesInConfig.
-  config.registries = Object.fromEntries(
-    Object.entries(config.registries || {}).filter(
-      ([key]) => !Object.keys(BUILTIN_REGISTRIES).includes(key)
-    )
-  )
+
 
   // Write components.json.
   await fs.writeFile(targetPath, `${JSON.stringify(config, null, 2)}\n`, "utf8")

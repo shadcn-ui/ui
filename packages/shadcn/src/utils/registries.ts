@@ -30,9 +30,21 @@ export async function ensureRegistriesInConfig(
       !Object.keys(BUILTIN_REGISTRIES).includes(registry)
   )
 
+  const sanitizeRegistries = (conf: Config): Config => {
+    const sanitized = Object.fromEntries(
+      Object.entries(conf.registries || {}).filter(
+        ([key]) => !Object.keys(BUILTIN_REGISTRIES).includes(key)
+      )
+    )
+    return {
+      ...conf,
+      registries: sanitized,
+    }
+  }
+
   if (missingRegistries.length === 0) {
     return {
-      config,
+      config: sanitizeRegistries(config),
       newRegistries: [],
     }
   }
@@ -45,7 +57,7 @@ export async function ensureRegistriesInConfig(
 
   if (!registryIndex) {
     return {
-      config,
+      config: sanitizeRegistries(config),
       newRegistries: [],
     }
   }
@@ -59,7 +71,7 @@ export async function ensureRegistriesInConfig(
 
   if (Object.keys(foundRegistries).length === 0) {
     return {
-      config,
+      config: sanitizeRegistries(config),
       newRegistries: [],
     }
   }
