@@ -1,0 +1,108 @@
+---
+title: Wireframe
+description: A component system for building fixed/sticky navigation layouts with automatic content spacing.
+component: true
+links:
+  doc: https://ramoz.dev/wireframe
+---
+
+<figure className="flex flex-col gap-4">
+  <ComponentPreview
+    name="wireframe-demo"
+    title="Wireframe"
+    type="block"
+    description="A component system for building fixed/sticky navigation layouts with automatic content spacing."
+    className="w-full"
+  />
+  <figcaption className="text-center text-sm text-gray-500">
+    Navbars and sidebars, solved.
+  </figcaption>
+</figure>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add wireframe
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="wireframe" title="components/ui/wireframe.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Wireframe,
+  WireframeNav,
+  WireframeSidebar,
+  WireframeSidebarContent,
+  WireframeSidebarFooter,
+  WireframeSidebarGroup,
+  WireframeSidebarHeader,
+  WireframeStickyNav,
+} from "@/components/ui/wireframe"
+```
+
+```tsx showLineNumbers
+<Wireframe
+  config={{
+    corners: {
+      topLeft: "sidebar",
+      topRight: "sidebar",
+      bottomLeft: "navbar",
+      bottomRight: "navbar",
+    },
+  }}
+>
+  <WireframeStickyNav>
+    <div>My Sticky Navbar</div>
+  </WireframeStickyNav>
+  <WireframeNav position="top" hideOn="mobile">
+    <div>My Top Navbar</div>
+  </WireframeNav>
+  <WireframeNav position="bottom" hideOn="desktop">
+    <div>My Bottom Navbar</div>
+  </WireframeNav>
+  <WireframeSidebar position="left" collapsed={false} hideOn="mobile">
+    <WireframeSidebarHeader>
+      <div>Header</div>
+    </WireframeSidebarHeader>
+    <WireframeSidebarContent>
+      <WireframeSidebarGroup>
+        <div>Navigation</div>
+      </WireframeSidebarGroup>
+    </WireframeSidebarContent>
+    <WireframeSidebarFooter>
+      <div>Footer</div>
+    </WireframeSidebarFooter>
+  </WireframeSidebar>
+  <main>Lorem Ipsum</main>
+</Wireframe>
+```
+
+Note: Sticky navbars can only be placed at the top, so you can either have a sticky navbar or a fixed top navbar, not both.
+
+Use `hideOn="mobile"` or `hideOn="desktop"` on `WireframeNav` and `WireframeSidebar` to conditionally render them based on screen size. The mobile breakpoint defaults to `768px` and can be customized via `config.mobileBreakpoint`.

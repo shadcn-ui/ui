@@ -2764,4 +2764,15 @@ export const examples: Registry["items"] = [
       mobile: "component",
     },
   },
+  {
+    name: "wireframe-demo",
+    type: "registry:example",
+    registryDependencies: ["wireframe"],
+    files: [
+      {
+        path: "examples/wireframe-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]
