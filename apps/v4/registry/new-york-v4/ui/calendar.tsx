@@ -40,8 +40,16 @@ function Calendar({
       )}
       captionLayout={captionLayout}
       formatters={{
-        formatMonthDropdown: (date) =>
-          date.toLocaleString("default", { month: "short" }),
+        formatCaption: (date) => {
+          // Use the locale code from props, fallback to default
+          const localeCode = props?.locale?.code || "default"
+          return date.toLocaleString(localeCode, { month: "long", year: "numeric" })
+        },
+        formatMonthDropdown: (date) => {
+          // Use the locale code from props, fallback to default
+          const localeCode = props?.locale?.code || "default"
+          return date.toLocaleString(localeCode, { month: "short" })
+        },
         ...formatters,
       }}
       classNames={{
@@ -197,7 +205,7 @@ function CalendarDayButton({
       ref={ref}
       variant="ghost"
       size="icon"
-      data-day={day.date.toLocaleDateString()}
+      data-day={day.date.toISOString()}
       data-selected-single={
         modifiers.selected &&
         !modifiers.range_start &&
