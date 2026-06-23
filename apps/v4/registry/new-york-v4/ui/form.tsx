@@ -53,7 +53,7 @@ const useFormField = () => {
     throw new Error("useFormField should be used within <FormField>")
   }
 
-  const { id } = itemContext
+  const { id, hasDescription, hasErrorMessage } = itemContext
 
   return {
     id,
@@ -61,12 +61,18 @@ const useFormField = () => {
     formItemId: `${id}-form-item`,
     formDescriptionId: `${id}-form-item-description`,
     formMessageId: `${id}-form-item-message`,
+    hasDescription,
+    hasErrorMessage,
     ...fieldState,
   }
 }
 
 type FormItemContextValue = {
   id: string
+  hasDescription: boolean
+  setHasDescription: (value: boolean) => void
+  hasErrorMessage: boolean
+  setHasErrorMessage: (value: boolean) => void
 }
 
 const FormItemContext = React.createContext<FormItemContextValue>(
@@ -75,9 +81,19 @@ const FormItemContext = React.createContext<FormItemContextValue>(
 
 function FormItem({ className, ...props }: React.ComponentProps<"div">) {
   const id = React.useId()
+  const [hasDescription, setHasDescription] = React.useState(false)
+  const [hasErrorMessage, setHasErrorMessage] = React.useState(false)
 
   return (
-    <FormItemContext.Provider value={{ id }}>
+    <FormItemContext.Provider
+      value={{
+        id,
+        hasDescription,
+        setHasDescription,
+        hasErrorMessage,
+        setHasErrorMessage,
+      }}
+    >
       <div
         data-slot="form-item"
         className={cn("grid gap-2", className)}
@@ -105,17 +121,27 @@ function FormLabel({
 }
 
 function FormControl({ ...props }: React.ComponentProps<typeof Slot.Root>) {
-  const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
+  const {
+    error,
+    formItemId,
+    formDescriptionId,
+    formMessageId,
+    hasDescription,
+    hasErrorMessage,
+  } = useFormField()
+
+  const ariaDescribedBy = [
+    hasDescription ? formDescriptionId : "",
+    hasErrorMessage ? formMessageId : "",
+  ]
+    .filter(Boolean)
+    .join(" ")
 
   return (
     <Slot.Root
       data-slot="form-control"
       id={formItemId}
-      aria-describedby={
-        !error
-          ? `${formDescriptionId}`
-          : `${formDescriptionId} ${formMessageId}`
-      }
+      aria-describedby={ariaDescribedBy || undefined}
       aria-invalid={!!error}
       {...props}
     />
@@ -124,6 +150,12 @@ function FormControl({ ...props }: React.ComponentProps<typeof Slot.Root>) {
 
 function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
   const { formDescriptionId } = useFormField()
+  const { setHasDescription } = React.useContext(FormItemContext)
+
+  React.useEffect(() => {
+    setHasDescription(true)
+    return () => setHasDescription(false)
+  }, [setHasDescription])
 
   return (
     <p
@@ -137,7 +169,13 @@ function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
 
 function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
   const { error, formMessageId } = useFormField()
+  const { setHasErrorMessage } = React.useContext(FormItemContext)
   const body = error ? String(error?.message ?? "") : props.children
+
+  React.useLayoutEffect(() => {
+    setHasErrorMessage(Boolean(body))
+    return () => setHasErrorMessage(false)
+  }, [body, setHasErrorMessage])
 
   if (!body) {
     return null
