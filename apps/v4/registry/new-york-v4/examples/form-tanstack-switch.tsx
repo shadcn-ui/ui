@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 "use client"
 
 import { useForm } from "@tanstack/react-form"
@@ -73,9 +72,8 @@ export default function FormTanstackSwitch() {
           }}
         >
           <FieldGroup>
-            <form.Field
-              name="twoFactor"
-              children={(field) => {
+            <form.Field name="twoFactor">
+              {(field) => {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
@@ -102,7 +100,7 @@ export default function FormTanstackSwitch() {
                   </Field>
                 )
               }}
-            />
+            </form.Field>
           </FieldGroup>
         </form>
       </CardContent>
