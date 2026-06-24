@@ -8,6 +8,8 @@ overrides:
   '@types/react': 19.2.2
   '@types/react-dom': 19.2.2
 
+packageExtensionsChecksum: sha256-5xwqV0Xm0bna/9c3RXU7OvpTUl7eZ8rqa4Oaoj+NAFs=
+
 importers:
 
   .:
@@ -147,7 +149,7 @@ importers:
         version: 0.4.4(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.2)(valibot@1.4.0(typescript@5.9.2))
       '@hookform/resolvers':
         specifier: ^3.10.0
-        version: 3.10.0(react-hook-form@7.62.0(react@19.2.3))
+        version: 3.10.0(react-hook-form@7.62.0(react@19.2.3))(zod@3.25.76)
       '@hugeicons/core-free-icons':
         specifier: ^1.2.1
         version: 1.2.1
@@ -1664,6 +1666,7 @@ packages:
     resolution: {integrity: sha512-79Dv+3mDF7i+2ajj7SkypSKHhl1cbln1OGavqrsF7p6mbUv11xpqpacPsGDCTRvCSjEEIez2ef1NveSVL3b0Ag==}
     peerDependencies:
       react-hook-form: ^7.0.0
+      zod: ^3.25 || ^4
 
   '@hugeicons/core-free-icons@1.2.1':
     resolution: {integrity: sha512-ho0QdGMkgL+kt+QsZocCsKvJou1rfyVQWARrxIhNLi+9tCKayUUtD9jlHgioaRphmskSl84TxrDm9Ae0G4Uu1g==}
@@ -10225,9 +10228,10 @@ snapshots:
     dependencies:
       hono: 4.11.7
 
-  '@hookform/resolvers@3.10.0(react-hook-form@7.62.0(react@19.2.3))':
+  '@hookform/resolvers@3.10.0(react-hook-form@7.62.0(react@19.2.3))(zod@3.25.76)':
     dependencies:
       react-hook-form: 7.62.0(react@19.2.3)
+      zod: 3.25.76
 
   '@hugeicons/core-free-icons@1.2.1': {}
 
