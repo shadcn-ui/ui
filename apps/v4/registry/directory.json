@@ -953,6 +953,13 @@
     "logo": "<svg width='16' height='16' viewBox='0 0 72 72' xmlns='http://www.w3.org/2000/svg'><path fill='currentColor' d='M36,45 v-36 a28,28 0 0 0 0 56 z'/><circle cx='36' cy='36' r='28' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='3'/></svg>"
   },
   {
+    "name": "@payload-components",
+    "homepage": "https://www.payload-components.xyz",
+    "url": "https://www.payload-components.xyz/r/{name}.json",
+    "description": "MIT registry of typed Payload CMS blocks for Payload v3 + Next.js. Each block installs as reviewable source; the companion CLI also wires collection config, RenderBlocks, types, and the admin import map.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='2' y='2' width='20' height='20' rx='5' fill='var(--foreground)'/><path d='M7 7h5.4c2.45 0 4.1 1.53 4.1 3.85s-1.65 3.85-4.1 3.85H9.7V17H7V7Zm2.7 2.25v3.2h2.4c1.02 0 1.65-.62 1.65-1.6s-.63-1.6-1.65-1.6H9.7Zm8.2-.25h1.9v8h-1.9V9Zm-2.15 3.05h6.2v1.9h-6.2v-1.9Z' fill='var(--background)'/></svg>"
+  },
+  {
     "name": "@pastecn",
     "homepage": "https://pastecn.com",
     "url": "https://pastecn.com/r/{name}",
