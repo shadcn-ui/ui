@@ -87,6 +87,13 @@
     "overrides": {
       "@types/react": "19.2.2",
       "@types/react-dom": "19.2.2"
+    },
+    "packageExtensions": {
+      "@hookform/resolvers": {
+        "peerDependencies": {
+          "zod": "^3.25 || ^4"
+        }
+      }
     }
   }
 }
