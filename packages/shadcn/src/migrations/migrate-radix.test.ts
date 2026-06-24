@@ -12,8 +12,9 @@ vi.mock("fs", () => ({
   },
 }))
 
-vi.mock("fast-glob", () => ({
-  default: vi.fn(),
+vi.mock("tinyglobby", () => ({
+  glob: vi.fn(),
+  globSync: vi.fn(),
 }))
 
 vi.mock("prompts", () => ({
@@ -910,9 +911,9 @@ describe("migrateRadix - package.json updates", () => {
     // Mock file system
     mockFs.writeFile.mockResolvedValue(undefined)
 
-    // Mock fast-glob to return files with Radix imports
-    const fg = await import("fast-glob")
-    vi.mocked(fg.default).mockResolvedValue(["dialog.tsx", "select.tsx"])
+    // Mock tinyglobby to return files with Radix imports
+    const { glob } = await import("tinyglobby")
+    vi.mocked(glob).mockResolvedValue(["dialog.tsx", "select.tsx"])
 
     // Mock file reads to return content with Radix imports
     mockFs.readFile
@@ -957,8 +958,8 @@ describe("migrateRadix - package.json updates", () => {
       "@/src/utils/updaters/update-dependencies"
     )
 
-    const fg = await import("fast-glob")
-    vi.mocked(fg.default).mockResolvedValue(["component.tsx"])
+    const { glob } = await import("tinyglobby")
+    vi.mocked(glob).mockResolvedValue(["component.tsx"])
 
     // Mock file read to return content with no Radix imports
     mockFs.readFile.mockResolvedValue('import React from "react"')
@@ -982,8 +983,8 @@ describe("migrateRadix - package.json updates", () => {
     const { getPackageInfo } = await import("@/src/utils/get-package-info")
     vi.mocked(getPackageInfo).mockReturnValue(null)
 
-    const fg = await import("fast-glob")
-    vi.mocked(fg.default).mockResolvedValue(["component.tsx"])
+    const { glob } = await import("tinyglobby")
+    vi.mocked(glob).mockResolvedValue(["component.tsx"])
 
     // Mock file read
     mockFs.readFile.mockResolvedValue('import React from "react"')
@@ -1012,8 +1013,8 @@ describe("migrateRadix - package.json updates", () => {
 
     mockFs.writeFile.mockResolvedValue(undefined)
 
-    const fg = await import("fast-glob")
-    vi.mocked(fg.default).mockResolvedValue(["dialog.tsx"])
+    const { glob } = await import("tinyglobby")
+    vi.mocked(glob).mockResolvedValue(["dialog.tsx"])
 
     // Mock file read to return content with Radix imports
     mockFs.readFile.mockResolvedValue(
@@ -1068,9 +1069,9 @@ describe("migrateRadix - package.json updates", () => {
 
     mockFs.writeFile.mockResolvedValue(undefined)
 
-    // Mock fast-glob to return files with only dialog and select imports
-    const fg = await import("fast-glob")
-    vi.mocked(fg.default).mockResolvedValue(["dialog.tsx"])
+    // Mock tinyglobby to return files with only dialog and select imports
+    const { glob } = await import("tinyglobby")
+    vi.mocked(glob).mockResolvedValue(["dialog.tsx"])
 
     // Mock file read to return content with only dialog and select
     mockFs.readFile.mockResolvedValue(`
@@ -1123,8 +1124,8 @@ describe("migrateRadix - package.json updates", () => {
 
     mockFs.writeFile.mockResolvedValue(undefined)
 
-    const fg = await import("fast-glob")
-    vi.mocked(fg.default).mockResolvedValue(["dialog.tsx"])
+    const { glob } = await import("tinyglobby")
+    vi.mocked(glob).mockResolvedValue(["dialog.tsx"])
 
     // Mock file read to return content with dialog imports but NOT icons
     mockFs.readFile.mockResolvedValue(
