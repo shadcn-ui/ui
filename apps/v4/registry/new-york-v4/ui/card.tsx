@@ -1,8 +1,37 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
+import { Skeleton } from "@/registry/new-york-v4/ui/skeleton"
 
-function Card({ className, ...props }: React.ComponentProps<"div">) {
+function Card({
+  className,
+  isLoading = false,
+  ...props
+}: React.ComponentProps<"div"> & { isLoading?: boolean }) {
+  if (isLoading) {
+    return (
+      <div
+        data-slot="card"
+        className={cn(
+          "flex flex-col gap-6 rounded-xl border bg-card py-6 text-card-foreground shadow-sm",
+          className
+        )}
+        {...props}
+      >
+        <div className="flex flex-col gap-2 px-6">
+          <Skeleton className="h-5 w-1/2" />
+          <Skeleton className="h-4 w-1/3" />
+        </div>
+        <div className="px-6">
+          <Skeleton className="h-20 w-full" />
+        </div>
+        <div className="flex items-center px-6">
+          <Skeleton className="h-9 w-24" />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div
       data-slot="card"

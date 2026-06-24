@@ -5,11 +5,24 @@ import { CheckIcon } from "lucide-react"
 import { Checkbox as CheckboxPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
+import { Skeleton } from "@/registry/new-york-v4/ui/skeleton"
 
 function Checkbox({
   className,
+  isLoading = false,
   ...props
-}: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
+}: React.ComponentProps<typeof CheckboxPrimitive.Root> & {
+  isLoading?: boolean
+}) {
+  if (isLoading) {
+    return (
+      <Skeleton
+        className={cn("size-4 shrink-0 rounded-[4px] border border-input", className)}
+        {...props as any}
+      />
+    )
+  }
+
   return (
     <CheckboxPrimitive.Root
       data-slot="checkbox"

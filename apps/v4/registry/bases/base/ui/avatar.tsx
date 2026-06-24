@@ -4,14 +4,30 @@ import * as React from "react"
 import { Avatar as AvatarPrimitive } from "@base-ui/react/avatar"
 
 import { cn } from "@/registry/bases/base/lib/utils"
+import { Skeleton } from "@/registry/bases/base/ui/skeleton"
 
 function Avatar({
   className,
   size = "default",
+  isLoading = false,
   ...props
 }: AvatarPrimitive.Root.Props & {
   size?: "default" | "sm" | "lg"
+  isLoading?: boolean
 }) {
+  if (isLoading) {
+    return (
+      <Skeleton
+        className={cn(
+          "cn-avatar group/avatar relative flex shrink-0 select-none after:absolute after:inset-0 after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten",
+          className
+        )}
+        data-size={size}
+        {...props as any}
+      />
+    )
+  }
+
   return (
     <AvatarPrimitive.Root
       data-slot="avatar"

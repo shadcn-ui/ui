@@ -3,6 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 
 import { cn } from "@/registry/bases/radix/lib/utils"
+import { Skeleton } from "@/registry/bases/radix/ui/skeleton"
 
 const buttonVariants = cva(
   "cn-button group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
@@ -39,11 +40,16 @@ function Button({
   variant = "default",
   size = "default",
   asChild = false,
+  isLoading,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean
+    isLoading?: boolean
   }) {
+  if (isLoading) {
+    return <Skeleton className={cn(buttonVariants({ variant, size }))} />
+  }
   const Comp = asChild ? Slot.Root : "button"
 
   return (

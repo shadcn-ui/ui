@@ -1,8 +1,12 @@
 import * as React from "react"
 
 import { cn } from "@/registry/bases/radix/lib/utils"
+import { Skeleton } from "@/registry/bases/radix/ui/skeleton"
 
-function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
+function Textarea({ className, isLoading, ...props }: React.ComponentProps<"textarea"> & { isLoading?: boolean }) {
+  if (isLoading) {
+    return <Skeleton className="min-h-16 w-full" />
+  }
   return (
     <textarea
       data-slot="textarea"

@@ -2,6 +2,7 @@ import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/registry/bases/radix/lib/utils"
+import { Skeleton } from "@/registry/bases/radix/ui/skeleton"
 
 const alertVariants = cva("cn-alert group/alert relative w-full", {
   variants: {
@@ -18,8 +19,17 @@ const alertVariants = cva("cn-alert group/alert relative w-full", {
 function Alert({
   className,
   variant,
+  isLoading,
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
+}: React.ComponentProps<"div"> & VariantProps<typeof alertVariants> & { isLoading?: boolean }) {
+  if (isLoading) {
+    return (
+      <div className={cn("space-y-2", className)}>
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-3/4" />
+      </div>
+    )
+  }
   return (
     <div
       data-slot="alert"

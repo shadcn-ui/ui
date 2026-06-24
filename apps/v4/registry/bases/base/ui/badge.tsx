@@ -3,6 +3,7 @@ import { useRender } from "@base-ui/react/use-render"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/registry/bases/base/lib/utils"
+import { Skeleton } from "@/registry/bases/base/ui/skeleton"
 
 const badgeVariants = cva(
   "cn-badge group/badge inline-flex w-fit shrink-0 items-center justify-center overflow-hidden whitespace-nowrap focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none",
@@ -27,8 +28,25 @@ function Badge({
   className,
   variant = "default",
   render,
+  isLoading = false,
   ...props
-}: useRender.ComponentProps<"span"> & VariantProps<typeof badgeVariants>) {
+}: useRender.ComponentProps<"span"> &
+  VariantProps<typeof badgeVariants> & {
+    isLoading?: boolean
+  }) {
+  if (isLoading) {
+    return (
+      <Skeleton
+        className={cn(
+          badgeVariants({ variant }),
+          "pointer-events-none text-transparent",
+          className
+        )}
+        {...props as any}
+      />
+    )
+  }
+
   return useRender({
     defaultTagName: "span",
     props: mergeProps<"span">(
