@@ -279,6 +279,7 @@ export async function findPackageRoot(cwd: string, resolvedPath: string) {
     cwd: commonRoot,
     deep: 3,
     ignore: ["**/node_modules/**", "**/dist/**", "**/build/**", "**/public/**"],
+    suppressErrors: true,
   })
 
   const matchingPackageRoot = packageRoots
