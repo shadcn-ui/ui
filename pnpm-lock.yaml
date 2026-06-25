@@ -156,6 +156,9 @@ importers:
       '@hugeicons/react':
         specifier: ^1.1.1
         version: 1.1.1(react@19.2.3)
+      '@inertiajs/react':
+        specifier: ^3.0.0
+        version: 3.2.0(axios@1.11.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@paper-design/shaders-react':
         specifier: ^0.0.72
         version: 0.0.72(@types/react@19.2.2)(react@19.2.3)
@@ -1862,6 +1865,20 @@ packages:
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [win32]
+
+  '@inertiajs/core@3.2.0':
+    resolution: {integrity: sha512-9HXCyI8GjwN/KK3KSYZifuncZPc3jioDe/jDQVFZEJJEn89lhaE5+ope3l6sI+GaLLTs0MSZcOhyizlA5L7lig==}
+    peerDependencies:
+      axios: ^1.15.2
+    peerDependenciesMeta:
+      axios:
+        optional: true
+
+  '@inertiajs/react@3.2.0':
+    resolution: {integrity: sha512-Mg2d3Rw0/Cdmc94ZUS2ivWY0k0Jyjtci5g0em2F0N6treV5kLK15PgH1OYlDx8Xgin0mG3uchh+tQuv/Hh95uQ==}
+    peerDependencies:
+      react: ^19.0.0
+      react-dom: ^19.0.0
 
   '@inquirer/confirm@5.1.14':
     resolution: {integrity: sha512-5yR4IBfe0kXe59r1YCTG8WXkUbl7Z35HK87Sw+WUyGD8wNUx7JvY7laahzeytyE1oLn74bQnL7hstctQxisQ8Q==}
@@ -6710,6 +6727,14 @@ packages:
     resolution: {integrity: sha512-MbjN408fEndfiQXbFQ1vnd+1NoLDsnQW41410oQBXiyXDMYH5z505juWa4KUE1LqxRC7DgOgZDbKLxHIwm27hA==}
     engines: {node: '>=0.10'}
 
+  laravel-precognition@2.0.0:
+    resolution: {integrity: sha512-dmA4HGc9m+TsVNsJs9/XQBI8u6j7coilN+qKkBuhuXQzH3HypwS/c5dFQ4UqUGjBbcxIM7zdk91kM/SRZwIvWQ==}
+    peerDependencies:
+      axios: ^1.4.0
+    peerDependenciesMeta:
+      axios:
+        optional: true
+
   lazy-ass@1.6.0:
     resolution: {integrity: sha512-cc8oEVoctTvsFZ/Oje/kGnHbpWHYBe8IAJe4C0QNc3t8uM/0Y8+erSz/7Y1ALuXTEZTMvxXwO6YbX1ey3ujiZw==}
     engines: {node: '> 0.8'}
@@ -10357,6 +10382,24 @@ snapshots:
 
   '@img/sharp-win32-x64@0.34.5':
     optional: true
+
+  '@inertiajs/core@3.2.0(axios@1.11.0)':
+    dependencies:
+      '@jridgewell/trace-mapping': 0.3.31
+      es-toolkit: 1.45.1
+      laravel-precognition: 2.0.0(axios@1.11.0)
+    optionalDependencies:
+      axios: 1.11.0(debug@4.4.1)
+
+  '@inertiajs/react@3.2.0(axios@1.11.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+    dependencies:
+      '@inertiajs/core': 3.2.0(axios@1.11.0)
+      es-toolkit: 1.45.1
+      laravel-precognition: 2.0.0(axios@1.11.0)
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+    transitivePeerDependencies:
+      - axios
 
   '@inquirer/confirm@5.1.14(@types/node@20.19.10)':
     dependencies:
@@ -15536,6 +15579,12 @@ snapshots:
   language-tags@1.0.9:
     dependencies:
       language-subtag-registry: 0.3.23
+
+  laravel-precognition@2.0.0(axios@1.11.0):
+    dependencies:
+      es-toolkit: 1.45.1
+    optionalDependencies:
+      axios: 1.11.0(debug@4.4.1)
 
   lazy-ass@1.6.0: {}
 

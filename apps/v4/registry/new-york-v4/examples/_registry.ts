@@ -1242,6 +1242,122 @@ export const examples: Registry["items"] = [
     dependencies: ["@tanstack/react-form", "zod"],
   },
   {
+    name: "form-inertia-demo",
+    type: "registry:example",
+    registryDependencies: ["field", "input", "input-group", "button", "card"],
+    files: [
+      {
+        path: "examples/form-inertia-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@inertiajs/react"],
+  },
+  {
+    name: "form-inertia-input",
+    type: "registry:example",
+    registryDependencies: ["field", "input", "button", "card"],
+    files: [
+      {
+        path: "examples/form-inertia-input.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@inertiajs/react"],
+  },
+  {
+    name: "form-inertia-textarea",
+    type: "registry:example",
+    registryDependencies: ["field", "textarea", "button", "card"],
+    files: [
+      {
+        path: "examples/form-inertia-textarea.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@inertiajs/react"],
+  },
+  {
+    name: "form-inertia-select",
+    type: "registry:example",
+    registryDependencies: ["field", "select", "button", "card"],
+    files: [
+      {
+        path: "examples/form-inertia-select.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@inertiajs/react"],
+  },
+  {
+    name: "form-inertia-checkbox",
+    type: "registry:example",
+    registryDependencies: ["field", "checkbox", "button", "card"],
+    files: [
+      {
+        path: "examples/form-inertia-checkbox.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@inertiajs/react"],
+  },
+  {
+    name: "form-inertia-switch",
+    type: "registry:example",
+    registryDependencies: ["field", "switch", "button", "card"],
+    files: [
+      {
+        path: "examples/form-inertia-switch.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@inertiajs/react"],
+  },
+  {
+    name: "form-inertia-radiogroup",
+    type: "registry:example",
+    registryDependencies: ["field", "radio-group", "button", "card"],
+    files: [
+      {
+        path: "examples/form-inertia-radiogroup.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@inertiajs/react"],
+  },
+  {
+    name: "form-inertia-array",
+    type: "registry:example",
+    registryDependencies: ["field", "input", "input-group", "button", "card"],
+    files: [
+      {
+        path: "examples/form-inertia-array.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@inertiajs/react"],
+  },
+  {
+    name: "form-inertia-complex",
+    type: "registry:example",
+    registryDependencies: [
+      "field",
+      "button",
+      "card",
+      "checkbox",
+      "radio-group",
+      "select",
+      "switch",
+    ],
+    files: [
+      {
+        path: "examples/form-inertia-complex.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@inertiajs/react"],
+  },
+  {
     name: "form-formisch-demo",
     type: "registry:example",
     registryDependencies: ["field", "input", "input-group", "button", "card"],

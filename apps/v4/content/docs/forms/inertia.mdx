@@ -1,0 +1,745 @@
+---
+title: Inertia.js
+description: Build forms in React using Inertia.js
+links:
+  doc: https://inertiajs.com
+---
+
+import { InfoIcon } from "lucide-react"
+
+This guide covers building forms with [Inertia.js](https://inertiajs.com), the library that lets you build single-page apps using classic server-side routing and controllers. Inertia handles form state with the `useForm` hook, sends submissions to your backend with `form.post()` / `form.put()` / `form.patch()`, and feeds server validation errors back into your fields. We'll wire it up to the shadcn `<Field />` primitives, cover file uploads, the new `<Form />` component, and live validation with Laravel Precognition
+
+## Demo
+
+We'll build the following bug report form. It has a text input and a textarea, with validation messages coming from the server
+
+<Callout icon={<InfoIcon />}>
+  **Note:** For the purpose of this demo, we have intentionally disabled browser
+  validation to show how server validation and form errors work in Inertia. It
+  is recommended to add basic browser validation in your production code
+</Callout>
+
+<ComponentPreview
+  name="form-inertia-demo"
+  className="sm:[&_.preview]:h-[700px]"
+  chromeLessOnMobile
+/>
+
+## Approach
+
+Inertia's `useForm` keeps form state on the client and ships it to the server in a single visit. We'll build our form using controlled inputs, which gives you **complete flexibility over the markup and styling**
+
+- `useForm` hook for form state (`data`, `setData`, `errors`, `processing`, `reset`)
+- Plain HTML `<form>` element with a custom `onSubmit` that calls `form.post(url)`
+- Server returns validation errors as an Inertia shared prop and Inertia merges them into `form.errors`
+- `<Field />`, `<FieldLabel />`, `<FieldError />` for accessible markup and error display
+- Two API options: the `useForm` hook (covered first) and the v3 `<Form />` component (covered later)
+
+## Anatomy
+
+Here's a basic example of an Inertia field wired to the shadcn `<Field />`
+
+```tsx showLineNumbers {2-17}
+<form onSubmit={handleSubmit}>
+  <Field data-invalid={!!form.errors.title}>
+    <FieldLabel htmlFor="form-title">Bug Title</FieldLabel>
+    <Input
+      id="form-title"
+      name="title"
+      value={form.data.title}
+      onChange={(e) => form.setData("title", e.target.value)}
+      aria-invalid={!!form.errors.title}
+      placeholder="Login button not working on mobile"
+      autoComplete="off"
+    />
+    <FieldDescription>Provide a concise title for your bug report</FieldDescription>
+    {form.errors.title && (
+      <FieldError errors={[{ message: form.errors.title }]} />
+    )}
+  </Field>
+</form>
+```
+
+<Callout icon={<InfoIcon />}>
+  **Note:** Inertia returns each field's error as a single string at
+  `form.errors.fieldName`. The shadcn `<FieldError />` expects an array of
+  `{ message }` objects, so wrap the string as
+  `errors={[{ message: form.errors.fieldName }]}` whenever you render it
+</Callout>
+
+## Form
+
+### Set up the form
+
+Use the `useForm` hook from `@inertiajs/react` to create your form. Pass an object with the initial values for every field. There is no resolver step and no client schema by default
+
+```tsx showLineNumbers title="form.tsx" {1,4-7,11-14}
+import { useForm } from "@inertiajs/react"
+
+export function BugReportForm() {
+  const form = useForm({
+    title: "",
+    description: "",
+  })
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    form.post("/bug-reports", {
+      preserveScroll: true,
+      onSuccess: () => form.reset(),
+    })
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      {/* ... build the form here ... */}
+    </form>
+  )
+}
+```
+
+When you call `form.post(url, options)`, Inertia sends the request to your backend. If validation fails, the backend returns a 422 with the errors as a shared prop and Inertia copies them into `form.errors`. If it succeeds, the `onSuccess` callback fires
+
+### Build the form
+
+We can now build the full form using the shadcn `<Field />` primitives
+
+<ComponentSource
+  src="/registry/new-york-v4/examples/form-inertia-demo.tsx"
+  title="form.tsx"
+/>
+
+### Done
+
+That's it. You now have a fully accessible form wired to Inertia
+
+When you submit, Inertia sends `form.data` to your backend route. The server validates and returns errors, which Inertia merges into `form.errors` so the UI updates automatically
+
+## Validation
+
+Inertia gives you three ways to validate a form. Pick the one that matches your priorities
+
+| Option | Where rules live | When errors show | Setup cost |
+| --- | --- | --- | --- |
+| Server-side only (default) | Server (e.g. Laravel FormRequest) | After submit | Lowest, just use `useForm` |
+| Laravel Precognition | Server (same rules, reused) | On blur or as the user types | Add middleware + npm package |
+| Client-side schema (Zod, Valibot, ...) | Client | Immediately, no roundtrip | Add schema lib, duplicate rules |
+
+### Server-side Validation (default)
+
+This is how Inertia is designed to work. Your backend defines the rules. The browser submits, the server validates, and Inertia pipes any errors into `form.errors` as a flat object keyed by field name
+
+```tsx showLineNumbers title="form.tsx"
+const form = useForm({ email: "", password: "" })
+
+function handleSubmit(e: React.FormEvent) {
+  e.preventDefault()
+  form.post("/login", {
+    preserveScroll: true,
+    onError: (errors) => {
+      console.log(errors)
+    },
+  })
+}
+```
+
+A few things to know
+
+- `form.errors` is `{ fieldName: string }`, not arrays. 
+<br/>Wrap as `[{ message: form.errors.x }]` when passing to `<FieldError />`
+- `form.hasErrors` is a boolean shortcut you can use anywhere
+- `form.clearErrors()` clears all errors, `form.clearErrors("email", "password")` clears specific ones
+- Use `preserveScroll: true` so the page does not jump when errors arrive
+
+### Live Validation with Laravel Precognition
+
+If you want real-time feedback without duplicating the rules in Zod, Laravel Precognition is the right choice. The rules live in your Laravel `FormRequest`, the browser sends a special "precognitive" request that runs validation but skips the controller, and you get the errors back as the user fills the form
+
+Install the Inertia adapter
+
+```bash
+npm install laravel-precognition-react-inertia
+```
+
+The hook is a drop-in replacement for `useForm` with a different signature: you pass the HTTP method, the URL, and the initial data
+
+```tsx showLineNumbers title="form.tsx" {1,4-7,11-14,19,21-29}
+import { useForm } from "laravel-precognition-react-inertia"
+
+export function CreateUserForm() {
+  const form = useForm("post", "/users", {
+    name: "",
+    email: "",
+  })
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    form.submit({
+      preserveScroll: true,
+      onSuccess: () => form.reset(),
+    })
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Field data-invalid={form.invalid("email")}>
+        <FieldLabel htmlFor="email">Email</FieldLabel>
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          value={form.data.email}
+          onChange={(e) => form.setData("email", e.target.value)}
+          onBlur={() => form.validate("email")}
+          aria-invalid={form.invalid("email")}
+        />
+        {form.invalid("email") && (
+          <FieldError errors={[{ message: form.errors.email }]} />
+        )}
+      </Field>
+    </form>
+  )
+}
+```
+
+What changes compared to the plain Inertia `useForm`
+
+- The hook signature is `useForm(method, url, data)` instead of just `useForm(data)`
+- The submit method is `form.submit(options)`, no URL or HTTP method needed
+- New methods: `validate(field)`, `valid(field)`, `invalid(field)`, `forgetError(field)`, plus a `validating` boolean and `setValidationTimeout(ms)` for tuning debounce
+- The recommended pattern is `onBlur={() => form.validate("field")}` on each input
+
+On the server side, add the `HandlePrecognitiveRequests` middleware to your route and let your `FormRequest` do the work
+
+```php showLineNumbers
+use App\Http\Requests\StoreUserRequest;
+use Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests;
+
+Route::post("/users", function (StoreUserRequest $request) {
+  // ...
+}) ->middleware([HandlePrecognitiveRequests::class]);
+```
+
+If you have expensive rules (database lookups, external API checks) and want to skip them during precognitive requests, use `$this->isPrecognitive()` inside your `FormRequest::rules()`
+
+```php showLineNumbers
+public function rules(): array
+{
+  return [
+    "password" => [
+      "required",
+      $this ->isPrecognitive()
+        ? Password::min(8)
+        : Password::min(8)->uncompromised(),
+    ],
+  ];
+}
+```
+
+### Client Schema Validation (optional)
+
+You can also pair Inertia's `useForm` with a client-side schema library like Zod or Valibot if you want validation to run entirely in the browser without a server roundtrip. The setup is the same as our [React Hook Form](/docs/forms/react-hook-form), [TanStack Form](/docs/forms/tanstack-form), or [Formisch](/docs/forms/formisch) guides, only the submit handler is different: you validate first, then call `form.post()` if the data passes. Skip this option unless you have a specific reason to duplicate rules
+
+## Displaying Errors
+
+Display errors next to the field using `<FieldError />`. Inertia returns each error as a string at `form.errors.fieldName`, so wrap it in the shape `<FieldError />` expects
+
+- Add the `data-invalid` prop to the `<Field />` component
+- Add the `aria-invalid` prop to the form control (`<Input />`, `<SelectTrigger />`, `<Checkbox />`, etc)
+
+```tsx showLineNumbers title="form.tsx" {1,8,11-12}
+<Field data-invalid={!!form.errors.email}>
+  <FieldLabel htmlFor="form-email">Email</FieldLabel>
+  <Input
+    id="form-email"
+    name="email"
+    value={form.data.email}
+    onChange={(e) => form.setData("email", e.target.value)}
+    type="email"
+    aria-invalid={!!form.errors.email}
+  />
+  {form.errors.email && (
+    <FieldError errors={[{ message: form.errors.email }]} />
+  )}
+</Field>
+```
+
+## Working with Different Field Types
+
+### Input
+
+- For input fields, bind `value` to `form.data.fieldName` and update it with `form.setData`
+- To show errors, add the `aria-invalid` prop to the `<Input />` component and the `data-invalid` prop to the `<Field />` component
+
+<ComponentPreview
+  name="form-inertia-input"
+  className="sm:[&_.preview]:h-[700px]"
+  chromeLessOnMobile
+/>
+
+```tsx showLineNumbers title="form.tsx" {3-5,7}
+<Field data-invalid={!!form.errors.username}>
+  <FieldLabel htmlFor="form-username">Username</FieldLabel>
+  <Input
+    id="form-username"
+    name="username"
+    value={form.data.username}
+    onChange={(e) => form.setData("username", e.target.value)}
+    aria-invalid={!!form.errors.username}
+  />
+  {form.errors.username && (
+    <FieldError errors={[{ message: form.errors.username }]} />
+  )}
+</Field>
+```
+
+### Textarea
+
+- For textarea fields, bind `value` to `form.data.fieldName` and update with `form.setData`
+- To show errors, add the `aria-invalid` prop to the `<Textarea />` component and the `data-invalid` prop to the `<Field />` component
+
+<ComponentPreview
+  name="form-inertia-textarea"
+  className="sm:[&_.preview]:h-[700px]"
+  chromeLessOnMobile
+/>
+
+```tsx showLineNumbers title="form.tsx" {5-7}
+<Field data-invalid={!!form.errors.about}>
+  <FieldLabel htmlFor="form-about">More about you</FieldLabel>
+  <Textarea
+    id="form-about"
+    name="about"
+    value={form.data.about}
+    onChange={(e) => form.setData("about", e.target.value)}
+    aria-invalid={!!form.errors.about}
+    placeholder="I'm a software engineer..."
+    className="min-h-[120px]"
+  />
+  <FieldDescription>
+    Tell us more about yourself. This will be used to help us personalize
+    your experience
+  </FieldDescription>
+  {form.errors.about && (
+    <FieldError errors={[{ message: form.errors.about }]} />
+  )}
+</Field>
+```
+
+### Select
+
+- For select components, read `form.data.fieldName` and update via `onValueChange` with `form.setData`
+- To show errors, add the `aria-invalid` prop to the `<SelectTrigger />` component and the `data-invalid` prop to the `<Field />` component
+
+<ComponentPreview
+  name="form-inertia-select"
+  className="sm:[&_.preview]:h-[500px]"
+  chromeLessOnMobile
+/>
+
+```tsx showLineNumbers title="form.tsx" {13-14}
+<Field orientation="responsive" data-invalid={!!form.errors.language}>
+  <FieldContent>
+    <FieldLabel htmlFor="form-language">Spoken Language</FieldLabel>
+    <FieldDescription>
+      For best results, select the language you speak
+    </FieldDescription>
+    {form.errors.language && (
+      <FieldError errors={[{ message: form.errors.language }]} />
+    )}
+  </FieldContent>
+  <Select
+    name="language"
+    value={form.data.language}
+    onValueChange={(value) => form.setData("language", value)}
+  >
+    <SelectTrigger
+      id="form-language"
+      aria-invalid={!!form.errors.language}
+      className="min-w-[120px]"
+    >
+      <SelectValue placeholder="Select" />
+    </SelectTrigger>
+    <SelectContent position="item-aligned">
+      <SelectItem value="auto">Auto</SelectItem>
+      <SelectItem value="en">English</SelectItem>
+    </SelectContent>
+  </Select>
+</Field>
+```
+
+### Checkbox
+
+- For checkbox arrays, read `form.data.fieldName` and update through `setData` with array helpers
+- To show errors, add the `aria-invalid` prop to the `<Checkbox />` component and the `data-invalid` prop to the `<Field />` component
+- Remember to add `data-slot="checkbox-group"` to the `<FieldGroup />` component for proper styling and spacing
+
+<ComponentPreview
+  name="form-inertia-checkbox"
+  className="sm:[&_.preview]:h-[700px]"
+  chromeLessOnMobile
+/>
+
+```tsx showLineNumbers title="form.tsx" {15,18-27}
+<FieldSet data-invalid={!!form.errors.tasks}>
+  <FieldLegend variant="label">Tasks</FieldLegend>
+  <FieldDescription>
+    Get notified when tasks you&apos;ve created have updates
+  </FieldDescription>
+  <FieldGroup data-slot="checkbox-group">
+    {tasks.map((task) => (
+      <Field
+        key={task.id}
+        orientation="horizontal"
+        data-invalid={!!form.errors.tasks}
+      >
+        <Checkbox
+          id={`form-checkbox-${task.id}`}
+          name="tasks"
+          aria-invalid={!!form.errors.tasks}
+          checked={form.data.tasks.includes(task.id)}
+          onCheckedChange={(checked) => {
+            if (checked) {
+              form.setData("tasks", [...form.data.tasks, task.id])
+            } else {
+              form.setData(
+                "tasks",
+                form.data.tasks.filter((value) => value !== task.id)
+              )
+            }
+          }}
+        />
+        <FieldLabel
+          htmlFor={`form-checkbox-${task.id}`}
+          className="font-normal"
+        >
+          {task.label}
+        </FieldLabel>
+      </Field>
+    ))}
+  </FieldGroup>
+  {form.errors.tasks && (
+    <FieldError errors={[{ message: form.errors.tasks }]} />
+  )}
+</FieldSet>
+```
+
+### Radio Group
+
+- For radio groups, read `form.data.fieldName` and call `form.setData` from `onValueChange`
+- To show errors, add the `aria-invalid` prop to the `<RadioGroupItem />` component and the `data-invalid` prop to the `<Field />` component
+
+<ComponentPreview
+  name="form-inertia-radiogroup"
+  className="sm:[&_.preview]:h-[700px]"
+  chromeLessOnMobile
+/>
+
+```tsx showLineNumbers title="form.tsx" {8-9}
+<FieldSet>
+  <FieldLegend>Plan</FieldLegend>
+  <FieldDescription>
+    You can upgrade or downgrade your plan at any time
+  </FieldDescription>
+  <RadioGroup
+    name="plan"
+    value={form.data.plan}
+    onValueChange={(value) => form.setData("plan", value)}
+  >
+    {plans.map((plan) => (
+      <FieldLabel key={plan.id} htmlFor={`form-radiogroup-${plan.id}`}>
+        <Field
+          orientation="horizontal"
+          data-invalid={!!form.errors.plan}
+        >
+          <FieldContent>
+            <FieldTitle>{plan.title}</FieldTitle>
+            <FieldDescription>{plan.description}</FieldDescription>
+          </FieldContent>
+          <RadioGroupItem
+            value={plan.id}
+            id={`form-radiogroup-${plan.id}`}
+            aria-invalid={!!form.errors.plan}
+          />
+        </Field>
+      </FieldLabel>
+    ))}
+  </RadioGroup>
+  {form.errors.plan && (
+    <FieldError errors={[{ message: form.errors.plan }]} />
+  )}
+</FieldSet>
+```
+
+### Switch
+
+- For switches, read `form.data.fieldName` and call `form.setData` from `onCheckedChange`
+- To show errors, add the `aria-invalid` prop to the `<Switch />` component and the `data-invalid` prop to the `<Field />` component
+
+<ComponentPreview
+  name="form-inertia-switch"
+  className="sm:[&_.preview]:h-[500px]"
+  chromeLessOnMobile
+/>
+
+```tsx showLineNumbers title="form.tsx" {15-17}
+<Field orientation="horizontal" data-invalid={!!form.errors.twoFactor}>
+  <FieldContent>
+    <FieldLabel htmlFor="form-twoFactor">
+      Multi-factor authentication
+    </FieldLabel>
+    <FieldDescription>
+      Enable multi-factor authentication to secure your account
+    </FieldDescription>
+    {form.errors.twoFactor && (
+      <FieldError errors={[{ message: form.errors.twoFactor }]} />
+    )}
+  </FieldContent>
+  <Switch
+    id="form-twoFactor"
+    name="twoFactor"
+    checked={form.data.twoFactor}
+    onCheckedChange={(checked) => form.setData("twoFactor", checked)}
+    aria-invalid={!!form.errors.twoFactor}
+  />
+</Field>
+```
+
+### Complex Forms
+
+Here is an example of a more complex form with multiple fields and validation
+
+<ComponentPreview
+  name="form-inertia-complex"
+  className="sm:[&_.preview]:h-[1100px]"
+  chromeLessOnMobile
+/>
+
+## File Uploads
+
+Inertia handles file uploads with no extra configuration. Store the `File` in `form.data` via `setData` and Inertia automatically converts the payload to `FormData` on submit. Track upload progress with `form.progress`
+
+```tsx showLineNumbers title="form.tsx" {1-3,8,17-19,24}
+const form = useForm({
+  name: "",
+  avatar: null as File | null,
+})
+
+function handleSubmit(e: React.FormEvent) {
+  e.preventDefault()
+  form.post("/profile", { forceFormData: true })
+}
+
+<Field data-invalid={!!form.errors.avatar}>
+  <FieldLabel htmlFor="form-avatar">Avatar</FieldLabel>
+  <Input
+    id="form-avatar"
+    type="file"
+    name="avatar"
+    onChange={(e) =>
+      form.setData("avatar", e.target.files?.[0] ?? null)
+    }
+    aria-invalid={!!form.errors.avatar}
+  />
+  {form.progress && (
+    <FieldDescription>
+      Uploading {form.progress.percentage}%
+    </FieldDescription>
+  )}
+  {form.errors.avatar && (
+    <FieldError errors={[{ message: form.errors.avatar }]} />
+  )}
+</Field>
+```
+
+A few useful flags on the request options
+
+- `forceFormData: true` forces `multipart/form-data` even when there are no files (useful with method spoofing on `put` / `patch`)
+- `onProgress` callback fires on every chunk if you need finer control than the `progress` field
+
+## Submit and Loading State
+
+Use `form.processing` to disable the submit button and show a spinner while the request is in flight
+
+```tsx showLineNumbers title="form.tsx" {1,5}
+<Button type="submit" disabled={form.processing}>
+  {form.processing ? "Saving..." : "Save"}
+</Button>
+```
+
+`form.processing` flips to `true` when you call `form.post()` / `form.put()` / etc and back to `false` when the response arrives. You can also use `form.recentlySuccessful` for a transient "Saved!" toast that auto-hides after about 2 seconds
+
+## Resetting the Form
+
+Inertia exposes a `reset` method on the form. Call it without arguments to restore every field to its initial value, or pass field names to reset only specific ones
+
+```tsx showLineNumbers
+<Button type="button" variant="outline" onClick={() => form.reset()}>
+  Reset
+</Button>
+```
+
+You can also reset specific fields, clear errors, or both
+
+```tsx showLineNumbers
+// Reset only the password field
+form.reset("password")
+
+// Clear all errors without touching values
+form.clearErrors()
+
+// Reset values AND clear errors in one shot
+form.resetAndClearErrors()
+```
+
+## Form Component (v3)
+
+Inertia v3 ships an alternative `<Form />` component that reads field values directly from the DOM via `FormData`. You do not have to mirror state in React, you just write standard form markup
+
+```tsx showLineNumbers title="form.tsx" {1,5-6}
+import { Form } from "@inertiajs/react"
+
+export function CreateUserForm() {
+  return (
+    <Form action="/users" method="post">
+      {({ errors, processing, hasErrors, recentlySuccessful }) => (
+        <FieldGroup>
+          <Field data-invalid={!!errors.name}>
+            <FieldLabel htmlFor="form-name">Name</FieldLabel>
+            <Input id="form-name" name="name" aria-invalid={!!errors.name} />
+            {errors.name && (
+              <FieldError errors={[{ message: errors.name }]} />
+            )}
+          </Field>
+          <Button type="submit" disabled={processing}>
+            Save
+          </Button>
+          {recentlySuccessful && <p>Saved</p>}
+        </FieldGroup>
+      )}
+    </Form>
+  )
+}
+```
+
+When to pick the `<Form />` component over `useForm`
+
+- You want minimal React state and prefer native form behavior
+- You are fine with values coming from the DOM rather than being mirrored in React state
+- You do not need precognitive validation (the hook is more flexible there)
+
+Useful props on `<Form />`: `action`, `method`, `transform`, `disableWhileProcessing`, `resetOnSuccess`, `setDefaultsOnSuccess`, `validateFiles`. Render-prop children receive `{ errors, hasErrors, processing, progress, wasSuccessful, recentlySuccessful, isDirty, clearErrors, resetAndClearErrors, setError, reset, submit, defaults, getData, getFormData }`
+
+## Array Fields
+
+Inertia does not ship a dedicated `useFieldArray`-style helper, but the same job is straightforward with `setData` and array manipulation
+
+<ComponentPreview
+  name="form-inertia-array"
+  className="sm:[&_.preview]:h-[700px]"
+  chromeLessOnMobile
+/>
+
+### Array Field Structure
+
+Wrap your array fields in a `<FieldSet />` with a `<FieldLegend />` and `<FieldDescription />`
+
+```tsx showLineNumbers title="form.tsx"
+<FieldSet className="gap-4">
+  <FieldLegend variant="label">Email Addresses</FieldLegend>
+  <FieldDescription>
+    Add up to 5 email addresses where we can contact you
+  </FieldDescription>
+  <FieldGroup className="gap-4">{/* Array items go here */}</FieldGroup>
+</FieldSet>
+```
+
+### Adding, Removing, and Updating Items
+
+All three operations are just `setData` with the right array transformation
+
+```tsx showLineNumbers title="form.tsx"
+// Append a new item
+form.setData("emails", [...form.data.emails, { address: "" }])
+
+// Remove the item at a specific index
+form.setData(
+  "emails",
+  form.data.emails.filter((_, i) => i !== index)
+)
+
+// Update the item at a specific index
+form.setData(
+  "emails",
+  form.data.emails.map((item, i) =>
+    i === index ? { ...item, address: value } : item
+  )
+)
+```
+
+### Rendering Array Items
+
+Map over `form.data.emails` and render each item. Reach into per-item errors with bracket notation, since Laravel returns them at keys like `emails.0.address`
+
+```tsx showLineNumbers title="form.tsx"
+{form.data.emails.map((email, index) => {
+  const emailError = form.errors[`emails.${index}.address`]
+  return (
+    <Field key={index} orientation="horizontal" data-invalid={!!emailError}>
+      <FieldContent>
+        <InputGroup>
+          <InputGroupInput
+            id={`form-array-email-${index}`}
+            name={`emails.${index}.address`}
+            value={email.address}
+            onChange={(e) =>
+              form.setData(
+                "emails",
+                form.data.emails.map((item, i) =>
+                  i === index ? { ...item, address: e.target.value } : item
+                )
+              )
+            }
+            aria-invalid={!!emailError}
+            placeholder="name@example.com"
+            type="email"
+          />
+          {form.data.emails.length > 1 && (
+            <InputGroupAddon align="inline-end">
+              <InputGroupButton
+                type="button"
+                variant="ghost"
+                size="icon-xs"
+                onClick={() =>
+                  form.setData(
+                    "emails",
+                    form.data.emails.filter((_, i) => i !== index)
+                  )
+                }
+                aria-label={`Remove email ${index + 1}`}
+              >
+                <XIcon />
+              </InputGroupButton>
+            </InputGroupAddon>
+          )}
+        </InputGroup>
+        {emailError && <FieldError errors={[{ message: emailError }]} />}
+      </FieldContent>
+    </Field>
+  )
+})}
+```
+
+### Server-side Array Validation
+
+In your Laravel `FormRequest`, validate the array with dot-notation rules. The error keys map directly to `form.errors["emails.0.address"]` on the client
+
+```php showLineNumbers
+public function rules(): array
+{
+  return [
+    "emails" => ["required", "array", "min:1", "max:5"],
+    "emails.*.address" => ["required", "email"],
+  ];
+}
+```

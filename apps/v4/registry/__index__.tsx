@@ -4731,6 +4731,257 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "form-inertia-demo": {
+      name: "form-inertia-demo",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "input", "input-group", "button", "card"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-inertia-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-inertia-demo"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-inertia-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-inertia-input": {
+      name: "form-inertia-input",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "input", "button", "card"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-inertia-input.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-inertia-input"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-inertia-input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-inertia-textarea": {
+      name: "form-inertia-textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "textarea", "button", "card"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-inertia-textarea.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-inertia-textarea"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-inertia-textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-inertia-select": {
+      name: "form-inertia-select",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "select", "button", "card"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-inertia-select.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-inertia-select"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-inertia-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-inertia-checkbox": {
+      name: "form-inertia-checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "checkbox", "button", "card"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-inertia-checkbox.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-inertia-checkbox"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-inertia-checkbox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-inertia-switch": {
+      name: "form-inertia-switch",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "switch", "button", "card"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-inertia-switch.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-inertia-switch"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-inertia-switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-inertia-radiogroup": {
+      name: "form-inertia-radiogroup",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "radio-group", "button", "card"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-inertia-radiogroup.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-inertia-radiogroup"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-inertia-radiogroup"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-inertia-array": {
+      name: "form-inertia-array",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "input", "input-group", "button", "card"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-inertia-array.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-inertia-array"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-inertia-array"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-inertia-complex": {
+      name: "form-inertia-complex",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "field",
+        "button",
+        "card",
+        "checkbox",
+        "radio-group",
+        "select",
+        "switch",
+      ],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/form-inertia-complex.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/form-inertia-complex"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "form-inertia-complex"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "form-formisch-demo": {
       name: "form-formisch-demo",
       title: "undefined",
