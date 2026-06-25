@@ -15,6 +15,7 @@ import { clearRegistryContext } from "@/src/registry/context"
 import { registryConfigSchema } from "@/src/registry/schema"
 import { isUrl } from "@/src/registry/utils"
 import { rawConfigSchema } from "@/src/schema"
+import { promptInstallShadcnSkills } from "@/src/skills/install"
 import {
   getTemplateForFramework,
   resolveTemplate,
@@ -179,6 +180,7 @@ export const init = new Command()
         options.base = options.base || "base"
         options.reinstall = options.reinstall ?? false
       }
+
 
       if (options.template && !(options.template in templates)) {
         logger.error(
@@ -598,8 +600,8 @@ export async function runInit(
     | undefined
   const resolvedTemplateConfig = explicitTemplate
     ? resolveTemplate(templates[explicitTemplate], {
-        monorepo: options.monorepo,
-      })
+      monorepo: options.monorepo,
+    })
     : undefined
 
   // When a monorepo template with an init handler is explicitly provided
@@ -669,6 +671,11 @@ export async function runInit(
       // Run postInit for newly scaffolded projects (e.g. git init).
       await templatePostInit({ projectPath: options.cwd })
     }
+
+    await promptInstallShadcnSkills({
+      cwd: options.cwd,
+      silent: options.silent,
+    })
 
     return result
   }
@@ -803,10 +810,20 @@ export async function runInit(
       options.isNewProject || projectInfo?.framework.name === "next-app",
   })
 
+  await promptInstallShadcnSkills({
+    cwd: options.cwd,
+    silent: options.silent,
+  })
+
   // Run postInit only for newly scaffolded projects.
   if (templatePostInit) {
     await templatePostInit({ projectPath: options.cwd })
   }
+
+  await promptInstallShadcnSkills({
+    cwd: options.cwd,
+    silent: options.silent,
+  })
 
   return fullConfig
 }
