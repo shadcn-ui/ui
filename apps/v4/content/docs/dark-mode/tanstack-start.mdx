@@ -27,6 +27,8 @@ type ThemeProviderState = {
 }
 
 function getThemeScript(storageKey: string, defaultTheme: Theme) {
+  if (typeof window === 'undefined') return
+
   const key = JSON.stringify(storageKey)
   const fallback = JSON.stringify(defaultTheme)
 
