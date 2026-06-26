@@ -35,6 +35,7 @@ export function NotFound() {
               <InputGroupAddon>
                 <IconPlaceholder
                   lucide="SearchIcon"
+                  materialSymbols="search"
                   tabler="IconSearch"
                   hugeicons="Search01Icon"
                   phosphor="MagnifyingGlassIcon"

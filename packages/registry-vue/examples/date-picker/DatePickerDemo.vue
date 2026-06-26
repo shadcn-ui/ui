@@ -2,7 +2,7 @@
 import type { DateValue } from '@internationalized/date'
 import { DateFormatter, getLocalTimeZone, today } from '@internationalized/date'
 
-import { CalendarIcon } from 'lucide-vue-next'
+import CalendarIcon from "@material-symbols/svg-400/rounded/calendar_month.svg?component"
 import { cn } from '@/lib/utils'
 import { Button } from '@/ui/button'
 import { Calendar } from '@/ui/calendar'

@@ -53,6 +53,7 @@ export function NavUser({
             </div>
             <IconPlaceholder
               lucide="EllipsisVerticalIcon"
+              materialSymbols="more_vert"
               tabler="IconDotsVertical"
               hugeicons="MoreVerticalCircle01Icon"
               phosphor="DotsThreeVerticalIcon"
@@ -87,6 +88,7 @@ export function NavUser({
               <DropdownMenuItem>
                 <IconPlaceholder
                   lucide="CircleUserRoundIcon"
+                  materialSymbols="account_circle"
                   tabler="IconUserCircle"
                   hugeicons="UserCircle02Icon"
                   phosphor="UserCircleIcon"
@@ -97,6 +99,7 @@ export function NavUser({
               <DropdownMenuItem>
                 <IconPlaceholder
                   lucide="CreditCardIcon"
+                  materialSymbols="credit_card"
                   tabler="IconCreditCard"
                   hugeicons="CreditCardIcon"
                   phosphor="CreditCardIcon"
@@ -107,6 +110,7 @@ export function NavUser({
               <DropdownMenuItem>
                 <IconPlaceholder
                   lucide="BellIcon"
+                  materialSymbols="notifications"
                   tabler="IconNotification"
                   hugeicons="Notification03Icon"
                   phosphor="BellIcon"
@@ -119,6 +123,7 @@ export function NavUser({
             <DropdownMenuItem>
               <IconPlaceholder
                 lucide="LogOutIcon"
+                materialSymbols="logout"
                 tabler="IconLogout"
                 hugeicons="Logout01Icon"
                 phosphor="SignOutIcon"

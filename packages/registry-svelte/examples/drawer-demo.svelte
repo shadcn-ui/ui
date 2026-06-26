@@ -1,6 +1,6 @@
 <script lang="ts">
-	import MinusIcon from "@lucide/svelte/icons/minus";
-	import PlusIcon from "@lucide/svelte/icons/plus";
+	import MinusIcon from "~icons/ms/remove";
+	import PlusIcon from "~icons/ms/add";
 	import * as Drawer from "$lib/registry/ui/drawer/index.js";
 	import { Button, buttonVariants } from "$lib/registry/ui/button/index.js";
 	import { BarChart, type ChartContextValue } from "layerchart";

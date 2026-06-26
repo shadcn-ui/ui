@@ -2,7 +2,7 @@
 	import * as Item from "@/svelte-ui/item/index.js";
 	import * as Avatar from "@/svelte-ui/avatar/index.js";
 	import { Button } from "@/svelte-ui/button/index.js";
-	import Plus from "@lucide/svelte/icons/plus";
+	import Plus from "~icons/ms/add";
 
 	const people = [
 		{

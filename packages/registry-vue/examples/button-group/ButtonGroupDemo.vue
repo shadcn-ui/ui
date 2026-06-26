@@ -1,5 +1,13 @@
 <script setup lang="ts">
-import { ArchiveIcon, ArrowLeftIcon, CalendarPlusIcon, ClockIcon, ListFilterPlusIcon, MailCheckIcon, MoreHorizontalIcon, TagIcon, Trash2Icon } from 'lucide-vue-next'
+import ArchiveIcon from "@material-symbols/svg-400/rounded/archive.svg?component"
+import ArrowLeftIcon from "@material-symbols/svg-400/rounded/arrow_left.svg?component"
+import CalendarPlusIcon from "@material-symbols/svg-400/rounded/calendar_add_on.svg?component"
+import ClockIcon from "@material-symbols/svg-400/rounded/schedule.svg?component"
+import ListFilterPlusIcon from "@material-symbols/svg-400/rounded/filter_list.svg?component"
+import MailCheckIcon from "@material-symbols/svg-400/rounded/mark_email_read.svg?component"
+import MoreHorizontalIcon from "@material-symbols/svg-400/rounded/more_horiz.svg?component"
+import TagIcon from "@material-symbols/svg-400/rounded/tag.svg?component"
+import Trash2Icon from "@material-symbols/svg-400/rounded/delete.svg?component"
 import { Button } from '@/ui/button'
 import { ButtonGroup } from '@/ui/button-group'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from '@/ui/dropdown-menu'

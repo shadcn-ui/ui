@@ -35,10 +35,12 @@
     "zod": "^3.0.0"
   },
   "devDependencies": {
+    "@material-symbols/svg-400": "^0.45.2",
     "@tailwindcss/vite": "4.1.18",
     "@vitejs/plugin-vue": "^5.2.0",
     "tailwindcss": "4.1.18",
     "typescript": "^5.7.0",
-    "vite": "^6.0.0"
+    "vite": "^6.0.0",
+    "vite-svg-loader": "^5.1.1"
   }
 }

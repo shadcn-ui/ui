@@ -18,10 +18,10 @@ import {
 
 import type { ComponentLike } from '@glint/template';
 
-import ChevronDown from '~icons/lucide/chevron-down';
-import Frame from '~icons/lucide/frame';
-import Map from '~icons/lucide/map';
-import PieChart from '~icons/lucide/pie-chart';
+import ChevronDown from '~icons/ms/keyboard_arrow_down';
+import Frame from '~icons/ms/crop_free';
+import Map from '~icons/ms/map';
+import PieChart from '~icons/ms/pie_chart';
 
 const projects = [
   { name: 'Design Engineering', url: '#', icon: Frame as ComponentLike },

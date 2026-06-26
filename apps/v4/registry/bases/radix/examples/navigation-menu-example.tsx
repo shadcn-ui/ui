@@ -201,6 +201,7 @@ function NavigationMenuWithoutViewport() {
                     <Link href="#" className="flex-row items-center gap-2">
                       <IconPlaceholder
                         lucide="CircleAlertIcon"
+                        materialSymbols="error"
                         tabler="IconExclamationCircle"
                         hugeicons="AlertCircleIcon"
                         phosphor="WarningCircleIcon"
@@ -213,6 +214,7 @@ function NavigationMenuWithoutViewport() {
                     <Link href="#" className="flex-row items-center gap-2">
                       <IconPlaceholder
                         lucide="CircleAlertIcon"
+                        materialSymbols="error"
                         tabler="IconExclamationCircle"
                         hugeicons="AlertCircleIcon"
                         phosphor="WarningCircleIcon"
@@ -225,6 +227,7 @@ function NavigationMenuWithoutViewport() {
                     <Link href="#">
                       <IconPlaceholder
                         lucide="CircleAlertIcon"
+                        materialSymbols="error"
                         tabler="IconExclamationCircle"
                         hugeicons="AlertCircleIcon"
                         phosphor="WarningCircleIcon"

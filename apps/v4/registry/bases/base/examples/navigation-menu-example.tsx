@@ -113,6 +113,7 @@ function NavigationMenuBasic() {
                   >
                     <IconPlaceholder
                       lucide="CircleAlertIcon"
+                      materialSymbols="error"
                       tabler="IconExclamationCircle"
                       hugeicons="AlertCircleIcon"
                       phosphor="WarningCircleIcon"
@@ -127,6 +128,7 @@ function NavigationMenuBasic() {
                   >
                     <IconPlaceholder
                       lucide="CircleAlertIcon"
+                      materialSymbols="error"
                       tabler="IconExclamationCircle"
                       hugeicons="AlertCircleIcon"
                       phosphor="WarningCircleIcon"
@@ -141,6 +143,7 @@ function NavigationMenuBasic() {
                   >
                     <IconPlaceholder
                       lucide="CircleAlertIcon"
+                      materialSymbols="error"
                       tabler="IconExclamationCircle"
                       hugeicons="AlertCircleIcon"
                       phosphor="WarningCircleIcon"

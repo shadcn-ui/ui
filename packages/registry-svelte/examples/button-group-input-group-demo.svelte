@@ -1,6 +1,6 @@
 <script lang="ts">
-	import AudioLines from "@lucide/svelte/icons/audio-lines";
-	import Plus from "@lucide/svelte/icons/plus";
+	import AudioLines from "~icons/ms/graphic_eq";
+	import Plus from "~icons/ms/add";
 	import { Button } from "$lib/registry/ui/button/index.js";
 	import * as ButtonGroup from "$lib/registry/ui/button-group/index.js";
 	import * as InputGroup from "$lib/registry/ui/input-group/index.js";

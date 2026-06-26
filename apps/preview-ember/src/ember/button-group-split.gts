@@ -4,7 +4,7 @@ import {
   ButtonGroupSeparator,
 } from '@/ember-ui/button-group';
 
-import PlusIcon from '~icons/lucide/plus';
+import PlusIcon from '~icons/ms/add';
 
 <template>
   <ButtonGroup>

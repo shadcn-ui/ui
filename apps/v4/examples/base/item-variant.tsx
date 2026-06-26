@@ -1,4 +1,4 @@
-import { InboxIcon } from "lucide-react"
+import { InboxIcon } from "@/examples/material-symbols"
 
 import {
   Item,

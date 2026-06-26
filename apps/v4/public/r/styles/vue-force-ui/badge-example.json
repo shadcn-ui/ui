@@ -3,7 +3,7 @@
   "name": "badge-example",
   "title": "Badge",
   "dependencies": [
-    "lucide-vue-next"
+    "@material-symbols/svg-400"
   ],
   "registryDependencies": [
     "badge"
@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "registry/vue-force-ui/examples/badge/BadgeDemo.vue",
-      "content": "<script setup lang=\"ts\">\nimport { Badge } from \"@/ui/badge\"\nimport { BadgeCheckIcon } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <div class=\"flex flex-col items-center gap-2\">\n    <div class=\"flex w-full flex-wrap gap-2\">\n      <Badge>Badge</Badge>\n      <Badge variant=\"secondary\"> Secondary </Badge>\n      <Badge variant=\"destructive\"> Destructive </Badge>\n      <Badge variant=\"warning\"> Warning </Badge>\n      <Badge variant=\"outline\"> Outline </Badge>\n    </div>\n    <div class=\"flex w-full flex-wrap gap-2\">\n      <Badge\n        variant=\"secondary\"\n        class=\"bg-blue-500 text-white dark:bg-blue-600\"\n      >\n        <BadgeCheckIcon />\n        Verified\n      </Badge>\n      <Badge class=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\">\n        8\n      </Badge>\n      <Badge\n        class=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\"\n        variant=\"destructive\"\n      >\n        99\n      </Badge>\n      <Badge\n        class=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\"\n        variant=\"outline\"\n      >\n        20+\n      </Badge>\n    </div>\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport { Badge } from \"@/ui/badge\"\nimport BadgeCheckIcon from \"@material-symbols/svg-400/rounded/verified.svg?component\"\n</script>\n\n<template>\n  <div class=\"flex flex-col items-center gap-2\">\n    <div class=\"flex w-full flex-wrap gap-2\">\n      <Badge>Badge</Badge>\n      <Badge variant=\"secondary\"> Secondary </Badge>\n      <Badge variant=\"destructive\"> Destructive </Badge>\n      <Badge variant=\"warning\"> Warning </Badge>\n      <Badge variant=\"outline\"> Outline </Badge>\n    </div>\n    <div class=\"flex w-full flex-wrap gap-2\">\n      <Badge\n        variant=\"secondary\"\n        class=\"bg-blue-500 text-white dark:bg-blue-600\"\n      >\n        <BadgeCheckIcon />\n        Verified\n      </Badge>\n      <Badge class=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\">\n        8\n      </Badge>\n      <Badge\n        class=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\"\n        variant=\"destructive\"\n      >\n        99\n      </Badge>\n      <Badge\n        class=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\"\n        variant=\"outline\"\n      >\n        20+\n      </Badge>\n    </div>\n  </div>\n</template>\n",
       "type": "registry:example"
     },
     {

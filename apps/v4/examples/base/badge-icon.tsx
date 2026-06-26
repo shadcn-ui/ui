@@ -1,4 +1,4 @@
-import { BadgeCheck, BookmarkIcon } from "lucide-react"
+import { BadgeCheck, BookmarkIcon } from "@/examples/material-symbols"
 
 import { Badge } from "@/styles/base-force-ui/ui/badge"
 

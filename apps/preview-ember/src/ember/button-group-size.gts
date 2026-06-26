@@ -1,7 +1,7 @@
 import { Button } from '@/ember-ui/button';
 import { ButtonGroup } from '@/ember-ui/button-group';
 
-import PlusIcon from '~icons/lucide/plus';
+import PlusIcon from '~icons/ms/add';
 
 <template>
   <div class="flex flex-col items-start gap-8">

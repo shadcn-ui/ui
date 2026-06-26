@@ -28,6 +28,7 @@ function ToggleBasic() {
         <Toggle aria-label="Toggle bold" defaultPressed>
           <IconPlaceholder
             lucide="BoldIcon"
+            materialSymbols="format_bold"
             tabler="IconBold"
             hugeicons="TextBoldIcon"
             phosphor="TextBIcon"
@@ -37,6 +38,7 @@ function ToggleBasic() {
         <Toggle aria-label="Toggle italic">
           <IconPlaceholder
             lucide="ItalicIcon"
+            materialSymbols="format_italic"
             tabler="IconItalic"
             hugeicons="TextItalicIcon"
             phosphor="TextItalicIcon"
@@ -46,6 +48,7 @@ function ToggleBasic() {
         <Toggle aria-label="Toggle underline">
           <IconPlaceholder
             lucide="UnderlineIcon"
+            materialSymbols="format_underlined"
             tabler="IconUnderline"
             hugeicons="TextUnderlineIcon"
             phosphor="TextUnderlineIcon"
@@ -64,6 +67,7 @@ function ToggleOutline() {
         <Toggle variant="outline" aria-label="Toggle italic">
           <IconPlaceholder
             lucide="ItalicIcon"
+            materialSymbols="format_italic"
             tabler="IconItalic"
             hugeicons="TextItalicIcon"
             phosphor="TextItalicIcon"
@@ -74,6 +78,7 @@ function ToggleOutline() {
         <Toggle variant="outline" aria-label="Toggle bold">
           <IconPlaceholder
             lucide="BoldIcon"
+            materialSymbols="format_bold"
             tabler="IconBold"
             hugeicons="TextBoldIcon"
             phosphor="TextBIcon"
@@ -145,6 +150,7 @@ function ToggleWithButtonIcon() {
           <Button variant="outline" size="icon-sm">
             <IconPlaceholder
               lucide="BoldIcon"
+              materialSymbols="format_bold"
               tabler="IconBold"
               hugeicons="TextBoldIcon"
               phosphor="TextBIcon"
@@ -154,6 +160,7 @@ function ToggleWithButtonIcon() {
           <Toggle variant="outline" aria-label="Toggle sm icon" size="sm">
             <IconPlaceholder
               lucide="BoldIcon"
+              materialSymbols="format_bold"
               tabler="IconBold"
               hugeicons="TextBoldIcon"
               phosphor="TextBIcon"
@@ -165,6 +172,7 @@ function ToggleWithButtonIcon() {
           <Button variant="outline" size="icon">
             <IconPlaceholder
               lucide="ItalicIcon"
+              materialSymbols="format_italic"
               tabler="IconItalic"
               hugeicons="TextItalicIcon"
               phosphor="TextItalicIcon"
@@ -178,6 +186,7 @@ function ToggleWithButtonIcon() {
           >
             <IconPlaceholder
               lucide="ItalicIcon"
+              materialSymbols="format_italic"
               tabler="IconItalic"
               hugeicons="TextItalicIcon"
               phosphor="TextItalicIcon"
@@ -189,6 +198,7 @@ function ToggleWithButtonIcon() {
           <Button variant="outline" size="icon-lg">
             <IconPlaceholder
               lucide="UnderlineIcon"
+              materialSymbols="format_underlined"
               tabler="IconUnderline"
               hugeicons="TextUnderlineIcon"
               phosphor="TextUnderlineIcon"
@@ -198,6 +208,7 @@ function ToggleWithButtonIcon() {
           <Toggle variant="outline" aria-label="Toggle lg icon" size="lg">
             <IconPlaceholder
               lucide="UnderlineIcon"
+              materialSymbols="format_underlined"
               tabler="IconUnderline"
               hugeicons="TextUnderlineIcon"
               phosphor="TextUnderlineIcon"
@@ -218,6 +229,7 @@ function ToggleWithButtonIconText() {
           <Button size="sm" variant="outline">
             <IconPlaceholder
               lucide="BoldIcon"
+              materialSymbols="format_bold"
               tabler="IconBold"
               hugeicons="TextBoldIcon"
               phosphor="TextBIcon"
@@ -229,6 +241,7 @@ function ToggleWithButtonIconText() {
           <Toggle variant="outline" aria-label="Toggle sm icon text" size="sm">
             <IconPlaceholder
               lucide="BoldIcon"
+              materialSymbols="format_bold"
               tabler="IconBold"
               hugeicons="TextBoldIcon"
               phosphor="TextBIcon"
@@ -241,6 +254,7 @@ function ToggleWithButtonIconText() {
           <Button size="default" variant="outline">
             <IconPlaceholder
               lucide="ItalicIcon"
+              materialSymbols="format_italic"
               tabler="IconItalic"
               hugeicons="TextItalicIcon"
               phosphor="TextItalicIcon"
@@ -256,6 +270,7 @@ function ToggleWithButtonIconText() {
           >
             <IconPlaceholder
               lucide="ItalicIcon"
+              materialSymbols="format_italic"
               tabler="IconItalic"
               hugeicons="TextItalicIcon"
               phosphor="TextItalicIcon"
@@ -268,6 +283,7 @@ function ToggleWithButtonIconText() {
           <Button size="lg" variant="outline">
             <IconPlaceholder
               lucide="UnderlineIcon"
+              materialSymbols="format_underlined"
               tabler="IconUnderline"
               hugeicons="TextUnderlineIcon"
               phosphor="TextUnderlineIcon"
@@ -279,6 +295,7 @@ function ToggleWithButtonIconText() {
           <Toggle variant="outline" aria-label="Toggle lg icon text" size="lg">
             <IconPlaceholder
               lucide="UnderlineIcon"
+              materialSymbols="format_underlined"
               tabler="IconUnderline"
               hugeicons="TextUnderlineIcon"
               phosphor="TextUnderlineIcon"
@@ -314,6 +331,7 @@ function ToggleWithIcon() {
         <Toggle aria-label="Toggle bookmark" defaultPressed>
           <IconPlaceholder
             lucide="BookmarkIcon"
+            materialSymbols="bookmark"
             tabler="IconBookmark"
             hugeicons="BookmarkIcon"
             phosphor="BookmarkIcon"
@@ -324,6 +342,7 @@ function ToggleWithIcon() {
         <Toggle variant="outline" aria-label="Toggle bookmark outline">
           <IconPlaceholder
             lucide="BookmarkIcon"
+            materialSymbols="bookmark"
             tabler="IconBookmark"
             hugeicons="BookmarkIcon"
             phosphor="BookmarkIcon"

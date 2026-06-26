@@ -16,8 +16,8 @@ import {
   TooltipTrigger,
 } from '@/ui/tooltip';
 
-import AudioLinesIcon from '~icons/lucide/audio-lines';
-import PlusIcon from '~icons/lucide/plus';
+import AudioLinesIcon from '~icons/ms/graphic_eq';
+import PlusIcon from '~icons/ms/add';
 
 export default class ButtonGroupInputGroup extends Component {
   @tracked voiceEnabled = false;

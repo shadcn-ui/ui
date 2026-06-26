@@ -1,4 +1,4 @@
-import { BookmarkIcon } from "lucide-react"
+import { BookmarkIcon } from "@/examples/material-symbols"
 
 import { Toggle } from "@/styles/base-force-ui/ui/toggle"
 

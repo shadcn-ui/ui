@@ -6,8 +6,8 @@ import {
   ItemTitle,
 } from '@/ember-ui/item';
 
-import ChevronRightIcon from '~icons/lucide/chevron-right';
-import ExternalLinkIcon from '~icons/lucide/external-link';
+import ChevronRightIcon from '~icons/ms/chevron_right';
+import ExternalLinkIcon from '~icons/ms/open_in_new';
 
 <template>
   <div class="flex w-full max-w-md flex-col gap-4">

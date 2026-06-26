@@ -14,7 +14,7 @@ export function formatDate(date: Date | undefined) {
 <script setup lang="ts">
 import { fromDate, getLocalTimeZone } from '@internationalized/date'
 import { parseDate } from 'chrono-node'
-import { CalendarIcon } from 'lucide-vue-next'
+import CalendarIcon from "@material-symbols/svg-400/rounded/calendar_month.svg?component"
 import { Button } from '@/ui/button'
 import { Calendar } from '@/ui/calendar'
 import { Input } from '@/ui/input'

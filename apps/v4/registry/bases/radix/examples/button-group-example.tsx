@@ -130,6 +130,7 @@ function ButtonGroupWithDropdown() {
               <Button variant="outline" size="icon">
                 <IconPlaceholder
                   lucide="ChevronDownIcon"
+                  materialSymbols="keyboard_arrow_down"
                   tabler="IconChevronDown"
                   hugeicons="ArrowDown01Icon"
                   phosphor="CaretDownIcon"
@@ -152,6 +153,7 @@ function ButtonGroupWithDropdown() {
               <Button variant="outline" size="icon">
                 <IconPlaceholder
                   lucide="ChevronDownIcon"
+                  materialSymbols="keyboard_arrow_down"
                   tabler="IconChevronDown"
                   hugeicons="ArrowDown01Icon"
                   phosphor="CaretDownIcon"
@@ -164,6 +166,7 @@ function ButtonGroupWithDropdown() {
                 <DropdownMenuItem>
                   <IconPlaceholder
                     lucide="VolumeOffIcon"
+                    materialSymbols="volume_off"
                     tabler="IconVolume"
                     hugeicons="VolumeOffIcon"
                     phosphor="SpeakerSlashIcon"
@@ -174,6 +177,7 @@ function ButtonGroupWithDropdown() {
                 <DropdownMenuItem>
                   <IconPlaceholder
                     lucide="CheckIcon"
+                    materialSymbols="check"
                     tabler="IconCheck"
                     hugeicons="Tick02Icon"
                     phosphor="CheckIcon"
@@ -184,6 +188,7 @@ function ButtonGroupWithDropdown() {
                 <DropdownMenuItem>
                   <IconPlaceholder
                     lucide="AlertTriangleIcon"
+                    materialSymbols="warning"
                     tabler="IconAlertTriangle"
                     hugeicons="AlertCircleIcon"
                     phosphor="WarningIcon"
@@ -194,6 +199,7 @@ function ButtonGroupWithDropdown() {
                 <DropdownMenuItem>
                   <IconPlaceholder
                     lucide="UserRoundXIcon"
+                    materialSymbols="person_off"
                     tabler="IconUserX"
                     hugeicons="UserRemove01Icon"
                     phosphor="UserMinusIcon"
@@ -204,6 +210,7 @@ function ButtonGroupWithDropdown() {
                 <DropdownMenuItem>
                   <IconPlaceholder
                     lucide="ShareIcon"
+                    materialSymbols="share"
                     tabler="IconShare"
                     hugeicons="Share03Icon"
                     phosphor="ShareIcon"
@@ -214,6 +221,7 @@ function ButtonGroupWithDropdown() {
                 <DropdownMenuItem>
                   <IconPlaceholder
                     lucide="CopyIcon"
+                    materialSymbols="content_copy"
                     tabler="IconCopy"
                     hugeicons="Copy01Icon"
                     phosphor="CopyIcon"
@@ -227,6 +235,7 @@ function ButtonGroupWithDropdown() {
                 <DropdownMenuItem variant="destructive">
                   <IconPlaceholder
                     lucide="TrashIcon"
+                    materialSymbols="delete"
                     tabler="IconTrash"
                     hugeicons="Delete02Icon"
                     phosphor="TrashIcon"
@@ -267,6 +276,7 @@ function ButtonGroupWithSelect() {
           <Button variant="outline">
             <IconPlaceholder
               lucide="ArrowRightIcon"
+              materialSymbols="arrow_right"
               tabler="IconArrowRight"
               hugeicons="ArrowRight01Icon"
               phosphor="ArrowRightIcon"
@@ -287,6 +297,7 @@ function ButtonGroupWithIcons() {
           <Button variant="outline">
             <IconPlaceholder
               lucide="FlipHorizontalIcon"
+              materialSymbols="flip"
               tabler="IconFlipHorizontal"
               hugeicons="FlipHorizontalIcon"
               phosphor="ArrowsHorizontalIcon"
@@ -296,6 +307,7 @@ function ButtonGroupWithIcons() {
           <Button variant="outline">
             <IconPlaceholder
               lucide="FlipVerticalIcon"
+              materialSymbols="flip"
               tabler="IconFlipVertical"
               hugeicons="FlipVerticalIcon"
               phosphor="ArrowsVerticalIcon"
@@ -305,6 +317,7 @@ function ButtonGroupWithIcons() {
           <Button variant="outline">
             <IconPlaceholder
               lucide="RotateCwIcon"
+              materialSymbols="rotate_right"
               tabler="IconRotateClockwise2"
               hugeicons="Rotate01Icon"
               phosphor="ArrowClockwiseIcon"
@@ -329,6 +342,7 @@ function ButtonGroupWithInputGroup() {
           >
             <IconPlaceholder
               lucide="SearchIcon"
+              materialSymbols="search"
               tabler="IconSearch"
               hugeicons="Search01Icon"
               phosphor="MagnifyingGlassIcon"
@@ -363,6 +377,7 @@ function ButtonGroupWithFields() {
             <Button variant="outline" size="icon">
               <IconPlaceholder
                 lucide="MinusIcon"
+                materialSymbols="remove"
                 tabler="IconMinus"
                 hugeicons="MinusSignIcon"
                 phosphor="MinusIcon"
@@ -372,6 +387,7 @@ function ButtonGroupWithFields() {
             <Button variant="outline" size="icon">
               <IconPlaceholder
                 lucide="PlusIcon"
+                materialSymbols="add"
                 tabler="IconPlus"
                 hugeicons="PlusSignIcon"
                 phosphor="PlusIcon"
@@ -392,6 +408,7 @@ function ButtonGroupWithLike() {
         <Button variant="outline">
           <IconPlaceholder
             lucide="HeartIcon"
+            materialSymbols="favorite"
             tabler="IconBell"
             hugeicons="Notification02Icon"
             phosphor="HeartIcon"
@@ -438,6 +455,7 @@ function ButtonGroupNested() {
           <Button variant="outline" size="icon">
             <IconPlaceholder
               lucide="PlusIcon"
+              materialSymbols="add"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
@@ -453,6 +471,7 @@ function ButtonGroupNested() {
                 <InputGroupAddon align="inline-end">
                   <IconPlaceholder
                     lucide="AudioLinesIcon"
+                    materialSymbols="graphic_eq"
                     tabler="IconHeadphones"
                     hugeicons="AudioWave01Icon"
                     phosphor="MicrophoneIcon"
@@ -476,6 +495,7 @@ function ButtonGroupPagination() {
         <Button variant="outline" size="sm">
           <IconPlaceholder
             lucide="ArrowLeftIcon"
+            materialSymbols="arrow_left"
             tabler="IconArrowLeft"
             hugeicons="ArrowLeft01Icon"
             phosphor="ArrowLeftIcon"
@@ -503,6 +523,7 @@ function ButtonGroupPagination() {
           Next
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight01Icon"
             phosphor="ArrowRightIcon"
@@ -540,6 +561,7 @@ function ButtonGroupPaginationSplit() {
           <Button variant="outline" size="icon-xs">
             <IconPlaceholder
               lucide="ArrowLeftIcon"
+              materialSymbols="arrow_left"
               tabler="IconArrowLeft"
               hugeicons="ArrowLeft01Icon"
               phosphor="ArrowLeftIcon"
@@ -549,6 +571,7 @@ function ButtonGroupPaginationSplit() {
           <Button variant="outline" size="icon-xs">
             <IconPlaceholder
               lucide="ArrowRightIcon"
+              materialSymbols="arrow_right"
               tabler="IconArrowRight"
               hugeicons="ArrowRight01Icon"
               phosphor="ArrowRightIcon"
@@ -569,6 +592,7 @@ function ButtonGroupNavigation() {
           <Button variant="outline">
             <IconPlaceholder
               lucide="ArrowLeftIcon"
+              materialSymbols="arrow_left"
               tabler="IconArrowLeft"
               hugeicons="ArrowLeft01Icon"
               phosphor="ArrowLeftIcon"
@@ -578,6 +602,7 @@ function ButtonGroupNavigation() {
           <Button variant="outline">
             <IconPlaceholder
               lucide="ArrowRightIcon"
+              materialSymbols="arrow_right"
               tabler="IconArrowRight"
               hugeicons="ArrowRight01Icon"
               phosphor="ArrowRightIcon"
@@ -589,6 +614,7 @@ function ButtonGroupNavigation() {
           <Button variant="outline" size="icon">
             <IconPlaceholder
               lucide="ArrowLeftIcon"
+              materialSymbols="arrow_left"
               tabler="IconArrowLeft"
               hugeicons="ArrowLeft01Icon"
               phosphor="ArrowLeftIcon"
@@ -637,6 +663,7 @@ function ButtonGroupVertical() {
           <Button variant="outline" size="icon">
             <IconPlaceholder
               lucide="PlusIcon"
+              materialSymbols="add"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
@@ -646,6 +673,7 @@ function ButtonGroupVertical() {
           <Button variant="outline" size="icon">
             <IconPlaceholder
               lucide="MinusIcon"
+              materialSymbols="remove"
               tabler="IconMinus"
               hugeicons="MinusSignIcon"
               phosphor="MinusIcon"
@@ -666,6 +694,7 @@ function ButtonGroupVerticalNested() {
           <Button variant="outline" size="icon">
             <IconPlaceholder
               lucide="SearchIcon"
+              materialSymbols="search"
               tabler="IconSearch"
               hugeicons="Search01Icon"
               phosphor="MagnifyingGlassIcon"
@@ -675,6 +704,7 @@ function ButtonGroupVerticalNested() {
           <Button variant="outline" size="icon">
             <IconPlaceholder
               lucide="CopyIcon"
+              materialSymbols="content_copy"
               tabler="IconCopy"
               hugeicons="Copy01Icon"
               phosphor="CopyIcon"
@@ -684,6 +714,7 @@ function ButtonGroupVerticalNested() {
           <Button variant="outline" size="icon">
             <IconPlaceholder
               lucide="ShareIcon"
+              materialSymbols="share"
               tabler="IconShare"
               hugeicons="Share03Icon"
               phosphor="ShareIcon"
@@ -695,6 +726,7 @@ function ButtonGroupVerticalNested() {
           <Button variant="outline" size="icon">
             <IconPlaceholder
               lucide="FlipHorizontalIcon"
+              materialSymbols="flip"
               tabler="IconFlipHorizontal"
               hugeicons="FlipHorizontalIcon"
               phosphor="ArrowsHorizontalIcon"
@@ -704,6 +736,7 @@ function ButtonGroupVerticalNested() {
           <Button variant="outline" size="icon">
             <IconPlaceholder
               lucide="FlipVerticalIcon"
+              materialSymbols="flip"
               tabler="IconFlipVertical"
               hugeicons="FlipVerticalIcon"
               phosphor="ArrowsVerticalIcon"
@@ -713,6 +746,7 @@ function ButtonGroupVerticalNested() {
           <Button variant="outline" size="icon">
             <IconPlaceholder
               lucide="RotateCwIcon"
+              materialSymbols="rotate_right"
               tabler="IconRotateClockwise2"
               hugeicons="Rotate01Icon"
               phosphor="ArrowClockwiseIcon"
@@ -724,6 +758,7 @@ function ButtonGroupVerticalNested() {
           <Button variant="outline" size="icon">
             <IconPlaceholder
               lucide="TrashIcon"
+              materialSymbols="delete"
               tabler="IconTrash"
               hugeicons="Delete02Icon"
               phosphor="TrashIcon"

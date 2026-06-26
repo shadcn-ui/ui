@@ -1,4 +1,4 @@
-import { AppWindowIcon, CodeIcon } from "lucide-react"
+import { AppWindowIcon, CodeIcon } from "@/examples/material-symbols"
 
 import { Tabs, TabsList, TabsTrigger } from "@/styles/base-force-ui/ui/tabs"
 

@@ -1,8 +1,8 @@
 import { ToggleGroup, ToggleGroupItem } from '@/ember-ui/toggle-group';
 
-import Bookmark from '~icons/lucide/bookmark';
-import Heart from '~icons/lucide/heart';
-import Star from '~icons/lucide/star';
+import Bookmark from '~icons/ms/bookmark';
+import Heart from '~icons/ms/favorite';
+import Star from '~icons/ms/star';
 
 <template>
   <ToggleGroup @size="sm" @spacing={{2}} @type="multiple" @variant="outline">

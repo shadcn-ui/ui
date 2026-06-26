@@ -80,6 +80,7 @@ function TooltipWithIcon() {
         <TooltipTrigger render={<Button variant="ghost" size="icon" />}>
           <IconPlaceholder
             lucide="InfoIcon"
+            materialSymbols="info"
             tabler="IconInfoCircle"
             hugeicons="AlertCircleIcon"
             phosphor="InfoIcon"
@@ -135,6 +136,7 @@ function TooltipWithKeyboard() {
         <TooltipTrigger render={<Button variant="outline" size="icon-sm" />}>
           <IconPlaceholder
             lucide="SaveIcon"
+            materialSymbols="save"
             tabler="IconDeviceFloppy"
             hugeicons="FloppyDiskIcon"
             phosphor="FloppyDiskIcon"

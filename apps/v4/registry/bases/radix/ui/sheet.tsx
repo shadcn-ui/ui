@@ -73,6 +73,7 @@ function SheetContent({
             <Button variant="ghost" className="cn-sheet-close" size="icon-sm">
               <IconPlaceholder
                 lucide="XIcon"
+                materialSymbols="close"
                 tabler="IconX"
                 hugeicons="Cancel01Icon"
                 phosphor="XIcon"

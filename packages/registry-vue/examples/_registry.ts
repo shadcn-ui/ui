@@ -38,7 +38,7 @@ export const examples: Registry["items"] = [
       "alert",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -121,7 +121,7 @@ export const examples: Registry["items"] = [
       "badge",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -161,7 +161,7 @@ export const examples: Registry["items"] = [
       "dropdown-menu",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -223,7 +223,7 @@ export const examples: Registry["items"] = [
       "spinner",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -289,7 +289,7 @@ export const examples: Registry["items"] = [
       "tooltip",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -345,7 +345,7 @@ export const examples: Registry["items"] = [
     ],
     dependencies: [
       "chrono-node",
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
       "reka-ui",
       "reka-ui/date",
     ],
@@ -437,7 +437,7 @@ export const examples: Registry["items"] = [
       "chart",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -475,7 +475,7 @@ export const examples: Registry["items"] = [
       "collapsible",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -494,7 +494,7 @@ export const examples: Registry["items"] = [
       "popover",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -511,7 +511,7 @@ export const examples: Registry["items"] = [
       "command",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -528,7 +528,7 @@ export const examples: Registry["items"] = [
       "context-menu",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -549,7 +549,7 @@ export const examples: Registry["items"] = [
       "table",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -568,7 +568,7 @@ export const examples: Registry["items"] = [
       "popover",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -622,7 +622,7 @@ export const examples: Registry["items"] = [
       "drawer",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -679,7 +679,7 @@ export const examples: Registry["items"] = [
       "kbd",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -786,7 +786,7 @@ export const examples: Registry["items"] = [
       "hover-card",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -907,7 +907,7 @@ export const examples: Registry["items"] = [
       "tooltip",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -1001,7 +1001,7 @@ export const examples: Registry["items"] = [
       "item",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -1042,7 +1042,7 @@ export const examples: Registry["items"] = [
       "tooltip",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -1135,7 +1135,7 @@ export const examples: Registry["items"] = [
       "navigation-menu",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -1360,7 +1360,7 @@ export const examples: Registry["items"] = [
       "sidebar",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -1483,7 +1483,7 @@ export const examples: Registry["items"] = [
       "spinner",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -1516,7 +1516,7 @@ export const examples: Registry["items"] = [
       "stepper",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
       "vue-sonner",
       "zod",
     ],
@@ -1591,7 +1591,7 @@ export const examples: Registry["items"] = [
       "tags-input",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
       "reka-ui",
     ],
   },
@@ -1650,7 +1650,7 @@ export const examples: Registry["items"] = [
       "textarea",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
       "vue-sonner",
       "zod",
     ],
@@ -1712,7 +1712,7 @@ export const examples: Registry["items"] = [
       "toggle",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -1749,7 +1749,7 @@ export const examples: Registry["items"] = [
       "toggle-group",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
     ],
   },
   {
@@ -1893,7 +1893,7 @@ export const examples: Registry["items"] = [
       "textarea",
     ],
     dependencies: [
-      "lucide-vue-next",
+      "@material-symbols/svg-400",
       "vee-validate",
       "vue-sonner",
       "zod",

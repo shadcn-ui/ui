@@ -7,7 +7,7 @@ import {
 } from '@/ui/input-group';
 import { Spinner } from '@/ui/spinner';
 
-import ArrowUp from '~icons/lucide/arrow-up';
+import ArrowUp from '~icons/ms/arrow_upward';
 
 <template>
   <div class="flex w-full max-w-md flex-col gap-4">

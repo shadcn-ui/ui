@@ -44,6 +44,7 @@ const { orientation, canScrollNext, scrollNext } = useCarousel()
     <slot>
       <IconPlaceholder
         lucide="ArrowRightIcon"
+        materialSymbols="arrow_right"
         tabler="IconArrowRight"
         hugeicons="ArrowRight01Icon"
         phosphor="ArrowRightIcon"

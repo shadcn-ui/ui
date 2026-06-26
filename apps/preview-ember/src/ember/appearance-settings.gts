@@ -20,8 +20,8 @@ import { Input } from '@/ember-ui/input';
 import { RadioGroup, RadioGroupItem } from '@/ember-ui/radio-group';
 import { Switch } from '@/ember-ui/switch';
 
-import Minus from '~icons/lucide/minus';
-import Plus from '~icons/lucide/plus';
+import Minus from '~icons/ms/remove';
+import Plus from '~icons/ms/add';
 
 export default class AppearanceSettings extends Component {
   @tracked gpuCount = 8;

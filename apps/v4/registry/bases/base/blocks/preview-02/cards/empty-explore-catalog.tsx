@@ -18,6 +18,7 @@ export function EmptyExploreCatalog() {
           <EmptyMedia variant="icon">
             <IconPlaceholder
               lucide="AudioLinesIcon"
+              materialSymbols="graphic_eq"
               tabler="IconPlayerRecordFilled"
               hugeicons="AudioWave01Icon"
               phosphor="RecordIcon"

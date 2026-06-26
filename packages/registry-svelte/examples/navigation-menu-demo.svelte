@@ -3,9 +3,9 @@
 	import { cn } from "$lib/utils.js";
 	import { navigationMenuTriggerStyle } from "$lib/registry/ui/navigation-menu/navigation-menu-trigger.svelte";
 	import type { HTMLAttributes } from "svelte/elements";
-	import CircleHelpIcon from "@lucide/svelte/icons/circle-help";
-	import CircleIcon from "@lucide/svelte/icons/circle";
-	import CircleCheckIcon from "@lucide/svelte/icons/circle-check";
+	import CircleHelpIcon from "~icons/ms/help";
+	import CircleIcon from "~icons/ms/circle";
+	import CircleCheckIcon from "~icons/ms/check_circle";
 
 	import { IsMobile } from "$lib/registry/hooks/is-mobile.svelte.js";
 

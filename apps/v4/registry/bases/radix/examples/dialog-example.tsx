@@ -483,6 +483,7 @@ function DialogChatSettings() {
                               <InputGroupButton size="icon-xs">
                                 <IconPlaceholder
                                   lucide="InfoIcon"
+                                  materialSymbols="info"
                                   tabler="IconInfoCircle"
                                   hugeicons="AlertCircleIcon"
                                   phosphor="InfoIcon"

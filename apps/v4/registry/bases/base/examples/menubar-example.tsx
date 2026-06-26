@@ -255,6 +255,7 @@ function MenubarWithIcons() {
             <MenubarItem>
               <IconPlaceholder
                 lucide="FileIcon"
+                materialSymbols="description"
                 tabler="IconFile"
                 hugeicons="FileIcon"
                 phosphor="FileIcon"
@@ -265,6 +266,7 @@ function MenubarWithIcons() {
             <MenubarItem>
               <IconPlaceholder
                 lucide="FolderIcon"
+                materialSymbols="folder"
                 tabler="IconFolder"
                 hugeicons="FolderIcon"
                 phosphor="FolderIcon"
@@ -276,6 +278,7 @@ function MenubarWithIcons() {
             <MenubarItem>
               <IconPlaceholder
                 lucide="SaveIcon"
+                materialSymbols="save"
                 tabler="IconDeviceFloppy"
                 hugeicons="FloppyDiskIcon"
                 phosphor="FloppyDiskIcon"
@@ -292,6 +295,7 @@ function MenubarWithIcons() {
               <MenubarItem>
                 <IconPlaceholder
                   lucide="CircleDashedIcon"
+                  materialSymbols="circle"
                   tabler="IconCircleDashed"
                   hugeicons="DashedLineCircleIcon"
                   phosphor="CircleDashedIcon"
@@ -302,6 +306,7 @@ function MenubarWithIcons() {
               <MenubarItem>
                 <IconPlaceholder
                   lucide="CircleDashedIcon"
+                  materialSymbols="circle"
                   tabler="IconCircleDashed"
                   hugeicons="DashedLineCircleIcon"
                   phosphor="CircleDashedIcon"
@@ -313,6 +318,7 @@ function MenubarWithIcons() {
               <MenubarItem variant="destructive">
                 <IconPlaceholder
                   lucide="CircleDashedIcon"
+                  materialSymbols="circle"
                   tabler="IconCircleDashed"
                   hugeicons="DashedLineCircleIcon"
                   phosphor="CircleDashedIcon"
@@ -382,6 +388,7 @@ function MenubarFormat() {
             <MenubarItem>
               <IconPlaceholder
                 lucide="BoldIcon"
+                materialSymbols="format_bold"
                 tabler="IconBold"
                 hugeicons="TextBoldIcon"
                 phosphor="TextBIcon"
@@ -392,6 +399,7 @@ function MenubarFormat() {
             <MenubarItem>
               <IconPlaceholder
                 lucide="ItalicIcon"
+                materialSymbols="format_italic"
                 tabler="IconItalic"
                 hugeicons="TextItalicIcon"
                 phosphor="TextItalicIcon"
@@ -402,6 +410,7 @@ function MenubarFormat() {
             <MenubarItem>
               <IconPlaceholder
                 lucide="UnderlineIcon"
+                materialSymbols="format_underlined"
                 tabler="IconUnderline"
                 hugeicons="TextUnderlineIcon"
                 phosphor="TextUnderlineIcon"
@@ -440,6 +449,7 @@ function MenubarInsert() {
               <MenubarSubTrigger>
                 <IconPlaceholder
                   lucide="ImageIcon"
+                  materialSymbols="image"
                   tabler="IconPhoto"
                   hugeicons="ImageIcon"
                   phosphor="ImageIcon"
@@ -457,6 +467,7 @@ function MenubarInsert() {
             <MenubarItem>
               <IconPlaceholder
                 lucide="LinkIcon"
+                materialSymbols="link"
                 tabler="IconLink"
                 hugeicons="LinkIcon"
                 phosphor="LinkIcon"
@@ -467,6 +478,7 @@ function MenubarInsert() {
             <MenubarItem>
               <IconPlaceholder
                 lucide="TableIcon"
+                materialSymbols="table"
                 tabler="IconTable"
                 hugeicons="TableIcon"
                 phosphor="TableIcon"
@@ -482,6 +494,7 @@ function MenubarInsert() {
             <MenubarItem>
               <IconPlaceholder
                 lucide="SearchIcon"
+                materialSymbols="search"
                 tabler="IconSearch"
                 hugeicons="SearchIcon"
                 phosphor="MagnifyingGlassIcon"
@@ -492,6 +505,7 @@ function MenubarInsert() {
             <MenubarItem>
               <IconPlaceholder
                 lucide="CheckIcon"
+                materialSymbols="check"
                 tabler="IconCheck"
                 hugeicons="Tick02Icon"
                 phosphor="CheckIcon"
@@ -516,6 +530,7 @@ function MenubarDestructive() {
             <MenubarItem>
               <IconPlaceholder
                 lucide="FileIcon"
+                materialSymbols="description"
                 tabler="IconFile"
                 hugeicons="FileIcon"
                 phosphor="FileIcon"
@@ -526,6 +541,7 @@ function MenubarDestructive() {
             <MenubarItem>
               <IconPlaceholder
                 lucide="FolderIcon"
+                materialSymbols="folder"
                 tabler="IconFolder"
                 hugeicons="FolderIcon"
                 phosphor="FolderIcon"
@@ -537,6 +553,7 @@ function MenubarDestructive() {
             <MenubarItem variant="destructive">
               <IconPlaceholder
                 lucide="TrashIcon"
+                materialSymbols="delete"
                 tabler="IconTrash"
                 hugeicons="DeleteIcon"
                 phosphor="TrashIcon"
@@ -552,6 +569,7 @@ function MenubarDestructive() {
             <MenubarItem>
               <IconPlaceholder
                 lucide="UserIcon"
+                materialSymbols="person"
                 tabler="IconUser"
                 hugeicons="UserIcon"
                 phosphor="UserIcon"
@@ -562,6 +580,7 @@ function MenubarDestructive() {
             <MenubarItem>
               <IconPlaceholder
                 lucide="SettingsIcon"
+                materialSymbols="settings"
                 tabler="IconSettings"
                 hugeicons="SettingsIcon"
                 phosphor="GearIcon"
@@ -573,6 +592,7 @@ function MenubarDestructive() {
             <MenubarItem variant="destructive">
               <IconPlaceholder
                 lucide="LogOutIcon"
+                materialSymbols="logout"
                 tabler="IconLogout"
                 hugeicons="LogoutIcon"
                 phosphor="SignOutIcon"
@@ -584,6 +604,7 @@ function MenubarDestructive() {
             <MenubarItem variant="destructive">
               <IconPlaceholder
                 lucide="TrashIcon"
+                materialSymbols="delete"
                 tabler="IconTrash"
                 hugeicons="DeleteIcon"
                 phosphor="TrashIcon"
@@ -619,6 +640,7 @@ function MenubarInDialog() {
                 <MenubarItem>
                   <IconPlaceholder
                     lucide="CopyIcon"
+                    materialSymbols="content_copy"
                     tabler="IconCopy"
                     hugeicons="CopyIcon"
                     phosphor="CopyIcon"
@@ -629,6 +651,7 @@ function MenubarInDialog() {
                 <MenubarItem>
                   <IconPlaceholder
                     lucide="ScissorsIcon"
+                    materialSymbols="content_cut"
                     tabler="IconCut"
                     hugeicons="ScissorIcon"
                     phosphor="ScissorsIcon"
@@ -639,6 +662,7 @@ function MenubarInDialog() {
                 <MenubarItem>
                   <IconPlaceholder
                     lucide="ClipboardPasteIcon"
+                    materialSymbols="content_paste"
                     tabler="IconClipboard"
                     hugeicons="ClipboardIcon"
                     phosphor="ClipboardIcon"
@@ -661,6 +685,7 @@ function MenubarInDialog() {
                 <MenubarItem variant="destructive">
                   <IconPlaceholder
                     lucide="TrashIcon"
+                    materialSymbols="delete"
                     tabler="IconTrash"
                     hugeicons="DeleteIcon"
                     phosphor="TrashIcon"
@@ -704,6 +729,7 @@ function MenubarWithInset() {
               <MenubarItem>
                 <IconPlaceholder
                   lucide="CopyIcon"
+                  materialSymbols="content_copy"
                   tabler="IconCopy"
                   hugeicons="CopyIcon"
                   phosphor="CopyIcon"
@@ -714,6 +740,7 @@ function MenubarWithInset() {
               <MenubarItem>
                 <IconPlaceholder
                   lucide="ScissorsIcon"
+                  materialSymbols="content_cut"
                   tabler="IconCut"
                   hugeicons="ScissorIcon"
                   phosphor="ScissorsIcon"

@@ -1,6 +1,7 @@
 "use client"
 
-import { ChevronDownIcon, InfoIcon, StarIcon } from "lucide-react"
+import { ChevronDownIcon, InfoIcon, StarIcon } from "@/examples/material-symbols"
+
 import { toast } from "sonner"
 
 import {

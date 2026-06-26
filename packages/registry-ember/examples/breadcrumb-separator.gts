@@ -7,7 +7,7 @@ import {
   BreadcrumbSeparator,
 } from '@/ui/breadcrumb';
 
-import SlashIcon from '~icons/lucide/slash';
+import SlashIcon from '~icons/ms/block';
 
 <template>
   <Breadcrumb>

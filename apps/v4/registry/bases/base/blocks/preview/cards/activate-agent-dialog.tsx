@@ -72,6 +72,7 @@ export function ActivateAgentDialog() {
               <ItemMedia variant="icon" className="self-start">
                 <IconPlaceholder
                   lucide="CheckCircle2Icon"
+                  materialSymbols="check_circle"
                   tabler="IconCircleCheckFilled"
                   hugeicons="CheckmarkCircle02Icon"
                   phosphor="CheckCircleIcon"

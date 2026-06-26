@@ -1,9 +1,4 @@
-import {
-  BadgeCheckIcon,
-  BellIcon,
-  CreditCardIcon,
-  LogOutIcon,
-} from "lucide-react"
+import { BadgeCheckIcon, BellIcon, CreditCardIcon, LogOutIcon } from "@/examples/material-symbols"
 
 import {
   Avatar,

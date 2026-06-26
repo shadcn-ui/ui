@@ -14,9 +14,9 @@ import {
   SidebarTrigger,
 } from '@/ui/sidebar';
 
-import Home from '~icons/lucide/home';
-import Inbox from '~icons/lucide/inbox';
-import Settings from '~icons/lucide/settings';
+import Home from '~icons/ms/home';
+import Inbox from '~icons/ms/inbox';
+import Settings from '~icons/ms/settings';
 
 const items = [
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

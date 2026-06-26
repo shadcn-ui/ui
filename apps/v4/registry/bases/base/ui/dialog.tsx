@@ -69,6 +69,7 @@ function DialogContent({
           >
             <IconPlaceholder
               lucide="XIcon"
+              materialSymbols="close"
               tabler="IconX"
               hugeicons="Cancel01Icon"
               phosphor="XIcon"

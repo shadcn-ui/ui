@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { BotIcon, ChevronDownIcon } from 'lucide-vue-next'
+import BotIcon from "@material-symbols/svg-400/rounded/smart_toy.svg?component"
+import ChevronDownIcon from "@material-symbols/svg-400/rounded/keyboard_arrow_down.svg?component"
 import { Button } from '@/ui/button'
 import { ButtonGroup } from '@/ui/button-group'
 import {

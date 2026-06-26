@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { toTypedSchema } from '@vee-validate/zod'
-import { Check, Circle, Dot } from 'lucide-vue-next'
+import Check from "@material-symbols/svg-400/rounded/check.svg?component"
+import Circle from "@material-symbols/svg-400/rounded/circle.svg?component"
+import Dot from "@material-symbols/svg-400/rounded/fiber_manual_record.svg?component"
 import { h, ref } from 'vue'
 import { toast } from 'vue-sonner'
 import * as z from 'zod'

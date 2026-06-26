@@ -4,7 +4,7 @@
 	import { Button } from "@/svelte-ui/button/index.js";
 	import { Calendar } from "@/svelte-ui/calendar/index.js";
 	import { Input } from "@/svelte-ui/input/index.js";
-	import CalendarIcon from "@lucide/svelte/icons/calendar";
+	import CalendarIcon from "~icons/ms/calendar_month";
 	import { parseDate } from "chrono-node";
 	import { CalendarDate, getLocalTimeZone, type DateValue } from "@internationalized/date";
 	import { untrack } from "svelte";

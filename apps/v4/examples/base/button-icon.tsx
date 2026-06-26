@@ -1,4 +1,4 @@
-import { CircleFadingArrowUpIcon } from "lucide-react"
+import { CircleFadingArrowUpIcon } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 

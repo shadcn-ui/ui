@@ -1,9 +1,9 @@
 <script lang="ts">
 	import * as Sidebar from "@/svelte-ui/sidebar/index.js";
 	import * as Collapsible from "@/svelte-ui/collapsible/index.js";
-	import ChevronDownIcon from "@lucide/svelte/icons/chevron-down";
-	import LifeBuoyIcon from "@lucide/svelte/icons/life-buoy";
-	import SendIcon from "@lucide/svelte/icons/send";
+	import ChevronDownIcon from "~icons/ms/keyboard_arrow_down";
+	import LifeBuoyIcon from "~icons/ms/support";
+	import SendIcon from "~icons/ms/send";
 </script>
 
 <Sidebar.Provider>

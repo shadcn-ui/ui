@@ -4,7 +4,7 @@
 	import { Button } from "@/svelte-ui/button/index.js";
 	import { Label } from "@/svelte-ui/label/index.js";
 	import { Input } from "@/svelte-ui/input/index.js";
-	import ChevronDownIcon from "@lucide/svelte/icons/chevron-down";
+	import ChevronDownIcon from "~icons/ms/keyboard_arrow_down";
 	import { getLocalTimeZone } from "@internationalized/date";
 	import type { CalendarDate } from "@internationalized/date";
 

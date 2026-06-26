@@ -26,6 +26,7 @@ const data = [
       icon: (
         <IconPlaceholder
           lucide="Settings2Icon"
+          materialSymbols="settings"
           tabler="IconSettings"
           hugeicons="Settings05Icon"
           phosphor="GearIcon"
@@ -38,6 +39,7 @@ const data = [
       icon: (
         <IconPlaceholder
           lucide="FileTextIcon"
+          materialSymbols="description"
           tabler="IconFileText"
           hugeicons="File01Icon"
           phosphor="FileTextIcon"
@@ -52,6 +54,7 @@ const data = [
       icon: (
         <IconPlaceholder
           lucide="LinkIcon"
+          materialSymbols="link"
           tabler="IconLink"
           hugeicons="LinkIcon"
           phosphor="LinkIcon"
@@ -64,6 +67,7 @@ const data = [
       icon: (
         <IconPlaceholder
           lucide="CopyIcon"
+          materialSymbols="content_copy"
           tabler="IconCopy"
           hugeicons="Copy01Icon"
           phosphor="CopyIcon"
@@ -76,6 +80,7 @@ const data = [
       icon: (
         <IconPlaceholder
           lucide="CornerUpRightIcon"
+          materialSymbols="turn_right"
           tabler="IconCornerUpRight"
           hugeicons="RedoIcon"
           phosphor="ArrowBendUpRightIcon"
@@ -88,6 +93,7 @@ const data = [
       icon: (
         <IconPlaceholder
           lucide="Trash2Icon"
+          materialSymbols="delete"
           tabler="IconTrash"
           hugeicons="Delete02Icon"
           phosphor="TrashIcon"
@@ -102,6 +108,7 @@ const data = [
       icon: (
         <IconPlaceholder
           lucide="CornerUpLeftIcon"
+          materialSymbols="turn_left"
           tabler="IconCornerUpLeft"
           hugeicons="UndoIcon"
           phosphor="ArrowBendUpLeftIcon"
@@ -114,6 +121,7 @@ const data = [
       icon: (
         <IconPlaceholder
           lucide="ChartLineIcon"
+          materialSymbols="show_chart"
           tabler="IconChartLine"
           hugeicons="ChartIcon"
           phosphor="ChartLineIcon"
@@ -126,6 +134,7 @@ const data = [
       icon: (
         <IconPlaceholder
           lucide="GalleryVerticalEndIcon"
+          materialSymbols="stacks"
           tabler="IconLayoutRows"
           hugeicons="LayoutBottomIcon"
           phosphor="RowsIcon"
@@ -138,6 +147,7 @@ const data = [
       icon: (
         <IconPlaceholder
           lucide="TrashIcon"
+          materialSymbols="delete"
           tabler="IconTrash"
           hugeicons="DeleteIcon"
           phosphor="TrashIcon"
@@ -150,6 +160,7 @@ const data = [
       icon: (
         <IconPlaceholder
           lucide="BellIcon"
+          materialSymbols="notifications"
           tabler="IconBell"
           hugeicons="NotificationIcon"
           phosphor="BellIcon"
@@ -164,6 +175,7 @@ const data = [
       icon: (
         <IconPlaceholder
           lucide="ArrowUpIcon"
+          materialSymbols="arrow_upward"
           tabler="IconArrowUp"
           hugeicons="ArrowUpIcon"
           phosphor="ArrowUpIcon"
@@ -176,6 +188,7 @@ const data = [
       icon: (
         <IconPlaceholder
           lucide="ArrowDownIcon"
+          materialSymbols="arrow_downward"
           tabler="IconArrowDown"
           hugeicons="ArrowDownIcon"
           phosphor="ArrowDownIcon"
@@ -198,6 +211,7 @@ export function NavActions() {
       <Button variant="ghost" size="icon" className="h-7 w-7">
         <IconPlaceholder
           lucide="StarIcon"
+          materialSymbols="star"
           tabler="IconStar"
           hugeicons="StarIcon"
           phosphor="StarIcon"
@@ -216,6 +230,7 @@ export function NavActions() {
         >
           <IconPlaceholder
             lucide="MoreHorizontalIcon"
+            materialSymbols="more_horiz"
             tabler="IconDots"
             hugeicons="MoreHorizontalCircle01Icon"
             phosphor="DotsThreeOutlineIcon"

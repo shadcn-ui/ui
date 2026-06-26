@@ -14,10 +14,10 @@ import {
   PopoverContent,
 } from '@/ui/popover';
 
-import Check from '~icons/lucide/check';
-import Copy from '~icons/lucide/copy';
-import Info from '~icons/lucide/info';
-import Star from '~icons/lucide/star';
+import Check from '~icons/ms/check';
+import Copy from '~icons/ms/content_copy';
+import Info from '~icons/ms/info';
+import Star from '~icons/ms/star';
 
 export default class InputGroupButtonExample extends Component {
   @tracked hasCopied = false;

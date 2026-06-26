@@ -15,6 +15,7 @@
 	{#snippet loadingIcon()}
 		<IconPlaceholder
 			lucide="Loader2Icon"
+		materialSymbols="progress_activity"
 			tabler="IconLoader"
 			hugeicons="Loading03Icon"
 			phosphor="SpinnerIcon"
@@ -25,6 +26,7 @@
 	{#snippet successIcon()}
 		<IconPlaceholder
 			lucide="CircleCheckIcon"
+		materialSymbols="check_circle"
 			tabler="IconCircleCheck"
 			hugeicons="CheckmarkCircle02Icon"
 			phosphor="CheckCircleIcon"
@@ -35,6 +37,7 @@
 	{#snippet errorIcon()}
 		<IconPlaceholder
 			lucide="OctagonXIcon"
+		materialSymbols="dangerous"
 			tabler="IconAlertOctagon"
 			hugeicons="MultiplicationSignCircleIcon"
 			phosphor="XCircleIcon"
@@ -45,6 +48,7 @@
 	{#snippet infoIcon()}
 		<IconPlaceholder
 			lucide="InfoIcon"
+		materialSymbols="info"
 			tabler="IconInfoCircle"
 			hugeicons="InformationCircleIcon"
 			phosphor="InfoIcon"
@@ -55,6 +59,7 @@
 	{#snippet warningIcon()}
 		<IconPlaceholder
 			lucide="TriangleAlertIcon"
+		materialSymbols="warning"
 			tabler="IconAlertTriangle"
 			hugeicons="Alert02Icon"
 			phosphor="WarningIcon"

@@ -1,6 +1,6 @@
 "use client"
 
-import { LifeBuoyIcon, SendIcon } from "lucide-react"
+import { LifeBuoyIcon, SendIcon } from "@/examples/material-symbols"
 
 import {
   Sidebar,

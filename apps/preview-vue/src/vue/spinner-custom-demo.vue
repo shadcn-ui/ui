@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { LoaderIcon } from 'lucide-vue-next'
+import LoaderIcon from "@material-symbols/svg-400/rounded/progress_activity.svg?component"
 import { cn } from '@/lib/utils'
 
 const props = defineProps<{

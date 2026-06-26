@@ -1,4 +1,4 @@
-import { InfoIcon } from "lucide-react"
+import { InfoIcon } from "@/examples/material-symbols"
 
 import { Field, FieldLabel } from "@/styles/radix-force-ui/ui/field"
 import {

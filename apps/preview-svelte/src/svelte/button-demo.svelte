@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ArrowUpIcon from "@lucide/svelte/icons/arrow-up";
+	import ArrowUpIcon from "~icons/ms/arrow_upward";
 	import { Button } from "@/svelte-ui/button/index.js";
 </script>
 

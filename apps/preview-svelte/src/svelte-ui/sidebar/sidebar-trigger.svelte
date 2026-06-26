@@ -33,6 +33,7 @@
 >
 	<IconPlaceholder
 		lucide="PanelLeftIcon"
+		materialSymbols="left_panel_open"
 		tabler="IconLayoutSidebar"
 		hugeicons="SidebarLeftIcon"
 		phosphor="SidebarIcon"

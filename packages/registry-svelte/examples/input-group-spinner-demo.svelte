@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as InputGroup from "$lib/registry/ui/input-group/index.js";
 	import { Spinner } from "$lib/registry/ui/spinner/index.js";
-	import LoaderIcon from "@lucide/svelte/icons/loader";
+	import LoaderIcon from "~icons/ms/progress_activity";
 </script>
 
 <div class="grid w-full max-w-sm gap-4">

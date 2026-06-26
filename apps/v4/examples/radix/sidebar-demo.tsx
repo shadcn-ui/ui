@@ -1,30 +1,30 @@
 "use client"
 
+import { AudioWaveform, BadgeCheck, Bell, BookOpen, Bot, ChevronRight, ChevronsUpDown, Command, CreditCard, Folder, Forward, Frame, GalleryVerticalEnd, LogOut, Map, MoreHorizontal, PieChart, Plus, Settings2, Sparkles, SquareTerminal, Trash2 } from "@/examples/material-symbols"
+
 import * as React from "react"
-import {
-  AudioWaveform,
-  BadgeCheck,
-  Bell,
-  BookOpen,
-  Bot,
-  ChevronRight,
-  ChevronsUpDown,
-  Command,
-  CreditCard,
-  Folder,
-  Forward,
-  Frame,
-  GalleryVerticalEnd,
-  LogOut,
-  Map,
-  MoreHorizontal,
-  PieChart,
-  Plus,
-  Settings2,
-  Sparkles,
-  SquareTerminal,
-  Trash2,
-} from "lucide-react"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 import {
   Avatar,

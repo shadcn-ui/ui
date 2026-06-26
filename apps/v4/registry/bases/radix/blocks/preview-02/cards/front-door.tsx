@@ -20,6 +20,7 @@ export function FrontDoor() {
             Locked
             <IconPlaceholder
               lucide="LockIcon"
+              materialSymbols="lock"
               tabler="IconLock"
               hugeicons="SquareLock02Icon"
               phosphor="LockKeyIcon"

@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { Code2Icon, PlusIcon, TrashIcon } from 'lucide-vue-next'
+import Code2Icon from "@material-symbols/svg-400/rounded/code.svg?component"
+import PlusIcon from "@material-symbols/svg-400/rounded/add.svg?component"
+import TrashIcon from "@material-symbols/svg-400/rounded/delete.svg?component"
 
 import {
   ContextMenu,

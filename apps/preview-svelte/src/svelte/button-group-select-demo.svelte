@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ArrowRight from "@lucide/svelte/icons/arrow-right";
+	import ArrowRight from "~icons/ms/arrow_right";
 	import { Button } from "@/svelte-ui/button/index.js";
 	import * as ButtonGroup from "@/svelte-ui/button-group/index.js";
 	import { Input } from "@/svelte-ui/input/index.js";

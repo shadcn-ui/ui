@@ -37,6 +37,7 @@ const forwardedProps = useForwardProps(delegatedProps)
         <slot name="indicator-icon">
           <IconPlaceholder
             lucide="CheckIcon"
+            materialSymbols="check"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"

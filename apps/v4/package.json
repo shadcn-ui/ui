@@ -19,7 +19,9 @@
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "icons:dev": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-icons.ts --watch",
-    "registry:build": "pnpm --filter=shadcn build && bun --conditions=react-server run ./scripts/build-registry.mts",
+    "icons:material-map": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-material-symbols-map.ts",
+    "icons:material-map:check": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-material-symbols-map.ts --check",
+    "registry:build": "pnpm --filter=shadcn build && pnpm exec tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-icons.ts && bun --conditions=react-server run ./scripts/build-registry.mts",
     "registry:capture": "tsx --conditions=react-server --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
     "explore:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-explore.mts",
     "validate:registries": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/validate-registries.mts",
@@ -96,6 +98,7 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
+    "@material-symbols/svg-400": "^0.45.2",
     "@tailwindcss/postcss": "4.1.18",
     "@types/lodash": "^4.17.7",
     "@types/mdx": "^2.0.13",

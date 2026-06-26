@@ -3,7 +3,7 @@
   "name": "kbd-example",
   "title": "Kbd",
   "dependencies": [
-    "lucide-vue-next"
+    "@material-symbols/svg-400"
   ],
   "registryDependencies": [
     "button",
@@ -30,7 +30,7 @@
     },
     {
       "path": "registry/vue-force-ui/examples/kbd/KbdWithInputGroup.vue",
-      "content": "<script setup lang=\"ts\">\nimport { InputGroup, InputGroupAddon, InputGroupInput } from \"@/ui/input-group\"\nimport { Kbd } from \"@/ui/kbd\"\nimport { SearchIcon } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <div class=\"flex w-full max-w-xs flex-col gap-6\">\n    <InputGroup>\n      <InputGroupInput placeholder=\"Search...\" />\n      <InputGroupAddon>\n        <SearchIcon />\n      </InputGroupAddon>\n      <InputGroupAddon align=\"inline-end\">\n        <Kbd>⌘</Kbd>\n        <Kbd>K</Kbd>\n      </InputGroupAddon>\n    </InputGroup>\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport { InputGroup, InputGroupAddon, InputGroupInput } from \"@/ui/input-group\"\nimport { Kbd } from \"@/ui/kbd\"\nimport SearchIcon from \"@material-symbols/svg-400/rounded/search.svg?component\"\n</script>\n\n<template>\n  <div class=\"flex w-full max-w-xs flex-col gap-6\">\n    <InputGroup>\n      <InputGroupInput placeholder=\"Search...\" />\n      <InputGroupAddon>\n        <SearchIcon />\n      </InputGroupAddon>\n      <InputGroupAddon align=\"inline-end\">\n        <Kbd>⌘</Kbd>\n        <Kbd>K</Kbd>\n      </InputGroupAddon>\n    </InputGroup>\n  </div>\n</template>\n",
       "type": "registry:example"
     },
     {

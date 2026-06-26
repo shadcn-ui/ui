@@ -25,7 +25,7 @@ import {
   DropdownMenuTrigger,
 } from '@/ui/dropdown-menu';
 
-import MoreHorizontalIcon from '~icons/lucide/more-horizontal';
+import MoreHorizontalIcon from '~icons/ms/more_horiz';
 
 const labels = [
   'feature',

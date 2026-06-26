@@ -3,7 +3,7 @@
 	import * as Avatar from "@/svelte-ui/avatar/index.js";
 	import * as DropdownMenu from "@/svelte-ui/dropdown-menu/index.js";
 	import { Button } from "@/svelte-ui/button/index.js";
-	import ChevronDown from "@lucide/svelte/icons/chevron-down";
+	import ChevronDown from "~icons/ms/keyboard_arrow_down";
 
 	const people = [
 		{

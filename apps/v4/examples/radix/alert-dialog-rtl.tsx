@@ -1,7 +1,9 @@
 "use client"
 
+import { BluetoothIcon } from "@/examples/material-symbols"
+
 import * as React from "react"
-import { BluetoothIcon } from "lucide-react"
+
 
 import {
   useTranslation,

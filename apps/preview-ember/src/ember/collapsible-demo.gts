@@ -9,7 +9,7 @@ import {
   CollapsibleContent,
 } from '@/ember-ui/collapsible';
 
-import ChevronsUpDown from '~icons/lucide/chevrons-up-down';
+import ChevronsUpDown from '~icons/ms/unfold_more';
 
 export default class CollapsibleDemo extends Component {
   @tracked isOpen = false;

@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/ember-force-ui/examples/toggle-lg.gts",
-      "content": "import { Toggle } from '@/ui/toggle';\n\nimport Italic from '~icons/lucide/italic';\n\n<template>\n  <Toggle @size=\"lg\" aria-label=\"Toggle italic\">\n    <Italic />\n  </Toggle>\n</template>\n",
+      "content": "import { Toggle } from '@/ui/toggle';\n\nimport Italic from '~icons/ms/format_italic';\n\n<template>\n  <Toggle @size=\"lg\" aria-label=\"Toggle italic\">\n    <Italic />\n  </Toggle>\n</template>\n",
       "type": "registry:example"
     }
   ],

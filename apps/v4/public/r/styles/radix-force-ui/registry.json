@@ -4,7 +4,11 @@
   "items": [
     {
       "name": "index",
-      "dependencies": ["class-variance-authority", "lucide-react", "radix-ui"],
+      "dependencies": [
+        "class-variance-authority",
+        "@material-symbols/svg-400",
+        "radix-ui"
+      ],
       "devDependencies": ["tw-animate-css", "shadcn"],
       "registryDependencies": ["utils"],
       "files": [],
@@ -25,7 +29,11 @@
     },
     {
       "name": "style",
-      "dependencies": ["class-variance-authority", "lucide-react", "radix-ui"],
+      "dependencies": [
+        "class-variance-authority",
+        "@material-symbols/svg-400",
+        "radix-ui"
+      ],
       "devDependencies": ["tw-animate-css", "shadcn"],
       "registryDependencies": ["utils"],
       "files": [],

@@ -16,7 +16,8 @@ const forwardedProps = useForwardProps(delegatedProps)
 <template>
   <TagsInputItemDelete v-bind="forwardedProps" :class="cn('flex rounded bg-transparent mr-1', props.class)">
     <slot>
-      <IconPlaceholder lucide="XIcon" tabler="IconX" hugeicons="Cancel01Icon" phosphor="XIcon" remixicon="RiCloseLine" class="w-4 h-4" />
+      <IconPlaceholder lucide="XIcon"
+      materialSymbols="close" tabler="IconX" hugeicons="Cancel01Icon" phosphor="XIcon" remixicon="RiCloseLine" class="w-4 h-4" />
     </slot>
   </TagsInputItemDelete>
 </template>

@@ -191,6 +191,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 {item.title}{" "}
                 <IconPlaceholder
                   lucide="ChevronRightIcon"
+                  materialSymbols="chevron_right"
                   tabler="IconChevronRight"
                   hugeicons="ArrowRight01Icon"
                   phosphor="CaretRightIcon"

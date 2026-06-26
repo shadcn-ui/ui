@@ -14,11 +14,11 @@ import type ToastService from '@/services/toast';
 import type Owner from '@ember/owner';
 import type { FlashObject } from 'ember-cli-flash';
 
-import CircleCheck from '~icons/lucide/circle-check';
-import Info from '~icons/lucide/info';
-import Loader2 from '~icons/lucide/loader-2';
-import OctagonX from '~icons/lucide/octagon-x';
-import TriangleAlert from '~icons/lucide/triangle-alert';
+import CircleCheck from '~icons/ms/check_circle';
+import Info from '~icons/ms/info';
+import Loader2 from '~icons/ms/progress_activity';
+import OctagonX from '~icons/ms/dangerous';
+import TriangleAlert from '~icons/ms/warning';
 
 const VISIBLE_TOASTS_AMOUNT = 3;
 const TOAST_WIDTH = 356;

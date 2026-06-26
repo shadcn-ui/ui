@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/svelte-force-ui/examples/alert-destructive.svelte",
-      "content": "<script lang=\"ts\">\n  import CircleAlertIcon from \"@lucide/svelte/icons/circle-alert\"\n  import * as Alert from \"$lib/registry/ui/alert/index.js\"\n</script>\n\n<Alert.Root variant=\"destructive\">\n  <CircleAlertIcon class=\"size-4\" />\n  <Alert.Title>Error</Alert.Title>\n  <Alert.Description\n    >Your session has expired. Please login again.</Alert.Description\n  >\n</Alert.Root>\n",
+      "content": "<script lang=\"ts\">\n  import CircleAlertIcon from \"~icons/ms/error\"\n  import * as Alert from \"$lib/registry/ui/alert/index.js\"\n</script>\n\n<Alert.Root variant=\"destructive\">\n  <CircleAlertIcon class=\"size-4\" />\n  <Alert.Title>Error</Alert.Title>\n  <Alert.Description\n    >Your session has expired. Please login again.</Alert.Description\n  >\n</Alert.Root>\n",
       "type": "registry:example"
     }
   ],

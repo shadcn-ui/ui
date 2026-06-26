@@ -1,4 +1,4 @@
-import { MoreHorizontalIcon } from "lucide-react"
+import { MoreHorizontalIcon } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 import {

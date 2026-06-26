@@ -1,4 +1,4 @@
-import { ItalicIcon } from "lucide-react"
+import { ItalicIcon } from "@/examples/material-symbols"
 
 import { Toggle } from "@/styles/base-force-ui/ui/toggle"
 

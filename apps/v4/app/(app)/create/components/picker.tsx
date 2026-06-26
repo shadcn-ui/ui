@@ -136,6 +136,7 @@ function PickerSubTrigger({
       {children}
       <IconPlaceholder
         lucide="ChevronRightIcon"
+        materialSymbols="chevron_right"
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
@@ -190,6 +191,7 @@ function PickerCheckboxItem({
         <MenuPrimitive.CheckboxItemIndicator>
           <IconPlaceholder
             lucide="CheckIcon"
+            materialSymbols="check"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
@@ -232,6 +234,7 @@ function PickerRadioItem({
         <MenuPrimitive.RadioItemIndicator>
           <IconPlaceholder
             lucide="CheckIcon"
+            materialSymbols="check"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"

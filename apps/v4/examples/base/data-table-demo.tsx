@@ -1,5 +1,7 @@
 "use client"
 
+import { ArrowUpDown, ChevronDown, MoreHorizontal } from "@/examples/material-symbols"
+
 import * as React from "react"
 import {
   flexRender,
@@ -13,7 +15,9 @@ import {
   type SortingState,
   type VisibilityState,
 } from "@tanstack/react-table"
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react"
+
+
+
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 import { Checkbox } from "@/styles/base-force-ui/ui/checkbox"

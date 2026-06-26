@@ -1,4 +1,4 @@
-import { IconPlus } from "@tabler/icons-react"
+import { IconPlus } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/radix-force-ui/ui/button"
 import {

@@ -36,6 +36,13 @@ const IconRemixicon = lazy(() =>
   }))
 )
 
+// [FORCE-UI]
+const IconMaterialSymbols = lazy(() =>
+  import("@/registry/icons/icon-material-symbols").then((mod) => ({
+    default: mod.IconMaterialSymbols,
+  }))
+)
+
 // Preload all icon renderer modules so switching libraries is instant.
 // These warm the browser module cache; React.lazy resolves immediately
 // for modules that are already loaded.
@@ -44,6 +51,7 @@ void import("@/registry/icons/icon-tabler")
 void import("@/registry/icons/icon-hugeicons")
 void import("@/registry/icons/icon-phosphor")
 void import("@/registry/icons/icon-remixicon")
+void import("@/registry/icons/icon-material-symbols") // [FORCE-UI]
 
 export function IconPlaceholder({
   ...props
@@ -69,6 +77,10 @@ export function IconPlaceholder({
       )}
       {iconLibrary === "remixicon" && (
         <IconRemixicon name={iconName} {...props} />
+      )}
+      {/* [FORCE-UI] */}
+      {iconLibrary === "materialSymbols" && (
+        <IconMaterialSymbols name={iconName} {...props} />
       )}
     </Suspense>
   )

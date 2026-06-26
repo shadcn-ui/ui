@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SlashIcon } from 'lucide-vue-next'
+import SlashIcon from "@material-symbols/svg-400/rounded/block.svg?component"
 import {
   Breadcrumb,
   BreadcrumbItem,

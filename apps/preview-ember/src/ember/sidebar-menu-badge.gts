@@ -12,9 +12,9 @@ import {
   SidebarTrigger,
 } from '@/ember-ui/sidebar';
 
-import Inbox from '~icons/lucide/inbox';
-import MessageSquare from '~icons/lucide/message-square';
-import Send from '~icons/lucide/send';
+import Inbox from '~icons/ms/inbox';
+import MessageSquare from '~icons/ms/chat';
+import Send from '~icons/ms/send';
 
 const items = [
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

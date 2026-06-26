@@ -47,6 +47,7 @@ export function RecentTransactions() {
                   <IconPlaceholder
                     className="size-4 shrink-0"
                     lucide="CoffeeIcon"
+                    materialSymbols="coffee"
                     tabler="IconCoffee"
                     hugeicons="CoffeeIcon"
                     phosphor="CoffeeIcon"
@@ -76,6 +77,7 @@ export function RecentTransactions() {
                     <Button variant="ghost" size="icon-sm">
                       <IconPlaceholder
                         lucide="MoreHorizontalIcon"
+                        materialSymbols="more_horiz"
                         tabler="IconDotsVertical"
                         hugeicons="MoreVerticalCircle01Icon"
                         phosphor="DotsThreeIcon"
@@ -99,6 +101,7 @@ export function RecentTransactions() {
                   <IconPlaceholder
                     className="size-4 shrink-0"
                     lucide="ShoppingCartIcon"
+                    materialSymbols="shopping_cart"
                     tabler="IconShoppingCart"
                     hugeicons="ShoppingCart01Icon"
                     phosphor="ShoppingCartIcon"
@@ -128,6 +131,7 @@ export function RecentTransactions() {
                     <Button variant="ghost" size="icon-sm">
                       <IconPlaceholder
                         lucide="MoreHorizontalIcon"
+                        materialSymbols="more_horiz"
                         tabler="IconDotsVertical"
                         hugeicons="MoreVerticalCircle01Icon"
                         phosphor="DotsThreeIcon"
@@ -151,6 +155,7 @@ export function RecentTransactions() {
                   <IconPlaceholder
                     className="size-4 shrink-0"
                     lucide="WalletIcon"
+                    materialSymbols="wallet"
                     tabler="IconWallet"
                     hugeicons="Wallet01Icon"
                     phosphor="WalletIcon"
@@ -178,6 +183,7 @@ export function RecentTransactions() {
                     <Button variant="ghost" size="icon-sm">
                       <IconPlaceholder
                         lucide="MoreHorizontalIcon"
+                        materialSymbols="more_horiz"
                         tabler="IconDotsVertical"
                         hugeicons="MoreVerticalCircle01Icon"
                         phosphor="DotsThreeIcon"
@@ -201,6 +207,7 @@ export function RecentTransactions() {
                   <IconPlaceholder
                     className="size-4 shrink-0"
                     lucide="CarIcon"
+                    materialSymbols="directions_car"
                     tabler="IconCar"
                     hugeicons="Car01Icon"
                     phosphor="CarIcon"
@@ -230,6 +237,7 @@ export function RecentTransactions() {
                     <Button variant="ghost" size="icon-sm">
                       <IconPlaceholder
                         lucide="MoreHorizontalIcon"
+                        materialSymbols="more_horiz"
                         tabler="IconDotsVertical"
                         hugeicons="MoreVerticalCircle01Icon"
                         phosphor="DotsThreeIcon"
@@ -253,6 +261,7 @@ export function RecentTransactions() {
                   <IconPlaceholder
                     className="size-4 shrink-0"
                     lucide="TvIcon"
+                    materialSymbols="tv"
                     tabler="IconDeviceTv"
                     hugeicons="Tv01Icon"
                     phosphor="TelevisionIcon"
@@ -282,6 +291,7 @@ export function RecentTransactions() {
                     <Button variant="ghost" size="icon-sm">
                       <IconPlaceholder
                         lucide="MoreHorizontalIcon"
+                        materialSymbols="more_horiz"
                         tabler="IconDotsVertical"
                         hugeicons="MoreVerticalCircle01Icon"
                         phosphor="DotsThreeIcon"

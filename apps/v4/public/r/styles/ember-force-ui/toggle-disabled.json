@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/ember-force-ui/examples/toggle-disabled.gts",
-      "content": "import { Toggle } from '@/ui/toggle';\n\nimport Underline from '~icons/lucide/underline';\n\n<template>\n  <Toggle @disabled={{true}} aria-label=\"Toggle underline\">\n    <Underline />\n  </Toggle>\n</template>\n",
+      "content": "import { Toggle } from '@/ui/toggle';\n\nimport Underline from '~icons/ms/format_underlined';\n\n<template>\n  <Toggle @disabled={{true}} aria-label=\"Toggle underline\">\n    <Underline />\n  </Toggle>\n</template>\n",
       "type": "registry:example"
     }
   ],

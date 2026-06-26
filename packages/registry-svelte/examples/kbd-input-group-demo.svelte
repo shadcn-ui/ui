@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as Kbd from "$lib/registry/ui/kbd/index.js";
 	import * as InputGroup from "$lib/registry/ui/input-group/index.js";
-	import SearchIcon from "@lucide/svelte/icons/search";
+	import SearchIcon from "~icons/ms/search";
 </script>
 
 <div class="flex w-full max-w-xs flex-col gap-6">

@@ -19,10 +19,10 @@ import {
   SidebarTrigger,
 } from '@/ui/sidebar';
 
-import ChevronRight from '~icons/lucide/chevron-right';
-import Folder from '~icons/lucide/folder';
-import Forward from '~icons/lucide/forward';
-import Trash2 from '~icons/lucide/trash-2';
+import ChevronRight from '~icons/ms/chevron_right';
+import Folder from '~icons/ms/folder';
+import Forward from '~icons/ms/forward';
+import Trash2 from '~icons/ms/delete';
 
 <template>
   <SidebarProvider class="!min-h-full h-full">

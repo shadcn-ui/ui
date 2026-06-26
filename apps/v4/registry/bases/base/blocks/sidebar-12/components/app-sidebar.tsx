@@ -58,6 +58,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuButton>
               <IconPlaceholder
                 lucide="PlusIcon"
+                materialSymbols="add"
                 tabler="IconPlus"
                 hugeicons="PlusSignIcon"
                 phosphor="PlusIcon"

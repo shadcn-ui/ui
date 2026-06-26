@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ArrowLeft from "@lucide/svelte/icons/arrow-left";
-	import ArrowRight from "@lucide/svelte/icons/arrow-right";
+	import ArrowLeft from "~icons/ms/arrow_left";
+	import ArrowRight from "~icons/ms/arrow_right";
 	import { Button } from "@/svelte-ui/button/index.js";
 	import * as ButtonGroup from "@/svelte-ui/button-group/index.js";
 </script>

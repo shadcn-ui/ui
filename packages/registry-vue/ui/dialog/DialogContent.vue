@@ -45,6 +45,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
         <Button variant="ghost" class="cn-dialog-close" size="icon-sm">
           <IconPlaceholder
             lucide="XIcon"
+      materialSymbols="close"
             tabler="IconX"
             hugeicons="Cancel01Icon"
             phosphor="XIcon"

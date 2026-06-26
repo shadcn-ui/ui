@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { BookUser, CreditCard, Truck } from 'lucide-vue-next'
+import BookUser from "@material-symbols/svg-400/rounded/contacts.svg?component"
+import CreditCard from "@material-symbols/svg-400/rounded/credit_card.svg?component"
+import Truck from "@material-symbols/svg-400/rounded/local_shipping.svg?component"
 import { Stepper, StepperDescription, StepperIndicator, StepperItem, StepperSeparator, StepperTitle, StepperTrigger } from '@/ui/stepper'
 
 const steps = [

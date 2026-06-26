@@ -1,4 +1,4 @@
-import { MinusIcon, PlusIcon } from "lucide-react"
+import { MinusIcon, PlusIcon } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/radix-force-ui/ui/button"
 import { ButtonGroup } from "@/styles/radix-force-ui/ui/button-group"

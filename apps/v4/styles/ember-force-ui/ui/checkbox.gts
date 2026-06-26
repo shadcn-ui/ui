@@ -4,7 +4,7 @@ import { tracked } from '@glimmer/tracking';
 
 import { cn } from '@/lib/utils';
 
-import Check from '~icons/lucide/check';
+import Check from '~icons/ms/check';
 
 interface CheckboxSignature {
   Element: HTMLButtonElement;

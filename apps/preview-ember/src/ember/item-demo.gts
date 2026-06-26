@@ -8,8 +8,8 @@ import {
   ItemTitle,
 } from '@/ember-ui/item';
 
-import BadgeCheck from '~icons/lucide/badge-check';
-import ChevronRight from '~icons/lucide/chevron-right';
+import BadgeCheck from '~icons/ms/verified';
+import ChevronRight from '~icons/ms/chevron_right';
 
 <template>
   <div class="flex w-full max-w-md flex-col gap-6">

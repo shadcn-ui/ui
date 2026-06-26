@@ -1,11 +1,4 @@
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react"
+import { Calculator, Calendar, CreditCard, Settings, Smile, User } from "@/examples/material-symbols"
 
 import {
   Command,

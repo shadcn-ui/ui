@@ -1,7 +1,9 @@
 "use client"
 
+import { Search } from "@/examples/material-symbols"
+
 import * as React from "react"
-import { Search } from "lucide-react"
+
 
 import {
   useTranslation,

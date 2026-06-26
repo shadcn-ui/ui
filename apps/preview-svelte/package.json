@@ -35,10 +35,12 @@
     "zod": "^3.0.0"
   },
   "devDependencies": {
+    "@material-symbols/svg-400": "^0.45.2",
     "@sveltejs/vite-plugin-svelte": "^5.0.0",
     "@tailwindcss/vite": "4.1.18",
     "tailwindcss": "4.1.18",
     "typescript": "^5.7.0",
+    "unplugin-icons": "^23.0.1",
     "vite": "^6.0.0"
   }
 }

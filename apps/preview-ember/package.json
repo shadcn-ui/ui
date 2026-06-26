@@ -33,6 +33,7 @@
     "@babel/plugin-transform-typescript": "^7.28.0",
     "@babel/runtime": "^7.29.2",
     "@iconify-json/lucide": "^1.2.101",
+    "@material-symbols/svg-400": "^0.45.2",
     "@rollup/plugin-babel": "^7.0.0",
     "@tailwindcss/vite": "4.1.18",
     "babel-plugin-ember-template-compilation": "^4.0.0",

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CalendarIcon from "@lucide/svelte/icons/calendar";
+	import CalendarIcon from "~icons/ms/calendar_month";
 	import type { DateRange } from "bits-ui";
 	import {
 		CalendarDate,

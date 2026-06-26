@@ -9,7 +9,9 @@ import {
 } from "shadcn/utils"
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
 
+import { materialSymbolNames } from "@/examples/material-symbols-map"
 import { BASES } from "@/registry/bases"
+import { DEFAULT_CONFIG } from "@/registry/config"
 
 function getStyleFromStyleName(styleName: string) {
   const parts = styleName.split("-")
@@ -29,7 +31,7 @@ function buildDisplayConfig(styleName: string) {
       cssVariables: true,
       prefix: "",
     },
-    iconLibrary: "lucide",
+    iconLibrary: DEFAULT_CONFIG.iconLibrary, // [FORCE-UI] was "lucide"
     aliases: {
       components: "@/components",
       utils: "@/lib/utils",
@@ -80,6 +82,28 @@ async function getStyleMap(styleName: string) {
   }
 }
 
+function rewriteMaterialSymbolsHelperImport(code: string) {
+  return code.replace(
+    /import\s*\{([\s\S]*?)\}\s*from\s*["']@\/examples\/material-symbols["']/g,
+    (_match, importsBlock: string) => {
+      const names = importsBlock
+        .split(",")
+        .map((name) => name.trim())
+        .filter(Boolean)
+
+      return names
+        .map((name) => {
+          const iconName = materialSymbolNames[name as keyof typeof materialSymbolNames]
+          return iconName
+            ? `import ${name} from "@material-symbols/svg-400/rounded/${iconName}.svg?react"`
+            : null
+        })
+        .filter(Boolean)
+        .join("\n")
+    }
+  )
+}
+
 export async function formatCode(code: string, styleName: string) {
   code = code.replaceAll(`@/registry/${styleName}/`, "@/components/")
 
@@ -106,6 +130,7 @@ export async function formatCode(code: string, styleName: string) {
   )
 
   code = code.replaceAll("export default", "export")
+  code = rewriteMaterialSymbolsHelperImport(code)
 
   try {
     const styleMap = await getStyleMap(styleName)

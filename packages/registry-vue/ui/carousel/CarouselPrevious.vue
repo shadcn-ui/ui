@@ -34,7 +34,8 @@ const { orientation, canScrollPrev, scrollPrev } = useCarousel()
     @click="scrollPrev"
   >
     <slot>
-      <IconPlaceholder lucide="ArrowLeftIcon" tabler="IconArrowLeft" hugeicons="ArrowLeft01Icon" phosphor="ArrowLeftIcon" remixicon="RiArrowLeftLine" />
+      <IconPlaceholder lucide="ArrowLeftIcon"
+      materialSymbols="arrow_left" tabler="IconArrowLeft" hugeicons="ArrowLeft01Icon" phosphor="ArrowLeftIcon" remixicon="RiArrowLeftLine" />
       <span class="sr-only">Previous Slide</span>
     </slot>
   </Button>

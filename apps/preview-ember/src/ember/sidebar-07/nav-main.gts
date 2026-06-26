@@ -19,7 +19,7 @@ import {
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike } from '@glint/template';
 
-import ChevronRight from '~icons/lucide/chevron-right';
+import ChevronRight from '~icons/ms/chevron_right';
 
 interface NavItem {
   title: string;

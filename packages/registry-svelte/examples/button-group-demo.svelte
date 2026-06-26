@@ -1,13 +1,13 @@
 <script lang="ts">
-	import Archive from "@lucide/svelte/icons/archive";
-	import ArrowLeft from "@lucide/svelte/icons/arrow-left";
-	import CalendarPlus from "@lucide/svelte/icons/calendar-plus";
-	import Clock from "@lucide/svelte/icons/clock";
-	import ListFilter from "@lucide/svelte/icons/list-filter";
-	import MailCheck from "@lucide/svelte/icons/mail-check";
-	import MoreHorizontal from "@lucide/svelte/icons/more-horizontal";
-	import Tag from "@lucide/svelte/icons/tag";
-	import Trash2 from "@lucide/svelte/icons/trash-2";
+	import Archive from "~icons/ms/archive";
+	import ArrowLeft from "~icons/ms/arrow_left";
+	import CalendarPlus from "~icons/ms/calendar_add_on";
+	import Clock from "~icons/ms/schedule";
+	import ListFilter from "~icons/ms/filter_list";
+	import MailCheck from "~icons/ms/mark_email_read";
+	import MoreHorizontal from "~icons/ms/more_horiz";
+	import Tag from "~icons/ms/tag";
+	import Trash2 from "~icons/ms/delete";
 	import { Button } from "$lib/registry/ui/button/index.js";
 	import * as ButtonGroup from "$lib/registry/ui/button-group/index.js";
 	import * as DropdownMenu from "$lib/registry/ui/dropdown-menu/index.js";

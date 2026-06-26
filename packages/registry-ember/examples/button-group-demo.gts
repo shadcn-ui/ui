@@ -17,15 +17,15 @@ import {
   DropdownMenuTrigger,
 } from '@/ui/dropdown-menu';
 
-import ArchiveIcon from '~icons/lucide/archive';
-import ArrowLeftIcon from '~icons/lucide/arrow-left';
-import CalendarPlusIcon from '~icons/lucide/calendar-plus';
-import ClockIcon from '~icons/lucide/clock';
-import ListFilterIcon from '~icons/lucide/list-filter';
-import MailCheckIcon from '~icons/lucide/mail-check';
-import MoreHorizontalIcon from '~icons/lucide/more-horizontal';
-import TagIcon from '~icons/lucide/tag';
-import Trash2Icon from '~icons/lucide/trash-2';
+import ArchiveIcon from '~icons/ms/archive';
+import ArrowLeftIcon from '~icons/ms/arrow_left';
+import CalendarPlusIcon from '~icons/ms/calendar_add_on';
+import ClockIcon from '~icons/ms/schedule';
+import ListFilterIcon from '~icons/ms/filter_list';
+import MailCheckIcon from '~icons/ms/mark_email_read';
+import MoreHorizontalIcon from '~icons/ms/more_horiz';
+import TagIcon from '~icons/ms/tag';
+import Trash2Icon from '~icons/ms/delete';
 
 export default class ButtonGroupDemo extends Component {
   @tracked label = 'personal';

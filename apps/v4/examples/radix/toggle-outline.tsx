@@ -1,4 +1,4 @@
-import { BoldIcon, ItalicIcon } from "lucide-react"
+import { BoldIcon, ItalicIcon } from "@/examples/material-symbols"
 
 import { Toggle } from "@/styles/radix-force-ui/ui/toggle"
 

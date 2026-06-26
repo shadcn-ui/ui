@@ -8,8 +8,8 @@ import {
   EmptyTitle,
 } from '@/ui/empty';
 
-import Bell from '~icons/lucide/bell';
-import RefreshCcw from '~icons/lucide/refresh-ccw';
+import Bell from '~icons/ms/notifications';
+import RefreshCcw from '~icons/ms/refresh';
 
 <template>
   <Empty @class="from-muted/50 to-background h-full bg-gradient-to-b from-30%">

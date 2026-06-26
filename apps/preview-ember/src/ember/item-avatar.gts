@@ -9,7 +9,7 @@ import {
   ItemTitle,
 } from '@/ember-ui/item';
 
-import Plus from '~icons/lucide/plus';
+import Plus from '~icons/ms/add';
 
 <template>
   {{! template-lint-disable no-potential-path-strings }}

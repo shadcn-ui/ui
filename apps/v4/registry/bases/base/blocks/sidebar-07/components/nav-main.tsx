@@ -49,6 +49,7 @@ export function NavMain({
               <span>{item.title}</span>
               <IconPlaceholder
                 lucide="ChevronRightIcon"
+                materialSymbols="chevron_right"
                 tabler="IconChevronRight"
                 hugeicons="ArrowRight01Icon"
                 phosphor="CaretRightIcon"

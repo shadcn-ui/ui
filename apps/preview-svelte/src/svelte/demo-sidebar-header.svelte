@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as Sidebar from "@/svelte-ui/sidebar/index.js";
 	import * as DropdownMenu from "@/svelte-ui/dropdown-menu/index.js";
-	import ChevronDownIcon from "@lucide/svelte/icons/chevron-down";
+	import ChevronDownIcon from "~icons/ms/keyboard_arrow_down";
 </script>
 
 <Sidebar.Provider>

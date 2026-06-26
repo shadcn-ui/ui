@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { cn } from "$lib/utils.js";
-	import LoaderIcon from "@lucide/svelte/icons/loader";
+	import LoaderIcon from "~icons/ms/progress_activity";
 	import type { ComponentProps } from "svelte";
 
 	type Props = ComponentProps<typeof LoaderIcon>;

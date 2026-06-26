@@ -1,6 +1,6 @@
 import { Button } from '@/ui/button';
 
-import ArrowUpRightIcon from '~icons/lucide/arrow-up-right';
+import ArrowUpRightIcon from '~icons/ms/north_east';
 
 <template>
   <div class="flex flex-col gap-8">

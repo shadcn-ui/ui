@@ -51,6 +51,7 @@ function SelectTrigger({
         render={
           <IconPlaceholder
             lucide="ChevronDownIcon"
+            materialSymbols="keyboard_arrow_down"
             tabler="IconSelector"
             hugeicons="UnfoldMoreIcon"
             phosphor="CaretDownIcon"
@@ -140,6 +141,7 @@ function SelectItem({
       >
         <IconPlaceholder
           lucide="CheckIcon"
+          materialSymbols="check"
           tabler="IconCheck"
           hugeicons="Tick02Icon"
           phosphor="CheckIcon"
@@ -176,6 +178,7 @@ function SelectScrollUpButton({
     >
       <IconPlaceholder
         lucide="ChevronUpIcon"
+        materialSymbols="keyboard_arrow_up"
         tabler="IconChevronUp"
         hugeicons="ArrowUp01Icon"
         phosphor="CaretUpIcon"
@@ -197,6 +200,7 @@ function SelectScrollDownButton({
     >
       <IconPlaceholder
         lucide="ChevronDownIcon"
+        materialSymbols="keyboard_arrow_down"
         tabler="IconChevronDown"
         hugeicons="ArrowDown01Icon"
         phosphor="CaretDownIcon"

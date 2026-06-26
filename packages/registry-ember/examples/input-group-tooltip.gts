@@ -10,8 +10,8 @@ import {
   TooltipTrigger,
 } from '@/ui/tooltip';
 
-import HelpCircle from '~icons/lucide/help-circle';
-import Info from '~icons/lucide/info';
+import HelpCircle from '~icons/ms/help';
+import Info from '~icons/ms/info';
 
 <template>
   <div class="grid w-full max-w-sm gap-4">

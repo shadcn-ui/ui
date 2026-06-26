@@ -1,7 +1,10 @@
 "use client"
 
+import { MaximizeIcon, MinimizeIcon } from "@/examples/material-symbols"
+
 import * as React from "react"
-import { MaximizeIcon, MinimizeIcon } from "lucide-react"
+
+
 
 import { Button } from "@/styles/radix-force-ui/ui/button"
 import {

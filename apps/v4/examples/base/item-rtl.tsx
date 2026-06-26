@@ -1,7 +1,10 @@
 "use client"
 
+import { BadgeCheckIcon, ChevronRightIcon } from "@/examples/material-symbols"
+
 import * as React from "react"
-import { BadgeCheckIcon, ChevronRightIcon } from "lucide-react"
+
+
 
 import {
   useTranslation,

@@ -62,6 +62,7 @@ export function AssignIssue() {
             >
               <IconPlaceholder
                 lucide="PlusIcon"
+                materialSymbols="add"
                 tabler="IconPlus"
                 hugeicons="PlusSignIcon"
                 phosphor="PlusIcon"

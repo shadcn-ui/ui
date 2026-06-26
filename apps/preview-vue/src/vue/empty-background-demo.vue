@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Bell, RefreshCcw } from 'lucide-vue-next'
+import Bell from "@material-symbols/svg-400/rounded/notifications.svg?component"
+import RefreshCcw from "@material-symbols/svg-400/rounded/refresh.svg?component"
 import { Button } from '@/ui/button'
 import {
   Empty,

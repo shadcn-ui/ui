@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { CheckCircle2Icon, InfoIcon, TriangleAlertIcon } from 'lucide-vue-next'
+import CheckCircle2Icon from "@material-symbols/svg-400/rounded/check_circle.svg?component"
+import InfoIcon from "@material-symbols/svg-400/rounded/info.svg?component"
+import TriangleAlertIcon from "@material-symbols/svg-400/rounded/warning.svg?component"
 import {
   Alert,
   AlertDescription,

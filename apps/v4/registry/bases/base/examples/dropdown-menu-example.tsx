@@ -133,6 +133,7 @@ function DropdownMenuWithIcons() {
           <DropdownMenuItem>
             <IconPlaceholder
               lucide="UserIcon"
+              materialSymbols="person"
               tabler="IconUser"
               hugeicons="UserIcon"
               phosphor="UserIcon"
@@ -143,6 +144,7 @@ function DropdownMenuWithIcons() {
           <DropdownMenuItem>
             <IconPlaceholder
               lucide="CreditCardIcon"
+              materialSymbols="credit_card"
               tabler="IconCreditCard"
               hugeicons="CreditCardIcon"
               phosphor="CreditCardIcon"
@@ -153,6 +155,7 @@ function DropdownMenuWithIcons() {
           <DropdownMenuItem>
             <IconPlaceholder
               lucide="SettingsIcon"
+              materialSymbols="settings"
               tabler="IconSettings"
               hugeicons="SettingsIcon"
               phosphor="GearIcon"
@@ -164,6 +167,7 @@ function DropdownMenuWithIcons() {
           <DropdownMenuItem variant="destructive">
             <IconPlaceholder
               lucide="LogOutIcon"
+              materialSymbols="logout"
               tabler="IconLogout"
               hugeicons="LogoutIcon"
               phosphor="SignOutIcon"
@@ -273,6 +277,7 @@ function DropdownMenuWithCheckboxes() {
             >
               <IconPlaceholder
                 lucide="LayoutIcon"
+                materialSymbols="dashboard"
                 tabler="IconLayout"
                 hugeicons="LayoutIcon"
                 phosphor="LayoutIcon"
@@ -287,6 +292,7 @@ function DropdownMenuWithCheckboxes() {
             >
               <IconPlaceholder
                 lucide="ActivityIcon"
+                materialSymbols="monitor_heart"
                 tabler="IconActivity"
                 hugeicons="ActivityIcon"
                 phosphor="ActivityIcon"
@@ -300,6 +306,7 @@ function DropdownMenuWithCheckboxes() {
             >
               <IconPlaceholder
                 lucide="PanelLeftIcon"
+                materialSymbols="left_panel_open"
                 tabler="IconLayoutSidebar"
                 hugeicons="LayoutLeftIcon"
                 phosphor="SidebarIcon"
@@ -335,6 +342,7 @@ function DropdownMenuWithRadio() {
               <DropdownMenuRadioItem value="top">
                 <IconPlaceholder
                   lucide="ArrowUpIcon"
+                  materialSymbols="arrow_upward"
                   tabler="IconArrowUp"
                   hugeicons="ArrowUp01Icon"
                   phosphor="ArrowUpIcon"
@@ -345,6 +353,7 @@ function DropdownMenuWithRadio() {
               <DropdownMenuRadioItem value="bottom">
                 <IconPlaceholder
                   lucide="ArrowDownIcon"
+                  materialSymbols="arrow_downward"
                   tabler="IconArrowDown"
                   hugeicons="ArrowDown01Icon"
                   phosphor="ArrowDownIcon"
@@ -355,6 +364,7 @@ function DropdownMenuWithRadio() {
               <DropdownMenuRadioItem value="right" disabled>
                 <IconPlaceholder
                   lucide="ArrowRightIcon"
+                  materialSymbols="arrow_right"
                   tabler="IconArrowRight"
                   hugeicons="ArrowRight01Icon"
                   phosphor="ArrowRightIcon"
@@ -396,6 +406,7 @@ function DropdownMenuWithCheckboxesIcons() {
             >
               <IconPlaceholder
                 lucide="MailIcon"
+                materialSymbols="mail"
                 tabler="IconMail"
                 hugeicons="MailIcon"
                 phosphor="EnvelopeIcon"
@@ -411,6 +422,7 @@ function DropdownMenuWithCheckboxesIcons() {
             >
               <IconPlaceholder
                 lucide="MessageSquareIcon"
+                materialSymbols="chat"
                 tabler="IconMessage"
                 hugeicons="MessageIcon"
                 phosphor="ChatCircleIcon"
@@ -426,6 +438,7 @@ function DropdownMenuWithCheckboxesIcons() {
             >
               <IconPlaceholder
                 lucide="BellIcon"
+                materialSymbols="notifications"
                 tabler="IconBell"
                 hugeicons="NotificationIcon"
                 phosphor="BellIcon"
@@ -461,6 +474,7 @@ function DropdownMenuWithRadioIcons() {
               <DropdownMenuRadioItem value="card">
                 <IconPlaceholder
                   lucide="CreditCardIcon"
+                  materialSymbols="credit_card"
                   tabler="IconCreditCard"
                   hugeicons="CreditCardIcon"
                   phosphor="CreditCardIcon"
@@ -471,6 +485,7 @@ function DropdownMenuWithRadioIcons() {
               <DropdownMenuRadioItem value="paypal">
                 <IconPlaceholder
                   lucide="WalletIcon"
+                  materialSymbols="wallet"
                   tabler="IconWallet"
                   hugeicons="WalletIcon"
                   phosphor="WalletIcon"
@@ -481,6 +496,7 @@ function DropdownMenuWithRadioIcons() {
               <DropdownMenuRadioItem value="bank">
                 <IconPlaceholder
                   lucide="Building2Icon"
+                  materialSymbols="apartment"
                   tabler="IconBuildingBank"
                   hugeicons="BankIcon"
                   phosphor="BankIcon"
@@ -509,6 +525,7 @@ function DropdownMenuWithDestructive() {
           <DropdownMenuItem>
             <IconPlaceholder
               lucide="PencilIcon"
+              materialSymbols="edit"
               tabler="IconPencil"
               hugeicons="EditIcon"
               phosphor="PencilIcon"
@@ -519,6 +536,7 @@ function DropdownMenuWithDestructive() {
           <DropdownMenuItem>
             <IconPlaceholder
               lucide="ShareIcon"
+              materialSymbols="share"
               tabler="IconShare"
               hugeicons="ShareIcon"
               phosphor="ShareIcon"
@@ -530,6 +548,7 @@ function DropdownMenuWithDestructive() {
           <DropdownMenuItem>
             <IconPlaceholder
               lucide="ArchiveIcon"
+              materialSymbols="archive"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="ArchiveIcon"
@@ -540,6 +559,7 @@ function DropdownMenuWithDestructive() {
           <DropdownMenuItem variant="destructive">
             <IconPlaceholder
               lucide="TrashIcon"
+              materialSymbols="delete"
               tabler="IconTrash"
               hugeicons="DeleteIcon"
               phosphor="TrashIcon"
@@ -560,6 +580,7 @@ function DropdownMenuWithAvatar() {
         <DropdownMenuItem>
           <IconPlaceholder
             lucide="BadgeCheckIcon"
+            materialSymbols="verified"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadgeIcon"
             phosphor="CheckCircleIcon"
@@ -570,6 +591,7 @@ function DropdownMenuWithAvatar() {
         <DropdownMenuItem>
           <IconPlaceholder
             lucide="CreditCardIcon"
+            materialSymbols="credit_card"
             tabler="IconCreditCard"
             hugeicons="CreditCardIcon"
             phosphor="CreditCardIcon"
@@ -580,6 +602,7 @@ function DropdownMenuWithAvatar() {
         <DropdownMenuItem>
           <IconPlaceholder
             lucide="BellIcon"
+            materialSymbols="notifications"
             tabler="IconBell"
             hugeicons="NotificationIcon"
             phosphor="BellIcon"
@@ -592,6 +615,7 @@ function DropdownMenuWithAvatar() {
       <DropdownMenuItem>
         <IconPlaceholder
           lucide="LogOutIcon"
+          materialSymbols="logout"
           tabler="IconLogout"
           hugeicons="LogoutIcon"
           phosphor="SignOutIcon"
@@ -626,6 +650,7 @@ function DropdownMenuWithAvatar() {
             </div>
             <IconPlaceholder
               lucide="ChevronsUpDownIcon"
+              materialSymbols="unfold_more"
               tabler="IconSelector"
               hugeicons="UnfoldMoreIcon"
               phosphor="CaretUpDownIcon"
@@ -681,6 +706,7 @@ function DropdownMenuInDialog() {
               <DropdownMenuItem>
                 <IconPlaceholder
                   lucide="CopyIcon"
+                  materialSymbols="content_copy"
                   tabler="IconCopy"
                   hugeicons="CopyIcon"
                   phosphor="CopyIcon"
@@ -691,6 +717,7 @@ function DropdownMenuInDialog() {
               <DropdownMenuItem>
                 <IconPlaceholder
                   lucide="ScissorsIcon"
+                  materialSymbols="content_cut"
                   tabler="IconCut"
                   hugeicons="ScissorIcon"
                   phosphor="ScissorsIcon"
@@ -701,6 +728,7 @@ function DropdownMenuInDialog() {
               <DropdownMenuItem>
                 <IconPlaceholder
                   lucide="ClipboardPasteIcon"
+                  materialSymbols="content_paste"
                   tabler="IconClipboard"
                   hugeicons="ClipboardIcon"
                   phosphor="ClipboardIcon"
@@ -725,6 +753,7 @@ function DropdownMenuInDialog() {
               <DropdownMenuItem variant="destructive">
                 <IconPlaceholder
                   lucide="TrashIcon"
+                  materialSymbols="delete"
                   tabler="IconTrash"
                   hugeicons="DeleteIcon"
                   phosphor="TrashIcon"
@@ -759,6 +788,7 @@ function DropdownMenuWithInset() {
             <DropdownMenuItem>
               <IconPlaceholder
                 lucide="CopyIcon"
+                materialSymbols="content_copy"
                 tabler="IconCopy"
                 hugeicons="CopyIcon"
                 phosphor="CopyIcon"
@@ -769,6 +799,7 @@ function DropdownMenuWithInset() {
             <DropdownMenuItem>
               <IconPlaceholder
                 lucide="ScissorsIcon"
+                materialSymbols="content_cut"
                 tabler="IconCut"
                 hugeicons="ScissorIcon"
                 phosphor="ScissorsIcon"
@@ -847,6 +878,7 @@ function DropdownMenuComplex() {
             <DropdownMenuItem>
               <IconPlaceholder
                 lucide="UserIcon"
+                materialSymbols="person"
                 tabler="IconUser"
                 hugeicons="UserIcon"
                 phosphor="UserIcon"
@@ -858,6 +890,7 @@ function DropdownMenuComplex() {
             <DropdownMenuItem>
               <IconPlaceholder
                 lucide="CreditCardIcon"
+                materialSymbols="credit_card"
                 tabler="IconCreditCard"
                 hugeicons="CreditCardIcon"
                 phosphor="CreditCardIcon"
@@ -869,6 +902,7 @@ function DropdownMenuComplex() {
             <DropdownMenuItem>
               <IconPlaceholder
                 lucide="SettingsIcon"
+                materialSymbols="settings"
                 tabler="IconSettings"
                 hugeicons="SettingsIcon"
                 phosphor="GearIcon"
@@ -887,6 +921,7 @@ function DropdownMenuComplex() {
             >
               <IconPlaceholder
                 lucide="PanelLeftIcon"
+                materialSymbols="left_panel_open"
                 tabler="IconLayoutSidebar"
                 hugeicons="LayoutLeftIcon"
                 phosphor="SidebarIcon"
@@ -900,6 +935,7 @@ function DropdownMenuComplex() {
             >
               <IconPlaceholder
                 lucide="LayoutIcon"
+                materialSymbols="dashboard"
                 tabler="IconLayout"
                 hugeicons="LayoutIcon"
                 phosphor="LayoutIcon"
@@ -914,6 +950,7 @@ function DropdownMenuComplex() {
               <DropdownMenuSubTrigger>
                 <IconPlaceholder
                   lucide="UsersIcon"
+                  materialSymbols="group"
                   tabler="IconUsers"
                   hugeicons="UserGroupIcon"
                   phosphor="UsersIcon"
@@ -927,6 +964,7 @@ function DropdownMenuComplex() {
                     <DropdownMenuItem>
                       <IconPlaceholder
                         lucide="MailIcon"
+                        materialSymbols="mail"
                         tabler="IconMail"
                         hugeicons="MailIcon"
                         phosphor="EnvelopeIcon"
@@ -937,6 +975,7 @@ function DropdownMenuComplex() {
                     <DropdownMenuItem>
                       <IconPlaceholder
                         lucide="MessageSquareIcon"
+                        materialSymbols="chat"
                         tabler="IconMessage"
                         hugeicons="MessageIcon"
                         phosphor="ChatCircleIcon"
@@ -950,6 +989,7 @@ function DropdownMenuComplex() {
                     <DropdownMenuItem>
                       <IconPlaceholder
                         lucide="PlusCircleIcon"
+                        materialSymbols="add_circle"
                         tabler="IconCirclePlus"
                         hugeicons="AddCircleIcon"
                         phosphor="PlusCircleIcon"
@@ -967,6 +1007,7 @@ function DropdownMenuComplex() {
             <DropdownMenuItem>
               <IconPlaceholder
                 lucide="HelpCircleIcon"
+                materialSymbols="help"
                 tabler="IconHelpCircle"
                 hugeicons="HelpCircleIcon"
                 phosphor="QuestionIcon"
@@ -977,6 +1018,7 @@ function DropdownMenuComplex() {
             <DropdownMenuItem variant="destructive">
               <IconPlaceholder
                 lucide="LogOutIcon"
+                materialSymbols="logout"
                 tabler="IconLogout"
                 hugeicons="LogoutIcon"
                 phosphor="SignOutIcon"

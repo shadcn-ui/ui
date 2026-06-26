@@ -1,8 +1,8 @@
 import { Alert, AlertDescription, AlertTitle } from '@/ui/alert';
 
-import CircleCheckBig from '~icons/lucide/circle-check-big';
-import Info from '~icons/lucide/info';
-import TriangleAlert from '~icons/lucide/triangle-alert';
+import CircleCheckBig from '~icons/ms/check_circle';
+import Info from '~icons/ms/info';
+import TriangleAlert from '~icons/ms/warning';
 
 <template>
   <div class="flex w-full max-w-md flex-col gap-4">

@@ -14,10 +14,10 @@ import {
 
 import type { ComponentLike } from '@glint/template';
 
-import Frame from '~icons/lucide/frame';
-import Map from '~icons/lucide/map';
-import PieChart from '~icons/lucide/pie-chart';
-import Plus from '~icons/lucide/plus';
+import Frame from '~icons/ms/crop_free';
+import Map from '~icons/ms/map';
+import PieChart from '~icons/ms/pie_chart';
+import Plus from '~icons/ms/add';
 
 const projects = [
   { name: 'Design Engineering', url: '#', icon: Frame as ComponentLike },

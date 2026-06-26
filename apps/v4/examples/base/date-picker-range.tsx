@@ -1,8 +1,10 @@
 "use client"
 
+import { CalendarIcon } from "@/examples/material-symbols"
+
 import * as React from "react"
 import { addDays, format } from "date-fns"
-import { CalendarIcon } from "lucide-react"
+
 import { type DateRange } from "react-day-picker"
 
 import { Button } from "@/styles/base-force-ui/ui/button"

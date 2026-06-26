@@ -1,5 +1,7 @@
+import { DotIcon } from "@/examples/material-symbols"
+
 import Link from "next/link"
-import { DotIcon } from "lucide-react"
+
 
 import {
   Breadcrumb,

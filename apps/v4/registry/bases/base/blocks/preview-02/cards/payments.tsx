@@ -44,6 +44,7 @@ export function Payments() {
                 >
                   <IconPlaceholder
                     lucide="MoreHorizontalIcon"
+                    materialSymbols="more_horiz"
                     tabler="IconDots"
                     hugeicons="MoreHorizontalCircle01Icon"
                     phosphor="DotsThreeIcon"
@@ -73,6 +74,7 @@ export function Payments() {
             <ItemMedia variant="icon">
               <IconPlaceholder
                 lucide="GaugeIcon"
+                materialSymbols="speed"
                 tabler="IconGauge"
                 hugeicons="Settings01Icon"
                 phosphor="GaugeIcon"
@@ -87,6 +89,7 @@ export function Payments() {
             </ItemContent>
             <IconPlaceholder
               lucide="ChevronRightIcon"
+              materialSymbols="chevron_right"
               tabler="IconChevronRight"
               hugeicons="ArrowRight01Icon"
               phosphor="CaretRightIcon"
@@ -98,6 +101,7 @@ export function Payments() {
             <ItemMedia variant="icon">
               <IconPlaceholder
                 lucide="CalendarIcon"
+                materialSymbols="calendar_month"
                 tabler="IconCalendar"
                 hugeicons="Calendar03Icon"
                 phosphor="CalendarIcon"
@@ -112,6 +116,7 @@ export function Payments() {
             </ItemContent>
             <IconPlaceholder
               lucide="ChevronRightIcon"
+              materialSymbols="chevron_right"
               tabler="IconChevronRight"
               hugeicons="ArrowRight01Icon"
               phosphor="CaretRightIcon"
@@ -123,6 +128,7 @@ export function Payments() {
             <ItemMedia variant="icon">
               <IconPlaceholder
                 lucide="RepeatIcon"
+                materialSymbols="repeat"
                 tabler="IconRepeat"
                 hugeicons="RepeatIcon"
                 phosphor="RepeatIcon"
@@ -137,6 +143,7 @@ export function Payments() {
             </ItemContent>
             <IconPlaceholder
               lucide="ChevronRightIcon"
+              materialSymbols="chevron_right"
               tabler="IconChevronRight"
               hugeicons="ArrowRight01Icon"
               phosphor="CaretRightIcon"
@@ -148,6 +155,7 @@ export function Payments() {
             <ItemMedia variant="icon">
               <IconPlaceholder
                 lucide="RefreshCwIcon"
+                materialSymbols="refresh"
                 tabler="IconRefresh"
                 hugeicons="RepeatIcon"
                 phosphor="ArrowsClockwiseIcon"
@@ -162,6 +170,7 @@ export function Payments() {
             </ItemContent>
             <IconPlaceholder
               lucide="ChevronRightIcon"
+              materialSymbols="chevron_right"
               tabler="IconChevronRight"
               hugeicons="ArrowRight01Icon"
               phosphor="CaretRightIcon"

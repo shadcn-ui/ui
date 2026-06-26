@@ -76,6 +76,7 @@ export function CodespacesCard() {
                   >
                     <IconPlaceholder
                       lucide="PlusIcon"
+                      materialSymbols="add"
                       tabler="IconPlus"
                       hugeicons="PlusSignIcon"
                       phosphor="PlusIcon"
@@ -92,6 +93,7 @@ export function CodespacesCard() {
                   >
                     <IconPlaceholder
                       lucide="MoreHorizontalIcon"
+                      materialSymbols="more_horiz"
                       tabler="IconDots"
                       hugeicons="MoreHorizontalCircle01Icon"
                       phosphor="DotsThreeOutlineIcon"
@@ -103,6 +105,7 @@ export function CodespacesCard() {
                       <DropdownMenuItem>
                         <IconPlaceholder
                           lucide="PlusIcon"
+                          materialSymbols="add"
                           tabler="IconPlus"
                           hugeicons="PlusSignIcon"
                           phosphor="PlusIcon"
@@ -113,6 +116,7 @@ export function CodespacesCard() {
                       <DropdownMenuItem>
                         <IconPlaceholder
                           lucide="ContainerIcon"
+                          materialSymbols="deployed_code"
                           tabler="IconBox"
                           hugeicons="CubeIcon"
                           phosphor="CubeIcon"
@@ -123,6 +127,7 @@ export function CodespacesCard() {
                       <DropdownMenuItem>
                         <IconPlaceholder
                           lucide="ZapIcon"
+                          materialSymbols="bolt"
                           tabler="IconBolt"
                           hugeicons="ZapIcon"
                           phosphor="LightningIcon"
@@ -136,6 +141,7 @@ export function CodespacesCard() {
                       <DropdownMenuItem>
                         <IconPlaceholder
                           lucide="ServerIcon"
+                          materialSymbols="dns"
                           tabler="IconServer"
                           hugeicons="ServerStackIcon"
                           phosphor="HardDrivesIcon"
@@ -146,6 +152,7 @@ export function CodespacesCard() {
                       <DropdownMenuItem>
                         <IconPlaceholder
                           lucide="ShareIcon"
+                          materialSymbols="share"
                           tabler="IconShare2"
                           hugeicons="Share03Icon"
                           phosphor="ShareIcon"
@@ -156,6 +163,7 @@ export function CodespacesCard() {
                       <DropdownMenuItem>
                         <IconPlaceholder
                           lucide="InfoIcon"
+                          materialSymbols="info"
                           tabler="IconInfoCircle"
                           hugeicons="AlertCircleIcon"
                           phosphor="InfoIcon"
@@ -174,6 +182,7 @@ export function CodespacesCard() {
                 <EmptyMedia variant="icon">
                   <IconPlaceholder
                     lucide="ServerIcon"
+                    materialSymbols="dns"
                     tabler="IconServer"
                     hugeicons="ServerStackIcon"
                     phosphor="HardDrivesIcon"
@@ -224,6 +233,7 @@ export function CodespacesCard() {
                 <ItemTitle className="gap-2">
                   <IconPlaceholder
                     lucide="TerminalIcon"
+                    materialSymbols="terminal"
                     tabler="IconTerminal"
                     hugeicons="ComputerTerminal01Icon"
                     phosphor="TerminalIcon"
@@ -240,6 +250,7 @@ export function CodespacesCard() {
                   >
                     <IconPlaceholder
                       lucide="InfoIcon"
+                      materialSymbols="info"
                       tabler="IconInfoCircle"
                       hugeicons="AlertCircleIcon"
                       phosphor="InfoIcon"
@@ -272,6 +283,7 @@ export function CodespacesCard() {
                         <InputGroupButton variant="ghost" size="icon-xs">
                           <IconPlaceholder
                             lucide="CopyIcon"
+                            materialSymbols="content_copy"
                             tabler="IconCopy"
                             hugeicons="Copy01Icon"
                             phosphor="CopyIcon"
@@ -300,6 +312,7 @@ export function CodespacesCard() {
                         <InputGroupButton variant="ghost" size="icon-xs">
                           <IconPlaceholder
                             lucide="CopyIcon"
+                            materialSymbols="content_copy"
                             tabler="IconCopy"
                             hugeicons="Copy01Icon"
                             phosphor="CopyIcon"
@@ -328,6 +341,7 @@ export function CodespacesCard() {
                         <InputGroupButton variant="ghost" size="icon-xs">
                           <IconPlaceholder
                             lucide="CopyIcon"
+                            materialSymbols="content_copy"
                             tabler="IconCopy"
                             hugeicons="Copy01Icon"
                             phosphor="CopyIcon"
@@ -358,6 +372,7 @@ export function CodespacesCard() {
               >
                 <IconPlaceholder
                   lucide="MonitorIcon"
+                  materialSymbols="monitor"
                   tabler="IconDeviceDesktop"
                   hugeicons="ComputerIcon"
                   phosphor="MonitorIcon"
@@ -373,6 +388,7 @@ export function CodespacesCard() {
               >
                 <IconPlaceholder
                   lucide="DownloadIcon"
+                  materialSymbols="download"
                   tabler="IconDownload"
                   hugeicons="DownloadIcon"
                   phosphor="DownloadIcon"

@@ -13,12 +13,12 @@ import {
   CommandShortcut,
 } from '@/ui/command';
 
-import Calculator from '~icons/lucide/calculator';
-import Calendar from '~icons/lucide/calendar';
-import CreditCard from '~icons/lucide/credit-card';
-import Settings from '~icons/lucide/settings';
-import Smile from '~icons/lucide/smile';
-import User from '~icons/lucide/user';
+import Calculator from '~icons/ms/calculate';
+import Calendar from '~icons/ms/calendar_month';
+import CreditCard from '~icons/ms/credit_card';
+import Settings from '~icons/ms/settings';
+import Smile from '~icons/ms/mood';
+import User from '~icons/ms/person';
 
 export default class CommandDialogDemo extends Component {
   @tracked open = false;

@@ -123,6 +123,7 @@ export function Demo() {
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="CopyIcon"
+                    materialSymbols="content_copy"
                     tabler="IconCopy"
                     hugeicons="Copy01Icon"
                     phosphor="CopyIcon"
@@ -132,6 +133,7 @@ export function Demo() {
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="CircleAlertIcon"
+                    materialSymbols="error"
                     tabler="IconExclamationCircle"
                     hugeicons="AlertCircleIcon"
                     phosphor="WarningCircleIcon"
@@ -141,6 +143,7 @@ export function Demo() {
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="TrashIcon"
+                    materialSymbols="delete"
                     tabler="IconTrash"
                     hugeicons="Delete02Icon"
                     phosphor="TrashIcon"
@@ -150,6 +153,7 @@ export function Demo() {
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="ShareIcon"
+                    materialSymbols="share"
                     tabler="IconShare"
                     hugeicons="Share03Icon"
                     phosphor="ShareIcon"
@@ -159,6 +163,7 @@ export function Demo() {
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="ShoppingBagIcon"
+                    materialSymbols="shopping_bag"
                     tabler="IconShoppingBag"
                     hugeicons="ShoppingBag01Icon"
                     phosphor="BagIcon"
@@ -168,6 +173,7 @@ export function Demo() {
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="MoreHorizontalIcon"
+                    materialSymbols="more_horiz"
                     tabler="IconDots"
                     hugeicons="MoreHorizontalCircle01Icon"
                     phosphor="DotsThreeIcon"
@@ -177,6 +183,7 @@ export function Demo() {
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="Loader2Icon"
+                    materialSymbols="progress_activity"
                     tabler="IconLoader"
                     hugeicons="Loading03Icon"
                     phosphor="SpinnerIcon"
@@ -186,6 +193,7 @@ export function Demo() {
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="PlusIcon"
+                    materialSymbols="add"
                     tabler="IconPlus"
                     hugeicons="PlusSignIcon"
                     phosphor="PlusIcon"
@@ -195,6 +203,7 @@ export function Demo() {
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="MinusIcon"
+                    materialSymbols="remove"
                     tabler="IconMinus"
                     hugeicons="MinusSignIcon"
                     phosphor="MinusIcon"
@@ -204,6 +213,7 @@ export function Demo() {
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="ArrowLeftIcon"
+                    materialSymbols="arrow_left"
                     tabler="IconArrowLeft"
                     hugeicons="ArrowLeft02Icon"
                     phosphor="ArrowLeftIcon"
@@ -213,6 +223,7 @@ export function Demo() {
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="ArrowRightIcon"
+                    materialSymbols="arrow_right"
                     tabler="IconArrowRight"
                     hugeicons="ArrowRight02Icon"
                     phosphor="ArrowRightIcon"
@@ -222,6 +233,7 @@ export function Demo() {
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="CheckIcon"
+                    materialSymbols="check"
                     tabler="IconCheck"
                     hugeicons="Tick02Icon"
                     phosphor="CheckIcon"
@@ -231,6 +243,7 @@ export function Demo() {
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="ChevronDownIcon"
+                    materialSymbols="keyboard_arrow_down"
                     tabler="IconChevronDown"
                     hugeicons="ArrowDown01Icon"
                     phosphor="CaretDownIcon"
@@ -240,6 +253,7 @@ export function Demo() {
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="ChevronRightIcon"
+                    materialSymbols="chevron_right"
                     tabler="IconChevronRight"
                     hugeicons="ArrowRight01Icon"
                     phosphor="CaretRightIcon"
@@ -249,6 +263,7 @@ export function Demo() {
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="SearchIcon"
+                    materialSymbols="search"
                     tabler="IconSearch"
                     hugeicons="Search01Icon"
                     phosphor="MagnifyingGlassIcon"
@@ -258,6 +273,7 @@ export function Demo() {
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="SettingsIcon"
+                    materialSymbols="settings"
                     tabler="IconSettings"
                     hugeicons="Settings01Icon"
                     phosphor="GearIcon"
@@ -309,6 +325,7 @@ export function Demo() {
                       <InputGroupText>
                         <IconPlaceholder
                           lucide="SearchIcon"
+                          materialSymbols="search"
                           tabler="IconSearch"
                           hugeicons="Search01Icon"
                           phosphor="MagnifyingGlassIcon"
@@ -370,6 +387,7 @@ export function Demo() {
                     >
                       <IconPlaceholder
                         lucide="ChevronUpIcon"
+                        materialSymbols="keyboard_arrow_up"
                         tabler="IconChevronUp"
                         hugeicons="ArrowUp01Icon"
                         phosphor="CaretUpIcon"

@@ -2,7 +2,7 @@
 	import * as Empty from "@/svelte-ui/empty/index.js";
 	import { Button } from "@/svelte-ui/button/index.js";
 	import FolderCodeIcon from "@tabler/icons-svelte/icons/folder-code";
-	import ArrowUpRightIcon from "@lucide/svelte/icons/arrow-up-right";
+	import ArrowUpRightIcon from "~icons/ms/north_east";
 </script>
 
 <Empty.Root>

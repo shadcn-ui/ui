@@ -40,6 +40,7 @@ const forwarded = useForwardProps(delegatedProps)
     <slot>
       <IconPlaceholder
         lucide="ChevronsLeftIcon"
+        materialSymbols="keyboard_double_arrow_left"
         tabler="IconChevronsLeft"
         hugeicons="ArrowLeftDoubleIcon"
         phosphor="CaretDoubleLeftIcon"

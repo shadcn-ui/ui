@@ -18,6 +18,7 @@
 >
 	<IconPlaceholder
 		lucide="ChevronUpIcon"
+		materialSymbols="keyboard_arrow_up"
 		tabler="IconChevronUp"
 		hugeicons="ArrowUp01Icon"
 		phosphor="CaretUpIcon"

@@ -41,6 +41,7 @@ const forwarded = useForwardProps(delegatedProps)
       <span class="cn-pagination-next-text hidden sm:block">Next</span>
       <IconPlaceholder
         lucide="ChevronRightIcon"
+        materialSymbols="chevron_right"
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"

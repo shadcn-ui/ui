@@ -16,6 +16,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
         success: (
           <IconPlaceholder
             lucide="CircleCheckIcon"
+            materialSymbols="check_circle"
             tabler="IconCircleCheck"
             hugeicons="CheckmarkCircle02Icon"
             phosphor="CheckCircleIcon"
@@ -26,6 +27,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
         info: (
           <IconPlaceholder
             lucide="InfoIcon"
+            materialSymbols="info"
             tabler="IconInfoCircle"
             hugeicons="InformationCircleIcon"
             phosphor="InfoIcon"
@@ -36,6 +38,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
         warning: (
           <IconPlaceholder
             lucide="TriangleAlertIcon"
+            materialSymbols="warning"
             tabler="IconAlertTriangle"
             hugeicons="Alert02Icon"
             phosphor="WarningIcon"
@@ -46,6 +49,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
         error: (
           <IconPlaceholder
             lucide="OctagonXIcon"
+            materialSymbols="dangerous"
             tabler="IconAlertOctagon"
             hugeicons="MultiplicationSignCircleIcon"
             phosphor="XCircleIcon"
@@ -56,6 +60,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
         loading: (
           <IconPlaceholder
             lucide="Loader2Icon"
+            materialSymbols="progress_activity"
             tabler="IconLoader"
             hugeicons="Loading03Icon"
             phosphor="SpinnerIcon"

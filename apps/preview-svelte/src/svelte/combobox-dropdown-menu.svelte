@@ -1,9 +1,9 @@
 <script lang="ts">
-	import CalendarIcon from "@lucide/svelte/icons/calendar";
-	import EllipsisIcon from "@lucide/svelte/icons/ellipsis";
-	import TagsIcon from "@lucide/svelte/icons/tags";
-	import TrashIcon from "@lucide/svelte/icons/trash";
-	import UserIcon from "@lucide/svelte/icons/user";
+	import CalendarIcon from "~icons/ms/calendar_month";
+	import EllipsisIcon from "~icons/ms/more_horiz";
+	import TagsIcon from "~icons/ms/label";
+	import TrashIcon from "~icons/ms/delete";
+	import UserIcon from "~icons/ms/person";
 	import { tick } from "svelte";
 	import * as DropdownMenu from "@/svelte-ui/dropdown-menu/index.js";
 	import * as Command from "@/svelte-ui/command/index.js";

@@ -14,7 +14,7 @@ import {
   ItemTitle,
 } from '@/ui/item';
 
-import ChevronDownIcon from '~icons/lucide/chevron-down';
+import ChevronDownIcon from '~icons/ms/keyboard_arrow_down';
 
 const people = [
   {

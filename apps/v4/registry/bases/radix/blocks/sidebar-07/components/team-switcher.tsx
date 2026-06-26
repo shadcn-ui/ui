@@ -53,6 +53,7 @@ export function TeamSwitcher({
               </div>
               <IconPlaceholder
                 lucide="ChevronsUpDownIcon"
+                materialSymbols="unfold_more"
                 tabler="IconSelector"
                 hugeicons="UnfoldMoreIcon"
                 phosphor="CaretUpDownIcon"
@@ -88,6 +89,7 @@ export function TeamSwitcher({
               <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
                 <IconPlaceholder
                   lucide="PlusIcon"
+                  materialSymbols="add"
                   tabler="IconPlus"
                   hugeicons="PlusSignIcon"
                   phosphor="PlusIcon"

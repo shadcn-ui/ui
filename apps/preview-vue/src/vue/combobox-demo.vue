@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { CheckIcon, ChevronsUpDownIcon } from 'lucide-vue-next'
+import CheckIcon from "@material-symbols/svg-400/rounded/check.svg?component"
+import ChevronsUpDownIcon from "@material-symbols/svg-400/rounded/unfold_more.svg?component"
 import { computed, ref } from 'vue'
 import { cn } from '@/lib/utils'
 import { Button } from '@/ui/button'

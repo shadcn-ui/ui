@@ -120,6 +120,7 @@ function DragHandle({ id }: { id: number }) {
     >
       <IconPlaceholder
         lucide="GripVerticalIcon"
+        materialSymbols="drag_indicator"
         tabler="IconGripVertical"
         hugeicons="DragDropVerticalIcon"
         phosphor="DotsSixVerticalIcon"
@@ -190,6 +191,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         {row.original.status === "Done" ? (
           <IconPlaceholder
             lucide="CircleCheckIcon"
+            materialSymbols="check_circle"
             tabler="IconCircleCheckFilled"
             hugeicons="CheckmarkCircle01Icon"
             phosphor="CheckCircleIcon"
@@ -199,6 +201,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         ) : (
           <IconPlaceholder
             lucide="LoaderIcon"
+            materialSymbols="progress_activity"
             tabler="IconLoader"
             hugeicons="Loading03Icon"
             phosphor="SpinnerIcon"
@@ -307,6 +310,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
           >
             <IconPlaceholder
               lucide="EllipsisVerticalIcon"
+              materialSymbols="more_vert"
               tabler="IconDotsVertical"
               hugeicons="MoreVerticalCircle01Icon"
               phosphor="DotsThreeVerticalIcon"
@@ -459,6 +463,7 @@ export function DataTable({
               <Button variant="outline" size="sm">
                 <IconPlaceholder
                   lucide="Columns3Icon"
+                  materialSymbols="view_column"
                   tabler="IconLayoutColumns"
                   hugeicons="LeftToRightListBulletIcon"
                   phosphor="ColumnsIcon"
@@ -468,6 +473,7 @@ export function DataTable({
                 Columns
                 <IconPlaceholder
                   lucide="ChevronDownIcon"
+                  materialSymbols="keyboard_arrow_down"
                   tabler="IconChevronDown"
                   hugeicons="ArrowDown01Icon"
                   phosphor="CaretDownIcon"
@@ -503,6 +509,7 @@ export function DataTable({
           <Button variant="outline" size="sm">
             <IconPlaceholder
               lucide="PlusIcon"
+              materialSymbols="add"
               tabler="IconPlus"
               hugeicons="Add01Icon"
               phosphor="PlusIcon"
@@ -613,6 +620,7 @@ export function DataTable({
                 <span className="sr-only">Go to first page</span>
                 <IconPlaceholder
                   lucide="ChevronsLeftIcon"
+                  materialSymbols="keyboard_double_arrow_left"
                   tabler="IconChevronsLeft"
                   hugeicons="ArrowLeftDoubleIcon"
                   phosphor="CaretDoubleLeftIcon"
@@ -629,6 +637,7 @@ export function DataTable({
                 <span className="sr-only">Go to previous page</span>
                 <IconPlaceholder
                   lucide="ChevronLeftIcon"
+                  materialSymbols="chevron_left"
                   tabler="IconChevronLeft"
                   hugeicons="ArrowLeft01Icon"
                   phosphor="CaretLeftIcon"
@@ -645,6 +654,7 @@ export function DataTable({
                 <span className="sr-only">Go to next page</span>
                 <IconPlaceholder
                   lucide="ChevronRightIcon"
+                  materialSymbols="chevron_right"
                   tabler="IconChevronRight"
                   hugeicons="ArrowRight01Icon"
                   phosphor="CaretRightIcon"
@@ -661,6 +671,7 @@ export function DataTable({
                 <span className="sr-only">Go to last page</span>
                 <IconPlaceholder
                   lucide="ChevronsRightIcon"
+                  materialSymbols="keyboard_double_arrow_right"
                   tabler="IconChevronsRight"
                   hugeicons="ArrowRightDoubleIcon"
                   phosphor="CaretDoubleRightIcon"
@@ -776,6 +787,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                   Trending up by 5.2% this month{" "}
                   <IconPlaceholder
                     lucide="TrendingUpIcon"
+                    materialSymbols="trending_up"
                     tabler="IconTrendingUp"
                     hugeicons="ChartUpIcon"
                     phosphor="TrendUpIcon"

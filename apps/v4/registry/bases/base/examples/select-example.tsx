@@ -140,6 +140,7 @@ function SelectWithIcons() {
         <>
           <IconPlaceholder
             lucide="ChartLineIcon"
+            materialSymbols="show_chart"
             tabler="IconChartLine"
             hugeicons="Chart03Icon"
             phosphor="ChartLineIcon"
@@ -155,6 +156,7 @@ function SelectWithIcons() {
         <>
           <IconPlaceholder
             lucide="ChartLineIcon"
+            materialSymbols="show_chart"
             tabler="IconChartLine"
             hugeicons="Chart03Icon"
             phosphor="ChartLineIcon"
@@ -170,6 +172,7 @@ function SelectWithIcons() {
         <>
           <IconPlaceholder
             lucide="ChartBarIcon"
+            materialSymbols="bar_chart"
             tabler="IconChartBar"
             hugeicons="Chart03Icon"
             phosphor="ChartBarIcon"
@@ -185,6 +188,7 @@ function SelectWithIcons() {
         <>
           <IconPlaceholder
             lucide="ChartPieIcon"
+            materialSymbols="pie_chart"
             tabler="IconChartPie"
             hugeicons="Chart03Icon"
             phosphor="ChartPieIcon"

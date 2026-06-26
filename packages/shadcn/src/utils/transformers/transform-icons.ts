@@ -15,6 +15,25 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
   const libraryConfig = iconLibraries[targetLibrary]
   let transformedIcons: string[] = []
 
+  // [FORCE-UI-START] Material Symbols import per-icon by file path (default import
+  // with a ?react SVGR query), not as named exports from one module. The prop
+  // value is an svg basename (snake_case) which is not a valid JSX identifier, so
+  // we derive a PascalCase component name for both the tag and the import.
+  const isPathImport =
+    !/import\s*\{/.test(libraryConfig.import) &&
+    libraryConfig.import.includes("NAME")
+  const moduleTemplate = libraryConfig.import.match(
+    /from\s+['"]([^'"]+)['"]/
+  )?.[1]
+  const toComponentName = (name: string) =>
+    "Icon" +
+    name
+      .split(/[^a-zA-Z0-9]+/)
+      .filter(Boolean)
+      .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+      .join("")
+  // [FORCE-UI-END]
+
   for (const element of sourceFile.getDescendantsOfKind(
     SyntaxKind.JsxSelfClosingElement
   )) {
@@ -76,6 +95,10 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
     const [, componentName, defaultPropsStr] = usageMatch
 
     if (componentName === "ICON") {
+      // [FORCE-UI] Path-import libraries use a derived PascalCase component name.
+      const tagName = isPathImport
+        ? toComponentName(targetIconName)
+        : targetIconName
       // Get remaining user attributes (non-library props)
       const userAttributes = element
         .getAttributes()
@@ -92,9 +115,9 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
         .join(" ")
 
       if (userAttributes.trim()) {
-        element.replaceWithText(`<${targetIconName} ${userAttributes} />`)
+        element.replaceWithText(`<${tagName} ${userAttributes} />`)
       } else {
-        element.getTagNameNode()?.replaceWithText(targetIconName)
+        element.getTagNameNode()?.replaceWithText(tagName)
       }
     } else {
       const existingPropNames = new Set(
@@ -162,7 +185,23 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
     }
   }
 
-  if (transformedIcons.length > 0) {
+  if (transformedIcons.length > 0 && isPathImport && moduleTemplate) {
+    // [FORCE-UI] One default import per icon: import IconX from ".../NAME.svg?react".
+    const addedImports = []
+    for (const icon of transformedIcons) {
+      addedImports.push(
+        sourceFile.addImportDeclaration({
+          defaultImport: toComponentName(icon),
+          moduleSpecifier: moduleTemplate.replace("NAME", icon),
+        })
+      )
+    }
+    if (!_useSemicolon(sourceFile)) {
+      for (const importDecl of addedImports) {
+        importDecl.replaceWithText(importDecl.getText().replace(";", ""))
+      }
+    }
+  } else if (transformedIcons.length > 0) {
     const importStatements = libraryConfig.import.split("\n")
     const addedImports = []
 

@@ -104,6 +104,7 @@ export function UIElements() {
                 <InputGroupText>
                   <IconPlaceholder
                     lucide="SearchIcon"
+                    materialSymbols="search"
                     tabler="IconSearch"
                     hugeicons="Search01Icon"
                     phosphor="MagnifyingGlassIcon"
@@ -168,6 +169,7 @@ export function UIElements() {
                 <Button variant="outline" size="icon">
                   <IconPlaceholder
                     lucide="ChevronUpIcon"
+                    materialSymbols="keyboard_arrow_up"
                     tabler="IconChevronUp"
                     hugeicons="ArrowUp01Icon"
                     phosphor="CaretUpIcon"

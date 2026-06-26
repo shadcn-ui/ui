@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useForm } from '@tanstack/vue-form'
-import { XIcon } from 'lucide-vue-next'
+import XIcon from "@material-symbols/svg-400/rounded/close.svg?component"
 import { toast } from 'vue-sonner'
 import { z } from 'zod'
 

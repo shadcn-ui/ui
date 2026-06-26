@@ -121,6 +121,7 @@ function ChartAreaExample() {
                 Trending up by 5.2% this month{" "}
                 <IconPlaceholder
                   lucide="TrendingUpIcon"
+                  materialSymbols="trending_up"
                   tabler="IconTrendingUp"
                   hugeicons="ChartUpIcon"
                   phosphor="TrendUpIcon"
@@ -203,6 +204,7 @@ function ChartBarExample() {
             Trending up by 5.2% this month{" "}
             <IconPlaceholder
               lucide="TrendingUpIcon"
+              materialSymbols="trending_up"
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
@@ -290,6 +292,7 @@ function ChartLineExample() {
                 Trending up by 5.2% this month{" "}
                 <IconPlaceholder
                   lucide="TrendingUpIcon"
+                  materialSymbols="trending_up"
                   tabler="IconTrendingUp"
                   hugeicons="ChartUpIcon"
                   phosphor="TrendUpIcon"
@@ -409,6 +412,7 @@ function ChartPieExample() {
             Trending up by 5.2% this month{" "}
             <IconPlaceholder
               lucide="TrendingUpIcon"
+              materialSymbols="trending_up"
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
@@ -481,6 +485,7 @@ function ChartRadarExample() {
             Trending up by 5.2% this month{" "}
             <IconPlaceholder
               lucide="TrendingUpIcon"
+              materialSymbols="trending_up"
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
@@ -577,6 +582,7 @@ function ChartRadialExample() {
             Trending up by 5.2% this month{" "}
             <IconPlaceholder
               lucide="TrendingUpIcon"
+              materialSymbols="trending_up"
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"

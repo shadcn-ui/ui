@@ -45,6 +45,7 @@ const { filterState } = useCommand()
       <InputGroupAddon>
         <IconPlaceholder
           lucide="SearchIcon"
+          materialSymbols="search"
           tabler="IconSearch"
           hugeicons="SearchIcon"
           phosphor="MagnifyingGlassIcon"

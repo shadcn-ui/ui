@@ -41,6 +41,7 @@ function AccordionTrigger({
         {children}
         <IconPlaceholder
           lucide="ChevronDownIcon"
+          materialSymbols="keyboard_arrow_down"
           tabler="IconChevronDown"
           data-slot="accordion-trigger-icon"
           hugeicons="ArrowDown01Icon"
@@ -50,6 +51,7 @@ function AccordionTrigger({
         />
         <IconPlaceholder
           lucide="ChevronUpIcon"
+          materialSymbols="keyboard_arrow_up"
           tabler="IconChevronUp"
           data-slot="accordion-trigger-icon"
           hugeicons="ArrowUp01Icon"

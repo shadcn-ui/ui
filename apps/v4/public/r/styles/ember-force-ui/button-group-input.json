@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "registry/ember-force-ui/examples/button-group-input.gts",
-      "content": "import { Button } from '@/ui/button';\nimport { ButtonGroup } from '@/ui/button-group';\nimport { Input } from '@/ui/input';\n\nimport SearchIcon from '~icons/lucide/search';\n\n<template>\n  <ButtonGroup>\n    <Input placeholder=\"Search...\" />\n    <Button @variant=\"outline\" aria-label=\"Search\">\n      <SearchIcon />\n    </Button>\n  </ButtonGroup>\n</template>\n",
+      "content": "import { Button } from '@/ui/button';\nimport { ButtonGroup } from '@/ui/button-group';\nimport { Input } from '@/ui/input';\n\nimport SearchIcon from '~icons/ms/search';\n\n<template>\n  <ButtonGroup>\n    <Input placeholder=\"Search...\" />\n    <Button @variant=\"outline\" aria-label=\"Search\">\n      <SearchIcon />\n    </Button>\n  </ButtonGroup>\n</template>\n",
       "type": "registry:example"
     }
   ],

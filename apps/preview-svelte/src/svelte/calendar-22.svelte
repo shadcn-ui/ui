@@ -3,7 +3,7 @@
 	import * as Popover from "@/svelte-ui/popover/index.js";
 	import { Button } from "@/svelte-ui/button/index.js";
 	import { Label } from "@/svelte-ui/label/index.js";
-	import ChevronDownIcon from "@lucide/svelte/icons/chevron-down";
+	import ChevronDownIcon from "~icons/ms/keyboard_arrow_down";
 	import { getLocalTimeZone, today, type CalendarDate } from "@internationalized/date";
 
 	const id = $props.id();

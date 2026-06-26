@@ -47,6 +47,7 @@ export function TeamSwitcher({
             <span className="truncate font-medium">{activeTeam.name}</span>
             <IconPlaceholder
               lucide="ChevronDownIcon"
+              materialSymbols="keyboard_arrow_down"
               tabler="IconChevronDown"
               hugeicons="ArrowDown01Icon"
               phosphor="CaretDownIcon"
@@ -84,6 +85,7 @@ export function TeamSwitcher({
                 <div className="flex size-6 items-center justify-center rounded-md border bg-background">
                   <IconPlaceholder
                     lucide="PlusIcon"
+                    materialSymbols="add"
                     tabler="IconPlus"
                     hugeicons="PlusSignIcon"
                     phosphor="PlusIcon"

@@ -1,30 +1,24 @@
 <script setup lang="ts">
-import { computed, defineAsyncComponent } from "vue"
+import { computed } from "vue"
 
+import { materialSymbols } from "@/components/material-symbols"
+
+// [FORCE-UI] Preview defaults to Material Symbols (@material-symbols/svg-400,
+// rounded) resolved from the generated inline registry.
 const props = defineProps<{
   lucide?: string
   tabler?: string
   hugeicons?: string
   phosphor?: string
   remixicon?: string
+  materialSymbols?: string
 }>()
 
-// In the preview server, we always use Lucide icons
-const iconName = computed(() => props.lucide)
-
-const Icon = defineAsyncComponent(async () => {
-  if (!iconName.value) {
-    return { render: () => null }
-  }
-  const icons = await import("lucide-vue-next")
-  const comp = (icons as Record<string, unknown>)[iconName.value]
-  if (comp) {
-    return comp as ReturnType<typeof defineAsyncComponent>
-  }
-  return { render: () => null }
-})
+const Icon = computed(() =>
+  props.materialSymbols ? materialSymbols[props.materialSymbols] : undefined
+)
 </script>
 
 <template>
-  <Icon v-if="iconName" v-bind="$attrs" />
+  <component :is="Icon" v-if="Icon" v-bind="$attrs" />
 </template>

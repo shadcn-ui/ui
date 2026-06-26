@@ -8,8 +8,8 @@ import {
   EmptyTitle,
 } from '@/ui/empty';
 
-import ArrowUpRight from '~icons/lucide/arrow-up-right';
-import FolderCode from '~icons/lucide/folder-code';
+import ArrowUpRight from '~icons/ms/north_east';
+import FolderCode from '~icons/ms/folder_code';
 
 <template>
   <Empty>

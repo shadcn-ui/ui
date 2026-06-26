@@ -1,4 +1,4 @@
-import { ShieldAlertIcon } from "lucide-react"
+import { ShieldAlertIcon } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 import {

@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronDownIcon, LifeBuoyIcon, SendIcon } from "lucide-react"
+import { ChevronDownIcon, LifeBuoyIcon, SendIcon } from "@/examples/material-symbols"
 
 import {
   Collapsible,

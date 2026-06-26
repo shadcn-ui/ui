@@ -98,6 +98,7 @@ function AlertDialogWithMedia() {
             <AlertDialogMedia>
               <IconPlaceholder
                 lucide="BluetoothIcon"
+                materialSymbols="bluetooth"
                 tabler="IconBluetooth"
                 hugeicons="BluetoothIcon"
                 phosphor="BluetoothIcon"
@@ -133,6 +134,7 @@ function AlertDialogSmallWithMedia() {
             <AlertDialogMedia>
               <IconPlaceholder
                 lucide="BluetoothIcon"
+                materialSymbols="bluetooth"
                 tabler="IconBluetooth"
                 hugeicons="BluetoothIcon"
                 phosphor="BluetoothIcon"
@@ -166,6 +168,7 @@ function AlertDialogDestructive() {
             <AlertDialogMedia className="bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive">
               <IconPlaceholder
                 lucide="Trash2Icon"
+                materialSymbols="delete"
                 tabler="IconTrash"
                 hugeicons="Delete02Icon"
                 phosphor="TrashIcon"

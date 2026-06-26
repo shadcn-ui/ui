@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as Item from "@/svelte-ui/item/index.js";
 	import { Button } from "@/svelte-ui/button/index.js";
-	import ShieldAlertIcon from "@lucide/svelte/icons/shield-alert";
+	import ShieldAlertIcon from "~icons/ms/gpp_maybe";
 </script>
 
 <div class="flex w-full max-w-lg flex-col gap-6">

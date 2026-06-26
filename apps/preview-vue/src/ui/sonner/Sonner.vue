@@ -19,24 +19,30 @@ const props = defineProps<ToasterProps>()
     v-bind="props"
   >
     <template #success-icon>
-      <IconPlaceholder lucide="CircleCheckIcon" tabler="IconCircleCheck" hugeicons="CheckmarkCircle01Icon" phosphor="CheckCircleIcon" remixicon="RiCheckboxCircleLine" class="size-4" />
+      <IconPlaceholder lucide="CircleCheckIcon"
+      materialSymbols="check_circle" tabler="IconCircleCheck" hugeicons="CheckmarkCircle01Icon" phosphor="CheckCircleIcon" remixicon="RiCheckboxCircleLine" class="size-4" />
     </template>
     <template #info-icon>
-      <IconPlaceholder lucide="InfoIcon" tabler="IconInfoCircle" hugeicons="InformationCircleIcon" phosphor="InfoIcon" remixicon="RiInformationLine" class="size-4" />
+      <IconPlaceholder lucide="InfoIcon"
+      materialSymbols="info" tabler="IconInfoCircle" hugeicons="InformationCircleIcon" phosphor="InfoIcon" remixicon="RiInformationLine" class="size-4" />
     </template>
     <template #warning-icon>
-      <IconPlaceholder lucide="TriangleAlertIcon" tabler="IconAlertTriangle" hugeicons="Alert02Icon" phosphor="WarningIcon" remixicon="RiAlertLine" class="size-4" />
+      <IconPlaceholder lucide="TriangleAlertIcon"
+      materialSymbols="warning" tabler="IconAlertTriangle" hugeicons="Alert02Icon" phosphor="WarningIcon" remixicon="RiAlertLine" class="size-4" />
     </template>
     <template #error-icon>
-      <IconPlaceholder lucide="OctagonXIcon" tabler="IconOctagonOff" hugeicons="CancelCircleIcon" phosphor="XCircleIcon" remixicon="RiCloseCircleLine" class="size-4" />
+      <IconPlaceholder lucide="OctagonXIcon"
+      materialSymbols="dangerous" tabler="IconOctagonOff" hugeicons="CancelCircleIcon" phosphor="XCircleIcon" remixicon="RiCloseCircleLine" class="size-4" />
     </template>
     <template #loading-icon>
       <div>
-        <IconPlaceholder lucide="Loader2Icon" tabler="IconLoader2" hugeicons="Loading03Icon" phosphor="SpinnerGapIcon" remixicon="RiLoader4Line" class="size-4 animate-spin" />
+        <IconPlaceholder lucide="Loader2Icon"
+      materialSymbols="progress_activity" tabler="IconLoader2" hugeicons="Loading03Icon" phosphor="SpinnerGapIcon" remixicon="RiLoader4Line" class="size-4 animate-spin" />
       </div>
     </template>
     <template #close-icon>
-      <IconPlaceholder lucide="XIcon" tabler="IconX" hugeicons="Cancel01Icon" phosphor="XIcon" remixicon="RiCloseLine" class="size-4" />
+      <IconPlaceholder lucide="XIcon"
+      materialSymbols="close" tabler="IconX" hugeicons="Cancel01Icon" phosphor="XIcon" remixicon="RiCloseLine" class="size-4" />
     </template>
   </Sonner>
 </template>

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { DateValue } from '@internationalized/date'
 import { getLocalTimeZone, PersianCalendar, toCalendar, today } from '@internationalized/date'
-import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
+import ChevronLeft from "@material-symbols/svg-400/rounded/chevron_left.svg?component"
+import ChevronRight from "@material-symbols/svg-400/rounded/chevron_right.svg?component"
 import { useDateFormatter } from 'reka-ui'
 import { toDate } from 'reka-ui/date'
 import { Calendar } from '@/ui/calendar'

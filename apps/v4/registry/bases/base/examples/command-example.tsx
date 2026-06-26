@@ -46,6 +46,7 @@ function CommandInline() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="CalendarIcon"
+                    materialSymbols="calendar_month"
                     tabler="IconCalendar"
                     hugeicons="CalendarIcon"
                     phosphor="CalendarBlankIcon"
@@ -56,6 +57,7 @@ function CommandInline() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="SmileIcon"
+                    materialSymbols="mood"
                     tabler="IconMoodSmile"
                     hugeicons="SmileIcon"
                     phosphor="SmileyIcon"
@@ -66,6 +68,7 @@ function CommandInline() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="CalculatorIcon"
+                    materialSymbols="calculate"
                     tabler="IconCalculator"
                     hugeicons="CalculatorIcon"
                     phosphor="CalculatorIcon"
@@ -79,6 +82,7 @@ function CommandInline() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="UserIcon"
+                    materialSymbols="person"
                     tabler="IconUser"
                     hugeicons="UserIcon"
                     phosphor="UserIcon"
@@ -90,6 +94,7 @@ function CommandInline() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="CreditCardIcon"
+                    materialSymbols="credit_card"
                     tabler="IconCreditCard"
                     hugeicons="CreditCardIcon"
                     phosphor="CreditCardIcon"
@@ -101,6 +106,7 @@ function CommandInline() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="SettingsIcon"
+                    materialSymbols="settings"
                     tabler="IconSettings"
                     hugeicons="SettingsIcon"
                     phosphor="GearIcon"
@@ -171,6 +177,7 @@ function CommandWithShortcuts() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="UserIcon"
+                    materialSymbols="person"
                     tabler="IconUser"
                     hugeicons="UserIcon"
                     phosphor="UserIcon"
@@ -182,6 +189,7 @@ function CommandWithShortcuts() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="CreditCardIcon"
+                    materialSymbols="credit_card"
                     tabler="IconCreditCard"
                     hugeicons="CreditCardIcon"
                     phosphor="CreditCardIcon"
@@ -193,6 +201,7 @@ function CommandWithShortcuts() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="SettingsIcon"
+                    materialSymbols="settings"
                     tabler="IconSettings"
                     hugeicons="SettingsIcon"
                     phosphor="GearIcon"
@@ -232,6 +241,7 @@ function CommandWithGroups() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="CalendarIcon"
+                    materialSymbols="calendar_month"
                     tabler="IconCalendar"
                     hugeicons="CalendarIcon"
                     phosphor="CalendarBlankIcon"
@@ -242,6 +252,7 @@ function CommandWithGroups() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="SmileIcon"
+                    materialSymbols="mood"
                     tabler="IconMoodSmile"
                     hugeicons="SmileIcon"
                     phosphor="SmileyIcon"
@@ -252,6 +263,7 @@ function CommandWithGroups() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="CalculatorIcon"
+                    materialSymbols="calculate"
                     tabler="IconCalculator"
                     hugeicons="CalculatorIcon"
                     phosphor="CalculatorIcon"
@@ -265,6 +277,7 @@ function CommandWithGroups() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="UserIcon"
+                    materialSymbols="person"
                     tabler="IconUser"
                     hugeicons="UserIcon"
                     phosphor="UserIcon"
@@ -276,6 +289,7 @@ function CommandWithGroups() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="CreditCardIcon"
+                    materialSymbols="credit_card"
                     tabler="IconCreditCard"
                     hugeicons="CreditCardIcon"
                     phosphor="CreditCardIcon"
@@ -287,6 +301,7 @@ function CommandWithGroups() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="SettingsIcon"
+                    materialSymbols="settings"
                     tabler="IconSettings"
                     hugeicons="SettingsIcon"
                     phosphor="GearIcon"
@@ -326,6 +341,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="HomeIcon"
+                    materialSymbols="home"
                     tabler="IconHome"
                     hugeicons="HomeIcon"
                     phosphor="HouseIcon"
@@ -337,6 +353,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="InboxIcon"
+                    materialSymbols="inbox"
                     tabler="IconInbox"
                     hugeicons="InboxIcon"
                     phosphor="TrayIcon"
@@ -348,6 +365,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="FileTextIcon"
+                    materialSymbols="description"
                     tabler="IconFileText"
                     hugeicons="File02Icon"
                     phosphor="FileTextIcon"
@@ -359,6 +377,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="FolderIcon"
+                    materialSymbols="folder"
                     tabler="IconFolder"
                     hugeicons="FolderIcon"
                     phosphor="FolderIcon"
@@ -373,6 +392,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="PlusIcon"
+                    materialSymbols="add"
                     tabler="IconPlus"
                     hugeicons="PlusSignIcon"
                     phosphor="PlusIcon"
@@ -384,6 +404,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="FolderPlusIcon"
+                    materialSymbols="create_new_folder"
                     tabler="IconFolderPlus"
                     hugeicons="FolderAddIcon"
                     phosphor="FolderPlusIcon"
@@ -395,6 +416,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="CopyIcon"
+                    materialSymbols="content_copy"
                     tabler="IconCopy"
                     hugeicons="CopyIcon"
                     phosphor="CopyIcon"
@@ -406,6 +428,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="ScissorsIcon"
+                    materialSymbols="content_cut"
                     tabler="IconCut"
                     hugeicons="ScissorIcon"
                     phosphor="ScissorsIcon"
@@ -417,6 +440,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="ClipboardPasteIcon"
+                    materialSymbols="content_paste"
                     tabler="IconClipboard"
                     hugeicons="ClipboardIcon"
                     phosphor="ClipboardIcon"
@@ -428,6 +452,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="TrashIcon"
+                    materialSymbols="delete"
                     tabler="IconTrash"
                     hugeicons="DeleteIcon"
                     phosphor="TrashIcon"
@@ -442,6 +467,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="LayoutGridIcon"
+                    materialSymbols="grid_view"
                     tabler="IconLayoutGrid"
                     hugeicons="GridIcon"
                     phosphor="GridFourIcon"
@@ -452,6 +478,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="ListIcon"
+                    materialSymbols="list"
                     tabler="IconList"
                     hugeicons="Menu05Icon"
                     phosphor="ListIcon"
@@ -462,6 +489,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="ZoomInIcon"
+                    materialSymbols="zoom_in"
                     tabler="IconZoomIn"
                     hugeicons="ZoomInAreaIcon"
                     phosphor="MagnifyingGlassPlusIcon"
@@ -473,6 +501,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="ZoomOutIcon"
+                    materialSymbols="zoom_out"
                     tabler="IconZoomOut"
                     hugeicons="ZoomOutAreaIcon"
                     phosphor="MagnifyingGlassMinusIcon"
@@ -487,6 +516,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="UserIcon"
+                    materialSymbols="person"
                     tabler="IconUser"
                     hugeicons="UserIcon"
                     phosphor="UserIcon"
@@ -498,6 +528,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="CreditCardIcon"
+                    materialSymbols="credit_card"
                     tabler="IconCreditCard"
                     hugeicons="CreditCardIcon"
                     phosphor="CreditCardIcon"
@@ -509,6 +540,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="SettingsIcon"
+                    materialSymbols="settings"
                     tabler="IconSettings"
                     hugeicons="SettingsIcon"
                     phosphor="GearIcon"
@@ -520,6 +552,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="BellIcon"
+                    materialSymbols="notifications"
                     tabler="IconBell"
                     hugeicons="NotificationIcon"
                     phosphor="BellIcon"
@@ -530,6 +563,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="HelpCircleIcon"
+                    materialSymbols="help"
                     tabler="IconHelpCircle"
                     hugeicons="HelpCircleIcon"
                     phosphor="QuestionIcon"
@@ -543,6 +577,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="CalculatorIcon"
+                    materialSymbols="calculate"
                     tabler="IconCalculator"
                     hugeicons="CalculatorIcon"
                     phosphor="CalculatorIcon"
@@ -553,6 +588,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="CalendarIcon"
+                    materialSymbols="calendar_month"
                     tabler="IconCalendar"
                     hugeicons="CalendarIcon"
                     phosphor="CalendarBlankIcon"
@@ -563,6 +599,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="ImageIcon"
+                    materialSymbols="image"
                     tabler="IconPhoto"
                     hugeicons="ImageIcon"
                     phosphor="ImageIcon"
@@ -573,6 +610,7 @@ function CommandManyItems() {
                 <CommandItem>
                   <IconPlaceholder
                     lucide="CodeIcon"
+                    materialSymbols="code"
                     tabler="IconCode"
                     hugeicons="CodeIcon"
                     phosphor="CodeIcon"

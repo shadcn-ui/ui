@@ -11,7 +11,7 @@ import {
   SelectTrigger,
 } from '@/ember-ui/select';
 
-import ArrowRightIcon from '~icons/lucide/arrow-right';
+import ArrowRightIcon from '~icons/ms/arrow_right';
 
 const CURRENCIES = [
   {

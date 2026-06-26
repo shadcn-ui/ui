@@ -1,5 +1,4 @@
-import { IconBell } from "@tabler/icons-react"
-import { RefreshCcwIcon } from "lucide-react"
+import { IconBell, RefreshCcwIcon } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 import {

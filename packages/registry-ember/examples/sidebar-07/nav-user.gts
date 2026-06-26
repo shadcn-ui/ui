@@ -17,12 +17,12 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 
-import BadgeCheck from '~icons/lucide/badge-check';
-import Bell from '~icons/lucide/bell';
-import ChevronsUpDown from '~icons/lucide/chevrons-up-down';
-import CreditCard from '~icons/lucide/credit-card';
-import LogOut from '~icons/lucide/log-out';
-import Sparkles from '~icons/lucide/sparkles';
+import BadgeCheck from '~icons/ms/verified';
+import Bell from '~icons/ms/notifications';
+import ChevronsUpDown from '~icons/ms/unfold_more';
+import CreditCard from '~icons/ms/credit_card';
+import LogOut from '~icons/ms/logout';
+import Sparkles from '~icons/ms/star_shine';
 
 const SidebarContext = 'sidebar-context' as const;
 

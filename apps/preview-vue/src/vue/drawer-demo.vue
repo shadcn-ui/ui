@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Minus, Plus } from 'lucide-vue-next'
+import Minus from "@material-symbols/svg-400/rounded/remove.svg?component"
+import Plus from "@material-symbols/svg-400/rounded/add.svg?component"
 import { Button } from '@/ui/button'
 import {
   Drawer,

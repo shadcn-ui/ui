@@ -37,6 +37,7 @@
 			{#if indeterminate}
 				<IconPlaceholder
 					lucide="MinusIcon"
+		materialSymbols="remove"
 					tabler="IconMinus"
 					hugeicons="MinusSignIcon"
 					phosphor="MinusIcon"
@@ -45,6 +46,7 @@
 			{:else if checked}
 				<IconPlaceholder
 					lucide="CheckIcon"
+		materialSymbols="check"
 					tabler="IconCheck"
 					hugeicons="Tick02Icon"
 					phosphor="CheckIcon"

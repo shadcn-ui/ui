@@ -17,8 +17,8 @@ import {
   SidebarTrigger,
 } from '@/ui/sidebar';
 
-import ChevronUp from '~icons/lucide/chevron-up';
-import User2 from '~icons/lucide/user-2';
+import ChevronUp from '~icons/ms/keyboard_arrow_up';
+import User2 from '~icons/ms/person';
 
 <template>
   <SidebarProvider class="!min-h-full h-full">

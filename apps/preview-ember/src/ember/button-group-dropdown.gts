@@ -9,14 +9,14 @@ import {
   DropdownMenuTrigger,
 } from '@/ember-ui/dropdown-menu';
 
-import AlertTriangleIcon from '~icons/lucide/alert-triangle';
-import CheckIcon from '~icons/lucide/check';
-import ChevronDownIcon from '~icons/lucide/chevron-down';
-import CopyIcon from '~icons/lucide/copy';
-import ShareIcon from '~icons/lucide/share';
-import TrashIcon from '~icons/lucide/trash';
-import UserRoundXIcon from '~icons/lucide/user-round-x';
-import VolumeOffIcon from '~icons/lucide/volume-off';
+import AlertTriangleIcon from '~icons/ms/warning';
+import CheckIcon from '~icons/ms/check';
+import ChevronDownIcon from '~icons/ms/keyboard_arrow_down';
+import CopyIcon from '~icons/ms/content_copy';
+import ShareIcon from '~icons/ms/share';
+import TrashIcon from '~icons/ms/delete';
+import UserRoundXIcon from '~icons/ms/person_off';
+import VolumeOffIcon from '~icons/ms/volume_off';
 
 <template>
   <ButtonGroup>

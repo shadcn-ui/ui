@@ -11,8 +11,8 @@ import {
   InputGroupInput,
 } from '@/ember-ui/input-group';
 
-import ChevronDown from '~icons/lucide/chevron-down';
-import MoreHorizontal from '~icons/lucide/more-horizontal';
+import ChevronDown from '~icons/ms/keyboard_arrow_down';
+import MoreHorizontal from '~icons/ms/more_horiz';
 
 <template>
   <div class="grid w-full max-w-sm gap-4">

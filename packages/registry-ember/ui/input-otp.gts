@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 
 import type { TOC } from '@ember/component/template-only';
 
-import Minus from '~icons/lucide/minus';
+import Minus from '~icons/ms/remove';
 
 const InputOTPContext = 'input-otp-context' as const;
 

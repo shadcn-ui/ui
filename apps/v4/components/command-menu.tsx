@@ -400,7 +400,9 @@ export function CommandMenu({
           <span className="inline-flex xl:hidden">Search...</span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="rounded-xl border-none bg-clip-padding bg-popover p-2 pb-11 shadow-2xl ring-4 ring-border"> {/* [FORCE-UI] semantic tokens, was ring-neutral-200/80 dark:bg-neutral-900 dark:ring-neutral-800 */}
+      <DialogContent className="rounded-xl border-none bg-popover bg-clip-padding p-2 pb-11 shadow-2xl ring-4 ring-border">
+        {" "}
+        {/* [FORCE-UI] semantic tokens, was ring-neutral-200/80 dark:bg-neutral-900 dark:ring-neutral-800 */}
         <DialogHeader className="sr-only">
           <DialogTitle>Search documentation...</DialogTitle>
           <DialogDescription>Search for a command to run...</DialogDescription>
@@ -439,7 +441,9 @@ export function CommandMenu({
             ) : null}
           </CommandList>
         </Command>
-        <div className="absolute inset-x-0 bottom-0 z-20 flex h-10 items-center gap-2 rounded-b-xl border-t border-t-border bg-muted px-4 text-xs font-medium text-muted-foreground"> {/* [FORCE-UI] semantic tokens, was border-t-neutral-100 bg-neutral-50 dark:border-t-neutral-700 dark:bg-neutral-800 */}
+        <div className="absolute inset-x-0 bottom-0 z-20 flex h-10 items-center gap-2 rounded-b-xl border-t border-t-border bg-muted px-4 text-xs font-medium text-muted-foreground">
+          {" "}
+          {/* [FORCE-UI] semantic tokens, was border-t-neutral-100 bg-neutral-50 dark:border-t-neutral-700 dark:bg-neutral-800 */}
           <div className="flex items-center gap-2">
             <CommandMenuKbd>
               <CornerDownLeftIcon />

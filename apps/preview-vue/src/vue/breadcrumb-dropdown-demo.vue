@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ChevronDownIcon, SlashIcon } from 'lucide-vue-next'
+import ChevronDownIcon from "@material-symbols/svg-400/rounded/keyboard_arrow_down.svg?component"
+import SlashIcon from "@material-symbols/svg-400/rounded/block.svg?component"
 import {
   Breadcrumb,
   BreadcrumbItem,

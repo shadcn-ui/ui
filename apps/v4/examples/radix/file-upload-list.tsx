@@ -1,7 +1,9 @@
 "use client"
 
+import { FileIcon } from "@/examples/material-symbols"
+
 import * as React from "react"
-import { FileIcon } from "lucide-react"
+
 
 import {
   Item,

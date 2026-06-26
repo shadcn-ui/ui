@@ -197,6 +197,7 @@ function CarouselPrevious({
     >
       <IconPlaceholder
         lucide="ChevronLeftIcon"
+        materialSymbols="chevron_left"
         tabler="IconChevronLeft"
         hugeicons="ArrowLeft01Icon"
         phosphor="CaretLeftIcon"
@@ -234,6 +235,7 @@ function CarouselNext({
     >
       <IconPlaceholder
         lucide="ChevronRightIcon"
+        materialSymbols="chevron_right"
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"

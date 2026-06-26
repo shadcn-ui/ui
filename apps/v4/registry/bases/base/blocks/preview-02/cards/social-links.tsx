@@ -28,6 +28,7 @@ export function SocialLinks() {
               <InputGroupAddon>
                 <IconPlaceholder
                   lucide="CirclePlusIcon"
+                  materialSymbols="add_circle"
                   tabler="IconCirclePlus"
                   hugeicons="PlusSignCircleIcon"
                   phosphor="PlusCircleIcon"
@@ -46,6 +47,7 @@ export function SocialLinks() {
               <InputGroupAddon>
                 <IconPlaceholder
                   lucide="CameraIcon"
+                  materialSymbols="camera"
                   tabler="IconCamera"
                   hugeicons="Camera01Icon"
                   phosphor="CameraIcon"
@@ -64,6 +66,7 @@ export function SocialLinks() {
               <InputGroupAddon>
                 <IconPlaceholder
                   lucide="CloudIcon"
+                  materialSymbols="cloud"
                   tabler="IconCloud"
                   hugeicons="CloudUploadIcon"
                   phosphor="CloudIcon"
@@ -82,6 +85,7 @@ export function SocialLinks() {
               <InputGroupAddon>
                 <IconPlaceholder
                   lucide="GlobeIcon"
+                  materialSymbols="globe"
                   tabler="IconWorld"
                   hugeicons="Globe02Icon"
                   phosphor="GlobeIcon"

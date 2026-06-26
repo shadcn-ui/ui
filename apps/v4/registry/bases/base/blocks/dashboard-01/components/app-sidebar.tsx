@@ -30,6 +30,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="LayoutDashboardIcon"
+          materialSymbols="dashboard"
           tabler="IconDashboard"
           hugeicons="DashboardSquare01Icon"
           phosphor="SquaresFourIcon"
@@ -43,6 +44,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="ListIcon"
+          materialSymbols="list"
           tabler="IconListDetails"
           hugeicons="Menu01Icon"
           phosphor="ListIcon"
@@ -56,6 +58,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="ChartBarIcon"
+          materialSymbols="bar_chart"
           tabler="IconChartBar"
           hugeicons="ChartHistogramIcon"
           phosphor="ChartBarIcon"
@@ -69,6 +72,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="FolderIcon"
+          materialSymbols="folder"
           tabler="IconFolder"
           hugeicons="Folder01Icon"
           phosphor="FolderIcon"
@@ -82,6 +86,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="UsersIcon"
+          materialSymbols="group"
           tabler="IconUsers"
           hugeicons="UserGroupIcon"
           phosphor="UsersIcon"
@@ -96,6 +101,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="CameraIcon"
+          materialSymbols="camera"
           tabler="IconCamera"
           hugeicons="Camera01Icon"
           phosphor="CameraIcon"
@@ -120,6 +126,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="FileTextIcon"
+          materialSymbols="description"
           tabler="IconFileDescription"
           hugeicons="File01Icon"
           phosphor="FileTextIcon"
@@ -143,6 +150,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="FileTextIcon"
+          materialSymbols="description"
           tabler="IconFileAi"
           hugeicons="File01Icon"
           phosphor="FileTextIcon"
@@ -169,6 +177,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="Settings2Icon"
+          materialSymbols="settings"
           tabler="IconSettings"
           hugeicons="Settings05Icon"
           phosphor="GearIcon"
@@ -182,6 +191,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="CircleHelpIcon"
+          materialSymbols="help"
           tabler="IconHelp"
           hugeicons="HelpCircleIcon"
           phosphor="QuestionIcon"
@@ -195,6 +205,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="SearchIcon"
+          materialSymbols="search"
           tabler="IconSearch"
           hugeicons="SearchIcon"
           phosphor="MagnifyingGlassIcon"
@@ -210,6 +221,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="DatabaseIcon"
+          materialSymbols="database"
           tabler="IconDatabase"
           hugeicons="Database01Icon"
           phosphor="DatabaseIcon"
@@ -223,6 +235,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="FileChartColumnIcon"
+          materialSymbols="bar_chart"
           tabler="IconReport"
           hugeicons="Analytics01Icon"
           phosphor="ChartLineIcon"
@@ -236,6 +249,7 @@ const data = {
       icon: (
         <IconPlaceholder
           lucide="FileIcon"
+          materialSymbols="description"
           tabler="IconFileWord"
           hugeicons="File01Icon"
           phosphor="FileIcon"
@@ -257,6 +271,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             >
               <IconPlaceholder
                 lucide="CommandIcon"
+                materialSymbols="keyboard_command_key"
                 tabler="IconInnerShadowTop"
                 hugeicons="CommandIcon"
                 phosphor="CommandIcon"

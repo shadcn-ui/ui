@@ -1,4 +1,4 @@
-import { RefreshCwIcon } from "lucide-react"
+import { RefreshCwIcon } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/radix-force-ui/ui/button"
 import {

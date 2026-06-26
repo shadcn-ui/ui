@@ -1,4 +1,4 @@
-import { IconGitBranch } from "@tabler/icons-react"
+import { IconGitBranch } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/radix-force-ui/ui/button"
 

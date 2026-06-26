@@ -21,8 +21,8 @@
 <script lang="ts">
 	import { defaults, superForm } from "sveltekit-superforms";
 	import { tick } from "svelte";
-	import CheckIcon from "@lucide/svelte/icons/check";
-	import ChevronsUpDownIcon from "@lucide/svelte/icons/chevrons-up-down";
+	import CheckIcon from "~icons/ms/check";
+	import ChevronsUpDownIcon from "~icons/ms/unfold_more";
 	import { zod4 } from "sveltekit-superforms/adapters";
 	import { toast } from "svelte-sonner";
 	import { useId } from "bits-ui";

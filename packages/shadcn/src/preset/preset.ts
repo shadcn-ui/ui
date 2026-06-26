@@ -86,6 +86,7 @@ export const PRESET_ICON_LIBRARIES = [
   "tabler",
   "phosphor",
   "remixicon",
+  "materialSymbols", // [FORCE-UI] append-only: preset codes are bit-packed by index
 ] as const
 
 export const PRESET_FONTS = [

@@ -21,7 +21,7 @@
     },
     {
       "path": "registry/vue-force-ui/ui/pin-input/PinInputSeparator.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PrimitiveProps } from \"reka-ui\"\nimport { Primitive, useForwardProps } from \"reka-ui\"\n\nimport { IconPlaceholder } from \"@/registry/bases/reka/components/icon-placeholder\"\n\nconst props = defineProps<PrimitiveProps>()\nconst forwardedProps = useForwardProps(props)\n</script>\n\n<template>\n  <Primitive data-slot=\"pin-input-separator\" v-bind=\"forwardedProps\">\n    <slot>\n      <IconPlaceholder\n        lucide=\"MinusIcon\"\n        tabler=\"IconMinus\"\n        hugeicons=\"Minus01Icon\"\n        phosphor=\"MinusIcon\"\n        remixicon=\"RiSubtractLine\"\n      />\n    </slot>\n  </Primitive>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { PrimitiveProps } from \"reka-ui\"\nimport { Primitive, useForwardProps } from \"reka-ui\"\n\nimport { IconPlaceholder } from \"@/registry/bases/reka/components/icon-placeholder\"\n\nconst props = defineProps<PrimitiveProps>()\nconst forwardedProps = useForwardProps(props)\n</script>\n\n<template>\n  <Primitive data-slot=\"pin-input-separator\" v-bind=\"forwardedProps\">\n    <slot>\n      <IconPlaceholder\n        lucide=\"MinusIcon\"\n        materialSymbols=\"remove\"\n        tabler=\"IconMinus\"\n        hugeicons=\"Minus01Icon\"\n        phosphor=\"MinusIcon\"\n        remixicon=\"RiSubtractLine\"\n      />\n    </slot>\n  </Primitive>\n</template>\n",
       "type": "registry:ui"
     },
     {

@@ -1,9 +1,4 @@
-import {
-  ClipboardPasteIcon,
-  CopyIcon,
-  ScissorsIcon,
-  TrashIcon,
-} from "lucide-react"
+import { ClipboardPasteIcon, CopyIcon, ScissorsIcon, TrashIcon } from "@/examples/material-symbols"
 
 import {
   ContextMenu,

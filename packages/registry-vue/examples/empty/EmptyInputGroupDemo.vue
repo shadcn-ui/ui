@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SearchIcon } from 'lucide-vue-next'
+import SearchIcon from "@material-symbols/svg-400/rounded/search.svg?component"
 import {
   Empty,
   EmptyContent,

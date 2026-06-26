@@ -3,7 +3,7 @@
   "name": "button-example",
   "title": "Button",
   "dependencies": [
-    "lucide-vue-next"
+    "@material-symbols/svg-400"
   ],
   "registryDependencies": [
     "button",
@@ -17,7 +17,7 @@
     },
     {
       "path": "registry/vue-force-ui/examples/button/ButtonDemo.vue",
-      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { ArrowUpIcon } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <div class=\"flex flex-wrap items-center gap-2 md:flex-row\">\n    <Button variant=\"outline\"> Button </Button>\n    <Button variant=\"outline\" size=\"icon\" aria-label=\"Submit\">\n      <ArrowUpIcon />\n    </Button>\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport ArrowUpIcon from \"@material-symbols/svg-400/rounded/arrow_upward.svg?component\"\n</script>\n\n<template>\n  <div class=\"flex flex-wrap items-center gap-2 md:flex-row\">\n    <Button variant=\"outline\"> Button </Button>\n    <Button variant=\"outline\" size=\"icon\" aria-label=\"Submit\">\n      <ArrowUpIcon />\n    </Button>\n  </div>\n</template>\n",
       "type": "registry:example"
     },
     {
@@ -32,7 +32,7 @@
     },
     {
       "path": "registry/vue-force-ui/examples/button/ButtonIcon.vue",
-      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { CircleFadingArrowUpIcon } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <Button variant=\"outline\" size=\"icon\">\n    <CircleFadingArrowUpIcon />\n  </Button>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport CircleFadingArrowUpIcon from \"@material-symbols/svg-400/rounded/change_circle.svg?component\"\n</script>\n\n<template>\n  <Button variant=\"outline\" size=\"icon\">\n    <CircleFadingArrowUpIcon />\n  </Button>\n</template>\n",
       "type": "registry:example"
     },
     {
@@ -52,7 +52,7 @@
     },
     {
       "path": "registry/vue-force-ui/examples/button/ButtonRounded.vue",
-      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { ArrowUpIcon } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-8\">\n    <Button variant=\"outline\" size=\"icon\" class=\"rounded-full\">\n      <ArrowUpIcon />\n    </Button>\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport ArrowUpIcon from \"@material-symbols/svg-400/rounded/arrow_upward.svg?component\"\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-8\">\n    <Button variant=\"outline\" size=\"icon\" class=\"rounded-full\">\n      <ArrowUpIcon />\n    </Button>\n  </div>\n</template>\n",
       "type": "registry:example"
     },
     {
@@ -62,12 +62,12 @@
     },
     {
       "path": "registry/vue-force-ui/examples/button/ButtonSize.vue",
-      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { ArrowUpRightIcon } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <div class=\"flex flex-col items-start gap-8 sm:flex-row\">\n    <div class=\"flex items-start gap-2\">\n      <Button size=\"sm\" variant=\"outline\"> Small </Button>\n      <Button size=\"icon-sm\" aria-label=\"Submit\" variant=\"outline\">\n        <ArrowUpRightIcon />\n      </Button>\n    </div>\n    <div class=\"flex items-start gap-2\">\n      <Button variant=\"outline\"> Default </Button>\n      <Button size=\"icon\" aria-label=\"Submit\" variant=\"outline\">\n        <ArrowUpRightIcon />\n      </Button>\n    </div>\n    <div class=\"flex items-start gap-2\">\n      <Button variant=\"outline\" size=\"lg\"> Large </Button>\n      <Button size=\"icon-lg\" aria-label=\"Submit\" variant=\"outline\">\n        <ArrowUpRightIcon />\n      </Button>\n    </div>\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport ArrowUpRightIcon from \"@material-symbols/svg-400/rounded/north_east.svg?component\"\n</script>\n\n<template>\n  <div class=\"flex flex-col items-start gap-8 sm:flex-row\">\n    <div class=\"flex items-start gap-2\">\n      <Button size=\"sm\" variant=\"outline\"> Small </Button>\n      <Button size=\"icon-sm\" aria-label=\"Submit\" variant=\"outline\">\n        <ArrowUpRightIcon />\n      </Button>\n    </div>\n    <div class=\"flex items-start gap-2\">\n      <Button variant=\"outline\"> Default </Button>\n      <Button size=\"icon\" aria-label=\"Submit\" variant=\"outline\">\n        <ArrowUpRightIcon />\n      </Button>\n    </div>\n    <div class=\"flex items-start gap-2\">\n      <Button variant=\"outline\" size=\"lg\"> Large </Button>\n      <Button size=\"icon-lg\" aria-label=\"Submit\" variant=\"outline\">\n        <ArrowUpRightIcon />\n      </Button>\n    </div>\n  </div>\n</template>\n",
       "type": "registry:example"
     },
     {
       "path": "registry/vue-force-ui/examples/button/ButtonWithIcon.vue",
-      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { GitBranchIcon } from \"lucide-vue-next\"\n</script>\n\n<template>\n  <Button variant=\"outline\" size=\"sm\">\n    <GitBranchIcon />\n    New Branch\n  </Button>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport GitBranchIcon from \"@material-symbols/svg-400/rounded/account_tree.svg?component\"\n</script>\n\n<template>\n  <Button variant=\"outline\" size=\"sm\">\n    <GitBranchIcon />\n    New Branch\n  </Button>\n</template>\n",
       "type": "registry:example"
     }
   ],

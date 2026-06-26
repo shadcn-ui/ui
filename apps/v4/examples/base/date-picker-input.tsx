@@ -1,7 +1,9 @@
 "use client"
 
+import { CalendarIcon } from "@/examples/material-symbols"
+
 import * as React from "react"
-import { CalendarIcon } from "lucide-react"
+
 
 import { Calendar } from "@/styles/base-force-ui/ui/calendar"
 import { Field, FieldLabel } from "@/styles/base-force-ui/ui/field"

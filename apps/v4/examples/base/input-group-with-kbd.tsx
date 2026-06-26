@@ -1,4 +1,4 @@
-import { CheckIcon, InfoIcon, SearchIcon, SparklesIcon } from "lucide-react"
+import { CheckIcon, InfoIcon, SearchIcon, SparklesIcon } from "@/examples/material-symbols"
 
 import {
   Field,

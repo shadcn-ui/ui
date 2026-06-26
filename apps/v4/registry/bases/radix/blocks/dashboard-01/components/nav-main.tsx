@@ -30,6 +30,7 @@ export function NavMain({
             >
               <IconPlaceholder
                 lucide="CirclePlusIcon"
+                materialSymbols="add_circle"
                 tabler="IconCirclePlusFilled"
                 hugeicons="PlusSignCircleIcon"
                 phosphor="PlusCircleIcon"
@@ -44,6 +45,7 @@ export function NavMain({
             >
               <IconPlaceholder
                 lucide="MailIcon"
+                materialSymbols="mail"
                 tabler="IconMail"
                 hugeicons="Mail01Icon"
                 phosphor="EnvelopeIcon"

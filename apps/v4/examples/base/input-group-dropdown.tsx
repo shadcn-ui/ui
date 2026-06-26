@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronDownIcon, MoreHorizontal } from "lucide-react"
+import { ChevronDownIcon, MoreHorizontal } from "@/examples/material-symbols"
 
 import {
   DropdownMenu,

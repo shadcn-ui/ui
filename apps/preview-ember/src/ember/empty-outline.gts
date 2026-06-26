@@ -8,7 +8,7 @@ import {
   EmptyTitle,
 } from '@/ember-ui/empty';
 
-import Cloud from '~icons/lucide/cloud';
+import Cloud from '~icons/ms/cloud';
 
 <template>
   <Empty @class="border border-dashed">

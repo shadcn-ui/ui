@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { useMagicKeys, whenever } from '@vueuse/core'
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from 'lucide-vue-next'
+import Calculator from "@material-symbols/svg-400/rounded/calculate.svg?component"
+import Calendar from "@material-symbols/svg-400/rounded/calendar_month.svg?component"
+import CreditCard from "@material-symbols/svg-400/rounded/credit_card.svg?component"
+import Settings from "@material-symbols/svg-400/rounded/settings.svg?component"
+import Smile from "@material-symbols/svg-400/rounded/mood.svg?component"
+import User from "@material-symbols/svg-400/rounded/person.svg?component"
 
 import {
   Command,

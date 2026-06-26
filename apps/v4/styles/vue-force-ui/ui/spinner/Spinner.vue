@@ -38,6 +38,7 @@ const props = defineProps<{
 <template>
   <IconPlaceholder
     lucide="Loader2Icon"
+    materialSymbols="progress_activity"
     tabler="IconLoader2"
     hugeicons="Loading03Icon"
     phosphor="SpinnerGapIcon"

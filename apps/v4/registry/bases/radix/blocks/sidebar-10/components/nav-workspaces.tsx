@@ -52,6 +52,7 @@ export function NavWorkspaces({
                   >
                     <IconPlaceholder
                       lucide="ChevronRightIcon"
+                      materialSymbols="chevron_right"
                       tabler="IconChevronRight"
                       hugeicons="ArrowRight01Icon"
                       phosphor="CaretRightIcon"
@@ -62,6 +63,7 @@ export function NavWorkspaces({
                 <SidebarMenuAction showOnHover>
                   <IconPlaceholder
                     lucide="PlusIcon"
+                    materialSymbols="add"
                     tabler="IconPlus"
                     hugeicons="PlusSignIcon"
                     phosphor="PlusIcon"
@@ -89,6 +91,7 @@ export function NavWorkspaces({
             <SidebarMenuButton className="text-sidebar-foreground/70">
               <IconPlaceholder
                 lucide="MoreHorizontalIcon"
+                materialSymbols="more_horiz"
                 tabler="IconDots"
                 hugeicons="MoreHorizontalCircle01Icon"
                 phosphor="DotsThreeOutlineIcon"

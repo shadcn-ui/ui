@@ -173,6 +173,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                 <IconPlaceholder
                   lucide="GalleryVerticalEndIcon"
+                  materialSymbols="stacks"
                   tabler="IconLayoutRows"
                   hugeicons="LayoutBottomIcon"
                   phosphor="RowsIcon"
@@ -203,6 +204,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     {item.title}{" "}
                     <IconPlaceholder
                       lucide="PlusIcon"
+                      materialSymbols="add"
                       tabler="IconPlus"
                       hugeicons="PlusSignIcon"
                       phosphor="PlusIcon"
@@ -211,6 +213,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     />
                     <IconPlaceholder
                       lucide="MinusIcon"
+                      materialSymbols="remove"
                       tabler="IconMinus"
                       hugeicons="MinusSignIcon"
                       phosphor="MinusIcon"

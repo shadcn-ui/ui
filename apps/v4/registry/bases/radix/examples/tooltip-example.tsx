@@ -77,6 +77,7 @@ function TooltipWithIcon() {
           <Button variant="ghost" size="icon">
             <IconPlaceholder
               lucide="InfoIcon"
+              materialSymbols="info"
               tabler="IconInfoCircle"
               hugeicons="AlertCircleIcon"
               phosphor="InfoIcon"
@@ -138,6 +139,7 @@ function TooltipWithKeyboard() {
           <Button variant="outline" size="icon-sm">
             <IconPlaceholder
               lucide="SaveIcon"
+              materialSymbols="save"
               tabler="IconDeviceFloppy"
               hugeicons="FloppyDiskIcon"
               phosphor="FloppyDiskIcon"

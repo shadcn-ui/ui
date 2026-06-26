@@ -24,6 +24,7 @@
       {#if checked}
         <IconPlaceholder
           lucide="CircleIcon"
+          materialSymbols="circle"
           tabler="IconCircle"
           hugeicons="CircleIcon"
           phosphor="CircleIcon"

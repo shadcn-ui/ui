@@ -1,4 +1,4 @@
-import { BotIcon, ChevronDownIcon } from "lucide-react"
+import { BotIcon, ChevronDownIcon } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 import { ButtonGroup } from "@/styles/base-force-ui/ui/button-group"

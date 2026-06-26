@@ -2,7 +2,7 @@
 	import * as InputGroup from "@/svelte-ui/input-group/index.js";
 	import * as Label from "@/svelte-ui/label/index.js";
 	import * as Tooltip from "@/svelte-ui/tooltip/index.js";
-	import InfoIcon from "@lucide/svelte/icons/info";
+	import InfoIcon from "~icons/ms/info";
 </script>
 
 <div class="grid w-full max-w-sm gap-4">

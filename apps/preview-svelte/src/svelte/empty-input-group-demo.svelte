@@ -2,7 +2,7 @@
 	import * as Empty from "@/svelte-ui/empty/index.js";
 	import * as InputGroup from "@/svelte-ui/input-group/index.js";
 	import * as Kbd from "@/svelte-ui/kbd/index.js";
-	import SearchIcon from "@lucide/svelte/icons/search";
+	import SearchIcon from "~icons/ms/search";
 </script>
 
 <Empty.Root>

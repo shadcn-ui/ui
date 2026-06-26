@@ -1,8 +1,8 @@
 import { ToggleGroup, ToggleGroupItem } from '@/ember-ui/toggle-group';
 
-import Bold from '~icons/lucide/bold';
-import Italic from '~icons/lucide/italic';
-import Underline from '~icons/lucide/underline';
+import Bold from '~icons/ms/format_bold';
+import Italic from '~icons/ms/format_italic';
+import Underline from '~icons/ms/format_underlined';
 
 <template>
   <ToggleGroup @size="sm" @type="single">

@@ -23,6 +23,7 @@ export function SearchForm({ ...props }: React.ComponentProps<"form">) {
           />
           <IconPlaceholder
             lucide="SearchIcon"
+            materialSymbols="search"
             tabler="IconSearch"
             hugeicons="SearchIcon"
             phosphor="MagnifyingGlassIcon"

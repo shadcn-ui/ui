@@ -1,4 +1,4 @@
-import { SaveIcon } from "lucide-react"
+import { SaveIcon } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 import { Kbd } from "@/styles/base-force-ui/ui/kbd"

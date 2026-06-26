@@ -16,7 +16,7 @@ import {
   SidebarTrigger,
 } from '@/ui/sidebar';
 
-import ChevronDown from '~icons/lucide/chevron-down';
+import ChevronDown from '~icons/ms/keyboard_arrow_down';
 
 <template>
   <SidebarProvider class="!min-h-full h-full">

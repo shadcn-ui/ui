@@ -13,7 +13,7 @@ import {
   ItemTitle,
 } from '@/ember-ui/item';
 
-import PlusIcon from '~icons/lucide/plus';
+import PlusIcon from '~icons/ms/add';
 
 const people = [
   {

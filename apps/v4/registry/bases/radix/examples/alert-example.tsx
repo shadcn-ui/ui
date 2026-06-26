@@ -80,6 +80,7 @@ function AlertExample2() {
         <Alert>
           <IconPlaceholder
             lucide="CircleAlertIcon"
+            materialSymbols="error"
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
@@ -92,6 +93,7 @@ function AlertExample2() {
         <Alert>
           <IconPlaceholder
             lucide="CircleAlertIcon"
+            materialSymbols="error"
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
@@ -106,6 +108,7 @@ function AlertExample2() {
         <Alert>
           <IconPlaceholder
             lucide="CircleAlertIcon"
+            materialSymbols="error"
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
@@ -119,6 +122,7 @@ function AlertExample2() {
         <Alert>
           <IconPlaceholder
             lucide="CircleAlertIcon"
+            materialSymbols="error"
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
@@ -133,6 +137,7 @@ function AlertExample2() {
         <Alert>
           <IconPlaceholder
             lucide="CircleAlertIcon"
+            materialSymbols="error"
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
@@ -147,6 +152,7 @@ function AlertExample2() {
         <Alert>
           <IconPlaceholder
             lucide="CircleAlertIcon"
+            materialSymbols="error"
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
@@ -178,6 +184,7 @@ function AlertExample3() {
         <Alert variant="destructive">
           <IconPlaceholder
             lucide="CircleAlertIcon"
+            materialSymbols="error"
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
@@ -191,6 +198,7 @@ function AlertExample3() {
         <Alert variant="destructive">
           <IconPlaceholder
             lucide="CircleAlertIcon"
+            materialSymbols="error"
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
@@ -221,6 +229,7 @@ function AlertStatusVariants() {
         <Alert variant="warning">
           <IconPlaceholder
             lucide="TriangleAlertIcon"
+            materialSymbols="warning"
             tabler="IconAlertTriangle"
             hugeicons="AlertDiamondIcon"
             phosphor="WarningIcon"
@@ -232,6 +241,7 @@ function AlertStatusVariants() {
         <Alert variant="success">
           <IconPlaceholder
             lucide="CircleCheckIcon"
+            materialSymbols="check_circle"
             tabler="IconCircleCheck"
             hugeicons="CheckmarkCircle02Icon"
             phosphor="CheckCircleIcon"
@@ -243,6 +253,7 @@ function AlertStatusVariants() {
         <Alert variant="info">
           <IconPlaceholder
             lucide="InfoIcon"
+            materialSymbols="info"
             tabler="IconInfoCircle"
             hugeicons="InformationCircleIcon"
             phosphor="InfoIcon"
@@ -263,6 +274,7 @@ function AlertExample4() {
         <Alert>
           <IconPlaceholder
             lucide="CircleAlertIcon"
+            materialSymbols="error"
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
@@ -276,6 +288,7 @@ function AlertExample4() {
         <Alert>
           <IconPlaceholder
             lucide="CircleAlertIcon"
+            materialSymbols="error"
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
@@ -309,6 +322,7 @@ function AlertExample5() {
           <Alert>
             <IconPlaceholder
               lucide="CircleAlertIcon"
+              materialSymbols="error"
               tabler="IconExclamationCircle"
               hugeicons="AlertCircleIcon"
               phosphor="WarningCircleIcon"
@@ -347,6 +361,7 @@ function AlertExample5() {
             <ItemMedia variant="image" className="border">
               <IconPlaceholder
                 lucide="FolderIcon"
+                materialSymbols="folder"
                 tabler="IconFolder"
                 hugeicons="Folder01Icon"
                 phosphor="FolderIcon"

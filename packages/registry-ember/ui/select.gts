@@ -19,9 +19,9 @@ import { cn } from '@/lib/utils';
 
 import type { TOC } from '@ember/component/template-only';
 
-import Check from '~icons/lucide/check';
-import ChevronDown from '~icons/lucide/chevron-down';
-import ChevronUp from '~icons/lucide/chevron-up';
+import Check from '~icons/ms/check';
+import ChevronDown from '~icons/ms/keyboard_arrow_down';
+import ChevronUp from '~icons/ms/keyboard_arrow_up';
 
 const SelectContext = 'select-context' as const;
 

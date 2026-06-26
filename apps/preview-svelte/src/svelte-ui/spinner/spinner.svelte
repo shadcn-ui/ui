@@ -16,6 +16,7 @@
 
 <IconPlaceholder
 	lucide="Loader2Icon"
+		materialSymbols="progress_activity"
 	tabler="IconLoader"
 	hugeicons="Loading03Icon"
 	phosphor="SpinnerIcon"

@@ -2,7 +2,7 @@
 	import * as Item from "$lib/registry/ui/item/index.js";
 	import * as Avatar from "$lib/registry/ui/avatar/index.js";
 	import { Button } from "$lib/registry/ui/button/index.js";
-	import Plus from "@lucide/svelte/icons/plus";
+	import Plus from "~icons/ms/add";
 </script>
 
 <div class="flex w-full max-w-lg flex-col gap-6">

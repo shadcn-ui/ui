@@ -130,6 +130,7 @@ function InputGroupWithAddons() {
             <InputGroupAddon>
               <IconPlaceholder
                 lucide="SearchIcon"
+                materialSymbols="search"
                 tabler="IconSearch"
                 hugeicons="SearchIcon"
                 phosphor="MagnifyingGlassIcon"
@@ -148,6 +149,7 @@ function InputGroupWithAddons() {
             <InputGroupAddon align="inline-end">
               <IconPlaceholder
                 lucide="EyeOffIcon"
+                materialSymbols="visibility_off"
                 tabler="IconEyeClosed"
                 hugeicons="ViewOffIcon"
                 phosphor="EyeSlashIcon"
@@ -165,6 +167,7 @@ function InputGroupWithAddons() {
             <InputGroupAddon>
               <IconPlaceholder
                 lucide="MicIcon"
+                materialSymbols="mic"
                 tabler="IconMicrophone"
                 hugeicons="VoiceIcon"
                 phosphor="MicrophoneIcon"
@@ -175,6 +178,7 @@ function InputGroupWithAddons() {
             <InputGroupAddon align="inline-end">
               <IconPlaceholder
                 lucide="RadioIcon"
+                materialSymbols="radio"
                 tabler="IconPlayerRecordFilled"
                 hugeicons="RecordIcon"
                 phosphor="RecordIcon"
@@ -192,6 +196,7 @@ function InputGroupWithAddons() {
               <InputGroupText>First Name</InputGroupText>
               <IconPlaceholder
                 lucide="InfoIcon"
+                materialSymbols="info"
                 tabler="IconInfoCircle"
                 hugeicons="AlertCircleIcon"
                 phosphor="InfoIcon"
@@ -209,6 +214,7 @@ function InputGroupWithAddons() {
               <InputGroupText>20/240 characters</InputGroupText>
               <IconPlaceholder
                 lucide="InfoIcon"
+                materialSymbols="info"
                 tabler="IconInfoCircle"
                 hugeicons="AlertCircleIcon"
                 phosphor="InfoIcon"
@@ -225,6 +231,7 @@ function InputGroupWithAddons() {
             <InputGroupAddon align="inline-end">
               <IconPlaceholder
                 lucide="StarIcon"
+                materialSymbols="star"
                 tabler="IconStar"
                 hugeicons="StarIcon"
                 phosphor="StarIcon"
@@ -236,6 +243,7 @@ function InputGroupWithAddons() {
               >
                 <IconPlaceholder
                   lucide="CopyIcon"
+                  materialSymbols="content_copy"
                   tabler="IconCopy"
                   hugeicons="CopyIcon"
                   phosphor="CopyIcon"
@@ -246,6 +254,7 @@ function InputGroupWithAddons() {
             <InputGroupAddon>
               <IconPlaceholder
                 lucide="RadioIcon"
+                materialSymbols="radio"
                 tabler="IconPlayerRecordFilled"
                 hugeicons="RecordIcon"
                 phosphor="RecordIcon"
@@ -262,6 +271,7 @@ function InputGroupWithAddons() {
             <InputGroupAddon align="inline-end">
               <IconPlaceholder
                 lucide="InfoIcon"
+                materialSymbols="info"
                 tabler="IconInfoCircle"
                 hugeicons="AlertCircleIcon"
                 phosphor="InfoIcon"
@@ -329,6 +339,7 @@ function InputGroupWithButtons() {
               <InputGroupButton size="icon-xs">
                 <IconPlaceholder
                   lucide="CopyIcon"
+                  materialSymbols="content_copy"
                   tabler="IconCopy"
                   hugeicons="CopyIcon"
                   phosphor="CopyIcon"
@@ -343,6 +354,7 @@ function InputGroupWithButtons() {
               <InputGroupButton variant="secondary" size="icon-xs">
                 <IconPlaceholder
                   lucide="TrashIcon"
+                  materialSymbols="delete"
                   tabler="IconTrash"
                   hugeicons="DeleteIcon"
                   phosphor="TrashIcon"
@@ -380,6 +392,7 @@ function InputGroupWithTooltip({
                 >
                   <IconPlaceholder
                     lucide="InfoIcon"
+                    materialSymbols="info"
                     tabler="IconInfoCircle"
                     hugeicons="AlertCircleIcon"
                     phosphor="InfoIcon"
@@ -408,6 +421,7 @@ function InputGroupWithTooltip({
                   {country}{" "}
                   <IconPlaceholder
                     lucide="ChevronDownIcon"
+                    materialSymbols="keyboard_arrow_down"
                     tabler="IconChevronDown"
                     hugeicons="ArrowDownIcon"
                     phosphor="CaretDownIcon"
@@ -445,6 +459,7 @@ function InputGroupWithTooltip({
                 <InputGroupButton variant="secondary" size="icon-xs">
                   <IconPlaceholder
                     lucide="InfoIcon"
+                    materialSymbols="info"
                     tabler="IconInfoCircle"
                     hugeicons="AlertCircleIcon"
                     phosphor="InfoIcon"
@@ -472,6 +487,7 @@ function InputGroupWithTooltip({
               >
                 <IconPlaceholder
                   lucide="StarIcon"
+                  materialSymbols="star"
                   tabler="IconStar"
                   hugeicons="StarIcon"
                   phosphor="StarIcon"
@@ -493,6 +509,7 @@ function InputGroupWithTooltip({
               <InputGroupAddon align="inline-end">
                 <IconPlaceholder
                   lucide="InfoIcon"
+                  materialSymbols="info"
                   tabler="IconInfoCircle"
                   hugeicons="AlertCircleIcon"
                   phosphor="InfoIcon"
@@ -547,6 +564,7 @@ function InputGroupWithKbd() {
             <InputGroupAddon align="inline-start">
               <IconPlaceholder
                 lucide="SparklesIcon"
+                materialSymbols="star_shine"
                 tabler="IconServerSpark"
                 hugeicons="SparklesIcon"
                 phosphor="SparkleIcon"
@@ -569,6 +587,7 @@ function InputGroupWithKbd() {
               <div className="flex size-4 items-center justify-center rounded-full bg-green-500 dark:bg-green-800">
                 <IconPlaceholder
                   lucide="CheckIcon"
+                  materialSymbols="check"
                   tabler="IconCheck"
                   hugeicons="Tick02Icon"
                   phosphor="CheckIcon"
@@ -590,6 +609,7 @@ function InputGroupWithKbd() {
           <InputGroupAddon>
             <IconPlaceholder
               lucide="SearchIcon"
+              materialSymbols="search"
               tabler="IconSearch"
               hugeicons="SearchIcon"
               phosphor="MagnifyingGlassIcon"
@@ -607,6 +627,7 @@ function InputGroupWithKbd() {
           <InputGroupAddon>
             <IconPlaceholder
               lucide="SearchIcon"
+              materialSymbols="search"
               tabler="IconSearch"
               hugeicons="SearchIcon"
               phosphor="MagnifyingGlassIcon"
@@ -623,6 +644,7 @@ function InputGroupWithKbd() {
               <InputGroupAddon align="inline-end">
                 <IconPlaceholder
                   lucide="InfoIcon"
+                  materialSymbols="info"
                   tabler="IconInfoCircle"
                   hugeicons="AlertCircleIcon"
                   phosphor="InfoIcon"
@@ -638,6 +660,7 @@ function InputGroupWithKbd() {
               <InputGroupAddon align="inline-end">
                 <IconPlaceholder
                   lucide="InfoIcon"
+                  materialSymbols="info"
                   tabler="IconInfoCircle"
                   hugeicons="AlertCircleIcon"
                   phosphor="InfoIcon"
@@ -691,6 +714,7 @@ function InputGroupInCard() {
                 <InputGroupAddon align="inline-end">
                   <IconPlaceholder
                     lucide="MailIcon"
+                    materialSymbols="mail"
                     tabler="IconMail"
                     hugeicons="MailIcon"
                     phosphor="EnvelopeIcon"
@@ -709,6 +733,7 @@ function InputGroupInCard() {
                 <InputGroupAddon align="inline-end">
                   <IconPlaceholder
                     lucide="ExternalLinkIcon"
+                    materialSymbols="open_in_new"
                     tabler="IconExternalLink"
                     hugeicons="LinkSquare02Icon"
                     phosphor="ArrowSquareOutIcon"
@@ -804,6 +829,7 @@ function InputGroupTextareaExamples() {
               <InputGroupText>Ask, Search or Chat...</InputGroupText>
               <IconPlaceholder
                 lucide="InfoIcon"
+                materialSymbols="info"
                 tabler="IconInfoCircle"
                 hugeicons="AlertCircleIcon"
                 phosphor="InfoIcon"
@@ -834,6 +860,7 @@ function InputGroupTextareaExamples() {
               >
                 <IconPlaceholder
                   lucide="ArrowUpIcon"
+                  materialSymbols="arrow_upward"
                   tabler="IconArrowUp"
                   hugeicons="ArrowUpIcon"
                   phosphor="ArrowUpIcon"
@@ -874,6 +901,7 @@ function InputGroupTextareaExamples() {
               <InputGroupText className="font-mono font-medium">
                 <IconPlaceholder
                   lucide="CodeIcon"
+                  materialSymbols="code"
                   tabler="IconBrandJavascript"
                   hugeicons="CodeIcon"
                   phosphor="CodeIcon"
@@ -884,6 +912,7 @@ function InputGroupTextareaExamples() {
               <InputGroupButton size="icon-xs" className="ml-auto">
                 <IconPlaceholder
                   lucide="RefreshCwIcon"
+                  materialSymbols="refresh"
                   tabler="IconRefresh"
                   hugeicons="RefreshIcon"
                   phosphor="ArrowClockwiseIcon"
@@ -893,6 +922,7 @@ function InputGroupTextareaExamples() {
               <InputGroupButton size="icon-xs" variant="ghost">
                 <IconPlaceholder
                   lucide="CopyIcon"
+                  materialSymbols="content_copy"
                   tabler="IconCopy"
                   hugeicons="CopyIcon"
                   phosphor="CopyIcon"

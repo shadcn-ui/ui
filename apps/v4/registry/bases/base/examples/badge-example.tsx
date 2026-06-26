@@ -70,6 +70,7 @@ function BadgeWithIconLeft() {
         <Badge>
           <IconPlaceholder
             lucide="BadgeCheck"
+            materialSymbols="verified"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
@@ -81,6 +82,7 @@ function BadgeWithIconLeft() {
         <Badge variant="secondary">
           <IconPlaceholder
             lucide="BadgeCheck"
+            materialSymbols="verified"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
@@ -92,6 +94,7 @@ function BadgeWithIconLeft() {
         <Badge variant="destructive">
           <IconPlaceholder
             lucide="BadgeCheck"
+            materialSymbols="verified"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
@@ -103,6 +106,7 @@ function BadgeWithIconLeft() {
         <Badge variant="outline">
           <IconPlaceholder
             lucide="BadgeCheck"
+            materialSymbols="verified"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
@@ -114,6 +118,7 @@ function BadgeWithIconLeft() {
         <Badge variant="ghost">
           <IconPlaceholder
             lucide="BadgeCheck"
+            materialSymbols="verified"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
@@ -125,6 +130,7 @@ function BadgeWithIconLeft() {
         <Badge variant="link">
           <IconPlaceholder
             lucide="BadgeCheck"
+            materialSymbols="verified"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
@@ -146,6 +152,7 @@ function BadgeWithIconRight() {
           Default
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -157,6 +164,7 @@ function BadgeWithIconRight() {
           Secondary
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -168,6 +176,7 @@ function BadgeWithIconRight() {
           Destructive
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -179,6 +188,7 @@ function BadgeWithIconRight() {
           Outline
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -190,6 +200,7 @@ function BadgeWithIconRight() {
           Ghost
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -201,6 +212,7 @@ function BadgeWithIconRight() {
           Link
           <IconPlaceholder
             lucide="ArrowRightIcon"
+            materialSymbols="arrow_right"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
@@ -256,6 +268,7 @@ function BadgeAsLink() {
               Link{" "}
               <IconPlaceholder
                 lucide="ArrowUpRightIcon"
+                materialSymbols="north_east"
                 tabler="IconArrowUpRight"
                 hugeicons="ArrowUpRightIcon"
                 phosphor="ArrowUpRightIcon"
@@ -272,6 +285,7 @@ function BadgeAsLink() {
               Link{" "}
               <IconPlaceholder
                 lucide="ArrowUpRightIcon"
+                materialSymbols="north_east"
                 tabler="IconArrowUpRight"
                 hugeicons="ArrowUpRightIcon"
                 phosphor="ArrowUpRightIcon"
@@ -288,6 +302,7 @@ function BadgeAsLink() {
               Link{" "}
               <IconPlaceholder
                 lucide="ArrowUpRightIcon"
+                materialSymbols="north_east"
                 tabler="IconArrowUpRight"
                 hugeicons="ArrowUpRightIcon"
                 phosphor="ArrowUpRightIcon"
@@ -304,6 +319,7 @@ function BadgeAsLink() {
               Link{" "}
               <IconPlaceholder
                 lucide="ArrowUpRightIcon"
+                materialSymbols="north_east"
                 tabler="IconArrowUpRight"
                 hugeicons="ArrowRight02Icon"
                 phosphor="ArrowUpRightIcon"

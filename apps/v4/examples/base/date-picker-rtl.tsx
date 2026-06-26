@@ -1,9 +1,11 @@
 "use client"
 
+import { ChevronDownIcon } from "@/examples/material-symbols"
+
 import * as React from "react"
 import { format } from "date-fns"
 import { arSA, he } from "date-fns/locale"
-import { ChevronDownIcon } from "lucide-react"
+
 import {
   arSA as arSADayPicker,
   he as heDayPicker,

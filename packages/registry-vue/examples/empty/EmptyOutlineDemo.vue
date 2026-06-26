@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Cloud } from 'lucide-vue-next'
+import Cloud from "@material-symbols/svg-400/rounded/cloud.svg?component"
 import { Button } from '@/ui/button'
 import {
   Empty,

@@ -34,6 +34,7 @@ export function ObservabilityCard() {
           Create Query{" "}
           <IconPlaceholder
             lucide="PlusIcon"
+            materialSymbols="add"
             tabler="IconPlus"
             hugeicons="PlusSignIcon"
             phosphor="PlusIcon"

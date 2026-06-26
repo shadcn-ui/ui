@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRightIcon, PlusIcon } from "lucide-react"
+import { ArrowRightIcon, PlusIcon } from "@/examples/material-symbols"
 
 import {
   useTranslation,

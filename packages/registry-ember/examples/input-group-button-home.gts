@@ -15,8 +15,8 @@ import {
   PopoverContent,
 } from '@/ui/popover';
 
-import InfoIcon from '~icons/lucide/info';
-import StarIcon from '~icons/lucide/star';
+import InfoIcon from '~icons/ms/info';
+import StarIcon from '~icons/ms/star';
 
 export default class InputGroupButtonHome extends Component {
   @tracked isFavorite = false;

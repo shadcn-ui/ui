@@ -267,6 +267,7 @@ function TableWithActions() {
                   <Button variant="ghost" size="icon" className="size-8">
                     <IconPlaceholder
                       lucide="MoreHorizontalIcon"
+                      materialSymbols="more_horiz"
                       tabler="IconDots"
                       hugeicons="MoreHorizontalCircle01Icon"
                       phosphor="DotsThreeOutlineIcon"
@@ -295,6 +296,7 @@ function TableWithActions() {
                   <Button variant="ghost" size="icon" className="size-8">
                     <IconPlaceholder
                       lucide="MoreHorizontalIcon"
+                      materialSymbols="more_horiz"
                       tabler="IconDots"
                       hugeicons="MoreHorizontalCircle01Icon"
                       phosphor="DotsThreeOutlineIcon"
@@ -323,6 +325,7 @@ function TableWithActions() {
                   <Button variant="ghost" size="icon" className="size-8">
                     <IconPlaceholder
                       lucide="MoreHorizontalIcon"
+                      materialSymbols="more_horiz"
                       tabler="IconDots"
                       hugeicons="MoreHorizontalCircle01Icon"
                       phosphor="DotsThreeOutlineIcon"

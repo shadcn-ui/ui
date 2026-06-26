@@ -27,6 +27,7 @@
 	{@render children?.()}
 	<IconPlaceholder
 		lucide="ChevronDownIcon"
+		materialSymbols="keyboard_arrow_down"
 		tabler="IconSelector"
 		hugeicons="UnfoldMoreIcon"
 		phosphor="CaretDownIcon"

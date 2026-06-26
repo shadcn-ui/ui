@@ -79,6 +79,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <SidebarMenuButton>
                     <IconPlaceholder
                       lucide="FileIcon"
+                      materialSymbols="description"
                       tabler="IconFile"
                       hugeicons="FileIcon"
                       phosphor="FileIcon"
@@ -121,6 +122,7 @@ function Tree({ item }: { item: TreeItem }) {
       >
         <IconPlaceholder
           lucide="FileIcon"
+          materialSymbols="description"
           tabler="IconFile"
           hugeicons="FileIcon"
           phosphor="FileIcon"
@@ -141,6 +143,7 @@ function Tree({ item }: { item: TreeItem }) {
           <SidebarMenuButton>
             <IconPlaceholder
               lucide="ChevronRightIcon"
+              materialSymbols="chevron_right"
               tabler="IconChevronRight"
               hugeicons="ArrowRight01Icon"
               phosphor="CaretRightIcon"
@@ -149,6 +152,7 @@ function Tree({ item }: { item: TreeItem }) {
             />
             <IconPlaceholder
               lucide="FolderIcon"
+              materialSymbols="folder"
               tabler="IconFolder"
               hugeicons="FolderIcon"
               phosphor="FolderIcon"

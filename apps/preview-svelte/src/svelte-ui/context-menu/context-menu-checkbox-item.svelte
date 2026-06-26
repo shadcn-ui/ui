@@ -35,6 +35,7 @@
 			{#if checked}
 				<IconPlaceholder
 					lucide="CheckIcon"
+		materialSymbols="check"
 					tabler="IconCheck"
 					hugeicons="Tick02Icon"
 					phosphor="CheckIcon"
