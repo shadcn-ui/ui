@@ -14,6 +14,7 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "build:packages": "turbo run build --filter=./packages/*",
     "registry:build": "pnpm --filter=v4 registry:build && pnpm lint:fix && pnpm format:write -- --loglevel silent",
     "registry:capture": "pnpm --filter=v4 registry:capture",
     "explore:capture": "pnpm --filter=v4 explore:capture",
