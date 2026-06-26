@@ -1,0 +1,88 @@
+---
+title: June 2026 - Chat Components
+description: MessageScroller, Message, Bubble, Attachment, and Marker. Components for building chat interfaces.
+date: 2026-06-26
+---
+
+We're adding five new components for building chat interfaces:
+`MessageScroller`, `Message`, `Bubble`, `Attachment`, and `Marker`.
+
+This is the first phase of the chat components work. Instead of rebuilding
+everything at once, we're taking one piece of chat at a time, rethinking the
+rough parts, and shipping it as a shadcn/ui component.
+
+Building a chat interface looks simple until it starts streaming. You are not
+just rendering a list anymore. You have to preserve the reader's place, follow a
+reply only when it makes sense, open saved threads at the right turn, load older
+messages without jumping, and still make room for attachments, status rows,
+actions, grouped messages, and rich content.
+
+We're starting with the message and conversation layer: the scroller,
+auto-scroll, jump-to-message, message rows, bubbles, reactions, attachments, and
+markers.
+
+If you're already using a component from `@ai-elements`, the idea is simple:
+try the shadcn/ui version of that piece. Same job, better behavior, built to
+compose with the rest of your components.
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="message-scroller-demo"
+  previewClassName="h-auto theme-blue bg-surface dark:bg-background"
+/>
+
+```bash
+npx shadcn@latest add message-scroller message bubble attachment marker
+```
+
+## MessageScroller
+
+`MessageScroller` is the scroll container for a conversation. It handles the
+parts that are easy to get wrong: anchored turns, streamed replies, saved thread
+restore, prepended history, jump-to-message, scroll controls, and visibility
+tracking.
+
+The rule is simple: never move the reader against their intent. Follow the
+stream when they are already following along. Hold their place when they scroll
+away. Give them a clear way back to the latest reply.
+
+`MessageScroller` owns that behavior without owning your messages, AI state,
+transport, persistence, or model state. You bring the content renderer.
+
+## Message, Bubble, Attachment, and Marker
+
+The rest of the components cover the everyday pieces you need around the
+scroller.
+
+- `Message` lays out a row in the conversation with avatar, alignment, header,
+  content, footer, and grouped messages.
+- `Bubble` renders the message surface, with variants, alignment, reactions,
+  links, buttons, and collapsible content.
+- `Attachment` renders files and images with media, metadata, upload state,
+  actions, and a full-card trigger that keeps actions separately clickable.
+- `Marker` renders status updates, system notes, bordered rows, and labeled
+  separators for things like streaming state, tool activity, and date breaks.
+
+They are intentionally small. Compose them together for AI chats, support
+inboxes, team threads, group chats, and product-specific conversations.
+
+## @shadcn/react
+
+We also created `@shadcn/react`, a new package for unstyled, headless React
+components.
+
+The first primitive is `@shadcn/react/message-scroller`. The registry component
+wraps it with shadcn/ui styles, but the scroll behavior lives in the package:
+anchoring, auto-follow, prepend preservation, scroll commands, and visibility.
+
+This lets us ship behavior without locking it to a visual style. You still get
+copy-and-paste components that match your project, and the hard interaction
+logic stays tested in one place.
+
+Available now for Radix and Base UI.
+
+<Button asChild size="sm">
+  <Link href="/docs/components/message-scroller" className="mt-6 no-underline!">
+    View Chat Components
+  </Link>
+</Button>
