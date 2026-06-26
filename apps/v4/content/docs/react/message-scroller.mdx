@@ -24,7 +24,10 @@ npm install @shadcn/react
 ## Usage
 
 ```tsx
-import { MessageScroller, useMessageScroller } from "@shadcn/react/message-scroller"
+import {
+  MessageScroller,
+  useMessageScroller,
+} from "@shadcn/react/message-scroller"
 ```
 
 The package exports a namespace object instead of flat components. The parts and
@@ -85,10 +88,10 @@ the AI SDK.
 "use client"
 
 import { useChat } from "@ai-sdk/react"
+import { MessageScroller } from "@shadcn/react/message-scroller"
 import { DefaultChatTransport } from "ai"
 
 import { ChatInput } from "@/components/chat-input"
-import { MessageScroller } from "@shadcn/react/message-scroller"
 
 export function Chat() {
   const { messages, sendMessage, status } = useChat({
@@ -254,8 +257,8 @@ Which edges the viewport can scroll toward, for sibling UI that needs the values
 in JavaScript. Prefer the `data-scrollable` attribute for styling the scroller
 itself.
 
-| Value   | Type      | Description                                                                                |
-| ------- | --------- | ----------------------------------------------------------------------------------------- |
+| Value   | Type      | Description                                                                                            |
+| ------- | --------- | ------------------------------------------------------------------------------------------------------ |
 | `start` | `boolean` | Whether the viewport can scroll toward the start. Content is hidden above (`!start` means at the top). |
 | `end`   | `boolean` | Whether the viewport can scroll toward the end. Content is hidden below (`!end` means at the bottom).  |
 
