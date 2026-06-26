@@ -4,10 +4,12 @@
     "components",
     "(root)",
     "changelog",
+    "react",
     "forms",
     "installation",
     "dark-mode",
     "rtl",
+    "utils",
     "registry"
   ]
 }

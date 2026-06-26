@@ -995,6 +995,59 @@
       "type": "registry:ui"
     },
     {
+      "name": "attachment",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/radix-maia/ui/attachment.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "bubble",
+      "files": [
+        {
+          "path": "registry/radix-maia/ui/bubble.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "message-scroller",
+      "dependencies": ["@shadcn/react"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/radix-maia/ui/message-scroller.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "marker",
+      "files": [
+        {
+          "path": "registry/radix-maia/ui/marker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "message",
+      "files": [
+        {
+          "path": "registry/radix-maia/ui/message.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "accordion-example",
       "title": "Accordion",
       "registryDependencies": ["accordion", "button", "card", "example"],
@@ -1435,7 +1488,7 @@
     {
       "name": "item-example",
       "title": "Item",
-      "registryDependencies": ["button", "item", "example"],
+      "registryDependencies": ["button", "drawer", "item", "example"],
       "files": [
         {
           "path": "registry/radix-maia/examples/item-example.tsx",
@@ -1922,6 +1975,84 @@
       "type": "registry:example"
     },
     {
+      "name": "attachment-example",
+      "title": "Attachment",
+      "registryDependencies": ["attachment"],
+      "files": [
+        {
+          "path": "registry/radix-maia/examples/attachment-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "bubble-example",
+      "title": "Bubble",
+      "registryDependencies": ["bubble", "button", "collapsible", "example"],
+      "files": [
+        {
+          "path": "registry/radix-maia/examples/bubble-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "message-scroller-example",
+      "title": "Message Scroller",
+      "registryDependencies": [
+        "attachment",
+        "bubble",
+        "button",
+        "card",
+        "example",
+        "input-group",
+        "marker",
+        "message",
+        "message-scroller",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-maia/examples/message-scroller-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "marker-example",
+      "title": "Marker",
+      "registryDependencies": [
+        "marker",
+        "button",
+        "collapsible",
+        "drawer",
+        "spinner",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-maia/examples/marker-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "message-example",
+      "title": "Message",
+      "registryDependencies": ["bubble", "message", "button", "example"],
+      "files": [
+        {
+          "path": "registry/radix-maia/examples/message-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "utils",
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
@@ -2021,6 +2152,18 @@
       "files": [
         {
           "path": "registry/radix-maia/blocks/preview-02/index.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "preview-03",
+      "title": "Preview 03",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/radix-maia/blocks/preview-03/index.tsx",
           "type": "registry:block"
         }
       ],

@@ -502,6 +502,51 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "direction"
       return { default: mod.default || mod[exportName] }
     }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/registry/bases/radix/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/registry/bases/radix/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/registry/bases/radix/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/registry/bases/radix/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/registry/bases/radix/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
     "accordion-example": React.lazy(async () => {
       const mod = await import(
         "@/registry/bases/radix/examples/accordion-example"
@@ -1105,6 +1150,57 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "component-example"
       return { default: mod.default || mod[exportName] }
     }),
+    "attachment-example": React.lazy(async () => {
+      const mod = await import(
+        "@/registry/bases/radix/examples/attachment-example"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment-example"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "bubble-example": React.lazy(async () => {
+      const mod = await import("@/registry/bases/radix/examples/bubble-example")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble-example"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller-example": React.lazy(async () => {
+      const mod = await import(
+        "@/registry/bases/radix/examples/message-scroller-example"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller-example"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "marker-example": React.lazy(async () => {
+      const mod = await import("@/registry/bases/radix/examples/marker-example")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker-example"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-example": React.lazy(async () => {
+      const mod = await import(
+        "@/registry/bases/radix/examples/message-example"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-example"
+      return { default: mod.default || mod[exportName] }
+    }),
     utils: React.lazy(async () => {
       const mod = await import("@/registry/bases/radix/lib/utils")
       const exportName =
@@ -1139,6 +1235,15 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "preview-02"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "preview-03": React.lazy(async () => {
+      const mod = await import("@/registry/bases/radix/blocks/preview-03/index")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "preview-03"
       return { default: mod.default || mod[exportName] }
     }),
     "login-01": React.lazy(async () => {
@@ -1892,6 +1997,51 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "direction"
       return { default: mod.default || mod[exportName] }
     }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/registry/bases/base/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/registry/bases/base/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/registry/bases/base/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/registry/bases/base/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/registry/bases/base/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
     "accordion-example": React.lazy(async () => {
       const mod = await import(
         "@/registry/bases/base/examples/accordion-example"
@@ -2483,6 +2633,55 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "component-example"
       return { default: mod.default || mod[exportName] }
     }),
+    "attachment-example": React.lazy(async () => {
+      const mod = await import(
+        "@/registry/bases/base/examples/attachment-example"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment-example"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "bubble-example": React.lazy(async () => {
+      const mod = await import("@/registry/bases/base/examples/bubble-example")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble-example"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller-example": React.lazy(async () => {
+      const mod = await import(
+        "@/registry/bases/base/examples/message-scroller-example"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller-example"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "marker-example": React.lazy(async () => {
+      const mod = await import("@/registry/bases/base/examples/marker-example")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker-example"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-example": React.lazy(async () => {
+      const mod = await import("@/registry/bases/base/examples/message-example")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-example"
+      return { default: mod.default || mod[exportName] }
+    }),
     utils: React.lazy(async () => {
       const mod = await import("@/registry/bases/base/lib/utils")
       const exportName =
@@ -2517,6 +2716,15 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "preview-02"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "preview-03": React.lazy(async () => {
+      const mod = await import("@/registry/bases/base/blocks/preview-03/index")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "preview-03"
       return { default: mod.default || mod[exportName] }
     }),
     "login-01": React.lazy(async () => {

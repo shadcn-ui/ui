@@ -78,7 +78,7 @@ jobs:
         run: pnpm install
 
       - name: Build packages
-        run: pnpm --filter=shadcn build
+        run: pnpm build:packages
 
       - run: pnpm format:check
 
@@ -117,6 +117,6 @@ jobs:
         run: pnpm install
 
       - name: Build packages
-        run: pnpm --filter=shadcn build
+        run: pnpm build:packages
 
       - run: pnpm typecheck

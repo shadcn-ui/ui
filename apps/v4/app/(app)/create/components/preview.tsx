@@ -3,6 +3,7 @@
 import * as React from "react"
 
 import { CMD_K_FORWARD_TYPE } from "@/app/(app)/create/components/action-menu"
+import { CreateDevtools } from "@/app/(app)/create/components/create-devtools"
 import {
   REDO_FORWARD_TYPE,
   UNDO_FORWARD_TYPE,
@@ -160,6 +161,7 @@ export function Preview() {
           title="Preview"
         />
       </div>
+      <CreateDevtools />
       <PreviewSwitcher />
     </div>
   )

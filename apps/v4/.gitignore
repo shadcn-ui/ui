@@ -46,3 +46,4 @@ next-env.d.ts
 .contentlayer
 .content-collections
 .source
+.devtools

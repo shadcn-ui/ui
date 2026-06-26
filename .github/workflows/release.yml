@@ -46,21 +46,8 @@ jobs:
               );
             }
 
-            const selected = selectedLabels[0];
-            const pullRequest = context.payload.pull_request;
-
-            if (
-              selected.channel === "rc" &&
-              (pullRequest.head.ref !== "changeset-release/main" ||
-                pullRequest.title !== "chore(release): version packages")
-            ) {
-              throw new Error(
-                "The release: rc label can only be used on the Changesets version PR from changeset-release/main."
-              );
-            }
-
-            core.setOutput("channel", selected.channel);
-            core.setOutput("label", selected.name);
+            core.setOutput("channel", selectedLabels[0].channel);
+            core.setOutput("label", selectedLabels[0].name);
 
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -86,37 +73,49 @@ jobs:
       - name: Install NPM Dependencies
         run: pnpm install
 
-      - name: Modify package.json version
-        run: node .github/version-script-prerelease.js ${{ steps.prerelease.outputs.channel }} ${{ github.event.pull_request.head.sha }}
-
-      - name: get-npm-version
-        id: package-version
-        uses: martinbeentjes/npm-get-version-action@main
-        with:
-          path: packages/shadcn
-
-      - name: Check package version on NPM
-        id: package-exists
+      # A snapshot prerelease needs changesets to compute versions. The
+      # Changesets version PR consumes them, so a label on that PR is a no-op.
+      - name: Check for changesets
+        id: changesets
         run: |
-          if npm view "shadcn@${{ steps.package-version.outputs.current-version }}" version >/dev/null 2>&1; then
-            echo "exists=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "exists=false" >> "$GITHUB_OUTPUT"
-          fi
+          shopt -s nullglob
+          present=false
+          for file in .changeset/*.md; do
+            if [ "$(basename "$file")" != "README.md" ]; then
+              present=true
+              break
+            fi
+          done
+          echo "present=$present" >> "$GITHUB_OUTPUT"
 
-      - name: Publish Prerelease to NPM
-        if: ${{ steps.package-exists.outputs.exists == 'false' }}
-        run: pnpm pub:${{ steps.prerelease.outputs.channel }}
+      - name: No changesets to prerelease
+        if: steps.changesets.outputs.present == 'false'
+        run: echo "::notice::No changesets found on this branch; nothing to prerelease."
 
-      - name: Build packaged artifact
-        if: ${{ steps.package-exists.outputs.exists == 'true' }}
-        run: pnpm shadcn:build
+      # Snapshot versions are stamped per run (timestamped), so each publish is
+      # unique and can never collide with a real release on the latest tag.
+      - name: Version snapshot
+        if: steps.changesets.outputs.present == 'true'
+        run: pnpm exec changeset version --snapshot ${{ steps.prerelease.outputs.channel }}
 
-      - name: Upload packaged artifact
+      - name: Build packages
+        if: steps.changesets.outputs.present == 'true'
+        run: pnpm build:packages
+
+      - name: Publish snapshot to NPM
+        if: steps.changesets.outputs.present == 'true'
+        run: pnpm exec changeset publish --tag ${{ steps.prerelease.outputs.channel }} --no-git-tag
+
+      - name: Collect prerelease info
+        if: steps.changesets.outputs.present == 'true'
+        run: node .github/collect-prerelease-info.js "${{ github.event.number }}" "${{ steps.prerelease.outputs.channel }}"
+
+      - name: Upload prerelease info
+        if: steps.changesets.outputs.present == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: npm-package-shadcn@${{ steps.package-version.outputs.current-version }}-pr-${{ github.event.number }} # encode the PR number into the artifact name
-          path: packages/shadcn/dist/index.js
+          name: prerelease-info
+          path: prerelease-info.json
 
   release:
     if: ${{ github.event_name == 'push' && github.repository_owner == 'shadcn-ui' }}
@@ -151,11 +150,10 @@ jobs:
       - name: Install NPM Dependencies
         run: pnpm install
 
-      # - name: Check for errors
-      #   run: pnpm check
-
-      - name: Build the package
-        run: pnpm shadcn:build
+      # Builds every publishable package under packages/* (shadcn, @shadcn/react),
+      # never apps/v4, so each dist is fresh before changeset publish.
+      - name: Build the packages
+        run: pnpm build:packages
 
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v6
