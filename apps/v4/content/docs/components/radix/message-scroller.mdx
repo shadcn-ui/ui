@@ -8,10 +8,11 @@ component: true
 <ComponentPreview
   styleName="radix-rhea"
   name="message-scroller-demo"
-  previewClassName="h-auto theme-blue bg-surface dark:bg-background"
+  className="rounded-[34px] sm:rounded-4xl"
+  previewClassName="h-auto theme-blue bg-surface dark:bg-background p-4 min-[480px]:p-8 min-[560px]:p-10 sm:px-10 sm:py-16"
 />
 
-## What makes streaming chat feel great
+## What Makes a Great Streaming Chat Experience
 
 Building a chat interface used to be simple. You create an inverted list with
 an input. Type a message, it appends at the bottom. When a reply comes in, the
@@ -213,7 +214,8 @@ In the following example, the user's message is anchored. When you send a new me
 <ComponentPreview
   styleName="radix-rhea"
   name="message-scroller-anchoring"
-  previewClassName="h-auto theme-blue bg-surface dark:bg-background"
+  className="rounded-[34px] sm:rounded-4xl"
+  previewClassName="h-auto theme-blue bg-surface dark:bg-background p-4 min-[480px]:p-8 min-[560px]:p-10 sm:px-10 sm:py-16"
 />
 
 ### Group Chat
@@ -236,7 +238,8 @@ a message.
 <ComponentPreview
   styleName="radix-rhea"
   name="message-scroller-group-chat"
-  previewClassName="h-auto theme-blue bg-surface dark:bg-background"
+  className="rounded-[34px] sm:rounded-4xl"
+  previewClassName="h-auto theme-blue bg-surface dark:bg-background p-4 min-[480px]:p-8 min-[560px]:p-10 sm:px-10 sm:py-16"
 />
 
 ### Keeping Context Visible
@@ -258,7 +261,8 @@ Adjust the peek amount in the example below to see how it affects the conversati
 <ComponentPreview
   styleName="radix-rhea"
   name="message-scroller-previous-context"
-  previewClassName="h-auto theme-blue bg-surface dark:bg-background"
+  className="rounded-[34px] sm:rounded-4xl"
+  previewClassName="h-auto theme-blue bg-surface dark:bg-background p-4 min-[480px]:p-8 min-[560px]:p-10 sm:px-10 sm:py-16"
 />
 
 ### Following the Live Edge
@@ -278,7 +282,8 @@ releases it too. New chunks can then arrive without moving the reader.
 <ComponentPreview
   styleName="radix-rhea"
   name="message-scroller-streaming"
-  previewClassName="h-auto theme-blue bg-surface dark:bg-background"
+  className="rounded-[34px] sm:rounded-4xl"
+  previewClassName="h-auto theme-blue bg-surface dark:bg-background p-4 min-[480px]:p-8 min-[560px]:p-10 sm:px-10 sm:py-16"
 />
 
 Calling `scrollToEnd`, or pressing `MessageScrollerButton`, re-engages
@@ -307,7 +312,8 @@ the conversation from the bottom edge.
 <ComponentPreview
   styleName="radix-rhea"
   name="message-scroller-opening-position"
-  previewClassName="h-auto theme-blue bg-surface dark:bg-background"
+  className="rounded-[34px] sm:rounded-4xl"
+  previewClassName="h-auto theme-blue bg-surface dark:bg-background p-4 min-[480px]:p-8 min-[560px]:p-10 sm:px-10 sm:py-16"
   hideCode
 />
 
@@ -330,7 +336,8 @@ This is enabled by default through `preserveScrollOnPrepend`.
 <ComponentPreview
   styleName="radix-rhea"
   name="message-scroller-load-history"
-  previewClassName="h-auto theme-blue bg-surface dark:bg-background"
+  className="rounded-[34px] sm:rounded-4xl"
+  previewClassName="h-auto theme-blue bg-surface dark:bg-background p-4 min-[480px]:p-8 min-[560px]:p-10 sm:px-10 sm:py-16"
 />
 
 Use stable `messageId` values for message rows. That gives the scroller a
@@ -354,7 +361,8 @@ const MotionMessageScrollerItem = motion.create(MessageScrollerItem)
 <ComponentPreview
   styleName="radix-rhea"
   name="message-scroller-animation"
-  previewClassName="h-auto theme-blue bg-surface dark:bg-background"
+  className="rounded-[34px] sm:rounded-4xl"
+  previewClassName="h-auto theme-blue bg-surface dark:bg-background p-4 min-[480px]:p-8 min-[560px]:p-10 sm:px-10 sm:py-16"
 />
 
 Avoid animating height, margin, or padding for row entrances; those changes can
@@ -380,7 +388,8 @@ const { scrollToMessage, scrollToEnd, scrollToStart } = useMessageScroller()
 <ComponentPreview
   styleName="radix-rhea"
   name="message-scroller-commands"
-  previewClassName="h-auto theme-blue bg-surface dark:bg-background"
+  className="rounded-[34px] sm:rounded-4xl"
+  previewClassName="h-auto theme-blue bg-surface dark:bg-background p-4 min-[480px]:p-8 min-[560px]:p-10 sm:px-10 sm:py-16"
   hideCode
 />
 
@@ -410,7 +419,8 @@ const { currentAnchorId, visibleMessageIds } = useMessageScrollerVisibility()
 <ComponentPreview
   styleName="radix-rhea"
   name="message-scroller-visibility"
-  previewClassName="h-auto theme-blue bg-surface dark:bg-background"
+  className="rounded-[34px] sm:rounded-4xl"
+  previewClassName="h-auto theme-blue bg-surface dark:bg-background p-4 min-[480px]:p-8 min-[560px]:p-10 sm:px-10 sm:py-16"
   hideCode
 />
 
@@ -441,7 +451,8 @@ const { start, end } = useMessageScrollerScrollable()
 <ComponentPreview
   styleName="radix-rhea"
   name="message-scroller-scrollable"
-  previewClassName="h-auto theme-blue bg-surface dark:bg-background"
+  className="rounded-[34px] sm:rounded-4xl"
+  previewClassName="h-auto theme-blue bg-surface dark:bg-background p-4 min-[480px]:p-8 min-[560px]:p-10 sm:px-10 sm:py-16"
 />
 
 ## Performance
