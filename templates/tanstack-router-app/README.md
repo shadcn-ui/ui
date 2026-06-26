@@ -44,6 +44,31 @@ REGISTRY_URL="https://shadcn-force-ui.vercel.app/r-react" \
 npx shadcn@latest add @force-ui/button
 ```
 
+### Update everything (components + CSS)
+
+Component source and the theme/CSS update through two separate commands.
+
+1. **All component source** — re-add every component, overwriting local copies:
+
+   ```bash
+   REGISTRY_URL="https://shadcn-force-ui.vercel.app/r-react" \
+   npx shadcn@latest add --all --overwrite
+   ```
+
+   Add `--dry-run` first to inspect the file list before writing anything.
+
+2. **Theme, CSS variables, and font** — refresh `src/styles.css` from the Force
+   UI preset without touching components:
+
+   ```bash
+   REGISTRY_URL="https://shadcn-force-ui.vercel.app/r-react" \
+   npx shadcn@latest apply \
+     --preset "https://shadcn-force-ui.vercel.app/init?base=radix&style=force-ui&baseColor=force-ui&theme=force-ui&chartColor=force-ui&iconLibrary=lucide&font=noto-sans&rtl=false&menuAccent=subtle&menuColor=default&radius=default" \
+     --only theme,font -y
+   ```
+
+Run both to bring the whole project up to date with the registry.
+
 ## Routing
 
 Routes live in `src/routes/`. The router plugin regenerates
