@@ -53,10 +53,6 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/registry",
   },
   {
-    name: "@shadcn/react",
-    href: "/docs/react",
-  },
-  {
     name: "Forms",
     href: "/docs/forms",
   },
