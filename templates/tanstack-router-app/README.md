@@ -9,7 +9,7 @@ library and the `dashboard-01` block wired up as the home page.
 Grab just this folder as a fresh, standalone project (no monorepo history):
 
 ```bash
-npx degit lobiklukas/shadcn-ui/templates/tanstack-router-app my-app
+npx degit Perforce-Shared-Services/shadcn-force-ui/templates/tanstack-router-app my-app
 cd my-app
 git init && git add -A && git commit -m "init from tanstack-router template"
 ```
