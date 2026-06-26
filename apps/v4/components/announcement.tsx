@@ -6,7 +6,7 @@ import { Badge } from "@/registry/new-york-v4/ui/badge"
 export function Announcement() {
   return (
     <Badge asChild variant="secondary" className="bg-muted">
-      <Link href="/docs/changelog/2026-06-chat-components">
+      <Link href="/docs/changelog">
         Components for Chat Interfaces <ArrowRightIcon />
       </Link>
     </Badge>
