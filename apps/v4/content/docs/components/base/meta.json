@@ -19,6 +19,8 @@
     "combobox",
     "command",
     "context-menu",
+    "rgl-dashboard-grid",
+    "rgl-dashboard-tile",
     "data-table",
     "date-picker",
     "dialog",

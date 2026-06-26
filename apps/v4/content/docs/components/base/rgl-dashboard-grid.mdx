@@ -1,0 +1,179 @@
+---
+title: RGL Dashboard Grid
+description: Draggable, resizable dashboard layout built with react-grid-layout.
+base: base
+component: true
+links:
+  doc: https://github.com/react-grid-layout/react-grid-layout
+---
+
+import { ExternalLinkIcon } from "lucide-react"
+
+<ComponentPreview
+  styleName="base-nova"
+  name="rgl-dashboard-split-demo"
+  align="start"
+  previewClassName="!h-auto min-h-[360px] w-full py-8"
+/>
+
+## About
+
+`DashboardGrid` wraps [react-grid-layout](https://github.com/react-grid-layout/react-grid-layout) with shadcn-friendly styling. Pair it with [`RGL Dashboard Tile`](/docs/components/base/rgl-dashboard-tile) for tile content.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add rgl-dashboard-grid
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install dependencies:</Step>
+
+```bash
+npm install react-grid-layout@1.5.3 react-resizable
+```
+
+<Step>Copy the component into your project.</Step>
+
+<ComponentSource
+  name="rgl-dashboard-grid"
+  title="components/ui/rgl-dashboard-grid.tsx"
+  styleName="base-nova"
+/>
+
+<Step>Import react-grid-layout and react-resizable CSS once in your app.</Step>
+
+```tsx
+import "react-grid-layout/css/styles.css"
+import "react-resizable/css/styles.css"
+```
+
+<Step>Update import paths to match your project.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { DashboardGrid } from "@/components/ui/rgl-dashboard-grid"
+```
+
+```tsx showLineNumbers
+<DashboardGrid
+  layout={layout}
+  onLayoutChange={setLayout}
+  isDraggable={editMode}
+  isResizable={editMode}
+>
+  {layout.map((item) => (
+    <div key={item.i}>{/* tile content */}</div>
+  ))}
+</DashboardGrid>
+```
+
+## Examples
+
+### View mode
+
+Drag and resize off — fixed layout (good for read-only dashboards).
+
+<ComponentPreview
+  styleName="base-nova"
+  name="rgl-dashboard-static-demo"
+  align="start"
+  previewClassName="!h-auto min-h-[380px] w-full py-8"
+/>
+
+### Full dashboard
+
+CRUD dashboards, add or remove tiles, toggle Edit layout to drag and resize.
+
+<ComponentPreview
+  styleName="base-nova"
+  name="rgl-dashboard-layout-demo"
+  align="start"
+  previewClassName="!h-auto min-h-[700px] w-full"
+  sourceSrc="registry/new-york-v4/blocks/rgl-dashboard/components/rgl-dashboard-demo.tsx"
+  sourceTitle="rgl-dashboard-demo.tsx"
+/>
+
+Open the dashboard in a dedicated full-screen page to experience drag, resize, and multi-dashboard management without any surrounding chrome.
+
+<Button asChild size="sm" className="mt-2">
+  <a href="/view/new-york-v4/rgl-dashboard" target="_blank">Open full-screen dashboard <ExternalLinkIcon className="ml-1 h-3.5 w-3.5" /></a>
+</Button>
+
+### Live state inspector
+
+Every layout change is captured in the `onLayoutChange` callback and reflected immediately in the state object — useful for debugging, persisting to a backend, or deriving computed views.
+
+<ComponentPreview
+  styleName="base-nova"
+  name="rgl-dashboard-debug-demo"
+  align="start"
+  previewClassName="!h-auto min-h-[560px] w-full"
+/>
+
+## API Reference
+
+### DashboardGrid
+
+Client wrapper around `WidthProvider(GridLayout)` from `react-grid-layout`.
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `layout` | `Layout[]` | RGL layout array; each item's `i` is the tile id |
+| `onLayoutChange` | `(layout: Layout[]) => void` | Called whenever the layout updates |
+| `isDraggable` | `boolean` | Enable drag — tie to edit mode in your UI |
+| `isResizable` | `boolean` | Enable resize — tie to edit mode in your UI |
+| `compactType` | `"vertical" \| "horizontal" \| null` | Defaults to `"vertical"` inside the wrapper |
+| `className` | `string` | Extra classes forwarded to the grid container |
+
+### DashboardDemo
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `embedded` | `boolean` | Tighter padding for inline docs previews |
+| `initialDashboard` | `DashboardRecord` | Seed layout + widgets for all tiles; defaults to `DASHBOARD_EXAMPLE_SPEC` |
+| `storageKey` | `string \| false` | `false` (default): in-memory only. Pass a string to persist under that localStorage key. |
+
+### DashboardTile / TileByWidget
+
+Render one tile by id and widget type inside your own `DashboardGrid`.
+
+```tsx
+import { DashboardTile } from "@/components/dashboard/tile-widgets"
+
+<DashboardTile id="tile-kpi" type="kpi" />
+```
+
+Supported `type` values: `intro` · `kpi` · `chart` · `bar` · `table` · `metric`
+
+### DASHBOARD_EXAMPLE_SPEC
+
+A canonical `DashboardRecord` exported from `@/lib/dashboard-example` — same shape as the live state JSON (fields: `id`, `name`, `layout`, `widgets`). This is the default seed for `DashboardDemo` when no `storageKey` is set.
+
+```tsx
+import { DASHBOARD_EXAMPLE_SPEC } from "@/lib/dashboard-example"
+
+<DashboardDemo initialDashboard={DASHBOARD_EXAMPLE_SPEC} />
+// or simply:
+<DashboardDemo />
+```

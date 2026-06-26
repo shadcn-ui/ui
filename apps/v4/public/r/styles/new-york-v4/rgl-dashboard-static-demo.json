@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rgl-dashboard-static-demo",
+  "registryDependencies": [
+    "rgl-dashboard-grid",
+    "rgl-dashboard-tile"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/rgl-dashboard-static-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport type { Layout } from \"react-grid-layout\"\n\nimport { DashboardGrid } from \"@/registry/new-york-v4/ui/rgl-dashboard-grid\"\nimport { TileByWidget } from \"@/registry/new-york-v4/ui/rgl-dashboard-tile\"\n\nconst initial: Layout[] = [\n  { i: \"kpi\", x: 0, y: 0, w: 12, h: 3 },\n  { i: \"bar\", x: 0, y: 3, w: 12, h: 4 },\n]\n\n/** View mode: layout is fixed; drag and resize handles hidden. */\nexport default function RglDashboardStaticDemo() {\n  const [layout, setLayout] = React.useState(initial)\n\n  return (\n    <div className=\"w-full min-w-0\">\n      <DashboardGrid\n        layout={layout}\n        onLayoutChange={setLayout}\n        isDraggable={false}\n        isResizable={false}\n        className=\"min-h-[340px]\"\n      >\n        {layout.map((item) => (\n          <div key={item.i} className=\"relative h-full overflow-hidden rounded-lg border border-border\">\n            <TileByWidget id={item.i} type={item.i === \"kpi\" ? \"kpi\" : \"bar\"} />\n          </div>\n        ))}\n      </DashboardGrid>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

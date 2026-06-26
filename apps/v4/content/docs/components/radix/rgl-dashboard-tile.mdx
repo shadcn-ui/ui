@@ -1,0 +1,84 @@
+---
+title: RGL Dashboard Tile
+description: Demo tile content for dashboard grids — KPIs, charts, tables, and more.
+base: radix
+component: true
+---
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="rgl-dashboard-tile-demo"
+  align="start"
+  previewClassName="!h-auto min-h-[480px] w-full py-8"
+/>
+
+## About
+
+`TileByWidget` (also exported as `DashboardTile`) renders pre-built demo widgets for dashboard layouts. It uses your existing `Card` and `Badge` components and [Recharts](https://recharts.org/) for charts.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add rgl-dashboard-tile
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install dependencies:</Step>
+
+```bash
+npm install recharts@3.8.0 lucide-react
+```
+
+<Step>Copy the component into your project.</Step>
+
+<ComponentSource
+  name="rgl-dashboard-tile"
+  title="components/ui/rgl-dashboard-tile.tsx"
+  styleName="radix-nova"
+/>
+
+<Step>Update import paths to match your project.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { TileByWidget } from "@/components/ui/rgl-dashboard-tile"
+```
+
+```tsx showLineNumbers
+<TileByWidget id="tile-kpi" type="kpi" />
+```
+
+Supported `type` values include `intro`, `kpi`, `chart`, `bar`, `table`, and `metric`.
+
+## Examples
+
+### Bar, table, and metric
+
+Additional widget types for richer dashboards.
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="rgl-dashboard-tile-more-demo"
+  align="start"
+  previewClassName="!h-auto min-h-[640px] w-full py-8"
+/>

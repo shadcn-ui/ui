@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rgl-dashboard-storage",
+  "registryDependencies": [
+    "rgl-dashboard-types"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/lib/rgl-dashboard-storage.ts",
+      "content": "import type { DashboardRecord, PersistedDashboards } from \"@/registry/new-york-v4/lib/rgl-dashboard-types\"\nimport {\n  createDefaultLayout,\n  createDefaultWidgets,\n  inferWidgetType,\n} from \"@/registry/new-york-v4/lib/rgl-dashboard-types\"\n\nfunction uid() {\n  return crypto.randomUUID()\n}\n\nfunction migrateRecord(raw: unknown): DashboardRecord | null {\n  if (!raw || typeof raw !== \"object\") return null\n  const d = raw as Partial<DashboardRecord> & { layout?: unknown }\n  if (!d.id || !d.name || !Array.isArray(d.layout)) return null\n  const layout = d.layout as DashboardRecord[\"layout\"]\n  let widgets = d.widgets\n  if (!widgets || typeof widgets !== \"object\") {\n    widgets = {}\n    for (const item of layout) {\n      widgets[item.i] = { type: inferWidgetType(item.i) }\n    }\n  }\n  return { id: d.id, name: d.name, layout, widgets }\n}\n\nexport function loadPersisted(key: string): PersistedDashboards {\n  if (typeof window === \"undefined\") {\n    return seed()\n  }\n  try {\n    const raw = localStorage.getItem(key)\n    if (!raw) {\n      return seed()\n    }\n    const parsed = JSON.parse(raw) as PersistedDashboards\n    if (\n      !parsed?.dashboards?.length ||\n      !parsed.activeDashboardId ||\n      !parsed.dashboards.some((d) => d.id === parsed.activeDashboardId)\n    ) {\n      return seed()\n    }\n    const dashboards = parsed.dashboards\n      .map((x) => migrateRecord(x))\n      .filter(Boolean) as DashboardRecord[]\n    if (dashboards.length !== parsed.dashboards.length) return seed()\n    return { ...parsed, dashboards }\n  } catch {\n    return seed()\n  }\n}\n\nexport function savePersisted(key: string, data: PersistedDashboards) {\n  localStorage.setItem(key, JSON.stringify(data))\n}\n\nfunction seed(): PersistedDashboards {\n  const id = uid()\n  const dashboard: DashboardRecord = {\n    id,\n    name: \"Main\",\n    layout: createDefaultLayout(),\n    widgets: createDefaultWidgets(),\n  }\n  return {\n    dashboards: [dashboard],\n    activeDashboardId: id,\n  }\n}\n\nexport function createDashboard(name: string): DashboardRecord {\n  return {\n    id: uid(),\n    name: name.trim() || \"Untitled\",\n    layout: createDefaultLayout(),\n    widgets: createDefaultWidgets(),\n  }\n}\n",
+      "type": "registry:lib"
+    }
+  ],
+  "type": "registry:lib"
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rgl-dashboard-tile-demo",
+  "registryDependencies": [
+    "rgl-dashboard-tile"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/rgl-dashboard-tile-demo.tsx",
+      "content": "import { TileByWidget } from \"@/registry/new-york-v4/ui/rgl-dashboard-tile\"\n\nexport default function RglDashboardTileDemo() {\n  return (\n    <div className=\"grid w-full min-w-0 gap-4 sm:grid-cols-2\">\n      <div className=\"min-h-[200px]\">\n        <TileByWidget id=\"kpi\" type=\"kpi\" />\n      </div>\n      <div className=\"min-h-[220px]\">\n        <TileByWidget id=\"chart\" type=\"chart\" />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
