@@ -1256,6 +1256,86 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    attachment: {
+      name: "attachment",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/radix/ui/attachment.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    bubble: {
+      name: "bubble",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/radix/ui/bubble.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "message-scroller": {
+      name: "message-scroller",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/radix/ui/message-scroller.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    marker: {
+      name: "marker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/radix/ui/marker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    message: {
+      name: "message",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/radix/ui/message.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     "accordion-example": {
       name: "accordion-example",
       title: "Accordion",
@@ -1801,7 +1881,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Item",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button", "item", "example"],
+      registryDependencies: ["button", "drawer", "item", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/item-example.tsx",
@@ -2402,6 +2482,104 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "attachment-example": {
+      name: "attachment-example",
+      title: "Attachment",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["attachment"],
+      files: [
+        {
+          path: "registry/bases/radix/examples/attachment-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "bubble-example": {
+      name: "bubble-example",
+      title: "Bubble",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble", "button", "collapsible", "example"],
+      files: [
+        {
+          path: "registry/bases/radix/examples/bubble-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "message-scroller-example": {
+      name: "message-scroller-example",
+      title: "Message Scroller",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "attachment",
+        "bubble",
+        "button",
+        "card",
+        "example",
+        "input-group",
+        "marker",
+        "message",
+        "message-scroller",
+        "spinner",
+      ],
+      files: [
+        {
+          path: "registry/bases/radix/examples/message-scroller-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "marker-example": {
+      name: "marker-example",
+      title: "Marker",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "marker",
+        "button",
+        "collapsible",
+        "drawer",
+        "spinner",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/radix/examples/marker-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "message-example": {
+      name: "message-example",
+      title: "Message",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble", "message", "button", "example"],
+      files: [
+        {
+          path: "registry/bases/radix/examples/message-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     utils: {
       name: "utils",
       title: "undefined",
@@ -2517,6 +2695,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/radix/blocks/preview-02/index.tsx",
+          type: "registry:block",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "preview-03": {
+      name: "preview-03",
+      title: "Preview 03",
+      description: "",
+      type: "registry:block",
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/bases/radix/blocks/preview-03/index.tsx",
           type: "registry:block",
           target: "",
         },
@@ -4709,6 +4903,86 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    attachment: {
+      name: "attachment",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/base/ui/attachment.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    bubble: {
+      name: "bubble",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/bubble.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "message-scroller": {
+      name: "message-scroller",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/base/ui/message-scroller.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    marker: {
+      name: "marker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/marker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    message: {
+      name: "message",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/message.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     "accordion-example": {
       name: "accordion-example",
       title: "Accordion",
@@ -5855,6 +6129,104 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "attachment-example": {
+      name: "attachment-example",
+      title: "Attachment",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["attachment"],
+      files: [
+        {
+          path: "registry/bases/base/examples/attachment-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "bubble-example": {
+      name: "bubble-example",
+      title: "Bubble",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble", "button", "collapsible", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/bubble-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "message-scroller-example": {
+      name: "message-scroller-example",
+      title: "Message Scroller",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "attachment",
+        "bubble",
+        "button",
+        "card",
+        "example",
+        "input-group",
+        "marker",
+        "message",
+        "message-scroller",
+        "spinner",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/message-scroller-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "marker-example": {
+      name: "marker-example",
+      title: "Marker",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "marker",
+        "button",
+        "accordion",
+        "drawer",
+        "spinner",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/marker-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "message-example": {
+      name: "message-example",
+      title: "Message",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble", "message", "button", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/message-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     utils: {
       name: "utils",
       title: "undefined",
@@ -5971,6 +6343,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/base/blocks/preview-02/index.tsx",
+          type: "registry:block",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "preview-03": {
+      name: "preview-03",
+      title: "Preview 03",
+      description: "",
+      type: "registry:block",
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/bases/base/blocks/preview-03/index.tsx",
           type: "registry:block",
           target: "",
         },
