@@ -573,6 +573,68 @@ completed message row.
 toward, it sets `inert`, uses `tabIndex={-1}`, and exposes `data-active="false"`
 so inactive scroll controls do not create extra focus stops.
 
+## Unstyled
+
+The copied `message-scroller.tsx` component is a thin styled wrapper over the
+`@shadcn/react` package. All of the behavior lives in the package: anchoring,
+follow-output, prepend preservation, visibility, and the imperative scroll hot
+path.
+
+If you are building your own design system, or you want full control over the
+markup and styling, use the package directly instead of copying the component.
+
+```bash
+npm install @shadcn/react
+```
+
+```tsx
+import { MessageScroller, useMessageScroller } from "@shadcn/react/message-scroller"
+```
+
+The package exports a namespace object instead of flat components. The parts and
+behavior are the same as the styled component, just unstyled.
+
+```tsx
+<MessageScroller.Provider>
+  <MessageScroller.Root>
+    <MessageScroller.Viewport>
+      <MessageScroller.Content>
+        {messages.map((message) => (
+          <MessageScroller.Item
+            key={message.id}
+            messageId={message.id}
+            scrollAnchor={message.role === "user"}
+          >
+            {/* your message UI */}
+          </MessageScroller.Item>
+        ))}
+      </MessageScroller.Content>
+    </MessageScroller.Viewport>
+    <MessageScroller.Button />
+  </MessageScroller.Root>
+</MessageScroller.Provider>
+```
+
+| Styled component          | Unstyled part              |
+| ------------------------- | -------------------------- |
+| `MessageScrollerProvider` | `MessageScroller.Provider` |
+| `MessageScroller`         | `MessageScroller.Root`     |
+| `MessageScrollerViewport` | `MessageScroller.Viewport` |
+| `MessageScrollerContent`  | `MessageScroller.Content`  |
+| `MessageScrollerItem`     | `MessageScroller.Item`     |
+| `MessageScrollerButton`   | `MessageScroller.Button`   |
+
+The hooks are imported the same way and behave identically, since they read from
+`MessageScroller.Provider`.
+
+```tsx
+import {
+  useMessageScroller,
+  useMessageScrollerScrollable,
+  useMessageScrollerVisibility,
+} from "@shadcn/react/message-scroller"
+```
+
 ## API Reference
 
 ### MessageScrollerProvider
