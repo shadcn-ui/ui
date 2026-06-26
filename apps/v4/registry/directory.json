@@ -66,8 +66,8 @@
     "name": "@aicanvas",
     "homepage": "https://aicanvas.me",
     "url": "https://aicanvas.me/r/{name}.json",
-    "description": "54 animated React components with AI reproduction prompts for Claude Code, Lovable, and v0. Free and open source.",
-    "logo": "<svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M19.8513 0C20.5626 0 21.2204 0.377823 21.5788 0.992258L22.75 3L26.8243 9.98452C27.5508 11.23 27.5508 12.77 26.8243 14.0155L22.75 21L21.5788 23.0077C21.2204 23.6222 20.5626 24 19.8513 24H8.14874C7.43741 24 6.7796 23.6222 6.42118 23.0077L0.587849 13.0077C0.224593 12.385 0.224593 11.615 0.58785 10.9923L6.42118 0.992257C6.7796 0.377822 7.43741 0 8.14874 0H19.8513ZM4 12L9 21H18.25L13 12L18.25 3H9L4 12Z\" fill=\"url(#paint0_linear_185_248)\"/><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M9 21L4 12H13L18.25 21H9Z\" fill=\"#1E1E1E\"/><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M13 12H4L9 3H18.25L13 12Z\" fill=\"#4F4F4C\"/><defs><linearGradient id=\"paint0_linear_185_248\" x1=\"9\" y1=\"3\" x2=\"24.8756\" y2=\"17\" gradientUnits=\"userSpaceOnUse\"><stop stop-color=\"#666662\"/><stop offset=\"1\" stop-color=\"#4F4F4C\"/></linearGradient></defs></svg>"
+    "description": "Animated React components with AI reproduction prompts, alongside full design systems and templates. Install via CLI or aicanvas MCP, compatible with Claude Code, Codex, and Cursor.",
+    "logo": "<svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M19.8513 0C20.5626 0 21.2204 0.377823 21.5788 0.992258L22.75 3L26.8243 9.98452C27.5508 11.23 27.5508 12.77 26.8243 14.0155L22.75 21L21.5788 23.0077C21.2204 23.6222 20.5626 24 19.8513 24H8.14874C7.43741 24 6.7796 23.6222 6.42118 23.0077L0.587849 13.0077C0.224593 12.385 0.224593 11.615 0.58785 10.9923L6.42118 0.992257C6.7796 0.377822 7.43741 0 8.14874 0H19.8513ZM4 12L9 21H18.25L13 12L18.25 3H9L4 12Z\" fill=\"#FAFAF0\"/></svg>"
   },
   {
     "name": "@algolia",
