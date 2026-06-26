@@ -84,30 +84,28 @@ export function MessageScrollerOpeningPosition() {
           </MessageScrollerProvider>
         </CardContent>
         <CardFooter className="flex items-center justify-center border-t">
-          <div className="flex items-center">
-            <span className="font-mono text-xs">defaultScrollPosition=</span>
-            <Tabs
-              value={position}
-              onValueChange={(value) => {
-                if (
-                  value === "start" ||
-                  value === "end" ||
-                  value === "last-anchor"
-                ) {
-                  setPosition(value)
-                  setPositionKey((key) => key + 1)
-                }
-              }}
-            >
-              <TabsList>
-                {positions.map((option) => (
-                  <TabsTrigger key={option.value} value={option.value}>
-                    {option.label}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </Tabs>
-          </div>
+          <Tabs
+            value={position}
+            onValueChange={(value) => {
+              if (
+                value === "start" ||
+                value === "end" ||
+                value === "last-anchor"
+              ) {
+                setPosition(value)
+                setPositionKey((key) => key + 1)
+              }
+            }}
+            className="w-full"
+          >
+            <TabsList className="w-full">
+              {positions.map((option) => (
+                <TabsTrigger key={option.value} value={option.value}>
+                  {option.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </Tabs>
         </CardFooter>
       </Card>
       <div className="mx-auto max-w-sm px-0.5 text-center text-xs text-muted-foreground">
