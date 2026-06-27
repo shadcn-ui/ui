@@ -14,7 +14,7 @@ function ScrollArea({
     <div
       data-slot="scroll-area"
       className={cn(
-        "relative overflow-auto outline-none [scrollbar-color:var(--color-border)_transparent] [scrollbar-width:thin] focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1",
+        "relative [scrollbar-width:thin] [scrollbar-color:var(--color-border)_transparent] overflow-auto outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1",
         className
       )}
       {...props}

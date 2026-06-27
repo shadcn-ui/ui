@@ -6,7 +6,6 @@ import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
@@ -345,22 +344,20 @@ export function Demo() {
                     <span className="hidden md:block">Alert Dialog</span>
                     <span className="block md:hidden">Dialog</span>
                   </Button>
-                  <AlertDialog>
-                    <AlertDialogContent size="sm">
-                      <AlertDialogHeader>
-                        <AlertDialogTitle>
-                          Allow accessory to connect?
-                        </AlertDialogTitle>
-                        <AlertDialogDescription>
-                          Do you want to allow the USB accessory to connect to
-                          this device and your data?
-                        </AlertDialogDescription>
-                      </AlertDialogHeader>
-                      <AlertDialogFooter>
-                        <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
-                        <AlertDialogAction>Allow</AlertDialogAction>
-                      </AlertDialogFooter>
-                    </AlertDialogContent>
+                  <AlertDialog size="sm">
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>
+                        Allow accessory to connect?
+                      </AlertDialogTitle>
+                      <AlertDialogDescription>
+                        Do you want to allow the USB accessory to connect to
+                        this device and your data?
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
+                      <AlertDialogAction>Allow</AlertDialogAction>
+                    </AlertDialogFooter>
                   </AlertDialog>
                 </AlertDialogTrigger>
                 <ButtonGroup>

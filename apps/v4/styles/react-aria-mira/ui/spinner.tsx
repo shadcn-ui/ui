@@ -12,7 +12,11 @@ function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
       aria-label="Loading"
       className={cn("size-4", className)}
     >
-      <Loader2Icon className="size-full animate-spin" {...props} />
+      <Loader2Icon
+        data-slot="spinner"
+        className="size-full animate-spin"
+        {...props}
+      />
     </ProgressBarPrimitive>
   )
 }
