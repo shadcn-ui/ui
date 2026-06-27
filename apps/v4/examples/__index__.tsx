@@ -749,6 +749,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "drawer-dialog",
       filePath: "examples/radix/drawer-dialog.tsx",
     },
+    "drawer-non-modal": {
+      name: "drawer-non-modal",
+      filePath: "examples/radix/drawer-non-modal.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/drawer-non-modal")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "drawer-non-modal"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "drawer-rtl": {
       name: "drawer-rtl",
       filePath: "examples/radix/drawer-rtl.tsx",
@@ -2726,6 +2739,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "drawer-dialog": {
       name: "drawer-dialog",
       filePath: "examples/base/drawer-dialog.tsx",
+    },
+    "drawer-non-modal": {
+      name: "drawer-non-modal",
+      filePath: "examples/base/drawer-non-modal.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/drawer-non-modal")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "drawer-non-modal"
+        return { default: mod.default || mod[exportName] }
+      }),
     },
     "drawer-rtl": {
       name: "drawer-rtl",
