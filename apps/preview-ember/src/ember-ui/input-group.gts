@@ -8,36 +8,49 @@ import { cn } from '@/ember-lib/utils';
 
 import type { TOC } from '@ember/component/template-only';
 
+// [FORCE-UI-START]
+type InputGroupVariant = 'outline' | 'filled' | 'underline' | 'ghost';
+
+const inputGroupVariantMap: Record<InputGroupVariant, string> = {
+  outline: 'cn-input-group-variant-outline',
+  filled: 'cn-input-group-variant-filled',
+  underline: 'cn-input-group-variant-underline',
+  ghost: 'cn-input-group-variant-ghost',
+};
+// [FORCE-UI-END]
+
 interface InputGroupSignature {
   Element: HTMLDivElement;
   Args: {
     class?: string;
+    variant?: InputGroupVariant; // [FORCE-UI]
   };
   Blocks: {
     default: [];
   };
 }
 
-const InputGroup: TOC<InputGroupSignature> = <template>
-  <div
-    class={{cn
-      "group/input-group border-input dark:bg-input/30 relative flex w-full items-center rounded-md border shadow-xs transition-[color,box-shadow] outline-none"
-      "h-9 min-w-0 has-[>textarea]:h-auto"
-      "has-[>[data-align=inline-start]]:[&>input]:pl-2"
-      "has-[>[data-align=inline-end]]:[&>input]:pr-2"
-      "has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3"
-      "has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3"
-      "has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot=input-group-control]:focus-visible]:ring-[3px]"
-      "has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[[data-slot][aria-invalid=true]]:border-destructive dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40"
-      @class
-    }}
-    data-slot="input-group"
-    role="group"
-    ...attributes
-  >
-    {{yield}}
-  </div>
-</template>;
+class InputGroup extends Component<InputGroupSignature> {
+  get variantClass() {
+    const variant = this.args.variant ?? 'outline';
+    return inputGroupVariantMap[variant];
+  }
+
+  <template>
+    <div
+      class={{cn
+        "group/input-group cn-input-group relative flex w-full min-w-0 items-center outline-none has-[>textarea]:h-auto"
+        this.variantClass
+        @class
+      }}
+      data-slot="input-group"
+      role="group"
+      ...attributes
+    >
+      {{yield}}
+    </div>
+  </template>
+}
 
 type InputGroupAddonAlign =
   | 'inline-start'
@@ -60,14 +73,12 @@ class InputGroupAddon extends Component<InputGroupAddonSignature> {
   get alignClasses() {
     const align = this.args.align ?? 'inline-start';
     const alignMap: Record<InputGroupAddonAlign, string> = {
-      'inline-start':
-        'order-first pl-3 has-[>button]:ml-[-0.45rem] has-[>kbd]:ml-[-0.35rem]',
-      'inline-end':
-        'order-last pr-3 has-[>button]:mr-[-0.45rem] has-[>kbd]:mr-[-0.35rem]',
+      'inline-start': 'cn-input-group-addon-align-inline-start order-first',
+      'inline-end': 'cn-input-group-addon-align-inline-end order-last',
       'block-start':
-        'order-first w-full justify-start px-3 pt-3 [.border-b]:pb-3 group-has-[>input]/input-group:pt-2.5',
+        'cn-input-group-addon-align-block-start order-first w-full justify-start',
       'block-end':
-        'order-last w-full justify-start px-3 pb-3 [.border-t]:pt-3 group-has-[>input]/input-group:pb-2.5',
+        'cn-input-group-addon-align-block-end order-last w-full justify-start',
     };
     return alignMap[align];
   }
@@ -85,7 +96,7 @@ class InputGroupAddon extends Component<InputGroupAddonSignature> {
     {{! template-lint-disable no-invalid-interactive }}
     <div
       class={{cn
-        "text-muted-foreground flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-sm font-medium select-none [&>svg:not([class*='size-'])]:size-4 [&>kbd]:rounded-[calc(var(--radius)-5px)] group-data-[disabled=true]/input-group:opacity-50"
+        "cn-input-group-addon flex cursor-text items-center justify-center select-none"
         this.alignClasses
         @class
       }}
@@ -125,10 +136,10 @@ class InputGroupButton extends Component<InputGroupButtonSignature> {
   get sizeClasses() {
     const size = this.args.size ?? 'xs';
     const sizeMap: Record<InputGroupButtonSize, string> = {
-      xs: "h-6 gap-1 px-2 rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-3.5 has-[>svg]:px-2",
-      sm: 'h-8 px-2.5 gap-1.5 rounded-md has-[>svg]:px-2.5',
-      'icon-xs': 'size-6 rounded-[calc(var(--radius)-5px)] p-0 has-[>svg]:p-0',
-      'icon-sm': 'size-8 p-0 has-[>svg]:p-0',
+      xs: 'cn-input-group-button-size-xs',
+      sm: 'cn-input-group-button-size-sm',
+      'icon-xs': 'cn-input-group-button-size-icon-xs',
+      'icon-sm': 'cn-input-group-button-size-icon-sm',
     };
     return sizeMap[size];
   }
@@ -136,7 +147,7 @@ class InputGroupButton extends Component<InputGroupButtonSignature> {
   <template>
     <Button
       @class={{cn
-        "text-sm shadow-none flex gap-2 items-center"
+        "cn-input-group-button flex items-center shadow-none"
         this.sizeClasses
         @class
       }}
@@ -163,7 +174,7 @@ interface InputGroupTextSignature {
 const InputGroupText: TOC<InputGroupTextSignature> = <template>
   <span
     class={{cn
-      "text-muted-foreground flex items-center gap-2 text-sm [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4"
+      "cn-input-group-text flex items-center [&_svg]:pointer-events-none"
       @class
     }}
     ...attributes
@@ -183,7 +194,7 @@ interface InputGroupInputSignature {
 const InputGroupInput: TOC<InputGroupInputSignature> = <template>
   <Input
     @class={{cn
-      "flex-1 rounded-none border-0 bg-transparent shadow-none focus-visible:ring-0 dark:bg-transparent"
+      "cn-input-group-input flex-1"
       @class
     }}
     data-slot="input-group-control"
@@ -201,7 +212,7 @@ interface InputGroupTextareaSignature {
 const InputGroupTextarea: TOC<InputGroupTextareaSignature> = <template>
   <Textarea
     @class={{cn
-      "flex-1 resize-none rounded-none border-0 bg-transparent py-3 shadow-none focus-visible:ring-0 dark:bg-transparent"
+      "cn-input-group-textarea flex-1 resize-none"
       @class
     }}
     data-slot="input-group-control"

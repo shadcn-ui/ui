@@ -154,7 +154,7 @@ class Command extends Component<CommandRootSignature> {
       aria-controls="command-list"
       aria-expanded="true"
       class={{cn
-        "bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden rounded-md"
+        "cn-command flex size-full flex-col overflow-hidden"
         @class
       }}
       data-slot="command"
@@ -203,7 +203,7 @@ class CommandDialog extends Component<CommandDialogSignature> {
         <DialogDescription>{{this.description}}</DialogDescription>
       </DialogHeader>
       <DialogContent
-        @class={{cn "overflow-hidden p-0" @class}}
+        @class={{cn "cn-command-dialog top-1/3 translate-y-0 overflow-hidden p-0" @class}}
         @showCloseButton={{this.showCloseButton}}
       >
         <Command
@@ -256,7 +256,7 @@ class CommandInput extends Component<CommandInputSignature> {
   <template>
     {{! template-lint-disable no-invalid-interactive no-pointer-down-event-binding }}
     <div
-      class={{cn "flex h-9 items-center gap-2 border-b px-3" @class}}
+      class={{cn "cn-command-input-wrapper" @class}}
       data-slot="command-input-wrapper"
       role="search"
       {{on "click" this.preventDropdownClose}}
@@ -265,7 +265,7 @@ class CommandInput extends Component<CommandInputSignature> {
       <Search class="size-4 shrink-0 opacity-50" />
       <input
         class={{cn
-          "placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50"
+          "cn-command-input outline-hidden disabled:cursor-not-allowed disabled:opacity-50"
           @inputClass
         }}
         data-slot="command-input"
@@ -293,7 +293,7 @@ interface CommandListSignature {
 const CommandList: TOC<CommandListSignature> = <template>
   <div
     class={{cn
-      "max-h-[300px] scroll-py-1 overflow-x-hidden overflow-y-auto"
+      "cn-command-list overflow-x-hidden overflow-y-auto"
       @class
     }}
     data-slot="command-list"
@@ -327,7 +327,7 @@ class CommandEmpty extends Component<CommandEmptySignature> {
   <template>
     {{#unless this.hasVisibleItems}}
       <div
-        class={{cn "py-6 text-center text-sm" @class}}
+        class={{cn "cn-command-empty" @class}}
         data-slot="command-empty"
         ...attributes
       >
@@ -376,7 +376,7 @@ class CommandGroup extends Component<CommandGroupSignature> {
   <template>
     <div
       class={{cn
-        "text-foreground [&_[data-cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 [&_[data-cmdk-group-heading]]:px-2 [&_[data-cmdk-group-heading]]:py-1.5 [&_[data-cmdk-group-heading]]:text-xs [&_[data-cmdk-group-heading]]:font-medium"
+        "cn-command-group"
         @class
       }}
       data-slot="command-group"
@@ -414,7 +414,7 @@ class CommandSeparator extends Component<CommandSeparatorSignature> {
   <template>
     {{#if this.hasVisibleItems}}
       <div
-        class={{cn "bg-border -mx-1 h-px" @class}}
+        class={{cn "cn-command-separator" @class}}
         data-slot="command-separator"
         ...attributes
       ></div>
@@ -496,7 +496,7 @@ class CommandItem extends Component<CommandItemComponentSignature> {
       <div
         aria-selected={{if this.isSelected "true" "false"}}
         class={{cn
-          "data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+          "cn-command-item group/command-item data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0"
           @class
         }}
         data-disabled={{if @disabled "true" "false"}}
@@ -528,7 +528,7 @@ interface CommandShortcutSignature {
 
 const CommandShortcut: TOC<CommandShortcutSignature> = <template>
   <span
-    class={{cn "text-muted-foreground ml-auto text-xs tracking-widest" @class}}
+    class={{cn "cn-command-shortcut" @class}}
     data-slot="command-shortcut"
     ...attributes
   >

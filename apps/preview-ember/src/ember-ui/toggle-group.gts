@@ -106,7 +106,7 @@ class ToggleGroup extends Component<ToggleGroupSignature> {
   <template>
     <div
       class={{cn
-        "group/toggle-group flex w-fit items-center gap-[--spacing(var(--gap))] rounded-md data-[spacing=default]:data-[variant=outline]:shadow-xs"
+        "cn-toggle-group group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] data-vertical:flex-col data-vertical:items-stretch"
         @class
       }}
       data-size={{@size}}
@@ -172,9 +172,8 @@ class ToggleGroupItem extends Component<ToggleGroupItemSignature> {
 
   get classes() {
     return cn(
-      toggleVariants(this.variant ?? 'default', this.size ?? 'default'),
-      'w-auto min-w-0 shrink-0 px-3 focus:z-10 focus-visible:z-10',
-      'data-[spacing="0"]:rounded-none data-[spacing="0"]:shadow-none data-[spacing="0"]:first:rounded-l-md data-[spacing="0"]:last:rounded-r-md data-[spacing="0"]:data-[variant=outline]:border-l-0 data-[spacing="0"]:data-[variant=outline]:first:border-l',
+      'cn-toggle-group-item shrink-0 focus:z-10 focus-visible:z-10 group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:border-l-0 group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:border-t-0 group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-l group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-t',
+      toggleVariants({ variant: this.variant ?? 'default', size: this.size ?? 'default' }),
       this.args.class
     );
   }

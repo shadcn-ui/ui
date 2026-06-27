@@ -155,7 +155,7 @@ class DialogOverlay extends Component<DialogOverlaySignature> {
   <template>
     <div
       class={{cn
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50"
+        "cn-dialog-overlay fixed inset-0 isolate z-50"
         @class
       }}
       data-slot="dialog-overlay"
@@ -277,7 +277,7 @@ class DialogContent extends Component<DialogContentSignature> {
         <div
           aria-modal="true"
           class={{cn
-            "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 outline-none sm:max-w-lg"
+            "cn-dialog-content fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-none"
             @class
           }}
           data-slot="dialog-content"
@@ -293,7 +293,7 @@ class DialogContent extends Component<DialogContentSignature> {
           {{yield}}
           {{#if this.showCloseButton}}
             <DialogClose
-              @class="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+              @class="cn-dialog-close"
             >
               <XIcon />
               <span class="sr-only">Close</span>
@@ -317,7 +317,7 @@ interface DialogHeaderSignature {
 
 const DialogHeader: TOC<DialogHeaderSignature> = <template>
   <div
-    class={{cn "flex flex-col gap-2 text-center sm:text-left" @class}}
+    class={{cn "cn-dialog-header flex flex-col" @class}}
     data-slot="dialog-header"
     ...attributes
   >
@@ -337,7 +337,7 @@ interface DialogFooterSignature {
 
 const DialogFooter: TOC<DialogFooterSignature> = <template>
   <div
-    class={{cn "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end" @class}}
+    class={{cn "cn-dialog-footer flex flex-col-reverse gap-2 sm:flex-row sm:justify-end" @class}}
     data-slot="dialog-footer"
     ...attributes
   >
@@ -357,7 +357,7 @@ interface DialogTitleSignature {
 
 const DialogTitle: TOC<DialogTitleSignature> = <template>
   <h2
-    class={{cn "text-lg leading-none font-semibold" @class}}
+    class={{cn "cn-dialog-title cn-font-heading" @class}}
     data-slot="dialog-title"
     ...attributes
   >
@@ -377,7 +377,7 @@ interface DialogDescriptionSignature {
 
 const DialogDescription: TOC<DialogDescriptionSignature> = <template>
   <p
-    class={{cn "text-muted-foreground text-sm" @class}}
+    class={{cn "cn-dialog-description" @class}}
     data-slot="dialog-description"
     ...attributes
   >

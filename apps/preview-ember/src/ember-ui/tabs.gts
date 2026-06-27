@@ -53,7 +53,7 @@ class Tabs extends Component<TabsSignature> {
 
   <template>
     <div
-      class={{cn "flex flex-col gap-2" @class}}
+      class={{cn "cn-tabs group/tabs flex data-horizontal:flex-col" @class}}
       data-slot="tabs"
       ...attributes
     >
@@ -64,6 +64,7 @@ class Tabs extends Component<TabsSignature> {
 
 interface TabsListSignature {
   Args: {
+    variant?: 'default' | 'line';
     class?: string;
   };
   Blocks: {
@@ -75,10 +76,12 @@ interface TabsListSignature {
 const TabsList: TOC<TabsListSignature> = <template>
   <div
     class={{cn
-      "bg-muted text-muted-foreground inline-flex h-9 w-fit items-center justify-center rounded-lg p-[3px]"
+      "cn-tabs-list group/tabs-list inline-flex w-fit items-center justify-center text-muted-foreground group-data-vertical/tabs:h-fit group-data-vertical/tabs:flex-col"
+      (if (eq @variant "line") "cn-tabs-list-variant-line gap-1 bg-transparent" "cn-tabs-list-variant-default bg-muted")
       @class
     }}
     data-slot="tabs-list"
+    data-variant={{if @variant @variant "default"}}
     role="tablist"
     ...attributes
   >
@@ -115,7 +118,10 @@ class TabsTrigger extends Component<TabsTriggerSignature> {
     <button
       aria-selected={{if this.isActive "true" "false"}}
       class={{cn
-        "data-[state=active]:bg-background dark:data-[state=active]:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 text-foreground dark:text-muted-foreground inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+        "cn-tabs-trigger relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center whitespace-nowrap text-foreground/60 transition-all group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 dark:text-muted-foreground dark:hover:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0"
+        "group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-active:bg-transparent dark:group-data-[variant=line]/tabs-list:data-active:border-transparent dark:group-data-[variant=line]/tabs-list:data-active:bg-transparent"
+        "data-active:bg-background data-active:text-foreground dark:data-active:border-input dark:data-active:bg-input/30 dark:data-active:text-foreground"
+        "after:absolute after:bg-foreground after:opacity-0 after:transition-opacity group-data-horizontal/tabs:after:inset-x-0 group-data-horizontal/tabs:after:bottom-[-5px] group-data-horizontal/tabs:after:h-0.5 group-data-vertical/tabs:after:inset-y-0 group-data-vertical/tabs:after:-right-1 group-data-vertical/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-active:after:opacity-100"
         @class
       }}
       data-slot="tabs-trigger"
@@ -152,7 +158,7 @@ class TabsContent extends Component<TabsContentSignature> {
   <template>
     {{#if this.isActive}}
       <div
-        class={{cn "flex-1 outline-none" @class}}
+        class={{cn "cn-tabs-content flex-1 outline-none" @class}}
         data-slot="tabs-content"
         data-state={{if this.isActive "active" "inactive"}}
         role="tabpanel"
