@@ -1,6 +1,7 @@
 ---
 title: Dropdown Menu
 description: Displays a menu to the user — such as a set of actions or functions — triggered by a button.
+featured: true
 base: vue
 component: true
 ---
@@ -46,6 +47,7 @@ npx shadcn@latest add @force-ui-vue/dropdown-menu
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -55,15 +57,125 @@ import {
 
 <template>
   <DropdownMenu>
-    <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+    <DropdownMenuTrigger as-child>
+      <Button variant="outline">Open</Button>
+    </DropdownMenuTrigger>
     <DropdownMenuContent>
-      <DropdownMenuLabel>My Account</DropdownMenuLabel>
+      <DropdownMenuGroup>
+        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuItem>Billing</DropdownMenuItem>
+      </DropdownMenuGroup>
       <DropdownMenuSeparator />
-      <DropdownMenuItem>Profile</DropdownMenuItem>
-      <DropdownMenuItem>Billing</DropdownMenuItem>
-      <DropdownMenuItem>Team</DropdownMenuItem>
-      <DropdownMenuItem>Subscription</DropdownMenuItem>
+      <DropdownMenuGroup>
+        <DropdownMenuItem>Team</DropdownMenuItem>
+        <DropdownMenuItem>Subscription</DropdownMenuItem>
+      </DropdownMenuGroup>
     </DropdownMenuContent>
   </DropdownMenu>
 </template>
 ```
+
+## Composition
+
+Use the following composition to build a `DropdownMenu`:
+
+```text
+DropdownMenu
+├── DropdownMenuTrigger
+└── DropdownMenuContent
+    ├── DropdownMenuGroup
+    │   ├── DropdownMenuLabel
+    │   ├── DropdownMenuItem
+    │   └── DropdownMenuItem
+    ├── DropdownMenuSeparator
+    ├── DropdownMenuGroup
+    │   ├── DropdownMenuLabel
+    │   ├── DropdownMenuCheckboxItem
+    │   └── DropdownMenuCheckboxItem
+    ├── DropdownMenuSeparator
+    ├── DropdownMenuGroup
+    │   ├── DropdownMenuLabel
+    │   └── DropdownMenuRadioGroup
+    │       ├── DropdownMenuRadioItem
+    │       └── DropdownMenuRadioItem
+    └── DropdownMenuSub
+        ├── DropdownMenuSubTrigger
+        └── DropdownMenuSubContent
+            └── DropdownMenuGroup
+                ├── DropdownMenuLabel
+                ├── DropdownMenuItem
+                └── DropdownMenuItem
+```
+
+## Examples
+
+### Basic
+
+A basic dropdown menu with labels and separators.
+
+<ComponentPreview framework="vue" name="dropdown-menu-basic" />
+
+### Submenu
+
+Use `DropdownMenuSub` to nest secondary actions.
+
+<ComponentPreview framework="vue" name="dropdown-menu-submenu" />
+
+### Shortcuts
+
+Add `DropdownMenuShortcut` to show keyboard hints.
+
+<ComponentPreview framework="vue" name="dropdown-menu-shortcuts" />
+
+### Icons
+
+Combine icons with labels for quick scanning.
+
+<ComponentPreview framework="vue" name="dropdown-menu-icons" />
+
+### Checkboxes
+
+Use `DropdownMenuCheckboxItem` for toggles.
+
+<ComponentPreview framework="vue" name="dropdown-menu-checkboxes" />
+
+### Checkboxes Icons
+
+Add icons to checkbox items.
+
+<ComponentPreview framework="vue" name="dropdown-menu-checkboxes-icons" />
+
+### Radio Group
+
+Use `DropdownMenuRadioGroup` for exclusive choices.
+
+<ComponentPreview framework="vue" name="dropdown-menu-radio-group" />
+
+### Radio Icons
+
+Show radio options with icons.
+
+<ComponentPreview framework="vue" name="dropdown-menu-radio-icons" />
+
+### Destructive
+
+Use `variant="destructive"` for irreversible actions.
+
+<ComponentPreview framework="vue" name="dropdown-menu-destructive" />
+
+### Avatar
+
+An account switcher dropdown triggered by an avatar.
+
+<ComponentPreview framework="vue" name="dropdown-menu-avatar" />
+
+### Complex
+
+A richer example combining groups, icons, and submenus.
+
+<ComponentPreview framework="vue" name="dropdown-menu-complex" />
+
+## API Reference
+
+See the [Radix UI documentation](https://www.radix-ui.com/docs/primitives/components/dropdown-menu) for the full API reference.

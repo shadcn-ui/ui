@@ -63,6 +63,14 @@ import {
       <PaginationLink href="#">1</PaginationLink>
     </PaginationItem>
     <PaginationItem>
+      <PaginationLink @isActive={{true}} href="#">
+        2
+      </PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">3</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
       <PaginationEllipsis />
     </PaginationItem>
     <PaginationItem>
@@ -71,6 +79,47 @@ import {
   </PaginationContent>
 </Pagination>
 ```
+
+## Composition
+
+Use the following composition to build a `Pagination`:
+
+```text
+Pagination
+└── PaginationContent
+    ├── PaginationItem
+    │   └── PaginationPrevious
+    ├── PaginationItem
+    │   └── PaginationLink
+    ├── PaginationItem
+    │   └── PaginationEllipsis
+    └── PaginationItem
+        └── PaginationNext
+```
+
+## Examples
+
+### Simple
+
+A simple pagination with only page numbers.
+
+<ComponentPreview framework="ember" name="pagination-simple" />
+
+### Icons Only
+
+Use just the previous and next buttons without page numbers. This is useful for data tables with a rows per page selector.
+
+<ComponentPreview framework="ember" name="pagination-icons-only" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="ember"
+  name="pagination-rtl"
+  direction="rtl"
+/>
 
 ## API Reference
 

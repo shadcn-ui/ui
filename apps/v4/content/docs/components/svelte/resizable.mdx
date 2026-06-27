@@ -3,9 +3,16 @@ title: Resizable
 description: Accessible resizable panel groups and layouts with keyboard support.
 base: svelte
 component: true
+links:
+  doc: https://github.com/bvaughn/react-resizable-panels
+  api: https://github.com/bvaughn/react-resizable-panels/tree/main/packages/react-resizable-panels
 ---
 
-<ComponentPreview framework="svelte" name="resizable-demo" />
+<ComponentPreview framework="svelte" name="resizable-demo" previewClassName="h-80" />
+
+## About
+
+The `Resizable` component is built on top of [PaneForge](https://github.com/svecosystem/paneforge) by [Huntabyte](https://github.com/huntabyte). Visit the [PaneForge documentation](https://paneforge.com) for all the available props and abilities of the `Resizable` component.
 
 ## Installation
 
@@ -39,10 +46,6 @@ npx shadcn@latest add @force-ui-svelte/resizable
 
 </CodeTabs>
 
-## About
-
-The `Resizable` component is built on top of [PaneForge](https://github.com/svecosystem/paneforge) by [Huntabyte](https://github.com/huntabyte). Visit the [PaneForge documentation](https://paneforge.com) for all the available props and abilities of the `Resizable` component.
-
 ## Usage
 
 ```svelte showLineNumbers
@@ -59,40 +62,41 @@ The `Resizable` component is built on top of [PaneForge](https://github.com/svec
 </Resizable.PaneGroup>
 ```
 
+## Composition
+
+Use the following composition to build a `PaneGroup`:
+
+```text
+PaneGroup
+├── Pane
+├── Handle
+└── Pane
+```
+
 ## Examples
 
 ### Vertical
 
-Use the `direction` prop to set the direction of the resizable panels.
+Use `direction="vertical"` for vertical resizing.
 
 <ComponentPreview framework="svelte" name="resizable-vertical" />
 
-```svelte showLineNumbers {5}
-<script lang="ts">
-  import * as Resizable from "$lib/components/ui/resizable/index.js";
-</script>
-
-<Resizable.PaneGroup direction="vertical">
-  <Resizable.Pane>One</Resizable.Pane>
-  <Resizable.Handle />
-  <Resizable.Pane>Two</Resizable.Pane>
-</Resizable.PaneGroup>
-```
-
 ### Handle
 
-You can set or hide the handle by using the `withHandle` prop on the `ResizableHandle` component.
+Use the `withHandle` prop on `Handle` to show a visible handle.
 
 <ComponentPreview framework="svelte" name="resizable-handle" />
 
-```svelte showLineNumbers {7}
-<script lang="ts">
-  import * as Resizable from "$lib/components/ui/resizable/index.js";
-</script>
+## RTL
 
-<Resizable.PaneGroup direction="vertical">
-  <Resizable.Pane>One</Resizable.Pane>
-  <Resizable.Handle withHandle />
-  <Resizable.Pane>Two</Resizable.Pane>
-</Resizable.PaneGroup>
-```
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="svelte"
+  name="resizable-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [PaneForge documentation](https://paneforge.com) for all available props and abilities of the `Resizable` component.

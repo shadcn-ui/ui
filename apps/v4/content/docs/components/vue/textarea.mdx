@@ -53,15 +53,47 @@ import { Textarea } from "@/components/ui/textarea"
 
 ## Examples
 
+### Field
+
+Use `Field`, `FieldLabel`, and `FieldDescription` to create a textarea with a label and description.
+
+<ComponentPreview framework="vue" name="textarea-field" />
+
+### Disabled
+
+Use the `disabled` prop to disable the textarea. To style the disabled state, add the `data-disabled` attribute to the `Field` component.
+
+<ComponentPreview framework="vue" name="textarea-disabled" />
+
+### Invalid
+
+Use the `aria-invalid` prop to mark the textarea as invalid. To style the invalid state, add the `data-invalid` attribute to the `Field` component.
+
+<ComponentPreview framework="vue" name="textarea-invalid" />
+
+### Button
+
+Pair with `Button` to create a textarea with a submit button.
+
+<ComponentPreview framework="vue" name="textarea-button" />
+
 ### Variants
 
 Use the `variant` prop to change the visual style of the textarea.
 
 <ComponentPreview framework="vue" name="textarea-variants" />
 
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="vue" name="textarea-rtl" direction="rtl" />
+
 ## API Reference
 
 ### Textarea
+
+The `Textarea` component displays a multi-line text input field.
 
 | Prop      | Type                                              | Default     |
 | --------- | ------------------------------------------------- | ----------- |

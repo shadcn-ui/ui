@@ -72,7 +72,30 @@ import {
 </template>
 ```
 
+## Composition
+
+Use the following composition to build a `Breadcrumb`:
+
+```text
+Breadcrumb
+└── BreadcrumbList
+    ├── BreadcrumbItem
+    │   └── BreadcrumbLink
+    ├── BreadcrumbSeparator
+    ├── BreadcrumbItem
+    │   └── BreadcrumbLink
+    ├── BreadcrumbSeparator
+    └── BreadcrumbItem
+        └── BreadcrumbPage
+```
+
 ## Examples
+
+### Basic
+
+A basic breadcrumb with a home link and a components link.
+
+<ComponentPreview framework="ember" name="breadcrumb-basic" />
 
 ### Custom separator
 
@@ -80,15 +103,11 @@ Use a custom component as children for `<BreadcrumbSeparator />` to create a cus
 
 <ComponentPreview framework="ember" name="breadcrumb-separator" />
 
----
-
 ### Dropdown
 
 You can compose `<BreadcrumbItem />` with a `<DropdownMenu />` to create a dropdown in the breadcrumb.
 
 <ComponentPreview framework="ember" name="breadcrumb-dropdown" />
-
----
 
 ### Collapsed
 
@@ -96,20 +115,68 @@ We provide a `<BreadcrumbEllipsis />` component to show a collapsed state when t
 
 <ComponentPreview framework="ember" name="breadcrumb-ellipsis" />
 
----
-
 ### Link component
 
 To use a custom link component from your routing library, you can use the `@asChild` prop on `<BreadcrumbLink />`.
 
 <ComponentPreview framework="ember" name="breadcrumb-link" />
 
----
+## API Reference
 
-### Responsive
+### Breadcrumb
 
-Here's an example of a responsive breadcrumb that composes `<BreadcrumbItem />` with `<BreadcrumbEllipsis />`, `<DropdownMenu />`, and `<Drawer />`.
+The `Breadcrumb` component is the root navigation element that wraps all breadcrumb components.
 
-It displays a dropdown on desktop and a drawer on mobile.
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |
 
-<ComponentPreview framework="ember" name="breadcrumb-responsive" />
+### BreadcrumbList
+
+The `BreadcrumbList` component displays the ordered list of breadcrumb items.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |
+
+### BreadcrumbItem
+
+The `BreadcrumbItem` component wraps individual breadcrumb items.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |
+
+### BreadcrumbLink
+
+The `BreadcrumbLink` component displays a clickable link in the breadcrumb.
+
+| Prop        | Type      | Default |
+| ----------- | --------- | ------- |
+| `@href`     | `string`  | -       |
+| `@asChild`  | `boolean` | -       |
+| `class`     | `string`  | -       |
+
+### BreadcrumbPage
+
+The `BreadcrumbPage` component displays the current page in the breadcrumb (non-clickable).
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |
+
+### BreadcrumbSeparator
+
+The `BreadcrumbSeparator` component displays a separator between breadcrumb items. You can pass custom children to override the default separator icon.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |
+
+### BreadcrumbEllipsis
+
+The `BreadcrumbEllipsis` component displays an ellipsis indicator for collapsed breadcrumb items.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |

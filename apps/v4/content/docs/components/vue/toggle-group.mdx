@@ -47,36 +47,64 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 </script>
 
 <template>
-  <ToggleGroup type="multiple">
-    <ToggleGroupItem value="a"> A </ToggleGroupItem>
-    <ToggleGroupItem value="b"> B </ToggleGroupItem>
-    <ToggleGroupItem value="c"> C </ToggleGroupItem>
+  <ToggleGroup type="single">
+    <ToggleGroupItem value="a">A</ToggleGroupItem>
+    <ToggleGroupItem value="b">B</ToggleGroupItem>
+    <ToggleGroupItem value="c">C</ToggleGroupItem>
   </ToggleGroup>
 </template>
 ```
 
+## Composition
+
+Use the following composition to build a `ToggleGroup`:
+
+```text
+ToggleGroup
+├── ToggleGroupItem
+└── ToggleGroupItem
+```
+
 ## Examples
-
-### Default
-
-<ComponentPreview framework="vue" name="toggle-group-default-demo" />
 
 ### Outline
 
-<ComponentPreview framework="vue" name="toggle-group-demo" />
+Use `variant="outline"` for an outline style.
 
-### Single
+<ComponentPreview framework="vue" name="toggle-group-outline" />
 
-<ComponentPreview framework="vue" name="toggle-group-single-demo" />
+### Size
 
-### Small
+Use the `size` prop to change the size of the toggle group.
 
-<ComponentPreview framework="vue" name="toggle-group-small-demo" />
+<ComponentPreview framework="vue" name="toggle-group-sizes" />
 
-### Large
+### Spacing
 
-<ComponentPreview framework="vue" name="toggle-group-large-demo" />
+Use `spacing` to add spacing between toggle group items.
+
+<ComponentPreview framework="vue" name="toggle-group-spacing" />
+
+### Vertical
+
+Use `orientation="vertical"` for vertical toggle groups.
+
+<ComponentPreview framework="vue" name="toggle-group-vertical" />
 
 ### Disabled
 
-<ComponentPreview framework="vue" name="toggle-group-disabled-demo" />
+<ComponentPreview framework="vue" name="toggle-group-disabled" />
+
+### Custom
+
+A custom toggle group example.
+
+<ComponentPreview
+  framework="vue"
+  name="toggle-group-font-weight-selector"
+  previewClassName="*:data-[slot=field]:max-w-xs"
+/>
+
+## API Reference
+
+See the [Radix Toggle Group](https://www.radix-ui.com/docs/primitives/components/toggle-group#api-reference) documentation.

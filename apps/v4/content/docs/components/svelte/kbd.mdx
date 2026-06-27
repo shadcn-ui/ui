@@ -51,37 +51,54 @@ npx shadcn@latest add @force-ui-svelte/kbd
 <Kbd.Root>B</Kbd.Root>
 ```
 
+## Composition
+
+Use the following composition to build `Kbd.Root` and `Kbd.Group`:
+
+```text
+Kbd.Root
+Kbd.Group
+├── Kbd.Root
+└── Kbd.Root
+```
+
 ## Examples
 
 ### Group
 
 Use the `Kbd.Group` component to group keyboard keys together.
 
-<ComponentPreview framework="svelte" name="kbd-group-demo" />
+<ComponentPreview framework="svelte" name="kbd-group" />
 
 ### Button
 
 Use the `Kbd.Root` component inside a `Button` component to display a keyboard key inside a button.
 
-<ComponentPreview framework="svelte" name="kbd-button-demo" />
+<ComponentPreview framework="svelte" name="kbd-button" />
 
 ### Tooltip
 
 You can use the `Kbd.Root` component inside a `Tooltip` component to display a tooltip with a keyboard key.
 
-<ComponentPreview framework="svelte" name="kbd-tooltip-demo" />
+<ComponentPreview framework="svelte" name="kbd-tooltip" />
 
 ### Input Group
 
 You can use the `Kbd.Root` component inside a `InputGroup.Addon` component to display a keyboard key inside an input group.
 
-<ComponentPreview framework="svelte" name="kbd-input-group-demo" />
+<ComponentPreview framework="svelte" name="kbd-input-group" />
 
 ### Primary
 
-Use `variant="primary"` when placing a `Kbd` on a solid or brand-coloured surface so the key label stays legible.
+Use `variant="primary"` when placing a `Kbd` on a solid or brand-coloured surface so the key label remains legible against the background.
 
 <ComponentPreview framework="svelte" name="kbd-primary" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="svelte" name="kbd-rtl" direction="rtl" />
 
 ## API Reference
 
@@ -91,8 +108,8 @@ Use the `Kbd.Root` component to display a keyboard key.
 
 | Prop      | Type                     | Default     |
 | --------- | ------------------------ | ----------- |
-| `variant` | `"default" \| "primary"` | `"default"` |
 | `class`   | `string`                 | ``          |
+| `variant` | `"default" \| "primary"` | `"default"` |
 
 ```svelte
 <Kbd.Root>Ctrl</Kbd.Root>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useForm } from '@tanstack/vue-form'
+import { h } from 'vue'
 import { toast } from 'vue-sonner'
 import { z } from 'zod'
 
@@ -94,7 +95,7 @@ function isInvalid(field: any) {
               <RadioGroup
                 :name="field.name"
                 :model-value="field.state.value"
-                @update:model-value="field.handleChange"
+                @update:model-value="(v) => field.handleChange(v as string)"
               >
                 <FieldLabel
                   v-for="plan in plans"

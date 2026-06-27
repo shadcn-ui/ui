@@ -43,84 +43,111 @@ npx shadcn@latest add @force-ui-vue/combobox
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import { CheckIcon, ChevronsUpDownIcon } from "lucide-vue-next"
-import { ref } from "vue"
-
-import { Button } from "@/components/ui/button"
+import { ref } from 'vue'
 import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
-
-const frameworks = [
-  { value: "next.js", label: "Next.js" },
-  { value: "sveltekit", label: "SvelteKit" },
-  { value: "nuxt.js", label: "Nuxt.js" },
-  { value: "remix", label: "Remix" },
-  { value: "astro", label: "Astro" },
-]
-
-const open = ref(false)
-const value = ref("")
+  Combobox,
+  ComboboxAnchor,
+  ComboboxEmpty,
+  ComboboxGroup,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxList,
+} from '@/components/ui/combobox'
 </script>
+```
 
+```vue showLineNumbers
 <template>
-  <Popover v-model:open="open">
-    <PopoverTrigger as-child>
-      <Button
-        variant="outline"
-        role="combobox"
-        :aria-expanded="open"
-        class="w-[200px] justify-between"
-      >
-        {{
-          value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select framework..."
-        }}
-        <ChevronsUpDownIcon class="ml-2 h-4 w-4 shrink-0 opacity-50" />
-      </Button>
-    </PopoverTrigger>
-    <PopoverContent class="w-[200px] p-0">
-      <Command>
-        <CommandInput placeholder="Search framework..." />
-        <CommandList>
-          <CommandEmpty>No framework found.</CommandEmpty>
-          <CommandGroup>
-            <CommandItem
-              v-for="framework in frameworks"
-              :key="framework.value"
-              :value="framework.value"
-              @select="
-                () => {
-                  value = value === framework.value ? '' : framework.value
-                  open = false
-                }
-              "
-            >
-              <CheckIcon
-                :class="
-                  cn(
-                    'mr-2 h-4 w-4',
-                    value === framework.value ? 'opacity-100' : 'opacity-0'
-                  )
-                "
-              />
-              {{ framework.label }}
-            </CommandItem>
-          </CommandGroup>
-        </CommandList>
-      </Command>
-    </PopoverContent>
-  </Popover>
+  <Combobox v-model="value" :display-value="(v) => v as string">
+    <ComboboxAnchor>
+      <ComboboxInput placeholder="Select a framework" />
+    </ComboboxAnchor>
+    <ComboboxList>
+      <ComboboxEmpty>No items found.</ComboboxEmpty>
+      <ComboboxGroup>
+        <ComboboxItem
+          v-for="framework in frameworks"
+          :key="framework"
+          :value="framework"
+        >
+          {{ framework }}
+          <ComboboxItemIndicator />
+        </ComboboxItem>
+      </ComboboxGroup>
+    </ComboboxList>
+  </Combobox>
 </template>
 ```
+
+## Examples
+
+### Basic
+
+A simple combobox with a list of frameworks.
+
+<ComponentPreview framework="vue" name="combobox-basic" />
+
+### Multiple
+
+A combobox with multiple selection using `multiple`.
+
+<ComponentPreview framework="vue" name="combobox-multiple" />
+
+### Clear Button
+
+Use the `reset-model-value-on-clear` prop with `ComboboxCancel` to show a clear button.
+
+<ComponentPreview framework="vue" name="combobox-clear" />
+
+### Groups
+
+Use `ComboboxGroup` with the `heading` prop to group items.
+
+<ComponentPreview framework="vue" name="combobox-groups" />
+
+### Custom Items
+
+You can render a custom component inside `ComboboxItem`.
+
+<ComponentPreview framework="vue" name="combobox-custom" />
+
+### Invalid
+
+Use `aria-invalid` on `ComboboxInput` to mark the combobox as invalid.
+
+<ComponentPreview framework="vue" name="combobox-invalid" />
+
+### Disabled
+
+Use the `disabled` prop to disable the combobox.
+
+<ComponentPreview framework="vue" name="combobox-disabled" />
+
+### Auto Highlight
+
+Use the `open-on-focus` prop to automatically open the list when the input is focused.
+
+<ComponentPreview framework="vue" name="combobox-auto-highlight" />
+
+### Popup
+
+You can trigger the combobox from a button by using `ComboboxTrigger` inside `ComboboxAnchor`.
+
+<ComponentPreview framework="vue" name="combobox-popup" />
+
+### Input Group
+
+You can add an addon to the combobox by using the `InputGroupAddon` component alongside `ComboboxInput`.
+
+<ComponentPreview framework="vue" name="combobox-input-group" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="vue" name="combobox-rtl" direction="rtl" align="start" />
+
+## API Reference
+
+See the [Reka UI](https://reka-ui.com/docs/components/combobox) documentation for more information.

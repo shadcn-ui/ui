@@ -7,6 +7,11 @@ component: true
 
 <ComponentPreview framework="ember" name="label-demo" />
 
+<Callout>
+  For form fields, use the [Field](/docs/components/ember/field) component which
+  includes built-in label, description, and error handling.
+</Callout>
+
 ## Installation
 
 <CodeTabs>
@@ -48,3 +53,36 @@ import { Label } from '@/ui/label';
 ```hbs showLineNumbers
 <Label @for="email">Your email address</Label>
 ```
+
+## Label in Field
+
+For form fields, use the [Field](/docs/components/ember/field) component which
+includes built-in `FieldLabel`, `FieldDescription`, and `FieldError` components.
+
+```gts showLineNumbers
+import { Field, FieldLabel } from '@/ember-ui/field';
+import { Input } from '@/ember-ui/input';
+```
+
+```hbs showLineNumbers
+<Field>
+  <FieldLabel @for="email">Your email address</FieldLabel>
+  <Input id="email" />
+</Field>
+```
+
+<ComponentPreview
+  framework="ember"
+  name="field-demo"
+  previewClassName="h-[44rem]"
+/>
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="ember" name="label-rtl" direction="rtl" />
+
+## API Reference
+
+See the [Radix UI Label](https://www.radix-ui.com/docs/primitives/components/label#api-reference) documentation for more information.

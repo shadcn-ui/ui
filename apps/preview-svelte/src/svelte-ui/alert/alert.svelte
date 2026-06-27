@@ -7,6 +7,9 @@
 			variant: {
 				default: "cn-alert-variant-default",
 				destructive: "cn-alert-variant-destructive",
+				success: "cn-alert-variant-success", // [FORCE-UI]
+				warning: "cn-alert-variant-warning", // [FORCE-UI]
+				info: "cn-alert-variant-info", // [FORCE-UI]
 			},
 		},
 		defaultVariants: {

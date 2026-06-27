@@ -1,6 +1,6 @@
 ---
 title: Calendar
-description: A calendar component that allows users to select dates.
+description: A calendar component that allows users to select a date or a range of dates.
 base: svelte
 component: true
 ---
@@ -39,48 +39,66 @@ npx shadcn@latest add @force-ui-svelte/calendar
 
 </CodeTabs>
 
+## Usage
+
+```svelte showLineNumbers
+<script lang="ts">
+  import { Calendar } from "@/components/ui/calendar"
+</script>
+
+<Calendar type="single" />
+```
+
 ## About
 
 The `<Calendar />` component is built on top of the [Bits UI Calendar](https://www.bits-ui.com/docs/components/calendar) component, which uses the [@internationalized/date](https://react-spectrum.adobe.com/internationalized/date/index.html) package to handle dates.
 
-If you're looking for a range calendar, check out the [Range Calendar](/docs/components/range-calendar) component.
+If you're looking for a range calendar, check out the [Range Calendar](/docs/components/svelte/range-calendar) component.
 
 ## Date Picker
 
-You can use the `<Calendar />` component to build a date picker. See the [Date Picker](/docs/components/date-picker) page for more information.
+You can use the `<Calendar />` component to build a date picker. See the [Date Picker](/docs/components/svelte/date-picker) page for more information.
 
 ## Examples
 
+### Basic
+
+A basic calendar component.
+
+<ComponentPreview framework="svelte" name="calendar-basic" />
+
 ### Range Calendar
 
-<ComponentPreview framework="svelte" name="calendar-02" />
+Use `<RangeCalendar />` to enable range selection.
+
+<ComponentPreview framework="svelte" name="calendar-range" />
 
 ### Month and Year Selector
 
-<ComponentPreview framework="svelte" name="calendar-13" />
+Use `captionLayout="dropdown"` to show month and year dropdowns.
 
-### Date of Birth Picker
+<ComponentPreview framework="svelte" name="calendar-caption" />
 
-<ComponentPreview framework="svelte" name="calendar-22" />
+### Presets
+
+<ComponentPreview framework="svelte" name="calendar-presets" />
 
 ### Date and Time Picker
 
-<ComponentPreview framework="svelte" name="calendar-24" />
+<ComponentPreview framework="svelte" name="calendar-time" />
 
-### Natural Language Picker
+### Week Numbers
 
-This component uses the `chrono-node` library to parse natural language dates.
+Use `weekNumbers` to show week numbers.
 
-<ComponentPreview framework="svelte" name="calendar-29" />
+<ComponentPreview framework="svelte" name="calendar-week-numbers" />
 
-## Upgrade Guide
+## RTL
 
-You can upgrade to the latest version of the `<Calendar />` component by running the following command:
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
 
-When you're prompted to overwrite the existing files, select `Yes`. **If you have made any changes to the `Calendar` component, you will need to merge your changes with the new version.**
+<ComponentPreview framework="svelte" name="calendar-rtl" />
 
-#### Installing Blocks
+## API Reference
 
-After upgrading the `Calendar` component, you can add the new blocks with the following:
-
-This will add the latest version of the calendar blocks.
+See the [Bits UI Calendar](https://www.bits-ui.com/docs/components/calendar) documentation for more information on the `Calendar` component.

@@ -1,6 +1,6 @@
 ---
 title: Context Menu
-description: Displays a menu to the user — such as a set of actions or functions — triggered by right click.
+description: Displays a menu of actions triggered by a right click.
 base: ember
 component: true
 ---
@@ -53,7 +53,7 @@ import {
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from '@/ui/context-menu';
+} from '@/ember-ui/context-menu';
 ```
 
 ```hbs showLineNumbers
@@ -67,3 +67,63 @@ import {
   </ContextMenuContent>
 </ContextMenu>
 ```
+
+## Examples
+
+### Basic
+
+A simple context menu with a few actions.
+
+<ComponentPreview framework="ember" name="context-menu-basic" />
+
+### Submenu
+
+Use `ContextMenuSub` to nest secondary actions.
+
+<ComponentPreview framework="ember" name="context-menu-submenu" />
+
+### Shortcuts
+
+Add `ContextMenuShortcut` to show keyboard hints.
+
+<ComponentPreview framework="ember" name="context-menu-shortcuts" />
+
+### Groups
+
+Group related actions and separate them with dividers.
+
+<ComponentPreview framework="ember" name="context-menu-groups" />
+
+### Icons
+
+Combine icons with labels for quick scanning.
+
+<ComponentPreview framework="ember" name="context-menu-icons" />
+
+### Checkboxes
+
+Use `ContextMenuCheckboxItem` for toggles.
+
+<ComponentPreview framework="ember" name="context-menu-checkboxes" />
+
+### Radio
+
+Use `ContextMenuRadioItem` for exclusive choices.
+
+<ComponentPreview framework="ember" name="context-menu-radio" />
+
+### Destructive
+
+Use `@variant="destructive"` to style the menu item as destructive.
+
+<ComponentPreview framework="ember" name="context-menu-destructive" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="ember" name="context-menu-rtl" direction="rtl" />
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/docs/primitives/components/context-menu#api-reference) documentation for more information.

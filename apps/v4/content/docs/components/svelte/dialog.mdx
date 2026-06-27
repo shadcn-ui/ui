@@ -1,6 +1,7 @@
 ---
 title: Dialog
 description: A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
+featured: true
 base: svelte
 component: true
 ---
@@ -62,8 +63,56 @@ npx shadcn@latest add @force-ui-svelte/dialog
 </Dialog.Root>
 ```
 
+## Composition
+
+Use the following composition to build a `Dialog`:
+
+```text
+Dialog.Root
+├── Dialog.Trigger
+└── Dialog.Content
+    ├── Dialog.Header
+    │   ├── Dialog.Title
+    │   └── Dialog.Description
+    └── Dialog.Footer
+```
+
 ## Examples
 
-### Custom close button
+### Custom Close Button
+
+Replace the default close control with your own button.
 
 <ComponentPreview framework="svelte" name="dialog-close-button" />
+
+### No Close Button
+
+Use `showCloseButton={false}` to hide the close button.
+
+<ComponentPreview framework="svelte" name="dialog-no-close-button" />
+
+### Sticky Footer
+
+Keep actions visible while the content scrolls.
+
+<ComponentPreview framework="svelte" name="dialog-sticky-footer" />
+
+### Scrollable Content
+
+Long content can scroll while the header stays in view.
+
+<ComponentPreview framework="svelte" name="dialog-scrollable-content" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="svelte"
+  name="dialog-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/docs/primitives/components/dialog#api-reference) documentation for more information.

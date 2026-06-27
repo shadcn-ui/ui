@@ -5,7 +5,11 @@ base: svelte
 component: true
 ---
 
-<ComponentPreview framework="svelte" name="alert-demo" />
+<ComponentPreview
+  framework="svelte"
+  name="alert-demo"
+  previewClassName="h-auto sm:h-72 p-6"
+/>
 
 ## Installation
 
@@ -51,12 +55,47 @@ npx shadcn@latest add @force-ui-svelte/alert
 <Alert.Root>
   <Alert.Title>Heads up!</Alert.Title>
   <Alert.Description>
-    You can add components to your app using the cli.
+    You can add components and dependencies to your app using the cli.
   </Alert.Description>
+  <Alert.Action>
+    <button>Enable</button>
+  </Alert.Action>
 </Alert.Root>
 ```
 
+## Composition
+
+Use the following composition to build an `Alert`:
+
+```text
+Alert.Root
+├── Icon
+├── Alert.Title
+├── Alert.Description
+└── Alert.Action
+```
+
 ## Examples
+
+### Basic
+
+A basic alert with an icon, title and description.
+
+<ComponentPreview
+  framework="svelte"
+  name="alert-basic"
+  previewClassName="h-auto sm:h-72 p-6"
+/>
+
+### Destructive
+
+Use `variant="destructive"` to create a destructive alert.
+
+<ComponentPreview
+  framework="svelte"
+  name="alert-destructive"
+  previewClassName="h-auto sm:h-72 p-6"
+/>
 
 ### Status Variants
 
@@ -68,12 +107,56 @@ Use `variant="warning"`, `variant="success"`, or `variant="info"` for semantic s
   previewClassName="p-6"
 />
 
+### Action
+
+Use `Alert.Action` to add a button or other action element to the alert.
+
+<ComponentPreview
+  framework="svelte"
+  name="alert-action"
+  previewClassName="h-auto sm:h-72 p-6"
+/>
+
+### Custom Colors
+
+You can customize the alert colors by adding custom classes such as `bg-amber-50 dark:bg-amber-950` to the `Alert.Root` component.
+
+<ComponentPreview
+  framework="svelte"
+  name="alert-colors"
+  previewClassName="h-auto sm:h-72 p-6"
+/>
+
 ## API Reference
 
-### Alert
+### Alert.Root
 
-The `Alert` component displays a callout for user attention.
+The `Alert.Root` component displays a callout for user attention.
 
 | Prop      | Type                                                             | Default     |
 | --------- | ---------------------------------------------------------------- | ----------- |
 | `variant` | `"default" \| "destructive" \| "warning" \| "success" \| "info"` | `"default"` |
+
+### Alert.Title
+
+The `Alert.Title` component displays the title of the alert.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |
+
+### Alert.Description
+
+The `Alert.Description` component displays the description or content of the alert.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |
+
+### Alert.Action
+
+The `Alert.Action` component displays an action element (like a button) positioned absolutely in the top-right corner of the alert.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |

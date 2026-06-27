@@ -7,6 +7,12 @@ component: true
 
 <ComponentPreview framework="svelte" name="sidebar-demo" />
 
+Sidebars are one of the most complex components to build. They are central
+to any application and often contain a lot of moving parts.
+
+We now have a solid foundation to build on top of. Composable. Themeable.
+Customizable.
+
 ## Installation
 
 <CodeTabs>
@@ -38,33 +44,6 @@ npx shadcn@latest add @force-ui-svelte/sidebar
 </TabsContent>
 
 </CodeTabs>
-
-## Structure
-
-A `Sidebar` component is composed of the following parts:
-
-- `Sidebar.Provider` - Handles collapsible state.
-- `Sidebar.Root` - The sidebar container.
-- `Sidebar.Header` and `Sidebar.Footer` - Sticky at the top and bottom of the sidebar.
-- `Sidebar.Content` - Scrollable content.
-- `Sidebar.Group` - Section within the `Sidebar.Content`.
-- `Sidebar.Trigger` - Trigger for the `Sidebar`.
-
-<img
-  src="/img/sidebar/sidebar-structure.png"
-  width="716"
-  height="420"
-  alt="Sidebar structure"
-  class="mt-6 w-full overflow-hidden rounded-lg border dark:hidden"
-/>
-
-<img
-  src="/img/sidebar/sidebar-structure-dark.png"
-  width="716"
-  height="420"
-  alt="Sidebar structure"
-  class="mt-6 hidden w-full overflow-hidden rounded-lg border dark:block"
-/>
 
 ## Usage
 
@@ -100,138 +79,70 @@ A `Sidebar` component is composed of the following parts:
 </Sidebar.Root>
 ```
 
-## Your First Sidebar
+## Composition
 
-Let's start with the most basic sidebar. A collapsible sidebar with a menu.
+Use the following composition to build a `Sidebar` layout:
 
-<Steps>
-
-<Step>
-
-Add a `Sidebar.Provider` and `Sidebar.Trigger` at the root of your application.
-
-</Step>
-
-```svelte showLineNumbers title="src/routes/+layout.svelte"
-<script lang="ts">
-  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-  import AppSidebar from "$lib/components/app-sidebar.svelte";
-
-  let { children } = $props();
-</script>
-
-<Sidebar.Provider>
-  <AppSidebar />
-  <main>
-    <Sidebar.Trigger />
-    {@render children?.()}
-  </main>
-</Sidebar.Provider>
+```text
+Sidebar.Provider
+├── Sidebar.Root
+│   ├── Sidebar.Header
+│   ├── Sidebar.Content
+│   │   ├── Sidebar.Group
+│   │   │   ├── Sidebar.GroupLabel
+│   │   │   ├── Sidebar.GroupAction
+│   │   │   ├── Sidebar.GroupContent
+│   │   │   └── Sidebar.Menu
+│   │   │       ├── Sidebar.MenuItem
+│   │   │       │   ├── Sidebar.MenuButton
+│   │   │       │   ├── Sidebar.MenuAction
+│   │   │       │   └── Sidebar.MenuBadge
+│   │   │       └── Sidebar.MenuItem
+│   │   │           ├── Sidebar.MenuButton
+│   │   │           └── Sidebar.MenuSub
+│   │   │               ├── Sidebar.MenuSubItem
+│   │   │               └── Sidebar.MenuSubItem
+│   │   └── Sidebar.Group
+│   │       └── Sidebar.Menu
+│   │           ├── Sidebar.MenuItem
+│   │           └── Sidebar.MenuItem
+│   ├── Sidebar.Footer
+│   └── Sidebar.Rail
+├── Sidebar.Inset
+└── Sidebar.Trigger
 ```
 
-<Step>
+## Structure
 
-Create a new sidebar component at `src/lib/components/app-sidebar.svelte`.
+- **Sidebar.Provider** — Handles collapsible state and provides sidebar context to child components.
+- **Sidebar.Root** — The main collapsible sidebar panel.
+- **Sidebar.Header** — Sticky at the top; use for branding, titles, or workspace switchers.
+- **Sidebar.Footer** — Sticky at the bottom; use for user menus, settings, or actions.
+- **Sidebar.Content** — Scrollable region between the header and footer.
+- **Sidebar.Group** — Groups related navigation with optional label, action, and content areas.
+- **Sidebar.Menu** / **Sidebar.MenuItem** — Menu structure for links, badges, actions, and nested submenus.
+- **Sidebar.Rail** — Resize handle for adjusting sidebar width when applicable.
+- **Sidebar.Inset** — Wraps main content when using the `inset` variant.
+- **Sidebar.Trigger** — Control that toggles the sidebar open or collapsed.
 
-</Step>
-
-```svelte showLineNumbers title="src/lib/components/app-sidebar.svelte"
-<script lang="ts">
-  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-</script>
-
-<Sidebar.Root>
-  <Sidebar.Content />
-</Sidebar.Root>
-```
-
-<Step>
-
-Now, let's add a `Sidebar.Menu` to the sidebar.
-
-</Step>
-
-We'll use the `Sidebar.Menu` component in a `Sidebar.Group`.
-
-```svelte showLineNumbers title="src/lib/components/app-sidebar.svelte"
-<script lang="ts">
-  import CalendarIcon from "@lucide/svelte/icons/calendar";
-  import HouseIcon from "@lucide/svelte/icons/house";
-  import InboxIcon from "@lucide/svelte/icons/inbox";
-  import SearchIcon from "@lucide/svelte/icons/search";
-  import SettingsIcon from "@lucide/svelte/icons/settings";
-  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-
-  // Menu items.
-  const items = [
-    {
-      title: "Home",
-      url: "#",
-      icon: HouseIcon,
-    },
-    {
-      title: "Inbox",
-      url: "#",
-      icon: InboxIcon,
-    },
-    {
-      title: "Calendar",
-      url: "#",
-      icon: CalendarIcon,
-    },
-    {
-      title: "Search",
-      url: "#",
-      icon: SearchIcon,
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: SettingsIcon,
-    },
-  ];
-</script>
-
-<Sidebar.Root>
-  <Sidebar.Content>
-    <Sidebar.Group>
-      <Sidebar.GroupLabel>Application</Sidebar.GroupLabel>
-      <Sidebar.GroupContent>
-        <Sidebar.Menu>
-          {#each items as item (item.title)}
-            <Sidebar.MenuItem>
-              <Sidebar.MenuButton>
-                </Sidebar.MenuButton>
-            </Sidebar.MenuItem>
-          {/each}
-        </Sidebar.Menu>
-      </Sidebar.GroupContent>
-    </Sidebar.Group>
-  </Sidebar.Content>
-</Sidebar.Root>
-```
-
-<Step>You've created your first sidebar.</Step>
-
-<ComponentPreview framework="svelte" name="demo-sidebar" />
-
-<figcaption class="text-center text-sm text-gray-500">
-  Your first sidebar.
-</figcaption>
-
-</Steps>
-
-## Components
-
-The components in the `sidebar-*.svelte` files are built to be composable i.e you build your sidebar by putting the provided components together. They also compose well with other shadcn-svelte components such as `DropdownMenu`, `Collapsible`, `Dialog`, etc.
-
-**If you need to change the code in the `sidebar-*.svelte` files, you are encouraged to do so. The code is yours. Use the provided components as a starting point to build your own**
-
-In the next sections, we'll go over each component and how to use them.
+<img
+  src="/images/sidebar-structure.png"
+  width="716"
+  height="420"
+  alt="Sidebar Structure"
+  class="mt-6 w-full overflow-hidden rounded-lg border dark:hidden"
+/>
+<img
+  src="/images/sidebar-structure-dark.png"
+  width="716"
+  height="420"
+  alt="Sidebar Structure"
+  class="mt-6 hidden w-full overflow-hidden rounded-lg border dark:block"
+/>
 
 ## Sidebar.Provider
 
-The `Sidebar.Provider` component is used to provide the sidebar context to the `Sidebar` component. You should always wrap your application in a `Sidebar.Provider` component.
+The `Sidebar.Provider` component is used to provide the sidebar context to the `Sidebar.Root` component. You should always wrap your application in a `Sidebar.Provider` component.
 
 ### Props
 
@@ -251,8 +162,6 @@ export const SIDEBAR_WIDTH_MOBILE = "18rem"
 
 For multiple sidebars in your application, you can use the `style` prop to set the width of the sidebar.
 
-To set the width of the sidebar, you can use the `--sidebar-width` and `--sidebar-width-mobile` CSS variables in the `style` prop.
-
 ```svelte showLineNumbers
 <Sidebar.Provider
   style="--sidebar-width: 20rem; --sidebar-width-mobile: 20rem;"
@@ -261,15 +170,9 @@ To set the width of the sidebar, you can use the `--sidebar-width` and `--sideba
 </Sidebar.Provider>
 ```
 
-This will not only handle the width of the sidebar but also the layout spacing.
-
 ### Keyboard Shortcut
 
-The `SIDEBAR_KEYBOARD_SHORTCUT` variable in `src/lib/components/ui/sidebar/constants.ts` is used to set the keyboard shortcut used to open and close the sidebar.
-
 To trigger the sidebar, you use the `cmd+b` keyboard shortcut on Mac and `ctrl+b` on Windows.
-
-You can change the keyboard shortcut by changing the value of the `SIDEBAR_KEYBOARD_SHORTCUT` variable.
 
 ```ts showLineNumbers title="src/lib/components/ui/sidebar/constants.ts"
 export const SIDEBAR_KEYBOARD_SHORTCUT = "b"
@@ -277,15 +180,7 @@ export const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 
 ## Sidebar.Root
 
-The main `Sidebar` component used to render a collapsible sidebar.
-
-```svelte showLineNumbers
-<script lang="ts">
-  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-</script>
-
-<Sidebar.Root />
-```
+The main `Sidebar.Root` component used to render a collapsible sidebar.
 
 ### Props
 
@@ -295,52 +190,25 @@ The main `Sidebar` component used to render a collapsible sidebar.
 | `variant`     | `sidebar`, `floating`, or `inset` | The variant of the sidebar.       |
 | `collapsible` | `offcanvas`, `icon`, or `none`    | Collapsible state of the sidebar. |
 
-### side
-
-Use the `side` prop to change the side of the sidebar.
-
-Available options are `left` and `right`.
-
-```svelte showLineNumbers
-<Sidebar.Root side="left | right" />
-```
-
-### variant
-
-Use the `variant` prop to change the variant of the sidebar.
-
-Available options are `sidebar`, `floating` and `inset`.
-
-```svelte showLineNumbers
-<Sidebar.Root variant="sidebar | floating | inset" />
-```
-
-```svelte showLineNumbers
-<Sidebar.Provider>
-  <Sidebar.Root variant="inset">
-    <Sidebar.Inset>
-      <main>
-        </main>
-    </Sidebar.Inset>
-  </Sidebar.Root>
-</Sidebar.Provider>
-```
-
-### collapsible
-
-Use the `collapsible` prop to make the sidebar collapsible.
-
-Available options are `offcanvas`, `icon` and `none`.
-
-```svelte showLineNumbers
-<Sidebar.Root collapsible="offcanvas | icon | none" />
-```
-
 | Prop        | Description                                                  |
 | ----------- | ------------------------------------------------------------ |
 | `offcanvas` | A collapsible sidebar that slides in from the left or right. |
 | `icon`      | A sidebar that collapses to icons.                           |
 | `none`      | A non-collapsible sidebar.                                   |
+
+<Callout>
+  **Note:** If you use the `inset` variant, remember to wrap your main content
+  in a `Sidebar.Inset` component.
+</Callout>
+
+```svelte showLineNumbers
+<Sidebar.Provider>
+  <Sidebar.Root variant="inset" />
+  <Sidebar.Inset>
+    <main>{@render children?.()}</main>
+  </Sidebar.Inset>
+</Sidebar.Provider>
+```
 
 ## useSidebar
 
@@ -350,8 +218,6 @@ The `useSidebar` function is used to hook into the sidebar context. It returns a
 <script lang="ts">
   import { useSidebar } from "$lib/components/ui/sidebar/index.js";
   const sidebar = useSidebar();
-
-  // ...
 
   sidebar.state;
   sidebar.isMobile;
@@ -373,13 +239,7 @@ The `useSidebar` function is used to hook into the sidebar context. It returns a
 
 Use the `Sidebar.Header` component to add a sticky header to the sidebar.
 
-The following example adds a `<DropdownMenu>` to the `Sidebar.Header`.
-
-<ComponentPreview framework="svelte" name="demo-sidebar-header" />
-
-<figcaption class="text-center text-sm text-gray-500">
-  A sidebar header with a dropdown menu.
-</figcaption>
+<ComponentPreview framework="svelte" name="sidebar-header" />
 
 ```svelte showLineNumbers title="src/lib/components/app-sidebar.svelte"
 <Sidebar.Root>
@@ -393,9 +253,6 @@ The following example adds a `<DropdownMenu>` to the `Sidebar.Header`.
             <DropdownMenu.Item>
               <span>Acme Inc</span>
             </DropdownMenu.Item>
-            <DropdownMenu.Item>
-              <span>Acme Corp.</span>
-            </DropdownMenu.Item>
           </DropdownMenu.Content>
         </DropdownMenu.Root>
       </Sidebar.MenuItem>
@@ -408,13 +265,7 @@ The following example adds a `<DropdownMenu>` to the `Sidebar.Header`.
 
 Use the `Sidebar.Footer` component to add a sticky footer to the sidebar.
 
-The following example adds a `<DropdownMenu>` to the `Sidebar.Footer`.
-
-<ComponentPreview framework="svelte" name="demo-sidebar-footer" />
-
-<figcaption class="text-center text-sm text-gray-500">
-  A sidebar footer with a dropdown menu.
-</figcaption>
+<ComponentPreview framework="svelte" name="sidebar-footer" />
 
 ```svelte showLineNumbers title="src/lib/components/app-sidebar.svelte"
 <Sidebar.Provider>
@@ -446,11 +297,6 @@ The following example adds a `<DropdownMenu>` to the `Sidebar.Footer`.
       </Sidebar.Menu>
     </Sidebar.Footer>
   </Sidebar.Root>
-  <Sidebar.Inset>
-    <header class="flex h-12 items-center justify-between px-4">
-      <Sidebar.Trigger />
-    </header>
-  </Sidebar.Inset>
 </Sidebar.Provider>
 ```
 
@@ -473,11 +319,7 @@ Use the `Sidebar.Group` component to create a section within the sidebar.
 
 A `Sidebar.Group` has a `Sidebar.GroupLabel`, a `Sidebar.GroupContent` and an optional `Sidebar.GroupAction`.
 
-<ComponentPreview framework="svelte" name="demo-sidebar-group" />
-
-<figcaption class="text-center text-sm text-gray-500">
-  A sidebar group.
-</figcaption>
+<ComponentPreview framework="svelte" name="sidebar-group" />
 
 ```svelte showLineNumbers
 <Sidebar.Root>
@@ -493,15 +335,9 @@ A `Sidebar.Group` has a `Sidebar.GroupLabel`, a `Sidebar.GroupContent` and an op
 </Sidebar.Root>
 ```
 
-## Collapsible Sidebar.Group
-
 To make a `Sidebar.Group` collapsible, wrap it in a `Collapsible`.
 
-<ComponentPreview framework="svelte" name="demo-sidebar-group-collapsible" />
-
-<figcaption class="text-center text-sm text-gray-500">
-  A collapsible sidebar group.
-</figcaption>
+<ComponentPreview framework="svelte" name="sidebar-group-collapsible" />
 
 ```svelte showLineNumbers
 <Collapsible.Root open class="group/collapsible">
@@ -519,6 +355,8 @@ To make a `Sidebar.Group` collapsible, wrap it in a `Collapsible`.
 
 Use the `Sidebar.GroupAction` component to add an action to a `Sidebar.Group`.
 
+<ComponentPreview framework="svelte" name="sidebar-group-action" />
+
 ```svelte showLineNumbers {3-5}
 <Sidebar.Group>
   <Sidebar.GroupLabel>Projects</Sidebar.GroupLabel>
@@ -529,41 +367,13 @@ Use the `Sidebar.GroupAction` component to add an action to a `Sidebar.Group`.
 </Sidebar.Group>
 ```
 
-<ComponentPreview framework="svelte" name="demo-sidebar-group-action" />
-
-<figcaption class="text-center text-sm text-gray-500">
-  A sidebar group with an action button.
-</figcaption>
-
 ## Sidebar.Menu
 
 The `Sidebar.Menu` component is used for building a menu within a `Sidebar.Group`.
 
 A `Sidebar.Menu` is composed of `Sidebar.MenuItem`, `Sidebar.MenuButton`, `Sidebar.MenuAction`, and `Sidebar.MenuSub` components.
 
-<img
-  src="/img/sidebar/sidebar-menu.png"
-  width="716"
-  height="420"
-  alt="Sidebar menu"
-  class="mt-6 w-full overflow-hidden rounded-lg border dark:hidden"
-/>
-
-<img
-  src="/img/sidebar/sidebar-menu-dark.png"
-  width="716"
-  height="420"
-  alt="Sidebar menu"
-  class="mt-6 hidden w-full overflow-hidden rounded-lg border dark:block"
-/>
-
-Here's an example of a `Sidebar.Menu` component rendering a list of projects.
-
-<ComponentPreview framework="svelte" name="demo-sidebar-menu" />
-
-<figcaption class="text-center text-sm text-gray-500">
-  A sidebar menu with a list of projects.
-</figcaption>
+<ComponentPreview framework="svelte" name="sidebar-menu" />
 
 ```svelte showLineNumbers
 <Sidebar.Root>
@@ -589,25 +399,7 @@ Here's an example of a `Sidebar.Menu` component rendering a list of projects.
 
 The `Sidebar.MenuButton` component is used to render a menu button within a `Sidebar.Menu`.
 
-### Link or Anchor
-
 By default, the `Sidebar.MenuButton` renders a button, but you can use the `child` snippet to render a different component such as an `<a>` tag.
-
-```svelte showLineNumbers
-<Sidebar.MenuButton>
-  </Sidebar.MenuButton>
-```
-
-### Icon and Label
-
-You can render an icon and a truncated label inside the button. Remember to wrap the label in a `<span>` tag.
-
-```svelte showLineNumbers
-<Sidebar.MenuButton>
-  </Sidebar.MenuButton>
-```
-
-### isActive
 
 Use the `isActive` prop to mark a menu item as active.
 
@@ -620,27 +412,7 @@ Use the `isActive` prop to mark a menu item as active.
 
 The `Sidebar.MenuAction` component is used to render a menu action within a `Sidebar.Menu`.
 
-This button works independently of the `Sidebar.MenuButton`, i.e. you can have the `Sidebar.MenuButton` as a clickable link and the `Sidebar.MenuAction` as a button.
-
-```svelte showLineNumbers
-<Sidebar.MenuItem>
-  <Sidebar.MenuButton>
-    </Sidebar.MenuButton>
-  <Sidebar.MenuAction>
-    <Plus /> <span class="sr-only">Add Project</span>
-  </Sidebar.MenuAction>
-</Sidebar.MenuItem>
-```
-
-### DropdownMenu
-
-Here's an example of a `Sidebar.MenuAction` that renders a `DropdownMenu`.
-
-<ComponentPreview framework="svelte" name="demo-sidebar-menu-action" />
-
-<figcaption class="text-center text-sm text-gray-500">
-  A sidebar menu action with a dropdown menu.
-</figcaption>
+<ComponentPreview framework="svelte" name="sidebar-menu-action" />
 
 ```svelte showLineNumbers
 <Sidebar.MenuItem>
@@ -665,13 +437,7 @@ Here's an example of a `Sidebar.MenuAction` that renders a `DropdownMenu`.
 
 The `Sidebar.MenuSub` component is used to render a submenu within a `Sidebar.Menu`.
 
-Use `Sidebar.MenuSubItem` and `Sidebar.MenuSubButton` to render a submenu item.
-
-<ComponentPreview framework="svelte" name="demo-sidebar-menu-sub" />
-
-<figcaption class="text-center text-sm text-gray-500">
-  A sidebar menu sub.
-</figcaption>
+<ComponentPreview framework="svelte" name="sidebar-menu-sub" />
 
 ```svelte showLineNumbers
 <Sidebar.MenuItem>
@@ -691,11 +457,7 @@ Use `Sidebar.MenuSubItem` and `Sidebar.MenuSubButton` to render a submenu item.
 
 To make a `Sidebar.Menu` collapsible, wrap it and the `Sidebar.MenuSub` components in a `Collapsible`.
 
-<ComponentPreview framework="svelte" name="demo-sidebar-menu-collapsible" />
-
-<figcaption class="text-center text-sm text-gray-500">
-  A collapsible sidebar menu.
-</figcaption>
+<ComponentPreview framework="svelte" name="sidebar-menu-collapsible" />
 
 ```svelte showLineNumbers
 <Sidebar.Menu>
@@ -717,11 +479,7 @@ To make a `Sidebar.Menu` collapsible, wrap it and the `Sidebar.MenuSub` componen
 
 The `Sidebar.MenuBadge` component is used to render a badge within a `Sidebar.MenuItem`.
 
-<ComponentPreview framework="svelte" name="demo-sidebar-menu-badge" />
-
-<figcaption class="text-center text-sm text-gray-500">
-  A sidebar menu badge.
-</figcaption>
+<ComponentPreview framework="svelte" name="sidebar-menu-badge" />
 
 ```svelte showLineNumbers
 <Sidebar.MenuItem>
@@ -732,7 +490,7 @@ The `Sidebar.MenuBadge` component is used to render a badge within a `Sidebar.Me
 
 ## Sidebar.MenuSkeleton
 
-The `Sidebar.MenuSkeleton` component is used to render a skeleton within a `Sidebar.MenuItem`. You can use this to show a loading state while waiting for data to load.
+The `Sidebar.MenuSkeleton` component is used to render a skeleton within a `Sidebar.MenuItem`.
 
 ```svelte showLineNumbers
 <Sidebar.Menu>
@@ -744,40 +502,9 @@ The `Sidebar.MenuSkeleton` component is used to render a skeleton within a `Side
 </Sidebar.Menu>
 ```
 
-## Sidebar.Separator
-
-The `Sidebar.Separator` component is used to render a separator within a `Sidebar`.
-
-```svelte showLineNumbers
-<Sidebar.Root>
-  <Sidebar.Header />
-  <Sidebar.Separator />
-  <Sidebar.Content>
-    <Sidebar.Group />
-    <Sidebar.Separator />
-    <Sidebar.Group />
-  </Sidebar.Content>
-</Sidebar.Root>
-```
-
 ## Sidebar.Trigger
 
 Use the `Sidebar.Trigger` component to render a button that toggles the sidebar.
-
-The `Sidebar.Trigger` component must be used within a `Sidebar.Provider`.
-
-```svelte showLineNumbers
-<Sidebar.Provider>
-  <Sidebar.Root />
-  <main>
-    <Sidebar.Trigger />
-  </main>
-</Sidebar.Provider>
-```
-
-## Custom Trigger
-
-To create a custom trigger, you can use the `useSidebar` hook.
 
 ```svelte showLineNumbers
 <script lang="ts">
@@ -807,11 +534,7 @@ The `Sidebar.Rail` component is used to render a rail within a `Sidebar.Root`. T
 
 Use Svelte's [Function Binding](https://svelte.dev/docs/svelte/bind#Function-bindings) to control the sidebar state.
 
-<ComponentPreview framework="svelte" name="demo-sidebar-controlled" />
-
-<figcaption class="text-center text-sm text-gray-500">
-  A controlled sidebar.
-</figcaption>
+<ComponentPreview framework="svelte" name="sidebar-controlled" />
 
 ```svelte showLineNumbers
 <script lang="ts">
@@ -821,10 +544,6 @@ Use Svelte's [Function Binding](https://svelte.dev/docs/svelte/bind#Function-bin
 </script>
 
 <Sidebar.Provider bind:open={() => myOpen, (newOpen) => (myOpen = newOpen)}>
-  <Sidebar.Root />
-</Sidebar.Provider>
-
-<Sidebar.Provider bind:open>
   <Sidebar.Root />
 </Sidebar.Provider>
 ```
@@ -857,13 +576,9 @@ We use the following CSS variables to theme the sidebar.
 }
 ```
 
-**We intentionally use different variables for the sidebar and the rest of the application** to make it easy to have a sidebar that is styled differently from the rest of the application. Think a sidebar with a darker shade from the main application.
-
 ## Styling
 
 Here are some tips for styling the sidebar based on different states.
-
-- **Styling an element based on the sidebar collapsible state.** The following will hide the `Sidebar.Group` when the sidebar is in `icon` mode.
 
 ```svelte
 <Sidebar.Root collapsible="icon">
@@ -872,8 +587,6 @@ Here are some tips for styling the sidebar based on different states.
   </Sidebar.Content>
 </Sidebar.Root>
 ```
-
-- **Styling a menu action based on the menu button active state.** The following will force the menu action to be visible when the menu button is active.
 
 ```svelte
 <Sidebar.MenuItem>
@@ -884,4 +597,27 @@ Here are some tips for styling the sidebar based on different states.
 </Sidebar.MenuItem>
 ```
 
-You can find more tips on using states for styling in this [Twitter thread](https://x.com/shadcn/status/1842329158879420864).
+## API Reference
+
+### Sidebar.Provider
+
+| Prop           | Type                      | Description                                  |
+| -------------- | ------------------------- | -------------------------------------------- |
+| `open`         | `boolean`                 | Open state of the sidebar (bindable).        |
+| `onOpenChange` | `(open: boolean) => void` | Callback when open state changes.            |
+
+### Sidebar.Root
+
+| Prop          | Type                              | Description                       |
+| ------------- | --------------------------------- | --------------------------------- |
+| `side`        | `left` or `right`                 | The side of the sidebar.          |
+| `variant`     | `sidebar`, `floating`, or `inset` | The variant of the sidebar.       |
+| `collapsible` | `offcanvas`, `icon`, or `none`    | Collapsible state of the sidebar. |
+
+### Sidebar.MenuButton
+
+| Prop       | Type      | Description                          |
+| ---------- | --------- | ------------------------------------ |
+| `isActive` | `boolean` | Whether the menu item is active.     |
+| `size`     | `default` or `sm` or `lg` | The size of the button. |
+| `tooltip`  | `string`  | Tooltip shown when sidebar is collapsed. |

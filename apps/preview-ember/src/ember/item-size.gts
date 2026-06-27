@@ -1,49 +1,43 @@
-import { Button } from '@/ember-ui/button';
 import {
   Item,
-  ItemActions,
   ItemContent,
   ItemDescription,
   ItemMedia,
   ItemTitle,
 } from '@/ember-ui/item';
 
-import BadgeCheckIcon from '~icons/ms/verified';
-import ChevronRightIcon from '~icons/ms/chevron_right';
+import InboxIcon from '~icons/ms/inbox';
 
 <template>
   <div class="flex w-full max-w-md flex-col gap-6">
     <Item @variant="outline">
+      <ItemMedia @variant="icon">
+        <InboxIcon />
+      </ItemMedia>
       <ItemContent>
-        <ItemTitle>Basic Item</ItemTitle>
+        <ItemTitle>Default Size</ItemTitle>
         <ItemDescription>
-          A simple item with title and description.
+          The standard size for most use cases.
         </ItemDescription>
       </ItemContent>
-      <ItemActions>
-        <Button @size="sm" @variant="outline">
-          Action
-        </Button>
-      </ItemActions>
     </Item>
-    <Item @asChild={{true}} @size="sm" @variant="outline" as |item|>
-      <a
-        class={{item.class}}
-        data-size={{item.size}}
-        data-slot={{item.slot}}
-        data-variant={{item.variant}}
-        href="#"
-      >
-        <ItemMedia>
-          <BadgeCheckIcon class="size-5" />
-        </ItemMedia>
-        <ItemContent>
-          <ItemTitle>Your profile has been verified.</ItemTitle>
-        </ItemContent>
-        <ItemActions>
-          <ChevronRightIcon class="size-4" />
-        </ItemActions>
-      </a>
+    <Item @size="sm" @variant="outline">
+      <ItemMedia @variant="icon">
+        <InboxIcon />
+      </ItemMedia>
+      <ItemContent>
+        <ItemTitle>Small Size</ItemTitle>
+        <ItemDescription>A compact size for dense layouts.</ItemDescription>
+      </ItemContent>
+    </Item>
+    <Item @size="xs" @variant="outline">
+      <ItemMedia @variant="icon">
+        <InboxIcon />
+      </ItemMedia>
+      <ItemContent>
+        <ItemTitle>Extra Small Size</ItemTitle>
+        <ItemDescription>The most compact size available.</ItemDescription>
+      </ItemContent>
     </Item>
   </div>
 </template>

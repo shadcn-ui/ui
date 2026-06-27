@@ -3,9 +3,10 @@ title: Collapsible
 description: An interactive component which expands/collapses a panel.
 base: vue
 component: true
+featured: true
 ---
 
-<ComponentPreview framework="vue" name="collapsible-demo" />
+<ComponentPreview framework="vue" name="collapsible-demo" align="start" />
 
 ## Installation
 
@@ -60,3 +61,60 @@ import {
   </Collapsible>
 </template>
 ```
+
+## Composition
+
+Use the following composition to build a `Collapsible`:
+
+```text
+Collapsible
+├── CollapsibleTrigger
+└── CollapsibleContent
+```
+
+## Controlled State
+
+Use the `v-model:open` directive to control the state.
+
+```vue showLineNumbers
+<script setup lang="ts">
+import { ref } from "vue"
+
+const open = ref(false)
+</script>
+
+<template>
+  <Collapsible v-model:open="open">
+    <CollapsibleTrigger>Toggle</CollapsibleTrigger>
+    <CollapsibleContent>Content</CollapsibleContent>
+  </Collapsible>
+</template>
+```
+
+## Examples
+
+### Basic
+
+<ComponentPreview framework="vue" name="collapsible-basic" align="start" />
+
+### Settings Panel
+
+Use a trigger button to reveal additional settings.
+
+<ComponentPreview framework="vue" name="collapsible-settings" />
+
+### File Tree
+
+Use nested collapsibles to build a file tree.
+
+<ComponentPreview framework="vue" name="collapsible-file-tree" previewClassName="h-[36rem]" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="vue" name="collapsible-rtl" direction="rtl" align="start" />
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/docs/primitives/components/collapsible#api-reference) documentation for more information.

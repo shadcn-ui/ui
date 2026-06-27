@@ -42,7 +42,7 @@ npx shadcn@latest add @force-ui-vue/aspect-ratio
 ## Usage
 
 ```vue showLineNumbers
-<script lang="ts">
+<script setup lang="ts">
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 </script>
 
@@ -52,3 +52,32 @@ import { AspectRatio } from "@/components/ui/aspect-ratio"
   </AspectRatio>
 </template>
 ```
+
+## Examples
+
+### Square
+
+A square aspect ratio component using the `:ratio="1 / 1"` prop. This is useful for displaying images in a square format.
+
+<ComponentPreview framework="vue" name="aspect-ratio-square" />
+
+### Portrait
+
+A portrait aspect ratio component using the `:ratio="9 / 16"` prop. This is useful for displaying images in a portrait format.
+
+<ComponentPreview
+  framework="vue"
+  name="aspect-ratio-portrait"
+  previewClassName="h-96"
+/>
+
+## API Reference
+
+### AspectRatio
+
+The `AspectRatio` component displays content within a desired ratio.
+
+| Prop        | Type     | Default | Required |
+| ----------- | -------- | ------- | -------- |
+| `ratio`     | `number` | -       | Yes      |
+| `class`     | `string` | -       | No       |

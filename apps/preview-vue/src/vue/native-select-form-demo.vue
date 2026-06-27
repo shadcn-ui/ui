@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
+import { h } from 'vue'
 import { toast } from 'vue-sonner'
 
 import { z } from 'zod'

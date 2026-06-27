@@ -55,9 +55,11 @@ import { Button } from '@/ui/button';
 
 ## Cursor
 
-Tailwind v4 switched from `cursor: pointer` to `cursor: default` for the button component.
+Tailwind v4 [switched](https://tailwindcss.com/docs/upgrade-guide#buttons-use-the-default-cursor) from `cursor: pointer` to `cursor: default` for the button component.
 
 If you want to keep the `cursor: pointer` behavior, add the following code to your CSS file:
+
+You can also enable this during project setup with `npx shadcn@latest init --pointer`.
 
 ```css showLineNumbers title="app.css"
 @layer base {
@@ -71,6 +73,8 @@ If you want to keep the `cursor: pointer` behavior, add the following code to yo
 ## Examples
 
 ### Size
+
+Use the `size` prop to change the size of the button.
 
 <ComponentPreview framework="ember" name="button-size" />
 
@@ -104,7 +108,7 @@ If you want to keep the `cursor: pointer` behavior, add the following code to yo
 
 ### With Icon
 
-The spacing between the icon and the text is automatically adjusted based on the size of the button. You do not need any margin on the icon.
+Remember to add the `data-icon="inline-start"` or `data-icon="inline-end"` attribute to the icon for the correct spacing.
 
 <ComponentPreview framework="ember" name="button-with-icon" />
 
@@ -116,19 +120,21 @@ Use the `rounded-full` class to make the button rounded.
 
 ### Spinner
 
-<ComponentPreview framework="ember" name="button-loading" />
+Render a `<Spinner />` component inside the button to show a loading state. Remember to add the `data-icon="inline-start"` or `data-icon="inline-end"` attribute to the spinner for the correct spacing.
+
+<ComponentPreview framework="ember" name="button-spinner" />
 
 ### Button Group
 
-To create a button group, use the `ButtonGroup` component. See the [Button Group](/docs/components/button-group) documentation for more details.
+To create a button group, use the `ButtonGroup` component. See the [Button Group](/docs/components/ember/button-group) documentation for more details.
 
 <ComponentPreview framework="ember" name="button-group-demo" />
 
-### Link Component
+### As Child
 
-You can use the `@asChild` argument to make another component look like a button. Here's an example of a link that looks like a button:
+You can use the `@asChild` argument on `<Button />` to make another component look like a button. Here's an example of a link that looks like a button.
 
-<ComponentPreview framework="ember" name="button-as-link" />
+<ComponentPreview framework="ember" name="button-aschild" />
 
 ## API Reference
 
@@ -136,11 +142,11 @@ You can use the `@asChild` argument to make another component look like a button
 
 The `Button` component is a wrapper around the `button` element that adds a variety of styles and functionality.
 
-| Prop        | Type                                                                          | Default     |
-| ----------- | ----------------------------------------------------------------------------- | ----------- |
-| `@variant`  | `"default" \| "outline" \| "ghost" \| "destructive" \| "secondary" \| "link"` | `"default"` |
-| `@size`     | `"default" \| "sm" \| "lg" \| "icon" \| "icon-sm" \| "icon-lg"`               | `"default"` |
-| `@asChild`  | `boolean`                                                                     | `false`     |
-| `@disabled` | `boolean`                                                                     | `false`     |
-| `@type`     | `"button" \| "submit" \| "reset"`                                             | `"button"`  |
-| `@class`    | `string`                                                                      | `undefined` |
+| Prop        | Type                                                                                 | Default     |
+| ----------- | ------------------------------------------------------------------------------------ | ----------- |
+| `@variant`  | `"default" \| "outline" \| "ghost" \| "destructive" \| "secondary" \| "link"`        | `"default"` |
+| `@size`     | `"default" \| "xs" \| "sm" \| "lg" \| "icon" \| "icon-xs" \| "icon-sm" \| "icon-lg"` | `"default"` |
+| `@asChild`  | `boolean`                                                                            | `false`     |
+| `@disabled` | `boolean`                                                                            | `false`     |
+| `@type`     | `"button" \| "submit" \| "reset"`                                                    | `"button"`  |
+| `@class`    | `string`                                                                             | `undefined` |

@@ -55,3 +55,55 @@ import {
   <AvatarFallback>CN</AvatarFallback>
 </Avatar>
 ```
+
+## Composition
+
+Use the following composition to build an `Avatar`:
+
+```text
+Avatar
+├── AvatarImage
+└── AvatarFallback
+```
+
+## Examples
+
+### Basic
+
+A basic avatar component with an image and a fallback.
+
+<ComponentPreview framework="ember" name="avatar-basic" />
+
+### Dropdown
+
+You can use the `Avatar` component as a trigger for a dropdown menu.
+
+<ComponentPreview framework="ember" name="avatar-dropdown" />
+
+## API Reference
+
+### Avatar
+
+The `Avatar` component is the root component that wraps the avatar image and fallback.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `@class`    | `string` | -       |
+
+### AvatarImage
+
+The `AvatarImage` component displays the avatar image.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `@src`      | `string` | -       |
+| `@alt`      | `string` | -       |
+| `@class`    | `string` | -       |
+
+### AvatarFallback
+
+The `AvatarFallback` component displays a fallback when the image fails to load.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `@class`    | `string` | -       |

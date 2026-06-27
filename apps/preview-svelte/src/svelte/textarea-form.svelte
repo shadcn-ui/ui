@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { z } from "zod";
+	import { z } from "zod/v3";
 	const formSchema = z.object({
 		bio: z
 			.string()
@@ -10,13 +10,13 @@
 
 <script lang="ts">
 	import { defaults, superForm } from "sveltekit-superforms";
-	import { zod4 } from "sveltekit-superforms/adapters";
+	import { zod, type ZodObjectType } from "sveltekit-superforms/adapters";
 	import { toast } from "svelte-sonner";
 	import * as Form from "@/svelte-ui/form/index.js";
 	import { Textarea } from "@/svelte-ui/textarea/index.js";
 
-	const form = superForm(defaults(zod4(formSchema)), {
-		validators: zod4(formSchema),
+	const form = superForm(defaults(zod(formSchema as ZodObjectType)), {
+		validators: zod(formSchema as ZodObjectType),
 		SPA: true,
 		onUpdate: ({ form: f }) => {
 			if (f.valid) {
@@ -39,7 +39,7 @@
 					{...props}
 					placeholder="Tell us a little bit about yourself"
 					class="resize-none"
-					bind:value={$formData.bio}
+					bind:value={$formData.bio as string}
 				/>
 				<Form.Description>
 					You can <span>@mention</span> other users and organizations.

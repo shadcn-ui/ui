@@ -7,6 +7,12 @@ component: true
 
 <ComponentPreview framework="vue" name="sidebar-demo" />
 
+Sidebars are one of the most complex components to build. They are central
+to any application and often contain a lot of moving parts.
+
+We now have a solid foundation to build on top of. Composable. Themeable.
+Customizable.
+
 ## Installation
 
 <CodeTabs>
@@ -39,122 +45,9 @@ npx shadcn@latest add @force-ui-vue/sidebar
 
 </CodeTabs>
 
-## Structure
-
-A `Sidebar` component is composed of the following parts:
-
-- `SidebarProvider` - Handles collapsible state.
-- `Sidebar` - The sidebar container.
-- `SidebarHeader` and SidebarFooter - Sticky at the top and bottom of the sidebar
-- `SidebarContent` - Scrollable content.
-- `SidebarGroup` - Section within the SidebarContent.
-- `SidebarTrigger` - Trigger for the Sidebar
-
-<img
-  src="/images/sidebar-structure.png"
-  width="716"
-  height="420"
-  alt="Sidebar Structure"
-  class="mt-6 w-full overflow-hidden rounded-lg border dark:hidden"
-/>
-<img
-  src="/images/sidebar-structure-dark.png"
-  width="716"
-  height="420"
-  alt="Sidebar Structure"
-  class="mt-6 hidden w-full overflow-hidden rounded-lg border dark:block"
-/>
-
 ## Usage
 
-```vue showLineNumbers
-<script setup lang="ts">
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarInset,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
-  SidebarRail,
-  SidebarTrigger,
-} from "@/components/ui/sidebar"
-</script>
-
-<template>
-  <SidebarProvider>
-    <Sidebar>
-      <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton size="lg">
-              <div
-                class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
-              >
-                <GalleryVerticalEnd class="size-4" />
-              </div>
-              <div class="grid flex-1 text-left text-sm leading-tight">
-                <span class="truncate font-semibold">Acme Inc</span>
-                <span class="truncate text-xs">Enterprise</span>
-              </div>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Platform</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton as-child>
-                  <a href="#">
-                    <Home />
-                    <span>Home</span>
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-      <SidebarFooter />
-      <SidebarRail />
-    </Sidebar>
-    <SidebarInset>
-      <header
-        class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12"
-      >
-        <div class="flex items-center gap-2 px-4">
-          <SidebarTrigger class="-ml-1" />
-        </div>
-      </header>
-      <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
-        <div class="grid auto-rows-min gap-4 md:grid-cols-3">
-          <div class="aspect-video rounded-xl bg-muted/50" />
-          <div class="aspect-video rounded-xl bg-muted/50" />
-          <div class="aspect-video rounded-xl bg-muted/50" />
-        </div>
-        <div class="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
-      </div>
-    </SidebarInset>
-  </SidebarProvider>
-</template>
-```
-
-## Your First Sidebar
-
-Let's start with the most basic sidebar A collapsible sidebar with a menu.
-
-Add a `SidebarProvider` and `SidebarTrigger` at the root of your application
-
-```vue showLineNumbers
+```vue showLineNumbers title="layouts/default.vue"
 <script setup lang="ts">
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import AppSidebar from "@/components/AppSidebar.vue"
@@ -171,233 +64,167 @@ import AppSidebar from "@/components/AppSidebar.vue"
 </template>
 ```
 
-Create a new sidebar component at `@/components/AppSidebar.vue`
-
-```vue showLineNumbers
+```vue showLineNumbers title="components/AppSidebar.vue"
 <script setup lang="ts">
-import { Sidebar, SidebarContent } from "@/components/ui/sidebar"
-</script>
-
-<template>
-  <Sidebar>
-    <SidebarContent />
-  </Sidebar>
-</template>
-```
-
-Now, let's add a `SidebarMenu` to the sidebar
-
-We'll use the `SidebarMenu` component in a `SidebarGroup`.
-
-```vue showLineNumbers
-<script setup lang="ts">
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-vue-next"
-
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
+  SidebarHeader,
 } from "@/components/ui/sidebar"
-
-// Menu items.
-const items = [
-  {
-    title: "Home",
-    url: "#",
-    icon: Home,
-  },
-  {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
-  },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-  },
-]
 </script>
 
 <template>
   <Sidebar>
+    <SidebarHeader />
     <SidebarContent>
-      <SidebarGroup>
-        <SidebarGroupLabel>Application</SidebarGroupLabel>
-        <SidebarGroupContent>
-          <SidebarMenu>
-            <SidebarMenuItem v-for="item in items" :key="item.title">
-              <SidebarMenuButton as-child>
-                <a :href="item.url">
-                  <component :is="item.icon" />
-                  <span>{{ item.title }}</span>
-                </a>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroupContent>
-      </SidebarGroup>
+      <SidebarGroup />
+      <SidebarGroup />
     </SidebarContent>
+    <SidebarFooter />
   </Sidebar>
 </template>
 ```
 
-You've created your first sidebar.
+## Composition
 
-You should see something like this:
+Use the following composition to build a `Sidebar` layout:
 
-<ComponentPreview framework="vue" name="sidebar-demo" />
+```text
+SidebarProvider
+├── Sidebar
+│   ├── SidebarHeader
+│   ├── SidebarContent
+│   │   ├── SidebarGroup
+│   │   │   ├── SidebarGroupLabel
+│   │   │   ├── SidebarGroupAction
+│   │   │   ├── SidebarGroupContent
+│   │   │   └── SidebarMenu
+│   │   │       ├── SidebarMenuItem
+│   │   │       │   ├── SidebarMenuButton
+│   │   │       │   ├── SidebarMenuAction
+│   │   │       │   └── SidebarMenuBadge
+│   │   │       └── SidebarMenuItem
+│   │   │           ├── SidebarMenuButton
+│   │   │           └── SidebarMenuSub
+│   │   │               ├── SidebarMenuSubItem
+│   │   │               └── SidebarMenuSubItem
+│   │   └── SidebarGroup
+│   │       └── SidebarMenu
+│   │           ├── SidebarMenuItem
+│   │           └── SidebarMenuItem
+│   ├── SidebarFooter
+│   └── SidebarRail
+├── SidebarInset
+└── SidebarTrigger
+```
 
-<figcaption class="text-center text-sm text-gray-500">
-  Your first sidebar
-</figcaption>
-## Components
+## Structure
 
-The components in the `Sidebar*.vue` files are built to be composable i.e you build your sidebar by putting the provided components together. They also compose well with other shadcn-vue components such as `DropdownMenu`, `Collapsible`, `Dialog`, etc.
+- **SidebarProvider** — Handles collapsible state and provides sidebar context to child components.
+- **Sidebar** — The main collapsible sidebar panel.
+- **SidebarHeader** — Sticky at the top; use for branding, titles, or workspace switchers.
+- **SidebarFooter** — Sticky at the bottom; use for user menus, settings, or actions.
+- **SidebarContent** — Scrollable region between the header and footer.
+- **SidebarGroup** — Groups related navigation with optional label, action, and content areas.
+- **SidebarMenu** / **SidebarMenuItem** — Menu structure for links, badges, actions, and nested submenus.
+- **SidebarRail** — Resize handle for adjusting sidebar width when applicable.
+- **SidebarInset** — Wraps main content when using the `inset` variant.
+- **SidebarTrigger** — Control that toggles the sidebar open or collapsed.
 
-**If you need to change the code in the `Sidebar*.vue` files, you are encourage to do so. The code is yours. Use the provided components as a starting point to build your own**
+<img
+  src="/images/sidebar-structure.png"
+  width="716"
+  height="420"
+  alt="Sidebar Structure"
+  class="mt-6 w-full overflow-hidden rounded-lg border dark:hidden"
+/>
+<img
+  src="/images/sidebar-structure-dark.png"
+  width="716"
+  height="420"
+  alt="Sidebar Structure"
+  class="mt-6 hidden w-full overflow-hidden rounded-lg border dark:block"
+/>
 
 ## SidebarProvider
 
-The `SidebarProvider` component is used to provide the sidebar context to all its children.
+The `SidebarProvider` component is used to provide the sidebar context to the `Sidebar` component. You should always wrap your application in a `SidebarProvider` component.
 
 ### Props
 
-The `SidebarProvider` component accepts the following props:
+| Name           | Type                      | Description                                  |
+| -------------- | ------------------------- | -------------------------------------------- |
+| `defaultOpen`  | `boolean`                 | Default open state of the sidebar.           |
+| `open`         | `boolean`                 | Open state of the sidebar (controlled).      |
+| `onOpenChange` | `(open: boolean) => void` | Sets open state of the sidebar (controlled). |
 
 ### Width
 
-Use the `defaultOpen`, `open`, and `onOpenChange` props to control the open state of the sidebar.
+If you have a single sidebar in your application, you can use the `SIDEBAR_WIDTH` and `SIDEBAR_WIDTH_MOBILE` variables in `sidebar.ts` to set the width of the sidebar.
+
+```ts showLineNumbers title="components/ui/sidebar.ts"
+const SIDEBAR_WIDTH = "16rem"
+const SIDEBAR_WIDTH_MOBILE = "18rem"
+```
+
+For multiple sidebars in your application, you can use the `--sidebar-width` and `--sidebar-width-mobile` CSS variables in the `style` prop.
 
 ```vue showLineNumbers
-<script setup lang="ts">
-import { ref } from "vue"
-
-const open = ref(false)
-</script>
-
-<template>
-  <SidebarProvider :open="open" @update:open="open = $event">
-    <!-- ... -->
-  </SidebarProvider>
-</template>
+<SidebarProvider
+  :style="{
+    '--sidebar-width': '20rem',
+    '--sidebar-width-mobile': '20rem',
+  }"
+>
+  <Sidebar />
+</SidebarProvider>
 ```
 
 ### Keyboard Shortcut
 
-The `SidebarProvider` component supports keyboard shortcuts to toggle the sidebar. The default shortcut is `cmd+b` or `ctrl+b`.
+To trigger the sidebar, you use the `cmd+b` keyboard shortcut on Mac and `ctrl+b` on Windows.
 
-```vue showLineNumbers
-<SidebarProvider>
-  <!-- ... -->
-</SidebarProvider>
-```
-
-### Persisted State
-
-To persist the sidebar state, you can use the `storageKey` prop on the `SidebarProvider` component.
-
-```vue showLineNumbers
-<SidebarProvider storage-key="sidebar">
-  <!-- ... -->
-</SidebarProvider>
-```
-
-```vue showLineNumbers
-<SidebarProvider
-  :default-open="false"
-  storage-key="sidebar"
-  class="flex min-h-screen"
->
-  <!-- ... -->
-</SidebarProvider>
+```ts showLineNumbers title="components/ui/sidebar.ts"
+const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 ```
 
 ## Sidebar
 
-The main sidebar component.
-
-```vue showLineNumbers
-<Sidebar>
-  <SidebarHeader />
-  <SidebarContent />
-  <SidebarFooter />
-</Sidebar>
-```
+The main `Sidebar` component used to render a collapsible sidebar.
 
 ### Props
 
-The `Sidebar` component accepts the following props:
+| Property      | Type                              | Description                       |
+| ------------- | --------------------------------- | --------------------------------- |
+| `side`        | `left` or `right`                 | The side of the sidebar.          |
+| `variant`     | `sidebar`, `floating`, or `inset` | The variant of the sidebar.       |
+| `collapsible` | `offcanvas`, `icon`, or `none`    | Collapsible state of the sidebar. |
 
-### side
+| Prop        | Description                                                  |
+| ----------- | ------------------------------------------------------------ |
+| `offcanvas` | A collapsible sidebar that slides in from the left or right. |
+| `icon`      | A sidebar that collapses to icons.                           |
+| `none`      | A non-collapsible sidebar.                                   |
 
-Use the `side` prop to set the side of the sidebar.
-
-```vue showLineNumbers
-<Sidebar side="left">
-  <!-- ... -->
-</Sidebar>
-```
-
-### variant
-
-Use the `variant` prop to set the variant of the sidebar.
-
-```vue showLineNumbers
-<!-- Default variant -->
-<Sidebar variant="sidebar">
-  <!-- ... -->
-</Sidebar>
-```
+<Callout>
+  **Note:** If you use the `inset` variant, remember to wrap your main content
+  in a `SidebarInset` component.
+</Callout>
 
 ```vue showLineNumbers
-<!-- Floating variant -->
-<Sidebar variant="floating">
-  <!-- ... -->
-</Sidebar>
-```
-
-```vue showLineNumbers
-<!-- Inset variant -->
-<Sidebar variant="inset">
-  <!-- ... -->
-</Sidebar>
-```
-
-### collapsible
-
-Use the `collapsible` prop to make the sidebar collapsible.
-
-```vue showLineNumbers
-<Sidebar collapsible="icon">
-  <!-- ... -->
-</Sidebar>
-```
-
-```vue showLineNumbers
-<Sidebar collapsible="offcanvas">
-  <!-- ... -->
-</Sidebar>
+<SidebarProvider>
+  <Sidebar variant="inset" />
+  <SidebarInset>
+    <main><slot /></main>
+  </SidebarInset>
+</SidebarProvider>
 ```
 
 ## useSidebar
 
-The `useSidebar` hook is used to control the sidebar.
+The `useSidebar` composable is used to control the sidebar.
 
 ```vue showLineNumbers
 <script setup lang="ts">
@@ -415,24 +242,40 @@ const {
 </script>
 ```
 
+| Property        | Type                      | Description                                   |
+| --------------- | ------------------------- | --------------------------------------------- |
+| `state`         | `expanded` or `collapsed` | The current state of the sidebar.             |
+| `open`          | `boolean`                 | Whether the sidebar is open.                  |
+| `setOpen`       | `(open: boolean) => void` | Sets the open state of the sidebar.           |
+| `openMobile`    | `boolean`                 | Whether the sidebar is open on mobile.        |
+| `setOpenMobile` | `(open: boolean) => void` | Sets the open state of the sidebar on mobile. |
+| `isMobile`      | `boolean`                 | Whether the sidebar is on mobile.             |
+| `toggleSidebar` | `() => void`              | Toggles the sidebar. Desktop and mobile.      |
+
 ## SidebarHeader
 
-Used to render the sidebar header.
+Use the `SidebarHeader` component to add a sticky header to the sidebar.
 
-```vue showLineNumbers
+<ComponentPreview framework="vue" name="sidebar-header" />
+
+```vue showLineNumbers title="components/AppSidebar.vue"
 <Sidebar>
   <SidebarHeader>
     <SidebarMenu>
       <SidebarMenuItem>
-        <SidebarMenuButton size="lg">
-          <div class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-            <GalleryVerticalEnd class="size-4" />
-          </div>
-          <div class="flex flex-col gap-0.5 leading-none">
-            <span class="font-semibold">Documentation</span>
-            <span class="">v1.0.0</span>
-          </div>
-        </SidebarMenuButton>
+        <DropdownMenu>
+          <DropdownMenuTrigger as-child>
+            <SidebarMenuButton>
+              Select Workspace
+              <ChevronDown class="ml-auto" />
+            </SidebarMenuButton>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent class="w-(--radix-popper-anchor-width)">
+            <DropdownMenuItem>
+              <span>Acme Inc</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>
   </SidebarHeader>
@@ -441,35 +284,18 @@ Used to render the sidebar header.
 
 ## SidebarFooter
 
-Used to render the sidebar footer.
+Use the `SidebarFooter` component to add a sticky footer to the sidebar.
+
+<ComponentPreview framework="vue" name="sidebar-footer" />
 
 ```vue showLineNumbers
 <Sidebar>
   <SidebarFooter>
     <SidebarMenu>
       <SidebarMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger as-child>
-            <SidebarMenuButton>
-              <User2 /> Username
-              <ChevronUp class="ml-auto" />
-            </SidebarMenuButton>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            side="top"
-            class="w-(--reka-popper-anchor-width)"
-          >
-            <DropdownMenuItem>
-              <span>Account</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <span>Billing</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <span>Sign out</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <SidebarMenuButton>
+          <User2 /> Username
+        </SidebarMenuButton>
       </SidebarMenuItem>
     </SidebarMenu>
   </SidebarFooter>
@@ -478,7 +304,7 @@ Used to render the sidebar footer.
 
 ## SidebarContent
 
-The scrollable content area of the sidebar.
+The `SidebarContent` component is used to wrap the content of the sidebar. This is where you add your `SidebarGroup` components. It is scrollable.
 
 ```vue showLineNumbers
 <Sidebar>
@@ -491,243 +317,128 @@ The scrollable content area of the sidebar.
 
 ## SidebarGroup
 
-Used to group sidebar menu items.
+Use the `SidebarGroup` component to create a section within the sidebar.
 
-```vue showLineNumbers
-<SidebarContent>
-  <SidebarGroup>
-    <SidebarGroupLabel>Application</SidebarGroupLabel>
-    <SidebarGroupContent>
-      <!-- SidebarMenu -->
-    </SidebarGroupContent>
-  </SidebarGroup>
-</SidebarContent>
-```
+A `SidebarGroup` has a `SidebarGroupLabel`, a `SidebarGroupContent` and an optional `SidebarGroupAction`.
 
-## Collapsible SidebarGroup
-
-To make a `SidebarGroup` collapsible, wrap it in a `Collapsible` component.
-
-```vue showLineNumbers
-<SidebarGroup as-child>
-  <Collapsible default-open class="group/collapsible">
-    <SidebarGroupLabel as-child>
-      <CollapsibleTrigger class="group/label w-full text-left text-sm text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground [&[data-state=open]>svg]:rotate-90">
-        Help
-        <ChevronRight class="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
-      </CollapsibleTrigger>
-    </SidebarGroupLabel>
-    <CollapsibleContent>
-      <SidebarGroupContent>
-        <SidebarMenu>
-          <!-- Menu items -->
-        </SidebarMenu>
-      </SidebarGroupContent>
-    </CollapsibleContent>
-  </Collapsible>
-</SidebarGroup>
-```
-
-## SidebarGroupAction
-
-The `SidebarGroupAction` component is used to render an action button in the sidebar group header.
+<ComponentPreview framework="vue" name="sidebar-group" />
 
 ```vue showLineNumbers
 <SidebarGroup>
-  <SidebarGroupLabel>
-    Projects
-    <SidebarGroupAction>
-      <Plus /> <span class="sr-only">Add Project</span>
-    </SidebarGroupAction>
-  </SidebarGroupLabel>
+  <SidebarGroupLabel>Application</SidebarGroupLabel>
+  <SidebarGroupAction>
+    <Plus /> <span class="sr-only">Add Project</span>
+  </SidebarGroupAction>
   <SidebarGroupContent></SidebarGroupContent>
 </SidebarGroup>
 ```
 
-## SidebarMenu
+To make a `SidebarGroup` collapsible, wrap it in a `Collapsible`.
 
-The `SidebarMenu` component is used to render a menu in the sidebar.
+<ComponentPreview framework="vue" name="sidebar-group-collapsible" />
 
 ```vue showLineNumbers
-<SidebarGroupContent>
-  <SidebarMenu>
-    <SidebarMenuItem>
-      <SidebarMenuButton as-child>
-        <a href="#">
-          <Home />
-          <span>Home</span>
-        </a>
-      </SidebarMenuButton>
-    </SidebarMenuItem>
-    <SidebarMenuItem>
-      <SidebarMenuButton as-child>
-        <a href="#">
-          <Inbox />
-          <span>Inbox</span>
-        </a>
-      </SidebarMenuButton>
-    </SidebarMenuItem>
-  </SidebarMenu>
-</SidebarGroupContent>
+<Collapsible default-open class="group/collapsible">
+  <SidebarGroup>
+    <SidebarGroupLabel as-child>
+      <CollapsibleTrigger>
+        Help
+        <ChevronDown class="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+      </CollapsibleTrigger>
+    </SidebarGroupLabel>
+    <CollapsibleContent>
+      <SidebarGroupContent />
+    </CollapsibleContent>
+  </SidebarGroup>
+</Collapsible>
+```
+
+## SidebarMenu
+
+The `SidebarMenu` component is used for building a menu within a `SidebarGroup`.
+
+<ComponentPreview framework="vue" name="sidebar-menu" />
+
+```vue showLineNumbers
+<SidebarMenu>
+  <SidebarMenuItem v-for="project in projects" :key="project.name">
+    <SidebarMenuButton as-child>
+      <a :href="project.url">
+        <component :is="project.icon" />
+        <span>{{ project.name }}</span>
+      </a>
+    </SidebarMenuButton>
+  </SidebarMenuItem>
+</SidebarMenu>
 ```
 
 ## SidebarMenuButton
 
-The `SidebarMenuButton` component is used to render a menu button in the sidebar.
+The `SidebarMenuButton` component is used to render a menu button within a `SidebarMenuItem`.
 
-### Link or Anchor
+By default, the `SidebarMenuButton` renders a button but you can use the `as-child` prop to render a different component such as a `RouterLink` or an `a` tag.
 
-Use the `as-child` prop to render the `SidebarMenuButton` as a link or anchor.
-
-```vue showLineNumbers
-<SidebarMenuButton as-child>
-  <a href="#">
-    <Home />
-    <span>Home</span>
-  </a>
-</SidebarMenuButton>
-```
-
-### Icon and Label
-
-You can render an icon and label in the `SidebarMenuButton` component.
+Use the `is-active` prop to mark a menu item as active.
 
 ```vue showLineNumbers
-<SidebarMenuButton>
-  <Home />
-  <span>Home</span>
-</SidebarMenuButton>
-```
-
-### isActive
-
-Use the `isActive` prop to mark a menu button as active.
-
-```vue showLineNumbers
-<SidebarMenuButton :is-active="true">
-  <Home />
-  <span>Home</span>
+<SidebarMenuButton as-child :is-active="true">
+  <a href="#">Home</a>
 </SidebarMenuButton>
 ```
 
 ## SidebarMenuAction
 
-The `SidebarMenuAction` component is used to render a menu action in the sidebar.
+The `SidebarMenuAction` component is used to render a menu action within a `SidebarMenuItem`.
+
+<ComponentPreview framework="vue" name="sidebar-menu-action" />
 
 ```vue showLineNumbers
 <SidebarMenuItem>
-  <SidebarMenuButton>
-    <Home />
-    <span>Home</span>
+  <SidebarMenuButton as-child>
+    <a href="#">
+      <Home />
+      <span>Home</span>
+    </a>
   </SidebarMenuButton>
   <SidebarMenuAction>
-    <MoreHorizontal />
+    <Plus /> <span class="sr-only">Add Project</span>
   </SidebarMenuAction>
-</SidebarMenuItem>
-```
-
-### DropdownMenu
-
-You can use the `SidebarMenuAction` component with a `DropdownMenu` component.
-
-```vue showLineNumbers
-<SidebarMenuItem>
-  <SidebarMenuButton>
-    <Home />
-    <span>Home</span>
-  </SidebarMenuButton>
-  <DropdownMenu>
-    <DropdownMenuTrigger as-child>
-      <SidebarMenuAction>
-        <MoreHorizontal />
-      </SidebarMenuAction>
-    </DropdownMenuTrigger>
-    <DropdownMenuContent side="right" align="start">
-      <DropdownMenuItem>
-        <span>Edit Project</span>
-      </DropdownMenuItem>
-      <DropdownMenuItem>
-        <span>Delete Project</span>
-      </DropdownMenuItem>
-    </DropdownMenuContent>
-  </DropdownMenu>
 </SidebarMenuItem>
 ```
 
 ## SidebarMenuSub
 
-The `SidebarMenuSub` component is used to render a submenu in the sidebar.
+The `SidebarMenuSub` component is used to render a submenu within a `SidebarMenu`.
+
+<ComponentPreview framework="vue" name="sidebar-menu-sub" />
 
 ```vue showLineNumbers
 <SidebarMenuItem>
-  <SidebarMenuButton>
-    <Home />
-    <span>Home</span>
-  </SidebarMenuButton>
+  <SidebarMenuButton />
   <SidebarMenuSub>
-    <SidebarMenuItem>
-      <SidebarMenuButton>
-        <span>History</span>
-      </SidebarMenuButton>
-    </SidebarMenuItem>
-
-    <SidebarMenuItem>
-      <SidebarMenuButton>
-        <span>Starred</span>
-      </SidebarMenuButton>
-    </SidebarMenuItem>
+    <SidebarMenuSubItem>
+      <SidebarMenuSubButton />
+    </SidebarMenuSubItem>
   </SidebarMenuSub>
-</SidebarMenuItem>
-```
-
-## Collapsible SidebarMenu
-
-To make a `SidebarMenu` collapsible, wrap it in a `Collapsible` component.
-
-```vue showLineNumbers
-<SidebarMenuItem>
-  <Collapsible default-open class="group/collapsible">
-    <CollapsibleTrigger as-child>
-      <SidebarMenuButton>
-        <Home />
-        <span>Home</span>
-        <ChevronRight class="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
-      </SidebarMenuButton>
-    </CollapsibleTrigger>
-    <CollapsibleContent>
-      <SidebarMenuSub>
-        <SidebarMenuItem>
-          <SidebarMenuButton>
-            <span>History</span>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
-
-        <SidebarMenuItem>
-          <SidebarMenuButton>
-            <span>Starred</span>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
-      </SidebarMenuSub>
-    </CollapsibleContent>
-  </Collapsible>
 </SidebarMenuItem>
 ```
 
 ## SidebarMenuBadge
 
-The `SidebarMenuBadge` component is used to render a badge in the sidebar menu.
+The `SidebarMenuBadge` component is used to render a badge within a `SidebarMenuItem`.
+
+<ComponentPreview framework="vue" name="sidebar-menu-badge" />
 
 ```vue showLineNumbers
-<SidebarMenuButton>
-  <Home />
-  <span>Home</span>
+<SidebarMenuItem>
+  <SidebarMenuButton />
   <SidebarMenuBadge>24</SidebarMenuBadge>
-</SidebarMenuButton>
+</SidebarMenuItem>
 ```
 
 ## SidebarMenuSkeleton
 
-You can use the `SidebarMenuSkeleton` component to render a skeleton loader in the sidebar menu.
+The `SidebarMenuSkeleton` component is used to render a skeleton for a `SidebarMenu`.
 
 ```vue showLineNumbers
 <SidebarMenu>
@@ -737,29 +448,9 @@ You can use the `SidebarMenuSkeleton` component to render a skeleton loader in t
 </SidebarMenu>
 ```
 
-## SidebarSeparator
-
-The `SidebarSeparator` component is used to render a separator in the sidebar.
-
-```vue showLineNumbers
-<SidebarContent>
-  <SidebarGroup />
-  <SidebarSeparator />
-  <SidebarGroup />
-</SidebarContent>
-```
-
 ## SidebarTrigger
 
-The `SidebarTrigger` component is used to render a trigger button for the sidebar.
-
-```vue showLineNumbers
-<SidebarTrigger />
-```
-
-## Custom Trigger
-
-You can create a custom trigger using the `useSidebar` hook.
+Use the `SidebarTrigger` component to render a button that toggles the sidebar.
 
 ```vue showLineNumbers
 <script setup lang="ts">
@@ -769,18 +460,20 @@ const { toggleSidebar } = useSidebar()
 </script>
 
 <template>
-  <Button @click="toggleSidebar"> Toggle Sidebar </Button>
+  <button @click="toggleSidebar">Toggle Sidebar</button>
 </template>
 ```
 
 ## SidebarRail
 
-The `SidebarRail` component is used to render a rail in the sidebar. This is usually used to toggle the sidebar on hover when the sidebar is collapsed.
+The `SidebarRail` component is used to render a rail within a `Sidebar`. This rail can be used to toggle the sidebar.
 
 ```vue showLineNumbers
-<Sidebar collapsible="icon">
+<Sidebar>
   <SidebarHeader />
-  <SidebarContent />
+  <SidebarContent>
+    <SidebarGroup />
+  </SidebarContent>
   <SidebarFooter />
   <SidebarRail />
 </Sidebar>
@@ -788,7 +481,9 @@ The `SidebarRail` component is used to render a rail in the sidebar. This is usu
 
 ## Controlled Sidebar
 
-Use the `open` and `onOpenChange` props to control the sidebar.
+Use the `open` and `@update:open` props to control the sidebar.
+
+<ComponentPreview framework="vue" name="sidebar-controlled" />
 
 ```vue showLineNumbers
 <script setup lang="ts">
@@ -806,7 +501,7 @@ const open = ref(false)
 
 ## Theming
 
-You can theme the sidebar using CSS variables.
+We use the following CSS variables to theme the sidebar.
 
 ```css
 @layer base {
@@ -824,8 +519,8 @@ You can theme the sidebar using CSS variables.
   .dark {
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 240 5.9% 10%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
@@ -836,7 +531,46 @@ You can theme the sidebar using CSS variables.
 
 ## Styling
 
-Here are some tips for styling the sidebar:
+Here are some tips for styling the sidebar based on different states.
 
-- Use the `data-sidebar` and `data-state` attributes to style the sidebar.
-- The sidebar automatically sets the `--sidebar-width` CSS variable. You can use this to adjust the layout of your main content.
+```vue
+<Sidebar collapsible="icon">
+  <SidebarContent>
+    <SidebarGroup class="group-data-[collapsible=icon]:hidden" />
+  </SidebarContent>
+</Sidebar>
+```
+
+```vue
+<SidebarMenuItem>
+  <SidebarMenuButton />
+  <SidebarMenuAction class="peer-data-[active=true]/menu-button:opacity-100" />
+</SidebarMenuItem>
+```
+
+## API Reference
+
+### SidebarProvider
+
+| Prop           | Type                      | Description                                  |
+| -------------- | ------------------------- | -------------------------------------------- |
+| `defaultOpen`  | `boolean`                 | Default open state of the sidebar.           |
+| `open`         | `boolean`                 | Open state of the sidebar (controlled).      |
+| `onOpenChange` | `(open: boolean) => void` | Sets open state of the sidebar (controlled). |
+
+### Sidebar
+
+| Prop          | Type                              | Description                       |
+| ------------- | --------------------------------- | --------------------------------- |
+| `side`        | `left` or `right`                 | The side of the sidebar.          |
+| `variant`     | `sidebar`, `floating`, or `inset` | The variant of the sidebar.       |
+| `collapsible` | `offcanvas`, `icon`, or `none`    | Collapsible state of the sidebar. |
+
+### SidebarMenuButton
+
+| Prop       | Type      | Description                          |
+| ---------- | --------- | ------------------------------------ |
+| `as-child` | `boolean` | Render as a child element.           |
+| `is-active`| `boolean` | Whether the menu item is active.     |
+| `size`     | `default` or `sm` or `lg` | The size of the button. |
+| `tooltip`  | `string`  | Tooltip shown when sidebar is collapsed. |

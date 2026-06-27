@@ -1,11 +1,14 @@
+import { Card, CardContent, CardHeader } from '@/ember-ui/card';
 import { Skeleton } from '@/ember-ui/skeleton';
 
 <template>
-  <div class="flex flex-col space-y-3">
-    <Skeleton @class="h-[125px] w-[250px] rounded-xl" />
-    <div class="space-y-2">
-      <Skeleton @class="h-4 w-[250px]" />
-      <Skeleton @class="h-4 w-[200px]" />
-    </div>
-  </div>
+  <Card @class="w-full max-w-xs">
+    <CardHeader>
+      <Skeleton @class="h-4 w-2/3" />
+      <Skeleton @class="h-4 w-1/2" />
+    </CardHeader>
+    <CardContent>
+      <Skeleton @class="aspect-video w-full" />
+    </CardContent>
+  </Card>
 </template>

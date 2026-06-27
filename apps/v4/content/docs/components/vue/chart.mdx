@@ -1,11 +1,52 @@
 ---
 title: Chart
-description: Beautiful charts. Built using Recharts. Copy and paste into your apps.
+description: Beautiful charts. Built using Unovis. Copy and paste into your apps.
 base: vue
 component: true
 ---
 
-<ComponentPreview framework="vue" name="chart-demo" />
+<ComponentPreview framework="vue" name="chart-demo" className="theme-blue [&_.preview]:h-auto [&_.preview]:p-0 [&_.preview]:lg:min-h-[404px] [&_.preview>div]:w-full [&_.preview>div]:border-none [&_.preview>div]:shadow-none" hideCode />
+
+Introducing **Charts**. A collection of chart components that you can copy and paste into your apps.
+
+Charts are designed to look great out of the box. They work well with the other components and are fully customizable to fit your project.
+
+[Browse the Charts Library](/charts).
+
+## Component
+
+We use [Unovis](https://unovis.dev/) under the hood.
+
+We designed the `chart` component with composition in mind. **You build your charts using Unovis components and only bring in custom components, such as `ChartTooltip`, when and where you need it**.
+
+```vue showLineNumbers
+<script setup lang="ts">
+import { VisGroupedBar, VisXYContainer } from "@unovis/vue"
+
+import type { ChartConfig } from "@/components/ui/chart"
+import {
+  ChartContainer,
+  ChartCrosshair,
+  ChartTooltip,
+  ChartTooltipContent,
+  componentToString,
+} from "@/components/ui/chart"
+</script>
+
+<template>
+  <ChartContainer :config="chartConfig" class="min-h-[200px] w-full">
+    <VisXYContainer :data="chartData">
+      <VisGroupedBar />
+      <ChartTooltip />
+      <ChartCrosshair
+        :template="componentToString(chartConfig, ChartTooltipContent)"
+      />
+    </VisXYContainer>
+  </ChartContainer>
+</template>
+```
+
+**The components are yours**.
 
 ## Installation
 
@@ -39,74 +80,23 @@ npx shadcn@latest add @force-ui-vue/chart
 
 </CodeTabs>
 
-## Usage
-
-```vue showLineNumbers
-<script setup lang="ts">
-import { VisGroupedBar, VisXYContainer } from "@unovis/vue"
-
-import type { ChartConfig } from "@/components/ui/chart"
-import {
-  ChartContainer,
-  ChartCrosshair,
-  ChartTooltip,
-  ChartTooltipContent,
-  componentToString,
-} from "@/components/ui/chart"
-
-const chartData = [
-  { date: new Date("2024-01-01"), desktop: 186, mobile: 80 },
-  { date: new Date("2024-02-01"), desktop: 305, mobile: 200 },
-  { date: new Date("2024-03-01"), desktop: 237, mobile: 120 },
-]
-type Data = (typeof chartData)[number]
-
-const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "var(--chart-1)",
-  },
-  mobile: {
-    label: "Mobile",
-    color: "var(--chart-2)",
-  },
-} satisfies ChartConfig
-</script>
-<template>
-  <ChartContainer :config="chartConfig" class="min-h-[400px] w-full">
-    <VisXYContainer :data="chartData">
-      <VisGroupedBar
-        :x="(d: Data) => d.date"
-        :y="[(d: Data) => d.desktop, (d: Data) => d.mobile]"
-        :color="[chartConfig.desktop.color, chartConfig.mobile.color]"
-      />
-      <ChartTooltip />
-      <ChartCrosshair
-        :template="
-          componentToString(chartConfig, ChartTooltipContent, {
-            labelFormatter(d) {
-              return new Date(d).toLocaleDateString('en-US', {
-                month: 'long',
-              })
-            },
-          })
-        "
-        :color="[chartConfig.desktop.color, chartConfig.mobile.color]"
-      />
-    </VisXYContainer>
-  </ChartContainer>
-</template>
-```
-
 ## Your First Chart
 
 Let's build your first chart. We'll build a bar chart, add a grid, axis, tooltip and legend.
 
-Start by defining your data
+<Steps>
+
+<Step>Start by defining your data</Step>
 
 The following data represents the number of desktop and mobile users for each month.
 
-```ts showLineNumbers
+<Callout className="mt-4">
+
+**Note:** Your data can be in any shape. You are not limited to the shape of the data below. Use the `x` and `y` props to map your data to the chart.
+
+</Callout>
+
+```ts title="components/example-chart.vue" showLineNumbers
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },
   { month: "February", desktop: 305, mobile: 200 },
@@ -117,59 +107,55 @@ const chartData = [
 ]
 ```
 
-Define your chart config
+<Step>Define your chart config</Step>
 
 The chart config holds configuration for the chart. This is where you place human-readable strings, such as labels, icons and color tokens for theming.
 
-```ts showLineNumbers
+```ts title="components/example-chart.vue" showLineNumbers
 import type { ChartConfig } from "@/components/ui/chart"
 
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "var(--chart-1)",
+    color: "#2563eb",
   },
   mobile: {
     label: "Mobile",
-    color: "var(--chart-2)",
+    color: "#60a5fa",
   },
 } satisfies ChartConfig
 ```
 
-Build your chart
+<Step>Build your chart</Step>
 
 You can now build your chart using Unovis components.
 
-<ComponentPreview framework="vue" name="chart-bar-demo" />
+<Callout className="mt-4 bg-amber-50 border-amber-200 dark:bg-amber-950/50 dark:border-amber-950">
 
-### Add an Axis
+**Important:** Remember to set a `min-h-[VALUE]` on the `ChartContainer` component. This is required for the chart to be responsive.
 
-To add axes to the chart, we use the `VisAxis` component.
+</Callout>
 
-Import the `VisAxis` component
+<ComponentPreview framework="vue" name="chart-example" previewClassName="h-80" />
 
-```vue showLineNumbers
-import { VisAxis, VisGroupedBar, VisXYContainer } from '@unovis/vue'
+</Steps>
+
+### Add a Grid
+
+Let's add a grid to the chart.
+
+<Steps className="mb-0 pt-2">
+
+<Step>Import the `VisAxis` component.</Step>
+
+```ts
+import { VisAxis, VisGroupedBar, VisXYContainer } from "@unovis/vue"
 ```
 
-Add the `VisAxis` components to your chart
+<Step>Add the `VisAxis` component with `grid-line` to your chart.</Step>
 
 ```vue showLineNumbers
 <template>
-  <VisAxis
-    type="x"
-    :x="(d: Data) => d.date"
-    :tick-line="false"
-    :domain-line="false"
-    :grid-line="false"
-    :tick-format="(d: number) => {
-      const date = new Date(d)
-      return date.toLocaleDateString('en-US', {
-        month: 'short',
-      })
-    }"
-    :tick-values="chartData.map((d) => d.date)"
-  />
   <VisAxis
     type="y"
     :tick-format="(d: number) => ''"
@@ -180,49 +166,94 @@ Add the `VisAxis` components to your chart
 </template>
 ```
 
-<ComponentPreview framework="vue" name="chart-bar-demo-axis" />
+<ComponentPreview framework="vue" name="chart-example-grid" previewClassName="h-80" />
+
+</Steps>
+
+### Add an Axis
+
+To add an x-axis to the chart, we'll use the `VisAxis` component.
+
+<Steps className="mb-0 pt-2">
+
+<Step>Import the `VisAxis` component.</Step>
+
+```ts
+import { VisAxis, VisGroupedBar, VisXYContainer } from "@unovis/vue"
+```
+
+<Step>Add the `VisAxis` component to your chart.</Step>
+
+```vue showLineNumbers
+<template>
+  <VisAxis
+    type="x"
+    :x="(d: Data) => d.month"
+    :tick-line="false"
+    :domain-line="false"
+    :grid-line="false"
+    :tick-format="(value: string) => value.slice(0, 3)"
+    :tick-values="chartData.map((d) => d.month)"
+  />
+</template>
+```
+
+<ComponentPreview framework="vue" name="chart-example-axis" previewClassName="h-80" />
+
+</Steps>
 
 ### Add Tooltip
 
-To add a tooltip, we'll use the custom `ChartTooltip` and `ChartTooltipContent` components from `chart`.
+So far we've only used components from Unovis. They look great out of the box thanks to some customization in the `chart` component.
 
-Import the `ChartTooltip` and `ChartTooltipContent` components
+To add a tooltip, we'll use the custom `ChartTooltip`, `ChartTooltipContent` and `ChartCrosshair` components from `chart`.
+
+<Steps className="mb-0 pt-2">
+
+<Step>Import the `ChartTooltip`, `ChartTooltipContent` and `ChartCrosshair` components.</Step>
 
 ```ts
 import {
   ChartTooltip,
   ChartTooltipContent,
+  ChartCrosshair,
   componentToString,
 } from "@/components/ui/chart"
 ```
 
-Add the components to your chart
+<Step>Add the components to your chart.</Step>
 
 ```vue showLineNumbers
-<ChartTooltip />
-
-<ChartCrosshair
-  :template="componentToString(chartConfig, ChartTooltipContent)"
-/>
+<template>
+  <ChartTooltip />
+  <ChartCrosshair
+    :template="componentToString(chartConfig, ChartTooltipContent)"
+    color="#0000"
+  />
+</template>
 ```
 
-<ComponentPreview framework="vue" name="chart-bar-demo-tooltip" />
+<ComponentPreview framework="vue" name="chart-example-tooltip" previewClassName="h-80" />
 
 Hover to see the tooltips. Easy, right? Two components, and we've got a beautiful tooltip.
 
+</Steps>
+
 ### Add Legend
 
-We'll do the same for the legend. We'll use the `ChartLegend` and `ChartLegendContent` components from `chart`.
+We'll do the same for the legend. We'll use the `ChartLegendContent` component from `chart`.
 
-Import the `ChartLegendContent` components.
+<Steps className="mb-0 pt-2">
+
+<Step>Import the `ChartLegendContent` component.</Step>
 
 ```ts
 import { ChartLegendContent } from "@/components/ui/chart"
 ```
 
-Add the components to your chart.
+<Step>Add the component to your chart.</Step>
 
-```vue showLineNumbers {4}
+```vue showLineNumbers
 <template>
   <ChartContainer :config="chartConfig" class="min-h-[200px] w-full">
     <VisXYContainer :data="chartData" />
@@ -231,7 +262,9 @@ Add the components to your chart.
 </template>
 ```
 
-<ComponentPreview framework="vue" name="chart-bar-demo-legend" />
+<ComponentPreview framework="vue" name="chart-example-legend" previewClassName="h-80" />
+
+</Steps>
 
 Done. You've built your first chart! What's next?
 
@@ -245,24 +278,24 @@ The chart config is where you define the labels, icons and colors for a chart.
 
 It is intentionally decoupled from chart data.
 
-This allows you to share config and color tokens between charts. It can also works independently for cases where your data or color tokens live remotely or in a different format.
+This allows you to share config and color tokens between charts. It can also work independently for cases where your data or color tokens live remotely or in a different format.
 
-```vue showLineNumbers
+```vue showLineNumbers /ChartConfig/
 <script setup lang="ts">
-import { Monitor } from "lucide-vue-next"
+import TrendingUp from "@material-symbols/svg-400/rounded/trending_up.svg?component"
 
 import type { ChartConfig } from "@/components/ui/chart"
 
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    icon: Monitor,
+    icon: TrendingUp,
     // A color like 'hsl(220, 98%, 61%)' or 'var(--color-name)'
-    color: "var(--chart-1)",
+    color: "#2563eb",
     // OR a theme object with 'light' and 'dark' keys
     theme: {
-      light: "var(--chart-1)",
-      dark: "var(--chart-2)",
+      light: "#2563eb",
+      dark: "#dc2626",
     },
   },
 } satisfies ChartConfig
@@ -271,13 +304,15 @@ const chartConfig = {
 
 ## Theming
 
-Charts has built-in support for theming. You can use css variables (recommended) or color values in any color format, such as hex, hsl or oklch.
+Charts have built-in support for theming. You can use css variables (recommended) or color values in any color format, such as hex, hsl or oklch.
 
 ### CSS Variables
 
-Define your colors in your css file
+<Steps className="mb-0 pt-2">
 
-```css showLineNumbers
+<Step>Define your colors in your css file</Step>
+
+```css title="app/globals.css" showLineNumbers
 @layer base {
   :root {
     --chart-1: oklch(0.646 0.222 41.116);
@@ -291,9 +326,9 @@ Define your colors in your css file
 }
 ```
 
-Add the color to your `chartConfig`
+<Step>Add the color to your `chartConfig`</Step>
 
-```ts showLineNumbers {4,8}
+```ts title="components/example-chart.vue" showLineNumbers
 const chartConfig = {
   desktop: {
     label: "Desktop",
@@ -306,15 +341,29 @@ const chartConfig = {
 } satisfies ChartConfig
 ```
 
+</Steps>
+
 ### hex, hsl or oklch
 
 You can also define your colors directly in the chart config. Use the color format you prefer.
 
-```ts showLineNumbers
+```ts title="components/example-chart.vue" showLineNumbers
 const chartConfig = {
   desktop: {
     label: "Desktop",
     color: "#2563eb",
+  },
+  mobile: {
+    label: "Mobile",
+    color: "hsl(220, 98%, 61%)",
+  },
+  tablet: {
+    label: "Tablet",
+    color: "oklch(0.5 0.2 240)",
+  },
+  laptop: {
+    label: "Laptop",
+    color: "var(--chart-2)",
   },
 } satisfies ChartConfig
 ```
@@ -325,7 +374,7 @@ To use the theme colors in your chart, reference the colors using the format `va
 
 #### Components
 
-```vue showLineNumbers
+```vue
 <VisGroupedBar
   :x="(d) => d.month"
   :y="(d) => d.desktop"
@@ -335,28 +384,40 @@ To use the theme colors in your chart, reference the colors using the format `va
 
 #### Chart Data
 
-```ts showLineNumbers
+```ts title="components/example-chart.vue" showLineNumbers
 const chartData = [
   { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
 ]
 ```
 
+#### Tailwind
+
+```vue title="components/example-chart.vue"
+<label class="fill-(--color-desktop)" />
+```
+
 ## Tooltip
 
 A chart tooltip contains a label, name, indicator and value. You can use a combination of these to customize your tooltip.
+
+<ComponentPreview framework="vue" name="chart-tooltip" hideCode />
 
 You can turn on/off any of these using the `hideLabel`, `hideIndicator` props and customize the indicator style using the `indicator` prop.
 
 Use `labelKey` and `nameKey` to use a custom key for the tooltip label and name.
 
-Chart comes with the `ChartTooltip` and `ChartTooltipContent` components. You can use these two components to add custom tooltips to your chart.
+Chart comes with the `ChartTooltip`, `ChartTooltipContent` and `ChartCrosshair` components. You can use these components to add custom tooltips to your chart.
 
-```ts showLineNumbers
-import { ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+```ts title="components/example-chart.vue"
+import {
+  ChartTooltip,
+  ChartTooltipContent,
+  componentToString,
+} from "@/components/ui/chart"
 ```
 
-```vue showLineNumbers
+```vue title="components/example-chart.vue"
 <template>
   <ChartTooltip />
   <ChartCrosshair
@@ -385,7 +446,7 @@ Colors are automatically referenced from the chart config.
 
 To use a custom key for tooltip label and names, use the `labelKey` and `nameKey` props.
 
-```ts showLineNumbers
+```ts showLineNumbers /browser/
 const chartData = [
   { browser: "chrome", visitors: 187, fill: "var(--color-chrome)" },
   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
@@ -406,7 +467,7 @@ const chartConfig = {
 } satisfies ChartConfig
 ```
 
-```vue showLineNumbers
+```vue title="components/example-chart.vue"
 <template>
   <ChartCrosshair
     :template="
@@ -423,13 +484,13 @@ This will use `Total Visitors` for label and `Chrome` and `Safari` for the toolt
 
 ## Legend
 
-You can use the custom `<ChartLegendContent>` components to add a legend to your chart.
+You can use the custom `ChartLegendContent` component to add a legend to your chart.
 
-```ts
+```ts title="components/example-chart.vue"
 import { ChartLegendContent } from "@/components/ui/chart"
 ```
 
-```vue
+```vue title="components/example-chart.vue"
 <template>
   <ChartLegendContent />
 </template>
@@ -443,7 +504,7 @@ Colors are automatically referenced from the chart config.
 
 To use a custom key for legend names, use the `nameKey` prop.
 
-```tsx showLineNumbers /browser/
+```ts showLineNumbers /browser/
 const chartData = [
   { browser: "chrome", visitors: 187, fill: "var(--color-chrome)" },
   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
@@ -452,19 +513,29 @@ const chartData = [
 const chartConfig = {
   chrome: {
     label: "Chrome",
-    color: "hsl(var(--chart-1))",
+    color: "var(--chart-1)",
   },
   safari: {
     label: "Safari",
-    color: "hsl(var(--chart-2))",
+    color: "var(--chart-2)",
   },
 } satisfies ChartConfig
 ```
 
-```vue
+```vue title="components/example-chart.vue"
 <template>
   <ChartLegendContent name-key="browser" />
 </template>
 ```
 
 This will use `Chrome` and `Safari` for the legend names.
+
+## Accessibility
+
+You can turn on the `accessibilityLayer` prop to add an accessible layer to your chart.
+
+This prop adds keyboard access and screen reader support to your charts.
+
+```vue title="components/example-chart.vue"
+<VisXYContainer accessibilityLayer />
+```

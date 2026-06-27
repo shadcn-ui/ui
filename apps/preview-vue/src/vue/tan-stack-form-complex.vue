@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useForm } from '@tanstack/vue-form'
+import { h } from 'vue'
 import { toast } from 'vue-sonner'
 import { z } from 'zod'
 
@@ -117,7 +118,7 @@ function isInvalid(field: any) {
               <RadioGroup
                 :name="field.name"
                 :model-value="field.state.value"
-                @update:model-value="field.handleChange"
+                @update:model-value="(v) => field.handleChange(v as string)"
               >
                 <FieldLabel for="basic">
                   <Field
@@ -169,7 +170,7 @@ function isInvalid(field: any) {
                 :name="field.name"
                 :model-value="field.state.value"
                 :aria-invalid="isInvalid(field)"
-                @update:model-value="field.handleChange"
+                @update:model-value="(v) => field.handleChange(v as string)"
               >
                 <SelectTrigger :id="field.name">
                   <SelectValue placeholder="Select" />
@@ -208,7 +209,7 @@ function isInvalid(field: any) {
                     :name="field.name"
                     :aria-invalid="isInvalid(field)"
                     :checked="field.state.value.includes(addon.id)"
-                    @update:checked="(checked) => {
+                    @update:checked="(checked: boolean | 'indeterminate') => {
                       if (checked) {
                         field.pushValue(addon.id)
                       }

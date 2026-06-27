@@ -55,66 +55,59 @@ import { Spinner } from "@/components/ui/Spinner"
 
 You can replace the default spinner icon with any other icon by editing the `Spinner` component.
 
-<ComponentPreview framework="vue" name="spinner-custom-demo" />
+<ComponentPreview framework="vue" name="spinner-custom" />
 
 ## Examples
 
-### Size
-
-Use the `size` prop to change the size of the spinner.
-
-<ComponentPreview framework="vue" name="spinner-sizes" />
-
-### Color
-
-Use the `color` prop to change the color of the spinner.
+### Colors
 
 <ComponentPreview framework="vue" name="spinner-colors" />
 
+### Sizes
+
+<ComponentPreview framework="vue" name="spinner-sizes" />
+
+### Size
+
+Use the `size-*` utility class to change the size of the spinner.
+
+<ComponentPreview framework="vue" name="spinner-size" />
+
 ### Button
 
-Add a spinner to a button to indicate a loading state. The `<Button />` will handle the spacing between the spinner and the text.
+Add a spinner to a button to indicate a loading state. Place the `<Spinner />` before the label with `data-icon="inline-start"` for a start position, or after the label with `data-icon="inline-end"` for an end position.
 
-<ComponentPreview framework="vue" name="spinner-button-demo" />
+<ComponentPreview framework="vue" name="spinner-button" />
 
 ### Badge
 
-You can also use a spinner inside a badge.
+Add a spinner to a badge to indicate a loading state. Place the `<Spinner />` before the label with `data-icon="inline-start"` for a start position, or after the label with `data-icon="inline-end"` for an end position.
 
-<ComponentPreview framework="vue" name="spinner-badge-demo" />
+<ComponentPreview framework="vue" name="spinner-badge" />
 
 ### Input Group
 
-Input Group can have spinners inside `<InputGroupAddon>`.
-
-<ComponentPreview framework="vue" name="spinner-input-group-demo" />
+<ComponentPreview framework="vue" name="spinner-input-group" />
 
 ### Empty
 
-You can place a spinner inside an empty state.
+<ComponentPreview framework="vue" name="spinner-empty" />
 
-<ComponentPreview framework="vue" name="spinner-empty-demo" />
-
-### Item
-
-Use the spinner inside `<ItemMedia>` to indicate a loading state.
-
-<ComponentPreview framework="vue" name="spinner-item-demo" />
-
-## API Reference
+## API
 
 ### Spinner
-
-Use the `Spinner` component to display a spinner.
 
 | Prop    | Type                                                 | Default     |
 | ------- | ---------------------------------------------------- | ----------- |
 | `color` | `"default" \| "primary" \| "onPrimary" \| "inherit"` | `"default"` |
 | `size`  | `"xs" \| "sm" \| "md" \| "lg"`                       | `"sm"`      |
-| `class` | `string`                                             |             |
 
-```vue
-<template>
-  <Spinner />
-</template>
-```
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="vue"
+  name="spinner-rtl"
+  direction="rtl"
+/>

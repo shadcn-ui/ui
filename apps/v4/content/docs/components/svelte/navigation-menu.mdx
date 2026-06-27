@@ -5,7 +5,7 @@ base: svelte
 component: true
 ---
 
-<ComponentPreview framework="svelte" name="navigation-menu-demo" />
+<ComponentPreview framework="svelte" name="navigation-menu-demo" previewClassName="h-96" className="overflow-visible" />
 
 ## Installation
 
@@ -59,3 +59,13 @@ npx shadcn@latest add @force-ui-svelte/navigation-menu
   </NavigationMenu.List>
 </NavigationMenu.Root>
 ```
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="svelte" name="navigation-menu-rtl" direction="rtl" previewClassName="h-96" className="overflow-visible" />
+
+## API Reference
+
+See the [Radix UI Navigation Menu](https://www.radix-ui.com/docs/primitives/components/navigation-menu#api-reference) documentation for more information.

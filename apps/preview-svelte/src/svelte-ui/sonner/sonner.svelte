@@ -7,64 +7,64 @@
 </script>
 
 <Sonner
-	theme={mode.current}
+	theme={$mode}
 	class="toaster group"
 	style="--normal-bg: var(--color-popover); --normal-text: var(--color-popover-foreground); --normal-border: var(--color-border);"
 	{...restProps}
 >
-	{#snippet loadingIcon()}
+	<svelte:fragment slot="loading-icon">
 		<IconPlaceholder
 			lucide="Loader2Icon"
-		materialSymbols="progress_activity"
+			materialSymbols="progress_activity"
 			tabler="IconLoader"
 			hugeicons="Loading03Icon"
 			phosphor="SpinnerIcon"
 			remixicon="RiLoaderLine"
 			class="size-4 animate-spin"
 		/>
-	{/snippet}
-	{#snippet successIcon()}
+	</svelte:fragment>
+	<svelte:fragment slot="success-icon">
 		<IconPlaceholder
 			lucide="CircleCheckIcon"
-		materialSymbols="check_circle"
+			materialSymbols="check_circle"
 			tabler="IconCircleCheck"
 			hugeicons="CheckmarkCircle02Icon"
 			phosphor="CheckCircleIcon"
 			remixicon="RiCheckboxCircleLine"
 			class="size-4"
 		/>
-	{/snippet}
-	{#snippet errorIcon()}
+	</svelte:fragment>
+	<svelte:fragment slot="error-icon">
 		<IconPlaceholder
 			lucide="OctagonXIcon"
-		materialSymbols="dangerous"
+			materialSymbols="dangerous"
 			tabler="IconAlertOctagon"
 			hugeicons="MultiplicationSignCircleIcon"
 			phosphor="XCircleIcon"
 			remixicon="RiErrorWarningLine"
 			class="size-4"
 		/>
-	{/snippet}
-	{#snippet infoIcon()}
+	</svelte:fragment>
+	<svelte:fragment slot="info-icon">
 		<IconPlaceholder
 			lucide="InfoIcon"
-		materialSymbols="info"
+			materialSymbols="info"
 			tabler="IconInfoCircle"
 			hugeicons="InformationCircleIcon"
 			phosphor="InfoIcon"
 			remixicon="RiInformationLine"
 			class="size-4"
 		/>
-	{/snippet}
-	{#snippet warningIcon()}
+	</svelte:fragment>
+	<svelte:fragment slot="warning-icon">
 		<IconPlaceholder
 			lucide="TriangleAlertIcon"
-		materialSymbols="warning"
+			materialSymbols="warning"
 			tabler="IconAlertTriangle"
 			hugeicons="Alert02Icon"
 			phosphor="WarningIcon"
 			remixicon="RiCloseCircleLine"
 			class="size-4"
 		/>
-	{/snippet}
+	</svelte:fragment>
 </Sonner>

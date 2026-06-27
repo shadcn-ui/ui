@@ -48,6 +48,70 @@ npx shadcn@latest add @force-ui-svelte/pagination
 ```
 
 ```svelte showLineNumbers
-<Pagination.Root count={100} perPage={10}>
-  </Pagination.Root>
+<Pagination.Root count={30} perPage={10} page={2}>
+  {#snippet children({ pages, currentPage })}
+    <Pagination.Content>
+      <Pagination.Item>
+        <Pagination.Previous />
+      </Pagination.Item>
+      {#each pages as page (page.key)}
+        {#if page.type === "ellipsis"}
+          <Pagination.Item>
+            <Pagination.Ellipsis />
+          </Pagination.Item>
+        {:else}
+          <Pagination.Item>
+            <Pagination.Link {page} isActive={currentPage === page.value}>
+              {page.value}
+            </Pagination.Link>
+          </Pagination.Item>
+        {/if}
+      {/each}
+      <Pagination.Item>
+        <Pagination.Next />
+      </Pagination.Item>
+    </Pagination.Content>
+  {/snippet}
+</Pagination.Root>
 ```
+
+## Composition
+
+Use the following composition to build a `Pagination`:
+
+```text
+Pagination.Root
+└── Pagination.Content
+    ├── Pagination.Item
+    │   └── Pagination.Previous
+    ├── Pagination.Item
+    │   └── Pagination.Link
+    ├── Pagination.Item
+    │   └── Pagination.Ellipsis
+    └── Pagination.Item
+        └── Pagination.Next
+```
+
+## Examples
+
+### Simple
+
+A simple pagination with only page numbers.
+
+<ComponentPreview framework="svelte" name="pagination-simple" />
+
+### Icons Only
+
+Use just the previous and next buttons without page numbers. This is useful for data tables with a rows per page selector.
+
+<ComponentPreview framework="svelte" name="pagination-icons-only" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="svelte"
+  name="pagination-rtl"
+  direction="rtl"
+/>

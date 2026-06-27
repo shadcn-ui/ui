@@ -1,11 +1,17 @@
 ---
 title: Drawer
-description: A drawer component for React.
+description: A drawer component for Vue.
 base: vue
 component: true
+links:
+  doc: https://vaul.emilkowal.ski/getting-started
 ---
 
 <ComponentPreview framework="vue" name="drawer-demo" />
+
+## About
+
+Drawer is built on top of [Vaul](https://github.com/emilkowalski/vaul) by [emilkowalski](https://twitter.com/emilkowalski).
 
 ## Installation
 
@@ -61,12 +67,12 @@ import {
     <DrawerContent>
       <DrawerHeader>
         <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-        <DrawerDescription> This action cannot be undone. </DrawerDescription>
+        <DrawerDescription>This action cannot be undone.</DrawerDescription>
       </DrawerHeader>
       <DrawerFooter>
         <Button>Submit</Button>
         <DrawerClose>
-          <Button variant="outline"> Cancel </Button>
+          <Button variant="outline">Cancel</Button>
         </DrawerClose>
       </DrawerFooter>
     </DrawerContent>
@@ -74,10 +80,50 @@ import {
 </template>
 ```
 
-## Example
+## Composition
 
-### Responsive Modal (Dialog & Drawer)
+Use the following composition to build a `Drawer`:
 
-Use a `Drawer` component for smaller viewport sizes and a `Dialog` component otherwise. This can be further made reusable by using slots for various parts of the modal.
+```text
+Drawer
+├── DrawerTrigger
+└── DrawerContent
+    ├── DrawerHeader
+    │   ├── DrawerTitle
+    │   └── DrawerDescription
+    └── DrawerFooter
+```
 
-<ComponentPreview framework="vue" name="dialog-responsive" />
+## Examples
+
+### Scrollable Content
+
+Keep actions visible while the content scrolls.
+
+<ComponentPreview framework="vue" name="drawer-scrollable-content" />
+
+### Sides
+
+Use the `direction` prop to set the side of the drawer. Available options are `top`, `right`, `bottom`, and `left`.
+
+<ComponentPreview framework="vue" name="drawer-sides" />
+
+### Responsive Dialog
+
+You can combine the `Dialog` and `Drawer` components to create a responsive dialog. This renders a `Dialog` component on desktop and a `Drawer` on mobile.
+
+<ComponentPreview framework="vue" name="drawer-dialog" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="vue"
+  name="drawer-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [Vaul documentation](https://vaul.emilkowal.ski/getting-started) for the full API reference.

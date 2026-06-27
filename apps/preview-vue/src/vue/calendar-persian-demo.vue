@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, type Ref } from 'vue'
 import type { DateValue } from '@internationalized/date'
 import { getLocalTimeZone, PersianCalendar, toCalendar, today } from '@internationalized/date'
 import ChevronLeft from "@material-symbols/svg-400/rounded/chevron_left.svg?component"

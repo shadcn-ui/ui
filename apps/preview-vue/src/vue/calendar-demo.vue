@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, type Ref } from 'vue'
 import type { DateValue } from '@internationalized/date'
 import { CalendarDate, fromDate, getLocalTimeZone } from '@internationalized/date'
 import { Calendar } from '@/ui/calendar'

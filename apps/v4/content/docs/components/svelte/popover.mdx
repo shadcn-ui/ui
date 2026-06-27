@@ -49,7 +49,56 @@ npx shadcn@latest add @force-ui-svelte/popover
 
 ```svelte showLineNumbers
 <Popover.Root>
-  <Popover.Trigger>Open</Popover.Trigger>
-  <Popover.Content>Place content for the popover here.</Popover.Content>
+  <Popover.Trigger>Open Popover</Popover.Trigger>
+  <Popover.Content>
+    <Popover.Header>
+      <Popover.Title>Title</Popover.Title>
+      <Popover.Description>Description text here.</Popover.Description>
+    </Popover.Header>
+  </Popover.Content>
 </Popover.Root>
 ```
+
+## Composition
+
+Use the following composition to build a `Popover`:
+
+```text
+Popover.Root
+├── Popover.Trigger
+└── Popover.Content
+```
+
+## Examples
+
+### Basic
+
+A simple popover with a header, title, and description.
+
+<ComponentPreview framework="svelte" name="popover-basic" />
+
+### Align
+
+Use the `align` prop on `Popover.Content` to control the horizontal alignment.
+
+<ComponentPreview framework="svelte" name="popover-alignments" />
+
+### With Form
+
+A popover with form fields inside.
+
+<ComponentPreview framework="svelte" name="popover-form" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="svelte"
+  name="popover-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [Radix UI Popover](https://www.radix-ui.com/docs/primitives/components/popover#api-reference) documentation.

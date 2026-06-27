@@ -66,3 +66,45 @@ import {
   </TooltipContent>
 </Tooltip>
 ```
+
+## Composition
+
+Use the following composition to build a `Tooltip`:
+
+```text
+Tooltip
+├── TooltipTrigger
+└── TooltipContent
+```
+
+## Examples
+
+### Side
+
+Use the `side` prop to change the position of the tooltip.
+
+<ComponentPreview framework="ember" name="tooltip-sides" />
+
+### With Keyboard Shortcut
+
+<ComponentPreview framework="ember" name="tooltip-keyboard" />
+
+### Disabled Button
+
+Show a tooltip on a disabled button by wrapping it with a span.
+
+<ComponentPreview framework="ember" name="tooltip-disabled" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="ember"
+  name="tooltip-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [Radix Tooltip](https://www.radix-ui.com/docs/primitives/components/tooltip#api-reference) documentation.

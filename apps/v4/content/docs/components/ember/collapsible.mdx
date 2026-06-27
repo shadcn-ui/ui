@@ -3,9 +3,10 @@ title: Collapsible
 description: An interactive component which expands/collapses a panel.
 base: ember
 component: true
+featured: true
 ---
 
-<ComponentPreview framework="ember" name="collapsible-demo" />
+<ComponentPreview framework="ember" name="collapsible-demo" align="start" />
 
 ## Installation
 
@@ -66,3 +67,70 @@ import {
   </CollapsibleContent>
 </Collapsible>
 ```
+
+## Composition
+
+Use the following composition to build a `Collapsible`:
+
+```text
+Collapsible
+├── CollapsibleTrigger
+└── CollapsibleContent
+```
+
+## Controlled State
+
+Use `@open` and `@onOpenChange` to control the state.
+
+```gts showLineNumbers
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '@/ui/collapsible';
+
+export default class Example extends Component {
+  @tracked open = false;
+
+  setOpen = (value: boolean) => {
+    this.open = value;
+  };
+
+  <template>
+    <Collapsible @open={{this.open}} @onOpenChange={{this.setOpen}}>
+      <CollapsibleTrigger>Toggle</CollapsibleTrigger>
+      <CollapsibleContent>Content</CollapsibleContent>
+    </Collapsible>
+  </template>
+}
+```
+
+## Examples
+
+### Basic
+
+<ComponentPreview framework="ember" name="collapsible-basic" align="start" />
+
+### Settings Panel
+
+Use a trigger button to reveal additional settings.
+
+<ComponentPreview framework="ember" name="collapsible-settings" />
+
+### File Tree
+
+Use nested collapsibles to build a file tree.
+
+<ComponentPreview framework="ember" name="collapsible-file-tree" previewClassName="h-[36rem]" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="ember" name="collapsible-rtl" direction="rtl" align="start" />
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/docs/primitives/components/collapsible#api-reference) documentation for more information.

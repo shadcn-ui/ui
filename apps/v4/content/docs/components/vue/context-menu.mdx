@@ -47,21 +47,79 @@ import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
-  ContextMenuSeparator,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu"
 </script>
 
 <template>
   <ContextMenu>
-    <ContextMenuTrigger>Right click</ContextMenuTrigger>
+    <ContextMenuTrigger>Right click here</ContextMenuTrigger>
     <ContextMenuContent>
       <ContextMenuItem>Profile</ContextMenuItem>
       <ContextMenuItem>Billing</ContextMenuItem>
       <ContextMenuItem>Team</ContextMenuItem>
-      <ContextMenuSeparator />
       <ContextMenuItem>Subscription</ContextMenuItem>
     </ContextMenuContent>
   </ContextMenu>
 </template>
 ```
+
+## Examples
+
+### Basic
+
+A simple context menu with a few actions.
+
+<ComponentPreview framework="vue" name="context-menu-basic" />
+
+### Submenu
+
+Use `ContextMenuSub` to nest secondary actions.
+
+<ComponentPreview framework="vue" name="context-menu-submenu" />
+
+### Shortcuts
+
+Add `ContextMenuShortcut` to show keyboard hints.
+
+<ComponentPreview framework="vue" name="context-menu-shortcuts" />
+
+### Groups
+
+Group related actions and separate them with dividers.
+
+<ComponentPreview framework="vue" name="context-menu-groups" />
+
+### Icons
+
+Combine icons with labels for quick scanning.
+
+<ComponentPreview framework="vue" name="context-menu-icons" />
+
+### Checkboxes
+
+Use `ContextMenuCheckboxItem` for toggles.
+
+<ComponentPreview framework="vue" name="context-menu-checkboxes" />
+
+### Radio
+
+Use `ContextMenuRadioItem` for exclusive choices.
+
+<ComponentPreview framework="vue" name="context-menu-radio" />
+
+### Destructive
+
+Use `variant="destructive"` to style the menu item as destructive.
+
+<ComponentPreview framework="vue" name="context-menu-destructive" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="vue" name="context-menu-rtl" direction="rtl" />
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/docs/primitives/components/context-menu#api-reference) documentation for more information.

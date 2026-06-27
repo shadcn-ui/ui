@@ -5,7 +5,11 @@ base: vue
 component: true
 ---
 
-<ComponentPreview framework="vue" name="command-demo" />
+<ComponentPreview framework="vue" name="command-demo" align="start" previewClassName="h-[24.5rem]" />
+
+## About
+
+The `<Command />` component uses the [`cmdk`](https://github.com/dip/cmdk) component by [Dip](https://www.dip.org/).
 
 ## Installation
 
@@ -76,3 +80,61 @@ import {
   </Command>
 </template>
 ```
+
+## Composition
+
+Use the following composition to build a `Command`:
+
+```text
+Command
+├── CommandInput
+└── CommandList
+    ├── CommandEmpty
+    ├── CommandGroup
+    │   ├── CommandItem
+    │   └── CommandItem
+    ├── CommandSeparator
+    └── CommandGroup
+        ├── CommandItem
+        └── CommandItem
+```
+
+## Examples
+
+### Basic
+
+A simple command menu in a dialog.
+
+<ComponentPreview framework="vue" name="command-basic" />
+
+### Shortcuts
+
+<ComponentPreview framework="vue" name="command-shortcuts" />
+
+### Groups
+
+A command menu with groups, icons and separators.
+
+<ComponentPreview framework="vue" name="command-groups" />
+
+### Scrollable
+
+Scrollable command menu with multiple items.
+
+<ComponentPreview framework="vue" name="command-scrollable" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="vue"
+  name="command-rtl"
+  direction="rtl"
+  align="start"
+  previewClassName="h-[24.5rem]"
+/>
+
+## API Reference
+
+See the [cmdk](https://github.com/dip/cmdk) documentation for more information.

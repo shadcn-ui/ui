@@ -1,11 +1,15 @@
 ---
 title: Command
-description: Fast, composable, unstyled command menu for Svelte.
+description: Command menu for search and quick actions.
 base: svelte
 component: true
 ---
 
-<ComponentPreview framework="svelte" name="command-demo" />
+<ComponentPreview framework="svelte" name="command-demo" align="start" previewClassName="h-[24.5rem]" />
+
+## About
+
+The `<Command />` component uses the [`cmdk`](https://github.com/dip/cmdk) component by [Dip](https://www.dip.org/).
 
 ## Installation
 
@@ -43,7 +47,7 @@ npx shadcn@latest add @force-ui-svelte/command
 
 ```svelte showLineNumbers
 <script lang="ts">
-  import * as Command from "$lib/components/ui/command/index.js";
+  import * as Command from "@/svelte-ui/command/index.js";
 </script>
 ```
 
@@ -67,50 +71,60 @@ npx shadcn@latest add @force-ui-svelte/command
 </Command.Root>
 ```
 
-## Examples
+## Composition
 
-### Dialog
+Use the following composition to build a `Command`:
 
-<ComponentPreview framework="svelte" name="command-dialog" />
-
-To show the command menu in a dialog, use the `<Command.Dialog />` component instead of `<Command.Root />`. It accepts props for both the `<Dialog.Root />` and `<Command.Root />` components.
-
-```svelte title="lib/components/example-command-menu.svelte" showLineNumbers
-<script lang="ts">
-  import * as Command from "$lib/components/ui/command/index.js";
-  import { onMount } from "svelte";
-
-  let open = $state(false);
-
-  function handleKeydown(e: KeyboardEvent) {
-    if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-      e.preventDefault();
-      open = !open;
-    }
-  }
-</script>
-
-<svelte:document onkeydown={handleKeydown} />
-
-<Command.Dialog bind:open>
-  <Command.Input placeholder="Type a command or search..." />
-  <Command.List>
-    <Command.Empty>No results found.</Command.Empty>
-    <Command.Group heading="Suggestions">
-      <Command.Item>Calendar</Command.Item>
-      <Command.Item>Search Emoji</Command.Item>
-      <Command.Item>Calculator</Command.Item>
-    </Command.Group>
-  </Command.List>
-</Command.Dialog>
+```text
+Command.Root
+├── Command.Input
+└── Command.List
+    ├── Command.Empty
+    ├── Command.Group
+    │   ├── Command.Item
+    │   └── Command.Item
+    ├── Command.Separator
+    └── Command.Group
+        ├── Command.Item
+        └── Command.Item
 ```
 
-### Combobox
+## Examples
 
-You can use the `<Command />` component as a combobox. See the [Combobox](/docs/components/combobox) page for more information.
+### Basic
 
-## Changelog
+A simple command menu in a dialog.
 
-### 2024-10-30 Classes for icons
+<ComponentPreview framework="svelte" name="command-basic" />
 
-- Added `gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0` to the `<Command.Item>` component to automatically style the icons inside.
+### Shortcuts
+
+<ComponentPreview framework="svelte" name="command-shortcuts" />
+
+### Groups
+
+A command menu with groups, icons and separators.
+
+<ComponentPreview framework="svelte" name="command-groups" />
+
+### Scrollable
+
+Scrollable command menu with multiple items.
+
+<ComponentPreview framework="svelte" name="command-scrollable" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="svelte"
+  name="command-rtl"
+  direction="rtl"
+  align="start"
+  previewClassName="h-[24.5rem]"
+/>
+
+## API Reference
+
+See the [cmdk](https://github.com/dip/cmdk) documentation for more information.

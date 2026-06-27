@@ -3,7 +3,8 @@
 	import * as Card from "@/svelte-ui/card/index.js";
 	import * as Carousel from "@/svelte-ui/carousel/index.js";
 
-	const plugin = Autoplay({ delay: 2000, stopOnInteraction: true });
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const plugin = Autoplay({ delay: 2000, stopOnInteraction: true }) as any;
 </script>
 
 <Carousel.Root

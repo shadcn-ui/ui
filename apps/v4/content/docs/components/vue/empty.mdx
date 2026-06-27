@@ -43,9 +43,7 @@ npx shadcn@latest add @force-ui-vue/empty
 
 ```vue showLineNumbers
 <script setup lang="ts">
-import { FolderOpen } from "lucide-vue-next"
-
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -53,23 +51,36 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/default/ui/empty"
+} from "@/ui/empty"
 </script>
 
 <template>
   <Empty>
     <EmptyHeader>
       <EmptyMedia variant="icon">
-        <FolderOpen />
+        <Icon />
       </EmptyMedia>
+      <EmptyTitle>No data</EmptyTitle>
+      <EmptyDescription>No data found</EmptyDescription>
     </EmptyHeader>
-    <EmptyTitle>No data</EmptyTitle>
-    <EmptyDescription>No data found</EmptyDescription>
     <EmptyContent>
       <Button>Add data</Button>
     </EmptyContent>
   </Empty>
 </template>
+```
+
+## Composition
+
+Use the following composition to build an `Empty` state:
+
+```text
+Empty
+├── EmptyHeader
+│   ├── EmptyMedia
+│   ├── EmptyTitle
+│   └── EmptyDescription
+└── EmptyContent
 ```
 
 ## Examples
@@ -78,31 +89,37 @@ import {
 
 Use the `border` utility class to create an outline empty state.
 
-<ComponentPreview framework="vue" name="empty-outline-demo" />
+<ComponentPreview framework="vue" name="empty-outline" />
 
 ### Background
 
 Use the `bg-*` and `bg-gradient-*` utilities to add a background to the empty state.
 
-<ComponentPreview framework="vue" name="empty-background-demo" />
+<ComponentPreview framework="vue" name="empty-background" />
 
 ### Avatar
 
 Use the `EmptyMedia` component to display an avatar in the empty state.
 
-<ComponentPreview framework="vue" name="empty-avatar-demo" />
+<ComponentPreview framework="vue" name="empty-avatar" />
 
 ### Avatar Group
 
 Use the `EmptyMedia` component to display an avatar group in the empty state.
 
-<ComponentPreview framework="vue" name="empty-avatar-group-demo" />
+<ComponentPreview framework="vue" name="empty-avatar-group" />
 
 ### InputGroup
 
 You can add an `InputGroup` component to the `EmptyContent` component.
 
-<ComponentPreview framework="vue" name="empty-input-group-demo" />
+<ComponentPreview framework="vue" name="empty-input-group" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="vue" name="empty-rtl" direction="rtl" />
 
 ## API Reference
 

@@ -69,6 +69,47 @@ npx shadcn@latest add @force-ui-svelte/table
 </Table.Root>
 ```
 
+## Composition
+
+Use the following composition to build a `Table`:
+
+```text
+Table.Root
+├── Table.Caption
+├── Table.Header
+│   └── Table.Row
+│       ├── Table.Head
+│       ├── Table.Head
+│       ├── Table.Head
+│       └── Table.Head
+├── Table.Body
+│   ├── Table.Row
+│   │   ├── Table.Cell
+│   │   ├── Table.Cell
+│   │   ├── Table.Cell
+│   │   └── Table.Cell
+│   └── Table.Row
+│       ├── Table.Cell
+│       ├── Table.Cell
+│       ├── Table.Cell
+│       └── Table.Cell
+└── Table.Footer
+```
+
+## Examples
+
+### Footer
+
+Use the `<Table.Footer />` component to add a footer to the table.
+
+<ComponentPreview framework="svelte" name="table-footer" />
+
+### Actions
+
+A table showing actions for each row using a `<DropdownMenu />` component.
+
+<ComponentPreview framework="svelte" name="table-actions" />
+
 ## Data Table
 
 You can use the `<Table />` component to build more complex data tables. Combine it with [@tanstack/table](https://tanstack.com/table) to create tables with sorting, filtering and pagination.
@@ -76,3 +117,14 @@ You can use the `<Table />` component to build more complex data tables. Combine
 See the [Data Table](/docs/components/data-table) documentation for more information.
 
 You can also see an example of a data table in the [Tasks](/examples/tasks) demo.
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="svelte"
+  name="table-rtl"
+  direction="rtl"
+  previewClassName="h-auto"
+/>

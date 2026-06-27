@@ -5,7 +5,7 @@ base: vue
 component: true
 ---
 
-<ComponentPreview framework="vue" name="card-demo" />
+<ComponentPreview framework="vue" name="card-demo" previewClassName="h-[30rem]" />
 
 ## Installation
 
@@ -45,6 +45,7 @@ npx shadcn@latest add @force-ui-vue/card
 <script setup lang="ts">
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -52,12 +53,15 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 </script>
+```
 
+```vue showLineNumbers
 <template>
   <Card>
     <CardHeader>
       <CardTitle>Card Title</CardTitle>
       <CardDescription>Card Description</CardDescription>
+      <CardAction>Card Action</CardAction>
     </CardHeader>
     <CardContent>
       <p>Card Content</p>
@@ -68,3 +72,106 @@ import {
   </Card>
 </template>
 ```
+
+## Composition
+
+Use the following composition to build a `Card`:
+
+```text
+Card
+├── CardHeader
+│   ├── CardTitle
+│   ├── CardDescription
+│   └── CardAction
+├── CardContent
+└── CardFooter
+```
+
+## Examples
+
+### Size
+
+Use the `size="sm"` prop to set the size of the card to small. The small size variant uses smaller spacing.
+
+<ComponentPreview framework="vue" name="card-small" previewClassName="h-96" />
+
+### Spacing
+
+In addition to the `size` prop, you can use the `--card-spacing` CSS variable to control the spacing between sections and the inset of card parts.
+
+<ComponentPreview framework="vue" name="card-spacing" previewClassName="h-[34rem]" />
+
+Use negative margins with `-mx-(--card-spacing)` to make content go edge to edge while keeping it aligned with the card inset. When the edge-to-edge content sits above a footer, use `-mb-(--card-spacing)` on `CardContent` to remove the section gap.
+
+<ComponentPreview framework="vue" name="card-edge-to-edge" previewClassName="h-[24rem]" />
+
+### Image
+
+Add an image before the card header to create a card with an image.
+
+<ComponentPreview framework="vue" name="card-image" previewClassName="h-[32rem]" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="vue" name="card-rtl" direction="rtl" previewClassName="h-[30rem]" />
+
+## API Reference
+
+### Card
+
+The `Card` component is the root container for card content.
+
+| Prop        | Type                | Default     |
+| ----------- | ------------------- | ----------- |
+| `size`      | `"default" \| "sm"` | `"default"` |
+| `class`     | `string`            | -           |
+
+### CardHeader
+
+The `CardHeader` component is used for a title, description, and optional action.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` | -       |
+
+### CardTitle
+
+The `CardTitle` component is used for the card title.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` | -       |
+
+### CardDescription
+
+The `CardDescription` component is used for helper text under the title.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` | -       |
+
+### CardAction
+
+The `CardAction` component places content in the top-right of the header (for example, a button or a badge).
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` | -       |
+
+### CardContent
+
+The `CardContent` component is used for the main card body.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` | -       |
+
+### CardFooter
+
+The `CardFooter` component is used for actions and secondary content at the bottom of the card.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` | -       |

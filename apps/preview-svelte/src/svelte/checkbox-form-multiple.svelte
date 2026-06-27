@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { z } from "zod";
+	import { z } from "zod/v3";
 
 	const items = [
 		{
@@ -28,7 +28,7 @@
 		},
 	] as const;
 
-	const formSchema = z.object({
+	const formSchema: z.ZodObject<z.ZodRawShape> = z.object({
 		items: z.array(z.string()).refine((value) => value.some((item) => item), {
 			message: "You have to select at least one item.",
 		}),
@@ -37,14 +37,14 @@
 
 <script lang="ts">
 	import { defaults, superForm } from "sveltekit-superforms";
-	import { zod4 } from "sveltekit-superforms/adapters";
+	import { zod } from "sveltekit-superforms/adapters";
 	import { toast } from "svelte-sonner";
 	import * as Form from "@/svelte-ui/form/index.js";
 	import { Checkbox } from "@/svelte-ui/checkbox/index.js";
 
-	const form = superForm(defaults(zod4(formSchema)), {
+	const form = superForm(defaults(zod(formSchema)), {
 		SPA: true,
-		validators: zod4(formSchema),
+		validators: zod(formSchema),
 		onUpdate: ({ form: f }) => {
 			if (f.valid) {
 				toast.success(`You submitted ${JSON.stringify(f.data, null, 2)}`);
@@ -61,7 +61,7 @@
 	}
 
 	function removeItem(id: string) {
-		$formData.items = $formData.items.filter((i) => i !== id);
+		$formData.items = $formData.items.filter((i: string) => i !== id);
 	}
 </script>
 

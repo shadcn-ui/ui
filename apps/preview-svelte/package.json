@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite --port 3002",
     "preview:build": "vite build",
-    "preview": "vite preview --port 3002"
+    "preview": "vite preview --port 3002",
+    "type-check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "dependencies": {
     "@internationalized/date": "^3.7.0",
@@ -38,6 +39,8 @@
     "@material-symbols/svg-400": "^0.45.2",
     "@sveltejs/vite-plugin-svelte": "^5.0.0",
     "@tailwindcss/vite": "4.1.18",
+    "@types/d3-scale": "^4.0.9",
+    "svelte-check": "^4.7.1",
     "tailwindcss": "4.1.18",
     "typescript": "^5.7.0",
     "unplugin-icons": "^23.0.1",

@@ -74,41 +74,56 @@ import {
 </Dialog>
 ```
 
+## Composition
+
+Use the following composition to build a `Dialog`:
+
+```text
+Dialog
+├── DialogTrigger
+└── DialogContent
+    ├── DialogHeader
+    │   ├── DialogTitle
+    │   └── DialogDescription
+    └── DialogFooter
+```
+
 ## Examples
 
-### Custom close button
+### Custom Close Button
+
+Replace the default close control with your own button.
 
 <ComponentPreview framework="ember" name="dialog-close-button" />
 
-## Notes
+### No Close Button
 
-To use the `Dialog` component from within a `Context Menu` or `Dropdown Menu`, you must encase the `Context Menu` or `Dropdown Menu` component in the `Dialog` component.
+Use `@showCloseButton={{false}}` to hide the close button.
 
-```hbs showLineNumbers {1, 26}
-<Dialog>
-  <ContextMenu>
-    <ContextMenuTrigger>Right click</ContextMenuTrigger>
-    <ContextMenuContent>
-      <ContextMenuItem>Open</ContextMenuItem>
-      <ContextMenuItem>Download</ContextMenuItem>
-      <DialogTrigger @asChild={{true}}>
-        <ContextMenuItem>
-          <span>Delete</span>
-        </ContextMenuItem>
-      </DialogTrigger>
-    </ContextMenuContent>
-  </ContextMenu>
-  <DialogContent>
-    <DialogHeader>
-      <DialogTitle>Are you absolutely sure?</DialogTitle>
-      <DialogDescription>
-        This action cannot be undone. Are you sure you want to permanently
-        delete this file from our servers?
-      </DialogDescription>
-    </DialogHeader>
-    <DialogFooter>
-      <Button type="submit">Confirm</Button>
-    </DialogFooter>
-  </DialogContent>
-</Dialog>
-```
+<ComponentPreview framework="ember" name="dialog-no-close-button" />
+
+### Sticky Footer
+
+Keep actions visible while the content scrolls.
+
+<ComponentPreview framework="ember" name="dialog-sticky-footer" />
+
+### Scrollable Content
+
+Long content can scroll while the header stays in view.
+
+<ComponentPreview framework="ember" name="dialog-scrollable-content" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="ember"
+  name="dialog-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/docs/primitives/components/dialog#api-reference) documentation for more information.

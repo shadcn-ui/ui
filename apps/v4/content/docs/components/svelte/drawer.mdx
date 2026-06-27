@@ -3,9 +3,15 @@ title: Drawer
 description: A drawer component for Svelte.
 base: svelte
 component: true
+links:
+  doc: https://vaul.emilkowal.ski/getting-started
 ---
 
 <ComponentPreview framework="svelte" name="drawer-demo" />
+
+## About
+
+Drawer is built on top of [Vaul Svelte](https://vaul-svelte.com), which is a Svelte port of [Vaul](https://vaul.emilkowal.ski) by [Emil Kowalski](https://twitter.com/emilkowalski_).
 
 ## Installation
 
@@ -39,10 +45,6 @@ npx shadcn@latest add @force-ui-svelte/drawer
 
 </CodeTabs>
 
-## About
-
-Drawer is built on top of [Vaul Svelte](https://vaul-svelte.com), which is a Svelte port of [Vaul](https://vaul.emilkowal.ski) by [Emil Kowalski](https://twitter.com/emilkowalski_).
-
 ## Usage
 
 ```svelte showLineNumbers
@@ -56,7 +58,7 @@ Drawer is built on top of [Vaul Svelte](https://vaul-svelte.com), which is a Sve
   <Drawer.Trigger>Open</Drawer.Trigger>
   <Drawer.Content>
     <Drawer.Header>
-      <Drawer.Title>Are you sure absolutely sure?</Drawer.Title>
+      <Drawer.Title>Are you absolutely sure?</Drawer.Title>
       <Drawer.Description>This action cannot be undone.</Drawer.Description>
     </Drawer.Header>
     <Drawer.Footer>
@@ -67,10 +69,50 @@ Drawer is built on top of [Vaul Svelte](https://vaul-svelte.com), which is a Sve
 </Drawer.Root>
 ```
 
+## Composition
+
+Use the following composition to build a `Drawer`:
+
+```text
+Drawer.Root
+├── Drawer.Trigger
+└── Drawer.Content
+    ├── Drawer.Header
+    │   ├── Drawer.Title
+    │   └── Drawer.Description
+    └── Drawer.Footer
+```
+
 ## Examples
+
+### Scrollable Content
+
+Keep actions visible while the content scrolls.
+
+<ComponentPreview framework="svelte" name="drawer-scrollable-content" />
+
+### Sides
+
+Use the `direction` prop to set the side of the drawer. Available options are `top`, `right`, `bottom`, and `left`.
+
+<ComponentPreview framework="svelte" name="drawer-sides" />
 
 ### Responsive Dialog
 
 You can combine the `Dialog` and `Drawer` components to create a responsive dialog. This renders a `Dialog` on desktop and a `Drawer` on mobile.
 
 <ComponentPreview framework="svelte" name="drawer-dialog" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="svelte"
+  name="drawer-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [Vaul documentation](https://vaul.emilkowal.ski/getting-started) for the full API reference.

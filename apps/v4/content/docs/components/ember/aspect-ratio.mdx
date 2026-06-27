@@ -50,3 +50,32 @@ import { AspectRatio } from '@/ui/aspect-ratio';
   <img src="..." alt="Image" class="rounded-md object-cover" />
 </AspectRatio>
 ```
+
+## Examples
+
+### Square
+
+A square aspect ratio component using the `@ratio={{1}}` prop. This is useful for displaying images in a square format.
+
+<ComponentPreview framework="ember" name="aspect-ratio-square" />
+
+### Portrait
+
+A portrait aspect ratio component using the `@ratio={{ratio}}` prop with `9/16`. This is useful for displaying images in a portrait format.
+
+<ComponentPreview
+  framework="ember"
+  name="aspect-ratio-portrait"
+  previewClassName="h-96"
+/>
+
+## API Reference
+
+### AspectRatio
+
+The `AspectRatio` component displays content within a desired ratio.
+
+| Prop     | Type     | Default | Required |
+| -------- | -------- | ------- | -------- |
+| `@ratio` | `number` | -       | Yes      |
+| `class`  | `string` | -       | No       |

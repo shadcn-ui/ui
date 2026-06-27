@@ -53,8 +53,7 @@ npx shadcn@latest add @force-ui-svelte/menubar
     <Menubar.Trigger>File</Menubar.Trigger>
     <Menubar.Content>
       <Menubar.Item>
-        New Tab
-        <Menubar.Shortcut>⌘T</Menubar.Shortcut>
+        New Tab <Menubar.Shortcut>⌘T</Menubar.Shortcut>
       </Menubar.Item>
       <Menubar.Item>New Window</Menubar.Item>
       <Menubar.Separator />
@@ -65,3 +64,65 @@ npx shadcn@latest add @force-ui-svelte/menubar
   </Menubar.Menu>
 </Menubar.Root>
 ```
+
+## Composition
+
+Use the following composition to build a `Menubar`:
+
+```text
+Menubar.Root
+├── Menubar.Menu
+│   ├── Menubar.Trigger
+│   └── Menubar.Content
+│       ├── Menubar.Item
+│       ├── Menubar.Separator
+│       ├── Menubar.CheckboxItem
+│       ├── Menubar.RadioGroup
+│       │   └── Menubar.RadioItem
+│       └── Menubar.Sub
+│           ├── Menubar.SubTrigger
+│           └── Menubar.SubContent
+│               └── Menubar.Item
+└── Menubar.Menu
+    ├── Menubar.Trigger
+    └── Menubar.Content
+        └── Menubar.Item
+```
+
+## Examples
+
+### Checkbox
+
+Use `Menubar.CheckboxItem` for toggleable options.
+
+<ComponentPreview framework="svelte" name="menubar-checkbox" />
+
+### Radio
+
+Use `Menubar.RadioGroup` and `Menubar.RadioItem` for single-select options.
+
+<ComponentPreview framework="svelte" name="menubar-radio" />
+
+### Submenu
+
+Use `Menubar.Sub`, `Menubar.SubTrigger`, and `Menubar.SubContent` for nested menus.
+
+<ComponentPreview framework="svelte" name="menubar-submenu" />
+
+### With Icons
+
+<ComponentPreview framework="svelte" name="menubar-icons" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="svelte"
+  name="menubar-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [Radix UI Menubar](https://www.radix-ui.com/docs/primitives/components/menubar#api-reference) documentation.

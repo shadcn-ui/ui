@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { z } from "zod";
+	import { z } from "zod/v3";
 
 	const formSchema = z.object({
 		dob: z.string().refine((v) => v, { message: "A date of birth is required." }),
@@ -17,7 +17,7 @@
 		today,
 	} from "@internationalized/date";
 	import { defaults, superForm } from "sveltekit-superforms";
-	import { zod4 } from "sveltekit-superforms/adapters";
+	import { zod, type ZodObjectType } from "sveltekit-superforms/adapters";
 	import { toast } from "svelte-sonner";
 	import { cn } from "@/svelte-lib/utils.js";
 	import { Button, buttonVariants } from "@/svelte-ui/button/index.js";
@@ -25,8 +25,8 @@
 	import * as Popover from "@/svelte-ui/popover/index.js";
 	import * as Form from "@/svelte-ui/form/index.js";
 
-	const form = superForm(defaults(zod4(formSchema)), {
-		validators: zod4(formSchema),
+	const form = superForm(defaults(zod(formSchema as ZodObjectType)), {
+		validators: zod(formSchema as ZodObjectType),
 		SPA: true,
 		onUpdate: ({ form: f }) => {
 			if (f.valid) {
@@ -43,7 +43,7 @@
 		dateStyle: "long",
 	});
 
-	let value = $derived($formData.dob ? parseDate($formData.dob) : undefined);
+	let value = $derived($formData.dob ? parseDate($formData.dob as string) : undefined);
 
 	let placeholder = $state<DateValue>(today(getLocalTimeZone()));
 </script>

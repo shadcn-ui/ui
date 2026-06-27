@@ -29,7 +29,7 @@ pnpm dlx shadcn-ember@latest add toggle
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="toggle" title="components/ui/toggle.gts" />
+<ComponentSource framework="ember" name="toggle" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -51,11 +51,9 @@ import { Toggle } from '@/ui/toggle';
 
 ## Examples
 
-### Default
-
-<ComponentPreview framework="ember" name="toggle-demo" />
-
 ### Outline
+
+Use `@variant="outline"` for an outline style.
 
 <ComponentPreview framework="ember" name="toggle-outline" />
 
@@ -63,14 +61,16 @@ import { Toggle } from '@/ui/toggle';
 
 <ComponentPreview framework="ember" name="toggle-with-text" />
 
-### Small
+### Size
 
-<ComponentPreview framework="ember" name="toggle-sm" />
+Use the `@size` prop to change the size of the toggle.
 
-### Large
-
-<ComponentPreview framework="ember" name="toggle-lg" />
+<ComponentPreview framework="ember" name="toggle-sizes" />
 
 ### Disabled
 
 <ComponentPreview framework="ember" name="toggle-disabled" />
+
+## API Reference
+
+See the [Radix Toggle](https://www.radix-ui.com/docs/primitives/components/toggle#api-reference) documentation.

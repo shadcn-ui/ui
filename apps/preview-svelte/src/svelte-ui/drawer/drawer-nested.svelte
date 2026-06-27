@@ -1,12 +1,16 @@
 <script lang="ts">
 	import { Drawer as DrawerPrimitive } from "vaul-svelte";
+	import type { Snippet } from "svelte";
 
 	let {
 		shouldScaleBackground = true,
 		open = $bindable(false),
 		activeSnapPoint = $bindable(null),
+		children,
 		...restProps
-	}: DrawerPrimitive.RootProps = $props();
+	}: DrawerPrimitive.Props & { children?: Snippet } = $props();
 </script>
 
-<DrawerPrimitive.NestedRoot {shouldScaleBackground} bind:open bind:activeSnapPoint {...restProps} />
+<DrawerPrimitive.NestedRoot {shouldScaleBackground} bind:open bind:activeSnapPoint {...restProps}>
+	{@render children?.()}
+</DrawerPrimitive.NestedRoot>

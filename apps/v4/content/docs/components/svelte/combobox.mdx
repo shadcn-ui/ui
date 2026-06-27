@@ -1,6 +1,6 @@
 ---
 title: Combobox
-description: Autocomplete input and command palette with a list of suggestions.
+description: Autocomplete input with a list of suggestions.
 base: svelte
 component: true
 ---
@@ -41,12 +41,8 @@ npx shadcn@latest add @force-ui-svelte/combobox
 
 ## Usage
 
-<CodeCollapsibleWrapper >
-
-```svelte title="lib/components/example-combobox.svelte"
+```svelte showLineNumbers
 <script lang="ts">
-  import CheckIcon from "@lucide/svelte/icons/check";
-  import ChevronsUpDownIcon from "@lucide/svelte/icons/chevrons-up-down";
   import { tick } from "svelte";
   import * as Command from "$lib/components/ui/command/index.js";
   import * as Popover from "$lib/components/ui/popover/index.js";
@@ -54,26 +50,11 @@ npx shadcn@latest add @force-ui-svelte/combobox
   import { cn } from "$lib/utils.js";
 
   const frameworks = [
-    {
-      value: "sveltekit",
-      label: "SvelteKit",
-    },
-    {
-      value: "next.js",
-      label: "Next.js",
-    },
-    {
-      value: "nuxt.js",
-      label: "Nuxt.js",
-    },
-    {
-      value: "remix",
-      label: "Remix",
-    },
-    {
-      value: "astro",
-      label: "Astro",
-    },
+    { value: "sveltekit", label: "SvelteKit" },
+    { value: "next.js", label: "Next.js" },
+    { value: "nuxt.js", label: "Nuxt.js" },
+    { value: "remix", label: "Remix" },
+    { value: "astro", label: "Astro" },
   ];
 
   let open = $state(false);
@@ -84,9 +65,6 @@ npx shadcn@latest add @force-ui-svelte/combobox
     frameworks.find((f) => f.value === value)?.label
   );
 
-  // We want to refocus the trigger button when the user selects
-  // an item from the list so users can continue navigating the
-  // rest of the form with the keyboard.
   function closeAndFocusTrigger() {
     open = false;
     tick().then(() => {
@@ -97,14 +75,25 @@ npx shadcn@latest add @force-ui-svelte/combobox
 
 <Popover.Root bind:open>
   <Popover.Trigger bind:ref={triggerRef}>
-    </Popover.Trigger>
+    {#snippet child({ props })}
+      <Button
+        {...props}
+        variant="outline"
+        class="w-[200px] justify-between"
+        role="combobox"
+        aria-expanded={open}
+      >
+        {selectedValue || "Select a framework..."}
+      </Button>
+    {/snippet}
+  </Popover.Trigger>
   <Popover.Content class="w-[200px] p-0">
     <Command.Root>
       <Command.Input placeholder="Search framework..." />
       <Command.List>
         <Command.Empty>No framework found.</Command.Empty>
         <Command.Group>
-          {#each frameworks as framework}
+          {#each frameworks as framework (framework.value)}
             <Command.Item
               value={framework.value}
               onSelect={() => {
@@ -112,12 +101,6 @@ npx shadcn@latest add @force-ui-svelte/combobox
                 closeAndFocusTrigger();
               }}
             >
-              <CheckIcon
-                class={cn(
-                  "me-2 size-4",
-                  value !== framework.value && "text-transparent"
-                )}
-              />
               {framework.label}
             </Command.Item>
           {/each}
@@ -128,24 +111,32 @@ npx shadcn@latest add @force-ui-svelte/combobox
 </Popover.Root>
 ```
 
-</CodeCollapsibleWrapper>
-
 ## Examples
 
-### Combobox
+### Basic
+
+A simple combobox with a list of frameworks.
 
 <ComponentPreview framework="svelte" name="combobox-demo" />
 
-### Popover
+### Popup
+
+Use `Command` inside a `Popover` to trigger a combobox from a button.
 
 <ComponentPreview framework="svelte" name="combobox-popover" />
 
-### Dropdown menu
+### Dropdown Menu
+
+You can compose a combobox inside a `DropdownMenu`.
 
 <ComponentPreview framework="svelte" name="combobox-dropdown-menu" />
 
 ### Responsive
 
-You can create a responsive combobox by using the `<Popover />` on desktop and the `<Drawer />` components on mobile.
+You can create a responsive combobox by using the `Popover` on desktop and the `Drawer` on mobile.
 
 <ComponentPreview framework="svelte" name="combobox-responsive" />
+
+## API Reference
+
+See the [Bits UI](https://bits-ui.com/docs/components/combobox) documentation for more information.

@@ -72,135 +72,110 @@ import {
 </template>
 ```
 
+## Composition
+
+Use the following composition to build a `Breadcrumb`:
+
+```text
+Breadcrumb
+└── BreadcrumbList
+    ├── BreadcrumbItem
+    │   └── BreadcrumbLink
+    ├── BreadcrumbSeparator
+    ├── BreadcrumbItem
+    │   └── BreadcrumbLink
+    ├── BreadcrumbSeparator
+    └── BreadcrumbItem
+        └── BreadcrumbPage
+```
+
 ## Examples
+
+### Basic
+
+A basic breadcrumb with a home link and a components link.
+
+<ComponentPreview framework="vue" name="breadcrumb-basic" />
 
 ### Custom separator
 
 Use a custom component as `children` for `<BreadcrumbSeparator />` to create a custom separator.
 
-<ComponentPreview framework="vue" name="breadcrumb-custom-separator-demo" />
-
-```vue showLineNumbers {2,12-14}
-<script setup lang="ts">
-import { SlashIcon } from "lucide-vue-next"
-
-// ...
-</script>
-
-<template>
-  <Breadcrumb>
-    <BreadcrumbList>
-      <BreadcrumbItem>
-        <BreadcrumbLink href="/"> Home </BreadcrumbLink>
-      </BreadcrumbItem>
-      <BreadcrumbSeparator>
-        <SlashIcon />
-      </BreadcrumbSeparator>
-      <BreadcrumbItem>
-        <BreadcrumbLink href="/components"> Components </BreadcrumbLink>
-      </BreadcrumbItem>
-    </BreadcrumbList>
-  </Breadcrumb>
-</template>
-```
-
----
+<ComponentPreview framework="vue" name="breadcrumb-separator" />
 
 ### Dropdown
 
 You can compose `<BreadcrumbItem />` with a `<DropdownMenu />` to create a dropdown in the breadcrumb.
 
-<ComponentPreview framework="vue" name="breadcrumb-dropdown-demo" />
-
-```vue showLineNumbers {2-7,13-22}
-<script setup lang="ts">
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-
-//...
-</script>
-
-<template>
-  <BreadcrumbItem>
-    <DropdownMenu>
-      <DropdownMenuTrigger> Components </DropdownMenuTrigger>
-      <DropdownMenuContent align="start">
-        <DropdownMenuItem>Documentation</DropdownMenuItem>
-        <DropdownMenuItem>Themes</DropdownMenuItem>
-        <DropdownMenuItem>GitHub</DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  </BreadcrumbItem>
-</template>
-```
-
----
+<ComponentPreview framework="vue" name="breadcrumb-dropdown" />
 
 ### Collapsed
 
 We provide a `<BreadcrumbEllipsis />` component to show a collapsed state when the breadcrumb is too long.
 
-<ComponentPreview framework="vue" name="breadcrumb-collapsed-demo" />
-
-```vue showLineNumbers {2,11}
-<script setup lang="ts">
-import { BreadcrumbEllipsis } from "@/components/ui/breadcrumb"
-
-//...
-</script>
-
-<template>
-  <Breadcrumb>
-    <BreadcrumbList>
-      <!-- ... -->
-      <BreadcrumbItem>
-        <BreadcrumbEllipsis />
-      </BreadcrumbItem>
-      <!-- ... -->
-    </BreadcrumbList>
-  </Breadcrumb>
-</template>
-```
-
----
+<ComponentPreview framework="vue" name="breadcrumb-ellipsis" />
 
 ### Link component
 
 To use a custom link component from your routing library, you can use the `as-child` prop on `<BreadcrumbLink />`.
 
-<ComponentPreview framework="vue" name="breadcrumb-link-demo" />
+<ComponentPreview framework="vue" name="breadcrumb-link" />
 
-```vue showLineNumbers {2,10-12}
-<script setup lang="ts">
-import { NuxtLink } from "#components"
+## API Reference
 
-// ...
-</script>
+### Breadcrumb
 
-<template>
-  <Breadcrumb>
-    <BreadcrumbList>
-      <BreadcrumbItem>
-        <BreadcrumbLink as-child>
-          <NuxtLink to="/"> Home </NuxtLink>
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-      {/* ... */}
-    </BreadcrumbList>
-  </Breadcrumb>
-</template>
-```
+The `Breadcrumb` component is the root navigation element that wraps all breadcrumb components.
 
----
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |
 
-### Responsive
+### BreadcrumbList
 
-Here's an example of a responsive breadcrumb that composes `<BreadcrumbItem />` with `<BreadcrumbEllipsis />`, ` <DropdownMenu />`, and `<Drawer />`.
+The `BreadcrumbList` component displays the ordered list of breadcrumb items.
 
-It displays a dropdown on desktop and a drawer on mobile.
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |
 
-<ComponentPreview framework="vue" name="breadcrumb-responsive-demo" />
+### BreadcrumbItem
+
+The `BreadcrumbItem` component wraps individual breadcrumb items.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |
+
+### BreadcrumbLink
+
+The `BreadcrumbLink` component displays a clickable link in the breadcrumb.
+
+| Prop        | Type      | Default |
+| ----------- | --------- | ------- |
+| `as-child`  | `boolean` | -       |
+| `class`     | `string`  | -       |
+
+### BreadcrumbPage
+
+The `BreadcrumbPage` component displays the current page in the breadcrumb (non-clickable).
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |
+
+### BreadcrumbSeparator
+
+The `BreadcrumbSeparator` component displays a separator between breadcrumb items. You can pass custom children to override the default separator icon.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |
+
+### BreadcrumbEllipsis
+
+The `BreadcrumbEllipsis` component displays an ellipsis indicator for collapsed breadcrumb items.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |

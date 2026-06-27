@@ -57,33 +57,33 @@ You can replace the default spinner icon with any other icon by editing the `Spi
 
 ## Examples
 
-### Size
-
-Use the `@size` arg to change the size of the spinner.
-
-<ComponentPreview framework="ember" name="spinner-sizes" />
-
-### Color
-
-Use the `@color` arg to change the color of the spinner.
+### Colors
 
 <ComponentPreview framework="ember" name="spinner-colors" />
 
+### Sizes
+
+<ComponentPreview framework="ember" name="spinner-sizes" />
+
+### Size
+
+Use the `size-*` utility class to change the size of the spinner.
+
+<ComponentPreview framework="ember" name="spinner-size" />
+
 ### Button
 
-Add a spinner to a button to indicate a loading state. The `<Button />` will handle the spacing between the spinner and the text.
+Add a spinner to a button to indicate a loading state. Place the `<Spinner />` before the label with `data-icon="inline-start"` for a start position, or after the label with `data-icon="inline-end"` for an end position.
 
 <ComponentPreview framework="ember" name="spinner-button" />
 
 ### Badge
 
-You can also use a spinner inside a badge.
+Add a spinner to a badge to indicate a loading state. Place the `<Spinner />` before the label with `data-icon="inline-start"` for a start position, or after the label with `data-icon="inline-end"` for an end position.
 
 <ComponentPreview framework="ember" name="spinner-badge" />
 
 ### Input Group
-
-Input Group can have spinners inside `<InputGroupAddon>`.
 
 <ComponentPreview framework="ember" name="spinner-input-group" />
 
@@ -91,24 +91,21 @@ Input Group can have spinners inside `<InputGroupAddon>`.
 
 <ComponentPreview framework="ember" name="spinner-empty" />
 
-### Item
-
-Use the spinner inside `<ItemMedia>` to indicate a loading state.
-
-<ComponentPreview framework="ember" name="spinner-item" />
-
-## API Reference
+## API
 
 ### Spinner
-
-Use the `Spinner` component to display a spinner.
 
 | Prop     | Type                                                 | Default     |
 | -------- | ---------------------------------------------------- | ----------- |
 | `@color` | `"default" \| "primary" \| "onPrimary" \| "inherit"` | `"default"` |
 | `@size`  | `"xs" \| "sm" \| "md" \| "lg"`                       | `"sm"`      |
-| `@class` | `string`                                             |             |
 
-```hbs
-<Spinner />
-```
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="ember"
+  name="spinner-rtl"
+  direction="rtl"
+/>

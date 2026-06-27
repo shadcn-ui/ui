@@ -13,7 +13,7 @@ const plugin = Autoplay({
 <template>
   <Carousel
     class="relative w-full max-w-xs"
-    :plugins="[plugin]"
+    :plugins="[(plugin as any)]"
     @mouseenter="plugin.stop"
     @mouseleave="[plugin.reset(), plugin.play(), console.log('Running')];"
   >

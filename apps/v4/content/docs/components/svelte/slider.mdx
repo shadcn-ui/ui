@@ -51,3 +51,47 @@ npx shadcn@latest add @force-ui-svelte/slider
 ```svelte
 <Slider type="single" bind:value max={100} step={1} />
 ```
+
+## Examples
+
+### Range
+
+Use an array with two values for a range slider.
+
+<ComponentPreview framework="svelte" name="slider-range" />
+
+### Multiple Thumbs
+
+Use an array with multiple values for multiple thumbs.
+
+<ComponentPreview framework="svelte" name="slider-multiple" />
+
+### Vertical
+
+Use `orientation="vertical"` for a vertical slider.
+
+<ComponentPreview framework="svelte" name="slider-vertical" />
+
+### Controlled
+
+<ComponentPreview framework="svelte" name="slider-controlled" />
+
+### Disabled
+
+Use the `disabled` prop to disable the slider.
+
+<ComponentPreview framework="svelte" name="slider-disabled" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="svelte"
+  name="slider-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [Radix UI Slider](https://www.radix-ui.com/docs/primitives/components/slider#api-reference) documentation.

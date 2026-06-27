@@ -50,14 +50,62 @@ pnpm add @floating-ui/dom ember-click-outside ember-provide-consume-context
 ```gts showLineNumbers
 import {
   Popover,
-  PopoverTrigger,
   PopoverContent,
+  PopoverTrigger,
 } from '@/ui/popover';
 ```
 
 ```hbs showLineNumbers
 <Popover>
-  <PopoverTrigger>Open</PopoverTrigger>
-  <PopoverContent>Place content for the popover here.</PopoverContent>
+  <PopoverTrigger>
+    <Button @variant="outline">Open Popover</Button>
+  </PopoverTrigger>
+  <PopoverContent>
+    Place content for the popover here.
+  </PopoverContent>
 </Popover>
 ```
+
+## Composition
+
+Use the following composition to build a `Popover`:
+
+```text
+Popover
+├── PopoverTrigger
+└── PopoverContent
+```
+
+## Examples
+
+### Basic
+
+A simple popover with a header, title, and description.
+
+<ComponentPreview framework="ember" name="popover-basic" />
+
+### Align
+
+Use the `@align` prop on `PopoverContent` to control the horizontal alignment.
+
+<ComponentPreview framework="ember" name="popover-alignments" />
+
+### With Form
+
+A popover with form fields inside.
+
+<ComponentPreview framework="ember" name="popover-form" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="ember"
+  name="popover-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [Radix UI Popover](https://www.radix-ui.com/docs/primitives/components/popover#api-reference) documentation.

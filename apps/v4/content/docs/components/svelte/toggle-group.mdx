@@ -55,30 +55,56 @@ npx shadcn@latest add @force-ui-svelte/toggle-group
 </ToggleGroup.Root>
 ```
 
+## Composition
+
+Use the following composition to build a `ToggleGroup`:
+
+```text
+ToggleGroup.Root
+├── ToggleGroup.Item
+└── ToggleGroup.Item
+```
+
 ## Examples
 
 ### Outline
 
+Use `variant="outline"` for an outline style.
+
 <ComponentPreview framework="svelte" name="toggle-group-outline" />
 
-### Single
+### Size
 
-<ComponentPreview framework="svelte" name="toggle-group-single" />
+Use the `size` prop to change the size of the toggle group.
 
-### Small
-
-<ComponentPreview framework="svelte" name="toggle-group-sm" />
-
-### Large
-
-<ComponentPreview framework="svelte" name="toggle-group-lg" />
-
-### Disabled
-
-<ComponentPreview framework="svelte" name="toggle-group-disabled" />
+<ComponentPreview framework="svelte" name="toggle-group-sizes" />
 
 ### Spacing
 
 Use `spacing={2}` to add spacing between toggle group items.
 
 <ComponentPreview framework="svelte" name="toggle-group-spacing" />
+
+### Vertical
+
+Use `orientation="vertical"` for vertical toggle groups.
+
+<ComponentPreview framework="svelte" name="toggle-group-vertical" />
+
+### Disabled
+
+<ComponentPreview framework="svelte" name="toggle-group-disabled" />
+
+### Custom
+
+A custom toggle group example.
+
+<ComponentPreview
+  framework="svelte"
+  name="toggle-group-font-weight-selector"
+  previewClassName="*:data-[slot=field]:max-w-xs"
+/>
+
+## API Reference
+
+See the [Radix Toggle Group](https://www.radix-ui.com/docs/primitives/components/toggle-group#api-reference) documentation.

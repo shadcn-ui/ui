@@ -29,7 +29,7 @@ npx shadcn@latest add @force-ui-ember/textarea
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="textarea" title="components/ui/textarea.gts" />
+<ComponentSource framework="ember" name="textarea" title="components/ui/textarea.gts" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -51,9 +51,29 @@ import { Textarea } from '@/ui/textarea';
 
 ## Examples
 
-### Default
+### Field
 
-<ComponentPreview framework="ember" name="textarea-demo" />
+Use `Field`, `FieldLabel`, and `FieldDescription` to create a textarea with a label and description.
+
+<ComponentPreview framework="ember" name="textarea-field" />
+
+### Disabled
+
+Use the `disabled` attribute to disable the textarea. To style the disabled state, add the `data-disabled` attribute to the `Field` component.
+
+<ComponentPreview framework="ember" name="textarea-disabled" />
+
+### Invalid
+
+Use `aria-invalid="true"` to mark the textarea as invalid. To style the invalid state, add the `data-invalid` attribute to the `Field` component.
+
+<ComponentPreview framework="ember" name="textarea-invalid" />
+
+### Button
+
+Pair with `Button` to create a textarea with a submit button.
+
+<ComponentPreview framework="ember" name="textarea-button" />
 
 ### Variants
 
@@ -61,25 +81,17 @@ Use the `@variant` prop to change the visual style of the textarea.
 
 <ComponentPreview framework="ember" name="textarea-variants" />
 
-### Disabled
+## RTL
 
-<ComponentPreview framework="ember" name="textarea-disabled" />
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
 
-### With Label
-
-<ComponentPreview framework="ember" name="textarea-with-label" />
-
-### With Text
-
-<ComponentPreview framework="ember" name="textarea-with-text" />
-
-### With Button
-
-<ComponentPreview framework="ember" name="textarea-with-button" />
+<ComponentPreview framework="ember" name="textarea-rtl" direction="rtl" />
 
 ## API Reference
 
 ### Textarea
+
+The `Textarea` component displays a multi-line text input field.
 
 | Prop       | Type                                              | Default     |
 | ---------- | ------------------------------------------------- | ----------- |

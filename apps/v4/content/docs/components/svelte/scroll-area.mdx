@@ -5,7 +5,7 @@ base: svelte
 component: true
 ---
 
-<ComponentPreview framework="svelte" name="scroll-area-demo" />
+<ComponentPreview framework="svelte" name="scroll-area-demo" previewClassName="h-96" />
 
 ## Installation
 
@@ -49,19 +49,33 @@ npx shadcn@latest add @force-ui-svelte/scroll-area
 
 ```svelte showLineNumbers
 <ScrollArea class="h-[200px] w-[350px] rounded-md border p-4">
-  Jokester began sneaking into the castle in the middle of the night and
-  leaving jokes all over the place: under the king's pillow, in his soup, even
-  in the royal toilet. The king was furious, but he couldn't seem to stop
-  Jokester. And then, one day, the people of the kingdom discovered that the
-  jokes left by Jokester were so funny that they couldn't help but laugh. And
-  once they started laughing, they couldn't stop.
+  Your scrollable content here.
 </ScrollArea>
+```
+
+## Composition
+
+Use the following composition to build a `ScrollArea`:
+
+```text
+ScrollArea
+└── ScrollBar
 ```
 
 ## Examples
 
-### Horizontal Scrolling
+### Horizontal
 
-Set the `orientation` prop to `"horizontal"` to enable horizontal scrolling.
+Use `orientation="horizontal"` for horizontal scrolling.
 
-<ComponentPreview framework="svelte" name="scroll-area-horizontal" />
+<ComponentPreview framework="svelte" name="scroll-area-horizontal-demo" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="svelte" name="scroll-area-rtl" direction="rtl" previewClassName="h-auto" />
+
+## API Reference
+
+See the [Radix UI Scroll Area](https://www.radix-ui.com/docs/primitives/components/scroll-area#api-reference) documentation.

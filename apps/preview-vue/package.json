@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite --port 3001",
     "preview:build": "vite build",
-    "preview": "vite preview --port 3001"
+    "preview": "vite preview --port 3001",
+    "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@internationalized/date": "^3.7.0",
@@ -41,6 +42,7 @@
     "tailwindcss": "4.1.18",
     "typescript": "^5.7.0",
     "vite": "^6.0.0",
-    "vite-svg-loader": "^5.1.1"
+    "vite-svg-loader": "^5.1.1",
+    "vue-tsc": "^3.3.5"
   }
 }

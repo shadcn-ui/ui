@@ -42,9 +42,43 @@ npx shadcn@latest add @force-ui-ember/separator
 ## Usage
 
 ```gts showLineNumbers
-import { Separator } from '@/ui/separator';
+import { Separator } from '@/ember-ui/separator';
 ```
 
 ```hbs showLineNumbers
 <Separator />
 ```
+
+## Examples
+
+### Vertical
+
+Use `@orientation="vertical"` for a vertical separator.
+
+<ComponentPreview framework="ember" name="separator-vertical" />
+
+### Menu
+
+Vertical separators between menu items with descriptions.
+
+<ComponentPreview framework="ember" name="separator-menu" />
+
+### List
+
+Horizontal separators between list items.
+
+<ComponentPreview framework="ember" name="separator-list" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="ember"
+  name="separator-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [Radix UI Separator](https://www.radix-ui.com/docs/primitives/components/separator#api-reference) documentation.
