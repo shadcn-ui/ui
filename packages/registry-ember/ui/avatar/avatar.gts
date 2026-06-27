@@ -20,7 +20,7 @@ interface AvatarSignature {
 const Avatar: TOC<AvatarSignature> = <template>
   <div
     class={{cn
-      "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+      "cn-avatar group/avatar relative flex shrink-0 select-none after:absolute after:inset-0 after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten"
       @class
     }}
     data-slot="avatar"
@@ -59,8 +59,9 @@ class AvatarImage extends Component<AvatarImageSignature> {
     {{#unless (eq this.loadingStatus "error")}}
       <img
         alt={{if @alt @alt ""}}
-        class={{cn "aspect-square h-full w-full" @class}}
+        class={{cn "cn-avatar-image aspect-square size-full object-cover" @class}}
         src={{@src}}
+        data-slot="avatar-image"
         {{on "error" this.handleError}}
         {{on "load" this.handleLoad}}
         ...attributes
@@ -83,9 +84,10 @@ interface AvatarFallbackSignature {
 const AvatarFallback: TOC<AvatarFallbackSignature> = <template>
   <div
     class={{cn
-      "flex h-full w-full items-center justify-center rounded-full bg-muted"
+      "cn-avatar-fallback flex size-full items-center justify-center text-sm group-data-[size=sm]/avatar:text-xs"
       @class
     }}
+    data-slot="avatar-fallback"
     ...attributes
   >
     {{yield}}

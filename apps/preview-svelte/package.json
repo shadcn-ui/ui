@@ -7,7 +7,7 @@
     "dev": "vite --port 3002",
     "preview:build": "vite build",
     "preview": "vite preview --port 3002",
-    "type-check": "svelte-check --tsconfig ./tsconfig.json"
+    "type-check": "NODE_OPTIONS=--max-old-space-size=8192 svelte-check --tsconfig ./tsconfig.json"
   },
   "dependencies": {
     "@internationalized/date": "^3.7.0",
