@@ -14,7 +14,7 @@ import {
   type MessageAnimationId,
 } from "@/lib/message-animations"
 import { MessageAnimated } from "@/components/message-animated"
-import { Button } from "@/styles/react-aria-nova/ui/button"
+import { Button } from "@/styles/react-aria-rhea/ui/button"
 import {
   Card,
   CardAction,
@@ -23,21 +23,21 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/styles/react-aria-nova/ui/card"
+} from "@/styles/react-aria-rhea/ui/card"
 import {
   Empty,
   EmptyDescription,
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/styles/react-aria-nova/ui/empty"
+} from "@/styles/react-aria-rhea/ui/empty"
 import {
   MessageScroller,
   MessageScrollerButton,
   MessageScrollerContent,
   MessageScrollerProvider,
   MessageScrollerViewport,
-} from "@/styles/react-aria-nova/ui/message-scroller"
+} from "@/styles/react-aria-rhea/ui/message-scroller"
 import {
   Select,
   SelectContent,
@@ -45,7 +45,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/styles/react-aria-nova/ui/select"
+} from "@/styles/react-aria-rhea/ui/select"
 
 const chat = createChat()
   .user("Can user messages pop in like iMessage without breaking anchoring?")

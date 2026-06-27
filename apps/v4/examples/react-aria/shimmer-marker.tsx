@@ -2,8 +2,8 @@ import {
   Marker,
   MarkerContent,
   MarkerIcon,
-} from "@/styles/react-aria-nova/ui/marker"
-import { Spinner } from "@/styles/react-aria-nova/ui/spinner"
+} from "@/styles/react-aria-rhea/ui/marker"
+import { Spinner } from "@/styles/react-aria-rhea/ui/spinner"
 
 export function ShimmerMarker() {
   return (

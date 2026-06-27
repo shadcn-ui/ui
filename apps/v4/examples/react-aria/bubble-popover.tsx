@@ -4,15 +4,15 @@ import {
   Bubble,
   BubbleContent,
   BubbleReactions,
-} from "@/styles/react-aria-nova/ui/bubble"
-import { Button } from "@/styles/react-aria-nova/ui/button"
+} from "@/styles/react-aria-rhea/ui/bubble"
+import { Button } from "@/styles/react-aria-rhea/ui/button"
 import {
   Popover,
   PopoverDescription,
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/styles/react-aria-nova/ui/popover"
+} from "@/styles/react-aria-rhea/ui/popover"
 
 export function BubblePopoverDemo() {
   return (

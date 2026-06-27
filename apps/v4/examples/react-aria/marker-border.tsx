@@ -4,7 +4,7 @@ import {
   Marker,
   MarkerContent,
   MarkerIcon,
-} from "@/styles/react-aria-nova/ui/marker"
+} from "@/styles/react-aria-rhea/ui/marker"
 
 export function MarkerBorderDemo() {
   return (

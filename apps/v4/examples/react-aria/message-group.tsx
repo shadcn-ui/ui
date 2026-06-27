@@ -2,14 +2,14 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/styles/react-aria-nova/ui/avatar"
-import { Bubble, BubbleContent } from "@/styles/react-aria-nova/ui/bubble"
+} from "@/styles/react-aria-rhea/ui/avatar"
+import { Bubble, BubbleContent } from "@/styles/react-aria-rhea/ui/bubble"
 import {
   Message,
   MessageAvatar,
   MessageContent,
   MessageGroup,
-} from "@/styles/react-aria-nova/ui/message"
+} from "@/styles/react-aria-rhea/ui/message"
 
 export function MessageGroupDemo() {
   return (

@@ -6,7 +6,7 @@ import {
   AttachmentDescription,
   AttachmentMedia,
   AttachmentTitle,
-} from "@/styles/react-aria-nova/ui/attachment"
+} from "@/styles/react-aria-rhea/ui/attachment"
 
 export function AttachmentSizes() {
   return (

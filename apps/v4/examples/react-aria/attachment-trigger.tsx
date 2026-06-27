@@ -9,14 +9,14 @@ import {
   AttachmentMedia,
   AttachmentTitle,
   AttachmentTrigger,
-} from "@/styles/react-aria-nova/ui/attachment"
+} from "@/styles/react-aria-rhea/ui/attachment"
 import {
   Dialog,
   DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/styles/react-aria-nova/ui/dialog"
+} from "@/styles/react-aria-rhea/ui/dialog"
 
 export function AttachmentTriggerDemo() {
   return (

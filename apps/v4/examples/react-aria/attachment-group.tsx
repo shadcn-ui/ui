@@ -15,7 +15,7 @@ import {
   AttachmentGroup,
   AttachmentMedia,
   AttachmentTitle,
-} from "@/styles/react-aria-nova/ui/attachment"
+} from "@/styles/react-aria-rhea/ui/attachment"
 
 type Item = {
   name: string

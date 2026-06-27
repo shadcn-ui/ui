@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { Button } from "@/styles/react-aria-nova/ui/button"
+import { Button } from "@/styles/react-aria-rhea/ui/button"
 
 export function ShimmerOnce() {
   const [key, setKey] = React.useState(0)

@@ -1,4 +1,4 @@
-import { Bubble, BubbleContent } from "@/styles/react-aria-nova/ui/bubble"
+import { Bubble, BubbleContent } from "@/styles/react-aria-rhea/ui/bubble"
 
 export function BubbleAlignmentDemo() {
   return (

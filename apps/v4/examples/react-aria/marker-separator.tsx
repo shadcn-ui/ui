@@ -1,4 +1,4 @@
-import { Marker, MarkerContent } from "@/styles/react-aria-nova/ui/marker"
+import { Marker, MarkerContent } from "@/styles/react-aria-rhea/ui/marker"
 
 export function MarkerSeparatorDemo() {
   return (

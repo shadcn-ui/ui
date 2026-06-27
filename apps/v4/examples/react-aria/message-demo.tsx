@@ -2,20 +2,20 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/styles/react-aria-nova/ui/avatar"
+} from "@/styles/react-aria-rhea/ui/avatar"
 import {
   Bubble,
   BubbleContent,
   BubbleGroup,
   BubbleReactions,
-} from "@/styles/react-aria-nova/ui/bubble"
-import { Marker, MarkerContent } from "@/styles/react-aria-nova/ui/marker"
+} from "@/styles/react-aria-rhea/ui/bubble"
+import { Marker, MarkerContent } from "@/styles/react-aria-rhea/ui/marker"
 import {
   Message,
   MessageAvatar,
   MessageContent,
   MessageFooter,
-} from "@/styles/react-aria-nova/ui/message"
+} from "@/styles/react-aria-rhea/ui/message"
 
 export function MessageDemo() {
   return (

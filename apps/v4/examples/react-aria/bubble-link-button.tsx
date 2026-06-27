@@ -6,7 +6,7 @@ import {
   Bubble,
   BubbleContent,
   BubbleGroup,
-} from "@/styles/react-aria-nova/ui/bubble"
+} from "@/styles/react-aria-rhea/ui/bubble"
 
 export function BubbleLinkButtonDemo() {
   return (

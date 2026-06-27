@@ -14,7 +14,7 @@ import {
 
 import { createChat, getMessageText } from "@/lib/ai"
 import { MessageAnimated } from "@/components/message-animated"
-import { Button } from "@/styles/react-aria-nova/ui/button"
+import { Button } from "@/styles/react-aria-rhea/ui/button"
 import {
   Card,
   CardAction,
@@ -23,33 +23,33 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/styles/react-aria-nova/ui/card"
+} from "@/styles/react-aria-rhea/ui/card"
 import {
   DropdownMenu,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/styles/react-aria-nova/ui/dropdown-menu"
+} from "@/styles/react-aria-rhea/ui/dropdown-menu"
 import {
   Empty,
   EmptyDescription,
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/styles/react-aria-nova/ui/empty"
+} from "@/styles/react-aria-rhea/ui/empty"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
-} from "@/styles/react-aria-nova/ui/input-group"
+} from "@/styles/react-aria-rhea/ui/input-group"
 import {
   MessageScroller,
   MessageScrollerButton,
   MessageScrollerContent,
   MessageScrollerProvider,
   MessageScrollerViewport,
-} from "@/styles/react-aria-nova/ui/message-scroller"
-import { Tooltip, TooltipTrigger } from "@/styles/react-aria-nova/ui/tooltip"
+} from "@/styles/react-aria-rhea/ui/message-scroller"
+import { Tooltip, TooltipTrigger } from "@/styles/react-aria-rhea/ui/tooltip"
 
 const chat = createChat()
   .user(

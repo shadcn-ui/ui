@@ -15,8 +15,8 @@ import {
   AttachmentDescription,
   AttachmentMedia,
   AttachmentTitle,
-} from "@/styles/react-aria-nova/ui/attachment"
-import { Spinner } from "@/styles/react-aria-nova/ui/spinner"
+} from "@/styles/react-aria-rhea/ui/attachment"
+import { Spinner } from "@/styles/react-aria-rhea/ui/spinner"
 
 export function AttachmentStates() {
   return (

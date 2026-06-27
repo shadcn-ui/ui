@@ -4,9 +4,9 @@ import {
   Bubble,
   BubbleContent,
   BubbleReactions,
-} from "@/styles/react-aria-nova/ui/bubble"
-import { Button } from "@/styles/react-aria-nova/ui/button"
-import { Tooltip, TooltipTrigger } from "@/styles/react-aria-nova/ui/tooltip"
+} from "@/styles/react-aria-rhea/ui/bubble"
+import { Button } from "@/styles/react-aria-rhea/ui/button"
+import { Tooltip, TooltipTrigger } from "@/styles/react-aria-rhea/ui/tooltip"
 
 export function BubbleTooltipDemo() {
   return (
