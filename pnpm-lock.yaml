@@ -318,8 +318,8 @@ importers:
         specifier: ^4.0.9
         version: 4.0.9
       svelte-check:
-        specifier: ^4.7.1
-        version: 4.7.1(picomatch@4.0.4)(svelte@5.56.3(@typescript-eslint/types@8.54.0))(typescript@5.9.2)
+        specifier: ^4.1.0
+        version: 4.1.0(picomatch@4.0.4)(svelte@5.56.3(@typescript-eslint/types@8.54.0))(typescript@5.9.2)
       tailwindcss:
         specifier: 4.1.18
         version: 4.1.18
@@ -4324,10 +4324,6 @@ packages:
         optional: true
       typescript:
         optional: true
-
-  '@sveltejs/load-config@0.2.0':
-    resolution: {integrity: sha512-1LgZ/qUqSoq+QorD83lk2hka79Px0wXNW2q5V1nZlxGhQgw1jrsIbVz5YiCeucVLo4XvFLjXukUaQjIiqowkcg==}
-    engines: {node: '>= 18.0.0'}
 
   '@sveltejs/vite-plugin-svelte-inspector@4.0.1':
     resolution: {integrity: sha512-J/Nmb2Q2y7mck2hyCX4ckVHcR5tu2J+MtBEQqpDrrgELZ2uvraQcK/ioCV61AqkdXFgriksOKIceDcQmqnGhVw==}
@@ -10265,8 +10261,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  svelte-check@4.7.1:
-    resolution: {integrity: sha512-FGUOmAqxXdN/H9Zm8slrqO7SLtFisXRB7rfOsHNJ3MLTD2po/+Stg8XyErkpumPHbuUiYTcqrEIzxpVWKTLqtg==}
+  svelte-check@4.1.0:
+    resolution: {integrity: sha512-AflEZYqI578KuDZcpcorPSf597LStxlkN7XqXi38u09zlHODVKd7c+7OuubGzbhgGRUqNTdQCZ+Ga96iRXEf2g==}
     engines: {node: '>= 18.0.0'}
     hasBin: true
     peerDependencies:
@@ -14934,8 +14930,6 @@ snapshots:
       '@opentelemetry/api': 1.9.0
       typescript: 5.9.2
     optional: true
-
-  '@sveltejs/load-config@0.2.0': {}
 
   '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.56.3(@typescript-eslint/types@8.54.0))(vite@6.4.3(@types/node@20.19.10)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.3)(yaml@2.8.1)))(svelte@5.56.3(@typescript-eslint/types@8.54.0))(vite@6.4.3(@types/node@20.19.10)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.3)(yaml@2.8.1))':
     dependencies:
@@ -22250,10 +22244,9 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte-check@4.7.1(picomatch@4.0.4)(svelte@5.56.3(@typescript-eslint/types@8.54.0))(typescript@5.9.2):
+  svelte-check@4.1.0(picomatch@4.0.4)(svelte@5.56.3(@typescript-eslint/types@8.54.0))(typescript@5.9.2):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
-      '@sveltejs/load-config': 0.2.0
       chokidar: 4.0.3
       fdir: 6.5.0(picomatch@4.0.4)
       picocolors: 1.1.1

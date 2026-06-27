@@ -6,6 +6,7 @@ interface CardSignature {
   Element: HTMLDivElement;
   Args: {
     class?: string;
+    size?: 'default' | 'sm';
   };
   Blocks: {
     default: [];
@@ -14,11 +15,9 @@ interface CardSignature {
 
 const Card: TOC<CardSignature> = <template>
   <div
-    class={{cn
-      "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm"
-      @class
-    }}
+    class={{cn "cn-card group/card flex flex-col" @class}}
     data-slot="card"
+    data-size={{@size}}
     ...attributes
   >
     {{yield}}
@@ -38,7 +37,7 @@ interface CardHeaderSignature {
 const CardHeader: TOC<CardHeaderSignature> = <template>
   <div
     class={{cn
-      "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6"
+      "cn-card-header group/card-header @container/card-header grid auto-rows-min items-start has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]"
       @class
     }}
     data-slot="card-header"
@@ -60,7 +59,7 @@ interface CardTitleSignature {
 
 const CardTitle: TOC<CardTitleSignature> = <template>
   <div
-    class={{cn "leading-none font-semibold" @class}}
+    class={{cn "cn-card-title cn-font-heading" @class}}
     data-slot="card-title"
     ...attributes
   >
@@ -80,7 +79,7 @@ interface CardDescriptionSignature {
 
 const CardDescription: TOC<CardDescriptionSignature> = <template>
   <div
-    class={{cn "text-muted-foreground text-sm" @class}}
+    class={{cn "cn-card-description" @class}}
     data-slot="card-description"
     ...attributes
   >
@@ -101,7 +100,7 @@ interface CardActionSignature {
 const CardAction: TOC<CardActionSignature> = <template>
   <div
     class={{cn
-      "col-start-2 row-span-2 row-start-1 self-start justify-self-end"
+      "cn-card-action col-start-2 row-span-2 row-start-1 self-start justify-self-end"
       @class
     }}
     data-slot="card-action"
@@ -122,7 +121,7 @@ interface CardContentSignature {
 }
 
 const CardContent: TOC<CardContentSignature> = <template>
-  <div class={{cn "px-6" @class}} data-slot="card-content" ...attributes>
+  <div class={{cn "cn-card-content" @class}} data-slot="card-content" ...attributes>
     {{yield}}
   </div>
 </template>;
@@ -139,7 +138,7 @@ interface CardFooterSignature {
 
 const CardFooter: TOC<CardFooterSignature> = <template>
   <div
-    class={{cn "flex items-center px-6 [.border-t]:pt-6" @class}}
+    class={{cn "cn-card-footer flex items-center" @class}}
     data-slot="card-footer"
     ...attributes
   >

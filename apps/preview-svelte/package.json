@@ -7,7 +7,7 @@
     "dev": "vite --port 3002",
     "preview:build": "vite build",
     "preview": "vite preview --port 3002",
-    "type-check": "NODE_OPTIONS=--max-old-space-size=8192 svelte-check --tsconfig ./tsconfig.json"
+    "type-check": "node --max-old-space-size=8192 ./node_modules/svelte-check/bin/svelte-check --tsconfig ./tsconfig.json"
   },
   "dependencies": {
     "@internationalized/date": "^3.7.0",
@@ -40,7 +40,7 @@
     "@sveltejs/vite-plugin-svelte": "^5.0.0",
     "@tailwindcss/vite": "4.1.18",
     "@types/d3-scale": "^4.0.9",
-    "svelte-check": "^4.7.1",
+    "svelte-check": "^4.1.0",
     "tailwindcss": "4.1.18",
     "typescript": "^5.7.0",
     "unplugin-icons": "^23.0.1",

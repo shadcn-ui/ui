@@ -158,7 +158,7 @@ class SidebarProvider extends Component<SidebarProviderSignature> {
     >
       <div
         class={{cn
-          "group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar relative flex min-h-svh h-full w-full"
+          "group/sidebar-wrapper flex min-h-svh w-full has-data-[variant=inset]:bg-sidebar"
           @class
         }}
         data-slot="sidebar-wrapper"
@@ -221,7 +221,7 @@ class Sidebar extends Component<SidebarSignature> {
     {{#if (eq this.collapsible "none")}}
       <div
         class={{cn
-          "bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col"
+          "flex h-full w-(--sidebar-width) flex-col bg-sidebar text-sidebar-foreground"
           @class
         }}
         data-slot="sidebar"
@@ -249,7 +249,7 @@ class Sidebar extends Component<SidebarSignature> {
       </Sheet>
     {{else}}
       <div
-        class="group peer text-sidebar-foreground hidden md:block"
+        class="group peer hidden text-sidebar-foreground md:block"
         data-collapsible={{if
           (eq this.context.state "collapsed")
           this.collapsible
@@ -262,7 +262,7 @@ class Sidebar extends Component<SidebarSignature> {
       >
         <div
           class={{cn
-            "relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear"
+            "cn-sidebar-gap relative w-(--sidebar-width) bg-transparent"
             "group-data-[collapsible=offcanvas]:w-0"
             "group-data-[side=right]:rotate-180"
             (if
@@ -275,12 +275,7 @@ class Sidebar extends Component<SidebarSignature> {
         />
         <div
           class={{cn
-            "absolute inset-y-0 z-10 hidden h-full w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex"
-            (if
-              (eq this.side "left")
-              "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]"
-              "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]"
-            )
+            "fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear data-[side=left]:left-0 data-[side=left]:group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)] data-[side=right]:right-0 data-[side=right]:group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)] md:flex"
             (if
               (or (eq this.variant "floating") (eq this.variant "inset"))
               "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]"
@@ -292,7 +287,7 @@ class Sidebar extends Component<SidebarSignature> {
           ...attributes
         >
           <div
-            class="bg-sidebar group-data-[variant=floating]:border-sidebar-border flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm"
+            class="cn-sidebar-inner flex size-full flex-col"
             data-sidebar="sidebar"
             data-slot="sidebar-inner"
           >
@@ -335,7 +330,7 @@ class SidebarTrigger extends Component<SidebarTriggerSignature> {
     <Button
       @size={{or @size "icon"}}
       @variant={{or @variant "ghost"}}
-      class={{cn "size-7" @class}}
+      class={{cn "cn-sidebar-trigger" @class}}
       data-sidebar="trigger"
       data-slot="sidebar-trigger"
       {{on "click" this.handleClick}}
@@ -368,10 +363,10 @@ class SidebarRail extends Component<SidebarRailSignature> {
     <button
       aria-label="Toggle Sidebar"
       class={{cn
-        "hover:after:bg-sidebar-border absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear group-data-[side=left]:-right-4 group-data-[side=right]:left-0 after:absolute after:inset-y-0 after:left-1/2 after:w-0.5 sm:flex"
+        "cn-sidebar-rail absolute inset-y-0 z-20 hidden w-4 transition-all ease-linear group-data-[side=left]:-right-4 group-data-[side=right]:left-0 after:absolute after:inset-y-0 after:start-1/2 after:w-[2px] sm:flex ltr:-translate-x-1/2 rtl:-translate-x-1/2"
         "in-data-[side=left]:cursor-w-resize in-data-[side=right]:cursor-e-resize"
         "[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize"
-        "hover:group-data-[collapsible=offcanvas]:bg-sidebar group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full"
+        "group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full hover:group-data-[collapsible=offcanvas]:bg-sidebar"
         "[[data-side=left][data-collapsible=offcanvas]_&]:-right-2"
         "[[data-side=right][data-collapsible=offcanvas]_&]:-left-2"
         @class
@@ -402,8 +397,7 @@ interface SidebarInsetSignature {
 const SidebarInset: TOC<SidebarInsetSignature> = <template>
   <main
     class={{cn
-      "bg-background relative flex w-full flex-1 flex-col"
-      "md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2"
+      "cn-sidebar-inset relative flex w-full flex-1 flex-col"
       @class
     }}
     data-slot="sidebar-inset"
@@ -424,7 +418,7 @@ interface SidebarInputSignature {
 const SidebarInput: TOC<SidebarInputSignature> = <template>
   <Input
     @type={{@type}}
-    class={{cn "bg-background h-8 w-full shadow-none" @class}}
+    class={{cn "cn-sidebar-input" @class}}
     data-sidebar="input"
     data-slot="sidebar-input"
     ...attributes
@@ -443,7 +437,7 @@ interface SidebarHeaderSignature {
 
 const SidebarHeader: TOC<SidebarHeaderSignature> = <template>
   <div
-    class={{cn "flex flex-col gap-2 p-2" @class}}
+    class={{cn "cn-sidebar-header flex flex-col" @class}}
     data-sidebar="header"
     data-slot="sidebar-header"
     ...attributes
@@ -464,7 +458,7 @@ interface SidebarFooterSignature {
 
 const SidebarFooter: TOC<SidebarFooterSignature> = <template>
   <div
-    class={{cn "flex flex-col gap-2 p-2" @class}}
+    class={{cn "cn-sidebar-footer flex flex-col" @class}}
     data-sidebar="footer"
     data-slot="sidebar-footer"
     ...attributes
@@ -486,7 +480,7 @@ const SidebarSeparator: TOC<SidebarSeparatorSignature> = <template>
   <Separator
     @decorative={{@decorative}}
     @orientation={{@orientation}}
-    class={{cn "bg-sidebar-border mx-2 w-auto" @class}}
+    class={{cn "cn-sidebar-separator w-auto" @class}}
     data-sidebar="separator"
     data-slot="sidebar-separator"
     ...attributes
@@ -506,7 +500,7 @@ interface SidebarContentSignature {
 const SidebarContent: TOC<SidebarContentSignature> = <template>
   <div
     class={{cn
-      "flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden"
+      "cn-sidebar-content flex min-h-0 flex-1 flex-col overflow-auto group-data-[collapsible=icon]:overflow-hidden"
       @class
     }}
     data-sidebar="content"
@@ -529,7 +523,7 @@ interface SidebarGroupSignature {
 
 const SidebarGroup: TOC<SidebarGroupSignature> = <template>
   <div
-    class={{cn "relative flex w-full min-w-0 flex-col p-2" @class}}
+    class={{cn "cn-sidebar-group relative flex w-full min-w-0 flex-col" @class}}
     data-sidebar="group"
     data-slot="sidebar-group"
     ...attributes
@@ -551,8 +545,7 @@ interface SidebarGroupLabelSignature {
 const SidebarGroupLabel: TOC<SidebarGroupLabelSignature> = <template>
   <div
     class={{cn
-      "text-sidebar-foreground/70 ring-sidebar-ring flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium outline-hidden transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0"
-      "group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0"
+      "cn-sidebar-group-label flex shrink-0 items-center outline-hidden [&>svg]:shrink-0"
       @class
     }}
     data-sidebar="group-label"
@@ -576,9 +569,7 @@ interface SidebarGroupActionSignature {
 const SidebarGroupAction: TOC<SidebarGroupActionSignature> = <template>
   <button
     class={{cn
-      "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground absolute top-3.5 right-3 flex aspect-square w-5 items-center justify-center rounded-md p-0 outline-hidden transition-transform focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0"
-      "after:absolute after:-inset-2 md:after:hidden"
-      "group-data-[collapsible=icon]:hidden"
+      "cn-sidebar-group-action flex aspect-square items-center justify-center outline-hidden transition-transform group-data-[collapsible=icon]:hidden after:absolute after:-inset-2 md:after:hidden [&>svg]:shrink-0"
       @class
     }}
     data-sidebar="group-action"
@@ -602,7 +593,7 @@ interface SidebarGroupContentSignature {
 
 const SidebarGroupContent: TOC<SidebarGroupContentSignature> = <template>
   <div
-    class={{cn "w-full text-sm" @class}}
+    class={{cn "cn-sidebar-group-content w-full" @class}}
     data-sidebar="group-content"
     data-slot="sidebar-group-content"
     ...attributes
@@ -623,7 +614,7 @@ interface SidebarMenuSignature {
 
 const SidebarMenu: TOC<SidebarMenuSignature> = <template>
   <ul
-    class={{cn "flex w-full min-w-0 flex-col gap-1" @class}}
+    class={{cn "cn-sidebar-menu flex w-full min-w-0 flex-col" @class}}
     data-sidebar="menu"
     data-slot="sidebar-menu"
     ...attributes
@@ -681,25 +672,24 @@ class SidebarMenuButton extends Component<SidebarMenuButtonSignature> {
 
   get variantClasses(): string {
     const variants = {
-      default: 'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
-      outline:
-        'bg-background shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]',
+      default: 'cn-sidebar-menu-button-variant-default',
+      outline: 'cn-sidebar-menu-button-variant-outline',
     };
     return variants[this.variant];
   }
 
   get sizeClasses(): string {
     const sizes = {
-      default: 'h-8 text-sm',
-      sm: 'h-7 text-xs',
-      lg: 'h-12 text-sm group-data-[collapsible=icon]:p-0!',
+      default: 'cn-sidebar-menu-button-size-default',
+      sm: 'cn-sidebar-menu-button-size-sm',
+      lg: 'cn-sidebar-menu-button-size-lg',
     };
     return sizes[this.size];
   }
 
   get classes(): string {
     return cn(
-      'peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0',
+      'cn-sidebar-menu-button peer/menu-button group/menu-button flex w-full items-center overflow-hidden outline-hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0 [&>span:last-child]:truncate',
       this.variantClasses,
       this.sizeClasses,
       this.args.class
@@ -760,15 +750,10 @@ interface SidebarMenuActionSignature {
 const SidebarMenuAction: TOC<SidebarMenuActionSignature> = <template>
   <button
     class={{cn
-      "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground peer-hover/menu-button:text-sidebar-accent-foreground absolute top-1.5 right-1 flex aspect-square w-5 items-center justify-center rounded-md p-0 outline-hidden transition-transform focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0"
-      "after:absolute after:-inset-2 md:after:hidden"
-      "peer-data-[size=sm]/menu-button:top-1"
-      "peer-data-[size=default]/menu-button:top-1.5"
-      "peer-data-[size=lg]/menu-button:top-2.5"
-      "group-data-[collapsible=icon]:hidden"
+      "cn-sidebar-menu-action flex items-center justify-center outline-hidden transition-transform group-data-[collapsible=icon]:hidden after:absolute after:-inset-2 md:after:hidden [&>svg]:shrink-0"
       (if
         @showOnHover
-        "peer-data-[active=true]/menu-button:text-sidebar-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0"
+        "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 peer-data-active/menu-button:text-sidebar-accent-foreground aria-expanded:opacity-100 md:opacity-0"
       )
       @class
     }}
@@ -794,12 +779,7 @@ interface SidebarMenuBadgeSignature {
 const SidebarMenuBadge: TOC<SidebarMenuBadgeSignature> = <template>
   <div
     class={{cn
-      "text-sidebar-foreground pointer-events-none absolute right-1 flex h-5 min-w-5 items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums select-none"
-      "peer-hover/menu-button:text-sidebar-accent-foreground peer-data-[active=true]/menu-button:text-sidebar-accent-foreground"
-      "peer-data-[size=sm]/menu-button:top-1"
-      "peer-data-[size=default]/menu-button:top-1.5"
-      "peer-data-[size=lg]/menu-button:top-2.5"
-      "group-data-[collapsible=icon]:hidden"
+      "cn-sidebar-menu-badge flex items-center justify-center tabular-nums select-none group-data-[collapsible=icon]:hidden"
       @class
     }}
     data-sidebar="menu-badge"
@@ -825,16 +805,16 @@ class SidebarMenuSkeleton extends Component<SidebarMenuSkeletonSignature> {
 
   <template>
     <div
-      class={{cn "flex h-8 items-center gap-2 rounded-md px-2" @class}}
+      class={{cn "cn-sidebar-menu-skeleton flex items-center" @class}}
       data-sidebar="menu-skeleton"
       data-slot="sidebar-menu-skeleton"
       ...attributes
     >
       {{#if @showIcon}}
-        <Skeleton class="size-4 rounded-md" data-sidebar="menu-skeleton-icon" />
+        <Skeleton class="cn-sidebar-menu-skeleton-icon" data-sidebar="menu-skeleton-icon" />
       {{/if}}
       <Skeleton
-        class="h-4 max-w-(--skeleton-width) flex-1"
+        class="cn-sidebar-menu-skeleton-text max-w-(--skeleton-width) flex-1"
         data-sidebar="menu-skeleton-text"
         style={{htmlSafe (concat "--skeleton-width: " this.width)}}
       />
@@ -855,7 +835,7 @@ interface SidebarMenuSubSignature {
 const SidebarMenuSub: TOC<SidebarMenuSubSignature> = <template>
   <ul
     class={{cn
-      "border-sidebar-border mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l px-2.5 py-0.5"
+      "cn-sidebar-menu-sub flex min-w-0 flex-col"
       "group-data-[collapsible=icon]:hidden"
       @class
     }}
@@ -905,11 +885,7 @@ const SidebarMenuSubButton: TOC<SidebarMenuSubButtonSignature> = <template>
   {{#let (or @size "md") as |size|}}
     <a
       class={{cn
-        "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground [&>svg]:text-sidebar-accent-foreground flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 outline-hidden focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0"
-        "data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground"
-        (if (eq size "sm") "text-xs")
-        (if (eq size "md") "text-sm")
-        "group-data-[collapsible=icon]:hidden"
+        "cn-sidebar-menu-sub-button flex min-w-0 -translate-x-px items-center overflow-hidden outline-hidden group-data-[collapsible=icon]:hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:shrink-0"
         @class
       }}
       data-active={{@isActive}}

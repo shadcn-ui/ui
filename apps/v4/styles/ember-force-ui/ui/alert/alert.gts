@@ -33,14 +33,23 @@ interface AlertDescriptionSignature {
   };
 }
 
+interface AlertActionSignature {
+  Element: HTMLDivElement;
+  Args: {
+    class?: string;
+  };
+  Blocks: {
+    default: [];
+  };
+}
+
 class Alert extends Component<AlertSignature> {
   get variantClasses() {
     const { variant = 'default' } = this.args;
 
     const variants = {
-      default: 'bg-card text-card-foreground',
-      destructive:
-        'text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90',
+      default: 'cn-alert-variant-default',
+      destructive: 'cn-alert-variant-destructive',
       warning: 'cn-alert-variant-warning',
       success: 'cn-alert-variant-success',
       info: 'cn-alert-variant-info',
@@ -51,7 +60,7 @@ class Alert extends Component<AlertSignature> {
 
   get className() {
     return cn(
-      'relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current',
+      'cn-alert group/alert relative w-full',
       this.variantClasses,
       this.args.class
     );
@@ -67,7 +76,7 @@ class Alert extends Component<AlertSignature> {
 class AlertTitle extends Component<AlertTitleSignature> {
   get className() {
     return cn(
-      'col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight',
+      'cn-alert-title [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground',
       this.args.class
     );
   }
@@ -82,7 +91,7 @@ class AlertTitle extends Component<AlertTitleSignature> {
 class AlertDescription extends Component<AlertDescriptionSignature> {
   get className() {
     return cn(
-      'text-card-foreground/80 col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed',
+      'cn-alert-description [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground',
       this.args.class
     );
   }
@@ -94,4 +103,16 @@ class AlertDescription extends Component<AlertDescriptionSignature> {
   </template>
 }
 
-export { Alert, AlertTitle, AlertDescription };
+class AlertAction extends Component<AlertActionSignature> {
+  get className() {
+    return cn('cn-alert-action', this.args.class);
+  }
+
+  <template>
+    <div class={{this.className}} data-slot="alert-action" ...attributes>
+      {{yield}}
+    </div>
+  </template>
+}
+
+export { Alert, AlertTitle, AlertDescription, AlertAction };
