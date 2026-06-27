@@ -163,10 +163,12 @@ function applyToClassNameAttributes(
   matchedClasses: Set<string>
 ) {
   sourceFile.forEachDescendant((node) => {
-    if (
-      !Node.isJsxAttribute(node) ||
-      node.getNameNode().getText() !== "className"
-    ) {
+    if (!Node.isJsxAttribute(node)) {
+      return
+    }
+
+    const attrName = node.getNameNode().getText()
+    if (attrName !== "className" && attrName !== "containerClassName") {
       return
     }
 
@@ -211,7 +213,7 @@ function applyToClassNameAttributes(
 
     if (tailwindClassesToApply.length > 0) {
       const mergedClasses = tailwindClassesToApply.join(" ")
-      applyClassesToElement(jsxElement, mergedClasses)
+      applyClassesToElement(jsxElement, mergedClasses, attrName)
     } else {
       cleanCnClassesFromAttribute(initializer)
     }
@@ -331,7 +333,11 @@ function removeEmptyArgumentsFromCnCall(callExpression: CallExpression) {
   }
 }
 
-function applyClassesToElement(element: Node, tailwindClasses: string) {
+function applyClassesToElement(
+  element: Node,
+  tailwindClasses: string,
+  attrName = "className"
+) {
   if (
     !Node.isJsxOpeningElement(element) &&
     !Node.isJsxSelfClosingElement(element)
@@ -344,12 +350,12 @@ function applyClassesToElement(element: Node, tailwindClasses: string) {
     .find(
       (attr) =>
         Node.isJsxAttribute(attr) &&
-        attr.getNameNode().getText() === "className"
+        attr.getNameNode().getText() === attrName
     )
 
   if (!attribute || !Node.isJsxAttribute(attribute)) {
     element.addAttribute({
-      name: "className",
+      name: attrName,
       initializer: `{cn(${JSON.stringify(tailwindClasses)})}`,
     })
     return
