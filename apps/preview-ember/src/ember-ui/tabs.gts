@@ -3,6 +3,8 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { provide, consume } from 'ember-provide-consume-context';
 
+import { eq } from 'ember-truth-helpers';
+
 import { cn } from '@/ember-lib/utils';
 
 import type { TOC } from '@ember/component/template-only';

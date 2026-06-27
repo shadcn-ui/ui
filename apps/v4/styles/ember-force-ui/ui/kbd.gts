@@ -23,7 +23,7 @@ const Kbd: TOC<KbdSignature> = <template>
   <kbd
     class={{cn
       "cn-kbd pointer-events-none inline-flex items-center justify-center select-none"
-      (variantClasses[@variant ?? "default"])
+      (variantClasses (if @variant @variant "default"))
       @class
     }}
     data-slot="kbd"
