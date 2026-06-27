@@ -26,7 +26,7 @@ const Textarea: TOC<TextareaSignature> = <template>
   <textarea
     class={{cn
       "cn-textarea flex field-sizing-content min-h-16 w-full outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
-      (variantClass [@variant ?? "outline"])
+      (variantClass (if @variant @variant "outline"))
       @class
     }}
     data-slot="textarea"
