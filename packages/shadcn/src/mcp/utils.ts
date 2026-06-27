@@ -1,4 +1,5 @@
 import { getRegistriesConfig } from "@/src/registry/api"
+import { findUnknownSearchTypes, SEARCHABLE_TYPES } from "@/src/registry/search"
 import { registryItemSchema, searchResultsSchema } from "@/src/schema"
 import { getPackageRunner } from "@/src/utils/get-package-manager"
 import { z } from "zod"
@@ -76,6 +77,41 @@ export function formatSearchResultsWithPagination(
   }
 
   return output
+}
+
+// Validates type filters the same way the CLI does. Returns an error message
+// listing the valid types when any are unknown, or null when all are valid.
+export function findUnknownTypesMessage(types?: string[]): string | null {
+  if (!types?.length) {
+    return null
+  }
+
+  const unknown = findUnknownSearchTypes(types)
+  if (unknown.length === 0) {
+    return null
+  }
+
+  return `Unknown type${
+    unknown.length === 1 ? "" : "s"
+  }: ${unknown.join(", ")}. Valid types: ${SEARCHABLE_TYPES.join(", ")}.`
+}
+
+// When searching across all configured registries, some may fail to load.
+// Returns a note listing them (empty string when there were no failures).
+export function formatSkippedRegistries(
+  results: z.infer<typeof searchResultsSchema>
+) {
+  if (!results.errors?.length) {
+    return ""
+  }
+
+  const lines = results.errors.map(
+    (error) => `- ${error.registry}: ${error.message}`
+  )
+
+  return `\n\nSkipped ${results.errors.length} registr${
+    results.errors.length === 1 ? "y" : "ies"
+  } that failed to load:\n${lines.join("\n")}`
 }
 
 export function formatRegistryItems(

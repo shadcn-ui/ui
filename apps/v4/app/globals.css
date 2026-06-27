@@ -3,6 +3,8 @@
 @import "shadcn/tailwind.css";
 @import "./legacy-themes.css";
 
+@source "../node_modules/streamdown/dist/*.js";
+
 @custom-variant style-vega (&:where(.style-vega *));
 @custom-variant style-nova (&:where(.style-nova *));
 @custom-variant style-lyra (&:where(.style-lyra *));
@@ -282,6 +284,14 @@
     &:has([data-rehype-pretty-code-title]) [data-slot="copy-button"] {
       top: calc(var(--spacing) * 1.5) !important;
     }
+  }
+
+  [data-rehype-pretty-code-figure] code,
+  [data-rehype-pretty-code-figure] code span {
+    font-variant-ligatures: none;
+    font-feature-settings:
+      "liga" 0,
+      "calt" 0;
   }
 
   [data-rehype-pretty-code-title] {

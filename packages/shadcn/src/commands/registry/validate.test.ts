@@ -1,6 +1,7 @@
 import * as fs from "fs/promises"
 import { tmpdir } from "os"
 import * as path from "path"
+import { validateGitHubRegistrySource } from "@/src/registry/github"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { beforeEach, describe, expect, it, vi } from "vitest"
@@ -34,6 +35,17 @@ vi.mock("@/src/utils/spinner", () => ({
     fail: vi.fn(),
     start: vi.fn().mockReturnThis(),
     succeed: vi.fn(),
+  })),
+}))
+
+vi.mock("@/src/registry/github", () => ({
+  validateGitHubRegistrySource: vi.fn(async () => ({
+    valid: true,
+    cwd: "acme/ui#HEAD",
+    registryFiles: 1,
+    registryFilePaths: ["acme/ui#HEAD/registry.json"],
+    items: 2,
+    diagnostics: [],
   })),
 }))
 
@@ -118,6 +130,47 @@ describe("registry validate command", () => {
       "components/ui/registry.json",
       "    Make sure the file path is relative to the registry.json file that declares the item.",
     ])
+    expect(process.exitCode).toBe(1)
+  })
+
+  it("validates a GitHub source registry", async () => {
+    await validate.parseAsync(["acme/ui"], {
+      from: "user",
+    })
+
+    expect(validateGitHubRegistrySource).toHaveBeenCalledWith({
+      owner: "acme",
+      repo: "ui",
+      ref: undefined,
+    })
+    const validationSpinner = vi.mocked(spinner).mock.results[0].value
+    const summarySpinner = vi.mocked(spinner).mock.results[1].value
+    expect(validationSpinner.succeed).toHaveBeenCalledWith("Registry is valid.")
+    expect(spinner).toHaveBeenCalledWith("Checked 1 registry file and 2 items.")
+    expect(summarySpinner.succeed).toHaveBeenCalled()
+    expect(logger.log).toHaveBeenCalledWith("  - registry.json")
+    expect(process.exitCode).toBeUndefined()
+  })
+
+  it("does not treat an existing local path as a GitHub source registry", async () => {
+    const cwd = await createFixture({
+      "acme/ui": JSON.stringify({
+        name: "example",
+        homepage: "https://example.com",
+        items: [],
+      }),
+    })
+
+    await validate.parseAsync(["acme/ui", "--cwd", cwd], {
+      from: "user",
+    })
+
+    expect(validateGitHubRegistrySource).not.toHaveBeenCalled()
+    const validationSpinner = vi.mocked(spinner).mock.results[0].value
+    expect(validationSpinner.fail).toHaveBeenCalledWith(
+      "Registry validation failed."
+    )
+    expect(logger.log).toHaveBeenCalledWith("  - acme/ui")
     expect(process.exitCode).toBe(1)
   })
 })

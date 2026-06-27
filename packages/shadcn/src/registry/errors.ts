@@ -236,6 +236,31 @@ export class RegistryLocalFileError extends RegistryError {
   }
 }
 
+export class RegistrySourceFileError extends RegistryError {
+  constructor(
+    public readonly filePath: string,
+    cause?: unknown,
+    options: {
+      message?: string
+      context?: Record<string, unknown>
+      suggestion?: string
+    } = {}
+  ) {
+    super(
+      options.message ?? `Failed to read registry source file: ${filePath}`,
+      {
+        code: RegistryErrorCode.FETCH_ERROR,
+        cause,
+        context: { filePath, ...options.context },
+        suggestion:
+          options.suggestion ??
+          "Check if the source file exists and is accessible.",
+      }
+    )
+    this.name = "RegistrySourceFileError"
+  }
+}
+
 export class RegistryParseError extends RegistryError {
   public readonly parseError: unknown
 

@@ -156,6 +156,28 @@ The pattern for referencing resources is: `@namespace/resource-name`
 
 ---
 
+## GitHub and Namespaces
+
+GitHub registry addresses and namespaces solve different problems.
+
+Use a GitHub address when the registry is a public GitHub repository and you
+want users to install without configuring `components.json`.
+
+```bash
+npx shadcn@latest add acme/ui/button
+```
+
+Use a namespace when you want a stable alias, custom hosting, authentication,
+request headers, query parameters or private registry support.
+
+```bash
+npx shadcn@latest add @acme/button
+```
+
+See the [GitHub registry](/docs/registry/github) docs for more information.
+
+---
+
 ## Configuration
 
 Namespaced registries are configured in your `components.json` file under the `registries` field.
