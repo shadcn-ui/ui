@@ -142,15 +142,47 @@ describe("migrateIconsFile", () => {
                   export function Component() {
               return (
                 <div>
-                  <CheckIcon
+                  <Check
                     className="w-4 h-4"
                     onClick={handleClick}
                     data-testid="check-icon"
                   >
                     <span>Child content</span>
-                  </CheckIcon>
+                  </Check>
                   <X style={{ color: 'red' }} aria-label="Close" />
                 </div>
+              )
+            }"
+    `)
+  })
+
+  it("should preserve aliased icon imports and migrate paired usage", async () => {
+    const input = `
+      import { CheckIcon as LegacyCheckIcon } from "@radix-ui/react-icons"
+
+      export function Component() {
+        return (
+          <section>
+            <LegacyCheckIcon size={16} />
+          </section>
+        )
+      }`
+
+    expect(
+      await migrateIconsFile(input, "radix", "lucide", {
+        Check: {
+          lucide: "Check",
+          radix: "CheckIcon",
+        },
+      })
+    ).toMatchInlineSnapshot(`
+      "import { Check } from "lucide-react";
+
+                  export function Component() {
+              return (
+                <section>
+                  <Check size={16} />
+                </section>
               )
             }"
     `)
