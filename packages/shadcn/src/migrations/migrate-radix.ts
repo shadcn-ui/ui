@@ -98,6 +98,10 @@ function processNamedImports(
   }
 }
 
+function toPosixPath(filePath: string) {
+  return filePath.split(path.sep).join(path.posix.sep)
+}
+
 export async function migrateRadix(
   config: Config,
   options: { yes?: boolean; path?: string } = {}
@@ -195,7 +199,7 @@ export async function migrateRadix(
       // Track which packages we found
       replacedPackages.forEach((pkg) => foundPackages.add(pkg))
 
-      await fs.writeFile(filePath, content)
+      await fs.writeFile(toPosixPath(filePath), content)
     })
   )
 
@@ -231,9 +235,8 @@ export async function migrateRadix(
       if (!hasRadixUi) {
         packageJson.dependencies["radix-ui"] = "latest"
 
-        const packageJsonPath = path.join(
-          config.resolvedPaths.cwd,
-          "package.json"
+        const packageJsonPath = toPosixPath(
+          path.join(config.resolvedPaths.cwd, "package.json")
         )
         await fs.writeFile(
           packageJsonPath,
