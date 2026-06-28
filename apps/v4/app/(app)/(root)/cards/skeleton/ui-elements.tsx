@@ -35,7 +35,7 @@ export function UIElements() {
           <Skeleton className="h-9 w-24 rounded-lg" />
           <div className="flex">
             <Skeleton className="h-9 w-28 rounded-l-lg rounded-r-none" />
-            <Skeleton className="ml-px h-9 w-9 rounded-l-none rounded-r-lg" />
+            <Skeleton className="ml-px size-9 rounded-l-none rounded-r-lg" />
           </div>
           <Skeleton className="ml-auto hidden h-5 w-9 rounded-full 4xl:block" />
         </div>

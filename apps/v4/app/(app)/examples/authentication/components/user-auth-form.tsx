@@ -57,7 +57,7 @@ export function UserAuthForm({
       </form>
       <FieldSeparator>Or continue with</FieldSeparator>
       <Button variant="outline" type="button" disabled={isLoading}>
-        {isLoading ? <Spinner /> : <Icons.gitHub className="mr-2 h-4 w-4" />}{" "}
+        {isLoading ? <Spinner /> : <Icons.gitHub className="mr-2 size-4" />}{" "}
         GitHub
       </Button>
     </div>
