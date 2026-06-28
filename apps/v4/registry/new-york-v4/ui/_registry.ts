@@ -604,6 +604,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "text",
+    type: "registry:ui",
+    dependencies: ["radix-ui"],
+    files: [
+      {
+        path: "ui/text.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "toast",
     type: "registry:ui",
     dependencies: ["radix-ui"],
