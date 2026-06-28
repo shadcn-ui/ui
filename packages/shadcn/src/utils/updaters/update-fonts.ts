@@ -6,6 +6,7 @@ import { getProjectInfo, ProjectInfo } from "@/src/utils/get-project-info"
 import { spinner } from "@/src/utils/spinner"
 import {
   CallExpression,
+  Node,
   Project,
   ScriptKind,
   SyntaxKind,
@@ -39,6 +40,9 @@ export async function massageTreeForFonts(
   const isNext =
     projectInfo.framework.name === "next-app" ||
     projectInfo.framework.name === "next-pages"
+  const nextFontVariables = isNext
+    ? await getNextFontVariables(config, projectInfo)
+    : new Map<string, string>()
 
   for (const font of tree.fonts) {
     if (isNext) {
@@ -46,7 +50,11 @@ export async function massageTreeForFonts(
       // The font utility class is added to <html> className in updateHtmlClassName.
       // We update the theme CSS variable to reference itself so it resolves
       // to the value injected by next/font on <html>.
-      tree.cssVars.theme[font.font.variable] = `var(${font.font.variable})`
+      const rootVariableReference = getNextFontVariableReference(
+        font,
+        nextFontVariables
+      )
+      tree.cssVars.theme[font.font.variable] = `var(${rootVariableReference})`
     } else {
       // Other frameworks will use fontsource for now.
       const fontName = font.name.replace("font-", "")
@@ -100,6 +108,99 @@ export async function massageTreeForFonts(
   }
 
   return tree
+}
+
+function getNextFontVariableReference(
+  font: RegistryFontItem,
+  nextFontVariables: Map<string, string>
+) {
+  const existingVariable = nextFontVariables.get(font.font.import)
+  if (!isRootFontVariable(font.font.variable) || !existingVariable) {
+    return font.font.variable
+  }
+
+  return existingVariable
+}
+
+function stripQuotes(value: string) {
+  return value.replace(/^["'`]|["'`]$/g, "")
+}
+
+async function getNextFontVariables(config: Config, projectInfo: ProjectInfo) {
+  const nextFontVariables = new Map<string, string>()
+  const layoutPath = await findLayoutFile(config, projectInfo)
+  if (!layoutPath) {
+    return nextFontVariables
+  }
+
+  let layoutContent: string
+  try {
+    layoutContent = await fs.readFile(layoutPath, "utf-8")
+  } catch {
+    return nextFontVariables
+  }
+
+  const sourceFile = new Project({
+    compilerOptions: {},
+  }).createSourceFile("font-source.tsx", layoutContent, {
+    overwrite: true,
+    scriptKind: projectInfo.isTsx ? ScriptKind.TSX : ScriptKind.JSX,
+  })
+
+  const importedFonts = new Map<string, string>()
+  for (const declaration of sourceFile.getImportDeclarations()) {
+    if (declaration.getModuleSpecifierValue() !== "next/font/google") {
+      continue
+    }
+
+    for (const namedImport of declaration.getNamedImports()) {
+      const imported = namedImport.getName()
+      const localName = namedImport.getAliasNode()?.getText() ?? imported
+      importedFonts.set(localName, imported)
+    }
+  }
+
+  for (const statement of sourceFile.getVariableStatements()) {
+    for (const declaration of statement.getDeclarations()) {
+      const initializer = declaration.getInitializer()
+      if (!initializer?.isKind(SyntaxKind.CallExpression)) {
+        continue
+      }
+
+      const callExpr = initializer as CallExpression
+      const variableName = callExpr
+        .getExpression()
+        .getText()
+      const importedFont = importedFonts.get(variableName)
+      if (!importedFont) {
+        continue
+      }
+
+      const args = callExpr.getArguments()
+      if (!args.length) {
+        continue
+      }
+
+      const options = args[0]
+      if (!Node.isObjectLiteralExpression(options)) {
+        continue
+      }
+
+      const property = options.getProperty("variable")
+      if (!property || !Node.isPropertyAssignment(property)) {
+        continue
+      }
+
+      const value = property.getInitializer()?.getText()
+      if (!value) {
+        continue
+      }
+
+      nextFontVariables.set(importedFont, stripQuotes(value))
+    }
+  }
+
+  return nextFontVariables
 }
 
 export async function updateFonts(
