@@ -48,6 +48,7 @@ const southAmerica = [
   { label: "Bolivia Time", value: "bot" },
   { label: "Brasilia Time", value: "brt" },
   { label: "Chile Standard Time", value: "clt" },
+  { label: "Colombia Time", value: "cot" },
 ]
 
 const items = [
