@@ -1,3 +1,5 @@
+import path from "path"
+
 import { getPatternWildcardValue } from "@/src/utils/import-matcher"
 import {
   resolvePackageImport,
@@ -12,6 +14,10 @@ export type ResolvedImport = {
   matchedAlias: string
   matchedTarget: string
   emitMode: ImportEmitMode
+}
+
+function toPosixPath(filePath: string) {
+  return filePath.split(path.sep).join(path.posix.sep)
 }
 
 type ResolveImportConfig = Pick<
@@ -106,7 +112,7 @@ function resolveFromTsconfigPaths(
   }
 
   return {
-    path: matchedPath,
+    path: toPosixPath(matchedPath),
     source: "tsconfig_paths",
     matchedAlias: matchedPattern?.key ?? importPath,
     matchedTarget: matchedPattern?.target ?? matchedPath,

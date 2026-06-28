@@ -9,6 +9,10 @@ import {
   resolveImportWithMetadata,
 } from "../../src/utils/resolve-import"
 
+function toPosixPath(filePath: string) {
+  return filePath.split(path.sep).join(path.posix.sep)
+}
+
 test("resolve import", async () => {
   expect(
     await resolveImport("@/foo/bar", {
@@ -19,7 +23,9 @@ test("resolve import", async () => {
         "~/lib": ["./src/lib"],
       },
     })
-  ).toEqual("/Users/shadcn/Projects/foobar/src/foo/bar")
+  ).toEqual(
+    toPosixPath(path.resolve("/Users/shadcn/Projects/foobar", "src", "foo", "bar"))
+  )
 
   expect(
     await resolveImport("~/components/foo/bar/baz", {
@@ -30,7 +36,18 @@ test("resolve import", async () => {
         "~/lib": ["./src/lib"],
       },
     })
-  ).toEqual("/Users/shadcn/Projects/foobar/src/components/foo/bar/baz")
+  ).toEqual(
+    toPosixPath(
+      path.resolve(
+        "/Users/shadcn/Projects/foobar",
+        "src",
+        "components",
+        "foo",
+        "bar",
+        "baz"
+      )
+    )
+  )
 
   expect(
     await resolveImport("components/foo/bar", {
@@ -41,7 +58,18 @@ test("resolve import", async () => {
         lib: ["./lib"],
       },
     })
-  ).toEqual("/Users/shadcn/Projects/foobar/src/app/components/foo/bar")
+  ).toEqual(
+    toPosixPath(
+      path.resolve(
+        "/Users/shadcn/Projects/foobar",
+        "src",
+        "app",
+        "components",
+        "foo",
+        "bar"
+      )
+    )
+  )
 
   expect(
     await resolveImport("lib/utils", {
@@ -52,7 +80,7 @@ test("resolve import", async () => {
         lib: ["./lib"],
       },
     })
-  ).toEqual("/Users/shadcn/Projects/foobar/lib/utils")
+  ).toEqual(toPosixPath("/Users/shadcn/Projects/foobar/lib/utils"))
 })
 
 test("resolve import with base url", async () => {
@@ -60,13 +88,13 @@ test("resolve import with base url", async () => {
   const config = (await loadConfig(cwd)) as ConfigLoaderSuccessResult
 
   expect(await resolveImport("@/components/ui", config)).toEqual(
-    path.resolve(cwd, "components/ui")
+    toPosixPath(path.resolve(cwd, "components/ui"))
   )
   expect(await resolveImport("@/lib/utils", config)).toEqual(
-    path.resolve(cwd, "lib/utils")
+    toPosixPath(path.resolve(cwd, "lib/utils"))
   )
   expect(await resolveImport("foo/bar", config)).toEqual(
-    path.resolve(cwd, "foo/bar")
+    toPosixPath(path.resolve(cwd, "foo/bar"))
   )
 })
 
@@ -75,13 +103,13 @@ test("resolve import without base url", async () => {
   const config = (await loadConfig(cwd)) as ConfigLoaderSuccessResult
 
   expect(await resolveImport("~/components/ui", config)).toEqual(
-    path.resolve(cwd, "components/ui")
+    toPosixPath(path.resolve(cwd, "components/ui"))
   )
   expect(await resolveImport("~/lib/utils", config)).toEqual(
-    path.resolve(cwd, "lib/utils")
+    toPosixPath(path.resolve(cwd, "lib/utils"))
   )
   expect(await resolveImport("foo/bar", config)).toEqual(
-    path.resolve(cwd, "foo/bar")
+    toPosixPath(path.resolve(cwd, "foo/bar"))
   )
 })
 
@@ -153,7 +181,14 @@ describe("resolve package imports", () => {
         },
       })
     ).toEqual({
-      path: "/Users/shadcn/Projects/foobar/src/components/ui",
+      path: toPosixPath(
+        path.resolve(
+          "/Users/shadcn/Projects/foobar",
+          "src",
+          "components",
+          "ui"
+        )
+      ),
       source: "tsconfig_paths",
       matchedAlias: "#/*",
       matchedTarget: "./src/components/ui",
@@ -173,7 +208,9 @@ describe("resolve package imports", () => {
       }
     )
     expect(tsconfigPath?.source).toBe("tsconfig_paths")
-    expect(tsconfigPath?.path).toBe(path.resolve(cwd, "src/components/button"))
+    expect(tsconfigPath?.path).toBe(
+      toPosixPath(path.resolve(cwd, "src/components/button"))
+    )
 
     const packageImportPath = await resolveImportWithMetadata(
       "#components/button.tsx",
