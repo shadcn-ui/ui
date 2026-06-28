@@ -66,7 +66,7 @@ export function ChartBarHorizontal() {
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={5} />
+            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={[0, 5, 5, 0]} />
           </BarChart>
         </ChartContainer>
       </CardContent>
