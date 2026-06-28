@@ -11,13 +11,21 @@ A framework for building ui, components and design systems. Components are added
 
 > **IMPORTANT:** Run all CLI commands using the project's package runner: `npx shadcn@latest`, `pnpm dlx shadcn@latest`, or `bunx --bun shadcn@latest` — based on the project's `packageManager`. Examples below use `npx shadcn@latest` but substitute the correct runner for the project.
 
-## Current Project Context
 
-```json
-!`npx shadcn@latest info --json`
-```
 
-The JSON above contains the project config and installed components. Use `npx shadcn@latest docs <component>` to get documentation and example URLs for any component.
+## Initialization & Project Context
+
+Before writing any code or executing component commands, you **MUST** determine the project context by running:
+`npx shadcn@latest info --json`
+
+**CRITICAL: Monorepo Handling**
+If the command fails and returns a JSON error containing `"error": "monorepo_root"`, **DO NOT STOP OR FAIL**.
+1. Extract the `targets` array from the error JSON (e.g., `["apps/web", "packages/ui"]`).
+2. **PROMPT THE USER:** "This looks like a monorepo. Which workspace contains your `components.json` and where should I operate? (Options: [list the targets])".
+3. Once the user replies with their choice, re-run the info command using the `-c` flag: `npx shadcn@latest info --json -c <selected_target>`.
+4. **Important:** Remember this selected target. You must append `-c <selected_target>` to **ALL** subsequent `shadcn` CLI commands in this conversation.
+
+Once you have the successful JSON output (either directly or via the `-c` flag), use it to understand the project config and installed components. Use `npx shadcn@latest docs <component>` to get documentation and example URLs for any component.
 
 ## Principles
 
@@ -139,7 +147,7 @@ These are the most common patterns that differentiate correct shadcn/ui code. Fo
 
 ## Key Fields
 
-The injected project context contains these key fields:
+The project context JSON contains these key fields:
 
 - **`aliases`** → use the actual alias prefix for imports (e.g. `@/`, `~/`), never hardcode.
 - **`isRSC`** → when `true`, components using `useState`, `useEffect`, event handlers, or browser APIs need `"use client"` at the top of the file. Always reference this field when advising on the directive.
@@ -167,7 +175,7 @@ npx shadcn@latest docs button dialog select
 
 ## Workflow
 
-1. **Get project context** — already injected above. Run `npx shadcn@latest info` again if you need to refresh.
+1. **Get project context** — run `npx shadcn@latest info --json` to retrieve the current components config.
 2. **Check installed components first** — before running `add`, always check the `components` list from project context or list the `resolvedPaths.ui` directory. Don't import components that haven't been added, and don't re-add ones already installed.
 3. **Find components** — `npx shadcn@latest search`.
 4. **Get docs and examples** — run `npx shadcn@latest docs <component>` to get URLs, then fetch them. Use `npx shadcn@latest view` to browse registry items you haven't installed. To preview changes to installed components, use `npx shadcn@latest add --diff`.
