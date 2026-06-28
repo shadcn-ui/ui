@@ -56,7 +56,9 @@
       "types": "./dist/preset/index.d.ts",
       "default": "./dist/preset/index.js"
     },
-    "./tailwind.css": "./dist/tailwind.css"
+    "./tailwind.css": {
+      "default": "./dist/tailwind.css"
+    }
   },
   "sideEffects": [
     "./dist/tailwind.css"
