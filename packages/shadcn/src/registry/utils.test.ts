@@ -101,6 +101,8 @@ describe("isUrl", () => {
     expect(isUrl("../relative/path.json")).toBe(false)
     expect(isUrl("/absolute/path.json")).toBe(false)
     expect(isUrl("component-name")).toBe(false)
+    expect(isUrl("C:\\Users\\user\\component.json")).toBe(false)
+    expect(isUrl("C:/Users/user/component.json")).toBe(false)
     expect(isUrl("")).toBe(false)
     expect(isUrl("just-text")).toBe(false)
   })
@@ -115,6 +117,8 @@ describe("isLocalFile", () => {
     expect(isLocalFile("nested/directory/dialog.json")).toBe(true)
     expect(isLocalFile("~/Desktop/component.json")).toBe(true)
     expect(isLocalFile("~/Documents/shared/button.json")).toBe(true)
+    expect(isLocalFile("C:\\Users\\user\\component.json")).toBe(true)
+    expect(isLocalFile("C:/Users/user/component.json")).toBe(true)
   })
 
   it("should return false for URLs ending with .json", () => {
