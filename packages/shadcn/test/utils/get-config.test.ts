@@ -198,6 +198,80 @@ test("get project config from partial package imports", async () => {
   })
 })
 
+test("get config resolves aliases from referenced Vite tsconfig", async () => {
+  const cwd = await fs.mkdtemp(path.join(os.tmpdir(), "shadcn-vite-refs-"))
+
+  try {
+    await fs.writeFile(
+      path.join(cwd, "components.json"),
+      JSON.stringify(
+        {
+          $schema: "https://ui.shadcn.com/schema.json",
+          style: "new-york",
+          rsc: false,
+          tsx: true,
+          tailwind: {
+            config: "",
+            css: "src/index.css",
+            baseColor: "neutral",
+            cssVariables: true,
+            prefix: "",
+          },
+          iconLibrary: "lucide",
+          aliases: {
+            components: "@/components",
+            ui: "@/components/ui",
+            utils: "@/lib/utils",
+            lib: "@/lib",
+            hooks: "@/hooks",
+          },
+        },
+        null,
+        2
+      )
+    )
+
+    await fs.writeFile(
+      path.join(cwd, "tsconfig.json"),
+      JSON.stringify(
+        {
+          files: [],
+          references: [{ path: "./tsconfig.app.json" }],
+        },
+        null,
+        2
+      )
+    )
+
+    await fs.writeFile(
+      path.join(cwd, "tsconfig.app.json"),
+      JSON.stringify(
+        {
+          compilerOptions: {
+            baseUrl: ".",
+            paths: {
+              "@/*": ["./src/*"],
+            },
+          },
+        },
+        null,
+        2
+      )
+    )
+
+    const config = await getConfig(cwd)
+
+    expect(path.normalize(config?.resolvedPaths.ui ?? "")).toBe(
+      path.resolve(cwd, "src/components/ui")
+    )
+    expect(path.normalize(config?.resolvedPaths.utils ?? "")).toBe(
+      path.resolve(cwd, "src/lib/utils")
+    )
+  } finally {
+    await fs.remove(cwd)
+  }
+})
+
 test("get config", async () => {
   expect(
     await getConfig(path.resolve(__dirname, "../fixtures/config-none"))
