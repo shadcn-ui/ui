@@ -41,7 +41,10 @@ function Attachment({
       data-state={state}
       data-size={size}
       data-orientation={resolvedOrientation}
-      className={cn(attachmentVariants({ size, orientation }), className)}
+      className={cn(
+        attachmentVariants({ size, orientation: resolvedOrientation }),
+        className
+      )}
       {...props}
     />
   )
