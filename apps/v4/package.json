@@ -44,7 +44,7 @@
     "@tabler/icons-react": "^3.31.0",
     "@tailwindcss/postcss": "^4.3.0",
     "@tanstack/react-form": "^1.20.0",
-    "@tanstack/react-table": "^8.9.1",
+    "@tanstack/react-table": "9.0.0-beta.23",
     "@vercel/analytics": "^1.4.1",
     "ai": "canary",
     "change-case": "^5.4.4",

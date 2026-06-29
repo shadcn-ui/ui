@@ -2,16 +2,21 @@
 
 import * as React from "react"
 import {
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  createColumnHelper,
+  createFilteredRowModel,
+  createPaginatedRowModel,
+  createSortedRowModel,
   flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-  type ColumnDef,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  rowSortingFeature,
+  tableFeatures,
+  useTable,
   type ColumnFiltersState,
+  type ColumnVisibilityState,
   type SortingState,
-  type VisibilityState,
 } from "@tanstack/react-table"
 import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react"
 
@@ -129,6 +134,22 @@ type Payment = {
   email: string
 }
 
+// New in v9: declare the features your table uses. This opts the table into
+// sorting, filtering, pagination, visibility, and row selection, and lets the
+// bundler tree-shake the rest.
+const features = tableFeatures({
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  rowSortingFeature,
+  filteredRowModel: createFilteredRowModel(),
+  paginatedRowModel: createPaginatedRowModel(),
+  sortedRowModel: createSortedRowModel(),
+})
+
+const columnHelper = createColumnHelper<typeof features, Payment>()
+
 const data: Payment[] = [
   {
     id: "m5gr84i9",
@@ -169,134 +190,129 @@ export function DataTableRtl() {
     []
   )
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
+    React.useState<ColumnVisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
 
-  const columns: ColumnDef<Payment>[] = React.useMemo(
-    () => [
-      {
-        id: "select",
-        header: ({ table }) => (
-          <Checkbox
-            checked={
-              table.getIsAllPageRowsSelected() ||
-              (table.getIsSomePageRowsSelected() ? true : false)
-            }
-            onCheckedChange={(value) =>
-              table.toggleAllPageRowsSelected(!!value)
-            }
-            aria-label={t.selectAll}
-          />
-        ),
-        cell: ({ row }) => (
-          <Checkbox
-            checked={row.getIsSelected()}
-            onCheckedChange={(value) => row.toggleSelected(!!value)}
-            aria-label={t.selectRow}
-          />
-        ),
-        enableSorting: false,
-        enableHiding: false,
-      },
-      {
-        accessorKey: "status",
-        header: t.status,
-        cell: ({ row }) => {
-          const status = row.getValue("status") as string
-          const statusMap: Record<string, string> = {
-            success: t.success,
-            processing: t.processing,
-            failed: t.failed,
-            pending: t.pending,
-          }
-          return <div className="capitalize">{statusMap[status]}</div>
-        },
-      },
-      {
-        accessorKey: "email",
-        header: ({ column }) => {
-          return (
-            <Button
-              variant="ghost"
-              onClick={() =>
-                column.toggleSorting(column.getIsSorted() === "asc")
+  const columns = React.useMemo(
+    () =>
+      columnHelper.columns([
+        columnHelper.display({
+          id: "select",
+          header: ({ table }) => (
+            <Checkbox
+              checked={
+                table.getIsAllPageRowsSelected() ||
+                (table.getIsSomePageRowsSelected() ? true : false)
               }
-            >
-              {t.email}
-              <ArrowUpDown />
-            </Button>
-          )
-        },
-        cell: ({ row }) => (
-          <div className="lowercase">{row.getValue("email")}</div>
-        ),
-      },
-      {
-        accessorKey: "amount",
-        header: () => <div className="text-start">{t.amount}</div>,
-        cell: ({ row }) => {
-          const amount = parseFloat(row.getValue("amount"))
-          const formatted = new Intl.NumberFormat(
-            dir === "rtl" ? "ar-SA" : "en-US",
-            {
-              style: "currency",
-              currency: "USD",
+              onCheckedChange={(value) =>
+                table.toggleAllPageRowsSelected(!!value)
+              }
+              aria-label={t.selectAll}
+            />
+          ),
+          cell: ({ row }) => (
+            <Checkbox
+              checked={row.getIsSelected()}
+              onCheckedChange={(value) => row.toggleSelected(!!value)}
+              aria-label={t.selectRow}
+            />
+          ),
+          enableSorting: false,
+          enableHiding: false,
+        }),
+        columnHelper.accessor("status", {
+          header: t.status,
+          cell: ({ row }) => {
+            const status = row.getValue("status") as string
+            const statusMap: Record<string, string> = {
+              success: t.success,
+              processing: t.processing,
+              failed: t.failed,
+              pending: t.pending,
             }
-          ).format(amount)
-
-          return <div className="text-start font-medium">{formatted}</div>
-        },
-      },
-      {
-        id: "actions",
-        enableHiding: false,
-        cell: ({ row }) => {
-          const payment = row.original
-
-          return (
-            <DropdownMenu>
-              <DropdownMenuTrigger
-                render={<Button variant="ghost" size="icon-xs" />}
+            return <div className="capitalize">{statusMap[status]}</div>
+          },
+        }),
+        columnHelper.accessor("email", {
+          header: ({ column }) => {
+            return (
+              <Button
+                variant="ghost"
+                onClick={() =>
+                  column.toggleSorting(column.getIsSorted() === "asc")
+                }
               >
-                <span className="sr-only">{t.openMenu}</span>
-                <MoreHorizontal />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                align={dir === "rtl" ? "start" : "end"}
-                data-lang={dir === "rtl" ? language : undefined}
-                className="w-40"
-              >
-                <DropdownMenuGroup>
-                  <DropdownMenuLabel>{t.actions}</DropdownMenuLabel>
-                  <DropdownMenuItem
-                    onClick={() => navigator.clipboard.writeText(payment.id)}
-                  >
-                    {t.copyPaymentId}
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  <DropdownMenuItem>{t.viewCustomer}</DropdownMenuItem>
-                  <DropdownMenuItem>{t.viewPaymentDetails}</DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          )
-        },
-      },
-    ],
+                {t.email}
+                <ArrowUpDown />
+              </Button>
+            )
+          },
+          cell: ({ row }) => (
+            <div className="lowercase">{row.getValue("email")}</div>
+          ),
+        }),
+        columnHelper.accessor("amount", {
+          header: () => <div className="text-start">{t.amount}</div>,
+          cell: ({ row }) => {
+            const amount = parseFloat(row.getValue("amount"))
+            const formatted = new Intl.NumberFormat(
+              dir === "rtl" ? "ar-SA" : "en-US",
+              {
+                style: "currency",
+                currency: "USD",
+              }
+            ).format(amount)
+
+            return <div className="text-start font-medium">{formatted}</div>
+          },
+        }),
+        columnHelper.display({
+          id: "actions",
+          enableHiding: false,
+          cell: ({ row }) => {
+            const payment = row.original
+
+            return (
+              <DropdownMenu>
+                <DropdownMenuTrigger
+                  render={<Button variant="ghost" size="icon-xs" />}
+                >
+                  <span className="sr-only">{t.openMenu}</span>
+                  <MoreHorizontal />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  align={dir === "rtl" ? "start" : "end"}
+                  data-lang={dir === "rtl" ? language : undefined}
+                  className="w-40"
+                >
+                  <DropdownMenuGroup>
+                    <DropdownMenuLabel>{t.actions}</DropdownMenuLabel>
+                    <DropdownMenuItem
+                      onClick={() => navigator.clipboard.writeText(payment.id)}
+                    >
+                      {t.copyPaymentId}
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>{t.viewCustomer}</DropdownMenuItem>
+                    <DropdownMenuItem>{t.viewPaymentDetails}</DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )
+          },
+        }),
+      ]),
     [t, dir, language]
   )
 
-  const table = useReactTable({
+  const table = useTable({
+    features,
     data,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
     state: {

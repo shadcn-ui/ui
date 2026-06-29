@@ -7,3 +7,8 @@ packages:
   - "!packages/tests/temp/**"
 
 minimumReleaseAge: 2880
+minimumReleaseAgeExclude: # TODO remove from draft PR
+  - "@tanstack/react-table"
+  - "@tanstack/table-core"
+  - "@tanstack/react-store"
+  - "@tanstack/store"

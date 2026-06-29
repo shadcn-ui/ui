@@ -11,7 +11,7 @@ export const blocks: Registry["items"] = [
       "@dnd-kit/sortable",
       "@dnd-kit/utilities",
       "@tabler/icons-react",
-      "@tanstack/react-table",
+      "@tanstack/react-table@9.0.0-beta.23",
       "zod",
     ],
     registryDependencies: [
