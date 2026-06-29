@@ -18,6 +18,8 @@ function RadioGroup({ className, ...props }: RadioGroupPrimitive.Props) {
 function RadioGroupItem({ className, ...props }: RadioPrimitive.Root.Props) {
   return (
     <RadioPrimitive.Root
+      nativeButton
+      render={<button />}
       data-slot="radio-group-item"
       className={cn(
         "cn-radio-group-item group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50",
