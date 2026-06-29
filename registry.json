@@ -1,0 +1,2343 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "remotionui",
+  "homepage": "https://remotionui.com",
+  "items": [
+    {
+      "name": "timing",
+      "type": "registry:lib",
+      "title": "Timing",
+      "description": "Frame timing helpers and enter easing",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/lib/timing.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "springs",
+      "type": "registry:lib",
+      "title": "Springs",
+      "description": "Default spring configurations",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/lib/springs.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "transition-timing",
+      "type": "registry:lib",
+      "title": "Transition Timing",
+      "description": "Shared TransitionSeries timing helpers and layered progress curves",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "springs",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/lib/transition-timing.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "ai-composer-utils",
+      "type": "registry:lib",
+      "title": "Ai Composer Utils",
+      "description": "Shared typing, morph, and intro helpers for AI composer scenes",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "springs"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/lib/ai-composer-utils.tsx",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "motion-tokens",
+      "type": "registry:lib",
+      "title": "Motion Tokens",
+      "description": "Named motion duration and stagger tokens",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "timing",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/lib/motion-tokens.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "layout",
+      "type": "registry:lib",
+      "title": "Layout",
+      "description": "Format-agnostic layout helpers",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/lib/layout.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "motion-wrapper",
+      "type": "registry:lib",
+      "title": "Motion Wrapper",
+      "description": "Inline wrapper for enter/exit animations (avoids AbsoluteFill overlap)",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/lib/motion-wrapper.tsx",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "use-stagger",
+      "type": "registry:hook",
+      "title": "Use Stagger",
+      "description": "Hook for staggered child delays",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/hooks/use-stagger.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "fade-in",
+      "type": "registry:ui",
+      "title": "Fade In",
+      "description": "Fade in animation primitive",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "timing",
+        "motion-wrapper"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/fade-in.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "fade-out",
+      "type": "registry:ui",
+      "title": "Fade Out",
+      "description": "Fade out animation primitive",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "timing",
+        "motion-wrapper"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/fade-out.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slide-up",
+      "type": "registry:ui",
+      "title": "Slide Up",
+      "description": "Slide up with fade animation",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "timing",
+        "motion-wrapper"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/slide-up.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slide-left",
+      "type": "registry:ui",
+      "title": "Slide Left",
+      "description": "Slide left with fade animation",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "timing",
+        "motion-wrapper"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/slide-left.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scale-in",
+      "type": "registry:ui",
+      "title": "Scale In",
+      "description": "Scale in with fade animation",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "timing",
+        "motion-wrapper"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/scale-in.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "typewriter",
+      "type": "registry:ui",
+      "title": "Typewriter",
+      "description": "Typewriter text reveal with rhythm, punctuation pauses, inline pause markers, looping, and configurable cursor",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/typewriter.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "counter",
+      "type": "registry:ui",
+      "title": "Counter",
+      "description": "Animated number counter",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/counter.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "blur-in",
+      "type": "registry:ui",
+      "title": "Blur In",
+      "description": "Blur in with fade animation",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "timing",
+        "motion-wrapper"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/blur-in.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spring-in",
+      "type": "registry:ui",
+      "title": "Spring In",
+      "description": "Spring scale-in animation",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "springs",
+        "motion-wrapper"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/spring-in.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stagger-children",
+      "type": "registry:ui",
+      "title": "Stagger Children",
+      "description": "Stagger delayInFrames across children",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "timing",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/stagger-children.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "marker-highlight",
+      "type": "registry:ui",
+      "title": "Marker Highlight",
+      "description": "Highlighter-pen-style wipe animation behind the target word",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "springs"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/marker-highlight.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress-bar",
+      "type": "registry:ui",
+      "title": "Progress Bar",
+      "description": "Animated progress bar",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "timing",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/progress-bar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "rotate-in",
+      "type": "registry:ui",
+      "title": "Rotate In",
+      "description": "Rotate in with fade animation",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "timing",
+        "motion-wrapper"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/rotate-in.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "transition-fade",
+      "type": "registry:ui",
+      "title": "Transition Fade",
+      "description": "Fade transition helper for TransitionSeries",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/transition-fade.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "transition-slide",
+      "type": "registry:ui",
+      "title": "Transition Slide",
+      "description": "Slide transition helper for TransitionSeries",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/transition-slide.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "lower-third",
+      "type": "registry:block",
+      "title": "Lower Third",
+      "description": "Polished lower third name and subtitle overlay",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "motion-tokens",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/lower-third/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "title-card",
+      "type": "registry:block",
+      "title": "Title Card",
+      "description": "Centered title card scene",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "fade-in",
+        "scale-in",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/title-card/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "feature-list",
+      "type": "registry:block",
+      "title": "Feature List",
+      "description": "Staggered feature bullet list",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/feature-list/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "stat-card",
+      "type": "registry:block",
+      "title": "Stat Card",
+      "description": "Animated stat with counter",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "counter",
+        "spring-in",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/stat-card/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "quote-card",
+      "type": "registry:block",
+      "title": "Quote Card",
+      "description": "Quote with highlighted word",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "marker-highlight",
+        "fade-in",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/quote-card/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "end-card",
+      "type": "registry:block",
+      "title": "End Card",
+      "description": "End card with CTA",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "scale-in",
+        "fade-in",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/end-card/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "intro",
+      "type": "registry:block",
+      "title": "Intro",
+      "description": "5-second branded intro composition",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "title-card",
+        "fade-out"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/intro/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "showcase",
+      "type": "registry:block",
+      "title": "Showcase",
+      "description": "Full demo reel with TransitionSeries",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-fade",
+        "title-card",
+        "feature-list",
+        "stat-card",
+        "end-card"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/showcase/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "hero-loop",
+      "type": "registry:block",
+      "title": "Hero Loop",
+      "description": "15-second looping website hero composition",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "blur-in",
+        "counter",
+        "fade-in",
+        "fade-out",
+        "rotate-in",
+        "scale-in",
+        "slide-up",
+        "spring-in",
+        "stagger-children",
+        "typewriter",
+        "marker-highlight"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/hero-loop/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "caption-utils",
+      "type": "registry:lib",
+      "title": "Caption Utils",
+      "description": "Caption page grouping and word-active helpers",
+      "dependencies": [
+        "@remotion/captions"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/lib/caption-utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "audio-viz-utils",
+      "type": "registry:lib",
+      "title": "Audio Viz Utils",
+      "description": "Windowed audio spectrum helpers",
+      "dependencies": [
+        "@remotion/media-utils",
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/lib/audio-viz-utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "map-utils",
+      "type": "registry:lib",
+      "title": "Map Utils",
+      "description": "MapLibre and Turf geospatial helpers",
+      "dependencies": [
+        "maplibre-gl",
+        "@turf/turf"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/lib/map-utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "path-utils",
+      "type": "registry:lib",
+      "title": "Path Utils",
+      "description": "SVG path draw-on helpers",
+      "dependencies": [
+        "@remotion/paths"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/lib/path-utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "caption-highlight",
+      "type": "registry:ui",
+      "title": "Caption Highlight",
+      "description": "TikTok-style word-by-word caption highlight",
+      "dependencies": [
+        "remotion",
+        "@remotion/captions"
+      ],
+      "registryDependencies": [
+        "caption-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/caption-highlight.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audiogram-bars",
+      "type": "registry:ui",
+      "title": "Audiogram Bars",
+      "description": "Audio-reactive spectrum bar visualization",
+      "dependencies": [
+        "remotion",
+        "@remotion/media-utils"
+      ],
+      "registryDependencies": [
+        "audio-viz-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/audiogram-bars.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "path-draw",
+      "type": "registry:ui",
+      "title": "Path Draw",
+      "description": "SVG stroke reveal along a path",
+      "dependencies": [
+        "remotion",
+        "@remotion/paths"
+      ],
+      "registryDependencies": [
+        "path-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/path-draw.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "map-canvas",
+      "type": "registry:ui",
+      "title": "Map Canvas",
+      "description": "Deterministic MapLibre map mount",
+      "dependencies": [
+        "remotion",
+        "maplibre-gl"
+      ],
+      "registryDependencies": [
+        "map-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/map-canvas.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "map-route",
+      "type": "registry:ui",
+      "title": "Map Route",
+      "description": "Animated GeoJSON route line on a map",
+      "dependencies": [
+        "remotion",
+        "maplibre-gl",
+        "@turf/turf"
+      ],
+      "registryDependencies": [
+        "map-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/map-route.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "map-markers",
+      "type": "registry:ui",
+      "title": "Map Markers",
+      "description": "GeoJSON circle and label markers on a map",
+      "dependencies": [
+        "remotion",
+        "maplibre-gl"
+      ],
+      "registryDependencies": [
+        "map-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/map-markers.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "transition-wipe",
+      "type": "registry:ui",
+      "title": "Transition Wipe",
+      "description": "Wipe transition helper for TransitionSeries",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/transition-wipe.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "transition-clock-wipe",
+      "type": "registry:ui",
+      "title": "Transition Clock Wipe",
+      "description": "Clock wipe transition helper for TransitionSeries",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/transition-clock-wipe.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "transition-light-leak",
+      "type": "registry:ui",
+      "title": "Transition Light Leak",
+      "description": "Light leak overlay for TransitionSeries",
+      "dependencies": [
+        "remotion",
+        "@remotion/light-leaks"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/transition-light-leak.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "blur-reveal",
+      "type": "registry:ui",
+      "title": "Blur Reveal",
+      "description": "Blur and opacity reveal transition for TransitionSeries",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/blur-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "grid-pixelate-wipe",
+      "type": "registry:ui",
+      "title": "Grid Pixelate Wipe",
+      "description": "Grid cell opacity stagger wipe for TransitionSeries",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/grid-pixelate-wipe.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "frosted-glass-wipe",
+      "type": "registry:ui",
+      "title": "Frosted Glass Wipe",
+      "description": "Progressive frosted glass panel sweep for TransitionSeries",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/frosted-glass-wipe.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "directional-wipe",
+      "type": "registry:ui",
+      "title": "Directional Wipe",
+      "description": "Directional wipe with depth and soft edge for TransitionSeries",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/directional-wipe.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spatial-push",
+      "type": "registry:ui",
+      "title": "Spatial Push",
+      "description": "Perspective push transition for TransitionSeries",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/spatial-push.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chromatic-aberration-wipe",
+      "type": "registry:ui",
+      "title": "Chromatic Aberration Wipe",
+      "description": "RGB-split wipe transition for TransitionSeries",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/chromatic-aberration-wipe.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "zoom-through",
+      "type": "registry:ui",
+      "title": "Zoom Through",
+      "description": "Camera push-through zoom transition for TransitionSeries",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/zoom-through.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "mesh-gradient-bg",
+      "type": "registry:ui",
+      "title": "Mesh Gradient Bg",
+      "description": "Living mesh gradient blob background",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/mesh-gradient-bg.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dynamic-grid",
+      "type": "registry:ui",
+      "title": "Dynamic Grid",
+      "description": "Subtle drifting dot and line grid background",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/dynamic-grid.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "simulated-cursor",
+      "type": "registry:ui",
+      "title": "Simulated Cursor",
+      "description": "Frame-timed cursor with click pulses for tutorials",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens",
+        "springs"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/simulated-cursor.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "confetti-burst",
+      "type": "registry:ui",
+      "title": "Confetti Burst",
+      "description": "Frame-driven confetti burst overlay",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/confetti-burst.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "device-mockup-zoom",
+      "type": "registry:block",
+      "title": "Device Mockup Zoom",
+      "description": "Cinematic laptop, phone, or browser mockup with staged UI and slow camera pullback",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/device-mockup-zoom/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "caption-scene",
+      "type": "registry:block",
+      "title": "Caption Scene",
+      "description": "Lower-third TikTok-style captions synced to audio",
+      "dependencies": [
+        "remotion",
+        "@remotion/captions"
+      ],
+      "registryDependencies": [
+        "caption-highlight",
+        "caption-utils",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/caption-scene/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "audiogram-scene",
+      "type": "registry:block",
+      "title": "Audiogram Scene",
+      "description": "Podcast audiogram layout with spectrum bars",
+      "dependencies": [
+        "remotion",
+        "@remotion/media-utils"
+      ],
+      "registryDependencies": [
+        "audiogram-bars",
+        "fade-in",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/audiogram-scene/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "logo-reveal",
+      "type": "registry:block",
+      "title": "Logo Reveal",
+      "description": "Brand logo SVG path draw-on reveal",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "path-draw",
+        "fade-in",
+        "scale-in"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/logo-reveal/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "map-flight",
+      "type": "registry:block",
+      "title": "Map Flight",
+      "description": "Animated map flyover with route reveal and markers",
+      "dependencies": [
+        "remotion",
+        "maplibre-gl",
+        "@turf/turf"
+      ],
+      "registryDependencies": [
+        "map-route",
+        "map-markers",
+        "map-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/map-flight/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "auto-fit-title",
+      "type": "registry:block",
+      "title": "Auto Fit Title",
+      "description": "Headline that auto-scales to fit safe area",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "fade-in",
+        "layout",
+        "text-fit-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/auto-fit-title/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "social-clip",
+      "type": "registry:block",
+      "title": "Social Clip",
+      "description": "9:16 social clip with hook, captions, and CTA",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions",
+        "@remotion/captions",
+        "@remotion/media-utils"
+      ],
+      "registryDependencies": [
+        "transition-fade",
+        "auto-fit-title",
+        "audiogram-scene",
+        "caption-scene",
+        "end-card"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/social-clip/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "media-utils",
+      "type": "registry:lib",
+      "title": "Media Utils",
+      "description": "Media item timing and fit helpers",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/lib/media-utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "chart-utils",
+      "type": "registry:lib",
+      "title": "Chart Utils",
+      "description": "Chart scaling and SVG path helpers",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/lib/chart-utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "text-fit-utils",
+      "type": "registry:lib",
+      "title": "Text Fit Utils",
+      "description": "Safe headline fitting helpers",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/lib/text-fit-utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "waveform-line",
+      "type": "registry:ui",
+      "title": "Waveform Line",
+      "description": "Audio waveform line visualization",
+      "dependencies": [
+        "remotion",
+        "@remotion/media-utils"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/waveform-line.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-pulse",
+      "type": "registry:ui",
+      "title": "Audio Pulse",
+      "description": "Audio-reactive pulse rings",
+      "dependencies": [
+        "remotion",
+        "@remotion/media-utils"
+      ],
+      "registryDependencies": [
+        "audio-viz-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/audio-pulse.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "karaoke-captions",
+      "type": "registry:ui",
+      "title": "Karaoke Captions",
+      "description": "Active-word karaoke caption styling",
+      "dependencies": [
+        "remotion",
+        "@remotion/captions"
+      ],
+      "registryDependencies": [
+        "caption-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/karaoke-captions.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "line-chart-draw",
+      "type": "registry:ui",
+      "title": "Line Chart Draw",
+      "description": "SVG line chart draw-on primitive",
+      "dependencies": [
+        "remotion",
+        "@remotion/paths"
+      ],
+      "registryDependencies": [
+        "chart-utils",
+        "path-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/line-chart-draw.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "cursor-path",
+      "type": "registry:ui",
+      "title": "Cursor Path",
+      "description": "Animated cursor along a path",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/cursor-path.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "media-frame",
+      "type": "registry:block",
+      "title": "Media Frame",
+      "description": "Safe framed image or video scene",
+      "dependencies": [
+        "remotion",
+        "@remotion/media"
+      ],
+      "registryDependencies": [
+        "media-utils",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/media-frame/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "media-sequence",
+      "type": "registry:block",
+      "title": "Media Sequence",
+      "description": "Timed media slideshow with transitions",
+      "dependencies": [
+        "remotion",
+        "@remotion/media",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "media-frame",
+        "media-utils",
+        "transition-fade"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/media-sequence/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "split-screen",
+      "type": "registry:block",
+      "title": "Split Screen",
+      "description": "Two-up media comparison layout",
+      "dependencies": [
+        "remotion",
+        "@remotion/media"
+      ],
+      "registryDependencies": [
+        "media-utils",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/split-screen/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "b-roll-stack",
+      "type": "registry:block",
+      "title": "B Roll Stack",
+      "description": "Layered b-roll media stack",
+      "dependencies": [
+        "@remotion/media",
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "media-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/b-roll-stack/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "caption-bumper",
+      "type": "registry:block",
+      "title": "Caption Bumper",
+      "description": "Large quote or caption emphasis scene",
+      "dependencies": [
+        "remotion",
+        "@remotion/layout-utils"
+      ],
+      "registryDependencies": [
+        "layout",
+        "text-fit-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/caption-bumper/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "animated-bar-chart",
+      "type": "registry:block",
+      "title": "Animated Bar Chart",
+      "description": "Animated data bar chart scene",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "chart-utils",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/animated-bar-chart/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "metric-ticker",
+      "type": "registry:block",
+      "title": "Metric Ticker",
+      "description": "Animated KPI metric cards",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "chart-utils",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/metric-ticker/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "timeline-steps",
+      "type": "registry:block",
+      "title": "Timeline Steps",
+      "description": "Sequenced process timeline scene",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/timeline-steps/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "callout-spotlight",
+      "type": "registry:block",
+      "title": "Callout Spotlight",
+      "description": "Spotlight callout overlay for product demos",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/callout-spotlight/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "zoom-pan-frame",
+      "type": "registry:block",
+      "title": "Zoom Pan Frame",
+      "description": "Deterministic zoom and pan media frame",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/zoom-pan-frame/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "code-reveal",
+      "type": "registry:block",
+      "title": "Code Reveal",
+      "description": "Progressive code reveal with highlighted lines",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/code-reveal/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "hook-card",
+      "type": "registry:block",
+      "title": "Hook Card",
+      "description": "Short-form opener scene for creator clips",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/hook-card/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "talking-head-layout",
+      "type": "registry:block",
+      "title": "Talking Head Layout",
+      "description": "Caption-safe creator layout for speaker clips",
+      "dependencies": [
+        "remotion",
+        "@remotion/media"
+      ],
+      "registryDependencies": [
+        "layout",
+        "media-utils",
+        "waveform-line"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/talking-head-layout/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "comment-callout",
+      "type": "registry:block",
+      "title": "Comment Callout",
+      "description": "Animated viewer comment or Q&A prompt scene",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/comment-callout/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "tutorial-clip",
+      "type": "registry:block",
+      "title": "Tutorial Clip",
+      "description": "Tutorial clip composition for demos and explainers",
+      "dependencies": [
+        "remotion",
+        "@remotion/media",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "auto-fit-title",
+        "media-frame",
+        "callout-spotlight",
+        "code-reveal",
+        "end-card",
+        "transition-fade"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/tutorial-clip/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "data-story",
+      "type": "registry:block",
+      "title": "Data Story",
+      "description": "Data storytelling composition template",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions",
+        "@remotion/layout-utils"
+      ],
+      "registryDependencies": [
+        "auto-fit-title",
+        "animated-bar-chart",
+        "metric-ticker",
+        "timeline-steps",
+        "caption-bumper",
+        "end-card",
+        "transition-fade",
+        "chart-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/data-story/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "creator-reel",
+      "type": "registry:block",
+      "title": "Creator Reel",
+      "description": "Vertical creator media composition template",
+      "dependencies": [
+        "remotion",
+        "@remotion/captions",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "auto-fit-title",
+        "talking-head-layout",
+        "comment-callout",
+        "caption-scene",
+        "b-roll-stack",
+        "end-card",
+        "transition-fade"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/creator-reel/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "podcast-clip",
+      "type": "registry:block",
+      "title": "Podcast Clip",
+      "description": "Podcast clip composition with audio visuals and captions",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions",
+        "@remotion/media-utils",
+        "@remotion/captions"
+      ],
+      "registryDependencies": [
+        "audio-pulse",
+        "waveform-line",
+        "audiogram-scene",
+        "auto-fit-title",
+        "caption-scene",
+        "end-card",
+        "transition-fade"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/podcast-clip/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "blur-focus-in",
+      "type": "registry:ui",
+      "title": "Blur Focus In",
+      "description": "Text fades from heavy blur into sharp focus",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/blur-focus-in.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "staggered-fade-up",
+      "type": "registry:ui",
+      "title": "Staggered Fade Up",
+      "description": "Words rise with cascading fade-up stagger",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/staggered-fade-up.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "masked-slide-reveal",
+      "type": "registry:ui",
+      "title": "Masked Slide Reveal",
+      "description": "Words slide up through a horizontal mask",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/masked-slide-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tracking-in",
+      "type": "registry:ui",
+      "title": "Tracking In",
+      "description": "Letter-spacing collapses with spring snap",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "springs"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/tracking-in.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "light-sweep-text",
+      "type": "registry:ui",
+      "title": "Light Sweep Text",
+      "description": "Light gradient sweeps across dim text",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/light-sweep-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slot-roll",
+      "type": "registry:ui",
+      "title": "Slot Roll",
+      "description": "Characters roll like a slot reel into place",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/slot-roll.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "matrix-decode",
+      "type": "registry:ui",
+      "title": "Matrix Decode",
+      "description": "Scramble resolves left-to-right into target text",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/matrix-decode.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "rgb-glitch-text",
+      "type": "registry:ui",
+      "title": "Rgb Glitch Text",
+      "description": "Signal-lock RGB glitch text with channel splits, slices, and scanlines",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/rgb-glitch-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "infinite-marquee",
+      "type": "registry:ui",
+      "title": "Infinite Marquee",
+      "description": "Endlessly scrolling horizontal text band",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/infinite-marquee.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "perspective-marquee",
+      "type": "registry:ui",
+      "title": "Perspective Marquee",
+      "description": "Marquee tilted in 3D with depth fade",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/perspective-marquee.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "strikethrough-replace",
+      "type": "registry:ui",
+      "title": "Strikethrough Replace",
+      "description": "Strike line draws then reveals replacement text",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/primitives/strikethrough-replace.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "terminal-simulator",
+      "type": "registry:block",
+      "title": "Terminal Simulator",
+      "description": "CLI build log simulation with progress bar",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/terminal-simulator/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "code-accordion",
+      "type": "registry:block",
+      "title": "Code Accordion",
+      "description": "Collapsible code block with expanding sections",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/code-accordion/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "code-diff-wipe",
+      "type": "registry:block",
+      "title": "Code Diff Wipe",
+      "description": "Before and after code comparison with wipe reveal",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/code-diff-wipe/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "data-flow-pipes",
+      "type": "registry:block",
+      "title": "Data Flow Pipes",
+      "description": "SVG data packets flowing along pipeline pipes",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/data-flow-pipes/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "drag-drop-flow",
+      "type": "registry:block",
+      "title": "Drag Drop Flow",
+      "description": "Animated cursor dragging a file into a drop zone",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/drag-drop-flow/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "chat-to-preview",
+      "type": "registry:block",
+      "title": "Chat To Preview",
+      "description": "Chat layout morphing into a live preview frame",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/chat-to-preview/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "hero-device-assemble",
+      "type": "registry:block",
+      "title": "Hero Device Assemble",
+      "description": "Device layers assemble hero",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "title-card",
+        "device-mockup-zoom"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/hero-device-assemble/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ecosystem-orbit",
+      "type": "registry:block",
+      "title": "Ecosystem Orbit",
+      "description": "Logo with orbiting satellites",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/ecosystem-orbit/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "bento-pan",
+      "type": "registry:block",
+      "title": "Bento Pan",
+      "description": "Diagonal bento grid pan",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/bento-pan/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "browser-flow",
+      "type": "registry:block",
+      "title": "Browser Flow",
+      "description": "URL to browser preview flow",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "title-card",
+        "chat-to-preview"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/browser-flow/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ai-generation-canvas",
+      "type": "registry:block",
+      "title": "Ai Generation Canvas",
+      "description": "Prompt-to-dashboard generation with morphing input, skeleton shimmer, and card flips",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/ai-generation-canvas/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "live-code-split",
+      "type": "registry:block",
+      "title": "Live Code Split",
+      "description": "Code editor with live preview",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-reveal",
+        "device-mockup-zoom"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/live-code-split/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "deploy-reveal",
+      "type": "registry:block",
+      "title": "Deploy Reveal",
+      "description": "Terminal deploy to browser",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "terminal-simulator",
+        "device-mockup-zoom"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/deploy-reveal/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "dashboard-populate",
+      "type": "registry:block",
+      "title": "Dashboard Populate",
+      "description": "Dashboard metrics populate",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "metric-ticker",
+        "animated-bar-chart"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/dashboard-populate/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "pricing-focus",
+      "type": "registry:block",
+      "title": "Pricing Focus",
+      "description": "Pricing tier focus animation",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/pricing-focus/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "landing-code-showcase",
+      "type": "registry:block",
+      "title": "Landing Code Showcase",
+      "description": "Landing with install commands",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "title-card",
+        "code-reveal"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/landing-code-showcase/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "tool-menu-slide",
+      "type": "registry:block",
+      "title": "Tool Menu Slide",
+      "description": "Tool menu slide-in",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/tool-menu-slide/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "image-expand",
+      "type": "registry:block",
+      "title": "Image Expand",
+      "description": "Thumbnail expands fullscreen",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/compositions/image-expand/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "claude-chat",
+      "type": "registry:block",
+      "title": "Claude Chat",
+      "description": "Claude chat interface with artifact split view and streaming response",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "ai-composer-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/claude-chat/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "chat-gpt",
+      "type": "registry:block",
+      "title": "Chat Gpt",
+      "description": "ChatGPT composer interface with tools menu, suggestion chips, and typed prompt",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "ai-composer-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/chat-gpt/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "v0",
+      "type": "registry:block",
+      "title": "V0",
+      "description": "v0 builder home interface with prompt composer, quick actions, and templates",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "ai-composer-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/v0/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "claude-code",
+      "type": "registry:block",
+      "title": "Claude Code",
+      "description": "Claude Code terminal welcome screen with CLI prompt typing",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "ai-composer-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/claude-code/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "opencode",
+      "type": "registry:block",
+      "title": "Opencode",
+      "description": "OpenCode TUI composer with agent and model status",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "ai-composer-utils"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/bases/default/scenes/opencode/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    }
+  ]
+}
