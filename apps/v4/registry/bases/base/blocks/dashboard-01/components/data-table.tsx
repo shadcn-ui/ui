@@ -21,19 +21,22 @@ import {
 } from "@dnd-kit/sortable"
 import { CSS } from "@dnd-kit/utilities"
 import {
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  createColumnHelper,
+  createFilteredRowModel,
+  createPaginatedRowModel,
+  createSortedRowModel,
   flexRender,
-  getCoreRowModel,
-  getFacetedRowModel,
-  getFacetedUniqueValues,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-  type ColumnDef,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  rowSortingFeature,
+  tableFeatures,
+  useTable,
   type ColumnFiltersState,
+  type ColumnVisibilityState,
   type Row,
   type SortingState,
-  type VisibilityState,
 } from "@tanstack/react-table"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 import { toast } from "sonner"
@@ -105,6 +108,25 @@ export const schema = z.object({
 })
 
 // Create a separate component for the drag handle
+// Declare the features this table uses (no faceting here — include only what
+// you use). Sorting, filtering, pagination, visibility, and row selection are
+// enabled below.
+const features = tableFeatures({
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  rowSortingFeature,
+  filteredRowModel: createFilteredRowModel(),
+  paginatedRowModel: createPaginatedRowModel(),
+  sortedRowModel: createSortedRowModel(),
+})
+
+const columnHelper = createColumnHelper<
+  typeof features,
+  z.infer<typeof schema>
+>()
+
 function DragHandle({ id }: { id: number }) {
   const { attributes, listeners } = useSortable({
     id,
@@ -129,13 +151,13 @@ function DragHandle({ id }: { id: number }) {
     </Button>
   )
 }
-const columns: ColumnDef<z.infer<typeof schema>>[] = [
-  {
+const columns = columnHelper.columns([
+  columnHelper.display({
     id: "drag",
     header: () => null,
     cell: ({ row }) => <DragHandle id={row.original.id} />,
-  },
-  {
+  }),
+  columnHelper.display({
     id: "select",
     header: ({ table }) => (
       <div className="flex items-center justify-center">
@@ -161,17 +183,15 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     ),
     enableSorting: false,
     enableHiding: false,
-  },
-  {
-    accessorKey: "header",
+  }),
+  columnHelper.accessor("header", {
     header: "Header",
     cell: ({ row }) => {
       return <TableCellViewer item={row.original} />
     },
     enableHiding: false,
-  },
-  {
-    accessorKey: "type",
+  }),
+  columnHelper.accessor("type", {
     header: "Section Type",
     cell: ({ row }) => (
       <div className="w-32">
@@ -180,9 +200,8 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         </Badge>
       </div>
     ),
-  },
-  {
-    accessorKey: "status",
+  }),
+  columnHelper.accessor("status", {
     header: "Status",
     cell: ({ row }) => (
       <Badge variant="outline" className="px-1.5 text-muted-foreground">
@@ -207,9 +226,8 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         {row.original.status}
       </Badge>
     ),
-  },
-  {
-    accessorKey: "target",
+  }),
+  columnHelper.accessor("target", {
     header: () => <div className="w-full text-right">Target</div>,
     cell: ({ row }) => (
       <form
@@ -232,9 +250,8 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         />
       </form>
     ),
-  },
-  {
-    accessorKey: "limit",
+  }),
+  columnHelper.accessor("limit", {
     header: () => <div className="w-full text-right">Limit</div>,
     cell: ({ row }) => (
       <form
@@ -257,9 +274,8 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         />
       </form>
     ),
-  },
-  {
-    accessorKey: "reviewer",
+  }),
+  columnHelper.accessor("reviewer", {
     header: "Reviewer",
     cell: ({ row }) => {
       const isAssigned = row.original.reviewer !== "Assign reviewer"
@@ -296,8 +312,8 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         </>
       )
     },
-  },
-  {
+  }),
+  columnHelper.display({
     id: "actions",
     cell: () => (
       <DropdownMenu>
@@ -328,9 +344,13 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         </DropdownMenuContent>
       </DropdownMenu>
     ),
-  },
-]
-function DraggableRow({ row }: { row: Row<z.infer<typeof schema>> }) {
+  }),
+])
+function DraggableRow({
+  row,
+}: {
+  row: Row<typeof features, z.infer<typeof schema>>
+}) {
   const { transform, transition, setNodeRef, isDragging } = useSortable({
     id: row.original.id,
   })
@@ -361,7 +381,7 @@ export function DataTable({
   const [data, setData] = React.useState(() => initialData)
   const [rowSelection, setRowSelection] = React.useState({})
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
+    React.useState<ColumnVisibilityState>({})
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   )
@@ -380,7 +400,8 @@ export function DataTable({
     () => data?.map(({ id }) => id) || [],
     [data]
   )
-  const table = useReactTable({
+  const table = useTable({
+    features,
     data,
     columns,
     state: {
@@ -397,12 +418,6 @@ export function DataTable({
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
     onPaginationChange: setPagination,
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
   })
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event
@@ -583,7 +598,7 @@ export function DataTable({
                 Rows per page
               </Label>
               <Select
-                value={`${table.getState().pagination.pageSize}`}
+                value={`${table.state.pagination.pageSize}`}
                 onValueChange={(value) => {
                   table.setPageSize(Number(value))
                 }}
@@ -593,9 +608,7 @@ export function DataTable({
                 }))}
               >
                 <SelectTrigger size="sm" className="w-20" id="rows-per-page">
-                  <SelectValue
-                    placeholder={table.getState().pagination.pageSize}
-                  />
+                  <SelectValue placeholder={table.state.pagination.pageSize} />
                 </SelectTrigger>
                 <SelectContent side="top">
                   <SelectGroup>
@@ -609,7 +622,7 @@ export function DataTable({
               </Select>
             </div>
             <div className="flex w-fit items-center justify-center text-sm font-medium">
-              Page {table.getState().pagination.pageIndex + 1} of{" "}
+              Page {table.state.pagination.pageIndex + 1} of{" "}
               {table.getPageCount()}
             </div>
             <div className="ml-auto flex items-center gap-2 lg:ml-0">
