@@ -10,6 +10,7 @@ import { highlighter } from "@/src/utils/highlighter"
 import { resolveImportWithMetadata } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
 import fg from "fast-glob"
+import fs from "fs-extra"
 import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 import { z } from "zod"
 
@@ -53,16 +54,7 @@ export async function resolveConfigPaths(
     ...(config.registries || {}),
   }
 
-  // Read tsconfig.json.
-  const tsConfig = await loadConfig(cwd)
-
-  if (tsConfig.resultType === "failed") {
-    throw new Error(
-      `Failed to load ${config.tsx ? "tsconfig" : "jsconfig"}.json. ${
-        tsConfig.message ?? ""
-      }`.trim()
-    )
-  }
+  const tsConfig = await loadTsConfigPaths(cwd, config.tsx)
 
   // Resolve the primary aliases first so fallbacks can reuse their results.
   const resolvedUtils = await resolveAliasPath(
@@ -112,6 +104,42 @@ export async function resolveConfigPaths(
       hooks: resolvedHooks,
     },
   })
+}
+
+async function loadTsConfigPaths(cwd: string, tsx: boolean) {
+  const tsConfig = await loadConfig(cwd)
+
+  if (tsConfig.resultType === "failed") {
+    throw new Error(
+      `Failed to load ${tsx ? "tsconfig" : "jsconfig"}.json. ${
+        tsConfig.message ?? ""
+      }`.trim()
+    )
+  }
+
+  if (hasTsConfigPaths(tsConfig)) {
+    return tsConfig
+  }
+
+  for (const file of ["tsconfig.web.json", "tsconfig.app.json"]) {
+    const filePath = path.resolve(cwd, file)
+
+    if (!(await fs.pathExists(filePath))) {
+      continue
+    }
+
+    const fallback = await loadConfig(filePath)
+
+    if (fallback.resultType === "success" && hasTsConfigPaths(fallback)) {
+      return fallback
+    }
+  }
+
+  return tsConfig
+}
+
+function hasTsConfigPaths(config: Pick<ConfigLoaderSuccessResult, "paths">) {
+  return Object.keys(config.paths).length > 0
 }
 
 async function resolveAliasPath(

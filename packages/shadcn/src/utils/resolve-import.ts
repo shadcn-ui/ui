@@ -88,6 +88,10 @@ function resolveFromTsconfigPaths(
   importPath: string,
   config: ResolveImportConfig
 ) {
+  if (!Object.keys(config.paths).length) {
+    return null
+  }
+
   const matchedPath = createMatchPath(config.absoluteBaseUrl, config.paths)(
     importPath,
     undefined,
