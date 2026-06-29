@@ -717,6 +717,62 @@
       "type": "registry:ui"
     },
     {
+      "name": "attachment",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/attachment.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "bubble",
+      "dependencies": ["radix-ui"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/bubble.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "marker",
+      "dependencies": ["radix-ui"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/marker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "message",
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/message.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "message-scroller",
+      "dependencies": ["@shadcn/react"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/message-scroller.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "dashboard-01",
       "description": "A dashboard with sidebar, charts and data table.",
       "dependencies": [
