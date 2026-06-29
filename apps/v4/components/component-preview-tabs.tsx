@@ -3,6 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { IconAlertCircle } from "@tabler/icons-react"
+import { I18nProvider } from "react-aria-components"
 
 import { cn } from "@/lib/utils"
 import {
@@ -14,7 +15,6 @@ import {
 } from "@/components/language-selector"
 import { DirectionProvider as BaseDirectionProvider } from "@/registry/bases/base/ui/direction"
 import { DirectionProvider as RadixDirectionProvider } from "@/registry/bases/radix/ui/direction"
-import { DirectionProvider as ReactAriaDirectionProvider } from "@/registry/bases/react-aria/ui/direction"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 import {
@@ -266,9 +266,9 @@ function DirectionProviderWrapper({
 
   if (base === "react-aria") {
     return (
-      <ReactAriaDirectionProvider direction={dir}>
+      <I18nProvider locale={explicitDir === "ltr" ? "en" : "ar"}>
         {children}
-      </ReactAriaDirectionProvider>
+      </I18nProvider>
     )
   }
 

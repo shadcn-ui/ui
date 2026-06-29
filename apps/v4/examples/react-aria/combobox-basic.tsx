@@ -19,7 +19,7 @@ const frameworks = [
 
 export default function ComboboxBasic() {
   return (
-    <Combobox allowsEmptyCollection>
+    <Combobox allowsEmptyCollection aria-label="Framework">
       <ComboboxInput placeholder="Select a framework" />
       <ComboboxContent>
         <ComboboxList

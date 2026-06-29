@@ -53,7 +53,7 @@ const timezones = [
 
 export function ComboxboxInputGroup() {
   return (
-    <Combobox allowsEmptyCollection>
+    <Combobox allowsEmptyCollection aria-label="Timezone">
       <ComboboxInput placeholder="Select a timezone">
         <InputGroupAddon>
           <GlobeIcon />

@@ -19,7 +19,11 @@ const frameworks = [
 
 export function ComboboxWithClear() {
   return (
-    <Combobox defaultValue={frameworks[0]} allowsEmptyCollection>
+    <Combobox
+      defaultValue={frameworks[0]}
+      allowsEmptyCollection
+      aria-label="Framework"
+    >
       <ComboboxInput placeholder="Select a framework" showClear />
       <ComboboxContent>
         <ComboboxList

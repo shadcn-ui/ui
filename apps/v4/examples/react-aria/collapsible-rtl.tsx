@@ -75,14 +75,16 @@ export function CollapsibleRtl() {
         <span className="text-muted-foreground">{t.status}</span>
         <span className="font-medium">{t.shipped}</span>
       </div>
-      <CollapsibleContent className="flex flex-col gap-2">
-        <div className="rounded-md border px-4 py-2 text-sm">
-          <p className="font-medium">{t.shippingAddress}</p>
-          <p className="text-muted-foreground">{t.address}</p>
-        </div>
-        <div className="rounded-md border px-4 py-2 text-sm">
-          <p className="font-medium">{t.items}</p>
-          <p className="text-muted-foreground">{t.itemsDescription}</p>
+      <CollapsibleContent>
+        <div className="flex flex-col gap-2">
+          <div className="rounded-md border px-4 py-2 text-sm">
+            <p className="font-medium">{t.shippingAddress}</p>
+            <p className="text-muted-foreground">{t.address}</p>
+          </div>
+          <div className="rounded-md border px-4 py-2 text-sm">
+            <p className="font-medium">{t.items}</p>
+            <p className="text-muted-foreground">{t.itemsDescription}</p>
+          </div>
         </div>
       </CollapsibleContent>
     </Collapsible>

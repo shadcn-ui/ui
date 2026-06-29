@@ -69,7 +69,7 @@ const countries = [
 
 export function ComboboxWithCustomItems() {
   return (
-    <Combobox allowsEmptyCollection>
+    <Combobox allowsEmptyCollection aria-label="Country">
       <ComboboxInput placeholder="Search countries..." />
       <ComboboxContent>
         <ComboboxList

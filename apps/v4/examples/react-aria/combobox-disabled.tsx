@@ -19,7 +19,7 @@ const frameworks = [
 
 export function ComboboxDisabled() {
   return (
-    <Combobox allowsEmptyCollection>
+    <Combobox allowsEmptyCollection aria-label="Framework">
       <ComboboxInput placeholder="Select a framework" disabled />
       <ComboboxContent>
         <ComboboxList

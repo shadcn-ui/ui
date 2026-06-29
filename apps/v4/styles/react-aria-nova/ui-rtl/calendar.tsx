@@ -32,7 +32,7 @@ import {
 } from "@/styles/react-aria-nova/ui-rtl/select"
 
 const cellVariants = cva(
-  "group/day relative mt-2 aspect-square h-full w-full rounded-(--cell-radius) p-0 text-center select-none [&:is(:last-child>[data-selected=true])>div]:rounded-e-(--cell-radius)",
+  "group/day relative mt-2 aspect-square h-full w-full cursor-default rounded-(--cell-radius) p-0 text-center select-none [&:is(:last-child>[data-selected=true])>div]:rounded-e-(--cell-radius)",
   {
     variants: {
       showWeekNumber: {

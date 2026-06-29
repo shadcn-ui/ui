@@ -25,11 +25,13 @@ const frameworks = [
 export function ComboboxMultiple() {
   return (
     <Combobox
+      aria-label="Frameworks"
       selectionMode="multiple"
       defaultValue={[frameworks[0]]}
       allowsEmptyCollection
+      className="w-[250px] max-w-full"
     >
-      <ComboboxChips className="w-full max-w-xs">
+      <ComboboxChips>
         <ComboboxChipList<{ name: string }>>
           {(value) => <ComboboxChip id={value.name}>{value.name}</ComboboxChip>}
         </ComboboxChipList>

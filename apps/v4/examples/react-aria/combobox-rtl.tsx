@@ -89,6 +89,7 @@ export function ComboboxRtl() {
     <Field className="mx-auto w-full max-w-xs">
       <FieldLabel>{t.label}</FieldLabel>
       <Combobox
+        aria-label={t.label}
         selectionMode="multiple"
         defaultValue={[categories[0]]}
         allowsEmptyCollection

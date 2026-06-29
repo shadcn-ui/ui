@@ -19,7 +19,7 @@ const frameworks = [
 
 export function ComboboxInvalid() {
   return (
-    <Combobox allowsEmptyCollection isInvalid>
+    <Combobox allowsEmptyCollection isInvalid aria-label="Framework">
       <ComboboxInput placeholder="Select a framework" />
       <ComboboxContent>
         <ComboboxList
