@@ -105,6 +105,30 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "aspect-ratio-square",
       filePath: "examples/radix/aspect-ratio-square.tsx",
     },
+    "attachment-demo": {
+      name: "attachment-demo",
+      filePath: "examples/radix/attachment-demo.tsx",
+    },
+    "attachment-group": {
+      name: "attachment-group",
+      filePath: "examples/radix/attachment-group.tsx",
+    },
+    "attachment-image": {
+      name: "attachment-image",
+      filePath: "examples/radix/attachment-image.tsx",
+    },
+    "attachment-sizes": {
+      name: "attachment-sizes",
+      filePath: "examples/radix/attachment-sizes.tsx",
+    },
+    "attachment-states": {
+      name: "attachment-states",
+      filePath: "examples/radix/attachment-states.tsx",
+    },
+    "attachment-trigger": {
+      name: "attachment-trigger",
+      filePath: "examples/radix/attachment-trigger.tsx",
+    },
     "avatar-badge-icon": {
       name: "avatar-badge-icon",
       filePath: "examples/radix/avatar-badge-icon.tsx",
@@ -208,6 +232,46 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "breadcrumb-separator": {
       name: "breadcrumb-separator",
       filePath: "examples/radix/breadcrumb-separator.tsx",
+    },
+    "bubble-alignment": {
+      name: "bubble-alignment",
+      filePath: "examples/radix/bubble-alignment.tsx",
+    },
+    "bubble-collapsible": {
+      name: "bubble-collapsible",
+      filePath: "examples/radix/bubble-collapsible.tsx",
+    },
+    "bubble-demo": {
+      name: "bubble-demo",
+      filePath: "examples/radix/bubble-demo.tsx",
+    },
+    "bubble-group-demo": {
+      name: "bubble-group-demo",
+      filePath: "examples/radix/bubble-group-demo.tsx",
+    },
+    "bubble-link-button": {
+      name: "bubble-link-button",
+      filePath: "examples/radix/bubble-link-button.tsx",
+    },
+    "bubble-markdown": {
+      name: "bubble-markdown",
+      filePath: "examples/radix/bubble-markdown.tsx",
+    },
+    "bubble-popover": {
+      name: "bubble-popover",
+      filePath: "examples/radix/bubble-popover.tsx",
+    },
+    "bubble-reactions": {
+      name: "bubble-reactions",
+      filePath: "examples/radix/bubble-reactions.tsx",
+    },
+    "bubble-tooltip": {
+      name: "bubble-tooltip",
+      filePath: "examples/radix/bubble-tooltip.tsx",
+    },
+    "bubble-variants": {
+      name: "bubble-variants",
+      filePath: "examples/radix/bubble-variants.tsx",
     },
     "button-aschild": {
       name: "button-aschild",
@@ -1145,6 +1209,42 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "label-rtl",
       filePath: "examples/radix/label-rtl.tsx",
     },
+    "markdown-demo": {
+      name: "markdown-demo",
+      filePath: "examples/radix/markdown-demo.tsx",
+    },
+    "marker-border": {
+      name: "marker-border",
+      filePath: "examples/radix/marker-border.tsx",
+    },
+    "marker-demo": {
+      name: "marker-demo",
+      filePath: "examples/radix/marker-demo.tsx",
+    },
+    "marker-icon": {
+      name: "marker-icon",
+      filePath: "examples/radix/marker-icon.tsx",
+    },
+    "marker-link-button": {
+      name: "marker-link-button",
+      filePath: "examples/radix/marker-link-button.tsx",
+    },
+    "marker-separator": {
+      name: "marker-separator",
+      filePath: "examples/radix/marker-separator.tsx",
+    },
+    "marker-shimmer": {
+      name: "marker-shimmer",
+      filePath: "examples/radix/marker-shimmer.tsx",
+    },
+    "marker-status": {
+      name: "marker-status",
+      filePath: "examples/radix/marker-status.tsx",
+    },
+    "marker-variants": {
+      name: "marker-variants",
+      filePath: "examples/radix/marker-variants.tsx",
+    },
     "menubar-checkbox": {
       name: "menubar-checkbox",
       filePath: "examples/radix/menubar-checkbox.tsx",
@@ -1168,6 +1268,78 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "menubar-submenu": {
       name: "menubar-submenu",
       filePath: "examples/radix/menubar-submenu.tsx",
+    },
+    "message-actions": {
+      name: "message-actions",
+      filePath: "examples/radix/message-actions.tsx",
+    },
+    "message-attachment": {
+      name: "message-attachment",
+      filePath: "examples/radix/message-attachment.tsx",
+    },
+    "message-avatar": {
+      name: "message-avatar",
+      filePath: "examples/radix/message-avatar.tsx",
+    },
+    "message-demo": {
+      name: "message-demo",
+      filePath: "examples/radix/message-demo.tsx",
+    },
+    "message-group": {
+      name: "message-group",
+      filePath: "examples/radix/message-group.tsx",
+    },
+    "message-header-footer": {
+      name: "message-header-footer",
+      filePath: "examples/radix/message-header-footer.tsx",
+    },
+    "message-markdown": {
+      name: "message-markdown",
+      filePath: "examples/radix/message-markdown.tsx",
+    },
+    "message-scroller-anchoring": {
+      name: "message-scroller-anchoring",
+      filePath: "examples/radix/message-scroller-anchoring.tsx",
+    },
+    "message-scroller-animation": {
+      name: "message-scroller-animation",
+      filePath: "examples/radix/message-scroller-animation.tsx",
+    },
+    "message-scroller-commands": {
+      name: "message-scroller-commands",
+      filePath: "examples/radix/message-scroller-commands.tsx",
+    },
+    "message-scroller-demo": {
+      name: "message-scroller-demo",
+      filePath: "examples/radix/message-scroller-demo.tsx",
+    },
+    "message-scroller-group-chat": {
+      name: "message-scroller-group-chat",
+      filePath: "examples/radix/message-scroller-group-chat.tsx",
+    },
+    "message-scroller-load-history": {
+      name: "message-scroller-load-history",
+      filePath: "examples/radix/message-scroller-load-history.tsx",
+    },
+    "message-scroller-opening-position": {
+      name: "message-scroller-opening-position",
+      filePath: "examples/radix/message-scroller-opening-position.tsx",
+    },
+    "message-scroller-previous-context": {
+      name: "message-scroller-previous-context",
+      filePath: "examples/radix/message-scroller-previous-context.tsx",
+    },
+    "message-scroller-scrollable": {
+      name: "message-scroller-scrollable",
+      filePath: "examples/radix/message-scroller-scrollable.tsx",
+    },
+    "message-scroller-streaming": {
+      name: "message-scroller-streaming",
+      filePath: "examples/radix/message-scroller-streaming.tsx",
+    },
+    "message-scroller-visibility": {
+      name: "message-scroller-visibility",
+      filePath: "examples/radix/message-scroller-visibility.tsx",
     },
     "muted-item-group": {
       name: "muted-item-group",
@@ -1317,6 +1489,34 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "scroll-area-rtl",
       filePath: "examples/radix/scroll-area-rtl.tsx",
     },
+    "scroll-fade-demo": {
+      name: "scroll-fade-demo",
+      filePath: "examples/radix/scroll-fade-demo.tsx",
+    },
+    "scroll-fade-edge": {
+      name: "scroll-fade-edge",
+      filePath: "examples/radix/scroll-fade-edge.tsx",
+    },
+    "scroll-fade-horizontal": {
+      name: "scroll-fade-horizontal",
+      filePath: "examples/radix/scroll-fade-horizontal.tsx",
+    },
+    "scroll-fade-none": {
+      name: "scroll-fade-none",
+      filePath: "examples/radix/scroll-fade-none.tsx",
+    },
+    "scroll-fade-overflow": {
+      name: "scroll-fade-overflow",
+      filePath: "examples/radix/scroll-fade-overflow.tsx",
+    },
+    "scroll-fade-rtl": {
+      name: "scroll-fade-rtl",
+      filePath: "examples/radix/scroll-fade-rtl.tsx",
+    },
+    "scroll-fade-size": {
+      name: "scroll-fade-size",
+      filePath: "examples/radix/scroll-fade-size.tsx",
+    },
     "select-align-item": {
       name: "select-align-item",
       filePath: "examples/radix/select-align-item.tsx",
@@ -1380,6 +1580,42 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "sheet-side": {
       name: "sheet-side",
       filePath: "examples/radix/sheet-side.tsx",
+    },
+    "shimmer-angle": {
+      name: "shimmer-angle",
+      filePath: "examples/radix/shimmer-angle.tsx",
+    },
+    "shimmer-color": {
+      name: "shimmer-color",
+      filePath: "examples/radix/shimmer-color.tsx",
+    },
+    "shimmer-demo": {
+      name: "shimmer-demo",
+      filePath: "examples/radix/shimmer-demo.tsx",
+    },
+    "shimmer-duration": {
+      name: "shimmer-duration",
+      filePath: "examples/radix/shimmer-duration.tsx",
+    },
+    "shimmer-marker": {
+      name: "shimmer-marker",
+      filePath: "examples/radix/shimmer-marker.tsx",
+    },
+    "shimmer-none": {
+      name: "shimmer-none",
+      filePath: "examples/radix/shimmer-none.tsx",
+    },
+    "shimmer-once": {
+      name: "shimmer-once",
+      filePath: "examples/radix/shimmer-once.tsx",
+    },
+    "shimmer-rtl": {
+      name: "shimmer-rtl",
+      filePath: "examples/radix/shimmer-rtl.tsx",
+    },
+    "shimmer-spread": {
+      name: "shimmer-spread",
+      filePath: "examples/radix/shimmer-spread.tsx",
     },
     "sidebar-controlled": {
       name: "sidebar-controlled",
@@ -1883,6 +2119,30 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "aspect-ratio-square",
       filePath: "examples/base/aspect-ratio-square.tsx",
     },
+    "attachment-demo": {
+      name: "attachment-demo",
+      filePath: "examples/base/attachment-demo.tsx",
+    },
+    "attachment-group": {
+      name: "attachment-group",
+      filePath: "examples/base/attachment-group.tsx",
+    },
+    "attachment-image": {
+      name: "attachment-image",
+      filePath: "examples/base/attachment-image.tsx",
+    },
+    "attachment-sizes": {
+      name: "attachment-sizes",
+      filePath: "examples/base/attachment-sizes.tsx",
+    },
+    "attachment-states": {
+      name: "attachment-states",
+      filePath: "examples/base/attachment-states.tsx",
+    },
+    "attachment-trigger": {
+      name: "attachment-trigger",
+      filePath: "examples/base/attachment-trigger.tsx",
+    },
     "avatar-badge-icon": {
       name: "avatar-badge-icon",
       filePath: "examples/base/avatar-badge-icon.tsx",
@@ -1986,6 +2246,46 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "breadcrumb-separator": {
       name: "breadcrumb-separator",
       filePath: "examples/base/breadcrumb-separator.tsx",
+    },
+    "bubble-alignment": {
+      name: "bubble-alignment",
+      filePath: "examples/base/bubble-alignment.tsx",
+    },
+    "bubble-collapsible": {
+      name: "bubble-collapsible",
+      filePath: "examples/base/bubble-collapsible.tsx",
+    },
+    "bubble-demo": {
+      name: "bubble-demo",
+      filePath: "examples/base/bubble-demo.tsx",
+    },
+    "bubble-group-demo": {
+      name: "bubble-group-demo",
+      filePath: "examples/base/bubble-group-demo.tsx",
+    },
+    "bubble-link-button": {
+      name: "bubble-link-button",
+      filePath: "examples/base/bubble-link-button.tsx",
+    },
+    "bubble-markdown": {
+      name: "bubble-markdown",
+      filePath: "examples/base/bubble-markdown.tsx",
+    },
+    "bubble-popover": {
+      name: "bubble-popover",
+      filePath: "examples/base/bubble-popover.tsx",
+    },
+    "bubble-reactions": {
+      name: "bubble-reactions",
+      filePath: "examples/base/bubble-reactions.tsx",
+    },
+    "bubble-tooltip": {
+      name: "bubble-tooltip",
+      filePath: "examples/base/bubble-tooltip.tsx",
+    },
+    "bubble-variants": {
+      name: "bubble-variants",
+      filePath: "examples/base/bubble-variants.tsx",
     },
     "button-default": {
       name: "button-default",
@@ -2923,6 +3223,42 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "label-rtl",
       filePath: "examples/base/label-rtl.tsx",
     },
+    "markdown-demo": {
+      name: "markdown-demo",
+      filePath: "examples/base/markdown-demo.tsx",
+    },
+    "marker-border": {
+      name: "marker-border",
+      filePath: "examples/base/marker-border.tsx",
+    },
+    "marker-demo": {
+      name: "marker-demo",
+      filePath: "examples/base/marker-demo.tsx",
+    },
+    "marker-icon": {
+      name: "marker-icon",
+      filePath: "examples/base/marker-icon.tsx",
+    },
+    "marker-link-button": {
+      name: "marker-link-button",
+      filePath: "examples/base/marker-link-button.tsx",
+    },
+    "marker-separator": {
+      name: "marker-separator",
+      filePath: "examples/base/marker-separator.tsx",
+    },
+    "marker-shimmer": {
+      name: "marker-shimmer",
+      filePath: "examples/base/marker-shimmer.tsx",
+    },
+    "marker-status": {
+      name: "marker-status",
+      filePath: "examples/base/marker-status.tsx",
+    },
+    "marker-variants": {
+      name: "marker-variants",
+      filePath: "examples/base/marker-variants.tsx",
+    },
     "menubar-checkbox": {
       name: "menubar-checkbox",
       filePath: "examples/base/menubar-checkbox.tsx",
@@ -2946,6 +3282,82 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "menubar-submenu": {
       name: "menubar-submenu",
       filePath: "examples/base/menubar-submenu.tsx",
+    },
+    "message-actions": {
+      name: "message-actions",
+      filePath: "examples/base/message-actions.tsx",
+    },
+    "message-attachment": {
+      name: "message-attachment",
+      filePath: "examples/base/message-attachment.tsx",
+    },
+    "message-avatar": {
+      name: "message-avatar",
+      filePath: "examples/base/message-avatar.tsx",
+    },
+    "message-demo": {
+      name: "message-demo",
+      filePath: "examples/base/message-demo.tsx",
+    },
+    "message-group": {
+      name: "message-group",
+      filePath: "examples/base/message-group.tsx",
+    },
+    "message-header-footer": {
+      name: "message-header-footer",
+      filePath: "examples/base/message-header-footer.tsx",
+    },
+    "message-markdown": {
+      name: "message-markdown",
+      filePath: "examples/base/message-markdown.tsx",
+    },
+    "message-scroller-anchoring": {
+      name: "message-scroller-anchoring",
+      filePath: "examples/base/message-scroller-anchoring.tsx",
+    },
+    "message-scroller-animation": {
+      name: "message-scroller-animation",
+      filePath: "examples/base/message-scroller-animation.tsx",
+    },
+    "message-scroller-commands": {
+      name: "message-scroller-commands",
+      filePath: "examples/base/message-scroller-commands.tsx",
+    },
+    "message-scroller-demo": {
+      name: "message-scroller-demo",
+      filePath: "examples/base/message-scroller-demo.tsx",
+    },
+    "message-scroller-group-chat": {
+      name: "message-scroller-group-chat",
+      filePath: "examples/base/message-scroller-group-chat.tsx",
+    },
+    "message-scroller-load-history": {
+      name: "message-scroller-load-history",
+      filePath: "examples/base/message-scroller-load-history.tsx",
+    },
+    "message-scroller-opening-position": {
+      name: "message-scroller-opening-position",
+      filePath: "examples/base/message-scroller-opening-position.tsx",
+    },
+    "message-scroller-previous-context": {
+      name: "message-scroller-previous-context",
+      filePath: "examples/base/message-scroller-previous-context.tsx",
+    },
+    "message-scroller-scrollable": {
+      name: "message-scroller-scrollable",
+      filePath: "examples/base/message-scroller-scrollable.tsx",
+    },
+    "message-scroller-state": {
+      name: "message-scroller-state",
+      filePath: "examples/base/message-scroller-state.tsx",
+    },
+    "message-scroller-streaming": {
+      name: "message-scroller-streaming",
+      filePath: "examples/base/message-scroller-streaming.tsx",
+    },
+    "message-scroller-visibility": {
+      name: "message-scroller-visibility",
+      filePath: "examples/base/message-scroller-visibility.tsx",
     },
     "muted-item-group": {
       name: "muted-item-group",
@@ -3095,6 +3507,34 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "scroll-area-rtl",
       filePath: "examples/base/scroll-area-rtl.tsx",
     },
+    "scroll-fade-demo": {
+      name: "scroll-fade-demo",
+      filePath: "examples/base/scroll-fade-demo.tsx",
+    },
+    "scroll-fade-edge": {
+      name: "scroll-fade-edge",
+      filePath: "examples/base/scroll-fade-edge.tsx",
+    },
+    "scroll-fade-horizontal": {
+      name: "scroll-fade-horizontal",
+      filePath: "examples/base/scroll-fade-horizontal.tsx",
+    },
+    "scroll-fade-none": {
+      name: "scroll-fade-none",
+      filePath: "examples/base/scroll-fade-none.tsx",
+    },
+    "scroll-fade-overflow": {
+      name: "scroll-fade-overflow",
+      filePath: "examples/base/scroll-fade-overflow.tsx",
+    },
+    "scroll-fade-rtl": {
+      name: "scroll-fade-rtl",
+      filePath: "examples/base/scroll-fade-rtl.tsx",
+    },
+    "scroll-fade-size": {
+      name: "scroll-fade-size",
+      filePath: "examples/base/scroll-fade-size.tsx",
+    },
     "select-align-item": {
       name: "select-align-item",
       filePath: "examples/base/select-align-item.tsx",
@@ -3158,6 +3598,42 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "sheet-side": {
       name: "sheet-side",
       filePath: "examples/base/sheet-side.tsx",
+    },
+    "shimmer-angle": {
+      name: "shimmer-angle",
+      filePath: "examples/base/shimmer-angle.tsx",
+    },
+    "shimmer-color": {
+      name: "shimmer-color",
+      filePath: "examples/base/shimmer-color.tsx",
+    },
+    "shimmer-demo": {
+      name: "shimmer-demo",
+      filePath: "examples/base/shimmer-demo.tsx",
+    },
+    "shimmer-duration": {
+      name: "shimmer-duration",
+      filePath: "examples/base/shimmer-duration.tsx",
+    },
+    "shimmer-marker": {
+      name: "shimmer-marker",
+      filePath: "examples/base/shimmer-marker.tsx",
+    },
+    "shimmer-none": {
+      name: "shimmer-none",
+      filePath: "examples/base/shimmer-none.tsx",
+    },
+    "shimmer-once": {
+      name: "shimmer-once",
+      filePath: "examples/base/shimmer-once.tsx",
+    },
+    "shimmer-rtl": {
+      name: "shimmer-rtl",
+      filePath: "examples/base/shimmer-rtl.tsx",
+    },
+    "shimmer-spread": {
+      name: "shimmer-spread",
+      filePath: "examples/base/shimmer-spread.tsx",
     },
     "sidebar-controlled": {
       name: "sidebar-controlled",

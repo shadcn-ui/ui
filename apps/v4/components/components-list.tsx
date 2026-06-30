@@ -12,11 +12,44 @@ import { cn } from "@/lib/utils"
 import { useFramework } from "@/hooks/use-framework"
 import { getDefaultBaseForFramework } from "@/registry/frameworks"
 
+// [FORCE-UI] upstream extracted ComponentLink; we keep it but don't use it directly
+// since our version handles unavailable components differently.
+function ComponentLink({
+  component,
+  showNewIndicator,
+}: {
+  component: PageTreePage
+  showNewIndicator: boolean
+}) {
+  const isNew = showNewIndicator && PAGES_NEW.includes(component.url)
+
+  return (
+    <Link
+      href={component.url}
+      className="inline-flex items-center gap-2 text-lg font-medium underline-offset-4 hover:underline md:text-base"
+    >
+      {component.name}
+      {isNew && (
+        <>
+          <span className="sr-only">New</span>
+          <span
+            aria-hidden="true"
+            className="flex size-2 rounded-full bg-blue-500"
+          />
+        </>
+      )}
+    </Link>
+  )
+}
+
 export function ComponentsList({
   componentsFolder,
+  variant = "all", // [FORCE-UI] upstream added variant prop
 }: {
   componentsFolder: PageTreeFolder
+  variant?: "all" | "new"
 }) {
+  // [FORCE-UI-START] framework awareness — upstream uses currentBase as a prop
   const { framework } = useFramework()
   const currentBase = getDefaultBaseForFramework(framework)
 
@@ -32,9 +65,10 @@ export function ComponentsList({
   for (const page of availableComponents) {
     availableUrlMap.set(String(page.name), String(page.url))
   }
+  // [FORCE-UI-END]
 
   return (
-    <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20">
+    <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20">
       {allComponents.map((component) => {
         const isAvailable = availableNames.has(component.name)
         const href =
@@ -62,10 +96,13 @@ export function ComponentsList({
           >
             {component.name}
             {PAGES_NEW.includes(component.url) && (
-              <span
-                className="flex size-2 rounded-full bg-blue-500"
-                title="New"
-              />
+              <>
+                <span className="sr-only">New</span>
+                <span
+                  aria-hidden="true"
+                  className="flex size-2 rounded-full bg-blue-500"
+                />
+              </>
             )}
           </Link>
         )

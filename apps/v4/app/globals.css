@@ -3,6 +3,8 @@
 @import "shadcn/tailwind.css";
 @import "./legacy-themes.css";
 
+@source "../node_modules/streamdown/dist/*.js";
+
 /* [FORCE-UI] */ @import "../registry/styles/style-force-ui.css" layer(base);
 
 /* [FORCE-UI] */ @custom-variant style-force-ui (&:where(.style-force-ui *));

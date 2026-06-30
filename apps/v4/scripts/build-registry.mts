@@ -17,7 +17,6 @@ import {
 } from "shadcn/utils"
 import { Project, ScriptKind } from "ts-morph"
 
-import { getAllBlocks } from "@/lib/blocks"
 import { legacyStyles } from "@/registry/_legacy-styles"
 import { BASE_COLORS } from "@/registry/base-colors"
 import { BASES, type Base } from "@/registry/bases"
@@ -327,6 +326,14 @@ function normalizeRegistryFiles(item: RegistryItem): Array<{
 
 function shouldGenerateRtlStyles(styleName: string) {
   return styleName === "base-force-ui" || styleName === "radix-force-ui" // [FORCE-UI]
+}
+
+function isStyledOutputFile(filePath: string) {
+  return filePath.startsWith("ui/")
+}
+
+function shouldIncludeStyledRegistryItem(item: RegistryItem) {
+  return item.type === "registry:ui"
 }
 
 function getTemporaryRegistryRoot(styleName: string) {
@@ -670,6 +677,7 @@ async function runFullBuild() {
     async (style) => {
       await buildRegistryJsonFile(style.name)
       await buildRegistry(style.name)
+
       console.log(`   ✅ ${style.name}`)
     }
   )
@@ -733,8 +741,6 @@ async function runIndexesBuild() {
   console.log("🏗️ Building registry/bases/__index__.tsx...")
   await buildBasesIndex(Array.from(BASES))
 
-  // buildBlocksIndex imports @/registry/__index__, so the registry index must
-  // be regenerated before the blocks index.
   console.log("\n📦 Building registry/__index__.tsx...")
   await buildRegistryIndex(getStylesToBuild())
 
@@ -1130,16 +1136,7 @@ async function buildExamplesIndex() {
         return null
       }
 
-      const allEntries = await fs.readdir(baseDir, { withFileTypes: true })
-      const DEMO_EXTENSIONS = [".tsx", ".vue", ".svelte", ".gts"]
-      const files = allEntries
-        .filter(
-          (entry) =>
-            entry.isFile() &&
-            DEMO_EXTENSIONS.some((ext) => entry.name.endsWith(ext))
-        )
-        .map((entry) => entry.name)
-        .sort()
+      const files = await collectExampleFiles(baseDir)
 
       console.log(`   Found ${files.length} demos for ${base.name}`)
 
@@ -1183,7 +1180,7 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {`
     },`
 
       components += `
-    "${name}": ${lazyComponentExpression(`./${baseName}/${name}`, name)},`
+    "${name}": ${lazyComponentExpression(`./${baseName}/${stripFileExtension(file)}`, name)},`
     }
 
     index += `
@@ -1210,6 +1207,30 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {`
     componentsPath,
     await formatGeneratedSource(components, componentsPath)
   )
+}
+
+async function collectExampleFiles(
+  dirPath: string,
+  rootDir = dirPath
+): Promise<string[]> {
+  const entries = await readDirectoryEntries(dirPath)
+  const files = await Promise.all(
+    entries.map(async (entry) => {
+      const entryPath = path.join(dirPath, entry.name)
+
+      if (entry.isDirectory()) {
+        return collectExampleFiles(entryPath, rootDir)
+      }
+
+      if (!entry.isFile() || !entry.name.endsWith(".tsx")) {
+        return []
+      }
+
+      return [toPosixPath(path.relative(rootDir, entryPath))]
+    })
+  )
+
+  return files.flat().sort((a, b) => a.localeCompare(b))
 }
 
 async function buildRegistryIndex(styles: { name: string; title: string }[]) {
@@ -1255,7 +1276,7 @@ export const Components: Record<string, Record<string, any>> = {`
         continue
       }
 
-      if (styleCombination && item.type !== "registry:ui") {
+      if (styleCombination && !shouldIncludeStyledRegistryItem(item)) {
         continue
       }
 
@@ -1268,7 +1289,7 @@ export const Components: Record<string, Record<string, any>> = {`
       const resolvedFiles = styleCombination
         ? files.map((file) => ({
             ...file,
-            path: file.path.startsWith("ui/")
+            path: isStyledOutputFile(file.path)
               ? `styles/${style.name}/${file.path}`
               : `registry/bases/${styleCombination.base.name}/${file.path}`,
           }))
@@ -1279,7 +1300,7 @@ export const Components: Record<string, Record<string, any>> = {`
 
       const componentPath = files[0]?.path
         ? styleCombination
-          ? files[0].path.startsWith("ui/")
+          ? isStyledOutputFile(files[0].path)
             ? `@/styles/${style.name}/${stripFileExtension(files[0].path)}`
             : `@/registry/bases/${styleCombination.base.name}/${stripFileExtension(files[0].path)}`
           : `@/registry/${style.name}/${stripFileExtension(files[0].path)}`
@@ -1387,13 +1408,15 @@ async function buildRegistryJsonFile(styleName: string) {
 
 async function buildRegistry(styleName: string) {
   const outputPath = `public/r/styles/${styleName}`
+  const registryPath = `registry-${styleName}.json`
+
   await new Promise<void>((resolve, reject) => {
     const proc = spawn(
       "node",
       [
         "../../packages/shadcn/dist/index.js",
         "build",
-        `registry-${styleName}.json`,
+        registryPath,
         "--output",
         outputPath,
       ],
@@ -1413,13 +1436,43 @@ async function buildRegistry(styleName: string) {
 }
 
 async function buildBlocksIndex() {
-  const blocks = await getAllBlocks(["registry:block"])
+  // Read blocks straight from the authored base registries. Blocks
+  // (registry:block) only live there; the generated registry/__index__ adds
+  // nothing but registry:ui items, and importing it would pull in its
+  // `import "server-only"` guard, which throws outside an RSC graph.
+  const blocks = new Map<
+    string,
+    { name: string; description?: string; categories?: string[] }
+  >()
 
-  const payload = blocks.map((block) => ({
-    name: block.name,
-    description: block.description,
-    categories: block.categories,
-  }))
+  for (const base of BASES) {
+    const { registry: baseRegistry } = await import(
+      `../registry/bases/${base.name}/registry.ts`
+    )
+
+    const parseResult = registrySchema.safeParse(baseRegistry)
+    if (!parseResult.success) {
+      console.error(`❌ Registry validation failed for ${base.name}:`)
+      console.error(parseResult.error.format())
+      throw new Error(`Invalid registry schema for ${base.name}`)
+    }
+
+    for (const item of parseResult.data.items) {
+      if (item.type !== "registry:block" || item.name.startsWith("chart-")) {
+        continue
+      }
+
+      blocks.set(item.name, {
+        name: item.name,
+        description: item.description,
+        categories: item.categories,
+      })
+    }
+  }
+
+  const payload = Array.from(blocks.values()).sort((a, b) =>
+    a.name.localeCompare(b.name)
+  )
 
   const blocksJsonPath = path.join(process.cwd(), "registry/__blocks__.json")
   await writeIfChanged(
@@ -1798,6 +1851,10 @@ async function syncDirectory({
 }
 
 function rewriteRegistryUiImportsToStyle(content: string, styleName: string) {
+  return rewriteRegistryImportsToStyle(content, styleName)
+}
+
+function rewriteRegistryImportsToStyle(content: string, styleName: string) {
   return content
     .replaceAll(`@/registry/${styleName}/ui/`, `@/styles/${styleName}/ui/`)
     .replaceAll(`@/registry/${styleName}/lib/utils`, `@/lib/utils`)
