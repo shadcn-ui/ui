@@ -272,8 +272,6 @@ export async function getTailwindCssFile(cwd: string, configCssFile?: string) {
     return null
   }
 
-  const needle =
-    tailwindVersion === "v4" ? `@import "tailwindcss"` : "@tailwind base"
   for (const file of files) {
     const contents = await fs.readFile(path.resolve(cwd, file), "utf8")
     if (
@@ -282,6 +280,23 @@ export async function getTailwindCssFile(cwd: string, configCssFile?: string) {
       contents.includes(`@tailwind base`)
     ) {
       return file
+    }
+
+    if (tailwindVersion === "v4" && contents.includes("@theme")) {
+      return file
+    }
+  }
+
+  // For Tailwind v4 with @tailwindcss/vite, the vite plugin handles injection
+  // so the CSS file may not contain any Tailwind directives.
+  if (tailwindVersion === "v4") {
+    const packageInfo = getPackageInfo(cwd, false)
+    const hasTailwindVitePlugin =
+      packageInfo?.dependencies?.["@tailwindcss/vite"] ||
+      packageInfo?.devDependencies?.["@tailwindcss/vite"]
+
+    if (hasTailwindVitePlugin && files.length > 0) {
+      return files[0]
     }
   }
 
