@@ -3,8 +3,8 @@
 import * as React from "react"
 import { RotateCwIcon } from "lucide-react"
 
-import { Bubble, BubbleContent } from "@/styles/radix-rhea/ui/bubble"
-import { Button } from "@/styles/radix-rhea/ui/button"
+import { Bubble, BubbleContent } from "@/styles/radix-force-ui/ui/bubble"
+import { Button } from "@/styles/radix-force-ui/ui/button"
 import {
   Card,
   CardAction,
@@ -13,13 +13,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/styles/radix-rhea/ui/card"
-import { Marker, MarkerContent } from "@/styles/radix-rhea/ui/marker"
+} from "@/styles/radix-force-ui/ui/card"
+import { Marker, MarkerContent } from "@/styles/radix-force-ui/ui/marker"
 import {
   Message,
   MessageContent,
   MessageHeader,
-} from "@/styles/radix-rhea/ui/message"
+} from "@/styles/radix-force-ui/ui/message"
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -27,12 +27,12 @@ import {
   MessageScrollerItem,
   MessageScrollerProvider,
   MessageScrollerViewport,
-} from "@/styles/radix-rhea/ui/message-scroller"
+} from "@/styles/radix-force-ui/ui/message-scroller"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/styles/radix-rhea/ui/tooltip"
+} from "@/styles/radix-force-ui/ui/tooltip"
 
 const currentUser = "Grace"
 

@@ -5,9 +5,9 @@ import { motion, useReducedMotion } from "motion/react"
 
 import type { MessageAnimationPreset } from "@/lib/message-animations"
 import { MESSAGE_ANIMATIONS } from "@/lib/message-animations"
-import { Bubble, BubbleContent } from "@/styles/radix-rhea/ui/bubble"
-import { Message, MessageContent } from "@/styles/radix-rhea/ui/message"
-import { MessageScrollerItem } from "@/styles/radix-rhea/ui/message-scroller"
+import { Bubble, BubbleContent } from "@/styles/radix-force-ui/ui/bubble"
+import { Message, MessageContent } from "@/styles/radix-force-ui/ui/message"
+import { MessageScrollerItem } from "@/styles/radix-force-ui/ui/message-scroller"
 
 type MessageAnimatedPart = {
   type: string

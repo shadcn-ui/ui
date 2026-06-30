@@ -6,7 +6,7 @@ import { type RegistryItem } from "shadcn/schema"
 
 import { useIsMobile } from "@/hooks/use-mobile"
 import { getThemesForBaseColor, STYLES } from "@/registry/config"
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   Card,
   CardContent,

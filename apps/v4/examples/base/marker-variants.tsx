@@ -1,4 +1,4 @@
-import { Marker, MarkerContent } from "@/styles/base-rhea/ui/marker"
+import { Marker, MarkerContent } from "@/styles/base-force-ui/ui/marker"
 
 export function MarkerVariantsDemo() {
   return (

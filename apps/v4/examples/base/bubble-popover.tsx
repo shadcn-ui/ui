@@ -4,8 +4,8 @@ import {
   Bubble,
   BubbleContent,
   BubbleReactions,
-} from "@/styles/base-rhea/ui/bubble"
-import { Button } from "@/styles/base-rhea/ui/button"
+} from "@/styles/base-force-ui/ui/bubble"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   Popover,
   PopoverContent,
@@ -13,7 +13,7 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/styles/base-rhea/ui/popover"
+} from "@/styles/base-force-ui/ui/popover"
 
 export function BubblePopoverDemo() {
   return (

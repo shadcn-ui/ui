@@ -1,4 +1,4 @@
-import { Marker, MarkerContent } from "@/styles/radix-rhea/ui/marker"
+import { Marker, MarkerContent } from "@/styles/radix-force-ui/ui/marker"
 
 export function MarkerSeparatorDemo() {
   return (

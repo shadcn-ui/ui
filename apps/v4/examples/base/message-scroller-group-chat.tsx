@@ -3,8 +3,8 @@
 import * as React from "react"
 import { RotateCwIcon } from "lucide-react"
 
-import { Bubble, BubbleContent } from "@/styles/base-rhea/ui/bubble"
-import { Button } from "@/styles/base-rhea/ui/button"
+import { Bubble, BubbleContent } from "@/styles/base-force-ui/ui/bubble"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   Card,
   CardAction,
@@ -13,13 +13,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/styles/base-rhea/ui/card"
-import { Marker, MarkerContent } from "@/styles/base-rhea/ui/marker"
+} from "@/styles/base-force-ui/ui/card"
+import { Marker, MarkerContent } from "@/styles/base-force-ui/ui/marker"
 import {
   Message,
   MessageContent,
   MessageHeader,
-} from "@/styles/base-rhea/ui/message"
+} from "@/styles/base-force-ui/ui/message"
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -27,12 +27,12 @@ import {
   MessageScrollerItem,
   MessageScrollerProvider,
   MessageScrollerViewport,
-} from "@/styles/base-rhea/ui/message-scroller"
+} from "@/styles/base-force-ui/ui/message-scroller"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/styles/base-rhea/ui/tooltip"
+} from "@/styles/base-force-ui/ui/tooltip"
 
 const currentUser = "Grace"
 

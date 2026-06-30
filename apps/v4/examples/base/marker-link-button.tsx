@@ -3,7 +3,7 @@
 import { GitBranchIcon, RotateCcwIcon } from "lucide-react"
 import { toast } from "sonner"
 
-import { Marker, MarkerContent, MarkerIcon } from "@/styles/base-rhea/ui/marker"
+import { Marker, MarkerContent, MarkerIcon } from "@/styles/base-force-ui/ui/marker"
 
 export function MarkerLinkButtonDemo() {
   return (

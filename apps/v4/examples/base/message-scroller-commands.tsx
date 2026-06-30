@@ -3,8 +3,8 @@
 import * as React from "react"
 
 import { createChat, getMessageText } from "@/lib/ai"
-import { Bubble, BubbleContent } from "@/styles/base-rhea/ui/bubble"
-import { Button } from "@/styles/base-rhea/ui/button"
+import { Bubble, BubbleContent } from "@/styles/base-force-ui/ui/bubble"
+import { Button } from "@/styles/base-force-ui/ui/button"
 import {
   Card,
   CardAction,
@@ -12,7 +12,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/styles/base-rhea/ui/card"
+} from "@/styles/base-force-ui/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,8 +20,8 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@/styles/base-rhea/ui/dropdown-menu"
-import { Message, MessageContent } from "@/styles/base-rhea/ui/message"
+} from "@/styles/base-force-ui/ui/dropdown-menu"
+import { Message, MessageContent } from "@/styles/base-force-ui/ui/message"
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -30,7 +30,7 @@ import {
   MessageScrollerProvider,
   MessageScrollerViewport,
   useMessageScroller,
-} from "@/styles/base-rhea/ui/message-scroller"
+} from "@/styles/base-force-ui/ui/message-scroller"
 
 const chat = createChat()
   .user(

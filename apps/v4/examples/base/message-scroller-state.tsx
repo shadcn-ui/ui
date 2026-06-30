@@ -1,14 +1,14 @@
 "use client"
 
-import { Bubble, BubbleContent } from "@/styles/base-rhea/ui/bubble"
+import { Bubble, BubbleContent } from "@/styles/base-force-ui/ui/bubble"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/styles/base-rhea/ui/card"
-import { Message, MessageContent } from "@/styles/base-rhea/ui/message"
+} from "@/styles/base-force-ui/ui/card"
+import { Message, MessageContent } from "@/styles/base-force-ui/ui/message"
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -17,7 +17,7 @@ import {
   MessageScrollerProvider,
   MessageScrollerViewport,
   useMessageScrollerScrollable,
-} from "@/styles/base-rhea/ui/message-scroller"
+} from "@/styles/base-force-ui/ui/message-scroller"
 
 const messages = Array.from({ length: 12 }, (_, index) => ({
   id: `state-${index + 1}`,

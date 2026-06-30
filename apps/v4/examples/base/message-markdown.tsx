@@ -1,6 +1,6 @@
 import { Markdown } from "@/components/markdown"
-import { Bubble, BubbleContent } from "@/styles/base-rhea/ui/bubble"
-import { Message, MessageContent } from "@/styles/base-rhea/ui/message"
+import { Bubble, BubbleContent } from "@/styles/base-force-ui/ui/bubble"
+import { Message, MessageContent } from "@/styles/base-force-ui/ui/message"
 
 const response = `Here's how to render markdown in a message:
 

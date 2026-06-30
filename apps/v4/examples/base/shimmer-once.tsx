@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { Button } from "@/styles/base-rhea/ui/button"
+import { Button } from "@/styles/base-force-ui/ui/button"
 
 export function ShimmerOnce() {
   const [key, setKey] = React.useState(0)
