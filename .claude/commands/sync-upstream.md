@@ -198,6 +198,23 @@ When upstream adds new components, you need to:
 
 ---
 
+## Step 3b — Fix MDX docs for new components
+
+Upstream docs reference demo styles (`radix-rhea`, `base-rhea`, `radix-nova`, etc.) that we strip. Replace all of them:
+
+```bash
+grep -rln 'styleName="radix-rhea"\|styleName="base-rhea"\|styleName="radix-nova"\|styleName="base-nova"' apps/v4/content/docs/
+```
+
+For each file found, replace with `radix-force-ui` / `base-force-ui`. Then verify nothing remains:
+
+```bash
+grep -rn 'styleName=' apps/v4/content/docs/ | grep -v 'force-ui\|new-york-v4'
+# must return nothing
+```
+
+---
+
 ## Step 4 — Rebuild and verify
 
 ```bash
