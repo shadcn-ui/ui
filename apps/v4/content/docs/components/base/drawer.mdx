@@ -123,6 +123,116 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 <ComponentPreview styleName="base-nova" name="drawer-rtl" direction="rtl" />
 
+## Migrating from Vaul
+
+The base drawer now uses [Base UI](https://base-ui.com/react/components/drawer)
+instead of Vaul. If you installed the previous base drawer, update your usage
+to the Base UI API.
+
+<Steps>
+
+<Step>Update the dependency.</Step>
+
+```diff
+- npm install vaul
++ npm install @base-ui/react
+```
+
+<Step>Replace `direction` with `swipeDirection`.</Step>
+
+Use `down` instead of `bottom`, and `up` instead of `top`. `left` and `right`
+stay the same.
+
+```diff
+- <Drawer direction="bottom">
++ <Drawer swipeDirection="down">
+```
+
+<Step>Replace `asChild` with `render`.</Step>
+
+For `DrawerTrigger`, pass the trigger element to the `render` prop.
+
+```diff
+- <DrawerTrigger asChild>
+-   <Button variant="outline">Open</Button>
+- </DrawerTrigger>
++ <DrawerTrigger render={<Button variant="outline" />}>
++   Open
++ </DrawerTrigger>
+```
+
+For `DrawerClose`, pass the close element to the `render` prop.
+
+```diff
+- <DrawerClose asChild>
+-   <Button variant="outline">Cancel</Button>
+- </DrawerClose>
++ <DrawerClose render={<Button variant="outline" />}>
++   Cancel
++ </DrawerClose>
+```
+
+<Step>Update snap point props.</Step>
+
+If you use snap points, rename the controlled snap point props and the sequential
+snap point prop.
+
+```diff
+  <Drawer
+    snapPoints={[0.25, 0.5, 1]}
+-   activeSnapPoint={snapPoint}
+-   setActiveSnapPoint={setSnapPoint}
+-   snapToSequentialPoint
++   snapPoint={snapPoint}
++   onSnapPointChange={setSnapPoint}
++   snapToSequentialPoints
+  >
+```
+
+<Step>Update animation and focus props.</Step>
+
+```diff
+- <Drawer onAnimationEnd={(open) => setDone(open)}>
++ <Drawer onOpenChangeComplete={(open) => setDone(open)}>
+```
+
+```diff
+- <DrawerContent onOpenAutoFocus={(event) => event.preventDefault()}>
++ <DrawerContent initialFocus={false}>
+```
+
+<Step>Review Vaul-only props.</Step>
+
+Vaul props like `handleOnly`, `repositionInputs`, and
+`shouldScaleBackground` do not have one-to-one replacements in the base drawer
+API. Use Base UI props such as `disablePointerDismissal`, `modal`, `snapPoints`,
+or controlled `open` state for the behavior you need.
+
+```diff
+- <Drawer handleOnly repositionInputs={false} shouldScaleBackground>
++ <Drawer>
+```
+
+```diff
+- <Drawer dismissible={false}>
++ <Drawer disablePointerDismissal>
+```
+
+<Step>Update custom data attribute selectors.</Step>
+
+Replace Vaul's `data-vaul-drawer-direction` selectors with Base UI's
+`data-swipe-direction` selectors.
+
+```diff
+- <DrawerContent className="data-[vaul-drawer-direction=bottom]:max-h-[50vh]">
++ <DrawerContent className="data-[swipe-direction=down]:max-h-[50vh]">
+```
+
+Base UI also exposes attributes like `data-swiping`, `data-starting-style`, and
+`data-ending-style` for swipe and transition states.
+
+</Steps>
+
 ## API Reference
 
 See the [Base UI documentation](https://base-ui.com/react/components/drawer) for the full API reference.
