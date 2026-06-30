@@ -4,7 +4,7 @@ description: Utilities for adding a fade effect to the edges of a scroll contain
 ---
 
 <ComponentPreview
-  styleName="radix-rhea"
+  styleName="radix-force-ui"
   name="scroll-fade-demo"
   previewClassName="h-auto"
 />
@@ -66,7 +66,7 @@ The [`ScrollArea`](/docs/components/scroll-area) and [`MessageScroller`](/docs/c
 If the content does not overflow, no fade is shown. You can apply `scroll-fade` to any list without checking whether it scrolls.
 
 <ComponentPreview
-  styleName="radix-rhea"
+  styleName="radix-force-ui"
   name="scroll-fade-overflow"
   previewClassName="h-auto"
 />
@@ -76,7 +76,7 @@ If the content does not overflow, no fade is shown. You can apply `scroll-fade` 
 Use `scroll-fade-x` on containers that scroll horizontally, i.e. the element that has `overflow-x-auto`.
 
 <ComponentPreview
-  styleName="radix-rhea"
+  styleName="radix-force-ui"
   name="scroll-fade-horizontal"
   previewClassName="h-64"
 />
@@ -92,7 +92,7 @@ The horizontal fade is direction-aware. In RTL layouts, the crisp edge and the f
 Use edge utilities when only one edge should track the scroll position.
 
 <ComponentPreview
-  styleName="radix-rhea"
+  styleName="radix-force-ui"
   name="scroll-fade-edge"
   previewClassName="h-auto"
 />
@@ -108,7 +108,7 @@ The edge utilities are scroll-aware. Start edges fade in after you scroll away f
 The fade depth defaults to `12%` of the container, capped at `40px` so tall scrollers stay subtle. Use `scroll-fade-<number>` to set a fixed size on the spacing scale instead, the same way `scroll-mt-<number>` works.
 
 <ComponentPreview
-  styleName="radix-rhea"
+  styleName="radix-force-ui"
   name="scroll-fade-size"
   previewClassName="h-auto"
 />
@@ -152,7 +152,7 @@ Use `scroll-fade-none` to remove the fade. It works in any class order, so the t
 ```
 
 <ComponentPreview
-  styleName="radix-rhea"
+  styleName="radix-force-ui"
   name="scroll-fade-none"
   previewClassName="h-auto"
 />
@@ -170,7 +170,7 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 `scroll-fade-x` follows the reading direction. At rest, the start edge is crisp and the end edge fades. In RTL layouts that means a crisp right edge and a fade on the left, mirrored from LTR.
 
 <ComponentPreview
-  styleName="radix-nova"
+  styleName="radix-force-ui"
   name="scroll-fade-rtl"
   direction="rtl"
 />

@@ -3,7 +3,7 @@ title: shimmer
 description: Utilities for adding a shimmer effect to text elements.
 ---
 
-<ComponentPreview styleName="radix-rhea" name="shimmer-demo" />
+<ComponentPreview styleName="radix-force-ui" name="shimmer-demo" />
 
 ## Installation
 
@@ -56,7 +56,7 @@ The effect is pure CSS. The text is painted with `background-clip: text`, and th
 
 The shimmer composes with any component that renders text. A common pattern is a [Marker](/docs/components/marker) showing a live status while the assistant is working:
 
-<ComponentPreview styleName="radix-rhea" name="shimmer-marker" />
+<ComponentPreview styleName="radix-force-ui" name="shimmer-marker" />
 
 ```tsx
 <Marker role="status">
@@ -71,7 +71,7 @@ The shimmer composes with any component that renders text. A common pattern is a
 
 Use `shimmer-color-<color>` to set the highlight color explicitly. It accepts theme colors with an optional opacity modifier, or any arbitrary color value.
 
-<ComponentPreview styleName="radix-rhea" name="shimmer-color" />
+<ComponentPreview styleName="radix-force-ui" name="shimmer-color" />
 
 ```tsx
 <p className="shimmer shimmer-color-blue-500/60">Generating response&hellip;</p>
@@ -82,7 +82,7 @@ Use `shimmer-color-<color>` to set the highlight color explicitly. It accepts th
 
 Use `shimmer-duration-<number>` to set the duration of one sweep in milliseconds. The default is `2000`, i.e. `2s`.
 
-<ComponentPreview styleName="radix-rhea" name="shimmer-duration" />
+<ComponentPreview styleName="radix-force-ui" name="shimmer-duration" />
 
 ```tsx
 <p className="shimmer shimmer-duration-1000">Generating response&hellip;</p>
@@ -92,7 +92,7 @@ Use `shimmer-duration-<number>` to set the duration of one sweep in milliseconds
 
 Use `shimmer-spread-<number>` to set the width of the highlight band using the spacing scale. The default is `calc(3ch + 40px)`: a fixed base plus a `3ch` term that scales with the font size.
 
-<ComponentPreview styleName="radix-rhea" name="shimmer-spread" />
+<ComponentPreview styleName="radix-force-ui" name="shimmer-spread" />
 
 ```tsx
 <p className="shimmer shimmer-spread-24">Generating response&hellip;</p>
@@ -108,7 +108,7 @@ For one-off values, use an arbitrary length or percentage:
 
 Use `shimmer-angle-<number>` to set the tilt of the highlight band in degrees. The default is `20`.
 
-<ComponentPreview styleName="radix-rhea" name="shimmer-angle" />
+<ComponentPreview styleName="radix-force-ui" name="shimmer-angle" />
 
 ```tsx
 <p className="shimmer shimmer-angle-45">Generating response&hellip;</p>
@@ -126,7 +126,7 @@ Use `shimmer-reverse` to sweep the highlight in the opposite direction. In RTL l
 
 Use `shimmer-once` to play a single sweep instead of looping, useful as a reveal when streaming completes. Pair it with `shimmer-duration-<number>` to control how long the sweep takes.
 
-<ComponentPreview styleName="radix-rhea" name="shimmer-once" />
+<ComponentPreview styleName="radix-force-ui" name="shimmer-once" />
 
 ```tsx
 <p className="shimmer shimmer-duration-1100 shimmer-once">
@@ -138,7 +138,7 @@ Use `shimmer-once` to play a single sweep instead of looping, useful as a reveal
 
 Use `shimmer-none` to turn the effect off and render the text normally. It works in any class order, so the typical use is responsive or stateful:
 
-<ComponentPreview styleName="radix-rhea" name="shimmer-none" />
+<ComponentPreview styleName="radix-force-ui" name="shimmer-none" />
 
 ```tsx
 <p className="shimmer md:shimmer-none">Generating response&hellip;</p>
@@ -164,4 +164,4 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 The sweep follows the reading direction, left to right in LTR and right to left in RTL, with no extra classes. Use `shimmer-reverse` to flip the direction manually.
 
-<ComponentPreview styleName="radix-rhea" name="shimmer-rtl" />
+<ComponentPreview styleName="radix-force-ui" name="shimmer-rtl" />
