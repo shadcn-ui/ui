@@ -70,7 +70,9 @@ export function GithubProfile() {
         </form>
       </CardContent>
       <CardFooter>
-        <Button form="profile">Save Profile</Button>
+        <Button form="profile" className="style-sera:w-full">
+          Save Profile
+        </Button>
       </CardFooter>
     </Card>
   )

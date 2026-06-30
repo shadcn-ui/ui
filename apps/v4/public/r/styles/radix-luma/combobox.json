@@ -18,7 +18,7 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/radix/combobox",
-      "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/combobox-example.tsx",
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/combobox-example.tsx",
       "api": "https://base-ui.com/react/components/combobox"
     }
   },

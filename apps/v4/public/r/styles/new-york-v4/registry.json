@@ -717,6 +717,62 @@
       "type": "registry:ui"
     },
     {
+      "name": "attachment",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/attachment.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "bubble",
+      "dependencies": ["radix-ui"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/bubble.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "marker",
+      "dependencies": ["radix-ui"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/marker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "message",
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/message.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "message-scroller",
+      "dependencies": ["@shadcn/react"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/message-scroller.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "dashboard-01",
       "description": "A dashboard with sidebar, charts and data table.",
       "dependencies": [
@@ -4006,6 +4062,134 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/form-tanstack-complex.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "form-formisch-demo",
+      "dependencies": ["@formisch/react", "valibot"],
+      "registryDependencies": [
+        "field",
+        "input",
+        "input-group",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-formisch-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "form-formisch-input",
+      "dependencies": ["@formisch/react", "valibot"],
+      "registryDependencies": ["field", "input", "button", "card"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-formisch-input.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "form-formisch-textarea",
+      "dependencies": ["@formisch/react", "valibot"],
+      "registryDependencies": ["field", "textarea", "button", "card"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-formisch-textarea.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "form-formisch-select",
+      "dependencies": ["@formisch/react", "valibot"],
+      "registryDependencies": ["field", "select", "button", "card"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-formisch-select.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "form-formisch-checkbox",
+      "dependencies": ["@formisch/react", "valibot"],
+      "registryDependencies": ["field", "checkbox", "button", "card"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-formisch-checkbox.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "form-formisch-radiogroup",
+      "dependencies": ["@formisch/react", "valibot"],
+      "registryDependencies": ["field", "radio-group", "button", "card"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-formisch-radiogroup.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "form-formisch-switch",
+      "dependencies": ["@formisch/react", "valibot"],
+      "registryDependencies": ["field", "switch", "button", "card"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-formisch-switch.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "form-formisch-array",
+      "dependencies": ["@formisch/react", "valibot"],
+      "registryDependencies": [
+        "field",
+        "input",
+        "input-group",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-formisch-array.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "form-formisch-complex",
+      "dependencies": ["@formisch/react", "valibot"],
+      "registryDependencies": [
+        "field",
+        "button",
+        "card",
+        "checkbox",
+        "radio-group",
+        "select",
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-formisch-complex.tsx",
           "type": "registry:example"
         }
       ],

@@ -6,6 +6,7 @@ import { type RegistryItem } from "shadcn/schema"
 
 import { useIsMobile } from "@/hooks/use-mobile"
 import { getThemesForBaseColor, STYLES } from "@/registry/config"
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Card,
   CardContent,
@@ -32,11 +33,22 @@ import { ThemePicker } from "@/app/(app)/create/components/theme-picker"
 import { FONT_HEADING_OPTIONS, FONTS } from "@/app/(app)/create/lib/fonts"
 import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 
-// Only visible when user clicks "Create Project".
-const ProjectForm = dynamic(() =>
-  import("@/app/(app)/create/components/project-form").then(
-    (m) => m.ProjectForm
-  )
+// Only visible when user clicks "Create Project". Rendered client-only to
+// avoid a useId hydration mismatch on the Base UI dialog trigger. The loading
+// placeholder mirrors the trigger button exactly so there is no layout shift.
+const ProjectForm = dynamic(
+  () =>
+    import("@/app/(app)/create/components/project-form").then(
+      (m) => m.ProjectForm
+    ),
+  {
+    ssr: false,
+    loading: () => (
+      <Button disabled aria-hidden>
+        Get Code
+      </Button>
+    ),
+  }
 )
 
 export function Customizer({
@@ -55,7 +67,7 @@ export function Customizer({
 
   return (
     <Card
-      className="dark top-24 right-12 isolate z-10 max-h-full min-h-0 w-full self-start rounded-2xl bg-card/90 shadow-xl backdrop-blur-xl md:w-(--customizer-width)"
+      className="dark top-24 right-12 isolate z-10 max-h-full min-h-0 w-full self-start rounded-2xl bg-card/90 backdrop-blur-xl md:w-(--customizer-width)"
       ref={anchorRef}
       size="sm"
     >

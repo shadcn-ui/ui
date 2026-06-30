@@ -8,7 +8,10 @@ import {
 } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { getProjectInfo, ProjectInfo } from "@/src/utils/get-project-info"
-import { resolveImport } from "@/src/utils/resolve-import"
+import {
+  isLocalAliasImport,
+  resolveImportWithMetadata,
+} from "@/src/utils/resolve-import"
 import {
   findCommonRoot,
   resolveFilePath,
@@ -119,8 +122,9 @@ export async function recursivelyResolveFileImports(
     const moduleSpecifier = importStatement.getModuleSpecifierValue()
 
     const isRelativeImport = moduleSpecifier.startsWith(".")
-    const isAliasImport = moduleSpecifier.startsWith(
-      `${projectInfo.aliasPrefix}/`
+    const isAliasImport = isLocalAliasImport(
+      moduleSpecifier,
+      projectInfo.aliasPrefix
     )
 
     // If not a local import, add to the dependencies array.
@@ -132,7 +136,12 @@ export async function recursivelyResolveFileImports(
       continue
     }
 
-    let probableImportFilePath = await resolveImport(moduleSpecifier, tsConfig)
+    let probableImportFilePath = (
+      await resolveImportWithMetadata(moduleSpecifier, {
+        ...tsConfig,
+        cwd: config.resolvedPaths.cwd,
+      })
+    )?.path
 
     if (isRelativeImport) {
       probableImportFilePath = path.resolve(

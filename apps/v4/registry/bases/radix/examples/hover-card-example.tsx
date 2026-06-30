@@ -35,14 +35,19 @@ function HoverCardSides() {
         {HOVER_CARD_SIDES.map((side) => (
           <HoverCard key={side} openDelay={100} closeDelay={100}>
             <HoverCardTrigger asChild>
-              <Button variant="outline" className="capitalize">
+              <Button
+                variant="outline"
+                className="capitalize style-sera:uppercase"
+              >
                 {side}
               </Button>
             </HoverCardTrigger>
             <HoverCardContent side={side} className="w-64">
-              <div className="flex flex-col style-vega:gap-2 style-nova:gap-1.5 style-lyra:gap-1 style-maia:gap-2 style-mira:gap-1 style-luma:gap-2">
-                <h4 className="font-medium">Hover Card</h4>
-                <p>
+              <div className="flex flex-col style-vega:gap-2 style-nova:gap-1.5 style-lyra:gap-1 style-maia:gap-2 style-mira:gap-1 style-luma:gap-2 style-sera:gap-2">
+                <h4 className="font-medium style-sera:font-heading style-sera:font-semibold style-sera:tracking-wide">
+                  Hover Card
+                </h4>
+                <p className="style-sera:leading-relaxed">
                   This hover card appears on the {side} side of the trigger.
                 </p>
               </div>
@@ -75,9 +80,11 @@ function HoverCardInDialog() {
               </Button>
             </HoverCardTrigger>
             <HoverCardContent className="w-64">
-              <div className="flex flex-col style-vega:gap-2 style-nova:gap-1.5 style-lyra:gap-1 style-maia:gap-2 style-mira:gap-1 style-luma:gap-2">
-                <h4 className="font-medium">Hover Card</h4>
-                <p>
+              <div className="flex flex-col style-vega:gap-2 style-nova:gap-1.5 style-lyra:gap-1 style-maia:gap-2 style-mira:gap-1 style-luma:gap-2 style-sera:gap-2">
+                <h4 className="font-medium style-sera:font-heading style-sera:font-semibold style-sera:tracking-wide">
+                  Hover Card
+                </h4>
+                <p className="style-sera:leading-relaxed">
                   This hover card appears inside a dialog. Hover over the button
                   to see it.
                 </p>

@@ -19,6 +19,7 @@ const eslintConfig = tseslint.config(
       "next-env.d.ts",
       ".source/**",
       "**/__index__.tsx",
+      "**/__components__.tsx",
     ],
   },
   {

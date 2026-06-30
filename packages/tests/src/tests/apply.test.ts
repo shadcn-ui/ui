@@ -36,6 +36,40 @@ async function createInitializedViteRtlProject() {
   return fixturePath
 }
 
+async function createInitializedMonorepoProject() {
+  const rootDir = path.join(
+    os.tmpdir(),
+    `shadcn-apply-monorepo-${process.pid}-${Date.now()}`
+  )
+  const projectName = `test-apply-monorepo-${process.pid}`
+  await fs.ensureDir(rootDir)
+  const result = await npxShadcn(
+    rootDir,
+    [
+      "init",
+      "--name",
+      projectName,
+      "-t",
+      "vite",
+      "--monorepo",
+      "--preset",
+      "nova",
+      "--base",
+      "radix",
+    ],
+    {
+      timeout: 300000,
+    }
+  )
+
+  expect(result.exitCode).toBe(0)
+
+  return {
+    projectPath: path.join(rootDir, projectName),
+    rootDir,
+  }
+}
+
 async function createInitializedRadixProject() {
   const fixturePath = await createFixtureTestDirectory("next-app")
   await npxShadcn(fixturePath, ["init", "--preset", "a0", "--base", "radix"])
@@ -43,7 +77,31 @@ async function createInitializedRadixProject() {
   return fixturePath
 }
 
+function getMonorepoPresetConfig(config: {
+  style: string
+  tailwind: {
+    baseColor: string
+    cssVariables: boolean
+  }
+  iconLibrary?: string
+  rtl?: boolean
+  menuColor?: string
+  menuAccent?: string
+}) {
+  return {
+    style: config.style,
+    baseColor: config.tailwind.baseColor,
+    cssVariables: config.tailwind.cssVariables,
+    iconLibrary: config.iconLibrary,
+    rtl: config.rtl ?? false,
+    menuColor: config.menuColor ?? "default",
+    menuAccent: config.menuAccent ?? "subtle",
+  }
+}
+
 describe("shadcn apply", () => {
+  const itIfNotCi = process.env.CI ? it.skip : it
+
   it("should apply a preset with --preset <code>", async () => {
     const fixturePath = await createInitializedProject()
     const result = await npxShadcn(fixturePath, [
@@ -206,6 +264,31 @@ describe("shadcn apply", () => {
     expect(await fs.pathExists(`${componentsJsonPath}.bak`)).toBe(false)
   })
 
+  it("should abort before applying when components.json cannot be backed up", async () => {
+    const fixturePath = await createInitializedProject()
+    const componentsJsonPath = path.join(fixturePath, "components.json")
+    const buttonPath = path.join(fixturePath, "components/ui/button.tsx")
+    const originalConfig = await fs.readFile(componentsJsonPath, "utf8")
+    const originalButton = await fs.readFile(buttonPath, "utf8")
+
+    await fs.ensureDir(`${componentsJsonPath}.bak`)
+
+    const result = await npxShadcn(fixturePath, [
+      "apply",
+      "--preset",
+      "lyra",
+      "-y",
+    ])
+
+    expect(result.exitCode).toBe(1)
+    expect(result.stdout).toContain("Could not back up components.json")
+    expect(await fs.readFile(componentsJsonPath, "utf8")).toBe(originalConfig)
+    expect(await fs.readFile(buttonPath, "utf8")).toBe(originalButton)
+    expect((await fs.stat(`${componentsJsonPath}.bak`)).isDirectory()).toBe(
+      true
+    )
+  })
+
   it("should guide the user to a workspace when run from a monorepo root", async () => {
     const rootDir = path.join(
       os.tmpdir(),
@@ -238,6 +321,9 @@ describe("shadcn apply", () => {
     expect(result.stdout).toContain("monorepo root")
     expect(result.stdout).toContain(
       "shadcn apply --preset <preset> -c apps/web"
+    )
+    expect(result.stdout).not.toContain(
+      "shadcn apply --preset <preset> -c packages/ui"
     )
 
     await fs.remove(rootDir)
@@ -405,4 +491,126 @@ describe("shadcn apply", () => {
     expect(updatedPagination).not.toBe(initialPagination)
     expect(updatedSidebar).not.toBe(initialSidebar)
   })
+
+  itIfNotCi(
+    "should keep the app config updated when linked workspace sync fails",
+    async () => {
+      const { projectPath, rootDir } = await createInitializedMonorepoProject()
+      const presetUrl = `${getRegistryUrl().replace(/\/r\/?$/, "")}/init?base=base&style=lyra&baseColor=neutral&theme=neutral&iconLibrary=phosphor&font=manrope&rtl=true&menuAccent=bold&menuColor=inverted&radius=default`
+      const appConfigPath = path.join(projectPath, "apps/web/components.json")
+      const uiConfigPath = path.join(projectPath, "packages/ui/components.json")
+      const buttonPath = path.join(
+        projectPath,
+        "packages/ui/src/components/button.tsx"
+      )
+      const originalButton = await fs.readFile(buttonPath, "utf8")
+
+      await fs.ensureDir(`${uiConfigPath}.bak`)
+
+      try {
+        const result = await npxShadcn(
+          projectPath,
+          ["apply", "--preset", presetUrl, "-y", "-c", "apps/web"],
+          {
+            timeout: 300000,
+          }
+        )
+
+        expect(result.exitCode).toBe(1)
+        expect(result.stdout).toContain(
+          "Failed to sync linked workspace configs"
+        )
+
+        const appConfig = await fs.readJson(appConfigPath)
+        const uiConfig = await fs.readJson(uiConfigPath)
+        expect(appConfig.style).toBe("radix-lyra")
+        expect(appConfig.iconLibrary).toBe("phosphor")
+        expect(appConfig.menuColor).toBe("inverted")
+        expect(appConfig.menuAccent).toBe("bold")
+        expect(appConfig.rtl).toBe(false)
+
+        expect(uiConfig.style).toBe("radix-nova")
+        expect(uiConfig.tailwind.baseColor).toBe("neutral")
+        expect(uiConfig.tailwind.cssVariables).toBe(true)
+        expect(uiConfig.iconLibrary).toBe("phosphor")
+        expect(uiConfig.menuColor).toBe("inverted")
+        expect(uiConfig.menuAccent).toBe("bold")
+        expect(uiConfig.rtl).toBe(false)
+        expect(await fs.readFile(buttonPath, "utf8")).not.toBe(originalButton)
+      } finally {
+        await fs.remove(rootDir)
+      }
+    },
+    300000
+  )
+
+  itIfNotCi(
+    "should sync linked workspace configs when applying from apps/web",
+    async () => {
+      const { projectPath, rootDir } = await createInitializedMonorepoProject()
+      const presetUrl = `${getRegistryUrl().replace(/\/r\/?$/, "")}/init?base=base&style=lyra&baseColor=neutral&theme=neutral&iconLibrary=phosphor&font=manrope&rtl=true&menuAccent=bold&menuColor=inverted&radius=default`
+
+      try {
+        const result = await npxShadcn(
+          projectPath,
+          ["apply", "--preset", presetUrl, "-y", "-c", "apps/web"],
+          {
+            timeout: 300000,
+          }
+        )
+
+        expect(result.exitCode).toBe(0)
+
+        const appConfig = await fs.readJson(
+          path.join(projectPath, "apps/web/components.json")
+        )
+        const uiConfig = await fs.readJson(
+          path.join(projectPath, "packages/ui/components.json")
+        )
+
+        expect(getMonorepoPresetConfig(appConfig)).toEqual(
+          getMonorepoPresetConfig(uiConfig)
+        )
+        expect(appConfig.style).toBe("radix-lyra")
+        expect(appConfig.iconLibrary).toBe("phosphor")
+        expect(appConfig.menuColor).toBe("inverted")
+        expect(appConfig.menuAccent).toBe("bold")
+        expect(appConfig.rtl).toBe(false)
+        expect(appConfig.tailwind.css).toBe(
+          "../../packages/ui/src/styles/globals.css"
+        )
+        expect(uiConfig.tailwind.css).toBe("src/styles/globals.css")
+      } finally {
+        await fs.remove(rootDir)
+      }
+    },
+    300000
+  )
+
+  itIfNotCi(
+    "should require an app workspace when applying from a monorepo",
+    async () => {
+      const { projectPath, rootDir } = await createInitializedMonorepoProject()
+      const presetUrl = `${getRegistryUrl().replace(/\/r\/?$/, "")}/init?base=base&style=lyra&baseColor=neutral&theme=neutral&iconLibrary=phosphor&font=manrope&rtl=true&menuAccent=bold&menuColor=inverted&radius=default`
+
+      try {
+        const result = await npxShadcn(
+          projectPath,
+          ["apply", "--preset", presetUrl, "-y", "-c", "packages/ui"],
+          {
+            timeout: 300000,
+          }
+        )
+
+        expect(result.exitCode).toBe(1)
+        expect(result.stdout).toContain(
+          "We could not detect a supported framework"
+        )
+        expect(result.stdout).toContain("packages/ui")
+      } finally {
+        await fs.remove(rootDir)
+      }
+    },
+    300000
+  )
 })

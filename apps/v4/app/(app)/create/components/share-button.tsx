@@ -16,8 +16,17 @@ export function ShareButton() {
 
   const shareUrl = React.useMemo(() => {
     const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
-    return `${origin}/create?preset=${presetCode}&item=${params.item}`
-  }, [presetCode, params.item])
+    const searchParams = new URLSearchParams({
+      preset: presetCode,
+      item: params.item,
+    })
+
+    if (params.pointer) {
+      searchParams.set("pointer", "true")
+    }
+
+    return `${origin}/create?${searchParams.toString()}`
+  }, [params.item, params.pointer, presetCode])
 
   React.useEffect(() => {
     if (hasCopied) {

@@ -322,19 +322,19 @@ function AccordionWithDisabled() {
       <Accordion
         type="single"
         collapsible
-        className="mx-auto max-w-lg overflow-hidden border style-vega:rounded-lg style-nova:rounded-lg style-lyra:rounded-none style-maia:rounded-lg style-mira:rounded-lg style-luma:rounded-xl"
+        className="mx-auto max-w-lg overflow-hidden border style-vega:rounded-lg style-nova:rounded-lg style-lyra:rounded-none style-maia:rounded-lg style-mira:rounded-lg style-luma:rounded-xl style-sera:rounded-none"
       >
         {items.map((item) => (
           <AccordionItem
             key={item.value}
             value={item.value}
             disabled={item.disabled}
-            className="p-1 data-open:bg-muted/50"
+            className="p-1 data-open:bg-muted/50 style-sera:p-0"
           >
-            <AccordionTrigger className="style-vega:px-4 style-nova:px-2.5 style-lyra:px-2">
+            <AccordionTrigger className="style-vega:px-4 style-nova:px-2.5 style-lyra:px-2 style-sera:px-4">
               {item.trigger}
             </AccordionTrigger>
-            <AccordionContent className="style-vega:px-4 style-nova:px-2.5 style-lyra:px-2">
+            <AccordionContent className="style-vega:px-4 style-nova:px-2.5 style-lyra:px-2 style-sera:px-4">
               {item.content}
             </AccordionContent>
           </AccordionItem>

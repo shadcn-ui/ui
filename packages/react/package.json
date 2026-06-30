@@ -1,0 +1,74 @@
+{
+  "name": "@shadcn/react",
+  "version": "0.2.0",
+  "description": "Unstyled components for React.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "shadcn",
+    "url": "https://twitter.com/shadcn"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shadcn-ui/ui.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://ui.shadcn.com",
+  "bugs": {
+    "url": "https://github.com/shadcn-ui/ui/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "headless",
+    "unstyled",
+    "primitives",
+    "accessible",
+    "ui",
+    "shadcn"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./message-scroller": {
+      "types": "./dist/message-scroller/index.d.ts",
+      "default": "./dist/message-scroller/index.js"
+    }
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist",
+    "test": "vitest run",
+    "test:browser": "vitest run -c vitest.browser.config.ts"
+  },
+  "peerDependencies": {
+    "@types/react": ">=19",
+    "react": ">=19"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/react-dom": "19.2.2",
+    "@vitest/browser": "^3.2.6",
+    "jsdom": "^28.1.0",
+    "playwright": "^1.61.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2",
+    "vite-tsconfig-paths": "^4.3.2"
+  }
+}

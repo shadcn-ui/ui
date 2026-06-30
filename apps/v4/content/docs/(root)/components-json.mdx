@@ -140,14 +140,90 @@ Setting this option to `false` allows components to be added as JavaScript with 
 
 ## aliases
 
-The CLI uses these values and the `paths` config from your `tsconfig.json` or `jsconfig.json` file to place generated components in the correct location.
+The CLI uses these values to place generated components in the correct location and rewrite imports.
 
-Path aliases have to be set up in your `tsconfig.json` or `jsconfig.json` file.
+You can back these aliases with either:
+
+1. `compilerOptions.paths` in your `tsconfig.json` or `jsconfig.json`
+2. `package.json#imports` with TypeScript package import resolution enabled
+
+The aliases in `components.json` are still required when using the CLI. They tell the CLI which import roots map to `components`, `ui`, `lib`, `hooks`, and `utils`.
 
 <Callout className="mt-6">
-  **Important:** If you're using the `src` directory, make sure it is included
-  under `paths` in your `tsconfig.json` or `jsconfig.json` file.
+  **Important:** If you're using package imports, enable
+  `resolvePackageJsonImports` and use `moduleResolution: "bundler"` in your
+  `tsconfig.json`. If you're using `paths`, make sure your aliases include the
+  `src` directory when applicable.
 </Callout>
+
+### Using `tsconfig` or `jsconfig` paths
+
+```json title="tsconfig.json"
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+### Using `package.json#imports`
+
+Recommended setup for a single-package app:
+
+```json title="package.json"
+{
+  "imports": {
+    "#components/*": "./src/components/*.tsx",
+    "#lib/*": "./src/lib/*.ts",
+    "#hooks/*": "./src/hooks/*.ts"
+  }
+}
+```
+
+```json title="tsconfig.json"
+{
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "resolvePackageJsonImports": true
+  }
+}
+```
+
+```json title="components.json"
+{
+  "aliases": {
+    "components": "#components",
+    "ui": "#components/ui",
+    "lib": "#lib",
+    "hooks": "#hooks",
+    "utils": "#lib/utils"
+  }
+}
+```
+
+The aliases in `components.json` still tell the CLI where to place
+`components`, `ui`, `lib`, `hooks`, and `utils`. `package.json#imports`
+provides the runtime and TypeScript resolution for those `#...` specifiers.
+
+The matched `imports` target also controls whether generated `#...` imports keep
+file extensions:
+
+- `"#components/*": "./src/components/*"` preserves source extensions and can
+  generate imports like
+  `#components/button.tsx`
+- `"#components/*": "./src/components/*.tsx"` strips source extensions and
+  generates imports like
+  `#components/button`
+
+For monorepos, see the <Link href="/docs/monorepo">monorepo docs</Link>. Local
+workspace aliases can use `package.json#imports`, while shared workspace
+imports such as `@workspace/ui/components` are resolved from the target
+package's `exports`.
+
+For framework-specific setup, see the [package imports guide](/docs/package-imports).
 
 ### aliases.utils
 

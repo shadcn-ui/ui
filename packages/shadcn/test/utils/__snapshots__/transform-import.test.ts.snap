@@ -46,7 +46,7 @@ async function loadMultiple() {
 
 exports[`transform dynamic imports with cn utility 2`] = `
 "async function loadWorkspaceCn() {
-  const { cn } = await import("@workspace/lib/utils")
+  const { cn } = await import("@workspace/ui/lib/utils")
   return cn
 }
     "

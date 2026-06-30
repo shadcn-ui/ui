@@ -180,13 +180,7 @@ function ToggleGroupSizes() {
 function ToggleGroupSpacing() {
   return (
     <Example title="With Spacing">
-      <ToggleGroup
-        type="single"
-        size="sm"
-        defaultValue="top"
-        variant="outline"
-        spacing={2}
-      >
+      <ToggleGroup type="single" size="sm" defaultValue="top" spacing={2}>
         <ToggleGroupItem value="top" aria-label="Toggle top">
           Top
         </ToggleGroupItem>
@@ -553,7 +547,6 @@ function ToggleGroupVerticalWithSpacing() {
         type="single"
         size="sm"
         defaultValue="top"
-        variant="outline"
         orientation="vertical"
         spacing={2}
       >
