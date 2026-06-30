@@ -312,11 +312,11 @@ Pass the `locale` prop to the `DayPicker` component:
       showOutsideDays={showOutsideDays}
       className={cn(...)}
       captionLayout={captionLayout}
-+     locale={locale}
+      locale={locale}
       formatters={{
         formatMonthDropdown: (date) =>
 -         date.toLocaleString("default", { month: "short" }),
-+         date.toLocaleString(locale?.code, { month: "short" }),
++         date.toLocaleString(locale?.code ?? "default", { month: "short" }),
         ...formatters,
       }}
 ```
