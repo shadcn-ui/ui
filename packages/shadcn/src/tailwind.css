@@ -94,6 +94,7 @@
   }
 }
 
+
 /* scroll-fade */
 @property --scroll-fade-t {
   syntax: "<length-percentage>";
