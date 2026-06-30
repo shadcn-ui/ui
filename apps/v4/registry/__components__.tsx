@@ -511,6 +511,51 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "direction"
       return { default: mod.default || mod[exportName] }
     }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
     "dashboard-01": React.lazy(async () => {
       const mod = await import(
         "@/registry/new-york-v4/blocks/dashboard-01/page"
@@ -4445,6 +4490,51 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "direction"
       return { default: mod.default || mod[exportName] }
     }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/radix-force-ui/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/radix-force-ui/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/radix-force-ui/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/radix-force-ui/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/radix-force-ui/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
   },
   "base-force-ui": {
     accordion: React.lazy(async () => {
@@ -4940,6 +5030,51 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/base-force-ui/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/base-force-ui/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/base-force-ui/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/base-force-ui/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/base-force-ui/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
       return { default: mod.default || mod[exportName] }
     }),
   },
