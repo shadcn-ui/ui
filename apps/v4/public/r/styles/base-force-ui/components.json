@@ -950,5 +950,58 @@
       }
     },
     "type": "registry:ui"
+  },
+  {
+    "name": "attachment",
+    "registryDependencies": ["button"],
+    "files": [
+      {
+        "path": "registry/base-force-ui/ui/attachment.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "bubble",
+    "files": [
+      {
+        "path": "registry/base-force-ui/ui/bubble.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "message-scroller",
+    "dependencies": ["@shadcn/react"],
+    "registryDependencies": ["button"],
+    "files": [
+      {
+        "path": "registry/base-force-ui/ui/message-scroller.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "marker",
+    "files": [
+      {
+        "path": "registry/base-force-ui/ui/marker.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
+  },
+  {
+    "name": "message",
+    "files": [
+      {
+        "path": "registry/base-force-ui/ui/message.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "type": "registry:ui"
   }
 ]

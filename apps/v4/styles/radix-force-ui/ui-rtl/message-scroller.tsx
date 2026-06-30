@@ -10,7 +10,7 @@ import {
 import { ArrowDownIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/styles/radix-nova/ui-rtl/button"
+import { Button } from "@/styles/radix-force-ui/ui-rtl/button"
 
 function MessageScrollerProvider(
   props: React.ComponentProps<typeof MessageScrollerPrimitive.Provider>
@@ -57,7 +57,7 @@ function MessageScrollerContent({
   return (
     <MessageScrollerPrimitive.Content
       data-slot="message-scroller-content"
-      className={cn("flex h-max min-h-full flex-col gap-6", className)}
+      className={cn("flex h-max min-h-full flex-col", className)}
       {...props}
     />
   )

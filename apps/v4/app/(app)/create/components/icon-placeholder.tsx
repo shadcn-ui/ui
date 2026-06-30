@@ -56,7 +56,7 @@ void import("@/registry/icons/icon-material-symbols") // [FORCE-UI]
 export function IconPlaceholder({
   ...props
 }: {
-  [K in IconLibraryName]: string
+  [K in IconLibraryName]?: string // [FORCE-UI] partial: upstream examples only pass known icon libraries
 } & React.ComponentProps<"svg">) {
   const [{ iconLibrary }] = useDesignSystemSearchParams()
   const iconName = props[iconLibrary]

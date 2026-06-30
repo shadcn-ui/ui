@@ -1007,7 +1007,7 @@
       "registryDependencies": ["button"],
       "files": [
         {
-          "path": "registry/radix-lyra/ui/attachment.tsx",
+          "path": "registry/radix-force-ui/ui/attachment.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1017,7 +1017,7 @@
       "name": "bubble",
       "files": [
         {
-          "path": "registry/radix-lyra/ui/bubble.tsx",
+          "path": "registry/radix-force-ui/ui/bubble.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1029,7 +1029,7 @@
       "registryDependencies": ["button"],
       "files": [
         {
-          "path": "registry/radix-lyra/ui/message-scroller.tsx",
+          "path": "registry/radix-force-ui/ui/message-scroller.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1039,7 +1039,7 @@
       "name": "marker",
       "files": [
         {
-          "path": "registry/radix-lyra/ui/marker.tsx",
+          "path": "registry/radix-force-ui/ui/marker.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1049,7 +1049,7 @@
       "name": "message",
       "files": [
         {
-          "path": "registry/radix-lyra/ui/message.tsx",
+          "path": "registry/radix-force-ui/ui/message.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1988,7 +1988,7 @@
       "registryDependencies": ["attachment"],
       "files": [
         {
-          "path": "registry/radix-lyra/examples/attachment-example.tsx",
+          "path": "registry/radix-force-ui/examples/attachment-example.tsx",
           "type": "registry:example"
         }
       ],
@@ -2000,7 +2000,7 @@
       "registryDependencies": ["bubble", "button", "collapsible", "example"],
       "files": [
         {
-          "path": "registry/radix-lyra/examples/bubble-example.tsx",
+          "path": "registry/radix-force-ui/examples/bubble-example.tsx",
           "type": "registry:example"
         }
       ],
@@ -2023,7 +2023,7 @@
       ],
       "files": [
         {
-          "path": "registry/radix-lyra/examples/message-scroller-example.tsx",
+          "path": "registry/radix-force-ui/examples/message-scroller-example.tsx",
           "type": "registry:example"
         }
       ],
@@ -2042,7 +2042,7 @@
       ],
       "files": [
         {
-          "path": "registry/radix-lyra/examples/marker-example.tsx",
+          "path": "registry/radix-force-ui/examples/marker-example.tsx",
           "type": "registry:example"
         }
       ],
@@ -2054,7 +2054,7 @@
       "registryDependencies": ["bubble", "message", "button", "example"],
       "files": [
         {
-          "path": "registry/radix-lyra/examples/message-example.tsx",
+          "path": "registry/radix-force-ui/examples/message-example.tsx",
           "type": "registry:example"
         }
       ],
@@ -2171,7 +2171,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/radix-lyra/blocks/preview-03/index.tsx",
+          "path": "registry/radix-force-ui/blocks/preview-03/index.tsx",
           "type": "registry:block"
         }
       ],

@@ -1009,7 +1009,7 @@
       "registryDependencies": ["button"],
       "files": [
         {
-          "path": "registry/base-sera/ui/attachment.tsx",
+          "path": "registry/base-force-ui/ui/attachment.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1019,7 +1019,7 @@
       "name": "bubble",
       "files": [
         {
-          "path": "registry/base-sera/ui/bubble.tsx",
+          "path": "registry/base-force-ui/ui/bubble.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1031,7 +1031,7 @@
       "registryDependencies": ["button"],
       "files": [
         {
-          "path": "registry/base-sera/ui/message-scroller.tsx",
+          "path": "registry/base-force-ui/ui/message-scroller.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1041,7 +1041,7 @@
       "name": "marker",
       "files": [
         {
-          "path": "registry/base-sera/ui/marker.tsx",
+          "path": "registry/base-force-ui/ui/marker.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1051,7 +1051,7 @@
       "name": "message",
       "files": [
         {
-          "path": "registry/base-sera/ui/message.tsx",
+          "path": "registry/base-force-ui/ui/message.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1990,7 +1990,7 @@
       "registryDependencies": ["attachment"],
       "files": [
         {
-          "path": "registry/base-sera/examples/attachment-example.tsx",
+          "path": "registry/base-force-ui/examples/attachment-example.tsx",
           "type": "registry:example"
         }
       ],
@@ -2002,7 +2002,7 @@
       "registryDependencies": ["bubble", "button", "collapsible", "example"],
       "files": [
         {
-          "path": "registry/base-sera/examples/bubble-example.tsx",
+          "path": "registry/base-force-ui/examples/bubble-example.tsx",
           "type": "registry:example"
         }
       ],
@@ -2025,7 +2025,7 @@
       ],
       "files": [
         {
-          "path": "registry/base-sera/examples/message-scroller-example.tsx",
+          "path": "registry/base-force-ui/examples/message-scroller-example.tsx",
           "type": "registry:example"
         }
       ],
@@ -2044,7 +2044,7 @@
       ],
       "files": [
         {
-          "path": "registry/base-sera/examples/marker-example.tsx",
+          "path": "registry/base-force-ui/examples/marker-example.tsx",
           "type": "registry:example"
         }
       ],
@@ -2056,7 +2056,7 @@
       "registryDependencies": ["bubble", "message", "button", "example"],
       "files": [
         {
-          "path": "registry/base-sera/examples/message-example.tsx",
+          "path": "registry/base-force-ui/examples/message-example.tsx",
           "type": "registry:example"
         }
       ],
@@ -2174,7 +2174,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/base-sera/blocks/preview-03/index.tsx",
+          "path": "registry/base-force-ui/blocks/preview-03/index.tsx",
           "type": "registry:block"
         }
       ],

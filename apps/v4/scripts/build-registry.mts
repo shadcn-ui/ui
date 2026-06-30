@@ -1447,7 +1447,7 @@ async function buildBlocksIndex() {
 
   for (const base of BASES) {
     const { registry: baseRegistry } = await import(
-      `../registry/bases/${base.name}/registry.ts`
+      path.join(getBaseSrcDir(base.name), "registry.ts") // [FORCE-UI] use getBaseSrcDir for framework ports
     )
 
     const parseResult = registrySchema.safeParse(baseRegistry)

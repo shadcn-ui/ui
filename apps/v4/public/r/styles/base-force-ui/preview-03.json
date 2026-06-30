@@ -5,7 +5,7 @@
   "registryDependencies": [],
   "files": [
     {
-      "path": "registry/base-lyra/blocks/preview-03/index.tsx",
+      "path": "registry/base-force-ui/blocks/preview-03/index.tsx",
       "content": "export default function Preview03() {\n  return <div>Preview 03</div>\n}\n",
       "type": "registry:block"
     }

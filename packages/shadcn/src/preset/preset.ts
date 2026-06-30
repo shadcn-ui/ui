@@ -21,6 +21,7 @@ export const PRESET_STYLES = [
   "luma",
   "sera",
   "rhea",
+  "force-ui", // [FORCE-UI] appended (bit-packed by index — never reorder/remove)
 ] as const
 
 export const PRESET_BASE_COLORS = [
