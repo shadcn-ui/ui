@@ -59,14 +59,25 @@ const useFormField = () => {
     id,
     name: fieldContext.name,
     formItemId: `${id}-form-item`,
-    formDescriptionId: `${id}-form-item-description`,
-    formMessageId: `${id}-form-item-message`,
+    formDescriptionId:
+      itemContext.formDescriptionId ?? `${id}-form-item-description`,
+    formMessageId: itemContext.formMessageId ?? `${id}-form-item-message`,
+    hasDescription: itemContext.hasDescription ?? false,
+    hasMessage: itemContext.hasMessage ?? false,
+    setHasDescription: itemContext.setHasDescription,
+    setHasMessage: itemContext.setHasMessage,
     ...fieldState,
   }
 }
 
 type FormItemContextValue = {
   id: string
+  formDescriptionId: string
+  formMessageId: string
+  hasDescription: boolean
+  hasMessage: boolean
+  setHasDescription: (has: boolean) => void
+  setHasMessage: (has: boolean) => void
 }
 
 const FormItemContext = React.createContext<FormItemContextValue>(
@@ -75,9 +86,21 @@ const FormItemContext = React.createContext<FormItemContextValue>(
 
 function FormItem({ className, ...props }: React.ComponentProps<"div">) {
   const id = React.useId()
+  const [hasDescription, setHasDescription] = React.useState(false)
+  const [hasMessage, setHasMessage] = React.useState(false)
 
   return (
-    <FormItemContext.Provider value={{ id }}>
+    <FormItemContext.Provider
+      value={{
+        id,
+        formDescriptionId: `${id}-form-item-description`,
+        formMessageId: `${id}-form-item-message`,
+        hasDescription,
+        hasMessage,
+        setHasDescription,
+        setHasMessage,
+      }}
+    >
       <div
         data-slot="form-item"
         className={cn("grid gap-2", className)}
@@ -105,16 +128,27 @@ function FormLabel({
 }
 
 function FormControl({ ...props }: React.ComponentProps<typeof Slot.Root>) {
-  const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
+  const {
+    error,
+    formItemId,
+    formDescriptionId,
+    formMessageId,
+    hasDescription,
+    hasMessage,
+  } = useFormField()
 
   return (
     <Slot.Root
       data-slot="form-control"
       id={formItemId}
       aria-describedby={
-        !error
-          ? `${formDescriptionId}`
-          : `${formDescriptionId} ${formMessageId}`
+        hasDescription && hasMessage && error
+          ? `${formDescriptionId} ${formMessageId}`
+          : hasDescription
+            ? `${formDescriptionId}`
+            : hasMessage && error
+              ? `${formMessageId}`
+              : undefined
       }
       aria-invalid={!!error}
       {...props}
@@ -123,7 +157,12 @@ function FormControl({ ...props }: React.ComponentProps<typeof Slot.Root>) {
 }
 
 function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
-  const { formDescriptionId } = useFormField()
+  const { formDescriptionId, setHasDescription } = useFormField()
+
+  React.useEffect(() => {
+    setHasDescription?.(true)
+    return () => setHasDescription?.(false)
+  }, [setHasDescription])
 
   return (
     <p
@@ -136,8 +175,13 @@ function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
 }
 
 function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
-  const { error, formMessageId } = useFormField()
+  const { error, formMessageId, setHasMessage } = useFormField()
   const body = error ? String(error?.message ?? "") : props.children
+
+  React.useEffect(() => {
+    setHasMessage?.(!!body)
+    return () => setHasMessage?.(false)
+  }, [setHasMessage, !!body])
 
   if (!body) {
     return null
@@ -149,9 +193,7 @@ function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
       id={formMessageId}
       className={cn("text-sm text-destructive", className)}
       {...props}
-    >
-      {body}
-    </p>
+    />
   )
 }
 
