@@ -1,0 +1,273 @@
+---
+title: Marker
+description: Displays an inline status, system note, bordered row, or labeled separator in a conversation.
+base: base
+component: true
+---
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="marker-demo"
+  previewClassName="h-auto theme-blue"
+/>
+
+The `Marker` component displays inline conversation markers such as status updates, system notes, bordered rows, and labeled separators. Compose it with [`Message`](/docs/components/message) in a conversation thread.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add marker
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="marker"
+  title="components/ui/marker.tsx"
+  styleName="base-rhea"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Marker, MarkerContent, MarkerIcon } from "@/components/ui/marker"
+```
+
+```tsx showLineNumbers
+<Marker>
+  <MarkerIcon>
+    <CheckIcon />
+  </MarkerIcon>
+  <MarkerContent>Explored 4 files</MarkerContent>
+</Marker>
+```
+
+## Composition
+
+Use the following composition to build a marker:
+
+```text
+Marker
+├── MarkerIcon
+└── MarkerContent
+```
+
+## Features
+
+- Inline marker, bordered row, and labeled separator variants
+- Decorative icon slot that is hidden from assistive tech
+- Polymorphic root via `render` for link and button markers
+- Pairs with the [`shimmer`](/docs/utils/shimmer) utility for streaming status text
+- Customizable styling through the `className` prop on every part
+
+## Examples
+
+### Variants
+
+Use `variant` to switch between an inline marker, bordered row, and labeled separator.
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="marker-variants"
+  previewClassName="h-auto theme-blue"
+/>
+
+| Variant     | Description                                          |
+| ----------- | ---------------------------------------------------- |
+| `default`   | An inline marker for status, notes, and actions.     |
+| `border`    | A default marker with a bottom border under the row. |
+| `separator` | A centered label with divider lines on each side.    |
+
+### Status
+
+Set `role="status"` and include a [`Spinner`](/docs/components/spinner) for streaming or in-progress markers so updates are announced.
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="marker-status"
+  previewClassName="h-auto theme-blue"
+/>
+
+### Shimmer
+
+Add the [`shimmer`](/docs/utils/shimmer) utility class to `MarkerContent` for an animated streaming-text effect. The utility ships with the `shadcn` package — see the shimmer docs for installation.
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="marker-shimmer"
+  previewClassName="h-auto theme-blue"
+/>
+
+### Separator
+
+Use the `separator` variant for labeled dividers, such as dates or section breaks, in a conversation.
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="marker-separator"
+  previewClassName="h-auto theme-blue"
+/>
+
+### Border
+
+Use the `border` variant for status rows that should keep the default marker alignment while separating the next row.
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="marker-border"
+  previewClassName="h-auto theme-blue"
+/>
+
+### With Icon
+
+Use `MarkerIcon` to render an icon alongside the content. Use `flex-col` to stack the icon above the content.
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="marker-icon"
+  previewClassName="h-auto theme-blue"
+/>
+
+### Links and Buttons
+
+Turn a marker into a link or button with the `render` prop on `Marker`.
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="marker-link-button"
+  previewClassName="h-auto theme-blue"
+/>
+
+```tsx showLineNumbers
+import { Marker, MarkerContent } from "@/components/ui/marker"
+
+export function MarkerLinkDemo() {
+  return (
+    <Marker render={<a href="#" />}>
+      <MarkerContent>View the pull request</MarkerContent>
+    </Marker>
+  )
+}
+```
+
+## Accessibility
+
+`Marker` is presentational by default. The correct semantics depend on how you use it, so choose the role based on intent rather than relying on a single default.
+
+### Status and Progress
+
+For streaming or progress markers such as "Thinking..." or a running tool, set `role="status"` so assistive tech announces the update as it appears. `Marker` forwards `role` to the underlying element.
+
+```tsx showLineNumbers
+<Marker role="status">
+  <MarkerIcon>
+    <Spinner />
+  </MarkerIcon>
+  <MarkerContent>Compacting conversation</MarkerContent>
+</Marker>
+```
+
+### Labeled Separators
+
+A separator that carries text, such as a date or a section label, needs no role. The divider lines are decorative CSS pseudo-elements, and the text is announced as ordinary content.
+
+```tsx showLineNumbers
+<Marker variant="separator">
+  <MarkerContent>Today</MarkerContent>
+</Marker>
+```
+
+<Callout>
+  **Note:** Do not add `role="separator"` to a labeled divider. A separator
+  takes its accessible name from `aria-label`, not from its text, and its
+  contents are treated as presentational, so the visible label would not be
+  announced. Reserve `role="separator"` for a divider with no meaningful text.
+</Callout>
+
+### Bordered Markers
+
+A bordered marker keeps the same semantics as the default marker. The bottom border is decorative, so choose `role="status"`, `render`, or no role based on the marker's purpose.
+
+```tsx showLineNumbers
+<Marker variant="border">
+  <MarkerIcon>
+    <FileTextIcon />
+  </MarkerIcon>
+  <MarkerContent>Opened implementation notes</MarkerContent>
+</Marker>
+```
+
+### Decorative Icons
+
+`MarkerIcon` is decorative and hidden from assistive tech with `aria-hidden`, so the adjacent `MarkerContent` carries the meaning. For an icon-only marker, provide an `aria-label` or visible text so it is not announced as empty.
+
+```tsx showLineNumbers
+<Marker aria-label="Synced">
+  <MarkerIcon>
+    <CheckIcon />
+  </MarkerIcon>
+</Marker>
+```
+
+### Interactive Markers
+
+When a marker links or triggers an action, render it as a real `<button>` or `<a>` with the `render` prop so it is focusable and exposes the correct role. The accessible name comes from the marker text.
+
+```tsx showLineNumbers
+<Marker render={<a href="/files" />}>
+  <MarkerIcon>
+    <FileTextIcon />
+  </MarkerIcon>
+  <MarkerContent>Explored 4 files</MarkerContent>
+</Marker>
+```
+
+## API Reference
+
+### Marker
+
+The root marker element. The file also exports `markerVariants` for composing the marker styles into custom components.
+
+| Prop        | Type                                   | Default     | Description                                      |
+| ----------- | -------------------------------------- | ----------- | ------------------------------------------------ |
+| `variant`   | `"default" \| "border" \| "separator"` | `"default"` | The marker layout.                               |
+| `render`    | `ReactElement \| function`             | -           | Render as a different element, such as a link.   |
+| `className` | `string`                               | -           | Additional classes to apply to the root element. |
+
+### MarkerIcon
+
+A decorative icon slot. Hidden from assistive tech with `aria-hidden`.
+
+| Prop        | Type     | Default | Description                                   |
+| ----------- | -------- | ------- | --------------------------------------------- |
+| `className` | `string` | -       | Additional classes to apply to the icon slot. |
+
+### MarkerContent
+
+The marker text content.
+
+| Prop        | Type     | Default | Description                                      |
+| ----------- | -------- | ------- | ------------------------------------------------ |
+| `className` | `string` | -       | Additional classes to apply to the content slot. |
