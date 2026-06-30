@@ -384,6 +384,75 @@ Display errors next to the field using `<FieldError />`. For styling and accessi
 />
 ```
 
+### Combobox
+
+- For combobox components with object items, the Combobox treats the entire object as its value. Map between the form's string value and the object using `value`/`onValueChange`.
+- Use `itemToStringValue` to tell the Combobox how to display the object as a string.
+- To show errors, add the `aria-invalid` prop to the `<ComboboxInput />` component and the `data-invalid` prop to the `<Field />` component.
+
+<ComponentPreview
+  name="form-tanstack-combobox"
+  className="sm:[&_.preview]:h-[500px]"
+  chromeLessOnMobile
+/>
+
+```tsx showLineNumbers title="form.tsx" {6-7,11-13,15-17,23}
+<form.Field
+  name="language"
+  children={(field) => {
+    const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+    const selectedLanguage = languages.find(
+      (lang) => lang.value === field.state.value
+    )
+
+    return (
+      <Field data-invalid={isInvalid}>
+        <FieldLabel htmlFor="form-tanstack-combobox-language">
+          Spoken Language
+        </FieldLabel>
+        <Combobox
+          autoHighlight
+          items={languages}
+          itemToStringValue={(lang: Language) => lang.label}
+          value={selectedLanguage ?? null}
+          onValueChange={(item: Language | null) => {
+            field.handleChange(item?.value ?? "")
+          }}
+        >
+          <ComboboxInput
+            id="form-tanstack-combobox-language"
+            aria-invalid={isInvalid}
+            placeholder="Search languages..."
+            showClear
+          />
+          <ComboboxContent>
+            <ComboboxEmpty>No languages found.</ComboboxEmpty>
+            <ComboboxList>
+              {(lang) => (
+                <ComboboxItem key={lang.value} value={lang}>
+                  {lang.label}
+                </ComboboxItem>
+              )}
+            </ComboboxList>
+          </ComboboxContent>
+        </Combobox>
+        <FieldDescription>
+          For best results, select the language you speak.
+        </FieldDescription>
+        {isInvalid && <FieldError errors={field.state.meta.errors} />}
+      </Field>
+    )
+  }}
+/>
+```
+
+The key pattern for bridging object-based Combobox items with a string form field:
+
+1. **Find the object** from the form's string value: `languages.find((lang) => lang.value === field.state.value)`.
+2. **Pass the object** to `value` on the Combobox: `value={selectedLanguage ?? null}`.
+3. **Extract the string** in `onValueChange`: `field.handleChange(item?.value ?? "")`.
+4. **Map the display** with `itemToStringValue`: `(lang: Language) => lang.label`.
+
 ### Checkbox
 
 - For checkbox, use `field.state.value` and `field.handleChange` on the `<Checkbox />` component.

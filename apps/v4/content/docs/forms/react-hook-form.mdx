@@ -334,6 +334,70 @@ For textarea fields, spread the `field` object onto the textarea.
 />
 ```
 
+### Combobox
+
+- For combobox components with object items, the Combobox treats the entire object as its value. Map between the form's string value and the object using `value`/`onValueChange`.
+- Use `itemToStringValue` to tell the Combobox how to display the object as a string.
+- To show errors, add the `aria-invalid` prop to the `<ComboboxInput />` component and the `data-invalid` prop to the `<Field />` component.
+
+<ComponentPreview
+  name="form-rhf-combobox"
+  className="sm:[&_.preview]:h-[500px]"
+  chromeLessOnMobile
+/>
+
+```tsx showLineNumbers title="form.tsx" {5,10-12,14-16,22}
+<Controller
+  name="language"
+  control={form.control}
+  render={({ field, fieldState }) => {
+    const selectedLanguage = languages.find(
+      (lang) => lang.value === field.value
+    )
+
+    return (
+      <Field data-invalid={fieldState.invalid}>
+        <FieldLabel htmlFor="form-rhf-combobox-language">
+          Spoken Language
+        </FieldLabel>
+        <Combobox
+          autoHighlight
+          items={languages}
+          itemToStringValue={(lang) => lang.label}
+          value={selectedLanguage ?? null}
+          onValueChange={(item: Language | null) => {
+            field.onChange(item?.value ?? "")
+          }}
+        >
+          <ComboboxInput
+            id="form-rhf-combobox-language"
+            aria-invalid={fieldState.invalid}
+            placeholder="Search languages..."
+            showClear
+          />
+          <ComboboxContent>
+            <ComboboxEmpty>No languages found.</ComboboxEmpty>
+            <ComboboxList>
+              {(lang) => (
+                <ComboboxItem key={lang.value} value={lang}>
+                  {lang.label}
+                </ComboboxItem>
+              )}
+            </ComboboxList>
+          </ComboboxContent>
+        </Combobox>
+        <FieldDescription>
+          For best results, select the language you speak.
+        </FieldDescription>
+        {fieldState.invalid && (
+          <FieldError errors={[fieldState.error]} />
+        )}
+      </Field>
+    )
+  }}
+/>
+```
+
 ### Checkbox
 
 - For checkbox arrays, use `field.value` and `field.onChange` with array manipulation.
