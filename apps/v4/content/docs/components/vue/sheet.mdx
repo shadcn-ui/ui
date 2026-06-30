@@ -45,26 +45,59 @@ npx shadcn@latest add @force-ui-vue/sheet
 <script setup lang="ts">
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
 </script>
+```
 
+```vue showLineNumbers
 <template>
   <Sheet>
     <SheetTrigger>Open</SheetTrigger>
     <SheetContent>
       <SheetHeader>
         <SheetTitle>Are you absolutely sure?</SheetTitle>
-        <SheetDescription>
-          This action cannot be undone. This will permanently delete your
-          account and remove your data from our servers.
-        </SheetDescription>
+        <SheetDescription>This action cannot be undone.</SheetDescription>
       </SheetHeader>
     </SheetContent>
   </Sheet>
 </template>
 ```
+
+## Composition
+
+Use the following composition to build a `Sheet`:
+
+```text
+Sheet
+├── SheetTrigger
+└── SheetContent
+    ├── SheetHeader
+    │   ├── SheetTitle
+    │   └── SheetDescription
+    └── SheetFooter
+```
+
+## Examples
+
+### Side
+
+Use the `:side` prop on `SheetContent` to set the edge of the screen where the sheet appears. Values are `top`, `right`, `bottom`, or `left`.
+
+<ComponentPreview framework="vue" name="sheet-side" />
+
+### No Close Button
+
+Use `:show-close-button="false"` on `SheetContent` to hide the close button.
+
+<ComponentPreview framework="vue" name="sheet-no-close-button" />
+
+## API Reference
+
+See the [Radix UI Dialog](https://www.radix-ui.com/docs/primitives/components/dialog#api-reference) documentation.

@@ -5,7 +5,7 @@ base: ember
 component: true
 ---
 
-<ComponentPreview framework="ember" name="hover-card-demo" />
+<ComponentPreview framework="ember" name="hover-card-demo" previewClassName="h-80" />
 
 ## Installation
 
@@ -63,3 +63,58 @@ import {
   </HoverCardContent>
 </HoverCard>
 ```
+
+## Composition
+
+Use the following composition to build a `HoverCard`:
+
+```text
+HoverCard
+├── HoverCardTrigger
+└── HoverCardContent
+```
+
+## Trigger Delays
+
+Use `@openDelay` and `@closeDelay` on the `HoverCard` to control when the card opens and
+closes.
+
+```hbs showLineNumbers
+<HoverCard @openDelay={{100}} @closeDelay={{200}}>
+  <HoverCardTrigger>Hover</HoverCardTrigger>
+  <HoverCardContent>Content</HoverCardContent>
+</HoverCard>
+```
+
+## Positioning
+
+Use the `@side` and `@align` props on `HoverCardContent` to control placement.
+
+```hbs showLineNumbers
+<HoverCard>
+  <HoverCardTrigger>Hover</HoverCardTrigger>
+  <HoverCardContent @side="top" @align="start">
+    Content
+  </HoverCardContent>
+</HoverCard>
+```
+
+## Examples
+
+### Basic
+
+<ComponentPreview framework="ember" name="hover-card-demo" previewClassName="h-80" />
+
+### Sides
+
+<ComponentPreview framework="ember" name="hover-card-sides" previewClassName="h-[22rem]" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="ember" name="hover-card-rtl" direction="rtl" previewClassName="h-80" />
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/docs/primitives/components/hover-card#api-reference) documentation for more information.

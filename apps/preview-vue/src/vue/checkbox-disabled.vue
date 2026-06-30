@@ -1,11 +1,19 @@
 <script setup lang="ts">
 import { Checkbox } from '@/ui/checkbox'
-import { Label } from '@/ui/label'
+import { Field, FieldGroup, FieldLabel } from '@/ui/field'
 </script>
 
 <template>
-  <div class="flex items-center space-x-2">
-    <Checkbox id="terms" disabled />
-    <Label for="terms">Accept terms and conditions</Label>
-  </div>
+  <FieldGroup class="mx-auto w-56">
+    <Field orientation="horizontal" data-disabled>
+      <Checkbox
+        id="toggle-checkbox-disabled"
+        name="toggle-checkbox-disabled"
+        disabled
+      />
+      <FieldLabel for="toggle-checkbox-disabled">
+        Enable notifications
+      </FieldLabel>
+    </Field>
+  </FieldGroup>
 </template>

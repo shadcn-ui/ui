@@ -51,37 +51,54 @@ import { Kbd } from "@/components/ui/kbd"
 </template>
 ```
 
+## Composition
+
+Use the following composition to build `Kbd` and `KbdGroup`:
+
+```text
+Kbd
+KbdGroup
+├── Kbd
+└── Kbd
+```
+
 ## Examples
 
 ### Group
 
 Use the `KbdGroup` component to group keyboard keys together.
 
-<ComponentPreview framework="vue" name="kbd-group-demo" />
+<ComponentPreview framework="vue" name="kbd-group" />
 
 ### Button
 
 Use the `Kbd` component inside a `Button` component to display a keyboard key inside a button.
 
-<ComponentPreview framework="vue" name="kbd-with-button" />
+<ComponentPreview framework="vue" name="kbd-button" />
 
 ### Tooltip
 
 You can use the `Kbd` component inside a `Tooltip` component to display a tooltip with a keyboard key.
 
-<ComponentPreview framework="vue" name="kbd-with-tooltip" />
+<ComponentPreview framework="vue" name="kbd-tooltip" />
 
 ### Input Group
 
 You can use the `Kbd` component inside a `InputGroupAddon` component to display a keyboard key inside an input group.
 
-<ComponentPreview framework="vue" name="kbd-with-input-group" />
+<ComponentPreview framework="vue" name="kbd-input-group" />
 
 ### Primary
 
-Use `variant="primary"` when placing a `Kbd` on a solid or brand-coloured surface so the key label stays legible.
+Use `variant="primary"` when placing a `Kbd` on a solid or brand-coloured surface so the key label remains legible against the background.
 
 <ComponentPreview framework="vue" name="kbd-primary" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="vue" name="kbd-rtl" direction="rtl" />
 
 ## API Reference
 
@@ -91,13 +108,11 @@ Use the `Kbd` component to display a keyboard key.
 
 | Prop      | Type                     | Default     |
 | --------- | ------------------------ | ----------- |
-| `variant` | `"default" \| "primary"` | `"default"` |
 | `class`   | `string`                 | ``          |
+| `variant` | `"default" \| "primary"` | `"default"` |
 
 ```vue
-<Kbd>
-Ctrl
-</Kbd>
+<Kbd>Ctrl</Kbd>
 ```
 
 ### KbdGroup

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useMagicKeys, whenever } from '@vueuse/core'
 import Calculator from "@material-symbols/svg-400/rounded/calculate.svg?component"
 import Calendar from "@material-symbols/svg-400/rounded/calendar_month.svg?component"

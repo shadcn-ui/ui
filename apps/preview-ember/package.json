@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite --port 3003",
     "preview:build": "vite build",
-    "preview": "vite preview --port 3003"
+    "preview": "vite preview --port 3003",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.6",

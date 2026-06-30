@@ -1,6 +1,7 @@
 ---
 title: Dialog
 description: A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
+featured: true
 base: vue
 component: true
 ---
@@ -70,56 +71,56 @@ import {
 </template>
 ```
 
-## Example
+## Composition
 
-### Custom close button
+Use the following composition to build a `Dialog`:
+
+```text
+Dialog
+├── DialogTrigger
+└── DialogContent
+    ├── DialogHeader
+    │   ├── DialogTitle
+    │   └── DialogDescription
+    └── DialogFooter
+```
+
+## Examples
+
+### Custom Close Button
+
+Replace the default close control with your own button.
 
 <ComponentPreview framework="vue" name="dialog-close-button" />
 
-### Dialog with form
+### No Close Button
 
-To keep field value after `Dialog` unmounts
+Use `:show-close-button="false"` to hide the close button.
 
-<ComponentPreview framework="vue" name="dialog-form" />
+<ComponentPreview framework="vue" name="dialog-no-close-button" />
 
-### Responsive Modal (Dialog & Drawer)
+### Sticky Footer
 
-Use a `Drawer` component for smaller viewport sizes and a `Dialog` component otherwise. This can be further made reusable by using slots for various parts of the modal.
+Keep actions visible while the content scrolls.
 
-<ComponentPreview framework="vue" name="dialog-responsive" />
+<ComponentPreview framework="vue" name="dialog-sticky-footer" />
 
-## Notes
+### Scrollable Content
 
-To use the `Dialog` component from within a `Context Menu` or `Dropdown Menu`, you must encase the `Context Menu` or
-`Dropdown Menu` component in the `Dialog` component.
+Long content can scroll while the header stays in view.
 
-```vue showLineNumbers title="components/EampleDialogContext.vue" {2, 29}
-<template>
-  <Dialog>
-    <ContextMenu>
-      <ContextMenuTrigger>Right click</ContextMenuTrigger>
-      <ContextMenuContent>
-        <ContextMenuItem>Open</ContextMenuItem>
-        <ContextMenuItem>Download</ContextMenuItem>
-        <DialogTrigger as-child>
-          <ContextMenuItem>
-            <span>Delete</span>
-          </ContextMenuItem>
-        </DialogTrigger>
-      </ContextMenuContent>
-    </ContextMenu>
-    <DialogContent>
-      <DialogHeader>
-        <DialogTitle>Are you absolutely sure?</DialogTitle>
-        <DialogDescription>
-          This action cannot be undone. Are you sure you want to permanently
-          delete this file from our servers?
-        </DialogDescription>
-      </DialogHeader>
-      <DialogFooter>
-        <Button type="submit"> Confirm </Button>
-      </DialogFooter>
-    </DialogContent>
-  </Dialog>
-</template>
-```
+<ComponentPreview framework="vue" name="dialog-scrollable-content" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="vue"
+  name="dialog-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/docs/primitives/components/dialog#api-reference) documentation for more information.

@@ -30,6 +30,7 @@
 		monthFormat?: CalendarPrimitive.MonthSelectProps["monthFormat"];
 		yearFormat?: CalendarPrimitive.YearSelectProps["yearFormat"];
 		day?: Snippet<[{ day: DateValue; outsideMonth: boolean }]>;
+		weekNumbers?: boolean; // [FORCE-UI] accepted for API compat, not yet rendered
 	} = $props();
 
 	const monthFormat = $derived.by(() => {

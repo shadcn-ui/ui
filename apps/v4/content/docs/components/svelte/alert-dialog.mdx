@@ -1,6 +1,7 @@
 ---
 title: Alert Dialog
 description: A modal dialog that interrupts the user with important content and expects a response.
+featured: true
 base: svelte
 component: true
 ---
@@ -41,7 +42,7 @@ npx shadcn@latest add @force-ui-svelte/alert-dialog
 
 ## Usage
 
-```svelte showLineNumbersw
+```svelte showLineNumbers
 <script lang="ts">
   import * as AlertDialog from "$lib/components/ui/alert-dialog/index.js";
 </script>
@@ -65,3 +66,70 @@ npx shadcn@latest add @force-ui-svelte/alert-dialog
   </AlertDialog.Content>
 </AlertDialog.Root>
 ```
+
+## Composition
+
+Use the following composition to build an `AlertDialog`:
+
+```text
+AlertDialog.Root
+├── AlertDialog.Trigger
+└── AlertDialog.Content
+    ├── AlertDialog.Header
+    │   ├── AlertDialog.Media
+    │   ├── AlertDialog.Title
+    │   └── AlertDialog.Description
+    └── AlertDialog.Footer
+        ├── AlertDialog.Cancel
+        └── AlertDialog.Action
+```
+
+## Examples
+
+### Basic
+
+A basic alert dialog with a title, description, and cancel and continue buttons.
+
+<ComponentPreview framework="svelte" name="alert-dialog-basic" />
+
+### Small
+
+Use the `size="sm"` prop to make the alert dialog smaller.
+
+<ComponentPreview framework="svelte" name="alert-dialog-small" />
+
+### Media
+
+Use the `AlertDialog.Media` component to add a media element such as an icon or image to the alert dialog.
+
+<ComponentPreview framework="svelte" name="alert-dialog-media" />
+
+### Small with Media
+
+Use the `size="sm"` prop to make the alert dialog smaller and the `AlertDialog.Media` component to add a media element such as an icon or image to the alert dialog.
+
+<ComponentPreview framework="svelte" name="alert-dialog-small-media" />
+
+### Destructive
+
+Use the `AlertDialog.Action` component to add a destructive action button to the alert dialog.
+
+<ComponentPreview framework="svelte" name="alert-dialog-destructive" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="svelte" name="alert-dialog-rtl" direction="rtl" />
+
+## API Reference
+
+### size
+
+Use the `size` prop on the `AlertDialog.Content` component to control the size of the alert dialog. It accepts the following values:
+
+| Prop   | Type                | Default     |
+| ------ | ------------------- | ----------- |
+| `size` | `"default" \| "sm"` | `"default"` |
+
+For more information about the other components and their props, see the [Radix UI documentation](https://www.radix-ui.com/primitives/docs/components/alert-dialog#api-reference).

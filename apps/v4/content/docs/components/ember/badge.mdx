@@ -52,9 +52,35 @@ import { Badge } from '@/ui/badge';
 <Badge @variant="destructive">Destructive</Badge>
 ```
 
+## Examples
+
+### Variants
+
+Use the `@variant` argument to change the variant of the badge.
+
+<ComponentPreview framework="ember" name="badge-variants" />
+
 ### Status Variants
 
 <ComponentPreview framework="ember" name="badge-status" />
+
+### With Icon
+
+You can render an icon inside the badge. Use `data-icon="inline-start"` to render the icon on the left and `data-icon="inline-end"` to render the icon on the right.
+
+<ComponentPreview framework="ember" name="badge-icon" />
+
+### With Spinner
+
+You can render a spinner inside the badge. Remember to add the `data-icon="inline-start"` or `data-icon="inline-end"` prop to the spinner.
+
+<ComponentPreview framework="ember" name="badge-spinner" />
+
+### Link
+
+Use the `@asChild` argument to render a link as a badge.
+
+<ComponentPreview framework="ember" name="badge-link" />
 
 ### Solid Status Variants
 
@@ -62,27 +88,19 @@ Use solid variants for maximum-attention states like critical counts or overdue 
 
 <ComponentPreview framework="ember" name="badge-solid" />
 
+### Custom Colors
+
+You can customize the colors of a badge by adding custom classes such as `bg-green-50 dark:bg-green-800` to the `Badge` component.
+
+<ComponentPreview framework="ember" name="badge-colors" />
+
 ## API Reference
 
 ### Badge
 
-| Prop      | Type                                                                                                                                                                | Default     |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `variant` | `"default" \| "secondary" \| "destructive" \| "outline" \| "warning" \| "success" \| "info" \| "success-solid" \| "warning-solid" \| "info-solid" \| "error-solid"` | `"default"` |
+The `Badge` component displays a badge or a component that looks like a badge.
 
-### Link
-
-You can use the `@asChild` argument to make another component look like a badge. Here's an example of a link that looks like a badge:
-
-```gts showLineNumbers
-import { LinkTo } from '@ember/routing';
-import { Badge } from '@/ui/badge';
-
-<template>
-  <Badge @asChild={{true}} as |badge|>
-    <LinkTo @route="index" class={{badge.classes}}>
-      Badge
-    </LinkTo>
-  </Badge>
-</template>
-```
+| Prop        | Type                                                                                                                                                                                     | Default     |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `@variant`  | `"default" \| "secondary" \| "destructive" \| "outline" \| "ghost" \| "link" \| "warning" \| "success" \| "info" \| "success-solid" \| "warning-solid" \| "info-solid" \| "error-solid"` | `"default"` |
+| `@class`    | `string`                                                                                                                                                                                 | -           |

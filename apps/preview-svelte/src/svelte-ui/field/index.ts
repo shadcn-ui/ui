@@ -11,6 +11,7 @@ import Error from "./field-error.svelte";
 
 export {
 	Field,
+	Field as Root, // [FORCE-UI] alias for React-compat usage
 	Set,
 	Legend,
 	Group,

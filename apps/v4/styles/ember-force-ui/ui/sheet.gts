@@ -26,22 +26,6 @@ interface ContextRegistry {
   [SheetContext]: SheetContextValue;
 }
 
-function sheetVariants(side: Side = 'right', className?: string): string {
-  const baseClasses =
-    'bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500';
-
-  const sideClasses: Record<Side, string> = {
-    right:
-      'data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm',
-    left: 'data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm',
-    top: 'data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top inset-x-0 top-0 h-auto border-b',
-    bottom:
-      'data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom inset-x-0 bottom-0 h-auto border-t',
-  };
-
-  return cn(baseClasses, sideClasses[side], className);
-}
-
 interface SheetSignature {
   Args: {
     open?: boolean;
@@ -227,7 +211,7 @@ class SheetOverlay extends Component<SheetOverlaySignature> {
     {{! template-lint-disable no-invalid-interactive }}
     <div
       class={{cn
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50"
+        "cn-sheet-overlay fixed inset-0 z-50 duration-100 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"
         @class
       }}
       data-slot="sheet-overlay"
@@ -258,7 +242,10 @@ class SheetContent extends Component<SheetContentSignature> {
   }
 
   get classes() {
-    return sheetVariants(this.args.side ?? 'right', this.args.class);
+    return cn(
+      'cn-sheet-content data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[side=bottom]:data-[state=open]:slide-in-from-bottom-10 data-[side=left]:data-[state=open]:slide-in-from-left-10 data-[side=right]:data-[state=open]:slide-in-from-right-10 data-[side=top]:data-[state=open]:slide-in-from-top-10 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[side=bottom]:data-[state=closed]:slide-out-to-bottom-10 data-[side=left]:data-[state=closed]:slide-out-to-left-10 data-[side=right]:data-[state=closed]:slide-out-to-right-10 data-[side=top]:data-[state=closed]:slide-out-to-top-10',
+      this.args.class
+    );
   }
 
   scrollLock = modifier(
@@ -292,6 +279,7 @@ class SheetContent extends Component<SheetContentSignature> {
         <div
           class={{this.classes}}
           data-slot="sheet-content"
+          data-side={{if @side @side "right"}}
           data-state={{if this.context.open "open" "closed"}}
           role="dialog"
           {{on "animationend" this.handleAnimationEnd}}
@@ -300,7 +288,7 @@ class SheetContent extends Component<SheetContentSignature> {
         >
           {{yield}}
           <button
-            class="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none"
+            class="cn-sheet-close"
             type="button"
             {{on "click" this.handleCloseClick}}
           >
@@ -325,7 +313,7 @@ interface SheetHeaderSignature {
 
 const SheetHeader: TOC<SheetHeaderSignature> = <template>
   <div
-    class={{cn "flex flex-col gap-1.5 p-4" @class}}
+    class={{cn "cn-sheet-header flex flex-col" @class}}
     data-slot="sheet-header"
     ...attributes
   >
@@ -345,7 +333,7 @@ interface SheetFooterSignature {
 
 const SheetFooter: TOC<SheetFooterSignature> = <template>
   <div
-    class={{cn "mt-auto flex flex-col gap-2 p-4" @class}}
+    class={{cn "cn-sheet-footer mt-auto flex flex-col" @class}}
     data-slot="sheet-footer"
     ...attributes
   >
@@ -365,7 +353,7 @@ interface SheetTitleSignature {
 
 const SheetTitle: TOC<SheetTitleSignature> = <template>
   <h2
-    class={{cn "text-foreground font-semibold" @class}}
+    class={{cn "cn-sheet-title cn-font-heading" @class}}
     data-slot="sheet-title"
     ...attributes
   >
@@ -385,7 +373,7 @@ interface SheetDescriptionSignature {
 
 const SheetDescription: TOC<SheetDescriptionSignature> = <template>
   <p
-    class={{cn "text-muted-foreground text-sm" @class}}
+    class={{cn "cn-sheet-description" @class}}
     data-slot="sheet-description"
     ...attributes
   >

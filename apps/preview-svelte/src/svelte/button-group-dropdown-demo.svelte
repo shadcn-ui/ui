@@ -1,0 +1,61 @@
+<script lang="ts">
+	import AlertTriangle from "~icons/ms/warning";
+	import ChevronDown from "~icons/ms/keyboard_arrow_down";
+	import CopyIcon from "@tabler/icons-svelte/icons/copy";
+	import CheckIcon from "@tabler/icons-svelte/icons/check";
+	import Share from "~icons/ms/share";
+	import Trash from "~icons/ms/delete";
+	import UserRoundX from "~icons/ms/person_off";
+	import VolumeOff from "~icons/ms/volume_off";
+	import { Button } from "@/svelte-ui/button/index.js";
+	import * as ButtonGroup from "@/svelte-ui/button-group/index.js";
+	import * as DropdownMenu from "@/svelte-ui/dropdown-menu/index.js";
+</script>
+
+<ButtonGroup.Root>
+	<Button variant="outline">Follow</Button>
+	<DropdownMenu.Root>
+		<DropdownMenu.Trigger>
+			{#snippet child({ props })}
+				<Button {...props} variant="outline" class="!ps-2">
+					<ChevronDown />
+				</Button>
+			{/snippet}
+		</DropdownMenu.Trigger>
+		<DropdownMenu.Content align="end" class="[--radius:1rem]">
+			<DropdownMenu.Group>
+				<DropdownMenu.Item>
+					<VolumeOff />
+					Mute Conversation
+				</DropdownMenu.Item>
+				<DropdownMenu.Item>
+					<CheckIcon />
+					Mark as Read
+				</DropdownMenu.Item>
+				<DropdownMenu.Item>
+					<AlertTriangle />
+					Report Conversation
+				</DropdownMenu.Item>
+				<DropdownMenu.Item>
+					<UserRoundX />
+					Block User
+				</DropdownMenu.Item>
+				<DropdownMenu.Item>
+					<Share />
+					Share Conversation
+				</DropdownMenu.Item>
+				<DropdownMenu.Item>
+					<CopyIcon />
+					Copy Conversation
+				</DropdownMenu.Item>
+			</DropdownMenu.Group>
+			<DropdownMenu.Separator />
+			<DropdownMenu.Group>
+				<DropdownMenu.Item variant="destructive">
+					<Trash />
+					Delete Conversation
+				</DropdownMenu.Item>
+			</DropdownMenu.Group>
+		</DropdownMenu.Content>
+	</DropdownMenu.Root>
+</ButtonGroup.Root>

@@ -53,3 +53,153 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
   </Avatar>
 </template>
 ```
+
+## Composition
+
+Use the following composition to build an `Avatar`:
+
+```text
+Avatar
+├── AvatarImage
+├── AvatarFallback
+└── AvatarBadge
+```
+
+Use the following composition to build an `AvatarGroup`:
+
+```text
+AvatarGroup
+├── Avatar
+│   ├── AvatarImage
+│   ├── AvatarFallback
+│   └── AvatarBadge
+├── Avatar
+│   ├── AvatarImage
+│   ├── AvatarFallback
+│   └── AvatarBadge
+└── AvatarGroupCount
+```
+
+## Examples
+
+### Basic
+
+A basic avatar component with an image and a fallback.
+
+<ComponentPreview framework="vue" name="avatar-basic" />
+
+### Badge
+
+Use the `AvatarBadge` component to add a badge to the avatar. The badge is positioned at the bottom right of the avatar.
+
+<ComponentPreview framework="vue" name="avatar-badge" />
+
+Use the `class` prop to add custom styles to the badge such as custom colors, sizes, etc.
+
+```vue showLineNumbers
+<Avatar>
+  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <AvatarFallback>CN</AvatarFallback>
+  <AvatarBadge class="bg-green-600 dark:bg-green-800" />
+</Avatar>
+```
+
+### Badge with Icon
+
+You can also use an icon inside `<AvatarBadge>`.
+
+<ComponentPreview framework="vue" name="avatar-badge-icon" />
+
+### Avatar Group
+
+Use the `AvatarGroup` component to add a group of avatars.
+
+<ComponentPreview framework="vue" name="avatar-group" />
+
+### Avatar Group Count
+
+Use `<AvatarGroupCount>` to add a count to the group.
+
+<ComponentPreview framework="vue" name="avatar-group-count" />
+
+### Avatar Group with Icon
+
+You can also use an icon inside `<AvatarGroupCount>`.
+
+<ComponentPreview framework="vue" name="avatar-group-count-icon" />
+
+### Sizes
+
+Use the `size` prop to change the size of the avatar.
+
+<ComponentPreview framework="vue" name="avatar-size" />
+
+### Dropdown
+
+You can use the `Avatar` component as a trigger for a dropdown menu.
+
+<ComponentPreview framework="vue" name="avatar-dropdown" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="vue"
+  name="avatar-rtl"
+  direction="rtl"
+  previewClassName="h-72"
+/>
+
+## API Reference
+
+### Avatar
+
+The `Avatar` component is the root component that wraps the avatar image and fallback.
+
+| Prop        | Type                        | Default     |
+| ----------- | --------------------------- | ----------- |
+| `size`      | `"default" \| "sm" \| "lg"` | `"default"` |
+| `class`     | `string`                    | -           |
+
+### AvatarImage
+
+The `AvatarImage` component displays the avatar image.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `src`       | `string` | -       |
+| `alt`       | `string` | -       |
+| `class`     | `string` | -       |
+
+### AvatarFallback
+
+The `AvatarFallback` component displays a fallback when the image fails to load.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |
+
+### AvatarBadge
+
+The `AvatarBadge` component displays a badge indicator on the avatar, typically positioned at the bottom right.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |
+
+### AvatarGroup
+
+The `AvatarGroup` component displays a group of avatars with overlapping styling.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |
+
+### AvatarGroupCount
+
+The `AvatarGroupCount` component displays a count indicator in an avatar group, typically showing the number of additional avatars.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` | -       |

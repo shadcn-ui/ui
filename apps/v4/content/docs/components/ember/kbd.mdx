@@ -49,6 +49,17 @@ import { Kbd } from '@/ui/kbd';
 <Kbd>Ctrl</Kbd>
 ```
 
+## Composition
+
+Use the following composition to build `Kbd` and `KbdGroup`:
+
+```text
+Kbd
+KbdGroup
+├── Kbd
+└── Kbd
+```
+
 ## Examples
 
 ### Group
@@ -77,9 +88,15 @@ You can use the `Kbd` component inside a `InputGroupAddon` component to display 
 
 ### Primary
 
-Use `@variant="primary"` when placing a `Kbd` on a solid or brand-coloured surface so the key label stays legible.
+Use `@variant="primary"` when placing a `Kbd` on a solid or brand-coloured surface so the key label remains legible against the background.
 
 <ComponentPreview framework="ember" name="kbd-primary" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="ember" name="kbd-rtl" direction="rtl" />
 
 ## API Reference
 
@@ -89,8 +106,8 @@ Use the `Kbd` component to display a keyboard key.
 
 | Prop       | Type                     | Default     |
 | ---------- | ------------------------ | ----------- |
-| `@variant` | `"default" \| "primary"` | `"default"` |
 | `@class`   | `string`                 | ``          |
+| `@variant` | `"default" \| "primary"` | `"default"` |
 
 ```hbs showLineNumbers
 <Kbd>Ctrl</Kbd>

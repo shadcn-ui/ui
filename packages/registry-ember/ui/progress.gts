@@ -23,14 +23,14 @@ class Progress extends Component<ProgressSignature> {
   <template>
     <div
       class={{cn
-        "bg-primary/20 relative h-2 w-full overflow-hidden rounded-full"
+        "cn-progress relative flex w-full items-center overflow-x-hidden"
         @class
       }}
       data-slot="progress"
       ...attributes
     >
       <div
-        class="bg-primary h-full w-full flex-1 transition-all"
+        class="cn-progress-indicator size-full flex-1 transition-all"
         data-slot="progress-indicator"
         style={{this.indicatorStyle}}
       ></div>

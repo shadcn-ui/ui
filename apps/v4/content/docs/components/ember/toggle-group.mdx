@@ -5,7 +5,7 @@ base: ember
 component: true
 ---
 
-<ComponentPreview framework="ember" name="toggle-group-spacing" />
+<ComponentPreview framework="ember" name="toggle-group-demo" />
 
 ## Installation
 
@@ -59,33 +59,55 @@ import { ToggleGroup, ToggleGroupItem } from '@/ui/toggle-group';
 </ToggleGroup>
 ```
 
+## Composition
+
+Use the following composition to build a `ToggleGroup`:
+
+```text
+ToggleGroup
+├── ToggleGroupItem
+└── ToggleGroupItem
+```
+
 ## Examples
 
 ### Outline
 
+Use `@variant="outline"` for an outline style.
+
 <ComponentPreview framework="ember" name="toggle-group-outline" />
 
-### Single
+### Size
 
-<ComponentPreview framework="ember" name="toggle-group-single" />
+Use the `@size` prop to change the size of the toggle group.
 
-### Small
-
-<ComponentPreview framework="ember" name="toggle-group-sm" />
-
-### Large
-
-<ComponentPreview framework="ember" name="toggle-group-lg" />
-
-### Disabled
-
-<ComponentPreview framework="ember" name="toggle-group-disabled" />
+<ComponentPreview framework="ember" name="toggle-group-sizes" />
 
 ### Spacing
 
 Use `@spacing={{2}}` to add spacing between toggle group items.
 
 <ComponentPreview framework="ember" name="toggle-group-spacing" />
+
+### Vertical
+
+Use `@orientation="vertical"` for vertical toggle groups.
+
+<ComponentPreview framework="ember" name="toggle-group-vertical" />
+
+### Disabled
+
+<ComponentPreview framework="ember" name="toggle-group-disabled" />
+
+### Custom
+
+A custom toggle group example.
+
+<ComponentPreview
+  framework="ember"
+  name="toggle-group-font-weight-selector"
+  previewClassName="*:data-[slot=field]:max-w-xs"
+/>
 
 ## API Reference
 
@@ -98,18 +120,11 @@ The main component that wraps toggle group items.
 | `@type`          | `"single" \| "multiple"`              | `"single"`  |
 | `@variant`       | `"default" \| "outline"`              | `"default"` |
 | `@size`          | `"default" \| "sm" \| "lg"`           | `"default"` |
-| `@spacing`       | `number`                              | `0`         |
+| `@spacing`       | `number`                              | `2`         |
 | `@class`         | `string`                              |             |
 | `@disabled`      | `boolean`                             | `false`     |
 | `@value`         | `string \| string[]`                  |             |
 | `@onValueChange` | `(value: string \| string[]) => void` |             |
-
-```hbs
-<ToggleGroup @type="single" @variant="outline" @size="sm">
-  <ToggleGroupItem @value="a">A</ToggleGroupItem>
-  <ToggleGroupItem @value="b">B</ToggleGroupItem>
-</ToggleGroup>
-```
 
 ### ToggleGroupItem
 

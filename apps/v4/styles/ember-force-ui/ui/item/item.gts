@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import type { TOC } from '@ember/component/template-only';
 
 type ItemVariant = 'default' | 'outline' | 'muted';
-type ItemSize = 'default' | 'sm';
+type ItemSize = 'default' | 'sm' | 'xs';
 type ItemMediaVariant = 'default' | 'icon' | 'image';
 
 function itemVariants(
@@ -15,17 +15,18 @@ function itemVariants(
   className?: string
 ): string {
   const baseClasses =
-    'group/item flex items-center border border-transparent text-sm rounded-md transition-colors [a]:hover:bg-accent/50 [a]:transition-colors duration-100 flex-wrap outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]';
+    'cn-item group/item flex w-full flex-wrap items-center transition-colors duration-100 outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 [a]:transition-colors';
 
   const variantClasses: Record<ItemVariant, string> = {
-    default: 'bg-transparent',
-    outline: 'border-border',
-    muted: 'bg-muted/50',
+    default: 'cn-item-variant-default',
+    outline: 'cn-item-variant-outline',
+    muted: 'cn-item-variant-muted',
   };
 
   const sizeClasses: Record<ItemSize, string> = {
-    default: 'p-4 gap-4',
-    sm: 'py-3 px-4 gap-2.5',
+    default: 'cn-item-size-default',
+    sm: 'cn-item-size-sm',
+    xs: 'cn-item-size-xs',
   };
 
   return cn(baseClasses, variantClasses[variant], sizeClasses[size], className);
@@ -36,13 +37,12 @@ function itemMediaVariants(
   className?: string
 ): string {
   const baseClasses =
-    'flex shrink-0 items-center justify-center gap-2 group-has-[[data-slot=item-description]]/item:self-start [&_svg]:pointer-events-none group-has-[[data-slot=item-description]]/item:translate-y-0.5';
+    'cn-item-media flex shrink-0 items-center justify-center [&_svg]:pointer-events-none';
 
   const variantClasses: Record<ItemMediaVariant, string> = {
-    default: 'bg-transparent',
-    icon: "size-8 border rounded-sm bg-muted [&_svg:not([class*='size-'])]:size-4",
-    image:
-      'size-10 rounded-sm overflow-hidden [&_img]:size-full [&_img]:object-cover',
+    default: 'cn-item-media-variant-default',
+    icon: 'cn-item-media-variant-icon',
+    image: 'cn-item-media-variant-image',
   };
 
   return cn(baseClasses, variantClasses[variant], className);
@@ -60,7 +60,7 @@ interface ItemGroupSignature {
 
 const ItemGroup: TOC<ItemGroupSignature> = <template>
   <div
-    class={{cn "group/item-group flex flex-col" @class}}
+    class={{cn "cn-item-group group/item-group flex w-full flex-col" @class}}
     data-slot="item-group"
     role="list"
     ...attributes
@@ -81,7 +81,7 @@ interface ItemSeparatorSignature {
 
 const ItemSeparator: TOC<ItemSeparatorSignature> = <template>
   <Separator
-    @class={{cn "my-0" @class}}
+    @class={{cn "cn-item-separator" @class}}
     @orientation="horizontal"
     data-slot="item-separator"
     ...attributes
@@ -192,7 +192,7 @@ interface ItemContentSignature {
 const ItemContent: TOC<ItemContentSignature> = <template>
   <div
     class={{cn
-      "flex flex-1 flex-col gap-1 [&+[data-slot=item-content]]:flex-none"
+      "cn-item-content flex flex-1 flex-col [&+[data-slot=item-content]]:flex-none"
       @class
     }}
     data-slot="item-content"
@@ -215,7 +215,7 @@ interface ItemTitleSignature {
 const ItemTitle: TOC<ItemTitleSignature> = <template>
   <div
     class={{cn
-      "flex w-fit items-center gap-2 text-sm leading-snug font-medium"
+      "cn-item-title line-clamp-1 flex w-fit items-center"
       @class
     }}
     data-slot="item-title"
@@ -238,7 +238,7 @@ interface ItemDescriptionSignature {
 const ItemDescription: TOC<ItemDescriptionSignature> = <template>
   <p
     class={{cn
-      "text-muted-foreground line-clamp-2 text-sm leading-normal font-normal text-balance [&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4"
+      "cn-item-description line-clamp-2 font-normal [&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-primary"
       @class
     }}
     data-slot="item-description"
@@ -260,7 +260,7 @@ interface ItemActionsSignature {
 
 const ItemActions: TOC<ItemActionsSignature> = <template>
   <div
-    class={{cn "flex items-center gap-2" @class}}
+    class={{cn "cn-item-actions flex items-center" @class}}
     data-slot="item-actions"
     ...attributes
   >
@@ -280,7 +280,7 @@ interface ItemHeaderSignature {
 
 const ItemHeader: TOC<ItemHeaderSignature> = <template>
   <div
-    class={{cn "flex basis-full items-center justify-between gap-2" @class}}
+    class={{cn "cn-item-header flex basis-full items-center justify-between" @class}}
     data-slot="item-header"
     ...attributes
   >
@@ -300,7 +300,7 @@ interface ItemFooterSignature {
 
 const ItemFooter: TOC<ItemFooterSignature> = <template>
   <div
-    class={{cn "flex basis-full items-center justify-between gap-2" @class}}
+    class={{cn "cn-item-footer flex basis-full items-center justify-between" @class}}
     data-slot="item-footer"
     ...attributes
   >

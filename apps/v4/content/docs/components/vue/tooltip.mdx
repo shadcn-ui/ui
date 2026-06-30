@@ -62,3 +62,46 @@ import {
   </TooltipProvider>
 </template>
 ```
+
+## Composition
+
+Use the following composition to build a `Tooltip`:
+
+```text
+TooltipProvider
+└── Tooltip
+    ├── TooltipTrigger
+    └── TooltipContent
+```
+
+## Examples
+
+### Side
+
+Use the `side` prop to change the position of the tooltip.
+
+<ComponentPreview framework="vue" name="tooltip-sides" />
+
+### With Keyboard Shortcut
+
+<ComponentPreview framework="vue" name="tooltip-keyboard" />
+
+### Disabled Button
+
+Show a tooltip on a disabled button by wrapping it with a span.
+
+<ComponentPreview framework="vue" name="tooltip-disabled" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="vue"
+  name="tooltip-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [Radix Tooltip](https://www.radix-ui.com/docs/primitives/components/tooltip#api-reference) documentation.

@@ -5,7 +5,7 @@ base: vue
 component: true
 ---
 
-<ComponentPreview framework="vue" name="scroll-area-demo" />
+<ComponentPreview framework="vue" name="scroll-area-demo" previewClassName="h-96" />
 
 ## Installation
 
@@ -45,15 +45,39 @@ npx shadcn@latest add @force-ui-vue/scroll-area
 <script setup lang="ts">
 import { ScrollArea } from "@/components/ui/scroll-area"
 </script>
+```
 
+```vue showLineNumbers
 <template>
   <ScrollArea class="h-[200px] w-[350px] rounded-md border p-4">
-    Jokester began sneaking into the castle in the middle of the night and
-    leaving jokes all over the place: under the king's pillow, in his soup, even
-    in the royal toilet. The king was furious, but he couldn't seem to stop
-    Jokester. And then one day, the king tripped over one of Jokester's whoopee
-    cushions and fell into the moat. He was so embarrassed that he decided to
-    make Jokester the official court jester.
+    Your scrollable content here.
   </ScrollArea>
 </template>
 ```
+
+## Composition
+
+Use the following composition to build a `ScrollArea`:
+
+```text
+ScrollArea
+└── ScrollBar
+```
+
+## Examples
+
+### Horizontal
+
+Use `ScrollBar` with `orientation="horizontal"` for horizontal scrolling.
+
+<ComponentPreview framework="vue" name="scroll-area-horizontal-demo" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="vue" name="scroll-area-rtl" direction="rtl" previewClassName="h-auto" />
+
+## API Reference
+
+See the [Radix UI Scroll Area](https://www.radix-ui.com/docs/primitives/components/scroll-area#api-reference) documentation.

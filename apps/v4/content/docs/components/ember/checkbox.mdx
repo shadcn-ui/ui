@@ -3,9 +3,12 @@ title: Checkbox
 description: A control that allows the user to toggle between checked and not checked.
 base: ember
 component: true
+links:
+  doc: https://www.radix-ui.com/docs/primitives/components/checkbox
+  api: https://www.radix-ui.com/docs/primitives/components/checkbox#api-reference
 ---
 
-<ComponentPreview framework="ember" name="checkbox-demo" />
+<ComponentPreview framework="ember" name="checkbox-demo" previewClassName="h-80" />
 
 ## Installation
 
@@ -42,9 +45,88 @@ npx shadcn@latest add @force-ui-ember/checkbox
 ## Usage
 
 ```gts showLineNumbers
-import { Checkbox } from '@/ui/checkbox';
+import { Checkbox } from '@/ember-ui/checkbox';
 ```
 
 ```hbs showLineNumbers
 <Checkbox />
 ```
+
+## Checked State
+
+Use `@checked` to set the initial state, or handle `@onCheckedChange` to
+control it reactively.
+
+```gts showLineNumbers
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+import { Checkbox } from '@/ember-ui/checkbox';
+
+export default class Example extends Component {
+  @tracked checked = false;
+
+  handleCheckedChange = (value: boolean) => {
+    this.checked = value;
+  };
+
+  <template>
+    <Checkbox @checked={{this.checked}} @onCheckedChange={{this.handleCheckedChange}} />
+  </template>
+}
+```
+
+## Invalid State
+
+Set `aria-invalid` on the checkbox and `data-invalid` on the field wrapper to
+show the invalid styles.
+
+<ComponentPreview framework="ember" name="checkbox-invalid" />
+
+## Examples
+
+### Basic
+
+Pair the checkbox with `Field` and `FieldLabel` for proper layout and labeling.
+
+<ComponentPreview framework="ember" name="checkbox-basic" />
+
+### Description
+
+Use `FieldContent` and `FieldDescription` for helper text.
+
+<ComponentPreview framework="ember" name="checkbox-description" />
+
+### Disabled
+
+Use `@disabled={{true}}` to prevent interaction and add the `data-disabled` attribute to the `<Field>` component for disabled styles.
+
+<ComponentPreview framework="ember" name="checkbox-disabled" />
+
+### Group
+
+Use multiple fields to create a checkbox list.
+
+<ComponentPreview framework="ember" name="checkbox-group" />
+
+### Table
+
+<ComponentPreview
+  framework="ember"
+  name="checkbox-table"
+  previewClassName="p-4 md:p-8"
+/>
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="ember"
+  name="checkbox-rtl"
+  direction="rtl"
+  previewClassName="h-80"
+/>
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/docs/primitives/components/checkbox#api-reference) documentation for more information.

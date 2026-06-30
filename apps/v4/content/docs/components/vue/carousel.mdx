@@ -3,9 +3,16 @@ title: Carousel
 description: A carousel with motion and swipe built using Embla.
 base: vue
 component: true
+links:
+  doc: https://www.embla-carousel.com/get-started/vue
+  api: https://www.embla-carousel.com/api
 ---
 
 <ComponentPreview framework="vue" name="carousel-demo" />
+
+## About
+
+The carousel component is built using the [Embla Carousel](https://www.embla-carousel.com/) library.
 
 ## Installation
 
@@ -26,6 +33,12 @@ npx shadcn@latest add @force-ui-vue/carousel
 <TabsContent value="manual">
 
 <Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install embla-carousel-vue
+```
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -63,6 +76,19 @@ import {
     <CarouselNext />
   </Carousel>
 </template>
+```
+
+## Composition
+
+Use the following composition to build a `Carousel`:
+
+```text
+Carousel
+├── CarouselContent
+│   ├── CarouselItem
+│   └── CarouselItem
+├── CarouselPrevious
+└── CarouselNext
 ```
 
 ## Examples
@@ -103,12 +129,6 @@ To set the size of the items, you can use the `basis` utility class on the `<Car
 
 To set the spacing between the items, we use a `pl-[VALUE]` utility on the `<CarouselItem />` and a negative `-ml-[VALUE]` on the `<CarouselContent />`.
 
-> **Why:** I tried to use the `gap` property or a `grid` layout on the `<CarouselContent />` but it required a lot of math and mental effort to get
-> the spacing right. I found `pl-[VALUE]` and `-ml-[VALUE]` utilities much
-> easier to use.
->
-> You can always adjust this in your own project if you need to.
-
 <ComponentPreview framework="vue" name="carousel-spacing" />
 
 ```vue showLineNumbers /-ml-4/ /pl-4/
@@ -141,7 +161,7 @@ Use the `orientation` prop to set the orientation of the carousel.
 
 <ComponentPreview framework="vue" name="carousel-orientation" />
 
-```vue
+```vue showLineNumbers /vertical | horizontal/
 <Carousel orientation="vertical | horizontal">
   ...
 </Carousel>
@@ -229,20 +249,6 @@ const stop = watch(api, (api) => {
 
 See the [Embla Carousel docs](https://www.embla-carousel.com/api/events/) for more information on using events.
 
-## Slot Props
-
-You can get the reactive slot props like `carouselRef, canScrollNext..Prev, scrollNext..Prev` using the `v-slot` directive in the `<Carousel v-slot="slotProps" />` component to extend the functionality.
-
-```vue showLineNumbers {2}
-<template>
-  <Carousel v-slot="{ canScrollNext, canScrollPrev }">
-    ...
-    <CarouselPrevious v-if="canScrollPrev" />
-    <CarouselNext v-if="canScrollNext" />
-  </Carousel>
-</template>
-```
-
 ## Plugins
 
 You can use the `plugins` prop to add plugins to the carousel.
@@ -273,3 +279,50 @@ import Autoplay from "embla-carousel-autoplay"
 <ComponentPreview framework="vue" name="carousel-plugin" />
 
 See the [Embla Carousel docs](https://www.embla-carousel.com/api/plugins/) for more information on using plugins.
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="vue" name="carousel-rtl" direction="rtl" />
+
+When localizing the carousel for RTL languages, you need to set the `direction` option in the `:opts` prop to match the text direction. This ensures the carousel scrolls in the correct direction.
+
+```vue showLineNumbers {3-6}
+<template>
+  <Carousel
+    :dir="dir"
+    :opts="{
+      direction: dir,
+    }"
+  >
+    <CarouselContent>
+      <CarouselItem>...</CarouselItem>
+      <CarouselItem>...</CarouselItem>
+      <CarouselItem>...</CarouselItem>
+    </CarouselContent>
+    <CarouselPrevious class="rtl:rotate-180" />
+    <CarouselNext class="rtl:rotate-180" />
+  </Carousel>
+</template>
+```
+
+The `direction` option accepts `"ltr"` or `"rtl"` and should match the `:dir` prop value. You may also want to rotate the navigation buttons using the `rtl:rotate-180` class to ensure they point in the correct direction.
+
+## Slot Props
+
+You can get the reactive slot props like `carouselRef, canScrollNext..Prev, scrollNext..Prev` using the `v-slot` directive in the `<Carousel v-slot="slotProps" />` component to extend the functionality.
+
+```vue showLineNumbers {2}
+<template>
+  <Carousel v-slot="{ canScrollNext, canScrollPrev }">
+    ...
+    <CarouselPrevious v-if="canScrollPrev" />
+    <CarouselNext v-if="canScrollNext" />
+  </Carousel>
+</template>
+```
+
+## API Reference
+
+See the [Embla Carousel docs](https://www.embla-carousel.com/api/) for more information on props and plugins.

@@ -1,6 +1,6 @@
 ---
 title: Context Menu
-description: Displays a menu to the user — such as a set of actions or functions — triggered by right click.
+description: Displays a menu of actions triggered by a right click.
 base: svelte
 component: true
 ---
@@ -49,7 +49,7 @@ npx shadcn@latest add @force-ui-svelte/context-menu
 
 ```svelte showLineNumbers
 <ContextMenu.Root>
-  <ContextMenu.Trigger>Right click</ContextMenu.Trigger>
+  <ContextMenu.Trigger>Right click here</ContextMenu.Trigger>
   <ContextMenu.Content>
     <ContextMenu.Item>Profile</ContextMenu.Item>
     <ContextMenu.Item>Billing</ContextMenu.Item>
@@ -58,3 +58,63 @@ npx shadcn@latest add @force-ui-svelte/context-menu
   </ContextMenu.Content>
 </ContextMenu.Root>
 ```
+
+## Examples
+
+### Basic
+
+A simple context menu with a few actions.
+
+<ComponentPreview framework="svelte" name="context-menu-basic" />
+
+### Submenu
+
+Use `ContextMenu.Sub` to nest secondary actions.
+
+<ComponentPreview framework="svelte" name="context-menu-submenu" />
+
+### Shortcuts
+
+Add `ContextMenu.Shortcut` to show keyboard hints.
+
+<ComponentPreview framework="svelte" name="context-menu-shortcuts" />
+
+### Groups
+
+Group related actions and separate them with dividers.
+
+<ComponentPreview framework="svelte" name="context-menu-groups" />
+
+### Icons
+
+Combine icons with labels for quick scanning.
+
+<ComponentPreview framework="svelte" name="context-menu-icons" />
+
+### Checkboxes
+
+Use `ContextMenu.CheckboxItem` for toggles.
+
+<ComponentPreview framework="svelte" name="context-menu-checkboxes" />
+
+### Radio
+
+Use `ContextMenu.RadioItem` for exclusive choices.
+
+<ComponentPreview framework="svelte" name="context-menu-radio" />
+
+### Destructive
+
+Use `variant="destructive"` to style the menu item as destructive.
+
+<ComponentPreview framework="svelte" name="context-menu-destructive" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="svelte" name="context-menu-rtl" direction="rtl" />
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/docs/primitives/components/context-menu#api-reference) documentation for more information.

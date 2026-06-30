@@ -1,6 +1,6 @@
 ---
 title: Empty
-description: Use the Empty component to display a empty state.
+description: Use the Empty component to display an empty state.
 base: svelte
 component: true
 ---
@@ -43,8 +43,9 @@ npx shadcn@latest add @force-ui-svelte/empty
 
 ```svelte
 <script lang="ts">
-  import * as Empty from "$lib/components/ui/empty/index.js";
-  import FolderCodeIcon from "@tabler/icons-svelte/icons/folder-code";
+  import * as Empty from "@/svelte-ui/empty/index.js";
+  import { Button } from "@/svelte-ui/button/index.js";
+  import FolderCodeIcon from "~icons/ms/folder_code";
 </script>
 ```
 
@@ -63,34 +64,148 @@ npx shadcn@latest add @force-ui-svelte/empty
 </Empty.Root>
 ```
 
+## Composition
+
+Use the following composition to build an `Empty` state:
+
+```text
+Empty
+├── Empty.Header
+│   ├── Empty.Media
+│   ├── Empty.Title
+│   └── Empty.Description
+└── Empty.Content
+```
+
 ## Examples
 
 ### Outline
 
-Use the `border` utility class to create a outline empty state.
+Use the `border` utility class to create an outline empty state.
 
-<ComponentPreview framework="svelte" name="empty-outline-demo" />
+<ComponentPreview framework="svelte" name="empty-outline" />
 
 ### Background
 
 Use the `bg-*` and `bg-gradient-*` utilities to add a background to the empty state.
 
-<ComponentPreview framework="svelte" name="empty-background-demo" />
+<ComponentPreview framework="svelte" name="empty-background" />
 
 ### Avatar
 
 Use the `EmptyMedia` component to display an avatar in the empty state.
 
-<ComponentPreview framework="svelte" name="empty-avatar-demo" />
+<ComponentPreview framework="svelte" name="empty-avatar" />
 
 ### Avatar Group
 
 Use the `EmptyMedia` component to display an avatar group in the empty state.
 
-<ComponentPreview framework="svelte" name="empty-avatar-group-demo" />
+<ComponentPreview framework="svelte" name="empty-avatar-group" />
 
 ### InputGroup
 
 You can add an `InputGroup` component to the `EmptyContent` component.
 
-<ComponentPreview framework="svelte" name="empty-input-group-demo" />
+<ComponentPreview framework="svelte" name="empty-input-group" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="svelte" name="empty-rtl" direction="rtl" />
+
+## API Reference
+
+### Empty.Root
+
+The main component of the empty state. Wraps the `Empty.Header` and `Empty.Content` components.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` |         |
+
+```svelte
+<Empty.Root>
+  <Empty.Header />
+  <Empty.Content />
+</Empty.Root>
+```
+
+### Empty.Header
+
+The `Empty.Header` component wraps the empty media, title, and description.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` |         |
+
+```svelte
+<Empty.Header>
+  <Empty.Media />
+  <Empty.Title />
+  <Empty.Description />
+</Empty.Header>
+```
+
+### Empty.Media
+
+Use the `Empty.Media` component to display the media of the empty state such as an icon or an image. You can also use it to display other components such as an avatar.
+
+| Prop      | Type                  | Default   |
+| --------- | --------------------- | --------- |
+| `variant` | `"default" \| "icon"` | `default` |
+| `class`   | `string`              |           |
+
+```svelte
+<Empty.Media variant="icon">
+  <Icon />
+</Empty.Media>
+```
+
+```svelte
+<Empty.Media>
+  <Avatar.Root>
+    <Avatar.Image src="..." />
+    <Avatar.Fallback>CN</Avatar.Fallback>
+  </Avatar.Root>
+</Empty.Media>
+```
+
+### Empty.Title
+
+Use the `Empty.Title` component to display the title of the empty state.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` |         |
+
+```svelte
+<Empty.Title>No data</Empty.Title>
+```
+
+### Empty.Description
+
+Use the `Empty.Description` component to display the description of the empty state.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` |         |
+
+```svelte
+<Empty.Description>You do not have any notifications.</Empty.Description>
+```
+
+### Empty.Content
+
+Use the `Empty.Content` component to display the content of the empty state such as a button, input or a link.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` |         |
+
+```svelte
+<Empty.Content>
+  <Button>Add Project</Button>
+</Empty.Content>
+```

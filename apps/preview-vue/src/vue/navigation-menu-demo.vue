@@ -95,7 +95,7 @@ const components: { title: string, href: string, description: string }[] = [
               v-for="component in components"
               :key="component.title"
               :title="component.title"
-              :href="component.href"
+              :to="component.href"
             >
               {{ component.description }}
             </ListItem>

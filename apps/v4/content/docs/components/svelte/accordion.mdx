@@ -5,7 +5,7 @@ base: svelte
 component: true
 ---
 
-<ComponentPreview framework="svelte" name="accordion-demo" />
+<ComponentPreview framework="svelte" name="accordion-demo" align="start" />
 
 ## Installation
 
@@ -48,7 +48,7 @@ npx shadcn@latest add @force-ui-svelte/accordion
 ```
 
 ```svelte showLineNumbers
-<Accordion.Root type="single">
+<Accordion.Root type="single" collapsible>
   <Accordion.Item value="item-1">
     <Accordion.Trigger>Is it accessible?</Accordion.Trigger>
     <Accordion.Content>
@@ -57,3 +57,50 @@ npx shadcn@latest add @force-ui-svelte/accordion
   </Accordion.Item>
 </Accordion.Root>
 ```
+
+## Examples
+
+### Basic
+
+A basic accordion that shows one item at a time. The first item is open by default.
+
+<ComponentPreview framework="svelte" name="accordion-basic" align="start" />
+
+### Multiple
+
+Use `type="multiple"` to allow multiple items to be open at the same time.
+
+<ComponentPreview framework="svelte" name="accordion-multiple" align="start" />
+
+### Disabled
+
+Use the `disabled` prop on `Accordion.Item` to disable individual items.
+
+<ComponentPreview framework="svelte" name="accordion-disabled" align="start" />
+
+### Borders
+
+Add `border` to the `Accordion.Root` and `border-b last:border-b-0` to the `Accordion.Item` to add borders to the items.
+
+<ComponentPreview framework="svelte" name="accordion-borders" align="start" />
+
+### Card
+
+Wrap the `Accordion.Root` in a `Card` component.
+
+<ComponentPreview framework="svelte" name="accordion-card" align="start" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="svelte" name="accordion-rtl" align="start" direction="rtl" />
+
+## API Reference
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| type | `"single" \| "multiple"` | `"single"` | Determines whether one or multiple items can be opened at the same time. |
+| collapsible | `boolean` | `false` | When `type` is `"single"`, allows closing content when clicking trigger for an open item. |
+| value | `string \| string[]` | — | The controlled value of the item(s) to expand. |
+| disabled | `boolean` | `false` | When `true`, prevents the user from interacting with the accordion item. |

@@ -1,0 +1,11 @@
+<script lang="ts">
+	import { Skeleton } from "@/svelte-ui/skeleton/index.js";
+</script>
+
+<div class="flex w-fit items-center gap-4">
+	<Skeleton class="size-10 shrink-0 rounded-full" />
+	<div class="grid gap-2">
+		<Skeleton class="h-4 w-[150px]" />
+		<Skeleton class="h-4 w-[100px]" />
+	</div>
+</div>

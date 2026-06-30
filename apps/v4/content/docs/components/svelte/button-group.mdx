@@ -54,17 +54,28 @@ npx shadcn@latest add @force-ui-svelte/button-group
 </ButtonGroup.Root>
 ```
 
+## Composition
+
+Use the following composition to build a `ButtonGroup`:
+
+```text
+ButtonGroup.Root
+├── Button or Input
+├── ButtonGroup.Separator
+└── ButtonGroup.Text
+```
+
 ## Accessibility
 
 - The `ButtonGroup` component has the `role` attribute set to `group`.
-- Use `tabindex` to navigate between the buttons in the group.
+- Use `Tab` to navigate between the buttons in the group.
 - Use `aria-label` or `aria-labelledby` to label the button group.
 
 ```svelte showLineNumbers
-<ButtonGroup aria-label="Button group">
+<ButtonGroup.Root aria-label="Button group">
   <Button>Button 1</Button>
   <Button>Button 2</Button>
-</ButtonGroup>
+</ButtonGroup.Root>
 ```
 
 ## ButtonGroup vs ToggleGroup
@@ -88,13 +99,13 @@ Control the size of buttons using the `size` prop on individual buttons.
 
 ### Nested
 
-Nest `ButtonGroup` components to create button groups with spacing.
+Nest `<ButtonGroup.Root>` components to create button groups with spacing.
 
 <ComponentPreview framework="svelte" name="button-group-nested-demo" />
 
 ### Separator
 
-The `ButtonGroupSeparator` component visually divides buttons within a group.
+The `ButtonGroup.Separator` component visually divides buttons within a group.
 
 Buttons with variant `outline` do not need a separator since they have a border. For other variants, a separator is recommended to improve the visual hierarchy.
 
@@ -102,7 +113,7 @@ Buttons with variant `outline` do not need a separator since they have a border.
 
 ### Split
 
-Create a split button group by adding two buttons separated by a `ButtonGroupSeparator`.
+Create a split button group by adding two buttons separated by a `ButtonGroup.Separator`.
 
 <ComponentPreview framework="svelte" name="button-group-split-demo" />
 
@@ -122,7 +133,7 @@ Wrap an `InputGroup` component to create complex input layouts.
 
 Create a split button group with a `DropdownMenu` component.
 
-<ComponentPreview framework="svelte" name="button-group-dropdown-menu-demo" />
+<ComponentPreview framework="svelte" name="button-group-dropdown-demo" />
 
 ### Select
 
@@ -135,3 +146,70 @@ Pair with a `Select` component.
 Use with a `Popover` component.
 
 <ComponentPreview framework="svelte" name="button-group-popover-demo" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="svelte"
+  name="button-group-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+### ButtonGroup.Root
+
+The `ButtonGroup.Root` component is a container that groups related buttons together with consistent styling.
+
+| Prop          | Type                         | Default        |
+| ------------- | ---------------------------- | -------------- |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+
+```svelte
+<ButtonGroup.Root>
+  <Button>Button 1</Button>
+  <Button>Button 2</Button>
+</ButtonGroup.Root>
+```
+
+Nest multiple button groups to create complex layouts with spacing. See the [nested](#nested) example for more details.
+
+```svelte
+<ButtonGroup.Root>
+  <ButtonGroup.Root />
+  <ButtonGroup.Root />
+</ButtonGroup.Root>
+```
+
+### ButtonGroup.Separator
+
+The `ButtonGroup.Separator` component visually divides buttons within a group.
+
+| Prop          | Type                         | Default      |
+| ------------- | ---------------------------- | ------------ |
+| `orientation` | `"horizontal" \| "vertical"` | `"vertical"` |
+
+```svelte
+<ButtonGroup.Root>
+  <Button>Button 1</Button>
+  <ButtonGroup.Separator />
+  <Button>Button 2</Button>
+</ButtonGroup.Root>
+```
+
+### ButtonGroup.Text
+
+Use this component to display text within a button group.
+
+| Prop      | Type      | Default |
+| --------- | --------- | ------- |
+| `asChild` | `boolean` | `false` |
+
+```svelte
+<ButtonGroup.Root>
+  <ButtonGroup.Text>Text</ButtonGroup.Text>
+  <Button>Button</Button>
+</ButtonGroup.Root>
+```

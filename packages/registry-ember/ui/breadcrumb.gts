@@ -21,7 +21,7 @@ interface BreadcrumbSignature {
 const Breadcrumb: TOC<BreadcrumbSignature> = <template>
   <nav
     aria-label="breadcrumb"
-    class={{@class}}
+    class={{cn "cn-breadcrumb" @class}}
     data-slot="breadcrumb"
     ...attributes
   >
@@ -42,7 +42,7 @@ interface BreadcrumbListSignature {
 const BreadcrumbList: TOC<BreadcrumbListSignature> = <template>
   <ol
     class={{cn
-      "text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5"
+      "cn-breadcrumb-list flex flex-wrap items-center wrap-break-word"
       @class
     }}
     data-slot="breadcrumb-list"
@@ -64,7 +64,7 @@ interface BreadcrumbItemSignature {
 
 const BreadcrumbItem: TOC<BreadcrumbItemSignature> = <template>
   <li
-    class={{cn "inline-flex items-center gap-1.5" @class}}
+    class={{cn "cn-breadcrumb-item inline-flex items-center" @class}}
     data-slot="breadcrumb-item"
     ...attributes
   >
@@ -87,11 +87,11 @@ interface BreadcrumbLinkSignature {
 const BreadcrumbLink: TOC<BreadcrumbLinkSignature> = <template>
   {{#if @asChild}}
     {{yield
-      (hash classes=(cn "hover:text-foreground transition-colors" @class))
+      (hash classes=(cn "cn-breadcrumb-link" @class))
     }}
   {{else}}
     <a
-      class={{cn "hover:text-foreground transition-colors" @class}}
+      class={{cn "cn-breadcrumb-link" @class}}
       data-slot="breadcrumb-link"
       href={{@href}}
       ...attributes
@@ -115,7 +115,7 @@ const BreadcrumbPage: TOC<BreadcrumbPageSignature> = <template>
   <span
     aria-current="page"
     aria-disabled="true"
-    class={{cn "text-foreground font-normal" @class}}
+    class={{cn "cn-breadcrumb-page" @class}}
     data-slot="breadcrumb-page"
     role="link"
     ...attributes
@@ -137,7 +137,7 @@ interface BreadcrumbSeparatorSignature {
 const BreadcrumbSeparator: TOC<BreadcrumbSeparatorSignature> = <template>
   <li
     aria-hidden="true"
-    class={{cn "[&>svg]:size-3.5" @class}}
+    class={{cn "cn-breadcrumb-separator" @class}}
     data-slot="breadcrumb-separator"
     role="presentation"
     ...attributes
@@ -160,7 +160,7 @@ interface BreadcrumbEllipsisSignature {
 const BreadcrumbEllipsis: TOC<BreadcrumbEllipsisSignature> = <template>
   <span
     aria-hidden="true"
-    class={{cn "flex size-9 items-center justify-center" @class}}
+    class={{cn "cn-breadcrumb-ellipsis flex items-center justify-center" @class}}
     data-slot="breadcrumb-ellipsis"
     role="presentation"
     ...attributes

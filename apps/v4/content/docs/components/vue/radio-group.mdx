@@ -46,21 +46,75 @@ npx shadcn@latest add @force-ui-vue/radio-group
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 </script>
+```
 
+```vue showLineNumbers
 <template>
-  <RadioGroup default-value="comfortable">
-    <div class="flex items-center space-x-2">
-      <RadioGroupItem id="r1" value="default" />
-      <Label for="r1">Default</Label>
+  <RadioGroup default-value="option-one">
+    <div class="flex items-center gap-3">
+      <RadioGroupItem id="option-one" value="option-one" />
+      <Label for="option-one">Option One</Label>
     </div>
-    <div class="flex items-center space-x-2">
-      <RadioGroupItem id="r2" value="comfortable" />
-      <Label for="r2">Comfortable</Label>
-    </div>
-    <div class="flex items-center space-x-2">
-      <RadioGroupItem id="r3" value="compact" />
-      <Label for="r3">Compact</Label>
+    <div class="flex items-center gap-3">
+      <RadioGroupItem id="option-two" value="option-two" />
+      <Label for="option-two">Option Two</Label>
     </div>
   </RadioGroup>
 </template>
 ```
+
+## Composition
+
+Use the following composition to build a `RadioGroup`:
+
+```text
+RadioGroup
+├── RadioGroupItem
+└── RadioGroupItem
+```
+
+## Examples
+
+### Description
+
+Radio group items with a description using the `Field` component.
+
+<ComponentPreview framework="vue" name="radio-group-description" />
+
+### Choice Card
+
+Use `FieldLabel` to wrap the entire `Field` for a clickable card-style selection.
+
+<ComponentPreview framework="vue" name="radio-group-choice-card" />
+
+### Fieldset
+
+Use `FieldSet` and `FieldLegend` to group radio items with a label and description.
+
+<ComponentPreview framework="vue" name="radio-group-fieldset" />
+
+### Disabled
+
+Use the `disabled` prop on `RadioGroupItem` to disable individual items.
+
+<ComponentPreview framework="vue" name="radio-group-disabled" />
+
+### Invalid
+
+Use `aria-invalid` on `RadioGroupItem` and `data-invalid` on `Field` to show validation errors.
+
+<ComponentPreview framework="vue" name="radio-group-invalid" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="vue"
+  name="radio-group-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [Radix UI Radio Group](https://www.radix-ui.com/docs/primitives/components/radio-group#api-reference) documentation.

@@ -7,6 +7,10 @@ component: true
 
 <ComponentPreview framework="vue" name="sonner-demo" />
 
+## About
+
+Sonner is built and maintained by [emilkowalski](https://twitter.com/emilkowalski).
+
 ## Installation
 
 <CodeTabs>
@@ -17,9 +21,34 @@ component: true
 </TabsList>
 <TabsContent value="cli">
 
+<Steps className="mb-0 pt-2">
+
+<Step>Run the following command:</Step>
+
 ```bash
 npx shadcn@latest add @force-ui-vue/sonner
 ```
+
+<Step>Add the Toaster component</Step>
+
+```vue title="App.vue" showLineNumbers
+<script setup lang="ts">
+import "vue-sonner/style.css"
+
+import { Toaster } from "@/components/ui/sonner"
+</script>
+
+<template>
+  <div>
+    <main>
+      <!-- Your app content -->
+    </main>
+    <Toaster />
+  </div>
+</template>
+```
+
+</Steps>
 
 </TabsContent>
 
@@ -41,45 +70,32 @@ npx shadcn@latest add @force-ui-vue/sonner
 
 ## Usage
 
-```vue showLineNumbers
+```vue
 <script setup lang="ts">
 import { toast } from "vue-sonner"
-
-import { Button } from "@/components/ui/button"
 </script>
-
-<template>
-  <Button @click="() => toast('My first toast')"> Give me a toast </Button>
-</template>
 ```
 
-## Installation
-
-The `<Toaster />` component and its specific CSS are required to display toasts. Add them to your root layout.
-
-```vue showLineNumbers
-<script setup lang="ts">
-import "vue-sonner/style.css"
-
-import { Toaster } from "@/components/ui/sonner"
-</script>
-
-<template>
-  <div>
-    <main>
-      <!-- Your app content -->
-    </main>
-    <Toaster />
-  </div>
-</template>
+```vue
+<Button @click="() => toast('Event has been created.')">Show Toast</Button>
 ```
 
 ## Examples
 
 ### Types
 
-<ComponentPreview framework="vue" name="sonner-types-demo" />
+<ComponentPreview framework="vue" name="sonner-types" />
 
-### With Dialog
+### Description
 
-<ComponentPreview framework="vue" name="sonner-with-dialog-demo" />
+<ComponentPreview framework="vue" name="sonner-description" />
+
+### Position
+
+Use the `position` prop to change the position of the toast.
+
+<ComponentPreview framework="vue" name="sonner-position" />
+
+## API Reference
+
+See the [Sonner API Reference](https://sonner.emilkowal.ski/getting-started) for more information.

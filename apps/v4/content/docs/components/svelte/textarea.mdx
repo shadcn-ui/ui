@@ -53,25 +53,29 @@ npx shadcn@latest add @force-ui-svelte/textarea
 
 ## Examples
 
-### Default
+### Field
 
-<ComponentPreview framework="svelte" name="textarea-demo" />
+Use `Field`, `Field.Label`, and `Field.Description` to create a textarea with a label and description.
+
+<ComponentPreview framework="svelte" name="textarea-field" />
 
 ### Disabled
 
+Use the `disabled` prop to disable the textarea. To style the disabled state, add the `data-disabled` attribute to the `Field.Field` component.
+
 <ComponentPreview framework="svelte" name="textarea-disabled" />
 
-### With Label
+### Invalid
 
-<ComponentPreview framework="svelte" name="textarea-with-label" />
+Use the `aria-invalid` prop to mark the textarea as invalid. To style the invalid state, add the `data-invalid` attribute to the `Field.Field` component.
 
-### With Text
+<ComponentPreview framework="svelte" name="textarea-invalid" />
 
-<ComponentPreview framework="svelte" name="textarea-with-text" />
+### Button
 
-### With Button
+Pair with `Button` to create a textarea with a submit button.
 
-<ComponentPreview framework="svelte" name="textarea-with-button" />
+<ComponentPreview framework="svelte" name="textarea-button" />
 
 ### Variants
 
@@ -79,9 +83,17 @@ Use the `variant` prop to change the visual style of the textarea.
 
 <ComponentPreview framework="svelte" name="textarea-variants" />
 
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="svelte" name="textarea-rtl" direction="rtl" />
+
 ## API Reference
 
 ### Textarea
+
+The `Textarea` component displays a multi-line text input field.
 
 | Prop      | Type                                              | Default     |
 | --------- | ------------------------------------------------- | ----------- |

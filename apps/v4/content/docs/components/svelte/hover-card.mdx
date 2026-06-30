@@ -5,7 +5,7 @@ base: svelte
 component: true
 ---
 
-<ComponentPreview framework="svelte" name="hover-card-demo" />
+<ComponentPreview framework="svelte" name="hover-card-demo" previewClassName="h-80" />
 
 ## Installation
 
@@ -55,3 +55,58 @@ npx shadcn@latest add @force-ui-svelte/hover-card
   </HoverCard.Content>
 </HoverCard.Root>
 ```
+
+## Composition
+
+Use the following composition to build a `HoverCard`:
+
+```text
+HoverCard.Root
+├── HoverCard.Trigger
+└── HoverCard.Content
+```
+
+## Trigger Delays
+
+Use `openDelay` and `closeDelay` on the `HoverCard.Root` to control when the card opens and
+closes.
+
+```svelte showLineNumbers
+<HoverCard.Root openDelay={100} closeDelay={200}>
+  <HoverCard.Trigger>Hover</HoverCard.Trigger>
+  <HoverCard.Content>Content</HoverCard.Content>
+</HoverCard.Root>
+```
+
+## Positioning
+
+Use the `side` and `align` props on `HoverCard.Content` to control placement.
+
+```svelte showLineNumbers
+<HoverCard.Root>
+  <HoverCard.Trigger>Hover</HoverCard.Trigger>
+  <HoverCard.Content side="top" align="start">
+    Content
+  </HoverCard.Content>
+</HoverCard.Root>
+```
+
+## Examples
+
+### Basic
+
+<ComponentPreview framework="svelte" name="hover-card-demo" previewClassName="h-80" />
+
+### Sides
+
+<ComponentPreview framework="svelte" name="hover-card-sides" previewClassName="h-[22rem]" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="svelte" name="hover-card-rtl" direction="rtl" previewClassName="h-80" />
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/docs/primitives/components/hover-card#api-reference) documentation for more information.

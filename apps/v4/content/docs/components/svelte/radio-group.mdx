@@ -50,13 +50,69 @@ npx shadcn@latest add @force-ui-svelte/radio-group
 
 ```svelte showLineNumbers
 <RadioGroup.Root value="option-one">
-  <div class="flex items-center space-x-2">
+  <div class="flex items-center gap-3">
     <RadioGroup.Item value="option-one" id="option-one" />
     <Label for="option-one">Option One</Label>
   </div>
-  <div class="flex items-center space-x-2">
+  <div class="flex items-center gap-3">
     <RadioGroup.Item value="option-two" id="option-two" />
     <Label for="option-two">Option Two</Label>
   </div>
 </RadioGroup.Root>
 ```
+
+## Composition
+
+Use the following composition to build a `RadioGroup`:
+
+```text
+RadioGroup.Root
+├── RadioGroup.Item
+└── RadioGroup.Item
+```
+
+## Examples
+
+### Description
+
+Radio group items with a description using the `Field` component.
+
+<ComponentPreview framework="svelte" name="radio-group-description" />
+
+### Choice Card
+
+Use `Field.Label` to wrap the entire `Field.Field` for a clickable card-style selection.
+
+<ComponentPreview framework="svelte" name="radio-group-choice-card" />
+
+### Fieldset
+
+Use `Field.Set` and `Field.Legend` to group radio items with a label and description.
+
+<ComponentPreview framework="svelte" name="radio-group-fieldset" />
+
+### Disabled
+
+Use the `disabled` prop on `RadioGroup.Item` to disable individual items.
+
+<ComponentPreview framework="svelte" name="radio-group-disabled" />
+
+### Invalid
+
+Use `aria-invalid` on `RadioGroup.Item` and `data-invalid` on `Field.Field` to show validation errors.
+
+<ComponentPreview framework="svelte" name="radio-group-invalid" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="svelte"
+  name="radio-group-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [Radix UI Radio Group](https://www.radix-ui.com/docs/primitives/components/radio-group#api-reference) documentation.

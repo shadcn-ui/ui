@@ -1,6 +1,6 @@
 ---
 title: Input Group
-description: Display additional information or actions to an input or textarea.
+description: Add addons, buttons, and helper content to inputs.
 base: ember
 component: true
 ---
@@ -58,71 +58,98 @@ import {
   <InputGroupAddon>
     <SearchIcon />
   </InputGroupAddon>
-  <InputGroupAddon @align="inline-end">
-    <InputGroupButton>Search</InputGroupButton>
-  </InputGroupAddon>
 </InputGroup>
 ```
+
+## Composition
+
+Use the following composition to build an `InputGroup`:
+
+```text
+InputGroup
+├── InputGroupInput or InputGroupTextarea
+├── InputGroupAddon
+├── InputGroupButton
+└── InputGroupText
+```
+
+## Align
+
+Use the `@align` argument on `InputGroupAddon` to position the addon relative to the input.
+
+<Callout>
+  For proper focus management, `InputGroupAddon` should always be placed after
+  `InputGroupInput` or `InputGroupTextarea` in the DOM. Use the `@align` argument to
+  visually position the addon.
+</Callout>
+
+### inline-start
+
+Use `@align="inline-start"` to position the addon at the start of the input. This is the default.
+
+<ComponentPreview framework="ember" name="input-group-inline-start" previewClassName="h-48" />
+
+### inline-end
+
+Use `@align="inline-end"` to position the addon at the end of the input.
+
+<ComponentPreview framework="ember" name="input-group-inline-end" previewClassName="h-48" />
+
+### block-start
+
+Use `@align="block-start"` to position the addon above the input.
+
+<ComponentPreview framework="ember" name="input-group-block-start" previewClassName="h-96" />
+
+### block-end
+
+Use `@align="block-end"` to position the addon below the input.
+
+<ComponentPreview framework="ember" name="input-group-block-end" previewClassName="h-[26rem]" />
 
 ## Examples
 
 ### Icon
 
-<ComponentPreview framework="ember" name="input-group-icon" />
+<ComponentPreview framework="ember" name="input-group-icon" previewClassName="h-80" />
 
 ### Text
 
-Display additional text information alongside inputs.
-
-<ComponentPreview framework="ember" name="input-group-text" />
+<ComponentPreview framework="ember" name="input-group-text" previewClassName="h-80" />
 
 ### Button
 
-Add buttons to perform actions within the input group.
+<ComponentPreview framework="ember" name="input-group-button" previewClassName="h-72" />
 
-<ComponentPreview framework="ember" name="input-group-button" />
+### Kbd
 
-### Tooltip
-
-Add tooltips to provide additional context or help.
-
-<ComponentPreview framework="ember" name="input-group-tooltip" />
-
-### Textarea
-
-Input groups also work with textarea components. Use `block-start` or `block-end` for alignment.
-
-<ComponentPreview framework="ember" name="input-group-textarea" />
-
-### Spinner
-
-Show loading indicators while processing input.
-
-<ComponentPreview framework="ember" name="input-group-spinner" />
-
-### Label
-
-Add labels within input groups to improve accessibility.
-
-<ComponentPreview framework="ember" name="input-group-label" />
+<ComponentPreview framework="ember" name="input-group-kbd" previewClassName="h-40" />
 
 ### Dropdown
 
-Pair input groups with dropdown menus for complex interactions.
+<ComponentPreview framework="ember" name="input-group-dropdown" previewClassName="h-56" />
 
-<ComponentPreview framework="ember" name="input-group-dropdown" />
+### Spinner
 
-### Button Group
+<ComponentPreview framework="ember" name="input-group-spinner" previewClassName="h-80" />
 
-Wrap input groups with button groups to create prefixes and suffixes.
+### Textarea
 
-<ComponentPreview framework="ember" name="input-group-button-group" />
+<ComponentPreview framework="ember" name="input-group-textarea" previewClassName="h-96" />
+
+### Custom Input
+
+Add the `data-slot="input-group-control"` attribute to your custom input for automatic focus state handling.
+
+Here's an example of a custom resizable textarea from a third-party library.
+
+<ComponentPreview framework="ember" name="input-group-custom" previewClassName="h-56" />
 
 ### Variants
 
-Use the `@variant` prop to match standalone Input variants.
+Use the `@variant` argument to match standalone Input variants.
 
-<ComponentPreview framework="ember" name="input-group-variants" />
+<ComponentPreview framework="ember" name="input-group-variants" previewClassName="*:max-w-sm" />
 
 ## API Reference
 

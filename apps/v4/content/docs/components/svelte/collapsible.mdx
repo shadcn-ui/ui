@@ -3,9 +3,10 @@ title: Collapsible
 description: An interactive component which expands/collapses a panel.
 base: svelte
 component: true
+featured: true
 ---
 
-<ComponentPreview framework="svelte" name="collapsible-demo" />
+<ComponentPreview framework="svelte" name="collapsible-demo" align="start" />
 
 ## Installation
 
@@ -56,3 +57,58 @@ npx shadcn@latest add @force-ui-svelte/collapsible
   </Collapsible.Content>
 </Collapsible.Root>
 ```
+
+## Composition
+
+Use the following composition to build a `Collapsible`:
+
+```text
+Collapsible.Root
+├── Collapsible.Trigger
+└── Collapsible.Content
+```
+
+## Controlled State
+
+Use `bind:open` to control the state.
+
+```svelte showLineNumbers
+<script lang="ts">
+  import * as Collapsible from "$lib/components/ui/collapsible/index.js";
+
+  let open = $state(false);
+</script>
+
+<Collapsible.Root bind:open>
+  <Collapsible.Trigger>Toggle</Collapsible.Trigger>
+  <Collapsible.Content>Content</Collapsible.Content>
+</Collapsible.Root>
+```
+
+## Examples
+
+### Basic
+
+<ComponentPreview framework="svelte" name="collapsible-basic" align="start" />
+
+### Settings Panel
+
+Use a trigger button to reveal additional settings.
+
+<ComponentPreview framework="svelte" name="collapsible-settings" />
+
+### File Tree
+
+Use nested collapsibles to build a file tree.
+
+<ComponentPreview framework="svelte" name="collapsible-file-tree" previewClassName="h-[36rem]" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="svelte" name="collapsible-rtl" direction="rtl" align="start" />
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/docs/primitives/components/collapsible#api-reference) documentation for more information.

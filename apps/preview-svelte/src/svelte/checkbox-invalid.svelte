@@ -1,0 +1,17 @@
+<script lang="ts">
+	import * as Field from "@/svelte-ui/field/index.js";
+	import { Checkbox } from "@/svelte-ui/checkbox/index.js";
+</script>
+
+<Field.Group class="mx-auto w-56">
+	<Field.Field orientation="horizontal" data-invalid>
+		<Checkbox
+			id="terms-checkbox-invalid"
+			name="terms-checkbox-invalid"
+			aria-invalid="true"
+		/>
+		<Field.Label for="terms-checkbox-invalid">
+			Accept terms and conditions
+		</Field.Label>
+	</Field.Field>
+</Field.Group>

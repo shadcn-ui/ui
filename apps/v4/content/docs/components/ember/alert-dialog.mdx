@@ -80,3 +80,51 @@ import {
   </AlertDialogContent>
 </AlertDialog>
 ```
+
+## Composition
+
+Use the following composition to build an `AlertDialog`:
+
+```text
+AlertDialog
+├── AlertDialogTrigger
+└── AlertDialogContent
+    ├── AlertDialogHeader
+    │   ├── AlertDialogTitle
+    │   └── AlertDialogDescription
+    └── AlertDialogFooter
+        ├── AlertDialogCancel
+        └── AlertDialogAction
+```
+
+## Examples
+
+### Basic
+
+A basic alert dialog with a title, description, and cancel and continue buttons.
+
+<ComponentPreview framework="ember" name="alert-dialog-basic" />
+
+### Small
+
+Use the `data-size="sm"` attribute to make the alert dialog smaller.
+
+<ComponentPreview framework="ember" name="alert-dialog-small" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="ember" name="alert-dialog-rtl" direction="rtl" />
+
+## API Reference
+
+### size
+
+Use the `data-size` attribute on the `AlertDialogContent` component to control the size of the alert dialog. It accepts the following values:
+
+| Attribute   | Type                | Default     |
+| ----------- | ------------------- | ----------- |
+| `data-size` | `"default" \| "sm"` | `"default"` |
+
+For more information about the other components and their props, see the [Radix UI documentation](https://www.radix-ui.com/primitives/docs/components/alert-dialog#api-reference).

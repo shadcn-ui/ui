@@ -2,7 +2,7 @@
 import CheckIcon from "@material-symbols/svg-400/rounded/check.svg?component"
 import ChevronDown from "@material-symbols/svg-400/rounded/keyboard_arrow_down.svg?component"
 import { ListboxContent, ListboxFilter, ListboxItem, ListboxItemIndicator, ListboxRoot, useFilter } from 'reka-ui'
-import { ref } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { Button } from '@/ui/button'
 import { Popover, PopoverAnchor, PopoverContent, PopoverTrigger } from '@/ui/popover'
 import { TagsInput, TagsInputInput, TagsInputItem, TagsInputItemDelete, TagsInputItemText } from '@/ui/tags-input'

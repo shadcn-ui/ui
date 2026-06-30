@@ -1,11 +1,15 @@
 ---
-title: Input Otp
-description: Accessible one-time password component with copy paste functionality.
+title: Input OTP
+description: Accessible one-time password component with copy-paste functionality.
 base: svelte
 component: true
 ---
 
 <ComponentPreview framework="svelte" name="input-otp-demo" />
+
+## About
+
+Input OTP is built on top of Bits UI's [PinInput](https://bits-ui.com/docs/components/pin-input) which is inspired by [@guilherme_rodz](https://twitter.com/guilherme_rodz)'s Input OTP component.
 
 ## Installation
 
@@ -39,10 +43,6 @@ npx shadcn@latest add @force-ui-svelte/input-otp
 
 </CodeTabs>
 
-## About
-
-Input OTP is built on top of Bits UI's [PinInput](https://bits-ui.com/docs/components/pin-input) which is inspired by [@guilherme_rodz](https://twitter.com/guilherme_rodz)'s Input OTP component.
-
 ## Usage
 
 ```svelte showLineNumbers
@@ -53,16 +53,25 @@ Input OTP is built on top of Bits UI's [PinInput](https://bits-ui.com/docs/compo
 
 ```svelte showLineNumbers
 <InputOTP.Root maxlength={6}>
-  </InputOTP.Root>
+  {#snippet children({ cells })}
+    <InputOTP.Group>
+      {#each cells.slice(0, 3) as cell (cell)}
+        <InputOTP.Slot {cell} />
+      {/each}
+    </InputOTP.Group>
+    <InputOTP.Separator />
+    <InputOTP.Group>
+      {#each cells.slice(3, 6) as cell (cell)}
+        <InputOTP.Slot {cell} />
+      {/each}
+    </InputOTP.Group>
+  {/snippet}
+</InputOTP.Root>
 ```
 
-## Examples
-
-### Pattern
+## Pattern
 
 Use the `pattern` prop to define a custom pattern for the OTP input.
-
-<ComponentPreview framework="svelte" name="input-otp-pattern" />
 
 ```svelte showLineNumbers {3,6}
 <script lang="ts">
@@ -71,28 +80,64 @@ Use the `pattern` prop to define a custom pattern for the OTP input.
 </script>
 
 <InputOTP.Root maxlength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS}>
-  </InputOTP.Root>
+  ...
+</InputOTP.Root>
 ```
+
+<ComponentPreview framework="svelte" name="input-otp-pattern" />
+
+## Examples
 
 ### Separator
 
-You can use the `InputOTP.Separator` component to add a separator between the groups of cells.
+Use the `InputOTP.Separator` component to add a separator between the groups of cells.
 
 <ComponentPreview framework="svelte" name="input-otp-separator" />
 
-```svelte showLineNumbers {12}
-<script lang="ts">
-  import * as InputOTP from "$lib/components/ui/input-otp/index.js";
-</script>
+### Disabled
 
-<InputOTP.Root maxlength={4}>
-  </InputOTP.Root>
-```
+Use the `disabled` prop to disable the input.
+
+<ComponentPreview framework="svelte" name="input-otp-disabled" />
 
 ### Controlled
 
+Use `bind:value` to control the input value.
+
 <ComponentPreview framework="svelte" name="input-otp-controlled" />
+
+### Invalid
+
+Use `aria-invalid` on the slots to show an error state.
+
+<ComponentPreview framework="svelte" name="input-otp-invalid" />
+
+### Four Digits
+
+A common pattern for PIN codes. This uses the `pattern={REGEXP_ONLY_DIGITS}` prop.
+
+<ComponentPreview framework="svelte" name="input-otp-four-digits" />
+
+### Alphanumeric
+
+Use `REGEXP_ONLY_DIGITS_AND_CHARS` to accept both letters and numbers.
+
+<ComponentPreview framework="svelte" name="input-otp-alphanumeric" />
 
 ### Form
 
 <ComponentPreview framework="svelte" name="input-otp-form" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="svelte"
+  name="input-otp-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [Bits UI PinInput](https://bits-ui.com/docs/components/pin-input) documentation for more information.

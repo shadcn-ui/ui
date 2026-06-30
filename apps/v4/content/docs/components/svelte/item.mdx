@@ -1,11 +1,13 @@
 ---
 title: Item
-description: A versatile component that you can use to display any content.
+description: A versatile component for displaying content with media, title, description, and actions.
 base: svelte
 component: true
 ---
 
 <ComponentPreview framework="svelte" name="item-demo" />
+
+The `Item` component is a straightforward flex container that can house nearly any type of content. Use it to display a title, description, and actions. Group it with the `ItemGroup` component to create a list of items.
 
 ## Installation
 
@@ -43,67 +45,248 @@ npx shadcn@latest add @force-ui-svelte/item
 
 ```svelte showLineNumbers
 <script lang="ts">
-  import * as Item from "$lib/components/ui/item/index.js";
+  import * as Item from "@/svelte-ui/item/index.js";
 </script>
 ```
 
 ```svelte showLineNumbers
 <Item.Root>
-  <Item.Header>Item Header</Item.Header>
-  <Item.Media />
+  <Item.Media variant="icon">
+    <Icon />
+  </Item.Media>
   <Item.Content>
-    <Item.Title>Item</Item.Title>
-    <Item.Description>Item</Item.Description>
+    <Item.Title>Title</Item.Title>
+    <Item.Description>Description</Item.Description>
   </Item.Content>
-  <Item.Actions />
-  <Item.Footer>Item Footer</Item.Footer>
+  <Item.Actions>
+    <Button>Action</Button>
+  </Item.Actions>
 </Item.Root>
+```
+
+## Composition
+
+Use the following composition to build an `Item`:
+
+```text
+Item.Group
+└── Item.Root
+    ├── Item.Header
+    ├── Item.Media
+    ├── Item.Content
+    │   ├── Item.Title
+    │   └── Item.Description
+    ├── Item.Actions
+    └── Item.Footer
 ```
 
 ## Item vs Field
 
-Use Field if you need to display a form input such as a checkbox, input, radio, or select.
+Use `Field` if you need to display a form input such as a checkbox, input, radio, or select.
 
 If you only need to display content such as a title, description, and actions, use `Item`.
 
+## Variant
+
+Use the `variant` prop to change the visual style of the item.
+
+<ComponentPreview
+  framework="svelte"
+  name="item-variant"
+  previewClassName="h-96"
+/>
+
+## Size
+
+Use the `size` prop to change the size of the item. Available sizes are `default`, `sm`, and `xs`.
+
+<ComponentPreview
+  framework="svelte"
+  name="item-size"
+  previewClassName="h-96"
+/>
+
 ## Examples
-
-### Variants
-
-<ComponentPreview framework="svelte" name="item-variants-demo" />
-
-### Size
-
-The `Item` component has different sizes for different use cases. For example, you can use the `sm` size for a compact item or the default size for a standard item.
-
-<ComponentPreview framework="svelte" name="item-size-demo" />
 
 ### Icon
 
-<ComponentPreview framework="svelte" name="item-icon-demo" />
+Use `Item.Media` with `variant="icon"` to display an icon.
+
+<ComponentPreview framework="svelte" name="item-icon" />
 
 ### Avatar
 
-<ComponentPreview framework="svelte" name="item-avatar-demo" />
+You can use `Item.Media` with `variant="avatar"` to display an avatar.
+
+<ComponentPreview framework="svelte" name="item-avatar" />
 
 ### Image
 
-<ComponentPreview framework="svelte" name="item-image-demo" />
+Use `Item.Media` with `variant="image"` to display an image.
+
+<ComponentPreview framework="svelte" name="item-image" />
 
 ### Group
 
-<ComponentPreview framework="svelte" name="item-group-demo" />
+Use `Item.Group` to group related items together.
+
+<ComponentPreview
+  framework="svelte"
+  name="item-group"
+  previewClassName="h-96"
+/>
 
 ### Header
 
-<ComponentPreview framework="svelte" name="item-header-demo" />
+Use `Item.Header` to add a header above the item content.
+
+<ComponentPreview
+  framework="svelte"
+  name="item-header"
+  previewClassName="h-96"
+/>
 
 ### Link
 
-To render an item as a link, use the the `child` snippet. The hover and focus states will be applied to the anchor element.
+Use the `child` snippet to render the item as a link. The hover and focus states will be applied to the anchor element.
 
-<ComponentPreview framework="svelte" name="item-link-demo" />
+<ComponentPreview framework="svelte" name="item-link" />
+
+```svelte showLineNumbers
+<Item.Root>
+  {#snippet child({ props })}
+    <a href="/dashboard" {...props}>
+      <Item.Media variant="icon">
+        <HomeIcon />
+      </Item.Media>
+      <Item.Content>
+        <Item.Title>Dashboard</Item.Title>
+        <Item.Description>Overview of your account and activity.</Item.Description>
+      </Item.Content>
+    </a>
+  {/snippet}
+</Item.Root>
+```
 
 ### Dropdown
 
-<ComponentPreview framework="svelte" name="item-dropdown-demo" />
+<ComponentPreview framework="svelte" name="item-dropdown" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="svelte" name="item-rtl" direction="rtl" />
+
+## API Reference
+
+### Item.Root
+
+The main component for displaying content with media, title, description, and actions.
+
+| Prop      | Type                                | Default     |
+| --------- | ----------------------------------- | ----------- |
+| `variant` | `"default" \| "outline" \| "muted"` | `"default"` |
+| `size`    | `"default" \| "sm" \| "xs"`         | `"default"` |
+
+### Item.Group
+
+A container that groups related items together with consistent styling.
+
+```svelte
+<Item.Group>
+  <Item.Root />
+  <Item.Root />
+</Item.Group>
+```
+
+### Item.Separator
+
+A separator between items in a group.
+
+```svelte
+<Item.Group>
+  <Item.Root />
+  <Item.Separator />
+  <Item.Root />
+</Item.Group>
+```
+
+### Item.Media
+
+Use `Item.Media` to display media content such as icons, images, or avatars.
+
+| Prop      | Type                             | Default     |
+| --------- | -------------------------------- | ----------- |
+| `variant` | `"default" \| "icon" \| "image"` | `"default"` |
+
+```svelte
+<Item.Media variant="icon">
+  <Icon />
+</Item.Media>
+```
+
+```svelte
+<Item.Media variant="image">
+  <img src="..." alt="..." />
+</Item.Media>
+```
+
+### Item.Content
+
+Wraps the title and description of the item.
+
+```svelte
+<Item.Content>
+  <Item.Title>Title</Item.Title>
+  <Item.Description>Description</Item.Description>
+</Item.Content>
+```
+
+### Item.Title
+
+Displays the title of the item.
+
+```svelte
+<Item.Title>Item Title</Item.Title>
+```
+
+### Item.Description
+
+Displays the description of the item.
+
+```svelte
+<Item.Description>Item description</Item.Description>
+```
+
+### Item.Actions
+
+Container for action buttons or other interactive elements.
+
+```svelte
+<Item.Actions>
+  <Button>Action</Button>
+</Item.Actions>
+```
+
+### Item.Header
+
+Displays a header above the item content.
+
+```svelte
+<Item.Root>
+  <Item.Header>Header</Item.Header>
+  <Item.Content>...</Item.Content>
+</Item.Root>
+```
+
+### Item.Footer
+
+Displays a footer below the item content.
+
+```svelte
+<Item.Root>
+  <Item.Content>...</Item.Content>
+  <Item.Footer>Footer</Item.Footer>
+</Item.Root>
+```

@@ -1,6 +1,6 @@
 ---
 title: Input Group
-description: Display additional information or actions to an input or textarea.
+description: Add addons, buttons, and helper content to inputs.
 base: svelte
 component: true
 ---
@@ -44,7 +44,6 @@ npx shadcn@latest add @force-ui-svelte/input-group
 ```svelte showLineNumbers
 <script lang="ts">
   import * as InputGroup from "$lib/components/ui/input-group/index.js";
-  import SearchIcon from "@lucide/svelte/icons/search";
 </script>
 ```
 
@@ -54,79 +53,98 @@ npx shadcn@latest add @force-ui-svelte/input-group
   <InputGroup.Addon>
     <SearchIcon />
   </InputGroup.Addon>
-  <InputGroup.Addon align="inline-end">
-    <InputGroup.Button>Search</InputGroup.Button>
-  </InputGroup.Addon>
 </InputGroup.Root>
 ```
+
+## Composition
+
+Use the following composition to build an `InputGroup`:
+
+```text
+InputGroup.Root
+├── InputGroup.Input or InputGroup.Textarea
+├── InputGroup.Addon
+├── InputGroup.Button
+└── InputGroup.Text
+```
+
+## Align
+
+Use the `align` prop on `InputGroup.Addon` to position the addon relative to the input.
+
+<Callout>
+  For proper focus management, `InputGroup.Addon` should always be placed after
+  `InputGroup.Input` or `InputGroup.Textarea` in the DOM. Use the `align` prop to
+  visually position the addon.
+</Callout>
+
+### inline-start
+
+Use `align="inline-start"` to position the addon at the start of the input. This is the default.
+
+<ComponentPreview framework="svelte" name="input-group-inline-start" previewClassName="h-48" />
+
+### inline-end
+
+Use `align="inline-end"` to position the addon at the end of the input.
+
+<ComponentPreview framework="svelte" name="input-group-inline-end" previewClassName="h-48" />
+
+### block-start
+
+Use `align="block-start"` to position the addon above the input.
+
+<ComponentPreview framework="svelte" name="input-group-block-start" previewClassName="h-96" />
+
+### block-end
+
+Use `align="block-end"` to position the addon below the input.
+
+<ComponentPreview framework="svelte" name="input-group-block-end" previewClassName="h-[26rem]" />
 
 ## Examples
 
 ### Icon
 
-<ComponentPreview framework="svelte" name="input-group-icon-demo" />
+<ComponentPreview framework="svelte" name="input-group-icon" previewClassName="h-80" />
 
 ### Text
 
-Display additional text information alongside inputs.
-
-<ComponentPreview framework="svelte" name="input-group-text-demo" />
+<ComponentPreview framework="svelte" name="input-group-text" previewClassName="h-80" />
 
 ### Button
 
-Add buttons to perform actions within the input group.
+<ComponentPreview framework="svelte" name="input-group-button" previewClassName="h-72" />
 
-<ComponentPreview framework="svelte" name="input-group-button-demo" />
+### Kbd
 
-### Tooltip
-
-Add tooltips to provide additional context or help.
-
-<ComponentPreview framework="svelte" name="input-group-tooltip-demo" />
-
-### Textarea
-
-Input groups also work with textarea components. Use `block-start` or `block-end` for alignment.
-
-<ComponentPreview framework="svelte" name="input-group-textarea-demo" />
-
-### Spinner
-
-Show loading indicators while processing input.
-
-<ComponentPreview framework="svelte" name="input-group-spinner-demo" />
-
-### Label
-
-Add labels within input groups to improve accessibility.
-
-<ComponentPreview framework="svelte" name="input-group-label-demo" />
+<ComponentPreview framework="svelte" name="input-group-kbd" previewClassName="h-40" />
 
 ### Dropdown
 
-Pair input groups with dropdown menus for complex interactions.
+<ComponentPreview framework="svelte" name="input-group-dropdown" previewClassName="h-56" />
 
-<ComponentPreview framework="svelte" name="input-group-dropdown-demo" />
+### Spinner
 
-### Button Group
+<ComponentPreview framework="svelte" name="input-group-spinner" previewClassName="h-80" />
 
-Wrap input groups with button groups to create prefixes and suffixes.
+### Textarea
 
-<ComponentPreview framework="svelte" name="input-group-button-group-demo" />
+<ComponentPreview framework="svelte" name="input-group-textarea" previewClassName="h-96" />
 
 ### Custom Input
 
-Add the `data-slot="input-group-control"` attribute to your custom input for automatic behavior and focus state handling.
+Add the `data-slot="input-group-control"` attribute to your custom input for automatic focus state handling.
 
-No style is applied to the custom input. Apply your own styles using the `class` prop.
+Here's an example of a custom resizable textarea from a third-party library.
 
-<ComponentPreview framework="svelte" name="input-group-custom-input-demo" />
+<ComponentPreview framework="svelte" name="input-group-custom" previewClassName="h-56" />
 
 ### Variants
 
 Use the `variant` prop to match standalone Input variants.
 
-<ComponentPreview framework="svelte" name="input-group-variants" />
+<ComponentPreview framework="svelte" name="input-group-variants" previewClassName="*:max-w-sm" />
 
 ## API Reference
 
@@ -143,5 +161,88 @@ The main component that wraps inputs and addons.
 <InputGroup.Root variant="filled">
   <InputGroup.Input />
   <InputGroup.Addon />
+</InputGroup.Root>
+```
+
+### InputGroup.Addon
+
+Displays icons, text, buttons, or other content alongside inputs.
+
+> For proper focus navigation, `InputGroup.Addon` should be placed after the input. Set the `align` prop to position the addon.
+
+| Prop    | Type                                                             | Default          |
+| ------- | ---------------------------------------------------------------- | ---------------- |
+| `align` | `"inline-start" \| "inline-end" \| "block-start" \| "block-end"` | `"inline-start"` |
+| `class` | `string`                                                         |                  |
+
+```svelte
+<InputGroup.Addon align="inline-end">
+  <SearchIcon />
+</InputGroup.Addon>
+```
+
+**For `<InputGroup.Input />`, use the `inline-start` or `inline-end` alignment. For `<InputGroup.Textarea />`, use the `block-start` or `block-end` alignment.**
+
+The `InputGroup.Addon` component can have multiple `InputGroup.Button` components and icons.
+
+```svelte
+<InputGroup.Addon>
+  <InputGroup.Button>Button</InputGroup.Button>
+  <InputGroup.Button>Button</InputGroup.Button>
+</InputGroup.Addon>
+```
+
+### InputGroup.Button
+
+Displays buttons within input groups.
+
+| Prop      | Type                                                                          | Default   |
+| --------- | ----------------------------------------------------------------------------- | --------- |
+| `size`    | `"xs" \| "icon-xs" \| "sm" \| "icon-sm"`                                      | `"xs"`    |
+| `variant` | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link"` | `"ghost"` |
+| `class`   | `string`                                                                      |           |
+
+```svelte
+<InputGroup.Button>Button</InputGroup.Button>
+<InputGroup.Button size="icon-xs" aria-label="Copy">
+  <CopyIcon />
+</InputGroup.Button>
+```
+
+### InputGroup.Input
+
+Replacement for `<Input />` when building input groups. This component has the input group styles pre-applied and uses the unified `data-slot="input-group-control"` for focus state handling.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` |         |
+
+All other props are passed through to the underlying `<Input />` component.
+
+```svelte
+<InputGroup.Root>
+  <InputGroup.Input placeholder="Enter text..." />
+  <InputGroup.Addon>
+    <SearchIcon />
+  </InputGroup.Addon>
+</InputGroup.Root>
+```
+
+### InputGroup.Textarea
+
+Replacement for `<Textarea />` when building input groups. This component has the textarea group styles pre-applied and uses the unified `data-slot="input-group-control"` for focus state handling.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` |         |
+
+All other props are passed through to the underlying `<Textarea />` component.
+
+```svelte
+<InputGroup.Root>
+  <InputGroup.Textarea placeholder="Enter message..." />
+  <InputGroup.Addon align="block-end">
+    <InputGroup.Button>Send</InputGroup.Button>
+  </InputGroup.Addon>
 </InputGroup.Root>
 ```

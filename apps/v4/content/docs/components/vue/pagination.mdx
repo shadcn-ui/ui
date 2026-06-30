@@ -55,27 +55,58 @@ import {
 </script>
 
 <template>
-  <Pagination>
-    <PaginationContent>
-      <PaginationItem>
-        <PaginationPrevious href="#" />
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink href="#"> 1 </PaginationLink>
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink href="#" is-active> 2 </PaginationLink>
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink href="#"> 3 </PaginationLink>
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationEllipsis />
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationNext href="#" />
-      </PaginationItem>
+  <Pagination :items-per-page="10" :total="30" :default-page="2">
+    <PaginationContent v-slot="{ items }">
+      <PaginationPrevious />
+      <template v-for="(item, index) in items" :key="index">
+        <PaginationItem
+          v-if="item.type === 'page'"
+          :value="item.value"
+          :is-active="item.value === 2"
+        >
+          {{ item.value }}
+        </PaginationItem>
+      </template>
+      <PaginationEllipsis :index="4" />
+      <PaginationNext />
     </PaginationContent>
   </Pagination>
 </template>
 ```
+
+## Composition
+
+Use the following composition to build a `Pagination`:
+
+```text
+Pagination
+└── PaginationContent
+    ├── PaginationPrevious
+    ├── PaginationItem
+    ├── PaginationEllipsis
+    └── PaginationNext
+```
+
+## Examples
+
+### Simple
+
+A simple pagination with only page numbers.
+
+<ComponentPreview framework="vue" name="pagination-simple" />
+
+### Icons Only
+
+Use just the previous and next buttons without page numbers. This is useful for data tables with a rows per page selector.
+
+<ComponentPreview framework="vue" name="pagination-icons-only" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="vue"
+  name="pagination-rtl"
+  direction="rtl"
+/>

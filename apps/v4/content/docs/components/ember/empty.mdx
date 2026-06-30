@@ -49,7 +49,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from '@/ui/empty';
+} from '@/ember-ui/empty';
 ```
 
 ```hbs showLineNumbers
@@ -65,6 +65,19 @@ import {
     <Button>Add data</Button>
   </EmptyContent>
 </Empty>
+```
+
+## Composition
+
+Use the following composition to build an `Empty` state:
+
+```text
+Empty
+├── EmptyHeader
+│   ├── EmptyMedia
+│   ├── EmptyTitle
+│   └── EmptyDescription
+└── EmptyContent
 ```
 
 ## Examples
@@ -98,6 +111,12 @@ Use the `EmptyMedia` component to display an avatar group in the empty state.
 You can add an `InputGroup` component to the `EmptyContent` component.
 
 <ComponentPreview framework="ember" name="empty-input-group" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="ember" name="empty-rtl" direction="rtl" />
 
 ## API Reference
 

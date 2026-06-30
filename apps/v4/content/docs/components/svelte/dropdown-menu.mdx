@@ -1,6 +1,7 @@
 ---
 title: Dropdown Menu
 description: Displays a menu to the user — such as a set of actions or functions — triggered by a button.
+featured: true
 base: svelte
 component: true
 ---
@@ -63,33 +64,106 @@ npx shadcn@latest add @force-ui-svelte/dropdown-menu
 </DropdownMenu.Root>
 ```
 
+## Composition
+
+Use the following composition to build a `DropdownMenu`:
+
+```text
+DropdownMenu.Root
+├── DropdownMenu.Trigger
+└── DropdownMenu.Content
+    ├── DropdownMenu.Group
+    │   ├── DropdownMenu.Label
+    │   ├── DropdownMenu.Item
+    │   └── DropdownMenu.Item
+    ├── DropdownMenu.Separator
+    ├── DropdownMenu.Group
+    │   ├── DropdownMenu.Label
+    │   ├── DropdownMenu.CheckboxItem
+    │   └── DropdownMenu.CheckboxItem
+    ├── DropdownMenu.Separator
+    ├── DropdownMenu.Group
+    │   ├── DropdownMenu.Label
+    │   └── DropdownMenu.RadioGroup
+    │       ├── DropdownMenu.RadioItem
+    │       └── DropdownMenu.RadioItem
+    └── DropdownMenu.Sub
+        ├── DropdownMenu.SubTrigger
+        └── DropdownMenu.SubContent
+            └── DropdownMenu.Group
+                ├── DropdownMenu.Label
+                ├── DropdownMenu.Item
+                └── DropdownMenu.Item
+```
+
 ## Examples
+
+### Basic
+
+A basic dropdown menu with labels and separators.
+
+<ComponentPreview framework="svelte" name="dropdown-menu-basic" />
+
+### Submenu
+
+Use `DropdownMenu.Sub` to nest secondary actions.
+
+<ComponentPreview framework="svelte" name="dropdown-menu-submenu" />
+
+### Shortcuts
+
+Add `DropdownMenu.Shortcut` to show keyboard hints.
+
+<ComponentPreview framework="svelte" name="dropdown-menu-shortcuts" />
+
+### Icons
+
+Combine icons with labels for quick scanning.
+
+<ComponentPreview framework="svelte" name="dropdown-menu-icons" />
 
 ### Checkboxes
 
+Use `DropdownMenu.CheckboxItem` for toggles.
+
 <ComponentPreview framework="svelte" name="dropdown-menu-checkboxes" />
+
+### Checkboxes Icons
+
+Add icons to checkbox items.
+
+<ComponentPreview framework="svelte" name="dropdown-menu-checkboxes-icons" />
 
 ### Radio Group
 
+Use `DropdownMenu.RadioGroup` for exclusive choices.
+
 <ComponentPreview framework="svelte" name="dropdown-menu-radio-group" />
 
-### Dialog
+### Radio Icons
 
-This example shows how to open a dialog from a dropdown menu.
+Show radio options with icons.
 
-```svelte showLineNumbers
-<DropdownMenu.Root>
-  <DropdownMenu.Trigger class={buttonVariants({ variant: "outline" })}>
-    Actions
-  </DropdownMenu.Trigger>
-</DropdownMenu.Root>
-```
+<ComponentPreview framework="svelte" name="dropdown-menu-radio-icons" />
 
-<ComponentPreview framework="svelte" name="dropdown-menu-dialog" />
+### Destructive
 
-## Changelog
+Use `variant="destructive"` for irreversible actions.
 
-### 2024-10-30 Classes for DropdownMenu.SubTrigger
+<ComponentPreview framework="svelte" name="dropdown-menu-destructive" />
 
-- Added `gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0` to the `<DropdownMenu.SubTrigger>` to automatically style icon inside the dropdown menu sub trigger.
-- Removed `size-4` from the icon inside the `<DropdownMenu.SubTrigger>` since it is now handled by the parent `<DropdownMenu.SubTrigger>`.
+### Avatar
+
+An account switcher dropdown triggered by an avatar.
+
+<ComponentPreview framework="svelte" name="dropdown-menu-avatar" />
+
+### Complex
+
+A richer example combining groups, icons, and submenus.
+
+<ComponentPreview framework="svelte" name="dropdown-menu-complex" />
+
+## API Reference
+
+See the [Radix UI documentation](https://www.radix-ui.com/docs/primitives/components/dropdown-menu) for the full API reference.

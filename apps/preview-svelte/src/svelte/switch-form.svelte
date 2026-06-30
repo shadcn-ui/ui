@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { z } from "zod";
+	import { z } from "zod/v3";
 	const formSchema = z.object({
 		marketing_emails: z.boolean().default(false),
 		security_emails: z.boolean().default(true),
@@ -8,13 +8,13 @@
 
 <script lang="ts">
 	import { defaults, superForm } from "sveltekit-superforms";
-	import { zod4 } from "sveltekit-superforms/adapters";
+	import { zod, type ZodObjectType } from "sveltekit-superforms/adapters";
 	import { toast } from "svelte-sonner";
 	import * as Form from "@/svelte-ui/form/index.js";
 	import { Switch } from "@/svelte-ui/switch/index.js";
 
-	const form = superForm(defaults(zod4(formSchema)), {
-		validators: zod4(formSchema),
+	const form = superForm(defaults(zod(formSchema as ZodObjectType)), {
+		validators: zod(formSchema as ZodObjectType),
 		SPA: true,
 		onUpdate: ({ form: f }) => {
 			if (f.valid) {
@@ -45,7 +45,7 @@
 								Receive emails about new products, features, and more.
 							</Form.Description>
 						</div>
-						<Switch {...props} bind:checked={$formData.marketing_emails} />
+						<Switch {...props} bind:checked={$formData.marketing_emails as boolean} />
 					{/snippet}
 				</Form.Control>
 			</Form.Field>
@@ -66,7 +66,7 @@
 							{...props}
 							aria-readonly
 							disabled
-							bind:checked={$formData.security_emails}
+							bind:checked={$formData.security_emails as boolean}
 						/>
 					{/snippet}
 				</Form.Control>

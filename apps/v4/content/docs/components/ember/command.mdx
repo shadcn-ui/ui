@@ -1,11 +1,15 @@
 ---
 title: Command
-description: Fast, composable, unstyled command menu for Ember.
+description: Command menu for search and quick actions.
 base: ember
 component: true
 ---
 
-<ComponentPreview framework="ember" name="command-demo" />
+<ComponentPreview framework="ember" name="command-demo" align="start" previewClassName="h-[24.5rem]" />
+
+## About
+
+The `<Command />` component uses the [`cmdk`](https://github.com/dip/cmdk) component by [Dip](https://www.dip.org/).
 
 ## Installation
 
@@ -58,7 +62,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from '@/ui/command';
+} from '@/ember-ui/command';
 ```
 
 ```hbs showLineNumbers
@@ -81,14 +85,60 @@ import {
 </Command>
 ```
 
+## Composition
+
+Use the following composition to build a `Command`:
+
+```text
+Command
+├── CommandInput
+└── CommandList
+    ├── CommandEmpty
+    ├── CommandGroup
+    │   ├── CommandItem
+    │   └── CommandItem
+    ├── CommandSeparator
+    └── CommandGroup
+        ├── CommandItem
+        └── CommandItem
+```
+
 ## Examples
 
-### Dialog
+### Basic
 
-<ComponentPreview framework="ember" name="command-dialog" />
+A simple command menu in a dialog.
 
-To show the command menu in a dialog, use the `<CommandDialog />` component.
+<ComponentPreview framework="ember" name="command-basic" />
 
-### Combobox
+### Shortcuts
 
-You can use the `<Command />` component as a combobox. See the [Combobox](/docs/components/combobox) page for more information.
+<ComponentPreview framework="ember" name="command-shortcuts" />
+
+### Groups
+
+A command menu with groups, icons and separators.
+
+<ComponentPreview framework="ember" name="command-groups" />
+
+### Scrollable
+
+Scrollable command menu with multiple items.
+
+<ComponentPreview framework="ember" name="command-scrollable" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="ember"
+  name="command-rtl"
+  direction="rtl"
+  align="start"
+  previewClassName="h-[24.5rem]"
+/>
+
+## API Reference
+
+See the [cmdk](https://github.com/dip/cmdk) documentation for more information.

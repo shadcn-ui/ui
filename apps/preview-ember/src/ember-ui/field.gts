@@ -19,8 +19,7 @@ interface FieldSetSignature {
 class FieldSet extends Component<FieldSetSignature> {
   get classes() {
     return cn(
-      'flex flex-col gap-6',
-      'has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3',
+      'cn-field-set flex flex-col',
       this.args.class
     );
   }
@@ -50,9 +49,7 @@ class FieldLegend extends Component<FieldLegendSignature> {
 
   get classes() {
     return cn(
-      'mb-3 font-medium',
-      'data-[variant=legend]:text-base',
-      'data-[variant=label]:text-sm',
+      'cn-field-legend',
       this.args.class
     );
   }
@@ -82,7 +79,7 @@ interface FieldGroupSignature {
 class FieldGroup extends Component<FieldGroupSignature> {
   get classes() {
     return cn(
-      'group/field-group @container/field-group flex w-full flex-col gap-7 data-[slot=checkbox-group]:gap-3 [&>[data-slot=field-group]]:gap-4',
+      'cn-field-group group/field-group @container/field-group flex w-full flex-col',
       this.args.class
     );
   }
@@ -112,21 +109,15 @@ function fieldVariants(
   orientation: Orientation = 'vertical',
   className?: string
 ): string {
-  const baseClasses =
-    'group/field flex w-full gap-3 data-[invalid=true]:text-destructive';
+  const baseClasses = 'cn-field group/field flex w-full';
 
   const orientationClasses: Record<Orientation, string> = {
-    vertical: 'flex-col [&>*]:w-full [&>.sr-only]:w-auto',
-    horizontal: [
-      'flex-row items-center',
-      '[&>[data-slot=field-label]]:flex-auto',
-      'has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px',
-    ].join(' '),
-    responsive: [
-      'flex-col [&>*]:w-full [&>.sr-only]:w-auto @md/field-group:flex-row @md/field-group:items-center @md/field-group:[&>*]:w-auto',
-      '@md/field-group:[&>[data-slot=field-label]]:flex-auto',
-      '@md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px',
-    ].join(' '),
+    vertical:
+      'cn-field-orientation-vertical flex-col *:w-full [&>.sr-only]:w-auto',
+    horizontal:
+      'cn-field-orientation-horizontal flex-row items-center has-[>[data-slot=field-content]]:items-start *:data-[slot=field-label]:flex-auto has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px',
+    responsive:
+      'cn-field-orientation-responsive flex-col *:w-full @md/field-group:flex-row @md/field-group:items-center @md/field-group:*:w-auto @md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:*:data-[slot=field-label]:flex-auto [&>.sr-only]:w-auto @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px',
   };
 
   return cn(baseClasses, orientationClasses[orientation], className);
@@ -172,7 +163,7 @@ interface FieldContentSignature {
 class FieldContent extends Component<FieldContentSignature> {
   get classes() {
     return cn(
-      'group/field-content flex flex-1 flex-col gap-1.5 leading-snug',
+      'cn-field-content group/field-content flex flex-1 flex-col leading-snug',
       this.args.class
     );
   }
@@ -198,9 +189,8 @@ interface FieldLabelSignature {
 class FieldLabel extends Component<FieldLabelSignature> {
   get classes() {
     return cn(
-      'group/field-label peer/field-label flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50',
-      'has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border [&>[data-slot=field]]:p-4',
-      'has-data-[state=checked]:bg-primary/5 has-data-[state=checked]:border-primary dark:has-data-[state=checked]:bg-primary/10',
+      'cn-field-label group/field-label peer/field-label flex w-fit',
+      'has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col',
       this.args.class
     );
   }
@@ -230,7 +220,7 @@ interface FieldTitleSignature {
 class FieldTitle extends Component<FieldTitleSignature> {
   get classes() {
     return cn(
-      'flex w-fit items-center gap-2 text-sm leading-snug font-medium group-data-[disabled=true]/field:opacity-50',
+      'cn-field-title flex w-fit items-center',
       this.args.class
     );
   }
@@ -255,9 +245,9 @@ interface FieldDescriptionSignature {
 class FieldDescription extends Component<FieldDescriptionSignature> {
   get classes() {
     return cn(
-      'text-muted-foreground text-sm font-normal leading-normal group-has-[[data-orientation=horizontal]]/field:text-balance',
-      'nth-last-2:-mt-1 last:mt-0 [[data-variant=legend]+&]:-mt-1.5',
-      '[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4',
+      'cn-field-description leading-normal font-normal group-has-data-horizontal/field:text-balance',
+      'last:mt-0 nth-last-2:-mt-1',
+      '[&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-primary',
       this.args.class
     );
   }
@@ -282,7 +272,7 @@ interface FieldSeparatorSignature {
 const FieldSeparator: TOC<FieldSeparatorSignature> = <template>
   <div
     class={{cn
-      "relative -my-2 h-5 text-sm group-data-[variant=outline]/field-group:-mb-2"
+      "cn-field-separator relative"
       @class
     }}
     data-content={{has-block}}
@@ -292,7 +282,7 @@ const FieldSeparator: TOC<FieldSeparatorSignature> = <template>
     <Separator @class="absolute inset-0 top-1/2" />
     {{#if (has-block)}}
       <span
-        class="bg-background text-muted-foreground relative mx-auto block w-fit px-2"
+        class="cn-field-separator-content relative mx-auto block w-fit bg-background"
         data-slot="field-separator-content"
       >
         {{yield}}
@@ -342,7 +332,7 @@ class FieldError extends Component<FieldErrorSignature> {
   }
 
   get classes() {
-    return cn('text-destructive text-sm font-normal', this.args.class);
+    return cn('cn-field-error font-normal', this.args.class);
   }
 
   <template>

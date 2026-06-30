@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { z } from "zod";
+	import { z } from "zod/v3";
 
 	const languages = [
 		{ label: "English", value: "en" },
@@ -23,7 +23,7 @@
 	import { tick } from "svelte";
 	import CheckIcon from "~icons/ms/check";
 	import ChevronsUpDownIcon from "~icons/ms/unfold_more";
-	import { zod4 } from "sveltekit-superforms/adapters";
+	import { zod, type ZodObjectType } from "sveltekit-superforms/adapters";
 	import { toast } from "svelte-sonner";
 	import { useId } from "bits-ui";
 	import * as Form from "@/svelte-ui/form/index.js";
@@ -32,8 +32,8 @@
 	import { cn } from "@/svelte-lib/utils.js";
 	import { buttonVariants } from "@/svelte-ui/button/index.js";
 
-	const form = superForm(defaults(zod4(formSchema)), {
-		validators: zod4(formSchema),
+	const form = superForm(defaults(zod(formSchema as ZodObjectType)), {
+		validators: zod(formSchema as ZodObjectType),
 		SPA: true,
 		onUpdate: ({ form: f }) => {
 			if (f.valid) {

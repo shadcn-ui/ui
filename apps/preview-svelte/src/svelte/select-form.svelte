@@ -1,20 +1,20 @@
 <script lang="ts" module>
-	import { z } from "zod";
+	import { z } from "zod/v3";
 
 	const formSchema = z.object({
-		email: z.email({ message: "Please select an email to display" }),
+		email: z.string().email({ message: "Please select an email to display" }),
 	});
 </script>
 
 <script lang="ts">
 	import { defaults, superForm } from "sveltekit-superforms";
-	import { zod4 } from "sveltekit-superforms/adapters";
+	import { zod, type ZodObjectType } from "sveltekit-superforms/adapters";
 	import { toast } from "svelte-sonner";
 	import * as Form from "@/svelte-ui/form/index.js";
 	import * as Select from "@/svelte-ui/select/index.js";
 
-	const form = superForm(defaults(zod4(formSchema)), {
-		validators: zod4(formSchema),
+	const form = superForm(defaults(zod(formSchema as ZodObjectType)), {
+		validators: zod(formSchema as ZodObjectType),
 		SPA: true,
 		onUpdate: ({ form: f }) => {
 			if (f.valid) {
@@ -33,7 +33,7 @@
 		<Form.Control>
 			{#snippet children({ props })}
 				<Form.Label>Email</Form.Label>
-				<Select.Root type="single" bind:value={$formData.email} name={props.name}>
+				<Select.Root type="single" bind:value={$formData.email as string} name={props.name}>
 					<Select.Trigger {...props}>
 						{$formData.email ? $formData.email : "Select a verified email to display"}
 					</Select.Trigger>

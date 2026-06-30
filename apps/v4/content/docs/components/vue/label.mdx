@@ -7,6 +7,11 @@ component: true
 
 <ComponentPreview framework="vue" name="label-demo" />
 
+<Callout>
+  For form fields, use the [Field](/docs/components/vue/field) component which
+  includes built-in label, description, and error handling.
+</Callout>
+
 ## Installation
 
 <CodeTabs>
@@ -50,3 +55,38 @@ import { Label } from "@/components/ui/label"
   <Label for="email">Your email address</Label>
 </template>
 ```
+
+## Label in Field
+
+For form fields, use the [Field](/docs/components/vue/field) component which
+includes built-in `FieldLabel`, `FieldDescription`, and `FieldError` components.
+
+```vue showLineNumbers
+<script setup lang="ts">
+import { Field, FieldLabel } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+</script>
+
+<template>
+  <Field>
+    <FieldLabel for="email">Your email address</FieldLabel>
+    <Input id="email" />
+  </Field>
+</template>
+```
+
+<ComponentPreview
+  framework="vue"
+  name="field-demo"
+  previewClassName="h-[44rem]"
+/>
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="vue" name="label-rtl" direction="rtl" />
+
+## API Reference
+
+See the [Radix UI Label](https://www.radix-ui.com/docs/primitives/components/label#api-reference) documentation for more information.

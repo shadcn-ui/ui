@@ -13,9 +13,9 @@ interface TableSignature {
 }
 
 const Table: TOC<TableSignature> = <template>
-  <div class="relative w-full overflow-x-auto" data-slot="table-container">
+  <div class="cn-table-container" data-slot="table-container">
     <table
-      class={{cn "w-full caption-bottom text-sm" @class}}
+      class={{cn "cn-table" @class}}
       data-slot="table"
       ...attributes
     >
@@ -36,7 +36,7 @@ interface TableHeaderSignature {
 
 const TableHeader: TOC<TableHeaderSignature> = <template>
   <thead
-    class={{cn "[&_tr]:border-b" @class}}
+    class={{cn "cn-table-header" @class}}
     data-slot="table-header"
     ...attributes
   >
@@ -56,7 +56,7 @@ interface TableBodySignature {
 
 const TableBody: TOC<TableBodySignature> = <template>
   <tbody
-    class={{cn "[&_tr:last-child]:border-0" @class}}
+    class={{cn "cn-table-body" @class}}
     data-slot="table-body"
     ...attributes
   >
@@ -76,10 +76,7 @@ interface TableFooterSignature {
 
 const TableFooter: TOC<TableFooterSignature> = <template>
   <tfoot
-    class={{cn
-      "bg-muted/50 border-t font-medium [&>tr]:last:border-b-0"
-      @class
-    }}
+    class={{cn "cn-table-footer" @class}}
     data-slot="table-footer"
     ...attributes
   >
@@ -99,10 +96,7 @@ interface TableRowSignature {
 
 const TableRow: TOC<TableRowSignature> = <template>
   <tr
-    class={{cn
-      "hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors"
-      @class
-    }}
+    class={{cn "cn-table-row has-aria-expanded:bg-muted/50" @class}}
     data-slot="table-row"
     ...attributes
   >
@@ -122,10 +116,7 @@ interface TableHeadSignature {
 
 const TableHead: TOC<TableHeadSignature> = <template>
   <th
-    class={{cn
-      "text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
-      @class
-    }}
+    class={{cn "cn-table-head" @class}}
     data-slot="table-head"
     ...attributes
   >
@@ -145,10 +136,7 @@ interface TableCellSignature {
 
 const TableCell: TOC<TableCellSignature> = <template>
   <td
-    class={{cn
-      "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
-      @class
-    }}
+    class={{cn "cn-table-cell" @class}}
     data-slot="table-cell"
     ...attributes
   >
@@ -168,7 +156,7 @@ interface TableCaptionSignature {
 
 const TableCaption: TOC<TableCaptionSignature> = <template>
   <caption
-    class={{cn "text-muted-foreground mt-4 text-sm" @class}}
+    class={{cn "cn-table-caption" @class}}
     data-slot="table-caption"
     ...attributes
   >

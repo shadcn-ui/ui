@@ -22,9 +22,8 @@ interface KbdSignature {
 const Kbd: TOC<KbdSignature> = <template>
   <kbd
     class={{cn
-      "cn-kbd pointer-events-none inline-flex h-5 w-fit min-w-5 items-center justify-center gap-1 rounded-sm px-1 font-sans text-xs font-medium select-none"
-      "[&_svg:not([class*='size-'])]:size-3"
-      (variantClasses[@variant ?? "default"])
+      "cn-kbd pointer-events-none inline-flex items-center justify-center select-none"
+      (variantClasses (if @variant @variant "default"))
       @class
     }}
     data-slot="kbd"
@@ -46,7 +45,7 @@ interface KbdGroupSignature {
 
 const KbdGroup: TOC<KbdGroupSignature> = <template>
   <kbd
-    class={{cn "inline-flex items-center gap-1" @class}}
+    class={{cn "cn-kbd-group inline-flex items-center" @class}}
     data-slot="kbd-group"
     ...attributes
   >

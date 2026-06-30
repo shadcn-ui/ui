@@ -26,6 +26,7 @@
 	let {
 		ref = $bindable(null),
 		value = $bindable(),
+		defaultValue, // [FORCE-UI] React compat alias for initial value
 		class: className,
 		size = "default",
 		spacing = 0,
@@ -36,7 +37,13 @@
 		ToggleVariants & {
 			spacing?: number;
 			orientation?: "horizontal" | "vertical";
+			defaultValue?: string | string[]; // [FORCE-UI] string for single, string[] for multiple
 		} = $props();
+
+	// [FORCE-UI] support defaultValue as initial value alias
+	if (defaultValue !== undefined && value === undefined) {
+		value = defaultValue as never;
+	}
 
 	setToggleGroupCtx({
 		get variant() {

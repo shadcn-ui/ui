@@ -14,9 +14,12 @@
 		portalProps,
 		children,
 		preventScroll = true,
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		position, // [FORCE-UI] accepted for API compat with React shadcn, unused in bits-ui v2
 		...restProps
 	}: WithoutChild<SelectPrimitive.ContentProps> & {
 		portalProps?: WithoutChildrenOrChild<ComponentProps<typeof SelectPortal>>;
+		position?: "popper" | "item-aligned"; // [FORCE-UI]
 	} = $props();
 </script>
 

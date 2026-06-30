@@ -58,6 +58,17 @@ import {
 </template>
 ```
 
+## Composition
+
+Use the following composition to build a `ButtonGroup`:
+
+```text
+ButtonGroup
+├── Button or Input
+├── ButtonGroupSeparator
+└── ButtonGroupText
+```
+
 ## Accessibility
 
 - The `ButtonGroup` component has the `role` attribute set to `group`.
@@ -94,7 +105,7 @@ Control the size of buttons using the `size` prop on individual buttons.
 
 ### Nested
 
-`<ButtonGroup>` components to create button groups with spacing.
+Nest `<ButtonGroup>` components to create button groups with spacing.
 
 <ComponentPreview framework="vue" name="button-group-nested-demo" />
 
@@ -116,7 +127,7 @@ Create a split button group by adding two buttons separated by a `ButtonGroupSep
 
 Wrap an `Input` component with buttons.
 
-<ComponentPreview framework="vue" name="button-group-with-input-demo" />
+<ComponentPreview framework="vue" name="button-group-input" />
 
 ### Input Group
 
@@ -128,19 +139,29 @@ Wrap an `InputGroup` component to create complex input layouts.
 
 Create a split button group with a `DropdownMenu` component.
 
-<ComponentPreview framework="vue" name="button-group-with-dropdown-menu-demo" />
+<ComponentPreview framework="vue" name="button-group-dropdown" />
 
 ### Select
 
 Pair with a `Select` component.
 
-<ComponentPreview framework="vue" name="button-group-with-select-demo" />
+<ComponentPreview framework="vue" name="button-group-select" />
 
 ### Popover
 
 Use with a `Popover` component.
 
-<ComponentPreview framework="vue" name="button-group-with-popover-demo" />
+<ComponentPreview framework="vue" name="button-group-popover" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="vue"
+  name="button-group-rtl"
+  direction="rtl"
+/>
 
 ## API Reference
 

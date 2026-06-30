@@ -3,9 +3,16 @@ title: Resizable
 description: Accessible resizable panel groups and layouts with keyboard support.
 base: vue
 component: true
+links:
+  doc: https://github.com/bvaughn/react-resizable-panels
+  api: https://github.com/bvaughn/react-resizable-panels/tree/main/packages/react-resizable-panels
 ---
 
-<ComponentPreview framework="vue" name="resizable-demo" />
+<ComponentPreview framework="vue" name="resizable-demo" previewClassName="h-80" />
+
+## About
+
+The `Resizable` component is built on top of [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels) by [bvaughn](https://github.com/bvaughn).
 
 ## Installation
 
@@ -58,3 +65,42 @@ import {
   </ResizablePanelGroup>
 </template>
 ```
+
+## Composition
+
+Use the following composition to build a `ResizablePanelGroup`:
+
+```text
+ResizablePanelGroup
+├── ResizablePanel
+├── ResizableHandle
+└── ResizablePanel
+```
+
+## Examples
+
+### Vertical
+
+Use `direction="vertical"` for vertical resizing.
+
+<ComponentPreview framework="vue" name="resizable-vertical" />
+
+### Handle
+
+Use the `withHandle` prop on `ResizableHandle` to show a visible handle.
+
+<ComponentPreview framework="vue" name="resizable-handle" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="vue"
+  name="resizable-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels/tree/main/packages/react-resizable-panels) documentation.

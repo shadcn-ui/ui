@@ -7,6 +7,11 @@ component: true
 
 <ComponentPreview framework="svelte" name="label-demo" />
 
+<Callout>
+  For form fields, use the [Field](/docs/components/svelte/field) component which
+  includes built-in label, description, and error handling.
+</Callout>
+
 ## Installation
 
 <CodeTabs>
@@ -50,3 +55,36 @@ npx shadcn@latest add @force-ui-svelte/label
 ```svelte
 <Label for="email">Your email address</Label>
 ```
+
+## Label in Field
+
+For form fields, use the [Field](/docs/components/svelte/field) component which
+includes built-in `FieldLabel`, `FieldDescription`, and `FieldError` components.
+
+```svelte
+<script lang="ts">
+  import { Field, FieldLabel } from "$lib/components/ui/field/index.js";
+  import { Input } from "$lib/components/ui/input/index.js";
+</script>
+
+<Field>
+  <FieldLabel for="email">Your email address</FieldLabel>
+  <Input id="email" />
+</Field>
+```
+
+<ComponentPreview
+  framework="svelte"
+  name="field-demo"
+  previewClassName="h-[44rem]"
+/>
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="svelte" name="label-rtl" direction="rtl" />
+
+## API Reference
+
+See the [Radix UI Label](https://www.radix-ui.com/docs/primitives/components/label#api-reference) documentation for more information.

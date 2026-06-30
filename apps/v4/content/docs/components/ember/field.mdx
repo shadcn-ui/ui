@@ -79,6 +79,56 @@ import {
 </FieldSet>
 ```
 
+## Composition
+
+### Field
+
+A single control with label, helper text, and validation.
+
+```text
+Field
+├── FieldLabel
+├── Input / Textarea / Switch / Select
+├── FieldDescription
+└── FieldError
+```
+
+### FieldGroup
+
+Related fields in one group. Use `FieldSeparator` between sections when needed.
+
+```text
+FieldGroup
+├── Field
+│   ├── FieldLabel
+│   ├── Input / Textarea / Switch / Select
+│   ├── FieldDescription
+│   └── FieldError
+├── FieldSeparator
+└── Field
+    ├── FieldLabel
+    └── Input / Textarea / Switch / Select
+```
+
+### FieldSet
+
+Semantic grouping with a legend and description, usually containing a `FieldGroup`.
+
+```text
+FieldSet
+├── FieldLegend
+├── FieldDescription
+└── FieldGroup
+    ├── Field
+    │   ├── FieldLabel
+    │   ├── Input / Textarea / Switch / Select
+    │   ├── FieldDescription
+    │   └── FieldError
+    └── Field
+        ├── FieldLabel
+        └── Input / Textarea / Switch / Select
+```
+
 ## Anatomy
 
 The `Field` family is designed for composing accessible forms. A typical field is structured as follows:
@@ -98,7 +148,7 @@ The `Field` family is designed for composing accessible forms. A typical field i
 
 ## Form
 
-See the [Form](/docs/forms) documentation for building forms with the `Field` component and React Hook Form or Tanstack Form.
+See the [Form](/docs/forms) documentation for building forms with the `Field` component.
 
 ## Examples
 
@@ -146,6 +196,17 @@ Stack `Field` components with `FieldGroup`. Add `FieldSeparator` to divide them.
 
 <ComponentPreview framework="ember" name="field-group" />
 
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="ember"
+  name="field-rtl"
+  direction="rtl"
+  previewClassName="h-auto p-6"
+/>
+
 ## Responsive Layout
 
 - **Vertical fields:** Default orientation stacks label, control, and helper text—ideal for mobile-first layouts.
@@ -160,7 +221,7 @@ Stack `Field` components with `FieldGroup`. Add `FieldSeparator` to divide them.
 - Add `aria-invalid` on the input itself for assistive technologies.
 - Render `FieldError` immediately after the control or inside `FieldContent` to keep error messages aligned with the field.
 
-```hbs
+```hbs showLineNumbers /data-invalid/ /aria-invalid/
 <Field data-invalid>
   <FieldLabel @for="email">Email</FieldLabel>
   <Input id="email" type="email" aria-invalid />

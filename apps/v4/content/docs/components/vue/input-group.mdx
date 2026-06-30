@@ -52,114 +52,108 @@ import {
   InputGroupTextarea,
 } from "@/components/ui/input-group"
 </script>
+```
 
+```vue showLineNumbers
 <template>
   <InputGroup>
     <InputGroupInput placeholder="Search..." />
     <InputGroupAddon>
       <SearchIcon />
     </InputGroupAddon>
-    <InputGroupAddon align="inline-end">
-      <InputGroupButton>Search</InputGroupButton>
-    </InputGroupAddon>
   </InputGroup>
 </template>
 ```
+
+## Composition
+
+Use the following composition to build an `InputGroup`:
+
+```text
+InputGroup
+├── InputGroupInput or InputGroupTextarea
+├── InputGroupAddon
+├── InputGroupButton
+└── InputGroupText
+```
+
+## Align
+
+Use the `align` prop on `InputGroupAddon` to position the addon relative to the input.
+
+<Callout>
+  For proper focus management, `InputGroupAddon` should always be placed after
+  `InputGroupInput` or `InputGroupTextarea` in the DOM. Use the `align` prop to
+  visually position the addon.
+</Callout>
+
+### inline-start
+
+Use `align="inline-start"` to position the addon at the start of the input. This is the default.
+
+<ComponentPreview framework="vue" name="input-group-inline-start" previewClassName="h-48" />
+
+### inline-end
+
+Use `align="inline-end"` to position the addon at the end of the input.
+
+<ComponentPreview framework="vue" name="input-group-inline-end" previewClassName="h-48" />
+
+### block-start
+
+Use `align="block-start"` to position the addon above the input.
+
+<ComponentPreview framework="vue" name="input-group-block-start" previewClassName="h-96" />
+
+### block-end
+
+Use `align="block-end"` to position the addon below the input.
+
+<ComponentPreview framework="vue" name="input-group-block-end" previewClassName="h-[26rem]" />
 
 ## Examples
 
 ### Icon
 
-<ComponentPreview framework="vue" name="input-group-with-icon" />
+<ComponentPreview framework="vue" name="input-group-icon" previewClassName="h-80" />
 
 ### Text
 
-Display additional text information alongside inputs.
-
-<ComponentPreview framework="vue" name="input-group-with-text" />
+<ComponentPreview framework="vue" name="input-group-text" previewClassName="h-80" />
 
 ### Button
 
-Add buttons to perform actions within the input group.
+<ComponentPreview framework="vue" name="input-group-button" previewClassName="h-72" />
 
-<ComponentPreview framework="vue" name="input-group-with-button" />
+### Kbd
 
-### Tooltip
-
-Add tooltips to provide additional context or help.
-
-<ComponentPreview framework="vue" name="input-group-with-tooltip" />
-
-### Textarea
-
-Input groups also work with textarea components. Use `block-start` or `block-end` for alignment.
-
-<ComponentPreview framework="vue" name="input-group-with-textarea" />
-
-### Spinner
-
-Show loading indicators while processing input.
-
-<ComponentPreview framework="vue" name="input-group-with-spinner" />
-
-### Label
-
-Add labels within input groups to improve accessibility.
-
-<ComponentPreview framework="vue" name="input-group-with-label" />
+<ComponentPreview framework="vue" name="input-group-kbd" previewClassName="h-40" />
 
 ### Dropdown
 
-Pair input groups with dropdown menus for complex interactions.
+<ComponentPreview framework="vue" name="input-group-dropdown" previewClassName="h-56" />
 
-<ComponentPreview framework="vue" name="input-group-with-dropdown" />
+### Spinner
 
-### Button Group
+<ComponentPreview framework="vue" name="input-group-spinner" previewClassName="h-80" />
 
-Wrap input groups with button groups to create prefixes and suffixes.
+### Textarea
 
-<ComponentPreview framework="vue" name="input-group-with-button-group" />
+<ComponentPreview framework="vue" name="input-group-textarea" previewClassName="h-96" />
 
 ### Custom Input
 
-Add the `data-slot="input-group-control"` attribute to your custom input for automatic behavior and focus state handling.
+Add the `data-slot="input-group-control"` attribute to your custom input for automatic focus state handling.
 
-No style is applied to the custom input. Apply your own styles using the `class` prop.
+Here's an example of a custom resizable textarea from a third-party library.
 
-<ComponentPreview framework="vue" name="input-group-with-custom-input" />
-
-```vue showLineNumbers
-<script setup lang="ts">
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-} from "@/components/ui/input-group"
-</script>
-
-<template>
-  <div class="grid w-full max-w-sm gap-6">
-    <InputGroup>
-      <textarea
-        data-slot="input-group-control"
-        class="flex field-sizing-content min-h-16 w-full resize-none rounded-md bg-transparent px-3 py-2.5 text-base transition-[color,box-shadow] outline-none md:text-sm"
-        placeholder="Autoresize textarea..."
-      />
-      <InputGroupAddon align="block-end">
-        <InputGroupButton class="ml-auto" size="sm" variant="default">
-          Submit
-        </InputGroupButton>
-      </InputGroupAddon>
-    </InputGroup>
-  </div>
-</template>
-```
+<ComponentPreview framework="vue" name="input-group-custom" previewClassName="h-56" />
 
 ### Variants
 
 Use the `variant` prop to match standalone Input variants.
 
-<ComponentPreview framework="vue" name="input-group-variants" />
+<ComponentPreview framework="vue" name="input-group-variants" previewClassName="*:max-w-sm" />
 
 ## API Reference
 
@@ -219,9 +213,7 @@ Displays buttons within input groups.
 | `class`   | `string`                                                                      |           |
 
 ```vue
-<InputGroupButton>
-Button
-</InputGroupButton>
+<InputGroupButton>Button</InputGroupButton>
 
 <InputGroupButton size="icon-xs" aria-label="Copy">
   <CopyIcon />

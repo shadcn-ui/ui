@@ -5,7 +5,7 @@ base: vue
 component: true
 ---
 
-<ComponentPreview framework="vue" name="hover-card-demo" />
+<ComponentPreview framework="vue" name="hover-card-demo" previewClassName="h-80" />
 
 ## Installation
 
@@ -59,3 +59,62 @@ import {
   </HoverCard>
 </template>
 ```
+
+## Composition
+
+Use the following composition to build a `HoverCard`:
+
+```text
+HoverCard
+├── HoverCardTrigger
+└── HoverCardContent
+```
+
+## Trigger Delays
+
+Use `openDelay` and `closeDelay` on the `HoverCard` to control when the card opens and
+closes.
+
+```vue showLineNumbers
+<template>
+  <HoverCard :open-delay="100" :close-delay="200">
+    <HoverCardTrigger>Hover</HoverCardTrigger>
+    <HoverCardContent>Content</HoverCardContent>
+  </HoverCard>
+</template>
+```
+
+## Positioning
+
+Use the `side` and `align` props on `HoverCardContent` to control placement.
+
+```vue showLineNumbers
+<template>
+  <HoverCard>
+    <HoverCardTrigger>Hover</HoverCardTrigger>
+    <HoverCardContent side="top" align="start">
+      Content
+    </HoverCardContent>
+  </HoverCard>
+</template>
+```
+
+## Examples
+
+### Basic
+
+<ComponentPreview framework="vue" name="hover-card-demo" previewClassName="h-80" />
+
+### Sides
+
+<ComponentPreview framework="vue" name="hover-card-sides" previewClassName="h-[22rem]" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview framework="vue" name="hover-card-rtl" direction="rtl" previewClassName="h-80" />
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/docs/primitives/components/hover-card#api-reference) documentation for more information.

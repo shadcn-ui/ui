@@ -1,6 +1,6 @@
 ---
 title: Sonner
-description: An opinionated toast component for Ember.
+description: An opinionated toast component for React.
 base: ember
 component: true
 ---
@@ -9,7 +9,7 @@ component: true
 
 ## About
 
-The Sonner component uses [ember-cli-flash](https://github.com/poteto/ember-cli-flash) to manage flash messages and renders them as styled toasts.
+Sonner is built and maintained by [emilkowalski](https://twitter.com/emilkowalski).
 
 ## Installation
 
@@ -21,9 +21,28 @@ The Sonner component uses [ember-cli-flash](https://github.com/poteto/ember-cli-
 </TabsList>
 <TabsContent value="cli">
 
+<Steps className="mb-0 pt-2">
+
+<Step>Run the following command:</Step>
+
 ```bash
 npx shadcn@latest add @force-ui-ember/sonner
 ```
+
+<Step>Add the Toaster component</Step>
+
+```gts title="app/templates/application.hbs" showLineNumbers
+import { Toaster } from '@/ember-ui/sonner';
+
+<template>
+  <main>
+    {{outlet}}
+  </main>
+  <Toaster />
+</template>
+```
+
+</Steps>
 
 </TabsContent>
 
@@ -51,11 +70,11 @@ pnpm add ember-cli-flash
 
 ## Usage
 
-```gts showLineNumbers
-import { Toaster } from '@/ui/sonner';
+```gts
+import { Toaster } from '@/ember-ui/sonner';
 ```
 
-```hbs showLineNumbers
+```hbs
 <Toaster />
 ```
 
@@ -63,7 +82,7 @@ To show a toast, inject the `toast` service and call one of its methods:
 
 ```gts showLineNumbers
 import { service } from '@ember/service';
-import type ToastService from '@/services/toast';
+import type ToastService from '@/ember-services/toast';
 
 class MyComponent extends Component {
   @service declare toast: ToastService;
@@ -88,7 +107,7 @@ class MyComponent extends Component {
 
 ### Position
 
-Use the `@position` arg to change the position of the toaster.
+Use the `@position` arg to change the position of the toast.
 
 <ComponentPreview framework="ember" name="sonner-position" />
 

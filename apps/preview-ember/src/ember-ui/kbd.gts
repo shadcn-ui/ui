@@ -1,10 +1,17 @@
 import { cn } from '@/ember-lib/utils';
-
 import type { TOC } from '@ember/component/template-only';
+
+type Variant = 'default' | 'primary';
+
+const variantClasses: Record<Variant, string> = {
+  default: 'cn-kbd-variant-default',
+  primary: 'cn-kbd-variant-primary',
+};
 
 interface KbdSignature {
   Element: HTMLElement;
   Args: {
+    variant?: Variant;
     class?: string;
   };
   Blocks: {
@@ -15,9 +22,8 @@ interface KbdSignature {
 const Kbd: TOC<KbdSignature> = <template>
   <kbd
     class={{cn
-      "bg-muted text-muted-foreground pointer-events-none inline-flex h-5 w-fit min-w-5 items-center justify-center gap-1 rounded-sm px-1 font-sans text-xs font-medium select-none"
-      "[&_svg:not([class*='size-'])]:size-3"
-      "[[data-slot=tooltip-content]_&]:bg-background/20 [[data-slot=tooltip-content]_&]:text-background dark:[[data-slot=tooltip-content]_&]:bg-background/10"
+      "cn-kbd pointer-events-none inline-flex items-center justify-center select-none"
+      (variantClasses (if @variant @variant "default"))
       @class
     }}
     data-slot="kbd"
@@ -39,7 +45,7 @@ interface KbdGroupSignature {
 
 const KbdGroup: TOC<KbdGroupSignature> = <template>
   <kbd
-    class={{cn "inline-flex items-center gap-1" @class}}
+    class={{cn "cn-kbd-group inline-flex items-center" @class}}
     data-slot="kbd-group"
     ...attributes
   >

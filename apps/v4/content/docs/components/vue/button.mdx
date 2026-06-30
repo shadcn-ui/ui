@@ -36,68 +36,7 @@ npm install class-variance-authority clsx tailwind-merge
 
 <Step>Copy and paste the following code into your project.</Step>
 
-```vue showLineNumbers title="components/ui/button.vue"
-<script setup lang="ts">
-import { cva, type VariantProps } from "class-variance-authority"
-
-import { cn } from "@/lib/utils"
-
-const buttonVariants = cva(
-  "cn-button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-  {
-    variants: {
-      variant: {
-        default: "cn-button-variant-default",
-        outline: "cn-button-variant-outline",
-        secondary: "cn-button-variant-secondary",
-        ghost: "cn-button-variant-ghost",
-        destructive: "cn-button-variant-destructive",
-        link: "cn-button-variant-link",
-      },
-      size: {
-        default: "cn-button-size-default",
-        xs: "cn-button-size-xs",
-        sm: "cn-button-size-sm",
-        lg: "cn-button-size-lg",
-        icon: "cn-button-size-icon",
-        "icon-xs": "cn-button-size-icon-xs",
-        "icon-sm": "cn-button-size-icon-sm",
-        "icon-lg": "cn-button-size-icon-lg",
-      },
-    },
-    defaultVariants: { variant: "default", size: "default" },
-  }
-)
-
-type ButtonVariants = VariantProps<typeof buttonVariants>
-
-const props = withDefaults(
-  defineProps<{
-    variant?: NonNullable<ButtonVariants>["variant"]
-    size?: NonNullable<ButtonVariants>["size"]
-    as?: string
-  }>(),
-  { as: "button", variant: "default", size: "default" }
-)
-</script>
-
-<template>
-  <component
-    :is="props.as"
-    data-slot="button"
-    :data-variant="props.variant"
-    :data-size="props.size"
-    :class="
-      cn(
-        buttonVariants({ variant: props.variant, size: props.size }),
-        ($attrs.class as string) ?? ''
-      )
-    "
-  >
-    <slot />
-  </component>
-</template>
-```
+<ComponentSource framework="vue" name="button" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -126,6 +65,8 @@ import Button from "@/components/ui/button.vue"
 Tailwind v4 [switched](https://tailwindcss.com/docs/upgrade-guide#buttons-use-the-default-cursor) from `cursor: pointer` to `cursor: default` for the button component.
 
 If you want to keep the `cursor: pointer` behavior, add the following code to your CSS file:
+
+You can also enable this during project setup with `npx shadcn@latest init --pointer`.
 
 ```css showLineNumbers title="globals.css"
 @layer base {
@@ -174,6 +115,8 @@ Use the `size` prop to change the size of the button.
 
 ### With Icon
 
+Remember to add the `data-icon="inline-start"` or `data-icon="inline-end"` attribute to the icon for the correct spacing.
+
 <ComponentPreview framework="vue" name="button-with-icon" />
 
 ### Rounded
@@ -181,6 +124,18 @@ Use the `size` prop to change the size of the button.
 Use the `rounded-full` class to make the button rounded.
 
 <ComponentPreview framework="vue" name="button-rounded" />
+
+### Spinner
+
+Render a `<Spinner />` component inside the button to show a loading state. Remember to add the `data-icon="inline-start"` or `data-icon="inline-end"` attribute to the spinner for the correct spacing.
+
+<ComponentPreview framework="vue" name="button-spinner" />
+
+### As Child
+
+You can use the `as` prop on `<Button />` to make another component look like a button. Here's an example of a link that looks like a button.
+
+<ComponentPreview framework="vue" name="button-aschild" />
 
 ## API Reference
 

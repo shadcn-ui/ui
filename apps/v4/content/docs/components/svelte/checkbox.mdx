@@ -3,9 +3,12 @@ title: Checkbox
 description: A control that allows the user to toggle between checked and not checked.
 base: svelte
 component: true
+links:
+  doc: https://www.radix-ui.com/docs/primitives/components/checkbox
+  api: https://www.radix-ui.com/docs/primitives/components/checkbox#api-reference
 ---
 
-<ComponentPreview framework="svelte" name="checkbox-demo" />
+<ComponentPreview framework="svelte" name="checkbox-demo" previewClassName="h-80" />
 
 ## Installation
 
@@ -41,12 +44,81 @@ npx shadcn@latest add @force-ui-svelte/checkbox
 
 ## Usage
 
-```svelte
+```svelte showLineNumbers
 <script lang="ts">
   import { Checkbox } from "$lib/components/ui/checkbox/index.js";
 </script>
-```
 
-```svelte
 <Checkbox />
 ```
+
+## Checked State
+
+Use `checked` for uncontrolled checkboxes, or bind it with `onCheckedChange`
+to control the state.
+
+```svelte showLineNumbers
+<script lang="ts">
+  import { Checkbox } from "$lib/components/ui/checkbox/index.js";
+
+  let checked = $state(false);
+</script>
+
+<Checkbox {checked} onCheckedChange={(v) => (checked = v)} />
+```
+
+## Invalid State
+
+Set `aria-invalid` on the checkbox and `data-invalid` on the field wrapper to
+show the invalid styles.
+
+<ComponentPreview framework="svelte" name="checkbox-invalid" />
+
+## Examples
+
+### Basic
+
+Pair the checkbox with `Field` and `FieldLabel` for proper layout and labeling.
+
+<ComponentPreview framework="svelte" name="checkbox-basic" />
+
+### Description
+
+Use `FieldContent` and `FieldDescription` for helper text.
+
+<ComponentPreview framework="svelte" name="checkbox-description" />
+
+### Disabled
+
+Use the `disabled` prop to prevent interaction and add the `data-disabled` attribute to the `<Field>` component for disabled styles.
+
+<ComponentPreview framework="svelte" name="checkbox-disabled" />
+
+### Group
+
+Use multiple fields to create a checkbox list.
+
+<ComponentPreview framework="svelte" name="checkbox-group" />
+
+### Table
+
+<ComponentPreview
+  framework="svelte"
+  name="checkbox-table"
+  previewClassName="p-4 md:p-8"
+/>
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="svelte"
+  name="checkbox-rtl"
+  direction="rtl"
+  previewClassName="h-80"
+/>
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/docs/primitives/components/checkbox#api-reference) documentation for more information.

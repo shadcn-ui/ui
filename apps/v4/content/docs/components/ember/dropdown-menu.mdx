@@ -1,6 +1,7 @@
 ---
 title: Dropdown Menu
 description: Displays a menu to the user — such as a set of actions or functions — triggered by a button.
+featured: true
 base: ember
 component: true
 ---
@@ -62,28 +63,120 @@ import {
 <DropdownMenu>
   <DropdownMenuTrigger>Open</DropdownMenuTrigger>
   <DropdownMenuContent>
-    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuGroup>
+      <DropdownMenuLabel>My Account</DropdownMenuLabel>
+      <DropdownMenuItem>Profile</DropdownMenuItem>
+      <DropdownMenuItem>Billing</DropdownMenuItem>
+    </DropdownMenuGroup>
     <DropdownMenuSeparator />
-    <DropdownMenuItem>Profile</DropdownMenuItem>
-    <DropdownMenuItem>Billing</DropdownMenuItem>
-    <DropdownMenuItem>Team</DropdownMenuItem>
-    <DropdownMenuItem>Subscription</DropdownMenuItem>
+    <DropdownMenuGroup>
+      <DropdownMenuItem>Team</DropdownMenuItem>
+      <DropdownMenuItem>Subscription</DropdownMenuItem>
+    </DropdownMenuGroup>
   </DropdownMenuContent>
 </DropdownMenu>
 ```
 
+## Composition
+
+Use the following composition to build a `DropdownMenu`:
+
+```text
+DropdownMenu
+├── DropdownMenuTrigger
+└── DropdownMenuContent
+    ├── DropdownMenuGroup
+    │   ├── DropdownMenuLabel
+    │   ├── DropdownMenuItem
+    │   └── DropdownMenuItem
+    ├── DropdownMenuSeparator
+    ├── DropdownMenuGroup
+    │   ├── DropdownMenuLabel
+    │   ├── DropdownMenuCheckboxItem
+    │   └── DropdownMenuCheckboxItem
+    ├── DropdownMenuSeparator
+    ├── DropdownMenuGroup
+    │   ├── DropdownMenuLabel
+    │   └── DropdownMenuRadioGroup
+    │       ├── DropdownMenuRadioItem
+    │       └── DropdownMenuRadioItem
+    └── DropdownMenuSub
+        ├── DropdownMenuSubTrigger
+        └── DropdownMenuSubContent
+            └── DropdownMenuGroup
+                ├── DropdownMenuLabel
+                ├── DropdownMenuItem
+                └── DropdownMenuItem
+```
+
 ## Examples
+
+### Basic
+
+A basic dropdown menu with labels and separators.
+
+<ComponentPreview framework="ember" name="dropdown-menu-basic" />
+
+### Submenu
+
+Use `DropdownMenuSub` to nest secondary actions.
+
+<ComponentPreview framework="ember" name="dropdown-menu-submenu" />
+
+### Shortcuts
+
+Add `DropdownMenuShortcut` to show keyboard hints.
+
+<ComponentPreview framework="ember" name="dropdown-menu-shortcuts" />
+
+### Icons
+
+Combine icons with labels for quick scanning.
+
+<ComponentPreview framework="ember" name="dropdown-menu-icons" />
 
 ### Checkboxes
 
+Use `DropdownMenuCheckboxItem` for toggles.
+
 <ComponentPreview framework="ember" name="dropdown-menu-checkboxes" />
+
+### Checkboxes Icons
+
+Add icons to checkbox items.
+
+<ComponentPreview framework="ember" name="dropdown-menu-checkboxes-icons" />
 
 ### Radio Group
 
+Use `DropdownMenuRadioGroup` for exclusive choices.
+
 <ComponentPreview framework="ember" name="dropdown-menu-radio-group" />
 
-### Dialog
+### Radio Icons
 
-This example shows how to open a dialog from a dropdown menu.
+Show radio options with icons.
 
-<ComponentPreview framework="ember" name="dropdown-menu-dialog" />
+<ComponentPreview framework="ember" name="dropdown-menu-radio-icons" />
+
+### Destructive
+
+Use `@variant="destructive"` for irreversible actions.
+
+<ComponentPreview framework="ember" name="dropdown-menu-destructive" />
+
+### Avatar
+
+An account switcher dropdown triggered by an avatar.
+
+<ComponentPreview framework="ember" name="dropdown-menu-avatar" />
+
+### Complex
+
+A richer example combining groups, icons, and submenus.
+
+<ComponentPreview framework="ember" name="dropdown-menu-complex" />
+
+## API Reference
+
+See the [Radix UI documentation](https://www.radix-ui.com/docs/primitives/components/dropdown-menu) for the full API reference.

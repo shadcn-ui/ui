@@ -5,7 +5,37 @@ base: svelte
 component: true
 ---
 
-<ComponentPreview framework="svelte" name="chart-demo" />
+<ComponentPreview framework="svelte" name="chart-demo" className="theme-blue [&_.preview]:h-auto [&_.preview]:p-0 [&_.preview]:lg:min-h-[404px] [&_.preview>div]:w-full [&_.preview>div]:border-none [&_.preview>div]:shadow-none" hideCode />
+
+Introducing **Charts**. A collection of chart components that you can copy and paste into your apps.
+
+Charts are designed to look great out of the box. They work well with the other components and are fully customizable to fit your project.
+
+[Browse the Charts Library](/charts).
+
+## Component
+
+We use [LayerChart](https://layerchart.com/) under the hood.
+
+We designed the `chart` component with composition in mind. **You build your charts using LayerChart components and only bring in custom components, such as `Chart.Tooltip`, when and where you need it**.
+
+```svelte showLineNumbers
+<script lang="ts">
+  import * as Chart from "$lib/components/ui/chart/index.js"
+  import { scaleBand } from "d3-scale"
+  import { BarChart } from "layerchart"
+</script>
+
+<Chart.Container config={chartConfig} class="min-h-[200px] w-full">
+  <BarChart data={chartData} x="month" seriesLayout="group" series={[...]}>
+    {#snippet tooltip()}
+      <Chart.Tooltip />
+    {/snippet}
+  </BarChart>
+</Chart.Container>
+```
+
+**The components are yours**.
 
 ## Installation
 
@@ -41,13 +71,19 @@ npx shadcn@latest add @force-ui-svelte/chart
 
 ## Your First Chart
 
-Let's build your first chart. We'll build a bar chart with an axis, grid, tooltip, and legend.
+Let's build your first chart. We'll build a bar chart, add a grid, axis, tooltip and legend.
 
 <Steps>
 
-### Start by defining your data
+<Step>Start by defining your data</Step>
 
 The following data represents the number of desktop and mobile users for each month.
+
+<Callout className="mt-4">
+
+**Note:** Your data can be in any shape. You are not limited to the shape of the data below. Use the `x` and `series` props to map your data to the chart.
+
+</Callout>
 
 ```svelte title="lib/components/example-chart.svelte" showLineNumbers
 <script lang="ts">
@@ -62,9 +98,9 @@ The following data represents the number of desktop and mobile users for each mo
 </script>
 ```
 
-### Define your chart config
+<Step>Define your chart config</Step>
 
-The chart config holds configuration for the chart. This is where you place human-readable strings, such as labels, icons, and color tokens for theming.
+The chart config holds configuration for the chart. This is where you place human-readable strings, such as labels, icons and color tokens for theming.
 
 ```svelte title="lib/components/example-chart.svelte" showLineNumbers
 <script lang="ts">
@@ -83,148 +119,117 @@ The chart config holds configuration for the chart. This is where you place huma
 </script>
 ```
 
-### Build your chart
+<Step>Build your chart</Step>
 
-You can now build your chart using LayerChart components. We're using the `BarChart` component in this example, which is one of LayerChart's "Simplified Charts".
+You can now build your chart using LayerChart components.
 
-These components handle a lot of the common chart scaffolding for you, while allowing you to customize them to your liking.
+<Callout className="mt-4 bg-amber-50 border-amber-200 dark:bg-amber-950/50 dark:border-amber-950">
 
-<ComponentPreview framework="svelte" name="chart-bar-demo" />
+**Important:** Remember to set a `min-h-[VALUE]` on the `Chart.Container` component. This is required for the chart to be responsive.
+
+</Callout>
+
+<ComponentPreview framework="svelte" name="chart-example" previewClassName="h-80" />
 
 </Steps>
 
-We now have a group-stacked bar chart with an x axis and a grid.
+### Add a Grid
 
-### Adjusting the Axis Ticks
+Let's add a grid to the chart.
 
-Our bar chart is currently displaying the full month name for each tick on the x axis. Let's shorten it to just the first three letters.
+<Steps className="mb-0 pt-2">
 
-<Steps>
+<Step>Set the `axis` prop to `"both"` to show both axes with grid lines.</Step>
 
-### Add a custom formatter to the x axis
-
-The `props` prop is how you can pass custom props to the various components that make up the chart. Here we're passing a custom formatter to the x axis.
-
-```svelte showLineNumbers {21-25}
-<Chart.Container config={chartConfig} class="min-h-[200px] w-full">
-  <BarChart
-    data={chartData}
-    xScale={scaleBand().padding(0.25)}
-    x="month"
-    axis="x"
-    tooltip={false}
-    seriesLayout="group"
-    series={[
-      {
-        key: "desktop",
-        label: chartConfig.desktop.label,
-        color: chartConfig.desktop.color,
-      },
-      {
-        key: "mobile",
-        label: chartConfig.mobile.label,
-        color: chartConfig.mobile.color,
-      },
-    ]}
-    props={{
-      xAxis: {
-        format: (d) => d.slice(0, 3),
-      },
-    }}
-  />
-</Chart.Container>
+```svelte showLineNumbers
+<BarChart
+  data={chartData}
+  x="month"
+  axis="both"
+  seriesLayout="group"
+  series={[...]}
+/>
 ```
 
-<ComponentPreview framework="svelte" name="chart-bar-axis-tick-demo" />
+<ComponentPreview framework="svelte" name="chart-example-grid" previewClassName="h-80" />
+
+</Steps>
+
+### Add an Axis
+
+To add an x-axis to the chart with formatted ticks, use the `props` prop on `BarChart`.
+
+<Steps className="mb-0 pt-2">
+
+<Step>Pass a custom formatter via the `props` prop.</Step>
+
+```svelte showLineNumbers
+<BarChart
+  data={chartData}
+  x="month"
+  axis="x"
+  seriesLayout="group"
+  series={[...]}
+  props={{
+    xAxis: {
+      format: (d) => d.slice(0, 3),
+    },
+  }}
+/>
+```
+
+<ComponentPreview framework="svelte" name="chart-example-axis" previewClassName="h-80" />
 
 </Steps>
 
 ### Add Tooltip
 
-So far we've only used the `BarChart` component from LayerChart. They look great out of the box thanks to some customizations in the `chart` component.
+So far we've only used the `BarChart` component from LayerChart. They look great out of the box thanks to some customization in the `chart` component.
 
 To add a tooltip, we'll use the custom `Chart.Tooltip` component from `chart`.
 
-<Steps>
+<Steps className="mb-0 pt-2">
 
-### Add the `Chart.Tooltip` component to the chart
+<Step>Add the `Chart.Tooltip` component using the `tooltip` snippet.</Step>
 
-We'll replace the `tooltip={false}` prop with the `tooltip` snippet where we'll place the `Chart.Tooltip` component.
-
-```svelte showLineNumbers {26-28}
-<Chart.Container config={chartConfig} class="min-h-[200px] w-full">
-  <BarChart
-    data={chartData}
-    xScale={scaleBand().padding(0.25)}
-    x="month"
-    axis="x"
-    seriesLayout="group"
-    series={[
-      {
-        key: "desktop",
-        label: chartConfig.desktop.label,
-        color: chartConfig.desktop.color,
-      },
-      {
-        key: "mobile",
-        label: chartConfig.mobile.label,
-        color: chartConfig.mobile.color,
-      },
-    ]}
-    props={{
-      xAxis: {
-        format: (d) => d.slice(0, 3),
-      },
-    }}
-  >
-    </BarChart>
-</Chart.Container>
+```svelte showLineNumbers
+<BarChart data={chartData} x="month" axis="x" seriesLayout="group" series={[...]}>
+  {#snippet tooltip()}
+    <Chart.Tooltip />
+  {/snippet}
+</BarChart>
 ```
 
-<ComponentPreview framework="svelte" name="chart-bar-tooltip-demo" />
+<ComponentPreview framework="svelte" name="chart-example-tooltip" previewClassName="h-80" />
+
+Hover to see the tooltips. Easy, right? One component, and we've got a beautiful tooltip.
 
 </Steps>
 
 ### Add Legend
 
-<Steps>
+We'll do the same for the legend. We'll use the `legend` prop on `BarChart`.
 
-### Set the `legend` prop to `true`
+<Steps className="mb-0 pt-2">
 
-The `legend` prop is used to show a legend for the chart. We are working with LayerChart to add a payload similar to the tooltip so we can more easily create a custom legend.
+<Step>Set the `legend` prop to `true`.</Step>
 
-```svelte showLineNumbers {8}
-<Chart.Container config={chartConfig} class="min-h-[200px] w-full">
-  <BarChart
-    data={chartData}
-    xScale={scaleBand().padding(0.25)}
-    x="month"
-    axis="x"
-    seriesLayout="group"
-    legend
-    series={[
-      {
-        key: "desktop",
-        label: chartConfig.desktop.label,
-        color: chartConfig.desktop.color,
-      },
-      {
-        key: "mobile",
-        label: chartConfig.mobile.label,
-        color: chartConfig.mobile.color,
-      },
-    ]}
-    props={{
-      xAxis: {
-        format: (d) => d.slice(0, 3),
-      },
-    }}
-  >
-    </BarChart>
-</Chart.Container>
+```svelte showLineNumbers
+<BarChart
+  data={chartData}
+  x="month"
+  axis="x"
+  seriesLayout="group"
+  legend
+  series={[...]}
+>
+  {#snippet tooltip()}
+    <Chart.Tooltip />
+  {/snippet}
+</BarChart>
 ```
 
-<ComponentPreview framework="svelte" name="chart-bar-legend-demo" />
+<ComponentPreview framework="svelte" name="chart-example-legend" previewClassName="h-80" />
 
 </Steps>
 
@@ -232,6 +237,7 @@ Done. You've built your first chart! What's next?
 
 - [Themes and Colors](/docs/components/chart#theming)
 - [Tooltip](/docs/components/chart#tooltip)
+- [Legend](/docs/components/chart#legend)
 
 ## Chart Config
 
@@ -239,11 +245,11 @@ The chart config is where you define the labels, icons and colors for a chart.
 
 It is intentionally decoupled from chart data.
 
-This allows you to share config and color tokens between charts. It can also works independently for cases where your data or color tokens live remotely or in a different format.
+This allows you to share config and color tokens between charts. It can also work independently for cases where your data or color tokens live remotely or in a different format.
 
-```svelte
+```svelte showLineNumbers /ChartConfig/
 <script lang="ts">
-  import MonitorIcon from "@lucide/svelte/icons/monitor";
+  import MonitorIcon from "@material-symbols/svg-400/rounded/monitor.svg?component"
   import * as Chart from "$lib/components/ui/chart/index.js";
 
   const chartConfig = {
@@ -264,35 +270,31 @@ This allows you to share config and color tokens between charts. It can also wor
 
 ## Theming
 
-Charts has built-in support for theming. You can use css variables (recommended) or color values in any color format, such as hex, hsl, or oklch.
+Charts have built-in support for theming. You can use css variables (recommended) or color values in any color format, such as hex, hsl or oklch.
 
 ### CSS Variables
 
-<Steps>
+<Steps className="mb-0 pt-2">
 
-### Define your colors in your css file
+<Step>Define your colors in your css file</Step>
 
-```css {5-6,13-14} title="src/routes/layout.css" showLineNumbers
-:root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  /* ... */
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-}
+```css title="app/globals.css" showLineNumbers
+@layer base {
+  :root {
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+  }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  /* ... */
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
+  .dark {
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+  }
 }
 ```
 
-### Add the color to your `chartConfig`
+<Step>Add the color to your `chartConfig`</Step>
 
-```svelte {5,9} showLineNumbers
+```svelte title="lib/components/example-chart.svelte" showLineNumbers
 <script lang="ts">
   const chartConfig = {
     desktop: {
@@ -313,12 +315,24 @@ Charts has built-in support for theming. You can use css variables (recommended)
 
 You can also define your colors directly in the chart config. Use the color format you prefer.
 
-```svelte showLineNumbers
+```svelte title="lib/components/example-chart.svelte" showLineNumbers
 <script lang="ts">
   const chartConfig = {
     desktop: {
       label: "Desktop",
       color: "#2563eb",
+    },
+    mobile: {
+      label: "Mobile",
+      color: "hsl(220, 98%, 61%)",
+    },
+    tablet: {
+      label: "Tablet",
+      color: "oklch(0.5 0.2 240)",
+    },
+    laptop: {
+      label: "Laptop",
+      color: "var(--chart-2)",
     },
   } satisfies Chart.ChartConfig;
 </script>
@@ -331,12 +345,12 @@ To use the theme colors in your chart, reference the colors using the format `va
 #### Components
 
 ```svelte
-<Bar fill="var(--color-desktop)" />
+<BarChart series={[{ key: "desktop", color: "var(--color-desktop)" }]} />
 ```
 
 #### Chart Data
 
-```ts showLineNumbers
+```ts title="lib/components/example-chart.svelte" showLineNumbers
 const chartData = [
   { browser: "chrome", visitors: 275, color: "var(--color-chrome)" },
   { browser: "safari", visitors: 200, color: "var(--color-safari)" },
@@ -345,15 +359,15 @@ const chartData = [
 
 #### Tailwind
 
-```svelte
-<Label class="fill-(--color-desktop)" />
+```svelte title="lib/components/example-chart.svelte"
+<label class="fill-(--color-desktop)" />
 ```
 
 ## Tooltip
 
 A chart tooltip contains a label, name, indicator and value. You can use a combination of these to customize your tooltip.
 
-<ComponentPreview framework="svelte" name="chart-tooltip-demo" />
+<ComponentPreview framework="svelte" name="chart-tooltip-demo" hideCode />
 
 You can turn on/off any of these using the `hideLabel`, `hideIndicator` props and customize the indicator style using the `indicator` prop.
 
@@ -372,7 +386,7 @@ Use the following props to customize the tooltip.
 | `indicator`      | `dot` `line` or `dashed` | The indicator style for the tooltip.                    |
 | `hideLabel`      | boolean                  | Whether to hide the label.                              |
 | `hideIndicator`  | boolean                  | Whether to hide the indicator.                          |
-| `label`          | string                   | A custom label for the tooltip                          |
+| `label`          | string                   | A custom label for the tooltip.                         |
 | `labelFormatter` | function                 | A function to format the label.                         |
 | `formatter`      | Snippet                  | A snippet to provide flexible rendering of the tooltip. |
 
@@ -403,10 +417,47 @@ To use a custom key for tooltip label and names, use the `labelKey` and `nameKey
       label: "Safari",
       color: "var(--chart-2)",
     },
-  } satisfies ChartConfig;
+  } satisfies Chart.ChartConfig;
 </script>
 
 <Chart.Tooltip labelKey="visitors" nameKey="browser" />
 ```
 
 This will use `Total Visitors` for label and `Chrome` and `Safari` for the tooltip names.
+
+## Legend
+
+You can use the `legend` prop on `BarChart` to add a legend to your chart.
+
+```svelte title="lib/components/example-chart.svelte"
+<BarChart legend series={[...]} />
+```
+
+### Colors
+
+Colors are automatically referenced from the chart config.
+
+### Custom
+
+To use a custom key for legend names, configure the `label` in your `chartConfig`.
+
+```svelte showLineNumbers /browser/
+<script lang="ts">
+  const chartConfig = {
+    chrome: {
+      label: "Chrome",
+      color: "var(--chart-1)",
+    },
+    safari: {
+      label: "Safari",
+      color: "var(--chart-2)",
+    },
+  } satisfies Chart.ChartConfig;
+</script>
+```
+
+## Accessibility
+
+You can improve accessibility by providing meaningful labels in your chart config.
+
+LayerChart handles keyboard and screen reader support through its built-in accessibility features.

@@ -48,19 +48,75 @@ pnpm add ember-provide-consume-context
 ## Usage
 
 ```gts showLineNumbers
-import { Label } from '@/ui/label';
-import { RadioGroup } from '@/ui/radio-group';
+import { Label } from '@/ember-ui/label';
+import { RadioGroup, RadioGroupItem } from '@/ember-ui/radio-group';
 ```
 
 ```hbs showLineNumbers
-<RadioGroup @defaultValue="option-one" as |rg|>
+<RadioGroup @defaultValue="option-one">
   <div class="flex items-center gap-3">
-    <rg.Item @value="option-one" id="option-one" />
+    <RadioGroupItem @value="option-one" id="option-one" />
     <Label @for="option-one">Option One</Label>
   </div>
   <div class="flex items-center gap-3">
-    <rg.Item @value="option-two" id="option-two" />
+    <RadioGroupItem @value="option-two" id="option-two" />
     <Label @for="option-two">Option Two</Label>
   </div>
 </RadioGroup>
 ```
+
+## Composition
+
+Use the following composition to build a `RadioGroup`:
+
+```text
+RadioGroup
+├── RadioGroupItem
+└── RadioGroupItem
+```
+
+## Examples
+
+### Description
+
+Radio group items with a description using the `Field` component.
+
+<ComponentPreview framework="ember" name="radio-group-description" />
+
+### Choice Card
+
+Use `FieldLabel` to wrap the entire `Field` for a clickable card-style selection.
+
+<ComponentPreview framework="ember" name="radio-group-choice-card" />
+
+### Fieldset
+
+Use `FieldSet` and `FieldLegend` to group radio items with a label and description.
+
+<ComponentPreview framework="ember" name="radio-group-fieldset" />
+
+### Disabled
+
+Use the `@disabled` prop on `RadioGroupItem` to disable individual items.
+
+<ComponentPreview framework="ember" name="radio-group-disabled" />
+
+### Invalid
+
+Use `aria-invalid` on `RadioGroupItem` and `data-invalid` on `Field` to show validation errors.
+
+<ComponentPreview framework="ember" name="radio-group-invalid" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="ember"
+  name="radio-group-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [Radix UI Radio Group](https://www.radix-ui.com/docs/primitives/components/radio-group#api-reference) documentation.

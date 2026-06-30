@@ -7,12 +7,14 @@ import { PaginationListItem } from "reka-ui"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/ui/button"
 
-const props = withDefaults(defineProps<PaginationListItemProps & {
+const props = withDefaults(defineProps<Omit<PaginationListItemProps, 'value'> & {
+  value?: number
   size?: ButtonVariants["size"]
   class?: HTMLAttributes["class"]
   isActive?: boolean
 }>(), {
   size: "icon",
+  value: 0,
 })
 
 const delegatedProps = reactiveOmit(props, "class", "size", "isActive")

@@ -5,9 +5,6 @@ base: ember
 component: true
 ---
 
-> [!INFO]
-> For a styled select component, see the [Select](/docs/components/select) component.
-
 <ComponentPreview framework="ember" name="native-select-demo" />
 
 ## Installation
@@ -58,102 +55,74 @@ import {
   <NativeSelectOption value="apple">Apple</NativeSelectOption>
   <NativeSelectOption value="banana">Banana</NativeSelectOption>
   <NativeSelectOption value="blueberry">Blueberry</NativeSelectOption>
-  <NativeSelectOption value="grapes" disabled>Grapes</NativeSelectOption>
   <NativeSelectOption value="pineapple">Pineapple</NativeSelectOption>
 </NativeSelect>
 ```
 
+## Composition
+
+### Simple
+
+Options placed directly under `NativeSelect` (no `NativeSelectOptGroup`).
+
+```text
+NativeSelect
+├── NativeSelectOption
+├── NativeSelectOption
+├── NativeSelectOption
+└── NativeSelectOption
+```
+
+### With groups
+
+Use `NativeSelectOptGroup` to organize options into categories.
+
+```text
+NativeSelect
+├── NativeSelectOptGroup
+│   ├── NativeSelectOption
+│   └── NativeSelectOption
+└── NativeSelectOptGroup
+    ├── NativeSelectOption
+    └── NativeSelectOption
+```
+
 ## Examples
 
-### With Groups
+### Groups
 
-Organize options using `NativeSelectOptGroup` for better categorization.
+Use `NativeSelectOptGroup` to organize options into categories.
 
 <ComponentPreview framework="ember" name="native-select-groups" />
 
-```hbs showLineNumbers
-<NativeSelect>
-  <NativeSelectOption value="">Select a food</NativeSelectOption>
-  <NativeSelectOptGroup label="Fruits">
-    <NativeSelectOption value="apple">Apple</NativeSelectOption>
-    <NativeSelectOption value="banana">Banana</NativeSelectOption>
-    <NativeSelectOption value="blueberry">Blueberry</NativeSelectOption>
-  </NativeSelectOptGroup>
-  <NativeSelectOptGroup label="Vegetables">
-    <NativeSelectOption value="carrot">Carrot</NativeSelectOption>
-    <NativeSelectOption value="broccoli">Broccoli</NativeSelectOption>
-    <NativeSelectOption value="spinach">Spinach</NativeSelectOption>
-  </NativeSelectOptGroup>
-</NativeSelect>
-```
+### Disabled
 
-### Disabled State
-
-Disable individual options or the entire select component.
+Add the `disabled` prop to the `NativeSelect` component to disable the select.
 
 <ComponentPreview framework="ember" name="native-select-disabled" />
 
-### Invalid State
+### Invalid
 
-Show validation errors with the `aria-invalid` attribute and error styling.
+Use `aria-invalid` to show validation errors and the `data-invalid` attribute to the `Field` component for styling.
 
 <ComponentPreview framework="ember" name="native-select-invalid" />
 
-```hbs showLineNumbers
-<NativeSelect aria-invalid="true">
-  <NativeSelectOption value="">Select a country</NativeSelectOption>
-  <NativeSelectOption value="us">United States</NativeSelectOption>
-  <NativeSelectOption value="uk">United Kingdom</NativeSelectOption>
-  <NativeSelectOption value="ca">Canada</NativeSelectOption>
-</NativeSelect>
-```
-
-### Form Integration
-
-Use with form libraries like Ember Data or ember-changeset for controlled components.
-
-<ComponentPreview framework="ember" name="native-select-form" />
-
-### Input Group Integration
-
-Combine with `InputGroup` for complex input layouts.
-
-<ComponentPreview framework="ember" name="native-select-input-group" />
-
 ## Native Select vs Select
 
-- Use `NativeSelect` when you need native browser behavior, better performance, or mobile-optimized dropdowns.
-- Use `Select` when you need custom styling, animations, or complex interactions.
+- Use `NativeSelect` for native browser behavior, better performance, or mobile-optimized dropdowns.
+- Use `Select` for custom styling, animations, or complex interactions.
 
-The `NativeSelect` component provides native HTML select functionality with consistent styling that matches your design system.
+## RTL
 
-## Accessibility
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
 
-- The component maintains all native HTML select accessibility features.
-- Screen readers can navigate through options using arrow keys.
-- The chevron icon is marked as `aria-hidden="true"` to avoid duplication.
-- Use `aria-label` or `aria-labelledby` for additional context when needed.
-
-```hbs showLineNumbers
-<NativeSelect aria-label="Choose your preferred language">
-  <NativeSelectOption value="en">English</NativeSelectOption>
-  <NativeSelectOption value="es">Spanish</NativeSelectOption>
-  <NativeSelectOption value="fr">French</NativeSelectOption>
-</NativeSelect>
-```
+<ComponentPreview framework="ember" name="native-select-rtl" direction="rtl" />
 
 ## API Reference
 
 ### NativeSelect
 
 The main select component that wraps the native HTML select element.
-
-| Prop     | Type                | Default     |
-| -------- | ------------------- | ----------- |
-| `@class` | `string`            |             |
-| `@size`  | `'sm' \| 'default'` | `'default'` |
-
-All other props are passed through to the underlying `<select>` element via `...attributes`.
 
 ```hbs
 <NativeSelect>
@@ -166,26 +135,19 @@ All other props are passed through to the underlying `<select>` element via `...
 
 Represents an individual option within the select.
 
-| Prop     | Type     | Default |
-| -------- | -------- | ------- |
-| `@class` | `string` |         |
-
-All other props (including `value` and `disabled`) are passed through to the underlying `<option>` element via `...attributes`.
-
-```hbs
-<NativeSelectOption value="apple">Apple</NativeSelectOption>
-<NativeSelectOption value="banana" disabled>Banana</NativeSelectOption>
-```
+| Prop       | Type      | Default |
+| ---------- | --------- | ------- |
+| `value`    | `string`  |         |
+| `disabled` | `boolean` | `false` |
 
 ### NativeSelectOptGroup
 
 Groups related options together for better organization.
 
-| Prop     | Type     | Default |
-| -------- | -------- | ------- |
-| `@class` | `string` |         |
-
-All other props (including `label` and `disabled`) are passed through to the underlying `<optgroup>` element via `...attributes`.
+| Prop       | Type      | Default |
+| ---------- | --------- | ------- |
+| `label`    | `string`  |         |
+| `disabled` | `boolean` | `false` |
 
 ```hbs
 <NativeSelectOptGroup label="Fruits">

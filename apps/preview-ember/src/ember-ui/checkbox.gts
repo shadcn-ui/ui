@@ -31,15 +31,13 @@ class Checkbox extends Component<CheckboxSignature> {
 
   get rootClasses() {
     return cn(
-      'peer border-input dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50',
-      'data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary',
-      this.isChecked ? 'bg-primary text-primary-foreground' : '',
+      'cn-checkbox peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50',
       this.args.class
     );
   }
 
   get indicatorClasses() {
-    return cn('grid place-content-center text-current');
+    return cn('cn-checkbox-indicator grid place-content-center text-current transition-none');
   }
 
   handleClick = (event: Event) => {
@@ -60,6 +58,7 @@ class Checkbox extends Component<CheckboxSignature> {
     <button
       aria-checked={{if this.isChecked "true" "false"}}
       class={{this.rootClasses}}
+      data-slot="checkbox"
       data-state={{if this.isChecked "checked" "unchecked"}}
       disabled={{@disabled}}
       role="checkbox"
@@ -71,6 +70,7 @@ class Checkbox extends Component<CheckboxSignature> {
         <span
           aria-hidden="true"
           class={{this.indicatorClasses}}
+          data-slot="checkbox-indicator"
           data-state="checked"
         >
           <Check class="size-3.5" />

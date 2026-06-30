@@ -1,11 +1,15 @@
 ---
 title: Input OTP
-description: Accessible one-time password component with copy paste functionality.
+description: Accessible one-time password component with copy-paste functionality.
 base: ember
 component: true
 ---
 
 <ComponentPreview framework="ember" name="input-otp-demo" />
+
+## About
+
+Input OTP is built on top of [input-otp](https://github.com/guilhermerodz/input-otp) by [@guilherme_rodz](https://twitter.com/guilherme_rodz).
 
 ## Installation
 
@@ -72,51 +76,85 @@ import {
 </InputOTP>
 ```
 
-## Examples
+## Composition
 
-### Pattern
+Use the following composition to build an `InputOTP`:
 
-Use a custom pattern to validate the OTP input.
+```text
+InputOTP
+├── InputOTPGroup
+│   ├── InputOTPSlot
+│   ├── InputOTPSlot
+│   └── InputOTPSlot
+├── InputOTPSeparator
+├── InputOTPGroup
+│   ├── InputOTPSlot
+│   ├── InputOTPSlot
+│   └── InputOTPSlot
+├── InputOTPSeparator
+└── InputOTPGroup
+    ├── InputOTPSlot
+    └── InputOTPSlot
+```
+
+## Pattern
+
+Use the `@pattern` argument to define a custom pattern for the OTP input.
 
 <ComponentPreview framework="ember" name="input-otp-pattern" />
 
-The component uses a built-in pattern that only allows alphanumeric characters (letters and numbers).
+## Examples
 
 ### Separator
 
-You can use the `<InputOTPSeparator />` component to add a separator between the input groups.
+Use the `<InputOTPSeparator />` component to add a separator between input groups.
 
 <ComponentPreview framework="ember" name="input-otp-separator" />
 
-```gts showLineNumbers {4,15}
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot,
-} from '@/ui/input-otp';
+### Disabled
 
-<template>
-  <InputOTP @maxLength={{4}}>
-    <InputOTPGroup>
-      <InputOTPSlot @index={{0}} />
-      <InputOTPSlot @index={{1}} />
-    </InputOTPGroup>
-    <InputOTPSeparator />
-    <InputOTPGroup>
-      <InputOTPSlot @index={{2}} />
-      <InputOTPSlot @index={{3}} />
-    </InputOTPGroup>
-  </InputOTP>
-</template>
-```
+Use the `@disabled` argument to disable the input.
+
+<ComponentPreview framework="ember" name="input-otp-disabled" />
 
 ### Controlled
 
-You can use the `@value` and `@onValueChange` arguments to control the input value.
+Use the `@value` and `@onValueChange` arguments to control the input value.
 
 <ComponentPreview framework="ember" name="input-otp-controlled" />
+
+### Invalid
+
+Use `aria-invalid` on the slots to show an error state.
+
+<ComponentPreview framework="ember" name="input-otp-invalid" />
+
+### Four Digits
+
+A common pattern for PIN codes. This uses the `@pattern` argument with digits only.
+
+<ComponentPreview framework="ember" name="input-otp-four-digits" />
+
+### Alphanumeric
+
+Use an alphanumeric pattern to accept both letters and numbers.
+
+<ComponentPreview framework="ember" name="input-otp-alphanumeric" />
 
 ### Form
 
 <ComponentPreview framework="ember" name="input-otp-form" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="ember"
+  name="input-otp-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [input-otp](https://input-otp.rodz.dev) documentation for more information.

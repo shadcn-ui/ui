@@ -46,6 +46,7 @@ npx shadcn@latest add @force-ui-vue/menubar
 import {
   Menubar,
   MenubarContent,
+  MenubarGroup,
   MenubarItem,
   MenubarMenu,
   MenubarSeparator,
@@ -53,22 +54,105 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar"
 </script>
+```
 
+```vue showLineNumbers
 <template>
   <Menubar>
     <MenubarMenu>
       <MenubarTrigger>File</MenubarTrigger>
       <MenubarContent>
-        <MenubarItem>
-          New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-        </MenubarItem>
-        <MenubarItem>New Window</MenubarItem>
+        <MenubarGroup>
+          <MenubarItem>
+            New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+          </MenubarItem>
+          <MenubarItem>New Window</MenubarItem>
+        </MenubarGroup>
         <MenubarSeparator />
-        <MenubarItem>Share</MenubarItem>
-        <MenubarSeparator />
-        <MenubarItem>Print</MenubarItem>
+        <MenubarGroup>
+          <MenubarItem>Share</MenubarItem>
+          <MenubarItem>Print</MenubarItem>
+        </MenubarGroup>
       </MenubarContent>
     </MenubarMenu>
   </Menubar>
 </template>
 ```
+
+## Composition
+
+Use the following composition to build a `Menubar`:
+
+```text
+Menubar
+├── MenubarMenu
+│   ├── MenubarTrigger
+│   └── MenubarContent
+│       ├── MenubarGroup
+│       │   ├── MenubarLabel
+│       │   ├── MenubarItem
+│       │   └── MenubarItem
+│       ├── MenubarSeparator
+│       ├── MenubarGroup
+│       │   ├── MenubarLabel
+│       │   ├── MenubarCheckboxItem
+│       │   └── MenubarCheckboxItem
+│       ├── MenubarSeparator
+│       ├── MenubarGroup
+│       │   ├── MenubarLabel
+│       │   └── MenubarRadioGroup
+│       │       ├── MenubarRadioItem
+│       │       └── MenubarRadioItem
+│       └── MenubarSub
+│           ├── MenubarSubTrigger
+│           └── MenubarSubContent
+│               └── MenubarGroup
+│                   ├── MenubarLabel
+│                   ├── MenubarItem
+│                   └── MenubarItem
+└── MenubarMenu
+    ├── MenubarTrigger
+    └── MenubarContent
+        └── MenubarGroup
+            ├── MenubarLabel
+            ├── MenubarItem
+            └── MenubarItem
+```
+
+## Examples
+
+### Checkbox
+
+Use `MenubarCheckboxItem` for toggleable options.
+
+<ComponentPreview framework="vue" name="menubar-checkbox" />
+
+### Radio
+
+Use `MenubarRadioGroup` and `MenubarRadioItem` for single-select options.
+
+<ComponentPreview framework="vue" name="menubar-radio" />
+
+### Submenu
+
+Use `MenubarSub`, `MenubarSubTrigger`, and `MenubarSubContent` for nested menus.
+
+<ComponentPreview framework="vue" name="menubar-submenu" />
+
+### With Icons
+
+<ComponentPreview framework="vue" name="menubar-icons" />
+
+## RTL
+
+To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  framework="vue"
+  name="menubar-rtl"
+  direction="rtl"
+/>
+
+## API Reference
+
+See the [Radix UI Menubar](https://www.radix-ui.com/docs/primitives/components/menubar#api-reference) documentation.

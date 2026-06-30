@@ -515,7 +515,7 @@ class DropdownMenuSubTrigger extends Component<DropdownMenuSubTriggerSignature> 
   <template>
     <div
       class={{cn
-        "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-inset:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+        "cn-dropdown-menu-sub-trigger flex cursor-default items-center outline-hidden select-none [&_svg]:pointer-events-none [&_svg]:shrink-0"
         @class
       }}
       data-inset={{@inset}}
@@ -616,7 +616,7 @@ class DropdownMenuSubContent extends Component<DropdownMenuSubContentSignature> 
       {{#in-element this.destinationElement insertBefore=null}}
         <div
           class={{cn
-            "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-hidden rounded-md border p-1 shadow-lg"
+            "cn-dropdown-menu-sub-content cn-menu-target cn-menu-translucent z-50 origin-(--radix-dropdown-menu-content-transform-origin) overflow-hidden"
             @class
           }}
           data-align="start"
@@ -764,7 +764,7 @@ class DropdownMenuContent extends Component<DropdownMenuContentSignature> {
       {{#in-element this.destinationElement insertBefore=null}}
         <div
           class={{cn
-            "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border p-1 shadow-md"
+            "cn-dropdown-menu-content cn-menu-target cn-menu-translucent z-50 max-h-(--radix-dropdown-menu-content-available-height) w-(--radix-dropdown-menu-trigger-width) origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto data-[state=closed]:overflow-hidden"
             @class
           }}
           data-align={{@align}}
@@ -824,7 +824,7 @@ class DropdownMenuItem extends Component<DropdownMenuItemSignature> {
       {{yield
         (hash
           classes=(cn
-            "focus:bg-accent focus:text-accent-foreground hover:bg-accent hover:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:hover:bg-destructive/10 dark:data-[variant=destructive]:hover:bg-destructive/20 data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:text-destructive! [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+            "cn-dropdown-menu-item group/dropdown-menu-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0"
             @class
           )
         )
@@ -832,7 +832,7 @@ class DropdownMenuItem extends Component<DropdownMenuItemSignature> {
     {{else}}
       <div
         class={{cn
-          "focus:bg-accent focus:text-accent-foreground hover:bg-accent hover:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:hover:bg-destructive/10 dark:data-[variant=destructive]:hover:bg-destructive/20 data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:text-destructive! [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+          "cn-dropdown-menu-item group/dropdown-menu-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0"
           @class
         }}
         data-disabled={{@disabled}}
@@ -884,7 +884,7 @@ class DropdownMenuCheckboxItem extends Component<DropdownMenuCheckboxItemSignatu
     <div
       aria-checked={{@checked}}
       class={{cn
-        "focus:bg-accent focus:text-accent-foreground hover:bg-accent hover:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+        "cn-dropdown-menu-checkbox-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0"
         @class
       }}
       data-slot="dropdown-menu-checkbox-item"
@@ -894,7 +894,8 @@ class DropdownMenuCheckboxItem extends Component<DropdownMenuCheckboxItemSignatu
       ...attributes
     >
       <span
-        class="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center"
+        class="cn-dropdown-menu-item-indicator pointer-events-none"
+        data-slot="dropdown-menu-checkbox-item-indicator"
       >
         {{#if @checked}}
           <Check class="size-4" />
@@ -944,7 +945,7 @@ class DropdownMenuRadioItem extends Component<DropdownMenuRadioItemSignature> {
     <div
       aria-checked={{this.checked}}
       class={{cn
-        "focus:bg-accent focus:text-accent-foreground hover:bg-accent hover:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+        "cn-dropdown-menu-radio-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0"
         @class
       }}
       data-slot="dropdown-menu-radio-item"
@@ -954,7 +955,8 @@ class DropdownMenuRadioItem extends Component<DropdownMenuRadioItemSignature> {
       ...attributes
     >
       <span
-        class="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center"
+        class="cn-dropdown-menu-item-indicator pointer-events-none"
+        data-slot="dropdown-menu-radio-item-indicator"
       >
         {{#if this.checked}}
           <span class="relative flex items-center justify-center">
@@ -990,7 +992,7 @@ class DropdownMenuLabel extends Component<DropdownMenuLabelSignature> {
 
   <template>
     <div
-      class={{cn "px-2 py-1.5 text-sm font-medium data-inset:pl-8" @class}}
+      class={{cn "cn-dropdown-menu-label" @class}}
       data-inset={{@inset}}
       data-slot="dropdown-menu-label"
       {{on "mouseenter" this.handleMouseEnter}}
@@ -1013,7 +1015,7 @@ interface DropdownMenuSeparatorSignature {
 
 const DropdownMenuSeparator: TOC<DropdownMenuSeparatorSignature> = <template>
   <div
-    class={{cn "bg-border -mx-1 my-1 h-px" @class}}
+    class={{cn "cn-dropdown-menu-separator" @class}}
     data-slot="dropdown-menu-separator"
     role="separator"
     ...attributes
@@ -1032,7 +1034,7 @@ interface DropdownMenuShortcutSignature {
 
 const DropdownMenuShortcut: TOC<DropdownMenuShortcutSignature> = <template>
   <span
-    class={{cn "text-muted-foreground ml-auto text-xs tracking-widest" @class}}
+    class={{cn "cn-dropdown-menu-shortcut" @class}}
     data-slot="dropdown-menu-shortcut"
     ...attributes
   >

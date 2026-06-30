@@ -33,8 +33,8 @@ const Spinner: TOC<SpinnerSignature> = <template>
     aria-label="Loading"
     class={{cn
       "cn-spinner animate-spin"
-      (colorClasses[@color ?? "default"])
-      (sizeClasses[@size ?? "sm"])
+      (colorClasses (if @color @color "default"))
+      (sizeClasses (if @size @size "sm"))
       @class
     }}
     role="status"

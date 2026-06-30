@@ -50,56 +50,56 @@ pnpm add ember-provide-consume-context
 ```gts showLineNumbers
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/ui/sheet';
+} from '@/ember-ui/sheet';
 ```
 
 ```hbs showLineNumbers
-<Sheet as |isOpen setOpen|>
-  <SheetTrigger @setOpen={{setOpen}}>Open</SheetTrigger>
-  <SheetContent @isOpen={{isOpen}} @setOpen={{setOpen}}>
+<Sheet>
+  <SheetTrigger>Open</SheetTrigger>
+  <SheetContent>
     <SheetHeader>
       <SheetTitle>Are you absolutely sure?</SheetTitle>
-      <SheetDescription>
-        This action cannot be undone. This will permanently delete your account
-        and remove your data from our servers.
-      </SheetDescription>
+      <SheetDescription>This action cannot be undone.</SheetDescription>
     </SheetHeader>
   </SheetContent>
 </Sheet>
+```
+
+## Composition
+
+Use the following composition to build a `Sheet`:
+
+```text
+Sheet
+├── SheetTrigger
+└── SheetContent
+    ├── SheetHeader
+    │   ├── SheetTitle
+    │   └── SheetDescription
+    └── SheetFooter
 ```
 
 ## Examples
 
 ### Side
 
-Use the `@side` argument to `<SheetContent />` to indicate the edge of the screen where the component will appear. The values can be `top`, `right`, `bottom` or `left`.
+Use the `@side` argument on `SheetContent` to set the edge of the screen where the sheet appears. Values are `top`, `right`, `bottom`, or `left`.
 
 <ComponentPreview framework="ember" name="sheet-side" />
 
-### Size
+### No Close Button
 
-You can adjust the size of the sheet using CSS classes:
+Use `@showCloseButton={{false}}` on `SheetContent` to hide the close button.
 
-```hbs showLineNumbers {3}
-<Sheet as |isOpen setOpen|>
-  <SheetTrigger @setOpen={{setOpen}}>Open</SheetTrigger>
-  <SheetContent
-    @isOpen={{isOpen}}
-    @setOpen={{setOpen}}
-    @class="w-[400px] sm:w-[540px]"
-  >
-    <SheetHeader>
-      <SheetTitle>Are you absolutely sure?</SheetTitle>
-      <SheetDescription>
-        This action cannot be undone. This will permanently delete your account
-        and remove your data from our servers.
-      </SheetDescription>
-    </SheetHeader>
-  </SheetContent>
-</Sheet>
-```
+<ComponentPreview framework="ember" name="sheet-no-close-button" />
+
+## API Reference
+
+See the [Radix UI Dialog](https://www.radix-ui.com/docs/primitives/components/dialog#api-reference) documentation.

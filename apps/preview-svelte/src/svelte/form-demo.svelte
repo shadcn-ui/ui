@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { z } from "zod";
+	import { z } from "zod/v3";
 
 	const formSchema = z.object({
 		username: z.string().min(2).max(50),
@@ -8,13 +8,13 @@
 
 <script lang="ts">
 	import { defaults, superForm } from "sveltekit-superforms";
-	import { zod4 } from "sveltekit-superforms/adapters";
+	import { zod, type ZodObjectType } from "sveltekit-superforms/adapters";
 	import { toast } from "svelte-sonner";
 	import * as Form from "@/svelte-ui/form/index.js";
 	import { Input } from "@/svelte-ui/input/index.js";
 
-	const form = superForm(defaults(zod4(formSchema)), {
-		validators: zod4(formSchema),
+	const form = superForm(defaults(zod(formSchema as ZodObjectType)), {
+		validators: zod(formSchema as ZodObjectType),
 		SPA: true,
 		onUpdate: ({ form: f }) => {
 			if (f.valid) {

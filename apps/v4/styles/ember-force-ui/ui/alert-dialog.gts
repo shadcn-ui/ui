@@ -151,7 +151,7 @@ class AlertDialogOverlay extends Component<AlertDialogOverlaySignature> {
   <template>
     <div
       class={{cn
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50"
+        "cn-alert-dialog-overlay fixed inset-0 z-50"
         @class
       }}
       data-slot="alert-dialog-overlay"
@@ -166,6 +166,7 @@ interface AlertDialogContentSignature {
   Element: HTMLDivElement;
   Args: {
     class?: string;
+    size?: "default" | "sm";
   };
   Blocks: {
     default: [];
@@ -178,6 +179,10 @@ class AlertDialogContent extends Component<AlertDialogContentSignature> {
 
   get destinationElement() {
     return document.body;
+  }
+
+  get size() {
+    return this.args.size ?? "default";
   }
 
   scrollLock = modifier(
@@ -217,10 +222,11 @@ class AlertDialogContent extends Component<AlertDialogContentSignature> {
         <div
           aria-modal="true"
           class={{cn
-            "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 sm:max-w-lg"
+            "cn-alert-dialog-content group/alert-dialog-content fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 outline-none"
             @class
           }}
           data-slot="alert-dialog-content"
+          data-size={{this.size}}
           data-state={{if this.context.open "open" "closed"}}
           role="alertdialog"
           tabindex="-1"
@@ -249,7 +255,7 @@ interface AlertDialogHeaderSignature {
 
 const AlertDialogHeader: TOC<AlertDialogHeaderSignature> = <template>
   <div
-    class={{cn "flex flex-col gap-2 text-center sm:text-left" @class}}
+    class={{cn "cn-alert-dialog-header" @class}}
     data-slot="alert-dialog-header"
     ...attributes
   >
@@ -269,8 +275,31 @@ interface AlertDialogFooterSignature {
 
 const AlertDialogFooter: TOC<AlertDialogFooterSignature> = <template>
   <div
-    class={{cn "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end" @class}}
+    class={{cn
+      "cn-alert-dialog-footer flex flex-col-reverse gap-2 group-data-[size=sm]/alert-dialog-content:grid group-data-[size=sm]/alert-dialog-content:grid-cols-2 sm:flex-row sm:justify-end"
+      @class
+    }}
     data-slot="alert-dialog-footer"
+    ...attributes
+  >
+    {{yield}}
+  </div>
+</template>;
+
+interface AlertDialogMediaSignature {
+  Element: HTMLDivElement;
+  Args: {
+    class?: string;
+  };
+  Blocks: {
+    default: [];
+  };
+}
+
+const AlertDialogMedia: TOC<AlertDialogMediaSignature> = <template>
+  <div
+    class={{cn "cn-alert-dialog-media" @class}}
+    data-slot="alert-dialog-media"
     ...attributes
   >
     {{yield}}
@@ -289,7 +318,7 @@ interface AlertDialogTitleSignature {
 
 const AlertDialogTitle: TOC<AlertDialogTitleSignature> = <template>
   <h2
-    class={{cn "text-lg font-semibold" @class}}
+    class={{cn "cn-alert-dialog-title cn-font-heading" @class}}
     data-slot="alert-dialog-title"
     ...attributes
   >
@@ -309,7 +338,7 @@ interface AlertDialogDescriptionSignature {
 
 const AlertDialogDescription: TOC<AlertDialogDescriptionSignature> = <template>
   <p
-    class={{cn "text-muted-foreground text-sm" @class}}
+    class={{cn "cn-alert-dialog-description" @class}}
     data-slot="alert-dialog-description"
     ...attributes
   >
@@ -338,7 +367,7 @@ class AlertDialogAction extends Component<AlertDialogActionSignature> {
   <template>
     <button
       class={{cn
-        "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2"
+        "cn-alert-dialog-action"
         @class
       }}
       data-slot="alert-dialog-action"
@@ -372,7 +401,7 @@ class AlertDialogCancel extends Component<AlertDialogCancelSignature> {
   <template>
     <button
       class={{cn
-        "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2"
+        "cn-alert-dialog-cancel"
         @class
       }}
       data-slot="alert-dialog-cancel"
@@ -393,6 +422,7 @@ export {
   AlertDialogContent,
   AlertDialogHeader,
   AlertDialogFooter,
+  AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogDescription,
   AlertDialogAction,

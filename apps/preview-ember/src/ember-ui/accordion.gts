@@ -102,7 +102,7 @@ class AccordionTrigger extends Component<AccordionTriggerSignature> {
     <h3 class="flex">
       <button
         class={{cn
-          "flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all hover:underline text-left [&[data-state=open]>svg]:rotate-180"
+          "cn-accordion-trigger group/accordion-trigger relative flex flex-1 items-start justify-between border border-transparent transition-all outline-none disabled:pointer-events-none disabled:opacity-50"
           @class
         }}
         data-state={{if this.isOpen "open" "closed"}}
@@ -112,7 +112,7 @@ class AccordionTrigger extends Component<AccordionTriggerSignature> {
       >
         {{yield}}
         <ChevronDown
-          class="size-4 shrink-0 text-muted-foreground transition-transform duration-200"
+          class="cn-accordion-trigger-icon pointer-events-none shrink-0 transition-transform duration-200 [&[data-state=open]]:rotate-180"
         />
       </button>
     </h3>
@@ -148,13 +148,13 @@ class AccordionContent extends Component<AccordionContentSignature> {
   <template>
     {{#if this.itemContext.isRendered}}
       <div
-        class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+        class="cn-accordion-content overflow-hidden"
         data-state={{if this.isOpen "open" "closed"}}
         {{on "animationend" this.handleAnimationEnd}}
         {{this.heightAnimation}}
         ...attributes
       >
-        <div class={{cn "pb-4 pt-0" @class}}>
+        <div class={{cn "cn-accordion-content-inner h-(--radix-accordion-content-height) [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4" @class}}>
           {{yield}}
         </div>
       </div>
@@ -202,7 +202,7 @@ class AccordionItem extends Component<AccordionItemSignature> {
 
   <template>
     <div
-      class={{cn "border-b last:border-b-0" @class}}
+      class={{cn "cn-accordion-item" @class}}
       data-disabled={{if @disabled "true"}}
       data-state={{if this.isOpen "open" "closed"}}
       {{this.trackOpenState}}
@@ -269,7 +269,7 @@ class Accordion extends Component<AccordionSignature> {
   }
 
   <template>
-    <div class={{@class}} data-orientation="vertical" ...attributes>
+    <div class={{cn "cn-accordion flex w-full flex-col" @class}} data-orientation="vertical" ...attributes>
       {{yield}}
     </div>
   </template>

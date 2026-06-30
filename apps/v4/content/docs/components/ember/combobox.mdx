@@ -1,6 +1,6 @@
 ---
 title: Combobox
-description: Autocomplete input and command palette with a list of suggestions.
+description: Autocomplete input with a list of suggestions.
 base: ember
 component: true
 ---
@@ -9,9 +9,35 @@ component: true
 
 ## Installation
 
-The Combobox is built using a composition of the `<Popover />` and the `<Command />` components.
+<CodeTabs>
 
-See installation instructions for the [Popover](/docs/components/popover) and the [Command](/docs/components/command) components.
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @force-ui-ember/combobox
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource framework="ember" name="combobox" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -39,7 +65,6 @@ const frameworks = [
   { value: 'nuxt.js', label: 'Nuxt.js' },
   { value: 'remix', label: 'Remix' },
   { value: 'astro', label: 'Astro' },
-  { value: 'ember', label: 'Ember' },
 ];
 
 export default class ExampleCombobox extends Component {
@@ -66,7 +91,6 @@ export default class ExampleCombobox extends Component {
           @class="w-[200px] justify-between"
         >
           {{this.selectedLabel}}
-          <ChevronsUpDownIcon class="opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent @class="w-[200px] p-0">
@@ -80,12 +104,6 @@ export default class ExampleCombobox extends Component {
                   @value={{framework.value}}
                   @onSelect={{this.handleSelect}}
                 >
-                  <CheckIcon
-                    class={{cn
-                      "mr-2 size-4"
-                      (if (eq this.value framework.value) "opacity-100" "opacity-0")
-                    }}
-                  />
                   {{framework.label}}
                 </CommandItem>
               {{/each}}
@@ -100,20 +118,30 @@ export default class ExampleCombobox extends Component {
 
 ## Examples
 
-### Combobox
+### Basic
+
+A simple combobox with a list of frameworks.
 
 <ComponentPreview framework="ember" name="combobox-demo" />
 
-### Popover
+### Popup
+
+Use `Command` inside a `Popover` to trigger a combobox from a button.
 
 <ComponentPreview framework="ember" name="combobox-popover" />
 
-### Dropdown menu
+### Dropdown Menu
+
+You can compose a combobox inside a `DropdownMenu`.
 
 <ComponentPreview framework="ember" name="combobox-dropdown-menu" />
 
 ### Responsive
 
-You can create a responsive combobox by using the `<Popover />` on desktop and the `<Sheet />` components on mobile.
+You can create a responsive combobox by using the `Popover` on desktop and the `Sheet` on mobile.
 
 <ComponentPreview framework="ember" name="combobox-responsive" />
+
+## API Reference
+
+See the [Ember Force UI](https://shadcn-force-ui.vercel.app/docs/components/ember/combobox) documentation for more information.

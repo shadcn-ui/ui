@@ -3,14 +3,12 @@
 	import { cn } from "@/svelte-lib/utils.js";
 
 	let {
-		ref = $bindable(null),
 		class: className,
 		...restProps
 	}: DrawerPrimitive.OverlayProps = $props();
 </script>
 
 <DrawerPrimitive.Overlay
-	bind:ref
 	data-slot="drawer-overlay"
 	class={cn("cn-drawer-overlay fixed inset-0 z-50", className)}
 	{...restProps}
