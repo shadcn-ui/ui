@@ -481,7 +481,15 @@
     @apply before:bg-popover text-popover-foreground before:border-border relative flex h-auto flex-col bg-transparent p-2 text-xs/relaxed before:absolute before:inset-2 before:-z-10 before:rounded-xl before:border;
   }
 
+  .cn-drawer-content-base {
+    @apply before:bg-popover text-popover-foreground before:border-border relative flex h-auto flex-col bg-transparent p-2 text-xs/relaxed before:absolute before:inset-2 before:-z-10 before:rounded-xl before:border;
+  }
+
   .cn-drawer-handle {
+    @apply bg-muted mx-auto mt-4 hidden h-1.5 w-[100px] shrink-0 rounded-full;
+  }
+
+  .cn-drawer-handle-base {
     @apply bg-muted mx-auto mt-4 hidden h-1.5 w-[100px] shrink-0 rounded-full;
   }
 
