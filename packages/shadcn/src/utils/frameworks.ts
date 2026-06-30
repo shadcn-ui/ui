@@ -82,6 +82,14 @@ export const FRAMEWORKS = {
       tailwind: "https://www.nativewind.dev/docs/getting-started/installation",
     },
   },
+  rsbuild: {
+    name: "rsbuild",
+    label: "Rsbuild",
+    links: {
+      installation: `${SHADCN_URL}/docs/installation/rsbuild`,
+      tailwind: "https://tailwindcss.com/docs/guides/rsbuild",
+    },
+  },
   manual: {
     name: "manual",
     label: "Manual",

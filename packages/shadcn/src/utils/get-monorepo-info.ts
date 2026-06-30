@@ -12,6 +12,7 @@ const FRAMEWORK_CONFIG_FILES = [
   "nuxt.config.*",
   "svelte.config.*",
   "gatsby-config.*",
+  "rsbuild.config.*",
   "angular.json",
 ]
 
