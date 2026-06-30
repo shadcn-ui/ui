@@ -10,6 +10,7 @@ import { highlighter } from "@/src/utils/highlighter"
 import { resolveImportWithMetadata } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
 import fg from "fast-glob"
+import fs from "fs-extra"
 import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 import { z } from "zod"
 
@@ -27,6 +28,15 @@ export const explorer = cosmiconfig("components", {
 })
 
 export type Config = z.infer<typeof configSchema>
+
+const TS_CONFIG_PATHS_SCHEMA = z.object({
+  compilerOptions: z
+    .object({
+      baseUrl: z.string().optional(),
+      paths: z.record(z.array(z.string())).optional(),
+    })
+    .optional(),
+})
 
 export async function getConfig(cwd: string) {
   const config = await getRawConfig(cwd)
@@ -54,15 +64,17 @@ export async function resolveConfigPaths(
   }
 
   // Read tsconfig.json.
-  const tsConfig = await loadConfig(cwd)
+  const loadedTsConfig = await loadConfig(cwd)
 
-  if (tsConfig.resultType === "failed") {
+  if (loadedTsConfig.resultType === "failed") {
     throw new Error(
       `Failed to load ${config.tsx ? "tsconfig" : "jsconfig"}.json. ${
-        tsConfig.message ?? ""
+        loadedTsConfig.message ?? ""
       }`.trim()
     )
   }
+
+  const tsConfig = await loadTsConfigPaths(cwd, loadedTsConfig)
 
   // Resolve the primary aliases first so fallbacks can reuse their results.
   const resolvedUtils = await resolveAliasPath(
@@ -112,6 +124,182 @@ export async function resolveConfigPaths(
       hooks: resolvedHooks,
     },
   })
+}
+
+async function loadTsConfigPaths(
+  cwd: string,
+  tsConfig: ConfigLoaderSuccessResult
+) {
+  if (
+    tsConfig.resultType === "success" &&
+    Object.entries(tsConfig.paths).length
+  ) {
+    return tsConfig
+  }
+
+  const fallbackTsConfig = await loadFallbackTsConfigPaths(cwd)
+
+  if (fallbackTsConfig) {
+    return fallbackTsConfig
+  }
+
+  return tsConfig
+}
+
+async function loadFallbackTsConfigPaths(
+  cwd: string
+): Promise<Pick<ConfigLoaderSuccessResult, "absoluteBaseUrl" | "paths"> | null> {
+  for (const fallback of [
+    "tsconfig.json",
+    "tsconfig.web.json",
+    "tsconfig.app.json",
+  ]) {
+    const filePath = path.resolve(cwd, fallback)
+
+    if (!(await fs.pathExists(filePath))) {
+      continue
+    }
+
+    const contents = await fs.readFile(filePath, "utf8")
+    let parsed
+
+    try {
+      parsed = JSON.parse(stripJsonCommentsAndTrailingCommas(contents))
+    } catch {
+      continue
+    }
+
+    const result = TS_CONFIG_PATHS_SCHEMA.safeParse(parsed)
+    const compilerOptions = result.success ? result.data.compilerOptions : null
+    const paths = compilerOptions?.paths
+
+    if (!paths || !Object.entries(paths).length) {
+      continue
+    }
+
+    return {
+      absoluteBaseUrl: path.resolve(cwd, compilerOptions?.baseUrl ?? "."),
+      paths,
+    }
+  }
+
+  return null
+}
+
+function stripJsonCommentsAndTrailingCommas(value: string) {
+  let result = ""
+  let inString = false
+  let escaped = false
+
+  for (let index = 0; index < value.length; index++) {
+    const current = value[index]
+    const next = value[index + 1]
+
+    if (inString) {
+      result += current
+
+      if (escaped) {
+        escaped = false
+        continue
+      }
+
+      if (current === "\\") {
+        escaped = true
+        continue
+      }
+
+      if (current === '"') {
+        inString = false
+      }
+
+      continue
+    }
+
+    if (current === '"') {
+      inString = true
+      result += current
+      continue
+    }
+
+    if (current === "/" && next === "/") {
+      while (index < value.length && value[index] !== "\n") {
+        index++
+      }
+
+      if (index < value.length) {
+        result += value[index]
+      }
+
+      continue
+    }
+
+    if (current === "/" && next === "*") {
+      index += 2
+
+      while (index < value.length) {
+        if (value[index] === "*" && value[index + 1] === "/") {
+          index++
+          break
+        }
+
+        if (value[index] === "\n") {
+          result += "\n"
+        }
+
+        index++
+      }
+
+      continue
+    }
+
+    if (current === ",") {
+      let nextIndex = index + 1
+
+      while (nextIndex < value.length) {
+        while (/\s/.test(value[nextIndex] ?? "")) {
+          nextIndex++
+        }
+
+        if (value[nextIndex] === "/" && value[nextIndex + 1] === "/") {
+          nextIndex += 2
+
+          while (
+            nextIndex < value.length &&
+            value[nextIndex] !== "\n" &&
+            value[nextIndex] !== "\r"
+          ) {
+            nextIndex++
+          }
+
+          continue
+        }
+
+        if (value[nextIndex] === "/" && value[nextIndex + 1] === "*") {
+          nextIndex += 2
+
+          while (
+            nextIndex < value.length &&
+            !(value[nextIndex] === "*" && value[nextIndex + 1] === "/")
+          ) {
+            nextIndex++
+          }
+
+          nextIndex += 2
+          continue
+        }
+
+        break
+      }
+
+      if (value[nextIndex] === "}" || value[nextIndex] === "]") {
+        continue
+      }
+    }
+
+    result += current
+  }
+
+  return result
 }
 
 async function resolveAliasPath(
