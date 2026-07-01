@@ -343,6 +343,38 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/radix/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/radix/ui/color-picker")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "color-picker"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/color-picker-example.tsx",
+          api: "https://www.npmjs.com/package/react-color-strip",
+        },
+      },
+    },
     combobox: {
       name: "combobox",
       title: "undefined",
@@ -3987,6 +4019,38 @@ export const Index: Record<string, Record<string, any>> = {
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/collapsible-example.tsx",
           api: "https://base-ui.com/react/components/collapsible.md",
+        },
+      },
+    },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/base/ui/color-picker")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "color-picker"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/color-picker-example.tsx",
+          api: "https://www.npmjs.com/package/react-color-strip",
         },
       },
     },

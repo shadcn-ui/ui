@@ -1,0 +1,94 @@
+---
+title: Color Picker
+description: A hue-and-shade color picker built on react-color-strip.
+base: base
+component: true
+links:
+  doc: https://www.npmjs.com/package/react-color-strip
+  api: https://github.com/aviralj02/react-color-strip#readme
+---
+
+<ComponentPreview styleName="base-nova" name="color-picker-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add color-picker
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install react-color-strip
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="color-picker"
+  title="components/ui/color-picker.tsx"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { ColorPicker } from "@/components/ui/color-picker"
+```
+
+```tsx showLineNumbers
+const [color, setColor] = React.useState("#ef4444")
+
+return (
+  <ColorPicker
+    value={color}
+    onChange={setColor}
+    showShade
+    className="w-64"
+  />
+)
+```
+
+## Props
+
+| Prop               | Type                      | Default     | Description                               |
+| ------------------ | ------------------------- | ----------- | ----------------------------------------- |
+| `value`            | `string`                  | —           | Controlled hex color value.               |
+| `defaultValue`     | `string`                  | `"#ef4444"` | Initial color for uncontrolled usage.     |
+| `onChange`         | `(value: string) => void` | —           | Fires on every drag move.                 |
+| `onChangeComplete` | `(value: string) => void` | —           | Fires on pointer release.                 |
+| `showShade`        | `boolean`                 | `false`     | Show the shade strip below the hue strip. |
+| `disabled`         | `boolean`                 | `false`     | Disables all interaction.                 |
+| `className`        | `string`                  | —           | Additional class names on the wrapper.    |
+
+## About
+
+The `ColorPicker` component is built on top of [react-color-strip](https://www.npmjs.com/package/react-color-strip). It renders two strips — a hue selector and an optional shade strip (enabled via `showShade`).
+
+The component is **fully controlled or uncontrolled**. Pass `value` + `onChange` for controlled usage, or just `defaultValue` for uncontrolled.
+
+## API Reference
+
+See the [react-color-strip](https://github.com/aviralj02/react-color-strip#readme) documentation for the underlying strip primitives and pointer customization options.

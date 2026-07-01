@@ -279,6 +279,9 @@ importers:
       react:
         specifier: 19.2.3
         version: 19.2.3
+      react-color-strip:
+        specifier: ^2.0.1
+        version: 2.0.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react-day-picker:
         specifier: ^9.7.0
         version: 9.8.1(react@19.2.3)
@@ -8169,6 +8172,12 @@ packages:
   rc@1.2.8:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}
     hasBin: true
+
+  react-color-strip@2.0.1:
+    resolution: {integrity: sha512-+ybjx4EkETKRiZTBMzc8VTXPfPCeATU8Y7AFF/eBXgzppYb0JXn7nDGCqUu1kPLEee03TnE6vgNaOIaMdJ5r3Q==}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
 
   react-day-picker@9.8.1:
     resolution: {integrity: sha512-kMcLrp3PfN/asVJayVv82IjF3iLOOxuH5TNFWezX6lS/T8iVRFPTETpHl3TUSTH99IDMZLubdNPJr++rQctkEw==}
@@ -17795,6 +17804,12 @@ snapshots:
       ini: 1.3.8
       minimist: 1.2.8
       strip-json-comments: 2.0.1
+
+  react-color-strip@2.0.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+    dependencies:
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+      rollup: 4.60.1
 
   react-day-picker@9.8.1(react@19.2.3):
     dependencies:

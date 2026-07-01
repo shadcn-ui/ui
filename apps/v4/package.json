@@ -74,6 +74,7 @@
     "postcss": "^8.5.1",
     "radix-ui": "^1.4.3",
     "react": "19.2.3",
+    "react-color-strip": "^2.0.1",
     "react-day-picker": "^9.7.0",
     "react-dom": "19.2.3",
     "react-hook-form": "^7.62.0",
