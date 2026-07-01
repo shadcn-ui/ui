@@ -325,21 +325,24 @@ function ButtonGroupWithInputGroup() {
   return (
     <Example title="With Input Group">
       <div className="flex flex-col gap-4">
-        <InputGroup>
-          <InputGroupInput placeholder="Type to search..." />
-          <InputGroupAddon
-            align="inline-start"
-            className="text-muted-foreground"
-          >
-            <IconPlaceholder
-              lucide="SearchIcon"
-              tabler="IconSearch"
-              hugeicons="Search01Icon"
-              phosphor="MagnifyingGlassIcon"
-              remixicon="RiSearchLine"
-            />
-          </InputGroupAddon>
-        </InputGroup>
+        <ButtonGroup>
+          <InputGroup>
+            <InputGroupInput placeholder="Type to search..." />
+            <InputGroupAddon
+              align="inline-start"
+              className="text-muted-foreground"
+            >
+              <IconPlaceholder
+                lucide="SearchIcon"
+                tabler="IconSearch"
+                hugeicons="Search01Icon"
+                phosphor="MagnifyingGlassIcon"
+                remixicon="RiSearchLine"
+              />
+            </InputGroupAddon>
+          </InputGroup>
+          <Button variant="outline">Search</Button>
+        </ButtonGroup>
       </div>
     </Example>
   )
