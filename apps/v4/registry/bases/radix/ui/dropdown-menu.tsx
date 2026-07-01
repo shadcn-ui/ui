@@ -22,7 +22,7 @@ function DropdownMenuPortal({
 
 function DropdownMenuTrigger({
   ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.Trigger>) {
+}: Omit<React.ComponentProps<typeof DropdownMenuPrimitive.Trigger>, "asChild">) {
   return (
     <DropdownMenuPrimitive.Trigger
       data-slot="dropdown-menu-trigger"
@@ -90,7 +90,10 @@ function DropdownMenuCheckboxItem({
   checked,
   inset,
   ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem> & {
+}: Omit<
+  React.ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem>,
+  "asChild"
+> & {
   inset?: boolean
 }) {
   return (
@@ -139,7 +142,10 @@ function DropdownMenuRadioItem({
   children,
   inset,
   ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.RadioItem> & {
+}: Omit<
+  React.ComponentProps<typeof DropdownMenuPrimitive.RadioItem>,
+  "asChild"
+> & {
   inset?: boolean
 }) {
   return (
