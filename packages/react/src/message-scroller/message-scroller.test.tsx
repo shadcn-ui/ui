@@ -701,6 +701,39 @@ describe("MessageScroller", () => {
     expect(rendered.viewport().scrollTop).toBe(176)
   })
 
+  it("follows the live edge when an autoScroll anchored turn starts streaming", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 40, scrollAnchor: true },
+        { id: "message-5", height: 40 },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(176)
+    expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
+
+    rendered.message("message-5").dataset.testHeight = "160"
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(340)
+  })
+
   it("anchors a replaced row when item count stays the same", async () => {
     const rendered = await renderTestScroller({
       messages: [
