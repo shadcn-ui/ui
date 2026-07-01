@@ -39,6 +39,7 @@ function ProgressValues() {
         <Progress value={50} />
         <Progress value={75} />
         <Progress value={100} />
+        <Progress value={null} />
       </div>
     </Example>
   )

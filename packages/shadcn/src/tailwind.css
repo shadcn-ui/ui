@@ -22,6 +22,15 @@
       height: 0;
     }
   }
+
+  @keyframes shimmer {
+    from {
+      background-position: 100% 0;
+    }
+    to {
+      background-position: 0 0;
+    }
+  }
 }
 
 /* Custom variants */
@@ -91,5 +100,36 @@
 
   &::-webkit-scrollbar {
     display: none;
+  }
+}
+
+@utility shimmer {
+  --_spread: var(--shimmer-spread, 40px);
+  --_base: oklch(from var(--color-background) l c h / 0);
+  --_highlight: var(
+    --shimmer-color,
+    oklch(from var(--color-background) l c h / 0.4)
+  );
+
+  background-image: var(
+    --shimmer-image,
+    linear-gradient(
+      calc(90deg + var(--shimmer-angle, 0deg)),
+      var(--_base) calc(50% - var(--_spread)),
+      color-mix(in oklch, var(--_highlight), var(--_base) 50%)
+        calc(50% - var(--_spread) * 0.5),
+      var(--_highlight) 50%,
+      color-mix(in oklch, var(--_highlight), var(--_base) 50%)
+        calc(50% + var(--_spread) * 0.5),
+      var(--_base) calc(50% + var(--_spread))
+    )
+  );
+  background-repeat: no-repeat;
+  background-size: calc(200% + var(--_spread) * 2) 100%;
+  background-position: 0 0;
+  animation: shimmer var(--shimmer-duration, 2s) linear infinite;
+
+  &:where([dir="rtl"], [dir="rtl"] *) {
+    animation-direction: reverse;
   }
 }

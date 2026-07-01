@@ -1,3 +1,5 @@
+import * as React from "react"
+
 export const STYLES = [
   {
     name: "vega",

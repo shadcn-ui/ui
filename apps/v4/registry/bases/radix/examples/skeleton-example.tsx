@@ -13,6 +13,7 @@ export default function SkeletonExample() {
       <SkeletonText />
       <SkeletonForm />
       <SkeletonTable />
+      <SkeletonShimmer />
     </ExampleWrapper>
   )
 }
@@ -95,6 +96,20 @@ function SkeletonTable() {
           <Skeleton className="h-4 flex-1" />
           <Skeleton className="h-4 w-24" />
           <Skeleton className="h-4 w-20" />
+        </div>
+      </div>
+    </Example>
+  )
+}
+
+function SkeletonShimmer() {
+  return (
+    <Example title="Shimmer Effect">
+      <div className="flex w-full items-center gap-4">
+        <Skeleton className="size-10 shrink-0 shimmer rounded-full" />
+        <div className="grid gap-2">
+          <Skeleton className="h-4 w-[150px] shimmer" />
+          <Skeleton className="h-4 w-[100px] shimmer" />
         </div>
       </div>
     </Example>

@@ -7,8 +7,9 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "isolatedModules": false,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "jsx": "react-jsx"
   },
-  "include": ["scripts/**/*.{ts,mts}"],
+  "include": ["scripts/**/*.{ts,mts}", "registry/**/*.{ts,tsx}"],
   "exclude": ["node_modules"]
 }
