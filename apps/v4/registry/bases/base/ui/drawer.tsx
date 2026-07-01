@@ -132,13 +132,11 @@ function DrawerContent({
           data-swipe-axis={swipeAxis}
           className={cn(
             // Base.
-            "cn-drawer-content-base group/drawer-content pointer-events-auto fixed z-50 flex h-(--drawer-height,auto) min-h-0 transform-[translate3d(var(--translate-x),var(--translate-y),0)_scale(var(--stack-scale))] flex-col overflow-hidden transition-[transform,height,opacity] duration-450 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
+            "group/drawer-content pointer-events-auto fixed z-50 flex h-(--drawer-height,auto) min-h-0 transform-[translate3d(var(--translate-x),var(--translate-y),0)_scale(var(--stack-scale))] flex-col transition-[transform,height,opacity] duration-450 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
             // Stack.
             "[--bleed-x:3rem] [--bleed-y:3rem] [--peek:1rem] [--stack-height:max(0px,calc(var(--drawer-frontmost-height,var(--drawer-height,0px))-var(--bleed-y)))] [--stack-peek-offset:max(0px,calc((var(--nested-drawers)-var(--stack-progress))*var(--peek)))] [--stack-progress:clamp(0,var(--drawer-swipe-progress),1)] [--stack-scale-base:max(0,calc(1-(var(--nested-drawers)*var(--stack-step))))] [--stack-scale:clamp(0,calc(var(--stack-scale-base)+(var(--stack-step)*var(--stack-progress))),1)] [--stack-shrink:calc(1-var(--stack-scale))] [--stack-step:0.05] [--stack-width:max(0px,calc(100%-var(--bleed-x)))] [--translate-x:0px] [--translate-y:0px]",
-            // Nested state.
-            "after:pointer-events-none after:absolute after:inset-0 after:bg-transparent after:transition-[background-color] after:duration-450 after:ease-[cubic-bezier(0.22,1,0.36,1)] data-nested-drawer-open:overflow-hidden data-nested-drawer-open:after:bg-black/5 data-nested-drawer-swiping:duration-0",
             // Transitions.
-            "data-ending-style:transform-(--closed-transform) data-ending-style:opacity-[0.9999] data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-ending-style:data-nested-drawer-swiping:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-starting-style:transform-(--closed-transform) data-swiping:duration-0 data-swiping:select-none data-ending-style:data-swiping:duration-[calc(var(--drawer-swipe-strength)*400ms)]",
+            "data-ending-style:transform-(--closed-transform) data-ending-style:opacity-[0.9999] data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-nested-drawer-swiping:duration-0 data-ending-style:data-nested-drawer-swiping:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-starting-style:transform-(--closed-transform) data-swiping:duration-0 data-swiping:select-none data-ending-style:data-swiping:duration-[calc(var(--drawer-swipe-strength)*400ms)]",
             // Axis: y.
             "data-[swipe-direction=down]:inset-x-0 data-[swipe-direction=down]:max-h-[calc(100dvh+var(--bleed-y))] data-[swipe-direction=down]:data-nested-drawer-open:h-[calc(var(--stack-height)+var(--bleed-y))] data-[swipe-direction=up]:inset-x-0 data-[swipe-direction=up]:max-h-[calc(100dvh+var(--bleed-y))] data-[swipe-direction=up]:data-nested-drawer-open:h-[calc(var(--stack-height)+var(--bleed-y))]",
             // Axis: x.
@@ -154,15 +152,27 @@ function DrawerContent({
             className
           )}
         >
-          {showSwipeHandle && <DrawerSwipeHandle />}
-          <DrawerPrimitive.Content
+          <div
+            data-slot="drawer-content-surface"
+            data-swipe-axis={swipeAxis}
+            data-swipe-direction={swipeDirection}
             className={cn(
-              "flex min-h-0 flex-1 flex-col overflow-hidden transition-opacity duration-300 ease-[cubic-bezier(0.45,1.005,0,1.005)]",
-              "group-data-nested-drawer-open/drawer-content:opacity-0 group-data-nested-drawer-swiping/drawer-content:opacity-100"
+              "cn-drawer-content-base relative z-0 flex min-h-0 flex-1 overflow-hidden",
+              "data-[swipe-direction=left]:flex-row data-[swipe-direction=right]:flex-row",
+              "group-data-nested-drawer-open/drawer-content:overflow-hidden after:pointer-events-none after:absolute after:inset-0 after:bg-transparent after:transition-[background-color] after:duration-450 after:ease-[cubic-bezier(0.22,1,0.36,1)] after:content-[''] group-data-nested-drawer-open/drawer-content:after:bg-black/5"
             )}
           >
-            {children}
-          </DrawerPrimitive.Content>
+            {showSwipeHandle && <DrawerSwipeHandle />}
+            <DrawerPrimitive.Content
+              data-slot="drawer-content-inner"
+              className={cn(
+                "flex min-h-0 flex-1 flex-col overflow-hidden transition-opacity duration-300 ease-[cubic-bezier(0.45,1.005,0,1.005)]",
+                "group-data-nested-drawer-open/drawer-content:opacity-0 group-data-nested-drawer-swiping/drawer-content:opacity-100"
+              )}
+            >
+              {children}
+            </DrawerPrimitive.Content>
+          </div>
         </DrawerPrimitive.Popup>
       </DrawerPrimitive.Viewport>
     </DrawerPortal>
