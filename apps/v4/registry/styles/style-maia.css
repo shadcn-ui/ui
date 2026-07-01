@@ -491,11 +491,15 @@
   }
 
   .cn-drawer-handle-base {
-    @apply bg-muted mx-auto mt-4 hidden h-1.5 w-[100px] shrink-0 rounded-full;
+    @apply after:bg-muted after:block after:shrink-0 after:rounded-full group-data-[swipe-axis=y]/drawer-content:h-5 group-data-[swipe-axis=y]/drawer-content:w-full group-data-[swipe-axis=y]/drawer-content:justify-center group-data-[swipe-axis=y]/drawer-content:after:h-1.5 group-data-[swipe-axis=y]/drawer-content:after:w-[100px] group-data-[swipe-direction=down]/drawer-content:items-end group-data-[swipe-direction=up]/drawer-content:items-start group-data-[swipe-axis=x]/drawer-content:h-full group-data-[swipe-axis=x]/drawer-content:w-5 group-data-[swipe-axis=x]/drawer-content:items-center group-data-[swipe-axis=x]/drawer-content:after:h-[100px] group-data-[swipe-axis=x]/drawer-content:after:w-1.5 group-data-[swipe-direction=left]/drawer-content:justify-start group-data-[swipe-direction=right]/drawer-content:justify-end;
   }
 
   .cn-drawer-header {
     @apply gap-0.5 p-4 md:gap-1.5 md:text-left;
+  }
+
+  .cn-drawer-header-base {
+    @apply gap-0.5 p-4 pb-0 md:gap-1.5 md:text-left;
   }
 
   .cn-drawer-title {
@@ -508,6 +512,10 @@
 
   .cn-drawer-footer {
     @apply gap-2 p-4;
+  }
+
+  .cn-drawer-footer-base {
+    @apply gap-2 p-4 pt-0;
   }
 
   /* MARK: Dropdown Menu */
