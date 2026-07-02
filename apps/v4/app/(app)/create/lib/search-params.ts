@@ -132,6 +132,9 @@ const NON_DESIGN_SYSTEM_KEYS = [
   "custom",
 ] as const
 
+// Shared across hook instances so only one mount effect encodes the initial URL.
+let hasSyncedPresetToUrl = false
+
 export const loadDesignSystemSearchParams = createLoader(
   designSystemSearchParams
 )
@@ -235,13 +238,42 @@ function resolvePresetParams(
   return normalizeDesignSystemParams(rawParams)
 }
 
+export function buildPresetUrlUpdate(
+  merged: DesignSystemSearchParams,
+  resolvedUpdates: Partial<DesignSystemSearchParams> = {}
+) {
+  const code = getPresetCode(merged)
+  const rawUpdate: Record<string, unknown> = { preset: code }
+
+  for (const key of DESIGN_SYSTEM_KEYS) {
+    rawUpdate[key] = null
+  }
+
+  for (const key of NON_DESIGN_SYSTEM_KEYS) {
+    if (key === "preset") {
+      continue
+    }
+
+    rawUpdate[key] =
+      key in resolvedUpdates
+        ? (resolvedUpdates as Record<string, unknown>)[key]
+        : merged[key]
+  }
+
+  return rawUpdate
+}
+
 // Wraps nuqs useQueryStates with transparent preset encoding/decoding.
 // - Reads: if ?preset=CODE is in the URL, decodes it and returns individual values.
 // - Writes: when design system params are set, encodes them into a preset code.
+//
+// Default options use shallow: true so picker selections do not trigger a full
+// Next.js server navigation. This prevents the customizer panel from flickering
+// or resetting while the URL update propagates (#10910, #11060).
 export function useDesignSystemSearchParams(options: Options = {}) {
   const searchParams = useSearchParams()
   const [rawParams, rawSetParams] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
+    shallow: true,
     history: "push",
     ...options,
   })
@@ -256,6 +288,19 @@ export function useDesignSystemSearchParams(options: Options = {}) {
   React.useEffect(() => {
     paramsRef.current = params
   }, [params])
+
+  React.useEffect(() => {
+    if (hasSyncedPresetToUrl || searchParams.has("preset")) {
+      return
+    }
+
+    hasSyncedPresetToUrl = true
+
+    const merged = normalizeDesignSystemParams(paramsRef.current)
+    void rawSetParams(buildPresetUrlUpdate(merged) as RawSetParamsInput, {
+      history: "replace",
+    })
+  }, [rawSetParams, searchParams])
 
   type RawSetParamsInput = Parameters<typeof rawSetParams>[0]
 
@@ -286,24 +331,10 @@ export function useDesignSystemSearchParams(options: Options = {}) {
         ...paramsRef.current,
         ...resolvedUpdates,
       })
-      // Encode design system fields into a preset code.
-      // Cast needed: merged values may include null from nuqs resets,
-      // but encodePreset handles missing values by falling back to defaults.
-      const code = getPresetCode(merged)
-      // Build update: set preset, clear individual DS params from URL.
-      const rawUpdate: Record<string, unknown> = { preset: code }
-      for (const key of DESIGN_SYSTEM_KEYS) {
-        rawUpdate[key] = null
-      }
-
-      // Pass through non-DS params that were explicitly in the update.
-      for (const key of NON_DESIGN_SYSTEM_KEYS) {
-        if (key in resolvedUpdates) {
-          rawUpdate[key] = (resolvedUpdates as Record<string, unknown>)[key]
-        }
-      }
-
-      return rawSetParams(rawUpdate as RawSetParamsInput, setOptions)
+      return rawSetParams(
+        buildPresetUrlUpdate(merged, resolvedUpdates) as RawSetParamsInput,
+        setOptions
+      )
     },
     [rawSetParams]
   )

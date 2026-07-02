@@ -46,12 +46,6 @@ export function ChartColorPicker({
     [params.chartColor]
   )
 
-  React.useEffect(() => {
-    if (!currentChartColor && availableChartColors.length > 0) {
-      setParams({ chartColor: availableChartColors[0].name })
-    }
-  }, [currentChartColor, availableChartColors, setParams])
-
   return (
     <div className="group/picker relative">
       <Picker>
