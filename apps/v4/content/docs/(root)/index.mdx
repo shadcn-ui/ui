@@ -36,7 +36,7 @@ _In a typical library, if you need to change a button’s behavior, you have to 
       <p>
         shadcn/ui follows a headless component architecture. This means the core
         of your app can receive fixes by updating your dependencies, for
-        instance, radix-ui or input-otp.
+        instance, @base-ui/react or input-otp.
       </p>
       <p className="mt-4">
         The topmost layer, i.e., the one closest to your design system, is not

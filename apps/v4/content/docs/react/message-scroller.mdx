@@ -13,7 +13,7 @@ Tailwind classes on top. Use the package directly when you want full control ove
 the markup and styles, or when you are not using the registry.
 
 For the behavior guide and live examples, see the
-[Message Scroller](/docs/components/radix/message-scroller) component.
+[Message Scroller](/docs/components/base/message-scroller) component.
 
 ## Installation
 
