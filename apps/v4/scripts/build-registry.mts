@@ -808,6 +808,8 @@ export const Components: Record<string, Record<string, any>> = {`
       title: "${item.title}",
       description: "${item.description ?? ""}",
       type: "${item.type}",
+      dependencies: ${JSON.stringify(item.dependencies)},
+      devDependencies: ${JSON.stringify(item.devDependencies)},
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
       files: [${files.map((file) => {
         const filePath = `registry/bases/${base.name}/${file.path}`
@@ -1218,6 +1220,8 @@ export const Components: Record<string, Record<string, any>> = {`
       title: "${item.title}",
       description: "${item.description ?? ""}",
       type: "${item.type}",
+      dependencies: ${JSON.stringify(item.dependencies)},
+      devDependencies: ${JSON.stringify(item.devDependencies)},
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
       files: [${resolvedFiles.map((file) => {
         return `{

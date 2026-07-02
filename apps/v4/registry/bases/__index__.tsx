@@ -10,6 +10,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -33,6 +35,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -55,6 +59,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button"],
       files: [
         {
@@ -78,6 +84,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -101,6 +109,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -124,6 +134,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -146,6 +158,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -168,6 +182,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -190,6 +206,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["separator"],
       files: [
         {
@@ -212,6 +230,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["react-day-picker@latest", "date-fns"],
+      devDependencies: undefined,
       registryDependencies: ["button"],
       files: [
         {
@@ -235,6 +255,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -257,6 +279,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["embla-carousel-react"],
+      devDependencies: undefined,
       registryDependencies: ["button"],
       files: [
         {
@@ -280,6 +304,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["recharts@3.8.0"],
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -302,6 +328,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -325,6 +353,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -348,6 +378,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["@base-ui/react"],
+      devDependencies: undefined,
       registryDependencies: ["button", "input-group"],
       files: [
         {
@@ -371,6 +403,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["cmdk"],
+      devDependencies: undefined,
       registryDependencies: ["dialog", "input-group"],
       files: [
         {
@@ -394,6 +428,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -417,6 +453,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button"],
       files: [
         {
@@ -440,6 +478,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["vaul"],
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -463,6 +503,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -486,6 +528,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -508,6 +552,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["label", "separator"],
       files: [
         {
@@ -530,6 +576,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -553,6 +601,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -575,6 +625,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "input", "textarea"],
       files: [
         {
@@ -597,6 +649,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["input-otp"],
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -620,6 +674,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["separator"],
       files: [
         {
@@ -642,6 +698,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -665,6 +723,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -688,6 +748,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -711,6 +773,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button"],
       files: [
         {
@@ -733,6 +797,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -756,6 +822,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -779,6 +847,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -802,6 +872,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["react-resizable-panels"],
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -825,6 +897,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -848,6 +922,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -871,6 +947,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -894,6 +972,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button"],
       files: [
         {
@@ -917,6 +997,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "separator",
@@ -947,6 +1029,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -969,6 +1053,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -992,6 +1078,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["sonner", "next-themes"],
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -1015,6 +1103,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -1037,6 +1127,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -1060,6 +1152,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -1082,6 +1176,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -1105,6 +1201,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -1127,6 +1225,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -1150,6 +1250,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["toggle"],
       files: [
         {
@@ -1173,6 +1275,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -1196,6 +1300,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -1218,6 +1324,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -1240,6 +1348,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -1341,6 +1451,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Accordion",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["accordion", "button", "card", "example"],
       files: [
         {
@@ -1357,6 +1469,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Alert",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["alert", "badge", "button", "example"],
       files: [
         {
@@ -1373,6 +1487,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Alert Dialog",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["alert-dialog", "button", "dialog", "example"],
       files: [
         {
@@ -1389,6 +1505,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Aspect Ratio",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["aspect-ratio", "example"],
       files: [
         {
@@ -1405,6 +1523,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Avatar",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["avatar", "button", "empty", "example"],
       files: [
         {
@@ -1421,6 +1541,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Badge",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["badge", "spinner", "example"],
       files: [
         {
@@ -1437,6 +1559,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Breadcrumb",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["breadcrumb", "dropdown-menu", "example"],
       files: [
         {
@@ -1453,6 +1577,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Button",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "example"],
       files: [
         {
@@ -1469,6 +1595,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Button Group",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "button-group",
@@ -1497,6 +1625,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Calendar",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "calendar",
@@ -1522,6 +1652,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Card",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "avatar",
         "button",
@@ -1545,6 +1677,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Carousel",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["card", "carousel", "example"],
       files: [
         {
@@ -1561,6 +1695,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Chart",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["chart", "card", "example"],
       files: [
         {
@@ -1577,6 +1713,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Checkbox",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["checkbox", "field", "table", "example"],
       files: [
         {
@@ -1593,6 +1731,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Collapsible",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "card",
@@ -1617,6 +1757,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Combobox",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "card",
@@ -1644,6 +1786,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Command",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "command", "example"],
       files: [
         {
@@ -1660,6 +1804,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Context Menu",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "context-menu", "dialog", "example"],
       files: [
         {
@@ -1676,6 +1822,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Dialog",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "checkbox",
@@ -1707,6 +1855,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Drawer",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["drawer", "example"],
       files: [
         {
@@ -1723,6 +1873,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Dropdown Menu",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "avatar",
         "button",
@@ -1745,6 +1897,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Empty",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "empty",
@@ -1767,6 +1921,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Field",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "badge",
         "checkbox",
@@ -1796,6 +1952,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Hover Card",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "dialog", "hover-card", "example"],
       files: [
         {
@@ -1812,6 +1970,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Input",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "field",
@@ -1835,6 +1995,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Input Group",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "button-group",
@@ -1865,6 +2027,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Input OTP",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "card", "field", "input-otp", "example"],
       files: [
         {
@@ -1881,6 +2045,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Item",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "drawer", "item", "example"],
       files: [
         {
@@ -1897,6 +2063,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Kbd",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "input-group",
@@ -1919,6 +2087,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Label",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "checkbox",
         "field",
@@ -1942,6 +2112,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Menubar",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "dialog", "menubar", "example"],
       files: [
         {
@@ -1958,6 +2130,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Native Select",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["field", "native-select", "example"],
       files: [
         {
@@ -1974,6 +2148,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Navigation Menu",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "dialog", "navigation-menu", "example"],
       files: [
         {
@@ -1990,6 +2166,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Pagination",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["field", "pagination", "select", "example"],
       files: [
         {
@@ -2006,6 +2184,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Popover",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "dialog",
@@ -2029,6 +2209,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Progress",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["field", "item", "progress", "slider", "example"],
       files: [
         {
@@ -2045,6 +2227,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Radio Group",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["field", "radio-group", "example"],
       files: [
         {
@@ -2061,6 +2245,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Resizable",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["resizable", "example"],
       files: [
         {
@@ -2077,6 +2263,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Scroll Area",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["scroll-area", "separator", "example"],
       files: [
         {
@@ -2093,6 +2281,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Select",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "dialog",
@@ -2118,6 +2308,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Separator",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["separator", "example"],
       files: [
         {
@@ -2134,6 +2326,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sheet",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "field", "input", "sheet", "example"],
       files: [
         {
@@ -2150,6 +2344,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "dropdown-menu",
@@ -2173,6 +2369,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar (Icon)",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "avatar",
         "button",
@@ -2197,6 +2395,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar (Inset)",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["collapsible", "sidebar", "example"],
       files: [
         {
@@ -2213,6 +2413,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar (Floating)",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "card",
@@ -2237,6 +2439,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Skeleton",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["skeleton", "example"],
       files: [
         {
@@ -2253,6 +2457,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Slider",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["label", "slider", "example"],
       files: [
         {
@@ -2269,6 +2475,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sonner",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["sonner", "example"],
       files: [
         {
@@ -2285,6 +2493,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Spinner",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "badge",
         "button",
@@ -2309,6 +2519,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Switch",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["field", "label", "switch", "example"],
       files: [
         {
@@ -2325,6 +2537,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Table",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "dropdown-menu",
@@ -2348,6 +2562,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Tabs",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "dropdown-menu", "tabs", "example"],
       files: [
         {
@@ -2364,6 +2580,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Textarea",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["field", "textarea", "example"],
       files: [
         {
@@ -2380,6 +2598,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Toggle",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["toggle", "example"],
       files: [
         {
@@ -2396,6 +2616,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Toggle Group",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["input", "select", "toggle-group", "example"],
       files: [
         {
@@ -2412,6 +2634,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Tooltip",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "kbd", "tooltip", "example"],
       files: [
         {
@@ -2428,6 +2652,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Demo",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "alert-dialog",
         "badge",
@@ -2459,6 +2685,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Example",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "alert-dialog",
         "badge",
@@ -2585,6 +2813,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:lib",
+      dependencies: ["clsx", "tailwind-merge"],
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -2601,6 +2831,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Example",
       description: "",
       type: "registry:component",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -2617,6 +2849,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Preview",
       description: "",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "alert-dialog",
         "avatar",
@@ -2660,6 +2894,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Preview 02",
       description: "",
       type: "registry:block",
+      dependencies: ["react-qr-code"],
+      devDependencies: undefined,
       registryDependencies: [
         "accordion",
         "badge",
@@ -2723,6 +2959,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Login 01",
       description: "A simple login form.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
@@ -2744,6 +2982,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Login 02",
       description: "A two column login page with a cover image.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "input", "label", "field"],
       files: [
         {
@@ -2765,6 +3005,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Login 03",
       description: "A login page with a muted background color.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
@@ -2786,6 +3028,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Login 04",
       description: "A login page with form and image.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
@@ -2807,6 +3051,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Login 05",
       description: "A simple email-only login page.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "input", "label", "field"],
       files: [
         {
@@ -2828,6 +3074,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Signup 01",
       description: "A simple signup form.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "card", "input", "label"],
       files: [
         {
@@ -2849,6 +3097,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Signup 02",
       description: "A two column signup page with a cover image.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "input", "label", "field"],
       files: [
         {
@@ -2870,6 +3120,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Signup 03",
       description: "A signup page with a muted background color.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
@@ -2891,6 +3143,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Signup 04",
       description: "A signup page with form and image.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
@@ -2912,6 +3166,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Signup 05",
       description: "A simple signup form with social providers.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "input", "label"],
       files: [
         {
@@ -2933,6 +3189,15 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Dashboard 01",
       description: "A dashboard with sidebar, charts and data table.",
       type: "registry:block",
+      dependencies: [
+        "@dnd-kit/core",
+        "@dnd-kit/modifiers",
+        "@dnd-kit/sortable",
+        "@dnd-kit/utilities",
+        "@tanstack/react-table",
+        "zod",
+      ],
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -3019,6 +3284,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 01",
       description: "A simple sidebar with navigation grouped by section.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -3056,6 +3323,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 02",
       description: "A sidebar with collapsible sections.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -3093,6 +3362,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 03",
       description: "A sidebar with submenus.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["sidebar", "breadcrumb"],
       files: [
         {
@@ -3114,6 +3385,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 04",
       description: "A floating sidebar with submenus.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["sidebar", "breadcrumb", "separator"],
       files: [
         {
@@ -3135,6 +3408,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 05",
       description: "A sidebar with collapsible submenus.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -3167,6 +3442,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 06",
       description: "A sidebar with submenus as dropdowns.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -3204,6 +3481,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 07",
       description: "A sidebar that collapses to icons.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -3252,6 +3531,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 08",
       description: "An inset sidebar with secondary navigation.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -3300,6 +3581,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 09",
       description: "Collapsible nested sidebars.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -3335,6 +3618,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 10",
       description: "A sidebar in a popover.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -3393,6 +3678,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 11",
       description: "A sidebar with a collapsible file tree.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -3419,6 +3706,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 12",
       description: "A sidebar with a calendar.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -3463,6 +3752,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 13",
       description: "A sidebar in a dialog.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["sidebar", "breadcrumb", "button", "dialog"],
       files: [
         {
@@ -3484,6 +3775,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 14",
       description: "A sidebar on the right.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["sidebar", "breadcrumb"],
       files: [
         {
@@ -3505,6 +3798,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 15",
       description: "A left and right sidebar.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -3580,6 +3875,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 16",
       description: "A sidebar with a sticky site header.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -3640,6 +3937,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:hook",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -3658,6 +3957,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -3681,6 +3982,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -3703,6 +4006,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button"],
       files: [
         {
@@ -3726,6 +4031,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -3748,6 +4055,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -3771,6 +4080,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -3793,6 +4104,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -3815,6 +4128,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -3837,6 +4152,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["separator"],
       files: [
         {
@@ -3859,6 +4176,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["react-day-picker@latest", "date-fns"],
+      devDependencies: undefined,
       registryDependencies: ["button"],
       files: [
         {
@@ -3882,6 +4201,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -3904,6 +4225,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["embla-carousel-react"],
+      devDependencies: undefined,
       registryDependencies: ["button"],
       files: [
         {
@@ -3927,6 +4250,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["recharts@3.8.0"],
+      devDependencies: undefined,
       registryDependencies: ["card"],
       files: [
         {
@@ -3949,6 +4274,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -3972,6 +4299,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -3995,6 +4324,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["@base-ui/react"],
+      devDependencies: undefined,
       registryDependencies: ["button", "input-group"],
       files: [
         {
@@ -4018,6 +4349,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["cmdk"],
+      devDependencies: undefined,
       registryDependencies: ["dialog", "input-group"],
       files: [
         {
@@ -4041,6 +4374,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4064,6 +4399,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button"],
       files: [
         {
@@ -4087,6 +4424,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["vaul"],
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4110,6 +4449,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4133,6 +4474,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4155,6 +4498,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["label", "separator"],
       files: [
         {
@@ -4177,6 +4522,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4200,6 +4547,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4222,6 +4571,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "input", "textarea"],
       files: [
         {
@@ -4244,6 +4595,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["input-otp"],
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4267,6 +4620,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["separator"],
       files: [
         {
@@ -4289,6 +4644,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4312,6 +4669,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["dropdown-menu"],
       files: [
         {
@@ -4335,6 +4694,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4358,6 +4719,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button"],
       files: [
         {
@@ -4380,6 +4743,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4403,6 +4768,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4426,6 +4793,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4449,6 +4818,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["react-resizable-panels"],
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4472,6 +4843,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4495,6 +4868,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4518,6 +4893,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4541,6 +4918,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button"],
       files: [
         {
@@ -4564,6 +4943,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "input",
@@ -4594,6 +4975,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4616,6 +4999,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4639,6 +5024,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["sonner", "next-themes"],
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4662,6 +5049,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4684,6 +5073,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4707,6 +5098,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4729,6 +5122,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4752,6 +5147,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4774,6 +5171,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4797,6 +5196,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["toggle"],
       files: [
         {
@@ -4820,6 +5221,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4843,6 +5246,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4865,6 +5270,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4887,6 +5294,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
+      dependencies: ["@base-ui/react"],
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -4988,6 +5397,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Accordion",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["accordion", "button", "card", "example"],
       files: [
         {
@@ -5004,6 +5415,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Alert",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["alert", "badge", "example"],
       files: [
         {
@@ -5020,6 +5433,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Alert Dialog",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["alert-dialog", "button", "dialog", "example"],
       files: [
         {
@@ -5036,6 +5451,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Aspect Ratio",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["aspect-ratio", "example"],
       files: [
         {
@@ -5052,6 +5469,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Avatar",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["avatar", "button", "empty", "example"],
       files: [
         {
@@ -5068,6 +5487,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Badge",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["badge", "spinner", "example"],
       files: [
         {
@@ -5084,6 +5505,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Breadcrumb",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["breadcrumb", "dropdown-menu", "example"],
       files: [
         {
@@ -5100,6 +5523,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Button",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "example"],
       files: [
         {
@@ -5116,6 +5541,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Button Group",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "button-group",
@@ -5144,6 +5571,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Calendar",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "calendar",
@@ -5169,6 +5598,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Card",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "avatar",
         "button",
@@ -5192,6 +5623,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Carousel",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["card", "carousel", "example"],
       files: [
         {
@@ -5208,6 +5641,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Chart",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["chart", "card", "example"],
       files: [
         {
@@ -5224,6 +5659,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Checkbox",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["checkbox", "field", "table", "example"],
       files: [
         {
@@ -5240,6 +5677,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Collapsible",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "card",
@@ -5264,6 +5703,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Combobox",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "card",
@@ -5291,6 +5732,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Command",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "command", "example"],
       files: [
         {
@@ -5307,6 +5750,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Context Menu",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "context-menu", "dialog", "example"],
       files: [
         {
@@ -5323,6 +5768,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Dialog",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "checkbox",
@@ -5354,6 +5801,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Drawer",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["drawer", "example"],
       files: [
         {
@@ -5370,6 +5819,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Dropdown Menu",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "avatar",
         "button",
@@ -5392,6 +5843,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Empty",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "empty",
@@ -5414,6 +5867,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Field",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "badge",
         "checkbox",
@@ -5443,6 +5898,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Hover Card",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "dialog", "hover-card", "example"],
       files: [
         {
@@ -5459,6 +5916,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Input",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "field",
@@ -5482,6 +5941,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Input Group",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "button-group",
@@ -5512,6 +5973,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Input OTP",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "card", "field", "input-otp", "example"],
       files: [
         {
@@ -5528,6 +5991,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Item",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "item", "example"],
       files: [
         {
@@ -5544,6 +6009,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Kbd",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "input-group",
@@ -5566,6 +6033,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Label",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "checkbox",
         "field",
@@ -5589,6 +6058,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Menubar",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "dialog", "menubar", "example"],
       files: [
         {
@@ -5605,6 +6076,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Native Select",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["field", "native-select", "example"],
       files: [
         {
@@ -5621,6 +6094,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Navigation Menu",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "dialog", "navigation-menu", "example"],
       files: [
         {
@@ -5637,6 +6112,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Pagination",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["field", "pagination", "select", "example"],
       files: [
         {
@@ -5653,6 +6130,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Popover",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "dialog",
@@ -5676,6 +6155,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Progress",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["field", "item", "progress", "slider", "example"],
       files: [
         {
@@ -5692,6 +6173,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Radio Group",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["field", "radio-group", "example"],
       files: [
         {
@@ -5708,6 +6191,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Resizable",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["resizable", "example"],
       files: [
         {
@@ -5724,6 +6209,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Scroll Area",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["scroll-area", "separator", "example"],
       files: [
         {
@@ -5740,6 +6227,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Select",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "dialog",
@@ -5765,6 +6254,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Separator",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["separator", "example"],
       files: [
         {
@@ -5781,6 +6272,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sheet",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "field", "input", "sheet", "example"],
       files: [
         {
@@ -5797,6 +6290,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "dropdown-menu",
@@ -5820,6 +6315,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar (Icon)",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "avatar",
         "button",
@@ -5844,6 +6341,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar (Inset)",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["collapsible", "sidebar", "example"],
       files: [
         {
@@ -5860,6 +6359,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar (Floating)",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "card",
@@ -5884,6 +6385,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Skeleton",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["skeleton", "example"],
       files: [
         {
@@ -5900,6 +6403,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Slider",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["label", "slider", "example"],
       files: [
         {
@@ -5916,6 +6421,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sonner",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["sonner", "example"],
       files: [
         {
@@ -5932,6 +6439,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Spinner",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "badge",
         "button",
@@ -5956,6 +6465,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Switch",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["field", "label", "switch", "example"],
       files: [
         {
@@ -5972,6 +6483,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Table",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "button",
         "dropdown-menu",
@@ -5995,6 +6508,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Tabs",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "dropdown-menu", "tabs", "example"],
       files: [
         {
@@ -6011,6 +6526,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Textarea",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["field", "textarea", "example"],
       files: [
         {
@@ -6027,6 +6544,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Toggle",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["toggle", "example"],
       files: [
         {
@@ -6043,6 +6562,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Toggle Group",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["input", "select", "toggle-group", "example"],
       files: [
         {
@@ -6059,6 +6580,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Tooltip",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "kbd", "tooltip", "example"],
       files: [
         {
@@ -6075,6 +6598,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Demo",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "alert-dialog",
         "badge",
@@ -6106,6 +6631,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Example",
       description: "",
       type: "registry:example",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "alert-dialog",
         "badge",
@@ -6232,6 +6759,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:lib",
+      dependencies: ["clsx", "tailwind-merge"],
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -6248,6 +6777,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Example",
       description: "",
       type: "registry:component",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
@@ -6264,6 +6795,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Preview",
       description: "",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "alert-dialog",
         "avatar",
@@ -6308,6 +6841,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Preview 02",
       description: "",
       type: "registry:block",
+      dependencies: ["react-qr-code"],
+      devDependencies: undefined,
       registryDependencies: [
         "accordion",
         "badge",
@@ -6371,6 +6906,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Login 01",
       description: "A simple login form.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
@@ -6392,6 +6929,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Login 02",
       description: "A two column login page with a cover image.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "input", "label", "field"],
       files: [
         {
@@ -6413,6 +6952,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Login 03",
       description: "A login page with a muted background color.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
@@ -6434,6 +6975,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Login 04",
       description: "A login page with form and image.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
@@ -6455,6 +6998,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Login 05",
       description: "A simple email-only login page.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "input", "label", "field"],
       files: [
         {
@@ -6476,6 +7021,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Signup 01",
       description: "A simple signup form.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "card", "input", "label"],
       files: [
         {
@@ -6497,6 +7044,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Signup 02",
       description: "A two column signup page with a cover image.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "input", "label", "field"],
       files: [
         {
@@ -6518,6 +7067,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Signup 03",
       description: "A signup page with a muted background color.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
@@ -6539,6 +7090,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Signup 04",
       description: "A signup page with form and image.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
@@ -6560,6 +7113,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Signup 05",
       description: "A simple signup form with social providers.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["button", "input", "label"],
       files: [
         {
@@ -6581,6 +7136,15 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Dashboard 01",
       description: "A dashboard with sidebar, charts and data table.",
       type: "registry:block",
+      dependencies: [
+        "@dnd-kit/core",
+        "@dnd-kit/modifiers",
+        "@dnd-kit/sortable",
+        "@dnd-kit/utilities",
+        "@tanstack/react-table",
+        "zod",
+      ],
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -6667,6 +7231,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 01",
       description: "A simple sidebar with navigation grouped by section.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -6704,6 +7270,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 02",
       description: "A sidebar with collapsible sections.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -6741,6 +7309,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 03",
       description: "A sidebar with submenus.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["sidebar", "breadcrumb"],
       files: [
         {
@@ -6762,6 +7332,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 04",
       description: "A floating sidebar with submenus.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["sidebar", "breadcrumb", "separator"],
       files: [
         {
@@ -6783,6 +7355,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 05",
       description: "A sidebar with collapsible submenus.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -6815,6 +7389,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 06",
       description: "A sidebar with submenus as dropdowns.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -6852,6 +7428,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 07",
       description: "A sidebar that collapses to icons.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -6900,6 +7478,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 08",
       description: "An inset sidebar with secondary navigation.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -6948,6 +7528,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 09",
       description: "Collapsible nested sidebars.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -6983,6 +7565,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 10",
       description: "A sidebar in a popover.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -7041,6 +7625,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 11",
       description: "A sidebar with a collapsible file tree.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -7067,6 +7653,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 12",
       description: "A sidebar with a calendar.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -7111,6 +7699,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 13",
       description: "A sidebar in a dialog.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["sidebar", "breadcrumb", "button", "dialog"],
       files: [
         {
@@ -7132,6 +7722,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 14",
       description: "A sidebar on the right.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: ["sidebar", "breadcrumb"],
       files: [
         {
@@ -7153,6 +7745,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 15",
       description: "A left and right sidebar.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -7228,6 +7822,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar 16",
       description: "A sidebar with a sticky site header.",
       type: "registry:block",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: [
         "sidebar",
         "breadcrumb",
@@ -7288,6 +7884,8 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:hook",
+      dependencies: undefined,
+      devDependencies: undefined,
       registryDependencies: undefined,
       files: [
         {
