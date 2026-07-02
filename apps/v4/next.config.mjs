@@ -59,15 +59,15 @@ const nextConfig = {
         destination: "/docs/forms",
         permanent: true,
       },
-      // Component redirects (default to radix).
+      // Component redirects (default to base).
       {
         source: "/docs/components/:name((?!radix|base|form)[^/]+)",
-        destination: "/docs/components/radix/:name",
+        destination: "/docs/components/base/:name",
         permanent: false,
       },
       {
         source: "/docs/components/:name((?!radix|base|form)[^/]+).md",
-        destination: "/docs/components/radix/:name.md",
+        destination: "/docs/components/base/:name.md",
         permanent: false,
       },
       // Other redirects.
