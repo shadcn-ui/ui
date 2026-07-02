@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/styles/base-rhea/ui/button"
 import {
   Drawer,
@@ -10,19 +12,19 @@ import {
   DrawerTrigger,
 } from "@/styles/base-rhea/ui/drawer"
 
-export function DrawerWithSides() {
+export function DrawerSwipeHandle() {
   return (
-    <Drawer swipeDirection="left">
+    <Drawer showSwipeHandle>
       <DrawerTrigger render={<Button variant="secondary" />}>
-        Open Left Drawer
+        Open Drawer
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
-          <DrawerTitle>Move Goal</DrawerTitle>
-          <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+          <DrawerTitle>Drawer</DrawerTitle>
+          <DrawerDescription>Drawer with a swipe handle.</DrawerDescription>
         </DrawerHeader>
         <div className="flex-1 p-4">
-          <div className="size-full rounded-2xl bg-muted" />
+          <div className="rounded-2xl bg-muted group-data-[swipe-axis=x]/drawer-popup:size-full group-data-[swipe-axis=y]/drawer-popup:h-80 group-data-[swipe-axis=y]/drawer-popup:w-full" />
         </div>
         <DrawerFooter>
           <DrawerClose render={<Button />}>Close</DrawerClose>
