@@ -202,4 +202,59 @@ describe("addComponents", () => {
       mockUpdateCss.mock.invocationCallOrder[0]
     )
   })
+
+  it("rejects unsafe registry file paths before writing files", async () => {
+    mockResolveRegistryTree.mockResolvedValue({
+      dependencies: [],
+      devDependencies: [],
+      files: [
+        {
+          path: "components/../../outside-project.tsx",
+          type: "registry:component",
+          content: "export function OutsideProject() {}",
+        },
+      ],
+    })
+
+    await addComponents(
+      ["unsafe"],
+      {
+        style: "base-nova",
+        rsc: true,
+        tsx: true,
+        tailwind: {
+          baseColor: "neutral",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+          ui: "@/components/ui",
+          lib: "@/lib",
+          hooks: "@/hooks",
+        },
+        resolvedPaths: {
+          cwd: "/test/project",
+          tailwindCss: "/test/project/app/globals.css",
+          tailwindConfig: "/test/project/tailwind.config.js",
+          utils: "/test/project/lib/utils.ts",
+          components: "/test/project/components",
+          lib: "/test/project/lib",
+          hooks: "/test/project/hooks",
+          ui: "/test/project/components/ui",
+        },
+      } as any,
+      {
+        silent: true,
+      }
+    )
+
+    const { handleError } = await import("@/src/utils/handle-error")
+    const error = vi.mocked(handleError).mock.calls[0]?.[0]
+
+    expect(error).toBeInstanceOf(Error)
+    expect((error as Error).message).toContain("unsafe file path")
+    expect(mockUpdateDependencies).not.toHaveBeenCalled()
+    expect(mockUpdateFiles).not.toHaveBeenCalled()
+    expect(spinnerInstance.fail).toHaveBeenCalled()
+  })
 })

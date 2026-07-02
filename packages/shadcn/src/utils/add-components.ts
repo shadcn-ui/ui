@@ -449,13 +449,17 @@ function validateFilesTarget(
   cwd: string
 ) {
   for (const file of files) {
-    if (!file?.target) {
-      continue
-    }
+    const filePaths = [file?.path, file?.target].filter(
+      (filePath): filePath is string => Boolean(filePath)
+    )
 
-    if (!isSafeTarget(file.target, cwd)) {
+    for (const filePath of filePaths) {
+      if (isSafeTarget(filePath, cwd)) {
+        continue
+      }
+
       throw new Error(
-        `We found an unsafe file path "${file.target} in the registry item. Installation aborted.`
+        `We found an unsafe file path "${filePath}" in the registry item. Installation aborted.`
       )
     }
   }
