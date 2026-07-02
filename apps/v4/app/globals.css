@@ -170,6 +170,7 @@
     @apply overscroll-y-none;
   }
   body {
+    position: relative;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
   }
