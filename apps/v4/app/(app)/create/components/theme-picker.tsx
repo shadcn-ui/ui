@@ -38,12 +38,6 @@ export function ThemePicker({
     [params.theme]
   )
 
-  React.useEffect(() => {
-    if (!currentTheme && themes.length > 0) {
-      setParams({ theme: themes[0].name })
-    }
-  }, [currentTheme, themes, setParams])
-
   return (
     <div className="group/picker relative">
       <Picker>
