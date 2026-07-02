@@ -90,11 +90,28 @@ You can use the `<Calendar>` component to build a date picker. See the [Date Pic
 
 ## Persian / Hijri / Jalali Calendar
 
-To use the Persian calendar, edit `components/ui/calendar.tsx` and replace `react-day-picker` with `react-day-picker/persian`.
+To use the Persian calendar, edit `components/ui/calendar.tsx` and replace the `DayPicker` import.
+
+**react-day-picker v9**
 
 ```diff
 - import { DayPicker } from "react-day-picker"
 + import { DayPicker } from "react-day-picker/persian"
+```
+
+**react-day-picker v10+**
+
+The Persian subpath was removed in v10 and moved to a separate package. Install it first:
+
+```bash
+npm install @daypicker/persian
+```
+
+Then update the import:
+
+```diff
+- import { DayPicker } from "react-day-picker"
++ import { DayPicker } from "@daypicker/persian"
 ```
 
 <ComponentPreview
