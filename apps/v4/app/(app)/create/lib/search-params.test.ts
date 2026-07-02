@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest"
 
 import { DEFAULT_CONFIG } from "@/registry/config"
+
 import { buildPresetUrlUpdate } from "./search-params"
 
 describe("buildPresetUrlUpdate", () => {
@@ -8,6 +9,7 @@ describe("buildPresetUrlUpdate", () => {
     const update = buildPresetUrlUpdate({
       ...DEFAULT_CONFIG,
       preset: "b0",
+      template: "next",
       item: "preview-02",
       size: 100,
       custom: false,

@@ -297,10 +297,9 @@ export function useDesignSystemSearchParams(options: Options = {}) {
     hasSyncedPresetToUrl = true
 
     const merged = normalizeDesignSystemParams(paramsRef.current)
-    void rawSetParams(
-      buildPresetUrlUpdate(merged) as RawSetParamsInput,
-      { history: "replace" }
-    )
+    void rawSetParams(buildPresetUrlUpdate(merged) as RawSetParamsInput, {
+      history: "replace",
+    })
   }, [rawSetParams, searchParams])
 
   type RawSetParamsInput = Parameters<typeof rawSetParams>[0]
