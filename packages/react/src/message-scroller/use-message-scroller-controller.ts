@@ -401,6 +401,9 @@ function useMessageScrollerController({
         const anchor = getNewScrollAnchor(items, previousItemCount)
 
         if (anchor) {
+          const shouldContinueFollowing =
+            autoScrollRef.current && modeRef.current === "following-bottom"
+
           // While the reader is following the live end, a batch of several
           // anchored turns arriving at once should keep following the end — not
           // yank back to anchor the first turn of the batch. A single new anchor
@@ -419,6 +422,10 @@ function useMessageScrollerController({
             { align: "start" },
             { keepPreviousPeek: true }
           )
+          if (shouldContinueFollowing) {
+            modeRef.current = "following-bottom"
+            streamingTurnRef.current = null
+          }
           handledScrollAnchorsRef.current.add(anchor)
           return
         }

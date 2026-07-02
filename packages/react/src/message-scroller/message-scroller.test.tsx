@@ -701,6 +701,78 @@ describe("MessageScroller", () => {
     expect(rendered.viewport().scrollTop).toBe(176)
   })
 
+  it("keeps following streaming growth after placing a new anchor near the top with autoScroll", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 40, scrollAnchor: true },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(176)
+    expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
+
+    rendered.message("message-4").dataset.testHeight = "160"
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(300)
+    expect(rendered.state().end).toBe(false)
+  })
+
+  it("stops following streaming growth after user scrolls away from a newly anchored message", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 40, scrollAnchor: true },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(176)
+
+    await act(async () => {
+      rendered
+        .viewport()
+        .dispatchEvent(new WheelEvent("wheel", { bubbles: true }))
+      rendered.viewport().scrollTop = 120
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    rendered.message("message-4").dataset.testHeight = "160"
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(120)
+    expect(rendered.state().end).toBe(true)
+  })
+
   it("anchors a replaced row when item count stays the same", async () => {
     const rendered = await renderTestScroller({
       messages: [
