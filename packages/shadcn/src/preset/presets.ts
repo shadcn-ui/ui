@@ -147,8 +147,8 @@ export async function promptForBase() {
     name: "base",
     message: `Select a ${highlighter.info("component library")}`,
     choices: [
+      { title: "Base (Recommended)", value: "base" },
       { title: "Radix", value: "radix" },
-      { title: "Base", value: "base" },
     ],
   })
   if (!base) process.exit(1)
