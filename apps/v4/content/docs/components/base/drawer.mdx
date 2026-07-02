@@ -75,9 +75,7 @@ import {
       <DrawerTitle>Are you absolutely sure?</DrawerTitle>
       <DrawerDescription>This action cannot be undone.</DrawerDescription>
     </DrawerHeader>
-    <div className="p-4">
-      <!-- Content here -->
-    </div>
+    <div className="p-4">{/* Content here */}</div>
     <DrawerFooter>
       <Button>Submit</Button>
       <DrawerClose render={<Button variant="outline" />}>Cancel</DrawerClose>
@@ -99,6 +97,8 @@ Drawer
     │   └── DrawerDescription
     └── DrawerFooter
 ```
+
+`DrawerContent` composes the portal, overlay, viewport, and popup from Base UI. For lower-level control, `DrawerPortal`, `DrawerOverlay`, and `DrawerSwipeHandle` are also exported.
 
 ## Custom Sizes
 
@@ -122,9 +122,40 @@ When the same component renders in multiple directions, scope an override to one
 <DrawerContent className="data-[swipe-axis=y]:max-h-[50vh] data-[swipe-axis=x]:w-96">
 ```
 
+To make a region of the drawer scrollable, make the scroll container a flex item. Avoid `h-full`, which does not resolve inside a content-sized drawer.
+
+```tsx
+<DrawerContent>
+  <DrawerHeader>...</DrawerHeader>
+  <div className="flex-1 overflow-y-auto p-4">{/* Scrollable content */}</div>
+  <DrawerFooter>...</DrawerFooter>
+</DrawerContent>
+```
+
+## Styling
+
+The drawer exposes CSS variables for style-level customization. Set the sizing variables on `DrawerContent`. Set the overlay variable on `[data-slot=drawer-overlay]` in your CSS.
+
+| Variable                       | Default                | Description                                                             |
+| ------------------------------ | ---------------------- | ----------------------------------------------------------------------- |
+| `--drawer-inset`               | `0px`                  | Floats the drawer from the viewport edges.                              |
+| `--drawer-bleed-background`    | `var(--color-popover)` | Fills the gap behind the drawer on swipe overshoot.                     |
+| `--drawer-overlay-min-opacity` | `0`                    | Minimum overlay opacity. Defaults to `0.5` when snap points are active. |
+
+The drawer also sets data attributes you can target with variants such as `data-[swipe-direction=down]:` on `DrawerContent`, or `group-data-[swipe-axis=y]/drawer-popup:` on its descendants.
+
+| Attribute                 | Values                        | Set when                              |
+| ------------------------- | ----------------------------- | ------------------------------------- |
+| `data-swipe-direction`    | `up`, `right`, `down`, `left` | Always.                               |
+| `data-swipe-axis`         | `x`, `y`                      | Always.                               |
+| `data-snap-points`        | Present                       | The drawer has snap points.           |
+| `data-expanded`           | Present                       | The drawer is at the full snap point. |
+| `data-swiping`            | Present                       | A swipe is in progress.               |
+| `data-nested-drawer-open` | Present                       | A nested drawer is open on top.       |
+
 ## Examples
 
-### Sides
+### Position
 
 Use the `swipeDirection` prop to set the side of the drawer.
 
@@ -134,15 +165,9 @@ Available options are `up`, `right`, `down`, and `left`.
 
 ### Swipe Handle
 
-Use `showSwipeHandle` on `Drawer` to render a swipe handle, or place `DrawerSwipeHandle` manually inside `DrawerContent`.
+Use `showSwipeHandle` on `Drawer` to render a swipe handle.
 
 <ComponentPreview styleName="base-rhea" name="drawer-swipe-handle" />
-
-### Snap Points
-
-Use `snapPoints` to snap a drawer to preset heights. Numbers between `0` and `1` represent fractions of the viewport. Numbers greater than `1` are treated as pixel values. String values support `px` and `rem` units. Snap points apply to vertical drawers.
-
-<ComponentPreview styleName="base-rhea" name="drawer-snap-points" />
 
 ### Nested
 
@@ -152,11 +177,19 @@ Open drawers from inside another drawer. Parent drawers stay mounted and stack b
 
 ### Non Modal
 
-Set `modal={false}` to allow interaction with the rest of the page while the drawer is open. Combine with `disablePointerDismissal` to prevent the drawer from closing on outside presses.
+Set `modal={false}` to allow interaction with the rest of the page while the drawer is open. Combine with `disablePointerDismissal` to prevent the drawer from closing on outside presses. Use `modal="trap-focus"` to keep focus inside the drawer while leaving scroll and pointer interaction unrestricted.
 
 <ComponentPreview styleName="base-rhea" name="drawer-non-modal" />
 
-### Responsive Dialog
+### Snap Points
+
+Use `snapPoints` to snap a drawer to preset heights. Numbers between `0` and `1` represent fractions of the viewport. Numbers greater than `1` are treated as pixel values. String values support `px` and `rem` units. Snap points apply to vertical drawers.
+
+Track the active snap point with the controlled `snapPoint` and `onSnapPointChange` props. At the full snap point, the drawer gets a `data-expanded` attribute you can style with the `data-expanded:` variant.
+
+<ComponentPreview styleName="base-rhea" name="drawer-snap-points" />
+
+### Responsive
 
 You can combine the `Dialog` and `Drawer` components to create a responsive dialog. This renders a `Dialog` component on desktop and a `Drawer` on mobile.
 

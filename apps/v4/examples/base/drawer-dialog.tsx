@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
@@ -60,12 +62,7 @@ export function DrawerDialogDemo() {
             Make changes to your profile here. Click save when you&apos;re done.
           </DrawerDescription>
         </DrawerHeader>
-        <ProfileForm className="px-4" />
-        <DrawerFooter className="pt-2">
-          <DrawerClose render={<Button variant="outline" />}>
-            Cancel
-          </DrawerClose>
-        </DrawerFooter>
+        <ProfileForm className="p-4" />
       </DrawerContent>
     </Drawer>
   )

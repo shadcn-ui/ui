@@ -84,18 +84,17 @@ export function DrawerDemo() {
       showSwipeHandle={isMobile}
       swipeDirection={isMobile ? "down" : "right"}
     >
-      <DrawerTrigger render={<Button variant="outline" />}>
-        Schedule delivery
+      <DrawerTrigger render={<Button variant="secondary" />}>
+        Open Drawer
       </DrawerTrigger>
       <DrawerContent>
-        <DrawerHeader className="text-left">
+        <DrawerHeader>
           <DrawerTitle>Pick a delivery time</DrawerTitle>
           <DrawerDescription>
             We&apos;ll prepare your order as soon as possible.
           </DrawerDescription>
         </DrawerHeader>
-
-        <div className="p-4">
+        <div className="flex-1 scroll-fade overflow-y-auto p-4">
           <RadioGroup
             value={deliveryTime}
             onValueChange={setDeliveryTime}

@@ -36,7 +36,7 @@ export default function DrawerExample() {
     <ExampleWrapper>
       <DrawerDemo />
       <DrawerSwipeHandleExample />
-      <DrawerWithSides />
+      <DrawerPosition />
       <DrawerCustomWidthAndHeight />
       <DrawerScrollable />
       <DrawerSnapPoints />
@@ -173,17 +173,15 @@ function DrawerCustomWidthAndHeight() {
                 Drawer with a custom height.
               </DrawerDescription>
             </DrawerHeader>
-            <div className="flex-1 overflow-hidden">
-              <div className="h-full scroll-fade scrollbar-thin overflow-y-auto p-4">
-                {Array.from({ length: 10 }).map((_, index) => (
-                  <p
-                    key={index}
-                    className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
-                  >
-                    {PARAGRAPHS[index % PARAGRAPHS.length]}
-                  </p>
-                ))}
-              </div>
+            <div className="flex-1 scroll-fade scrollbar-thin overflow-y-auto p-4">
+              {Array.from({ length: 10 }).map((_, index) => (
+                <p
+                  key={index}
+                  className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
+                >
+                  {PARAGRAPHS[index % PARAGRAPHS.length]}
+                </p>
+              ))}
             </div>
             <DrawerFooter>
               <DrawerClose render={<Button variant="outline" />}>
@@ -203,17 +201,15 @@ function DrawerCustomWidthAndHeight() {
                 Drawer with a custom height.
               </DrawerDescription>
             </DrawerHeader>
-            <div className="flex-1 overflow-hidden">
-              <div className="h-full scroll-fade overflow-y-auto p-4">
-                {Array.from({ length: 10 }).map((_, index) => (
-                  <p
-                    key={index}
-                    className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
-                  >
-                    {PARAGRAPHS[index % PARAGRAPHS.length]}
-                  </p>
-                ))}
-              </div>
+            <div className="flex-1 scroll-fade overflow-y-auto p-4">
+              {Array.from({ length: 10 }).map((_, index) => (
+                <p
+                  key={index}
+                  className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
+                >
+                  {PARAGRAPHS[index % PARAGRAPHS.length]}
+                </p>
+              ))}
             </div>
             <DrawerFooter>
               <DrawerClose render={<Button variant="outline" />}>
@@ -231,17 +227,15 @@ function DrawerCustomWidthAndHeight() {
               <DrawerTitle>Left drawer</DrawerTitle>
               <DrawerDescription>Drawer with a custom width.</DrawerDescription>
             </DrawerHeader>
-            <div className="flex-1 overflow-hidden">
-              <div className="h-full scroll-fade overflow-y-auto p-4">
-                {Array.from({ length: 10 }).map((_, index) => (
-                  <p
-                    key={index}
-                    className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
-                  >
-                    {PARAGRAPHS[index % PARAGRAPHS.length]}
-                  </p>
-                ))}
-              </div>
+            <div className="flex-1 scroll-fade overflow-y-auto p-4">
+              {Array.from({ length: 10 }).map((_, index) => (
+                <p
+                  key={index}
+                  className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
+                >
+                  {PARAGRAPHS[index % PARAGRAPHS.length]}
+                </p>
+              ))}
             </div>
             <DrawerFooter>
               <DrawerClose render={<Button variant="outline" />}>
@@ -259,17 +253,15 @@ function DrawerCustomWidthAndHeight() {
               <DrawerTitle>Right drawer</DrawerTitle>
               <DrawerDescription>Drawer with a custom width.</DrawerDescription>
             </DrawerHeader>
-            <div className="flex-1 overflow-hidden">
-              <div className="h-full scroll-fade overflow-y-auto p-4">
-                {Array.from({ length: 10 }).map((_, index) => (
-                  <p
-                    key={index}
-                    className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
-                  >
-                    {PARAGRAPHS[index % PARAGRAPHS.length]}
-                  </p>
-                ))}
-              </div>
+            <div className="flex-1 scroll-fade overflow-y-auto p-4">
+              {Array.from({ length: 10 }).map((_, index) => (
+                <p
+                  key={index}
+                  className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
+                >
+                  {PARAGRAPHS[index % PARAGRAPHS.length]}
+                </p>
+              ))}
             </div>
             <DrawerFooter>
               <DrawerClose render={<Button variant="outline" />}>
@@ -285,9 +277,9 @@ function DrawerCustomWidthAndHeight() {
 
 const DRAWER_SIDES = ["up", "right", "down", "left"] as const
 
-function DrawerWithSides() {
+function DrawerPosition() {
   return (
-    <Example title="Sides">
+    <Example title="Position">
       <div className="flex flex-wrap gap-2">
         {DRAWER_SIDES.map((side) => (
           <Drawer key={side} swipeDirection={side}>
@@ -296,7 +288,7 @@ function DrawerWithSides() {
             >
               {side}
             </DrawerTrigger>
-            <DrawerContent className="data-[swipe-axis=y]:max-h-[50vh]">
+            <DrawerContent>
               <DrawerHeader>
                 <DrawerTitle>Move Goal</DrawerTitle>
                 <DrawerDescription>
@@ -323,35 +315,41 @@ function DrawerWithSides() {
 function DrawerScrollable() {
   return (
     <Example title="Scrollable Content">
-      <Drawer swipeDirection="right">
-        <DrawerTrigger render={<Button variant="outline" />}>
-          Scrollable Content
-        </DrawerTrigger>
-        <DrawerContent>
-          <DrawerHeader>
-            <DrawerTitle>Move Goal</DrawerTitle>
-            <DrawerDescription>Set your daily activity goal.</DrawerDescription>
-          </DrawerHeader>
-          <div className="flex-1 overflow-hidden">
-            <div className="h-full scroll-fade overflow-y-auto p-4">
-              {Array.from({ length: 20 }).map((_, index) => (
-                <p
-                  key={index}
-                  className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
-                >
-                  {PARAGRAPHS[index % PARAGRAPHS.length]}
-                </p>
-              ))}
-            </div>
-          </div>
-          <DrawerFooter>
-            <Button>Submit</Button>
-            <DrawerClose render={<Button variant="outline" />}>
-              Cancel
-            </DrawerClose>
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
+      <div className="flex flex-wrap gap-2">
+        {DRAWER_SIDES.map((side) => (
+          <Drawer key={side} swipeDirection={side}>
+            <DrawerTrigger
+              render={<Button variant="outline" className="capitalize" />}
+            >
+              {side}
+            </DrawerTrigger>
+            <DrawerContent>
+              <DrawerHeader>
+                <DrawerTitle>Move Goal</DrawerTitle>
+                <DrawerDescription>
+                  Set your daily activity goal.
+                </DrawerDescription>
+              </DrawerHeader>
+              <div className="flex-1 scroll-fade overflow-y-auto p-4">
+                {Array.from({ length: 20 }).map((_, index) => (
+                  <p
+                    key={index}
+                    className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
+                  >
+                    {PARAGRAPHS[index % PARAGRAPHS.length]}
+                  </p>
+                ))}
+              </div>
+              <DrawerFooter>
+                <Button>Submit</Button>
+                <DrawerClose render={<Button variant="outline" />}>
+                  Cancel
+                </DrawerClose>
+              </DrawerFooter>
+            </DrawerContent>
+          </Drawer>
+        ))}
+      </div>
     </Example>
   )
 }
@@ -373,12 +371,10 @@ function DrawerSnapPoints() {
               full-height view.
             </DrawerDescription>
           </DrawerHeader>
-          <div className="flex-1 overflow-hidden">
-            <div className="grid h-full scroll-fade gap-3 overflow-y-auto p-4">
-              {Array.from({ length: 16 }).map((_, index) => (
-                <div key={index} className="h-12 bg-muted" />
-              ))}
-            </div>
+          <div className="grid flex-1 scroll-fade gap-3 overflow-y-auto p-4">
+            {Array.from({ length: 16 }).map((_, index) => (
+              <div key={index} className="h-12 bg-muted" />
+            ))}
           </div>
         </DrawerContent>
       </Drawer>
