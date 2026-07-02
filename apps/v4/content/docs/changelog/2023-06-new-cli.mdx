@@ -238,7 +238,11 @@ Start with a style as the base then theme using CSS variables or Tailwind CSS ut
 
 I added exit animations to all components. Click on the combobox below to see the subtle exit animation.
 
-<ComponentPreview name="combobox-demo" className="[&_.preview]:items-start" />
+<ComponentPreview
+  styleName="new-york-v4"
+  name="combobox-demo"
+  className="[&_.preview]:items-start"
+/>
 
 The animations can be customized using utility classes.
 
@@ -250,13 +254,13 @@ The animations can be customized using utility classes.
 
 - Added a new button size `icon`:
 
-<ComponentPreview name="button-icon" />
+<ComponentPreview styleName="new-york-v4" name="button-icon" />
 
 ### Sheet
 
 - Renamed `position` to `side` to match the other elements.
 
-<ComponentPreview name="sheet-side" />
+<ComponentPreview styleName="new-york-v4" name="sheet-side" />
 
 - Removed the `size` props. Use `className="w-[200px] md:w-[450px]"` for responsive sizing.
 
