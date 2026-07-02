@@ -1,4 +1,6 @@
-import { Button } from "@/styles/base-nova/ui/button"
+"use client"
+
+import { Button } from "@/styles/base-rhea/ui/button"
 import {
   Drawer,
   DrawerClose,
@@ -8,7 +10,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/styles/base-nova/ui/drawer"
+} from "@/styles/base-rhea/ui/drawer"
 
 const DRAWER_SIDES = ["up", "right", "down", "left"] as const
 
@@ -16,43 +18,24 @@ export function DrawerWithSides() {
   return (
     <div className="flex flex-wrap gap-2">
       {DRAWER_SIDES.map((side) => (
-        <Drawer
-          key={side}
-          swipeDirection={
-            side === "down" ? undefined : (side as "up" | "right" | "left")
-          }
-        >
+        <Drawer key={side} swipeDirection={side}>
           <DrawerTrigger
             render={<Button variant="outline" className="capitalize" />}
           >
             {side}
           </DrawerTrigger>
-          <DrawerContent className="data-[swipe-direction=down]:max-h-[50vh] data-[swipe-direction=up]:max-h-[50vh]">
+          <DrawerContent>
             <DrawerHeader>
               <DrawerTitle>Move Goal</DrawerTitle>
               <DrawerDescription>
                 Set your daily activity goal.
               </DrawerDescription>
             </DrawerHeader>
-            <div className="no-scrollbar overflow-y-auto px-4">
-              {Array.from({ length: 10 }).map((_, index) => (
-                <p key={index} className="mb-4 leading-normal">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
-                </p>
-              ))}
+            <div className="flex-1 p-4">
+              <div className="rounded-2xl bg-muted group-data-[swipe-axis=x]/drawer-popup:size-full group-data-[swipe-axis=y]/drawer-popup:h-80 group-data-[swipe-axis=y]/drawer-popup:w-full" />
             </div>
             <DrawerFooter>
-              <Button>Submit</Button>
-              <DrawerClose render={<Button variant="outline" />}>
-                Cancel
-              </DrawerClose>
+              <DrawerClose render={<Button />}>Close</DrawerClose>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>

@@ -55,8 +55,8 @@ function DrawerDemo() {
             Open Drawer
           </DrawerTrigger>
           <DrawerContent>
-            <div className="p-4 style-lyra:p-2 style-mira:p-2">
-              <div className="aspect-video bg-muted" />
+            <div className="p-4">
+              <div className="h-80 w-full bg-muted" />
             </div>
           </DrawerContent>
         </Drawer>
@@ -72,8 +72,8 @@ function DrawerDemo() {
                 done.
               </DrawerDescription>
             </DrawerHeader>
-            <div className="p-4 style-lyra:p-2 style-mira:p-2">
-              <div className="aspect-video bg-muted" />
+            <div className="p-4">
+              <div className="h-80 w-full bg-muted" />
             </div>
           </DrawerContent>
         </Drawer>
@@ -82,8 +82,8 @@ function DrawerDemo() {
             Footer
           </DrawerTrigger>
           <DrawerContent>
-            <div className="p-4 style-lyra:p-2 style-mira:p-2">
-              <div className="aspect-video bg-muted" />
+            <div className="p-4">
+              <div className="h-80 w-full bg-muted" />
             </div>
             <DrawerFooter>
               <Button>Submit</Button>
@@ -105,8 +105,8 @@ function DrawerDemo() {
                 done.
               </DrawerDescription>
             </DrawerHeader>
-            <div className="p-4 style-lyra:p-2 style-mira:p-2">
-              <div className="aspect-video bg-muted" />
+            <div className="p-4">
+              <div className="h-80 w-full bg-muted" />
             </div>
             <DrawerFooter>
               <Button>Submit</Button>
@@ -114,6 +114,14 @@ function DrawerDemo() {
                 Cancel
               </DrawerClose>
             </DrawerFooter>
+          </DrawerContent>
+        </Drawer>
+        <Drawer>
+          <DrawerTrigger render={<Button variant="outline" />}>
+            Edge to Edge
+          </DrawerTrigger>
+          <DrawerContent>
+            <div className="h-80 w-full bg-blue-200" />
           </DrawerContent>
         </Drawer>
       </div>
@@ -139,8 +147,8 @@ function DrawerSwipeHandleExample() {
                   Drawer with a swipe handle.
                 </DrawerDescription>
               </DrawerHeader>
-              <div className="flex-1 p-4 style-lyra:p-2 style-mira:p-2">
-                <div className="bg-muted group-data-[swipe-axis=x]/drawer-content:size-full group-data-[swipe-axis=y]/drawer-content:aspect-video group-data-[swipe-axis=y]/drawer-content:w-full" />
+              <div className="flex-1 p-4">
+                <div className="bg-muted group-data-[swipe-axis=x]/drawer-popup:size-full group-data-[swipe-axis=y]/drawer-popup:h-80 group-data-[swipe-axis=y]/drawer-popup:w-full" />
               </div>
             </DrawerContent>
           </Drawer>
@@ -158,7 +166,7 @@ function DrawerCustomWidthAndHeight() {
           <DrawerTrigger render={<Button variant="outline" />}>
             Down
           </DrawerTrigger>
-          <DrawerContent className="data-[swipe-direction=down]:h-[50vh]">
+          <DrawerContent className="data-[swipe-direction=down]:h-64">
             <DrawerHeader>
               <DrawerTitle>Down drawer</DrawerTitle>
               <DrawerDescription>
@@ -166,7 +174,7 @@ function DrawerCustomWidthAndHeight() {
               </DrawerDescription>
             </DrawerHeader>
             <div className="flex-1 overflow-hidden">
-              <div className="h-full scroll-fade overflow-y-auto p-4 style-lyra:p-2 style-mira:p-2">
+              <div className="h-full scroll-fade scrollbar-thin overflow-y-auto p-4">
                 {Array.from({ length: 10 }).map((_, index) => (
                   <p
                     key={index}
@@ -196,7 +204,7 @@ function DrawerCustomWidthAndHeight() {
               </DrawerDescription>
             </DrawerHeader>
             <div className="flex-1 overflow-hidden">
-              <div className="h-full scroll-fade overflow-y-auto p-4 style-lyra:p-2 style-mira:p-2">
+              <div className="h-full scroll-fade overflow-y-auto p-4">
                 {Array.from({ length: 10 }).map((_, index) => (
                   <p
                     key={index}
@@ -218,13 +226,13 @@ function DrawerCustomWidthAndHeight() {
           <DrawerTrigger render={<Button variant="outline" />}>
             Left
           </DrawerTrigger>
-          <DrawerContent className="data-[swipe-direction=left]:w-xs data-[swipe-direction=left]:sm:w-sm">
+          <DrawerContent className="data-[swipe-direction=left]:w-xl">
             <DrawerHeader>
               <DrawerTitle>Left drawer</DrawerTitle>
               <DrawerDescription>Drawer with a custom width.</DrawerDescription>
             </DrawerHeader>
             <div className="flex-1 overflow-hidden">
-              <div className="h-full scroll-fade overflow-y-auto p-4 style-lyra:p-2 style-mira:p-2">
+              <div className="h-full scroll-fade overflow-y-auto p-4">
                 {Array.from({ length: 10 }).map((_, index) => (
                   <p
                     key={index}
@@ -246,13 +254,13 @@ function DrawerCustomWidthAndHeight() {
           <DrawerTrigger render={<Button variant="outline" />}>
             Right
           </DrawerTrigger>
-          <DrawerContent className="data-[swipe-direction=right]:w-xs data-[swipe-direction=right]:sm:w-sm">
+          <DrawerContent className="data-[swipe-direction=right]:w-xs">
             <DrawerHeader>
               <DrawerTitle>Right drawer</DrawerTitle>
               <DrawerDescription>Drawer with a custom width.</DrawerDescription>
             </DrawerHeader>
             <div className="flex-1 overflow-hidden">
-              <div className="h-full scroll-fade overflow-y-auto p-4 style-lyra:p-2 style-mira:p-2">
+              <div className="h-full scroll-fade overflow-y-auto p-4">
                 {Array.from({ length: 10 }).map((_, index) => (
                   <p
                     key={index}
@@ -295,8 +303,8 @@ function DrawerWithSides() {
                   Set your daily activity goal.
                 </DrawerDescription>
               </DrawerHeader>
-              <div className="flex-1 p-4 style-lyra:p-2 style-mira:p-2">
-                <div className="bg-muted group-data-[swipe-axis=x]/drawer-content:size-full group-data-[swipe-axis=y]/drawer-content:aspect-video group-data-[swipe-axis=y]/drawer-content:w-full" />
+              <div className="flex-1 p-4">
+                <div className="bg-muted group-data-[swipe-axis=x]/drawer-popup:size-full group-data-[swipe-axis=y]/drawer-popup:h-80 group-data-[swipe-axis=y]/drawer-popup:w-full" />
               </div>
               <DrawerFooter>
                 <Button>Submit</Button>
@@ -325,7 +333,7 @@ function DrawerScrollable() {
             <DrawerDescription>Set your daily activity goal.</DrawerDescription>
           </DrawerHeader>
           <div className="flex-1 overflow-hidden">
-            <div className="h-full scroll-fade overflow-y-auto p-4 style-lyra:p-2 style-mira:p-2">
+            <div className="h-full scroll-fade overflow-y-auto p-4">
               {Array.from({ length: 20 }).map((_, index) => (
                 <p
                   key={index}
@@ -357,7 +365,7 @@ function DrawerSnapPoints() {
         <DrawerTrigger render={<Button variant="outline" />}>
           Open Snap Drawer
         </DrawerTrigger>
-        <DrawerContent className="data-[swipe-direction=down]:mt-4 data-[swipe-direction=down]:max-h-[calc(100dvh-1rem+var(--bleed-y))]">
+        <DrawerContent className="max-h-[calc(100dvh-1rem)]">
           <DrawerHeader>
             <DrawerTitle>Snap points</DrawerTitle>
             <DrawerDescription>
@@ -366,7 +374,7 @@ function DrawerSnapPoints() {
             </DrawerDescription>
           </DrawerHeader>
           <div className="flex-1 overflow-hidden">
-            <div className="grid h-full scroll-fade gap-3 overflow-y-auto p-4 style-lyra:p-2 style-mira:p-2">
+            <div className="grid h-full scroll-fade gap-3 overflow-y-auto p-4">
               {Array.from({ length: 16 }).map((_, index) => (
                 <div key={index} className="h-12 bg-muted" />
               ))}
@@ -396,12 +404,12 @@ function DrawerNested() {
                   Open another drawer from the same direction.
                 </DrawerDescription>
               </DrawerHeader>
-              <div className="flex-1 p-4 style-lyra:p-2 style-mira:p-2">
-                <div className="bg-muted group-data-[swipe-axis=x]/drawer-content:size-full group-data-[swipe-axis=y]/drawer-content:aspect-video group-data-[swipe-axis=y]/drawer-content:w-full" />
+              <div className="flex-1 p-4">
+                <div className="bg-muted group-data-[swipe-axis=x]/drawer-popup:size-full group-data-[swipe-axis=y]/drawer-popup:h-80 group-data-[swipe-axis=y]/drawer-popup:w-full" />
               </div>
               <DrawerFooter>
                 <Drawer swipeDirection={side}>
-                  <DrawerTrigger render={<Button variant="outline" />}>
+                  <DrawerTrigger render={<Button />}>
                     Open nested drawer
                   </DrawerTrigger>
                   <DrawerContent>
@@ -411,12 +419,12 @@ function DrawerNested() {
                         The parent drawer stays mounted behind this one.
                       </DrawerDescription>
                     </DrawerHeader>
-                    <div className="flex-1 p-4 style-lyra:p-2 style-mira:p-2">
-                      <div className="bg-muted group-data-[swipe-axis=x]/drawer-content:size-full group-data-[swipe-axis=y]/drawer-content:aspect-video group-data-[swipe-axis=y]/drawer-content:w-full" />
+                    <div className="flex-1 p-4">
+                      <div className="bg-muted group-data-[swipe-axis=x]/drawer-popup:size-full group-data-[swipe-axis=y]/drawer-popup:h-80 group-data-[swipe-axis=y]/drawer-popup:w-full" />
                     </div>
                     <DrawerFooter>
                       <Drawer swipeDirection={side}>
-                        <DrawerTrigger render={<Button variant="outline" />}>
+                        <DrawerTrigger render={<Button />}>
                           Open third drawer
                         </DrawerTrigger>
                         <DrawerContent>
@@ -426,8 +434,8 @@ function DrawerNested() {
                               This is the frontmost drawer in the stack.
                             </DrawerDescription>
                           </DrawerHeader>
-                          <div className="flex-1 p-4 style-lyra:p-2 style-mira:p-2">
-                            <div className="bg-muted group-data-[swipe-axis=x]/drawer-content:size-full group-data-[swipe-axis=y]/drawer-content:aspect-video group-data-[swipe-axis=y]/drawer-content:w-full" />
+                          <div className="flex-1 p-4">
+                            <div className="bg-muted group-data-[swipe-axis=x]/drawer-popup:size-full group-data-[swipe-axis=y]/drawer-popup:h-80 group-data-[swipe-axis=y]/drawer-popup:w-full" />
                           </div>
                           <DrawerFooter>
                             <DrawerClose render={<Button variant="outline" />}>
@@ -465,8 +473,8 @@ function DrawerNonModal() {
           <DrawerHeader>
             <DrawerTitle>Non Modal Drawer</DrawerTitle>
           </DrawerHeader>
-          <div className="flex-1 p-4 style-lyra:p-2 style-mira:p-2">
-            <div className="bg-muted group-data-[swipe-axis=x]/drawer-content:size-full group-data-[swipe-axis=y]/drawer-content:aspect-video group-data-[swipe-axis=y]/drawer-content:w-full" />
+          <div className="flex-1 p-4">
+            <div className="bg-muted group-data-[swipe-axis=x]/drawer-popup:size-full group-data-[swipe-axis=y]/drawer-popup:h-80 group-data-[swipe-axis=y]/drawer-popup:w-full" />
           </div>
           <DrawerFooter>
             <DrawerClose render={<Button variant="outline" />}>
