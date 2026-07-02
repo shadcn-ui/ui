@@ -111,11 +111,12 @@ export function OpenPreset({
   if (isMobile) {
     return (
       <Drawer open={open} onOpenChange={handleOpenChange}>
-        <DrawerTrigger asChild>
-          <Button variant="outline" className={triggerClassName}>
-            {label}
-          </Button>
+        <DrawerTrigger
+          render={<Button variant="outline" className={triggerClassName} />}
+        >
+          {label}
         </DrawerTrigger>
+
         <DrawerContent className="dark rounded-t-2xl!">
           <DrawerHeader>
             <DrawerTitle className="text-xl">{PRESET_TITLE}</DrawerTitle>
@@ -127,10 +128,12 @@ export function OpenPreset({
               <Button type="submit" className="h-10" disabled={!nextPreset}>
                 Open
               </Button>
-              <DrawerClose asChild>
-                <Button variant="outline" type="button" className="h-10">
-                  Cancel
-                </Button>
+              <DrawerClose
+                render={
+                  <Button variant="outline" type="button" className="h-10" />
+                }
+              >
+                Cancel
               </DrawerClose>
             </DrawerFooter>
           </form>

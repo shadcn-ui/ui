@@ -3,26 +3,24 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from "@/styles/base-rhea/ui/drawer"
 
-export function DrawerWithSides() {
+export function DrawerNonModal() {
   return (
-    <Drawer swipeDirection="left">
-      <DrawerTrigger render={<Button variant="secondary" />}>
-        Open Left Drawer
+    <Drawer modal={false} disablePointerDismissal swipeDirection="right">
+      <DrawerTrigger render={<Button variant="outline" />}>
+        Non Modal
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
-          <DrawerTitle>Move Goal</DrawerTitle>
-          <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+          <DrawerTitle>Non Modal Drawer</DrawerTitle>
         </DrawerHeader>
         <div className="flex-1 p-4">
-          <div className="size-full rounded-2xl bg-muted" />
+          <div className="rounded-2xl bg-muted group-data-[swipe-axis=x]/drawer-popup:size-full group-data-[swipe-axis=y]/drawer-popup:h-80 group-data-[swipe-axis=y]/drawer-popup:w-full" />
         </div>
         <DrawerFooter>
           <DrawerClose render={<Button />}>Close</DrawerClose>
