@@ -2,7 +2,12 @@
 
 import * as React from "react"
 import { Suspense } from "react"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useSearchParams } from "next/navigation"
+
+import {
+  useDesignSystemSearchParams,
+  type DesignSystemSearchParams,
+} from "@/app/(app)/create/lib/search-params"
 
 type HistoryContextValue = {
   canGoBack: boolean
@@ -15,6 +20,9 @@ const HistoryContext = React.createContext<HistoryContextValue | null>(null)
 
 // Reads useSearchParams() in its own Suspense boundary so the
 // provider never blanks out children while search params resolve.
+// useSearchParams reflects the *settled* preset, which coalesces the
+// transient values nuqs emits mid-update — reading nuqs state directly
+// here would record those transients as phantom history entries.
 function PresetSync({
   onPresetChange,
 }: {
@@ -31,7 +39,11 @@ function PresetSync({
 }
 
 export function HistoryProvider({ children }: { children: React.ReactNode }) {
-  const router = useRouter()
+  // Write through the shared search-params hook (shallow) instead of
+  // router.replace. router.replace triggers a full server navigation that
+  // resets the preset on prod — the same failure the customizer avoids by
+  // going shallow (#11060).
+  const [, setParams] = useDesignSystemSearchParams()
 
   const [preset, setPreset] = React.useState("")
 
@@ -81,17 +93,16 @@ export function HistoryProvider({ children }: { children: React.ReactNode }) {
     indexRef.current = nextIndex
     setIndex(nextIndex)
 
-    const targetPreset = entriesRef.current[nextIndex]
-    const params = new URLSearchParams(window.location.search)
-    if (targetPreset) {
-      params.set("preset", targetPreset)
-    } else {
-      params.delete("preset")
-    }
-    const pathname = window.location.pathname
-    const query = params.toString()
-    router.replace(query ? `${pathname}?${query}` : pathname)
-  }, [router])
+    // The first history entry is "" (no preset in the URL); null clears the
+    // param to restore that state. nuqs accepts null to clear a key, which the
+    // wrapper's input type does not model.
+    setParams(
+      {
+        preset: entriesRef.current[nextIndex] || null,
+      } as Partial<DesignSystemSearchParams>,
+      { history: "replace" }
+    )
+  }, [setParams])
 
   const goForward = React.useCallback(() => {
     if (indexRef.current >= maxIndexRef.current) {
@@ -103,17 +114,16 @@ export function HistoryProvider({ children }: { children: React.ReactNode }) {
     indexRef.current = nextIndex
     setIndex(nextIndex)
 
-    const targetPreset = entriesRef.current[nextIndex]
-    const params = new URLSearchParams(window.location.search)
-    if (targetPreset) {
-      params.set("preset", targetPreset)
-    } else {
-      params.delete("preset")
-    }
-    const pathname = window.location.pathname
-    const query = params.toString()
-    router.replace(query ? `${pathname}?${query}` : pathname)
-  }, [router])
+    // The first history entry is "" (no preset in the URL); null clears the
+    // param to restore that state. nuqs accepts null to clear a key, which the
+    // wrapper's input type does not model.
+    setParams(
+      {
+        preset: entriesRef.current[nextIndex] || null,
+      } as Partial<DesignSystemSearchParams>,
+      { history: "replace" }
+    )
+  }, [setParams])
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
