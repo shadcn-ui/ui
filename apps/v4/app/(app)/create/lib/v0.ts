@@ -125,7 +125,7 @@ const themeProviderFile = registryItemFileSchema.parse({
             return
           }
 
-          if (event.key.toLowerCase() !== "d") {
+          if (!event.key || event.key.toLowerCase() !== "d") {
             return
           }
 
