@@ -332,6 +332,10 @@ For private registries that require authentication:
 
 Environment variables in the format `${VAR_NAME}` are automatically expanded from your environment.
 
+For authenticated registries, use the canonical URL that serves the registry
+item directly. Auth headers may not be forwarded across redirects that change
+origin, such as an apex domain redirecting to `www`.
+
 ### Using Namespaced Registries
 
 Once configured, install resources using the namespace syntax:
