@@ -656,6 +656,10 @@ describe("getBase", () => {
     expect(getBase("new-york-v4")).toBe("radix")
     expect(getBase("default")).toBe("radix")
   })
+
+  test("returns radix for an empty string style", () => {
+    expect(getBase("")).toBe("radix")
+  })
 })
 
 describe("createConfig", () => {

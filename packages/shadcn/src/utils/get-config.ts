@@ -319,9 +319,10 @@ export async function getTargetStyleFromConfig(cwd: string, fallback: string) {
 }
 
 export function getBase(style: string | undefined) {
-  // No style means no existing config, so default to base.
-  // Unprefixed legacy styles (new-york, new-york-v4, default) stay radix.
-  if (!style) {
+  // An undefined style means no existing config, so default to base.
+  // Any defined style, including empty and unprefixed legacy values
+  // (new-york, new-york-v4, default), stays radix.
+  if (style === undefined) {
     return "base"
   }
 
