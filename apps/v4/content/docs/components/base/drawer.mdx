@@ -52,6 +52,14 @@ npm install @base-ui/react
 
 </CodeTabs>
 
+Add the following to your global styles. On iOS Safari, the drawer overlay is absolutely positioned and requires a positioned `body` to cover the viewport after the page is scrolled. See the [Base UI docs](https://base-ui.com/react/overview/quick-start#ios-26-safari) for details.
+
+```css
+body {
+  position: relative;
+}
+```
+
 ## Usage
 
 ```tsx showLineNumbers
@@ -194,12 +202,6 @@ Track the active snap point with the controlled `snapPoint` and `onSnapPointChan
 You can combine the `Dialog` and `Drawer` components to create a responsive dialog. This renders a `Dialog` component on desktop and a `Drawer` on mobile.
 
 <ComponentPreview styleName="base-rhea" name="drawer-dialog" />
-
-## RTL
-
-To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
-
-<ComponentPreview styleName="base-rhea" name="drawer-rtl" direction="rtl" />
 
 ## Migrating from Vaul
 

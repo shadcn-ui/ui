@@ -16,7 +16,7 @@ import {
 export function DrawerNested() {
   const isMobile = useIsMobile()
 
-  const swipeDirection = isMobile ? "up" : "right"
+  const swipeDirection = isMobile ? "down" : "right"
 
   return (
     <Drawer showSwipeHandle={isMobile} swipeDirection={swipeDirection}>
