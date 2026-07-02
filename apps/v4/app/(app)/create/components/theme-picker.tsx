@@ -38,11 +38,11 @@ export function ThemePicker({
     [params.theme]
   )
 
-  React.useEffect(() => {
-    if (!currentTheme && themes.length > 0) {
-      setParams({ theme: themes[0].name })
-    }
-  }, [currentTheme, themes, setParams])
+  // NOTE: The useEffect that called setParams({ theme: themes[0].name }) when
+  // currentTheme was undefined has been removed. Theme validation and fallback
+  // is already handled by normalizeDesignSystemParams in search-params.ts.
+  // The effect was causing a second racing setParams call after baseColor
+  // changes, which produced the flickering/selection-reset bug (#10910).
 
   return (
     <div className="group/picker relative">
