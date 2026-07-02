@@ -265,6 +265,17 @@ Always use HTTPS URLs for registries to protect your tokens in transit:
 }
 ```
 
+### Use Canonical Registry URLs
+
+For authenticated registries, configure the URL that serves the registry item
+directly instead of a URL that redirects to another host.
+
+Fetch implementations may drop `Authorization` or other custom auth headers
+when following a redirect that changes origin, such as
+`https://registry.company.com` to `https://www.registry.company.com`. If your
+registry redirects, use the final host in `components.json` so the token is sent
+to the request that returns the item.
+
 ### Add Rate Limiting
 
 Protect your registry from abuse:
