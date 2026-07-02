@@ -235,6 +235,36 @@ function resolvePresetParams(
   return normalizeDesignSystemParams(rawParams)
 }
 
+export function createDesignSystemRawParamsUpdate(
+  currentParams: DesignSystemSearchParams,
+  updates: Partial<DesignSystemSearchParams>
+) {
+  const resolvedUpdates = normalizePartialDesignSystemParams(updates)
+  const merged = normalizeDesignSystemParams({
+    ...currentParams,
+    ...resolvedUpdates,
+  })
+  const code = getPresetCode(merged)
+  const rawUpdate: Record<string, unknown> = { preset: code }
+
+  for (const key of DESIGN_SYSTEM_KEYS) {
+    rawUpdate[key] = null
+  }
+
+  for (const key of NON_DESIGN_SYSTEM_KEYS) {
+    if (key === "preset") {
+      continue
+    }
+
+    rawUpdate[key] =
+      key in resolvedUpdates
+        ? (resolvedUpdates as Record<string, unknown>)[key]
+        : currentParams[key]
+  }
+
+  return rawUpdate
+}
+
 // Wraps nuqs useQueryStates with transparent preset encoding/decoding.
 // - Reads: if ?preset=CODE is in the URL, decodes it and returns individual values.
 // - Writes: when design system params are set, encodes them into a preset code.
@@ -281,28 +311,10 @@ export function useDesignSystemSearchParams(options: Options = {}) {
         return rawSetParams(resolvedUpdates as RawSetParamsInput, setOptions)
       }
 
-      // Merge current decoded values with updates.
-      const merged = normalizeDesignSystemParams({
-        ...paramsRef.current,
-        ...resolvedUpdates,
-      })
-      // Encode design system fields into a preset code.
-      // Cast needed: merged values may include null from nuqs resets,
-      // but encodePreset handles missing values by falling back to defaults.
-      const code = getPresetCode(merged)
-      // Build update: set preset, clear individual DS params from URL.
-      const rawUpdate: Record<string, unknown> = { preset: code }
-      for (const key of DESIGN_SYSTEM_KEYS) {
-        rawUpdate[key] = null
-      }
-
-      // Pass through non-DS params that were explicitly in the update.
-      for (const key of NON_DESIGN_SYSTEM_KEYS) {
-        if (key in resolvedUpdates) {
-          rawUpdate[key] = (resolvedUpdates as Record<string, unknown>)[key]
-        }
-      }
-
+      const rawUpdate = createDesignSystemRawParamsUpdate(
+        paramsRef.current,
+        resolvedUpdates
+      )
       return rawSetParams(rawUpdate as RawSetParamsInput, setOptions)
     },
     [rawSetParams]
