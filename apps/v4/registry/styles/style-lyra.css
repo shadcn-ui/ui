@@ -453,7 +453,7 @@
   }
 
   .cn-drawer-content {
-    @apply bg-popover text-popover-foreground text-xs/relaxed data-[vaul-drawer-direction=bottom]:rounded-none data-[vaul-drawer-direction=bottom]:border-t data-[vaul-drawer-direction=left]:rounded-none data-[vaul-drawer-direction=left]:border-r data-[vaul-drawer-direction=right]:rounded-none data-[vaul-drawer-direction=right]:border-l data-[vaul-drawer-direction=top]:rounded-none data-[vaul-drawer-direction=top]:border-b;
+    @apply bg-popover text-popover-foreground flex h-auto flex-col text-xs/relaxed data-[vaul-drawer-direction=bottom]:rounded-none data-[vaul-drawer-direction=bottom]:border-t data-[vaul-drawer-direction=left]:rounded-none data-[vaul-drawer-direction=left]:border-r data-[vaul-drawer-direction=right]:rounded-none data-[vaul-drawer-direction=right]:border-l data-[vaul-drawer-direction=top]:rounded-none data-[vaul-drawer-direction=top]:border-b;
   }
 
   .cn-drawer-popup {
