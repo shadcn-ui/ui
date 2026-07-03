@@ -176,7 +176,7 @@ export const ui: Registry["items"] = [
         docs: "https://ui.shadcn.com/docs/components/radix/calendar",
         examples:
           "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/calendar-example.tsx",
-        api: "https://react-day-picker.js.org",
+        api: "https://daypicker.dev/",
       },
     },
   },
