@@ -2,4 +2,4 @@
 "shadcn": minor
 ---
 
-base-ui is not default
+base-ui is now default
