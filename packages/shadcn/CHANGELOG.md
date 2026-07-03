@@ -1,5 +1,11 @@
 # shadcn
 
+## 4.13.0
+
+### Minor Changes
+
+- [#11082](https://github.com/shadcn-ui/ui/pull/11082) [`f3e7de11752b087b1c4bf61f4035a866f3a4f9ed`](https://github.com/shadcn-ui/ui/commit/f3e7de11752b087b1c4bf61f4035a866f3a4f9ed) Thanks [@shadcn](https://github.com/shadcn)! - base-ui is now default
+
 ## 4.12.0
 
 ### Minor Changes
