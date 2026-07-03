@@ -365,6 +365,15 @@ const MotionMessageScrollerItem = motion.create(MessageScrollerItem)
   previewClassName="h-auto theme-blue bg-surface dark:bg-background p-4 min-[480px]:p-8 min-[560px]:p-10 sm:px-10 sm:py-16"
 />
 
+<Callout>
+  The `MessageAnimated` import in the example above is a demo wrapper used to
+  keep this documentation focused. It is not a published component, so it is not
+  available through the CLI or as a separate page—it only bundles the
+  `motion.create(MessageScrollerItem)` pattern shown above with the message
+  rendering. Build your own animated row from that pattern instead of importing
+  it.
+</Callout>
+
 Avoid animating height, margin, or padding for row entrances; those changes can
 fight the scroller's positioning work. If the reader prefers reduced motion,
 skip the entrance animation and keep the scroll behavior the same.
