@@ -263,7 +263,11 @@ export const init = new Command()
             path.resolve(cwd, "components.json")
           )
         } catch {
-          // Ignore read errors.
+          logger.warn(
+            `Could not parse the existing ${highlighter.info(
+              "components.json"
+            )}. Unable to detect the current base.`
+          )
         }
 
         // Pass existing config so preflight can use it (e.g. tailwind.css path in monorepos).
@@ -463,8 +467,12 @@ export const init = new Command()
             : "radix"
           : "")
 
+      // If a components.json exists but could not be parsed, we cannot know
+      // the current base, so never pick one silently.
+      const unknownExistingBase = hasExistingConfig && !existingConfig
+
       if (!resolvedBase) {
-        if (components.length > 0) {
+        if (components.length > 0 && !unknownExistingBase) {
           // When initializing from a registry item, default to base.
           // The registry:base config will override this.
           resolvedBase = "base"
