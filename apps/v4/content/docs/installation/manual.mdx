@@ -216,7 +216,7 @@ Create a `components.json` file in the root of your project.
 ```json title="components.json" showLineNumbers
 {
   "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "radix-nova",
+  "style": "base-nova",
   "rsc": false,
   "tsx": true,
   "tailwind": {

@@ -58,5 +58,5 @@ export function getPagesFromFolder(
 // Get current base (radix or base) from pathname.
 export function getCurrentBase(pathname: string): string {
   const baseMatch = pathname.match(/\/docs\/components\/(radix|base)\//)
-  return baseMatch ? baseMatch[1] : "radix" // Default to radix.
+  return baseMatch ? baseMatch[1] : "base" // Default to base.
 }

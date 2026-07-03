@@ -27,7 +27,7 @@ Arguments:
 
 Options:
   -t, --template <template>  the template to use. (next, vite, start, react-router, laravel, astro)
-  -b, --base <base>          the component library to use. (radix, base)
+  -b, --base <base>          the component library to use. (base, radix)
   -p, --preset [name]        use a preset configuration
   -y, --yes                  skip confirmation prompt. (default: true)
   -d, --defaults             use default configuration: --template=next --preset=nova (default: false)

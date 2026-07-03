@@ -647,8 +647,18 @@ describe("getBase", () => {
     expect(getBase("base-vega")).toBe("base")
   })
 
-  test("returns radix for undefined", () => {
-    expect(getBase(undefined)).toBe("radix")
+  test("returns base for undefined", () => {
+    expect(getBase(undefined)).toBe("base")
+  })
+
+  test("returns radix for legacy unprefixed styles", () => {
+    expect(getBase("new-york")).toBe("radix")
+    expect(getBase("new-york-v4")).toBe("radix")
+    expect(getBase("default")).toBe("radix")
+  })
+
+  test("returns radix for an empty string style", () => {
+    expect(getBase("")).toBe("radix")
   })
 })
 

@@ -7,7 +7,7 @@ export function Announcement() {
   return (
     <Badge asChild variant="secondary" className="bg-muted">
       <Link href="/docs/changelog">
-        Components for Chat Interfaces <ArrowRightIcon />
+        Base UI is now the default <ArrowRightIcon />
       </Link>
     </Badge>
   )

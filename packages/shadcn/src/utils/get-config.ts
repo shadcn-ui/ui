@@ -319,7 +319,14 @@ export async function getTargetStyleFromConfig(cwd: string, fallback: string) {
 }
 
 export function getBase(style: string | undefined) {
-  return style?.startsWith("base-") ? "base" : "radix"
+  // An undefined style means no existing config, so default to base.
+  // Any defined style, including empty and unprefixed legacy values
+  // (new-york, new-york-v4, default), stays radix.
+  if (style === undefined) {
+    return "base"
+  }
+
+  return style.startsWith("base-") ? "base" : "radix"
 }
 
 export type DeepPartial<T> = {

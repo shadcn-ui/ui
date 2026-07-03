@@ -20,7 +20,7 @@ export function parseDesignSystemConfig(searchParams: URLSearchParams) {
     configInput = {
       ...decoded,
       ...presetOverrides,
-      base: searchParams.get("base") ?? "radix",
+      base: searchParams.get("base") ?? "base",
       template: searchParams.get("template") ?? undefined,
       rtl: searchParams.get("rtl") === "true",
       pointer: searchParams.get("pointer") === "true",
