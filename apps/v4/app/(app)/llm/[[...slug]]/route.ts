@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server"
 
 import { processMdxForLLMs } from "@/lib/llm"
 import { source } from "@/lib/source"
-import { getActiveStyle, type Style } from "@/registry/_legacy-styles"
+import { type Style } from "@/registry/_legacy-styles"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -26,7 +26,7 @@ export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ slug?: string[] }> }
 ) {
-  const [{ slug }, activeStyle] = await Promise.all([params, getActiveStyle()])
+  const { slug } = await params
 
   const page = source.getPage(slug)
 
@@ -34,7 +34,8 @@ export async function GET(
     notFound()
   }
 
-  const effectiveStyle = getStyleFromSlug(slug, activeStyle.name)
+  // Default to the base style. Legacy content pins new-york-v4 per tag.
+  const effectiveStyle = getStyleFromSlug(slug, "base-nova")
 
   const processedContent = processMdxForLLMs(
     await page.data.getText("raw"),

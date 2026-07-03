@@ -148,7 +148,8 @@ export function ProjectForm({
 
   const commands = React.useMemo(() => {
     const presetFlag = ` --preset ${presetCode}`
-    const baseFlag = params.base !== "radix" ? ` --base ${params.base}` : ""
+    const baseFlag =
+      params.base !== DEFAULT_CONFIG.base ? ` --base ${params.base}` : ""
     const templateFlag = ` --template ${framework}`
     const monorepoFlag = isMonorepo ? " --monorepo" : ""
     const rtlFlag = params.rtl ? " --rtl" : ""

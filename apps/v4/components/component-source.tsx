@@ -16,7 +16,7 @@ export async function ComponentSource({
   language,
   collapsible = true,
   className,
-  styleName = "new-york-v4",
+  styleName = "base-nova",
   maxLines,
 }: React.ComponentProps<"div"> & {
   name?: string

@@ -13,7 +13,7 @@ export function ComponentPreview({
   align = "center",
   hideCode = false,
   chromeLessOnMobile = false,
-  styleName = "new-york-v4",
+  styleName = "base-nova",
   direction = "ltr",
   caption,
   ...props
