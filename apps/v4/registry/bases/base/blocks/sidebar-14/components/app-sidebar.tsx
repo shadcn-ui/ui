@@ -156,8 +156,9 @@ const data = {
   ],
 }
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  // [FORCE-UI] accessible name for the table-of-contents nav landmark
   return (
-    <Sidebar {...props}>
+    <Sidebar aria-label="Table of contents" {...props}>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Table of Contents</SidebarGroupLabel>

@@ -21,7 +21,8 @@ export function SectionCards() {
             $1,250.00
           </CardTitle>
           <CardAction>
-            <Badge variant="outline">
+            {/* [FORCE-UI] up=success/down=destructive trend convention, matches ui/chart-widget */}
+            <Badge variant="outline" className="text-success">
               <IconPlaceholder
                 lucide="TrendingUpIcon"
                 materialSymbols="trending_up"
@@ -35,7 +36,7 @@ export function SectionCards() {
           </CardAction>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
+          <div className="line-clamp-1 flex items-center gap-2 font-medium text-success">
             Trending up this month{" "}
             <IconPlaceholder
               lucide="TrendingUpIcon"
@@ -59,7 +60,8 @@ export function SectionCards() {
             1,234
           </CardTitle>
           <CardAction>
-            <Badge variant="outline">
+            {/* [FORCE-UI] up=success/down=destructive trend convention, matches ui/chart-widget */}
+            <Badge variant="outline" className="text-destructive">
               <IconPlaceholder
                 lucide="TrendingDownIcon"
                 materialSymbols="trending_down"
@@ -73,7 +75,7 @@ export function SectionCards() {
           </CardAction>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
+          <div className="line-clamp-1 flex items-center gap-2 font-medium text-destructive">
             Down 20% this period{" "}
             <IconPlaceholder
               lucide="TrendingDownIcon"
@@ -97,7 +99,8 @@ export function SectionCards() {
             45,678
           </CardTitle>
           <CardAction>
-            <Badge variant="outline">
+            {/* [FORCE-UI] up=success/down=destructive trend convention, matches ui/chart-widget */}
+            <Badge variant="outline" className="text-success">
               <IconPlaceholder
                 lucide="TrendingUpIcon"
                 materialSymbols="trending_up"
@@ -111,7 +114,7 @@ export function SectionCards() {
           </CardAction>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
+          <div className="line-clamp-1 flex items-center gap-2 font-medium text-success">
             Strong user retention{" "}
             <IconPlaceholder
               lucide="TrendingUpIcon"
@@ -133,7 +136,8 @@ export function SectionCards() {
             4.5%
           </CardTitle>
           <CardAction>
-            <Badge variant="outline">
+            {/* [FORCE-UI] up=success/down=destructive trend convention, matches ui/chart-widget */}
+            <Badge variant="outline" className="text-success">
               <IconPlaceholder
                 lucide="TrendingUpIcon"
                 materialSymbols="trending_up"
@@ -147,7 +151,7 @@ export function SectionCards() {
           </CardAction>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
+          <div className="line-clamp-1 flex items-center gap-2 font-medium text-success">
             Steady performance increase{" "}
             <IconPlaceholder
               lucide="TrendingUpIcon"

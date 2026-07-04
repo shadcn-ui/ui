@@ -69,7 +69,7 @@ export function LoginForm({
                   <FieldLabel htmlFor="password">Password</FieldLabel>
                   <a
                     href="#"
-                    className="ml-auto text-sm underline-offset-4 hover:underline"
+                    className="ml-auto text-sm text-foreground underline-offset-4 hover:underline" // [FORCE-UI] explicit foreground token
                   >
                     Forgot your password?
                   </a>

@@ -196,7 +196,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
             hugeicons="CheckmarkCircle01Icon"
             phosphor="CheckCircleIcon"
             remixicon="RiCheckboxCircleFill"
-            className="fill-green-500 dark:fill-green-400"
+            className="fill-success" // [FORCE-UI] semantic token instead of raw green, no separate dark: needed
           />
         ) : (
           <IconPlaceholder
@@ -792,7 +792,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                     hugeicons="ChartUpIcon"
                     phosphor="TrendUpIcon"
                     remixicon="RiArrowUpLine"
-                    className="size-4"
+                    className="size-4 text-success" // [FORCE-UI] up=success trend convention
                   />
                 </div>
                 <div className="text-muted-foreground">

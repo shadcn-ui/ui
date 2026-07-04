@@ -208,7 +208,8 @@ export function NavActions() {
       <div className="hidden font-medium text-muted-foreground md:inline-block">
         Edit Oct 08
       </div>
-      <Button variant="ghost" size="icon" className="h-7 w-7">
+      {/* [FORCE-UI] icon-sm size variant instead of a raw h-7/w-7 override, so corner-radius scales correctly */}
+      <Button variant="ghost" size="icon-sm">
         <IconPlaceholder
           lucide="StarIcon"
           materialSymbols="star"
@@ -223,8 +224,8 @@ export function NavActions() {
           render={
             <Button
               variant="ghost"
-              size="icon"
-              className="h-7 w-7 data-open:bg-accent"
+              size="icon-sm"
+              className="data-open:bg-accent"
             />
           }
         >
