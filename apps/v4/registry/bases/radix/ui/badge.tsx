@@ -34,9 +34,20 @@ function Badge({
   className,
   variant = "default",
   asChild = false,
+  srLabel,
+  children,
   ...props
 }: React.ComponentProps<"span"> &
-  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
+  VariantProps<typeof badgeVariants> & {
+    asChild?: boolean
+    /**
+     * [FORCE-UI] Visually-hidden text prefix announced before the badge's
+     * content. Status is otherwise conveyed only through color, which a
+     * screen reader can't perceive — set this on count- or glyph-only
+     * badges (e.g. `srLabel="Synced versions:"` on a bare "42").
+     */
+    srLabel?: string
+  }) {
   const Comp = asChild ? Slot.Root : "span"
 
   return (
@@ -45,7 +56,10 @@ function Badge({
       data-variant={variant}
       className={cn(badgeVariants({ variant }), className)}
       {...props}
-    />
+    >
+      {srLabel && !asChild && <span className="sr-only">{srLabel} </span>}
+      {children}
+    </Comp>
   )
 }
 

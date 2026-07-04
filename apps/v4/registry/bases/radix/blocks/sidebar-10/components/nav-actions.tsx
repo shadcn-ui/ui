@@ -212,7 +212,7 @@ export function NavActions() {
         Edit Oct 08
       </div>
       {/* [FORCE-UI] icon-sm size variant instead of a raw h-7/w-7 override, so corner-radius scales correctly */}
-      <Button variant="ghost" size="icon-sm">
+      <Button variant="ghost" size="icon-sm" aria-label="Add to favorites">
         <IconPlaceholder
           lucide="StarIcon"
           materialSymbols="star"
@@ -227,6 +227,7 @@ export function NavActions() {
           <Button
             variant="ghost"
             size="icon-sm"
+            aria-label="More actions"
             className="data-[state=open]:bg-accent"
           >
             <IconPlaceholder

@@ -175,7 +175,11 @@ function ContextMenuCheckboxItem({
       checked={checked}
       {...props}
     >
-      <span className="pointer-events-none absolute right-2 flex items-center justify-center">
+      {/* [FORCE-UI] decorative — selection state is already conveyed by aria-checked on the item */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute right-2 flex items-center justify-center"
+      >
         <ContextMenuPrimitive.CheckboxItemIndicator>
           <CheckIcon />
         </ContextMenuPrimitive.CheckboxItemIndicator>
@@ -214,7 +218,11 @@ function ContextMenuRadioItem({
       )}
       {...props}
     >
-      <span className="pointer-events-none absolute right-2 flex items-center justify-center">
+      {/* [FORCE-UI] decorative — selection state is already conveyed by aria-checked on the item */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute right-2 flex items-center justify-center"
+      >
         <ContextMenuPrimitive.RadioItemIndicator>
           <CheckIcon />
         </ContextMenuPrimitive.RadioItemIndicator>
@@ -244,6 +252,7 @@ function ContextMenuShortcut({
   return (
     <span
       data-slot="context-menu-shortcut"
+      aria-hidden="true" // [FORCE-UI] the item's own text is the accessible name; the shortcut glyph is supplementary
       className={cn(
         "ml-auto text-xs tracking-widest text-muted-foreground group-focus/context-menu-item:text-accent-foreground",
         className

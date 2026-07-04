@@ -28,10 +28,25 @@ function MenubarMenu({
   return <MenubarPrimitive.Menu data-slot="menubar-menu" {...props} />
 }
 
+// [FORCE-UI] links MenubarGroup to a MenubarLabel so the group's bare
+// role="group" gets an accessible name (WCAG 1.3.1/4.1.2)
+const MenubarGroupContext = React.createContext<{ labelId: string } | null>(
+  null
+)
+
 function MenubarGroup({
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Group>) {
-  return <MenubarPrimitive.Group data-slot="menubar-group" {...props} />
+  const labelId = React.useId()
+  return (
+    <MenubarGroupContext.Provider value={{ labelId }}>
+      <MenubarPrimitive.Group
+        data-slot="menubar-group"
+        aria-labelledby={labelId}
+        {...props}
+      />
+    </MenubarGroupContext.Provider>
+  )
 }
 
 function MenubarPortal({
@@ -172,14 +187,17 @@ function MenubarRadioItem({
 function MenubarLabel({
   className,
   inset,
+  id,
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Label> & {
   inset?: boolean
 }) {
+  const groupContext = React.useContext(MenubarGroupContext)
   return (
     <MenubarPrimitive.Label
       data-slot="menubar-label"
       data-inset={inset}
+      id={id ?? groupContext?.labelId}
       className={cn(
         "px-1.5 py-1 text-sm font-semibold data-inset:ps-7",
         className
@@ -209,6 +227,7 @@ function MenubarShortcut({
   return (
     <span
       data-slot="menubar-shortcut"
+      aria-hidden="true" // [FORCE-UI] the item's own text is the accessible name; the shortcut glyph is supplementary
       className={cn(
         "ms-auto text-xs tracking-widest text-muted-foreground group-focus/menubar-item:text-accent-foreground",
         className

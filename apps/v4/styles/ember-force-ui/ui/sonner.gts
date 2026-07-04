@@ -236,7 +236,7 @@ class Toaster extends Component<ToasterSignature> {
           {{#each this.toasts as |flash index|}}
             {{#let (toastType this.toasts flash) as |type|}}
               <li
-                class="cn-toast"
+                class="cn-toast !items-start"
                 data-dismissible="true"
                 data-expanded={{if this.isExpanded "true" "false"}}
                 data-front={{if (eq index 0) "true" "false"}}
@@ -296,7 +296,9 @@ class Toaster extends Component<ToasterSignature> {
                   {{/if}}
                 </div>
                 {{#if flash.action}}
+                  {{! [FORCE-UI] brand tokens instead of the default neutral fill }}
                   <button
+                    class="!bg-primary !text-primary-foreground"
                     data-action="true"
                     data-button="true"
                     type="button"

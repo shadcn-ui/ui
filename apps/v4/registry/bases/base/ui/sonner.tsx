@@ -24,6 +24,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             phosphor="CheckCircleIcon"
             remixicon="RiCheckboxCircleLine"
             className="size-4"
+            aria-hidden="true" // [FORCE-UI] decorative status icon
           />
         ),
         info: (
@@ -35,6 +36,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             phosphor="InfoIcon"
             remixicon="RiInformationLine"
             className="size-4"
+            aria-hidden="true" // [FORCE-UI] decorative status icon
           />
         ),
         warning: (
@@ -46,6 +48,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             phosphor="WarningIcon"
             remixicon="RiErrorWarningLine"
             className="size-4"
+            aria-hidden="true" // [FORCE-UI] decorative status icon
           />
         ),
         error: (
@@ -57,6 +60,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             phosphor="XCircleIcon"
             remixicon="RiCloseCircleLine"
             className="size-4"
+            aria-hidden="true" // [FORCE-UI] decorative status icon
           />
         ),
         loading: (
@@ -68,6 +72,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             phosphor="SpinnerIcon"
             remixicon="RiLoaderLine"
             className="size-4 animate-spin"
+            aria-hidden="true" // [FORCE-UI] decorative status icon
           />
         ),
       }}
@@ -95,7 +100,10 @@ const Toaster = ({ ...props }: ToasterProps) => {
       }
       toastOptions={{
         classNames: {
-          toast: "cn-toast",
+          // [FORCE-UI] top-align icon/content on multi-line toasts; brand tokens on the action/cancel buttons instead of sonner's default neutral fill
+          toast: "cn-toast !items-start",
+          actionButton: "!bg-primary !text-primary-foreground",
+          cancelButton: "!bg-secondary !text-secondary-foreground",
         },
       }}
       {...props}

@@ -11,6 +11,8 @@ function Slider({
   value,
   min = 0,
   max = 100,
+  "aria-label": ariaLabel,
+  "aria-labelledby": ariaLabelledBy,
   ...props
 }: React.ComponentProps<typeof SliderPrimitive.Root>) {
   const _values = React.useMemo(
@@ -49,6 +51,9 @@ function Slider({
         <SliderPrimitive.Thumb
           data-slot="slider-thumb"
           key={index}
+          // [FORCE-UI] aria-label/aria-labelledby belong on the thumb (role="slider"), not the root wrapper div
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledBy}
           className="cn-slider-thumb block shrink-0 select-none disabled:pointer-events-none disabled:opacity-50"
         />
       ))}

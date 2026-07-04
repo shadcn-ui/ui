@@ -44,13 +44,36 @@ function AlertDialogOverlay({
   )
 }
 
+// [FORCE-UI] dev-only guard — an alert dialog has no backdrop/Escape dismissal,
+// so with neither an action nor a cancel button it traps the user (WCAG 2.1.2)
+function hasActionOrCancel(children: React.ReactNode): boolean {
+  return React.Children.toArray(children).some((child) => {
+    if (!React.isValidElement(child)) return false
+    if (child.type === AlertDialogAction || child.type === AlertDialogCancel) {
+      return true
+    }
+    const childProps = child.props as { children?: React.ReactNode }
+    return childProps?.children ? hasActionOrCancel(childProps.children) : false
+  })
+}
+
 function AlertDialogContent({
   className,
   size = "default",
+  children,
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Content> & {
   size?: "default" | "sm"
 }) {
+  React.useEffect(() => {
+    if (process.env.NODE_ENV !== "production" && !hasActionOrCancel(children)) {
+      console.warn(
+        "AlertDialogContent: no AlertDialogAction or AlertDialogCancel found — an alert dialog has no other way to dismiss (WCAG 2.1.2)."
+      )
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <AlertDialogPortal>
       <AlertDialogOverlay />
@@ -62,7 +85,9 @@ function AlertDialogContent({
           className
         )}
         {...props}
-      />
+      >
+        {children}
+      </AlertDialogPrimitive.Content>
     </AlertDialogPortal>
   )
 }

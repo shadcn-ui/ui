@@ -32,6 +32,13 @@ const props = defineProps<ToasterProps>()
       '--error-border': 'var(--error)',
       '--error-text': 'var(--error)',
     }"
+    :toast-options="{
+      classNames: {
+        toast: 'cn-toast !items-start',
+        actionButton: '!bg-primary !text-primary-foreground',
+        cancelButton: '!bg-secondary !text-secondary-foreground',
+      },
+    }"
     v-bind="props"
   >
     <template #success-icon>

@@ -23,14 +23,14 @@ const buttonGroupVariants = cva(
 
 function ButtonGroup({
   className,
-  orientation,
+  orientation = "horizontal",
   ...props
 }: React.ComponentProps<"div"> & VariantProps<typeof buttonGroupVariants>) {
   return (
     <div
       role="group"
       data-slot="button-group"
-      data-orientation={orientation}
+      data-orientation={orientation} // [FORCE-UI] default orientation before it hits the DOM attribute, not just the cva map
       className={cn(buttonGroupVariants({ orientation }), className)}
       {...props}
     />

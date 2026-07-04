@@ -87,6 +87,7 @@ function InputOTPSeparator({ ...props }: React.ComponentProps<"div">) {
       data-slot="input-otp-separator"
       className="cn-input-otp-separator flex items-center"
       role="separator"
+      aria-orientation="vertical" // [FORCE-UI] non-focusable separator defaults to horizontal per WAI-ARIA; this one divides groups left/right
       {...props}
     >
       <IconPlaceholder

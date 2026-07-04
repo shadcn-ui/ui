@@ -11,7 +11,9 @@ const forwarded = useForwardProps(props)
 <template>
   <div
     data-slot="input-otp-separator"
+    class="cn-input-otp-separator"
     role="separator"
+    aria-orientation="vertical"
     v-bind="forwarded"
   >
     <slot>

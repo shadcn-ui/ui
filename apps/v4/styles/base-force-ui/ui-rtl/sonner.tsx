@@ -20,11 +20,13 @@ const Toaster = ({ ...props }: ToasterProps) => {
       richColors
       closeButton
       icons={{
-        success: <CircleCheckIcon className="size-4" />,
-        info: <InfoIcon className="size-4" />,
-        warning: <TriangleAlertIcon className="size-4" />,
-        error: <OctagonXIcon className="size-4" />,
-        loading: <Loader2Icon className="size-4 animate-spin" />,
+        success: <CircleCheckIcon className="size-4" aria-hidden="true" />,
+        info: <InfoIcon className="size-4" aria-hidden="true" />,
+        warning: <TriangleAlertIcon className="size-4" aria-hidden="true" />,
+        error: <OctagonXIcon className="size-4" aria-hidden="true" />,
+        loading: (
+          <Loader2Icon className="size-4 animate-spin" aria-hidden="true" />
+        ),
       }}
       style={
         {
@@ -50,7 +52,10 @@ const Toaster = ({ ...props }: ToasterProps) => {
       }
       toastOptions={{
         classNames: {
-          toast: "cn-toast",
+          // [FORCE-UI] top-align icon/content on multi-line toasts; brand tokens on the action/cancel buttons instead of sonner's default neutral fill
+          toast: "cn-toast !items-start",
+          actionButton: "!bg-primary !text-primary-foreground",
+          cancelButton: "!bg-secondary !text-secondary-foreground",
         },
       }}
       {...props}

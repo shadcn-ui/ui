@@ -25,11 +25,24 @@ function ContextMenuTrigger({
   )
 }
 
+// [FORCE-UI] links ContextMenuGroup to a ContextMenuLabel so the group's bare
+// role="group" gets an accessible name (WCAG 1.3.1/4.1.2)
+const ContextMenuGroupContext = React.createContext<{
+  labelId: string
+} | null>(null)
+
 function ContextMenuGroup({
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Group>) {
+  const labelId = React.useId()
   return (
-    <ContextMenuPrimitive.Group data-slot="context-menu-group" {...props} />
+    <ContextMenuGroupContext.Provider value={{ labelId }}>
+      <ContextMenuPrimitive.Group
+        data-slot="context-menu-group"
+        aria-labelledby={labelId}
+        {...props}
+      />
+    </ContextMenuGroupContext.Provider>
   )
 }
 
@@ -161,7 +174,11 @@ function ContextMenuCheckboxItem({
       checked={checked}
       {...props}
     >
-      <span className="pointer-events-none absolute right-2 flex items-center justify-center">
+      {/* [FORCE-UI] decorative — selection state is already conveyed by aria-checked on the item */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute right-2 flex items-center justify-center"
+      >
         <ContextMenuPrimitive.ItemIndicator>
           <CheckIcon />
         </ContextMenuPrimitive.ItemIndicator>
@@ -189,7 +206,11 @@ function ContextMenuRadioItem({
       )}
       {...props}
     >
-      <span className="pointer-events-none absolute right-2 flex items-center justify-center">
+      {/* [FORCE-UI] decorative — selection state is already conveyed by aria-checked on the item */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute right-2 flex items-center justify-center"
+      >
         <ContextMenuPrimitive.ItemIndicator>
           <CheckIcon />
         </ContextMenuPrimitive.ItemIndicator>
@@ -202,14 +223,17 @@ function ContextMenuRadioItem({
 function ContextMenuLabel({
   className,
   inset,
+  id,
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Label> & {
   inset?: boolean
 }) {
+  const groupContext = React.useContext(ContextMenuGroupContext)
   return (
     <ContextMenuPrimitive.Label
       data-slot="context-menu-label"
       data-inset={inset}
+      id={id ?? groupContext?.labelId}
       className={cn(
         "px-1.5 py-1 text-xs font-semibold text-muted-foreground data-inset:pl-7",
         className
@@ -239,6 +263,7 @@ function ContextMenuShortcut({
   return (
     <span
       data-slot="context-menu-shortcut"
+      aria-hidden="true" // [FORCE-UI] the item's own text is the accessible name; the shortcut glyph is supplementary
       className={cn(
         "ml-auto text-xs tracking-widest text-muted-foreground group-focus/context-menu-item:text-accent-foreground",
         className

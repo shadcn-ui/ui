@@ -2,9 +2,10 @@
 import type { HTMLAttributes } from "vue"
 import { reactiveOmit } from "@vueuse/core"
 import { useForwardProps } from "reka-ui"
-import { computed } from "vue"
+import { computed, inject } from "vue"
 import { useVueOTPContext } from "vue-input-otp"
 import { cn } from "@/lib/utils"
+import { INPUT_OTP_DISABLED_KEY } from "./disabled-context"
 
 const props = defineProps<{ index: number, class?: HTMLAttributes["class"] }>()
 
@@ -15,6 +16,7 @@ const forwarded = useForwardProps(delegatedProps)
 const context = useVueOTPContext()
 
 const slot = computed(() => context?.value.slots[props.index])
+const disabled = inject(INPUT_OTP_DISABLED_KEY, computed(() => false))
 </script>
 
 <template>
@@ -22,11 +24,12 @@ const slot = computed(() => context?.value.slots[props.index])
     v-bind="forwarded"
     data-slot="input-otp-slot"
     :data-active="slot?.isActive"
-    :class="cn('data-[active=true]:border-ring data-[active=true]:ring-ring/50 data-[active=true]:aria-invalid:ring-destructive/20 dark:data-[active=true]:aria-invalid:ring-destructive/40 aria-invalid:border-destructive data-[active=true]:aria-invalid:border-destructive dark:bg-input/30 border-input relative flex h-9 w-9 items-center justify-center border-y border-r text-sm shadow-xs transition-all outline-none first:rounded-l-md first:border-l last:rounded-r-md data-[active=true]:z-10 data-[active=true]:ring-[3px]', props.class)"
+    :data-disabled="disabled"
+    :class="cn('cn-input-otp-slot relative flex h-9 w-9 items-center justify-center text-sm outline-none first:rounded-l-md last:rounded-r-md', props.class)"
   >
     {{ slot?.char }}
-    <div v-if="slot?.hasFakeCaret" class="pointer-events-none absolute inset-0 flex items-center justify-center">
-      <div class="animate-caret-blink bg-foreground h-4 w-px duration-1000" />
+    <div v-if="slot?.hasFakeCaret" class="cn-input-otp-caret pointer-events-none absolute inset-0 flex items-center justify-center">
+      <div class="cn-input-otp-caret-line" />
     </div>
   </div>
 </template>

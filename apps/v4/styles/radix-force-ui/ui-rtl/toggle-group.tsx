@@ -32,6 +32,20 @@ function ToggleGroup({
     spacing?: number
     orientation?: "horizontal" | "vertical"
   }) {
+  // [FORCE-UI] dev-only reminder — a group of icon-only toggles is otherwise unnamed to a screen reader
+  React.useEffect(() => {
+    if (
+      process.env.NODE_ENV !== "production" &&
+      !props["aria-label"] &&
+      !props["aria-labelledby"]
+    ) {
+      console.warn(
+        "ToggleGroup: add an aria-label or aria-labelledby so screen readers can announce this group."
+      )
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <ToggleGroupPrimitive.Root
       data-slot="toggle-group"

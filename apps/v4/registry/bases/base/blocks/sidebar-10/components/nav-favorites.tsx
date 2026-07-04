@@ -56,7 +56,8 @@ export function NavFavorites({
                   phosphor="DotsThreeOutlineIcon"
                   remixicon="RiMoreLine"
                 />
-                <span className="sr-only">More</span>
+                {/* [FORCE-UI] item-specific accessible name — repeated "More" buttons are otherwise indistinguishable */}
+                <span className="sr-only">More options for {item.name}</span>
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 className="w-56 rounded-lg"
