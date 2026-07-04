@@ -454,14 +454,28 @@ function SidebarMenu({ className, ...props }: React.ComponentProps<"ul">) {
   )
 }
 
-function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
+function SidebarMenuItem({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"li">) {
   return (
     <li
       data-slot="sidebar-menu-item"
       data-sidebar="menu-item"
       className={cn("group/menu-item relative", className)}
       {...props}
-    />
+    >
+      {children}
+      {/* [FORCE-UI] active-state accent indicator (maintainer-directed) — a real
+          sibling span, not a ::before on the button: the button's base class
+          carries overflow-hidden for label truncation, which clips a
+          pseudo-element regardless of its positioned ancestor. */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 -left-1.5 w-1 rounded-full bg-sidebar-accent-foreground opacity-0 peer-data-active/menu-button:opacity-100"
+      />
+    </li>
   )
 }
 

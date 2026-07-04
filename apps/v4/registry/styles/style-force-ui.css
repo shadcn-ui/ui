@@ -1232,6 +1232,17 @@
     @apply ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground data-active:bg-sidebar-accent data-active:text-sidebar-accent-foreground data-open:hover:bg-sidebar-accent data-open:hover:text-sidebar-accent-foreground gap-2 rounded-md p-2 text-left text-sm transition-[width,height,padding] motion-reduce:transition-none group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 data-active:font-medium; /* [FORCE-UI] WCAG 2.3.3 guard */
   }
 
+  /* [FORCE-UI] active-state accent indicator (maintainer-directed) — a 4px
+     rounded-pill bar in the gutter to the left of the active menu item,
+     ported from an older internal design system's nav-item (not in the
+     current Force UI registry/Figma). Rendered as a sibling span reacting to
+     the button's `data-active` via `peer-data-active/menu-button:` — a
+     ::before on the button clips, since the button's base class carries
+     overflow-hidden for label truncation. */
+  .cn-sidebar-menu-item-indicator {
+    @apply pointer-events-none absolute -left-1.5 inset-y-0 w-1 rounded-full bg-sidebar-accent-foreground opacity-0 peer-data-active/menu-button:opacity-100;
+  }
+
   .cn-sidebar-menu-button-variant-default {
     @apply hover:bg-sidebar-accent hover:text-sidebar-accent-foreground;
   }

@@ -92,7 +92,7 @@
     },
     {
       "path": "registry/vue-force-ui/ui/sidebar/SidebarMenuItem.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <li\n    data-slot=\"sidebar-menu-item\"\n    data-sidebar=\"menu-item\"\n    :class=\"cn('group/menu-item relative', props.class)\"\n  >\n    <slot />\n  </li>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <li\n    data-slot=\"sidebar-menu-item\"\n    data-sidebar=\"menu-item\"\n    :class=\"cn('group/menu-item relative', props.class)\"\n  >\n    <slot />\n    <!-- [FORCE-UI] active-state accent indicator, see style-force-ui.css -->\n    <span aria-hidden=\"true\" class=\"cn-sidebar-menu-item-indicator\" />\n  </li>\n</template>\n",
       "type": "registry:ui"
     },
     {
