@@ -459,6 +459,35 @@
   }
 }
 
+/* [FORCE-UI] Apple-style thin, rounded, inset overlay scrollbar for token-styled
+   overflow panels (select menu, dropdowns, command lists) — ported from Angular's
+   pd-p4one tailwind.css. Thumb colour derives from --muted-foreground via
+   color-mix, no hardcoded colour. */
+@utility scrollbar-overlay {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--muted-foreground) 35%, transparent) transparent;
+
+  &::-webkit-scrollbar {
+    width: 0.625rem;
+    height: 0.625rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+    background-color: color-mix(in oklab, var(--muted-foreground) 30%, transparent);
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: color-mix(in oklab, var(--muted-foreground) 55%, transparent);
+  }
+}
+
 @utility border-ghost {
   @apply relative after:absolute after:inset-0 after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten;
 }

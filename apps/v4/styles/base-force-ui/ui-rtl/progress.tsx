@@ -45,7 +45,11 @@ function ProgressIndicator({
   return (
     <ProgressPrimitive.Indicator
       data-slot="progress-indicator"
-      className={cn("h-full bg-primary transition-all", className)}
+      // [FORCE-UI] pulse the indicator when indeterminate (no value); WCAG 2.3.3 reduced-motion guard
+      className={cn(
+        "h-full bg-primary transition-all data-[state=indeterminate]:animate-pulse motion-reduce:transition-none motion-reduce:data-[state=indeterminate]:animate-none",
+        className
+      )}
       {...props}
     />
   )

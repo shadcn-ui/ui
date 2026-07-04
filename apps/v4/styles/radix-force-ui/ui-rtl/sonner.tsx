@@ -17,6 +17,8 @@ const Toaster = ({ ...props }: ToasterProps) => {
     <Sonner
       theme={theme as ToasterProps["theme"]}
       className="toaster group"
+      richColors
+      closeButton
       icons={{
         success: <CircleCheckIcon className="size-4" />,
         info: <InfoIcon className="size-4" />,
@@ -26,10 +28,24 @@ const Toaster = ({ ...props }: ToasterProps) => {
       }}
       style={
         {
-          "--normal-bg": "var(--popover)",
-          "--normal-text": "var(--popover-foreground)",
+          // [FORCE-UI] surface tokens (Force toast.md spec) instead of popover; rich-colors wired to status subtle/solid tokens; explicit width per spec
+          "--normal-bg": "var(--surface)",
+          "--normal-text": "var(--surface-foreground)",
           "--normal-border": "var(--border)",
           "--border-radius": "var(--radius)",
+          "--width": "312px",
+          "--success-bg": "var(--success-subtle)",
+          "--success-border": "var(--success)",
+          "--success-text": "var(--success)",
+          "--warning-bg": "var(--warning-subtle)",
+          "--warning-border": "var(--warning)",
+          "--warning-text": "var(--warning)",
+          "--info-bg": "var(--info-subtle)",
+          "--info-border": "var(--info)",
+          "--info-text": "var(--info)",
+          "--error-bg": "var(--error-subtle)",
+          "--error-border": "var(--error)",
+          "--error-text": "var(--error)",
         } as React.CSSProperties
       }
       toastOptions={{

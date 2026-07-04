@@ -9,9 +9,10 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground [a]:hover:bg-primary/80",
+        default:
+          "bg-primary text-primary-foreground [a]:hover:bg-primary-hover",
         secondary:
-          "bg-secondary text-secondary-foreground [a]:hover:bg-secondary/80",
+          "bg-secondary text-secondary-foreground [a]:hover:bg-primary-subtle",
         destructive: "bg-error-subtle text-error",
         warning: "bg-warning-subtle text-warning",
         success: "bg-success-subtle text-success", // [FORCE-UI]
@@ -21,11 +22,9 @@ const badgeVariants = cva(
           "bg-warning-solid text-on-warning dark:text-on-warning", // [FORCE-UI]
         "info-solid": "bg-info-solid text-on-info", // [FORCE-UI]
         "error-solid": "bg-destructive text-on-error", // [FORCE-UI]
-        outline:
-          "border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground",
-        ghost:
-          "hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50",
-        link: "text-primary underline-offset-4 hover:underline",
+        outline: "border-border text-foreground [a]:hover:bg-primary-subtle",
+        ghost: "hover:bg-primary-subtle hover:text-foreground",
+        link: "text-link underline-offset-4 hover:underline",
       },
     },
     defaultVariants: {
