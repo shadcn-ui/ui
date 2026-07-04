@@ -21,7 +21,7 @@ import OctagonX from '~icons/ms/dangerous';
 import TriangleAlert from '~icons/ms/warning';
 
 const VISIBLE_TOASTS_AMOUNT = 3;
-const TOAST_WIDTH = 356;
+const TOAST_WIDTH = 312; // [FORCE-UI] Force toast.md spec width
 const GAP = 14;
 
 type Position =
@@ -132,7 +132,7 @@ class Toaster extends Component<ToasterSignature> {
 
   get toasterStyle() {
     return htmlSafe(
-      `--front-toast-height: ${this.frontToastHeight}px; --width: ${TOAST_WIDTH}px; --gap: ${GAP}px; --normal-bg: var(--popover); --normal-text: var(--popover-foreground); --normal-border: var(--border); --border-radius: var(--radius); --offset-top: 24px; --offset-right: 24px; --offset-bottom: 24px; --offset-left: 24px; --mobile-offset-top: 16px; --mobile-offset-right: 16px; --mobile-offset-bottom: 16px; --mobile-offset-left: 16px`
+      `--front-toast-height: ${this.frontToastHeight}px; --width: ${TOAST_WIDTH}px; --gap: ${GAP}px; --normal-bg: var(--surface); --normal-text: var(--surface-foreground); --normal-border: var(--border); --border-radius: var(--radius); --offset-top: 24px; --offset-right: 24px; --offset-bottom: 24px; --offset-left: 24px; --mobile-offset-top: 16px; --mobile-offset-right: 16px; --mobile-offset-bottom: 16px; --mobile-offset-left: 16px`
     );
   }
 
@@ -812,26 +812,29 @@ class Toaster extends Component<ToasterSignature> {
         }
       }
 
+      /* [FORCE-UI] surface/status tokens (Force toast.md spec) instead of the
+         hardcoded hsl() rich-colors palette — resolves per active theme since
+         --surface/--success/etc are already light/dark aware. */
       [data-sonner-toaster][data-sonner-theme="light"] {
-        --normal-bg: #fff;
-        --normal-border: var(--gray4);
-        --normal-text: var(--gray12);
+        --normal-bg: var(--surface);
+        --normal-border: var(--border);
+        --normal-text: var(--surface-foreground);
 
-        --success-bg: hsl(143, 85%, 96%);
-        --success-border: hsl(145, 92%, 87%);
-        --success-text: hsl(140, 100%, 27%);
+        --success-bg: var(--success-subtle);
+        --success-border: var(--success);
+        --success-text: var(--success);
 
-        --info-bg: hsl(208, 100%, 97%);
-        --info-border: hsl(221, 91%, 93%);
-        --info-text: hsl(210, 92%, 45%);
+        --info-bg: var(--info-subtle);
+        --info-border: var(--info);
+        --info-text: var(--info);
 
-        --warning-bg: hsl(49, 100%, 97%);
-        --warning-border: hsl(49, 91%, 84%);
-        --warning-text: hsl(31, 92%, 45%);
+        --warning-bg: var(--warning-subtle);
+        --warning-border: var(--warning);
+        --warning-text: var(--warning);
 
-        --error-bg: hsl(359, 100%, 97%);
-        --error-border: hsl(359, 100%, 94%);
-        --error-text: hsl(360, 100%, 45%);
+        --error-bg: var(--error-subtle);
+        --error-border: var(--error);
+        --error-text: var(--error);
       }
 
       [data-sonner-toaster][data-sonner-theme="light"]
@@ -849,27 +852,27 @@ class Toaster extends Component<ToasterSignature> {
       }
 
       [data-sonner-toaster][data-sonner-theme="dark"] {
-        --normal-bg: #000;
-        --normal-bg-hover: hsl(0, 0%, 12%);
-        --normal-border: hsl(0, 0%, 20%);
-        --normal-border-hover: hsl(0, 0%, 25%);
-        --normal-text: var(--gray1);
+        --normal-bg: var(--surface);
+        --normal-bg-hover: var(--surface);
+        --normal-border: var(--border);
+        --normal-border-hover: var(--border);
+        --normal-text: var(--surface-foreground);
 
-        --success-bg: hsl(150, 100%, 6%);
-        --success-border: hsl(147, 100%, 12%);
-        --success-text: hsl(150, 86%, 65%);
+        --success-bg: var(--success-subtle);
+        --success-border: var(--success);
+        --success-text: var(--success);
 
-        --info-bg: hsl(215, 100%, 6%);
-        --info-border: hsl(223, 43%, 17%);
-        --info-text: hsl(216, 87%, 65%);
+        --info-bg: var(--info-subtle);
+        --info-border: var(--info);
+        --info-text: var(--info);
 
-        --warning-bg: hsl(64, 100%, 6%);
-        --warning-border: hsl(60, 100%, 9%);
-        --warning-text: hsl(46, 87%, 65%);
+        --warning-bg: var(--warning-subtle);
+        --warning-border: var(--warning);
+        --warning-text: var(--warning);
 
-        --error-bg: hsl(358, 76%, 10%);
-        --error-border: hsl(357, 89%, 16%);
-        --error-text: hsl(358, 100%, 81%);
+        --error-bg: var(--error-subtle);
+        --error-border: var(--error);
+        --error-text: var(--error);
       }
 
       [data-sonner-toaster][data-sonner-theme="dark"]

@@ -47,7 +47,7 @@ function ProgressIndicator({
       data-slot="progress-indicator"
       // [FORCE-UI] pulse the indicator when indeterminate (no value); WCAG 2.3.3 reduced-motion guard
       className={cn(
-        "cn-progress-indicator h-full transition-all motion-reduce:transition-none data-[state=indeterminate]:animate-pulse motion-reduce:data-[state=indeterminate]:animate-none",
+        "cn-progress-indicator h-full transition-all data-[state=indeterminate]:animate-pulse motion-reduce:transition-none motion-reduce:data-[state=indeterminate]:animate-none",
         className
       )}
       {...props}

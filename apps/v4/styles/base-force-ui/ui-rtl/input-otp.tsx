@@ -6,24 +6,33 @@ import { MinusIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+// [FORCE-UI] input-otp's OTPInputContext has no disabled field (it lives only on
+// the native <input>), so InputOTPSlot has no way to know it's disabled — forward
+// it ourselves for the .cn-input-otp-slot disabled fill.
+const InputOTPDisabledContext = React.createContext(false)
+
 function InputOTP({
   className,
   containerClassName,
+  disabled,
   ...props
 }: React.ComponentProps<typeof OTPInput> & {
   containerClassName?: string
 }) {
   return (
-    <OTPInput
-      data-slot="input-otp"
-      containerClassName={cn(
-        "cn-input-otp flex items-center has-disabled:opacity-50",
-        containerClassName
-      )}
-      spellCheck={false}
-      className={cn("disabled:cursor-not-allowed", className)}
-      {...props}
-    />
+    <InputOTPDisabledContext.Provider value={!!disabled}>
+      <OTPInput
+        data-slot="input-otp"
+        disabled={disabled}
+        containerClassName={cn(
+          "cn-input-otp flex items-center has-disabled:opacity-50",
+          containerClassName
+        )}
+        spellCheck={false}
+        className={cn("disabled:cursor-not-allowed", className)}
+        {...props}
+      />
+    </InputOTPDisabledContext.Provider>
   )
 }
 
@@ -49,11 +58,13 @@ function InputOTPSlot({
 }) {
   const inputOTPContext = React.useContext(OTPInputContext)
   const { char, hasFakeCaret, isActive } = inputOTPContext?.slots[index] ?? {}
+  const disabled = React.useContext(InputOTPDisabledContext)
 
   return (
     <div
       data-slot="input-otp-slot"
       data-active={isActive}
+      data-disabled={disabled}
       className={cn(
         "relative flex size-8 items-center justify-center border-y border-e border-border text-sm transition-all outline-none first:rounded-s-lg first:border-s last:rounded-e-lg aria-invalid:border-destructive data-[active=true]:z-10 data-[active=true]:border-ring data-[active=true]:ring-3 data-[active=true]:ring-ring/50 data-[active=true]:aria-invalid:border-destructive data-[active=true]:aria-invalid:ring-destructive/20 data-[disabled=true]:bg-muted motion-reduce:transition-none dark:bg-input/30 dark:data-[active=true]:aria-invalid:ring-destructive/40 dark:data-[disabled=true]:bg-muted",
         className

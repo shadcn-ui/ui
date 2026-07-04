@@ -30,7 +30,7 @@ class Progress extends Component<ProgressSignature> {
       ...attributes
     >
       <div
-        class="cn-progress-indicator size-full flex-1 transition-all"
+        class="cn-progress-indicator size-full flex-1 transition-all motion-reduce:transition-none"
         data-slot="progress-indicator"
         style={{this.indicatorStyle}}
       ></div>
