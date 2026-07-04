@@ -299,6 +299,38 @@ describe("transformCss", () => {
     `)
   })
 
+  test("should keep at-rules nested inside a selector scoped to that selector", async () => {
+    const input = `@tailwind base;
+@tailwind components;
+@tailwind utilities;`
+
+    const result = await transformCss(input, {
+      "@layer base": {
+        body: {
+          "--foo": "1rem",
+          "@media (width >= 40rem)": {
+            "--foo": "2rem",
+          },
+        },
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+
+      @layer base {
+        body {
+          --foo: 1rem;
+        @media (width >= 40rem) {
+          --foo: 2rem;
+          }
+        }
+      }"
+    `)
+  })
+
   test("should place keyframes under @theme inline directive", async () => {
     const input = `@import "tailwindcss";`
 

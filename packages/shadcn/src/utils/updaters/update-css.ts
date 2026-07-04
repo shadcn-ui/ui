@@ -522,7 +522,11 @@ function processAtRule(
   }
 }
 
-function processRule(parent: Root | AtRule, selector: string, properties: any) {
+function processRule(
+  parent: Root | AtRule | Rule,
+  selector: string,
+  properties: any
+) {
   let rule = parent.nodes?.find(
     (node): node is Rule => node.type === "rule" && node.selector === selector
   ) as Rule | undefined
@@ -594,6 +598,15 @@ function processRule(parent: Root | AtRule, selector: string, properties: any) {
         )
 
         existingDecl ? existingDecl.replaceWith(decl) : rule.append(decl)
+      } else if (
+        prop.startsWith("@") &&
+        typeof value === "object" &&
+        value !== null
+      ) {
+        // Nested at-rule with a body (e.g. @media, @supports, @container).
+        // Keep it scoped to the current rule instead of hoisting it up to the
+        // parent, so declarations stay inside the selector they belong to.
+        processRule(rule, prop, value)
       } else if (typeof value === "object") {
         // Nested selector (including & selectors).
         const nestedSelector = prop.startsWith("&")
