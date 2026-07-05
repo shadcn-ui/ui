@@ -820,6 +820,13 @@
     "logo": "<svg role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70' aria-label='MP Logo' width='70' height='70' fill='none'><path stroke='currentColor' stroke-linecap='round' stroke-width='3' d='M51.883 26.495c-7.277-4.124-18.08-7.004-26.519-7.425-2.357-.118-4.407-.244-6.364 1.06M59.642 51c-10.47-7.25-26.594-13.426-39.514-15.664-3.61-.625-6.744-1.202-9.991.263'/></svg>"
   },
   {
+    "name": "@mozaika",
+    "homepage": "https://mozaika.design",
+    "url": "https://mozaika.design/r/{name}.json",
+    "description": "Design systems measured from real product UIs — color roles, typography and spacing as themes installable with the shadcn CLI. Free open shelf; companion MCP server for AI coding agents.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)' width='24' height='24'><rect x='3' y='3' width='8' height='8'/><rect x='13' y='3' width='8' height='8' opacity='.4'/><rect x='3' y='13' width='8' height='8' opacity='.4'/><rect x='13' y='13' width='8' height='8'/></svg>"
+  },
+  {
     "name": "@mui-treasury",
     "homepage": "https://www.mui-treasury.com",
     "url": "https://mui-treasury.com/r/{name}.json",
