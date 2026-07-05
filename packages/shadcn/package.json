@@ -1,6 +1,6 @@
 {
   "name": "shadcn",
-  "version": "4.11.0",
+  "version": "4.13.0",
   "description": "Add components to your apps.",
   "publishConfig": {
     "access": "public"
@@ -56,10 +56,11 @@
       "types": "./dist/preset/index.d.ts",
       "default": "./dist/preset/index.js"
     },
-    "./tailwind.css": {
-      "style": "./dist/tailwind.css"
-    }
+    "./tailwind.css": "./dist/tailwind.css"
   },
+  "sideEffects": [
+    "./dist/tailwind.css"
+  ],
   "bin": "./dist/index.js",
   "engines": {
     "node": ">=20.18.1"
@@ -123,10 +124,10 @@
     "@types/fs-extra": "^11.0.4",
     "@types/prompts": "^2.4.9",
     "@types/stringify-object": "^4.0.5",
+    "msw": "^2.10.4",
     "rimraf": "^6.0.1",
     "tsup": "^8.5.0",
     "type-fest": "^4.41.0",
-    "typescript": "^5.9.2",
-    "msw": "^2.10.4"
+    "typescript": "^5.9.2"
   }
 }

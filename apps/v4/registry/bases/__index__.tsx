@@ -4,6 +4,3654 @@
 import "server-only"
 
 export const Index: Record<string, Record<string, any>> = {
+  base: {
+    accordion: {
+      name: "accordion",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/accordion.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/accordion",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/accordion-example.tsx",
+          api: "https://base-ui.com/react/components/accordion.md",
+        },
+      },
+    },
+    alert: {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/alert.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/alert",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/alert-example.tsx",
+        },
+      },
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/base/ui/alert-dialog.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/alert-dialog",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/alert-dialog-example.tsx",
+          api: "https://base-ui.com/react/components/alert-dialog.md",
+        },
+      },
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/aspect-ratio.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/aspect-ratio",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/aspect-ratio-example.tsx",
+        },
+      },
+    },
+    avatar: {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/avatar.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/avatar",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/avatar-example.tsx",
+          api: "https://base-ui.com/react/components/avatar.md",
+        },
+      },
+    },
+    badge: {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/badge.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/badge",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/badge-example.tsx",
+        },
+      },
+    },
+    breadcrumb: {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/breadcrumb.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/breadcrumb",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/breadcrumb-example.tsx",
+        },
+      },
+    },
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/button.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/button",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/button-example.tsx",
+        },
+      },
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [
+        {
+          path: "registry/bases/base/ui/button-group.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/button-group",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/button-group-example.tsx",
+        },
+      },
+    },
+    calendar: {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/base/ui/calendar.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/calendar",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/calendar-example.tsx",
+          api: "https://react-day-picker.js.org",
+        },
+      },
+    },
+    card: {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/card.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/card",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/card-example.tsx",
+        },
+      },
+    },
+    carousel: {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/base/ui/carousel.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/carousel",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/carousel-example.tsx",
+          api: "https://www.embla-carousel.com/get-started/react",
+        },
+      },
+    },
+    chart: {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card"],
+      files: [
+        {
+          path: "registry/bases/base/ui/chart.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/chart",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/chart-example.tsx",
+        },
+      },
+    },
+    checkbox: {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/checkbox.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/checkbox",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/checkbox-example.tsx",
+          api: "https://base-ui.com/react/components/checkbox.md",
+        },
+      },
+    },
+    collapsible: {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/collapsible.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/collapsible",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/collapsible-example.tsx",
+          api: "https://base-ui.com/react/components/collapsible.md",
+        },
+      },
+    },
+    combobox: {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input-group"],
+      files: [
+        {
+          path: "registry/bases/base/ui/combobox.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/combobox",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/combobox-example.tsx",
+          api: "https://base-ui.com/react/components/combobox.md",
+        },
+      },
+    },
+    command: {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog", "input-group"],
+      files: [
+        {
+          path: "registry/bases/base/ui/command.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/command",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/command-example.tsx",
+          api: "https://github.com/dip/cmdk",
+        },
+      },
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/context-menu.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/context-menu",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/context-menu-example.tsx",
+          api: "https://base-ui.com/react/components/context-menu.md",
+        },
+      },
+    },
+    dialog: {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/base/ui/dialog.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/dialog",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/dialog-example.tsx",
+          api: "https://base-ui.com/react/components/dialog.md",
+        },
+      },
+    },
+    drawer: {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/drawer.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/drawer",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/drawer-example.tsx",
+          api: "https://base-ui.com/react/components/drawer.md",
+        },
+      },
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/dropdown-menu.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/dropdown-menu",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/dropdown-menu-example.tsx",
+          api: "https://base-ui.com/react/components/menu.md",
+        },
+      },
+    },
+    empty: {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/empty.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/empty",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/empty-example.tsx",
+        },
+      },
+    },
+    field: {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label", "separator"],
+      files: [
+        {
+          path: "registry/bases/base/ui/field.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/field",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/field-example.tsx",
+        },
+      },
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/hover-card.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/hover-card",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/hover-card-example.tsx",
+          api: "https://base-ui.com/react/components/hover-card.md",
+        },
+      },
+    },
+    input: {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/input",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/input-example.tsx",
+        },
+      },
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input", "textarea"],
+      files: [
+        {
+          path: "registry/bases/base/ui/input-group.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/input-group",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/input-group-example.tsx",
+        },
+      },
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/input-otp.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/input-otp",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/input-otp-example.tsx",
+          api: "https://input-otp.rodz.dev",
+        },
+      },
+    },
+    item: {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [
+        {
+          path: "registry/bases/base/ui/item.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/item",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/item-example.tsx",
+        },
+      },
+    },
+    label: {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/label.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/label",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/label-example.tsx",
+          api: "https://base-ui.com/react/components/label.md",
+        },
+      },
+    },
+    menubar: {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dropdown-menu"],
+      files: [
+        {
+          path: "registry/bases/base/ui/menubar.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/menubar",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/menubar-example.tsx",
+          api: "https://base-ui.com/react/components/menubar.md",
+        },
+      },
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/navigation-menu.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/navigation-menu",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/navigation-menu-example.tsx",
+          api: "https://base-ui.com/react/components/navigation-menu.md",
+        },
+      },
+    },
+    pagination: {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/base/ui/pagination.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/pagination",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/pagination-example.tsx",
+        },
+      },
+    },
+    popover: {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/popover.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/popover",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/popover-example.tsx",
+          api: "https://base-ui.com/react/components/popover.md",
+        },
+      },
+    },
+    progress: {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/progress.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/progress",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/progress-example.tsx",
+          api: "https://base-ui.com/react/components/progress.md",
+        },
+      },
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/radio-group.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/radio-group",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/radio-group-example.tsx",
+          api: "https://base-ui.com/react/components/radio-group.md",
+        },
+      },
+    },
+    resizable: {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/resizable.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/resizable",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/resizable-example.tsx",
+          api: "https://github.com/bvaughn/react-resizable-panels",
+        },
+      },
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/scroll-area.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/scroll-area",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/scroll-area-example.tsx",
+          api: "https://base-ui.com/react/components/scroll-area.md",
+        },
+      },
+    },
+    select: {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/select.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/select",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/select-example.tsx",
+          api: "https://base-ui.com/react/components/select.md",
+        },
+      },
+    },
+    separator: {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/separator.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/separator",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/separator-example.tsx",
+          api: "https://base-ui.com/react/components/separator.md",
+        },
+      },
+    },
+    sheet: {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/base/ui/sheet.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/sheet",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/sheet-example.tsx",
+          api: "https://base-ui.com/react/components/dialog.md",
+        },
+      },
+    },
+    sidebar: {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [
+        "button",
+        "input",
+        "separator",
+        "sheet",
+        "skeleton",
+        "tooltip",
+        "use-mobile",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/ui/sidebar.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/sidebar",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/sidebar-example.tsx",
+        },
+      },
+    },
+    skeleton: {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/skeleton.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/skeleton",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/skeleton-example.tsx",
+        },
+      },
+    },
+    slider: {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/slider.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/slider",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/slider-example.tsx",
+          api: "https://base-ui.com/react/components/slider.md",
+        },
+      },
+    },
+    sonner: {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/sonner.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/sonner",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/sonner-example.tsx",
+          api: "https://sonner.emilkowal.ski",
+        },
+      },
+    },
+    spinner: {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/spinner.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/spinner",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/spinner-example.tsx",
+        },
+      },
+    },
+    switch: {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/switch.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/switch",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/switch-example.tsx",
+          api: "https://base-ui.com/react/components/switch.md",
+        },
+      },
+    },
+    table: {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/table.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/table",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/table-example.tsx",
+        },
+      },
+    },
+    tabs: {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/tabs.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/tabs",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/tabs-example.tsx",
+          api: "https://base-ui.com/react/components/tabs.md",
+        },
+      },
+    },
+    textarea: {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/textarea.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/textarea",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/textarea-example.tsx",
+        },
+      },
+    },
+    toggle: {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/toggle.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/toggle",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/toggle-example.tsx",
+          api: "https://base-ui.com/react/components/toggle.md",
+        },
+      },
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [
+        {
+          path: "registry/bases/base/ui/toggle-group.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/toggle-group",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/toggle-group-example.tsx",
+          api: "https://base-ui.com/react/components/toggle-group.md",
+        },
+      },
+    },
+    tooltip: {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/tooltip.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/tooltip",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/tooltip-example.tsx",
+          api: "https://base-ui.com/react/components/tooltip.md",
+        },
+      },
+    },
+    kbd: {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/kbd.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/kbd",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/kbd-example.tsx",
+        },
+      },
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/native-select.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/native-select",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/native-select-example.tsx",
+        },
+      },
+    },
+    direction: {
+      name: "direction",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/direction.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/direction",
+          api: "https://base-ui.com/react/utils/direction-provider.md",
+        },
+      },
+    },
+    attachment: {
+      name: "attachment",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/base/ui/attachment.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    bubble: {
+      name: "bubble",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/bubble.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "message-scroller": {
+      name: "message-scroller",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/base/ui/message-scroller.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    marker: {
+      name: "marker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/marker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    message: {
+      name: "message",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/message.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "accordion-example": {
+      name: "accordion-example",
+      title: "Accordion",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["accordion", "button", "card", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/accordion-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "alert-example": {
+      name: "alert-example",
+      title: "Alert",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["alert", "badge", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/alert-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "alert-dialog-example": {
+      name: "alert-dialog-example",
+      title: "Alert Dialog",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["alert-dialog", "button", "dialog", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/alert-dialog-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "aspect-ratio-example": {
+      name: "aspect-ratio-example",
+      title: "Aspect Ratio",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["aspect-ratio", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/aspect-ratio-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "avatar-example": {
+      name: "avatar-example",
+      title: "Avatar",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar", "button", "empty", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/avatar-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "badge-example": {
+      name: "badge-example",
+      title: "Badge",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["badge", "spinner", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/badge-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "breadcrumb-example": {
+      name: "breadcrumb-example",
+      title: "Breadcrumb",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["breadcrumb", "dropdown-menu", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/breadcrumb-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-example": {
+      name: "button-example",
+      title: "Button",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/button-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-group-example": {
+      name: "button-group-example",
+      title: "Button Group",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "button-group",
+        "dropdown-menu",
+        "field",
+        "input",
+        "input-group",
+        "label",
+        "popover",
+        "select",
+        "tooltip",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/button-group-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "calendar-example": {
+      name: "calendar-example",
+      title: "Calendar",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "calendar",
+        "card",
+        "field",
+        "input",
+        "label",
+        "popover",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/calendar-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "card-example": {
+      name: "card-example",
+      title: "Card",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "avatar",
+        "button",
+        "card",
+        "field",
+        "input",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/card-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "carousel-example": {
+      name: "carousel-example",
+      title: "Carousel",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card", "carousel", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/carousel-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "chart-example": {
+      name: "chart-example",
+      title: "Chart",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["chart", "card", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/chart-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "checkbox-example": {
+      name: "checkbox-example",
+      title: "Checkbox",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox", "field", "table", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/checkbox-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "collapsible-example": {
+      name: "collapsible-example",
+      title: "Collapsible",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "card",
+        "collapsible",
+        "field",
+        "input",
+        "tabs",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/collapsible-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "combobox-example": {
+      name: "combobox-example",
+      title: "Combobox",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "card",
+        "combobox",
+        "dialog",
+        "field",
+        "input",
+        "input-group",
+        "item",
+        "select",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/combobox-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "command-example": {
+      name: "command-example",
+      title: "Command",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "command", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/command-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "context-menu-example": {
+      name: "context-menu-example",
+      title: "Context Menu",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "context-menu", "dialog", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/context-menu-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "dialog-example": {
+      name: "dialog-example",
+      title: "Dialog",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "checkbox",
+        "dialog",
+        "field",
+        "input",
+        "input-group",
+        "kbd",
+        "native-select",
+        "select",
+        "switch",
+        "tabs",
+        "textarea",
+        "tooltip",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/dialog-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "drawer-example": {
+      name: "drawer-example",
+      title: "Drawer",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["drawer", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/drawer-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "dropdown-menu-example": {
+      name: "dropdown-menu-example",
+      title: "Dropdown Menu",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "avatar",
+        "button",
+        "dialog",
+        "dropdown-menu",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/dropdown-menu-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "empty-example": {
+      name: "empty-example",
+      title: "Empty",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "empty",
+        "input-group",
+        "kbd",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/empty-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-example": {
+      name: "field-example",
+      title: "Field",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "badge",
+        "checkbox",
+        "field",
+        "input",
+        "input-otp",
+        "native-select",
+        "radio-group",
+        "select",
+        "slider",
+        "switch",
+        "textarea",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/field-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "hover-card-example": {
+      name: "hover-card-example",
+      title: "Hover Card",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "dialog", "hover-card", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/hover-card-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-example": {
+      name: "input-example",
+      title: "Input",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "field",
+        "input",
+        "native-select",
+        "select",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/input-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group-example": {
+      name: "input-group-example",
+      title: "Input Group",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "button-group",
+        "card",
+        "dropdown-menu",
+        "field",
+        "input",
+        "input-group",
+        "kbd",
+        "popover",
+        "spinner",
+        "textarea",
+        "tooltip",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/input-group-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-otp-example": {
+      name: "input-otp-example",
+      title: "Input OTP",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "card", "field", "input-otp", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/input-otp-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "item-example": {
+      name: "item-example",
+      title: "Item",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "item", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/item-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "kbd-example": {
+      name: "kbd-example",
+      title: "Kbd",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "input-group",
+        "kbd",
+        "tooltip",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/kbd-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "label-example": {
+      name: "label-example",
+      title: "Label",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "checkbox",
+        "field",
+        "input",
+        "label",
+        "textarea",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/label-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "menubar-example": {
+      name: "menubar-example",
+      title: "Menubar",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "dialog", "menubar", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/menubar-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "native-select-example": {
+      name: "native-select-example",
+      title: "Native Select",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "native-select", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/native-select-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "navigation-menu-example": {
+      name: "navigation-menu-example",
+      title: "Navigation Menu",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "dialog", "navigation-menu", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/navigation-menu-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "pagination-example": {
+      name: "pagination-example",
+      title: "Pagination",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "pagination", "select", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/pagination-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "popover-example": {
+      name: "popover-example",
+      title: "Popover",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "dialog",
+        "field",
+        "input",
+        "popover",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/popover-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "progress-example": {
+      name: "progress-example",
+      title: "Progress",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "item", "progress", "slider", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/progress-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-group-example": {
+      name: "radio-group-example",
+      title: "Radio Group",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "radio-group", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/radio-group-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "resizable-example": {
+      name: "resizable-example",
+      title: "Resizable",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["resizable", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/resizable-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "scroll-area-example": {
+      name: "scroll-area-example",
+      title: "Scroll Area",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["scroll-area", "separator", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/scroll-area-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "select-example": {
+      name: "select-example",
+      title: "Select",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "dialog",
+        "field",
+        "input",
+        "item",
+        "native-select",
+        "select",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/select-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "separator-example": {
+      name: "separator-example",
+      title: "Separator",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["separator", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/separator-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "sheet-example": {
+      name: "sheet-example",
+      title: "Sheet",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "field", "input", "sheet", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/sheet-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-example": {
+      name: "sidebar-example",
+      title: "Sidebar",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "dropdown-menu",
+        "item",
+        "label",
+        "sidebar",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/sidebar-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-icon-example": {
+      name: "sidebar-icon-example",
+      title: "Sidebar (Icon)",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "avatar",
+        "button",
+        "collapsible",
+        "dropdown-menu",
+        "item",
+        "sidebar",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/sidebar-icon-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-inset-example": {
+      name: "sidebar-inset-example",
+      title: "Sidebar (Inset)",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["collapsible", "sidebar", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/sidebar-inset-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-floating-example": {
+      name: "sidebar-floating-example",
+      title: "Sidebar (Floating)",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "card",
+        "dropdown-menu",
+        "field",
+        "item",
+        "sidebar",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/sidebar-floating-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "skeleton-example": {
+      name: "skeleton-example",
+      title: "Skeleton",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["skeleton", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/skeleton-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "slider-example": {
+      name: "slider-example",
+      title: "Slider",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["label", "slider", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/slider-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "sonner-example": {
+      name: "sonner-example",
+      title: "Sonner",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["sonner", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/sonner-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "spinner-example": {
+      name: "spinner-example",
+      title: "Spinner",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "badge",
+        "button",
+        "empty",
+        "field",
+        "input-group",
+        "spinner",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/spinner-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "switch-example": {
+      name: "switch-example",
+      title: "Switch",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "label", "switch", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/switch-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "table-example": {
+      name: "table-example",
+      title: "Table",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "dropdown-menu",
+        "input",
+        "select",
+        "table",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/table-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "tabs-example": {
+      name: "tabs-example",
+      title: "Tabs",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "dropdown-menu", "tabs", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/tabs-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "textarea-example": {
+      name: "textarea-example",
+      title: "Textarea",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "textarea", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/textarea-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-example": {
+      name: "toggle-example",
+      title: "Toggle",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/toggle-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-group-example": {
+      name: "toggle-group-example",
+      title: "Toggle Group",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input", "select", "toggle-group", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/toggle-group-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "tooltip-example": {
+      name: "tooltip-example",
+      title: "Tooltip",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "kbd", "tooltip", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/tooltip-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    demo: {
+      name: "demo",
+      title: "Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "alert-dialog",
+        "badge",
+        "button",
+        "button-group",
+        "card",
+        "checkbox",
+        "dropdown-menu",
+        "field",
+        "input-group",
+        "item",
+        "radio-group",
+        "slider",
+        "switch",
+        "textarea",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "component-example": {
+      name: "component-example",
+      title: "Example",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "alert-dialog",
+        "badge",
+        "button",
+        "card",
+        "combobox",
+        "dropdown-menu",
+        "field",
+        "input",
+        "select",
+        "textarea",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/component-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "attachment-example": {
+      name: "attachment-example",
+      title: "Attachment",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["attachment"],
+      files: [
+        {
+          path: "registry/bases/base/examples/attachment-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "bubble-example": {
+      name: "bubble-example",
+      title: "Bubble",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble", "button", "collapsible", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/bubble-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "message-scroller-example": {
+      name: "message-scroller-example",
+      title: "Message Scroller",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "attachment",
+        "bubble",
+        "button",
+        "card",
+        "example",
+        "input-group",
+        "marker",
+        "message",
+        "message-scroller",
+        "spinner",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/message-scroller-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "marker-example": {
+      name: "marker-example",
+      title: "Marker",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "marker",
+        "button",
+        "accordion",
+        "drawer",
+        "spinner",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/marker-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "message-example": {
+      name: "message-example",
+      title: "Message",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble", "message", "button", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/message-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    utils: {
+      name: "utils",
+      title: "undefined",
+      description: "",
+      type: "registry:lib",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/lib/utils.ts",
+          type: "registry:lib",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    example: {
+      name: "example",
+      title: "Example",
+      description: "",
+      type: "registry:component",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/components/example.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    preview: {
+      name: "preview",
+      title: "Preview",
+      description: "",
+      type: "registry:block",
+      registryDependencies: [
+        "alert-dialog",
+        "avatar",
+        "badge",
+        "button",
+        "button-group",
+        "card",
+        "chart",
+        "checkbox",
+        "combobox",
+        "dropdown-menu",
+        "empty",
+        "field",
+        "input",
+        "input-group",
+        "item",
+        "label",
+        "popover",
+        "radio-group",
+        "select",
+        "separator",
+        "sheet",
+        "slider",
+        "spinner",
+        "switch",
+        "textarea",
+        "tooltip",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/blocks/preview/index.tsx",
+          type: "registry:block",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "preview-02": {
+      name: "preview-02",
+      title: "Preview 02",
+      description: "",
+      type: "registry:block",
+      registryDependencies: [
+        "accordion",
+        "badge",
+        "breadcrumb",
+        "button",
+        "calendar",
+        "card",
+        "chart",
+        "checkbox",
+        "combobox",
+        "dropdown-menu",
+        "empty",
+        "field",
+        "input",
+        "input-group",
+        "item",
+        "label",
+        "native-select",
+        "progress",
+        "radio-group",
+        "select",
+        "separator",
+        "sidebar",
+        "skeleton",
+        "slider",
+        "spinner",
+        "switch",
+        "table",
+        "tabs",
+        "textarea",
+        "toggle-group",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/blocks/preview-02/index.tsx",
+          type: "registry:block",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "preview-03": {
+      name: "preview-03",
+      title: "Preview 03",
+      description: "",
+      type: "registry:block",
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/bases/base/blocks/preview-03/index.tsx",
+          type: "registry:block",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "login-01": {
+      name: "login-01",
+      title: "Login 01",
+      description: "A simple login form.",
+      type: "registry:block",
+      registryDependencies: ["button", "card", "input", "label", "field"],
+      files: [
+        {
+          path: "registry/bases/base/blocks/login-01/page.tsx",
+          type: "registry:page",
+          target: "app/login/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/login-01/components/login-form.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["authentication", "login"],
+      meta: undefined,
+    },
+    "login-02": {
+      name: "login-02",
+      title: "Login 02",
+      description: "A two column login page with a cover image.",
+      type: "registry:block",
+      registryDependencies: ["button", "input", "label", "field"],
+      files: [
+        {
+          path: "registry/bases/base/blocks/login-02/page.tsx",
+          type: "registry:page",
+          target: "app/login/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/login-02/components/login-form.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["authentication", "login"],
+      meta: undefined,
+    },
+    "login-03": {
+      name: "login-03",
+      title: "Login 03",
+      description: "A login page with a muted background color.",
+      type: "registry:block",
+      registryDependencies: ["button", "card", "input", "label", "field"],
+      files: [
+        {
+          path: "registry/bases/base/blocks/login-03/page.tsx",
+          type: "registry:page",
+          target: "app/login/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/login-03/components/login-form.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["authentication", "login"],
+      meta: undefined,
+    },
+    "login-04": {
+      name: "login-04",
+      title: "Login 04",
+      description: "A login page with form and image.",
+      type: "registry:block",
+      registryDependencies: ["button", "card", "input", "label", "field"],
+      files: [
+        {
+          path: "registry/bases/base/blocks/login-04/page.tsx",
+          type: "registry:page",
+          target: "app/login/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/login-04/components/login-form.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["authentication", "login"],
+      meta: undefined,
+    },
+    "login-05": {
+      name: "login-05",
+      title: "Login 05",
+      description: "A simple email-only login page.",
+      type: "registry:block",
+      registryDependencies: ["button", "input", "label", "field"],
+      files: [
+        {
+          path: "registry/bases/base/blocks/login-05/page.tsx",
+          type: "registry:page",
+          target: "app/login/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/login-05/components/login-form.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["authentication", "login"],
+      meta: undefined,
+    },
+    "signup-01": {
+      name: "signup-01",
+      title: "Signup 01",
+      description: "A simple signup form.",
+      type: "registry:block",
+      registryDependencies: ["button", "card", "input", "label"],
+      files: [
+        {
+          path: "registry/bases/base/blocks/signup-01/page.tsx",
+          type: "registry:page",
+          target: "app/signup/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/signup-01/components/signup-form.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["authentication", "signup"],
+      meta: undefined,
+    },
+    "signup-02": {
+      name: "signup-02",
+      title: "Signup 02",
+      description: "A two column signup page with a cover image.",
+      type: "registry:block",
+      registryDependencies: ["button", "input", "label", "field"],
+      files: [
+        {
+          path: "registry/bases/base/blocks/signup-02/page.tsx",
+          type: "registry:page",
+          target: "app/signup/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/signup-02/components/signup-form.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["authentication", "signup"],
+      meta: undefined,
+    },
+    "signup-03": {
+      name: "signup-03",
+      title: "Signup 03",
+      description: "A signup page with a muted background color.",
+      type: "registry:block",
+      registryDependencies: ["button", "card", "input", "label", "field"],
+      files: [
+        {
+          path: "registry/bases/base/blocks/signup-03/page.tsx",
+          type: "registry:page",
+          target: "app/signup/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/signup-03/components/signup-form.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["authentication", "signup"],
+      meta: undefined,
+    },
+    "signup-04": {
+      name: "signup-04",
+      title: "Signup 04",
+      description: "A signup page with form and image.",
+      type: "registry:block",
+      registryDependencies: ["button", "card", "input", "label", "field"],
+      files: [
+        {
+          path: "registry/bases/base/blocks/signup-04/page.tsx",
+          type: "registry:page",
+          target: "app/signup/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/signup-04/components/signup-form.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["authentication", "signup"],
+      meta: undefined,
+    },
+    "signup-05": {
+      name: "signup-05",
+      title: "Signup 05",
+      description: "A simple signup form with social providers.",
+      type: "registry:block",
+      registryDependencies: ["button", "input", "label"],
+      files: [
+        {
+          path: "registry/bases/base/blocks/signup-05/page.tsx",
+          type: "registry:page",
+          target: "app/signup/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/signup-05/components/signup-form.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["authentication", "signup"],
+      meta: undefined,
+    },
+    "dashboard-01": {
+      name: "dashboard-01",
+      title: "Dashboard 01",
+      description: "A dashboard with sidebar, charts and data table.",
+      type: "registry:block",
+      registryDependencies: [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "label",
+        "chart",
+        "card",
+        "select",
+        "tabs",
+        "table",
+        "toggle-group",
+        "badge",
+        "button",
+        "checkbox",
+        "dropdown-menu",
+        "drawer",
+        "input",
+        "avatar",
+        "sheet",
+        "sonner",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/blocks/dashboard-01/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/dashboard-01/data.json",
+          type: "registry:file",
+          target: "app/dashboard/data.json",
+        },
+        {
+          path: "registry/bases/base/blocks/dashboard-01/components/app-sidebar.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/dashboard-01/components/chart-area-interactive.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/dashboard-01/components/data-table.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/dashboard-01/components/nav-documents.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/dashboard-01/components/nav-main.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/dashboard-01/components/nav-secondary.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/dashboard-01/components/nav-user.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/dashboard-01/components/section-cards.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/dashboard-01/components/site-header.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["dashboard"],
+      meta: { iframeHeight: "1000px" },
+    },
+    "sidebar-01": {
+      name: "sidebar-01",
+      title: "Sidebar 01",
+      description: "A simple sidebar with navigation grouped by section.",
+      type: "registry:block",
+      registryDependencies: [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "label",
+        "dropdown-menu",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/blocks/sidebar-01/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-01/components/app-sidebar.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-01/components/search-form.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-01/components/version-switcher.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["sidebar", "dashboard"],
+      meta: undefined,
+    },
+    "sidebar-02": {
+      name: "sidebar-02",
+      title: "Sidebar 02",
+      description: "A sidebar with collapsible sections.",
+      type: "registry:block",
+      registryDependencies: [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "label",
+        "dropdown-menu",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/blocks/sidebar-02/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-02/components/app-sidebar.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-02/components/search-form.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-02/components/version-switcher.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["sidebar", "dashboard"],
+      meta: undefined,
+    },
+    "sidebar-03": {
+      name: "sidebar-03",
+      title: "Sidebar 03",
+      description: "A sidebar with submenus.",
+      type: "registry:block",
+      registryDependencies: ["sidebar", "breadcrumb"],
+      files: [
+        {
+          path: "registry/bases/base/blocks/sidebar-03/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-03/components/app-sidebar.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["sidebar", "dashboard"],
+      meta: undefined,
+    },
+    "sidebar-04": {
+      name: "sidebar-04",
+      title: "Sidebar 04",
+      description: "A floating sidebar with submenus.",
+      type: "registry:block",
+      registryDependencies: ["sidebar", "breadcrumb", "separator"],
+      files: [
+        {
+          path: "registry/bases/base/blocks/sidebar-04/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-04/components/app-sidebar.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["sidebar", "dashboard"],
+      meta: undefined,
+    },
+    "sidebar-05": {
+      name: "sidebar-05",
+      title: "Sidebar 05",
+      description: "A sidebar with collapsible submenus.",
+      type: "registry:block",
+      registryDependencies: [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "label",
+        "collapsible",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/blocks/sidebar-05/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-05/components/app-sidebar.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-05/components/search-form.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["sidebar", "dashboard"],
+      meta: undefined,
+    },
+    "sidebar-06": {
+      name: "sidebar-06",
+      title: "Sidebar 06",
+      description: "A sidebar with submenus as dropdowns.",
+      type: "registry:block",
+      registryDependencies: [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "card",
+        "dropdown-menu",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/blocks/sidebar-06/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-06/components/app-sidebar.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-06/components/nav-main.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-06/components/sidebar-opt-in-form.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["sidebar", "dashboard"],
+      meta: undefined,
+    },
+    "sidebar-07": {
+      name: "sidebar-07",
+      title: "Sidebar 07",
+      description: "A sidebar that collapses to icons.",
+      type: "registry:block",
+      registryDependencies: [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible",
+        "dropdown-menu",
+        "avatar",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/blocks/sidebar-07/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-07/components/app-sidebar.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-07/components/nav-main.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-07/components/nav-projects.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-07/components/nav-user.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-07/components/team-switcher.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["sidebar", "dashboard"],
+      meta: undefined,
+    },
+    "sidebar-08": {
+      name: "sidebar-08",
+      title: "Sidebar 08",
+      description: "An inset sidebar with secondary navigation.",
+      type: "registry:block",
+      registryDependencies: [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible",
+        "dropdown-menu",
+        "avatar",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/blocks/sidebar-08/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-08/components/app-sidebar.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-08/components/nav-main.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-08/components/nav-projects.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-08/components/nav-secondary.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-08/components/nav-user.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["sidebar", "dashboard"],
+      meta: undefined,
+    },
+    "sidebar-09": {
+      name: "sidebar-09",
+      title: "Sidebar 09",
+      description: "Collapsible nested sidebars.",
+      type: "registry:block",
+      registryDependencies: [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible",
+        "dropdown-menu",
+        "avatar",
+        "switch",
+        "label",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/blocks/sidebar-09/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-09/components/app-sidebar.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-09/components/nav-user.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["sidebar", "dashboard"],
+      meta: undefined,
+    },
+    "sidebar-10": {
+      name: "sidebar-10",
+      title: "Sidebar 10",
+      description: "A sidebar in a popover.",
+      type: "registry:block",
+      registryDependencies: [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "popover",
+        "collapsible",
+        "dropdown-menu",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/blocks/sidebar-10/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-10/components/app-sidebar.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-10/components/nav-actions.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-10/components/nav-favorites.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-10/components/nav-main.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-10/components/nav-secondary.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-10/components/nav-workspaces.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-10/components/team-switcher.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["sidebar", "dashboard"],
+      meta: undefined,
+    },
+    "sidebar-11": {
+      name: "sidebar-11",
+      title: "Sidebar 11",
+      description: "A sidebar with a collapsible file tree.",
+      type: "registry:block",
+      registryDependencies: [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/blocks/sidebar-11/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-11/components/app-sidebar.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["sidebar", "dashboard"],
+      meta: undefined,
+    },
+    "sidebar-12": {
+      name: "sidebar-12",
+      title: "Sidebar 12",
+      description: "A sidebar with a calendar.",
+      type: "registry:block",
+      registryDependencies: [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible",
+        "calendar",
+        "dropdown-menu",
+        "avatar",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/blocks/sidebar-12/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-12/components/app-sidebar.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-12/components/calendars.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-12/components/date-picker.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-12/components/nav-user.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["sidebar", "dashboard"],
+      meta: undefined,
+    },
+    "sidebar-13": {
+      name: "sidebar-13",
+      title: "Sidebar 13",
+      description: "A sidebar in a dialog.",
+      type: "registry:block",
+      registryDependencies: ["sidebar", "breadcrumb", "button", "dialog"],
+      files: [
+        {
+          path: "registry/bases/base/blocks/sidebar-13/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-13/components/settings-dialog.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["sidebar", "dashboard"],
+      meta: undefined,
+    },
+    "sidebar-14": {
+      name: "sidebar-14",
+      title: "Sidebar 14",
+      description: "A sidebar on the right.",
+      type: "registry:block",
+      registryDependencies: ["sidebar", "breadcrumb"],
+      files: [
+        {
+          path: "registry/bases/base/blocks/sidebar-14/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-14/components/app-sidebar.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["sidebar", "dashboard"],
+      meta: undefined,
+    },
+    "sidebar-15": {
+      name: "sidebar-15",
+      title: "Sidebar 15",
+      description: "A left and right sidebar.",
+      type: "registry:block",
+      registryDependencies: [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "popover",
+        "collapsible",
+        "dropdown-menu",
+        "calendar",
+        "avatar",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/blocks/sidebar-15/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-15/components/calendars.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-15/components/date-picker.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-15/components/nav-favorites.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-15/components/nav-main.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-15/components/nav-secondary.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-15/components/nav-user.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-15/components/nav-workspaces.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-15/components/sidebar-left.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-15/components/sidebar-right.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-15/components/team-switcher.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["sidebar", "dashboard"],
+      meta: undefined,
+    },
+    "sidebar-16": {
+      name: "sidebar-16",
+      title: "Sidebar 16",
+      description: "A sidebar with a sticky site header.",
+      type: "registry:block",
+      registryDependencies: [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible",
+        "dropdown-menu",
+        "avatar",
+        "button",
+        "label",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/blocks/sidebar-16/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-16/components/app-sidebar.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-16/components/nav-main.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-16/components/nav-projects.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-16/components/nav-secondary.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-16/components/nav-user.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-16/components/search-form.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/blocks/sidebar-16/components/site-header.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["sidebar", "dashboard"],
+      meta: undefined,
+    },
+    "use-mobile": {
+      name: "use-mobile",
+      title: "undefined",
+      description: "",
+      type: "registry:hook",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/hooks/use-mobile.ts",
+          type: "registry:hook",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+  },
   radix: {
     accordion: {
       name: "accordion",
@@ -1256,6 +4904,86 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    attachment: {
+      name: "attachment",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/radix/ui/attachment.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    bubble: {
+      name: "bubble",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/radix/ui/bubble.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "message-scroller": {
+      name: "message-scroller",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/radix/ui/message-scroller.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    marker: {
+      name: "marker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/radix/ui/marker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    message: {
+      name: "message",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/radix/ui/message.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     "accordion-example": {
       name: "accordion-example",
       title: "Accordion",
@@ -1801,7 +5529,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Item",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button", "item", "example"],
+      registryDependencies: ["button", "drawer", "item", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/item-example.tsx",
@@ -2402,6 +6130,104 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "attachment-example": {
+      name: "attachment-example",
+      title: "Attachment",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["attachment"],
+      files: [
+        {
+          path: "registry/bases/radix/examples/attachment-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "bubble-example": {
+      name: "bubble-example",
+      title: "Bubble",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble", "button", "collapsible", "example"],
+      files: [
+        {
+          path: "registry/bases/radix/examples/bubble-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "message-scroller-example": {
+      name: "message-scroller-example",
+      title: "Message Scroller",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "attachment",
+        "bubble",
+        "button",
+        "card",
+        "example",
+        "input-group",
+        "marker",
+        "message",
+        "message-scroller",
+        "spinner",
+      ],
+      files: [
+        {
+          path: "registry/bases/radix/examples/message-scroller-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "marker-example": {
+      name: "marker-example",
+      title: "Marker",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "marker",
+        "button",
+        "collapsible",
+        "drawer",
+        "spinner",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/radix/examples/marker-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "message-example": {
+      name: "message-example",
+      title: "Message",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble", "message", "button", "example"],
+      files: [
+        {
+          path: "registry/bases/radix/examples/message-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     utils: {
       name: "utils",
       title: "undefined",
@@ -2517,6 +6343,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/radix/blocks/preview-02/index.tsx",
+          type: "registry:block",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "preview-03": {
+      name: "preview-03",
+      title: "Preview 03",
+      description: "",
+      type: "registry:block",
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/bases/radix/blocks/preview-03/index.tsx",
           type: "registry:block",
           target: "",
         },
@@ -3450,3460 +7292,6 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/radix/hooks/use-mobile.ts",
-          type: "registry:hook",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-  },
-  base: {
-    accordion: {
-      name: "accordion",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/accordion.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/accordion",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/accordion-example.tsx",
-          api: "https://base-ui.com/react/components/accordion.md",
-        },
-      },
-    },
-    alert: {
-      name: "alert",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/alert.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/alert",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/alert-example.tsx",
-        },
-      },
-    },
-    "alert-dialog": {
-      name: "alert-dialog",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/bases/base/ui/alert-dialog.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/alert-dialog",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/alert-dialog-example.tsx",
-          api: "https://base-ui.com/react/components/alert-dialog.md",
-        },
-      },
-    },
-    "aspect-ratio": {
-      name: "aspect-ratio",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/aspect-ratio.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/aspect-ratio",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/aspect-ratio-example.tsx",
-        },
-      },
-    },
-    avatar: {
-      name: "avatar",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/avatar.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/avatar",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/avatar-example.tsx",
-          api: "https://base-ui.com/react/components/avatar.md",
-        },
-      },
-    },
-    badge: {
-      name: "badge",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/badge.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/badge",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/badge-example.tsx",
-        },
-      },
-    },
-    breadcrumb: {
-      name: "breadcrumb",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/breadcrumb.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/breadcrumb",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/breadcrumb-example.tsx",
-        },
-      },
-    },
-    button: {
-      name: "button",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/button.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/button",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/button-example.tsx",
-        },
-      },
-    },
-    "button-group": {
-      name: "button-group",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["separator"],
-      files: [
-        {
-          path: "registry/bases/base/ui/button-group.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/button-group",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/button-group-example.tsx",
-        },
-      },
-    },
-    calendar: {
-      name: "calendar",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/bases/base/ui/calendar.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/calendar",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/calendar-example.tsx",
-          api: "https://react-day-picker.js.org",
-        },
-      },
-    },
-    card: {
-      name: "card",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/card.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/card",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/card-example.tsx",
-        },
-      },
-    },
-    carousel: {
-      name: "carousel",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/bases/base/ui/carousel.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/carousel",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/carousel-example.tsx",
-          api: "https://www.embla-carousel.com/get-started/react",
-        },
-      },
-    },
-    chart: {
-      name: "chart",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["card"],
-      files: [
-        {
-          path: "registry/bases/base/ui/chart.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/chart",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/chart-example.tsx",
-        },
-      },
-    },
-    checkbox: {
-      name: "checkbox",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/checkbox.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/checkbox",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/checkbox-example.tsx",
-          api: "https://base-ui.com/react/components/checkbox.md",
-        },
-      },
-    },
-    collapsible: {
-      name: "collapsible",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/collapsible.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/collapsible",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/collapsible-example.tsx",
-          api: "https://base-ui.com/react/components/collapsible.md",
-        },
-      },
-    },
-    combobox: {
-      name: "combobox",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["button", "input-group"],
-      files: [
-        {
-          path: "registry/bases/base/ui/combobox.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/combobox",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/combobox-example.tsx",
-          api: "https://base-ui.com/react/components/combobox.md",
-        },
-      },
-    },
-    command: {
-      name: "command",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["dialog", "input-group"],
-      files: [
-        {
-          path: "registry/bases/base/ui/command.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/command",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/command-example.tsx",
-          api: "https://github.com/dip/cmdk",
-        },
-      },
-    },
-    "context-menu": {
-      name: "context-menu",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/context-menu.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/context-menu",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/context-menu-example.tsx",
-          api: "https://base-ui.com/react/components/context-menu.md",
-        },
-      },
-    },
-    dialog: {
-      name: "dialog",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/bases/base/ui/dialog.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/dialog",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/dialog-example.tsx",
-          api: "https://base-ui.com/react/components/dialog.md",
-        },
-      },
-    },
-    drawer: {
-      name: "drawer",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/drawer.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/drawer",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/drawer-example.tsx",
-          api: "https://vaul.emilkowal.ski/getting-started",
-        },
-      },
-    },
-    "dropdown-menu": {
-      name: "dropdown-menu",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/dropdown-menu.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/dropdown-menu",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/dropdown-menu-example.tsx",
-          api: "https://base-ui.com/react/components/menu.md",
-        },
-      },
-    },
-    empty: {
-      name: "empty",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/empty.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/empty",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/empty-example.tsx",
-        },
-      },
-    },
-    field: {
-      name: "field",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["label", "separator"],
-      files: [
-        {
-          path: "registry/bases/base/ui/field.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/field",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/field-example.tsx",
-        },
-      },
-    },
-    "hover-card": {
-      name: "hover-card",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/hover-card.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/hover-card",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/hover-card-example.tsx",
-          api: "https://base-ui.com/react/components/hover-card.md",
-        },
-      },
-    },
-    input: {
-      name: "input",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/input.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/input",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/input-example.tsx",
-        },
-      },
-    },
-    "input-group": {
-      name: "input-group",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["button", "input", "textarea"],
-      files: [
-        {
-          path: "registry/bases/base/ui/input-group.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/input-group",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/input-group-example.tsx",
-        },
-      },
-    },
-    "input-otp": {
-      name: "input-otp",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/input-otp.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/input-otp",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/input-otp-example.tsx",
-          api: "https://input-otp.rodz.dev",
-        },
-      },
-    },
-    item: {
-      name: "item",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["separator"],
-      files: [
-        {
-          path: "registry/bases/base/ui/item.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/item",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/item-example.tsx",
-        },
-      },
-    },
-    label: {
-      name: "label",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/label.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/label",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/label-example.tsx",
-          api: "https://base-ui.com/react/components/label.md",
-        },
-      },
-    },
-    menubar: {
-      name: "menubar",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
-      files: [
-        {
-          path: "registry/bases/base/ui/menubar.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/menubar",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/menubar-example.tsx",
-          api: "https://base-ui.com/react/components/menubar.md",
-        },
-      },
-    },
-    "navigation-menu": {
-      name: "navigation-menu",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/navigation-menu.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/navigation-menu",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/navigation-menu-example.tsx",
-          api: "https://base-ui.com/react/components/navigation-menu.md",
-        },
-      },
-    },
-    pagination: {
-      name: "pagination",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/bases/base/ui/pagination.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/pagination",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/pagination-example.tsx",
-        },
-      },
-    },
-    popover: {
-      name: "popover",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/popover.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/popover",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/popover-example.tsx",
-          api: "https://base-ui.com/react/components/popover.md",
-        },
-      },
-    },
-    progress: {
-      name: "progress",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/progress.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/progress",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/progress-example.tsx",
-          api: "https://base-ui.com/react/components/progress.md",
-        },
-      },
-    },
-    "radio-group": {
-      name: "radio-group",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/radio-group.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/radio-group",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/radio-group-example.tsx",
-          api: "https://base-ui.com/react/components/radio-group.md",
-        },
-      },
-    },
-    resizable: {
-      name: "resizable",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/resizable.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/resizable",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/resizable-example.tsx",
-          api: "https://github.com/bvaughn/react-resizable-panels",
-        },
-      },
-    },
-    "scroll-area": {
-      name: "scroll-area",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/scroll-area.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/scroll-area",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/scroll-area-example.tsx",
-          api: "https://base-ui.com/react/components/scroll-area.md",
-        },
-      },
-    },
-    select: {
-      name: "select",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/select.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/select",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/select-example.tsx",
-          api: "https://base-ui.com/react/components/select.md",
-        },
-      },
-    },
-    separator: {
-      name: "separator",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/separator.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/separator",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/separator-example.tsx",
-          api: "https://base-ui.com/react/components/separator.md",
-        },
-      },
-    },
-    sheet: {
-      name: "sheet",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/bases/base/ui/sheet.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/sheet",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/sheet-example.tsx",
-          api: "https://base-ui.com/react/components/dialog.md",
-        },
-      },
-    },
-    sidebar: {
-      name: "sidebar",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: [
-        "button",
-        "input",
-        "separator",
-        "sheet",
-        "skeleton",
-        "tooltip",
-        "use-mobile",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/ui/sidebar.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/sidebar",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/sidebar-example.tsx",
-        },
-      },
-    },
-    skeleton: {
-      name: "skeleton",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/skeleton.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/skeleton",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/skeleton-example.tsx",
-        },
-      },
-    },
-    slider: {
-      name: "slider",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/slider.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/slider",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/slider-example.tsx",
-          api: "https://base-ui.com/react/components/slider.md",
-        },
-      },
-    },
-    sonner: {
-      name: "sonner",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/sonner.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/sonner",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/sonner-example.tsx",
-          api: "https://sonner.emilkowal.ski",
-        },
-      },
-    },
-    spinner: {
-      name: "spinner",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/spinner.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/spinner",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/spinner-example.tsx",
-        },
-      },
-    },
-    switch: {
-      name: "switch",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/switch.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/switch",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/switch-example.tsx",
-          api: "https://base-ui.com/react/components/switch.md",
-        },
-      },
-    },
-    table: {
-      name: "table",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/table.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/table",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/table-example.tsx",
-        },
-      },
-    },
-    tabs: {
-      name: "tabs",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/tabs.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/tabs",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/tabs-example.tsx",
-          api: "https://base-ui.com/react/components/tabs.md",
-        },
-      },
-    },
-    textarea: {
-      name: "textarea",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/textarea.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/textarea",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/textarea-example.tsx",
-        },
-      },
-    },
-    toggle: {
-      name: "toggle",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/toggle.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/toggle",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/toggle-example.tsx",
-          api: "https://base-ui.com/react/components/toggle.md",
-        },
-      },
-    },
-    "toggle-group": {
-      name: "toggle-group",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["toggle"],
-      files: [
-        {
-          path: "registry/bases/base/ui/toggle-group.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/toggle-group",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/toggle-group-example.tsx",
-          api: "https://base-ui.com/react/components/toggle-group.md",
-        },
-      },
-    },
-    tooltip: {
-      name: "tooltip",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/tooltip.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/tooltip",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/tooltip-example.tsx",
-          api: "https://base-ui.com/react/components/tooltip.md",
-        },
-      },
-    },
-    kbd: {
-      name: "kbd",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/kbd.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/kbd",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/kbd-example.tsx",
-        },
-      },
-    },
-    "native-select": {
-      name: "native-select",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/native-select.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/native-select",
-          examples:
-            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/native-select-example.tsx",
-        },
-      },
-    },
-    direction: {
-      name: "direction",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/ui/direction.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: {
-        links: {
-          docs: "https://ui.shadcn.com/docs/components/base/direction",
-          api: "https://base-ui.com/react/utils/direction-provider.md",
-        },
-      },
-    },
-    "accordion-example": {
-      name: "accordion-example",
-      title: "Accordion",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["accordion", "button", "card", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/accordion-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "alert-example": {
-      name: "alert-example",
-      title: "Alert",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["alert", "badge", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/alert-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "alert-dialog-example": {
-      name: "alert-dialog-example",
-      title: "Alert Dialog",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["alert-dialog", "button", "dialog", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/alert-dialog-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "aspect-ratio-example": {
-      name: "aspect-ratio-example",
-      title: "Aspect Ratio",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["aspect-ratio", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/aspect-ratio-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "avatar-example": {
-      name: "avatar-example",
-      title: "Avatar",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["avatar", "button", "empty", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/avatar-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "badge-example": {
-      name: "badge-example",
-      title: "Badge",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["badge", "spinner", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/badge-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "breadcrumb-example": {
-      name: "breadcrumb-example",
-      title: "Breadcrumb",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["breadcrumb", "dropdown-menu", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/breadcrumb-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "button-example": {
-      name: "button-example",
-      title: "Button",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["button", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/button-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "button-group-example": {
-      name: "button-group-example",
-      title: "Button Group",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "button",
-        "button-group",
-        "dropdown-menu",
-        "field",
-        "input",
-        "input-group",
-        "label",
-        "popover",
-        "select",
-        "tooltip",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/button-group-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "calendar-example": {
-      name: "calendar-example",
-      title: "Calendar",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "button",
-        "calendar",
-        "card",
-        "field",
-        "input",
-        "label",
-        "popover",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/calendar-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "card-example": {
-      name: "card-example",
-      title: "Card",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "avatar",
-        "button",
-        "card",
-        "field",
-        "input",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/card-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "carousel-example": {
-      name: "carousel-example",
-      title: "Carousel",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["card", "carousel", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/carousel-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "chart-example": {
-      name: "chart-example",
-      title: "Chart",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["chart", "card", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/chart-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "checkbox-example": {
-      name: "checkbox-example",
-      title: "Checkbox",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["checkbox", "field", "table", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/checkbox-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "collapsible-example": {
-      name: "collapsible-example",
-      title: "Collapsible",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "button",
-        "card",
-        "collapsible",
-        "field",
-        "input",
-        "tabs",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/collapsible-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "combobox-example": {
-      name: "combobox-example",
-      title: "Combobox",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "button",
-        "card",
-        "combobox",
-        "dialog",
-        "field",
-        "input",
-        "input-group",
-        "item",
-        "select",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/combobox-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "command-example": {
-      name: "command-example",
-      title: "Command",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["button", "command", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/command-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "context-menu-example": {
-      name: "context-menu-example",
-      title: "Context Menu",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["button", "context-menu", "dialog", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/context-menu-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "dialog-example": {
-      name: "dialog-example",
-      title: "Dialog",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "button",
-        "checkbox",
-        "dialog",
-        "field",
-        "input",
-        "input-group",
-        "kbd",
-        "native-select",
-        "select",
-        "switch",
-        "tabs",
-        "textarea",
-        "tooltip",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/dialog-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "drawer-example": {
-      name: "drawer-example",
-      title: "Drawer",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["drawer", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/drawer-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "dropdown-menu-example": {
-      name: "dropdown-menu-example",
-      title: "Dropdown Menu",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "avatar",
-        "button",
-        "dialog",
-        "dropdown-menu",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/dropdown-menu-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "empty-example": {
-      name: "empty-example",
-      title: "Empty",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "button",
-        "empty",
-        "input-group",
-        "kbd",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/empty-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "field-example": {
-      name: "field-example",
-      title: "Field",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "badge",
-        "checkbox",
-        "field",
-        "input",
-        "input-otp",
-        "native-select",
-        "radio-group",
-        "select",
-        "slider",
-        "switch",
-        "textarea",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/field-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "hover-card-example": {
-      name: "hover-card-example",
-      title: "Hover Card",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["button", "dialog", "hover-card", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/hover-card-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "input-example": {
-      name: "input-example",
-      title: "Input",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "button",
-        "field",
-        "input",
-        "native-select",
-        "select",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/input-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "input-group-example": {
-      name: "input-group-example",
-      title: "Input Group",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "button",
-        "button-group",
-        "card",
-        "dropdown-menu",
-        "field",
-        "input",
-        "input-group",
-        "kbd",
-        "popover",
-        "spinner",
-        "textarea",
-        "tooltip",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/input-group-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "input-otp-example": {
-      name: "input-otp-example",
-      title: "Input OTP",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["button", "card", "field", "input-otp", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/input-otp-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "item-example": {
-      name: "item-example",
-      title: "Item",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["button", "item", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/item-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "kbd-example": {
-      name: "kbd-example",
-      title: "Kbd",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "button",
-        "input-group",
-        "kbd",
-        "tooltip",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/kbd-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "label-example": {
-      name: "label-example",
-      title: "Label",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "checkbox",
-        "field",
-        "input",
-        "label",
-        "textarea",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/label-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "menubar-example": {
-      name: "menubar-example",
-      title: "Menubar",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["button", "dialog", "menubar", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/menubar-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "native-select-example": {
-      name: "native-select-example",
-      title: "Native Select",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["field", "native-select", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/native-select-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "navigation-menu-example": {
-      name: "navigation-menu-example",
-      title: "Navigation Menu",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["button", "dialog", "navigation-menu", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/navigation-menu-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "pagination-example": {
-      name: "pagination-example",
-      title: "Pagination",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["field", "pagination", "select", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/pagination-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "popover-example": {
-      name: "popover-example",
-      title: "Popover",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "button",
-        "dialog",
-        "field",
-        "input",
-        "popover",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/popover-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "progress-example": {
-      name: "progress-example",
-      title: "Progress",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["field", "item", "progress", "slider", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/progress-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "radio-group-example": {
-      name: "radio-group-example",
-      title: "Radio Group",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["field", "radio-group", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/radio-group-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "resizable-example": {
-      name: "resizable-example",
-      title: "Resizable",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["resizable", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/resizable-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "scroll-area-example": {
-      name: "scroll-area-example",
-      title: "Scroll Area",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["scroll-area", "separator", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/scroll-area-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "select-example": {
-      name: "select-example",
-      title: "Select",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "button",
-        "dialog",
-        "field",
-        "input",
-        "item",
-        "native-select",
-        "select",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/select-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "separator-example": {
-      name: "separator-example",
-      title: "Separator",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["separator", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/separator-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "sheet-example": {
-      name: "sheet-example",
-      title: "Sheet",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["button", "field", "input", "sheet", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/sheet-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "sidebar-example": {
-      name: "sidebar-example",
-      title: "Sidebar",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "button",
-        "dropdown-menu",
-        "item",
-        "label",
-        "sidebar",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/sidebar-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "sidebar-icon-example": {
-      name: "sidebar-icon-example",
-      title: "Sidebar (Icon)",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "avatar",
-        "button",
-        "collapsible",
-        "dropdown-menu",
-        "item",
-        "sidebar",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/sidebar-icon-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "sidebar-inset-example": {
-      name: "sidebar-inset-example",
-      title: "Sidebar (Inset)",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["collapsible", "sidebar", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/sidebar-inset-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "sidebar-floating-example": {
-      name: "sidebar-floating-example",
-      title: "Sidebar (Floating)",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "button",
-        "card",
-        "dropdown-menu",
-        "field",
-        "item",
-        "sidebar",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/sidebar-floating-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "skeleton-example": {
-      name: "skeleton-example",
-      title: "Skeleton",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["skeleton", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/skeleton-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "slider-example": {
-      name: "slider-example",
-      title: "Slider",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["label", "slider", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/slider-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "sonner-example": {
-      name: "sonner-example",
-      title: "Sonner",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["sonner", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/sonner-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "spinner-example": {
-      name: "spinner-example",
-      title: "Spinner",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "badge",
-        "button",
-        "empty",
-        "field",
-        "input-group",
-        "spinner",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/spinner-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "switch-example": {
-      name: "switch-example",
-      title: "Switch",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["field", "label", "switch", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/switch-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "table-example": {
-      name: "table-example",
-      title: "Table",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "button",
-        "dropdown-menu",
-        "input",
-        "select",
-        "table",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/table-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "tabs-example": {
-      name: "tabs-example",
-      title: "Tabs",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["button", "dropdown-menu", "tabs", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/tabs-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "textarea-example": {
-      name: "textarea-example",
-      title: "Textarea",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["field", "textarea", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/textarea-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "toggle-example": {
-      name: "toggle-example",
-      title: "Toggle",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["toggle", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/toggle-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "toggle-group-example": {
-      name: "toggle-group-example",
-      title: "Toggle Group",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["input", "select", "toggle-group", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/toggle-group-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "tooltip-example": {
-      name: "tooltip-example",
-      title: "Tooltip",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["button", "kbd", "tooltip", "example"],
-      files: [
-        {
-          path: "registry/bases/base/examples/tooltip-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    demo: {
-      name: "demo",
-      title: "Demo",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "alert-dialog",
-        "badge",
-        "button",
-        "button-group",
-        "card",
-        "checkbox",
-        "dropdown-menu",
-        "field",
-        "input-group",
-        "item",
-        "radio-group",
-        "slider",
-        "switch",
-        "textarea",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "component-example": {
-      name: "component-example",
-      title: "Example",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "alert-dialog",
-        "badge",
-        "button",
-        "card",
-        "combobox",
-        "dropdown-menu",
-        "field",
-        "input",
-        "select",
-        "textarea",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/examples/component-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    utils: {
-      name: "utils",
-      title: "undefined",
-      description: "",
-      type: "registry:lib",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/lib/utils.ts",
-          type: "registry:lib",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    example: {
-      name: "example",
-      title: "Example",
-      description: "",
-      type: "registry:component",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/components/example.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    preview: {
-      name: "preview",
-      title: "Preview",
-      description: "",
-      type: "registry:block",
-      registryDependencies: [
-        "alert-dialog",
-        "avatar",
-        "badge",
-        "button",
-        "button-group",
-        "card",
-        "chart",
-        "checkbox",
-        "combobox",
-        "dropdown-menu",
-        "empty",
-        "field",
-        "input",
-        "input-group",
-        "item",
-        "label",
-        "popover",
-        "radio-group",
-        "select",
-        "separator",
-        "sheet",
-        "slider",
-        "spinner",
-        "switch",
-        "textarea",
-        "tooltip",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/blocks/preview/index.tsx",
-          type: "registry:block",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "preview-02": {
-      name: "preview-02",
-      title: "Preview 02",
-      description: "",
-      type: "registry:block",
-      registryDependencies: [
-        "accordion",
-        "badge",
-        "breadcrumb",
-        "button",
-        "calendar",
-        "card",
-        "chart",
-        "checkbox",
-        "combobox",
-        "dropdown-menu",
-        "empty",
-        "field",
-        "input",
-        "input-group",
-        "item",
-        "label",
-        "native-select",
-        "progress",
-        "radio-group",
-        "select",
-        "separator",
-        "sidebar",
-        "skeleton",
-        "slider",
-        "spinner",
-        "switch",
-        "table",
-        "tabs",
-        "textarea",
-        "toggle-group",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/blocks/preview-02/index.tsx",
-          type: "registry:block",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      meta: undefined,
-    },
-    "login-01": {
-      name: "login-01",
-      title: "Login 01",
-      description: "A simple login form.",
-      type: "registry:block",
-      registryDependencies: ["button", "card", "input", "label", "field"],
-      files: [
-        {
-          path: "registry/bases/base/blocks/login-01/page.tsx",
-          type: "registry:page",
-          target: "app/login/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/login-01/components/login-form.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["authentication", "login"],
-      meta: undefined,
-    },
-    "login-02": {
-      name: "login-02",
-      title: "Login 02",
-      description: "A two column login page with a cover image.",
-      type: "registry:block",
-      registryDependencies: ["button", "input", "label", "field"],
-      files: [
-        {
-          path: "registry/bases/base/blocks/login-02/page.tsx",
-          type: "registry:page",
-          target: "app/login/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/login-02/components/login-form.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["authentication", "login"],
-      meta: undefined,
-    },
-    "login-03": {
-      name: "login-03",
-      title: "Login 03",
-      description: "A login page with a muted background color.",
-      type: "registry:block",
-      registryDependencies: ["button", "card", "input", "label", "field"],
-      files: [
-        {
-          path: "registry/bases/base/blocks/login-03/page.tsx",
-          type: "registry:page",
-          target: "app/login/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/login-03/components/login-form.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["authentication", "login"],
-      meta: undefined,
-    },
-    "login-04": {
-      name: "login-04",
-      title: "Login 04",
-      description: "A login page with form and image.",
-      type: "registry:block",
-      registryDependencies: ["button", "card", "input", "label", "field"],
-      files: [
-        {
-          path: "registry/bases/base/blocks/login-04/page.tsx",
-          type: "registry:page",
-          target: "app/login/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/login-04/components/login-form.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["authentication", "login"],
-      meta: undefined,
-    },
-    "login-05": {
-      name: "login-05",
-      title: "Login 05",
-      description: "A simple email-only login page.",
-      type: "registry:block",
-      registryDependencies: ["button", "input", "label", "field"],
-      files: [
-        {
-          path: "registry/bases/base/blocks/login-05/page.tsx",
-          type: "registry:page",
-          target: "app/login/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/login-05/components/login-form.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["authentication", "login"],
-      meta: undefined,
-    },
-    "signup-01": {
-      name: "signup-01",
-      title: "Signup 01",
-      description: "A simple signup form.",
-      type: "registry:block",
-      registryDependencies: ["button", "card", "input", "label"],
-      files: [
-        {
-          path: "registry/bases/base/blocks/signup-01/page.tsx",
-          type: "registry:page",
-          target: "app/signup/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/signup-01/components/signup-form.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["authentication", "signup"],
-      meta: undefined,
-    },
-    "signup-02": {
-      name: "signup-02",
-      title: "Signup 02",
-      description: "A two column signup page with a cover image.",
-      type: "registry:block",
-      registryDependencies: ["button", "input", "label", "field"],
-      files: [
-        {
-          path: "registry/bases/base/blocks/signup-02/page.tsx",
-          type: "registry:page",
-          target: "app/signup/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/signup-02/components/signup-form.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["authentication", "signup"],
-      meta: undefined,
-    },
-    "signup-03": {
-      name: "signup-03",
-      title: "Signup 03",
-      description: "A signup page with a muted background color.",
-      type: "registry:block",
-      registryDependencies: ["button", "card", "input", "label", "field"],
-      files: [
-        {
-          path: "registry/bases/base/blocks/signup-03/page.tsx",
-          type: "registry:page",
-          target: "app/signup/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/signup-03/components/signup-form.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["authentication", "signup"],
-      meta: undefined,
-    },
-    "signup-04": {
-      name: "signup-04",
-      title: "Signup 04",
-      description: "A signup page with form and image.",
-      type: "registry:block",
-      registryDependencies: ["button", "card", "input", "label", "field"],
-      files: [
-        {
-          path: "registry/bases/base/blocks/signup-04/page.tsx",
-          type: "registry:page",
-          target: "app/signup/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/signup-04/components/signup-form.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["authentication", "signup"],
-      meta: undefined,
-    },
-    "signup-05": {
-      name: "signup-05",
-      title: "Signup 05",
-      description: "A simple signup form with social providers.",
-      type: "registry:block",
-      registryDependencies: ["button", "input", "label"],
-      files: [
-        {
-          path: "registry/bases/base/blocks/signup-05/page.tsx",
-          type: "registry:page",
-          target: "app/signup/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/signup-05/components/signup-form.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["authentication", "signup"],
-      meta: undefined,
-    },
-    "dashboard-01": {
-      name: "dashboard-01",
-      title: "Dashboard 01",
-      description: "A dashboard with sidebar, charts and data table.",
-      type: "registry:block",
-      registryDependencies: [
-        "sidebar",
-        "breadcrumb",
-        "separator",
-        "label",
-        "chart",
-        "card",
-        "select",
-        "tabs",
-        "table",
-        "toggle-group",
-        "badge",
-        "button",
-        "checkbox",
-        "dropdown-menu",
-        "drawer",
-        "input",
-        "avatar",
-        "sheet",
-        "sonner",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/blocks/dashboard-01/page.tsx",
-          type: "registry:page",
-          target: "app/dashboard/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/dashboard-01/data.json",
-          type: "registry:file",
-          target: "app/dashboard/data.json",
-        },
-        {
-          path: "registry/bases/base/blocks/dashboard-01/components/app-sidebar.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/dashboard-01/components/chart-area-interactive.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/dashboard-01/components/data-table.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/dashboard-01/components/nav-documents.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/dashboard-01/components/nav-main.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/dashboard-01/components/nav-secondary.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/dashboard-01/components/nav-user.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/dashboard-01/components/section-cards.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/dashboard-01/components/site-header.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["dashboard"],
-      meta: { iframeHeight: "1000px" },
-    },
-    "sidebar-01": {
-      name: "sidebar-01",
-      title: "Sidebar 01",
-      description: "A simple sidebar with navigation grouped by section.",
-      type: "registry:block",
-      registryDependencies: [
-        "sidebar",
-        "breadcrumb",
-        "separator",
-        "label",
-        "dropdown-menu",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/blocks/sidebar-01/page.tsx",
-          type: "registry:page",
-          target: "app/dashboard/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-01/components/app-sidebar.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-01/components/search-form.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-01/components/version-switcher.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["sidebar", "dashboard"],
-      meta: undefined,
-    },
-    "sidebar-02": {
-      name: "sidebar-02",
-      title: "Sidebar 02",
-      description: "A sidebar with collapsible sections.",
-      type: "registry:block",
-      registryDependencies: [
-        "sidebar",
-        "breadcrumb",
-        "separator",
-        "label",
-        "dropdown-menu",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/blocks/sidebar-02/page.tsx",
-          type: "registry:page",
-          target: "app/dashboard/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-02/components/app-sidebar.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-02/components/search-form.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-02/components/version-switcher.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["sidebar", "dashboard"],
-      meta: undefined,
-    },
-    "sidebar-03": {
-      name: "sidebar-03",
-      title: "Sidebar 03",
-      description: "A sidebar with submenus.",
-      type: "registry:block",
-      registryDependencies: ["sidebar", "breadcrumb"],
-      files: [
-        {
-          path: "registry/bases/base/blocks/sidebar-03/page.tsx",
-          type: "registry:page",
-          target: "app/dashboard/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-03/components/app-sidebar.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["sidebar", "dashboard"],
-      meta: undefined,
-    },
-    "sidebar-04": {
-      name: "sidebar-04",
-      title: "Sidebar 04",
-      description: "A floating sidebar with submenus.",
-      type: "registry:block",
-      registryDependencies: ["sidebar", "breadcrumb", "separator"],
-      files: [
-        {
-          path: "registry/bases/base/blocks/sidebar-04/page.tsx",
-          type: "registry:page",
-          target: "app/dashboard/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-04/components/app-sidebar.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["sidebar", "dashboard"],
-      meta: undefined,
-    },
-    "sidebar-05": {
-      name: "sidebar-05",
-      title: "Sidebar 05",
-      description: "A sidebar with collapsible submenus.",
-      type: "registry:block",
-      registryDependencies: [
-        "sidebar",
-        "breadcrumb",
-        "separator",
-        "label",
-        "collapsible",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/blocks/sidebar-05/page.tsx",
-          type: "registry:page",
-          target: "app/dashboard/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-05/components/app-sidebar.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-05/components/search-form.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["sidebar", "dashboard"],
-      meta: undefined,
-    },
-    "sidebar-06": {
-      name: "sidebar-06",
-      title: "Sidebar 06",
-      description: "A sidebar with submenus as dropdowns.",
-      type: "registry:block",
-      registryDependencies: [
-        "sidebar",
-        "breadcrumb",
-        "separator",
-        "card",
-        "dropdown-menu",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/blocks/sidebar-06/page.tsx",
-          type: "registry:page",
-          target: "app/dashboard/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-06/components/app-sidebar.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-06/components/nav-main.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-06/components/sidebar-opt-in-form.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["sidebar", "dashboard"],
-      meta: undefined,
-    },
-    "sidebar-07": {
-      name: "sidebar-07",
-      title: "Sidebar 07",
-      description: "A sidebar that collapses to icons.",
-      type: "registry:block",
-      registryDependencies: [
-        "sidebar",
-        "breadcrumb",
-        "separator",
-        "collapsible",
-        "dropdown-menu",
-        "avatar",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/blocks/sidebar-07/page.tsx",
-          type: "registry:page",
-          target: "app/dashboard/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-07/components/app-sidebar.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-07/components/nav-main.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-07/components/nav-projects.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-07/components/nav-user.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-07/components/team-switcher.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["sidebar", "dashboard"],
-      meta: undefined,
-    },
-    "sidebar-08": {
-      name: "sidebar-08",
-      title: "Sidebar 08",
-      description: "An inset sidebar with secondary navigation.",
-      type: "registry:block",
-      registryDependencies: [
-        "sidebar",
-        "breadcrumb",
-        "separator",
-        "collapsible",
-        "dropdown-menu",
-        "avatar",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/blocks/sidebar-08/page.tsx",
-          type: "registry:page",
-          target: "app/dashboard/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-08/components/app-sidebar.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-08/components/nav-main.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-08/components/nav-projects.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-08/components/nav-secondary.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-08/components/nav-user.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["sidebar", "dashboard"],
-      meta: undefined,
-    },
-    "sidebar-09": {
-      name: "sidebar-09",
-      title: "Sidebar 09",
-      description: "Collapsible nested sidebars.",
-      type: "registry:block",
-      registryDependencies: [
-        "sidebar",
-        "breadcrumb",
-        "separator",
-        "collapsible",
-        "dropdown-menu",
-        "avatar",
-        "switch",
-        "label",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/blocks/sidebar-09/page.tsx",
-          type: "registry:page",
-          target: "app/dashboard/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-09/components/app-sidebar.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-09/components/nav-user.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["sidebar", "dashboard"],
-      meta: undefined,
-    },
-    "sidebar-10": {
-      name: "sidebar-10",
-      title: "Sidebar 10",
-      description: "A sidebar in a popover.",
-      type: "registry:block",
-      registryDependencies: [
-        "sidebar",
-        "breadcrumb",
-        "separator",
-        "popover",
-        "collapsible",
-        "dropdown-menu",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/blocks/sidebar-10/page.tsx",
-          type: "registry:page",
-          target: "app/dashboard/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-10/components/app-sidebar.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-10/components/nav-actions.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-10/components/nav-favorites.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-10/components/nav-main.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-10/components/nav-secondary.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-10/components/nav-workspaces.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-10/components/team-switcher.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["sidebar", "dashboard"],
-      meta: undefined,
-    },
-    "sidebar-11": {
-      name: "sidebar-11",
-      title: "Sidebar 11",
-      description: "A sidebar with a collapsible file tree.",
-      type: "registry:block",
-      registryDependencies: [
-        "sidebar",
-        "breadcrumb",
-        "separator",
-        "collapsible",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/blocks/sidebar-11/page.tsx",
-          type: "registry:page",
-          target: "app/dashboard/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-11/components/app-sidebar.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["sidebar", "dashboard"],
-      meta: undefined,
-    },
-    "sidebar-12": {
-      name: "sidebar-12",
-      title: "Sidebar 12",
-      description: "A sidebar with a calendar.",
-      type: "registry:block",
-      registryDependencies: [
-        "sidebar",
-        "breadcrumb",
-        "separator",
-        "collapsible",
-        "calendar",
-        "dropdown-menu",
-        "avatar",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/blocks/sidebar-12/page.tsx",
-          type: "registry:page",
-          target: "app/dashboard/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-12/components/app-sidebar.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-12/components/calendars.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-12/components/date-picker.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-12/components/nav-user.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["sidebar", "dashboard"],
-      meta: undefined,
-    },
-    "sidebar-13": {
-      name: "sidebar-13",
-      title: "Sidebar 13",
-      description: "A sidebar in a dialog.",
-      type: "registry:block",
-      registryDependencies: ["sidebar", "breadcrumb", "button", "dialog"],
-      files: [
-        {
-          path: "registry/bases/base/blocks/sidebar-13/page.tsx",
-          type: "registry:page",
-          target: "app/dashboard/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-13/components/settings-dialog.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["sidebar", "dashboard"],
-      meta: undefined,
-    },
-    "sidebar-14": {
-      name: "sidebar-14",
-      title: "Sidebar 14",
-      description: "A sidebar on the right.",
-      type: "registry:block",
-      registryDependencies: ["sidebar", "breadcrumb"],
-      files: [
-        {
-          path: "registry/bases/base/blocks/sidebar-14/page.tsx",
-          type: "registry:page",
-          target: "app/dashboard/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-14/components/app-sidebar.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["sidebar", "dashboard"],
-      meta: undefined,
-    },
-    "sidebar-15": {
-      name: "sidebar-15",
-      title: "Sidebar 15",
-      description: "A left and right sidebar.",
-      type: "registry:block",
-      registryDependencies: [
-        "sidebar",
-        "breadcrumb",
-        "separator",
-        "popover",
-        "collapsible",
-        "dropdown-menu",
-        "calendar",
-        "avatar",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/blocks/sidebar-15/page.tsx",
-          type: "registry:page",
-          target: "app/dashboard/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-15/components/calendars.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-15/components/date-picker.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-15/components/nav-favorites.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-15/components/nav-main.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-15/components/nav-secondary.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-15/components/nav-user.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-15/components/nav-workspaces.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-15/components/sidebar-left.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-15/components/sidebar-right.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-15/components/team-switcher.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["sidebar", "dashboard"],
-      meta: undefined,
-    },
-    "sidebar-16": {
-      name: "sidebar-16",
-      title: "Sidebar 16",
-      description: "A sidebar with a sticky site header.",
-      type: "registry:block",
-      registryDependencies: [
-        "sidebar",
-        "breadcrumb",
-        "separator",
-        "collapsible",
-        "dropdown-menu",
-        "avatar",
-        "button",
-        "label",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/blocks/sidebar-16/page.tsx",
-          type: "registry:page",
-          target: "app/dashboard/page.tsx",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-16/components/app-sidebar.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-16/components/nav-main.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-16/components/nav-projects.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-16/components/nav-secondary.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-16/components/nav-user.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-16/components/search-form.tsx",
-          type: "registry:component",
-          target: "",
-        },
-        {
-          path: "registry/bases/base/blocks/sidebar-16/components/site-header.tsx",
-          type: "registry:component",
-          target: "",
-        },
-      ],
-      categories: ["sidebar", "dashboard"],
-      meta: undefined,
-    },
-    "use-mobile": {
-      name: "use-mobile",
-      title: "undefined",
-      description: "",
-      type: "registry:hook",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/base/hooks/use-mobile.ts",
           type: "registry:hook",
           target: "",
         },

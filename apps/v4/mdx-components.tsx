@@ -2,7 +2,6 @@ import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 
-import { type PageTreeFolder } from "@/lib/page-tree"
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
@@ -36,9 +35,7 @@ import {
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
 
-// Wrapper component that passes the components folder from the server.
-// This is only used on /docs/components/ index page, so default to radix.
-function ComponentsListWrapper() {
+function getComponentsFolder() {
   const componentsFolder = source.pageTree.children.find(
     (page) => page.$id === "components"
   )
@@ -47,10 +44,22 @@ function ComponentsListWrapper() {
     return null
   }
 
+  return componentsFolder
+}
+
+// This is only used on /docs/components/ index page, so default to base.
+function ComponentsListWrapper({ variant }: { variant?: "all" | "new" }) {
+  const componentsFolder = getComponentsFolder()
+
+  if (!componentsFolder) {
+    return null
+  }
+
   return (
     <ComponentsList
-      componentsFolder={componentsFolder as PageTreeFolder}
-      currentBase="radix"
+      componentsFolder={componentsFolder}
+      currentBase="base"
+      variant={variant}
     />
   )
 }

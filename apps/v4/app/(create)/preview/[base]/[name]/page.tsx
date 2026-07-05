@@ -16,6 +16,7 @@ import { RandomizeScript } from "@/app/(app)/create/components/random-button"
 import { getBaseComponent, getBaseItem } from "@/app/(app)/create/lib/api"
 
 import "@/app/style-registry.css"
+import "streamdown/styles.css"
 
 export const revalidate = false
 export const dynamic = "force-static"

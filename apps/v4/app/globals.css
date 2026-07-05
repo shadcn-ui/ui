@@ -3,6 +3,8 @@
 @import "shadcn/tailwind.css";
 @import "./legacy-themes.css";
 
+@source "../node_modules/streamdown/dist/*.js";
+
 @custom-variant style-vega (&:where(.style-vega *));
 @custom-variant style-nova (&:where(.style-nova *));
 @custom-variant style-lyra (&:where(.style-lyra *));
@@ -168,6 +170,7 @@
     @apply overscroll-y-none;
   }
   body {
+    position: relative;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
   }

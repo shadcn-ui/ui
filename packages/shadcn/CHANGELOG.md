@@ -1,5 +1,25 @@
 # shadcn
 
+## 4.13.0
+
+### Minor Changes
+
+- [#11082](https://github.com/shadcn-ui/ui/pull/11082) [`f3e7de11752b087b1c4bf61f4035a866f3a4f9ed`](https://github.com/shadcn-ui/ui/commit/f3e7de11752b087b1c4bf61f4035a866f3a4f9ed) Thanks [@shadcn](https://github.com/shadcn)! - base-ui is now default
+
+## 4.12.0
+
+### Minor Changes
+
+- [#11022](https://github.com/shadcn-ui/ui/pull/11022) [`18fcf0f766857a7249cc0daac3c1609610edd158`](https://github.com/shadcn-ui/ui/commit/18fcf0f766857a7249cc0daac3c1609610edd158) Thanks [@shadcn](https://github.com/shadcn)! - add scroll-fade and shimmer utilities
+
+## 4.11.1
+
+### Patch Changes
+
+- [#10905](https://github.com/shadcn-ui/ui/pull/10905) [`9197676b3d09b77f51b17b63e5978db29e498ca4`](https://github.com/shadcn-ui/ui/commit/9197676b3d09b77f51b17b63e5978db29e498ca4) Thanks [@shadcn](https://github.com/shadcn)! - replace node-fetch with native fetch
+
+- [#10967](https://github.com/shadcn-ui/ui/pull/10967) [`365d53b590a6ddb79c1487a9dbeabcde5f4ac37f`](https://github.com/shadcn-ui/ui/commit/365d53b590a6ddb79c1487a9dbeabcde5f4ac37f) Thanks [@shadcn](https://github.com/shadcn)! - Preserve existing dependency specifiers in package.json when running `shadcn add`.
+
 ## 4.11.0
 
 ### Minor Changes
