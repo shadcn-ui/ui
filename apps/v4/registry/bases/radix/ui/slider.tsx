@@ -17,9 +17,13 @@ function Slider({
     () =>
       Array.isArray(value)
         ? value
-        : Array.isArray(defaultValue)
-          ? defaultValue
-          : [min, max],
+        : value !== undefined
+          ? [value]
+          : Array.isArray(defaultValue)
+            ? defaultValue
+            : defaultValue !== undefined
+              ? [defaultValue]
+              : [min, max],
     [value, defaultValue, min, max]
   )
 
