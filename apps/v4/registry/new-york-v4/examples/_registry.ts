@@ -1964,6 +1964,22 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "resizable-dashboard-grid",
+    type: "registry:example",
+    registryDependencies: ["card"],
+    dependencies: [
+      "@snapgridjs/react@0.7.0",
+      "@dnd-kit/react@0.4.0",
+      "@dnd-kit/dom@0.4.0",
+    ],
+    files: [
+      {
+        path: "examples/resizable-dashboard-grid.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "resizable-demo-with-handle",
     type: "registry:example",
     registryDependencies: ["resizable"],
