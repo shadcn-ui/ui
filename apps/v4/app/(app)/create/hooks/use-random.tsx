@@ -25,7 +25,6 @@ import {
 import { useLocks } from "@/app/(app)/create/hooks/use-locks"
 import { FONTS } from "@/app/(app)/create/lib/fonts"
 import { getPresetCode } from "@/app/(app)/create/lib/preset-code"
-import { SHUFFLE_PRESETS } from "@/app/(app)/create/lib/shuffle-presets"
 import {
   applyBias,
   RANDOMIZE_BIASES,
@@ -35,6 +34,7 @@ import {
   isTranslucentMenuColor,
   useDesignSystemSearchParams,
 } from "@/app/(app)/create/lib/search-params"
+import { SHUFFLE_PRESETS } from "@/app/(app)/create/lib/shuffle-presets"
 
 function randomItem<T>(array: readonly T[]): T {
   return array[Math.floor(Math.random() * array.length)]
