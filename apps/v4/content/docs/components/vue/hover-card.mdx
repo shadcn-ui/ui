@@ -5,7 +5,11 @@ base: vue
 component: true
 ---
 
-<ComponentPreview framework="vue" name="hover-card-demo" previewClassName="h-80" />
+<ComponentPreview
+  framework="vue"
+  name="hover-card-demo"
+  previewClassName="h-80"
+/>
 
 ## Installation
 
@@ -92,9 +96,7 @@ Use the `side` and `align` props on `HoverCardContent` to control placement.
 <template>
   <HoverCard>
     <HoverCardTrigger>Hover</HoverCardTrigger>
-    <HoverCardContent side="top" align="start">
-      Content
-    </HoverCardContent>
+    <HoverCardContent side="top" align="start"> Content </HoverCardContent>
   </HoverCard>
 </template>
 ```
@@ -103,17 +105,30 @@ Use the `side` and `align` props on `HoverCardContent` to control placement.
 
 ### Basic
 
-<ComponentPreview framework="vue" name="hover-card-demo" previewClassName="h-80" />
+<ComponentPreview
+  framework="vue"
+  name="hover-card-demo"
+  previewClassName="h-80"
+/>
 
 ### Sides
 
-<ComponentPreview framework="vue" name="hover-card-sides" previewClassName="h-[22rem]" />
+<ComponentPreview
+  framework="vue"
+  name="hover-card-sides"
+  previewClassName="h-[22rem]"
+/>
 
 ## RTL
 
 To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
 
-<ComponentPreview framework="vue" name="hover-card-rtl" direction="rtl" previewClassName="h-80" />
+<ComponentPreview
+  framework="vue"
+  name="hover-card-rtl"
+  direction="rtl"
+  previewClassName="h-80"
+/>
 
 ## API Reference
 

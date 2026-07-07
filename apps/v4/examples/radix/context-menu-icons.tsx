@@ -1,4 +1,9 @@
-import { ClipboardPasteIcon, CopyIcon, ScissorsIcon, TrashIcon } from "@/examples/material-symbols"
+import {
+  ClipboardPasteIcon,
+  CopyIcon,
+  ScissorsIcon,
+  TrashIcon,
+} from "@/examples/material-symbols"
 
 import {
   ContextMenu,

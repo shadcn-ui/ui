@@ -1,4 +1,11 @@
-import { Calculator, Calendar, CreditCard, Settings, Smile, User } from "@/examples/material-symbols"
+import {
+  Calculator,
+  Calendar,
+  CreditCard,
+  Settings,
+  Smile,
+  User,
+} from "@/examples/material-symbols"
 
 import {
   Command,

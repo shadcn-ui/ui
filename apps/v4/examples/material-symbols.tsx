@@ -1,6 +1,7 @@
 import type { FC, SVGProps } from "react"
-import { icons } from "@/registry/icons/__materialSymbols__"
 import { materialSymbolNames } from "@/examples/material-symbols-map"
+
+import { icons } from "@/registry/icons/__materialSymbols__"
 
 type IconComponent = FC<SVGProps<SVGSVGElement>>
 const getIcon = (name: string) => icons[name] as IconComponent
@@ -45,9 +46,15 @@ export const ChevronUpIcon = getIcon(materialSymbolNames.ChevronUpIcon)
 export const CircleAlertIcon = getIcon(materialSymbolNames.CircleAlertIcon)
 export const CircleCheckIcon = getIcon(materialSymbolNames.CircleCheckIcon)
 export const CircleDashedIcon = getIcon(materialSymbolNames.CircleDashedIcon)
-export const CircleFadingArrowUpIcon = getIcon(materialSymbolNames.CircleFadingArrowUpIcon)
-export const CircleFadingPlusIcon = getIcon(materialSymbolNames.CircleFadingPlusIcon)
-export const ClipboardPasteIcon = getIcon(materialSymbolNames.ClipboardPasteIcon)
+export const CircleFadingArrowUpIcon = getIcon(
+  materialSymbolNames.CircleFadingArrowUpIcon
+)
+export const CircleFadingPlusIcon = getIcon(
+  materialSymbolNames.CircleFadingPlusIcon
+)
+export const ClipboardPasteIcon = getIcon(
+  materialSymbolNames.ClipboardPasteIcon
+)
 export const Clock2Icon = getIcon(materialSymbolNames.Clock2Icon)
 export const ClockIcon = getIcon(materialSymbolNames.ClockIcon)
 export const CodeIcon = getIcon(materialSymbolNames.CodeIcon)
@@ -71,17 +78,23 @@ export const FolderSearchIcon = getIcon(materialSymbolNames.FolderSearchIcon)
 export const Forward = getIcon(materialSymbolNames.Forward)
 export const Frame = getIcon(materialSymbolNames.Frame)
 export const FrameIcon = getIcon(materialSymbolNames.FrameIcon)
-export const GalleryVerticalEnd = getIcon(materialSymbolNames.GalleryVerticalEnd)
+export const GalleryVerticalEnd = getIcon(
+  materialSymbolNames.GalleryVerticalEnd
+)
 export const GlobeIcon = getIcon(materialSymbolNames.GlobeIcon)
 export const HelpCircle = getIcon(materialSymbolNames.HelpCircle)
 export const HelpCircleIcon = getIcon(materialSymbolNames.HelpCircleIcon)
 export const HomeIcon = getIcon(materialSymbolNames.HomeIcon)
 export const IconBell = getIcon(materialSymbolNames.IconBell)
-export const IconBrandJavascript = getIcon(materialSymbolNames.IconBrandJavascript)
+export const IconBrandJavascript = getIcon(
+  materialSymbolNames.IconBrandJavascript
+)
 export const IconCheck = getIcon(materialSymbolNames.IconCheck)
 export const IconCloud = getIcon(materialSymbolNames.IconCloud)
 export const IconCopy = getIcon(materialSymbolNames.IconCopy)
-export const IconCornerDownLeft = getIcon(materialSymbolNames.IconCornerDownLeft)
+export const IconCornerDownLeft = getIcon(
+  materialSymbolNames.IconCornerDownLeft
+)
 export const IconFolderCode = getIcon(materialSymbolNames.IconFolderCode)
 export const IconGitBranch = getIcon(materialSymbolNames.IconGitBranch)
 export const IconGitFork = getIcon(materialSymbolNames.IconGitFork)
@@ -118,9 +131,13 @@ export const MinusIcon = getIcon(materialSymbolNames.MinusIcon)
 export const MonitorIcon = getIcon(materialSymbolNames.MonitorIcon)
 export const MoonIcon = getIcon(materialSymbolNames.MoonIcon)
 export const MoreHorizontal = getIcon(materialSymbolNames.MoreHorizontal)
-export const MoreHorizontalIcon = getIcon(materialSymbolNames.MoreHorizontalIcon)
+export const MoreHorizontalIcon = getIcon(
+  materialSymbolNames.MoreHorizontalIcon
+)
 export const PaletteIcon = getIcon(materialSymbolNames.PaletteIcon)
-export const PanelLeftCloseIcon = getIcon(materialSymbolNames.PanelLeftCloseIcon)
+export const PanelLeftCloseIcon = getIcon(
+  materialSymbolNames.PanelLeftCloseIcon
+)
 export const PanelLeftOpenIcon = getIcon(materialSymbolNames.PanelLeftOpenIcon)
 export const PencilIcon = getIcon(materialSymbolNames.PencilIcon)
 export const PieChart = getIcon(materialSymbolNames.PieChart)

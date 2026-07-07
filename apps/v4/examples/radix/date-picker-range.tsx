@@ -1,10 +1,8 @@
 "use client"
 
-import { CalendarIcon } from "@/examples/material-symbols"
-
 import * as React from "react"
+import { CalendarIcon } from "@/examples/material-symbols"
 import { addDays, format } from "date-fns"
-
 import { type DateRange } from "react-day-picker"
 
 import { Button } from "@/styles/radix-force-ui/ui/button"

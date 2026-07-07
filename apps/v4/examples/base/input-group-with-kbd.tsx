@@ -1,4 +1,9 @@
-import { CheckIcon, InfoIcon, SearchIcon, SparklesIcon } from "@/examples/material-symbols"
+import {
+  CheckIcon,
+  InfoIcon,
+  SearchIcon,
+  SparklesIcon,
+} from "@/examples/material-symbols"
 
 import {
   Field,

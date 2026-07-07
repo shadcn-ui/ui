@@ -1,4 +1,9 @@
-import { ArchiveIcon, PencilIcon, ShareIcon, TrashIcon } from "@/examples/material-symbols"
+import {
+  ArchiveIcon,
+  PencilIcon,
+  ShareIcon,
+  TrashIcon,
+} from "@/examples/material-symbols"
 
 import {
   ContextMenu,

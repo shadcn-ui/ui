@@ -1,12 +1,12 @@
 "use client"
 
-import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from "@/examples/material-symbols"
-
 import * as React from "react"
 import { Vazirmatn } from "next/font/google"
-
-
-
+import {
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "@/examples/material-symbols"
 import { getDefaultClassNames, type DayButton } from "react-day-picker"
 import { DayPicker } from "react-day-picker/persian"
 

@@ -94,13 +94,18 @@ Wrap the `Accordion.Root` in a `Card` component.
 
 To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
 
-<ComponentPreview framework="svelte" name="accordion-rtl" align="start" direction="rtl" />
+<ComponentPreview
+  framework="svelte"
+  name="accordion-rtl"
+  align="start"
+  direction="rtl"
+/>
 
 ## API Reference
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| type | `"single" \| "multiple"` | `"single"` | Determines whether one or multiple items can be opened at the same time. |
-| collapsible | `boolean` | `false` | When `type` is `"single"`, allows closing content when clicking trigger for an open item. |
-| value | `string \| string[]` | — | The controlled value of the item(s) to expand. |
-| disabled | `boolean` | `false` | When `true`, prevents the user from interacting with the accordion item. |
+| Prop        | Type                     | Default    | Description                                                                               |
+| ----------- | ------------------------ | ---------- | ----------------------------------------------------------------------------------------- |
+| type        | `"single" \| "multiple"` | `"single"` | Determines whether one or multiple items can be opened at the same time.                  |
+| collapsible | `boolean`                | `false`    | When `type` is `"single"`, allows closing content when clicking trigger for an open item. |
+| value       | `string \| string[]`     | —          | The controlled value of the item(s) to expand.                                            |
+| disabled    | `boolean`                | `false`    | When `true`, prevents the user from interacting with the accordion item.                  |

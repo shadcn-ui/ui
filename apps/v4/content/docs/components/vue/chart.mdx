@@ -5,7 +5,12 @@ base: vue
 component: true
 ---
 
-<ComponentPreview framework="vue" name="chart-demo" className="theme-blue [&_.preview]:h-auto [&_.preview]:p-0 [&_.preview]:lg:min-h-[404px] [&_.preview>div]:w-full [&_.preview>div]:border-none [&_.preview>div]:shadow-none" hideCode />
+<ComponentPreview
+  framework="vue"
+  name="chart-demo"
+  className="theme-blue [&_.preview]:h-auto [&_.preview]:p-0 [&_.preview]:lg:min-h-[404px] [&_.preview>div]:w-full [&_.preview>div]:border-none [&_.preview>div]:shadow-none"
+  hideCode
+/>
 
 Introducing **Charts**. A collection of chart components that you can copy and paste into your apps.
 
@@ -136,7 +141,11 @@ You can now build your chart using Unovis components.
 
 </Callout>
 
-<ComponentPreview framework="vue" name="chart-example" previewClassName="h-80" />
+<ComponentPreview
+  framework="vue"
+  name="chart-example"
+  previewClassName="h-80"
+/>
 
 </Steps>
 
@@ -166,7 +175,11 @@ import { VisAxis, VisGroupedBar, VisXYContainer } from "@unovis/vue"
 </template>
 ```
 
-<ComponentPreview framework="vue" name="chart-example-grid" previewClassName="h-80" />
+<ComponentPreview
+  framework="vue"
+  name="chart-example-grid"
+  previewClassName="h-80"
+/>
 
 </Steps>
 
@@ -198,7 +211,11 @@ import { VisAxis, VisGroupedBar, VisXYContainer } from "@unovis/vue"
 </template>
 ```
 
-<ComponentPreview framework="vue" name="chart-example-axis" previewClassName="h-80" />
+<ComponentPreview
+  framework="vue"
+  name="chart-example-axis"
+  previewClassName="h-80"
+/>
 
 </Steps>
 
@@ -210,13 +227,16 @@ To add a tooltip, we'll use the custom `ChartTooltip`, `ChartTooltipContent` and
 
 <Steps className="mb-0 pt-2">
 
-<Step>Import the `ChartTooltip`, `ChartTooltipContent` and `ChartCrosshair` components.</Step>
+<Step>
+  Import the `ChartTooltip`, `ChartTooltipContent` and `ChartCrosshair`
+  components.
+</Step>
 
 ```ts
 import {
+  ChartCrosshair,
   ChartTooltip,
   ChartTooltipContent,
-  ChartCrosshair,
   componentToString,
 } from "@/components/ui/chart"
 ```
@@ -233,7 +253,11 @@ import {
 </template>
 ```
 
-<ComponentPreview framework="vue" name="chart-example-tooltip" previewClassName="h-80" />
+<ComponentPreview
+  framework="vue"
+  name="chart-example-tooltip"
+  previewClassName="h-80"
+/>
 
 Hover to see the tooltips. Easy, right? Two components, and we've got a beautiful tooltip.
 
@@ -262,7 +286,11 @@ import { ChartLegendContent } from "@/components/ui/chart"
 </template>
 ```
 
-<ComponentPreview framework="vue" name="chart-example-legend" previewClassName="h-80" />
+<ComponentPreview
+  framework="vue"
+  name="chart-example-legend"
+  previewClassName="h-80"
+/>
 
 </Steps>
 

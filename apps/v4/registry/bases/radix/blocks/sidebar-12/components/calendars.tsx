@@ -48,7 +48,7 @@ export function Calendars({
                     hugeicons="ArrowRight01Icon"
                     phosphor="CaretRightIcon"
                     remixicon="RiArrowRightSLine"
-                    className="ml-auto transition-transform motion-reduce:transition-none group-data-[state=open]/collapsible:rotate-90" // [FORCE-UI] WCAG 2.3.3 reduced-motion guard
+                    className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90 motion-reduce:transition-none" // [FORCE-UI] WCAG 2.3.3 reduced-motion guard
                   />
                 </CollapsibleTrigger>
               </SidebarGroupLabel>

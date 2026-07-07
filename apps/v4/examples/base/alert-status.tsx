@@ -1,4 +1,8 @@
-import { CheckCircle2Icon, InfoIcon, TriangleAlertIcon } from "@/examples/material-symbols"
+import {
+  CheckCircle2Icon,
+  InfoIcon,
+  TriangleAlertIcon,
+} from "@/examples/material-symbols"
 
 import {
   Alert,

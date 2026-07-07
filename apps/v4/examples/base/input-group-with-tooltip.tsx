@@ -1,7 +1,10 @@
 "use client"
 
-import { ChevronDownIcon, InfoIcon, StarIcon } from "@/examples/material-symbols"
-
+import {
+  ChevronDownIcon,
+  InfoIcon,
+  StarIcon,
+} from "@/examples/material-symbols"
 import { toast } from "sonner"
 
 import {

@@ -1,4 +1,9 @@
-import { CreditCardIcon, LogOutIcon, SettingsIcon, UserIcon } from "@/examples/material-symbols"
+import {
+  CreditCardIcon,
+  LogOutIcon,
+  SettingsIcon,
+  UserIcon,
+} from "@/examples/material-symbols"
 
 import { Button } from "@/styles/radix-force-ui/ui/button"
 import {

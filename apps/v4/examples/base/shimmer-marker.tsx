@@ -1,4 +1,8 @@
-import { Marker, MarkerContent, MarkerIcon } from "@/styles/base-force-ui/ui/marker"
+import {
+  Marker,
+  MarkerContent,
+  MarkerIcon,
+} from "@/styles/base-force-ui/ui/marker"
 import { Spinner } from "@/styles/base-force-ui/ui/spinner"
 
 export function ShimmerMarker() {

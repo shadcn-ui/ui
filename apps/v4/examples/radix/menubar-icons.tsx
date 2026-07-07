@@ -1,4 +1,11 @@
-import { FileIcon, FolderIcon, HelpCircleIcon, SaveIcon, SettingsIcon, TrashIcon } from "@/examples/material-symbols"
+import {
+  FileIcon,
+  FolderIcon,
+  HelpCircleIcon,
+  SaveIcon,
+  SettingsIcon,
+  TrashIcon,
+} from "@/examples/material-symbols"
 
 import {
   Menubar,

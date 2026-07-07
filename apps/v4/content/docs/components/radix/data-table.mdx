@@ -327,8 +327,8 @@ Update our columns definition to add a new `actions` column. The `actions` cell 
 ```tsx showLineNumbers title="app/payments/columns.tsx" {4,6-14,18-45}
 "use client"
 
-import { ColumnDef } from "@tanstack/react-table"
 import MoreHorizontal from "@material-symbols/svg-400/rounded/more_horiz.svg?react"
+import { ColumnDef } from "@tanstack/react-table"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -521,8 +521,8 @@ We can now update the `email` header cell to add sorting controls.
 ```tsx showLineNumbers title="app/payments/columns.tsx" {4,9-19}
 "use client"
 
-import { ColumnDef } from "@tanstack/react-table"
 import ArrowUpDown from "@material-symbols/svg-400/rounded/swap_vert.svg?react"
+import { ColumnDef } from "@tanstack/react-table"
 
 export const columns: ColumnDef<Payment>[] = [
   {

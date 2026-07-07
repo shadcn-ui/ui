@@ -50,9 +50,7 @@ function hasActionOrCancel(children: React.ReactNode): boolean {
       return true
     }
     const childProps = child.props as { children?: React.ReactNode }
-    return childProps?.children
-      ? hasActionOrCancel(childProps.children)
-      : false
+    return childProps?.children ? hasActionOrCancel(childProps.children) : false
   })
 }
 
@@ -65,10 +63,7 @@ function AlertDialogContent({
   size?: "default" | "sm"
 }) {
   React.useEffect(() => {
-    if (
-      process.env.NODE_ENV !== "production" &&
-      !hasActionOrCancel(children)
-    ) {
+    if (process.env.NODE_ENV !== "production" && !hasActionOrCancel(children)) {
       console.warn(
         "AlertDialogContent: no AlertDialogAction or AlertDialogCancel found — an alert dialog has no other way to dismiss (WCAG 2.1.2)."
       )

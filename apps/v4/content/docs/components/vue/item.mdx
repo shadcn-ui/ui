@@ -99,21 +99,13 @@ If you only need to display content such as a title, description, and actions, u
 
 Use the `variant` prop to change the visual style of the item.
 
-<ComponentPreview
-  framework="vue"
-  name="item-variant"
-  previewClassName="h-96"
-/>
+<ComponentPreview framework="vue" name="item-variant" previewClassName="h-96" />
 
 ## Size
 
 Use the `size` prop to change the size of the item. Available sizes are `default`, `sm`, and `xs`.
 
-<ComponentPreview
-  framework="vue"
-  name="item-size"
-  previewClassName="h-96"
-/>
+<ComponentPreview framework="vue" name="item-size" previewClassName="h-96" />
 
 ## Examples
 
@@ -139,21 +131,13 @@ Use `ItemMedia` with `variant="image"` to display an image.
 
 Use `ItemGroup` to group related items together.
 
-<ComponentPreview
-  framework="vue"
-  name="item-group"
-  previewClassName="h-96"
-/>
+<ComponentPreview framework="vue" name="item-group" previewClassName="h-96" />
 
 ### Header
 
 Use `ItemHeader` to add a header above the item content.
 
-<ComponentPreview
-  framework="vue"
-  name="item-header"
-  previewClassName="h-96"
-/>
+<ComponentPreview framework="vue" name="item-header" previewClassName="h-96" />
 
 ### Link
 
@@ -170,7 +154,9 @@ Use the `as-child` prop to render the item as a link. The hover and focus states
       </ItemMedia>
       <ItemContent>
         <ItemTitle>Dashboard</ItemTitle>
-        <ItemDescription>Overview of your account and activity.</ItemDescription>
+        <ItemDescription
+          >Overview of your account and activity.</ItemDescription
+        >
       </ItemContent>
     </a>
   </Item>

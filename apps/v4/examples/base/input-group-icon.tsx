@@ -1,4 +1,11 @@
-import { CheckIcon, CreditCardIcon, InfoIcon, MailIcon, SearchIcon, StarIcon } from "@/examples/material-symbols"
+import {
+  CheckIcon,
+  CreditCardIcon,
+  InfoIcon,
+  MailIcon,
+  SearchIcon,
+  StarIcon,
+} from "@/examples/material-symbols"
 
 import {
   InputGroup,

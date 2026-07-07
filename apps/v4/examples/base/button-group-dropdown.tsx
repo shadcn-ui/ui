@@ -1,6 +1,15 @@
 "use client"
 
-import { AlertTriangleIcon, CheckIcon, ChevronDownIcon, CopyIcon, ShareIcon, TrashIcon, UserRoundXIcon, VolumeOffIcon } from "@/examples/material-symbols"
+import {
+  AlertTriangleIcon,
+  CheckIcon,
+  ChevronDownIcon,
+  CopyIcon,
+  ShareIcon,
+  TrashIcon,
+  UserRoundXIcon,
+  VolumeOffIcon,
+} from "@/examples/material-symbols"
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 import { ButtonGroup } from "@/styles/base-force-ui/ui/button-group"

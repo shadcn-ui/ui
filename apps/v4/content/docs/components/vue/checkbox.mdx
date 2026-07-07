@@ -8,7 +8,11 @@ links:
   api: https://www.radix-ui.com/docs/primitives/components/checkbox#api-reference
 ---
 
-<ComponentPreview framework="vue" name="checkbox-demo" previewClassName="h-80" />
+<ComponentPreview
+  framework="vue"
+  name="checkbox-demo"
+  previewClassName="h-80"
+/>
 
 ## Installation
 
@@ -62,6 +66,7 @@ Use `:default-value` for uncontrolled checkboxes, or `:checked` and
 ```vue showLineNumbers
 <script setup lang="ts">
 import { ref } from "vue"
+
 import { Checkbox } from "@/components/ui/checkbox"
 
 const checked = ref(false)

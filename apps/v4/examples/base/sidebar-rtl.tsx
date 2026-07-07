@@ -1,27 +1,27 @@
 "use client"
 
-import { BadgeCheck, Bell, BookOpen, Bot, ChevronRight, ChevronsUpDown, CreditCard, Folder, Forward, Frame, GalleryVerticalEnd, LogOut, Map, MoreHorizontal, PieChart, Settings2, Sparkles, SquareTerminal, Trash2 } from "@/examples/material-symbols"
-
 import * as React from "react"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import {
+  BadgeCheck,
+  Bell,
+  BookOpen,
+  Bot,
+  ChevronRight,
+  ChevronsUpDown,
+  CreditCard,
+  Folder,
+  Forward,
+  Frame,
+  GalleryVerticalEnd,
+  LogOut,
+  Map,
+  MoreHorizontal,
+  PieChart,
+  Settings2,
+  Sparkles,
+  SquareTerminal,
+  Trash2,
+} from "@/examples/material-symbols"
 
 import {
   LanguageProvider,

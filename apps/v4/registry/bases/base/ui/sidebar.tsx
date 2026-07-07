@@ -505,10 +505,7 @@ function SidebarMenuItem({
           sibling span, not a ::before on the button: the button's base class
           carries overflow-hidden for label truncation, which clips a
           pseudo-element regardless of its positioned ancestor. */}
-      <span
-        aria-hidden="true"
-        className="cn-sidebar-menu-item-indicator"
-      />
+      <span aria-hidden="true" className="cn-sidebar-menu-item-indicator" />
     </li>
   )
 }

@@ -90,11 +90,7 @@ function PopoverHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function PopoverTitle({
-  className,
-  id,
-  ...props
-}: React.ComponentProps<"h2">) {
+function PopoverTitle({ className, id, ...props }: React.ComponentProps<"h2">) {
   const popoverContext = React.useContext(PopoverContext)
   return (
     <div

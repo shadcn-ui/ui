@@ -1,6 +1,10 @@
 "use client"
 
-import { ChevronDownIcon, LifeBuoyIcon, SendIcon } from "@/examples/material-symbols"
+import {
+  ChevronDownIcon,
+  LifeBuoyIcon,
+  SendIcon,
+} from "@/examples/material-symbols"
 
 import {
   Collapsible,
