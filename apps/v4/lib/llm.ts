@@ -47,14 +47,14 @@ function getComponentsList(variant: "all" | "new") {
     return ""
   }
 
-  return getPagesFromFolder(componentsFolder as PageTreeFolder, "radix")
+  return getPagesFromFolder(componentsFolder as PageTreeFolder, "base")
     .filter(
       (component) => variant === "all" || PAGES_NEW.includes(component.url)
     )
     .map((component) => {
       const slug = component.url.replace(/^\/docs\//, "").split("/")
       const description = source.getPage(slug)?.data.description?.trim()
-      const url = absoluteUrl(component.url.replace("/radix/", "/"))
+      const url = absoluteUrl(component.url.replace("/base/", "/"))
       return `- [${component.name}](${url})${
         description ? `: ${description}` : ""
       }`

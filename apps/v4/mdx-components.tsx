@@ -47,7 +47,7 @@ function getComponentsFolder() {
   return componentsFolder
 }
 
-// This is only used on /docs/components/ index page, so default to radix.
+// This is only used on /docs/components/ index page, so default to base.
 function ComponentsListWrapper({ variant }: { variant?: "all" | "new" }) {
   const componentsFolder = getComponentsFolder()
 
@@ -58,7 +58,7 @@ function ComponentsListWrapper({ variant }: { variant?: "all" | "new" }) {
   return (
     <ComponentsList
       componentsFolder={componentsFolder}
-      currentBase="radix"
+      currentBase="base"
       variant={variant}
     />
   )
