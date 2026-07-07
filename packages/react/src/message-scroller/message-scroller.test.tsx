@@ -459,6 +459,40 @@ describe("MessageScroller", () => {
     })
   })
 
+  it("holds a newly appended anchor at the reading line while the reply streams with autoScroll", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 40, scrollAnchor: true },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(176)
+    expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
+
+    // Streamed growth below the anchor must not yank the reader to the live
+    // edge; the anchored turn holds at the reading line.
+    rendered.message("message-4").dataset.testHeight = "160"
+    await triggerResize(rendered.content())
+
+    expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
+  })
+
   it("applies the default end target after async messages mount", async () => {
     const rendered = await renderTestScroller({
       messages: [],
