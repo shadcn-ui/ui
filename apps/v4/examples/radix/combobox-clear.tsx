@@ -7,7 +7,7 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@/examples/radix/ui/combobox"
+} from "@/styles/radix-nova/ui/combobox"
 
 const frameworks = [
   "Next.js",

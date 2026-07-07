@@ -1,6 +1,6 @@
-import { Badge } from "@/examples/base/ui/badge"
-import { Field, FieldLabel } from "@/examples/base/ui/field"
-import { Input } from "@/examples/base/ui/input"
+import { Badge } from "@/styles/base-nova/ui/badge"
+import { Field, FieldLabel } from "@/styles/base-nova/ui/field"
+import { Input } from "@/styles/base-nova/ui/input"
 
 export function InputBadge() {
   return (

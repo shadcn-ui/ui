@@ -1,7 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Checkbox } from "@/examples/radix/ui/checkbox"
+
+import { Checkbox } from "@/styles/radix-nova/ui/checkbox"
 import {
   Table,
   TableBody,
@@ -9,7 +10,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/examples/radix/ui/table"
+} from "@/styles/radix-nova/ui/table"
 
 const tableData = [
   {

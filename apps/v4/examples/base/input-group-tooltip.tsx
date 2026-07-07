@@ -1,15 +1,16 @@
+import { HelpCircle, InfoIcon } from "lucide-react"
+
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/base/ui/input-group"
+} from "@/styles/base-nova/ui/input-group"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/base/ui/tooltip"
-import { HelpCircle, InfoIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/tooltip"
 
 export default function InputGroupTooltip() {
   return (

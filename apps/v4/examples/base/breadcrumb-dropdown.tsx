@@ -1,4 +1,6 @@
 import Link from "next/link"
+import { ChevronDownIcon, DotIcon } from "lucide-react"
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,15 +8,14 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/examples/base/ui/breadcrumb"
+} from "@/styles/base-nova/ui/breadcrumb"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/base/ui/dropdown-menu"
-import { ChevronDownIcon, DotIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/dropdown-menu"
 
 export function BreadcrumbDropdown() {
   return (

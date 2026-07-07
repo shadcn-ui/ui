@@ -1,4 +1,6 @@
-import { Button } from "@/examples/base/ui/button"
+import { ArrowUpRightIcon, FolderIcon } from "lucide-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -6,8 +8,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/examples/base/ui/empty"
-import { ArrowUpRightIcon, FolderIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/empty"
 
 export function EmptyInCard() {
   return (

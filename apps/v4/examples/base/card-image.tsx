@@ -1,5 +1,5 @@
-import { Badge } from "@/examples/base/ui/badge"
-import { Button } from "@/examples/base/ui/button"
+import { Badge } from "@/styles/base-nova/ui/badge"
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Card,
   CardAction,
@@ -7,7 +7,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/base/ui/card"
+} from "@/styles/base-nova/ui/card"
 
 export function CardImage() {
   return (

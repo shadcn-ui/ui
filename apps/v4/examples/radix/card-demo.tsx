@@ -1,4 +1,4 @@
-import { Button } from "@/examples/radix/ui/button"
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   Card,
   CardAction,
@@ -7,9 +7,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/radix/ui/card"
-import { Input } from "@/examples/radix/ui/input"
-import { Label } from "@/examples/radix/ui/label"
+} from "@/styles/radix-nova/ui/card"
+import { Input } from "@/styles/radix-nova/ui/input"
+import { Label } from "@/styles/radix-nova/ui/label"
 
 export default function CardDemo() {
   return (

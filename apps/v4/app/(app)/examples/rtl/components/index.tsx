@@ -1,13 +1,12 @@
 "use client"
 
-import { DirectionProvider } from "@/examples/base/ui-rtl/direction"
-import { FieldSeparator } from "@/examples/base/ui-rtl/field"
-
 import {
   LanguageProvider,
   LanguageSelector,
   useLanguageContext,
 } from "@/components/language-selector"
+import { DirectionProvider } from "@/styles/base-nova/ui-rtl/direction"
+import { FieldSeparator } from "@/styles/base-nova/ui-rtl/field"
 
 import { AppearanceSettings } from "./appearance-settings"
 import { ButtonGroupDemo } from "./button-group-demo"

@@ -1,12 +1,13 @@
+import { ArrowUpIcon } from "lucide-react"
+
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
   InputGroupTextarea,
-} from "@/examples/base/ui/input-group"
-import { Spinner } from "@/examples/base/ui/spinner"
-import { ArrowUpIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/input-group"
+import { Spinner } from "@/styles/base-nova/ui/spinner"
 
 export function SpinnerInputGroup() {
   return (

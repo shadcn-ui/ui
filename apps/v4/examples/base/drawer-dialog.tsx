@@ -1,7 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
+
+import { cn } from "@/lib/utils"
+import { useMediaQuery } from "@/hooks/use-media-query"
+import { Button } from "@/styles/base-rhea/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -9,7 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/base/ui/dialog"
+} from "@/styles/base-rhea/ui/dialog"
 import {
   Drawer,
   DrawerClose,
@@ -19,12 +22,9 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/examples/base/ui/drawer"
-import { Input } from "@/examples/base/ui/input"
-import { Label } from "@/examples/base/ui/label"
-
-import { cn } from "@/lib/utils"
-import { useMediaQuery } from "@/hooks/use-media-query"
+} from "@/styles/base-rhea/ui/drawer"
+import { Input } from "@/styles/base-rhea/ui/input"
+import { Label } from "@/styles/base-rhea/ui/label"
 
 export function DrawerDialogDemo() {
   const [open, setOpen] = React.useState(false)
@@ -52,8 +52,8 @@ export function DrawerDialogDemo() {
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerTrigger asChild>
-        <Button variant="outline">Edit Profile</Button>
+      <DrawerTrigger render={<Button variant="outline" />}>
+        Edit Profile
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">
@@ -62,12 +62,7 @@ export function DrawerDialogDemo() {
             Make changes to your profile here. Click save when you&apos;re done.
           </DrawerDescription>
         </DrawerHeader>
-        <ProfileForm className="px-4" />
-        <DrawerFooter className="pt-2">
-          <DrawerClose asChild>
-            <Button variant="outline">Cancel</Button>
-          </DrawerClose>
-        </DrawerFooter>
+        <ProfileForm className="p-4" />
       </DrawerContent>
     </Drawer>
   )

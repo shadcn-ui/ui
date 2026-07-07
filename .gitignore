@@ -15,6 +15,7 @@ build
 
 # misc
 .DS_Store
+.eslintcache
 *.pem
 
 # debug
@@ -42,4 +43,13 @@ tsconfig.tsbuildinfo
 
 .notes
 .playwright-mcp
+.playwright-cli
 shadcn-workspace
+
+# vitest browser mode writes these only on test failure.
+__screenshots__
+.codex-artifacts
+.tmp*
+
+CONTEXT.md
+docs/adr

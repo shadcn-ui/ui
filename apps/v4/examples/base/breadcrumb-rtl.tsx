@@ -1,6 +1,12 @@
 "use client"
 
 import Link from "next/link"
+import { ChevronDownIcon, DotIcon } from "lucide-react"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,20 +14,14 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/examples/base/ui-rtl/breadcrumb"
+} from "@/styles/base-nova/ui-rtl/breadcrumb"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/base/ui-rtl/dropdown-menu"
-import { ChevronDownIcon, DotIcon } from "lucide-react"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/base-nova/ui-rtl/dropdown-menu"
 
 const translations: Translations = {
   en: {

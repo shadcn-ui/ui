@@ -7,7 +7,7 @@ import {
   transformRender,
   transformStyle,
 } from "shadcn/utils"
-import { Project, ScriptKind } from "ts-morph"
+import { Project, ScriptKind, type SourceFile } from "ts-morph"
 
 import { BASES } from "@/registry/bases"
 
@@ -50,6 +50,13 @@ function buildDisplayConfig(styleName: string) {
   }
 }
 
+type DisplayTransformer = (opts: {
+  filename: string
+  raw: string
+  sourceFile: SourceFile
+  config: ReturnType<typeof buildDisplayConfig>
+}) => Promise<unknown>
+
 const styleMapCache = new Map<string, Record<string, string>>()
 
 async function getStyleMap(styleName: string) {
@@ -76,12 +83,31 @@ async function getStyleMap(styleName: string) {
 export async function formatCode(code: string, styleName: string) {
   code = code.replaceAll(`@/registry/${styleName}/`, "@/components/")
 
+  // Always rewrite the legacy tree so src-based sources render clean imports
+  // regardless of the styleName in play.
+  code = code.replaceAll("@/registry/new-york-v4/", "@/components/")
+
   for (const base of BASES) {
     code = code.replaceAll(`@/registry/bases/${base.name}/`, "@/components/")
+    code = code.replaceAll(
+      `@/examples/${base.name}/ui-rtl/`,
+      "@/components/ui/"
+    )
     code = code.replaceAll(`@/examples/${base.name}/ui/`, "@/components/ui/")
     code = code.replaceAll(`@/examples/${base.name}/lib/`, "@/lib/")
     code = code.replaceAll(`@/examples/${base.name}/hooks/`, "@/hooks/")
   }
+
+  code = code.replace(
+    /@\/styles\/([\w-]+)\/(ui-rtl|ui)\/([\w-]+)/g,
+    (match, _styleName, type, component) => {
+      if (type === "ui" || type === "ui-rtl") {
+        return `@/components/ui/${component}`
+      }
+
+      return match
+    }
+  )
 
   code = code.replaceAll("export default", "export")
 
@@ -94,7 +120,11 @@ export async function formatCode(code: string, styleName: string) {
       scriptKind: ScriptKind.TSX,
     })
 
-    const transformers = [transformIcons, transformMenu, transformRender]
+    const transformers: DisplayTransformer[] = [
+      transformIcons as DisplayTransformer,
+      transformMenu as DisplayTransformer,
+      transformRender as DisplayTransformer,
+    ]
     for (const transformer of transformers) {
       await transformer({
         filename: "component.tsx",

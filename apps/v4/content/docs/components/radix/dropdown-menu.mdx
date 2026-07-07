@@ -83,13 +83,45 @@ import {
       <DropdownMenuItem>Profile</DropdownMenuItem>
       <DropdownMenuItem>Billing</DropdownMenuItem>
     </DropdownMenuGroup>
+    <DropdownMenuSeparator />
     <DropdownMenuGroup>
-      <DropdownMenuSeparator />
       <DropdownMenuItem>Team</DropdownMenuItem>
       <DropdownMenuItem>Subscription</DropdownMenuItem>
     </DropdownMenuGroup>
   </DropdownMenuContent>
 </DropdownMenu>
+```
+
+## Composition
+
+Use the following composition to build a `DropdownMenu`:
+
+```text
+DropdownMenu
+├── DropdownMenuTrigger
+└── DropdownMenuContent
+    ├── DropdownMenuGroup
+    │   ├── DropdownMenuLabel
+    │   ├── DropdownMenuItem
+    │   └── DropdownMenuItem
+    ├── DropdownMenuSeparator
+    ├── DropdownMenuGroup
+    │   ├── DropdownMenuLabel
+    │   ├── DropdownMenuCheckboxItem
+    │   └── DropdownMenuCheckboxItem
+    ├── DropdownMenuSeparator
+    ├── DropdownMenuGroup
+    │   ├── DropdownMenuLabel
+    │   └── DropdownMenuRadioGroup
+    │       ├── DropdownMenuRadioItem
+    │       └── DropdownMenuRadioItem
+    └── DropdownMenuSub
+        ├── DropdownMenuSubTrigger
+        └── DropdownMenuSubContent
+            └── DropdownMenuGroup
+                ├── DropdownMenuLabel
+                ├── DropdownMenuItem
+                └── DropdownMenuItem
 ```
 
 ## Examples

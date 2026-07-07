@@ -1,11 +1,15 @@
-import { ButtonGroup, ButtonGroupText } from "@/examples/radix/ui/button-group"
+import { Link2Icon } from "lucide-react"
+
+import {
+  ButtonGroup,
+  ButtonGroupText,
+} from "@/styles/radix-nova/ui/button-group"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/radix/ui/input-group"
-import { Label } from "@/examples/radix/ui/label"
-import { Link2Icon } from "lucide-react"
+} from "@/styles/radix-nova/ui/input-group"
+import { Label } from "@/styles/radix-nova/ui/label"
 
 export default function InputGroupButtonGroup() {
   return (

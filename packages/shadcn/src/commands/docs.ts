@@ -1,10 +1,13 @@
 import path from "path"
 import { getShadcnRegistryIndex } from "@/src/registry/api"
+import { SHADCN_URL } from "@/src/registry/constants"
 import { getBase, getConfig } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { Command } from "commander"
+
+const SHADCN_BASE_URL = "https://ui.shadcn.com"
 
 export const docs = new Command()
   .name("docs")
@@ -64,7 +67,11 @@ export const docs = new Command()
           continue
         }
 
-        results.push({ component, base, links })
+        results.push({
+          component,
+          base,
+          links: normalizeLinks(links),
+        })
       }
 
       if (opts.json) {
@@ -88,3 +95,14 @@ export const docs = new Command()
       handleError(error)
     }
   })
+
+function normalizeLinks(links: Record<string, string>) {
+  return Object.fromEntries(
+    Object.entries(links).map(([key, value]) => [
+      key,
+      value.startsWith(SHADCN_BASE_URL)
+        ? `${SHADCN_URL}${value.slice(SHADCN_BASE_URL.length)}`
+        : value,
+    ])
+  )
+}

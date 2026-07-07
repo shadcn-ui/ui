@@ -47,7 +47,7 @@ export async function runCommand(
       },
       input: options?.input,
       reject: false,
-      timeout: options?.timeout ?? 30000,
+      timeout: options?.timeout ?? 60000,
     })
 
     const result = await childProcess
@@ -71,9 +71,11 @@ export async function npxShadcn(
   args: string[],
   {
     debug = false,
+    input,
     timeout,
   }: {
     debug?: boolean
+    input?: string
     timeout?: number
   } = {}
 ) {
@@ -82,6 +84,7 @@ export async function npxShadcn(
       REGISTRY_URL: getRegistryUrl(),
       SHADCN_TEMPLATE_DIR: TEMPLATES_DIR,
     },
+    input,
     timeout,
   })
 

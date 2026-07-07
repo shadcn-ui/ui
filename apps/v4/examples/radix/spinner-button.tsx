@@ -1,5 +1,5 @@
-import { Button } from "@/examples/radix/ui/button"
-import { Spinner } from "@/examples/radix/ui/spinner"
+import { Button } from "@/styles/radix-nova/ui/button"
+import { Spinner } from "@/styles/radix-nova/ui/spinner"
 
 export function SpinnerButton() {
   return (

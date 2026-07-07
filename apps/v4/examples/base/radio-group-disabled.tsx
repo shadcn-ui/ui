@@ -1,5 +1,5 @@
-import { Field, FieldLabel } from "@/examples/base/ui/field"
-import { RadioGroup, RadioGroupItem } from "@/examples/base/ui/radio-group"
+import { Field, FieldLabel } from "@/styles/base-nova/ui/field"
+import { RadioGroup, RadioGroupItem } from "@/styles/base-nova/ui/radio-group"
 
 export function RadioGroupDisabled() {
   return (

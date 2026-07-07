@@ -1,10 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/radix/ui/button"
-import { Calendar } from "@/examples/radix/ui/calendar"
-import { Card, CardContent, CardFooter } from "@/examples/radix/ui/card"
 import { addDays } from "date-fns"
+
+import { Button } from "@/styles/radix-nova/ui/button"
+import { Calendar } from "@/styles/radix-nova/ui/calendar"
+import { Card, CardContent, CardFooter } from "@/styles/radix-nova/ui/card"
 
 export function CalendarWithPresets() {
   const [date, setDate] = React.useState<Date | undefined>(

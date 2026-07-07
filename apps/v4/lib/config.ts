@@ -10,6 +10,10 @@ export const siteConfig = {
   },
   navItems: [
     {
+      href: "/",
+      label: "Home",
+    },
+    {
       href: "/docs/installation",
       label: "Docs",
     },

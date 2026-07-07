@@ -1,7 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui-rtl/button"
+import { CreditCardIcon, SettingsIcon, UserIcon } from "lucide-react"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
+import { Button } from "@/styles/base-nova/ui-rtl/button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -18,13 +24,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/examples/base/ui-rtl/dropdown-menu"
-import { CreditCardIcon, SettingsIcon, UserIcon } from "lucide-react"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/base-nova/ui-rtl/dropdown-menu"
 
 const translations: Translations = {
   en: {

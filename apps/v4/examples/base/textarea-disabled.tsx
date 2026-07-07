@@ -1,5 +1,5 @@
-import { Field, FieldLabel } from "@/examples/base/ui/field"
-import { Textarea } from "@/examples/base/ui/textarea"
+import { Field, FieldLabel } from "@/styles/base-nova/ui/field"
+import { Textarea } from "@/styles/base-nova/ui/textarea"
 
 export function TextareaDisabled() {
   return (

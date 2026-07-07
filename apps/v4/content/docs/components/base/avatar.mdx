@@ -69,6 +69,32 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 </Avatar>
 ```
 
+## Composition
+
+Use the following composition to build an `Avatar`:
+
+```text
+Avatar
+├── AvatarImage
+├── AvatarFallback
+└── AvatarBadge
+```
+
+Use the following composition to build an `AvatarGroup`:
+
+```text
+AvatarGroup
+├── Avatar
+│   ├── AvatarImage
+│   ├── AvatarFallback
+│   └── AvatarBadge
+├── Avatar
+│   ├── AvatarImage
+│   ├── AvatarFallback
+│   └── AvatarBadge
+└── AvatarGroupCount
+```
+
 ## Examples
 
 ### Basic

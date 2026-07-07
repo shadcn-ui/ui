@@ -1,0 +1,6 @@
+packages: []
+
+allowBuilds:
+  esbuild: true
+  sharp: true
+  msw: false

@@ -11,7 +11,7 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/base/context-menu",
-      "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/context-menu-example.tsx",
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/context-menu-example.tsx",
       "api": "https://base-ui.com/react/components/context-menu.md"
     }
   },

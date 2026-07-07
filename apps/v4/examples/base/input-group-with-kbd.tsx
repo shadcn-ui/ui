@@ -1,18 +1,19 @@
+import { CheckIcon, InfoIcon, SearchIcon, SparklesIcon } from "lucide-react"
+
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/examples/base/ui/field"
-import { Input } from "@/examples/base/ui/input"
+} from "@/styles/base-nova/ui/field"
+import { Input } from "@/styles/base-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/base/ui/input-group"
-import { Kbd, KbdGroup } from "@/examples/base/ui/kbd"
-import { Spinner } from "@/examples/base/ui/spinner"
-import { CheckIcon, InfoIcon, SearchIcon, SparklesIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/input-group"
+import { Kbd, KbdGroup } from "@/styles/base-nova/ui/kbd"
+import { Spinner } from "@/styles/base-nova/ui/spinner"
 
 export function InputGroupWithKbd() {
   return (

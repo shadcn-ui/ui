@@ -6,12 +6,14 @@ import { resolveRegistryTree } from "@/src/registry/resolver"
 import { registryResolvedItemsTreeSchema } from "@/src/schema"
 import { isContentSame } from "@/src/utils/compare"
 import { isEnvFile } from "@/src/utils/env-helpers"
+import { getSupportedFontMarkers } from "@/src/utils/font-markers"
 import type { Config } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { transform } from "@/src/utils/transformers"
 import { transformAsChild } from "@/src/utils/transformers/transform-aschild"
 import { transformCleanup } from "@/src/utils/transformers/transform-cleanup"
 import { transformCssVars as transformCssVarsTransformer } from "@/src/utils/transformers/transform-css-vars"
+import { transformFont } from "@/src/utils/transformers/transform-font"
 import { transformIcons } from "@/src/utils/transformers/transform-icons"
 import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformMenu } from "@/src/utils/transformers/transform-menu"
@@ -22,9 +24,13 @@ import { transformCss } from "@/src/utils/updaters/update-css"
 import { transformCssVars } from "@/src/utils/updaters/update-css-vars"
 import {
   findCommonRoot,
+  getPlannedFilePaths,
   resolveFilePath,
+  rewriteResolvedImportsInContent,
 } from "@/src/utils/updaters/update-files"
 import { massageTreeForFonts } from "@/src/utils/updaters/update-fonts"
+import { Project } from "ts-morph"
+import { loadConfig } from "tsconfig-paths"
 import type { z } from "zod"
 
 export type DryRunFile = {
@@ -98,6 +104,7 @@ export async function dryRunComponents(
   if (!options.skipFonts) {
     tree = await massageTreeForFonts(tree, config)
   }
+  const supportedFontMarkers = getSupportedFontMarkers([tree])
 
   // Dependencies pass through deduplicated.
   result.dependencies = Array.from(new Set(tree.dependencies ?? []))
@@ -107,7 +114,7 @@ export async function dryRunComponents(
   result.docs = tree.docs ?? null
 
   // Process files.
-  await processFiles(tree, config, result, options)
+  await processFiles(tree, config, result, options, supportedFontMarkers)
 
   // Process CSS.
   await processCss(tree, config, result, options)
@@ -127,7 +134,8 @@ async function processFiles(
   tree: z.infer<typeof registryResolvedItemsTreeSchema>,
   config: Config,
   result: DryRunResult,
-  options: { overwrite?: boolean }
+  options: { overwrite?: boolean },
+  supportedFontMarkers: string[]
 ) {
   const files = tree.files
   if (!files?.length) {
@@ -140,6 +148,19 @@ async function processFiles(
       ? getRegistryBaseColor(config.tailwind.baseColor)
       : Promise.resolve(undefined),
   ])
+  let tsConfig: ReturnType<typeof loadConfig>
+  try {
+    tsConfig = loadConfig(config.resolvedPaths.cwd)
+  } catch {
+    tsConfig = { resultType: "failed" } as ReturnType<typeof loadConfig>
+  }
+  const project = new Project({
+    compilerOptions: {},
+  })
+  const plannedFilePaths = getPlannedFilePaths(files, config, {
+    isSrcDir: projectInfo?.isSrcDir,
+    framework: projectInfo?.framework.name,
+  })
 
   for (let index = 0; index < files.length; index++) {
     const file = files[index]
@@ -184,6 +205,7 @@ async function processFiles(
               baseColor,
               transformJsx: !config.tsx,
               isRemote: false,
+              supportedFontMarkers,
             },
             [
               transformImport,
@@ -194,16 +216,29 @@ async function processFiles(
               transformMenu,
               transformAsChild,
               transformRtl,
+              transformFont,
               transformCleanup,
             ]
           )
+    const finalContent =
+      isEnvFile(filePath) || isUniversalItemFile
+        ? content
+        : await rewriteResolvedImportsInContent({
+            config,
+            content,
+            filePaths: plannedFilePaths,
+            project,
+            projectInfo,
+            resolvedPath: filePath,
+            tsConfig,
+          })
 
     // Determine action.
     let action: DryRunFile["action"] = "create"
     let oldContent: string | undefined
     if (existingFile) {
       oldContent = await fs.readFile(filePath, "utf-8")
-      if (isContentSame(oldContent, content)) {
+      if (isContentSame(oldContent, finalContent)) {
         action = "skip"
       } else {
         action = "overwrite"
@@ -213,7 +248,7 @@ async function processFiles(
     result.files.push({
       path: relativePath,
       action,
-      content,
+      content: finalContent,
       ...(action === "overwrite" && { existingContent: oldContent }),
       type: file.type ?? "registry:ui",
     })

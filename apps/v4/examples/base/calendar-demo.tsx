@@ -1,7 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Calendar } from "@/examples/base/ui/calendar"
+
+import { Calendar } from "@/styles/base-nova/ui/calendar"
 
 export default function CalendarDemo() {
   const [date, setDate] = React.useState<Date | undefined>(new Date())

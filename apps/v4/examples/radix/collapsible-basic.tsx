@@ -1,12 +1,11 @@
-import { Button } from "@/examples/radix/ui/button"
-import { Card, CardContent } from "@/examples/radix/ui/card"
+import { ChevronDownIcon } from "@/registry/icons/__lucide__"
+import { Button } from "@/styles/radix-nova/ui/button"
+import { Card, CardContent } from "@/styles/radix-nova/ui/card"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/radix/ui/collapsible"
-
-import { ChevronDownIcon } from "@/registry/icons/__lucide__"
+} from "@/styles/radix-nova/ui/collapsible"
 
 export function CollapsibleBasic() {
   return (

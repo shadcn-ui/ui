@@ -1,6 +1,6 @@
 ---
 title: Input OTP
-description: Accessible one-time password component with copy paste functionality.
+description: Accessible one-time password component with copy-paste functionality.
 base: radix
 component: true
 links:
@@ -80,6 +80,27 @@ import {
     <InputOTPSlot index={5} />
   </InputOTPGroup>
 </InputOTP>
+```
+
+## Composition
+
+Use the following composition to build an `InputOTP`:
+
+```text
+InputOTP
+├── InputOTPGroup
+│   ├── InputOTPSlot
+│   ├── InputOTPSlot
+│   └── InputOTPSlot
+├── InputOTPSeparator
+├── InputOTPGroup
+│   ├── InputOTPSlot
+│   ├── InputOTPSlot
+│   └── InputOTPSlot
+├── InputOTPSeparator
+└── InputOTPGroup
+    ├── InputOTPSlot
+    └── InputOTPSlot
 ```
 
 ## Pattern

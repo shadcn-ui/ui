@@ -1,12 +1,18 @@
 "use client"
 
 import * as React from "react"
+import { Search } from "lucide-react"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/examples/radix/ui-rtl/field"
+} from "@/styles/radix-nova/ui-rtl/field"
 import {
   InputGroup,
   InputGroupAddon,
@@ -14,14 +20,8 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/examples/radix/ui-rtl/input-group"
-import { Spinner } from "@/examples/radix/ui-rtl/spinner"
-import { Search } from "lucide-react"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/radix-nova/ui-rtl/input-group"
+import { Spinner } from "@/styles/radix-nova/ui-rtl/spinner"
 
 const translations: Translations = {
   en: {

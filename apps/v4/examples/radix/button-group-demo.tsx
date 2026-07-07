@@ -1,8 +1,20 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/radix/ui/button"
-import { ButtonGroup } from "@/examples/radix/ui/button-group"
+import {
+  ArchiveIcon,
+  ArrowLeftIcon,
+  CalendarPlusIcon,
+  ClockIcon,
+  ListFilterIcon,
+  MailCheckIcon,
+  MoreHorizontalIcon,
+  TagIcon,
+  Trash2Icon,
+} from "lucide-react"
+
+import { Button } from "@/styles/radix-nova/ui/button"
+import { ButtonGroup } from "@/styles/radix-nova/ui/button-group"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,18 +27,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/examples/radix/ui/dropdown-menu"
-import {
-  ArchiveIcon,
-  ArrowLeftIcon,
-  CalendarPlusIcon,
-  ClockIcon,
-  ListFilterIcon,
-  MailCheckIcon,
-  MoreHorizontalIcon,
-  TagIcon,
-  Trash2Icon,
-} from "lucide-react"
+} from "@/styles/radix-nova/ui/dropdown-menu"
 
 export default function ButtonGroupDemo() {
   const [label, setLabel] = React.useState("personal")

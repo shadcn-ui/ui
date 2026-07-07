@@ -1,5 +1,8 @@
 "use client"
 
+import { FrameIcon, MapIcon, PieChartIcon, PlusIcon } from "lucide-react"
+import { toast, Toaster } from "sonner"
+
 import {
   Sidebar,
   SidebarContent,
@@ -11,9 +14,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/examples/base/ui/sidebar"
-import { FrameIcon, MapIcon, PieChartIcon, PlusIcon } from "lucide-react"
-import { toast, Toaster } from "sonner"
+} from "@/styles/base-nova/ui/sidebar"
 
 export default function AppSidebar() {
   return (

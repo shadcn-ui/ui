@@ -1,5 +1,9 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/base/ui/avatar"
-import { Button } from "@/examples/base/ui/button"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/styles/base-nova/ui/avatar"
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -7,7 +11,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/examples/base/ui/empty"
+} from "@/styles/base-nova/ui/empty"
 
 export default function EmptyAvatar() {
   return (

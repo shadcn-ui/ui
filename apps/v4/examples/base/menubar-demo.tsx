@@ -13,7 +13,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "@/examples/base/ui/menubar"
+} from "@/styles/base-nova/ui/menubar"
 
 export default function MenubarDemo() {
   return (

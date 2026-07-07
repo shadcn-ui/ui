@@ -1,11 +1,13 @@
-import { Button } from "@/examples/base/ui/button"
+import { MoreHorizontalIcon } from "lucide-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/examples/base/ui/dropdown-menu"
+} from "@/styles/base-nova/ui/dropdown-menu"
 import {
   Table,
   TableBody,
@@ -13,8 +15,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/examples/base/ui/table"
-import { MoreHorizontalIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/table"
 
 export function TableActions() {
   return (

@@ -32,6 +32,6 @@ module.exports = {
     "@ianvs/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss",
   ],
-  tailwindStylesheet: "./apps/v4/styles/globals.css",
+  tailwindStylesheet: "./apps/v4/app/globals.css",
   tailwindFunctions: ["cn", "cva"],
 }

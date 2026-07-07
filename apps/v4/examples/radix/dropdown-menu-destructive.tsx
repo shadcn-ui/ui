@@ -1,4 +1,6 @@
-import { Button } from "@/examples/radix/ui/button"
+import { PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
+
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,8 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/examples/radix/ui/dropdown-menu"
-import { PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/dropdown-menu"
 
 export function DropdownMenuDestructive() {
   return (

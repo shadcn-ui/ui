@@ -1,13 +1,14 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
+import { ChevronsUpDown } from "lucide-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/base/ui/collapsible"
-import { ChevronsUpDown } from "lucide-react"
+} from "@/styles/base-nova/ui/collapsible"
 
 export default function CollapsibleDemo() {
   const [isOpen, setIsOpen] = React.useState(false)

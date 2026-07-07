@@ -2,7 +2,7 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/examples/radix/ui/resizable"
+} from "@/styles/radix-nova/ui/resizable"
 
 export function ResizableVertical() {
   return (

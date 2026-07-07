@@ -1,4 +1,4 @@
-import { Button } from "@/examples/base/ui/button"
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/base/ui/dialog"
+} from "@/styles/base-nova/ui/dialog"
 
 export function DialogScrollableContent() {
   return (

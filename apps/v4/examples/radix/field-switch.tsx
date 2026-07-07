@@ -1,5 +1,5 @@
-import { Field, FieldLabel } from "@/examples/radix/ui/field"
-import { Switch } from "@/examples/radix/ui/switch"
+import { Field, FieldLabel } from "@/styles/radix-nova/ui/field"
+import { Switch } from "@/styles/radix-nova/ui/switch"
 
 export default function FieldSwitch() {
   return (

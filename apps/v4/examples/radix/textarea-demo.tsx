@@ -1,4 +1,4 @@
-import { Textarea } from "@/examples/radix/ui/textarea"
+import { Textarea } from "@/styles/radix-nova/ui/textarea"
 
 export default function TextareaDemo() {
   return <Textarea placeholder="Type your message here." />

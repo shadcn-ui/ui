@@ -118,9 +118,6 @@ export function MobileNav({
               Menu
             </div>
             <div className="flex flex-col gap-3">
-              <MobileLink href="/" onOpenChange={setOpen}>
-                Home
-              </MobileLink>
               {items.map((item, index) => (
                 <MobileLink key={index} href={item.href} onOpenChange={setOpen}>
                   {item.label}

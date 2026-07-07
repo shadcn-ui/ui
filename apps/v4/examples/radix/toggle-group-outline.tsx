@@ -1,4 +1,7 @@
-import { ToggleGroup, ToggleGroupItem } from "@/examples/radix/ui/toggle-group"
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/styles/radix-nova/ui/toggle-group"
 
 export function ToggleGroupOutline() {
   return (

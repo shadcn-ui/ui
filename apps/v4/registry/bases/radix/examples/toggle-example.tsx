@@ -68,6 +68,7 @@ function ToggleOutline() {
             hugeicons="TextItalicIcon"
             phosphor="TextItalicIcon"
             remixicon="RiItalic"
+            data-icon="inline-start"
           />
           Italic
         </Toggle>
@@ -78,6 +79,7 @@ function ToggleOutline() {
             hugeicons="TextBoldIcon"
             phosphor="TextBIcon"
             remixicon="RiBold"
+            data-icon="inline-start"
           />
           Bold
         </Toggle>
@@ -233,6 +235,7 @@ function ToggleWithButtonIconText() {
               hugeicons="TextBoldIcon"
               phosphor="TextBIcon"
               remixicon="RiBold"
+              data-icon="inline-start"
             />
             Toggle
           </Toggle>
@@ -243,9 +246,9 @@ function ToggleWithButtonIconText() {
               lucide="ItalicIcon"
               tabler="IconItalic"
               hugeicons="TextItalicIcon"
+              data-icon="inline-start"
               phosphor="TextItalicIcon"
               remixicon="RiItalic"
-              data-icon="inline-start"
             />
             Button
           </Button>
@@ -260,6 +263,7 @@ function ToggleWithButtonIconText() {
               hugeicons="TextItalicIcon"
               phosphor="TextItalicIcon"
               remixicon="RiItalic"
+              data-icon="inline-start"
             />
             Toggle
           </Toggle>
@@ -283,6 +287,7 @@ function ToggleWithButtonIconText() {
               hugeicons="TextUnderlineIcon"
               phosphor="TextUnderlineIcon"
               remixicon="RiUnderline"
+              data-icon="inline-start"
             />
             Toggle
           </Toggle>
@@ -329,6 +334,7 @@ function ToggleWithIcon() {
             phosphor="BookmarkIcon"
             remixicon="RiBookmarkLine"
             className="group-data-[state=on]/toggle:fill-accent-foreground"
+            data-icon="inline-start"
           />
           Bookmark
         </Toggle>

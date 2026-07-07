@@ -38,7 +38,7 @@ npm install radix-ui
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource
+<ComponentSource styleName="radix-nova"
   name="avatar"
   title="components/ui/avatar.tsx"
 
@@ -63,6 +63,32 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
   <AvatarImage src="https://github.com/shadcn.png" />
   <AvatarFallback>CN</AvatarFallback>
 </Avatar>
+```
+
+## Composition
+
+Use the following composition to build an `Avatar`:
+
+```text
+Avatar
+├── AvatarImage
+├── AvatarFallback
+└── AvatarBadge
+```
+
+Use the following composition to build an `AvatarGroup`:
+
+```text
+AvatarGroup
+├── Avatar
+│   ├── AvatarImage
+│   ├── AvatarFallback
+│   └── AvatarBadge
+├── Avatar
+│   ├── AvatarImage
+│   ├── AvatarFallback
+│   └── AvatarBadge
+└── AvatarGroupCount
 ```
 
 ## Examples

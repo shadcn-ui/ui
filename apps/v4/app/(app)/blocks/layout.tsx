@@ -56,7 +56,7 @@ export default function BlocksLayout({
             <a href="#blocks">Browse Blocks</a>
           </Button>
           <Button asChild variant="ghost" size="sm">
-            <Link href="/docs/blocks">Add a block</Link>
+            <Link href="/docs/components">View Components</Link>
           </Button>
         </PageActions>
       </PageHeader>

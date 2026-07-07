@@ -14,7 +14,7 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/radix/resizable",
-      "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/resizable-example.tsx",
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/resizable-example.tsx",
       "api": "https://github.com/bvaughn/react-resizable-panels"
     }
   },

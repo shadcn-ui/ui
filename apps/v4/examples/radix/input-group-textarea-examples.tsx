@@ -1,25 +1,26 @@
 import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/examples/radix/ui/field"
-import { Input } from "@/examples/radix/ui/input"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupText,
-  InputGroupTextarea,
-} from "@/examples/radix/ui/input-group"
-import { Textarea } from "@/examples/radix/ui/textarea"
-import {
   ArrowUpIcon,
   CodeIcon,
   CopyIcon,
   InfoIcon,
   RefreshCwIcon,
 } from "lucide-react"
+
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/styles/radix-nova/ui/field"
+import { Input } from "@/styles/radix-nova/ui/input"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/styles/radix-nova/ui/input-group"
+import { Textarea } from "@/styles/radix-nova/ui/textarea"
 
 export function InputGroupTextareaExamples() {
   return (

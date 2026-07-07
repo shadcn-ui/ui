@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Slider } from "@/examples/radix/ui-rtl/slider"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Slider } from "@/styles/radix-nova/ui-rtl/slider"
 
 const translations: Translations = {
   en: {

@@ -1,6 +1,9 @@
+import { existsSync, promises as fs } from "fs"
+import path from "path"
 import { afterEach, describe, expect, test, vi } from "vitest"
 
 import type { Config } from "../../src/utils/get-config"
+import { getConfig } from "../../src/utils/get-config"
 
 // Mock external dependencies.
 vi.mock("../../src/registry/resolver", () => ({
@@ -94,9 +97,22 @@ import {
 } from "../../src/utils/dry-run-formatter"
 import type { DryRunResult } from "../../src/utils/dry-run"
 import { resolveRegistryTree } from "../../src/registry/resolver"
+import { getProjectInfo } from "../../src/utils/get-project-info"
+import { transform } from "../../src/utils/transformers"
+import { transformAsChild } from "../../src/utils/transformers/transform-aschild"
+import { transformCleanup } from "../../src/utils/transformers/transform-cleanup"
+import { transformCssVars as transformCssVarsTransformer } from "../../src/utils/transformers/transform-css-vars"
+import { transformIcons } from "../../src/utils/transformers/transform-icons"
+import { transformImport } from "../../src/utils/transformers/transform-import"
+import { transformMenu } from "../../src/utils/transformers/transform-menu"
+import { transformRsc } from "../../src/utils/transformers/transform-rsc"
+import { transformRtl } from "../../src/utils/transformers/transform-rtl"
+import { transformTwPrefixes } from "../../src/utils/transformers/transform-tw-prefix"
 
 afterEach(() => {
   vi.clearAllMocks()
+  vi.mocked(existsSync).mockReturnValue(false)
+  vi.mocked(fs.readFile).mockResolvedValue("" as never)
 })
 
 function createMockConfig(overrides: Partial<Config> = {}): Config {
@@ -407,6 +423,244 @@ describe("dryRunComponents", () => {
     await expect(
       dryRunComponents(["nonexistent"], config)
     ).rejects.toThrow("Failed to fetch components from registry.")
+  })
+
+  test("should skip package-import files when final rewritten content matches", async () => {
+    const tempDir = path.join(
+      path.resolve(__dirname, "../fixtures"),
+      "temp-dry-run-package-import-same"
+    )
+    const actualFs = (await vi.importActual("fs")) as typeof import("fs")
+
+    try {
+      vi.mocked(existsSync).mockImplementation(actualFs.existsSync)
+      vi.mocked(fs.readFile).mockImplementation(actualFs.promises.readFile as never)
+      vi.mocked(getProjectInfo).mockResolvedValue({
+        framework: { name: "vite" } as any,
+        isSrcDir: true,
+        isRSC: false,
+        isTsx: true,
+        tailwindConfigFile: null,
+        tailwindCssFile: "src/index.css",
+        tailwindVersion: "v4",
+        frameworkVersion: null,
+        aliasPrefix: "#",
+      })
+
+      await actualFs.promises.rm(tempDir, { recursive: true, force: true })
+      await actualFs.promises.mkdir(path.join(tempDir, "src", "components", "ui"), {
+        recursive: true,
+      })
+      await actualFs.promises.mkdir(path.join(tempDir, "src", "lib"), {
+        recursive: true,
+      })
+
+      await actualFs.promises.writeFile(
+        path.join(tempDir, "package.json"),
+        JSON.stringify(
+          {
+            name: "temp-dry-run-package-import-same",
+            type: "module",
+            imports: {
+              "#components/*": "./src/components/*",
+              "#lib/*": "./src/lib/*",
+            },
+          },
+          null,
+          2
+        ),
+        "utf-8"
+      )
+
+      await actualFs.promises.writeFile(
+        path.join(tempDir, "tsconfig.json"),
+        JSON.stringify(
+          {
+            files: [],
+            references: [{ path: "./tsconfig.app.json" }],
+          },
+          null,
+          2
+        ),
+        "utf-8"
+      )
+
+      await actualFs.promises.writeFile(
+        path.join(tempDir, "tsconfig.app.json"),
+        JSON.stringify(
+          {
+            compilerOptions: {
+              module: "esnext",
+              moduleResolution: "bundler",
+              baseUrl: ".",
+              paths: {
+                "#components/*": ["./src/components/*"],
+                "#lib/*": ["./src/lib/*"],
+              },
+            },
+          },
+          null,
+          2
+        ),
+        "utf-8"
+      )
+
+      await actualFs.promises.writeFile(
+        path.join(tempDir, "src", "index.css"),
+        '@import "tailwindcss";\n',
+        "utf-8"
+      )
+
+      await actualFs.promises.writeFile(
+        path.join(tempDir, "src", "lib", "utils.ts"),
+        "export function cn(...inputs: unknown[]) {\n  return inputs\n}\n",
+        "utf-8"
+      )
+
+      await actualFs.promises.writeFile(
+        path.join(tempDir, "src", "components", "ui", "button.tsx"),
+        `import { cn } from "#lib/utils.ts"
+
+export function Button() {
+  return <button>{cn("button")}</button>
+}
+`,
+        "utf-8"
+      )
+
+      const config = createMockConfig({
+        rsc: false,
+        aliases: {
+          components: "#components",
+          utils: "#lib/utils",
+          ui: "#components/ui",
+          lib: "#lib",
+          hooks: undefined,
+        },
+        resolvedPaths: {
+          cwd: tempDir,
+          tailwindConfig: "",
+          tailwindCss: path.join(tempDir, "src", "index.css"),
+          utils: path.join(tempDir, "src", "lib", "utils.ts"),
+          components: path.join(tempDir, "src", "components"),
+          lib: path.join(tempDir, "src", "lib"),
+          hooks: path.join(tempDir, "src", "hooks"),
+          ui: path.join(tempDir, "src", "components", "ui"),
+        },
+      })
+
+      vi.mocked(resolveRegistryTree).mockResolvedValue({
+        name: "button",
+        files: [
+          {
+            path: "registry/default/ui/button.tsx",
+            type: "registry:ui",
+            content: `import { cn } from "#lib/utils"
+
+export function Button() {
+  return <button>{cn("button")}</button>
+}
+`,
+          },
+        ],
+        dependencies: [],
+        devDependencies: [],
+      })
+
+      const result = await dryRunComponents(["button"], config)
+
+      expect(result.files).toHaveLength(1)
+      expect(result.files[0]).toMatchObject({
+        path: "src/components/ui/button.tsx",
+        action: "skip",
+      })
+      expect(result.files[0].content).toContain(`from "#lib/utils.ts"`)
+    } finally {
+      await actualFs.promises.rm(tempDir, { recursive: true, force: true })
+    }
+  })
+
+  test("should rewrite app-local files to workspace utils aliases in monorepo dry-runs", async () => {
+    const actualFs = (await vi.importActual("fs")) as typeof import("fs")
+    const actualTransformModule = (await vi.importActual(
+      "../../src/utils/transformers"
+    )) as typeof import("../../src/utils/transformers")
+    const actualTransformImportModule = (await vi.importActual(
+      "../../src/utils/transformers/transform-import"
+    )) as typeof import("../../src/utils/transformers/transform-import")
+    const cwd = path.resolve(
+      __dirname,
+      "../fixtures/frameworks/vite-monorepo-imports/apps/web"
+    )
+
+    vi.mocked(existsSync).mockImplementation(actualFs.existsSync)
+    vi.mocked(fs.readFile).mockImplementation(actualFs.promises.readFile as never)
+    vi.mocked(getProjectInfo).mockResolvedValue({
+      framework: { name: "vite" } as any,
+      isSrcDir: true,
+      isRSC: false,
+      isTsx: true,
+      tailwindConfigFile: null,
+      tailwindCssFile: "../../packages/ui/src/styles/globals.css",
+      tailwindVersion: "v4",
+      frameworkVersion: null,
+      aliasPrefix: "#",
+    })
+    vi.mocked(transform).mockImplementationOnce(actualTransformModule.transform)
+    vi.mocked(transformImport).mockImplementationOnce(
+      actualTransformImportModule.transformImport
+    )
+
+    for (const transformer of [
+      transformRsc,
+      transformCssVarsTransformer,
+      transformTwPrefixes,
+      transformIcons,
+      transformMenu,
+      transformAsChild,
+      transformRtl,
+      transformCleanup,
+    ]) {
+      vi.mocked(transformer).mockImplementationOnce(async ({ sourceFile }) => {
+        return sourceFile
+      })
+    }
+
+    const config = await getConfig(cwd)
+    if (!config) {
+      throw new Error("Failed to get monorepo app config")
+    }
+
+    vi.mocked(resolveRegistryTree).mockResolvedValue({
+      name: "login-03",
+      files: [
+        {
+          path: "registry/components/login-form.tsx",
+          type: "registry:component",
+          content: `import { cn } from "@/lib/utils"
+
+export function LoginForm() {
+  return <div>{cn("login")}</div>
+}
+`,
+        },
+      ],
+      dependencies: [],
+      devDependencies: [],
+    })
+
+    const result = await dryRunComponents(["login-03"], config)
+
+    expect(result.files).toHaveLength(1)
+    expect(result.files[0]).toMatchObject({
+      path: "src/components/login-form.tsx",
+      action: "create",
+      type: "registry:component",
+    })
+    expect(result.files[0].content).toContain(
+      `from "@workspace/ui/lib/utils"`
+    )
+    expect(result.files[0].content).not.toContain(`from "#lib/utils"`)
   })
 })
 

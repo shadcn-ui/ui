@@ -1,5 +1,5 @@
-import { Button } from "@/examples/radix/ui/button"
-import { Kbd } from "@/examples/radix/ui/kbd"
+import { Button } from "@/styles/radix-nova/ui/button"
+import { Kbd } from "@/styles/radix-nova/ui/kbd"
 
 export default function KbdButton() {
   return (

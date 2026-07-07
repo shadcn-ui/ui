@@ -50,7 +50,7 @@ function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
   return (
     <tr
       data-slot="table-row"
-      className={cn("cn-table-row", className)}
+      className={cn("cn-table-row has-aria-expanded:bg-muted/50", className)}
       {...props}
     />
   )

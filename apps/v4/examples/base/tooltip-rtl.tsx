@@ -1,16 +1,15 @@
 "use client"
 
-import { Button } from "@/examples/base/ui-rtl/button"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/examples/base/ui-rtl/tooltip"
-
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Button } from "@/styles/base-nova/ui-rtl/button"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/styles/base-nova/ui-rtl/tooltip"
 
 const translations: Translations = {
   en: {

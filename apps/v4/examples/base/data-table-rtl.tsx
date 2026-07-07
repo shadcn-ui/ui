@@ -1,27 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui-rtl/button"
-import { Checkbox } from "@/examples/base/ui-rtl/checkbox"
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/examples/base/ui-rtl/dropdown-menu"
-import { Input } from "@/examples/base/ui-rtl/input"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/examples/base/ui-rtl/table"
 import {
   flexRender,
   getCoreRowModel,
@@ -40,6 +19,27 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Button } from "@/styles/base-nova/ui-rtl/button"
+import { Checkbox } from "@/styles/base-nova/ui-rtl/checkbox"
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/styles/base-nova/ui-rtl/dropdown-menu"
+import { Input } from "@/styles/base-nova/ui-rtl/input"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/styles/base-nova/ui-rtl/table"
 
 const translations: Translations = {
   en: {

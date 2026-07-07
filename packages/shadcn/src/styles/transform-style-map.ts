@@ -21,6 +21,7 @@ const ALLOWLIST = new Set([
   "cn-menu-translucent",
   "cn-logical-sides",
   "cn-rtl-flip",
+  "cn-font-heading",
 ])
 
 function isStringLiteralLike(

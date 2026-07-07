@@ -5,7 +5,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/examples/radix/ui/select"
+} from "@/styles/radix-nova/ui/select"
 
 export function SelectDisabled() {
   return (

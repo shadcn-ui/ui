@@ -1,8 +1,16 @@
 "use client"
 
 import * as React from "react"
-import { Field, FieldDescription, FieldLabel } from "@/examples/base/ui/field"
-import { ToggleGroup, ToggleGroupItem } from "@/examples/base/ui/toggle-group"
+
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/styles/base-nova/ui/field"
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/styles/base-nova/ui/toggle-group"
 
 export function ToggleGroupFontWeightSelector() {
   const [fontWeight, setFontWeight] = React.useState("normal")

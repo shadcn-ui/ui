@@ -55,32 +55,6 @@ npx shadcn@latest add sidebar
 
 </CodeTabs>
 
-## Structure
-
-A `Sidebar` component is composed of the following parts:
-
-- `SidebarProvider` - Handles collapsible state.
-- `Sidebar` - The sidebar container.
-- `SidebarHeader` and `SidebarFooter` - Sticky at the top and bottom of the sidebar.
-- `SidebarContent` - Scrollable content.
-- `SidebarGroup` - Section within the `SidebarContent`.
-- `SidebarTrigger` - Trigger for the `Sidebar`.
-
-<Image
-  src="/images/sidebar-structure.png"
-  width="716"
-  height="420"
-  alt="Sidebar Structure"
-  className="mt-6 w-full overflow-hidden rounded-lg border dark:hidden"
-/>
-<Image
-  src="/images/sidebar-structure-dark.png"
-  width="716"
-  height="420"
-  alt="Sidebar Structure"
-  className="mt-6 hidden w-full overflow-hidden rounded-lg border dark:block"
-/>
-
 ## Usage
 
 ```tsx showLineNumbers title="app/layout.tsx"
@@ -122,6 +96,67 @@ export function AppSidebar() {
   )
 }
 ```
+
+## Composition
+
+Use the following composition to build a `Sidebar` layout:
+
+```text
+SidebarProvider
+├── Sidebar
+│   ├── SidebarHeader
+│   ├── SidebarContent
+│   │   ├── SidebarGroup
+│   │   │   ├── SidebarGroupLabel
+│   │   │   ├── SidebarGroupAction
+│   │   │   ├── SidebarGroupContent
+│   │   │   └── SidebarMenu
+│   │   │       ├── SidebarMenuItem
+│   │   │       │   ├── SidebarMenuButton
+│   │   │       │   ├── SidebarMenuAction
+│   │   │       │   └── SidebarMenuBadge
+│   │   │       └── SidebarMenuItem
+│   │   │           ├── SidebarMenuButton
+│   │   │           └── SidebarMenuSub
+│   │   │               ├── SidebarMenuSubItem
+│   │   │               └── SidebarMenuSubItem
+│   │   └── SidebarGroup
+│   │       └── SidebarMenu
+│   │           ├── SidebarMenuItem
+│   │           └── SidebarMenuItem
+│   ├── SidebarFooter
+│   └── SidebarRail
+├── SidebarInset
+└── SidebarTrigger
+```
+
+## Structure
+
+- **SidebarProvider** — Handles collapsible state and provides sidebar context to child components.
+- **Sidebar** — The main collapsible sidebar panel.
+- **SidebarHeader** — Sticky at the top; use for branding, titles, or workspace switchers.
+- **SidebarFooter** — Sticky at the bottom; use for user menus, settings, or actions.
+- **SidebarContent** — Scrollable region between the header and footer.
+- **SidebarGroup** — Groups related navigation with optional label, action, and content areas.
+- **SidebarMenu** / **SidebarMenuItem** — Menu structure for links, badges, actions, and nested submenus.
+- **SidebarRail** — Resize handle for adjusting sidebar width when applicable.
+- **SidebarInset** — Wraps main content when using the `inset` variant.
+- **SidebarTrigger** — Control that toggles the sidebar open or collapsed.
+
+<Image
+  src="/images/sidebar-structure.png"
+  width="716"
+  height="420"
+  alt="Sidebar Structure"
+  className="mt-6 w-full overflow-hidden rounded-lg border dark:hidden"
+/>
+<Image
+  src="/images/sidebar-structure-dark.png"
+  width="716"
+  height="420"
+  alt="Sidebar Structure"
+  className="mt-6 hidden w-full overflow-hidden rounded-lg border dark:block"
+/>
 
 ## SidebarProvider
 

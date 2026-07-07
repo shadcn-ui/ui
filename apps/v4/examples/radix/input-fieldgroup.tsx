@@ -1,11 +1,11 @@
-import { Button } from "@/examples/radix/ui/button"
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/examples/radix/ui/field"
-import { Input } from "@/examples/radix/ui/input"
+} from "@/styles/radix-nova/ui/field"
+import { Input } from "@/styles/radix-nova/ui/input"
 
 export function InputFieldgroup() {
   return (

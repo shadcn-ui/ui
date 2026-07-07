@@ -10,6 +10,7 @@
     "variable": "--font-sans",
     "subsets": [
       "latin"
-    ]
+    ],
+    "dependency": "@fontsource-variable/inter"
   }
 }

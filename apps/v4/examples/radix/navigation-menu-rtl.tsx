@@ -2,6 +2,11 @@
 
 import * as React from "react"
 import Link from "next/link"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,12 +15,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/examples/radix/ui-rtl/navigation-menu"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/radix-nova/ui-rtl/navigation-menu"
 
 const translations: Translations = {
   en: {

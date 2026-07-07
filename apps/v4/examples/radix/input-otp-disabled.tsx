@@ -3,7 +3,7 @@ import {
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/examples/radix/ui/input-otp"
+} from "@/styles/radix-nova/ui/input-otp"
 
 export function InputOTPDisabled() {
   return (

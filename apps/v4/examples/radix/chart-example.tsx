@@ -1,7 +1,8 @@
 "use client"
 
-import { ChartContainer, type ChartConfig } from "@/examples/radix/ui/chart"
 import { Bar, BarChart } from "recharts"
+
+import { ChartContainer, type ChartConfig } from "@/styles/radix-nova/ui/chart"
 
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },

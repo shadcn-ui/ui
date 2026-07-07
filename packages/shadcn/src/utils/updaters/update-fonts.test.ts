@@ -1211,10 +1211,111 @@ export default function RootLayout({
 
     // .variable should be on <html> for both fonts.
     expect(result).toContain("inter.variable")
-    expect(result).toContain("playfairDisplay.variable")
+    expect(result).toContain("playfairDisplayHeading.variable")
     // Only font-sans utility class should be on <html>, not font-heading.
     expect(result).toContain('"font-sans"')
     expect(result).not.toContain('"font-heading"')
+  })
+
+  it("should create a second variable declaration when body and heading use the same Google font", async () => {
+    const input = `
+import type { Metadata } from "next"
+import "./globals.css"
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const fonts = [
+      {
+        name: "font-inter",
+        type: "registry:font" as const,
+        font: {
+          family: "'Inter Variable', sans-serif",
+          provider: "google" as const,
+          import: "Inter",
+          variable: "--font-sans",
+          subsets: ["latin"],
+        },
+      },
+      {
+        name: "font-heading-inter",
+        type: "registry:font" as const,
+        font: {
+          family: "'Inter Variable', sans-serif",
+          provider: "google" as const,
+          import: "Inter",
+          variable: "--font-heading",
+          subsets: ["latin"],
+        },
+      },
+    ]
+
+    const result = await transformLayoutFonts(input, fonts, mockConfig)
+
+    expect(result).toContain('import { Inter } from "next/font/google";')
+    expect(result).toContain(
+      "const inter = Inter({subsets:['latin'],variable:'--font-sans'});"
+    )
+    expect(result).toContain(
+      "const interHeading = Inter({subsets:['latin'],variable:'--font-heading'});"
+    )
+    expect(result).toContain(
+      'className={cn("font-sans", inter.variable, interHeading.variable)}'
+    )
+    expect(result).not.toContain('"font-heading"')
+  })
+
+  it("should keep an existing heading font when adding the matching body font", async () => {
+    const input = `
+import { cn } from "@/lib/utils"
+import { Inter } from "next/font/google"
+
+const interHeading = Inter({subsets:['latin'],variable:'--font-heading'})
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" className={interHeading.variable}>
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const fonts = [
+      {
+        name: "font-inter",
+        type: "registry:font" as const,
+        font: {
+          family: "'Inter Variable', sans-serif",
+          provider: "google" as const,
+          import: "Inter",
+          variable: "--font-sans",
+          subsets: ["latin"],
+        },
+      },
+    ]
+
+    const result = await transformLayoutFonts(input, fonts, mockConfig)
+
+    expect(result).toContain('import { cn } from "@/lib/utils"')
+    expect(result).toContain(
+      "const inter = Inter({subsets:['latin'],variable:'--font-sans'});"
+    )
+    expect(result).toContain("interHeading.variable")
+    expect(result).toContain('"font-sans"')
+    expect(result).toContain("inter.variable")
   })
 })
 
@@ -1400,5 +1501,102 @@ describe("massageTreeForFonts", () => {
     expect(result.css!["@layer base"]["h1, h2, h3, h4, h5, h6"]).toEqual({
       "@apply font-heading": {},
     })
+  })
+
+  it("should not auto-apply non-root font roles without a selector", async () => {
+    const tree = {
+      fonts: [
+        {
+          name: "font-inter",
+          type: "registry:font" as const,
+          font: {
+            family: "'Inter Variable', sans-serif",
+            provider: "google" as const,
+            import: "Inter",
+            variable: "--font-sans",
+            subsets: ["latin"],
+          },
+        },
+        {
+          name: "font-heading-playfair-display",
+          type: "registry:font" as const,
+          font: {
+            family: "'Playfair Display Variable', serif",
+            provider: "google" as const,
+            import: "Playfair_Display",
+            variable: "--font-heading",
+            subsets: ["latin"],
+          },
+        },
+      ],
+    } as any
+
+    const result = await massageTreeForFonts(tree, {
+      resolvedPaths: { cwd: "/test" },
+    } as any)
+
+    expect(result.css!["@layer base"].html).toEqual({
+      "@apply font-sans": {},
+    })
+    expect(
+      Object.values(result.css!["@layer base"]).some((rule) =>
+        Object.keys(rule as Record<string, unknown>).some((key) =>
+          key.includes("font-heading")
+        )
+      )
+    ).toBe(false)
+  })
+
+  it("should install non-variable font using dependency field", async () => {
+    const tree = {
+      fonts: [
+        {
+          name: "font-lato",
+          type: "registry:font" as const,
+          font: {
+            family: "'Lato', sans-serif",
+            provider: "google" as const,
+            import: "Lato",
+            variable: "--font-sans",
+            weight: ["400", "700"],
+            dependency: "@fontsource/lato",
+          },
+        },
+      ],
+    } as any
+
+    const result = await massageTreeForFonts(tree, {
+      resolvedPaths: { cwd: "/test" },
+    } as any)
+
+    expect(result.dependencies).toContain("@fontsource/lato")
+    expect(result.dependencies).not.toContain("@fontsource-variable/lato")
+    expect(result.css).toHaveProperty('@import "@fontsource/lato"')
+    expect(result.cssVars!.theme!["--font-sans"]).toBe("'Lato', sans-serif")
+  })
+
+  it("should fall back to @fontsource-variable when no dependency is specified", async () => {
+    const tree = {
+      fonts: [
+        {
+          name: "font-inter",
+          type: "registry:font" as const,
+          font: {
+            family: "'Inter Variable', sans-serif",
+            provider: "google" as const,
+            import: "Inter",
+            variable: "--font-sans",
+            subsets: ["latin"],
+          },
+        },
+      ],
+    } as any
+
+    const result = await massageTreeForFonts(tree, {
+      resolvedPaths: { cwd: "/test" },
+    } as any)
+
+    expect(result.dependencies).toContain("@fontsource-variable/inter")
+    expect(result.css).toHaveProperty('@import "@fontsource-variable/inter"')
   })
 })

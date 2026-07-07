@@ -1,16 +1,16 @@
 "use client"
 
 import * as React from "react"
-import {
-  Progress,
-  ProgressLabel,
-  ProgressValue,
-} from "@/examples/base/ui-rtl/progress"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import {
+  Progress,
+  ProgressLabel,
+  ProgressValue,
+} from "@/styles/base-nova/ui-rtl/progress"
 
 const translations: Translations = {
   en: {

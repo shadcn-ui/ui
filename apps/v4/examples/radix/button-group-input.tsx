@@ -1,7 +1,8 @@
-import { Button } from "@/examples/radix/ui/button"
-import { ButtonGroup } from "@/examples/radix/ui/button-group"
-import { Input } from "@/examples/radix/ui/input"
 import { SearchIcon } from "lucide-react"
+
+import { Button } from "@/styles/radix-nova/ui/button"
+import { ButtonGroup } from "@/styles/radix-nova/ui/button-group"
+import { Input } from "@/styles/radix-nova/ui/input"
 
 export default function ButtonGroupInput() {
   return (

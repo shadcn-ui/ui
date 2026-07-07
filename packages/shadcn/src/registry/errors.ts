@@ -214,15 +214,50 @@ export class RegistryNotConfiguredError extends RegistryError {
 export class RegistryLocalFileError extends RegistryError {
   constructor(
     public readonly filePath: string,
-    cause?: unknown
+    cause?: unknown,
+    options: {
+      message?: string
+      context?: Record<string, unknown>
+      suggestion?: string
+    } = {}
   ) {
-    super(`Failed to read local registry file: ${filePath}`, {
-      code: RegistryErrorCode.LOCAL_FILE_ERROR,
-      cause,
-      context: { filePath },
-      suggestion: "Check if the file exists and you have read permissions.",
-    })
+    super(
+      options.message ?? `Failed to read local registry file: ${filePath}`,
+      {
+        code: RegistryErrorCode.LOCAL_FILE_ERROR,
+        cause,
+        context: { filePath, ...options.context },
+        suggestion:
+          options.suggestion ??
+          "Check if the file exists and you have read permissions.",
+      }
+    )
     this.name = "RegistryLocalFileError"
+  }
+}
+
+export class RegistrySourceFileError extends RegistryError {
+  constructor(
+    public readonly filePath: string,
+    cause?: unknown,
+    options: {
+      message?: string
+      context?: Record<string, unknown>
+      suggestion?: string
+    } = {}
+  ) {
+    super(
+      options.message ?? `Failed to read registry source file: ${filePath}`,
+      {
+        code: RegistryErrorCode.FETCH_ERROR,
+        cause,
+        context: { filePath, ...options.context },
+        suggestion:
+          options.suggestion ??
+          "Check if the source file exists and is accessible.",
+      }
+    )
+    this.name = "RegistrySourceFileError"
   }
 }
 
@@ -231,12 +266,18 @@ export class RegistryParseError extends RegistryError {
 
   constructor(
     public readonly item: string,
-    parseError: unknown
+    parseError: unknown,
+    options: {
+      subject?: string
+      context?: Record<string, unknown>
+      suggestion?: string
+    } = {}
   ) {
-    let message = `Failed to parse registry item: ${item}`
+    const subject = options.subject ?? "registry item"
+    let message = `Failed to parse ${subject}: ${item}`
 
     if (parseError instanceof z.ZodError) {
-      message = `Failed to parse registry item: ${item}\n${parseError.errors
+      message = `Failed to parse ${subject}: ${item}\n${parseError.errors
         .map((e) => `  - ${e.path.join(".")}: ${e.message}`)
         .join("\n")}`
     }
@@ -244,12 +285,52 @@ export class RegistryParseError extends RegistryError {
     super(message, {
       code: RegistryErrorCode.PARSE_ERROR,
       cause: parseError,
-      context: { item },
-      suggestion: `The registry item may be corrupted or have an invalid format. Please make sure it returns a valid JSON object. See ${SHADCN_URL}/schema/registry-item.json.`,
+      context: { item, ...options.context },
+      suggestion:
+        options.suggestion ??
+        `The registry item may be corrupted or have an invalid format. Please make sure it returns a valid JSON object. See ${SHADCN_URL}/schema/registry-item.json.`,
     })
 
     this.parseError = parseError
     this.name = "RegistryParseError"
+  }
+}
+
+export class RegistryValidationError extends RegistryError {
+  constructor(
+    message: string,
+    options: {
+      registryFile?: string
+      cause?: unknown
+      context?: Record<string, unknown>
+      suggestion?: string
+    } = {}
+  ) {
+    super(message, {
+      code: RegistryErrorCode.VALIDATION_ERROR,
+      cause: options.cause,
+      context: {
+        ...(options.registryFile ? { registryFile: options.registryFile } : {}),
+        ...options.context,
+      },
+      suggestion:
+        options.suggestion ??
+        "Update the registry.json file and try running the command again.",
+    })
+    this.name = "RegistryValidationError"
+  }
+}
+
+export class RegistryItemNotFoundError extends RegistryError {
+  constructor(public readonly itemName: string) {
+    super(`Registry item "${itemName}" was not found.`, {
+      code: RegistryErrorCode.NOT_FOUND,
+      statusCode: 404,
+      context: { itemName },
+      suggestion:
+        "Check that the item name exists in the resolved registry catalog.",
+    })
+    this.name = "RegistryItemNotFoundError"
   }
 }
 

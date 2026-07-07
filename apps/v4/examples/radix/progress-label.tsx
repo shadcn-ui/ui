@@ -1,5 +1,5 @@
-import { Field, FieldLabel } from "@/examples/radix/ui/field"
-import { Progress } from "@/examples/radix/ui/progress"
+import { Field, FieldLabel } from "@/styles/radix-nova/ui/field"
+import { Progress } from "@/styles/radix-nova/ui/progress"
 
 export function ProgressWithLabel() {
   return (

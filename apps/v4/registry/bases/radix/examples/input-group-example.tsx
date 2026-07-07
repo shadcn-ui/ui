@@ -481,28 +481,6 @@ function InputGroupWithTooltip({
             This is a description of the input group.
           </FieldDescription>
         </Field>
-        <Field>
-          <FieldLabel htmlFor="url">Button Group</FieldLabel>
-          <ButtonGroup>
-            <ButtonGroupText>https://</ButtonGroupText>
-            <InputGroup>
-              <InputGroupInput id="url" />
-              <InputGroupAddon align="inline-end">
-                <IconPlaceholder
-                  lucide="InfoIcon"
-                  tabler="IconInfoCircle"
-                  hugeicons="AlertCircleIcon"
-                  phosphor="InfoIcon"
-                  remixicon="RiInformationLine"
-                />
-              </InputGroupAddon>
-            </InputGroup>
-            <ButtonGroupText>.com</ButtonGroupText>
-          </ButtonGroup>
-          <FieldDescription>
-            This is a description of the input group.
-          </FieldDescription>
-        </Field>
       </FieldGroup>
     </Example>
   )

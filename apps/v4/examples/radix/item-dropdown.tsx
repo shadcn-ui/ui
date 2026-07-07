@@ -1,22 +1,27 @@
 "use client"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/radix/ui/avatar"
-import { Button } from "@/examples/radix/ui/button"
+import { ChevronDownIcon } from "lucide-react"
+
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/styles/radix-nova/ui/avatar"
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/radix/ui/dropdown-menu"
+} from "@/styles/radix-nova/ui/dropdown-menu"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/examples/radix/ui/item"
-import { ChevronDownIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/item"
 
 const people = [
   {

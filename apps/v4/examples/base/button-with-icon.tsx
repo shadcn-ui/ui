@@ -1,5 +1,6 @@
-import { Button } from "@/examples/base/ui/button"
 import { IconGitBranch, IconGitFork } from "@tabler/icons-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
 
 export default function ButtonWithIcon() {
   return (

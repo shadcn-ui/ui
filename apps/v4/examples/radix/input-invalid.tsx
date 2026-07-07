@@ -1,5 +1,9 @@
-import { Field, FieldDescription, FieldLabel } from "@/examples/radix/ui/field"
-import { Input } from "@/examples/radix/ui/input"
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/styles/radix-nova/ui/field"
+import { Input } from "@/styles/radix-nova/ui/input"
 
 export function InputInvalid() {
   return (

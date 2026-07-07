@@ -1,5 +1,6 @@
-import { Toggle } from "@/examples/base/ui/toggle"
 import { BookmarkIcon } from "lucide-react"
+
+import { Toggle } from "@/styles/base-nova/ui/toggle"
 
 export function ToggleDemo() {
   return (

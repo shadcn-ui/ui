@@ -7,8 +7,8 @@ import {
   FieldLegend,
   FieldSet,
   FieldTitle,
-} from "@/examples/radix/ui/field"
-import { RadioGroup, RadioGroupItem } from "@/examples/radix/ui/radio-group"
+} from "@/styles/radix-nova/ui/field"
+import { RadioGroup, RadioGroupItem } from "@/styles/radix-nova/ui/radio-group"
 
 export function RadioFields() {
   return (

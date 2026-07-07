@@ -2,6 +2,7 @@ import os from "os"
 import path from "path"
 import type { RegistryItem } from "@/src/registry/schema"
 import type { Config } from "@/src/utils/get-config"
+import { parsePnpmWorkspacePackages } from "@/src/utils/get-monorepo-info"
 import { handleError } from "@/src/utils/handle-error"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
@@ -99,6 +100,10 @@ function getInstallArgs(packageManager: string): string[] {
       // pnpm enables frozen lockfile in CI by default.
       // The template lockfile may drift, so force-disable it explicitly.
       return ["--no-frozen-lockfile"]
+    case "yarn":
+      // Yarn enables immutable installs in CI by default.
+      // New template projects need to create their lockfile on first install.
+      return ["--no-immutable"]
     default:
       return []
   }
@@ -122,28 +127,29 @@ async function adaptWorkspaceConfig(
     await fs.remove(lockFilePath)
   }
 
-  const isMonorepo = fs.existsSync(pnpmWorkspacePath)
+  const hasPnpmWorkspaceConfig = fs.existsSync(pnpmWorkspacePath)
+  const workspacePatterns = hasPnpmWorkspaceConfig
+    ? parsePnpmWorkspacePackages(await fs.readFile(pnpmWorkspacePath, "utf8"))
+    : []
+  const isMonorepo = workspacePatterns.length > 0
 
-  // Update root package.json: strip "packageManager" field to avoid
-  // triggering Corepack, and add "workspaces" for npm/bun/yarn.
+  // Update root package.json: update "packageManager" field for the
+  // target package manager, and add "workspaces" for npm/bun/yarn.
   if (fs.existsSync(packageJsonPath)) {
     const packageJsonContent = await fs.readFile(packageJsonPath, "utf8")
     const packageJson = JSON.parse(packageJsonContent)
-    delete packageJson.packageManager
 
     if (isMonorepo) {
-      // Read workspace patterns from pnpm-workspace.yaml.
-      const workspaceContent = await fs.readFile(pnpmWorkspacePath, "utf8")
-      const patterns: string[] = []
-      for (const line of workspaceContent.split("\n")) {
-        const match = line.match(/^\s*-\s*["']?(.+?)["']?\s*$/)
-        if (match) {
-          patterns.push(match[1])
-        }
-      }
+      // Monorepo templates use turbo which requires packageManager.
+      // Replace the pnpm value with the target package manager.
+      packageJson.packageManager =
+        await getPackageManagerVersion(packageManager)
+    } else {
+      delete packageJson.packageManager
+    }
 
-      packageJson.workspaces = patterns
-      await fs.remove(pnpmWorkspacePath)
+    if (isMonorepo) {
+      packageJson.workspaces = workspacePatterns
     }
 
     await fs.writeFile(
@@ -152,11 +158,25 @@ async function adaptWorkspaceConfig(
     )
   }
 
+  if (hasPnpmWorkspaceConfig) {
+    await fs.remove(pnpmWorkspacePath)
+  }
+
   // Rewrite workspace: protocol references in nested package.json files.
   // npm does not support workspace: protocol; bun and yarn do, so only
   // rewrite for npm monorepo templates.
   if (isMonorepo && packageManager === "npm") {
     await rewriteWorkspaceProtocol(projectPath)
+  }
+}
+
+// Get the package manager name and version string (e.g. "bun@1.2.0").
+async function getPackageManagerVersion(packageManager: string) {
+  try {
+    const { stdout } = await execa(packageManager, ["--version"])
+    return `${packageManager}@${stdout.trim()}`
+  } catch {
+    return `${packageManager}@*`
   }
 }
 

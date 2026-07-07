@@ -1,4 +1,8 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/radix/ui/avatar"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/styles/radix-nova/ui/avatar"
 
 export default function AvatarDemo() {
   return (

@@ -9,6 +9,8 @@ import {
   isPresetCode,
   isValidPreset,
   PRESET_BASE_COLORS,
+  PRESET_CHART_COLORS,
+  PRESET_FONT_HEADINGS,
   PRESET_FONTS,
   PRESET_ICON_LIBRARIES,
   PRESET_MENU_ACCENTS,
@@ -48,8 +50,10 @@ describe("encodePreset / decodePreset", () => {
       style: "lyra",
       baseColor: "zinc",
       theme: "blue",
+      chartColor: "emerald",
       iconLibrary: "tabler",
       font: "jetbrains-mono",
+      fontHeading: "playfair-display",
       radius: "large",
       menuAccent: "bold",
       menuColor: "inverted",
@@ -59,14 +63,14 @@ describe("encodePreset / decodePreset", () => {
     expect(decoded).toEqual(config)
   })
 
-  it("should produce short codes (max 9 chars)", () => {
+  it("should produce short codes (max 10 chars)", () => {
     const code = encodePreset(DEFAULT_PRESET_CONFIG)
-    expect(code.length).toBeLessThanOrEqual(9)
+    expect(code.length).toBeLessThanOrEqual(10)
   })
 
   it("should start with the version character", () => {
     const code = encodePreset(DEFAULT_PRESET_CONFIG)
-    expect(code[0]).toBe("a")
+    expect(code[0]).toBe("b")
   })
 
   it("should handle partial config by filling defaults", () => {
@@ -102,6 +106,14 @@ describe("encodePreset / decodePreset", () => {
     }
   })
 
+  it("should round-trip all font headings", () => {
+    for (const fontHeading of PRESET_FONT_HEADINGS) {
+      const code = encodePreset({ fontHeading })
+      const decoded = decodePreset(code)
+      expect(decoded!.fontHeading).toBe(fontHeading)
+    }
+  })
+
   it("should round-trip all icon libraries", () => {
     for (const iconLibrary of PRESET_ICON_LIBRARIES) {
       const code = encodePreset({ iconLibrary })
@@ -123,6 +135,14 @@ describe("encodePreset / decodePreset", () => {
       const code = encodePreset({ baseColor })
       const decoded = decodePreset(code)
       expect(decoded!.baseColor).toBe(baseColor)
+    }
+  })
+
+  it("should round-trip all chart colors", () => {
+    for (const chartColor of PRESET_CHART_COLORS) {
+      const code = encodePreset({ chartColor })
+      const decoded = decodePreset(code)
+      expect(decoded!.chartColor).toBe(chartColor)
     }
   })
 
@@ -154,11 +174,48 @@ describe("decodePreset edge cases", () => {
   })
 
   it("should return null for wrong version prefix", () => {
-    expect(decodePreset("b123")).toBeNull()
+    expect(decodePreset("c123")).toBeNull()
   })
 
   it("should return null for invalid base62 characters", () => {
     expect(decodePreset("A!@#")).toBeNull()
+  })
+})
+
+describe("v1/v2 backward compatibility", () => {
+  it("should decode old 'a'-prefixed codes without chartColor", () => {
+    const decoded = decodePreset("a0")
+    expect(decoded).not.toBeNull()
+    expect(decoded!.style).toBe("nova")
+    expect(decoded!.theme).toBe("neutral")
+    expect(decoded!.chartColor).toBeUndefined()
+    expect(decoded!.fontHeading).toBe("inherit")
+  })
+
+  it("should decode new 'b'-prefixed codes with chartColor", () => {
+    const code = encodePreset({ theme: "blue", chartColor: "emerald" })
+    expect(code[0]).toBe("b")
+    const decoded = decodePreset(code)
+    expect(decoded).not.toBeNull()
+    expect(decoded!.theme).toBe("blue")
+    expect(decoded!.chartColor).toBe("emerald")
+  })
+
+  it("should decode old b-prefixed codes with fontHeading defaulting to inherit", () => {
+    const decoded = decodePreset("b0")
+    expect(decoded).not.toBeNull()
+    expect(decoded!.fontHeading).toBe("inherit")
+  })
+
+  it("should encode always produces 'b'-prefixed codes", () => {
+    const code = encodePreset({})
+    expect(code[0]).toBe("b")
+  })
+
+  it("should accept both 'a' and 'b' in isPresetCode", () => {
+    expect(isPresetCode("a0")).toBe(true)
+    expect(isPresetCode("b0")).toBe(true)
+    expect(isPresetCode("c0")).toBe(false)
   })
 })
 
@@ -197,7 +254,7 @@ describe("isValidPreset", () => {
 
   it("should return false for invalid codes", () => {
     expect(isValidPreset("")).toBe(false)
-    expect(isValidPreset("b123")).toBe(false)
+    expect(isValidPreset("c123")).toBe(false)
   })
 })
 

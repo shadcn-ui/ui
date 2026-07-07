@@ -1,7 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalEnv": ["NODE_ENV"],
-  "pipeline": {
+  "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "env": [
@@ -42,20 +42,18 @@
     },
     "typecheck": {},
     "dev": {
-      "cache": false
+      "cache": false,
+      "persistent": true
     },
     "check": {
       "cache": false
     },
     "test": {
+      "dependsOn": ["^build"],
       "cache": false,
       "outputs": []
     },
     "registry:build": {
-      "cache": false,
-      "outputs": []
-    },
-    "registry": {
       "outputs": []
     }
   }

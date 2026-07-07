@@ -1,7 +1,8 @@
 "use client"
 
-import { Button } from "@/examples/base/ui/button"
 import { toast } from "sonner"
+
+import { Button } from "@/styles/base-nova/ui/button"
 
 export function SonnerPosition() {
   return (

@@ -1,27 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/radix/ui-rtl/button"
-import { Checkbox } from "@/examples/radix/ui-rtl/checkbox"
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/examples/radix/ui-rtl/dropdown-menu"
-import { Input } from "@/examples/radix/ui-rtl/input"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/examples/radix/ui-rtl/table"
 import {
   flexRender,
   getCoreRowModel,
@@ -40,6 +19,27 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Button } from "@/styles/radix-nova/ui-rtl/button"
+import { Checkbox } from "@/styles/radix-nova/ui-rtl/checkbox"
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/styles/radix-nova/ui-rtl/dropdown-menu"
+import { Input } from "@/styles/radix-nova/ui-rtl/input"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/styles/radix-nova/ui-rtl/table"
 
 const translations: Translations = {
   en: {

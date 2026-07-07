@@ -1,7 +1,8 @@
 "use client"
 
-import { Button } from "@/examples/radix/ui/button"
 import { toast } from "sonner"
+
+import { Button } from "@/styles/radix-nova/ui/button"
 
 export function SonnerPosition() {
   return (

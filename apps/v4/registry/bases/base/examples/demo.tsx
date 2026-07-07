@@ -16,7 +16,13 @@ import {
 import { Badge } from "@/registry/bases/base/ui/badge"
 import { Button } from "@/registry/bases/base/ui/button"
 import { ButtonGroup } from "@/registry/bases/base/ui/button-group"
-import { Card, CardContent } from "@/registry/bases/base/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/registry/bases/base/ui/card"
 import { Checkbox } from "@/registry/bases/base/ui/checkbox"
 import {
   DropdownMenu,
@@ -68,14 +74,14 @@ export function Demo() {
       <div className="grid max-w-3xl gap-4 sm:grid-cols-2">
         <div className="flex flex-col gap-4">
           <Card>
-            <CardContent className="flex flex-col gap-6">
-              <div className="flex flex-col gap-1">
-                <div className="text-2xl font-medium">Style Overview</div>
-                <div className="line-clamp-2 text-base text-muted-foreground">
-                  Designers love packing quirky glyphs into test phrases. This
-                  is a preview of the typography styles.
-                </div>
-              </div>
+            <CardHeader>
+              <CardTitle>Style Overview</CardTitle>
+              <CardDescription className="line-clamp-2">
+                Designers love packing quirky glyphs into test phrases. This is
+                a preview of the typography styles.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
               <div className="grid grid-cols-6 gap-3">
                 {[
                   "--background",
@@ -84,7 +90,7 @@ export function Demo() {
                   "--secondary",
                   "--muted",
                   "--accent",
-                  "--destructive",
+                  "--border",
                   "--chart-1",
                   "--chart-2",
                   "--chart-3",
@@ -114,7 +120,7 @@ export function Demo() {
           <Card>
             <CardContent>
               <div className="grid grid-cols-8 place-items-center gap-4">
-                <Card className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4">
+                <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="CopyIcon"
                     tabler="IconCopy"
@@ -123,7 +129,7 @@ export function Demo() {
                     remixicon="RiFileCopyLine"
                   />
                 </Card>
-                <Card className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4">
+                <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="CircleAlertIcon"
                     tabler="IconExclamationCircle"
@@ -132,7 +138,7 @@ export function Demo() {
                     remixicon="RiErrorWarningLine"
                   />
                 </Card>
-                <Card className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4">
+                <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="TrashIcon"
                     tabler="IconTrash"
@@ -141,7 +147,7 @@ export function Demo() {
                     remixicon="RiDeleteBinLine"
                   />
                 </Card>
-                <Card className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4">
+                <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="ShareIcon"
                     tabler="IconShare"
@@ -150,7 +156,7 @@ export function Demo() {
                     remixicon="RiShareLine"
                   />
                 </Card>
-                <Card className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4">
+                <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="ShoppingBagIcon"
                     tabler="IconShoppingBag"
@@ -159,7 +165,7 @@ export function Demo() {
                     remixicon="RiShoppingBagLine"
                   />
                 </Card>
-                <Card className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4">
+                <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="MoreHorizontalIcon"
                     tabler="IconDots"
@@ -168,7 +174,7 @@ export function Demo() {
                     remixicon="RiMoreLine"
                   />
                 </Card>
-                <Card className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4">
+                <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="Loader2Icon"
                     tabler="IconLoader"
@@ -177,7 +183,7 @@ export function Demo() {
                     remixicon="RiLoaderLine"
                   />
                 </Card>
-                <Card className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4">
+                <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="PlusIcon"
                     tabler="IconPlus"
@@ -186,7 +192,7 @@ export function Demo() {
                     remixicon="RiAddLine"
                   />
                 </Card>
-                <Card className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4">
+                <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="MinusIcon"
                     tabler="IconMinus"
@@ -195,7 +201,7 @@ export function Demo() {
                     remixicon="RiSubtractLine"
                   />
                 </Card>
-                <Card className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4">
+                <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="ArrowLeftIcon"
                     tabler="IconArrowLeft"
@@ -204,7 +210,7 @@ export function Demo() {
                     remixicon="RiArrowLeftLine"
                   />
                 </Card>
-                <Card className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4">
+                <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="ArrowRightIcon"
                     tabler="IconArrowRight"
@@ -213,7 +219,7 @@ export function Demo() {
                     remixicon="RiArrowRightLine"
                   />
                 </Card>
-                <Card className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4">
+                <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="CheckIcon"
                     tabler="IconCheck"
@@ -222,7 +228,7 @@ export function Demo() {
                     remixicon="RiCheckLine"
                   />
                 </Card>
-                <Card className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4">
+                <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="ChevronDownIcon"
                     tabler="IconChevronDown"
@@ -231,7 +237,7 @@ export function Demo() {
                     remixicon="RiArrowDownSLine"
                   />
                 </Card>
-                <Card className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4">
+                <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="ChevronRightIcon"
                     tabler="IconChevronRight"
@@ -240,7 +246,7 @@ export function Demo() {
                     remixicon="RiArrowRightSLine"
                   />
                 </Card>
-                <Card className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4">
+                <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="SearchIcon"
                     tabler="IconSearch"
@@ -249,7 +255,7 @@ export function Demo() {
                     remixicon="RiSearchLine"
                   />
                 </Card>
-                <Card className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4">
+                <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
                   <IconPlaceholder
                     lucide="SettingsIcon"
                     tabler="IconSettings"
@@ -270,7 +276,7 @@ export function Demo() {
                   <Button>Button</Button>
                   <Button variant="secondary">Secondary</Button>
                   <Button variant="outline">Outline</Button>
-                  <Button variant="destructive">Delete</Button>
+                  <Button variant="ghost">Ghost</Button>
                 </div>
                 <Item variant="outline">
                   <ItemContent>
@@ -373,7 +379,7 @@ export function Demo() {
                     <DropdownMenuContent
                       align="end"
                       side="top"
-                      className="w-40"
+                      className="w-fit"
                     >
                       <DropdownMenuGroup>
                         <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>

@@ -11,7 +11,7 @@ import {
   ComboboxLabel,
   ComboboxList,
   ComboboxSeparator,
-} from "@/examples/radix/ui/combobox"
+} from "@/styles/radix-nova/ui/combobox"
 
 const timezones = [
   {

@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils"
-import { Button } from "@/registry/new-york-v4/ui/button"
+import { Button } from "@/styles/base-nova/ui/button"
 
 export function OpenInV0Cta({ className }: React.ComponentProps<"div">) {
   return (
@@ -19,7 +19,7 @@ export function OpenInV0Cta({ className }: React.ComponentProps<"div">) {
         Vercel provides tools and infrastructure to deploy apps and features at
         scale.
       </div>
-      <Button size="sm" className="mt-2 w-fit">
+      <Button variant="outline" size="sm" className="mt-2 w-fit">
         Deploy Now
       </Button>
       <a

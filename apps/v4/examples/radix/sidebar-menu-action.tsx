@@ -1,11 +1,20 @@
 "use client"
 
 import {
+  FrameIcon,
+  LifeBuoyIcon,
+  MapIcon,
+  MoreHorizontalIcon,
+  PieChartIcon,
+  SendIcon,
+} from "lucide-react"
+
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/radix/ui/dropdown-menu"
+} from "@/styles/radix-nova/ui/dropdown-menu"
 import {
   Sidebar,
   SidebarContent,
@@ -17,15 +26,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/examples/radix/ui/sidebar"
-import {
-  FrameIcon,
-  LifeBuoyIcon,
-  MapIcon,
-  MoreHorizontalIcon,
-  PieChartIcon,
-  SendIcon,
-} from "lucide-react"
+} from "@/styles/radix-nova/ui/sidebar"
 
 const projects = [
   {

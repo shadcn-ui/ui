@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Checkbox } from "@/examples/radix/ui-rtl/checkbox"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
+import { Checkbox } from "@/styles/radix-nova/ui-rtl/checkbox"
 import {
   Field,
   FieldContent,
@@ -9,13 +14,8 @@ import {
   FieldGroup,
   FieldLabel,
   FieldTitle,
-} from "@/examples/radix/ui-rtl/field"
-import { Label } from "@/examples/radix/ui-rtl/label"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/radix-nova/ui-rtl/field"
+import { Label } from "@/styles/radix-nova/ui-rtl/label"
 
 const translations: Translations = {
   en: {

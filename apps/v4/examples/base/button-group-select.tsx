@@ -1,17 +1,18 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
-import { ButtonGroup } from "@/examples/base/ui/button-group"
-import { Input } from "@/examples/base/ui/input"
+import { ArrowRightIcon } from "lucide-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
+import { ButtonGroup } from "@/styles/base-nova/ui/button-group"
+import { Input } from "@/styles/base-nova/ui/input"
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
   SelectTrigger,
-} from "@/examples/base/ui/select"
-import { ArrowRightIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/select"
 
 const CURRENCIES = [
   { label: "US Dollar", value: "$" },
