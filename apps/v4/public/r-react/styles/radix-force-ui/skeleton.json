@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "registry/radix-force-ui/ui/skeleton.tsx",
-      "content": "import { cn } from \"@/registry/radix-force-ui/lib/utils\"\n\nfunction Skeleton({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"skeleton\"\n      className={cn(\n        \"animate-pulse rounded-md bg-muted motion-reduce:animate-none\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Skeleton }\n",
+      "content": "import { cn } from \"@/registry/radix-force-ui/lib/utils\"\n\nfunction Skeleton({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"skeleton\"\n      aria-hidden=\"true\" // [FORCE-UI] purely decorative; the loading state belongs on the container via aria-busy\n      className={cn(\n        \"animate-pulse rounded-md bg-muted motion-reduce:animate-none\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Skeleton }\n",
       "type": "registry:ui"
     }
   ],

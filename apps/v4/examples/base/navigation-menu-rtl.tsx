@@ -1,12 +1,12 @@
 "use client"
 
-import { CircleAlertIcon, CircleCheckIcon, CircleDashedIcon } from "@/examples/material-symbols"
-
 import * as React from "react"
 import Link from "next/link"
-
-
-
+import {
+  CircleAlertIcon,
+  CircleCheckIcon,
+  CircleDashedIcon,
+} from "@/examples/material-symbols"
 
 import {
   useTranslation,

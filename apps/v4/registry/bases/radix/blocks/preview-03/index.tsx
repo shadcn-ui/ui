@@ -6,10 +6,10 @@ import { Spinner } from "@/registry/bases/radix/ui/spinner"
 
 export default function Preview03Example() {
   return (
-    <div className="flex h-screen min-h-0 flex-col overflow-x-auto overflow-y-hidden bg-muted contain-[paint] [--gap:--spacing(4)] 3xl:[--gap:--spacing(12)] md:[--gap:--spacing(10)] dark:bg-background style-lyra:md:[--gap:--spacing(6)] style-mira:md:[--gap:--spacing(6)]">
+    <div className="style-lyra:md:[--gap:--spacing(6)] style-mira:md:[--gap:--spacing(6)] flex h-screen min-h-0 flex-col overflow-x-auto overflow-y-hidden bg-muted contain-[paint] [--gap:--spacing(4)] 3xl:[--gap:--spacing(12)] md:[--gap:--spacing(10)] dark:bg-background">
       <div className="flex min-h-0 w-full min-w-max flex-1 justify-center">
         <div
-          className="grid min-h-0 w-[2400px] grid-cols-7 items-start gap-(--gap) bg-muted p-(--gap) md:w-[3000px] dark:bg-background style-lyra:md:w-[2600px] style-mira:md:w-[2600px] *:[div]:gap-(--gap)"
+          className="style-lyra:md:w-[2600px] style-mira:md:w-[2600px] grid min-h-0 w-[2400px] grid-cols-7 items-start gap-(--gap) bg-muted p-(--gap) md:w-[3000px] dark:bg-background *:[div]:gap-(--gap)"
           data-slot="capture-target"
         >
           <div className="flex h-full min-h-0 flex-1 flex-col p-1 [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">

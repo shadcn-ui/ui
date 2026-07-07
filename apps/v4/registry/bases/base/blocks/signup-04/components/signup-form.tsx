@@ -40,7 +40,8 @@ export function SignupForm({
                 </FieldDescription>
               </Field>
               <Field>
-                <Field className="grid grid-cols-2 gap-4">
+                {/* [FORCE-UI] sm:grid-cols-2 so the two fields stack on narrow viewports instead of cramming */}
+                <Field className="grid gap-4 sm:grid-cols-2">
                   <Field>
                     <FieldLabel htmlFor="password">Password</FieldLabel>
                     <Input id="password" type="password" required />

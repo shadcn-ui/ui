@@ -1,12 +1,12 @@
 "use client"
 
-import { IconCheck, IconCopy, IconInfoCircle, IconStar } from "@/examples/material-symbols"
-
 import * as React from "react"
-
-
-
-
+import {
+  IconCheck,
+  IconCopy,
+  IconInfoCircle,
+  IconStar,
+} from "@/examples/material-symbols"
 
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import {

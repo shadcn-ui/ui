@@ -1,14 +1,14 @@
 "use client"
 
-import { Calculator, Calendar, CreditCard, Settings, Smile, User } from "@/examples/material-symbols"
-
 import * as React from "react"
-
-
-
-
-
-
+import {
+  Calculator,
+  Calendar,
+  CreditCard,
+  Settings,
+  Smile,
+  User,
+} from "@/examples/material-symbols"
 
 import {
   CommandDialog,

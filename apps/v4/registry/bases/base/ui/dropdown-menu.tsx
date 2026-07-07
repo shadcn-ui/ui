@@ -176,7 +176,9 @@ function DropdownMenuCheckboxItem({
       checked={checked}
       {...props}
     >
+      {/* [FORCE-UI] decorative — selection state is already conveyed by aria-checked on the item */}
       <span
+        aria-hidden="true"
         className="cn-dropdown-menu-item-indicator pointer-events-none"
         data-slot="dropdown-menu-checkbox-item-indicator"
       >
@@ -223,7 +225,9 @@ function DropdownMenuRadioItem({
       )}
       {...props}
     >
+      {/* [FORCE-UI] decorative — selection state is already conveyed by aria-checked on the item */}
       <span
+        aria-hidden="true"
         className="cn-dropdown-menu-item-indicator pointer-events-none"
         data-slot="dropdown-menu-radio-item-indicator"
       >
@@ -263,6 +267,7 @@ function DropdownMenuShortcut({
   return (
     <span
       data-slot="dropdown-menu-shortcut"
+      aria-hidden="true" // [FORCE-UI] the item's own text is the accessible name; the shortcut glyph is supplementary
       className={cn("cn-dropdown-menu-shortcut", className)}
       {...props}
     />

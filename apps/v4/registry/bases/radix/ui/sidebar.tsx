@@ -31,6 +31,18 @@ const SIDEBAR_WIDTH_MOBILE = "18rem"
 const SIDEBAR_WIDTH_ICON = "3rem"
 const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 
+// [FORCE-UI] guards the Cmd/Ctrl+B toggle shortcut against swallowing the
+// browser's native shortcuts (e.g. bold) while the user is typing
+function isTypingTarget(target: EventTarget | null): boolean {
+  if (!(target instanceof HTMLElement)) return false
+  return (
+    target.isContentEditable ||
+    target.tagName === "INPUT" ||
+    target.tagName === "TEXTAREA" ||
+    target.tagName === "SELECT"
+  )
+}
+
 type SidebarContextProps = {
   state: "expanded" | "collapsed"
   open: boolean
@@ -97,7 +109,8 @@ function SidebarProvider({
     const handleKeyDown = (event: KeyboardEvent) => {
       if (
         event.key === SIDEBAR_KEYBOARD_SHORTCUT &&
-        (event.metaKey || event.ctrlKey)
+        (event.metaKey || event.ctrlKey) &&
+        !isTypingTarget(event.target) // [FORCE-UI] don't swallow the browser's native shortcut while typing
       ) {
         event.preventDefault()
         toggleSidebar()
@@ -263,6 +276,7 @@ function SidebarTrigger({
       data-slot="sidebar-trigger"
       variant="ghost"
       size="icon-sm"
+      aria-keyshortcuts="Meta+B Control+B" // [FORCE-UI] advertises the Cmd/Ctrl+B toggle shortcut
       className={cn("cn-sidebar-trigger", className)}
       onClick={(event) => {
         onClick?.(event)
@@ -465,14 +479,25 @@ function SidebarMenu({ className, ...props }: React.ComponentProps<"ul">) {
   )
 }
 
-function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
+function SidebarMenuItem({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"li">) {
   return (
     <li
       data-slot="sidebar-menu-item"
       data-sidebar="menu-item"
       className={cn("group/menu-item relative", className)}
       {...props}
-    />
+    >
+      {children}
+      {/* [FORCE-UI] active-state accent indicator (maintainer-directed) — a real
+          sibling span, not a ::before on the button: the button's base class
+          carries overflow-hidden for label truncation, which clips a
+          pseudo-element regardless of its positioned ancestor. */}
+      <span aria-hidden="true" className="cn-sidebar-menu-item-indicator" />
+    </li>
   )
 }
 

@@ -107,15 +107,19 @@ function PaginationEllipsis({
 }: React.ComponentProps<"span">) {
   return (
     <span
-      aria-hidden
+      role="presentation"
       data-slot="pagination-ellipsis"
       className={cn(
-        "flex size-8 items-center justify-center [&_svg:not([class*='size-'])]:size-4",
+        "flex size-8 items-center justify-center [&_svg]:fill-current [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
     >
-      <MoreHorizontalIcon />
+      {/* [FORCE-UI] aria-hidden scoped to the icon only — hiding it on the host span
+          also hid the sr-only label below, a WCAG 4.1.2 defect */}
+      <span aria-hidden>
+        <MoreHorizontalIcon />
+      </span>
       <span className="sr-only">More pages</span>
     </span>
   )

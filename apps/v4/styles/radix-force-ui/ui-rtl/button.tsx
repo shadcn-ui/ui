@@ -1,5 +1,8 @@
+"use client"
+
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
+import { Loader2Icon } from "lucide-react"
 import { Slot } from "radix-ui"
 
 import { cn } from "@/lib/utils"
@@ -11,11 +14,11 @@ const buttonVariants = cva(
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary-hover",
         outline:
-          "border-border bg-background hover:bg-primary-subtle hover:text-foreground aria-expanded:bg-primary-subtle aria-expanded:text-foreground dark:border-input dark:bg-input/30",
+          "border-border bg-background text-muted-foreground hover:bg-primary-subtle hover:text-foreground focus-visible:text-muted-foreground aria-expanded:bg-primary-subtle aria-expanded:text-foreground dark:border-input dark:bg-input/30",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-primary-subtle aria-expanded:bg-primary-subtle aria-expanded:text-secondary-foreground",
         ghost:
-          "hover:bg-primary-subtle hover:text-foreground aria-expanded:bg-primary-subtle aria-expanded:text-foreground",
+          "text-muted-foreground hover:bg-primary-subtle hover:text-foreground focus-visible:text-muted-foreground aria-expanded:bg-primary-subtle aria-expanded:text-foreground",
         destructive:
           "bg-error-subtle text-error hover:border-destructive focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40",
         link: "text-link underline-offset-4 hover:underline",
@@ -46,21 +49,59 @@ function Button({
   variant = "default",
   size = "default",
   asChild = false,
+  loading = false,
+  disabled,
+  onClick,
+  children,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean
+    /** [FORCE-UI] shows a spinner and blocks interaction, for async actions — mirrors the Figma `State=Loading` variant */
+    loading?: boolean
   }) {
   const Comp = asChild ? Slot.Root : "button"
+  const isDisabled = disabled || loading
 
   return (
     <Comp
       data-slot="button"
       data-variant={variant}
       data-size={size}
+      data-loading={loading ? "" : undefined}
+      aria-busy={loading || undefined}
+      // [FORCE-UI] disabled has no effect when asChild renders an <a> — aria-disabled,
+      // tabIndex, and a click-guard make it behave the same as a real disabled button
+      aria-disabled={isDisabled || undefined}
+      disabled={asChild ? undefined : isDisabled}
+      tabIndex={asChild && isDisabled ? -1 : undefined}
+      onClick={(event) => {
+        if (isDisabled) {
+          event.preventDefault()
+          return
+        }
+        onClick?.(event)
+      }}
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
-    />
+    >
+      {asChild ? (
+        children
+      ) : (
+        <>
+          {loading && (
+            <span
+              data-slot="button-spinner"
+              aria-hidden="true"
+              className="inline-flex animate-spin"
+            >
+              <Loader2Icon />
+            </span>
+          )}
+          {children}
+        </>
+      )}
+    </Comp>
   )
 }
 

@@ -11,11 +11,33 @@ const props = defineProps<ToasterProps>()
 <template>
   <Sonner
     :class="cn('toaster group', props.class)"
+    rich-colors
+    close-button
     :style="{
-      '--normal-bg': 'var(--popover)',
-      '--normal-text': 'var(--popover-foreground)',
+      '--normal-bg': 'var(--surface)',
+      '--normal-text': 'var(--surface-foreground)',
       '--normal-border': 'var(--border)',
       '--border-radius': 'var(--radius)',
+      '--width': '312px',
+      '--success-bg': 'var(--success-subtle)',
+      '--success-border': 'var(--success)',
+      '--success-text': 'var(--success)',
+      '--warning-bg': 'var(--warning-subtle)',
+      '--warning-border': 'var(--warning)',
+      '--warning-text': 'var(--warning)',
+      '--info-bg': 'var(--info-subtle)',
+      '--info-border': 'var(--info)',
+      '--info-text': 'var(--info)',
+      '--error-bg': 'var(--error-subtle)',
+      '--error-border': 'var(--error)',
+      '--error-text': 'var(--error)',
+    }"
+    :toast-options="{
+      classNames: {
+        toast: 'cn-toast !items-start',
+        actionButton: '!bg-primary !text-primary-foreground',
+        cancelButton: '!bg-secondary !text-secondary-foreground',
+      },
     }"
     v-bind="props"
   >

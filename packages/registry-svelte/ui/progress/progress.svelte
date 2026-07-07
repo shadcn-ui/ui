@@ -21,7 +21,8 @@
 >
 	<div
 		data-slot="progress-indicator"
-		class="cn-progress-indicator size-full flex-1 transition-all"
+		data-state={value === null || value === undefined ? "indeterminate" : undefined}
+		class="cn-progress-indicator size-full flex-1 transition-all motion-reduce:transition-none data-[state=indeterminate]:animate-pulse motion-reduce:data-[state=indeterminate]:animate-none"
 		style="transform: translateX(-{100 - (100 * (value ?? 0)) / (max ?? 1)}%)"
 	></div>
 </ProgressPrimitive.Root>

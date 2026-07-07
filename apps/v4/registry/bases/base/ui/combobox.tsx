@@ -221,6 +221,25 @@ function ComboboxEmpty({ className, ...props }: ComboboxPrimitive.Empty.Props) {
   )
 }
 
+/**
+ * [FORCE-UI] announces live results/selection changes to screen readers as the
+ * user types or navigates — distinct from ComboboxEmpty, which only covers the
+ * no-results case. Render with `className="sr-only"` unless a visible status
+ * message is wanted.
+ */
+function ComboboxStatus({
+  className,
+  ...props
+}: ComboboxPrimitive.Status.Props) {
+  return (
+    <ComboboxPrimitive.Status
+      data-slot="combobox-status"
+      className={cn("cn-combobox-status", className)}
+      {...props}
+    />
+  )
+}
+
 function ComboboxSeparator({
   className,
   ...props
@@ -317,6 +336,7 @@ export {
   ComboboxLabel,
   ComboboxCollection,
   ComboboxEmpty,
+  ComboboxStatus,
   ComboboxSeparator,
   ComboboxChips,
   ComboboxChip,

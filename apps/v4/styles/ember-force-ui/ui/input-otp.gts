@@ -23,6 +23,7 @@ interface InputOTPContextValue {
   slots: SlotData[];
   activeIndex: number;
   handleSlotClick: (index: number) => void;
+  disabled: boolean;
 }
 
 interface ContextRegistry {
@@ -114,6 +115,8 @@ class InputOTP extends Component<InputOTPSignature> {
       slots: this.slots,
       activeIndex: this.activeIndex,
       handleSlotClick: this.handleSlotClick,
+      // [FORCE-UI] forward disabled so InputOTPSlot can apply the disabled-fill CSS
+      disabled: !!this.args.disabled,
     };
   }
 
@@ -289,6 +292,7 @@ class InputOTPSlot extends Component<InputOTPSlotSignature> {
         @class
       }}
       data-active={{if this.slotData.isActive "true" "false"}}
+      data-disabled={{if this.context.disabled "true" "false"}}
       data-slot="input-otp-slot"
       type="button"
       {{on "click" this.handleClick}}

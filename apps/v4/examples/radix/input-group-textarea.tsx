@@ -1,4 +1,9 @@
-import { IconBrandJavascript, IconCopy, IconCornerDownLeft, IconRefresh } from "@/examples/material-symbols"
+import {
+  IconBrandJavascript,
+  IconCopy,
+  IconCornerDownLeft,
+  IconRefresh,
+} from "@/examples/material-symbols"
 
 import {
   InputGroup,

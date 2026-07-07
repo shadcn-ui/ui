@@ -1,6 +1,13 @@
 "use client"
 
-import { FrameIcon, LifeBuoyIcon, MapIcon, MoreHorizontalIcon, PieChartIcon, SendIcon } from "@/examples/material-symbols"
+import {
+  FrameIcon,
+  LifeBuoyIcon,
+  MapIcon,
+  MoreHorizontalIcon,
+  PieChartIcon,
+  SendIcon,
+} from "@/examples/material-symbols"
 
 import {
   DropdownMenu,

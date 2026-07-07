@@ -67,7 +67,7 @@ export const SHADCN_VARS: Record<string, string> = {
   "sidebar-primary":               "color.bg.primary",
   "sidebar-primary-foreground":    "color.text.on-primary",
   "sidebar-accent":                "color.bg.interactive-hover",
-  "sidebar-accent-foreground":     "color.text.primary",
+  "sidebar-accent-foreground":     "color.text.primary-brand",
   "sidebar-border":                "color.border.default",
   "sidebar-ring":                  "color.border.focus",
 }

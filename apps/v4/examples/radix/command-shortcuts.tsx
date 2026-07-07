@@ -1,11 +1,11 @@
 "use client"
 
-import { CreditCardIcon, SettingsIcon, UserIcon } from "@/examples/material-symbols"
-
 import * as React from "react"
-
-
-
+import {
+  CreditCardIcon,
+  SettingsIcon,
+  UserIcon,
+} from "@/examples/material-symbols"
 
 import { Button } from "@/styles/radix-force-ui/ui/button"
 import {

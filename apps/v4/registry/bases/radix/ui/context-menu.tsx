@@ -25,11 +25,24 @@ function ContextMenuTrigger({
   )
 }
 
+// [FORCE-UI] links ContextMenuGroup to a ContextMenuLabel so the group's bare
+// role="group" gets an accessible name (WCAG 1.3.1/4.1.2)
+const ContextMenuGroupContext = React.createContext<{
+  labelId: string
+} | null>(null)
+
 function ContextMenuGroup({
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Group>) {
+  const labelId = React.useId()
   return (
-    <ContextMenuPrimitive.Group data-slot="context-menu-group" {...props} />
+    <ContextMenuGroupContext.Provider value={{ labelId }}>
+      <ContextMenuPrimitive.Group
+        data-slot="context-menu-group"
+        aria-labelledby={labelId}
+        {...props}
+      />
+    </ContextMenuGroupContext.Provider>
   )
 }
 
@@ -169,7 +182,11 @@ function ContextMenuCheckboxItem({
       checked={checked}
       {...props}
     >
-      <span className="cn-context-menu-item-indicator pointer-events-none">
+      {/* [FORCE-UI] decorative — selection state is already conveyed by aria-checked on the item */}
+      <span
+        aria-hidden="true"
+        className="cn-context-menu-item-indicator pointer-events-none"
+      >
         <ContextMenuPrimitive.ItemIndicator>
           <IconPlaceholder
             lucide="CheckIcon"
@@ -204,7 +221,11 @@ function ContextMenuRadioItem({
       )}
       {...props}
     >
-      <span className="cn-context-menu-item-indicator pointer-events-none">
+      {/* [FORCE-UI] decorative — selection state is already conveyed by aria-checked on the item */}
+      <span
+        aria-hidden="true"
+        className="cn-context-menu-item-indicator pointer-events-none"
+      >
         <ContextMenuPrimitive.ItemIndicator>
           <IconPlaceholder
             lucide="CheckIcon"
@@ -224,14 +245,17 @@ function ContextMenuRadioItem({
 function ContextMenuLabel({
   className,
   inset,
+  id,
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Label> & {
   inset?: boolean
 }) {
+  const groupContext = React.useContext(ContextMenuGroupContext)
   return (
     <ContextMenuPrimitive.Label
       data-slot="context-menu-label"
       data-inset={inset}
+      id={id ?? groupContext?.labelId}
       className={cn("cn-context-menu-label", className)}
       {...props}
     />
@@ -258,6 +282,7 @@ function ContextMenuShortcut({
   return (
     <span
       data-slot="context-menu-shortcut"
+      aria-hidden="true" // [FORCE-UI] the item's own text is the accessible name; the shortcut glyph is supplementary
       className={cn("cn-context-menu-shortcut", className)}
       {...props}
     />

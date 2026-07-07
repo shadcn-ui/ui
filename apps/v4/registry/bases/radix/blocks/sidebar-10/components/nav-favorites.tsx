@@ -45,7 +45,7 @@ export function NavFavorites({
               <DropdownMenuTrigger asChild>
                 <SidebarMenuAction
                   showOnHover
-                  className="aria-expanded:bg-muted"
+                  className="aria-expanded:bg-sidebar-accent aria-expanded:text-sidebar-accent-foreground" // [FORCE-UI] match sidebar's own hover/active accent token, not page-level muted
                 >
                   <IconPlaceholder
                     lucide="MoreHorizontalIcon"
@@ -55,7 +55,8 @@ export function NavFavorites({
                     phosphor="DotsThreeOutlineIcon"
                     remixicon="RiMoreLine"
                   />
-                  <span className="sr-only">More</span>
+                  {/* [FORCE-UI] item-specific accessible name — repeated "More" buttons are otherwise indistinguishable */}
+                  <span className="sr-only">More options for {item.name}</span>
                 </SidebarMenuAction>
               </DropdownMenuTrigger>
               <DropdownMenuContent

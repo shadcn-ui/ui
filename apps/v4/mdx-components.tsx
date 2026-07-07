@@ -2,6 +2,7 @@ import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 
+import { type PageTreeFolder } from "@/lib/page-tree"
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
@@ -11,7 +12,6 @@ import { CodeTabs } from "@/components/code-tabs"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { ComponentsList } from "@/components/components-list"
-import { type PageTreeFolder } from "@/lib/page-tree"
 import { CopyButton } from "@/components/copy-button"
 import { DirectoryList } from "@/components/directory-list"
 import { getIconForLanguageExtension } from "@/components/icons"
@@ -58,7 +58,10 @@ function ComponentsListWrapper({ variant }: { variant?: "all" | "new" }) {
   }
 
   return (
-    <ComponentsList componentsFolder={componentsFolder as PageTreeFolder} variant={variant} />
+    <ComponentsList
+      componentsFolder={componentsFolder as PageTreeFolder}
+      variant={variant}
+    />
   )
 }
 

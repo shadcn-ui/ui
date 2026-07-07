@@ -5,7 +5,11 @@ base: ember
 component: true
 ---
 
-<ComponentPreview framework="ember" name="card-demo" previewClassName="h-[30rem]" />
+<ComponentPreview
+  framework="ember"
+  name="card-demo"
+  previewClassName="h-[30rem]"
+/>
 
 ## Installation
 
@@ -95,23 +99,40 @@ Use the `@size="sm"` prop to set the size of the card to small. The small size v
 
 In addition to the `@size` prop, you can use the `--card-spacing` CSS variable to control the spacing between sections and the inset of card parts.
 
-<ComponentPreview framework="ember" name="card-spacing" previewClassName="h-[34rem]" />
+<ComponentPreview
+  framework="ember"
+  name="card-spacing"
+  previewClassName="h-[34rem]"
+/>
 
 Use negative margins with `-mx-(--card-spacing)` to make content go edge to edge while keeping it aligned with the card inset. When the edge-to-edge content sits above a footer, use `-mb-(--card-spacing)` on `CardContent` to remove the section gap.
 
-<ComponentPreview framework="ember" name="card-edge-to-edge" previewClassName="h-[24rem]" />
+<ComponentPreview
+  framework="ember"
+  name="card-edge-to-edge"
+  previewClassName="h-[24rem]"
+/>
 
 ### Image
 
 Add an image before the card header to create a card with an image.
 
-<ComponentPreview framework="ember" name="card-image" previewClassName="h-[32rem]" />
+<ComponentPreview
+  framework="ember"
+  name="card-image"
+  previewClassName="h-[32rem]"
+/>
 
 ## RTL
 
 To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
 
-<ComponentPreview framework="ember" name="card-rtl" direction="rtl" previewClassName="h-[30rem]" />
+<ComponentPreview
+  framework="ember"
+  name="card-rtl"
+  direction="rtl"
+  previewClassName="h-[30rem]"
+/>
 
 ## API Reference
 

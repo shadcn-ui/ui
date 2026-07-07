@@ -26,12 +26,13 @@ const alertVariants = cva(
 
 function Alert({
   className,
-  variant,
+  variant = "default",
   ...props
 }: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
   return (
     <div
       data-slot="alert"
+      data-variant={variant} // [FORCE-UI] styling/testing hook, matches badge/button/item/tabs/sidebar
       role="alert"
       className={cn(alertVariants({ variant }), className)}
       {...props}

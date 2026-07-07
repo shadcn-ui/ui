@@ -1,10 +1,7 @@
 "use client"
 
-import { Minus, Plus } from "@/examples/material-symbols"
-
 import * as React from "react"
-
-
+import { Minus, Plus } from "@/examples/material-symbols"
 import { Bar, BarChart, ResponsiveContainer } from "recharts"
 
 import { Button } from "@/styles/base-force-ui/ui/button"

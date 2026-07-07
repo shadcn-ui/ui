@@ -1,9 +1,7 @@
 "use client"
 
-import { ArrowRightIcon } from "@/examples/material-symbols"
-
 import * as React from "react"
-
+import { ArrowRightIcon } from "@/examples/material-symbols"
 
 import { Button } from "@/styles/radix-force-ui/ui/button"
 import { ButtonGroup } from "@/styles/radix-force-ui/ui/button-group"

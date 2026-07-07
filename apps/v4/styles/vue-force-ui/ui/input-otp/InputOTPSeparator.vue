@@ -10,7 +10,13 @@ const forwarded = useForwardProps(props)
 </script>
 
 <template>
-  <div data-slot="input-otp-separator" role="separator" v-bind="forwarded">
+  <div
+    data-slot="input-otp-separator"
+    class="cn-input-otp-separator"
+    role="separator"
+    aria-orientation="vertical"
+    v-bind="forwarded"
+  >
     <slot>
       <IconPlaceholder
         lucide="MinusIcon"

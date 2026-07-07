@@ -1,4 +1,8 @@
-import { BoldIcon, ItalicIcon, UnderlineIcon } from "@/examples/material-symbols"
+import {
+  BoldIcon,
+  ItalicIcon,
+  UnderlineIcon,
+} from "@/examples/material-symbols"
 
 import {
   ToggleGroup,

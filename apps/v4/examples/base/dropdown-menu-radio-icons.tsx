@@ -1,11 +1,11 @@
 "use client"
 
-import { Building2Icon, CreditCardIcon, WalletIcon } from "@/examples/material-symbols"
-
 import * as React from "react"
-
-
-
+import {
+  Building2Icon,
+  CreditCardIcon,
+  WalletIcon,
+} from "@/examples/material-symbols"
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 import {

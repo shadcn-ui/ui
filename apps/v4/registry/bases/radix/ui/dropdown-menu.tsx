@@ -53,11 +53,25 @@ function DropdownMenuContent({
   )
 }
 
+// [FORCE-UI] links DropdownMenuGroup to a DropdownMenuLabel so the group's
+// bare role="group" gets an accessible name (WCAG 1.3.1/4.1.2) instead of
+// being an unnamed region to assistive tech
+const DropdownMenuGroupContext = React.createContext<{
+  labelId: string
+} | null>(null)
+
 function DropdownMenuGroup({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Group>) {
+  const labelId = React.useId()
   return (
-    <DropdownMenuPrimitive.Group data-slot="dropdown-menu-group" {...props} />
+    <DropdownMenuGroupContext.Provider value={{ labelId }}>
+      <DropdownMenuPrimitive.Group
+        data-slot="dropdown-menu-group"
+        aria-labelledby={labelId}
+        {...props}
+      />
+    </DropdownMenuGroupContext.Provider>
   )
 }
 
@@ -104,7 +118,9 @@ function DropdownMenuCheckboxItem({
       checked={checked}
       {...props}
     >
+      {/* [FORCE-UI] decorative — selection state is already conveyed by aria-checked on the item */}
       <span
+        aria-hidden="true"
         className="cn-dropdown-menu-item-indicator pointer-events-none"
         data-slot="dropdown-menu-checkbox-item-indicator"
       >
@@ -153,7 +169,9 @@ function DropdownMenuRadioItem({
       )}
       {...props}
     >
+      {/* [FORCE-UI] decorative — selection state is already conveyed by aria-checked on the item */}
       <span
+        aria-hidden="true"
         className="cn-dropdown-menu-item-indicator pointer-events-none"
         data-slot="dropdown-menu-radio-item-indicator"
       >
@@ -176,14 +194,17 @@ function DropdownMenuRadioItem({
 function DropdownMenuLabel({
   className,
   inset,
+  id,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Label> & {
   inset?: boolean
 }) {
+  const groupContext = React.useContext(DropdownMenuGroupContext)
   return (
     <DropdownMenuPrimitive.Label
       data-slot="dropdown-menu-label"
       data-inset={inset}
+      id={id ?? groupContext?.labelId}
       className={cn("cn-dropdown-menu-label", className)}
       {...props}
     />
@@ -210,6 +231,7 @@ function DropdownMenuShortcut({
   return (
     <span
       data-slot="dropdown-menu-shortcut"
+      aria-hidden="true" // [FORCE-UI] the item's own text is the accessible name; the shortcut glyph is supplementary
       className={cn("cn-dropdown-menu-shortcut", className)}
       {...props}
     />

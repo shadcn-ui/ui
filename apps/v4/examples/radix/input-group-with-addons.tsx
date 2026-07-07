@@ -1,7 +1,14 @@
 "use client"
 
-import { CopyIcon, EyeOffIcon, InfoIcon, MicIcon, RadioIcon, SearchIcon, StarIcon } from "@/examples/material-symbols"
-
+import {
+  CopyIcon,
+  EyeOffIcon,
+  InfoIcon,
+  MicIcon,
+  RadioIcon,
+  SearchIcon,
+  StarIcon,
+} from "@/examples/material-symbols"
 import { toast } from "sonner"
 
 import {

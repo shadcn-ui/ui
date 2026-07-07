@@ -91,7 +91,7 @@
     },
     {
       "path": "registry/svelte-force-ui/ui/sidebar/sidebar-menu-item.svelte",
-      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLLIElement>, HTMLLIElement> = $props()\n</script>\n\n<li\n  bind:this={ref}\n  data-slot=\"sidebar-menu-item\"\n  data-sidebar=\"menu-item\"\n  class={cn(\"group/menu-item relative\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</li>\n",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLLIElement>, HTMLLIElement> = $props()\n</script>\n\n<li\n  bind:this={ref}\n  data-slot=\"sidebar-menu-item\"\n  data-sidebar=\"menu-item\"\n  class={cn(\"group/menu-item relative\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n  <!-- [FORCE-UI] active-state accent indicator, see style-force-ui.css -->\n  <span aria-hidden=\"true\" class=\"cn-sidebar-menu-item-indicator\"></span>\n</li>\n",
       "type": "registry:ui"
     },
     {

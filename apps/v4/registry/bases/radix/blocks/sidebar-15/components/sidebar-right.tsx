@@ -47,7 +47,7 @@ export function SidebarRight({
   return (
     <Sidebar
       collapsible="none"
-      className="sticky top-0 hidden h-svh border-l lg:flex"
+      className="sticky top-0 hidden h-svh border-l border-sidebar-border lg:flex" // [FORCE-UI] explicit sidebar border token, bare border-l has no colour
       {...props}
     >
       <SidebarHeader className="h-16 border-b border-sidebar-border">

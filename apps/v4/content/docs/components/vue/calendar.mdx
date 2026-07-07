@@ -72,6 +72,7 @@ import {
   toCalendar,
   today,
 } from "@internationalized/date"
+
 import { Calendar } from "@/components/ui/calendar"
 
 const date = ref(today(getLocalTimeZone())) as Ref<DateValue>
@@ -81,7 +82,12 @@ const placeholder = ref(
 </script>
 
 <template>
-  <Calendar v-model="date" v-model:placeholder="placeholder" locale="fa-IR" dir="rtl" />
+  <Calendar
+    v-model="date"
+    v-model:placeholder="placeholder"
+    locale="fa-IR"
+    dir="rtl"
+  />
 </template>
 ```
 

@@ -1,10 +1,7 @@
 "use client"
 
-import { BadgeCheck, BookmarkIcon } from "@/examples/material-symbols"
-
 import * as React from "react"
-
-
+import { BadgeCheck, BookmarkIcon } from "@/examples/material-symbols"
 
 import {
   useTranslation,

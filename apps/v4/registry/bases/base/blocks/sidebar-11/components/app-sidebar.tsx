@@ -112,20 +112,23 @@ function Tree({ item }: { item: TreeItem }) {
   const [name, ...items] = Array.isArray(item) ? item : [item]
   if (!items.length) {
     return (
-      <SidebarMenuButton
-        isActive={name === "button.tsx"}
-        className="data-[active=true]:bg-transparent"
-      >
-        <IconPlaceholder
-          lucide="FileIcon"
-          materialSymbols="description"
-          tabler="IconFile"
-          hugeicons="FileIcon"
-          phosphor="FileIcon"
-          remixicon="RiFileLine"
-        />
-        {name}
-      </SidebarMenuButton>
+      // [FORCE-UI] wrap in SidebarMenuItem — a bare button as a direct <ul> child is invalid list markup
+      <SidebarMenuItem>
+        <SidebarMenuButton
+          isActive={name === "button.tsx"}
+          className="data-[active=true]:bg-transparent"
+        >
+          <IconPlaceholder
+            lucide="FileIcon"
+            materialSymbols="description"
+            tabler="IconFile"
+            hugeicons="FileIcon"
+            phosphor="FileIcon"
+            remixicon="RiFileLine"
+          />
+          {name}
+        </SidebarMenuButton>
+      </SidebarMenuItem>
     )
   }
   return (

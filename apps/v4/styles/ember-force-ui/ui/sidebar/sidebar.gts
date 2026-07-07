@@ -641,6 +641,8 @@ const SidebarMenuItem: TOC<SidebarMenuItemSignature> = <template>
     ...attributes
   >
     {{yield}}
+    {{! [FORCE-UI] active-state accent indicator, see style-force-ui.css }}
+    <span aria-hidden="true" class="cn-sidebar-menu-item-indicator"></span>
   </li>
 </template>;
 

@@ -43,7 +43,7 @@ export function NavProjects({
                 render={
                   <SidebarMenuAction
                     showOnHover
-                    className="aria-expanded:bg-muted"
+                    className="aria-expanded:bg-sidebar-accent aria-expanded:text-sidebar-accent-foreground" // [FORCE-UI] match sidebar's own hover/active accent token, not page-level muted
                   />
                 }
               >

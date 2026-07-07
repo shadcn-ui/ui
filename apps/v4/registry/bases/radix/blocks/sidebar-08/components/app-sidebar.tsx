@@ -225,7 +225,8 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar variant="inset" {...props}>
-      <SidebarHeader>
+      {/* [FORCE-UI] border-b divider, no shadow — canonical inset-sidebar header layout */}
+      <SidebarHeader className="relative z-10 border-b border-sidebar-border">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>

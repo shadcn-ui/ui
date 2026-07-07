@@ -99,13 +99,18 @@ Wrap the `Accordion` in a `Card` component.
 
 To enable RTL support in Force UI, see the [RTL configuration guide](/docs/rtl).
 
-<ComponentPreview framework="vue" name="accordion-rtl" align="start" direction="rtl" />
+<ComponentPreview
+  framework="vue"
+  name="accordion-rtl"
+  align="start"
+  direction="rtl"
+/>
 
 ## API Reference
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| type | `"single" \| "multiple"` | `"single"` | Determines whether one or multiple items can be opened at the same time. |
-| collapsible | `boolean` | `false` | When `type` is `"single"`, allows closing content when clicking trigger for an open item. |
-| defaultValue | `string \| string[]` | — | The value of the item(s) to expand by default. |
-| disabled | `boolean` | `false` | When `true`, prevents the user from interacting with the accordion. |
+| Prop         | Type                     | Default    | Description                                                                               |
+| ------------ | ------------------------ | ---------- | ----------------------------------------------------------------------------------------- |
+| type         | `"single" \| "multiple"` | `"single"` | Determines whether one or multiple items can be opened at the same time.                  |
+| collapsible  | `boolean`                | `false`    | When `type` is `"single"`, allows closing content when clicking trigger for an open item. |
+| defaultValue | `string \| string[]`     | —          | The value of the item(s) to expand by default.                                            |
+| disabled     | `boolean`                | `false`    | When `true`, prevents the user from interacting with the accordion.                       |

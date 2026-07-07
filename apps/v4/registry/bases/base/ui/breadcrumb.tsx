@@ -108,21 +108,24 @@ function BreadcrumbEllipsis({
     <span
       data-slot="breadcrumb-ellipsis"
       role="presentation"
-      aria-hidden="true"
       className={cn(
         "cn-breadcrumb-ellipsis flex items-center justify-center",
         className
       )}
       {...props}
     >
-      <IconPlaceholder
-        lucide="MoreHorizontalIcon"
-        materialSymbols="more_horiz"
-        tabler="IconDots"
-        hugeicons="MoreHorizontalCircle01Icon"
-        phosphor="DotsThreeIcon"
-        remixicon="RiMoreLine"
-      />
+      {/* [FORCE-UI] aria-hidden scoped to the icon only — on the host it hid the
+          sr-only label too, a WCAG 4.1.2 defect */}
+      <span aria-hidden="true">
+        <IconPlaceholder
+          lucide="MoreHorizontalIcon"
+          materialSymbols="more_horiz"
+          tabler="IconDots"
+          hugeicons="MoreHorizontalCircle01Icon"
+          phosphor="DotsThreeIcon"
+          remixicon="RiMoreLine"
+        />
+      </span>
       <span className="sr-only">More</span>
     </span>
   )

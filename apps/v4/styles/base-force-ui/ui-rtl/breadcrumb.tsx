@@ -49,7 +49,7 @@ function BreadcrumbLink({
     props: mergeProps<"a">(
       {
         className: cn(
-          "rounded-xs transition-colors hover:text-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none",
+          "cursor-pointer rounded-xs transition-colors hover:text-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none motion-reduce:transition-none",
           className
         ),
       },
@@ -101,14 +101,17 @@ function BreadcrumbEllipsis({
     <span
       data-slot="breadcrumb-ellipsis"
       role="presentation"
-      aria-hidden="true"
       className={cn(
         "flex size-5 items-center justify-center [&>svg]:size-4",
         className
       )}
       {...props}
     >
-      <MoreHorizontalIcon />
+      {/* [FORCE-UI] aria-hidden scoped to the icon only — on the host it hid the
+          sr-only label too, a WCAG 4.1.2 defect */}
+      <span aria-hidden="true">
+        <MoreHorizontalIcon />
+      </span>
       <span className="sr-only">More</span>
     </span>
   )

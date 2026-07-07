@@ -21,7 +21,8 @@ function Progress({
     >
       <ProgressPrimitive.Indicator
         data-slot="progress-indicator"
-        className="cn-progress-indicator size-full flex-1 transition-all"
+        // [FORCE-UI] pulse the indicator when indeterminate (no value); WCAG 2.3.3 reduced-motion guard
+        className="cn-progress-indicator size-full flex-1 transition-all data-[state=indeterminate]:animate-pulse motion-reduce:transition-none motion-reduce:data-[state=indeterminate]:animate-none"
         style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
       />
     </ProgressPrimitive.Root>

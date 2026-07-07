@@ -1,11 +1,11 @@
 "use client"
 
-import { BellIcon, MailIcon, MessageSquareIcon } from "@/examples/material-symbols"
-
 import * as React from "react"
-
-
-
+import {
+  BellIcon,
+  MailIcon,
+  MessageSquareIcon,
+} from "@/examples/material-symbols"
 
 import { Button } from "@/styles/base-force-ui/ui/button"
 import {

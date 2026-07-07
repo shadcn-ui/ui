@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Command as CommandPrimitive } from "cmdk"
+import { Command as CommandPrimitive, useCommandState } from "cmdk"
 
 import { cn } from "@/registry/bases/radix/lib/utils"
 import {
@@ -17,8 +17,20 @@ import {
 } from "@/registry/bases/radix/ui/input-group"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
+function CommandResultsAnnouncer() {
+  const count = useCommandState((state) => state.filtered.count)
+  // stays silent at zero — CommandEmpty's own role="status" announces the
+  // no-results copy instead, avoiding two announcements for one state
+  return (
+    <span role="status" aria-live="polite" className="sr-only">
+      {count > 0 ? `${count} ${count === 1 ? "result" : "results"}` : ""}
+    </span>
+  )
+}
+
 function Command({
   className,
+  children,
   ...props
 }: React.ComponentProps<typeof CommandPrimitive>) {
   return (
@@ -29,7 +41,11 @@ function Command({
         className
       )}
       {...props}
-    />
+    >
+      {children}
+      {/* [FORCE-UI] WCAG 4.1.3 — announces the filtered result count as the user types */}
+      <CommandResultsAnnouncer />
+    </CommandPrimitive>
   )
 }
 
@@ -119,6 +135,7 @@ function CommandEmpty({
   return (
     <CommandPrimitive.Empty
       data-slot="command-empty"
+      role="status" // [FORCE-UI] announces the no-results copy when it appears; mutually exclusive with the root's count-announcer, which stays silent at zero
       className={cn("cn-command-empty", className)}
       {...props}
     />

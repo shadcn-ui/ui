@@ -1,4 +1,9 @@
-import { BadgeCheckIcon, BellIcon, CreditCardIcon, LogOutIcon } from "@/examples/material-symbols"
+import {
+  BadgeCheckIcon,
+  BellIcon,
+  CreditCardIcon,
+  LogOutIcon,
+} from "@/examples/material-symbols"
 
 import {
   Avatar,

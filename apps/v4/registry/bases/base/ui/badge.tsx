@@ -34,13 +34,30 @@ function Badge({
   className,
   variant = "default",
   render,
+  srLabel,
+  children,
   ...props
-}: useRender.ComponentProps<"span"> & VariantProps<typeof badgeVariants>) {
+}: useRender.ComponentProps<"span"> &
+  VariantProps<typeof badgeVariants> & {
+    /**
+     * [FORCE-UI] Visually-hidden text prefix announced before the badge's
+     * content. Status is otherwise conveyed only through color, which a
+     * screen reader can't perceive — set this on count- or glyph-only
+     * badges (e.g. `srLabel="Synced versions:"` on a bare "42").
+     */
+    srLabel?: string
+  }) {
   return useRender({
     defaultTagName: "span",
     props: mergeProps<"span">(
       {
         className: cn(badgeVariants({ variant }), className),
+        children: (
+          <>
+            {srLabel && <span className="sr-only">{srLabel} </span>}
+            {children}
+          </>
+        ),
       },
       props
     ),

@@ -12,7 +12,16 @@
 <Sonner
   theme={mode.current}
   class="toaster group"
-  style="--normal-bg: var(--color-popover); --normal-text: var(--color-popover-foreground); --normal-border: var(--color-border);"
+  richColors
+  closeButton
+  style="--normal-bg: var(--color-surface); --normal-text: var(--color-surface-foreground); --normal-border: var(--color-border); --width: 312px; --success-bg: var(--color-success-subtle); --success-border: var(--color-success); --success-text: var(--color-success); --warning-bg: var(--color-warning-subtle); --warning-border: var(--color-warning); --warning-text: var(--color-warning); --info-bg: var(--color-info-subtle); --info-border: var(--color-info); --info-text: var(--color-info); --error-bg: var(--color-error-subtle); --error-border: var(--color-error); --error-text: var(--color-error);"
+  toastOptions={{
+    classNames: {
+      toast: "cn-toast !items-start",
+      actionButton: "!bg-primary !text-primary-foreground",
+      cancelButton: "!bg-secondary !text-secondary-foreground",
+    },
+  }}
   {...restProps}
 >
   {#snippet loadingIcon()}

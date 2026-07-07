@@ -1,6 +1,9 @@
 <script lang="ts">
   import { cn } from "$lib/utils.js"
   import { PinInput as InputOTPPrimitive } from "bits-ui"
+  import { getContext } from "svelte"
+
+  import { INPUT_OTP_DISABLED_KEY } from "./disabled-context.js"
 
   let {
     ref = $bindable(null),
@@ -8,12 +11,15 @@
     class: className,
     ...restProps
   }: InputOTPPrimitive.CellProps = $props()
+
+  const disabled = getContext<() => boolean>(INPUT_OTP_DISABLED_KEY)
 </script>
 
 <InputOTPPrimitive.Cell
   {cell}
   bind:ref
   data-slot="input-otp-slot"
+  data-disabled={disabled?.()}
   class={cn(
     "cn-input-otp-slot relative flex items-center justify-center data-[active=true]:z-10",
     className

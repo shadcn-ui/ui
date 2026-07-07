@@ -1,6 +1,12 @@
 "use client"
 
-import { FrameIcon, LifeBuoyIcon, MapIcon, PieChartIcon, SendIcon } from "@/examples/material-symbols"
+import {
+  FrameIcon,
+  LifeBuoyIcon,
+  MapIcon,
+  PieChartIcon,
+  SendIcon,
+} from "@/examples/material-symbols"
 
 import {
   Sidebar,

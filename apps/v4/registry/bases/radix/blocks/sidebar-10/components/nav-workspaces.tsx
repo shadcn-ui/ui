@@ -58,6 +58,10 @@ export function NavWorkspaces({
                       phosphor="CaretRightIcon"
                       remixicon="RiArrowRightSLine"
                     />
+                    {/* [FORCE-UI] accessible name for the icon-only toggle */}
+                    <span className="sr-only">
+                      Toggle {workspace.name} pages
+                    </span>
                   </SidebarMenuAction>
                 </CollapsibleTrigger>
                 <SidebarMenuAction showOnHover>
@@ -69,6 +73,8 @@ export function NavWorkspaces({
                     phosphor="PlusIcon"
                     remixicon="RiAddLine"
                   />
+                  {/* [FORCE-UI] accessible name for the icon-only action */}
+                  <span className="sr-only">Add page to {workspace.name}</span>
                 </SidebarMenuAction>
                 <CollapsibleContent>
                   <SidebarMenuSub>

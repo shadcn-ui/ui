@@ -1,6 +1,10 @@
 import { BookOpenCheck, GitBranchIcon, SearchIcon } from "lucide-react"
 
-import { Marker, MarkerContent, MarkerIcon } from "@/styles/base-force-ui/ui/marker"
+import {
+  Marker,
+  MarkerContent,
+  MarkerIcon,
+} from "@/styles/base-force-ui/ui/marker"
 
 export function MarkerIconDemo() {
   return (

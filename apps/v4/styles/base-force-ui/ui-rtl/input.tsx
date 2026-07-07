@@ -9,7 +9,8 @@ const inputVariants = cva(
   {
     variants: {
       variant: {
-        outline: "border-border hover:border-input", // [FORCE-UI]
+        outline:
+          "border-border hover:border-input disabled:bg-muted dark:disabled:bg-muted", // [FORCE-UI]
         filled: "border-border bg-muted hover:border-input dark:bg-muted", // [FORCE-UI]
         underline:
           "rounded-none border-0 border-b border-input bg-transparent px-0 dark:bg-transparent", // [FORCE-UI]

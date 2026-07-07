@@ -1,9 +1,7 @@
 "use client"
 
-import { Clock2Icon } from "@/examples/material-symbols"
-
 import * as React from "react"
-
+import { Clock2Icon } from "@/examples/material-symbols"
 
 import { Calendar } from "@/styles/radix-force-ui/ui/calendar"
 import { Card, CardContent, CardFooter } from "@/styles/radix-force-ui/ui/card"

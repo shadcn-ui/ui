@@ -38,13 +38,36 @@ function AlertDialogOverlay({
   )
 }
 
+// [FORCE-UI] dev-only guard — an alert dialog has no backdrop/Escape dismissal,
+// so with neither an action nor a cancel button it traps the user (WCAG 2.1.2)
+function hasActionOrCancel(children: React.ReactNode): boolean {
+  return React.Children.toArray(children).some((child) => {
+    if (!React.isValidElement(child)) return false
+    if (child.type === AlertDialogAction || child.type === AlertDialogCancel) {
+      return true
+    }
+    const childProps = child.props as { children?: React.ReactNode }
+    return childProps?.children ? hasActionOrCancel(childProps.children) : false
+  })
+}
+
 function AlertDialogContent({
   className,
   size = "default",
+  children,
   ...props
 }: AlertDialogPrimitive.Popup.Props & {
   size?: "default" | "sm"
 }) {
+  React.useEffect(() => {
+    if (process.env.NODE_ENV !== "production" && !hasActionOrCancel(children)) {
+      console.warn(
+        "AlertDialogContent: no AlertDialogAction or AlertDialogCancel found — an alert dialog has no other way to dismiss (WCAG 2.1.2)."
+      )
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <AlertDialogPortal>
       <AlertDialogOverlay />
@@ -52,11 +75,13 @@ function AlertDialogContent({
         data-slot="alert-dialog-content"
         data-size={size}
         className={cn(
-          "group/alert-dialog-content fixed start-1/2 top-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl bg-popover p-4 text-popover-foreground ring-1 ring-foreground/10 duration-100 outline-none data-[size=default]:max-w-xs data-[size=sm]:max-w-xs data-[size=default]:sm:max-w-sm rtl:translate-x-1/2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+          "group/alert-dialog-content fixed start-1/2 top-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl bg-popover p-4 text-popover-foreground ring-1 ring-foreground/10 duration-100 outline-none data-[size=default]:max-w-xs data-[size=sm]:max-w-xs motion-reduce:animate-none data-[size=default]:sm:max-w-sm rtl:translate-x-1/2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
           className
         )}
         {...props}
-      />
+      >
+        {children}
+      </AlertDialogPrimitive.Popup>
     </AlertDialogPortal>
   )
 }

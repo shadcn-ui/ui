@@ -155,14 +155,18 @@ interface PaginationEllipsisSignature {
   };
 }
 
+// [FORCE-UI] aria-hidden scoped to the icon only — hiding it on the host span
+// also hid the sr-only label below, a WCAG 4.1.2 defect
 const PaginationEllipsis: TOC<PaginationEllipsisSignature> = <template>
   <span
-    aria-hidden="true"
+    role="presentation"
     class={{cn "cn-pagination-ellipsis flex items-center justify-center" @class}}
     data-slot="pagination-ellipsis"
     ...attributes
   >
-    <MoreHorizontal />
+    <span aria-hidden="true">
+      <MoreHorizontal />
+    </span>
     <span class="sr-only">More pages</span>
   </span>
 </template>;

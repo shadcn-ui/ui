@@ -86,7 +86,7 @@ export function TeamSwitcher({
             ))}
             <DropdownMenuSeparator />
             <DropdownMenuItem className="gap-2 p-2">
-              <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
+              <div className="flex size-6 items-center justify-center rounded-md border border-dashed bg-transparent">
                 <IconPlaceholder
                   lucide="PlusIcon"
                   materialSymbols="add"

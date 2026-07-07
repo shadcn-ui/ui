@@ -1,5 +1,6 @@
 import { promises as fsPromises } from "fs"
 import path from "path"
+import { materialSymbolNames } from "@/examples/material-symbols-map"
 import {
   createStyleMap,
   transformIcons,
@@ -9,7 +10,6 @@ import {
 } from "shadcn/utils"
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
 
-import { materialSymbolNames } from "@/examples/material-symbols-map"
 import { BASES } from "@/registry/bases"
 import { DEFAULT_CONFIG } from "@/registry/config"
 
@@ -93,7 +93,8 @@ function rewriteMaterialSymbolsHelperImport(code: string) {
 
       return names
         .map((name) => {
-          const iconName = materialSymbolNames[name as keyof typeof materialSymbolNames]
+          const iconName =
+            materialSymbolNames[name as keyof typeof materialSymbolNames]
           return iconName
             ? `import ${name} from "@material-symbols/svg-400/rounded/${iconName}.svg?react"`
             : null

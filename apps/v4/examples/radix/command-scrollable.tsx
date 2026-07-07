@@ -1,31 +1,31 @@
 "use client"
 
-import { BellIcon, CalculatorIcon, CalendarIcon, ClipboardPasteIcon, CodeIcon, CopyIcon, CreditCardIcon, FileTextIcon, FolderIcon, FolderPlusIcon, HelpCircleIcon, HomeIcon, ImageIcon, InboxIcon, LayoutGridIcon, ListIcon, PlusIcon, ScissorsIcon, SettingsIcon, TrashIcon, UserIcon, ZoomInIcon, ZoomOutIcon } from "@/examples/material-symbols"
-
 import * as React from "react"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import {
+  BellIcon,
+  CalculatorIcon,
+  CalendarIcon,
+  ClipboardPasteIcon,
+  CodeIcon,
+  CopyIcon,
+  CreditCardIcon,
+  FileTextIcon,
+  FolderIcon,
+  FolderPlusIcon,
+  HelpCircleIcon,
+  HomeIcon,
+  ImageIcon,
+  InboxIcon,
+  LayoutGridIcon,
+  ListIcon,
+  PlusIcon,
+  ScissorsIcon,
+  SettingsIcon,
+  TrashIcon,
+  UserIcon,
+  ZoomInIcon,
+  ZoomOutIcon,
+} from "@/examples/material-symbols"
 
 import { Button } from "@/styles/radix-force-ui/ui/button"
 import {

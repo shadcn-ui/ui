@@ -6,24 +6,33 @@ import { MinusIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+// [FORCE-UI] input-otp's OTPInputContext has no disabled field (it lives only on
+// the native <input>), so InputOTPSlot has no way to know it's disabled — forward
+// it ourselves for the .cn-input-otp-slot disabled fill.
+const InputOTPDisabledContext = React.createContext(false)
+
 function InputOTP({
   className,
   containerClassName,
+  disabled,
   ...props
 }: React.ComponentProps<typeof OTPInput> & {
   containerClassName?: string
 }) {
   return (
-    <OTPInput
-      data-slot="input-otp"
-      containerClassName={cn(
-        "cn-input-otp flex items-center has-disabled:opacity-50",
-        containerClassName
-      )}
-      spellCheck={false}
-      className={cn("disabled:cursor-not-allowed", className)}
-      {...props}
-    />
+    <InputOTPDisabledContext.Provider value={!!disabled}>
+      <OTPInput
+        data-slot="input-otp"
+        disabled={disabled}
+        containerClassName={cn(
+          "cn-input-otp flex items-center has-disabled:opacity-50",
+          containerClassName
+        )}
+        spellCheck={false}
+        className={cn("disabled:cursor-not-allowed", className)}
+        {...props}
+      />
+    </InputOTPDisabledContext.Provider>
   )
 }
 
@@ -49,13 +58,15 @@ function InputOTPSlot({
 }) {
   const inputOTPContext = React.useContext(OTPInputContext)
   const { char, hasFakeCaret, isActive } = inputOTPContext?.slots[index] ?? {}
+  const disabled = React.useContext(InputOTPDisabledContext)
 
   return (
     <div
       data-slot="input-otp-slot"
       data-active={isActive}
+      data-disabled={disabled}
       className={cn(
-        "relative flex size-8 items-center justify-center border-y border-r border-input text-sm transition-all outline-none first:rounded-l-lg first:border-l last:rounded-r-lg aria-invalid:border-destructive data-[active=true]:z-10 data-[active=true]:border-ring data-[active=true]:ring-3 data-[active=true]:ring-ring/50 data-[active=true]:aria-invalid:border-destructive data-[active=true]:aria-invalid:ring-destructive/20 dark:bg-input/30 dark:data-[active=true]:aria-invalid:ring-destructive/40",
+        "relative flex size-8 items-center justify-center border-y border-r border-border text-sm transition-all outline-none first:rounded-l-lg first:border-l last:rounded-r-lg aria-invalid:border-destructive data-[active=true]:z-10 data-[active=true]:border-ring data-[active=true]:ring-3 data-[active=true]:ring-ring/50 data-[active=true]:aria-invalid:border-destructive data-[active=true]:aria-invalid:ring-destructive/20 data-[disabled=true]:bg-muted motion-reduce:transition-none dark:bg-input/30 dark:data-[active=true]:aria-invalid:ring-destructive/40 dark:data-[disabled=true]:bg-muted",
         className
       )}
       {...props}
@@ -63,7 +74,7 @@ function InputOTPSlot({
       {char}
       {hasFakeCaret && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="h-4 w-px animate-caret-blink bg-foreground duration-1000" />
+          <div className="h-4 w-px animate-caret-blink bg-foreground motion-reduce:animate-none" />
         </div>
       )}
     </div>
@@ -76,6 +87,7 @@ function InputOTPSeparator({ ...props }: React.ComponentProps<"div">) {
       data-slot="input-otp-separator"
       className="flex items-center [&_svg:not([class*='size-'])]:size-4"
       role="separator"
+      aria-orientation="vertical" // [FORCE-UI] non-focusable separator defaults to horizontal per WAI-ARIA; this one divides groups left/right
       {...props}
     >
       <MinusIcon />

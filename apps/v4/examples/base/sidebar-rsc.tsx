@@ -1,11 +1,11 @@
-import { FrameIcon, LifeBuoyIcon, MapIcon, PieChartIcon, SendIcon } from "@/examples/material-symbols"
-
 import * as React from "react"
-
-
-
-
-
+import {
+  FrameIcon,
+  LifeBuoyIcon,
+  MapIcon,
+  PieChartIcon,
+  SendIcon,
+} from "@/examples/material-symbols"
 
 import {
   Sidebar,

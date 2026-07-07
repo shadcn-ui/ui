@@ -8,6 +8,8 @@ function Slider({
   value,
   min = 0,
   max = 100,
+  "aria-label": ariaLabel,
+  "aria-labelledby": ariaLabelledBy,
   ...props
 }: SliderPrimitive.Root.Props) {
   const _values = Array.isArray(value)
@@ -41,6 +43,9 @@ function Slider({
           <SliderPrimitive.Thumb
             data-slot="slider-thumb"
             key={index}
+            // [FORCE-UI] aria-label/aria-labelledby belong on the thumb (role="slider"), not the root wrapper
+            aria-label={ariaLabel}
+            aria-labelledby={ariaLabelledBy}
             className="cn-slider-thumb block shrink-0 select-none disabled:pointer-events-none disabled:opacity-50"
           />
         ))}

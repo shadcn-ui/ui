@@ -15,5 +15,7 @@ const props = defineProps<{
     :class="cn('group/menu-item relative', props.class)"
   >
     <slot />
+    <!-- [FORCE-UI] active-state accent indicator, see style-force-ui.css -->
+    <span aria-hidden="true" class="cn-sidebar-menu-item-indicator" />
   </li>
 </template>
