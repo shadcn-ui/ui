@@ -130,13 +130,17 @@ function useMessageScrollerController({
 
   // Owns the one follow-bottom transition: arm at the bottom, release on any
   // scroll away (including a scrollbar drag), suppressed during a programmatic
-  // scroll so the auto-scroll animation cannot release itself.
+  // scroll so the auto-scroll animation cannot release itself. Arming also
+  // skips the anchored-to-message hold: the tail spacer makes a freshly
+  // anchored turn read as "at the end", and re-arming there would let the
+  // first streamed chunk yank the reader off the anchor.
   const reconcileFollowMode = React.useCallback(
     (scrollable: MessageScrollerScrollable) => {
       if (
         autoScrollRef.current &&
         !scrollable.end &&
-        modeRef.current !== "settling-jump"
+        modeRef.current !== "settling-jump" &&
+        modeRef.current !== "anchored-to-message"
       ) {
         modeRef.current = "following-bottom"
       } else if (
