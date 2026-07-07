@@ -38,7 +38,9 @@ import { useDesignSystemSearchParams } from "@/app/(app)/(create)/lib/search-par
 // placeholder mirrors the trigger button exactly so there is no layout shift.
 const ProjectForm = dynamic(
   () =>
-    import("@/app/(app)/(create)/components/project-form").then((m) => m.ProjectForm),
+    import("@/app/(app)/(create)/components/project-form").then(
+      (m) => m.ProjectForm
+    ),
   {
     ssr: false,
     loading: () => (

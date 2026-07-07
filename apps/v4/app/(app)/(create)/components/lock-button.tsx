@@ -7,7 +7,10 @@ import {
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { cn } from "@/lib/utils"
-import { useLocks, type LockableParam } from "@/app/(app)/(create)/hooks/use-locks"
+import {
+  useLocks,
+  type LockableParam,
+} from "@/app/(app)/(create)/hooks/use-locks"
 
 export function LockButton({
   param,
