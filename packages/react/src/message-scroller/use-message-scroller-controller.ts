@@ -73,6 +73,7 @@ function useMessageScrollerController({
     defaultScrollPositionAppliedRef,
     firstItemRef,
     itemCountRef,
+    lastScrollTopRef,
     messageElementsRef,
     modeRef,
     pendingScrollFrameRef,
@@ -84,6 +85,7 @@ function useMessageScrollerController({
     scrollMarginRef,
     scrollPreviousItemPeekRef,
     spacerGapRef,
+    spacerHeightRef,
     spacerRef,
     stateFrameRef,
     stateStore,
@@ -133,9 +135,20 @@ function useMessageScrollerController({
   // scroll so the auto-scroll animation cannot release itself. Arming also
   // skips the anchored-to-message hold: the tail spacer makes a freshly
   // anchored turn read as "at the end", and re-arming there would let the
-  // first streamed chunk yank the reader off the anchor.
+  // first streamed chunk yank the reader off the anchor. The hold hands back
+  // to following in handleResize, once the reply consumes the tail spacer.
   const reconcileFollowMode = React.useCallback(
     (scrollable: MessageScrollerScrollable) => {
+      const scrollTop = viewportRef.current?.scrollTop ?? 0
+      // Content growing past the live edge also reads as "not at the end", but
+      // only a scrollbar drag moves scrollTop up. Growth must not release
+      // follow-output: the resize handler is coalesced onto a frame, so a state
+      // commit can observe the grown content before follow catches up.
+      const scrolledUp =
+        scrollTop < lastScrollTopRef.current - SCROLL_POSITION_EPSILON
+
+      lastScrollTopRef.current = scrollTop
+
       if (
         autoScrollRef.current &&
         !scrollable.end &&
@@ -146,6 +159,7 @@ function useMessageScrollerController({
       } else if (
         modeRef.current === "following-bottom" &&
         scrollable.end &&
+        scrolledUp &&
         !autoscrollingRef.current
       ) {
         modeRef.current = "free-scrolling"
@@ -477,7 +491,23 @@ function useMessageScrollerController({
     // Hold the anchored turn in place as content below it resizes (a reply
     // streaming in, or a transient marker collapsing) — otherwise the shrinking
     // content lets the browser clamp scrollTop and the turn drops.
+    const previousSpacerHeight = spacerHeightRef.current
+
     if (reanchorToAnchoredMessage()) {
+      // The reply streaming below the anchor consumes the tail spacer as it
+      // grows. Once the last of it is gone the reply has filled the viewport
+      // and the reader is genuinely at the live edge, so autoScroll hands off
+      // from the anchor hold to following the bottom. Requiring the >0 → 0
+      // transition keeps a turn taller than the viewport (placed with no
+      // spacer) held instead of yanked to the end.
+      if (
+        autoScrollRef.current &&
+        previousSpacerHeight > 0 &&
+        spacerHeightRef.current === 0
+      ) {
+        scrollToEnd({ behavior: "auto" })
+      }
+
       return
     }
 
