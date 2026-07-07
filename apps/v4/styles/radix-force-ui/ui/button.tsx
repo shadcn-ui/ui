@@ -83,16 +83,22 @@ function Button({
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     >
-      {loading && !asChild && (
-        <span
-          data-slot="button-spinner"
-          aria-hidden="true"
-          className="inline-flex animate-spin"
-        >
-          <Loader2Icon />
-        </span>
+      {asChild ? (
+        children
+      ) : (
+        <>
+          {loading && (
+            <span
+              data-slot="button-spinner"
+              aria-hidden="true"
+              className="inline-flex animate-spin"
+            >
+              <Loader2Icon />
+            </span>
+          )}
+          {children}
+        </>
       )}
-      {children}
     </Comp>
   )
 }
