@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
@@ -57,8 +59,14 @@ function Badge({
       className={cn(badgeVariants({ variant }), className)}
       {...props}
     >
-      {srLabel && !asChild && <span className="sr-only">{srLabel} </span>}
-      {children}
+      {asChild ? (
+        children
+      ) : (
+        <>
+          {srLabel && <span className="sr-only">{srLabel} </span>}
+          {children}
+        </>
+      )}
     </Comp>
   )
 }
