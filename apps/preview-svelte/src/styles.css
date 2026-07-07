@@ -4,6 +4,32 @@
 
 @import "../../v4/registry/styles/style-force-ui.css" layer(base);
 
+/* [FORCE-UI] must live outside layer() — @utility cannot be nested */
+@utility scrollbar-overlay {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--muted-foreground) 35%, transparent) transparent;
+
+  &::-webkit-scrollbar {
+    width: 0.625rem;
+    height: 0.625rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+    background-color: color-mix(in oklab, var(--muted-foreground) 30%, transparent);
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: color-mix(in oklab, var(--muted-foreground) 55%, transparent);
+  }
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
