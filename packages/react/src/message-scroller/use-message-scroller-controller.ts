@@ -177,8 +177,19 @@ function useMessageScrollerController({
     })
 
     reconcileFollowMode(nextState)
-    writeStateAttributes(nextState)
-    stateStore.setSnapshot(nextState)
+
+    // While follow-output is engaged the scroller is already closing any gap a
+    // streamed chunk just opened, so publishing it as scrollable toward the
+    // end would strobe the scroll button once per chunk. Reconcile runs on the
+    // raw geometry first, so a commit that releases follow still publishes the
+    // gap it released over.
+    const publishedState =
+      modeRef.current === "following-bottom"
+        ? { ...nextState, end: false }
+        : nextState
+
+    writeStateAttributes(publishedState)
+    stateStore.setSnapshot(publishedState)
   }, [reconcileFollowMode, stateStore, writeStateAttributes])
 
   const scheduleStateCommit = React.useCallback(() => {

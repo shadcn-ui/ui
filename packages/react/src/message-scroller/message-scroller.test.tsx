@@ -799,12 +799,16 @@ describe("MessageScroller", () => {
     // A large streamed chunk grows the content past the live edge, and a
     // scroll event commits state before the frame-coalesced resize handler has
     // caught follow-output up. The reader did not move, so the commit must not
-    // release follow-bottom.
+    // release follow-bottom, and the gap it observed must not be published —
+    // that would strobe the scroll button once per chunk.
     rendered.message("message-3").dataset.testHeight = "160"
     await act(async () => {
       rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
-      await flushAnimationFrames()
     })
+
+    expect(rendered.state().end).toBe(false)
+    expect(rendered.button().dataset.active).toBe("false")
+
     await triggerResize(rendered.content())
 
     expect(rendered.viewport().scrollTop).toBe(220)
