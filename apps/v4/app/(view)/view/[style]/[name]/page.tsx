@@ -84,7 +84,7 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
   const { Index } = await import("@/registry/__index__")
-  // const { Index: BasesIndex } = await import("@/registry/bases/__index__")
+  const { Index: BasesIndex } = await import("@/registry/bases/__index__") // [FORCE-UI]
   const { ExamplesIndex } = await import("@/examples/__index__")
   const params: Array<{ style: string; name: string }> = []
 
@@ -107,26 +107,26 @@ export async function generateStaticParams() {
         }
       }
 
-      // // Add UI components from BasesIndex.
-      // const baseIndex = BasesIndex[baseName]
-      // if (baseIndex) {
-      //   for (const itemName in baseIndex) {
-      //     const item = baseIndex[itemName]
-      //     if (
-      //       [
-      //         "registry:block",
-      //         "registry:component",
-      //         "registry:example",
-      //         "registry:internal",
-      //       ].includes(item.type)
-      //     ) {
-      //       params.push({
-      //         style: style.name,
-      //         name: item.name,
-      //       })
-      //     }
-      //   }
-      // }
+      // Add UI components from BasesIndex. // [FORCE-UI]
+      const baseIndex = BasesIndex[baseName]
+      if (baseIndex) {
+        for (const itemName in baseIndex) {
+          const item = baseIndex[itemName]
+          if (
+            [
+              "registry:block",
+              "registry:component",
+              "registry:example",
+              "registry:internal",
+            ].includes(item.type)
+          ) {
+            params.push({
+              style: style.name,
+              name: item.name,
+            })
+          }
+        }
+      }
 
       continue
     }

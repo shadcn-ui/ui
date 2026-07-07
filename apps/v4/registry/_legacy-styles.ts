@@ -1,7 +1,7 @@
 export const legacyStyles = [
   {
-    name: "new-york-v4",
-    title: "New York",
+    name: "radix-force-ui", // [FORCE-UI]
+    title: "Force UI",
   },
 ] as const
 
