@@ -183,11 +183,22 @@ function MessageScrollerViewport({
       return
     }
 
-    const observer = new ResizeObserver(handleResize)
+    // Coalesce into rAF: handleResize mutates the spacer inside the observed
+    // content, and resizing an observed element during delivery fires
+    // "ResizeObserver loop completed with undelivered notifications".
+    let frame = 0
+
+    const observer = new ResizeObserver(() => {
+      window.cancelAnimationFrame(frame)
+      frame = window.requestAnimationFrame(handleResize)
+    })
 
     observer.observe(viewport)
 
-    return () => observer.disconnect()
+    return () => {
+      window.cancelAnimationFrame(frame)
+      observer.disconnect()
+    }
   }, [handleResize, viewportRef])
 
   return (
@@ -261,11 +272,22 @@ function MessageScrollerContent({
       return
     }
 
-    const observer = new ResizeObserver(handleResize)
+    // Coalesce into rAF: handleResize mutates the spacer inside this observed
+    // element, and resizing an observed element during delivery fires
+    // "ResizeObserver loop completed with undelivered notifications".
+    let frame = 0
+
+    const observer = new ResizeObserver(() => {
+      window.cancelAnimationFrame(frame)
+      frame = window.requestAnimationFrame(handleResize)
+    })
 
     observer.observe(content)
 
-    return () => observer.disconnect()
+    return () => {
+      window.cancelAnimationFrame(frame)
+      observer.disconnect()
+    }
   }, [handleResize])
 
   return (
