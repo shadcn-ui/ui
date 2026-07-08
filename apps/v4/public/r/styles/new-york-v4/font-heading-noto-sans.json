@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-heading-noto-sans",
+  "title": "Noto Sans (Heading)",
+  "type": "registry:font",
+  "font": {
+    "family": "'Noto Sans Variable', sans-serif",
+    "provider": "google",
+    "import": "Noto_Sans",
+    "variable": "--font-heading",
+    "subsets": [
+      "latin"
+    ],
+    "dependency": "@fontsource-variable/noto-sans"
+  }
+}
