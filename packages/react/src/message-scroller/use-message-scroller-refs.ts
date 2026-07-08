@@ -26,6 +26,7 @@ type MessageScrollerRefs = {
   defaultScrollPositionAppliedRef: React.RefObject<boolean>
   firstItemRef: React.RefObject<HTMLElement | null>
   itemCountRef: React.RefObject<number>
+  lastScrollTopRef: React.RefObject<number>
   messageElementsRef: React.RefObject<Map<string, HTMLElement>>
   modeRef: React.RefObject<MessageScrollerMode>
   pendingScrollFrameRef: React.RefObject<number | null>
@@ -75,6 +76,9 @@ function useMessageScrollerRefs({
   const scrollEdgeThresholdRef = React.useRef(scrollEdgeThreshold)
   const itemCountRef = React.useRef(0)
   const firstItemRef = React.useRef<HTMLElement | null>(null)
+  // The scrollTop seen by the previous state commit, so follow-release can tell
+  // a reader scrolling up from content growing past the live edge.
+  const lastScrollTopRef = React.useRef(0)
   const modeRef = React.useRef<MessageScrollerMode>(
     autoScroll ? "following-bottom" : "free-scrolling"
   )
@@ -139,6 +143,7 @@ function useMessageScrollerRefs({
     defaultScrollPositionAppliedRef,
     firstItemRef,
     itemCountRef,
+    lastScrollTopRef,
     messageElementsRef,
     modeRef,
     pendingScrollFrameRef,
