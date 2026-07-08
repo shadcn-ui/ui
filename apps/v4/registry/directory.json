@@ -1636,7 +1636,7 @@
     "name": "@threecn",
     "homepage": "https://threecn.dev",
     "url": "https://threecn.dev/r/{name}.json",
-    "description": "Theme-aware React Three Fiber scenes for shadcn/ui — particle fields, globes, helixes and product viewers that read your CSS variables and follow your theme, light or dark.",
+    "description": "3D scenes for shadcn/ui. Theme-aware React Three Fiber components, one command away.",
     "logo": "<svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M12 2.5 21 7v10l-9 4.5L3 17V7l9-4.5Z' stroke='var(--foreground)' stroke-width='1.5' stroke-linejoin='round'/><path d='M3 7l9 4.5L21 7M12 11.5V21.5' stroke='var(--foreground)' stroke-width='1.5' stroke-linejoin='round' opacity='.6'/><path d='M12 11.5 21 7v5l-9 4.5-9-4.5V7l9 4.5Z' fill='var(--foreground)' fill-opacity='.15'/></svg>"
   }
 ]
