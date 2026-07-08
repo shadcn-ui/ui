@@ -1631,5 +1631,12 @@
     "url": "https://sveltebits.xyz/r/{name}.json",
     "description": "An open source collection of high quality, animated, interactive & fully customizable Svelte components for building stunning, memorable user interfaces.",
     "logo": "<svg width='186' height='216' viewBox='0 0 186 216' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M89.9238 140.894L92.3054 139.495C80.9132 146.613 67.1597 148.915 54.0704 145.894C40.9811 142.872 29.6282 134.774 22.5093 123.382C15.3904 111.99 13.0886 98.2365 16.1103 85.1472C19.1319 72.0579 27.2295 60.705 38.6217 53.5861L99.9889 15.2406C110.481 8.6599 123.021 6.15206 135.238 8.1914C147.454 10.2307 158.499 16.6759 166.285 26.3079C174.071 35.9399 178.057 48.0911 177.49 60.4634C176.923 72.8357 171.842 84.5714 163.208 93.451M21.5326 122.391C12.9991 131.32 8.02239 143.059 7.53886 155.4C7.05533 167.742 11.0983 179.834 18.9071 189.403C26.7159 198.972 37.7522 205.358 49.9399 207.359C62.1275 209.36 74.6263 206.838 85.0848 200.269L146.438 161.923C152.078 158.398 156.968 153.797 160.83 148.382C164.691 142.967 167.448 136.845 168.944 130.364C170.439 123.884 170.644 117.172 169.546 110.613C168.447 104.053 166.068 97.7741 162.543 92.1342C159.018 86.4943 154.417 81.604 149.002 77.7423C143.587 73.8807 137.464 71.1234 130.984 69.6279C124.503 68.1324 117.792 67.928 111.232 69.0263C104.673 70.1246 98.3938 72.5042 92.7539 76.0291L97.4183 73.4449' stroke='black' stroke-width='15'/></svg>"
+  },
+  {
+    "name": "@threecn",
+    "homepage": "https://threecn.dev",
+    "url": "https://threecn.dev/r/{name}.json",
+    "description": "Theme-aware React Three Fiber scenes for shadcn/ui — particle fields, globes, helixes and product viewers that read your CSS variables and follow your theme, light or dark.",
+    "logo": "<svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M12 2.5 21 7v10l-9 4.5L3 17V7l9-4.5Z' stroke='var(--foreground)' stroke-width='1.5' stroke-linejoin='round'/><path d='M3 7l9 4.5L21 7M12 11.5V21.5' stroke='var(--foreground)' stroke-width='1.5' stroke-linejoin='round' opacity='.6'/><path d='M12 11.5 21 7v5l-9 4.5-9-4.5V7l9 4.5Z' fill='var(--foreground)' fill-opacity='.15'/></svg>"
   }
 ]
