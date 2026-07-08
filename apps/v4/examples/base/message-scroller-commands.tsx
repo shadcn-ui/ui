@@ -143,7 +143,7 @@ function CommandMenu() {
           {userMessages.map((message) => (
             <DropdownMenuItem
               key={message.id}
-              onSelect={() =>
+              onClick={() =>
                 scrollToMessage(message.id, {
                   align: "start",
                   behavior: "smooth",

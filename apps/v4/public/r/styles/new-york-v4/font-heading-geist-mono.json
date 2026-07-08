@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-heading-geist-mono",
+  "title": "Geist Mono (Heading)",
+  "type": "registry:font",
+  "font": {
+    "family": "'Geist Mono Variable', monospace",
+    "provider": "google",
+    "import": "Geist_Mono",
+    "variable": "--font-heading",
+    "subsets": [
+      "latin"
+    ],
+    "dependency": "@fontsource-variable/geist-mono"
+  }
+}

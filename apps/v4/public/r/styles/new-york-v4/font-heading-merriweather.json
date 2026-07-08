@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-heading-merriweather",
+  "title": "Merriweather (Heading)",
+  "type": "registry:font",
+  "font": {
+    "family": "'Merriweather Variable', serif",
+    "provider": "google",
+    "import": "Merriweather",
+    "variable": "--font-heading",
+    "subsets": [
+      "latin"
+    ],
+    "dependency": "@fontsource-variable/merriweather"
+  }
+}

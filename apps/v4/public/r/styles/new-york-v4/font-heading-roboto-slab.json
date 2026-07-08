@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-heading-roboto-slab",
+  "title": "Roboto Slab (Heading)",
+  "type": "registry:font",
+  "font": {
+    "family": "'Roboto Slab Variable', serif",
+    "provider": "google",
+    "import": "Roboto_Slab",
+    "variable": "--font-heading",
+    "subsets": [
+      "latin"
+    ],
+    "dependency": "@fontsource-variable/roboto-slab"
+  }
+}

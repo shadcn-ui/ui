@@ -21,6 +21,7 @@ import { legacyStyles } from "@/registry/_legacy-styles"
 import { BASE_COLORS } from "@/registry/base-colors"
 import { BASES, type Base } from "@/registry/bases"
 import { PRESETS } from "@/registry/config"
+import { fonts } from "@/registry/fonts"
 import { STYLES } from "@/registry/styles"
 
 /*
@@ -1274,9 +1275,23 @@ async function buildRegistryJsonFile(styleName: string) {
 
   const registry = parseResult.data
 
+  // Legacy source styles (e.g. new-york-v4) don't author font items. Inject
+  // the shared registry fonts so the shadcn CLI emits font-*.json for them,
+  // matching the generated base/style combinations (which spread the same
+  // fonts in their base registries). Font items have no files, so they pass
+  // through every transform stage untouched.
+  const registryItems = getStyleCombination(styleName)
+    ? registry.items
+    : [
+        ...registry.items,
+        ...fonts.filter(
+          (font) => !registry.items.some((item) => item.name === font.name)
+        ),
+      ]
+
   const fixedRegistry = {
     ...registry,
-    items: registry.items.map((item) => {
+    items: registryItems.map((item) => {
       const files = normalizeRegistryFiles(item).map((file) => ({
         ...file,
         path: `registry/${styleName}/${file.path}`,
