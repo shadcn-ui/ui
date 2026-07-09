@@ -19,6 +19,11 @@ export const DEFAULT_UTILS = "@/lib/utils"
 export const DEFAULT_TAILWIND_CSS = "app/globals.css"
 export const DEFAULT_TAILWIND_CONFIG = "tailwind.config.js"
 export const DEFAULT_TAILWIND_BASE_COLOR = "slate"
+const TAILWIND_V4_COMPATIBLE_STYLES = new Set([
+  "default",
+  "new-york",
+  "new-york-v4",
+])
 
 // TODO: Figure out if we want to support all cosmiconfig formats.
 // A simple components.json file would be nice.
@@ -315,7 +320,10 @@ export function findCommonRoot(cwd: string, resolvedPath: string) {
 // TODO: Cache this call.
 export async function getTargetStyleFromConfig(cwd: string, fallback: string) {
   const projectInfo = await getProjectInfo(cwd)
-  return projectInfo?.tailwindVersion === "v4" ? "new-york-v4" : fallback
+  return projectInfo?.tailwindVersion === "v4" &&
+    TAILWIND_V4_COMPATIBLE_STYLES.has(fallback)
+    ? "new-york-v4"
+    : fallback
 }
 
 export function getBase(style: string | undefined) {
