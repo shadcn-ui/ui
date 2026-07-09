@@ -12,7 +12,15 @@ import { spinner } from "@/src/utils/spinner"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import fg from "fast-glob"
 import prompts from "prompts"
-import { Project, ScriptKind, SyntaxKind } from "ts-morph"
+import {
+  Project,
+  ScriptKind,
+  SyntaxKind,
+  type JsxClosingElement,
+  type JsxOpeningElement,
+  type JsxSelfClosingElement,
+  type SourceFile,
+} from "ts-morph"
 import { z } from "zod"
 
 export async function migrateIcons(config: Config) {
@@ -153,7 +161,41 @@ export async function migrateIconsFile(
   })
 
   // Find all sourceLibrary imports.
-  let targetedIcons: string[] = []
+  const targetedIcons: string[] = []
+
+  const replaceTag = (
+    sourceFile: SourceFile,
+    localName: string,
+    targetIcon: string
+  ) => {
+    const maybeReplace = (tagNameNode: ReturnType<
+      JsxSelfClosingElement["getTagNameNode"]
+    >) => {
+      const replacement = tagNameNode?.getText() === localName ? targetIcon : null
+      if (replacement) {
+        tagNameNode?.replaceWithText(replacement)
+      }
+    }
+
+    for (const node of sourceFile.getDescendantsOfKind(
+      SyntaxKind.JsxSelfClosingElement
+    )) {
+      maybeReplace(node.getTagNameNode())
+    }
+
+    for (const node of sourceFile.getDescendantsOfKind(
+      SyntaxKind.JsxOpeningElement
+    )) {
+      maybeReplace((node as JsxOpeningElement).getTagNameNode())
+    }
+
+    for (const node of sourceFile.getDescendantsOfKind(
+      SyntaxKind.JsxClosingElement
+    )) {
+      maybeReplace((node as JsxClosingElement).getTagNameNode())
+    }
+  }
+
   for (const importDeclaration of sourceFile.getImportDeclarations() ?? []) {
     if (
       importDeclaration.getModuleSpecifier()?.getText() !==
@@ -163,11 +205,11 @@ export async function migrateIconsFile(
     }
 
     for (const specifier of importDeclaration.getNamedImports() ?? []) {
-      const iconName = specifier.getName()
+      const importedName = specifier.getName()
+      const localName = specifier.getAliasNode()?.getText() ?? importedName
 
-      // TODO: this is O(n^2) but okay for now.
       const targetedIcon = Object.values(iconsMapping).find(
-        (icon) => icon[sourceLibrary] === iconName
+        (icon) => icon[sourceLibrary] === importedName
       )?.[targetLibrary]
 
       if (!targetedIcon || targetedIcons.includes(targetedIcon)) {
@@ -180,10 +222,7 @@ export async function migrateIconsFile(
       specifier.remove()
 
       // Replace with the targeted icon.
-      sourceFile
-        .getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement)
-        .filter((node) => node.getTagNameNode()?.getText() === iconName)
-        .forEach((node) => node.getTagNameNode()?.replaceWithText(targetedIcon))
+      replaceTag(sourceFile, localName, targetedIcon)
     }
 
     // If the named import is empty, remove the import declaration.
