@@ -1,3 +1,4 @@
+import fs from "fs"
 import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
@@ -67,6 +68,12 @@ export const add = new Command()
         ...opts,
         cwd: path.resolve(opts.cwd),
       })
+      const resolvedComponents = normalizeAddComponents(
+        options.components ?? [],
+        options.cwd
+      )
+      options.components = resolvedComponents.components
+      options.all = options.all || resolvedComponents.useAll
 
       await loadEnvFiles(options.cwd)
 
@@ -83,9 +90,9 @@ export const add = new Command()
       }
 
       let hasNewRegistries = false
-      if (components.length > 0) {
+      if (options.components.length > 0) {
         const { config: updatedConfig, newRegistries } =
-          await ensureRegistriesInConfig(components, initialConfig, {
+          await ensureRegistriesInConfig(options.components, initialConfig, {
             silent: options.silent,
             writeFile: false,
           })
@@ -95,8 +102,8 @@ export const add = new Command()
 
       let itemType: z.infer<typeof registryItemTypeSchema> | undefined
       let shouldInstallStyleIndex = true
-      if (components.length > 0) {
-        const [registryItem] = await getRegistryItems([components[0]], {
+      if (options.components.length > 0) {
+        const [registryItem] = await getRegistryItems([options.components[0]], {
           config: initialConfig,
         })
         itemType = registryItem?.type
@@ -106,7 +113,7 @@ export const add = new Command()
           itemType !== "registry:base"
 
         if (isUniversalRegistryItem(registryItem) && !isDryRun) {
-          await addComponents(components, initialConfig, options)
+          await addComponents(options.components, initialConfig, options)
           return
         }
         if (
@@ -371,4 +378,51 @@ async function promptForRegistryComponents(
     return []
   }
   return result.data
+}
+
+const PROJECT_ROOT_MARKERS = new Set([
+  "bun.lock",
+  "components.json",
+  "next.config.js",
+  "next.config.mjs",
+  "node_modules",
+  "package-lock.json",
+  "package.json",
+  "pnpm-lock.yaml",
+  "tsconfig.json",
+  "yarn.lock",
+])
+
+function isShellExpandedPath(candidate: string, cwd: string) {
+  if (!candidate || candidate.includes("/") || candidate === "*") {
+    return false
+  }
+
+  return fs.existsSync(path.join(cwd, candidate))
+}
+
+function isShellExpandedProjectRoot(components: string[], cwd: string) {
+  return (
+    components.length > 1 &&
+    components.some((component) => PROJECT_ROOT_MARKERS.has(component)) &&
+    components.every((component) => isShellExpandedPath(component, cwd))
+  )
+}
+
+export function normalizeAddComponents(components: string[], cwd: string) {
+  if (components.includes("*")) {
+    return {
+      components: [],
+      useAll: true,
+    }
+  }
+
+  if (!isShellExpandedProjectRoot(components, cwd)) {
+    return { components, useAll: false }
+  }
+
+  return {
+    components: [],
+    useAll: true,
+  }
 }
