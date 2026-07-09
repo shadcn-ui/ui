@@ -14,7 +14,7 @@ function Slider({
     ? value
     : Array.isArray(defaultValue)
       ? defaultValue
-      : [min, max]
+      : [min]
 
   return (
     <SliderPrimitive.Root
