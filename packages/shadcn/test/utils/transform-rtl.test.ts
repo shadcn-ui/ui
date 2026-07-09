@@ -136,6 +136,22 @@ describe("applyRtlMapping", () => {
     ).toBe("data-[side=inline-end]:slide-out-to-start-2")
   })
 
+  test("transforms slide animations inside logical motion variants", () => {
+    // Radix NavigationMenu motion values are already logical (direction-aware).
+    expect(
+      applyRtlMapping("data-[motion=from-start]:slide-in-from-left-52")
+    ).toBe("data-[motion=from-start]:slide-in-from-start-52")
+    expect(
+      applyRtlMapping("data-[motion=from-end]:slide-in-from-right-52")
+    ).toBe("data-[motion=from-end]:slide-in-from-end-52")
+    expect(
+      applyRtlMapping("data-[motion=to-start]:slide-out-to-left-52")
+    ).toBe("data-[motion=to-start]:slide-out-to-start-52")
+    expect(
+      applyRtlMapping("data-[motion=to-end]:slide-out-to-right-52")
+    ).toBe("data-[motion=to-end]:slide-out-to-end-52")
+  })
+
   test("does not transform slide animations inside physical side variants", () => {
     // Physical side variants should keep physical slide directions.
     expect(

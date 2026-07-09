@@ -68,12 +68,19 @@ const RTL_SWAP_MAPPINGS: [string, string][] = [
   ["cursor-e-resize", "cursor-w-resize"],
 ]
 
-// Slide animations inside logical side variants: [variant, physical, logical].
+// Slide animations inside logical variants: [variant, physical, logical].
+// Covers side variants (popovers, menus) and navigation-menu motion variants —
+// both attributes already carry logical values, so the paired slide utilities
+// must be logical too.
 const RTL_LOGICAL_SIDE_SLIDE_MAPPINGS: [string, string, string][] = [
   ["data-[side=inline-start]", "slide-in-from-right", "slide-in-from-end"],
   ["data-[side=inline-start]", "slide-out-to-right", "slide-out-to-end"],
   ["data-[side=inline-end]", "slide-in-from-left", "slide-in-from-start"],
   ["data-[side=inline-end]", "slide-out-to-left", "slide-out-to-start"],
+  ["data-[motion=from-start]", "slide-in-from-left", "slide-in-from-start"],
+  ["data-[motion=from-end]", "slide-in-from-right", "slide-in-from-end"],
+  ["data-[motion=to-start]", "slide-out-to-left", "slide-out-to-start"],
+  ["data-[motion=to-end]", "slide-out-to-right", "slide-out-to-end"],
 ]
 
 // Marker class for icons that should get rtl:rotate-180.
