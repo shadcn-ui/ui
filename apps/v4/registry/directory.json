@@ -1638,5 +1638,12 @@
     "url": "https://threecn.dev/r/{name}.json",
     "description": "3D scenes for shadcn/ui. Theme-aware React Three Fiber components, one command away.",
     "logo": "<svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M12 2.5 21 7v10l-9 4.5L3 17V7l9-4.5Z' stroke='var(--foreground)' stroke-width='1.5' stroke-linejoin='round'/><path d='M3 7l9 4.5L21 7M12 11.5V21.5' stroke='var(--foreground)' stroke-width='1.5' stroke-linejoin='round' opacity='.6'/><path d='M12 11.5 21 7v5l-9 4.5-9-4.5V7l9 4.5Z' fill='var(--foreground)' fill-opacity='.15'/></svg>"
+  },
+  {
+    "name": "@knock-codes",
+    "homepage": "https://knock.codes",
+    "url": "https://knock.codes/r/react/{name}.json",
+    "description": "Copy-paste, session-gated access blocks for React — PIN/Knock Code unlock screens, protected routes/layouts/modals, a headless useKnockCodes hook, and full-page templates.",
+    "logo": "<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><rect width='32' height='32' rx='7' fill='#0A0A0B'/><rect x='9' y='9' width='14' height='14' rx='3' fill='#F59E0B'/></svg>"
   }
 ]
