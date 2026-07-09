@@ -1006,6 +1006,7 @@
     },
     {
       "name": "attachment",
+      "dependencies": ["@base-ui/react"],
       "registryDependencies": ["button"],
       "files": [
         {
