@@ -580,6 +580,23 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "resizable-dashboard-grid",
+    title: "Resizable Dashboard Grid",
+    type: "registry:example",
+    registryDependencies: ["card", "example"],
+    dependencies: [
+      "@snapgridjs/react@0.7.0",
+      "@dnd-kit/react@0.4.0",
+      "@dnd-kit/dom@0.4.0",
+    ],
+    files: [
+      {
+        path: "examples/resizable-dashboard-grid.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "scroll-area-example",
     title: "Scroll Area",
     type: "registry:example",
