@@ -73,7 +73,7 @@ export default function ChangelogPage() {
                   <h2 className="font-heading text-xl font-semibold tracking-tight">
                     {data.title}
                   </h2>
-                  <div className="prose-changelog mt-6 *:first:mt-0">
+                  <div className="typeset mt-6 *:first:mt-0">
                     <MDX components={mdxComponents} />
                   </div>
                 </article>
