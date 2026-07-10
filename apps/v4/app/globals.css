@@ -160,6 +160,12 @@
 }
 
 @layer base {
+  /* Anchor jumps clear the sticky header; typeset's scroll-margin adds air. */
+  html {
+    scroll-padding-top: var(--header-height);
+  }
+
+
   * {
     @apply border-border outline-ring/50;
   }
@@ -251,6 +257,14 @@
 }
 
 @layer components {
+  /* Component links (asChild buttons, cards) keep their own affordances
+     inside typeset prose. Consumer-level rule: this app knows its components
+     carry data-slot. Same layer as typeset, wins on specificity. */
+  .typeset a[data-slot] {
+    font-weight: inherit;
+    text-decoration-line: none;
+  }
+
   .steps {
     &:first-child {
       @apply !mt-0;
