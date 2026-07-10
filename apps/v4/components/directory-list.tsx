@@ -162,7 +162,7 @@ function DirectoryPaginationNext({
 export function DirectoryList() {
   return (
     <DirectoryAddProvider>
-      <div className="mt-6">
+      <div data-not-typeset className="mt-6">
         <React.Suspense fallback={<DirectoryListSkeleton />}>
           <DirectoryListContent />
         </React.Suspense>

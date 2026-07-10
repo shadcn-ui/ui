@@ -141,7 +141,7 @@ export default async function Page(props: {
               )}
             </div>
           </div>
-          <div className="w-full flex-1 pb-16 *:data-[slot=alert]:first:mt-0 sm:pb-0">
+          <div className="typeset w-full flex-1 pb-16 *:data-[slot=alert]:first:mt-0 sm:pb-0">
             {params.slug &&
               params.slug[0] === "components" &&
               params.slug[1] &&

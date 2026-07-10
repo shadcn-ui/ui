@@ -1,4 +1,5 @@
 export const PAGES_NEW = [
+  "/docs/typeset",
   "/docs/utils/scroll-fade",
   "/docs/utils/shimmer",
   "/docs/components/radix/attachment",
