@@ -165,7 +165,6 @@
     scroll-padding-top: var(--header-height);
   }
 
-
   * {
     @apply border-border outline-ring/50;
   }
@@ -350,9 +349,9 @@
   }
 
   [data-line] {
-    padding-top: calc(var(--spacing) * 0.5);
-    padding-bottom: calc(var(--spacing) * 0.5);
-    min-height: calc(var(--spacing) * 1);
+    padding-top: calc(var(--spacing) * 0.25);
+    padding-bottom: calc(var(--spacing) * 0.25);
+    min-height: calc(var(--spacing) * 0.875);
     width: 100%;
     display: inline-block;
   }

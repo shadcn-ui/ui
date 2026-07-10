@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import { CheckIcon, CopyIcon } from "lucide-react"
 
 import { trackEvent } from "@/lib/events"
@@ -33,8 +34,19 @@ import {
 
 export function TypesetDocsPanel() {
   return (
-    <div className="isolate hidden max-h-[calc(100vh-16rem)] w-88 flex-col overflow-hidden rounded-2xl bg-background ring-1 ring-foreground/10 xl:flex 2xl:w-104">
-      <TypesetDocsContent />
+    <div className="hidden w-88 flex-col items-start gap-3 xl:flex 2xl:w-104">
+      <div className="isolate flex max-h-[calc(100vh-16rem)] w-full flex-col overflow-hidden rounded-2xl bg-background ring-1 ring-foreground/10">
+        <TypesetDocsContent />
+      </div>
+      <Button
+        variant="link"
+        size="sm"
+        className="text-muted-foreground"
+        render={<Link href="/docs/typeset" />}
+        nativeButton={false}
+      >
+        Read the docs
+      </Button>
     </div>
   )
 }
