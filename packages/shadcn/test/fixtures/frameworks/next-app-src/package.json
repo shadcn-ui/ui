@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "next": "13.5.9",
     "tailwindcss": "3.1.2"
   }
 }
