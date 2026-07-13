@@ -13,6 +13,7 @@ import { Toaster } from "@/registry/bases/radix/ui/sonner"
 import { TooltipProvider as RadixTooltipProvider } from "@/registry/bases/radix/ui/tooltip"
 
 import "@/app/globals.css"
+import "@/app/(app)/(typeset)/typeset.css"
 
 export const metadata: Metadata = {
   title: {
@@ -71,7 +72,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={fontVariables}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={cn(
+        fontVariables,
+        "[--header-height:calc(var(--spacing)*14)] lg:[--header-height:calc(var(--spacing)*16)]"
+      )}
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -88,7 +96,7 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "group/body overscroll-none antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] lg:[--header-height:calc(var(--spacing)*16)] xl:[--footer-height:calc(var(--spacing)*24)]"
+          "group/body overscroll-none antialiased [--footer-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]"
         )}
       >
         <ThemeProvider>

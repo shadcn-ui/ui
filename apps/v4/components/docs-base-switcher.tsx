@@ -17,7 +17,12 @@ export function DocsBaseSwitcher({
   const activeBase = BASES.find((baseItem) => base === baseItem.name)
 
   return (
-    <div className={cn("inline-flex w-full items-center gap-6", className)}>
+    <div
+      className={cn(
+        "not-typeset inline-flex w-full items-center gap-6",
+        className
+      )}
+    >
       {BASES.map((baseItem) => (
         <Link
           key={baseItem.name}

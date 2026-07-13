@@ -257,10 +257,10 @@ Which edges the viewport can scroll toward, for sibling UI that needs the values
 in JavaScript. Prefer the `data-scrollable` attribute for styling the scroller
 itself.
 
-| Value   | Type      | Description                                                                                            |
-| ------- | --------- | ------------------------------------------------------------------------------------------------------ |
-| `start` | `boolean` | Whether the viewport can scroll toward the start. Content is hidden above (`!start` means at the top). |
-| `end`   | `boolean` | Whether the viewport can scroll toward the end. Content is hidden below (`!end` means at the bottom).  |
+| Value   | Type      | Description                                                                                                                                                                     |
+| ------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `start` | `boolean` | Whether the viewport can scroll toward the start. Content is hidden above (`!start` means at the top).                                                                          |
+| `end`   | `boolean` | Whether the viewport can scroll toward the end. Content is hidden below (`!end` means at the bottom). Stays `false` while follow-output is keeping the reader at the live edge. |
 
 ### useMessageScrollerVisibility
 
