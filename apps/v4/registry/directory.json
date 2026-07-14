@@ -1659,5 +1659,12 @@
     "url": "https://ui.vllnt.com/r/{name}.json",
     "description": "VLLNT UI — agent-first React components for AI-native products, from UI primitives to finance and ops domains. Accessible, Radix + Tailwind, you own the code.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='128' height='128' rx='28' fill='var(--foreground)'/><text x='64' y='64' text-anchor='middle' dominant-baseline='central' font-family='ui-sans-serif, system-ui, sans-serif' font-size='26' font-weight='700' letter-spacing='-1' fill='var(--background)'>VLLNT</text></svg>"
+  },
+  {
+    "name": "@knock-codes",
+    "homepage": "https://knock.codes",
+    "url": "https://knock.codes/r/react/{name}.json",
+    "description": "Copy-paste, session-gated access blocks for React — PIN/Knock Code unlock screens, protected routes/layouts/modals, a headless useKnockCodes hook, and full-page templates.",
+    "logo": "<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><rect width='32' height='32' rx='7' fill='#0A0A0B'/><rect x='9' y='9' width='14' height='14' rx='3' fill='#F59E0B'/></svg>"
   }
 ]
