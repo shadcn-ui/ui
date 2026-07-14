@@ -33,6 +33,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "accordion-rtl",
       filePath: "examples/base/accordion-rtl.tsx",
     },
+    "ai-sdk-helper-demo": {
+      name: "ai-sdk-helper-demo",
+      filePath: "examples/base/ai-sdk-helper-demo.tsx",
+    },
     "alert-action": {
       name: "alert-action",
       filePath: "examples/base/alert-action.tsx",
@@ -1836,6 +1840,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "tabs-vertical": {
       name: "tabs-vertical",
       filePath: "examples/base/tabs-vertical.tsx",
+    },
+    "tanstack-ai-helper-demo": {
+      name: "tanstack-ai-helper-demo",
+      filePath: "examples/base/tanstack-ai-helper-demo.tsx",
     },
     "textarea-button": {
       name: "textarea-button",
