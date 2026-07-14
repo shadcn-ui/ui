@@ -1,17 +1,18 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Combobox as ComboboxPrimitive } from "@base-ui/react"
-import { CheckIcon, ChevronDownIcon, XIcon } from "lucide-react"
+import * as React from "react";
+import { Combobox as ComboboxPrimitive } from "@base-ui/react";
+import { CheckIcon, ChevronDownIcon, XIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/styles/base-nova/ui/button"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-} from "@/styles/base-nova/ui/input-group"
+
+
+import { cn } from "@/lib/utils";
+import { Button } from "@/styles/base-nova/ui/button";
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from "@/styles/base-nova/ui/input-group";
+
+
+
+
 
 const Combobox = ComboboxPrimitive.Root
 
@@ -217,14 +218,18 @@ function ComboboxSeparator({
 
 function ComboboxChips({
   className,
+  disabled,
   ...props
 }: React.ComponentPropsWithRef<typeof ComboboxPrimitive.Chips> &
-  ComboboxPrimitive.Chips.Props) {
+  ComboboxPrimitive.Chips.Props & { disabled?: boolean }) {
   return (
     <ComboboxPrimitive.Chips
       data-slot="combobox-chips"
+      data-disabled={disabled ? "" : undefined}
       className={cn(
-        "flex min-h-8 flex-wrap items-center gap-1 rounded-lg border border-input bg-transparent bg-clip-padding px-2.5 py-1 text-sm transition-colors focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/50 has-aria-invalid:border-destructive has-aria-invalid:ring-3 has-aria-invalid:ring-destructive/20 has-data-[slot=combobox-chip]:px-1 dark:bg-input/30 dark:has-aria-invalid:border-destructive/50 dark:has-aria-invalid:ring-destructive/40",
+        "flex min-h-8 flex-wrap items-center gap-1 rounded-lg border border-input bg-transparent bg-clip-padding px-2.5 py-1 text-sm transition-colors",
+        "focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/50",
+        "data-[disabled]:pointer-events-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         className
       )}
       {...props}
@@ -265,12 +270,20 @@ function ComboboxChip({
 
 function ComboboxChipsInput({
   className,
+  disabled,
   ...props
 }: ComboboxPrimitive.Input.Props) {
   return (
     <ComboboxPrimitive.Input
       data-slot="combobox-chip-input"
-      className={cn("min-w-16 flex-1 outline-none", className)}
+      data-disabled={disabled ? "" : undefined}
+      aria-disabled={disabled}
+      className={cn(
+        "min-w-16 flex-1 outline-none",
+        "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+        className
+      )}
+      disabled={disabled}
       {...props}
     />
   )

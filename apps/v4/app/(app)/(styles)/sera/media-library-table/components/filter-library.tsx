@@ -1,46 +1,26 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { addDays, format } from "date-fns"
-import { CalendarIcon, FilterIcon, XIcon } from "lucide-react"
-import { type DateRange } from "react-day-picker"
+import * as React from "react";
+import { addDays, format } from "date-fns";
+import { CalendarIcon, FilterIcon, XIcon } from "lucide-react";
+import { type DateRange } from "react-day-picker";
 
-import { Button } from "@/styles/base-sera/ui/button"
-import { Calendar } from "@/styles/base-sera/ui/calendar"
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/styles/base-sera/ui/card"
-import { Checkbox } from "@/styles/base-sera/ui/checkbox"
-import {
-  Combobox,
-  ComboboxChip,
-  ComboboxChips,
-  ComboboxChipsInput,
-  ComboboxContent,
-  ComboboxEmpty,
-  ComboboxItem,
-  ComboboxList,
-  ComboboxValue,
-  useComboboxAnchor,
-} from "@/styles/base-sera/ui/combobox"
-import {
-  Field,
-  FieldGroup,
-  FieldLabel,
-  FieldLegend,
-  FieldSet,
-} from "@/styles/base-sera/ui/field"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/styles/base-sera/ui/popover"
-import { RadioGroup, RadioGroupItem } from "@/styles/base-sera/ui/radio-group"
-import { Slider } from "@/styles/base-sera/ui/slider"
+
+
+import { Button } from "@/styles/base-sera/ui/button";
+import { Calendar } from "@/styles/base-sera/ui/calendar";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/styles/base-sera/ui/card";
+import { Checkbox } from "@/styles/base-sera/ui/checkbox";
+import { Combobox, ComboboxChip, ComboboxChips, ComboboxChipsInput, ComboboxContent, ComboboxEmpty, ComboboxItem, ComboboxList, ComboboxValue, useComboboxAnchor } from "@/styles/base-sera/ui/combobox";
+import { Field, FieldGroup, FieldLabel, FieldLegend, FieldSet } from "@/styles/base-sera/ui/field";
+import { Popover, PopoverContent, PopoverTrigger } from "@/styles/base-sera/ui/popover";
+import { RadioGroup, RadioGroupItem } from "@/styles/base-sera/ui/radio-group";
+import { Slider } from "@/styles/base-sera/ui/slider";
+import { InputGroup } from "@/styles/radix-nova/ui/input-group";
+
+
+
+
 
 const FILE_TYPES = [
   {
@@ -100,6 +80,8 @@ export function FilterLibrary() {
       21
     ),
   })
+
+  const [disabled, setDisabled] = React.useState(false)
 
   return (
     <Card>
@@ -196,17 +178,24 @@ export function FilterLibrary() {
                 defaultValue={["architecture", "brutalism"]}
               >
                 <ComboboxChips ref={tagAnchor}>
-                  <ComboboxValue>
-                    {(values) => (
-                      <React.Fragment>
-                        {values.map((value: string) => (
-                          <ComboboxChip key={value}>{value}</ComboboxChip>
-                        ))}
-                        <ComboboxChipsInput placeholder="Filter by tag..." />
-                      </React.Fragment>
-                    )}
-                  </ComboboxValue>
+                  <InputGroup aria-disabled={disabled}>
+                    <ComboboxValue>
+                      {(values: string[]) => (
+                        <>
+                          {values.map((value: string) => (
+                            <ComboboxChip key={value}>{value}</ComboboxChip>
+                          ))}
+
+                          <ComboboxChipsInput
+                            placeholder="Filter by tag..."
+                            disabled={disabled}
+                          />
+                        </>
+                      )}
+                    </ComboboxValue>
+                  </InputGroup>
                 </ComboboxChips>
+
                 <ComboboxContent anchor={tagAnchor}>
                   <ComboboxEmpty>No tags found.</ComboboxEmpty>
                   <ComboboxList>
