@@ -93,7 +93,7 @@ export default function ChangelogPage() {
                       <Link
                         key={page.url}
                         href={page.url}
-                        className="flex w-full flex-col rounded-xl bg-surface px-4 py-3 text-surface-foreground transition-colors hover:bg-surface/80"
+                        className="flex w-full flex-col rounded-2xl bg-surface px-4 py-3 text-surface-foreground transition-colors hover:bg-surface/80"
                       >
                         <span className="text-xs text-muted-foreground">
                           {date}
