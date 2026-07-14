@@ -55,6 +55,24 @@ describe("TanStack transport", () => {
     })
   })
 
+  it("uses chat ids when runContext is omitted", async () => {
+    const chat = createChat().user("Hello").assistant("Hi")
+    const initialMessages = chat.get(1)
+    const transport = chat.transport({ delayMs: 0 })
+    const chunks = await collectChunks(transport.connect(initialMessages))
+
+    expect(chunks[0]).toMatchObject({
+      type: "RUN_STARTED",
+      threadId: "thread-chat",
+      runId: "run-chat",
+    })
+    expect(chunks.at(-1)).toMatchObject({
+      type: "RUN_FINISHED",
+      threadId: "thread-chat",
+      runId: "run-chat",
+    })
+  })
+
   it("round-trips through the real TanStack StreamProcessor", async () => {
     const chat = createWeatherChat()
     const initialMessages = chat.get(1)

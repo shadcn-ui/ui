@@ -1,21 +1,21 @@
 import { describe, expect, it } from "vitest"
 
-import { createScriptIds } from "./ids"
-import { createScriptPayloads } from "./payloads"
+import { createChatIds } from "./ids"
+import { createChatPayloads } from "./payloads"
 import type { TestData, TestTools } from "./test-utils"
-import type { ScriptEvent } from "./types"
+import type { ChatEvent } from "./types"
 import { DEFAULT_REASONING, DEFAULT_TEXT } from "./utils"
 import { createEventWriter } from "./writer"
 
 describe("createEventWriter", () => {
   function createWriterContext() {
-    const ids = createScriptIds()
+    const ids = createChatIds()
 
-    return { ids, payloads: createScriptPayloads(ids) }
+    return { ids, payloads: createChatPayloads(ids) }
   }
 
   it("records text and reasoning events with generated part ids", () => {
-    const events: ScriptEvent<TestData, TestTools>[] = []
+    const events: ChatEvent<TestData, TestTools>[] = []
     const writer = createEventWriter(events, createWriterContext())
 
     writer.text().reasoning()
@@ -35,7 +35,7 @@ describe("createEventWriter", () => {
   })
 
   it("respects explicit stream text ids", () => {
-    const events: ScriptEvent<TestData, TestTools>[] = []
+    const events: ChatEvent<TestData, TestTools>[] = []
     const writer = createEventWriter(events, createWriterContext())
 
     writer.text("Hello", { id: "greeting" })
@@ -47,7 +47,7 @@ describe("createEventWriter", () => {
   })
 
   it("records sleeps as after-start events", () => {
-    const events: ScriptEvent<TestData, TestTools>[] = []
+    const events: ChatEvent<TestData, TestTools>[] = []
 
     createEventWriter(events, createWriterContext()).sleep(100)
 
@@ -61,7 +61,7 @@ describe("createEventWriter", () => {
   })
 
   it("extracts data part names", () => {
-    const events: ScriptEvent<TestData, TestTools>[] = []
+    const events: ChatEvent<TestData, TestTools>[] = []
 
     createEventWriter(events, createWriterContext()).data({
       type: "data-weather",
@@ -79,7 +79,7 @@ describe("createEventWriter", () => {
   })
 
   it("chains tool events through the handle", () => {
-    const events: ScriptEvent<TestData, TestTools>[] = []
+    const events: ChatEvent<TestData, TestTools>[] = []
     const writer = createEventWriter(events, createWriterContext())
 
     writer
@@ -106,7 +106,7 @@ describe("createEventWriter", () => {
   })
 
   it("reserves explicit tool ids and detaches tool values", () => {
-    const events: ScriptEvent<TestData, TestTools>[] = []
+    const events: ChatEvent<TestData, TestTools>[] = []
     const context = createWriterContext()
     const input = { city: "SF" }
     const output = { temperature: 72 }
@@ -126,7 +126,7 @@ describe("createEventWriter", () => {
   })
 
   it("types tool inputs and outputs", () => {
-    const events: ScriptEvent<TestData, TestTools>[] = []
+    const events: ChatEvent<TestData, TestTools>[] = []
     const writer = createEventWriter(events, createWriterContext())
 
     if (false) {
@@ -144,7 +144,7 @@ describe("createEventWriter", () => {
   })
 
   it("emits tool output and error from writer options", () => {
-    const events: ScriptEvent<TestData, TestTools>[] = []
+    const events: ChatEvent<TestData, TestTools>[] = []
     const writer = createEventWriter(events, createWriterContext())
 
     writer.tool("getWeather", {
@@ -165,7 +165,7 @@ describe("createEventWriter", () => {
   })
 
   it("records denied tool calls and defaults tool input to an empty object", () => {
-    const events: ScriptEvent<TestData, TestTools>[] = []
+    const events: ChatEvent<TestData, TestTools>[] = []
     const writer = createEventWriter(events, createWriterContext())
 
     writer.tool("getWeather").denied()
@@ -183,7 +183,7 @@ describe("createEventWriter", () => {
   })
 
   it("records payload-backed events", () => {
-    const events: ScriptEvent<TestData, TestTools>[] = []
+    const events: ChatEvent<TestData, TestTools>[] = []
     const writer = createEventWriter(events, createWriterContext())
 
     writer

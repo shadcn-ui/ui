@@ -1,3 +1,5 @@
+import { readUIMessageStream } from "ai"
+import type { ChatTransport, UIMessage } from "ai"
 import { describe, expect, it } from "vitest"
 
 import { createChat } from "./index"
@@ -241,10 +243,10 @@ describe("AI SDK transport", () => {
     ])
   })
 
-  it("emits a bare start chunk before assistant parts", async () => {
+  it("emits a start chunk carrying the assistant message id", async () => {
     const chat = createChat().user("Hello").assistant("Hey.")
 
-    const [userMessage] = chat.get(1)
+    const [userMessage, assistantMessage] = chat.get()
     const stream = await chat.transport().sendMessages({
       trigger: "submit-message",
       chatId: "chat-1",
@@ -261,6 +263,7 @@ describe("AI SDK transport", () => {
 
     expect(firstChunk.value).toEqual({
       type: "start",
+      messageId: assistantMessage.id,
     })
 
     const secondChunk = await reader.read()
@@ -288,6 +291,7 @@ describe("AI SDK transport", () => {
     expect(chunks).toEqual([
       {
         type: "start",
+        messageId: "msg-2",
       },
       {
         type: "error",
@@ -555,5 +559,126 @@ describe("AI SDK transport", () => {
         abortSignal: undefined,
       })
     ).rejects.toThrow("No assistant response found for this transcript.")
+  })
+})
+
+describe("AI SDK live client integration", () => {
+  // Sends the transcript the way the client does — `messageId` only on
+  // regeneration — then reduces the response through the real AI SDK
+  // message state machine, so streamed messages carry the ids a live
+  // `useChat` transcript would.
+  async function runLiveTurn(
+    transport: ChatTransport<UIMessage>,
+    messages: UIMessage[],
+    options: {
+      trigger?: "submit-message" | "regenerate-message"
+      messageId?: string
+    } = {}
+  ) {
+    const stream = await transport.sendMessages({
+      trigger: options.trigger ?? "submit-message",
+      chatId: "chat-1",
+      messageId: options.messageId,
+      messages,
+      abortSignal: undefined,
+    })
+
+    let assistantMessage: UIMessage | undefined
+
+    for await (const message of readUIMessageStream({ stream })) {
+      assistantMessage = message
+    }
+
+    if (!assistantMessage) {
+      throw new Error("The stream produced no assistant message.")
+    }
+
+    return assistantMessage
+  }
+
+  function getText(message: UIMessage) {
+    return message.parts
+      .filter((part) => part.type === "text")
+      .map((part) => part.text)
+      .join("")
+  }
+
+  it("streams assistant messages under their configured ids", async () => {
+    const chat = createChat()
+      .user("What changed?")
+      .assistant("Keyboard shortcuts and faster search.")
+    const [userMessage, assistantMessage] = chat.get()
+    const transport = chat.transport({ delayMs: 0 })
+
+    const streamed = await runLiveTurn(transport, [userMessage])
+
+    expect(streamed.id).toBe(assistantMessage.id)
+    expect(getText(streamed)).toBe("Keyboard shortcuts and faster search.")
+  })
+
+  it("falls back once a live transcript exhausts the conversation", async () => {
+    const chat = createChat().user("Hello").assistant("Hi.")
+    const transport = chat.transport({
+      delayMs: 0,
+      fallback: "No more scripted replies.",
+    })
+    const [userMessage] = chat.get(1)
+
+    const transcript: UIMessage[] = [userMessage]
+    transcript.push(await runLiveTurn(transport, transcript))
+    transcript.push({
+      id: "client-user-1",
+      role: "user",
+      parts: [{ type: "text", text: "Anything else?" }],
+    })
+
+    const fallbackMessage = await runLiveTurn(transport, transcript)
+
+    expect(getText(fallbackMessage)).toBe("No more scripted replies.")
+  })
+
+  it("regenerates the same turn from its adopted id", async () => {
+    const chat = createChat()
+      .user("Hello")
+      .assistant("Hi.")
+      .user("More?")
+      .assistant("Sure.")
+    const transport = chat.transport({ delayMs: 0 })
+    const [userMessage] = chat.get(1)
+
+    const streamed = await runLiveTurn(transport, [userMessage])
+    const regenerated = await runLiveTurn(transport, [userMessage], {
+      trigger: "regenerate-message",
+      messageId: streamed.id,
+    })
+
+    expect(regenerated.id).toBe(streamed.id)
+    expect(getText(regenerated)).toBe("Hi.")
+  })
+
+  it("regenerates a fallback response as another fallback", async () => {
+    const chat = createChat().user("Hello").assistant("Hi.")
+    const transport = chat.transport({
+      delayMs: 0,
+      fallback: "Still nothing scripted.",
+    })
+    const [userMessage] = chat.get(1)
+
+    const transcript: UIMessage[] = [userMessage]
+    transcript.push(await runLiveTurn(transport, transcript))
+    transcript.push({
+      id: "client-user-1",
+      role: "user",
+      parts: [{ type: "text", text: "More?" }],
+    })
+
+    const fallbackMessage = await runLiveTurn(transport, transcript)
+
+    const regenerated = await runLiveTurn(transport, transcript, {
+      trigger: "regenerate-message",
+      messageId: fallbackMessage.id,
+    })
+
+    expect(getText(regenerated)).toBe("Still nothing scripted.")
   })
 })

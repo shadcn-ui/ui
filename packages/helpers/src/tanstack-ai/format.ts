@@ -312,8 +312,8 @@ function createConnectionAdapter<
         TanStackEventData,
         TanStackToolSet<TOOLS>
       >({
-        threadId: runContext?.threadId ?? "thread-script",
-        runId: runContext?.runId ?? "run-script",
+        threadId: runContext?.threadId ?? "thread-chat",
+        runId: runContext?.runId ?? "run-chat",
         messageId: turn.message.id,
       })
       return streamToAsyncIterable(

@@ -1,7 +1,7 @@
 import type { AnyClientTool, MessagePart, UIMessage } from "@tanstack/ai-client"
 
 import { assertNever } from "../core"
-import type { FilePayload, ScriptEvent } from "../core"
+import type { ChatEvent, FilePayload } from "../core"
 import type { TanStackEventData, TanStackToolSet } from "./types"
 
 type TextPart = Extract<MessagePart, { type: "text" }>
@@ -132,7 +132,7 @@ export function materializeParts<
   TOOLS extends ReadonlyArray<AnyClientTool>,
   DATA,
 >(
-  events: ScriptEvent<TanStackEventData, TanStackToolSet<TOOLS>>[]
+  events: ChatEvent<TanStackEventData, TanStackToolSet<TOOLS>>[]
 ): Array<MessagePart<TOOLS, DATA>> {
   const parts: Array<MessagePart<TOOLS, DATA>> = []
 
@@ -240,8 +240,8 @@ export function eventsFromParts<
   DATA,
 >(
   parts: Array<MessagePart<TOOLS, DATA>>
-): ScriptEvent<TanStackEventData, TanStackToolSet<TOOLS>>[] {
-  const events: ScriptEvent<TanStackEventData, TanStackToolSet<TOOLS>>[] = []
+): ChatEvent<TanStackEventData, TanStackToolSet<TOOLS>>[] {
+  const events: ChatEvent<TanStackEventData, TanStackToolSet<TOOLS>>[] = []
   const resolvedToolCallIds = new Set<string>()
 
   for (const part of parts) {

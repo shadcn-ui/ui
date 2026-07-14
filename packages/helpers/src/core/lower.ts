@@ -1,7 +1,7 @@
 import type {
+  ChatEvent,
   DataTypes,
   NeutralChunk,
-  ScriptEvent,
   StreamStep,
   ToolSet,
 } from "./types"
@@ -9,10 +9,12 @@ import { assertNever, splitTextDeltas } from "./utils"
 
 /**
  * Options for {@link lowerEvents}. An `undefined` `delayMs` disables
- * delta delays entirely; `messageMetadata` rides on the `finish` chunk.
+ * delta delays entirely; `messageId` rides on the `start` chunk and
+ * `messageMetadata` on the `finish` chunk.
  */
 export type LowerEventsOptions<METADATA> = {
   delayMs?: number
+  messageId?: string
   messageMetadata?: METADATA
 }
 
@@ -22,7 +24,7 @@ function lowerTextEvent<
   TOOLS extends ToolSet,
 >(
   steps: StreamStep<METADATA, DATA, TOOLS>[],
-  event: Extract<ScriptEvent<DATA, TOOLS>, { kind: "text" | "reasoning" }>,
+  event: Extract<ChatEvent<DATA, TOOLS>, { kind: "text" | "reasoning" }>,
   options: LowerEventsOptions<METADATA>
 ) {
   const startType = event.kind === "text" ? "text-start" : "reasoning-start"
@@ -81,7 +83,7 @@ export function lowerEvents<
   DATA extends DataTypes,
   TOOLS extends ToolSet,
 >(
-  events: ScriptEvent<DATA, TOOLS>[],
+  events: ChatEvent<DATA, TOOLS>[],
   options: LowerEventsOptions<METADATA>
 ): StreamStep<METADATA, DATA, TOOLS>[] {
   const steps: StreamStep<METADATA, DATA, TOOLS>[] = []
@@ -105,6 +107,7 @@ export function lowerEvents<
     kind: "chunk",
     chunk: {
       type: "start",
+      messageId: options.messageId,
     },
   })
 

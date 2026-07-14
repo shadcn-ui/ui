@@ -1,10 +1,10 @@
 import { createChatRuntime } from "./chat"
 import type {
+  ChatEvent,
   ChatFormat,
   DataTypes,
   MessageRole,
   NeutralChunk,
-  ScriptEvent,
   StreamStep,
   ToolSet,
   TransportContext,
@@ -120,7 +120,7 @@ export function createTestFormat<
     },
 
     eventsFromParts(parts) {
-      const events: ScriptEvent<DATA, TOOLS>[] = []
+      const events: ChatEvent<DATA, TOOLS>[] = []
 
       for (const part of parts) {
         if (part.type === "text") {

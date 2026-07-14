@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest"
 
-import { createScriptIds } from "./ids"
-import { createMetadataFactory, createScriptPayloads } from "./payloads"
+import { createChatIds } from "./ids"
+import { createChatPayloads, createMetadataFactory } from "./payloads"
 
-describe("createScriptPayloads", () => {
+describe("createChatPayloads", () => {
   it("creates default file payloads with overrides", () => {
-    const payloads = createScriptPayloads(createScriptIds())
+    const payloads = createChatPayloads(createChatIds())
 
     expect(payloads.file()).toMatchObject({
       mediaType: "image/png",
@@ -19,7 +19,7 @@ describe("createScriptPayloads", () => {
   })
 
   it("assigns sequential source ids", () => {
-    const payloads = createScriptPayloads(createScriptIds())
+    const payloads = createChatPayloads(createChatIds())
 
     expect(payloads.sourceUrl().sourceId).toBe("source-1")
     expect(payloads.sourceDocument().sourceId).toBe("source-2")
@@ -27,7 +27,7 @@ describe("createScriptPayloads", () => {
   })
 
   it("reserves explicit source ids and detaches nested metadata", () => {
-    const payloads = createScriptPayloads(createScriptIds())
+    const payloads = createChatPayloads(createChatIds())
     const providerMetadata = { nested: { source: "original" } }
     const source = payloads.sourceUrl({
       sourceId: "source-2",
@@ -43,7 +43,7 @@ describe("createScriptPayloads", () => {
   })
 
   it("creates custom payloads with a default kind", () => {
-    const payloads = createScriptPayloads(createScriptIds())
+    const payloads = createChatPayloads(createChatIds())
 
     expect(payloads.custom()).toEqual({ kind: "test.output" })
     expect(payloads.custom("app.widget")).toEqual({ kind: "app.widget" })

@@ -1,11 +1,11 @@
-import type { ScriptIds, ScriptIdsOptions } from "./types"
+import type { ChatIds, ChatIdsOptions } from "./types"
 
 /**
  * Creates deterministic sequential id generators (`msg-1`, `call-1`,
  * `source-1`, …). A chat and its transport share one instance so ids never
  * collide across scripted turns.
  */
-export function createScriptIds(options: ScriptIdsOptions = {}): ScriptIds {
+export function createChatIds(options: ChatIdsOptions = {}): ChatIds {
   const messageIdPrefix = options.messageIdPrefix ?? "msg"
   const toolCallIdPrefix = options.toolCallIdPrefix ?? "call"
   const sourceIdPrefix = options.sourceIdPrefix ?? "source"

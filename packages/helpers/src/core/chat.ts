@@ -1,15 +1,15 @@
-import { createScriptIds } from "./ids"
+import { createChatIds } from "./ids"
 import { lowerEvents } from "./lower"
-import { createMetadataFactory, createScriptPayloads } from "./payloads"
+import { createChatPayloads, createMetadataFactory } from "./payloads"
 import { createTurnStream } from "./stream"
 import type {
   ChatAssistantOptions,
+  ChatEvent,
   ChatFormat,
   ChatOptions,
+  ChatTurn,
   ChatUserOptions,
   DataTypes,
-  ScriptEvent,
-  ScriptTurn,
   ToolSet,
   TurnStreamOptions,
 } from "./types"
@@ -117,18 +117,18 @@ export function createChatRuntime<
     messages?: MESSAGE[]
   } = {}
 ): Chat<MESSAGE, PART, TRANSPORT, METADATA, DATA, TOOLS, WRITER> {
-  type InternalTurn = ScriptTurn<MESSAGE, DATA, TOOLS> & {
+  type InternalTurn = ChatTurn<MESSAGE, DATA, TOOLS> & {
     metadata?: METADATA
   }
 
-  const ids = createScriptIds(options)
-  const payloads = createScriptPayloads(ids)
+  const ids = createChatIds(options)
+  const payloads = createChatPayloads(ids)
   const metadata = createMetadataFactory<METADATA>(options.now)
 
   const turns: InternalTurn[] = []
-  const pendingEvents: ScriptEvent<DATA, TOOLS>[] = []
+  const pendingEvents: ChatEvent<DATA, TOOLS>[] = []
 
-  function reserveEventIds(events: ScriptEvent<DATA, TOOLS>[]) {
+  function reserveEventIds(events: ChatEvent<DATA, TOOLS>[]) {
     for (const event of events) {
       if (
         event.kind === "tool-input" ||
@@ -180,22 +180,22 @@ export function createChatRuntime<
     return api
   }
 
-  function findLatestScriptedIndex(messages: readonly MESSAGE[]) {
+  function findLatestChatIndex(messages: readonly MESSAGE[]) {
     const messageIds = new Set(
       messages.map((message) => format.getMessageId(message))
     )
-    let latestScriptedIndex = -1
+    let latestChatIndex = -1
 
     for (let index = 0; index < turns.length; index++) {
       if (messageIds.has(format.getMessageId(turns[index].message))) {
-        latestScriptedIndex = index
+        latestChatIndex = index
       }
     }
 
-    if (latestScriptedIndex === -1) {
+    if (latestChatIndex === -1) {
       const lastMessage = messages[messages.length - 1]
 
-      latestScriptedIndex = turns.findIndex(
+      latestChatIndex = turns.findIndex(
         (turn) =>
           lastMessage !== undefined &&
           format.getMessageRole(turn.message) ===
@@ -205,7 +205,7 @@ export function createChatRuntime<
       )
     }
 
-    return latestScriptedIndex
+    return latestChatIndex
   }
 
   function findNextAssistantTurn(messages: MESSAGE[], messageId?: string) {
@@ -219,29 +219,32 @@ export function createChatRuntime<
         return turn
       }
 
-      return turns
-        .slice(index + 1)
-        .find((nextTurn) => nextTurn.role === "assistant")
+      // Unknown ids fall through to transcript matching so regenerating a
+      // fallback-produced message falls back again instead of replaying the
+      // first configured response.
+      if (index !== -1) {
+        return turns
+          .slice(index + 1)
+          .find((nextTurn) => nextTurn.role === "assistant")
+      }
     }
 
-    const latestScriptedIndex = findLatestScriptedIndex(messages)
+    const latestChatIndex = findLatestChatIndex(messages)
 
     return turns
-      .slice(latestScriptedIndex + 1)
+      .slice(latestChatIndex + 1)
       .find((turn) => turn.role === "assistant")
   }
 
   function findNextUserTurn(messages: readonly MESSAGE[]) {
-    const latestScriptedIndex = findLatestScriptedIndex(messages)
+    const latestChatIndex = findLatestChatIndex(messages)
 
-    return turns
-      .slice(latestScriptedIndex + 1)
-      .find((turn) => turn.role === "user")
+    return turns.slice(latestChatIndex + 1).find((turn) => turn.role === "user")
   }
 
   function materializeAssistantInput(
     input: string | PART[] | ((context: { writer: WRITER }) => void),
-    events: ScriptEvent<DATA, TOOLS>[]
+    events: ChatEvent<DATA, TOOLS>[]
   ): PART[] {
     if (typeof input === "string") {
       const writer = createEventWriter(events, { ids, payloads })
@@ -279,7 +282,7 @@ export function createChatRuntime<
     fallback: ChatFallback<MESSAGE, PART, DATA, TOOLS, WRITER>,
     messages: MESSAGE[]
   ): InternalTurn {
-    const events: ScriptEvent<DATA, TOOLS>[] = []
+    const events: ChatEvent<DATA, TOOLS>[] = []
     const input =
       typeof fallback === "function"
         ? (context: { writer: WRITER }) => fallback({ ...context, messages })
@@ -303,7 +306,7 @@ export function createChatRuntime<
   const api: Chat<MESSAGE, PART, TRANSPORT, METADATA, DATA, TOOLS, WRITER> = {
     user(text = DEFAULT_TEXT, userOptions: ChatUserOptions<METADATA> = {}) {
       const events = takePendingEvents()
-      const turnEvents: ScriptEvent<DATA, TOOLS>[] = []
+      const turnEvents: ChatEvent<DATA, TOOLS>[] = []
 
       turnEvents.push({
         kind: "text",
@@ -446,6 +449,7 @@ export function createChatRuntime<
             const steps = lowerEvents<METADATA, DATA, TOOLS>(turn.events, {
               delayMs: DEFAULT_STREAM_DELAY_MS,
               ...streamOptions,
+              messageId: format.getMessageId(turn.message),
               messageMetadata: (turn as InternalTurn).metadata,
             })
 

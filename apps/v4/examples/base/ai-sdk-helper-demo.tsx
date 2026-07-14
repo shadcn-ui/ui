@@ -1,6 +1,7 @@
 "use client"
 
 import { useChat } from "@ai-sdk/react"
+import { createChat } from "@shadcn/helpers/ai-sdk"
 import {
   ArrowUpIcon,
   GlobeIcon,
@@ -12,7 +13,7 @@ import {
   TelescopeIcon,
 } from "lucide-react"
 
-import { createChat, getMessageText } from "@/lib/ai"
+import { getMessageText } from "@/lib/ai"
 import { MessageAnimated } from "@/components/message-animated"
 import { Button } from "@/styles/base-rhea/ui/button"
 import {

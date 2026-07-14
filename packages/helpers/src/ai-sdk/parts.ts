@@ -16,7 +16,7 @@ import type {
 } from "ai"
 
 import { assertNever } from "../core"
-import type { ScriptEvent } from "../core"
+import type { ChatEvent } from "../core"
 
 /** Concatenates the text of every `text` part in a message. */
 export function getMessageText(message: Pick<UIMessage, "parts">) {
@@ -68,7 +68,7 @@ export function materializeParts<
   DATA_PARTS extends UIDataTypes,
   TOOLS extends UITools,
 >(
-  events: ScriptEvent<DATA_PARTS, TOOLS>[]
+  events: ChatEvent<DATA_PARTS, TOOLS>[]
 ): Array<UIMessagePart<DATA_PARTS, TOOLS>> {
   const parts: Array<UIMessagePart<DATA_PARTS, TOOLS>> = []
 
@@ -212,8 +212,8 @@ export function eventsFromParts<
   TOOLS extends UITools,
 >(
   parts: Array<UIMessagePart<DATA_PARTS, TOOLS>>
-): ScriptEvent<DATA_PARTS, TOOLS>[] {
-  const events: ScriptEvent<DATA_PARTS, TOOLS>[] = []
+): ChatEvent<DATA_PARTS, TOOLS>[] {
+  const events: ChatEvent<DATA_PARTS, TOOLS>[] = []
 
   for (const part of parts) {
     // Framework-owned part unions are open, so parsing is non-exhaustive.
@@ -249,7 +249,7 @@ export function eventsFromParts<
         name: part.type.replace("data-", "") as keyof DATA_PARTS & string,
         id: "id" in part ? part.id : undefined,
         data: "data" in part ? part.data : undefined,
-      } as ScriptEvent<DATA_PARTS, TOOLS>)
+      } as ChatEvent<DATA_PARTS, TOOLS>)
     }
 
     if (part.type.startsWith("tool-") && "toolCallId" in part) {

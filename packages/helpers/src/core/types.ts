@@ -101,7 +101,7 @@ export type DataEventInput<DATA extends DataTypes> = {
  * turn is scripted as. Adapters materialize events into message parts and
  * the stream driver lowers them into chunks.
  */
-export type ScriptEvent<
+export type ChatEvent<
   DATA extends DataTypes = DataTypes,
   TOOLS extends ToolSet = ToolSet,
 > =
@@ -160,7 +160,7 @@ export type NeutralChunk<
   DATA extends DataTypes = DataTypes,
   TOOLS extends ToolSet = ToolSet,
 > =
-  | { type: "start" }
+  | { type: "start"; messageId?: string }
   | { type: "start-step" }
   | { type: "finish"; finishReason: "stop"; messageMetadata?: METADATA }
   | { type: "abort"; reason: string }
@@ -222,18 +222,18 @@ export type StreamStep<
   | { kind: "close" }
 
 /** A scripted turn: the materialized message plus the event log it streams from. */
-export type ScriptTurn<
+export type ChatTurn<
   MESSAGE,
   DATA extends DataTypes = DataTypes,
   TOOLS extends ToolSet = ToolSet,
 > = {
   role: MessageRole
   message: MESSAGE
-  events: ScriptEvent<DATA, TOOLS>[]
+  events: ChatEvent<DATA, TOOLS>[]
 }
 
 /** Deterministic sequential id generators (`msg-1`, `call-1`, `source-1`, …). */
-export type ScriptIds = {
+export type ChatIds = {
   nextMessageId(): string
   nextToolCallId(): string
   nextSourceId(): string
@@ -242,15 +242,15 @@ export type ScriptIds = {
   reserveSourceId(id: string): void
 }
 
-/** Prefixes used by the deterministic script id generators. */
-export type ScriptIdsOptions = {
+/** Prefixes used by the deterministic chat id generators. */
+export type ChatIdsOptions = {
   messageIdPrefix?: string
   toolCallIdPrefix?: string
   sourceIdPrefix?: string
 }
 
 /** Chat-wide options: id prefixes plus the fixed clock used for default metadata. */
-export type ChatOptions = ScriptIdsOptions & {
+export type ChatOptions = ChatIdsOptions & {
   now?: Date | string
 }
 
@@ -285,9 +285,9 @@ export type TransportContext<
   resolveTurn(
     messages: MESSAGE[],
     messageId?: string
-  ): ScriptTurn<MESSAGE, DATA, TOOLS> | undefined
+  ): ChatTurn<MESSAGE, DATA, TOOLS> | undefined
   streamTurn(
-    turn: ScriptTurn<MESSAGE, DATA, TOOLS>,
+    turn: ChatTurn<MESSAGE, DATA, TOOLS>,
     encodeChunk: ChunkEncoder<CHUNK, METADATA, DATA, TOOLS>,
     options?: TurnStreamOptions,
     abortSignal?: AbortSignal
@@ -307,8 +307,8 @@ export type ChatFormat<
   DATA extends DataTypes = DataTypes,
   TOOLS extends ToolSet = ToolSet,
 > = {
-  materializeParts(events: ScriptEvent<DATA, TOOLS>[]): PART[]
-  eventsFromParts(parts: PART[]): ScriptEvent<DATA, TOOLS>[]
+  materializeParts(events: ChatEvent<DATA, TOOLS>[]): PART[]
+  eventsFromParts(parts: PART[]): ChatEvent<DATA, TOOLS>[]
   createMessage(input: {
     id: string
     role: MessageRole

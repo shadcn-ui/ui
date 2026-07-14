@@ -95,8 +95,12 @@ export function createAiSdkFormat<
     encodeChunk(chunk) {
       switch (chunk.type) {
         case "start":
+          // The client adopts this id for the streamed assistant message, so
+          // live transcripts keep the configured ids that turn matching,
+          // fallback, and regeneration rely on.
           return {
             type: "start",
+            messageId: chunk.messageId,
           } as Chunk
         case "start-step":
           return {

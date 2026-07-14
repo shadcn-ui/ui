@@ -1,16 +1,16 @@
 import type {
+  ChatIds,
   CustomPayload,
   FilePayload,
   JsonRecord,
   ReasoningFilePayload,
-  ScriptIds,
   SourceDocumentPayload,
   SourceUrlPayload,
 } from "./types"
 import { cloneValue } from "./utils"
 
 /** Framework-neutral payload factories with sensible defaults for anything omitted. */
-export type ScriptPayloads = {
+export type ChatPayloads = {
   file(overrides?: Partial<FilePayload>): FilePayload
   reasoningFile(overrides?: Partial<ReasoningFilePayload>): ReasoningFilePayload
   sourceUrl(overrides?: Partial<SourceUrlPayload>): SourceUrlPayload
@@ -25,9 +25,9 @@ export type ScriptPayloads = {
 
 /**
  * Creates the default payload factories. Source payloads draw their
- * `sourceId` from the shared {@link ScriptIds} sequence unless overridden.
+ * `sourceId` from the shared {@link ChatIds} sequence unless overridden.
  */
-export function createScriptPayloads(ids: ScriptIds): ScriptPayloads {
+export function createChatPayloads(ids: ChatIds): ChatPayloads {
   function resolveSourceId(sourceId?: string) {
     if (sourceId !== undefined) {
       ids.reserveSourceId(sourceId)

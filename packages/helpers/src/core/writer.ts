@@ -1,11 +1,11 @@
-import type { ScriptPayloads } from "./payloads"
+import type { ChatPayloads } from "./payloads"
 import type {
+  ChatEvent,
+  ChatIds,
   DataEventInput,
   DataTypes,
   FilePayload,
   ReasoningFilePayload,
-  ScriptEvent,
-  ScriptIds,
   SourceDocumentPayload,
   SourceUrlPayload,
   StreamTextOptions,
@@ -70,8 +70,8 @@ export function createEventWriter<
   DATA extends DataTypes,
   TOOLS extends ToolSet,
 >(
-  events: ScriptEvent<DATA, TOOLS>[],
-  context: { ids: ScriptIds; payloads: ScriptPayloads }
+  events: ChatEvent<DATA, TOOLS>[],
+  context: { ids: ChatIds; payloads: ChatPayloads }
 ): EventWriter<DATA, TOOLS> {
   function nextPartId(kind: string) {
     return `${kind}-${events.length + 1}`
@@ -120,7 +120,7 @@ export function createEventWriter<
         id: clonedPart.id,
         data: clonedPart.data,
         transient: clonedPart.transient,
-      } as ScriptEvent<DATA, TOOLS>)
+      } as ChatEvent<DATA, TOOLS>)
 
       return writer
     },

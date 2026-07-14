@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest"
 
-import { createScriptIds } from "./ids"
+import { createChatIds } from "./ids"
 
-describe("createScriptIds", () => {
+describe("createChatIds", () => {
   it("generates sequential ids with default prefixes", () => {
-    const ids = createScriptIds()
+    const ids = createChatIds()
 
     expect(ids.nextMessageId()).toBe("msg-1")
     expect(ids.nextMessageId()).toBe("msg-2")
@@ -13,7 +13,7 @@ describe("createScriptIds", () => {
   })
 
   it("supports custom prefixes", () => {
-    const ids = createScriptIds({
+    const ids = createChatIds({
       messageIdPrefix: "m",
       toolCallIdPrefix: "t",
       sourceIdPrefix: "s",
@@ -25,7 +25,7 @@ describe("createScriptIds", () => {
   })
 
   it("continues after explicitly reserved ids", () => {
-    const ids = createScriptIds()
+    const ids = createChatIds()
 
     ids.reserveMessageId("msg-2")
     ids.reserveToolCallId("call-4")
