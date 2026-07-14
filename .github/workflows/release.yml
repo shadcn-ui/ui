@@ -150,8 +150,8 @@ jobs:
       - name: Install NPM Dependencies
         run: pnpm install
 
-      # Builds every publishable package under packages/* (shadcn, @shadcn/react),
-      # never apps/v4, so each dist is fresh before changeset publish.
+      # Builds every publishable package under packages/* (shadcn, @shadcn/react,
+      # @shadcn/helpers), never apps/v4, so each dist is fresh before publish.
       - name: Build the packages
         run: pnpm build:packages
 
