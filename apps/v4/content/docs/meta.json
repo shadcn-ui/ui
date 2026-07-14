@@ -5,6 +5,7 @@
     "(root)",
     "changelog",
     "react",
+    "helpers",
     "forms",
     "installation",
     "dark-mode",

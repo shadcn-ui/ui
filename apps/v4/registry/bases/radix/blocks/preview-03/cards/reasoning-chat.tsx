@@ -97,7 +97,7 @@ Measure it with a screen recording and count frames between click and visual res
     )
   })
 
-const initialMessages = chat.get({ count: 0 })
+const initialMessages = chat.get(0)
 const transport = chat.transport()
 
 export function ReasoningChat() {
@@ -105,7 +105,7 @@ export function ReasoningChat() {
     messages: initialMessages,
     transport,
   })
-  const nextMessage = chat.next({ after: messages })
+  const nextMessage = chat.next(messages)
   const isBusy = status === "submitted" || status === "streaming"
 
   const onSubmit = (input: string) => {

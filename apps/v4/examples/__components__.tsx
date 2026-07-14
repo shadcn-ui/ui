@@ -70,6 +70,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
         ) || "accordion-rtl"
       return { default: mod.default || mod[exportName] }
     }),
+    "ai-sdk-helper-demo": React.lazy(async () => {
+      const mod = await import("./base/ai-sdk-helper-demo")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "ai-sdk-helper-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
     "alert-action": React.lazy(async () => {
       const mod = await import("./base/alert-action")
       const exportName =
@@ -4127,6 +4136,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "tabs-vertical"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "tanstack-ai-helper-demo": React.lazy(async () => {
+      const mod = await import("./base/tanstack-ai-helper-demo")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tanstack-ai-helper-demo"
       return { default: mod.default || mod[exportName] }
     }),
     "textarea-button": React.lazy(async () => {

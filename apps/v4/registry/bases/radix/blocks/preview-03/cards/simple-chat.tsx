@@ -43,7 +43,7 @@ const chat = createChat()
   .user(
     `Is this conversation actually happening? I've been sitting here wondering if you're **really** reading this.
 
-Every reply feels a little too convenient — like someone already wrote \`chat.next()\` and I'm just clicking send on my own lines.`
+Every reply feels a little too convenient — like someone already wrote \`chat.next(messages)\` and I'm just clicking send on my own lines.`
   )
   .sleep(3000)
   .assistant(
@@ -60,7 +60,7 @@ Every reply feels a little too convenient — like someone already wrote \`chat.
   .sleep(3000)
   .assistant("😮 WOW! I had no idea you would ask that!")
 
-const initialMessages = chat.get({ count: 0 })
+const initialMessages = chat.get(0)
 const transport = chat.transport()
 
 export function SimpleChat() {
@@ -68,7 +68,7 @@ export function SimpleChat() {
     messages: initialMessages,
     transport,
   })
-  const nextMessage = chat.next({ after: messages })
+  const nextMessage = chat.next(messages)
   const isBusy = status === "submitted" || status === "streaming"
 
   const onSubmit = (input: string) => {
