@@ -1,5 +1,6 @@
 "use client"
 
+import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -56,12 +57,111 @@ const TOP_LEVEL_SECTIONS = [
 const EXCLUDED_SECTIONS = ["installation", "dark-mode", "changelog", "rtl"]
 const EXCLUDED_PAGES = ["/docs", "/docs/changelog", "/docs/rtl", "/docs/new"]
 
+const SCROLL_STORAGE_KEY = "docs-sidebar-scroll"
+
+// Runs before first paint on hard loads. A refresh restores the exact
+// position; arriving from another page brings the active item into view.
+const SCROLL_RESTORE_SCRIPT = `(function () {
+  try {
+    var container = document.currentScript.previousElementSibling
+    if (!container || !container.clientHeight) return
+    try {
+      var stored = JSON.parse(sessionStorage.getItem("${SCROLL_STORAGE_KEY}"))
+      if (stored && stored.pathname === location.pathname) {
+        container.scrollTop = stored.scrollTop
+        return
+      }
+    } catch (e) {}
+    var items = container.querySelectorAll('[data-active="true"]')
+    var active = items[items.length - 1]
+    if (!active) return
+    var containerRect = container.getBoundingClientRect()
+    var activeRect = active.getBoundingClientRect()
+    if (activeRect.top >= containerRect.top && activeRect.bottom <= containerRect.bottom) return
+    container.scrollTop += activeRect.top - containerRect.top - (container.clientHeight - activeRect.height) / 2
+  } catch (e) {}
+})()`
+
+function readScrollState() {
+  try {
+    return JSON.parse(sessionStorage.getItem(SCROLL_STORAGE_KEY) ?? "") as {
+      pathname: string
+      scrollTop: number
+    }
+  } catch {
+    return null
+  }
+}
+
+function saveScrollState(container: HTMLElement) {
+  try {
+    sessionStorage.setItem(
+      SCROLL_STORAGE_KEY,
+      JSON.stringify({
+        pathname: location.pathname,
+        scrollTop: container.scrollTop,
+      })
+    )
+  } catch {}
+}
+
 export function DocsSidebar({
   tree,
   ...props
 }: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }) {
   const pathname = usePathname()
   const currentBase = getCurrentBase(pathname)
+  const contentRef = React.useRef<HTMLDivElement>(null)
+
+  React.useEffect(() => {
+    const container = contentRef.current
+
+    if (!container) {
+      return
+    }
+
+    // A refresh restores the exact position (the inline script already did).
+    // Only bring the active item into view when arriving from another page.
+    if (readScrollState()?.pathname !== pathname) {
+      // The last active item is the most specific one: section links also
+      // match by prefix, so a component page activates both.
+      const items = container.querySelectorAll<HTMLElement>(
+        '[data-active="true"]'
+      )
+      const active = items[items.length - 1]
+
+      if (active) {
+        const containerRect = container.getBoundingClientRect()
+        const activeRect = active.getBoundingClientRect()
+
+        if (
+          activeRect.top < containerRect.top ||
+          activeRect.bottom > containerRect.bottom
+        ) {
+          container.scrollTo({
+            top:
+              container.scrollTop +
+              (activeRect.top - containerRect.top) -
+              (container.clientHeight - activeRect.height) / 2,
+          })
+        }
+      }
+    }
+
+    saveScrollState(container)
+  }, [pathname])
+
+  React.useEffect(() => {
+    const container = contentRef.current
+
+    if (!container) {
+      return
+    }
+
+    const onScroll = () => saveScrollState(container)
+    container.addEventListener("scroll", onScroll, { passive: true })
+    return () => container.removeEventListener("scroll", onScroll)
+  }, [])
 
   return (
     <Sidebar
@@ -69,7 +169,11 @@ export function DocsSidebar({
       collapsible="none"
       {...props}
     >
-      <SidebarContent className="w-(--sidebar-menu-width) scroll-fade scrollbar-none overflow-x-hidden pl-2.5">
+      <div className="absolute top-12 right-2 bottom-0 hidden h-full w-px bg-[linear-gradient(to_bottom,transparent_0%,var(--border)_10%,var(--border)_90%,transparent_100%)] lg:flex" />
+      <SidebarContent
+        ref={contentRef}
+        className="w-(--sidebar-menu-width) scroll-fade scrollbar-none overflow-x-hidden pl-2.5"
+      >
         <SidebarGroup className="pt-12">
           <SidebarGroupLabel className="font-medium text-muted-foreground">
             Sections
@@ -158,6 +262,7 @@ export function DocsSidebar({
           )
         })}
       </SidebarContent>
+      <script dangerouslySetInnerHTML={{ __html: SCROLL_RESTORE_SCRIPT }} />
     </Sidebar>
   )
 }

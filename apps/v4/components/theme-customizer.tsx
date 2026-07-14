@@ -126,7 +126,7 @@ export function CopyCodeButton({
             Copy Code
           </Button>
         </DrawerTrigger>
-        <DrawerContent className="h-auto">
+        <DrawerContent className="h-auto rounded-t-2xl">
           <DrawerHeader>
             <DrawerTitle className="capitalize">{activeThemeName}</DrawerTitle>
             <DrawerDescription>
@@ -149,7 +149,7 @@ export function CopyCodeButton({
             </span>
           </Button>
         </DialogTrigger>
-        <DialogContent className="rounded-xl border-none bg-clip-padding shadow-2xl ring-4 ring-neutral-200/80 outline-none md:max-w-2xl dark:bg-neutral-800 dark:ring-neutral-900">
+        <DialogContent className="rounded-2xl border-none bg-clip-padding shadow-2xl ring-4 ring-neutral-200/80 outline-none md:max-w-2xl dark:bg-neutral-800 dark:ring-neutral-900">
           <DialogHeader>
             <DialogTitle className="capitalize">{activeThemeName}</DialogTitle>
             <DialogDescription>
@@ -198,7 +198,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
         <TabsContent value="v4-oklch">
           <figure
             data-rehype-pretty-code-figure
-            className="mx-0! mt-0 rounded-lg"
+            className="mx-0! mt-0 rounded-xl"
           >
             <figcaption
               className="flex items-center gap-2 text-code-foreground [&_svg]:size-4 [&_svg]:text-code-foreground [&_svg]:opacity-70"
@@ -278,7 +278,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
         <TabsContent value="v4-hsl">
           <figure
             data-rehype-pretty-code-figure
-            className="mx-0! mt-0 rounded-lg"
+            className="mx-0! mt-0 rounded-xl"
           >
             <figcaption
               className="flex items-center gap-2 text-code-foreground [&_svg]:size-4 [&_svg]:text-code-foreground [&_svg]:opacity-70"
@@ -362,7 +362,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
         <TabsContent value="v3">
           <figure
             data-rehype-pretty-code-figure
-            className="mx-0! mt-0 rounded-lg"
+            className="mx-0! mt-0 rounded-xl"
           >
             <figcaption
               className="flex items-center gap-2 text-code-foreground [&_svg]:size-4 [&_svg]:text-code-foreground [&_svg]:opacity-70"
