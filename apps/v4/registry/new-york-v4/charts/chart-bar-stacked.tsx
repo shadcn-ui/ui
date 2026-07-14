@@ -66,7 +66,7 @@ export function ChartBarStacked() {
               dataKey="desktop"
               stackId="a"
               fill="var(--color-desktop)"
-              radius={[0, 0, 4, 4]}
+              radius={[0, 0, 0, 0]}
             />
             <Bar
               dataKey="mobile"
