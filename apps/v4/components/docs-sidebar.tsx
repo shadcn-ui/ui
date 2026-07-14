@@ -73,7 +73,22 @@ const SCROLL_RESTORE_SCRIPT = `(function () {
       }
     } catch (e) {}
     var items = container.querySelectorAll('[data-active="true"]')
-    var active = items[items.length - 1]
+    var active = null
+    var activePathLength = -1
+    var activeDistance = Infinity
+    var containerCenter = container.getBoundingClientRect().top + container.clientHeight / 2
+    for (var i = 0; i < items.length; i++) {
+      var link = items[i].querySelector('a[href]')
+      var href = items[i].getAttribute('href') || (link && link.getAttribute('href'))
+      var pathLength = href ? href.length : 0
+      var itemRect = items[i].getBoundingClientRect()
+      var distance = Math.abs(itemRect.top + itemRect.height / 2 - containerCenter)
+      if (pathLength > activePathLength || (pathLength === activePathLength && distance < activeDistance)) {
+        active = items[i]
+        activePathLength = pathLength
+        activeDistance = distance
+      }
+    }
     if (!active) return
     var containerRect = container.getBoundingClientRect()
     var activeRect = active.getBoundingClientRect()
@@ -105,6 +120,36 @@ function saveScrollState(container: HTMLElement) {
   } catch {}
 }
 
+function getActiveItem(container: HTMLElement) {
+  const items = container.querySelectorAll<HTMLElement>('[data-active="true"]')
+  let active: HTMLElement | null = null
+  let activePathLength = -1
+  let activeDistance = Infinity
+  const containerRect = container.getBoundingClientRect()
+  const containerCenter = containerRect.top + container.clientHeight / 2
+
+  for (const item of items) {
+    const link = item.querySelector<HTMLAnchorElement>("a[href]")
+    const href = item.getAttribute("href") ?? link?.getAttribute("href")
+    const pathLength = href?.length ?? 0
+    const itemRect = item.getBoundingClientRect()
+    const distance = Math.abs(
+      itemRect.top + itemRect.height / 2 - containerCenter
+    )
+
+    if (
+      pathLength > activePathLength ||
+      (pathLength === activePathLength && distance < activeDistance)
+    ) {
+      active = item
+      activePathLength = pathLength
+      activeDistance = distance
+    }
+  }
+
+  return active
+}
+
 export function DocsSidebar({
   tree,
   ...props
@@ -123,12 +168,9 @@ export function DocsSidebar({
     // A refresh restores the exact position (the inline script already did).
     // Only bring the active item into view when arriving from another page.
     if (readScrollState()?.pathname !== pathname) {
-      // The last active item is the most specific one: section links also
-      // match by prefix, so a component page activates both.
-      const items = container.querySelectorAll<HTMLElement>(
-        '[data-active="true"]'
-      )
-      const active = items[items.length - 1]
+      // Prefer the longest route because section links also match by prefix.
+      // Equal routes keep the item closest to the current viewport.
+      const active = getActiveItem(container)
 
       if (active) {
         const containerRect = container.getBoundingClientRect()
