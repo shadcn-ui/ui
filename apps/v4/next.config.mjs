@@ -7,6 +7,18 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  experimental: {
+    // Rewrite barrel imports to deep imports so a single icon doesn't pull the
+    // whole package into the module graph. Next already optimizes lucide-react,
+    // @tabler/icons-react, date-fns and lodash-es by default; these are the
+    // heavy icon packages this app uses that are NOT on that default list.
+    optimizePackageImports: [
+      "@hugeicons/react",
+      "@hugeicons/core-free-icons",
+      "@phosphor-icons/react",
+      "@remixicon/react",
+    ],
+  },
   outputFileTracingIncludes: {
     "/*": ["./registry/**/*", "./styles/**/*"],
   },
@@ -29,9 +41,6 @@ const nextConfig = {
   turbopack: {
     root: path.resolve(import.meta.dirname, "../.."),
   },
-  experimental: {
-    turbopackFileSystemCacheForDev: true,
-  },
   redirects() {
     return [
       // Form redirects to /docs/forms.
@@ -50,15 +59,15 @@ const nextConfig = {
         destination: "/docs/forms",
         permanent: true,
       },
-      // Component redirects (default to radix).
+      // Component redirects (default to base).
       {
         source: "/docs/components/:name((?!radix|base|form)[^/]+)",
-        destination: "/docs/components/radix/:name",
+        destination: "/docs/components/base/:name",
         permanent: false,
       },
       {
         source: "/docs/components/:name((?!radix|base|form)[^/]+).md",
-        destination: "/docs/components/radix/:name.md",
+        destination: "/docs/components/base/:name.md",
         permanent: false,
       },
       // Other redirects.

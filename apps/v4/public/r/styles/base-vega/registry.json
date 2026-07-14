@@ -382,7 +382,7 @@
     },
     {
       "name": "drawer",
-      "dependencies": ["vaul"],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/base-vega/ui/drawer.tsx",
@@ -393,7 +393,7 @@
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/drawer",
           "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/drawer-example.tsx",
-          "api": "https://vaul.emilkowal.ski/getting-started"
+          "api": "https://base-ui.com/react/components/drawer.md"
         }
       },
       "type": "registry:ui"
@@ -1002,6 +1002,59 @@
           "api": "https://base-ui.com/react/utils/direction-provider.md"
         }
       },
+      "type": "registry:ui"
+    },
+    {
+      "name": "attachment",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/base-vega/ui/attachment.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "bubble",
+      "files": [
+        {
+          "path": "registry/base-vega/ui/bubble.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "message-scroller",
+      "dependencies": ["@shadcn/react"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/base-vega/ui/message-scroller.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "marker",
+      "files": [
+        {
+          "path": "registry/base-vega/ui/marker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "message",
+      "files": [
+        {
+          "path": "registry/base-vega/ui/message.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "type": "registry:ui"
     },
     {
@@ -1932,6 +1985,84 @@
       "type": "registry:example"
     },
     {
+      "name": "attachment-example",
+      "title": "Attachment",
+      "registryDependencies": ["attachment"],
+      "files": [
+        {
+          "path": "registry/base-vega/examples/attachment-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "bubble-example",
+      "title": "Bubble",
+      "registryDependencies": ["bubble", "button", "collapsible", "example"],
+      "files": [
+        {
+          "path": "registry/base-vega/examples/bubble-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "message-scroller-example",
+      "title": "Message Scroller",
+      "registryDependencies": [
+        "attachment",
+        "bubble",
+        "button",
+        "card",
+        "example",
+        "input-group",
+        "marker",
+        "message",
+        "message-scroller",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/examples/message-scroller-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "marker-example",
+      "title": "Marker",
+      "registryDependencies": [
+        "marker",
+        "button",
+        "accordion",
+        "drawer",
+        "spinner",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/examples/marker-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "message-example",
+      "title": "Message",
+      "registryDependencies": ["bubble", "message", "button", "example"],
+      "files": [
+        {
+          "path": "registry/base-vega/examples/message-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "utils",
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
@@ -2032,6 +2163,18 @@
       "files": [
         {
           "path": "registry/base-vega/blocks/preview-02/index.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "preview-03",
+      "title": "Preview 03",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/preview-03/index.tsx",
           "type": "registry:block"
         }
       ],

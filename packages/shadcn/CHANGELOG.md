@@ -1,4 +1,78 @@
-# @shadcn/ui
+# shadcn
+
+## 4.13.0
+
+### Minor Changes
+
+- [#11082](https://github.com/shadcn-ui/ui/pull/11082) [`f3e7de11752b087b1c4bf61f4035a866f3a4f9ed`](https://github.com/shadcn-ui/ui/commit/f3e7de11752b087b1c4bf61f4035a866f3a4f9ed) Thanks [@shadcn](https://github.com/shadcn)! - base-ui is now default
+
+## 4.12.0
+
+### Minor Changes
+
+- [#11022](https://github.com/shadcn-ui/ui/pull/11022) [`18fcf0f766857a7249cc0daac3c1609610edd158`](https://github.com/shadcn-ui/ui/commit/18fcf0f766857a7249cc0daac3c1609610edd158) Thanks [@shadcn](https://github.com/shadcn)! - add scroll-fade and shimmer utilities
+
+## 4.11.1
+
+### Patch Changes
+
+- [#10905](https://github.com/shadcn-ui/ui/pull/10905) [`9197676b3d09b77f51b17b63e5978db29e498ca4`](https://github.com/shadcn-ui/ui/commit/9197676b3d09b77f51b17b63e5978db29e498ca4) Thanks [@shadcn](https://github.com/shadcn)! - replace node-fetch with native fetch
+
+- [#10967](https://github.com/shadcn-ui/ui/pull/10967) [`365d53b590a6ddb79c1487a9dbeabcde5f4ac37f`](https://github.com/shadcn-ui/ui/commit/365d53b590a6ddb79c1487a9dbeabcde5f4ac37f) Thanks [@shadcn](https://github.com/shadcn)! - Preserve existing dependency specifiers in package.json when running `shadcn add`.
+
+## 4.11.0
+
+### Minor Changes
+
+- [#10886](https://github.com/shadcn-ui/ui/pull/10886) [`05eb2b968bdc769ad78df9628dc2260e1dec903c`](https://github.com/shadcn-ui/ui/commit/05eb2b968bdc769ad78df9628dc2260e1dec903c) Thanks [@shadcn](https://github.com/shadcn)! - improve search command
+
+### Patch Changes
+
+- [#10851](https://github.com/shadcn-ui/ui/pull/10851) [`7dfd933102fdb881f8abd24fc1ef11a669682b94`](https://github.com/shadcn-ui/ui/commit/7dfd933102fdb881f8abd24fc1ef11a669682b94) Thanks [@harshithasompura](https://github.com/harshithasompura)! - move msw to devDependencies
+
+## 4.10.0
+
+### Minor Changes
+
+- [#10842](https://github.com/shadcn-ui/ui/pull/10842) [`7c63c467361dee9e20631b2999040912439b35d4`](https://github.com/shadcn-ui/ui/commit/7c63c467361dee9e20631b2999040912439b35d4) Thanks [@shadcn](https://github.com/shadcn)! - add support for GitHub registries
+
+## 4.9.0
+
+### Minor Changes
+
+- [#10834](https://github.com/shadcn-ui/ui/pull/10834) [`8e2d2d1439f54260aa0c51747261c220334ec641`](https://github.com/shadcn-ui/ui/commit/8e2d2d1439f54260aa0c51747261c220334ec641) Thanks [@shadcn](https://github.com/shadcn)! - add npx shadcn eject
+
+## 4.8.3
+
+### Patch Changes
+
+- [#10659](https://github.com/shadcn-ui/ui/pull/10659) [`07900769d91b09def00e68179bcb7a821f59b954`](https://github.com/shadcn-ui/ui/commit/07900769d91b09def00e68179bcb7a821f59b954) Thanks [@raashish1601](https://github.com/raashish1601)! - update template handling
+
+- [#10495](https://github.com/shadcn-ui/ui/pull/10495) [`360e8a19c3ee13ac78b656027462007c8bdaa6d5`](https://github.com/shadcn-ui/ui/commit/360e8a19c3ee13ac78b656027462007c8bdaa6d5) Thanks [@artemxknpv](https://github.com/artemxknpv)! - Preserve quotes in className literals when applying RTL transforms.
+
+## 4.8.2
+
+### Patch Changes
+
+- [#10786](https://github.com/shadcn-ui/ui/pull/10786) [`55ea86f2525e63c2d0373754314f0e31212572d2`](https://github.com/shadcn-ui/ui/commit/55ea86f2525e63c2d0373754314f0e31212572d2) Thanks [@shadcn](https://github.com/shadcn)! - Update template handling.
+
+## 4.8.1
+
+### Patch Changes
+
+- [#10779](https://github.com/shadcn-ui/ui/pull/10779) [`df1752dfe092957f84aa467d2270436139e3ecc7`](https://github.com/shadcn-ui/ui/commit/df1752dfe092957f84aa467d2270436139e3ecc7) Thanks [@shadcn](https://github.com/shadcn)! - add style rhea
+
+## 4.8.0
+
+### Minor Changes
+
+- [#10715](https://github.com/shadcn-ui/ui/pull/10715) [`51e3cfaf32faeff2589e5c74d81ffd109f509e93`](https://github.com/shadcn-ui/ui/commit/51e3cfaf32faeff2589e5c74d81ffd109f509e93) Thanks [@shadcn](https://github.com/shadcn)! - add shadcn registry validate command
+
+- [#10708](https://github.com/shadcn-ui/ui/pull/10708) [`c8ab3801ecf97c0350ac0234a25e61f19ccaba62`](https://github.com/shadcn-ui/ui/commit/c8ab3801ecf97c0350ac0234a25e61f19ccaba62) Thanks [@shadcn](https://github.com/shadcn)! - add include to registry.json
+
+### Patch Changes
+
+- [#10567](https://github.com/shadcn-ui/ui/pull/10567) [`1c4a53a37adeba36dbd5c07980c5bb6d295cea9e`](https://github.com/shadcn-ui/ui/commit/1c4a53a37adeba36dbd5c07980c5bb6d295cea9e) Thanks [@shadcn](https://github.com/shadcn)! - fix failing version derivation test
 
 ## 4.7.0
 

@@ -2,7 +2,6 @@ import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 
-import { type PageTreeFolder } from "@/lib/page-tree"
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
@@ -36,9 +35,7 @@ import {
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
 
-// Wrapper component that passes the components folder from the server.
-// This is only used on /docs/components/ index page, so default to radix.
-function ComponentsListWrapper() {
+function getComponentsFolder() {
   const componentsFolder = source.pageTree.children.find(
     (page) => page.$id === "components"
   )
@@ -47,10 +44,22 @@ function ComponentsListWrapper() {
     return null
   }
 
+  return componentsFolder
+}
+
+// This is only used on /docs/components/ index page, so default to base.
+function ComponentsListWrapper({ variant }: { variant?: "all" | "new" }) {
+  const componentsFolder = getComponentsFolder()
+
+  if (!componentsFolder) {
+    return null
+  }
+
   return (
     <ComponentsList
-      componentsFolder={componentsFolder as PageTreeFolder}
-      currentBase="radix"
+      componentsFolder={componentsFolder}
+      currentBase="base"
+      variant={variant}
     />
   )
 }
@@ -109,175 +118,73 @@ function HeadingAnchor({
 }
 
 export const mdxComponents = {
-  h1: ({ className, children, id, ...props }: React.ComponentProps<"h1">) => {
+  h1: ({ children, id, ...props }: React.ComponentProps<"h1">) => {
     const headingId = id ?? getHeadingId(children)
 
     return (
-      <h1
-        id={headingId}
-        className={cn(
-          "mt-2 scroll-m-28 font-heading text-3xl font-bold tracking-tight",
-          className
-        )}
-        {...props}
-      >
+      <h1 id={headingId} {...props}>
         <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
       </h1>
     )
   },
-  h2: ({ className, children, id, ...props }: React.ComponentProps<"h2">) => {
+  h2: ({ children, id, ...props }: React.ComponentProps<"h2">) => {
     const headingId = id ?? getHeadingId(children)
 
     return (
-      <h2
-        id={headingId}
-        className={cn(
-          "[&+]*:[code]:text-xl mt-10 scroll-m-28 font-heading text-xl font-medium tracking-tight first:mt-0 lg:mt-12 [&+.steps]:mt-0! [&+.steps>h3]:mt-4! [&+h3]:mt-6! [&+p]:mt-4!",
-          className
-        )}
-        {...props}
-      >
+      <h2 id={headingId} {...props}>
         <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
       </h2>
     )
   },
-  h3: ({ className, children, id, ...props }: React.ComponentProps<"h3">) => {
+  h3: ({ children, id, ...props }: React.ComponentProps<"h3">) => {
     const headingId = id ?? getHeadingId(children)
 
     return (
-      <h3
-        id={headingId}
-        className={cn(
-          "mt-12 scroll-m-28 font-heading text-lg font-medium tracking-tight [&+p]:mt-4! *:[code]:text-xl",
-          className
-        )}
-        {...props}
-      >
+      <h3 id={headingId} {...props}>
         <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
       </h3>
     )
   },
-  h4: ({ className, children, id, ...props }: React.ComponentProps<"h4">) => {
+  h4: ({ children, id, ...props }: React.ComponentProps<"h4">) => {
     const headingId = id ?? getHeadingId(children)
 
     return (
-      <h4
-        id={headingId}
-        className={cn(
-          "mt-8 scroll-m-28 font-heading text-base font-medium tracking-tight",
-          className
-        )}
-        {...props}
-      >
+      <h4 id={headingId} {...props}>
         <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
       </h4>
     )
   },
-  h5: ({ className, children, id, ...props }: React.ComponentProps<"h5">) => {
+  h5: ({ children, id, ...props }: React.ComponentProps<"h5">) => {
     const headingId = id ?? getHeadingId(children)
 
     return (
-      <h5
-        id={headingId}
-        className={cn(
-          "mt-8 scroll-m-28 text-base font-medium tracking-tight",
-          className
-        )}
-        {...props}
-      >
+      <h5 id={headingId} {...props}>
         <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
       </h5>
     )
   },
-  h6: ({ className, children, id, ...props }: React.ComponentProps<"h6">) => {
+  h6: ({ children, id, ...props }: React.ComponentProps<"h6">) => {
     const headingId = id ?? getHeadingId(children)
 
     return (
-      <h6
-        id={headingId}
-        className={cn(
-          "mt-8 scroll-m-28 text-base font-medium tracking-tight",
-          className
-        )}
-        {...props}
-      >
+      <h6 id={headingId} {...props}>
         <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
       </h6>
     )
   },
-  a: ({ className, ...props }: React.ComponentProps<"a">) => (
-    <a
-      className={cn("font-medium underline underline-offset-4", className)}
-      {...props}
-    />
-  ),
-  p: ({ className, ...props }: React.ComponentProps<"p">) => (
-    <p
-      className={cn("leading-relaxed [&:not(:first-child)]:mt-6", className)}
-      {...props}
-    />
-  ),
-  strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <strong className={cn("font-medium", className)} {...props} />
-  ),
-  ul: ({ className, ...props }: React.ComponentProps<"ul">) => (
-    <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
-  ),
-  ol: ({ className, ...props }: React.ComponentProps<"ol">) => (
-    <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
-  ),
-  li: ({ className, ...props }: React.ComponentProps<"li">) => (
-    <li className={cn("mt-2", className)} {...props} />
-  ),
-  blockquote: ({ className, ...props }: React.ComponentProps<"blockquote">) => (
-    <blockquote
-      className={cn("mt-6 border-l-2 pl-6 italic", className)}
-      {...props}
-    />
-  ),
-  img: ({ className, alt, ...props }: React.ComponentProps<"img">) => (
-    <img className={cn("rounded-md", className)} alt={alt} {...props} />
-  ),
-  hr: ({ ...props }: React.ComponentProps<"hr">) => (
-    <hr className="my-4 md:my-8" {...props} />
-  ),
-  table: ({ className, ...props }: React.ComponentProps<"table">) => (
-    <div className="my-6 no-scrollbar w-full overflow-y-auto rounded-xl border">
-      <table
-        className={cn(
-          "relative w-full overflow-hidden border-none text-sm [&_tbody_tr:last-child]:border-b-0",
-          className
-        )}
-        {...props}
-      />
+  // Typeset tables stay real tables and wrap to fit; wrap them to scroll
+  // wide ones horizontally instead.
+  table: (props: React.ComponentProps<"table">) => (
+    <div className="typeset-scroll scroll-fade-x scrollbar-none">
+      <table {...props} />
     </div>
-  ),
-  tr: ({ className, ...props }: React.ComponentProps<"tr">) => (
-    <tr className={cn("m-0 border-b", className)} {...props} />
-  ),
-  th: ({ className, ...props }: React.ComponentProps<"th">) => (
-    <th
-      className={cn(
-        "px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
-        className
-      )}
-      {...props}
-    />
-  ),
-  td: ({ className, ...props }: React.ComponentProps<"td">) => (
-    <td
-      className={cn(
-        "px-4 py-2 text-left whitespace-nowrap [&[align=center]]:text-center [&[align=right]]:text-right",
-        className
-      )}
-      {...props}
-    />
   ),
   pre: ({ className, children, ...props }: React.ComponentProps<"pre">) => {
     return (
       <pre
+        data-not-typeset
         className={cn(
-          "no-scrollbar min-w-0 overflow-x-auto overflow-y-auto overscroll-x-contain overscroll-y-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0",
+          "no-scrollbar min-w-0 overflow-x-auto overflow-y-auto overscroll-x-contain overscroll-y-auto px-4 py-3.5 outline-none has-data-highlighted-line:px-0 has-data-line-numbers:px-0 has-data-[slot=tabs]:p-0",
           className
         )}
         {...props}
@@ -285,9 +192,6 @@ export const mdxComponents = {
         {children}
       </pre>
     )
-  },
-  figure: ({ className, ...props }: React.ComponentProps<"figure">) => {
-    return <figure className={cn(className)} {...props} />
   },
   figcaption: ({
     className,
@@ -331,15 +235,7 @@ export const mdxComponents = {
   }) => {
     // Inline Code.
     if (typeof props.children === "string") {
-      return (
-        <code
-          className={cn(
-            "relative rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-[0.8rem] break-words outline-none",
-            className
-          )}
-          {...props}
-        />
-      )
+      return <code className={className} {...props} />
     }
 
     // npm command.
@@ -363,15 +259,7 @@ export const mdxComponents = {
       </>
     )
   },
-  Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
-    <h3
-      className={cn(
-        "mt-8 scroll-m-32 font-heading text-lg font-medium tracking-tight",
-        className
-      )}
-      {...props}
-    />
-  ),
+  Step: (props: React.ComponentProps<"h3">) => <h3 {...props} />,
   Steps: ({ className, ...props }: React.ComponentProps<"div">) => (
     <div
       className={cn(
@@ -419,7 +307,7 @@ export const mdxComponents = {
   }: React.ComponentProps<typeof TabsTrigger>) => (
     <TabsTrigger
       className={cn(
-        "rounded-none border-0 border-b-2 border-transparent bg-transparent px-0 pb-3 text-base text-muted-foreground hover:text-primary data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:text-foreground data-[state=active]:shadow-none! dark:data-[state=active]:border-primary dark:data-[state=active]:bg-transparent",
+        "not-typset rounded-none border-0 border-b-2 border-transparent bg-transparent px-0 pb-3 text-base text-muted-foreground hover:text-primary data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:text-foreground data-[state=active]:shadow-none! dark:data-[state=active]:border-primary dark:data-[state=active]:bg-transparent",
         className
       )}
       {...props}
@@ -437,10 +325,10 @@ export const mdxComponents = {
       {...props}
     />
   ),
-  Tab: ({ className, ...props }: React.ComponentProps<"div">) => (
-    <div className={cn(className)} {...props} />
+  Tab: (props: React.ComponentProps<"div">) => <div {...props} />,
+  Button: ({ className, ...props }: React.ComponentProps<typeof Button>) => (
+    <Button className={cn("not-typeset", className)} {...props} />
   ),
-  Button,
   Callout,
   Accordion,
   AccordionContent,
@@ -456,14 +344,10 @@ export const mdxComponents = {
   CodeCollapsibleWrapper,
   ComponentsList: ComponentsListWrapper,
   DirectoryList,
-  Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
-    <Link
-      className={cn("font-medium underline underline-offset-4", className)}
-      {...props}
-    />
-  ),
+  Link,
   LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
+      data-not-typeset
       className={cn(
         "flex w-full flex-col items-center rounded-xl bg-surface p-6 text-surface-foreground transition-colors hover:bg-surface/80 sm:p-10",
         className

@@ -10,6 +10,10 @@ export const siteConfig = {
   },
   navItems: [
     {
+      href: "/",
+      label: "Home",
+    },
+    {
       href: "/docs/installation",
       label: "Docs",
     },
@@ -28,6 +32,10 @@ export const siteConfig = {
     {
       href: "/docs/directory",
       label: "Directory",
+    },
+    {
+      href: "/typeset",
+      label: "Typeset",
     },
     {
       href: "/create",

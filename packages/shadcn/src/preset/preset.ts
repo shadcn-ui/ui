@@ -20,6 +20,7 @@ export const PRESET_STYLES = [
   "mira",
   "luma",
   "sera",
+  "rhea",
 ] as const
 
 export const PRESET_BASE_COLORS = [

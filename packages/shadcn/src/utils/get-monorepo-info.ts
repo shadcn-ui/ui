@@ -134,13 +134,7 @@ export async function getWorkspacePatterns(cwd: string) {
   const pnpmWorkspacePath = path.resolve(cwd, "pnpm-workspace.yaml")
   if (fs.existsSync(pnpmWorkspacePath)) {
     const content = await fs.readFile(pnpmWorkspacePath, "utf8")
-    // Simple regex parse to extract patterns from packages list.
-    const matches = Array.from(
-      content.matchAll(/^\s*-\s*["']?([^"'\n#]+)["']?\s*$/gm)
-    )
-    for (const match of matches) {
-      patterns.push(match[1].trim())
-    }
+    patterns.push(...parsePnpmWorkspacePackages(content))
   }
 
   // Read package.json workspaces.
@@ -161,4 +155,38 @@ export async function getWorkspacePatterns(cwd: string) {
   }
 
   return Array.from(new Set(patterns))
+}
+
+export function parsePnpmWorkspacePackages(content: string) {
+  const patterns: string[] = []
+  let inPackages = false
+  let packagesIndent = 0
+
+  for (const line of content.split("\n")) {
+    const trimmed = line.trim()
+
+    if (!trimmed || trimmed.startsWith("#")) {
+      continue
+    }
+
+    const keyMatch = line.match(/^(\s*)([A-Za-z0-9_-]+)\s*:/)
+    if (keyMatch) {
+      packagesIndent = keyMatch[1].length
+      inPackages = keyMatch[2] === "packages"
+      continue
+    }
+
+    if (!inPackages) {
+      continue
+    }
+
+    const itemMatch = line.match(/^(\s*)-\s*(.+?)\s*(?:#.*)?$/)
+    if (!itemMatch || itemMatch[1].length <= packagesIndent) {
+      continue
+    }
+
+    patterns.push(itemMatch[2].trim().replace(/^["']|["']$/g, ""))
+  }
+
+  return patterns
 }

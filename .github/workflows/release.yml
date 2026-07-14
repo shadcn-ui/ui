@@ -2,7 +2,7 @@
 
 name: Release
 
-run-name: ${{ github.event_name == 'pull_request' && format('Release Beta - PR {0}', github.event.number) || 'Release Stable' }}
+run-name: ${{ github.event_name == 'pull_request' && format('Release Prerelease - PR {0}', github.event.number) || 'Release Stable' }}
 
 on:
   pull_request:
@@ -15,8 +15,8 @@ on:
 
 jobs:
   prerelease:
-    if: ${{ github.event_name == 'pull_request' && github.repository_owner == 'shadcn-ui' && contains(github.event.pull_request.labels.*.name, '🚀 autorelease') }}
-    name: Publish Beta to NPM
+    if: "${{ github.event_name == 'pull_request' && github.repository_owner == 'shadcn-ui' && (contains(github.event.pull_request.labels.*.name, 'release: beta') || contains(github.event.pull_request.labels.*.name, 'release: rc')) }}"
+    name: Publish Prerelease to NPM
     runs-on: ubuntu-latest
     environment: Preview
     permissions:
@@ -24,15 +24,41 @@ jobs:
       contents: read
 
     steps:
+      - name: Select prerelease channel
+        id: prerelease
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prereleaseLabels = [
+              { name: "release: beta", channel: "beta" },
+              { name: "release: rc", channel: "rc" },
+            ];
+            const labels = context.payload.pull_request.labels.map((label) => label.name);
+            const selectedLabels = prereleaseLabels.filter((label) =>
+              labels.includes(label.name)
+            );
+
+            if (selectedLabels.length !== 1) {
+              throw new Error(
+                `Expected exactly one prerelease label, found: ${
+                  selectedLabels.map((label) => label.name).join(", ") || "none"
+                }.`
+              );
+            }
+
+            core.setOutput("channel", selectedLabels[0].channel);
+            core.setOutput("label", selectedLabels[0].name);
+
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Use PNPM
         uses: pnpm/action-setup@v4
         with:
-          version: 9.0.6
+          version: 10.33.4
 
       - name: Use Node.js 20
         uses: actions/setup-node@v4
@@ -47,23 +73,49 @@ jobs:
       - name: Install NPM Dependencies
         run: pnpm install
 
-      - name: Modify package.json version
-        run: node .github/version-script-beta.js
+      # A snapshot prerelease needs changesets to compute versions. The
+      # Changesets version PR consumes them, so a label on that PR is a no-op.
+      - name: Check for changesets
+        id: changesets
+        run: |
+          shopt -s nullglob
+          present=false
+          for file in .changeset/*.md; do
+            if [ "$(basename "$file")" != "README.md" ]; then
+              present=true
+              break
+            fi
+          done
+          echo "present=$present" >> "$GITHUB_OUTPUT"
 
-      - name: Publish Beta to NPM
-        run: pnpm pub:beta
+      - name: No changesets to prerelease
+        if: steps.changesets.outputs.present == 'false'
+        run: echo "::notice::No changesets found on this branch; nothing to prerelease."
 
-      - name: get-npm-version
-        id: package-version
-        uses: martinbeentjes/npm-get-version-action@main
-        with:
-          path: packages/shadcn
+      # Snapshot versions are stamped per run (timestamped), so each publish is
+      # unique and can never collide with a real release on the latest tag.
+      - name: Version snapshot
+        if: steps.changesets.outputs.present == 'true'
+        run: pnpm exec changeset version --snapshot ${{ steps.prerelease.outputs.channel }}
 
-      - name: Upload packaged artifact
+      - name: Build packages
+        if: steps.changesets.outputs.present == 'true'
+        run: pnpm build:packages
+
+      - name: Publish snapshot to NPM
+        if: steps.changesets.outputs.present == 'true'
+        run: pnpm exec changeset publish --tag ${{ steps.prerelease.outputs.channel }} --no-git-tag
+
+      - name: Collect prerelease info
+        if: steps.changesets.outputs.present == 'true'
+        run: node .github/collect-prerelease-info.js "${{ github.event.number }}" "${{ steps.prerelease.outputs.channel }}"
+
+      - name: Upload prerelease info
+        if: steps.changesets.outputs.present == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: npm-package-shadcn@${{ steps.package-version.outputs.current-version }}-pr-${{ github.event.number }} # encode the PR number into the artifact name
-          path: packages/shadcn/dist/index.js
+          name: prerelease-info
+          path: prerelease-info.json
 
   release:
     if: ${{ github.event_name == 'push' && github.repository_owner == 'shadcn-ui' }}
@@ -83,7 +135,7 @@ jobs:
       - name: Use PNPM
         uses: pnpm/action-setup@v4
         with:
-          version: 9.0.6
+          version: 10.33.4
 
       - name: Use Node.js 20
         uses: actions/setup-node@v4
@@ -98,11 +150,10 @@ jobs:
       - name: Install NPM Dependencies
         run: pnpm install
 
-      # - name: Check for errors
-      #   run: pnpm check
-
-      - name: Build the package
-        run: pnpm shadcn:build
+      # Builds every publishable package under packages/* (shadcn, @shadcn/react),
+      # never apps/v4, so each dist is fresh before changeset publish.
+      - name: Build the packages
+        run: pnpm build:packages
 
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v6

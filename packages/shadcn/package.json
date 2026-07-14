@@ -1,6 +1,6 @@
 {
   "name": "shadcn",
-  "version": "4.7.0",
+  "version": "4.13.0",
   "description": "Add components to your apps.",
   "publishConfig": {
     "access": "public"
@@ -56,11 +56,15 @@
       "types": "./dist/preset/index.d.ts",
       "default": "./dist/preset/index.js"
     },
-    "./tailwind.css": {
-      "style": "./dist/tailwind.css"
-    }
+    "./tailwind.css": "./dist/tailwind.css"
   },
+  "sideEffects": [
+    "./dist/tailwind.css"
+  ],
   "bin": "./dist/index.js",
+  "engines": {
+    "node": ">=20.18.1"
+  },
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
@@ -73,6 +77,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "release": "changeset version",
     "pub:beta": "pnpm build && pnpm publish --no-git-checks --access public --tag beta",
+    "pub:rc": "pnpm build && pnpm publish --no-git-checks --access public --tag rc",
     "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
     "pub:release": "pnpm build && pnpm publish --access public",
     "test": "vitest run",
@@ -97,10 +102,7 @@
     "fast-glob": "^3.3.3",
     "fs-extra": "^11.3.1",
     "fuzzysort": "^3.1.0",
-    "https-proxy-agent": "^7.0.6",
     "kleur": "^4.1.5",
-    "msw": "^2.10.4",
-    "node-fetch": "^3.3.2",
     "open": "^11.0.0",
     "ora": "^8.2.0",
     "postcss": "^8.5.6",
@@ -111,6 +113,7 @@
     "tailwind-merge": "^3.0.1",
     "ts-morph": "^26.0.0",
     "tsconfig-paths": "^4.2.0",
+    "undici": "^7.27.2",
     "validate-npm-package-name": "^7.0.1",
     "zod": "^3.24.1",
     "zod-to-json-schema": "^3.24.6"
@@ -121,6 +124,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/prompts": "^2.4.9",
     "@types/stringify-object": "^4.0.5",
+    "msw": "^2.10.4",
     "rimraf": "^6.0.1",
     "tsup": "^8.5.0",
     "type-fest": "^4.41.0",
