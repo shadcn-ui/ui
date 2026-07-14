@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/kbd-button.tsx",
-      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\nimport { Kbd } from \"@/registry/new-york-v4/ui/kbd\"\n\nexport default function KbdButton() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-4\">\n      <Button variant=\"outline\" size=\"sm\" className=\"pr-2\">\n        Accept <Kbd>⏎</Kbd>\n      </Button>\n      <Button variant=\"outline\" size=\"sm\" className=\"pr-2\">\n        Cancel <Kbd>Esc</Kbd>\n      </Button>\n    </div>\n  )\n}\n",
+      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\r\nimport { Kbd } from \"@/registry/new-york-v4/ui/kbd\"\r\n\r\nexport default function KbdButton() {\r\n  return (\r\n    <div className=\"flex flex-wrap items-center gap-4\">\r\n      <Button variant=\"outline\" size=\"sm\" className=\"pr-2\">\r\n        Accept <Kbd>⏎</Kbd>\r\n      </Button>\r\n      <Button variant=\"outline\" size=\"sm\" className=\"pr-2\">\r\n        Cancel <Kbd>Esc</Kbd>\r\n      </Button>\r\n    </div>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ],

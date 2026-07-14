@@ -111,7 +111,7 @@ function getMessageScrollerItems(
 ) {
   return Array.from(content.children).filter(
     (child): child is HTMLElement =>
-      child instanceof HTMLElement && child !== spacer
+      child.nodeType === Node.ELEMENT_NODE && child !== spacer
   )
 }
 

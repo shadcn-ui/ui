@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/button-loading.tsx",
-      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\nimport { Spinner } from \"@/registry/new-york-v4/ui/spinner\"\n\nexport default function ButtonLoading() {\n  return (\n    <Button size=\"sm\" variant=\"outline\" disabled>\n      <Spinner />\n      Submit\n    </Button>\n  )\n}\n",
+      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\r\nimport { Spinner } from \"@/registry/new-york-v4/ui/spinner\"\r\n\r\nexport default function ButtonLoading() {\r\n  return (\r\n    <Button size=\"sm\" variant=\"outline\" disabled>\r\n      <Spinner />\r\n      Submit\r\n    </Button>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ],
