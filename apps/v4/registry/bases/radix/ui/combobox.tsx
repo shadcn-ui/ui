@@ -107,32 +107,45 @@ function ComboboxContent({
   align = "start",
   alignOffset = 0,
   anchor,
+  container,
+  keepMounted,
   ...props
 }: ComboboxPrimitive.Popup.Props &
   Pick<
     ComboboxPrimitive.Positioner.Props,
     "side" | "align" | "sideOffset" | "alignOffset" | "anchor"
-  >) {
+  > & {
+    container?: React.ComponentProps<
+      typeof ComboboxPrimitive.Portal
+    >["container"]
+    keepMounted?: React.ComponentProps<
+      typeof ComboboxPrimitive.Portal
+    >["keepMounted"]
+  }) {
+  const popup = (
+    <ComboboxPrimitive.Positioner
+      side={side}
+      sideOffset={sideOffset}
+      align={align}
+      alignOffset={alignOffset}
+      anchor={anchor}
+      className="isolate z-50"
+    >
+      <ComboboxPrimitive.Popup
+        data-slot="combobox-content"
+        data-chips={!!anchor}
+        className={cn(
+          "cn-combobox-content cn-combobox-content-logical cn-menu-target cn-menu-translucent group/combobox-content relative max-h-(--available-height) w-(--anchor-width) max-w-(--available-width) min-w-[calc(var(--anchor-width)+--spacing(7))] origin-(--transform-origin) data-[chips=true]:min-w-(--anchor-width)",
+          className
+        )}
+        {...props}
+      />
+    </ComboboxPrimitive.Positioner>
+  )
+
   return (
-    <ComboboxPrimitive.Portal>
-      <ComboboxPrimitive.Positioner
-        side={side}
-        sideOffset={sideOffset}
-        align={align}
-        alignOffset={alignOffset}
-        anchor={anchor}
-        className="isolate z-50"
-      >
-        <ComboboxPrimitive.Popup
-          data-slot="combobox-content"
-          data-chips={!!anchor}
-          className={cn(
-            "cn-combobox-content cn-combobox-content-logical cn-menu-target cn-menu-translucent group/combobox-content relative max-h-(--available-height) w-(--anchor-width) max-w-(--available-width) min-w-[calc(var(--anchor-width)+--spacing(7))] origin-(--transform-origin) data-[chips=true]:min-w-(--anchor-width)",
-            className
-          )}
-          {...props}
-        />
-      </ComboboxPrimitive.Positioner>
+    <ComboboxPrimitive.Portal container={container} keepMounted={keepMounted}>
+      {popup}
     </ComboboxPrimitive.Portal>
   )
 }
