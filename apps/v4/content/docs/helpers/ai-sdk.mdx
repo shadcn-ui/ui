@@ -1,14 +1,16 @@
 ---
 title: AI SDK
-description: Create AI SDK messages and stream predefined conversations through useChat without a model, API route, or network request.
+description: Create AI SDK messages and stream predefined conversations through useChat without a model, API route, network request, or API key.
 ---
 
-`@shadcn/helpers/ai-sdk` lets you write a conversation in code and play it
-through `useChat`.
+`@shadcn/helpers/ai-sdk` lets you write an AI conversation in code and stream it
+through `useChat`, with no model, API route, network request, or API key.
 
-Use it to build chat components, previews, docs, and tests without calling a
-model or setting up an API route. It supports reasoning, tools, data, files,
-sources, and every other part type supported by the AI SDK.
+Because the conversation streams through the real `useChat` lifecycle, your
+components behave exactly as they would in production: text and reasoning stream
+word by word, tools move from input to output, and data parts update in place.
+It supports every part type the AI SDK does: reasoning, tools, data, files,
+sources, and custom parts.
 
 ```ts showLineNumbers
 import { createChat } from "@shadcn/helpers/ai-sdk"
@@ -52,6 +54,22 @@ function Chat() {
 
 `get(0)` starts with no messages. `sendMessage(nextMessage)` sends the next
 predefined user message; the transport then streams its assistant response.
+
+---
+
+## What It's For
+
+The helper decouples your chat UI from the model and the backend, so you can
+work on the frontend on its own. It runs offline, instantly, and the same way every time.
+
+- **Build components.** Develop message bubbles, tool cards, and reasoning
+  panels against realistic streaming output, without wiring up a model first.
+- **Preview and demo.** Ship reproducible previews, screenshots, and videos
+  that never depend on a live model.
+- **Write docs.** Power documentation examples with conversations that render
+  the same way on every load.
+- **Test.** Assert against a deterministic stream in CI, with no network calls,
+  token spend, or flaky model output.
 
 ---
 
@@ -461,11 +479,13 @@ Use `custom()` to add a custom part.
 
 ```ts
 chat.assistant(({ writer }) => {
-  writer.custom("approval")
+  writer.custom("app.approval")
 })
 ```
 
-The message receives a `custom` part with the given `kind`.
+The message receives a `custom` part with the given `kind`. The AI SDK expects
+kinds in the `{provider}.{provider-type}` format. Calling `custom()` without a
+kind uses `"test.output"`.
 
 ---
 
@@ -537,7 +557,7 @@ text of the latest message.
 | Option     | Type                                       | Default | Description                                                                   |
 | ---------- | ------------------------------------------ | ------- | ----------------------------------------------------------------------------- |
 | `delayMs`  | `number`                                   | `50`    | Delay between text and reasoning deltas. Use `0` or `undefined` to remove it. |
-| `fallback` | `string`, `UIMessagePart[]`, or a callback | —       | Response to stream when no predefined assistant response remains.             |
+| `fallback` | `string`, `UIMessagePart[]`, or a callback | None    | Response to stream when no predefined assistant response remains.             |
 
 The transport-level `delayMs` is the default for every streamed text and
 reasoning part. Override it for one part with `writer.text(..., { delayMs })`
@@ -720,6 +740,11 @@ Every method that adds content returns the same chat, so calls can be chained.
 | `next(messages)`              | `UIMessage \| null` | Return the next predefined user message after a transcript.      |
 | `transport(options?)`         | `ChatTransport`     | Create the transport used by `useChat`.                          |
 
+Calling `user()` or `assistant()` without content uses
+`"Summarize the uploaded receipt."`. Calling `error()` without a message uses
+`"An error occurred."`. `get(count)` throws when `count` is negative or not an
+integer.
+
 #### `user()` Options
 
 | Option     | Type            | Description                                 |
@@ -760,7 +785,7 @@ type FilePayload = {
 | Option     | Type                                                          | Default | Description                                                                   |
 | ---------- | ------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------- |
 | `delayMs`  | `number`                                                      | `50`    | Delay between text and reasoning deltas. Use `0` or `undefined` to remove it. |
-| `fallback` | `string \| UIMessagePart[] \| ({ writer, messages }) => void` | —       | Response used when no predefined assistant response remains.                  |
+| `fallback` | `string \| UIMessagePart[] \| ({ writer, messages }) => void` | None    | Response used when no predefined assistant response remains.                  |
 
 See [Transport](#transport) for matching, fallback, abort, and streaming
 behavior.
@@ -785,6 +810,11 @@ callbacks.
 | `sleep(delayMs)`             | Pause before the next writer event.                               |
 | `error(errorText?)`          | Emit an error and end the response without a `finish` chunk.      |
 
+Calling `text()` without content uses `"Summarize the uploaded receipt."`.
+Calling `reasoning()` without content uses
+`"I need to inspect the available context before answering."`. Calling
+`error()` without a message uses `"An error occurred."`.
+
 #### Text and Reasoning Options
 
 | Option    | Type                    | Default    | Description                                             |
@@ -808,7 +838,8 @@ callbacks.
 
 `tool()` returns a handle with `sleep(delayMs)`, `output(value)`,
 `error(errorText?)`, and `denied()`. Use the handle when the tool lifecycle
-needs events between its input and result.
+needs events between its input and result. Calling `tool.error()` without a
+message uses `"Tool call failed."`.
 
 #### Data Input
 
