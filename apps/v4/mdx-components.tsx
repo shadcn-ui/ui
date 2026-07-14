@@ -278,7 +278,7 @@ export const mdxComponents = {
     ...props
   }: React.ComponentProps<"img">) => (
     <Image
-      className={cn("mt-6 rounded-md border", className)}
+      className={cn("mt-6 rounded-2xl border", className)}
       src={(src as string) || ""}
       width={Number(width)}
       height={Number(height)}
@@ -349,7 +349,7 @@ export const mdxComponents = {
     <Link
       data-not-typeset
       className={cn(
-        "flex w-full flex-col items-center rounded-xl bg-surface p-6 text-surface-foreground transition-colors hover:bg-surface/80 sm:p-10",
+        "flex w-full flex-col items-center rounded-2xl bg-surface p-6 text-surface-foreground transition-colors hover:bg-surface/80 sm:p-10",
         className
       )}
       {...props}
