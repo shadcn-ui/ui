@@ -1,6 +1,6 @@
 {
   "name": "@shadcn/helpers",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Small helpers for developing apps.",
   "publishConfig": {
     "access": "public"
@@ -47,6 +47,8 @@
     "dev": "tsup --watch",
     "build": "tsup",
     "typecheck": "tsc --noEmit",
+    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "clean": "rimraf dist",
     "test": "vitest run"
   },
