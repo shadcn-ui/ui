@@ -140,6 +140,17 @@ function getUnanchoredScrollAnchor(
   return null
 }
 
+function markScrollAnchorsHandled(
+  items: HTMLElement[],
+  handledAnchors: { add(element: HTMLElement): unknown }
+) {
+  for (const item of items) {
+    if (item.dataset.scrollAnchor === "true") {
+      handledAnchors.add(item)
+    }
+  }
+}
+
 function hasMultipleNewScrollAnchors(
   items: HTMLElement[],
   previousItemCount: number
@@ -384,4 +395,5 @@ export {
   getTailSpacerHeight,
   getUnanchoredScrollAnchor,
   hasMultipleNewScrollAnchors,
+  markScrollAnchorsHandled,
 }
