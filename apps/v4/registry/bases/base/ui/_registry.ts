@@ -1025,6 +1025,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   {
     name: "attachment",
     type: "registry:ui",
+    dependencies: ["@base-ui/react"],
     registryDependencies: ["button"],
     files: [
       {

@@ -96,6 +96,7 @@
   {
     "name": "attachment",
     "type": "registry:ui",
+    "dependencies": ["@base-ui/react"],
     "registryDependencies": ["button"],
     "files": [
       {

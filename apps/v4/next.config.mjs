@@ -161,16 +161,29 @@ const nextConfig = {
     ]
   },
   rewrites() {
-    return [
-      {
-        source: "/docs/:path*.md",
-        destination: "/llm/:path*",
-      },
-      {
-        source: "/init.md",
-        destination: "/init/md",
-      },
-    ]
+    return {
+      beforeFiles: [],
+      afterFiles: [
+        {
+          source: "/docs/:path*.md",
+          destination: "/llm/:path*",
+        },
+        {
+          source: "/init.md",
+          destination: "/init/md",
+        },
+      ],
+      fallback: [
+        {
+          source: "/r/styles/new-york/:path*",
+          destination: "/r/styles/new-york-v4/:path*",
+        },
+        {
+          source: "/r/styles/default/:path*",
+          destination: "/r/styles/new-york-v4/:path*",
+        },
+      ],
+    }
   },
 }
 
