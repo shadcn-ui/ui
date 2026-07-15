@@ -16,6 +16,7 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
@@ -137,22 +138,24 @@ function CommandMenu() {
         Jump to...
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" side="bottom" className="w-64">
-        <DropdownMenuLabel>Conversations</DropdownMenuLabel>
-        {userMessages.map((message) => (
-          <DropdownMenuItem
-            key={message.id}
-            onSelect={() =>
-              scrollToMessage(message.id, {
-                align: "start",
-                behavior: "smooth",
-              })
-            }
-          >
-            <span className="line-clamp-1 min-w-0">
-              {getTrimmedMessageText(message)}
-            </span>
-          </DropdownMenuItem>
-        ))}
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>Conversations</DropdownMenuLabel>
+          {userMessages.map((message) => (
+            <DropdownMenuItem
+              key={message.id}
+              onClick={() =>
+                scrollToMessage(message.id, {
+                  align: "start",
+                  behavior: "smooth",
+                })
+              }
+            >
+              <span className="line-clamp-1 min-w-0">
+                {getTrimmedMessageText(message)}
+              </span>
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   )

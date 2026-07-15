@@ -124,7 +124,7 @@ export const init = new Command()
     "-t, --template <template>",
     "the template to use. (next, start, vite, react-router, laravel, astro)"
   )
-  .option("-b, --base <base>", "the component library to use. (radix, base)")
+  .option("-b, --base <base>", "the component library to use. (base, radix)")
   .option("--monorepo", "scaffold a monorepo project.")
   .option("--no-monorepo", "skip the monorepo prompt.")
   .option("-p, --preset [name]", "use a preset configuration")
@@ -263,7 +263,11 @@ export const init = new Command()
             path.resolve(cwd, "components.json")
           )
         } catch {
-          // Ignore read errors.
+          logger.warn(
+            `Could not parse the existing ${highlighter.info(
+              "components.json"
+            )}. Unable to detect the current base.`
+          )
         }
 
         // Pass existing config so preflight can use it (e.g. tailwind.css path in monorepos).
@@ -418,12 +422,12 @@ export const init = new Command()
               logger.break()
               process.exit(1)
             }
-            // Preset codes no longer carry base — use "radix" as placeholder.
+            // Preset codes no longer carry base, so use "base" as placeholder.
             // The correct base is set in the URL after resolution below.
             initUrl = resolveInitUrl(
               {
                 ...decoded,
-                base: "radix",
+                base: "base",
                 rtl: options.rtl ?? false,
               },
               {
@@ -441,7 +445,7 @@ export const init = new Command()
             initUrl = resolveInitUrl(
               {
                 ...preset,
-                base: options.base ?? "radix",
+                base: options.base ?? "base",
                 rtl: options.rtl ?? preset.rtl,
               },
               { template: options.template, pointer: options.pointer }
@@ -463,11 +467,15 @@ export const init = new Command()
             : "radix"
           : "")
 
+      // If a components.json exists but could not be parsed, we cannot know
+      // the current base, so never pick one silently.
+      const unknownExistingBase = hasExistingConfig && !existingConfig
+
       if (!resolvedBase) {
-        if (components.length > 0) {
-          // When initializing from a registry item, default to radix.
+        if (components.length > 0 && !unknownExistingBase) {
+          // When initializing from a registry item, default to base.
           // The registry:base config will override this.
-          resolvedBase = "radix"
+          resolvedBase = "base"
         } else {
           const base = await promptForBase()
           resolvedBase = base

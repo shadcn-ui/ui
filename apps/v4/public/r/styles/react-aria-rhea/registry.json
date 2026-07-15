@@ -9,8 +9,13 @@
         "lucide-react",
         "react-aria-components"
       ],
-      "devDependencies": ["tw-animate-css", "shadcn"],
-      "registryDependencies": ["utils"],
+      "devDependencies": [
+        "tw-animate-css",
+        "shadcn"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [],
       "cssVars": {},
       "css": {
@@ -34,8 +39,13 @@
         "lucide-react",
         "react-aria-components"
       ],
-      "devDependencies": ["tw-animate-css", "shadcn"],
-      "registryDependencies": ["utils"],
+      "devDependencies": [
+        "tw-animate-css",
+        "shadcn"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [],
       "cssVars": {},
       "css": {
@@ -74,7 +84,9 @@
     },
     {
       "name": "alert-dialog",
-      "registryDependencies": ["button"],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/alert-dialog.tsx",
@@ -135,7 +147,9 @@
     },
     {
       "name": "button-group",
-      "registryDependencies": ["separator"],
+      "registryDependencies": [
+        "separator"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/button-group.tsx",
@@ -146,8 +160,13 @@
     },
     {
       "name": "calendar",
-      "dependencies": ["react-day-picker@latest", "date-fns"],
-      "registryDependencies": ["button"],
+      "dependencies": [
+        "react-day-picker@latest",
+        "date-fns"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/calendar.tsx",
@@ -168,8 +187,12 @@
     },
     {
       "name": "carousel",
-      "dependencies": ["embla-carousel-react"],
-      "registryDependencies": ["button"],
+      "dependencies": [
+        "embla-carousel-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/carousel.tsx",
@@ -180,8 +203,12 @@
     },
     {
       "name": "chart",
-      "dependencies": ["recharts@2.15.4"],
-      "registryDependencies": ["card"],
+      "dependencies": [
+        "recharts@2.15.4"
+      ],
+      "registryDependencies": [
+        "card"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/chart.tsx",
@@ -212,7 +239,10 @@
     },
     {
       "name": "combobox",
-      "registryDependencies": ["button", "input-group"],
+      "registryDependencies": [
+        "button",
+        "input-group"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/combobox.tsx",
@@ -223,8 +253,13 @@
     },
     {
       "name": "command",
-      "dependencies": ["cmdk"],
-      "registryDependencies": ["dialog", "input-group"],
+      "dependencies": [
+        "cmdk"
+      ],
+      "registryDependencies": [
+        "dialog",
+        "input-group"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/command.tsx",
@@ -235,7 +270,9 @@
     },
     {
       "name": "context-menu",
-      "registryDependencies": ["dropdown-menu"],
+      "registryDependencies": [
+        "dropdown-menu"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/context-menu.tsx",
@@ -246,7 +283,9 @@
     },
     {
       "name": "dialog",
-      "registryDependencies": ["button"],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/dialog.tsx",
@@ -257,7 +296,9 @@
     },
     {
       "name": "drawer",
-      "dependencies": ["vaul"],
+      "dependencies": [
+        "vaul"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/drawer.tsx",
@@ -288,7 +329,10 @@
     },
     {
       "name": "field",
-      "registryDependencies": ["label", "separator"],
+      "registryDependencies": [
+        "label",
+        "separator"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/field.tsx",
@@ -313,7 +357,11 @@
     },
     {
       "name": "input-group",
-      "registryDependencies": ["button", "input", "textarea"],
+      "registryDependencies": [
+        "button",
+        "input",
+        "textarea"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/input-group.tsx",
@@ -324,7 +372,9 @@
     },
     {
       "name": "input-otp",
-      "dependencies": ["input-otp"],
+      "dependencies": [
+        "input-otp"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/input-otp.tsx",
@@ -335,7 +385,9 @@
     },
     {
       "name": "item",
-      "registryDependencies": ["separator"],
+      "registryDependencies": [
+        "separator"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/item.tsx",
@@ -356,7 +408,9 @@
     },
     {
       "name": "pagination",
-      "registryDependencies": ["button"],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/pagination.tsx",
@@ -397,7 +451,9 @@
     },
     {
       "name": "resizable",
-      "dependencies": ["react-resizable-panels"],
+      "dependencies": [
+        "react-resizable-panels"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/resizable.tsx",
@@ -438,7 +494,9 @@
     },
     {
       "name": "sheet",
-      "registryDependencies": ["button"],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/sheet.tsx",
@@ -488,7 +546,10 @@
     },
     {
       "name": "sonner",
-      "dependencies": ["sonner", "next-themes"],
+      "dependencies": [
+        "sonner",
+        "next-themes"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/sonner.tsx",
@@ -559,7 +620,9 @@
     },
     {
       "name": "toggle-group",
-      "registryDependencies": ["toggle"],
+      "registryDependencies": [
+        "toggle"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/toggle-group.tsx",
@@ -610,7 +673,9 @@
     },
     {
       "name": "attachment",
-      "registryDependencies": ["button"],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/attachment.tsx",
@@ -631,8 +696,12 @@
     },
     {
       "name": "message-scroller",
-      "dependencies": ["@shadcn/react"],
-      "registryDependencies": ["button"],
+      "dependencies": [
+        "@shadcn/react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/ui/message-scroller.tsx",
@@ -664,7 +733,12 @@
     {
       "name": "accordion-example",
       "title": "Accordion",
-      "registryDependencies": ["accordion", "button", "card", "example"],
+      "registryDependencies": [
+        "accordion",
+        "button",
+        "card",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/accordion-example.tsx",
@@ -676,7 +750,11 @@
     {
       "name": "alert-example",
       "title": "Alert",
-      "registryDependencies": ["alert", "badge", "example"],
+      "registryDependencies": [
+        "alert",
+        "badge",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/alert-example.tsx",
@@ -688,7 +766,12 @@
     {
       "name": "alert-dialog-example",
       "title": "Alert Dialog",
-      "registryDependencies": ["alert-dialog", "button", "dialog", "example"],
+      "registryDependencies": [
+        "alert-dialog",
+        "button",
+        "dialog",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/alert-dialog-example.tsx",
@@ -700,7 +783,10 @@
     {
       "name": "aspect-ratio-example",
       "title": "Aspect Ratio",
-      "registryDependencies": ["aspect-ratio", "example"],
+      "registryDependencies": [
+        "aspect-ratio",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/aspect-ratio-example.tsx",
@@ -712,7 +798,12 @@
     {
       "name": "avatar-example",
       "title": "Avatar",
-      "registryDependencies": ["avatar", "button", "empty", "example"],
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "empty",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/avatar-example.tsx",
@@ -724,7 +815,11 @@
     {
       "name": "badge-example",
       "title": "Badge",
-      "registryDependencies": ["badge", "spinner", "example"],
+      "registryDependencies": [
+        "badge",
+        "spinner",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/badge-example.tsx",
@@ -736,7 +831,11 @@
     {
       "name": "breadcrumb-example",
       "title": "Breadcrumb",
-      "registryDependencies": ["breadcrumb", "dropdown-menu", "example"],
+      "registryDependencies": [
+        "breadcrumb",
+        "dropdown-menu",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/breadcrumb-example.tsx",
@@ -748,7 +847,10 @@
     {
       "name": "button-example",
       "title": "Button",
-      "registryDependencies": ["button", "example"],
+      "registryDependencies": [
+        "button",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/button-example.tsx",
@@ -824,7 +926,11 @@
     {
       "name": "carousel-example",
       "title": "Carousel",
-      "registryDependencies": ["card", "carousel", "example"],
+      "registryDependencies": [
+        "card",
+        "carousel",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/carousel-example.tsx",
@@ -836,7 +942,11 @@
     {
       "name": "chart-example",
       "title": "Chart",
-      "registryDependencies": ["chart", "card", "example"],
+      "registryDependencies": [
+        "chart",
+        "card",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/chart-example.tsx",
@@ -848,7 +958,12 @@
     {
       "name": "checkbox-example",
       "title": "Checkbox",
-      "registryDependencies": ["checkbox", "field", "table", "example"],
+      "registryDependencies": [
+        "checkbox",
+        "field",
+        "table",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/checkbox-example.tsx",
@@ -903,7 +1018,11 @@
     {
       "name": "command-example",
       "title": "Command",
-      "registryDependencies": ["button", "command", "example"],
+      "registryDependencies": [
+        "button",
+        "command",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/command-example.tsx",
@@ -915,7 +1034,12 @@
     {
       "name": "context-menu-example",
       "title": "Context Menu",
-      "registryDependencies": ["button", "context-menu", "dialog", "example"],
+      "registryDependencies": [
+        "button",
+        "context-menu",
+        "dialog",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/context-menu-example.tsx",
@@ -954,7 +1078,10 @@
     {
       "name": "drawer-example",
       "title": "Drawer",
-      "registryDependencies": ["drawer", "example"],
+      "registryDependencies": [
+        "drawer",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/drawer-example.tsx",
@@ -1117,7 +1244,11 @@
     {
       "name": "item-example",
       "title": "Item",
-      "registryDependencies": ["button", "item", "example"],
+      "registryDependencies": [
+        "button",
+        "item",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/item-example.tsx",
@@ -1166,7 +1297,11 @@
     {
       "name": "native-select-example",
       "title": "Native Select",
-      "registryDependencies": ["field", "native-select", "example"],
+      "registryDependencies": [
+        "field",
+        "native-select",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/native-select-example.tsx",
@@ -1178,7 +1313,12 @@
     {
       "name": "pagination-example",
       "title": "Pagination",
-      "registryDependencies": ["field", "pagination", "select", "example"],
+      "registryDependencies": [
+        "field",
+        "pagination",
+        "select",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/pagination-example.tsx",
@@ -1227,7 +1367,11 @@
     {
       "name": "radio-group-example",
       "title": "Radio Group",
-      "registryDependencies": ["field", "radio-group", "example"],
+      "registryDependencies": [
+        "field",
+        "radio-group",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/radio-group-example.tsx",
@@ -1239,7 +1383,10 @@
     {
       "name": "resizable-example",
       "title": "Resizable",
-      "registryDependencies": ["resizable", "example"],
+      "registryDependencies": [
+        "resizable",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/resizable-example.tsx",
@@ -1251,7 +1398,11 @@
     {
       "name": "scroll-area-example",
       "title": "Scroll Area",
-      "registryDependencies": ["scroll-area", "separator", "example"],
+      "registryDependencies": [
+        "scroll-area",
+        "separator",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/scroll-area-example.tsx",
@@ -1284,7 +1435,10 @@
     {
       "name": "separator-example",
       "title": "Separator",
-      "registryDependencies": ["separator", "example"],
+      "registryDependencies": [
+        "separator",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/separator-example.tsx",
@@ -1296,7 +1450,13 @@
     {
       "name": "sheet-example",
       "title": "Sheet",
-      "registryDependencies": ["button", "field", "input", "sheet", "example"],
+      "registryDependencies": [
+        "button",
+        "field",
+        "input",
+        "sheet",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/sheet-example.tsx",
@@ -1347,7 +1507,11 @@
     {
       "name": "sidebar-inset-example",
       "title": "Sidebar (Inset)",
-      "registryDependencies": ["collapsible", "sidebar", "example"],
+      "registryDependencies": [
+        "collapsible",
+        "sidebar",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/sidebar-inset-example.tsx",
@@ -1379,7 +1543,10 @@
     {
       "name": "skeleton-example",
       "title": "Skeleton",
-      "registryDependencies": ["skeleton", "example"],
+      "registryDependencies": [
+        "skeleton",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/skeleton-example.tsx",
@@ -1391,7 +1558,11 @@
     {
       "name": "slider-example",
       "title": "Slider",
-      "registryDependencies": ["label", "slider", "example"],
+      "registryDependencies": [
+        "label",
+        "slider",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/slider-example.tsx",
@@ -1403,7 +1574,10 @@
     {
       "name": "sonner-example",
       "title": "Sonner",
-      "registryDependencies": ["sonner", "example"],
+      "registryDependencies": [
+        "sonner",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/sonner-example.tsx",
@@ -1435,7 +1609,12 @@
     {
       "name": "switch-example",
       "title": "Switch",
-      "registryDependencies": ["field", "label", "switch", "example"],
+      "registryDependencies": [
+        "field",
+        "label",
+        "switch",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/switch-example.tsx",
@@ -1466,7 +1645,12 @@
     {
       "name": "tabs-example",
       "title": "Tabs",
-      "registryDependencies": ["button", "dropdown-menu", "tabs", "example"],
+      "registryDependencies": [
+        "button",
+        "dropdown-menu",
+        "tabs",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/tabs-example.tsx",
@@ -1478,7 +1662,11 @@
     {
       "name": "textarea-example",
       "title": "Textarea",
-      "registryDependencies": ["field", "textarea", "example"],
+      "registryDependencies": [
+        "field",
+        "textarea",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/textarea-example.tsx",
@@ -1490,7 +1678,10 @@
     {
       "name": "toggle-example",
       "title": "Toggle",
-      "registryDependencies": ["toggle", "example"],
+      "registryDependencies": [
+        "toggle",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/toggle-example.tsx",
@@ -1502,7 +1693,12 @@
     {
       "name": "toggle-group-example",
       "title": "Toggle Group",
-      "registryDependencies": ["input", "select", "toggle-group", "example"],
+      "registryDependencies": [
+        "input",
+        "select",
+        "toggle-group",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/toggle-group-example.tsx",
@@ -1514,7 +1710,12 @@
     {
       "name": "tooltip-example",
       "title": "Tooltip",
-      "registryDependencies": ["button", "kbd", "tooltip", "example"],
+      "registryDependencies": [
+        "button",
+        "kbd",
+        "tooltip",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/tooltip-example.tsx",
@@ -1550,7 +1751,9 @@
     {
       "name": "attachment-example",
       "title": "Attachment",
-      "registryDependencies": ["attachment"],
+      "registryDependencies": [
+        "attachment"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/attachment-example.tsx",
@@ -1562,7 +1765,12 @@
     {
       "name": "bubble-example",
       "title": "Bubble",
-      "registryDependencies": ["bubble", "button", "collapsible", "example"],
+      "registryDependencies": [
+        "bubble",
+        "button",
+        "collapsible",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/bubble-example.tsx",
@@ -1616,7 +1824,12 @@
     {
       "name": "message-example",
       "title": "Message",
-      "registryDependencies": ["bubble", "message", "button", "example"],
+      "registryDependencies": [
+        "bubble",
+        "message",
+        "button",
+        "example"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/examples/message-example.tsx",
@@ -1627,7 +1840,10 @@
     },
     {
       "name": "utils",
-      "dependencies": ["clsx", "tailwind-merge"],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/lib/utils.ts",
@@ -1690,7 +1906,9 @@
     {
       "name": "preview-02",
       "title": "Preview 02",
-      "dependencies": ["react-qr-code"],
+      "dependencies": [
+        "react-qr-code"
+      ],
       "registryDependencies": [
         "accordion",
         "badge",
@@ -1747,7 +1965,13 @@
       "name": "login-01",
       "title": "Login 01",
       "description": "A simple login form.",
-      "registryDependencies": ["button", "card", "input", "label", "field"],
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "field"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/blocks/login-01/page.tsx",
@@ -1759,14 +1983,22 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["authentication", "login"],
+      "categories": [
+        "authentication",
+        "login"
+      ],
       "type": "registry:block"
     },
     {
       "name": "login-02",
       "title": "Login 02",
       "description": "A two column login page with a cover image.",
-      "registryDependencies": ["button", "input", "label", "field"],
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "field"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/blocks/login-02/page.tsx",
@@ -1778,14 +2010,23 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["authentication", "login"],
+      "categories": [
+        "authentication",
+        "login"
+      ],
       "type": "registry:block"
     },
     {
       "name": "login-03",
       "title": "Login 03",
       "description": "A login page with a muted background color.",
-      "registryDependencies": ["button", "card", "input", "label", "field"],
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "field"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/blocks/login-03/page.tsx",
@@ -1797,14 +2038,23 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["authentication", "login"],
+      "categories": [
+        "authentication",
+        "login"
+      ],
       "type": "registry:block"
     },
     {
       "name": "login-04",
       "title": "Login 04",
       "description": "A login page with form and image.",
-      "registryDependencies": ["button", "card", "input", "label", "field"],
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "field"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/blocks/login-04/page.tsx",
@@ -1816,14 +2066,22 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["authentication", "login"],
+      "categories": [
+        "authentication",
+        "login"
+      ],
       "type": "registry:block"
     },
     {
       "name": "login-05",
       "title": "Login 05",
       "description": "A simple email-only login page.",
-      "registryDependencies": ["button", "input", "label", "field"],
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "field"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/blocks/login-05/page.tsx",
@@ -1835,14 +2093,22 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["authentication", "login"],
+      "categories": [
+        "authentication",
+        "login"
+      ],
       "type": "registry:block"
     },
     {
       "name": "signup-01",
       "title": "Signup 01",
       "description": "A simple signup form.",
-      "registryDependencies": ["button", "card", "input", "label"],
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/blocks/signup-01/page.tsx",
@@ -1854,14 +2120,22 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["authentication", "signup"],
+      "categories": [
+        "authentication",
+        "signup"
+      ],
       "type": "registry:block"
     },
     {
       "name": "signup-02",
       "title": "Signup 02",
       "description": "A two column signup page with a cover image.",
-      "registryDependencies": ["button", "input", "label", "field"],
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "field"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/blocks/signup-02/page.tsx",
@@ -1873,14 +2147,23 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["authentication", "signup"],
+      "categories": [
+        "authentication",
+        "signup"
+      ],
       "type": "registry:block"
     },
     {
       "name": "signup-03",
       "title": "Signup 03",
       "description": "A signup page with a muted background color.",
-      "registryDependencies": ["button", "card", "input", "label", "field"],
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "field"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/blocks/signup-03/page.tsx",
@@ -1892,14 +2175,23 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["authentication", "signup"],
+      "categories": [
+        "authentication",
+        "signup"
+      ],
       "type": "registry:block"
     },
     {
       "name": "signup-04",
       "title": "Signup 04",
       "description": "A signup page with form and image.",
-      "registryDependencies": ["button", "card", "input", "label", "field"],
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "field"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/blocks/signup-04/page.tsx",
@@ -1911,14 +2203,21 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["authentication", "signup"],
+      "categories": [
+        "authentication",
+        "signup"
+      ],
       "type": "registry:block"
     },
     {
       "name": "signup-05",
       "title": "Signup 05",
       "description": "A simple signup form with social providers.",
-      "registryDependencies": ["button", "input", "label"],
+      "registryDependencies": [
+        "button",
+        "input",
+        "label"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/blocks/signup-05/page.tsx",
@@ -1930,7 +2229,10 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["authentication", "signup"],
+      "categories": [
+        "authentication",
+        "signup"
+      ],
       "type": "registry:block"
     },
     {
@@ -2017,7 +2319,9 @@
       "meta": {
         "iframeHeight": "1000px"
       },
-      "categories": ["dashboard"],
+      "categories": [
+        "dashboard"
+      ],
       "type": "registry:block"
     },
     {
@@ -2050,7 +2354,10 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["sidebar", "dashboard"],
+      "categories": [
+        "sidebar",
+        "dashboard"
+      ],
       "type": "registry:block"
     },
     {
@@ -2083,14 +2390,20 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["sidebar", "dashboard"],
+      "categories": [
+        "sidebar",
+        "dashboard"
+      ],
       "type": "registry:block"
     },
     {
       "name": "sidebar-03",
       "title": "Sidebar 03",
       "description": "A sidebar with submenus.",
-      "registryDependencies": ["sidebar", "breadcrumb"],
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/blocks/sidebar-03/page.tsx",
@@ -2102,14 +2415,21 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["sidebar", "dashboard"],
+      "categories": [
+        "sidebar",
+        "dashboard"
+      ],
       "type": "registry:block"
     },
     {
       "name": "sidebar-04",
       "title": "Sidebar 04",
       "description": "A floating sidebar with submenus.",
-      "registryDependencies": ["sidebar", "breadcrumb", "separator"],
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/blocks/sidebar-04/page.tsx",
@@ -2121,7 +2441,10 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["sidebar", "dashboard"],
+      "categories": [
+        "sidebar",
+        "dashboard"
+      ],
       "type": "registry:block"
     },
     {
@@ -2150,7 +2473,10 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["sidebar", "dashboard"],
+      "categories": [
+        "sidebar",
+        "dashboard"
+      ],
       "type": "registry:block"
     },
     {
@@ -2183,7 +2509,10 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["sidebar", "dashboard"],
+      "categories": [
+        "sidebar",
+        "dashboard"
+      ],
       "type": "registry:block"
     },
     {
@@ -2225,7 +2554,10 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["sidebar", "dashboard"],
+      "categories": [
+        "sidebar",
+        "dashboard"
+      ],
       "type": "registry:block"
     },
     {
@@ -2267,7 +2599,10 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["sidebar", "dashboard"],
+      "categories": [
+        "sidebar",
+        "dashboard"
+      ],
       "type": "registry:block"
     },
     {
@@ -2299,7 +2634,10 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["sidebar", "dashboard"],
+      "categories": [
+        "sidebar",
+        "dashboard"
+      ],
       "type": "registry:block"
     },
     {
@@ -2349,7 +2687,10 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["sidebar", "dashboard"],
+      "categories": [
+        "sidebar",
+        "dashboard"
+      ],
       "type": "registry:block"
     },
     {
@@ -2373,7 +2714,10 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["sidebar", "dashboard"],
+      "categories": [
+        "sidebar",
+        "dashboard"
+      ],
       "type": "registry:block"
     },
     {
@@ -2412,14 +2756,22 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["sidebar", "dashboard"],
+      "categories": [
+        "sidebar",
+        "dashboard"
+      ],
       "type": "registry:block"
     },
     {
       "name": "sidebar-13",
       "title": "Sidebar 13",
       "description": "A sidebar in a dialog.",
-      "registryDependencies": ["sidebar", "breadcrumb", "button", "dialog"],
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "button",
+        "dialog"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/blocks/sidebar-13/page.tsx",
@@ -2431,14 +2783,20 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["sidebar", "dashboard"],
+      "categories": [
+        "sidebar",
+        "dashboard"
+      ],
       "type": "registry:block"
     },
     {
       "name": "sidebar-14",
       "title": "Sidebar 14",
       "description": "A sidebar on the right.",
-      "registryDependencies": ["sidebar", "breadcrumb"],
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb"
+      ],
       "files": [
         {
           "path": "registry/react-aria-rhea/blocks/sidebar-14/page.tsx",
@@ -2450,7 +2808,10 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["sidebar", "dashboard"],
+      "categories": [
+        "sidebar",
+        "dashboard"
+      ],
       "type": "registry:block"
     },
     {
@@ -2514,7 +2875,10 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["sidebar", "dashboard"],
+      "categories": [
+        "sidebar",
+        "dashboard"
+      ],
       "type": "registry:block"
     },
     {
@@ -2566,7 +2930,10 @@
           "type": "registry:component"
         }
       ],
-      "categories": ["sidebar", "dashboard"],
+      "categories": [
+        "sidebar",
+        "dashboard"
+      ],
       "type": "registry:block"
     },
     {
@@ -2588,7 +2955,9 @@
         "provider": "google",
         "import": "Geist",
         "variable": "--font-sans",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/geist"
       }
     },
@@ -2601,7 +2970,9 @@
         "provider": "google",
         "import": "Inter",
         "variable": "--font-sans",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/inter"
       }
     },
@@ -2614,7 +2985,9 @@
         "provider": "google",
         "import": "Noto_Sans",
         "variable": "--font-sans",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/noto-sans"
       }
     },
@@ -2627,7 +3000,9 @@
         "provider": "google",
         "import": "Nunito_Sans",
         "variable": "--font-sans",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/nunito-sans"
       }
     },
@@ -2640,7 +3015,9 @@
         "provider": "google",
         "import": "Figtree",
         "variable": "--font-sans",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/figtree"
       }
     },
@@ -2653,7 +3030,9 @@
         "provider": "google",
         "import": "Roboto",
         "variable": "--font-sans",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/roboto"
       }
     },
@@ -2666,7 +3045,9 @@
         "provider": "google",
         "import": "Raleway",
         "variable": "--font-sans",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/raleway"
       }
     },
@@ -2679,7 +3060,9 @@
         "provider": "google",
         "import": "DM_Sans",
         "variable": "--font-sans",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/dm-sans"
       }
     },
@@ -2692,7 +3075,9 @@
         "provider": "google",
         "import": "Public_Sans",
         "variable": "--font-sans",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/public-sans"
       }
     },
@@ -2705,7 +3090,9 @@
         "provider": "google",
         "import": "Outfit",
         "variable": "--font-sans",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/outfit"
       }
     },
@@ -2718,7 +3105,9 @@
         "provider": "google",
         "import": "Oxanium",
         "variable": "--font-sans",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/oxanium"
       }
     },
@@ -2731,7 +3120,9 @@
         "provider": "google",
         "import": "Manrope",
         "variable": "--font-sans",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/manrope"
       }
     },
@@ -2744,7 +3135,9 @@
         "provider": "google",
         "import": "Space_Grotesk",
         "variable": "--font-sans",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/space-grotesk"
       }
     },
@@ -2757,7 +3150,9 @@
         "provider": "google",
         "import": "Montserrat",
         "variable": "--font-sans",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/montserrat"
       }
     },
@@ -2770,7 +3165,9 @@
         "provider": "google",
         "import": "IBM_Plex_Sans",
         "variable": "--font-sans",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/ibm-plex-sans"
       }
     },
@@ -2783,7 +3180,9 @@
         "provider": "google",
         "import": "Source_Sans_3",
         "variable": "--font-sans",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/source-sans-3"
       }
     },
@@ -2796,7 +3195,9 @@
         "provider": "google",
         "import": "Instrument_Sans",
         "variable": "--font-sans",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/instrument-sans"
       }
     },
@@ -2809,7 +3210,9 @@
         "provider": "google",
         "import": "JetBrains_Mono",
         "variable": "--font-mono",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/jetbrains-mono"
       }
     },
@@ -2822,7 +3225,9 @@
         "provider": "google",
         "import": "Geist_Mono",
         "variable": "--font-mono",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/geist-mono"
       }
     },
@@ -2835,7 +3240,9 @@
         "provider": "google",
         "import": "Noto_Serif",
         "variable": "--font-serif",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/noto-serif"
       }
     },
@@ -2848,7 +3255,9 @@
         "provider": "google",
         "import": "Roboto_Slab",
         "variable": "--font-serif",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/roboto-slab"
       }
     },
@@ -2861,7 +3270,9 @@
         "provider": "google",
         "import": "Merriweather",
         "variable": "--font-serif",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/merriweather"
       }
     },
@@ -2874,7 +3285,9 @@
         "provider": "google",
         "import": "Lora",
         "variable": "--font-serif",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/lora"
       }
     },
@@ -2887,7 +3300,9 @@
         "provider": "google",
         "import": "Playfair_Display",
         "variable": "--font-serif",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/playfair-display"
       }
     },
@@ -2900,7 +3315,9 @@
         "provider": "google",
         "import": "EB_Garamond",
         "variable": "--font-serif",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/eb-garamond"
       }
     },
@@ -2913,8 +3330,12 @@
         "provider": "google",
         "import": "Instrument_Serif",
         "variable": "--font-serif",
-        "weight": ["400"],
-        "subsets": ["latin"],
+        "weight": [
+          "400"
+        ],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource/instrument-serif"
       }
     },
@@ -2927,7 +3348,9 @@
         "provider": "google",
         "import": "Geist",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/geist"
       }
     },
@@ -2940,7 +3363,9 @@
         "provider": "google",
         "import": "Inter",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/inter"
       }
     },
@@ -2953,7 +3378,9 @@
         "provider": "google",
         "import": "Noto_Sans",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/noto-sans"
       }
     },
@@ -2966,7 +3393,9 @@
         "provider": "google",
         "import": "Nunito_Sans",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/nunito-sans"
       }
     },
@@ -2979,7 +3408,9 @@
         "provider": "google",
         "import": "Figtree",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/figtree"
       }
     },
@@ -2992,7 +3423,9 @@
         "provider": "google",
         "import": "Roboto",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/roboto"
       }
     },
@@ -3005,7 +3438,9 @@
         "provider": "google",
         "import": "Raleway",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/raleway"
       }
     },
@@ -3018,7 +3453,9 @@
         "provider": "google",
         "import": "DM_Sans",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/dm-sans"
       }
     },
@@ -3031,7 +3468,9 @@
         "provider": "google",
         "import": "Public_Sans",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/public-sans"
       }
     },
@@ -3044,7 +3483,9 @@
         "provider": "google",
         "import": "Outfit",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/outfit"
       }
     },
@@ -3057,7 +3498,9 @@
         "provider": "google",
         "import": "Oxanium",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/oxanium"
       }
     },
@@ -3070,7 +3513,9 @@
         "provider": "google",
         "import": "Manrope",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/manrope"
       }
     },
@@ -3083,7 +3528,9 @@
         "provider": "google",
         "import": "Space_Grotesk",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/space-grotesk"
       }
     },
@@ -3096,7 +3543,9 @@
         "provider": "google",
         "import": "Montserrat",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/montserrat"
       }
     },
@@ -3109,7 +3558,9 @@
         "provider": "google",
         "import": "IBM_Plex_Sans",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/ibm-plex-sans"
       }
     },
@@ -3122,7 +3573,9 @@
         "provider": "google",
         "import": "Source_Sans_3",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/source-sans-3"
       }
     },
@@ -3135,7 +3588,9 @@
         "provider": "google",
         "import": "Instrument_Sans",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/instrument-sans"
       }
     },
@@ -3148,7 +3603,9 @@
         "provider": "google",
         "import": "JetBrains_Mono",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/jetbrains-mono"
       }
     },
@@ -3161,7 +3618,9 @@
         "provider": "google",
         "import": "Geist_Mono",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/geist-mono"
       }
     },
@@ -3174,7 +3633,9 @@
         "provider": "google",
         "import": "Noto_Serif",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/noto-serif"
       }
     },
@@ -3187,7 +3648,9 @@
         "provider": "google",
         "import": "Roboto_Slab",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/roboto-slab"
       }
     },
@@ -3200,7 +3663,9 @@
         "provider": "google",
         "import": "Merriweather",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/merriweather"
       }
     },
@@ -3213,7 +3678,9 @@
         "provider": "google",
         "import": "Lora",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/lora"
       }
     },
@@ -3226,7 +3693,9 @@
         "provider": "google",
         "import": "Playfair_Display",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/playfair-display"
       }
     },
@@ -3239,7 +3708,9 @@
         "provider": "google",
         "import": "EB_Garamond",
         "variable": "--font-heading",
-        "subsets": ["latin"],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource-variable/eb-garamond"
       }
     },
@@ -3252,8 +3723,12 @@
         "provider": "google",
         "import": "Instrument_Serif",
         "variable": "--font-heading",
-        "weight": ["400"],
-        "subsets": ["latin"],
+        "weight": [
+          "400"
+        ],
+        "subsets": [
+          "latin"
+        ],
         "dependency": "@fontsource/instrument-serif"
       }
     }

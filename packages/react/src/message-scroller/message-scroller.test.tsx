@@ -459,6 +459,102 @@ describe("MessageScroller", () => {
     })
   })
 
+  it("holds a newly appended anchor at the reading line while the reply streams with autoScroll", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 40, scrollAnchor: true },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(176)
+    expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
+
+    // The anchored turn was placed with no tail spacer (the content already
+    // fills the viewport), so growth must keep holding it at the reading line
+    // instead of yanking the reader to the live edge.
+    rendered.message("message-4").dataset.testHeight = "160"
+    await triggerResize(rendered.content())
+
+    expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
+  })
+
+  it("hands off from the anchor hold to following once the streamed reply fills the viewport", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    // The submitted turn anchors at the reading line with tail spacer room
+    // below for the reply to stream into.
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 20, scrollAnchor: true },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(176)
+    expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
+
+    // The reply streams in below the anchor. While it still fits in the
+    // spacer room the anchor holds and following stays off.
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 20, scrollAnchor: true },
+        { id: "message-5", height: 8 },
+      ],
+      { autoScroll: true }
+    )
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(176)
+    expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
+
+    // Growth past the spacer means the reply has filled the viewport and the
+    // reader is at the live edge, so autoScroll takes over from the anchor.
+    rendered.message("message-5").dataset.testHeight = "60"
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(220)
+    expect(rendered.state().end).toBe(false)
+
+    // Follow-output stays engaged for the rest of the stream.
+    rendered.message("message-5").dataset.testHeight = "100"
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(260)
+    expect(rendered.state().end).toBe(false)
+  })
+
   it("applies the default end target after async messages mount", async () => {
     const rendered = await renderTestScroller({
       messages: [],
@@ -680,6 +776,43 @@ describe("MessageScroller", () => {
     await triggerResize(rendered.content())
 
     expect(rendered.viewport().scrollTop).toBe(0)
+  })
+
+  it("keeps following when a state commit sees growth before the coalesced resize handler", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    // Let the opening scroll-to-end settle so the autoscrolling flag clears.
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(300)
+    })
+
+    // A large streamed chunk grows the content past the live edge, and a
+    // scroll event commits state before the frame-coalesced resize handler has
+    // caught follow-output up. The reader did not move, so the commit must not
+    // release follow-bottom, and the gap it observed must not be published —
+    // that would strobe the scroll button once per chunk.
+    rendered.message("message-3").dataset.testHeight = "160"
+    await act(async () => {
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+    })
+
+    expect(rendered.state().end).toBe(false)
+    expect(rendered.button().dataset.active).toBe("false")
+
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(220)
+    expect(rendered.state().end).toBe(false)
   })
 
   it("places appended scroll anchors near the top with previous peek", async () => {

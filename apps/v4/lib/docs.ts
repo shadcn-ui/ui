@@ -1,4 +1,5 @@
 export const PAGES_NEW = [
+  "/docs/typeset",
   "/docs/utils/scroll-fade",
   "/docs/utils/shimmer",
   "/docs/components/radix/attachment",
@@ -11,6 +12,9 @@ export const PAGES_NEW = [
   "/docs/components/base/marker",
   "/docs/components/radix/message",
   "/docs/components/base/message",
+  "/docs/helpers/ai-sdk",
+  "/docs/helpers/tanstack-ai",
+  "/docs/react/message-scroller",
 ]
 
 export const PAGES_UPDATED = []

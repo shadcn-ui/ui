@@ -59,15 +59,31 @@ const nextConfig = {
         destination: "/docs/forms",
         permanent: true,
       },
-      // Component redirects (default to radix).
+      // Typography redirects to /docs/typeset.
+      {
+        source: "/docs/components/base/typography",
+        destination: "/docs/typeset",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/radix/typography",
+        destination: "/docs/typeset",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/react-aria/typography",
+        destination: "/docs/typeset",
+        permanent: true,
+      },
+      // Component redirects (default to base).
       {
         source: "/docs/components/:name((?!radix|base|react-aria|form)[^/]+)",
-        destination: "/docs/components/radix/:name",
+        destination: "/docs/components/base/:name",
         permanent: false,
       },
       {
         source: "/docs/components/:name((?!radix|base|react-aria|form)[^/]+).md",
-        destination: "/docs/components/radix/:name.md",
+        destination: "/docs/components/base/:name.md",
         permanent: false,
       },
       // Other redirects.
