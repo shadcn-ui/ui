@@ -105,6 +105,28 @@ describe("updateDependencies", () => {
       expectedDevArgs: ["add", "-D", "fourth"],
     },
     {
+      description: "pnpm uses workspace root flag at a workspace root",
+      dependencies: ["first", "second", "third"],
+      devDependencies: ["fourth"],
+      config: {
+        resolvedPaths: {
+          cwd: path.resolve(
+            __dirname,
+            "../../fixtures/project-pnpm-workspace-root"
+          ),
+        },
+      },
+      expectedPackageManager: "pnpm",
+      expectedArgs: [
+        "add",
+        "--workspace-root",
+        "first",
+        "second",
+        "third",
+      ],
+      expectedDevArgs: ["add", "--workspace-root", "-D", "fourth"],
+    },
+    {
       description: "deduplicates input dependencies",
       options: { silent: true },
       dependencies: ["first", "first"],
