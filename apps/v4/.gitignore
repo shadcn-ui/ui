@@ -56,3 +56,8 @@ next-env.d.ts
 !/public/r/styles/index.json
 !/public/r/styles/default/
 !/public/r/styles/new-york/
+
+# generated style sources (rebuilt by registry:build, or targeted via
+# `pnpm registry:build --style all`). See styles/README.md.
+/styles/*
+!/styles/README.md
