@@ -24,9 +24,12 @@ describe("fetchWithProxy", () => {
     const fetchMock = vi.fn().mockResolvedValueOnce(okResponse())
     vi.stubGlobal("fetch", fetchMock)
 
-    const response = await fetchWithProxy("https://registry.example.com/a.json", {
-      headers: { "X-API-Key": "secret" },
-    })
+    const response = await fetchWithProxy(
+      "https://registry.example.com/a.json",
+      {
+        headers: { "X-API-Key": "secret" },
+      }
+    )
 
     expect(response.status).toBe(200)
     expect(fetchMock).toHaveBeenCalledTimes(1)
