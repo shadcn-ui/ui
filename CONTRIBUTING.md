@@ -82,6 +82,11 @@ You can use the `pnpm --filter=[WORKSPACE]` command to start the development pro
 pnpm --filter=v4 dev
 ```
 
+> **Fresh clone?** The generated styles are not checked into git. Run
+> `pnpm --filter=v4 registry:build --style all` once before starting the dev
+> server. If you forget, the dev server will fail fast and tell you exactly
+> this.
+
 2. To run the `shadcn` package:
 
 ```bash
@@ -145,6 +150,12 @@ See [`apps/v4/registry/README.md`](apps/v4/registry/README.md) for how the
 registry pipeline is structured and for the faster targeted build modes
 (`--style`, `--registry`, `--examples`, `--indexes`) you can use while
 iterating locally. Always run the full `pnpm registry:build` before committing.
+
+Note that most generated output is not tracked in git: the installable JSON
+under `apps/v4/public/r/styles` and the compiled styles under `apps/v4/styles`
+are gitignored and rebuilt on every deploy. Running `registry:build` will not
+dirty your working tree with generated files — only changes to the authored
+sources (e.g. `registry/bases`) and the tracked indexes are committed.
 
 ## Commit Convention
 
