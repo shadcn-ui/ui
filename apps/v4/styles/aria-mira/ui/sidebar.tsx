@@ -41,6 +41,10 @@ type SidebarContextProps = {
   toggleSidebar: () => void
 }
 
+type SidebarButtonProps =
+  | (LinkProps & { href: string })
+  | (ButtonProps & { href?: never })
+
 const SidebarContext = React.createContext<SidebarContextProps | null>(null)
 
 function useSidebar() {
@@ -496,13 +500,13 @@ function SidebarMenuButton({
   tooltip,
   className,
   ...props
-}: (ButtonProps | LinkProps) & {
+}: SidebarButtonProps & {
   isActive?: boolean
   tooltip?: string | React.ComponentProps<typeof Tooltip>
 } & VariantProps<typeof sidebarMenuButtonVariants>) {
   const { isMobile, state } = useSidebar()
   const comp =
-    "href" in props ? (
+    props.href !== undefined ? (
       <LinkPrimitive
         data-slot="sidebar-menu-button"
         data-sidebar="menu-button"
@@ -650,7 +654,7 @@ function SidebarMenuSubButton({
   isActive = false,
   className,
   ...props
-}: (ButtonProps | LinkProps) & {
+}: SidebarButtonProps & {
   size?: "sm" | "md"
   isActive?: boolean
 }) {
@@ -665,7 +669,7 @@ function SidebarMenuSubButton({
     ),
   }
 
-  return "href" in props ? (
+  return props.href !== undefined ? (
     <LinkPrimitive {...menuSubButtonProps} {...props} />
   ) : (
     <ButtonPrimitive {...menuSubButtonProps} {...props} />
