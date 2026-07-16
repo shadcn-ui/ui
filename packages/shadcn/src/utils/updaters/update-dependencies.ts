@@ -244,7 +244,9 @@ async function installWithPackageManager(
   }
 
   if (devDependencies?.length) {
-    await execa(packageManager, ["add", "-D", "--", ...devDependencies], { cwd })
+    await execa(packageManager, ["add", "-D", "--", ...devDependencies], {
+      cwd,
+    })
   }
 }
 
