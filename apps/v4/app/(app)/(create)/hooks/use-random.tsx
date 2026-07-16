@@ -226,11 +226,10 @@ export function useRandom() {
     const down = (e: KeyboardEvent) => {
       if (e.key === "r" && !e.shiftKey && !e.metaKey && !e.ctrlKey) {
         if (
-          (document.activeElement instanceof HTMLElement &&
-            document.activeElement.isContentEditable) ||
-          document.activeElement instanceof HTMLInputElement ||
-          document.activeElement instanceof HTMLTextAreaElement ||
-          document.activeElement instanceof HTMLSelectElement
+          (e.target instanceof HTMLElement && e.target.isContentEditable) ||
+          e.target instanceof HTMLInputElement ||
+          e.target instanceof HTMLTextAreaElement ||
+          e.target instanceof HTMLSelectElement
         ) {
           return
         }

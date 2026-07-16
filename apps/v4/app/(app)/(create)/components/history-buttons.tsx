@@ -50,10 +50,10 @@ export function HistoryScript() {
               document.addEventListener('keydown', function(e) {
                 if (!e.metaKey && !e.ctrlKey) return;
                 if (
-                  (document.activeElement instanceof HTMLElement && document.activeElement.isContentEditable) ||
-                  document.activeElement instanceof HTMLInputElement ||
-                  document.activeElement instanceof HTMLTextAreaElement ||
-                  document.activeElement instanceof HTMLSelectElement
+                  (e.target instanceof HTMLElement && e.target.isContentEditable) ||
+                  e.target instanceof HTMLInputElement ||
+                  e.target instanceof HTMLTextAreaElement ||
+                  e.target instanceof HTMLSelectElement
                 ) {
                   return;
                 }
