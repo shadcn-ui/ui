@@ -542,9 +542,12 @@ function addCustomVariant({ params }: { params: string }) {
           // Insert after the last import
           const lastImport = importNodes[importNodes.length - 1]
           root.insertAfter(lastImport, variantNode)
-        } else {
+        } else if (root.nodes.length > 0) {
           // If no imports, insert after the first node
           root.insertAfter(root.nodes[0], variantNode)
+        } else {
+          // If the file is empty, there is no node to anchor to.
+          root.append(variantNode)
         }
 
         root.insertBefore(variantNode, postcss.comment({ text: "---break---" }))
