@@ -40,6 +40,10 @@ vi.mock("@/registry/bases/__index__", () => ({
   },
 }))
 
+vi.mock("@/app/(app)/(create)/lib/api", () => ({
+  getItemsForBase: vi.fn(async () => [{ name: "button", type: "registry:ui" }]),
+}))
+
 describe("buildV0Payload", () => {
   beforeEach(() => {
     process.env.NEXT_PUBLIC_APP_URL = "http://example.test"
@@ -111,5 +115,23 @@ describe("buildV0Payload", () => {
 
     expect(cardFile?.content).toContain("font-heading")
     expect(cardFile?.content).not.toContain("cn-font-heading")
+  })
+
+  it("rejects an item that is not in the base's allowed set", async () => {
+    await expect(
+      buildV0Payload({
+        ...DEFAULT_CONFIG,
+        item: "../../evil",
+      })
+    ).rejects.toThrow(/Unknown item/)
+  })
+
+  it("does not reject a valid item as unknown", async () => {
+    await expect(
+      buildV0Payload({
+        ...DEFAULT_CONFIG,
+        item: "button",
+      })
+    ).resolves.toBeDefined()
   })
 })
