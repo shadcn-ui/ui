@@ -59,6 +59,17 @@ const nextConfig = {
         destination: "/docs/forms",
         permanent: true,
       },
+      // Typography redirects to /docs/typeset.
+      {
+        source: "/docs/components/base/typography",
+        destination: "/docs/typeset",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/radix/typography",
+        destination: "/docs/typeset",
+        permanent: true,
+      },
       // Component redirects (default to base).
       {
         source: "/docs/components/:name((?!radix|base|form)[^/]+)",
