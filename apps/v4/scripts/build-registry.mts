@@ -268,7 +268,7 @@ function normalizeRegistryFiles(item: RegistryItem): Array<{
 }
 
 function shouldGenerateRtlStyles(styleName: string) {
-  return styleName === "base-nova" || styleName === "radix-nova" || styleName === "react-aria-nova"
+  return styleName === "base-nova" || styleName === "radix-nova" || styleName === "aria-nova"
 }
 
 function isStyledOutputFile(filePath: string) {

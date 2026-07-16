@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "files": [
+    {
+      "path": "registry/aria-luma/ui/input.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport {\n  composeRenderProps,\n  Input as InputPrimitive,\n} from \"react-aria-components\"\n\nimport { cn } from \"@/registry/aria-luma/lib/utils\"\n\nfunction Input({\n  className,\n  type,\n  ...props\n}: React.ComponentProps<typeof InputPrimitive>) {\n  return (\n    <InputPrimitive\n      type={type}\n      data-slot=\"input\"\n      className={composeRenderProps(className, (className) =>\n        cn(\n          \"cn-input w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50\",\n          className\n        )\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Input }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

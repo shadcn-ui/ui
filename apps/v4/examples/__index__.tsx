@@ -3984,1930 +3984,1930 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       filePath: "examples/radix/typography-table.tsx",
     },
   },
-  "react-aria": {
+  aria: {
     "accordion-basic": {
       name: "accordion-basic",
-      filePath: "examples/react-aria/accordion-basic.tsx",
+      filePath: "examples/aria/accordion-basic.tsx",
     },
     "accordion-borders": {
       name: "accordion-borders",
-      filePath: "examples/react-aria/accordion-borders.tsx",
+      filePath: "examples/aria/accordion-borders.tsx",
     },
     "accordion-card": {
       name: "accordion-card",
-      filePath: "examples/react-aria/accordion-card.tsx",
+      filePath: "examples/aria/accordion-card.tsx",
     },
     "accordion-demo": {
       name: "accordion-demo",
-      filePath: "examples/react-aria/accordion-demo.tsx",
+      filePath: "examples/aria/accordion-demo.tsx",
     },
     "accordion-disabled": {
       name: "accordion-disabled",
-      filePath: "examples/react-aria/accordion-disabled.tsx",
+      filePath: "examples/aria/accordion-disabled.tsx",
     },
     "accordion-multiple": {
       name: "accordion-multiple",
-      filePath: "examples/react-aria/accordion-multiple.tsx",
+      filePath: "examples/aria/accordion-multiple.tsx",
     },
     "accordion-rtl": {
       name: "accordion-rtl",
-      filePath: "examples/react-aria/accordion-rtl.tsx",
+      filePath: "examples/aria/accordion-rtl.tsx",
     },
     "alert-action": {
       name: "alert-action",
-      filePath: "examples/react-aria/alert-action.tsx",
+      filePath: "examples/aria/alert-action.tsx",
     },
     "alert-basic": {
       name: "alert-basic",
-      filePath: "examples/react-aria/alert-basic.tsx",
+      filePath: "examples/aria/alert-basic.tsx",
     },
     "alert-colors": {
       name: "alert-colors",
-      filePath: "examples/react-aria/alert-colors.tsx",
+      filePath: "examples/aria/alert-colors.tsx",
     },
     "alert-demo": {
       name: "alert-demo",
-      filePath: "examples/react-aria/alert-demo.tsx",
+      filePath: "examples/aria/alert-demo.tsx",
     },
     "alert-destructive": {
       name: "alert-destructive",
-      filePath: "examples/react-aria/alert-destructive.tsx",
+      filePath: "examples/aria/alert-destructive.tsx",
     },
     "alert-dialog-basic": {
       name: "alert-dialog-basic",
-      filePath: "examples/react-aria/alert-dialog-basic.tsx",
+      filePath: "examples/aria/alert-dialog-basic.tsx",
     },
     "alert-dialog-demo": {
       name: "alert-dialog-demo",
-      filePath: "examples/react-aria/alert-dialog-demo.tsx",
+      filePath: "examples/aria/alert-dialog-demo.tsx",
     },
     "alert-dialog-destructive": {
       name: "alert-dialog-destructive",
-      filePath: "examples/react-aria/alert-dialog-destructive.tsx",
+      filePath: "examples/aria/alert-dialog-destructive.tsx",
     },
     "alert-dialog-media": {
       name: "alert-dialog-media",
-      filePath: "examples/react-aria/alert-dialog-media.tsx",
+      filePath: "examples/aria/alert-dialog-media.tsx",
     },
     "alert-dialog-rtl": {
       name: "alert-dialog-rtl",
-      filePath: "examples/react-aria/alert-dialog-rtl.tsx",
+      filePath: "examples/aria/alert-dialog-rtl.tsx",
     },
     "alert-dialog-small-media": {
       name: "alert-dialog-small-media",
-      filePath: "examples/react-aria/alert-dialog-small-media.tsx",
+      filePath: "examples/aria/alert-dialog-small-media.tsx",
     },
     "alert-dialog-small": {
       name: "alert-dialog-small",
-      filePath: "examples/react-aria/alert-dialog-small.tsx",
+      filePath: "examples/aria/alert-dialog-small.tsx",
     },
     "alert-rtl": {
       name: "alert-rtl",
-      filePath: "examples/react-aria/alert-rtl.tsx",
+      filePath: "examples/aria/alert-rtl.tsx",
     },
     "aspect-ratio-demo": {
       name: "aspect-ratio-demo",
-      filePath: "examples/react-aria/aspect-ratio-demo.tsx",
+      filePath: "examples/aria/aspect-ratio-demo.tsx",
     },
     "aspect-ratio-portrait": {
       name: "aspect-ratio-portrait",
-      filePath: "examples/react-aria/aspect-ratio-portrait.tsx",
+      filePath: "examples/aria/aspect-ratio-portrait.tsx",
     },
     "aspect-ratio-rtl": {
       name: "aspect-ratio-rtl",
-      filePath: "examples/react-aria/aspect-ratio-rtl.tsx",
+      filePath: "examples/aria/aspect-ratio-rtl.tsx",
     },
     "aspect-ratio-square": {
       name: "aspect-ratio-square",
-      filePath: "examples/react-aria/aspect-ratio-square.tsx",
+      filePath: "examples/aria/aspect-ratio-square.tsx",
     },
     "attachment-demo": {
       name: "attachment-demo",
-      filePath: "examples/react-aria/attachment-demo.tsx",
+      filePath: "examples/aria/attachment-demo.tsx",
     },
     "attachment-group": {
       name: "attachment-group",
-      filePath: "examples/react-aria/attachment-group.tsx",
+      filePath: "examples/aria/attachment-group.tsx",
     },
     "attachment-image": {
       name: "attachment-image",
-      filePath: "examples/react-aria/attachment-image.tsx",
+      filePath: "examples/aria/attachment-image.tsx",
     },
     "attachment-sizes": {
       name: "attachment-sizes",
-      filePath: "examples/react-aria/attachment-sizes.tsx",
+      filePath: "examples/aria/attachment-sizes.tsx",
     },
     "attachment-states": {
       name: "attachment-states",
-      filePath: "examples/react-aria/attachment-states.tsx",
+      filePath: "examples/aria/attachment-states.tsx",
     },
     "attachment-trigger": {
       name: "attachment-trigger",
-      filePath: "examples/react-aria/attachment-trigger.tsx",
+      filePath: "examples/aria/attachment-trigger.tsx",
     },
     "avatar-badge-icon": {
       name: "avatar-badge-icon",
-      filePath: "examples/react-aria/avatar-badge-icon.tsx",
+      filePath: "examples/aria/avatar-badge-icon.tsx",
     },
     "avatar-badge": {
       name: "avatar-badge",
-      filePath: "examples/react-aria/avatar-badge.tsx",
+      filePath: "examples/aria/avatar-badge.tsx",
     },
     "avatar-basic": {
       name: "avatar-basic",
-      filePath: "examples/react-aria/avatar-basic.tsx",
+      filePath: "examples/aria/avatar-basic.tsx",
     },
     "avatar-demo": {
       name: "avatar-demo",
-      filePath: "examples/react-aria/avatar-demo.tsx",
+      filePath: "examples/aria/avatar-demo.tsx",
     },
     "avatar-dropdown": {
       name: "avatar-dropdown",
-      filePath: "examples/react-aria/avatar-dropdown.tsx",
+      filePath: "examples/aria/avatar-dropdown.tsx",
     },
     "avatar-group-count-icon": {
       name: "avatar-group-count-icon",
-      filePath: "examples/react-aria/avatar-group-count-icon.tsx",
+      filePath: "examples/aria/avatar-group-count-icon.tsx",
     },
     "avatar-group-count": {
       name: "avatar-group-count",
-      filePath: "examples/react-aria/avatar-group-count.tsx",
+      filePath: "examples/aria/avatar-group-count.tsx",
     },
     "avatar-group": {
       name: "avatar-group",
-      filePath: "examples/react-aria/avatar-group.tsx",
+      filePath: "examples/aria/avatar-group.tsx",
     },
     "avatar-rtl": {
       name: "avatar-rtl",
-      filePath: "examples/react-aria/avatar-rtl.tsx",
+      filePath: "examples/aria/avatar-rtl.tsx",
     },
     "avatar-size": {
       name: "avatar-size",
-      filePath: "examples/react-aria/avatar-size.tsx",
+      filePath: "examples/aria/avatar-size.tsx",
     },
     "badge-colors": {
       name: "badge-colors",
-      filePath: "examples/react-aria/badge-colors.tsx",
+      filePath: "examples/aria/badge-colors.tsx",
     },
     "badge-demo": {
       name: "badge-demo",
-      filePath: "examples/react-aria/badge-demo.tsx",
+      filePath: "examples/aria/badge-demo.tsx",
     },
     "badge-icon": {
       name: "badge-icon",
-      filePath: "examples/react-aria/badge-icon.tsx",
+      filePath: "examples/aria/badge-icon.tsx",
     },
     "badge-link": {
       name: "badge-link",
-      filePath: "examples/react-aria/badge-link.tsx",
+      filePath: "examples/aria/badge-link.tsx",
     },
     "badge-rtl": {
       name: "badge-rtl",
-      filePath: "examples/react-aria/badge-rtl.tsx",
+      filePath: "examples/aria/badge-rtl.tsx",
     },
     "badge-spinner": {
       name: "badge-spinner",
-      filePath: "examples/react-aria/badge-spinner.tsx",
+      filePath: "examples/aria/badge-spinner.tsx",
     },
     "badge-variants": {
       name: "badge-variants",
-      filePath: "examples/react-aria/badge-variants.tsx",
+      filePath: "examples/aria/badge-variants.tsx",
     },
     "breadcrumb-basic": {
       name: "breadcrumb-basic",
-      filePath: "examples/react-aria/breadcrumb-basic.tsx",
+      filePath: "examples/aria/breadcrumb-basic.tsx",
     },
     "breadcrumb-demo": {
       name: "breadcrumb-demo",
-      filePath: "examples/react-aria/breadcrumb-demo.tsx",
+      filePath: "examples/aria/breadcrumb-demo.tsx",
     },
     "breadcrumb-dropdown": {
       name: "breadcrumb-dropdown",
-      filePath: "examples/react-aria/breadcrumb-dropdown.tsx",
+      filePath: "examples/aria/breadcrumb-dropdown.tsx",
     },
     "breadcrumb-ellipsis": {
       name: "breadcrumb-ellipsis",
-      filePath: "examples/react-aria/breadcrumb-ellipsis.tsx",
+      filePath: "examples/aria/breadcrumb-ellipsis.tsx",
     },
     "breadcrumb-link": {
       name: "breadcrumb-link",
-      filePath: "examples/react-aria/breadcrumb-link.tsx",
+      filePath: "examples/aria/breadcrumb-link.tsx",
     },
     "breadcrumb-rtl": {
       name: "breadcrumb-rtl",
-      filePath: "examples/react-aria/breadcrumb-rtl.tsx",
+      filePath: "examples/aria/breadcrumb-rtl.tsx",
     },
     "breadcrumb-separator": {
       name: "breadcrumb-separator",
-      filePath: "examples/react-aria/breadcrumb-separator.tsx",
+      filePath: "examples/aria/breadcrumb-separator.tsx",
     },
     "bubble-alignment": {
       name: "bubble-alignment",
-      filePath: "examples/react-aria/bubble-alignment.tsx",
+      filePath: "examples/aria/bubble-alignment.tsx",
     },
     "bubble-collapsible": {
       name: "bubble-collapsible",
-      filePath: "examples/react-aria/bubble-collapsible.tsx",
+      filePath: "examples/aria/bubble-collapsible.tsx",
     },
     "bubble-demo": {
       name: "bubble-demo",
-      filePath: "examples/react-aria/bubble-demo.tsx",
+      filePath: "examples/aria/bubble-demo.tsx",
     },
     "bubble-group-demo": {
       name: "bubble-group-demo",
-      filePath: "examples/react-aria/bubble-group-demo.tsx",
+      filePath: "examples/aria/bubble-group-demo.tsx",
     },
     "bubble-link-button": {
       name: "bubble-link-button",
-      filePath: "examples/react-aria/bubble-link-button.tsx",
+      filePath: "examples/aria/bubble-link-button.tsx",
     },
     "bubble-markdown": {
       name: "bubble-markdown",
-      filePath: "examples/react-aria/bubble-markdown.tsx",
+      filePath: "examples/aria/bubble-markdown.tsx",
     },
     "bubble-popover": {
       name: "bubble-popover",
-      filePath: "examples/react-aria/bubble-popover.tsx",
+      filePath: "examples/aria/bubble-popover.tsx",
     },
     "bubble-reactions": {
       name: "bubble-reactions",
-      filePath: "examples/react-aria/bubble-reactions.tsx",
+      filePath: "examples/aria/bubble-reactions.tsx",
     },
     "bubble-tooltip": {
       name: "bubble-tooltip",
-      filePath: "examples/react-aria/bubble-tooltip.tsx",
+      filePath: "examples/aria/bubble-tooltip.tsx",
     },
     "bubble-variants": {
       name: "bubble-variants",
-      filePath: "examples/react-aria/bubble-variants.tsx",
+      filePath: "examples/aria/bubble-variants.tsx",
     },
     "button-default": {
       name: "button-default",
-      filePath: "examples/react-aria/button-default.tsx",
+      filePath: "examples/aria/button-default.tsx",
     },
     "button-demo": {
       name: "button-demo",
-      filePath: "examples/react-aria/button-demo.tsx",
+      filePath: "examples/aria/button-demo.tsx",
     },
     "button-destructive": {
       name: "button-destructive",
-      filePath: "examples/react-aria/button-destructive.tsx",
+      filePath: "examples/aria/button-destructive.tsx",
     },
     "button-ghost": {
       name: "button-ghost",
-      filePath: "examples/react-aria/button-ghost.tsx",
+      filePath: "examples/aria/button-ghost.tsx",
     },
     "button-group-demo": {
       name: "button-group-demo",
-      filePath: "examples/react-aria/button-group-demo.tsx",
+      filePath: "examples/aria/button-group-demo.tsx",
     },
     "button-group-dropdown": {
       name: "button-group-dropdown",
-      filePath: "examples/react-aria/button-group-dropdown.tsx",
+      filePath: "examples/aria/button-group-dropdown.tsx",
     },
     "button-group-input-group": {
       name: "button-group-input-group",
-      filePath: "examples/react-aria/button-group-input-group.tsx",
+      filePath: "examples/aria/button-group-input-group.tsx",
     },
     "button-group-input": {
       name: "button-group-input",
-      filePath: "examples/react-aria/button-group-input.tsx",
+      filePath: "examples/aria/button-group-input.tsx",
     },
     "button-group-nested": {
       name: "button-group-nested",
-      filePath: "examples/react-aria/button-group-nested.tsx",
+      filePath: "examples/aria/button-group-nested.tsx",
     },
     "button-group-orientation": {
       name: "button-group-orientation",
-      filePath: "examples/react-aria/button-group-orientation.tsx",
+      filePath: "examples/aria/button-group-orientation.tsx",
     },
     "button-group-popover": {
       name: "button-group-popover",
-      filePath: "examples/react-aria/button-group-popover.tsx",
+      filePath: "examples/aria/button-group-popover.tsx",
     },
     "button-group-rtl": {
       name: "button-group-rtl",
-      filePath: "examples/react-aria/button-group-rtl.tsx",
+      filePath: "examples/aria/button-group-rtl.tsx",
     },
     "button-group-select": {
       name: "button-group-select",
-      filePath: "examples/react-aria/button-group-select.tsx",
+      filePath: "examples/aria/button-group-select.tsx",
     },
     "button-group-separator": {
       name: "button-group-separator",
-      filePath: "examples/react-aria/button-group-separator.tsx",
+      filePath: "examples/aria/button-group-separator.tsx",
     },
     "button-group-size": {
       name: "button-group-size",
-      filePath: "examples/react-aria/button-group-size.tsx",
+      filePath: "examples/aria/button-group-size.tsx",
     },
     "button-group-split": {
       name: "button-group-split",
-      filePath: "examples/react-aria/button-group-split.tsx",
+      filePath: "examples/aria/button-group-split.tsx",
     },
     "button-icon": {
       name: "button-icon",
-      filePath: "examples/react-aria/button-icon.tsx",
+      filePath: "examples/aria/button-icon.tsx",
     },
     "button-link": {
       name: "button-link",
-      filePath: "examples/react-aria/button-link.tsx",
+      filePath: "examples/aria/button-link.tsx",
     },
     "button-outline": {
       name: "button-outline",
-      filePath: "examples/react-aria/button-outline.tsx",
+      filePath: "examples/aria/button-outline.tsx",
     },
     "button-render": {
       name: "button-render",
-      filePath: "examples/react-aria/button-render.tsx",
+      filePath: "examples/aria/button-render.tsx",
     },
     "button-rounded": {
       name: "button-rounded",
-      filePath: "examples/react-aria/button-rounded.tsx",
+      filePath: "examples/aria/button-rounded.tsx",
     },
     "button-rtl": {
       name: "button-rtl",
-      filePath: "examples/react-aria/button-rtl.tsx",
+      filePath: "examples/aria/button-rtl.tsx",
     },
     "button-secondary": {
       name: "button-secondary",
-      filePath: "examples/react-aria/button-secondary.tsx",
+      filePath: "examples/aria/button-secondary.tsx",
     },
     "button-size": {
       name: "button-size",
-      filePath: "examples/react-aria/button-size.tsx",
+      filePath: "examples/aria/button-size.tsx",
     },
     "button-spinner": {
       name: "button-spinner",
-      filePath: "examples/react-aria/button-spinner.tsx",
+      filePath: "examples/aria/button-spinner.tsx",
     },
     "button-with-icon": {
       name: "button-with-icon",
-      filePath: "examples/react-aria/button-with-icon.tsx",
+      filePath: "examples/aria/button-with-icon.tsx",
     },
     "calendar-basic": {
       name: "calendar-basic",
-      filePath: "examples/react-aria/calendar-basic.tsx",
+      filePath: "examples/aria/calendar-basic.tsx",
     },
     "calendar-booked-dates": {
       name: "calendar-booked-dates",
-      filePath: "examples/react-aria/calendar-booked-dates.tsx",
+      filePath: "examples/aria/calendar-booked-dates.tsx",
     },
     "calendar-caption": {
       name: "calendar-caption",
-      filePath: "examples/react-aria/calendar-caption.tsx",
+      filePath: "examples/aria/calendar-caption.tsx",
     },
     "calendar-custom-days": {
       name: "calendar-custom-days",
-      filePath: "examples/react-aria/calendar-custom-days.tsx",
+      filePath: "examples/aria/calendar-custom-days.tsx",
     },
     "calendar-demo": {
       name: "calendar-demo",
-      filePath: "examples/react-aria/calendar-demo.tsx",
+      filePath: "examples/aria/calendar-demo.tsx",
     },
     "calendar-hijri": {
       name: "calendar-hijri",
-      filePath: "examples/react-aria/calendar-hijri.tsx",
+      filePath: "examples/aria/calendar-hijri.tsx",
     },
     "calendar-multiple": {
       name: "calendar-multiple",
-      filePath: "examples/react-aria/calendar-multiple.tsx",
+      filePath: "examples/aria/calendar-multiple.tsx",
     },
     "calendar-presets": {
       name: "calendar-presets",
-      filePath: "examples/react-aria/calendar-presets.tsx",
+      filePath: "examples/aria/calendar-presets.tsx",
     },
     "calendar-range": {
       name: "calendar-range",
-      filePath: "examples/react-aria/calendar-range.tsx",
+      filePath: "examples/aria/calendar-range.tsx",
     },
     "calendar-rtl": {
       name: "calendar-rtl",
-      filePath: "examples/react-aria/calendar-rtl.tsx",
+      filePath: "examples/aria/calendar-rtl.tsx",
     },
     "calendar-time": {
       name: "calendar-time",
-      filePath: "examples/react-aria/calendar-time.tsx",
+      filePath: "examples/aria/calendar-time.tsx",
     },
     "card-demo": {
       name: "card-demo",
-      filePath: "examples/react-aria/card-demo.tsx",
+      filePath: "examples/aria/card-demo.tsx",
     },
     "card-edge-to-edge": {
       name: "card-edge-to-edge",
-      filePath: "examples/react-aria/card-edge-to-edge.tsx",
+      filePath: "examples/aria/card-edge-to-edge.tsx",
     },
     "card-image": {
       name: "card-image",
-      filePath: "examples/react-aria/card-image.tsx",
+      filePath: "examples/aria/card-image.tsx",
     },
     "card-rtl": {
       name: "card-rtl",
-      filePath: "examples/react-aria/card-rtl.tsx",
+      filePath: "examples/aria/card-rtl.tsx",
     },
     "card-small": {
       name: "card-small",
-      filePath: "examples/react-aria/card-small.tsx",
+      filePath: "examples/aria/card-small.tsx",
     },
     "card-spacing": {
       name: "card-spacing",
-      filePath: "examples/react-aria/card-spacing.tsx",
+      filePath: "examples/aria/card-spacing.tsx",
     },
     "carousel-api": {
       name: "carousel-api",
-      filePath: "examples/react-aria/carousel-api.tsx",
+      filePath: "examples/aria/carousel-api.tsx",
     },
     "carousel-demo": {
       name: "carousel-demo",
-      filePath: "examples/react-aria/carousel-demo.tsx",
+      filePath: "examples/aria/carousel-demo.tsx",
     },
     "carousel-multiple": {
       name: "carousel-multiple",
-      filePath: "examples/react-aria/carousel-multiple.tsx",
+      filePath: "examples/aria/carousel-multiple.tsx",
     },
     "carousel-orientation": {
       name: "carousel-orientation",
-      filePath: "examples/react-aria/carousel-orientation.tsx",
+      filePath: "examples/aria/carousel-orientation.tsx",
     },
     "carousel-plugin": {
       name: "carousel-plugin",
-      filePath: "examples/react-aria/carousel-plugin.tsx",
+      filePath: "examples/aria/carousel-plugin.tsx",
     },
     "carousel-rtl": {
       name: "carousel-rtl",
-      filePath: "examples/react-aria/carousel-rtl.tsx",
+      filePath: "examples/aria/carousel-rtl.tsx",
     },
     "carousel-size": {
       name: "carousel-size",
-      filePath: "examples/react-aria/carousel-size.tsx",
+      filePath: "examples/aria/carousel-size.tsx",
     },
     "carousel-spacing": {
       name: "carousel-spacing",
-      filePath: "examples/react-aria/carousel-spacing.tsx",
+      filePath: "examples/aria/carousel-spacing.tsx",
     },
     "chart-demo": {
       name: "chart-demo",
-      filePath: "examples/react-aria/chart-demo.tsx",
+      filePath: "examples/aria/chart-demo.tsx",
     },
     "chart-example-axis": {
       name: "chart-example-axis",
-      filePath: "examples/react-aria/chart-example-axis.tsx",
+      filePath: "examples/aria/chart-example-axis.tsx",
     },
     "chart-example-grid": {
       name: "chart-example-grid",
-      filePath: "examples/react-aria/chart-example-grid.tsx",
+      filePath: "examples/aria/chart-example-grid.tsx",
     },
     "chart-example-legend": {
       name: "chart-example-legend",
-      filePath: "examples/react-aria/chart-example-legend.tsx",
+      filePath: "examples/aria/chart-example-legend.tsx",
     },
     "chart-example-tooltip": {
       name: "chart-example-tooltip",
-      filePath: "examples/react-aria/chart-example-tooltip.tsx",
+      filePath: "examples/aria/chart-example-tooltip.tsx",
     },
     "chart-example": {
       name: "chart-example",
-      filePath: "examples/react-aria/chart-example.tsx",
+      filePath: "examples/aria/chart-example.tsx",
     },
     "chart-rtl": {
       name: "chart-rtl",
-      filePath: "examples/react-aria/chart-rtl.tsx",
+      filePath: "examples/aria/chart-rtl.tsx",
     },
     "chart-tooltip": {
       name: "chart-tooltip",
-      filePath: "examples/react-aria/chart-tooltip.tsx",
+      filePath: "examples/aria/chart-tooltip.tsx",
     },
     "checkbox-basic": {
       name: "checkbox-basic",
-      filePath: "examples/react-aria/checkbox-basic.tsx",
+      filePath: "examples/aria/checkbox-basic.tsx",
     },
     "checkbox-demo": {
       name: "checkbox-demo",
-      filePath: "examples/react-aria/checkbox-demo.tsx",
+      filePath: "examples/aria/checkbox-demo.tsx",
     },
     "checkbox-description": {
       name: "checkbox-description",
-      filePath: "examples/react-aria/checkbox-description.tsx",
+      filePath: "examples/aria/checkbox-description.tsx",
     },
     "checkbox-disabled": {
       name: "checkbox-disabled",
-      filePath: "examples/react-aria/checkbox-disabled.tsx",
+      filePath: "examples/aria/checkbox-disabled.tsx",
     },
     "checkbox-group": {
       name: "checkbox-group",
-      filePath: "examples/react-aria/checkbox-group.tsx",
+      filePath: "examples/aria/checkbox-group.tsx",
     },
     "checkbox-invalid": {
       name: "checkbox-invalid",
-      filePath: "examples/react-aria/checkbox-invalid.tsx",
+      filePath: "examples/aria/checkbox-invalid.tsx",
     },
     "checkbox-rtl": {
       name: "checkbox-rtl",
-      filePath: "examples/react-aria/checkbox-rtl.tsx",
+      filePath: "examples/aria/checkbox-rtl.tsx",
     },
     "checkbox-table": {
       name: "checkbox-table",
-      filePath: "examples/react-aria/checkbox-table.tsx",
+      filePath: "examples/aria/checkbox-table.tsx",
     },
     "collapsible-basic": {
       name: "collapsible-basic",
-      filePath: "examples/react-aria/collapsible-basic.tsx",
+      filePath: "examples/aria/collapsible-basic.tsx",
     },
     "collapsible-demo": {
       name: "collapsible-demo",
-      filePath: "examples/react-aria/collapsible-demo.tsx",
+      filePath: "examples/aria/collapsible-demo.tsx",
     },
     "collapsible-file-tree": {
       name: "collapsible-file-tree",
-      filePath: "examples/react-aria/collapsible-file-tree.tsx",
+      filePath: "examples/aria/collapsible-file-tree.tsx",
     },
     "collapsible-rtl": {
       name: "collapsible-rtl",
-      filePath: "examples/react-aria/collapsible-rtl.tsx",
+      filePath: "examples/aria/collapsible-rtl.tsx",
     },
     "collapsible-settings": {
       name: "collapsible-settings",
-      filePath: "examples/react-aria/collapsible-settings.tsx",
+      filePath: "examples/aria/collapsible-settings.tsx",
     },
     "combobox-basic": {
       name: "combobox-basic",
-      filePath: "examples/react-aria/combobox-basic.tsx",
+      filePath: "examples/aria/combobox-basic.tsx",
     },
     "combobox-clear": {
       name: "combobox-clear",
-      filePath: "examples/react-aria/combobox-clear.tsx",
+      filePath: "examples/aria/combobox-clear.tsx",
     },
     "combobox-custom": {
       name: "combobox-custom",
-      filePath: "examples/react-aria/combobox-custom.tsx",
+      filePath: "examples/aria/combobox-custom.tsx",
     },
     "combobox-demo": {
       name: "combobox-demo",
-      filePath: "examples/react-aria/combobox-demo.tsx",
+      filePath: "examples/aria/combobox-demo.tsx",
     },
     "combobox-disabled": {
       name: "combobox-disabled",
-      filePath: "examples/react-aria/combobox-disabled.tsx",
+      filePath: "examples/aria/combobox-disabled.tsx",
     },
     "combobox-groups": {
       name: "combobox-groups",
-      filePath: "examples/react-aria/combobox-groups.tsx",
+      filePath: "examples/aria/combobox-groups.tsx",
     },
     "combobox-input-group": {
       name: "combobox-input-group",
-      filePath: "examples/react-aria/combobox-input-group.tsx",
+      filePath: "examples/aria/combobox-input-group.tsx",
     },
     "combobox-invalid": {
       name: "combobox-invalid",
-      filePath: "examples/react-aria/combobox-invalid.tsx",
+      filePath: "examples/aria/combobox-invalid.tsx",
     },
     "combobox-multiple": {
       name: "combobox-multiple",
-      filePath: "examples/react-aria/combobox-multiple.tsx",
+      filePath: "examples/aria/combobox-multiple.tsx",
     },
     "combobox-rtl": {
       name: "combobox-rtl",
-      filePath: "examples/react-aria/combobox-rtl.tsx",
+      filePath: "examples/aria/combobox-rtl.tsx",
     },
     "command-basic": {
       name: "command-basic",
-      filePath: "examples/react-aria/command-basic.tsx",
+      filePath: "examples/aria/command-basic.tsx",
     },
     "command-demo": {
       name: "command-demo",
-      filePath: "examples/react-aria/command-demo.tsx",
+      filePath: "examples/aria/command-demo.tsx",
     },
     "command-dialog": {
       name: "command-dialog",
-      filePath: "examples/react-aria/command-dialog.tsx",
+      filePath: "examples/aria/command-dialog.tsx",
     },
     "command-groups": {
       name: "command-groups",
-      filePath: "examples/react-aria/command-groups.tsx",
+      filePath: "examples/aria/command-groups.tsx",
     },
     "command-rtl": {
       name: "command-rtl",
-      filePath: "examples/react-aria/command-rtl.tsx",
+      filePath: "examples/aria/command-rtl.tsx",
     },
     "command-scrollable": {
       name: "command-scrollable",
-      filePath: "examples/react-aria/command-scrollable.tsx",
+      filePath: "examples/aria/command-scrollable.tsx",
     },
     "command-shortcuts": {
       name: "command-shortcuts",
-      filePath: "examples/react-aria/command-shortcuts.tsx",
+      filePath: "examples/aria/command-shortcuts.tsx",
     },
     "context-menu-basic": {
       name: "context-menu-basic",
-      filePath: "examples/react-aria/context-menu-basic.tsx",
+      filePath: "examples/aria/context-menu-basic.tsx",
     },
     "context-menu-checkboxes": {
       name: "context-menu-checkboxes",
-      filePath: "examples/react-aria/context-menu-checkboxes.tsx",
+      filePath: "examples/aria/context-menu-checkboxes.tsx",
     },
     "context-menu-demo": {
       name: "context-menu-demo",
-      filePath: "examples/react-aria/context-menu-demo.tsx",
+      filePath: "examples/aria/context-menu-demo.tsx",
     },
     "context-menu-destructive": {
       name: "context-menu-destructive",
-      filePath: "examples/react-aria/context-menu-destructive.tsx",
+      filePath: "examples/aria/context-menu-destructive.tsx",
     },
     "context-menu-groups": {
       name: "context-menu-groups",
-      filePath: "examples/react-aria/context-menu-groups.tsx",
+      filePath: "examples/aria/context-menu-groups.tsx",
     },
     "context-menu-icons": {
       name: "context-menu-icons",
-      filePath: "examples/react-aria/context-menu-icons.tsx",
+      filePath: "examples/aria/context-menu-icons.tsx",
     },
     "context-menu-radio": {
       name: "context-menu-radio",
-      filePath: "examples/react-aria/context-menu-radio.tsx",
+      filePath: "examples/aria/context-menu-radio.tsx",
     },
     "context-menu-rtl": {
       name: "context-menu-rtl",
-      filePath: "examples/react-aria/context-menu-rtl.tsx",
+      filePath: "examples/aria/context-menu-rtl.tsx",
     },
     "context-menu-shortcuts": {
       name: "context-menu-shortcuts",
-      filePath: "examples/react-aria/context-menu-shortcuts.tsx",
+      filePath: "examples/aria/context-menu-shortcuts.tsx",
     },
     "context-menu-sides": {
       name: "context-menu-sides",
-      filePath: "examples/react-aria/context-menu-sides.tsx",
+      filePath: "examples/aria/context-menu-sides.tsx",
     },
     "context-menu-submenu": {
       name: "context-menu-submenu",
-      filePath: "examples/react-aria/context-menu-submenu.tsx",
+      filePath: "examples/aria/context-menu-submenu.tsx",
     },
     "data-picker-with-dropdowns": {
       name: "data-picker-with-dropdowns",
-      filePath: "examples/react-aria/data-picker-with-dropdowns.tsx",
+      filePath: "examples/aria/data-picker-with-dropdowns.tsx",
     },
     "data-table-demo": {
       name: "data-table-demo",
-      filePath: "examples/react-aria/data-table-demo.tsx",
+      filePath: "examples/aria/data-table-demo.tsx",
     },
     "data-table-rtl": {
       name: "data-table-rtl",
-      filePath: "examples/react-aria/data-table-rtl.tsx",
+      filePath: "examples/aria/data-table-rtl.tsx",
     },
     "date-picker-basic": {
       name: "date-picker-basic",
-      filePath: "examples/react-aria/date-picker-basic.tsx",
+      filePath: "examples/aria/date-picker-basic.tsx",
     },
     "date-picker-demo": {
       name: "date-picker-demo",
-      filePath: "examples/react-aria/date-picker-demo.tsx",
+      filePath: "examples/aria/date-picker-demo.tsx",
     },
     "date-picker-dob": {
       name: "date-picker-dob",
-      filePath: "examples/react-aria/date-picker-dob.tsx",
+      filePath: "examples/aria/date-picker-dob.tsx",
     },
     "date-picker-input": {
       name: "date-picker-input",
-      filePath: "examples/react-aria/date-picker-input.tsx",
+      filePath: "examples/aria/date-picker-input.tsx",
     },
     "date-picker-natural-language": {
       name: "date-picker-natural-language",
-      filePath: "examples/react-aria/date-picker-natural-language.tsx",
+      filePath: "examples/aria/date-picker-natural-language.tsx",
     },
     "date-picker-range": {
       name: "date-picker-range",
-      filePath: "examples/react-aria/date-picker-range.tsx",
+      filePath: "examples/aria/date-picker-range.tsx",
     },
     "date-picker-rtl": {
       name: "date-picker-rtl",
-      filePath: "examples/react-aria/date-picker-rtl.tsx",
+      filePath: "examples/aria/date-picker-rtl.tsx",
     },
     "date-picker-time": {
       name: "date-picker-time",
-      filePath: "examples/react-aria/date-picker-time.tsx",
+      filePath: "examples/aria/date-picker-time.tsx",
     },
     "dialog-close-button": {
       name: "dialog-close-button",
-      filePath: "examples/react-aria/dialog-close-button.tsx",
+      filePath: "examples/aria/dialog-close-button.tsx",
     },
     "dialog-demo": {
       name: "dialog-demo",
-      filePath: "examples/react-aria/dialog-demo.tsx",
+      filePath: "examples/aria/dialog-demo.tsx",
     },
     "dialog-no-close-button": {
       name: "dialog-no-close-button",
-      filePath: "examples/react-aria/dialog-no-close-button.tsx",
+      filePath: "examples/aria/dialog-no-close-button.tsx",
     },
     "dialog-rtl": {
       name: "dialog-rtl",
-      filePath: "examples/react-aria/dialog-rtl.tsx",
+      filePath: "examples/aria/dialog-rtl.tsx",
     },
     "dialog-scrollable-content": {
       name: "dialog-scrollable-content",
-      filePath: "examples/react-aria/dialog-scrollable-content.tsx",
+      filePath: "examples/aria/dialog-scrollable-content.tsx",
     },
     "dialog-sticky-footer": {
       name: "dialog-sticky-footer",
-      filePath: "examples/react-aria/dialog-sticky-footer.tsx",
+      filePath: "examples/aria/dialog-sticky-footer.tsx",
     },
     "drawer-demo": {
       name: "drawer-demo",
-      filePath: "examples/react-aria/drawer-demo.tsx",
+      filePath: "examples/aria/drawer-demo.tsx",
     },
     "drawer-dialog": {
       name: "drawer-dialog",
-      filePath: "examples/react-aria/drawer-dialog.tsx",
+      filePath: "examples/aria/drawer-dialog.tsx",
     },
     "drawer-rtl": {
       name: "drawer-rtl",
-      filePath: "examples/react-aria/drawer-rtl.tsx",
+      filePath: "examples/aria/drawer-rtl.tsx",
     },
     "drawer-scrollable-content": {
       name: "drawer-scrollable-content",
-      filePath: "examples/react-aria/drawer-scrollable-content.tsx",
+      filePath: "examples/aria/drawer-scrollable-content.tsx",
     },
     "drawer-sides": {
       name: "drawer-sides",
-      filePath: "examples/react-aria/drawer-sides.tsx",
+      filePath: "examples/aria/drawer-sides.tsx",
     },
     "dropdown-menu-avatar": {
       name: "dropdown-menu-avatar",
-      filePath: "examples/react-aria/dropdown-menu-avatar.tsx",
+      filePath: "examples/aria/dropdown-menu-avatar.tsx",
     },
     "dropdown-menu-basic": {
       name: "dropdown-menu-basic",
-      filePath: "examples/react-aria/dropdown-menu-basic.tsx",
+      filePath: "examples/aria/dropdown-menu-basic.tsx",
     },
     "dropdown-menu-checkboxes-icons": {
       name: "dropdown-menu-checkboxes-icons",
-      filePath: "examples/react-aria/dropdown-menu-checkboxes-icons.tsx",
+      filePath: "examples/aria/dropdown-menu-checkboxes-icons.tsx",
     },
     "dropdown-menu-checkboxes": {
       name: "dropdown-menu-checkboxes",
-      filePath: "examples/react-aria/dropdown-menu-checkboxes.tsx",
+      filePath: "examples/aria/dropdown-menu-checkboxes.tsx",
     },
     "dropdown-menu-complex": {
       name: "dropdown-menu-complex",
-      filePath: "examples/react-aria/dropdown-menu-complex.tsx",
+      filePath: "examples/aria/dropdown-menu-complex.tsx",
     },
     "dropdown-menu-demo": {
       name: "dropdown-menu-demo",
-      filePath: "examples/react-aria/dropdown-menu-demo.tsx",
+      filePath: "examples/aria/dropdown-menu-demo.tsx",
     },
     "dropdown-menu-destructive": {
       name: "dropdown-menu-destructive",
-      filePath: "examples/react-aria/dropdown-menu-destructive.tsx",
+      filePath: "examples/aria/dropdown-menu-destructive.tsx",
     },
     "dropdown-menu-icons": {
       name: "dropdown-menu-icons",
-      filePath: "examples/react-aria/dropdown-menu-icons.tsx",
+      filePath: "examples/aria/dropdown-menu-icons.tsx",
     },
     "dropdown-menu-radio-group": {
       name: "dropdown-menu-radio-group",
-      filePath: "examples/react-aria/dropdown-menu-radio-group.tsx",
+      filePath: "examples/aria/dropdown-menu-radio-group.tsx",
     },
     "dropdown-menu-radio-icons": {
       name: "dropdown-menu-radio-icons",
-      filePath: "examples/react-aria/dropdown-menu-radio-icons.tsx",
+      filePath: "examples/aria/dropdown-menu-radio-icons.tsx",
     },
     "dropdown-menu-rtl": {
       name: "dropdown-menu-rtl",
-      filePath: "examples/react-aria/dropdown-menu-rtl.tsx",
+      filePath: "examples/aria/dropdown-menu-rtl.tsx",
     },
     "dropdown-menu-shortcuts": {
       name: "dropdown-menu-shortcuts",
-      filePath: "examples/react-aria/dropdown-menu-shortcuts.tsx",
+      filePath: "examples/aria/dropdown-menu-shortcuts.tsx",
     },
     "dropdown-menu-submenu": {
       name: "dropdown-menu-submenu",
-      filePath: "examples/react-aria/dropdown-menu-submenu.tsx",
+      filePath: "examples/aria/dropdown-menu-submenu.tsx",
     },
     "empty-avatar-group": {
       name: "empty-avatar-group",
-      filePath: "examples/react-aria/empty-avatar-group.tsx",
+      filePath: "examples/aria/empty-avatar-group.tsx",
     },
     "empty-avatar": {
       name: "empty-avatar",
-      filePath: "examples/react-aria/empty-avatar.tsx",
+      filePath: "examples/aria/empty-avatar.tsx",
     },
     "empty-background": {
       name: "empty-background",
-      filePath: "examples/react-aria/empty-background.tsx",
+      filePath: "examples/aria/empty-background.tsx",
     },
     "empty-card": {
       name: "empty-card",
-      filePath: "examples/react-aria/empty-card.tsx",
+      filePath: "examples/aria/empty-card.tsx",
     },
     "empty-demo": {
       name: "empty-demo",
-      filePath: "examples/react-aria/empty-demo.tsx",
+      filePath: "examples/aria/empty-demo.tsx",
     },
     "empty-input-group": {
       name: "empty-input-group",
-      filePath: "examples/react-aria/empty-input-group.tsx",
+      filePath: "examples/aria/empty-input-group.tsx",
     },
     "empty-outline": {
       name: "empty-outline",
-      filePath: "examples/react-aria/empty-outline.tsx",
+      filePath: "examples/aria/empty-outline.tsx",
     },
     "empty-rtl": {
       name: "empty-rtl",
-      filePath: "examples/react-aria/empty-rtl.tsx",
+      filePath: "examples/aria/empty-rtl.tsx",
     },
     "field-checkbox": {
       name: "field-checkbox",
-      filePath: "examples/react-aria/field-checkbox.tsx",
+      filePath: "examples/aria/field-checkbox.tsx",
     },
     "field-choice-card": {
       name: "field-choice-card",
-      filePath: "examples/react-aria/field-choice-card.tsx",
+      filePath: "examples/aria/field-choice-card.tsx",
     },
     "field-demo": {
       name: "field-demo",
-      filePath: "examples/react-aria/field-demo.tsx",
+      filePath: "examples/aria/field-demo.tsx",
     },
     "field-fieldset": {
       name: "field-fieldset",
-      filePath: "examples/react-aria/field-fieldset.tsx",
+      filePath: "examples/aria/field-fieldset.tsx",
     },
     "field-group": {
       name: "field-group",
-      filePath: "examples/react-aria/field-group.tsx",
+      filePath: "examples/aria/field-group.tsx",
     },
     "field-input": {
       name: "field-input",
-      filePath: "examples/react-aria/field-input.tsx",
+      filePath: "examples/aria/field-input.tsx",
     },
     "field-radio": {
       name: "field-radio",
-      filePath: "examples/react-aria/field-radio.tsx",
+      filePath: "examples/aria/field-radio.tsx",
     },
     "field-responsive": {
       name: "field-responsive",
-      filePath: "examples/react-aria/field-responsive.tsx",
+      filePath: "examples/aria/field-responsive.tsx",
     },
     "field-rtl": {
       name: "field-rtl",
-      filePath: "examples/react-aria/field-rtl.tsx",
+      filePath: "examples/aria/field-rtl.tsx",
     },
     "field-select": {
       name: "field-select",
-      filePath: "examples/react-aria/field-select.tsx",
+      filePath: "examples/aria/field-select.tsx",
     },
     "field-slider": {
       name: "field-slider",
-      filePath: "examples/react-aria/field-slider.tsx",
+      filePath: "examples/aria/field-slider.tsx",
     },
     "field-switch": {
       name: "field-switch",
-      filePath: "examples/react-aria/field-switch.tsx",
+      filePath: "examples/aria/field-switch.tsx",
     },
     "field-textarea": {
       name: "field-textarea",
-      filePath: "examples/react-aria/field-textarea.tsx",
+      filePath: "examples/aria/field-textarea.tsx",
     },
     "file-upload-list": {
       name: "file-upload-list",
-      filePath: "examples/react-aria/file-upload-list.tsx",
+      filePath: "examples/aria/file-upload-list.tsx",
     },
     "input-badge": {
       name: "input-badge",
-      filePath: "examples/react-aria/input-badge.tsx",
+      filePath: "examples/aria/input-badge.tsx",
     },
     "input-basic": {
       name: "input-basic",
-      filePath: "examples/react-aria/input-basic.tsx",
+      filePath: "examples/aria/input-basic.tsx",
     },
     "input-button-group": {
       name: "input-button-group",
-      filePath: "examples/react-aria/input-button-group.tsx",
+      filePath: "examples/aria/input-button-group.tsx",
     },
     "input-demo": {
       name: "input-demo",
-      filePath: "examples/react-aria/input-demo.tsx",
+      filePath: "examples/aria/input-demo.tsx",
     },
     "input-disabled": {
       name: "input-disabled",
-      filePath: "examples/react-aria/input-disabled.tsx",
+      filePath: "examples/aria/input-disabled.tsx",
     },
     "input-field": {
       name: "input-field",
-      filePath: "examples/react-aria/input-field.tsx",
+      filePath: "examples/aria/input-field.tsx",
     },
     "input-fieldgroup": {
       name: "input-fieldgroup",
-      filePath: "examples/react-aria/input-fieldgroup.tsx",
+      filePath: "examples/aria/input-fieldgroup.tsx",
     },
     "input-file": {
       name: "input-file",
-      filePath: "examples/react-aria/input-file.tsx",
+      filePath: "examples/aria/input-file.tsx",
     },
     "input-form": {
       name: "input-form",
-      filePath: "examples/react-aria/input-form.tsx",
+      filePath: "examples/aria/input-form.tsx",
     },
     "input-grid": {
       name: "input-grid",
-      filePath: "examples/react-aria/input-grid.tsx",
+      filePath: "examples/aria/input-grid.tsx",
     },
     "input-group-basic": {
       name: "input-group-basic",
-      filePath: "examples/react-aria/input-group-basic.tsx",
+      filePath: "examples/aria/input-group-basic.tsx",
     },
     "input-group-block-end": {
       name: "input-group-block-end",
-      filePath: "examples/react-aria/input-group-block-end.tsx",
+      filePath: "examples/aria/input-group-block-end.tsx",
     },
     "input-group-block-start": {
       name: "input-group-block-start",
-      filePath: "examples/react-aria/input-group-block-start.tsx",
+      filePath: "examples/aria/input-group-block-start.tsx",
     },
     "input-group-button-group": {
       name: "input-group-button-group",
-      filePath: "examples/react-aria/input-group-button-group.tsx",
+      filePath: "examples/aria/input-group-button-group.tsx",
     },
     "input-group-button": {
       name: "input-group-button",
-      filePath: "examples/react-aria/input-group-button.tsx",
+      filePath: "examples/aria/input-group-button.tsx",
     },
     "input-group-custom": {
       name: "input-group-custom",
-      filePath: "examples/react-aria/input-group-custom.tsx",
+      filePath: "examples/aria/input-group-custom.tsx",
     },
     "input-group-demo": {
       name: "input-group-demo",
-      filePath: "examples/react-aria/input-group-demo.tsx",
+      filePath: "examples/aria/input-group-demo.tsx",
     },
     "input-group-dropdown": {
       name: "input-group-dropdown",
-      filePath: "examples/react-aria/input-group-dropdown.tsx",
+      filePath: "examples/aria/input-group-dropdown.tsx",
     },
     "input-group-icon": {
       name: "input-group-icon",
-      filePath: "examples/react-aria/input-group-icon.tsx",
+      filePath: "examples/aria/input-group-icon.tsx",
     },
     "input-group-in-card": {
       name: "input-group-in-card",
-      filePath: "examples/react-aria/input-group-in-card.tsx",
+      filePath: "examples/aria/input-group-in-card.tsx",
     },
     "input-group-inline-end": {
       name: "input-group-inline-end",
-      filePath: "examples/react-aria/input-group-inline-end.tsx",
+      filePath: "examples/aria/input-group-inline-end.tsx",
     },
     "input-group-inline-start": {
       name: "input-group-inline-start",
-      filePath: "examples/react-aria/input-group-inline-start.tsx",
+      filePath: "examples/aria/input-group-inline-start.tsx",
     },
     "input-group-kbd": {
       name: "input-group-kbd",
-      filePath: "examples/react-aria/input-group-kbd.tsx",
+      filePath: "examples/aria/input-group-kbd.tsx",
     },
     "input-group-label": {
       name: "input-group-label",
-      filePath: "examples/react-aria/input-group-label.tsx",
+      filePath: "examples/aria/input-group-label.tsx",
     },
     "input-group-rtl": {
       name: "input-group-rtl",
-      filePath: "examples/react-aria/input-group-rtl.tsx",
+      filePath: "examples/aria/input-group-rtl.tsx",
     },
     "input-group-spinner": {
       name: "input-group-spinner",
-      filePath: "examples/react-aria/input-group-spinner.tsx",
+      filePath: "examples/aria/input-group-spinner.tsx",
     },
     "input-group-text": {
       name: "input-group-text",
-      filePath: "examples/react-aria/input-group-text.tsx",
+      filePath: "examples/aria/input-group-text.tsx",
     },
     "input-group-textarea-examples": {
       name: "input-group-textarea-examples",
-      filePath: "examples/react-aria/input-group-textarea-examples.tsx",
+      filePath: "examples/aria/input-group-textarea-examples.tsx",
     },
     "input-group-textarea": {
       name: "input-group-textarea",
-      filePath: "examples/react-aria/input-group-textarea.tsx",
+      filePath: "examples/aria/input-group-textarea.tsx",
     },
     "input-group-tooltip": {
       name: "input-group-tooltip",
-      filePath: "examples/react-aria/input-group-tooltip.tsx",
+      filePath: "examples/aria/input-group-tooltip.tsx",
     },
     "input-group-with-addons": {
       name: "input-group-with-addons",
-      filePath: "examples/react-aria/input-group-with-addons.tsx",
+      filePath: "examples/aria/input-group-with-addons.tsx",
     },
     "input-group-with-buttons": {
       name: "input-group-with-buttons",
-      filePath: "examples/react-aria/input-group-with-buttons.tsx",
+      filePath: "examples/aria/input-group-with-buttons.tsx",
     },
     "input-group-with-kbd": {
       name: "input-group-with-kbd",
-      filePath: "examples/react-aria/input-group-with-kbd.tsx",
+      filePath: "examples/aria/input-group-with-kbd.tsx",
     },
     "input-group-with-tooltip": {
       name: "input-group-with-tooltip",
-      filePath: "examples/react-aria/input-group-with-tooltip.tsx",
+      filePath: "examples/aria/input-group-with-tooltip.tsx",
     },
     "input-inline": {
       name: "input-inline",
-      filePath: "examples/react-aria/input-inline.tsx",
+      filePath: "examples/aria/input-inline.tsx",
     },
     "input-input-group": {
       name: "input-input-group",
-      filePath: "examples/react-aria/input-input-group.tsx",
+      filePath: "examples/aria/input-input-group.tsx",
     },
     "input-invalid": {
       name: "input-invalid",
-      filePath: "examples/react-aria/input-invalid.tsx",
+      filePath: "examples/aria/input-invalid.tsx",
     },
     "input-otp-alphanumeric": {
       name: "input-otp-alphanumeric",
-      filePath: "examples/react-aria/input-otp-alphanumeric.tsx",
+      filePath: "examples/aria/input-otp-alphanumeric.tsx",
     },
     "input-otp-controlled": {
       name: "input-otp-controlled",
-      filePath: "examples/react-aria/input-otp-controlled.tsx",
+      filePath: "examples/aria/input-otp-controlled.tsx",
     },
     "input-otp-demo": {
       name: "input-otp-demo",
-      filePath: "examples/react-aria/input-otp-demo.tsx",
+      filePath: "examples/aria/input-otp-demo.tsx",
     },
     "input-otp-disabled": {
       name: "input-otp-disabled",
-      filePath: "examples/react-aria/input-otp-disabled.tsx",
+      filePath: "examples/aria/input-otp-disabled.tsx",
     },
     "input-otp-form": {
       name: "input-otp-form",
-      filePath: "examples/react-aria/input-otp-form.tsx",
+      filePath: "examples/aria/input-otp-form.tsx",
     },
     "input-otp-four-digits": {
       name: "input-otp-four-digits",
-      filePath: "examples/react-aria/input-otp-four-digits.tsx",
+      filePath: "examples/aria/input-otp-four-digits.tsx",
     },
     "input-otp-invalid": {
       name: "input-otp-invalid",
-      filePath: "examples/react-aria/input-otp-invalid.tsx",
+      filePath: "examples/aria/input-otp-invalid.tsx",
     },
     "input-otp-pattern": {
       name: "input-otp-pattern",
-      filePath: "examples/react-aria/input-otp-pattern.tsx",
+      filePath: "examples/aria/input-otp-pattern.tsx",
     },
     "input-otp-rtl": {
       name: "input-otp-rtl",
-      filePath: "examples/react-aria/input-otp-rtl.tsx",
+      filePath: "examples/aria/input-otp-rtl.tsx",
     },
     "input-otp-separator": {
       name: "input-otp-separator",
-      filePath: "examples/react-aria/input-otp-separator.tsx",
+      filePath: "examples/aria/input-otp-separator.tsx",
     },
     "input-required": {
       name: "input-required",
-      filePath: "examples/react-aria/input-required.tsx",
+      filePath: "examples/aria/input-required.tsx",
     },
     "input-rtl": {
       name: "input-rtl",
-      filePath: "examples/react-aria/input-rtl.tsx",
+      filePath: "examples/aria/input-rtl.tsx",
     },
     "item-avatar": {
       name: "item-avatar",
-      filePath: "examples/react-aria/item-avatar.tsx",
+      filePath: "examples/aria/item-avatar.tsx",
     },
     "item-demo": {
       name: "item-demo",
-      filePath: "examples/react-aria/item-demo.tsx",
+      filePath: "examples/aria/item-demo.tsx",
     },
     "item-dropdown": {
       name: "item-dropdown",
-      filePath: "examples/react-aria/item-dropdown.tsx",
+      filePath: "examples/aria/item-dropdown.tsx",
     },
     "item-group": {
       name: "item-group",
-      filePath: "examples/react-aria/item-group.tsx",
+      filePath: "examples/aria/item-group.tsx",
     },
     "item-header": {
       name: "item-header",
-      filePath: "examples/react-aria/item-header.tsx",
+      filePath: "examples/aria/item-header.tsx",
     },
     "item-icon": {
       name: "item-icon",
-      filePath: "examples/react-aria/item-icon.tsx",
+      filePath: "examples/aria/item-icon.tsx",
     },
     "item-image": {
       name: "item-image",
-      filePath: "examples/react-aria/item-image.tsx",
+      filePath: "examples/aria/item-image.tsx",
     },
     "item-link": {
       name: "item-link",
-      filePath: "examples/react-aria/item-link.tsx",
+      filePath: "examples/aria/item-link.tsx",
     },
     "item-rtl": {
       name: "item-rtl",
-      filePath: "examples/react-aria/item-rtl.tsx",
+      filePath: "examples/aria/item-rtl.tsx",
     },
     "item-size": {
       name: "item-size",
-      filePath: "examples/react-aria/item-size.tsx",
+      filePath: "examples/aria/item-size.tsx",
     },
     "item-variant": {
       name: "item-variant",
-      filePath: "examples/react-aria/item-variant.tsx",
+      filePath: "examples/aria/item-variant.tsx",
     },
     "kbd-button": {
       name: "kbd-button",
-      filePath: "examples/react-aria/kbd-button.tsx",
+      filePath: "examples/aria/kbd-button.tsx",
     },
     "kbd-demo": {
       name: "kbd-demo",
-      filePath: "examples/react-aria/kbd-demo.tsx",
+      filePath: "examples/aria/kbd-demo.tsx",
     },
     "kbd-group": {
       name: "kbd-group",
-      filePath: "examples/react-aria/kbd-group.tsx",
+      filePath: "examples/aria/kbd-group.tsx",
     },
     "kbd-input-group": {
       name: "kbd-input-group",
-      filePath: "examples/react-aria/kbd-input-group.tsx",
+      filePath: "examples/aria/kbd-input-group.tsx",
     },
     "kbd-rtl": {
       name: "kbd-rtl",
-      filePath: "examples/react-aria/kbd-rtl.tsx",
+      filePath: "examples/aria/kbd-rtl.tsx",
     },
     "kbd-tooltip": {
       name: "kbd-tooltip",
-      filePath: "examples/react-aria/kbd-tooltip.tsx",
+      filePath: "examples/aria/kbd-tooltip.tsx",
     },
     "label-demo": {
       name: "label-demo",
-      filePath: "examples/react-aria/label-demo.tsx",
+      filePath: "examples/aria/label-demo.tsx",
     },
     "label-rtl": {
       name: "label-rtl",
-      filePath: "examples/react-aria/label-rtl.tsx",
+      filePath: "examples/aria/label-rtl.tsx",
     },
     "markdown-demo": {
       name: "markdown-demo",
-      filePath: "examples/react-aria/markdown-demo.tsx",
+      filePath: "examples/aria/markdown-demo.tsx",
     },
     "marker-border": {
       name: "marker-border",
-      filePath: "examples/react-aria/marker-border.tsx",
+      filePath: "examples/aria/marker-border.tsx",
     },
     "marker-demo": {
       name: "marker-demo",
-      filePath: "examples/react-aria/marker-demo.tsx",
+      filePath: "examples/aria/marker-demo.tsx",
     },
     "marker-icon": {
       name: "marker-icon",
-      filePath: "examples/react-aria/marker-icon.tsx",
+      filePath: "examples/aria/marker-icon.tsx",
     },
     "marker-link-button": {
       name: "marker-link-button",
-      filePath: "examples/react-aria/marker-link-button.tsx",
+      filePath: "examples/aria/marker-link-button.tsx",
     },
     "marker-separator": {
       name: "marker-separator",
-      filePath: "examples/react-aria/marker-separator.tsx",
+      filePath: "examples/aria/marker-separator.tsx",
     },
     "marker-shimmer": {
       name: "marker-shimmer",
-      filePath: "examples/react-aria/marker-shimmer.tsx",
+      filePath: "examples/aria/marker-shimmer.tsx",
     },
     "marker-status": {
       name: "marker-status",
-      filePath: "examples/react-aria/marker-status.tsx",
+      filePath: "examples/aria/marker-status.tsx",
     },
     "marker-variants": {
       name: "marker-variants",
-      filePath: "examples/react-aria/marker-variants.tsx",
+      filePath: "examples/aria/marker-variants.tsx",
     },
     "message-actions": {
       name: "message-actions",
-      filePath: "examples/react-aria/message-actions.tsx",
+      filePath: "examples/aria/message-actions.tsx",
     },
     "message-attachment": {
       name: "message-attachment",
-      filePath: "examples/react-aria/message-attachment.tsx",
+      filePath: "examples/aria/message-attachment.tsx",
     },
     "message-avatar": {
       name: "message-avatar",
-      filePath: "examples/react-aria/message-avatar.tsx",
+      filePath: "examples/aria/message-avatar.tsx",
     },
     "message-demo": {
       name: "message-demo",
-      filePath: "examples/react-aria/message-demo.tsx",
+      filePath: "examples/aria/message-demo.tsx",
     },
     "message-group": {
       name: "message-group",
-      filePath: "examples/react-aria/message-group.tsx",
+      filePath: "examples/aria/message-group.tsx",
     },
     "message-header-footer": {
       name: "message-header-footer",
-      filePath: "examples/react-aria/message-header-footer.tsx",
+      filePath: "examples/aria/message-header-footer.tsx",
     },
     "message-markdown": {
       name: "message-markdown",
-      filePath: "examples/react-aria/message-markdown.tsx",
+      filePath: "examples/aria/message-markdown.tsx",
     },
     "message-scroller-anchoring": {
       name: "message-scroller-anchoring",
-      filePath: "examples/react-aria/message-scroller-anchoring.tsx",
+      filePath: "examples/aria/message-scroller-anchoring.tsx",
     },
     "message-scroller-animation": {
       name: "message-scroller-animation",
-      filePath: "examples/react-aria/message-scroller-animation.tsx",
+      filePath: "examples/aria/message-scroller-animation.tsx",
     },
     "message-scroller-commands": {
       name: "message-scroller-commands",
-      filePath: "examples/react-aria/message-scroller-commands.tsx",
+      filePath: "examples/aria/message-scroller-commands.tsx",
     },
     "message-scroller-demo": {
       name: "message-scroller-demo",
-      filePath: "examples/react-aria/message-scroller-demo.tsx",
+      filePath: "examples/aria/message-scroller-demo.tsx",
     },
     "message-scroller-group-chat": {
       name: "message-scroller-group-chat",
-      filePath: "examples/react-aria/message-scroller-group-chat.tsx",
+      filePath: "examples/aria/message-scroller-group-chat.tsx",
     },
     "message-scroller-load-history": {
       name: "message-scroller-load-history",
-      filePath: "examples/react-aria/message-scroller-load-history.tsx",
+      filePath: "examples/aria/message-scroller-load-history.tsx",
     },
     "message-scroller-opening-position": {
       name: "message-scroller-opening-position",
-      filePath: "examples/react-aria/message-scroller-opening-position.tsx",
+      filePath: "examples/aria/message-scroller-opening-position.tsx",
     },
     "message-scroller-previous-context": {
       name: "message-scroller-previous-context",
-      filePath: "examples/react-aria/message-scroller-previous-context.tsx",
+      filePath: "examples/aria/message-scroller-previous-context.tsx",
     },
     "message-scroller-scrollable": {
       name: "message-scroller-scrollable",
-      filePath: "examples/react-aria/message-scroller-scrollable.tsx",
+      filePath: "examples/aria/message-scroller-scrollable.tsx",
     },
     "message-scroller-state": {
       name: "message-scroller-state",
-      filePath: "examples/react-aria/message-scroller-state.tsx",
+      filePath: "examples/aria/message-scroller-state.tsx",
     },
     "message-scroller-streaming": {
       name: "message-scroller-streaming",
-      filePath: "examples/react-aria/message-scroller-streaming.tsx",
+      filePath: "examples/aria/message-scroller-streaming.tsx",
     },
     "message-scroller-visibility": {
       name: "message-scroller-visibility",
-      filePath: "examples/react-aria/message-scroller-visibility.tsx",
+      filePath: "examples/aria/message-scroller-visibility.tsx",
     },
     "muted-item-group": {
       name: "muted-item-group",
-      filePath: "examples/react-aria/muted-item-group.tsx",
+      filePath: "examples/aria/muted-item-group.tsx",
     },
     "native-select-demo": {
       name: "native-select-demo",
-      filePath: "examples/react-aria/native-select-demo.tsx",
+      filePath: "examples/aria/native-select-demo.tsx",
     },
     "native-select-disabled": {
       name: "native-select-disabled",
-      filePath: "examples/react-aria/native-select-disabled.tsx",
+      filePath: "examples/aria/native-select-disabled.tsx",
     },
     "native-select-groups": {
       name: "native-select-groups",
-      filePath: "examples/react-aria/native-select-groups.tsx",
+      filePath: "examples/aria/native-select-groups.tsx",
     },
     "native-select-invalid": {
       name: "native-select-invalid",
-      filePath: "examples/react-aria/native-select-invalid.tsx",
+      filePath: "examples/aria/native-select-invalid.tsx",
     },
     "native-select-rtl": {
       name: "native-select-rtl",
-      filePath: "examples/react-aria/native-select-rtl.tsx",
+      filePath: "examples/aria/native-select-rtl.tsx",
     },
     "outline-item-group": {
       name: "outline-item-group",
-      filePath: "examples/react-aria/outline-item-group.tsx",
+      filePath: "examples/aria/outline-item-group.tsx",
     },
     "pagination-demo": {
       name: "pagination-demo",
-      filePath: "examples/react-aria/pagination-demo.tsx",
+      filePath: "examples/aria/pagination-demo.tsx",
     },
     "pagination-icons-only": {
       name: "pagination-icons-only",
-      filePath: "examples/react-aria/pagination-icons-only.tsx",
+      filePath: "examples/aria/pagination-icons-only.tsx",
     },
     "pagination-rtl": {
       name: "pagination-rtl",
-      filePath: "examples/react-aria/pagination-rtl.tsx",
+      filePath: "examples/aria/pagination-rtl.tsx",
     },
     "pagination-simple": {
       name: "pagination-simple",
-      filePath: "examples/react-aria/pagination-simple.tsx",
+      filePath: "examples/aria/pagination-simple.tsx",
     },
     "popover-alignments": {
       name: "popover-alignments",
-      filePath: "examples/react-aria/popover-alignments.tsx",
+      filePath: "examples/aria/popover-alignments.tsx",
     },
     "popover-basic": {
       name: "popover-basic",
-      filePath: "examples/react-aria/popover-basic.tsx",
+      filePath: "examples/aria/popover-basic.tsx",
     },
     "popover-demo": {
       name: "popover-demo",
-      filePath: "examples/react-aria/popover-demo.tsx",
+      filePath: "examples/aria/popover-demo.tsx",
     },
     "popover-form": {
       name: "popover-form",
-      filePath: "examples/react-aria/popover-form.tsx",
+      filePath: "examples/aria/popover-form.tsx",
     },
     "popover-rtl": {
       name: "popover-rtl",
-      filePath: "examples/react-aria/popover-rtl.tsx",
+      filePath: "examples/aria/popover-rtl.tsx",
     },
     "progress-controlled": {
       name: "progress-controlled",
-      filePath: "examples/react-aria/progress-controlled.tsx",
+      filePath: "examples/aria/progress-controlled.tsx",
     },
     "progress-demo": {
       name: "progress-demo",
-      filePath: "examples/react-aria/progress-demo.tsx",
+      filePath: "examples/aria/progress-demo.tsx",
     },
     "progress-label": {
       name: "progress-label",
-      filePath: "examples/react-aria/progress-label.tsx",
+      filePath: "examples/aria/progress-label.tsx",
     },
     "progress-rtl": {
       name: "progress-rtl",
-      filePath: "examples/react-aria/progress-rtl.tsx",
+      filePath: "examples/aria/progress-rtl.tsx",
     },
     "radio-fields": {
       name: "radio-fields",
-      filePath: "examples/react-aria/radio-fields.tsx",
+      filePath: "examples/aria/radio-fields.tsx",
     },
     "radio-group-choice-card": {
       name: "radio-group-choice-card",
-      filePath: "examples/react-aria/radio-group-choice-card.tsx",
+      filePath: "examples/aria/radio-group-choice-card.tsx",
     },
     "radio-group-demo": {
       name: "radio-group-demo",
-      filePath: "examples/react-aria/radio-group-demo.tsx",
+      filePath: "examples/aria/radio-group-demo.tsx",
     },
     "radio-group-description": {
       name: "radio-group-description",
-      filePath: "examples/react-aria/radio-group-description.tsx",
+      filePath: "examples/aria/radio-group-description.tsx",
     },
     "radio-group-disabled": {
       name: "radio-group-disabled",
-      filePath: "examples/react-aria/radio-group-disabled.tsx",
+      filePath: "examples/aria/radio-group-disabled.tsx",
     },
     "radio-group-fieldset": {
       name: "radio-group-fieldset",
-      filePath: "examples/react-aria/radio-group-fieldset.tsx",
+      filePath: "examples/aria/radio-group-fieldset.tsx",
     },
     "radio-group-invalid": {
       name: "radio-group-invalid",
-      filePath: "examples/react-aria/radio-group-invalid.tsx",
+      filePath: "examples/aria/radio-group-invalid.tsx",
     },
     "radio-group-rtl": {
       name: "radio-group-rtl",
-      filePath: "examples/react-aria/radio-group-rtl.tsx",
+      filePath: "examples/aria/radio-group-rtl.tsx",
     },
     "resizable-demo": {
       name: "resizable-demo",
-      filePath: "examples/react-aria/resizable-demo.tsx",
+      filePath: "examples/aria/resizable-demo.tsx",
     },
     "resizable-handle": {
       name: "resizable-handle",
-      filePath: "examples/react-aria/resizable-handle.tsx",
+      filePath: "examples/aria/resizable-handle.tsx",
     },
     "resizable-rtl": {
       name: "resizable-rtl",
-      filePath: "examples/react-aria/resizable-rtl.tsx",
+      filePath: "examples/aria/resizable-rtl.tsx",
     },
     "resizable-vertical": {
       name: "resizable-vertical",
-      filePath: "examples/react-aria/resizable-vertical.tsx",
+      filePath: "examples/aria/resizable-vertical.tsx",
     },
     "scroll-area-demo": {
       name: "scroll-area-demo",
-      filePath: "examples/react-aria/scroll-area-demo.tsx",
+      filePath: "examples/aria/scroll-area-demo.tsx",
     },
     "scroll-area-horizontal-demo": {
       name: "scroll-area-horizontal-demo",
-      filePath: "examples/react-aria/scroll-area-horizontal-demo.tsx",
+      filePath: "examples/aria/scroll-area-horizontal-demo.tsx",
     },
     "scroll-area-rtl": {
       name: "scroll-area-rtl",
-      filePath: "examples/react-aria/scroll-area-rtl.tsx",
+      filePath: "examples/aria/scroll-area-rtl.tsx",
     },
     "scroll-fade-demo": {
       name: "scroll-fade-demo",
-      filePath: "examples/react-aria/scroll-fade-demo.tsx",
+      filePath: "examples/aria/scroll-fade-demo.tsx",
     },
     "scroll-fade-edge": {
       name: "scroll-fade-edge",
-      filePath: "examples/react-aria/scroll-fade-edge.tsx",
+      filePath: "examples/aria/scroll-fade-edge.tsx",
     },
     "scroll-fade-horizontal": {
       name: "scroll-fade-horizontal",
-      filePath: "examples/react-aria/scroll-fade-horizontal.tsx",
+      filePath: "examples/aria/scroll-fade-horizontal.tsx",
     },
     "scroll-fade-none": {
       name: "scroll-fade-none",
-      filePath: "examples/react-aria/scroll-fade-none.tsx",
+      filePath: "examples/aria/scroll-fade-none.tsx",
     },
     "scroll-fade-overflow": {
       name: "scroll-fade-overflow",
-      filePath: "examples/react-aria/scroll-fade-overflow.tsx",
+      filePath: "examples/aria/scroll-fade-overflow.tsx",
     },
     "scroll-fade-rtl": {
       name: "scroll-fade-rtl",
-      filePath: "examples/react-aria/scroll-fade-rtl.tsx",
+      filePath: "examples/aria/scroll-fade-rtl.tsx",
     },
     "scroll-fade-size": {
       name: "scroll-fade-size",
-      filePath: "examples/react-aria/scroll-fade-size.tsx",
+      filePath: "examples/aria/scroll-fade-size.tsx",
     },
     "select-autocomplete": {
       name: "select-autocomplete",
-      filePath: "examples/react-aria/select-autocomplete.tsx",
+      filePath: "examples/aria/select-autocomplete.tsx",
     },
     "select-demo": {
       name: "select-demo",
-      filePath: "examples/react-aria/select-demo.tsx",
+      filePath: "examples/aria/select-demo.tsx",
     },
     "select-disabled": {
       name: "select-disabled",
-      filePath: "examples/react-aria/select-disabled.tsx",
+      filePath: "examples/aria/select-disabled.tsx",
     },
     "select-groups": {
       name: "select-groups",
-      filePath: "examples/react-aria/select-groups.tsx",
+      filePath: "examples/aria/select-groups.tsx",
     },
     "select-invalid": {
       name: "select-invalid",
-      filePath: "examples/react-aria/select-invalid.tsx",
+      filePath: "examples/aria/select-invalid.tsx",
     },
     "select-rtl": {
       name: "select-rtl",
-      filePath: "examples/react-aria/select-rtl.tsx",
+      filePath: "examples/aria/select-rtl.tsx",
     },
     "select-scrollable": {
       name: "select-scrollable",
-      filePath: "examples/react-aria/select-scrollable.tsx",
+      filePath: "examples/aria/select-scrollable.tsx",
     },
     "separator-demo": {
       name: "separator-demo",
-      filePath: "examples/react-aria/separator-demo.tsx",
+      filePath: "examples/aria/separator-demo.tsx",
     },
     "separator-list": {
       name: "separator-list",
-      filePath: "examples/react-aria/separator-list.tsx",
+      filePath: "examples/aria/separator-list.tsx",
     },
     "separator-menu": {
       name: "separator-menu",
-      filePath: "examples/react-aria/separator-menu.tsx",
+      filePath: "examples/aria/separator-menu.tsx",
     },
     "separator-rtl": {
       name: "separator-rtl",
-      filePath: "examples/react-aria/separator-rtl.tsx",
+      filePath: "examples/aria/separator-rtl.tsx",
     },
     "separator-vertical": {
       name: "separator-vertical",
-      filePath: "examples/react-aria/separator-vertical.tsx",
+      filePath: "examples/aria/separator-vertical.tsx",
     },
     "sheet-demo": {
       name: "sheet-demo",
-      filePath: "examples/react-aria/sheet-demo.tsx",
+      filePath: "examples/aria/sheet-demo.tsx",
     },
     "sheet-no-close-button": {
       name: "sheet-no-close-button",
-      filePath: "examples/react-aria/sheet-no-close-button.tsx",
+      filePath: "examples/aria/sheet-no-close-button.tsx",
     },
     "sheet-rtl": {
       name: "sheet-rtl",
-      filePath: "examples/react-aria/sheet-rtl.tsx",
+      filePath: "examples/aria/sheet-rtl.tsx",
     },
     "sheet-side": {
       name: "sheet-side",
-      filePath: "examples/react-aria/sheet-side.tsx",
+      filePath: "examples/aria/sheet-side.tsx",
     },
     "shimmer-angle": {
       name: "shimmer-angle",
-      filePath: "examples/react-aria/shimmer-angle.tsx",
+      filePath: "examples/aria/shimmer-angle.tsx",
     },
     "shimmer-color": {
       name: "shimmer-color",
-      filePath: "examples/react-aria/shimmer-color.tsx",
+      filePath: "examples/aria/shimmer-color.tsx",
     },
     "shimmer-demo": {
       name: "shimmer-demo",
-      filePath: "examples/react-aria/shimmer-demo.tsx",
+      filePath: "examples/aria/shimmer-demo.tsx",
     },
     "shimmer-duration": {
       name: "shimmer-duration",
-      filePath: "examples/react-aria/shimmer-duration.tsx",
+      filePath: "examples/aria/shimmer-duration.tsx",
     },
     "shimmer-marker": {
       name: "shimmer-marker",
-      filePath: "examples/react-aria/shimmer-marker.tsx",
+      filePath: "examples/aria/shimmer-marker.tsx",
     },
     "shimmer-none": {
       name: "shimmer-none",
-      filePath: "examples/react-aria/shimmer-none.tsx",
+      filePath: "examples/aria/shimmer-none.tsx",
     },
     "shimmer-once": {
       name: "shimmer-once",
-      filePath: "examples/react-aria/shimmer-once.tsx",
+      filePath: "examples/aria/shimmer-once.tsx",
     },
     "shimmer-rtl": {
       name: "shimmer-rtl",
-      filePath: "examples/react-aria/shimmer-rtl.tsx",
+      filePath: "examples/aria/shimmer-rtl.tsx",
     },
     "shimmer-spread": {
       name: "shimmer-spread",
-      filePath: "examples/react-aria/shimmer-spread.tsx",
+      filePath: "examples/aria/shimmer-spread.tsx",
     },
     "sidebar-controlled": {
       name: "sidebar-controlled",
-      filePath: "examples/react-aria/sidebar-controlled.tsx",
+      filePath: "examples/aria/sidebar-controlled.tsx",
     },
     "sidebar-demo": {
       name: "sidebar-demo",
-      filePath: "examples/react-aria/sidebar-demo.tsx",
+      filePath: "examples/aria/sidebar-demo.tsx",
     },
     "sidebar-footer": {
       name: "sidebar-footer",
-      filePath: "examples/react-aria/sidebar-footer.tsx",
+      filePath: "examples/aria/sidebar-footer.tsx",
     },
     "sidebar-group-action": {
       name: "sidebar-group-action",
-      filePath: "examples/react-aria/sidebar-group-action.tsx",
+      filePath: "examples/aria/sidebar-group-action.tsx",
     },
     "sidebar-group-collapsible": {
       name: "sidebar-group-collapsible",
-      filePath: "examples/react-aria/sidebar-group-collapsible.tsx",
+      filePath: "examples/aria/sidebar-group-collapsible.tsx",
     },
     "sidebar-group": {
       name: "sidebar-group",
-      filePath: "examples/react-aria/sidebar-group.tsx",
+      filePath: "examples/aria/sidebar-group.tsx",
     },
     "sidebar-header": {
       name: "sidebar-header",
-      filePath: "examples/react-aria/sidebar-header.tsx",
+      filePath: "examples/aria/sidebar-header.tsx",
     },
     "sidebar-menu-action": {
       name: "sidebar-menu-action",
-      filePath: "examples/react-aria/sidebar-menu-action.tsx",
+      filePath: "examples/aria/sidebar-menu-action.tsx",
     },
     "sidebar-menu-badge": {
       name: "sidebar-menu-badge",
-      filePath: "examples/react-aria/sidebar-menu-badge.tsx",
+      filePath: "examples/aria/sidebar-menu-badge.tsx",
     },
     "sidebar-menu-collapsible": {
       name: "sidebar-menu-collapsible",
-      filePath: "examples/react-aria/sidebar-menu-collapsible.tsx",
+      filePath: "examples/aria/sidebar-menu-collapsible.tsx",
     },
     "sidebar-menu-sub": {
       name: "sidebar-menu-sub",
-      filePath: "examples/react-aria/sidebar-menu-sub.tsx",
+      filePath: "examples/aria/sidebar-menu-sub.tsx",
     },
     "sidebar-menu": {
       name: "sidebar-menu",
-      filePath: "examples/react-aria/sidebar-menu.tsx",
+      filePath: "examples/aria/sidebar-menu.tsx",
     },
     "sidebar-rsc": {
       name: "sidebar-rsc",
-      filePath: "examples/react-aria/sidebar-rsc.tsx",
+      filePath: "examples/aria/sidebar-rsc.tsx",
     },
     "sidebar-rtl": {
       name: "sidebar-rtl",
-      filePath: "examples/react-aria/sidebar-rtl.tsx",
+      filePath: "examples/aria/sidebar-rtl.tsx",
     },
     "skeleton-avatar": {
       name: "skeleton-avatar",
-      filePath: "examples/react-aria/skeleton-avatar.tsx",
+      filePath: "examples/aria/skeleton-avatar.tsx",
     },
     "skeleton-card": {
       name: "skeleton-card",
-      filePath: "examples/react-aria/skeleton-card.tsx",
+      filePath: "examples/aria/skeleton-card.tsx",
     },
     "skeleton-demo": {
       name: "skeleton-demo",
-      filePath: "examples/react-aria/skeleton-demo.tsx",
+      filePath: "examples/aria/skeleton-demo.tsx",
     },
     "skeleton-form": {
       name: "skeleton-form",
-      filePath: "examples/react-aria/skeleton-form.tsx",
+      filePath: "examples/aria/skeleton-form.tsx",
     },
     "skeleton-rtl": {
       name: "skeleton-rtl",
-      filePath: "examples/react-aria/skeleton-rtl.tsx",
+      filePath: "examples/aria/skeleton-rtl.tsx",
     },
     "skeleton-table": {
       name: "skeleton-table",
-      filePath: "examples/react-aria/skeleton-table.tsx",
+      filePath: "examples/aria/skeleton-table.tsx",
     },
     "skeleton-text": {
       name: "skeleton-text",
-      filePath: "examples/react-aria/skeleton-text.tsx",
+      filePath: "examples/aria/skeleton-text.tsx",
     },
     "slider-controlled": {
       name: "slider-controlled",
-      filePath: "examples/react-aria/slider-controlled.tsx",
+      filePath: "examples/aria/slider-controlled.tsx",
     },
     "slider-demo": {
       name: "slider-demo",
-      filePath: "examples/react-aria/slider-demo.tsx",
+      filePath: "examples/aria/slider-demo.tsx",
     },
     "slider-disabled": {
       name: "slider-disabled",
-      filePath: "examples/react-aria/slider-disabled.tsx",
+      filePath: "examples/aria/slider-disabled.tsx",
     },
     "slider-multiple": {
       name: "slider-multiple",
-      filePath: "examples/react-aria/slider-multiple.tsx",
+      filePath: "examples/aria/slider-multiple.tsx",
     },
     "slider-range": {
       name: "slider-range",
-      filePath: "examples/react-aria/slider-range.tsx",
+      filePath: "examples/aria/slider-range.tsx",
     },
     "slider-rtl": {
       name: "slider-rtl",
-      filePath: "examples/react-aria/slider-rtl.tsx",
+      filePath: "examples/aria/slider-rtl.tsx",
     },
     "slider-vertical": {
       name: "slider-vertical",
-      filePath: "examples/react-aria/slider-vertical.tsx",
+      filePath: "examples/aria/slider-vertical.tsx",
     },
     "sonner-demo": {
       name: "sonner-demo",
-      filePath: "examples/react-aria/sonner-demo.tsx",
+      filePath: "examples/aria/sonner-demo.tsx",
     },
     "sonner-description": {
       name: "sonner-description",
-      filePath: "examples/react-aria/sonner-description.tsx",
+      filePath: "examples/aria/sonner-description.tsx",
     },
     "sonner-position": {
       name: "sonner-position",
-      filePath: "examples/react-aria/sonner-position.tsx",
+      filePath: "examples/aria/sonner-position.tsx",
     },
     "sonner-types": {
       name: "sonner-types",
-      filePath: "examples/react-aria/sonner-types.tsx",
+      filePath: "examples/aria/sonner-types.tsx",
     },
     "spinner-badge": {
       name: "spinner-badge",
-      filePath: "examples/react-aria/spinner-badge.tsx",
+      filePath: "examples/aria/spinner-badge.tsx",
     },
     "spinner-button": {
       name: "spinner-button",
-      filePath: "examples/react-aria/spinner-button.tsx",
+      filePath: "examples/aria/spinner-button.tsx",
     },
     "spinner-custom": {
       name: "spinner-custom",
-      filePath: "examples/react-aria/spinner-custom.tsx",
+      filePath: "examples/aria/spinner-custom.tsx",
     },
     "spinner-demo": {
       name: "spinner-demo",
-      filePath: "examples/react-aria/spinner-demo.tsx",
+      filePath: "examples/aria/spinner-demo.tsx",
     },
     "spinner-empty": {
       name: "spinner-empty",
-      filePath: "examples/react-aria/spinner-empty.tsx",
+      filePath: "examples/aria/spinner-empty.tsx",
     },
     "spinner-input-group": {
       name: "spinner-input-group",
-      filePath: "examples/react-aria/spinner-input-group.tsx",
+      filePath: "examples/aria/spinner-input-group.tsx",
     },
     "spinner-rtl": {
       name: "spinner-rtl",
-      filePath: "examples/react-aria/spinner-rtl.tsx",
+      filePath: "examples/aria/spinner-rtl.tsx",
     },
     "spinner-size": {
       name: "spinner-size",
-      filePath: "examples/react-aria/spinner-size.tsx",
+      filePath: "examples/aria/spinner-size.tsx",
     },
     "switch-choice-card": {
       name: "switch-choice-card",
-      filePath: "examples/react-aria/switch-choice-card.tsx",
+      filePath: "examples/aria/switch-choice-card.tsx",
     },
     "switch-demo": {
       name: "switch-demo",
-      filePath: "examples/react-aria/switch-demo.tsx",
+      filePath: "examples/aria/switch-demo.tsx",
     },
     "switch-description": {
       name: "switch-description",
-      filePath: "examples/react-aria/switch-description.tsx",
+      filePath: "examples/aria/switch-description.tsx",
     },
     "switch-disabled": {
       name: "switch-disabled",
-      filePath: "examples/react-aria/switch-disabled.tsx",
+      filePath: "examples/aria/switch-disabled.tsx",
     },
     "switch-invalid": {
       name: "switch-invalid",
-      filePath: "examples/react-aria/switch-invalid.tsx",
+      filePath: "examples/aria/switch-invalid.tsx",
     },
     "switch-rtl": {
       name: "switch-rtl",
-      filePath: "examples/react-aria/switch-rtl.tsx",
+      filePath: "examples/aria/switch-rtl.tsx",
     },
     "switch-sizes": {
       name: "switch-sizes",
-      filePath: "examples/react-aria/switch-sizes.tsx",
+      filePath: "examples/aria/switch-sizes.tsx",
     },
     "table-actions": {
       name: "table-actions",
-      filePath: "examples/react-aria/table-actions.tsx",
+      filePath: "examples/aria/table-actions.tsx",
     },
     "table-demo": {
       name: "table-demo",
-      filePath: "examples/react-aria/table-demo.tsx",
+      filePath: "examples/aria/table-demo.tsx",
     },
     "table-footer": {
       name: "table-footer",
-      filePath: "examples/react-aria/table-footer.tsx",
+      filePath: "examples/aria/table-footer.tsx",
     },
     "table-rtl": {
       name: "table-rtl",
-      filePath: "examples/react-aria/table-rtl.tsx",
+      filePath: "examples/aria/table-rtl.tsx",
     },
     "tabs-demo": {
       name: "tabs-demo",
-      filePath: "examples/react-aria/tabs-demo.tsx",
+      filePath: "examples/aria/tabs-demo.tsx",
     },
     "tabs-disabled": {
       name: "tabs-disabled",
-      filePath: "examples/react-aria/tabs-disabled.tsx",
+      filePath: "examples/aria/tabs-disabled.tsx",
     },
     "tabs-icons": {
       name: "tabs-icons",
-      filePath: "examples/react-aria/tabs-icons.tsx",
+      filePath: "examples/aria/tabs-icons.tsx",
     },
     "tabs-line": {
       name: "tabs-line",
-      filePath: "examples/react-aria/tabs-line.tsx",
+      filePath: "examples/aria/tabs-line.tsx",
     },
     "tabs-rtl": {
       name: "tabs-rtl",
-      filePath: "examples/react-aria/tabs-rtl.tsx",
+      filePath: "examples/aria/tabs-rtl.tsx",
     },
     "tabs-vertical": {
       name: "tabs-vertical",
-      filePath: "examples/react-aria/tabs-vertical.tsx",
+      filePath: "examples/aria/tabs-vertical.tsx",
     },
     "textarea-button": {
       name: "textarea-button",
-      filePath: "examples/react-aria/textarea-button.tsx",
+      filePath: "examples/aria/textarea-button.tsx",
     },
     "textarea-demo": {
       name: "textarea-demo",
-      filePath: "examples/react-aria/textarea-demo.tsx",
+      filePath: "examples/aria/textarea-demo.tsx",
     },
     "textarea-disabled": {
       name: "textarea-disabled",
-      filePath: "examples/react-aria/textarea-disabled.tsx",
+      filePath: "examples/aria/textarea-disabled.tsx",
     },
     "textarea-field": {
       name: "textarea-field",
-      filePath: "examples/react-aria/textarea-field.tsx",
+      filePath: "examples/aria/textarea-field.tsx",
     },
     "textarea-invalid": {
       name: "textarea-invalid",
-      filePath: "examples/react-aria/textarea-invalid.tsx",
+      filePath: "examples/aria/textarea-invalid.tsx",
     },
     "textarea-rtl": {
       name: "textarea-rtl",
-      filePath: "examples/react-aria/textarea-rtl.tsx",
+      filePath: "examples/aria/textarea-rtl.tsx",
     },
     "toggle-demo": {
       name: "toggle-demo",
-      filePath: "examples/react-aria/toggle-demo.tsx",
+      filePath: "examples/aria/toggle-demo.tsx",
     },
     "toggle-disabled": {
       name: "toggle-disabled",
-      filePath: "examples/react-aria/toggle-disabled.tsx",
+      filePath: "examples/aria/toggle-disabled.tsx",
     },
     "toggle-group-demo": {
       name: "toggle-group-demo",
-      filePath: "examples/react-aria/toggle-group-demo.tsx",
+      filePath: "examples/aria/toggle-group-demo.tsx",
     },
     "toggle-group-disabled": {
       name: "toggle-group-disabled",
-      filePath: "examples/react-aria/toggle-group-disabled.tsx",
+      filePath: "examples/aria/toggle-group-disabled.tsx",
     },
     "toggle-group-font-weight-selector": {
       name: "toggle-group-font-weight-selector",
-      filePath: "examples/react-aria/toggle-group-font-weight-selector.tsx",
+      filePath: "examples/aria/toggle-group-font-weight-selector.tsx",
     },
     "toggle-group-outline": {
       name: "toggle-group-outline",
-      filePath: "examples/react-aria/toggle-group-outline.tsx",
+      filePath: "examples/aria/toggle-group-outline.tsx",
     },
     "toggle-group-rtl": {
       name: "toggle-group-rtl",
-      filePath: "examples/react-aria/toggle-group-rtl.tsx",
+      filePath: "examples/aria/toggle-group-rtl.tsx",
     },
     "toggle-group-sizes": {
       name: "toggle-group-sizes",
-      filePath: "examples/react-aria/toggle-group-sizes.tsx",
+      filePath: "examples/aria/toggle-group-sizes.tsx",
     },
     "toggle-group-spacing": {
       name: "toggle-group-spacing",
-      filePath: "examples/react-aria/toggle-group-spacing.tsx",
+      filePath: "examples/aria/toggle-group-spacing.tsx",
     },
     "toggle-group-vertical": {
       name: "toggle-group-vertical",
-      filePath: "examples/react-aria/toggle-group-vertical.tsx",
+      filePath: "examples/aria/toggle-group-vertical.tsx",
     },
     "toggle-outline": {
       name: "toggle-outline",
-      filePath: "examples/react-aria/toggle-outline.tsx",
+      filePath: "examples/aria/toggle-outline.tsx",
     },
     "toggle-rtl": {
       name: "toggle-rtl",
-      filePath: "examples/react-aria/toggle-rtl.tsx",
+      filePath: "examples/aria/toggle-rtl.tsx",
     },
     "toggle-sizes": {
       name: "toggle-sizes",
-      filePath: "examples/react-aria/toggle-sizes.tsx",
+      filePath: "examples/aria/toggle-sizes.tsx",
     },
     "toggle-text": {
       name: "toggle-text",
-      filePath: "examples/react-aria/toggle-text.tsx",
+      filePath: "examples/aria/toggle-text.tsx",
     },
     "tooltip-demo": {
       name: "tooltip-demo",
-      filePath: "examples/react-aria/tooltip-demo.tsx",
+      filePath: "examples/aria/tooltip-demo.tsx",
     },
     "tooltip-disabled": {
       name: "tooltip-disabled",
-      filePath: "examples/react-aria/tooltip-disabled.tsx",
+      filePath: "examples/aria/tooltip-disabled.tsx",
     },
     "tooltip-keyboard": {
       name: "tooltip-keyboard",
-      filePath: "examples/react-aria/tooltip-keyboard.tsx",
+      filePath: "examples/aria/tooltip-keyboard.tsx",
     },
     "tooltip-rtl": {
       name: "tooltip-rtl",
-      filePath: "examples/react-aria/tooltip-rtl.tsx",
+      filePath: "examples/aria/tooltip-rtl.tsx",
     },
     "tooltip-sides": {
       name: "tooltip-sides",
-      filePath: "examples/react-aria/tooltip-sides.tsx",
+      filePath: "examples/aria/tooltip-sides.tsx",
     },
     "typography-blockquote": {
       name: "typography-blockquote",
-      filePath: "examples/react-aria/typography-blockquote.tsx",
+      filePath: "examples/aria/typography-blockquote.tsx",
     },
     "typography-demo": {
       name: "typography-demo",
-      filePath: "examples/react-aria/typography-demo.tsx",
+      filePath: "examples/aria/typography-demo.tsx",
     },
     "typography-h1": {
       name: "typography-h1",
-      filePath: "examples/react-aria/typography-h1.tsx",
+      filePath: "examples/aria/typography-h1.tsx",
     },
     "typography-h2": {
       name: "typography-h2",
-      filePath: "examples/react-aria/typography-h2.tsx",
+      filePath: "examples/aria/typography-h2.tsx",
     },
     "typography-h3": {
       name: "typography-h3",
-      filePath: "examples/react-aria/typography-h3.tsx",
+      filePath: "examples/aria/typography-h3.tsx",
     },
     "typography-h4": {
       name: "typography-h4",
-      filePath: "examples/react-aria/typography-h4.tsx",
+      filePath: "examples/aria/typography-h4.tsx",
     },
     "typography-inline-code": {
       name: "typography-inline-code",
-      filePath: "examples/react-aria/typography-inline-code.tsx",
+      filePath: "examples/aria/typography-inline-code.tsx",
     },
     "typography-large": {
       name: "typography-large",
-      filePath: "examples/react-aria/typography-large.tsx",
+      filePath: "examples/aria/typography-large.tsx",
     },
     "typography-lead": {
       name: "typography-lead",
-      filePath: "examples/react-aria/typography-lead.tsx",
+      filePath: "examples/aria/typography-lead.tsx",
     },
     "typography-list": {
       name: "typography-list",
-      filePath: "examples/react-aria/typography-list.tsx",
+      filePath: "examples/aria/typography-list.tsx",
     },
     "typography-muted": {
       name: "typography-muted",
-      filePath: "examples/react-aria/typography-muted.tsx",
+      filePath: "examples/aria/typography-muted.tsx",
     },
     "typography-p": {
       name: "typography-p",
-      filePath: "examples/react-aria/typography-p.tsx",
+      filePath: "examples/aria/typography-p.tsx",
     },
     "typography-rtl": {
       name: "typography-rtl",
-      filePath: "examples/react-aria/typography-rtl.tsx",
+      filePath: "examples/aria/typography-rtl.tsx",
     },
     "typography-small": {
       name: "typography-small",
-      filePath: "examples/react-aria/typography-small.tsx",
+      filePath: "examples/aria/typography-small.tsx",
     },
     "typography-table": {
       name: "typography-table",
-      filePath: "examples/react-aria/typography-table.tsx",
+      filePath: "examples/aria/typography-table.tsx",
     },
   },
 }

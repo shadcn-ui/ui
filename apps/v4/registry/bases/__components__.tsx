@@ -2980,9 +2980,9 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
   },
-  "react-aria": {
+  aria: {
     accordion: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/accordion")
+      const mod = await import("@/registry/bases/aria/ui/accordion")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -2991,7 +2991,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     alert: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/alert")
+      const mod = await import("@/registry/bases/aria/ui/alert")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3000,7 +3000,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "alert-dialog": React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/alert-dialog")
+      const mod = await import("@/registry/bases/aria/ui/alert-dialog")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3009,7 +3009,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "aspect-ratio": React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/aspect-ratio")
+      const mod = await import("@/registry/bases/aria/ui/aspect-ratio")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3018,7 +3018,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     avatar: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/avatar")
+      const mod = await import("@/registry/bases/aria/ui/avatar")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3027,7 +3027,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     badge: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/badge")
+      const mod = await import("@/registry/bases/aria/ui/badge")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3036,7 +3036,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     breadcrumb: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/breadcrumb")
+      const mod = await import("@/registry/bases/aria/ui/breadcrumb")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3045,7 +3045,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     button: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/button")
+      const mod = await import("@/registry/bases/aria/ui/button")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3054,7 +3054,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "button-group": React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/button-group")
+      const mod = await import("@/registry/bases/aria/ui/button-group")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3063,7 +3063,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     calendar: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/calendar")
+      const mod = await import("@/registry/bases/aria/ui/calendar")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3072,7 +3072,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     card: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/card")
+      const mod = await import("@/registry/bases/aria/ui/card")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3081,7 +3081,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     carousel: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/carousel")
+      const mod = await import("@/registry/bases/aria/ui/carousel")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3090,7 +3090,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     chart: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/chart")
+      const mod = await import("@/registry/bases/aria/ui/chart")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3099,7 +3099,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     checkbox: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/checkbox")
+      const mod = await import("@/registry/bases/aria/ui/checkbox")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3108,7 +3108,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     collapsible: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/collapsible")
+      const mod = await import("@/registry/bases/aria/ui/collapsible")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3117,7 +3117,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     combobox: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/combobox")
+      const mod = await import("@/registry/bases/aria/ui/combobox")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3126,7 +3126,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     command: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/command")
+      const mod = await import("@/registry/bases/aria/ui/command")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3135,7 +3135,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "context-menu": React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/context-menu")
+      const mod = await import("@/registry/bases/aria/ui/context-menu")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3144,7 +3144,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     dialog: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/dialog")
+      const mod = await import("@/registry/bases/aria/ui/dialog")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3153,7 +3153,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     drawer: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/drawer")
+      const mod = await import("@/registry/bases/aria/ui/drawer")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3162,7 +3162,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "dropdown-menu": React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/dropdown-menu")
+      const mod = await import("@/registry/bases/aria/ui/dropdown-menu")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3171,7 +3171,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     empty: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/empty")
+      const mod = await import("@/registry/bases/aria/ui/empty")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3180,7 +3180,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     field: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/field")
+      const mod = await import("@/registry/bases/aria/ui/field")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3189,7 +3189,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     input: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/input")
+      const mod = await import("@/registry/bases/aria/ui/input")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3198,7 +3198,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "input-group": React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/input-group")
+      const mod = await import("@/registry/bases/aria/ui/input-group")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3207,7 +3207,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "input-otp": React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/input-otp")
+      const mod = await import("@/registry/bases/aria/ui/input-otp")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3216,7 +3216,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     item: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/item")
+      const mod = await import("@/registry/bases/aria/ui/item")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3225,7 +3225,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     label: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/label")
+      const mod = await import("@/registry/bases/aria/ui/label")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3234,7 +3234,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     pagination: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/pagination")
+      const mod = await import("@/registry/bases/aria/ui/pagination")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3243,7 +3243,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     popover: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/popover")
+      const mod = await import("@/registry/bases/aria/ui/popover")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3252,7 +3252,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     progress: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/progress")
+      const mod = await import("@/registry/bases/aria/ui/progress")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3261,7 +3261,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "radio-group": React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/radio-group")
+      const mod = await import("@/registry/bases/aria/ui/radio-group")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3270,7 +3270,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     resizable: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/resizable")
+      const mod = await import("@/registry/bases/aria/ui/resizable")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3279,7 +3279,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "scroll-area": React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/scroll-area")
+      const mod = await import("@/registry/bases/aria/ui/scroll-area")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3288,7 +3288,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     select: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/select")
+      const mod = await import("@/registry/bases/aria/ui/select")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3297,7 +3297,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     separator: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/separator")
+      const mod = await import("@/registry/bases/aria/ui/separator")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3306,7 +3306,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     sheet: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/sheet")
+      const mod = await import("@/registry/bases/aria/ui/sheet")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3315,7 +3315,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     sidebar: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/sidebar")
+      const mod = await import("@/registry/bases/aria/ui/sidebar")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3324,7 +3324,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     skeleton: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/skeleton")
+      const mod = await import("@/registry/bases/aria/ui/skeleton")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3333,7 +3333,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     slider: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/slider")
+      const mod = await import("@/registry/bases/aria/ui/slider")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3342,7 +3342,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     sonner: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/sonner")
+      const mod = await import("@/registry/bases/aria/ui/sonner")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3351,7 +3351,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     spinner: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/spinner")
+      const mod = await import("@/registry/bases/aria/ui/spinner")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3360,7 +3360,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     switch: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/switch")
+      const mod = await import("@/registry/bases/aria/ui/switch")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3369,7 +3369,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     table: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/table")
+      const mod = await import("@/registry/bases/aria/ui/table")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3378,7 +3378,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     tabs: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/tabs")
+      const mod = await import("@/registry/bases/aria/ui/tabs")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3387,7 +3387,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     textarea: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/textarea")
+      const mod = await import("@/registry/bases/aria/ui/textarea")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3396,7 +3396,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     toggle: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/toggle")
+      const mod = await import("@/registry/bases/aria/ui/toggle")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3405,7 +3405,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "toggle-group": React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/toggle-group")
+      const mod = await import("@/registry/bases/aria/ui/toggle-group")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3414,7 +3414,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     tooltip: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/tooltip")
+      const mod = await import("@/registry/bases/aria/ui/tooltip")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3423,7 +3423,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     kbd: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/kbd")
+      const mod = await import("@/registry/bases/aria/ui/kbd")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3432,7 +3432,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "native-select": React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/native-select")
+      const mod = await import("@/registry/bases/aria/ui/native-select")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3441,7 +3441,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     direction: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/direction")
+      const mod = await import("@/registry/bases/aria/ui/direction")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3450,7 +3450,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     attachment: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/attachment")
+      const mod = await import("@/registry/bases/aria/ui/attachment")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3459,7 +3459,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     bubble: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/bubble")
+      const mod = await import("@/registry/bases/aria/ui/bubble")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3468,9 +3468,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "message-scroller": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/ui/message-scroller"
-      )
+      const mod = await import("@/registry/bases/aria/ui/message-scroller")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3479,7 +3477,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     marker: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/marker")
+      const mod = await import("@/registry/bases/aria/ui/marker")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3488,7 +3486,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     message: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/ui/message")
+      const mod = await import("@/registry/bases/aria/ui/message")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3498,7 +3496,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "accordion-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/accordion-example"
+        "@/registry/bases/aria/examples/accordion-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3508,9 +3506,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "alert-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/alert-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/alert-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3520,7 +3516,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "alert-dialog-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/alert-dialog-example"
+        "@/registry/bases/aria/examples/alert-dialog-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3531,7 +3527,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "aspect-ratio-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/aspect-ratio-example"
+        "@/registry/bases/aria/examples/aspect-ratio-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3541,9 +3537,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "avatar-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/avatar-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/avatar-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3552,9 +3546,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "badge-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/badge-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/badge-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3564,7 +3556,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "breadcrumb-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/breadcrumb-example"
+        "@/registry/bases/aria/examples/breadcrumb-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3574,9 +3566,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "button-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/button-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/button-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3586,7 +3576,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "button-group-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/button-group-example"
+        "@/registry/bases/aria/examples/button-group-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3597,7 +3587,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "calendar-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/calendar-example"
+        "@/registry/bases/aria/examples/calendar-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3607,9 +3597,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "card-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/card-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/card-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3619,7 +3607,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "carousel-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/carousel-example"
+        "@/registry/bases/aria/examples/carousel-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3629,9 +3617,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "chart-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/chart-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/chart-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3641,7 +3627,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "checkbox-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/checkbox-example"
+        "@/registry/bases/aria/examples/checkbox-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3652,7 +3638,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "collapsible-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/collapsible-example"
+        "@/registry/bases/aria/examples/collapsible-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3663,7 +3649,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "combobox-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/combobox-example"
+        "@/registry/bases/aria/examples/combobox-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3673,9 +3659,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "command-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/command-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/command-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3685,7 +3669,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "context-menu-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/context-menu-example"
+        "@/registry/bases/aria/examples/context-menu-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3695,9 +3679,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "dialog-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/dialog-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/dialog-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3706,9 +3688,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "drawer-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/drawer-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/drawer-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3718,7 +3698,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "dropdown-menu-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/dropdown-menu-example"
+        "@/registry/bases/aria/examples/dropdown-menu-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3728,7 +3708,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     demo: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/examples/demo")
+      const mod = await import("@/registry/bases/aria/examples/demo")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3737,9 +3717,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "empty-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/empty-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/empty-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3748,9 +3726,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "field-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/field-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/field-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3759,9 +3735,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "input-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/input-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/input-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3771,7 +3745,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "input-group-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/input-group-example"
+        "@/registry/bases/aria/examples/input-group-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3782,7 +3756,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "input-otp-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/input-otp-example"
+        "@/registry/bases/aria/examples/input-otp-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3792,9 +3766,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "item-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/item-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/item-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3803,9 +3775,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "kbd-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/kbd-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/kbd-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3814,9 +3784,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "label-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/label-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/label-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3826,7 +3794,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "native-select-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/native-select-example"
+        "@/registry/bases/aria/examples/native-select-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3837,7 +3805,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "pagination-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/pagination-example"
+        "@/registry/bases/aria/examples/pagination-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3847,9 +3815,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "popover-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/popover-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/popover-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3859,7 +3825,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "progress-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/progress-example"
+        "@/registry/bases/aria/examples/progress-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3870,7 +3836,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "radio-group-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/radio-group-example"
+        "@/registry/bases/aria/examples/radio-group-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3881,7 +3847,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "resizable-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/resizable-example"
+        "@/registry/bases/aria/examples/resizable-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3892,7 +3858,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "scroll-area-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/scroll-area-example"
+        "@/registry/bases/aria/examples/scroll-area-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3902,9 +3868,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "select-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/select-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/select-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3914,7 +3878,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "separator-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/separator-example"
+        "@/registry/bases/aria/examples/separator-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3924,9 +3888,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sheet-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/sheet-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/sheet-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3935,9 +3897,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sidebar-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/sidebar-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/sidebar-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3947,7 +3907,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "sidebar-icon-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/sidebar-icon-example"
+        "@/registry/bases/aria/examples/sidebar-icon-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3958,7 +3918,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "sidebar-inset-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/sidebar-inset-example"
+        "@/registry/bases/aria/examples/sidebar-inset-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3969,7 +3929,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "sidebar-floating-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/sidebar-floating-example"
+        "@/registry/bases/aria/examples/sidebar-floating-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3980,7 +3940,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "skeleton-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/skeleton-example"
+        "@/registry/bases/aria/examples/skeleton-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -3990,9 +3950,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "slider-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/slider-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/slider-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4001,9 +3959,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sonner-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/sonner-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/sonner-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4012,9 +3968,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "spinner-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/spinner-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/spinner-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4023,9 +3977,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "switch-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/switch-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/switch-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4034,9 +3986,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "table-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/table-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/table-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4045,9 +3995,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "tabs-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/tabs-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/tabs-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4057,7 +4005,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "textarea-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/textarea-example"
+        "@/registry/bases/aria/examples/textarea-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -4067,9 +4015,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "toggle-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/toggle-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/toggle-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4079,7 +4025,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "toggle-group-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/toggle-group-example"
+        "@/registry/bases/aria/examples/toggle-group-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -4089,9 +4035,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "tooltip-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/tooltip-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/tooltip-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4101,7 +4045,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "component-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/component-example"
+        "@/registry/bases/aria/examples/component-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -4112,7 +4056,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "attachment-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/attachment-example"
+        "@/registry/bases/aria/examples/attachment-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -4122,9 +4066,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "bubble-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/bubble-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/bubble-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4134,7 +4076,7 @@ export const Components: Record<string, Record<string, any>> = {
     }),
     "message-scroller-example": React.lazy(async () => {
       const mod = await import(
-        "@/registry/bases/react-aria/examples/message-scroller-example"
+        "@/registry/bases/aria/examples/message-scroller-example"
       )
       const exportName =
         Object.keys(mod).find(
@@ -4144,9 +4086,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "marker-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/marker-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/marker-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4155,9 +4095,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "message-example": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/examples/message-example"
-      )
+      const mod = await import("@/registry/bases/aria/examples/message-example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4166,7 +4104,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     utils: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/lib/utils")
+      const mod = await import("@/registry/bases/aria/lib/utils")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4175,7 +4113,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     example: React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/components/example")
+      const mod = await import("@/registry/bases/aria/components/example")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4184,9 +4122,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     preview: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/preview/index"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/preview/index")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4195,9 +4131,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "preview-02": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/preview-02/index"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/preview-02/index")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4206,9 +4140,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "preview-03": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/preview-03/index"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/preview-03/index")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4217,9 +4149,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "login-01": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/login-01/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/login-01/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4228,9 +4158,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "login-02": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/login-02/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/login-02/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4239,9 +4167,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "login-03": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/login-03/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/login-03/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4250,9 +4176,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "login-04": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/login-04/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/login-04/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4261,9 +4185,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "login-05": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/login-05/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/login-05/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4272,9 +4194,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "signup-01": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/signup-01/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/signup-01/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4283,9 +4203,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "signup-02": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/signup-02/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/signup-02/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4294,9 +4212,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "signup-03": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/signup-03/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/signup-03/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4305,9 +4221,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "signup-04": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/signup-04/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/signup-04/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4316,9 +4230,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "signup-05": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/signup-05/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/signup-05/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4327,9 +4239,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "dashboard-01": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/dashboard-01/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/dashboard-01/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4338,9 +4248,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sidebar-01": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/sidebar-01/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/sidebar-01/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4349,9 +4257,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sidebar-02": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/sidebar-02/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/sidebar-02/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4360,9 +4266,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sidebar-03": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/sidebar-03/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/sidebar-03/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4371,9 +4275,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sidebar-04": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/sidebar-04/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/sidebar-04/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4382,9 +4284,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sidebar-05": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/sidebar-05/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/sidebar-05/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4393,9 +4293,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sidebar-06": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/sidebar-06/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/sidebar-06/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4404,9 +4302,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sidebar-07": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/sidebar-07/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/sidebar-07/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4415,9 +4311,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sidebar-08": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/sidebar-08/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/sidebar-08/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4426,9 +4320,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sidebar-09": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/sidebar-09/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/sidebar-09/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4437,9 +4329,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sidebar-10": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/sidebar-10/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/sidebar-10/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4448,9 +4338,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sidebar-11": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/sidebar-11/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/sidebar-11/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4459,9 +4347,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sidebar-12": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/sidebar-12/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/sidebar-12/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4470,9 +4356,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sidebar-13": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/sidebar-13/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/sidebar-13/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4481,9 +4365,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sidebar-14": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/sidebar-14/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/sidebar-14/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4492,9 +4374,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sidebar-15": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/sidebar-15/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/sidebar-15/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4503,9 +4383,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "sidebar-16": React.lazy(async () => {
-      const mod = await import(
-        "@/registry/bases/react-aria/blocks/sidebar-16/page"
-      )
+      const mod = await import("@/registry/bases/aria/blocks/sidebar-16/page")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4514,7 +4392,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "use-mobile": React.lazy(async () => {
-      const mod = await import("@/registry/bases/react-aria/hooks/use-mobile")
+      const mod = await import("@/registry/bases/aria/hooks/use-mobile")
       const exportName =
         Object.keys(mod).find(
           (key) =>

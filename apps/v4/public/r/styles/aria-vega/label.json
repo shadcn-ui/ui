@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label",
+  "files": [
+    {
+      "path": "registry/aria-vega/ui/label.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport {\n  LabelContext,\n  Label as LabelPrimitive,\n  type LabelProps,\n} from \"react-aria-components\"\n\nimport { cn } from \"@/registry/aria-vega/lib/utils\"\n\nfunction Label({ className, htmlFor, slot, ...props }: LabelProps) {\n  const label = (\n    <LabelPrimitive\n      data-slot=\"label\"\n      className={cn(\n        \"flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 peer-data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n      htmlFor={htmlFor}\n      slot={slot}\n    />\n  )\n\n  if (htmlFor && slot === undefined) {\n    return <LabelContext.Provider value={null}>{label}</LabelContext.Provider>\n  }\n\n  return label\n}\n\nexport { Label }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

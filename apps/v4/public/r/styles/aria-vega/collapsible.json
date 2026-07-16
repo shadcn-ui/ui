@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "files": [
+    {
+      "path": "registry/aria-vega/ui/collapsible.tsx",
+      "content": "\"use client\"\n\nimport {\n  DisclosurePanel as CollapsibleContentPrimitive,\n  Disclosure as CollapsiblePrimitive,\n  Button as CollapsibleTriggerPrimitive,\n  type ButtonProps,\n  type DisclosurePanelProps,\n  type DisclosureProps,\n} from \"react-aria-components\"\n\nfunction Collapsible({ ...props }: DisclosureProps) {\n  return <CollapsiblePrimitive data-slot=\"collapsible\" {...props} />\n}\n\nfunction CollapsibleTrigger({ ...props }: ButtonProps) {\n  return (\n    <CollapsibleTriggerPrimitive\n      slot=\"trigger\"\n      data-slot=\"collapsible-trigger\"\n      {...props}\n    />\n  )\n}\n\nfunction CollapsibleContent({ ...props }: DisclosurePanelProps) {\n  return (\n    <CollapsibleContentPrimitive data-slot=\"collapsible-content\" {...props} />\n  )\n}\n\nexport { Collapsible, CollapsibleTrigger, CollapsibleContent }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

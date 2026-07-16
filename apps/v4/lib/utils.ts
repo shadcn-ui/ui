@@ -9,7 +9,7 @@ export function absoluteUrl(path: string) {
   return `${process.env.NEXT_PUBLIC_APP_URL}${path}`
 }
 
-// Copied from react-aria base so that @/lib/utils works within this repo.
+// Copied from aria base so that @/lib/utils works within this repo.
 export type PlacementSide =
   | "top"
   | "right"

@@ -10,7 +10,13 @@
 //   4. Stay under 53 bits total (JS safe integer limit).
 
 // Value arrays — order matters for backward compat. Never reorder, only append.
-export const PRESET_BASES = ["radix", "base"] as const
+export const PRESET_BASES = ["radix", "base", "aria"] as const
+
+export type PresetBase = (typeof PRESET_BASES)[number]
+
+export function isPresetBase(value: unknown): value is PresetBase {
+  return PRESET_BASES.includes(value as PresetBase)
+}
 
 export const PRESET_STYLES = [
   "nova",

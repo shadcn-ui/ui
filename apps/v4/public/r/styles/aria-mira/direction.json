@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "direction",
+  "files": [
+    {
+      "path": "registry/aria-mira/ui/direction.tsx",
+      "content": "\"use client\"\n\nimport type React from \"react\"\nimport { I18nProvider, useLocale } from \"react-aria-components\"\n\nexport { I18nProvider, useLocale } from \"react-aria-components\"\n\nexport function DirectionProvider(\n  props: React.ComponentProps<typeof I18nProvider> & {\n    direction?: \"ltr\" | \"rtl\"\n  }\n) {\n  // For compatibility with Radix / Base UI, if only a `direction` is provided and not a `locale`,\n  // create a locale string that forces the direction by setting the script to arabic or latin.\n  const { locale: currentLocale } = useLocale()\n  let locale = props.locale\n  if (!locale && props.direction) {\n    locale = new Intl.Locale(currentLocale, {\n      script: props.direction === \"rtl\" ? \"Arab\" : \"Latn\",\n    }).toString()\n  }\n\n  return <I18nProvider {...props} locale={locale} />\n}\n\nexport function useDirection(): \"ltr\" | \"rtl\" {\n  const { direction } = useLocale()\n  return direction\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

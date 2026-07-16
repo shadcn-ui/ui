@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "files": [
+    {
+      "path": "registry/aria-luma/ui/textarea.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport {\n  composeRenderProps,\n  TextArea as TextareaPrimitive,\n} from \"react-aria-components\"\n\nimport { cn } from \"@/registry/aria-luma/lib/utils\"\n\nfunction Textarea({\n  className,\n  ...props\n}: React.ComponentProps<typeof TextareaPrimitive>) {\n  return (\n    <TextareaPrimitive\n      data-slot=\"textarea\"\n      className={composeRenderProps(className, (className) =>\n        cn(\n          \"cn-textarea flex field-sizing-content min-h-16 w-full outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50\",\n          className\n        )\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Textarea }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

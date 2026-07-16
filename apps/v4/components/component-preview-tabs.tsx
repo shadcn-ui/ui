@@ -47,7 +47,7 @@ export function ComponentPreviewTabs({
   styleName?: string
 }) {
   const [isMobileCodeVisible, setIsMobileCodeVisible] = React.useState(false)
-  const base = styleName?.match(/^(base|radix|react-aria)-/)?.[1] || "radix"
+  const base = styleName?.match(/^(base|radix|aria)-/)?.[1] || "radix"
 
   return (
     <div
@@ -265,7 +265,7 @@ function DirectionProviderWrapper({
     )
   }
 
-  if (base === "react-aria") {
+  if (base === "aria") {
     return (
       <I18nProvider locale={explicitDir === "ltr" ? "en" : "ar"}>
         {children}

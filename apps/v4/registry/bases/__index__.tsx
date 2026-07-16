@@ -7300,7 +7300,7 @@ export const Index: Record<string, Record<string, any>> = {
       meta: undefined,
     },
   },
-  "react-aria": {
+  aria: {
     accordion: {
       name: "accordion",
       title: "undefined",
@@ -7309,7 +7309,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/accordion.tsx",
+          path: "registry/bases/aria/ui/accordion.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7325,7 +7325,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/alert.tsx",
+          path: "registry/bases/aria/ui/alert.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7341,7 +7341,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button"],
       files: [
         {
-          path: "registry/bases/react-aria/ui/alert-dialog.tsx",
+          path: "registry/bases/aria/ui/alert-dialog.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7357,7 +7357,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/aspect-ratio.tsx",
+          path: "registry/bases/aria/ui/aspect-ratio.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7373,7 +7373,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/avatar.tsx",
+          path: "registry/bases/aria/ui/avatar.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7389,7 +7389,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/badge.tsx",
+          path: "registry/bases/aria/ui/badge.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7405,7 +7405,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/breadcrumb.tsx",
+          path: "registry/bases/aria/ui/breadcrumb.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7421,7 +7421,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/button.tsx",
+          path: "registry/bases/aria/ui/button.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7437,7 +7437,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["separator"],
       files: [
         {
-          path: "registry/bases/react-aria/ui/button-group.tsx",
+          path: "registry/bases/aria/ui/button-group.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7453,7 +7453,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button"],
       files: [
         {
-          path: "registry/bases/react-aria/ui/calendar.tsx",
+          path: "registry/bases/aria/ui/calendar.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7469,7 +7469,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/card.tsx",
+          path: "registry/bases/aria/ui/card.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7485,7 +7485,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button"],
       files: [
         {
-          path: "registry/bases/react-aria/ui/carousel.tsx",
+          path: "registry/bases/aria/ui/carousel.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7501,7 +7501,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["card"],
       files: [
         {
-          path: "registry/bases/react-aria/ui/chart.tsx",
+          path: "registry/bases/aria/ui/chart.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7517,7 +7517,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/checkbox.tsx",
+          path: "registry/bases/aria/ui/checkbox.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7533,7 +7533,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/collapsible.tsx",
+          path: "registry/bases/aria/ui/collapsible.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7549,7 +7549,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "input-group"],
       files: [
         {
-          path: "registry/bases/react-aria/ui/combobox.tsx",
+          path: "registry/bases/aria/ui/combobox.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7565,7 +7565,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["dialog", "input-group"],
       files: [
         {
-          path: "registry/bases/react-aria/ui/command.tsx",
+          path: "registry/bases/aria/ui/command.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7581,7 +7581,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["dropdown-menu"],
       files: [
         {
-          path: "registry/bases/react-aria/ui/context-menu.tsx",
+          path: "registry/bases/aria/ui/context-menu.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7597,7 +7597,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button"],
       files: [
         {
-          path: "registry/bases/react-aria/ui/dialog.tsx",
+          path: "registry/bases/aria/ui/dialog.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7613,7 +7613,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/drawer.tsx",
+          path: "registry/bases/aria/ui/drawer.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7629,7 +7629,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/dropdown-menu.tsx",
+          path: "registry/bases/aria/ui/dropdown-menu.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7645,7 +7645,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/empty.tsx",
+          path: "registry/bases/aria/ui/empty.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7661,7 +7661,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["label", "separator"],
       files: [
         {
-          path: "registry/bases/react-aria/ui/field.tsx",
+          path: "registry/bases/aria/ui/field.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7677,7 +7677,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/input.tsx",
+          path: "registry/bases/aria/ui/input.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7693,7 +7693,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "input", "textarea"],
       files: [
         {
-          path: "registry/bases/react-aria/ui/input-group.tsx",
+          path: "registry/bases/aria/ui/input-group.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7709,7 +7709,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/input-otp.tsx",
+          path: "registry/bases/aria/ui/input-otp.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7725,7 +7725,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["separator"],
       files: [
         {
-          path: "registry/bases/react-aria/ui/item.tsx",
+          path: "registry/bases/aria/ui/item.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7741,7 +7741,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/label.tsx",
+          path: "registry/bases/aria/ui/label.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7757,7 +7757,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button"],
       files: [
         {
-          path: "registry/bases/react-aria/ui/pagination.tsx",
+          path: "registry/bases/aria/ui/pagination.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7773,7 +7773,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/popover.tsx",
+          path: "registry/bases/aria/ui/popover.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7789,7 +7789,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/progress.tsx",
+          path: "registry/bases/aria/ui/progress.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7805,7 +7805,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/radio-group.tsx",
+          path: "registry/bases/aria/ui/radio-group.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7821,7 +7821,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/resizable.tsx",
+          path: "registry/bases/aria/ui/resizable.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7837,7 +7837,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/scroll-area.tsx",
+          path: "registry/bases/aria/ui/scroll-area.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7853,7 +7853,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/select.tsx",
+          path: "registry/bases/aria/ui/select.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7869,7 +7869,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/separator.tsx",
+          path: "registry/bases/aria/ui/separator.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7885,7 +7885,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button"],
       files: [
         {
-          path: "registry/bases/react-aria/ui/sheet.tsx",
+          path: "registry/bases/aria/ui/sheet.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7909,7 +7909,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/ui/sidebar.tsx",
+          path: "registry/bases/aria/ui/sidebar.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7925,7 +7925,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/skeleton.tsx",
+          path: "registry/bases/aria/ui/skeleton.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7941,7 +7941,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/slider.tsx",
+          path: "registry/bases/aria/ui/slider.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7957,7 +7957,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/sonner.tsx",
+          path: "registry/bases/aria/ui/sonner.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7973,7 +7973,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/spinner.tsx",
+          path: "registry/bases/aria/ui/spinner.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -7989,7 +7989,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/switch.tsx",
+          path: "registry/bases/aria/ui/switch.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -8005,7 +8005,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/table.tsx",
+          path: "registry/bases/aria/ui/table.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -8021,7 +8021,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/tabs.tsx",
+          path: "registry/bases/aria/ui/tabs.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -8037,7 +8037,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/textarea.tsx",
+          path: "registry/bases/aria/ui/textarea.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -8053,7 +8053,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/toggle.tsx",
+          path: "registry/bases/aria/ui/toggle.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -8069,7 +8069,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["toggle"],
       files: [
         {
-          path: "registry/bases/react-aria/ui/toggle-group.tsx",
+          path: "registry/bases/aria/ui/toggle-group.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -8085,7 +8085,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/tooltip.tsx",
+          path: "registry/bases/aria/ui/tooltip.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -8101,7 +8101,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/kbd.tsx",
+          path: "registry/bases/aria/ui/kbd.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -8117,7 +8117,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/native-select.tsx",
+          path: "registry/bases/aria/ui/native-select.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -8133,7 +8133,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/direction.tsx",
+          path: "registry/bases/aria/ui/direction.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -8149,7 +8149,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button"],
       files: [
         {
-          path: "registry/bases/react-aria/ui/attachment.tsx",
+          path: "registry/bases/aria/ui/attachment.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -8165,7 +8165,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/bubble.tsx",
+          path: "registry/bases/aria/ui/bubble.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -8181,7 +8181,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button"],
       files: [
         {
-          path: "registry/bases/react-aria/ui/message-scroller.tsx",
+          path: "registry/bases/aria/ui/message-scroller.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -8197,7 +8197,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/marker.tsx",
+          path: "registry/bases/aria/ui/marker.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -8213,7 +8213,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/ui/message.tsx",
+          path: "registry/bases/aria/ui/message.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -8229,7 +8229,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["accordion", "button", "card", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/accordion-example.tsx",
+          path: "registry/bases/aria/examples/accordion-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8245,7 +8245,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["alert", "badge", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/alert-example.tsx",
+          path: "registry/bases/aria/examples/alert-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8261,7 +8261,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["alert-dialog", "button", "dialog", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/alert-dialog-example.tsx",
+          path: "registry/bases/aria/examples/alert-dialog-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8277,7 +8277,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["aspect-ratio", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/aspect-ratio-example.tsx",
+          path: "registry/bases/aria/examples/aspect-ratio-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8293,7 +8293,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["avatar", "button", "empty", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/avatar-example.tsx",
+          path: "registry/bases/aria/examples/avatar-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8309,7 +8309,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["badge", "spinner", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/badge-example.tsx",
+          path: "registry/bases/aria/examples/badge-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8325,7 +8325,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["breadcrumb", "dropdown-menu", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/breadcrumb-example.tsx",
+          path: "registry/bases/aria/examples/breadcrumb-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8341,7 +8341,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/button-example.tsx",
+          path: "registry/bases/aria/examples/button-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8369,7 +8369,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/button-group-example.tsx",
+          path: "registry/bases/aria/examples/button-group-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8394,7 +8394,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/calendar-example.tsx",
+          path: "registry/bases/aria/examples/calendar-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8417,7 +8417,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/card-example.tsx",
+          path: "registry/bases/aria/examples/card-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8433,7 +8433,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["card", "carousel", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/carousel-example.tsx",
+          path: "registry/bases/aria/examples/carousel-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8449,7 +8449,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["chart", "card", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/chart-example.tsx",
+          path: "registry/bases/aria/examples/chart-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8465,7 +8465,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["checkbox", "field", "table", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/checkbox-example.tsx",
+          path: "registry/bases/aria/examples/checkbox-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8489,7 +8489,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/collapsible-example.tsx",
+          path: "registry/bases/aria/examples/collapsible-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8516,7 +8516,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/combobox-example.tsx",
+          path: "registry/bases/aria/examples/combobox-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8532,7 +8532,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "command", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/command-example.tsx",
+          path: "registry/bases/aria/examples/command-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8548,7 +8548,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "context-menu", "dialog", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/context-menu-example.tsx",
+          path: "registry/bases/aria/examples/context-menu-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8579,7 +8579,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/dialog-example.tsx",
+          path: "registry/bases/aria/examples/dialog-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8595,7 +8595,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["drawer", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/drawer-example.tsx",
+          path: "registry/bases/aria/examples/drawer-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8617,7 +8617,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/dropdown-menu-example.tsx",
+          path: "registry/bases/aria/examples/dropdown-menu-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8648,7 +8648,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/demo.tsx",
+          path: "registry/bases/aria/examples/demo.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8670,7 +8670,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/empty-example.tsx",
+          path: "registry/bases/aria/examples/empty-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8699,7 +8699,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/field-example.tsx",
+          path: "registry/bases/aria/examples/field-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8722,7 +8722,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/input-example.tsx",
+          path: "registry/bases/aria/examples/input-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8752,7 +8752,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/input-group-example.tsx",
+          path: "registry/bases/aria/examples/input-group-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8768,7 +8768,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "card", "field", "input-otp", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/input-otp-example.tsx",
+          path: "registry/bases/aria/examples/input-otp-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8784,7 +8784,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "item", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/item-example.tsx",
+          path: "registry/bases/aria/examples/item-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8806,7 +8806,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/kbd-example.tsx",
+          path: "registry/bases/aria/examples/kbd-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8829,7 +8829,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/label-example.tsx",
+          path: "registry/bases/aria/examples/label-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8845,7 +8845,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["field", "native-select", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/native-select-example.tsx",
+          path: "registry/bases/aria/examples/native-select-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8861,7 +8861,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["field", "pagination", "select", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/pagination-example.tsx",
+          path: "registry/bases/aria/examples/pagination-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8884,7 +8884,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/popover-example.tsx",
+          path: "registry/bases/aria/examples/popover-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8900,7 +8900,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["field", "item", "progress", "slider", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/progress-example.tsx",
+          path: "registry/bases/aria/examples/progress-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8916,7 +8916,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["field", "radio-group", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/radio-group-example.tsx",
+          path: "registry/bases/aria/examples/radio-group-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8932,7 +8932,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["resizable", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/resizable-example.tsx",
+          path: "registry/bases/aria/examples/resizable-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8948,7 +8948,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["scroll-area", "separator", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/scroll-area-example.tsx",
+          path: "registry/bases/aria/examples/scroll-area-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8973,7 +8973,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/select-example.tsx",
+          path: "registry/bases/aria/examples/select-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8989,7 +8989,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["separator", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/separator-example.tsx",
+          path: "registry/bases/aria/examples/separator-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9005,7 +9005,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "field", "input", "sheet", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/sheet-example.tsx",
+          path: "registry/bases/aria/examples/sheet-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9028,7 +9028,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/sidebar-example.tsx",
+          path: "registry/bases/aria/examples/sidebar-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9052,7 +9052,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/sidebar-icon-example.tsx",
+          path: "registry/bases/aria/examples/sidebar-icon-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9068,7 +9068,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["collapsible", "sidebar", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/sidebar-inset-example.tsx",
+          path: "registry/bases/aria/examples/sidebar-inset-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9092,7 +9092,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/sidebar-floating-example.tsx",
+          path: "registry/bases/aria/examples/sidebar-floating-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9108,7 +9108,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["skeleton", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/skeleton-example.tsx",
+          path: "registry/bases/aria/examples/skeleton-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9124,7 +9124,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["label", "slider", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/slider-example.tsx",
+          path: "registry/bases/aria/examples/slider-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9140,7 +9140,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["sonner", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/sonner-example.tsx",
+          path: "registry/bases/aria/examples/sonner-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9164,7 +9164,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/spinner-example.tsx",
+          path: "registry/bases/aria/examples/spinner-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9180,7 +9180,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["field", "label", "switch", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/switch-example.tsx",
+          path: "registry/bases/aria/examples/switch-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9203,7 +9203,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/table-example.tsx",
+          path: "registry/bases/aria/examples/table-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9219,7 +9219,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "dropdown-menu", "tabs", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/tabs-example.tsx",
+          path: "registry/bases/aria/examples/tabs-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9235,7 +9235,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["field", "textarea", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/textarea-example.tsx",
+          path: "registry/bases/aria/examples/textarea-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9251,7 +9251,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["toggle", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/toggle-example.tsx",
+          path: "registry/bases/aria/examples/toggle-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9267,7 +9267,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["input", "select", "toggle-group", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/toggle-group-example.tsx",
+          path: "registry/bases/aria/examples/toggle-group-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9283,7 +9283,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "kbd", "tooltip", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/tooltip-example.tsx",
+          path: "registry/bases/aria/examples/tooltip-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9311,7 +9311,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/component-example.tsx",
+          path: "registry/bases/aria/examples/component-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9327,7 +9327,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["attachment"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/attachment-example.tsx",
+          path: "registry/bases/aria/examples/attachment-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9343,7 +9343,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["bubble", "button", "collapsible", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/bubble-example.tsx",
+          path: "registry/bases/aria/examples/bubble-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9370,7 +9370,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/message-scroller-example.tsx",
+          path: "registry/bases/aria/examples/message-scroller-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9393,7 +9393,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/examples/marker-example.tsx",
+          path: "registry/bases/aria/examples/marker-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9409,7 +9409,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["bubble", "message", "button", "example"],
       files: [
         {
-          path: "registry/bases/react-aria/examples/message-example.tsx",
+          path: "registry/bases/aria/examples/message-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9425,7 +9425,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/lib/utils.ts",
+          path: "registry/bases/aria/lib/utils.ts",
           type: "registry:lib",
           target: "",
         },
@@ -9441,7 +9441,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/components/example.tsx",
+          path: "registry/bases/aria/components/example.tsx",
           type: "registry:component",
           target: "",
         },
@@ -9485,7 +9485,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/preview/index.tsx",
+          path: "registry/bases/aria/blocks/preview/index.tsx",
           type: "registry:block",
           target: "",
         },
@@ -9532,7 +9532,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/preview-02/index.tsx",
+          path: "registry/bases/aria/blocks/preview-02/index.tsx",
           type: "registry:block",
           target: "",
         },
@@ -9548,7 +9548,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: [],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/preview-03/index.tsx",
+          path: "registry/bases/aria/blocks/preview-03/index.tsx",
           type: "registry:block",
           target: "",
         },
@@ -9564,12 +9564,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/login-01/page.tsx",
+          path: "registry/bases/aria/blocks/login-01/page.tsx",
           type: "registry:page",
           target: "app/login/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/login-01/components/login-form.tsx",
+          path: "registry/bases/aria/blocks/login-01/components/login-form.tsx",
           type: "registry:component",
           target: "",
         },
@@ -9585,12 +9585,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "input", "label", "field"],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/login-02/page.tsx",
+          path: "registry/bases/aria/blocks/login-02/page.tsx",
           type: "registry:page",
           target: "app/login/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/login-02/components/login-form.tsx",
+          path: "registry/bases/aria/blocks/login-02/components/login-form.tsx",
           type: "registry:component",
           target: "",
         },
@@ -9606,12 +9606,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/login-03/page.tsx",
+          path: "registry/bases/aria/blocks/login-03/page.tsx",
           type: "registry:page",
           target: "app/login/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/login-03/components/login-form.tsx",
+          path: "registry/bases/aria/blocks/login-03/components/login-form.tsx",
           type: "registry:component",
           target: "",
         },
@@ -9627,12 +9627,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/login-04/page.tsx",
+          path: "registry/bases/aria/blocks/login-04/page.tsx",
           type: "registry:page",
           target: "app/login/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/login-04/components/login-form.tsx",
+          path: "registry/bases/aria/blocks/login-04/components/login-form.tsx",
           type: "registry:component",
           target: "",
         },
@@ -9648,12 +9648,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "input", "label", "field"],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/login-05/page.tsx",
+          path: "registry/bases/aria/blocks/login-05/page.tsx",
           type: "registry:page",
           target: "app/login/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/login-05/components/login-form.tsx",
+          path: "registry/bases/aria/blocks/login-05/components/login-form.tsx",
           type: "registry:component",
           target: "",
         },
@@ -9669,12 +9669,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "card", "input", "label"],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/signup-01/page.tsx",
+          path: "registry/bases/aria/blocks/signup-01/page.tsx",
           type: "registry:page",
           target: "app/signup/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/signup-01/components/signup-form.tsx",
+          path: "registry/bases/aria/blocks/signup-01/components/signup-form.tsx",
           type: "registry:component",
           target: "",
         },
@@ -9690,12 +9690,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "input", "label", "field"],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/signup-02/page.tsx",
+          path: "registry/bases/aria/blocks/signup-02/page.tsx",
           type: "registry:page",
           target: "app/signup/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/signup-02/components/signup-form.tsx",
+          path: "registry/bases/aria/blocks/signup-02/components/signup-form.tsx",
           type: "registry:component",
           target: "",
         },
@@ -9711,12 +9711,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/signup-03/page.tsx",
+          path: "registry/bases/aria/blocks/signup-03/page.tsx",
           type: "registry:page",
           target: "app/signup/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/signup-03/components/signup-form.tsx",
+          path: "registry/bases/aria/blocks/signup-03/components/signup-form.tsx",
           type: "registry:component",
           target: "",
         },
@@ -9732,12 +9732,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/signup-04/page.tsx",
+          path: "registry/bases/aria/blocks/signup-04/page.tsx",
           type: "registry:page",
           target: "app/signup/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/signup-04/components/signup-form.tsx",
+          path: "registry/bases/aria/blocks/signup-04/components/signup-form.tsx",
           type: "registry:component",
           target: "",
         },
@@ -9753,12 +9753,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "input", "label"],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/signup-05/page.tsx",
+          path: "registry/bases/aria/blocks/signup-05/page.tsx",
           type: "registry:page",
           target: "app/signup/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/signup-05/components/signup-form.tsx",
+          path: "registry/bases/aria/blocks/signup-05/components/signup-form.tsx",
           type: "registry:component",
           target: "",
         },
@@ -9794,57 +9794,57 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/dashboard-01/page.tsx",
+          path: "registry/bases/aria/blocks/dashboard-01/page.tsx",
           type: "registry:page",
           target: "app/dashboard/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/dashboard-01/data.json",
+          path: "registry/bases/aria/blocks/dashboard-01/data.json",
           type: "registry:file",
           target: "app/dashboard/data.json",
         },
         {
-          path: "registry/bases/react-aria/blocks/dashboard-01/components/app-sidebar.tsx",
+          path: "registry/bases/aria/blocks/dashboard-01/components/app-sidebar.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/dashboard-01/components/chart-area-interactive.tsx",
+          path: "registry/bases/aria/blocks/dashboard-01/components/chart-area-interactive.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/dashboard-01/components/data-table.tsx",
+          path: "registry/bases/aria/blocks/dashboard-01/components/data-table.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/dashboard-01/components/nav-documents.tsx",
+          path: "registry/bases/aria/blocks/dashboard-01/components/nav-documents.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/dashboard-01/components/nav-main.tsx",
+          path: "registry/bases/aria/blocks/dashboard-01/components/nav-main.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/dashboard-01/components/nav-secondary.tsx",
+          path: "registry/bases/aria/blocks/dashboard-01/components/nav-secondary.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/dashboard-01/components/nav-user.tsx",
+          path: "registry/bases/aria/blocks/dashboard-01/components/nav-user.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/dashboard-01/components/section-cards.tsx",
+          path: "registry/bases/aria/blocks/dashboard-01/components/section-cards.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/dashboard-01/components/site-header.tsx",
+          path: "registry/bases/aria/blocks/dashboard-01/components/site-header.tsx",
           type: "registry:component",
           target: "",
         },
@@ -9866,22 +9866,22 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/sidebar-01/page.tsx",
+          path: "registry/bases/aria/blocks/sidebar-01/page.tsx",
           type: "registry:page",
           target: "app/dashboard/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-01/components/app-sidebar.tsx",
+          path: "registry/bases/aria/blocks/sidebar-01/components/app-sidebar.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-01/components/search-form.tsx",
+          path: "registry/bases/aria/blocks/sidebar-01/components/search-form.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-01/components/version-switcher.tsx",
+          path: "registry/bases/aria/blocks/sidebar-01/components/version-switcher.tsx",
           type: "registry:component",
           target: "",
         },
@@ -9903,22 +9903,22 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/sidebar-02/page.tsx",
+          path: "registry/bases/aria/blocks/sidebar-02/page.tsx",
           type: "registry:page",
           target: "app/dashboard/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-02/components/app-sidebar.tsx",
+          path: "registry/bases/aria/blocks/sidebar-02/components/app-sidebar.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-02/components/search-form.tsx",
+          path: "registry/bases/aria/blocks/sidebar-02/components/search-form.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-02/components/version-switcher.tsx",
+          path: "registry/bases/aria/blocks/sidebar-02/components/version-switcher.tsx",
           type: "registry:component",
           target: "",
         },
@@ -9934,12 +9934,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["sidebar", "breadcrumb"],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/sidebar-03/page.tsx",
+          path: "registry/bases/aria/blocks/sidebar-03/page.tsx",
           type: "registry:page",
           target: "app/dashboard/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-03/components/app-sidebar.tsx",
+          path: "registry/bases/aria/blocks/sidebar-03/components/app-sidebar.tsx",
           type: "registry:component",
           target: "",
         },
@@ -9955,12 +9955,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["sidebar", "breadcrumb", "separator"],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/sidebar-04/page.tsx",
+          path: "registry/bases/aria/blocks/sidebar-04/page.tsx",
           type: "registry:page",
           target: "app/dashboard/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-04/components/app-sidebar.tsx",
+          path: "registry/bases/aria/blocks/sidebar-04/components/app-sidebar.tsx",
           type: "registry:component",
           target: "",
         },
@@ -9982,17 +9982,17 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/sidebar-05/page.tsx",
+          path: "registry/bases/aria/blocks/sidebar-05/page.tsx",
           type: "registry:page",
           target: "app/dashboard/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-05/components/app-sidebar.tsx",
+          path: "registry/bases/aria/blocks/sidebar-05/components/app-sidebar.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-05/components/search-form.tsx",
+          path: "registry/bases/aria/blocks/sidebar-05/components/search-form.tsx",
           type: "registry:component",
           target: "",
         },
@@ -10014,22 +10014,22 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/sidebar-06/page.tsx",
+          path: "registry/bases/aria/blocks/sidebar-06/page.tsx",
           type: "registry:page",
           target: "app/dashboard/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-06/components/app-sidebar.tsx",
+          path: "registry/bases/aria/blocks/sidebar-06/components/app-sidebar.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-06/components/nav-main.tsx",
+          path: "registry/bases/aria/blocks/sidebar-06/components/nav-main.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-06/components/sidebar-opt-in-form.tsx",
+          path: "registry/bases/aria/blocks/sidebar-06/components/sidebar-opt-in-form.tsx",
           type: "registry:component",
           target: "",
         },
@@ -10052,32 +10052,32 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/sidebar-07/page.tsx",
+          path: "registry/bases/aria/blocks/sidebar-07/page.tsx",
           type: "registry:page",
           target: "app/dashboard/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-07/components/app-sidebar.tsx",
+          path: "registry/bases/aria/blocks/sidebar-07/components/app-sidebar.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-07/components/nav-main.tsx",
+          path: "registry/bases/aria/blocks/sidebar-07/components/nav-main.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-07/components/nav-projects.tsx",
+          path: "registry/bases/aria/blocks/sidebar-07/components/nav-projects.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-07/components/nav-user.tsx",
+          path: "registry/bases/aria/blocks/sidebar-07/components/nav-user.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-07/components/team-switcher.tsx",
+          path: "registry/bases/aria/blocks/sidebar-07/components/team-switcher.tsx",
           type: "registry:component",
           target: "",
         },
@@ -10100,32 +10100,32 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/sidebar-08/page.tsx",
+          path: "registry/bases/aria/blocks/sidebar-08/page.tsx",
           type: "registry:page",
           target: "app/dashboard/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-08/components/app-sidebar.tsx",
+          path: "registry/bases/aria/blocks/sidebar-08/components/app-sidebar.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-08/components/nav-main.tsx",
+          path: "registry/bases/aria/blocks/sidebar-08/components/nav-main.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-08/components/nav-projects.tsx",
+          path: "registry/bases/aria/blocks/sidebar-08/components/nav-projects.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-08/components/nav-secondary.tsx",
+          path: "registry/bases/aria/blocks/sidebar-08/components/nav-secondary.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-08/components/nav-user.tsx",
+          path: "registry/bases/aria/blocks/sidebar-08/components/nav-user.tsx",
           type: "registry:component",
           target: "",
         },
@@ -10150,17 +10150,17 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/sidebar-09/page.tsx",
+          path: "registry/bases/aria/blocks/sidebar-09/page.tsx",
           type: "registry:page",
           target: "app/dashboard/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-09/components/app-sidebar.tsx",
+          path: "registry/bases/aria/blocks/sidebar-09/components/app-sidebar.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-09/components/nav-user.tsx",
+          path: "registry/bases/aria/blocks/sidebar-09/components/nav-user.tsx",
           type: "registry:component",
           target: "",
         },
@@ -10183,42 +10183,42 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/sidebar-10/page.tsx",
+          path: "registry/bases/aria/blocks/sidebar-10/page.tsx",
           type: "registry:page",
           target: "app/dashboard/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-10/components/app-sidebar.tsx",
+          path: "registry/bases/aria/blocks/sidebar-10/components/app-sidebar.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-10/components/nav-actions.tsx",
+          path: "registry/bases/aria/blocks/sidebar-10/components/nav-actions.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-10/components/nav-favorites.tsx",
+          path: "registry/bases/aria/blocks/sidebar-10/components/nav-favorites.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-10/components/nav-main.tsx",
+          path: "registry/bases/aria/blocks/sidebar-10/components/nav-main.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-10/components/nav-secondary.tsx",
+          path: "registry/bases/aria/blocks/sidebar-10/components/nav-secondary.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-10/components/nav-workspaces.tsx",
+          path: "registry/bases/aria/blocks/sidebar-10/components/nav-workspaces.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-10/components/team-switcher.tsx",
+          path: "registry/bases/aria/blocks/sidebar-10/components/team-switcher.tsx",
           type: "registry:component",
           target: "",
         },
@@ -10239,12 +10239,12 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/sidebar-11/page.tsx",
+          path: "registry/bases/aria/blocks/sidebar-11/page.tsx",
           type: "registry:page",
           target: "app/dashboard/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-11/components/app-sidebar.tsx",
+          path: "registry/bases/aria/blocks/sidebar-11/components/app-sidebar.tsx",
           type: "registry:component",
           target: "",
         },
@@ -10268,27 +10268,27 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/sidebar-12/page.tsx",
+          path: "registry/bases/aria/blocks/sidebar-12/page.tsx",
           type: "registry:page",
           target: "app/dashboard/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-12/components/app-sidebar.tsx",
+          path: "registry/bases/aria/blocks/sidebar-12/components/app-sidebar.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-12/components/calendars.tsx",
+          path: "registry/bases/aria/blocks/sidebar-12/components/calendars.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-12/components/date-picker.tsx",
+          path: "registry/bases/aria/blocks/sidebar-12/components/date-picker.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-12/components/nav-user.tsx",
+          path: "registry/bases/aria/blocks/sidebar-12/components/nav-user.tsx",
           type: "registry:component",
           target: "",
         },
@@ -10304,12 +10304,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["sidebar", "breadcrumb", "button", "dialog"],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/sidebar-13/page.tsx",
+          path: "registry/bases/aria/blocks/sidebar-13/page.tsx",
           type: "registry:page",
           target: "app/dashboard/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-13/components/settings-dialog.tsx",
+          path: "registry/bases/aria/blocks/sidebar-13/components/settings-dialog.tsx",
           type: "registry:component",
           target: "",
         },
@@ -10325,12 +10325,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["sidebar", "breadcrumb"],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/sidebar-14/page.tsx",
+          path: "registry/bases/aria/blocks/sidebar-14/page.tsx",
           type: "registry:page",
           target: "app/dashboard/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-14/components/app-sidebar.tsx",
+          path: "registry/bases/aria/blocks/sidebar-14/components/app-sidebar.tsx",
           type: "registry:component",
           target: "",
         },
@@ -10355,57 +10355,57 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/sidebar-15/page.tsx",
+          path: "registry/bases/aria/blocks/sidebar-15/page.tsx",
           type: "registry:page",
           target: "app/dashboard/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-15/components/calendars.tsx",
+          path: "registry/bases/aria/blocks/sidebar-15/components/calendars.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-15/components/date-picker.tsx",
+          path: "registry/bases/aria/blocks/sidebar-15/components/date-picker.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-15/components/nav-favorites.tsx",
+          path: "registry/bases/aria/blocks/sidebar-15/components/nav-favorites.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-15/components/nav-main.tsx",
+          path: "registry/bases/aria/blocks/sidebar-15/components/nav-main.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-15/components/nav-secondary.tsx",
+          path: "registry/bases/aria/blocks/sidebar-15/components/nav-secondary.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-15/components/nav-user.tsx",
+          path: "registry/bases/aria/blocks/sidebar-15/components/nav-user.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-15/components/nav-workspaces.tsx",
+          path: "registry/bases/aria/blocks/sidebar-15/components/nav-workspaces.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-15/components/sidebar-left.tsx",
+          path: "registry/bases/aria/blocks/sidebar-15/components/sidebar-left.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-15/components/sidebar-right.tsx",
+          path: "registry/bases/aria/blocks/sidebar-15/components/sidebar-right.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-15/components/team-switcher.tsx",
+          path: "registry/bases/aria/blocks/sidebar-15/components/team-switcher.tsx",
           type: "registry:component",
           target: "",
         },
@@ -10430,42 +10430,42 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/sidebar-16/page.tsx",
+          path: "registry/bases/aria/blocks/sidebar-16/page.tsx",
           type: "registry:page",
           target: "app/dashboard/page.tsx",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-16/components/app-sidebar.tsx",
+          path: "registry/bases/aria/blocks/sidebar-16/components/app-sidebar.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-16/components/nav-main.tsx",
+          path: "registry/bases/aria/blocks/sidebar-16/components/nav-main.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-16/components/nav-projects.tsx",
+          path: "registry/bases/aria/blocks/sidebar-16/components/nav-projects.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-16/components/nav-secondary.tsx",
+          path: "registry/bases/aria/blocks/sidebar-16/components/nav-secondary.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-16/components/nav-user.tsx",
+          path: "registry/bases/aria/blocks/sidebar-16/components/nav-user.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-16/components/search-form.tsx",
+          path: "registry/bases/aria/blocks/sidebar-16/components/search-form.tsx",
           type: "registry:component",
           target: "",
         },
         {
-          path: "registry/bases/react-aria/blocks/sidebar-16/components/site-header.tsx",
+          path: "registry/bases/aria/blocks/sidebar-16/components/site-header.tsx",
           type: "registry:component",
           target: "",
         },
@@ -10481,7 +10481,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/react-aria/hooks/use-mobile.ts",
+          path: "registry/bases/aria/hooks/use-mobile.ts",
           type: "registry:hook",
           target: "",
         },

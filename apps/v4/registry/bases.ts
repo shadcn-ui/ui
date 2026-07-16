@@ -25,7 +25,7 @@ export const BASES: z.infer<typeof registryItemSchema>[] = [
     },
   },
   {
-    name: "react-aria",
+    name: "aria",
     type: "registry:style",
     title: "React Aria",
     description:

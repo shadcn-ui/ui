@@ -10,6 +10,7 @@ import { DEFAULT_PRESETS } from "./defaults"
 import {
   encodePreset,
   PRESET_BASE_COLORS,
+  PRESET_BASES,
   PRESET_FONT_HEADINGS,
   PRESET_FONTS,
   PRESET_ICON_LIBRARIES,
@@ -193,7 +194,8 @@ function normalizePresetStyle(style: string | undefined) {
     return null
   }
 
-  const normalized = style.replace(/^(base|radix)-/, "")
+  const base = PRESET_BASES.find((base) => style.startsWith(`${base}-`))
+  const normalized = base ? style.slice(base.length + 1) : style
   if (!(normalized in DEFAULT_PRESETS)) {
     return null
   }

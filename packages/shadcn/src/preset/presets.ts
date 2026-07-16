@@ -13,6 +13,7 @@ import prompts from "prompts"
 import { type z } from "zod"
 
 import { DEFAULT_PRESETS } from "./defaults"
+import { type PresetBase } from "./preset"
 
 export { DEFAULT_PRESETS } from "./defaults"
 
@@ -22,7 +23,7 @@ export function resolveCreateUrl(
     template: string
     rtl: boolean
     pointer: boolean
-    base: string
+    base: PresetBase
   }>
 ) {
   const url = new URL(`${SHADCN_URL}/create`)
@@ -76,7 +77,7 @@ export async function promptToOpenPresetBuilder(options: {
 
 export function resolveInitUrl(
   preset: {
-    base: string
+    base: PresetBase
     style: string
     baseColor: string
     theme: string
@@ -149,15 +150,16 @@ export async function promptForBase() {
     choices: [
       { title: "Base (Recommended)", value: "base" },
       { title: "Radix", value: "radix" },
+      { title: "Aria", value: "aria" },
     ],
   })
   if (!base) process.exit(1)
-  return base as "radix" | "base"
+  return base as PresetBase
 }
 
 export async function promptForPreset(options: {
   rtl: boolean
-  base: string
+  base: PresetBase
   template?: string
   pointer?: boolean
 }) {
