@@ -14,7 +14,8 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/aria/input-otp",
-      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/input-otp-example.tsx"
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/input-otp-example.tsx",
+      "api": "https://input-otp.rodz.dev"
     }
   },
   "type": "registry:ui"

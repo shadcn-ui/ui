@@ -11,7 +11,8 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/aria/textarea",
-      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/textarea-example.tsx"
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/textarea-example.tsx",
+      "api": "https://react-aria.adobe.com/TextField#api"
     }
   },
   "type": "registry:ui"

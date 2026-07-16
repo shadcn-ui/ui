@@ -14,7 +14,8 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/aria/context-menu",
-      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/context-menu-example.tsx"
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/context-menu-example.tsx",
+      "api": "https://react-aria.adobe.com/Menu#api"
     }
   },
   "type": "registry:ui"

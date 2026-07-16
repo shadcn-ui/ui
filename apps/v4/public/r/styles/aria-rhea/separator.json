@@ -11,7 +11,8 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/aria/separator",
-      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/separator-example.tsx"
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/separator-example.tsx",
+      "api": "https://react-aria.adobe.com/Separator#api"
     }
   },
   "type": "registry:ui"

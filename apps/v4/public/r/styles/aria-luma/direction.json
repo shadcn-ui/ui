@@ -10,7 +10,8 @@
   ],
   "meta": {
     "links": {
-      "docs": "https://ui.shadcn.com/docs/components/aria/direction"
+      "docs": "https://ui.shadcn.com/docs/components/aria/direction",
+      "api": "https://react-aria.adobe.com/I18nProvider#api"
     }
   },
   "type": "registry:ui"

@@ -3,9 +3,6 @@ title: Spinner
 description: An indicator that can be used to show a loading state.
 base: aria
 component: true
-links:
-  doc: https://react-aria.adobe.com/ProgressBar
-  api: https://react-aria.adobe.com/ProgressBar#api
 ---
 
 <ComponentPreview styleName="aria-nova" name="spinner-demo" />
@@ -29,12 +26,6 @@ npx shadcn@latest add spinner
 <TabsContent value="manual">
 
 <Steps className="mb-0 pt-2">
-
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install react-aria-components
-```
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -95,13 +86,13 @@ Use the `size-*` utility class to change the size of the spinner.
 
 ## Button
 
-Add a spinner to a button to indicate a loading state. Remember to use the `data-icon="inline-start"` prop to add the spinner to the start of the button and the `data-icon="inline-end"` prop to add the spinner to the end of the button.
+Add a spinner to a button to indicate a loading state. Place the `<Spinner />` before the label with `data-icon="inline-start"` for a start position, or after the label with `data-icon="inline-end"` for an end position.
 
 <ComponentPreview styleName="aria-nova" name="spinner-button" />
 
 ## Badge
 
-Add a spinner to a badge to indicate a loading state. Remember to use the `data-icon="inline-start"` prop to add the spinner to the start of the badge and the `data-icon="inline-end"` prop to add the spinner to the end of the badge.
+Add a spinner to a badge to indicate a loading state. Place the `<Spinner />` before the label with `data-icon="inline-start"` for a start position, or after the label with `data-icon="inline-end"` for an end position.
 
 <ComponentPreview styleName="aria-nova" name="spinner-badge" />
 
@@ -118,7 +109,3 @@ Add a spinner to a badge to indicate a loading state. Remember to use the `data-
 To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
 
 <ComponentPreview styleName="aria-nova" name="spinner-rtl" direction="rtl" />
-
-## API Reference
-
-See the [React Aria ProgressBar](https://react-aria.adobe.com/ProgressBar#api) documentation.

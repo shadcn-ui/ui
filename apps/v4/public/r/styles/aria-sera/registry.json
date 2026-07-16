@@ -9,13 +9,8 @@
         "lucide-react",
         "react-aria-components"
       ],
-      "devDependencies": [
-        "tw-animate-css",
-        "shadcn"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "devDependencies": ["tw-animate-css", "shadcn"],
+      "registryDependencies": ["utils"],
       "files": [],
       "cssVars": {},
       "css": {
@@ -39,13 +34,8 @@
         "lucide-react",
         "react-aria-components"
       ],
-      "devDependencies": [
-        "tw-animate-css",
-        "shadcn"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "devDependencies": ["tw-animate-css", "shadcn"],
+      "registryDependencies": ["utils"],
       "files": [],
       "cssVars": {},
       "css": {
@@ -73,7 +63,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/accordion",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/accordion-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/accordion-example.tsx",
+          "api": "https://react-aria.adobe.com/DisclosureGroup#api"
         }
       },
       "type": "registry:ui"
@@ -96,9 +87,7 @@
     },
     {
       "name": "alert-dialog",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/aria-sera/ui/alert-dialog.tsx",
@@ -108,7 +97,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/alert-dialog",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/alert-dialog-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/alert-dialog-example.tsx",
+          "api": "https://react-aria.adobe.com/Modal#api"
         }
       },
       "type": "registry:ui"
@@ -172,7 +162,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/breadcrumb",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/breadcrumb-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/breadcrumb-example.tsx",
+          "api": "https://react-aria.adobe.com/Breadcrumbs#api"
         }
       },
       "type": "registry:ui"
@@ -188,16 +179,15 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/button",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/button-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/button-example.tsx",
+          "api": "https://react-aria.adobe.com/Button#api"
         }
       },
       "type": "registry:ui"
     },
     {
       "name": "button-group",
-      "registryDependencies": [
-        "separator"
-      ],
+      "registryDependencies": ["separator"],
       "files": [
         {
           "path": "registry/aria-sera/ui/button-group.tsx",
@@ -214,10 +204,7 @@
     },
     {
       "name": "calendar",
-      "registryDependencies": [
-        "button",
-        "select"
-      ],
+      "registryDependencies": ["button", "select"],
       "files": [
         {
           "path": "registry/aria-sera/ui/calendar.tsx",
@@ -227,7 +214,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/calendar",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/calendar-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/calendar-example.tsx",
+          "api": "https://react-aria.adobe.com/Calendar#api"
         }
       },
       "type": "registry:ui"
@@ -250,12 +238,8 @@
     },
     {
       "name": "carousel",
-      "dependencies": [
-        "embla-carousel-react"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["embla-carousel-react"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/aria-sera/ui/carousel.tsx",
@@ -265,19 +249,16 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/carousel",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/carousel-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/carousel-example.tsx",
+          "api": "https://www.embla-carousel.com/docs/api"
         }
       },
       "type": "registry:ui"
     },
     {
       "name": "chart",
-      "dependencies": [
-        "recharts@3.8.0"
-      ],
-      "registryDependencies": [
-        "card"
-      ],
+      "dependencies": ["recharts@3.8.0"],
+      "registryDependencies": ["card"],
       "files": [
         {
           "path": "registry/aria-sera/ui/chart.tsx",
@@ -303,7 +284,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/checkbox",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/checkbox-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/checkbox-example.tsx",
+          "api": "https://react-aria.adobe.com/Checkbox#api"
         }
       },
       "type": "registry:ui"
@@ -319,17 +301,15 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/collapsible",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/collapsible-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/collapsible-example.tsx",
+          "api": "https://react-aria.adobe.com/Disclosure#api"
         }
       },
       "type": "registry:ui"
     },
     {
       "name": "combobox",
-      "registryDependencies": [
-        "button",
-        "input-group"
-      ],
+      "registryDependencies": ["button", "input-group"],
       "files": [
         {
           "path": "registry/aria-sera/ui/combobox.tsx",
@@ -339,20 +319,16 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/combobox",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/combobox-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/combobox-example.tsx",
+          "api": "https://react-aria.adobe.com/ComboBox#api"
         }
       },
       "type": "registry:ui"
     },
     {
       "name": "command",
-      "dependencies": [
-        "cmdk"
-      ],
-      "registryDependencies": [
-        "dialog",
-        "input-group"
-      ],
+      "dependencies": ["cmdk"],
+      "registryDependencies": ["dialog", "input-group"],
       "files": [
         {
           "path": "registry/aria-sera/ui/command.tsx",
@@ -362,16 +338,15 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/command",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/command-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/command-example.tsx",
+          "api": "https://react-aria.adobe.com/Autocomplete#api"
         }
       },
       "type": "registry:ui"
     },
     {
       "name": "context-menu",
-      "registryDependencies": [
-        "dropdown-menu"
-      ],
+      "registryDependencies": ["dropdown-menu"],
       "files": [
         {
           "path": "registry/aria-sera/ui/context-menu.tsx",
@@ -381,16 +356,15 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/context-menu",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/context-menu-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/context-menu-example.tsx",
+          "api": "https://react-aria.adobe.com/Menu#api"
         }
       },
       "type": "registry:ui"
     },
     {
       "name": "dialog",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/aria-sera/ui/dialog.tsx",
@@ -400,16 +374,15 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/dialog",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/dialog-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/dialog-example.tsx",
+          "api": "https://react-aria.adobe.com/Modal#api"
         }
       },
       "type": "registry:ui"
     },
     {
       "name": "drawer",
-      "dependencies": [
-        "vaul"
-      ],
+      "dependencies": ["vaul"],
       "files": [
         {
           "path": "registry/aria-sera/ui/drawer.tsx",
@@ -419,7 +392,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/drawer",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/drawer-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/drawer-example.tsx",
+          "api": "https://vaul.emilkowal.ski/getting-started"
         }
       },
       "type": "registry:ui"
@@ -435,7 +409,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/dropdown-menu",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/dropdown-menu-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/dropdown-menu-example.tsx",
+          "api": "https://react-aria.adobe.com/Menu#api"
         }
       },
       "type": "registry:ui"
@@ -458,10 +433,7 @@
     },
     {
       "name": "field",
-      "registryDependencies": [
-        "label",
-        "separator"
-      ],
+      "registryDependencies": ["label", "separator"],
       "files": [
         {
           "path": "registry/aria-sera/ui/field.tsx",
@@ -496,18 +468,15 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/input",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/input-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/input-example.tsx",
+          "api": "https://react-aria.adobe.com/TextField#api"
         }
       },
       "type": "registry:ui"
     },
     {
       "name": "input-group",
-      "registryDependencies": [
-        "button",
-        "input",
-        "textarea"
-      ],
+      "registryDependencies": ["button", "input", "textarea"],
       "files": [
         {
           "path": "registry/aria-sera/ui/input-group.tsx",
@@ -517,16 +486,15 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/input-group",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/input-group-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/input-group-example.tsx",
+          "api": "https://react-aria.adobe.com/Group#api"
         }
       },
       "type": "registry:ui"
     },
     {
       "name": "input-otp",
-      "dependencies": [
-        "input-otp"
-      ],
+      "dependencies": ["input-otp"],
       "files": [
         {
           "path": "registry/aria-sera/ui/input-otp.tsx",
@@ -536,16 +504,15 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/input-otp",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/input-otp-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/input-otp-example.tsx",
+          "api": "https://input-otp.rodz.dev"
         }
       },
       "type": "registry:ui"
     },
     {
       "name": "item",
-      "registryDependencies": [
-        "separator"
-      ],
+      "registryDependencies": ["separator"],
       "files": [
         {
           "path": "registry/aria-sera/ui/item.tsx",
@@ -555,7 +522,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/item",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/item-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/item-example.tsx",
+          "api": "https://react-aria.adobe.com/Link#api"
         }
       },
       "type": "registry:ui"
@@ -571,16 +539,15 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/label",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/label-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/label-example.tsx",
+          "api": "https://react-aria.adobe.com/TextField#api"
         }
       },
       "type": "registry:ui"
     },
     {
       "name": "pagination",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/aria-sera/ui/pagination.tsx",
@@ -606,7 +573,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/popover",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/popover-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/popover-example.tsx",
+          "api": "https://react-aria.adobe.com/Popover#api"
         }
       },
       "type": "registry:ui"
@@ -622,7 +590,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/progress",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/progress-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/progress-example.tsx",
+          "api": "https://react-aria.adobe.com/ProgressBar#api"
         }
       },
       "type": "registry:ui"
@@ -638,16 +607,15 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/radio-group",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/radio-group-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/radio-group-example.tsx",
+          "api": "https://react-aria.adobe.com/RadioGroup#api"
         }
       },
       "type": "registry:ui"
     },
     {
       "name": "resizable",
-      "dependencies": [
-        "react-resizable-panels"
-      ],
+      "dependencies": ["react-resizable-panels"],
       "files": [
         {
           "path": "registry/aria-sera/ui/resizable.tsx",
@@ -657,7 +625,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/resizable",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/resizable-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/resizable-example.tsx",
+          "api": "https://github.com/bvaughn/react-resizable-panels"
         }
       },
       "type": "registry:ui"
@@ -680,9 +649,7 @@
     },
     {
       "name": "select",
-      "registryDependencies": [
-        "input-group"
-      ],
+      "registryDependencies": ["input-group"],
       "files": [
         {
           "path": "registry/aria-sera/ui/select.tsx",
@@ -692,7 +659,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/select",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/select-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/select-example.tsx",
+          "api": "https://react-aria.adobe.com/Select#api"
         }
       },
       "type": "registry:ui"
@@ -708,16 +676,15 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/separator",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/separator-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/separator-example.tsx",
+          "api": "https://react-aria.adobe.com/Separator#api"
         }
       },
       "type": "registry:ui"
     },
     {
       "name": "sheet",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/aria-sera/ui/sheet.tsx",
@@ -727,7 +694,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/sheet",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/sheet-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/sheet-example.tsx",
+          "api": "https://react-aria.adobe.com/Modal#api"
         }
       },
       "type": "registry:ui"
@@ -784,17 +752,15 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/slider",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/slider-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/slider-example.tsx",
+          "api": "https://react-aria.adobe.com/Slider#api"
         }
       },
       "type": "registry:ui"
     },
     {
       "name": "sonner",
-      "dependencies": [
-        "sonner",
-        "next-themes"
-      ],
+      "dependencies": ["sonner", "next-themes"],
       "files": [
         {
           "path": "registry/aria-sera/ui/sonner.tsx",
@@ -804,7 +770,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/sonner",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/sonner-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/sonner-example.tsx",
+          "api": "https://sonner.emilkowal.ski"
         }
       },
       "type": "registry:ui"
@@ -836,7 +803,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/switch",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/switch-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/switch-example.tsx",
+          "api": "https://react-aria.adobe.com/Switch#api"
         }
       },
       "type": "registry:ui"
@@ -852,7 +820,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/table",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/table-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/table-example.tsx",
+          "api": "https://react-aria.adobe.com/Table#api"
         }
       },
       "type": "registry:ui"
@@ -868,7 +837,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/tabs",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/tabs-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/tabs-example.tsx",
+          "api": "https://react-aria.adobe.com/Tabs#api"
         }
       },
       "type": "registry:ui"
@@ -884,7 +854,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/textarea",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/textarea-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/textarea-example.tsx",
+          "api": "https://react-aria.adobe.com/TextField#api"
         }
       },
       "type": "registry:ui"
@@ -900,16 +871,15 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/toggle",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/toggle-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/toggle-example.tsx",
+          "api": "https://react-aria.adobe.com/ToggleButton#api"
         }
       },
       "type": "registry:ui"
     },
     {
       "name": "toggle-group",
-      "registryDependencies": [
-        "toggle"
-      ],
+      "registryDependencies": ["toggle"],
       "files": [
         {
           "path": "registry/aria-sera/ui/toggle-group.tsx",
@@ -919,7 +889,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/toggle-group",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/toggle-group-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/toggle-group-example.tsx",
+          "api": "https://react-aria.adobe.com/ToggleButtonGroup#api"
         }
       },
       "type": "registry:ui"
@@ -935,7 +906,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/aria/tooltip",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/tooltip-example.tsx"
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/tooltip-example.tsx",
+          "api": "https://react-aria.adobe.com/Tooltip#api"
         }
       },
       "type": "registry:ui"
@@ -982,16 +954,15 @@
       ],
       "meta": {
         "links": {
-          "docs": "https://ui.shadcn.com/docs/components/aria/direction"
+          "docs": "https://ui.shadcn.com/docs/components/aria/direction",
+          "api": "https://react-aria.adobe.com/I18nProvider#api"
         }
       },
       "type": "registry:ui"
     },
     {
       "name": "attachment",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/aria-sera/ui/attachment.tsx",
@@ -1024,12 +995,8 @@
     },
     {
       "name": "message-scroller",
-      "dependencies": [
-        "@shadcn/react"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["@shadcn/react"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/aria-sera/ui/message-scroller.tsx",
@@ -1079,12 +1046,7 @@
     {
       "name": "accordion-example",
       "title": "Accordion",
-      "registryDependencies": [
-        "accordion",
-        "button",
-        "card",
-        "example"
-      ],
+      "registryDependencies": ["accordion", "button", "card", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/accordion-example.tsx",
@@ -1096,11 +1058,7 @@
     {
       "name": "alert-example",
       "title": "Alert",
-      "registryDependencies": [
-        "alert",
-        "badge",
-        "example"
-      ],
+      "registryDependencies": ["alert", "badge", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/alert-example.tsx",
@@ -1112,12 +1070,7 @@
     {
       "name": "alert-dialog-example",
       "title": "Alert Dialog",
-      "registryDependencies": [
-        "alert-dialog",
-        "button",
-        "dialog",
-        "example"
-      ],
+      "registryDependencies": ["alert-dialog", "button", "dialog", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/alert-dialog-example.tsx",
@@ -1129,10 +1082,7 @@
     {
       "name": "aspect-ratio-example",
       "title": "Aspect Ratio",
-      "registryDependencies": [
-        "aspect-ratio",
-        "example"
-      ],
+      "registryDependencies": ["aspect-ratio", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/aspect-ratio-example.tsx",
@@ -1144,12 +1094,7 @@
     {
       "name": "avatar-example",
       "title": "Avatar",
-      "registryDependencies": [
-        "avatar",
-        "button",
-        "empty",
-        "example"
-      ],
+      "registryDependencies": ["avatar", "button", "empty", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/avatar-example.tsx",
@@ -1161,11 +1106,7 @@
     {
       "name": "badge-example",
       "title": "Badge",
-      "registryDependencies": [
-        "badge",
-        "spinner",
-        "example"
-      ],
+      "registryDependencies": ["badge", "spinner", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/badge-example.tsx",
@@ -1177,11 +1118,7 @@
     {
       "name": "breadcrumb-example",
       "title": "Breadcrumb",
-      "registryDependencies": [
-        "breadcrumb",
-        "dropdown-menu",
-        "example"
-      ],
+      "registryDependencies": ["breadcrumb", "dropdown-menu", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/breadcrumb-example.tsx",
@@ -1193,10 +1130,7 @@
     {
       "name": "button-example",
       "title": "Button",
-      "registryDependencies": [
-        "button",
-        "example"
-      ],
+      "registryDependencies": ["button", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/button-example.tsx",
@@ -1272,11 +1206,7 @@
     {
       "name": "carousel-example",
       "title": "Carousel",
-      "registryDependencies": [
-        "card",
-        "carousel",
-        "example"
-      ],
+      "registryDependencies": ["card", "carousel", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/carousel-example.tsx",
@@ -1288,11 +1218,7 @@
     {
       "name": "chart-example",
       "title": "Chart",
-      "registryDependencies": [
-        "chart",
-        "card",
-        "example"
-      ],
+      "registryDependencies": ["chart", "card", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/chart-example.tsx",
@@ -1304,12 +1230,7 @@
     {
       "name": "checkbox-example",
       "title": "Checkbox",
-      "registryDependencies": [
-        "checkbox",
-        "field",
-        "table",
-        "example"
-      ],
+      "registryDependencies": ["checkbox", "field", "table", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/checkbox-example.tsx",
@@ -1364,11 +1285,7 @@
     {
       "name": "command-example",
       "title": "Command",
-      "registryDependencies": [
-        "button",
-        "command",
-        "example"
-      ],
+      "registryDependencies": ["button", "command", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/command-example.tsx",
@@ -1380,12 +1297,7 @@
     {
       "name": "context-menu-example",
       "title": "Context Menu",
-      "registryDependencies": [
-        "button",
-        "context-menu",
-        "dialog",
-        "example"
-      ],
+      "registryDependencies": ["button", "context-menu", "dialog", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/context-menu-example.tsx",
@@ -1424,10 +1336,7 @@
     {
       "name": "drawer-example",
       "title": "Drawer",
-      "registryDependencies": [
-        "drawer",
-        "example"
-      ],
+      "registryDependencies": ["drawer", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/drawer-example.tsx",
@@ -1590,11 +1499,7 @@
     {
       "name": "item-example",
       "title": "Item",
-      "registryDependencies": [
-        "button",
-        "item",
-        "example"
-      ],
+      "registryDependencies": ["button", "item", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/item-example.tsx",
@@ -1643,11 +1548,7 @@
     {
       "name": "native-select-example",
       "title": "Native Select",
-      "registryDependencies": [
-        "field",
-        "native-select",
-        "example"
-      ],
+      "registryDependencies": ["field", "native-select", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/native-select-example.tsx",
@@ -1659,12 +1560,7 @@
     {
       "name": "pagination-example",
       "title": "Pagination",
-      "registryDependencies": [
-        "field",
-        "pagination",
-        "select",
-        "example"
-      ],
+      "registryDependencies": ["field", "pagination", "select", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/pagination-example.tsx",
@@ -1713,11 +1609,7 @@
     {
       "name": "radio-group-example",
       "title": "Radio Group",
-      "registryDependencies": [
-        "field",
-        "radio-group",
-        "example"
-      ],
+      "registryDependencies": ["field", "radio-group", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/radio-group-example.tsx",
@@ -1729,10 +1621,7 @@
     {
       "name": "resizable-example",
       "title": "Resizable",
-      "registryDependencies": [
-        "resizable",
-        "example"
-      ],
+      "registryDependencies": ["resizable", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/resizable-example.tsx",
@@ -1744,11 +1633,7 @@
     {
       "name": "scroll-area-example",
       "title": "Scroll Area",
-      "registryDependencies": [
-        "scroll-area",
-        "separator",
-        "example"
-      ],
+      "registryDependencies": ["scroll-area", "separator", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/scroll-area-example.tsx",
@@ -1781,10 +1666,7 @@
     {
       "name": "separator-example",
       "title": "Separator",
-      "registryDependencies": [
-        "separator",
-        "example"
-      ],
+      "registryDependencies": ["separator", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/separator-example.tsx",
@@ -1796,13 +1678,7 @@
     {
       "name": "sheet-example",
       "title": "Sheet",
-      "registryDependencies": [
-        "button",
-        "field",
-        "input",
-        "sheet",
-        "example"
-      ],
+      "registryDependencies": ["button", "field", "input", "sheet", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/sheet-example.tsx",
@@ -1853,11 +1729,7 @@
     {
       "name": "sidebar-inset-example",
       "title": "Sidebar (Inset)",
-      "registryDependencies": [
-        "collapsible",
-        "sidebar",
-        "example"
-      ],
+      "registryDependencies": ["collapsible", "sidebar", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/sidebar-inset-example.tsx",
@@ -1889,10 +1761,7 @@
     {
       "name": "skeleton-example",
       "title": "Skeleton",
-      "registryDependencies": [
-        "skeleton",
-        "example"
-      ],
+      "registryDependencies": ["skeleton", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/skeleton-example.tsx",
@@ -1904,11 +1773,7 @@
     {
       "name": "slider-example",
       "title": "Slider",
-      "registryDependencies": [
-        "label",
-        "slider",
-        "example"
-      ],
+      "registryDependencies": ["label", "slider", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/slider-example.tsx",
@@ -1920,10 +1785,7 @@
     {
       "name": "sonner-example",
       "title": "Sonner",
-      "registryDependencies": [
-        "sonner",
-        "example"
-      ],
+      "registryDependencies": ["sonner", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/sonner-example.tsx",
@@ -1955,12 +1817,7 @@
     {
       "name": "switch-example",
       "title": "Switch",
-      "registryDependencies": [
-        "field",
-        "label",
-        "switch",
-        "example"
-      ],
+      "registryDependencies": ["field", "label", "switch", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/switch-example.tsx",
@@ -1991,12 +1848,7 @@
     {
       "name": "tabs-example",
       "title": "Tabs",
-      "registryDependencies": [
-        "button",
-        "dropdown-menu",
-        "tabs",
-        "example"
-      ],
+      "registryDependencies": ["button", "dropdown-menu", "tabs", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/tabs-example.tsx",
@@ -2008,11 +1860,7 @@
     {
       "name": "textarea-example",
       "title": "Textarea",
-      "registryDependencies": [
-        "field",
-        "textarea",
-        "example"
-      ],
+      "registryDependencies": ["field", "textarea", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/textarea-example.tsx",
@@ -2024,10 +1872,7 @@
     {
       "name": "toggle-example",
       "title": "Toggle",
-      "registryDependencies": [
-        "toggle",
-        "example"
-      ],
+      "registryDependencies": ["toggle", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/toggle-example.tsx",
@@ -2039,12 +1884,7 @@
     {
       "name": "toggle-group-example",
       "title": "Toggle Group",
-      "registryDependencies": [
-        "input",
-        "select",
-        "toggle-group",
-        "example"
-      ],
+      "registryDependencies": ["input", "select", "toggle-group", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/toggle-group-example.tsx",
@@ -2056,12 +1896,7 @@
     {
       "name": "tooltip-example",
       "title": "Tooltip",
-      "registryDependencies": [
-        "button",
-        "kbd",
-        "tooltip",
-        "example"
-      ],
+      "registryDependencies": ["button", "kbd", "tooltip", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/tooltip-example.tsx",
@@ -2097,9 +1932,7 @@
     {
       "name": "attachment-example",
       "title": "Attachment",
-      "registryDependencies": [
-        "attachment"
-      ],
+      "registryDependencies": ["attachment"],
       "files": [
         {
           "path": "registry/aria-sera/examples/attachment-example.tsx",
@@ -2111,12 +1944,7 @@
     {
       "name": "bubble-example",
       "title": "Bubble",
-      "registryDependencies": [
-        "bubble",
-        "button",
-        "collapsible",
-        "example"
-      ],
+      "registryDependencies": ["bubble", "button", "collapsible", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/bubble-example.tsx",
@@ -2170,12 +1998,7 @@
     {
       "name": "message-example",
       "title": "Message",
-      "registryDependencies": [
-        "bubble",
-        "message",
-        "button",
-        "example"
-      ],
+      "registryDependencies": ["bubble", "message", "button", "example"],
       "files": [
         {
           "path": "registry/aria-sera/examples/message-example.tsx",
@@ -2186,10 +2009,7 @@
     },
     {
       "name": "utils",
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/aria-sera/lib/utils.ts",
@@ -2252,9 +2072,7 @@
     {
       "name": "preview-02",
       "title": "Preview 02",
-      "dependencies": [
-        "react-qr-code"
-      ],
+      "dependencies": ["react-qr-code"],
       "registryDependencies": [
         "accordion",
         "badge",
@@ -2311,13 +2129,7 @@
       "name": "login-01",
       "title": "Login 01",
       "description": "A simple login form.",
-      "registryDependencies": [
-        "button",
-        "card",
-        "input",
-        "label",
-        "field"
-      ],
+      "registryDependencies": ["button", "card", "input", "label", "field"],
       "files": [
         {
           "path": "registry/aria-sera/blocks/login-01/page.tsx",
@@ -2329,22 +2141,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "login"
-      ],
+      "categories": ["authentication", "login"],
       "type": "registry:block"
     },
     {
       "name": "login-02",
       "title": "Login 02",
       "description": "A two column login page with a cover image.",
-      "registryDependencies": [
-        "button",
-        "input",
-        "label",
-        "field"
-      ],
+      "registryDependencies": ["button", "input", "label", "field"],
       "files": [
         {
           "path": "registry/aria-sera/blocks/login-02/page.tsx",
@@ -2356,23 +2160,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "login"
-      ],
+      "categories": ["authentication", "login"],
       "type": "registry:block"
     },
     {
       "name": "login-03",
       "title": "Login 03",
       "description": "A login page with a muted background color.",
-      "registryDependencies": [
-        "button",
-        "card",
-        "input",
-        "label",
-        "field"
-      ],
+      "registryDependencies": ["button", "card", "input", "label", "field"],
       "files": [
         {
           "path": "registry/aria-sera/blocks/login-03/page.tsx",
@@ -2384,23 +2179,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "login"
-      ],
+      "categories": ["authentication", "login"],
       "type": "registry:block"
     },
     {
       "name": "login-04",
       "title": "Login 04",
       "description": "A login page with form and image.",
-      "registryDependencies": [
-        "button",
-        "card",
-        "input",
-        "label",
-        "field"
-      ],
+      "registryDependencies": ["button", "card", "input", "label", "field"],
       "files": [
         {
           "path": "registry/aria-sera/blocks/login-04/page.tsx",
@@ -2412,22 +2198,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "login"
-      ],
+      "categories": ["authentication", "login"],
       "type": "registry:block"
     },
     {
       "name": "login-05",
       "title": "Login 05",
       "description": "A simple email-only login page.",
-      "registryDependencies": [
-        "button",
-        "input",
-        "label",
-        "field"
-      ],
+      "registryDependencies": ["button", "input", "label", "field"],
       "files": [
         {
           "path": "registry/aria-sera/blocks/login-05/page.tsx",
@@ -2439,22 +2217,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "login"
-      ],
+      "categories": ["authentication", "login"],
       "type": "registry:block"
     },
     {
       "name": "signup-01",
       "title": "Signup 01",
       "description": "A simple signup form.",
-      "registryDependencies": [
-        "button",
-        "card",
-        "input",
-        "label"
-      ],
+      "registryDependencies": ["button", "card", "input", "label"],
       "files": [
         {
           "path": "registry/aria-sera/blocks/signup-01/page.tsx",
@@ -2466,22 +2236,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "signup"
-      ],
+      "categories": ["authentication", "signup"],
       "type": "registry:block"
     },
     {
       "name": "signup-02",
       "title": "Signup 02",
       "description": "A two column signup page with a cover image.",
-      "registryDependencies": [
-        "button",
-        "input",
-        "label",
-        "field"
-      ],
+      "registryDependencies": ["button", "input", "label", "field"],
       "files": [
         {
           "path": "registry/aria-sera/blocks/signup-02/page.tsx",
@@ -2493,23 +2255,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "signup"
-      ],
+      "categories": ["authentication", "signup"],
       "type": "registry:block"
     },
     {
       "name": "signup-03",
       "title": "Signup 03",
       "description": "A signup page with a muted background color.",
-      "registryDependencies": [
-        "button",
-        "card",
-        "input",
-        "label",
-        "field"
-      ],
+      "registryDependencies": ["button", "card", "input", "label", "field"],
       "files": [
         {
           "path": "registry/aria-sera/blocks/signup-03/page.tsx",
@@ -2521,23 +2274,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "signup"
-      ],
+      "categories": ["authentication", "signup"],
       "type": "registry:block"
     },
     {
       "name": "signup-04",
       "title": "Signup 04",
       "description": "A signup page with form and image.",
-      "registryDependencies": [
-        "button",
-        "card",
-        "input",
-        "label",
-        "field"
-      ],
+      "registryDependencies": ["button", "card", "input", "label", "field"],
       "files": [
         {
           "path": "registry/aria-sera/blocks/signup-04/page.tsx",
@@ -2549,21 +2293,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "signup"
-      ],
+      "categories": ["authentication", "signup"],
       "type": "registry:block"
     },
     {
       "name": "signup-05",
       "title": "Signup 05",
       "description": "A simple signup form with social providers.",
-      "registryDependencies": [
-        "button",
-        "input",
-        "label"
-      ],
+      "registryDependencies": ["button", "input", "label"],
       "files": [
         {
           "path": "registry/aria-sera/blocks/signup-05/page.tsx",
@@ -2575,10 +2312,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "signup"
-      ],
+      "categories": ["authentication", "signup"],
       "type": "registry:block"
     },
     {
@@ -2665,9 +2399,7 @@
       "meta": {
         "iframeHeight": "1000px"
       },
-      "categories": [
-        "dashboard"
-      ],
+      "categories": ["dashboard"],
       "type": "registry:block"
     },
     {
@@ -2700,10 +2432,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -2736,20 +2465,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
       "name": "sidebar-03",
       "title": "Sidebar 03",
       "description": "A sidebar with submenus.",
-      "registryDependencies": [
-        "sidebar",
-        "breadcrumb"
-      ],
+      "registryDependencies": ["sidebar", "breadcrumb"],
       "files": [
         {
           "path": "registry/aria-sera/blocks/sidebar-03/page.tsx",
@@ -2761,21 +2484,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
       "name": "sidebar-04",
       "title": "Sidebar 04",
       "description": "A floating sidebar with submenus.",
-      "registryDependencies": [
-        "sidebar",
-        "breadcrumb",
-        "separator"
-      ],
+      "registryDependencies": ["sidebar", "breadcrumb", "separator"],
       "files": [
         {
           "path": "registry/aria-sera/blocks/sidebar-04/page.tsx",
@@ -2787,10 +2503,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -2819,10 +2532,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -2855,10 +2565,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -2900,10 +2607,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -2945,10 +2649,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -2980,10 +2681,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -3033,10 +2731,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -3060,10 +2755,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -3102,22 +2794,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
       "name": "sidebar-13",
       "title": "Sidebar 13",
       "description": "A sidebar in a dialog.",
-      "registryDependencies": [
-        "sidebar",
-        "breadcrumb",
-        "button",
-        "dialog"
-      ],
+      "registryDependencies": ["sidebar", "breadcrumb", "button", "dialog"],
       "files": [
         {
           "path": "registry/aria-sera/blocks/sidebar-13/page.tsx",
@@ -3129,20 +2813,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
       "name": "sidebar-14",
       "title": "Sidebar 14",
       "description": "A sidebar on the right.",
-      "registryDependencies": [
-        "sidebar",
-        "breadcrumb"
-      ],
+      "registryDependencies": ["sidebar", "breadcrumb"],
       "files": [
         {
           "path": "registry/aria-sera/blocks/sidebar-14/page.tsx",
@@ -3154,10 +2832,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -3221,10 +2896,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -3276,10 +2948,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -3301,9 +2970,7 @@
         "provider": "google",
         "import": "Geist",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/geist"
       }
     },
@@ -3316,9 +2983,7 @@
         "provider": "google",
         "import": "Inter",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/inter"
       }
     },
@@ -3331,9 +2996,7 @@
         "provider": "google",
         "import": "Noto_Sans",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/noto-sans"
       }
     },
@@ -3346,9 +3009,7 @@
         "provider": "google",
         "import": "Nunito_Sans",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/nunito-sans"
       }
     },
@@ -3361,9 +3022,7 @@
         "provider": "google",
         "import": "Figtree",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/figtree"
       }
     },
@@ -3376,9 +3035,7 @@
         "provider": "google",
         "import": "Roboto",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/roboto"
       }
     },
@@ -3391,9 +3048,7 @@
         "provider": "google",
         "import": "Raleway",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/raleway"
       }
     },
@@ -3406,9 +3061,7 @@
         "provider": "google",
         "import": "DM_Sans",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/dm-sans"
       }
     },
@@ -3421,9 +3074,7 @@
         "provider": "google",
         "import": "Public_Sans",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/public-sans"
       }
     },
@@ -3436,9 +3087,7 @@
         "provider": "google",
         "import": "Outfit",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/outfit"
       }
     },
@@ -3451,9 +3100,7 @@
         "provider": "google",
         "import": "Oxanium",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/oxanium"
       }
     },
@@ -3466,9 +3113,7 @@
         "provider": "google",
         "import": "Manrope",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/manrope"
       }
     },
@@ -3481,9 +3126,7 @@
         "provider": "google",
         "import": "Space_Grotesk",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/space-grotesk"
       }
     },
@@ -3496,9 +3139,7 @@
         "provider": "google",
         "import": "Montserrat",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/montserrat"
       }
     },
@@ -3511,9 +3152,7 @@
         "provider": "google",
         "import": "IBM_Plex_Sans",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/ibm-plex-sans"
       }
     },
@@ -3526,9 +3165,7 @@
         "provider": "google",
         "import": "Source_Sans_3",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/source-sans-3"
       }
     },
@@ -3541,9 +3178,7 @@
         "provider": "google",
         "import": "Instrument_Sans",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/instrument-sans"
       }
     },
@@ -3556,9 +3191,7 @@
         "provider": "google",
         "import": "JetBrains_Mono",
         "variable": "--font-mono",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/jetbrains-mono"
       }
     },
@@ -3571,9 +3204,7 @@
         "provider": "google",
         "import": "Geist_Mono",
         "variable": "--font-mono",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/geist-mono"
       }
     },
@@ -3586,9 +3217,7 @@
         "provider": "google",
         "import": "Noto_Serif",
         "variable": "--font-serif",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/noto-serif"
       }
     },
@@ -3601,9 +3230,7 @@
         "provider": "google",
         "import": "Roboto_Slab",
         "variable": "--font-serif",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/roboto-slab"
       }
     },
@@ -3616,9 +3243,7 @@
         "provider": "google",
         "import": "Merriweather",
         "variable": "--font-serif",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/merriweather"
       }
     },
@@ -3631,9 +3256,7 @@
         "provider": "google",
         "import": "Lora",
         "variable": "--font-serif",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/lora"
       }
     },
@@ -3646,9 +3269,7 @@
         "provider": "google",
         "import": "Playfair_Display",
         "variable": "--font-serif",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/playfair-display"
       }
     },
@@ -3661,9 +3282,7 @@
         "provider": "google",
         "import": "EB_Garamond",
         "variable": "--font-serif",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/eb-garamond"
       }
     },
@@ -3676,12 +3295,8 @@
         "provider": "google",
         "import": "Instrument_Serif",
         "variable": "--font-serif",
-        "weight": [
-          "400"
-        ],
-        "subsets": [
-          "latin"
-        ],
+        "weight": ["400"],
+        "subsets": ["latin"],
         "dependency": "@fontsource/instrument-serif"
       }
     },
@@ -3694,9 +3309,7 @@
         "provider": "google",
         "import": "Geist",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/geist"
       }
     },
@@ -3709,9 +3322,7 @@
         "provider": "google",
         "import": "Inter",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/inter"
       }
     },
@@ -3724,9 +3335,7 @@
         "provider": "google",
         "import": "Noto_Sans",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/noto-sans"
       }
     },
@@ -3739,9 +3348,7 @@
         "provider": "google",
         "import": "Nunito_Sans",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/nunito-sans"
       }
     },
@@ -3754,9 +3361,7 @@
         "provider": "google",
         "import": "Figtree",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/figtree"
       }
     },
@@ -3769,9 +3374,7 @@
         "provider": "google",
         "import": "Roboto",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/roboto"
       }
     },
@@ -3784,9 +3387,7 @@
         "provider": "google",
         "import": "Raleway",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/raleway"
       }
     },
@@ -3799,9 +3400,7 @@
         "provider": "google",
         "import": "DM_Sans",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/dm-sans"
       }
     },
@@ -3814,9 +3413,7 @@
         "provider": "google",
         "import": "Public_Sans",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/public-sans"
       }
     },
@@ -3829,9 +3426,7 @@
         "provider": "google",
         "import": "Outfit",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/outfit"
       }
     },
@@ -3844,9 +3439,7 @@
         "provider": "google",
         "import": "Oxanium",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/oxanium"
       }
     },
@@ -3859,9 +3452,7 @@
         "provider": "google",
         "import": "Manrope",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/manrope"
       }
     },
@@ -3874,9 +3465,7 @@
         "provider": "google",
         "import": "Space_Grotesk",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/space-grotesk"
       }
     },
@@ -3889,9 +3478,7 @@
         "provider": "google",
         "import": "Montserrat",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/montserrat"
       }
     },
@@ -3904,9 +3491,7 @@
         "provider": "google",
         "import": "IBM_Plex_Sans",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/ibm-plex-sans"
       }
     },
@@ -3919,9 +3504,7 @@
         "provider": "google",
         "import": "Source_Sans_3",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/source-sans-3"
       }
     },
@@ -3934,9 +3517,7 @@
         "provider": "google",
         "import": "Instrument_Sans",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/instrument-sans"
       }
     },
@@ -3949,9 +3530,7 @@
         "provider": "google",
         "import": "JetBrains_Mono",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/jetbrains-mono"
       }
     },
@@ -3964,9 +3543,7 @@
         "provider": "google",
         "import": "Geist_Mono",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/geist-mono"
       }
     },
@@ -3979,9 +3556,7 @@
         "provider": "google",
         "import": "Noto_Serif",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/noto-serif"
       }
     },
@@ -3994,9 +3569,7 @@
         "provider": "google",
         "import": "Roboto_Slab",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/roboto-slab"
       }
     },
@@ -4009,9 +3582,7 @@
         "provider": "google",
         "import": "Merriweather",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/merriweather"
       }
     },
@@ -4024,9 +3595,7 @@
         "provider": "google",
         "import": "Lora",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/lora"
       }
     },
@@ -4039,9 +3608,7 @@
         "provider": "google",
         "import": "Playfair_Display",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/playfair-display"
       }
     },
@@ -4054,9 +3621,7 @@
         "provider": "google",
         "import": "EB_Garamond",
         "variable": "--font-heading",
-        "subsets": [
-          "latin"
-        ],
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/eb-garamond"
       }
     },
@@ -4069,12 +3634,8 @@
         "provider": "google",
         "import": "Instrument_Serif",
         "variable": "--font-heading",
-        "weight": [
-          "400"
-        ],
-        "subsets": [
-          "latin"
-        ],
+        "weight": ["400"],
+        "subsets": ["latin"],
         "dependency": "@fontsource/instrument-serif"
       }
     }

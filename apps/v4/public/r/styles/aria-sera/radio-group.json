@@ -11,7 +11,8 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/aria/radio-group",
-      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/radio-group-example.tsx"
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/radio-group-example.tsx",
+      "api": "https://react-aria.adobe.com/RadioGroup#api"
     }
   },
   "type": "registry:ui"

@@ -11,7 +11,8 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/aria/checkbox",
-      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/checkbox-example.tsx"
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/checkbox-example.tsx",
+      "api": "https://react-aria.adobe.com/Checkbox#api"
     }
   },
   "type": "registry:ui"

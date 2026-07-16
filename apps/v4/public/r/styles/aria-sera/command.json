@@ -18,7 +18,8 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/aria/command",
-      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/command-example.tsx"
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/command-example.tsx",
+      "api": "https://react-aria.adobe.com/Autocomplete#api"
     }
   },
   "type": "registry:ui"

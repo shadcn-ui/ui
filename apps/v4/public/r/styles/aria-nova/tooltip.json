@@ -11,7 +11,8 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/aria/tooltip",
-      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/tooltip-example.tsx"
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/tooltip-example.tsx",
+      "api": "https://react-aria.adobe.com/Tooltip#api"
     }
   },
   "type": "registry:ui"

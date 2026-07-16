@@ -11,7 +11,8 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/aria/input",
-      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/input-example.tsx"
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/input-example.tsx",
+      "api": "https://react-aria.adobe.com/TextField#api"
     }
   },
   "type": "registry:ui"

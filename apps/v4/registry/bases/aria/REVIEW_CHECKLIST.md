@@ -29,6 +29,30 @@ This checklist tracks the findings from the review of `shadcn/aria` against
 - [x] A11 Redirect the Aria Form documentation route to `/docs/forms`.
 - [x] A12 Pass the selected preview language to React Aria's `I18nProvider`.
 - [x] A13 Remove the Base UI Button import from the Aria weekly fitness block.
+- [x] A17 Return component-specific API references from
+      `shadcn docs --base aria`.
+- [x] A18 Keep links between component docs within the Aria base.
+- [x] A19 Repair stale external links in the Aria docs.
+- [x] A20 Align the Spinner docs with its dependency-free SVG contract.
+
+## Convention audit follow-up
+
+- [x] A21 Remove the obsolete source-string assertions in `aria.test.ts`.
+- [ ] A22 Sync the Vaul Drawer layout and animation classes with the Radix
+      base after shared Drawer styles were removed.
+- [ ] A23 Give Context Menu its own slots, class hooks, classable trigger, and
+      complete `onOpenChange` behavior.
+- [ ] A24 Expose the Badge variant through `data-variant` in both render paths.
+- [ ] A25 Sync Message Scroller's stable-gutter autoscroll treatment with the
+      other bases.
+- [ ] A26 Add an accessible name to Combobox Clear and repair the missing
+      Combobox Content and Chip List slots and class forwarding.
+- [ ] A27 Replace Aria-only direct Lucide usage with `IconPlaceholder`.
+- [ ] A28 Add the missing Popover Description slot and audit Aria trigger slots.
+- [ ] A29 Rename `BASE_STYLE` to `ARIA_STYLE`, align the example registry
+      ordering, and consolidate the split UI export blocks.
+- [ ] A30 Remove or relocate this review artifact after the checklist is
+      complete so the base directories retain structural parity.
 
 ## Repository standards
 
