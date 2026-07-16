@@ -1,5 +1,17 @@
+import { existsSync } from "fs"
 import path from "path"
 import { createMDX } from "fumadocs-mdx/next"
+
+// The generated styles under styles/ are gitignored (see styles/README.md).
+// Fail fast with instructions instead of a wall of module-not-found errors.
+if (
+  process.env.NODE_ENV === "development" &&
+  !existsSync(path.join(process.cwd(), "styles/base-nova/ui"))
+) {
+  throw new Error(
+    "Generated styles are missing. Run `pnpm --filter=v4 registry:build --style all` once, then restart the dev server."
+  )
+}
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
