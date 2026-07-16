@@ -82,7 +82,7 @@ function TableHead({ className, ...props }: ColumnProps) {
   return (
     <ColumnPrimitive
       data-slot="table-head"
-      className={cn("cn-table-head", className)}
+      className={cn("cn-table-head cn-table-head-aria", className)}
       {...props}
     />
   )
@@ -92,7 +92,7 @@ function TableCell({ className, ...props }: CellProps) {
   return (
     <CellPrimitive
       data-slot="table-cell"
-      className={cn("cn-table-cell", className)}
+      className={cn("cn-table-cell cn-table-cell-aria", className)}
       {...props}
     />
   )

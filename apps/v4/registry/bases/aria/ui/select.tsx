@@ -62,7 +62,7 @@ function SelectValue<T extends object>({
   return (
     <SelectValuePrimitive
       data-slot="select-value"
-      className={cn("cn-select-value", className)}
+      className={cn("cn-select-value cn-select-value-aria", className)}
       {...props}
     >
       {typeof children === "function"
