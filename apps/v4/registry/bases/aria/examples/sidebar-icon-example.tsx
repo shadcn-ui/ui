@@ -242,7 +242,7 @@ export default function SidebarIconExample() {
               <DropdownMenuTrigger>
                 <SidebarMenuButton
                   size="lg"
-                  className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
+                  className="aria-expanded:bg-sidebar-accent aria-expanded:text-sidebar-accent-foreground"
                 >
                   <span
                     data-slot="button"
@@ -333,7 +333,7 @@ export default function SidebarIconExample() {
                         hugeicons="ArrowRight01Icon"
                         phosphor="CaretRightIcon"
                         remixicon="RiArrowRightSLine"
-                        className="ml-auto transition-transform duration-100 group-data-open/collapsible:rotate-90"
+                        className="ml-auto transition-transform duration-100 group-data-expanded/collapsible:rotate-90"
                       />
                     </SidebarMenuButton>
                     <CollapsibleContent>
@@ -372,7 +372,7 @@ export default function SidebarIconExample() {
               <DropdownMenuTrigger>
                 <SidebarMenuButton
                   size="lg"
-                  className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
+                  className="aria-expanded:bg-sidebar-accent aria-expanded:text-sidebar-accent-foreground"
                 >
                   <Avatar>
                     <AvatarImage src={data.user.avatar} alt={data.user.name} />

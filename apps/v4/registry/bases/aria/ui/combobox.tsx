@@ -177,7 +177,7 @@ function ComboboxContent({
         />
       )}
       className={cn(
-        "cn-combobox-content cn-combobox-content-logical cn-menu-target cn-menu-translucent relative isolate z-50 w-(--trigger-width) origin-(--trigger-anchor-point)",
+        "cn-combobox-content cn-combobox-content-logical cn-menu-target cn-menu-translucent cn-menu-translucent-aria relative isolate z-50 w-(--trigger-width) origin-(--trigger-anchor-point)",
         className
       )}
       {...props}
@@ -211,7 +211,7 @@ function ComboboxItem<T extends object>({
       data-slot="combobox-item"
       textValue={typeof children === "string" ? children : undefined}
       className={cn(
-        "cn-combobox-item relative flex w-full cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-combobox-item cn-combobox-item-aria relative flex w-full cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       {...props}

@@ -69,7 +69,10 @@ function TableRow<T>({ className, ...props }: RowProps<T>) {
   return (
     <RowPrimitive
       data-slot="table-row"
-      className={cn("cn-table-row has-aria-expanded:bg-muted/50", className)}
+      className={cn(
+        "cn-table-row cn-table-row-aria has-aria-expanded:bg-muted/50",
+        className
+      )}
       {...props}
     />
   )

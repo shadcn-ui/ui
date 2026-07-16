@@ -28,7 +28,7 @@ export function VersionSwitcher({
         <DropdownMenuTrigger>
           <SidebarMenuButton
             size="lg"
-            className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
+            className="aria-expanded:bg-sidebar-accent aria-expanded:text-sidebar-accent-foreground"
           >
             <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
               <IconPlaceholder

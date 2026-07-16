@@ -264,7 +264,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
       <DropdownMenuTrigger>
         <Button
           variant="ghost"
-          className="flex size-8 text-muted-foreground data-open:bg-muted"
+          className="flex size-8 text-muted-foreground aria-expanded:bg-muted"
           size="icon"
         >
           <IconPlaceholder

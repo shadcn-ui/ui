@@ -31,7 +31,7 @@ function Switch({
           <span
             data-slot="switch-thumb"
             data-selected={isSelected || undefined}
-            className="cn-switch-thumb pointer-events-none block ring-0 transition-transform"
+            className="cn-switch-thumb cn-switch-thumb-aria pointer-events-none block ring-0 transition-transform"
           />
           {children}
         </>
