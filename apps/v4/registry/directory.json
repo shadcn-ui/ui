@@ -1573,7 +1573,7 @@
     "homepage": "https://wensity.com",
     "url": "https://raw.githubusercontent.com/ksparth12/wensity-shadcn-registry/main/{name}.json",
     "description": "Motion-rich React components for AI interfaces, SaaS blocks, and cinematic interactions. Free Wensity components only.",
-    "logo": "<svg width='512' height='512' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'><rect width='512' height='512' rx='112' fill='var(--foreground)'/><path d='M112 152h58l36 160 43-160h49l43 160 36-160h58l-62 208h-62l-38-141-38 141h-62L112 152Z' fill='var(--background)'/></svg>"
+    "logo": "<svg width='512' height='512' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'><rect width='512' height='512' fill='#ffffff'/><path d='M96 352L224 96H352L224 352H96Z' fill='#0a0a0a'/><path d='M160 416L288 160H416L288 416H160Z' fill='#cd1c18'/></svg>"
   },
   {
     "name": "@wigggle-ui",
