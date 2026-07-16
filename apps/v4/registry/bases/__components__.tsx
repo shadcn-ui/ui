@@ -3707,15 +3707,6 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "dropdown-menu-example"
       return { default: mod.default || mod[exportName] }
     }),
-    demo: React.lazy(async () => {
-      const mod = await import("@/registry/bases/aria/examples/demo")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "demo"
-      return { default: mod.default || mod[exportName] }
-    }),
     "empty-example": React.lazy(async () => {
       const mod = await import("@/registry/bases/aria/examples/empty-example")
       const exportName =
@@ -4041,6 +4032,15 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "tooltip-example"
+      return { default: mod.default || mod[exportName] }
+    }),
+    demo: React.lazy(async () => {
+      const mod = await import("@/registry/bases/aria/examples/demo")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "demo"
       return { default: mod.default || mod[exportName] }
     }),
     "component-example": React.lazy(async () => {

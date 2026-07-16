@@ -27,10 +27,11 @@ import {
 function DropdownMenuTrigger({
   ...props
 }: React.ComponentProps<typeof MenuTriggerPrimitive>) {
-  return <MenuTriggerPrimitive {...props} />
+  return <MenuTriggerPrimitive data-slot="dropdown-menu-trigger" {...props} />
 }
 
 function DropdownMenu({
+  "data-slot": dataSlot = "dropdown-menu-content",
   align = "start",
   alignOffset = 0,
   side = "bottom",
@@ -42,6 +43,7 @@ function DropdownMenu({
   React.ComponentProps<typeof MenuPrimitive<object>>,
   "children" | "className"
 > & {
+  "data-slot"?: string
   className?: string
   children?: React.ReactNode
   align?: PlacementAlign
@@ -51,7 +53,7 @@ function DropdownMenu({
 }) {
   return (
     <PopoverPrimitive
-      data-slot="dropdown-menu-content"
+      data-slot={dataSlot}
       placement={getPlacement(side, align)}
       offset={sideOffset}
       crossOffset={alignOffset}
@@ -137,22 +139,31 @@ function DropdownMenuItem({
       data-inset={inset}
       data-variant={variant}
       textValue={typeof children === "string" ? children : props.textValue}
-      className={({ selectionMode }) =>
-        cn(dropdownMenuItemVariants({ selectionMode, className }))
-      }
+      className={composeRenderProps(className, (className, { selectionMode }) =>
+        cn(dropdownMenuItemVariants({ selectionMode }), className)
+      )}
       {...props}
     >
-      {composeRenderProps(children, (children, { isSelected }) => (
-        <>
-          <span
-            className="pointer-events-none absolute right-2 flex items-center justify-center"
-            data-slot="dropdown-menu-checkbox-item-indicator"
-          >
-            {isSelected ? <CheckIcon /> : null}
-          </span>
-          {children}
-        </>
-      ))}
+      {composeRenderProps(
+        children,
+        (children, { isSelected, selectionMode }) => (
+          <>
+            {selectionMode !== "none" ? (
+              <span
+                className="pointer-events-none absolute right-2 flex items-center justify-center"
+                data-slot={
+                  selectionMode === "single"
+                    ? "dropdown-menu-radio-item-indicator"
+                    : "dropdown-menu-checkbox-item-indicator"
+                }
+              >
+                {isSelected ? <CheckIcon /> : null}
+              </span>
+            ) : null}
+            {children}
+          </>
+        )
+      )}
     </MenuItemPrimitive>
   )
 }
@@ -160,7 +171,7 @@ function DropdownMenuItem({
 function DropdownMenuSub({
   ...props
 }: React.ComponentProps<typeof SubmenuTriggerPrimitive>) {
-  return <SubmenuTriggerPrimitive {...props} />
+  return <SubmenuTriggerPrimitive data-slot="dropdown-menu-sub" {...props} />
 }
 
 function DropdownMenuSubTrigger({

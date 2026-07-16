@@ -17,7 +17,11 @@ import {
 } from "@/lib/utils"
 
 function PopoverTrigger({ children, ...props }: DialogTriggerProps) {
-  return <DialogTrigger {...props}>{children}</DialogTrigger>
+  return (
+    <DialogTrigger data-slot="popover-trigger" {...props}>
+      {children}
+    </DialogTrigger>
+  )
 }
 
 function Popover({
@@ -42,7 +46,7 @@ function Popover({
       offset={sideOffset}
       crossOffset={alignOffset}
       render={(props, { placement, isExiting }) => (
-        // compatibility with existing themes
+        // Keep compatibility with existing themes.
         <div
           {...props}
           data-side={placement}
@@ -88,6 +92,7 @@ function PopoverDescription({
 }: React.ComponentProps<"div">) {
   return (
     <div
+      data-slot="popover-description"
       className={cn(
         "mt-0.5 text-sm leading-relaxed text-muted-foreground",
         className

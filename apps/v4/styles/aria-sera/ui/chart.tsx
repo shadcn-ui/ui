@@ -12,7 +12,7 @@ const THEMES = { light: "", dark: ".dark" } as const
 const INITIAL_DIMENSION = { width: 320, height: 200 } as const
 type TooltipNameType = number | string
 
-export type ChartConfig = Record<
+type ChartConfig = Record<
   string,
   {
     label?: React.ReactNode
@@ -364,6 +364,7 @@ function getPayloadConfigFromPayload(
 }
 
 export {
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,

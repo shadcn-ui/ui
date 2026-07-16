@@ -21,6 +21,7 @@ import {
   TagList as TagListPrimitive,
   Tag as TagPrimitive,
   type ButtonProps,
+  type ComboBoxValueProps,
   type GroupProps,
   type HeaderProps,
   type InputProps,
@@ -28,7 +29,6 @@ import {
   type ListBoxProps,
   type ListBoxSectionProps,
   type SeparatorProps,
-  type TagGroupProps,
   type TagListProps,
   type TagProps,
 } from "react-aria-components"
@@ -46,6 +46,10 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/styles/aria-luma/ui/input-group"
+
+function ComboboxValue<T>({ ...props }: ComboBoxValueProps<T>) {
+  return <ComboBoxValuePrimitive data-slot="combobox-value" {...props} />
+}
 
 function ComboboxTrigger({
   className,
@@ -80,6 +84,7 @@ function ComboboxClear({
       data-slot="combobox-clear"
       variant="ghost"
       size="icon-xs"
+      aria-label="Clear"
       className={cn(className)}
       onPress={() => {
         state?.setValue(null)
@@ -147,6 +152,7 @@ function ComboboxContent({
 }) {
   return (
     <PopoverPrimitive
+      data-slot="combobox-content"
       placement={getPlacement(side, align)}
       offset={sideOffset}
       crossOffset={alignOffset}
@@ -275,20 +281,20 @@ function ComboboxChips({ children, className, ...props }: GroupProps) {
 function ComboboxChipList<T extends object>({
   className,
   ...props
-}: Omit<TagGroupProps, "children"> &
-  TagListProps<T> &
-  React.RefAttributes<HTMLDivElement>) {
+}: Omit<TagListProps<T>, "className" | "items"> & {
+  className?: string
+}) {
   return (
     <ComboBoxValuePrimitive<T> className="contents">
       {({ selectedItems, state }) => (
         <TagGroupPrimitive
-          className="contents"
+          data-slot="combobox-chip-list"
+          className={cn("contents", className)}
           onRemove={(keys) => {
             if (Array.isArray(state.value)) {
               state.setValue(state.value.filter((k) => !keys.has(k)))
             }
           }}
-          {...props}
         >
           <TagListPrimitive
             className="contents"
@@ -377,6 +383,6 @@ export {
   ComboboxChipList,
   ComboboxChipsInput,
   ComboboxTrigger,
-  ComboBoxValuePrimitive as ComboboxValue,
+  ComboboxValue,
   useComboboxAnchor,
 }

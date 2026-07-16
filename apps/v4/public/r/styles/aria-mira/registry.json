@@ -346,7 +346,6 @@
     },
     {
       "name": "context-menu",
-      "registryDependencies": ["dropdown-menu"],
       "files": [
         {
           "path": "registry/aria-mira/ui/context-menu.tsx",
@@ -1364,33 +1363,6 @@
       "type": "registry:example"
     },
     {
-      "name": "demo",
-      "title": "Demo",
-      "registryDependencies": [
-        "alert-dialog",
-        "badge",
-        "button",
-        "button-group",
-        "card",
-        "checkbox",
-        "dropdown-menu",
-        "field",
-        "input-group",
-        "item",
-        "radio-group",
-        "slider",
-        "switch",
-        "textarea"
-      ],
-      "files": [
-        {
-          "path": "registry/aria-mira/examples/demo.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
       "name": "empty-example",
       "title": "Empty",
       "registryDependencies": [
@@ -1900,6 +1872,33 @@
       "files": [
         {
           "path": "registry/aria-mira/examples/tooltip-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "demo",
+      "title": "Demo",
+      "registryDependencies": [
+        "alert-dialog",
+        "badge",
+        "button",
+        "button-group",
+        "card",
+        "checkbox",
+        "dropdown-menu",
+        "field",
+        "input-group",
+        "item",
+        "radio-group",
+        "slider",
+        "switch",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/aria-mira/examples/demo.tsx",
           "type": "registry:example"
         }
       ],

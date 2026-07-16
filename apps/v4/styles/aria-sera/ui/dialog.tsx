@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/styles/aria-sera/ui/button"
 
 function DialogTrigger({ ...props }: DialogTriggerPrimitiveProps) {
-  return <DialogTriggerPrimitive {...props} />
+  return <DialogTriggerPrimitive data-slot="dialog-trigger" {...props} />
 }
 
 function DialogClose({
@@ -185,9 +185,9 @@ function DialogDescription({
   )
 }
 
-export type { DialogPrimitiveProps, DialogTriggerPrimitiveProps }
-
 export {
+  type DialogPrimitiveProps,
+  type DialogTriggerPrimitiveProps,
   Dialog,
   DialogClose,
   DialogDescription,

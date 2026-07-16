@@ -18,7 +18,7 @@ import { Button } from "@/registry/bases/aria/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function DialogTrigger({ ...props }: DialogTriggerPrimitiveProps) {
-  return <DialogTriggerPrimitive {...props} />
+  return <DialogTriggerPrimitive data-slot="dialog-trigger" {...props} />
 }
 
 function DialogClose({
@@ -182,9 +182,9 @@ function DialogDescription({
   )
 }
 
-export type { DialogPrimitiveProps, DialogTriggerPrimitiveProps }
-
 export {
+  type DialogPrimitiveProps,
+  type DialogTriggerPrimitiveProps,
   Dialog,
   DialogClose,
   DialogDescription,

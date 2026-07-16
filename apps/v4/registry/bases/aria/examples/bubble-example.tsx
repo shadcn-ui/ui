@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { ChevronDownIcon } from "lucide-react"
 import { toast } from "sonner"
 
 import {
@@ -177,7 +176,12 @@ function BubbleCollapsible() {
                   className="gap-1 p-0 text-muted-foreground"
                 >
                   {open ? "Show less" : "Show more"}
-                  <ChevronDownIcon
+                  <IconPlaceholder
+                    lucide="ChevronDownIcon"
+                    tabler="IconChevronDown"
+                    hugeicons="ArrowDown01Icon"
+                    phosphor="CaretDownIcon"
+                    remixicon="RiArrowDownSLine"
                     data-icon="inline-end"
                     className="group-data-panel-open/button:rotate-180"
                   />

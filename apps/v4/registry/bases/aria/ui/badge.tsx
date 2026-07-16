@@ -33,6 +33,7 @@ function Badge({
   if (render) {
     const renderProps = {
       "data-slot": "badge",
+      "data-variant": variant,
       className: cn(badgeVariants({ variant }), className),
       ...props,
     }
@@ -43,6 +44,7 @@ function Badge({
   return (
     <span
       data-slot="badge"
+      data-variant={variant}
       className={cn(badgeVariants({ variant }), className)}
       {...props}
     />

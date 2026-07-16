@@ -17,7 +17,7 @@ import {
 function TooltipTrigger({
   ...props
 }: React.ComponentProps<typeof TooltipTriggerPrimitive>) {
-  return <TooltipTriggerPrimitive {...props} />
+  return <TooltipTriggerPrimitive data-slot="tooltip-trigger" {...props} />
 }
 
 function Tooltip({

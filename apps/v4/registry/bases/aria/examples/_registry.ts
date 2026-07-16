@@ -322,33 +322,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "demo",
-    title: "Demo",
-    type: "registry:example",
-    registryDependencies: [
-      "alert-dialog",
-      "badge",
-      "button",
-      "button-group",
-      "card",
-      "checkbox",
-      "dropdown-menu",
-      "field",
-      "input-group",
-      "item",
-      "radio-group",
-      "slider",
-      "switch",
-      "textarea",
-    ],
-    files: [
-      {
-        path: "examples/demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "empty-example",
     title: "Empty",
     type: "registry:example",
@@ -841,6 +814,33 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/tooltip-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "demo",
+    title: "Demo",
+    type: "registry:example",
+    registryDependencies: [
+      "alert-dialog",
+      "badge",
+      "button",
+      "button-group",
+      "card",
+      "checkbox",
+      "dropdown-menu",
+      "field",
+      "input-group",
+      "item",
+      "radio-group",
+      "slider",
+      "switch",
+      "textarea",
+    ],
+    files: [
+      {
+        path: "examples/demo.tsx",
         type: "registry:example",
       },
     ],

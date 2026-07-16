@@ -10004,7 +10004,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
+      registryDependencies: undefined,
       files: [
         {
           path: "styles/aria-nova/ui/context-menu.tsx",
@@ -29957,7 +29957,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
+      registryDependencies: undefined,
       files: [
         {
           path: "styles/aria-vega/ui/context-menu.tsx",
@@ -31255,7 +31255,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
+      registryDependencies: undefined,
       files: [
         {
           path: "styles/aria-maia/ui/context-menu.tsx",
@@ -32553,7 +32553,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
+      registryDependencies: undefined,
       files: [
         {
           path: "styles/aria-lyra/ui/context-menu.tsx",
@@ -33851,7 +33851,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
+      registryDependencies: undefined,
       files: [
         {
           path: "styles/aria-mira/ui/context-menu.tsx",
@@ -35149,7 +35149,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
+      registryDependencies: undefined,
       files: [
         {
           path: "styles/aria-luma/ui/context-menu.tsx",
@@ -36447,7 +36447,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
+      registryDependencies: undefined,
       files: [
         {
           path: "styles/aria-sera/ui/context-menu.tsx",
@@ -37745,7 +37745,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
+      registryDependencies: undefined,
       files: [
         {
           path: "styles/aria-rhea/ui/context-menu.tsx",

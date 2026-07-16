@@ -12,7 +12,7 @@ import { lib } from "./lib/_registry"
 import { ui } from "./ui/_registry"
 
 // Shared between index and style.
-const BASE_STYLE = {
+const ARIA_STYLE = {
   type: "registry:style",
   dependencies: [
     "class-variance-authority",
@@ -43,11 +43,11 @@ export const registry = {
   items: z.array(registryItemSchema).parse([
     {
       name: "index",
-      ...BASE_STYLE,
+      ...ARIA_STYLE,
     },
     {
       name: "style",
-      ...BASE_STYLE,
+      ...ARIA_STYLE,
     },
     ...ui,
     ...examples,

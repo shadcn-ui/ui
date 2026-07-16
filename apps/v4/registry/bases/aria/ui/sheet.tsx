@@ -193,6 +193,8 @@ function SheetDescription({
 }
 
 export {
+  type SheetPrimitiveProps,
+  type SheetTriggerPrimitiveProps,
   Sheet,
   SheetTrigger,
   SheetClose,
@@ -202,5 +204,3 @@ export {
   SheetTitle,
   SheetDescription,
 }
-
-export type { SheetPrimitiveProps, SheetTriggerPrimitiveProps }

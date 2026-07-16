@@ -313,7 +313,6 @@ export const ui: Registry["items"] = [
   {
     name: "context-menu",
     type: "registry:ui",
-    registryDependencies: ["dropdown-menu"],
     files: [
       {
         path: "ui/context-menu.tsx",

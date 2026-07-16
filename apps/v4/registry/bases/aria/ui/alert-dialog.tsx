@@ -17,7 +17,9 @@ import { cn } from "@/registry/bases/aria/lib/utils"
 import { Button } from "@/registry/bases/aria/ui/button"
 
 function AlertDialogTrigger({ ...props }: AlertDialogTriggerPrimitiveProps) {
-  return <AlertDialogTriggerPrimitive {...props} />
+  return (
+    <AlertDialogTriggerPrimitive data-slot="alert-dialog-trigger" {...props} />
+  )
 }
 
 function AlertDialogOverlay({
@@ -205,9 +207,9 @@ function AlertDialogCancel({
   )
 }
 
-export type { AlertDialogPrimitiveProps, AlertDialogTriggerPrimitiveProps }
-
 export {
+  type AlertDialogPrimitiveProps,
+  type AlertDialogTriggerPrimitiveProps,
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
