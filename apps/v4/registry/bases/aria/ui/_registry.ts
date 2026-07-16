@@ -293,7 +293,6 @@ export const ui: Registry["items"] = [
   {
     name: "command",
     type: "registry:ui",
-    dependencies: ["cmdk"],
     registryDependencies: ["dialog", "input-group"],
     files: [
       {
