@@ -11,7 +11,7 @@ export function PopoverBasic() {
   return (
     <PopoverTrigger>
       <Button variant="outline">Open Popover</Button>
-      <Popover align="start">
+      <Popover placement="bottom start">
         <PopoverHeader>
           <PopoverTitle>Dimensions</PopoverTitle>
           <PopoverDescription>

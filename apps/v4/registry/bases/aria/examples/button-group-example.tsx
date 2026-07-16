@@ -133,7 +133,7 @@ function ButtonGroupWithDropdown() {
                 remixicon="RiArrowDownSLine"
               />
             </Button>
-            <DropdownMenu align="end">
+            <DropdownMenu placement="bottom end">
               <DropdownMenuItem>Disable</DropdownMenuItem>
               <DropdownMenuItem variant="destructive">
                 Uninstall
@@ -154,7 +154,7 @@ function ButtonGroupWithDropdown() {
                 remixicon="RiArrowDownSLine"
               />
             </Button>
-            <DropdownMenu align="end" className="w-50">
+            <DropdownMenu placement="bottom end" className="w-50">
               <DropdownMenuGroup>
                 <DropdownMenuItem>
                   <IconPlaceholder
@@ -430,7 +430,7 @@ function ButtonGroupWithSelectAndInput() {
           <SelectTrigger id="duration">
             <SelectValue />
           </SelectTrigger>
-          <SelectContent align="start">
+          <SelectContent placement="bottom start">
             <SelectGroup>
               {durationItems.map((item) => (
                 <SelectItem key={item.value} id={item.value}>

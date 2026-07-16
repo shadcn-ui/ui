@@ -30,7 +30,7 @@ export function BreadcrumbDemo() {
               <BreadcrumbEllipsis />
               <span className="sr-only">Toggle menu</span>
             </Button>
-            <DropdownMenu align="start">
+            <DropdownMenu placement="bottom start">
               <DropdownMenuGroup>
                 <DropdownMenuItem>Documentation</DropdownMenuItem>
                 <DropdownMenuItem>Themes</DropdownMenuItem>

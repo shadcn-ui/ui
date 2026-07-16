@@ -68,7 +68,7 @@ function BreadcrumbWithDropdown() {
                 <BreadcrumbEllipsis />
                 <span className="sr-only">Toggle menu</span>
               </Button>
-              <DropdownMenu align="start">
+              <DropdownMenu placement="bottom start">
                 <DropdownMenuItem>Documentation</DropdownMenuItem>
                 <DropdownMenuItem>Themes</DropdownMenuItem>
                 <DropdownMenuItem>GitHub</DropdownMenuItem>

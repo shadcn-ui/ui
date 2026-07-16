@@ -102,7 +102,7 @@ function PaginationIconsOnly() {
             <SelectTrigger className="w-20" id="select-rows-per-page">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent align="start">
+            <SelectContent placement="bottom start">
               <SelectGroup>
                 <SelectItem id="10">10</SelectItem>
                 <SelectItem id="25">25</SelectItem>

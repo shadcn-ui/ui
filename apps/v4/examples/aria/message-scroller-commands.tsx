@@ -133,7 +133,7 @@ function CommandMenu() {
       <Button type="button" variant="secondary">
         Jump to...
       </Button>
-      <DropdownMenu align="end" side="bottom" className="w-64">
+      <DropdownMenu placement="bottom end" className="w-64">
         <DropdownMenuLabel>Conversations</DropdownMenuLabel>
         {userMessages.map((message) => (
           <DropdownMenuItem

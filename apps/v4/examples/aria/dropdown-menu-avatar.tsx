@@ -30,7 +30,7 @@ export function DropdownMenuAvatar() {
           <AvatarFallback>LR</AvatarFallback>
         </Avatar>
       </Button>
-      <DropdownMenu align="end">
+      <DropdownMenu placement="bottom end">
         <DropdownMenuGroup>
           <DropdownMenuItem>
             <BadgeCheckIcon />

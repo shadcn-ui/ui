@@ -45,25 +45,18 @@ function TooltipSides() {
   return (
     <Example title="Sides">
       <div className="flex flex-wrap gap-2">
-        {(
-          [
-            "inline-start",
-            "left",
-            "top",
-            "bottom",
-            "right",
-            "inline-end",
-          ] as const
-        ).map((side) => (
-          <TooltipTrigger key={side}>
-            <Button variant="outline" className="w-fit capitalize">
-              {side.replace("-", " ")}
-            </Button>
-            <Tooltip side={side}>
-              <p>Add to library</p>
-            </Tooltip>
-          </TooltipTrigger>
-        ))}
+        {(["start", "left", "top", "bottom", "right", "end"] as const).map(
+          (placement) => (
+            <TooltipTrigger key={placement}>
+              <Button variant="outline" className="w-fit capitalize">
+                {placement}
+              </Button>
+              <Tooltip placement={placement}>
+                <p>Add to library</p>
+              </Tooltip>
+            </TooltipTrigger>
+          )
+        )}
       </div>
     </Example>
   )

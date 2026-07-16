@@ -26,7 +26,7 @@ export default function ButtonGroupPopover() {
         <Button variant="outline" size="icon" aria-label="Open Popover">
           <ChevronDownIcon />
         </Button>
-        <Popover align="end" className="rounded-xl text-sm">
+        <Popover placement="bottom end" className="rounded-xl text-sm">
           <PopoverHeader>
             <PopoverTitle>Start a new task with Copilot</PopoverTitle>
             <PopoverDescription>

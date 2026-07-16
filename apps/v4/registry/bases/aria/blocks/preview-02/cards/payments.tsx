@@ -46,7 +46,7 @@ export function Payments() {
                   />
                   <span className="sr-only">Account options</span>
                 </Button>
-                <DropdownMenu align="start">
+                <DropdownMenu placement="bottom start">
                   <DropdownMenuGroup>
                     <DropdownMenuItem>Profile</DropdownMenuItem>
                     <DropdownMenuItem>Statements</DropdownMenuItem>

@@ -14,7 +14,7 @@ export function PopoverForm() {
     <>
       <PopoverTrigger>
         <Button variant="outline">Open Popover</Button>
-        <Popover className="w-64" align="start">
+        <Popover className="w-64" placement="bottom start">
           <PopoverHeader>
             <PopoverTitle>Dimensions</PopoverTitle>
             <PopoverDescription>

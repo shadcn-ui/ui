@@ -458,24 +458,24 @@ function ContextMenuWithSides() {
       <div className="flex flex-wrap justify-center gap-2">
         {(
           [
-            "inline-start",
-            "left",
-            "top",
-            "bottom",
-            "right",
-            "inline-end",
+            { label: "start", placement: "start top" },
+            { label: "left", placement: "left top" },
+            { label: "top", placement: "top start" },
+            { label: "bottom", placement: "bottom start" },
+            { label: "right", placement: "right top" },
+            { label: "end", placement: "end top" },
           ] as const
-        ).map((side) => (
-          <ContextMenuTrigger key={side}>
+        ).map(({ label, placement }) => (
+          <ContextMenuTrigger key={placement}>
             <Pressable>
               <div
                 role="button"
                 className="flex aspect-[2/0.5] items-center justify-center rounded-lg border p-4 text-sm capitalize"
               >
-                {side.replace("-", " ")}
+                {label}
               </div>
             </Pressable>
-            <ContextMenu side={side}>
+            <ContextMenu placement={placement}>
               <ContextMenuGroup>
                 <ContextMenuItem>Back</ContextMenuItem>
                 <ContextMenuItem>Forward</ContextMenuItem>

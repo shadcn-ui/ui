@@ -75,7 +75,9 @@ export function CodespacesCard() {
                       remixicon="RiAddLine"
                     />
                   </Button>
-                  <Tooltip side="bottom">Create a codespace on main</Tooltip>
+                  <Tooltip placement="bottom">
+                    Create a codespace on main
+                  </Tooltip>
                 </TooltipTrigger>
                 <DropdownMenuTrigger>
                   <Button variant="ghost" size="icon-sm">
@@ -87,7 +89,7 @@ export function CodespacesCard() {
                       remixicon="RiMoreLine"
                     />
                   </Button>
-                  <DropdownMenu align="end" className="w-56">
+                  <DropdownMenu placement="bottom end" className="w-56">
                     <DropdownMenuGroup>
                       <DropdownMenuItem>
                         <IconPlaceholder
@@ -233,7 +235,9 @@ export function CodespacesCard() {
                       remixicon="RiInformationLine"
                     />
                   </Button>
-                  <Tooltip side="left">Which remote URL should I use?</Tooltip>
+                  <Tooltip placement="left">
+                    Which remote URL should I use?
+                  </Tooltip>
                 </TooltipTrigger>
               </ItemActions>
             </Item>

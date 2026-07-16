@@ -16,12 +16,7 @@ import {
   type MenuSectionProps as MenuSectionPrimitiveProps,
 } from "react-aria-components"
 
-import {
-  cn,
-  getPlacement,
-  type PlacementAlign,
-  type PlacementSide,
-} from "@/registry/bases/aria/lib/utils"
+import { cn } from "@/registry/bases/aria/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function DropdownMenuTrigger({
@@ -32,31 +27,30 @@ function DropdownMenuTrigger({
 
 function DropdownMenu({
   "data-slot": dataSlot = "dropdown-menu-content",
-  align = "start",
-  alignOffset = 0,
-  side = "bottom",
-  sideOffset = 4,
+  placement = "bottom start",
+  offset = 4,
+  crossOffset = 0,
   className,
   children,
   ...props
 }: Omit<
   React.ComponentProps<typeof MenuPrimitive<object>>,
   "children" | "className"
-> & {
-  "data-slot"?: string
-  className?: string
-  children?: React.ReactNode
-  align?: PlacementAlign
-  alignOffset?: number
-  side?: PlacementSide
-  sideOffset?: number
-}) {
+> &
+  Pick<
+    React.ComponentProps<typeof PopoverPrimitive>,
+    "placement" | "offset" | "crossOffset"
+  > & {
+    "data-slot"?: string
+    className?: string
+    children?: React.ReactNode
+  }) {
   return (
     <PopoverPrimitive
       data-slot={dataSlot}
-      placement={getPlacement(side, align)}
-      offset={sideOffset}
-      crossOffset={alignOffset}
+      placement={placement}
+      offset={offset}
+      crossOffset={crossOffset}
       className={cn(
         "cn-dropdown-menu-content cn-dropdown-menu-content-logical cn-menu-target cn-menu-translucent z-50 w-(--trigger-width) origin-(--trigger-anchor-point) overflow-x-hidden overflow-y-auto outline-none data-closed:overflow-hidden",
         className
@@ -214,10 +208,9 @@ function DropdownMenuSubTrigger({
 }
 
 function DropdownMenuSubContent({
-  align = "start",
-  alignOffset = -3,
-  side = "inline-end",
-  sideOffset = 0,
+  placement = "end top",
+  crossOffset = -3,
+  offset = 0,
   className,
   ...props
 }: React.ComponentProps<typeof DropdownMenu>) {
@@ -228,10 +221,9 @@ function DropdownMenuSubContent({
         "cn-dropdown-menu-sub-content cn-menu-target cn-menu-translucent w-auto",
         className
       )}
-      align={align}
-      alignOffset={alignOffset}
-      side={side}
-      sideOffset={sideOffset}
+      placement={placement}
+      crossOffset={crossOffset}
+      offset={offset}
       {...props}
     />
   )

@@ -107,31 +107,24 @@ function SelectSides() {
   return (
     <Example title="Sides" containerClassName="col-span-2">
       <div className="flex flex-wrap justify-center gap-2">
-        {(
-          [
-            "inline-start",
-            "left",
-            "top",
-            "bottom",
-            "right",
-            "inline-end",
-          ] as const
-        ).map((side) => (
-          <Select key={side} aria-label="Fruits" placeholder="Select">
-            <SelectTrigger className="w-28 capitalize">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent side={side}>
-              <SelectGroup>
-                {items.map((item) => (
-                  <SelectItem key={item.value} id={item.value}>
-                    {item.label}
-                  </SelectItem>
-                ))}
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        ))}
+        {(["start", "left", "top", "bottom", "right", "end"] as const).map(
+          (placement) => (
+            <Select key={placement} aria-label="Fruits" placeholder="Select">
+              <SelectTrigger className="w-28 capitalize">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent placement={placement}>
+                <SelectGroup>
+                  {items.map((item) => (
+                    <SelectItem key={item.value} id={item.value}>
+                      {item.label}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          )
+        )}
       </div>
     </Example>
   )

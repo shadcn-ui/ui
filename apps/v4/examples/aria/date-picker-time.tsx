@@ -29,7 +29,10 @@ export function DatePickerTime() {
               : "Select date"}
             <ChevronDownIcon data-icon="inline-end" />
           </Button>
-          <Popover className="w-auto overflow-hidden p-0" align="start">
+          <Popover
+            className="w-auto overflow-hidden p-0"
+            placement="bottom start"
+          >
             <Calendar
               value={date}
               captionLayout="dropdown"

@@ -45,7 +45,7 @@ export default function InputGroupButtonExample() {
             </InputGroupButton>
           </InputGroupAddon>
           <Popover
-            align="start"
+            placement="bottom start"
             className="flex flex-col gap-1 rounded-xl text-sm"
           >
             <p className="font-medium">Your connection is not secure.</p>

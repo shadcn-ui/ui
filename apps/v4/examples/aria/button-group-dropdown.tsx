@@ -29,7 +29,7 @@ export default function ButtonGroupDropdown() {
         <Button variant="outline" className="pl-2!">
           <ChevronDownIcon />
         </Button>
-        <DropdownMenu align="end" className="w-44">
+        <DropdownMenu placement="bottom end" className="w-44">
           <DropdownMenuGroup>
             <DropdownMenuItem>
               <VolumeOffIcon />

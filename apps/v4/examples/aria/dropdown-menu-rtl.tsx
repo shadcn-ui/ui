@@ -126,7 +126,7 @@ export function DropdownMenuRtl() {
     <DropdownMenuTrigger>
       <Button variant="outline">{t.open}</Button>
       <DropdownMenu
-        align={dir === "rtl" ? "end" : "start"}
+        placement={dir === "rtl" ? "bottom end" : "bottom start"}
         dir={dir}
         className="w-36"
         data-lang={dir === "rtl" ? language : undefined}

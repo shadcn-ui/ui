@@ -307,7 +307,7 @@ function DialogChatSettings() {
                           <SelectTrigger id="theme">
                             <SelectValue />
                           </SelectTrigger>
-                          <SelectContent align="end">
+                          <SelectContent placement="bottom end">
                             <SelectGroup>
                               {themes.map((theme) => (
                                 <SelectItem key={theme.value} id={theme.value}>
@@ -330,7 +330,7 @@ function DialogChatSettings() {
                           <SelectTrigger id="accent-color">
                             <SelectValue />
                           </SelectTrigger>
-                          <SelectContent align="end">
+                          <SelectContent placement="bottom end">
                             <SelectGroup>
                               {accents.map((accent) => (
                                 <SelectItem
@@ -363,7 +363,7 @@ function DialogChatSettings() {
                           <SelectTrigger id="spoken-language">
                             <SelectValue />
                           </SelectTrigger>
-                          <SelectContent align="end">
+                          <SelectContent placement="bottom end">
                             <SelectGroup>
                               {spokenLanguages.map((language) => (
                                 <SelectItem
@@ -387,7 +387,7 @@ function DialogChatSettings() {
                           <SelectTrigger id="voice">
                             <SelectValue />
                           </SelectTrigger>
-                          <SelectContent align="end">
+                          <SelectContent placement="bottom end">
                             <SelectGroup>
                               {voices.map((voice) => (
                                 <SelectItem key={voice.value} id={voice.value}>

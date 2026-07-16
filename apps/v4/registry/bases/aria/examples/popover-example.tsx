@@ -39,7 +39,7 @@ function PopoverBasic() {
         <Button variant="outline" className="w-fit">
           Open Popover
         </Button>
-        <Popover align="start">
+        <Popover placement="bottom start">
           <PopoverHeader>
             <PopoverTitle>Dimensions</PopoverTitle>
             <PopoverDescription>
@@ -57,30 +57,28 @@ function PopoverSides() {
     <Example title="Sides">
       <div className="flex flex-col gap-2">
         <div className="flex flex-wrap gap-2">
-          {(["inline-start", "left", "top"] as const).map((side) => {
-            const label = side.replace("-", " ")
+          {(["start", "left", "top"] as const).map((placement) => {
             return (
-              <PopoverTrigger key={side}>
+              <PopoverTrigger key={placement}>
                 <Button variant="outline" className="w-fit capitalize">
-                  {label}
+                  {placement}
                 </Button>
-                <Popover side={side} className="w-40">
-                  <p>Popover on {side.replace("-", " ")}</p>
+                <Popover placement={placement} className="w-40">
+                  <p>Popover on {placement}</p>
                 </Popover>
               </PopoverTrigger>
             )
           })}
         </div>
         <div className="flex flex-wrap gap-2">
-          {(["bottom", "right", "inline-end"] as const).map((side) => {
-            const label = side.replace("-", " ")
+          {(["bottom", "right", "end"] as const).map((placement) => {
             return (
-              <PopoverTrigger key={side}>
+              <PopoverTrigger key={placement}>
                 <Button variant="outline" className="w-fit capitalize">
-                  {label}
+                  {placement}
                 </Button>
-                <Popover side={side} className="w-40">
-                  <p>Popover on {side.replace("-", " ")}</p>
+                <Popover placement={placement} className="w-40">
+                  <p>Popover on {placement}</p>
                 </Popover>
               </PopoverTrigger>
             )
@@ -96,7 +94,7 @@ function PopoverWithForm() {
     <Example title="With Form">
       <PopoverTrigger>
         <Button variant="outline">Open Popover</Button>
-        <Popover className="w-64" align="start">
+        <Popover className="w-64" placement="bottom start">
           <PopoverHeader>
             <PopoverTitle>Dimensions</PopoverTitle>
             <PopoverDescription>
@@ -131,7 +129,7 @@ function PopoverAlignments() {
           <Button variant="outline" size="sm">
             Start
           </Button>
-          <Popover align="start" className="w-40">
+          <Popover placement="bottom start" className="w-40">
             Aligned to start
           </Popover>
         </PopoverTrigger>
@@ -139,7 +137,7 @@ function PopoverAlignments() {
           <Button variant="outline" size="sm">
             Center
           </Button>
-          <Popover align="center" className="w-40">
+          <Popover placement="bottom" className="w-40">
             Aligned to center
           </Popover>
         </PopoverTrigger>
@@ -147,7 +145,7 @@ function PopoverAlignments() {
           <Button variant="outline" size="sm">
             End
           </Button>
-          <Popover align="end" className="w-40">
+          <Popover placement="bottom end" className="w-40">
             Aligned to end
           </Popover>
         </PopoverTrigger>
@@ -172,7 +170,7 @@ function PopoverInDialog() {
             <Button variant="outline" className="w-fit">
               Open Popover
             </Button>
-            <Popover align="start">
+            <Popover placement="bottom start">
               <PopoverHeader>
                 <PopoverTitle>Popover in Dialog</PopoverTitle>
                 <PopoverDescription>

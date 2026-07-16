@@ -85,19 +85,19 @@ function DropdownMenuSides() {
       <div className="flex flex-wrap justify-center gap-2">
         {(
           [
-            "inline-start",
-            "left",
-            "top",
-            "bottom",
-            "right",
-            "inline-end",
+            { label: "start", placement: "start top" },
+            { label: "left", placement: "left top" },
+            { label: "top", placement: "top start" },
+            { label: "bottom", placement: "bottom start" },
+            { label: "right", placement: "right top" },
+            { label: "end", placement: "end top" },
           ] as const
-        ).map((side) => (
-          <DropdownMenuTrigger key={side}>
+        ).map(({ label, placement }) => (
+          <DropdownMenuTrigger key={placement}>
             <Button variant="outline" className="w-fit capitalize">
-              {side.replace("-", " ")}
+              {label}
             </Button>
-            <DropdownMenu side={side}>
+            <DropdownMenu placement={placement}>
               <DropdownMenuGroup>
                 <DropdownMenuItem>Profile</DropdownMenuItem>
                 <DropdownMenuItem>Billing</DropdownMenuItem>
@@ -604,9 +604,7 @@ function DropdownMenuWithAvatar() {
               <AvatarFallback>LR</AvatarFallback>
             </Avatar>
           </Button>
-          <DropdownMenu align="end" side="top">
-            {menuContent}
-          </DropdownMenu>
+          <DropdownMenu placement="top end">{menuContent}</DropdownMenu>
         </DropdownMenuTrigger>
       </div>
     </Example>

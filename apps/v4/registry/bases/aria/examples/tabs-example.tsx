@@ -273,7 +273,7 @@ function TabsWithDropdown() {
               />
               <span className="sr-only">More options</span>
             </Button>
-            <DropdownMenu align="end">
+            <DropdownMenu placement="bottom end">
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuItem>Export</DropdownMenuItem>
               <DropdownMenuSeparator />

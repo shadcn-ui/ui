@@ -46,7 +46,7 @@ export function ItemDropdown() {
       <Button variant="outline">
         Select <ChevronDownIcon />
       </Button>
-      <DropdownMenu className="w-48" align="end">
+      <DropdownMenu className="w-48" placement="bottom end">
         <DropdownMenuGroup>
           {people.map((person) => (
             <DropdownMenuItem key={person.username}>

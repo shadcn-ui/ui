@@ -175,7 +175,7 @@ function FormExample() {
                 />
                 <span className="sr-only">More options</span>
               </Button>
-              <DropdownMenu align="end" className="w-56">
+              <DropdownMenu placement="bottom end" className="w-56">
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>File</DropdownMenuLabel>
                   <DropdownMenuItem>

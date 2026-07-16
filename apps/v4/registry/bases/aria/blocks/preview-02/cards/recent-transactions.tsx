@@ -89,7 +89,7 @@ export function RecentTransactions() {
                       remixicon="RiMore2Line"
                     />
                   </Button>
-                  <DropdownMenu align="end">
+                  <DropdownMenu placement="bottom end">
                     <DropdownMenuItem>View details</DropdownMenuItem>
                     <DropdownMenuItem>Add note</DropdownMenuItem>
                     <DropdownMenuItem>Categorize</DropdownMenuItem>
@@ -139,7 +139,7 @@ export function RecentTransactions() {
                       remixicon="RiMore2Line"
                     />
                   </Button>
-                  <DropdownMenu align="end">
+                  <DropdownMenu placement="bottom end">
                     <DropdownMenuItem>View details</DropdownMenuItem>
                     <DropdownMenuItem>Add note</DropdownMenuItem>
                     <DropdownMenuItem>Categorize</DropdownMenuItem>
@@ -187,7 +187,7 @@ export function RecentTransactions() {
                       remixicon="RiMore2Line"
                     />
                   </Button>
-                  <DropdownMenu align="end">
+                  <DropdownMenu placement="bottom end">
                     <DropdownMenuItem>View details</DropdownMenuItem>
                     <DropdownMenuItem>Add note</DropdownMenuItem>
                     <DropdownMenuItem>Categorize</DropdownMenuItem>
@@ -237,7 +237,7 @@ export function RecentTransactions() {
                       remixicon="RiMore2Line"
                     />
                   </Button>
-                  <DropdownMenu align="end">
+                  <DropdownMenu placement="bottom end">
                     <DropdownMenuItem>View details</DropdownMenuItem>
                     <DropdownMenuItem>Add note</DropdownMenuItem>
                     <DropdownMenuItem>Categorize</DropdownMenuItem>
@@ -287,7 +287,7 @@ export function RecentTransactions() {
                       remixicon="RiMore2Line"
                     />
                   </Button>
-                  <DropdownMenu align="end">
+                  <DropdownMenu placement="bottom end">
                     <DropdownMenuItem>View details</DropdownMenuItem>
                     <DropdownMenuItem>Add note</DropdownMenuItem>
                     <DropdownMenuItem>Categorize</DropdownMenuItem>

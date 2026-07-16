@@ -85,9 +85,9 @@ export function DatePickerInput() {
             </InputGroupButton>
             <Popover
               className="w-auto overflow-hidden p-0"
-              align="end"
-              alignOffset={-8}
-              sideOffset={10}
+              placement="bottom end"
+              crossOffset={-8}
+              offset={10}
             >
               <Calendar
                 value={date}

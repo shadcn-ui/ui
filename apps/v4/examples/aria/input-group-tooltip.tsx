@@ -45,7 +45,7 @@ export default function InputGroupTooltip() {
               <HelpCircle />
             </InputGroupButton>
           </InputGroupAddon>
-          <Tooltip side="left">
+          <Tooltip placement="left">
             <p>Click for help with API keys</p>
           </Tooltip>
         </TooltipTrigger>

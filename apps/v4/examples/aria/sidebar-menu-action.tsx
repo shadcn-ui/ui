@@ -78,7 +78,7 @@ export default function AppSidebar() {
                         <MoreHorizontalIcon />
                         <span className="sr-only">More</span>
                       </SidebarMenuAction>
-                      <DropdownMenu side="right" align="start">
+                      <DropdownMenu placement="right top">
                         <DropdownMenuItem>
                           <span>Edit Project</span>
                         </DropdownMenuItem>

@@ -48,8 +48,7 @@ export function NavMain({
               </SidebarMenuButton>
               {item.items?.length ? (
                 <DropdownMenu
-                  side={isMobile ? "bottom" : "right"}
-                  align={isMobile ? "end" : "start"}
+                  placement={isMobile ? "bottom end" : "right top"}
                   className="min-w-56 rounded-lg"
                 >
                   {item.items.map((item) => (

@@ -19,12 +19,12 @@ const translations: Translations = {
     values: {
       title: "Dimensions",
       description: "Set the dimensions for the layer.",
-      "inline-start": "Inline Start",
+      start: "Start",
       left: "Left",
       top: "Top",
       bottom: "Bottom",
       right: "Right",
-      "inline-end": "Inline End",
+      end: "End",
     },
   },
   ar: {
@@ -32,12 +32,12 @@ const translations: Translations = {
     values: {
       title: "الأبعاد",
       description: "تعيين الأبعاد للطبقة.",
-      "inline-start": "بداية السطر",
+      start: "بداية السطر",
       left: "يسار",
       top: "أعلى",
       bottom: "أسفل",
       right: "يمين",
-      "inline-end": "نهاية السطر",
+      end: "نهاية السطر",
     },
   },
   he: {
@@ -45,18 +45,18 @@ const translations: Translations = {
     values: {
       title: "מימדים",
       description: "הגדר את המימדים לשכבה.",
-      "inline-start": "תחילת השורה",
+      start: "תחילת השורה",
       left: "שמאל",
       top: "למעלה",
       bottom: "למטה",
       right: "ימין",
-      "inline-end": "סוף השורה",
+      end: "סוף השורה",
     },
   },
 }
 
 const physicalSides = ["left", "top", "bottom", "right"] as const
-const logicalSides = ["inline-start", "inline-end"] as const
+const logicalPlacements = ["start", "end"] as const
 
 export function PopoverRtl() {
   const { dir, t } = useTranslation(translations, "ar")
@@ -67,7 +67,7 @@ export function PopoverRtl() {
         {physicalSides.map((side) => (
           <PopoverTrigger key={side}>
             <Button variant="outline">{t[side]}</Button>
-            <Popover side={side} dir={dir}>
+            <Popover placement={side} dir={dir}>
               <PopoverHeader>
                 <PopoverTitle>{t.title}</PopoverTitle>
                 <PopoverDescription>{t.description}</PopoverDescription>
@@ -77,10 +77,10 @@ export function PopoverRtl() {
         ))}
       </div>
       <div className="flex flex-wrap justify-center gap-2">
-        {logicalSides.map((side) => (
-          <PopoverTrigger key={side}>
-            <Button variant="outline">{t[side]}</Button>
-            <Popover side={side} dir={dir}>
+        {logicalPlacements.map((placement) => (
+          <PopoverTrigger key={placement}>
+            <Button variant="outline">{t[placement]}</Button>
+            <Popover placement={placement} dir={dir}>
               <PopoverHeader>
                 <PopoverTitle>{t.title}</PopoverTitle>
                 <PopoverDescription>{t.description}</PopoverDescription>

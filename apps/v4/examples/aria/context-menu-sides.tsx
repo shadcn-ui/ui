@@ -26,7 +26,7 @@ export function ContextMenuSides() {
             </span>
           </div>
         </Pressable>
-        <ContextMenu side="top">
+        <ContextMenu placement="top start">
           <ContextMenuGroup>
             <ContextMenuItem>Back</ContextMenuItem>
             <ContextMenuItem>Forward</ContextMenuItem>
@@ -48,7 +48,7 @@ export function ContextMenuSides() {
             </span>
           </div>
         </Pressable>
-        <ContextMenu side="right">
+        <ContextMenu placement="right top">
           <ContextMenuGroup>
             <ContextMenuItem>Back</ContextMenuItem>
             <ContextMenuItem>Forward</ContextMenuItem>
@@ -70,7 +70,7 @@ export function ContextMenuSides() {
             </span>
           </div>
         </Pressable>
-        <ContextMenu side="bottom">
+        <ContextMenu placement="bottom start">
           <ContextMenuGroup>
             <ContextMenuItem>Back</ContextMenuItem>
             <ContextMenuItem>Forward</ContextMenuItem>
@@ -92,7 +92,7 @@ export function ContextMenuSides() {
             </span>
           </div>
         </Pressable>
-        <ContextMenu side="left">
+        <ContextMenu placement="left top">
           <ContextMenuGroup>
             <ContextMenuItem>Back</ContextMenuItem>
             <ContextMenuItem>Forward</ContextMenuItem>

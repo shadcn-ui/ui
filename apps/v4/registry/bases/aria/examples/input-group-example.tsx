@@ -400,10 +400,10 @@ function InputGroupWithTooltip({
                   />
                 </InputGroupButton>
                 <DropdownMenu
-                  align="start"
+                  placement="bottom start"
                   className="min-w-16"
-                  sideOffset={10}
-                  alignOffset={-8}
+                  offset={10}
+                  crossOffset={-8}
                 >
                   <DropdownMenuItem onAction={() => setCountry("+1")}>
                     +1
@@ -437,7 +437,7 @@ function InputGroupWithTooltip({
                   />
                 </InputGroupButton>
               </InputGroupAddon>
-              <Popover align="start">
+              <Popover placement="bottom start">
                 <PopoverHeader>
                   <PopoverTitle>Your connection is not secure.</PopoverTitle>
                   <PopoverDescription>

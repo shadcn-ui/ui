@@ -9,7 +9,7 @@ export function TooltipSides() {
           <Button variant="outline" className="w-fit capitalize">
             {side}
           </Button>
-          <Tooltip side={side}>
+          <Tooltip placement={side}>
             <p>Add to library</p>
           </Tooltip>
         </TooltipTrigger>

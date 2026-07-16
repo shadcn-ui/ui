@@ -55,7 +55,7 @@ export function DatePickerRtl() {
         )}
         <ChevronDownIcon data-icon="inline-end" />
       </Button>
-      <Popover className="w-auto p-0" align="start" dir={dir}>
+      <Popover className="w-auto p-0" placement="bottom start" dir={dir}>
         <I18nProvider locale={language}>
           <Calendar value={date} onChange={setDate} />
         </I18nProvider>

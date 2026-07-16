@@ -168,7 +168,7 @@ export function UIElements() {
                   remixicon="RiArrowUpSLine"
                 />
               </Button>
-              <DropdownMenu align="end" side="top" className="w-fit">
+              <DropdownMenu placement="top end" className="w-fit">
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
                   <DropdownMenuItem>Mute Conversation</DropdownMenuItem>

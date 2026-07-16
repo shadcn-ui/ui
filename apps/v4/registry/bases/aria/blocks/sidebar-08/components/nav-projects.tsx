@@ -51,8 +51,7 @@ export function NavProjects({
               </SidebarMenuAction>
               <DropdownMenu
                 className="w-48"
-                side={isMobile ? "bottom" : "right"}
-                align={isMobile ? "end" : "start"}
+                placement={isMobile ? "bottom end" : "right top"}
               >
                 <DropdownMenuItem>
                   <IconPlaceholder

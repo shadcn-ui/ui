@@ -7,12 +7,7 @@ import {
   TooltipTrigger as TooltipTriggerPrimitive,
 } from "react-aria-components"
 
-import {
-  cn,
-  getPlacement,
-  type PlacementAlign,
-  type PlacementSide,
-} from "@/registry/bases/aria/lib/utils"
+import { cn } from "@/registry/bases/aria/lib/utils"
 
 function TooltipTrigger({
   ...props
@@ -22,29 +17,24 @@ function TooltipTrigger({
 
 function Tooltip({
   className,
-  side = "top",
-  sideOffset = 4,
-  align = "center",
-  alignOffset = 0,
+  placement = "top",
+  offset = 4,
+  crossOffset = 0,
   children,
   ...props
 }: Omit<
   React.ComponentProps<typeof TooltipPrimitive>,
-  "children" | "className" | "placement" | "offset" | "crossOffset"
+  "children" | "className"
 > & {
   className?: string
   children?: React.ReactNode
-  side?: PlacementSide
-  sideOffset?: number
-  align?: PlacementAlign
-  alignOffset?: number
 }) {
   return (
     <TooltipPrimitive
       data-slot="tooltip-content"
-      placement={getPlacement(side, align)}
-      offset={sideOffset}
-      crossOffset={alignOffset}
+      placement={placement}
+      offset={offset}
+      crossOffset={crossOffset}
       render={(props, { placement, isExiting }) => (
         <div
           {...props}

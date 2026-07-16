@@ -27,7 +27,7 @@ export function DatePickerDemo() {
         )}
         <ChevronDownIcon data-icon="inline-end" />
       </Button>
-      <Popover className="w-auto p-0" align="start">
+      <Popover className="w-auto p-0" placement="bottom start">
         <Calendar value={date} onChange={setDate} />
       </Popover>
     </PopoverTrigger>

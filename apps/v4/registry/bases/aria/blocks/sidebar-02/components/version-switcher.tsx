@@ -53,7 +53,7 @@ export function VersionSwitcher({
               className="ml-auto"
             />
           </SidebarMenuButton>
-          <DropdownMenu align="start">
+          <DropdownMenu placement="bottom start">
             {versions.map((version) => (
               <DropdownMenuItem
                 key={version}

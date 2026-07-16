@@ -35,7 +35,7 @@ export default function AppSidebar() {
                   <ChevronUpIcon className="ml-auto" />
                 </SidebarMenuButton>
                 <DropdownMenu
-                  side="top"
+                  placement="top start"
                   className="w-(--radix-popper-anchor-width)"
                 >
                   <DropdownMenuItem>

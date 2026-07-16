@@ -12,42 +12,42 @@ const translations: Translations = {
     dir: "ltr",
     values: {
       content: "Add to library",
-      "inline-start": "Inline Start",
+      start: "Start",
       left: "Left",
       top: "Top",
       bottom: "Bottom",
       right: "Right",
-      "inline-end": "Inline End",
+      end: "End",
     },
   },
   ar: {
     dir: "rtl",
     values: {
       content: "إضافة إلى المكتبة",
-      "inline-start": "بداية السطر",
+      start: "بداية السطر",
       left: "يسار",
       top: "أعلى",
       bottom: "أسفل",
       right: "يمين",
-      "inline-end": "نهاية السطر",
+      end: "نهاية السطر",
     },
   },
   he: {
     dir: "rtl",
     values: {
       content: "הוסף לספרייה",
-      "inline-start": "תחילת השורה",
+      start: "תחילת השורה",
       left: "שמאל",
       top: "למעלה",
       bottom: "למטה",
       right: "ימין",
-      "inline-end": "סוף השורה",
+      end: "סוף השורה",
     },
   },
 }
 
 const physicalSides = ["left", "top", "bottom", "right"] as const
-const logicalSides = ["inline-start", "inline-end"] as const
+const logicalPlacements = ["start", "end"] as const
 
 export function TooltipRtl() {
   const { dir, t } = useTranslation(translations, "ar")
@@ -58,17 +58,17 @@ export function TooltipRtl() {
         {physicalSides.map((side) => (
           <TooltipTrigger key={side}>
             <Button variant="outline">{t[side]}</Button>
-            <Tooltip side={side} dir={dir}>
+            <Tooltip placement={side} dir={dir}>
               {t.content}
             </Tooltip>
           </TooltipTrigger>
         ))}
       </div>
       <div className="flex flex-wrap justify-center gap-2">
-        {logicalSides.map((side) => (
-          <TooltipTrigger key={side}>
-            <Button variant="outline">{t[side]}</Button>
-            <Tooltip side={side} dir={dir}>
+        {logicalPlacements.map((placement) => (
+          <TooltipTrigger key={placement}>
+            <Button variant="outline">{t[placement]}</Button>
+            <Tooltip placement={placement} dir={dir}>
               {t.content}
             </Tooltip>
           </TooltipTrigger>

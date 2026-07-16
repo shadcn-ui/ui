@@ -46,7 +46,7 @@ export default function ButtonGroupDemo() {
           <Button variant="outline" size="icon" aria-label="More Options">
             <MoreHorizontalIcon />
           </Button>
-          <DropdownMenu align="end" className="w-40">
+          <DropdownMenu placement="bottom end" className="w-40">
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <MailCheckIcon />

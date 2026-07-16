@@ -245,7 +245,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
             >
               <SelectValue />
             </SelectTrigger>
-            <SelectContent align="end">
+            <SelectContent placement="bottom end">
               <SelectGroup>
                 <SelectItem id="Eddie Lake">Eddie Lake</SelectItem>
                 <SelectItem id="Jamik Tashpulatov">
@@ -276,7 +276,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
           />
           <span className="sr-only">Open menu</span>
         </Button>
-        <DropdownMenu align="end" className="w-32">
+        <DropdownMenu placement="bottom end" className="w-32">
           <DropdownMenuItem>Edit</DropdownMenuItem>
           <DropdownMenuItem>Make a copy</DropdownMenuItem>
           <DropdownMenuItem>Favorite</DropdownMenuItem>
@@ -566,7 +566,7 @@ export function DataTable({
                 <SelectTrigger size="sm" className="w-20" id="rows-per-page">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent side="top">
+                <SelectContent placement="top">
                   <SelectGroup>
                     {[10, 20, 30, 40, 50].map((pageSize) => (
                       <SelectItem key={pageSize} id={`${pageSize}`}>

@@ -38,7 +38,7 @@ export function BreadcrumbDropdown() {
               Components
               <ChevronDownIcon data-icon="inline-end" />
             </button>
-            <DropdownMenu align="start">
+            <DropdownMenu placement="bottom start">
               <DropdownMenuGroup>
                 <DropdownMenuItem>Documentation</DropdownMenuItem>
                 <DropdownMenuItem>Themes</DropdownMenuItem>

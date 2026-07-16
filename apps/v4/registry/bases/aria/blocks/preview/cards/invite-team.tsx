@@ -47,7 +47,7 @@ export function InviteTeam() {
                 <SelectTrigger className="w-24">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent align="end">
+                <SelectContent placement="bottom end">
                   <SelectGroup>
                     <SelectItem id="admin">Admin</SelectItem>
                     <SelectItem id="editor">Editor</SelectItem>

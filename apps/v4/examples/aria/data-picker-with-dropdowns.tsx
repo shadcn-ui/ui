@@ -31,7 +31,7 @@ export function DataPickerWithDropdowns() {
             <span>Pick a date</span>
           )}
         </Button>
-        <Popover className="w-auto p-0" align="start">
+        <Popover className="w-auto p-0" placement="bottom start">
           <Calendar value={date} onChange={setDate} captionLayout="dropdown" />
           <div className="flex gap-2 border-t p-2">
             <Button

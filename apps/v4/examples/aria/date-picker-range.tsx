@@ -37,7 +37,7 @@ export function DatePickerWithRange() {
             <span>Pick a date</span>
           )}
         </Button>
-        <Popover className="w-auto p-0" align="start">
+        <Popover className="w-auto p-0" placement="bottom start">
           <RangeCalendar value={date} onChange={setDate} numberOfMonths={2} />
         </Popover>
       </PopoverTrigger>

@@ -237,7 +237,7 @@ export function DataTableRtl() {
                 <MoreHorizontal />
               </Button>
               <DropdownMenu
-                align={dir === "rtl" ? "start" : "end"}
+                placement={dir === "rtl" ? "bottom start" : "bottom end"}
                 data-lang={dir === "rtl" ? language : undefined}
                 className="w-40"
               >
@@ -298,7 +298,7 @@ export function DataTableRtl() {
             {t.columns} <ChevronDown />
           </Button>
           <DropdownMenu
-            align={dir === "rtl" ? "start" : "end"}
+            placement={dir === "rtl" ? "bottom start" : "bottom end"}
             data-lang={dir === "rtl" ? language : undefined}
           >
             <DropdownMenuGroup

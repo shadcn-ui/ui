@@ -20,12 +20,7 @@ import {
   type SelectValueProps,
 } from "react-aria-components"
 
-import {
-  cn,
-  getPlacement,
-  type PlacementAlign,
-  type PlacementSide,
-} from "@/registry/bases/aria/lib/utils"
+import { cn } from "@/registry/bases/aria/lib/utils"
 import {
   InputGroup,
   InputGroupAddon,
@@ -113,29 +108,23 @@ function SelectTrigger({
 function SelectContent({
   className,
   children,
-  side = "bottom",
-  sideOffset = 4,
-  align = "center",
-  alignOffset = 0,
+  placement = "bottom",
+  offset = 4,
+  crossOffset = 0,
   ...props
 }: Omit<
   React.ComponentProps<typeof PopoverPrimitive>,
-  "className" | "children" | "placement" | "offset" | "crossOffset"
+  "className" | "children"
 > & {
   className?: string
   children?: React.ReactNode
-  align?: PlacementAlign
-  alignOffset?: number
-  side?: PlacementSide
-  sideOffset?: number
 }) {
   return (
     <SelectPopover
       className={className}
-      side={side}
-      sideOffset={sideOffset}
-      align={align}
-      alignOffset={alignOffset}
+      placement={placement}
+      offset={offset}
+      crossOffset={crossOffset}
       {...props}
     >
       <SelectList>{children}</SelectList>
@@ -146,28 +135,23 @@ function SelectContent({
 function SelectPopover({
   className,
   children,
-  side = "bottom",
-  sideOffset = 4,
-  align = "start",
-  alignOffset = 0,
+  placement = "bottom start",
+  offset = 4,
+  crossOffset = 0,
   ...props
 }: Omit<
   React.ComponentProps<typeof PopoverPrimitive>,
-  "className" | "children" | "placement" | "offset" | "crossOffset"
+  "className" | "children"
 > & {
   className?: string
   children?: React.ReactNode
-  align?: PlacementAlign
-  alignOffset?: number
-  side?: PlacementSide
-  sideOffset?: number
 }) {
   return (
     <PopoverPrimitive
       data-slot="select-content"
-      placement={getPlacement(side, align)}
-      offset={sideOffset}
-      crossOffset={alignOffset}
+      placement={placement}
+      offset={offset}
+      crossOffset={crossOffset}
       render={(props, { placement, isExiting }) => (
         <div
           {...props}

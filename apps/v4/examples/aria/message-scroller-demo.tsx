@@ -183,7 +183,7 @@ export function MessageScrollerDemo() {
                     >
                       <PlusIcon />
                     </InputGroupButton>
-                    <DropdownMenu align="start" side="top" className="w-44">
+                    <DropdownMenu placement="top start" className="w-44">
                       <DropdownMenuItem>
                         <PaperclipIcon />
                         Add Photos & Files

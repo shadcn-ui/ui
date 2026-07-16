@@ -34,7 +34,7 @@ export function TableActions() {
                 <MoreHorizontalIcon />
                 <span className="sr-only">Open menu</span>
               </Button>
-              <DropdownMenu align="end">
+              <DropdownMenu placement="bottom end">
                 <DropdownMenuItem>Edit</DropdownMenuItem>
                 <DropdownMenuItem>Duplicate</DropdownMenuItem>
                 <DropdownMenuSeparator />
@@ -54,7 +54,7 @@ export function TableActions() {
                 <MoreHorizontalIcon />
                 <span className="sr-only">Open menu</span>
               </Button>
-              <DropdownMenu align="end">
+              <DropdownMenu placement="bottom end">
                 <DropdownMenuItem>Edit</DropdownMenuItem>
                 <DropdownMenuItem>Duplicate</DropdownMenuItem>
                 <DropdownMenuSeparator />
@@ -74,7 +74,7 @@ export function TableActions() {
                 <MoreHorizontalIcon />
                 <span className="sr-only">Open menu</span>
               </Button>
-              <DropdownMenu align="end">
+              <DropdownMenu placement="bottom end">
                 <DropdownMenuItem>Edit</DropdownMenuItem>
                 <DropdownMenuItem>Duplicate</DropdownMenuItem>
                 <DropdownMenuSeparator />

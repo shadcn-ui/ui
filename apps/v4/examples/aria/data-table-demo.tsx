@@ -129,7 +129,7 @@ export const columns: ColumnDef<Payment>[] = [
             <span className="sr-only">Open menu</span>
             <MoreHorizontal />
           </Button>
-          <DropdownMenu align="end" className="w-44">
+          <DropdownMenu placement="bottom end" className="w-44">
             <DropdownMenuGroup>
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuItem
@@ -193,7 +193,7 @@ export function DataTableDemo() {
           <Button variant="outline" className="ml-auto">
             Columns <ChevronDown />
           </Button>
-          <DropdownMenu align="end" className="w-44">
+          <DropdownMenu placement="bottom end" className="w-44">
             <DropdownMenuGroup
               selectionMode="multiple"
               selectedKeys={table

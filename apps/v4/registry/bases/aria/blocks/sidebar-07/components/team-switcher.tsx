@@ -59,9 +59,8 @@ export function TeamSwitcher({
           </SidebarMenuButton>
           <DropdownMenu
             className="w-fit"
-            align="start"
-            side={isMobile ? "bottom" : "right"}
-            sideOffset={4}
+            placement={isMobile ? "bottom start" : "right top"}
+            offset={4}
           >
             <DropdownMenuGroup>
               <DropdownMenuLabel className="text-xs text-muted-foreground">

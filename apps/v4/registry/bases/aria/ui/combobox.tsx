@@ -32,12 +32,7 @@ import {
   type TagProps,
 } from "react-aria-components"
 
-import {
-  cn,
-  getPlacement,
-  type PlacementAlign,
-  type PlacementSide,
-} from "@/registry/bases/aria/lib/utils"
+import { cn } from "@/registry/bases/aria/lib/utils"
 import { Button } from "@/registry/bases/aria/ui/button"
 import {
   InputGroup,
@@ -153,30 +148,25 @@ function ComboboxInput({
 
 function ComboboxContent({
   className,
-  side = "bottom",
-  sideOffset = 6,
-  align = "center",
-  alignOffset = 0,
+  placement = "bottom",
+  offset = 6,
+  crossOffset = 0,
   anchor,
   ...props
 }: Omit<
   React.ComponentProps<typeof PopoverPrimitive>,
-  "className" | "children" | "placement" | "offset" | "crossOffset"
+  "className" | "children"
 > & {
   className?: string
   children?: React.ReactNode
-  align?: PlacementAlign
-  alignOffset?: number
-  side?: PlacementSide
-  sideOffset?: number
   anchor?: React.RefObject<HTMLDivElement | null>
 }) {
   return (
     <PopoverPrimitive
       data-slot="combobox-content"
-      placement={getPlacement(side, align)}
-      offset={sideOffset}
-      crossOffset={alignOffset}
+      placement={placement}
+      offset={offset}
+      crossOffset={crossOffset}
       triggerRef={anchor}
       render={(props, { placement, isExiting }) => (
         <div

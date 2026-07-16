@@ -18,7 +18,7 @@ export function DropdownMenuDemo() {
   return (
     <DropdownMenuTrigger>
       <Button variant="outline">Open</Button>
-      <DropdownMenu className="w-40" align="start">
+      <DropdownMenu className="w-40" placement="bottom start">
         <DropdownMenuGroup>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuItem>

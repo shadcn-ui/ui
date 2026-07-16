@@ -384,8 +384,7 @@ function SidebarContentInner({
                     </SidebarMenuAction>
                     <DropdownMenu
                       className="w-48 rounded-lg"
-                      side={isMobile ? "bottom" : "inline-end"}
-                      align={isMobile ? "end" : "start"}
+                      placement={isMobile ? "bottom end" : "end top"}
                       dir={dir}
                     >
                       <DropdownMenuGroup>
@@ -438,9 +437,8 @@ function SidebarContentInner({
                 </SidebarMenuButton>
                 <DropdownMenu
                   className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-                  side={isMobile ? "bottom" : "inline-end"}
-                  align="end"
-                  sideOffset={4}
+                  placement={isMobile ? "bottom end" : "end bottom"}
+                  offset={4}
                   dir={dir}
                 >
                   <DropdownMenuGroup>

@@ -55,9 +55,8 @@ export function NavUser({
           </SidebarMenuButton>
           <DropdownMenu
             className="min-w-56 rounded-lg"
-            side={isMobile ? "bottom" : "right"}
-            align="start"
-            sideOffset={4}
+            placement={isMobile ? "bottom start" : "right top"}
+            offset={4}
           >
             <DropdownMenuGroup>
               <DropdownMenuLabel className="p-0 font-normal">

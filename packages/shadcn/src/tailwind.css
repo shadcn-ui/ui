@@ -91,12 +91,6 @@
   }
 }
 
-@custom-variant data-invalid {
-  &:is([data-invalid="true"], [aria-invalid="true"]) {
-    @slot;
-  }
-}
-
 @custom-variant data-highlighted {
   &:is([data-highlighted], [data-focused]) {
     @slot;

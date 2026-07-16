@@ -80,8 +80,8 @@ export function DatePickerNaturalLanguage() {
             </InputGroupButton>
             <Popover
               className="w-auto overflow-hidden p-0"
-              align="end"
-              sideOffset={8}
+              placement="bottom end"
+              offset={8}
             >
               <Calendar
                 value={date}

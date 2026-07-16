@@ -155,9 +155,9 @@ Use `variant="destructive"` to style the menu item as destructive.
 
 <ComponentPreview styleName="aria-nova" name="context-menu-destructive" />
 
-## Sides
+## Placement
 
-Control submenu placement with side and align props.
+Control submenu placement with the `placement` prop.
 
 <ComponentPreview styleName="aria-nova" name="context-menu-sides" />
 
@@ -171,19 +171,19 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
   direction="rtl"
 />
 
-Use `side="inline-end"` to place the menu on the logical right side of the trigger.
+Use `placement="end"` to place the menu on the logical end side of the trigger.
 
 ```tsx showLineNumbers
 <ContextMenuTrigger>
   <Pressable>
     <div role="button">Right click here</div>
   </Pressable>
-  <ContextMenuContent side="inline-end">
+  <ContextMenu placement="end">
     <ContextMenuItem>Profile</ContextMenuItem>
     <ContextMenuItem>Billing</ContextMenuItem>
     <ContextMenuItem>Team</ContextMenuItem>
     <ContextMenuItem>Subscription</ContextMenuItem>
-  </ContextMenuContent>
+  </ContextMenu>
 </ContextMenuTrigger>
 ```
 

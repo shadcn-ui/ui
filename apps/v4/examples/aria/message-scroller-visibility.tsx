@@ -141,9 +141,8 @@ function TranscriptOutline() {
         ))}
       </Button>
       <Popover
-        align="center"
-        side="left"
-        sideOffset={-28}
+        placement="left"
+        offset={-28}
         className="flex w-64 flex-col gap-1 rounded-2xl p-1"
       >
         {userMessages.map((message) => (

@@ -214,7 +214,10 @@ export function NavActions() {
             remixicon="RiMoreLine"
           />
         </Button>
-        <Popover className="w-56 overflow-hidden rounded-lg p-0" align="end">
+        <Popover
+          className="w-56 overflow-hidden rounded-lg p-0"
+          placement="bottom end"
+        >
           <Sidebar collapsible="none" className="bg-transparent">
             <SidebarContent>
               {data.map((group, index) => (

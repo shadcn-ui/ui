@@ -25,7 +25,7 @@ function RadioGroupItem({ className, children, ...props }: RadioProps) {
     <RadioPrimitive
       data-slot="radio-group-item"
       className={cn(
-        "cn-radio-group-item group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+        "cn-radio-group-item cn-radio-group-item-aria group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         className
       )}
       {...props}

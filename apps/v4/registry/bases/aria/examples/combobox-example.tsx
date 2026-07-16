@@ -569,36 +569,29 @@ function ComboboxSides() {
   return (
     <Example title="Sides" containerClassName="col-span-2">
       <div className="flex flex-wrap justify-center gap-2">
-        {(
-          [
-            "inline-start",
-            "left",
-            "top",
-            "bottom",
-            "right",
-            "inline-end",
-          ] as const
-        ).map((side) => (
-          <Combobox key={side} allowsEmptyCollection>
-            <ComboboxInput
-              placeholder={side.replace("-", " ")}
-              className="w-32 **:data-[slot=input-group-control]:capitalize"
-            />
-            <ComboboxContent side={side}>
-              <ComboboxList
-                renderEmptyState={() => (
-                  <ComboboxEmpty>No items found.</ComboboxEmpty>
-                )}
-              >
-                {frameworks.map((item) => (
-                  <ComboboxItem key={item} id={item}>
-                    {item}
-                  </ComboboxItem>
-                ))}
-              </ComboboxList>
-            </ComboboxContent>
-          </Combobox>
-        ))}
+        {(["start", "left", "top", "bottom", "right", "end"] as const).map(
+          (placement) => (
+            <Combobox key={placement} allowsEmptyCollection>
+              <ComboboxInput
+                placeholder={placement}
+                className="w-32 **:data-[slot=input-group-control]:capitalize"
+              />
+              <ComboboxContent placement={placement}>
+                <ComboboxList
+                  renderEmptyState={() => (
+                    <ComboboxEmpty>No items found.</ComboboxEmpty>
+                  )}
+                >
+                  {frameworks.map((item) => (
+                    <ComboboxItem key={item} id={item}>
+                      {item}
+                    </ComboboxItem>
+                  ))}
+                </ComboboxList>
+              </ComboboxContent>
+            </Combobox>
+          )
+        )}
       </div>
     </Example>
   )
@@ -907,7 +900,7 @@ function ComboxboxInputAddon() {
             />
           </InputGroupAddon>
         </ComboboxInput>
-        <ComboboxContent alignOffset={-28} className="w-60">
+        <ComboboxContent crossOffset={-28} className="w-60">
           <ComboboxList
             items={timezones}
             renderEmptyState={() => (

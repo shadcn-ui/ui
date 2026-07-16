@@ -28,7 +28,7 @@ export function DatePickerSimple() {
             <span>Pick a date</span>
           )}
         </Button>
-        <Popover className="w-auto p-0" align="start">
+        <Popover className="w-auto p-0" placement="bottom start">
           <Calendar value={date} onChange={setDate} />
         </Popover>
       </PopoverTrigger>

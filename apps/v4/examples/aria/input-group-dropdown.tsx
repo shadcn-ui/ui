@@ -25,7 +25,7 @@ export function InputGroupDropdown() {
             <InputGroupButton variant="ghost" aria-label="More" size="icon-xs">
               <MoreHorizontal />
             </InputGroupButton>
-            <DropdownMenu align="end" sideOffset={8} alignOffset={-4}>
+            <DropdownMenu placement="bottom end" offset={8} crossOffset={-4}>
               <DropdownMenuGroup>
                 <DropdownMenuItem>Settings</DropdownMenuItem>
                 <DropdownMenuItem>Copy path</DropdownMenuItem>
@@ -42,7 +42,7 @@ export function InputGroupDropdown() {
             <InputGroupButton variant="ghost" className="pr-1.5! text-xs">
               Search In... <ChevronDownIcon className="size-3" />
             </InputGroupButton>
-            <DropdownMenu align="end" sideOffset={8} alignOffset={-4}>
+            <DropdownMenu placement="bottom end" offset={8} crossOffset={-4}>
               <DropdownMenuGroup>
                 <DropdownMenuItem>Documentation</DropdownMenuItem>
                 <DropdownMenuItem>Blog Posts</DropdownMenuItem>

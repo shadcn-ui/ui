@@ -231,9 +231,8 @@ function TeamSwitcher({
           </SidebarMenuButton>
           <DropdownMenu
             className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-            align="start"
-            side={isMobile ? "bottom" : "right"}
-            sideOffset={4}
+            placement={isMobile ? "bottom start" : "right top"}
+            offset={4}
           >
             <DropdownMenuGroup>
               <DropdownMenuLabel className="text-xs text-muted-foreground">
@@ -348,8 +347,7 @@ function NavProjects({
               </SidebarMenuAction>
               <DropdownMenu
                 className="w-48 rounded-lg"
-                side={isMobile ? "bottom" : "right"}
-                align={isMobile ? "end" : "start"}
+                placement={isMobile ? "bottom end" : "right top"}
               >
                 <DropdownMenuItem>
                   <Folder className="text-muted-foreground" />
@@ -410,9 +408,8 @@ function NavUser({
           </SidebarMenuButton>
           <DropdownMenu
             className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-            side={isMobile ? "bottom" : "right"}
-            align="end"
-            sideOffset={4}
+            placement={isMobile ? "bottom end" : "right bottom"}
+            offset={4}
           >
             <DropdownMenuGroup>
               <DropdownMenuLabel className="p-0 font-normal">

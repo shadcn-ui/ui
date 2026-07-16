@@ -9,7 +9,7 @@ export function PopoverAlignments() {
           <Button variant="outline" size="sm">
             Start
           </Button>
-          <Popover align="start" className="w-40">
+          <Popover placement="bottom start" className="w-40">
             Aligned to start
           </Popover>
         </PopoverTrigger>
@@ -17,7 +17,7 @@ export function PopoverAlignments() {
           <Button variant="outline" size="sm">
             Center
           </Button>
-          <Popover align="center" className="w-40">
+          <Popover placement="bottom" className="w-40">
             Aligned to center
           </Popover>
         </PopoverTrigger>
@@ -25,7 +25,7 @@ export function PopoverAlignments() {
           <Button variant="outline" size="sm">
             End
           </Button>
-          <Popover align="end" className="w-40">
+          <Popover placement="bottom end" className="w-40">
             Aligned to end
           </Popover>
         </PopoverTrigger>

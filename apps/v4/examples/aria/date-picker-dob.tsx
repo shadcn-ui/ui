@@ -25,7 +25,10 @@ export function DatePickerSimple() {
             ? date.toDate(getLocalTimeZone()).toLocaleDateString()
             : "Select date"}
         </Button>
-        <Popover className="w-auto overflow-hidden p-0" align="start">
+        <Popover
+          className="w-auto overflow-hidden p-0"
+          placement="bottom start"
+        >
           <Calendar
             value={date}
             captionLayout="dropdown"

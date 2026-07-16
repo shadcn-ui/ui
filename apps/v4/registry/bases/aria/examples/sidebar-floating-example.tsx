@@ -204,7 +204,7 @@ export default function SidebarFloatingExample() {
                       />
                     </SidebarMenuButton>
                     {item.items?.length ? (
-                      <DropdownMenu side="right" align="start">
+                      <DropdownMenu placement="right top">
                         <DropdownMenuGroup>
                           {item.items.map((subItem) => (
                             <DropdownMenuItem

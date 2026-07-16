@@ -59,7 +59,7 @@ export function ComboxboxInputGroup() {
           <GlobeIcon />
         </InputGroupAddon>
       </ComboboxInput>
-      <ComboboxContent alignOffset={-28} className="w-60">
+      <ComboboxContent crossOffset={-28} className="w-60">
         <ComboboxList
           items={timezones}
           renderEmptyState={() => (

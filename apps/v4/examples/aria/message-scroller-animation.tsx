@@ -146,7 +146,7 @@ export function MessageScrollerAnimation() {
             <SelectTrigger aria-label="Animation preset">
               <SelectValue>{preset.name}</SelectValue>
             </SelectTrigger>
-            <SelectContent align="start" side="top">
+            <SelectContent placement="top start">
               <SelectGroup>
                 {Object.values(MESSAGE_ANIMATIONS).map((animation) => (
                   <SelectItem key={animation.id} id={animation.id}>

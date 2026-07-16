@@ -9,12 +9,7 @@ import {
   type PopoverProps as PopoverPrimitiveProps,
 } from "react-aria-components"
 
-import {
-  cn,
-  getPlacement,
-  type PlacementAlign,
-  type PlacementSide,
-} from "@/registry/bases/aria/lib/utils"
+import { cn } from "@/registry/bases/aria/lib/utils"
 
 function PopoverTrigger({ children, ...props }: DialogTriggerProps) {
   return (
@@ -26,27 +21,20 @@ function PopoverTrigger({ children, ...props }: DialogTriggerProps) {
 
 function Popover({
   className,
-  align = "center",
-  alignOffset = 0,
-  side = "bottom",
-  sideOffset = 4,
+  placement = "bottom",
+  offset = 4,
+  crossOffset = 0,
   ...props
-}: Omit<PopoverPrimitiveProps, "className" | "children" | "placement"> & {
+}: Omit<PopoverPrimitiveProps, "className"> & {
   className?: string
-  children?: React.ReactNode
-  align?: PlacementAlign
-  alignOffset?: number
-  side?: PlacementSide
-  sideOffset?: number
 }) {
   return (
     <PopoverPrimitive
       data-slot="popover-content"
-      placement={getPlacement(side, align)}
-      offset={sideOffset}
-      crossOffset={alignOffset}
+      placement={placement}
+      offset={offset}
+      crossOffset={crossOffset}
       render={(props, { placement, isExiting }) => (
-        // Keep compatibility with existing themes.
         <div
           {...props}
           data-side={placement}
