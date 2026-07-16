@@ -1408,6 +1408,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256'><script/><rect x='16' y='16' width='224' height='224' rx='28' stroke='#000' stroke-width='7'/><path d='m42 56 32 24-32 24' stroke='#fff' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='m208.8 156.8-48 48M199.2 104 108 195.2' stroke='#fff' stroke-width='19.2' stroke-linecap='round' fill='none'/></svg>"
   },
   {
+    "name": "@tuiparts",
+    "homepage": "https://tuiparts.sh",
+    "url": "https://tuiparts.sh/r/{name}.json",
+    "description": "OpenTUI recipes, made simple. Ready to use, customizable terminal UI recipes for Core, React, and Solid.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><title>tuiparts.sh</title><path d='M8 6.5l3 3L16.5 3' stroke='#2D62E4' stroke-width='2'/><rect x='5' y='13' width='14' height='9' stroke='currentColor' stroke-width='2'/></svg>"
+  },
+  {
     "name": "@terrae",
     "homepage": "https://www.terrae.dev",
     "url": "https://www.terrae.dev/{name}.json",
