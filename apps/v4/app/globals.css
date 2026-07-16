@@ -4,6 +4,22 @@
 @import "./legacy-themes.css";
 
 @source "../node_modules/streamdown/dist/*.js";
+@source "../styles/base-luma/**/*.tsx";
+@source "../styles/base-lyra/**/*.tsx";
+@source "../styles/base-maia/**/*.tsx";
+@source "../styles/base-mira/**/*.tsx";
+@source "../styles/base-nova/**/*.tsx";
+@source "../styles/base-rhea/**/*.tsx";
+@source "../styles/base-sera/**/*.tsx";
+@source "../styles/base-vega/**/*.tsx";
+@source "../styles/radix-luma/**/*.tsx";
+@source "../styles/radix-lyra/**/*.tsx";
+@source "../styles/radix-maia/**/*.tsx";
+@source "../styles/radix-mira/**/*.tsx";
+@source "../styles/radix-nova/**/*.tsx";
+@source "../styles/radix-rhea/**/*.tsx";
+@source "../styles/radix-sera/**/*.tsx";
+@source "../styles/radix-vega/**/*.tsx";
 
 @custom-variant style-vega (&:where(.style-vega *));
 @custom-variant style-nova (&:where(.style-nova *));
