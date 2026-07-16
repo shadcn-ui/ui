@@ -3,7 +3,10 @@ import { execa } from "execa"
 import prompts from "prompts"
 import { afterEach, describe, expect, test, vi } from "vitest"
 
-import { updateDependencies } from "../../../src/utils/updaters/update-dependencies"
+import {
+  assertSafeDependencies,
+  updateDependencies,
+} from "../../../src/utils/updaters/update-dependencies"
 
 vi.mock("execa")
 vi.mock("prompts")
@@ -26,8 +29,8 @@ describe("updateDependencies", () => {
         },
       },
       expectedPackageManager: "npm",
-      expectedArgs: ["install", "first", "second", "third"],
-      expectedDevArgs: ["install", "-D", "fourth"],
+      expectedArgs: ["install", "--", "first", "second", "third"],
+      expectedDevArgs: ["install", "-D", "--", "fourth"],
     },
     {
       description:
@@ -41,8 +44,8 @@ describe("updateDependencies", () => {
         },
       },
       expectedPackageManager: "npm",
-      expectedArgs: ["install", "--force", "first", "second", "third"],
-      expectedDevArgs: ["install", "--force", "-D", "fourth"],
+      expectedArgs: ["install", "--force", "--", "first", "second", "third"],
+      expectedDevArgs: ["install", "--force", "-D", "--", "fourth"],
     },
     {
       description:
@@ -59,11 +62,12 @@ describe("updateDependencies", () => {
       expectedArgs: [
         "install",
         "--legacy-peer-deps",
+        "--",
         "first",
         "second",
         "third",
       ],
-      expectedDevArgs: ["install", "--legacy-peer-deps", "-D", "fourth"],
+      expectedDevArgs: ["install", "--legacy-peer-deps", "-D", "--", "fourth"],
     },
     {
       description: "deno uses npm: package prefix",
@@ -88,8 +92,8 @@ describe("updateDependencies", () => {
         },
       },
       expectedPackageManager: "bun",
-      expectedArgs: ["add", "first", "second", "third"],
-      expectedDevArgs: ["add", "-D", "fourth"],
+      expectedArgs: ["add", "--", "first", "second", "third"],
+      expectedDevArgs: ["add", "-D", "--", "fourth"],
     },
     {
       description: "pnpm uses pnpm",
@@ -101,8 +105,8 @@ describe("updateDependencies", () => {
         },
       },
       expectedPackageManager: "pnpm",
-      expectedArgs: ["add", "first", "second", "third"],
-      expectedDevArgs: ["add", "-D", "fourth"],
+      expectedArgs: ["add", "--", "first", "second", "third"],
+      expectedDevArgs: ["add", "-D", "--", "fourth"],
     },
     {
       description: "deduplicates input dependencies",
@@ -115,8 +119,8 @@ describe("updateDependencies", () => {
         },
       },
       expectedPackageManager: "npm",
-      expectedArgs: ["install", "first"],
-      expectedDevArgs: ["install", "-D", "second"],
+      expectedArgs: ["install", "--", "first"],
+      expectedDevArgs: ["install", "-D", "--", "second"],
     },
   ])(
     "$description",
@@ -179,12 +183,16 @@ describe("updateDependencies", () => {
     expect(execa).toHaveBeenCalledTimes(2)
     expect(execa).toHaveBeenCalledWith(
       "pnpm",
-      ["add", "react-is", "recharts@3.8.0"],
+      ["add", "--", "react-is", "recharts@3.8.0"],
       { cwd }
     )
-    expect(execa).toHaveBeenCalledWith("pnpm", ["add", "-D", "typescript"], {
-      cwd,
-    })
+    expect(execa).toHaveBeenCalledWith(
+      "pnpm",
+      ["add", "-D", "--", "typescript"],
+      {
+        cwd,
+      }
+    )
   })
 
   test("prefers explicit specs over duplicate bare requests", async () => {
@@ -200,7 +208,7 @@ describe("updateDependencies", () => {
     expect(execa).toHaveBeenCalledTimes(1)
     expect(execa).toHaveBeenCalledWith(
       "pnpm",
-      ["add", "recharts@3.8.0", "@base-ui/react@1.4.1"],
+      ["add", "--", "recharts@3.8.0", "@base-ui/react@1.4.1"],
       { cwd }
     )
   })
@@ -222,8 +230,45 @@ describe("updateDependencies", () => {
 
     expect(execa).toHaveBeenCalledWith(
       "npx",
-      ["expo", "install", "recharts", "react-is"],
+      ["expo", "install", "--", "recharts", "react-is"],
       { cwd }
     )
+  })
+
+  test("rejects registry dependencies that begin with a dash (flag injection)", async () => {
+    const cwd = path.resolve(__dirname, "../../fixtures/project-pnpm")
+
+    await expect(
+      updateDependencies(
+        ["--registry=http://malicious"],
+        [],
+        { resolvedPaths: { cwd } } as any,
+        { silent: true }
+      )
+    ).rejects.toThrow(/cannot start with/)
+
+    expect(execa).not.toHaveBeenCalledWith(
+      "pnpm",
+      expect.arrayContaining(["--registry=http://malicious"]),
+      expect.anything()
+    )
+  })
+})
+
+describe("assertSafeDependencies", () => {
+  test("does not throw for normal names and specifiers", () => {
+    expect(() =>
+      assertSafeDependencies(["zod", "recharts@3.8.0", "@base-ui/react"])
+    ).not.toThrow()
+  })
+
+  test("throws for a specifier starting with a dash", () => {
+    expect(() => assertSafeDependencies(["--registry=http://x"])).toThrow(
+      /cannot start with/
+    )
+  })
+
+  test("throws when a dash follows leading whitespace", () => {
+    expect(() => assertSafeDependencies(["  -D"])).toThrow(/cannot start with/)
   })
 })
