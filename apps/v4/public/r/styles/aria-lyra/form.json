@@ -1,5 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "form",
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/aria/form"
+    }
+  },
   "type": "registry:ui"
 }

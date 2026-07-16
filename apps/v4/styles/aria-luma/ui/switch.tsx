@@ -1,6 +1,7 @@
 "use client"
 
 import {
+  composeRenderProps,
   Switch as SwitchPrimitive,
   type SwitchProps as SwitchPrimitiveProps,
 } from "react-aria-components"
@@ -10,6 +11,7 @@ import { cn } from "@/lib/utils"
 function Switch({
   className,
   size = "default",
+  children,
   ...props
 }: SwitchPrimitiveProps & {
   size?: "sm" | "default"
@@ -24,13 +26,16 @@ function Switch({
       )}
       {...props}
     >
-      {({ isSelected }) => (
-        <span
-          data-slot="switch-thumb"
-          data-selected={isSelected || undefined}
-          className="pointer-events-none block rounded-full bg-background shadow-sm ring-0 transition-transform not-dark:bg-clip-padding group-data-[size=default]/switch:h-4 group-data-[size=default]/switch:w-6 group-data-[size=sm]/switch:h-3 group-data-[size=sm]/switch:w-4 data-checked:translate-x-[calc(100%-8px)] dark:data-checked:bg-primary-foreground data-unchecked:translate-x-0 dark:data-unchecked:bg-foreground"
-        />
-      )}
+      {composeRenderProps(children, (children, { isSelected }) => (
+        <>
+          <span
+            data-slot="switch-thumb"
+            data-selected={isSelected || undefined}
+            className="pointer-events-none block rounded-full bg-background shadow-sm ring-0 transition-transform not-dark:bg-clip-padding group-data-[size=default]/switch:h-4 group-data-[size=default]/switch:w-6 group-data-[size=sm]/switch:h-3 group-data-[size=sm]/switch:w-4 data-checked:translate-x-[calc(100%-8px)] dark:data-checked:bg-primary-foreground data-unchecked:translate-x-0 dark:data-unchecked:bg-foreground"
+          />
+          {children}
+        </>
+      ))}
     </SwitchPrimitive>
   )
 }

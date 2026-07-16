@@ -21,6 +21,7 @@ import {
 } from "react-aria-components"
 
 import { cn } from "@/lib/utils"
+import { Button, buttonVariants } from "@/styles/aria-sera/ui/button"
 import {
   Select,
   SelectContent,
@@ -28,8 +29,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/styles/aria-nova/ui/select"
-import { Button, buttonVariants } from "@/styles/aria-sera/ui/button"
+} from "@/styles/aria-sera/ui/select"
 
 const cellVariants = cva(
   "group/day relative mt-2 aspect-square h-full w-full cursor-default rounded-(--cell-radius) p-0 text-center select-none [&:is(:last-child>[data-selected=true])>div]:rounded-r-(--cell-radius)",

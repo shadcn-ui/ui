@@ -1301,6 +1301,7 @@ async function buildRegistryJsonFile(styleName: string) {
   }
 
   const outputDir = path.join(process.cwd(), `public/r/styles/${styleName}`)
+  await rimraf(outputDir)
   await fs.mkdir(outputDir, { recursive: true })
 
   const registryJsonPath = path.join(outputDir, "registry.json")

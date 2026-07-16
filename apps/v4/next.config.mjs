@@ -59,6 +59,11 @@ const nextConfig = {
         destination: "/docs/forms",
         permanent: true,
       },
+      {
+        source: "/docs/components/aria/form",
+        destination: "/docs/forms",
+        permanent: true,
+      },
       // Typography redirects to /docs/typeset.
       {
         source: "/docs/components/base/typography",

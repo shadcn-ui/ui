@@ -4,9 +4,15 @@
   "files": [
     {
       "path": "registry/aria-vega/ui/spinner.tsx",
-      "content": "\"use client\"\n\nimport { ProgressBar as ProgressBarPrimitive } from \"react-aria-components\"\n\nimport { cn } from \"@/registry/aria-vega/lib/utils\"\nimport { IconPlaceholder } from \"@/app/(create)/components/icon-placeholder\"\n\nfunction Spinner({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <ProgressBarPrimitive\n      isIndeterminate\n      aria-label=\"Loading\"\n      className={cn(\"size-4\", className)}\n    >\n      <IconPlaceholder\n        lucide=\"Loader2Icon\"\n        tabler=\"IconLoader\"\n        hugeicons=\"Loading03Icon\"\n        phosphor=\"SpinnerIcon\"\n        remixicon=\"RiLoaderLine\"\n        data-slot=\"spinner\"\n        className=\"size-full animate-spin\"\n        {...props}\n      />\n    </ProgressBarPrimitive>\n  )\n}\n\nexport { Spinner }\n",
+      "content": "import { cn } from \"@/registry/aria-vega/lib/utils\"\nimport { IconPlaceholder } from \"@/app/(create)/components/icon-placeholder\"\n\nfunction Spinner({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <IconPlaceholder\n      lucide=\"Loader2Icon\"\n      tabler=\"IconLoader\"\n      hugeicons=\"Loading03Icon\"\n      phosphor=\"SpinnerIcon\"\n      remixicon=\"RiLoaderLine\"\n      data-slot=\"spinner\"\n      role=\"status\"\n      aria-label=\"Loading\"\n      className={cn(\"size-4 animate-spin\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Spinner }\n",
       "type": "registry:ui"
     }
   ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/aria/spinner",
+      "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/spinner-example.tsx"
+    }
+  },
   "type": "registry:ui"
 }

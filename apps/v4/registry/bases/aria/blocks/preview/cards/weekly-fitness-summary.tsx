@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { Button } from "@/registry/bases/aria/ui/button"
 import {
   Card,
   CardContent,
@@ -10,7 +11,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/bases/aria/ui/card"
-import { Button } from "@/registry/bases/base/ui/button"
 
 const FITNESS_WEEKLY_LOAD = [
   { day: "M", load: 84 },

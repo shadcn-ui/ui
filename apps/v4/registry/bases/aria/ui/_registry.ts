@@ -1,6 +1,6 @@
 import { type Registry } from "shadcn/schema"
 
-export const ui: Registry["items"] = [
+const ARIA_UI_ITEMS: Registry["items"] = [
   {
     name: "accordion",
     type: "registry:ui",
@@ -96,8 +96,7 @@ export const ui: Registry["items"] = [
   {
     name: "calendar",
     type: "registry:ui",
-    dependencies: ["react-day-picker@latest", "date-fns"],
-    registryDependencies: ["button"],
+    registryDependencies: ["button", "select"],
     files: [
       {
         path: "ui/calendar.tsx",
@@ -137,7 +136,7 @@ export const ui: Registry["items"] = [
       },
     ],
     registryDependencies: ["card"],
-    dependencies: ["recharts@2.15.4"],
+    dependencies: ["recharts@3.8.0"],
   },
   {
     name: "checkbox",
@@ -368,6 +367,7 @@ export const ui: Registry["items"] = [
   {
     name: "select",
     type: "registry:ui",
+    registryDependencies: ["input-group"],
     files: [
       {
         path: "ui/select.tsx",
@@ -611,3 +611,20 @@ export const ui: Registry["items"] = [
     ],
   },
 ]
+
+const ARIA_EXAMPLE_EXCLUSIONS = new Set(["direction", "form"])
+
+export const ui: Registry["items"] = ARIA_UI_ITEMS.map((item) => ({
+  ...item,
+  meta: {
+    ...item.meta,
+    links: {
+      docs: `https://ui.shadcn.com/docs/components/aria/${item.name}`,
+      ...(!ARIA_EXAMPLE_EXCLUSIONS.has(item.name)
+        ? {
+            examples: `https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/${item.name}-example.tsx`,
+          }
+        : {}),
+    },
+  },
+}))

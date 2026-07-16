@@ -84,6 +84,7 @@ function BreadcrumbLink({ className, render, ...props }: LinkProps) {
     <LinkPrimitive
       data-slot="breadcrumb-link"
       className={cn("cn-breadcrumb-link", className)}
+      render={render}
       {...props}
     />
   )

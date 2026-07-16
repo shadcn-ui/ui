@@ -9,8 +9,8 @@ import { Node, Project, ScriptKind, SyntaxKind } from "ts-morph"
 import { DEFAULT_PRESETS } from "./defaults"
 import {
   encodePreset,
+  parsePresetStyle,
   PRESET_BASE_COLORS,
-  PRESET_BASES,
   PRESET_FONT_HEADINGS,
   PRESET_FONTS,
   PRESET_ICON_LIBRARIES,
@@ -190,12 +190,11 @@ async function readCssState(tailwindCssPath?: string) {
 }
 
 function normalizePresetStyle(style: string | undefined) {
-  if (!style) {
+  const normalized = parsePresetStyle(style).style
+  if (!normalized) {
     return null
   }
 
-  const base = PRESET_BASES.find((base) => style.startsWith(`${base}-`))
-  const normalized = base ? style.slice(base.length + 1) : style
   if (!(normalized in DEFAULT_PRESETS)) {
     return null
   }

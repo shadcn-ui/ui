@@ -1,11 +1,9 @@
 "use client"
 
-import type React from "react"
+import * as React from "react"
 import { I18nProvider, useLocale } from "react-aria-components"
 
-export { I18nProvider, useLocale } from "react-aria-components"
-
-export function DirectionProvider(
+function DirectionProvider(
   props: React.ComponentProps<typeof I18nProvider> & {
     direction?: "ltr" | "rtl"
   }
@@ -23,7 +21,9 @@ export function DirectionProvider(
   return <I18nProvider {...props} locale={locale} />
 }
 
-export function useDirection(): "ltr" | "rtl" {
+function useDirection() {
   const { direction } = useLocale()
   return direction
 }
+
+export { DirectionProvider, I18nProvider, useDirection, useLocale }

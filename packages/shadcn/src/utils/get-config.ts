@@ -1,5 +1,5 @@
 import path from "path"
-import { PRESET_BASES, type PresetBase } from "@/src/preset/preset"
+import { parsePresetStyle, type PresetBase } from "@/src/preset/preset"
 import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import {
   configSchema,
@@ -327,7 +327,7 @@ export function getBase(style: string | undefined): PresetBase {
     return "base"
   }
 
-  return PRESET_BASES.find((base) => style.startsWith(`${base}-`)) ?? "radix"
+  return parsePresetStyle(style).base ?? "radix"
 }
 
 export type DeepPartial<T> = {

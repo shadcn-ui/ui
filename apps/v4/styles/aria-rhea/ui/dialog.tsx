@@ -73,6 +73,7 @@ function Dialog({
   className,
   children,
   showCloseButton = true,
+  isDismissable = true,
   ...props
 }: Omit<ModalOverlayPrimitiveProps, "className" | "children"> &
   Pick<React.ComponentProps<typeof ModalPrimitive>, "isDismissable"> & {
@@ -81,7 +82,7 @@ function Dialog({
     showCloseButton?: boolean
   }) {
   return (
-    <DialogOverlay {...props}>
+    <DialogOverlay isDismissable={isDismissable} {...props}>
       <ModalPrimitive
         data-slot="dialog-content"
         className={cn(

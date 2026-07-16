@@ -18,6 +18,17 @@ export function isPresetBase(value: unknown): value is PresetBase {
   return PRESET_BASES.includes(value as PresetBase)
 }
 
+export function parsePresetStyle(style: string | undefined) {
+  const base = style
+    ? PRESET_BASES.find((base) => style.startsWith(`${base}-`))
+    : undefined
+
+  return {
+    base,
+    style: base ? style?.slice(base.length + 1) : style,
+  }
+}
+
 export const PRESET_STYLES = [
   "nova",
   "vega",

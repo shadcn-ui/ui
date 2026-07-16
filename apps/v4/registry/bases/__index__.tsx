@@ -7315,7 +7315,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/accordion",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/accordion-example.tsx",
+        },
+      },
     },
     alert: {
       name: "alert",
@@ -7331,7 +7337,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/alert",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/alert-example.tsx",
+        },
+      },
     },
     "alert-dialog": {
       name: "alert-dialog",
@@ -7347,7 +7359,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/alert-dialog",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/alert-dialog-example.tsx",
+        },
+      },
     },
     "aspect-ratio": {
       name: "aspect-ratio",
@@ -7363,7 +7381,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/aspect-ratio",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/aspect-ratio-example.tsx",
+        },
+      },
     },
     avatar: {
       name: "avatar",
@@ -7379,7 +7403,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/avatar",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/avatar-example.tsx",
+        },
+      },
     },
     badge: {
       name: "badge",
@@ -7395,7 +7425,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/badge",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/badge-example.tsx",
+        },
+      },
     },
     breadcrumb: {
       name: "breadcrumb",
@@ -7411,7 +7447,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/breadcrumb",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/breadcrumb-example.tsx",
+        },
+      },
     },
     button: {
       name: "button",
@@ -7427,7 +7469,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/button",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/button-example.tsx",
+        },
+      },
     },
     "button-group": {
       name: "button-group",
@@ -7443,14 +7491,20 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/button-group",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/button-group-example.tsx",
+        },
+      },
     },
     calendar: {
       name: "calendar",
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "select"],
       files: [
         {
           path: "registry/bases/aria/ui/calendar.tsx",
@@ -7459,7 +7513,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/calendar",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/calendar-example.tsx",
+        },
+      },
     },
     card: {
       name: "card",
@@ -7475,7 +7535,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/card",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/card-example.tsx",
+        },
+      },
     },
     carousel: {
       name: "carousel",
@@ -7491,7 +7557,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/carousel",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/carousel-example.tsx",
+        },
+      },
     },
     chart: {
       name: "chart",
@@ -7507,7 +7579,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/chart",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/chart-example.tsx",
+        },
+      },
     },
     checkbox: {
       name: "checkbox",
@@ -7523,7 +7601,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/checkbox",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/checkbox-example.tsx",
+        },
+      },
     },
     collapsible: {
       name: "collapsible",
@@ -7539,7 +7623,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/collapsible",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/collapsible-example.tsx",
+        },
+      },
     },
     combobox: {
       name: "combobox",
@@ -7555,7 +7645,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/combobox",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/combobox-example.tsx",
+        },
+      },
     },
     command: {
       name: "command",
@@ -7571,7 +7667,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/command",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/command-example.tsx",
+        },
+      },
     },
     "context-menu": {
       name: "context-menu",
@@ -7587,7 +7689,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/context-menu",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/context-menu-example.tsx",
+        },
+      },
     },
     dialog: {
       name: "dialog",
@@ -7603,7 +7711,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/dialog",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/dialog-example.tsx",
+        },
+      },
     },
     drawer: {
       name: "drawer",
@@ -7619,7 +7733,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/drawer",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/drawer-example.tsx",
+        },
+      },
     },
     "dropdown-menu": {
       name: "dropdown-menu",
@@ -7635,7 +7755,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/dropdown-menu",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/dropdown-menu-example.tsx",
+        },
+      },
     },
     empty: {
       name: "empty",
@@ -7651,7 +7777,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/empty",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/empty-example.tsx",
+        },
+      },
     },
     field: {
       name: "field",
@@ -7667,7 +7799,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/field",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/field-example.tsx",
+        },
+      },
     },
     input: {
       name: "input",
@@ -7683,7 +7821,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/input",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/input-example.tsx",
+        },
+      },
     },
     "input-group": {
       name: "input-group",
@@ -7699,7 +7843,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/input-group",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/input-group-example.tsx",
+        },
+      },
     },
     "input-otp": {
       name: "input-otp",
@@ -7715,7 +7865,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/input-otp",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/input-otp-example.tsx",
+        },
+      },
     },
     item: {
       name: "item",
@@ -7731,7 +7887,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/item",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/item-example.tsx",
+        },
+      },
     },
     label: {
       name: "label",
@@ -7747,7 +7909,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/label",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/label-example.tsx",
+        },
+      },
     },
     pagination: {
       name: "pagination",
@@ -7763,7 +7931,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/pagination",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/pagination-example.tsx",
+        },
+      },
     },
     popover: {
       name: "popover",
@@ -7779,7 +7953,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/popover",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/popover-example.tsx",
+        },
+      },
     },
     progress: {
       name: "progress",
@@ -7795,7 +7975,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/progress",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/progress-example.tsx",
+        },
+      },
     },
     "radio-group": {
       name: "radio-group",
@@ -7811,7 +7997,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/radio-group",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/radio-group-example.tsx",
+        },
+      },
     },
     resizable: {
       name: "resizable",
@@ -7827,7 +8019,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/resizable",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/resizable-example.tsx",
+        },
+      },
     },
     "scroll-area": {
       name: "scroll-area",
@@ -7843,14 +8041,20 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/scroll-area",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/scroll-area-example.tsx",
+        },
+      },
     },
     select: {
       name: "select",
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["input-group"],
       files: [
         {
           path: "registry/bases/aria/ui/select.tsx",
@@ -7859,7 +8063,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/select",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/select-example.tsx",
+        },
+      },
     },
     separator: {
       name: "separator",
@@ -7875,7 +8085,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/separator",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/separator-example.tsx",
+        },
+      },
     },
     sheet: {
       name: "sheet",
@@ -7891,7 +8107,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/sheet",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/sheet-example.tsx",
+        },
+      },
     },
     sidebar: {
       name: "sidebar",
@@ -7915,7 +8137,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/sidebar",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/sidebar-example.tsx",
+        },
+      },
     },
     skeleton: {
       name: "skeleton",
@@ -7931,7 +8159,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/skeleton",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/skeleton-example.tsx",
+        },
+      },
     },
     slider: {
       name: "slider",
@@ -7947,7 +8181,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/slider",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/slider-example.tsx",
+        },
+      },
     },
     sonner: {
       name: "sonner",
@@ -7963,7 +8203,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/sonner",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/sonner-example.tsx",
+        },
+      },
     },
     spinner: {
       name: "spinner",
@@ -7979,7 +8225,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/spinner",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/spinner-example.tsx",
+        },
+      },
     },
     switch: {
       name: "switch",
@@ -7995,7 +8247,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/switch",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/switch-example.tsx",
+        },
+      },
     },
     table: {
       name: "table",
@@ -8011,7 +8269,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/table",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/table-example.tsx",
+        },
+      },
     },
     tabs: {
       name: "tabs",
@@ -8027,7 +8291,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/tabs",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/tabs-example.tsx",
+        },
+      },
     },
     textarea: {
       name: "textarea",
@@ -8043,7 +8313,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/textarea",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/textarea-example.tsx",
+        },
+      },
     },
     toggle: {
       name: "toggle",
@@ -8059,7 +8335,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/toggle",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/toggle-example.tsx",
+        },
+      },
     },
     "toggle-group": {
       name: "toggle-group",
@@ -8075,7 +8357,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/toggle-group",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/toggle-group-example.tsx",
+        },
+      },
     },
     tooltip: {
       name: "tooltip",
@@ -8091,7 +8379,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/tooltip",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/tooltip-example.tsx",
+        },
+      },
     },
     kbd: {
       name: "kbd",
@@ -8107,7 +8401,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/kbd",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/kbd-example.tsx",
+        },
+      },
     },
     "native-select": {
       name: "native-select",
@@ -8123,7 +8423,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/native-select",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/native-select-example.tsx",
+        },
+      },
     },
     direction: {
       name: "direction",
@@ -8139,7 +8445,9 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/aria/direction" },
+      },
     },
     attachment: {
       name: "attachment",
@@ -8155,7 +8463,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/attachment",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/attachment-example.tsx",
+        },
+      },
     },
     bubble: {
       name: "bubble",
@@ -8171,7 +8485,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/bubble",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/bubble-example.tsx",
+        },
+      },
     },
     "message-scroller": {
       name: "message-scroller",
@@ -8187,7 +8507,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/message-scroller",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/message-scroller-example.tsx",
+        },
+      },
     },
     marker: {
       name: "marker",
@@ -8203,7 +8529,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/marker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/marker-example.tsx",
+        },
+      },
     },
     message: {
       name: "message",
@@ -8219,7 +8551,13 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: undefined,
-      meta: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/message",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/message-example.tsx",
+        },
+      },
     },
     "accordion-example": {
       name: "accordion-example",

@@ -130,7 +130,14 @@ function SelectContent({
   sideOffset?: number
 }) {
   return (
-    <SelectPopover {...props}>
+    <SelectPopover
+      className={className}
+      side={side}
+      sideOffset={sideOffset}
+      align={align}
+      alignOffset={alignOffset}
+      {...props}
+    >
       <SelectList>{children}</SelectList>
     </SelectPopover>
   )

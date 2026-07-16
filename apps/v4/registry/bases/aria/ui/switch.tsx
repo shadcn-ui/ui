@@ -1,6 +1,7 @@
 "use client"
 
 import {
+  composeRenderProps,
   Switch as SwitchPrimitive,
   type SwitchProps as SwitchPrimitiveProps,
 } from "react-aria-components"
@@ -10,6 +11,7 @@ import { cn } from "@/registry/bases/aria/lib/utils"
 function Switch({
   className,
   size = "default",
+  children,
   ...props
 }: SwitchPrimitiveProps & {
   size?: "sm" | "default"
@@ -24,13 +26,16 @@ function Switch({
       )}
       {...props}
     >
-      {({ isSelected }) => (
-        <span
-          data-slot="switch-thumb"
-          data-selected={isSelected || undefined}
-          className="cn-switch-thumb pointer-events-none block ring-0 transition-transform"
-        />
-      )}
+      {composeRenderProps(children, (children, { isSelected }) => (
+        <>
+          <span
+            data-slot="switch-thumb"
+            data-selected={isSelected || undefined}
+            className="cn-switch-thumb pointer-events-none block ring-0 transition-transform"
+          />
+          {children}
+        </>
+      ))}
     </SwitchPrimitive>
   )
 }

@@ -2,6 +2,7 @@
 
 import {
   Checkbox as CheckboxPrimitive,
+  composeRenderProps,
   type CheckboxProps,
 } from "react-aria-components"
 
@@ -18,24 +19,27 @@ function Checkbox({ className, children, ...props }: CheckboxProps) {
       )}
       {...props}
     >
-      {({ isSelected, isIndeterminate }) => (
-        <>
-          <span
-            data-slot="checkbox-indicator"
-            className="cn-checkbox-indicator grid place-content-center text-current transition-none"
-          >
-            {(isSelected || isIndeterminate) && (
-              <IconPlaceholder
-                lucide="CheckIcon"
-                tabler="IconCheck"
-                hugeicons="Tick02Icon"
-                phosphor="CheckIcon"
-                remixicon="RiCheckLine"
-              />
-            )}
-          </span>
-          {children}
-        </>
+      {composeRenderProps(
+        children,
+        (children, { isSelected, isIndeterminate }) => (
+          <>
+            <span
+              data-slot="checkbox-indicator"
+              className="cn-checkbox-indicator grid place-content-center text-current transition-none"
+            >
+              {(isSelected || isIndeterminate) && (
+                <IconPlaceholder
+                  lucide="CheckIcon"
+                  tabler="IconCheck"
+                  hugeicons="Tick02Icon"
+                  phosphor="CheckIcon"
+                  remixicon="RiCheckLine"
+                />
+              )}
+            </span>
+            {children}
+          </>
+        )
       )}
     </CheckboxPrimitive>
   )

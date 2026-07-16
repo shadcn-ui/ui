@@ -179,6 +179,7 @@ function AlertDialogAction({
 }: React.ComponentProps<typeof Button>) {
   return (
     <Button
+      slot="close"
       data-slot="alert-dialog-action"
       className={cn("cn-alert-dialog-action", className)}
       {...props}

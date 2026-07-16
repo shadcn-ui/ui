@@ -267,7 +267,13 @@ function DirectionProviderWrapper({
 
   if (base === "aria") {
     return (
-      <I18nProvider locale={explicitDir === "ltr" ? "en" : "ar"}>
+      <I18nProvider
+        locale={
+          explicitDir === "ltr"
+            ? "en"
+            : (translation.locale ?? translation.language)
+        }
+      >
         {children}
       </I18nProvider>
     )

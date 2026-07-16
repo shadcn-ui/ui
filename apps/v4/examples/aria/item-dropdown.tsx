@@ -52,7 +52,7 @@ export function ItemDropdown() {
             <DropdownMenuItem key={person.username}>
               <Item size="xs" className="w-full p-2">
                 <ItemMedia>
-                  <Avatar className="size-[--spacing(6.5)]">
+                  <Avatar className="size-(--avatar-size) [--avatar-size:--spacing(6.5)]">
                     <AvatarImage src={person.avatar} className="grayscale" />
                     <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
                   </Avatar>

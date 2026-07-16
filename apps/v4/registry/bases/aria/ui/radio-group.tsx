@@ -1,6 +1,7 @@
 "use client"
 
 import {
+  composeRenderProps,
   RadioGroup as RadioGroupPrimitive,
   Radio as RadioPrimitive,
   type RadioGroupProps,
@@ -29,7 +30,7 @@ function RadioGroupItem({ className, children, ...props }: RadioProps) {
       )}
       {...props}
     >
-      {({ isSelected }) => (
+      {composeRenderProps(children, (children, { isSelected }) => (
         <>
           <span
             data-slot="radio-group-indicator"
@@ -39,7 +40,7 @@ function RadioGroupItem({ className, children, ...props }: RadioProps) {
           </span>
           {children}
         </>
-      )}
+      ))}
     </RadioPrimitive>
   )
 }

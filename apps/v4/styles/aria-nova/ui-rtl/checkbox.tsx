@@ -3,6 +3,7 @@
 import { CheckIcon } from "lucide-react"
 import {
   Checkbox as CheckboxPrimitive,
+  composeRenderProps,
   type CheckboxProps,
 } from "react-aria-components"
 
@@ -18,16 +19,19 @@ function Checkbox({ className, children, ...props }: CheckboxProps) {
       )}
       {...props}
     >
-      {({ isSelected, isIndeterminate }) => (
-        <>
-          <span
-            data-slot="checkbox-indicator"
-            className="grid place-content-center text-current transition-none [&>svg]:size-3.5"
-          >
-            {(isSelected || isIndeterminate) && <CheckIcon />}
-          </span>
-          {children}
-        </>
+      {composeRenderProps(
+        children,
+        (children, { isSelected, isIndeterminate }) => (
+          <>
+            <span
+              data-slot="checkbox-indicator"
+              className="grid place-content-center text-current transition-none [&>svg]:size-3.5"
+            >
+              {(isSelected || isIndeterminate) && <CheckIcon />}
+            </span>
+            {children}
+          </>
+        )
       )}
     </CheckboxPrimitive>
   )
