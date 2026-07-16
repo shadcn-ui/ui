@@ -208,7 +208,7 @@ describe("validateFilesTarget", () => {
   type File = Parameters<typeof validateFilesTarget>[0][number]
   const cwd = "/project"
 
-  it.each([
+  const rejectedCases = [
     [
       "rejects target-less file whose path escapes root",
       { type: "registry:ui", path: "ui/../../../../etc/evil.tsx" },
@@ -221,13 +221,13 @@ describe("validateFilesTarget", () => {
       "still rejects unsafe target",
       { type: "registry:file", path: "x", target: "../../etc/evil" },
     ],
-  ])("%s", (_name, file) => {
-    expect(() => validateFilesTarget([file as File], cwd)).toThrow(
-      /unsafe file path/
-    )
+  ] satisfies Array<[string, File]>
+
+  it.each(rejectedCases)("%s", (_name, file) => {
+    expect(() => validateFilesTarget([file], cwd)).toThrow(/unsafe file path/)
   })
 
-  it.each([
+  const allowedCases = [
     [
       "allows normal target-less file",
       { type: "registry:ui", path: "ui/button.tsx" },
@@ -240,7 +240,9 @@ describe("validateFilesTarget", () => {
       "allows safe target",
       { type: "registry:file", path: "x", target: "components/ui/x.tsx" },
     ],
-  ])("%s", (_name, file) => {
-    expect(() => validateFilesTarget([file as File], cwd)).not.toThrow()
+  ] satisfies Array<[string, File]>
+
+  it.each(allowedCases)("%s", (_name, file) => {
+    expect(() => validateFilesTarget([file], cwd)).not.toThrow()
   })
 })
