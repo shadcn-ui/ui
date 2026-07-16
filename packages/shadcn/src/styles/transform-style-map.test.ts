@@ -50,6 +50,44 @@ function Foo({ className, ...props }: { className?: string }) {
     `)
   })
 
+  it("adds tailwind classes to cn calls nested in className expressions", async () => {
+    const source = `import * as React from "react"
+import { composeRenderProps, Input as InputPrimitive } from "react-aria-components"
+import { cn } from "@/lib/utils"
+
+function Input({ className, ...props }: React.ComponentProps<typeof InputPrimitive>) {
+  return (
+    <InputPrimitive
+      className={composeRenderProps(className, (className) =>
+        cn("cn-foo existing-class", className)
+      )}
+      {...props}
+    />
+  )
+}
+`
+
+    const result = await applyTransform(source, baseStyleMap)
+
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from \"react\"
+      import { composeRenderProps, Input as InputPrimitive } from \"react-aria-components\"
+      import { cn } from \"@/lib/utils\"
+
+      function Input({ className, ...props }: React.ComponentProps<typeof InputPrimitive>) {
+        return (
+          <InputPrimitive
+            className={composeRenderProps(className, (className) =>
+              cn(\"bg-background gap-4 rounded-xl existing-class\", className)
+            )}
+            {...props}
+          />
+        )
+      }
+      "
+    `)
+  })
+
   it("adds tailwind classes to string literal className", async () => {
     const source = `import * as React from "react"
 

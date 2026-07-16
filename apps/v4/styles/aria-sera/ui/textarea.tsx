@@ -17,7 +17,7 @@ function Textarea({
       data-slot="textarea"
       className={composeRenderProps(className, (className) =>
         cn(
-          "cn-textarea flex field-sizing-content min-h-16 w-full outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50",
+          "flex field-sizing-content min-h-16 w-full resize-none rounded-none border border-transparent border-b-input bg-transparent px-0 py-3 text-base transition-[color,border-color] outline-none placeholder:text-muted-foreground focus-visible:border-b-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm data-invalid:border-b-destructive dark:data-invalid:border-b-destructive/50",
           className
         )
       )}
