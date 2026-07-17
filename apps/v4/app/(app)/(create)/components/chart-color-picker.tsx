@@ -18,6 +18,7 @@ import {
   PickerSeparator,
   PickerTrigger,
 } from "@/app/(app)/(create)/components/picker"
+import { usePreviewOverride } from "@/app/(app)/(create)/components/preview-override"
 import { useDesignSystemSearchParams } from "@/app/(app)/(create)/lib/search-params"
 
 export function ChartColorPicker({
@@ -29,6 +30,7 @@ export function ChartColorPicker({
 }) {
   const mounted = useMounted()
   const [params, setParams] = useDesignSystemSearchParams()
+  const { setOverride, clearOverride } = usePreviewOverride()
 
   const availableChartColors = React.useMemo(
     () => getThemesForBaseColor(params.baseColor),
@@ -48,7 +50,13 @@ export function ChartColorPicker({
 
   return (
     <div className="group/picker relative">
-      <Picker>
+      <Picker
+        onOpenChange={(open) => {
+          if (!open) {
+            clearOverride()
+          }
+        }}
+      >
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
             <div className="text-xs text-muted-foreground">Chart Color</div>
@@ -77,12 +85,19 @@ export function ChartColorPicker({
           side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
           className="max-h-92"
+          onMouseLeave={clearOverride}
         >
           <PickerRadioGroup
             value={currentChartColor?.name}
             onValueChange={(value) => {
               setParams({ chartColor: value as ChartColorName })
             }}
+            onItemPreview={
+              isMobile
+                ? undefined
+                : (value) =>
+                    setOverride({ chartColor: value as ChartColorName })
+            }
           >
             <PickerGroup>
               {availableChartColors

@@ -18,6 +18,7 @@ import {
   PickerSeparator,
   PickerTrigger,
 } from "@/app/(app)/(create)/components/picker"
+import { usePreviewOverride } from "@/app/(app)/(create)/components/preview-override"
 import {
   isTranslucentMenuColor,
   useDesignSystemSearchParams,
@@ -52,6 +53,7 @@ export function MenuColorPicker({
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
   const [params, setParams] = useDesignSystemSearchParams()
+  const { setOverride, clearOverride } = usePreviewOverride()
   const { resolvedTheme } = useTheme()
   const mounted = useMounted()
   const lastSolidMenuAccentRef = React.useRef(params.menuAccent)
@@ -98,9 +100,40 @@ export function MenuColorPicker({
     })
   }
 
+  // Hover previews mirror setColor/setSurface, including the menuAccent
+  // coupling, so the previewed state matches what a click would commit.
+  const previewColor = (color: ColorChoice) => {
+    const nextMenuColor = getMenuColorValue(
+      color,
+      surfaceChoice === "translucent"
+    )
+
+    setOverride({
+      menuColor: nextMenuColor,
+      ...(isTranslucentMenuColor(nextMenuColor) && {
+        menuAccent: "subtle" as const,
+      }),
+    })
+  }
+
+  const previewSurface = (choice: SurfaceChoice) => {
+    const isTranslucent = choice === "translucent"
+
+    setOverride({
+      menuColor: getMenuColorValue(colorChoice, isTranslucent),
+      menuAccent: isTranslucent ? "subtle" : lastSolidMenuAccentRef.current,
+    })
+  }
+
   return (
     <div className="group/picker relative">
-      <Picker>
+      <Picker
+        onOpenChange={(open) => {
+          if (!open) {
+            clearOverride()
+          }
+        }}
+      >
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
             <div className="text-xs text-muted-foreground">Menu</div>
@@ -120,6 +153,7 @@ export function MenuColorPicker({
           anchor={isMobile ? anchorRef : undefined}
           side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
+          onMouseLeave={clearOverride}
         >
           <PickerGroup>
             <PickerLabel>Color</PickerLabel>
@@ -128,6 +162,11 @@ export function MenuColorPicker({
               onValueChange={(value) => {
                 setColor(value as ColorChoice)
               }}
+              onItemPreview={
+                isMobile
+                  ? undefined
+                  : (value) => previewColor(value as ColorChoice)
+              }
             >
               <PickerRadioItem value="default" closeOnClick={isMobile}>
                 Default
@@ -149,6 +188,11 @@ export function MenuColorPicker({
               onValueChange={(value) => {
                 setSurface(value as SurfaceChoice)
               }}
+              onItemPreview={
+                isMobile
+                  ? undefined
+                  : (value) => previewSurface(value as SurfaceChoice)
+              }
             >
               <PickerRadioItem value="solid" closeOnClick={isMobile}>
                 Solid

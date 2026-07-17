@@ -13,6 +13,7 @@ import {
   PickerRadioItem,
   PickerTrigger,
 } from "@/app/(app)/(create)/components/picker"
+import { usePreviewOverride } from "@/app/(app)/(create)/components/preview-override"
 import { useDesignSystemSearchParams } from "@/app/(app)/(create)/lib/search-params"
 
 export function BaseColorPicker({
@@ -24,6 +25,7 @@ export function BaseColorPicker({
 }) {
   const mounted = useMounted()
   const [params, setParams] = useDesignSystemSearchParams()
+  const { setOverride, clearOverride } = usePreviewOverride()
 
   const currentBaseColor = React.useMemo(
     () => BASE_COLORS.find((baseColor) => baseColor.name === params.baseColor),
@@ -32,7 +34,13 @@ export function BaseColorPicker({
 
   return (
     <div className="group/picker relative">
-      <Picker>
+      <Picker
+        onOpenChange={(open) => {
+          if (!open) {
+            clearOverride()
+          }
+        }}
+      >
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
             <div className="text-xs text-muted-foreground">Base Color</div>
@@ -56,12 +64,18 @@ export function BaseColorPicker({
           anchor={isMobile ? anchorRef : undefined}
           side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
+          onMouseLeave={clearOverride}
         >
           <PickerRadioGroup
             value={currentBaseColor?.name}
             onValueChange={(value) => {
               setParams({ baseColor: value as BaseColorName })
             }}
+            onItemPreview={
+              isMobile
+                ? undefined
+                : (value) => setOverride({ baseColor: value as BaseColorName })
+            }
           >
             <PickerGroup>
               {BASE_COLORS.map((baseColor) => (

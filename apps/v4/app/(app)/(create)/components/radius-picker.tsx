@@ -13,6 +13,7 @@ import {
   PickerSeparator,
   PickerTrigger,
 } from "@/app/(app)/(create)/components/picker"
+import { usePreviewOverride } from "@/app/(app)/(create)/components/preview-override"
 import { useDesignSystemSearchParams } from "@/app/(app)/(create)/lib/search-params"
 
 export function RadiusPicker({
@@ -23,6 +24,7 @@ export function RadiusPicker({
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
   const [params, setParams] = useDesignSystemSearchParams()
+  const { setOverride, clearOverride } = usePreviewOverride()
   const isRadiusLocked = params.style === "lyra" || params.style === "sera"
   const selectedRadiusName = isRadiusLocked ? "none" : params.radius
 
@@ -34,7 +36,13 @@ export function RadiusPicker({
 
   return (
     <div className="group/picker relative">
-      <Picker>
+      <Picker
+        onOpenChange={(open) => {
+          if (!open) {
+            clearOverride()
+          }
+        }}
+      >
         <PickerTrigger disabled={isRadiusLocked}>
           <div className="flex flex-col justify-start text-left">
             <div className="text-xs text-muted-foreground">Radius</div>
@@ -65,6 +73,7 @@ export function RadiusPicker({
           anchor={isMobile ? anchorRef : undefined}
           side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
+          onMouseLeave={clearOverride}
         >
           <PickerRadioGroup
             value={currentRadius?.name}
@@ -74,6 +83,11 @@ export function RadiusPicker({
               }
               setParams({ radius: value as RadiusValue })
             }}
+            onItemPreview={
+              isMobile || isRadiusLocked
+                ? undefined
+                : (value) => setOverride({ radius: value as RadiusValue })
+            }
           >
             <PickerGroup>
               {defaultRadius && (

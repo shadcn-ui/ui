@@ -11,6 +11,7 @@ import {
   PickerSeparator,
   PickerTrigger,
 } from "@/app/(app)/(typeset)/components/picker"
+import { usePreviewOverride } from "@/app/(app)/(typeset)/components/preview-override"
 import { findFont, FONTS } from "@/app/(app)/(typeset)/lib/fonts"
 import {
   coerceTypesetValue,
@@ -29,6 +30,7 @@ export function FontPicker({
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
   const [params, setParams] = useTypesetSearchParams()
+  const { setOverride, clearOverride } = usePreviewOverride()
   const currentValue =
     param === "body"
       ? params.body
@@ -50,7 +52,13 @@ export function FontPicker({
 
   return (
     <div className="group/picker relative">
-      <Picker>
+      <Picker
+        onOpenChange={(open) => {
+          if (!open) {
+            clearOverride()
+          }
+        }}
+      >
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
             <div className="text-xs text-muted-foreground">{label}</div>
@@ -70,6 +78,7 @@ export function FontPicker({
           side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
           className="max-h-96"
+          onMouseLeave={clearOverride}
         >
           <PickerRadioGroup
             value={currentValue}
@@ -85,6 +94,16 @@ export function FontPicker({
                 if (value !== null) setParams({ mono: value })
               }
             }}
+            onItemPreview={
+              isMobile
+                ? undefined
+                : (next) => {
+                    const value = coerceTypesetValue(param, next)
+                    if (value !== null) {
+                      setOverride({ [param]: value })
+                    }
+                  }
+            }
           >
             {param === "heading" ? (
               <>
