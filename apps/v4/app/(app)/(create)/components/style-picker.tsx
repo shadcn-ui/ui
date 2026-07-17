@@ -12,6 +12,7 @@ import {
   PickerRadioItem,
   PickerTrigger,
 } from "@/app/(app)/(create)/components/picker"
+import { usePreviewOverride } from "@/app/(app)/(create)/components/preview-override"
 import { useDesignSystemSearchParams } from "@/app/(app)/(create)/lib/search-params"
 
 export function StylePicker({
@@ -24,12 +25,19 @@ export function StylePicker({
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
   const [params, setParams] = useDesignSystemSearchParams()
+  const { setOverride, clearOverride } = usePreviewOverride()
 
   const currentStyle = styles.find((style) => style.name === params.style)
 
   return (
     <div className="group/picker relative">
-      <Picker>
+      <Picker
+        onOpenChange={(open) => {
+          if (!open) {
+            clearOverride()
+          }
+        }}
+      >
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
             <div className="text-xs text-muted-foreground">Style</div>
@@ -49,12 +57,18 @@ export function StylePicker({
           anchor={isMobile ? anchorRef : undefined}
           side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
+          onMouseLeave={clearOverride}
         >
           <PickerRadioGroup
             value={currentStyle?.name}
             onValueChange={(value) => {
               setParams({ style: value as StyleName })
             }}
+            onItemPreview={
+              isMobile
+                ? undefined
+                : (value) => setOverride({ style: value as StyleName })
+            }
           >
             <PickerGroup>
               {styles.map((style) => (
