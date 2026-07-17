@@ -10604,6 +10604,24 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
         ) || "drawer-dialog"
       return { default: mod.default || mod[exportName] }
     }),
+    "drawer-nested": React.lazy(async () => {
+      const mod = await import("./aria/drawer-nested")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer-nested"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "drawer-non-modal": React.lazy(async () => {
+      const mod = await import("./aria/drawer-non-modal")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer-non-modal"
+      return { default: mod.default || mod[exportName] }
+    }),
     "drawer-rtl": React.lazy(async () => {
       const mod = await import("./aria/drawer-rtl")
       const exportName =
@@ -10613,15 +10631,6 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
         ) || "drawer-rtl"
       return { default: mod.default || mod[exportName] }
     }),
-    "drawer-scrollable-content": React.lazy(async () => {
-      const mod = await import("./aria/drawer-scrollable-content")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "drawer-scrollable-content"
-      return { default: mod.default || mod[exportName] }
-    }),
     "drawer-sides": React.lazy(async () => {
       const mod = await import("./aria/drawer-sides")
       const exportName =
@@ -10629,6 +10638,24 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "drawer-sides"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "drawer-snap-points": React.lazy(async () => {
+      const mod = await import("./aria/drawer-snap-points")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer-snap-points"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "drawer-swipe-handle": React.lazy(async () => {
+      const mod = await import("./aria/drawer-swipe-handle")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer-swipe-handle"
       return { default: mod.default || mod[exportName] }
     }),
     "dropdown-menu-avatar": React.lazy(async () => {

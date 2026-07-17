@@ -3,7 +3,6 @@
 import {
   Collapsible,
   CollapsibleContent,
-  CollapsibleTrigger,
 } from "@/registry/bases/aria/ui/collapsible"
 import {
   SidebarGroup,

@@ -279,20 +279,18 @@ function MarkerAccordion() {
 function MarkerDrawer() {
   return (
     <Example title="Drawer">
-      <Drawer direction="right">
+      <Drawer swipeDirection="right">
         <Marker variant="separator">
-          <DrawerTrigger asChild>
-            <Button variant="outline">
-              <IconPlaceholder
-                lucide="SearchIcon"
-                tabler="IconSearch"
-                hugeicons="SearchIcon"
-                phosphor="MagnifyingGlassIcon"
-                remixicon="RiSearchLine"
-                data-icon="inline-start"
-              />
-              Explored 4 files
-            </Button>
+          <DrawerTrigger render={<Button variant="outline" />}>
+            <IconPlaceholder
+              lucide="SearchIcon"
+              tabler="IconSearch"
+              hugeicons="SearchIcon"
+              phosphor="MagnifyingGlassIcon"
+              remixicon="RiSearchLine"
+              data-icon="inline-start"
+            />
+            Explored 4 files
           </DrawerTrigger>
         </Marker>
         <DrawerContent>
@@ -317,8 +315,8 @@ function MarkerDrawer() {
             </div>
           </div>
           <DrawerFooter>
-            <DrawerClose asChild>
-              <Button variant="outline">Close</Button>
+            <DrawerClose render={<Button variant="outline" />}>
+              Close
             </DrawerClose>
           </DrawerFooter>
         </DrawerContent>

@@ -6,7 +6,6 @@ import { SearchForm } from "@/registry/bases/aria/blocks/sidebar-05/components/s
 import {
   Collapsible,
   CollapsibleContent,
-  CollapsibleTrigger,
 } from "@/registry/bases/aria/ui/collapsible"
 import {
   Sidebar,

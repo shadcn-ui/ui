@@ -5,7 +5,6 @@ import * as React from "react"
 import {
   Collapsible,
   CollapsibleContent,
-  CollapsibleTrigger,
 } from "@/registry/bases/aria/ui/collapsible"
 import {
   Sidebar,

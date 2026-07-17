@@ -10064,7 +10064,7 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/drawer",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/drawer-example.tsx",
-          api: "https://vaul.emilkowal.ski/getting-started",
+          api: "https://base-ui.com/react/components/drawer.md",
         },
       },
     },
@@ -30017,7 +30017,7 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/drawer",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/drawer-example.tsx",
-          api: "https://vaul.emilkowal.ski/getting-started",
+          api: "https://base-ui.com/react/components/drawer.md",
         },
       },
     },
@@ -31315,7 +31315,7 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/drawer",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/drawer-example.tsx",
-          api: "https://vaul.emilkowal.ski/getting-started",
+          api: "https://base-ui.com/react/components/drawer.md",
         },
       },
     },
@@ -32613,7 +32613,7 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/drawer",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/drawer-example.tsx",
-          api: "https://vaul.emilkowal.ski/getting-started",
+          api: "https://base-ui.com/react/components/drawer.md",
         },
       },
     },
@@ -33911,7 +33911,7 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/drawer",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/drawer-example.tsx",
-          api: "https://vaul.emilkowal.ski/getting-started",
+          api: "https://base-ui.com/react/components/drawer.md",
         },
       },
     },
@@ -35209,7 +35209,7 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/drawer",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/drawer-example.tsx",
-          api: "https://vaul.emilkowal.ski/getting-started",
+          api: "https://base-ui.com/react/components/drawer.md",
         },
       },
     },
@@ -36507,7 +36507,7 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/drawer",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/drawer-example.tsx",
-          api: "https://vaul.emilkowal.ski/getting-started",
+          api: "https://base-ui.com/react/components/drawer.md",
         },
       },
     },
@@ -37805,7 +37805,7 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/drawer",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/drawer-example.tsx",
-          api: "https://vaul.emilkowal.ski/getting-started",
+          api: "https://base-ui.com/react/components/drawer.md",
         },
       },
     },

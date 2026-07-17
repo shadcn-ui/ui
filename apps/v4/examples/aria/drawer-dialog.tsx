@@ -49,8 +49,8 @@ export function DrawerDialogDemo() {
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerTrigger asChild>
-        <Button variant="outline">Edit Profile</Button>
+      <DrawerTrigger render={<Button variant="outline" />}>
+        Edit Profile
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">
@@ -61,8 +61,8 @@ export function DrawerDialogDemo() {
         </DrawerHeader>
         <ProfileForm className="px-4" />
         <DrawerFooter className="pt-2">
-          <DrawerClose asChild>
-            <Button variant="outline">Cancel</Button>
+          <DrawerClose render={<Button variant="outline" />}>
+            Cancel
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>

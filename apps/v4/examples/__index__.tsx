@@ -4717,17 +4717,29 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "drawer-dialog",
       filePath: "examples/aria/drawer-dialog.tsx",
     },
+    "drawer-nested": {
+      name: "drawer-nested",
+      filePath: "examples/aria/drawer-nested.tsx",
+    },
+    "drawer-non-modal": {
+      name: "drawer-non-modal",
+      filePath: "examples/aria/drawer-non-modal.tsx",
+    },
     "drawer-rtl": {
       name: "drawer-rtl",
       filePath: "examples/aria/drawer-rtl.tsx",
     },
-    "drawer-scrollable-content": {
-      name: "drawer-scrollable-content",
-      filePath: "examples/aria/drawer-scrollable-content.tsx",
-    },
     "drawer-sides": {
       name: "drawer-sides",
       filePath: "examples/aria/drawer-sides.tsx",
+    },
+    "drawer-snap-points": {
+      name: "drawer-snap-points",
+      filePath: "examples/aria/drawer-snap-points.tsx",
+    },
+    "drawer-swipe-handle": {
+      name: "drawer-swipe-handle",
+      filePath: "examples/aria/drawer-swipe-handle.tsx",
     },
     "dropdown-menu-avatar": {
       name: "dropdown-menu-avatar",
