@@ -647,6 +647,11 @@ describe("getBase", () => {
     expect(getBase("base-vega")).toBe("base")
   })
 
+  test("returns aria for aria styles", () => {
+    expect(getBase("aria-nova")).toBe("aria")
+    expect(getBase("aria-vega")).toBe("aria")
+  })
+
   test("returns base for undefined", () => {
     expect(getBase(undefined)).toBe("base")
   })

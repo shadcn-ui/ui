@@ -12,6 +12,14 @@
 @source "../styles/base-rhea/**/*.tsx";
 @source "../styles/base-sera/**/*.tsx";
 @source "../styles/base-vega/**/*.tsx";
+@source "../styles/aria-luma/**/*.tsx";
+@source "../styles/aria-lyra/**/*.tsx";
+@source "../styles/aria-maia/**/*.tsx";
+@source "../styles/aria-mira/**/*.tsx";
+@source "../styles/aria-nova/**/*.tsx";
+@source "../styles/aria-rhea/**/*.tsx";
+@source "../styles/aria-sera/**/*.tsx";
+@source "../styles/aria-vega/**/*.tsx";
 @source "../styles/radix-luma/**/*.tsx";
 @source "../styles/radix-lyra/**/*.tsx";
 @source "../styles/radix-maia/**/*.tsx";

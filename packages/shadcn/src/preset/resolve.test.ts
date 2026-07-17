@@ -334,4 +334,16 @@ export default function App({ Component, pageProps }) {
       values: null,
     })
   })
+
+  it("resolves presets from aria styles", async () => {
+    const config = await createTestConfig({
+      style: "aria-luma",
+      css: presetCssWithHeadingFont,
+    })
+
+    const result = await resolveProjectPreset(config)
+
+    expect(result.values?.style).toBe("luma")
+    expect(result.code).toBe(encodePreset(result.values!))
+  })
 })

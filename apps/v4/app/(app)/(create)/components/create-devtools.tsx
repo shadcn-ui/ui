@@ -42,7 +42,7 @@ export function CreateDevtools() {
           className="h-7 min-w-8 cursor-pointer rounded-lg px-2.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active=true]:bg-accent data-[active=true]:text-accent-foreground"
           onClick={() => setParams({ base: base.name })}
         >
-          {base.name === "radix" ? "Radix" : "Base"}
+          {base.title}
         </Button>
       ))}
       <div className="mx-0.5 h-4 w-px bg-border/80" />
