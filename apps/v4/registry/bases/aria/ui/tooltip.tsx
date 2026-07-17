@@ -10,9 +10,16 @@ import {
 import { cn } from "@/registry/bases/aria/lib/utils"
 
 function TooltipTrigger({
+  delay = 0,
   ...props
 }: React.ComponentProps<typeof TooltipTriggerPrimitive>) {
-  return <TooltipTriggerPrimitive data-slot="tooltip-trigger" {...props} />
+  return (
+    <TooltipTriggerPrimitive
+      data-slot="tooltip-trigger"
+      delay={delay}
+      {...props}
+    />
+  )
 }
 
 function Tooltip({

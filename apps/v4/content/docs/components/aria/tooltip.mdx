@@ -46,22 +46,6 @@ npm install react-aria-components
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Add the `TooltipProvider` to the root of your app.</Step>
-
-```tsx title="app/layout.tsx" showLineNumbers {1,7}
-import { TooltipProvider } from "@/components/ui/tooltip"
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body>
-        <TooltipProvider>{children}</TooltipProvider>
-      </body>
-    </html>
-  )
-}
-```
-
 </Steps>
 
 </TabsContent>
@@ -93,9 +77,9 @@ TooltipTrigger
 └── Tooltip
 ```
 
-## Side
+## Placement
 
-Use the `side` prop to change the position of the tooltip.
+Use the `placement` prop to change the position of the tooltip.
 
 <ComponentPreview styleName="aria-nova" name="tooltip-sides" />
 
