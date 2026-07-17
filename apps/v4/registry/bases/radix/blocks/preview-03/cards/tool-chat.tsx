@@ -78,7 +78,7 @@ const chat = createChat<unknown, Record<string, never>, Tools>()
     )
   })
 
-const initialMessages = chat.get({ count: 0 })
+const initialMessages = chat.get(0)
 const transport = chat.transport()
 
 function isToolPart(part: {
@@ -92,7 +92,7 @@ export function ToolChat() {
     messages: initialMessages,
     transport,
   })
-  const nextMessage = chat.next({ after: messages })
+  const nextMessage = chat.next(messages)
   const isBusy = status === "submitted" || status === "streaming"
 
   const onSubmit = (input: string) => {

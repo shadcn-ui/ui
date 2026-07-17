@@ -1,0 +1,80 @@
+{
+  "name": "@shadcn/helpers",
+  "version": "0.1.0",
+  "description": "Small helpers for developing apps.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "shadcn",
+    "url": "https://twitter.com/shadcn"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shadcn-ui/ui.git",
+    "directory": "packages/helpers"
+  },
+  "homepage": "https://ui.shadcn.com",
+  "bugs": {
+    "url": "https://github.com/shadcn-ui/ui/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "ai",
+    "chat",
+    "helpers",
+    "development",
+    "ai-sdk",
+    "tanstack",
+    "shadcn"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./ai-sdk": {
+      "types": "./dist/ai-sdk/index.d.ts",
+      "default": "./dist/ai-sdk/index.js"
+    },
+    "./tanstack-ai": {
+      "types": "./dist/tanstack-ai/index.d.ts",
+      "default": "./dist/tanstack-ai/index.js"
+    }
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
+    "clean": "rimraf dist",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "@tanstack/ai": ">=0.40.0 <0.41.0",
+    "@tanstack/ai-client": ">=0.20.0 <0.21.0",
+    "ai": ">=7.0.0 <8"
+  },
+  "peerDependenciesMeta": {
+    "@tanstack/ai": {
+      "optional": true
+    },
+    "@tanstack/ai-client": {
+      "optional": true
+    },
+    "ai": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@tanstack/ai": "0.40.0",
+    "@tanstack/ai-client": "0.20.0",
+    "ai": "7.0.22",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.6"
+  }
+}
