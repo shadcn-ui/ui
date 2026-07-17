@@ -49,16 +49,8 @@ function ContextMenu({
       offset={offset}
       crossOffset={crossOffset}
       className={cn(
-        "cn-context-menu-content cn-context-menu-content-logical cn-menu-target cn-menu-translucent cn-menu-translucent-aria z-50 w-(--trigger-width) origin-(--trigger-anchor-point) overflow-x-hidden overflow-y-auto outline-none data-closed:overflow-hidden",
+        "cn-context-menu-content-aria cn-menu-target cn-menu-translucent cn-menu-translucent-aria z-50 w-(--trigger-width) origin-(--trigger-anchor-point) overflow-x-hidden overflow-y-auto outline-none data-exiting:overflow-hidden",
         className
-      )}
-      render={(renderProps, state) => (
-        <div
-          {...renderProps}
-          data-side={state.placement}
-          data-open={!state.isExiting}
-          data-closed={state.isExiting}
-        />
       )}
     >
       <MenuPrimitive
@@ -292,7 +284,7 @@ function ContextMenuSubContent({
     <ContextMenu
       data-slot="context-menu-sub-content"
       className={cn(
-        "cn-context-menu-sub-content cn-menu-target cn-menu-translucent w-auto",
+        "cn-context-menu-sub-content-aria cn-menu-target cn-menu-translucent w-auto",
         className
       )}
       placement={placement}

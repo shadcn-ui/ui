@@ -40,9 +40,34 @@ export const transformStyleMap: TransformerStyle<SourceFile> = async ({
 
   applyToCvaCalls(sourceFile, styleMap, matchedClasses)
   applyToClassNameAttributes(sourceFile, styleMap, matchedClasses)
+  applyToClassNameProperties(sourceFile, styleMap, matchedClasses)
   applyToMergePropsCalls(sourceFile, styleMap, matchedClasses)
 
   return sourceFile
+}
+
+function applyToClassNameProperties(
+  sourceFile: SourceFile,
+  styleMap: StyleMap,
+  matchedClasses: Set<string>
+) {
+  sourceFile.forEachDescendant((node) => {
+    if (
+      !Node.isPropertyAssignment(node) ||
+      node.getNameNode().getText() !== "className"
+    ) {
+      return
+    }
+
+    const initializer = node.getInitializer()
+    if (!initializer || !Node.isCallExpression(initializer)) {
+      return
+    }
+
+    if (isCnCall(initializer)) {
+      applyStyleToCnCall(initializer, styleMap, matchedClasses)
+    }
+  })
 }
 
 function applyStyleToCvaString(

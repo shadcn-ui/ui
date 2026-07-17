@@ -200,14 +200,15 @@ Add an `AttachmentTrigger` to make the whole card open a link or dialog. It fill
 
 ```tsx showLineNumbers
 <AttachmentTrigger
-  render={
+  render={(props) => (
     <a
+      {...props}
       href={url}
       target="_blank"
       rel="noreferrer"
       aria-label="Open workspace.png"
     />
-  }
+  )}
 />
 ```
 

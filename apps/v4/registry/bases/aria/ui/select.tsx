@@ -152,16 +152,8 @@ function SelectPopover({
       placement={placement}
       offset={offset}
       crossOffset={crossOffset}
-      render={(props, { placement, isExiting }) => (
-        <div
-          {...props}
-          data-side={placement}
-          data-open={!isExiting}
-          data-closed={isExiting}
-        />
-      )}
       className={cn(
-        "cn-select-content cn-select-content-logical cn-menu-target cn-menu-translucent cn-menu-translucent-aria relative isolate z-50 w-(--trigger-width) origin-(--trigger-anchor-point) overflow-hidden",
+        "cn-select-content-aria cn-menu-target cn-menu-translucent cn-menu-translucent-aria relative isolate z-50 w-(--trigger-width) origin-(--trigger-anchor-point) overflow-hidden",
         className
       )}
       {...props}

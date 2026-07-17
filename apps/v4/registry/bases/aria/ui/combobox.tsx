@@ -168,16 +168,8 @@ function ComboboxContent({
       offset={offset}
       crossOffset={crossOffset}
       triggerRef={anchor}
-      render={(props, { placement, isExiting }) => (
-        <div
-          {...props}
-          data-side={placement}
-          data-open={!isExiting}
-          data-closed={isExiting}
-        />
-      )}
       className={cn(
-        "cn-combobox-content cn-combobox-content-logical cn-menu-target cn-menu-translucent cn-menu-translucent-aria relative isolate z-50 w-(--trigger-width) origin-(--trigger-anchor-point)",
+        "cn-combobox-content-aria cn-menu-target cn-menu-translucent cn-menu-translucent-aria relative isolate z-50 w-(--trigger-width) origin-(--trigger-anchor-point)",
         className
       )}
       {...props}

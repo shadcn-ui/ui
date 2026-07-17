@@ -52,16 +52,8 @@ function DropdownMenu({
       offset={offset}
       crossOffset={crossOffset}
       className={cn(
-        "cn-dropdown-menu-content cn-dropdown-menu-content-logical cn-menu-target cn-menu-translucent cn-menu-translucent-aria z-50 w-(--trigger-width) origin-(--trigger-anchor-point) overflow-x-hidden overflow-y-auto outline-none data-closed:overflow-hidden",
+        "cn-dropdown-menu-content-aria cn-menu-target cn-menu-translucent cn-menu-translucent-aria z-50 w-(--trigger-width) origin-(--trigger-anchor-point) overflow-x-hidden overflow-y-auto outline-none data-exiting:overflow-hidden",
         className
-      )}
-      render={(renderProps, state) => (
-        <div
-          {...renderProps}
-          data-side={state.placement}
-          data-open={!state.isExiting}
-          data-closed={state.isExiting}
-        />
       )}
     >
       <MenuPrimitive
@@ -218,7 +210,7 @@ function DropdownMenuSubContent({
     <DropdownMenu
       data-slot="dropdown-menu-sub-content"
       className={cn(
-        "cn-dropdown-menu-sub-content cn-menu-target cn-menu-translucent w-auto",
+        "cn-dropdown-menu-sub-content-aria cn-menu-target cn-menu-translucent w-auto",
         className
       )}
       placement={placement}

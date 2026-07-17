@@ -10,11 +10,45 @@ import {
 
 import { cn } from "@/registry/bases/aria/lib/utils"
 
-const ValueContext = React.createContext<string | undefined>(undefined)
-const ProgressContext = React.createContext<{
+type ProgressContextValue = {
   percentage?: number
   isIndeterminate: boolean
-} | null>(null)
+  valueText?: string
+}
+
+const ProgressContext = React.createContext<ProgressContextValue | null>(null)
+
+function useProgress() {
+  const context = React.useContext(ProgressContext)
+  if (!context) {
+    throw new Error("useProgress must be used within a Progress.")
+  }
+
+  return context
+}
+
+function ProgressContent({
+  children,
+  percentage,
+  isIndeterminate,
+  valueText,
+}: ProgressContextValue & {
+  children?: React.ReactNode
+}) {
+  const context = React.useMemo(
+    () => ({ percentage, isIndeterminate, valueText }),
+    [percentage, isIndeterminate, valueText]
+  )
+
+  return (
+    <ProgressContext value={context}>
+      {children}
+      <ProgressTrack>
+        <ProgressIndicator />
+      </ProgressTrack>
+    </ProgressContext>
+  )
+}
 
 function Progress({
   className,
@@ -31,12 +65,13 @@ function Progress({
       {...props}
     >
       {({ percentage, valueText, isIndeterminate }) => (
-        <ProgressContext value={{ percentage, isIndeterminate }}>
-          <ValueContext value={valueText}>{children}</ValueContext>
-          <ProgressTrack>
-            <ProgressIndicator />
-          </ProgressTrack>
-        </ProgressContext>
+        <ProgressContent
+          percentage={percentage}
+          valueText={valueText}
+          isIndeterminate={isIndeterminate}
+        >
+          {children}
+        </ProgressContent>
       )}
     </ProgressPrimitive>
   )
@@ -60,7 +95,7 @@ function ProgressIndicator({
   style,
   ...props
 }: React.ComponentProps<"span">) {
-  const context = React.useContext(ProgressContext)
+  const { percentage, isIndeterminate } = useProgress()
 
   return (
     <span
@@ -68,7 +103,7 @@ function ProgressIndicator({
       className={cn("cn-progress-indicator h-full transition-all", className)}
       style={{
         ...style,
-        width: `${context?.isIndeterminate ? 100 : (context?.percentage ?? 0)}%`,
+        width: `${isIndeterminate ? 100 : (percentage ?? 0)}%`,
       }}
       {...props}
     />
@@ -92,14 +127,14 @@ function ProgressValue({
 }: Omit<React.ComponentProps<"span">, "children"> & {
   children?: (value: string) => React.ReactNode
 }) {
-  const value = React.useContext(ValueContext)
+  const { valueText } = useProgress()
   return (
     <span
       className={cn("cn-progress-value", className)}
       data-slot="progress-value"
       {...props}
     >
-      {children && value != null ? children(value) : value}
+      {children && valueText != null ? children(valueText) : valueText}
     </span>
   )
 }

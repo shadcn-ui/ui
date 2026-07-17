@@ -36,13 +36,19 @@ import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Command({
   className,
+  dir,
   style,
   ...props
-}: AutocompleteProps & React.HTMLAttributes<HTMLDivElement>) {
+}: Omit<AutocompleteProps, "className" | "style"> & {
+  className?: string
+  dir?: React.HTMLAttributes<HTMLDivElement>["dir"]
+  style?: React.CSSProperties
+}) {
   const { contains } = useFilter({ sensitivity: "base" })
   return (
     <div
       data-slot="command"
+      dir={dir}
       className={cn(
         "cn-command flex size-full flex-col overflow-hidden",
         className

@@ -34,16 +34,8 @@ function Popover({
       placement={placement}
       offset={offset}
       crossOffset={crossOffset}
-      render={(props, { placement, isExiting }) => (
-        <div
-          {...props}
-          data-side={placement}
-          data-open={!isExiting}
-          data-closed={isExiting}
-        />
-      )}
       className={cn(
-        "cn-popover-content cn-popover-content-logical z-50 w-72 origin-(--trigger-anchor-point) outline-hidden",
+        "cn-popover-content-aria z-50 w-72 origin-(--trigger-anchor-point) outline-hidden",
         className
       )}
       {...props}

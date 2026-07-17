@@ -42,23 +42,15 @@ function Tooltip({
       placement={placement}
       offset={offset}
       crossOffset={crossOffset}
-      render={(props, { placement, isExiting }) => (
-        <div
-          {...props}
-          data-side={placement}
-          data-open={!isExiting}
-          data-closed={isExiting}
-        />
-      )}
       className={cn(
-        "cn-tooltip-content cn-tooltip-content-logical z-50 w-fit max-w-xs origin-(--trigger-anchor-point) bg-foreground text-background",
+        "cn-tooltip-content-aria z-50 w-fit max-w-xs origin-(--trigger-anchor-point) bg-foreground text-background",
         className
       )}
       {...props}
     >
       {children}
       <OverlayArrow
-        className="cn-tooltip-arrow cn-tooltip-arrow-logical z-50 bg-foreground fill-foreground"
+        className="cn-tooltip-arrow z-50 bg-foreground fill-foreground"
         style={({ placement, defaultStyle }) => ({
           ...defaultStyle,
           rotate: "0deg",
@@ -72,9 +64,6 @@ function Tooltip({
                   ? "translate(calc(-50% - 2px), -50%) rotate(45deg)"
                   : "translate(calc(50% + 2px), -50%) rotate(45deg)",
         })}
-        render={(props, { placement }) => (
-          <div {...props} data-side={placement} />
-        )}
       />
     </TooltipPrimitive>
   )

@@ -10,7 +10,6 @@ import {
   type DialogProps as AlertDialogPrimitiveProps,
   type DialogTriggerProps as AlertDialogTriggerPrimitiveProps,
   type ModalOverlayProps as ModalOverlayPrimitiveProps,
-  type ModalRenderProps,
 } from "react-aria-components"
 
 import { cn } from "@/registry/bases/aria/lib/utils"
@@ -34,16 +33,8 @@ function AlertDialogOverlay({
     <ModalOverlayPrimitive
       data-slot="alert-dialog-overlay"
       className={cn(
-        "cn-alert-dialog-overlay fixed inset-0 isolate z-50",
+        "cn-alert-dialog-overlay-aria fixed inset-0 isolate z-50",
         className
-      )}
-      // Keep existing data-open/data-closed selectors working with RAC state.
-      render={(renderProps, state: ModalRenderProps) => (
-        <div
-          {...renderProps}
-          data-open={!state.isExiting}
-          data-closed={state.isExiting}
-        />
       )}
       {...props}
     >
@@ -69,16 +60,8 @@ function AlertDialog({
         data-slot="alert-dialog-content"
         data-size={size}
         className={cn(
-          "cn-alert-dialog-content group/alert-dialog-content fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 outline-none",
+          "cn-alert-dialog-content-aria group/alert-dialog-content fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 outline-none",
           className
-        )}
-        // Keep existing data-open/data-closed selectors working with RAC state.
-        render={(renderProps, state: ModalRenderProps) => (
-          <div
-            {...renderProps}
-            data-open={!state.isExiting}
-            data-closed={state.isExiting}
-          />
         )}
       >
         <AlertDialogPrimitive

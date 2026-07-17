@@ -170,7 +170,9 @@ import { Bubble, BubbleContent } from "@/components/ui/bubble"
 export function BubbleLinkDemo() {
   return (
     <Bubble variant="muted">
-      <BubbleContent render={<button />}>Click here</BubbleContent>
+      <BubbleContent render={(props) => <button {...props} type="button" />}>
+        Click here
+      </BubbleContent>
     </Bubble>
   )
 }
@@ -248,7 +250,9 @@ When a bubble is clickable, render it as a real `<button>` or `<a>` with the `re
 
 ```tsx showLineNumbers
 <Bubble variant="muted" align="end">
-  <BubbleContent render={<button type="button" onClick={onReply} />}>
+  <BubbleContent
+    render={(props) => <button {...props} type="button" onClick={onReply} />}
+  >
     I forgot my password
   </BubbleContent>
 </Bubble>

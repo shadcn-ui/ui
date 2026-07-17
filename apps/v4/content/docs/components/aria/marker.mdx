@@ -163,7 +163,7 @@ import { Marker, MarkerContent } from "@/components/ui/marker"
 
 export function MarkerLinkDemo() {
   return (
-    <Marker render={<a href="#" />}>
+    <Marker render={(props) => <a {...props} href="#" />}>
       <MarkerContent>View the pull request</MarkerContent>
     </Marker>
   )
@@ -234,7 +234,7 @@ A bordered marker keeps the same semantics as the default marker. The bottom bor
 When a marker links or triggers an action, render it as a real `<button>` or `<a>` with the `render` prop so it is focusable and exposes the correct role. The accessible name comes from the marker text.
 
 ```tsx showLineNumbers
-<Marker render={<a href="/files" />}>
+<Marker render={(props) => <a {...props} href="/files" />}>
   <MarkerIcon>
     <FileTextIcon />
   </MarkerIcon>

@@ -10,7 +10,6 @@ import {
   type DialogProps as DialogPrimitiveProps,
   type DialogTriggerProps as DialogTriggerPrimitiveProps,
   type ModalOverlayProps as ModalOverlayPrimitiveProps,
-  type ModalRenderProps,
 } from "react-aria-components"
 
 import { cn } from "@/registry/bases/aria/lib/utils"
@@ -50,14 +49,9 @@ function DialogOverlay({
   return (
     <ModalOverlayPrimitive
       data-slot="dialog-overlay"
-      className={cn("cn-dialog-overlay fixed inset-0 isolate z-50", className)}
-      // Keep existing data-open/data-closed selectors working with RAC state.
-      render={(renderProps, state: ModalRenderProps) => (
-        <div
-          {...renderProps}
-          data-open={!state.isExiting}
-          data-closed={state.isExiting}
-        />
+      className={cn(
+        "cn-dialog-overlay-aria fixed inset-0 isolate z-50",
+        className
       )}
       {...props}
     >
@@ -83,16 +77,8 @@ function Dialog({
       <ModalPrimitive
         data-slot="dialog-content"
         className={cn(
-          "cn-dialog-content fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-none",
+          "cn-dialog-content-aria fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-none",
           className
-        )}
-        // Keep existing data-open/data-closed selectors working with RAC state.
-        render={(renderProps, state: ModalRenderProps) => (
-          <div
-            {...renderProps}
-            data-open={!state.isExiting}
-            data-closed={state.isExiting}
-          />
         )}
       >
         <DialogPrimitive

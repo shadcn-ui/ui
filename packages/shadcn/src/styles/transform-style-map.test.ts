@@ -666,6 +666,62 @@ function ButtonGroupText({
     `)
   })
 
+  it("applies styles to cn-* classes inside render prop objects", async () => {
+    const source = `import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function BubbleContent({ className, render, ...props }) {
+  if (render) {
+    const renderProps = {
+      "data-slot": "bubble-content",
+      className: cn("cn-bubble-content w-fit", className),
+      ...props,
+    }
+
+    return render(renderProps)
+  }
+
+  return (
+    <div
+      data-slot="bubble-content"
+      className={cn("cn-bubble-content w-fit", className)}
+      {...props}
+    />
+  )
+}
+`
+
+    const result = await applyTransform(source, {
+      "cn-bubble-content": "rounded-xl border px-3 py-2",
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { cn } from "@/lib/utils"
+
+      function BubbleContent({ className, render, ...props }) {
+        if (render) {
+          const renderProps = {
+            "data-slot": "bubble-content",
+            className: cn("rounded-xl border px-3 py-2 w-fit", className),
+            ...props,
+          }
+
+          return render(renderProps)
+        }
+
+        return (
+          <div
+            data-slot="bubble-content"
+            className={cn("rounded-xl border px-3 py-2 w-fit", className)}
+            {...props}
+          />
+        )
+      }
+      "
+    `)
+  })
+
   it("preserves allowlisted classes even when not in styleMap", async () => {
     const source = `import * as React from "react"
 import { cn } from "@/lib/utils"

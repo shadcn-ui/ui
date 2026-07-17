@@ -339,7 +339,6 @@ export function DataTable({
         "text/plain": item.header,
       })),
     onReorder(e) {
-      console.log(e)
       if (e.target.dropPosition === "before") {
         list.moveBefore(e.target.key, e.keys)
       } else if (e.target.dropPosition === "after") {
