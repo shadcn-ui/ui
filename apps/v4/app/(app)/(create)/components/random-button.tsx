@@ -60,7 +60,7 @@ export function RandomizeScript() {
                     window.parent.postMessage({
                       type: type,
                       key: e.key
-                    }, '*');
+                    }, window.location.origin);
                   }
                 }
               });
