@@ -18,7 +18,7 @@ import {
 
 export function TableActions() {
   return (
-    <Table>
+    <Table aria-label="Products">
       <TableHeader>
         <TableHead isRowHeader>Product</TableHead>
         <TableHead>Price</TableHead>

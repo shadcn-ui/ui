@@ -208,8 +208,6 @@ function AlertDialogCancel({
 }
 
 export {
-  type AlertDialogPrimitiveProps,
-  type AlertDialogTriggerPrimitiveProps,
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,

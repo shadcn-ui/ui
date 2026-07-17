@@ -247,6 +247,30 @@ function Foo({ className, ...props }: { className?: string }) {
     `)
   })
 
+  it("does not apply base-specific hooks that are absent from the component", async () => {
+    const source = `import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Toggle({ className, ...props }: { className?: string }) {
+  return (
+    <button className={cn("cn-toggle existing-class", className)} {...props} />
+  )
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-toggle": "rounded-md border",
+      "cn-toggle-aria": "data-selected:bg-muted",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    expect(result).toContain(
+      'className={cn("rounded-md border existing-class", className)}'
+    )
+    expect(result).not.toContain("data-selected:bg-muted")
+  })
+
   it("skips cn-* classes not in styleMap", async () => {
     const source = `import * as React from "react"
 import { cn } from "@/lib/utils"

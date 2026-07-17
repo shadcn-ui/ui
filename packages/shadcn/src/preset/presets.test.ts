@@ -43,7 +43,11 @@ describe("promptForBase", () => {
     await expect(promptForBase()).resolves.toBe("aria")
     expect(prompts).toHaveBeenCalledWith(
       expect.objectContaining({
-        choices: expect.arrayContaining([{ title: "Aria", value: "aria" }]),
+        choices: [
+          { title: "Base UI (Recommended)", value: "base" },
+          { title: "React Aria", value: "aria" },
+          { title: "Radix UI", value: "radix" },
+        ],
       })
     )
   })

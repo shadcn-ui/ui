@@ -394,8 +394,16 @@
     @apply data-selected:bg-muted data-selected:text-foreground data-selected:**:[svg]:text-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none in-data-[slot=dialog-content]:rounded-lg! [&_svg:not([class*='size-'])]:size-4;
   }
 
+  .cn-command-item-aria {
+    @apply data-focused:bg-muted data-focused:text-foreground data-focused:**:[svg]:text-foreground;
+  }
+
   .cn-command-shortcut {
     @apply text-muted-foreground group-data-selected/command-item:text-foreground ml-auto text-xs tracking-widest;
+  }
+
+  .cn-command-shortcut-aria {
+    @apply group-data-focused/command-item:text-foreground;
   }
 
   /* MARK: Context Menu */
@@ -1048,7 +1056,7 @@
     @apply bg-popover z-10 flex cursor-default items-center justify-center py-1 [&_svg:not([class*='size-'])]:size-4;
   }
 
-  .cn-select-empty {
+  .cn-select-empty-aria {
     @apply text-muted-foreground hidden w-full justify-center py-2 text-center text-sm group-data-empty/select-list:flex;
   }
 

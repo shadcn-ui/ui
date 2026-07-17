@@ -36,7 +36,7 @@ export function AccountAccess() {
             <Input
               id="email-address"
               type="email"
-              defaultValue="artist@studio.inc"
+              defaultValue="artist@example.com"
             />
           </Field>
           <Field>

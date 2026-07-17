@@ -34,7 +34,7 @@ export function GithubProfile() {
           <FieldGroup>
             <Field>
               <FieldLabel htmlFor="name">Name</FieldLabel>
-              <Input id="name" placeholder="shadcn" />
+              <Input id="name" placeholder="Taylor" />
               <FieldDescription>
                 Your name may appear around GitHub where you contribute or are
                 mentioned. You can remove it at any time.
@@ -43,11 +43,11 @@ export function GithubProfile() {
             <Field>
               <FieldLabel htmlFor="email">Public Email</FieldLabel>
               <NativeSelect id="email">
-                <NativeSelectOption value="m@shadcn.com">
-                  m@shadcn.com
+                <NativeSelectOption value="taylor@example.com">
+                  taylor@example.com
                 </NativeSelectOption>
-                <NativeSelectOption value="m@gmail.com">
-                  m@gmail.com
+                <NativeSelectOption value="work@example.com">
+                  work@example.com
                 </NativeSelectOption>
               </NativeSelect>
               <FieldDescription>

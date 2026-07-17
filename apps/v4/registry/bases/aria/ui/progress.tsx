@@ -11,6 +11,10 @@ import {
 import { cn } from "@/registry/bases/aria/lib/utils"
 
 const ValueContext = React.createContext<string | undefined>(undefined)
+const ProgressContext = React.createContext<{
+  percentage?: number
+  isIndeterminate: boolean
+} | null>(null)
 
 function Progress({
   className,
@@ -27,23 +31,47 @@ function Progress({
       {...props}
     >
       {({ percentage, valueText, isIndeterminate }) => (
-        <>
+        <ProgressContext value={{ percentage, isIndeterminate }}>
           <ValueContext value={valueText}>{children}</ValueContext>
-          <span
-            className={cn(
-              "cn-progress-track relative flex w-full items-center overflow-x-hidden"
-            )}
-            data-slot="progress-track"
-          >
-            <span
-              data-slot="progress-indicator"
-              className={cn("cn-progress-indicator h-full transition-all")}
-              style={{ width: `${isIndeterminate ? 100 : percentage}%` }}
-            />
-          </span>
-        </>
+          <ProgressTrack>
+            <ProgressIndicator />
+          </ProgressTrack>
+        </ProgressContext>
       )}
     </ProgressPrimitive>
+  )
+}
+
+function ProgressTrack({ className, ...props }: React.ComponentProps<"span">) {
+  return (
+    <span
+      className={cn(
+        "cn-progress-track relative flex w-full items-center overflow-x-hidden",
+        className
+      )}
+      data-slot="progress-track"
+      {...props}
+    />
+  )
+}
+
+function ProgressIndicator({
+  className,
+  style,
+  ...props
+}: React.ComponentProps<"span">) {
+  const context = React.useContext(ProgressContext)
+
+  return (
+    <span
+      data-slot="progress-indicator"
+      className={cn("cn-progress-indicator h-full transition-all", className)}
+      style={{
+        ...style,
+        width: `${context?.isIndeterminate ? 100 : (context?.percentage ?? 0)}%`,
+      }}
+      {...props}
+    />
   )
 }
 
@@ -76,4 +104,10 @@ function ProgressValue({
   )
 }
 
-export { Progress, ProgressLabel, ProgressValue }
+export {
+  Progress,
+  ProgressTrack,
+  ProgressIndicator,
+  ProgressLabel,
+  ProgressValue,
+}

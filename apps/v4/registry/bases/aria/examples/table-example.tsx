@@ -172,18 +172,18 @@ function TableSimple() {
         </TableHeader>
         <TableBody>
           <TableRow>
-            <TableCell className="font-medium">Sarah Chen</TableCell>
-            <TableCell>sarah.chen@acme.com</TableCell>
+            <TableCell className="font-medium">Alex Morgan</TableCell>
+            <TableCell>alex@example.com</TableCell>
             <TableCell className="text-right">Admin</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-medium">Marc Rodriguez</TableCell>
-            <TableCell>marcus.rodriguez@acme.com</TableCell>
+            <TableCell className="font-medium">Jordan Lee</TableCell>
+            <TableCell>jordan@example.com</TableCell>
             <TableCell className="text-right">User</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-medium">Emily Watson</TableCell>
-            <TableCell>emily.watson@acme.com</TableCell>
+            <TableCell className="font-medium">Taylor Kim</TableCell>
+            <TableCell>taylor@example.com</TableCell>
             <TableCell className="text-right">User</TableCell>
           </TableRow>
         </TableBody>

@@ -148,9 +148,9 @@ export async function promptForBase() {
     name: "base",
     message: `Select a ${highlighter.info("component library")}`,
     choices: [
-      { title: "Base (Recommended)", value: "base" },
-      { title: "Radix", value: "radix" },
-      { title: "Aria", value: "aria" },
+      { title: "Base UI (Recommended)", value: "base" },
+      { title: "React Aria", value: "aria" },
+      { title: "Radix UI", value: "radix" },
     ],
   })
   if (!base) process.exit(1)

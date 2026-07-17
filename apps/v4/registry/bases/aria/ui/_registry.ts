@@ -421,11 +421,6 @@ export const ui: Registry["items"] = [
   {
     name: "form",
     type: "registry:ui",
-    meta: {
-      links: {
-        docs: "https://ui.shadcn.com/docs/components/aria/form",
-      },
-    },
   },
   {
     name: "input",

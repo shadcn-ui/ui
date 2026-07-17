@@ -283,7 +283,7 @@ function SelectEmpty({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="select-empty"
-      className={cn("cn-select-empty", className)}
+      className={cn("cn-select-empty-aria", className)}
       {...props}
     />
   )

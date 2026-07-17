@@ -41,7 +41,7 @@ const tableData = [
 
 export function CheckboxInTable() {
   return (
-    <Table selectionMode="multiple">
+    <Table aria-label="Users" selectionMode="multiple">
       <TableHeader>
         <TableHead className="w-8">
           <Checkbox

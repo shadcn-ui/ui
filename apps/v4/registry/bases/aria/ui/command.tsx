@@ -193,19 +193,11 @@ function CommandItem<T extends object>({
       {...props}
       data-slot="command-item"
       className={cn(
-        "cn-command-item group/command-item data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-command-item cn-command-item-aria group/command-item data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       textValue={
         textValue || (typeof children === "string" ? children : undefined)
-      }
-      // Add data-selected attribute for compatibility with cmdk
-      render={(props, { isFocused }) =>
-        "href" in props ? (
-          <a {...props} data-selected={isFocused || undefined} />
-        ) : (
-          <div {...props} data-selected={isFocused || undefined} />
-        )
       }
     >
       {composeRenderProps(children, (children) => (
@@ -232,7 +224,7 @@ function CommandShortcut({
   return (
     <span
       data-slot="command-shortcut"
-      className={cn("cn-command-shortcut", className)}
+      className={cn("cn-command-shortcut cn-command-shortcut-aria", className)}
       {...props}
     />
   )
