@@ -4,6 +4,30 @@
 @import "./legacy-themes.css";
 
 @source "../node_modules/streamdown/dist/*.js";
+@source "../styles/base-luma/**/*.tsx";
+@source "../styles/base-lyra/**/*.tsx";
+@source "../styles/base-maia/**/*.tsx";
+@source "../styles/base-mira/**/*.tsx";
+@source "../styles/base-nova/**/*.tsx";
+@source "../styles/base-rhea/**/*.tsx";
+@source "../styles/base-sera/**/*.tsx";
+@source "../styles/base-vega/**/*.tsx";
+@source "../styles/aria-luma/**/*.tsx";
+@source "../styles/aria-lyra/**/*.tsx";
+@source "../styles/aria-maia/**/*.tsx";
+@source "../styles/aria-mira/**/*.tsx";
+@source "../styles/aria-nova/**/*.tsx";
+@source "../styles/aria-rhea/**/*.tsx";
+@source "../styles/aria-sera/**/*.tsx";
+@source "../styles/aria-vega/**/*.tsx";
+@source "../styles/radix-luma/**/*.tsx";
+@source "../styles/radix-lyra/**/*.tsx";
+@source "../styles/radix-maia/**/*.tsx";
+@source "../styles/radix-mira/**/*.tsx";
+@source "../styles/radix-nova/**/*.tsx";
+@source "../styles/radix-rhea/**/*.tsx";
+@source "../styles/radix-sera/**/*.tsx";
+@source "../styles/radix-vega/**/*.tsx";
 
 @custom-variant style-vega (&:where(.style-vega *));
 @custom-variant style-nova (&:where(.style-nova *));
