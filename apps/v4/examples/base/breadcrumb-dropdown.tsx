@@ -33,7 +33,7 @@ export function BreadcrumbDropdown() {
               render={<button className="flex items-center gap-1" />}
             >
               Components
-              <ChevronDownIcon data-icon="inline-end" />
+              <ChevronDownIcon data-icon="inline-end" className="size-3.5" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
               <DropdownMenuGroup>
