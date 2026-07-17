@@ -1,5 +1,6 @@
 import Link from "next/link"
 
+import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { BASES } from "@/registry/bases"
 
@@ -23,7 +24,9 @@ export function DocsBaseSwitcher({
         className
       )}
     >
-      {BASES.map((baseItem) => (
+      {BASES.filter((baseItem) =>
+        source.getPage([`components/${baseItem.name}/${component}`])
+      ).map((baseItem) => (
         <Link
           key={baseItem.name}
           href={`${hrefPrefix}/${baseItem.name}/${component}`}
