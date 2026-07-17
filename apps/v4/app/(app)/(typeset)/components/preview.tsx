@@ -6,6 +6,7 @@ import {
   TYPESET_COMMAND_MESSAGE,
   type TypesetCommand,
 } from "@/app/(app)/(typeset)/components/forward-scripts"
+import { usePreviewOverrideValue } from "@/app/(app)/(typeset)/components/preview-override"
 import { TypesetToolbar } from "@/app/(app)/(typeset)/components/toolbar"
 import { useHistory } from "@/app/(app)/(typeset)/hooks/use-history"
 import { useShuffle } from "@/app/(app)/(typeset)/hooks/use-shuffle"
@@ -14,10 +15,22 @@ import {
   serializeTypesetSearchParams,
   TYPESET_PARAMS_MESSAGE,
   useTypesetSearchParams,
+  type TypesetSearchParams,
 } from "@/app/(app)/(typeset)/lib/search-params"
+
+function isSameParams(a: TypesetSearchParams | null, b: TypesetSearchParams) {
+  if (!a) {
+    return false
+  }
+
+  return Object.keys(b).every(
+    (key) => a[key as keyof typeof b] === b[key as keyof typeof b]
+  )
+}
 
 export function TypesetPreview() {
   const [params] = useTypesetSearchParams()
+  const override = usePreviewOverrideValue()
   const { shuffle, reset } = useShuffle()
   const { goBack, goForward } = useHistory()
   const { toggleTheme } = useThemeToggle({ shortcut: false })
@@ -26,6 +39,16 @@ export function TypesetPreview() {
     serializeTypesetSearchParams(`/preview/typeset/${params.item}`, params)
   )
   const itemRef = React.useRef(params.item)
+  const lastSentParamsRef = React.useRef<TypesetSearchParams | null>(null)
+
+  // Hover previews overlay the committed params without touching the URL —
+  // clearing the override re-sends the committed params, reverting the
+  // preview. Overrides never contain `item`, so the reload branch below is
+  // only ever driven by committed changes.
+  const mergedParams = React.useMemo(
+    () => (override ? { ...params, ...override } : params),
+    [params, override]
+  )
 
   React.useEffect(() => {
     const iframe = iframeRef.current
@@ -33,28 +56,38 @@ export function TypesetPreview() {
       return
     }
 
-    if (params.item !== itemRef.current) {
-      itemRef.current = params.item
+    if (mergedParams.item !== itemRef.current) {
+      itemRef.current = mergedParams.item
       setPreviewUrl(
-        serializeTypesetSearchParams(`/preview/typeset/${params.item}`, params)
+        serializeTypesetSearchParams(
+          `/preview/typeset/${mergedParams.item}`,
+          mergedParams
+        )
       )
       return
     }
 
     const sendParams = () => {
       iframe.contentWindow?.postMessage(
-        { type: TYPESET_PARAMS_MESSAGE, data: params },
+        { type: TYPESET_PARAMS_MESSAGE, data: mergedParams },
         window.location.origin
       )
+      lastSentParamsRef.current = mergedParams
     }
 
-    sendParams()
+    // Skip content-identical re-sends (e.g. an override matching the
+    // committed params) — each message triggers a full param sync in the
+    // iframe.
+    if (!isSameParams(lastSentParamsRef.current, mergedParams)) {
+      sendParams()
+    }
+
     iframe.addEventListener("load", sendParams)
 
     return () => {
       iframe.removeEventListener("load", sendParams)
     }
-  }, [params])
+  }, [mergedParams])
 
   // The iframe forwards its keyboard shortcuts as typed commands; handle them
   // here by calling the real actions.

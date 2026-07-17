@@ -71,6 +71,11 @@ const nextConfig = {
         destination: "/docs/forms",
         permanent: true,
       },
+      {
+        source: "/docs/components/aria/form",
+        destination: "/docs/forms",
+        permanent: true,
+      },
       // Typography redirects to /docs/typeset.
       {
         source: "/docs/components/base/typography",
@@ -82,14 +87,19 @@ const nextConfig = {
         destination: "/docs/typeset",
         permanent: true,
       },
+      {
+        source: "/docs/components/aria/typography",
+        destination: "/docs/typeset",
+        permanent: true,
+      },
       // Component redirects (default to base).
       {
-        source: "/docs/components/:name((?!radix|base|form)[^/]+)",
+        source: "/docs/components/:name((?!radix|base|aria|form)[^/]+)",
         destination: "/docs/components/base/:name",
         permanent: false,
       },
       {
-        source: "/docs/components/:name((?!radix|base|form)[^/]+).md",
+        source: "/docs/components/:name((?!radix|base|aria|form)[^/]+).md",
         destination: "/docs/components/base/:name.md",
         permanent: false,
       },
