@@ -1,7 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { ChevronDownIcon, DotIcon } from "lucide-react"
+import { ChevronDownIcon } from "lucide-react"
+import { Button } from "react-aria-components"
 
 import {
   useTranslation,
@@ -76,10 +77,10 @@ export function BreadcrumbRtl() {
 
         <BreadcrumbItem>
           <DropdownMenuTrigger>
-            <button className="flex items-center gap-1">
+            <Button className="flex items-center gap-1">
               {t.components}
               <ChevronDownIcon data-icon="inline-end" className="size-3.5" />
-            </button>
+            </Button>
             <DropdownMenu
               placement={dir === "rtl" ? "bottom end" : "bottom start"}
               data-lang={dir === "rtl" ? language : undefined}

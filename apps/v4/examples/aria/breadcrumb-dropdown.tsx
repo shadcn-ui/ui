@@ -1,7 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { ChevronDownIcon, DotIcon } from "lucide-react"
+import { ChevronDownIcon } from "lucide-react"
+import { Button } from "react-aria-components"
 
 import {
   Breadcrumb,
@@ -34,10 +35,10 @@ export function BreadcrumbDropdown() {
 
         <BreadcrumbItem>
           <DropdownMenuTrigger>
-            <button className="flex items-center gap-1">
+            <Button className="flex items-center gap-1">
               Components
               <ChevronDownIcon data-icon="inline-end" />
-            </button>
+            </Button>
             <DropdownMenu placement="bottom start">
               <DropdownMenuGroup>
                 <DropdownMenuItem>Documentation</DropdownMenuItem>
