@@ -692,7 +692,7 @@ const BaseGrid = React.memo(function BaseGrid({
       value={base}
       onValueChange={handleBaseChange}
       aria-label="Base"
-      className="grid grid-cols-3 gap-2"
+      className="grid grid-cols-1 gap-2 sm:grid-cols-3"
     >
       {BASES.map((item) => (
         <FieldLabel
@@ -704,14 +704,16 @@ const BaseGrid = React.memo(function BaseGrid({
             orientation="horizontal"
             className="w-full rounded-md transition-colors duration-150 hover:bg-neutral-700/45"
           >
-            <FieldContent className="flex flex-row items-center gap-2 px-2 py-1">
+            <FieldContent className="flex flex-row items-center gap-2 py-1">
               <div
-                className="size-4 text-neutral-100 [&_svg]:size-4 *:[svg]:text-neutral-100!"
+                className="size-4 shrink-0 text-neutral-100 [&_svg]:size-4 *:[svg]:text-neutral-100!"
                 dangerouslySetInnerHTML={{
                   __html: item.meta?.logo ?? "",
                 }}
               />
-              <FieldTitle>{item.title}</FieldTitle>
+              <FieldTitle className="whitespace-nowrap">
+                {item.title}
+              </FieldTitle>
             </FieldContent>
             <RadioGroupItem
               value={item.name}
