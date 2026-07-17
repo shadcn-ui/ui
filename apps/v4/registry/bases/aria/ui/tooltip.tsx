@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import {
+  Focusable,
   OverlayArrow,
   Tooltip as TooltipPrimitive,
   TooltipTrigger as TooltipTriggerPrimitive,
@@ -11,14 +12,22 @@ import { cn } from "@/registry/bases/aria/lib/utils"
 
 function TooltipTrigger({
   delay = 0,
+  children,
   ...props
 }: React.ComponentProps<typeof TooltipTriggerPrimitive>) {
+  const [trigger, tooltip] = React.Children.toArray(children)
+
   return (
     <TooltipTriggerPrimitive
       data-slot="tooltip-trigger"
       delay={delay}
       {...props}
-    />
+    >
+      <Focusable>
+        {trigger as React.ComponentProps<typeof Focusable>["children"]}
+      </Focusable>
+      {tooltip}
+    </TooltipTriggerPrimitive>
   )
 }
 
