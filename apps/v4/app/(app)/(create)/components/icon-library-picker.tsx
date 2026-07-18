@@ -12,6 +12,7 @@ import {
   PickerRadioItem,
   PickerTrigger,
 } from "@/app/(app)/(create)/components/picker"
+import { usePreviewOverride } from "@/app/(app)/(create)/components/preview-override"
 import { useDesignSystemSearchParams } from "@/app/(app)/(create)/lib/search-params"
 
 const logos = {
@@ -117,6 +118,7 @@ export function IconLibraryPicker({
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
   const [params, setParams] = useDesignSystemSearchParams()
+  const { setOverride, clearOverride } = usePreviewOverride()
 
   const currentIconLibrary = React.useMemo(
     () => iconLibraries[params.iconLibrary as keyof typeof iconLibraries],
@@ -125,7 +127,13 @@ export function IconLibraryPicker({
 
   return (
     <div className="group/picker relative">
-      <Picker>
+      <Picker
+        onOpenChange={(open) => {
+          if (!open) {
+            clearOverride()
+          }
+        }}
+      >
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
             <div className="text-xs text-muted-foreground">Icon Library</div>
@@ -141,12 +149,19 @@ export function IconLibraryPicker({
           anchor={isMobile ? anchorRef : undefined}
           side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
+          onMouseLeave={clearOverride}
         >
           <PickerRadioGroup
             value={currentIconLibrary?.name}
             onValueChange={(value) => {
               setParams({ iconLibrary: value as IconLibraryName })
             }}
+            onItemPreview={
+              isMobile
+                ? undefined
+                : (value) =>
+                    setOverride({ iconLibrary: value as IconLibraryName })
+            }
           >
             <PickerGroup>
               {Object.values(iconLibraries).map((iconLibrary) => (
