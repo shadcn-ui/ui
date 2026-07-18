@@ -14,7 +14,7 @@ import {
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
-import { applyInitUrlOptions, initOptionsSchema, runInit } from "./init"
+import { applyInitUrlOptions, init, initOptionsSchema, runInit } from "./init"
 
 vi.mock("@/src/preflights/preflight-init", () => ({
   preFlightInit: vi.fn(),
@@ -254,6 +254,16 @@ describe("runInit", () => {
 })
 
 describe("init options", () => {
+  it("accepts aria as a base", () => {
+    const result = initOptionsSchema.parse({
+      ...createInitOptions("/tmp/project"),
+      base: "aria",
+    })
+
+    expect(result.base).toBe("aria")
+    expect(init.helpInformation()).toContain("(base, radix, aria)")
+  })
+
   it("parses pointer flags", () => {
     const result = initOptionsSchema.parse({
       ...createInitOptions("/tmp/project"),

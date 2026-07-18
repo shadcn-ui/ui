@@ -14,6 +14,7 @@ import {
   PickerSeparator,
   PickerTrigger,
 } from "@/app/(app)/(create)/components/picker"
+import { usePreviewOverride } from "@/app/(app)/(create)/components/preview-override"
 import { useDesignSystemSearchParams } from "@/app/(app)/(create)/lib/search-params"
 
 export function ThemePicker({
@@ -27,6 +28,7 @@ export function ThemePicker({
 }) {
   const mounted = useMounted()
   const [params, setParams] = useDesignSystemSearchParams()
+  const { setOverride, clearOverride } = usePreviewOverride()
 
   const currentTheme = React.useMemo(
     () => themes.find((theme) => theme.name === params.theme),
@@ -40,7 +42,13 @@ export function ThemePicker({
 
   return (
     <div className="group/picker relative">
-      <Picker>
+      <Picker
+        onOpenChange={(open) => {
+          if (!open) {
+            clearOverride()
+          }
+        }}
+      >
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
             <div className="text-xs text-muted-foreground">Theme</div>
@@ -67,12 +75,18 @@ export function ThemePicker({
           side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
           className="max-h-92"
+          onMouseLeave={clearOverride}
         >
           <PickerRadioGroup
             value={currentTheme?.name}
             onValueChange={(value) => {
               setParams({ theme: value as ThemeName })
             }}
+            onItemPreview={
+              isMobile
+                ? undefined
+                : (value) => setOverride({ theme: value as ThemeName })
+            }
           >
             <PickerGroup>
               {themes
