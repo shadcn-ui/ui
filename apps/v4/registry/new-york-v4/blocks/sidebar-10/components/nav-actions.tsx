@@ -107,7 +107,7 @@ export function NavActions() {
 
   return (
     <div className="flex items-center gap-2 text-sm">
-      <div className="text-muted-foreground hidden font-medium md:inline-block">
+      <div className="hidden font-medium text-muted-foreground md:inline-block">
         Edit Oct 08
       </div>
       <Button variant="ghost" size="icon" className="h-7 w-7">
@@ -118,7 +118,7 @@ export function NavActions() {
           <Button
             variant="ghost"
             size="icon"
-            className="data-[state=open]:bg-accent h-7 w-7"
+            className="h-7 w-7 data-[state=open]:bg-accent"
           >
             <MoreHorizontal />
           </Button>

@@ -1,5 +1,6 @@
 import { createHash } from "crypto"
 import path from "path"
+import { isGitHubItemAddress, resolveItemAddress } from "@/src/registry/address"
 import {
   getRegistryBaseColor,
   getShadcnRegistryIndex,
@@ -14,6 +15,7 @@ import {
   RegistryParseError,
 } from "@/src/registry/errors"
 import { fetchRegistry, fetchRegistryLocal } from "@/src/registry/fetcher"
+import { fetchGitHubRegistryItem } from "@/src/registry/github"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
 import {
   deduplicateFilesByTarget,
@@ -21,15 +23,23 @@ import {
   isUrl,
 } from "@/src/registry/utils"
 import {
+  RegistryFontItem,
+  registryItemCommonSchema,
+  registryItemFontSchema,
   registryItemSchema,
+  registryItemTypeSchema,
   registryResolvedItemsTreeSchema,
 } from "@/src/schema"
 import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
-import { handleError } from "@/src/utils/handle-error"
 import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/updaters/update-tailwind-config"
 import deepmerge from "deepmerge"
 import { z } from "zod"
+
+type RegistryFetchOptions = {
+  useCache?: boolean
+  sourceCache?: Map<string, Promise<string>>
+}
 
 export function resolveRegistryItemsFromRegistries(
   items: string[],
@@ -44,6 +54,10 @@ export function resolveRegistryItemsFromRegistries(
   }
 
   for (let i = 0; i < resolvedItems.length; i++) {
+    if (isGitHubItemAddress(resolvedItems[i])) {
+      continue
+    }
+
     const resolved = buildUrlAndHeadersForRegistryItem(resolvedItems[i], config)
 
     if (resolved) {
@@ -65,10 +79,21 @@ export function resolveRegistryItemsFromRegistries(
 export async function fetchRegistryItems(
   items: string[],
   config: Config,
-  options: { useCache?: boolean } = {}
+  options: RegistryFetchOptions = {}
 ) {
+  options = {
+    ...options,
+    sourceCache: options.sourceCache ?? new Map(),
+  }
+
   const results = await Promise.all(
     items.map(async (item) => {
+      const resolvedAddress = resolveItemAddress(item)
+
+      if (resolvedAddress.scheme === "github") {
+        return fetchGitHubRegistryItem(resolvedAddress, options)
+      }
+
       if (isLocalFile(item)) {
         return fetchRegistryLocal(item)
       }
@@ -105,21 +130,28 @@ export async function fetchRegistryItems(
   return results
 }
 
-// Helper schema for items with source tracking
-const registryItemWithSourceSchema = registryItemSchema.extend({
-  _source: z.string().optional(),
-})
+// Helper schema for items with source tracking.
+const registryItemWithSourceSchema = registryItemCommonSchema
+  .extend({
+    type: registryItemTypeSchema,
+    _source: z.string().optional(),
+    // Optional fields for specific item types.
+    font: registryItemFontSchema.optional(),
+    config: z.any().optional(),
+  })
+  .passthrough()
 
 // Resolves a list of registry items with all their dependencies and returns
 // a complete installation bundle with merged configuration.
 export async function resolveRegistryTree(
   names: z.infer<typeof registryItemSchema>["name"][],
   config: Config,
-  options: { useCache?: boolean } = {}
+  options: RegistryFetchOptions = {}
 ) {
   options = {
     useCache: true,
     ...options,
+    sourceCache: options.sourceCache ?? new Map(),
   }
 
   let payload: z.infer<typeof registryItemWithSourceSchema>[] = []
@@ -266,15 +298,18 @@ export async function resolveRegistryTree(
     }
   }
 
-  // Build source map for topological sort
-  const sourceMap = new Map<z.infer<typeof registryItemSchema>, string>()
+  // Build source map for topological sort.
+  const sourceMap = new Map<
+    z.infer<typeof registryItemWithSourceSchema>,
+    string
+  >()
   payload.forEach((item) => {
-    // Use the _source property if it was added, otherwise use the name
+    // Use the _source property if it was added, otherwise use the name.
     const source = item._source || item.name
     sourceMap.set(item, source)
   })
 
-  // Apply topological sort to ensure dependencies come before dependents
+  // Apply topological sort to ensure dependencies come before dependents.
   payload = topologicalSortRegistryItems(payload, sourceMap)
 
   // Sort the payload so that registry:theme items come first,
@@ -322,6 +357,15 @@ export async function resolveRegistryTree(
     config
   )
 
+  // Collect font items.
+  const fonts: RegistryFontItem[] = payload
+    .filter((item) => item.type === "registry:font" && item.font)
+    .map((item) => ({
+      ...item,
+      type: "registry:font" as const,
+      font: item.font!,
+    }))
+
   const parsed = registryResolvedItemsTreeSchema.parse({
     dependencies: deepmerge.all(payload.map((item) => item.dependencies ?? [])),
     devDependencies: deepmerge.all(
@@ -332,6 +376,7 @@ export async function resolveRegistryTree(
     cssVars,
     css,
     docs,
+    fonts: fonts.length > 0 ? fonts : undefined,
   })
 
   if (Object.keys(envVars).length > 0) {
@@ -344,10 +389,10 @@ export async function resolveRegistryTree(
 async function resolveDependenciesRecursively(
   dependencies: string[],
   config: Config,
-  options: { useCache?: boolean } = {},
+  options: RegistryFetchOptions = {},
   visited: Set<string> = new Set()
 ) {
-  const items: z.infer<typeof registryItemSchema>[] = []
+  const items: z.infer<typeof registryItemWithSourceSchema>[] = []
   const registryNames: string[] = []
 
   for (const dep of dependencies) {
@@ -356,11 +401,43 @@ async function resolveDependenciesRecursively(
     }
     visited.add(dep)
 
+    const resolvedAddress = resolveItemAddress(dep)
+
     // Handle URLs and local files directly.
-    if (isUrl(dep) || isLocalFile(dep)) {
+    if (resolvedAddress.scheme === "github") {
       const [item] = await fetchRegistryItems([dep], config, options)
       if (item) {
-        items.push(item)
+        items.push({
+          ...item,
+          _source: dep,
+        })
+        if (item.registryDependencies) {
+          const resolvedDeps = config?.registries
+            ? resolveRegistryItemsFromRegistries(
+                item.registryDependencies,
+                config
+              )
+            : item.registryDependencies
+
+          const nested = await resolveDependenciesRecursively(
+            resolvedDeps,
+            config,
+            options,
+            visited
+          )
+          items.push(...nested.items)
+          registryNames.push(...nested.registryNames)
+        }
+      }
+    }
+    // Handle URLs and local files directly.
+    else if (isUrl(dep) || isLocalFile(dep)) {
+      const [item] = await fetchRegistryItems([dep], config, options)
+      if (item) {
+        items.push({
+          ...item,
+          _source: dep,
+        })
         if (item.registryDependencies) {
           // Resolve namespaced dependencies to set proper headers.
           const resolvedDeps = config?.registries
@@ -453,7 +530,7 @@ async function resolveDependenciesRecursively(
 async function resolveRegistryDependencies(
   url: string,
   config: Config,
-  options: { useCache?: boolean } = {}
+  options: RegistryFetchOptions = {}
 ) {
   if (isUrl(url)) {
     return [url]
@@ -568,6 +645,15 @@ function computeItemHash(
 }
 
 function extractItemIdentifierFromDependency(dependency: string) {
+  const resolvedAddress = resolveItemAddress(dependency)
+
+  if (resolvedAddress.scheme === "github") {
+    return {
+      name: resolvedAddress.item,
+      hash: computeItemHash({ name: resolvedAddress.item }, dependency),
+    }
+  }
+
   if (isUrl(dependency)) {
     const url = new URL(dependency)
     const pathname = url.pathname
@@ -598,11 +684,17 @@ function extractItemIdentifierFromDependency(dependency: string) {
 }
 
 function topologicalSortRegistryItems(
-  items: z.infer<typeof registryItemSchema>[],
-  sourceMap: Map<z.infer<typeof registryItemSchema>, string>
+  items: z.infer<typeof registryItemWithSourceSchema>[],
+  sourceMap: Map<z.infer<typeof registryItemWithSourceSchema>, string>
 ) {
-  const itemMap = new Map<string, z.infer<typeof registryItemSchema>>()
-  const hashToItem = new Map<string, z.infer<typeof registryItemSchema>>()
+  const itemMap = new Map<
+    string,
+    z.infer<typeof registryItemWithSourceSchema>
+  >()
+  const hashToItem = new Map<
+    string,
+    z.infer<typeof registryItemWithSourceSchema>
+  >()
   const inDegree = new Map<string, number>()
   const adjacencyList = new Map<string, string[]>()
 
@@ -668,7 +760,7 @@ function topologicalSortRegistryItems(
 
   // Implements Kahn's algorithm.
   const queue: string[] = []
-  const sorted: z.infer<typeof registryItemSchema>[] = []
+  const sorted: z.infer<typeof registryItemWithSourceSchema>[] = []
 
   inDegree.forEach((degree, hash) => {
     if (degree === 0) {
@@ -692,7 +784,7 @@ function topologicalSortRegistryItems(
   }
 
   if (sorted.length !== items.length) {
-    console.warn("Circular dependency detected in registry items")
+    // console.warn("Circular dependency detected in registry items")
     // Return all items even if there are circular dependencies
     // Items not in sorted are part of circular dependencies
     const sortedHashes = new Set(

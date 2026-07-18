@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "example-target-alias-child",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/example-target-alias-child/ui/dependency-button.tsx",
+      "type": "registry:ui",
+      "content": "export function DependencyButton() {\n  return <button>Dependency Button</button>\n}\n",
+      "target": "@ui/dependency-button.tsx"
+    },
+    {
+      "path": "registry/example-target-alias-child/lib/dependency-helper.ts",
+      "type": "registry:lib",
+      "content": "export function dependencyHelper() {\n  return \"dependency-helper\"\n}\n",
+      "target": "@lib/dependency-helper.ts"
+    }
+  ]
+}

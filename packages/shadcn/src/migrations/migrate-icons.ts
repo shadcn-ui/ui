@@ -6,7 +6,7 @@ import { getRegistryIcons } from "@/src/registry/api"
 import { iconsSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
-import { ICON_LIBRARIES } from "@/src/utils/icon-libraries"
+import { LEGACY_ICON_LIBRARIES } from "@/src/utils/legacy-icon-libraries"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
@@ -34,7 +34,7 @@ export async function migrateIcons(config: Config) {
     throw new Error("Something went wrong fetching the registry icons.")
   }
 
-  const libraryChoices = Object.entries(ICON_LIBRARIES).map(
+  const libraryChoices = Object.entries(LEGACY_ICON_LIBRARIES).map(
     ([name, iconLibrary]) => ({
       title: iconLibrary.name,
       value: name,
@@ -68,17 +68,21 @@ export async function migrateIcons(config: Config) {
 
   if (
     !(
-      migrateOptions.sourceLibrary in ICON_LIBRARIES &&
-      migrateOptions.targetLibrary in ICON_LIBRARIES
+      migrateOptions.sourceLibrary in LEGACY_ICON_LIBRARIES &&
+      migrateOptions.targetLibrary in LEGACY_ICON_LIBRARIES
     )
   ) {
     throw new Error("Invalid icon library. Please choose a valid icon library.")
   }
 
   const sourceLibrary =
-    ICON_LIBRARIES[migrateOptions.sourceLibrary as keyof typeof ICON_LIBRARIES]
+    LEGACY_ICON_LIBRARIES[
+      migrateOptions.sourceLibrary as keyof typeof LEGACY_ICON_LIBRARIES
+    ]
   const targetLibrary =
-    ICON_LIBRARIES[migrateOptions.targetLibrary as keyof typeof ICON_LIBRARIES]
+    LEGACY_ICON_LIBRARIES[
+      migrateOptions.targetLibrary as keyof typeof LEGACY_ICON_LIBRARIES
+    ]
   const { confirm } = await prompts({
     type: "confirm",
     name: "confirm",
@@ -128,12 +132,12 @@ export async function migrateIcons(config: Config) {
 
 export async function migrateIconsFile(
   content: string,
-  sourceLibrary: keyof typeof ICON_LIBRARIES,
-  targetLibrary: keyof typeof ICON_LIBRARIES,
+  sourceLibrary: keyof typeof LEGACY_ICON_LIBRARIES,
+  targetLibrary: keyof typeof LEGACY_ICON_LIBRARIES,
   iconsMapping: z.infer<typeof iconsSchema>
 ) {
-  const sourceLibraryImport = ICON_LIBRARIES[sourceLibrary]?.import
-  const targetLibraryImport = ICON_LIBRARIES[targetLibrary]?.import
+  const sourceLibraryImport = LEGACY_ICON_LIBRARIES[sourceLibrary]?.import
+  const targetLibraryImport = LEGACY_ICON_LIBRARIES[targetLibrary]?.import
 
   const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
   const project = new Project({

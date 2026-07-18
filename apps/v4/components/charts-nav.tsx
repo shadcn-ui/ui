@@ -53,7 +53,7 @@ export function ChartsNav({
               key={link.href}
               data-active={link.href.startsWith(pathname)}
               className={cn(
-                "text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 shrink-0 items-center justify-center px-4 text-center text-base font-medium transition-colors"
+                "flex h-7 shrink-0 items-center justify-center px-4 text-center text-base font-medium text-muted-foreground transition-colors hover:text-primary data-[active=true]:text-primary"
               )}
             >
               {link.name}

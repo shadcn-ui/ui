@@ -1,4 +1,5 @@
 import path from "path"
+import { resolveGitHubRegistrySource } from "@/src/registry/address"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
 import {
@@ -16,16 +17,20 @@ import {
   RegistryInvalidNamespaceError,
   RegistryNotFoundError,
   RegistryParseError,
+  RegistryValidationError,
 } from "@/src/registry/errors"
 import { fetchRegistry } from "@/src/registry/fetcher"
+import { fetchGitHubRegistryCatalog } from "@/src/registry/github"
 import {
   fetchRegistryItems,
   resolveRegistryTree,
 } from "@/src/registry/resolver"
 import { isUrl } from "@/src/registry/utils"
 import {
+  configJsonSchema,
   iconsSchema,
   registriesIndexSchema,
+  registriesSchema,
   registryBaseColorSchema,
   registryConfigSchema,
   registryIndexSchema,
@@ -49,11 +54,12 @@ export async function getRegistry(
 
   if (isUrl(name)) {
     const [result] = await fetchRegistry([name], { useCache })
-    try {
-      return registrySchema.parse(result)
-    } catch (error) {
-      throw new RegistryParseError(name, error)
-    }
+    return parseRegistryCatalog(name, result)
+  }
+
+  const githubSource = resolveGitHubRegistrySource(name)
+  if (githubSource) {
+    return fetchGitHubRegistryCatalog(githubSource, { useCache })
   }
 
   if (!name.startsWith("@")) {
@@ -82,10 +88,38 @@ export async function getRegistry(
 
   const [result] = await fetchRegistry([urlAndHeaders.url], { useCache })
 
+  return parseRegistryCatalog(registryName, result)
+}
+
+function parseRegistryCatalog(name: string, result: unknown) {
   try {
-    return registrySchema.parse(result)
+    const registry = registrySchema.parse(result)
+
+    if (registry.include?.length) {
+      throw new RegistryValidationError(
+        `Registry catalog "${name}" uses "include", but consumer registry endpoints must serve a resolved registry catalog. Run "npx shadcn build" and serve the built registry.json, or use loadRegistry() in a dynamic route.`,
+        {
+          context: {
+            registry: name,
+            include: registry.include,
+          },
+          suggestion:
+            "Serve a flattened registry.json for CLI consumers. Source registry.json files with include are supported by shadcn build and loadRegistry().",
+        }
+      )
+    }
+
+    return registry
   } catch (error) {
-    throw new RegistryParseError(registryName, error)
+    if (error instanceof RegistryValidationError) {
+      throw error
+    }
+
+    throw new RegistryParseError(name, error, {
+      subject: "registry catalog",
+      suggestion:
+        "The registry catalog may be corrupted or have an invalid format. Please make sure it returns a valid registry.json object. See https://ui.shadcn.com/schema/registry.json.",
+    })
   }
 }
 
@@ -278,7 +312,8 @@ export async function getItemTargetPath(
   )
 }
 
-export async function getRegistriesIndex(options?: { useCache?: boolean }) {
+// Fetch registries with new schema (array of objects with name, homepage, url, featured).
+export async function getRegistries(options?: { useCache?: boolean }) {
   options = {
     useCache: true,
     ...options,
@@ -290,7 +325,7 @@ export async function getRegistriesIndex(options?: { useCache?: boolean }) {
   })
 
   try {
-    return registriesIndexSchema.parse(data)
+    return registriesSchema.parse(data)
   } catch (error) {
     if (error instanceof z.ZodError) {
       throw new RegistriesIndexParseError(error)
@@ -298,4 +333,43 @@ export async function getRegistriesIndex(options?: { useCache?: boolean }) {
 
     throw error
   }
+}
+
+/**
+ * @deprecated Use getRegistries() instead.
+ */
+export async function getRegistriesIndex(options?: { useCache?: boolean }) {
+  // Fetch new format and transform to old Record<string, string> for backward compatibility.
+  const registries = await getRegistries(options)
+  if (!registries) return null
+  return Object.fromEntries(registries.map((r) => [r.name, r.url])) as z.infer<
+    typeof registriesIndexSchema
+  >
+}
+
+export async function getPresets(options?: { useCache?: boolean }) {
+  options = {
+    useCache: true,
+    ...options,
+  }
+
+  const url = `${REGISTRY_URL}/config.json`
+  const [data] = await fetchRegistry([url], {
+    useCache: options.useCache,
+  })
+
+  const result = configJsonSchema.parse(data)
+  return result.presets
+}
+
+export async function getPreset(
+  name: string,
+  options?: { useCache?: boolean }
+) {
+  const presets = await getPresets(options)
+  return (
+    presets.find(
+      (preset) => preset.name.toLowerCase() === name.toLowerCase()
+    ) ?? null
+  )
 }

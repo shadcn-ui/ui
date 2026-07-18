@@ -15,11 +15,11 @@ export async function createRegistryServer(
   const server = createServer((request, response) => {
     const urlRaw = request.url?.split("?")[0]
 
-    // Handle registries.json endpoint (don't strip .json for this one)
+    // Handle registries.json endpoint (don't strip .json for this one).
     if (urlRaw?.endsWith("/registries.json")) {
       response.writeHead(200, { "Content-Type": "application/json" })
-      // Return empty registry index for tests - we want to test manual configuration.
-      response.end(JSON.stringify({}))
+      // Return empty registry array for tests - we want to test manual configuration.
+      response.end(JSON.stringify([]))
       return
     }
 
@@ -103,7 +103,23 @@ export async function createRegistryServer(
       return
     }
 
-    if (urlWithoutQuery?.includes("index")) {
+    // Match /styles/{style}/index for the registry style index (e.g., /styles/new-york-v4/index).
+    if (urlWithoutQuery?.match(/\/styles\/[^/]+\/index$/)) {
+      response.writeHead(200, { "Content-Type": "application/json" })
+      response.end(
+        JSON.stringify({
+          name: "index",
+          type: "registry:style",
+          registryDependencies: ["utils"],
+          cssVars: {},
+          files: [],
+        })
+      )
+      return
+    }
+
+    // Match /r/index for the registry index (but NOT paths like /styles/foo/index).
+    if (urlWithoutQuery?.match(/\/r\/index$/)) {
       response.writeHead(200, { "Content-Type": "application/json" })
       response.end(
         JSON.stringify([

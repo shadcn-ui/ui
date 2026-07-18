@@ -54,13 +54,13 @@ export function CardsPaymentMethod() {
         </div>
         <fieldset className="flex flex-col gap-3">
           <legend className="text-sm font-medium">Plan</legend>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-sm text-muted-foreground">
             Select the plan that best fits your needs.
           </p>
           <RadioGroup defaultValue="starter" className="grid gap-3">
             {plans.map((plan) => (
               <Label
-                className="has-[[data-state=checked]]:border-ring has-[[data-state=checked]]:bg-primary/5 flex items-start gap-3 rounded-lg border p-3"
+                className="flex items-start gap-3 rounded-lg border p-3 has-[[data-state=checked]]:border-ring has-[[data-state=checked]]:bg-primary/5"
                 key={plan.id}
               >
                 <RadioGroupItem
@@ -70,7 +70,7 @@ export function CardsPaymentMethod() {
                 />
                 <div className="grid gap-1 font-normal">
                   <div className="font-medium">{plan.name}</div>
-                  <div className="text-muted-foreground pr-2 text-xs leading-snug text-balance">
+                  <div className="pr-2 text-xs leading-snug text-balance text-muted-foreground">
                     {plan.description}
                   </div>
                 </div>

@@ -6,7 +6,7 @@ import {
   ArrowLeftIcon,
   CalendarPlusIcon,
   ClockIcon,
-  ListFilterPlusIcon,
+  ListFilterIcon,
   MailCheckIcon,
   MoreHorizontalIcon,
   TagIcon,
@@ -73,7 +73,7 @@ export default function ButtonGroupDemo() {
                 Add to Calendar
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <ListFilterPlusIcon />
+                <ListFilterIcon />
                 Add to List
               </DropdownMenuItem>
               <DropdownMenuSub>

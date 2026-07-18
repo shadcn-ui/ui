@@ -1,8 +1,15 @@
+import { promises as fsPromises } from "fs"
 import path from "path"
+import { getShadcnRegistryIndex } from "@/src/registry/api"
+import { SHADCN_URL } from "@/src/registry/constants"
 import { rawConfigSchema } from "@/src/schema"
-import { FRAMEWORKS, Framework } from "@/src/utils/frameworks"
+import { Framework, FRAMEWORKS } from "@/src/utils/frameworks"
 import { Config, getConfig, resolveConfigPaths } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
+import {
+  getPackageImportAliases,
+  getPackageImportPrefix,
+} from "@/src/utils/package-imports"
 import fg from "fast-glob"
 import fs from "fs-extra"
 import { loadConfig } from "tsconfig-paths"
@@ -36,7 +43,10 @@ const TS_CONFIG_SCHEMA = z.object({
   }),
 })
 
-export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
+export async function getProjectInfo(
+  cwd: string,
+  opts?: { configCssFile?: string }
+): Promise<ProjectInfo | null> {
   const [
     configFiles,
     isSrcDir,
@@ -44,7 +54,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     tailwindConfigFile,
     tailwindCssFile,
     tailwindVersion,
-    aliasPrefix,
+    aliasPrefixInfo,
     packageJson,
   ] = await Promise.all([
     fg.glob(
@@ -58,9 +68,9 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     fs.pathExists(path.resolve(cwd, "src")),
     isTypeScriptProject(cwd),
     getTailwindConfigFile(cwd),
-    getTailwindCssFile(cwd),
+    getTailwindCssFile(cwd, opts?.configCssFile),
     getTailwindVersion(cwd),
-    getTsConfigAliasPrefix(cwd),
+    getProjectAliasInfo(cwd),
     getPackageInfo(cwd, false),
   ])
 
@@ -77,7 +87,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     tailwindCssFile,
     tailwindVersion,
     frameworkVersion: null,
-    aliasPrefix,
+    aliasPrefix: aliasPrefixInfo.prefix,
   }
 
   // Next.js.
@@ -240,7 +250,15 @@ export async function getTailwindVersion(
   return "v4"
 }
 
-export async function getTailwindCssFile(cwd: string) {
+export async function getTailwindCssFile(cwd: string, configCssFile?: string) {
+  // If the existing config has a known CSS file, check it first.
+  if (configCssFile) {
+    const resolvedPath = path.resolve(cwd, configCssFile)
+    if (await fs.pathExists(resolvedPath)) {
+      return configCssFile
+    }
+  }
+
   const [files, tailwindVersion] = await Promise.all([
     fg.glob(["**/*.css", "**/*.scss"], {
       cwd,
@@ -286,28 +304,62 @@ export async function getTailwindConfigFile(cwd: string) {
 
 export async function getTsConfigAliasPrefix(cwd: string) {
   const tsConfig = await loadConfig(cwd)
+  const paths =
+    tsConfig?.resultType === "success" && Object.entries(tsConfig.paths).length
+      ? tsConfig.paths
+      : (await getTsConfig(cwd))?.compilerOptions.paths
 
-  if (
-    tsConfig?.resultType === "failed" ||
-    !Object.entries(tsConfig?.paths).length
-  ) {
+  if (!paths || !Object.entries(paths).length) {
     return null
   }
 
   // This assume that the first alias is the prefix.
-  for (const [alias, paths] of Object.entries(tsConfig.paths)) {
+  for (const [alias, targets] of Object.entries(paths)) {
+    const values = Array.isArray(targets) ? targets : [targets]
+
     if (
-      paths.includes("./*") ||
-      paths.includes("./src/*") ||
-      paths.includes("./app/*") ||
-      paths.includes("./resources/js/*") // Laravel.
+      values.includes("./*") ||
+      values.includes("./src/*") ||
+      values.includes("./app/*") ||
+      values.includes("./resources/js/*") // Laravel.
     ) {
       return alias.replace(/\/\*$/, "") ?? null
     }
   }
 
   // Use the first alias as the prefix.
-  return Object.keys(tsConfig?.paths)?.[0].replace(/\/\*$/, "") ?? null
+  return Object.keys(paths)?.[0].replace(/\/\*$/, "") ?? null
+}
+
+export async function getProjectAliasInfo(cwd: string) {
+  const tsConfigAliasPrefix = await getTsConfigAliasPrefix(cwd)
+  const packageImportPrefix = getPackageImportPrefix(cwd)
+
+  if (packageImportPrefix && tsConfigAliasPrefix?.startsWith("#")) {
+    return {
+      prefix: packageImportPrefix,
+      source: "package_imports" as const,
+    }
+  }
+
+  if (tsConfigAliasPrefix) {
+    return {
+      prefix: tsConfigAliasPrefix,
+      source: "tsconfig_paths" as const,
+    }
+  }
+
+  if (packageImportPrefix) {
+    return {
+      prefix: packageImportPrefix,
+      source: "package_imports" as const,
+    }
+  }
+
+  return {
+    prefix: null,
+    source: null,
+  }
 }
 
 export async function isTypeScriptProject(cwd: string) {
@@ -331,10 +383,16 @@ export async function getTsConfig(cwd: string) {
       continue
     }
 
-    // We can't use fs.readJSON because it doesn't support comments.
     const contents = await fs.readFile(filePath, "utf8")
-    const cleanedContents = contents.replace(/\/\*\s*\*\//g, "")
-    const result = TS_CONFIG_SCHEMA.safeParse(JSON.parse(cleanedContents))
+    let parsed
+
+    try {
+      parsed = JSON.parse(stripJsonCommentsAndTrailingCommas(contents))
+    } catch {
+      continue
+    }
+
+    const result = TS_CONFIG_SCHEMA.safeParse(parsed)
 
     if (result.error) {
       continue
@@ -346,16 +404,133 @@ export async function getTsConfig(cwd: string) {
   return null
 }
 
+function stripJsonCommentsAndTrailingCommas(value: string) {
+  let result = ""
+  let inString = false
+  let escaped = false
+
+  for (let index = 0; index < value.length; index++) {
+    const current = value[index]
+    const next = value[index + 1]
+
+    if (inString) {
+      result += current
+
+      if (escaped) {
+        escaped = false
+        continue
+      }
+
+      if (current === "\\") {
+        escaped = true
+        continue
+      }
+
+      if (current === '"') {
+        inString = false
+      }
+
+      continue
+    }
+
+    if (current === '"') {
+      inString = true
+      result += current
+      continue
+    }
+
+    if (current === "/" && next === "/") {
+      while (index < value.length && value[index] !== "\n") {
+        index++
+      }
+
+      if (index < value.length) {
+        result += value[index]
+      }
+
+      continue
+    }
+
+    if (current === "/" && next === "*") {
+      index += 2
+
+      while (index < value.length) {
+        if (value[index] === "*" && value[index + 1] === "/") {
+          index++
+          break
+        }
+
+        if (value[index] === "\n") {
+          result += "\n"
+        }
+
+        index++
+      }
+
+      continue
+    }
+
+    if (current === ",") {
+      let nextIndex = index + 1
+
+      while (nextIndex < value.length) {
+        while (/\s/.test(value[nextIndex] ?? "")) {
+          nextIndex++
+        }
+
+        if (value[nextIndex] === "/" && value[nextIndex + 1] === "/") {
+          nextIndex += 2
+
+          while (
+            nextIndex < value.length &&
+            value[nextIndex] !== "\n" &&
+            value[nextIndex] !== "\r"
+          ) {
+            nextIndex++
+          }
+
+          continue
+        }
+
+        if (value[nextIndex] === "/" && value[nextIndex + 1] === "*") {
+          nextIndex += 2
+
+          while (
+            nextIndex < value.length &&
+            !(value[nextIndex] === "*" && value[nextIndex + 1] === "/")
+          ) {
+            nextIndex++
+          }
+
+          nextIndex += 2
+          continue
+        }
+
+        break
+      }
+
+      if (value[nextIndex] === "}" || value[nextIndex] === "]") {
+        continue
+      }
+    }
+
+    result += current
+  }
+
+  return result
+}
+
 export async function getProjectConfig(
   cwd: string,
   defaultProjectInfo: ProjectInfo | null = null
 ): Promise<Config | null> {
   // Check for existing component config.
-  const [existingConfig, projectInfo] = await Promise.all([
+  const [existingConfig, projectInfo, aliasInfo] = await Promise.all([
     getConfig(cwd),
     !defaultProjectInfo
       ? getProjectInfo(cwd)
       : Promise.resolve(defaultProjectInfo),
+    getProjectAliasInfo(cwd),
   ])
 
   if (existingConfig) {
@@ -367,6 +542,35 @@ export async function getProjectConfig(
     !projectInfo.tailwindCssFile ||
     (projectInfo.tailwindVersion === "v3" && !projectInfo.tailwindConfigFile)
   ) {
+    return null
+  }
+
+  const packageImportAliases =
+    aliasInfo.source === "package_imports" ? getPackageImportAliases(cwd) : null
+
+  if (!projectInfo.aliasPrefix) {
+    return null
+  }
+
+  const fallbackAliases = getAliasDefaultsFromPrefix(
+    projectInfo.aliasPrefix,
+    aliasInfo.source === "package_imports"
+  )
+
+  const aliases =
+    aliasInfo.source === "package_imports" && packageImportAliases
+      ? derivePackageImportAliases({
+          ...fallbackAliases,
+          components:
+            packageImportAliases.components ?? fallbackAliases.components,
+          ui: packageImportAliases.ui ?? fallbackAliases.ui,
+          hooks: packageImportAliases.hooks ?? fallbackAliases.hooks,
+          lib: packageImportAliases.lib ?? fallbackAliases.lib,
+          utils: packageImportAliases.utils ?? fallbackAliases.utils,
+        })
+      : fallbackAliases
+
+  if (!aliases.components || !aliases.utils) {
     return null
   }
 
@@ -383,16 +587,57 @@ export async function getProjectConfig(
       prefix: "",
     },
     iconLibrary: "lucide",
-    aliases: {
-      components: `${projectInfo.aliasPrefix}/components`,
-      ui: `${projectInfo.aliasPrefix}/components/ui`,
-      hooks: `${projectInfo.aliasPrefix}/hooks`,
-      lib: `${projectInfo.aliasPrefix}/lib`,
-      utils: `${projectInfo.aliasPrefix}/lib/utils`,
-    },
+    aliases,
   }
 
   return await resolveConfigPaths(cwd, config)
+}
+
+function getAliasDefaultsFromPrefix(
+  aliasPrefix: string,
+  isPackageImport: boolean = false
+) {
+  if (isPackageImport && aliasPrefix === "#") {
+    return {
+      components: "",
+      ui: undefined,
+      hooks: undefined,
+      lib: undefined,
+      utils: "",
+    }
+  }
+
+  return {
+    components: `${aliasPrefix}/components`,
+    ui: `${aliasPrefix}/components/ui`,
+    hooks: `${aliasPrefix}/hooks`,
+    lib: `${aliasPrefix}/lib`,
+    utils: `${aliasPrefix}/lib/utils`,
+  }
+}
+
+function derivePackageImportAliases(aliases: {
+  components: string
+  ui?: string
+  hooks?: string
+  lib?: string
+  utils: string
+}) {
+  const derivedAliases = { ...aliases }
+
+  if (!derivedAliases.ui && derivedAliases.components) {
+    derivedAliases.ui = `${derivedAliases.components}/ui`
+  }
+
+  if (!derivedAliases.lib && derivedAliases.utils.endsWith("/utils")) {
+    derivedAliases.lib = derivedAliases.utils.slice(0, -"/utils".length)
+  }
+
+  if (!derivedAliases.utils && derivedAliases.lib) {
+    derivedAliases.utils = `${derivedAliases.lib}/utils`
+  }
+
+  return derivedAliases
 }
 
 export async function getProjectTailwindVersionFromConfig(config: {
@@ -409,4 +654,26 @@ export async function getProjectTailwindVersionFromConfig(config: {
   }
 
   return projectInfo.tailwindVersion
+}
+
+export async function getProjectComponents(cwd: string) {
+  const existingConfig = await getConfig(cwd)
+  if (!existingConfig) {
+    return []
+  }
+
+  const resolvedConfig = await resolveConfigPaths(cwd, existingConfig)
+  const uiDir = resolvedConfig.resolvedPaths.ui
+  if (!fs.existsSync(uiDir)) {
+    return []
+  }
+
+  const registryIndex = await getShadcnRegistryIndex()
+  const registryNames = new Set(registryIndex?.map((item) => item.name) ?? [])
+
+  const files = await fsPromises.readdir(uiDir)
+  return files
+    .filter((f) => /\.(tsx|jsx)$/.test(f))
+    .map((f) => path.basename(f, path.extname(f)))
+    .filter((name) => registryNames.has(name))
 }

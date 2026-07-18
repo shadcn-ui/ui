@@ -27,6 +27,7 @@ Ask your registry consumers to configure your registry in their `components.json
     <TabsTrigger value="cursor">Cursor</TabsTrigger>
     <TabsTrigger value="vscode">VS Code</TabsTrigger>
     <TabsTrigger value="codex">Codex</TabsTrigger>
+    <TabsTrigger value="opencode">OpenCode</TabsTrigger>
   </TabsList>
   <TabsContent value="claude" className="mt-4">
     **Configure your registry** in your `components.json` file:
@@ -114,6 +115,28 @@ Ask your registry consumers to configure your registry in their `components.json
        ```
 
     **Restart Codex** and try the following prompts:
+       - Show me the components in the acme registry
+       - Create a landing page using items from the acme registry
+
+  </TabsContent>
+
+  <TabsContent value="opencode" className="mt-4">
+    **Configure your registry** in your `components.json` file:
+
+    ```json title="components.json" showLineNumbers
+    {
+      "registries": {
+        "@acme": "https://acme.com/r/{name}.json"
+      }
+    }
+    ```
+
+    **Run the following command** in your project:
+       ```bash
+       npx shadcn@latest mcp init --client opencode
+       ```
+
+    **Restart OpenCode** and try the following prompts:
        - Show me the components in the acme registry
        - Create a landing page using items from the acme registry
 

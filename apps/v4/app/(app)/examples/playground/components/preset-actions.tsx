@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Dialog } from "@radix-ui/react-dialog"
 import { MoreHorizontal } from "lucide-react"
 import { toast } from "sonner"
 
@@ -16,6 +15,7 @@ import {
 } from "@/registry/new-york-v4/ui/alert-dialog"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
+  Dialog,
   DialogClose,
   DialogContent,
   DialogDescription,
@@ -70,7 +70,7 @@ export function PresetActions() {
             </DialogDescription>
           </DialogHeader>
           <div className="py-6">
-            <h4 className="text-muted-foreground text-sm">
+            <h4 className="text-sm text-muted-foreground">
               Playground Warnings
             </h4>
             <div className="flex items-start justify-between gap-4 pt-3">
@@ -79,7 +79,7 @@ export function PresetActions() {
                 <span className="font-semibold">
                   Show a warning when content is flagged
                 </span>
-                <span className="text-muted-foreground text-sm">
+                <span className="text-sm text-muted-foreground">
                   A warning will be shown when sexual, hateful, violent or
                   self-harm content is detected.
                 </span>

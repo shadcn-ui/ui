@@ -10,10 +10,10 @@ import {
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
 import {
-  ChartConfig,
   ChartContainer,
   ChartLegend,
   ChartLegendContent,
+  type ChartConfig,
 } from "@/registry/new-york-v4/ui/chart"
 
 export const description = "A pie chart with a legend"

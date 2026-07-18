@@ -5,3 +5,5 @@ build
 .contentlayer
 registry/__index__.tsx
 content/docs/components/calendar.mdx
+registry/styles/**/*.css
+/styles

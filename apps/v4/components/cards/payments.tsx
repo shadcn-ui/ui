@@ -2,16 +2,16 @@
 
 import * as React from "react"
 import {
-  ColumnDef,
-  ColumnFiltersState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  SortingState,
   useReactTable,
-  VisibilityState,
+  type ColumnDef,
+  type ColumnFiltersState,
+  type SortingState,
+  type VisibilityState,
 } from "@tanstack/react-table"
 import { MoreHorizontalIcon } from "lucide-react"
 
@@ -268,7 +268,7 @@ export function CardsPayments() {
           </Table>
         </div>
         <div className="flex items-center justify-end gap-2">
-          <div className="text-muted-foreground flex-1 text-sm">
+          <div className="flex-1 text-sm text-muted-foreground">
             {table.getFilteredSelectedRowModel().rows.length} of{" "}
             {table.getFilteredRowModel().rows.length} row(s) selected.
           </div>

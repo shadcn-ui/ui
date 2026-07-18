@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "example-target-alias-parent",
+  "type": "registry:component",
+  "registryDependencies": [
+    "../../fixtures/registry/example-target-alias-child.json"
+  ],
+  "files": [
+    {
+      "path": "registry/example-target-alias-parent/components/dependency-panel.tsx",
+      "type": "registry:component",
+      "content": "export function DependencyPanel() {\n  return <div>Dependency Panel</div>\n}\n",
+      "target": "@components/dependency-panel.tsx"
+    },
+    {
+      "path": "registry/example-target-alias-parent/hooks/use-dependency.ts",
+      "type": "registry:hook",
+      "content": "export function useDependency() {\n  return \"dependency\"\n}\n",
+      "target": "@hooks/use-dependency.ts"
+    }
+  ]
+}

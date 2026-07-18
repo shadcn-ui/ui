@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-import { colors } from "@/registry/colors"
+import { colors } from "@/registry/_legacy-colors"
 
 const colorSchema = z.object({
   name: z.string(),

@@ -1,6 +1,6 @@
 ---
 title: Next.js
-description: Adding dark mode to your next app.
+description: Adding dark mode to your Next.js app.
 ---
 
 <Steps>
@@ -61,6 +61,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
 Place a mode toggle on your site to toggle between light and dark mode.
 
-<ComponentPreview name="mode-toggle" className="[&_.preview]:items-start" />
+<ComponentPreview
+  styleName="new-york-v4"
+  name="mode-toggle"
+  className="[&_.preview]:items-start"
+/>
 
 </Steps>
