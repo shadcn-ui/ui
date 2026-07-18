@@ -1,7 +1,17 @@
 import { REGISTRY_URL } from "@/src/registry/constants"
-import { describe, expect, it } from "vitest"
+import prompts from "prompts"
+import { beforeEach, describe, expect, it, vi } from "vitest"
 
-import { DEFAULT_PRESETS, resolveCreateUrl, resolveInitUrl } from "./presets"
+import {
+  DEFAULT_PRESETS,
+  promptForBase,
+  resolveCreateUrl,
+  resolveInitUrl,
+} from "./presets"
+
+vi.mock("prompts", () => ({
+  default: vi.fn(),
+}))
 
 const SHADCN_URL = REGISTRY_URL.replace(/\/r\/?$/, "")
 
@@ -9,7 +19,7 @@ const mockPreset = {
   name: "default",
   title: "Default",
   description: "The default preset.",
-  base: "radix",
+  base: "radix" as const,
   style: "new-york-v4",
   baseColor: "neutral",
   theme: "default",
@@ -21,6 +31,27 @@ const mockPreset = {
   menuColor: "default" as const,
   radius: "0.5",
 }
+
+describe("promptForBase", () => {
+  beforeEach(() => {
+    vi.mocked(prompts).mockReset()
+  })
+
+  it("should offer and return the aria base", async () => {
+    vi.mocked(prompts).mockResolvedValue({ base: "aria" })
+
+    await expect(promptForBase()).resolves.toBe("aria")
+    expect(prompts).toHaveBeenCalledWith(
+      expect.objectContaining({
+        choices: [
+          { title: "Base UI (Recommended)", value: "base" },
+          { title: "React Aria", value: "aria" },
+          { title: "Radix UI", value: "radix" },
+        ],
+      })
+    )
+  })
+})
 
 describe("createPresetUrl", () => {
   it("should not include rtl by default", () => {

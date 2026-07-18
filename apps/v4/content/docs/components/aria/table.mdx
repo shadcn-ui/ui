@@ -1,0 +1,153 @@
+---
+title: Table
+description: A responsive table component.
+base: aria
+component: true
+links:
+  doc: https://react-aria.adobe.com/Table
+  api: https://react-aria.adobe.com/Table#api
+---
+
+<ComponentPreview
+  styleName="aria-nova"
+  name="table-demo"
+  previewClassName="h-[30rem]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add table
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install react-aria-components
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="table"
+  title="components/ui/table.tsx"
+  styleName="aria-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+```
+
+```tsx showLineNumbers
+<Table>
+  <TableHeader>
+    <TableHead isRowHeader className="w-[100px]">Invoice</TableHead>
+    <TableHead>Status</TableHead>
+    <TableHead>Method</TableHead>
+    <TableHead className="text-right">Amount</TableHead>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell className="font-medium">INV001</TableCell>
+      <TableCell>Paid</TableCell>
+      <TableCell>Credit Card</TableCell>
+      <TableCell className="text-right">$250.00</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+<TableCaption>A list of your recent invoices.</TableCaption>
+```
+
+## Composition
+
+Use the following composition to build a `Table`:
+
+```text
+Table
+├── TableCaption
+├── TableHeader
+│   └── TableRow
+│       ├── TableHead
+│       ├── TableHead
+│       ├── TableHead
+│       └── TableHead
+├── TableBody
+│   ├── TableRow
+│   │   ├── TableCell
+│   │   ├── TableCell
+│   │   ├── TableCell
+│   │   └── TableCell
+│   └── TableRow
+│       ├── TableCell
+│       ├── TableCell
+│       ├── TableCell
+│       └── TableCell
+└── TableFooter
+```
+
+## Footer
+
+Use the `<TableFooter />` component to add a footer to the table.
+
+<ComponentPreview styleName="aria-nova" name="table-footer" />
+
+## Actions
+
+A table showing actions for each row using a `<DropdownMenu />` component.
+
+<ComponentPreview styleName="aria-nova" name="table-actions" />
+
+## Data Table
+
+You can use the `<Table />` component to build more complex data tables. Combine it with [@tanstack/react-table](https://tanstack.com/table/v8) to create tables with sorting, filtering and pagination.
+
+See the [Data Table](/docs/components/aria/data-table) documentation for more information.
+
+You can also see an example of a data table in the [Tasks](/examples/tasks) demo.
+
+## RTL
+
+To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  styleName="aria-nova"
+  name="table-rtl"
+  direction="rtl"
+  previewClassName="h-auto"
+/>
+
+## API Reference
+
+See the [React Aria Table](https://react-aria.adobe.com/Table#api) documentation.
