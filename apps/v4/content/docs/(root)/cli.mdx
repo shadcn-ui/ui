@@ -27,7 +27,7 @@ Arguments:
 
 Options:
   -t, --template <template>  the template to use. (next, vite, start, react-router, laravel, astro)
-  -b, --base <base>          the component library to use. (base, radix)
+  -b, --base <base>          the component library to use. (base, radix, aria)
   -p, --preset [name]        use a preset configuration
   -y, --yes                  skip confirmation prompt. (default: true)
   -d, --defaults             use default configuration: --template=next --preset=nova (default: false)
@@ -368,7 +368,7 @@ Arguments:
 
 Options:
   -c, --cwd <cwd>    the working directory. defaults to the current directory.
-  -b, --base <base>  the base to use either 'base' or 'radix'. defaults to project base.
+  -b, --base <base>  the base to use: base, radix, or aria. defaults to project base.
   --json             output as JSON. (default: false)
   -h, --help         display help for command
 ```
