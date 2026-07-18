@@ -24,6 +24,7 @@ import {
   ItemContent,
   ItemDescription,
 } from "@/registry/bases/base/ui/item"
+import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 
 const chartData = [
   { month: "Dec", amount: 800 },
@@ -42,14 +43,14 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function ContributionHistory() {
+  const [params] = useDesignSystemSearchParams()
+  const isRounded = !["lyra", "sera"].includes(params.style)
+
   return (
     <Card>
       <CardHeader>
         <CardTitle>Contribution History</CardTitle>
         <CardDescription>Last 6 months of activity</CardDescription>
-        <CardAction>
-          <Badge variant="secondary">+12% vs last month</Badge>
-        </CardAction>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="h-[200px] w-full">
@@ -71,13 +72,13 @@ export function ContributionHistory() {
             <Bar
               dataKey="amount"
               fill="var(--color-amount)"
-              radius={[6, 6, 0, 0]}
+              radius={isRounded ? [6, 6, 0, 0] : 0}
               maxBarSize={40}
             />
           </BarChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col gap-4">
+      <CardContent>
         <div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
           <Item variant="muted" className="flex-col items-stretch">
             <ItemContent className="gap-1">
@@ -106,6 +107,8 @@ export function ContributionHistory() {
             </ItemContent>
           </Item>
         </div>
+      </CardContent>
+      <CardFooter>
         <Button className="w-full">View Full Report</Button>
       </CardFooter>
     </Card>

@@ -19,7 +19,7 @@ export function IndexInvesting() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <CardDescription className="mt-3 text-sm leading-relaxed">
+        <CardDescription className="mt-3 text-sm leading-relaxed style-sera:mt-0">
           <a
             href="#"
             className="underline underline-offset-4 hover:text-primary"

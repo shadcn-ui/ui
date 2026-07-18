@@ -10,7 +10,7 @@ import { Button } from "@/styles/radix-nova/ui/button"
 export const revalidate = false
 export const dynamic = "force-static"
 
-const NUMBER_OF_LATEST_PAGES = 2
+const NUMBER_OF_LATEST_PAGES = 5
 
 export function generateMetadata() {
   return {
@@ -46,7 +46,7 @@ export default function ChangelogPage() {
     >
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="h-(--top-spacing) shrink-0" />
-        <div className="mx-auto flex w-full max-w-160 min-w-0 flex-1 flex-col gap-6 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
+        <div className="mx-auto flex w-full max-w-160 min-w-0 flex-1 flex-col gap-6 px-4 py-6 text-foreground md:px-0 lg:py-8 dark:text-foreground">
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between">
               <h1 className="scroll-m-24 text-4xl font-semibold tracking-tight sm:text-3xl">
@@ -73,7 +73,7 @@ export default function ChangelogPage() {
                   <h2 className="font-heading text-xl font-semibold tracking-tight">
                     {data.title}
                   </h2>
-                  <div className="prose-changelog mt-6 *:first:mt-0">
+                  <div className="typeset mt-6 *:first:mt-0">
                     <MDX components={mdxComponents} />
                   </div>
                 </article>
@@ -93,7 +93,7 @@ export default function ChangelogPage() {
                       <Link
                         key={page.url}
                         href={page.url}
-                        className="flex w-full flex-col rounded-xl bg-surface px-4 py-3 text-surface-foreground transition-colors hover:bg-surface/80"
+                        className="flex w-full flex-col rounded-2xl bg-surface px-4 py-3 text-surface-foreground transition-colors hover:bg-surface/80"
                       >
                         <span className="text-xs text-muted-foreground">
                           {date}

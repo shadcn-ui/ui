@@ -1,7 +1,10 @@
 import fs from "fs"
 import { ExamplesIndex } from "@/examples/__index__"
 
+import { PAGES_NEW } from "@/lib/docs"
+import { getPagesFromFolder, type PageTreeFolder } from "@/lib/page-tree"
 import { source } from "@/lib/source"
+import { absoluteUrl } from "@/lib/utils"
 import { Index as StylesIndex } from "@/registry/__index__"
 import { type Style } from "@/registry/_legacy-styles"
 import { BASES } from "@/registry/bases"
@@ -35,28 +38,41 @@ function getRegistryEntry(name: string, styleName: string) {
   )
 }
 
-function getComponentsList() {
-  const components = source.pageTree.children.find(
+function getComponentsList(variant: "all" | "new") {
+  const componentsFolder = source.pageTree.children.find(
     (page) => page.$id === "components"
   )
 
-  if (components?.type !== "folder") {
+  if (componentsFolder?.type !== "folder") {
     return ""
   }
 
-  const list = components.children.filter(
-    (component) => component.type === "page"
-  )
-
-  return list
-    .map((component) => `- [${component.name}](${component.url})`)
+  return getPagesFromFolder(componentsFolder as PageTreeFolder, "base")
+    .filter(
+      (component) => variant === "all" || PAGES_NEW.includes(component.url)
+    )
+    .map((component) => {
+      const slug = component.url.replace(/^\/docs\//, "").split("/")
+      const description = source.getPage(slug)?.data.description?.trim()
+      const url = absoluteUrl(component.url.replace("/base/", "/"))
+      return `- [${component.name}](${url})${
+        description ? `: ${description}` : ""
+      }`
+    })
     .join("\n")
 }
 
+export function replaceComponentsList(content: string) {
+  return content
+    .replace(
+      /<ComponentsList\s+variant=["']new["']\s*\/>/g,
+      getComponentsList("new")
+    )
+    .replace(/<ComponentsList\s*\/>/g, getComponentsList("all"))
+}
+
 export function processMdxForLLMs(content: string, style: Style["name"]) {
-  // Replace <ComponentsList /> with a markdown list of components.
-  const componentsListRegex = /<ComponentsList\s*\/>/g
-  content = content.replace(componentsListRegex, getComponentsList())
+  content = replaceComponentsList(content)
 
   const componentPreviewRegex =
     /<ComponentPreview[\s\S]*?name="([^"]+)"[\s\S]*?\/>/g

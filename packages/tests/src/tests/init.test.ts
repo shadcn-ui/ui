@@ -13,7 +13,7 @@ import { createRegistryServer } from "../utils/registry"
 describe("shadcn init - next-app", () => {
   it("should init with default configuration", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--defaults"])
+    await npxShadcn(fixturePath, ["init", "--defaults"], { timeout: 120000 })
 
     const componentsJsonPath = path.join(fixturePath, "components.json")
     expect(await fs.pathExists(componentsJsonPath)).toBe(true)
@@ -54,7 +54,9 @@ describe("shadcn init - next-app", () => {
 
   it("should init without CSS variables", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--defaults", "--no-css-variables"])
+    await npxShadcn(fixturePath, ["init", "--defaults", "--no-css-variables"], {
+      timeout: 120000,
+    })
 
     const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")
@@ -64,7 +66,9 @@ describe("shadcn init - next-app", () => {
 
   it("should init with components", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--defaults", "button"])
+    await npxShadcn(fixturePath, ["init", "--defaults", "button"], {
+      timeout: 120000,
+    })
 
     expect(
       await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))

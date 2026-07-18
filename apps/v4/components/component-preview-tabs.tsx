@@ -3,6 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { IconAlertCircle } from "@tabler/icons-react"
+import { I18nProvider } from "react-aria-components"
 
 import { cn } from "@/lib/utils"
 import {
@@ -46,13 +47,14 @@ export function ComponentPreviewTabs({
   styleName?: string
 }) {
   const [isMobileCodeVisible, setIsMobileCodeVisible] = React.useState(false)
-  const base = styleName?.split("-")[0]
+  const base = styleName?.match(/^(base|radix|aria)-/)?.[1] || "radix"
 
   return (
     <div
       data-slot="component-preview"
+      data-not-typeset
       className={cn(
-        "group relative mt-4 mb-12 flex flex-col overflow-hidden rounded-xl border",
+        "group relative mt-4 mb-12 flex flex-col overflow-hidden rounded-2xl border",
         className
       )}
       {...props}
@@ -260,6 +262,20 @@ function DirectionProviderWrapper({
   if (base === "base") {
     return (
       <BaseDirectionProvider direction={dir}>{children}</BaseDirectionProvider>
+    )
+  }
+
+  if (base === "aria") {
+    return (
+      <I18nProvider
+        locale={
+          explicitDir === "ltr"
+            ? "en"
+            : (translation.locale ?? translation.language)
+        }
+      >
+        {children}
+      </I18nProvider>
     )
   }
 

@@ -1,0 +1,323 @@
+---
+title: Drawer
+description: A drawer component for React.
+base: aria
+component: true
+links:
+  doc: https://base-ui.com/react/components/drawer
+  api: https://base-ui.com/react/components/drawer#api-reference
+---
+
+<ComponentPreview styleName="aria-nova" name="drawer-demo" />
+
+<Callout>
+  The drawer component uses [Base
+  UI](https://base-ui.com/react/components/drawer).
+</Callout>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add drawer
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="drawer"
+  title="components/ui/drawer.tsx"
+  styleName="aria-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+Add the following to your global styles. On iOS Safari, the drawer overlay is absolutely positioned and requires a positioned `body` to cover the viewport after the page is scrolled. See the [Base UI docs](https://base-ui.com/react/overview/quick-start#ios-26-safari) for details.
+
+```css
+body {
+  position: relative;
+}
+```
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+```
+
+```tsx showLineNumbers
+<Drawer>
+  <DrawerTrigger render={<Button variant="outline" />}>Open</DrawerTrigger>
+  <DrawerContent>
+    <DrawerHeader>
+      <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+      <DrawerDescription>This action cannot be undone.</DrawerDescription>
+    </DrawerHeader>
+    <div className="p-4">{/* Content here */}</div>
+    <DrawerFooter>
+      <Button>Submit</Button>
+      <DrawerClose render={<Button variant="outline" />}>Cancel</DrawerClose>
+    </DrawerFooter>
+  </DrawerContent>
+</Drawer>
+```
+
+## Composition
+
+Use the following composition to build a `Drawer`:
+
+```text
+Drawer
+├── DrawerTrigger
+└── DrawerContent
+    ├── DrawerHeader
+    │   ├── DrawerTitle
+    │   └── DrawerDescription
+    └── DrawerFooter
+```
+
+`DrawerContent` composes the portal, overlay, viewport, and popup from Base UI. For lower-level control, `DrawerPortal`, `DrawerOverlay`, and `DrawerSwipeHandle` are also exported.
+
+## Custom Sizes
+
+A vertical drawer sizes itself to its content and is capped at `calc(100dvh - 6rem)` by default. A side drawer spans `75%` of the viewport width, or `24rem` on larger screens.
+
+To customize the height of a vertical drawer, use the `h-*` and `max-h-*` utilities on `DrawerContent`.
+
+```tsx
+<DrawerContent className="h-[50vh]">
+```
+
+To customize the width of a side drawer, use the `w-*` and `max-w-*` utilities on `DrawerContent`.
+
+```tsx
+<DrawerContent className="w-96">
+```
+
+When the same component renders in multiple directions, scope an override to one axis using the `data-[swipe-axis=*]` variants.
+
+```tsx
+<DrawerContent className="data-[swipe-axis=y]:max-h-[50vh] data-[swipe-axis=x]:w-96">
+```
+
+To make a region of the drawer scrollable, make the scroll container a flex item. Avoid `h-full`, which does not resolve inside a content-sized drawer.
+
+```tsx
+<DrawerContent>
+  <DrawerHeader>...</DrawerHeader>
+  <div className="flex-1 overflow-y-auto p-4">{/* Scrollable content */}</div>
+  <DrawerFooter>...</DrawerFooter>
+</DrawerContent>
+```
+
+## Styling
+
+The drawer exposes CSS variables for style-level customization. Set the sizing variables on `DrawerContent`. Set the overlay variable on `[data-slot=drawer-overlay]` in your CSS.
+
+| Variable                       | Default                | Description                                                             |
+| ------------------------------ | ---------------------- | ----------------------------------------------------------------------- |
+| `--drawer-inset`               | `0px`                  | Floats the drawer from the viewport edges.                              |
+| `--drawer-bleed-background`    | `var(--color-popover)` | Fills the gap behind the drawer on swipe overshoot.                     |
+| `--drawer-overlay-min-opacity` | `0`                    | Minimum overlay opacity. Defaults to `0.5` when snap points are active. |
+
+The drawer also sets data attributes you can target with variants such as `data-[swipe-direction=down]:` on `DrawerContent`, or `group-data-[swipe-axis=y]/drawer-popup:` on its descendants.
+
+| Attribute                 | Values                        | Set when                              |
+| ------------------------- | ----------------------------- | ------------------------------------- |
+| `data-swipe-direction`    | `up`, `right`, `down`, `left` | Always.                               |
+| `data-swipe-axis`         | `x`, `y`                      | Always.                               |
+| `data-snap-points`        | Present                       | The drawer has snap points.           |
+| `data-expanded`           | Present                       | The drawer is at the full snap point. |
+| `data-swiping`            | Present                       | A swipe is in progress.               |
+| `data-nested-drawer-open` | Present                       | A nested drawer is open on top.       |
+
+## Position
+
+Use the `swipeDirection` prop to set the side of the drawer.
+
+Available options are `up`, `right`, `down`, and `left`.
+
+<ComponentPreview styleName="aria-nova" name="drawer-sides" />
+
+## Swipe Handle
+
+Use `showSwipeHandle` on `Drawer` to render a swipe handle.
+
+<ComponentPreview styleName="aria-nova" name="drawer-swipe-handle" />
+
+## Nested
+
+Open drawers from inside another drawer. Parent drawers stay mounted and stack behind the frontmost drawer.
+
+<ComponentPreview styleName="aria-nova" name="drawer-nested" />
+
+## Non Modal
+
+Set `modal={false}` to allow interaction with the rest of the page while the drawer is open. Combine with `disablePointerDismissal` to prevent the drawer from closing on outside presses. Use `modal="trap-focus"` to keep focus inside the drawer while leaving scroll and pointer interaction unrestricted.
+
+<ComponentPreview styleName="aria-nova" name="drawer-non-modal" />
+
+## Snap Points
+
+Use `snapPoints` to snap a drawer to preset heights. Numbers between `0` and `1` represent fractions of the viewport. Numbers greater than `1` are treated as pixel values. String values support `px` and `rem` units. Snap points apply to vertical drawers.
+
+Track the active snap point with the controlled `snapPoint` and `onSnapPointChange` props. At the full snap point, the drawer gets a `data-expanded` attribute you can style with the `data-expanded:` variant.
+
+<ComponentPreview styleName="aria-nova" name="drawer-snap-points" />
+
+## Responsive
+
+You can combine the `Dialog` and `Drawer` components to create a responsive dialog. This renders a `Dialog` component on desktop and a `Drawer` on mobile.
+
+<ComponentPreview styleName="aria-nova" name="drawer-dialog" />
+
+## Migrating from Vaul
+
+The Aria drawer now uses [Base UI](https://base-ui.com/react/components/drawer)
+instead of Vaul. If you installed the previous Aria drawer, update your usage
+to the Base UI API.
+
+<Steps>
+
+<Step>Update the dependency.</Step>
+
+```diff
+- npm install vaul
++ npm install @base-ui/react
+```
+
+<Step>Replace `direction` with `swipeDirection`.</Step>
+
+Use `down` instead of `bottom`, and `up` instead of `top`. `left` and `right`
+stay the same.
+
+```diff
+- <Drawer direction="bottom">
++ <Drawer swipeDirection="down">
+```
+
+<Step>Replace `asChild` with `render`.</Step>
+
+For `DrawerTrigger`, pass the trigger element to the `render` prop.
+
+```diff
+- <DrawerTrigger asChild>
+-   <Button variant="outline">Open</Button>
+- </DrawerTrigger>
++ <DrawerTrigger render={<Button variant="outline" />}>
++   Open
++ </DrawerTrigger>
+```
+
+For `DrawerClose`, pass the close element to the `render` prop.
+
+```diff
+- <DrawerClose asChild>
+-   <Button variant="outline">Cancel</Button>
+- </DrawerClose>
++ <DrawerClose render={<Button variant="outline" />}>
++   Cancel
++ </DrawerClose>
+```
+
+<Step>Update snap point props.</Step>
+
+If you use snap points, rename the controlled snap point props and the sequential
+snap point prop.
+
+```diff
+  <Drawer
+    snapPoints={[0.25, 0.5, 1]}
+-   activeSnapPoint={snapPoint}
+-   setActiveSnapPoint={setSnapPoint}
+-   snapToSequentialPoint
++   snapPoint={snapPoint}
++   onSnapPointChange={setSnapPoint}
++   snapToSequentialPoints
+  >
+```
+
+<Step>Update animation and focus props.</Step>
+
+```diff
+- <Drawer onAnimationEnd={(open) => setDone(open)}>
++ <Drawer onOpenChangeComplete={(open) => setDone(open)}>
+```
+
+```diff
+- <DrawerContent onOpenAutoFocus={(event) => event.preventDefault()}>
++ <DrawerContent initialFocus={false}>
+```
+
+<Step>Review Vaul-only props.</Step>
+
+Vaul props like `handleOnly`, `repositionInputs`, and
+`shouldScaleBackground` do not have one-to-one replacements in the Base UI drawer
+API. Use Base UI props such as `disablePointerDismissal`, `modal`, `snapPoints`,
+or controlled `open` state for the behavior you need.
+
+```diff
+- <Drawer handleOnly repositionInputs={false} shouldScaleBackground>
++ <Drawer>
+```
+
+```diff
+- <Drawer dismissible={false}>
++ <Drawer disablePointerDismissal>
+```
+
+<Step>Update custom data attribute selectors.</Step>
+
+Replace Vaul's `data-vaul-drawer-direction` selectors with Base UI's
+`data-swipe-direction` selectors.
+
+```diff
+- <DrawerContent className="data-[vaul-drawer-direction=bottom]:max-h-[50vh]">
++ <DrawerContent className="data-[swipe-direction=down]:max-h-[50vh]">
+```
+
+Base UI also exposes attributes like `data-swiping`, `data-starting-style`, and
+`data-ending-style` for swipe and transition states. Descendants inside
+`DrawerContent` can use `group-data-[swipe-axis=x]/drawer-popup` and
+`group-data-[swipe-axis=y]/drawer-popup` for axis-specific styling.
+
+</Steps>
+
+## API Reference
+
+See the [Base UI documentation](https://base-ui.com/react/components/drawer) for the full API reference.
