@@ -9,6 +9,7 @@ import {
   UNDO_FORWARD_TYPE,
 } from "@/app/(app)/(create)/components/history-buttons"
 import { DARK_MODE_FORWARD_TYPE } from "@/app/(app)/(create)/components/mode-switcher"
+import { usePreviewOverrideValue } from "@/app/(app)/(create)/components/preview-override"
 import { PreviewSwitcher } from "@/app/(app)/(create)/components/preview-switcher"
 import { RANDOMIZE_FORWARD_TYPE } from "@/app/(app)/(create)/components/random-button"
 import { sendToIframe } from "@/app/(app)/(create)/hooks/use-iframe-sync"
@@ -22,9 +23,31 @@ import {
 // Hoisted — avoids recreating on every message event. (js-hoist-regexp)
 const MAC_REGEX = /Mac|iPhone|iPad|iPod/
 
+function isSameParams(
+  a: ReturnType<typeof useDesignSystemSearchParams>[0] | null,
+  b: ReturnType<typeof useDesignSystemSearchParams>[0]
+) {
+  if (!a) {
+    return false
+  }
+
+  return Object.keys(b).every(
+    (key) => a[key as keyof typeof b] === b[key as keyof typeof b]
+  )
+}
+
 export function Preview() {
   const [params] = useDesignSystemSearchParams()
+  const override = usePreviewOverrideValue()
   const iframeRef = React.useRef<HTMLIFrameElement>(null)
+  const lastSentParamsRef = React.useRef<typeof params | null>(null)
+
+  // Hover previews overlay the committed params without touching the URL —
+  // clearing the override re-sends the committed params, reverting the preview.
+  const mergedParams = React.useMemo(
+    () => (override ? { ...params, ...override } : params),
+    [params, override]
+  )
 
   React.useEffect(() => {
     const iframe = iframeRef.current
@@ -33,10 +56,16 @@ export function Preview() {
     }
 
     const sendParams = () => {
-      sendToIframe(iframe, "design-system-params", params)
+      sendToIframe(iframe, "design-system-params", mergedParams)
+      lastSentParamsRef.current = mergedParams
     }
 
-    if (iframe.contentWindow) {
+    // Skip content-identical re-sends (e.g. an override matching the committed
+    // params) — each message triggers a full param sync in the iframe.
+    if (
+      iframe.contentWindow &&
+      !isSameParams(lastSentParamsRef.current, mergedParams)
+    ) {
       sendParams()
     }
 
@@ -44,7 +73,7 @@ export function Preview() {
     return () => {
       iframe.removeEventListener("load", sendParams)
     }
-  }, [params])
+  }, [mergedParams])
 
   React.useEffect(() => {
     const handleMessage = (event: MessageEvent) => {

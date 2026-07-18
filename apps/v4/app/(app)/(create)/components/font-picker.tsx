@@ -13,6 +13,7 @@ import {
   PickerSeparator,
   PickerTrigger,
 } from "@/app/(app)/(create)/components/picker"
+import { usePreviewOverride } from "@/app/(app)/(create)/components/preview-override"
 import { FONTS } from "@/app/(app)/(create)/lib/fonts"
 import {
   useDesignSystemSearchParams,
@@ -44,6 +45,7 @@ export function FontPicker({
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
   const [params, setParams] = useDesignSystemSearchParams()
+  const { setOverride, clearOverride } = usePreviewOverride()
   const currentValue = param === "font" ? params.font : params.fontHeading
   const handleFontChange = React.useCallback(
     (value: string) => {
@@ -93,7 +95,13 @@ export function FontPicker({
 
   return (
     <div className="group/picker relative">
-      <Picker>
+      <Picker
+        onOpenChange={(open) => {
+          if (!open) {
+            clearOverride()
+          }
+        }}
+      >
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
             <div className="text-xs text-muted-foreground">{label}</div>
@@ -117,10 +125,19 @@ export function FontPicker({
           side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
           className="max-h-96"
+          onMouseLeave={clearOverride}
         >
           <PickerRadioGroup
             value={currentValue}
             onValueChange={handleFontChange}
+            onItemPreview={
+              isMobile
+                ? undefined
+                : (value) =>
+                    setOverride({
+                      [param]: value,
+                    } as Partial<DesignSystemSearchParams>)
+            }
           >
             {param === "fontHeading" ? (
               <>

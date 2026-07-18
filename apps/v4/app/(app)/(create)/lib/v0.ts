@@ -21,6 +21,7 @@ import {
   getInheritedHeadingFontValue,
   type DesignSystemConfig,
 } from "@/registry/config"
+import { getItemsForBase } from "@/app/(app)/(create)/lib/api"
 
 const { Index } = await import("@/registry/bases/__index__")
 
@@ -178,6 +179,16 @@ function getStyle(designSystemConfig: DesignSystemConfig) {
 }
 
 export async function buildV0Payload(designSystemConfig: DesignSystemConfig) {
+  if (designSystemConfig.item) {
+    const allowedItems = await getItemsForBase(designSystemConfig.base)
+    const isAllowed = allowedItems.some(
+      (allowed) => allowed?.name === designSystemConfig.item
+    )
+    if (!isAllowed) {
+      throw new Error(`Unknown item: "${designSystemConfig.item}".`)
+    }
+  }
+
   const registryBase = buildRegistryBase(designSystemConfig)
   const normalizedFontHeading =
     designSystemConfig.fontHeading === designSystemConfig.font
