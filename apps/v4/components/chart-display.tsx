@@ -15,11 +15,11 @@ export type Chart = z.infer<typeof registryItemSchema> & {
 
 export function ChartDisplay({
   chart,
-  style,
+  styleName,
   className,
 }: {
   chart: Chart
-  style: string
+  styleName: string
 } & React.ComponentProps<"div">) {
   return (
     <div
@@ -34,7 +34,7 @@ export function ChartDisplay({
       />
       <div className="relative z-10 overflow-hidden rounded-xl bg-background">
         <ChartIframe
-          src={`/view/${style}/${chart.name}`}
+          src={`/view/${styleName}/${chart.name}`}
           height={460}
           title={chart.name}
         />
