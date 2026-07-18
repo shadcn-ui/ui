@@ -506,6 +506,19 @@ export function buildTailwindThemeColorsFromCssVars(
 ) {
   const result: Record<string, any> = {}
 
+  // When CSS variables use oklch(), rgb(), or hex values, reference them
+  // directly via var() instead of wrapping with hsl().
+  const hasNonHSLValues = Object.values(cssVars).some(
+    (value) =>
+      typeof value === "string" &&
+      (value.startsWith("oklch") ||
+        value.startsWith("rgb") ||
+        value.startsWith("#"))
+  )
+
+  const wrapVar = (varName: string) =>
+    hasNonHSLValues ? `var(--${varName})` : `hsl(var(--${varName}))`
+
   for (const key of Object.keys(cssVars)) {
     const parts = key.split("-")
     const colorName = parts[0]
@@ -513,15 +526,15 @@ export function buildTailwindThemeColorsFromCssVars(
 
     if (subType === "") {
       if (typeof result[colorName] === "object") {
-        result[colorName].DEFAULT = `hsl(var(--${key}))`
+        result[colorName].DEFAULT = wrapVar(key)
       } else {
-        result[colorName] = `hsl(var(--${key}))`
+        result[colorName] = wrapVar(key)
       }
     } else {
       if (typeof result[colorName] !== "object") {
-        result[colorName] = { DEFAULT: `hsl(var(--${colorName}))` }
+        result[colorName] = { DEFAULT: wrapVar(colorName) }
       }
-      result[colorName][subType] = `hsl(var(--${key}))`
+      result[colorName][subType] = wrapVar(key)
     }
   }
 
@@ -529,7 +542,7 @@ export function buildTailwindThemeColorsFromCssVars(
   for (const [colorName, value] of Object.entries(result)) {
     if (
       typeof value === "object" &&
-      value.DEFAULT === `hsl(var(--${colorName}))` &&
+      value.DEFAULT === wrapVar(colorName) &&
       !(colorName in cssVars)
     ) {
       delete value.DEFAULT

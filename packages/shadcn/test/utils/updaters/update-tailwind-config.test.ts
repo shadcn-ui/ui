@@ -1374,4 +1374,76 @@ describe("buildTailwindThemeColorsFromCssVars", () => {
       },
     })
   })
+
+  test("should use var() instead of hsl(var()) when CSS vars contain oklch values", () => {
+    expect(
+      buildTailwindThemeColorsFromCssVars({
+        background: "oklch(1 0 0)",
+        foreground: "oklch(0.145 0 0)",
+        primary: "oklch(0.205 0 0)",
+        "primary-foreground": "oklch(0.985 0 0)",
+      })
+    ).toEqual({
+      background: "var(--background)",
+      foreground: "var(--foreground)",
+      primary: {
+        DEFAULT: "var(--primary)",
+        foreground: "var(--primary-foreground)",
+      },
+    })
+  })
+
+  test("should use var() instead of hsl(var()) when CSS vars contain rgb values", () => {
+    expect(
+      buildTailwindThemeColorsFromCssVars({
+        background: "rgb(255 255 255)",
+        foreground: "rgb(10 10 10)",
+        primary: "rgb(0 0 255)",
+        "primary-foreground": "rgb(255 255 255)",
+      })
+    ).toEqual({
+      background: "var(--background)",
+      foreground: "var(--foreground)",
+      primary: {
+        DEFAULT: "var(--primary)",
+        foreground: "var(--primary-foreground)",
+      },
+    })
+  })
+
+  test("should use var() instead of hsl(var()) when CSS vars contain hex values", () => {
+    expect(
+      buildTailwindThemeColorsFromCssVars({
+        background: "#ffffff",
+        foreground: "#0a0a0a",
+        primary: "#1a1a2e",
+        "primary-foreground": "#f8f8f8",
+      })
+    ).toEqual({
+      background: "var(--background)",
+      foreground: "var(--foreground)",
+      primary: {
+        DEFAULT: "var(--primary)",
+        foreground: "var(--primary-foreground)",
+      },
+    })
+  })
+
+  test("should still use hsl(var()) for HSL-based themes", () => {
+    expect(
+      buildTailwindThemeColorsFromCssVars({
+        background: "0 0% 100%",
+        foreground: "224 71.4% 4.1%",
+        primary: "220.9 39.3% 11%",
+        "primary-foreground": "210 20% 98%",
+      })
+    ).toEqual({
+      background: "hsl(var(--background))",
+      foreground: "hsl(var(--foreground))",
+      primary: {
+        DEFAULT: "hsl(var(--primary))",
+        foreground: "hsl(var(--primary-foreground))",
+      },
+    })
+  })
 })
