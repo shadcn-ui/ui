@@ -13,6 +13,7 @@ import {
   getProjectInfo,
   type ProjectInfo,
 } from "@/src/utils/get-project-info"
+import { setUserAgent } from "@/src/utils/user-agent"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -61,6 +62,7 @@ export const info = new Command()
       }
 
       const projectInfo = await getProjectInfo(cwd)
+      setUserAgent(projectInfo)
       const config = await getConfig(cwd)
       const components = await getProjectComponents(cwd)
       const base = getBase(config?.style)

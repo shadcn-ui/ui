@@ -15,6 +15,7 @@ import {
   isMonorepoRoot,
 } from "@/src/utils/get-monorepo-info"
 import { getProjectInfo } from "@/src/utils/get-project-info"
+import { setUserAgent } from "@/src/utils/user-agent"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import { Command } from "commander"
@@ -199,6 +200,7 @@ export const resolve = new Command()
       }
 
       const projectInfo = await getProjectInfo(cwd)
+      setUserAgent(projectInfo)
       const preset = await resolveProjectPreset(config, projectInfo)
 
       if (opts.json) {

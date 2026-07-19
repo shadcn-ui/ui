@@ -36,6 +36,7 @@ import {
   getProjectComponents,
   getProjectInfo,
 } from "@/src/utils/get-project-info"
+import { setUserAgent } from "@/src/utils/user-agent"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -432,6 +433,7 @@ function validatePreset(preset: string) {
 
 async function resolveApplyTemplate(cwd: string) {
   const projectInfo = await getProjectInfo(cwd)
+  setUserAgent(projectInfo)
   return getTemplateForFramework(projectInfo?.framework.name)
 }
 

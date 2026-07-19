@@ -30,6 +30,7 @@ import { addComponents } from "@/src/utils/add-components"
 import { getInitAliasDefaults } from "@/src/utils/alias"
 import { createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
+import { setUserAgent } from "@/src/utils/user-agent"
 import * as ERRORS from "@/src/utils/errors"
 import {
   createFileBackup,
@@ -536,6 +537,9 @@ export const init = new Command()
       options.components = components
 
       await loadEnvFiles(options.cwd)
+
+      const currentProjectInfo = await getProjectInfo(options.cwd)
+      setUserAgent(currentProjectInfo)
 
       // We need to check if we're initializing with a new style.
       // This will allow us to determine if we need to install the base style.
