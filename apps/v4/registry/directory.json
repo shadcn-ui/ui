@@ -1163,6 +1163,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none'><path d='M5.999 17a3 3 0 0 1-1.873-.658a2.98 2.98 0 0 1-1.107-2.011a2.98 2.98 0 0 1 .639-2.206l4-5c.978-1.225 2.883-1.471 4.143-.523l1.674 1.254l2.184-2.729a3 3 0 1 1 4.682 3.747l-4 5c-.977 1.226-2.882 1.471-4.143.526l-1.674-1.256l-2.184 2.729A2.98 2.98 0 0 1 5.999 17M10 8a1 1 0 0 0-.781.374l-4 5.001a1 1 0 0 0-.213.734c.03.266.161.504.369.67a.996.996 0 0 0 1.406-.155l3.395-4.244L13.4 12.8c.42.316 1.056.231 1.381-.176l4-5.001a1 1 0 0 0 .213-.734a1 1 0 0 0-.369-.67a.996.996 0 0 0-1.406.156l-3.395 4.242L10.6 8.2A1 1 0 0 0 10 8m9 13H5a1 1 0 1 1 0-2h14a1 1 0 1 1 0 2' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@sf-fleet-hud",
+    "homepage": "https://sf-fleet-hud.vercel.app",
+    "url": "https://sf-fleet-hud.vercel.app/r/{name}.json",
+    "description": "A dark sci-fi fleet-ops UI kit. Restyled primitives plus HUD widgets: radar, gauges, telemetry bars, an interactive dot globe and dependency-free charts. Dark-only, radius 0.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'><path d='M2 8V2h6' fill='none' stroke='var(--foreground)' stroke-width='2'/><path d='M22 16v6h-6' fill='none' stroke='var(--foreground)' stroke-width='2'/><rect x='9' y='9' width='6' height='6' fill='var(--foreground)' transform='rotate(45 12 12)'/></svg>"
+  },
+  {
     "name": "@shadcn-editor",
     "homepage": "https://shadcn-editor.vercel.app",
     "url": "https://raw.githubusercontent.com/htmujahid/shadcn-editor/refs/heads/main/public/r/{name}.json",
