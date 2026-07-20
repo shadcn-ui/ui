@@ -82,3 +82,70 @@ describe("apply color mapping", async () => {
     expect(applyColorMapping(input, baseColor.inlineColors)).toBe(output)
   })
 })
+
+// Ensure base colors that use raw CSS color values (oklch, rgb, hsl, hex) are
+// emitted as Tailwind arbitrary values instead of being concatenated directly
+// after the utility prefix. See: https://github.com/shadcn-ui/ui/issues/10429
+describe("apply color mapping with raw CSS color values", async () => {
+  const oklchColors = {
+    light: {
+      background: "oklch(1 0 0)",
+      foreground: "oklch(0.145 0 0)",
+      primary: "oklch(0.205 0 0)",
+      "primary-foreground": "oklch(0.985 0 0)",
+      muted: "oklch(0.97 0 0)",
+      "accent-foreground": "oklch(0.205 0 0)",
+      border: "oklch(0.922 0 0)",
+      ring: "oklch(0.708 0 0)",
+      destructive: "oklch(0.577 0.245 27.325)",
+    },
+    dark: {
+      background: "oklch(0.145 0 0)",
+      foreground: "oklch(0.985 0 0)",
+      primary: "oklch(0.922 0 0)",
+      "primary-foreground": "oklch(0.205 0 0)",
+      muted: "oklch(0.269 0 0)",
+      "accent-foreground": "oklch(0.985 0 0)",
+      border: "oklch(1 0 0 / 10%)",
+      ring: "oklch(0.556 0 0)",
+      destructive: "oklch(0.704 0.191 22.216)",
+    },
+  }
+
+  test.each([
+    {
+      input: "bg-primary text-primary-foreground",
+      output:
+        "bg-[oklch(0.205_0_0)] text-[oklch(0.985_0_0)] dark:bg-[oklch(0.922_0_0)] dark:text-[oklch(0.205_0_0)]",
+    },
+    {
+      input: "bg-background text-foreground",
+      output:
+        "bg-[oklch(1_0_0)] text-[oklch(0.145_0_0)] dark:bg-[oklch(0.145_0_0)] dark:text-[oklch(0.985_0_0)]",
+    },
+    {
+      input: "hover:bg-muted sm:focus:text-accent-foreground",
+      output:
+        "hover:bg-[oklch(0.97_0_0)] sm:focus:text-[oklch(0.205_0_0)] dark:hover:bg-[oklch(0.269_0_0)] dark:sm:focus:text-[oklch(0.985_0_0)]",
+    },
+    {
+      input: "bg-primary/80",
+      output: "bg-[oklch(0.205_0_0)]/80 dark:bg-[oklch(0.922_0_0)]/80",
+    },
+    {
+      input: "ring-ring border-border",
+      output:
+        "ring-[oklch(0.708_0_0)] border-[oklch(0.922_0_0)] dark:ring-[oklch(0.556_0_0)] dark:border-[oklch(1_0_0_/_10%)]",
+    },
+    {
+      input: "text-destructive",
+      output:
+        "text-[oklch(0.577_0.245_27.325)] dark:text-[oklch(0.704_0.191_22.216)]",
+    },
+  ])(
+    `applyColorMapping($input) -> $output`,
+    ({ input, output }) => {
+      expect(applyColorMapping(input, oklchColors)).toBe(output)
+    }
+  )
+})

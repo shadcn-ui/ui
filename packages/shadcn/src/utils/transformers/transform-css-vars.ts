@@ -147,6 +147,21 @@ export function splitClassName(className: string): (string | null)[] {
 
 const PREFIXES = ["bg-", "text-", "border-", "ring-offset-", "ring-"]
 
+// Raw CSS color values (e.g. `oklch(0.205 0 0)`, `#fff`, `rgb(0 0 0)`) cannot
+// be appended to a utility prefix directly because Tailwind only accepts
+// palette tokens (e.g. `stone-900`) in that position. Detect them so they can
+// be emitted as arbitrary values instead (e.g. `bg-[oklch(0.205_0_0)]`).
+function isRawCssColor(value: string) {
+  return /[\s()#]/.test(value)
+}
+
+function formatColorUtility(prefix: string, color: string) {
+  if (isRawCssColor(color)) {
+    return `${prefix}[${color.replace(/\s+/g, "_")}]`
+  }
+  return `${prefix}${color}`
+}
+
 export function applyColorMapping(
   input: string,
   mapping: z.infer<typeof registryBaseColorSchema>["inlineColors"]
@@ -173,13 +188,13 @@ export function applyColorMapping(
     const needle = value?.replace(prefix, "")
     if (needle && needle in mapping.light) {
       lightMode.add(
-        [variant, `${prefix}${mapping.light[needle]}`]
+        [variant, formatColorUtility(prefix, mapping.light[needle])]
           .filter(Boolean)
           .join(":") + (modifier ? `/${modifier}` : "")
       )
 
       darkMode.add(
-        ["dark", variant, `${prefix}${mapping.dark[needle]}`]
+        ["dark", variant, formatColorUtility(prefix, mapping.dark[needle])]
           .filter(Boolean)
           .join(":") + (modifier ? `/${modifier}` : "")
       )
