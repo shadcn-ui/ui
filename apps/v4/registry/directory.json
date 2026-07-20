@@ -371,6 +371,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' class='fill-none!' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true' viewBox='0 0 24 24'><rect width='18' height='18' x='3' y='3' rx='2' ry='2'/><path d='M16 8h.01M8 8h.01M8 16h.01M16 16h.01'/></svg>"
   },
   {
+    "name": "@dkmediaviewer",
+    "homepage": "https://diklein.com/dkmediaviewer",
+    "url": "https://diklein.com/r/{name}.json",
+    "description": "A minimalist, performant, and elegant photo and video viewer for React. Masonry grid, fly-in lightbox, a crossfading carousel, captions and camera EXIF data.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' width='24' height='24'><circle cx='62' cy='38' r='28' fill='#e10000'/><rect x='12' y='32' width='56' height='56' fill='var(--foreground)'/></svg>"
+  },
+  {
     "name": "@dominik-ui",
     "homepage": "https://dominikkoch.dev/ui",
     "url": "https://dominikkoch.dev/r/{name}.json",
