@@ -19,7 +19,8 @@
       "Bash(cp -r /opt/dev/shadcn-force-ui/apps/v4/registry/bases/vue/. /opt/dev/shadcn-force-ui/packages/registry-vue/)",
       "Bash(cp -r /opt/dev/shadcn-force-ui/apps/v4/registry/bases/svelte/. /opt/dev/shadcn-force-ui/packages/registry-svelte/)",
       "Bash(git fetch *)",
-      "Bash(git stash *)"
+      "Bash(git stash *)",
+      "mcp__the-force-design-spec__get_pattern"
     ]
   },
   "disabledMcpjsonServers": [
