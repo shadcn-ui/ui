@@ -3,6 +3,7 @@ import { createMDX } from "fumadocs-mdx/next"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "standalone", // [FORCE-UI] for Docker deploys, see Dockerfile
   devIndicators: false,
   typescript: {
     ignoreBuildErrors: true,

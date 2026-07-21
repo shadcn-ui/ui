@@ -1,0 +1,13 @@
+**/node_modules
+**/.next
+**/.turbo
+**/dist
+**/.eslintcache
+.git
+.github
+.vscode
+.claude
+*.md
+!README.md
+.env
+.env.*
