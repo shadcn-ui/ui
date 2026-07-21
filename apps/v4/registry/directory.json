@@ -834,6 +834,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' class='size-10' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><title>MKSingh</title><style>path{stroke:#000}@media(prefers-color-scheme:dark){path{stroke:#fff}}</style><path stroke-linecap='round' stroke-linejoin='round' d='m21 7.5-2.25-1.313M21 7.5v2.25m0-2.25-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3 2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75 2.25-1.313M12 21.75V19.5m0 2.25-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25'></path></svg>"
   },
   {
+    "name": "@moduix-react",
+    "homepage": "https://moduix.dev",
+    "url": "https://moduix.dev/r/react/{name}.json",
+    "description": "Ark-first React components, blocks, and themes with native CSS, available as a package or a shadcn-compatible copy-owned registry.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='48 46 148 118' fill='none'><path d='M65 146V94c0-16.02 12.98-29 29-29 10.8 0 20.72 6.01 25.72 15.59L122 85l2.28-4.41C129.28 71.01 139.2 65 150 65c16.02 0 29 12.98 29 29v52' stroke='var(--foreground)' stroke-width='36' stroke-linecap='round' stroke-linejoin='round'/><path d='M122 80v20' stroke='var(--foreground)' stroke-width='36' stroke-linecap='round'/><circle cx='122' cy='149' r='14' fill='var(--foreground)'/></svg>"
+  },
+  {
     "name": "@moleculeui",
     "homepage": "https://www.moleculeui.design/",
     "url": "https://www.moleculeui.design/r/{name}.json",
