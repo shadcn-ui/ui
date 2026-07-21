@@ -5,7 +5,7 @@ import { getPackageInfo } from "@/src/utils/get-package-info"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
-import { execa } from "execa"
+import { ExecaError, execa } from "execa"
 import prompts from "prompts"
 
 export async function updateDependencies(
@@ -222,6 +222,29 @@ async function installWithPackageManager(
   cwd: string,
   flag?: string
 ) {
+  try {
+    return await runInstallWithPackageManager(
+      packageManager,
+      dependencies,
+      devDependencies,
+      cwd,
+      flag
+    )
+  } catch (error) {
+    handlePackageManagerNotFound(error, packageManager)
+    throw error
+  }
+}
+
+async function runInstallWithPackageManager(
+  packageManager: Awaited<
+    ReturnType<typeof getUpdateDependenciesPackageManager>
+  >,
+  dependencies: string[],
+  devDependencies: string[],
+  cwd: string,
+  flag?: string
+) {
   if (packageManager === "npm") {
     return installWithNpm(dependencies, devDependencies, cwd, flag)
   }
@@ -319,4 +342,37 @@ async function installWithExpo(
       cwd,
     })
   }
+}
+
+function handlePackageManagerNotFound(
+  error: unknown,
+  packageManager: Awaited<ReturnType<typeof getUpdateDependenciesPackageManager>>
+) {
+  if (
+    !(error instanceof ExecaError) ||
+    (error.cause as NodeJS.ErrnoException | undefined)?.code !== "ENOENT"
+  ) {
+    return
+  }
+
+  if (packageManager === "expo") {
+    return
+  }
+
+  const installCommand =
+    packageManager === "pnpm"
+      ? "npm install -g pnpm"
+      : packageManager === "yarn"
+        ? "corepack enable yarn"
+        : packageManager === "bun"
+          ? "npm install -g bun"
+          : packageManager === "deno"
+            ? "npm install -g deno"
+            : null
+
+  const hint = installCommand
+    ? ` Install it first, for example: ${installCommand}`
+    : " Install it first or remove the lockfile/config that selects it."
+
+  error.message = `Detected ${packageManager} for this project, but the ${packageManager} executable was not found.${hint} You can also run shadcn from the same package manager you use for this project.`
 }
