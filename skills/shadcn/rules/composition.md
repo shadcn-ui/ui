@@ -51,6 +51,12 @@ This applies to all group-based components:
 | `MenubarItem` | `MenubarGroup` |
 | `ContextMenuItem` | `ContextMenuGroup` |
 | `CommandItem` | `CommandGroup` |
+| `MessageScrollerItem` | `MessageScrollerContent` |
+| `Message` (consecutive, same sender) | `MessageGroup` |
+| `Bubble` (stacked) | `BubbleGroup` |
+| `Attachment` (in a row) | `AttachmentGroup` |
+
+Chat components nest in a fixed order (`MessageScrollerProvider` → `MessageScroller` → `MessageScrollerViewport` → `MessageScrollerContent` → `MessageScrollerItem`). See [chat.md](./chat.md).
 
 ---
 
