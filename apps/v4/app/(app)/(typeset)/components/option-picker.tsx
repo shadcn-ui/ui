@@ -11,7 +11,9 @@ import {
   PickerRadioItem,
   PickerTrigger,
 } from "@/app/(app)/(typeset)/components/picker"
+import { usePreviewOverride } from "@/app/(app)/(typeset)/components/preview-override"
 import { type LockableParam } from "@/app/(app)/(typeset)/hooks/use-locks"
+import { coerceTypesetValue } from "@/app/(app)/(typeset)/lib/search-params"
 
 export function OptionPicker<T extends string>({
   label,
@@ -34,11 +36,18 @@ export function OptionPicker<T extends string>({
   anchorRef: React.RefObject<HTMLDivElement | null>
   className?: string
 }) {
+  const { setOverride, clearOverride } = usePreviewOverride()
   const current = options.find((option) => option.value === value)
 
   return (
     <div className={cn("group/picker relative", className)}>
-      <Picker>
+      <Picker
+        onOpenChange={(open) => {
+          if (!open) {
+            clearOverride()
+          }
+        }}
+      >
         <PickerTrigger>
           <div className="flex min-w-0 flex-col justify-start pr-8 text-left">
             <div className="text-xs text-muted-foreground">{label}</div>
@@ -56,10 +65,21 @@ export function OptionPicker<T extends string>({
           anchor={isMobile ? anchorRef : undefined}
           side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
+          onMouseLeave={clearOverride}
         >
           <PickerRadioGroup
             value={value}
             onValueChange={(next) => onChange(next as T)}
+            onItemPreview={
+              isMobile || !param
+                ? undefined
+                : (next) => {
+                    const coerced = coerceTypesetValue(param, next)
+                    if (coerced !== null) {
+                      setOverride({ [param]: coerced })
+                    }
+                  }
+            }
           >
             {options.map((option) => (
               <PickerRadioItem key={option.value} value={option.value}>
