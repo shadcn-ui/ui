@@ -9,6 +9,8 @@ import {
   getConfig,
   getRawConfig,
   getWorkspaceConfig,
+  isIndexFile,
+  stripFileExtension,
 } from "../../src/utils/get-config"
 import { getProjectConfig } from "../../src/utils/get-project-info"
 
@@ -790,5 +792,75 @@ describe("createConfig", () => {
     expect(config1.resolvedPaths).not.toBe(config2.resolvedPaths)
     expect(config1.tailwind).not.toBe(config2.tailwind)
     expect(config1.aliases).not.toBe(config2.aliases)
+  })
+})
+
+// Regression tests for https://github.com/shadcn-ui/ui/issues/10799 - the
+// previous regex used `[^/]+$` to detect file extensions, but on Windows the
+// path separator is `\` (not part of that character class), so a path like
+// `C:\2.MY_APP\packages\ui\src\components` was mistakenly truncated to `C:\2`.
+// Using `path.extname` (which dispatches to `path.win32` / `path.posix`)
+// avoids that.
+describe("stripFileExtension", () => {
+  test("strips a normal file extension from a POSIX path", () => {
+    expect(
+      stripFileExtension("/repo/packages/ui/src/components/button.tsx")
+    ).toBe("/repo/packages/ui/src/components/button")
+  })
+
+  test("returns the path unchanged when there is no extension on POSIX", () => {
+    expect(
+      stripFileExtension("/repo/packages/ui/src/components")
+    ).toBe("/repo/packages/ui/src/components")
+  })
+
+  test("returns the path unchanged for a POSIX path with a dotted ancestor and no extension at the end", () => {
+    expect(
+      stripFileExtension("/repo/2.MY_APP/packages/ui/src/components")
+    ).toBe("/repo/2.MY_APP/packages/ui/src/components")
+  })
+
+  test("path.win32.extname returns an empty extension for a Windows path with a dotted ancestor", () => {
+    // This is the property `stripFileExtension` relies on. `path.extname`
+    // automatically uses `path.win32.extname` on Windows.
+    expect(
+      path.win32.extname("C:\\2.MY_APP\\1. MY_SHIFT\\packages\\ui\\src\\components")
+    ).toBe("")
+  })
+
+  test("the previous regex would have truncated a Windows path with a dotted ancestor (sanity)", () => {
+    // Encoding the old behavior here makes the regression crystal clear: if
+    // anyone reintroduces the `[^/]+$` regex, this expectation will fail and
+    // point at the bug.
+    expect(
+      "C:\\2.MY_APP\\1. MY_SHIFT\\packages\\ui\\src\\components".replace(
+        /\.[^/]+$/,
+        ""
+      )
+    ).toBe("C:\\2")
+  })
+})
+
+describe("isIndexFile", () => {
+  test("detects an `index.ts` POSIX path", () => {
+    expect(isIndexFile("/repo/packages/ui/src/components/index.ts")).toBe(true)
+  })
+
+  test("detects an `index.tsx` POSIX path", () => {
+    expect(isIndexFile("/repo/packages/ui/src/components/index.tsx")).toBe(true)
+  })
+
+  test("returns false for a non-index file", () => {
+    expect(isIndexFile("/repo/packages/ui/src/components/button.tsx")).toBe(
+      false
+    )
+  })
+
+  test("returns false for a path with no extension", () => {
+    expect(isIndexFile("/repo/packages/ui/src/components")).toBe(false)
+  })
+
+  test("returns false for a directory whose last segment happens to contain `index`", () => {
+    expect(isIndexFile("/repo/packages/ui/src/index-foo")).toBe(false)
   })
 })
