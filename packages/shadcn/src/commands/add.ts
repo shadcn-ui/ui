@@ -10,7 +10,7 @@ import { getRegistryItems, getShadcnRegistryIndex } from "@/src/registry/api"
 import { DEPRECATED_COMPONENTS } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { registryItemTypeSchema } from "@/src/registry/schema"
-import { isUniversalRegistryItem } from "@/src/registry/utils"
+import { isUniversalRegistryItem, isUrl } from "@/src/registry/utils"
 import { getTemplateForFramework } from "@/src/templates/index"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
@@ -27,6 +27,7 @@ import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { spinner } from "@/src/utils/spinner"
 import { updateAppIndex } from "@/src/utils/update-app-index"
 import { Command } from "commander"
+import fs from "fs-extra"
 import prompts from "prompts"
 import { z } from "zod"
 
@@ -68,6 +69,11 @@ export const add = new Command()
         cwd: path.resolve(opts.cwd),
       })
 
+      options.components = normalizeAddComponents(
+        options.components ?? [],
+        options.cwd
+      )
+
       await loadEnvFiles(options.cwd)
 
       const isDryRun = options.dryRun || options.diff || options.view
@@ -83,9 +89,9 @@ export const add = new Command()
       }
 
       let hasNewRegistries = false
-      if (components.length > 0) {
+      if (options.components.length > 0) {
         const { config: updatedConfig, newRegistries } =
-          await ensureRegistriesInConfig(components, initialConfig, {
+          await ensureRegistriesInConfig(options.components, initialConfig, {
             silent: options.silent,
             writeFile: false,
           })
@@ -95,8 +101,8 @@ export const add = new Command()
 
       let itemType: z.infer<typeof registryItemTypeSchema> | undefined
       let shouldInstallStyleIndex = true
-      if (components.length > 0) {
-        const [registryItem] = await getRegistryItems([components[0]], {
+      if (options.components.length > 0) {
+        const [registryItem] = await getRegistryItems([options.components[0]], {
           config: initialConfig,
         })
         itemType = registryItem?.type
@@ -106,7 +112,7 @@ export const add = new Command()
           itemType !== "registry:base"
 
         if (isUniversalRegistryItem(registryItem) && !isDryRun) {
-          await addComponents(components, initialConfig, options)
+          await addComponents(options.components, initialConfig, options)
           return
         }
         if (
@@ -314,6 +320,33 @@ export const add = new Command()
       clearRegistryContext()
     }
   })
+
+export function normalizeAddComponents(components: string[], cwd: string) {
+  return components.filter((component) => {
+    const trimmed = component.trim()
+    if (!trimmed) {
+      return false
+    }
+
+    if (trimmed === "*" || /[?*\[\]]/.test(trimmed)) {
+      return false
+    }
+
+    if (isUrl(trimmed)) {
+      return true
+    }
+
+    if (trimmed.startsWith("@") || path.isAbsolute(trimmed)) {
+      return true
+    }
+
+    if (trimmed.includes("/") || trimmed.includes("\\")) {
+      return true
+    }
+
+    return !fs.existsSync(path.resolve(cwd, trimmed))
+  })
+}
 
 async function promptForRegistryComponents(
   options: z.infer<typeof addOptionsSchema>

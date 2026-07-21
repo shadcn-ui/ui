@@ -574,6 +574,36 @@ test("get workspace config resolves cross-package aliases without tsconfig paths
   })
 })
 
+test("get config resolves workspace aliases in dotted Windows ancestor paths", async () => {
+  if (process.platform !== "win32") {
+    return
+  }
+
+  const fixtureRoot = path.resolve(
+    __dirname,
+    "../fixtures/frameworks/vite-monorepo-imports"
+  )
+  const tempRoot = await fs.mkdtemp(
+    path.join(os.tmpdir(), "shadcn-workspace-config-dotted-")
+  )
+  const dottedRoot = path.resolve(tempRoot, "2.MY_APP", "1. MY_SHIFT")
+
+  try {
+    await fs.copy(fixtureRoot, dottedRoot)
+
+    const config = await getConfig(path.resolve(dottedRoot, "apps/web"))
+    if (!config) {
+      throw new Error("Failed to load dotted-path monorepo app config")
+    }
+
+    expect(config.resolvedPaths).toMatchObject({
+      ui: path.resolve(dottedRoot, "packages/ui/src/components"),
+    })
+  } finally {
+    await fs.remove(tempRoot)
+  }
+})
+
 test("get workspace config shows an actionable error when a workspace package is missing imports", async () => {
   const fixtureRoot = path.resolve(
     __dirname,
