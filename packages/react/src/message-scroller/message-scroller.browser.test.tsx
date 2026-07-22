@@ -351,11 +351,9 @@ test("scroll button moves the viewport to the end", async () => {
 })
 
 test("keeps the scroll-to-end button inert at the bottom under an ancestor CSS zoom", async () => {
-  // Render inside a zoomed ancestor so the first commit measures under zoom. In
-  // Chromium `zoom` scales getBoundingClientRect (on-screen px) while leaving
-  // scrollTop/scrollHeight/clientHeight in layout px. The old geometry mixed the
-  // two and re-activated the button at the bottom; the fix reads only layout
-  // metrics, so the affordance stays inert.
+  // Under an ancestor CSS `zoom`, Chromium scales getBoundingClientRect while
+  // leaving scrollTop/clientHeight in layout px. The old geometry mixed the two
+  // and re-activated the button at the bottom; the fix reads only layout metrics.
   container = document.createElement("div")
   container.style.zoom = "1.5"
   document.body.appendChild(container)
@@ -367,10 +365,8 @@ test("keeps the scroll-to-end button inert at the bottom under an ancestor CSS z
 
   const viewport = getViewport()
 
-  // Guard the premise: this engine really does scale client rects under `zoom`
-  // (300 = 200 layout px x 1.5) while keeping scroll metrics in layout px. If a
-  // future engine stops splitting the two, this fails loudly instead of passing
-  // for the wrong reason.
+  // Guard the premise: the engine scales client rects under `zoom` (300 = 200 x
+  // 1.5) but keeps scroll metrics in layout px. Fails loudly if that changes.
   expect(Math.round(viewport.getBoundingClientRect().height)).toBe(300)
   expect(viewport.clientHeight).toBe(VIEWPORT_HEIGHT)
 

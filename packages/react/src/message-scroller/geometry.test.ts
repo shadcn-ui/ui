@@ -476,10 +476,9 @@ describe("getMessageScrollerScrollable", () => {
   })
 
   it("measures the end gap from layout metrics, not zoom-scaled client rects", () => {
-    // scrollTop/scrollHeight/clientHeight are layout px (zoom-invariant) and put
-    // the viewport exactly at the bottom: 500 - 200 - 300 = 0. An ancestor CSS
-    // zoom leaves those untouched but inflates getBoundingClientRect, so an item
-    // rect reaching far below the fold must not reintroduce a phantom end gap.
+    // Layout metrics put the viewport exactly at the bottom (500 - 200 - 300 =
+    // 0). A zoom-inflated item rect far below the fold must not reintroduce a
+    // phantom end gap.
     const { content, spacer, viewport } = createFixture({
       viewportHeight: 200,
       scrollTop: 300,
