@@ -1,5 +1,8 @@
 import type { Config } from "@/src/utils/get-config"
+import fs from "fs-extra"
 import { afterEach, describe, expect, it, vi } from "vitest"
+
+import { ensureRegistriesInConfig } from "./registries"
 
 // Mock dependencies.
 vi.mock("@/src/registry/namespaces", () => ({
@@ -27,9 +30,6 @@ vi.mock("fs-extra", () => ({
     writeFile: vi.fn().mockResolvedValue(undefined),
   },
 }))
-
-import { ensureRegistriesInConfig } from "./registries"
-import fs from "fs-extra"
 
 afterEach(() => {
   vi.clearAllMocks()
@@ -77,9 +77,7 @@ describe("ensureRegistriesInConfig", () => {
 
     // Should still return the updated config with new registries.
     expect(newRegistries).toEqual(["@foo"])
-    expect(config.registries?.["@foo"]).toBe(
-      "https://foo.com/r/{name}.json"
-    )
+    expect(config.registries?.["@foo"]).toBe("https://foo.com/r/{name}.json")
 
     // Should NOT have written to disk.
     expect(fs.writeFile).not.toHaveBeenCalled()

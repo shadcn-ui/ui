@@ -112,22 +112,22 @@ describe("applyRtlMapping", () => {
     expect(
       applyRtlMapping("data-[side=inline-start]:slide-out-to-right-2")
     ).toBe("data-[side=inline-start]:slide-out-to-end-2")
-    expect(
-      applyRtlMapping("data-[side=inline-end]:slide-in-from-left-2")
-    ).toBe("data-[side=inline-end]:slide-in-from-start-2")
-    expect(
-      applyRtlMapping("data-[side=inline-end]:slide-out-to-left-2")
-    ).toBe("data-[side=inline-end]:slide-out-to-start-2")
+    expect(applyRtlMapping("data-[side=inline-end]:slide-in-from-left-2")).toBe(
+      "data-[side=inline-end]:slide-in-from-start-2"
+    )
+    expect(applyRtlMapping("data-[side=inline-end]:slide-out-to-left-2")).toBe(
+      "data-[side=inline-end]:slide-out-to-start-2"
+    )
   })
 
   it("does not transform slide animations inside physical side variants", () => {
     // Physical side variants should keep physical slide directions.
-    expect(
-      applyRtlMapping("data-[side=left]:slide-in-from-right-2")
-    ).toBe("data-[side=left]:slide-in-from-right-2")
-    expect(
-      applyRtlMapping("data-[side=right]:slide-in-from-left-2")
-    ).toBe("data-[side=right]:slide-in-from-left-2")
+    expect(applyRtlMapping("data-[side=left]:slide-in-from-right-2")).toBe(
+      "data-[side=left]:slide-in-from-right-2"
+    )
+    expect(applyRtlMapping("data-[side=right]:slide-in-from-left-2")).toBe(
+      "data-[side=right]:slide-in-from-left-2"
+    )
   })
 
   it("does not transform unrelated classes", () => {
@@ -190,8 +190,12 @@ describe("applyRtlMapping", () => {
   })
 
   it("adds rtl:divide-x-reverse for divide-x classes", () => {
-    expect(applyRtlMapping("divide-x-2")).toBe("divide-x-2 rtl:divide-x-reverse")
-    expect(applyRtlMapping("divide-x-0")).toBe("divide-x-0 rtl:divide-x-reverse")
+    expect(applyRtlMapping("divide-x-2")).toBe(
+      "divide-x-2 rtl:divide-x-reverse"
+    )
+    expect(applyRtlMapping("divide-x-0")).toBe(
+      "divide-x-0 rtl:divide-x-reverse"
+    )
   })
 
   it("handles space-x and divide-x with variant prefixes", () => {

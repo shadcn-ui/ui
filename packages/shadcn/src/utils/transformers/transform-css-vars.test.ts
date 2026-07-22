@@ -2,9 +2,9 @@ import type { Config } from "@/src/utils/get-config"
 import { describe, expect, it } from "vitest"
 
 import { transform } from "."
-import { applyColorMapping, splitClassName } from "./transform-css-vars"
 import baseColor from "../../../test/fixtures/colors/slate.json"
 import stone from "../../../test/fixtures/colors/stone.json"
+import { applyColorMapping, splitClassName } from "./transform-css-vars"
 
 describe("split className", () => {
   it.each([

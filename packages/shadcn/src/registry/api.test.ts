@@ -15,8 +15,8 @@ import {
   RegistryUnauthorizedError,
   RegistryValidationError,
 } from "@/src/registry/errors"
-import { getConfig } from "@/src/utils/get-config"
 import { getFixturesDir } from "@/src/test-helpers"
+import { getConfig } from "@/src/utils/get-config"
 import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
 import {

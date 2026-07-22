@@ -9,15 +9,11 @@ import {
 
 describe("getPackageManager", () => {
   it("get package manager", async () => {
-    expect(await getPackageManager(getFixturesDir("project-yarn"))).toBe(
-      "yarn"
-    )
+    expect(await getPackageManager(getFixturesDir("project-yarn"))).toBe("yarn")
 
     expect(await getPackageManager(getFixturesDir("project-npm"))).toBe("npm")
 
-    expect(await getPackageManager(getFixturesDir("project-pnpm"))).toBe(
-      "pnpm"
-    )
+    expect(await getPackageManager(getFixturesDir("project-pnpm"))).toBe("pnpm")
 
     expect(await getPackageManager(getFixturesDir("project-bun"))).toBe("bun")
 

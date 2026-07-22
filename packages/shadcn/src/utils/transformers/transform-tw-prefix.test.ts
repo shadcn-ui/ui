@@ -2,8 +2,8 @@ import type { Config } from "@/src/utils/get-config"
 import { describe, expect, it } from "vitest"
 
 import { transform } from "."
-import { applyPrefix, applyPrefixesCss } from "./transform-tw-prefix"
 import stone from "../../../test/fixtures/colors/stone.json"
+import { applyPrefix, applyPrefixesCss } from "./transform-tw-prefix"
 
 describe("apply tailwind prefix v3", () => {
   it.each([

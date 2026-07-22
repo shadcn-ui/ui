@@ -17,6 +17,10 @@ import { transformRtl } from "@/src/utils/transformers/transform-rtl"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import { afterEach, describe, expect, it, vi } from "vitest"
 
+import { dryRunComponents } from "./dry-run"
+import type { DryRunResult } from "./dry-run"
+import { formatDryRunResult, resolveFilterPath } from "./dry-run-formatter"
+
 // Mock external dependencies.
 vi.mock("@/src/registry/resolver", () => ({
   resolveRegistryTree: vi.fn(),
@@ -102,13 +106,6 @@ vi.mock("fs", async () => {
   }
 })
 
-import { dryRunComponents } from "./dry-run"
-import {
-  formatDryRunResult,
-  resolveFilterPath,
-} from "./dry-run-formatter"
-import type { DryRunResult } from "./dry-run"
-
 afterEach(() => {
   vi.clearAllMocks()
   vi.mocked(existsSync).mockReturnValue(false)
@@ -156,7 +153,7 @@ describe("dryRunComponents", () => {
         {
           path: "registry/ui/button.tsx",
           type: "registry:ui",
-          content: 'export function Button() { return <button>Click</button> }',
+          content: "export function Button() { return <button>Click</button> }",
         },
       ],
       dependencies: ["class-variance-authority"],
@@ -412,9 +409,9 @@ describe("dryRunComponents", () => {
 
     vi.mocked(resolveRegistryTree).mockResolvedValue(undefined as any)
 
-    await expect(
-      dryRunComponents(["nonexistent"], config)
-    ).rejects.toThrow("Failed to fetch components from registry.")
+    await expect(dryRunComponents(["nonexistent"], config)).rejects.toThrow(
+      "Failed to fetch components from registry."
+    )
   })
 
   it("should skip package-import files when final rewritten content matches", async () => {
@@ -423,7 +420,9 @@ describe("dryRunComponents", () => {
 
     try {
       vi.mocked(existsSync).mockImplementation(actualFs.existsSync)
-      vi.mocked(fs.readFile).mockImplementation(actualFs.promises.readFile as never)
+      vi.mocked(fs.readFile).mockImplementation(
+        actualFs.promises.readFile as never
+      )
       vi.mocked(getProjectInfo).mockResolvedValue({
         framework: { name: "vite" } as any,
         isSrcDir: true,
@@ -437,9 +436,12 @@ describe("dryRunComponents", () => {
       })
 
       await actualFs.promises.rm(tempDir, { recursive: true, force: true })
-      await actualFs.promises.mkdir(path.join(tempDir, "src", "components", "ui"), {
-        recursive: true,
-      })
+      await actualFs.promises.mkdir(
+        path.join(tempDir, "src", "components", "ui"),
+        {
+          recursive: true,
+        }
+      )
       await actualFs.promises.mkdir(path.join(tempDir, "src", "lib"), {
         recursive: true,
       })
@@ -576,10 +578,17 @@ export function Button() {
     const actualTransformImportModule = (await vi.importActual(
       "@/src/utils/transformers/transform-import"
     )) as typeof import("@/src/utils/transformers/transform-import")
-    const cwd = getFixturesDir("frameworks", "vite-monorepo-imports", "apps", "web")
+    const cwd = getFixturesDir(
+      "frameworks",
+      "vite-monorepo-imports",
+      "apps",
+      "web"
+    )
 
     vi.mocked(existsSync).mockImplementation(actualFs.existsSync)
-    vi.mocked(fs.readFile).mockImplementation(actualFs.promises.readFile as never)
+    vi.mocked(fs.readFile).mockImplementation(
+      actualFs.promises.readFile as never
+    )
     vi.mocked(getProjectInfo).mockResolvedValue({
       framework: { name: "vite" } as any,
       isSrcDir: true,
@@ -641,9 +650,7 @@ export function LoginForm() {
       action: "create",
       type: "registry:component",
     })
-    expect(result.files[0].content).toContain(
-      `from "@workspace/ui/lib/utils"`
-    )
+    expect(result.files[0].content).toContain(`from "@workspace/ui/lib/utils"`)
     expect(result.files[0].content).not.toContain(`from "#lib/utils"`)
   })
 })
@@ -918,9 +925,9 @@ describe("formatDryRunResult --diff", () => {
         {
           path: "components/ui/button.tsx",
           action: "overwrite",
-          content: 'export function Button() { return <button>New</button> }',
+          content: "export function Button() { return <button>New</button> }",
           existingContent:
-            'export function Button() { return <button>Old</button> }',
+            "export function Button() { return <button>Old</button> }",
           type: "registry:ui",
         },
       ],
@@ -1050,8 +1057,10 @@ describe("formatDryRunResult --diff", () => {
         {
           path: "components/ui/button.tsx",
           action: "overwrite",
-          content: 'import { cn } from "@/lib/utils";\nexport function Button() {}',
-          existingContent: "import { cn } from '@/lib/utils'\nexport function Button() {}",
+          content:
+            'import { cn } from "@/lib/utils";\nexport function Button() {}',
+          existingContent:
+            "import { cn } from '@/lib/utils'\nexport function Button() {}",
           type: "registry:ui",
         },
       ],
@@ -1070,8 +1079,9 @@ describe("formatDryRunResult --diff", () => {
         {
           path: "components/ui/button.tsx",
           action: "overwrite",
-          content: 'export function Button() { return <button>New</button> }',
-          existingContent: 'export function Button() { return <button>Old</button> }',
+          content: "export function Button() { return <button>New</button> }",
+          existingContent:
+            "export function Button() { return <button>Old</button> }",
           type: "registry:ui",
         },
       ],
@@ -1123,7 +1133,7 @@ describe("formatDryRunResult --diff", () => {
           content: [
             'const buttonVariants = cva("inline-flex", {',
             "  variants: {",
-            '    size: {',
+            "    size: {",
             '      default: "h-8 gap-1.5 px-2.5 has-[>svg]:px-1.5",',
             "    },",
             "  },",
@@ -1224,8 +1234,10 @@ describe("formatDryRunResult --diff", () => {
         {
           path: "components/ui/button.tsx",
           action: "overwrite",
-          content: 'import { cn } from "@/lib/utils";\nexport function Button() {};',
-          existingContent: 'import { cn } from "@/lib/utils"\nexport function Button() {}',
+          content:
+            'import { cn } from "@/lib/utils";\nexport function Button() {};',
+          existingContent:
+            'import { cn } from "@/lib/utils"\nexport function Button() {}',
           type: "registry:ui",
         },
       ],
@@ -1268,7 +1280,7 @@ describe("formatDryRunResult --diff", () => {
     // Quote-only changes should NOT appear as red/green diff lines.
     expect(output).not.toContain("-        lg:")
     expect(output).not.toContain("-        icon:")
-    expect(output).not.toContain('-        \'icon-sm\'')
+    expect(output).not.toContain("-        'icon-sm'")
     // Real change (size-10 -> size-9) SHOULD appear as a diff.
     expect(output).toContain("size-10")
     expect(output).toContain("size-9")
@@ -1339,34 +1351,34 @@ describe("formatDryRunResult --diff", () => {
     // - Hunk 1 (top): quote-only changes → suppressed.
     // - Hunk 2 (bottom): real change → shown with correct line number.
     const oldLines = [
-      "import { cn } from '@/lib/utils'",   // line 1: quote diff.
-      "",                                     // line 2.
-      "const a = 'hello'",                   // line 3: quote diff.
-      "",                                     // line 4.
-      "// spacer 1",                          // line 5.
-      "// spacer 2",                          // line 6.
-      "// spacer 3",                          // line 7.
-      "// spacer 4",                          // line 8.
-      "// spacer 5",                          // line 9.
-      "// spacer 6",                          // line 10.
-      "// spacer 7",                          // line 11.
-      "",                                     // line 12.
-      "const c = 'old-value'",               // line 13: real change.
+      "import { cn } from '@/lib/utils'", // line 1: quote diff.
+      "", // line 2.
+      "const a = 'hello'", // line 3: quote diff.
+      "", // line 4.
+      "// spacer 1", // line 5.
+      "// spacer 2", // line 6.
+      "// spacer 3", // line 7.
+      "// spacer 4", // line 8.
+      "// spacer 5", // line 9.
+      "// spacer 6", // line 10.
+      "// spacer 7", // line 11.
+      "", // line 12.
+      "const c = 'old-value'", // line 13: real change.
     ]
     const newLines = [
-      'import { cn } from "@/lib/utils"',    // line 1: quote diff.
-      "",                                     // line 2.
-      'const a = "hello"',                   // line 3: quote diff.
-      "",                                     // line 4.
-      "// spacer 1",                          // line 5.
-      "// spacer 2",                          // line 6.
-      "// spacer 3",                          // line 7.
-      "// spacer 4",                          // line 8.
-      "// spacer 5",                          // line 9.
-      "// spacer 6",                          // line 10.
-      "// spacer 7",                          // line 11.
-      "",                                     // line 12.
-      'const c = "new-value"',               // line 13: real change.
+      'import { cn } from "@/lib/utils"', // line 1: quote diff.
+      "", // line 2.
+      'const a = "hello"', // line 3: quote diff.
+      "", // line 4.
+      "// spacer 1", // line 5.
+      "// spacer 2", // line 6.
+      "// spacer 3", // line 7.
+      "// spacer 4", // line 8.
+      "// spacer 5", // line 9.
+      "// spacer 6", // line 10.
+      "// spacer 7", // line 11.
+      "", // line 12.
+      'const c = "new-value"', // line 13: real change.
     ]
 
     const result = createResult({
@@ -1423,8 +1435,8 @@ describe("formatDryRunResult --diff", () => {
     })
 
     // Semicolon-only lines should not show as diffs.
-    expect(output).not.toContain('-import { cn }')
-    expect(output).not.toContain('-const a')
+    expect(output).not.toContain("-import { cn }")
+    expect(output).not.toContain("-const a")
     // Real change should show.
     expect(output).toContain("original")
     expect(output).toContain("changed")
@@ -1575,7 +1587,9 @@ describe("formatDryRunResult --view", () => {
   }
 
   it("should show focused view with full content", () => {
-    const content = Array.from({ length: 20 }, (_, i) => `line ${i + 1}`).join("\n")
+    const content = Array.from({ length: 20 }, (_, i) => `line ${i + 1}`).join(
+      "\n"
+    )
 
     const result = createResult({
       files: [
@@ -1601,7 +1615,9 @@ describe("formatDryRunResult --view", () => {
   })
 
   it("should show all matched files with full content", () => {
-    const content = Array.from({ length: 20 }, (_, i) => `line ${i + 1}`).join("\n")
+    const content = Array.from({ length: 20 }, (_, i) => `line ${i + 1}`).join(
+      "\n"
+    )
 
     const result = createResult({
       files: [
@@ -1629,8 +1645,14 @@ describe("formatDryRunResult --view", () => {
   })
 
   it("should show only matched file", () => {
-    const buttonContent = Array.from({ length: 20 }, (_, i) => `button line ${i + 1}`).join("\n")
-    const cardContent = Array.from({ length: 20 }, (_, i) => `card line ${i + 1}`).join("\n")
+    const buttonContent = Array.from(
+      { length: 20 },
+      (_, i) => `button line ${i + 1}`
+    ).join("\n")
+    const cardContent = Array.from(
+      { length: 20 },
+      (_, i) => `card line ${i + 1}`
+    ).join("\n")
 
     const result = createResult({
       files: [
@@ -1703,9 +1725,24 @@ describe("formatDryRunResult --view", () => {
 
 describe("resolveFilterPath", () => {
   const files = [
-    { path: "components/ui/button.tsx", action: "create" as const, content: "", type: "registry:ui" },
-    { path: "components/ui/card.tsx", action: "create" as const, content: "", type: "registry:ui" },
-    { path: "hooks/use-mobile.ts", action: "create" as const, content: "", type: "registry:hook" },
+    {
+      path: "components/ui/button.tsx",
+      action: "create" as const,
+      content: "",
+      type: "registry:ui",
+    },
+    {
+      path: "components/ui/card.tsx",
+      action: "create" as const,
+      content: "",
+      type: "registry:ui",
+    },
+    {
+      path: "hooks/use-mobile.ts",
+      action: "create" as const,
+      content: "",
+      type: "registry:hook",
+    },
   ]
 
   it("should match exact path", () => {

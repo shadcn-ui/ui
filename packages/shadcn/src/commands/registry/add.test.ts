@@ -5,7 +5,9 @@ import { parseRegistryArg } from "./add"
 describe("parseRegistryArg", () => {
   it("should parse namespace without URL", () => {
     expect(parseRegistryArg("@magicui")).toEqual({ namespace: "@magicui" })
-    expect(parseRegistryArg("@aceternity")).toEqual({ namespace: "@aceternity" })
+    expect(parseRegistryArg("@aceternity")).toEqual({
+      namespace: "@aceternity",
+    })
   })
 
   it("should parse namespace with URL", () => {

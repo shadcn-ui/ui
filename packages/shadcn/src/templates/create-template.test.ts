@@ -1,9 +1,8 @@
 import path from "path"
+import { withTempDir } from "@/src/test-helpers"
 import { execa } from "execa"
 import fs from "fs-extra"
 import { describe, expect, it, vi } from "vitest"
-
-import { withTempDir } from "@/src/test-helpers"
 
 import {
   adaptWorkspaceConfig,
@@ -173,11 +172,8 @@ describe("adaptWorkspaceConfig", () => {
     await fs.writeFile(path.join(dir, "pnpm-lock.yaml"), "lockfileVersion: 9\n")
     await fs.writeFile(
       path.join(dir, "package.json"),
-      JSON.stringify(
-        { name: "root", packageManager: "pnpm@10.0.0" },
-        null,
-        2
-      ) + "\n"
+      JSON.stringify({ name: "root", packageManager: "pnpm@10.0.0" }, null, 2) +
+        "\n"
     )
     await fs.ensureDir(path.join(dir, "packages", "a"))
     await fs.writeFile(

@@ -1,12 +1,7 @@
+import { SEARCHABLE_TYPES } from "@/src/registry/search"
 import type { registryItemSchema, searchResultsSchema } from "@/src/schema"
 import { describe, expect, it, vi } from "vitest"
 import { z } from "zod"
-
-vi.mock("@/src/utils/get-package-manager", () => ({
-  getPackageRunner: vi.fn().mockResolvedValue("npx"),
-}))
-
-import { SEARCHABLE_TYPES } from "@/src/registry/search"
 
 import {
   findUnknownTypesMessage,
@@ -15,6 +10,10 @@ import {
   formatSearchResultsWithPagination,
   formatSkippedRegistries,
 } from "./utils"
+
+vi.mock("@/src/utils/get-package-manager", () => ({
+  getPackageRunner: vi.fn().mockResolvedValue("npx"),
+}))
 
 type SearchResults = z.infer<typeof searchResultsSchema>
 type RegistryItem = z.infer<typeof registryItemSchema>
@@ -65,9 +64,7 @@ describe("formatSearchResultsWithPagination", () => {
     const output = formatSearchResultsWithPagination(minimalResults, {
       registries: ["@shadcn", "@acme"],
     })
-    expect(output).toContain(
-      "Found 1 items in registries @shadcn, @acme:"
-    )
+    expect(output).toContain("Found 1 items in registries @shadcn, @acme:")
   })
 
   it("includes both query and registries in the header when provided", () => {
@@ -197,9 +194,7 @@ describe("formatRegistryItems", () => {
         name: "button",
         type: "registry:ui",
         description: "A button.",
-        files: [
-          { path: "button.tsx", type: "registry:ui", target: "" },
-        ],
+        files: [{ path: "button.tsx", type: "registry:ui", target: "" }],
         dependencies: ["radix-ui"],
         devDependencies: ["typescript"],
       } as RegistryItem,

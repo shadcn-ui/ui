@@ -4,7 +4,10 @@ import { execa } from "execa"
 import prompts from "prompts"
 import { afterEach, describe, expect, it, vi } from "vitest"
 
-import { assertSafeDependencies, updateDependencies } from "./update-dependencies"
+import {
+  assertSafeDependencies,
+  updateDependencies,
+} from "./update-dependencies"
 
 vi.mock("execa")
 vi.mock("prompts")

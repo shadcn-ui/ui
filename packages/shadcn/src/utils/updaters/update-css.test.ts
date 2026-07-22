@@ -1134,7 +1134,7 @@ describe("transformCss", () => {
 
     const result = await transformCss(input, {
       "@keyframes skeleton": {
-        "to": {
+        to: {
           "background-position": "-200% 0",
         },
       },

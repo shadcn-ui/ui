@@ -1136,9 +1136,7 @@ describe("resolveNestedFilePath", () => {
 
 describe("updateFiles", () => {
   it("should create missing files", async () => {
-    const config = (await getConfig(
-      getFixturesDir("vite-with-tailwind")
-    ))!
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     expect(
       await updateFiles(
         [
@@ -1168,9 +1166,7 @@ describe("updateFiles", () => {
   })
 
   it("should skip existing files if same content", async () => {
-    const config = (await getConfig(
-      getFixturesDir("vite-with-tailwind")
-    ))!
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     expect(
       await updateFiles(
         [
@@ -1209,9 +1205,7 @@ return <div>Hello World</div>
   })
 
   it("should update file if different content", async () => {
-    const config = (await getConfig(
-      getFixturesDir("vite-with-tailwind")
-    ))!
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     expect(
       await updateFiles(
         [
@@ -1261,11 +1255,15 @@ return <div>Hello World</div>
       writeFileMock.mockImplementation(fsModuleActual.promises.writeFile as any)
 
       await fsActual.rm(tempDir, { recursive: true, force: true })
-      await fsActual.mkdir(path.join(tempDir, "src", "app"), { recursive: true })
+      await fsActual.mkdir(path.join(tempDir, "src", "app"), {
+        recursive: true,
+      })
       await fsActual.mkdir(path.join(tempDir, "src", "hooks"), {
         recursive: true,
       })
-      await fsActual.mkdir(path.join(tempDir, "src", "lib"), { recursive: true })
+      await fsActual.mkdir(path.join(tempDir, "src", "lib"), {
+        recursive: true,
+      })
 
       await fsActual.writeFile(
         path.join(tempDir, "package.json"),
@@ -1386,7 +1384,9 @@ export function ExampleCard() {
       expect(componentContents).not.toContain(`from "#hooks/use-thing"`)
     } finally {
       writeFileMock.mockResolvedValue(undefined)
-      await fsActual.rm(tempDir, { recursive: true, force: true }).catch(() => {})
+      await fsActual
+        .rm(tempDir, { recursive: true, force: true })
+        .catch(() => {})
     }
   })
 
@@ -1531,7 +1531,9 @@ export function Button() {
       expect(vi.mocked(prompts)).not.toHaveBeenCalled()
     } finally {
       writeFileMock.mockResolvedValue(undefined)
-      await fsActual.rm(tempDir, { recursive: true, force: true }).catch(() => {})
+      await fsActual
+        .rm(tempDir, { recursive: true, force: true })
+        .catch(() => {})
     }
   })
 
@@ -1568,9 +1570,7 @@ export function Button() {
   })
 
   it("should mark .env file as created when it doesn't exist", async () => {
-    const config = (await getConfig(
-      getFixturesDir("vite-with-tailwind")
-    ))!
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
 
     const result = await updateFiles(
       [
@@ -1935,9 +1935,7 @@ DATABASE_URL=postgres://localhost:5432/mydb`,
   })
 
   it("should place first file at custom file path", async () => {
-    const config = (await getConfig(
-      getFixturesDir("vite-with-tailwind")
-    ))!
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     expect(
       await updateFiles(
         [
@@ -1968,9 +1966,7 @@ DATABASE_URL=postgres://localhost:5432/mydb`,
   })
 
   it("should place all files in custom directory", async () => {
-    const config = (await getConfig(
-      getFixturesDir("vite-with-tailwind")
-    ))!
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     expect(
       await updateFiles(
         [
@@ -2009,9 +2005,7 @@ DATABASE_URL=postgres://localhost:5432/mydb`,
   })
 
   it("should only apply file path to first file", async () => {
-    const config = (await getConfig(
-      getFixturesDir("vite-with-tailwind")
-    ))!
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     expect(
       await updateFiles(
         [
@@ -2049,9 +2043,7 @@ DATABASE_URL=postgres://localhost:5432/mydb`,
   })
 
   it("should preserve 'use client' directive for universal item files (registry:file)", async () => {
-    const config = (await getConfig(
-      getFixturesDir("vite-with-tailwind")
-    ))!
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     const result = await updateFiles(
       [
         {
@@ -2084,9 +2076,7 @@ export function CustomComponent() {
   })
 
   it("should preserve 'use client' directive for universal item files (registry:item)", async () => {
-    const config = (await getConfig(
-      getFixturesDir("vite-with-tailwind")
-    ))!
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     const result = await updateFiles(
       [
         {
@@ -2119,9 +2109,7 @@ export function UniversalWidget() {
   })
 
   it("should remove 'use client' directive for non-universal item files when rsc is false", async () => {
-    const config = (await getConfig(
-      getFixturesDir("vite-with-tailwind")
-    ))!
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     const result = await updateFiles(
       [
         {

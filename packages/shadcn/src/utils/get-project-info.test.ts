@@ -2,9 +2,9 @@ import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
 import { getShadcnRegistryIndex } from "@/src/registry/api"
-import { getConfig, resolveConfigPaths } from "@/src/utils/get-config"
 import { getFixturesDir } from "@/src/test-helpers"
 import { FRAMEWORKS } from "@/src/utils/frameworks"
+import { getConfig, resolveConfigPaths } from "@/src/utils/get-config"
 import fsExtra from "fs-extra"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
@@ -212,9 +212,7 @@ describe("get project info", async () => {
     },
   ])(`getProjectType($name) -> $type`, async ({ name, type }) => {
     expect(
-      await getProjectInfo(
-        getFixturesDir("frameworks", name)
-      )
+      await getProjectInfo(getFixturesDir("frameworks", name))
     ).toStrictEqual(type)
   })
 })
@@ -354,9 +352,7 @@ describe("getProjectComponents", () => {
   let tmpDir: string
 
   beforeEach(async () => {
-    tmpDir = await fs.mkdtemp(
-      path.join(process.env.TMPDIR || "/tmp", "test-")
-    )
+    tmpDir = await fs.mkdtemp(path.join(process.env.TMPDIR || "/tmp", "test-"))
   })
 
   afterEach(async () => {
@@ -520,25 +516,23 @@ describe("get tailwindcss file", async () => {
 
   it("should use configCssFile when provided and file exists", async () => {
     const cwd = getFixturesDir("frameworks", "next-monorepo")
-    expect(
-      await getTailwindCssFile(cwd, "packages/ui/src/globals.css")
-    ).toBe("packages/ui/src/globals.css")
+    expect(await getTailwindCssFile(cwd, "packages/ui/src/globals.css")).toBe(
+      "packages/ui/src/globals.css"
+    )
   })
 
   it("should fall back to glob when configCssFile does not exist", async () => {
     const cwd = getFixturesDir("frameworks", "next-app")
-    expect(
-      await getTailwindCssFile(cwd, "nonexistent/styles.css")
-    ).toBe("app/globals.css")
+    expect(await getTailwindCssFile(cwd, "nonexistent/styles.css")).toBe(
+      "app/globals.css"
+    )
   })
 
   it("should return null when no css file found and no configCssFile", async () => {
     const cwd = getFixturesDir("frameworks", "next-monorepo")
     // The CSS file is nested under packages/ which the glob finds.
     // Without configCssFile, it should still find it via glob.
-    expect(await getTailwindCssFile(cwd)).toBe(
-      "packages/ui/src/globals.css"
-    )
+    expect(await getTailwindCssFile(cwd)).toBe("packages/ui/src/globals.css")
   })
 })
 
@@ -637,8 +631,8 @@ describe("is TypeScript project", async () => {
       result: false,
     },
   ])(`isTypeScriptProject($name) -> $result`, async ({ name, result }) => {
-    expect(
-      await isTypeScriptProject(getFixturesDir("frameworks", name))
-    ).toBe(result)
+    expect(await isTypeScriptProject(getFixturesDir("frameworks", name))).toBe(
+      result
+    )
   })
 })

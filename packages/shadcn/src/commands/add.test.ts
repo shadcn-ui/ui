@@ -1,3 +1,10 @@
+import { runInit } from "@/src/commands/init"
+import { REGISTRY_URL, SHADCN_URL } from "@/src/registry/constants"
+import { getFixturesDir, withTempDir } from "@/src/test-helpers"
+import { addComponents } from "@/src/utils/add-components"
+import { createProject } from "@/src/utils/create-project"
+import { dryRunComponents } from "@/src/utils/dry-run"
+import { updateAppIndex } from "@/src/utils/update-app-index"
 import fs from "fs-extra"
 import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
@@ -12,14 +19,6 @@ import {
   it,
   vi,
 } from "vitest"
-
-import { REGISTRY_URL, SHADCN_URL } from "@/src/registry/constants"
-import { getFixturesDir, withTempDir } from "@/src/test-helpers"
-import { addComponents } from "@/src/utils/add-components"
-import { createProject } from "@/src/utils/create-project"
-import { dryRunComponents } from "@/src/utils/dry-run"
-import { updateAppIndex } from "@/src/utils/update-app-index"
-import { runInit } from "@/src/commands/init"
 
 import { add } from "./add"
 
@@ -329,9 +328,7 @@ describe("add command", () => {
 
         mockPrompts({ proceed: false })
 
-        await expect(runAdd(["button"], cwd)).rejects.toThrow(
-          "process.exit:1"
-        )
+        await expect(runAdd(["button"], cwd)).rejects.toThrow("process.exit:1")
 
         expect(runInit).not.toHaveBeenCalled()
       })
@@ -524,9 +521,7 @@ describe("add command", () => {
       await withFixtureCopy("vite-with-tailwind", async (cwd) => {
         const { logger } = await import("@/src/utils/logger")
 
-        await expect(runAdd(["toast"], cwd)).rejects.toThrow(
-          "process.exit:1"
-        )
+        await expect(runAdd(["toast"], cwd)).rejects.toThrow("process.exit:1")
 
         expect(logger.warn).toHaveBeenCalledWith(
           expect.stringContaining("toast component is deprecated")

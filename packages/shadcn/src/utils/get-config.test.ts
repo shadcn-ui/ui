@@ -15,13 +15,9 @@ import {
 
 describe("getRawConfig", () => {
   it("get raw config", async () => {
-    expect(
-      await getRawConfig(getFixturesDir("config-none"))
-    ).toEqual(null)
+    expect(await getRawConfig(getFixturesDir("config-none"))).toEqual(null)
 
-    expect(
-      await getRawConfig(getFixturesDir("config-partial"))
-    ).toEqual({
+    expect(await getRawConfig(getFixturesDir("config-partial"))).toEqual({
       style: "default",
       tailwind: {
         config: "./tailwind.config.ts",
@@ -202,17 +198,13 @@ describe("getProjectConfig", () => {
 
 describe("getConfig", () => {
   it("get config", async () => {
-    expect(
-      await getConfig(getFixturesDir("config-none"))
-    ).toEqual(null)
+    expect(await getConfig(getFixturesDir("config-none"))).toEqual(null)
 
     await expect(
       getConfig(getFixturesDir("config-invalid"))
     ).rejects.toThrowError()
 
-    expect(
-      await getConfig(getFixturesDir("config-partial"))
-    ).toEqual({
+    expect(await getConfig(getFixturesDir("config-partial"))).toEqual({
       style: "default",
       tailwind: {
         config: "./tailwind.config.ts",
@@ -240,14 +232,8 @@ describe("getConfig", () => {
           getFixturesDir("config-partial"),
           "./components"
         ),
-        utils: path.resolve(
-          getFixturesDir("config-partial"),
-          "./lib/utils"
-        ),
-        ui: path.resolve(
-          getFixturesDir("config-partial"),
-          "./components/ui"
-        ),
+        utils: path.resolve(getFixturesDir("config-partial"), "./lib/utils"),
+        ui: path.resolve(getFixturesDir("config-partial"), "./components/ui"),
         hooks: path.resolve(getFixturesDir("config-partial"), "./hooks"),
         lib: path.resolve(getFixturesDir("config-partial"), "./lib"),
       },
@@ -257,9 +243,7 @@ describe("getConfig", () => {
       },
     })
 
-    expect(
-      await getConfig(getFixturesDir("config-full"))
-    ).toEqual({
+    expect(await getConfig(getFixturesDir("config-full"))).toEqual({
       style: "new-york",
       rsc: false,
       tsx: true,
@@ -293,24 +277,16 @@ describe("getConfig", () => {
           "./src/components"
         ),
         ui: path.resolve(getFixturesDir("config-full"), "./src/ui"),
-        hooks: path.resolve(
-          getFixturesDir("config-full"),
-          "./src/lib/hooks"
-        ),
+        hooks: path.resolve(getFixturesDir("config-full"), "./src/lib/hooks"),
         lib: path.resolve(getFixturesDir("config-full"), "./src/lib"),
-        utils: path.resolve(
-          getFixturesDir("config-full"),
-          "./src/lib/utils"
-        ),
+        utils: path.resolve(getFixturesDir("config-full"), "./src/lib/utils"),
       },
       registries: {
         "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
       },
     })
 
-    expect(
-      await getConfig(getFixturesDir("config-jsx"))
-    ).toEqual({
+    expect(await getConfig(getFixturesDir("config-jsx"))).toEqual({
       style: "default",
       tailwind: {
         config: "./tailwind.config.js",
@@ -335,10 +311,7 @@ describe("getConfig", () => {
           getFixturesDir("config-jsx"),
           "./src/assets/css/tailwind.css"
         ),
-        components: path.resolve(
-          getFixturesDir("config-jsx"),
-          "./components"
-        ),
+        components: path.resolve(getFixturesDir("config-jsx"), "./components"),
         ui: path.resolve(getFixturesDir("config-jsx"), "./components/ui"),
         utils: path.resolve(getFixturesDir("config-jsx"), "./lib/utils"),
         hooks: path.resolve(getFixturesDir("config-jsx"), "./hooks"),
@@ -349,9 +322,7 @@ describe("getConfig", () => {
       },
     })
 
-    expect(
-      await getConfig(getFixturesDir("config-imports"))
-    ).toEqual({
+    expect(await getConfig(getFixturesDir("config-imports"))).toEqual({
       style: "new-york",
       rsc: true,
       tsx: true,
@@ -383,10 +354,7 @@ describe("getConfig", () => {
           getFixturesDir("config-imports"),
           "src/components"
         ),
-        ui: path.resolve(
-          getFixturesDir("config-imports"),
-          "src/components/ui"
-        ),
+        ui: path.resolve(getFixturesDir("config-imports"), "src/components/ui"),
         lib: path.resolve(getFixturesDir("config-imports"), "src/lib"),
         hooks: path.resolve(getFixturesDir("config-imports"), "src/hooks"),
         utils: path.resolve(
@@ -400,9 +368,7 @@ describe("getConfig", () => {
     })
 
     expect(
-      await getConfig(
-        getFixturesDir("config-imports-extensions")
-      )
+      await getConfig(getFixturesDir("config-imports-extensions"))
     ).toEqual({
       style: "new-york",
       rsc: false,
@@ -477,12 +443,24 @@ describe("getConfig", () => {
       resolvedPaths: {
         cwd: getFixturesDir("frameworks/vite-monorepo-imports/apps/web"),
         tailwindConfig: "",
-        tailwindCss: getFixturesDir("frameworks/vite-monorepo-imports/packages/ui/src/styles/globals.css"),
-        components: getFixturesDir("frameworks/vite-monorepo-imports/apps/web/src/components"),
-        ui: getFixturesDir("frameworks/vite-monorepo-imports/packages/ui/src/components"),
-        lib: getFixturesDir("frameworks/vite-monorepo-imports/apps/web/src/lib"),
-        hooks: getFixturesDir("frameworks/vite-monorepo-imports/apps/web/src/hooks"),
-        utils: getFixturesDir("frameworks/vite-monorepo-imports/packages/ui/src/lib/utils.ts"),
+        tailwindCss: getFixturesDir(
+          "frameworks/vite-monorepo-imports/packages/ui/src/styles/globals.css"
+        ),
+        components: getFixturesDir(
+          "frameworks/vite-monorepo-imports/apps/web/src/components"
+        ),
+        ui: getFixturesDir(
+          "frameworks/vite-monorepo-imports/packages/ui/src/components"
+        ),
+        lib: getFixturesDir(
+          "frameworks/vite-monorepo-imports/apps/web/src/lib"
+        ),
+        hooks: getFixturesDir(
+          "frameworks/vite-monorepo-imports/apps/web/src/hooks"
+        ),
+        utils: getFixturesDir(
+          "frameworks/vite-monorepo-imports/packages/ui/src/lib/utils.ts"
+        ),
       },
       registries: {
         "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
@@ -534,7 +512,10 @@ describe("getWorkspaceConfig", () => {
     try {
       await fs.copy(fixtureRoot, tempDir)
 
-      const uiPackageJsonPath = path.resolve(tempDir, "packages/ui/package.json")
+      const uiPackageJsonPath = path.resolve(
+        tempDir,
+        "packages/ui/package.json"
+      )
       const uiPackageJson = await fs.readJson(uiPackageJsonPath)
       delete uiPackageJson.imports
       await fs.writeJson(uiPackageJsonPath, uiPackageJson, { spaces: 2 })

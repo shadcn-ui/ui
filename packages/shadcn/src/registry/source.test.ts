@@ -1,4 +1,7 @@
-import { RegistryItemNotFoundError, RegistryValidationError } from "@/src/registry/errors"
+import {
+  RegistryItemNotFoundError,
+  RegistryValidationError,
+} from "@/src/registry/errors"
 import { describe, expect, it } from "vitest"
 
 import {
@@ -77,10 +80,7 @@ describe("loadRegistryCatalogFromSource: probe / happy paths", () => {
 
     const catalog = await loadRegistryCatalogFromSource(reader)
 
-    expect(catalog.items.map((item) => item.name)).toEqual([
-      "alert",
-      "button",
-    ])
+    expect(catalog.items.map((item) => item.name)).toEqual(["alert", "button"])
   })
 
   it("flattens items from a single include", async () => {

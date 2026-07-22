@@ -846,8 +846,8 @@ export default config
           theme: {
             extend: {
               fontFamily: {
-                mono: ['Foo']
-              }
+                mono: ["Foo"],
+              },
             },
           },
         },
@@ -890,14 +890,14 @@ export default config
             extend: {
               fontSize: {
                 xl: [
-                  'clamp(1.5rem, 1.04vi + 1.17rem, 2rem)',
+                  "clamp(1.5rem, 1.04vi + 1.17rem, 2rem)",
                   {
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.02em',
-                    fontWeight: '600',
+                    lineHeight: "1.2",
+                    letterSpacing: "-0.02em",
+                    fontWeight: "600",
                   },
                 ],
-              }
+              },
             },
           },
         },
@@ -1034,10 +1034,7 @@ describe("nestSpreadElements", () => {
   }
 
   it("should spread elements", () => {
-    testTransformation(
-      `[...bar]`,
-      `["...bar"]`
-    )
+    testTransformation(`[...bar]`, `["...bar"]`)
   })
 
   it("should handle mixed element types", () => {
@@ -1055,17 +1052,11 @@ describe("nestSpreadElements", () => {
   })
 
   it("should handle nested arrays with spreads", () => {
-    testTransformation(
-      `[...foo, [...bar]]`,
-      `["...foo", ["...bar"]]`
-    )
+    testTransformation(`[...foo, [...bar]]`, `["...foo", ["...bar"]]`)
   })
 
   it("should handle nested arrays within objects", () => {
-    testTransformation(
-      `[{ foo: [...foo] }]`,
-      `[{ foo: ["...foo"] }]`
-    )
+    testTransformation(`[{ foo: [...foo] }]`, `[{ foo: ["...foo"] }]`)
   })
 
   it("should handle deeply nested arrays within spread objects", () => {
@@ -1076,24 +1067,18 @@ describe("nestSpreadElements", () => {
   })
 
   it("should handle optional paths in spread", () => {
-    testTransformation(
-      `[{ foo: [...foo?.bar] }]`,
-      `[{ foo: ["...foo?.bar"] }]`
-    )
+    testTransformation(`[{ foo: [...foo?.bar] }]`, `[{ foo: ["...foo?.bar"] }]`)
   })
 
-  it('should handle computed property paths within spread', () => {
+  it("should handle computed property paths within spread", () => {
     testTransformation(
       `[{ foo: [...foo["bar"]] }]`,
       `[{ foo: ["...foo["bar"]"] }]`
     )
   })
 
-  it('should handle indexed paths in spread', () => {
-    testTransformation(
-      `[{ foo: [...foo[0]] }]`,
-      `[{ foo: ["...foo[0]"] }]`
-    )
+  it("should handle indexed paths in spread", () => {
+    testTransformation(`[{ foo: [...foo[0]] }]`, `[{ foo: ["...foo[0]"] }]`)
   })
 })
 
@@ -1195,74 +1180,58 @@ describe("unnestSpreadElements", () => {
   }
 
   it("should spread elements", () => {
-    testTransformation(
-      `["...bar"]`,
-      `[...bar]`,
-    )
+    testTransformation(`["...bar"]`, `[...bar]`)
   })
 
   it("should handle mixed element types", () => {
     testTransformation(
       `['foo', 2, true, "...bar", "baz"]`,
-      `['foo', 2, true, ...bar, "baz"]`,
+      `['foo', 2, true, ...bar, "baz"]`
     )
   })
 
   it("should handle arrays with only spread elements", () => {
     testTransformation(
       `["...foo", "...foo.bar", "...baz"]`,
-      `[...foo, ...foo.bar, ...baz]`,
+      `[...foo, ...foo.bar, ...baz]`
     )
   })
 
   it("should handle nested arrays with spreads", () => {
-    testTransformation(
-      `["...foo", ["...bar"]]`,
-      `[...foo, [...bar]]`,
-    )
+    testTransformation(`["...foo", ["...bar"]]`, `[...foo, [...bar]]`)
   })
 
   it("should handle nested arrays within objects", () => {
-    testTransformation(
-      `[{ foo: ["...foo"] }]`,
-      `[{ foo: [...foo] }]`,
-    )
+    testTransformation(`[{ foo: ["...foo"] }]`, `[{ foo: [...foo] }]`)
   })
 
   it("should handle deeply nested arrays within spread objects", () => {
     testTransformation(
       `[{ foo: ["...foo", { bar: ['bar', "...bar" ]}] }]`,
-      `[{ foo: [...foo, { bar: ['bar', ...bar ]}] }]`,
+      `[{ foo: [...foo, { bar: ['bar', ...bar ]}] }]`
     )
   })
 
   it("should handle optional paths in spread", () => {
-    testTransformation(
-      `[{ foo: ["...foo?.bar"] }]`,
-      `[{ foo: [...foo?.bar] }]`,
-
-    )
+    testTransformation(`[{ foo: ["...foo?.bar"] }]`, `[{ foo: [...foo?.bar] }]`)
   })
 
   it("should handle computed property paths (') within spread", () => {
     testTransformation(
       `[{ foo: ["...foo['bar']"] }]`,
-      `[{ foo: [...foo['bar']] }]`,
+      `[{ foo: [...foo['bar']] }]`
     )
   })
 
   it('should handle computed property paths (") within spread', () => {
     testTransformation(
       `[{ foo: ['...foo["bar"]'] }]`,
-      `[{ foo: [...foo["bar"]] }]`,
+      `[{ foo: [...foo["bar"]] }]`
     )
   })
 
-  it('should handle indexed paths in spread', () => {
-    testTransformation(
-      `[{ foo: ["...foo[0]"] }]`,
-      `[{ foo: [...foo[0]] }]`,
-    )
+  it("should handle indexed paths in spread", () => {
+    testTransformation(`[{ foo: ["...foo[0]"] }]`, `[{ foo: [...foo[0]] }]`)
   })
 })
 
