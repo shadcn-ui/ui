@@ -1,24 +1,28 @@
 import os from "os"
 import path from "path"
+import { resolveRegistryTree } from "@/src/registry/resolver"
+import { addComponents } from "@/src/utils/add-components"
+import type { Config } from "@/src/utils/get-config"
+import { findPackageRoot, getWorkspaceConfig } from "@/src/utils/get-config"
+import { updateFiles } from "@/src/utils/updaters/update-files"
+import { updateFonts } from "@/src/utils/updaters/update-fonts"
 import fs from "fs-extra"
-import { afterEach, describe, expect, test, vi } from "vitest"
+import { afterEach, describe, expect, it, vi } from "vitest"
 
-import { resolveRegistryTree } from "../../src/registry/resolver"
-import { addComponents } from "../../src/utils/add-components"
-import type { Config } from "../../src/utils/get-config"
-import { findPackageRoot, getWorkspaceConfig } from "../../src/utils/get-config"
-import { updateFiles } from "../../src/utils/updaters/update-files"
-import { updateFonts } from "../../src/utils/updaters/update-fonts"
-
-// Mock all external dependencies.
-vi.mock("../../src/registry/resolver", () => ({
+// Mock all external dependencies. Unlike the sibling add-components.test.ts,
+// updateFiles and get-config keep their REAL implementations by default —
+// this file specifically exercises addComponents' workspace-routing logic
+// against actual updateFiles/getWorkspaceConfig behavior, which conflicts
+// with the full vi.fn() mocks in add-components.test.ts. vi.mock is
+// per-file, so living in a sibling file lets both coexist.
+vi.mock("@/src/registry/resolver", () => ({
   resolveRegistryTree: vi.fn(),
 }))
 
-vi.mock("../../src/utils/get-config", async () => {
+vi.mock("@/src/utils/get-config", async () => {
   const actual = (await vi.importActual(
-    "../../src/utils/get-config"
-  )) as typeof import("../../src/utils/get-config")
+    "@/src/utils/get-config"
+  )) as typeof import("@/src/utils/get-config")
   return {
     ...actual,
     getWorkspaceConfig: vi.fn(),
@@ -26,10 +30,10 @@ vi.mock("../../src/utils/get-config", async () => {
   }
 })
 
-vi.mock("../../src/utils/updaters/update-files", async () => {
+vi.mock("@/src/utils/updaters/update-files", async () => {
   const actual = (await vi.importActual(
-    "../../src/utils/updaters/update-files"
-  )) as typeof import("../../src/utils/updaters/update-files")
+    "@/src/utils/updaters/update-files"
+  )) as typeof import("@/src/utils/updaters/update-files")
 
   return {
     ...actual,
@@ -41,31 +45,31 @@ vi.mock("../../src/utils/updaters/update-files", async () => {
   }
 })
 
-vi.mock("../../src/utils/updaters/update-dependencies", () => ({
+vi.mock("@/src/utils/updaters/update-dependencies", () => ({
   updateDependencies: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("../../src/utils/updaters/update-tailwind-config", () => ({
+vi.mock("@/src/utils/updaters/update-tailwind-config", () => ({
   updateTailwindConfig: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("../../src/utils/updaters/update-env-vars", () => ({
+vi.mock("@/src/utils/updaters/update-env-vars", () => ({
   updateEnvVars: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("../../src/utils/updaters/update-fonts", () => ({
+vi.mock("@/src/utils/updaters/update-fonts", () => ({
   updateFonts: vi.fn().mockResolvedValue(undefined),
   massageTreeForFonts: vi.fn().mockImplementation((tree) => tree),
 }))
 
-vi.mock("../../src/utils/updaters/update-css", () => ({
+vi.mock("@/src/utils/updaters/update-css", () => ({
   updateCss: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("../../src/utils/get-project-info", async () => {
+vi.mock("@/src/utils/get-project-info", async () => {
   const actual = (await vi.importActual(
-    "../../src/utils/get-project-info"
-  )) as typeof import("../../src/utils/get-project-info")
+    "@/src/utils/get-project-info"
+  )) as typeof import("@/src/utils/get-project-info")
 
   return {
     ...actual,
@@ -73,7 +77,7 @@ vi.mock("../../src/utils/get-project-info", async () => {
   }
 })
 
-vi.mock("../../src/utils/spinner", () => ({
+vi.mock("@/src/utils/spinner", () => ({
   spinner: vi.fn().mockReturnValue({
     start: vi.fn().mockReturnThis(),
     succeed: vi.fn().mockReturnThis(),
@@ -82,7 +86,7 @@ vi.mock("../../src/utils/spinner", () => ({
   }),
 }))
 
-vi.mock("../../src/utils/logger", () => ({
+vi.mock("@/src/utils/logger", () => ({
   logger: {
     info: vi.fn(),
     log: vi.fn(),
@@ -206,7 +210,7 @@ async function writePackageImportProject(cwd: string) {
 }
 
 describe("addComponents workspace routing", () => {
-  test("should route registry:hook files to workspaceConfig.hooks", async () => {
+  it("should route registry:hook files to workspaceConfig.hooks", async () => {
     const appConfig = createMockConfig()
     const uiConfig = createMockConfig({
       resolvedPaths: {
@@ -242,7 +246,6 @@ describe("addComponents workspace routing", () => {
     })
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "sidebar",
       files: [
         {
           path: "registry/ui/sidebar.tsx",
@@ -293,7 +296,7 @@ describe("addComponents workspace routing", () => {
     )
   })
 
-  test("should route registry:lib files to workspaceConfig.lib", async () => {
+  it("should route registry:lib files to workspaceConfig.lib", async () => {
     const appConfig = createMockConfig()
     const uiConfig = createMockConfig({
       resolvedPaths: {
@@ -326,7 +329,6 @@ describe("addComponents workspace routing", () => {
     })
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "button",
       files: [
         {
           path: "registry/ui/button.tsx",
@@ -366,7 +368,7 @@ describe("addComponents workspace routing", () => {
     )
   })
 
-  test("should fall back to app config for unmapped types like registry:component", async () => {
+  it("should fall back to app config for unmapped types like registry:component", async () => {
     const appConfig = createMockConfig()
     const uiConfig = createMockConfig({
       resolvedPaths: {
@@ -386,7 +388,6 @@ describe("addComponents workspace routing", () => {
     })
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "login-01",
       files: [
         {
           path: "registry/components/login-form.tsx",
@@ -413,7 +414,7 @@ describe("addComponents workspace routing", () => {
     )
   })
 
-  test("should fall back to app config when workspace key is missing", async () => {
+  it("should fall back to app config when workspace key is missing", async () => {
     const appConfig = createMockConfig()
     const uiConfig = createMockConfig({
       resolvedPaths: {
@@ -434,7 +435,6 @@ describe("addComponents workspace routing", () => {
     })
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "sidebar",
       files: [
         {
           path: "registry/ui/sidebar.tsx",
@@ -474,7 +474,7 @@ describe("addComponents workspace routing", () => {
     )
   })
 
-  test("should route all three mapped types to their workspace configs", async () => {
+  it("should route all three mapped types to their workspace configs", async () => {
     const appConfig = createMockConfig()
     const uiConfig = createMockConfig({
       resolvedPaths: {
@@ -496,7 +496,6 @@ describe("addComponents workspace routing", () => {
     })
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "sidebar",
       files: [
         {
           path: "registry/ui/sidebar.tsx",
@@ -545,7 +544,7 @@ describe("addComponents workspace routing", () => {
     )
   })
 
-  test("should fall back to app config for registry:file", async () => {
+  it("should fall back to app config for registry:file", async () => {
     const appConfig = createMockConfig()
     const uiConfig = createMockConfig({
       resolvedPaths: {
@@ -565,7 +564,6 @@ describe("addComponents workspace routing", () => {
     })
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "some-component",
       files: [
         {
           path: "registry/ui/button.tsx",
@@ -606,7 +604,7 @@ describe("addComponents workspace routing", () => {
     )
   })
 
-  test("should default files with no type to registry:ui", async () => {
+  it("should default files with no type to registry:ui", async () => {
     const appConfig = createMockConfig()
     const uiConfig = createMockConfig({
       resolvedPaths: {
@@ -626,7 +624,6 @@ describe("addComponents workspace routing", () => {
     })
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "button",
       files: [
         {
           path: "registry/ui/button.tsx",
@@ -636,7 +633,7 @@ describe("addComponents workspace routing", () => {
       ],
       dependencies: [],
       devDependencies: [],
-    })
+    } as any)
 
     vi.mocked(findPackageRoot).mockResolvedValue("/packages/ui")
 
@@ -653,7 +650,7 @@ describe("addComponents workspace routing", () => {
     )
   })
 
-  test("should group multiple files of the same type into one updateFiles call", async () => {
+  it("should group multiple files of the same type into one updateFiles call", async () => {
     const appConfig = createMockConfig()
     const uiConfig = createMockConfig({
       resolvedPaths: {
@@ -673,7 +670,6 @@ describe("addComponents workspace routing", () => {
     })
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "sidebar",
       files: [
         {
           path: "registry/ui/sidebar.tsx",
@@ -712,7 +708,7 @@ describe("addComponents workspace routing", () => {
     )
   })
 
-  test("should route hooks to separate package when aliases differ", async () => {
+  it("should route hooks to separate package when aliases differ", async () => {
     const appConfig = createMockConfig({
       aliases: {
         components: "~foo/ui/components",
@@ -756,7 +752,6 @@ describe("addComponents workspace routing", () => {
     })
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "sidebar",
       files: [
         {
           path: "registry/ui/sidebar.tsx",
@@ -803,10 +798,10 @@ describe("addComponents workspace routing", () => {
     )
   })
 
-  test("should rewrite cross-type imports when files target the same workspace package", async () => {
+  it("should rewrite cross-type imports when files target the same workspace package", async () => {
     const actualUpdateFiles = (await vi.importActual(
-      "../../src/utils/updaters/update-files"
-    )) as typeof import("../../src/utils/updaters/update-files")
+      "@/src/utils/updaters/update-files"
+    )) as typeof import("@/src/utils/updaters/update-files")
     vi.mocked(updateFiles).mockImplementation(actualUpdateFiles.updateFiles)
 
     const root = await fs.mkdtemp(path.join(os.tmpdir(), "shadcn-cross-type-"))
@@ -828,7 +823,6 @@ describe("addComponents workspace routing", () => {
       })
 
       vi.mocked(resolveRegistryTree).mockResolvedValue({
-        name: "example-card",
         files: [
           {
             path: "registry/components/example-card.tsx",
@@ -871,7 +865,7 @@ export function ExampleCard() {
     }
   })
 
-  test("should call updateFonts with app config, not workspace config", async () => {
+  it("should call updateFonts with app config, not workspace config", async () => {
     const appConfig = createMockConfig()
     const uiConfig = createMockConfig({
       resolvedPaths: {
@@ -891,7 +885,6 @@ export function ExampleCard() {
     })
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "button",
       files: [
         {
           path: "registry/ui/button.tsx",

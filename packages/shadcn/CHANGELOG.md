@@ -1,5 +1,11 @@
 # shadcn
 
+## 4.14.0
+
+### Minor Changes
+
+- [#11241](https://github.com/shadcn-ui/ui/pull/11241) [`3c26ee2dbd3a772c1cddc2c76249cc1cb0a250d5`](https://github.com/shadcn-ui/ui/commit/3c26ee2dbd3a772c1cddc2c76249cc1cb0a250d5) Thanks [@shadcn](https://github.com/shadcn)! - add support for icon migration
+
 ## 4.13.1
 
 ### Patch Changes
