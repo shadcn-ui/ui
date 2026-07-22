@@ -4,6 +4,7 @@ import { mdxComponents } from "@/mdx-components"
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react"
 import { findNeighbour } from "fumadocs-core/page-tree"
 
+import { replaceComponentsList } from "@/lib/llm"
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
 import { DocsBaseSwitcher } from "@/components/docs-base-switcher"
@@ -83,7 +84,7 @@ export default async function Page(props: {
   const neighbours = isChangelog
     ? { previous: null, next: null }
     : findNeighbour(source.pageTree, page.url)
-  const raw = await page.data.getText("raw")
+  const raw = replaceComponentsList(await page.data.getText("raw"))
 
   return (
     <div
@@ -92,7 +93,7 @@ export default async function Page(props: {
     >
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="h-(--top-spacing) shrink-0" />
-        <div className="mx-auto flex w-full max-w-[40rem] min-w-0 flex-1 flex-col gap-6 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
+        <div className="mx-auto flex w-full max-w-160 min-w-0 flex-1 flex-col gap-6 px-4 py-6 text-foreground md:px-0 lg:py-8 dark:text-foreground">
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between md:items-start">
@@ -140,7 +141,7 @@ export default async function Page(props: {
               )}
             </div>
           </div>
-          <div className="w-full flex-1 pb-16 *:data-[slot=alert]:first:mt-0 sm:pb-0">
+          <div className="typeset w-full flex-1 pb-16 *:data-[slot=alert]:first:mt-0 sm:pb-0">
             {params.slug &&
               params.slug[0] === "components" &&
               params.slug[1] &&
@@ -184,7 +185,7 @@ export default async function Page(props: {
       <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[90svh] w-(--sidebar-width) flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
         <div className="h-(--top-spacing) shrink-0"></div>
         {doc.toc?.length ? (
-          <div className="no-scrollbar flex flex-col gap-8 overflow-y-auto px-8">
+          <div className="flex scroll-fade scrollbar-none flex-col gap-8 overflow-y-auto px-8">
             <DocsTableOfContents toc={doc.toc} />
           </div>
         ) : null}

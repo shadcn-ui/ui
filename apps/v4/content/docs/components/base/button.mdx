@@ -66,6 +66,8 @@ Tailwind v4 [switched](https://tailwindcss.com/docs/upgrade-guide#buttons-use-th
 
 If you want to keep the `cursor: pointer` behavior, add the following code to your CSS file:
 
+You can also enable this during project setup with `npx shadcn@latest init --pointer`.
+
 ```css showLineNumbers title="globals.css"
 @layer base {
   button:not(:disabled),
@@ -75,67 +77,65 @@ If you want to keep the `cursor: pointer` behavior, add the following code to yo
 }
 ```
 
-## Examples
-
-### Size
+## Size
 
 Use the `size` prop to change the size of the button.
 
 <ComponentPreview styleName="base-nova" name="button-size" />
 
-### Default
+## Default
 
 <ComponentPreview styleName="base-nova" name="button-default" />
 
-### Outline
+## Outline
 
 <ComponentPreview styleName="base-nova" name="button-outline" />
 
-### Secondary
+## Secondary
 
 <ComponentPreview styleName="base-nova" name="button-secondary" />
 
-### Ghost
+## Ghost
 
 <ComponentPreview styleName="base-nova" name="button-ghost" />
 
-### Destructive
+## Destructive
 
 <ComponentPreview styleName="base-nova" name="button-destructive" />
 
-### Link
+## Link
 
 <ComponentPreview styleName="base-nova" name="button-link" />
 
-### Icon
+## Icon
 
 <ComponentPreview styleName="base-nova" name="button-icon" />
 
-### With Icon
+## With Icon
 
 Remember to add the `data-icon="inline-start"` or `data-icon="inline-end"` attribute to the icon for the correct spacing.
 
 <ComponentPreview styleName="base-nova" name="button-with-icon" />
 
-### Rounded
+## Rounded
 
 Use the `rounded-full` class to make the button rounded.
 
 <ComponentPreview styleName="base-nova" name="button-rounded" />
 
-### Spinner
+## Spinner
 
 Render a `<Spinner />` component inside the button to show a loading state. Remember to add the `data-icon="inline-start"` or `data-icon="inline-end"` attribute to the spinner for the correct spacing.
 
 <ComponentPreview styleName="base-nova" name="button-spinner" />
 
-### Button Group
+## Button Group
 
 To create a button group, use the `ButtonGroup` component. See the [Button Group](/docs/components/base/button-group) documentation for more details.
 
 <ComponentPreview styleName="base-nova" name="button-group-demo" />
 
-### As Link
+## As Link
 
 You can use the `buttonVariants` helper to make a link look like a button.
 

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "example-target-alias-type-mismatch",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/example-target-alias-type-mismatch/ui/target-from-ui-type.ts",
+      "type": "registry:ui",
+      "content": "export function targetFromUiType() {\n  return \"target-from-ui-type\"\n}\n",
+      "target": "@lib/target-from-ui-type.ts"
+    }
+  ]
+}

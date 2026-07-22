@@ -3,15 +3,20 @@ import { NextResponse, type NextRequest } from "next/server"
 
 import { processMdxForLLMs } from "@/lib/llm"
 import { source } from "@/lib/source"
-import { getActiveStyle, type Style } from "@/registry/_legacy-styles"
+import { type Style } from "@/registry/_legacy-styles"
 
 export const revalidate = false
+export const dynamic = "force-static"
+export const dynamicParams = true
 
 function getStyleFromSlug(slug: string[] | undefined, fallbackStyle: string) {
-  // Detect base from URL: /docs/components/base/... or /docs/components/radix/...
+  // Detect base from URL: /docs/components/base, /radix, or /aria.
   if (slug && slug[0] === "components" && slug[1]) {
     if (slug[1] === "base") {
       return "base-nova"
+    }
+    if (slug[1] === "aria") {
+      return "aria-nova"
     }
     if (slug[1] === "radix") {
       return "new-york-v4"
@@ -24,7 +29,7 @@ export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ slug?: string[] }> }
 ) {
-  const [{ slug }, activeStyle] = await Promise.all([params, getActiveStyle()])
+  const { slug } = await params
 
   const page = source.getPage(slug)
 
@@ -32,7 +37,8 @@ export async function GET(
     notFound()
   }
 
-  const effectiveStyle = getStyleFromSlug(slug, activeStyle.name)
+  // Default to the base style. Legacy content pins new-york-v4 per tag.
+  const effectiveStyle = getStyleFromSlug(slug, "base-nova")
 
   const processedContent = processMdxForLLMs(
     await page.data.getText("raw"),
@@ -47,5 +53,5 @@ export async function GET(
 }
 
 export function generateStaticParams() {
-  return source.generateParams()
+  return []
 }

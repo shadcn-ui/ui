@@ -1,0 +1,13 @@
+{
+  "name": "vite-partial-imports",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "imports": {
+    "#components/*": "./src/components/*",
+    "#lib/*": "./src/lib/*"
+  },
+  "dependencies": {
+    "tailwindcss": "^4.2.1"
+  }
+}
