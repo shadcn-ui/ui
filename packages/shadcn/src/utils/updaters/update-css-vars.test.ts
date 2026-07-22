@@ -1,13 +1,14 @@
-import { describe, expect, test } from "vitest"
+import type { Config } from "@/src/utils/get-config"
+import { describe, expect, it } from "vitest"
 
 import {
   isColorValue,
   isLocalHSLValue,
   transformCssVars,
-} from "../../../src/utils/updaters/update-css-vars"
+} from "./update-css-vars"
 
 describe("transformCssVars", () => {
-  test("should add light and dark css vars if not present", async () => {
+  it("should add light and dark css vars if not present", async () => {
     expect(
       await transformCssVars(
         `@tailwind base;
@@ -28,7 +29,7 @@ describe("transformCssVars", () => {
           tailwind: {
             cssVariables: true,
           },
-        }
+        } as Config
       )
     ).toMatchInlineSnapshot(`
       "@tailwind base;
@@ -49,7 +50,7 @@ describe("transformCssVars", () => {
     `)
   })
 
-  test("should update light and dark css vars if present", async () => {
+  it("should update light and dark css vars if present", async () => {
     expect(
       await transformCssVars(
         `@tailwind base;
@@ -79,7 +80,7 @@ describe("transformCssVars", () => {
           tailwind: {
             cssVariables: true,
           },
-        }
+        } as Config
       )
     ).toMatchInlineSnapshot(`
       "@tailwind base;
@@ -101,7 +102,7 @@ describe("transformCssVars", () => {
     `)
   })
 
-  test("should not add the base layer if it is already present", async () => {
+  it("should not add the base layer if it is already present", async () => {
     expect(
       await transformCssVars(
         `@tailwind base;
@@ -132,7 +133,7 @@ describe("transformCssVars", () => {
           tailwind: {
             cssVariables: true,
           },
-        }
+        } as Config
       )
     ).toMatchInlineSnapshot(`
       "@tailwind base;
@@ -163,7 +164,7 @@ describe("transformCssVars", () => {
 })
 
 describe("transformCssVarsV4", () => {
-  test("should transform css vars for v4", async () => {
+  it("should transform css vars for v4", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
@@ -178,7 +179,7 @@ describe("transformCssVarsV4", () => {
             foreground: "0 0% 98%",
           },
         },
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         { tailwindVersion: "v4" }
       )
     ).toMatchInlineSnapshot(`
@@ -204,7 +205,7 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should update light and dark css vars if present", async () => {
+  it("should update light and dark css vars if present", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
@@ -227,7 +228,7 @@ describe("transformCssVarsV4", () => {
             primary: "oklch(0.72 0.11 178)",
           },
         },
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         { tailwindVersion: "v4" }
       )
     ).toMatchInlineSnapshot(`
@@ -255,7 +256,7 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should update theme vars if present", async () => {
+  it("should update theme vars if present", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
@@ -288,7 +289,7 @@ describe("transformCssVarsV4", () => {
             primary: "222.2 84% 4.9%",
           },
         },
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         { tailwindVersion: "v4" }
       )
     ).toMatchInlineSnapshot(`
@@ -320,7 +321,7 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should NOT override theme vars if overwriteCssVars is false", async () => {
+  it("should NOT override theme vars if overwriteCssVars is false", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
@@ -352,7 +353,7 @@ describe("transformCssVarsV4", () => {
             primary: "222.2 84% 4.9%",
           },
         },
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         { tailwindVersion: "v4" }
       )
     ).toMatchInlineSnapshot(`
@@ -382,7 +383,7 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should override theme vars if overwriteCssVars is true", async () => {
+  it("should override theme vars if overwriteCssVars is true", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
@@ -414,7 +415,7 @@ describe("transformCssVarsV4", () => {
             primary: "222.2 84% 4.9%",
           },
         },
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         { tailwindVersion: "v4", overwriteCssVars: true }
       )
     ).toMatchInlineSnapshot(`
@@ -444,7 +445,7 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should only add hsl and color vars if color", async () => {
+  it("should only add hsl and color vars if color", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
@@ -472,7 +473,7 @@ describe("transformCssVarsV4", () => {
             primary: "222.2 84% 4.9%",
           },
         },
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         { tailwindVersion: "v4" }
       )
     ).toMatchInlineSnapshot(`
@@ -502,7 +503,7 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should not add base layer if it is already present", async () => {
+  it("should not add base layer if it is already present", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
@@ -538,7 +539,7 @@ describe("transformCssVarsV4", () => {
             primary: "222.2 84% 4.9%",
           },
         },
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         { tailwindVersion: "v4" }
       )
     ).toMatchInlineSnapshot(`
@@ -575,7 +576,7 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("it should add the dark @custom-variant if not present", async () => {
+  it("it should add the dark @custom-variant if not present", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
@@ -590,7 +591,7 @@ describe("transformCssVarsV4", () => {
             foreground: "0 0% 98%",
           },
         },
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         { tailwindVersion: "v4" }
       )
     ).toMatchInlineSnapshot(`
@@ -616,7 +617,7 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("it should only add hsl() if not already present", async () => {
+  it("it should only add hsl() if not already present", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
@@ -631,7 +632,7 @@ describe("transformCssVarsV4", () => {
             foreground: "0 0% 98%",
           },
         },
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         { tailwindVersion: "v4" }
       )
     ).toMatchInlineSnapshot(`
@@ -657,7 +658,7 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("it should only add hsl() for rgb and hex values", async () => {
+  it("it should only add hsl() for rgb and hex values", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
@@ -672,7 +673,7 @@ describe("transformCssVarsV4", () => {
             foreground: "#000fff",
           },
         },
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         { tailwindVersion: "v4" }
       )
     ).toMatchInlineSnapshot(`
@@ -698,7 +699,7 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should add --radius-* if radius present", async () => {
+  it("should add --radius-* if radius present", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
@@ -711,7 +712,7 @@ describe("transformCssVarsV4", () => {
             radius: "0.5rem",
           },
         },
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         { tailwindVersion: "v4" }
       )
     ).toMatchInlineSnapshot(`
@@ -740,7 +741,7 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should NOT add --radius-* if already present", async () => {
+  it("should NOT add --radius-* if already present", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
@@ -760,7 +761,7 @@ describe("transformCssVarsV4", () => {
             radius: "0.125rem",
           },
         },
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         { tailwindVersion: "v4" }
       )
     ).toMatchInlineSnapshot(`
@@ -782,7 +783,7 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should use --sidebar for --sidebar-background", async () => {
+  it("should use --sidebar for --sidebar-background", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
@@ -795,7 +796,7 @@ describe("transformCssVarsV4", () => {
             "sidebar-background": "hsl(0 0% 10%)",
           },
         },
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         { tailwindVersion: "v4" }
       )
     ).toMatchInlineSnapshot(`
@@ -818,13 +819,13 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should add plugin if not present", async () => {
+  it("should add plugin if not present", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
         `,
         {},
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         {
           tailwindVersion: "v4",
           tailwindConfig: { plugins: ['require("tailwindcss-animate")'] },
@@ -840,14 +841,14 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should NOT add plugin if already present", async () => {
+  it("should NOT add plugin if already present", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
         @plugin "tailwindcss-animate";
         `,
         {},
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         {
           tailwindVersion: "v4",
           tailwindConfig: {
@@ -869,13 +870,13 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should preserve quotes", async () => {
+  it("should preserve quotes", async () => {
     expect(
       await transformCssVars(
         `@import 'tailwindcss';
         `,
         {},
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         {
           tailwindVersion: "v4",
           tailwindConfig: {
@@ -898,13 +899,13 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should add @keyframes if not present", async () => {
+  it("should add @keyframes if not present", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
         `,
         {},
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         {
           tailwindVersion: "v4",
           tailwindConfig: {
@@ -954,7 +955,7 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should NOT add @keyframes if already present", async () => {
+  it("should NOT add @keyframes if already present", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
@@ -971,7 +972,7 @@ describe("transformCssVarsV4", () => {
         }
         `,
         {},
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         {
           tailwindVersion: "v4",
           tailwindConfig: {
@@ -1020,13 +1021,13 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should add --animate if not present", async () => {
+  it("should add --animate if not present", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
         `,
         {},
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         {
           tailwindVersion: "v4",
           tailwindConfig: {
@@ -1082,7 +1083,7 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should NOT add --animate if already present", async () => {
+  it("should NOT add --animate if already present", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
@@ -1091,7 +1092,7 @@ describe("transformCssVarsV4", () => {
         }
         `,
         {},
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         {
           tailwindVersion: "v4",
           tailwindConfig: {
@@ -1146,7 +1147,7 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should handle var(--color-*) references as colors", async () => {
+  it("should handle var(--color-*) references as colors", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
@@ -1163,7 +1164,7 @@ describe("transformCssVarsV4", () => {
             foreground: "var(--color-foreground-dark)",
           },
         },
-        { tailwind: { cssVariables: true } },
+        { tailwind: { cssVariables: true } } as Config,
         { tailwindVersion: "v4" }
       )
     ).toMatchInlineSnapshot(`
@@ -1195,7 +1196,7 @@ describe("transformCssVarsV4", () => {
 })
 
 describe("isLocalHSLValue", () => {
-  test.each([
+  it.each([
     ["210 40% 98%", true],
     ["rgb(210 40% 98%)", false],
     ["oklch(210 40% 98%)", false],
@@ -1207,7 +1208,7 @@ describe("isLocalHSLValue", () => {
 })
 
 describe("isColorValue", () => {
-  test.each([
+  it.each([
     ["hsl(0 0% 100%)", true],
     ["rgb(255 255 255)", true],
     ["#ffffff", true],

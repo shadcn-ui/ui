@@ -1,25 +1,33 @@
 import { promises as fs } from "fs"
+import { tmpdir } from "os"
 import path from "path"
-import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
+import { getShadcnRegistryIndex } from "@/src/registry/api"
+import { getFixturesDir } from "@/src/test-helpers"
+import { FRAMEWORKS } from "@/src/utils/frameworks"
+import { getConfig, resolveConfigPaths } from "@/src/utils/get-config"
+import fsExtra from "fs-extra"
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
-import { FRAMEWORKS } from "../../src/utils/frameworks"
 import {
   getFrameworkVersion,
   getProjectComponents,
   getProjectInfo,
-} from "../../src/utils/get-project-info"
+  getTailwindCssFile,
+  getTsConfigAliasPrefix,
+  isTypeScriptProject,
+} from "./get-project-info"
 
-vi.mock("../../src/utils/get-config", () => ({
+vi.mock("@/src/utils/get-config", () => ({
   getConfig: vi.fn(),
   resolveConfigPaths: vi.fn(),
 }))
 
-vi.mock("../../src/registry/api", () => ({
+vi.mock("@/src/registry/api", () => ({
   getShadcnRegistryIndex: vi.fn(),
 }))
 
 describe("get project info", async () => {
-  test.each([
+  it.each([
     {
       name: "next-app",
       type: {
@@ -204,16 +212,14 @@ describe("get project info", async () => {
     },
   ])(`getProjectType($name) -> $type`, async ({ name, type }) => {
     expect(
-      await getProjectInfo(
-        path.resolve(__dirname, `../fixtures/frameworks/${name}`)
-      )
+      await getProjectInfo(getFixturesDir("frameworks", name))
     ).toStrictEqual(type)
   })
 })
 
 describe("getFrameworkVersion", () => {
   describe("Next.js version detection", () => {
-    test.each([
+    it.each([
       {
         name: "exact semver",
         input: "16.0.0",
@@ -272,7 +278,7 @@ describe("getFrameworkVersion", () => {
       }
     )
 
-    test("should handle version in devDependencies", async () => {
+    it("should handle version in devDependencies", async () => {
       const packageJson = {
         devDependencies: {
           next: "16.0.0",
@@ -285,7 +291,7 @@ describe("getFrameworkVersion", () => {
       expect(version).toBe("16.0.0")
     })
 
-    test("should return null when next is not in dependencies", async () => {
+    it("should return null when next is not in dependencies", async () => {
       const packageJson = {
         dependencies: {
           react: "^18.0.0",
@@ -298,14 +304,14 @@ describe("getFrameworkVersion", () => {
       expect(version).toBe(null)
     })
 
-    test("should return null when packageJson is null", async () => {
+    it("should return null when packageJson is null", async () => {
       const version = await getFrameworkVersion(FRAMEWORKS["next-app"], null)
       expect(version).toBe(null)
     })
   })
 
   describe("Other frameworks", () => {
-    test.each([
+    it.each([
       {
         name: "Vite",
         framework: "vite",
@@ -342,16 +348,11 @@ describe("getFrameworkVersion", () => {
   })
 })
 
-import { getShadcnRegistryIndex } from "../../src/registry/api"
-import { getConfig, resolveConfigPaths } from "../../src/utils/get-config"
-
 describe("getProjectComponents", () => {
   let tmpDir: string
 
   beforeEach(async () => {
-    tmpDir = await fs.mkdtemp(
-      path.join(process.env.TMPDIR || "/tmp", "test-")
-    )
+    tmpDir = await fs.mkdtemp(path.join(process.env.TMPDIR || "/tmp", "test-"))
   })
 
   afterEach(async () => {
@@ -359,7 +360,7 @@ describe("getProjectComponents", () => {
     await fs.rm(tmpDir, { recursive: true, force: true })
   })
 
-  test("should return empty array when no config exists", async () => {
+  it("should return empty array when no config exists", async () => {
     vi.mocked(getConfig).mockResolvedValue(null)
 
     const result = await getProjectComponents(tmpDir)
@@ -367,7 +368,7 @@ describe("getProjectComponents", () => {
     expect(result).toEqual([])
   })
 
-  test("should return empty array when ui directory does not exist", async () => {
+  it("should return empty array when ui directory does not exist", async () => {
     vi.mocked(getConfig).mockResolvedValue({} as any)
     vi.mocked(resolveConfigPaths).mockResolvedValue({
       resolvedPaths: { ui: path.join(tmpDir, "ui") },
@@ -378,7 +379,7 @@ describe("getProjectComponents", () => {
     expect(result).toEqual([])
   })
 
-  test("should return only components that exist in the registry", async () => {
+  it("should return only components that exist in the registry", async () => {
     const uiDir = path.join(tmpDir, "ui")
     await fs.mkdir(uiDir, { recursive: true })
     await fs.writeFile(path.join(uiDir, "button.tsx"), "")
@@ -400,7 +401,7 @@ describe("getProjectComponents", () => {
     expect(result).toEqual(["button", "card"])
   })
 
-  test("should handle jsx files", async () => {
+  it("should handle jsx files", async () => {
     const uiDir = path.join(tmpDir, "ui")
     await fs.mkdir(uiDir, { recursive: true })
     await fs.writeFile(path.join(uiDir, "button.jsx"), "")
@@ -418,7 +419,7 @@ describe("getProjectComponents", () => {
     expect(result).toEqual(["button"])
   })
 
-  test("should ignore non-tsx/jsx files", async () => {
+  it("should ignore non-tsx/jsx files", async () => {
     const uiDir = path.join(tmpDir, "ui")
     await fs.mkdir(uiDir, { recursive: true })
     await fs.writeFile(path.join(uiDir, "button.tsx"), "")
@@ -439,7 +440,7 @@ describe("getProjectComponents", () => {
     expect(result).toEqual(["button"])
   })
 
-  test("should return empty array when registry index returns undefined", async () => {
+  it("should return empty array when registry index returns undefined", async () => {
     const uiDir = path.join(tmpDir, "ui")
     await fs.mkdir(uiDir, { recursive: true })
     await fs.writeFile(path.join(uiDir, "button.tsx"), "")
@@ -455,7 +456,7 @@ describe("getProjectComponents", () => {
     expect(result).toEqual([])
   })
 
-  test("should return empty array when ui directory is empty", async () => {
+  it("should return empty array when ui directory is empty", async () => {
     const uiDir = path.join(tmpDir, "ui")
     await fs.mkdir(uiDir, { recursive: true })
 
@@ -470,5 +471,168 @@ describe("getProjectComponents", () => {
     const result = await getProjectComponents(tmpDir)
 
     expect(result).toEqual([])
+  })
+})
+
+describe("get tailwindcss file", async () => {
+  it.each([
+    {
+      name: "next-app",
+      file: "app/globals.css",
+    },
+    {
+      name: "next-app-src",
+      file: "src/app/styles.css",
+    },
+    {
+      name: "next-pages",
+      file: "styles/globals.css",
+    },
+    {
+      name: "next-pages-src",
+      file: "src/styles/globals.css",
+    },
+    {
+      name: "t3-app",
+      file: "src/styles/globals.css",
+    },
+    {
+      name: "t3-pages",
+      file: "src/styles/globals.css",
+    },
+    {
+      name: "remix",
+      file: "app/tailwind.css",
+    },
+    {
+      name: "vite",
+      file: "src/index.css",
+    },
+  ])(`getTailwindCssFile($name) -> $file`, async ({ name, file }) => {
+    expect(await getTailwindCssFile(getFixturesDir("frameworks", name))).toBe(
+      file
+    )
+  })
+
+  it("should use configCssFile when provided and file exists", async () => {
+    const cwd = getFixturesDir("frameworks", "next-monorepo")
+    expect(await getTailwindCssFile(cwd, "packages/ui/src/globals.css")).toBe(
+      "packages/ui/src/globals.css"
+    )
+  })
+
+  it("should fall back to glob when configCssFile does not exist", async () => {
+    const cwd = getFixturesDir("frameworks", "next-app")
+    expect(await getTailwindCssFile(cwd, "nonexistent/styles.css")).toBe(
+      "app/globals.css"
+    )
+  })
+
+  it("should return null when no css file found and no configCssFile", async () => {
+    const cwd = getFixturesDir("frameworks", "next-monorepo")
+    // The CSS file is nested under packages/ which the glob finds.
+    // Without configCssFile, it should still find it via glob.
+    expect(await getTailwindCssFile(cwd)).toBe("packages/ui/src/globals.css")
+  })
+})
+
+describe("get ts config alias prefix", async () => {
+  it.each([
+    {
+      name: "next-app",
+      prefix: "@",
+    },
+    {
+      name: "next-app-src",
+      prefix: "#",
+    },
+    {
+      name: "next-pages",
+      prefix: "~",
+    },
+    {
+      name: "next-pages-src",
+      prefix: "@",
+    },
+    {
+      name: "t3-app",
+      prefix: "~",
+    },
+    {
+      name: "next-app-custom-alias",
+      prefix: "@custom-alias",
+    },
+    {
+      name: "vite-partial-imports",
+      prefix: "#components",
+    },
+    {
+      name: "vite-root-paths",
+      prefix: "@",
+    },
+  ])(`getTsConfigAliasPrefix($name) -> $prefix`, async ({ name, prefix }) => {
+    expect(
+      await getTsConfigAliasPrefix(getFixturesDir("frameworks", name))
+    ).toBe(prefix)
+  })
+
+  it("parses JSONC tsconfig files with trailing commas", async () => {
+    const cwd = await fsExtra.mkdtemp(
+      path.join(tmpdir(), "shadcn-jsonc-tsconfig-")
+    )
+
+    try {
+      await fsExtra.writeFile(
+        path.join(cwd, "tsconfig.json"),
+        `{
+          // This mirrors the JSONC shape emitted by common TS templates.
+          "compilerOptions": {
+            "baseUrl": ".",
+            "paths": {
+              "@/*": ["./src/*"], // trailing comments are valid JSONC.
+            },
+          },
+        }
+        `,
+        "utf8"
+      )
+
+      expect(await getTsConfigAliasPrefix(cwd)).toBe("@")
+    } finally {
+      await fsExtra.remove(cwd)
+    }
+  })
+})
+
+describe("is TypeScript project", async () => {
+  it.each([
+    {
+      name: "next-app",
+      result: true,
+    },
+    {
+      name: "next-app-src",
+      result: true,
+    },
+    {
+      name: "next-pages",
+      result: true,
+    },
+    {
+      name: "next-pages-src",
+      result: true,
+    },
+    {
+      name: "t3-app",
+      result: true,
+    },
+    {
+      name: "next-app-js",
+      result: false,
+    },
+  ])(`isTypeScriptProject($name) -> $result`, async ({ name, result }) => {
+    expect(await isTypeScriptProject(getFixturesDir("frameworks", name))).toBe(
+      result
+    )
   })
 })
