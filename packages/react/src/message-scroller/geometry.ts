@@ -24,13 +24,27 @@ function getMessageScrollerScrollable({
     return EMPTY_MESSAGE_SCROLLER_SCROLLABLE
   }
 
-  const contentBottom = getContentBottom({ content, spacer, viewport })
+  // scrollTop, scrollHeight, and clientHeight all live in the viewport's
+  // layout-pixel coordinate space, which an ancestor CSS `zoom` (or scaling
+  // transform) scales uniformly, so the gap to each edge stays correct at any
+  // scale. Deriving that gap from getBoundingClientRect instead, the way the
+  // rest of this module does for element placement, would fold zoom-scaled
+  // on-screen pixels into the subtraction against scrollTop/clientHeight. At a
+  // zoom other than 1 the coordinate-space mismatch reports a phantom gap,
+  // which strands the scroll-to-end affordance on screen even though the reader
+  // is already at the bottom, and keeps autoScroll from arming follow-bottom.
+  // Subtract the tail spacer so the room it reserves below a freshly anchored
+  // turn is not counted as more content to scroll toward.
+  const tailSpacerHeight = spacer?.offsetHeight ?? 0
+  const distanceToEnd =
+    viewport.scrollHeight -
+    tailSpacerHeight -
+    viewport.clientHeight -
+    viewport.scrollTop
 
   return {
     start: viewport.scrollTop > scrollEdgeThreshold,
-    end:
-      contentBottom - viewport.scrollTop - viewport.clientHeight >
-      scrollEdgeThreshold,
+    end: distanceToEnd > scrollEdgeThreshold,
   }
 }
 

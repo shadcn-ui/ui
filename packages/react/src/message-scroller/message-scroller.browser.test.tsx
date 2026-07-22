@@ -350,6 +350,38 @@ test("scroll button moves the viewport to the end", async () => {
   expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
 })
 
+test("keeps the scroll-to-end button inert at the bottom under an ancestor CSS zoom", async () => {
+  // Render inside a zoomed ancestor so the first commit measures under zoom. In
+  // Chromium `zoom` scales getBoundingClientRect (on-screen px) while leaving
+  // scrollTop/scrollHeight/clientHeight in layout px. The old geometry mixed the
+  // two and re-activated the button at the bottom; the fix reads only layout
+  // metrics, so the affordance stays inert.
+  container = document.createElement("div")
+  container.style.zoom = "1.5"
+  document.body.appendChild(container)
+  root = createRoot(container)
+  flushSync(() => {
+    root!.render(<Thread items={createItems(8)} showButton />)
+  })
+  await settle()
+
+  const viewport = getViewport()
+
+  // Guard the premise: this engine really does scale client rects under `zoom`
+  // (300 = 200 layout px x 1.5) while keeping scroll metrics in layout px. If a
+  // future engine stops splitting the two, this fails loudly instead of passing
+  // for the wrong reason.
+  expect(Math.round(viewport.getBoundingClientRect().height)).toBe(300)
+  expect(viewport.clientHeight).toBe(VIEWPORT_HEIGHT)
+
+  // Layout metrics agree the viewport is pinned to the bottom, so the button
+  // must be inert. The old rect-based gap read ~100px here and kept it active.
+  expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
+  expect(
+    document.querySelector<HTMLButtonElement>("button")?.dataset.active
+  ).toBe("false")
+})
+
 test("restores the last scroll anchor when the final turn overflows", async () => {
   await renderThread({
     defaultScrollPosition: "last-anchor",

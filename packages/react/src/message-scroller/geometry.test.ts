@@ -78,6 +78,13 @@ function setClientHeight(element: HTMLElement, height: number) {
   })
 }
 
+function setOffsetHeight(element: HTMLElement, height: number) {
+  Object.defineProperty(element, "offsetHeight", {
+    configurable: true,
+    get: () => height,
+  })
+}
+
 // Build a viewport/content/items fixture. The viewport rect is anchored at
 // `viewportTop` in client space; item rects are given in viewport-relative
 // terms and offset by viewportTop so getElementTop math lines up with scrollTop.
@@ -398,16 +405,13 @@ describe("getMessageScrollerScrollable", () => {
   })
 
   it("treats sub-threshold gaps at both edges as not scrollable", () => {
-    stubComputedStyle()
     const { content, spacer, viewport } = createFixture({
       viewportHeight: 200,
-      viewportTop: 0,
       // scrollTop 5 <= threshold 8, so it cannot scroll toward the start.
       scrollTop: 5,
-      contentPaddingStart: 0,
-      contentPaddingEnd: 0,
-      // contentBottom 204; 204 - 5 - 200 = -1 <= 8, so it cannot scroll toward the end.
-      items: [{ messageId: "a", top: 199, height: 0 }],
+      // 205 - 200 - 5 = 0 <= 8, so it cannot scroll toward the end.
+      scrollHeight: 205,
+      items: [],
     })
 
     const scrollable = getMessageScrollerScrollable({
@@ -424,16 +428,13 @@ describe("getMessageScrollerScrollable", () => {
   })
 
   it("can scroll toward both edges past the threshold", () => {
-    stubComputedStyle()
     const { content, spacer, viewport } = createFixture({
       viewportHeight: 200,
-      viewportTop: 0,
       // scrollTop 100 > threshold 8, so it can scroll toward the start.
       scrollTop: 100,
-      contentPaddingStart: 0,
-      contentPaddingEnd: 0,
-      // contentBottom 1000; 1000 - 100 - 200 = 700 > 8, so it can scroll toward the end.
-      items: [{ messageId: "a", top: 900, height: 100 }],
+      // 1000 - 200 - 100 = 700 > 8, so it can scroll toward the end.
+      scrollHeight: 1000,
+      items: [],
     })
 
     const scrollable = getMessageScrollerScrollable({
@@ -446,6 +447,56 @@ describe("getMessageScrollerScrollable", () => {
     expect(scrollable).toMatchObject({
       start: true,
       end: true,
+    })
+  })
+
+  it("excludes the tail spacer from the end gap", () => {
+    const { content, spacer, viewport } = createFixture({
+      viewportHeight: 200,
+      scrollTop: 0,
+      // 60px of the 250px scroll height is the reserved tail spacer, so the real
+      // content bottom (190) sits inside the viewport: nothing to scroll toward.
+      scrollHeight: 250,
+      items: [],
+    })
+    setOffsetHeight(spacer, 60)
+
+    const scrollable = getMessageScrollerScrollable({
+      content,
+      scrollEdgeThreshold: 8,
+      spacer,
+      viewport,
+    })
+
+    // Without excluding the spacer, 250 - 200 - 0 = 50 would read as scrollable.
+    expect(scrollable).toMatchObject({
+      start: false,
+      end: false,
+    })
+  })
+
+  it("measures the end gap from layout metrics, not zoom-scaled client rects", () => {
+    // scrollTop/scrollHeight/clientHeight are layout px (zoom-invariant) and put
+    // the viewport exactly at the bottom: 500 - 200 - 300 = 0. An ancestor CSS
+    // zoom leaves those untouched but inflates getBoundingClientRect, so an item
+    // rect reaching far below the fold must not reintroduce a phantom end gap.
+    const { content, spacer, viewport } = createFixture({
+      viewportHeight: 200,
+      scrollTop: 300,
+      scrollHeight: 500,
+      items: [{ messageId: "a", top: 900, height: 100 }],
+    })
+
+    const scrollable = getMessageScrollerScrollable({
+      content,
+      scrollEdgeThreshold: 8,
+      spacer,
+      viewport,
+    })
+
+    expect(scrollable).toMatchObject({
+      start: true,
+      end: false,
     })
   })
 })
