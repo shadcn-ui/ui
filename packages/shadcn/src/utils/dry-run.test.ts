@@ -1,20 +1,36 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
-import { afterEach, describe, expect, test, vi } from "vitest"
+import { resolveRegistryTree } from "@/src/registry/resolver"
+import { getFixturesDir } from "@/src/test-helpers"
+import type { Config } from "@/src/utils/get-config"
+import { getConfig } from "@/src/utils/get-config"
+import { getProjectInfo } from "@/src/utils/get-project-info"
+import { transform } from "@/src/utils/transformers"
+import { transformAsChild } from "@/src/utils/transformers/transform-aschild"
+import { transformCleanup } from "@/src/utils/transformers/transform-cleanup"
+import { transformCssVars as transformCssVarsTransformer } from "@/src/utils/transformers/transform-css-vars"
+import { transformIcons } from "@/src/utils/transformers/transform-icons"
+import { transformImport } from "@/src/utils/transformers/transform-import"
+import { transformMenu } from "@/src/utils/transformers/transform-menu"
+import { transformRsc } from "@/src/utils/transformers/transform-rsc"
+import { transformRtl } from "@/src/utils/transformers/transform-rtl"
+import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
+import { afterEach, describe, expect, it, vi } from "vitest"
 
-import type { Config } from "../../src/utils/get-config"
-import { getConfig } from "../../src/utils/get-config"
+import { dryRunComponents } from "./dry-run"
+import type { DryRunResult } from "./dry-run"
+import { formatDryRunResult, resolveFilterPath } from "./dry-run-formatter"
 
 // Mock external dependencies.
-vi.mock("../../src/registry/resolver", () => ({
+vi.mock("@/src/registry/resolver", () => ({
   resolveRegistryTree: vi.fn(),
 }))
 
-vi.mock("../../src/registry/api", () => ({
+vi.mock("@/src/registry/api", () => ({
   getRegistryBaseColor: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("../../src/utils/get-project-info", () => ({
+vi.mock("@/src/utils/get-project-info", () => ({
   getProjectInfo: vi.fn().mockResolvedValue({
     framework: { name: "next-app" },
     isSrcDir: false,
@@ -28,45 +44,45 @@ vi.mock("../../src/utils/get-project-info", () => ({
   }),
 }))
 
-vi.mock("../../src/utils/transformers", () => ({
+vi.mock("@/src/utils/transformers", () => ({
   transform: vi.fn().mockImplementation((opts) => opts.raw),
 }))
 
-vi.mock("../../src/utils/transformers/transform-import", () => ({
+vi.mock("@/src/utils/transformers/transform-import", () => ({
   transformImport: vi.fn(),
 }))
-vi.mock("../../src/utils/transformers/transform-rsc", () => ({
+vi.mock("@/src/utils/transformers/transform-rsc", () => ({
   transformRsc: vi.fn(),
 }))
-vi.mock("../../src/utils/transformers/transform-css-vars", () => ({
+vi.mock("@/src/utils/transformers/transform-css-vars", () => ({
   transformCssVars: vi.fn(),
 }))
-vi.mock("../../src/utils/transformers/transform-tw-prefix", () => ({
+vi.mock("@/src/utils/transformers/transform-tw-prefix", () => ({
   transformTwPrefixes: vi.fn(),
 }))
-vi.mock("../../src/utils/transformers/transform-icons", () => ({
+vi.mock("@/src/utils/transformers/transform-icons", () => ({
   transformIcons: vi.fn(),
 }))
-vi.mock("../../src/utils/transformers/transform-menu", () => ({
+vi.mock("@/src/utils/transformers/transform-menu", () => ({
   transformMenu: vi.fn(),
 }))
-vi.mock("../../src/utils/transformers/transform-aschild", () => ({
+vi.mock("@/src/utils/transformers/transform-aschild", () => ({
   transformAsChild: vi.fn(),
 }))
-vi.mock("../../src/utils/transformers/transform-rtl", () => ({
+vi.mock("@/src/utils/transformers/transform-rtl", () => ({
   transformRtl: vi.fn(),
 }))
-vi.mock("../../src/utils/transformers/transform-cleanup", () => ({
+vi.mock("@/src/utils/transformers/transform-cleanup", () => ({
   transformCleanup: vi.fn(),
 }))
 
-vi.mock("../../src/utils/updaters/update-css", () => ({
+vi.mock("@/src/utils/updaters/update-css", () => ({
   transformCss: vi
     .fn()
     .mockImplementation((input, _css) => `${input}\n/* css added */`),
 }))
 
-vi.mock("../../src/utils/updaters/update-css-vars", () => ({
+vi.mock("@/src/utils/updaters/update-css-vars", () => ({
   transformCssVars: vi
     .fn()
     .mockImplementation(
@@ -74,7 +90,7 @@ vi.mock("../../src/utils/updaters/update-css-vars", () => ({
     ),
 }))
 
-vi.mock("../../src/utils/updaters/update-fonts", () => ({
+vi.mock("@/src/utils/updaters/update-fonts", () => ({
   massageTreeForFonts: vi.fn().mockImplementation((tree) => tree),
 }))
 
@@ -89,25 +105,6 @@ vi.mock("fs", async () => {
     },
   }
 })
-
-import { dryRunComponents } from "../../src/utils/dry-run"
-import {
-  formatDryRunResult,
-  resolveFilterPath,
-} from "../../src/utils/dry-run-formatter"
-import type { DryRunResult } from "../../src/utils/dry-run"
-import { resolveRegistryTree } from "../../src/registry/resolver"
-import { getProjectInfo } from "../../src/utils/get-project-info"
-import { transform } from "../../src/utils/transformers"
-import { transformAsChild } from "../../src/utils/transformers/transform-aschild"
-import { transformCleanup } from "../../src/utils/transformers/transform-cleanup"
-import { transformCssVars as transformCssVarsTransformer } from "../../src/utils/transformers/transform-css-vars"
-import { transformIcons } from "../../src/utils/transformers/transform-icons"
-import { transformImport } from "../../src/utils/transformers/transform-import"
-import { transformMenu } from "../../src/utils/transformers/transform-menu"
-import { transformRsc } from "../../src/utils/transformers/transform-rsc"
-import { transformRtl } from "../../src/utils/transformers/transform-rtl"
-import { transformTwPrefixes } from "../../src/utils/transformers/transform-tw-prefix"
 
 afterEach(() => {
   vi.clearAllMocks()
@@ -148,16 +145,15 @@ function createMockConfig(overrides: Partial<Config> = {}): Config {
 }
 
 describe("dryRunComponents", () => {
-  test("should return basic component dry-run result", async () => {
+  it("should return basic component dry-run result", async () => {
     const config = createMockConfig()
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "button",
       files: [
         {
           path: "registry/ui/button.tsx",
           type: "registry:ui",
-          content: 'export function Button() { return <button>Click</button> }',
+          content: "export function Button() { return <button>Click</button> }",
         },
       ],
       dependencies: ["class-variance-authority"],
@@ -177,11 +173,10 @@ describe("dryRunComponents", () => {
     expect(result.devDependencies).toEqual([])
   })
 
-  test("should handle multiple files (ui + hook + lib)", async () => {
+  it("should handle multiple files (ui + hook + lib)", async () => {
     const config = createMockConfig()
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "sidebar",
       files: [
         {
           path: "registry/ui/sidebar.tsx",
@@ -220,11 +215,10 @@ describe("dryRunComponents", () => {
     })
   })
 
-  test("should include CSS output when tree has cssVars and css", async () => {
+  it("should include CSS output when tree has cssVars and css", async () => {
     const config = createMockConfig()
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "button",
       files: [
         {
           path: "registry/ui/button.tsx",
@@ -256,11 +250,10 @@ describe("dryRunComponents", () => {
     expect(result.css!.cssVarsCount).toBe(2)
   })
 
-  test("should include env vars in output", async () => {
+  it("should include env vars in output", async () => {
     const config = createMockConfig()
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "some-component",
       files: [
         {
           path: "registry/ui/some-component.tsx",
@@ -287,11 +280,10 @@ describe("dryRunComponents", () => {
     expect(result.envVars!.action).toBe("create")
   })
 
-  test("should pass through dependencies and devDependencies", async () => {
+  it("should pass through dependencies and devDependencies", async () => {
     const config = createMockConfig()
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "chart",
       files: [
         {
           path: "registry/ui/chart.tsx",
@@ -309,7 +301,7 @@ describe("dryRunComponents", () => {
     expect(result.devDependencies).toEqual(["@types/recharts"])
   })
 
-  test("should return empty result for no components", async () => {
+  it("should return empty result for no components", async () => {
     const config = createMockConfig()
 
     const result = await dryRunComponents([], config)
@@ -323,11 +315,10 @@ describe("dryRunComponents", () => {
     expect(result.docs).toBeNull()
   })
 
-  test("should include docs when present", async () => {
+  it("should include docs when present", async () => {
     const config = createMockConfig()
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "button",
       files: [
         {
           path: "registry/ui/button.tsx",
@@ -347,11 +338,10 @@ describe("dryRunComponents", () => {
     )
   })
 
-  test("should collect font metadata", async () => {
+  it("should collect font metadata", async () => {
     const config = createMockConfig()
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "button",
       files: [
         {
           path: "registry/ui/button.tsx",
@@ -387,11 +377,10 @@ describe("dryRunComponents", () => {
     })
   })
 
-  test("should deduplicate dependencies", async () => {
+  it("should deduplicate dependencies", async () => {
     const config = createMockConfig()
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "sidebar",
       files: [
         {
           path: "registry/ui/sidebar.tsx",
@@ -415,26 +404,25 @@ describe("dryRunComponents", () => {
     expect(result.devDependencies).toEqual(["@types/node"])
   })
 
-  test("should throw when registry tree resolution fails", async () => {
+  it("should throw when registry tree resolution fails", async () => {
     const config = createMockConfig()
 
     vi.mocked(resolveRegistryTree).mockResolvedValue(undefined as any)
 
-    await expect(
-      dryRunComponents(["nonexistent"], config)
-    ).rejects.toThrow("Failed to fetch components from registry.")
+    await expect(dryRunComponents(["nonexistent"], config)).rejects.toThrow(
+      "Failed to fetch components from registry."
+    )
   })
 
-  test("should skip package-import files when final rewritten content matches", async () => {
-    const tempDir = path.join(
-      path.resolve(__dirname, "../fixtures"),
-      "temp-dry-run-package-import-same"
-    )
+  it("should skip package-import files when final rewritten content matches", async () => {
+    const tempDir = getFixturesDir("temp-dry-run-package-import-same")
     const actualFs = (await vi.importActual("fs")) as typeof import("fs")
 
     try {
       vi.mocked(existsSync).mockImplementation(actualFs.existsSync)
-      vi.mocked(fs.readFile).mockImplementation(actualFs.promises.readFile as never)
+      vi.mocked(fs.readFile).mockImplementation(
+        actualFs.promises.readFile as never
+      )
       vi.mocked(getProjectInfo).mockResolvedValue({
         framework: { name: "vite" } as any,
         isSrcDir: true,
@@ -448,9 +436,12 @@ describe("dryRunComponents", () => {
       })
 
       await actualFs.promises.rm(tempDir, { recursive: true, force: true })
-      await actualFs.promises.mkdir(path.join(tempDir, "src", "components", "ui"), {
-        recursive: true,
-      })
+      await actualFs.promises.mkdir(
+        path.join(tempDir, "src", "components", "ui"),
+        {
+          recursive: true,
+        }
+      )
       await actualFs.promises.mkdir(path.join(tempDir, "src", "lib"), {
         recursive: true,
       })
@@ -550,7 +541,6 @@ export function Button() {
       })
 
       vi.mocked(resolveRegistryTree).mockResolvedValue({
-        name: "button",
         files: [
           {
             path: "registry/default/ui/button.tsx",
@@ -580,21 +570,25 @@ export function Button() {
     }
   })
 
-  test("should rewrite app-local files to workspace utils aliases in monorepo dry-runs", async () => {
+  it("should rewrite app-local files to workspace utils aliases in monorepo dry-runs", async () => {
     const actualFs = (await vi.importActual("fs")) as typeof import("fs")
     const actualTransformModule = (await vi.importActual(
-      "../../src/utils/transformers"
-    )) as typeof import("../../src/utils/transformers")
+      "@/src/utils/transformers"
+    )) as typeof import("@/src/utils/transformers")
     const actualTransformImportModule = (await vi.importActual(
-      "../../src/utils/transformers/transform-import"
-    )) as typeof import("../../src/utils/transformers/transform-import")
-    const cwd = path.resolve(
-      __dirname,
-      "../fixtures/frameworks/vite-monorepo-imports/apps/web"
+      "@/src/utils/transformers/transform-import"
+    )) as typeof import("@/src/utils/transformers/transform-import")
+    const cwd = getFixturesDir(
+      "frameworks",
+      "vite-monorepo-imports",
+      "apps",
+      "web"
     )
 
     vi.mocked(existsSync).mockImplementation(actualFs.existsSync)
-    vi.mocked(fs.readFile).mockImplementation(actualFs.promises.readFile as never)
+    vi.mocked(fs.readFile).mockImplementation(
+      actualFs.promises.readFile as never
+    )
     vi.mocked(getProjectInfo).mockResolvedValue({
       framework: { name: "vite" } as any,
       isSrcDir: true,
@@ -632,7 +626,6 @@ export function Button() {
     }
 
     vi.mocked(resolveRegistryTree).mockResolvedValue({
-      name: "login-03",
       files: [
         {
           path: "registry/components/login-form.tsx",
@@ -657,9 +650,7 @@ export function LoginForm() {
       action: "create",
       type: "registry:component",
     })
-    expect(result.files[0].content).toContain(
-      `from "@workspace/ui/lib/utils"`
-    )
+    expect(result.files[0].content).toContain(`from "@workspace/ui/lib/utils"`)
     expect(result.files[0].content).not.toContain(`from "#lib/utils"`)
   })
 })
@@ -678,7 +669,7 @@ describe("formatDryRunResult", () => {
     }
   }
 
-  test("should format a simple component", () => {
+  it("should format a simple component", () => {
     const result = createResult({
       files: [
         {
@@ -703,7 +694,7 @@ describe("formatDryRunResult", () => {
     expect(output).not.toContain("overwritten")
   })
 
-  test("should show dependencies section when present", () => {
+  it("should show dependencies section when present", () => {
     const result = createResult({
       files: [
         {
@@ -724,7 +715,7 @@ describe("formatDryRunResult", () => {
     expect(output).toContain("@radix-ui/react-slot")
   })
 
-  test("should hide empty sections", () => {
+  it("should hide empty sections", () => {
     const result = createResult({
       files: [
         {
@@ -745,7 +736,7 @@ describe("formatDryRunResult", () => {
     expect(output).not.toContain("Fonts")
   })
 
-  test("should show overwrite warning and diff hint", () => {
+  it("should show overwrite warning and diff hint", () => {
     const result = createResult({
       files: [
         {
@@ -769,7 +760,7 @@ describe("formatDryRunResult", () => {
     expect(output).toContain("--diff")
   })
 
-  test("should list all files without truncation", () => {
+  it("should list all files without truncation", () => {
     const files = Array.from({ length: 12 }, (_, i) => ({
       path: `components/ui/file-${i}.tsx`,
       action: "create" as const,
@@ -788,7 +779,7 @@ describe("formatDryRunResult", () => {
     expect(output).toContain("file-11.tsx")
   })
 
-  test("should format CSS section with variable count", () => {
+  it("should format CSS section with variable count", () => {
     const result = createResult({
       files: [
         {
@@ -813,7 +804,7 @@ describe("formatDryRunResult", () => {
     expect(output).toContain("globals.css")
   })
 
-  test("should format env vars section", () => {
+  it("should format env vars section", () => {
     const result = createResult({
       files: [
         {
@@ -837,7 +828,7 @@ describe("formatDryRunResult", () => {
     expect(output).toContain("SECRET_KEY")
   })
 
-  test("should format fonts section", () => {
+  it("should format fonts section", () => {
     const result = createResult({
       files: [
         {
@@ -857,7 +848,7 @@ describe("formatDryRunResult", () => {
     expect(output).toContain("Google Fonts")
   })
 
-  test("should show multiple overwrite warning", () => {
+  it("should show multiple overwrite warning", () => {
     const result = createResult({
       files: [
         {
@@ -886,7 +877,7 @@ describe("formatDryRunResult", () => {
     expect(output).toContain("3 files will be overwritten")
   })
 
-  test("should list all files with mixed actions", () => {
+  it("should list all files with mixed actions", () => {
     const files = [
       ...Array.from({ length: 6 }, (_, i) => ({
         path: `components/ui/new-${i}.tsx`,
@@ -928,15 +919,15 @@ describe("formatDryRunResult --diff", () => {
     }
   }
 
-  test("should show focused diff output with box-drawing borders", () => {
+  it("should show focused diff output with box-drawing borders", () => {
     const result = createResult({
       files: [
         {
           path: "components/ui/button.tsx",
           action: "overwrite",
-          content: 'export function Button() { return <button>New</button> }',
+          content: "export function Button() { return <button>New</button> }",
           existingContent:
-            'export function Button() { return <button>Old</button> }',
+            "export function Button() { return <button>Old</button> }",
           type: "registry:ui",
         },
       ],
@@ -953,7 +944,7 @@ describe("formatDryRunResult --diff", () => {
     expect(output).not.toContain("Dependencies")
   })
 
-  test("should show diff hint in dry-run summary", () => {
+  it("should show diff hint in dry-run summary", () => {
     const result = createResult({
       files: [
         {
@@ -971,7 +962,7 @@ describe("formatDryRunResult --diff", () => {
     expect(output).toContain("Run with --diff")
   })
 
-  test("should only show matched file", () => {
+  it("should only show matched file", () => {
     const result = createResult({
       files: [
         {
@@ -1000,7 +991,7 @@ describe("formatDryRunResult --diff", () => {
     expect(output).not.toContain("card.tsx")
   })
 
-  test("should show error when --diff path matches no files", () => {
+  it("should show error when --diff path matches no files", () => {
     const result = createResult({
       files: [
         {
@@ -1021,7 +1012,7 @@ describe("formatDryRunResult --diff", () => {
     expect(output).toContain("nonexistent")
   })
 
-  test("should show new file content as additions", () => {
+  it("should show new file content as additions", () => {
     const result = createResult({
       files: [
         {
@@ -1041,7 +1032,7 @@ describe("formatDryRunResult --diff", () => {
     expect(output).toContain("+export function Button() {}")
   })
 
-  test("should show no changes for skipped files", () => {
+  it("should show no changes for skipped files", () => {
     const result = createResult({
       files: [
         {
@@ -1060,14 +1051,16 @@ describe("formatDryRunResult --diff", () => {
     expect(output).toContain("No changes.")
   })
 
-  test("should show formatting-only message for whitespace/quote differences", () => {
+  it("should show formatting-only message for whitespace/quote differences", () => {
     const result = createResult({
       files: [
         {
           path: "components/ui/button.tsx",
           action: "overwrite",
-          content: 'import { cn } from "@/lib/utils";\nexport function Button() {}',
-          existingContent: "import { cn } from '@/lib/utils'\nexport function Button() {}",
+          content:
+            'import { cn } from "@/lib/utils";\nexport function Button() {}',
+          existingContent:
+            "import { cn } from '@/lib/utils'\nexport function Button() {}",
           type: "registry:ui",
         },
       ],
@@ -1080,14 +1073,15 @@ describe("formatDryRunResult --diff", () => {
     expect(output).toContain("Formatting-only changes")
   })
 
-  test("should show real diff for non-formatting changes", () => {
+  it("should show real diff for non-formatting changes", () => {
     const result = createResult({
       files: [
         {
           path: "components/ui/button.tsx",
           action: "overwrite",
-          content: 'export function Button() { return <button>New</button> }',
-          existingContent: 'export function Button() { return <button>Old</button> }',
+          content: "export function Button() { return <button>New</button> }",
+          existingContent:
+            "export function Button() { return <button>Old</button> }",
           type: "registry:ui",
         },
       ],
@@ -1102,7 +1096,7 @@ describe("formatDryRunResult --diff", () => {
     expect(output).toContain("@@")
   })
 
-  test("should show CSS diff when path matches CSS file", () => {
+  it("should show CSS diff when path matches CSS file", () => {
     const result = createResult({
       files: [
         {
@@ -1130,7 +1124,7 @@ describe("formatDryRunResult --diff", () => {
     expect(output).toContain("--color-primary")
   })
 
-  test("should detect multi-line to single-line reformatting as formatting-only", () => {
+  it("should detect multi-line to single-line reformatting as formatting-only", () => {
     const result = createResult({
       files: [
         {
@@ -1139,7 +1133,7 @@ describe("formatDryRunResult --diff", () => {
           content: [
             'const buttonVariants = cva("inline-flex", {',
             "  variants: {",
-            '    size: {',
+            "    size: {",
             '      default: "h-8 gap-1.5 px-2.5 has-[>svg]:px-1.5",',
             "    },",
             "  },",
@@ -1169,7 +1163,7 @@ describe("formatDryRunResult --diff", () => {
     expect(output).not.toContain('+      default: "h-8')
   })
 
-  test("should suppress multi-line to single-line reformatting but show real change in same hunk", () => {
+  it("should suppress multi-line to single-line reformatting but show real change in same hunk", () => {
     // Simulates cva variant values going from multi-line to single-line,
     // with one actual content change (size-10 → size-9).
     const result = createResult({
@@ -1234,14 +1228,16 @@ describe("formatDryRunResult --diff", () => {
     expect(output).toContain("size-9")
   })
 
-  test("should detect semicolon-only differences as formatting-only", () => {
+  it("should detect semicolon-only differences as formatting-only", () => {
     const result = createResult({
       files: [
         {
           path: "components/ui/button.tsx",
           action: "overwrite",
-          content: 'import { cn } from "@/lib/utils";\nexport function Button() {};',
-          existingContent: 'import { cn } from "@/lib/utils"\nexport function Button() {}',
+          content:
+            'import { cn } from "@/lib/utils";\nexport function Button() {};',
+          existingContent:
+            'import { cn } from "@/lib/utils"\nexport function Button() {}',
           type: "registry:ui",
         },
       ],
@@ -1254,7 +1250,7 @@ describe("formatDryRunResult --diff", () => {
     expect(output).toContain("Formatting-only changes")
   })
 
-  test("should skip quote-only line changes but show real changes in same group", () => {
+  it("should skip quote-only line changes but show real changes in same group", () => {
     const result = createResult({
       files: [
         {
@@ -1284,13 +1280,13 @@ describe("formatDryRunResult --diff", () => {
     // Quote-only changes should NOT appear as red/green diff lines.
     expect(output).not.toContain("-        lg:")
     expect(output).not.toContain("-        icon:")
-    expect(output).not.toContain('-        \'icon-sm\'')
+    expect(output).not.toContain("-        'icon-sm'")
     // Real change (size-10 -> size-9) SHOULD appear as a diff.
     expect(output).toContain("size-10")
     expect(output).toContain("size-9")
   })
 
-  test("should show correct hunk header when formatting changes are mixed with real changes", () => {
+  it("should show correct hunk header when formatting changes are mixed with real changes", () => {
     // 5 lines old, 5 lines new — only line 5 has a real change.
     // Hunk header should reflect same line count, not show line removal.
     const result = createResult({
@@ -1328,7 +1324,7 @@ describe("formatDryRunResult --diff", () => {
     expect(output).toContain("new-value")
   })
 
-  test("should suppress formatting-only hunks entirely", () => {
+  it("should suppress formatting-only hunks entirely", () => {
     // All changes are quote-only — no hunk should be emitted.
     const result = createResult({
       files: [
@@ -1350,39 +1346,39 @@ describe("formatDryRunResult --diff", () => {
     expect(output).not.toContain("@@")
   })
 
-  test("should suppress formatting-only hunk but show real-change hunk with correct position", () => {
+  it("should suppress formatting-only hunk but show real-change hunk with correct position", () => {
     // Two hunks separated by enough context:
     // - Hunk 1 (top): quote-only changes → suppressed.
     // - Hunk 2 (bottom): real change → shown with correct line number.
     const oldLines = [
-      "import { cn } from '@/lib/utils'",   // line 1: quote diff.
-      "",                                     // line 2.
-      "const a = 'hello'",                   // line 3: quote diff.
-      "",                                     // line 4.
-      "// spacer 1",                          // line 5.
-      "// spacer 2",                          // line 6.
-      "// spacer 3",                          // line 7.
-      "// spacer 4",                          // line 8.
-      "// spacer 5",                          // line 9.
-      "// spacer 6",                          // line 10.
-      "// spacer 7",                          // line 11.
-      "",                                     // line 12.
-      "const c = 'old-value'",               // line 13: real change.
+      "import { cn } from '@/lib/utils'", // line 1: quote diff.
+      "", // line 2.
+      "const a = 'hello'", // line 3: quote diff.
+      "", // line 4.
+      "// spacer 1", // line 5.
+      "// spacer 2", // line 6.
+      "// spacer 3", // line 7.
+      "// spacer 4", // line 8.
+      "// spacer 5", // line 9.
+      "// spacer 6", // line 10.
+      "// spacer 7", // line 11.
+      "", // line 12.
+      "const c = 'old-value'", // line 13: real change.
     ]
     const newLines = [
-      'import { cn } from "@/lib/utils"',    // line 1: quote diff.
-      "",                                     // line 2.
-      'const a = "hello"',                   // line 3: quote diff.
-      "",                                     // line 4.
-      "// spacer 1",                          // line 5.
-      "// spacer 2",                          // line 6.
-      "// spacer 3",                          // line 7.
-      "// spacer 4",                          // line 8.
-      "// spacer 5",                          // line 9.
-      "// spacer 6",                          // line 10.
-      "// spacer 7",                          // line 11.
-      "",                                     // line 12.
-      'const c = "new-value"',               // line 13: real change.
+      'import { cn } from "@/lib/utils"', // line 1: quote diff.
+      "", // line 2.
+      'const a = "hello"', // line 3: quote diff.
+      "", // line 4.
+      "// spacer 1", // line 5.
+      "// spacer 2", // line 6.
+      "// spacer 3", // line 7.
+      "// spacer 4", // line 8.
+      "// spacer 5", // line 9.
+      "// spacer 6", // line 10.
+      "// spacer 7", // line 11.
+      "", // line 12.
+      'const c = "new-value"', // line 13: real change.
     ]
 
     const result = createResult({
@@ -1413,7 +1409,7 @@ describe("formatDryRunResult --diff", () => {
     expect(output).not.toContain("@/lib/utils")
   })
 
-  test("should show semicolons mixed with real changes correctly", () => {
+  it("should show semicolons mixed with real changes correctly", () => {
     const result = createResult({
       files: [
         {
@@ -1439,14 +1435,14 @@ describe("formatDryRunResult --diff", () => {
     })
 
     // Semicolon-only lines should not show as diffs.
-    expect(output).not.toContain('-import { cn }')
-    expect(output).not.toContain('-const a')
+    expect(output).not.toContain("-import { cn }")
+    expect(output).not.toContain("-const a")
     // Real change should show.
     expect(output).toContain("original")
     expect(output).toContain("changed")
   })
 
-  test("should display actual file content not normalized content", () => {
+  it("should display actual file content not normalized content", () => {
     // The diff should show the real double-quoted new content, not the
     // internal normalized version used for comparison.
     const result = createResult({
@@ -1471,7 +1467,7 @@ describe("formatDryRunResult --diff", () => {
     expect(output).toContain('"new-size"')
   })
 
-  test("should skip whitespace-only line changes in diff", () => {
+  it("should skip whitespace-only line changes in diff", () => {
     const result = createResult({
       files: [
         {
@@ -1493,7 +1489,7 @@ describe("formatDryRunResult --diff", () => {
     expect(output).not.toContain("+const x")
   })
 
-  test("should show CSS diff with full context showing existing vars", () => {
+  it("should show CSS diff with full context showing existing vars", () => {
     const existingCss = [
       "@theme {",
       "  --color-background: white;",
@@ -1529,7 +1525,7 @@ describe("formatDryRunResult --diff", () => {
     expect(output).toContain("--color-primary")
   })
 
-  test("should show new CSS file as all additions", () => {
+  it("should show new CSS file as all additions", () => {
     const result = createResult({
       css: {
         path: "app/globals.css",
@@ -1548,7 +1544,7 @@ describe("formatDryRunResult --diff", () => {
     expect(output).toContain("+@theme")
   })
 
-  test("should match both file and CSS when filter is ambiguous", () => {
+  it("should match both file and CSS when filter is ambiguous", () => {
     const result = createResult({
       files: [
         {
@@ -1590,8 +1586,10 @@ describe("formatDryRunResult --view", () => {
     }
   }
 
-  test("should show focused view with full content", () => {
-    const content = Array.from({ length: 20 }, (_, i) => `line ${i + 1}`).join("\n")
+  it("should show focused view with full content", () => {
+    const content = Array.from({ length: 20 }, (_, i) => `line ${i + 1}`).join(
+      "\n"
+    )
 
     const result = createResult({
       files: [
@@ -1616,8 +1614,10 @@ describe("formatDryRunResult --view", () => {
     expect(output).not.toContain("Dependencies")
   })
 
-  test("should show all matched files with full content", () => {
-    const content = Array.from({ length: 20 }, (_, i) => `line ${i + 1}`).join("\n")
+  it("should show all matched files with full content", () => {
+    const content = Array.from({ length: 20 }, (_, i) => `line ${i + 1}`).join(
+      "\n"
+    )
 
     const result = createResult({
       files: [
@@ -1644,9 +1644,15 @@ describe("formatDryRunResult --view", () => {
     expect(output).toContain("line 20")
   })
 
-  test("should show only matched file", () => {
-    const buttonContent = Array.from({ length: 20 }, (_, i) => `button line ${i + 1}`).join("\n")
-    const cardContent = Array.from({ length: 20 }, (_, i) => `card line ${i + 1}`).join("\n")
+  it("should show only matched file", () => {
+    const buttonContent = Array.from(
+      { length: 20 },
+      (_, i) => `button line ${i + 1}`
+    ).join("\n")
+    const cardContent = Array.from(
+      { length: 20 },
+      (_, i) => `card line ${i + 1}`
+    ).join("\n")
 
     const result = createResult({
       files: [
@@ -1675,7 +1681,7 @@ describe("formatDryRunResult --view", () => {
     expect(output).toContain("button line 20")
   })
 
-  test("should show error when --view path matches no files", () => {
+  it("should show error when --view path matches no files", () => {
     const result = createResult({
       files: [
         {
@@ -1695,7 +1701,7 @@ describe("formatDryRunResult --view", () => {
     expect(output).toContain("nonexistent")
   })
 
-  test("should show CSS file content when path matches", () => {
+  it("should show CSS file content when path matches", () => {
     const cssContent = "@theme {\n  --color-primary: red;\n}"
 
     const result = createResult({
@@ -1719,35 +1725,50 @@ describe("formatDryRunResult --view", () => {
 
 describe("resolveFilterPath", () => {
   const files = [
-    { path: "components/ui/button.tsx", action: "create" as const, content: "", type: "registry:ui" },
-    { path: "components/ui/card.tsx", action: "create" as const, content: "", type: "registry:ui" },
-    { path: "hooks/use-mobile.ts", action: "create" as const, content: "", type: "registry:hook" },
+    {
+      path: "components/ui/button.tsx",
+      action: "create" as const,
+      content: "",
+      type: "registry:ui",
+    },
+    {
+      path: "components/ui/card.tsx",
+      action: "create" as const,
+      content: "",
+      type: "registry:ui",
+    },
+    {
+      path: "hooks/use-mobile.ts",
+      action: "create" as const,
+      content: "",
+      type: "registry:hook",
+    },
   ]
 
-  test("should match exact path", () => {
+  it("should match exact path", () => {
     const result = resolveFilterPath(files, "components/ui/button.tsx")
     expect(result).toHaveLength(1)
     expect(result[0].path).toBe("components/ui/button.tsx")
   })
 
-  test("should match partial path (filename)", () => {
+  it("should match partial path (filename)", () => {
     const result = resolveFilterPath(files, "button")
     expect(result).toHaveLength(1)
     expect(result[0].path).toBe("components/ui/button.tsx")
   })
 
-  test("should match partial path (directory segment)", () => {
+  it("should match partial path (directory segment)", () => {
     const result = resolveFilterPath(files, "ui/card")
     expect(result).toHaveLength(1)
     expect(result[0].path).toBe("components/ui/card.tsx")
   })
 
-  test("should return multiple matches for ambiguous filter", () => {
+  it("should return multiple matches for ambiguous filter", () => {
     const result = resolveFilterPath(files, "components/ui")
     expect(result).toHaveLength(2)
   })
 
-  test("should return empty array when no match", () => {
+  it("should return empty array when no match", () => {
     const result = resolveFilterPath(files, "nonexistent")
     expect(result).toHaveLength(0)
   })
