@@ -231,6 +231,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'><rect x='5' y='5' width='90' height='90' fill='var(--background)' stroke='var(--foreground)' stroke-width='6'/><rect x='20' y='20' width='25' height='25' fill='var(--foreground)'/><rect x='55' y='20' width='25' height='25' fill='var(--foreground)'/><rect x='20' y='55' width='25' height='25' fill='var(--foreground)'/><rect x='55' y='55' width='25' height='25' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@brainless",
+    "homepage": "https://brainless.swerdlow.dev",
+    "url": "https://brainless.swerdlow.dev/r/{name}.json",
+    "description": "Claude Code, Codex, and Grok interfaces as shadcn components — accessible React terminal-agent UI for docs, demos, and product surfaces.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='var(--foreground)'><rect x='5' y='5' width='14' height='14'/></svg>"
+  },
+  {
     "name": "@bundui",
     "homepage": "https://bundui.io",
     "url": "https://bundui.io/r/{name}.json",
