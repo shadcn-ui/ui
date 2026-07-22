@@ -1,19 +1,18 @@
-import { afterEach, describe, expect, test, vi } from "vitest"
-
-import type { Config } from "../../src/utils/get-config"
+import type { Config } from "@/src/utils/get-config"
+import { afterEach, describe, expect, it, vi } from "vitest"
 
 // Mock dependencies.
-vi.mock("../../src/registry/namespaces", () => ({
+vi.mock("@/src/registry/namespaces", () => ({
   resolveRegistryNamespaces: vi.fn().mockResolvedValue(["@foo"]),
 }))
 
-vi.mock("../../src/registry/api", () => ({
+vi.mock("@/src/registry/api", () => ({
   getRegistriesIndex: vi.fn().mockResolvedValue({
     "@foo": "https://foo.com/r/{name}.json",
   }),
 }))
 
-vi.mock("../../src/utils/spinner", () => ({
+vi.mock("@/src/utils/spinner", () => ({
   spinner: vi.fn().mockReturnValue({
     start: vi.fn().mockReturnValue({
       succeed: vi.fn(),
@@ -29,7 +28,7 @@ vi.mock("fs-extra", () => ({
   },
 }))
 
-import { ensureRegistriesInConfig } from "../../src/utils/registries"
+import { ensureRegistriesInConfig } from "./registries"
 import fs from "fs-extra"
 
 afterEach(() => {
@@ -69,7 +68,7 @@ const baseConfig: Config = {
 }
 
 describe("ensureRegistriesInConfig", () => {
-  test("does not write to disk when writeFile is false", async () => {
+  it("does not write to disk when writeFile is false", async () => {
     const { config, newRegistries } = await ensureRegistriesInConfig(
       ["@foo/bar"],
       baseConfig,
@@ -86,7 +85,7 @@ describe("ensureRegistriesInConfig", () => {
     expect(fs.writeFile).not.toHaveBeenCalled()
   })
 
-  test("writes to disk when writeFile is true", async () => {
+  it("writes to disk when writeFile is true", async () => {
     await ensureRegistriesInConfig(["@foo/bar"], baseConfig, {
       writeFile: true,
     })
@@ -99,13 +98,13 @@ describe("ensureRegistriesInConfig", () => {
     )
   })
 
-  test("writes to disk by default (writeFile not specified)", async () => {
+  it("writes to disk by default (writeFile not specified)", async () => {
     await ensureRegistriesInConfig(["@foo/bar"], baseConfig)
 
     expect(fs.writeFile).toHaveBeenCalledTimes(1)
   })
 
-  test("does not write when no new registries are found", async () => {
+  it("does not write when no new registries are found", async () => {
     const configWithRegistry: Config = {
       ...baseConfig,
       registries: {

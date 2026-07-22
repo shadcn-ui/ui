@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
 
-import { parseRegistryArg } from "../../src/commands/registry/add"
+import { parseRegistryArg } from "./add"
 
 describe("parseRegistryArg", () => {
   it("should parse namespace without URL", () => {
