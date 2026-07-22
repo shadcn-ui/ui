@@ -1701,5 +1701,12 @@
   "url": "https://shadcn-loaders.vercel.app/r/{name}.json",
   "description": "A public registry of shadcn-inspired animated loaders and loading states.",
   "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='#111827'/><circle cx='12' cy='12' r='5' fill='#f59e0b'/></svg>"
+  },
+  {
+    "name": "@mediadrop",
+    "homepage": "https://www.mediadrop.dev",
+    "url": "https://www.mediadrop.dev/r/{name}.json",
+    "description": "Drag-and-drop file upload blocks for React built on react-mediadrop — dropzone, avatar uploader, multi-file upload form, and direct-to-S3 upload.",
+    "logo": "<svg width='1024' height='1024' viewBox='0 0 1024 1024' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='1024' height='1024' rx='264' fill='black'/><path d='M690.68 471.521L506.92 655.283L466.282 614.646L466.283 614.644L332.918 481.278L373.555 440.642L506.921 574.007L650.044 430.885L690.68 471.521Z' fill='#00D9FF'/><path d='M690.68 267.637L506.92 451.398L466.282 410.761L466.283 410.759L332.918 277.394L373.555 236.757L506.921 370.122L650.044 227L690.68 267.637Z' fill='#0080A9'/><path d='M798.012 796.063H225.59V740.668H742.616V445.224H798.012V796.063ZM280.984 740.666H225.589V445.221H280.984V740.666Z' fill='url(#paint0_linear_220_485)'/><defs><linearGradient id='paint0_linear_220_485' x1='770.314' y1='445.221' x2='770.314' y2='740.667' gradientUnits='userSpaceOnUse'><stop/><stop offset='1' stop-color='white'/></linearGradient></defs></svg>"
   }
 ]
