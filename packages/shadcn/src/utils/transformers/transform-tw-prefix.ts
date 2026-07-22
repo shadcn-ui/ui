@@ -215,19 +215,3 @@ export function applyPrefix(
     )
     .join(" ")
 }
-
-export function applyPrefixesCss(
-  css: string,
-  prefix: string,
-  tailwindVersion: TailwindVersion
-) {
-  const lines = css.split("\n")
-  for (let line of lines) {
-    if (line.includes("@apply")) {
-      const originalTWCls = line.replace("@apply", "").trim()
-      const prefixedTwCls = applyPrefix(originalTWCls, prefix, tailwindVersion)
-      css = css.replace(originalTWCls, prefixedTwCls)
-    }
-  }
-  return css
-}
