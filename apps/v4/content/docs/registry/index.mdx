@@ -16,14 +16,14 @@ You can use the `shadcn` CLI to run your own code registry. Running your own reg
     width="1432"
     height="960"
     alt="Registry"
-    className="mt-6 w-full overflow-hidden rounded-lg border dark:hidden"
+    className="mt-6 w-full overflow-hidden rounded-2xl border dark:hidden"
   />
   <Image
     src="/images/registry-dark.png"
     width="1432"
     height="960"
     alt="Registry"
-    className="mt-6 hidden w-full overflow-hidden rounded-lg border shadow-sm dark:block"
+    className="mt-6 hidden w-full overflow-hidden rounded-2xl border shadow-sm dark:block"
   />
   <figcaption className="text-center text-sm text-gray-500">
     A distribution system for code

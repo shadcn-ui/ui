@@ -444,18 +444,22 @@ async function shouldOverwriteCssVars(
   )
 }
 
-function validateFilesTarget(
+export function validateFilesTarget(
   files: z.infer<typeof registryItemFileSchema>[],
   cwd: string
 ) {
   for (const file of files) {
-    if (!file?.target) {
+    // `target` decides the write location when present; otherwise the path is
+    // derived from `file.path` (see resolveFilePath in update-files.ts). Both
+    // are registry-controlled, so validate whichever one is used.
+    const locationField = file?.target ?? file?.path
+    if (!locationField) {
       continue
     }
 
-    if (!isSafeTarget(file.target, cwd)) {
+    if (!isSafeTarget(locationField, cwd)) {
       throw new Error(
-        `We found an unsafe file path "${file.target} in the registry item. Installation aborted.`
+        `We found an unsafe file path "${locationField}" in the registry item. Installation aborted.`
       )
     }
   }

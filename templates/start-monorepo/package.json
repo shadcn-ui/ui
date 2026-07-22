@@ -12,7 +12,7 @@
   "devDependencies": {
     "prettier": "^3.8.3",
     "prettier-plugin-tailwindcss": "^0.8.0",
-    "turbo": "^2.9.15",
+    "turbo": "^2.9.18",
     "typescript": "^6"
   },
   "packageManager": "pnpm@10.33.4",

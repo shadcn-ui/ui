@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
-import { addComponents } from "./add-components"
+import { addComponents, validateFilesTarget } from "./add-components"
 
 const {
   mockResolveRegistryTree,
@@ -201,5 +201,48 @@ describe("addComponents", () => {
     expect(mockUpdateFiles.mock.invocationCallOrder[0]).toBeLessThan(
       mockUpdateCss.mock.invocationCallOrder[0]
     )
+  })
+})
+
+describe("validateFilesTarget", () => {
+  type File = Parameters<typeof validateFilesTarget>[0][number]
+  const cwd = "/project"
+
+  const rejectedCases = [
+    [
+      "rejects target-less file whose path escapes root",
+      { type: "registry:ui", path: "ui/../../../../etc/evil.tsx" },
+    ],
+    [
+      "rejects target-less file with absolute escaping path",
+      { type: "registry:lib", path: "/etc/evil.ts" },
+    ],
+    [
+      "still rejects unsafe target",
+      { type: "registry:file", path: "x", target: "../../etc/evil" },
+    ],
+  ] satisfies Array<[string, File]>
+
+  it.each(rejectedCases)("%s", (_name, file) => {
+    expect(() => validateFilesTarget([file], cwd)).toThrow(/unsafe file path/)
+  })
+
+  const allowedCases = [
+    [
+      "allows normal target-less file",
+      { type: "registry:ui", path: "ui/button.tsx" },
+    ],
+    [
+      "allows normal nested target-less path",
+      { type: "registry:ui", path: "registry/new-york-v4/ui/button.tsx" },
+    ],
+    [
+      "allows safe target",
+      { type: "registry:file", path: "x", target: "components/ui/x.tsx" },
+    ],
+  ] satisfies Array<[string, File]>
+
+  it.each(allowedCases)("%s", (_name, file) => {
+    expect(() => validateFilesTarget([file], cwd)).not.toThrow()
   })
 })

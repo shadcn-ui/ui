@@ -45,4 +45,12 @@ tsconfig.tsbuildinfo
 .playwright-mcp
 .playwright-cli
 shadcn-workspace
+plans
+
+# vitest browser mode writes these only on test failure.
+__screenshots__
 .codex-artifacts
+.tmp*
+
+CONTEXT.md
+docs/adr
