@@ -305,6 +305,30 @@ describe("include guards", () => {
     ).rejects.toThrow(/stay inside the source registry root/)
   })
 
+  it("rejects a root registry file that resolves outside the source root when the registry has no include array", async () => {
+    // Same containment guard as above, but exercised on the include-less path:
+    // a root registry.json with no `include` array skips the include-walking
+    // branch entirely, so this confirms containment is still enforced there.
+    const reader = createReader({
+      "../outside/registry.json": JSON.stringify({
+        name: "example",
+        homepage: "https://example.com",
+        items: [{ name: "button", type: "registry:ui" }],
+      }),
+    })
+
+    await expect(
+      loadRegistryCatalogFromSource(reader, {
+        registryFile: "../outside/registry.json",
+      })
+    ).rejects.toThrow(RegistryValidationError)
+    await expect(
+      loadRegistryCatalogFromSource(reader, {
+        registryFile: "../outside/registry.json",
+      })
+    ).rejects.toThrow(/stay inside the source registry root/)
+  })
+
   it("rejects an include cycle", async () => {
     // A genuine two-distinct-file cycle (A includes B, B includes A) is not
     // reachable through the exported functions: include paths can never
