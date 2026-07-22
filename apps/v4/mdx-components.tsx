@@ -175,7 +175,7 @@ export const mdxComponents = {
   // Typeset tables stay real tables and wrap to fit; wrap them to scroll
   // wide ones horizontally instead.
   table: (props: React.ComponentProps<"table">) => (
-    <div className="typeset-scroll scroll-fade-x scrollbar-none">
+    <div className="typeset-scroll scroll-fade-x">
       <table {...props} />
     </div>
   ),
