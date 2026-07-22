@@ -1025,7 +1025,7 @@
     "url": "https://flowkit-ui.vzkiss.com/r/{name}.json",
     "description": "Opinionated, accessible components on Base UI and shadcn-style primitives — starting with a Creatable Combobox."
   },  
-  {
+   {
     "name": "@shadcndashboard",
     "homepage": "https://shadcndashboard.dev",
     "url": "https://shadcndashboard.dev/r/{name}.json",
