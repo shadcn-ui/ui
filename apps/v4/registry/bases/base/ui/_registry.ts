@@ -351,7 +351,7 @@ export const ui: Registry["items"] = [
   {
     name: "drawer",
     type: "registry:ui",
-    dependencies: ["vaul"],
+    dependencies: ["@base-ui/react"],
     files: [
       {
         path: "ui/drawer.tsx",
@@ -363,7 +363,7 @@ export const ui: Registry["items"] = [
         docs: "https://ui.shadcn.com/docs/components/base/drawer",
         examples:
           "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/drawer-example.tsx",
-        api: "https://vaul.emilkowal.ski/getting-started",
+        api: "https://base-ui.com/react/components/drawer.md",
       },
     },
   },
@@ -1021,5 +1021,58 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         api: "https://base-ui.com/react/utils/direction-provider.md",
       },
     },
+  },
+  {
+    name: "attachment",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/attachment.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "bubble",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/bubble.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "message-scroller",
+    type: "registry:ui",
+    dependencies: ["@shadcn/react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/message-scroller.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "marker",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/marker.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "message",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/message.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
 ]
