@@ -1,13 +1,13 @@
-import { describe, expect, test } from "vitest"
+import type { Config } from "@/src/utils/get-config"
+import { describe, expect, it } from "vitest"
 
-import {
-  applyColorMapping,
-  splitClassName,
-} from "../../src/utils/transformers/transform-css-vars"
-import baseColor from "../fixtures/colors/slate.json"
+import { transform } from "."
+import baseColor from "../../../test/fixtures/colors/slate.json"
+import stone from "../../../test/fixtures/colors/stone.json"
+import { applyColorMapping, splitClassName } from "./transform-css-vars"
 
 describe("split className", () => {
-  test.each([
+  it.each([
     {
       input: "bg-popover",
       output: [null, "bg-popover", null],
@@ -50,7 +50,7 @@ describe("split className", () => {
 })
 
 describe("apply color mapping", async () => {
-  test.each([
+  it.each([
     {
       input: "bg-background text-foreground",
       output: "bg-white text-slate-950 dark:bg-slate-950 dark:text-slate-50",
@@ -81,4 +81,98 @@ describe("apply color mapping", async () => {
   ])(`applyColorMapping($input) -> $output`, ({ input, output }) => {
     expect(applyColorMapping(input, baseColor.inlineColors)).toBe(output)
   })
+})
+
+it("transform css vars", async () => {
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+export function Foo() {
+	return <div className="bg-background hover:bg-muted text-primary-foreground sm:focus:text-accent-foreground">foo</div>
+}"
+    `,
+      config: {
+        tsx: true,
+        tailwind: {
+          baseColor: "stone",
+          cssVariables: true,
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      } as Config,
+      baseColor: stone,
+    })
+  ).toMatchSnapshot()
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+export function Foo() {
+	return <div className="bg-background hover:bg-muted text-primary-foreground sm:focus:text-accent-foreground">foo</div>
+}"
+    `,
+      config: {
+        tsx: true,
+        tailwind: {
+          baseColor: "stone",
+          cssVariables: false,
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      } as Config,
+      baseColor: stone,
+    })
+  ).toMatchSnapshot()
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+export function Foo() {
+	return <div className={cn("bg-background hover:bg-muted", true && "text-primary-foreground sm:focus:text-accent-foreground")}>foo</div>
+}"
+    `,
+      config: {
+        tsx: true,
+        tailwind: {
+          baseColor: "stone",
+          cssVariables: false,
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      } as Config,
+      baseColor: stone,
+    })
+  ).toMatchSnapshot()
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+export function Foo() {
+	return <div className={cn("bg-background border border-input")}>foo</div>
+}"
+    `,
+      config: {
+        tsx: true,
+        tailwind: {
+          baseColor: "stone",
+          cssVariables: false,
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      } as Config,
+      baseColor: stone,
+    })
+  ).toMatchSnapshot()
 })
