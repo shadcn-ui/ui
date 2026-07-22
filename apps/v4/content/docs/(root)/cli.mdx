@@ -426,11 +426,49 @@ Arguments:
   path             optional path or glob pattern to migrate.
 
 Options:
-  -c, --cwd <cwd>  the working directory. defaults to the current directory.
-  -l, --list       list all migrations. (default: false)
-  -y, --yes        skip confirmation prompt. (default: false)
-  -h, --help       display help for command
+  -c, --cwd <cwd>       the working directory. defaults to the current directory.
+  -l, --list            list all migrations. (default: false)
+  -y, --yes             skip confirmation prompt. (default: false)
+  -f, --from <library>  the icon library to migrate from (icons migration only).
+  -t, --to <library>    the icon library to migrate to (icons migration only).
+  -h, --help            display help for command
 ```
+
+---
+
+### migrate icons
+
+The `icons` migration moves your components from one icon library to another.
+
+```bash
+npx shadcn@latest migrate icons
+```
+
+This will prompt you for the source and target libraries, rewrite icon imports and JSX usage in your `ui` directory, install the target library and update `iconLibrary` in your `components.json` so future `npx shadcn add` installs use the new library.
+
+The following libraries are supported: `lucide`, `tabler`, `hugeicons`, `phosphor`, `remixicon` and `radix` (legacy).
+
+**Non-interactive**
+
+Use `--from` and `--to` to skip the prompts:
+
+```bash
+npx shadcn@latest migrate icons --from lucide --to phosphor --yes
+```
+
+**Migrate specific files**
+
+You can migrate specific files or use glob patterns. Scoped runs do not update `components.json`.
+
+```bash
+# Migrate a specific file.
+npx shadcn@latest migrate icons src/components/ui/button.tsx --from lucide --to tabler
+
+# Migrate files matching a glob pattern.
+npx shadcn@latest migrate icons "src/components/**" --from lucide --to tabler
+```
+
+Icons without an equivalent in the target library are left untouched and reported at the end of the migration.
 
 ---
 

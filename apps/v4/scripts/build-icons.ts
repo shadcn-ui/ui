@@ -5,9 +5,16 @@ import { iconLibraries, type IconLibraryName } from "shadcn/icons"
 
 type IconUsage = Record<IconLibraryName, Set<string>>
 
+// Canonical (lucide) icon name -> { library: icon name }.
+type IconMapping = Record<string, Record<string, string>>
+
 function findTsxFiles(dir: string) {
   const files: string[] = []
-  const entries = fs.readdirSync(dir, { withFileTypes: true })
+  // Sort for a deterministic scan order: mapping conflicts resolve to the
+  // first occurrence, which must not depend on filesystem enumeration order.
+  const entries = fs
+    .readdirSync(dir, { withFileTypes: true })
+    .sort((a, b) => a.name.localeCompare(b.name))
 
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name)
@@ -26,6 +33,10 @@ function scanIconUsage() {
     acc[key as IconLibraryName] = new Set()
     return acc
   }, {} as IconUsage)
+  const iconMapping: IconMapping = {}
+  // Keyed to dedupe: the same conflict shows up once per placeholder
+  // occurrence across bases, but only the first file is worth reporting.
+  const warnings = new Map<string, string>()
 
   const registryBasesDir = path.join(process.cwd(), "registry/bases")
   const files = findTsxFiles(registryBasesDir)
@@ -43,6 +54,7 @@ function scanIconUsage() {
     let match
     while ((match = iconPlaceholderRegex.exec(content)) !== null) {
       const fullMatch = match[0]
+      const placeholderIcons: Partial<Record<IconLibraryName, string>> = {}
 
       for (const [libraryName, config] of Object.entries(iconLibraries)) {
         const attrMatch = fullMatch.match(
@@ -50,12 +62,43 @@ function scanIconUsage() {
         )
         if (attrMatch) {
           iconUsage[libraryName as IconLibraryName].add(attrMatch[1])
+          placeholderIcons[libraryName as IconLibraryName] = attrMatch[1]
         }
+      }
+
+      // Lucide is the canonical key: every placeholder has a lucide prop.
+      const canonical = placeholderIcons.lucide
+      if (!canonical) {
+        const relativeFile = path.relative(process.cwd(), file)
+        warnings.set(
+          `missing-lucide|${relativeFile}`,
+          `IconPlaceholder without a lucide prop in ${relativeFile}`
+        )
+        continue
+      }
+
+      const entry = (iconMapping[canonical] ??= {})
+      for (const [libraryName, iconName] of Object.entries(placeholderIcons)) {
+        if (entry[libraryName] && entry[libraryName] !== iconName) {
+          const key = `conflict|${libraryName}|${canonical}|${iconName}`
+          if (!warnings.has(key)) {
+            warnings.set(
+              key,
+              `Conflicting ${libraryName} mapping for ${canonical}: keeping ${entry[libraryName]}, ignoring ${iconName} (first seen in ${path.relative(process.cwd(), file)})`
+            )
+          }
+          continue
+        }
+        entry[libraryName] = iconName
       }
     }
   }
 
-  return iconUsage
+  return {
+    iconUsage,
+    iconMapping,
+    warnings: Array.from(warnings.values()),
+  }
 }
 
 function generateIconFiles(iconUsage: IconUsage) {
@@ -96,12 +139,92 @@ ${icons.map((icon) => `export { ${icon} } from "${config.export}"`).join("\n")}
   }
 }
 
+function generateIconMapping(iconMapping: IconMapping, warnings: string[]) {
+  const legacyPath = path.join(
+    process.cwd(),
+    "registry/icons/legacy-mapping.json"
+  )
+  const legacy: IconMapping = JSON.parse(fs.readFileSync(legacyPath, "utf-8"))
+
+  const output: IconMapping = {}
+  const scanned: IconMapping = { ...iconMapping }
+  const libraryOrder = Object.keys(iconLibraries)
+
+  // Legacy entries come first with their lucide/radix values untouched:
+  // published CLI versions reverse-lookup this file by first match, so
+  // entry order and legacy values are a compatibility contract.
+  for (const [canonical, legacyEntry] of Object.entries(legacy)) {
+    const entry: Record<string, string> = { ...legacyEntry }
+
+    // Registry code uses lucide's suffixed aliases (e.g. CheckIcon for Check).
+    const scannedKey =
+      canonical in scanned
+        ? canonical
+        : `${canonical}Icon` in scanned
+          ? `${canonical}Icon`
+          : undefined
+
+    if (scannedKey) {
+      for (const library of libraryOrder) {
+        if (!entry[library] && scanned[scannedKey][library]) {
+          entry[library] = scanned[scannedKey][library]
+        }
+      }
+      delete scanned[scannedKey]
+    }
+
+    output[canonical] = entry
+  }
+
+  for (const canonical of Object.keys(scanned).sort()) {
+    const entry: Record<string, string> = {}
+    for (const library of libraryOrder) {
+      if (scanned[canonical][library]) {
+        entry[library] = scanned[canonical][library]
+      }
+    }
+    output[canonical] = entry
+  }
+
+  const outputPath = path.join(process.cwd(), "public/r/icons/index.json")
+  const content = JSON.stringify(output, null, 2)
+
+  if (
+    fs.existsSync(outputPath) &&
+    fs.readFileSync(outputPath, "utf-8") === content
+  ) {
+    return
+  }
+
+  fs.writeFileSync(outputPath, content)
+  console.log(
+    `✓ Generated icon mapping: ${Object.keys(output).length} icons (${
+      Object.keys(legacy).length
+    } legacy)`
+  )
+
+  // Only surface scan warnings when the mapping actually changed: they are
+  // informational (first occurrence wins) and would otherwise repeat on
+  // every rebuild in watch mode.
+  if (warnings.length > 0) {
+    if (isVerbose) {
+      warnings.forEach((warning) => console.warn(`⚠ ${warning}`))
+    } else {
+      console.warn(
+        `⚠ ${warnings.length} icon mapping conflicts (first occurrence wins). Run with --verbose for details.`
+      )
+    }
+  }
+}
+
 function main() {
-  const iconUsage = scanIconUsage()
+  const { iconUsage, iconMapping, warnings } = scanIconUsage()
   generateIconFiles(iconUsage)
+  generateIconMapping(iconMapping, warnings)
 }
 
 const isWatchMode = process.argv.includes("--watch")
+const isVerbose = process.argv.includes("--verbose")
 
 if (isWatchMode) {
   const REGISTRY_DIR = path.join(process.cwd(), "registry/bases")

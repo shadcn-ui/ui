@@ -28,6 +28,8 @@ export const migrateOptionsSchema = z.object({
   cwd: z.string(),
   list: z.boolean(),
   yes: z.boolean(),
+  from: z.string().optional(),
+  to: z.string().optional(),
   migration: z
     .string()
     .refine(
@@ -54,6 +56,14 @@ export const migrate = new Command()
   )
   .option("-l, --list", "list all migrations.", false)
   .option("-y, --yes", "skip confirmation prompt.", false)
+  .option(
+    "-f, --from <library>",
+    "the icon library to migrate from (icons migration only)."
+  )
+  .option(
+    "-t, --to <library>",
+    "the icon library to migrate to (icons migration only)."
+  )
   .action(async (migration, migratePath, opts) => {
     try {
       const options = migrateOptionsSchema.parse({
@@ -62,6 +72,8 @@ export const migrate = new Command()
         path: migratePath,
         list: opts.list,
         yes: opts.yes,
+        from: opts.from,
+        to: opts.to,
       })
 
       if (options.list || !options.migration) {
@@ -96,7 +108,12 @@ export const migrate = new Command()
       }
 
       if (options.migration === "icons") {
-        await migrateIcons(config)
+        await migrateIcons(config, {
+          from: options.from,
+          to: options.to,
+          path: options.path,
+          yes: options.yes,
+        })
       }
 
       if (options.migration === "radix") {
