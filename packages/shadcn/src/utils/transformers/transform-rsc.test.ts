@@ -1,8 +1,9 @@
-import { expect, test } from "vitest"
+import type { Config } from "@/src/utils/get-config"
+import { expect, it } from "vitest"
 
-import { transform } from "../../src/utils/transformers"
+import { transform } from "."
 
-test("transform rsc", async () => {
+it("transform rsc", async () => {
   expect(
     await transform({
       filename: "test.ts",
@@ -12,7 +13,7 @@ import { Foo } from "bar"
       config: {
         tsx: true,
         rsc: true,
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 
@@ -27,7 +28,7 @@ import { Foo } from "bar"
       config: {
         tsx: true,
         rsc: true,
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 
@@ -42,7 +43,7 @@ import { Foo } from "bar"
       config: {
         tsx: true,
         rsc: false,
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 
@@ -59,7 +60,7 @@ import { Foo } from "bar"
       config: {
         tsx: true,
         rsc: false,
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 
@@ -75,7 +76,7 @@ import { Foo } from 'bar'
       config: {
         tsx: true,
         rsc: true,
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 
@@ -90,7 +91,7 @@ import { Foo } from 'bar'
       config: {
         tsx: true,
         rsc: false,
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 
@@ -107,7 +108,7 @@ import { Foo } from 'bar'
       config: {
         tsx: true,
         rsc: false,
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 })

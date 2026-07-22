@@ -1,0 +1,185 @@
+import type { Config } from "@/src/utils/get-config"
+import { describe, expect, it } from "vitest"
+
+import { transform } from "."
+import { applyPrefix, applyPrefixesCss } from "./transform-tw-prefix"
+import stone from "../../../test/fixtures/colors/stone.json"
+
+describe("apply tailwind prefix v3", () => {
+  it.each([
+    {
+      input: "bg-slate-800 text-gray-500",
+      output: "tw-bg-slate-800 tw-text-gray-500",
+    },
+    {
+      input: "hover:dark:bg-background dark:text-foreground",
+      output: "hover:dark:tw-bg-background dark:tw-text-foreground",
+    },
+    {
+      input:
+        "rounded-lg border border-slate-200 bg-white text-slate-950 shadow-sm dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
+      output:
+        "tw-rounded-lg tw-border tw-border-slate-200 tw-bg-white tw-text-slate-950 tw-shadow-sm dark:tw-border-slate-800 dark:tw-bg-slate-950 dark:tw-text-slate-50",
+    },
+    {
+      input:
+        "text-red-500 border-red-500/50 dark:border-red-500 [&>svg]:text-red-500 text-red-500 dark:text-red-900 dark:border-red-900/50 dark:dark:border-red-900 dark:[&>svg]:text-red-900 dark:text-red-900",
+      output:
+        "tw-text-red-500 tw-border-red-500/50 dark:tw-border-red-500 [&>svg]:tw-text-red-500 tw-text-red-500 dark:tw-text-red-900 dark:tw-border-red-900/50 dark:dark:tw-border-red-900 dark:[&>svg]:tw-text-red-900 dark:tw-text-red-900",
+    },
+    {
+      input:
+        "flex h-full w-full items-center justify-center rounded-full bg-muted",
+      output:
+        "tw-flex tw-h-full tw-w-full tw-items-center tw-justify-center tw-rounded-full tw-bg-muted",
+    },
+    {
+      input:
+        "absolute right-4 top-4 bg-primary rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary",
+      output:
+        "tw-absolute tw-right-4 tw-top-4 tw-bg-primary tw-rounded-sm tw-opacity-70 tw-ring-offset-background tw-transition-opacity hover:tw-opacity-100 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-ring focus:tw-ring-offset-2 disabled:tw-pointer-events-none data-[state=open]:tw-bg-secondary",
+    },
+  ])(`applyTwPrefix($input) -> $output`, ({ input, output }) => {
+    expect(applyPrefix(input, "tw-", "v3")).toBe(output)
+  })
+})
+
+describe("apply tailwind prefix v4", () => {
+  it.each([
+    {
+      input: "bg-slate-800 text-gray-500",
+      output: "tw:bg-slate-800 tw:text-gray-500",
+    },
+    {
+      input: "hover:dark:bg-background dark:text-foreground",
+      output: "tw:hover:dark:bg-background tw:dark:text-foreground",
+    },
+    {
+      input:
+        "rounded-lg border border-slate-200 bg-white text-slate-950 shadow-sm dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
+      output:
+        "tw:rounded-lg tw:border tw:border-slate-200 tw:bg-white tw:text-slate-950 tw:shadow-sm tw:dark:border-slate-800 tw:dark:bg-slate-950 tw:dark:text-slate-50",
+    },
+    {
+      input:
+        "text-red-500 border-red-500/50 dark:border-red-500 [&>svg]:text-red-500 text-red-500 dark:text-red-900 dark:border-red-900/50 dark:dark:border-red-900 dark:[&>svg]:text-red-900 dark:text-red-900",
+      output:
+        "tw:text-red-500 tw:border-red-500/50 tw:dark:border-red-500 tw:[&>svg]:text-red-500 tw:text-red-500 tw:dark:text-red-900 tw:dark:border-red-900/50 tw:dark:dark:border-red-900 tw:dark:[&>svg]:text-red-900 tw:dark:text-red-900",
+    },
+    {
+      input:
+        "flex h-full w-full items-center justify-center rounded-full bg-muted",
+      output:
+        "tw:flex tw:h-full tw:w-full tw:items-center tw:justify-center tw:rounded-full tw:bg-muted",
+    },
+    {
+      input:
+        "absolute right-4 top-4 bg-primary rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary",
+      output:
+        "tw:absolute tw:right-4 tw:top-4 tw:bg-primary tw:rounded-sm tw:opacity-70 tw:ring-offset-background tw:transition-opacity tw:hover:opacity-100 tw:focus:outline-none tw:focus:ring-2 tw:focus:ring-ring tw:focus:ring-offset-2 tw:disabled:pointer-events-none tw:data-[state=open]:bg-secondary",
+    },
+  ])(`applyTwPrefix($input) -> $output`, ({ input, output }) => {
+    expect(applyPrefix(input, "tw", "v4")).toBe(output)
+  })
+})
+
+it("transform tailwind prefix", async () => {
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+            export function Foo() {
+                return <div className="bg-background hover:bg-muted text-primary-foreground sm:focus:text-accent-foreground">foo</div>
+            }
+        `,
+      config: {
+        tailwind: {
+          baseColor: "stone",
+          prefix: "tw:",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      } as Config,
+      baseColor: "stone" as any,
+    })
+  ).toMatchSnapshot()
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+export function Foo() {
+	return <div className="bg-background hover:bg-muted text-primary-foreground sm:focus:text-accent-foreground">foo</div>
+}
+    `,
+      config: {
+        tailwind: {
+          baseColor: "stone",
+          cssVariables: false,
+          prefix: "tw:",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      } as Config,
+      baseColor: stone,
+    })
+  ).toMatchSnapshot()
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+export function Foo() {
+	return <div className={cn("bg-background hover:bg-muted", true && "text-primary-foreground sm:focus:text-accent-foreground")}>foo</div>
+}
+    `,
+      config: {
+        tailwind: {
+          baseColor: "stone",
+          cssVariables: false,
+          prefix: "tw:",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      } as Config,
+      baseColor: stone,
+    })
+  ).toMatchSnapshot()
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+export function Foo() {
+	return <div className={cn('bg-background hover:bg-muted', true && 'text-primary-foreground sm:focus:text-accent-foreground')}>foo</div>
+}
+    `,
+      config: {
+        tailwind: {
+          baseColor: "stone",
+          cssVariables: false,
+          prefix: "tw:",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      } as Config,
+      baseColor: stone,
+    })
+  ).toMatchSnapshot()
+
+  expect(
+    applyPrefixesCss(
+      "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n \n@layer base {\n  :root {\n    --background: 0 0% 100%;\n    --foreground: 224 71.4% 4.1%;\n \n    --muted: 220 14.3% 95.9%;\n    --muted-foreground: 220 8.9% 46.1%;\n \n    --popover: 0 0% 100%;\n    --popover-foreground: 224 71.4% 4.1%;\n \n    --card: 0 0% 100%;\n    --card-foreground: 224 71.4% 4.1%;\n \n    --border: 220 13% 91%;\n    --input: 220 13% 91%;\n \n    --primary: 220.9 39.3% 11%;\n    --primary-foreground: 210 20% 98%;\n \n    --secondary: 220 14.3% 95.9%;\n    --secondary-foreground: 220.9 39.3% 11%;\n \n    --accent: 220 14.3% 95.9%;\n    --accent-foreground: 220.9 39.3% 11%;\n \n    --destructive: 0 84.2% 60.2%;\n    --destructive-foreground: 210 20% 98%;\n \n    --ring: 217.9 10.6% 64.9%;\n \n    --radius: 0.5rem;\n  }\n \n  .dark {\n    --background: 224 71.4% 4.1%;\n    --foreground: 210 20% 98%;\n \n    --muted: 215 27.9% 16.9%;\n    --muted-foreground: 217.9 10.6% 64.9%;\n \n    --popover: 224 71.4% 4.1%;\n    --popover-foreground: 210 20% 98%;\n \n    --card: 224 71.4% 4.1%;\n    --card-foreground: 210 20% 98%;\n \n    --border: 215 27.9% 16.9%;\n    --input: 215 27.9% 16.9%;\n \n    --primary: 210 20% 98%;\n    --primary-foreground: 220.9 39.3% 11%;\n \n    --secondary: 215 27.9% 16.9%;\n    --secondary-foreground: 210 20% 98%;\n \n    --accent: 215 27.9% 16.9%;\n    --accent-foreground: 210 20% 98%;\n \n    --destructive: 0 62.8% 30.6%;\n    --destructive-foreground: 0 85.7% 97.3%;\n \n    --ring: 215 27.9% 16.9%;\n  }\n}\n \n@layer base {\n  * {\n    @apply border-border;\n  }\n  body {\n    @apply bg-background text-foreground;\n  }\n}",
+      "tw:",
+      "v4"
+    )
+  ).toMatchSnapshot()
+})
