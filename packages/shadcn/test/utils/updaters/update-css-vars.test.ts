@@ -1192,6 +1192,76 @@ describe("transformCssVarsV4", () => {
               "
     `)
   })
+
+  test("should add css vars to an empty css file", async () => {
+    expect(
+      await transformCssVars(
+        ``,
+        {
+          light: {
+            background: "0 0% 100%",
+          },
+          dark: {
+            background: "240 10% 3.9%",
+          },
+        },
+        { tailwind: { cssVariables: true } },
+        { tailwindVersion: "v4" }
+      )
+    ).toMatchInlineSnapshot(`
+      "
+      @custom-variant dark (&:is(.dark *));
+
+      :root {
+          --background: hsl(0 0% 100%);
+      }
+
+      .dark {
+          --background: hsl(240 10% 3.9%);
+      }
+
+      @theme inline {
+          --color-background: var(--background);
+      }"
+    `)
+  })
+
+  test("should add css vars to a css file with only whitespace", async () => {
+    expect(
+      await transformCssVars(
+        `
+
+        `,
+        {
+          light: {
+            background: "0 0% 100%",
+          },
+          dark: {
+            background: "240 10% 3.9%",
+          },
+        },
+        { tailwind: { cssVariables: true } },
+        { tailwindVersion: "v4" }
+      )
+    ).toMatchInlineSnapshot(`
+      "
+      @custom-variant dark (&:is(.dark *));
+
+      :root {
+          --background: hsl(0 0% 100%);
+      }
+
+      .dark {
+          --background: hsl(240 10% 3.9%);
+      }
+
+      @theme inline {
+          --color-background: var(--background);
+      }
+
+              "
+    `)
+  })
 })
 
 describe("isLocalHSLValue", () => {
