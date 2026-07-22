@@ -1,10 +1,21 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
+import { REGISTRY_URL } from "@/src/registry/constants"
 import { getFixturesDir } from "@/src/test-helpers"
 import { getConfig, type Config } from "@/src/utils/get-config"
+import { http, HttpResponse } from "msw"
+import { setupServer } from "msw/node"
 import prompts from "prompts"
 import { Project } from "ts-morph"
-import { afterAll, afterEach, describe, expect, it, vi } from "vitest"
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+  expect,
+  it,
+  vi,
+} from "vitest"
 
 import {
   findCommonRoot,
@@ -15,6 +26,31 @@ import {
   toAliasedImport,
   updateFiles,
 } from "./update-files"
+
+import neutralBaseColor from "../../../test/fixtures/colors/neutral.json"
+import slateBaseColor from "../../../test/fixtures/colors/slate.json"
+import zincBaseColor from "../../../test/fixtures/colors/zinc.json"
+
+// updateFiles fetches the configured base color from the registry
+// (getRegistryBaseColor). Mock every base color used by the fixtures /
+// inline configs in this file so tests never touch the live registry.
+const baseColorFixtures = {
+  neutral: neutralBaseColor,
+  zinc: zincBaseColor,
+  slate: slateBaseColor,
+} as const
+
+const server = setupServer(
+  ...Object.entries(baseColorFixtures).map(([baseColor, fixture]) =>
+    http.get(`${REGISTRY_URL}/colors/${baseColor}.json`, () => {
+      return HttpResponse.json(fixture)
+    })
+  )
+)
+
+beforeAll(() => server.listen({ onUnhandledRequest: "error" }))
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
 
 vi.mock("fs/promises", async () => {
   const actual = (await vi.importActual(
