@@ -5,8 +5,6 @@
 
 // Anchored and free of overlapping quantifiers to avoid backtracking blowups.
 const IMPORT_REGEX = /^import\s+{([^}]+)}\s+from\s+['"]([^'"]+)['"]/
-const USAGE_REGEX = /<(\w+)([^>]*)\/>/
-const ATTRIBUTE_REGEX = /([\w-]+)=({[^}]*}|"[^"]*"|'[^']*')/g
 
 export interface ParsedImport {
   moduleSpecifier: string
@@ -49,22 +47,30 @@ export function getIconModuleSpecifier(template: string) {
   )?.moduleSpecifier
 }
 
+// The usage template is parsed with a hand-rolled scanner instead of
+// regexes: these helpers are part of the public API, so parsing must stay
+// linear on arbitrary input (no backtracking).
 export function parseUsageTemplate(usage: string): ParsedUsage {
-  const match = usage.match(USAGE_REGEX)
+  const start = usage.indexOf("<")
+  const end = usage.indexOf("/>", start)
 
-  if (!match) {
+  if (start === -1 || end === -1) {
     return { componentName: "ICON", attributes: {} }
   }
 
-  const [, componentName, rawAttributes] = match
+  const inner = usage.slice(start + 1, end).trim()
+  const nameEnd = inner.search(/[^\w]/)
+  const componentName = nameEnd === -1 ? inner : inner.slice(0, nameEnd)
+  const rawAttributes = nameEnd === -1 ? "" : inner.slice(nameEnd)
+
+  if (!componentName) {
+    return { componentName: "ICON", attributes: {} }
+  }
+
   const attributes: Record<string, string> = {}
   let iconAttribute: string | undefined
 
-  for (const attributeMatch of Array.from(
-    rawAttributes.matchAll(ATTRIBUTE_REGEX)
-  )) {
-    const [, name, value] = attributeMatch
-
+  for (const [name, value] of parseAttributeTokens(rawAttributes)) {
     if (value === "{ICON}") {
       iconAttribute = name
       continue
@@ -74,4 +80,49 @@ export function parseUsageTemplate(usage: string): ParsedUsage {
   }
 
   return { componentName, iconAttribute, attributes }
+}
+
+const NAME_CHAR = /[\w-]/
+
+// Tokenizes `name={value}` / `name="value"` / `name='value'` pairs in a
+// single linear pass.
+function parseAttributeTokens(raw: string): Array<[string, string]> {
+  const tokens: Array<[string, string]> = []
+  let index = 0
+
+  while (index < raw.length) {
+    if (!NAME_CHAR.test(raw[index])) {
+      index++
+      continue
+    }
+
+    const nameStart = index
+    while (index < raw.length && NAME_CHAR.test(raw[index])) {
+      index++
+    }
+    const name = raw.slice(nameStart, index)
+
+    if (raw[index] !== "=") {
+      continue
+    }
+
+    index++
+    const open = raw[index]
+    const close = open === "{" ? "}" : open === '"' || open === "'" ? open : ""
+
+    if (!close) {
+      continue
+    }
+
+    const closeIndex = raw.indexOf(close, index + 1)
+
+    if (closeIndex === -1) {
+      break
+    }
+
+    tokens.push([name, raw.slice(index, closeIndex + 1)])
+    index = closeIndex + 1
+  }
+
+  return tokens
 }
