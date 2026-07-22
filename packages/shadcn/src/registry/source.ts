@@ -80,6 +80,8 @@ async function readSourceRegistryWithIncludes(
     source?: string
   } = {}
 ) {
+  validateRegistryFileWithinRoot(registryFile)
+
   const content = await readRegistryJson(registryFile, reader, options)
   const rootRegistry = parseRegistry(content, registryFile)
   validateRootRegistry(rootRegistry, registryFile)

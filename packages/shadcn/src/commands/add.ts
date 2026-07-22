@@ -94,16 +94,11 @@ export const add = new Command()
       }
 
       let itemType: z.infer<typeof registryItemTypeSchema> | undefined
-      let shouldInstallStyleIndex = true
       if (components.length > 0) {
         const [registryItem] = await getRegistryItems([components[0]], {
           config: initialConfig,
         })
         itemType = registryItem?.type
-        shouldInstallStyleIndex =
-          itemType !== "registry:theme" &&
-          itemType !== "registry:style" &&
-          itemType !== "registry:base"
 
         if (isUniversalRegistryItem(registryItem) && !isDryRun) {
           await addComponents(components, initialConfig, options)

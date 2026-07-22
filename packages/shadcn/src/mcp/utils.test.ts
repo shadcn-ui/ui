@@ -32,43 +32,34 @@ const minimalResults: SearchResults = {
 }
 
 describe("formatSearchResultsWithPagination", () => {
-  // KNOWN BUG (plans/005): npxShadcn is async but interpolated without await
-  // at src/mcp/utils.ts:49, so output contains "[object Promise]" instead of
-  // a runnable command. When someone fixes the bug, this it.fails test will
-  // start failing — flip it to a plain it() at that point.
-  it.fails("renders a runnable add command (currently broken)", () => {
-    const output = formatSearchResultsWithPagination(minimalResults)
+  it("renders a runnable add command", async () => {
+    const output = await formatSearchResultsWithPagination(minimalResults)
     expect(output).toContain(
       "Add command: `npx shadcn@latest add @shadcn/button`"
     )
   })
 
-  it("pins the current broken output (contains [object Promise])", () => {
-    const output = formatSearchResultsWithPagination(minimalResults)
-    expect(output).toContain("Add command: `[object Promise]`")
-  })
-
-  it("includes a header without query or registries", () => {
-    const output = formatSearchResultsWithPagination(minimalResults)
+  it("includes a header without query or registries", async () => {
+    const output = await formatSearchResultsWithPagination(minimalResults)
     expect(output).toContain("Found 1 items:")
   })
 
-  it("includes the query in the header when provided", () => {
-    const output = formatSearchResultsWithPagination(minimalResults, {
+  it("includes the query in the header when provided", async () => {
+    const output = await formatSearchResultsWithPagination(minimalResults, {
       query: "button",
     })
     expect(output).toContain('Found 1 items matching "button":')
   })
 
-  it("includes registries in the header when provided", () => {
-    const output = formatSearchResultsWithPagination(minimalResults, {
+  it("includes registries in the header when provided", async () => {
+    const output = await formatSearchResultsWithPagination(minimalResults, {
       registries: ["@shadcn", "@acme"],
     })
     expect(output).toContain("Found 1 items in registries @shadcn, @acme:")
   })
 
-  it("includes both query and registries in the header when provided", () => {
-    const output = formatSearchResultsWithPagination(minimalResults, {
+  it("includes both query and registries in the header when provided", async () => {
+    const output = await formatSearchResultsWithPagination(minimalResults, {
       query: "button",
       registries: ["@shadcn"],
     })
@@ -77,42 +68,42 @@ describe("formatSearchResultsWithPagination", () => {
     )
   })
 
-  it("clamps the showing range to the total", () => {
+  it("clamps the showing range to the total", async () => {
     const results: SearchResults = {
       items: [],
       pagination: { total: 25, offset: 20, limit: 10, hasMore: false },
     }
-    const output = formatSearchResultsWithPagination(results)
+    const output = await formatSearchResultsWithPagination(results)
     expect(output).toContain("Showing items 21-25 of 25:")
   })
 
-  it("shows the full range when there is no clamping needed", () => {
-    const output = formatSearchResultsWithPagination(minimalResults)
+  it("shows the full range when there is no clamping needed", async () => {
+    const output = await formatSearchResultsWithPagination(minimalResults)
     expect(output).toContain("Showing items 1-1 of 1:")
   })
 
-  it("adds an offset hint when hasMore is true", () => {
+  it("adds an offset hint when hasMore is true", async () => {
     const results: SearchResults = {
       items: [],
       pagination: { total: 25, offset: 0, limit: 10, hasMore: true },
     }
-    const output = formatSearchResultsWithPagination(results)
+    const output = await formatSearchResultsWithPagination(results)
     expect(output).toContain(
       "More items available. Use offset: 10 to see the next page."
     )
   })
 
-  it("does not add an offset hint when hasMore is false", () => {
-    const output = formatSearchResultsWithPagination(minimalResults)
+  it("does not add an offset hint when hasMore is false", async () => {
+    const output = await formatSearchResultsWithPagination(minimalResults)
     expect(output).not.toContain("More items available")
   })
 
-  it("includes type, description, and registry in item lines", () => {
-    const output = formatSearchResultsWithPagination(minimalResults)
+  it("includes type, description, and registry in item lines", async () => {
+    const output = await formatSearchResultsWithPagination(minimalResults)
     expect(output).toContain("- button (registry:ui) - A button. [@shadcn]")
   })
 
-  it("omits the registry bracket when registry is not present", () => {
+  it("omits the registry bracket when registry is not present", async () => {
     const results: SearchResults = {
       items: [
         {
@@ -123,7 +114,7 @@ describe("formatSearchResultsWithPagination", () => {
       ],
       pagination: { total: 1, offset: 0, limit: 10, hasMore: false },
     }
-    const output = formatSearchResultsWithPagination(results)
+    const output = await formatSearchResultsWithPagination(results)
     expect(output).not.toContain("[]")
     expect(output).toContain("- button")
   })
