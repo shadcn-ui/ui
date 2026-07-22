@@ -231,6 +231,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'><rect x='5' y='5' width='90' height='90' fill='var(--background)' stroke='var(--foreground)' stroke-width='6'/><rect x='20' y='20' width='25' height='25' fill='var(--foreground)'/><rect x='55' y='20' width='25' height='25' fill='var(--foreground)'/><rect x='20' y='55' width='25' height='25' fill='var(--foreground)'/><rect x='55' y='55' width='25' height='25' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@brainless",
+    "homepage": "https://brainless.swerdlow.dev",
+    "url": "https://brainless.swerdlow.dev/r/{name}.json",
+    "description": "Claude Code, Codex, and Grok interfaces as shadcn components — accessible React terminal-agent UI for docs, demos, and product surfaces.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='var(--foreground)'><rect x='5' y='5' width='14' height='14'/></svg>"
+  },
+  {
     "name": "@bundui",
     "homepage": "https://bundui.io",
     "url": "https://bundui.io/r/{name}.json",
@@ -832,6 +839,13 @@
     "url": "https://mksingh.dev/r/{name}.json",
     "description": "A personal registry of production-ready ShadCN components and utilities. Everything is built to drop into your existing ShadCN project with no extra setup.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' class='size-10' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><title>MKSingh</title><style>path{stroke:#000}@media(prefers-color-scheme:dark){path{stroke:#fff}}</style><path stroke-linecap='round' stroke-linejoin='round' d='m21 7.5-2.25-1.313M21 7.5v2.25m0-2.25-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3 2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75 2.25-1.313M12 21.75V19.5m0 2.25-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25'></path></svg>"
+  },
+  {
+    "name": "@moduix-react",
+    "homepage": "https://moduix.dev",
+    "url": "https://moduix.dev/r/react/{name}.json",
+    "description": "Ark-first React components, blocks, and themes with native CSS, available as a package or a shadcn-compatible copy-owned registry.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='48 46 148 118' fill='none'><path d='M65 146V94c0-16.02 12.98-29 29-29 10.8 0 20.72 6.01 25.72 15.59L122 85l2.28-4.41C129.28 71.01 139.2 65 150 65c16.02 0 29 12.98 29 29v52' stroke='var(--foreground)' stroke-width='36' stroke-linecap='round' stroke-linejoin='round'/><path d='M122 80v20' stroke='var(--foreground)' stroke-width='36' stroke-linecap='round'/><circle cx='122' cy='149' r='14' fill='var(--foreground)'/></svg>"
   },
   {
     "name": "@moleculeui",

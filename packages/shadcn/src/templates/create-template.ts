@@ -94,7 +94,7 @@ export function resolveTemplate(
 }
 
 // Get the appropriate install args for the given package manager.
-function getInstallArgs(packageManager: string): string[] {
+export function getInstallArgs(packageManager: string): string[] {
   switch (packageManager) {
     case "pnpm":
       // pnpm enables frozen lockfile in CI by default.
@@ -110,7 +110,7 @@ function getInstallArgs(packageManager: string): string[] {
 }
 
 // Adapt a pnpm-based monorepo template to the target package manager.
-async function adaptWorkspaceConfig(
+export async function adaptWorkspaceConfig(
   projectPath: string,
   packageManager: string
 ) {
@@ -182,7 +182,7 @@ async function getPackageManagerVersion(packageManager: string) {
 
 // Recursively find all package.json files and replace workspace: protocol
 // version specifiers with "*", which npm understands.
-async function rewriteWorkspaceProtocol(dir: string) {
+export async function rewriteWorkspaceProtocol(dir: string) {
   const entries = await fs.readdir(dir, { withFileTypes: true })
   for (const entry of entries) {
     if (entry.name === "node_modules") continue
