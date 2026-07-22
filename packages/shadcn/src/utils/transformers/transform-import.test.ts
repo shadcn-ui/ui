@@ -1,8 +1,9 @@
-import { expect, test } from "vitest"
+import type { Config } from "@/src/utils/get-config"
+import { expect, it } from "vitest"
 
-import { transform } from "../../src/utils/transformers"
+import { transform } from "."
 
-test("transform nested workspace folder for utils, website/src/utils", async () => {
+it("transform nested workspace folder for utils, website/src/utils", async () => {
   expect(
     await transform({
       filename: "test.ts",
@@ -22,7 +23,7 @@ test("transform nested workspace folder for utils, website/src/utils", async () 
           lib: "website/src/lib",
           utils: "website/src/utils",
         },
-      },
+      } as Config,
     })
   ).toMatchInlineSnapshot(`
     "import { Button } from "website/src/components/ui/button"
@@ -32,7 +33,7 @@ test("transform nested workspace folder for utils, website/src/utils", async () 
   `)
 })
 
-test.each([
+it.each([
   {
     name: "bare aliases",
     aliases: {
@@ -66,7 +67,7 @@ import { cn } from "@/lib/utils"
       config: {
         tsx: true,
         aliases,
-      },
+      } as Config,
     })
 
     expect(result).toContain(buttonImport)
@@ -74,7 +75,7 @@ import { cn } from "@/lib/utils"
   }
 )
 
-test("transform import", async () => {
+it("transform import", async () => {
   expect(
     await transform({
       filename: "test.ts",
@@ -96,7 +97,7 @@ import { Foo } from "bar"
           components: "@/components",
           utils: "@/lib/utils",
         },
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 
@@ -118,7 +119,7 @@ import { Foo } from "bar"
           components: "~/src/components",
           utils: "~/lib",
         },
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 
@@ -140,7 +141,7 @@ import { Foo } from "bar"
           components: "~/src/components",
           utils: "~/src/utils",
         },
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 
@@ -163,7 +164,7 @@ import { Foo } from "bar"
           utils: "~/src/utils",
           ui: "~/src/components",
         },
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 
@@ -186,7 +187,7 @@ import { Foo } from "bar"
           utils: "~/src/utils",
           ui: "~/src/ui",
         },
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 
@@ -211,12 +212,12 @@ import { Foo } from "bar"
           components: "@custom-alias/components",
           utils: "@custom-alias/lib/utils",
         },
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 })
 
-test("transform import with configured package-import aliases", async () => {
+it("transform import with configured package-import aliases", async () => {
   expect(
     await transform({
       filename: "test.ts",
@@ -231,7 +232,7 @@ import { cn } from "#app/lib/utils"
           lib: "#app/lib",
           utils: "#app/lib/utils",
         },
-      },
+      } as Config,
     })
   ).toMatchInlineSnapshot(`
     "import { Button } from "#app/components/ui/button"
@@ -240,7 +241,7 @@ import { cn } from "#app/lib/utils"
   `)
 })
 
-test("transform import keeps exact #utils aliases", async () => {
+it("transform import keeps exact #utils aliases", async () => {
   expect(
     await transform({
       filename: "test.ts",
@@ -255,7 +256,7 @@ test("transform import keeps exact #utils aliases", async () => {
           lib: "#lib",
           hooks: "#hooks",
         },
-      },
+      } as Config,
     })
   ).toMatchInlineSnapshot(`
     "import { cn } from "#utils"
@@ -263,7 +264,7 @@ test("transform import keeps exact #utils aliases", async () => {
   `)
 })
 
-test("transform import keeps #lib/utils aliases", async () => {
+it("transform import keeps #lib/utils aliases", async () => {
   expect(
     await transform({
       filename: "test.ts",
@@ -278,7 +279,7 @@ test("transform import keeps #lib/utils aliases", async () => {
           lib: "#lib",
           hooks: "#hooks",
         },
-      },
+      } as Config,
     })
   ).toMatchInlineSnapshot(`
     "import { cn } from "#lib/utils"
@@ -286,7 +287,7 @@ test("transform import keeps #lib/utils aliases", async () => {
   `)
 })
 
-test("transform import for monorepo", async () => {
+it("transform import for monorepo", async () => {
   expect(
     await transform({
       filename: "test.ts",
@@ -308,7 +309,7 @@ import { Foo } from "bar"
           components: "@workspace/ui/components",
           utils: "@workspace/ui/lib/utils",
         },
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 
@@ -333,12 +334,12 @@ import { Foo } from "bar"
           components: "@repo/ui/components",
           utils: "@repo/ui/lib/utils",
         },
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 })
 
-test("transform package import aliases and #registry placeholders", async () => {
+it("transform package import aliases and #registry placeholders", async () => {
   expect(
     await transform({
       filename: "test.ts",
@@ -359,7 +360,7 @@ import { useThing } from "#hooks/use-thing"
           lib: "#lib",
           hooks: "#hooks",
         },
-      },
+      } as Config,
     })
   ).toContain(`import { Button } from "#components/ui/button"`)
 
@@ -383,7 +384,7 @@ import { useThing } from "#hooks/use-thing"
           lib: "#lib",
           hooks: "#hooks",
         },
-      },
+      } as Config,
     })
   ).toContain(`import { Card } from "#components/ui/card"`)
 
@@ -407,7 +408,7 @@ import { useThing } from "#hooks/use-thing"
           lib: "#lib",
           hooks: "#hooks",
         },
-      },
+      } as Config,
     })
   ).toContain(`import { cn } from "#utils"`)
 
@@ -426,7 +427,7 @@ import * as RegistryRootCompat from "#/registry"
           lib: "#lib",
           hooks: "#hooks",
         },
-      },
+      } as Config,
     })
   ).toContain(`import * as RegistryRoot from "#components"`)
 
@@ -445,12 +446,12 @@ import * as RegistryRootCompat from "#/registry"
           lib: "#lib",
           hooks: "#hooks",
         },
-      },
+      } as Config,
     })
   ).toContain(`import * as RegistryRootCompat from "#components"`)
 })
 
-test("prefers explicit workspace utils alias over local lib alias", async () => {
+it("prefers explicit workspace utils alias over local lib alias", async () => {
   expect(
     await transform({
       filename: "test.tsx",
@@ -466,12 +467,12 @@ import { helper } from "@/lib/helper"
           ui: "@workspace/ui/components",
           utils: "@workspace/ui/lib/utils",
         },
-      },
+      } as Config,
     })
   ).toContain(`import { cn } from "@workspace/ui/lib/utils"`)
 })
 
-test("prefers explicit utils alias for registry lib utils imports", async () => {
+it("prefers explicit utils alias for registry lib utils imports", async () => {
   expect(
     await transform({
       filename: "login-form.tsx",
@@ -487,12 +488,12 @@ import { Button } from "@/registry/new-york-v4/ui/button"
           ui: "@workspace/ui/components",
           utils: "@workspace/ui/lib/utils",
         },
-      },
+      } as Config,
     })
   ).toContain(`import { cn } from "@workspace/ui/lib/utils"`)
 })
 
-test("transform async/dynamic imports", async () => {
+it("transform async/dynamic imports", async () => {
   expect(
     await transform({
       filename: "test.ts",
@@ -515,7 +516,7 @@ function lazyLoad() {
           components: "@/components",
           utils: "@/lib/utils",
         },
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 
@@ -539,12 +540,12 @@ const cardModule = import("@/registry/new-york/ui/card")
           components: "~/components",
           utils: "~/lib/utils",
         },
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 })
 
-test("transform dynamic imports with cn utility", async () => {
+it("transform dynamic imports with cn utility", async () => {
   expect(
     await transform({
       filename: "test.ts",
@@ -565,7 +566,7 @@ async function loadMultiple() {
           components: "@/components",
           utils: "@/lib/utils",
         },
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 
@@ -583,12 +584,12 @@ async function loadMultiple() {
           components: "@workspace/ui/components",
           utils: "@workspace/ui/lib/utils",
         },
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 })
 
-test("does not rewrite foreign scoped package imports when project uses # aliases", async () => {
+it("does not rewrite foreign scoped package imports when project uses # aliases", async () => {
   const result = await transform({
     filename: "test.tsx",
     raw: `import { Analytics } from "@vercel/analytics/react"
@@ -605,7 +606,7 @@ import { Button } from "@/registry/new-york-v4/ui/button"
         lib: "#lib",
         hooks: "#hooks",
       },
-    },
+    } as Config,
   })
 
   expect(result).toContain(
@@ -616,7 +617,7 @@ import { Button } from "@/registry/new-york-v4/ui/button"
   expect(result).toContain(`import { Button } from "#components/ui/button"`)
 })
 
-test("does not rewrite workspace package exports when project uses # aliases", async () => {
+it("does not rewrite workspace package exports when project uses # aliases", async () => {
   const result = await transform({
     filename: "test.tsx",
     raw: `import { Card } from "@workspace/ui/components/card"
@@ -632,7 +633,7 @@ import { Button } from "@/registry/new-york-v4/ui/button"
         lib: "#lib",
         hooks: "#hooks",
       },
-    },
+    } as Config,
   })
 
   expect(result).toContain(
@@ -646,7 +647,7 @@ import { Button } from "@/registry/new-york-v4/ui/button"
   )
 })
 
-test("transform re-exports with dynamic imports", async () => {
+it("transform re-exports with dynamic imports", async () => {
   expect(
     await transform({
       filename: "test.ts",
@@ -664,7 +665,7 @@ async function load() {
           components: "@/components",
           utils: "@/lib/utils",
         },
-      },
+      } as Config,
     })
   ).toMatchSnapshot()
 })

@@ -1,6 +1,7 @@
-import { describe, expect, test } from "vitest"
+import type { Config } from "@/src/utils/get-config"
+import { describe, expect, it } from "vitest"
 
-import { transformTailwindContent } from "../../../src/utils/updaters/update-tailwind-content"
+import { transformTailwindContent } from "./update-tailwind-content"
 
 const SHARED_CONFIG = {
   $schema: "https://ui.shadcn.com/schema.json",
@@ -25,10 +26,10 @@ const SHARED_CONFIG = {
     utils: "./lib/utils",
     ui: "./components/ui",
   },
-}
+} as Config
 
 describe("transformTailwindContent -> content property", () => {
-  test("should add content property if not in config", async () => {
+  it("should add content property if not in config", async () => {
     expect(
       await transformTailwindContent(
         `import type { Config } from 'tailwindcss'
@@ -55,12 +56,12 @@ export default config
         ["./foo/**/*.{js,ts,jsx,tsx,mdx}", "./bar/**/*.{js,ts,jsx,tsx,mdx}"],
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
 
-  test("should NOT add content property if already in config", async () => {
+  it("should NOT add content property if already in config", async () => {
     expect(
       await transformTailwindContent(
         `import type { Config } from 'tailwindcss'
@@ -87,7 +88,7 @@ export default config
         ["./app/**/*.{js,ts,jsx,tsx,mdx}", "./bar/**/*.{js,ts,jsx,tsx,mdx}"],
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })

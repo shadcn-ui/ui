@@ -1,9 +1,9 @@
-import { describe, expect, test } from "vitest"
+import { describe, expect, it } from "vitest"
 
-import { transformCss } from "../../../src/utils/updaters/update-css"
+import { transformCss } from "./update-css"
 
 describe("transformCss", () => {
-  test("should add utility classes", async () => {
+  it("should add utility classes", async () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
@@ -21,7 +21,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should add utility classes with pseudo-selectors", async () => {
+  it("should add utility classes with pseudo-selectors", async () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
@@ -43,7 +43,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should add parameterized utility classes", async () => {
+  it("should add parameterized utility classes", async () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
@@ -61,7 +61,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should add component styles", async () => {
+  it("should add component styles", async () => {
     const input = `@tailwind base;
 @tailwind components;
 @tailwind utilities;`
@@ -93,7 +93,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should add base styles", async () => {
+  it("should add base styles", async () => {
     const input = `@tailwind base;
 @tailwind components;
 @tailwind utilities;`
@@ -125,7 +125,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should update existing rules", async () => {
+  it("should update existing rules", async () => {
     const input = `@import "tailwindcss";
 
 @layer components {
@@ -159,7 +159,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should add multiple rules and types", async () => {
+  it("should add multiple rules and types", async () => {
     const input = `@tailwind base;
 @tailwind components;
 @tailwind utilities;`
@@ -205,7 +205,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should handle nested selectors with &", async () => {
+  it("should handle nested selectors with &", async () => {
     const input = `@tailwind base;
 @tailwind components;
 @tailwind utilities;`
@@ -243,7 +243,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should handle direct string content", async () => {
+  it("should handle direct string content", async () => {
     const input = `@tailwind base;
 @tailwind components;
 @tailwind utilities;`
@@ -268,7 +268,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should handle nested at-rules", async () => {
+  it("should handle nested at-rules", async () => {
     const input = `@tailwind base;
 @tailwind components;
 @tailwind utilities;`
@@ -299,7 +299,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should place keyframes under @theme inline directive", async () => {
+  it("should place keyframes under @theme inline directive", async () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
@@ -329,7 +329,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should add plugin directive", async () => {
+  it("should add plugin directive", async () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
@@ -343,7 +343,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should group plugins together after imports", async () => {
+  it("should group plugins together after imports", async () => {
     const input = `@import "tailwindcss";
 
 @layer base {
@@ -390,7 +390,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should not add duplicate plugins", async () => {
+  it("should not add duplicate plugins", async () => {
     const input = `@import "tailwindcss";
 
 @plugin "foo";
@@ -421,7 +421,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should add plugin when no imports exist", async () => {
+  it("should add plugin when no imports exist", async () => {
     const input = `@layer base {
   body {
     font-family: sans-serif;
@@ -444,7 +444,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should handle plugins with quoted parameters", async () => {
+  it("should handle plugins with quoted parameters", async () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
@@ -460,7 +460,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should handle plugins with complex parameters", async () => {
+  it("should handle plugins with complex parameters", async () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
@@ -476,7 +476,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should handle multiple imports with plugins", async () => {
+  it("should handle multiple imports with plugins", async () => {
     const input = `@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");`
 
@@ -494,7 +494,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should add plugins to empty file", async () => {
+  it("should add plugins to empty file", async () => {
     const input = ``
 
     const result = await transformCss(input, {
@@ -507,7 +507,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should maintain plugin order with existing plugins", async () => {
+  it("should maintain plugin order with existing plugins", async () => {
     const input = `@import "tailwindcss";
 
 @plugin "existing-plugin";
@@ -528,7 +528,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should automatically add quotes to unquoted plugin names", async () => {
+  it("should automatically add quotes to unquoted plugin names", async () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
@@ -548,7 +548,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should detect duplicate plugins regardless of quotes", async () => {
+  it("should detect duplicate plugins regardless of quotes", async () => {
     const input = `@import "tailwindcss";
 
 @plugin foo;
@@ -569,7 +569,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should not double-quote already quoted plugin names", async () => {
+  it("should not double-quote already quoted plugin names", async () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
@@ -585,7 +585,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should add @import statements", async () => {
+  it("should add @import statements", async () => {
     const input = ``
 
     const result = await transformCss(input, {
@@ -599,7 +599,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should add @import with url() syntax", async () => {
+  it("should add @import with url() syntax", async () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
@@ -615,7 +615,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should not duplicate existing @import statements", async () => {
+  it("should not duplicate existing @import statements", async () => {
     const input = `@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
 @import "./styles/base.css";`
@@ -636,7 +636,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should handle @import with media queries", async () => {
+  it("should handle @import with media queries", async () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
@@ -651,7 +651,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should place imports before plugins and other content", async () => {
+  it("should place imports before plugins and other content", async () => {
     const input = `@layer base {
   body {
     font-family: sans-serif;
@@ -687,7 +687,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should handle @apply within rules", async () => {
+  it("should handle @apply within rules", async () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
@@ -717,7 +717,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should handle at-rules with empty body", async () => {
+  it("should handle at-rules with empty body", async () => {
     const input = ``
 
     const result = await transformCss(input, {
@@ -747,7 +747,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should handle empty CSS rules", async () => {
+  it("should handle empty CSS rules", async () => {
     const input = ``
 
     const result = await transformCss(input, {
@@ -766,7 +766,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should handle comprehensive CSS with plugins", async () => {
+  it("should handle comprehensive CSS with plugins", async () => {
     const input = `@import "tailwindcss";
 @import url("fonts.css");
 
@@ -853,7 +853,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should add base layer styles from registry:style css field", async () => {
+  it("should add base layer styles from registry:style css field", async () => {
     const input = `@import "tailwindcss";`
 
     // This is the exact shape from the registry:style index item.
@@ -886,7 +886,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should not duplicate base layer styles if already present", async () => {
+  it("should not duplicate base layer styles if already present", async () => {
     const input = `@import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -929,7 +929,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should handle @apply inside @utility", async () => {
+  it("should handle @apply inside @utility", async () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
@@ -947,7 +947,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should handle @apply mixed with declarations inside @utility", async () => {
+  it("should handle @apply mixed with declarations inside @utility", async () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
@@ -967,7 +967,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should handle multiple @apply inside @utility", async () => {
+  it("should handle multiple @apply inside @utility", async () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
@@ -989,7 +989,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should add @apply to existing @utility", async () => {
+  it("should add @apply to existing @utility", async () => {
     const input = `@import "tailwindcss";
 
 @utility custom-alert {
@@ -1012,7 +1012,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should not duplicate @apply inside existing @utility", async () => {
+  it("should not duplicate @apply inside existing @utility", async () => {
     const input = `@import "tailwindcss";
 
 @utility custom-badge {
@@ -1037,7 +1037,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should merge @apply directives in the same rule instead of duplicating", async () => {
+  it("should merge @apply directives in the same rule instead of duplicating", async () => {
     const input = `@import "tailwindcss";
 
 @layer base {
@@ -1065,7 +1065,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should resolve conflicting tailwind classes when merging @apply", async () => {
+  it("should resolve conflicting tailwind classes when merging @apply", async () => {
     const input = `@import "tailwindcss";
 
 @layer base {
@@ -1093,7 +1093,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should not duplicate @apply classes that already exist", async () => {
+  it("should not duplicate @apply classes that already exist", async () => {
     const input = `@import "tailwindcss";
 
 @layer base {
@@ -1121,7 +1121,7 @@ describe("transformCss", () => {
     `)
   })
 
-  test("should replace existing keyframes instead of duplicating", async () => {
+  it("should replace existing keyframes instead of duplicating", async () => {
     const input = `@import "tailwindcss";
 
 @theme inline {
@@ -1134,7 +1134,7 @@ describe("transformCss", () => {
 
     const result = await transformCss(input, {
       "@keyframes skeleton": {
-        "to": {
+        to: {
           "background-position": "-200% 0",
         },
       },

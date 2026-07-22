@@ -15,6 +15,8 @@ import {
   RegistryUnauthorizedError,
   RegistryValidationError,
 } from "@/src/registry/errors"
+import { getFixturesDir } from "@/src/test-helpers"
+import { getConfig } from "@/src/utils/get-config"
 import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
 import {
@@ -29,13 +31,16 @@ import {
 import { z } from "zod"
 
 import {
+  getItemTargetPath,
   getRegistries,
   getRegistriesConfig,
   getRegistriesIndex,
   getRegistry,
   getRegistryItems,
+  resolveTree,
 } from "./api"
 import { RegistriesIndexParseError } from "./errors"
+import { registryItemSchema } from "./schema"
 
 vi.mock("@/src/utils/handle-error", () => ({
   handleError: vi.fn(),
@@ -1863,5 +1868,110 @@ describe("getRegistriesConfig", () => {
 
       await expect(getRegistriesIndex({ useCache: false })).rejects.toThrow()
     })
+  })
+})
+
+describe("resolveTree", () => {
+  it("resolve tree", async () => {
+    const index = [
+      {
+        name: "button",
+        dependencies: ["@radix-ui/react-slot"],
+        type: "registry:ui",
+        files: [{ type: "registry:ui", path: "button.tsx" }],
+      },
+      {
+        name: "dialog",
+        dependencies: ["@radix-ui/react-dialog"],
+        registryDependencies: ["button"],
+        type: "registry:ui",
+        files: [{ type: "registry:ui", path: "dialog.tsx" }],
+      },
+      {
+        name: "input",
+        registryDependencies: ["button"],
+        type: "registry:ui",
+        files: [{ type: "registry:ui", path: "input.tsx" }],
+      },
+      {
+        name: "alert-dialog",
+        dependencies: ["@radix-ui/react-alert-dialog"],
+        registryDependencies: ["button", "dialog"],
+        type: "registry:ui",
+        files: [{ type: "registry:ui", path: "alert-dialog.tsx" }],
+      },
+      {
+        name: "example-card",
+        type: "registry:component",
+        files: [{ type: "registry:component", path: "example-card.tsx" }],
+        registryDependencies: ["button", "dialog", "input"],
+      },
+    ] satisfies z.infer<typeof registryItemSchema>[]
+
+    expect(
+      (await resolveTree(index, ["button"])).map((entry) => entry.name).sort()
+    ).toEqual(["button"])
+
+    expect(
+      (await resolveTree(index, ["dialog"])).map((entry) => entry.name).sort()
+    ).toEqual(["button", "dialog"])
+
+    expect(
+      (await resolveTree(index, ["alert-dialog", "dialog"]))
+        .map((entry) => entry.name)
+        .sort()
+    ).toEqual(["alert-dialog", "button", "dialog"])
+
+    expect(
+      (await resolveTree(index, ["example-card"]))
+        .map((entry) => entry.name)
+        .sort()
+    ).toEqual(["button", "dialog", "example-card", "input"])
+
+    expect(
+      (await resolveTree(index, ["foo"])).map((entry) => entry.name).sort()
+    ).toEqual([])
+
+    expect(
+      (await resolveTree(index, ["button", "foo"]))
+        .map((entry) => entry.name)
+        .sort()
+    ).toEqual(["button"])
+  })
+})
+
+describe("getItemTargetPath", () => {
+  it("get item target path", async () => {
+    // Full config.
+    let appDir = getFixturesDir("config-full")
+    expect(
+      await getItemTargetPath((await getConfig(appDir))!, {
+        type: "registry:ui",
+      })
+    ).toEqual(path.resolve(appDir, "./src/ui"))
+
+    // Partial config.
+    appDir = getFixturesDir("config-partial")
+    expect(
+      await getItemTargetPath((await getConfig(appDir))!, {
+        type: "registry:ui",
+      })
+    ).toEqual(path.resolve(appDir, "./components/ui"))
+
+    // JSX.
+    appDir = getFixturesDir("config-jsx")
+    expect(
+      await getItemTargetPath((await getConfig(appDir))!, {
+        type: "registry:ui",
+      })
+    ).toEqual(path.resolve(appDir, "./components/ui"))
+
+    // Custom paths.
+    appDir = getFixturesDir("config-ui")
+    expect(
+      await getItemTargetPath((await getConfig(appDir))!, {
+        type: "registry:ui",
+      })
+    ).toEqual(path.resolve(appDir, "./src/ui"))
   })
 })

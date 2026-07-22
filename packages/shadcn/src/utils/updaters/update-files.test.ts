@@ -1,10 +1,11 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
-import { afterAll, afterEach, describe, expect, test, vi } from "vitest"
+import { getFixturesDir } from "@/src/test-helpers"
+import { getConfig, type Config } from "@/src/utils/get-config"
 import prompts from "prompts"
 import { Project } from "ts-morph"
+import { afterAll, afterEach, describe, expect, it, vi } from "vitest"
 
-import { getConfig } from "../../../src/utils/get-config"
 import {
   findCommonRoot,
   resolveFilePath,
@@ -13,7 +14,7 @@ import {
   rewriteResolvedImportsInContent,
   toAliasedImport,
   updateFiles,
-} from "../../../src/utils/updaters/update-files"
+} from "./update-files"
 
 vi.mock("fs/promises", async () => {
   const actual = (await vi.importActual(
@@ -54,7 +55,7 @@ afterAll(() => {
 })
 
 describe("resolveFilePath", () => {
-  test.each([
+  it.each([
     {
       description: "should use target when provided",
       file: {
@@ -94,7 +95,7 @@ describe("resolveFilePath", () => {
   ])("$description", ({ file, resolvedPath, projectInfo }) => {
     expect(
       resolveFilePath(
-        file,
+        file as any,
         {
           resolvedPaths: {
             cwd: "/foo/bar",
@@ -103,13 +104,13 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         projectInfo
       )
     ).toBe(resolvedPath)
   })
 
-  test.each([
+  it.each([
     {
       description: "should resolve @components target aliases",
       target: "@components/charts/pie.tsx",
@@ -146,7 +147,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: true,
         }
@@ -154,7 +155,7 @@ describe("resolveFilePath", () => {
     ).toBe(resolvedPath)
   })
 
-  test("should resolve target aliases with package import backed aliases", () => {
+  it("should resolve target aliases with package import backed aliases", () => {
     expect(
       resolveFilePath(
         {
@@ -176,7 +177,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/src/lib",
             hooks: "/foo/bar/src/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
         }
@@ -184,7 +185,7 @@ describe("resolveFilePath", () => {
     ).toBe("/foo/bar/src/components/ui/button.tsx")
   })
 
-  test("should fall back to normal target resolution for unknown aliases", () => {
+  it("should fall back to normal target resolution for unknown aliases", () => {
     expect(
       resolveFilePath(
         {
@@ -200,7 +201,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: true,
         }
@@ -208,7 +209,7 @@ describe("resolveFilePath", () => {
     ).toBe("/foo/bar/src/foo/bar.ts")
   })
 
-  test("should not resolve embedded alias-like path segments", () => {
+  it("should not resolve embedded alias-like path segments", () => {
     expect(
       resolveFilePath(
         {
@@ -224,7 +225,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
         }
@@ -232,7 +233,7 @@ describe("resolveFilePath", () => {
     ).toBe("/foo/bar/components/@ui/button.tsx")
   })
 
-  test("should bypass page target mapping for target aliases", () => {
+  it("should bypass page target mapping for target aliases", () => {
     expect(
       resolveFilePath(
         {
@@ -248,7 +249,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/src/lib",
             hooks: "/foo/bar/src/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: true,
           framework: "next-pages",
@@ -257,7 +258,7 @@ describe("resolveFilePath", () => {
     ).toBe("/foo/bar/src/primitives/page.tsx")
   })
 
-  test("should reject target aliases that escape the alias root", () => {
+  it("should reject target aliases that escape the alias root", () => {
     expect(() =>
       resolveFilePath(
         {
@@ -273,7 +274,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
         }
@@ -281,7 +282,7 @@ describe("resolveFilePath", () => {
     ).toThrow('Invalid target path "@ui/../../page.tsx".')
   })
 
-  test.each([
+  it.each([
     {
       description: "should use src directory when provided",
       file: {
@@ -333,7 +334,7 @@ describe("resolveFilePath", () => {
   ])("$description", ({ file, resolvedPath, projectInfo }) => {
     expect(
       resolveFilePath(
-        file,
+        file as any,
         {
           resolvedPaths: {
             cwd: "/foo/bar",
@@ -342,13 +343,13 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/src/lib",
             hooks: "/foo/bar/src/hooks",
           },
-        },
+        } as Config,
         projectInfo
       )
     ).toBe(resolvedPath)
   })
 
-  test("should resolve registry:ui file types", () => {
+  it("should resolve registry:ui file types", () => {
     expect(
       resolveFilePath(
         {
@@ -363,7 +364,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
         }
@@ -384,7 +385,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/src/lib",
             hooks: "/foo/bar/src/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: true,
         }
@@ -392,7 +393,7 @@ describe("resolveFilePath", () => {
     ).toBe("/foo/bar/src/primitives/button.tsx")
   })
 
-  test("should resolve registry:component and registry:block file types", () => {
+  it("should resolve registry:component and registry:block file types", () => {
     expect(
       resolveFilePath(
         {
@@ -407,7 +408,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
         }
@@ -428,7 +429,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
         }
@@ -449,7 +450,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/src/lib",
             hooks: "/foo/bar/src/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: true,
         }
@@ -470,7 +471,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/src/lib",
             hooks: "/foo/bar/src/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: true,
         }
@@ -478,7 +479,7 @@ describe("resolveFilePath", () => {
     ).toBe("/foo/bar/src/components/example-card.tsx")
   })
 
-  test("should resolve registry:lib file types", () => {
+  it("should resolve registry:lib file types", () => {
     expect(
       resolveFilePath(
         {
@@ -493,7 +494,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
         }
@@ -514,7 +515,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/src/lib",
             hooks: "/foo/bar/src/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: true,
         }
@@ -522,7 +523,7 @@ describe("resolveFilePath", () => {
     ).toBe("/foo/bar/src/lib/foo.ts")
   })
 
-  test("should resolve registry:hook file types", () => {
+  it("should resolve registry:hook file types", () => {
     expect(
       resolveFilePath(
         {
@@ -537,7 +538,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
         }
@@ -558,7 +559,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/src/lib",
             hooks: "/foo/bar/src/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: true,
         }
@@ -566,7 +567,7 @@ describe("resolveFilePath", () => {
     ).toBe("/foo/bar/src/hooks/use-foo.ts")
   })
 
-  test("should resolve registry:file file types", () => {
+  it("should resolve registry:file file types", () => {
     expect(
       resolveFilePath(
         {
@@ -578,7 +579,7 @@ describe("resolveFilePath", () => {
           resolvedPaths: {
             cwd: "/foo/bar",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
         }
@@ -586,7 +587,7 @@ describe("resolveFilePath", () => {
     ).toBe("/foo/bar/baz/.env")
   })
 
-  test("should resolve nested files", () => {
+  it("should resolve nested files", () => {
     expect(
       resolveFilePath(
         {
@@ -601,7 +602,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
         }
@@ -622,7 +623,7 @@ describe("resolveFilePath", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
         }
@@ -632,7 +633,7 @@ describe("resolveFilePath", () => {
 })
 
 describe("resolveFilePath with custom path", () => {
-  test("should use custom file path for exact file target", () => {
+  it("should use custom file path for exact file target", () => {
     expect(
       resolveFilePath(
         {
@@ -647,7 +648,7 @@ describe("resolveFilePath with custom path", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
           path: "/foo/bar/custom/my-button.tsx",
@@ -657,7 +658,7 @@ describe("resolveFilePath with custom path", () => {
     ).toBe("/foo/bar/custom/my-button.tsx")
   })
 
-  test("should use custom directory path and strip type prefix", () => {
+  it("should use custom directory path and strip type prefix", () => {
     expect(
       resolveFilePath(
         {
@@ -672,7 +673,7 @@ describe("resolveFilePath with custom path", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
           path: "/foo/bar/custom",
@@ -682,7 +683,7 @@ describe("resolveFilePath with custom path", () => {
     ).toBe("/foo/bar/custom/button.tsx")
   })
 
-  test("should strip nested paths when using custom directory", () => {
+  it("should strip nested paths when using custom directory", () => {
     expect(
       resolveFilePath(
         {
@@ -697,7 +698,7 @@ describe("resolveFilePath with custom path", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
           path: "/foo/bar/custom",
@@ -707,7 +708,7 @@ describe("resolveFilePath with custom path", () => {
     ).toBe("/foo/bar/custom/card.tsx")
   })
 
-  test("should handle lib files with custom directory", () => {
+  it("should handle lib files with custom directory", () => {
     expect(
       resolveFilePath(
         {
@@ -722,7 +723,7 @@ describe("resolveFilePath with custom path", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
           path: "/foo/bar/custom",
@@ -732,7 +733,7 @@ describe("resolveFilePath with custom path", () => {
     ).toBe("/foo/bar/custom/utils.ts")
   })
 
-  test("should handle hooks with custom directory", () => {
+  it("should handle hooks with custom directory", () => {
     expect(
       resolveFilePath(
         {
@@ -747,7 +748,7 @@ describe("resolveFilePath with custom path", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
           path: "/foo/bar/custom",
@@ -757,7 +758,7 @@ describe("resolveFilePath with custom path", () => {
     ).toBe("/foo/bar/custom/use-toast.ts")
   })
 
-  test("should use custom file path with different extension", () => {
+  it("should use custom file path with different extension", () => {
     expect(
       resolveFilePath(
         {
@@ -772,7 +773,7 @@ describe("resolveFilePath with custom path", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
           path: "/foo/bar/my-components/custom-card.jsx",
@@ -782,7 +783,7 @@ describe("resolveFilePath with custom path", () => {
     ).toBe("/foo/bar/my-components/custom-card.jsx")
   })
 
-  test("should not use custom path when not provided", () => {
+  it("should not use custom path when not provided", () => {
     expect(
       resolveFilePath(
         {
@@ -797,7 +798,7 @@ describe("resolveFilePath with custom path", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
         }
@@ -805,7 +806,7 @@ describe("resolveFilePath with custom path", () => {
     ).toBe("/foo/bar/components/ui/button.tsx")
   })
 
-  test("should support any file extension for file paths", () => {
+  it("should support any file extension for file paths", () => {
     // Test with .json
     expect(
       resolveFilePath(
@@ -822,7 +823,7 @@ describe("resolveFilePath with custom path", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
           path: "/foo/bar/custom/my-config.json",
@@ -847,7 +848,7 @@ describe("resolveFilePath with custom path", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
           path: "/foo/bar/custom/theme.css",
@@ -872,7 +873,7 @@ describe("resolveFilePath with custom path", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
           path: "/foo/bar/docs/guide.md",
@@ -884,7 +885,7 @@ describe("resolveFilePath with custom path", () => {
 })
 
 describe("resolveFilePath with framework", () => {
-  test("should not resolve for unknown or unsupported framework", () => {
+  it("should not resolve for unknown or unsupported framework", () => {
     expect(
       resolveFilePath(
         {
@@ -900,7 +901,7 @@ describe("resolveFilePath with framework", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
         }
@@ -922,7 +923,7 @@ describe("resolveFilePath with framework", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
           framework: "vite",
@@ -931,7 +932,7 @@ describe("resolveFilePath with framework", () => {
     ).toBe("")
   })
 
-  test("should resolve for next-app", () => {
+  it("should resolve for next-app", () => {
     expect(
       resolveFilePath(
         {
@@ -947,7 +948,7 @@ describe("resolveFilePath with framework", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
           framework: "next-app",
@@ -956,7 +957,7 @@ describe("resolveFilePath with framework", () => {
     ).toBe("/foo/bar/app/login/page.tsx")
   })
 
-  test("should resolve for next-pages", () => {
+  it("should resolve for next-pages", () => {
     expect(
       resolveFilePath(
         {
@@ -972,7 +973,7 @@ describe("resolveFilePath with framework", () => {
             lib: "/foo/bar/src/lib",
             hooks: "/foo/bar/src/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: true,
           framework: "next-pages",
@@ -995,7 +996,7 @@ describe("resolveFilePath with framework", () => {
             lib: "/foo/bar/lib",
             hooks: "/foo/bar/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
           framework: "next-pages",
@@ -1004,7 +1005,7 @@ describe("resolveFilePath with framework", () => {
     ).toBe("/foo/bar/pages/blog/[slug].tsx")
   })
 
-  test("should resolve for react-router", () => {
+  it("should resolve for react-router", () => {
     expect(
       resolveFilePath(
         {
@@ -1020,7 +1021,7 @@ describe("resolveFilePath with framework", () => {
             lib: "/foo/bar/app/lib",
             hooks: "/foo/bar/app/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
           framework: "react-router",
@@ -1029,7 +1030,7 @@ describe("resolveFilePath with framework", () => {
     ).toBe("/foo/bar/app/routes/login.tsx")
   })
 
-  test("should resolve for laravel", () => {
+  it("should resolve for laravel", () => {
     expect(
       resolveFilePath(
         {
@@ -1045,7 +1046,7 @@ describe("resolveFilePath with framework", () => {
             lib: "/foo/bar/resources/js/lib",
             hooks: "/foo/bar/resources/js/hooks",
           },
-        },
+        } as Config,
         {
           isSrcDir: false,
           framework: "laravel",
@@ -1056,7 +1057,7 @@ describe("resolveFilePath with framework", () => {
 })
 
 describe("findCommonRoot", () => {
-  test.each([
+  it.each([
     {
       description: "should find the common root of sibling files",
       paths: ["/foo/bar/baz/qux", "/foo/bar/baz/quux"],
@@ -1097,7 +1098,7 @@ describe("findCommonRoot", () => {
 })
 
 describe("resolveNestedFilePath", () => {
-  test.each([
+  it.each([
     {
       description: "should resolve path after common components directory",
       filePath: "hello-world/components/path/to/example-card.tsx",
@@ -1134,10 +1135,8 @@ describe("resolveNestedFilePath", () => {
 })
 
 describe("updateFiles", () => {
-  test("should create missing files", async () => {
-    const config = await getConfig(
-      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
-    )
+  it("should create missing files", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     expect(
       await updateFiles(
         [
@@ -1166,10 +1165,8 @@ describe("updateFiles", () => {
     `)
   })
 
-  test("should skip existing files if same content", async () => {
-    const config = await getConfig(
-      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
-    )
+  it("should skip existing files if same content", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     expect(
       await updateFiles(
         [
@@ -1207,10 +1204,8 @@ return <div>Hello World</div>
     `)
   })
 
-  test("should update file if different content", async () => {
-    const config = await getConfig(
-      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
-    )
+  it("should update file if different content", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     expect(
       await updateFiles(
         [
@@ -1248,11 +1243,8 @@ return <div>Hello World</div>
     `)
   })
 
-  test("should rewrite exact package-import subpaths to valid relative imports", async () => {
-    const tempDir = path.join(
-      path.resolve(__dirname, "../../fixtures"),
-      "temp-package-import-exact-hook"
-    )
+  it("should rewrite exact package-import subpaths to valid relative imports", async () => {
+    const tempDir = getFixturesDir("temp-package-import-exact-hook")
     const fsActual = (await vi.importActual(
       "fs/promises"
     )) as typeof import("fs/promises")
@@ -1263,11 +1255,15 @@ return <div>Hello World</div>
       writeFileMock.mockImplementation(fsModuleActual.promises.writeFile as any)
 
       await fsActual.rm(tempDir, { recursive: true, force: true })
-      await fsActual.mkdir(path.join(tempDir, "src", "app"), { recursive: true })
+      await fsActual.mkdir(path.join(tempDir, "src", "app"), {
+        recursive: true,
+      })
       await fsActual.mkdir(path.join(tempDir, "src", "hooks"), {
         recursive: true,
       })
-      await fsActual.mkdir(path.join(tempDir, "src", "lib"), { recursive: true })
+      await fsActual.mkdir(path.join(tempDir, "src", "lib"), {
+        recursive: true,
+      })
 
       await fsActual.writeFile(
         path.join(tempDir, "package.json"),
@@ -1388,15 +1384,14 @@ export function ExampleCard() {
       expect(componentContents).not.toContain(`from "#hooks/use-thing"`)
     } finally {
       writeFileMock.mockResolvedValue(undefined)
-      await fsActual.rm(tempDir, { recursive: true, force: true }).catch(() => {})
+      await fsActual
+        .rm(tempDir, { recursive: true, force: true })
+        .catch(() => {})
     }
   })
 
-  test("should skip existing package-import files when final content is identical", async () => {
-    const tempDir = path.join(
-      path.resolve(__dirname, "../../fixtures"),
-      "temp-package-import-same-content"
-    )
+  it("should skip existing package-import files when final content is identical", async () => {
+    const tempDir = getFixturesDir("temp-package-import-same-content")
     const fsActual = (await vi.importActual(
       "fs/promises"
     )) as typeof import("fs/promises")
@@ -1536,11 +1531,13 @@ export function Button() {
       expect(vi.mocked(prompts)).not.toHaveBeenCalled()
     } finally {
       writeFileMock.mockResolvedValue(undefined)
-      await fsActual.rm(tempDir, { recursive: true, force: true }).catch(() => {})
+      await fsActual
+        .rm(tempDir, { recursive: true, force: true })
+        .catch(() => {})
     }
   })
 
-  test("should remove temporary source files after rewriting content", async () => {
+  it("should remove temporary source files after rewriting content", async () => {
     const project = new Project({
       compilerOptions: {},
     })
@@ -1572,10 +1569,8 @@ export function Button() {
     expect(project.getSourceFiles()).toHaveLength(0)
   })
 
-  test("should mark .env file as created when it doesn't exist", async () => {
-    const config = await getConfig(
-      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
-    )
+  it("should mark .env file as created when it doesn't exist", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
 
     const result = await updateFiles(
       [
@@ -1598,12 +1593,9 @@ ANOTHER_NEW_KEY=another_value`,
     expect(result.filesUpdated).not.toContain(".env")
   })
 
-  test("should rewrite app-local files to workspace utils aliases in monorepos without tsconfig paths", async () => {
+  it("should rewrite app-local files to workspace utils aliases in monorepos without tsconfig paths", async () => {
     const config = await getConfig(
-      path.resolve(
-        __dirname,
-        "../../fixtures/frameworks/vite-monorepo-imports/apps/web"
-      )
+      getFixturesDir("frameworks/vite-monorepo-imports/apps/web")
     )
 
     if (!config) {
@@ -1640,11 +1632,8 @@ export function LoginForm() {
     expect(writtenContent).not.toContain(`from "#lib/utils"`)
   })
 
-  test("should mark .env file as updated when merging content", async () => {
-    const tempDir = path.join(
-      path.resolve(__dirname, "../../fixtures"),
-      "temp-env-test"
-    )
+  it("should mark .env file as updated when merging content", async () => {
+    const tempDir = getFixturesDir("temp-env-test")
     const fsActual = (await vi.importActual(
       "fs/promises"
     )) as typeof import("fs/promises")
@@ -1670,7 +1659,7 @@ export function LoginForm() {
         "utf-8"
       )
 
-      const config = await getConfig(tempDir)
+      const config = (await getConfig(tempDir))!
       const envPath = path.join(config?.resolvedPaths.cwd!, ".env")
 
       await fsActual.writeFile(
@@ -1717,11 +1706,8 @@ ANOTHER_NEW_KEY=another_value
     }
   })
 
-  test("should use .env.local when .env doesn't exist", async () => {
-    const tempDir = path.join(
-      path.resolve(__dirname, "../../fixtures"),
-      "temp-env-alternative-test"
-    )
+  it("should use .env.local when .env doesn't exist", async () => {
+    const tempDir = getFixturesDir("temp-env-alternative-test")
     const fsActual = (await vi.importActual(
       "fs/promises"
     )) as typeof import("fs/promises")
@@ -1798,11 +1784,8 @@ NEW_API_KEY=new_api_key_value
     }
   })
 
-  test("should use existing .env when target is .env.local but doesn't exist", async () => {
-    const tempDir = path.join(
-      path.resolve(__dirname, "../../fixtures"),
-      "temp-env-target-local-test"
-    )
+  it("should use existing .env when target is .env.local but doesn't exist", async () => {
+    const tempDir = getFixturesDir("temp-env-target-local-test")
     const fsActual = (await vi.importActual(
       "fs/promises"
     )) as typeof import("fs/promises")
@@ -1872,11 +1855,8 @@ NEW_KEY=new_value
     }
   })
 
-  test("should create .env when no env variants exist", async () => {
-    const tempDir = path.join(
-      path.resolve(__dirname, "../../fixtures"),
-      "temp-env-create-test"
-    )
+  it("should create .env when no env variants exist", async () => {
+    const tempDir = getFixturesDir("temp-env-create-test")
     const fsActual = (await vi.importActual(
       "fs/promises"
     )) as typeof import("fs/promises")
@@ -1954,10 +1934,8 @@ DATABASE_URL=postgres://localhost:5432/mydb`,
     }
   })
 
-  test("should place first file at custom file path", async () => {
-    const config = await getConfig(
-      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
-    )
+  it("should place first file at custom file path", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     expect(
       await updateFiles(
         [
@@ -1987,10 +1965,8 @@ DATABASE_URL=postgres://localhost:5432/mydb`,
     `)
   })
 
-  test("should place all files in custom directory", async () => {
-    const config = await getConfig(
-      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
-    )
+  it("should place all files in custom directory", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     expect(
       await updateFiles(
         [
@@ -2028,10 +2004,8 @@ DATABASE_URL=postgres://localhost:5432/mydb`,
     `)
   })
 
-  test("should only apply file path to first file", async () => {
-    const config = await getConfig(
-      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
-    )
+  it("should only apply file path to first file", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     expect(
       await updateFiles(
         [
@@ -2068,10 +2042,8 @@ DATABASE_URL=postgres://localhost:5432/mydb`,
     `)
   })
 
-  test("should preserve 'use client' directive for universal item files (registry:file)", async () => {
-    const config = await getConfig(
-      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
-    )
+  it("should preserve 'use client' directive for universal item files (registry:file)", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     const result = await updateFiles(
       [
         {
@@ -2103,10 +2075,8 @@ export function CustomComponent() {
     expect(writtenContent).toContain('"use client"')
   })
 
-  test("should preserve 'use client' directive for universal item files (registry:item)", async () => {
-    const config = await getConfig(
-      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
-    )
+  it("should preserve 'use client' directive for universal item files (registry:item)", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     const result = await updateFiles(
       [
         {
@@ -2138,10 +2108,8 @@ export function UniversalWidget() {
     expect(writtenContent).toContain("'use client'")
   })
 
-  test("should remove 'use client' directive for non-universal item files when rsc is false", async () => {
-    const config = await getConfig(
-      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
-    )
+  it("should remove 'use client' directive for non-universal item files when rsc is false", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     const result = await updateFiles(
       [
         {
@@ -2175,7 +2143,7 @@ export function RegularComponent() {
 })
 
 describe("resolveModuleByProbablePath", () => {
-  test("should resolve exact file match in provided files list", () => {
+  it("should resolve exact file match in provided files list", () => {
     const files = [
       "components/button.tsx",
       "components/card.tsx",
@@ -2185,61 +2153,61 @@ describe("resolveModuleByProbablePath", () => {
       resolvedPaths: {
         cwd: "/foo/bar",
       },
-    }
+    } as Config
     expect(
       resolveModuleByProbablePath("/foo/bar/components/button", files, config)
     ).toBe("components/button.tsx")
   })
 
-  test("should resolve index file", () => {
+  it("should resolve index file", () => {
     const files = ["components/button/index.tsx", "components/card.tsx"]
     const config = {
       resolvedPaths: {
         cwd: "/foo/bar",
       },
-    }
+    } as Config
     expect(
       resolveModuleByProbablePath("/foo/bar/components/button", files, config)
     ).toBe("components/button/index.tsx")
   })
 
-  test("should try different extensions", () => {
+  it("should try different extensions", () => {
     const files = ["components/button.jsx", "components/card.tsx"]
     const config = {
       resolvedPaths: {
         cwd: "/foo/bar",
       },
-    }
+    } as Config
     expect(
       resolveModuleByProbablePath("/foo/bar/components/button", files, config)
     ).toBe("components/button.jsx")
   })
 
-  test("should fallback to basename matching", () => {
+  it("should fallback to basename matching", () => {
     const files = ["components/ui/button.tsx", "components/card.tsx"]
     const config = {
       resolvedPaths: {
         cwd: "/foo/bar",
       },
-    }
+    } as Config
     expect(
       resolveModuleByProbablePath("/foo/bar/components/button", files, config)
     ).toBe("components/ui/button.tsx")
   })
 
-  test("should return null when file not found", () => {
+  it("should return null when file not found", () => {
     const files = ["components/card.tsx", "lib/utils.ts"]
     const config = {
       resolvedPaths: {
         cwd: "/foo/bar",
       },
-    }
+    } as Config
     expect(
       resolveModuleByProbablePath("/foo/bar/components/button", files, config)
     ).toBeNull()
   })
 
-  test("should sort by extension priority", () => {
+  it("should sort by extension priority", () => {
     const files = [
       "components/button.jsx",
       "components/button.tsx",
@@ -2249,7 +2217,7 @@ describe("resolveModuleByProbablePath", () => {
       resolvedPaths: {
         cwd: "/foo/bar",
       },
-    }
+    } as Config
     expect(
       resolveModuleByProbablePath("/foo/bar/components/button", files, config, [
         ".tsx",
@@ -2259,13 +2227,13 @@ describe("resolveModuleByProbablePath", () => {
     ).toBe("components/button.tsx")
   })
 
-  test("should preserve extension if specified in path", () => {
+  it("should preserve extension if specified in path", () => {
     const files = ["components/button.tsx", "components/button.css"]
     const config = {
       resolvedPaths: {
         cwd: "/foo/bar",
       },
-    }
+    } as Config
     expect(
       resolveModuleByProbablePath(
         "/foo/bar/components/button.css",
@@ -2277,7 +2245,7 @@ describe("resolveModuleByProbablePath", () => {
 })
 
 describe("toAliasedImport", () => {
-  test("should convert components path to aliased import", () => {
+  it("should convert components path to aliased import", () => {
     const filePath = "components/button.tsx"
     const config = {
       resolvedPaths: {
@@ -2291,16 +2259,16 @@ describe("toAliasedImport", () => {
         ui: "@/components/ui",
         lib: "@/lib",
       },
-    }
+    } as Config
     const projectInfo = {
       aliasPrefix: "@",
-    }
+    } as any
     expect(toAliasedImport(filePath, config, projectInfo)).toBe(
       "@/components/button"
     )
   })
 
-  test("should convert ui path to aliased import", () => {
+  it("should convert ui path to aliased import", () => {
     const filePath = "components/ui/button.tsx"
     const config = {
       resolvedPaths: {
@@ -2314,16 +2282,16 @@ describe("toAliasedImport", () => {
         ui: "@/components/ui",
         lib: "@/lib",
       },
-    }
+    } as Config
     const projectInfo = {
       aliasPrefix: "@",
-    }
+    } as any
     expect(toAliasedImport(filePath, config, projectInfo)).toBe(
       "@/components/ui/button"
     )
   })
 
-  test("should collapse index files", () => {
+  it("should collapse index files", () => {
     const filePath = "components/ui/button/index.tsx"
     const config = {
       resolvedPaths: {
@@ -2337,16 +2305,16 @@ describe("toAliasedImport", () => {
         ui: "@/components/ui",
         lib: "@/lib",
       },
-    }
+    } as Config
     const projectInfo = {
       aliasPrefix: "@",
-    }
+    } as any
     expect(toAliasedImport(filePath, config, projectInfo)).toBe(
       "@/components/ui/button"
     )
   })
 
-  test("should return null when no matching alias found", () => {
+  it("should return null when no matching alias found", () => {
     const filePath = "src/pages/index.tsx"
     const config = {
       resolvedPaths: {
@@ -2360,14 +2328,14 @@ describe("toAliasedImport", () => {
         ui: "@/components/ui",
         lib: "@/lib",
       },
-    }
+    } as Config
     const projectInfo = {
       aliasPrefix: "@",
-    }
+    } as any
     expect(toAliasedImport(filePath, config, projectInfo)).toBe("@/pages")
   })
 
-  test("should handle nested directories", () => {
+  it("should handle nested directories", () => {
     const filePath = "components/forms/inputs/text-input.tsx"
     const config = {
       resolvedPaths: {
@@ -2381,16 +2349,16 @@ describe("toAliasedImport", () => {
         ui: "@/components/ui",
         lib: "@/lib",
       },
-    }
+    } as Config
     const projectInfo = {
       aliasPrefix: "@",
-    }
+    } as any
     expect(toAliasedImport(filePath, config, projectInfo)).toBe(
       "@/components/forms/inputs/text-input"
     )
   })
 
-  test("should keep non-code file extensions", () => {
+  it("should keep non-code file extensions", () => {
     const filePath = "components/styles/theme.css"
     const config = {
       resolvedPaths: {
@@ -2404,16 +2372,16 @@ describe("toAliasedImport", () => {
         ui: "@/components/ui",
         lib: "@/lib",
       },
-    }
+    } as Config
     const projectInfo = {
       aliasPrefix: "@",
-    }
+    } as any
     expect(toAliasedImport(filePath, config, projectInfo)).toBe(
       "@/components/styles/theme.css"
     )
   })
 
-  test("should prefer longer matching paths", () => {
+  it("should prefer longer matching paths", () => {
     const filePath = "components/ui/button.tsx"
     const config = {
       resolvedPaths: {
@@ -2425,14 +2393,14 @@ describe("toAliasedImport", () => {
         components: "@/components",
         ui: "@/ui",
       },
-    }
+    } as Config
     const projectInfo = {
       aliasPrefix: "@",
-    }
+    } as any
     expect(toAliasedImport(filePath, config, projectInfo)).toBe("@/ui/button")
   })
 
-  test("should support tilde (~) alias prefix", () => {
+  it("should support tilde (~) alias prefix", () => {
     const filePath = "components/button.tsx"
     const config = {
       resolvedPaths: {
@@ -2442,16 +2410,16 @@ describe("toAliasedImport", () => {
       aliases: {
         components: "~components",
       },
-    }
+    } as Config
     const projectInfo = {
       aliasPrefix: "~",
-    }
+    } as any
     expect(toAliasedImport(filePath, config, projectInfo)).toBe(
       "~components/button"
     )
   })
 
-  test("should support @shadcn alias prefix", () => {
+  it("should support @shadcn alias prefix", () => {
     const filePath = "components/ui/button.tsx"
     const config = {
       resolvedPaths: {
@@ -2463,16 +2431,16 @@ describe("toAliasedImport", () => {
         components: "@shadcn/components",
         ui: "@shadcn/ui",
       },
-    }
+    } as Config
     const projectInfo = {
       aliasPrefix: "@shadcn",
-    }
+    } as any
     expect(toAliasedImport(filePath, config, projectInfo)).toBe(
       "@shadcn/ui/button"
     )
   })
 
-  test("should support ~cn alias prefix", () => {
+  it("should support ~cn alias prefix", () => {
     const filePath = "lib/utils/index.tsx"
     const config = {
       resolvedPaths: {
@@ -2482,14 +2450,14 @@ describe("toAliasedImport", () => {
       aliases: {
         lib: "~cn/lib",
       },
-    }
+    } as Config
     const projectInfo = {
       aliasPrefix: "~cn",
-    }
+    } as any
     expect(toAliasedImport(filePath, config, projectInfo)).toBe("~cn/lib/utils")
   })
 
-  test("should use project alias prefix when aliasKey is cwd", () => {
+  it("should use project alias prefix when aliasKey is cwd", () => {
     const filePath = "src/pages/home.tsx"
     const config = {
       resolvedPaths: {
@@ -2503,101 +2471,89 @@ describe("toAliasedImport", () => {
         ui: "@/components/ui",
         lib: "@/lib",
       },
-    }
+    } as Config
     const projectInfo = {
       aliasPrefix: "@",
-    }
+    } as any
     expect(toAliasedImport(filePath, config, projectInfo)).toBe("@/pages/home")
   })
 
-  test("should preserve extensions for package imports that target bare wildcards", () => {
+  it("should preserve extensions for package imports that target bare wildcards", () => {
     const filePath = "src/components/ui/button.tsx"
     const config = {
       resolvedPaths: {
-        cwd: path.resolve(__dirname, "../../fixtures/config-imports"),
-        components: path.resolve(
-          __dirname,
-          "../../fixtures/config-imports/src/components"
-        ),
-        ui: path.resolve(
-          __dirname,
-          "../../fixtures/config-imports/src/components/ui"
-        ),
+        cwd: getFixturesDir("config-imports"),
+        components: getFixturesDir("config-imports/src/components"),
+        ui: getFixturesDir("config-imports/src/components/ui"),
       },
       aliases: {
         components: "#components",
         ui: "#components/ui",
       },
-    }
+    } as Config
     const projectInfo = {
       aliasPrefix: "#",
-    }
+    } as any
 
     expect(toAliasedImport(filePath, config, projectInfo)).toBe(
       "#components/ui/button.tsx"
     )
   })
 
-  test("should strip extensions for package imports whose target already includes them", () => {
+  it("should strip extensions for package imports whose target already includes them", () => {
     const filePath = "src/components/button.tsx"
     const config = {
       resolvedPaths: {
-        cwd: path.resolve(__dirname, "../../fixtures/with-package-imports"),
-        components: path.resolve(
-          __dirname,
-          "../../fixtures/with-package-imports/src/components"
-        ),
+        cwd: getFixturesDir("with-package-imports"),
+        components: getFixturesDir("with-package-imports/src/components"),
       },
       aliases: {
         components: "#components-ext",
       },
-    }
+    } as Config
     const projectInfo = {
       aliasPrefix: "#",
-    }
+    } as any
 
     expect(toAliasedImport(filePath, config, projectInfo)).toBe(
       "#components-ext/button"
     )
   })
 
-  test("should keep exact package import aliases for index files", () => {
+  it("should keep exact package import aliases for index files", () => {
     const filePath = "src/hooks/index.ts"
     const config = {
       resolvedPaths: {
-        cwd: path.resolve(__dirname, "../../fixtures/config-imports"),
-        hooks: path.resolve(__dirname, "../../fixtures/config-imports/src/hooks"),
+        cwd: getFixturesDir("config-imports"),
+        hooks: getFixturesDir("config-imports/src/hooks"),
       },
       aliases: {
         hooks: "#hooks",
       },
-    }
+    } as Config
     const projectInfo = {
       aliasPrefix: "#",
-    }
+    } as any
 
     expect(toAliasedImport(filePath, config, projectInfo)).toBe("#hooks")
   })
 
-  test("should prefer exact package import aliases over parent directory aliases", () => {
+  it("should prefer exact package import aliases over parent directory aliases", () => {
     const filePath = "src/lib/utils.ts"
     const config = {
       resolvedPaths: {
-        cwd: path.resolve(__dirname, "../../fixtures/config-imports"),
-        lib: path.resolve(__dirname, "../../fixtures/config-imports/src/lib"),
-        utils: path.resolve(
-          __dirname,
-          "../../fixtures/config-imports/src/lib/utils.ts"
-        ),
+        cwd: getFixturesDir("config-imports"),
+        lib: getFixturesDir("config-imports/src/lib"),
+        utils: getFixturesDir("config-imports/src/lib/utils.ts"),
       },
       aliases: {
         lib: "#lib",
         utils: "#utils",
       },
-    }
+    } as Config
     const projectInfo = {
       aliasPrefix: "#",
-    }
+    } as any
 
     expect(toAliasedImport(filePath, config, projectInfo)).toBe("#utils")
   })

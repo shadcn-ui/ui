@@ -1,12 +1,13 @@
-import path from "path"
+import { getFixturesDir } from "@/src/test-helpers"
+import type { Config } from "@/src/utils/get-config"
 import { execa } from "execa"
 import prompts from "prompts"
-import { afterEach, describe, expect, test, vi } from "vitest"
+import { afterEach, describe, expect, it, vi } from "vitest"
 
 import {
   assertSafeDependencies,
   updateDependencies,
-} from "../../../src/utils/updaters/update-dependencies"
+} from "./update-dependencies"
 
 vi.mock("execa")
 vi.mock("prompts")
@@ -16,7 +17,7 @@ describe("updateDependencies", () => {
     vi.restoreAllMocks()
   })
 
-  test.each([
+  it.each([
     {
       description:
         "npm without react-day-picker v8 includes no additional flags",
@@ -25,7 +26,7 @@ describe("updateDependencies", () => {
       devDependencies: ["fourth"],
       config: {
         resolvedPaths: {
-          cwd: path.resolve(__dirname, "../../fixtures/project-npm"),
+          cwd: getFixturesDir("project-npm"),
         },
       },
       expectedPackageManager: "npm",
@@ -40,7 +41,7 @@ describe("updateDependencies", () => {
       devDependencies: ["fourth"],
       config: {
         resolvedPaths: {
-          cwd: path.resolve(__dirname, "../../fixtures/project-npm-react19"),
+          cwd: getFixturesDir("project-npm-react19"),
         },
       },
       expectedPackageManager: "npm",
@@ -55,7 +56,7 @@ describe("updateDependencies", () => {
       devDependencies: ["fourth"],
       config: {
         resolvedPaths: {
-          cwd: path.resolve(__dirname, "../../fixtures/project-npm-react19"),
+          cwd: getFixturesDir("project-npm-react19"),
         },
       },
       expectedPackageManager: "npm",
@@ -75,7 +76,7 @@ describe("updateDependencies", () => {
       devDependencies: ["fourth"],
       config: {
         resolvedPaths: {
-          cwd: path.resolve(__dirname, "../../fixtures/project-deno"),
+          cwd: getFixturesDir("project-deno"),
         },
       },
       expectedPackageManager: "deno",
@@ -88,7 +89,7 @@ describe("updateDependencies", () => {
       devDependencies: ["fourth"],
       config: {
         resolvedPaths: {
-          cwd: path.resolve(__dirname, "../../fixtures/project-bun"),
+          cwd: getFixturesDir("project-bun"),
         },
       },
       expectedPackageManager: "bun",
@@ -101,7 +102,7 @@ describe("updateDependencies", () => {
       devDependencies: ["fourth"],
       config: {
         resolvedPaths: {
-          cwd: path.resolve(__dirname, "../../fixtures/project-pnpm"),
+          cwd: getFixturesDir("project-pnpm"),
         },
       },
       expectedPackageManager: "pnpm",
@@ -115,7 +116,7 @@ describe("updateDependencies", () => {
       devDependencies: ["second", "second"],
       config: {
         resolvedPaths: {
-          cwd: path.resolve(__dirname, "../../fixtures/project-npm"),
+          cwd: getFixturesDir("project-npm"),
         },
       },
       expectedPackageManager: "npm",
@@ -139,7 +140,7 @@ describe("updateDependencies", () => {
       await updateDependencies(
         dependencies,
         devDependencies,
-        config,
+        config as Config,
         options ?? {}
       )
 
@@ -159,11 +160,8 @@ describe("updateDependencies", () => {
     }
   )
 
-  test("skips bare dependencies already declared in package.json (#10525)", async () => {
-    const cwd = path.resolve(
-      __dirname,
-      "../../fixtures/project-pnpm-existing-deps"
-    )
+  it("skips bare dependencies already declared in package.json (#10525)", async () => {
+    const cwd = getFixturesDir("project-pnpm-existing-deps")
 
     await updateDependencies(
       // @base-ui/react, class-variance-authority and recharts are already
@@ -195,8 +193,8 @@ describe("updateDependencies", () => {
     )
   })
 
-  test("prefers explicit specs over duplicate bare requests", async () => {
-    const cwd = path.resolve(__dirname, "../../fixtures/project-pnpm")
+  it("prefers explicit specs over duplicate bare requests", async () => {
+    const cwd = getFixturesDir("project-pnpm")
 
     await updateDependencies(
       ["recharts", "recharts@3.8.0", "@base-ui/react", "@base-ui/react@1.4.1"],
@@ -213,11 +211,8 @@ describe("updateDependencies", () => {
     )
   })
 
-  test("does not skip already declared deps for expo projects", async () => {
-    const cwd = path.resolve(
-      __dirname,
-      "../../fixtures/project-expo-existing-deps"
-    )
+  it("does not skip already declared deps for expo projects", async () => {
+    const cwd = getFixturesDir("project-expo-existing-deps")
 
     // recharts is already declared, but `expo install` must still see it so it
     // can align the version with the installed SDK. Duplicates are still deduped.
@@ -235,8 +230,8 @@ describe("updateDependencies", () => {
     )
   })
 
-  test("rejects registry dependencies that begin with a dash (flag injection)", async () => {
-    const cwd = path.resolve(__dirname, "../../fixtures/project-pnpm")
+  it("rejects registry dependencies that begin with a dash (flag injection)", async () => {
+    const cwd = getFixturesDir("project-pnpm")
 
     await expect(
       updateDependencies(
@@ -256,19 +251,19 @@ describe("updateDependencies", () => {
 })
 
 describe("assertSafeDependencies", () => {
-  test("does not throw for normal names and specifiers", () => {
+  it("does not throw for normal names and specifiers", () => {
     expect(() =>
       assertSafeDependencies(["zod", "recharts@3.8.0", "@base-ui/react"])
     ).not.toThrow()
   })
 
-  test("throws for a specifier starting with a dash", () => {
+  it("throws for a specifier starting with a dash", () => {
     expect(() => assertSafeDependencies(["--registry=http://x"])).toThrow(
       /cannot start with/
     )
   })
 
-  test("throws when a dash follows leading whitespace", () => {
+  it("throws when a dash follows leading whitespace", () => {
     expect(() => assertSafeDependencies(["  -D"])).toThrow(/cannot start with/)
   })
 })
