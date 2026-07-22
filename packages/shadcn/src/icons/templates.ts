@@ -3,9 +3,10 @@
 //   usage:  "<HugeiconsIcon icon={ICON} strokeWidth={2} />"
 // ICON is the placeholder substituted with actual icon names.
 
-const IMPORT_REGEX = /import\s+{([^}]+)}\s+from\s+['"]([^'"]+)['"]/
-const USAGE_REGEX = /<(\w+)([^>]*)\s*\/>/
-const ATTRIBUTE_REGEX = /(\w+(?:-\w+)*)=({[^}]*}|"[^"]*"|'[^']*')/g
+// Anchored and free of overlapping quantifiers to avoid backtracking blowups.
+const IMPORT_REGEX = /^import\s+{([^}]+)}\s+from\s+['"]([^'"]+)['"]/
+const USAGE_REGEX = /<(\w+)([^>]*)\/>/
+const ATTRIBUTE_REGEX = /([\w-]+)=({[^}]*}|"[^"]*"|'[^']*')/g
 
 export interface ParsedImport {
   moduleSpecifier: string
@@ -26,7 +27,7 @@ export function parseImportTemplate(template: string): ParsedImport[] {
   const imports: ParsedImport[] = []
 
   for (const line of template.split("\n")) {
-    const match = line.match(IMPORT_REGEX)
+    const match = line.trim().match(IMPORT_REGEX)
 
     if (!match) {
       continue
