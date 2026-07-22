@@ -1,7 +1,9 @@
 import os from "os"
 import path from "path"
+import { getFixturesDir } from "@/src/test-helpers"
+import { getProjectConfig } from "@/src/utils/get-project-info"
 import fs from "fs-extra"
-import { describe, expect, test } from "vitest"
+import { describe, expect, it } from "vitest"
 
 import {
   createConfig,
@@ -9,666 +11,610 @@ import {
   getConfig,
   getRawConfig,
   getWorkspaceConfig,
-} from "../../src/utils/get-config"
-import { getProjectConfig } from "../../src/utils/get-project-info"
+} from "./get-config"
 
-test("get raw config", async () => {
-  expect(
-    await getRawConfig(path.resolve(__dirname, "../fixtures/config-none"))
-  ).toEqual(null)
+describe("getRawConfig", () => {
+  it("get raw config", async () => {
+    expect(
+      await getRawConfig(getFixturesDir("config-none"))
+    ).toEqual(null)
 
-  expect(
-    await getRawConfig(path.resolve(__dirname, "../fixtures/config-partial"))
-  ).toEqual({
-    style: "default",
-    tailwind: {
-      config: "./tailwind.config.ts",
-      css: "./src/assets/css/tailwind.css",
-      baseColor: "neutral",
-      cssVariables: false,
-    },
-    rsc: false,
-    tsx: true,
-    aliases: {
-      components: "@/components",
-      utils: "@/lib/utils",
-    },
-  })
+    expect(
+      await getRawConfig(getFixturesDir("config-partial"))
+    ).toEqual({
+      style: "default",
+      tailwind: {
+        config: "./tailwind.config.ts",
+        css: "./src/assets/css/tailwind.css",
+        baseColor: "neutral",
+        cssVariables: false,
+      },
+      rsc: false,
+      tsx: true,
+      aliases: {
+        components: "@/components",
+        utils: "@/lib/utils",
+      },
+    })
 
-  await expect(
-    getRawConfig(path.resolve(__dirname, "../fixtures/config-invalid"))
-  ).rejects.toThrowError()
-})
-
-test("get project config from package imports", async () => {
-  const cwd = path.resolve(__dirname, "../fixtures/frameworks/next-app-imports")
-
-  expect(await getProjectConfig(cwd)).toEqual({
-    $schema: "https://ui.shadcn.com/schema.json",
-    style: "new-york",
-    rsc: true,
-    tsx: true,
-    tailwind: {
-      config: "tailwind.config.ts",
-      baseColor: "zinc",
-      css: "src/app/styles.css",
-      cssVariables: true,
-      prefix: "",
-    },
-    iconLibrary: "lucide",
-    aliases: {
-      components: "#components",
-      ui: "#components/ui",
-      lib: "#lib",
-      hooks: "#hooks",
-      utils: "#utils",
-    },
-    resolvedPaths: {
-      cwd,
-      tailwindConfig: path.resolve(cwd, "tailwind.config.ts"),
-      tailwindCss: path.resolve(cwd, "src/app/styles.css"),
-      components: path.resolve(cwd, "src/components"),
-      ui: path.resolve(cwd, "src/components/ui"),
-      lib: path.resolve(cwd, "src/lib"),
-      hooks: path.resolve(cwd, "src/hooks"),
-      utils: path.resolve(cwd, "src/lib/utils.ts"),
-    },
-    registries: {
-      "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
-    },
+    await expect(
+      getRawConfig(getFixturesDir("config-invalid"))
+    ).rejects.toThrowError()
   })
 })
 
-test("get project config from generic package import prefix", async () => {
-  const cwd = path.resolve(__dirname, "../fixtures/frameworks/vite-app-imports")
+describe("getProjectConfig", () => {
+  it("get project config from package imports", async () => {
+    const cwd = getFixturesDir("frameworks/next-app-imports")
 
-  expect(await getProjectConfig(cwd)).toEqual({
-    $schema: "https://ui.shadcn.com/schema.json",
-    style: "new-york",
-    rsc: false,
-    tsx: true,
-    tailwind: {
-      config: "",
-      baseColor: "zinc",
-      css: "src/index.css",
-      cssVariables: true,
-      prefix: "",
-    },
-    iconLibrary: "lucide",
-    aliases: {
-      components: "#custom/components",
-      ui: "#custom/components/ui",
-      lib: "#custom/lib",
-      hooks: "#custom/hooks",
-      utils: "#custom/lib/utils",
-    },
-    resolvedPaths: {
-      cwd,
-      tailwindConfig: "",
-      tailwindCss: path.resolve(cwd, "src/index.css"),
-      components: path.resolve(cwd, "src/components"),
-      ui: path.resolve(cwd, "src/components/ui"),
-      lib: path.resolve(cwd, "src/lib"),
-      hooks: path.resolve(cwd, "src/hooks"),
-      utils: path.resolve(cwd, "src/lib/utils"),
-    },
-    registries: {
-      "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
-    },
+    expect(await getProjectConfig(cwd)).toEqual({
+      $schema: "https://ui.shadcn.com/schema.json",
+      style: "new-york",
+      rsc: true,
+      tsx: true,
+      tailwind: {
+        config: "tailwind.config.ts",
+        baseColor: "zinc",
+        css: "src/app/styles.css",
+        cssVariables: true,
+        prefix: "",
+      },
+      iconLibrary: "lucide",
+      aliases: {
+        components: "#components",
+        ui: "#components/ui",
+        lib: "#lib",
+        hooks: "#hooks",
+        utils: "#utils",
+      },
+      resolvedPaths: {
+        cwd,
+        tailwindConfig: path.resolve(cwd, "tailwind.config.ts"),
+        tailwindCss: path.resolve(cwd, "src/app/styles.css"),
+        components: path.resolve(cwd, "src/components"),
+        ui: path.resolve(cwd, "src/components/ui"),
+        lib: path.resolve(cwd, "src/lib"),
+        hooks: path.resolve(cwd, "src/hooks"),
+        utils: path.resolve(cwd, "src/lib/utils.ts"),
+      },
+      registries: {
+        "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+      },
+    })
+  })
+
+  it("get project config from generic package import prefix", async () => {
+    const cwd = getFixturesDir("frameworks/vite-app-imports")
+
+    expect(await getProjectConfig(cwd)).toEqual({
+      $schema: "https://ui.shadcn.com/schema.json",
+      style: "new-york",
+      rsc: false,
+      tsx: true,
+      tailwind: {
+        config: "",
+        baseColor: "zinc",
+        css: "src/index.css",
+        cssVariables: true,
+        prefix: "",
+      },
+      iconLibrary: "lucide",
+      aliases: {
+        components: "#custom/components",
+        ui: "#custom/components/ui",
+        lib: "#custom/lib",
+        hooks: "#custom/hooks",
+        utils: "#custom/lib/utils",
+      },
+      resolvedPaths: {
+        cwd,
+        tailwindConfig: "",
+        tailwindCss: path.resolve(cwd, "src/index.css"),
+        components: path.resolve(cwd, "src/components"),
+        ui: path.resolve(cwd, "src/components/ui"),
+        lib: path.resolve(cwd, "src/lib"),
+        hooks: path.resolve(cwd, "src/hooks"),
+        utils: path.resolve(cwd, "src/lib/utils"),
+      },
+      registries: {
+        "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+      },
+    })
+  })
+
+  it("get project config from root package imports", async () => {
+    const cwd = getFixturesDir("frameworks/vite-root-imports")
+
+    expect(await getProjectConfig(cwd)).toEqual({
+      $schema: "https://ui.shadcn.com/schema.json",
+      style: "new-york",
+      rsc: false,
+      tsx: true,
+      tailwind: {
+        config: "",
+        baseColor: "zinc",
+        css: "src/index.css",
+        cssVariables: true,
+        prefix: "",
+      },
+      iconLibrary: "lucide",
+      aliases: {
+        components: "#components",
+        ui: "#components/ui",
+        lib: "#lib",
+        hooks: "#hooks",
+        utils: "#lib/utils",
+      },
+      resolvedPaths: {
+        cwd,
+        tailwindConfig: "",
+        tailwindCss: path.resolve(cwd, "src/index.css"),
+        components: path.resolve(cwd, "src/components"),
+        ui: path.resolve(cwd, "src/components/ui"),
+        lib: path.resolve(cwd, "src/lib"),
+        hooks: path.resolve(cwd, "src/hooks"),
+        utils: path.resolve(cwd, "src/lib/utils"),
+      },
+      registries: {
+        "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+      },
+    })
+  })
+
+  it("get project config from partial package imports", async () => {
+    const cwd = getFixturesDir("frameworks/vite-partial-imports")
+
+    expect(await getProjectConfig(cwd)).toEqual({
+      $schema: "https://ui.shadcn.com/schema.json",
+      style: "new-york",
+      rsc: false,
+      tsx: true,
+      tailwind: {
+        config: "",
+        baseColor: "zinc",
+        css: "src/index.css",
+        cssVariables: true,
+        prefix: "",
+      },
+      iconLibrary: "lucide",
+      aliases: {
+        components: "#components",
+        ui: "#components/ui",
+        lib: "#lib",
+        utils: "#lib/utils",
+      },
+      resolvedPaths: {
+        cwd,
+        tailwindConfig: "",
+        tailwindCss: path.resolve(cwd, "src/index.css"),
+        components: path.resolve(cwd, "src/components"),
+        ui: path.resolve(cwd, "src/components/ui"),
+        lib: path.resolve(cwd, "src/lib"),
+        hooks: path.resolve(cwd, "src/hooks"),
+        utils: path.resolve(cwd, "src/lib/utils"),
+      },
+      registries: {
+        "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+      },
+    })
   })
 })
 
-test("get project config from root package imports", async () => {
-  const cwd = path.resolve(__dirname, "../fixtures/frameworks/vite-root-imports")
+describe("getConfig", () => {
+  it("get config", async () => {
+    expect(
+      await getConfig(getFixturesDir("config-none"))
+    ).toEqual(null)
 
-  expect(await getProjectConfig(cwd)).toEqual({
-    $schema: "https://ui.shadcn.com/schema.json",
-    style: "new-york",
-    rsc: false,
-    tsx: true,
-    tailwind: {
-      config: "",
-      baseColor: "zinc",
-      css: "src/index.css",
-      cssVariables: true,
-      prefix: "",
-    },
-    iconLibrary: "lucide",
-    aliases: {
-      components: "#components",
-      ui: "#components/ui",
-      lib: "#lib",
-      hooks: "#hooks",
-      utils: "#lib/utils",
-    },
-    resolvedPaths: {
-      cwd,
-      tailwindConfig: "",
-      tailwindCss: path.resolve(cwd, "src/index.css"),
-      components: path.resolve(cwd, "src/components"),
-      ui: path.resolve(cwd, "src/components/ui"),
-      lib: path.resolve(cwd, "src/lib"),
-      hooks: path.resolve(cwd, "src/hooks"),
-      utils: path.resolve(cwd, "src/lib/utils"),
-    },
-    registries: {
-      "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
-    },
-  })
-})
+    await expect(
+      getConfig(getFixturesDir("config-invalid"))
+    ).rejects.toThrowError()
 
-test("get project config from partial package imports", async () => {
-  const cwd = path.resolve(
-    __dirname,
-    "../fixtures/frameworks/vite-partial-imports"
-  )
+    expect(
+      await getConfig(getFixturesDir("config-partial"))
+    ).toEqual({
+      style: "default",
+      tailwind: {
+        config: "./tailwind.config.ts",
+        css: "./src/assets/css/tailwind.css",
+        baseColor: "neutral",
+        cssVariables: false,
+      },
+      rsc: false,
+      tsx: true,
+      aliases: {
+        components: "@/components",
+        utils: "@/lib/utils",
+      },
+      resolvedPaths: {
+        cwd: getFixturesDir("config-partial"),
+        tailwindConfig: path.resolve(
+          getFixturesDir("config-partial"),
+          "tailwind.config.ts"
+        ),
+        tailwindCss: path.resolve(
+          getFixturesDir("config-partial"),
+          "./src/assets/css/tailwind.css"
+        ),
+        components: path.resolve(
+          getFixturesDir("config-partial"),
+          "./components"
+        ),
+        utils: path.resolve(
+          getFixturesDir("config-partial"),
+          "./lib/utils"
+        ),
+        ui: path.resolve(
+          getFixturesDir("config-partial"),
+          "./components/ui"
+        ),
+        hooks: path.resolve(getFixturesDir("config-partial"), "./hooks"),
+        lib: path.resolve(getFixturesDir("config-partial"), "./lib"),
+      },
+      iconLibrary: "lucide",
+      registries: {
+        "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+      },
+    })
 
-  expect(await getProjectConfig(cwd)).toEqual({
-    $schema: "https://ui.shadcn.com/schema.json",
-    style: "new-york",
-    rsc: false,
-    tsx: true,
-    tailwind: {
-      config: "",
-      baseColor: "zinc",
-      css: "src/index.css",
-      cssVariables: true,
-      prefix: "",
-    },
-    iconLibrary: "lucide",
-    aliases: {
-      components: "#components",
-      ui: "#components/ui",
-      lib: "#lib",
-      utils: "#lib/utils",
-    },
-    resolvedPaths: {
-      cwd,
-      tailwindConfig: "",
-      tailwindCss: path.resolve(cwd, "src/index.css"),
-      components: path.resolve(cwd, "src/components"),
-      ui: path.resolve(cwd, "src/components/ui"),
-      lib: path.resolve(cwd, "src/lib"),
-      hooks: path.resolve(cwd, "src/hooks"),
-      utils: path.resolve(cwd, "src/lib/utils"),
-    },
-    registries: {
-      "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
-    },
-  })
-})
+    expect(
+      await getConfig(getFixturesDir("config-full"))
+    ).toEqual({
+      style: "new-york",
+      rsc: false,
+      tsx: true,
+      tailwind: {
+        config: "tailwind.config.ts",
+        baseColor: "zinc",
+        css: "src/app/globals.css",
+        cssVariables: true,
+        prefix: "tw-",
+      },
+      aliases: {
+        components: "~/components",
+        utils: "~/lib/utils",
+        lib: "~/lib",
+        hooks: "~/lib/hooks",
+        ui: "~/ui",
+      },
+      iconLibrary: "lucide",
+      resolvedPaths: {
+        cwd: getFixturesDir("config-full"),
+        tailwindConfig: path.resolve(
+          getFixturesDir("config-full"),
+          "tailwind.config.ts"
+        ),
+        tailwindCss: path.resolve(
+          getFixturesDir("config-full"),
+          "./src/app/globals.css"
+        ),
+        components: path.resolve(
+          getFixturesDir("config-full"),
+          "./src/components"
+        ),
+        ui: path.resolve(getFixturesDir("config-full"), "./src/ui"),
+        hooks: path.resolve(
+          getFixturesDir("config-full"),
+          "./src/lib/hooks"
+        ),
+        lib: path.resolve(getFixturesDir("config-full"), "./src/lib"),
+        utils: path.resolve(
+          getFixturesDir("config-full"),
+          "./src/lib/utils"
+        ),
+      },
+      registries: {
+        "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+      },
+    })
 
-test("get config", async () => {
-  expect(
-    await getConfig(path.resolve(__dirname, "../fixtures/config-none"))
-  ).toEqual(null)
+    expect(
+      await getConfig(getFixturesDir("config-jsx"))
+    ).toEqual({
+      style: "default",
+      tailwind: {
+        config: "./tailwind.config.js",
+        css: "./src/assets/css/tailwind.css",
+        baseColor: "neutral",
+        cssVariables: false,
+      },
+      rsc: false,
+      tsx: false,
+      aliases: {
+        components: "@/components",
+        utils: "@/lib/utils",
+      },
+      iconLibrary: "radix",
+      resolvedPaths: {
+        cwd: getFixturesDir("config-jsx"),
+        tailwindConfig: path.resolve(
+          getFixturesDir("config-jsx"),
+          "tailwind.config.js"
+        ),
+        tailwindCss: path.resolve(
+          getFixturesDir("config-jsx"),
+          "./src/assets/css/tailwind.css"
+        ),
+        components: path.resolve(
+          getFixturesDir("config-jsx"),
+          "./components"
+        ),
+        ui: path.resolve(getFixturesDir("config-jsx"), "./components/ui"),
+        utils: path.resolve(getFixturesDir("config-jsx"), "./lib/utils"),
+        hooks: path.resolve(getFixturesDir("config-jsx"), "./hooks"),
+        lib: path.resolve(getFixturesDir("config-jsx"), "./lib"),
+      },
+      registries: {
+        "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+      },
+    })
 
-  await expect(
-    getConfig(path.resolve(__dirname, "../fixtures/config-invalid"))
-  ).rejects.toThrowError()
+    expect(
+      await getConfig(getFixturesDir("config-imports"))
+    ).toEqual({
+      style: "new-york",
+      rsc: true,
+      tsx: true,
+      tailwind: {
+        config: "tailwind.config.ts",
+        baseColor: "zinc",
+        css: "src/app/globals.css",
+        cssVariables: true,
+      },
+      aliases: {
+        components: "#components",
+        ui: "#components/ui",
+        lib: "#lib",
+        hooks: "#hooks",
+        utils: "#utils",
+      },
+      iconLibrary: "radix",
+      resolvedPaths: {
+        cwd: getFixturesDir("config-imports"),
+        tailwindConfig: path.resolve(
+          getFixturesDir("config-imports"),
+          "tailwind.config.ts"
+        ),
+        tailwindCss: path.resolve(
+          getFixturesDir("config-imports"),
+          "src/app/globals.css"
+        ),
+        components: path.resolve(
+          getFixturesDir("config-imports"),
+          "src/components"
+        ),
+        ui: path.resolve(
+          getFixturesDir("config-imports"),
+          "src/components/ui"
+        ),
+        lib: path.resolve(getFixturesDir("config-imports"), "src/lib"),
+        hooks: path.resolve(getFixturesDir("config-imports"), "src/hooks"),
+        utils: path.resolve(
+          getFixturesDir("config-imports"),
+          "src/lib/utils.ts"
+        ),
+      },
+      registries: {
+        "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+      },
+    })
 
-  expect(
-    await getConfig(path.resolve(__dirname, "../fixtures/config-partial"))
-  ).toEqual({
-    style: "default",
-    tailwind: {
-      config: "./tailwind.config.ts",
-      css: "./src/assets/css/tailwind.css",
-      baseColor: "neutral",
-      cssVariables: false,
-    },
-    rsc: false,
-    tsx: true,
-    aliases: {
-      components: "@/components",
-      utils: "@/lib/utils",
-    },
-    resolvedPaths: {
-      cwd: path.resolve(__dirname, "../fixtures/config-partial"),
-      tailwindConfig: path.resolve(
-        __dirname,
-        "../fixtures/config-partial",
-        "tailwind.config.ts"
-      ),
-      tailwindCss: path.resolve(
-        __dirname,
-        "../fixtures/config-partial",
-        "./src/assets/css/tailwind.css"
-      ),
-      components: path.resolve(
-        __dirname,
-        "../fixtures/config-partial",
-        "./components"
-      ),
-      utils: path.resolve(
-        __dirname,
-        "../fixtures/config-partial",
-        "./lib/utils"
-      ),
-      ui: path.resolve(
-        __dirname,
-        "../fixtures/config-partial",
-        "./components/ui"
-      ),
-      hooks: path.resolve(__dirname, "../fixtures/config-partial", "./hooks"),
-      lib: path.resolve(__dirname, "../fixtures/config-partial", "./lib"),
-    },
-    iconLibrary: "lucide",
-    registries: {
-      "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
-    },
-  })
-
-  expect(
-    await getConfig(path.resolve(__dirname, "../fixtures/config-full"))
-  ).toEqual({
-    style: "new-york",
-    rsc: false,
-    tsx: true,
-    tailwind: {
-      config: "tailwind.config.ts",
-      baseColor: "zinc",
-      css: "src/app/globals.css",
-      cssVariables: true,
-      prefix: "tw-",
-    },
-    aliases: {
-      components: "~/components",
-      utils: "~/lib/utils",
-      lib: "~/lib",
-      hooks: "~/lib/hooks",
-      ui: "~/ui",
-    },
-    iconLibrary: "lucide",
-    resolvedPaths: {
-      cwd: path.resolve(__dirname, "../fixtures/config-full"),
-      tailwindConfig: path.resolve(
-        __dirname,
-        "../fixtures/config-full",
-        "tailwind.config.ts"
-      ),
-      tailwindCss: path.resolve(
-        __dirname,
-        "../fixtures/config-full",
-        "./src/app/globals.css"
-      ),
-      components: path.resolve(
-        __dirname,
-        "../fixtures/config-full",
-        "./src/components"
-      ),
-      ui: path.resolve(__dirname, "../fixtures/config-full", "./src/ui"),
-      hooks: path.resolve(
-        __dirname,
-        "../fixtures/config-full",
-        "./src/lib/hooks"
-      ),
-      lib: path.resolve(__dirname, "../fixtures/config-full", "./src/lib"),
-      utils: path.resolve(
-        __dirname,
-        "../fixtures/config-full",
-        "./src/lib/utils"
-      ),
-    },
-    registries: {
-      "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
-    },
-  })
-
-  expect(
-    await getConfig(path.resolve(__dirname, "../fixtures/config-jsx"))
-  ).toEqual({
-    style: "default",
-    tailwind: {
-      config: "./tailwind.config.js",
-      css: "./src/assets/css/tailwind.css",
-      baseColor: "neutral",
-      cssVariables: false,
-    },
-    rsc: false,
-    tsx: false,
-    aliases: {
-      components: "@/components",
-      utils: "@/lib/utils",
-    },
-    iconLibrary: "radix",
-    resolvedPaths: {
-      cwd: path.resolve(__dirname, "../fixtures/config-jsx"),
-      tailwindConfig: path.resolve(
-        __dirname,
-        "../fixtures/config-jsx",
-        "tailwind.config.js"
-      ),
-      tailwindCss: path.resolve(
-        __dirname,
-        "../fixtures/config-jsx",
-        "./src/assets/css/tailwind.css"
-      ),
-      components: path.resolve(
-        __dirname,
-        "../fixtures/config-jsx",
-        "./components"
-      ),
-      ui: path.resolve(__dirname, "../fixtures/config-jsx", "./components/ui"),
-      utils: path.resolve(__dirname, "../fixtures/config-jsx", "./lib/utils"),
-      hooks: path.resolve(__dirname, "../fixtures/config-jsx", "./hooks"),
-      lib: path.resolve(__dirname, "../fixtures/config-jsx", "./lib"),
-    },
-    registries: {
-      "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
-    },
-  })
-
-  expect(
-    await getConfig(path.resolve(__dirname, "../fixtures/config-imports"))
-  ).toEqual({
-    style: "new-york",
-    rsc: true,
-    tsx: true,
-    tailwind: {
-      config: "tailwind.config.ts",
-      baseColor: "zinc",
-      css: "src/app/globals.css",
-      cssVariables: true,
-    },
-    aliases: {
-      components: "#components",
-      ui: "#components/ui",
-      lib: "#lib",
-      hooks: "#hooks",
-      utils: "#utils",
-    },
-    iconLibrary: "radix",
-    resolvedPaths: {
-      cwd: path.resolve(__dirname, "../fixtures/config-imports"),
-      tailwindConfig: path.resolve(
-        __dirname,
-        "../fixtures/config-imports",
-        "tailwind.config.ts"
-      ),
-      tailwindCss: path.resolve(
-        __dirname,
-        "../fixtures/config-imports",
-        "src/app/globals.css"
-      ),
-      components: path.resolve(
-        __dirname,
-        "../fixtures/config-imports",
-        "src/components"
-      ),
-      ui: path.resolve(
-        __dirname,
-        "../fixtures/config-imports",
-        "src/components/ui"
-      ),
-      lib: path.resolve(__dirname, "../fixtures/config-imports", "src/lib"),
-      hooks: path.resolve(__dirname, "../fixtures/config-imports", "src/hooks"),
-      utils: path.resolve(
-        __dirname,
-        "../fixtures/config-imports",
-        "src/lib/utils.ts"
-      ),
-    },
-    registries: {
-      "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
-    },
-  })
-
-  expect(
-    await getConfig(
-      path.resolve(__dirname, "../fixtures/config-imports-extensions")
-    )
-  ).toEqual({
-    style: "new-york",
-    rsc: false,
-    tsx: true,
-    tailwind: {
-      css: "src/index.css",
-      baseColor: "zinc",
-      cssVariables: true,
-    },
-    aliases: {
-      components: "#components",
-      ui: "#components/ui",
-      lib: "#lib",
-      utils: "#lib/utils",
-    },
-    iconLibrary: "radix",
-    resolvedPaths: {
-      cwd: path.resolve(__dirname, "../fixtures/config-imports-extensions"),
-      tailwindConfig: "",
-      tailwindCss: path.resolve(
-        __dirname,
-        "../fixtures/config-imports-extensions",
-        "src/index.css"
-      ),
-      components: path.resolve(
-        __dirname,
-        "../fixtures/config-imports-extensions",
-        "src/components"
-      ),
-      ui: path.resolve(
-        __dirname,
-        "../fixtures/config-imports-extensions",
-        "src/components/ui"
-      ),
-      lib: path.resolve(
-        __dirname,
-        "../fixtures/config-imports-extensions",
-        "src/lib"
-      ),
-      hooks: path.resolve(
-        __dirname,
-        "../fixtures/config-imports-extensions",
-        "src/hooks"
-      ),
-      utils: path.resolve(
-        __dirname,
-        "../fixtures/config-imports-extensions",
-        "src/lib/utils.ts"
-      ),
-    },
-    registries: {
-      "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
-    },
-  })
-
-  expect(
-    await getConfig(
-      path.resolve(
-        __dirname,
-        "../fixtures/frameworks/vite-monorepo-imports/apps/web"
+    expect(
+      await getConfig(
+        getFixturesDir("config-imports-extensions")
       )
-    )
-  ).toEqual({
-    style: "new-york",
-    rsc: false,
-    tsx: true,
-    tailwind: {
-      config: "",
-      css: "../../packages/ui/src/styles/globals.css",
-      baseColor: "zinc",
-      cssVariables: true,
-    },
-    aliases: {
-      components: "#components",
-      ui: "@workspace/ui/components",
-      lib: "#lib",
-      hooks: "#hooks",
-      utils: "@workspace/ui/lib/utils",
-    },
-    iconLibrary: "radix",
-    resolvedPaths: {
-      cwd: path.resolve(
-        __dirname,
-        "../fixtures/frameworks/vite-monorepo-imports/apps/web"
-      ),
-      tailwindConfig: "",
-      tailwindCss: path.resolve(
-        __dirname,
-        "../fixtures/frameworks/vite-monorepo-imports/packages/ui/src/styles/globals.css"
-      ),
-      components: path.resolve(
-        __dirname,
-        "../fixtures/frameworks/vite-monorepo-imports/apps/web/src/components"
-      ),
-      ui: path.resolve(
-        __dirname,
-        "../fixtures/frameworks/vite-monorepo-imports/packages/ui/src/components"
-      ),
-      lib: path.resolve(
-        __dirname,
-        "../fixtures/frameworks/vite-monorepo-imports/apps/web/src/lib"
-      ),
-      hooks: path.resolve(
-        __dirname,
-        "../fixtures/frameworks/vite-monorepo-imports/apps/web/src/hooks"
-      ),
-      utils: path.resolve(
-        __dirname,
-        "../fixtures/frameworks/vite-monorepo-imports/packages/ui/src/lib/utils.ts"
-      ),
-    },
-    registries: {
-      "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
-    },
+    ).toEqual({
+      style: "new-york",
+      rsc: false,
+      tsx: true,
+      tailwind: {
+        css: "src/index.css",
+        baseColor: "zinc",
+        cssVariables: true,
+      },
+      aliases: {
+        components: "#components",
+        ui: "#components/ui",
+        lib: "#lib",
+        utils: "#lib/utils",
+      },
+      iconLibrary: "radix",
+      resolvedPaths: {
+        cwd: getFixturesDir("config-imports-extensions"),
+        tailwindConfig: "",
+        tailwindCss: path.resolve(
+          getFixturesDir("config-imports-extensions"),
+          "src/index.css"
+        ),
+        components: path.resolve(
+          getFixturesDir("config-imports-extensions"),
+          "src/components"
+        ),
+        ui: path.resolve(
+          getFixturesDir("config-imports-extensions"),
+          "src/components/ui"
+        ),
+        lib: path.resolve(
+          getFixturesDir("config-imports-extensions"),
+          "src/lib"
+        ),
+        hooks: path.resolve(
+          getFixturesDir("config-imports-extensions"),
+          "src/hooks"
+        ),
+        utils: path.resolve(
+          getFixturesDir("config-imports-extensions"),
+          "src/lib/utils.ts"
+        ),
+      },
+      registries: {
+        "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+      },
+    })
+
+    expect(
+      await getConfig(
+        getFixturesDir("frameworks/vite-monorepo-imports/apps/web")
+      )
+    ).toEqual({
+      style: "new-york",
+      rsc: false,
+      tsx: true,
+      tailwind: {
+        config: "",
+        css: "../../packages/ui/src/styles/globals.css",
+        baseColor: "zinc",
+        cssVariables: true,
+      },
+      aliases: {
+        components: "#components",
+        ui: "@workspace/ui/components",
+        lib: "#lib",
+        hooks: "#hooks",
+        utils: "@workspace/ui/lib/utils",
+      },
+      iconLibrary: "radix",
+      resolvedPaths: {
+        cwd: getFixturesDir("frameworks/vite-monorepo-imports/apps/web"),
+        tailwindConfig: "",
+        tailwindCss: getFixturesDir("frameworks/vite-monorepo-imports/packages/ui/src/styles/globals.css"),
+        components: getFixturesDir("frameworks/vite-monorepo-imports/apps/web/src/components"),
+        ui: getFixturesDir("frameworks/vite-monorepo-imports/packages/ui/src/components"),
+        lib: getFixturesDir("frameworks/vite-monorepo-imports/apps/web/src/lib"),
+        hooks: getFixturesDir("frameworks/vite-monorepo-imports/apps/web/src/hooks"),
+        utils: getFixturesDir("frameworks/vite-monorepo-imports/packages/ui/src/lib/utils.ts"),
+      },
+      registries: {
+        "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+      },
+    })
   })
 })
 
-test("get workspace config resolves cross-package aliases without tsconfig paths", async () => {
-  const appCwd = path.resolve(
-    __dirname,
-    "../fixtures/frameworks/vite-monorepo-imports/apps/web"
-  )
-  const uiCwd = path.resolve(
-    __dirname,
-    "../fixtures/frameworks/vite-monorepo-imports/packages/ui"
-  )
+describe("getWorkspaceConfig", () => {
+  it("get workspace config resolves cross-package aliases without tsconfig paths", async () => {
+    const appCwd = getFixturesDir("frameworks/vite-monorepo-imports/apps/web")
+    const uiCwd = getFixturesDir("frameworks/vite-monorepo-imports/packages/ui")
 
-  const config = await getConfig(appCwd)
-  if (!config) {
-    throw new Error("Failed to load monorepo app config")
-  }
-
-  expect(await getWorkspaceConfig(config)).toMatchObject({
-    components: {
-      resolvedPaths: {
-        cwd: appCwd,
-      },
-    },
-    ui: {
-      resolvedPaths: {
-        cwd: uiCwd,
-      },
-    },
-    lib: {
-      resolvedPaths: {
-        cwd: appCwd,
-      },
-    },
-    hooks: {
-      resolvedPaths: {
-        cwd: appCwd,
-      },
-    },
-  })
-})
-
-test("get workspace config shows an actionable error when a workspace package is missing imports", async () => {
-  const fixtureRoot = path.resolve(
-    __dirname,
-    "../fixtures/frameworks/vite-monorepo-imports"
-  )
-  const tempDir = await fs.mkdtemp(
-    path.join(os.tmpdir(), "shadcn-workspace-config-")
-  )
-
-  try {
-    await fs.copy(fixtureRoot, tempDir)
-
-    const uiPackageJsonPath = path.resolve(tempDir, "packages/ui/package.json")
-    const uiPackageJson = await fs.readJson(uiPackageJsonPath)
-    delete uiPackageJson.imports
-    await fs.writeJson(uiPackageJsonPath, uiPackageJson, { spaces: 2 })
-
-    const config = await getConfig(path.resolve(tempDir, "apps/web"))
+    const config = await getConfig(appCwd)
     if (!config) {
-      throw new Error("Failed to load broken monorepo app config")
+      throw new Error("Failed to load monorepo app config")
     }
 
-    await expect(getWorkspaceConfig(config)).rejects.toThrowError(
-      new RegExp(
-        "Could not resolve the following aliases.*packages/ui.*components, ui, lib, hooks, utils",
-        "s"
-      )
+    expect(await getWorkspaceConfig(config)).toMatchObject({
+      components: {
+        resolvedPaths: {
+          cwd: appCwd,
+        },
+      },
+      ui: {
+        resolvedPaths: {
+          cwd: uiCwd,
+        },
+      },
+      lib: {
+        resolvedPaths: {
+          cwd: appCwd,
+        },
+      },
+      hooks: {
+        resolvedPaths: {
+          cwd: appCwd,
+        },
+      },
+    })
+  })
+
+  it("get workspace config shows an actionable error when a workspace package is missing imports", async () => {
+    const fixtureRoot = getFixturesDir("frameworks/vite-monorepo-imports")
+    const tempDir = await fs.mkdtemp(
+      path.join(os.tmpdir(), "shadcn-workspace-config-")
     )
-  } finally {
-    await fs.remove(tempDir)
-  }
-})
 
-test("get workspace config shows an actionable error when a workspace package is missing components.json", async () => {
-  const fixtureRoot = path.resolve(
-    __dirname,
-    "../fixtures/frameworks/vite-monorepo-imports"
-  )
-  const tempDir = await fs.mkdtemp(
-    path.join(os.tmpdir(), "shadcn-workspace-config-")
-  )
+    try {
+      await fs.copy(fixtureRoot, tempDir)
 
-  try {
-    await fs.copy(fixtureRoot, tempDir)
-    await fs.remove(path.resolve(tempDir, "packages/ui/components.json"))
+      const uiPackageJsonPath = path.resolve(tempDir, "packages/ui/package.json")
+      const uiPackageJson = await fs.readJson(uiPackageJsonPath)
+      delete uiPackageJson.imports
+      await fs.writeJson(uiPackageJsonPath, uiPackageJson, { spaces: 2 })
 
-    const config = await getConfig(path.resolve(tempDir, "apps/web"))
-    if (!config) {
-      throw new Error("Failed to load broken monorepo app config")
+      const config = await getConfig(path.resolve(tempDir, "apps/web"))
+      if (!config) {
+        throw new Error("Failed to load broken monorepo app config")
+      }
+
+      await expect(getWorkspaceConfig(config)).rejects.toThrowError(
+        new RegExp(
+          "Could not resolve the following aliases.*packages/ui.*components, ui, lib, hooks, utils",
+          "s"
+        )
+      )
+    } finally {
+      await fs.remove(tempDir)
     }
+  })
 
-    await expect(getWorkspaceConfig(config)).rejects.toThrowError(
-      new RegExp(
-        "Could not load the workspace config.*packages/ui.*components.json.*path aliases or package imports",
-        "s"
-      )
+  it("get workspace config shows an actionable error when a workspace package is missing components.json", async () => {
+    const fixtureRoot = getFixturesDir("frameworks/vite-monorepo-imports")
+    const tempDir = await fs.mkdtemp(
+      path.join(os.tmpdir(), "shadcn-workspace-config-")
     )
-  } finally {
-    await fs.remove(tempDir)
-  }
+
+    try {
+      await fs.copy(fixtureRoot, tempDir)
+      await fs.remove(path.resolve(tempDir, "packages/ui/components.json"))
+
+      const config = await getConfig(path.resolve(tempDir, "apps/web"))
+      if (!config) {
+        throw new Error("Failed to load broken monorepo app config")
+      }
+
+      await expect(getWorkspaceConfig(config)).rejects.toThrowError(
+        new RegExp(
+          "Could not load the workspace config.*packages/ui.*components.json.*path aliases or package imports",
+          "s"
+        )
+      )
+    } finally {
+      await fs.remove(tempDir)
+    }
+  })
 })
 
 describe("getBase", () => {
-  test("returns radix for radix styles", () => {
+  it("returns radix for radix styles", () => {
     expect(getBase("radix-nova")).toBe("radix")
     expect(getBase("radix-vega")).toBe("radix")
   })
 
-  test("returns base for base styles", () => {
+  it("returns base for base styles", () => {
     expect(getBase("base-nova")).toBe("base")
     expect(getBase("base-vega")).toBe("base")
   })
 
-  test("returns aria for aria styles", () => {
+  it("returns aria for aria styles", () => {
     expect(getBase("aria-nova")).toBe("aria")
     expect(getBase("aria-vega")).toBe("aria")
   })
 
-  test("returns base for undefined", () => {
+  it("returns base for undefined", () => {
     expect(getBase(undefined)).toBe("base")
   })
 
-  test("returns radix for legacy unprefixed styles", () => {
+  it("returns radix for legacy unprefixed styles", () => {
     expect(getBase("new-york")).toBe("radix")
     expect(getBase("new-york-v4")).toBe("radix")
     expect(getBase("default")).toBe("radix")
   })
 
-  test("returns radix for an empty string style", () => {
+  it("returns radix for an empty string style", () => {
     expect(getBase("")).toBe("radix")
   })
 })
 
 describe("createConfig", () => {
-  test("creates default config when called without arguments", () => {
+  it("creates default config when called without arguments", () => {
     const config = createConfig()
 
     expect(config).toMatchObject({
@@ -698,7 +644,7 @@ describe("createConfig", () => {
     })
   })
 
-  test("overrides cwd in resolvedPaths", () => {
+  it("overrides cwd in resolvedPaths", () => {
     const customCwd = "/custom/path"
     const config = createConfig({
       resolvedPaths: {
@@ -711,7 +657,7 @@ describe("createConfig", () => {
     expect(config.resolvedPaths.utils).toBe("")
   })
 
-  test("overrides style", () => {
+  it("overrides style", () => {
     const config = createConfig({
       style: "new-york",
     })
@@ -719,7 +665,7 @@ describe("createConfig", () => {
     expect(config.style).toBe("new-york")
   })
 
-  test("overrides tailwind settings", () => {
+  it("overrides tailwind settings", () => {
     const config = createConfig({
       tailwind: {
         baseColor: "slate",
@@ -733,7 +679,7 @@ describe("createConfig", () => {
     expect(config.tailwind.css).toBe("")
   })
 
-  test("overrides boolean flags", () => {
+  it("overrides boolean flags", () => {
     const config = createConfig({
       rsc: true,
       tsx: false,
@@ -743,7 +689,7 @@ describe("createConfig", () => {
     expect(config.tsx).toBe(false)
   })
 
-  test("overrides aliases", () => {
+  it("overrides aliases", () => {
     const config = createConfig({
       aliases: {
         components: "@/components",
@@ -755,7 +701,7 @@ describe("createConfig", () => {
     expect(config.aliases.utils).toBe("@/lib/utils")
   })
 
-  test("handles complex partial overrides", () => {
+  it("handles complex partial overrides", () => {
     const config = createConfig({
       style: "default",
       resolvedPaths: {
@@ -782,7 +728,7 @@ describe("createConfig", () => {
     expect(config.aliases.components).toBe("")
   })
 
-  test("returns new object instances", () => {
+  it("returns new object instances", () => {
     const config1 = createConfig()
     const config2 = createConfig()
 
