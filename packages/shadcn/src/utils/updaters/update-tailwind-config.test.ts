@@ -1,12 +1,14 @@
 import { Project, SyntaxKind } from "ts-morph"
-import { beforeEach, describe, expect, test } from "vitest"
+import { beforeEach, describe, expect, it } from "vitest"
 
 import {
-  buildTailwindThemeColorsFromCssVars, nestSpreadElements,
+  buildTailwindThemeColorsFromCssVars,
+  nestSpreadElements,
   nestSpreadProperties,
   transformTailwindConfig,
-  unnestSpreadProperties, unsetSpreadElements,
-} from "../../../src/utils/updaters/update-tailwind-config"
+  unnestSpreadProperties,
+  unsetSpreadElements,
+} from "./update-tailwind-config"
 
 const SHARED_CONFIG = {
   $schema: "https://ui.shadcn.com/schema.json",
@@ -34,7 +36,7 @@ const SHARED_CONFIG = {
 }
 
 describe("transformTailwindConfig -> darkMode property", () => {
-  test("should add darkMode property if not in config", async () => {
+  it("should add darkMode property if not in config", async () => {
     expect(
       await transformTailwindConfig(
         `import type { Config } from 'tailwindcss'
@@ -68,7 +70,7 @@ export default config
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
 
@@ -94,7 +96,7 @@ export default {
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
 
@@ -123,12 +125,12 @@ export default {
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
 
-  test("should append class to darkMode property if existing array", async () => {
+  it("should append class to darkMode property if existing array", async () => {
     expect(
       await transformTailwindConfig(
         `import type { Config } from 'tailwindcss'
@@ -163,12 +165,12 @@ export default config
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
 
-  test("should preserve quote kind", async () => {
+  it("should preserve quote kind", async () => {
     expect(
       await transformTailwindConfig(
         `import type { Config } from 'tailwindcss'
@@ -203,12 +205,12 @@ export default config
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
 
-  test("should convert string to array and add class if darkMode is string", async () => {
+  it("should convert string to array and add class if darkMode is string", async () => {
     expect(
       await transformTailwindConfig(
         `import type { Config } from 'tailwindcss'
@@ -243,12 +245,12 @@ export default config
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
 
-  test("should work with multiple darkMode selectors", async () => {
+  it("should work with multiple darkMode selectors", async () => {
     expect(
       await transformTailwindConfig(
         `import type { Config } from 'tailwindcss'
@@ -286,12 +288,12 @@ export default config
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
 
-  test("should not add darkMode property if already in config", async () => {
+  it("should not add darkMode property if already in config", async () => {
     expect(
       await transformTailwindConfig(
         `import type { Config } from 'tailwindcss'
@@ -326,7 +328,7 @@ export default config
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
 
@@ -364,14 +366,14 @@ export default config
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
 })
 
 describe("transformTailwindConfig -> plugin", () => {
-  test("should add plugin if not in config", async () => {
+  it("should add plugin if not in config", async () => {
     expect(
       await transformTailwindConfig(
         `import type { Config } from 'tailwindcss'
@@ -399,12 +401,12 @@ export default config
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
 
-  test("should append plugin to existing array", async () => {
+  it("should append plugin to existing array", async () => {
     expect(
       await transformTailwindConfig(
         `import type { Config } from 'tailwindcss'
@@ -433,12 +435,12 @@ export default config
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
 
-  test("should not add plugin if already in config", async () => {
+  it("should not add plugin if already in config", async () => {
     expect(
       await transformTailwindConfig(
         `import type { Config } from 'tailwindcss'
@@ -467,14 +469,14 @@ export default config
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
 })
 
 describe("transformTailwindConfig -> theme", () => {
-  test("should add theme if not in config", async () => {
+  it("should add theme if not in config", async () => {
     expect(
       await transformTailwindConfig(
         `import type { Config } from 'tailwindcss'
@@ -504,12 +506,12 @@ describe("transformTailwindConfig -> theme", () => {
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
 
-  test("should merge existing theme", async () => {
+  it("should merge existing theme", async () => {
     expect(
       await transformTailwindConfig(
         `import type { Config } from 'tailwindcss'
@@ -555,12 +557,12 @@ export default config
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
 
-  test("should keep spread assignments", async () => {
+  it("should keep spread assignments", async () => {
     expect(
       await transformTailwindConfig(
         `import type { Config } from 'tailwindcss'
@@ -601,12 +603,12 @@ export default config
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
 
-  test("should handle multiple properties", async () => {
+  it("should handle multiple properties", async () => {
     expect(
       await transformTailwindConfig(
         `import type { Config } from 'tailwindcss'
@@ -677,12 +679,12 @@ export default config
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
 
-  test("should not make any updates running on already updated config", async () => {
+  it("should not make any updates running on already updated config", async () => {
     const input = `import type { Config } from 'tailwindcss'
 
 const config: Config = {
@@ -753,21 +755,21 @@ export default config
 
     const output1 = await transformTailwindConfig(input, tailwindConfig, {
       config: SHARED_CONFIG,
-    })
+    } as any)
 
     const output2 = await transformTailwindConfig(output1, tailwindConfig, {
       config: SHARED_CONFIG,
-    })
+    } as any)
 
     const output3 = await transformTailwindConfig(output2, tailwindConfig, {
       config: SHARED_CONFIG,
-    })
+    } as any)
 
     expect(output3).toBe(output1)
     expect(output3).toBe(output2)
   })
 
-  test("should keep quotes in strings", async () => {
+  it("should keep quotes in strings", async () => {
     expect(
       await transformTailwindConfig(
         `import type { Config } from 'tailwindcss'
@@ -811,12 +813,12 @@ export default config
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
 
-  test("should keep arrays when formatted on multilines", async () => {
+  it("should keep arrays when formatted on multilines", async () => {
     expect(
       await transformTailwindConfig(
         `import type { Config } from 'tailwindcss'
@@ -851,12 +853,12 @@ export default config
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
 
-  test("should handle objects nested in arrays", async () => {
+  it("should handle objects nested in arrays", async () => {
     expect(
       await transformTailwindConfig(
         `import type { Config } from 'tailwindcss'
@@ -901,12 +903,12 @@ export default config
         },
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
 
-  test("should preserve boolean values", async () => {
+  it("should preserve boolean values", async () => {
     expect(
       await transformTailwindConfig(
         `import type { Config } from 'tailwindcss'
@@ -928,7 +930,7 @@ export default config
         {},
         {
           config: SHARED_CONFIG,
-        }
+        } as any
       )
     ).toMatchSnapshot()
   })
@@ -957,50 +959,50 @@ describe("nestSpreadProperties", () => {
     expect(result.replace(/\s+/g, "")).toBe(expected.replace(/\s+/g, ""))
   }
 
-  test("should nest spread properties", () => {
+  it("should nest spread properties", () => {
     testTransformation(
       `{ theme: { ...foo, bar: { ...baz, one: "two" }, other: { a: "b", ...c } } }`,
       `{ theme: { "___foo": "...foo", bar: { "___baz": "...baz", one: "two" }, other: { a: "b", "___c": "...c" } } }`
     )
   })
 
-  test("should handle mixed property assignments", () => {
+  it("should handle mixed property assignments", () => {
     testTransformation(
       `{ ...foo, a: 1, b() {}, ...bar, c: { ...baz } }`,
       `{ "___foo": "...foo", a: 1, b() {}, "___bar": "...bar", c: { "___baz": "...baz" } }`
     )
   })
 
-  test("should handle objects with only spread properties", () => {
+  it("should handle objects with only spread properties", () => {
     testTransformation(
       `{ ...foo, ...bar, ...baz }`,
       `{ "___foo": "...foo", "___bar": "...bar", "___baz": "...baz" }`
     )
   })
 
-  test("should handle property name conflicts", () => {
+  it("should handle property name conflicts", () => {
     testTransformation(`{ foo: 1, ...foo }`, `{ foo: 1, "___foo": "...foo" }`)
   })
 
-  test("should handle shorthand property names", () => {
+  it("should handle shorthand property names", () => {
     testTransformation(`{ a, ...foo, b }`, `{ a, "___foo": "...foo", b }`)
   })
 
-  test("should handle computed property names", () => {
+  it("should handle computed property names", () => {
     testTransformation(
       `{ ["computed"]: 1, ...foo }`,
       `{ ["computed"]: 1, "___foo": "...foo" }`
     )
   })
 
-  test("should handle spreads in arrays", () => {
+  it("should handle spreads in arrays", () => {
     testTransformation(
       `{ foo: [{ ...bar }] }`,
       `{ foo: [{ "___bar": "...bar" }] }`
     )
   })
 
-  test("should handle deep nesting in arrays", () => {
+  it("should handle deep nesting in arrays", () => {
     testTransformation(
       `{ foo: [{ baz: { ...other.baz }, ...bar }] }`,
       `{ foo: [{ baz: { "___other.baz": "...other.baz" }, "___bar": "...bar" }] }`
@@ -1031,63 +1033,63 @@ describe("nestSpreadElements", () => {
     expect(result.replace(/\s+/g, "")).toBe(expected.replace(/\s+/g, ""))
   }
 
-  test("should spread elements", () => {
+  it("should spread elements", () => {
     testTransformation(
       `[...bar]`,
       `["...bar"]`
     )
   })
 
-  test("should handle mixed element types", () => {
+  it("should handle mixed element types", () => {
     testTransformation(
       `['foo', 2, true, ...bar, "baz"]`,
       `['foo', 2, true, "...bar", "baz"]`
     )
   })
 
-  test("should handle arrays with only spread elements", () => {
+  it("should handle arrays with only spread elements", () => {
     testTransformation(
       `[...foo, ...foo.bar, ...baz]`,
       `["...foo", "...foo.bar", "...baz"]`
     )
   })
 
-  test("should handle nested arrays with spreads", () => {
+  it("should handle nested arrays with spreads", () => {
     testTransformation(
       `[...foo, [...bar]]`,
       `["...foo", ["...bar"]]`
     )
   })
 
-  test("should handle nested arrays within objects", () => {
+  it("should handle nested arrays within objects", () => {
     testTransformation(
       `[{ foo: [...foo] }]`,
       `[{ foo: ["...foo"] }]`
     )
   })
 
-  test("should handle deeply nested arrays within spread objects", () => {
+  it("should handle deeply nested arrays within spread objects", () => {
     testTransformation(
       `[{ foo: [...foo, { bar: ['bar', ...bar ]}] }]`,
       `[{ foo: ["...foo", { bar: ['bar', "...bar" ]}] }]`
     )
   })
 
-  test("should handle optional paths in spread", () => {
+  it("should handle optional paths in spread", () => {
     testTransformation(
       `[{ foo: [...foo?.bar] }]`,
       `[{ foo: ["...foo?.bar"] }]`
     )
   })
 
-  test('should handle computed property paths within spread', () => {
+  it('should handle computed property paths within spread', () => {
     testTransformation(
       `[{ foo: [...foo["bar"]] }]`,
       `[{ foo: ["...foo["bar"]"] }]`
     )
   })
 
-  test('should handle indexed paths in spread', () => {
+  it('should handle indexed paths in spread', () => {
     testTransformation(
       `[{ foo: [...foo[0]] }]`,
       `[{ foo: ["...foo[0]"] }]`
@@ -1118,50 +1120,50 @@ describe("unnestSpreadProperties", () => {
     expect(result.replace(/\s+/g, "")).toBe(expected.replace(/\s+/g, ""))
   }
 
-  test("should nest spread properties", () => {
+  it("should nest spread properties", () => {
     testTransformation(
       `{ theme: { ___foo: "...foo", bar: { ___baz: "...baz", one: "two" }, other: { a: "b", ___c: "...c" } } }`,
       `{ theme: { ...foo, bar: { ...baz, one: "two" }, other: { a: "b", ...c } } }`
     )
   })
 
-  test("should handle mixed property assignments", () => {
+  it("should handle mixed property assignments", () => {
     testTransformation(
       `{ ___foo: "...foo", a: 1, b() {}, ___bar: "...bar", c: { ___baz: "...baz" } }`,
       `{ ...foo, a: 1, b() {}, ...bar, c: { ...baz } }`
     )
   })
 
-  test("should handle objects with only spread properties", () => {
+  it("should handle objects with only spread properties", () => {
     testTransformation(
       `{ ___foo: "...foo", ___bar: "...bar", ___baz: "...baz" }`,
       `{ ...foo, ...bar, ...baz }`
     )
   })
 
-  test("should handle property name conflicts", () => {
+  it("should handle property name conflicts", () => {
     testTransformation(`{ foo: 1, ___foo: "...foo" }`, `{ foo: 1, ...foo }`)
   })
 
-  test("should handle shorthand property names", () => {
+  it("should handle shorthand property names", () => {
     testTransformation(`{ a, ___foo: "...foo", b }`, `{ a, ...foo, b }`)
   })
 
-  test("should handle computed property names", () => {
+  it("should handle computed property names", () => {
     testTransformation(
       `{ ["computed"]: 1, "___foo": "...foo" }`,
       `{ ["computed"]: 1, ...foo }`
     )
   })
 
-  test("should handle spread objects within arrays", () => {
+  it("should handle spread objects within arrays", () => {
     testTransformation(
       `{ ["computed"]: 1, foo: [{ "___foo": "...foo" }] }`,
       `{ ["computed"]: 1, foo: [{...foo}] }`
     )
   })
 
-  test("should handle deeply nested spread objects within an array", () => {
+  it("should handle deeply nested spread objects within an array", () => {
     testTransformation(
       `{ ["computed"]: 1, foo: [{ "___foo": "...foo", bar: { baz: 'baz', "___foo.bar": "...foo.bar" } }] }`,
       `{ ["computed"]: 1, foo: [{...foo, bar: { baz: 'baz', ...foo.bar } }] }`
@@ -1192,49 +1194,49 @@ describe("unnestSpreadElements", () => {
     expect(result.replace(/\s+/g, "")).toBe(expected.replace(/\s+/g, ""))
   }
 
-  test("should spread elements", () => {
+  it("should spread elements", () => {
     testTransformation(
       `["...bar"]`,
       `[...bar]`,
     )
   })
 
-  test("should handle mixed element types", () => {
+  it("should handle mixed element types", () => {
     testTransformation(
       `['foo', 2, true, "...bar", "baz"]`,
       `['foo', 2, true, ...bar, "baz"]`,
     )
   })
 
-  test("should handle arrays with only spread elements", () => {
+  it("should handle arrays with only spread elements", () => {
     testTransformation(
       `["...foo", "...foo.bar", "...baz"]`,
       `[...foo, ...foo.bar, ...baz]`,
     )
   })
 
-  test("should handle nested arrays with spreads", () => {
+  it("should handle nested arrays with spreads", () => {
     testTransformation(
       `["...foo", ["...bar"]]`,
       `[...foo, [...bar]]`,
     )
   })
 
-  test("should handle nested arrays within objects", () => {
+  it("should handle nested arrays within objects", () => {
     testTransformation(
       `[{ foo: ["...foo"] }]`,
       `[{ foo: [...foo] }]`,
     )
   })
 
-  test("should handle deeply nested arrays within spread objects", () => {
+  it("should handle deeply nested arrays within spread objects", () => {
     testTransformation(
       `[{ foo: ["...foo", { bar: ['bar', "...bar" ]}] }]`,
       `[{ foo: [...foo, { bar: ['bar', ...bar ]}] }]`,
     )
   })
 
-  test("should handle optional paths in spread", () => {
+  it("should handle optional paths in spread", () => {
     testTransformation(
       `[{ foo: ["...foo?.bar"] }]`,
       `[{ foo: [...foo?.bar] }]`,
@@ -1242,21 +1244,21 @@ describe("unnestSpreadElements", () => {
     )
   })
 
-  test("should handle computed property paths (') within spread", () => {
+  it("should handle computed property paths (') within spread", () => {
     testTransformation(
       `[{ foo: ["...foo['bar']"] }]`,
       `[{ foo: [...foo['bar']] }]`,
     )
   })
 
-  test('should handle computed property paths (") within spread', () => {
+  it('should handle computed property paths (") within spread', () => {
     testTransformation(
       `[{ foo: ['...foo["bar"]'] }]`,
       `[{ foo: [...foo["bar"]] }]`,
     )
   })
 
-  test('should handle indexed paths in spread', () => {
+  it('should handle indexed paths in spread', () => {
     testTransformation(
       `[{ foo: ["...foo[0]"] }]`,
       `[{ foo: [...foo[0]] }]`,
@@ -1265,7 +1267,7 @@ describe("unnestSpreadElements", () => {
 })
 
 describe("buildTailwindThemeColorsFromCssVars", () => {
-  test("should inline color names", () => {
+  it("should inline color names", () => {
     expect(
       buildTailwindThemeColorsFromCssVars({
         primary: "blue",
@@ -1275,7 +1277,7 @@ describe("buildTailwindThemeColorsFromCssVars", () => {
         accent: "orange",
         "accent-hover": "darkorange",
         "accent-active": "orangered",
-      })
+      } as any)
     ).toEqual({
       primary: {
         DEFAULT: "hsl(var(--primary))",
@@ -1291,7 +1293,7 @@ describe("buildTailwindThemeColorsFromCssVars", () => {
     })
   })
 
-  test("should not add a DEFAULT if not present", () => {
+  it("should not add a DEFAULT if not present", () => {
     expect(
       buildTailwindThemeColorsFromCssVars({
         "primary-light": "skyblue",
@@ -1300,7 +1302,7 @@ describe("buildTailwindThemeColorsFromCssVars", () => {
         accent: "orange",
         "accent-hover": "darkorange",
         "accent-active": "orangered",
-      })
+      } as any)
     ).toEqual({
       primary: {
         light: "hsl(var(--primary-light))",
@@ -1315,7 +1317,7 @@ describe("buildTailwindThemeColorsFromCssVars", () => {
     })
   })
 
-  test("should build tailwind theme colors from css vars", () => {
+  it("should build tailwind theme colors from css vars", () => {
     expect(
       buildTailwindThemeColorsFromCssVars({
         background: "0 0% 100%",
@@ -1337,7 +1339,7 @@ describe("buildTailwindThemeColorsFromCssVars", () => {
         border: "220 13% 91%",
         input: "220 13% 91%",
         ring: "224 71.4% 4.1%",
-      })
+      } as any)
     ).toEqual({
       border: "hsl(var(--border))",
       input: "hsl(var(--input))",
