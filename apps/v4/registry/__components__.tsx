@@ -511,6 +511,51 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "direction"
       return { default: mod.default || mod[exportName] }
     }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
     "dashboard-01": React.lazy(async () => {
       const mod = await import(
         "@/registry/new-york-v4/blocks/dashboard-01/page"
@@ -4436,6 +4481,51 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "direction"
       return { default: mod.default || mod[exportName] }
     }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/base-nova/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/base-nova/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/base-nova/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/base-nova/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/base-nova/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
   },
   "radix-nova": {
     accordion: React.lazy(async () => {
@@ -4933,10 +5023,55 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "direction"
       return { default: mod.default || mod[exportName] }
     }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/radix-nova/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/radix-nova/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/radix-nova/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/radix-nova/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/radix-nova/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
   },
-  "radix-vega": {
+  "aria-nova": {
     accordion: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/accordion")
+      const mod = await import("@/styles/aria-nova/ui/accordion")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4945,7 +5080,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     alert: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/alert")
+      const mod = await import("@/styles/aria-nova/ui/alert")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4954,7 +5089,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "alert-dialog": React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/alert-dialog")
+      const mod = await import("@/styles/aria-nova/ui/alert-dialog")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4963,7 +5098,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "aspect-ratio": React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/aspect-ratio")
+      const mod = await import("@/styles/aria-nova/ui/aspect-ratio")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4972,7 +5107,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     avatar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/avatar")
+      const mod = await import("@/styles/aria-nova/ui/avatar")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4981,7 +5116,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     badge: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/badge")
+      const mod = await import("@/styles/aria-nova/ui/badge")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4990,7 +5125,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     breadcrumb: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/breadcrumb")
+      const mod = await import("@/styles/aria-nova/ui/breadcrumb")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4999,7 +5134,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     button: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/button")
+      const mod = await import("@/styles/aria-nova/ui/button")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5008,7 +5143,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "button-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/button-group")
+      const mod = await import("@/styles/aria-nova/ui/button-group")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5017,7 +5152,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     calendar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/calendar")
+      const mod = await import("@/styles/aria-nova/ui/calendar")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5026,7 +5161,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     card: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/card")
+      const mod = await import("@/styles/aria-nova/ui/card")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5035,7 +5170,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     carousel: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/carousel")
+      const mod = await import("@/styles/aria-nova/ui/carousel")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5044,7 +5179,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     chart: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/chart")
+      const mod = await import("@/styles/aria-nova/ui/chart")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5053,7 +5188,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     checkbox: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/checkbox")
+      const mod = await import("@/styles/aria-nova/ui/checkbox")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5062,7 +5197,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     collapsible: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/collapsible")
+      const mod = await import("@/styles/aria-nova/ui/collapsible")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5071,7 +5206,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     combobox: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/combobox")
+      const mod = await import("@/styles/aria-nova/ui/combobox")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5080,7 +5215,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     command: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/command")
+      const mod = await import("@/styles/aria-nova/ui/command")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5089,7 +5224,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "context-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/context-menu")
+      const mod = await import("@/styles/aria-nova/ui/context-menu")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5098,7 +5233,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     dialog: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/dialog")
+      const mod = await import("@/styles/aria-nova/ui/dialog")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5107,7 +5242,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     drawer: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/drawer")
+      const mod = await import("@/styles/aria-nova/ui/drawer")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5116,7 +5251,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "dropdown-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/dropdown-menu")
+      const mod = await import("@/styles/aria-nova/ui/dropdown-menu")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5125,7 +5260,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     empty: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/empty")
+      const mod = await import("@/styles/aria-nova/ui/empty")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5134,7 +5269,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     field: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/field")
+      const mod = await import("@/styles/aria-nova/ui/field")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5142,17 +5277,8 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "field"
       return { default: mod.default || mod[exportName] }
     }),
-    "hover-card": React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/hover-card")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "hover-card"
-      return { default: mod.default || mod[exportName] }
-    }),
     input: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/input")
+      const mod = await import("@/styles/aria-nova/ui/input")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5161,7 +5287,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "input-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/input-group")
+      const mod = await import("@/styles/aria-nova/ui/input-group")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5170,7 +5296,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "input-otp": React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/input-otp")
+      const mod = await import("@/styles/aria-nova/ui/input-otp")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5179,7 +5305,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     item: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/item")
+      const mod = await import("@/styles/aria-nova/ui/item")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5188,7 +5314,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     label: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/label")
+      const mod = await import("@/styles/aria-nova/ui/label")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5196,26 +5322,8 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "label"
       return { default: mod.default || mod[exportName] }
     }),
-    menubar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/menubar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "menubar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "navigation-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/navigation-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "navigation-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
     pagination: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/pagination")
+      const mod = await import("@/styles/aria-nova/ui/pagination")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5224,7 +5332,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     popover: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/popover")
+      const mod = await import("@/styles/aria-nova/ui/popover")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5233,7 +5341,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     progress: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/progress")
+      const mod = await import("@/styles/aria-nova/ui/progress")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5242,7 +5350,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "radio-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/radio-group")
+      const mod = await import("@/styles/aria-nova/ui/radio-group")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5251,7 +5359,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     resizable: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/resizable")
+      const mod = await import("@/styles/aria-nova/ui/resizable")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5260,7 +5368,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "scroll-area": React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/scroll-area")
+      const mod = await import("@/styles/aria-nova/ui/scroll-area")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5269,7 +5377,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     select: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/select")
+      const mod = await import("@/styles/aria-nova/ui/select")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5278,7 +5386,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     separator: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/separator")
+      const mod = await import("@/styles/aria-nova/ui/separator")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5287,7 +5395,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     sheet: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/sheet")
+      const mod = await import("@/styles/aria-nova/ui/sheet")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5296,7 +5404,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     sidebar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/sidebar")
+      const mod = await import("@/styles/aria-nova/ui/sidebar")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5305,7 +5413,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     skeleton: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/skeleton")
+      const mod = await import("@/styles/aria-nova/ui/skeleton")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5314,7 +5422,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     slider: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/slider")
+      const mod = await import("@/styles/aria-nova/ui/slider")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5323,7 +5431,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     sonner: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/sonner")
+      const mod = await import("@/styles/aria-nova/ui/sonner")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5332,7 +5440,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     spinner: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/spinner")
+      const mod = await import("@/styles/aria-nova/ui/spinner")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5341,7 +5449,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     switch: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/switch")
+      const mod = await import("@/styles/aria-nova/ui/switch")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5350,7 +5458,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     table: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/table")
+      const mod = await import("@/styles/aria-nova/ui/table")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5359,7 +5467,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     tabs: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/tabs")
+      const mod = await import("@/styles/aria-nova/ui/tabs")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5368,7 +5476,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     textarea: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/textarea")
+      const mod = await import("@/styles/aria-nova/ui/textarea")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5377,7 +5485,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     toggle: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/toggle")
+      const mod = await import("@/styles/aria-nova/ui/toggle")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5386,7 +5494,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "toggle-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/toggle-group")
+      const mod = await import("@/styles/aria-nova/ui/toggle-group")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5395,7 +5503,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     tooltip: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/tooltip")
+      const mod = await import("@/styles/aria-nova/ui/tooltip")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5404,7 +5512,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     kbd: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/kbd")
+      const mod = await import("@/styles/aria-nova/ui/kbd")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5413,7 +5521,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     "native-select": React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/native-select")
+      const mod = await import("@/styles/aria-nova/ui/native-select")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5422,7 +5530,7 @@ export const Components: Record<string, Record<string, any>> = {
       return { default: mod.default || mod[exportName] }
     }),
     direction: React.lazy(async () => {
-      const mod = await import("@/styles/radix-vega/ui/direction")
+      const mod = await import("@/styles/aria-nova/ui/direction")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -5430,2986 +5538,49 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "direction"
       return { default: mod.default || mod[exportName] }
     }),
-  },
-  "radix-maia": {
-    accordion: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/accordion")
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/aria-nova/ui/attachment")
       const exportName =
         Object.keys(mod).find(
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "accordion"
+        ) || "attachment"
       return { default: mod.default || mod[exportName] }
     }),
-    alert: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/alert")
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/aria-nova/ui/bubble")
       const exportName =
         Object.keys(mod).find(
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "alert"
+        ) || "bubble"
       return { default: mod.default || mod[exportName] }
     }),
-    "alert-dialog": React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/alert-dialog")
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/aria-nova/ui/message-scroller")
       const exportName =
         Object.keys(mod).find(
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "alert-dialog"
+        ) || "message-scroller"
       return { default: mod.default || mod[exportName] }
     }),
-    "aspect-ratio": React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/aspect-ratio")
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/aria-nova/ui/marker")
       const exportName =
         Object.keys(mod).find(
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "aspect-ratio"
+        ) || "marker"
       return { default: mod.default || mod[exportName] }
     }),
-    avatar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/avatar")
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/aria-nova/ui/message")
       const exportName =
         Object.keys(mod).find(
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "avatar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    badge: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/badge")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "badge"
-      return { default: mod.default || mod[exportName] }
-    }),
-    breadcrumb: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/breadcrumb")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "breadcrumb"
-      return { default: mod.default || mod[exportName] }
-    }),
-    button: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/button")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "button"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "button-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/button-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "button-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    calendar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/calendar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "calendar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    card: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/card")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "card"
-      return { default: mod.default || mod[exportName] }
-    }),
-    carousel: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/carousel")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "carousel"
-      return { default: mod.default || mod[exportName] }
-    }),
-    chart: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/chart")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "chart"
-      return { default: mod.default || mod[exportName] }
-    }),
-    checkbox: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/checkbox")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "checkbox"
-      return { default: mod.default || mod[exportName] }
-    }),
-    collapsible: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/collapsible")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "collapsible"
-      return { default: mod.default || mod[exportName] }
-    }),
-    combobox: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/combobox")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "combobox"
-      return { default: mod.default || mod[exportName] }
-    }),
-    command: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/command")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "command"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "context-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/context-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "context-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    dialog: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/dialog")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "dialog"
-      return { default: mod.default || mod[exportName] }
-    }),
-    drawer: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/drawer")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "drawer"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "dropdown-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/dropdown-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "dropdown-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    empty: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/empty")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "empty"
-      return { default: mod.default || mod[exportName] }
-    }),
-    field: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/field")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "field"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "hover-card": React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/hover-card")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "hover-card"
-      return { default: mod.default || mod[exportName] }
-    }),
-    input: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/input")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "input-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/input-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "input-otp": React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/input-otp")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input-otp"
-      return { default: mod.default || mod[exportName] }
-    }),
-    item: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/item")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "item"
-      return { default: mod.default || mod[exportName] }
-    }),
-    label: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/label")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "label"
-      return { default: mod.default || mod[exportName] }
-    }),
-    menubar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/menubar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "menubar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "navigation-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/navigation-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "navigation-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    pagination: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/pagination")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "pagination"
-      return { default: mod.default || mod[exportName] }
-    }),
-    popover: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/popover")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "popover"
-      return { default: mod.default || mod[exportName] }
-    }),
-    progress: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/progress")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "progress"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "radio-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/radio-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "radio-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    resizable: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/resizable")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "resizable"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "scroll-area": React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/scroll-area")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "scroll-area"
-      return { default: mod.default || mod[exportName] }
-    }),
-    select: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/select")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "select"
-      return { default: mod.default || mod[exportName] }
-    }),
-    separator: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/separator")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "separator"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sheet: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/sheet")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sheet"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sidebar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/sidebar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sidebar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    skeleton: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/skeleton")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "skeleton"
-      return { default: mod.default || mod[exportName] }
-    }),
-    slider: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/slider")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "slider"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sonner: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/sonner")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sonner"
-      return { default: mod.default || mod[exportName] }
-    }),
-    spinner: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/spinner")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "spinner"
-      return { default: mod.default || mod[exportName] }
-    }),
-    switch: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/switch")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "switch"
-      return { default: mod.default || mod[exportName] }
-    }),
-    table: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/table")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "table"
-      return { default: mod.default || mod[exportName] }
-    }),
-    tabs: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/tabs")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "tabs"
-      return { default: mod.default || mod[exportName] }
-    }),
-    textarea: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/textarea")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "textarea"
-      return { default: mod.default || mod[exportName] }
-    }),
-    toggle: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/toggle")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "toggle"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "toggle-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/toggle-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "toggle-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    tooltip: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/tooltip")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "tooltip"
-      return { default: mod.default || mod[exportName] }
-    }),
-    kbd: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/kbd")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "kbd"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "native-select": React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/native-select")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "native-select"
-      return { default: mod.default || mod[exportName] }
-    }),
-    direction: React.lazy(async () => {
-      const mod = await import("@/styles/radix-maia/ui/direction")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "direction"
-      return { default: mod.default || mod[exportName] }
-    }),
-  },
-  "radix-lyra": {
-    accordion: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/accordion")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "accordion"
-      return { default: mod.default || mod[exportName] }
-    }),
-    alert: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/alert")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "alert"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "alert-dialog": React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/alert-dialog")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "alert-dialog"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "aspect-ratio": React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/aspect-ratio")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "aspect-ratio"
-      return { default: mod.default || mod[exportName] }
-    }),
-    avatar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/avatar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "avatar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    badge: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/badge")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "badge"
-      return { default: mod.default || mod[exportName] }
-    }),
-    breadcrumb: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/breadcrumb")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "breadcrumb"
-      return { default: mod.default || mod[exportName] }
-    }),
-    button: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/button")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "button"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "button-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/button-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "button-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    calendar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/calendar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "calendar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    card: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/card")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "card"
-      return { default: mod.default || mod[exportName] }
-    }),
-    carousel: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/carousel")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "carousel"
-      return { default: mod.default || mod[exportName] }
-    }),
-    chart: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/chart")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "chart"
-      return { default: mod.default || mod[exportName] }
-    }),
-    checkbox: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/checkbox")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "checkbox"
-      return { default: mod.default || mod[exportName] }
-    }),
-    collapsible: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/collapsible")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "collapsible"
-      return { default: mod.default || mod[exportName] }
-    }),
-    combobox: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/combobox")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "combobox"
-      return { default: mod.default || mod[exportName] }
-    }),
-    command: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/command")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "command"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "context-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/context-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "context-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    dialog: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/dialog")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "dialog"
-      return { default: mod.default || mod[exportName] }
-    }),
-    drawer: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/drawer")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "drawer"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "dropdown-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/dropdown-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "dropdown-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    empty: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/empty")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "empty"
-      return { default: mod.default || mod[exportName] }
-    }),
-    field: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/field")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "field"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "hover-card": React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/hover-card")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "hover-card"
-      return { default: mod.default || mod[exportName] }
-    }),
-    input: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/input")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "input-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/input-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "input-otp": React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/input-otp")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input-otp"
-      return { default: mod.default || mod[exportName] }
-    }),
-    item: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/item")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "item"
-      return { default: mod.default || mod[exportName] }
-    }),
-    label: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/label")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "label"
-      return { default: mod.default || mod[exportName] }
-    }),
-    menubar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/menubar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "menubar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "navigation-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/navigation-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "navigation-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    pagination: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/pagination")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "pagination"
-      return { default: mod.default || mod[exportName] }
-    }),
-    popover: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/popover")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "popover"
-      return { default: mod.default || mod[exportName] }
-    }),
-    progress: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/progress")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "progress"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "radio-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/radio-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "radio-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    resizable: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/resizable")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "resizable"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "scroll-area": React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/scroll-area")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "scroll-area"
-      return { default: mod.default || mod[exportName] }
-    }),
-    select: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/select")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "select"
-      return { default: mod.default || mod[exportName] }
-    }),
-    separator: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/separator")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "separator"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sheet: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/sheet")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sheet"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sidebar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/sidebar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sidebar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    skeleton: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/skeleton")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "skeleton"
-      return { default: mod.default || mod[exportName] }
-    }),
-    slider: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/slider")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "slider"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sonner: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/sonner")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sonner"
-      return { default: mod.default || mod[exportName] }
-    }),
-    spinner: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/spinner")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "spinner"
-      return { default: mod.default || mod[exportName] }
-    }),
-    switch: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/switch")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "switch"
-      return { default: mod.default || mod[exportName] }
-    }),
-    table: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/table")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "table"
-      return { default: mod.default || mod[exportName] }
-    }),
-    tabs: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/tabs")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "tabs"
-      return { default: mod.default || mod[exportName] }
-    }),
-    textarea: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/textarea")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "textarea"
-      return { default: mod.default || mod[exportName] }
-    }),
-    toggle: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/toggle")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "toggle"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "toggle-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/toggle-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "toggle-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    tooltip: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/tooltip")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "tooltip"
-      return { default: mod.default || mod[exportName] }
-    }),
-    kbd: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/kbd")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "kbd"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "native-select": React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/native-select")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "native-select"
-      return { default: mod.default || mod[exportName] }
-    }),
-    direction: React.lazy(async () => {
-      const mod = await import("@/styles/radix-lyra/ui/direction")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "direction"
-      return { default: mod.default || mod[exportName] }
-    }),
-  },
-  "radix-mira": {
-    accordion: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/accordion")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "accordion"
-      return { default: mod.default || mod[exportName] }
-    }),
-    alert: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/alert")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "alert"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "alert-dialog": React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/alert-dialog")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "alert-dialog"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "aspect-ratio": React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/aspect-ratio")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "aspect-ratio"
-      return { default: mod.default || mod[exportName] }
-    }),
-    avatar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/avatar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "avatar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    badge: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/badge")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "badge"
-      return { default: mod.default || mod[exportName] }
-    }),
-    breadcrumb: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/breadcrumb")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "breadcrumb"
-      return { default: mod.default || mod[exportName] }
-    }),
-    button: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/button")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "button"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "button-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/button-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "button-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    calendar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/calendar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "calendar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    card: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/card")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "card"
-      return { default: mod.default || mod[exportName] }
-    }),
-    carousel: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/carousel")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "carousel"
-      return { default: mod.default || mod[exportName] }
-    }),
-    chart: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/chart")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "chart"
-      return { default: mod.default || mod[exportName] }
-    }),
-    checkbox: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/checkbox")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "checkbox"
-      return { default: mod.default || mod[exportName] }
-    }),
-    collapsible: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/collapsible")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "collapsible"
-      return { default: mod.default || mod[exportName] }
-    }),
-    combobox: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/combobox")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "combobox"
-      return { default: mod.default || mod[exportName] }
-    }),
-    command: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/command")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "command"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "context-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/context-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "context-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    dialog: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/dialog")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "dialog"
-      return { default: mod.default || mod[exportName] }
-    }),
-    drawer: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/drawer")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "drawer"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "dropdown-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/dropdown-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "dropdown-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    empty: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/empty")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "empty"
-      return { default: mod.default || mod[exportName] }
-    }),
-    field: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/field")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "field"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "hover-card": React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/hover-card")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "hover-card"
-      return { default: mod.default || mod[exportName] }
-    }),
-    input: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/input")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "input-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/input-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "input-otp": React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/input-otp")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input-otp"
-      return { default: mod.default || mod[exportName] }
-    }),
-    item: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/item")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "item"
-      return { default: mod.default || mod[exportName] }
-    }),
-    label: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/label")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "label"
-      return { default: mod.default || mod[exportName] }
-    }),
-    menubar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/menubar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "menubar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "navigation-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/navigation-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "navigation-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    pagination: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/pagination")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "pagination"
-      return { default: mod.default || mod[exportName] }
-    }),
-    popover: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/popover")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "popover"
-      return { default: mod.default || mod[exportName] }
-    }),
-    progress: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/progress")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "progress"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "radio-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/radio-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "radio-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    resizable: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/resizable")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "resizable"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "scroll-area": React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/scroll-area")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "scroll-area"
-      return { default: mod.default || mod[exportName] }
-    }),
-    select: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/select")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "select"
-      return { default: mod.default || mod[exportName] }
-    }),
-    separator: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/separator")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "separator"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sheet: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/sheet")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sheet"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sidebar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/sidebar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sidebar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    skeleton: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/skeleton")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "skeleton"
-      return { default: mod.default || mod[exportName] }
-    }),
-    slider: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/slider")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "slider"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sonner: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/sonner")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sonner"
-      return { default: mod.default || mod[exportName] }
-    }),
-    spinner: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/spinner")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "spinner"
-      return { default: mod.default || mod[exportName] }
-    }),
-    switch: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/switch")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "switch"
-      return { default: mod.default || mod[exportName] }
-    }),
-    table: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/table")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "table"
-      return { default: mod.default || mod[exportName] }
-    }),
-    tabs: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/tabs")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "tabs"
-      return { default: mod.default || mod[exportName] }
-    }),
-    textarea: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/textarea")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "textarea"
-      return { default: mod.default || mod[exportName] }
-    }),
-    toggle: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/toggle")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "toggle"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "toggle-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/toggle-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "toggle-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    tooltip: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/tooltip")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "tooltip"
-      return { default: mod.default || mod[exportName] }
-    }),
-    kbd: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/kbd")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "kbd"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "native-select": React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/native-select")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "native-select"
-      return { default: mod.default || mod[exportName] }
-    }),
-    direction: React.lazy(async () => {
-      const mod = await import("@/styles/radix-mira/ui/direction")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "direction"
-      return { default: mod.default || mod[exportName] }
-    }),
-  },
-  "radix-luma": {
-    accordion: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/accordion")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "accordion"
-      return { default: mod.default || mod[exportName] }
-    }),
-    alert: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/alert")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "alert"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "alert-dialog": React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/alert-dialog")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "alert-dialog"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "aspect-ratio": React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/aspect-ratio")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "aspect-ratio"
-      return { default: mod.default || mod[exportName] }
-    }),
-    avatar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/avatar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "avatar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    badge: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/badge")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "badge"
-      return { default: mod.default || mod[exportName] }
-    }),
-    breadcrumb: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/breadcrumb")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "breadcrumb"
-      return { default: mod.default || mod[exportName] }
-    }),
-    button: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/button")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "button"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "button-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/button-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "button-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    calendar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/calendar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "calendar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    card: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/card")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "card"
-      return { default: mod.default || mod[exportName] }
-    }),
-    carousel: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/carousel")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "carousel"
-      return { default: mod.default || mod[exportName] }
-    }),
-    chart: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/chart")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "chart"
-      return { default: mod.default || mod[exportName] }
-    }),
-    checkbox: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/checkbox")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "checkbox"
-      return { default: mod.default || mod[exportName] }
-    }),
-    collapsible: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/collapsible")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "collapsible"
-      return { default: mod.default || mod[exportName] }
-    }),
-    combobox: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/combobox")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "combobox"
-      return { default: mod.default || mod[exportName] }
-    }),
-    command: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/command")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "command"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "context-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/context-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "context-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    dialog: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/dialog")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "dialog"
-      return { default: mod.default || mod[exportName] }
-    }),
-    drawer: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/drawer")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "drawer"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "dropdown-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/dropdown-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "dropdown-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    empty: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/empty")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "empty"
-      return { default: mod.default || mod[exportName] }
-    }),
-    field: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/field")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "field"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "hover-card": React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/hover-card")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "hover-card"
-      return { default: mod.default || mod[exportName] }
-    }),
-    input: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/input")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "input-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/input-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "input-otp": React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/input-otp")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input-otp"
-      return { default: mod.default || mod[exportName] }
-    }),
-    item: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/item")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "item"
-      return { default: mod.default || mod[exportName] }
-    }),
-    label: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/label")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "label"
-      return { default: mod.default || mod[exportName] }
-    }),
-    menubar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/menubar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "menubar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "navigation-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/navigation-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "navigation-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    pagination: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/pagination")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "pagination"
-      return { default: mod.default || mod[exportName] }
-    }),
-    popover: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/popover")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "popover"
-      return { default: mod.default || mod[exportName] }
-    }),
-    progress: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/progress")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "progress"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "radio-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/radio-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "radio-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    resizable: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/resizable")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "resizable"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "scroll-area": React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/scroll-area")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "scroll-area"
-      return { default: mod.default || mod[exportName] }
-    }),
-    select: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/select")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "select"
-      return { default: mod.default || mod[exportName] }
-    }),
-    separator: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/separator")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "separator"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sheet: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/sheet")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sheet"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sidebar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/sidebar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sidebar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    skeleton: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/skeleton")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "skeleton"
-      return { default: mod.default || mod[exportName] }
-    }),
-    slider: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/slider")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "slider"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sonner: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/sonner")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sonner"
-      return { default: mod.default || mod[exportName] }
-    }),
-    spinner: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/spinner")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "spinner"
-      return { default: mod.default || mod[exportName] }
-    }),
-    switch: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/switch")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "switch"
-      return { default: mod.default || mod[exportName] }
-    }),
-    table: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/table")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "table"
-      return { default: mod.default || mod[exportName] }
-    }),
-    tabs: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/tabs")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "tabs"
-      return { default: mod.default || mod[exportName] }
-    }),
-    textarea: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/textarea")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "textarea"
-      return { default: mod.default || mod[exportName] }
-    }),
-    toggle: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/toggle")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "toggle"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "toggle-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/toggle-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "toggle-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    tooltip: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/tooltip")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "tooltip"
-      return { default: mod.default || mod[exportName] }
-    }),
-    kbd: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/kbd")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "kbd"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "native-select": React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/native-select")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "native-select"
-      return { default: mod.default || mod[exportName] }
-    }),
-    direction: React.lazy(async () => {
-      const mod = await import("@/styles/radix-luma/ui/direction")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "direction"
-      return { default: mod.default || mod[exportName] }
-    }),
-  },
-  "radix-sera": {
-    accordion: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/accordion")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "accordion"
-      return { default: mod.default || mod[exportName] }
-    }),
-    alert: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/alert")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "alert"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "alert-dialog": React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/alert-dialog")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "alert-dialog"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "aspect-ratio": React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/aspect-ratio")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "aspect-ratio"
-      return { default: mod.default || mod[exportName] }
-    }),
-    avatar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/avatar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "avatar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    badge: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/badge")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "badge"
-      return { default: mod.default || mod[exportName] }
-    }),
-    breadcrumb: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/breadcrumb")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "breadcrumb"
-      return { default: mod.default || mod[exportName] }
-    }),
-    button: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/button")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "button"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "button-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/button-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "button-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    calendar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/calendar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "calendar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    card: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/card")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "card"
-      return { default: mod.default || mod[exportName] }
-    }),
-    carousel: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/carousel")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "carousel"
-      return { default: mod.default || mod[exportName] }
-    }),
-    chart: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/chart")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "chart"
-      return { default: mod.default || mod[exportName] }
-    }),
-    checkbox: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/checkbox")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "checkbox"
-      return { default: mod.default || mod[exportName] }
-    }),
-    collapsible: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/collapsible")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "collapsible"
-      return { default: mod.default || mod[exportName] }
-    }),
-    combobox: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/combobox")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "combobox"
-      return { default: mod.default || mod[exportName] }
-    }),
-    command: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/command")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "command"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "context-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/context-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "context-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    dialog: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/dialog")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "dialog"
-      return { default: mod.default || mod[exportName] }
-    }),
-    drawer: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/drawer")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "drawer"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "dropdown-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/dropdown-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "dropdown-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    empty: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/empty")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "empty"
-      return { default: mod.default || mod[exportName] }
-    }),
-    field: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/field")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "field"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "hover-card": React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/hover-card")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "hover-card"
-      return { default: mod.default || mod[exportName] }
-    }),
-    input: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/input")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "input-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/input-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "input-otp": React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/input-otp")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input-otp"
-      return { default: mod.default || mod[exportName] }
-    }),
-    item: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/item")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "item"
-      return { default: mod.default || mod[exportName] }
-    }),
-    label: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/label")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "label"
-      return { default: mod.default || mod[exportName] }
-    }),
-    menubar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/menubar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "menubar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "navigation-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/navigation-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "navigation-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    pagination: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/pagination")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "pagination"
-      return { default: mod.default || mod[exportName] }
-    }),
-    popover: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/popover")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "popover"
-      return { default: mod.default || mod[exportName] }
-    }),
-    progress: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/progress")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "progress"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "radio-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/radio-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "radio-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    resizable: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/resizable")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "resizable"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "scroll-area": React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/scroll-area")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "scroll-area"
-      return { default: mod.default || mod[exportName] }
-    }),
-    select: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/select")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "select"
-      return { default: mod.default || mod[exportName] }
-    }),
-    separator: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/separator")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "separator"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sheet: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/sheet")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sheet"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sidebar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/sidebar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sidebar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    skeleton: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/skeleton")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "skeleton"
-      return { default: mod.default || mod[exportName] }
-    }),
-    slider: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/slider")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "slider"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sonner: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/sonner")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sonner"
-      return { default: mod.default || mod[exportName] }
-    }),
-    spinner: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/spinner")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "spinner"
-      return { default: mod.default || mod[exportName] }
-    }),
-    switch: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/switch")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "switch"
-      return { default: mod.default || mod[exportName] }
-    }),
-    table: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/table")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "table"
-      return { default: mod.default || mod[exportName] }
-    }),
-    tabs: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/tabs")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "tabs"
-      return { default: mod.default || mod[exportName] }
-    }),
-    textarea: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/textarea")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "textarea"
-      return { default: mod.default || mod[exportName] }
-    }),
-    toggle: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/toggle")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "toggle"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "toggle-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/toggle-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "toggle-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    tooltip: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/tooltip")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "tooltip"
-      return { default: mod.default || mod[exportName] }
-    }),
-    kbd: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/kbd")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "kbd"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "native-select": React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/native-select")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "native-select"
-      return { default: mod.default || mod[exportName] }
-    }),
-    direction: React.lazy(async () => {
-      const mod = await import("@/styles/radix-sera/ui/direction")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "direction"
-      return { default: mod.default || mod[exportName] }
-    }),
-  },
-  "radix-rhea": {
-    accordion: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/accordion")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "accordion"
-      return { default: mod.default || mod[exportName] }
-    }),
-    alert: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/alert")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "alert"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "alert-dialog": React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/alert-dialog")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "alert-dialog"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "aspect-ratio": React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/aspect-ratio")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "aspect-ratio"
-      return { default: mod.default || mod[exportName] }
-    }),
-    avatar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/avatar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "avatar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    badge: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/badge")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "badge"
-      return { default: mod.default || mod[exportName] }
-    }),
-    breadcrumb: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/breadcrumb")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "breadcrumb"
-      return { default: mod.default || mod[exportName] }
-    }),
-    button: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/button")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "button"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "button-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/button-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "button-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    calendar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/calendar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "calendar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    card: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/card")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "card"
-      return { default: mod.default || mod[exportName] }
-    }),
-    carousel: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/carousel")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "carousel"
-      return { default: mod.default || mod[exportName] }
-    }),
-    chart: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/chart")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "chart"
-      return { default: mod.default || mod[exportName] }
-    }),
-    checkbox: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/checkbox")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "checkbox"
-      return { default: mod.default || mod[exportName] }
-    }),
-    collapsible: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/collapsible")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "collapsible"
-      return { default: mod.default || mod[exportName] }
-    }),
-    combobox: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/combobox")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "combobox"
-      return { default: mod.default || mod[exportName] }
-    }),
-    command: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/command")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "command"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "context-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/context-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "context-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    dialog: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/dialog")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "dialog"
-      return { default: mod.default || mod[exportName] }
-    }),
-    drawer: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/drawer")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "drawer"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "dropdown-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/dropdown-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "dropdown-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    empty: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/empty")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "empty"
-      return { default: mod.default || mod[exportName] }
-    }),
-    field: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/field")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "field"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "hover-card": React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/hover-card")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "hover-card"
-      return { default: mod.default || mod[exportName] }
-    }),
-    input: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/input")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "input-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/input-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "input-otp": React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/input-otp")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "input-otp"
-      return { default: mod.default || mod[exportName] }
-    }),
-    item: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/item")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "item"
-      return { default: mod.default || mod[exportName] }
-    }),
-    label: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/label")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "label"
-      return { default: mod.default || mod[exportName] }
-    }),
-    menubar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/menubar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "menubar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "navigation-menu": React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/navigation-menu")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "navigation-menu"
-      return { default: mod.default || mod[exportName] }
-    }),
-    pagination: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/pagination")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "pagination"
-      return { default: mod.default || mod[exportName] }
-    }),
-    popover: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/popover")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "popover"
-      return { default: mod.default || mod[exportName] }
-    }),
-    progress: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/progress")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "progress"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "radio-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/radio-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "radio-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    resizable: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/resizable")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "resizable"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "scroll-area": React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/scroll-area")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "scroll-area"
-      return { default: mod.default || mod[exportName] }
-    }),
-    select: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/select")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "select"
-      return { default: mod.default || mod[exportName] }
-    }),
-    separator: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/separator")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "separator"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sheet: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/sheet")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sheet"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sidebar: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/sidebar")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sidebar"
-      return { default: mod.default || mod[exportName] }
-    }),
-    skeleton: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/skeleton")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "skeleton"
-      return { default: mod.default || mod[exportName] }
-    }),
-    slider: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/slider")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "slider"
-      return { default: mod.default || mod[exportName] }
-    }),
-    sonner: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/sonner")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "sonner"
-      return { default: mod.default || mod[exportName] }
-    }),
-    spinner: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/spinner")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "spinner"
-      return { default: mod.default || mod[exportName] }
-    }),
-    switch: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/switch")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "switch"
-      return { default: mod.default || mod[exportName] }
-    }),
-    table: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/table")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "table"
-      return { default: mod.default || mod[exportName] }
-    }),
-    tabs: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/tabs")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "tabs"
-      return { default: mod.default || mod[exportName] }
-    }),
-    textarea: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/textarea")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "textarea"
-      return { default: mod.default || mod[exportName] }
-    }),
-    toggle: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/toggle")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "toggle"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "toggle-group": React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/toggle-group")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "toggle-group"
-      return { default: mod.default || mod[exportName] }
-    }),
-    tooltip: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/tooltip")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "tooltip"
-      return { default: mod.default || mod[exportName] }
-    }),
-    kbd: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/kbd")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "kbd"
-      return { default: mod.default || mod[exportName] }
-    }),
-    "native-select": React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/native-select")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "native-select"
-      return { default: mod.default || mod[exportName] }
-    }),
-    direction: React.lazy(async () => {
-      const mod = await import("@/styles/radix-rhea/ui/direction")
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "direction"
+        ) || "message"
       return { default: mod.default || mod[exportName] }
     }),
   },
@@ -8909,6 +6080,51 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "direction"
       return { default: mod.default || mod[exportName] }
     }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/base-vega/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/base-vega/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/base-vega/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/base-vega/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/base-vega/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
   },
   "base-maia": {
     accordion: React.lazy(async () => {
@@ -9404,6 +6620,51 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/base-maia/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/base-maia/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/base-maia/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/base-maia/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/base-maia/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
       return { default: mod.default || mod[exportName] }
     }),
   },
@@ -9903,6 +7164,51 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "direction"
       return { default: mod.default || mod[exportName] }
     }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/base-lyra/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/base-lyra/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/base-lyra/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/base-lyra/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/base-lyra/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
   },
   "base-mira": {
     accordion: React.lazy(async () => {
@@ -10398,6 +7704,51 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/base-mira/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/base-mira/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/base-mira/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/base-mira/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/base-mira/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
       return { default: mod.default || mod[exportName] }
     }),
   },
@@ -10897,6 +8248,51 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "direction"
       return { default: mod.default || mod[exportName] }
     }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/base-luma/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/base-luma/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/base-luma/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/base-luma/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/base-luma/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
   },
   "base-sera": {
     accordion: React.lazy(async () => {
@@ -11394,6 +8790,51 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "direction"
       return { default: mod.default || mod[exportName] }
     }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/base-sera/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/base-sera/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/base-sera/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/base-sera/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/base-sera/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
   },
   "base-rhea": {
     accordion: React.lazy(async () => {
@@ -11889,6 +9330,7450 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/base-rhea/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/base-rhea/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/base-rhea/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/base-rhea/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/base-rhea/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "aria-vega": {
+    accordion: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/accordion")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion"
+      return { default: mod.default || mod[exportName] }
+    }),
+    alert: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/alert")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "alert-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/alert-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "aspect-ratio": React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/aspect-ratio")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "aspect-ratio"
+      return { default: mod.default || mod[exportName] }
+    }),
+    avatar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/avatar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "avatar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    badge: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/badge")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge"
+      return { default: mod.default || mod[exportName] }
+    }),
+    breadcrumb: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/breadcrumb")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "breadcrumb"
+      return { default: mod.default || mod[exportName] }
+    }),
+    button: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/button")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "button-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/button-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    calendar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/calendar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "calendar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    card: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    carousel: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/carousel")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "carousel"
+      return { default: mod.default || mod[exportName] }
+    }),
+    chart: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/chart")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart"
+      return { default: mod.default || mod[exportName] }
+    }),
+    checkbox: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/checkbox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "checkbox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    collapsible: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/collapsible")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "collapsible"
+      return { default: mod.default || mod[exportName] }
+    }),
+    combobox: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/combobox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "combobox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    command: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/command")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "command"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "context-menu": React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/context-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "context-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    dialog: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    drawer: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/drawer")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "dropdown-menu": React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/dropdown-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dropdown-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    empty: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/empty")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "empty"
+      return { default: mod.default || mod[exportName] }
+    }),
+    field: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/field")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    input: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/input")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/input-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-otp": React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/input-otp")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-otp"
+      return { default: mod.default || mod[exportName] }
+    }),
+    item: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/item")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "item"
+      return { default: mod.default || mod[exportName] }
+    }),
+    label: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/label")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "label"
+      return { default: mod.default || mod[exportName] }
+    }),
+    pagination: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/pagination")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "pagination"
+      return { default: mod.default || mod[exportName] }
+    }),
+    popover: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/popover")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "popover"
+      return { default: mod.default || mod[exportName] }
+    }),
+    progress: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/progress")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "progress"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "radio-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/radio-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "radio-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    resizable: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/resizable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "resizable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "scroll-area": React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/scroll-area")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "scroll-area"
+      return { default: mod.default || mod[exportName] }
+    }),
+    select: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    separator: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/separator")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "separator"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sheet: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/sheet")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sheet"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sidebar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/sidebar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sidebar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    skeleton: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/skeleton")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "skeleton"
+      return { default: mod.default || mod[exportName] }
+    }),
+    slider: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/slider")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "slider"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sonner: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/sonner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sonner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    spinner: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/spinner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    switch: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/switch")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch"
+      return { default: mod.default || mod[exportName] }
+    }),
+    table: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/table")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "table"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tabs: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/tabs")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tabs"
+      return { default: mod.default || mod[exportName] }
+    }),
+    textarea: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/textarea")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "textarea"
+      return { default: mod.default || mod[exportName] }
+    }),
+    toggle: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/toggle")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "toggle-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/toggle-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tooltip: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/tooltip")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tooltip"
+      return { default: mod.default || mod[exportName] }
+    }),
+    kbd: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/kbd")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "kbd"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "native-select": React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/native-select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "native-select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    direction: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/direction")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "aria-maia": {
+    accordion: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/accordion")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion"
+      return { default: mod.default || mod[exportName] }
+    }),
+    alert: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/alert")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "alert-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/alert-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "aspect-ratio": React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/aspect-ratio")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "aspect-ratio"
+      return { default: mod.default || mod[exportName] }
+    }),
+    avatar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/avatar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "avatar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    badge: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/badge")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge"
+      return { default: mod.default || mod[exportName] }
+    }),
+    breadcrumb: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/breadcrumb")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "breadcrumb"
+      return { default: mod.default || mod[exportName] }
+    }),
+    button: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/button")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "button-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/button-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    calendar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/calendar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "calendar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    card: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    carousel: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/carousel")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "carousel"
+      return { default: mod.default || mod[exportName] }
+    }),
+    chart: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/chart")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart"
+      return { default: mod.default || mod[exportName] }
+    }),
+    checkbox: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/checkbox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "checkbox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    collapsible: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/collapsible")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "collapsible"
+      return { default: mod.default || mod[exportName] }
+    }),
+    combobox: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/combobox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "combobox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    command: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/command")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "command"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "context-menu": React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/context-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "context-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    dialog: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    drawer: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/drawer")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "dropdown-menu": React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/dropdown-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dropdown-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    empty: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/empty")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "empty"
+      return { default: mod.default || mod[exportName] }
+    }),
+    field: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/field")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    input: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/input")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/input-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-otp": React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/input-otp")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-otp"
+      return { default: mod.default || mod[exportName] }
+    }),
+    item: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/item")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "item"
+      return { default: mod.default || mod[exportName] }
+    }),
+    label: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/label")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "label"
+      return { default: mod.default || mod[exportName] }
+    }),
+    pagination: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/pagination")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "pagination"
+      return { default: mod.default || mod[exportName] }
+    }),
+    popover: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/popover")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "popover"
+      return { default: mod.default || mod[exportName] }
+    }),
+    progress: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/progress")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "progress"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "radio-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/radio-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "radio-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    resizable: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/resizable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "resizable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "scroll-area": React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/scroll-area")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "scroll-area"
+      return { default: mod.default || mod[exportName] }
+    }),
+    select: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    separator: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/separator")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "separator"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sheet: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/sheet")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sheet"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sidebar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/sidebar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sidebar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    skeleton: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/skeleton")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "skeleton"
+      return { default: mod.default || mod[exportName] }
+    }),
+    slider: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/slider")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "slider"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sonner: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/sonner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sonner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    spinner: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/spinner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    switch: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/switch")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch"
+      return { default: mod.default || mod[exportName] }
+    }),
+    table: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/table")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "table"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tabs: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/tabs")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tabs"
+      return { default: mod.default || mod[exportName] }
+    }),
+    textarea: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/textarea")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "textarea"
+      return { default: mod.default || mod[exportName] }
+    }),
+    toggle: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/toggle")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "toggle-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/toggle-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tooltip: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/tooltip")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tooltip"
+      return { default: mod.default || mod[exportName] }
+    }),
+    kbd: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/kbd")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "kbd"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "native-select": React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/native-select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "native-select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    direction: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/direction")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "aria-lyra": {
+    accordion: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/accordion")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion"
+      return { default: mod.default || mod[exportName] }
+    }),
+    alert: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/alert")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "alert-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/alert-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "aspect-ratio": React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/aspect-ratio")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "aspect-ratio"
+      return { default: mod.default || mod[exportName] }
+    }),
+    avatar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/avatar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "avatar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    badge: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/badge")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge"
+      return { default: mod.default || mod[exportName] }
+    }),
+    breadcrumb: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/breadcrumb")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "breadcrumb"
+      return { default: mod.default || mod[exportName] }
+    }),
+    button: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/button")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "button-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/button-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    calendar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/calendar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "calendar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    card: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    carousel: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/carousel")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "carousel"
+      return { default: mod.default || mod[exportName] }
+    }),
+    chart: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/chart")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart"
+      return { default: mod.default || mod[exportName] }
+    }),
+    checkbox: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/checkbox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "checkbox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    collapsible: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/collapsible")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "collapsible"
+      return { default: mod.default || mod[exportName] }
+    }),
+    combobox: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/combobox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "combobox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    command: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/command")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "command"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "context-menu": React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/context-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "context-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    dialog: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    drawer: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/drawer")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "dropdown-menu": React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/dropdown-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dropdown-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    empty: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/empty")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "empty"
+      return { default: mod.default || mod[exportName] }
+    }),
+    field: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/field")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    input: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/input")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/input-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-otp": React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/input-otp")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-otp"
+      return { default: mod.default || mod[exportName] }
+    }),
+    item: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/item")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "item"
+      return { default: mod.default || mod[exportName] }
+    }),
+    label: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/label")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "label"
+      return { default: mod.default || mod[exportName] }
+    }),
+    pagination: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/pagination")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "pagination"
+      return { default: mod.default || mod[exportName] }
+    }),
+    popover: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/popover")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "popover"
+      return { default: mod.default || mod[exportName] }
+    }),
+    progress: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/progress")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "progress"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "radio-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/radio-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "radio-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    resizable: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/resizable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "resizable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "scroll-area": React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/scroll-area")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "scroll-area"
+      return { default: mod.default || mod[exportName] }
+    }),
+    select: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    separator: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/separator")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "separator"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sheet: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/sheet")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sheet"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sidebar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/sidebar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sidebar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    skeleton: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/skeleton")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "skeleton"
+      return { default: mod.default || mod[exportName] }
+    }),
+    slider: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/slider")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "slider"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sonner: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/sonner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sonner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    spinner: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/spinner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    switch: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/switch")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch"
+      return { default: mod.default || mod[exportName] }
+    }),
+    table: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/table")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "table"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tabs: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/tabs")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tabs"
+      return { default: mod.default || mod[exportName] }
+    }),
+    textarea: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/textarea")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "textarea"
+      return { default: mod.default || mod[exportName] }
+    }),
+    toggle: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/toggle")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "toggle-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/toggle-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tooltip: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/tooltip")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tooltip"
+      return { default: mod.default || mod[exportName] }
+    }),
+    kbd: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/kbd")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "kbd"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "native-select": React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/native-select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "native-select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    direction: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/direction")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "aria-mira": {
+    accordion: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/accordion")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion"
+      return { default: mod.default || mod[exportName] }
+    }),
+    alert: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/alert")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "alert-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/alert-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "aspect-ratio": React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/aspect-ratio")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "aspect-ratio"
+      return { default: mod.default || mod[exportName] }
+    }),
+    avatar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/avatar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "avatar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    badge: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/badge")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge"
+      return { default: mod.default || mod[exportName] }
+    }),
+    breadcrumb: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/breadcrumb")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "breadcrumb"
+      return { default: mod.default || mod[exportName] }
+    }),
+    button: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/button")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "button-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/button-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    calendar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/calendar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "calendar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    card: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    carousel: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/carousel")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "carousel"
+      return { default: mod.default || mod[exportName] }
+    }),
+    chart: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/chart")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart"
+      return { default: mod.default || mod[exportName] }
+    }),
+    checkbox: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/checkbox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "checkbox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    collapsible: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/collapsible")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "collapsible"
+      return { default: mod.default || mod[exportName] }
+    }),
+    combobox: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/combobox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "combobox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    command: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/command")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "command"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "context-menu": React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/context-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "context-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    dialog: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    drawer: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/drawer")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "dropdown-menu": React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/dropdown-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dropdown-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    empty: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/empty")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "empty"
+      return { default: mod.default || mod[exportName] }
+    }),
+    field: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/field")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    input: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/input")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/input-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-otp": React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/input-otp")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-otp"
+      return { default: mod.default || mod[exportName] }
+    }),
+    item: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/item")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "item"
+      return { default: mod.default || mod[exportName] }
+    }),
+    label: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/label")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "label"
+      return { default: mod.default || mod[exportName] }
+    }),
+    pagination: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/pagination")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "pagination"
+      return { default: mod.default || mod[exportName] }
+    }),
+    popover: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/popover")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "popover"
+      return { default: mod.default || mod[exportName] }
+    }),
+    progress: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/progress")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "progress"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "radio-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/radio-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "radio-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    resizable: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/resizable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "resizable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "scroll-area": React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/scroll-area")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "scroll-area"
+      return { default: mod.default || mod[exportName] }
+    }),
+    select: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    separator: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/separator")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "separator"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sheet: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/sheet")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sheet"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sidebar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/sidebar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sidebar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    skeleton: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/skeleton")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "skeleton"
+      return { default: mod.default || mod[exportName] }
+    }),
+    slider: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/slider")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "slider"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sonner: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/sonner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sonner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    spinner: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/spinner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    switch: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/switch")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch"
+      return { default: mod.default || mod[exportName] }
+    }),
+    table: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/table")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "table"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tabs: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/tabs")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tabs"
+      return { default: mod.default || mod[exportName] }
+    }),
+    textarea: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/textarea")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "textarea"
+      return { default: mod.default || mod[exportName] }
+    }),
+    toggle: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/toggle")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "toggle-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/toggle-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tooltip: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/tooltip")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tooltip"
+      return { default: mod.default || mod[exportName] }
+    }),
+    kbd: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/kbd")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "kbd"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "native-select": React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/native-select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "native-select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    direction: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/direction")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "aria-luma": {
+    accordion: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/accordion")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion"
+      return { default: mod.default || mod[exportName] }
+    }),
+    alert: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/alert")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "alert-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/alert-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "aspect-ratio": React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/aspect-ratio")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "aspect-ratio"
+      return { default: mod.default || mod[exportName] }
+    }),
+    avatar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/avatar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "avatar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    badge: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/badge")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge"
+      return { default: mod.default || mod[exportName] }
+    }),
+    breadcrumb: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/breadcrumb")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "breadcrumb"
+      return { default: mod.default || mod[exportName] }
+    }),
+    button: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/button")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "button-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/button-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    calendar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/calendar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "calendar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    card: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    carousel: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/carousel")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "carousel"
+      return { default: mod.default || mod[exportName] }
+    }),
+    chart: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/chart")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart"
+      return { default: mod.default || mod[exportName] }
+    }),
+    checkbox: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/checkbox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "checkbox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    collapsible: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/collapsible")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "collapsible"
+      return { default: mod.default || mod[exportName] }
+    }),
+    combobox: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/combobox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "combobox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    command: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/command")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "command"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "context-menu": React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/context-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "context-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    dialog: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    drawer: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/drawer")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "dropdown-menu": React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/dropdown-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dropdown-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    empty: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/empty")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "empty"
+      return { default: mod.default || mod[exportName] }
+    }),
+    field: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/field")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    input: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/input")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/input-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-otp": React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/input-otp")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-otp"
+      return { default: mod.default || mod[exportName] }
+    }),
+    item: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/item")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "item"
+      return { default: mod.default || mod[exportName] }
+    }),
+    label: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/label")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "label"
+      return { default: mod.default || mod[exportName] }
+    }),
+    pagination: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/pagination")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "pagination"
+      return { default: mod.default || mod[exportName] }
+    }),
+    popover: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/popover")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "popover"
+      return { default: mod.default || mod[exportName] }
+    }),
+    progress: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/progress")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "progress"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "radio-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/radio-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "radio-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    resizable: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/resizable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "resizable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "scroll-area": React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/scroll-area")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "scroll-area"
+      return { default: mod.default || mod[exportName] }
+    }),
+    select: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    separator: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/separator")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "separator"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sheet: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/sheet")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sheet"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sidebar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/sidebar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sidebar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    skeleton: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/skeleton")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "skeleton"
+      return { default: mod.default || mod[exportName] }
+    }),
+    slider: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/slider")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "slider"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sonner: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/sonner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sonner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    spinner: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/spinner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    switch: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/switch")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch"
+      return { default: mod.default || mod[exportName] }
+    }),
+    table: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/table")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "table"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tabs: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/tabs")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tabs"
+      return { default: mod.default || mod[exportName] }
+    }),
+    textarea: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/textarea")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "textarea"
+      return { default: mod.default || mod[exportName] }
+    }),
+    toggle: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/toggle")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "toggle-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/toggle-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tooltip: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/tooltip")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tooltip"
+      return { default: mod.default || mod[exportName] }
+    }),
+    kbd: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/kbd")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "kbd"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "native-select": React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/native-select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "native-select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    direction: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/direction")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "aria-sera": {
+    accordion: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/accordion")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion"
+      return { default: mod.default || mod[exportName] }
+    }),
+    alert: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/alert")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "alert-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/alert-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "aspect-ratio": React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/aspect-ratio")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "aspect-ratio"
+      return { default: mod.default || mod[exportName] }
+    }),
+    avatar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/avatar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "avatar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    badge: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/badge")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge"
+      return { default: mod.default || mod[exportName] }
+    }),
+    breadcrumb: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/breadcrumb")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "breadcrumb"
+      return { default: mod.default || mod[exportName] }
+    }),
+    button: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/button")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "button-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/button-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    calendar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/calendar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "calendar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    card: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    carousel: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/carousel")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "carousel"
+      return { default: mod.default || mod[exportName] }
+    }),
+    chart: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/chart")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart"
+      return { default: mod.default || mod[exportName] }
+    }),
+    checkbox: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/checkbox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "checkbox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    collapsible: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/collapsible")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "collapsible"
+      return { default: mod.default || mod[exportName] }
+    }),
+    combobox: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/combobox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "combobox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    command: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/command")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "command"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "context-menu": React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/context-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "context-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    dialog: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    drawer: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/drawer")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "dropdown-menu": React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/dropdown-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dropdown-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    empty: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/empty")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "empty"
+      return { default: mod.default || mod[exportName] }
+    }),
+    field: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/field")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    input: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/input")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/input-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-otp": React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/input-otp")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-otp"
+      return { default: mod.default || mod[exportName] }
+    }),
+    item: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/item")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "item"
+      return { default: mod.default || mod[exportName] }
+    }),
+    label: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/label")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "label"
+      return { default: mod.default || mod[exportName] }
+    }),
+    pagination: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/pagination")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "pagination"
+      return { default: mod.default || mod[exportName] }
+    }),
+    popover: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/popover")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "popover"
+      return { default: mod.default || mod[exportName] }
+    }),
+    progress: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/progress")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "progress"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "radio-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/radio-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "radio-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    resizable: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/resizable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "resizable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "scroll-area": React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/scroll-area")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "scroll-area"
+      return { default: mod.default || mod[exportName] }
+    }),
+    select: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    separator: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/separator")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "separator"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sheet: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/sheet")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sheet"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sidebar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/sidebar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sidebar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    skeleton: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/skeleton")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "skeleton"
+      return { default: mod.default || mod[exportName] }
+    }),
+    slider: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/slider")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "slider"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sonner: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/sonner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sonner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    spinner: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/spinner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    switch: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/switch")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch"
+      return { default: mod.default || mod[exportName] }
+    }),
+    table: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/table")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "table"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tabs: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/tabs")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tabs"
+      return { default: mod.default || mod[exportName] }
+    }),
+    textarea: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/textarea")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "textarea"
+      return { default: mod.default || mod[exportName] }
+    }),
+    toggle: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/toggle")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "toggle-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/toggle-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tooltip: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/tooltip")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tooltip"
+      return { default: mod.default || mod[exportName] }
+    }),
+    kbd: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/kbd")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "kbd"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "native-select": React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/native-select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "native-select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    direction: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/direction")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "aria-rhea": {
+    accordion: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/accordion")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion"
+      return { default: mod.default || mod[exportName] }
+    }),
+    alert: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/alert")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "alert-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/alert-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "aspect-ratio": React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/aspect-ratio")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "aspect-ratio"
+      return { default: mod.default || mod[exportName] }
+    }),
+    avatar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/avatar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "avatar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    badge: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/badge")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge"
+      return { default: mod.default || mod[exportName] }
+    }),
+    breadcrumb: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/breadcrumb")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "breadcrumb"
+      return { default: mod.default || mod[exportName] }
+    }),
+    button: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/button")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "button-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/button-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    calendar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/calendar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "calendar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    card: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    carousel: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/carousel")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "carousel"
+      return { default: mod.default || mod[exportName] }
+    }),
+    chart: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/chart")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart"
+      return { default: mod.default || mod[exportName] }
+    }),
+    checkbox: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/checkbox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "checkbox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    collapsible: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/collapsible")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "collapsible"
+      return { default: mod.default || mod[exportName] }
+    }),
+    combobox: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/combobox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "combobox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    command: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/command")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "command"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "context-menu": React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/context-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "context-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    dialog: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    drawer: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/drawer")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "dropdown-menu": React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/dropdown-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dropdown-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    empty: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/empty")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "empty"
+      return { default: mod.default || mod[exportName] }
+    }),
+    field: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/field")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    input: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/input")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/input-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-otp": React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/input-otp")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-otp"
+      return { default: mod.default || mod[exportName] }
+    }),
+    item: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/item")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "item"
+      return { default: mod.default || mod[exportName] }
+    }),
+    label: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/label")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "label"
+      return { default: mod.default || mod[exportName] }
+    }),
+    pagination: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/pagination")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "pagination"
+      return { default: mod.default || mod[exportName] }
+    }),
+    popover: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/popover")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "popover"
+      return { default: mod.default || mod[exportName] }
+    }),
+    progress: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/progress")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "progress"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "radio-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/radio-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "radio-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    resizable: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/resizable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "resizable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "scroll-area": React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/scroll-area")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "scroll-area"
+      return { default: mod.default || mod[exportName] }
+    }),
+    select: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    separator: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/separator")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "separator"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sheet: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/sheet")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sheet"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sidebar: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/sidebar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sidebar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    skeleton: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/skeleton")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "skeleton"
+      return { default: mod.default || mod[exportName] }
+    }),
+    slider: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/slider")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "slider"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sonner: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/sonner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sonner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    spinner: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/spinner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    switch: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/switch")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch"
+      return { default: mod.default || mod[exportName] }
+    }),
+    table: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/table")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "table"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tabs: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/tabs")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tabs"
+      return { default: mod.default || mod[exportName] }
+    }),
+    textarea: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/textarea")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "textarea"
+      return { default: mod.default || mod[exportName] }
+    }),
+    toggle: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/toggle")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "toggle-group": React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/toggle-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tooltip: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/tooltip")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tooltip"
+      return { default: mod.default || mod[exportName] }
+    }),
+    kbd: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/kbd")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "kbd"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "native-select": React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/native-select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "native-select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    direction: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/direction")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "radix-vega": {
+    accordion: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/accordion")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion"
+      return { default: mod.default || mod[exportName] }
+    }),
+    alert: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/alert")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "alert-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/alert-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "aspect-ratio": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/aspect-ratio")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "aspect-ratio"
+      return { default: mod.default || mod[exportName] }
+    }),
+    avatar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/avatar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "avatar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    badge: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/badge")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge"
+      return { default: mod.default || mod[exportName] }
+    }),
+    breadcrumb: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/breadcrumb")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "breadcrumb"
+      return { default: mod.default || mod[exportName] }
+    }),
+    button: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/button")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "button-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/button-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    calendar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/calendar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "calendar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    card: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    carousel: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/carousel")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "carousel"
+      return { default: mod.default || mod[exportName] }
+    }),
+    chart: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/chart")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart"
+      return { default: mod.default || mod[exportName] }
+    }),
+    checkbox: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/checkbox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "checkbox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    collapsible: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/collapsible")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "collapsible"
+      return { default: mod.default || mod[exportName] }
+    }),
+    combobox: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/combobox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "combobox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    command: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/command")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "command"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "context-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/context-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "context-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    dialog: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    drawer: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/drawer")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "dropdown-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/dropdown-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dropdown-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    empty: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/empty")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "empty"
+      return { default: mod.default || mod[exportName] }
+    }),
+    field: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/field")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "hover-card": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/hover-card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "hover-card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    input: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/input")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/input-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-otp": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/input-otp")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-otp"
+      return { default: mod.default || mod[exportName] }
+    }),
+    item: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/item")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "item"
+      return { default: mod.default || mod[exportName] }
+    }),
+    label: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/label")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "label"
+      return { default: mod.default || mod[exportName] }
+    }),
+    menubar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/menubar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "menubar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "navigation-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/navigation-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "navigation-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    pagination: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/pagination")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "pagination"
+      return { default: mod.default || mod[exportName] }
+    }),
+    popover: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/popover")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "popover"
+      return { default: mod.default || mod[exportName] }
+    }),
+    progress: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/progress")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "progress"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "radio-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/radio-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "radio-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    resizable: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/resizable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "resizable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "scroll-area": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/scroll-area")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "scroll-area"
+      return { default: mod.default || mod[exportName] }
+    }),
+    select: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    separator: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/separator")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "separator"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sheet: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/sheet")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sheet"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sidebar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/sidebar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sidebar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    skeleton: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/skeleton")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "skeleton"
+      return { default: mod.default || mod[exportName] }
+    }),
+    slider: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/slider")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "slider"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sonner: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/sonner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sonner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    spinner: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/spinner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    switch: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/switch")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch"
+      return { default: mod.default || mod[exportName] }
+    }),
+    table: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/table")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "table"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tabs: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/tabs")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tabs"
+      return { default: mod.default || mod[exportName] }
+    }),
+    textarea: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/textarea")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "textarea"
+      return { default: mod.default || mod[exportName] }
+    }),
+    toggle: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/toggle")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "toggle-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/toggle-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tooltip: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/tooltip")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tooltip"
+      return { default: mod.default || mod[exportName] }
+    }),
+    kbd: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/kbd")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "kbd"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "native-select": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/native-select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "native-select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    direction: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/direction")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "radix-maia": {
+    accordion: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/accordion")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion"
+      return { default: mod.default || mod[exportName] }
+    }),
+    alert: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/alert")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "alert-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/alert-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "aspect-ratio": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/aspect-ratio")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "aspect-ratio"
+      return { default: mod.default || mod[exportName] }
+    }),
+    avatar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/avatar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "avatar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    badge: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/badge")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge"
+      return { default: mod.default || mod[exportName] }
+    }),
+    breadcrumb: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/breadcrumb")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "breadcrumb"
+      return { default: mod.default || mod[exportName] }
+    }),
+    button: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/button")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "button-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/button-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    calendar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/calendar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "calendar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    card: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    carousel: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/carousel")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "carousel"
+      return { default: mod.default || mod[exportName] }
+    }),
+    chart: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/chart")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart"
+      return { default: mod.default || mod[exportName] }
+    }),
+    checkbox: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/checkbox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "checkbox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    collapsible: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/collapsible")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "collapsible"
+      return { default: mod.default || mod[exportName] }
+    }),
+    combobox: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/combobox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "combobox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    command: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/command")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "command"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "context-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/context-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "context-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    dialog: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    drawer: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/drawer")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "dropdown-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/dropdown-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dropdown-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    empty: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/empty")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "empty"
+      return { default: mod.default || mod[exportName] }
+    }),
+    field: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/field")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "hover-card": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/hover-card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "hover-card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    input: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/input")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/input-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-otp": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/input-otp")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-otp"
+      return { default: mod.default || mod[exportName] }
+    }),
+    item: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/item")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "item"
+      return { default: mod.default || mod[exportName] }
+    }),
+    label: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/label")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "label"
+      return { default: mod.default || mod[exportName] }
+    }),
+    menubar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/menubar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "menubar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "navigation-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/navigation-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "navigation-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    pagination: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/pagination")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "pagination"
+      return { default: mod.default || mod[exportName] }
+    }),
+    popover: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/popover")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "popover"
+      return { default: mod.default || mod[exportName] }
+    }),
+    progress: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/progress")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "progress"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "radio-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/radio-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "radio-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    resizable: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/resizable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "resizable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "scroll-area": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/scroll-area")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "scroll-area"
+      return { default: mod.default || mod[exportName] }
+    }),
+    select: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    separator: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/separator")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "separator"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sheet: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/sheet")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sheet"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sidebar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/sidebar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sidebar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    skeleton: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/skeleton")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "skeleton"
+      return { default: mod.default || mod[exportName] }
+    }),
+    slider: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/slider")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "slider"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sonner: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/sonner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sonner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    spinner: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/spinner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    switch: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/switch")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch"
+      return { default: mod.default || mod[exportName] }
+    }),
+    table: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/table")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "table"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tabs: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/tabs")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tabs"
+      return { default: mod.default || mod[exportName] }
+    }),
+    textarea: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/textarea")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "textarea"
+      return { default: mod.default || mod[exportName] }
+    }),
+    toggle: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/toggle")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "toggle-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/toggle-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tooltip: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/tooltip")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tooltip"
+      return { default: mod.default || mod[exportName] }
+    }),
+    kbd: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/kbd")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "kbd"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "native-select": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/native-select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "native-select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    direction: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/direction")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "radix-lyra": {
+    accordion: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/accordion")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion"
+      return { default: mod.default || mod[exportName] }
+    }),
+    alert: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/alert")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "alert-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/alert-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "aspect-ratio": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/aspect-ratio")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "aspect-ratio"
+      return { default: mod.default || mod[exportName] }
+    }),
+    avatar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/avatar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "avatar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    badge: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/badge")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge"
+      return { default: mod.default || mod[exportName] }
+    }),
+    breadcrumb: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/breadcrumb")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "breadcrumb"
+      return { default: mod.default || mod[exportName] }
+    }),
+    button: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/button")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "button-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/button-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    calendar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/calendar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "calendar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    card: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    carousel: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/carousel")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "carousel"
+      return { default: mod.default || mod[exportName] }
+    }),
+    chart: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/chart")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart"
+      return { default: mod.default || mod[exportName] }
+    }),
+    checkbox: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/checkbox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "checkbox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    collapsible: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/collapsible")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "collapsible"
+      return { default: mod.default || mod[exportName] }
+    }),
+    combobox: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/combobox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "combobox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    command: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/command")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "command"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "context-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/context-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "context-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    dialog: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    drawer: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/drawer")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "dropdown-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/dropdown-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dropdown-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    empty: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/empty")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "empty"
+      return { default: mod.default || mod[exportName] }
+    }),
+    field: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/field")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "hover-card": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/hover-card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "hover-card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    input: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/input")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/input-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-otp": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/input-otp")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-otp"
+      return { default: mod.default || mod[exportName] }
+    }),
+    item: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/item")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "item"
+      return { default: mod.default || mod[exportName] }
+    }),
+    label: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/label")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "label"
+      return { default: mod.default || mod[exportName] }
+    }),
+    menubar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/menubar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "menubar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "navigation-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/navigation-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "navigation-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    pagination: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/pagination")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "pagination"
+      return { default: mod.default || mod[exportName] }
+    }),
+    popover: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/popover")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "popover"
+      return { default: mod.default || mod[exportName] }
+    }),
+    progress: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/progress")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "progress"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "radio-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/radio-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "radio-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    resizable: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/resizable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "resizable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "scroll-area": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/scroll-area")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "scroll-area"
+      return { default: mod.default || mod[exportName] }
+    }),
+    select: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    separator: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/separator")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "separator"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sheet: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/sheet")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sheet"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sidebar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/sidebar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sidebar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    skeleton: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/skeleton")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "skeleton"
+      return { default: mod.default || mod[exportName] }
+    }),
+    slider: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/slider")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "slider"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sonner: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/sonner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sonner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    spinner: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/spinner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    switch: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/switch")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch"
+      return { default: mod.default || mod[exportName] }
+    }),
+    table: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/table")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "table"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tabs: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/tabs")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tabs"
+      return { default: mod.default || mod[exportName] }
+    }),
+    textarea: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/textarea")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "textarea"
+      return { default: mod.default || mod[exportName] }
+    }),
+    toggle: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/toggle")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "toggle-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/toggle-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tooltip: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/tooltip")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tooltip"
+      return { default: mod.default || mod[exportName] }
+    }),
+    kbd: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/kbd")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "kbd"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "native-select": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/native-select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "native-select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    direction: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/direction")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "radix-mira": {
+    accordion: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/accordion")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion"
+      return { default: mod.default || mod[exportName] }
+    }),
+    alert: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/alert")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "alert-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/alert-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "aspect-ratio": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/aspect-ratio")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "aspect-ratio"
+      return { default: mod.default || mod[exportName] }
+    }),
+    avatar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/avatar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "avatar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    badge: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/badge")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge"
+      return { default: mod.default || mod[exportName] }
+    }),
+    breadcrumb: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/breadcrumb")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "breadcrumb"
+      return { default: mod.default || mod[exportName] }
+    }),
+    button: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/button")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "button-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/button-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    calendar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/calendar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "calendar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    card: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    carousel: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/carousel")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "carousel"
+      return { default: mod.default || mod[exportName] }
+    }),
+    chart: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/chart")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart"
+      return { default: mod.default || mod[exportName] }
+    }),
+    checkbox: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/checkbox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "checkbox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    collapsible: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/collapsible")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "collapsible"
+      return { default: mod.default || mod[exportName] }
+    }),
+    combobox: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/combobox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "combobox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    command: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/command")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "command"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "context-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/context-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "context-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    dialog: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    drawer: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/drawer")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "dropdown-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/dropdown-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dropdown-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    empty: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/empty")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "empty"
+      return { default: mod.default || mod[exportName] }
+    }),
+    field: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/field")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "hover-card": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/hover-card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "hover-card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    input: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/input")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/input-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-otp": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/input-otp")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-otp"
+      return { default: mod.default || mod[exportName] }
+    }),
+    item: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/item")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "item"
+      return { default: mod.default || mod[exportName] }
+    }),
+    label: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/label")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "label"
+      return { default: mod.default || mod[exportName] }
+    }),
+    menubar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/menubar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "menubar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "navigation-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/navigation-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "navigation-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    pagination: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/pagination")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "pagination"
+      return { default: mod.default || mod[exportName] }
+    }),
+    popover: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/popover")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "popover"
+      return { default: mod.default || mod[exportName] }
+    }),
+    progress: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/progress")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "progress"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "radio-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/radio-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "radio-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    resizable: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/resizable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "resizable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "scroll-area": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/scroll-area")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "scroll-area"
+      return { default: mod.default || mod[exportName] }
+    }),
+    select: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    separator: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/separator")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "separator"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sheet: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/sheet")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sheet"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sidebar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/sidebar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sidebar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    skeleton: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/skeleton")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "skeleton"
+      return { default: mod.default || mod[exportName] }
+    }),
+    slider: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/slider")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "slider"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sonner: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/sonner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sonner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    spinner: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/spinner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    switch: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/switch")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch"
+      return { default: mod.default || mod[exportName] }
+    }),
+    table: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/table")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "table"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tabs: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/tabs")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tabs"
+      return { default: mod.default || mod[exportName] }
+    }),
+    textarea: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/textarea")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "textarea"
+      return { default: mod.default || mod[exportName] }
+    }),
+    toggle: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/toggle")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "toggle-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/toggle-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tooltip: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/tooltip")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tooltip"
+      return { default: mod.default || mod[exportName] }
+    }),
+    kbd: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/kbd")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "kbd"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "native-select": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/native-select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "native-select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    direction: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/direction")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "radix-luma": {
+    accordion: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/accordion")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion"
+      return { default: mod.default || mod[exportName] }
+    }),
+    alert: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/alert")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "alert-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/alert-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "aspect-ratio": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/aspect-ratio")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "aspect-ratio"
+      return { default: mod.default || mod[exportName] }
+    }),
+    avatar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/avatar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "avatar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    badge: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/badge")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge"
+      return { default: mod.default || mod[exportName] }
+    }),
+    breadcrumb: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/breadcrumb")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "breadcrumb"
+      return { default: mod.default || mod[exportName] }
+    }),
+    button: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/button")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "button-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/button-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    calendar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/calendar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "calendar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    card: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    carousel: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/carousel")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "carousel"
+      return { default: mod.default || mod[exportName] }
+    }),
+    chart: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/chart")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart"
+      return { default: mod.default || mod[exportName] }
+    }),
+    checkbox: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/checkbox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "checkbox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    collapsible: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/collapsible")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "collapsible"
+      return { default: mod.default || mod[exportName] }
+    }),
+    combobox: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/combobox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "combobox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    command: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/command")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "command"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "context-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/context-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "context-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    dialog: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    drawer: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/drawer")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "dropdown-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/dropdown-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dropdown-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    empty: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/empty")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "empty"
+      return { default: mod.default || mod[exportName] }
+    }),
+    field: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/field")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "hover-card": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/hover-card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "hover-card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    input: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/input")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/input-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-otp": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/input-otp")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-otp"
+      return { default: mod.default || mod[exportName] }
+    }),
+    item: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/item")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "item"
+      return { default: mod.default || mod[exportName] }
+    }),
+    label: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/label")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "label"
+      return { default: mod.default || mod[exportName] }
+    }),
+    menubar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/menubar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "menubar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "navigation-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/navigation-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "navigation-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    pagination: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/pagination")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "pagination"
+      return { default: mod.default || mod[exportName] }
+    }),
+    popover: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/popover")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "popover"
+      return { default: mod.default || mod[exportName] }
+    }),
+    progress: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/progress")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "progress"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "radio-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/radio-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "radio-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    resizable: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/resizable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "resizable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "scroll-area": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/scroll-area")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "scroll-area"
+      return { default: mod.default || mod[exportName] }
+    }),
+    select: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    separator: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/separator")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "separator"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sheet: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/sheet")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sheet"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sidebar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/sidebar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sidebar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    skeleton: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/skeleton")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "skeleton"
+      return { default: mod.default || mod[exportName] }
+    }),
+    slider: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/slider")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "slider"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sonner: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/sonner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sonner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    spinner: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/spinner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    switch: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/switch")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch"
+      return { default: mod.default || mod[exportName] }
+    }),
+    table: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/table")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "table"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tabs: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/tabs")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tabs"
+      return { default: mod.default || mod[exportName] }
+    }),
+    textarea: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/textarea")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "textarea"
+      return { default: mod.default || mod[exportName] }
+    }),
+    toggle: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/toggle")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "toggle-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/toggle-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tooltip: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/tooltip")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tooltip"
+      return { default: mod.default || mod[exportName] }
+    }),
+    kbd: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/kbd")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "kbd"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "native-select": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/native-select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "native-select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    direction: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/direction")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "radix-sera": {
+    accordion: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/accordion")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion"
+      return { default: mod.default || mod[exportName] }
+    }),
+    alert: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/alert")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "alert-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/alert-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "aspect-ratio": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/aspect-ratio")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "aspect-ratio"
+      return { default: mod.default || mod[exportName] }
+    }),
+    avatar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/avatar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "avatar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    badge: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/badge")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge"
+      return { default: mod.default || mod[exportName] }
+    }),
+    breadcrumb: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/breadcrumb")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "breadcrumb"
+      return { default: mod.default || mod[exportName] }
+    }),
+    button: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/button")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "button-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/button-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    calendar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/calendar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "calendar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    card: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    carousel: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/carousel")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "carousel"
+      return { default: mod.default || mod[exportName] }
+    }),
+    chart: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/chart")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart"
+      return { default: mod.default || mod[exportName] }
+    }),
+    checkbox: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/checkbox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "checkbox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    collapsible: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/collapsible")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "collapsible"
+      return { default: mod.default || mod[exportName] }
+    }),
+    combobox: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/combobox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "combobox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    command: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/command")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "command"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "context-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/context-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "context-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    dialog: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    drawer: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/drawer")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "dropdown-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/dropdown-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dropdown-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    empty: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/empty")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "empty"
+      return { default: mod.default || mod[exportName] }
+    }),
+    field: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/field")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "hover-card": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/hover-card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "hover-card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    input: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/input")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/input-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-otp": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/input-otp")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-otp"
+      return { default: mod.default || mod[exportName] }
+    }),
+    item: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/item")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "item"
+      return { default: mod.default || mod[exportName] }
+    }),
+    label: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/label")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "label"
+      return { default: mod.default || mod[exportName] }
+    }),
+    menubar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/menubar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "menubar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "navigation-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/navigation-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "navigation-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    pagination: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/pagination")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "pagination"
+      return { default: mod.default || mod[exportName] }
+    }),
+    popover: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/popover")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "popover"
+      return { default: mod.default || mod[exportName] }
+    }),
+    progress: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/progress")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "progress"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "radio-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/radio-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "radio-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    resizable: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/resizable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "resizable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "scroll-area": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/scroll-area")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "scroll-area"
+      return { default: mod.default || mod[exportName] }
+    }),
+    select: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    separator: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/separator")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "separator"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sheet: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/sheet")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sheet"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sidebar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/sidebar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sidebar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    skeleton: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/skeleton")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "skeleton"
+      return { default: mod.default || mod[exportName] }
+    }),
+    slider: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/slider")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "slider"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sonner: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/sonner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sonner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    spinner: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/spinner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    switch: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/switch")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch"
+      return { default: mod.default || mod[exportName] }
+    }),
+    table: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/table")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "table"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tabs: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/tabs")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tabs"
+      return { default: mod.default || mod[exportName] }
+    }),
+    textarea: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/textarea")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "textarea"
+      return { default: mod.default || mod[exportName] }
+    }),
+    toggle: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/toggle")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "toggle-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/toggle-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tooltip: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/tooltip")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tooltip"
+      return { default: mod.default || mod[exportName] }
+    }),
+    kbd: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/kbd")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "kbd"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "native-select": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/native-select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "native-select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    direction: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/direction")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "radix-rhea": {
+    accordion: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/accordion")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion"
+      return { default: mod.default || mod[exportName] }
+    }),
+    alert: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/alert")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "alert-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/alert-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "aspect-ratio": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/aspect-ratio")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "aspect-ratio"
+      return { default: mod.default || mod[exportName] }
+    }),
+    avatar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/avatar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "avatar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    badge: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/badge")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge"
+      return { default: mod.default || mod[exportName] }
+    }),
+    breadcrumb: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/breadcrumb")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "breadcrumb"
+      return { default: mod.default || mod[exportName] }
+    }),
+    button: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/button")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "button-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/button-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    calendar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/calendar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "calendar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    card: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    carousel: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/carousel")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "carousel"
+      return { default: mod.default || mod[exportName] }
+    }),
+    chart: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/chart")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart"
+      return { default: mod.default || mod[exportName] }
+    }),
+    checkbox: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/checkbox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "checkbox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    collapsible: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/collapsible")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "collapsible"
+      return { default: mod.default || mod[exportName] }
+    }),
+    combobox: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/combobox")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "combobox"
+      return { default: mod.default || mod[exportName] }
+    }),
+    command: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/command")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "command"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "context-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/context-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "context-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    dialog: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    drawer: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/drawer")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "drawer"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "dropdown-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/dropdown-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dropdown-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    empty: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/empty")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "empty"
+      return { default: mod.default || mod[exportName] }
+    }),
+    field: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/field")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "hover-card": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/hover-card")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "hover-card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    input: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/input")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/input-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "input-otp": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/input-otp")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-otp"
+      return { default: mod.default || mod[exportName] }
+    }),
+    item: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/item")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "item"
+      return { default: mod.default || mod[exportName] }
+    }),
+    label: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/label")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "label"
+      return { default: mod.default || mod[exportName] }
+    }),
+    menubar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/menubar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "menubar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "navigation-menu": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/navigation-menu")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "navigation-menu"
+      return { default: mod.default || mod[exportName] }
+    }),
+    pagination: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/pagination")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "pagination"
+      return { default: mod.default || mod[exportName] }
+    }),
+    popover: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/popover")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "popover"
+      return { default: mod.default || mod[exportName] }
+    }),
+    progress: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/progress")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "progress"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "radio-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/radio-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "radio-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    resizable: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/resizable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "resizable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "scroll-area": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/scroll-area")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "scroll-area"
+      return { default: mod.default || mod[exportName] }
+    }),
+    select: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    separator: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/separator")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "separator"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sheet: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/sheet")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sheet"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sidebar: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/sidebar")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sidebar"
+      return { default: mod.default || mod[exportName] }
+    }),
+    skeleton: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/skeleton")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "skeleton"
+      return { default: mod.default || mod[exportName] }
+    }),
+    slider: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/slider")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "slider"
+      return { default: mod.default || mod[exportName] }
+    }),
+    sonner: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/sonner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "sonner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    spinner: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/spinner")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "spinner"
+      return { default: mod.default || mod[exportName] }
+    }),
+    switch: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/switch")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch"
+      return { default: mod.default || mod[exportName] }
+    }),
+    table: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/table")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "table"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tabs: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/tabs")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tabs"
+      return { default: mod.default || mod[exportName] }
+    }),
+    textarea: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/textarea")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "textarea"
+      return { default: mod.default || mod[exportName] }
+    }),
+    toggle: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/toggle")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "toggle-group": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/toggle-group")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle-group"
+      return { default: mod.default || mod[exportName] }
+    }),
+    tooltip: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/tooltip")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tooltip"
+      return { default: mod.default || mod[exportName] }
+    }),
+    kbd: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/kbd")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "kbd"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "native-select": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/native-select")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "native-select"
+      return { default: mod.default || mod[exportName] }
+    }),
+    direction: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/direction")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "direction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    attachment: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/attachment")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "attachment"
+      return { default: mod.default || mod[exportName] }
+    }),
+    bubble: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/bubble")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "bubble"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "message-scroller": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/message-scroller")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message-scroller"
+      return { default: mod.default || mod[exportName] }
+    }),
+    marker: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/marker")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "marker"
+      return { default: mod.default || mod[exportName] }
+    }),
+    message: React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/message")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "message"
       return { default: mod.default || mod[exportName] }
     }),
   },

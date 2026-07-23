@@ -195,6 +195,24 @@ async function getUpdateDependenciesPackageManager(config: Config) {
   return getPackageManager(config.resolvedPaths.cwd)
 }
 
+/**
+ * Registry-supplied dependency strings are forwarded directly into the package
+ * manager's argument list. A specifier beginning with "-" would be interpreted
+ * as a flag rather than a package name, letting a malicious registry alter the
+ * install source/behavior (argument injection). Reject those before they reach
+ * `execa`; the `--` end-of-options separator added at each call site is the
+ * second layer of defense.
+ */
+export function assertSafeDependencies(deps: string[]) {
+  for (const dep of deps) {
+    if (dep.trim().startsWith("-")) {
+      throw new Error(
+        `Invalid dependency "${dep}": dependency names cannot start with "-".`
+      )
+    }
+  }
+}
+
 async function installWithPackageManager(
   packageManager: Awaited<
     ReturnType<typeof getUpdateDependenciesPackageManager>
@@ -216,14 +234,19 @@ async function installWithPackageManager(
     return installWithExpo(dependencies, devDependencies, cwd)
   }
 
+  assertSafeDependencies(dependencies)
+  assertSafeDependencies(devDependencies)
+
   if (dependencies?.length) {
-    await execa(packageManager, ["add", ...dependencies], {
+    await execa(packageManager, ["add", "--", ...dependencies], {
       cwd,
     })
   }
 
   if (devDependencies?.length) {
-    await execa(packageManager, ["add", "-D", ...devDependencies], { cwd })
+    await execa(packageManager, ["add", "-D", "--", ...devDependencies], {
+      cwd,
+    })
   }
 }
 
@@ -233,10 +256,13 @@ async function installWithNpm(
   cwd: string,
   flag?: string
 ) {
+  assertSafeDependencies(dependencies)
+  assertSafeDependencies(devDependencies)
+
   if (dependencies.length) {
     await execa(
       "npm",
-      ["install", ...(flag ? [`--${flag}`] : []), ...dependencies],
+      ["install", ...(flag ? [`--${flag}`] : []), "--", ...dependencies],
       { cwd }
     )
   }
@@ -244,7 +270,13 @@ async function installWithNpm(
   if (devDependencies.length) {
     await execa(
       "npm",
-      ["install", ...(flag ? [`--${flag}`] : []), "-D", ...devDependencies],
+      [
+        "install",
+        ...(flag ? [`--${flag}`] : []),
+        "-D",
+        "--",
+        ...devDependencies,
+      ],
       { cwd }
     )
   }
@@ -275,12 +307,15 @@ async function installWithExpo(
   devDependencies: string[],
   cwd: string
 ) {
+  assertSafeDependencies(dependencies)
+  assertSafeDependencies(devDependencies)
+
   if (dependencies.length) {
-    await execa("npx", ["expo", "install", ...dependencies], { cwd })
+    await execa("npx", ["expo", "install", "--", ...dependencies], { cwd })
   }
 
   if (devDependencies.length) {
-    await execa("npx", ["expo", "install", "-- -D", ...devDependencies], {
+    await execa("npx", ["expo", "install", "-- -D", "--", ...devDependencies], {
       cwd,
     })
   }

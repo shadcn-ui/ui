@@ -83,6 +83,10 @@ async function getStyleMap(styleName: string) {
 export async function formatCode(code: string, styleName: string) {
   code = code.replaceAll(`@/registry/${styleName}/`, "@/components/")
 
+  // Always rewrite the legacy tree so src-based sources render clean imports
+  // regardless of the styleName in play.
+  code = code.replaceAll("@/registry/new-york-v4/", "@/components/")
+
   for (const base of BASES) {
     code = code.replaceAll(`@/registry/bases/${base.name}/`, "@/components/")
     code = code.replaceAll(

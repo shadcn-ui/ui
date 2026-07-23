@@ -34,6 +34,10 @@ export const siteConfig = {
       label: "Directory",
     },
     {
+      href: "/typeset",
+      label: "Typeset",
+    },
+    {
       href: "/create",
       label: "Create",
     },
