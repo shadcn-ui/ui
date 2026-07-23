@@ -90,7 +90,7 @@
     "rehype-pretty-code": "^0.14.1",
     "rimraf": "^6.0.1",
     "server-only": "^0.0.1",
-    "shadcn": "4.14.0",
+    "shadcn": "4.14.1",
     "shiki": "^3.23.0",
     "sonner": "^2.0.0",
     "streamdown": "^2.5.0",
