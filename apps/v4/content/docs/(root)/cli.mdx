@@ -408,11 +408,12 @@ npx shadcn@latest migrate [migration]
 
 **Available Migrations**
 
-| Migration | Description                                             |
-| --------- | ------------------------------------------------------- |
-| `icons`   | Migrate your UI components to a different icon library. |
-| `radix`   | Migrate to radix-ui.                                    |
-| `rtl`     | Migrate your components to support RTL (right-to-left). |
+| Migration    | Description                                             |
+| ------------ | ------------------------------------------------------- |
+| `icons`      | Migrate your UI components to a different icon library. |
+| `base-color` | Migrate your theme to a different base color.           |
+| `radix`      | Migrate to radix-ui.                                    |
+| `rtl`        | Migrate your components to support RTL (right-to-left). |
 
 **Options**
 
@@ -422,16 +423,16 @@ Usage: shadcn migrate [options] [migration] [path]
 run a migration.
 
 Arguments:
-  migration        the migration to run.
-  path             optional path or glob pattern to migrate.
+  migration          the migration to run.
+  path               optional path or glob pattern to migrate.
 
 Options:
-  -c, --cwd <cwd>       the working directory. defaults to the current directory.
-  -l, --list            list all migrations. (default: false)
-  -y, --yes             skip confirmation prompt. (default: false)
-  -f, --from <library>  the icon library to migrate from (icons migration only).
-  -t, --to <library>    the icon library to migrate to (icons migration only).
-  -h, --help            display help for command
+  -c, --cwd <cwd>    the working directory. defaults to the current directory.
+  -l, --list         list all migrations. (default: false)
+  -y, --yes          skip confirmation prompt. (default: false)
+  -f, --from <name>  the base color or icon library to migrate from.
+  -t, --to <name>    the base color or icon library to migrate to.
+  -h, --help         display help for command
 ```
 
 ---
@@ -469,6 +470,30 @@ npx shadcn@latest migrate icons "src/components/**" --from lucide --to tabler
 ```
 
 Icons without an equivalent in the target library are left untouched and reported at the end of the migration.
+
+---
+
+### migrate base-color
+
+The `base-color` migration switches your theme from one base color to another.
+
+```bash
+npx shadcn@latest migrate base-color
+```
+
+This will prompt you for the source and target base colors, rewrite the theme CSS variables (the CSS file configured by `tailwind.css` in your `components.json`) and update `baseColor` so future `npx shadcn add` installs use the new base color.
+
+The following base colors are supported: `neutral`, `zinc`, `stone`, `mauve`, `olive`, `mist` and `taupe`.
+
+**Non-interactive**
+
+Use `--to` to migrate from the current `baseColor` in your `components.json`, or pass both `--from` and `--to` explicitly.
+
+```bash
+npx shadcn@latest migrate base-color --to zinc --yes
+```
+
+Theme tokens that no longer match the source base color are left untouched and reported at the end of the migration.
 
 ---
 
