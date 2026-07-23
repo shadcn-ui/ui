@@ -1,3 +1,4 @@
+import path from "path"
 import { runInit } from "@/src/commands/init"
 import { REGISTRY_URL, SHADCN_URL } from "@/src/registry/constants"
 import { getFixturesDir, withTempDir } from "@/src/test-helpers"
@@ -102,7 +103,7 @@ const CHAT_ITEM_URL = "https://v0.dev/chat/b/xyz"
 // tailwind.config, e.g. config-full) and "new-york-v4" (the fallback style
 // resolved by configWithDefaults whenever tailwind.config is "", which is
 // both createConfig's default and the vite-with-tailwind fixture's value).
-const STYLES = ["new-york", "new-york-v4"]
+const STYLES = ["new-york", "new-york-v4", "base-nova"]
 
 function registerItem(name: string, body: Record<string, unknown>) {
   return STYLES.map((style) =>
@@ -113,9 +114,19 @@ function registerItem(name: string, body: Record<string, unknown>) {
 }
 
 const server = setupServer(
+  http.get(`${REGISTRY_URL}/index.json`, () =>
+    HttpResponse.json([
+      uiItem("button"),
+      uiItem("sonner"),
+      uiItem("toast"),
+      uiItem("toaster"),
+    ])
+  ),
   ...registerItem("button", uiItem("button")),
   ...registerItem("card", uiItem("card")),
+  ...registerItem("sonner", uiItem("sonner")),
   ...registerItem("toast", uiItem("toast")),
+  ...registerItem("toaster", uiItem("toaster")),
   ...registerItem("style-item", {
     name: "style-item",
     type: "registry:style",
@@ -165,6 +176,15 @@ async function withFixtureCopy<T>(
 async function runAdd(args: string[], cwd: string) {
   return add.parseAsync(["node", "shadcn", ...args, "--cwd", cwd], {
     from: "node",
+  })
+}
+
+async function setConfigStyle(cwd: string, style: string) {
+  const configPath = path.join(cwd, "components.json")
+  const config = await fs.readJson(configPath)
+  await fs.writeJson(configPath, {
+    ...config,
+    style,
   })
 }
 
@@ -333,9 +353,78 @@ describe("add command", () => {
         expect(runInit).not.toHaveBeenCalled()
       })
     })
+
+    it("allows toast after selecting Base UI", async () => {
+      await withTempDir(async (cwd) => {
+        await fs.writeJson(path.join(cwd, "package.json"), {
+          name: "no-config-project",
+          version: "1.0.0",
+        })
+
+        mockPrompts({
+          proceed: true,
+          base: "base",
+          selectedPreset: "nova",
+        })
+        vi.mocked(runInit).mockResolvedValue({
+          ...baseConfig(cwd),
+          style: "base-nova",
+        })
+
+        await runAdd(["toast"], cwd)
+
+        expect(runInit).toHaveBeenCalledWith(
+          expect.objectContaining({
+            components: expect.arrayContaining(["toast"]),
+          })
+        )
+      })
+    })
+
+    it("warns about toast after selecting a non-Base UI library", async () => {
+      await withTempDir(async (cwd) => {
+        await fs.writeJson(path.join(cwd, "package.json"), {
+          name: "no-config-project",
+          version: "1.0.0",
+        })
+        const { logger } = await import("@/src/utils/logger")
+
+        mockPrompts({
+          proceed: true,
+          base: "radix",
+        })
+
+        await expect(runAdd(["toast"], cwd)).rejects.toThrow("process.exit:1")
+
+        expect(logger.warn).toHaveBeenCalledWith(
+          expect.stringContaining("only available for Base UI projects")
+        )
+        expect(runInit).not.toHaveBeenCalled()
+      })
+    })
   })
 
   describe("empty/missing project (create-project flow)", () => {
+    it("does not scaffold before warning about toast for a non-Base UI library", async () => {
+      await withTempDir(async (emptyDir) => {
+        const { logger } = await import("@/src/utils/logger")
+
+        mockPrompts({
+          base: "radix",
+        })
+
+        await expect(runAdd(["toast"], emptyDir)).rejects.toThrow(
+          "process.exit:1"
+        )
+
+        expect(logger.warn).toHaveBeenCalledWith(
+          expect.stringContaining("only available for Base UI projects")
+        )
+        expect(createProject).not.toHaveBeenCalled()
+        expect(runInit).not.toHaveBeenCalled()
+      })
+    })
+
     it("runs init with isNewProject/skipPreflight after scaffolding a project", async () => {
       await withTempDir(async (emptyDir) => {
         await withTempDir(async (projectPath) => {
@@ -517,17 +606,134 @@ describe("add command", () => {
   })
 
   describe("deprecated components guard (Tailwind v4)", () => {
-    it("exits 1 and warns when adding a deprecated component", async () => {
+    it("exits 1 and warns when adding toaster", async () => {
+      await withFixtureCopy("vite-with-tailwind", async (cwd) => {
+        const { logger } = await import("@/src/utils/logger")
+
+        await expect(runAdd(["toaster"], cwd)).rejects.toThrow("process.exit:1")
+
+        expect(logger.warn).toHaveBeenCalledWith(
+          expect.stringContaining("toaster component is deprecated")
+        )
+        expect(addComponents).not.toHaveBeenCalled()
+      })
+    })
+
+    it("exits 1 and warns when adding toast to a legacy style", async () => {
       await withFixtureCopy("vite-with-tailwind", async (cwd) => {
         const { logger } = await import("@/src/utils/logger")
 
         await expect(runAdd(["toast"], cwd)).rejects.toThrow("process.exit:1")
 
         expect(logger.warn).toHaveBeenCalledWith(
-          expect.stringContaining("toast component is deprecated")
+          expect.stringContaining("only available for Base UI projects")
         )
         expect(addComponents).not.toHaveBeenCalled()
       })
     })
+
+    it.each(["radix-nova", "aria-nova"])(
+      "exits 1 and warns when adding toast to %s",
+      async (style) => {
+        await withFixtureCopy("vite-with-tailwind", async (cwd) => {
+          const { logger } = await import("@/src/utils/logger")
+          await setConfigStyle(cwd, style)
+
+          await expect(runAdd(["toast"], cwd)).rejects.toThrow("process.exit:1")
+
+          expect(logger.warn).toHaveBeenCalledWith(
+            expect.stringContaining("only available for Base UI projects")
+          )
+          expect(addComponents).not.toHaveBeenCalled()
+        })
+      }
+    )
+
+    it("allows adding toast to a Base UI style", async () => {
+      await withFixtureCopy("vite-with-tailwind", async (cwd) => {
+        await setConfigStyle(cwd, "base-nova")
+
+        await runAdd(["toast"], cwd)
+
+        expect(addComponents).toHaveBeenCalledWith(
+          ["toast"],
+          expect.objectContaining({ style: "base-nova" }),
+          expect.any(Object)
+        )
+      })
+    })
+
+    it("allows explicitly adding sonner to a Base UI style", async () => {
+      await withFixtureCopy("vite-with-tailwind", async (cwd) => {
+        await setConfigStyle(cwd, "base-nova")
+
+        await runAdd(["sonner"], cwd)
+
+        expect(addComponents).toHaveBeenCalledWith(
+          ["sonner"],
+          expect.objectContaining({ style: "base-nova" }),
+          expect.any(Object)
+        )
+      })
+    })
+
+    it("filters toast from --all for legacy styles", async () => {
+      await withFixtureCopy("vite-with-tailwind", async (cwd) => {
+        await runAdd(["--all"], cwd)
+
+        expect(addComponents).toHaveBeenCalledWith(
+          ["button", "sonner"],
+          expect.any(Object),
+          expect.any(Object)
+        )
+      })
+    })
+
+    it("includes toast in --all for Base UI styles", async () => {
+      await withFixtureCopy("vite-with-tailwind", async (cwd) => {
+        await setConfigStyle(cwd, "base-nova")
+
+        await runAdd(["--all"], cwd)
+
+        expect(addComponents).toHaveBeenCalledWith(
+          ["button", "toast"],
+          expect.objectContaining({ style: "base-nova" }),
+          expect.any(Object)
+        )
+      })
+    })
+
+    it.each([
+      { style: "new-york-v4", includesToast: false },
+      { style: "base-nova", includesToast: true },
+    ])(
+      "filters the interactive picker for $style",
+      async ({ style, includesToast }) => {
+        await withFixtureCopy("vite-with-tailwind", async (cwd) => {
+          await setConfigStyle(cwd, style)
+          mockPrompts({ components: ["button"] })
+
+          await runAdd([], cwd)
+
+          const componentPrompt = vi
+            .mocked(prompts)
+            .mock.calls.map(([options]) => options)
+            .find(
+              (options) =>
+                !Array.isArray(options) && options.name === "components"
+            ) as
+            | { choices?: Array<{ value: string }>; name?: string }
+            | undefined
+          const choices = (componentPrompt?.choices ?? []).map(
+            (choice) => choice.value
+          )
+
+          expect(componentPrompt).toBeDefined()
+          expect(choices.includes("toast")).toBe(includesToast)
+          expect(choices.includes("sonner")).toBe(!includesToast)
+          expect(choices).not.toContain("toaster")
+        })
+      }
+    )
   })
 })
