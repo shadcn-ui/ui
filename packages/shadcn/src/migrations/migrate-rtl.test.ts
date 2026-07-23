@@ -121,5 +121,28 @@ export function Component() {
       expect(result).toContain("size-4")
       expect(result).not.toContain("cn-rtl-flip")
     })
+
+    it("should be idempotent when run multiple times", async () => {
+      const input = `
+import * as React from "react"
+
+export function Component() {
+  return (
+    <div className="group-data-[size=default]/switch:data-checked:translate-x-[calc(100%-2px)] space-x-2 cursor-e-resize" />
+  )
+}`
+
+      const once = await transformDirection(input, true)
+      const twice = await transformDirection(once, true)
+
+      expect(twice).toBe(once)
+      expect(
+        twice.match(
+          /rtl:group-data-\[size=default\]\/switch:data-checked:-translate-x-\[calc\(100%-2px\)\]/g
+        )
+      ).toHaveLength(1)
+      expect(twice.match(/rtl:space-x-reverse/g)).toHaveLength(1)
+      expect(twice.match(/rtl:cursor-w-resize/g)).toHaveLength(1)
+    })
   })
 })
