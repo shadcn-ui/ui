@@ -12,6 +12,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { TooltipProvider as BaseTooltipProvider } from "@/registry/bases/base/ui/tooltip"
 import { Toaster } from "@/registry/bases/radix/ui/sonner"
 import { TooltipProvider as RadixTooltipProvider } from "@/registry/bases/radix/ui/tooltip"
+import { Toaster as BaseToaster } from "@/styles/base-nova/ui/toast"
 
 import "@/app/globals.css"
 import "@/app/(app)/(typeset)/typeset.css"
@@ -112,6 +113,7 @@ export default function RootLayout({
                 <RadixTooltipProvider delayDuration={0}>
                   {children}
                   <Toaster position="top-center" />
+                  <BaseToaster />
                 </RadixTooltipProvider>
               </BaseTooltipProvider>
             </NuqsAdapter>
