@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 "use client"
 
 import { useForm } from "@tanstack/react-form"
@@ -95,9 +94,8 @@ export default function FormTanstackRadioGroup() {
           }}
         >
           <FieldGroup>
-            <form.Field
-              name="plan"
-              children={(field) => {
+            <form.Field name="plan">
+              {(field) => {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
@@ -141,7 +139,7 @@ export default function FormTanstackRadioGroup() {
                   </FieldSet>
                 )
               }}
-            />
+            </form.Field>
           </FieldGroup>
         </form>
       </CardContent>
