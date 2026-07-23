@@ -7,9 +7,11 @@ import {
   canDeduplicateFiles,
   deduplicateFilesByTarget,
   getDependencyFromModuleSpecifier,
+  getPackageNameFromSpecifier,
   isLocalFile,
   isUniversalRegistryItem,
   isUrl,
+  normalizeRegistryDependencies,
 } from "./utils"
 
 describe("getDependencyFromModuleSpecifier", () => {
@@ -82,6 +84,43 @@ describe("getDependencyFromModuleSpecifier", () => {
     expect(getDependencyFromModuleSpecifier("@types/react/dom")).toBe(
       "@types/react"
     )
+  })
+})
+
+describe("getPackageNameFromSpecifier", () => {
+  it.each([
+    ["react-aria-components/Button", "react-aria-components"],
+    ["react-aria-components/composeRenderProps", "react-aria-components"],
+    ["react-aria/chain", "react-aria"],
+    ["@scope/package/subpath", "@scope/package"],
+    ["@scope/package", "@scope/package"],
+    ["zod@^3.20.0", "zod@^3.20.0"],
+  ])("should normalize package subpath specifier %s", (input, expected) => {
+    expect(getPackageNameFromSpecifier(input)).toBe(expected)
+  })
+
+  it.each([
+    "https://example.com/package.tgz",
+    "git+ssh://git@github.com/acme/package.git",
+    "github:acme/package",
+    "file:../package.tgz",
+    "npm:@scope/package@1.0.0",
+  ])("should preserve protocol dependency spec %s", (input) => {
+    expect(getPackageNameFromSpecifier(input)).toBe(input)
+  })
+})
+
+describe("normalizeRegistryDependencies", () => {
+  it("should normalize package subpaths and deduplicate matching packages", () => {
+    expect(
+      normalizeRegistryDependencies([
+        "react-aria-components/Button",
+        "react-aria-components/Dialog",
+        "react-aria/chain",
+        "react-aria",
+        "tailwind-variants",
+      ])
+    ).toEqual(["react-aria-components", "react-aria", "tailwind-variants"])
   })
 })
 

@@ -21,6 +21,7 @@ import {
   deduplicateFilesByTarget,
   isLocalFile,
   isUrl,
+  normalizeRegistryDependencies,
 } from "@/src/registry/utils"
 import {
   RegistryFontItem,
@@ -367,9 +368,13 @@ export async function resolveRegistryTree(
     }))
 
   const parsed = registryResolvedItemsTreeSchema.parse({
-    dependencies: deepmerge.all(payload.map((item) => item.dependencies ?? [])),
-    devDependencies: deepmerge.all(
-      payload.map((item) => item.devDependencies ?? [])
+    dependencies: normalizeRegistryDependencies(
+      deepmerge.all(payload.map((item) => item.dependencies ?? [])) as string[]
+    ),
+    devDependencies: normalizeRegistryDependencies(
+      deepmerge.all(
+        payload.map((item) => item.devDependencies ?? [])
+      ) as string[]
     ),
     files: deduplicatedFiles,
     tailwind,
