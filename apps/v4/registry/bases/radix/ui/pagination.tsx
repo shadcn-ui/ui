@@ -124,7 +124,6 @@ function PaginationEllipsis({
 }: React.ComponentProps<"span">) {
   return (
     <span
-      aria-hidden
       data-slot="pagination-ellipsis"
       className={cn(
         "cn-pagination-ellipsis flex items-center justify-center",
@@ -133,6 +132,7 @@ function PaginationEllipsis({
       {...props}
     >
       <IconPlaceholder
+        aria-hidden="true"
         lucide="MoreHorizontalIcon"
         tabler="IconDots"
         hugeicons="MoreHorizontalCircle01Icon"
