@@ -3724,6 +3724,18 @@
       ]
     },
     {
+      "name": "form-rhf-combobox",
+      "type": "registry:example",
+      "dependencies": ["react-hook-form", "@hookform/resolvers", "zod"],
+      "registryDependencies": ["field", "combobox", "button", "card"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-combobox.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "form-rhf-select",
       "type": "registry:example",
       "dependencies": ["react-hook-form", "@hookform/resolvers", "zod"],
@@ -3865,6 +3877,18 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/form-tanstack-input.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-combobox",
+      "type": "registry:example",
+      "dependencies": ["@tanstack/react-form", "zod"],
+      "registryDependencies": ["field", "combobox", "button", "card"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-combobox.tsx",
           "type": "registry:example"
         }
       ]
