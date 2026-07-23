@@ -974,6 +974,13 @@
     "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"330\" height=\"330\" viewBox=\"0 0 330 330\" fill=\"none\"><g clip-path=\"url(#clip0_1543_179)\"><mask id=\"mask0_1543_179\" style=\"mask-type:alpha\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"330\" height=\"330\"><circle cx=\"165\" cy=\"165\" r=\"165\" fill=\"#D9D9D9\"/></mask><g mask=\"url(#mask0_1543_179)\"><path d=\"M165 330C256.127 330 330 256.127 330 165C330 73.873 256.127 0 165 0C73.873 0 0 73.873 0 165C0 256.127 73.873 330 165 330Z\" fill=\"black\"/><path d=\"M330 96H122V111H330V96Z\" fill=\"white\"/><path d=\"M208 219H0V234H208V219Z\" fill=\"white\"/><circle cx=\"165\" cy=\"165\" r=\"157.5\" stroke=\"white\" stroke-width=\"15\" fill=\"none\"/></g></g><defs><clipPath id=\"clip0_1543_179\"><rect width=\"330\" height=\"330\" fill=\"white\"/></clipPath></defs></svg>"
   },
   {
+    "name": "@openui",
+    "homepage": "https://openuis.vercel.app",
+    "url": "https://openuis.vercel.app/r/{name}.json",
+    "description": "Virtualized table components for shadcn/ui with sorting, resizing, and row selection.",
+    "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"302 143 460 696\" aria-hidden=\"true\"><g fill=\"var(--foreground)\"><path d=\"M306 264 Q306 238 331 228 L497 161 Q532 147 532 185 L532 316 Q532 336 512 336 L501 336 Q489 336 489 348 L489 405 Q489 417 501 417 L513 417 Q532 417 532 436 L532 468 Q532 484 517 491 L429 532 Q412 540 412 559 L412 592 Q412 606 398 606 L378 606 Q365 606 365 593 L365 577 Q365 562 350 562 L330 562 Q306 562 306 538 Z\"/><path d=\"M306 618 Q306 595 328 588 L360 577 Q377 572 377 591 L377 609 Q377 622 390 622 L413 622 Q427 622 427 608 L427 563 Q427 543 445 535 L507 507 Q532 496 532 524 L532 768 Q532 787 514 795 L431 835 L331 835 Q306 835 306 810 Z\"/><path d=\"M560 345 Q560 324 579 316 L728 256 Q758 244 758 276 L758 512 Q758 532 740 541 L594 611 Q560 627 560 590 L560 441 Q560 424 543 424 L528 424 Q516 424 516 412 L516 390 Q516 378 528 378 L543 378 Q560 378 560 361 Z\"/><path d=\"M585 646 Q585 628 602 621 L729 564 Q758 551 758 582 L758 670 Q758 690 739 699 L594 769 Q560 785 560 748 L560 710 Q560 695 545 695 L531 695 Q519 695 519 683 L519 666 Q519 654 531 654 L545 654 Q560 654 560 639 L560 638 Q560 625 573 625 Q585 625 585 646 Z\"/></g></svg>"
+  },
+  {
     "name": "@optics",
     "homepage": "https://optics.agusmayol.com.ar",
     "url": "https://optics.agusmayol.com.ar/r/{name}.json",
