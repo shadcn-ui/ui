@@ -448,6 +448,15 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "textarea"
       return { default: mod.default || mod[exportName] }
     }),
+    toast: React.lazy(async () => {
+      const mod = await import("@/registry/bases/base/ui/toast")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toast"
+      return { default: mod.default || mod[exportName] }
+    }),
     toggle: React.lazy(async () => {
       const mod = await import("@/registry/bases/base/ui/toggle")
       const exportName =
@@ -1087,6 +1096,15 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "textarea-example"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "toast-example": React.lazy(async () => {
+      const mod = await import("@/registry/bases/base/examples/toast-example")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toast-example"
       return { default: mod.default || mod[exportName] }
     }),
     "toggle-example": React.lazy(async () => {

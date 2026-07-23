@@ -328,7 +328,7 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1
       shadcn:
-        specifier: 4.14.0
+        specifier: 4.14.1
         version: link:../../packages/shadcn
       shiki:
         specifier: ^3.23.0
