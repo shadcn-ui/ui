@@ -76,7 +76,7 @@
     "next": "16.2.7",
     "next-themes": "0.4.6",
     "nuqs": "^2.8.9",
-    "postcss": "^8.5.1",
+    "postcss": "^8.5.12",
     "radix-ui": "^1.4.3",
     "react": "19.2.3",
     "react-aria-components": "1.19.0",
