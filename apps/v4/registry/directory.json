@@ -1722,5 +1722,12 @@
   "url": "https://shadcn-loaders.vercel.app/r/{name}.json",
   "description": "A public registry of shadcn-inspired animated loaders and loading states.",
   "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='#111827'/><circle cx='12' cy='12' r='5' fill='#f59e0b'/></svg>"
+  },
+  {
+    "name": "@voraui",
+    "homepage": "https://voraui.vercel.app",
+    "url": "https://voraui.vercel.app/r/{name}.json",
+    "description": "Open source crypto market analytics components for shadcn/ui - candlestick trading charts, BTC rainbow chart, Fear & Greed and Altseason gauges, live from free public APIs.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 275 144' fill='none'><path d='M10 133.625C10 100.838 23.433 69.3931 47.3439 46.2089C71.2548 23.0247 103.685 10 137.5 10C171.315 10 203.745 23.0247 227.656 46.2089C251.567 69.3931 265 100.838 265 133.625' stroke='var(--foreground)' stroke-width='20' stroke-linecap='round'/><path d='M41.875 133.625C41.875 109.034 51.9497 85.4511 69.8829 68.063C87.8161 50.6748 112.139 40.9063 137.5 40.9062C162.861 40.9063 187.184 50.6748 205.117 68.063C223.05 85.4511 233.125 109.034 233.125 133.625' stroke='var(--foreground)' stroke-width='20' stroke-linecap='round'/><path d='M73.75 133.625C73.75 117.231 80.4665 101.509 92.4219 89.917C104.377 78.3249 120.592 71.8125 137.5 71.8125C154.408 71.8125 170.623 78.3249 182.578 89.917C194.534 101.509 201.25 117.231 201.25 133.625' stroke='var(--foreground)' stroke-width='20' stroke-linecap='round'/></svg>"
   }
 ]
