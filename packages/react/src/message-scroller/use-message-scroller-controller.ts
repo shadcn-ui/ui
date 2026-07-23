@@ -369,6 +369,23 @@ function useMessageScrollerController({
 
     defaultScrollPositionAppliedRef.current = true
 
+    // Seed the handled-anchors set with every anchor already present in
+    // the DOM. The mount path (previousItemCount === 0) and any
+    // defaultScrollPosition change both reach here, but neither used to
+    // register mount-time anchors. Without this, a later same-count
+    // content swap (e.g. a transient row replaced by a real row in one
+    // update) treats those anchors as newly appeared and re-anchors the
+    // viewport to the oldest one — yanking the reader away from the
+    // row they were looking at. See #11128.
+    const seededContent = contentRef.current
+    if (seededContent) {
+      for (const el of getMessageScrollerItems(seededContent, spacerRef.current)) {
+        if (el.dataset.scrollAnchor === "true") {
+          handledScrollAnchorsRef.current.add(el)
+        }
+      }
+    }
+
     return true
   }, [defaultScrollPosition, scrollToElement, scrollToEnd, scrollToStart])
 
