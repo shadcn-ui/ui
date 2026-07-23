@@ -339,9 +339,12 @@ export async function resolveRegistryTree(
     css = deepmerge(css, item.css ?? {})
   })
 
+  // deduplicate docs strings
+  const seenDocs = new Set<string>()
   let docs = ""
   payload.forEach((item) => {
-    if (item.docs) {
+    if (item.docs && !seenDocs.has(item.docs)) {
+      seenDocs.add(item.docs)
       docs += `${item.docs}\n`
     }
   })
