@@ -1264,7 +1264,7 @@
     @apply bg-muted rounded-2xl;
   }
 
-  /* MARK: Sonner */
+  /* MARK: Toast */
   .cn-toast {
     @apply rounded-2xl;
   }
