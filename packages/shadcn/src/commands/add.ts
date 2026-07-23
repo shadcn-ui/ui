@@ -26,6 +26,7 @@ import { logger } from "@/src/utils/logger"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { spinner } from "@/src/utils/spinner"
 import { updateAppIndex } from "@/src/utils/update-app-index"
+import { setUserAgent } from "@/src/utils/user-agent"
 import { Command } from "commander"
 import prompts from "prompts"
 import { z } from "zod"
@@ -69,6 +70,9 @@ export const add = new Command()
       })
 
       await loadEnvFiles(options.cwd)
+
+      const projectInfo = await getProjectInfo(options.cwd)
+      setUserAgent(projectInfo)
 
       const isDryRun = options.dryRun || options.diff || options.view
 
@@ -138,7 +142,6 @@ export const add = new Command()
         options.components = await promptForRegistryComponents(options)
       }
 
-      const projectInfo = await getProjectInfo(options.cwd)
       if (projectInfo?.tailwindVersion === "v4") {
         const deprecatedComponents = DEPRECATED_COMPONENTS.filter((component) =>
           options.components?.includes(component.name)

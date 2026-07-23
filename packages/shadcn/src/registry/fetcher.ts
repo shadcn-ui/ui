@@ -13,6 +13,7 @@ import {
   RegistryUnauthorizedError,
 } from "@/src/registry/errors"
 import { fetchWithProxy } from "@/src/registry/proxy"
+import { getUserAgent } from "@/src/utils/user-agent"
 import { registryItemSchema } from "@/src/schema"
 import { z } from "zod"
 
@@ -47,7 +48,7 @@ export async function fetchRegistry(
           const headers = getRegistryHeadersFromContext(url)
           const requestHeaders = new Headers({
             Accept: "application/vnd.shadcn.v1+json, application/json;q=0.9",
-            "User-Agent": "shadcn",
+            "User-Agent": getUserAgent(),
           })
 
           for (const [key, value] of Object.entries(headers)) {
