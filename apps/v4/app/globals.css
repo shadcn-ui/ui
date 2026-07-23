@@ -199,9 +199,13 @@
     @apply overscroll-y-none;
   }
   body {
-    position: relative;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
+  }
+  @supports (-webkit-touch-callout: none) {
+    body {
+      position: relative;
+    }
   }
   .cn-font-heading {
     @apply font-heading;
