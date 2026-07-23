@@ -619,6 +619,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
         ) || "button-destructive"
       return { default: mod.default || mod[exportName] }
     }),
+    "button-floating": React.lazy(async () => {
+      const mod = await import("./base/button-floating")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-floating"
+      return { default: mod.default || mod[exportName] }
+    }),
     "button-ghost": React.lazy(async () => {
       const mod = await import("./base/button-ghost")
       const exportName =
@@ -5112,6 +5121,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
         ) || "button-destructive"
       return { default: mod.default || mod[exportName] }
     }),
+    "button-floating": React.lazy(async () => {
+      const mod = await import("./aria/button-floating")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-floating"
+      return { default: mod.default || mod[exportName] }
+    }),
     "button-ghost": React.lazy(async () => {
       const mod = await import("./aria/button-ghost")
       const exportName =
@@ -9477,6 +9495,15 @@ export const ExamplesComponents: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "button-destructive"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "button-floating": React.lazy(async () => {
+      const mod = await import("./radix/button-floating")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-floating"
       return { default: mod.default || mod[exportName] }
     }),
     "button-ghost": React.lazy(async () => {

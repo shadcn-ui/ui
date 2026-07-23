@@ -277,6 +277,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "button-destructive",
       filePath: "examples/base/button-destructive.tsx",
     },
+    "button-floating": {
+      name: "button-floating",
+      filePath: "examples/base/button-floating.tsx",
+    },
     "button-ghost": {
       name: "button-ghost",
       filePath: "examples/base/button-ghost.tsx",
@@ -2275,6 +2279,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "button-destructive",
       filePath: "examples/aria/button-destructive.tsx",
     },
+    "button-floating": {
+      name: "button-floating",
+      filePath: "examples/aria/button-floating.tsx",
+    },
     "button-ghost": {
       name: "button-ghost",
       filePath: "examples/aria/button-ghost.tsx",
@@ -4216,6 +4224,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "button-destructive": {
       name: "button-destructive",
       filePath: "examples/radix/button-destructive.tsx",
+    },
+    "button-floating": {
+      name: "button-floating",
+      filePath: "examples/radix/button-floating.tsx",
     },
     "button-ghost": {
       name: "button-ghost",
