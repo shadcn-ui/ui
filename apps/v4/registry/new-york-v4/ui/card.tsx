@@ -32,6 +32,8 @@ function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-title"
+      aria-level={2}
+      role="heading"
       className={cn("leading-none font-semibold", className)}
       {...props}
     />
