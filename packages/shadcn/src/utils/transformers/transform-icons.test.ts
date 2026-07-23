@@ -684,4 +684,53 @@ export function Component() {
       }"
     `)
   })
+
+  describe("remixicon library", () => {
+    test("updates svg props type when spreading props to icon", async () => {
+      expect(
+        await transform(
+          {
+            filename: "spinner.tsx",
+            raw: `import { cn } from "@/lib/utils"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
+
+type SpinnerProps = Omit<React.ComponentProps<"svg">, "children">
+
+function Spinner({ className, ...props }: SpinnerProps) {
+  return (
+    <IconPlaceholder
+      remixicon="RiLoaderLine"
+      data-slot="spinner"
+      role="status"
+      aria-label="Loading"
+      className={cn("size-4 animate-spin", className)}
+      {...props}
+    />
+  )
+}
+
+export { Spinner }`,
+            config: {
+              ...testConfig,
+              iconLibrary: "remixicon",
+            },
+          },
+          [transformIcons]
+        )
+      ).toMatchInlineSnapshot(`
+        "import { cn } from "@/lib/utils"
+        import { RiLoaderLine } from "@remixicon/react"
+
+        type SpinnerProps = Omit<React.ComponentProps<typeof RiLoaderLine>, "children">
+
+        function Spinner({ className, ...props }: SpinnerProps) {
+          return (
+            <RiLoaderLine data-slot="spinner" role="status" aria-label="Loading" className={cn("size-4 animate-spin", className)} {...props} />
+          )
+        }
+
+        export { Spinner }"
+      `)
+    })
+  })
 })
