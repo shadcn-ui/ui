@@ -5,6 +5,7 @@ import { notFound } from "next/navigation"
 import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
+import { Toaster as BaseToaster } from "@/registry/bases/base/ui/toast"
 import { BASES, type Base } from "@/registry/config"
 import { ActionMenuScript } from "@/app/(app)/(create)/components/action-menu"
 import { DesignSystemProvider } from "@/app/(app)/(create)/components/design-system-provider"
@@ -141,6 +142,7 @@ export default async function BlockPage({
       <DesignSystemProvider>
         <Component />
       </DesignSystemProvider>
+      {base.name === "base" && <BaseToaster />}
       <TailwindIndicator forceMount />
     </div>
   )

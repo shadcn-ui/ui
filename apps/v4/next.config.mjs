@@ -92,6 +92,17 @@ const nextConfig = {
         destination: "/docs/typeset",
         permanent: true,
       },
+      // Base UI Sonner redirects to Toast.
+      {
+        source: "/docs/components/base/sonner",
+        destination: "/docs/components/base/toast",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/base/sonner.md",
+        destination: "/docs/components/base/toast.md",
+        permanent: true,
+      },
       // Component redirects (default to base).
       {
         source: "/docs/components/:name((?!radix|base|aria|form)[^/]+)",
