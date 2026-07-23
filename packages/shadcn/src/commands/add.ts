@@ -1,13 +1,17 @@
 import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
+import { parsePresetStyle, type PresetBase } from "@/src/preset/preset"
 import {
   promptForBase,
   promptForPreset,
   resolveRegistryBaseConfig,
 } from "@/src/preset/presets"
 import { getRegistryItems, getShadcnRegistryIndex } from "@/src/registry/api"
-import { DEPRECATED_COMPONENTS } from "@/src/registry/constants"
+import {
+  COMPONENTS_HIDDEN_FROM_SELECTION,
+  DEPRECATED_COMPONENTS,
+} from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { registryItemTypeSchema } from "@/src/registry/schema"
 import { isUniversalRegistryItem } from "@/src/registry/utils"
@@ -73,6 +77,7 @@ export const add = new Command()
       const isDryRun = options.dryRun || options.diff || options.view
 
       let initialConfig = await getConfig(options.cwd)
+      const hasExistingConfig = !!initialConfig
       if (!initialConfig) {
         initialConfig = createConfig({
           style: "new-york",
@@ -93,9 +98,23 @@ export const add = new Command()
         hasNewRegistries = newRegistries.length > 0
       }
 
+      const projectInfo = await getProjectInfo(options.cwd)
+      const { base: configuredBase } = parsePresetStyle(initialConfig.style)
+
+      if (hasExistingConfig && projectInfo?.tailwindVersion === "v4") {
+        warnForDeprecatedComponents(components, configuredBase)
+      }
+
       let itemType: z.infer<typeof registryItemTypeSchema> | undefined
       let shouldInstallStyleIndex = true
-      if (components.length > 0) {
+      const shouldResolveInitialItem =
+        components.length > 0 &&
+        (hasExistingConfig ||
+          !DEPRECATED_COMPONENTS.some(
+            (component) => component.name === components[0]
+          ))
+
+      if (shouldResolveInitialItem) {
         const [registryItem] = await getRegistryItems([components[0]], {
           config: initialConfig,
         })
@@ -135,23 +154,14 @@ export const add = new Command()
       }
 
       if (!options.components?.length) {
-        options.components = await promptForRegistryComponents(options)
+        options.components = await promptForRegistryComponents(
+          options,
+          initialConfig.style
+        )
       }
 
-      const projectInfo = await getProjectInfo(options.cwd)
-      if (projectInfo?.tailwindVersion === "v4") {
-        const deprecatedComponents = DEPRECATED_COMPONENTS.filter((component) =>
-          options.components?.includes(component.name)
-        )
-
-        if (deprecatedComponents?.length) {
-          logger.break()
-          deprecatedComponents.forEach((component) => {
-            logger.warn(highlighter.warn(component.message))
-          })
-          logger.break()
-          process.exit(1)
-        }
+      if (!components.length && projectInfo?.tailwindVersion === "v4") {
+        warnForDeprecatedComponents(options.components ?? [], configuredBase)
       }
 
       let { errors, config } = await preFlightAdd(options)
@@ -180,6 +190,7 @@ export const add = new Command()
 
         // Prompt for base and preset.
         const base = await promptForBase()
+        warnForDeprecatedComponents(options.components ?? [], base)
         const { url: initUrl } = await promptForPreset({
           rtl: false,
           base,
@@ -213,6 +224,9 @@ export const add = new Command()
       let shouldUpdateAppIndex = false
 
       if (errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
+        const selectedBase = await promptForBase()
+        warnForDeprecatedComponents(options.components ?? [], selectedBase)
+
         const { projectPath, template } = await createProject({
           cwd: options.cwd,
           force: options.overwrite,
@@ -224,8 +238,6 @@ export const add = new Command()
         }
         options.cwd = projectPath
 
-        // Prompt for base and preset.
-        const selectedBase = await promptForBase()
         const { url: initUrl } = await promptForPreset({
           rtl: false,
           base: selectedBase,
@@ -316,7 +328,8 @@ export const add = new Command()
   })
 
 async function promptForRegistryComponents(
-  options: z.infer<typeof addOptionsSchema>
+  options: z.infer<typeof addOptionsSchema>,
+  style: string
 ) {
   const registryIndex = await getShadcnRegistryIndex()
   if (!registryIndex) {
@@ -325,12 +338,12 @@ async function promptForRegistryComponents(
     return []
   }
 
+  const { base } = parsePresetStyle(style)
+
   if (options.all) {
     return registryIndex
       .map((entry) => entry.name)
-      .filter(
-        (component) => !DEPRECATED_COMPONENTS.some((c) => c.name === component)
-      )
+      .filter((component) => isComponentSelectable(component, base))
   }
 
   if (options.components?.length) {
@@ -347,9 +360,7 @@ async function promptForRegistryComponents(
       .filter(
         (entry) =>
           entry.type === "registry:ui" &&
-          !DEPRECATED_COMPONENTS.some(
-            (component) => component.name === entry.name
-          )
+          isComponentSelectable(entry.name, base)
       )
       .map((entry) => ({
         title: entry.name,
@@ -371,4 +382,49 @@ async function promptForRegistryComponents(
     return []
   }
   return result.data
+}
+
+function warnForDeprecatedComponents(
+  components: string[],
+  base: PresetBase | undefined
+) {
+  const deprecatedComponents = DEPRECATED_COMPONENTS.filter(
+    (component) =>
+      components.includes(component.name) &&
+      isDeprecatedComponent(component.name, base)
+  )
+
+  if (!deprecatedComponents.length) {
+    return
+  }
+
+  logger.break()
+  deprecatedComponents.forEach((component) => {
+    logger.warn(highlighter.warn(component.message))
+  })
+  logger.break()
+  process.exit(1)
+}
+
+function isDeprecatedComponent(name: string, base: PresetBase | undefined) {
+  const component = DEPRECATED_COMPONENTS.find(
+    (component) => component.name === name
+  )
+
+  return (
+    !!component &&
+    (!component.availableIn || !base || !component.availableIn.includes(base))
+  )
+}
+
+function isComponentSelectable(name: string, base: PresetBase | undefined) {
+  if (isDeprecatedComponent(name, base)) {
+    return false
+  }
+
+  const component = COMPONENTS_HIDDEN_FROM_SELECTION.find(
+    (component) => component.name === name
+  )
+
+  return !component || !base || !component.hiddenIn.includes(base)
 }

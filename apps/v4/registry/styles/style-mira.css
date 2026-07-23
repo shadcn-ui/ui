@@ -1243,7 +1243,7 @@
     @apply border-ring ring-ring/30 relative size-3 rounded-md border bg-white transition-[color,box-shadow] after:absolute after:-inset-2 hover:ring-2 focus-visible:ring-2 focus-visible:outline-hidden active:ring-2;
   }
 
-  /* MARK: Sonner */
+  /* MARK: Toast */
   .cn-toast {
     @apply rounded-md;
   }

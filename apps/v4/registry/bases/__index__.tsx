@@ -1121,6 +1121,29 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    toast: {
+      name: "toast",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/base/ui/toast.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/toast",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/toast-example.tsx",
+          api: "https://base-ui.com/react/components/toast.md",
+        },
+      },
+    },
     toggle: {
       name: "toggle",
       title: "undefined",
@@ -2367,6 +2390,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/base/examples/textarea-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "toast-example": {
+      name: "toast-example",
+      title: "Toast",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "toast", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/toast-example.tsx",
           type: "registry:example",
           target: "",
         },

@@ -5,7 +5,7 @@
 - Items always inside their Group component
 - Callouts use Alert
 - Empty states use Empty component
-- Toast notifications use sonner
+- Toast notifications follow the project base
 - Choosing between overlay components
 - Dialog, Sheet, and Drawer always need a Title
 - Card structure
@@ -88,7 +88,19 @@ Chat components nest in a fixed order (`MessageScrollerProvider` → `MessageScr
 
 ---
 
-## Toast notifications use sonner
+## Toast notifications follow the project base
+
+For Base UI projects, use the `toast` component:
+
+```tsx
+import { toast } from "@/components/ui/toast"
+
+toast.add({
+  title: "Changes saved.",
+})
+```
+
+For Radix and React Aria projects, use Sonner:
 
 ```tsx
 import { toast } from "sonner"

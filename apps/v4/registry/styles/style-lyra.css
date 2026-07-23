@@ -1216,7 +1216,7 @@
     @apply border-ring ring-ring/50 relative size-3 rounded-none border bg-white transition-[color,box-shadow] after:absolute after:-inset-2 hover:ring-1 focus-visible:ring-1 focus-visible:outline-hidden active:ring-1;
   }
 
-  /* MARK: Sonner */
+  /* MARK: Toast */
   .cn-toast {
     @apply rounded-none;
   }
