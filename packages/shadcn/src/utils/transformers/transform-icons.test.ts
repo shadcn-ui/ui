@@ -684,4 +684,64 @@ export function Component() {
       }"
     `)
   })
+
+  test("transforms React.ComponentProps<'svg'> to RemixiconComponentType for remixicon", async () => {
+    expect(
+      await transform(
+        {
+          filename: "test.tsx",
+          raw: `import * as React from "react"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
+
+function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
+  return <IconPlaceholder lucide="Loader2Icon" remixicon="RiLoaderLine" className={className} {...props} />
+}
+
+export { Spinner }`,
+          config: {
+            ...testConfig,
+            iconLibrary: "remixicon",
+          },
+        },
+        [transformIcons]
+      )
+    ).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { RiLoaderLine, type RemixiconComponentType } from "@remixicon/react"
+
+      function Spinner({ className, ...props }: React.ComponentProps<RemixiconComponentType>) {
+        return <RiLoaderLine className={className} {...props} />
+      }
+
+      export { Spinner }"
+    `)
+  })
+
+  test("does not import RemixiconComponentType when no React.ComponentProps<'svg'> is present", async () => {
+    expect(
+      await transform(
+        {
+          filename: "test.tsx",
+          raw: `import * as React from "react"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
+
+export function Component() {
+  return <IconPlaceholder lucide="CheckIcon" remixicon="RiCheckLine" className="size-4" />
+}`,
+          config: {
+            ...testConfig,
+            iconLibrary: "remixicon",
+          },
+        },
+        [transformIcons]
+      )
+    ).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { RiCheckLine } from "@remixicon/react"
+
+      export function Component() {
+        return <RiCheckLine className="size-4" />
+      }"
+    `)
+  })
 })
