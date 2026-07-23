@@ -24,6 +24,7 @@ export function DataTableToolbar<TData>({
       <div className="flex flex-1 items-center gap-2">
         <Input
           placeholder="Filter tasks..."
+          aria-label="Filter tasks"
           value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("title")?.setFilterValue(event.target.value)
