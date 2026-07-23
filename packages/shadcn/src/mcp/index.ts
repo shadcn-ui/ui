@@ -291,10 +291,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             {
               type: "text",
               text:
-                formatSearchResultsWithPagination(results, {
+                (await formatSearchResultsWithPagination(results, {
                   query: args.query,
                   registries,
-                }) + skippedNote,
+                })) + skippedNote,
             },
           ],
         }
@@ -367,9 +367,9 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             {
               type: "text",
               text:
-                formatSearchResultsWithPagination(results, {
+                (await formatSearchResultsWithPagination(results, {
                   registries,
-                }) + skippedNote,
+                })) + skippedNote,
             },
           ],
         }
