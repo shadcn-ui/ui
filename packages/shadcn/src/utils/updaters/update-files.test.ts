@@ -16,6 +16,10 @@ import {
   updateFiles,
 } from "./update-files"
 
+vi.mock("@/src/registry/api", () => ({
+  getRegistryBaseColor: vi.fn().mockResolvedValue(undefined),
+}))
+
 vi.mock("fs/promises", async () => {
   const actual = (await vi.importActual(
     "fs/promises"

@@ -1,5 +1,11 @@
 # shadcn
 
+## 4.14.1
+
+### Patch Changes
+
+- [#11266](https://github.com/shadcn-ui/ui/pull/11266) [`6cd3f4c65c361ab6554e06a77e6a0af9cf8b6e37`](https://github.com/shadcn-ui/ui/commit/6cd3f4c65c361ab6554e06a77e6a0af9cf8b6e37) Thanks [@shadcn](https://github.com/shadcn)! - Add Base UI Toast support.
+
 ## 4.14.0
 
 ### Minor Changes

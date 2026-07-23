@@ -1242,7 +1242,7 @@
     @apply border-primary ring-ring/50 size-4 rounded-4xl border bg-white shadow-sm transition-colors hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden;
   }
 
-  /* MARK: Sonner */
+  /* MARK: Toast */
   .cn-toast {
     @apply rounded-2xl;
   }
