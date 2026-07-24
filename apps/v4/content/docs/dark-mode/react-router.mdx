@@ -1,6 +1,6 @@
 ---
-title: Remix
-description: Adding dark mode to your Remix app.
+title: React Router
+description: Adding dark mode to your React Router app.
 ---
 
 <Steps>
@@ -27,6 +27,7 @@ npm install remix-themes
 ## Create a session storage and theme session resolver
 
 ```tsx title="app/sessions.server.tsx" showLineNumbers
+import { createCookieSessionStorage } from "react-router"
 import { createThemeSessionResolver } from "remix-themes"
 
 // You can default to 'development' if process.env.NODE_ENV is not set
