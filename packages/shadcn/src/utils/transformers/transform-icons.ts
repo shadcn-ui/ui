@@ -2,6 +2,8 @@ import { iconLibraries, type IconLibraryName } from "@/src/icons/libraries"
 import { Transformer } from "@/src/utils/transformers"
 import { SourceFile, SyntaxKind } from "ts-morph"
 
+const useClientDirectiveRegex = /^["']use client["'];?$/
+
 export const transformIcons: Transformer = async ({ sourceFile, config }) => {
   const iconLibrary = config.iconLibrary
 
@@ -163,7 +165,13 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
   }
 
   if (transformedIcons.length > 0) {
-    const importStatements = libraryConfig.import.split("\n")
+    const importTemplate =
+      config.rsc &&
+      !_hasUseClientDirective(sourceFile) &&
+      "rscImport" in libraryConfig
+        ? libraryConfig.rscImport
+        : libraryConfig.import
+    const importStatements = importTemplate.split("\n")
     const addedImports = []
 
     for (const importStmt of importStatements) {
@@ -207,4 +215,9 @@ function _useSemicolon(sourceFile: SourceFile) {
   return (
     sourceFile.getImportDeclarations()?.[0]?.getText().endsWith(";") ?? false
   )
+}
+
+function _hasUseClientDirective(sourceFile: SourceFile) {
+  const first = sourceFile.getFirstChildByKind(SyntaxKind.ExpressionStatement)
+  return first ? useClientDirectiveRegex.test(first.getText()) : false
 }
