@@ -1708,7 +1708,7 @@
     "url": "https://ui.vllnt.com/r/{name}.json",
     "description": "VLLNT UI — agent-first React components for AI-native products, from UI primitives to finance and ops domains. Accessible, Radix + Tailwind, you own the code.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='128' height='128' rx='28' fill='var(--foreground)'/><text x='64' y='64' text-anchor='middle' dominant-baseline='central' font-family='ui-sans-serif, system-ui, sans-serif' font-size='26' font-weight='700' letter-spacing='-1' fill='var(--background)'>VLLNT</text></svg>"
-  }, 
+  },
   {
     "name": "@grainly-icons",
     "homepage": "https://grainlyicons.abhii.space",
@@ -1717,10 +1717,17 @@
     "logo": "<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd ' clip-rule='evenodd' d='M24 4.03687C24 6.03821 22.5436 7.69935 20.6328 8.01843C22.5436 8.33751 24 9.99871 24 12C24 14.0013 22.5436 15.6625 20.6328 15.9816C22.5436 16.3006 24 17.9618 24 19.9631C24 22.1926 22.1926 24 19.9631 24C17.9618 24 16.3006 22.5436 15.9816 20.6328C15.6625 22.5436 14.0013 24 12 24C9.99871 24 8.33751 22.5436 8.01843 20.6328C7.69935 22.5436 6.03821 24 4.03687 24C1.80737 24 0 22.1926 0 19.9631C0 17.9618 1.45638 16.3006 3.36713 15.9816C1.45638 15.6625 0 14.0013 0 12C0 9.99871 1.45638 8.33751 3.36713 8.01843C1.45638 7.69935 0 6.03821 0 4.03687C0 1.80737 1.80737 0 4.03687 0C6.03821 0 7.69935 1.45638 8.01843 3.36713C8.33751 1.45638 9.99871 0 12 0C14.0013 0 15.6625 1.45638 15.9816 3.36713C16.3006 1.45638 17.9618 0 19.9631 0C22.1926 0 24 1.80737 24 4.03687ZM8.01843 4.7066C7.73574 6.39953 6.39953 7.73574 4.7066 8.01843C6.39953 8.30112 7.73574 9.63738 8.01843 11.3303C8.30112 9.63738 9.63738 8.30112 11.3303 8.01843C9.63738 7.73574 8.30112 6.39953 8.01843 4.7066ZM12.6697 8.01843C14.3626 7.73574 15.6989 6.39953 15.9816 4.7066C16.2643 6.39953 17.6005 7.73574 19.2935 8.01843C17.6005 8.30112 16.2643 9.63738 15.9816 11.3303C15.6989 9.63738 14.3626 8.30112 12.6697 8.01843ZM15.9816 19.2935C16.2643 17.6005 17.6005 16.2643 19.2935 15.9816C17.6005 15.6989 16.2643 14.3626 15.9816 12.6697C15.6989 14.3626 14.3626 15.6989 12.6697 15.9816C14.3626 16.2643 15.6989 17.6005 15.9816 19.2935ZM8.01843 12.6697C8.30112 14.3626 9.63738 15.6989 11.3303 15.9816C9.63738 16.2643 8.30112 17.6005 8.01843 19.2935C7.73574 17.6005 6.39953 16.2643 4.7066 15.9816C6.39953 15.6989 7.73574 14.3626 8.01843 12.6697Z' fill='#5FB0E8'/></svg>"
   },
   {
-  "name": "@shadcnloaders",
-  "homepage": "https://shadcn-loaders.vercel.app",
-  "url": "https://shadcn-loaders.vercel.app/r/{name}.json",
-  "description": "A public registry of shadcn-inspired animated loaders and loading states.",
-  "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='#111827'/><circle cx='12' cy='12' r='5' fill='#f59e0b'/></svg>"
+    "name": "@shadcnloaders",
+    "homepage": "https://shadcn-loaders.vercel.app",
+    "url": "https://shadcn-loaders.vercel.app/r/{name}.json",
+    "description": "A public registry of shadcn-inspired animated loaders and loading states.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='#111827'/><circle cx='12' cy='12' r='5' fill='#f59e0b'/></svg>"
+  },
+  {
+    "name": "@shadcn-dashboard",
+    "homepage": "https://shadcndashboard.dev",
+    "url": "https://shadcndashboard.dev/r/{name}.json",
+    "description": "Shadcn Dashboard is a collection of modern, production-ready dashboard layouts, components, and UI patterns built on top of shadcn/ui and Tailwind CSS. It’s designed to help developers build clean, scalable, and data-driven dashboards faster—without compromising on performance, accessibility, or customization.",
+    "logo": "<svg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='20' fill='#053B25'/><path d='M32.1327 19.501C31.5178 19.6123 30.8844 19.6705 30.2375 19.6705C24.3886 19.6705 19.6471 14.9189 19.6471 9.05765C19.6471 8.89469 19.6507 8.73258 19.658 8.57141C13.8411 9.10533 9.28516 14.0074 9.28516 19.9759C9.28516 26.301 14.4019 31.4286 20.7137 31.4286C27.0256 31.4286 32.1423 26.301 32.1423 19.9759C32.1423 19.8168 32.1391 19.6585 32.1327 19.501Z' fill='#C2FD75'/></svg>"
   }
 ]
