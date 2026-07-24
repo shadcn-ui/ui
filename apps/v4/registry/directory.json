@@ -98,6 +98,13 @@
     "logo": "<svg width='251' height='251' viewBox='0 0 251 251' xmlns='http://www.w3.org/2000/svg'><path d='M251 133.637C251 104.974 227.775 81.7511 199.109 81.7511H192.561L174.235 33.4682C166.603 13.3308 147.312 0.0235526 125.783 0H125.712C104.206 0 84.9386 13.2601 77.2362 33.3505L58.7221 81.7511H51.8912C23.225 81.7511 0 104.974 0 133.637C0 151.396 8.92727 167.059 22.5184 176.409L20.9402 180.554C10.6939 207.31 24.0966 237.316 50.8784 247.561C77.6366 257.783 107.645 244.405 117.892 217.626L125.547 197.63L133.085 217.508C140.952 238.235 160.667 251 181.608 251C187.732 251 193.95 249.917 200.004 247.608C226.786 237.434 240.283 207.475 230.107 180.672L228.482 176.409C242.073 167.059 251 151.396 251 133.637Z' fill='currentColor'/></svg>"
   },
   {
+    "name": "@amicro",
+    "homepage": "https://amicro.vercel.app",
+    "url": "https://amicro.vercel.app/r/{name}.json",
+    "description": "Open-source React micro-interactions and UI component registry powered by Motion.",
+    "logo": "<svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M7 6L14 12L7 18' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.4'/><path d='M13 6L20 12L13 18' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+  },
+  {
     "name": "@amplo",
     "homepage": "https://amplo.ale.design",
     "url": "https://amplo.ale.design/r/{name}.json",
@@ -1708,7 +1715,7 @@
     "url": "https://ui.vllnt.com/r/{name}.json",
     "description": "VLLNT UI — agent-first React components for AI-native products, from UI primitives to finance and ops domains. Accessible, Radix + Tailwind, you own the code.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='128' height='128' rx='28' fill='var(--foreground)'/><text x='64' y='64' text-anchor='middle' dominant-baseline='central' font-family='ui-sans-serif, system-ui, sans-serif' font-size='26' font-weight='700' letter-spacing='-1' fill='var(--background)'>VLLNT</text></svg>"
-  }, 
+  },
   {
     "name": "@grainly-icons",
     "homepage": "https://grainlyicons.abhii.space",
@@ -1717,10 +1724,10 @@
     "logo": "<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd ' clip-rule='evenodd' d='M24 4.03687C24 6.03821 22.5436 7.69935 20.6328 8.01843C22.5436 8.33751 24 9.99871 24 12C24 14.0013 22.5436 15.6625 20.6328 15.9816C22.5436 16.3006 24 17.9618 24 19.9631C24 22.1926 22.1926 24 19.9631 24C17.9618 24 16.3006 22.5436 15.9816 20.6328C15.6625 22.5436 14.0013 24 12 24C9.99871 24 8.33751 22.5436 8.01843 20.6328C7.69935 22.5436 6.03821 24 4.03687 24C1.80737 24 0 22.1926 0 19.9631C0 17.9618 1.45638 16.3006 3.36713 15.9816C1.45638 15.6625 0 14.0013 0 12C0 9.99871 1.45638 8.33751 3.36713 8.01843C1.45638 7.69935 0 6.03821 0 4.03687C0 1.80737 1.80737 0 4.03687 0C6.03821 0 7.69935 1.45638 8.01843 3.36713C8.33751 1.45638 9.99871 0 12 0C14.0013 0 15.6625 1.45638 15.9816 3.36713C16.3006 1.45638 17.9618 0 19.9631 0C22.1926 0 24 1.80737 24 4.03687ZM8.01843 4.7066C7.73574 6.39953 6.39953 7.73574 4.7066 8.01843C6.39953 8.30112 7.73574 9.63738 8.01843 11.3303C8.30112 9.63738 9.63738 8.30112 11.3303 8.01843C9.63738 7.73574 8.30112 6.39953 8.01843 4.7066ZM12.6697 8.01843C14.3626 7.73574 15.6989 6.39953 15.9816 4.7066C16.2643 6.39953 17.6005 7.73574 19.2935 8.01843C17.6005 8.30112 16.2643 9.63738 15.9816 11.3303C15.6989 9.63738 14.3626 8.30112 12.6697 8.01843ZM15.9816 19.2935C16.2643 17.6005 17.6005 16.2643 19.2935 15.9816C17.6005 15.6989 16.2643 14.3626 15.9816 12.6697C15.6989 14.3626 14.3626 15.6989 12.6697 15.9816C14.3626 16.2643 15.6989 17.6005 15.9816 19.2935ZM8.01843 12.6697C8.30112 14.3626 9.63738 15.6989 11.3303 15.9816C9.63738 16.2643 8.30112 17.6005 8.01843 19.2935C7.73574 17.6005 6.39953 16.2643 4.7066 15.9816C6.39953 15.6989 7.73574 14.3626 8.01843 12.6697Z' fill='#5FB0E8'/></svg>"
   },
   {
-  "name": "@shadcnloaders",
-  "homepage": "https://shadcn-loaders.vercel.app",
-  "url": "https://shadcn-loaders.vercel.app/r/{name}.json",
-  "description": "A public registry of shadcn-inspired animated loaders and loading states.",
-  "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='#111827'/><circle cx='12' cy='12' r='5' fill='#f59e0b'/></svg>"
+    "name": "@shadcnloaders",
+    "homepage": "https://shadcn-loaders.vercel.app",
+    "url": "https://shadcn-loaders.vercel.app/r/{name}.json",
+    "description": "A public registry of shadcn-inspired animated loaders and loading states.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='#111827'/><circle cx='12' cy='12' r='5' fill='#f59e0b'/></svg>"
   }
 ]
