@@ -564,7 +564,7 @@
     "homepage": "https://framecn.vercel.app",
     "url": "https://framecn.vercel.app/r/{name}.json",
     "description": "Beautiful videos, made simple. Ready to use, customizable video components for React.",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4'/><g stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'><path d='M6.72 4.36v2.36M27.96 25.6H25.6m-4.13 0H13.8c-3.337 0-5.007 0-6.043-1.037S6.72 21.857 6.72 18.52v-7.67M25.6 27.96v-11.8c0-4.45 0-6.675-1.383-8.057S20.61 6.72 16.16 6.72H4.36' stroke-width='1.77'/><path d='m21.824 16.16-5.664 5.664M20.691 9.93 9.93 20.69' stroke-width='2.266'/></g></svg>"
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4'/><g stroke='var(--foreground)' fill='none' stroke-linecap='round' stroke-linejoin='round'><path d='M6.72 4.36v2.36M27.96 25.6H25.6m-4.13 0H13.8c-3.337 0-5.007 0-6.043-1.037S6.72 21.857 6.72 18.52v-7.67M25.6 27.96v-11.8c0-4.45 0-6.675-1.383-8.057S20.61 6.72 16.16 6.72H4.36' stroke-width='1.77'/><path d='m21.824 16.16-5.664 5.664M20.691 9.93 9.93 20.69' stroke-width='2.266'/></g></svg>"
   },
   {
     "name": "@gaia",
@@ -1447,7 +1447,7 @@
     "homepage": "https://termcn.vercel.app",
     "url": "https://termcn.vercel.app/r/{name}.json",
     "description": "Beautiful terminal UIs, made simple. Ready to use, customizable terminal UI components for React.",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256'><script/><rect x='16' y='16' width='224' height='224' rx='28' stroke='#000' stroke-width='7'/><path d='m42 56 32 24-32 24' stroke='#fff' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='m208.8 156.8-48 48M199.2 104 108 195.2' stroke='#fff' stroke-width='19.2' stroke-linecap='round' fill='none'/></svg>"
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><rect x='16' y='16' width='224' height='224' rx='28' stroke='var(--background)' stroke-width='7'/><path d='m42 56 32 24-32 24' stroke='var(--foreground)' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='m208.8 156.8-48 48M199.2 104 108 195.2' stroke='var(--foreground)' stroke-width='19.2' stroke-linecap='round' fill='none'/></svg>"
   },
   {
     "name": "@tuiparts",
