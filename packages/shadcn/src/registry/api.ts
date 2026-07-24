@@ -241,36 +241,6 @@ export async function getRegistryBaseColor(baseColor: string) {
 /**
  * @deprecated This function is deprecated and will be removed in a future version.
  */
-export async function resolveTree(
-  index: z.infer<typeof registryIndexSchema>,
-  names: string[]
-) {
-  const tree: z.infer<typeof registryIndexSchema> = []
-
-  for (const name of names) {
-    const entry = index.find((entry) => entry.name === name)
-
-    if (!entry) {
-      continue
-    }
-
-    tree.push(entry)
-
-    if (entry.registryDependencies) {
-      const dependencies = await resolveTree(index, entry.registryDependencies)
-      tree.push(...dependencies)
-    }
-  }
-
-  return tree.filter(
-    (component, index, self) =>
-      self.findIndex((c) => c.name === component.name) === index
-  )
-}
-
-/**
- * @deprecated This function is deprecated and will be removed in a future version.
- */
 export async function fetchTree(
   style: string,
   tree: z.infer<typeof registryIndexSchema>
