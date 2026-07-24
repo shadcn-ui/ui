@@ -22,6 +22,7 @@ function Calendar({
   captionLayout = "label",
   buttonVariant = "ghost",
   formatters,
+  locale,
   components,
   ...props
 }: React.ComponentProps<typeof DayPicker> & {
@@ -41,7 +42,7 @@ function Calendar({
       captionLayout={captionLayout}
       formatters={{
         formatMonthDropdown: (date) =>
-          date.toLocaleString("default", { month: "short" }),
+          date.toLocaleString(locale?.code ?? "default", { month: "short" }),
         ...formatters,
       }}
       classNames={{
