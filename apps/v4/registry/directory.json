@@ -869,6 +869,13 @@
     "logo": "<svg role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70' aria-label='MP Logo' width='70' height='70' fill='none'><path stroke='currentColor' stroke-linecap='round' stroke-width='3' d='M51.883 26.495c-7.277-4.124-18.08-7.004-26.519-7.425-2.357-.118-4.407-.244-6.364 1.06M59.642 51c-10.47-7.25-26.594-13.426-39.514-15.664-3.61-.625-6.744-1.202-9.991.263'/></svg>"
   },
   {
+    "name": "@motiq",
+    "homepage": "https://motiq.dev",
+    "url": "https://motiq.dev/r/{name}.json",
+    "description": "Production-ready animated React and Next.js components \u2014 accessible, reduced-motion-safe and RSC-safe \u2014 installable as editable source with the shadcn CLI. Free and open source.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><defs><linearGradient id='motiq-logo' x1='0' y1='0' x2='24' y2='24' gradientUnits='userSpaceOnUse'><stop stop-color='#7c5cff'/><stop offset='1' stop-color='#4f7cff'/></linearGradient></defs><rect width='24' height='24' rx='6' fill='url(#motiq-logo)'/><path d='M5.6 17.2V6.8h2.5L12 12.3l3.9-5.5h2.5v10.4h-2.4v-6.6L12 16.1 8 10.6v6.6H5.6Z' fill='#fff'/></svg>"
+  },
+  {
     "name": "@mozaika",
     "homepage": "https://mozaika.design",
     "url": "https://mozaika.design/r/{name}.json",
