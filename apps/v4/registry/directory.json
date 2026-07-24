@@ -392,6 +392,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' width='24' height='24'><circle cx='62' cy='38' r='28' fill='#e10000'/><rect x='12' y='32' width='56' height='56' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@dkproductcard",
+    "homepage": "https://diklein.com/dkproductcard",
+    "url": "https://diklein.com/r/{name}.json",
+    "description": "A product card for MDX blogs with an automatic Amazon-link converter.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' width='24' height='24'><circle cx='62' cy='38' r='28' fill='#e10000'/><rect x='12' y='32' width='56' height='56' fill='var(--foreground)'/></svg>"
+  },
+  {
     "name": "@dominik-ui",
     "homepage": "https://dominikkoch.dev/ui",
     "url": "https://dominikkoch.dev/r/{name}.json",
