@@ -231,11 +231,25 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'><rect x='5' y='5' width='90' height='90' fill='var(--background)' stroke='var(--foreground)' stroke-width='6'/><rect x='20' y='20' width='25' height='25' fill='var(--foreground)'/><rect x='55' y='20' width='25' height='25' fill='var(--foreground)'/><rect x='20' y='55' width='25' height='25' fill='var(--foreground)'/><rect x='55' y='55' width='25' height='25' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@brainless",
+    "homepage": "https://brainless.swerdlow.dev",
+    "url": "https://brainless.swerdlow.dev/r/{name}.json",
+    "description": "Claude Code, Codex, and Grok interfaces as shadcn components — accessible React terminal-agent UI for docs, demos, and product surfaces.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='var(--foreground)'><rect x='5' y='5' width='14' height='14'/></svg>"
+  },
+  {
     "name": "@bundui",
     "homepage": "https://bundui.io",
     "url": "https://bundui.io/r/{name}.json",
     "description": "A collection of 150+ handcrafted UI components built with Tailwind CSS and shadcn/ui, covering marketing, e-commerce, dashboards, real estate, and more.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='277' height='292' viewBox='0 0 277 292' fill='none'><path d='M97 0C114.673 0 129 14.3269 129 32V39C129 52.8071 117.807 64 104 64C90.1929 64 79 75.1929 79 89V160C79 192.585 105.415 219 138 219H167C183.569 219 197 205.569 197 189C197 172.431 183.569 159 167 159H146C128.327 159 114 144.673 114 127C114 109.327 128.327 95 146 95H195.5C240.511 95 277 131.489 277 176.5V193.5C277 247.9 232.9 292 178.5 292H122C54.6213 292 0 237.379 0 170V64.5C0 28.8776 28.8776 0 64.5 0H97Z' fill='var(--foreground)'/></svg>"
+  },
+  {
+    "name": "@canvas-ui",
+    "homepage": "https://canvasui.dev/",
+    "url": "https://canvasui.dev/r/{name}.json",
+    "description": "Creative html-in-canvas components. React, Vue, Svelte, TS.",
+    "logo": "<svg width='289' height='268' viewBox='0 0 289 268' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(#canvasui_clip0)'><path d='M0 130.943C25.9972 130.883 47.0916 130.391 53.5655 129.095C74.3847 124.927 90.6708 108.644 94.8393 87.8247C96.733 78.3667 96.8988 39.5491 96.5238 0.00014012H0V130.943Z' fill='currentColor'/><path d='M145.914 129.35C167.891 129.35 184.309 108.993 188.548 87.8247C190.471 78.2197 190.643 39.4688 190.264 0.00014012H101.563C101.184 39.4667 101.357 78.2144 103.28 87.8208C107.517 108.99 123.574 129.35 145.914 129.35Z' fill='currentColor'/><path d='M288.207 0.00014012H195.304C194.929 39.5468 195.095 78.3613 196.988 87.8208C201.156 108.641 217.442 124.927 238.262 129.095C244.468 130.337 263.935 130.837 288.207 130.929V0.00014012Z' fill='currentColor'/><path d='M94.8393 178.811C90.6719 157.99 74.3859 141.703 53.5655 137.535C47.091 136.239 25.9967 135.75 0 135.69V265.904H94.8393V178.811Z' fill='currentColor'/><path d='M288.207 135.704C263.935 135.796 244.468 136.293 238.262 137.535C217.441 141.703 201.155 157.99 196.988 178.811V265.904H288.207V135.704Z' fill='currentColor'/><path d='M188.548 178.811C184.311 157.641 167.967 141.713 145.603 141.712C123.239 141.712 107.517 157.641 103.28 178.811V265.904H188.548V178.811Z' fill='currentColor'/></g><g clip-path='url(#canvasui_clip1)'><path d='M0 136.207C25.9972 136.267 47.0916 136.76 53.5655 138.055C74.3847 142.223 90.6708 158.506 94.8393 179.325C96.733 188.783 96.8988 227.601 96.5238 267.15H0V136.207Z' fill='currentColor'/><path d='M145.914 137.8C167.891 137.801 184.309 158.157 188.548 179.325C190.471 188.93 190.643 227.681 190.264 267.15H101.563C101.184 227.683 101.357 188.936 103.28 179.329C107.517 158.16 123.574 137.8 145.914 137.8Z' fill='currentColor'/><path d='M288.207 267.15H195.304C194.929 227.603 195.095 188.789 196.988 179.329C201.156 158.509 217.442 142.224 238.262 138.055C244.468 136.813 263.935 136.313 288.207 136.221V267.15Z' fill='currentColor'/><path d='M94.8393 88.3394C90.6719 109.16 74.3859 125.447 53.5655 129.615C47.091 130.911 25.9967 131.4 0 131.46V1.24634H94.8393V88.3394Z' fill='currentColor'/><path d='M288.207 131.446C263.935 131.354 244.468 130.857 238.262 129.615C217.441 125.447 201.155 109.16 196.988 88.3394V1.24634H288.207V131.446Z' fill='currentColor'/><path d='M188.548 88.3394C184.311 109.509 167.967 125.437 145.603 125.438C123.239 125.438 107.517 109.509 103.28 88.3394V1.24634H188.548V88.3394Z' fill='currentColor'/></g><defs><clipPath id='canvasui_clip0'><rect width='288.207' height='132.952'/></clipPath><clipPath id='canvasui_clip1'><rect width='288.207' height='132.952' transform='matrix(1 0 0 -1 0 267.15)'/></clipPath></defs></svg>"
   },
   {
     "name": "@cardcn",
@@ -832,6 +846,13 @@
     "url": "https://mksingh.dev/r/{name}.json",
     "description": "A personal registry of production-ready ShadCN components and utilities. Everything is built to drop into your existing ShadCN project with no extra setup.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' class='size-10' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><title>MKSingh</title><style>path{stroke:#000}@media(prefers-color-scheme:dark){path{stroke:#fff}}</style><path stroke-linecap='round' stroke-linejoin='round' d='m21 7.5-2.25-1.313M21 7.5v2.25m0-2.25-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3 2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75 2.25-1.313M12 21.75V19.5m0 2.25-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25'></path></svg>"
+  },
+  {
+    "name": "@moduix-react",
+    "homepage": "https://moduix.dev",
+    "url": "https://moduix.dev/r/react/{name}.json",
+    "description": "Ark-first React components, blocks, and themes with native CSS, available as a package or a shadcn-compatible copy-owned registry.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='48 46 148 118' fill='none'><path d='M65 146V94c0-16.02 12.98-29 29-29 10.8 0 20.72 6.01 25.72 15.59L122 85l2.28-4.41C129.28 71.01 139.2 65 150 65c16.02 0 29 12.98 29 29v52' stroke='var(--foreground)' stroke-width='36' stroke-linecap='round' stroke-linejoin='round'/><path d='M122 80v20' stroke='var(--foreground)' stroke-width='36' stroke-linecap='round'/><circle cx='122' cy='149' r='14' fill='var(--foreground)'/></svg>"
   },
   {
     "name": "@moleculeui",
