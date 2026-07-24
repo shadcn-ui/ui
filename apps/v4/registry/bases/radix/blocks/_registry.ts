@@ -38,6 +38,138 @@ export const blocks: Registry["items"] = [
         path: "blocks/preview/index.tsx",
         type: "registry:block",
       },
+      {
+        path: "blocks/preview/cards/activate-agent-dialog.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/analytics-card.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/anomaly-alert.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/assign-issue.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/bar-chart-card.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/bar-visualizer.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/book-appointment.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/codespaces-card.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/contributions-activity.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/contributors.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/environment-variables.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/feedback-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/file-upload.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/github-profile.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/icon-preview-grid.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/invite-team.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/invoice.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/live-waveform.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/no-team-members.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/not-found.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/observability-card.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/pie-chart-card.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/report-bug.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/shipping-address.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/shortcuts.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/skeleton-loading.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/sleep-report.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/style-overview.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/typography-specimen.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/ui-elements.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/usage-card.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/visitors.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/preview/cards/weekly-fitness-summary.tsx",
+        type: "registry:component",
+      },
     ],
   },
   {
