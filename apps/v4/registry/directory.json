@@ -1359,6 +1359,13 @@
     "logo": "<svg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='0' y='8.1' width='3' height='9.9' rx='1.5' fill='currentColor'/><rect x='3.75' y='1.8' width='3' height='16.2' rx='1.5' fill='currentColor'/><rect x='7.5' y='11.7' width='3' height='6.3' rx='1.5' fill='currentColor'/><rect x='11.25' y='4.5' width='3' height='13.5' rx='1.5' fill='currentColor'/><rect x='15' y='9.9' width='3' height='8.1' rx='1.5' fill='currentColor'/></svg>"
   },
   {
+    "name": "@spark-ui",
+    "homepage": "https://spark-ui-olive.vercel.app",
+    "url": "https://spark-ui-olive.vercel.app/r/{name}.json",
+    "description": "Open-source React components and animated UI building blocks, installable as source with the shadcn CLI.",
+    "logo": "<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M12 1.5 Q14.25 9.75 22.5 12 Q14.25 14.25 12 22.5 Q9.75 14.25 1.5 12 Q9.75 9.75 12 1.5 Z' fill='var(--foreground)'/></svg>"
+  },
+  {
     "name": "@spectrumui",
     "homepage": "https://ui.spectrumhq.in",
     "url": "https://ui.spectrumhq.in/r/{name}.json",
