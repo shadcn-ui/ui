@@ -115,8 +115,8 @@
     "tsconfig-paths": "^4.2.0",
     "undici": "^7.27.2",
     "validate-npm-package-name": "^7.0.1",
-    "zod": "^3.24.1",
-    "zod-to-json-schema": "^3.24.6"
+    "zod": "^3.25.76",
+    "zod-to-json-schema": "^3.25.1"
   },
   "devDependencies": {
     "@antfu/ni": "^25.0.0",
