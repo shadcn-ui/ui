@@ -6,7 +6,11 @@ import {
   getMaxScrollTop,
   getTailSpacerHeight,
 } from "./geometry"
-import { AUTOSCROLLING_CLEAR_DELAY, SCROLL_POSITION_EPSILON } from "./types"
+import {
+  ANCHORED_TAIL_SLACK,
+  AUTOSCROLLING_CLEAR_DELAY,
+  SCROLL_POSITION_EPSILON,
+} from "./types"
 import type { MessageScrollerScrollOptions } from "./types"
 import type { MessageScrollerRefs } from "./use-message-scroller-refs"
 
@@ -176,8 +180,10 @@ function useMessageScrollerCommands({
         scrollMargin = scrollMarginRef.current,
       }: MessageScrollerScrollOptions = {},
       {
+        holdTailSpacer = false,
         keepPreviousPeek = false,
       }: {
+        holdTailSpacer?: boolean
         keepPreviousPeek?: boolean
       } = {}
     ) => {
@@ -205,7 +211,28 @@ function useMessageScrollerCommands({
         viewport,
       })
 
-      setTailSpacerHeight(nextSpacerHeight)
+      // An anchored placement must never sit at the exact bottom of the scroll
+      // range: a transient content dip (streamed markdown reflowing, a pending
+      // marker collapsing) would shrink scrollHeight below the pinned
+      // scrollTop, and the browser clamps the scroll and paints a one-frame
+      // jump before the coalesced resize handler corrects it. Padding the
+      // spacer with slack keeps the pinned position clear of the clamp from
+      // the first frame, and holding the maximum while the turn streams keeps
+      // scrollHeight monotonic after that. The slack is blank space below the
+      // fold; leaving the anchor hold trims it (see relaxTailSpacer). A turn
+      // placed with no spacer (it already fills the viewport) stays unpadded:
+      // it has natural slack below the fold, and a padded spacer would read as
+      // "placed with spacer room" to the autoScroll handoff.
+      const paddedSpacerHeight =
+        keepPreviousPeek && nextSpacerHeight > 0
+          ? nextSpacerHeight + ANCHORED_TAIL_SLACK
+          : nextSpacerHeight
+
+      setTailSpacerHeight(
+        holdTailSpacer
+          ? Math.max(paddedSpacerHeight, spacerHeightRef.current)
+          : paddedSpacerHeight
+      )
       // Seed the prepend anchor with the jump target so a prepend that lands
       // before this scroll settles still preserves the jumped-to row; once it
       // settles, syncAfterScroll's capturePrependAnchor re-captures it from the
@@ -244,9 +271,30 @@ function useMessageScrollerCommands({
     return scrollToElement(
       element,
       { align: "start" },
-      { keepPreviousPeek: true }
+      { holdTailSpacer: true, keepPreviousPeek: true }
     )
   }, [scrollToElement])
+
+  // A held tail spacer outlives its stream as reachable blank space below the
+  // last turn. Shrink it back to the exact height for the current scroll
+  // position; the held height is always >= the exact one, so this never clamps.
+  const relaxTailSpacer = React.useCallback(() => {
+    const content = contentRef.current
+    const viewport = viewportRef.current
+
+    if (!content || !viewport) {
+      return
+    }
+
+    setTailSpacerHeight(
+      getTailSpacerHeight({
+        content,
+        scrollTop: viewport.scrollTop,
+        spacer: spacerRef.current,
+        viewport,
+      })
+    )
+  }, [setTailSpacerHeight])
 
   // The target row may not be mounted yet (e.g. an async-loaded transcript).
   // When it is missing the request is queued in pendingScrollToMessageRef and
@@ -316,6 +364,7 @@ function useMessageScrollerCommands({
   return {
     flushPendingScrollToMessage,
     reanchorToAnchoredMessage,
+    relaxTailSpacer,
     scrollToElement,
     scrollToEnd,
     scrollToMessage,

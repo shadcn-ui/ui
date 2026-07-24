@@ -555,6 +555,99 @@ describe("MessageScroller", () => {
     expect(rendered.state().end).toBe(false)
   })
 
+  it("pads and holds the anchored tail spacer so a transient dip cannot clamp the pinned turn", async () => {
+    const rendered = await renderTestScroller({
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    await rendered.rerender([
+      { id: "message-1", height: 80 },
+      { id: "message-2", height: 80 },
+      { id: "message-3", height: 80 },
+      { id: "message-4", height: 20, scrollAnchor: true },
+    ])
+
+    expect(rendered.viewport().scrollTop).toBe(176)
+    expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
+
+    // The exact fit (16) is padded with slack so the pinned position does not
+    // sit at the very bottom of the scroll range.
+    const spacer = rendered
+      .content()
+      .querySelector<HTMLElement>("[data-message-scroller-spacer]")
+
+    expect(spacer?.style.height).toBe("144px")
+
+    // The reply streams in below the anchor. The spacer holds instead of
+    // shrinking to the smaller exact fit, keeping scrollHeight monotonic.
+    await rendered.rerender([
+      { id: "message-1", height: 80 },
+      { id: "message-2", height: 80 },
+      { id: "message-3", height: 80 },
+      { id: "message-4", height: 20, scrollAnchor: true },
+      { id: "message-5", height: 8 },
+    ])
+    await triggerResize(rendered.content())
+
+    expect(spacer?.style.height).toBe("144px")
+    expect(rendered.viewport().scrollTop).toBe(176)
+    expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
+
+    // A transient dip (streamed markdown reflowing, a pending marker
+    // collapsing) shrinks the reply. scrollHeight stays above the pinned
+    // scrollTop, so the browser has nothing to clamp.
+    rendered.message("message-5").dataset.testHeight = "2"
+    await triggerResize(rendered.content())
+
+    expect(spacer?.style.height).toBe("144px")
+    expect(rendered.viewport().scrollTop).toBe(176)
+    expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
+  })
+
+  it("trims the held spacer slack on user scroll intent", async () => {
+    const rendered = await renderTestScroller({
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    await rendered.rerender([
+      { id: "message-1", height: 80 },
+      { id: "message-2", height: 80 },
+      { id: "message-3", height: 80 },
+      { id: "message-4", height: 20, scrollAnchor: true },
+      { id: "message-5", height: 8 },
+    ])
+    await triggerResize(rendered.content())
+
+    const spacer = rendered
+      .content()
+      .querySelector<HTMLElement>("[data-message-scroller-spacer]")
+
+    expect(spacer?.style.height).toBe("136px")
+
+    // A deliberate gesture releases the anchor hold and gives back the slack:
+    // the spacer shrinks to the exact fit for the current scroll position, so
+    // the reader cannot scroll into blank space the stream no longer needs.
+    await act(async () => {
+      rendered
+        .viewport()
+        .dispatchEvent(new WheelEvent("wheel", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    expect(spacer?.style.height).toBe("8px")
+    expect(rendered.viewport().scrollTop).toBe(176)
+  })
+
   it("applies the default end target after async messages mount", async () => {
     const rendered = await renderTestScroller({
       messages: [],
