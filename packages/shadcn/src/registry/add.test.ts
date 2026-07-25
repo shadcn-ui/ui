@@ -8,20 +8,20 @@ const {
   mockCreateConfig,
   mockEnsureRegistriesInConfig,
   mockGetConfig,
-  mockGetRegistryItems,
   mockLoadEnvFiles,
+  mockResolveRegistryTree,
 } = vi.hoisted(() => ({
   mockAddComponents: vi.fn(),
   mockClearRegistryContext: vi.fn(),
   mockCreateConfig: vi.fn(),
   mockEnsureRegistriesInConfig: vi.fn(),
   mockGetConfig: vi.fn(),
-  mockGetRegistryItems: vi.fn(),
   mockLoadEnvFiles: vi.fn(),
+  mockResolveRegistryTree: vi.fn(),
 }))
 
-vi.mock("@/src/registry/api", () => ({
-  getRegistryItems: mockGetRegistryItems,
+vi.mock("@/src/registry/resolver", () => ({
+  resolveRegistryTree: mockResolveRegistryTree,
 }))
 
 vi.mock("@/src/registry/context", () => ({
@@ -56,6 +56,7 @@ describe("addRegistryItems", () => {
       config: updatedConfig,
       newRegistries: [],
     })
+    mockResolveRegistryTree.mockResolvedValue({ files: [] })
   })
 
   it("loads project configuration and installs registry items", async () => {
@@ -87,19 +88,15 @@ describe("addRegistryItems", () => {
       config: universalConfig,
       newRegistries: [],
     })
-    mockGetRegistryItems.mockResolvedValue([
-      {
-        name: "agent",
-        type: "registry:file",
-        files: [
-          {
-            path: "agent.ts",
-            target: "agent/extensions/agent.ts",
-            type: "registry:file",
-          },
-        ],
-      },
-    ])
+    mockResolveRegistryTree.mockResolvedValue({
+      files: [
+        {
+          path: "agent.ts",
+          target: "agent/extensions/agent.ts",
+          type: "registry:file",
+        },
+      ],
+    })
 
     await addRegistryItems(["https://example.com/agent.json"], {
       cwd: "/project",
@@ -110,11 +107,68 @@ describe("addRegistryItems", () => {
       universalConfig,
       { silent: undefined, writeFile: false }
     )
+    expect(mockResolveRegistryTree).toHaveBeenCalledWith(
+      ["https://example.com/agent.json"],
+      universalConfig,
+      { requireUniversal: true, useCache: true }
+    )
     expect(mockAddComponents).toHaveBeenCalledWith(
       ["https://example.com/agent.json"],
       universalConfig,
       expect.any(Object)
     )
+  })
+
+  it("rejects non-universal dependencies without components.json", async () => {
+    const universalConfig = { resolvedPaths: { cwd: "/project" } }
+    mockGetConfig.mockResolvedValue(null)
+    mockCreateConfig.mockReturnValue(universalConfig)
+    mockEnsureRegistriesInConfig.mockResolvedValue({
+      config: universalConfig,
+      newRegistries: [],
+    })
+    mockResolveRegistryTree.mockRejectedValue(
+      new Error(
+        "A components.json file is required to add non-universal registry items or dependencies."
+      )
+    )
+
+    await expect(
+      addRegistryItems(["https://example.com/agent.json"], {
+        cwd: "/project",
+      })
+    ).rejects.toThrow("non-universal registry items or dependencies")
+
+    expect(mockAddComponents).not.toHaveBeenCalled()
+  })
+
+  it("rejects unresolved target aliases without components.json", async () => {
+    const universalConfig = {
+      resolvedPaths: { cwd: "/project", ui: "" },
+    }
+    mockGetConfig.mockResolvedValue(null)
+    mockCreateConfig.mockReturnValue(universalConfig)
+    mockEnsureRegistriesInConfig.mockResolvedValue({
+      config: universalConfig,
+      newRegistries: [],
+    })
+    mockResolveRegistryTree.mockResolvedValue({
+      files: [
+        {
+          path: "agent.ts",
+          target: "@ui/agent.ts",
+          type: "registry:file",
+        },
+      ],
+    })
+
+    await expect(
+      addRegistryItems(["https://example.com/agent.json"], {
+        cwd: "/project",
+      })
+    ).rejects.toThrow("resolve target aliases")
+
+    expect(mockAddComponents).not.toHaveBeenCalled()
   })
 
   it("rejects non-universal items without components.json", async () => {
@@ -125,9 +179,11 @@ describe("addRegistryItems", () => {
       config: universalConfig,
       newRegistries: [],
     })
-    mockGetRegistryItems.mockResolvedValue([
-      { name: "button", type: "registry:ui" },
-    ])
+    mockResolveRegistryTree.mockRejectedValue(
+      new Error(
+        "A components.json file is required to add non-universal registry items or dependencies."
+      )
+    )
 
     await expect(
       addRegistryItems(["@acme/button"], { cwd: "/project" })

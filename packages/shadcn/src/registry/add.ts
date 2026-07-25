@@ -1,14 +1,15 @@
 import path from "path"
-import { getRegistryItems } from "@/src/registry/api"
 import { clearRegistryContext } from "@/src/registry/context"
-import { isUniversalRegistryItem } from "@/src/registry/utils"
+import { resolveRegistryTree } from "@/src/registry/resolver"
 import {
   addComponents,
   type AddComponentsOptions,
 } from "@/src/utils/add-components"
 import { loadEnvFiles } from "@/src/utils/env-loader"
-import { createConfig, getConfig } from "@/src/utils/get-config"
+import { createConfig, getConfig, type Config } from "@/src/utils/get-config"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
+
+const TARGET_ALIAS_KEYS = ["components", "ui", "lib", "hooks"] as const
 
 export interface AddRegistryItemsOptions
   extends Pick<
@@ -57,10 +58,13 @@ export async function addRegistryItems(
     config = configWithRegistries
 
     if (!projectConfig) {
-      const registryItems = await getRegistryItems(items, { config })
-      if (!registryItems.every(isUniversalRegistryItem)) {
+      const registryTree = await resolveRegistryTree(items, config, {
+        useCache: true,
+        requireUniversal: true,
+      })
+      if (!hasResolvedTargetAliases(registryTree, config)) {
         throw new Error(
-          "A components.json file is required to add non-universal registry items."
+          "A components.json file is required to resolve target aliases."
         )
       }
     }
@@ -69,4 +73,29 @@ export async function addRegistryItems(
   } finally {
     clearRegistryContext()
   }
+}
+
+function hasResolvedTargetAliases(
+  registryTree: Awaited<ReturnType<typeof resolveRegistryTree>>,
+  config: Config
+) {
+  if (!registryTree) {
+    return false
+  }
+
+  return (registryTree.files ?? []).every((file) => {
+    const aliasKey = file.target?.match(/^@([^/]+)\//)?.[1]
+
+    return (
+      !aliasKey ||
+      !isTargetAliasKey(aliasKey) ||
+      Boolean(config.resolvedPaths[aliasKey])
+    )
+  })
+}
+
+function isTargetAliasKey(
+  key: string
+): key is (typeof TARGET_ALIAS_KEYS)[number] {
+  return TARGET_ALIAS_KEYS.includes(key as (typeof TARGET_ALIAS_KEYS)[number])
 }
