@@ -10,6 +10,7 @@ const {
   mockGetConfig,
   mockLoadEnvFiles,
   mockResolveRegistryTree,
+  mockWithRegistryContext,
 } = vi.hoisted(() => ({
   mockAddComponents: vi.fn(),
   mockClearRegistryContext: vi.fn(),
@@ -18,6 +19,7 @@ const {
   mockGetConfig: vi.fn(),
   mockLoadEnvFiles: vi.fn(),
   mockResolveRegistryTree: vi.fn(),
+  mockWithRegistryContext: vi.fn(),
 }))
 
 vi.mock("@/src/registry/resolver", () => ({
@@ -26,6 +28,7 @@ vi.mock("@/src/registry/resolver", () => ({
 
 vi.mock("@/src/registry/context", () => ({
   clearRegistryContext: mockClearRegistryContext,
+  withRegistryContext: mockWithRegistryContext,
 }))
 
 vi.mock("@/src/utils/add-components", () => ({
@@ -48,9 +51,12 @@ vi.mock("@/src/utils/registries", () => ({
 describe("addRegistryItems", () => {
   const projectConfig = { resolvedPaths: { cwd: "/project" } }
   const updatedConfig = { ...projectConfig, registries: { "@acme": "url" } }
+  const projectEnv = { REGISTRY_TOKEN: "project-token" }
 
   beforeEach(() => {
     vi.clearAllMocks()
+    mockLoadEnvFiles.mockResolvedValue(projectEnv)
+    mockWithRegistryContext.mockImplementation((callback) => callback())
     mockGetConfig.mockResolvedValue(projectConfig)
     mockEnsureRegistriesInConfig.mockResolvedValue({
       config: updatedConfig,
@@ -66,7 +72,13 @@ describe("addRegistryItems", () => {
       silent: true,
     })
 
-    expect(mockLoadEnvFiles).toHaveBeenCalledWith("/project")
+    expect(mockLoadEnvFiles).toHaveBeenCalledWith("/project", {
+      processEnv: expect.any(Object),
+    })
+    expect(mockLoadEnvFiles.mock.calls[0][1].processEnv).not.toBe(process.env)
+    expect(mockWithRegistryContext).toHaveBeenCalledWith(expect.any(Function), {
+      env: projectEnv,
+    })
     expect(mockEnsureRegistriesInConfig).toHaveBeenCalledWith(
       ["@acme/button"],
       projectConfig,

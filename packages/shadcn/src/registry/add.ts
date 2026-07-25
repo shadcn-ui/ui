@@ -1,5 +1,8 @@
 import path from "path"
-import { clearRegistryContext } from "@/src/registry/context"
+import {
+  clearRegistryContext,
+  withRegistryContext,
+} from "@/src/registry/context"
 import { resolveRegistryTree } from "@/src/registry/resolver"
 import {
   addComponents,
@@ -36,46 +39,52 @@ export async function addRegistryItems(
   }
 
   const cwd = path.resolve(options.cwd ?? process.cwd())
+  const env = await loadEnvFiles(cwd, {
+    processEnv: { ...process.env },
+  })
 
-  try {
-    await loadEnvFiles(cwd)
+  return withRegistryContext(
+    async () => {
+      try {
+        const projectConfig = await getConfig(cwd)
+        let config =
+          projectConfig ??
+          createConfig({
+            resolvedPaths: { cwd },
+          })
 
-    const projectConfig = await getConfig(cwd)
-    let config =
-      projectConfig ??
-      createConfig({
-        resolvedPaths: { cwd },
-      })
-
-    const { config: configWithRegistries } = await ensureRegistriesInConfig(
-      items,
-      config,
-      {
-        silent: options.silent,
-        writeFile: projectConfig !== null,
-      }
-    )
-    config = configWithRegistries
-
-    if (!projectConfig) {
-      const registryTree = await resolveRegistryTree(items, config, {
-        useCache: true,
-        requireUniversal: true,
-      })
-      if (!hasResolvedTargetAliases(registryTree, config)) {
-        throw new Error(
-          "A components.json file is required to resolve target aliases."
+        const { config: configWithRegistries } = await ensureRegistriesInConfig(
+          items,
+          config,
+          {
+            silent: options.silent,
+            writeFile: projectConfig !== null,
+          }
         )
-      }
-    }
+        config = configWithRegistries
 
-    await addComponents(items, config, {
-      ...options,
-      interactive: false,
-    })
-  } finally {
-    clearRegistryContext()
-  }
+        if (!projectConfig) {
+          const registryTree = await resolveRegistryTree(items, config, {
+            useCache: true,
+            requireUniversal: true,
+          })
+          if (!hasResolvedTargetAliases(registryTree, config)) {
+            throw new Error(
+              "A components.json file is required to resolve target aliases."
+            )
+          }
+        }
+
+        await addComponents(items, config, {
+          ...options,
+          interactive: false,
+        })
+      } finally {
+        clearRegistryContext()
+      }
+    },
+    { env }
+  )
 }
 
 function hasResolvedTargetAliases(

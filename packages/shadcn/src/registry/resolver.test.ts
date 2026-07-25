@@ -27,6 +27,8 @@ vi.mock("./context", () => ({
   setRegistryHeaders: vi.fn(),
   clearRegistryContext: vi.fn(),
   getRegistryHeadersFromContext: vi.fn(() => ({})),
+  getRegistryEnvFromContext: vi.fn((key: string) => process.env[key]),
+  withRegistryContext: vi.fn((callback: () => unknown) => callback()),
 }))
 
 vi.mock("@/src/utils/handle-error", () => ({
