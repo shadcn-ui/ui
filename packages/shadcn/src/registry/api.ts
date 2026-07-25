@@ -192,14 +192,9 @@ export async function getRegistriesConfig(
 }
 
 export async function getShadcnRegistryIndex() {
-  try {
-    const [result] = await fetchRegistry(["index.json"])
+  const [result] = await fetchRegistry(["index.json"])
 
-    return registryIndexSchema.parse(result)
-  } catch (error) {
-    logger.error("\n")
-    handleError(error)
-  }
+  return registryIndexSchema.parse(result)
 }
 
 export async function getRegistryStyles() {
@@ -229,13 +224,9 @@ export async function getRegistryBaseColors() {
 }
 
 export async function getRegistryBaseColor(baseColor: string) {
-  try {
-    const [result] = await fetchRegistry([`colors/${baseColor}.json`])
+  const [result] = await fetchRegistry([`colors/${baseColor}.json`])
 
-    return registryBaseColorSchema.parse(result)
-  } catch (error) {
-    handleError(error)
-  }
+  return registryBaseColorSchema.parse(result)
 }
 
 /**
