@@ -144,6 +144,10 @@ describe("addRegistryItems", () => {
       cwd: "/project",
     })
 
+    expect(mockCreateConfig).toHaveBeenCalledWith({
+      style: "new-york",
+      resolvedPaths: { cwd: "/project" },
+    })
     expect(mockEnsureRegistriesInConfig).toHaveBeenCalledWith(
       ["https://example.com/agent.json"],
       universalConfig,

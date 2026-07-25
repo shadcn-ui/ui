@@ -50,6 +50,7 @@ export async function addRegistryItems(
         let config =
           projectConfig ??
           createConfig({
+            style: "new-york",
             resolvedPaths: { cwd },
           })
 
