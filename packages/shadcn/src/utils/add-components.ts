@@ -131,10 +131,12 @@ async function addProjectComponents(
 
   // Write CSS last so the file watcher triggers a rebuild
   // after all component files and dependencies are in place.
-  const overwriteCssVars = tree.cssVars
-    ? (options.overwriteCssVars ??
-      (await shouldOverwriteCssVars(components, config)))
-    : undefined
+  const overwriteCssVars = await resolveOverwriteCssVars(
+    tree,
+    components,
+    config,
+    options.overwriteCssVars
+  )
   await updateCss(tree.css, config, {
     silent: options.silent,
     cssVars: tree.cssVars,
@@ -307,10 +309,12 @@ async function addWorkspaceComponents(
 
   // 6. Write CSS last so the file watcher triggers a rebuild
   // after all component files and dependencies are in place.
-  const overwriteCssVars = tree.cssVars
-    ? (options.overwriteCssVars ??
-      (await shouldOverwriteCssVars(components, config)))
-    : undefined
+  const overwriteCssVars = await resolveOverwriteCssVars(
+    tree,
+    components,
+    config,
+    options.overwriteCssVars
+  )
   await updateCss(tree.css, mainTargetConfig, {
     silent: true,
     cssVars: tree.cssVars,
@@ -414,6 +418,19 @@ async function resolveAndValidateRegistryTree(
   registrySpinner?.succeed()
 
   return tree
+}
+
+async function resolveOverwriteCssVars(
+  tree: NonNullable<Awaited<ReturnType<typeof resolveRegistryTree>>>,
+  components: z.infer<typeof registryItemSchema>["name"][],
+  config: z.infer<typeof configSchema>,
+  overwriteCssVars?: boolean
+) {
+  if (!tree.cssVars || Object.keys(tree.cssVars).length === 0) {
+    return undefined
+  }
+
+  return overwriteCssVars ?? shouldOverwriteCssVars(components, config)
 }
 
 async function shouldOverwriteCssVars(

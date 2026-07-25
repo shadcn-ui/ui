@@ -164,6 +164,7 @@ describe("addRegistryItems", () => {
       universalConfig,
       expect.objectContaining({
         interactive: false,
+        overwriteCssVars: false,
         resolvedTree,
       })
     )

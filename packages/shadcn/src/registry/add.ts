@@ -85,6 +85,8 @@ export async function addRegistryItems(
         await addComponents(items, config, {
           ...options,
           interactive: false,
+          overwriteCssVars:
+            options.overwriteCssVars ?? (projectConfig ? undefined : false),
           resolvedTree,
         })
       } finally {

@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest"
 import { addComponents, validateFilesTarget } from "./add-components"
 
 const {
+  mockGetRegistryItems,
   mockResolveRegistryTree,
   mockUpdateDependencies,
   mockUpdateTailwindConfig,
@@ -25,6 +26,7 @@ const {
   spinner.start.mockReturnValue(spinner)
 
   return {
+    mockGetRegistryItems: vi.fn(),
     mockResolveRegistryTree: vi.fn(),
     mockUpdateDependencies: vi.fn(),
     mockUpdateTailwindConfig: vi.fn(),
@@ -40,7 +42,7 @@ const {
 })
 
 vi.mock("@/src/registry/api", () => ({
-  getRegistryItems: vi.fn(),
+  getRegistryItems: mockGetRegistryItems,
 }))
 
 vi.mock("@/src/registry/config", () => ({
@@ -182,6 +184,7 @@ describe("addComponents", () => {
       dependencies: [],
       devDependencies: [],
       files: [],
+      cssVars: {},
     }
 
     await addComponents(
@@ -198,6 +201,7 @@ describe("addComponents", () => {
     )
 
     expect(mockResolveRegistryTree).not.toHaveBeenCalled()
+    expect(mockGetRegistryItems).not.toHaveBeenCalled()
     expect(mockUpdateFiles).toHaveBeenCalledWith(
       resolvedTree.files,
       expect.any(Object),
