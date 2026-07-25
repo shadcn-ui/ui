@@ -95,10 +95,6 @@ vi.mock("@/src/utils/spinner", () => ({
   spinner: vi.fn(() => spinnerInstance),
 }))
 
-vi.mock("@/src/utils/handle-error", () => ({
-  handleError: vi.fn(),
-}))
-
 vi.mock("@/src/utils/logger", () => ({
   logger: {
     info: vi.fn(),
@@ -126,6 +122,20 @@ describe("addComponents", () => {
       filesSkipped: [],
     })
     mockUpdateCss.mockResolvedValue(undefined)
+  })
+
+  it("throws when registry items cannot be resolved", async () => {
+    mockResolveRegistryTree.mockResolvedValue(null)
+
+    await expect(
+      addComponents(
+        ["missing"],
+        { resolvedPaths: { cwd: "/test/project" } } as any,
+        { silent: true }
+      )
+    ).rejects.toThrow("Failed to fetch components from registry.")
+
+    expect(spinnerInstance.fail).toHaveBeenCalledOnce()
   })
 
   it("passes pending heading font markers into updateFiles before CSS is written", async () => {

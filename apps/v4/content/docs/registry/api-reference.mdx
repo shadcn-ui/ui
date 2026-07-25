@@ -4,8 +4,8 @@ description: Programmatic API for working with registries, schemas and presets.
 ---
 
 The `shadcn` package exposes a set of programmatic APIs in addition to the CLI.
-You can use these to fetch and resolve registry items, validate registry JSON,
-and build custom tooling on top of the registry.
+You can use these to fetch, resolve, and install registry items, validate
+registry JSON, and build custom tooling on top of the registry.
 
 Each API is available under a dedicated subpath import.
 
@@ -150,6 +150,27 @@ Returns a single merged tree:
   "docs": ""
 }
 ```
+
+### addRegistryItems
+
+Resolve and install registry items into an existing project. This is the
+programmatic equivalent of `shadcn add` and applies files, package dependencies,
+environment variables, CSS, and Tailwind configuration declared by the items.
+
+```ts showLineNumbers
+import { addRegistryItems } from "shadcn/registry"
+
+await addRegistryItems(["@acme/button", "@acme/card"], {
+  cwd: process.cwd(),
+  overwrite: false,
+  silent: true,
+})
+```
+
+A `components.json` file is required unless every requested item is universal:
+a `registry:item` or `registry:file` whose files all declare explicit targets.
+The function loads registry configuration from `components.json`, discovers
+known registry namespaces, and throws errors instead of exiting the process.
 
 ### getRegistries
 
