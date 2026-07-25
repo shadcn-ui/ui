@@ -167,10 +167,13 @@ await addRegistryItems(["@acme/button", "@acme/card"], {
 })
 ```
 
-A `components.json` file is required unless every requested item is universal:
-a `registry:item` or `registry:file` whose files all declare explicit targets.
-The function loads registry configuration from `components.json`, discovers
-known registry namespaces, and throws errors instead of exiting the process.
+A `components.json` file is required unless every requested item and dependency
+is universal: a `registry:item` or `registry:file` whose files all declare
+explicit targets. The function loads registry configuration from
+`components.json`, discovers known registry namespaces, and throws errors
+instead of exiting the process. It never prompts: existing files are skipped
+unless `overwrite` is enabled, and npm uses `--force` for React 19 peer
+dependency conflicts.
 
 ### getRegistries
 

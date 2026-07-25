@@ -1,14 +1,17 @@
 import path from "path"
-import { getRegistryItems } from "@/src/registry/api"
-import { clearRegistryContext } from "@/src/registry/context"
-import { isUniversalRegistryItem } from "@/src/registry/utils"
+import {
+  clearRegistryContext,
+  withRegistryContext,
+} from "@/src/registry/context"
+import { resolveRegistryTree } from "@/src/registry/resolver"
 import {
   addComponents,
   type AddComponentsOptions,
 } from "@/src/utils/add-components"
 import { loadEnvFiles } from "@/src/utils/env-loader"
-import { createConfig, getConfig } from "@/src/utils/get-config"
+import { createConfig, getConfig, type Config } from "@/src/utils/get-config"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
+import { getTargetAliasKey } from "@/src/utils/target-aliases"
 
 export interface AddRegistryItemsOptions
   extends Pick<
@@ -35,38 +38,76 @@ export async function addRegistryItems(
   }
 
   const cwd = path.resolve(options.cwd ?? process.cwd())
+  const env = await loadEnvFiles(cwd, {
+    processEnv: { ...process.env },
+  })
 
-  try {
-    await loadEnvFiles(cwd)
+  return withRegistryContext(
+    async () => {
+      try {
+        const projectConfig = await getConfig(cwd)
+        let config =
+          projectConfig ??
+          createConfig({
+            style: "new-york",
+            resolvedPaths: { cwd },
+          })
+        let resolvedTree:
+          | NonNullable<Awaited<ReturnType<typeof resolveRegistryTree>>>
+          | undefined
 
-    const projectConfig = await getConfig(cwd)
-    let config =
-      projectConfig ??
-      createConfig({
-        resolvedPaths: { cwd },
-      })
-
-    const { config: configWithRegistries } = await ensureRegistriesInConfig(
-      items,
-      config,
-      {
-        silent: options.silent,
-        writeFile: projectConfig !== null,
-      }
-    )
-    config = configWithRegistries
-
-    if (!projectConfig) {
-      const registryItems = await getRegistryItems(items, { config })
-      if (!registryItems.every(isUniversalRegistryItem)) {
-        throw new Error(
-          "A components.json file is required to add non-universal registry items."
+        const { config: configWithRegistries } = await ensureRegistriesInConfig(
+          items,
+          config,
+          {
+            silent: options.silent,
+            writeFile: projectConfig !== null,
+          }
         )
-      }
-    }
+        config = configWithRegistries
 
-    await addComponents(items, config, options)
-  } finally {
-    clearRegistryContext()
+        if (!projectConfig) {
+          const registryTree = await resolveRegistryTree(items, config, {
+            useCache: true,
+            requireUniversal: true,
+          })
+          if (!registryTree) {
+            throw new Error("Failed to fetch components from registry.")
+          }
+          if (!hasResolvedTargetAliases(registryTree, config)) {
+            throw new Error(
+              "A components.json file is required to resolve target aliases."
+            )
+          }
+          resolvedTree = registryTree
+        }
+
+        await addComponents(items, config, {
+          ...options,
+          interactive: false,
+          overwriteCssVars:
+            options.overwriteCssVars ?? (projectConfig ? undefined : false),
+          resolvedTree,
+        })
+      } finally {
+        clearRegistryContext()
+      }
+    },
+    { env }
+  )
+}
+
+function hasResolvedTargetAliases(
+  registryTree: Awaited<ReturnType<typeof resolveRegistryTree>>,
+  config: Config
+) {
+  if (!registryTree) {
+    return false
   }
+
+  return (registryTree.files ?? []).every((file) => {
+    const aliasKey = getTargetAliasKey(file.target)
+
+    return !aliasKey || Boolean(config.resolvedPaths[aliasKey])
+  })
 }
