@@ -680,6 +680,13 @@
     "logo": "<svg x='6' y='6' width='58' height='58' viewBox='80 104 352 352'><title>Hirael</title><path d='M160 340V235C160 171 203 128 256 128C309 128 352 171 352 235V340' fill='none' stroke='currentColor' stroke-width='18' stroke-linecap='square'></path><path d='M256 220C262 242 274 254 296 260C274 266 262 278 256 300C250 278 238 266 216 260C238 254 250 242 256 220Z' fill='currentColor'></path><path d='M95 372C160 364 352 364 417 372C352 380 160 380 95 372Z' fill='currentColor'></path><path d='M135 405C185 399 327 399 377 405C327 411 185 411 135 405Z' fill='currentColor'></path><path d='M190 438C220 434 292 434 322 438C292 442 220 442 190 438Z' fill='currentColor'></path></svg>"
   },
   {
+    "name": "@hugeicons-animated",
+    "homepage": "https://hugeicons-animated.com",
+    "url": "https://hugeicons-animated.com/r/{name}.json",
+    "description": "An open-source collection of animated Hugeicons for React.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='#AFE67F'/><rect x='.75' y='.75' width='30.5' height='30.5' rx='8.25' fill='none' stroke='#79BD3E' stroke-width='1.5'/><g fill='none' stroke='#1D3208' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' transform='translate(4 4)'><path d='M20 18.5011L18.349 7.93407C17.8603 4.80601 15.166 2.5 12 2.5C8.83398 2.5 6.13971 4.80601 5.65098 7.93407L4 18.5011'/><path d='M20 18.5C20 16.8431 16.4183 15.5 12 15.5C7.58172 15.5 4 16.8431 4 18.5C4 20.1569 7.58172 21.5 12 21.5C16.4183 21.5 20 20.1569 20 18.5Z'/><path d='M13 18.5H11'/></g></svg>"
+  },
+  {
     "name": "@iconiq",
     "homepage": "https://iconiqui.com",
     "url": "https://iconiqui.com/r/{name}.json",
