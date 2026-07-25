@@ -298,7 +298,9 @@ export async function updateFiles(
     }
   }
 
-  const allFiles = [...filesCreated, ...filesUpdated, ...filesSkipped]
+  const allFiles = options.interactive
+    ? [...filesCreated, ...filesUpdated, ...filesSkipped]
+    : [...filesCreated, ...filesUpdated]
   const updatedFiles = await resolveImports(allFiles, config, plannedFilePaths)
 
   // Let's update filesUpdated with the updated files.

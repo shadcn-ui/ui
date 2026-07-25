@@ -1422,7 +1422,7 @@ export function ExampleCard() {
     }
   })
 
-  it("should skip existing package-import files when final content is identical", async () => {
+  it("should preserve skipped package-import files in non-interactive mode", async () => {
     const tempDir = getFixturesDir("temp-package-import-same-content")
     const fsActual = (await vi.importActual(
       "fs/promises"
@@ -1560,6 +1560,48 @@ export function Button() {
 
       expect(result.filesSkipped).toEqual(["src/components/ui/button.tsx"])
       expect(result.filesUpdated).toEqual([])
+      expect(vi.mocked(prompts)).not.toHaveBeenCalled()
+
+      const buttonPath = path.join(
+        tempDir,
+        "src",
+        "components",
+        "ui",
+        "button.tsx"
+      )
+      const existingContent = `import { cn } from "@/lib/utils"
+
+export function Button() {
+  return <button>{cn("existing")}</button>
+}
+`
+      await fsActual.writeFile(buttonPath, existingContent, "utf-8")
+
+      const nonInteractiveResult = await updateFiles(
+        [
+          {
+            ...buttonFile,
+            content: `import { cn } from "@/lib/utils"
+
+export function Button() {
+  return <button>{cn("incoming")}</button>
+}
+`,
+          },
+        ],
+        config,
+        {
+          overwrite: false,
+          interactive: false,
+          silent: true,
+        }
+      )
+
+      expect(nonInteractiveResult.filesSkipped).toEqual([
+        "src/components/ui/button.tsx",
+      ])
+      expect(nonInteractiveResult.filesUpdated).toEqual([])
+      expect(await fsActual.readFile(buttonPath, "utf-8")).toBe(existingContent)
       expect(vi.mocked(prompts)).not.toHaveBeenCalled()
     } finally {
       writeFileMock.mockResolvedValue(undefined)
