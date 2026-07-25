@@ -21,6 +21,7 @@ import {
   resolveImportWithMetadata,
 } from "@/src/utils/resolve-import"
 import { spinner } from "@/src/utils/spinner"
+import { isTargetAliasKey } from "@/src/utils/target-aliases"
 import { transform } from "@/src/utils/transformers"
 import { transformAsChild } from "@/src/utils/transformers/transform-aschild"
 import { transformCleanup } from "@/src/utils/transformers/transform-cleanup"
@@ -40,9 +41,6 @@ import { z } from "zod"
 
 const CODE_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx"]
 const NON_ALIAS_RESOLVED_PATH_KEYS = new Set(["tailwindConfig", "tailwindCss"])
-const TARGET_ALIAS_KEYS = ["components", "ui", "lib", "hooks"] as const
-
-type TargetAliasKey = (typeof TARGET_ALIAS_KEYS)[number]
 
 export async function updateFiles(
   files: RegistryItem["files"],
@@ -480,10 +478,6 @@ function resolveAliasTarget(target: string, config: Config) {
   return {
     resolvedPath,
   }
-}
-
-function isTargetAliasKey(aliasKey: string): aliasKey is TargetAliasKey {
-  return TARGET_ALIAS_KEYS.includes(aliasKey as TargetAliasKey)
 }
 
 function resolveFileTargetDirectory(

@@ -11,8 +11,7 @@ import {
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import { createConfig, getConfig, type Config } from "@/src/utils/get-config"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
-
-const TARGET_ALIAS_KEYS = ["components", "ui", "lib", "hooks"] as const
+import { getTargetAliasKey } from "@/src/utils/target-aliases"
 
 export interface AddRegistryItemsOptions
   extends Pick<
@@ -105,18 +104,8 @@ function hasResolvedTargetAliases(
   }
 
   return (registryTree.files ?? []).every((file) => {
-    const aliasKey = file.target?.match(/^@([^/]+)\//)?.[1]
+    const aliasKey = getTargetAliasKey(file.target)
 
-    return (
-      !aliasKey ||
-      !isTargetAliasKey(aliasKey) ||
-      Boolean(config.resolvedPaths[aliasKey])
-    )
+    return !aliasKey || Boolean(config.resolvedPaths[aliasKey])
   })
-}
-
-function isTargetAliasKey(
-  key: string
-): key is (typeof TARGET_ALIAS_KEYS)[number] {
-  return TARGET_ALIAS_KEYS.includes(key as (typeof TARGET_ALIAS_KEYS)[number])
 }

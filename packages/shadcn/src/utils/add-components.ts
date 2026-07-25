@@ -19,6 +19,10 @@ import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-inf
 import { isSafeTarget } from "@/src/utils/is-safe-target"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
+import {
+  getTargetAliasKey,
+  type TargetAliasKey,
+} from "@/src/utils/target-aliases"
 import { updateCss } from "@/src/utils/updaters/update-css"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import { updateEnvVars } from "@/src/utils/updaters/update-env-vars"
@@ -218,20 +222,11 @@ async function addWorkspaceComponents(
   })
 
   // 5. Group files by their target config and update files.
-  const TARGET_ALIAS_KEYS = ["components", "ui", "lib", "hooks"] as const
-  type TargetAliasKey = (typeof TARGET_ALIAS_KEYS)[number]
   const filesByTarget = new Map<TargetAliasKey, typeof tree.files>()
   const FILE_TYPE_TO_CONFIG_KEY: Record<string, TargetAliasKey> = {
     "registry:ui": "ui",
     "registry:hook": "hooks",
     "registry:lib": "lib",
-  }
-  const isTargetAliasKey = (key: string): key is TargetAliasKey => {
-    return TARGET_ALIAS_KEYS.includes(key as TargetAliasKey)
-  }
-  const getTargetAliasKey = (target?: string) => {
-    const match = target?.match(/^@([^/]+)\//)
-    return match && isTargetAliasKey(match[1]) ? match[1] : null
   }
   const getTargetConfigKeyForFile = (
     file: z.infer<typeof registryItemFileSchema>
