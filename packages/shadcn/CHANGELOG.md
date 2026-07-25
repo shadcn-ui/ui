@@ -1,5 +1,11 @@
 # shadcn
 
+## 4.15.0
+
+### Minor Changes
+
+- [#11276](https://github.com/shadcn-ui/ui/pull/11276) [`7d90dfc0a5ec70cdc3bd08b741a42440041907ac`](https://github.com/shadcn-ui/ui/commit/7d90dfc0a5ec70cdc3bd08b741a42440041907ac) Thanks [@cmpadden](https://github.com/cmpadden)! - Add a public `addRegistryItems` API for installing registry items programmatically without invoking the CLI.
+
 ## 4.14.1
 
 ### Patch Changes
