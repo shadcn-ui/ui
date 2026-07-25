@@ -138,6 +138,45 @@ describe("addComponents", () => {
     expect(spinnerInstance.fail).toHaveBeenCalledOnce()
   })
 
+  it("passes non-interactive mode to prompt-capable updaters", async () => {
+    mockResolveRegistryTree.mockResolvedValue({
+      dependencies: ["example"],
+      devDependencies: [],
+      files: [
+        {
+          path: "registry/default/ui/button.tsx",
+          type: "registry:ui",
+          content: "export function Button() {}",
+        },
+      ],
+    })
+
+    await addComponents(
+      ["button"],
+      {
+        resolvedPaths: {
+          cwd: "/test/project",
+        },
+      } as any,
+      {
+        interactive: false,
+        silent: true,
+      }
+    )
+
+    expect(mockUpdateDependencies).toHaveBeenCalledWith(
+      ["example"],
+      [],
+      expect.any(Object),
+      expect.objectContaining({ interactive: false })
+    )
+    expect(mockUpdateFiles).toHaveBeenCalledWith(
+      expect.any(Array),
+      expect.any(Object),
+      expect.objectContaining({ interactive: false })
+    )
+  })
+
   it("passes pending heading font markers into updateFiles before CSS is written", async () => {
     mockResolveRegistryTree.mockResolvedValue({
       dependencies: [],

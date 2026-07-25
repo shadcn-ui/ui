@@ -75,7 +75,11 @@ describe("addRegistryItems", () => {
     expect(mockAddComponents).toHaveBeenCalledWith(
       ["@acme/button"],
       updatedConfig,
-      expect.objectContaining({ overwrite: true, silent: true })
+      expect.objectContaining({
+        overwrite: true,
+        silent: true,
+        interactive: false,
+      })
     )
     expect(mockClearRegistryContext).toHaveBeenCalledOnce()
   })
@@ -115,7 +119,7 @@ describe("addRegistryItems", () => {
     expect(mockAddComponents).toHaveBeenCalledWith(
       ["https://example.com/agent.json"],
       universalConfig,
-      expect.any(Object)
+      expect.objectContaining({ interactive: false })
     )
   })
 

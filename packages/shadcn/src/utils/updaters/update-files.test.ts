@@ -1208,6 +1208,34 @@ return <div>Hello World</div>
     `)
   })
 
+  it("should skip existing files without prompting when non-interactive", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
+    const result = await updateFiles(
+      [
+        {
+          path: "registry/default/ui/button.tsx",
+          type: "registry:ui",
+          content: `export function Button() {
+  return <button>Click this button</button>
+}`,
+        },
+      ],
+      config,
+      {
+        overwrite: false,
+        interactive: false,
+        silent: true,
+      }
+    )
+
+    expect(result).toEqual({
+      filesCreated: [],
+      filesSkipped: ["src/components/ui/button.tsx"],
+      filesUpdated: [],
+    })
+    expect(prompts).not.toHaveBeenCalled()
+  })
+
   it("should update file if different content", async () => {
     const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     expect(

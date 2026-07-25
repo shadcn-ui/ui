@@ -34,6 +34,7 @@ export interface AddComponentsOptions {
   overwrite?: boolean
   overwriteCssVars?: boolean
   silent?: boolean
+  interactive?: boolean
   isNewProject?: boolean
   skipFonts?: boolean
   registryHeaders?: Record<string, Record<string, string>>
@@ -48,6 +49,7 @@ export async function addComponents(
   options = {
     overwrite: false,
     silent: false,
+    interactive: true,
     isNewProject: false,
     ...options,
   }
@@ -78,6 +80,7 @@ async function addProjectComponents(
     overwrite?: boolean
     overwriteCssVars?: boolean
     silent?: boolean
+    interactive?: boolean
     isNewProject?: boolean
     skipFonts?: boolean
     path?: string
@@ -116,6 +119,7 @@ async function addProjectComponents(
 
   await updateDependencies(tree.dependencies, tree.devDependencies, config, {
     silent: options.silent,
+    interactive: options.interactive,
   })
 
   await updateTailwindConfig(tree.tailwind?.config, config, {
@@ -136,6 +140,7 @@ async function addProjectComponents(
   await updateFiles(tree.files, config, {
     overwrite: options.overwrite,
     silent: options.silent,
+    interactive: options.interactive,
     path: options.path,
     supportedFontMarkers,
   })
@@ -168,6 +173,7 @@ async function addWorkspaceComponents(
     overwrite?: boolean
     overwriteCssVars?: boolean
     silent?: boolean
+    interactive?: boolean
     isNewProject?: boolean
     isRemote?: boolean
     path?: string
@@ -224,6 +230,7 @@ async function addWorkspaceComponents(
     mainTargetConfig,
     {
       silent: true,
+      interactive: options.interactive,
     }
   )
 
@@ -322,6 +329,7 @@ async function addWorkspaceComponents(
     const files = await updateFiles(targetFiles, targetConfig, {
       overwrite: options.overwrite,
       silent: true,
+      interactive: options.interactive,
       rootSpinner,
       isRemote: options.isRemote,
       isWorkspace: true,

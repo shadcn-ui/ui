@@ -51,6 +51,7 @@ export async function updateFiles(
     overwrite?: boolean
     force?: boolean
     silent?: boolean
+    interactive?: boolean
     rootSpinner?: ReturnType<typeof spinner>
     isRemote?: boolean
     isWorkspace?: boolean
@@ -70,6 +71,7 @@ export async function updateFiles(
     overwrite: false,
     force: false,
     silent: false,
+    interactive: true,
     isRemote: false,
     isWorkspace: false,
     ...options,
@@ -225,6 +227,11 @@ export async function updateFiles(
 
     // Skip overwrite prompt for .env files - we'll handle them specially
     if (existingFile && !options.overwrite && !isEnvFile(filePath)) {
+      if (!options.interactive) {
+        filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
+        continue
+      }
+
       filesCreatedSpinner.stop()
       if (options.rootSpinner) {
         options.rootSpinner.stop()

@@ -69,7 +69,10 @@ export async function addRegistryItems(
       }
     }
 
-    await addComponents(items, config, options)
+    await addComponents(items, config, {
+      ...options,
+      interactive: false,
+    })
   } finally {
     clearRegistryContext()
   }
