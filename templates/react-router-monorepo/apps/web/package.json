@@ -17,7 +17,7 @@
     "isbot": "^5",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-router": "7.15.1"
+    "react-router": "8.3.0"
   },
   "devDependencies": {
     "@react-router/dev": "7.15.1",
