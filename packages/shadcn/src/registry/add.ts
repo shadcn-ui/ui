@@ -71,10 +71,10 @@ export async function addRegistryItems(
             useCache: true,
             requireUniversal: true,
           })
-          if (
-            !registryTree ||
-            !hasResolvedTargetAliases(registryTree, config)
-          ) {
+          if (!registryTree) {
+            throw new Error("Failed to fetch components from registry.")
+          }
+          if (!hasResolvedTargetAliases(registryTree, config)) {
             throw new Error(
               "A components.json file is required to resolve target aliases."
             )

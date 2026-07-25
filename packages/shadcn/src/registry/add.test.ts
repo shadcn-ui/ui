@@ -222,6 +222,25 @@ describe("addRegistryItems", () => {
     expect(mockAddComponents).not.toHaveBeenCalled()
   })
 
+  it("reports unresolved registry items without components.json", async () => {
+    const universalConfig = { resolvedPaths: { cwd: "/project" } }
+    mockGetConfig.mockResolvedValue(null)
+    mockCreateConfig.mockReturnValue(universalConfig)
+    mockEnsureRegistriesInConfig.mockResolvedValue({
+      config: universalConfig,
+      newRegistries: [],
+    })
+    mockResolveRegistryTree.mockResolvedValue(null)
+
+    await expect(
+      addRegistryItems(["https://example.com/missing.json"], {
+        cwd: "/project",
+      })
+    ).rejects.toThrow("Failed to fetch components from registry.")
+
+    expect(mockAddComponents).not.toHaveBeenCalled()
+  })
+
   it("rejects non-universal items without components.json", async () => {
     const universalConfig = { resolvedPaths: { cwd: "/project" } }
     mockGetConfig.mockResolvedValue(null)
