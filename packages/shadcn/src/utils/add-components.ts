@@ -42,6 +42,10 @@ export interface AddComponentsOptions {
   path?: string
 }
 
+type AddWorkspaceComponentsOptions = AddComponentsOptions & {
+  isRemote?: boolean
+}
+
 export async function addComponents(
   components: string[],
   config: Config,
@@ -77,41 +81,13 @@ export async function addComponents(
 async function addProjectComponents(
   components: string[],
   config: z.infer<typeof configSchema>,
-  options: {
-    overwrite?: boolean
-    overwriteCssVars?: boolean
-    silent?: boolean
-    interactive?: boolean
-    resolvedTree?: NonNullable<Awaited<ReturnType<typeof resolveRegistryTree>>>
-    isNewProject?: boolean
-    skipFonts?: boolean
-    path?: string
-  }
+  options: AddComponentsOptions
 ) {
   if (!components.length) {
     return
   }
 
-  const registrySpinner = spinner(`Checking registry.`, {
-    silent: options.silent,
-  })?.start()
-  let tree =
-    options.resolvedTree ??
-    (await resolveRegistryTree(components, configWithDefaults(config)))
-
-  if (!tree) {
-    registrySpinner?.fail()
-    throw new Error("Failed to fetch components from registry.")
-  }
-
-  try {
-    validateFilesTarget(tree.files ?? [], config.resolvedPaths.cwd)
-  } catch (error) {
-    registrySpinner?.fail()
-    throw error
-  }
-
-  registrySpinner?.succeed()
+  let tree = await resolveAndValidateRegistryTree(components, config, options)
 
   const tailwindVersion = await getProjectTailwindVersionFromConfig(config)
 
@@ -173,41 +149,13 @@ async function addWorkspaceComponents(
   components: string[],
   config: z.infer<typeof configSchema>,
   workspaceConfig: z.infer<typeof workspaceConfigSchema>,
-  options: {
-    overwrite?: boolean
-    overwriteCssVars?: boolean
-    silent?: boolean
-    interactive?: boolean
-    resolvedTree?: NonNullable<Awaited<ReturnType<typeof resolveRegistryTree>>>
-    isNewProject?: boolean
-    isRemote?: boolean
-    path?: string
-  }
+  options: AddWorkspaceComponentsOptions
 ) {
   if (!components.length) {
     return
   }
 
-  const registrySpinner = spinner(`Checking registry.`, {
-    silent: options.silent,
-  })?.start()
-  let tree =
-    options.resolvedTree ??
-    (await resolveRegistryTree(components, configWithDefaults(config)))
-
-  if (!tree) {
-    registrySpinner?.fail()
-    throw new Error("Failed to fetch components from registry.")
-  }
-
-  try {
-    validateFilesTarget(tree.files ?? [], config.resolvedPaths.cwd)
-  } catch (error) {
-    registrySpinner?.fail()
-    throw error
-  }
-
-  registrySpinner?.succeed()
+  let tree = await resolveAndValidateRegistryTree(components, config, options)
 
   const filesCreated: string[] = []
   const filesUpdated: string[] = []
@@ -442,6 +390,35 @@ async function addWorkspaceComponents(
   if (tree.docs) {
     logger.info(tree.docs)
   }
+}
+
+async function resolveAndValidateRegistryTree(
+  components: string[],
+  config: z.infer<typeof configSchema>,
+  options: AddComponentsOptions
+) {
+  const registrySpinner = spinner(`Checking registry.`, {
+    silent: options.silent,
+  })?.start()
+  const tree =
+    options.resolvedTree ??
+    (await resolveRegistryTree(components, configWithDefaults(config)))
+
+  if (!tree) {
+    registrySpinner?.fail()
+    throw new Error("Failed to fetch components from registry.")
+  }
+
+  try {
+    validateFilesTarget(tree.files ?? [], config.resolvedPaths.cwd)
+  } catch (error) {
+    registrySpinner?.fail()
+    throw error
+  }
+
+  registrySpinner?.succeed()
+
+  return tree
 }
 
 async function shouldOverwriteCssVars(
