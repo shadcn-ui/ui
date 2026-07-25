@@ -96,6 +96,32 @@ describe("addRegistryItems", () => {
     expect(mockClearRegistryContext).toHaveBeenCalledOnce()
   })
 
+  it("defaults cwd to process.cwd()", async () => {
+    const cwd = "/default/project"
+    const cwdSpy = vi.spyOn(process, "cwd").mockReturnValue(cwd)
+
+    try {
+      await addRegistryItems(["@acme/button"])
+    } finally {
+      cwdSpy.mockRestore()
+    }
+
+    expect(mockLoadEnvFiles).toHaveBeenCalledWith(cwd, {
+      processEnv: expect.any(Object),
+    })
+    expect(mockGetConfig).toHaveBeenCalledWith(cwd)
+  })
+
+  it("propagates installation errors to the caller", async () => {
+    mockAddComponents.mockRejectedValueOnce(new Error("Installation failed."))
+
+    await expect(
+      addRegistryItems(["@acme/button"], { cwd: "/project" })
+    ).rejects.toThrow("Installation failed.")
+
+    expect(mockClearRegistryContext).toHaveBeenCalledOnce()
+  })
+
   it("installs universal items without components.json", async () => {
     const universalConfig = { resolvedPaths: { cwd: "/project" } }
     mockGetConfig.mockResolvedValue(null)
