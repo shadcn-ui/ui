@@ -53,6 +53,9 @@ export async function addRegistryItems(
             style: "new-york",
             resolvedPaths: { cwd },
           })
+        let resolvedTree:
+          | NonNullable<Awaited<ReturnType<typeof resolveRegistryTree>>>
+          | undefined
 
         const { config: configWithRegistries } = await ensureRegistriesInConfig(
           items,
@@ -69,16 +72,21 @@ export async function addRegistryItems(
             useCache: true,
             requireUniversal: true,
           })
-          if (!hasResolvedTargetAliases(registryTree, config)) {
+          if (
+            !registryTree ||
+            !hasResolvedTargetAliases(registryTree, config)
+          ) {
             throw new Error(
               "A components.json file is required to resolve target aliases."
             )
           }
+          resolvedTree = registryTree
         }
 
         await addComponents(items, config, {
           ...options,
           interactive: false,
+          resolvedTree,
         })
       } finally {
         clearRegistryContext()

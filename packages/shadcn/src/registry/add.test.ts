@@ -124,13 +124,7 @@ describe("addRegistryItems", () => {
 
   it("installs universal items without components.json", async () => {
     const universalConfig = { resolvedPaths: { cwd: "/project" } }
-    mockGetConfig.mockResolvedValue(null)
-    mockCreateConfig.mockReturnValue(universalConfig)
-    mockEnsureRegistriesInConfig.mockResolvedValue({
-      config: universalConfig,
-      newRegistries: [],
-    })
-    mockResolveRegistryTree.mockResolvedValue({
+    const resolvedTree = {
       files: [
         {
           path: "agent.ts",
@@ -138,7 +132,14 @@ describe("addRegistryItems", () => {
           type: "registry:file",
         },
       ],
+    }
+    mockGetConfig.mockResolvedValue(null)
+    mockCreateConfig.mockReturnValue(universalConfig)
+    mockEnsureRegistriesInConfig.mockResolvedValue({
+      config: universalConfig,
+      newRegistries: [],
     })
+    mockResolveRegistryTree.mockResolvedValue(resolvedTree)
 
     await addRegistryItems(["https://example.com/agent.json"], {
       cwd: "/project",
@@ -161,7 +162,10 @@ describe("addRegistryItems", () => {
     expect(mockAddComponents).toHaveBeenCalledWith(
       ["https://example.com/agent.json"],
       universalConfig,
-      expect.objectContaining({ interactive: false })
+      expect.objectContaining({
+        interactive: false,
+        resolvedTree,
+      })
     )
   })
 

@@ -177,6 +177,34 @@ describe("addComponents", () => {
     )
   })
 
+  it("reuses a pre-resolved registry tree", async () => {
+    const resolvedTree = {
+      dependencies: [],
+      devDependencies: [],
+      files: [],
+    }
+
+    await addComponents(
+      ["button"],
+      {
+        resolvedPaths: {
+          cwd: "/test/project",
+        },
+      } as any,
+      {
+        resolvedTree,
+        silent: true,
+      }
+    )
+
+    expect(mockResolveRegistryTree).not.toHaveBeenCalled()
+    expect(mockUpdateFiles).toHaveBeenCalledWith(
+      resolvedTree.files,
+      expect.any(Object),
+      expect.any(Object)
+    )
+  })
+
   it("passes pending heading font markers into updateFiles before CSS is written", async () => {
     mockResolveRegistryTree.mockResolvedValue({
       dependencies: [],

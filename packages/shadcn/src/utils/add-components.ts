@@ -35,6 +35,7 @@ export interface AddComponentsOptions {
   overwriteCssVars?: boolean
   silent?: boolean
   interactive?: boolean
+  resolvedTree?: NonNullable<Awaited<ReturnType<typeof resolveRegistryTree>>>
   isNewProject?: boolean
   skipFonts?: boolean
   registryHeaders?: Record<string, Record<string, string>>
@@ -81,6 +82,7 @@ async function addProjectComponents(
     overwriteCssVars?: boolean
     silent?: boolean
     interactive?: boolean
+    resolvedTree?: NonNullable<Awaited<ReturnType<typeof resolveRegistryTree>>>
     isNewProject?: boolean
     skipFonts?: boolean
     path?: string
@@ -93,7 +95,9 @@ async function addProjectComponents(
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()
-  let tree = await resolveRegistryTree(components, configWithDefaults(config))
+  let tree =
+    options.resolvedTree ??
+    (await resolveRegistryTree(components, configWithDefaults(config)))
 
   if (!tree) {
     registrySpinner?.fail()
@@ -174,6 +178,7 @@ async function addWorkspaceComponents(
     overwriteCssVars?: boolean
     silent?: boolean
     interactive?: boolean
+    resolvedTree?: NonNullable<Awaited<ReturnType<typeof resolveRegistryTree>>>
     isNewProject?: boolean
     isRemote?: boolean
     path?: string
@@ -186,7 +191,9 @@ async function addWorkspaceComponents(
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()
-  let tree = await resolveRegistryTree(components, configWithDefaults(config))
+  let tree =
+    options.resolvedTree ??
+    (await resolveRegistryTree(components, configWithDefaults(config)))
 
   if (!tree) {
     registrySpinner?.fail()
