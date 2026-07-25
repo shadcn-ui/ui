@@ -16,7 +16,6 @@ import {
   type Config,
 } from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
-import { handleError } from "@/src/utils/handle-error"
 import { isSafeTarget } from "@/src/utils/is-safe-target"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
@@ -31,18 +30,20 @@ import {
 import { updateTailwindConfig } from "@/src/utils/updaters/update-tailwind-config"
 import { z } from "zod"
 
+export interface AddComponentsOptions {
+  overwrite?: boolean
+  overwriteCssVars?: boolean
+  silent?: boolean
+  isNewProject?: boolean
+  skipFonts?: boolean
+  registryHeaders?: Record<string, Record<string, string>>
+  path?: string
+}
+
 export async function addComponents(
   components: string[],
   config: Config,
-  options: {
-    overwrite?: boolean
-    overwriteCssVars?: boolean
-    silent?: boolean
-    isNewProject?: boolean
-    skipFonts?: boolean
-    registryHeaders?: Record<string, Record<string, string>>
-    path?: string
-  }
+  options: AddComponentsOptions
 ) {
   options = {
     overwrite: false,
@@ -93,14 +94,14 @@ async function addProjectComponents(
 
   if (!tree) {
     registrySpinner?.fail()
-    return handleError(new Error("Failed to fetch components from registry."))
+    throw new Error("Failed to fetch components from registry.")
   }
 
   try {
     validateFilesTarget(tree.files ?? [], config.resolvedPaths.cwd)
   } catch (error) {
     registrySpinner?.fail()
-    return handleError(error)
+    throw error
   }
 
   registrySpinner?.succeed()
@@ -183,14 +184,14 @@ async function addWorkspaceComponents(
 
   if (!tree) {
     registrySpinner?.fail()
-    return handleError(new Error("Failed to fetch components from registry."))
+    throw new Error("Failed to fetch components from registry.")
   }
 
   try {
     validateFilesTarget(tree.files ?? [], config.resolvedPaths.cwd)
   } catch (error) {
     registrySpinner?.fail()
-    return handleError(error)
+    throw error
   }
 
   registrySpinner?.succeed()
