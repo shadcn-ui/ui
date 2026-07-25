@@ -13,7 +13,7 @@ import { z } from "zod"
 import { resolveGitHubRegistrySource } from "./address"
 import { getRegistry } from "./api"
 import { BUILTIN_REGISTRIES } from "./constants"
-import { clearRegistryContext } from "./context"
+import { withRegistryContext } from "./context"
 
 // Resolves which registries a search should target. When none are provided
 // explicitly, returns every registry configured in the project, excluding
@@ -36,6 +36,20 @@ export function resolveSearchRegistries(
 // Cap how many registries we fetch at once so searching many configured
 // registries does not open an unbounded number of connections.
 export const SEARCH_CONCURRENCY = 8
+
+type SearchRegistriesOptions = {
+  query?: string
+  types?: string[]
+  limit?: number
+  offset?: number
+  config?: Partial<Config>
+  useCache?: boolean
+  // When true, a registry that fails to load is skipped (and recorded in the
+  // returned `errors`) instead of throwing. Use this when searching across
+  // many registries (e.g. all configured registries) so one broken registry
+  // does not abort the entire search.
+  continueOnError?: boolean
+}
 
 // Like Promise.allSettled, but runs at most `limit` tasks at a time and
 // preserves input order in the returned results.
@@ -68,19 +82,16 @@ async function mapSettledWithConcurrency<T, R>(
 
 export async function searchRegistries(
   registries: string[],
-  options?: {
-    query?: string
-    types?: string[]
-    limit?: number
-    offset?: number
-    config?: Partial<Config>
-    useCache?: boolean
-    // When true, a registry that fails to load is skipped (and recorded in the
-    // returned `errors`) instead of throwing. Use this when searching across
-    // many registries (e.g. all configured registries) so one broken registry
-    // does not abort the entire search.
-    continueOnError?: boolean
-  }
+  options?: SearchRegistriesOptions
+) {
+  return withRegistryContext(() =>
+    searchRegistriesWithContext(registries, options)
+  )
+}
+
+async function searchRegistriesWithContext(
+  registries: string[],
+  options?: SearchRegistriesOptions
 ) {
   const {
     query,
@@ -91,10 +102,6 @@ export async function searchRegistries(
     useCache = false,
     continueOnError,
   } = options || {}
-
-  // Start from a clean slate so this call does not inherit registry header
-  // context from a previous operation. Matches getRegistryItems/resolve.
-  clearRegistryContext()
 
   let allItems: z.infer<typeof searchResultItemSchema>[] = []
   const errors: z.infer<typeof searchResultErrorSchema>[] = []

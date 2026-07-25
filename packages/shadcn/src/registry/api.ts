@@ -7,10 +7,7 @@ import {
   BUILTIN_REGISTRIES,
   REGISTRY_URL,
 } from "@/src/registry/constants"
-import {
-  clearRegistryContext,
-  setRegistryHeaders,
-} from "@/src/registry/context"
+import { setRegistryHeaders, withRegistryContext } from "@/src/registry/context"
 import {
   ConfigParseError,
   RegistriesIndexParseError,
@@ -43,12 +40,18 @@ import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import { z } from "zod"
 
-export async function getRegistry(
+type RegistryApiOptions = {
+  config?: Partial<Config>
+  useCache?: boolean
+}
+
+export async function getRegistry(name: string, options?: RegistryApiOptions) {
+  return withRegistryContext(() => getRegistryWithContext(name, options))
+}
+
+async function getRegistryWithContext(
   name: string,
-  options?: {
-    config?: Partial<Config>
-    useCache?: boolean
-  }
+  options?: RegistryApiOptions
 ) {
   const { config, useCache } = options || {}
 
@@ -125,29 +128,24 @@ function parseRegistryCatalog(name: string, result: unknown) {
 
 export async function getRegistryItems(
   items: string[],
-  options?: {
-    config?: Partial<Config>
-    useCache?: boolean
-  }
+  options?: RegistryApiOptions
 ) {
   const { config, useCache = false } = options || {}
 
-  clearRegistryContext()
-
-  return fetchRegistryItems(items, configWithDefaults(config), { useCache })
+  return withRegistryContext(() =>
+    fetchRegistryItems(items, configWithDefaults(config), { useCache })
+  )
 }
 
 export async function resolveRegistryItems(
   items: string[],
-  options?: {
-    config?: Partial<Config>
-    useCache?: boolean
-  }
+  options?: RegistryApiOptions
 ) {
   const { config, useCache = false } = options || {}
 
-  clearRegistryContext()
-  return resolveRegistryTree(items, configWithDefaults(config), { useCache })
+  return withRegistryContext(() =>
+    resolveRegistryTree(items, configWithDefaults(config), { useCache })
+  )
 }
 
 export async function getRegistriesConfig(
@@ -192,14 +190,9 @@ export async function getRegistriesConfig(
 }
 
 export async function getShadcnRegistryIndex() {
-  try {
-    const [result] = await fetchRegistry(["index.json"])
+  const [result] = await fetchRegistry(["index.json"])
 
-    return registryIndexSchema.parse(result)
-  } catch (error) {
-    logger.error("\n")
-    handleError(error)
-  }
+  return registryIndexSchema.parse(result)
 }
 
 export async function getRegistryStyles() {
@@ -229,13 +222,9 @@ export async function getRegistryBaseColors() {
 }
 
 export async function getRegistryBaseColor(baseColor: string) {
-  try {
-    const [result] = await fetchRegistry([`colors/${baseColor}.json`])
+  const [result] = await fetchRegistry([`colors/${baseColor}.json`])
 
-    return registryBaseColorSchema.parse(result)
-  } catch (error) {
-    handleError(error)
-  }
+  return registryBaseColorSchema.parse(result)
 }
 
 /**

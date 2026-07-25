@@ -2,6 +2,7 @@
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
+import { createConfig } from "@/src/utils/get-config"
 import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
 import {
@@ -26,6 +27,8 @@ vi.mock("./context", () => ({
   setRegistryHeaders: vi.fn(),
   clearRegistryContext: vi.fn(),
   getRegistryHeadersFromContext: vi.fn(() => ({})),
+  getRegistryEnvFromContext: vi.fn((key: string) => process.env[key]),
+  withRegistryContext: vi.fn((callback: () => unknown) => callback()),
 }))
 
 vi.mock("@/src/utils/handle-error", () => ({
@@ -384,6 +387,59 @@ describe("resolveRegistryItemsFromRegistries", () => {
       "https://api.com/button.json?existing=true&version=1.0",
     ])
     expect(setRegistryHeaders).toHaveBeenCalledWith({})
+  })
+})
+
+describe("resolveRegistryTree universal validation", () => {
+  it("rejects non-universal dependencies", async () => {
+    const tempDir = await fs.mkdtemp(
+      path.join(tmpdir(), "shadcn-universal-tree-")
+    )
+    const dependencyPath = path.join(tempDir, "dependency.json")
+    const itemPath = path.join(tempDir, "item.json")
+
+    await fs.writeFile(
+      dependencyPath,
+      JSON.stringify({
+        name: "button",
+        type: "registry:ui",
+        files: [
+          {
+            path: "button.tsx",
+            type: "registry:ui",
+            content: "export function Button() {}",
+          },
+        ],
+      })
+    )
+    await fs.writeFile(
+      itemPath,
+      JSON.stringify({
+        name: "agent",
+        type: "registry:item",
+        registryDependencies: [dependencyPath],
+        files: [
+          {
+            path: "agent.ts",
+            target: "agent/agent.ts",
+            type: "registry:file",
+            content: "export const agent = {}",
+          },
+        ],
+      })
+    )
+
+    try {
+      await expect(
+        resolveRegistryTree(
+          [itemPath],
+          createConfig({ resolvedPaths: { cwd: tempDir } }),
+          { requireUniversal: true }
+        )
+      ).rejects.toThrow("non-universal registry items or dependencies")
+    } finally {
+      await fs.rm(tempDir, { recursive: true, force: true })
+    }
   })
 })
 
