@@ -904,6 +904,13 @@
     "logo": "<svg width=\"44\" height=\"44\" viewBox=\"0 0 44 44\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"44\" height=\"44\" rx=\"6\" fill=\"black\"/><path d=\"M8.27156 29.1282C8.13005 28.8465 8.1299 28.515 8.27116 28.2337L10.6054 23.5865C10.9744 22.852 12.0265 22.8539 12.3961 23.5897L14.7284 28.2329C14.8699 28.5147 14.8701 28.8462 14.7288 29.1274L12.3945 33.7746C12.0256 34.5092 10.9734 34.5073 10.6038 33.7714L8.27156 29.1282Z\" fill=\"white\"/><path d=\"M12.365 15.4894C12.2235 15.2077 12.2234 14.8762 12.3646 14.5949L14.6989 9.94771C15.0678 9.2132 16.12 9.21507 16.4896 9.9509L25.7284 28.3441C25.8699 28.6259 25.8701 28.9574 25.7288 29.2386L23.3945 33.8858C23.0256 34.6203 21.9734 34.6185 21.6038 33.8827L12.365 15.4894Z\" fill=\"white\"/><path d=\"M23.365 15.4894C23.2235 15.2077 23.2234 14.8762 23.3646 14.5949L25.6989 9.94771C26.0678 9.2132 27.12 9.21507 27.4896 9.9509L36.7284 28.3441C36.8699 28.6259 36.8701 28.9574 36.7288 29.2386L34.3946 33.8858C34.0256 34.6203 32.9735 34.6185 32.6039 33.8827L23.365 15.4894Z\" fill=\"white\"/></svg>"
   },
   {
+    "name": "@navui",
+    "homepage": "https://ui.navdeepsingh.dev",
+    "url": "https://ui.navdeepsingh.dev/r/{name}.json",
+    "description": "shadcn-compatible components, blocks, and illustrations that adapt to your existing design configuration.",
+    "logo": "<svg viewBox='0 0 400 400' fill='none' xmlns='http://www.w3.org/2000/svg'><mask id='navui-logo-mask' maskUnits='userSpaceOnUse' x='8' y='8' width='384' height='384'><rect x='8' y='8' width='384' height='384' rx='88' fill='white'/><g transform='translate(200 200) scale(.68) translate(-207 -130.5)'><path d='M48 230V76C48 46 66 29 90 29C110 29 122 42 136 61L250 211C263 228 279 232 299 232H319C347 232 366 213 366 188C366 164 352 149 331 142L279 123C255 114 244 98 244 77C244 50 264 30 291 30H366' fill='none' stroke='black' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/></g></mask><rect x='8' y='8' width='384' height='384' rx='88' fill='currentColor' mask='url(#navui-logo-mask)'/></svg>"
+  },
+  {
     "name": "@ncdai",
     "homepage": "https://chanhdai.com/components",
     "url": "https://chanhdai.com/r/{name}.json",
