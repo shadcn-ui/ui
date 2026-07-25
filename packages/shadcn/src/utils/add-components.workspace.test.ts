@@ -210,6 +210,27 @@ async function writePackageImportProject(cwd: string) {
 }
 
 describe("addComponents workspace routing", () => {
+  it("throws when workspace registry items cannot be resolved", async () => {
+    const appConfig = createMockConfig()
+    const uiConfig = createMockConfig({
+      resolvedPaths: {
+        ...appConfig.resolvedPaths,
+        cwd: "/packages/ui",
+      },
+    })
+
+    vi.mocked(getWorkspaceConfig).mockResolvedValue({
+      ui: uiConfig,
+    })
+    vi.mocked(resolveRegistryTree).mockResolvedValue(null)
+
+    await expect(
+      addComponents(["missing"], appConfig, { silent: true })
+    ).rejects.toThrow("Failed to fetch components from registry.")
+
+    expect(updateFiles).not.toHaveBeenCalled()
+  })
+
   it("should route registry:hook files to workspaceConfig.hooks", async () => {
     const appConfig = createMockConfig()
     const uiConfig = createMockConfig({

@@ -36,7 +36,9 @@ import {
   getRegistriesConfig,
   getRegistriesIndex,
   getRegistry,
+  getRegistryBaseColor,
   getRegistryItems,
+  getShadcnRegistryIndex,
   resolveTree,
 } from "./api"
 import { RegistriesIndexParseError } from "./errors"
@@ -137,6 +139,26 @@ afterEach(() => {
   server.resetHandlers()
 })
 afterAll(() => server.close())
+
+describe("registry metadata", () => {
+  it("throws when the registry index cannot be fetched", async () => {
+    server.use(
+      http.get(`${REGISTRY_URL}/index.json`, () => HttpResponse.error())
+    )
+
+    await expect(getShadcnRegistryIndex()).rejects.toThrow()
+  })
+
+  it("throws when a base color cannot be fetched", async () => {
+    server.use(
+      http.get(`${REGISTRY_URL}/colors/neutral.json`, () =>
+        HttpResponse.error()
+      )
+    )
+
+    await expect(getRegistryBaseColor("neutral")).rejects.toThrow()
+  })
+})
 
 describe("getRegistryItem", () => {
   it("should read and parse a valid local JSON file", async () => {
