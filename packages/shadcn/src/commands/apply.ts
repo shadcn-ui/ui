@@ -1,7 +1,11 @@
 import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightApply } from "@/src/preflights/preflight-apply"
-import { decodePreset, isPresetCode } from "@/src/preset/preset"
+import {
+  decodePreset,
+  isPresetCode,
+  type PresetBase,
+} from "@/src/preset/preset"
 import {
   DEFAULT_PRESETS,
   promptToOpenPresetBuilder,
@@ -535,7 +539,7 @@ async function getApplyWorkspaceConfigs(config: Config) {
 
 export function resolveApplyInitUrl(
   preset: string,
-  currentBase: "radix" | "base",
+  currentBase: PresetBase,
   options: { template?: string; rtl?: boolean; only?: string } = {}
 ) {
   if (isUrl(preset)) {

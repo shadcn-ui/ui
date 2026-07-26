@@ -13,7 +13,10 @@ import {
   RegistryNotFoundError,
   RegistryParseError,
   RegistryUnauthorizedError,
+  RegistryValidationError,
 } from "@/src/registry/errors"
+import { getFixturesDir } from "@/src/test-helpers"
+import { getConfig } from "@/src/utils/get-config"
 import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
 import {
@@ -28,13 +31,18 @@ import {
 import { z } from "zod"
 
 import {
+  getItemTargetPath,
   getRegistries,
   getRegistriesConfig,
   getRegistriesIndex,
   getRegistry,
+  getRegistryBaseColor,
   getRegistryItems,
+  getShadcnRegistryIndex,
+  resolveTree,
 } from "./api"
 import { RegistriesIndexParseError } from "./errors"
+import { registryItemSchema } from "./schema"
 
 vi.mock("@/src/utils/handle-error", () => ({
   handleError: vi.fn(),
@@ -131,6 +139,26 @@ afterEach(() => {
   server.resetHandlers()
 })
 afterAll(() => server.close())
+
+describe("registry metadata", () => {
+  it("throws when the registry index cannot be fetched", async () => {
+    server.use(
+      http.get(`${REGISTRY_URL}/index.json`, () => HttpResponse.error())
+    )
+
+    await expect(getShadcnRegistryIndex()).rejects.toThrow()
+  })
+
+  it("throws when a base color cannot be fetched", async () => {
+    server.use(
+      http.get(`${REGISTRY_URL}/colors/neutral.json`, () =>
+        HttpResponse.error()
+      )
+    )
+
+    await expect(getRegistryBaseColor("neutral")).rejects.toThrow()
+  })
+})
 
 describe("getRegistryItem", () => {
   it("should read and parse a valid local JSON file", async () => {
@@ -861,6 +889,36 @@ describe("getRegistry", () => {
     expect(result.items).toHaveLength(0)
   })
 
+  it("should reject source registries that use include", async () => {
+    server.use(
+      http.get("https://source.com/registry.json", () => {
+        return HttpResponse.json({
+          name: "@source/registry",
+          homepage: "https://source.com",
+          include: ["registry/ui/registry.json"],
+          items: [],
+        })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@source": {
+          url: "https://source.com/{name}.json",
+        },
+      },
+    } as any
+
+    await expect(
+      getRegistry("@source", { config: mockConfig })
+    ).rejects.toThrow(RegistryValidationError)
+    await expect(
+      getRegistry("@source", { config: mockConfig })
+    ).rejects.toThrow("must serve a resolved registry catalog")
+  })
+
   it("should handle 404 error from registry endpoint", async () => {
     server.use(
       http.get("https://notfound.com/registry.json", () => {
@@ -1096,9 +1154,12 @@ describe("getRegistry", () => {
     } catch (error) {
       expect(error).toBeInstanceOf(RegistryParseError)
       if (error instanceof RegistryParseError) {
-        expect(error.message).toContain("Failed to parse registry")
+        expect(error.message).toContain("Failed to parse registry catalog")
         expect(error.message).toContain("@parsetest/registry")
         expect(error.context?.item).toBe("@parsetest/registry")
+        expect(error.suggestion).toContain(
+          "https://ui.shadcn.com/schema/registry.json"
+        )
         expect(error.parseError).toBeDefined()
         if (error.parseError instanceof z.ZodError) {
           expect(error.parseError.errors.length).toBeGreaterThan(0)
@@ -1172,6 +1233,28 @@ describe("getRegistry", () => {
         { name: "card", type: "registry:ui" },
       ],
     })
+  })
+
+  it("should reject direct URL source registries that use include", async () => {
+    const registryUrl = "https://example.com/source-registry.json"
+
+    server.use(
+      http.get(registryUrl, () => {
+        return HttpResponse.json({
+          name: "source-registry",
+          homepage: "https://example.com",
+          include: ["registry/ui/registry.json"],
+          items: [],
+        })
+      })
+    )
+
+    await expect(getRegistry(registryUrl)).rejects.toThrow(
+      RegistryValidationError
+    )
+    await expect(getRegistry(registryUrl)).rejects.toThrow(
+      "must serve a resolved registry catalog"
+    )
   })
 
   it("should handle malformed URL gracefully", async () => {
@@ -1807,5 +1890,110 @@ describe("getRegistriesConfig", () => {
 
       await expect(getRegistriesIndex({ useCache: false })).rejects.toThrow()
     })
+  })
+})
+
+describe("resolveTree", () => {
+  it("resolve tree", async () => {
+    const index = [
+      {
+        name: "button",
+        dependencies: ["@radix-ui/react-slot"],
+        type: "registry:ui",
+        files: [{ type: "registry:ui", path: "button.tsx" }],
+      },
+      {
+        name: "dialog",
+        dependencies: ["@radix-ui/react-dialog"],
+        registryDependencies: ["button"],
+        type: "registry:ui",
+        files: [{ type: "registry:ui", path: "dialog.tsx" }],
+      },
+      {
+        name: "input",
+        registryDependencies: ["button"],
+        type: "registry:ui",
+        files: [{ type: "registry:ui", path: "input.tsx" }],
+      },
+      {
+        name: "alert-dialog",
+        dependencies: ["@radix-ui/react-alert-dialog"],
+        registryDependencies: ["button", "dialog"],
+        type: "registry:ui",
+        files: [{ type: "registry:ui", path: "alert-dialog.tsx" }],
+      },
+      {
+        name: "example-card",
+        type: "registry:component",
+        files: [{ type: "registry:component", path: "example-card.tsx" }],
+        registryDependencies: ["button", "dialog", "input"],
+      },
+    ] satisfies z.infer<typeof registryItemSchema>[]
+
+    expect(
+      (await resolveTree(index, ["button"])).map((entry) => entry.name).sort()
+    ).toEqual(["button"])
+
+    expect(
+      (await resolveTree(index, ["dialog"])).map((entry) => entry.name).sort()
+    ).toEqual(["button", "dialog"])
+
+    expect(
+      (await resolveTree(index, ["alert-dialog", "dialog"]))
+        .map((entry) => entry.name)
+        .sort()
+    ).toEqual(["alert-dialog", "button", "dialog"])
+
+    expect(
+      (await resolveTree(index, ["example-card"]))
+        .map((entry) => entry.name)
+        .sort()
+    ).toEqual(["button", "dialog", "example-card", "input"])
+
+    expect(
+      (await resolveTree(index, ["foo"])).map((entry) => entry.name).sort()
+    ).toEqual([])
+
+    expect(
+      (await resolveTree(index, ["button", "foo"]))
+        .map((entry) => entry.name)
+        .sort()
+    ).toEqual(["button"])
+  })
+})
+
+describe("getItemTargetPath", () => {
+  it("get item target path", async () => {
+    // Full config.
+    let appDir = getFixturesDir("config-full")
+    expect(
+      await getItemTargetPath((await getConfig(appDir))!, {
+        type: "registry:ui",
+      })
+    ).toEqual(path.resolve(appDir, "./src/ui"))
+
+    // Partial config.
+    appDir = getFixturesDir("config-partial")
+    expect(
+      await getItemTargetPath((await getConfig(appDir))!, {
+        type: "registry:ui",
+      })
+    ).toEqual(path.resolve(appDir, "./components/ui"))
+
+    // JSX.
+    appDir = getFixturesDir("config-jsx")
+    expect(
+      await getItemTargetPath((await getConfig(appDir))!, {
+        type: "registry:ui",
+      })
+    ).toEqual(path.resolve(appDir, "./components/ui"))
+
+    // Custom paths.
+    appDir = getFixturesDir("config-ui")
+    expect(
+      await getItemTargetPath((await getConfig(appDir))!, {
+        type: "registry:ui",
+      })
+    ).toEqual(path.resolve(appDir, "./src/ui"))
   })
 })

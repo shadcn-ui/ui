@@ -185,9 +185,7 @@ export function DirectoryAddProvider({
             </DrawerHeader>
             <div className="px-4">{Content}</div>
             <DrawerFooter>
-              <DrawerClose asChild>
-                <Button size="sm">Done</Button>
-              </DrawerClose>
+              <DrawerClose render={<Button size="sm" />}>Done</DrawerClose>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>

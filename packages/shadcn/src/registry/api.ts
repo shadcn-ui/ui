@@ -1,4 +1,5 @@
 import path from "path"
+import { resolveGitHubRegistrySource } from "@/src/registry/address"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
 import {
@@ -6,18 +7,17 @@ import {
   BUILTIN_REGISTRIES,
   REGISTRY_URL,
 } from "@/src/registry/constants"
-import {
-  clearRegistryContext,
-  setRegistryHeaders,
-} from "@/src/registry/context"
+import { setRegistryHeaders, withRegistryContext } from "@/src/registry/context"
 import {
   ConfigParseError,
   RegistriesIndexParseError,
   RegistryInvalidNamespaceError,
   RegistryNotFoundError,
   RegistryParseError,
+  RegistryValidationError,
 } from "@/src/registry/errors"
 import { fetchRegistry } from "@/src/registry/fetcher"
+import { fetchGitHubRegistryCatalog } from "@/src/registry/github"
 import {
   fetchRegistryItems,
   resolveRegistryTree,
@@ -40,22 +40,29 @@ import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import { z } from "zod"
 
-export async function getRegistry(
+type RegistryApiOptions = {
+  config?: Partial<Config>
+  useCache?: boolean
+}
+
+export async function getRegistry(name: string, options?: RegistryApiOptions) {
+  return withRegistryContext(() => getRegistryWithContext(name, options))
+}
+
+async function getRegistryWithContext(
   name: string,
-  options?: {
-    config?: Partial<Config>
-    useCache?: boolean
-  }
+  options?: RegistryApiOptions
 ) {
   const { config, useCache } = options || {}
 
   if (isUrl(name)) {
     const [result] = await fetchRegistry([name], { useCache })
-    try {
-      return registrySchema.parse(result)
-    } catch (error) {
-      throw new RegistryParseError(name, error)
-    }
+    return parseRegistryCatalog(name, result)
+  }
+
+  const githubSource = resolveGitHubRegistrySource(name)
+  if (githubSource) {
+    return fetchGitHubRegistryCatalog(githubSource, { useCache })
   }
 
   if (!name.startsWith("@")) {
@@ -84,38 +91,61 @@ export async function getRegistry(
 
   const [result] = await fetchRegistry([urlAndHeaders.url], { useCache })
 
+  return parseRegistryCatalog(registryName, result)
+}
+
+function parseRegistryCatalog(name: string, result: unknown) {
   try {
-    return registrySchema.parse(result)
+    const registry = registrySchema.parse(result)
+
+    if (registry.include?.length) {
+      throw new RegistryValidationError(
+        `Registry catalog "${name}" uses "include", but consumer registry endpoints must serve a resolved registry catalog. Run "npx shadcn build" and serve the built registry.json, or use loadRegistry() in a dynamic route.`,
+        {
+          context: {
+            registry: name,
+            include: registry.include,
+          },
+          suggestion:
+            "Serve a flattened registry.json for CLI consumers. Source registry.json files with include are supported by shadcn build and loadRegistry().",
+        }
+      )
+    }
+
+    return registry
   } catch (error) {
-    throw new RegistryParseError(registryName, error)
+    if (error instanceof RegistryValidationError) {
+      throw error
+    }
+
+    throw new RegistryParseError(name, error, {
+      subject: "registry catalog",
+      suggestion:
+        "The registry catalog may be corrupted or have an invalid format. Please make sure it returns a valid registry.json object. See https://ui.shadcn.com/schema/registry.json.",
+    })
   }
 }
 
 export async function getRegistryItems(
   items: string[],
-  options?: {
-    config?: Partial<Config>
-    useCache?: boolean
-  }
+  options?: RegistryApiOptions
 ) {
   const { config, useCache = false } = options || {}
 
-  clearRegistryContext()
-
-  return fetchRegistryItems(items, configWithDefaults(config), { useCache })
+  return withRegistryContext(() =>
+    fetchRegistryItems(items, configWithDefaults(config), { useCache })
+  )
 }
 
 export async function resolveRegistryItems(
   items: string[],
-  options?: {
-    config?: Partial<Config>
-    useCache?: boolean
-  }
+  options?: RegistryApiOptions
 ) {
   const { config, useCache = false } = options || {}
 
-  clearRegistryContext()
-  return resolveRegistryTree(items, configWithDefaults(config), { useCache })
+  return withRegistryContext(() =>
+    resolveRegistryTree(items, configWithDefaults(config), { useCache })
+  )
 }
 
 export async function getRegistriesConfig(
@@ -160,14 +190,9 @@ export async function getRegistriesConfig(
 }
 
 export async function getShadcnRegistryIndex() {
-  try {
-    const [result] = await fetchRegistry(["index.json"])
+  const [result] = await fetchRegistry(["index.json"])
 
-    return registryIndexSchema.parse(result)
-  } catch (error) {
-    logger.error("\n")
-    handleError(error)
-  }
+  return registryIndexSchema.parse(result)
 }
 
 export async function getRegistryStyles() {
@@ -197,13 +222,9 @@ export async function getRegistryBaseColors() {
 }
 
 export async function getRegistryBaseColor(baseColor: string) {
-  try {
-    const [result] = await fetchRegistry([`colors/${baseColor}.json`])
+  const [result] = await fetchRegistry([`colors/${baseColor}.json`])
 
-    return registryBaseColorSchema.parse(result)
-  } catch (error) {
-    handleError(error)
-  }
+  return registryBaseColorSchema.parse(result)
 }
 
 /**

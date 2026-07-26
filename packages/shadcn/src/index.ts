@@ -4,6 +4,7 @@ import { apply } from "@/src/commands/apply"
 import { build } from "@/src/commands/build"
 import { diff } from "@/src/commands/diff"
 import { docs } from "@/src/commands/docs"
+import { eject } from "@/src/commands/eject"
 import { info } from "@/src/commands/info"
 import { init } from "@/src/commands/init"
 import { mcp } from "@/src/commands/mcp"
@@ -38,6 +39,7 @@ async function main() {
     .addCommand(view)
     .addCommand(search)
     .addCommand(migrate)
+    .addCommand(eject)
     .addCommand(info)
     .addCommand(build)
     .addCommand(mcp)

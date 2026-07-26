@@ -1,3 +1,4 @@
+import { createHash } from "crypto"
 import { promises as fs } from "fs"
 import { homedir } from "os"
 import path from "path"
@@ -12,15 +13,9 @@ import {
   RegistryParseError,
   RegistryUnauthorizedError,
 } from "@/src/registry/errors"
-import { createProxyDispatcher } from "@/src/registry/proxy"
+import { fetchWithProxy } from "@/src/registry/proxy"
 import { registryItemSchema } from "@/src/schema"
-import { type Dispatcher } from "undici"
 import { z } from "zod"
-
-// MSW's Node adapter patches `globalThis.fetch`, so we keep using it here.
-// `dispatcher` is an undici-specific fetch option not declared on DOM's
-// RequestInit; we type it locally to pass it through without casting.
-const dispatcher: Dispatcher | undefined = createProxyDispatcher()
 
 const registryCache = new Map<string, Promise<any>>()
 
@@ -41,16 +36,16 @@ export async function fetchRegistry(
     const results = await Promise.all(
       paths.map(async (path) => {
         const url = resolveRegistryUrl(path)
+        const headers = getRegistryHeadersFromContext(url)
+        const cacheKey = getRegistryCacheKey(url, headers)
 
         // Check cache first if caching is enabled
-        if (options.useCache && registryCache.has(url)) {
-          return registryCache.get(url)
+        if (options.useCache && registryCache.has(cacheKey)) {
+          return registryCache.get(cacheKey)
         }
 
         // Store the promise in the cache before awaiting if caching is enabled.
         const fetchPromise = (async () => {
-          // Get headers from context for this URL.
-          const headers = getRegistryHeadersFromContext(url)
           const requestHeaders = new Headers({
             Accept: "application/vnd.shadcn.v1+json, application/json;q=0.9",
             "User-Agent": "shadcn",
@@ -60,11 +55,9 @@ export async function fetchRegistry(
             requestHeaders.set(key, value)
           }
 
-          const init: RequestInit & { dispatcher?: Dispatcher } = {
+          const response = await fetchWithProxy(url, {
             headers: requestHeaders,
-            dispatcher,
-          }
-          const response = await fetch(url, init)
+          })
 
           if (!response.ok) {
             let messageFromServer = undefined
@@ -121,7 +114,7 @@ export async function fetchRegistry(
         })()
 
         if (options.useCache) {
-          registryCache.set(url, fetchPromise)
+          registryCache.set(cacheKey, fetchPromise)
         }
         return fetchPromise
       })
@@ -131,6 +124,20 @@ export async function fetchRegistry(
   } catch (error) {
     throw error
   }
+}
+
+function getRegistryCacheKey(
+  url: string,
+  headers: Record<string, string>
+): string {
+  const normalizedHeaders = Object.entries(headers)
+    .map(([key, value]) => [key.toLowerCase(), value] as const)
+    .sort(([a], [b]) => a.localeCompare(b))
+  const headersHash = createHash("sha256")
+    .update(JSON.stringify(normalizedHeaders))
+    .digest("hex")
+
+  return `${url}:${headersHash}`
 }
 
 export async function fetchRegistryLocal(filePath: string) {

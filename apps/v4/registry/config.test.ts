@@ -2,13 +2,16 @@ import { describe, expect, it } from "vitest"
 
 import publicSchema from "../public/schema.json"
 import {
+  BASES,
   buildPartialRegistryBase,
   buildRegistryBase,
+  buildThemeForPreset,
   DEFAULT_CONFIG,
   designSystemConfigSchema,
   parseRegistryBaseParts,
   POINTER_CURSOR_SELECTOR,
   PRESETS,
+  STYLES,
 } from "./config"
 
 const legacyPublicSchemaStyles = ["default", "new-york"] as const
@@ -133,6 +136,16 @@ describe("buildRegistryBase", () => {
     )
   })
 
+  it("defines every base and style preset exactly once", () => {
+    const presetNames = PRESETS.map((preset) => preset.name)
+    const expectedPresetNames = BASES.flatMap((base) =>
+      STYLES.map((style) => `${base.name}-${style.name}`)
+    )
+
+    expect([...presetNames].sort()).toEqual([...expectedPresetNames].sort())
+    expect(new Set(presetNames).size).toBe(presetNames.length)
+  })
+
   it("rejects chartColor values that are unavailable for the selected base color", () => {
     const result = designSystemConfigSchema.safeParse({
       base: "radix",
@@ -149,6 +162,31 @@ describe("buildRegistryBase", () => {
     })
 
     expect(result.success).toBe(false)
+  })
+})
+
+describe("buildThemeForPreset", () => {
+  it("builds a copyable registry theme item", () => {
+    const result = buildThemeForPreset({
+      ...DEFAULT_CONFIG,
+      baseColor: "taupe",
+      theme: "taupe",
+      chartColor: "taupe",
+      menuAccent: "bold",
+      radius: "large",
+    })
+
+    expect(result).toMatchObject({
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "taupe-taupe",
+      type: "registry:theme",
+    })
+    expect(result.cssVars?.light?.radius).toBe("0.875rem")
+    expect(result.cssVars?.light?.accent).toBe(result.cssVars?.light?.primary)
+    expect(result.cssVars?.dark?.accent).toBe(result.cssVars?.dark?.primary)
+    expect(result.cssVars?.light?.background).toBeDefined()
+    expect(result.cssVars?.dark?.background).toBeDefined()
+    expect(result.css).toBeUndefined()
   })
 })
 

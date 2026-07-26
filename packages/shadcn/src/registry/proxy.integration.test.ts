@@ -1,11 +1,11 @@
+import { createServer, type Server } from "http"
 import {
-  type AddressInfo,
   connect as netConnect,
   createServer as netCreateServer,
+  type AddressInfo,
   type Server as NetServer,
   type Socket,
 } from "net"
-import { createServer, type Server } from "http"
 import { fetch } from "undici"
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest"
 
@@ -88,9 +88,7 @@ function createSocksServer(): NetServer {
         const cmd = buffer[1]
         const atyp = buffer[3]
         if (version !== 0x05 || cmd !== 0x01) {
-          client.end(
-            Buffer.from([0x05, 0x07, 0x00, 0x01, 0, 0, 0, 0, 0, 0])
-          )
+          client.end(Buffer.from([0x05, 0x07, 0x00, 0x01, 0, 0, 0, 0, 0, 0]))
           return
         }
         let host: string
@@ -106,9 +104,7 @@ function createSocksServer(): NetServer {
           host = buffer.subarray(5, 5 + dlen).toString("utf8")
           headerLen = 5 + dlen + 2
         } else {
-          client.end(
-            Buffer.from([0x05, 0x08, 0x00, 0x01, 0, 0, 0, 0, 0, 0])
-          )
+          client.end(Buffer.from([0x05, 0x08, 0x00, 0x01, 0, 0, 0, 0, 0, 0]))
           return
         }
         const port = buffer.readUInt16BE(headerLen - 2)
@@ -116,9 +112,7 @@ function createSocksServer(): NetServer {
 
         const upstream = netConnect(port, host, () => {
           // Reply: success, IPv4, 0.0.0.0:0 as bound address (acceptable per RFC).
-          client.write(
-            Buffer.from([0x05, 0x00, 0x00, 0x01, 0, 0, 0, 0, 0, 0])
-          )
+          client.write(Buffer.from([0x05, 0x00, 0x00, 0x01, 0, 0, 0, 0, 0, 0]))
           phase = "tunneling"
           const remainder = buffer.subarray(headerLen)
           if (remainder.length > 0) upstream.write(remainder)

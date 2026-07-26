@@ -11,6 +11,10 @@ export const legacyStyles = [
     name: "radix-nova",
     title: "Radix Nova",
   },
+  {
+    name: "aria-nova",
+    title: "React Aria Nova",
+  },
 ] as const
 
 export type Style = (typeof legacyStyles)[number]

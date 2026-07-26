@@ -1,7 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalEnv": ["NODE_ENV"],
-  "pipeline": {
+  "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "env": [
@@ -16,7 +16,13 @@
         "V0_EDIT_SECRET",
         "DEPLOYMENT_PROTECTION_BYPASS"
       ],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+      "outputs": [
+        "dist/**",
+        ".next/**",
+        "!.next/cache/**",
+        "public/r/styles/**",
+        "styles/**"
+      ]
     },
     "preview": {
       "env": ["NEXT_PUBLIC_APP_URL"],
@@ -42,7 +48,8 @@
     },
     "typecheck": {},
     "dev": {
-      "cache": false
+      "cache": false,
+      "persistent": true
     },
     "check": {
       "cache": false

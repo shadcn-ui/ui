@@ -10,21 +10,21 @@
   },
   "dependencies": {
     "next-themes": "^0.4.6",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "zod": "^3.25.76"
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.18",
-    "@turbo/gen": "^2.8.1",
-    "@types/node": "^25.1.0",
-    "@types/react": "^19.2.10",
-    "@types/react-dom": "^19.2.3",
+    "@tailwindcss/postcss": "^4",
+    "@turbo/gen": "^2.9.15",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
-    "eslint": "^9.39.2",
-    "tailwindcss": "^4.1.18",
-    "typescript": "^5.9.3"
+    "eslint": "^9",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   },
   "exports": {
     "./globals.css": "./src/styles/globals.css",
