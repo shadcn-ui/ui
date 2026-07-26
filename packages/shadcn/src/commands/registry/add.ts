@@ -1,12 +1,11 @@
 import path from "path"
 import { getRegistries } from "@/src/registry/api"
-import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
+import { addRegistriesToConfig } from "@/src/registry/project-config"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { Command } from "commander"
-import fs from "fs-extra"
 import prompts from "prompts"
 import { z } from "zod"
 
@@ -34,179 +33,75 @@ export const add = new Command()
         cwd: path.resolve(opts.cwd),
         silent: opts.silent,
       })
-
-      const registryArgs =
+      const registryArguments =
         registries.length > 0
           ? registries
           : await promptForRegistries({ silent: options.silent })
-
-      await addRegistriesToConfig(registryArgs, options.cwd, {
-        silent: options.silent,
+      const result = await addRegistriesToConfig(registryArguments, {
+        cwd: options.cwd,
       })
+      if (result.addedRegistries.length > 0) {
+        spinner("Updated components.json.", {
+          silent: options.silent,
+        }).succeed()
+      }
+      printResult(result, options)
     } catch (error) {
       logger.break()
       handleError(error)
     }
   })
 
-export function parseRegistryArg(arg: string): {
-  namespace: string
-  url?: string
-} {
-  const [namespace, ...rest] = arg.split("=")
-  const url = rest.length > 0 ? rest.join("=") : undefined
-
-  if (!namespace.startsWith("@")) {
-    throw new Error(
-      `Invalid registry namespace: ${highlighter.info(namespace)}. ` +
-        `Registry names must start with @ (e.g., @acme).`
-    )
-  }
-
-  return { namespace, url }
-}
-
 function pluralize(count: number, singular: string, plural: string) {
   return `${count} ${count === 1 ? singular : plural}`
 }
 
-async function addRegistriesToConfig(
-  registryArgs: string[],
-  cwd: string,
+function printResult(
+  result: Awaited<ReturnType<typeof addRegistriesToConfig>>,
   options: { silent?: boolean }
 ) {
-  const configPath = path.resolve(cwd, "components.json")
-  if (!fs.existsSync(configPath)) {
-    throw new Error(
-      `No ${highlighter.info("components.json")} found. Run ${highlighter.info(
-        "shadcn init"
-      )} first.`
-    )
-  }
-
-  const parsed = registryArgs.map(parseRegistryArg)
-  const needsLookup = parsed.filter((p) => !p.url)
-  let registriesIndex: { name: string; url: string }[] = []
-  if (needsLookup.length > 0) {
-    const fetchSpinner = spinner("Fetching registries.", {
-      silent: options.silent,
-    }).start()
-    const registries = await getRegistries()
-    if (!registries) {
-      fetchSpinner.fail()
-      throw new Error("Failed to fetch registries.")
-    }
-    fetchSpinner.succeed()
-    registriesIndex = registries
-  }
-
-  const registriesToAdd: Record<string, string> = {}
-  for (const { namespace, url } of parsed) {
-    if (namespace in BUILTIN_REGISTRIES) {
-      logger.warn(
-        `${highlighter.info(
-          namespace
-        )} is a built-in registry and cannot be added.`
-      )
-      continue
-    }
-
-    if (url) {
-      if (!url.includes("{name}")) {
-        throw new Error(
-          `Invalid registry URL for ${highlighter.info(
-            namespace
-          )}. URL must include {name} placeholder. Example: ${highlighter.info(
-            `${namespace}=https://example.com/r/{name}.json`
-          )}`
-        )
-      }
-      registriesToAdd[namespace] = url
-    } else {
-      const registry = registriesIndex.find((r) => r.name === namespace)
-      if (!registry) {
-        throw new Error(
-          `Registry ${highlighter.info(namespace)} not found. ` +
-            `Provide a URL: ${highlighter.info(
-              `${namespace}=https://.../{name}.json`
-            )}`
-        )
-      }
-      registriesToAdd[namespace] = registry.url
-    }
-  }
-
-  if (Object.keys(registriesToAdd).length === 0) {
-    return { addedRegistries: [] }
-  }
-
-  const existingConfig = await fs.readJson(configPath)
-  const existingRegistries = existingConfig.registries || {}
-  const newRegistries: Record<string, string> = {}
-  const skipped: string[] = []
-  for (const [ns, url] of Object.entries(registriesToAdd)) {
-    if (existingRegistries[ns]) {
-      skipped.push(ns)
-    } else {
-      newRegistries[ns] = url
-    }
-  }
-
-  if (Object.keys(newRegistries).length === 0) {
-    if (skipped.length > 0 && !options.silent) {
-      spinner(
-        `Skipped ${pluralize(
-          skipped.length,
-          "registry",
-          "registries"
-        )}: (already configured)`,
-        { silent: options.silent }
-      )?.info()
-      for (const name of skipped) {
-        logger.log(`  - ${name}`)
-      }
-    } else if (!options.silent) {
-      logger.info("No new registries to add.")
-    }
+  if (options.silent) {
     return
   }
 
-  const updatedConfig = {
-    ...existingConfig,
-    registries: {
-      ...existingRegistries,
-      ...newRegistries,
-    },
+  if (result.addedRegistries.length > 0) {
+    spinner(
+      `Added ${pluralize(
+        result.addedRegistries.length,
+        "registry",
+        "registries"
+      )}:`
+    )?.succeed()
+    for (const namespace of result.addedRegistries) {
+      logger.log(`  - ${namespace}`)
+    }
+  } else if (result.skippedRegistries.length === 0) {
+    logger.info("No new registries to add.")
   }
 
-  const writeSpinner = spinner("Updating components.json.", {
-    silent: options.silent,
-  }).start()
-  await fs.writeJson(configPath, updatedConfig, { spaces: 2 })
-  writeSpinner.succeed()
-
-  if (!options.silent) {
-    const newRegistryNames = Object.keys(newRegistries)
-    spinner(
-      `Added ${pluralize(newRegistryNames.length, "registry", "registries")}:`,
-      { silent: options.silent }
-    )?.succeed()
-    for (const name of newRegistryNames) {
-      logger.log(`  - ${name}`)
+  for (const skipped of result.skippedRegistries) {
+    if (skipped.reason === "built-in") {
+      logger.warn(
+        `${highlighter.info(
+          skipped.namespace
+        )} is a built-in registry and cannot be added.`
+      )
     }
+  }
 
-    if (skipped.length > 0) {
-      spinner(
-        `Skipped ${pluralize(
-          skipped.length,
-          "registry",
-          "registries"
-        )}: (already configured)`,
-        { silent: options.silent }
-      )?.info()
-      for (const name of skipped) {
-        logger.log(`  - ${name}`)
-      }
+  const alreadyConfigured = result.skippedRegistries
+    .filter((entry) => entry.reason === "already-configured")
+    .map((entry) => entry.namespace)
+  if (alreadyConfigured.length > 0) {
+    spinner(
+      `Skipped ${pluralize(
+        alreadyConfigured.length,
+        "registry",
+        "registries"
+      )}: (already configured)`
+    )?.info()
+    for (const namespace of alreadyConfigured) {
+      logger.log(`  - ${namespace}`)
     }
   }
 }
@@ -216,24 +111,19 @@ async function promptForRegistries(options: { silent?: boolean }) {
     silent: options.silent,
   }).start()
   const registries = await getRegistries()
-  if (!registries) {
-    fetchSpinner.fail()
-    throw new Error("Failed to fetch registries.")
-  }
   fetchSpinner.succeed()
 
   const sorted = [...registries].sort((a, b) => a.name.localeCompare(b.name))
-
   const { selected } = await prompts({
     type: "autocompleteMultiselect",
     name: "selected",
     message: "Which registries would you like to add?",
     hint: "Space to select. A to toggle all. Enter to submit.",
     instructions: false,
-    choices: sorted.map((r) => ({
-      title: r.name,
-      description: r.description,
-      value: r.name,
+    choices: sorted.map((registry) => ({
+      title: registry.name,
+      description: registry.description,
+      value: registry.name,
     })),
   })
 

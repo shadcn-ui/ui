@@ -4,9 +4,16 @@ export {
   resolveRegistryItems,
   getRegistry,
   getRegistriesIndex,
+  getRegistriesConfig,
 } from "./api"
 
 export { addRegistryItems, type AddRegistryItemsOptions } from "./add"
+
+export {
+  addRegistriesToConfig,
+  type AddRegistriesToConfigOptions,
+  type AddRegistriesToConfigResult,
+} from "./project-config"
 
 export { searchRegistries } from "./search"
 

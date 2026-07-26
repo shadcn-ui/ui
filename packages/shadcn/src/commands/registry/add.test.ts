@@ -1,47 +1,39 @@
+import { parseRegistryArgument } from "@/src/registry/project-config"
 import { describe, expect, it } from "vitest"
 
-import { parseRegistryArg } from "./add"
-
-describe("parseRegistryArg", () => {
+describe("parseRegistryArgument", () => {
   it("should parse namespace without URL", () => {
-    expect(parseRegistryArg("@magicui")).toEqual({ namespace: "@magicui" })
-    expect(parseRegistryArg("@aceternity")).toEqual({
+    expect(parseRegistryArgument("@magicui")).toEqual({
+      namespace: "@magicui",
+    })
+    expect(parseRegistryArgument("@aceternity")).toEqual({
       namespace: "@aceternity",
     })
   })
 
   it("should parse namespace with URL", () => {
     expect(
-      parseRegistryArg("@mycompany=https://example.com/r/{name}.json")
+      parseRegistryArgument("@mycompany=https://example.com/r/{name}.json")
     ).toEqual({
       namespace: "@mycompany",
       url: "https://example.com/r/{name}.json",
     })
   })
 
-  it("should handle URL with query params containing =", () => {
+  it("should preserve URL query parameters containing =", () => {
     expect(
-      parseRegistryArg("@foo=https://example.com/r/{name}.json?token=abc")
-    ).toEqual({
-      namespace: "@foo",
-      url: "https://example.com/r/{name}.json?token=abc",
-    })
-  })
-
-  it("should handle URL with multiple = in query params", () => {
-    expect(
-      parseRegistryArg(
-        "@bar=https://example.com/r/{name}.json?token=abc&key=xyz"
+      parseRegistryArgument(
+        "@foo=https://example.com/r/{name}.json?token=abc&key=xyz"
       )
     ).toEqual({
-      namespace: "@bar",
+      namespace: "@foo",
       url: "https://example.com/r/{name}.json?token=abc&key=xyz",
     })
   })
 
   it("should handle URL with port number", () => {
     expect(
-      parseRegistryArg("@local=http://localhost:8080/r/{name}.json")
+      parseRegistryArgument("@local=http://localhost:8080/r/{name}.json")
     ).toEqual({
       namespace: "@local",
       url: "http://localhost:8080/r/{name}.json",
@@ -49,10 +41,9 @@ describe("parseRegistryArg", () => {
   })
 
   it("should throw for namespace without @", () => {
-    expect(() => parseRegistryArg("foo")).toThrow("must start with @")
-    expect(() => parseRegistryArg("magicui")).toThrow("must start with @")
+    expect(() => parseRegistryArgument("foo")).toThrow("must start with @")
     expect(() =>
-      parseRegistryArg("mycompany=https://example.com/r/{name}.json")
+      parseRegistryArgument("mycompany=https://example.com/r/{name}.json")
     ).toThrow("must start with @")
   })
 })

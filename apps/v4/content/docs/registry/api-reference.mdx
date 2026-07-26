@@ -65,6 +65,33 @@ can change between requests and you need fresh data each time.
 const fresh = await getRegistry("@shadcn", { useCache: false })
 ```
 
+### getRegistriesConfig
+
+Read registry namespace mappings from a project's `components.json`. Built-in
+registries are included even when the project has no configuration file.
+
+```ts showLineNumbers
+import { getRegistriesConfig } from "shadcn/registry"
+
+const config = await getRegistriesConfig(process.cwd())
+```
+
+### addRegistriesToConfig
+
+Add registry namespace mappings to an existing `components.json`. Pass either an
+explicit URL template or a namespace listed in the shadcn registry directory.
+The function does not prompt or write output, and reports mappings that were
+added or skipped.
+
+```ts showLineNumbers
+import { addRegistriesToConfig } from "shadcn/registry"
+
+const result = await addRegistriesToConfig(
+  ["@acme=https://acme.com/r/{name}.json"],
+  { cwd: process.cwd() }
+)
+```
+
 ### getRegistry
 
 Fetch a single registry by name.
