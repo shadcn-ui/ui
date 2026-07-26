@@ -6,7 +6,7 @@ import {
   rawConfigSchema,
   workspaceConfigSchema,
 } from "@/src/schema"
-import { getProjectInfo } from "@/src/utils/get-project-info"
+import { getProjectInfo, getTsConfig } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { resolveImportWithMetadata } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
@@ -63,6 +63,20 @@ export async function resolveConfigPaths(
         tsConfig.message ?? ""
       }`.trim()
     )
+  }
+
+  // Fallback: if loadConfig didn't find paths (e.g. Vite's project-references
+  // pattern), try reading tsconfig directly from alternative file names.
+  if (!Object.keys(tsConfig.paths).length) {
+    const customPaths = (await getTsConfig(cwd))?.compilerOptions.paths
+    if (customPaths && Object.keys(customPaths).length) {
+      tsConfig.paths = Object.fromEntries(
+        Object.entries(customPaths).map(([key, value]) => [
+          key,
+          Array.isArray(value) ? value : [value],
+        ])
+      )
+    }
   }
 
   // Resolve the primary aliases first so fallbacks can reuse their results.
