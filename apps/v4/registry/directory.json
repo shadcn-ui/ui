@@ -2017,5 +2017,12 @@
     "url": "https://verno-studio.vercel.app/r/{name}.json",
     "description": "The full OKLCH scale plus every variable shadcn components read, so anything you install lands on the same tokens instead of its own colors.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'><rect width='64' height='64' fill='var(--foreground)'/><path d='M42.8135 16.0503H48L34.2018 48H29.896L16 16.0503L21.3333 16L32.1468 41.8113L42.8135 16.0503Z' fill='var(--background)'/></svg>"
+  },
+  {
+    "name": "@onchain-ui",
+    "homepage": "https://onchain-ui.dev",
+    "url": "https://onchain-ui.dev/r/{name}.json",
+    "description": "Web3 components for shadcn apps. Wallet identity, token logos, balances, and market UI primitives for EVM products.",
+    "logo": "<svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M32 8L58 54H6L32 8Z\" fill=\"currentColor\"/><path d=\"M24 38H40\" stroke=\"var(--background)\" stroke-width=\"4\" stroke-linecap=\"round\"/><circle cx=\"24\" cy=\"38\" r=\"3\" fill=\"var(--background)\"/><circle cx=\"40\" cy=\"38\" r=\"3\" fill=\"var(--background)\"/></svg>"
   }
 ]
