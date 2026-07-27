@@ -1,25 +1,24 @@
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
 import { addRegistryItems } from "./add"
+import { ConfigParseError } from "./errors"
 
 const {
   mockAddComponents,
-  mockClearRegistryContext,
-  mockCreateConfig,
-  mockEnsureRegistriesInConfig,
-  mockGetConfig,
+  mockConfigWithDefaults,
   mockLoadEnvFiles,
   mockResolveRegistryTree,
   mockWithRegistryContext,
 } = vi.hoisted(() => ({
   mockAddComponents: vi.fn(),
-  mockClearRegistryContext: vi.fn(),
-  mockCreateConfig: vi.fn(),
-  mockEnsureRegistriesInConfig: vi.fn(),
-  mockGetConfig: vi.fn(),
+  mockConfigWithDefaults: vi.fn(),
   mockLoadEnvFiles: vi.fn(),
   mockResolveRegistryTree: vi.fn(),
   mockWithRegistryContext: vi.fn(),
+}))
+
+vi.mock("@/src/registry/config", () => ({
+  configWithDefaults: mockConfigWithDefaults,
 }))
 
 vi.mock("@/src/registry/resolver", () => ({
@@ -27,7 +26,6 @@ vi.mock("@/src/registry/resolver", () => ({
 }))
 
 vi.mock("@/src/registry/context", () => ({
-  clearRegistryContext: mockClearRegistryContext,
   withRegistryContext: mockWithRegistryContext,
 }))
 
@@ -39,37 +37,56 @@ vi.mock("@/src/utils/env-loader", () => ({
   loadEnvFiles: mockLoadEnvFiles,
 }))
 
-vi.mock("@/src/utils/get-config", () => ({
-  createConfig: mockCreateConfig,
-  getConfig: mockGetConfig,
-}))
-
-vi.mock("@/src/utils/registries", () => ({
-  ensureRegistriesInConfig: mockEnsureRegistriesInConfig,
-}))
-
 describe("addRegistryItems", () => {
-  const projectConfig = { resolvedPaths: { cwd: "/project" } }
-  const updatedConfig = { ...projectConfig, registries: { "@acme": "url" } }
+  const projectConfig = {
+    style: "new-york",
+    rsc: false,
+    tsx: true,
+    tailwind: {
+      config: "tailwind.config.ts",
+      css: "app/globals.css",
+      baseColor: "neutral",
+      cssVariables: true,
+    },
+    aliases: {
+      components: "@/components",
+      utils: "@/lib/utils",
+    },
+    registries: {
+      "@acme": "https://acme.com/{name}.json",
+    },
+    resolvedPaths: {
+      cwd: "/project",
+      tailwindConfig: "/project/tailwind.config.ts",
+      tailwindCss: "/project/app/globals.css",
+      utils: "/project/lib/utils",
+      components: "/project/components",
+      ui: "/project/components/ui",
+      lib: "/project/lib",
+      hooks: "/project/hooks",
+    },
+  }
   const projectEnv = { REGISTRY_TOKEN: "project-token" }
 
   beforeEach(() => {
     vi.clearAllMocks()
     mockLoadEnvFiles.mockResolvedValue(projectEnv)
     mockWithRegistryContext.mockImplementation((callback) => callback())
-    mockGetConfig.mockResolvedValue(projectConfig)
-    mockEnsureRegistriesInConfig.mockResolvedValue({
-      config: updatedConfig,
-      newRegistries: [],
-    })
+    mockConfigWithDefaults.mockImplementation((config) => config)
     mockResolveRegistryTree.mockResolvedValue({ files: [] })
   })
 
-  it("loads project configuration and installs registry items", async () => {
+  it("uses a full project config to install registry items", async () => {
+    const resolvedTree = { files: [] }
+    mockResolveRegistryTree.mockResolvedValueOnce(resolvedTree)
+
     await addRegistryItems(["@acme/button"], {
       cwd: "/project",
+      config: projectConfig,
       overwrite: true,
       silent: true,
+      skipFonts: true,
+      path: "src/components",
     })
 
     expect(mockLoadEnvFiles).toHaveBeenCalledWith("/project", {
@@ -79,51 +96,41 @@ describe("addRegistryItems", () => {
     expect(mockWithRegistryContext).toHaveBeenCalledWith(expect.any(Function), {
       env: projectEnv,
     })
-    expect(mockEnsureRegistriesInConfig).toHaveBeenCalledWith(
+    expect(mockConfigWithDefaults).toHaveBeenCalledWith(projectConfig)
+    expect(mockResolveRegistryTree).toHaveBeenCalledWith(
       ["@acme/button"],
       projectConfig,
-      { silent: true, writeFile: true }
+      { requireUniversal: false, useCache: true }
     )
     expect(mockAddComponents).toHaveBeenCalledWith(
       ["@acme/button"],
-      updatedConfig,
-      expect.objectContaining({
+      projectConfig,
+      {
         overwrite: true,
         silent: true,
+        skipFonts: true,
+        path: "src/components",
         interactive: false,
-      })
+        overwriteCssVars: undefined,
+        resolvedTree,
+      }
     )
-    expect(mockClearRegistryContext).toHaveBeenCalledOnce()
   })
 
-  it("defaults cwd to process.cwd()", async () => {
-    const cwd = "/default/project"
-    const cwdSpy = vi.spyOn(process, "cwd").mockReturnValue(cwd)
-
-    try {
-      await addRegistryItems(["@acme/button"])
-    } finally {
-      cwdSpy.mockRestore()
+  it("uses a registries-only config for universal items", async () => {
+    const inputConfig = {
+      registries: {
+        "@acme": "https://acme.com/{name}.json",
+      },
     }
-
-    expect(mockLoadEnvFiles).toHaveBeenCalledWith(cwd, {
-      processEnv: expect.any(Object),
-    })
-    expect(mockGetConfig).toHaveBeenCalledWith(cwd)
-  })
-
-  it("propagates installation errors to the caller", async () => {
-    mockAddComponents.mockRejectedValueOnce(new Error("Installation failed."))
-
-    await expect(
-      addRegistryItems(["@acme/button"], { cwd: "/project" })
-    ).rejects.toThrow("Installation failed.")
-
-    expect(mockClearRegistryContext).toHaveBeenCalledOnce()
-  })
-
-  it("installs universal items without components.json", async () => {
-    const universalConfig = { resolvedPaths: { cwd: "/project" } }
+    const universalConfig = {
+      ...projectConfig,
+      resolvedPaths: {
+        ...projectConfig.resolvedPaths,
+        cwd: "/project",
+      },
+      registries: inputConfig.registries,
+    }
     const resolvedTree = {
       files: [
         {
@@ -133,27 +140,61 @@ describe("addRegistryItems", () => {
         },
       ],
     }
-    mockGetConfig.mockResolvedValue(null)
-    mockCreateConfig.mockReturnValue(universalConfig)
-    mockEnsureRegistriesInConfig.mockResolvedValue({
-      config: universalConfig,
-      newRegistries: [],
+    mockConfigWithDefaults.mockReturnValueOnce(universalConfig)
+    mockResolveRegistryTree.mockResolvedValueOnce(resolvedTree)
+
+    await addRegistryItems(["@acme/agent"], {
+      cwd: "/project",
+      config: inputConfig,
     })
-    mockResolveRegistryTree.mockResolvedValue(resolvedTree)
+
+    expect(mockConfigWithDefaults).toHaveBeenCalledWith({
+      registries: inputConfig.registries,
+      resolvedPaths: { cwd: "/project" },
+    })
+    expect(mockResolveRegistryTree).toHaveBeenCalledWith(
+      ["@acme/agent"],
+      universalConfig,
+      { requireUniversal: true, useCache: true }
+    )
+    expect(mockAddComponents).toHaveBeenCalledWith(
+      ["@acme/agent"],
+      universalConfig,
+      {
+        interactive: false,
+        overwriteCssVars: false,
+        resolvedTree,
+      }
+    )
+  })
+
+  it("uses default config for universal URL items", async () => {
+    const universalConfig = {
+      ...projectConfig,
+      resolvedPaths: {
+        ...projectConfig.resolvedPaths,
+        cwd: "/project",
+      },
+    }
+    const resolvedTree = {
+      files: [
+        {
+          path: "agent.ts",
+          target: "agent/extensions/agent.ts",
+          type: "registry:file",
+        },
+      ],
+    }
+    mockConfigWithDefaults.mockReturnValueOnce(universalConfig)
+    mockResolveRegistryTree.mockResolvedValueOnce(resolvedTree)
 
     await addRegistryItems(["https://example.com/agent.json"], {
       cwd: "/project",
     })
 
-    expect(mockCreateConfig).toHaveBeenCalledWith({
-      style: "new-york",
+    expect(mockConfigWithDefaults).toHaveBeenCalledWith({
       resolvedPaths: { cwd: "/project" },
     })
-    expect(mockEnsureRegistriesInConfig).toHaveBeenCalledWith(
-      ["https://example.com/agent.json"],
-      universalConfig,
-      { silent: undefined, writeFile: false }
-    )
     expect(mockResolveRegistryTree).toHaveBeenCalledWith(
       ["https://example.com/agent.json"],
       universalConfig,
@@ -162,48 +203,192 @@ describe("addRegistryItems", () => {
     expect(mockAddComponents).toHaveBeenCalledWith(
       ["https://example.com/agent.json"],
       universalConfig,
-      expect.objectContaining({
+      {
         interactive: false,
         overwriteCssVars: false,
         resolvedTree,
-      })
+      }
     )
   })
 
-  it("rejects non-universal dependencies without components.json", async () => {
-    const universalConfig = { resolvedPaths: { cwd: "/project" } }
-    mockGetConfig.mockResolvedValue(null)
-    mockCreateConfig.mockReturnValue(universalConfig)
-    mockEnsureRegistriesInConfig.mockResolvedValue({
-      config: universalConfig,
-      newRegistries: [],
+  it("uses the config cwd when cwd is omitted", async () => {
+    await addRegistryItems(["@acme/button"], {
+      config: projectConfig,
     })
-    mockResolveRegistryTree.mockRejectedValue(
+
+    expect(mockLoadEnvFiles).toHaveBeenCalledWith("/project", {
+      processEnv: expect.any(Object),
+    })
+  })
+
+  it("defaults cwd to process.cwd()", async () => {
+    const cwd = "/default/project"
+    const cwdSpy = vi.spyOn(process, "cwd").mockReturnValue(cwd)
+
+    try {
+      await addRegistryItems(["https://example.com/agent.json"])
+    } finally {
+      cwdSpy.mockRestore()
+    }
+
+    expect(mockLoadEnvFiles).toHaveBeenCalledWith(cwd, {
+      processEnv: expect.any(Object),
+    })
+    expect(mockConfigWithDefaults).toHaveBeenCalledWith({
+      resolvedPaths: { cwd },
+    })
+  })
+
+  it("rejects a cwd that conflicts with a full project config", async () => {
+    await expect(
+      addRegistryItems(["@acme/button"], {
+        cwd: "/other-project",
+        config: projectConfig,
+      })
+    ).rejects.toThrow("The provided cwd must match config.resolvedPaths.cwd.")
+
+    expect(mockLoadEnvFiles).not.toHaveBeenCalled()
+    expect(mockResolveRegistryTree).not.toHaveBeenCalled()
+    expect(mockAddComponents).not.toHaveBeenCalled()
+  })
+
+  it("rejects empty cwd values that conflict with a full project config", async () => {
+    await expect(
+      addRegistryItems(["@acme/button"], {
+        cwd: "",
+        config: projectConfig,
+      })
+    ).rejects.toThrow("The provided cwd must match config.resolvedPaths.cwd.")
+
+    await expect(
+      addRegistryItems(["@acme/button"], {
+        cwd: "/project",
+        config: {
+          ...projectConfig,
+          resolvedPaths: {
+            ...projectConfig.resolvedPaths,
+            cwd: "",
+          },
+        },
+      })
+    ).rejects.toThrow("The provided cwd must match config.resolvedPaths.cwd.")
+
+    expect(mockLoadEnvFiles).not.toHaveBeenCalled()
+    expect(mockResolveRegistryTree).not.toHaveBeenCalled()
+    expect(mockAddComponents).not.toHaveBeenCalled()
+  })
+
+  it("reports partial configs with resolvedPaths as invalid", async () => {
+    await expect(
+      addRegistryItems(["@acme/agent"], {
+        cwd: "/other-project",
+        config: {
+          registries: projectConfig.registries,
+          resolvedPaths: projectConfig.resolvedPaths,
+        },
+      })
+    ).rejects.toBeInstanceOf(ConfigParseError)
+
+    expect(mockLoadEnvFiles).not.toHaveBeenCalled()
+    expect(mockResolveRegistryTree).not.toHaveBeenCalled()
+    expect(mockAddComponents).not.toHaveBeenCalled()
+  })
+
+  it("reports invalid attempted full configs", async () => {
+    const invalidConfig = {
+      ...projectConfig,
+      unexpected: true,
+    }
+
+    await expect(
+      addRegistryItems(["@acme/button"], {
+        cwd: "/project",
+        config: invalidConfig,
+      })
+    ).rejects.toBeInstanceOf(ConfigParseError)
+
+    expect(mockConfigWithDefaults).not.toHaveBeenCalled()
+    expect(mockLoadEnvFiles).not.toHaveBeenCalled()
+    expect(mockResolveRegistryTree).not.toHaveBeenCalled()
+    expect(mockAddComponents).not.toHaveBeenCalled()
+  })
+
+  it("reports missing fields in attempted full configs", async () => {
+    const invalidConfig = {
+      ...projectConfig,
+      tailwind: {
+        config: "tailwind.config.ts",
+        css: "app/globals.css",
+        cssVariables: true,
+      },
+    }
+
+    await expect(
+      addRegistryItems(["@acme/button"], {
+        cwd: "/project",
+        config: invalidConfig as never,
+      })
+    ).rejects.toThrow("tailwind.baseColor")
+  })
+
+  it("reports invalid resolvedPaths cwd values", async () => {
+    const invalidConfig = {
+      ...projectConfig,
+      resolvedPaths: {
+        ...projectConfig.resolvedPaths,
+        cwd: 42,
+      },
+    }
+
+    await expect(
+      addRegistryItems(["@acme/button"], {
+        config: invalidConfig as never,
+      })
+    ).rejects.toBeInstanceOf(ConfigParseError)
+
+    expect(mockLoadEnvFiles).not.toHaveBeenCalled()
+    expect(mockResolveRegistryTree).not.toHaveBeenCalled()
+    expect(mockAddComponents).not.toHaveBeenCalled()
+  })
+
+  it("rejects non-universal items without a full project config", async () => {
+    const universalConfig = {
+      ...projectConfig,
+      resolvedPaths: {
+        ...projectConfig.resolvedPaths,
+        cwd: "/project",
+      },
+    }
+    mockConfigWithDefaults.mockReturnValueOnce(universalConfig)
+    mockResolveRegistryTree.mockRejectedValueOnce(
       new Error(
-        "A components.json file is required to add non-universal registry items or dependencies."
+        "A full project config is required to add non-universal registry items or dependencies."
       )
     )
 
     await expect(
-      addRegistryItems(["https://example.com/agent.json"], {
+      addRegistryItems(["@acme/button"], {
         cwd: "/project",
+        config: {
+          registries: projectConfig.registries,
+        },
       })
-    ).rejects.toThrow("non-universal registry items or dependencies")
+    ).rejects.toThrow("A full project config is required")
 
     expect(mockAddComponents).not.toHaveBeenCalled()
   })
 
-  it("rejects unresolved target aliases without components.json", async () => {
+  it("rejects unresolved target aliases without a full project config", async () => {
     const universalConfig = {
-      resolvedPaths: { cwd: "/project", ui: "" },
+      ...projectConfig,
+      resolvedPaths: {
+        ...projectConfig.resolvedPaths,
+        cwd: "/project",
+        ui: "",
+      },
     }
-    mockGetConfig.mockResolvedValue(null)
-    mockCreateConfig.mockReturnValue(universalConfig)
-    mockEnsureRegistriesInConfig.mockResolvedValue({
-      config: universalConfig,
-      newRegistries: [],
-    })
-    mockResolveRegistryTree.mockResolvedValue({
+    mockConfigWithDefaults.mockReturnValueOnce(universalConfig)
+    mockResolveRegistryTree.mockResolvedValueOnce({
       files: [
         {
           path: "agent.ts",
@@ -217,20 +402,23 @@ describe("addRegistryItems", () => {
       addRegistryItems(["https://example.com/agent.json"], {
         cwd: "/project",
       })
-    ).rejects.toThrow("resolve target aliases")
+    ).rejects.toThrow(
+      "A full project config is required to resolve target aliases."
+    )
 
     expect(mockAddComponents).not.toHaveBeenCalled()
   })
 
-  it("reports unresolved registry items without components.json", async () => {
-    const universalConfig = { resolvedPaths: { cwd: "/project" } }
-    mockGetConfig.mockResolvedValue(null)
-    mockCreateConfig.mockReturnValue(universalConfig)
-    mockEnsureRegistriesInConfig.mockResolvedValue({
-      config: universalConfig,
-      newRegistries: [],
-    })
-    mockResolveRegistryTree.mockResolvedValue(null)
+  it("reports unresolved registry items without a full project config", async () => {
+    const universalConfig = {
+      ...projectConfig,
+      resolvedPaths: {
+        ...projectConfig.resolvedPaths,
+        cwd: "/project",
+      },
+    }
+    mockConfigWithDefaults.mockReturnValueOnce(universalConfig)
+    mockResolveRegistryTree.mockResolvedValueOnce(null)
 
     await expect(
       addRegistryItems(["https://example.com/missing.json"], {
@@ -241,25 +429,24 @@ describe("addRegistryItems", () => {
     expect(mockAddComponents).not.toHaveBeenCalled()
   })
 
-  it("rejects non-universal items without components.json", async () => {
-    const universalConfig = { resolvedPaths: { cwd: "/project" } }
-    mockGetConfig.mockResolvedValue(null)
-    mockCreateConfig.mockReturnValue(universalConfig)
-    mockEnsureRegistriesInConfig.mockResolvedValue({
-      config: universalConfig,
-      newRegistries: [],
-    })
-    mockResolveRegistryTree.mockRejectedValue(
-      new Error(
-        "A components.json file is required to add non-universal registry items or dependencies."
-      )
-    )
+  it("propagates installation errors", async () => {
+    mockAddComponents.mockRejectedValueOnce(new Error("Installation failed."))
 
     await expect(
-      addRegistryItems(["@acme/button"], { cwd: "/project" })
-    ).rejects.toThrow("A components.json file is required")
+      addRegistryItems(["@acme/button"], {
+        cwd: "/project",
+        config: projectConfig,
+      })
+    ).rejects.toThrow("Installation failed.")
+  })
 
+  it("does nothing when no items are provided", async () => {
+    await addRegistryItems([], {
+      cwd: "/project",
+      config: projectConfig,
+    })
+
+    expect(mockLoadEnvFiles).not.toHaveBeenCalled()
     expect(mockAddComponents).not.toHaveBeenCalled()
-    expect(mockClearRegistryContext).toHaveBeenCalledOnce()
   })
 })

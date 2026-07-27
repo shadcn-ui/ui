@@ -287,7 +287,7 @@ export async function resolveRegistryTree(
     !payload.every((item) => isUniversalRegistryItem(item))
   ) {
     throw new Error(
-      "A components.json file is required to add non-universal registry items or dependencies."
+      "A full project config is required to add non-universal registry items or dependencies."
     )
   }
 
