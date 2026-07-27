@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest"
 import { addComponents, validateFilesTarget } from "./add-components"
 
 const {
+  mockGetRegistryItems,
   mockResolveRegistryTree,
   mockUpdateDependencies,
   mockUpdateTailwindConfig,
@@ -25,6 +26,7 @@ const {
   spinner.start.mockReturnValue(spinner)
 
   return {
+    mockGetRegistryItems: vi.fn(),
     mockResolveRegistryTree: vi.fn(),
     mockUpdateDependencies: vi.fn(),
     mockUpdateTailwindConfig: vi.fn(),
@@ -40,7 +42,7 @@ const {
 })
 
 vi.mock("@/src/registry/api", () => ({
-  getRegistryItems: vi.fn(),
+  getRegistryItems: mockGetRegistryItems,
 }))
 
 vi.mock("@/src/registry/config", () => ({
@@ -95,10 +97,6 @@ vi.mock("@/src/utils/spinner", () => ({
   spinner: vi.fn(() => spinnerInstance),
 }))
 
-vi.mock("@/src/utils/handle-error", () => ({
-  handleError: vi.fn(),
-}))
-
 vi.mock("@/src/utils/logger", () => ({
   logger: {
     info: vi.fn(),
@@ -126,6 +124,89 @@ describe("addComponents", () => {
       filesSkipped: [],
     })
     mockUpdateCss.mockResolvedValue(undefined)
+  })
+
+  it("throws when registry items cannot be resolved", async () => {
+    mockResolveRegistryTree.mockResolvedValue(null)
+
+    await expect(
+      addComponents(
+        ["missing"],
+        { resolvedPaths: { cwd: "/test/project" } } as any,
+        { silent: true }
+      )
+    ).rejects.toThrow("Failed to fetch components from registry.")
+
+    expect(spinnerInstance.fail).toHaveBeenCalledOnce()
+  })
+
+  it("passes non-interactive mode to prompt-capable updaters", async () => {
+    mockResolveRegistryTree.mockResolvedValue({
+      dependencies: ["example"],
+      devDependencies: [],
+      files: [
+        {
+          path: "registry/default/ui/button.tsx",
+          type: "registry:ui",
+          content: "export function Button() {}",
+        },
+      ],
+    })
+
+    await addComponents(
+      ["button"],
+      {
+        resolvedPaths: {
+          cwd: "/test/project",
+        },
+      } as any,
+      {
+        interactive: false,
+        silent: true,
+      }
+    )
+
+    expect(mockUpdateDependencies).toHaveBeenCalledWith(
+      ["example"],
+      [],
+      expect.any(Object),
+      expect.objectContaining({ interactive: false })
+    )
+    expect(mockUpdateFiles).toHaveBeenCalledWith(
+      expect.any(Array),
+      expect.any(Object),
+      expect.objectContaining({ interactive: false })
+    )
+  })
+
+  it("reuses a pre-resolved registry tree", async () => {
+    const resolvedTree = {
+      dependencies: [],
+      devDependencies: [],
+      files: [],
+      cssVars: {},
+    }
+
+    await addComponents(
+      ["button"],
+      {
+        resolvedPaths: {
+          cwd: "/test/project",
+        },
+      } as any,
+      {
+        resolvedTree,
+        silent: true,
+      }
+    )
+
+    expect(mockResolveRegistryTree).not.toHaveBeenCalled()
+    expect(mockGetRegistryItems).not.toHaveBeenCalled()
+    expect(mockUpdateFiles).toHaveBeenCalledWith(
+      resolvedTree.files,
+      expect.any(Object),
+      expect.any(Object)
+    )
   })
 
   it("passes pending heading font markers into updateFiles before CSS is written", async () => {
