@@ -3,6 +3,7 @@ export {
   getRegistryItems,
   resolveRegistryItems,
   getRegistry,
+  getRegistriesConfig,
   getRegistriesIndex,
 } from "./api"
 
