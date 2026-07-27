@@ -1,3 +1,4 @@
+import { existsSync } from "fs"
 import path from "path"
 import { resolveGitHubRegistrySource } from "@/src/registry/address"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
@@ -38,7 +39,17 @@ import {
 import { Config, explorer } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
+import { cosmiconfig } from "cosmiconfig"
 import { z } from "zod"
+
+const packageRegistriesExplorer = cosmiconfig("registries", {
+  packageProp: "registries",
+  searchPlaces: ["package.json"],
+})
+
+const registriesConfigFileSchema = z.object({
+  registries: registryConfigSchema.optional(),
+})
 
 type RegistryApiOptions = {
   config?: Partial<Config>
@@ -154,38 +165,58 @@ export async function getRegistriesConfig(
 ) {
   const { useCache = true } = options || {}
 
-  // Clear cache if requested
   if (!useCache) {
     explorer.clearCaches()
+    packageRegistriesExplorer.clearCaches()
   }
 
-  const configResult = await explorer.search(cwd)
+  const componentsJsonPath = path.resolve(cwd, "components.json")
+  if (existsSync(componentsJsonPath)) {
+    const configResult = await explorer.load(componentsJsonPath)
+    const config = parseRegistriesConfig(
+      cwd,
+      configResult?.config,
+      "components.json"
+    )
 
-  if (!configResult) {
-    // Do not throw an error if the config is missing.
-    // We still have access to the built-in registries.
     return {
-      registries: BUILTIN_REGISTRIES,
+      registries: {
+        ...BUILTIN_REGISTRIES,
+        ...config.registries,
+      },
     }
   }
 
-  // Parse just the registries field from the config
-  const registriesConfig = z
-    .object({
-      registries: registryConfigSchema.optional(),
-    })
-    .safeParse(configResult.config)
-
-  if (!registriesConfig.success) {
-    throw new ConfigParseError(cwd, registriesConfig.error)
+  const packageJsonPath = path.resolve(cwd, "package.json")
+  if (existsSync(packageJsonPath)) {
+    const configResult = await packageRegistriesExplorer.load(packageJsonPath)
+    return parseRegistriesConfig(
+      cwd,
+      {
+        registries: configResult?.config,
+      },
+      "package.json"
+    )
   }
 
-  // Merge built-in registries with user registries
   return {
-    registries: {
-      ...BUILTIN_REGISTRIES,
-      ...(registriesConfig.data.registries || {}),
-    },
+    registries: {},
+  }
+}
+
+function parseRegistriesConfig(
+  cwd: string,
+  config: unknown,
+  configFile: "components.json" | "package.json"
+) {
+  const result = registriesConfigFileSchema.safeParse(config)
+
+  if (!result.success) {
+    throw new ConfigParseError(cwd, result.error, configFile)
+  }
+
+  return {
+    registries: result.data.registries || {},
   }
 }
 
