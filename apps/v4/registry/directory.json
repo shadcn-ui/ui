@@ -1757,5 +1757,12 @@
     "url": "https://shadcn-loaders.vercel.app/r/{name}.json",
     "description": "A public registry of shadcn-inspired animated loaders and loading states.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='#111827'/><circle cx='12' cy='12' r='5' fill='#f59e0b'/></svg>"
+  },
+  {
+    "name": "@onchain-ui",
+    "homepage": "https://onchain-ui.dev",
+    "url": "https://onchain-ui.dev/r/{name}.json",
+    "description": "Web3 components for shadcn apps. Wallet identity, token logos, balances, and market UI primitives for EVM products.",
+    "logo": "<svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M32 8L58 54H6L32 8Z\" fill=\"currentColor\"/><path d=\"M24 38H40\" stroke=\"var(--background)\" stroke-width=\"4\" stroke-linecap=\"round\"/><circle cx=\"24\" cy=\"38\" r=\"3\" fill=\"var(--background)\"/><circle cx=\"40\" cy=\"38\" r=\"3\" fill=\"var(--background)\"/></svg>"
   }
 ]
