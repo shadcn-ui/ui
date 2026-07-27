@@ -1764,5 +1764,12 @@
     "url": "https://shadcndashboard.dev/r/{name}.json",
     "description": "Shadcn Dashboard is a collection of modern, production-ready dashboard layouts, components, and UI patterns built on top of shadcn/ui and Tailwind CSS. It’s designed to help developers build clean, scalable, and data-driven dashboards faster—without compromising on performance, accessibility, or customization.",
     "logo": "<svg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='20' fill='#053B25'/><path d='M32.1327 19.501C31.5178 19.6123 30.8844 19.6705 30.2375 19.6705C24.3886 19.6705 19.6471 14.9189 19.6471 9.05765C19.6471 8.89469 19.6507 8.73258 19.658 8.57141C13.8411 9.10533 9.28516 14.0074 9.28516 19.9759C9.28516 26.301 14.4019 31.4286 20.7137 31.4286C27.0256 31.4286 32.1423 26.301 32.1423 19.9759C32.1423 19.8168 32.1391 19.6585 32.1327 19.501Z' fill='#C2FD75'/></svg>"
+  },
+  {
+    "name": "@voraui",
+    "homepage": "https://voraui.vercel.app",
+    "url": "https://voraui.vercel.app/r/{name}.json",
+    "description": "Open source crypto market analytics components for shadcn/ui - candlestick trading charts, BTC rainbow chart, Fear & Greed and Altseason gauges, live from free public APIs.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 275 144' fill='none'><path d='M10 133.625C10 100.838 23.433 69.3931 47.3439 46.2089C71.2548 23.0247 103.685 10 137.5 10C171.315 10 203.745 23.0247 227.656 46.2089C251.567 69.3931 265 100.838 265 133.625' stroke='var(--foreground)' stroke-width='20' stroke-linecap='round'/><path d='M41.875 133.625C41.875 109.034 51.9497 85.4511 69.8829 68.063C87.8161 50.6748 112.139 40.9063 137.5 40.9062C162.861 40.9063 187.184 50.6748 205.117 68.063C223.05 85.4511 233.125 109.034 233.125 133.625' stroke='var(--foreground)' stroke-width='20' stroke-linecap='round'/><path d='M73.75 133.625C73.75 117.231 80.4665 101.509 92.4219 89.917C104.377 78.3249 120.592 71.8125 137.5 71.8125C154.408 71.8125 170.623 78.3249 182.578 89.917C194.534 101.509 201.25 117.231 201.25 133.625' stroke='var(--foreground)' stroke-width='20' stroke-linecap='round'/></svg>"
   }
 ]
