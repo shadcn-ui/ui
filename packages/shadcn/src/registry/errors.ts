@@ -385,12 +385,17 @@ export class ConfigParseError extends RegistryError {
   constructor(
     public readonly cwd: string,
     parseError: unknown,
-    public readonly configFile = "components.json"
+    public readonly configFile:
+      | "components.json"
+      | "package.json"
+      | "config" = "components.json"
   ) {
     const configName =
       configFile === "package.json"
         ? 'package.json "registries"'
-        : "components.json"
+        : configFile === "config"
+          ? "provided config"
+          : "components.json"
     let message = `Invalid ${configName} configuration in ${cwd}.`
 
     if (parseError instanceof z.ZodError) {
@@ -406,7 +411,9 @@ export class ConfigParseError extends RegistryError {
       suggestion:
         configFile === "package.json"
           ? 'Check the "registries" field in your package.json file for invalid configuration.'
-          : "Check your components.json file for syntax errors or invalid configuration. Run 'npx shadcn@latest init' to regenerate a valid configuration.",
+          : configFile === "config"
+            ? "Pass a valid full project config, or omit resolvedPaths and provide only registry configuration."
+            : "Check your components.json file for syntax errors or invalid configuration. Run 'npx shadcn@latest init' to regenerate a valid configuration.",
     })
     this.name = "ConfigParseError"
   }

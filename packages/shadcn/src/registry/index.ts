@@ -7,7 +7,7 @@ export {
   getRegistriesIndex,
 } from "./api"
 
-export { addRegistryItems, type AddRegistryItemsOptions } from "./add"
+export { addRegistryItems } from "./add"
 
 export { searchRegistries } from "./search"
 
