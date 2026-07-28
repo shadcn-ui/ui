@@ -1,0 +1,183 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --animate-marquee: marquee 50s linear infinite;
+  --animate-team-spin: team-spin 12s linear infinite;
+  --animate-team-spin-img: team-spin-img 12s linear infinite;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-selection: var(--selection);
+  --color-selection-foreground: var(--selection-foreground);
+}
+
+:root {
+  --radius: 1rem;
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  /* Base anchors: F7F6F3 (bg), CDB3FF (brand), 2B182E (plum) */
+  --background: oklch(0.9731 0.0041 91.45);
+  --foreground: oklch(0.2447 0.0485 321.94);
+  --card: oklch(0.99 0.004 91.45);
+  --card-foreground: oklch(0.2447 0.0485 321.94);
+  --popover: oklch(0.99 0.004 91.45);
+  --popover-foreground: oklch(0.2447 0.0485 321.94);
+  --primary: oklch(0.8158 0.1083 299.71);
+  --primary-foreground: oklch(0.2447 0.0485 321.94);
+  --secondary: oklch(0.94 0.03 300);
+  --secondary-foreground: oklch(0.2447 0.0485 321.94);
+  --muted: oklch(0.95 0.015 305);
+  --muted-foreground: oklch(0.5 0.045 315);
+  --accent: oklch(0.92 0.045 300);
+  --accent-foreground: oklch(0.2447 0.0485 321.94);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.9 0.014 310);
+  --input: oklch(0.9 0.014 310);
+  --ring: oklch(0.72 0.12 300);
+  --selection: oklch(0.8158 0.1083 299.71);
+  --selection-foreground: oklch(0.2447 0.0485 321.94);
+}
+
+.dark {
+  --background: oklch(0.2447 0.0485 321.94);
+  --foreground: oklch(0.9731 0.0041 91.45);
+  --card: oklch(0.29 0.05 322);
+  --card-foreground: oklch(0.9731 0.0041 91.45);
+  --popover: oklch(0.29 0.05 322);
+  --popover-foreground: oklch(0.9731 0.0041 91.45);
+  --primary: oklch(0.8158 0.1083 299.71);
+  --primary-foreground: oklch(0.2447 0.0485 321.94);
+  --secondary: oklch(0.33 0.045 320);
+  --secondary-foreground: oklch(0.9731 0.0041 91.45);
+  --muted: oklch(0.33 0.045 320);
+  --muted-foreground: oklch(0.72 0.03 310);
+  --accent: oklch(0.38 0.055 315);
+  --accent-foreground: oklch(0.9731 0.0041 91.45);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.9 0.03 300 / 12%);
+  --input: oklch(0.9 0.03 300 / 15%);
+  --ring: oklch(0.7 0.11 300);
+  --selection: oklch(0.8158 0.1083 299.71);
+  --selection-foreground: oklch(0.2447 0.0485 321.94);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  ::selection {
+    @apply bg-selection text-selection-foreground;
+  }
+  body {
+    @apply bg-background font-sans text-foreground;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes team-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Counter-rotation keeps the photo upright; scale is baked in so it isn't dropped. */
+@keyframes team-spin-img {
+  from {
+    transform: rotate(0deg) scale(1.25);
+  }
+  to {
+    transform: rotate(-360deg) scale(1.25);
+  }
+}
+
+/* Smooth (fading) caret blink for the typewriter headings. Holds solid for
+   most of the cycle, then does one gentle fade — calmer than a symmetric pulse. */
+@keyframes caret-blink {
+  0%,
+  70%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  50% {
+    opacity: 0;
+  }
+}
+
+/* One-shot 360° spin for the feature-icon background blobs. Eased so each
+   revolution starts and settles gently rather than snapping. */
+@keyframes feature-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+/* Hover shape-morph for people photos (paused until hover). */
+@keyframes photo-morph {
+  0% { d: path("M0.924 0.500L0.959 0.548L0.984 0.603L0.998 0.662L0.999 0.722L0.989 0.782L0.966 0.839L0.933 0.889L0.889 0.933L0.839 0.966L0.782 0.989L0.722 0.999L0.662 0.998L0.603 0.984L0.548 0.959L0.500 0.924L0.452 0.959L0.397 0.984L0.338 0.998L0.278 0.999L0.218 0.989L0.161 0.966L0.111 0.933L0.067 0.889L0.034 0.839L0.011 0.782L0.001 0.722L0.002 0.662L0.016 0.603L0.041 0.548L0.076 0.500L0.041 0.452L0.016 0.397L0.002 0.338L0.001 0.278L0.011 0.218L0.034 0.161L0.067 0.111L0.111 0.067L0.161 0.034L0.218 0.011L0.278 0.001L0.338 0.002L0.397 0.016L0.452 0.041L0.500 0.076L0.548 0.041L0.603 0.016L0.662 0.002L0.722 0.001L0.782 0.011L0.839 0.034L0.889 0.067L0.933 0.111L0.966 0.161L0.989 0.218L0.999 0.278L0.998 0.338L0.984 0.397L0.959 0.452Z"); }
+  26.7% { d: path("M0.924 0.500L0.959 0.548L0.984 0.603L0.998 0.662L0.999 0.722L0.989 0.782L0.966 0.839L0.933 0.889L0.889 0.933L0.839 0.966L0.782 0.989L0.722 0.999L0.662 0.998L0.603 0.984L0.548 0.959L0.500 0.924L0.452 0.959L0.397 0.984L0.338 0.998L0.278 0.999L0.218 0.989L0.161 0.966L0.111 0.933L0.067 0.889L0.034 0.839L0.011 0.782L0.001 0.722L0.002 0.662L0.016 0.603L0.041 0.548L0.076 0.500L0.041 0.452L0.016 0.397L0.002 0.338L0.001 0.278L0.011 0.218L0.034 0.161L0.067 0.111L0.111 0.067L0.161 0.034L0.218 0.011L0.278 0.001L0.338 0.002L0.397 0.016L0.452 0.041L0.500 0.076L0.548 0.041L0.603 0.016L0.662 0.002L0.722 0.001L0.782 0.011L0.839 0.034L0.889 0.067L0.933 0.111L0.966 0.161L0.989 0.218L0.999 0.278L0.998 0.338L0.984 0.397L0.959 0.452Z"); animation-timing-function: cubic-bezier(0.22,1,0.36,1); }
+  33.3% { d: path("M0.933 0.500L0.933 0.546L0.933 0.592L0.933 0.641L0.933 0.693L0.933 0.750L0.883 0.779L0.838 0.805L0.796 0.829L0.756 0.852L0.717 0.875L0.677 0.898L0.637 0.921L0.595 0.945L0.550 0.971L0.500 1.000L0.450 0.971L0.405 0.945L0.363 0.921L0.323 0.898L0.283 0.875L0.244 0.852L0.204 0.829L0.162 0.805L0.117 0.779L0.067 0.750L0.067 0.693L0.067 0.641L0.067 0.592L0.067 0.546L0.067 0.500L0.067 0.454L0.067 0.408L0.067 0.359L0.067 0.307L0.067 0.250L0.117 0.221L0.162 0.195L0.204 0.171L0.244 0.148L0.283 0.125L0.323 0.102L0.363 0.079L0.405 0.055L0.450 0.029L0.500 0.000L0.550 0.029L0.595 0.055L0.637 0.079L0.677 0.102L0.717 0.125L0.756 0.148L0.796 0.171L0.838 0.195L0.883 0.221L0.933 0.250L0.933 0.307L0.933 0.359L0.933 0.408L0.933 0.454Z"); }
+  60% { d: path("M0.933 0.500L0.933 0.546L0.933 0.592L0.933 0.641L0.933 0.693L0.933 0.750L0.883 0.779L0.838 0.805L0.796 0.829L0.756 0.852L0.717 0.875L0.677 0.898L0.637 0.921L0.595 0.945L0.550 0.971L0.500 1.000L0.450 0.971L0.405 0.945L0.363 0.921L0.323 0.898L0.283 0.875L0.244 0.852L0.204 0.829L0.162 0.805L0.117 0.779L0.067 0.750L0.067 0.693L0.067 0.641L0.067 0.592L0.067 0.546L0.067 0.500L0.067 0.454L0.067 0.408L0.067 0.359L0.067 0.307L0.067 0.250L0.117 0.221L0.162 0.195L0.204 0.171L0.244 0.148L0.283 0.125L0.323 0.102L0.363 0.079L0.405 0.055L0.450 0.029L0.500 0.000L0.550 0.029L0.595 0.055L0.637 0.079L0.677 0.102L0.717 0.125L0.756 0.148L0.796 0.171L0.838 0.195L0.883 0.221L0.933 0.250L0.933 0.307L0.933 0.359L0.933 0.408L0.933 0.454Z"); animation-timing-function: cubic-bezier(0.22,1,0.36,1); }
+  66.7% { d: path("M1.000 0.500L0.992 0.552L0.968 0.599L0.928 0.639L0.893 0.675L0.903 0.733L0.895 0.787L0.871 0.834L0.834 0.871L0.787 0.895L0.733 0.903L0.675 0.893L0.639 0.928L0.599 0.968L0.552 0.992L0.500 1.000L0.448 0.992L0.401 0.968L0.361 0.928L0.325 0.893L0.267 0.903L0.213 0.895L0.166 0.871L0.129 0.834L0.105 0.787L0.097 0.733L0.107 0.675L0.072 0.639L0.032 0.599L0.008 0.552L0.000 0.500L0.008 0.448L0.032 0.401L0.072 0.361L0.107 0.325L0.097 0.267L0.105 0.213L0.129 0.166L0.166 0.129L0.213 0.105L0.267 0.097L0.325 0.107L0.361 0.072L0.401 0.032L0.448 0.008L0.500 0.000L0.552 0.008L0.599 0.032L0.639 0.072L0.675 0.107L0.733 0.097L0.787 0.105L0.834 0.129L0.871 0.166L0.895 0.213L0.903 0.267L0.893 0.325L0.928 0.361L0.968 0.401L0.992 0.448Z"); }
+  93.3% { d: path("M1.000 0.500L0.992 0.552L0.968 0.599L0.928 0.639L0.893 0.675L0.903 0.733L0.895 0.787L0.871 0.834L0.834 0.871L0.787 0.895L0.733 0.903L0.675 0.893L0.639 0.928L0.599 0.968L0.552 0.992L0.500 1.000L0.448 0.992L0.401 0.968L0.361 0.928L0.325 0.893L0.267 0.903L0.213 0.895L0.166 0.871L0.129 0.834L0.105 0.787L0.097 0.733L0.107 0.675L0.072 0.639L0.032 0.599L0.008 0.552L0.000 0.500L0.008 0.448L0.032 0.401L0.072 0.361L0.107 0.325L0.097 0.267L0.105 0.213L0.129 0.166L0.166 0.129L0.213 0.105L0.267 0.097L0.325 0.107L0.361 0.072L0.401 0.032L0.448 0.008L0.500 0.000L0.552 0.008L0.599 0.032L0.639 0.072L0.675 0.107L0.733 0.097L0.787 0.105L0.834 0.129L0.871 0.166L0.895 0.213L0.903 0.267L0.893 0.325L0.928 0.361L0.968 0.401L0.992 0.448Z"); animation-timing-function: cubic-bezier(0.22,1,0.36,1); }
+  100% { d: path("M0.924 0.500L0.959 0.548L0.984 0.603L0.998 0.662L0.999 0.722L0.989 0.782L0.966 0.839L0.933 0.889L0.889 0.933L0.839 0.966L0.782 0.989L0.722 0.999L0.662 0.998L0.603 0.984L0.548 0.959L0.500 0.924L0.452 0.959L0.397 0.984L0.338 0.998L0.278 0.999L0.218 0.989L0.161 0.966L0.111 0.933L0.067 0.889L0.034 0.839L0.011 0.782L0.001 0.722L0.002 0.662L0.016 0.603L0.041 0.548L0.076 0.500L0.041 0.452L0.016 0.397L0.002 0.338L0.001 0.278L0.011 0.218L0.034 0.161L0.067 0.111L0.111 0.067L0.161 0.034L0.218 0.011L0.278 0.001L0.338 0.002L0.397 0.016L0.452 0.041L0.500 0.076L0.548 0.041L0.603 0.016L0.662 0.002L0.722 0.001L0.782 0.011L0.839 0.034L0.889 0.067L0.933 0.111L0.966 0.161L0.989 0.218L0.999 0.278L0.998 0.338L0.984 0.397L0.959 0.452Z"); }
+}
