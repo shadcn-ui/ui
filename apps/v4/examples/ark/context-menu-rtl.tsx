@@ -122,7 +122,7 @@ export function ContextMenuRtl() {
                   {t.back}
                   <ContextMenuShortcut>⌘[</ContextMenuShortcut>
                 </ContextMenuItem>
-                <ContextMenuItem disabled>
+                <ContextMenuItem value="forward" disabled>
                   <ArrowRightIcon />
                   {t.forward}
                   <ContextMenuShortcut>⌘]</ContextMenuShortcut>
@@ -152,7 +152,7 @@ export function ContextMenuRtl() {
               </ContextMenuGroup>
               <ContextMenuSeparator />
               <ContextMenuGroup>
-                <ContextMenuItem variant="destructive">
+                <ContextMenuItem value="delete" variant="destructive">
                   {t.delete}
                 </ContextMenuItem>
               </ContextMenuGroup>
@@ -161,14 +161,19 @@ export function ContextMenuRtl() {
         </ContextMenuGroup>
         <ContextMenuSeparator />
         <ContextMenuGroup>
-          <ContextMenuCheckboxItem checked>
+          <ContextMenuCheckboxItem value="show-bookmarks" checked>
             {t.showBookmarks}
           </ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem value="cb-1">{t.showFullUrls}</ContextMenuCheckboxItem>
+          <ContextMenuCheckboxItem value="show-full-urls" checked={false}>
+            {t.showFullUrls}
+          </ContextMenuCheckboxItem>
         </ContextMenuGroup>
         <ContextMenuSeparator />
         <ContextMenuGroup>
-          <ContextMenuRadioGroup value={people} onValueChange={setPeople}>
+          <ContextMenuRadioGroup
+            value={people}
+            onValueChange={(details) => setPeople(details.value)}
+          >
             <ContextMenuLabel>{t.people}</ContextMenuLabel>
             <ContextMenuRadioItem value="pedro">{t.pedro}</ContextMenuRadioItem>
             <ContextMenuRadioItem value="colm">{t.colm}</ContextMenuRadioItem>

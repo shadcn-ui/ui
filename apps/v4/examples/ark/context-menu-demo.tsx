@@ -32,7 +32,7 @@ export function ContextMenuDemo() {
             Back
             <ContextMenuShortcut>⌘[</ContextMenuShortcut>
           </ContextMenuItem>
-          <ContextMenuItem disabled>
+          <ContextMenuItem value="forward" disabled>
             Forward
             <ContextMenuShortcut>⌘]</ContextMenuShortcut>
           </ContextMenuItem>
@@ -54,17 +54,21 @@ export function ContextMenuDemo() {
               </ContextMenuGroup>
               <ContextMenuSeparator />
               <ContextMenuGroup>
-                <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+                <ContextMenuItem value="delete" variant="destructive">
+                  Delete
+                </ContextMenuItem>
               </ContextMenuGroup>
             </ContextMenuSubContent>
           </ContextMenuSub>
         </ContextMenuGroup>
         <ContextMenuSeparator />
         <ContextMenuGroup>
-          <ContextMenuCheckboxItem checked>
+          <ContextMenuCheckboxItem value="show-bookmarks" checked>
             Show Bookmarks
           </ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem value="cb-1">Show Full URLs</ContextMenuCheckboxItem>
+          <ContextMenuCheckboxItem value="show-full-urls" checked={false}>
+            Show Full URLs
+          </ContextMenuCheckboxItem>
         </ContextMenuGroup>
         <ContextMenuSeparator />
         <ContextMenuGroup>

@@ -68,11 +68,7 @@ export function HoverCardRtl() {
           <HoverCardTrigger asChild>
             <Button variant="outline">{t[side]}</Button>
           </HoverCardTrigger>
-          <HoverCardContent
-            side={side}
-            className="flex w-64 flex-col gap-1"
-            dir={dir}
-          >
+          <HoverCardContent className="flex w-64 flex-col gap-1" dir={dir}>
             <div className="font-semibold">{t.name}</div>
             <div className="text-sm text-muted-foreground">{t.price}</div>
           </HoverCardContent>

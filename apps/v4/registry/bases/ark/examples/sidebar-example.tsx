@@ -205,6 +205,7 @@ export default function SidebarExample() {
                     {data.versions.map((version) => (
                       <DropdownMenuItem
                         key={version}
+                        value={version}
                         onSelect={() => setSelectedVersion(version)}
                       >
                         v{version}{" "}

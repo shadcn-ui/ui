@@ -6,7 +6,11 @@ import {
   useListCollection,
 } from "@ark-ui/react/collection"
 import { ark } from "@ark-ui/react/factory"
-import { Listbox } from "@ark-ui/react/listbox"
+import {
+  type CollectionItem,
+  Listbox,
+  type ListboxRootProps,
+} from "@ark-ui/react/listbox"
 
 import { cn } from "@/examples/ark/lib/utils"
 import {
@@ -19,10 +23,10 @@ import {
 import { InputGroup, InputGroupAddon } from "@/examples/ark/ui/input-group"
 import { SearchIcon, CheckIcon } from "lucide-react"
 
-function Command({
+function Command<T extends CollectionItem>({
   className,
   ...props
-}: React.ComponentProps<typeof Listbox.Root>) {
+}: ListboxRootProps<T>) {
   return (
     <Listbox.Root
       data-slot="command"

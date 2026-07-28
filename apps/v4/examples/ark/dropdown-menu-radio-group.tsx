@@ -23,7 +23,10 @@ export function DropdownMenuRadioGroupDemo() {
       <DropdownMenuContent className="w-32">
         <DropdownMenuGroup>
           <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
-          <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+          <DropdownMenuRadioGroup
+            value={position}
+            onValueChange={(details) => setPosition(details.value)}
+          >
             <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>

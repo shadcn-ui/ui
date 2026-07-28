@@ -51,13 +51,9 @@ export function NavMain({
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               {item.items?.length ? (
-                <DropdownMenuContent
-                  side={isMobile ? "bottom" : "right"}
-                  align={isMobile ? "end" : "start"}
-                  className="min-w-56 rounded-lg"
-                >
+                <DropdownMenuContent className="min-w-56 rounded-lg">
                   {item.items.map((item) => (
-                    <DropdownMenuItem asChild key={item.title}>
+                    <DropdownMenuItem asChild key={item.title} value={item.title}>
                       <a href={item.url}>{item.title}</a>
                     </DropdownMenuItem>
                   ))}

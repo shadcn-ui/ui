@@ -15,15 +15,20 @@ export function MenubarCheckbox() {
       <MenubarMenu>
         <MenubarTrigger>View</MenubarTrigger>
         <MenubarContent className="w-64">
-          <MenubarCheckboxItem value="cb-1">Always Show Bookmarks Bar</MenubarCheckboxItem>
-          <MenubarCheckboxItem checked>
+          <MenubarCheckboxItem
+            value="always-show-bookmarks-bar"
+            checked={false}
+          >
+            Always Show Bookmarks Bar
+          </MenubarCheckboxItem>
+          <MenubarCheckboxItem value="always-show-full-urls" checked>
             Always Show Full URLs
           </MenubarCheckboxItem>
           <MenubarSeparator />
-          <MenubarItem inset>
+          <MenubarItem value="reload" inset>
             Reload <MenubarShortcut>⌘R</MenubarShortcut>
           </MenubarItem>
-          <MenubarItem disabled inset>
+          <MenubarItem value="force-reload" disabled inset>
             Force Reload <MenubarShortcut>⇧⌘R</MenubarShortcut>
           </MenubarItem>
         </MenubarContent>
@@ -31,9 +36,15 @@ export function MenubarCheckbox() {
       <MenubarMenu>
         <MenubarTrigger>Format</MenubarTrigger>
         <MenubarContent>
-          <MenubarCheckboxItem checked>Strikethrough</MenubarCheckboxItem>
-          <MenubarCheckboxItem value="cb-2">Code</MenubarCheckboxItem>
-          <MenubarCheckboxItem value="cb-3">Superscript</MenubarCheckboxItem>
+          <MenubarCheckboxItem value="strikethrough" checked>
+            Strikethrough
+          </MenubarCheckboxItem>
+          <MenubarCheckboxItem value="code" checked={false}>
+            Code
+          </MenubarCheckboxItem>
+          <MenubarCheckboxItem value="superscript" checked={false}>
+            Superscript
+          </MenubarCheckboxItem>
         </MenubarContent>
       </MenubarMenu>
     </Menubar>

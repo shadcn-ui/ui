@@ -60,7 +60,7 @@ export default function ButtonGroupDropdown() {
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem variant="destructive">
+            <DropdownMenuItem value="delete" variant="destructive">
               <TrashIcon />
               Delete Conversation
             </DropdownMenuItem>

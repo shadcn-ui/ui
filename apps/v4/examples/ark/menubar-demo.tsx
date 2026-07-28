@@ -28,7 +28,9 @@ export default function MenubarDemo() {
             <MenubarItem value="2">
               New Window <MenubarShortcut>⌘N</MenubarShortcut>
             </MenubarItem>
-            <MenubarItem disabled>New Incognito Window</MenubarItem>
+            <MenubarItem value="new-incognito-window" disabled>
+              New Incognito Window
+            </MenubarItem>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>
@@ -91,25 +93,33 @@ export default function MenubarDemo() {
         <MenubarTrigger>View</MenubarTrigger>
         <MenubarContent className="w-44">
           <MenubarGroup>
-            <MenubarCheckboxItem value="cb-1">Bookmarks Bar</MenubarCheckboxItem>
-            <MenubarCheckboxItem checked>Full URLs</MenubarCheckboxItem>
+            <MenubarCheckboxItem value="bookmarks-bar" checked={false}>
+              Bookmarks Bar
+            </MenubarCheckboxItem>
+            <MenubarCheckboxItem value="full-urls" checked>
+              Full URLs
+            </MenubarCheckboxItem>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>
-            <MenubarItem inset>
+            <MenubarItem value="reload" inset>
               Reload <MenubarShortcut>⌘R</MenubarShortcut>
             </MenubarItem>
-            <MenubarItem disabled inset>
+            <MenubarItem value="force-reload" disabled inset>
               Force Reload <MenubarShortcut>⇧⌘R</MenubarShortcut>
             </MenubarItem>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>
-            <MenubarItem inset>Toggle Fullscreen</MenubarItem>
+            <MenubarItem value="toggle-fullscreen" inset>
+              Toggle Fullscreen
+            </MenubarItem>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>
-            <MenubarItem inset>Hide Sidebar</MenubarItem>
+            <MenubarItem value="hide-sidebar" inset>
+              Hide Sidebar
+            </MenubarItem>
           </MenubarGroup>
         </MenubarContent>
       </MenubarMenu>
@@ -123,11 +133,15 @@ export default function MenubarDemo() {
           </MenubarRadioGroup>
           <MenubarSeparator />
           <MenubarGroup>
-            <MenubarItem inset>Edit...</MenubarItem>
+            <MenubarItem value="edit" inset>
+              Edit...
+            </MenubarItem>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>
-            <MenubarItem inset>Add Profile...</MenubarItem>
+            <MenubarItem value="add-profile" inset>
+              Add Profile...
+            </MenubarItem>
           </MenubarGroup>
         </MenubarContent>
       </MenubarMenu>

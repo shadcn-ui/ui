@@ -223,7 +223,10 @@ export function DropdownMenuRtl() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuLabel>{t.position}</DropdownMenuLabel>
-          <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+          <DropdownMenuRadioGroup
+            value={position}
+            onValueChange={(details) => setPosition(details.value)}
+          >
             <DropdownMenuRadioItem value="top">{t.top}</DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="bottom">
               {t.bottom}

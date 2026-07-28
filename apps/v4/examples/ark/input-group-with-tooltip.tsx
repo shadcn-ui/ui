@@ -79,13 +79,19 @@ export function InputGroupWithTooltip({
               <DropdownMenuContent
                 className="min-w-16"
               >
-                <DropdownMenuItem onClick={() => setCountry("+1")}>
+                <DropdownMenuItem value="plus-1" onClick={() => setCountry("+1")}>
                   +1
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setCountry("+44")}>
+                <DropdownMenuItem
+                  value="plus-44"
+                  onClick={() => setCountry("+44")}
+                >
                   +44
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setCountry("+46")}>
+                <DropdownMenuItem
+                  value="plus-46"
+                  onClick={() => setCountry("+46")}
+                >
                   +46
                 </DropdownMenuItem>
               </DropdownMenuContent>

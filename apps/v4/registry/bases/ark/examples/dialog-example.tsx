@@ -334,7 +334,7 @@ function DialogChatSettings() {
               </NativeSelectOption>
               <NativeSelectOption value="security">Security</NativeSelectOption>
             </NativeSelect>
-            <Tabs value={tab} onValueChange={setTab}>
+            <Tabs value={tab} onValueChange={(details) => setTab(details.value)}>
               <TabsList className="hidden w-full md:flex">
                 <TabsTrigger value="general">General</TabsTrigger>
                 <TabsTrigger value="notifications">Notifications</TabsTrigger>
@@ -356,7 +356,7 @@ function DialogChatSettings() {
                             </SelectTrigger>
                             <SelectIndicator />
                           </SelectControl>
-                          <SelectContent align="end">
+                          <SelectContent>
                             <SelectItemGroup>
                               {themeItems.items.map((item) => (
                                 <SelectItem key={item.value} item={item}>
@@ -384,7 +384,7 @@ function DialogChatSettings() {
                             </SelectTrigger>
                             <SelectIndicator />
                           </SelectControl>
-                          <SelectContent align="end">
+                          <SelectContent>
                             <SelectItemGroup>
                               {accentColorItems.items.map((item) => (
                                 <SelectItem key={item.value} item={item}>
@@ -422,7 +422,7 @@ function DialogChatSettings() {
                             </SelectTrigger>
                             <SelectIndicator />
                           </SelectControl>
-                          <SelectContent align="end">
+                          <SelectContent>
                             <SelectItemGroup>
                               <SelectItem item={spokenLanguageItems.items[0]}>
                                 <SelectItemText>Auto</SelectItemText>
@@ -454,7 +454,7 @@ function DialogChatSettings() {
                             </SelectTrigger>
                             <SelectIndicator />
                           </SelectControl>
-                          <SelectContent align="end">
+                          <SelectContent>
                             <SelectItemGroup>
                               {voices.map((v) => (
                                 <SelectItem

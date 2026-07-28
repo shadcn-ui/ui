@@ -61,7 +61,9 @@ function CommandInline() {
     <Example title="Inline">
       <Card className="w-full p-0">
         <CardContent className="p-0">
-          <Command collection={collection}>
+          <Command
+            collection={collection}
+          >
             <CommandInput
               placeholder="Type a command or search..."
               onFilter={filter}

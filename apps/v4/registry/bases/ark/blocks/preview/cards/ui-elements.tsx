@@ -99,7 +99,7 @@ export function UIElements() {
           min={0}
           step={10}
           className="flex-1"
-          aria-label="Slider"
+          aria-label={["Slider"]}
         >
           <SliderControl>
             <SliderTrack>
@@ -180,23 +180,33 @@ export function UIElements() {
                   />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" side="top" className="w-40">
+              <DropdownMenuContent className="w-40">
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
-                  <DropdownMenuItem>Mute Conversation</DropdownMenuItem>
-                  <DropdownMenuItem>Mark as Read</DropdownMenuItem>
-                  <DropdownMenuItem>Block User</DropdownMenuItem>
+                  <DropdownMenuItem value="mute">
+                    Mute Conversation
+                  </DropdownMenuItem>
+                  <DropdownMenuItem value="mark-read">
+                    Mark as Read
+                  </DropdownMenuItem>
+                  <DropdownMenuItem value="block">Block User</DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>Conversation</DropdownMenuLabel>
-                  <DropdownMenuItem>Share Conversation</DropdownMenuItem>
-                  <DropdownMenuItem>Copy Conversation</DropdownMenuItem>
-                  <DropdownMenuItem>Report Conversation</DropdownMenuItem>
+                  <DropdownMenuItem value="share">
+                    Share Conversation
+                  </DropdownMenuItem>
+                  <DropdownMenuItem value="copy">
+                    Copy Conversation
+                  </DropdownMenuItem>
+                  <DropdownMenuItem value="report">
+                    Report Conversation
+                  </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                  <DropdownMenuItem variant="destructive">
+                  <DropdownMenuItem value="delete" variant="destructive">
                     Delete Conversation
                   </DropdownMenuItem>
                 </DropdownMenuGroup>

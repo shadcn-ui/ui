@@ -83,7 +83,7 @@ export default function ButtonGroupDemo() {
                 <DropdownMenuSubContent>
                   <DropdownMenuRadioGroup
                     value={label}
-                    onValueChange={setLabel}
+                    onValueChange={(details) => setLabel(details.value)}
                   >
                     <DropdownMenuRadioItem value="personal">
                       Personal
@@ -100,7 +100,7 @@ export default function ButtonGroupDemo() {
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem variant="destructive">
+              <DropdownMenuItem value="trash" variant="destructive">
                 <Trash2Icon />
                 Trash
               </DropdownMenuItem>

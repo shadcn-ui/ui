@@ -32,7 +32,7 @@ export function ContextMenuDestructive() {
         </ContextMenuGroup>
         <ContextMenuSeparator />
         <ContextMenuGroup>
-          <ContextMenuItem variant="destructive">
+          <ContextMenuItem value="delete" variant="destructive">
             <TrashIcon />
             Delete
           </ContextMenuItem>

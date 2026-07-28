@@ -99,8 +99,8 @@ export function ComboboxRtl() {
         <ComboboxContext>
           {(context) => (
             <ComboboxTagsControl>
-              {context.selectedItems.map(
-                (item: { label: string; value: string }) => (
+              {(context.selectedItems as { label: string; value: string }[]).map(
+                (item) => (
                   <ComboboxTag
                     key={item.value}
                     value={item.value}

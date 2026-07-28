@@ -61,7 +61,7 @@ function ContextMenuBasic() {
         <ContextMenuContent>
           <ContextMenuGroup>
             <ContextMenuItem value="ctx-menuitem1">Back</ContextMenuItem>
-            <ContextMenuItem disabled>Forward</ContextMenuItem>
+            <ContextMenuItem value="ctx-forward-basic" disabled>Forward</ContextMenuItem>
             <ContextMenuItem value="ctx-menuitem2">Reload</ContextMenuItem>
           </ContextMenuGroup>
         </ContextMenuContent>
@@ -112,7 +112,7 @@ function ContextMenuWithIcons() {
           </ContextMenuGroup>
           <ContextMenuSeparator />
           <ContextMenuGroup>
-            <ContextMenuItem variant="destructive">
+            <ContextMenuItem value="ctx-delete-icons" variant="destructive">
               <IconPlaceholder
                 lucide="TrashIcon"
                 tabler="IconTrash"
@@ -142,7 +142,7 @@ function ContextMenuWithShortcuts() {
               Back
               <ContextMenuShortcut>⌘[</ContextMenuShortcut>
             </ContextMenuItem>
-            <ContextMenuItem disabled>
+            <ContextMenuItem value="ctx-forward-shortcuts" disabled>
               Forward
               <ContextMenuShortcut>⌘]</ContextMenuShortcut>
             </ContextMenuItem>
@@ -200,7 +200,7 @@ function ContextMenuWithSubmenu() {
               </ContextMenuGroup>
               <ContextMenuSeparator />
               <ContextMenuGroup>
-                <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+                <ContextMenuItem value="ctx-delete-submenu" variant="destructive">Delete</ContextMenuItem>
               </ContextMenuGroup>
             </ContextMenuSubContent>
           </ContextMenuSub>
@@ -260,7 +260,7 @@ function ContextMenuWithGroups() {
           </ContextMenuGroup>
           <ContextMenuSeparator />
           <ContextMenuGroup>
-            <ContextMenuItem variant="destructive">
+            <ContextMenuItem value="ctx-delete-groups" variant="destructive">
               Delete
               <ContextMenuShortcut>⌫</ContextMenuShortcut>
             </ContextMenuItem>
@@ -285,18 +285,21 @@ function ContextMenuWithCheckboxes() {
         <ContextMenuContent>
           <ContextMenuGroup>
             <ContextMenuCheckboxItem
+              value="show-bookmarks-bar"
               checked={showBookmarksBar}
               onCheckedChange={setShowBookmarksBar}
             >
               Show Bookmarks Bar
             </ContextMenuCheckboxItem>
             <ContextMenuCheckboxItem
+              value="show-full-urls"
               checked={showFullUrls}
               onCheckedChange={setShowFullUrls}
             >
               Show Full URLs
             </ContextMenuCheckboxItem>
             <ContextMenuCheckboxItem
+              value="show-developer-tools"
               checked={showDeveloperTools}
               onCheckedChange={setShowDeveloperTools}
             >
@@ -322,7 +325,10 @@ function ContextMenuWithRadio() {
         <ContextMenuContent>
           <ContextMenuGroup>
             <ContextMenuLabel>People</ContextMenuLabel>
-            <ContextMenuRadioGroup value={user} onValueChange={setUser}>
+            <ContextMenuRadioGroup
+              value={user}
+              onValueChange={(details) => setUser(details.value)}
+            >
               <ContextMenuRadioItem value="pedro">
                 Pedro Duarte
               </ContextMenuRadioItem>
@@ -334,7 +340,10 @@ function ContextMenuWithRadio() {
           <ContextMenuSeparator />
           <ContextMenuGroup>
             <ContextMenuLabel>Theme</ContextMenuLabel>
-            <ContextMenuRadioGroup value={theme} onValueChange={setTheme}>
+            <ContextMenuRadioGroup
+              value={theme}
+              onValueChange={(details) => setTheme(details.value)}
+            >
               <ContextMenuRadioItem value="light">Light</ContextMenuRadioItem>
               <ContextMenuRadioItem value="dark">Dark</ContextMenuRadioItem>
               <ContextMenuRadioItem value="system">System</ContextMenuRadioItem>
@@ -388,7 +397,7 @@ function ContextMenuWithDestructive() {
               />
               Archive
             </ContextMenuItem>
-            <ContextMenuItem variant="destructive">
+            <ContextMenuItem value="ctx-delete-destructive" variant="destructive">
               <IconPlaceholder
                 lucide="TrashIcon"
                 tabler="IconTrash"
@@ -413,7 +422,7 @@ function ContextMenuWithSides() {
           <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
             Right click (top)
           </ContextMenuTrigger>
-          <ContextMenuContent side="top">
+          <ContextMenuContent>
             <ContextMenuGroup>
               <ContextMenuItem value="ctx-menuitem27">Back</ContextMenuItem>
               <ContextMenuItem value="ctx-menuitem28">Forward</ContextMenuItem>
@@ -425,7 +434,7 @@ function ContextMenuWithSides() {
           <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
             Right click (right)
           </ContextMenuTrigger>
-          <ContextMenuContent side="right">
+          <ContextMenuContent>
             <ContextMenuGroup>
               <ContextMenuItem value="ctx-menuitem30">Back</ContextMenuItem>
               <ContextMenuItem value="ctx-menuitem31">Forward</ContextMenuItem>
@@ -437,7 +446,7 @@ function ContextMenuWithSides() {
           <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
             Right click (bottom)
           </ContextMenuTrigger>
-          <ContextMenuContent side="bottom">
+          <ContextMenuContent>
             <ContextMenuGroup>
               <ContextMenuItem value="ctx-menuitem33">Back</ContextMenuItem>
               <ContextMenuItem value="ctx-menuitem34">Forward</ContextMenuItem>
@@ -449,7 +458,7 @@ function ContextMenuWithSides() {
           <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
             Right click (left)
           </ContextMenuTrigger>
-          <ContextMenuContent side="left">
+          <ContextMenuContent>
             <ContextMenuGroup>
               <ContextMenuItem value="ctx-menuitem36">Back</ContextMenuItem>
               <ContextMenuItem value="ctx-menuitem37">Forward</ContextMenuItem>
@@ -530,7 +539,7 @@ function ContextMenuInDialog() {
               </ContextMenuSub>
               <ContextMenuSeparator />
               <ContextMenuGroup>
-                <ContextMenuItem variant="destructive">
+                <ContextMenuItem value="ctx-delete-dialog" variant="destructive">
                   <IconPlaceholder
                     lucide="TrashIcon"
                     tabler="IconTrash"
@@ -583,13 +592,14 @@ function ContextMenuWithInset() {
               />
               Cut
             </ContextMenuItem>
-            <ContextMenuItem inset>Paste</ContextMenuItem>
+            <ContextMenuItem value="ctx-paste-inset" inset>Paste</ContextMenuItem>
           </ContextMenuGroup>
           <ContextMenuSeparator />
           <ContextMenuGroup>
             <ContextMenuLabel inset>Appearance</ContextMenuLabel>
             <ContextMenuCheckboxItem
               inset
+              value="bookmarks"
               checked={showBookmarks}
               onCheckedChange={setShowBookmarks}
             >
@@ -597,6 +607,7 @@ function ContextMenuWithInset() {
             </ContextMenuCheckboxItem>
             <ContextMenuCheckboxItem
               inset
+              value="full-urls"
               checked={showUrls}
               onCheckedChange={setShowUrls}
             >
@@ -606,7 +617,10 @@ function ContextMenuWithInset() {
           <ContextMenuSeparator />
           <ContextMenuGroup>
             <ContextMenuLabel inset>Theme</ContextMenuLabel>
-            <ContextMenuRadioGroup value={theme} onValueChange={setTheme}>
+            <ContextMenuRadioGroup
+              value={theme}
+              onValueChange={(details) => setTheme(details.value)}
+            >
               <ContextMenuRadioItem inset value="light">
                 Light
               </ContextMenuRadioItem>

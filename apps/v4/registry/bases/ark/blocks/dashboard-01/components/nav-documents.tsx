@@ -57,12 +57,8 @@ export function NavDocuments({
                   <span className="sr-only">More</span>
                 </SidebarMenuAction>
               </DropdownMenuTrigger>
-              <DropdownMenuContent
-                className="w-24 rounded-lg"
-                side={isMobile ? "bottom" : "right"}
-                align={isMobile ? "end" : "start"}
-              >
-                <DropdownMenuItem>
+              <DropdownMenuContent className="w-24 rounded-lg">
+                <DropdownMenuItem value="open">
                   <IconPlaceholder
                     lucide="FolderIcon"
                     tabler="IconFolder"
@@ -72,7 +68,7 @@ export function NavDocuments({
                   />
                   <span>Open</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem value="share">
                   <IconPlaceholder
                     lucide="ShareIcon"
                     tabler="IconShare3"
@@ -83,7 +79,7 @@ export function NavDocuments({
                   <span>Share</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem variant="destructive">
+                <DropdownMenuItem value="delete" variant="destructive">
                   <IconPlaceholder
                     lucide="Trash2Icon"
                     tabler="IconTrash"

@@ -61,18 +61,14 @@ export function TeamSwitcher({
               />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
-          <DropdownMenuContent
-            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-            align="start"
-            side={isMobile ? "bottom" : "right"}
-            sideOffset={4}
-          >
+          <DropdownMenuContent className="w-(--reference-width) min-w-56 rounded-lg">
             <DropdownMenuLabel className="text-xs text-muted-foreground">
               Teams
             </DropdownMenuLabel>
             {teams.map((team, index) => (
               <DropdownMenuItem
                 key={team.name}
+                value={team.name}
                 onClick={() => setActiveTeam(team)}
                 className="gap-2 p-2"
               >
@@ -84,7 +80,7 @@ export function TeamSwitcher({
               </DropdownMenuItem>
             ))}
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="gap-2 p-2">
+            <DropdownMenuItem value="add-team" className="gap-2 p-2">
               <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
                 <IconPlaceholder
                   lucide="PlusIcon"

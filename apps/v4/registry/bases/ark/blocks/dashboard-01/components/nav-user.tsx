@@ -62,12 +62,7 @@ export function NavUser({
               />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
-          <DropdownMenuContent
-            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-            side={isMobile ? "bottom" : "right"}
-            align="end"
-            sideOffset={4}
-          >
+          <DropdownMenuContent className="w-(--reference-width) min-w-56 rounded-lg">
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
@@ -84,7 +79,7 @@ export function NavUser({
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
+              <DropdownMenuItem value="account">
                 <IconPlaceholder
                   lucide="CircleUserRoundIcon"
                   tabler="IconUserCircle"
@@ -94,7 +89,7 @@ export function NavUser({
                 />
                 Account
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem value="billing">
                 <IconPlaceholder
                   lucide="CreditCardIcon"
                   tabler="IconCreditCard"
@@ -104,7 +99,7 @@ export function NavUser({
                 />
                 Billing
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem value="notifications">
                 <IconPlaceholder
                   lucide="BellIcon"
                   tabler="IconNotification"
@@ -116,7 +111,7 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem value="logout">
               <IconPlaceholder
                 lucide="LogOutIcon"
                 tabler="IconLogout"

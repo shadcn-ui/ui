@@ -183,7 +183,7 @@ export function SettingsDialog() {
   const [open, setOpen] = React.useState(true)
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={(details) => setOpen(details.open)}>
       <DialogTrigger asChild>
         <Button size="sm">Open Dialog</Button>
       </DialogTrigger>

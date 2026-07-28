@@ -207,7 +207,7 @@ export function NavActions() {
           remixicon="RiStarLine"
         />
       </Button>
-      <Popover open={isOpen} onOpenChange={setIsOpen}>
+      <Popover open={isOpen} onOpenChange={(details) => setIsOpen(details.open)}>
         <PopoverTrigger asChild>
           <Button
             variant="ghost"
@@ -223,10 +223,7 @@ export function NavActions() {
             />
           </Button>
         </PopoverTrigger>
-        <PopoverContent
-          className="w-56 overflow-hidden rounded-lg p-0"
-          align="end"
-        >
+        <PopoverContent className="w-56 overflow-hidden rounded-lg p-0">
           <Sidebar collapsible="none" className="bg-transparent">
             <SidebarContent>
               {data.map((group, index) => (

@@ -307,7 +307,7 @@ export function Demo() {
                 min={0}
                 step={10}
                 className="flex-1"
-                aria-label="Slider"
+                aria-label={["Slider"]}
               >
                 <SliderControl>
                   <SliderTrack>
@@ -410,8 +410,6 @@ export function Demo() {
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
-                      align="end"
-                      side="top"
                       className="w-40"
                     >
                       <DropdownMenuGroup>
@@ -429,7 +427,7 @@ export function Demo() {
                       </DropdownMenuGroup>
                       <DropdownMenuSeparator />
                       <DropdownMenuGroup>
-                        <DropdownMenuItem variant="destructive">
+                        <DropdownMenuItem value="delete-conversation" variant="destructive">
                           Delete Conversation
                         </DropdownMenuItem>
                       </DropdownMenuGroup>

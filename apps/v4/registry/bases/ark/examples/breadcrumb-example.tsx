@@ -70,7 +70,7 @@ function BreadcrumbWithDropdown() {
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start">
+              <DropdownMenuContent>
                 <DropdownMenuItem value="1">Documentation</DropdownMenuItem>
                 <DropdownMenuItem value="2">Themes</DropdownMenuItem>
                 <DropdownMenuItem value="3">GitHub</DropdownMenuItem>

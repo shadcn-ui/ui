@@ -397,18 +397,18 @@ function SidebarContentInner({
                      
                     >
                       <DropdownMenuGroup>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem value="view-project">
                           <Folder className="text-muted-foreground" />
                           <span>{t.viewProject}</span>
                         </DropdownMenuItem>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem value="share-project">
                           <Forward className="text-muted-foreground" />
                           <span>{t.shareProject}</span>
                         </DropdownMenuItem>
                       </DropdownMenuGroup>
                       <DropdownMenuSeparator />
                       <DropdownMenuGroup>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem value="delete-project">
                           <Trash2 className="text-muted-foreground" />
                           <span>{t.deleteProject}</span>
                         </DropdownMenuItem>
@@ -472,29 +472,29 @@ function SidebarContentInner({
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem value="upgrade-to-pro">
                       <Sparkles />
                       {t.upgradeToPro}
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem value="account">
                       <BadgeCheck />
                       {t.account}
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem value="billing">
                       <CreditCard />
                       {t.billing}
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem value="notifications">
                       <Bell />
                       {t.notifications}
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem value="log-out">
                       <LogOut />
                       {t.logOut}
                     </DropdownMenuItem>

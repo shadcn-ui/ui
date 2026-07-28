@@ -156,7 +156,9 @@ export function MenubarRtl() {
             <MenubarItem value="2">
               {t.newWindow} <MenubarShortcut>⌘N</MenubarShortcut>
             </MenubarItem>
-            <MenubarItem disabled>{t.newIncognitoWindow}</MenubarItem>
+            <MenubarItem value="new-incognito-window" disabled>
+              {t.newIncognitoWindow}
+            </MenubarItem>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>
@@ -226,43 +228,58 @@ export function MenubarRtl() {
           data-lang={dir === "rtl" ? language : undefined}
         >
           <MenubarGroup>
-            <MenubarCheckboxItem value="cb-1">{t.bookmarksBar}</MenubarCheckboxItem>
-            <MenubarCheckboxItem checked>{t.fullUrls}</MenubarCheckboxItem>
+            <MenubarCheckboxItem value="bookmarks-bar" checked={false}>
+              {t.bookmarksBar}
+            </MenubarCheckboxItem>
+            <MenubarCheckboxItem value="full-urls" checked>
+              {t.fullUrls}
+            </MenubarCheckboxItem>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>
-            <MenubarItem inset>
+            <MenubarItem value="reload" inset>
               {t.reload} <MenubarShortcut>⌘R</MenubarShortcut>
             </MenubarItem>
-            <MenubarItem disabled inset>
+            <MenubarItem value="force-reload" disabled inset>
               {t.forceReload} <MenubarShortcut>⇧⌘R</MenubarShortcut>
             </MenubarItem>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>
-            <MenubarItem inset>{t.toggleFullscreen}</MenubarItem>
+            <MenubarItem value="toggle-fullscreen" inset>
+              {t.toggleFullscreen}
+            </MenubarItem>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>
-            <MenubarItem inset>{t.hideSidebar}</MenubarItem>
+            <MenubarItem value="hide-sidebar" inset>
+              {t.hideSidebar}
+            </MenubarItem>
           </MenubarGroup>
         </MenubarContent>
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>{t.profiles}</MenubarTrigger>
         <MenubarContent data-lang={dir === "rtl" ? language : undefined}>
-          <MenubarRadioGroup value={profile} onValueChange={setProfile}>
+          <MenubarRadioGroup
+            value={profile}
+            onValueChange={(details) => setProfile(details.value)}
+          >
             <MenubarRadioItem value="andy">{t.andy}</MenubarRadioItem>
             <MenubarRadioItem value="benoit">{t.benoit}</MenubarRadioItem>
             <MenubarRadioItem value="Luis">{t.luis}</MenubarRadioItem>
           </MenubarRadioGroup>
           <MenubarSeparator />
           <MenubarGroup>
-            <MenubarItem inset>{t.editProfile}</MenubarItem>
+            <MenubarItem value="edit-profile" inset>
+              {t.editProfile}
+            </MenubarItem>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>
-            <MenubarItem inset>{t.addProfile}</MenubarItem>
+            <MenubarItem value="add-profile" inset>
+              {t.addProfile}
+            </MenubarItem>
           </MenubarGroup>
         </MenubarContent>
       </MenubarMenu>

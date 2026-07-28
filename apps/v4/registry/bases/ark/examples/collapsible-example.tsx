@@ -179,7 +179,7 @@ function CollapsibleSettings() {
         <CardContent>
           <Collapsible
             open={isOpen}
-            onOpenChange={setIsOpen}
+            onOpenChange={(details) => setIsOpen(details.open)}
             className="flex items-start gap-2"
           >
             <FieldGroup className="grid w-full grid-cols-2 gap-2">

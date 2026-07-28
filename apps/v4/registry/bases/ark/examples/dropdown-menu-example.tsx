@@ -79,7 +79,7 @@ function DropdownMenuBasic() {
           <DropdownMenuGroup>
             <DropdownMenuItem value="dm-menuitem4">GitHub</DropdownMenuItem>
             <DropdownMenuItem value="dm-menuitem5">Support</DropdownMenuItem>
-            <DropdownMenuItem disabled>API</DropdownMenuItem>
+            <DropdownMenuItem value="dm-api" disabled>API</DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -131,7 +131,7 @@ function DropdownMenuWithIcons() {
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem variant="destructive">
+            <DropdownMenuItem value="dm-log-out" variant="destructive">
               <IconPlaceholder
                 lucide="LogOutIcon"
                 tabler="IconLogout"
@@ -245,6 +245,7 @@ function DropdownMenuWithCheckboxes() {
           <DropdownMenuGroup>
             <DropdownMenuLabel>Appearance</DropdownMenuLabel>
             <DropdownMenuCheckboxItem
+              value="status-bar"
               checked={showStatusBar}
               onCheckedChange={setShowStatusBar}
             >
@@ -258,6 +259,7 @@ function DropdownMenuWithCheckboxes() {
               Status Bar
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
+              value="activity-bar"
               checked={showActivityBar}
               onCheckedChange={setShowActivityBar}
               disabled
@@ -272,6 +274,7 @@ function DropdownMenuWithCheckboxes() {
               Activity Bar
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
+              value="panel"
               checked={showPanel}
               onCheckedChange={setShowPanel}
             >
@@ -307,7 +310,7 @@ function DropdownMenuWithRadio() {
             <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
             <DropdownMenuRadioGroup
               value={position}
-              onValueChange={setPosition}
+              onValueChange={(details) => setPosition(details.value)}
             >
               <DropdownMenuRadioItem value="top">
                 <IconPlaceholder
@@ -366,6 +369,7 @@ function DropdownMenuWithCheckboxesIcons() {
           <DropdownMenuGroup>
             <DropdownMenuLabel>Notification Preferences</DropdownMenuLabel>
             <DropdownMenuCheckboxItem
+              value="email"
               checked={notifications.email}
               onCheckedChange={(checked) =>
                 setNotifications({ ...notifications, email: checked === true })
@@ -381,6 +385,7 @@ function DropdownMenuWithCheckboxesIcons() {
               Email notifications
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
+              value="sms"
               checked={notifications.sms}
               onCheckedChange={(checked) =>
                 setNotifications({ ...notifications, sms: checked === true })
@@ -396,6 +401,7 @@ function DropdownMenuWithCheckboxesIcons() {
               SMS notifications
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
+              value="push"
               checked={notifications.push}
               onCheckedChange={(checked) =>
                 setNotifications({ ...notifications, push: checked === true })
@@ -431,7 +437,7 @@ function DropdownMenuWithRadioIcons() {
             <DropdownMenuLabel>Select Payment Method</DropdownMenuLabel>
             <DropdownMenuRadioGroup
               value={paymentMethod}
-              onValueChange={setPaymentMethod}
+              onValueChange={(details) => setPaymentMethod(details.value)}
             >
               <DropdownMenuRadioItem value="card">
                 <IconPlaceholder
@@ -515,7 +521,7 @@ function DropdownMenuWithDestructive() {
               />
               Archive
             </DropdownMenuItem>
-            <DropdownMenuItem variant="destructive">
+            <DropdownMenuItem value="dm-delete-actions" variant="destructive">
               <IconPlaceholder
                 lucide="TrashIcon"
                 tabler="IconTrash"
@@ -612,7 +618,7 @@ function DropdownMenuWithAvatar() {
               />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width) min-w-56">
+          <DropdownMenuContent className="w-(--reference-width) min-w-56">
             {menuContent}
           </DropdownMenuContent>
         </DropdownMenu>
@@ -625,7 +631,7 @@ function DropdownMenuWithAvatar() {
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" side="top">
+          <DropdownMenuContent>
             {menuContent}
           </DropdownMenuContent>
         </DropdownMenu>
@@ -706,7 +712,7 @@ function DropdownMenuInDialog() {
               </DropdownMenuSub>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
-                <DropdownMenuItem variant="destructive">
+                <DropdownMenuItem value="dm-delete-dialog" variant="destructive">
                   <IconPlaceholder
                     lucide="TrashIcon"
                     tabler="IconTrash"
@@ -761,13 +767,14 @@ function DropdownMenuWithInset() {
               />
               Cut
             </DropdownMenuItem>
-            <DropdownMenuItem inset>Paste</DropdownMenuItem>
+            <DropdownMenuItem value="dm-paste-inset" inset>Paste</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuLabel inset>Appearance</DropdownMenuLabel>
             <DropdownMenuCheckboxItem
               inset
+              value="bookmarks"
               checked={showBookmarks}
               onCheckedChange={setShowBookmarks}
             >
@@ -775,6 +782,7 @@ function DropdownMenuWithInset() {
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
               inset
+              value="full-urls"
               checked={showUrls}
               onCheckedChange={setShowUrls}
             >
@@ -784,7 +792,10 @@ function DropdownMenuWithInset() {
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuLabel inset>Theme</DropdownMenuLabel>
-            <DropdownMenuRadioGroup value={theme} onValueChange={setTheme}>
+            <DropdownMenuRadioGroup
+              value={theme}
+              onValueChange={(details) => setTheme(details.value)}
+            >
               <DropdownMenuRadioItem inset value="light">
                 Light
               </DropdownMenuRadioItem>
@@ -971,6 +982,7 @@ function DropdownMenuComplex() {
           <DropdownMenuGroup>
             <DropdownMenuLabel>View</DropdownMenuLabel>
             <DropdownMenuCheckboxItem
+              value="show-sidebar"
               checked={notifications.email}
               onCheckedChange={(checked) =>
                 setNotifications({ ...notifications, email: checked === true })
@@ -986,6 +998,7 @@ function DropdownMenuComplex() {
               Show Sidebar
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
+              value="show-status-bar"
               checked={notifications.sms}
               onCheckedChange={(checked) =>
                 setNotifications({ ...notifications, sms: checked === true })
@@ -1017,7 +1030,7 @@ function DropdownMenuComplex() {
                     <DropdownMenuLabel>Appearance</DropdownMenuLabel>
                     <DropdownMenuRadioGroup
                       value={theme}
-                      onValueChange={setTheme}
+                      onValueChange={(details) => setTheme(details.value)}
                     >
                       <DropdownMenuRadioItem value="light">
                         <IconPlaceholder
@@ -1132,6 +1145,7 @@ function DropdownMenuComplex() {
                               Notification Types
                             </DropdownMenuLabel>
                             <DropdownMenuCheckboxItem
+                              value="push-notifications"
                               checked={notifications.push}
                               onCheckedChange={(checked) =>
                                 setNotifications({
@@ -1150,6 +1164,7 @@ function DropdownMenuComplex() {
                               Push Notifications
                             </DropdownMenuCheckboxItem>
                             <DropdownMenuCheckboxItem
+                              value="email-notifications"
                               checked={notifications.email}
                               onCheckedChange={(checked) =>
                                 setNotifications({
@@ -1214,7 +1229,7 @@ function DropdownMenuComplex() {
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem variant="destructive">
+            <DropdownMenuItem value="dm-sign-out" variant="destructive">
               <IconPlaceholder
                 lucide="LogOutIcon"
                 tabler="IconLogout"

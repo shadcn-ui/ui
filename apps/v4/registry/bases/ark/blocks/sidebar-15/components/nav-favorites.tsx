@@ -57,12 +57,8 @@ export function NavFavorites({
                   <span className="sr-only">More</span>
                 </SidebarMenuAction>
               </DropdownMenuTrigger>
-              <DropdownMenuContent
-                className="w-56 rounded-lg"
-                side={isMobile ? "bottom" : "right"}
-                align={isMobile ? "end" : "start"}
-              >
-                <DropdownMenuItem>
+              <DropdownMenuContent className="w-56 rounded-lg">
+                <DropdownMenuItem value="remove-from-favorites">
                   <IconPlaceholder
                     lucide="StarOffIcon"
                     tabler="IconStarOff"
@@ -74,7 +70,7 @@ export function NavFavorites({
                   <span>Remove from Favorites</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuItem value="copy-link">
                   <IconPlaceholder
                     lucide="LinkIcon"
                     tabler="IconLink"
@@ -85,7 +81,7 @@ export function NavFavorites({
                   />
                   <span>Copy Link</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem value="open-in-new-tab">
                   <IconPlaceholder
                     lucide="ArrowUpRightIcon"
                     tabler="IconArrowUpRight"
@@ -97,7 +93,7 @@ export function NavFavorites({
                   <span>Open in New Tab</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuItem value="delete">
                   <IconPlaceholder
                     lucide="Trash2Icon"
                     tabler="IconTrash"

@@ -51,7 +51,7 @@ export function MenubarIcons() {
               Help
             </MenubarItem>
             <MenubarSeparator />
-            <MenubarItem variant="destructive">
+            <MenubarItem value="delete" variant="destructive">
               <TrashIcon />
               Delete
             </MenubarItem>

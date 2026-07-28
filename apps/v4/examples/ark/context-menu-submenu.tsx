@@ -47,7 +47,9 @@ export function ContextMenuSubmenu() {
             </ContextMenuGroup>
             <ContextMenuSeparator />
             <ContextMenuGroup>
-              <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+              <ContextMenuItem value="delete" variant="destructive">
+                Delete
+              </ContextMenuItem>
             </ContextMenuGroup>
           </ContextMenuSubContent>
         </ContextMenuSub>

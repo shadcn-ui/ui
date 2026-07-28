@@ -196,7 +196,7 @@ function FormExample() {
                   <span className="sr-only">More options</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuContent className="w-56">
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>File</DropdownMenuLabel>
                   <DropdownMenuItem value="1">
@@ -337,6 +337,7 @@ function FormExample() {
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>View</DropdownMenuLabel>
                   <DropdownMenuCheckboxItem
+                    value="show-sidebar"
                     checked={notifications.email}
                     onCheckedChange={(checked) =>
                       setNotifications({
@@ -355,6 +356,7 @@ function FormExample() {
                     Show Sidebar
                   </DropdownMenuCheckboxItem>
                   <DropdownMenuCheckboxItem
+                    value="show-status-bar"
                     checked={notifications.sms}
                     onCheckedChange={(checked) =>
                       setNotifications({
@@ -389,7 +391,7 @@ function FormExample() {
                           <DropdownMenuLabel>Appearance</DropdownMenuLabel>
                           <DropdownMenuRadioGroup
                             value={theme}
-                            onValueChange={setTheme}
+                            onValueChange={(details) => setTheme(details.value)}
                           >
                             <DropdownMenuRadioItem value="light">
                               <IconPlaceholder
@@ -504,6 +506,7 @@ function FormExample() {
                                     Notification Types
                                   </DropdownMenuLabel>
                                   <DropdownMenuCheckboxItem
+                                    value="push-notifications"
                                     checked={notifications.push}
                                     onCheckedChange={(checked) =>
                                       setNotifications({
@@ -522,6 +525,7 @@ function FormExample() {
                                     Push Notifications
                                   </DropdownMenuCheckboxItem>
                                   <DropdownMenuCheckboxItem
+                                    value="email-notifications"
                                     checked={notifications.email}
                                     onCheckedChange={(checked) =>
                                       setNotifications({
@@ -586,7 +590,7 @@ function FormExample() {
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                  <DropdownMenuItem variant="destructive">
+                  <DropdownMenuItem value="sign-out" variant="destructive">
                     <IconPlaceholder
                       lucide="LogOutIcon"
                       tabler="IconLogout"

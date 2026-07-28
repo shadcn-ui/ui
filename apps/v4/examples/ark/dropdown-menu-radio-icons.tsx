@@ -26,7 +26,7 @@ export function DropdownMenuRadioIcons() {
           <DropdownMenuLabel>Select Payment Method</DropdownMenuLabel>
           <DropdownMenuRadioGroup
             value={paymentMethod}
-            onValueChange={setPaymentMethod}
+            onValueChange={(details) => setPaymentMethod(details.value)}
           >
             <DropdownMenuRadioItem value="card">
               <CreditCardIcon />

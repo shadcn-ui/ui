@@ -82,7 +82,7 @@ export function CodespacesCard() {
                       />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent side="bottom">
+                  <TooltipContent>
                     Create a codespace on main
                   </TooltipContent>
                 </Tooltip>
@@ -98,9 +98,9 @@ export function CodespacesCard() {
                       />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuContent className="w-56">
                     <DropdownMenuGroup>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem value="new-with-options">
                         <IconPlaceholder
                           lucide="PlusIcon"
                           tabler="IconPlus"
@@ -110,7 +110,7 @@ export function CodespacesCard() {
                         />
                         New with options...
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem value="configure-dev-container">
                         <IconPlaceholder
                           lucide="ContainerIcon"
                           tabler="IconBox"
@@ -120,7 +120,7 @@ export function CodespacesCard() {
                         />
                         Configure dev container
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem value="set-up-prebuilds">
                         <IconPlaceholder
                           lucide="ZapIcon"
                           tabler="IconBolt"
@@ -133,7 +133,7 @@ export function CodespacesCard() {
                     </DropdownMenuGroup>
                     <DropdownMenuSeparator />
                     <DropdownMenuGroup>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem value="manage-codespaces">
                         <IconPlaceholder
                           lucide="ServerIcon"
                           tabler="IconServer"
@@ -143,7 +143,7 @@ export function CodespacesCard() {
                         />
                         Manage codespaces
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem value="share-deep-link">
                         <IconPlaceholder
                           lucide="ShareIcon"
                           tabler="IconShare2"
@@ -153,7 +153,7 @@ export function CodespacesCard() {
                         />
                         Share deep link
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem value="what-are-codespaces">
                         <IconPlaceholder
                           lucide="InfoIcon"
                           tabler="IconInfoCircle"
@@ -246,7 +246,7 @@ export function CodespacesCard() {
                       />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent side="left">
+                  <TooltipContent>
                     Which remote URL should I use?
                   </TooltipContent>
                 </Tooltip>

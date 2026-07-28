@@ -338,7 +338,6 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
             <SelectControl>
               <SelectTrigger
                 className="w-38 **:data-[slot=select-value]:block **:data-[slot=select-value]:truncate"
-                size="sm"
                 id={`${row.original.id}-reviewer`}
               >
                 <SelectValue placeholder="Assign reviewer" />
@@ -347,7 +346,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
                 <SelectIndicator />
               </SelectIndicatorGroup>
             </SelectControl>
-            <SelectContent align="end">
+            <SelectContent>
               <SelectItemGroup>
                 {reviewerColumnCollection.items.map((item) => (
                   <SelectItem key={item.value} item={item}>
@@ -382,12 +381,14 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
             <span className="sr-only">Open menu</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-32">
-          <DropdownMenuItem>Edit</DropdownMenuItem>
-          <DropdownMenuItem>Make a copy</DropdownMenuItem>
-          <DropdownMenuItem>Favorite</DropdownMenuItem>
+        <DropdownMenuContent className="w-32">
+          <DropdownMenuItem value="edit">Edit</DropdownMenuItem>
+          <DropdownMenuItem value="copy">Make a copy</DropdownMenuItem>
+          <DropdownMenuItem value="favorite">Favorite</DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+          <DropdownMenuItem value="delete" variant="destructive">
+            Delete
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     ),
@@ -498,7 +499,6 @@ export function DataTable({
           <SelectControl>
             <SelectTrigger
               className="flex w-fit @4xl/main:hidden"
-              size="sm"
               id="view-selector"
             >
               <SelectValue placeholder="Select a view" />
@@ -551,7 +551,7 @@ export function DataTable({
                 />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-32">
+            <DropdownMenuContent className="w-32">
               {table
                 .getAllColumns()
                 .filter(
@@ -563,6 +563,7 @@ export function DataTable({
                   return (
                     <DropdownMenuCheckboxItem
                       key={column.id}
+                      value={column.id}
                       className="capitalize"
                       checked={column.getIsVisible()}
                       onCheckedChange={(value) =>
@@ -661,16 +662,16 @@ export function DataTable({
               >
                 <SelectHiddenSelect />
                 <SelectControl>
-                  <SelectTrigger size="sm" className="w-20" id="rows-per-page">
+                  <SelectTrigger className="w-20" id="rows-per-page">
                     <SelectValue
-                      placeholder={table.getState().pagination.pageSize}
+                      placeholder={`${table.getState().pagination.pageSize}`}
                     />
                   </SelectTrigger>
                   <SelectIndicatorGroup>
                     <SelectIndicator />
                   </SelectIndicatorGroup>
                 </SelectControl>
-                <SelectContent side="top">
+                <SelectContent>
                   <SelectItemGroup>
                     {pageSizeCollection.items.map((item) => (
                       <SelectItem key={item.value} item={item}>
@@ -797,7 +798,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
   const isMobile = useIsMobile()
 
   return (
-    <Drawer direction={isMobile ? "bottom" : "right"}>
+    <Drawer swipeDirection={isMobile ? "down" : "right"}>
       <DrawerTrigger asChild>
         <Button variant="link" className="w-fit px-0 text-left text-foreground">
           {item.header}

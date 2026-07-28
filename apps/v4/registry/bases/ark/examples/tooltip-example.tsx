@@ -56,7 +56,7 @@ function TooltipSides() {
                 {side}
               </Button>
             </TooltipTrigger>
-            <TooltipContent side={side}>
+            <TooltipContent>
               <p>Add to library</p>
             </TooltipContent>
           </Tooltip>

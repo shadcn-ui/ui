@@ -25,7 +25,7 @@ export function ContextMenuShortcuts() {
             Back
             <ContextMenuShortcut>⌘[</ContextMenuShortcut>
           </ContextMenuItem>
-          <ContextMenuItem disabled>
+          <ContextMenuItem value="forward" disabled>
             Forward
             <ContextMenuShortcut>⌘]</ContextMenuShortcut>
           </ContextMenuItem>

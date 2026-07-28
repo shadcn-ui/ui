@@ -109,7 +109,6 @@ export function ButtonGroupRtl() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent
-              align={dir === "rtl" ? "end" : "end"}
               data-lang={dir === "rtl" ? language : undefined}
               className="w-40"
             >
@@ -147,7 +146,7 @@ export function ButtonGroupRtl() {
                   >
                     <DropdownMenuRadioGroup
                       value={label}
-                      onValueChange={setLabel}
+                      onValueChange={(details) => setLabel(details.value)}
                     >
                       <DropdownMenuRadioItem value="personal">
                         {t.personal}
@@ -164,7 +163,7 @@ export function ButtonGroupRtl() {
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
-                <DropdownMenuItem variant="destructive">
+                <DropdownMenuItem value="trash" variant="destructive">
                   <Trash2Icon />
                   {t.trash}
                 </DropdownMenuItem>

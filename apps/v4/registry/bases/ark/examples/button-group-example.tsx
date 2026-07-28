@@ -138,9 +138,9 @@ function ButtonGroupWithDropdown() {
                 />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent>
               <DropdownMenuItem value="1">Disable</DropdownMenuItem>
-              <DropdownMenuItem variant="destructive">
+              <DropdownMenuItem value="uninstall" variant="destructive">
                 Uninstall
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -160,7 +160,7 @@ function ButtonGroupWithDropdown() {
                 />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-50">
+            <DropdownMenuContent className="w-50">
               <DropdownMenuGroup>
                 <DropdownMenuItem value="2">
                   <IconPlaceholder
@@ -225,7 +225,7 @@ function ButtonGroupWithDropdown() {
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
-                <DropdownMenuItem variant="destructive">
+                <DropdownMenuItem value="delete" variant="destructive">
                   <IconPlaceholder
                     lucide="TrashIcon"
                     tabler="IconTrash"
@@ -267,7 +267,7 @@ function ButtonGroupWithSelect() {
               </SelectTrigger>
               <SelectIndicator />
             </SelectControl>
-            <SelectContent align="start">
+            <SelectContent>
               <SelectItemGroup>
                 {currencySymbolItems.items.map((item) => (
                   <SelectItem key={item.value} item={item}>
@@ -442,7 +442,7 @@ function ButtonGroupWithSelectAndInput() {
             </SelectTrigger>
             <SelectIndicator />
           </SelectControl>
-          <SelectContent align="start">
+          <SelectContent>
             <SelectItemGroup>
               {durationItems.items.map((item) => (
                 <SelectItem key={item.value} item={item}>

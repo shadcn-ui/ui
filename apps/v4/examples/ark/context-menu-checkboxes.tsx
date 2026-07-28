@@ -19,11 +19,13 @@ export function ContextMenuCheckboxes() {
       </ContextMenuTrigger>
       <ContextMenuContent>
         <ContextMenuGroup>
-          <ContextMenuCheckboxItem defaultChecked>
+          <ContextMenuCheckboxItem value="show-bookmarks-bar" checked>
             Show Bookmarks Bar
           </ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem value="cb-1">Show Full URLs</ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem defaultChecked>
+          <ContextMenuCheckboxItem value="show-full-urls" checked={false}>
+            Show Full URLs
+          </ContextMenuCheckboxItem>
+          <ContextMenuCheckboxItem value="show-developer-tools" checked>
             Show Developer Tools
           </ContextMenuCheckboxItem>
         </ContextMenuGroup>

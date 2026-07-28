@@ -39,7 +39,7 @@ function HoverCardSides() {
                 {side}
               </Button>
             </HoverCardTrigger>
-            <HoverCardContent side={side} className="w-64">
+            <HoverCardContent className="w-64">
               <div className="flex flex-col style-vega:gap-2 style-nova:gap-1.5 style-lyra:gap-1 style-maia:gap-2 style-mira:gap-1">
                 <h4 className="font-medium">Hover Card</h4>
                 <p>

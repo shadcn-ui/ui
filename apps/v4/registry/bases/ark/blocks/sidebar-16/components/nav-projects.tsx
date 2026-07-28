@@ -57,12 +57,8 @@ export function NavProjects({
                   <span className="sr-only">More</span>
                 </SidebarMenuAction>
               </DropdownMenuTrigger>
-              <DropdownMenuContent
-                className="w-48"
-                side={isMobile ? "bottom" : "right"}
-                align={isMobile ? "end" : "start"}
-              >
-                <DropdownMenuItem>
+              <DropdownMenuContent className="w-48">
+                <DropdownMenuItem value="view-project">
                   <IconPlaceholder
                     lucide="FolderIcon"
                     tabler="IconFolder"
@@ -73,7 +69,7 @@ export function NavProjects({
                   />
                   <span>View Project</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem value="share-project">
                   <IconPlaceholder
                     lucide="ShareIcon"
                     tabler="IconShare2"
@@ -85,7 +81,7 @@ export function NavProjects({
                   <span>Share Project</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuItem value="delete-project">
                   <IconPlaceholder
                     lucide="Trash2Icon"
                     tabler="IconTrash"

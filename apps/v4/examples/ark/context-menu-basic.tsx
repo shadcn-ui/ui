@@ -20,7 +20,9 @@ export function ContextMenuBasic() {
       <ContextMenuContent>
         <ContextMenuGroup>
           <ContextMenuItem value="1">Back</ContextMenuItem>
-          <ContextMenuItem disabled>Forward</ContextMenuItem>
+          <ContextMenuItem value="forward" disabled>
+            Forward
+          </ContextMenuItem>
           <ContextMenuItem value="2">Reload</ContextMenuItem>
         </ContextMenuGroup>
       </ContextMenuContent>

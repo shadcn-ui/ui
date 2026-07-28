@@ -47,7 +47,7 @@ export function ItemDropdown() {
       <DropdownMenuContent className="w-48">
         <DropdownMenuGroup>
           {people.map((person) => (
-            <DropdownMenuItem key={person.username}>
+            <DropdownMenuItem key={person.username} value={person.username}>
               <Item size="xs" className="w-full p-2">
                 <ItemMedia>
                   <Avatar className="size-[--spacing(6.5)]">

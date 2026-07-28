@@ -57,13 +57,11 @@ export function VersionSwitcher({
               />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
-          <DropdownMenuContent
-            className="w-(--radix-dropdown-menu-trigger-width)"
-            align="start"
-          >
+          <DropdownMenuContent className="w-(--reference-width)">
             {versions.map((version) => (
               <DropdownMenuItem
                 key={version}
+                value={version}
                 onSelect={() => setSelectedVersion(version)}
               >
                 v{version}{" "}

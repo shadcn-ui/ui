@@ -21,20 +21,30 @@ export function MenubarRadio() {
       <MenubarMenu>
         <MenubarTrigger>Profiles</MenubarTrigger>
         <MenubarContent>
-          <MenubarRadioGroup value={user} onValueChange={setUser}>
+          <MenubarRadioGroup
+            value={user}
+            onValueChange={(details) => setUser(details.value)}
+          >
             <MenubarRadioItem value="andy">Andy</MenubarRadioItem>
             <MenubarRadioItem value="benoit">Benoit</MenubarRadioItem>
             <MenubarRadioItem value="luis">Luis</MenubarRadioItem>
           </MenubarRadioGroup>
           <MenubarSeparator />
-          <MenubarItem inset>Edit...</MenubarItem>
-          <MenubarItem inset>Add Profile...</MenubarItem>
+          <MenubarItem value="edit" inset>
+            Edit...
+          </MenubarItem>
+          <MenubarItem value="add-profile" inset>
+            Add Profile...
+          </MenubarItem>
         </MenubarContent>
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>Theme</MenubarTrigger>
         <MenubarContent>
-          <MenubarRadioGroup value={theme} onValueChange={setTheme}>
+          <MenubarRadioGroup
+            value={theme}
+            onValueChange={(details) => setTheme(details.value)}
+          >
             <MenubarRadioItem value="light">Light</MenubarRadioItem>
             <MenubarRadioItem value="dark">Dark</MenubarRadioItem>
             <MenubarRadioItem value="system">System</MenubarRadioItem>

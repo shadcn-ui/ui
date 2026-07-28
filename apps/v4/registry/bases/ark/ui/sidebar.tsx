@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
 import { cva, type VariantProps } from "class-variance-authority"
 import { useIsMobile } from "@/registry/bases/ark/hooks/use-mobile"
 import { cn } from "@/registry/bases/ark/lib/utils"
@@ -21,20 +22,6 @@ import {
   TooltipTrigger,
 } from "@/registry/bases/ark/ui/tooltip"
 
-// Simple Slot for asChild pattern
-const Slot = React.forwardRef<
-  HTMLElement,
-  React.PropsWithChildren<Record<string, unknown>>
->(({ children, ...props }, ref) => {
-  if (React.isValidElement(children)) {
-    return React.cloneElement(children, {
-      ...props,
-      ref,
-    } as Record<string, unknown>)
-  }
-  return <>{children}</>
-})
-Slot.displayName = "Slot"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
@@ -193,7 +180,10 @@ function Sidebar({
 
   if (isMobile) {
     return (
-      <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
+      <Sheet
+        open={openMobile}
+        onOpenChange={(details) => setOpenMobile(details.open)}
+      >
         <SheetContent
           dir={dir}
           data-sidebar="sidebar"
@@ -206,6 +196,7 @@ function Sidebar({
             } as React.CSSProperties
           }
           side={side}
+          {...props}
         >
           <SheetHeader className="sr-only">
             <SheetTitle>Sidebar</SheetTitle>
@@ -417,10 +408,9 @@ function SidebarGroupLabel({
   asChild = false,
   ...props
 }: React.ComponentProps<"div"> & { asChild?: boolean }) {
-  const Comp = asChild ? Slot : "div"
-
   return (
-    <Comp
+    <ark.div
+      asChild={asChild}
       data-slot="sidebar-group-label"
       data-sidebar="group-label"
       className={cn(
@@ -437,10 +427,9 @@ function SidebarGroupAction({
   asChild = false,
   ...props
 }: React.ComponentProps<"button"> & { asChild?: boolean }) {
-  const Comp = asChild ? Slot : "button"
-
   return (
-    <Comp
+    <ark.button
+      asChild={asChild}
       data-slot="sidebar-group-action"
       data-sidebar="group-action"
       className={cn(
@@ -522,11 +511,11 @@ function SidebarMenuButton({
   isActive?: boolean
   tooltip?: string | React.ComponentProps<typeof TooltipContent>
 } & VariantProps<typeof sidebarMenuButtonVariants>) {
-  const Comp = asChild ? Slot : "button"
   const { isMobile, state } = useSidebar()
 
   const button = (
-    <Comp
+    <ark.button
+      asChild={asChild}
       data-slot="sidebar-menu-button"
       data-sidebar="menu-button"
       data-size={size}
@@ -550,8 +539,6 @@ function SidebarMenuButton({
     <Tooltip>
       <TooltipTrigger asChild>{button}</TooltipTrigger>
       <TooltipContent
-        side="right"
-        align="center"
         hidden={state !== "collapsed" || isMobile}
         {...tooltip}
       />
@@ -568,10 +555,9 @@ function SidebarMenuAction({
   asChild?: boolean
   showOnHover?: boolean
 }) {
-  const Comp = asChild ? Slot : "button"
-
   return (
-    <Comp
+    <ark.button
+      asChild={asChild}
       data-slot="sidebar-menu-action"
       data-sidebar="menu-action"
       className={cn(
@@ -676,10 +662,9 @@ function SidebarMenuSubButton({
   size?: "sm" | "md"
   isActive?: boolean
 }) {
-  const Comp = asChild ? Slot : "a"
-
   return (
-    <Comp
+    <ark.a
+      asChild={asChild}
       data-slot="sidebar-menu-sub-button"
       data-sidebar="menu-sub-button"
       data-size={size}

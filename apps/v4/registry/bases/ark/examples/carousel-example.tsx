@@ -24,10 +24,10 @@ export default function CarouselExample() {
 function CarouselBasic() {
   return (
     <Example title="Basic">
-      <Carousel className="mx-auto max-w-xs sm:max-w-sm">
+      <Carousel slideCount={5} className="mx-auto max-w-xs sm:max-w-sm">
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
-            <CarouselItem key={index}>
+            <CarouselItem key={index} index={index}>
               <div className="p-1">
                 <Card>
                   <CardContent className="flex aspect-square items-center justify-center p-6">
@@ -49,14 +49,13 @@ function CarouselMultiple() {
   return (
     <Example title="Multiple">
       <Carousel
+        slideCount={5}
+        slidesPerPage={3}
         className="mx-auto max-w-xs sm:max-w-sm"
-        opts={{
-          align: "start",
-        }}
       >
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
-            <CarouselItem key={index} className="sm:basis-1/2 lg:basis-1/3">
+            <CarouselItem key={index} index={index}>
               <div className="p-1">
                 <Card>
                   <CardContent className="flex aspect-square items-center justify-center p-6">
@@ -77,10 +76,15 @@ function CarouselMultiple() {
 function CarouselWithGap() {
   return (
     <Example title="With Gap">
-      <Carousel className="mx-auto max-w-xs sm:max-w-sm">
-        <CarouselContent className="-ml-1">
+      <Carousel
+        slideCount={5}
+        slidesPerPage={2}
+        spacing="16px"
+        className="mx-auto max-w-xs sm:max-w-sm"
+      >
+        <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
-            <CarouselItem key={index} className="pl-1 md:basis-1/2">
+            <CarouselItem key={index} index={index}>
               <div className="p-1">
                 <Card>
                   <CardContent className="flex aspect-square items-center justify-center p-6">
