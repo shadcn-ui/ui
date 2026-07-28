@@ -3,12 +3,22 @@ export {
   getRegistryItems,
   resolveRegistryItems,
   getRegistry,
+  getRegistriesConfig,
   getRegistriesIndex,
 } from "./api"
+
+export { addRegistryItems } from "./add"
 
 export { searchRegistries } from "./search"
 
 export {
+  loadRegistry,
+  loadRegistryItem,
+  type LoadRegistryOptions,
+} from "./loader"
+
+export {
+  RegistryErrorCode,
   RegistryError,
   RegistryNotFoundError,
   RegistryUnauthorizedError,
@@ -17,6 +27,8 @@ export {
   RegistryNotConfiguredError,
   RegistryLocalFileError,
   RegistryParseError,
+  RegistryValidationError,
+  RegistryItemNotFoundError,
   RegistriesIndexParseError,
   RegistryMissingEnvironmentVariablesError,
   RegistryInvalidNamespaceError,

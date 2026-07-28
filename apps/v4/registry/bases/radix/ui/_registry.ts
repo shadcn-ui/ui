@@ -1020,4 +1020,57 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       },
     },
   },
+  {
+    name: "attachment",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/attachment.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "bubble",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/bubble.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "message-scroller",
+    type: "registry:ui",
+    dependencies: ["@shadcn/react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/message-scroller.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "marker",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/marker.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "message",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/message.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

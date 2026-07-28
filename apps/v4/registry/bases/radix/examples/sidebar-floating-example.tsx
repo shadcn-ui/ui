@@ -229,8 +229,8 @@ export default function SidebarFloatingExample() {
           </SidebarGroup>
         </SidebarContent>
         <SidebarFooter>
-          <SidebarGroup>
-            <Card size="sm" className="-mx-2">
+          <SidebarGroup className="pb-1">
+            <Card size="sm" className="-mx-1">
               <CardHeader>
                 <CardTitle className="text-sm">
                   Subscribe to our newsletter

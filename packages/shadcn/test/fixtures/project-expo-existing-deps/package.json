@@ -1,0 +1,11 @@
+{
+  "name": "test-cli-project-expo-existing-deps",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "shadcn",
+  "license": "MIT",
+  "dependencies": {
+    "expo": "^52.0.0",
+    "recharts": "^2.15.4"
+  }
+}

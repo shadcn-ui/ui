@@ -193,19 +193,19 @@ export class RegistryFetchError extends RegistryError {
 export class RegistryNotConfiguredError extends RegistryError {
   constructor(public readonly registryName: string | null) {
     const message = registryName
-      ? `Unknown registry "${registryName}". Make sure it is defined in components.json as follows:
+      ? `Unknown registry "${registryName}". Make sure it is defined under "registries" in your components.json or package.json file:
 {
   "registries": {
     "${registryName}": "[URL_TO_REGISTRY]"
   }
 }`
-      : `Unknown registry. Make sure it is defined in components.json under "registries".`
+      : `Unknown registry. Make sure it is defined under "registries" in your components.json or package.json file.`
 
     super(message, {
       code: RegistryErrorCode.NOT_CONFIGURED,
       context: { registryName },
       suggestion:
-        "Add the registry configuration to your components.json file. Consult the registry documentation for the correct format.",
+        'Add the registry configuration under "registries" in your components.json or package.json file.',
     })
     this.name = "RegistryNotConfiguredError"
   }
@@ -214,15 +214,50 @@ export class RegistryNotConfiguredError extends RegistryError {
 export class RegistryLocalFileError extends RegistryError {
   constructor(
     public readonly filePath: string,
-    cause?: unknown
+    cause?: unknown,
+    options: {
+      message?: string
+      context?: Record<string, unknown>
+      suggestion?: string
+    } = {}
   ) {
-    super(`Failed to read local registry file: ${filePath}`, {
-      code: RegistryErrorCode.LOCAL_FILE_ERROR,
-      cause,
-      context: { filePath },
-      suggestion: "Check if the file exists and you have read permissions.",
-    })
+    super(
+      options.message ?? `Failed to read local registry file: ${filePath}`,
+      {
+        code: RegistryErrorCode.LOCAL_FILE_ERROR,
+        cause,
+        context: { filePath, ...options.context },
+        suggestion:
+          options.suggestion ??
+          "Check if the file exists and you have read permissions.",
+      }
+    )
     this.name = "RegistryLocalFileError"
+  }
+}
+
+export class RegistrySourceFileError extends RegistryError {
+  constructor(
+    public readonly filePath: string,
+    cause?: unknown,
+    options: {
+      message?: string
+      context?: Record<string, unknown>
+      suggestion?: string
+    } = {}
+  ) {
+    super(
+      options.message ?? `Failed to read registry source file: ${filePath}`,
+      {
+        code: RegistryErrorCode.FETCH_ERROR,
+        cause,
+        context: { filePath, ...options.context },
+        suggestion:
+          options.suggestion ??
+          "Check if the source file exists and is accessible.",
+      }
+    )
+    this.name = "RegistrySourceFileError"
   }
 }
 
@@ -231,12 +266,18 @@ export class RegistryParseError extends RegistryError {
 
   constructor(
     public readonly item: string,
-    parseError: unknown
+    parseError: unknown,
+    options: {
+      subject?: string
+      context?: Record<string, unknown>
+      suggestion?: string
+    } = {}
   ) {
-    let message = `Failed to parse registry item: ${item}`
+    const subject = options.subject ?? "registry item"
+    let message = `Failed to parse ${subject}: ${item}`
 
     if (parseError instanceof z.ZodError) {
-      message = `Failed to parse registry item: ${item}\n${parseError.errors
+      message = `Failed to parse ${subject}: ${item}\n${parseError.errors
         .map((e) => `  - ${e.path.join(".")}: ${e.message}`)
         .join("\n")}`
     }
@@ -244,12 +285,52 @@ export class RegistryParseError extends RegistryError {
     super(message, {
       code: RegistryErrorCode.PARSE_ERROR,
       cause: parseError,
-      context: { item },
-      suggestion: `The registry item may be corrupted or have an invalid format. Please make sure it returns a valid JSON object. See ${SHADCN_URL}/schema/registry-item.json.`,
+      context: { item, ...options.context },
+      suggestion:
+        options.suggestion ??
+        `The registry item may be corrupted or have an invalid format. Please make sure it returns a valid JSON object. See ${SHADCN_URL}/schema/registry-item.json.`,
     })
 
     this.parseError = parseError
     this.name = "RegistryParseError"
+  }
+}
+
+export class RegistryValidationError extends RegistryError {
+  constructor(
+    message: string,
+    options: {
+      registryFile?: string
+      cause?: unknown
+      context?: Record<string, unknown>
+      suggestion?: string
+    } = {}
+  ) {
+    super(message, {
+      code: RegistryErrorCode.VALIDATION_ERROR,
+      cause: options.cause,
+      context: {
+        ...(options.registryFile ? { registryFile: options.registryFile } : {}),
+        ...options.context,
+      },
+      suggestion:
+        options.suggestion ??
+        "Update the registry.json file and try running the command again.",
+    })
+    this.name = "RegistryValidationError"
+  }
+}
+
+export class RegistryItemNotFoundError extends RegistryError {
+  constructor(public readonly itemName: string) {
+    super(`Registry item "${itemName}" was not found.`, {
+      code: RegistryErrorCode.NOT_FOUND,
+      statusCode: 404,
+      context: { itemName },
+      suggestion:
+        "Check that the item name exists in the resolved registry catalog.",
+    })
+    this.name = "RegistryItemNotFoundError"
   }
 }
 
@@ -303,12 +384,22 @@ export class ConfigMissingError extends RegistryError {
 export class ConfigParseError extends RegistryError {
   constructor(
     public readonly cwd: string,
-    parseError: unknown
+    parseError: unknown,
+    public readonly configFile:
+      | "components.json"
+      | "package.json"
+      | "config" = "components.json"
   ) {
-    let message = `Invalid components.json configuration in ${cwd}.`
+    const configName =
+      configFile === "package.json"
+        ? 'package.json "registries"'
+        : configFile === "config"
+          ? "provided config"
+          : "components.json"
+    let message = `Invalid ${configName} configuration in ${cwd}.`
 
     if (parseError instanceof z.ZodError) {
-      message = `Invalid components.json configuration in ${cwd}:\n${parseError.errors
+      message = `Invalid ${configName} configuration in ${cwd}:\n${parseError.errors
         .map((e) => `  - ${e.path.join(".")}: ${e.message}`)
         .join("\n")}`
     }
@@ -316,9 +407,13 @@ export class ConfigParseError extends RegistryError {
     super(message, {
       code: RegistryErrorCode.INVALID_CONFIG,
       cause: parseError,
-      context: { cwd },
+      context: { cwd, configFile },
       suggestion:
-        "Check your components.json file for syntax errors or invalid configuration. Run 'npx shadcn@latest init' to regenerate a valid configuration.",
+        configFile === "package.json"
+          ? 'Check the "registries" field in your package.json file for invalid configuration.'
+          : configFile === "config"
+            ? "Pass a valid full project config, or omit resolvedPaths and provide only registry configuration."
+            : "Check your components.json file for syntax errors or invalid configuration. Run 'npx shadcn@latest init' to regenerate a valid configuration.",
     })
     this.name = "ConfigParseError"
   }

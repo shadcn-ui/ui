@@ -1,7 +1,13 @@
 import { promises as fs } from "fs"
 import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
-import { decodePreset, isPresetCode } from "@/src/preset/preset"
+import {
+  decodePreset,
+  isPresetBase,
+  isPresetCode,
+  PRESET_BASES,
+  type PresetBase,
+} from "@/src/preset/preset"
 import {
   DEFAULT_PRESETS,
   promptForBase,
@@ -37,6 +43,7 @@ import {
   DEFAULT_TAILWIND_CSS,
   DEFAULT_UTILS,
   explorer,
+  getBase,
   getConfig,
   getWorkspaceConfig,
   resolveConfigPaths,
@@ -78,7 +85,7 @@ export const initOptionsSchema = z.object({
   cssVariables: z.boolean().default(true),
   rtl: z.boolean().optional(),
   pointer: z.boolean().optional(),
-  base: z.enum(["radix", "base"]).optional(),
+  base: z.enum(PRESET_BASES).optional(),
   template: z.string().optional(),
   monorepo: z.boolean().optional(),
   existingConfig: z.record(z.unknown()).optional(),
@@ -124,7 +131,10 @@ export const init = new Command()
     "-t, --template <template>",
     "the template to use. (next, start, vite, react-router, laravel, astro)"
   )
-  .option("-b, --base <base>", "the component library to use. (radix, base)")
+  .option(
+    "-b, --base <base>",
+    "the component library to use. (base, radix, aria)"
+  )
   .option("--monorepo", "scaffold a monorepo project.")
   .option("--no-monorepo", "skip the monorepo prompt.")
   .option("-p, --preset [name]", "use a preset configuration")
@@ -172,7 +182,7 @@ export const init = new Command()
       })
       const presetsByName = new Map(Object.entries(DEFAULT_PRESETS))
 
-      let presetBase: string | undefined
+      let presetBase: PresetBase | undefined
 
       if (options.defaults) {
         options.template = options.template || "next"
@@ -263,7 +273,11 @@ export const init = new Command()
             path.resolve(cwd, "components.json")
           )
         } catch {
-          // Ignore read errors.
+          logger.warn(
+            `Could not parse the existing ${highlighter.info(
+              "components.json"
+            )}. Unable to detect the current base.`
+          )
         }
 
         // Pass existing config so preflight can use it (e.g. tailwind.css path in monorepos).
@@ -408,7 +422,8 @@ export const init = new Command()
               url.searchParams.set("track", "1")
             }
             initUrl = url.toString()
-            presetBase = url.searchParams.get("base") ?? undefined
+            const base = url.searchParams.get("base")
+            presetBase = isPresetBase(base) ? base : undefined
           } else if (isPresetCode(presetArg)) {
             const decoded = decodePreset(presetArg)
             if (!decoded) {
@@ -418,12 +433,12 @@ export const init = new Command()
               logger.break()
               process.exit(1)
             }
-            // Preset codes no longer carry base — use "radix" as placeholder.
+            // Preset codes no longer carry base, so use "base" as placeholder.
             // The correct base is set in the URL after resolution below.
             initUrl = resolveInitUrl(
               {
                 ...decoded,
-                base: "radix",
+                base: "base",
                 rtl: options.rtl ?? false,
               },
               {
@@ -441,7 +456,7 @@ export const init = new Command()
             initUrl = resolveInitUrl(
               {
                 ...preset,
-                base: options.base ?? "radix",
+                base: options.base ?? "base",
                 rtl: options.rtl ?? preset.rtl,
               },
               { template: options.template, pointer: options.pointer }
@@ -454,20 +469,22 @@ export const init = new Command()
       }
 
       // Resolve base: --base flag > preset/prompt/URL > existing config > prompt.
-      let resolvedBase: string =
+      let resolvedBase: PresetBase | undefined =
         options.base ??
         presetBase ??
-        (existingConfig?.style
-          ? (existingConfig.style as string).startsWith("base-")
-            ? "base"
-            : "radix"
-          : "")
+        (typeof existingConfig?.style === "string"
+          ? getBase(existingConfig.style)
+          : undefined)
+
+      // If a components.json exists but could not be parsed, we cannot know
+      // the current base, so never pick one silently.
+      const unknownExistingBase = hasExistingConfig && !existingConfig
 
       if (!resolvedBase) {
-        if (components.length > 0) {
-          // When initializing from a registry item, default to radix.
+        if (components.length > 0 && !unknownExistingBase) {
+          // When initializing from a registry item, default to base.
           // The registry:base config will override this.
-          resolvedBase = "radix"
+          resolvedBase = "base"
         } else {
           const base = await promptForBase()
           resolvedBase = base
@@ -987,9 +1004,11 @@ async function promptForMinimalConfig(
   })
 }
 
-async function confirmBaseSwitch(existingStyle: string, resolvedBase: string) {
-  // Styles prefixed with "base-" use Base UI. Everything else is Radix.
-  const oldBase = existingStyle.startsWith("base-") ? "base" : "radix"
+async function confirmBaseSwitch(
+  existingStyle: string,
+  resolvedBase: PresetBase
+) {
+  const oldBase = getBase(existingStyle)
   if (resolvedBase === oldBase) return resolvedBase
 
   logger.warn(

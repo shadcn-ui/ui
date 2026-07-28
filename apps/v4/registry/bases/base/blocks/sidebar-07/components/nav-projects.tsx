@@ -57,7 +57,7 @@ export function NavProjects({
                 <span className="sr-only">More</span>
               </DropdownMenuTrigger>
               <DropdownMenuContent
-                className="w-48 rounded-lg"
+                className="w-fit"
                 side={isMobile ? "bottom" : "right"}
                 align={isMobile ? "end" : "start"}
               >
@@ -68,7 +68,6 @@ export function NavProjects({
                     hugeicons="FolderIcon"
                     phosphor="FolderIcon"
                     remixicon="RiFolderLine"
-                    className="text-muted-foreground"
                   />
                   <span>View Project</span>
                 </DropdownMenuItem>
@@ -79,19 +78,17 @@ export function NavProjects({
                     hugeicons="ArrowRightIcon"
                     phosphor="ShareFatIcon"
                     remixicon="RiShareForwardLine"
-                    className="text-muted-foreground"
                   />
                   <span>Share Project</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuItem variant="destructive">
                   <IconPlaceholder
                     lucide="Trash2Icon"
                     tabler="IconTrash"
                     hugeicons="Delete02Icon"
                     phosphor="TrashIcon"
                     remixicon="RiDeleteBinLine"
-                    className="text-muted-foreground"
                   />
                   <span>Delete Project</span>
                 </DropdownMenuItem>

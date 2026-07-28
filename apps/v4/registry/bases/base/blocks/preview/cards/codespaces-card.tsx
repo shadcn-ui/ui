@@ -118,7 +118,7 @@ export function CodespacesCard() {
                           phosphor="CubeIcon"
                           remixicon="RiBox1Line"
                         />
-                        Configure dev container
+                        Configure container
                       </DropdownMenuItem>
                       <DropdownMenuItem>
                         <IconPlaceholder
