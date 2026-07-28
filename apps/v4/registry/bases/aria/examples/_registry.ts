@@ -359,6 +359,18 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "file-tree-example",
+    title: "File Tree",
+    type: "registry:example",
+    registryDependencies: ["file-tree", "example"],
+    files: [
+      {
+        path: "examples/file-tree-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "input-example",
     title: "Input",
     type: "registry:example",

@@ -1,4 +1,7 @@
 export const PAGES_NEW = [
+  "/docs/components/aria/file-tree",
+  "/docs/components/base/file-tree",
+  "/docs/components/radix/file-tree",
   "/docs/typeset",
   "/docs/utils/scroll-fade",
   "/docs/utils/shimmer",

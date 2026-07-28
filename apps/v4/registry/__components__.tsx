@@ -214,6 +214,57 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "field"
       return { default: mod.default || mod[exportName] }
     }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import(
+        "@/registry/new-york-v4/ui/file-tree-virtualized"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import(
+        "@/registry/new-york-v4/ui/file-tree-move-dialog"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/registry/new-york-v4/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
     form: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/ui/form")
       const exportName =
@@ -2427,6 +2478,17 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "field-responsive"
       return { default: mod.default || mod[exportName] }
     }),
+    "file-tree-example": React.lazy(async () => {
+      const mod = await import(
+        "@/registry/new-york-v4/examples/file-tree-example"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-example"
+      return { default: mod.default || mod[exportName] }
+    }),
     "form-next-demo": React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/examples/form-next-demo")
       const exportName =
@@ -4193,6 +4255,53 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "field"
       return { default: mod.default || mod[exportName] }
     }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/base-nova/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/base-nova/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/base-nova/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/base-nova/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/base-nova/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
     "hover-card": React.lazy(async () => {
       const mod = await import("@/styles/base-nova/ui/hover-card")
       const exportName =
@@ -4744,6 +4853,53 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "field"
       return { default: mod.default || mod[exportName] }
     }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/radix-nova/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/radix-nova/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/radix-nova/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/radix-nova/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/radix-nova/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
     "hover-card": React.lazy(async () => {
       const mod = await import("@/styles/radix-nova/ui/hover-card")
       const exportName =
@@ -5286,6 +5442,53 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "field"
       return { default: mod.default || mod[exportName] }
     }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/aria-nova/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/aria-nova/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/aria-nova/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/aria-nova/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/aria-nova/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
     input: React.lazy(async () => {
       const mod = await import("@/styles/aria-nova/ui/input")
       const exportName =
@@ -5799,6 +6002,53 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/base-vega/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/base-vega/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/base-vega/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/base-vega/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/base-vega/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
       return { default: mod.default || mod[exportName] }
     }),
     "hover-card": React.lazy(async () => {
@@ -6352,6 +6602,53 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "field"
       return { default: mod.default || mod[exportName] }
     }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/base-maia/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/base-maia/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/base-maia/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/base-maia/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/base-maia/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
     "hover-card": React.lazy(async () => {
       const mod = await import("@/styles/base-maia/ui/hover-card")
       const exportName =
@@ -6901,6 +7198,53 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/base-lyra/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/base-lyra/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/base-lyra/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/base-lyra/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/base-lyra/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
       return { default: mod.default || mod[exportName] }
     }),
     "hover-card": React.lazy(async () => {
@@ -7454,6 +7798,53 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "field"
       return { default: mod.default || mod[exportName] }
     }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/base-mira/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/base-mira/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/base-mira/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/base-mira/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/base-mira/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
     "hover-card": React.lazy(async () => {
       const mod = await import("@/styles/base-mira/ui/hover-card")
       const exportName =
@@ -8003,6 +8394,53 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/base-luma/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/base-luma/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/base-luma/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/base-luma/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/base-luma/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
       return { default: mod.default || mod[exportName] }
     }),
     "hover-card": React.lazy(async () => {
@@ -8556,6 +8994,53 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "field"
       return { default: mod.default || mod[exportName] }
     }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/base-sera/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/base-sera/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/base-sera/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/base-sera/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/base-sera/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
     "hover-card": React.lazy(async () => {
       const mod = await import("@/styles/base-sera/ui/hover-card")
       const exportName =
@@ -9105,6 +9590,53 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/base-rhea/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/base-rhea/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/base-rhea/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/base-rhea/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/base-rhea/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
       return { default: mod.default || mod[exportName] }
     }),
     "hover-card": React.lazy(async () => {
@@ -9658,6 +10190,53 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "field"
       return { default: mod.default || mod[exportName] }
     }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/aria-vega/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/aria-vega/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
     input: React.lazy(async () => {
       const mod = await import("@/styles/aria-vega/ui/input")
       const exportName =
@@ -10171,6 +10750,53 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/aria-maia/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/aria-maia/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
       return { default: mod.default || mod[exportName] }
     }),
     input: React.lazy(async () => {
@@ -10688,6 +11314,53 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "field"
       return { default: mod.default || mod[exportName] }
     }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/aria-lyra/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/aria-lyra/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
     input: React.lazy(async () => {
       const mod = await import("@/styles/aria-lyra/ui/input")
       const exportName =
@@ -11201,6 +11874,53 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/aria-mira/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/aria-mira/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
       return { default: mod.default || mod[exportName] }
     }),
     input: React.lazy(async () => {
@@ -11718,6 +12438,53 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "field"
       return { default: mod.default || mod[exportName] }
     }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/aria-luma/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/aria-luma/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
     input: React.lazy(async () => {
       const mod = await import("@/styles/aria-luma/ui/input")
       const exportName =
@@ -12231,6 +12998,53 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/aria-sera/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/aria-sera/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
       return { default: mod.default || mod[exportName] }
     }),
     input: React.lazy(async () => {
@@ -12748,6 +13562,53 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "field"
       return { default: mod.default || mod[exportName] }
     }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/aria-rhea/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/aria-rhea/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
     input: React.lazy(async () => {
       const mod = await import("@/styles/aria-rhea/ui/input")
       const exportName =
@@ -13261,6 +14122,53 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/radix-vega/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/radix-vega/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
       return { default: mod.default || mod[exportName] }
     }),
     "hover-card": React.lazy(async () => {
@@ -13805,6 +14713,53 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "field"
       return { default: mod.default || mod[exportName] }
     }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/radix-maia/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/radix-maia/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
     "hover-card": React.lazy(async () => {
       const mod = await import("@/styles/radix-maia/ui/hover-card")
       const exportName =
@@ -14345,6 +15300,53 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/radix-lyra/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/radix-lyra/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
       return { default: mod.default || mod[exportName] }
     }),
     "hover-card": React.lazy(async () => {
@@ -14889,6 +15891,53 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "field"
       return { default: mod.default || mod[exportName] }
     }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/radix-mira/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/radix-mira/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
     "hover-card": React.lazy(async () => {
       const mod = await import("@/styles/radix-mira/ui/hover-card")
       const exportName =
@@ -15429,6 +16478,53 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/radix-luma/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/radix-luma/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
       return { default: mod.default || mod[exportName] }
     }),
     "hover-card": React.lazy(async () => {
@@ -15973,6 +17069,53 @@ export const Components: Record<string, Record<string, any>> = {
         ) || "field"
       return { default: mod.default || mod[exportName] }
     }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/radix-sera/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/radix-sera/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
     "hover-card": React.lazy(async () => {
       const mod = await import("@/styles/radix-sera/ui/hover-card")
       const exportName =
@@ -16513,6 +17656,53 @@ export const Components: Record<string, Record<string, any>> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "field"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/file-tree")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/file-tree-virtualized")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-move-dialog": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/file-tree-move-dialog")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-move-dialog"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-sortable": React.lazy(async () => {
+      const mod = await import("@/styles/radix-rhea/ui/file-tree-sortable")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-sortable"
+      return { default: mod.default || mod[exportName] }
+    }),
+    "file-tree-virtualized-sortable": React.lazy(async () => {
+      const mod = await import(
+        "@/styles/radix-rhea/ui/file-tree-virtualized-sortable"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "file-tree-virtualized-sortable"
       return { default: mod.default || mod[exportName] }
     }),
     "hover-card": React.lazy(async () => {

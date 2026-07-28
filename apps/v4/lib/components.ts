@@ -26,6 +26,7 @@ export const UI_COMPONENTS = [
   "dropdown-menu",
   "empty",
   "field",
+  "file-tree",
   "form",
   "hover-card",
   "input",
