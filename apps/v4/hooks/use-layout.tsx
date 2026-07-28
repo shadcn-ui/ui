@@ -20,6 +20,7 @@ interface LayoutProviderState {
 }
 
 const isServer = typeof window === "undefined"
+
 const LayoutContext = React.createContext<LayoutProviderState | undefined>(
   undefined
 )
@@ -69,10 +70,8 @@ const Layout = ({
   const applyLayout = React.useCallback(
     (layout: Layout) => {
       if (!layout) return
-
       const name = value ? value[layout] : `layout-${layout}`
       const d = document.documentElement
-
       const handleAttribute = (attr: string) => {
         if (attr === "class") {
           d.classList.remove(...attrs)
@@ -85,7 +84,6 @@ const Layout = ({
           }
         }
       }
-
       if (Array.isArray(attribute)) attribute.forEach(handleAttribute)
       else handleAttribute(attribute)
     },
@@ -112,14 +110,12 @@ const Layout = ({
   React.useEffect(() => {
     const handleStorage = (e: StorageEvent) => {
       if (e.key !== storageKey) return
-
       if (!e.newValue) {
         setLayout(defaultLayout)
       } else if (e.newValue === "fixed" || e.newValue === "full") {
         setLayoutState(e.newValue)
       }
     }
-
     window.addEventListener("storage", handleStorage)
     return () => window.removeEventListener("storage", handleStorage)
   }, [setLayout, storageKey, defaultLayout])
@@ -130,19 +126,13 @@ const Layout = ({
     applyLayout(currentLayout)
   }, [forcedLayout, layout, applyLayout])
 
-  // Prevent layout changes during hydration
-  const [isHydrated, setIsHydrated] = React.useState(false)
-  React.useEffect(() => {
-    setIsHydrated(true)
-  }, [])
-
   const providerValue = React.useMemo(
     () => ({
-      layout: isHydrated ? layout : defaultLayout,
+      layout,
       setLayout,
       forcedLayout,
     }),
-    [layout, setLayout, forcedLayout, isHydrated, defaultLayout]
+    [layout, setLayout, forcedLayout]
   )
 
   return (
@@ -154,7 +144,6 @@ const Layout = ({
 
 const LayoutProvider = (props: LayoutProviderProps) => {
   const context = React.useContext(LayoutContext)
-
   // Ignore nested context providers, just passthrough children
   if (context) return <>{props.children}</>
   return <Layout {...props} />
