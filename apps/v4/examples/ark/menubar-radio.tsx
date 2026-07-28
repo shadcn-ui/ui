@@ -1,0 +1,56 @@
+"use client"
+
+import * as React from "react"
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarSeparator,
+  MenubarTrigger,
+} from "@/examples/ark/ui/menubar"
+
+export function MenubarRadio() {
+  const [user, setUser] = React.useState("benoit")
+  const [theme, setTheme] = React.useState("system")
+
+  return (
+    <Menubar className="w-72">
+      <MenubarMenu>
+        <MenubarTrigger>Profiles</MenubarTrigger>
+        <MenubarContent>
+          <MenubarRadioGroup
+            value={user}
+            onValueChange={(details) => setUser(details.value)}
+          >
+            <MenubarRadioItem value="andy">Andy</MenubarRadioItem>
+            <MenubarRadioItem value="benoit">Benoit</MenubarRadioItem>
+            <MenubarRadioItem value="luis">Luis</MenubarRadioItem>
+          </MenubarRadioGroup>
+          <MenubarSeparator />
+          <MenubarItem value="edit" inset>
+            Edit...
+          </MenubarItem>
+          <MenubarItem value="add-profile" inset>
+            Add Profile...
+          </MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger>Theme</MenubarTrigger>
+        <MenubarContent>
+          <MenubarRadioGroup
+            value={theme}
+            onValueChange={(details) => setTheme(details.value)}
+          >
+            <MenubarRadioItem value="light">Light</MenubarRadioItem>
+            <MenubarRadioItem value="dark">Dark</MenubarRadioItem>
+            <MenubarRadioItem value="system">System</MenubarRadioItem>
+          </MenubarRadioGroup>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  )
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch-example",
+  "title": "Switch",
+  "registryDependencies": [
+    "field",
+    "label",
+    "switch",
+    "example"
+  ],
+  "files": [
+    {
+      "path": "registry/ark-nova/examples/switch-example.tsx",
+      "content": "import { Example, ExampleWrapper } from \"@/registry/ark-nova/components/example\"\nimport {\n  Switch,\n  SwitchControl,\n  SwitchHiddenInput,\n  SwitchLabel,\n  SwitchThumb,\n} from \"@/registry/ark-nova/ui/switch\"\n\nexport default function SwitchExample() {\n  return (\n    <ExampleWrapper>\n      <SwitchBasic />\n      <SwitchWithDescription />\n      <SwitchDisabled />\n    </ExampleWrapper>\n  )\n}\n\nfunction SwitchBasic() {\n  return (\n    <Example title=\"Basic\">\n      <Switch id=\"switch-basic\">\n        <SwitchControl>\n          <SwitchThumb />\n        </SwitchControl>\n        <SwitchLabel>Airplane Mode</SwitchLabel>\n        <SwitchHiddenInput />\n      </Switch>\n    </Example>\n  )\n}\n\nfunction SwitchWithDescription() {\n  return (\n    <Example title=\"With Description\">\n      <Switch id=\"switch-focus-mode\">\n        <SwitchControl>\n          <SwitchThumb />\n        </SwitchControl>\n        <SwitchLabel>Share across devices</SwitchLabel>\n        <SwitchHiddenInput />\n      </Switch>\n    </Example>\n  )\n}\n\nfunction SwitchDisabled() {\n  return (\n    <Example title=\"Disabled\">\n      <div className=\"flex flex-col gap-12\">\n        <Switch id=\"switch-disabled-unchecked\" disabled>\n          <SwitchControl>\n            <SwitchThumb />\n          </SwitchControl>\n          <SwitchLabel>Disabled (Unchecked)</SwitchLabel>\n          <SwitchHiddenInput />\n        </Switch>\n        <Switch id=\"switch-disabled-checked\" defaultChecked disabled>\n          <SwitchControl>\n            <SwitchThumb />\n          </SwitchControl>\n          <SwitchLabel>Disabled (Checked)</SwitchLabel>\n          <SwitchHiddenInput />\n        </Switch>\n      </div>\n    </Example>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

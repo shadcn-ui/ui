@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "direction",
+  "files": [
+    {
+      "path": "registry/ark-lyra/ui/direction.tsx",
+      "content": "\"use client\"\n\nimport { LocaleProvider, useLocaleContext } from \"@ark-ui/react/locale\"\n\ntype Direction = \"ltr\" | \"rtl\"\n\nfunction DirectionProvider({\n  dir,\n  direction,\n  children,\n}: {\n  dir?: Direction\n  direction?: Direction\n  children: React.ReactNode\n}) {\n  const resolvedDir = direction ?? dir ?? \"ltr\"\n  const locale = resolvedDir === \"rtl\" ? \"ar\" : \"en-US\"\n\n  return <LocaleProvider locale={locale}>{children}</LocaleProvider>\n}\n\nfunction useDirection(): Direction {\n  const { dir } = useLocaleContext()\n  return dir as Direction\n}\n\nexport { DirectionProvider, useDirection }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

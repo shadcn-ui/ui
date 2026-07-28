@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label",
+  "files": [
+    {
+      "path": "registry/ark-nova/ui/label.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Field } from \"@ark-ui/react/field\"\n\nimport { cn } from \"@/registry/ark-nova/lib/utils\"\n\nfunction Label({\n  className,\n  ...props\n}: React.ComponentProps<typeof Field.Label>) {\n  return (\n    <Field.Label\n      data-slot=\"label\"\n      className={cn(\n        \"gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:opacity-50 group-data-[disabled=true]/field:pointer-events-none group-data-[disabled=true]/field:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Label }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

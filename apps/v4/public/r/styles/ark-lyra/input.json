@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "files": [
+    {
+      "path": "registry/ark-lyra/ui/input.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Field } from \"@ark-ui/react/field\"\n\nimport { cn } from \"@/registry/ark-lyra/lib/utils\"\n\nfunction Input({\n  className,\n  ...props\n}: React.ComponentProps<typeof Field.Input>) {\n  return (\n    <Field.Input\n      data-slot=\"input\"\n      className={cn(\n        \"h-8 rounded-none border border-input bg-transparent px-2.5 py-1 text-xs transition-colors file:h-6 file:text-xs file:font-medium focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/50 disabled:bg-input/50 aria-invalid:border-destructive aria-invalid:ring-1 aria-invalid:ring-destructive/20 md:text-xs dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Input }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
