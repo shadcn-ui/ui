@@ -1,0 +1,658 @@
+---
+title: File Tree
+description: An accessible file and folder tree with keyboard navigation, selection, async loading, and rename.
+base: base
+component: true
+---
+
+<ComponentPreview
+  styleName="base-nova"
+  name="file-tree-demo"
+  align="start"
+  previewClassName="h-auto min-h-72 overflow-auto p-4 sm:p-10"
+/>
+
+## About
+
+`FileTree` renders hierarchical files and folders as an ARIA tree. It owns no file
+system state and has no dependency on a third-party tree package. Use it for an
+explorer or navigation hierarchy; use a collapsible list when users do not need
+tree keyboard behavior, and a treegrid when every item has multiple interactive
+columns.
+
+The default item is a styled shadcn row. You can replace its contents with the
+exported item parts while retaining the tree's behavior and semantics.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add file-tree
+```
+
+</TabsContent>
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the component into your project.</Step>
+
+<DeferredComponentSource
+  name="file-tree"
+  file="file-tree.tsx"
+  title="components/ui/file-tree.tsx"
+  styleName="base-nova"
+/>
+
+<Step>Copy the pure collection helpers alongside the component.</Step>
+
+<DeferredComponentSource
+  name="file-tree"
+  file="file-tree-core.ts"
+  title="components/ui/file-tree-core.ts"
+  styleName="base-nova"
+/>
+
+<Step>Copy the pure shortcut and command helpers alongside the component.</Step>
+
+<DeferredComponentSource
+  name="file-tree"
+  file="file-tree-shortcuts.ts"
+  title="components/ui/file-tree-shortcuts.ts"
+  styleName="base-nova"
+/>
+
+<Step>Copy the controller and pure move helpers alongside the component.</Step>
+
+<DeferredComponentSource
+  name="file-tree"
+  file="file-tree-controller.ts"
+  title="components/ui/file-tree-controller.ts"
+  styleName="base-nova"
+/>
+
+<DeferredComponentSource
+  name="file-tree"
+  file="file-tree-sortable-core.ts"
+  title="components/ui/file-tree-sortable-core.ts"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { FileTree, type FileTreeNode } from "@/components/ui/file-tree"
+
+const items: FileTreeNode[] = [
+  {
+    id: "src",
+    name: "src",
+    type: "folder",
+    children: [
+      { id: "page", name: "page.tsx", type: "file" },
+      { id: "layout", name: "layout.tsx", type: "file" },
+    ],
+  },
+  { id: "package", name: "package.json", type: "file" },
+]
+
+return (
+  <FileTree
+    aria-label="Project files"
+    defaultExpandedIds={["src"]}
+    items={items}
+    onItemAction={(item) => {
+      if (item.type === "file") openFile(item.id)
+    }}
+  />
+)
+```
+
+Every tree needs an accessible name through `aria-label` or
+`aria-labelledby`. IDs must be stable and unique across the entire tree.
+
+## Controlled state
+
+Expansion, selection, and focus can each be controlled independently. A
+controlled callback is a change request: update the corresponding prop to
+accept it.
+
+```tsx
+const [expandedIds, setExpandedIds] = React.useState<readonly string[]>([])
+const [selectedIds, setSelectedIds] = React.useState<readonly string[]>([])
+
+return (
+  <FileTree
+    aria-label="Project files"
+    expandedIds={expandedIds}
+    items={items}
+    onExpandedIdsChange={setExpandedIds}
+    onSelectedIdsChange={setSelectedIds}
+    selectedIds={selectedIds}
+    selectionMode="multiple"
+  />
+)
+```
+
+Focus and selection are separate. Arrow keys move focus. Space selects the
+focused row, while Enter performs its primary action. In multiple-selection
+mode, Shift extends a range and Control/Command toggles an item without clearing
+the rest.
+
+<ComponentPreview styleName="base-nova" name="file-tree-controlled-demo" />
+
+## Custom data and item contents
+
+Use `accessors` to retain your domain model instead of translating it into
+`FileTreeNode` objects.
+
+```tsx
+type Entry = {
+  key: string
+  label: string
+  kind: "file" | "folder"
+  entries?: readonly Entry[]
+}
+;<FileTree
+  aria-label="Repository"
+  items={entries}
+  accessors={{
+    getItemId: (entry) => entry.key,
+    getItemName: (entry) => entry.label,
+    getItemType: (entry) => entry.kind,
+    getItemChildren: (entry) => entry.entries,
+  }}
+/>
+```
+
+Use `renderIcon` for icon-only customization. Pass a render function as
+`children` when the whole visible row should change.
+
+```tsx
+<FileTree aria-label="Project files" items={items}>
+  {({ item, state }) => (
+    <FileTreeItem>
+      <FileTreeItemToggle />
+      <FileTreeItemIcon>
+        {state.isFolder ? <PackageIcon /> : <CodeIcon />}
+      </FileTreeItemIcon>
+      <FileTreeItemLabel>{item.name}</FileTreeItemLabel>
+    </FileTreeItem>
+  )}
+</FileTree>
+```
+
+Keep interactive controls out of a row unless they are essential. They alter
+the keyboard model expected of a normal tree and should be tested with screen
+readers.
+
+## Async folders
+
+A folder whose `children` value is `undefined` is unresolved. Expanding it calls
+`loadChildren`; `children: []` means it is already loaded and empty. The loader
+receives an `AbortSignal`. Observe it so obsolete requests can stop promptly.
+
+```tsx
+const treeRef = React.useRef<FileTreeHandle>(null)
+
+<FileTree
+  ref={treeRef}
+  aria-label="Remote files"
+  items={items}
+  loadChildren={async ({ id, signal }) => {
+    const response = await fetch(`/api/files/${id}`, { signal })
+    if (!response.ok) throw new Error("Could not load this folder")
+    return response.json()
+  }}
+  onLoadError={({ id, error }) => reportLoadError(id, error)}
+/>
+
+<button onClick={() => treeRef.current?.refresh("inbox")}>
+  Refresh inbox
+</button>
+```
+
+Loading, error, retry, and success are announced through a polite live region.
+Click the retry disclosure icon or call `refresh(id)` after a failure.
+Collapsing a loading folder lets its request finish and caches the result; removing
+the folder or unmounting the tree aborts obsolete work.
+
+<ComponentPreview styleName="base-nova" name="file-tree-async-demo" />
+
+## Rename
+
+Provide `onRename` to enable F2. The component manages the editor and validation,
+but your callback must persist the new name and update `items`.
+
+```tsx
+<FileTree
+  aria-label="Editable files"
+  items={items}
+  onRename={async ({ id, name, signal }) => {
+    await saveName(id, name, { signal })
+    setItems((current) => renameNode(current, id, name))
+  }}
+  onRenameError={({ id, error }) => reportRenameError(id, error)}
+  validateRename={(name) =>
+    name.includes("/") ? "Names cannot contain a slash." : undefined
+  }
+/>
+```
+
+Enter commits, Escape cancels, and the input selects a file name without its
+extension. Failed validation keeps the editor open and associates the error with
+the input.
+
+<ComponentPreview styleName="base-nova" name="file-tree-rename-demo" />
+
+## Context menus
+
+`onItemContextMenu` runs for a pointer context menu and Shift+F10/the Context
+Menu key. For pointer events, prevent the browser menu and position your menu
+from `details.originalEvent`. An unselected target becomes selected first.
+
+## Commands and shortcuts
+
+Keyboard behavior is resolved through named commands instead of a monolithic
+keydown handler. Required tree navigation keeps its standard APG bindings.
+Application shortcuts can be replaced or disabled, and navigation aliases can
+be added safely.
+
+```tsx
+const shortcuts: FileTreeShortcutConfig = {
+  platform: "auto",
+  bindings: {
+    focusNext: { key: "j", control: true }, // Adds an alias.
+    rename: false, // Application commands may be disabled.
+  },
+  onConflict: (conflict) => reportShortcutConflict(conflict),
+}
+
+<FileTree
+  aria-label="Project files"
+  items={items}
+  shortcuts={shortcuts}
+/>
+```
+
+Set `allowUnsafeNavigationOverrides` only when the application provides and
+documents another complete navigation model. Common browser bindings such as
+Control/Command+F, Control/Command+R, and F5 are rejected unless
+`allowUnsafeShortcuts` is explicitly enabled. Printable unmodified custom
+commands are rejected by default because they shadow tree typeahead.
+
+Use `primary: true` for Command on macOS and Control on Windows/Linux.
+`platform: "auto"` is the default. During server rendering, primary bindings
+accept either modifier without changing row markup; pass an explicit platform
+when your application already knows it.
+
+Custom commands run only while focus is inside the tree. A custom command whose
+ID matches a built-in application command can inherit its smart default:
+
+```tsx
+const commands: FileTreeCommand<FileTreeNode>[] = [
+  {
+    id: "createFolder",
+    label: "New folder",
+    canRun: ({ focusedItem }) => focusedItem?.type === "folder",
+    run: ({ focusedId }) => createFolder(focusedId),
+  },
+]
+
+<FileTree
+  aria-label="Project files"
+  commands={commands}
+  items={items}
+  onCommandError={({ command, error }) => report(command.id, error)}
+/>
+```
+
+| Command        | macOS             | Windows/Linux   |
+| -------------- | ----------------- | --------------- |
+| Select all     | Command+A         | Control+A       |
+| New folder     | Shift+Command+N   | Control+Shift+N |
+| Copy/Cut/Paste | Command+C/X/V     | Control+C/X/V   |
+| Delete         | Command+Backspace | Delete          |
+| Properties     | Command+I         | Alt+Enter       |
+| Rename         | F2                | F2              |
+
+Application defaults are inert until a matching custom command is supplied.
+Navigation, selection, rename, and context-menu commands are implemented by the
+base when their corresponding capability or callback is available.
+
+Use `getFileTreeShortcutLabel` for visible menu/help text and
+`getFileTreeAriaKeyShortcuts` on the visible control that performs a command.
+The ARIA attribute describes a working shortcut; it does not implement one.
+
+<ComponentPreview
+  styleName="base-nova"
+  name="file-tree-shortcuts-demo"
+  align="start"
+  previewClassName="h-auto min-h-72 overflow-auto p-4 sm:p-10"
+/>
+
+## Current item, capabilities, and localization
+
+`currentId` identifies the item currently open in an editor or route with
+`aria-current="page"`. It remains independent from keyboard focus and
+selection.
+
+Capability predicates allow read-only items to remain focusable while limiting
+specific operations:
+
+```tsx
+<FileTree
+  aria-label="Project files"
+  currentId={openFileId}
+  isItemSelectable={(item) => item.permissions.canSelect}
+  isItemActionable={(item) => item.permissions.canOpen}
+  isItemEditable={(item) => item.permissions.canRename}
+  isItemMovable={(item) => item.permissions.canMove}
+  isItemDroppable={(item) =>
+    item.type === "folder" && item.permissions.canReceiveChildren
+  }
+  items={items}
+/>
+```
+
+Custom row renderers receive `isCurrent`, `isSelectable`, `isActionable`,
+`isEditable`, `isMovable`, and `isDroppable` in the item state. The same
+predicates guard keyboard and pointer behavior.
+
+All built-in visible text and live announcements can be replaced through the
+typed `messages` prop. Override only the entries your locale needs:
+
+```tsx
+<FileTree
+  aria-label="Fichiers du projet"
+  items={items}
+  messages={{
+    empty: "Aucun fichier",
+    renameLabel: (name) => `Renommer ${name}`,
+    selectedCount: (count) => `${count} éléments sélectionnés`,
+  }}
+/>
+```
+
+## Keyboard interactions
+
+| Key                           | Behavior                                                        |
+| ----------------------------- | --------------------------------------------------------------- |
+| Arrow Down / Arrow Up         | Move focus to the next or previous visible item.                |
+| Arrow Right                   | Open a closed folder, or move to its first child.               |
+| Arrow Left                    | Close an open folder, or move to its parent.                    |
+| Home / End                    | Move to the first or last visible item.                         |
+| Enter                         | Run the item action; folders also toggle.                       |
+| Space                         | Select the focused item.                                        |
+| Shift + Arrow / Shift + Space | Extend multiple selection from the anchor.                      |
+| Control/Command + click       | Toggle one item in multiple-selection mode.                     |
+| Control/Command + A           | Select all enabled, visible items.                              |
+| `*`                           | Expand all enabled folder siblings.                             |
+| Type characters               | Move to the next visible item whose text starts with the query. |
+| F2                            | Rename the focused item when `onRename` is provided.            |
+| Shift + F10 / Context Menu    | Open the item context menu.                                     |
+
+Disabled items remain discoverable to assistive technology but are skipped by
+navigation and cannot be selected, expanded, activated, loaded, or renamed.
+Indentation and disclosure rotation use logical/RTL-safe styles, and animation
+respects reduced-motion preferences.
+
+## Performance
+
+The tree normalizes data in linear time and renders only expanded branches. Keep
+`items`, `accessors`, render callbacks, and controlled ID arrays referentially
+stable when practical. The large demo contains 10,000 items but opens with only
+its 100 root folders mounted.
+
+<ComponentPreview
+  styleName="base-nova"
+  name="file-tree-large-demo"
+  align="start"
+  previewClassName="h-auto min-h-72 overflow-auto p-4 sm:p-10"
+/>
+
+The base deliberately does not virtualize. Nested DOM gives the most dependable
+tree semantics and remains the default recommendation for ordinary explorers.
+Row rendering is memoized by row state, so moving focus in a flat tree updates
+the old and new rows instead of every visible row.
+
+## Virtualization
+
+Install the optional virtualized companion only for trees whose expanded row
+count exceeds the base's mounted-row budget.
+
+```bash
+npx shadcn@latest add file-tree-virtualized
+```
+
+```tsx
+import { VirtualizedFileTree } from "@/components/ui/file-tree-virtualized"
+
+;<VirtualizedFileTree
+  aria-label="Repository files"
+  className="h-80 border p-2"
+  initialViewportSize={{ height: 320, width: 480 }}
+  items={items}
+  overscan={8}
+/>
+```
+
+The companion uses stable item IDs, renders a flat list with explicit
+`aria-level`, `aria-posinset`, and `aria-setsize`, and pins focused or editing
+rows across virtual ranges. Page Up and Page Down move by the viewport height.
+The ref adds `scrollToItem(id)`. Fixed rows are 32px by default and 28px in
+compact density; set `variableSize` only after testing dynamic row measurement
+and scroll anchoring in the browsers you support.
+
+The automated browser matrix runs in Chromium, Firefox, and WebKit. It verifies
+100,000 total nodes with 20,000 logically visible rows, bounded DOM output,
+native scrolling, offscreen focus, and explicit ARIA positions. The registry
+item remains experimental until physical zoom, trackpad/touch, variable-row,
+and VoiceOver/NVDA/JAWS/mobile assistive-technology testing passes.
+
+## Move dialog
+
+The visible Move to… dialog is the non-spatial move path and does not install a
+drag-and-drop package. It enumerates every legal post-removal insertion index,
+including the root and empty folders, using the same capability predicates as
+the sortable companion.
+
+```bash
+npx shadcn@latest add file-tree-move-dialog
+```
+
+```tsx
+import { Button } from "@/components/ui/button"
+import {
+  FileTree,
+  moveFileTreeNodes,
+  type FileTreeMoveIntent,
+  type FileTreeNode,
+} from "@/components/ui/file-tree"
+import { FileTreeMoveDialog } from "@/components/ui/file-tree-move-dialog"
+
+const [items, setItems] = React.useState<readonly FileTreeNode[]>(initialItems)
+const [selectedIds, setSelectedIds] = React.useState<readonly string[]>([])
+const [moveOpen, setMoveOpen] = React.useState(false)
+
+function move(intent: FileTreeMoveIntent<FileTreeNode>) {
+  setItems((current) => moveFileTreeNodes(current, intent))
+}
+
+return (
+  <>
+    <Button disabled={!selectedIds.length} onClick={() => setMoveOpen(true)}>
+      Move to…
+    </Button>
+    <FileTree
+      aria-label="Project files"
+      isItemDroppable={(item) => item.type === "folder"}
+      isItemMovable
+      items={items}
+      onSelectedIdsChange={setSelectedIds}
+      selectedIds={selectedIds}
+      selectionMode="multiple"
+    />
+    <FileTreeMoveDialog
+      draggedIds={selectedIds}
+      isItemDroppable={(item) => item.type === "folder"}
+      isItemMovable
+      items={items}
+      onMove={move}
+      onOpenChange={setMoveOpen}
+      open={moveOpen}
+    />
+  </>
+)
+```
+
+`onMove` may return a promise. The dialog disables its controls while pending,
+closes on success, and remains open with a localized alert on failure.
+
+## Sorting and reparenting
+
+`SortableFileTree` adds explicit drag handles, pointer/touch sensors, logical
+keyboard destinations, an overlay, before/inside/after indicators, cancellable
+folder auto-expansion, edge auto-scroll, localized announcements, and pending
+and error states.
+
+```bash
+npx shadcn@latest add file-tree-sortable
+```
+
+```tsx
+import { moveFileTreeNodes, type FileTreeNode } from "@/components/ui/file-tree"
+import { SortableFileTree } from "@/components/ui/file-tree-sortable"
+
+const [items, setItems] = React.useState<readonly FileTreeNode[]>(initialItems)
+
+;<SortableFileTree
+  aria-label="Sortable project files"
+  isItemDroppable={(item) => item.type === "folder"}
+  isItemMovable
+  items={items}
+  onMove={async (intent) => {
+    await persistMove(intent)
+    setItems((current) => moveFileTreeNodes(current, intent))
+  }}
+/>
+```
+
+The default row includes `FileTreeItemDragHandle`. Enter or Space picks up from
+the handle; Arrow keys and Home/End choose a legal logical destination; Enter or
+Space commits; Escape cancels and retains focus. Pointer activation defaults to
+5px of movement. Touch defaults to a 250ms hold with 5px tolerance. Closed
+folders auto-expand after 700ms. All values are configurable through
+`activation`.
+
+`target.index` is always the destination index after dragged items are removed.
+When an ancestor and descendant are selected, only the ancestor appears in
+`draggedIds`; relative document order is retained. The component never mutates
+consumer data. Use the exported `moveFileTreeNodes` helper for the default node
+shape, or apply the intent in your domain reducer.
+
+`orderMode="manual"` enables reordering and reparenting. In
+`orderMode="sorted"`, only parent changes are offered because a visual
+before/after order would not persist. Use `canMove(intent)` for grouped or
+application-specific boundaries.
+
+Automated Playwright coverage verifies real pointer geometry and logical
+keyboard moves in Chromium, Firefox, and WebKit. This registry item remains
+experimental until physical touch, pen, switch/virtual-click, nested-scroll,
+reduced-motion, and screen-reader matrices pass. No library event types leak
+into its public API.
+
+## Virtualized sorting
+
+Use the explicit combined companion instead of passing one companion into the
+other.
+
+```bash
+npx shadcn@latest add file-tree-virtualized-sortable
+```
+
+```tsx
+import { VirtualizedSortableFileTree } from "@/components/ui/file-tree-virtualized-sortable"
+
+;<VirtualizedSortableFileTree
+  aria-label="Large sortable repository"
+  className="h-80 border p-2"
+  initialViewportSize={{ height: 320, width: 480 }}
+  isItemDroppable={(item) => item.type === "folder"}
+  isItemMovable
+  items={items}
+  onMove={move}
+/>
+```
+
+The combined adapter pins focus, editing rows, drag sources, logical keyboard
+targets, and pending rows. Keyboard movement operates on the full logical move
+list, not mounted droppables, and a far target does not mount intervening rows.
+Its three-engine browser matrix independently verifies the 100,000-total /
+20,000-visible DOM budget, far scrolling, and far logical keyboard moves. It
+remains experimental pending physical input and assistive-technology gates.
+
+## API
+
+| Prop                                 | Default                    | Description                                                                         |
+| ------------------------------------ | -------------------------- | ----------------------------------------------------------------------------------- |
+| `items`                              | Required                   | Nested default nodes or arbitrary values described by `accessors`.                  |
+| `accessors`                          | Default node fields        | Typed ID, name, type, children, disabled, and text-value readers.                   |
+| `selectionMode`                      | `"single"`                 | `"none"`, `"single"`, or `"multiple"`.                                              |
+| `activationMode`                     | `"doubleClick"`            | Whether pointer activation uses one or two clicks. Keyboard Enter always activates. |
+| `expandedIds` / `defaultExpandedIds` | `[]`                       | Controlled or initial expanded folder IDs.                                          |
+| `selectedIds` / `defaultSelectedIds` | `[]`                       | Controlled or initial selected IDs.                                                 |
+| `focusedId` / `defaultFocusedId`     | First enabled visible item | Controlled or initial roving-focus ID.                                              |
+| `currentId`                          | —                          | Marks the currently open item independently with `aria-current`.                    |
+| `shortcuts`                          | Safe platform defaults     | Platform, built-in overrides, unsafe opt-ins, and conflict reporting.               |
+| `commands`                           | `[]`                       | Application commands using the same shortcut matcher and typed tree context.        |
+| `onCommandError`                     | —                          | Reports synchronous or asynchronous custom-command failures.                        |
+| `messages`                           | English                    | Partial localization overrides for visible text and live announcements.             |
+| `loadChildren`                       | —                          | Abortable async loader for unresolved folders.                                      |
+| `onRename`                           | —                          | Enables rename and persists a validated new name.                                   |
+| `onRenameError`                      | —                          | Reports persistence and thrown validation errors while the editor remains open.     |
+| `isItemEditable`                     | All enabled items          | Boolean or item predicate used with `onRename`.                                     |
+| `isItemSelectable`                   | All enabled items          | Controls selection without removing a row from keyboard navigation.                 |
+| `isItemActionable`                   | All enabled items          | Controls application activation without disabling folder navigation.                |
+| `isItemMovable` / `isItemDroppable`  | `false`                    | Exposes future companion capabilities through row state and data attributes.        |
+| `density`                            | `"default"`                | `"default"` or `"compact"` row styling.                                             |
+| `indent`                             | `"1rem"`                   | Number of pixels or CSS length for each nesting level.                              |
+| `renderIcon`                         | Folder/file icons          | Replaces the default icon for each row.                                             |
+| `children`                           | Default row                | A static node or item render function using exported parts.                         |
+
+The ref exposes `expand`, `collapse`, `toggle`, `focus`, `focusItem`,
+`revealItem`, `refresh`, `startRename`, and `getVisibleIds`.
+
+## Migrating from the prototype
+
+The prototype exposed React Complex Tree's environment and record data directly.
+Remove `ControlledTreeEnvironment`, `Tree`, `viewState`, and the
+`react-complex-tree` stylesheet. Convert the root record into nested items (the
+invisible root is no longer needed), then map state as follows:
+
+| React Complex Tree prototype | File Tree                        |
+| ---------------------------- | -------------------------------- |
+| `focusedItem`                | `focusedId`                      |
+| `expandedItems`              | `expandedIds`                    |
+| `selectedItems`              | `selectedIds`                    |
+| `getItemTitle` / `data`      | `name` or `getItemName`          |
+| `isFolder`                   | `type: "folder"`                 |
+| `canRename`                  | `isItemEditable` plus `onRename` |
+
+No compatibility prop bag is provided, so no third-party types or provider
+contracts leak into the installed component.

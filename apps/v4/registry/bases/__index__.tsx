@@ -524,6 +524,128 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "file-tree": {
+      name: "file-tree",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/file-tree.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/ui/file-tree-core.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/ui/file-tree-shortcuts.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/ui/file-tree-controller.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/ui/file-tree-sortable-core.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/file-tree",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/file-tree-example.tsx",
+        },
+      },
+    },
+    "file-tree-virtualized": {
+      name: "file-tree-virtualized",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["file-tree"],
+      files: [
+        {
+          path: "registry/bases/base/ui/file-tree-virtualized.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/file-tree#virtualization",
+        },
+      },
+    },
+    "file-tree-move-dialog": {
+      name: "file-tree-move-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["file-tree", "dialog", "button"],
+      files: [
+        {
+          path: "registry/bases/base/ui/file-tree-move-dialog.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/file-tree#move-dialog",
+        },
+      },
+    },
+    "file-tree-sortable": {
+      name: "file-tree-sortable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["file-tree"],
+      files: [
+        {
+          path: "registry/bases/base/ui/file-tree-sortable.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/file-tree#sorting",
+        },
+      },
+    },
+    "file-tree-virtualized-sortable": {
+      name: "file-tree-virtualized-sortable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["file-tree-virtualized", "file-tree-sortable"],
+      files: [
+        {
+          path: "registry/bases/base/ui/file-tree-virtualized-sortable.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/file-tree#virtualized-sorting",
+        },
+      },
+    },
     "hover-card": {
       name: "hover-card",
       title: "undefined",
@@ -1806,6 +1928,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/base/examples/field-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "file-tree-example": {
+      name: "file-tree-example",
+      title: "File Tree",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["file-tree", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/file-tree-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -4212,6 +4350,128 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "file-tree": {
+      name: "file-tree",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/aria/ui/file-tree.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/aria/ui/file-tree-core.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/aria/ui/file-tree-shortcuts.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/aria/ui/file-tree-controller.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/aria/ui/file-tree-sortable-core.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/file-tree",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/file-tree-example.tsx",
+        },
+      },
+    },
+    "file-tree-virtualized": {
+      name: "file-tree-virtualized",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["file-tree"],
+      files: [
+        {
+          path: "registry/bases/aria/ui/file-tree-virtualized.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/file-tree#virtualization",
+        },
+      },
+    },
+    "file-tree-move-dialog": {
+      name: "file-tree-move-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["file-tree", "dialog", "button"],
+      files: [
+        {
+          path: "registry/bases/aria/ui/file-tree-move-dialog.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/file-tree#move-dialog",
+        },
+      },
+    },
+    "file-tree-sortable": {
+      name: "file-tree-sortable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["file-tree"],
+      files: [
+        {
+          path: "registry/bases/aria/ui/file-tree-sortable.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/file-tree#sorting",
+        },
+      },
+    },
+    "file-tree-virtualized-sortable": {
+      name: "file-tree-virtualized-sortable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["file-tree-virtualized", "file-tree-sortable"],
+      files: [
+        {
+          path: "registry/bases/aria/ui/file-tree-virtualized-sortable.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/file-tree#virtualized-sorting",
+        },
+      },
+    },
     input: {
       name: "input",
       title: "undefined",
@@ -5436,6 +5696,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/aria/examples/field-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "file-tree-example": {
+      name: "file-tree-example",
+      title: "File Tree",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["file-tree", "example"],
+      files: [
+        {
+          path: "registry/bases/aria/examples/file-tree-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -7778,6 +8054,128 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "file-tree": {
+      name: "file-tree",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/radix/ui/file-tree.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/radix/ui/file-tree-core.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/radix/ui/file-tree-shortcuts.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/radix/ui/file-tree-controller.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/radix/ui/file-tree-sortable-core.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/file-tree",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/file-tree-example.tsx",
+        },
+      },
+    },
+    "file-tree-virtualized": {
+      name: "file-tree-virtualized",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["file-tree"],
+      files: [
+        {
+          path: "registry/bases/radix/ui/file-tree-virtualized.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/file-tree#virtualization",
+        },
+      },
+    },
+    "file-tree-move-dialog": {
+      name: "file-tree-move-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["file-tree", "dialog", "button"],
+      files: [
+        {
+          path: "registry/bases/radix/ui/file-tree-move-dialog.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/file-tree#move-dialog",
+        },
+      },
+    },
+    "file-tree-sortable": {
+      name: "file-tree-sortable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["file-tree"],
+      files: [
+        {
+          path: "registry/bases/radix/ui/file-tree-sortable.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/file-tree#sorting",
+        },
+      },
+    },
+    "file-tree-virtualized-sortable": {
+      name: "file-tree-virtualized-sortable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["file-tree-virtualized", "file-tree-sortable"],
+      files: [
+        {
+          path: "registry/bases/radix/ui/file-tree-virtualized-sortable.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/file-tree#virtualized-sorting",
+        },
+      },
+    },
     "hover-card": {
       name: "hover-card",
       title: "undefined",
@@ -9037,6 +9435,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/radix/examples/field-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "file-tree-example": {
+      name: "file-tree-example",
+      title: "File Tree",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["file-tree", "example"],
+      files: [
+        {
+          path: "registry/bases/radix/examples/file-tree-example.tsx",
           type: "registry:example",
           target: "",
         },

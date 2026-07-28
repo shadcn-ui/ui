@@ -951,6 +951,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "file-tree-example",
+    type: "registry:example",
+    registryDependencies: ["file-tree"],
+    files: [
+      {
+        path: "examples/file-tree-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "form-next-demo",
     type: "registry:example",
     registryDependencies: [

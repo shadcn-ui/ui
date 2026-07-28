@@ -421,6 +421,105 @@ export const ui: Registry["items"] = [
     },
   },
   {
+    name: "file-tree",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/file-tree.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "ui/file-tree-core.ts",
+        type: "registry:ui",
+      },
+      {
+        path: "ui/file-tree-shortcuts.ts",
+        type: "registry:ui",
+      },
+      {
+        path: "ui/file-tree-controller.ts",
+        type: "registry:ui",
+      },
+      {
+        path: "ui/file-tree-sortable-core.ts",
+        type: "registry:ui",
+      },
+    ],
+    meta: {
+      links: {
+        docs: "https://ui.shadcn.com/docs/components/radix/file-tree",
+        examples:
+          "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/file-tree-example.tsx",
+      },
+    },
+  },
+  {
+    name: "file-tree-virtualized",
+    type: "registry:ui",
+    dependencies: ["@tanstack/react-virtual@^3.14.8"],
+    registryDependencies: ["file-tree"],
+    files: [
+      {
+        path: "ui/file-tree-virtualized.tsx",
+        type: "registry:ui",
+      },
+    ],
+    meta: {
+      links: {
+        docs: "https://ui.shadcn.com/docs/components/radix/file-tree#virtualization",
+      },
+    },
+  },
+  {
+    name: "file-tree-move-dialog",
+    type: "registry:ui",
+    registryDependencies: ["file-tree", "dialog", "button"],
+    files: [
+      {
+        path: "ui/file-tree-move-dialog.tsx",
+        type: "registry:ui",
+      },
+    ],
+    meta: {
+      links: {
+        docs: "https://ui.shadcn.com/docs/components/radix/file-tree#move-dialog",
+      },
+    },
+  },
+  {
+    name: "file-tree-sortable",
+    type: "registry:ui",
+    dependencies: ["@dnd-kit/react@^0.5.0", "@dnd-kit/dom@^0.5.0"],
+    registryDependencies: ["file-tree"],
+    files: [
+      {
+        path: "ui/file-tree-sortable.tsx",
+        type: "registry:ui",
+      },
+    ],
+    meta: {
+      links: {
+        docs: "https://ui.shadcn.com/docs/components/radix/file-tree#sorting",
+      },
+    },
+  },
+  {
+    name: "file-tree-virtualized-sortable",
+    type: "registry:ui",
+    registryDependencies: ["file-tree-virtualized", "file-tree-sortable"],
+    files: [
+      {
+        path: "ui/file-tree-virtualized-sortable.tsx",
+        type: "registry:ui",
+      },
+    ],
+    meta: {
+      links: {
+        docs: "https://ui.shadcn.com/docs/components/radix/file-tree#virtualized-sorting",
+      },
+    },
+  },
+  {
     name: "form",
     type: "registry:ui",
   },

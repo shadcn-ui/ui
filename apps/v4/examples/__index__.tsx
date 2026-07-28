@@ -913,6 +913,30 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "field-textarea",
       filePath: "examples/base/field-textarea.tsx",
     },
+    "file-tree-async-demo": {
+      name: "file-tree-async-demo",
+      filePath: "examples/base/file-tree-async-demo.tsx",
+    },
+    "file-tree-controlled-demo": {
+      name: "file-tree-controlled-demo",
+      filePath: "examples/base/file-tree-controlled-demo.tsx",
+    },
+    "file-tree-demo": {
+      name: "file-tree-demo",
+      filePath: "examples/base/file-tree-demo.tsx",
+    },
+    "file-tree-large-demo": {
+      name: "file-tree-large-demo",
+      filePath: "examples/base/file-tree-large-demo.tsx",
+    },
+    "file-tree-rename-demo": {
+      name: "file-tree-rename-demo",
+      filePath: "examples/base/file-tree-rename-demo.tsx",
+    },
+    "file-tree-shortcuts-demo": {
+      name: "file-tree-shortcuts-demo",
+      filePath: "examples/base/file-tree-shortcuts-demo.tsx",
+    },
     "file-upload-list": {
       name: "file-upload-list",
       filePath: "examples/base/file-upload-list.tsx",
@@ -2895,6 +2919,30 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "field-textarea",
       filePath: "examples/aria/field-textarea.tsx",
     },
+    "file-tree-async-demo": {
+      name: "file-tree-async-demo",
+      filePath: "examples/aria/file-tree-async-demo.tsx",
+    },
+    "file-tree-controlled-demo": {
+      name: "file-tree-controlled-demo",
+      filePath: "examples/aria/file-tree-controlled-demo.tsx",
+    },
+    "file-tree-demo": {
+      name: "file-tree-demo",
+      filePath: "examples/aria/file-tree-demo.tsx",
+    },
+    "file-tree-large-demo": {
+      name: "file-tree-large-demo",
+      filePath: "examples/aria/file-tree-large-demo.tsx",
+    },
+    "file-tree-rename-demo": {
+      name: "file-tree-rename-demo",
+      filePath: "examples/aria/file-tree-rename-demo.tsx",
+    },
+    "file-tree-shortcuts-demo": {
+      name: "file-tree-shortcuts-demo",
+      filePath: "examples/aria/file-tree-shortcuts-demo.tsx",
+    },
     "file-upload-list": {
       name: "file-upload-list",
       filePath: "examples/aria/file-upload-list.tsx",
@@ -4832,6 +4880,30 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "field-textarea": {
       name: "field-textarea",
       filePath: "examples/radix/field-textarea.tsx",
+    },
+    "file-tree-async-demo": {
+      name: "file-tree-async-demo",
+      filePath: "examples/radix/file-tree-async-demo.tsx",
+    },
+    "file-tree-controlled-demo": {
+      name: "file-tree-controlled-demo",
+      filePath: "examples/radix/file-tree-controlled-demo.tsx",
+    },
+    "file-tree-demo": {
+      name: "file-tree-demo",
+      filePath: "examples/radix/file-tree-demo.tsx",
+    },
+    "file-tree-large-demo": {
+      name: "file-tree-large-demo",
+      filePath: "examples/radix/file-tree-large-demo.tsx",
+    },
+    "file-tree-rename-demo": {
+      name: "file-tree-rename-demo",
+      filePath: "examples/radix/file-tree-rename-demo.tsx",
+    },
+    "file-tree-shortcuts-demo": {
+      name: "file-tree-shortcuts-demo",
+      filePath: "examples/radix/file-tree-shortcuts-demo.tsx",
     },
     "file-upload-list": {
       name: "file-upload-list",
