@@ -1,5 +1,19 @@
 # shadcn
 
+## 4.16.0
+
+### Minor Changes
+
+- [#11307](https://github.com/shadcn-ui/ui/pull/11307) [`431da7169cae753643e67e56e168b93ec31dfe90`](https://github.com/shadcn-ui/ui/commit/431da7169cae753643e67e56e168b93ec31dfe90) Thanks [@shadcn](https://github.com/shadcn)! - make addRegistryItems accept explicit registry configuration instead of loading components.json
+
+- [#11304](https://github.com/shadcn-ui/ui/pull/11304) [`bf906bb8aeebc64d374afb54497b822d587ac6d7`](https://github.com/shadcn-ui/ui/commit/bf906bb8aeebc64d374afb54497b822d587ac6d7) Thanks [@shadcn](https://github.com/shadcn)! - add getRegistriesConfig and registries in package.json support
+
+## 4.15.0
+
+### Minor Changes
+
+- [#11276](https://github.com/shadcn-ui/ui/pull/11276) [`7d90dfc0a5ec70cdc3bd08b741a42440041907ac`](https://github.com/shadcn-ui/ui/commit/7d90dfc0a5ec70cdc3bd08b741a42440041907ac) Thanks [@cmpadden](https://github.com/cmpadden)! - Add a public `addRegistryItems` API for installing registry items programmatically without invoking the CLI.
+
 ## 4.14.1
 
 ### Patch Changes

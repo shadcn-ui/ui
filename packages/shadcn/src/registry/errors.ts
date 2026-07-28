@@ -193,19 +193,19 @@ export class RegistryFetchError extends RegistryError {
 export class RegistryNotConfiguredError extends RegistryError {
   constructor(public readonly registryName: string | null) {
     const message = registryName
-      ? `Unknown registry "${registryName}". Make sure it is defined in components.json as follows:
+      ? `Unknown registry "${registryName}". Make sure it is defined under "registries" in your components.json or package.json file:
 {
   "registries": {
     "${registryName}": "[URL_TO_REGISTRY]"
   }
 }`
-      : `Unknown registry. Make sure it is defined in components.json under "registries".`
+      : `Unknown registry. Make sure it is defined under "registries" in your components.json or package.json file.`
 
     super(message, {
       code: RegistryErrorCode.NOT_CONFIGURED,
       context: { registryName },
       suggestion:
-        "Add the registry configuration to your components.json file. Consult the registry documentation for the correct format.",
+        'Add the registry configuration under "registries" in your components.json or package.json file.',
     })
     this.name = "RegistryNotConfiguredError"
   }
@@ -384,12 +384,22 @@ export class ConfigMissingError extends RegistryError {
 export class ConfigParseError extends RegistryError {
   constructor(
     public readonly cwd: string,
-    parseError: unknown
+    parseError: unknown,
+    public readonly configFile:
+      | "components.json"
+      | "package.json"
+      | "config" = "components.json"
   ) {
-    let message = `Invalid components.json configuration in ${cwd}.`
+    const configName =
+      configFile === "package.json"
+        ? 'package.json "registries"'
+        : configFile === "config"
+          ? "provided config"
+          : "components.json"
+    let message = `Invalid ${configName} configuration in ${cwd}.`
 
     if (parseError instanceof z.ZodError) {
-      message = `Invalid components.json configuration in ${cwd}:\n${parseError.errors
+      message = `Invalid ${configName} configuration in ${cwd}:\n${parseError.errors
         .map((e) => `  - ${e.path.join(".")}: ${e.message}`)
         .join("\n")}`
     }
@@ -397,9 +407,13 @@ export class ConfigParseError extends RegistryError {
     super(message, {
       code: RegistryErrorCode.INVALID_CONFIG,
       cause: parseError,
-      context: { cwd },
+      context: { cwd, configFile },
       suggestion:
-        "Check your components.json file for syntax errors or invalid configuration. Run 'npx shadcn@latest init' to regenerate a valid configuration.",
+        configFile === "package.json"
+          ? 'Check the "registries" field in your package.json file for invalid configuration.'
+          : configFile === "config"
+            ? "Pass a valid full project config, or omit resolvedPaths and provide only registry configuration."
+            : "Check your components.json file for syntax errors or invalid configuration. Run 'npx shadcn@latest init' to regenerate a valid configuration.",
     })
     this.name = "ConfigParseError"
   }
