@@ -42,7 +42,7 @@
 
 :root {
   --radius: 1rem;
-  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
   /* Base anchors: F7F6F3 (bg), CDB3FF (brand), 2B182E (plum) */
   --background: oklch(0.9731 0.0041 91.45);
   --foreground: oklch(0.2447 0.0485 321.94);
