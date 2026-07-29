@@ -1790,7 +1790,7 @@
     "name": "@usva",
     "homepage": "https://usva.build",
     "url": "https://usva.build/r/{name}.json",
-    "description": "A React design language in three themes, where kajo is atmospheric and dark, sisu is dense and quick, and savi is the light ground. 79 components over 25 semantic role tokens, including WebGL atmospheres that honour reduced-motion. Every component installs from npm or copies in from this registry.",
+    "description": "A React design language in three themes, where kajo is atmospheric and dark, sisu is dense and quick, and savi is the light ground. One token vocabulary underneath, including WebGL atmospheres that honour reduced-motion. Every component installs from npm or copies in from this registry.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='7 19 88 62' width='24' height='24'><path fill-rule='evenodd' fill='var(--foreground)' d='M7,50a31,31 0 1,0 62,0a31,31 0 1,0 -62,0M33,50a31,31 0 1,0 62,0a31,31 0 1,0 -62,0'/></svg>"
   }
 ]
