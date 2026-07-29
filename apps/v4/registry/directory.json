@@ -838,7 +838,7 @@
     "homepage": "https://moduix.dev",
     "url": "https://moduix.dev/r/react/{name}.json",
     "description": "Ark-first React components, blocks, and themes with native CSS, available as a package or a shadcn-compatible copy-owned registry.",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='48 46 148 118' fill='none'><path d='M65 146V94c0-16.02 12.98-29 29-29 10.8 0 20.72 6.01 25.72 15.59L122 85l2.28-4.41C129.28 71.01 139.2 65 150 65c16.02 0 29 12.98 29 29v52' stroke='var(--foreground)' stroke-width='36' stroke-linecap='round' stroke-linejoin='round'/><path d='M122 80v20' stroke='var(--foreground)' stroke-width='36' stroke-linecap='round'/><circle cx='122' cy='149' r='14' fill='var(--foreground)'/></svg>"
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect x='1.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='11.9' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/></svg>"
   },
   {
     "name": "@moleculeui",
@@ -1687,7 +1687,7 @@
     "url": "https://ui.vllnt.com/r/{name}.json",
     "description": "VLLNT UI — agent-first React components for AI-native products, from UI primitives to finance and ops domains. Accessible, Radix + Tailwind, you own the code.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='128' height='128' rx='28' fill='var(--foreground)'/><text x='64' y='64' text-anchor='middle' dominant-baseline='central' font-family='ui-sans-serif, system-ui, sans-serif' font-size='26' font-weight='700' letter-spacing='-1' fill='var(--background)'>VLLNT</text></svg>"
-  }, 
+  },
   {
     "name": "@grainly-icons",
     "homepage": "https://grainlyicons.abhii.space",
