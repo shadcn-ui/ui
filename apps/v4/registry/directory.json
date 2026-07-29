@@ -939,6 +939,13 @@
     "logo": "<svg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'><rect x='2' y='2' width='60' height='60' rx='10' ry='10' fill='#5b9bff' stroke='#000' stroke-width='4'/><text x='32' y='42' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='36' font-weight='900'>N</text></svg>"
   },
   {
+    "name": "@neon-ui",
+    "homepage": "https://ui.neon.com",
+    "url": "https://ui.neon.com/r/{name}.json",
+    "description": "Production-ready components for agent platforms built on Neon. Database branching, connection strings, usage metering and project management UI, built with Base UI and Tailwind v4.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64' fill='none'><path d='M57.113 7.01415V57.5526L37.5592 40.6076V57.5526H7V7L57.113 7.01415ZM13.1428 51.4168H31.4164V27.1437L50.9705 44.4238V13.1482L13.1428 13.1373V51.4168Z' fill='var(--foreground)'/></svg>"
+  },
+  {
     "name": "@nessra-ui",
     "homepage": "https://nessra-ui.vercel.app",
     "url": "https://nessra-ui.vercel.app/r/{name}.json",
