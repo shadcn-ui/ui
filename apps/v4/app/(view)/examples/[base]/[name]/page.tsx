@@ -1,6 +1,6 @@
 import { type Metadata } from "next"
 import { notFound } from "next/navigation"
-import { ExamplesComponents } from "@/examples/__components__"
+import { getComponent } from "@/examples/__components__"
 import { ExamplesIndex } from "@/examples/__index__"
 
 import { siteConfig } from "@/lib/config"
@@ -11,7 +11,7 @@ export const revalidate = 3600
 
 function getExample(base: string, name: string) {
   const item = ExamplesIndex[base]?.[name]
-  const Component = ExamplesComponents[base]?.[name]
+  const Component = getComponent(base, name)
   if (!item || !Component) {
     return null
   }
