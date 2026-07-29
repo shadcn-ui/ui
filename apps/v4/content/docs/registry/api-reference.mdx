@@ -4,8 +4,8 @@ description: Programmatic API for working with registries, schemas and presets.
 ---
 
 The `shadcn` package exposes a set of programmatic APIs in addition to the CLI.
-You can use these to fetch and resolve registry items, validate registry JSON,
-and build custom tooling on top of the registry.
+You can use these to fetch, resolve, and install registry items, validate
+registry JSON, and build custom tooling on top of the registry.
 
 Each API is available under a dedicated subpath import.
 
@@ -32,9 +32,10 @@ omit it to use the built-in registries.
 - **Type:** `Partial<Config>`
 - **Default:** built-in registries only
 
-The resolved contents of your `components.json` file. Its `registries` field
-maps a namespace (e.g. `@acme`) to a URL and any authentication headers or
-environment variables required to reach it.
+The registry configuration to use. Its `registries` field maps a namespace
+(e.g. `@acme`) to a URL and any authentication headers or environment
+variables required to reach it. Use
+[`getRegistriesConfig`](#getregistriesconfig) to load it from your project.
 
 ```ts showLineNumbers
 import { getRegistryItems } from "shadcn/registry"
@@ -63,6 +64,18 @@ can change between requests and you need fresh data each time.
 
 ```ts
 const fresh = await getRegistry("@shadcn", { useCache: false })
+```
+
+### getRegistriesConfig
+
+Load registry configuration from a project directory. The function reads
+`components.json` when present; otherwise it reads the top-level `registries`
+field from `package.json`.
+
+```ts showLineNumbers
+import { getRegistriesConfig } from "shadcn/registry"
+
+const config = await getRegistriesConfig(process.cwd())
 ```
 
 ### getRegistry
@@ -150,6 +163,38 @@ Returns a single merged tree:
   "docs": ""
 }
 ```
+
+### addRegistryItems
+
+Resolve and install registry items into an existing project. This is the
+programmatic equivalent of `shadcn add` and applies files, package dependencies,
+environment variables, CSS, and Tailwind configuration declared by the items.
+
+```ts showLineNumbers
+import { addRegistryItems, getRegistriesConfig } from "shadcn/registry"
+
+const cwd = process.cwd()
+const config = await getRegistriesConfig(cwd)
+
+await addRegistryItems(["@acme/agent"], {
+  cwd,
+  config,
+  overwrite: false,
+  silent: true,
+})
+```
+
+`addRegistryItems` does not read project configuration files itself. Pass the
+result of [`getRegistriesConfig`](#getregistriesconfig), or provide `config`
+directly. A config containing only `registries` is enough when every requested
+item and dependency is universal: a `registry:item` or `registry:file` whose
+files all declare explicit targets. Other items require a full resolved project
+config, including its aliases and `resolvedPaths`. Every custom registry
+namespace referenced by an item or dependency must be present in `config`.
+
+The function throws errors instead of exiting the process and never prompts.
+Existing files are skipped unless `overwrite` is enabled, and npm uses
+`--force` for React 19 peer dependency conflicts.
 
 ### getRegistries
 
