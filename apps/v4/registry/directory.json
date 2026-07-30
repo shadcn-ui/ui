@@ -785,6 +785,13 @@
     "logo": "<svg fill='none' viewBox='0 0 116 116' xmlns='http://www.w3.org/2000/svg'><title>Kibo UI</title><g fill='currentColor'><path clip-rule='evenodd' d='m29.3378 0h87.0002v87l-29.0002 29v-87h-87.000031zm-29.000031 95.7389v-37.7389h37.738831zm58.000031 20.2611h-37.249l37.249-37.2488z' fill-rule='evenodd'></path></g></svg>"
   },
   {
+    "name": "@kinetic",
+    "homepage": "https://kinetic.itsjay.in",
+    "url": "https://kinetic.itsjay.in/r/{name}.json",
+    "description": "A Figma-like scrub number field for shadcn/ui (base-nova). Digit animation by Calligraph.",
+    "logo": "<svg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='10' fill='#eef1f4'/><g transform='translate(8 8)' stroke='#1e2a3a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M8 13v-8.5a1.5 1.5 0 0 1 3 0v7.5'/><path d='M11 11.5v-2a1.5 1.5 0 0 1 3 0v2.5'/><path d='M14 10.5a1.5 1.5 0 0 1 3 0v1.5'/><path d='M17 11.5a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7l-.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47'/><path d='M2.541 5.594a13.487 13.487 0 0 1 2.46 -1.427'/><path d='M14 3.458c1.32 .354 2.558 .902 3.685 1.612'/></g></svg>"
+  },
+  {
     "name": "@kokonutui",
     "homepage": "https://kokonutui.com",
     "url": "https://kokonutui.com/r/{name}.json",
@@ -880,7 +887,7 @@
     "homepage": "https://moduix.dev",
     "url": "https://moduix.dev/r/react/{name}.json",
     "description": "Ark-first React components, blocks, and themes with native CSS, available as a package or a shadcn-compatible copy-owned registry.",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='48 46 148 118' fill='none'><path d='M65 146V94c0-16.02 12.98-29 29-29 10.8 0 20.72 6.01 25.72 15.59L122 85l2.28-4.41C129.28 71.01 139.2 65 150 65c16.02 0 29 12.98 29 29v52' stroke='var(--foreground)' stroke-width='36' stroke-linecap='round' stroke-linejoin='round'/><path d='M122 80v20' stroke='var(--foreground)' stroke-width='36' stroke-linecap='round'/><circle cx='122' cy='149' r='14' fill='var(--foreground)'/></svg>"
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect x='1.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='11.9' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/></svg>"
   },
   {
     "name": "@moleculeui",
@@ -937,6 +944,13 @@
     "url": "https://www.neobrutalism.dev/r/{name}.json",
     "description": "A collection of neobrutalism-styled components based on shadcn/ui",
     "logo": "<svg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'><rect x='2' y='2' width='60' height='60' rx='10' ry='10' fill='#5b9bff' stroke='#000' stroke-width='4'/><text x='32' y='42' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='36' font-weight='900'>N</text></svg>"
+  },
+  {
+    "name": "@neon-ui",
+    "homepage": "https://ui.neon.com",
+    "url": "https://ui.neon.com/r/{name}.json",
+    "description": "Production-ready components for agent platforms built on Neon. Database branching, connection strings, usage metering and project management UI, built with Base UI and Tailwind v4.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64' fill='none'><path d='M57.113 7.01415V57.5526L37.5592 40.6076V57.5526H7V7L57.113 7.01415ZM13.1428 51.4168H31.4164V27.1437L50.9705 44.4238V13.1482L13.1428 13.1373V51.4168Z' fill='var(--foreground)'/></svg>"
   },
   {
     "name": "@nessra-ui",
@@ -1051,9 +1065,9 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' fill='none' viewBox='0 0 512 512'><g clip-path='url(#clip0_832_289)'><path fill='var(--foregorund)' d='M256 0C51.2 0 0 51.2 0 256s51.2 256 256 256 256-51.2 256-256S460.8 0 256 0'/><path stroke='var(--background)' stroke-width='24' d='M381.631 89.102 156.848 226.934c-1.77 1.101-3.439 2.653-4.844 4.505s-2.5 3.94-3.177 6.062c-.673 2.062-.875 4.084-.584 5.83.288 1.658 1.077 2.946 2.257 3.686l98.286 32.478-122.2 137.576a7.9 7.9 0 0 0-1.306 2.72c-.234.895-.22 1.742.04 2.404q.369 1.032 1.341 1.214c.64.125 1.387-.039 2.127-.468l224.795-137.85c1.77-1.102 3.438-2.654 4.844-4.506 1.405-1.852 2.5-3.94 3.177-6.061.666-2.057.864-4.072.571-5.813-.282-1.663-1.066-2.957-2.245-3.704l-87.131-44.529L383.845 94.953a7.9 7.9 0 0 0 1.306-2.72c.233-.895.219-1.741-.04-2.404-.257-.632-.727-1.058-1.341-1.214-.641-.125-1.4.058-2.139.487Z'/></g></svg>"
   },
   {
-    "name": "@pacekit-gsap",
-    "homepage": "https://gsap.pacekit.dev",
-    "url": "https://gsap.pacekit.dev/r/{name}.json",
+    "name": "@paceui-gsap",
+    "homepage": "https://gsap.paceui.com",
+    "url": "https://gsap.paceui.com/r/{name}.json",
     "description": "Animated GSAP components crafted for smooth interaction and rich detail.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' fill='none' viewBox='0 0 512 512'><g clip-path='url(#clip0_832_289)'><path fill='var(--foregorund)' d='M256 0C51.2 0 0 51.2 0 256s51.2 256 256 256 256-51.2 256-256S460.8 0 256 0'/><path stroke='var(--background)' stroke-width='24' d='M381.631 89.102 156.848 226.934c-1.77 1.101-3.439 2.653-4.844 4.505s-2.5 3.94-3.177 6.062c-.673 2.062-.875 4.084-.584 5.83.288 1.658 1.077 2.946 2.257 3.686l98.286 32.478-122.2 137.576a7.9 7.9 0 0 0-1.306 2.72c-.234.895-.22 1.742.04 2.404q.369 1.032 1.341 1.214c.64.125 1.387-.039 2.127-.468l224.795-137.85c1.77-1.102 3.438-2.654 4.844-4.506 1.405-1.852 2.5-3.94 3.177-6.061.666-2.057.864-4.072.571-5.813-.282-1.663-1.066-2.957-2.245-3.704l-87.131-44.529L383.845 94.953a7.9 7.9 0 0 0 1.306-2.72c.233-.895.219-1.741-.04-2.404-.257-.632-.727-1.058-1.341-1.214-.641-.125-1.4.058-2.139.487Z'/></g></svg>"
   },
@@ -1639,6 +1653,13 @@
     "logo": "<svg width='250' height='250' viewBox='0 0 250 250' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='250' height='250' rx='125' fill='var(--background)'/><path d='M87.5004 52.0587C85.2945 53.6764 84.5592 56.6176 83.9709 67.353C83.3827 74.706 82.5003 81.1766 81.9121 81.9119C81.1768 82.5002 74.7061 83.3825 67.3531 83.9708C50.7353 84.8531 50 85.7355 50 102.206C50 117.942 51.1765 119.118 67.059 119.118C83.5297 119.118 84.4121 118.236 84.8533 102.206C85.1474 95.1473 86.0298 88.3826 86.9121 87.3532C88.0886 85.8826 92.0592 85.2943 99.5593 85.2943C110.001 85.2943 115.736 83.8237 117.942 80.2943C118.53 79.4119 119.118 73.3824 119.118 66.7647C119.118 51.1763 117.942 49.9999 102.059 49.9999C94.4122 49.9999 89.2651 50.7352 87.5004 52.0587Z' fill='var(--foreground)'/><path d='M133.381 52.6469C131.469 54.7058 130.881 58.2352 130.881 67.0588C130.881 73.3824 131.469 79.4119 132.057 80.2943C134.263 83.8237 139.999 85.2943 150.44 85.2943C157.94 85.2943 161.911 85.8826 163.087 87.3532C163.969 88.3826 164.852 95.1473 165.146 102.206C165.587 118.236 166.469 119.118 183.087 119.118C198.823 119.118 199.999 117.942 199.999 102.059C199.999 85.7355 199.264 84.8531 182.646 83.9708C175.293 83.3825 168.822 82.5002 168.087 81.9119C167.499 81.1766 166.616 74.706 166.028 67.353C165.146 50.7352 164.264 49.9999 147.793 49.9999C137.94 49.9999 135.293 50.441 133.381 52.6469Z' fill='var(--foreground)'/><path d='M52.5 133.531C50.5882 135.59 50 139.119 50 147.943C50 164.266 50.7353 165.149 67.3531 166.031C74.7061 166.619 81.1768 167.502 81.9121 168.09C82.5003 168.825 83.3827 175.296 83.9709 182.649C84.8533 199.267 85.7356 200.002 102.206 200.002C117.942 200.002 119.118 198.825 119.118 182.943C119.118 176.619 118.53 170.59 117.942 169.708C115.736 166.178 110.001 164.707 99.5593 164.707C92.0592 164.707 88.0886 164.119 86.9121 162.649C86.0298 161.619 85.1474 154.854 84.8533 147.796C84.4121 131.766 83.5297 130.884 66.9119 130.884C57.0589 130.884 54.4118 131.325 52.5 133.531Z' fill='var(--foreground)'/><path d='M168.234 132.942C165.881 134.707 165.44 137.06 165.146 147.796C164.852 154.854 163.969 161.619 163.087 162.649C161.911 164.119 157.94 164.707 150.44 164.707C139.999 164.707 134.263 166.178 132.057 169.708C131.469 170.59 130.881 176.619 130.881 183.237C130.881 198.825 132.057 200.002 147.94 200.002C164.264 200.002 165.146 199.267 166.028 182.649C166.616 175.296 167.499 168.825 168.087 168.09C168.822 167.502 175.293 166.619 182.646 166.031C199.264 165.149 199.999 164.266 199.999 147.796C199.999 132.06 198.823 130.884 182.94 130.884C175.146 130.884 170.146 131.619 168.234 132.942Z' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@wa-ui",
+    "homepage": "https://ui.meta-cloud-api.site",
+    "url": "https://ui.meta-cloud-api.site/r/{name}.json",
+    "description": "Production-ready WhatsApp Web UI components built on WDS design tokens with Tailwind CSS v4 and @base-ui/react.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 500 500' fill='none'><g transform='translate(0,500) scale(0.1,-0.1)' fill='var(--foreground)' stroke='none'><path d='M1125 4290 c-198 -41 -368 -194 -428 -385 l-22 -70 0 -1335 0 -1335 22 -70 c55 -175 200 -315 382 -369 49 -14 193 -16 1425 -16 l1371 1 66 22 c194 66 334 221 374 415 14 64 15 244 13 1390 l-3 1317 -23 59 c-32 86 -68 143 -130 208 -65 69 -130 112 -220 147 l-67 26 -1360 2 c-748 0 -1378 -3 -1400 -7z m1572 -545 c440 -77 793 -386 926 -810 95 -302 69 -597 -75 -875 -220 -426 -681 -683 -1147 -639 -161 15 -367 79 -480 149 l-44 28 -264 -89 c-145 -49 -267 -89 -272 -89 -4 0 29 123 75 273 l84 272 -49 95 c-188 364 -171 781 45 1137 76 126 176 236 311 340 108 84 320 176 479 207 93 19 309 19 411 1z'/><path d='M1954 3244 c-38 -9 -104 -75 -134 -133 -68 -136 -60 -280 28 -456 132 -268 338 -477 587 -600 200 -99 346 -135 459 -114 76 13 166 60 211 110 61 68 82 193 37 231 -32 27 -257 121 -291 122 -29 0 -43 -10 -105 -77 -43 -46 -80 -77 -91 -77 -29 1 -123 41 -191 82 -120 74 -224 179 -299 303 -43 72 -41 85 19 160 67 82 67 90 -5 262 -34 81 -70 157 -80 167 -18 19 -98 30 -145 20z'/></g></svg>"
+  },
+  {
     "name": "@wandry-ui",
     "homepage": "http://ui.wandry.com.ua/",
     "url": "https://ui.wandry.com.ua/r/{name}.json",
@@ -1773,6 +1794,13 @@
     "logo": "<svg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='20' fill='#053B25'/><path d='M32.1327 19.501C31.5178 19.6123 30.8844 19.6705 30.2375 19.6705C24.3886 19.6705 19.6471 14.9189 19.6471 9.05765C19.6471 8.89469 19.6507 8.73258 19.658 8.57141C13.8411 9.10533 9.28516 14.0074 9.28516 19.9759C9.28516 26.301 14.4019 31.4286 20.7137 31.4286C27.0256 31.4286 32.1423 26.301 32.1423 19.9759C32.1423 19.8168 32.1391 19.6585 32.1327 19.501Z' fill='#C2FD75'/></svg>"
   },
   {
+    "name": "@usva",
+    "homepage": "https://usva.build",
+    "url": "https://usva.build/r/{name}.json",
+    "description": "A React design language in three themes, where kajo is atmospheric and dark, sisu is dense and quick, and savi is the light ground. One token vocabulary underneath, including WebGL atmospheres that honour reduced-motion. Every component installs from npm or copies in from this registry.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='7 19 88 62' width='24' height='24'><path fill-rule='evenodd' fill='var(--foreground)' d='M7,50a31,31 0 1,0 62,0a31,31 0 1,0 -62,0M33,50a31,31 0 1,0 62,0a31,31 0 1,0 -62,0'/></svg>"
+  },
+  { 
     "name": "@voraui",
     "homepage": "https://voraui.vercel.app",
     "url": "https://voraui.vercel.app/r/{name}.json",
