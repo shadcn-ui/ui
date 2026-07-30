@@ -1799,5 +1799,12 @@
     "url": "https://usva.build/r/{name}.json",
     "description": "A React design language in three themes, where kajo is atmospheric and dark, sisu is dense and quick, and savi is the light ground. One token vocabulary underneath, including WebGL atmospheres that honour reduced-motion. Every component installs from npm or copies in from this registry.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='7 19 88 62' width='24' height='24'><path fill-rule='evenodd' fill='var(--foreground)' d='M7,50a31,31 0 1,0 62,0a31,31 0 1,0 -62,0M33,50a31,31 0 1,0 62,0a31,31 0 1,0 -62,0'/></svg>"
+  },
+  {
+    "name": "@atelier",
+    "homepage": "https://www.atelier-ui.com",
+    "url": "https://www.atelier-ui.com/r/{name}.json",
+    "description": "A WebGL and Motion system for React that runs many effects on one shared canvas. Shader, cursor, scroll and text effects, 3D galleries, plus page transitions for Next.js. Built with Three.js, React Three Fiber, Motion, and Lenis smooth scroll.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='var(--foreground)' width='24' height='24'><path d='M22 8h9v13h10v18H26V24l-9.5 15H7V28z'/></svg>"
   }
 ]
