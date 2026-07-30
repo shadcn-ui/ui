@@ -785,6 +785,13 @@
     "logo": "<svg fill='none' viewBox='0 0 116 116' xmlns='http://www.w3.org/2000/svg'><title>Kibo UI</title><g fill='currentColor'><path clip-rule='evenodd' d='m29.3378 0h87.0002v87l-29.0002 29v-87h-87.000031zm-29.000031 95.7389v-37.7389h37.738831zm58.000031 20.2611h-37.249l37.249-37.2488z' fill-rule='evenodd'></path></g></svg>"
   },
   {
+    "name": "@kinetic",
+    "homepage": "https://kinetic.itsjay.in",
+    "url": "https://kinetic.itsjay.in/r/{name}.json",
+    "description": "A Figma-like scrub number field for shadcn/ui (base-nova). Digit animation by Calligraph.",
+    "logo": "<svg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='10' fill='#eef1f4'/><g transform='translate(8 8)' stroke='#1e2a3a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M8 13v-8.5a1.5 1.5 0 0 1 3 0v7.5'/><path d='M11 11.5v-2a1.5 1.5 0 0 1 3 0v2.5'/><path d='M14 10.5a1.5 1.5 0 0 1 3 0v1.5'/><path d='M17 11.5a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7l-.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47'/><path d='M2.541 5.594a13.487 13.487 0 0 1 2.46 -1.427'/><path d='M14 3.458c1.32 .354 2.558 .902 3.685 1.612'/></g></svg>"
+  },
+  {
     "name": "@kokonutui",
     "homepage": "https://kokonutui.com",
     "url": "https://kokonutui.com/r/{name}.json",
@@ -880,7 +887,7 @@
     "homepage": "https://moduix.dev",
     "url": "https://moduix.dev/r/react/{name}.json",
     "description": "Ark-first React components, blocks, and themes with native CSS, available as a package or a shadcn-compatible copy-owned registry.",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='48 46 148 118' fill='none'><path d='M65 146V94c0-16.02 12.98-29 29-29 10.8 0 20.72 6.01 25.72 15.59L122 85l2.28-4.41C129.28 71.01 139.2 65 150 65c16.02 0 29 12.98 29 29v52' stroke='var(--foreground)' stroke-width='36' stroke-linecap='round' stroke-linejoin='round'/><path d='M122 80v20' stroke='var(--foreground)' stroke-width='36' stroke-linecap='round'/><circle cx='122' cy='149' r='14' fill='var(--foreground)'/></svg>"
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect x='1.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='11.9' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/></svg>"
   },
   {
     "name": "@moleculeui",
@@ -1058,9 +1065,9 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' fill='none' viewBox='0 0 512 512'><g clip-path='url(#clip0_832_289)'><path fill='var(--foregorund)' d='M256 0C51.2 0 0 51.2 0 256s51.2 256 256 256 256-51.2 256-256S460.8 0 256 0'/><path stroke='var(--background)' stroke-width='24' d='M381.631 89.102 156.848 226.934c-1.77 1.101-3.439 2.653-4.844 4.505s-2.5 3.94-3.177 6.062c-.673 2.062-.875 4.084-.584 5.83.288 1.658 1.077 2.946 2.257 3.686l98.286 32.478-122.2 137.576a7.9 7.9 0 0 0-1.306 2.72c-.234.895-.22 1.742.04 2.404q.369 1.032 1.341 1.214c.64.125 1.387-.039 2.127-.468l224.795-137.85c1.77-1.102 3.438-2.654 4.844-4.506 1.405-1.852 2.5-3.94 3.177-6.061.666-2.057.864-4.072.571-5.813-.282-1.663-1.066-2.957-2.245-3.704l-87.131-44.529L383.845 94.953a7.9 7.9 0 0 0 1.306-2.72c.233-.895.219-1.741-.04-2.404-.257-.632-.727-1.058-1.341-1.214-.641-.125-1.4.058-2.139.487Z'/></g></svg>"
   },
   {
-    "name": "@pacekit-gsap",
-    "homepage": "https://gsap.pacekit.dev",
-    "url": "https://gsap.pacekit.dev/r/{name}.json",
+    "name": "@paceui-gsap",
+    "homepage": "https://gsap.paceui.com",
+    "url": "https://gsap.paceui.com/r/{name}.json",
     "description": "Animated GSAP components crafted for smooth interaction and rich detail.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' fill='none' viewBox='0 0 512 512'><g clip-path='url(#clip0_832_289)'><path fill='var(--foregorund)' d='M256 0C51.2 0 0 51.2 0 256s51.2 256 256 256 256-51.2 256-256S460.8 0 256 0'/><path stroke='var(--background)' stroke-width='24' d='M381.631 89.102 156.848 226.934c-1.77 1.101-3.439 2.653-4.844 4.505s-2.5 3.94-3.177 6.062c-.673 2.062-.875 4.084-.584 5.83.288 1.658 1.077 2.946 2.257 3.686l98.286 32.478-122.2 137.576a7.9 7.9 0 0 0-1.306 2.72c-.234.895-.22 1.742.04 2.404q.369 1.032 1.341 1.214c.64.125 1.387-.039 2.127-.468l224.795-137.85c1.77-1.102 3.438-2.654 4.844-4.506 1.405-1.852 2.5-3.94 3.177-6.061.666-2.057.864-4.072.571-5.813-.282-1.663-1.066-2.957-2.245-3.704l-87.131-44.529L383.845 94.953a7.9 7.9 0 0 0 1.306-2.72c.233-.895.219-1.741-.04-2.404-.257-.632-.727-1.058-1.341-1.214-.641-.125-1.4.058-2.139.487Z'/></g></svg>"
   },
@@ -1203,6 +1210,13 @@
     "url": "https://rescript-shadcn.miriad.studio/r/{name}.json",
     "description": "Shadcn components rewritten in Rescript, compatible with shadcn CLI.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' width='96' height='96'><defs></defs><g transform='matrix(1,0,0,1,0,0)'><rect fill='#ffffff' fill-opacity='0' x='0' y='0' width='96' height='96'/><g><g transform='matrix(1.066456409,0,0,1.094959393,-6.899407512,-12.078824852)'><path d='M6.469469783682094,29.296816897068346 C6.469469783682094,19.218182361289806 14.875162103147048,11.031299358969534 25.223166451575825,11.031299358969534 L77.73351712167828,11.031299358969534 C88.08152147010705,11.031299358969534 96.487213789572,19.218182361289806 96.487213789572,29.296816897068346 L96.487213789572,80.44026600374502 C96.487213789572,90.51890053952357 88.08152147010705,98.70578354184384 77.73351712167828,98.70578354184384 L25.223166451575825,98.70578354184384 C14.875162103147048,98.70578354184384 6.469469783682094,90.51890053952357 6.469469783682094,80.44026600374502 L6.469469783682094,29.296816897068346 Z' fill='#000000'/></g><g transform='matrix(1.066456409,0,0,1.094959393,-6.899407512,-12.078824852)'><path d='M52.45379523229571,29.200001634786734 C55.00295921535262,26.883390524071544 58.95543226781845,27.07229341076284 61.272043378533645,29.621457393819753 Q71.13827443349942,40.47810948251313 71.13827443349942,40.47810948251313 C71.13827443349942,40.47810948251313 71.13827443349942,40.47810948251313 71.13827443349942,40.47810948251313 Q71.13827443349942,40.47810948251313 33.37098472070438,74.79999836521324 C30.821820737647467,77.11660947592843 26.869347685181634,76.92770658923713 24.552736574466444,74.37854260618022 L18.884901713103126,68.14174247012232 C16.568290602387936,65.59257848706541 16.75719348907924,61.64010543459957 19.30635747213615,59.323494323884375 L52.45379523229571,29.200001634786734 Z' fill='#ffffff'/></g><g transform='matrix(1.066456409,0,0,1.094959393,-6.899407512,-12.078824852)'><path d='M83.03598839227924,52.57042361948592 C87.42190746546675,57.448377897319865 87.02222686992943,64.97342972888394 82.14427259209549,69.35934880207145 C77.26631831426155,73.74526787525897 69.74126648269748,73.34558727972166 65.35534740950997,68.46763300188772 C60.969428336322466,63.589678724053776 61.369108931859785,56.0646268924897 66.24706320969372,51.67870781930218 C71.12501748752766,47.29278874611467 78.65006931909173,47.692469341651986 83.03598839227924,52.57042361948592 Z' fill='#ffffff'/></g></g></g></svg>"
+  },
+  {
+    "name": "@retab",
+    "homepage": "https://ui.retab.com",
+    "url": "https://ui.retab.com/r/{name}.json",
+    "description": "Document-processing UI components for Retab — file, OCR, and data viewers, schema builders, dropzones, and extraction blocks, built on shadcn/ui.",
+    "logo": "<svg width='48' height='48' viewBox='0 0 48 48' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='48' height='48' rx='8.33333' fill='var(--foreground)'/><rect x='11' y='23.5303' width='7.26572' height='6.76463' fill='var(--background)'/><rect x='11' y='10' width='7.26572' height='6.76463' fill='var(--background)'/><rect x='18.2656' y='16.7651' width='19.0412' height='6.76463' fill='var(--background)'/><rect x='18.2656' y='30.2944' width='19.0412' height='6.76463' fill='var(--background)'/></svg>"
   },
   {
     "name": "@retroui",
@@ -1785,5 +1799,26 @@
     "url": "https://shadcndashboard.dev/r/{name}.json",
     "description": "Shadcn Dashboard is a collection of modern, production-ready dashboard layouts, components, and UI patterns built on top of shadcn/ui and Tailwind CSS. It’s designed to help developers build clean, scalable, and data-driven dashboards faster—without compromising on performance, accessibility, or customization.",
     "logo": "<svg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='20' fill='#053B25'/><path d='M32.1327 19.501C31.5178 19.6123 30.8844 19.6705 30.2375 19.6705C24.3886 19.6705 19.6471 14.9189 19.6471 9.05765C19.6471 8.89469 19.6507 8.73258 19.658 8.57141C13.8411 9.10533 9.28516 14.0074 9.28516 19.9759C9.28516 26.301 14.4019 31.4286 20.7137 31.4286C27.0256 31.4286 32.1423 26.301 32.1423 19.9759C32.1423 19.8168 32.1391 19.6585 32.1327 19.501Z' fill='#C2FD75'/></svg>"
+  },
+  {
+    "name": "@usva",
+    "homepage": "https://usva.build",
+    "url": "https://usva.build/r/{name}.json",
+    "description": "A React design language in three themes, where kajo is atmospheric and dark, sisu is dense and quick, and savi is the light ground. One token vocabulary underneath, including WebGL atmospheres that honour reduced-motion. Every component installs from npm or copies in from this registry.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='7 19 88 62' width='24' height='24'><path fill-rule='evenodd' fill='var(--foreground)' d='M7,50a31,31 0 1,0 62,0a31,31 0 1,0 -62,0M33,50a31,31 0 1,0 62,0a31,31 0 1,0 -62,0'/></svg>"
+  },
+  {
+    "name": "@atelier",
+    "homepage": "https://www.atelier-ui.com",
+    "url": "https://www.atelier-ui.com/r/{name}.json",
+    "description": "A WebGL and Motion system for React that runs many effects on one shared canvas. Shader, cursor, scroll and text effects, 3D galleries, plus page transitions for Next.js. Built with Three.js, React Three Fiber, Motion, and Lenis smooth scroll.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='var(--foreground)' width='24' height='24'><path d='M22 8h9v13h10v18H26V24l-9.5 15H7V28z'/></svg>"
+  },
+  {
+    "name": "@mediadrop",
+    "homepage": "https://www.mediadrop.dev",
+    "url": "https://www.mediadrop.dev/r/{name}.json",
+    "description": "Drag-and-drop file upload blocks for React built on react-mediadrop — dropzone, avatar uploader, multi-file upload form, and direct-to-S3 upload.",
+    "logo": "<svg width='1024' height='1024' viewBox='0 0 1024 1024' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='1024' height='1024' rx='264' fill='black'/><path d='M690.68 471.521L506.92 655.283L466.282 614.646L466.283 614.644L332.918 481.278L373.555 440.642L506.921 574.007L650.044 430.885L690.68 471.521Z' fill='#00D9FF'/><path d='M690.68 267.637L506.92 451.398L466.282 410.761L466.283 410.759L332.918 277.394L373.555 236.757L506.921 370.122L650.044 227L690.68 267.637Z' fill='#0080A9'/><path d='M798.012 796.063H225.59V740.668H742.616V445.224H798.012V796.063ZM280.984 740.666H225.589V445.221H280.984V740.666Z' fill='url(#paint0_linear_220_485)'/><defs><linearGradient id='paint0_linear_220_485' x1='770.314' y1='445.221' x2='770.314' y2='740.667' gradientUnits='userSpaceOnUse'><stop/><stop offset='1' stop-color='white'/></linearGradient></defs></svg>"
   }
 ]
