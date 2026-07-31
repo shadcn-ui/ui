@@ -69,11 +69,15 @@ export const build = new Command()
         )
 
         // Write the registry item to the output directory.
+        // Item names can contain path segments (e.g. "extension/foo"), so
+        // ensure the nested output directory exists before writing.
+        const outputPath = path.resolve(
+          resolvePaths.outputDir,
+          `${registryItemForBuild.name}.json`
+        )
+        await fs.mkdir(path.dirname(outputPath), { recursive: true })
         await fs.writeFile(
-          path.resolve(
-            resolvePaths.outputDir,
-            `${registryItemForBuild.name}.json`
-          ),
+          outputPath,
           JSON.stringify(registryItemForBuild, null, 2)
         )
       }
