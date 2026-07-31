@@ -1,5 +1,12 @@
 [
   {
+    "name": "@1st-pouf",
+    "homepage": "https://1st-pouf.worksonmy.dev",
+    "url": "https://1st-pouf.worksonmy.dev/r/{name}.json",
+    "description": "Puffy, pastel claymorphism components and app blocks for React, built with Tailwind CSS v4 and Radix UI.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='3' y='3' width='26' height='26' rx='9' fill='#c9a8ff'/><path d='M5 12c5-5 17-5 22 0v8c-5 5-17 5-22 0z' fill='var(--foreground)' fill-opacity='.16'/></svg>"
+  },
+  {
     "name": "@7ovr",
     "homepage": "https://7ovr.com",
     "url": "https://7ovr.com/r/{name}.json",
