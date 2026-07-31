@@ -791,6 +791,185 @@ describe("getRegistry", () => {
     expect(receivedHeaders.authorization).toBe("Bearer test-token")
   })
 
+  it("should forward search params as query params", async () => {
+    let receivedUrl = ""
+    server.use(
+      http.get("https://acme.com/registry.json", ({ request }) => {
+        receivedUrl = request.url
+        return HttpResponse.json({
+          name: "@acme/registry",
+          homepage: "https://acme.com",
+          items: [],
+        })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@acme": {
+          url: "https://acme.com/{name}.json",
+        },
+      },
+    } as any
+
+    await getRegistry("@acme", {
+      config: mockConfig,
+      searchParams: {
+        query: "button",
+        types: ["registry:ui", "registry:block"],
+        limit: 50,
+        offset: 10,
+      },
+    })
+
+    const url = new URL(receivedUrl)
+    expect(url.searchParams.get("q")).toBe("button")
+    expect(url.searchParams.get("type")).toBe("registry:ui,registry:block")
+    expect(url.searchParams.get("limit")).toBe("50")
+    expect(url.searchParams.get("offset")).toBe("10")
+  })
+
+  it("should not append query params without search params", async () => {
+    let receivedUrl = ""
+    server.use(
+      http.get("https://acme.com/registry.json", ({ request }) => {
+        receivedUrl = request.url
+        return HttpResponse.json({
+          name: "@acme/registry",
+          homepage: "https://acme.com",
+          items: [],
+        })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@acme": {
+          url: "https://acme.com/{name}.json",
+        },
+      },
+    } as any
+
+    await getRegistry("@acme", { config: mockConfig })
+
+    expect(receivedUrl).toBe("https://acme.com/registry.json")
+  })
+
+  it("should forward search params on direct registry URLs", async () => {
+    let receivedUrl = ""
+    server.use(
+      http.get("https://acme.com/r/registry.json", ({ request }) => {
+        receivedUrl = request.url
+        return HttpResponse.json({
+          name: "@acme/registry",
+          homepage: "https://acme.com",
+          items: [],
+        })
+      })
+    )
+
+    await getRegistry("https://acme.com/r/registry.json", {
+      searchParams: {
+        query: "button",
+        limit: 10,
+      },
+    })
+
+    const url = new URL(receivedUrl)
+    expect(url.searchParams.get("q")).toBe("button")
+    expect(url.searchParams.get("limit")).toBe("10")
+    expect(url.searchParams.get("offset")).toBeNull()
+    expect(url.searchParams.get("type")).toBeNull()
+  })
+
+  it("should preserve configured auth params when appending search params", async () => {
+    let receivedUrl = ""
+    let receivedAuthHeaders: Record<string, string> = {}
+    server.use(
+      http.get("https://private.com/registry.json", ({ request }) => {
+        receivedUrl = request.url
+        request.headers.forEach((value, key) => {
+          receivedAuthHeaders[key] = value
+        })
+        return HttpResponse.json({
+          name: "@private/registry",
+          homepage: "https://private.com",
+          items: [],
+        })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@private": {
+          url: "https://private.com/{name}.json",
+          params: {
+            token: "test-token",
+          },
+          headers: {
+            Authorization: "Bearer test-token",
+          },
+        },
+      },
+    } as any
+
+    await getRegistry("@private", {
+      config: mockConfig,
+      searchParams: { query: "button" },
+    })
+
+    const url = new URL(receivedUrl)
+    expect(url.searchParams.get("token")).toBe("test-token")
+    expect(url.searchParams.get("q")).toBe("button")
+    expect(receivedAuthHeaders.authorization).toBe("Bearer test-token")
+  })
+
+  it("should return pagination from dynamic registries", async () => {
+    server.use(
+      http.get("https://acme.com/registry.json", () => {
+        return HttpResponse.json({
+          name: "@acme/registry",
+          homepage: "https://acme.com",
+          items: [{ name: "button", type: "registry:ui" }],
+          pagination: {
+            total: 1000,
+            offset: 0,
+            limit: 1,
+            hasMore: true,
+          },
+        })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@acme": {
+          url: "https://acme.com/{name}.json",
+        },
+      },
+    } as any
+
+    const result = await getRegistry("@acme", {
+      config: mockConfig,
+      searchParams: { query: "button" },
+    })
+
+    expect(result.pagination).toEqual({
+      total: 1000,
+      offset: 0,
+      limit: 1,
+      hasMore: true,
+    })
+  })
+
   it("should throw RegistryNotConfiguredError when registry is not configured", async () => {
     const mockConfig = {
       style: "new-york",
