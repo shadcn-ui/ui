@@ -112,10 +112,7 @@ describe("build command", () => {
     )
 
     const item = JSON.parse(
-      await fs.readFile(
-        path.join(cwd, "public/r/extension/foo.json"),
-        "utf-8"
-      )
+      await fs.readFile(path.join(cwd, "public/r/extension/foo.json"), "utf-8")
     )
 
     expect(item).toMatchObject({
