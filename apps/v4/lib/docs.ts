@@ -16,6 +16,7 @@ export const PAGES_NEW = [
   "/docs/helpers/ai-sdk",
   "/docs/helpers/tanstack-ai",
   "/docs/react/message-scroller",
+  "/docs/registry/dynamic-search",
 ]
 
 export const PAGES_UPDATED = []
