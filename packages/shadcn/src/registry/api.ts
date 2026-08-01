@@ -1,3 +1,4 @@
+import { existsSync } from "fs"
 import path from "path"
 import { resolveGitHubRegistrySource } from "@/src/registry/address"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
@@ -38,28 +39,84 @@ import {
 import { Config, explorer } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
+import { cosmiconfig } from "cosmiconfig"
 import { z } from "zod"
+
+const packageRegistriesExplorer = cosmiconfig("registries", {
+  packageProp: "registries",
+  searchPlaces: ["package.json"],
+})
+
+const registriesConfigFileSchema = z.object({
+  registries: registryConfigSchema.optional(),
+})
 
 type RegistryApiOptions = {
   config?: Partial<Config>
   useCache?: boolean
 }
 
-export async function getRegistry(name: string, options?: RegistryApiOptions) {
+// Search parameters forwarded to the registry as query params so dynamic
+// registries can filter server-side. Static registries ignore them and return
+// the full catalog. See https://ui.shadcn.com/docs/registry/dynamic-search.
+type RegistrySearchParams = {
+  query?: string
+  types?: string[]
+  limit?: number
+  offset?: number
+}
+
+type GetRegistryOptions = RegistryApiOptions & {
+  searchParams?: RegistrySearchParams
+}
+
+function appendSearchParamsToUrl(
+  url: string,
+  searchParams?: RegistrySearchParams
+) {
+  if (!searchParams) {
+    return url
+  }
+
+  const parsedUrl = new URL(url)
+
+  if (searchParams.query) {
+    parsedUrl.searchParams.set("q", searchParams.query)
+  }
+
+  if (searchParams.types?.length) {
+    parsedUrl.searchParams.set("type", searchParams.types.join(","))
+  }
+
+  if (searchParams.limit !== undefined) {
+    parsedUrl.searchParams.set("limit", String(searchParams.limit))
+  }
+
+  if (searchParams.offset !== undefined) {
+    parsedUrl.searchParams.set("offset", String(searchParams.offset))
+  }
+
+  return parsedUrl.toString()
+}
+
+export async function getRegistry(name: string, options?: GetRegistryOptions) {
   return withRegistryContext(() => getRegistryWithContext(name, options))
 }
 
 async function getRegistryWithContext(
   name: string,
-  options?: RegistryApiOptions
+  options?: GetRegistryOptions
 ) {
-  const { config, useCache } = options || {}
+  const { config, useCache, searchParams } = options || {}
 
   if (isUrl(name)) {
-    const [result] = await fetchRegistry([name], { useCache })
+    const url = appendSearchParamsToUrl(name, searchParams)
+    const [result] = await fetchRegistry([url], { useCache })
     return parseRegistryCatalog(name, result)
   }
 
+  // GitHub registries are raw files. There is no server to run a search, so
+  // search params are not forwarded and filtering happens locally.
   const githubSource = resolveGitHubRegistrySource(name)
   if (githubSource) {
     return fetchGitHubRegistryCatalog(githubSource, { useCache })
@@ -83,13 +140,17 @@ async function getRegistryWithContext(
     throw new RegistryNotFoundError(registryName)
   }
 
+  // Append search params before registering headers so the header lookup key
+  // matches the URL we actually fetch.
+  const url = appendSearchParamsToUrl(urlAndHeaders.url, searchParams)
+
   if (urlAndHeaders.headers && Object.keys(urlAndHeaders.headers).length > 0) {
     setRegistryHeaders({
-      [urlAndHeaders.url]: urlAndHeaders.headers,
+      [url]: urlAndHeaders.headers,
     })
   }
 
-  const [result] = await fetchRegistry([urlAndHeaders.url], { useCache })
+  const [result] = await fetchRegistry([url], { useCache })
 
   return parseRegistryCatalog(registryName, result)
 }
@@ -154,38 +215,58 @@ export async function getRegistriesConfig(
 ) {
   const { useCache = true } = options || {}
 
-  // Clear cache if requested
   if (!useCache) {
     explorer.clearCaches()
+    packageRegistriesExplorer.clearCaches()
   }
 
-  const configResult = await explorer.search(cwd)
+  const componentsJsonPath = path.resolve(cwd, "components.json")
+  if (existsSync(componentsJsonPath)) {
+    const configResult = await explorer.load(componentsJsonPath)
+    const config = parseRegistriesConfig(
+      cwd,
+      configResult?.config,
+      "components.json"
+    )
 
-  if (!configResult) {
-    // Do not throw an error if the config is missing.
-    // We still have access to the built-in registries.
     return {
-      registries: BUILTIN_REGISTRIES,
+      registries: {
+        ...BUILTIN_REGISTRIES,
+        ...config.registries,
+      },
     }
   }
 
-  // Parse just the registries field from the config
-  const registriesConfig = z
-    .object({
-      registries: registryConfigSchema.optional(),
-    })
-    .safeParse(configResult.config)
-
-  if (!registriesConfig.success) {
-    throw new ConfigParseError(cwd, registriesConfig.error)
+  const packageJsonPath = path.resolve(cwd, "package.json")
+  if (existsSync(packageJsonPath)) {
+    const configResult = await packageRegistriesExplorer.load(packageJsonPath)
+    return parseRegistriesConfig(
+      cwd,
+      {
+        registries: configResult?.config,
+      },
+      "package.json"
+    )
   }
 
-  // Merge built-in registries with user registries
   return {
-    registries: {
-      ...BUILTIN_REGISTRIES,
-      ...(registriesConfig.data.registries || {}),
-    },
+    registries: {},
+  }
+}
+
+function parseRegistriesConfig(
+  cwd: string,
+  config: unknown,
+  configFile: "components.json" | "package.json"
+) {
+  const result = registriesConfigFileSchema.safeParse(config)
+
+  if (!result.success) {
+    throw new ConfigParseError(cwd, result.error, configFile)
+  }
+
+  return {
+    registries: result.data.registries || {},
   }
 }
 

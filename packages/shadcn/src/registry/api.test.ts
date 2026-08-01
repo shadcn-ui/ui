@@ -791,6 +791,185 @@ describe("getRegistry", () => {
     expect(receivedHeaders.authorization).toBe("Bearer test-token")
   })
 
+  it("should forward search params as query params", async () => {
+    let receivedUrl = ""
+    server.use(
+      http.get("https://acme.com/registry.json", ({ request }) => {
+        receivedUrl = request.url
+        return HttpResponse.json({
+          name: "@acme/registry",
+          homepage: "https://acme.com",
+          items: [],
+        })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@acme": {
+          url: "https://acme.com/{name}.json",
+        },
+      },
+    } as any
+
+    await getRegistry("@acme", {
+      config: mockConfig,
+      searchParams: {
+        query: "button",
+        types: ["registry:ui", "registry:block"],
+        limit: 50,
+        offset: 10,
+      },
+    })
+
+    const url = new URL(receivedUrl)
+    expect(url.searchParams.get("q")).toBe("button")
+    expect(url.searchParams.get("type")).toBe("registry:ui,registry:block")
+    expect(url.searchParams.get("limit")).toBe("50")
+    expect(url.searchParams.get("offset")).toBe("10")
+  })
+
+  it("should not append query params without search params", async () => {
+    let receivedUrl = ""
+    server.use(
+      http.get("https://acme.com/registry.json", ({ request }) => {
+        receivedUrl = request.url
+        return HttpResponse.json({
+          name: "@acme/registry",
+          homepage: "https://acme.com",
+          items: [],
+        })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@acme": {
+          url: "https://acme.com/{name}.json",
+        },
+      },
+    } as any
+
+    await getRegistry("@acme", { config: mockConfig })
+
+    expect(receivedUrl).toBe("https://acme.com/registry.json")
+  })
+
+  it("should forward search params on direct registry URLs", async () => {
+    let receivedUrl = ""
+    server.use(
+      http.get("https://acme.com/r/registry.json", ({ request }) => {
+        receivedUrl = request.url
+        return HttpResponse.json({
+          name: "@acme/registry",
+          homepage: "https://acme.com",
+          items: [],
+        })
+      })
+    )
+
+    await getRegistry("https://acme.com/r/registry.json", {
+      searchParams: {
+        query: "button",
+        limit: 10,
+      },
+    })
+
+    const url = new URL(receivedUrl)
+    expect(url.searchParams.get("q")).toBe("button")
+    expect(url.searchParams.get("limit")).toBe("10")
+    expect(url.searchParams.get("offset")).toBeNull()
+    expect(url.searchParams.get("type")).toBeNull()
+  })
+
+  it("should preserve configured auth params when appending search params", async () => {
+    let receivedUrl = ""
+    let receivedAuthHeaders: Record<string, string> = {}
+    server.use(
+      http.get("https://private.com/registry.json", ({ request }) => {
+        receivedUrl = request.url
+        request.headers.forEach((value, key) => {
+          receivedAuthHeaders[key] = value
+        })
+        return HttpResponse.json({
+          name: "@private/registry",
+          homepage: "https://private.com",
+          items: [],
+        })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@private": {
+          url: "https://private.com/{name}.json",
+          params: {
+            token: "test-token",
+          },
+          headers: {
+            Authorization: "Bearer test-token",
+          },
+        },
+      },
+    } as any
+
+    await getRegistry("@private", {
+      config: mockConfig,
+      searchParams: { query: "button" },
+    })
+
+    const url = new URL(receivedUrl)
+    expect(url.searchParams.get("token")).toBe("test-token")
+    expect(url.searchParams.get("q")).toBe("button")
+    expect(receivedAuthHeaders.authorization).toBe("Bearer test-token")
+  })
+
+  it("should return pagination from dynamic registries", async () => {
+    server.use(
+      http.get("https://acme.com/registry.json", () => {
+        return HttpResponse.json({
+          name: "@acme/registry",
+          homepage: "https://acme.com",
+          items: [{ name: "button", type: "registry:ui" }],
+          pagination: {
+            total: 1000,
+            offset: 0,
+            limit: 1,
+            hasMore: true,
+          },
+        })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@acme": {
+          url: "https://acme.com/{name}.json",
+        },
+      },
+    } as any
+
+    const result = await getRegistry("@acme", {
+      config: mockConfig,
+      searchParams: { query: "button" },
+    })
+
+    expect(result.pagination).toEqual({
+      total: 1000,
+      offset: 0,
+      limit: 1,
+      hasMore: true,
+    })
+  })
+
   it("should throw RegistryNotConfiguredError when registry is not configured", async () => {
     const mockConfig = {
       style: "new-york",
@@ -1303,16 +1482,189 @@ describe("getRegistry", () => {
 })
 
 describe("getRegistriesConfig", () => {
-  it("should return built-in registries when no components.json exists", async () => {
+  it("should return no registries when no registry config exists", async () => {
     const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
 
     try {
       const result = await getRegistriesConfig(tempDir)
 
       expect(result).toEqual({
-        registries: BUILTIN_REGISTRIES,
+        registries: {},
       })
     } finally {
+      await fs.rmdir(tempDir)
+    }
+  })
+
+  it("should parse registries from package.json", async () => {
+    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
+    const packageJsonFile = path.join(tempDir, "package.json")
+
+    await fs.writeFile(
+      packageJsonFile,
+      JSON.stringify(
+        {
+          name: "test-package",
+          version: "1.0.0",
+          registries: {
+            "@acme": "https://acme.com/{name}.json",
+            "@private": {
+              url: "https://private.com/{name}.json",
+              headers: {
+                Authorization: "Bearer ${REGISTRY_TOKEN}",
+              },
+            },
+          },
+        },
+        null,
+        2
+      )
+    )
+
+    try {
+      const result = await getRegistriesConfig(tempDir)
+
+      expect(result.registries).toEqual({
+        "@acme": "https://acme.com/{name}.json",
+        "@private": {
+          url: "https://private.com/{name}.json",
+          headers: {
+            Authorization: "Bearer ${REGISTRY_TOKEN}",
+          },
+        },
+      })
+    } finally {
+      await fs.unlink(packageJsonFile)
+      await fs.rmdir(tempDir)
+    }
+  })
+
+  it("should prefer components.json over package.json", async () => {
+    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
+    const componentsJsonFile = path.join(tempDir, "components.json")
+    const packageJsonFile = path.join(tempDir, "package.json")
+
+    await fs.writeFile(
+      componentsJsonFile,
+      JSON.stringify({
+        registries: {
+          "@components": "https://components.com/{name}.json",
+        },
+      })
+    )
+    await fs.writeFile(
+      packageJsonFile,
+      JSON.stringify({
+        registries: {
+          "@package": "https://package.com/{name}.json",
+        },
+      })
+    )
+
+    try {
+      const result = await getRegistriesConfig(tempDir)
+
+      expect(result.registries).toEqual({
+        ...BUILTIN_REGISTRIES,
+        "@components": "https://components.com/{name}.json",
+      })
+      expect(result.registries["@package"]).toBeUndefined()
+    } finally {
+      await fs.unlink(componentsJsonFile)
+      await fs.unlink(packageJsonFile)
+      await fs.rmdir(tempDir)
+    }
+  })
+
+  it("should not fall back to package.json when components.json has no registries", async () => {
+    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
+    const componentsJsonFile = path.join(tempDir, "components.json")
+    const packageJsonFile = path.join(tempDir, "package.json")
+
+    await fs.writeFile(
+      componentsJsonFile,
+      JSON.stringify({
+        style: "new-york",
+      })
+    )
+    await fs.writeFile(
+      packageJsonFile,
+      JSON.stringify({
+        registries: {
+          "@package": "https://package.com/{name}.json",
+        },
+      })
+    )
+
+    try {
+      const result = await getRegistriesConfig(tempDir)
+
+      expect(result.registries).toEqual(BUILTIN_REGISTRIES)
+    } finally {
+      await fs.unlink(componentsJsonFile)
+      await fs.unlink(packageJsonFile)
+      await fs.rmdir(tempDir)
+    }
+  })
+
+  it("should only read registry config from the provided cwd", async () => {
+    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
+    const childDir = path.join(tempDir, "child")
+    const componentsJsonFile = path.join(tempDir, "components.json")
+
+    await fs.mkdir(childDir)
+    await fs.writeFile(
+      componentsJsonFile,
+      JSON.stringify({
+        registries: {
+          "@parent": "https://parent.com/{name}.json",
+        },
+      })
+    )
+
+    try {
+      const result = await getRegistriesConfig(childDir)
+
+      expect(result.registries).toEqual({})
+    } finally {
+      await fs.rm(tempDir, { recursive: true })
+    }
+  })
+
+  it("should throw ConfigParseError for invalid package.json registries", async () => {
+    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
+    const packageJsonFile = path.join(tempDir, "package.json")
+
+    await fs.writeFile(
+      packageJsonFile,
+      JSON.stringify({
+        registries: {
+          "@invalid": {
+            headers: {
+              Authorization: "Bearer token",
+            },
+          },
+        },
+      })
+    )
+
+    try {
+      await getRegistriesConfig(tempDir)
+      expect.fail("Should have thrown ConfigParseError")
+    } catch (error) {
+      expect(error).toBeInstanceOf(ConfigParseError)
+      if (error instanceof ConfigParseError) {
+        expect(error.cwd).toBe(tempDir)
+        expect(error.configFile).toBe("package.json")
+        expect(error.message).toContain(
+          'Invalid package.json "registries" configuration'
+        )
+        expect(error.suggestion).toContain(
+          'Check the "registries" field in your package.json'
+        )
+      }
+    } finally {
+      await fs.unlink(packageJsonFile)
       await fs.rmdir(tempDir)
     }
   })
@@ -1524,6 +1876,51 @@ describe("getRegistriesConfig", () => {
   })
 
   describe("caching behavior", () => {
+    it("should cache package.json registries and clear them when requested", async () => {
+      const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
+      const packageJsonFile = path.join(tempDir, "package.json")
+
+      await fs.writeFile(
+        packageJsonFile,
+        JSON.stringify({
+          registries: {
+            "@cached": "https://cached.com/{name}.json",
+          },
+        })
+      )
+
+      try {
+        const result1 = await getRegistriesConfig(tempDir)
+        expect(result1.registries["@cached"]).toBe(
+          "https://cached.com/{name}.json"
+        )
+
+        await fs.writeFile(
+          packageJsonFile,
+          JSON.stringify({
+            registries: {
+              "@fresh": "https://fresh.com/{name}.json",
+            },
+          })
+        )
+
+        const result2 = await getRegistriesConfig(tempDir)
+        expect(result2.registries["@cached"]).toBe(
+          "https://cached.com/{name}.json"
+        )
+        expect(result2.registries["@fresh"]).toBeUndefined()
+
+        const result3 = await getRegistriesConfig(tempDir, { useCache: false })
+        expect(result3.registries["@cached"]).toBeUndefined()
+        expect(result3.registries["@fresh"]).toBe(
+          "https://fresh.com/{name}.json"
+        )
+      } finally {
+        await fs.unlink(packageJsonFile)
+        await fs.rmdir(tempDir)
+      }
+    })
+
     it("should use cache by default", async () => {
       const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
       const configFile = path.join(tempDir, "components.json")
@@ -1713,15 +2110,15 @@ describe("getRegistriesConfig", () => {
       try {
         // With cache enabled (default)
         const result1 = await getRegistriesConfig(tempDir)
-        expect(result1.registries).toEqual(BUILTIN_REGISTRIES)
+        expect(result1.registries).toEqual({})
 
         // With cache explicitly enabled
         const result2 = await getRegistriesConfig(tempDir, { useCache: true })
-        expect(result2.registries).toEqual(BUILTIN_REGISTRIES)
+        expect(result2.registries).toEqual({})
 
         // With cache disabled
         const result3 = await getRegistriesConfig(tempDir, { useCache: false })
-        expect(result3.registries).toEqual(BUILTIN_REGISTRIES)
+        expect(result3.registries).toEqual({})
       } finally {
         await fs.rmdir(tempDir)
       }

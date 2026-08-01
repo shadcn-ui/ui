@@ -200,6 +200,16 @@ export type RegistryBaseItem = Extract<RegistryItem, { type: "registry:base" }>
 // Helper type for registry:font items specifically.
 export type RegistryFontItem = Extract<RegistryItem, { type: "registry:font" }>
 
+// Pagination metadata returned by registries that implement dynamic search.
+// Its presence on a catalog response signals that the items are already
+// filtered and paginated server-side.
+export const registryPaginationSchema = z.object({
+  total: z.number(),
+  offset: z.number(),
+  limit: z.number(),
+  hasMore: z.boolean(),
+})
+
 const registryBaseSchema = z
   .object({
     $schema: z.string().optional(),
@@ -207,6 +217,7 @@ const registryBaseSchema = z
     homepage: z.string().optional(),
     include: z.array(z.string()).optional(),
     items: z.array(registryItemSchema).optional(),
+    pagination: registryPaginationSchema.optional(),
   })
   .refine(
     (registry) =>
@@ -229,6 +240,7 @@ export const registrySchema = registryChunkSchema.pipe(
     homepage: z.string(),
     include: z.array(z.string()).optional(),
     items: z.array(registryItemSchema),
+    pagination: registryPaginationSchema.optional(),
   })
 )
 
@@ -295,12 +307,7 @@ export const searchResultErrorSchema = z.object({
 })
 
 export const searchResultsSchema = z.object({
-  pagination: z.object({
-    total: z.number(),
-    offset: z.number(),
-    limit: z.number(),
-    hasMore: z.boolean(),
-  }),
+  pagination: registryPaginationSchema,
   items: z.array(searchResultItemSchema),
   // Registries that failed to load during the search. Only present when a
   // search tolerates per-registry failures (see searchRegistries'
