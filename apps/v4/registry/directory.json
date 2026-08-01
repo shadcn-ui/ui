@@ -1853,7 +1853,7 @@
     "name": "@registrydirectory",
     "homepage": "https://registry.directory",
     "url": "https://registry.directory/r/{name}.json",
-    "description": "The explorer for the shadcn registry ecosystem. One namespace that searches across 60+ registries (~18,000 items) with server-ranked dynamic search, and installs any item through a proxy that preserves its origin identity and dependency semantics.",
+    "description": "The explorer for the shadcn registry ecosystem.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' width='24' height='24'><rect width='256' height='256' rx='57.5' fill='var(--foreground)'/><text x='128' y='162' font-family='ui-monospace,SFMono-Regular,Menlo,monospace' font-size='92' text-anchor='middle' fill='var(--background)' letter-spacing='-4'>r.d</text></svg>"
   }
 ]
