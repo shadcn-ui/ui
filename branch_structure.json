@@ -1,0 +1,18 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "feat/sonner-example-icons",
+    "main",
+    "origin"
+  ],
+  "parent": {
+    "feat/sonner-example-icons": "main",
+    "main": null,
+    "origin": "main"
+  },
+  "order": [
+    "main",
+    "feat/sonner-example-icons",
+    "origin"
+  ]
+}
