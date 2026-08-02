@@ -20,8 +20,6 @@ const PROXY_ENV_VARS = [
   "no_proxy",
   "ALL_PROXY",
   "all_proxy",
-  "PAC_URL",
-  "pac_url",
 ] as const
 
 let originServer: Server
@@ -30,9 +28,6 @@ let proxyServer: Server
 let proxyUrl: string
 let socksServer: NetServer
 let socksUrl: string
-let pacServer: Server
-let pacUrl: string
-let pacScript = ""
 let proxyHits: { url: string; method: string }[] = []
 let socksHits: { host: string; port: number }[] = []
 let savedEnv: Record<string, string | undefined> = {}
@@ -169,18 +164,6 @@ beforeAll(async () => {
   const socksAddr = await listenTcp(socksServer)
   socksUrl = `socks5://${socksAddr.host}:${socksAddr.port}`
 
-  // Server that serves the current pacScript content. Tests mutate pacScript
-  // to control which directive PAC will return.
-  pacServer = createServer((_req, res) => {
-    res.writeHead(200, {
-      "Content-Type": "application/x-ns-proxy-autoconfig",
-      "Content-Length": Buffer.byteLength(pacScript).toString(),
-      Connection: "close",
-    })
-    res.end(pacScript)
-  })
-  pacUrl = `${await listen(pacServer)}/proxy.pac`
-
   for (const name of PROXY_ENV_VARS) {
     savedEnv[name] = process.env[name]
     delete process.env[name]
@@ -191,7 +174,6 @@ afterAll(async () => {
   await close(originServer)
   await close(proxyServer)
   await close(socksServer)
-  await close(pacServer)
   for (const name of PROXY_ENV_VARS) {
     if (savedEnv[name] === undefined) {
       delete process.env[name]
@@ -204,7 +186,6 @@ afterAll(async () => {
 afterEach(() => {
   proxyHits = []
   socksHits = []
-  pacScript = ""
   for (const name of PROXY_ENV_VARS) {
     delete process.env[name]
   }
@@ -303,68 +284,6 @@ describe("proxy dispatcher integration", () => {
       const body = (await response.json()) as { from: string }
       expect(body.from).toBe("origin")
       expect(socksHits).toHaveLength(0)
-    })
-  })
-
-  describe("PAC via PAC_URL", () => {
-    it("dispatches direct when PAC returns DIRECT", async () => {
-      pacScript = `function FindProxyForURL(url, host) { return "DIRECT"; }`
-      process.env.PAC_URL = pacUrl
-      const dispatcher = createProxyDispatcher()
-
-      const response = await fetch(`${originUrl}/test.json`, { dispatcher })
-      const body = (await response.json()) as { from: string }
-      expect(body.from).toBe("origin")
-      expect(proxyHits).toHaveLength(0)
-      expect(socksHits).toHaveLength(0)
-    })
-
-    it("routes via HTTP CONNECT proxy when PAC returns PROXY host:port", async () => {
-      const proxyHost = new URL(proxyUrl).host
-      pacScript = `function FindProxyForURL(url, host) { return "PROXY ${proxyHost}"; }`
-      process.env.PAC_URL = pacUrl
-      const dispatcher = createProxyDispatcher()
-
-      const response = await fetch(`${originUrl}/test.json`, { dispatcher })
-      const body = (await response.json()) as { from: string }
-      expect(body.from).toBe("origin")
-      const originHost = new URL(originUrl).host
-      expect(proxyHits).toEqual([{ url: originHost, method: "CONNECT" }])
-      expect(socksHits).toHaveLength(0)
-    })
-
-    it("routes via SOCKS5 when PAC returns SOCKS5 host:port", async () => {
-      const socksAddr = new URL(socksUrl)
-      pacScript = `function FindProxyForURL(url, host) { return "SOCKS5 ${socksAddr.hostname}:${socksAddr.port}"; }`
-      process.env.PAC_URL = pacUrl
-      const dispatcher = createProxyDispatcher()
-
-      const response = await fetch(`${originUrl}/test.json`, { dispatcher })
-      const body = (await response.json()) as { from: string }
-      expect(body.from).toBe("origin")
-      const originAddr = new URL(originUrl)
-      expect(socksHits).toEqual([
-        { host: originAddr.hostname, port: Number(originAddr.port) },
-      ])
-      expect(proxyHits).toHaveLength(0)
-    })
-
-    it("can return different directives per host (uses PAC helpers like host)", async () => {
-      const proxyHost = new URL(proxyUrl).host
-      pacScript = `
-        function FindProxyForURL(url, host) {
-          if (host === "example.com") return "PROXY ${proxyHost}";
-          return "DIRECT";
-        }
-      `
-      process.env.PAC_URL = pacUrl
-      const dispatcher = createProxyDispatcher()
-
-      // 127.0.0.1 → DIRECT per the PAC.
-      const response = await fetch(`${originUrl}/test.json`, { dispatcher })
-      const body = (await response.json()) as { from: string }
-      expect(body.from).toBe("origin")
-      expect(proxyHits).toHaveLength(0)
     })
   })
 })

@@ -1,7 +1,7 @@
 import { Agent, EnvHttpProxyAgent } from "undici"
 import { afterEach, describe, expect, it, vi } from "vitest"
 
-import { createProxyDispatcher, fetchWithProxy, PacDispatcher } from "./proxy"
+import { createProxyDispatcher, fetchWithProxy } from "./proxy"
 
 afterEach(() => {
   vi.unstubAllGlobals()
@@ -87,45 +87,14 @@ describe("createProxyDispatcher", () => {
     })
   })
 
-  describe("PAC via PAC_URL", () => {
-    it.each(["PAC_URL", "pac_url"] as const)(
-      "returns a PacDispatcher when %s is set",
-      (name) => {
-        const dispatcher = createProxyDispatcher({
-          [name]: "http://example.com/proxy.pac",
-        })
-        expect(dispatcher).toBeInstanceOf(PacDispatcher)
-      }
-    )
-
-    it("ignores empty PAC_URL", () => {
-      expect(createProxyDispatcher({ PAC_URL: "" })).toBeUndefined()
-      expect(createProxyDispatcher({ pac_url: "" })).toBeUndefined()
-    })
-
-    it("ignores PAC_URL that is not a valid URL", () => {
-      expect(createProxyDispatcher({ PAC_URL: "not a url" })).toBeUndefined()
-    })
-  })
-
   describe("priority ordering", () => {
-    it("prefers PAC over SOCKS over HTTP", () => {
-      const dispatcher = createProxyDispatcher({
-        PAC_URL: "http://example.com/proxy.pac",
-        ALL_PROXY: "socks5://socks.example.com:1080",
-        HTTPS_PROXY: "http://proxy.example.com:8080",
-      })
-      expect(dispatcher).toBeInstanceOf(PacDispatcher)
-    })
-
-    it("prefers SOCKS over HTTP when both are set without PAC", () => {
+    it("prefers SOCKS over HTTP when both are set", () => {
       const dispatcher = createProxyDispatcher({
         ALL_PROXY: "socks5://socks.example.com:1080",
         HTTPS_PROXY: "http://proxy.example.com:8080",
       })
       expect(dispatcher).toBeInstanceOf(Agent)
       expect(dispatcher).not.toBeInstanceOf(EnvHttpProxyAgent)
-      expect(dispatcher).not.toBeInstanceOf(PacDispatcher)
     })
   })
 })
