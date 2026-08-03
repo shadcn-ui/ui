@@ -2899,6 +2899,18 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "file-upload-list",
       filePath: "examples/aria/file-upload-list.tsx",
     },
+    "hover-card-demo": {
+      name: "hover-card-demo",
+      filePath: "examples/aria/hover-card-demo.tsx",
+    },
+    "hover-card-rtl": {
+      name: "hover-card-rtl",
+      filePath: "examples/aria/hover-card-rtl.tsx",
+    },
+    "hover-card-sides": {
+      name: "hover-card-sides",
+      filePath: "examples/aria/hover-card-sides.tsx",
+    },
     "input-badge": {
       name: "input-badge",
       filePath: "examples/aria/input-badge.tsx",

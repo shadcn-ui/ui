@@ -1798,6 +1798,30 @@ export const Components: Record<string, any> = {
       ) || "file-upload-list"
     return { default: mod.default || mod[exportName] }
   }),
+  "hover-card-demo": React.lazy(async () => {
+    const mod = await import("@/examples/aria/hover-card-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "hover-card-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "hover-card-rtl": React.lazy(async () => {
+    const mod = await import("@/examples/aria/hover-card-rtl")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "hover-card-rtl"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "hover-card-sides": React.lazy(async () => {
+    const mod = await import("@/examples/aria/hover-card-sides")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "hover-card-sides"
+    return { default: mod.default || mod[exportName] }
+  }),
   "input-badge": React.lazy(async () => {
     const mod = await import("@/examples/aria/input-badge")
     const exportName =
