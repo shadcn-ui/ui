@@ -1390,7 +1390,7 @@
     "name": "@shoogle",
     "homepage": "https://shoogle.dev",
     "url": "https://shoogle.dev/r/{name}.json",
-    "description": "Search shadcn blocks and components across shadcn registries from the CLI",
+    "description": "Search shadcn blocks and components across community registries from the CLI",
     "logo": "<svg width='256' height='256' viewBox='0 0 256 256' fill='none' xmlns='http://www.w3.org/2000/svg' class='fill-none!' stroke='var(--foreground)'><rect width='256' height='256' rx='68' fill='var(--background)' stroke='none'/><path d='M220 128.5C220 179.034 179.034 220 128.5 220C77.9659 220 37 179.034 37 128.5C37 77.9659 77.9659 37 128.5 37C179.034 37 220 77.9659 220 128.5Z' class='fill-none!' stroke-width='16'/><path d='M178.219 130.589L130.589 178.219' class='fill-none!' stroke-width='16' stroke-linecap='round' stroke-linejoin='round'/><path d='M169.027 78.7808L78.7809 169.027' class='fill-none!' stroke-width='16' stroke-linecap='round' stroke-linejoin='round'/><path d='M197.125 196.289L215.425 214.589' class='fill-none!' stroke-width='15' stroke-linecap='round' stroke-linejoin='round'/></svg>"
   },
   {
