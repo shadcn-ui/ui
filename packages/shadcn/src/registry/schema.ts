@@ -293,6 +293,7 @@ export const registryResolvedItemsTreeSchema = registryItemCommonSchema
 
 export const searchResultItemSchema = z.object({
   name: z.string(),
+  title: z.string().optional(),
   type: z.string().optional(),
   description: z.string().optional(),
   registry: z.string(),

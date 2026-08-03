@@ -160,6 +160,7 @@ async function searchRegistriesWithContext(
 
     const itemsWithRegistry = (outcome.value.items || []).map((item) => ({
       name: item.name,
+      title: item.title,
       type: item.type,
       description: item.description,
       registry,
@@ -207,7 +208,7 @@ async function searchRegistriesWithContext(
     localItems = searchItems(localItems, {
       query,
       limit: localItems.length,
-      keys: ["name", "description"],
+      keys: ["name", "title", "description"],
     }) as z.infer<typeof searchResultItemSchema>[]
   }
 
@@ -259,6 +260,7 @@ async function searchRegistriesWithContext(
 const searchableItemSchema = z
   .object({
     name: z.string(),
+    title: z.string().optional(),
     type: z.string().optional(),
     description: z.string().optional(),
     registry: z.string().optional(),
@@ -271,6 +273,7 @@ type SearchableItem = z.infer<typeof searchableItemSchema>
 function searchItems<
   T extends {
     name: string
+    title?: string
     type?: string
     description?: string
     addCommandArgument?: string
