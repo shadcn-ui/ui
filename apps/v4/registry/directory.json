@@ -7,6 +7,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='3' y='3' width='26' height='26' rx='9' fill='#c9a8ff'/><path d='M5 12c5-5 17-5 22 0v8c-5 5-17 5-22 0z' fill='var(--foreground)' fill-opacity='.16'/></svg>"
   },
   {
+    "name": "@23rd",
+    "homepage": "https://23rd.dev",
+    "url": "https://23rd.dev/r/{name}.json",
+    "description": "Opinionated components for shippers.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none'><rect width='200' height='200' rx='11' fill='black'/><path d='M21.5 30H163.5L21.5 128.5L177.5 96.5V136.5V186H21.5' stroke='white' stroke-width='8'/><path d='M70 7H90V192H70V7Z' fill='white'/><path d='M110 7H130V192H110V7Z' fill='white'/></svg>"
+  },
+  {
     "name": "@7ovr",
     "homepage": "https://7ovr.com",
     "url": "https://7ovr.com/r/{name}.json",
