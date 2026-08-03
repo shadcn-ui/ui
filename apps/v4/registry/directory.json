@@ -1387,6 +1387,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 129.7 132' fill='var(--foreground)'><path d='M99.5,107.6c4.4,0,8-3.6,8-8v-26.1l-34.1,34.1h26.1Z'/><path d='M83.9,24.4H30.2c-4.4,0-8,3.6-8,8v53.7l61.7-61.7Z'/><path d='M104.5,26.2c-1-.8-2.4-.2-2.8,1s-1,2.5-2,3.5L25.7,104.6c-.3.3-.6.6-1,.8,1.4,1.3,3.4,2.2,5.5,2.2h25.1c-.2-2.2.6-4.5,2.2-6.2l38.9-38.9c3-3,8-3,11,0v-30c0-2.5-1.2-4.8-3-6.3Z'/></svg>"
   },
   {
+    "name": "@shoogle",
+    "homepage": "https://shoogle.dev",
+    "url": "https://shoogle.dev/r/{name}.json",
+    "description": "Search shadcn blocks and components across shadcn registries from the CLI",
+    "logo": "<svg width='256' height='256' viewBox='0 0 256 256' fill='none' xmlns='http://www.w3.org/2000/svg' class='fill-none!' stroke='var(--foreground)'><rect width='256' height='256' rx='68' fill='var(--background)' stroke='none'/><path d='M220 128.5C220 179.034 179.034 220 128.5 220C77.9659 220 37 179.034 37 128.5C37 77.9659 77.9659 37 128.5 37C179.034 37 220 77.9659 220 128.5Z' class='fill-none!' stroke-width='16'/><path d='M178.219 130.589L130.589 178.219' class='fill-none!' stroke-width='16' stroke-linecap='round' stroke-linejoin='round'/><path d='M169.027 78.7808L78.7809 169.027' class='fill-none!' stroke-width='16' stroke-linecap='round' stroke-linejoin='round'/><path d='M197.125 196.289L215.425 214.589' class='fill-none!' stroke-width='15' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+  },
+  {
     "name": "@skiper-ui",
     "homepage": "https://skiper-ui.com/",
     "url": "https://skiper-ui.com/registry/{name}.json",
