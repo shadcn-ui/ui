@@ -7,3 +7,11 @@ packages:
   - "!packages/tests/temp/**"
 
 minimumReleaseAge: 2880
+
+# TanStack Table v9 was released on 2026-08-04. Remove these excludes once
+# the packages are older than the minimumReleaseAge window.
+minimumReleaseAgeExclude:
+  - "@tanstack/react-table"
+  - "@tanstack/table-core"
+  - "@tanstack/react-store"
+  - "@tanstack/store"
