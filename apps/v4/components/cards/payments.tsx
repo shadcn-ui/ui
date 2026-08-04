@@ -6,19 +6,15 @@ import {
   columnVisibilityFeature,
   createFilteredRowModel,
   createPaginatedRowModel,
-  createSortedRowModel,
   filterFn_includesString,
   flexRender,
   rowPaginationFeature,
   rowSelectionFeature,
-  rowSortingFeature,
-  sortFn_alphanumeric,
   tableFeatures,
   useTable,
   type ColumnDef,
   type ColumnFiltersState,
   type ColumnVisibilityState,
-  type SortingState,
 } from "@tanstack/react-table"
 import { MoreHorizontalIcon } from "lucide-react"
 
@@ -100,12 +96,9 @@ const features = tableFeatures({
   columnVisibilityFeature,
   rowPaginationFeature,
   rowSelectionFeature,
-  rowSortingFeature,
   filteredRowModel: createFilteredRowModel(),
   paginatedRowModel: createPaginatedRowModel(),
-  sortedRowModel: createSortedRowModel(),
   filterFns: { includesString: filterFn_includesString },
-  sortFns: { alphanumeric: sortFn_alphanumeric },
 })
 
 export const columns: ColumnDef<typeof features, Payment>[] = [
@@ -128,7 +121,6 @@ export const columns: ColumnDef<typeof features, Payment>[] = [
         aria-label="Select row"
       />
     ),
-    enableSorting: false,
     enableHiding: false,
   },
   {
@@ -190,7 +182,6 @@ export const columns: ColumnDef<typeof features, Payment>[] = [
 ]
 
 export function CardsPayments() {
-  const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   )
@@ -202,12 +193,10 @@ export function CardsPayments() {
     features,
     data,
     columns,
-    onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
     state: {
-      sorting,
       columnFilters,
       columnVisibility,
       rowSelection,

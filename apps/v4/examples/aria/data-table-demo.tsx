@@ -13,6 +13,7 @@ import {
   rowSelectionFeature,
   rowSortingFeature,
   sortFn_alphanumeric,
+  sortFn_text,
   tableFeatures,
   useTable,
   type ColumnDef,
@@ -92,7 +93,7 @@ const features = tableFeatures({
   paginatedRowModel: createPaginatedRowModel(),
   sortedRowModel: createSortedRowModel(),
   filterFns: { includesString: filterFn_includesString },
-  sortFns: { alphanumeric: sortFn_alphanumeric },
+  sortFns: { alphanumeric: sortFn_alphanumeric, text: sortFn_text },
 })
 
 export const columns: ColumnDef<typeof features, Payment>[] = [

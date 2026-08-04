@@ -35,27 +35,16 @@ import {
   IconTrendingUp,
 } from "@tabler/icons-react"
 import {
-  columnFacetingFeature,
-  columnFilteringFeature,
   columnVisibilityFeature,
-  createFacetedRowModel,
-  createFacetedUniqueValues,
-  createFilteredRowModel,
   createPaginatedRowModel,
-  createSortedRowModel,
-  filterFn_includesString,
   flexRender,
   rowPaginationFeature,
   rowSelectionFeature,
-  rowSortingFeature,
-  sortFn_alphanumeric,
   tableFeatures,
   useTable,
   type ColumnDef,
-  type ColumnFiltersState,
   type ColumnVisibilityState,
   type Row,
-  type SortingState,
 } from "@tanstack/react-table"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 import { toast } from "sonner"
@@ -145,19 +134,10 @@ function DragHandle({ id }: { id: number }) {
 }
 
 const features = tableFeatures({
-  columnFacetingFeature,
-  columnFilteringFeature,
   columnVisibilityFeature,
   rowPaginationFeature,
   rowSelectionFeature,
-  rowSortingFeature,
-  facetedRowModel: createFacetedRowModel(),
-  facetedUniqueValues: createFacetedUniqueValues(),
-  filteredRowModel: createFilteredRowModel(),
   paginatedRowModel: createPaginatedRowModel(),
-  sortedRowModel: createSortedRowModel(),
-  filterFns: { includesString: filterFn_includesString },
-  sortFns: { alphanumeric: sortFn_alphanumeric },
 })
 
 const columns: ColumnDef<typeof features, z.infer<typeof schema>>[] = [
@@ -189,7 +169,6 @@ const columns: ColumnDef<typeof features, z.infer<typeof schema>>[] = [
         />
       </div>
     ),
-    enableSorting: false,
     enableHiding: false,
   },
   {
@@ -373,10 +352,6 @@ export function DataTable({
   const [rowSelection, setRowSelection] = React.useState({})
   const [columnVisibility, setColumnVisibility] =
     React.useState<ColumnVisibilityState>({})
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
-  const [sorting, setSorting] = React.useState<SortingState>([])
   const [pagination, setPagination] = React.useState({
     pageIndex: 0,
     pageSize: 10,
@@ -398,17 +373,13 @@ export function DataTable({
     data,
     columns,
     state: {
-      sorting,
       columnVisibility,
       rowSelection,
-      columnFilters,
       pagination,
     },
     getRowId: (row) => row.id.toString(),
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
     onPaginationChange: setPagination,
   })
@@ -555,8 +526,8 @@ export function DataTable({
         </div>
         <div className="flex items-center justify-between px-4">
           <div className="hidden flex-1 text-sm text-muted-foreground lg:flex">
-            {table.getFilteredSelectedRowModel().rows.length} of{" "}
-            {table.getFilteredRowModel().rows.length} row(s) selected.
+            {table.getSelectedRowModel().rows.length} of{" "}
+            {table.getCoreRowModel().rows.length} row(s) selected.
           </div>
           <div className="flex w-full items-center gap-8 lg:w-fit">
             <div className="hidden items-center gap-2 lg:flex">

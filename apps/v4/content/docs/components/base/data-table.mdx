@@ -313,7 +313,7 @@ Let's format the amount cell to display the dollar amount. We'll also align the 
 Update the `header` and `cell` definitions for amount as follows:
 
 ```tsx showLineNumbers title="app/payments/columns.tsx" {4-15}
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<typeof features, Payment>[] = [
   {
     accessorKey: "amount",
     header: () => <div className="text-right">Amount</div>,
@@ -360,7 +360,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<typeof features, Payment>[] = [
   // ...
   {
     id: "actions",
@@ -508,6 +508,7 @@ import {
   rowPaginationFeature,
   rowSortingFeature,
   sortFn_alphanumeric,
+  sortFn_text,
   tableFeatures,
   useTable,
   type ColumnDef,
@@ -520,7 +521,7 @@ export const features = tableFeatures({
   rowSortingFeature,
   paginatedRowModel: createPaginatedRowModel(),
   sortedRowModel: createSortedRowModel(),
-  sortFns: { alphanumeric: sortFn_alphanumeric },
+  sortFns: { alphanumeric: sortFn_alphanumeric, text: sortFn_text },
 })
 
 export function DataTable<TData extends RowData>({
@@ -552,9 +553,10 @@ export function DataTable<TData extends RowData>({
 <Callout className="mt-4">
 
 **Note:** In v9, sort functions are registered explicitly so unused ones can
-be tree-shaken. `sortFn_alphanumeric` is the default used for string and
-number columns. Register more (e.g. `sortFn_datetime`) as your columns need
-them.
+be tree-shaken. Auto sorting resolves `alphanumeric` for strings that contain
+digits and `text` for plain strings, so register both for string columns.
+Numbers and dates are compared with a built-in basic sort. Register more
+(e.g. `sortFn_datetime`) as your columns need them.
 
 </Callout>
 
@@ -568,7 +570,7 @@ We can now update the `email` header cell to add sorting controls.
 import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown } from "lucide-react"
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<typeof features, Payment>[] = [
   {
     accessorKey: "email",
     header: ({ column }) => {
@@ -612,6 +614,7 @@ import {
   rowPaginationFeature,
   rowSortingFeature,
   sortFn_alphanumeric,
+  sortFn_text,
   tableFeatures,
   useTable,
   type ColumnDef,
@@ -631,7 +634,7 @@ export const features = tableFeatures({
   paginatedRowModel: createPaginatedRowModel(),
   sortedRowModel: createSortedRowModel(),
   filterFns: { includesString: filterFn_includesString },
-  sortFns: { alphanumeric: sortFn_alphanumeric },
+  sortFns: { alphanumeric: sortFn_alphanumeric, text: sortFn_text },
 })
 
 export function DataTable<TData extends RowData>({
@@ -678,7 +681,11 @@ export function DataTable<TData extends RowData>({
 Filtering is now enabled for the `email` column. The `includesString` filter
 function handles the default text filtering — like sort functions, filter
 functions are registered explicitly in v9. You can add filters to other
-columns as well. See the [filtering docs](https://tanstack.com/table/latest/docs/framework/react/guide/column-filtering) for more information on customizing filters.
+columns as well, but each column needs its resolved filter function
+registered — for example, filtering the numeric `amount` column requires
+registering `filterFn_inNumberRange` as `inNumberRange`. A filter whose
+function is not registered is silently ignored (v9 logs a warning in
+development). See the [filtering docs](https://tanstack.com/table/latest/docs/framework/react/guide/column-filtering) for more information on customizing filters.
 
 </Steps>
 
@@ -705,6 +712,7 @@ import {
   rowPaginationFeature,
   rowSortingFeature,
   sortFn_alphanumeric,
+  sortFn_text,
   tableFeatures,
   useTable,
   type ColumnDef,
@@ -731,7 +739,7 @@ export const features = tableFeatures({
   paginatedRowModel: createPaginatedRowModel(),
   sortedRowModel: createSortedRowModel(),
   filterFns: { includesString: filterFn_includesString },
-  sortFns: { alphanumeric: sortFn_alphanumeric },
+  sortFns: { alphanumeric: sortFn_alphanumeric, text: sortFn_text },
 })
 
 export function DataTable<TData extends RowData>({
@@ -868,7 +876,7 @@ export const features = tableFeatures({
   paginatedRowModel: createPaginatedRowModel(),
   sortedRowModel: createSortedRowModel(),
   filterFns: { includesString: filterFn_includesString },
-  sortFns: { alphanumeric: sortFn_alphanumeric },
+  sortFns: { alphanumeric: sortFn_alphanumeric, text: sortFn_text },
 })
 
 export function DataTable<TData extends RowData>({
