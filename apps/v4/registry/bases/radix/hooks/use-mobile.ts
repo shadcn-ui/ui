@@ -1,19 +1,33 @@
 import * as React from 'react';
 
-const MOBILE_BREAKPOINT = 768
+const MOBILE_BREAKPOINT = 768;
 
 export function useIsMobile() {
-  return React.useSyncExternalStore(
+  const { getServerSnapshot, getSnapshot, subscribe } = React.useMemo(() => {
+    const mql = window.matchMedia(`not (min-width: ${MOBILE_BREAKPOINT}px)`);
+
+    const subscribe = (callback: () => void): (() => void) => {
+      mql.addEventListener('change', callback);
+
+      return () => mql.removeEventListener('change', callback);
+    };
+
+    const getSnapshot = () => mql.matches;
+
+    const getServerSnapshot = () => false;
+
+    return {
+      getServerSnapshot,
+      getSnapshot,
+      subscribe,
+    };
+  }, []);
+
+  const isMobile = React.useSyncExternalStore(
     subscribe,
-    () => window.innerWidth < MOBILE_BREAKPOINT,
-    false,
+    getSnapshot,
+    getServerSnapshot,
   );
-}
 
-function subscribe(callback: () => void) : () => void {
-  const mql = window.matchMedia(`not (min-width: ${MOBILE_BREAKPOINT}px)`);
-
-  mql.addEventListener('change', callback);
-
-  return () => mql.removeEventListener('change', callback);
+  return isMobile;
 }
