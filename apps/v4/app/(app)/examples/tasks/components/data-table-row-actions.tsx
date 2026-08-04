@@ -1,6 +1,6 @@
 "use client"
 
-import { type Row } from "@tanstack/react-table"
+import { type Row, type RowData } from "@tanstack/react-table"
 import { MoreHorizontal } from "lucide-react"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -20,12 +20,13 @@ import {
 
 import { labels } from "../data/data"
 import { taskSchema } from "../data/schema"
+import { type features } from "./data-table"
 
-interface DataTableRowActionsProps<TData> {
-  row: Row<TData>
+interface DataTableRowActionsProps<TData extends RowData> {
+  row: Row<typeof features, TData>
 }
 
-export function DataTableRowActions<TData>({
+export function DataTableRowActions<TData extends RowData>({
   row,
 }: DataTableRowActionsProps<TData>) {
   const task = taskSchema.parse(row.original)

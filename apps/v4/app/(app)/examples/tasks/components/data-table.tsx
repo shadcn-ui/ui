@@ -2,18 +2,27 @@
 
 import * as React from "react"
 import {
+  columnFacetingFeature,
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  createFacetedRowModel,
+  createFacetedUniqueValues,
+  createFilteredRowModel,
+  createPaginatedRowModel,
+  createSortedRowModel,
+  filterFn_includesString,
   flexRender,
-  getCoreRowModel,
-  getFacetedRowModel,
-  getFacetedUniqueValues,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  rowSortingFeature,
+  sortFn_alphanumeric,
+  tableFeatures,
+  useTable,
   type ColumnDef,
   type ColumnFiltersState,
+  type ColumnVisibilityState,
+  type RowData,
   type SortingState,
-  type VisibilityState,
 } from "@tanstack/react-table"
 
 import {
@@ -28,24 +37,41 @@ import {
 import { DataTablePagination } from "./data-table-pagination"
 import { DataTableToolbar } from "./data-table-toolbar"
 
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
+export const features = tableFeatures({
+  columnFacetingFeature,
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  rowSortingFeature,
+  facetedRowModel: createFacetedRowModel(),
+  facetedUniqueValues: createFacetedUniqueValues(),
+  filteredRowModel: createFilteredRowModel(),
+  paginatedRowModel: createPaginatedRowModel(),
+  sortedRowModel: createSortedRowModel(),
+  filterFns: { includesString: filterFn_includesString },
+  sortFns: { alphanumeric: sortFn_alphanumeric },
+})
+
+interface DataTableProps<TData extends RowData> {
+  columns: ColumnDef<typeof features, TData>[]
   data: TData[]
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable<TData extends RowData>({
   columns,
   data,
-}: DataTableProps<TData, TValue>) {
+}: DataTableProps<TData>) {
   const [rowSelection, setRowSelection] = React.useState({})
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
+    React.useState<ColumnVisibilityState>({})
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   )
   const [sorting, setSorting] = React.useState<SortingState>([])
 
-  const table = useReactTable({
+  const table = useTable({
+    features,
     data,
     columns,
     state: {
@@ -56,6 +82,7 @@ export function DataTable<TData, TValue>({
     },
     initialState: {
       pagination: {
+        pageIndex: 0,
         pageSize: 25,
       },
     },
@@ -64,12 +91,6 @@ export function DataTable<TData, TValue>({
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
   })
 
   return (

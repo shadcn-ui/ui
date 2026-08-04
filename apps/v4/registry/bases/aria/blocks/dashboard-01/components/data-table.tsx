@@ -2,18 +2,26 @@
 
 import * as React from "react"
 import {
+  columnFacetingFeature,
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  createFacetedRowModel,
+  createFacetedUniqueValues,
+  createFilteredRowModel,
+  createPaginatedRowModel,
+  createSortedRowModel,
+  filterFn_includesString,
   flexRender,
-  getCoreRowModel,
-  getFacetedRowModel,
-  getFacetedUniqueValues,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  rowSortingFeature,
+  sortFn_alphanumeric,
+  tableFeatures,
+  useTable,
   type ColumnDef,
   type ColumnFiltersState,
+  type ColumnVisibilityState,
   type SortingState,
-  type VisibilityState,
 } from "@tanstack/react-table"
 import {
   DropIndicator,
@@ -107,7 +115,23 @@ function DragHandle() {
     </Button>
   )
 }
-const columns: ColumnDef<z.infer<typeof schema>>[] = [
+const features = tableFeatures({
+  columnFacetingFeature,
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  rowSortingFeature,
+  facetedRowModel: createFacetedRowModel(),
+  facetedUniqueValues: createFacetedUniqueValues(),
+  filteredRowModel: createFilteredRowModel(),
+  paginatedRowModel: createPaginatedRowModel(),
+  sortedRowModel: createSortedRowModel(),
+  filterFns: { includesString: filterFn_includesString },
+  sortFns: { alphanumeric: sortFn_alphanumeric },
+})
+
+const columns: ColumnDef<typeof features, z.infer<typeof schema>>[] = [
   {
     id: "drag",
     header: () => null,
@@ -300,7 +324,7 @@ export function DataTable({
   const data = list.items
   const [rowSelection, setRowSelection] = React.useState({})
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
+    React.useState<ColumnVisibilityState>({})
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   )
@@ -309,7 +333,8 @@ export function DataTable({
     pageIndex: 0,
     pageSize: 10,
   })
-  const table = useReactTable({
+  const table = useTable({
+    features,
     data,
     columns,
     state: {
@@ -326,12 +351,6 @@ export function DataTable({
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
     onPaginationChange: setPagination,
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
   })
   const { dragAndDropHooks } = useDragAndDrop({
     getItems: (keys, items: z.infer<typeof schema>[]) =>
@@ -556,8 +575,8 @@ export function DataTable({
               </Label>
               <Select
                 aria-label="Rows per page"
-                placeholder={`${table.getState().pagination.pageSize}`}
-                value={`${table.getState().pagination.pageSize}`}
+                placeholder={`${table.state.pagination.pageSize}`}
+                value={`${table.state.pagination.pageSize}`}
                 onChange={(value) => {
                   table.setPageSize(Number(value))
                 }}
@@ -577,7 +596,7 @@ export function DataTable({
               </Select>
             </div>
             <div className="flex w-fit items-center justify-center text-sm font-medium">
-              Page {table.getState().pagination.pageIndex + 1} of{" "}
+              Page {table.state.pagination.pageIndex + 1} of{" "}
               {table.getPageCount()}
             </div>
             <div className="ml-auto flex items-center gap-2 lg:ml-0">
