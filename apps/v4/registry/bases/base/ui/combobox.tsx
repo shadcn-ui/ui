@@ -111,7 +111,9 @@ function ComboboxContent({
   Pick<
     ComboboxPrimitive.Positioner.Props,
     "side" | "align" | "sideOffset" | "alignOffset" | "anchor"
-  >) {
+  > & {
+    container?: React.ComponentProps<typeof ComboboxPrimitive.Portal>["container"]
+  }) {
   return (
     <ComboboxPrimitive.Portal container={container}>
       <ComboboxPrimitive.Positioner
