@@ -1874,7 +1874,7 @@
     "name": "@vernostudio",
     "homepage": "https://verno-studio.vercel.app/components",
     "url": "https://verno-studio.vercel.app/r/{name}.json",
-    "description": "A shadcn-compatible registry built on Vercel's Geist design language, with accessible components and the full --ds-* token theme.",
+    "description": "The full OKLCH scale plus every variable shadcn components read, so anything you install lands on the same tokens instead of its own colors.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'><rect width='64' height='64' fill='var(--foreground)'/><path d='M42.8135 16.0503H48L34.2018 48H29.896L16 16.0503L21.3333 16L32.1468 41.8113L42.8135 16.0503Z' fill='var(--background)'/></svg>"
   }
 ]
