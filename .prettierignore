@@ -1,8 +1,0 @@
-dist
-node_modules
-.next
-build
-.contentlayer
-**/fixtures
-deprecated
-apps/v4/registry/styles/**/*.css

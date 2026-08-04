@@ -1,7 +1,0 @@
-packages:
-  - "apps/*"
-  - "packages/*"
-
-allowBuilds:
-  esbuild: true
-  msw: false

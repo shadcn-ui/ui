@@ -1,6 +1,0 @@
-node_modules/
-coverage/
-.pnpm-store/
-pnpm-lock.yaml
-package-lock.json
-yarn.lock

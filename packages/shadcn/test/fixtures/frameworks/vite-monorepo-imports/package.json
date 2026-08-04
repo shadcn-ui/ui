@@ -1,5 +1,0 @@
-{
-  "name": "vite-monorepo-imports",
-  "private": true,
-  "workspaces": ["apps/*", "packages/*"]
-}

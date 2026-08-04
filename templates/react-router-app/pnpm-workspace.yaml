@@ -1,5 +1,0 @@
-packages: []
-
-allowBuilds:
-  esbuild: true
-  msw: false

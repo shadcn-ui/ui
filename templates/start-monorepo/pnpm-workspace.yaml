@@ -1,9 +1,0 @@
-packages:
-  - "apps/*"
-  - "packages/*"
-
-allowBuilds:
-  esbuild: true
-  lightningcss: true
-  unrs-resolver: true
-  msw: false
