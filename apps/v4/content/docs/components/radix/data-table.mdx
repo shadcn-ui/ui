@@ -110,7 +110,7 @@ I'm using a Next.js example here but this works for any other React framework.
 
 ## Set up Table Features
 
-TanStack Table v9 is feature-based: you opt into the behavior you want — sorting, filtering, pagination, and so on — by declaring it with `tableFeatures()`. Anything you don't list is tree-shaken out of your bundle.
+TanStack Table v9 is feature-based: you opt into the behavior you want — sorting, filtering, pagination, and so on — by declaring it with `tableFeatures()`. Anything you don't list is tree-shaken out of your bundle. That includes the built-in filter and sort functions: register the ones your columns rely on under `filterFns` and `sortFns` (our email filter uses `includesString`, and string columns sort with `text` / `alphanumeric`).
 
 ```tsx showLineNumbers title="app/payments/data-table-features.ts"
 import {
@@ -119,15 +119,20 @@ import {
   createFilteredRowModel,
   createPaginatedRowModel,
   createSortedRowModel,
+  filterFn_includesString,
   rowPaginationFeature,
   rowSelectionFeature,
   rowSortingFeature,
+  sortFn_alphanumeric,
+  sortFn_text,
   tableFeatures,
 } from "@tanstack/react-table"
 
 // Declare the features this table uses once, then share the result across the
 // column defs, the table instance, and any reusable components so the generics
-// stay in sync. Only the features you list ship in the bundle.
+// stay in sync. Only the features you list ship in the bundle — built-in
+// filter and sort functions are opt-in too, so register the ones your columns
+// rely on.
 export const features = tableFeatures({
   columnFilteringFeature,
   columnVisibilityFeature,
@@ -137,6 +142,8 @@ export const features = tableFeatures({
   filteredRowModel: createFilteredRowModel(),
   paginatedRowModel: createPaginatedRowModel(),
   sortedRowModel: createSortedRowModel(),
+  filterFns: { includesString: filterFn_includesString },
+  sortFns: { alphanumeric: sortFn_alphanumeric, text: sortFn_text },
 })
 
 // Pass this as the first generic argument to `ColumnDef`, `Column`, `Table`,
@@ -209,12 +216,7 @@ Next, we'll create a `<DataTable />` component to render our table.
 ```tsx showLineNumbers title="app/payments/data-table.tsx"
 "use client"
 
-import {
-  flexRender,
-  useTable,
-  type ColumnDef,
-  type RowData,
-} from "@tanstack/react-table"
+import { useTable, type ColumnDef, type RowData } from "@tanstack/react-table"
 
 import {
   Table,
@@ -251,12 +253,9 @@ export function DataTable<TData extends RowData>({
               {headerGroup.headers.map((header) => {
                 return (
                   <TableHead key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
+                    {header.isPlaceholder ? null : (
+                      <table.FlexRender header={header} />
+                    )}
                   </TableHead>
                 )
               })}
@@ -272,7 +271,7 @@ export function DataTable<TData extends RowData>({
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    <table.FlexRender cell={cell} />
                   </TableCell>
                 ))}
               </TableRow>
@@ -301,7 +300,7 @@ export function DataTable<TData extends RowData>({
 
 <Callout className="mt-4">
 
-**`flexRender` vs `<table.FlexRender />`:** This guide uses the `flexRender()` helper, which still works in v9. v9 also exposes a component form — `<table.FlexRender header={header} />` and `<table.FlexRender cell={cell} />` — that you can drop in wherever you'd call `flexRender(...)`.
+**`<table.FlexRender />` vs `flexRender`:** This guide uses v9's `<table.FlexRender header={header} />` and `<table.FlexRender cell={cell} />` component, available right on the table instance — no extra import needed. The classic `flexRender(component, context)` helper from v8 still works too, if you prefer the function form (or need to render outside the component that owns `table`, where you can also import the standalone `<FlexRender />`).
 
 </Callout>
 
@@ -505,12 +504,11 @@ The `rowSortingFeature` and sorted row model are already registered in our featu
 
 ### Update `<DataTable>`
 
-```tsx showLineNumbers title="app/payments/data-table.tsx" {3,9,16,22-25}
+```tsx showLineNumbers title="app/payments/data-table.tsx" {3,8,15,21-24}
 "use client"
 
 import * as React from "react"
 import {
-  flexRender,
   useTable,
   type ColumnDef,
   type RowData,
@@ -584,12 +582,11 @@ The `columnFilteringFeature` and filtered row model are already part of our feat
 
 ### Update `<DataTable>`
 
-```tsx showLineNumbers title="app/payments/data-table.tsx" {8,14,21-23,30,33,39-47}
+```tsx showLineNumbers title="app/payments/data-table.tsx" {7,13,20-22,29,32,38-46}
 "use client"
 
 import * as React from "react"
 import {
-  flexRender,
   useTable,
   type ColumnDef,
   type ColumnFiltersState,
@@ -653,12 +650,11 @@ Adding column visibility is fairly simple using `@tanstack/react-table` visibili
 
 ### Update `<DataTable>`
 
-```tsx showLineNumbers title="app/payments/data-table.tsx" {9,15-20,30-31,39,43,58-85}
+```tsx showLineNumbers title="app/payments/data-table.tsx" {8,14-19,29-30,38,42,57-84}
 "use client"
 
 import * as React from "react"
 import {
-  flexRender,
   useTable,
   type ColumnDef,
   type ColumnFiltersState,

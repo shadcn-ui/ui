@@ -8,7 +8,6 @@ import {
   createFilteredRowModel,
   createPaginatedRowModel,
   createSortedRowModel,
-  flexRender,
   rowPaginationFeature,
   rowSelectionFeature,
   rowSortingFeature,
@@ -522,12 +521,9 @@ export function DataTable({
                   isRowHeader={header.index === 1}
                   allowsSorting={header.column.getCanSort()}
                 >
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
+                  {header.isPlaceholder ? null : (
+                    <table.FlexRender header={header} />
+                  )}
                 </TableHead>
               ))}
             </TableHeader>
@@ -544,10 +540,7 @@ export function DataTable({
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
+                      <table.FlexRender cell={cell} />
                     </TableCell>
                   ))}
                 </TableRow>

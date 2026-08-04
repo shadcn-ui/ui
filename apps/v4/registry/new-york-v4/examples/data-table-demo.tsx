@@ -8,10 +8,12 @@ import {
   createFilteredRowModel,
   createPaginatedRowModel,
   createSortedRowModel,
-  flexRender,
+  filterFn_includesString,
   rowPaginationFeature,
   rowSelectionFeature,
   rowSortingFeature,
+  sortFn_alphanumeric,
+  sortFn_text,
   tableFeatures,
   useTable,
   type ColumnFiltersState,
@@ -43,7 +45,8 @@ import {
 
 // New in v9: declare the features your table uses. This opts the table into
 // sorting, filtering, pagination, visibility, and row selection, and lets the
-// bundler tree-shake the rest.
+// bundler tree-shake the rest. Built-in filter and sort functions are opt-in
+// too — register the ones your columns rely on.
 const features = tableFeatures({
   columnFilteringFeature,
   columnVisibilityFeature,
@@ -53,6 +56,8 @@ const features = tableFeatures({
   filteredRowModel: createFilteredRowModel(),
   paginatedRowModel: createPaginatedRowModel(),
   sortedRowModel: createSortedRowModel(),
+  filterFns: { includesString: filterFn_includesString },
+  sortFns: { alphanumeric: sortFn_alphanumeric, text: sortFn_text },
 })
 
 const columnHelper = createColumnHelper<typeof features, Payment>()
@@ -256,12 +261,9 @@ export default function DataTableDemo() {
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+                      {header.isPlaceholder ? null : (
+                        <table.FlexRender header={header} />
+                      )}
                     </TableHead>
                   )
                 })}
@@ -277,10 +279,7 @@ export default function DataTableDemo() {
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
+                      <table.FlexRender cell={cell} />
                     </TableCell>
                   ))}
                 </TableRow>

@@ -41,7 +41,7 @@ import {
   createFilteredRowModel,
   createPaginatedRowModel,
   createSortedRowModel,
-  flexRender,
+  FlexRender,
   rowPaginationFeature,
   rowSelectionFeature,
   rowSortingFeature,
@@ -349,7 +349,7 @@ function DraggableRow({
     >
       {row.getVisibleCells().map((cell) => (
         <TableCell key={cell.id}>
-          {flexRender(cell.column.columnDef.cell, cell.getContext())}
+          <FlexRender cell={cell} />
         </TableCell>
       ))}
     </TableRow>
@@ -509,12 +509,9 @@ export function DataTable({
                     {headerGroup.headers.map((header) => {
                       return (
                         <TableHead key={header.id} colSpan={header.colSpan}>
-                          {header.isPlaceholder
-                            ? null
-                            : flexRender(
-                                header.column.columnDef.header,
-                                header.getContext()
-                              )}
+                          {header.isPlaceholder ? null : (
+                            <FlexRender header={header} />
+                          )}
                         </TableHead>
                       )
                     })}
