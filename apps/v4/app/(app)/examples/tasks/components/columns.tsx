@@ -11,10 +11,7 @@ import { DataTableColumnHeader } from "./data-table-column-header"
 import { type TasksTableFeatures } from "./data-table-features"
 import { DataTableRowActions } from "./data-table-row-actions"
 
-// The column helper infers each column's value type and keeps everything tied
-// to the features enabled in `data-table-features.ts`. Use `accessor` for data
-// columns and `display` for columns without an accessor (like selection or
-// row-action columns).
+// Use `accessor` for data columns and `display` for columns without one.
 const columnHelper = createColumnHelper<TasksTableFeatures, Task>()
 
 export const columns = columnHelper.columns([

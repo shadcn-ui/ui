@@ -128,11 +128,8 @@ import {
   tableFeatures,
 } from "@tanstack/react-table"
 
-// Declare the features this table uses once, then share the result across the
-// column defs, the table instance, and any reusable components so the generics
-// stay in sync. Only the features you list ship in the bundle — built-in
-// filter and sort functions are opt-in too, so register the ones your columns
-// rely on.
+// New in v9: declare the features this table uses — anything you don't
+// register is tree-shaken out of the bundle.
 export const features = tableFeatures({
   columnFilteringFeature,
   columnVisibilityFeature,
@@ -167,7 +164,7 @@ Let's start by building a basic table.
 
 First, we'll define our columns.
 
-```tsx showLineNumbers title="app/payments/columns.tsx" {3,5,16-19,21-31}
+```tsx showLineNumbers title="app/payments/columns.tsx" {3,5,16-17,19-29}
 "use client"
 
 import { createColumnHelper } from "@tanstack/react-table"
@@ -183,9 +180,7 @@ export type Payment = {
   email: string
 }
 
-// The column helper infers each column's value type and keeps everything tied
-// to the features you enabled. Use `accessor` for data columns and `display`
-// for columns without an accessor (like selection or row-action columns).
+// Use `accessor` for data columns and `display` for columns without one.
 const columnHelper = createColumnHelper<DataTableFeatures, Payment>()
 
 export const columns = columnHelper.columns([
@@ -769,9 +764,9 @@ export const columns = columnHelper.columns([
     id: "select",
     header: ({ table }) => (
       <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
+        checked={table.getIsAllPageRowsSelected()}
+        indeterminate={
+          table.getIsSomePageRowsSelected() && !table.getIsAllPageRowsSelected()
         }
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"

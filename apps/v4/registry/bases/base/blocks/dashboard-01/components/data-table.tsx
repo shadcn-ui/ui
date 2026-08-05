@@ -97,9 +97,8 @@ import {
 } from "@/registry/bases/base/ui/tabs"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-// Declare the features this table uses (no faceting here — include only what
-// you use). Sorting, filtering, pagination, visibility, and row selection are
-// enabled below.
+// New in v9: declare the features this table uses — anything you don't
+// register is tree-shaken out of the bundle.
 const features = tableFeatures({
   columnFilteringFeature,
   columnVisibilityFeature,

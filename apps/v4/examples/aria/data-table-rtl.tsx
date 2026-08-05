@@ -128,10 +128,8 @@ const translations: Translations = {
   },
 }
 
-// New in v9: declare the features your table uses. This opts the table into
-// sorting, filtering, pagination, visibility, and row selection, and lets the
-// bundler tree-shake the rest. Built-in filter and sort functions are opt-in
-// too — register the ones your columns rely on.
+// New in v9: declare the features this table uses — anything you don't
+// register is tree-shaken out of the bundle.
 const features = tableFeatures({
   columnFilteringFeature,
   columnVisibilityFeature,
