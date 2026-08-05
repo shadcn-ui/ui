@@ -44,7 +44,7 @@ export function QuestionnaireResume() {
 
   return (
     <Questionnaire
-      className="mx-auto max-w-lg"
+      className="mx-auto max-w-md"
       defaultItem="verification"
       items={items}
       onReset={() => toast("Saved answers restored")}

@@ -41,7 +41,7 @@ export function QuestionnaireMultiple() {
 
   return (
     <Questionnaire
-      className="mx-auto max-w-lg"
+      className="mx-auto max-w-md"
       items={items}
       shortcuts="letters"
       onSubmit={handleSubmit}

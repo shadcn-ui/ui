@@ -56,7 +56,7 @@ export function QuestionnaireCard() {
 
   return (
     <Questionnaire
-      className="mx-auto max-w-lg"
+      className="mx-auto max-w-md"
       defaultItem="task"
       items={items}
       shortcuts="numbers"

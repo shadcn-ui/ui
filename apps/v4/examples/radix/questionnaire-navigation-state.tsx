@@ -52,7 +52,7 @@ export function QuestionnaireNavigationState() {
 
   return (
     <Questionnaire
-      className="mx-auto max-w-lg"
+      className="mx-auto max-w-md"
       item={item}
       items={items}
       onItemChange={(nextItem) => setItem(nextItem as ItemName)}

@@ -45,7 +45,7 @@ export function QuestionnaireConditional() {
 
   return (
     <Questionnaire
-      className="mx-auto max-w-lg"
+      className="mx-auto max-w-md"
       defaultItem="runtime"
       items={items}
       onSubmit={handleSubmit}

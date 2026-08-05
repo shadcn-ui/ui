@@ -115,7 +115,7 @@ export function QuestionnaireValidation() {
 
   return (
     <Questionnaire
-      className="mx-auto max-w-lg"
+      className="mx-auto max-w-md"
       item={item}
       items={items}
       onItemChange={setItem}

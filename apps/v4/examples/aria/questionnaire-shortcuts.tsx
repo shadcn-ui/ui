@@ -43,7 +43,7 @@ export function QuestionnaireShortcuts() {
   }
 
   return (
-    <div className="relative mx-auto flex h-full w-full max-w-lg flex-col">
+    <div className="relative mx-auto flex h-full w-full max-w-md flex-col">
       <NativeSelect
         aria-label="Shortcut style"
         className="absolute end-0 top-0"

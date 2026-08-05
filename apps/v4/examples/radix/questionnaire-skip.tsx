@@ -53,7 +53,7 @@ export function QuestionnaireSkipExample() {
 
   return (
     <Questionnaire
-      className="mx-auto max-w-lg"
+      className="mx-auto max-w-md"
       defaultItem="task"
       items={items}
       onSubmit={handleSubmit}

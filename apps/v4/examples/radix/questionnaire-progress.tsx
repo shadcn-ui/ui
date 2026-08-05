@@ -37,7 +37,7 @@ export function QuestionnaireProgressExample() {
 
   return (
     <Questionnaire
-      className="mx-auto max-w-lg"
+      className="mx-auto max-w-md"
       defaultItem="scope"
       items={items}
       onSubmit={handleSubmit}
