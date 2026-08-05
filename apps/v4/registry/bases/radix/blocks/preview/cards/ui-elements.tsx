@@ -108,6 +108,7 @@ export function UIElements() {
                     hugeicons="Search01Icon"
                     phosphor="MagnifyingGlassIcon"
                     remixicon="RiSearchLine"
+                    gravityui="Magnifier"
                   />
                 </InputGroupText>
               </InputGroupAddon>
@@ -172,6 +173,7 @@ export function UIElements() {
                     hugeicons="ArrowUp01Icon"
                     phosphor="CaretUpIcon"
                     remixicon="RiArrowUpSLine"
+                    gravityui="ChevronUp"
                   />
                 </Button>
               </DropdownMenuTrigger>

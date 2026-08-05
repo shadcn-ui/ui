@@ -59,6 +59,7 @@ function EmptyBasic() {
                 hugeicons="ArrowUpRight01Icon"
                 phosphor="ArrowUpRightIcon"
                 remixicon="RiArrowRightUpLine"
+                gravityui="ArrowUpRightFromSquare"
               />
             </a>
           </Button>
@@ -89,6 +90,7 @@ function EmptyWithMutedBackground() {
                 hugeicons="ArrowUpRight01Icon"
                 phosphor="ArrowUpRightIcon"
                 remixicon="RiArrowRightUpLine"
+                gravityui="ArrowUpRightFromSquare"
               />
             </a>
           </Button>
@@ -119,6 +121,7 @@ function EmptyWithBorder() {
                 hugeicons="DashedLineCircleIcon"
                 phosphor="CircleDashedIcon"
                 remixicon="RiLoaderLine"
+                gravityui="Circle"
               />
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
@@ -146,6 +149,7 @@ function EmptyWithIcon() {
               hugeicons="Folder01Icon"
               phosphor="FolderIcon"
               remixicon="RiFolderLine"
+              gravityui="Folder"
             />
           </EmptyMedia>
           <EmptyTitle>Nothing to see here</EmptyTitle>
@@ -162,6 +166,7 @@ function EmptyWithIcon() {
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
               remixicon="RiAddLine"
+              gravityui="Plus"
               data-icon="inline-start"
             />
             New Post
@@ -193,6 +198,7 @@ function EmptyWithMutedBackgroundAlt() {
                 hugeicons="DashedLineCircleIcon"
                 phosphor="CircleDashedIcon"
                 remixicon="RiLoaderLine"
+                gravityui="Circle"
               />
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
@@ -220,6 +226,7 @@ function EmptyInCard() {
               hugeicons="Folder01Icon"
               phosphor="FolderIcon"
               remixicon="RiFolderLine"
+              gravityui="Folder"
             />
           </EmptyMedia>
           <EmptyTitle>No projects yet</EmptyTitle>
@@ -244,6 +251,7 @@ function EmptyInCard() {
                 hugeicons="ArrowUpRight01Icon"
                 phosphor="ArrowUpRightIcon"
                 remixicon="RiArrowRightUpLine"
+                gravityui="ArrowUpRightFromSquare"
               />
             </a>
           </Button>

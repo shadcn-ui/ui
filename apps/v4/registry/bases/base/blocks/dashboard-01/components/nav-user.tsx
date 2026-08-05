@@ -57,6 +57,7 @@ export function NavUser({
               hugeicons="MoreVerticalCircle01Icon"
               phosphor="DotsThreeVerticalIcon"
               remixicon="RiMore2Line"
+              gravityui="Ellipsis"
               className="ml-auto size-4"
             />
           </DropdownMenuTrigger>
@@ -91,6 +92,7 @@ export function NavUser({
                   hugeicons="UserCircle02Icon"
                   phosphor="UserCircleIcon"
                   remixicon="RiUserLine"
+                  gravityui="Person"
                 />
                 Account
               </DropdownMenuItem>
@@ -101,6 +103,7 @@ export function NavUser({
                   hugeicons="CreditCardIcon"
                   phosphor="CreditCardIcon"
                   remixicon="RiBankCardLine"
+                  gravityui="CreditCard"
                 />
                 Billing
               </DropdownMenuItem>
@@ -111,6 +114,7 @@ export function NavUser({
                   hugeicons="Notification03Icon"
                   phosphor="BellIcon"
                   remixicon="RiNotification3Line"
+                  gravityui="Bell"
                 />
                 Notifications
               </DropdownMenuItem>
@@ -123,6 +127,7 @@ export function NavUser({
                 hugeicons="Logout01Icon"
                 phosphor="SignOutIcon"
                 remixicon="RiLogoutBoxLine"
+                gravityui="ArrowRightFromSquare"
               />
               Log out
             </DropdownMenuItem>

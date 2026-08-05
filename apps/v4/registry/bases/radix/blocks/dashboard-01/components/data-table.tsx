@@ -124,6 +124,7 @@ function DragHandle({ id }: { id: number }) {
         hugeicons="DragDropVerticalIcon"
         phosphor="DotsSixVerticalIcon"
         remixicon="RiDraggable"
+        gravityui="Grip"
         className="size-3 text-muted-foreground"
       />
       <span className="sr-only">Drag to reorder</span>
@@ -194,6 +195,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
             hugeicons="CheckmarkCircle01Icon"
             phosphor="CheckCircleIcon"
             remixicon="RiCheckboxCircleFill"
+            gravityui="CircleCheck"
             className="fill-green-500 dark:fill-green-400"
           />
         ) : (
@@ -203,6 +205,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
             hugeicons="Loading03Icon"
             phosphor="SpinnerIcon"
             remixicon="RiLoader4Line"
+            gravityui="ArrowRotateLeft"
           />
         )}
         {row.original.status}
@@ -311,6 +314,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
               hugeicons="MoreVerticalCircle01Icon"
               phosphor="DotsThreeVerticalIcon"
               remixicon="RiMore2Line"
+              gravityui="Ellipsis"
             />
             <span className="sr-only">Open menu</span>
           </Button>
@@ -463,6 +467,7 @@ export function DataTable({
                   hugeicons="LeftToRightListBulletIcon"
                   phosphor="ColumnsIcon"
                   remixicon="RiLayoutColumnLine"
+                  gravityui="LayoutColumns3"
                   data-icon="inline-start"
                 />
                 Columns
@@ -472,6 +477,7 @@ export function DataTable({
                   hugeicons="ArrowDown01Icon"
                   phosphor="CaretDownIcon"
                   remixicon="RiArrowDownSLine"
+                  gravityui="ChevronDown"
                   data-icon="inline-end"
                 />
               </Button>
@@ -507,6 +513,7 @@ export function DataTable({
               hugeicons="Add01Icon"
               phosphor="PlusIcon"
               remixicon="RiAddLine"
+              gravityui="Plus"
             />
             <span className="hidden lg:inline">Add Section</span>
           </Button>
@@ -617,6 +624,7 @@ export function DataTable({
                   hugeicons="ArrowLeftDoubleIcon"
                   phosphor="CaretDoubleLeftIcon"
                   remixicon="RiSkipLeftLine"
+                  gravityui="ChevronsLeft"
                 />
               </Button>
               <Button
@@ -633,6 +641,7 @@ export function DataTable({
                   hugeicons="ArrowLeft01Icon"
                   phosphor="CaretLeftIcon"
                   remixicon="RiArrowLeftSLine"
+                  gravityui="ChevronLeft"
                 />
               </Button>
               <Button
@@ -649,6 +658,7 @@ export function DataTable({
                   hugeicons="ArrowRight01Icon"
                   phosphor="CaretRightIcon"
                   remixicon="RiArrowRightSLine"
+                  gravityui="ChevronRight"
                 />
               </Button>
               <Button
@@ -665,6 +675,7 @@ export function DataTable({
                   hugeicons="ArrowRightDoubleIcon"
                   phosphor="CaretDoubleRightIcon"
                   remixicon="RiSkipRightLine"
+                  gravityui="ChevronsRight"
                 />
               </Button>
             </div>
@@ -780,6 +791,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                     hugeicons="ChartUpIcon"
                     phosphor="TrendUpIcon"
                     remixicon="RiArrowUpLine"
+                    gravityui="ArrowUpToLine"
                     className="size-4"
                   />
                 </div>
