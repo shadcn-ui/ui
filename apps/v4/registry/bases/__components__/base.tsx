@@ -478,6 +478,14 @@ export const Components: Record<string, any> = {
       ) || "message-scroller"
     return { default: mod.default || mod[exportName] }
   }),
+  questionnaire: React.lazy(async () => {
+    const mod = await import("@/registry/bases/base/ui/questionnaire")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire"
+    return { default: mod.default || mod[exportName] }
+  }),
   marker: React.lazy(async () => {
     const mod = await import("@/registry/bases/base/ui/marker")
     const exportName =
@@ -1036,6 +1044,16 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "message-scroller-example"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "questionnaire-example": React.lazy(async () => {
+    const mod = await import(
+      "@/registry/bases/base/examples/questionnaire-example"
+    )
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire-example"
     return { default: mod.default || mod[exportName] }
   }),
   "marker-example": React.lazy(async () => {

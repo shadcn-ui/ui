@@ -1,5 +1,11 @@
 # shadcn
 
+## 4.16.2
+
+### Patch Changes
+
+- [#11348](https://github.com/shadcn-ui/ui/pull/11348) [`df664e1bba86c6712bc5e08c8626590dca736089`](https://github.com/shadcn-ui/ui/commit/df664e1bba86c6712bc5e08c8626590dca736089) Thanks [@OwenKephart](https://github.com/OwenKephart)! - Include registry item titles in `searchRegistries` results and fuzzy matching.
+
 ## 4.16.1
 
 ### Patch Changes
