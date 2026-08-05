@@ -50,6 +50,21 @@ describe("updateDependencies", () => {
     },
     {
       description:
+        "npm with react-day-picker v8 applies force when non-interactive",
+      options: { interactive: false },
+      dependencies: ["first", "second", "third"],
+      devDependencies: ["fourth"],
+      config: {
+        resolvedPaths: {
+          cwd: getFixturesDir("project-npm-react19"),
+        },
+      },
+      expectedPackageManager: "npm",
+      expectedArgs: ["install", "--force", "--", "first", "second", "third"],
+      expectedDevArgs: ["install", "--force", "-D", "--", "fourth"],
+    },
+    {
+      description:
         "npm with react-day-picker v8 prompts for flag when not silent",
       flagPrompt: "legacy-peer-deps",
       dependencies: ["first", "second", "third"],
@@ -146,6 +161,8 @@ describe("updateDependencies", () => {
 
       if (flagPrompt) {
         expect(prompts).toHaveBeenCalled()
+      } else {
+        expect(prompts).not.toHaveBeenCalled()
       }
 
       expect(execa).toHaveBeenCalledWith(expectedPackageManager, expectedArgs, {
