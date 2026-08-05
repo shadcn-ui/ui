@@ -15,6 +15,7 @@ function InputOTP({
 }) {
   return (
     <OTPInput
+      dir="ltr"
       data-slot="input-otp"
       containerClassName={cn(
         "cn-input-otp flex items-center has-disabled:opacity-50",
