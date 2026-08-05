@@ -14,6 +14,7 @@ export async function updateDependencies(
   config: Config,
   options: {
     silent?: boolean
+    interactive?: boolean
   }
 ) {
   const packageInfo = getPackageInfo(config.resolvedPaths.cwd, false)
@@ -36,6 +37,7 @@ export async function updateDependencies(
 
   options = {
     silent: false,
+    interactive: true,
     ...options,
   }
 
@@ -46,7 +48,7 @@ export async function updateDependencies(
   // Offer to use --force or --legacy-peer-deps if using React 19 with npm.
   let flag = ""
   if (shouldPromptForNpmFlag(config) && packageManager === "npm") {
-    if (options.silent) {
+    if (options.silent || !options.interactive) {
       flag = "force"
     } else {
       dependenciesSpinner.stopAndPersist()
