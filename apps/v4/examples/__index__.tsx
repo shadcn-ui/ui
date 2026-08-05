@@ -1425,6 +1425,62 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "progress-rtl",
       filePath: "examples/base/progress-rtl.tsx",
     },
+    "questionnaire-animated": {
+      name: "questionnaire-animated",
+      filePath: "examples/base/questionnaire-animated.tsx",
+    },
+    "questionnaire-card": {
+      name: "questionnaire-card",
+      filePath: "examples/base/questionnaire-card.tsx",
+    },
+    "questionnaire-conditional": {
+      name: "questionnaire-conditional",
+      filePath: "examples/base/questionnaire-conditional.tsx",
+    },
+    "questionnaire-controlled": {
+      name: "questionnaire-controlled",
+      filePath: "examples/base/questionnaire-controlled.tsx",
+    },
+    "questionnaire-demo": {
+      name: "questionnaire-demo",
+      filePath: "examples/base/questionnaire-demo.tsx",
+    },
+    "questionnaire-dialog": {
+      name: "questionnaire-dialog",
+      filePath: "examples/base/questionnaire-dialog.tsx",
+    },
+    "questionnaire-freeform": {
+      name: "questionnaire-freeform",
+      filePath: "examples/base/questionnaire-freeform.tsx",
+    },
+    "questionnaire-multiple": {
+      name: "questionnaire-multiple",
+      filePath: "examples/base/questionnaire-multiple.tsx",
+    },
+    "questionnaire-navigation-state": {
+      name: "questionnaire-navigation-state",
+      filePath: "examples/base/questionnaire-navigation-state.tsx",
+    },
+    "questionnaire-progress": {
+      name: "questionnaire-progress",
+      filePath: "examples/base/questionnaire-progress.tsx",
+    },
+    "questionnaire-resume": {
+      name: "questionnaire-resume",
+      filePath: "examples/base/questionnaire-resume.tsx",
+    },
+    "questionnaire-shortcuts": {
+      name: "questionnaire-shortcuts",
+      filePath: "examples/base/questionnaire-shortcuts.tsx",
+    },
+    "questionnaire-skip": {
+      name: "questionnaire-skip",
+      filePath: "examples/base/questionnaire-skip.tsx",
+    },
+    "questionnaire-validation": {
+      name: "questionnaire-validation",
+      filePath: "examples/base/questionnaire-validation.tsx",
+    },
     "radio-fields": {
       name: "radio-fields",
       filePath: "examples/base/radio-fields.tsx",
@@ -3362,6 +3418,62 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "progress-rtl": {
       name: "progress-rtl",
       filePath: "examples/aria/progress-rtl.tsx",
+    },
+    "questionnaire-animated": {
+      name: "questionnaire-animated",
+      filePath: "examples/aria/questionnaire-animated.tsx",
+    },
+    "questionnaire-card": {
+      name: "questionnaire-card",
+      filePath: "examples/aria/questionnaire-card.tsx",
+    },
+    "questionnaire-conditional": {
+      name: "questionnaire-conditional",
+      filePath: "examples/aria/questionnaire-conditional.tsx",
+    },
+    "questionnaire-controlled": {
+      name: "questionnaire-controlled",
+      filePath: "examples/aria/questionnaire-controlled.tsx",
+    },
+    "questionnaire-demo": {
+      name: "questionnaire-demo",
+      filePath: "examples/aria/questionnaire-demo.tsx",
+    },
+    "questionnaire-dialog": {
+      name: "questionnaire-dialog",
+      filePath: "examples/aria/questionnaire-dialog.tsx",
+    },
+    "questionnaire-freeform": {
+      name: "questionnaire-freeform",
+      filePath: "examples/aria/questionnaire-freeform.tsx",
+    },
+    "questionnaire-multiple": {
+      name: "questionnaire-multiple",
+      filePath: "examples/aria/questionnaire-multiple.tsx",
+    },
+    "questionnaire-navigation-state": {
+      name: "questionnaire-navigation-state",
+      filePath: "examples/aria/questionnaire-navigation-state.tsx",
+    },
+    "questionnaire-progress": {
+      name: "questionnaire-progress",
+      filePath: "examples/aria/questionnaire-progress.tsx",
+    },
+    "questionnaire-resume": {
+      name: "questionnaire-resume",
+      filePath: "examples/aria/questionnaire-resume.tsx",
+    },
+    "questionnaire-shortcuts": {
+      name: "questionnaire-shortcuts",
+      filePath: "examples/aria/questionnaire-shortcuts.tsx",
+    },
+    "questionnaire-skip": {
+      name: "questionnaire-skip",
+      filePath: "examples/aria/questionnaire-skip.tsx",
+    },
+    "questionnaire-validation": {
+      name: "questionnaire-validation",
+      filePath: "examples/aria/questionnaire-validation.tsx",
     },
     "radio-fields": {
       name: "radio-fields",
@@ -5340,6 +5452,62 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "progress-rtl": {
       name: "progress-rtl",
       filePath: "examples/radix/progress-rtl.tsx",
+    },
+    "questionnaire-animated": {
+      name: "questionnaire-animated",
+      filePath: "examples/radix/questionnaire-animated.tsx",
+    },
+    "questionnaire-card": {
+      name: "questionnaire-card",
+      filePath: "examples/radix/questionnaire-card.tsx",
+    },
+    "questionnaire-conditional": {
+      name: "questionnaire-conditional",
+      filePath: "examples/radix/questionnaire-conditional.tsx",
+    },
+    "questionnaire-controlled": {
+      name: "questionnaire-controlled",
+      filePath: "examples/radix/questionnaire-controlled.tsx",
+    },
+    "questionnaire-demo": {
+      name: "questionnaire-demo",
+      filePath: "examples/radix/questionnaire-demo.tsx",
+    },
+    "questionnaire-dialog": {
+      name: "questionnaire-dialog",
+      filePath: "examples/radix/questionnaire-dialog.tsx",
+    },
+    "questionnaire-freeform": {
+      name: "questionnaire-freeform",
+      filePath: "examples/radix/questionnaire-freeform.tsx",
+    },
+    "questionnaire-multiple": {
+      name: "questionnaire-multiple",
+      filePath: "examples/radix/questionnaire-multiple.tsx",
+    },
+    "questionnaire-navigation-state": {
+      name: "questionnaire-navigation-state",
+      filePath: "examples/radix/questionnaire-navigation-state.tsx",
+    },
+    "questionnaire-progress": {
+      name: "questionnaire-progress",
+      filePath: "examples/radix/questionnaire-progress.tsx",
+    },
+    "questionnaire-resume": {
+      name: "questionnaire-resume",
+      filePath: "examples/radix/questionnaire-resume.tsx",
+    },
+    "questionnaire-shortcuts": {
+      name: "questionnaire-shortcuts",
+      filePath: "examples/radix/questionnaire-shortcuts.tsx",
+    },
+    "questionnaire-skip": {
+      name: "questionnaire-skip",
+      filePath: "examples/radix/questionnaire-skip.tsx",
+    },
+    "questionnaire-validation": {
+      name: "questionnaire-validation",
+      filePath: "examples/radix/questionnaire-validation.tsx",
     },
     "radio-fields": {
       name: "radio-fields",

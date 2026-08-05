@@ -2810,6 +2810,118 @@ export const Components: Record<string, any> = {
       ) || "progress-rtl"
     return { default: mod.default || mod[exportName] }
   }),
+  "questionnaire-animated": React.lazy(async () => {
+    const mod = await import("@/examples/radix/questionnaire-animated")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire-animated"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "questionnaire-card": React.lazy(async () => {
+    const mod = await import("@/examples/radix/questionnaire-card")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire-card"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "questionnaire-conditional": React.lazy(async () => {
+    const mod = await import("@/examples/radix/questionnaire-conditional")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire-conditional"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "questionnaire-controlled": React.lazy(async () => {
+    const mod = await import("@/examples/radix/questionnaire-controlled")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire-controlled"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "questionnaire-demo": React.lazy(async () => {
+    const mod = await import("@/examples/radix/questionnaire-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "questionnaire-dialog": React.lazy(async () => {
+    const mod = await import("@/examples/radix/questionnaire-dialog")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire-dialog"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "questionnaire-freeform": React.lazy(async () => {
+    const mod = await import("@/examples/radix/questionnaire-freeform")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire-freeform"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "questionnaire-multiple": React.lazy(async () => {
+    const mod = await import("@/examples/radix/questionnaire-multiple")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire-multiple"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "questionnaire-navigation-state": React.lazy(async () => {
+    const mod = await import("@/examples/radix/questionnaire-navigation-state")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire-navigation-state"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "questionnaire-progress": React.lazy(async () => {
+    const mod = await import("@/examples/radix/questionnaire-progress")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire-progress"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "questionnaire-resume": React.lazy(async () => {
+    const mod = await import("@/examples/radix/questionnaire-resume")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire-resume"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "questionnaire-shortcuts": React.lazy(async () => {
+    const mod = await import("@/examples/radix/questionnaire-shortcuts")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire-shortcuts"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "questionnaire-skip": React.lazy(async () => {
+    const mod = await import("@/examples/radix/questionnaire-skip")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire-skip"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "questionnaire-validation": React.lazy(async () => {
+    const mod = await import("@/examples/radix/questionnaire-validation")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire-validation"
+    return { default: mod.default || mod[exportName] }
+  }),
   "radio-fields": React.lazy(async () => {
     const mod = await import("@/examples/radix/radio-fields")
     const exportName =

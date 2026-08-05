@@ -1,13 +1,17 @@
 import { readFileSync, writeFileSync } from "fs"
 import { defineConfig } from "tsup"
 
-const CLIENT_UI_ENTRIES = ["dist/message-scroller/index.js"]
+const CLIENT_UI_ENTRIES = [
+  "dist/message-scroller/index.js",
+  "dist/questionnaire/index.js",
+]
 
 export default defineConfig((options) => ({
   clean: !options.watch,
   dts: true,
   entry: {
     "message-scroller/index": "src/message-scroller/index.ts",
+    "questionnaire/index": "src/questionnaire/index.ts",
   },
   format: ["esm"],
   sourcemap: false,

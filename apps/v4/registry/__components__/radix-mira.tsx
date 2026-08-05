@@ -470,6 +470,14 @@ export const Components: Record<string, any> = {
       ) || "message-scroller"
     return { default: mod.default || mod[exportName] }
   }),
+  questionnaire: React.lazy(async () => {
+    const mod = await import("@/styles/radix-mira/ui/questionnaire")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire"
+    return { default: mod.default || mod[exportName] }
+  }),
   marker: React.lazy(async () => {
     const mod = await import("@/styles/radix-mira/ui/marker")
     const exportName =
