@@ -41,6 +41,7 @@
     "menubar",
     "message",
     "message-scroller",
+    "questionnaire",
     "native-select",
     "navigation-menu",
     "pagination",

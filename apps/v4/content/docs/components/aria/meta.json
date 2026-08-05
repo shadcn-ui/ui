@@ -39,6 +39,7 @@
     "marker",
     "message",
     "message-scroller",
+    "questionnaire",
     "native-select",
     "pagination",
     "popover",
