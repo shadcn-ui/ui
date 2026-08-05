@@ -1,5 +1,10 @@
+import { getRegistryEnvFromContext } from "@/src/registry/context"
+
 export function expandEnvVars(value: string) {
-  return value.replace(/\${(\w+)}/g, (_match, key) => process.env[key] || "")
+  return value.replace(
+    /\${(\w+)}/g,
+    (_match, key) => getRegistryEnvFromContext(key) || ""
+  )
 }
 
 export function extractEnvVars(value: string) {

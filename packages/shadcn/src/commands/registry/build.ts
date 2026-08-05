@@ -149,10 +149,14 @@ async function buildRegistry(opts: z.infer<typeof buildOptionsSchema>) {
       }
 
       // Write the registry item to the output directory.
-      await fs.writeFile(
-        path.resolve(resolvePaths.outputDir, `${result.data.name}.json`),
-        JSON.stringify(result.data, null, 2)
+      // Item names can contain path segments (e.g. "extension/foo"), so
+      // ensure the nested output directory exists before writing.
+      const outputPath = path.resolve(
+        resolvePaths.outputDir,
+        `${result.data.name}.json`
       )
+      await fs.mkdir(path.dirname(outputPath), { recursive: true })
+      await fs.writeFile(outputPath, JSON.stringify(result.data, null, 2))
     }
 
     // Copy registry.json to the output directory.
