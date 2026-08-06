@@ -1028,6 +1028,18 @@ export const examples: Registry["items"] = [
     dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
   },
   {
+    name: "form-rhf-combobox",
+    type: "registry:example",
+    registryDependencies: ["field", "combobox", "button", "card"],
+    files: [
+      {
+        path: "examples/form-rhf-combobox.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
+  },
+  {
     name: "form-rhf-checkbox",
     type: "registry:example",
     registryDependencies: ["field", "checkbox", "button", "card"],
@@ -1144,6 +1156,18 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/form-tanstack-input.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@tanstack/react-form", "zod"],
+  },
+  {
+    name: "form-tanstack-combobox",
+    type: "registry:example",
+    registryDependencies: ["field", "combobox", "button", "card"],
+    files: [
+      {
+        path: "examples/form-tanstack-combobox.tsx",
         type: "registry:example",
       },
     ],
