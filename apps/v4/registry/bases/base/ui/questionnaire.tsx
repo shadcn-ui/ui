@@ -146,9 +146,22 @@ function QuestionnaireChoice({
       </QuestionnairePrimitive.ChoiceLabel>
       <QuestionnairePrimitive.ChoiceShortcut
         data-slot="questionnaire-choice-shortcut"
-        className="cn-questionnaire-choice-shortcut cn-questionnaire-shortcut pointer-events-none ms-auto mt-0.5 hidden shrink-0 group-data-[shortcut]/questionnaire-choice:inline-flex"
+        className="cn-questionnaire-choice-shortcut cn-questionnaire-shortcut pointer-events-none ms-auto hidden shrink-0 group-data-[shortcut]/questionnaire-choice:inline-flex"
       />
     </QuestionnairePrimitive.Choice>
+  )
+}
+
+function QuestionnaireChoiceDescription({
+  className,
+  ...props
+}: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="questionnaire-choice-description"
+      className={cn("cn-questionnaire-choice-description", className)}
+      {...props}
+    />
   )
 }
 
@@ -307,6 +320,7 @@ export {
   Questionnaire,
   QuestionnaireActions,
   QuestionnaireChoice,
+  QuestionnaireChoiceDescription,
   QuestionnaireChoices,
   QuestionnaireDescription,
   QuestionnaireError,

@@ -1599,7 +1599,7 @@
   }
 
   .cn-questionnaire-choice-indicator {
-    @apply border-input group-data-checked/questionnaire-choice:bg-primary group-data-checked/questionnaire-choice:text-primary-foreground group-data-checked/questionnaire-choice:border-primary size-4 rounded-none;
+    @apply border-input group-data-checked/questionnaire-choice:bg-primary group-data-checked/questionnaire-choice:text-primary-foreground group-data-checked/questionnaire-choice:border-primary size-4 translate-y-[--spacing(0.45)] group-has-data-[slot=questionnaire-choice-description]/questionnaire-choice:translate-y-0.5 rounded-none;
   }
 
   .cn-questionnaire-choice-indicator-dot {
@@ -1614,8 +1614,12 @@
     @apply gap-0.5;
   }
 
+  .cn-questionnaire-choice-description {
+    @apply text-muted-foreground;
+  }
+
   .cn-questionnaire-shortcut {
-    @apply border-input bg-background text-muted-foreground size-4 items-center justify-center rounded-none border font-mono text-[0.625rem] font-medium leading-none;
+    @apply border-input bg-background text-muted-foreground size-4 translate-y-[--spacing(0.45)] group-has-data-[slot=questionnaire-choice-description]/questionnaire-choice:translate-y-0.5 items-center justify-center rounded-none border font-mono text-[0.625rem] font-medium leading-none;
   }
 
   .cn-questionnaire-input-wrapper {
@@ -1627,7 +1631,7 @@
   }
 
   .cn-questionnaire-error {
-    @apply text-xs;
+    @apply mt-2 text-xs;
   }
 
   .cn-questionnaire-actions {

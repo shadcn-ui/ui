@@ -1617,11 +1617,11 @@
   }
 
   .cn-questionnaire-choice {
-    @apply border-input bg-input/20 hover:bg-input/40 data-checked:border-primary/40 data-checked:bg-primary/10 data-invalid:border-destructive has-[>input:focus-visible]:border-ring has-[>input:focus-visible]:ring-ring/50 gap-3.5 rounded-4xl border px-4 py-3.5 text-sm has-[>input:focus-visible]:ring-[3px];
+    @apply border-input bg-input/20 hover:bg-input/40 data-checked:border-primary/40 data-checked:bg-primary/10 data-invalid:border-destructive has-[>input:focus-visible]:border-ring has-[>input:focus-visible]:ring-ring/50 gap-3 rounded-4xl border px-4 py-3.5 text-sm has-[>input:focus-visible]:ring-[3px];
   }
 
   .cn-questionnaire-choice-indicator {
-    @apply border-input dark:bg-input/30 group-data-checked/questionnaire-choice:bg-primary dark:group-data-checked/questionnaire-choice:bg-primary group-data-checked/questionnaire-choice:text-primary-foreground group-data-checked/questionnaire-choice:border-primary size-4 rounded-[6px];
+    @apply border-input dark:bg-input/30 group-data-checked/questionnaire-choice:bg-primary dark:group-data-checked/questionnaire-choice:bg-primary group-data-checked/questionnaire-choice:text-primary-foreground group-data-checked/questionnaire-choice:border-primary size-4 translate-y-[--spacing(0.45)] group-has-data-[slot=questionnaire-choice-description]/questionnaire-choice:translate-y-0.5 rounded-[6px];
   }
 
   .cn-questionnaire-choice-indicator-dot {
@@ -1636,8 +1636,12 @@
     @apply gap-1;
   }
 
+  .cn-questionnaire-choice-description {
+    @apply text-muted-foreground;
+  }
+
   .cn-questionnaire-shortcut {
-    @apply border-input bg-background/80 text-muted-foreground size-5 items-center justify-center rounded-full border font-mono text-[0.625rem] font-medium leading-none;
+    @apply border-input bg-background/80 text-muted-foreground size-5 translate-y-[--spacing(0.45)] group-has-data-[slot=questionnaire-choice-description]/questionnaire-choice:translate-y-0.5 items-center justify-center rounded-full border font-mono text-[0.625rem] font-medium leading-none;
   }
 
   .cn-questionnaire-input-wrapper {
@@ -1649,7 +1653,7 @@
   }
 
   .cn-questionnaire-error {
-    @apply text-sm;
+    @apply mt-2 text-sm;
   }
 
   .cn-questionnaire-actions {
