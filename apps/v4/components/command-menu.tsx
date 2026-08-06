@@ -442,11 +442,12 @@ export function CommandMenu({
           <DialogDescription>Search for a command to run...</DialogDescription>
         </DialogHeader>
         <Command
-          className="rounded-none bg-transparent **:data-[slot=command-input]:h-9! **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:h-9! **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border **:data-[slot=command-input-wrapper]:border-input **:data-[slot=command-input-wrapper]:bg-input/50"
+          className="rounded-none bg-transparent **:data-[slot=command-input]:h-9! **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:relative **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:h-9! **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border **:data-[slot=command-input-wrapper]:border-input **:data-[slot=command-input-wrapper]:bg-input/50 [&_[data-slot=command-input-wrapper]>svg]:pointer-events-none [&_[data-slot=command-input-wrapper]>svg]:relative [&_[data-slot=command-input-wrapper]>svg]:z-10"
           filter={commandFilter}
         >
           <div className="relative">
             <CommandInput
+              className="absolute inset-x-0 top-1/2 -translate-y-1/2 pr-3 pl-9"
               placeholder="Search documentation..."
               onValueChange={handleSearchChange}
             />
