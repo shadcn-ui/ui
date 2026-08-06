@@ -2149,6 +2149,39 @@ export function CustomComponent() {
     expect(writtenContent).toContain('"use client"')
   })
 
+  it("should decode base64-encoded binary registry files", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
+    const binaryContent = Buffer.from([
+      0x77, 0x4f, 0x46, 0x32, 0x00, 0xff, 0x80, 0x01,
+    ])
+
+    const result = await updateFiles(
+      [
+        {
+          path: "font.woff2",
+          type: "registry:file",
+          target: "~/public/font.woff2",
+          content: binaryContent.toString("base64"),
+          encoding: "base64",
+        },
+      ],
+      config,
+      {
+        overwrite: true,
+        silent: true,
+      }
+    )
+
+    expect(result.filesCreated).toContain(path.join("public", "font.woff2"))
+
+    const writtenContent = (fs.writeFile as any).mock.calls.find((call: any) =>
+      call[0].endsWith("font.woff2")
+    )?.[1]
+
+    expect(Buffer.isBuffer(writtenContent)).toBe(true)
+    expect(writtenContent).toEqual(binaryContent)
+  })
+
   it("should preserve 'use client' directive for universal item files (registry:item)", async () => {
     const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
     const result = await updateFiles(
