@@ -1134,6 +1134,13 @@
     "description": "Unified payments SDK for builders — handle checkout, billing, and webhooks across Stripe, PayPal, Adyen, and regional gateways with a single integration.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><path d='M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z' /><path d='M20 3v4' /><path d='M22 5h-4' /><path d='M4 17v2' /><path d='M5 18H3' /></svg>"
   },
+    {
+    "name": "@persianlabsui",
+    "homepage": "https://ui.persian-labs.ir",
+    "url": "https://ui.persian-labs.ir/r/{name}.json",
+    "description": "Copy-paste, RTL-first components for Persian interfaces, built with Base UI, Tailwind, and shadcn CLI conventions.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 1000 1000'><rect width='1000' height='1000' rx='350' ry='350' fill='var(--foreground)'/><g transform='matrix(0.68359375,0,0,0.68359375,150,150)'><path d='M210 842V330C210 286 226 251 258 219L382 95V842H210Z' fill='var(--background)'/><path fill-rule='evenodd' clip-rule='evenodd' d='M382 95H608C754 95 848 187 848 326C848 465 754 557 608 557H382V405H594C661 405 696 375 696 326C696 277 661 247 594 247H382V95Z' fill='var(--background)'/></g></svg>"
+  },
   {
     "name": "@phucbm",
     "homepage": "https://phucbm.com/components",
