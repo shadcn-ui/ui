@@ -621,18 +621,44 @@ function useMessageScrollerController({
     [schedulePendingScrollToMessageFlush, scheduleVisibilitySync]
   )
 
-  const userScrollIntent = React.useCallback(() => {
-    if (
-      modeRef.current === "following-bottom" ||
-      modeRef.current === "anchored-to-message" ||
-      modeRef.current === "settling-jump"
-    ) {
+  const userScrollIntent = React.useCallback(
+    (options?: { deltaY?: number }) => {
+      const mode = modeRef.current
+
+      if (
+        mode !== "following-bottom" &&
+        mode !== "anchored-to-message" &&
+        mode !== "settling-jump"
+      ) {
+        return
+      }
+
+      // While following, the viewport is already clamped at max scrollTop, so
+      // a wheel toward the end cannot fire the scroll event that would
+      // reconcile a release: trailing trackpad momentum would strand
+      // follow-output disengaged at the bottom. It is not scroll-away intent.
+      // Anchored and settling modes still release on any wheel, since there
+      // the reader is leaving a held position whichever direction they go.
+      if (mode === "following-bottom" && (options?.deltaY ?? 0) > 0) {
+        return
+      }
+
       // A deliberate gesture releases auto-follow, turn-anchoring, and an in-flight
       // programmatic jump so re-pinning (and re-arming) never fights the reader.
       streamingTurnRef.current = null
       modeRef.current = "free-scrolling"
-    }
-  }, [])
+
+      // A gesture that moved nothing (a horizontal pan, a wheel consumed by a
+      // nested scrollable) fires no scroll event, so nothing would reconcile
+      // the release. Recommit on a frame: a genuine scroll-away lands its
+      // scroll event first and the release sticks, while a no-op gesture
+      // still measures at the live edge and re-arms.
+      if (mode === "following-bottom") {
+        scheduleStateCommit()
+      }
+    },
+    [scheduleStateCommit]
+  )
 
   const mirrorStateAttributes = React.useCallback(
     () => writeStateAttributes(stateStore.getSnapshot()),
