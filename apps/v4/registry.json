@@ -682,7 +682,7 @@
         "@dnd-kit/modifiers",
         "@dnd-kit/sortable",
         "@dnd-kit/utilities",
-        "@tanstack/react-table",
+        "@tanstack/react-table@^9",
         "zod",
         "@tabler/icons-react"
       ],

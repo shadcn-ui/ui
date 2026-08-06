@@ -4,7 +4,7 @@ description: Powerful table and datagrids built using TanStack Table.
 base: base
 component: true
 links:
-  doc: https://tanstack.com/table/v8/docs/introduction
+  doc: https://tanstack.com/table/latest/docs/overview
 ---
 
 <ComponentPreview
@@ -19,7 +19,7 @@ links:
 
 Every data table or datagrid I've created has been unique. They all behave differently, have specific sorting and filtering requirements, and work with different data sources.
 
-It doesn't make sense to combine all of these variations into a single component. If we do that, we'll lose the flexibility that [headless UI](https://tanstack.com/table/v8/docs/introduction#what-is-headless-ui) provides.
+It doesn't make sense to combine all of these variations into a single component. If we do that, we'll lose the flexibility that [headless UI](https://tanstack.com/table/latest/docs/overview#what-is-headless-ui) provides.
 
 So instead of a data-table component, I thought it would be more helpful to provide a guide on how to build your own.
 
@@ -57,6 +57,14 @@ npx shadcn@latest add table
 ```bash
 npm install @tanstack/react-table
 ```
+
+<Callout className="mt-4">
+
+**Note:** This guide uses TanStack Table v9. In v9, table features are
+tree-shakeable: you register only the features and row models your table
+uses via `tableFeatures()`, and your bundle only includes what you declare.
+
+</Callout>
 
 ## Prerequisites
 
@@ -115,10 +123,12 @@ Let's start by building a basic table.
 
 First, we'll define our columns.
 
-```tsx showLineNumbers title="app/payments/columns.tsx" {3,14-27}
+```tsx showLineNumbers title="app/payments/columns.tsx" {3,5,16-29}
 "use client"
 
-import { ColumnDef } from "@tanstack/react-table"
+import { type ColumnDef } from "@tanstack/react-table"
+
+import { features } from "./data-table"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -129,7 +139,7 @@ export type Payment = {
   email: string
 }
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<typeof features, Payment>[] = [
   {
     accessorKey: "status",
     header: "Status",
@@ -151,6 +161,10 @@ export const columns: ColumnDef<Payment>[] = [
 will look like. They define the data that will be displayed, how it will be
 formatted, sorted and filtered.
 
+In v9, `ColumnDef` takes the table's registered features as its first type
+argument. We'll define (and export) the `features` object in `data-table.tsx`
+in the next step.
+
 </Callout>
 
 ### `<DataTable />` component
@@ -161,10 +175,11 @@ Next, we'll create a `<DataTable />` component to render our table.
 "use client"
 
 import {
-  ColumnDef,
   flexRender,
-  getCoreRowModel,
-  useReactTable,
+  tableFeatures,
+  useTable,
+  type ColumnDef,
+  type RowData,
 } from "@tanstack/react-table"
 
 import {
@@ -176,19 +191,24 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
+// Features are registered here and shared with the column definitions.
+// The core row model is always included — an empty object is all a basic
+// table needs. We'll register more features as we go.
+export const features = tableFeatures({})
+
+interface DataTableProps<TData extends RowData> {
+  columns: ColumnDef<typeof features, TData>[]
   data: TData[]
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable<TData extends RowData>({
   columns,
   data,
-}: DataTableProps<TData, TValue>) {
-  const table = useReactTable({
+}: DataTableProps<TData>) {
+  const table = useTable({
+    features,
     data,
     columns,
-    getCoreRowModel: getCoreRowModel(),
   })
 
   return (
@@ -293,7 +313,7 @@ Let's format the amount cell to display the dollar amount. We'll also align the 
 Update the `header` and `cell` definitions for amount as follows:
 
 ```tsx showLineNumbers title="app/payments/columns.tsx" {4-15}
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<typeof features, Payment>[] = [
   {
     accessorKey: "amount",
     header: () => <div className="text-right">Amount</div>,
@@ -340,7 +360,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<typeof features, Payment>[] = [
   // ...
   {
     id: "actions",
@@ -386,31 +406,37 @@ Next, we'll add pagination to our table.
 
 ### Update `<DataTable>`
 
-```tsx showLineNumbers title="app/payments/data-table.tsx" {5,17}
+```tsx showLineNumbers title="app/payments/data-table.tsx" {2,4,10-13}
 import {
-  ColumnDef,
+  createPaginatedRowModel,
   flexRender,
-  getCoreRowModel,
-  getPaginationRowModel,
-  useReactTable,
+  rowPaginationFeature,
+  tableFeatures,
+  useTable,
+  type ColumnDef,
+  type RowData,
 } from "@tanstack/react-table"
 
-export function DataTable<TData, TValue>({
+export const features = tableFeatures({
+  rowPaginationFeature,
+  paginatedRowModel: createPaginatedRowModel(),
+})
+
+export function DataTable<TData extends RowData>({
   columns,
   data,
-}: DataTableProps<TData, TValue>) {
-  const table = useReactTable({
+}: DataTableProps<TData>) {
+  const table = useTable({
+    features,
     data,
     columns,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
   })
 
   // ...
 }
 ```
 
-This will automatically paginate your rows into pages of 10. See the [pagination docs](https://tanstack.com/table/v8/docs/api/features/pagination) for more information on customizing page size and implementing manual pagination.
+This will automatically paginate your rows into pages of 10. See the [pagination docs](https://tanstack.com/table/latest/docs/framework/react/guide/pagination) for more information on customizing page size and implementing manual pagination.
 
 ### Add pagination controls
 
@@ -419,15 +445,14 @@ We can add pagination controls to our table using the `<Button />` component and
 ```tsx showLineNumbers title="app/payments/data-table.tsx" {1,15,21-39}
 import { Button } from "@/components/ui/button"
 
-export function DataTable<TData, TValue>({
+export function DataTable<TData extends RowData>({
   columns,
   data,
-}: DataTableProps<TData, TValue>) {
-  const table = useReactTable({
+}: DataTableProps<TData>) {
+  const table = useTable({
+    features,
     data,
     columns,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
   })
 
   return (
@@ -472,33 +497,44 @@ Let's make the email column sortable.
 
 ### Update `<DataTable>`
 
-```tsx showLineNumbers title="app/payments/data-table.tsx" {3,6,10,18,25-28}
+```tsx showLineNumbers title="app/payments/data-table.tsx" {3,7,9,11,13,19-21,28,35-38}
 "use client"
 
 import * as React from "react"
 import {
-  ColumnDef,
-  SortingState,
+  createPaginatedRowModel,
+  createSortedRowModel,
   flexRender,
-  getCoreRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
+  rowPaginationFeature,
+  rowSortingFeature,
+  sortFn_alphanumeric,
+  sortFn_text,
+  tableFeatures,
+  useTable,
+  type ColumnDef,
+  type RowData,
+  type SortingState,
 } from "@tanstack/react-table"
 
-export function DataTable<TData, TValue>({
+export const features = tableFeatures({
+  rowPaginationFeature,
+  rowSortingFeature,
+  paginatedRowModel: createPaginatedRowModel(),
+  sortedRowModel: createSortedRowModel(),
+  sortFns: { alphanumeric: sortFn_alphanumeric, text: sortFn_text },
+})
+
+export function DataTable<TData extends RowData>({
   columns,
   data,
-}: DataTableProps<TData, TValue>) {
+}: DataTableProps<TData>) {
   const [sorting, setSorting] = React.useState<SortingState>([])
 
-  const table = useReactTable({
+  const table = useTable({
+    features,
     data,
     columns,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
     onSortingChange: setSorting,
-    getSortedRowModel: getSortedRowModel(),
     state: {
       sorting,
     },
@@ -514,6 +550,16 @@ export function DataTable<TData, TValue>({
 }
 ```
 
+<Callout className="mt-4">
+
+**Note:** In v9, sort functions are registered explicitly so unused ones can
+be tree-shaken. Auto sorting resolves `alphanumeric` for strings that contain
+digits and `text` for plain strings, so register both for string columns.
+Numbers and dates are compared with a built-in basic sort. Register more
+(e.g. `sortFn_datetime`) as your columns need them.
+
+</Callout>
+
 ### Make header cell sortable
 
 We can now update the `email` header cell to add sorting controls.
@@ -524,7 +570,7 @@ We can now update the `email` header cell to add sorting controls.
 import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown } from "lucide-react"
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<typeof features, Payment>[] = [
   {
     accessorKey: "email",
     header: ({ column }) => {
@@ -554,43 +600,58 @@ Let's add a search input to filter emails in our table.
 
 ### Update `<DataTable>`
 
-```tsx showLineNumbers title="app/payments/data-table.tsx" {6,10,17,24-26,35-36,39,45-54}
+```tsx showLineNumbers title="app/payments/data-table.tsx" {5,7,9,16,23,26,29,40-42,50-52,60-69}
 "use client"
 
 import * as React from "react"
 import {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
+  columnFilteringFeature,
+  createFilteredRowModel,
+  createPaginatedRowModel,
+  createSortedRowModel,
+  filterFn_includesString,
   flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
+  rowPaginationFeature,
+  rowSortingFeature,
+  sortFn_alphanumeric,
+  sortFn_text,
+  tableFeatures,
+  useTable,
+  type ColumnDef,
+  type ColumnFiltersState,
+  type RowData,
+  type SortingState,
 } from "@tanstack/react-table"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
-export function DataTable<TData, TValue>({
+export const features = tableFeatures({
+  columnFilteringFeature,
+  rowPaginationFeature,
+  rowSortingFeature,
+  filteredRowModel: createFilteredRowModel(),
+  paginatedRowModel: createPaginatedRowModel(),
+  sortedRowModel: createSortedRowModel(),
+  filterFns: { includesString: filterFn_includesString },
+  sortFns: { alphanumeric: sortFn_alphanumeric, text: sortFn_text },
+})
+
+export function DataTable<TData extends RowData>({
   columns,
   data,
-}: DataTableProps<TData, TValue>) {
+}: DataTableProps<TData>) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   )
 
-  const table = useReactTable({
+  const table = useTable({
+    features,
     data,
     columns,
     onSortingChange: setSorting,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
     onColumnFiltersChange: setColumnFilters,
-    getFilteredRowModel: getFilteredRowModel(),
     state: {
       sorting,
       columnFilters,
@@ -617,7 +678,14 @@ export function DataTable<TData, TValue>({
 }
 ```
 
-Filtering is now enabled for the `email` column. You can add filters to other columns as well. See the [filtering docs](https://tanstack.com/table/v8/docs/guide/filters) for more information on customizing filters.
+Filtering is now enabled for the `email` column. The `includesString` filter
+function handles the default text filtering — like sort functions, filter
+functions are registered explicitly in v9. You can add filters to other
+columns as well, but each column needs its resolved filter function
+registered — for example, filtering the numeric `amount` column requires
+registering `filterFn_inNumberRange` as `inNumberRange`. A filter whose
+function is not registered is silently ignored (v9 logs a warning in
+development). See the [filtering docs](https://tanstack.com/table/latest/docs/framework/react/guide/column-filtering) for more information on customizing filters.
 
 </Steps>
 
@@ -629,21 +697,29 @@ Adding column visibility is fairly simple using `@tanstack/react-table` visibili
 
 ### Update `<DataTable>`
 
-```tsx showLineNumbers title="app/payments/data-table.tsx" {8,18-23,33-34,45,49,64-91}
+```tsx showLineNumbers title="app/payments/data-table.tsx" {6,19,27,36-38,49-50,58,63,78-105}
 "use client"
 
 import * as React from "react"
 import {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-  VisibilityState,
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  createFilteredRowModel,
+  createPaginatedRowModel,
+  createSortedRowModel,
+  filterFn_includesString,
   flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
+  rowPaginationFeature,
+  rowSortingFeature,
+  sortFn_alphanumeric,
+  sortFn_text,
+  tableFeatures,
+  useTable,
+  type ColumnDef,
+  type ColumnFiltersState,
+  type ColumnVisibilityState,
+  type RowData,
+  type SortingState,
 } from "@tanstack/react-table"
 
 import { Button } from "@/components/ui/button"
@@ -654,26 +730,35 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-export function DataTable<TData, TValue>({
+export const features = tableFeatures({
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  rowPaginationFeature,
+  rowSortingFeature,
+  filteredRowModel: createFilteredRowModel(),
+  paginatedRowModel: createPaginatedRowModel(),
+  sortedRowModel: createSortedRowModel(),
+  filterFns: { includesString: filterFn_includesString },
+  sortFns: { alphanumeric: sortFn_alphanumeric, text: sortFn_text },
+})
+
+export function DataTable<TData extends RowData>({
   columns,
   data,
-}: DataTableProps<TData, TValue>) {
+}: DataTableProps<TData>) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   )
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
+    React.useState<ColumnVisibilityState>({})
 
-  const table = useReactTable({
+  const table = useTable({
+    features,
     data,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     state: {
       sorting,
@@ -742,15 +827,17 @@ Next, we're going to add row selection to our table.
 
 ### Update column definitions
 
-```tsx showLineNumbers title="app/payments/columns.tsx" {6,9-27}
+```tsx showLineNumbers title="app/payments/columns.tsx" {8,11-29}
 "use client"
 
-import { ColumnDef } from "@tanstack/react-table"
+import { type ColumnDef } from "@tanstack/react-table"
 
 import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 
-export const columns: ColumnDef<Payment>[] = [
+import { features } from "./data-table"
+
+export const columns: ColumnDef<typeof features, Payment>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -778,28 +865,38 @@ export const columns: ColumnDef<Payment>[] = [
 
 ### Update `<DataTable>`
 
-```tsx showLineNumbers title="app/payments/data-table.tsx" {11,23,28}
-export function DataTable<TData, TValue>({
+```tsx showLineNumbers title="app/payments/data-table.tsx" {3,16,25,32}
+export const features = tableFeatures({
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  rowSortingFeature,
+  filteredRowModel: createFilteredRowModel(),
+  paginatedRowModel: createPaginatedRowModel(),
+  sortedRowModel: createSortedRowModel(),
+  filterFns: { includesString: filterFn_includesString },
+  sortFns: { alphanumeric: sortFn_alphanumeric, text: sortFn_text },
+})
+
+export function DataTable<TData extends RowData>({
   columns,
   data,
-}: DataTableProps<TData, TValue>) {
+}: DataTableProps<TData>) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   )
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
+    React.useState<ColumnVisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
 
-  const table = useReactTable({
+  const table = useTable({
+    features,
     data,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
     state: {

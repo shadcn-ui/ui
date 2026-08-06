@@ -35,19 +35,16 @@ import {
   IconTrendingUp,
 } from "@tabler/icons-react"
 import {
+  columnVisibilityFeature,
+  createPaginatedRowModel,
   flexRender,
-  getCoreRowModel,
-  getFacetedRowModel,
-  getFacetedUniqueValues,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  tableFeatures,
+  useTable,
   type ColumnDef,
-  type ColumnFiltersState,
+  type ColumnVisibilityState,
   type Row,
-  type SortingState,
-  type VisibilityState,
 } from "@tanstack/react-table"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 import { toast } from "sonner"
@@ -116,6 +113,13 @@ export const schema = z.object({
   reviewer: z.string(),
 })
 
+const features = tableFeatures({
+  columnVisibilityFeature,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  paginatedRowModel: createPaginatedRowModel(),
+})
+
 // Create a separate component for the drag handle
 function DragHandle({ id }: { id: number }) {
   const { attributes, listeners } = useSortable({
@@ -136,7 +140,7 @@ function DragHandle({ id }: { id: number }) {
   )
 }
 
-const columns: ColumnDef<z.infer<typeof schema>>[] = [
+const columns: ColumnDef<typeof features, z.infer<typeof schema>>[] = [
   {
     id: "drag",
     header: () => null,
@@ -165,7 +169,6 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         />
       </div>
     ),
-    enableSorting: false,
     enableHiding: false,
   },
   {
@@ -311,7 +314,11 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
 ]
 
-function DraggableRow({ row }: { row: Row<z.infer<typeof schema>> }) {
+function DraggableRow({
+  row,
+}: {
+  row: Row<typeof features, z.infer<typeof schema>>
+}) {
   const { transform, transition, setNodeRef, isDragging } = useSortable({
     id: row.original.id,
   })
@@ -344,11 +351,7 @@ export function DataTable({
   const [data, setData] = React.useState(() => initialData)
   const [rowSelection, setRowSelection] = React.useState({})
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
-  const [sorting, setSorting] = React.useState<SortingState>([])
+    React.useState<ColumnVisibilityState>({})
   const [pagination, setPagination] = React.useState({
     pageIndex: 0,
     pageSize: 10,
@@ -365,29 +368,20 @@ export function DataTable({
     [data]
   )
 
-  const table = useReactTable({
+  const table = useTable({
+    features,
     data,
     columns,
     state: {
-      sorting,
       columnVisibility,
       rowSelection,
-      columnFilters,
       pagination,
     },
     getRowId: (row) => row.id.toString(),
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
     onPaginationChange: setPagination,
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
   })
 
   function handleDragEnd(event: DragEndEvent) {
@@ -532,8 +526,8 @@ export function DataTable({
         </div>
         <div className="flex items-center justify-between px-4">
           <div className="hidden flex-1 text-sm text-muted-foreground lg:flex">
-            {table.getFilteredSelectedRowModel().rows.length} of{" "}
-            {table.getFilteredRowModel().rows.length} row(s) selected.
+            {table.getSelectedRowModel().rows.length} of{" "}
+            {table.getCoreRowModel().rows.length} row(s) selected.
           </div>
           <div className="flex w-full items-center gap-8 lg:w-fit">
             <div className="hidden items-center gap-2 lg:flex">
@@ -541,15 +535,13 @@ export function DataTable({
                 Rows per page
               </Label>
               <Select
-                value={`${table.getState().pagination.pageSize}`}
+                value={`${table.state.pagination.pageSize}`}
                 onValueChange={(value) => {
                   table.setPageSize(Number(value))
                 }}
               >
                 <SelectTrigger size="sm" className="w-20" id="rows-per-page">
-                  <SelectValue
-                    placeholder={table.getState().pagination.pageSize}
-                  />
+                  <SelectValue placeholder={table.state.pagination.pageSize} />
                 </SelectTrigger>
                 <SelectContent side="top">
                   {[10, 20, 30, 40, 50].map((pageSize) => (
@@ -561,7 +553,7 @@ export function DataTable({
               </Select>
             </div>
             <div className="flex w-fit items-center justify-center text-sm font-medium">
-              Page {table.getState().pagination.pageIndex + 1} of{" "}
+              Page {table.state.pagination.pageIndex + 1} of{" "}
               {table.getPageCount()}
             </div>
             <div className="ml-auto flex items-center gap-2 lg:ml-0">

@@ -1,6 +1,6 @@
 "use client"
 
-import { type Table } from "@tanstack/react-table"
+import { type ReactTable, type RowData } from "@tanstack/react-table"
 import { X } from "lucide-react"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -8,16 +8,17 @@ import { Input } from "@/registry/new-york-v4/ui/input"
 import { DataTableViewOptions } from "@/app/(app)/examples/tasks/components/data-table-view-options"
 
 import { priorities, statuses } from "../data/data"
+import { type features } from "./data-table"
 import { DataTableFacetedFilter } from "./data-table-faceted-filter"
 
-interface DataTableToolbarProps<TData> {
-  table: Table<TData>
+interface DataTableToolbarProps<TData extends RowData> {
+  table: ReactTable<typeof features, TData>
 }
 
-export function DataTableToolbar<TData>({
+export function DataTableToolbar<TData extends RowData>({
   table,
 }: DataTableToolbarProps<TData>) {
-  const isFiltered = table.getState().columnFilters.length > 0
+  const isFiltered = table.state.columnFilters.length > 0
 
   return (
     <div className="flex items-center justify-between">

@@ -7,10 +7,11 @@ import { Checkbox } from "@/registry/new-york-v4/ui/checkbox"
 
 import { labels, priorities, statuses } from "../data/data"
 import { type Task } from "../data/schema"
+import { type features } from "./data-table"
 import { DataTableColumnHeader } from "./data-table-column-header"
 import { DataTableRowActions } from "./data-table-row-actions"
 
-export const columns: ColumnDef<Task>[] = [
+export const columns: ColumnDef<typeof features, Task>[] = [
   {
     id: "select",
     header: ({ table }) => (

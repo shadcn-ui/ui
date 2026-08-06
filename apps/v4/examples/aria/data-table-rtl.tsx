@@ -2,16 +2,24 @@
 
 import * as React from "react"
 import {
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  createFilteredRowModel,
+  createPaginatedRowModel,
+  createSortedRowModel,
+  filterFn_includesString,
   flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  rowSortingFeature,
+  sortFn_alphanumeric,
+  sortFn_text,
+  tableFeatures,
+  useTable,
   type ColumnDef,
   type ColumnFiltersState,
+  type ColumnVisibilityState,
   type SortingState,
-  type VisibilityState,
 } from "@tanstack/react-table"
 import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react"
 
@@ -161,6 +169,19 @@ const data: Payment[] = [
   },
 ]
 
+const features = tableFeatures({
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  rowSortingFeature,
+  filteredRowModel: createFilteredRowModel(),
+  paginatedRowModel: createPaginatedRowModel(),
+  sortedRowModel: createSortedRowModel(),
+  filterFns: { includesString: filterFn_includesString },
+  sortFns: { alphanumeric: sortFn_alphanumeric, text: sortFn_text },
+})
+
 export function DataTableRtl() {
   const { t, dir, language } = useTranslation(translations, "ar")
   const [sorting, setSorting] = React.useState<SortingState>([])
@@ -168,10 +189,10 @@ export function DataTableRtl() {
     []
   )
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
+    React.useState<ColumnVisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
 
-  const columns: ColumnDef<Payment>[] = React.useMemo(
+  const columns: ColumnDef<typeof features, Payment>[] = React.useMemo(
     () => [
       {
         id: "select",
@@ -263,15 +284,12 @@ export function DataTableRtl() {
     [t, dir, language]
   )
 
-  const table = useReactTable({
+  const table = useTable({
+    features,
     data,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
     state: {

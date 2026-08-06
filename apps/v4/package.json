@@ -49,7 +49,7 @@
     "@tanstack/ai-client": "0.20.0",
     "@tanstack/ai-react": "0.16.4",
     "@tanstack/react-form": "^1.20.0",
-    "@tanstack/react-table": "^8.9.1",
+    "@tanstack/react-table": "^9.0.0",
     "@vercel/analytics": "^1.4.1",
     "ai": "canary",
     "change-case": "^5.4.4",

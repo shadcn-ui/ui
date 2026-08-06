@@ -2,16 +2,19 @@
 
 import * as React from "react"
 import {
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  createFilteredRowModel,
+  createPaginatedRowModel,
+  filterFn_includesString,
   flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  tableFeatures,
+  useTable,
   type ColumnDef,
   type ColumnFiltersState,
-  type SortingState,
-  type VisibilityState,
+  type ColumnVisibilityState,
 } from "@tanstack/react-table"
 import { MoreHorizontalIcon } from "lucide-react"
 
@@ -88,7 +91,17 @@ export type Payment = {
   email: string
 }
 
-export const columns: ColumnDef<Payment>[] = [
+const features = tableFeatures({
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  filteredRowModel: createFilteredRowModel(),
+  paginatedRowModel: createPaginatedRowModel(),
+  filterFns: { includesString: filterFn_includesString },
+})
+
+export const columns: ColumnDef<typeof features, Payment>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -108,7 +121,6 @@ export const columns: ColumnDef<Payment>[] = [
         aria-label="Select row"
       />
     ),
-    enableSorting: false,
     enableHiding: false,
   },
   {
@@ -170,27 +182,21 @@ export const columns: ColumnDef<Payment>[] = [
 ]
 
 export function CardsPayments() {
-  const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   )
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
+    React.useState<ColumnVisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
 
-  const table = useReactTable({
+  const table = useTable({
+    features,
     data,
     columns,
-    onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
     state: {
-      sorting,
       columnFilters,
       columnVisibility,
       rowSelection,
