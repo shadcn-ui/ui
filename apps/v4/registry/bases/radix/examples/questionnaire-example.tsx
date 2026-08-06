@@ -30,6 +30,7 @@ import {
   Questionnaire,
   QuestionnaireActions,
   QuestionnaireChoice,
+  QuestionnaireChoiceDescription,
   QuestionnaireChoices,
   QuestionnaireDescription,
   QuestionnaireError,
@@ -230,21 +231,21 @@ function QuestionnaireCardQuestions() {
             <QuestionnaireChoices>
               <QuestionnaireChoice value="delegation">
                 <span className="font-medium">Sub-agent delegation</span>
-                <span className="text-muted-foreground">
+                <QuestionnaireChoiceDescription>
                   Show when work is delegated and what comes back.
-                </span>
+                </QuestionnaireChoiceDescription>
               </QuestionnaireChoice>
               <QuestionnaireChoice value="questions">
                 <span className="font-medium">Question prompts</span>
-                <span className="text-muted-foreground">
+                <QuestionnaireChoiceDescription>
                   Show choices while the agent waits for input.
-                </span>
+                </QuestionnaireChoiceDescription>
               </QuestionnaireChoice>
               <QuestionnaireChoice value="both">
                 <span className="font-medium">Both together</span>
-                <span className="text-muted-foreground">
+                <QuestionnaireChoiceDescription>
                   Explore one unified interaction pattern.
-                </span>
+                </QuestionnaireChoiceDescription>
               </QuestionnaireChoice>
               <QuestionnaireInput
                 aria-label="Another direction"
@@ -337,21 +338,21 @@ function QuestionnaireQuestions() {
         <QuestionnaireChoices>
           <QuestionnaireChoice value="delegation">
             <span className="font-medium">Sub-agent delegation</span>
-            <span className="text-muted-foreground">
+            <QuestionnaireChoiceDescription>
               Show when work is delegated and what comes back.
-            </span>
+            </QuestionnaireChoiceDescription>
           </QuestionnaireChoice>
           <QuestionnaireChoice value="questions">
             <span className="font-medium">Question prompts</span>
-            <span className="text-muted-foreground">
+            <QuestionnaireChoiceDescription>
               Show choices while the agent waits for input.
-            </span>
+            </QuestionnaireChoiceDescription>
           </QuestionnaireChoice>
           <QuestionnaireChoice value="both">
             <span className="font-medium">Both together</span>
-            <span className="text-muted-foreground">
+            <QuestionnaireChoiceDescription>
               Explore one unified interaction pattern.
-            </span>
+            </QuestionnaireChoiceDescription>
           </QuestionnaireChoice>
           <QuestionnaireInput
             aria-label="Another direction"
