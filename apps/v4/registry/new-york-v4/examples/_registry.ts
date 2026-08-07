@@ -2327,6 +2327,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "text-demo",
+    type: "registry:example",
+    registryDependencies: ["text"],
+    files: [
+      {
+        path: "examples/text-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "toast-demo",
     type: "registry:example",
     registryDependencies: ["toast"],
