@@ -1,6 +1,10 @@
 import { iconLibraries, type IconLibraryName } from "@/src/icons/libraries"
 import { Transformer } from "@/src/utils/transformers"
-import { SourceFile, SyntaxKind } from "ts-morph"
+import {
+  JsxSelfClosingElement,
+  SourceFile,
+  SyntaxKind,
+} from "ts-morph"
 
 export const transformIcons: Transformer = async ({ sourceFile, config }) => {
   const iconLibrary = config.iconLibrary
@@ -69,11 +73,16 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
     }
 
     if (!usageMatch) {
+      updateSvgPropsType(element, targetIconName)
       element.getTagNameNode()?.replaceWithText(targetIconName)
       continue
     }
 
     const [, componentName, defaultPropsStr] = usageMatch
+    const propsComponentName =
+      componentName === "ICON" ? targetIconName : componentName
+
+    updateSvgPropsType(element, propsComponentName)
 
     if (componentName === "ICON") {
       // Get remaining user attributes (non-library props)
@@ -201,6 +210,91 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
   }
 
   return sourceFile
+}
+
+function updateSvgPropsType(
+  element: JsxSelfClosingElement,
+  targetComponentName: string
+) {
+  const spreadNames = element
+    .getAttributes()
+    .filter((attr) => attr.getKind() === SyntaxKind.JsxSpreadAttribute)
+    .map((attr) =>
+      attr.asKindOrThrow(SyntaxKind.JsxSpreadAttribute).getExpression().getText()
+    )
+
+  if (spreadNames.length === 0) {
+    return
+  }
+
+  const func =
+    element.getFirstAncestorByKind(SyntaxKind.FunctionDeclaration) ??
+    element.getFirstAncestorByKind(SyntaxKind.FunctionExpression) ??
+    element.getFirstAncestorByKind(SyntaxKind.ArrowFunction)
+
+  if (!func) {
+    return
+  }
+
+  const newType = `Omit<React.ComponentProps<typeof ${targetComponentName}>, "children">`
+
+  for (const param of func.getParameters()) {
+    const nameNode = param.getNameNode()
+    if (nameNode.getKind() !== SyntaxKind.ObjectBindingPattern) {
+      continue
+    }
+
+    const hasMatchingRest = nameNode
+      .asKindOrThrow(SyntaxKind.ObjectBindingPattern)
+      .getElements()
+      .some((bindingElement) => {
+        if (bindingElement.getKind() !== SyntaxKind.BindingElement) {
+          return false
+        }
+
+        const binding = bindingElement.asKindOrThrow(SyntaxKind.BindingElement)
+        const bindingNameNode = binding.getNameNode()
+        const bindingName =
+          bindingNameNode.getKind() === SyntaxKind.Identifier
+            ? bindingNameNode.getText()
+            : binding.getName()
+
+        return (
+          binding.getDotDotDotToken() !== undefined &&
+          bindingName !== undefined &&
+          spreadNames.includes(bindingName)
+        )
+      })
+
+    if (!hasMatchingRest) {
+      continue
+    }
+
+    const typeNode = param.getTypeNode()
+    if (!typeNode) {
+      continue
+    }
+
+    const typeText = typeNode.getText()
+
+    if (typeText.includes('ComponentProps<"svg">')) {
+      param.setType(newType)
+      continue
+    }
+
+    if (typeText === "SpinnerProps") {
+      updateSpinnerPropsTypeAlias(func.getSourceFile(), newType)
+    }
+  }
+}
+
+function updateSpinnerPropsTypeAlias(sourceFile: SourceFile, newType: string) {
+  for (const typeAlias of sourceFile.getTypeAliases()) {
+    if (typeAlias.getName() === "SpinnerProps") {
+      typeAlias.setType(newType)
+      return
+    }
+  }
 }
 
 function _useSemicolon(sourceFile: SourceFile) {
