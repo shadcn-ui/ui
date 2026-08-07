@@ -35,6 +35,10 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/theming",
   },
   {
+    name: "Forms",
+    href: "/docs/forms",
+  },
+  {
     name: "CLI",
     href: "/docs/cli",
   },
