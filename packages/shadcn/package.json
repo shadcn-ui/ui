@@ -18,6 +18,9 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "keywords": [
     "components",
     "ui",
