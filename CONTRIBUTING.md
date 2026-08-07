@@ -42,6 +42,13 @@ packages
 
 ## Development
 
+### Install prerequisites
+
+This repository requires [Node.js](https://nodejs.org),
+[pnpm](https://pnpm.io/installation), and [Bun](https://bun.sh). The pnpm
+version is pinned in `package.json` and can be managed with Corepack. Bun is
+required by the registry build and app test scripts.
+
 ### Fork this repo
 
 You can fork this repo by clicking the fork button in the top right corner of this page.
@@ -68,6 +75,14 @@ git checkout -b my-new-branch
 
 ```bash
 pnpm install
+```
+
+### Configure the website environment
+
+Before running the `v4` website, copy its example environment file:
+
+```bash
+cp apps/v4/.env.example apps/v4/.env.local
 ```
 
 ### Run a workspace
