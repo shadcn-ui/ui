@@ -99,6 +99,7 @@ export function DividendIncome() {
               hugeicons="Cancel01Icon"
               phosphor="XIcon"
               remixicon="RiCloseLine"
+              gravityui="Xmark"
             />
           </Button>
         </CardAction>

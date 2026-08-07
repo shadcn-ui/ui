@@ -105,6 +105,7 @@ function CardExample() {
                   hugeicons="PlusSignIcon"
                   phosphor="PlusIcon"
                   remixicon="RiAddLine"
+                  gravityui="Plus"
                   data-icon="inline-start"
                 />
                 Show Dialog
@@ -119,6 +120,7 @@ function CardExample() {
                     hugeicons="BluetoothIcon"
                     phosphor="BluetoothIcon"
                     remixicon="RiBluetoothLine"
+                    gravityui="PlugConnection"
                   />
                 </AlertDialogMedia>
                 <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
@@ -174,6 +176,7 @@ function FormExample() {
                     hugeicons="MoreVerticalCircle01Icon"
                     phosphor="DotsThreeVerticalIcon"
                     remixicon="RiMore2Line"
+                    gravityui="EllipsisVertical"
                   />
                   <span className="sr-only">More options</span>
                 </Button>
@@ -188,6 +191,7 @@ function FormExample() {
                       hugeicons="FileIcon"
                       phosphor="FileIcon"
                       remixicon="RiFileLine"
+                      gravityui="File"
                     />
                     New File
                     <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
@@ -199,6 +203,7 @@ function FormExample() {
                       hugeicons="FolderIcon"
                       phosphor="FolderIcon"
                       remixicon="RiFolderLine"
+                      gravityui="Folder"
                     />
                     New Folder
                     <DropdownMenuShortcut>⇧⌘N</DropdownMenuShortcut>
@@ -211,6 +216,7 @@ function FormExample() {
                         hugeicons="FolderOpenIcon"
                         phosphor="FolderOpenIcon"
                         remixicon="RiFolderOpenLine"
+                        gravityui="FolderOpen"
                       />
                       Open Recent
                     </DropdownMenuSubTrigger>
@@ -225,6 +231,7 @@ function FormExample() {
                               hugeicons="CodeIcon"
                               phosphor="CodeIcon"
                               remixicon="RiCodeLine"
+                              gravityui="FileCode"
                             />
                             Project Alpha
                           </DropdownMenuItem>
@@ -235,6 +242,7 @@ function FormExample() {
                               hugeicons="CodeIcon"
                               phosphor="CodeIcon"
                               remixicon="RiCodeLine"
+                              gravityui="FileCode"
                             />
                             Project Beta
                           </DropdownMenuItem>
@@ -246,6 +254,7 @@ function FormExample() {
                                 hugeicons="MoreHorizontalCircle01Icon"
                                 phosphor="DotsThreeOutlineIcon"
                                 remixicon="RiMoreLine"
+                                gravityui="Ellipsis"
                               />
                               More Projects
                             </DropdownMenuSubTrigger>
@@ -258,6 +267,7 @@ function FormExample() {
                                     hugeicons="CodeIcon"
                                     phosphor="CodeIcon"
                                     remixicon="RiCodeLine"
+                                    gravityui="FileCode"
                                   />
                                   Project Gamma
                                 </DropdownMenuItem>
@@ -268,6 +278,7 @@ function FormExample() {
                                     hugeicons="CodeIcon"
                                     phosphor="CodeIcon"
                                     remixicon="RiCodeLine"
+                                    gravityui="FileCode"
                                   />
                                   Project Delta
                                 </DropdownMenuItem>
@@ -284,6 +295,7 @@ function FormExample() {
                               hugeicons="SearchIcon"
                               phosphor="MagnifyingGlassIcon"
                               remixicon="RiSearchLine"
+                              gravityui="Folder"
                             />
                             Browse...
                           </DropdownMenuItem>
@@ -299,6 +311,7 @@ function FormExample() {
                       hugeicons="FloppyDiskIcon"
                       phosphor="FloppyDiskIcon"
                       remixicon="RiSaveLine"
+                      gravityui="FloppyDisk"
                     />
                     Save
                     <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
@@ -310,6 +323,7 @@ function FormExample() {
                       hugeicons="DownloadIcon"
                       phosphor="DownloadIcon"
                       remixicon="RiDownloadLine"
+                      gravityui="ArrowDownToLine"
                     />
                     Export
                     <DropdownMenuShortcut>⇧⌘E</DropdownMenuShortcut>
@@ -333,6 +347,7 @@ function FormExample() {
                       hugeicons="EyeIcon"
                       phosphor="EyeIcon"
                       remixicon="RiEyeLine"
+                      gravityui="Eye"
                     />
                     Show Sidebar
                   </DropdownMenuCheckboxItem>
@@ -351,6 +366,7 @@ function FormExample() {
                       hugeicons="LayoutIcon"
                       phosphor="LayoutIcon"
                       remixicon="RiLayoutLine"
+                      gravityui="LayoutSideContent"
                     />
                     Show Status Bar
                   </DropdownMenuCheckboxItem>
@@ -362,6 +378,7 @@ function FormExample() {
                         hugeicons="PaintBoardIcon"
                         phosphor="PaletteIcon"
                         remixicon="RiPaletteLine"
+                        gravityui="Palette"
                       />
                       Theme
                     </DropdownMenuSubTrigger>
@@ -380,6 +397,7 @@ function FormExample() {
                                 hugeicons="SunIcon"
                                 phosphor="SunIcon"
                                 remixicon="RiSunLine"
+                                gravityui="Sun"
                               />
                               Light
                             </DropdownMenuRadioItem>
@@ -390,6 +408,7 @@ function FormExample() {
                                 hugeicons="MoonIcon"
                                 phosphor="MoonIcon"
                                 remixicon="RiMoonLine"
+                                gravityui="Moon"
                               />
                               Dark
                             </DropdownMenuRadioItem>
@@ -400,6 +419,7 @@ function FormExample() {
                                 hugeicons="ComputerIcon"
                                 phosphor="MonitorIcon"
                                 remixicon="RiComputerLine"
+                                gravityui="Display"
                               />
                               System
                             </DropdownMenuRadioItem>
@@ -419,6 +439,7 @@ function FormExample() {
                       hugeicons="UserIcon"
                       phosphor="UserIcon"
                       remixicon="RiUserLine"
+                      gravityui="Person"
                     />
                     Profile
                     <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
@@ -430,6 +451,7 @@ function FormExample() {
                       hugeicons="CreditCardIcon"
                       phosphor="CreditCardIcon"
                       remixicon="RiBankCardLine"
+                      gravityui="CreditCard"
                     />
                     Billing
                   </DropdownMenuItem>
@@ -441,6 +463,7 @@ function FormExample() {
                         hugeicons="SettingsIcon"
                         phosphor="GearIcon"
                         remixicon="RiSettingsLine"
+                        gravityui="Gear"
                       />
                       Settings
                     </DropdownMenuSubTrigger>
@@ -455,6 +478,7 @@ function FormExample() {
                               hugeicons="KeyboardIcon"
                               phosphor="KeyboardIcon"
                               remixicon="RiKeyboardLine"
+                              gravityui="Keyboard"
                             />
                             Keyboard Shortcuts
                           </DropdownMenuItem>
@@ -465,6 +489,7 @@ function FormExample() {
                               hugeicons="LanguageCircleIcon"
                               phosphor="TranslateIcon"
                               remixicon="RiTranslate"
+                              gravityui="Globe"
                             />
                             Language
                           </DropdownMenuItem>
@@ -476,6 +501,7 @@ function FormExample() {
                                 hugeicons="NotificationIcon"
                                 phosphor="BellIcon"
                                 remixicon="RiNotificationLine"
+                                gravityui="Bell"
                               />
                               Notifications
                             </DropdownMenuSubTrigger>
@@ -500,6 +526,7 @@ function FormExample() {
                                       hugeicons="NotificationIcon"
                                       phosphor="BellIcon"
                                       remixicon="RiNotificationLine"
+                                      gravityui="Bell"
                                     />
                                     Push Notifications
                                   </DropdownMenuCheckboxItem>
@@ -518,6 +545,7 @@ function FormExample() {
                                       hugeicons="MailIcon"
                                       phosphor="EnvelopeIcon"
                                       remixicon="RiMailLine"
+                                      gravityui="Envelope"
                                     />
                                     Email Notifications
                                   </DropdownMenuCheckboxItem>
@@ -535,6 +563,7 @@ function FormExample() {
                               hugeicons="ShieldIcon"
                               phosphor="ShieldIcon"
                               remixicon="RiShieldLine"
+                              gravityui="ShieldCheck"
                             />
                             Privacy & Security
                           </DropdownMenuItem>
@@ -552,6 +581,7 @@ function FormExample() {
                       hugeicons="HelpCircleIcon"
                       phosphor="QuestionIcon"
                       remixicon="RiQuestionLine"
+                      gravityui="CircleQuestion"
                     />
                     Help & Support
                   </DropdownMenuItem>
@@ -562,6 +592,7 @@ function FormExample() {
                       hugeicons="File01Icon"
                       phosphor="FileTextIcon"
                       remixicon="RiFileTextLine"
+                      gravityui="FileText"
                     />
                     Documentation
                   </DropdownMenuItem>
@@ -575,6 +606,7 @@ function FormExample() {
                       hugeicons="LogoutIcon"
                       phosphor="SignOutIcon"
                       remixicon="RiLogoutBoxLine"
+                      gravityui="ArrowRightFromSquare"
                     />
                     Sign Out
                     <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>

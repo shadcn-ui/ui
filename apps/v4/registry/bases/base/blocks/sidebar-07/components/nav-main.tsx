@@ -53,6 +53,7 @@ export function NavMain({
                 hugeicons="ArrowRight01Icon"
                 phosphor="CaretRightIcon"
                 remixicon="RiArrowRightSLine"
+                gravityui="ChevronRight"
                 className="ml-auto transition-transform duration-200 group-data-open/collapsible:rotate-90"
               />
             </CollapsibleTrigger>

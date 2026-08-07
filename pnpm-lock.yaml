@@ -156,6 +156,9 @@ importers:
       '@formisch/react':
         specifier: ^0.4.4
         version: 0.4.4(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.2)(valibot@1.4.0(typescript@5.9.2))
+      '@gravity-ui/icons':
+        specifier: ^2.21.0
+        version: 2.21.0(react@19.2.3)
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.62.0(react@19.2.3))(zod@3.25.76)
@@ -1738,6 +1741,14 @@ packages:
       '@tailwindcss/oxide':
         optional: true
       tailwindcss:
+        optional: true
+
+  '@gravity-ui/icons@2.21.0':
+    resolution: {integrity: sha512-KWghsvXDq+5AapT3bh2a/p1Iv923PDFln/U51fqaK9AMOftiOlkWfJHSJEFSxpgvbCJ/MOHjCSbhCT7Jx9mJAg==}
+    peerDependencies:
+      react: '*'
+    peerDependenciesMeta:
+      react:
         optional: true
 
   '@hapi/hoek@9.3.0':
@@ -10863,6 +10874,12 @@ snapshots:
     optionalDependencies:
       '@tailwindcss/oxide': 4.3.0
       tailwindcss: 4.3.0
+
+  '@gravity-ui/icons@2.21.0(react@19.2.3)':
+    dependencies:
+      tslib: 2.8.1
+    optionalDependencies:
+      react: 19.2.3
 
   '@hapi/hoek@9.3.0': {}
 

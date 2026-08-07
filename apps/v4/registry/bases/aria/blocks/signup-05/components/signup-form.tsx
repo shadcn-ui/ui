@@ -32,6 +32,7 @@ export function SignupForm({
                   hugeicons="LayoutBottomIcon"
                   phosphor="RowsIcon"
                   remixicon="RiGalleryLine"
+                  gravityui="LayoutList"
                   className="size-6"
                 />
               </div>

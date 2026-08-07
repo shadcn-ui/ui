@@ -42,6 +42,7 @@ export function VersionSwitcher({
                 hugeicons="LayoutBottomIcon"
                 phosphor="RowsIcon"
                 remixicon="RiGalleryLine"
+                gravityui="LayoutList"
                 className="size-4"
               />
             </div>
@@ -55,6 +56,7 @@ export function VersionSwitcher({
               hugeicons="UnfoldMoreIcon"
               phosphor="CaretUpDownIcon"
               remixicon="RiArrowUpDownLine"
+              gravityui="ChevronsExpandUpRight"
               className="ml-auto"
             />
           </DropdownMenuTrigger>
@@ -72,6 +74,7 @@ export function VersionSwitcher({
                     hugeicons="Tick02Icon"
                     phosphor="CheckIcon"
                     remixicon="RiCheckLine"
+                    gravityui="Check"
                     className="ml-auto"
                   />
                 )}

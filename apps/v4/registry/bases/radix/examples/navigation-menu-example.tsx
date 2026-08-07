@@ -205,6 +205,7 @@ function NavigationMenuWithoutViewport() {
                         hugeicons="AlertCircleIcon"
                         phosphor="WarningCircleIcon"
                         remixicon="RiErrorWarningLine"
+                        gravityui="CircleExclamation"
                       />
                       Backlog
                     </Link>
@@ -217,6 +218,7 @@ function NavigationMenuWithoutViewport() {
                         hugeicons="AlertCircleIcon"
                         phosphor="WarningCircleIcon"
                         remixicon="RiErrorWarningLine"
+                        gravityui="CircleExclamation"
                       />
                       To Do
                     </Link>
@@ -229,6 +231,7 @@ function NavigationMenuWithoutViewport() {
                         hugeicons="AlertCircleIcon"
                         phosphor="WarningCircleIcon"
                         remixicon="RiErrorWarningLine"
+                        gravityui="CircleExclamation"
                       />
                       Done
                     </Link>

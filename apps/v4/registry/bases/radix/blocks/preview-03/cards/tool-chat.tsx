@@ -133,6 +133,7 @@ export function ToolChat() {
                 hugeicons="PlusSignIcon"
                 phosphor="PlusIcon"
                 remixicon="RiAddLine"
+                gravityui="Plus"
               />
             </Button>
           </CardAction>

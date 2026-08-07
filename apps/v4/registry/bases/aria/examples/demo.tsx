@@ -125,6 +125,7 @@ export function Demo() {
                     hugeicons="Copy01Icon"
                     phosphor="CopyIcon"
                     remixicon="RiFileCopyLine"
+                    gravityui="Copy"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -134,6 +135,7 @@ export function Demo() {
                     hugeicons="AlertCircleIcon"
                     phosphor="WarningCircleIcon"
                     remixicon="RiErrorWarningLine"
+                    gravityui="CircleExclamation"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -143,6 +145,7 @@ export function Demo() {
                     hugeicons="Delete02Icon"
                     phosphor="TrashIcon"
                     remixicon="RiDeleteBinLine"
+                    gravityui="TrashBin"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -152,6 +155,7 @@ export function Demo() {
                     hugeicons="Share03Icon"
                     phosphor="ShareIcon"
                     remixicon="RiShareLine"
+                    gravityui="ArrowShapeUpFromLine"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -161,6 +165,7 @@ export function Demo() {
                     hugeicons="ShoppingBag01Icon"
                     phosphor="BagIcon"
                     remixicon="RiShoppingBagLine"
+                    gravityui="ShoppingBag"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -170,6 +175,7 @@ export function Demo() {
                     hugeicons="MoreHorizontalCircle01Icon"
                     phosphor="DotsThreeIcon"
                     remixicon="RiMoreLine"
+                    gravityui="Ellipsis"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -179,6 +185,7 @@ export function Demo() {
                     hugeicons="Loading03Icon"
                     phosphor="SpinnerIcon"
                     remixicon="RiLoaderLine"
+                    gravityui="ArrowRotateLeft"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -188,6 +195,7 @@ export function Demo() {
                     hugeicons="PlusSignIcon"
                     phosphor="PlusIcon"
                     remixicon="RiAddLine"
+                    gravityui="Plus"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -197,6 +205,7 @@ export function Demo() {
                     hugeicons="MinusSignIcon"
                     phosphor="MinusIcon"
                     remixicon="RiSubtractLine"
+                    gravityui="Minus"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -206,6 +215,7 @@ export function Demo() {
                     hugeicons="ArrowLeft02Icon"
                     phosphor="ArrowLeftIcon"
                     remixicon="RiArrowLeftLine"
+                    gravityui="ArrowLeft"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -215,6 +225,7 @@ export function Demo() {
                     hugeicons="ArrowRight02Icon"
                     phosphor="ArrowRightIcon"
                     remixicon="RiArrowRightLine"
+                    gravityui="ArrowRight"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -224,6 +235,7 @@ export function Demo() {
                     hugeicons="Tick02Icon"
                     phosphor="CheckIcon"
                     remixicon="RiCheckLine"
+                    gravityui="Check"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -233,6 +245,7 @@ export function Demo() {
                     hugeicons="ArrowDown01Icon"
                     phosphor="CaretDownIcon"
                     remixicon="RiArrowDownSLine"
+                    gravityui="ChevronDown"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -242,6 +255,7 @@ export function Demo() {
                     hugeicons="ArrowRight01Icon"
                     phosphor="CaretRightIcon"
                     remixicon="RiArrowRightSLine"
+                    gravityui="ChevronRight"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -251,6 +265,7 @@ export function Demo() {
                     hugeicons="Search01Icon"
                     phosphor="MagnifyingGlassIcon"
                     remixicon="RiSearchLine"
+                    gravityui="Magnifier"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -260,6 +275,7 @@ export function Demo() {
                     hugeicons="Settings01Icon"
                     phosphor="GearIcon"
                     remixicon="RiSettingsLine"
+                    gravityui="Gear"
                   />
                 </Card>
               </div>
@@ -311,6 +327,7 @@ export function Demo() {
                           hugeicons="Search01Icon"
                           phosphor="MagnifyingGlassIcon"
                           remixicon="RiSearchLine"
+                          gravityui="Magnifier"
                         />
                       </InputGroupText>
                     </InputGroupAddon>
@@ -370,6 +387,7 @@ export function Demo() {
                         hugeicons="ArrowUp01Icon"
                         phosphor="CaretUpIcon"
                         remixicon="RiArrowUpSLine"
+                        gravityui="ChevronUp"
                       />
                     </Button>
                     <DropdownMenu placement="top end" className="w-fit">
