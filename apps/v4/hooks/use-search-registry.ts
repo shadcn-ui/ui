@@ -1,6 +1,5 @@
 import { debounce, parseAsInteger, useQueryState } from "nuqs"
 
-import { useMounted } from "@/hooks/use-mounted"
 import globalRegistries from "@/registry/directory.json"
 
 const PAGE_SIZE = 10
@@ -29,7 +28,6 @@ const searchDirectory = (query: string | null) => {
 }
 
 export function useSearchRegistry() {
-  const mounted = useMounted()
   const [query, setQuery] = useQueryState("q", {
     defaultValue: "",
     limitUrlUpdates: debounce(250),
@@ -41,14 +39,11 @@ export function useSearchRegistry() {
     history: "push",
   })
 
-  const currentQuery = mounted ? query : ""
-  const currentPageValue = mounted ? page : 1
-
-  const registries = searchDirectory(currentQuery)
+  const registries = searchDirectory(query)
   const totalPages = Math.ceil(registries.length / PAGE_SIZE)
 
   // Clamp page to valid range.
-  const currentPage = Math.max(1, Math.min(currentPageValue, totalPages))
+  const currentPage = Math.max(1, Math.min(page, totalPages))
 
   const paginatedRegistries = registries.slice(
     (currentPage - 1) * PAGE_SIZE,
@@ -56,8 +51,7 @@ export function useSearchRegistry() {
   )
 
   return {
-    isLoading: !mounted,
-    query: currentQuery,
+    query,
     setQuery: (value: string | null) => {
       setQuery(value)
       setPage(null)
