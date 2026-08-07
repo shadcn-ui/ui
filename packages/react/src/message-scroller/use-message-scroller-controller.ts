@@ -11,6 +11,7 @@ import {
   getMessageScrollerScrollable,
   getMessageScrollerVisibilityState,
   getNewScrollAnchor,
+  getScrollAnchors,
   getUnanchoredScrollAnchor,
   hasMultipleNewScrollAnchors,
 } from "./geometry"
@@ -396,6 +397,16 @@ function useMessageScrollerController({
       }
 
       if (previousItemCount === 0) {
+        // Anchors already on screen at mount have been "seen" by the reader.
+        // Register them up front so a later same-count content swap (e.g. a
+        // transient row replaced in place) only ever treats anchors that
+        // appear *after* mount as new — not every anchor rendered on first
+        // paint. Otherwise getUnanchoredScrollAnchor() would find them all
+        // unhandled and re-anchor the viewport to the oldest one.
+        for (const anchor of getScrollAnchors(items)) {
+          handledScrollAnchorsRef.current.add(anchor)
+        }
+
         if (applyDefaultScrollPosition()) {
           return
         }
