@@ -18,6 +18,7 @@ export function CalendarRange() {
       <CardContent className="p-0">
         <Calendar
           mode="range"
+          resetOnSelect
           defaultMonth={dateRange?.from}
           selected={dateRange}
           onSelect={setDateRange}
