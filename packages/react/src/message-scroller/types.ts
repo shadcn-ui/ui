@@ -21,6 +21,11 @@ const SCROLL_POSITION_EPSILON = 0.5
 // before clearing.
 const AUTOSCROLLING_CLEAR_DELAY = 180
 
+// Extra tail-spacer height beyond the exact anchored fit, so the pinned
+// position never sits at the very bottom of the scroll range where a transient
+// content dip would clamp scrollTop.
+const ANCHORED_TAIL_SLACK = 128
+
 // Viewport keys that count as deliberate scroll intent and release follow-bottom.
 const USER_SCROLL_KEYS = new Set([
   "ArrowDown",
@@ -206,6 +211,7 @@ const EMPTY_MESSAGE_SCROLLER_VISIBILITY_STATE: MessageScrollerVisibilityState =
   }
 
 export {
+  ANCHORED_TAIL_SLACK,
   AUTOSCROLLING_CLEAR_DELAY,
   DEFAULT_SCROLL_EDGE_THRESHOLD,
   DEFAULT_SCROLL_MARGIN,
