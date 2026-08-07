@@ -25,7 +25,7 @@ export default function SliderExample() {
 function SliderBasic() {
   return (
     <Example title="Basic">
-      <Slider defaultValue={50} max={100} step={1} />
+      <Slider defaultValue={[50]} max={100} step={1} />
     </Example>
   )
 }
