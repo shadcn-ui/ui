@@ -232,16 +232,24 @@ removed from the tab order when there is nothing to scroll toward.
 
 Imperative transcript controls.
 
-| Method            | Type                                       | Description                     |
-| ----------------- | ------------------------------------------ | ------------------------------- |
-| `scrollToMessage` | `(messageId: string, options?) => boolean` | Scroll to a mounted message id. |
-| `scrollToEnd`     | `(options?) => boolean`                    | Scroll to the latest message.   |
-| `scrollToStart`   | `(options?) => boolean`                    | Scroll to the top.              |
+| Method             | Type                                       | Description                                  |
+| ------------------ | ------------------------------------------ | -------------------------------------------- |
+| `scrollToMessage`  | `(messageId: string, options?) => boolean` | Scroll to a mounted message id.              |
+| `scrollToEnd`      | `(options?) => boolean`                    | Scroll to the latest message.                |
+| `scrollToStart`    | `(options?) => boolean`                    | Scroll to the top.                           |
+| `releaseAutoScroll`| `() => void`                               | Release follow-bottom / turn-anchoring.      |
 
 All commands return `false` when the command could not be applied.
 `scrollToStart` and `scrollToEnd` return `false` only when the viewport is not
 mounted yet. `scrollToMessage` returns `false` when the target is not mounted and
 cannot be queued.
+
+`releaseAutoScroll` hands scroll control back to the reader the same way a
+wheel, touch, or keyboard scroll does: it releases `autoScroll`'s follow-bottom
+(and any turn anchoring) so the viewport stays put. Call it when you grow
+content in response to a user action — expanding a collapsed section, a "show
+more" toggle — so `autoScroll` does not treat that growth as new output and
+re-pin the viewport to the end. It is a no-op when nothing is being followed.
 
 Command options:
 
