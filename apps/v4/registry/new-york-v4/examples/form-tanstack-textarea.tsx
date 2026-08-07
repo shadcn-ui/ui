@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 "use client"
 
 import { useForm } from "@tanstack/react-form"
@@ -73,9 +72,8 @@ export default function FormTanstackTextarea() {
           }}
         >
           <FieldGroup>
-            <form.Field
-              name="about"
-              children={(field) => {
+            <form.Field name="about">
+              {(field) => {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
@@ -103,7 +101,7 @@ export default function FormTanstackTextarea() {
                   </Field>
                 )
               }}
-            />
+            </form.Field>
           </FieldGroup>
         </form>
       </CardContent>
