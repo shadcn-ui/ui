@@ -553,7 +553,7 @@ describe("getWorkspaceConfig", () => {
 
       await expect(getWorkspaceConfig(config)).rejects.toThrowError(
         new RegExp(
-          "Could not load the workspace config.*packages/ui.*components.json.*path aliases or package imports",
+          "Could not load the workspace config.*packages[/\\\\]ui.*components.json.*path aliases or package imports",
           "s"
         )
       )
