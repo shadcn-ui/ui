@@ -265,7 +265,7 @@ function defaultScaffold({
           "templates",
           templateDir
         )
-        await fs.move(extractedPath, projectPath)
+        await fs.move(extractedPath, projectPath, { overwrite: true })
         await fs.remove(templatePath)
       }
 

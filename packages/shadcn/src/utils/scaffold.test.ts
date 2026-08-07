@@ -109,7 +109,8 @@ describe("defaultScaffold", () => {
 
     expect(vi.mocked(fs.move)).toHaveBeenCalledWith(
       expect.stringContaining(path.join("templates", "next-app")),
-      "/test/my-app"
+      "/test/my-app",
+      { overwrite: true }
     )
   })
 
