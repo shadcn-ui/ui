@@ -619,8 +619,13 @@ export default function RootLayout({
 
     const result = await transformLayoutFonts(input, fonts, mockConfig)
 
-    // Geist is already imported, so the layout should remain unchanged.
-    expect(result).toBe(input)
+    // // Geist is already imported, so the layout should remain unchanged.
+    // expect(result).toBe(input)
+    // Geist is already imported with --font-geist-sans alias.
+    // Fix: variable should be updated to --font-sans and added to <html> className.
+    expect(result).not.toBe(input)
+    expect(result).toContain("--font-sans")
+    expect(result).toContain("geist.variable")
   })
 
   it("should add to existing next/font/google import", async () => {
