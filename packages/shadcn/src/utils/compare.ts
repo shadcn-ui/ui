@@ -22,36 +22,30 @@ export function isContentSame(
   }
 
   // Compare with import statements normalized.
-  // This regex matches various import patterns including:
-  // - import defaultExport from "module"
-  // - import * as name from "module"
-  // - import { export1, export2 } from "module"
-  // - import { export1 as alias1 } from "module"
-  // - import defaultExport, { export1 } from "module"
-  // - import type { Type } from "module"
-  // - This Regex written by Claude Code.
-  const importRegex =
+  const importFromRegex =
     /^(import\s+(?:type\s+)?(?:\*\s+as\s+\w+|\{[^}]*\}|\w+)?(?:\s*,\s*(?:\{[^}]*\}|\w+))?\s+from\s+["'])([^"']+)(["'])/gm
+  const importSideEffectRegex = /^(import\s+["'])([^"']+)(["'])/gm
+
+  const normalizeImportPath = (importPath: string) => {
+    if (importPath.startsWith(".")) {
+      return importPath
+    }
+
+    // For aliased imports, normalize to the module's terminal segment.
+    const parts = importPath.split("/")
+    const lastPart = parts[parts.length - 1]
+    return `@normalized/${lastPart}`
+  }
 
   // Function to normalize import paths - remove alias differences.
   const normalizeImports = (content: string) => {
-    return content.replace(
-      importRegex,
-      (_match, prefix, importPath, suffix) => {
-        // Keep relative imports as-is.
-        if (importPath.startsWith(".")) {
-          return `${prefix}${importPath}${suffix}`
-        }
-
-        // For aliased imports, normalize to a common format.
-        // Extract the last meaningful part of the path.
-        const parts = importPath.split("/")
-        const lastPart = parts[parts.length - 1]
-
-        // Normalize to a consistent format.
-        return `${prefix}@normalized/${lastPart}${suffix}`
-      }
-    )
+    return content
+      .replace(importFromRegex, (_match, prefix, importPath, suffix) => {
+        return `${prefix}${normalizeImportPath(importPath)}${suffix}`
+      })
+      .replace(importSideEffectRegex, (_match, prefix, importPath, suffix) => {
+        return `${prefix}${normalizeImportPath(importPath)}${suffix}`
+      })
   }
 
   const existingNormalized = normalizeImports(normalizedExisting)
