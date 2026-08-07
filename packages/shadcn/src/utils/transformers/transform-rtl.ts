@@ -137,6 +137,8 @@ function transformStringLiteralNode(node: StringLiteral) {
 }
 
 export function applyRtlMapping(input: string) {
+  const existingClasses = new Set(input.split(" "))
+
   return input
     .split(" ")
     .flatMap((className) => {
@@ -162,6 +164,10 @@ export function applyRtlMapping(input: string) {
           const rtlClass = variant
             ? `rtl:${variant}:${rtlValue}${modifier ? `/${modifier}` : ""}`
             : `rtl:${rtlValue}${modifier ? `/${modifier}` : ""}`
+          // Skip if the rtl: class already exists (idempotency).
+          if (existingClasses.has(rtlClass)) {
+            return [className]
+          }
           return [className, rtlClass]
         }
       }
@@ -172,6 +178,10 @@ export function applyRtlMapping(input: string) {
           const rtlClass = variant
             ? `rtl:${variant}:${reverseClass}`
             : `rtl:${reverseClass}`
+          // Skip if the rtl: class already exists (idempotency).
+          if (existingClasses.has(rtlClass)) {
+            return [className]
+          }
           return [className, rtlClass]
         }
       }
@@ -182,6 +192,10 @@ export function applyRtlMapping(input: string) {
           const rtlClass = variant
             ? `rtl:${variant}:${swapped}`
             : `rtl:${swapped}`
+          // Skip if the rtl: class already exists (idempotency).
+          if (existingClasses.has(rtlClass)) {
+            return [className]
+          }
           return [className, rtlClass]
         }
       }
