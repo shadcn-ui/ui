@@ -272,24 +272,34 @@ function defaultScaffold({
       // Adapt workspace config and lockfiles for the target package manager.
       await adaptWorkspaceConfig(projectPath, packageManager)
 
+      // Write project name to the package.json and inject pnpm configuration.
+      const packageJsonPath = path.join(projectPath, "package.json")
+      if (fs.existsSync(packageJsonPath)) {
+        const packageJsonContent = await fs.readFile(packageJsonPath, "utf8")
+        const packageJson = JSON.parse(packageJsonContent)
+        packageJson.name = path.basename(projectPath)
+
+        if (packageManager === "pnpm") {
+          packageJson.pnpm = packageJson.pnpm || {}
+          packageJson.pnpm.onlyBuiltDependencies =
+            packageJson.pnpm.onlyBuiltDependencies || []
+          if (!packageJson.pnpm.onlyBuiltDependencies.includes("esbuild")) {
+            packageJson.pnpm.onlyBuiltDependencies.push("esbuild")
+          }
+        }
+
+        await fs.writeFile(
+          packageJsonPath,
+          JSON.stringify(packageJson, null, 2) + "\n"
+        )
+      }
+
       // Run install.
       const installArgs = getInstallArgs(packageManager)
       const args = ["install", ...installArgs]
       await execa(packageManager, args, {
         cwd: projectPath,
       })
-
-      // Write project name to the package.json.
-      const packageJsonPath = path.join(projectPath, "package.json")
-      if (fs.existsSync(packageJsonPath)) {
-        const packageJsonContent = await fs.readFile(packageJsonPath, "utf8")
-        const packageJson = JSON.parse(packageJsonContent)
-        packageJson.name = path.basename(projectPath)
-        await fs.writeFile(
-          packageJsonPath,
-          JSON.stringify(packageJson, null, 2) + "\n"
-        )
-      }
 
       createSpinner?.succeed(`Creating a new ${title} project.`)
     } catch (error) {
