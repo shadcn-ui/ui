@@ -1,6 +1,7 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
 
 import { REGISTRY_URL } from "@/src/registry/constants"
+import { RegistryNotConfiguredError } from "@/src/registry/errors"
 import { afterEach, beforeEach, describe, expect, it } from "vitest"
 
 import {
@@ -353,9 +354,20 @@ describe("buildUrlAndHeadersForRegistryItem", () => {
   })
 
   it("should throw error for unknown registry", () => {
-    expect(() => {
+    try {
       buildUrlAndHeadersForRegistryItem("@unknown/button", {} as any)
-    }).toThrow('Unknown registry "@unknown"')
+      expect.fail("Should have thrown RegistryNotConfiguredError")
+    } catch (error) {
+      expect(error).toBeInstanceOf(RegistryNotConfiguredError)
+      if (error instanceof RegistryNotConfiguredError) {
+        expect(error.message).toContain(
+          'defined under "registries" in your components.json or package.json file'
+        )
+        expect(error.suggestion).toBe(
+          'Add the registry configuration under "registries" in your components.json or package.json file.'
+        )
+      }
+    }
   })
 
   it("should resolve registry items with string config", () => {

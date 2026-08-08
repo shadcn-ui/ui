@@ -901,6 +901,26 @@ export const ui: Registry["items"] = [
     },
   },
   {
+    name: "toast",
+    type: "registry:ui",
+    dependencies: ["@base-ui/react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/toast.tsx",
+        type: "registry:ui",
+      },
+    ],
+    meta: {
+      links: {
+        docs: "https://ui.shadcn.com/docs/components/base/toast",
+        examples:
+          "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/toast-example.tsx",
+        api: "https://base-ui.com/react/components/toast.md",
+      },
+    },
+  },
+  {
     name: "toggle",
     type: "registry:ui",
     files: [
@@ -1054,6 +1074,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         type: "registry:ui",
       },
     ],
+  },
+  {
+    name: "questionnaire",
+    type: "registry:ui",
+    dependencies: ["@shadcn/react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/questionnaire.tsx",
+        type: "registry:ui",
+      },
+    ],
+    meta: {
+      links: {
+        docs: "https://ui.shadcn.com/docs/components/base/questionnaire",
+        examples:
+          "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/questionnaire-example.tsx",
+      },
+    },
   },
   {
     name: "marker",
