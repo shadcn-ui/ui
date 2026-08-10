@@ -38,7 +38,7 @@ import { STYLES } from "@/registry/styles"
  * - registry/__index__.tsx
  * - examples/__index__.tsx
  * - styles/<base-style>/ui/*
- * - styles/<base-style>/ui-rtl/* for base-nova and radix-nova only
+ * - styles/<base-style>/ui-rtl/* for the -nova styles only (see shouldGenerateRtlStyles)
  * - public/r/*
  *
  * Temporary outputs:
@@ -53,7 +53,7 @@ import { STYLES } from "@/registry/styles"
  * 4. Build examples/__index__.tsx from authored demos.
  * 5. Export public/r/* for every style through the shadcn CLI.
  * 6. Copy compiled ui/* from the temporary registries into styles/<style>/ui.
- * 7. Build styles/<style>/ui-rtl for base-nova and radix-nova only.
+ * 7. Build styles/<style>/ui-rtl for the -nova styles only (see shouldGenerateRtlStyles).
  * 8. Format the generated persistent outputs.
  * 9. Clean up the temporary registry/<base-style> trees and registry-*.json.
  *
@@ -369,7 +369,9 @@ function normalizeRegistryFiles(item: RegistryItem): Array<{
 }
 
 function shouldGenerateRtlStyles(styleName: string) {
-  return styleName === "base-nova" || styleName === "radix-nova" || styleName === "aria-nova"
+  // RTL is generated for every base's -nova style (base-nova, radix-nova,
+  // aria-nova, ark-nova, and any future base's nova).
+  return styleName.endsWith("-nova")
 }
 
 function isStyledOutputFile(filePath: string) {

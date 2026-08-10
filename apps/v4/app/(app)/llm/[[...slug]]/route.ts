@@ -10,7 +10,7 @@ export const dynamic = "force-static"
 export const dynamicParams = true
 
 function getStyleFromSlug(slug: string[] | undefined, fallbackStyle: string) {
-  // Detect base from URL: /docs/components/base, /radix, or /aria.
+  // Detect base from URL: /docs/components/base, /radix, /aria, or /ark.
   if (slug && slug[0] === "components" && slug[1]) {
     if (slug[1] === "base") {
       return "base-nova"
@@ -20,6 +20,9 @@ function getStyleFromSlug(slug: string[] | undefined, fallbackStyle: string) {
     }
     if (slug[1] === "radix") {
       return "new-york-v4"
+    }
+    if (slug[1] === "ark") {
+      return "ark-nova"
     }
   }
   return fallbackStyle

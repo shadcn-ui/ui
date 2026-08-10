@@ -48,7 +48,7 @@ export function ComponentPreviewTabs({
   styleName?: string
 }) {
   const [isMobileCodeVisible, setIsMobileCodeVisible] = React.useState(false)
-  const base = styleName?.match(/^(base|radix|aria)-/)?.[1] || "radix"
+  const base = styleName?.match(/^(base|radix|aria|ark)-/)?.[1] || "radix"
 
   return (
     <div
