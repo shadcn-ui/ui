@@ -320,6 +320,7 @@ function useMessageScrollerCommands({
     scrollToEnd,
     scrollToMessage,
     scrollToStart,
+    setTailSpacerHeight,
   }
 }
 

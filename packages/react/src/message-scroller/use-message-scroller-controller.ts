@@ -11,6 +11,7 @@ import {
   getMessageScrollerScrollable,
   getMessageScrollerVisibilityState,
   getNewScrollAnchor,
+  getTailSpacerHeight,
   getUnanchoredScrollAnchor,
   hasMultipleNewScrollAnchors,
 } from "./geometry"
@@ -152,6 +153,7 @@ function useMessageScrollerController({
       if (
         autoScrollRef.current &&
         !scrollable.end &&
+        spacerHeightRef.current === 0 &&
         modeRef.current !== "settling-jump" &&
         modeRef.current !== "anchored-to-message"
       ) {
@@ -242,6 +244,7 @@ function useMessageScrollerController({
     scrollToEnd,
     scrollToMessage,
     scrollToStart,
+    setTailSpacerHeight,
   } = useMessageScrollerCommands({
     refs,
     commitScrollState,
@@ -522,6 +525,38 @@ function useMessageScrollerController({
       return
     }
 
+    // A manual scroll during an anchored streaming turn releases the anchor
+    // (userScrollIntent -> free-scrolling) and strands the reserved tail spacer.
+    // Nothing re-arms follow in that mode, so the spacer would freeze at its
+    // current height and leave dead space below the reply. Drain it here: as
+    // the reply grows, shrink the spacer toward zero so the reserved room is
+    // consumed without moving the reader, and hand back to following once the
+    // reply fills the viewport (spacer hits zero at the real bottom).
+    if (
+      autoScrollRef.current &&
+      spacerHeightRef.current > 0 &&
+      modeRef.current !== "following-bottom"
+    ) {
+      const viewport = viewportRef.current
+      const content = contentRef.current
+
+      if (viewport && content) {
+        const nextSpacerHeight = getTailSpacerHeight({
+          content,
+          scrollTop: viewport.scrollTop,
+          spacer: spacerRef.current,
+          viewport,
+        })
+
+        setTailSpacerHeight(nextSpacerHeight)
+
+        if (Math.max(0, nextSpacerHeight) === 0) {
+          scrollToEnd({ behavior: "auto" })
+          return
+        }
+      }
+    }
+
     scheduleStateCommit()
     scheduleVisibilitySync()
   }, [
@@ -529,6 +564,7 @@ function useMessageScrollerController({
     scheduleStateCommit,
     scheduleVisibilitySync,
     scrollToEnd,
+    setTailSpacerHeight,
   ])
 
   const observeVisibility = React.useCallback(() => {
