@@ -812,6 +812,44 @@ export const Components: Record<string, any> = {
       ) || "sheet-example"
     return { default: mod.default || mod[exportName] }
   }),
+  "sidebar-example": React.lazy(async () => {
+    const mod = await import("@/registry/bases/ark/examples/sidebar-example")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "sidebar-example"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "sidebar-icon-example": React.lazy(async () => {
+    const mod = await import(
+      "@/registry/bases/ark/examples/sidebar-icon-example"
+    )
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "sidebar-icon-example"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "sidebar-inset-example": React.lazy(async () => {
+    const mod = await import(
+      "@/registry/bases/ark/examples/sidebar-inset-example"
+    )
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "sidebar-inset-example"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "sidebar-floating-example": React.lazy(async () => {
+    const mod = await import(
+      "@/registry/bases/ark/examples/sidebar-floating-example"
+    )
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "sidebar-floating-example"
+    return { default: mod.default || mod[exportName] }
+  }),
   "skeleton-example": React.lazy(async () => {
     const mod = await import("@/registry/bases/ark/examples/skeleton-example")
     const exportName =
@@ -940,6 +978,14 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "preview"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "preview-02": React.lazy(async () => {
+    const mod = await import("@/registry/bases/ark/blocks/preview-02/index")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "preview-02"
     return { default: mod.default || mod[exportName] }
   }),
   "login-01": React.lazy(async () => {
