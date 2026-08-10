@@ -1,5 +1,6 @@
 import {
   registryItemTypeSchema,
+  registryPaginationSchema,
   searchResultErrorSchema,
   searchResultItemSchema,
   searchResultsSchema,
@@ -103,8 +104,23 @@ async function searchRegistriesWithContext(
     continueOnError,
   } = options || {}
 
-  let allItems: z.infer<typeof searchResultItemSchema>[] = []
   const errors: z.infer<typeof searchResultErrorSchema>[] = []
+
+  // Search params are forwarded to every registry so dynamic registries can
+  // filter server-side. Pagination only composes when a single registry is
+  // searched. Across multiple registries a global offset cannot be
+  // distributed, so we push down filters only and over-fetch enough items
+  // (offset + limit) from each registry to fill the requested page locally.
+  const isSingleRegistry = registries.length === 1
+  const wireTypes = types?.map((type) => toRegistryItemType(type))
+  const searchParams = isSingleRegistry
+    ? { query, types: wireTypes, limit, offset }
+    : {
+        query,
+        types: wireTypes,
+        limit: limit !== undefined ? (offset || 0) + limit : undefined,
+        offset: undefined,
+      }
 
   // Fetch registries concurrently (capped), then process the results in the
   // original order so the output is deterministic regardless of which
@@ -112,8 +128,17 @@ async function searchRegistriesWithContext(
   const outcomes = await mapSettledWithConcurrency(
     registries,
     SEARCH_CONCURRENCY,
-    (registry) => getRegistry(registry, { config, useCache })
+    (registry) => getRegistry(registry, { config, useCache, searchParams })
   )
+
+  // A registry that returns `pagination` has already filtered and paginated
+  // its items server-side (see the dynamic search docs). Its items are kept
+  // as-is while items from static registries go through the local pipeline.
+  let localItems: z.infer<typeof searchResultItemSchema>[] = []
+  const serverResults: {
+    items: z.infer<typeof searchResultItemSchema>[]
+    pagination: z.infer<typeof registryPaginationSchema>
+  }[] = []
 
   for (let index = 0; index < registries.length; index++) {
     const registry = registries[index]
@@ -135,6 +160,7 @@ async function searchRegistriesWithContext(
 
     const itemsWithRegistry = (outcome.value.items || []).map((item) => ({
       name: item.name,
+      title: item.title,
       type: item.type,
       description: item.description,
       registry,
@@ -144,7 +170,25 @@ async function searchRegistriesWithContext(
       ),
     }))
 
-    allItems = allItems.concat(itemsWithRegistry)
+    if (outcome.value.pagination) {
+      serverResults.push({
+        items: itemsWithRegistry,
+        pagination: outcome.value.pagination,
+      })
+      continue
+    }
+
+    localItems = localItems.concat(itemsWithRegistry)
+  }
+
+  // Single dynamic registry: the server did all the work. Return its items
+  // and pagination verbatim so ranking and totals are the server's.
+  if (isSingleRegistry && serverResults.length === 1) {
+    const [serverResult] = serverResults
+    return searchResultsSchema.parse({
+      pagination: serverResult.pagination,
+      items: serverResult.items,
+    })
   }
 
   // Filter by type before the fuzzy query. Accepts both shorthand ("ui") and
@@ -153,7 +197,7 @@ async function searchRegistriesWithContext(
     const wantedTypes = new Set(
       types.map((type) => formatSearchResultType(type).toLowerCase())
     )
-    allItems = allItems.filter(
+    localItems = localItems.filter(
       (item) =>
         item.type &&
         wantedTypes.has(formatSearchResultType(item.type).toLowerCase())
@@ -161,23 +205,48 @@ async function searchRegistriesWithContext(
   }
 
   if (query) {
-    allItems = searchItems(allItems, {
+    localItems = searchItems(localItems, {
       query,
-      limit: allItems.length,
-      keys: ["name", "description"],
+      limit: localItems.length,
+      keys: ["name", "title", "description"],
     }) as z.infer<typeof searchResultItemSchema>[]
   }
 
+  // Merge pre-filtered items (in registry order) with locally filtered items,
+  // then paginate the combined list. `total` includes matches a dynamic
+  // registry counted but did not return, so the match count stays accurate
+  // even when a registry truncated its response.
+  const allItems = serverResults
+    .flatMap((serverResult) => serverResult.items)
+    .concat(localItems)
+  const serverTotal = serverResults.reduce(
+    (sum, serverResult) => sum + serverResult.pagination.total,
+    0
+  )
+
   const paginationOffset = offset || 0
   const paginationLimit = limit || allItems.length
-  const totalItems = allItems.length
+  const totalItems = serverTotal + localItems.length
+
+  // Deeper pages re-request every registry with a larger over-fetch limit, so
+  // a dynamic registry can serve them only if it filled the current request.
+  // A registry that returned fewer items than requested is capped and its
+  // remaining matches are unreachable through paging — it must not drive
+  // `hasMore`, or paging would loop through empty pages forever.
+  const serverHasMore = serverResults.some(
+    (serverResult) =>
+      serverResult.pagination.hasMore &&
+      searchParams.limit !== undefined &&
+      serverResult.items.length >= searchParams.limit
+  )
 
   const result: z.infer<typeof searchResultsSchema> = {
     pagination: {
       total: totalItems,
       offset: paginationOffset,
       limit: paginationLimit,
-      hasMore: paginationOffset + paginationLimit < totalItems,
+      hasMore:
+        paginationOffset + paginationLimit < allItems.length || serverHasMore,
     },
     items: allItems.slice(paginationOffset, paginationOffset + paginationLimit),
     // Only surface errors when present so consumers parsing successful
@@ -191,6 +260,7 @@ async function searchRegistriesWithContext(
 const searchableItemSchema = z
   .object({
     name: z.string(),
+    title: z.string().optional(),
     type: z.string().optional(),
     description: z.string().optional(),
     registry: z.string().optional(),
@@ -203,6 +273,7 @@ type SearchableItem = z.infer<typeof searchableItemSchema>
 function searchItems<
   T extends {
     name: string
+    title?: string
     type?: string
     description?: string
     addCommandArgument?: string
@@ -314,6 +385,12 @@ export function formatSearchResultType(type?: string) {
   }
 
   return type.startsWith("registry:") ? type.slice("registry:".length) : type
+}
+
+// Inverse of formatSearchResultType. Normalizes a type filter to the full
+// namespaced form for the wire, e.g. "ui" -> "registry:ui".
+export function toRegistryItemType(type: string) {
+  return type.startsWith("registry:") ? type : `registry:${type}`
 }
 
 // Internal-only types that should not be offered as a --type filter.

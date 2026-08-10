@@ -1,0 +1,45 @@
+import {
+  QuestionnaireChoice as Choice,
+  QuestionnaireChoiceInput as ChoiceInput,
+  QuestionnaireChoiceLabel as ChoiceLabel,
+  QuestionnaireChoices as Choices,
+  QuestionnaireChoiceShortcut as ChoiceShortcut,
+  QuestionnaireDescription as Description,
+  QuestionnaireError as Error,
+  QuestionnaireInput as Input,
+  QuestionnaireItem as Item,
+  QuestionnaireNext as Next,
+  QuestionnairePrevious as Previous,
+  QuestionnaireProgress as Progress,
+  QuestionnaireRoot as Root,
+  QuestionnaireSkip as Skip,
+  QuestionnaireSubmit as Submit,
+  QuestionnaireTitle as Title,
+} from "./components"
+
+export const Questionnaire = {
+  Root,
+  Progress,
+  Item,
+  Title,
+  Description,
+  Choices,
+  Choice,
+  ChoiceInput,
+  ChoiceLabel,
+  ChoiceShortcut,
+  Input,
+  Error,
+  Previous,
+  Skip,
+  Next,
+  Submit,
+}
+
+export type {
+  QuestionnaireChoiceDefinition,
+  QuestionnaireInputType,
+  QuestionnaireItemDefinition,
+  QuestionnaireItemStatus,
+  QuestionnaireShortcutMode,
+} from "./types"

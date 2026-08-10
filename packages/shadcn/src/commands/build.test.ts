@@ -83,6 +83,48 @@ describe("build command", () => {
       ],
     })
   })
+
+  it("creates nested output directories for item names with path segments", async () => {
+    const cwd = await createFixture({
+      "registry.json": JSON.stringify({
+        name: "example",
+        homepage: "https://example.com",
+        items: [
+          {
+            name: "extension/foo",
+            type: "registry:item",
+            files: [
+              {
+                path: "registry/extensions/foo.tsx",
+                type: "registry:file",
+                target: "extensions/foo.tsx",
+              },
+            ],
+          },
+        ],
+      }),
+      "registry/extensions/foo.tsx": "export function Foo() {}",
+    })
+
+    await build.parseAsync(
+      ["node", "shadcn", "registry.json", "--cwd", cwd, "--output", "public/r"],
+      { from: "node" }
+    )
+
+    const item = JSON.parse(
+      await fs.readFile(path.join(cwd, "public/r/extension/foo.json"), "utf-8")
+    )
+
+    expect(item).toMatchObject({
+      name: "extension/foo",
+      files: [
+        {
+          path: "registry/extensions/foo.tsx",
+          content: "export function Foo() {}",
+        },
+      ],
+    })
+  })
 })
 
 async function createFixture(files: Record<string, string>) {
