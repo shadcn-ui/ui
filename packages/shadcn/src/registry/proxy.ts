@@ -1,15 +1,85 @@
-import { EnvHttpProxyAgent } from "undici"
+import { SocksClient, type SocksProxy } from "socks"
+import { Agent, Dispatcher, EnvHttpProxyAgent } from "undici"
+
+const HTTP_PROXY_ENV_VARS = [
+  "HTTPS_PROXY",
+  "https_proxy",
+  "HTTP_PROXY",
+  "http_proxy",
+] as const
+
+const ALL_PROXY_ENV_VARS = ["ALL_PROXY", "all_proxy"] as const
+
+const SOCKS_VERSION_BY_SCHEME: Record<string, SocksProxy["type"]> = {
+  "socks:": 5,
+  "socks4:": 4,
+  "socks4a:": 4,
+  "socks5:": 5,
+  "socks5h:": 5,
+}
+
+function parseSocksUrl(value: string): SocksProxy | undefined {
+  let url: URL
+  try {
+    url = new URL(value)
+  } catch {
+    return undefined
+  }
+  const type = SOCKS_VERSION_BY_SCHEME[url.protocol]
+  if (!type) return undefined
+  const port = Number(url.port) || 1080
+  return {
+    host: url.hostname,
+    port,
+    type,
+    ...(url.username
+      ? { userId: decodeURIComponent(url.username) }
+      : undefined),
+    ...(url.password
+      ? { password: decodeURIComponent(url.password) }
+      : undefined),
+  }
+}
+
+function createSocksAgent(proxy: SocksProxy): Agent {
+  return new Agent({
+    connect: (opts, callback) => {
+      SocksClient.createConnection({
+        proxy,
+        command: "connect",
+        destination: {
+          host: opts.hostname ?? "",
+          port: Number(opts.port),
+        },
+      })
+        .then(({ socket }) => callback(null, socket))
+        .catch((err: Error) => callback(err, null))
+    },
+  })
+}
+
+export function createProxyDispatcher(
+  env: NodeJS.ProcessEnv = process.env
+): Dispatcher | undefined {
+  // SOCKS via ALL_PROXY (curl convention). Only triggers for socks* schemes;
+  // other schemes (http/https) are unhandled here — users configure those via
+  // HTTP_PROXY / HTTPS_PROXY explicitly.
+  for (const name of ALL_PROXY_ENV_VARS) {
+    const value = env[name]
+    if (!value) continue
+    const socks = parseSocksUrl(value)
+    if (socks) return createSocksAgent(socks)
+  }
+
+  // HTTP/HTTPS proxy. EnvHttpProxyAgent honors http_proxy, https_proxy and
+  // no_proxy (upper and lowercase).
+  const hasHttpProxy = HTTP_PROXY_ENV_VARS.some((name) => env[name])
+  return hasHttpProxy ? new EnvHttpProxyAgent() : undefined
+}
 
 // Native fetch ignores the http.Agent-based `agent` option, so proxy support
-// goes through an undici dispatcher instead. EnvHttpProxyAgent honors
-// http_proxy, https_proxy and no_proxy (upper and lowercase).
-const proxyDispatcher =
-  process.env.https_proxy ||
-  process.env.HTTPS_PROXY ||
-  process.env.http_proxy ||
-  process.env.HTTP_PROXY
-    ? new EnvHttpProxyAgent()
-    : undefined
+// goes through an undici dispatcher instead.
+const proxyDispatcher = createProxyDispatcher()
 
 // Standard fetch strips Authorization/Cookie/Proxy-Authorization on
 // cross-origin redirects, but preserves custom-named headers. Since private
@@ -71,6 +141,10 @@ async function fetchOnce(
     // missing from the ambient RequestInit type, hence the cast. Redirects are
     // followed manually (see fetchWithProxy) so headers can be re-scoped per
     // hop, hence `redirect: "manual"`.
+    //
+    // This must stay the global `fetch` binding: MSW's Node adapter patches
+    // `globalThis.fetch`, so importing `fetch` from undici here would bypass
+    // MSW's interceptor and break the registry tests.
     return await fetch(url, {
       ...init,
       headers,
