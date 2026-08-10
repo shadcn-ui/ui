@@ -16,6 +16,9 @@ import { Toaster as BaseToaster } from "@/styles/base-nova/ui/toast"
 
 import "@/app/globals.css"
 import "@/app/(app)/(typeset)/typeset.css"
+import { Inter } from "next/font/google";
+
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: {
@@ -78,9 +81,9 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       className={cn(
-        fontVariables,
-        "[--header-height:calc(var(--spacing)*14)] lg:[--header-height:calc(var(--spacing)*16)]"
-      )}
+              fontVariables,
+              "[--header-height:calc(var(--spacing)*14)] lg:[--header-height:calc(var(--spacing)*16)]"
+            , "font-sans", inter.variable)}
     >
       <head>
         <script
