@@ -112,7 +112,7 @@ function FieldLabel({
     <ArkField.Label
       data-slot="field-label"
       className={cn(
-        "cn-field-label group/field-label peer/field-label flex w-fit leading-snug",
+        "cn-field-label group/field-label peer/field-label flex w-fit",
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
         className
       )}
@@ -129,7 +129,7 @@ function FieldTitle({
     <ark.div
       data-slot="field-label"
       className={cn(
-        "cn-field-title flex w-fit items-center leading-snug",
+        "cn-field-title flex w-fit items-center",
         className
       )}
       {...props}

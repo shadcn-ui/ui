@@ -15,7 +15,7 @@ function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={cn("animate-spin", className)}
+      className={cn("size-4 animate-spin", className)}
       {...props}
     >
       <path d="M21 12a9 9 0 1 1-6.219-8.56" />
