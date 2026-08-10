@@ -1,0 +1,69 @@
+---
+title: Liquid Text
+description: A stunning WebGL liquid text effect component using Three.js.
+base: radix
+component: true
+---
+
+<ComponentPreview name="liquid-text-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add liquid-text
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="liquid-text"
+  title="components/ui/liquid-text.tsx"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { LiquidText } from "@/components/ui/liquid-text"
+```
+
+```tsx
+<LiquidText text="shadcn/ui" fontSize={100} />
+```
+
+## API Reference
+
+### LiquidText
+
+The `LiquidText` component displays text with an interactive liquid displacement effect.
+
+| Prop          | Type     | Default                 |
+| ------------- | -------- | ----------------------- |
+| `text`        | `string` | `"Liquid Text"`         |
+| `fontSize`    | `number` | `200`                   |
+| `font`        | `string` | `"Inter, sans-serif"`   |
+| `color`       | `string` | -                       |
+| `lightColor`  | `string` | `"#000000"`             |
+| `darkColor`   | `string` | `"#ffffff"`             |
+| `className`   | `string` | -                       |

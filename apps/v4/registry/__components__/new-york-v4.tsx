@@ -494,6 +494,14 @@ export const Components: Record<string, any> = {
       ) || "message-scroller"
     return { default: mod.default || mod[exportName] }
   }),
+  "liquid-text": React.lazy(async () => {
+    const mod = await import("@/registry/new-york-v4/ui/liquid-text")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "liquid-text"
+    return { default: mod.default || mod[exportName] }
+  }),
   "dashboard-01": React.lazy(async () => {
     const mod = await import("@/registry/new-york-v4/blocks/dashboard-01/page")
     const exportName =
@@ -3466,6 +3474,14 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "calendar-hijri"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "liquid-text-demo": React.lazy(async () => {
+    const mod = await import("@/registry/new-york-v4/examples/liquid-text-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "liquid-text-demo"
     return { default: mod.default || mod[exportName] }
   }),
 }

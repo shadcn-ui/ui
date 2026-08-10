@@ -76,6 +76,7 @@ const shards: Record<
       "marker",
       "message",
       "message-scroller",
+      "liquid-text",
       "dashboard-01",
       "sidebar-01",
       "sidebar-02",
@@ -414,6 +415,7 @@ const shards: Record<
       "chart-bar-demo-legend",
       "chart-tooltip-demo",
       "calendar-hijri",
+      "liquid-text-demo",
     ]),
   },
   "base-nova": {
