@@ -4617,6 +4617,108 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    attachment: {
+      name: "attachment",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/ark/ui/attachment.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    bubble: {
+      name: "bubble",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/ark/ui/bubble.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "message-scroller": {
+      name: "message-scroller",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/ark/ui/message-scroller.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    questionnaire: {
+      name: "questionnaire",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/ark/ui/questionnaire.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/ark/questionnaire",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/ark/examples/questionnaire-example.tsx",
+        },
+      },
+    },
+    marker: {
+      name: "marker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/ark/ui/marker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    message: {
+      name: "message",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/ark/ui/message.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     sidebar: {
       name: "sidebar",
       title: "undefined",
@@ -5786,6 +5888,127 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "attachment-example": {
+      name: "attachment-example",
+      title: "Attachment",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["attachment"],
+      files: [
+        {
+          path: "registry/bases/ark/examples/attachment-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "bubble-example": {
+      name: "bubble-example",
+      title: "Bubble",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble", "button", "collapsible", "example"],
+      files: [
+        {
+          path: "registry/bases/ark/examples/bubble-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "message-scroller-example": {
+      name: "message-scroller-example",
+      title: "Message Scroller",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "attachment",
+        "bubble",
+        "button",
+        "card",
+        "example",
+        "input-group",
+        "marker",
+        "message",
+        "message-scroller",
+        "spinner",
+      ],
+      files: [
+        {
+          path: "registry/bases/ark/examples/message-scroller-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "questionnaire-example": {
+      name: "questionnaire-example",
+      title: "Questionnaire",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "card",
+        "dialog",
+        "example",
+        "questionnaire",
+        "sonner",
+      ],
+      files: [
+        {
+          path: "registry/bases/ark/examples/questionnaire-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "marker-example": {
+      name: "marker-example",
+      title: "Marker",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "marker",
+        "button",
+        "collapsible",
+        "drawer",
+        "spinner",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/ark/examples/marker-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "message-example": {
+      name: "message-example",
+      title: "Message",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble", "message", "button", "example"],
+      files: [
+        {
+          path: "registry/bases/ark/examples/message-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     utils: {
       name: "utils",
       title: "undefined",
@@ -5901,6 +6124,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/ark/blocks/preview-02/index.tsx",
+          type: "registry:block",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "preview-03": {
+      name: "preview-03",
+      title: "Preview 03",
+      description: "",
+      type: "registry:block",
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/bases/ark/blocks/preview-03/index.tsx",
           type: "registry:block",
           target: "",
         },

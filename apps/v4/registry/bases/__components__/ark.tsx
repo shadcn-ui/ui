@@ -446,6 +446,54 @@ export const Components: Record<string, any> = {
       ) || "direction"
     return { default: mod.default || mod[exportName] }
   }),
+  attachment: React.lazy(async () => {
+    const mod = await import("@/registry/bases/ark/ui/attachment")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "attachment"
+    return { default: mod.default || mod[exportName] }
+  }),
+  bubble: React.lazy(async () => {
+    const mod = await import("@/registry/bases/ark/ui/bubble")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "bubble"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "message-scroller": React.lazy(async () => {
+    const mod = await import("@/registry/bases/ark/ui/message-scroller")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "message-scroller"
+    return { default: mod.default || mod[exportName] }
+  }),
+  questionnaire: React.lazy(async () => {
+    const mod = await import("@/registry/bases/ark/ui/questionnaire")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire"
+    return { default: mod.default || mod[exportName] }
+  }),
+  marker: React.lazy(async () => {
+    const mod = await import("@/registry/bases/ark/ui/marker")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "marker"
+    return { default: mod.default || mod[exportName] }
+  }),
+  message: React.lazy(async () => {
+    const mod = await import("@/registry/bases/ark/ui/message")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "message"
+    return { default: mod.default || mod[exportName] }
+  }),
   sidebar: React.lazy(async () => {
     const mod = await import("@/registry/bases/ark/ui/sidebar")
     const exportName =
@@ -956,6 +1004,58 @@ export const Components: Record<string, any> = {
       ) || "component-example"
     return { default: mod.default || mod[exportName] }
   }),
+  "attachment-example": React.lazy(async () => {
+    const mod = await import("@/registry/bases/ark/examples/attachment-example")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "attachment-example"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "bubble-example": React.lazy(async () => {
+    const mod = await import("@/registry/bases/ark/examples/bubble-example")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "bubble-example"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "message-scroller-example": React.lazy(async () => {
+    const mod = await import(
+      "@/registry/bases/ark/examples/message-scroller-example"
+    )
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "message-scroller-example"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "questionnaire-example": React.lazy(async () => {
+    const mod = await import(
+      "@/registry/bases/ark/examples/questionnaire-example"
+    )
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire-example"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "marker-example": React.lazy(async () => {
+    const mod = await import("@/registry/bases/ark/examples/marker-example")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "marker-example"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "message-example": React.lazy(async () => {
+    const mod = await import("@/registry/bases/ark/examples/message-example")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "message-example"
+    return { default: mod.default || mod[exportName] }
+  }),
   utils: React.lazy(async () => {
     const mod = await import("@/registry/bases/ark/lib/utils")
     const exportName =
@@ -986,6 +1086,14 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "preview-02"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "preview-03": React.lazy(async () => {
+    const mod = await import("@/registry/bases/ark/blocks/preview-03/index")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "preview-03"
     return { default: mod.default || mod[exportName] }
   }),
   "login-01": React.lazy(async () => {

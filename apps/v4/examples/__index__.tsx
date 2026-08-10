@@ -2155,6 +2155,30 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "aspect-ratio-square",
       filePath: "examples/ark/aspect-ratio-square.tsx",
     },
+    "attachment-demo": {
+      name: "attachment-demo",
+      filePath: "examples/ark/attachment-demo.tsx",
+    },
+    "attachment-group": {
+      name: "attachment-group",
+      filePath: "examples/ark/attachment-group.tsx",
+    },
+    "attachment-image": {
+      name: "attachment-image",
+      filePath: "examples/ark/attachment-image.tsx",
+    },
+    "attachment-sizes": {
+      name: "attachment-sizes",
+      filePath: "examples/ark/attachment-sizes.tsx",
+    },
+    "attachment-states": {
+      name: "attachment-states",
+      filePath: "examples/ark/attachment-states.tsx",
+    },
+    "attachment-trigger": {
+      name: "attachment-trigger",
+      filePath: "examples/ark/attachment-trigger.tsx",
+    },
     "avatar-badge-icon": {
       name: "avatar-badge-icon",
       filePath: "examples/ark/avatar-badge-icon.tsx",
@@ -2250,6 +2274,46 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "breadcrumb-separator": {
       name: "breadcrumb-separator",
       filePath: "examples/ark/breadcrumb-separator.tsx",
+    },
+    "bubble-alignment": {
+      name: "bubble-alignment",
+      filePath: "examples/ark/bubble-alignment.tsx",
+    },
+    "bubble-collapsible": {
+      name: "bubble-collapsible",
+      filePath: "examples/ark/bubble-collapsible.tsx",
+    },
+    "bubble-demo": {
+      name: "bubble-demo",
+      filePath: "examples/ark/bubble-demo.tsx",
+    },
+    "bubble-group-demo": {
+      name: "bubble-group-demo",
+      filePath: "examples/ark/bubble-group-demo.tsx",
+    },
+    "bubble-link-button": {
+      name: "bubble-link-button",
+      filePath: "examples/ark/bubble-link-button.tsx",
+    },
+    "bubble-markdown": {
+      name: "bubble-markdown",
+      filePath: "examples/ark/bubble-markdown.tsx",
+    },
+    "bubble-popover": {
+      name: "bubble-popover",
+      filePath: "examples/ark/bubble-popover.tsx",
+    },
+    "bubble-reactions": {
+      name: "bubble-reactions",
+      filePath: "examples/ark/bubble-reactions.tsx",
+    },
+    "bubble-tooltip": {
+      name: "bubble-tooltip",
+      filePath: "examples/ark/bubble-tooltip.tsx",
+    },
+    "bubble-variants": {
+      name: "bubble-variants",
+      filePath: "examples/ark/bubble-variants.tsx",
     },
     "button-aschild": {
       name: "button-aschild",
@@ -3167,6 +3231,38 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "label-rtl",
       filePath: "examples/ark/label-rtl.tsx",
     },
+    "marker-border": {
+      name: "marker-border",
+      filePath: "examples/ark/marker-border.tsx",
+    },
+    "marker-demo": {
+      name: "marker-demo",
+      filePath: "examples/ark/marker-demo.tsx",
+    },
+    "marker-icon": {
+      name: "marker-icon",
+      filePath: "examples/ark/marker-icon.tsx",
+    },
+    "marker-link-button": {
+      name: "marker-link-button",
+      filePath: "examples/ark/marker-link-button.tsx",
+    },
+    "marker-separator": {
+      name: "marker-separator",
+      filePath: "examples/ark/marker-separator.tsx",
+    },
+    "marker-shimmer": {
+      name: "marker-shimmer",
+      filePath: "examples/ark/marker-shimmer.tsx",
+    },
+    "marker-status": {
+      name: "marker-status",
+      filePath: "examples/ark/marker-status.tsx",
+    },
+    "marker-variants": {
+      name: "marker-variants",
+      filePath: "examples/ark/marker-variants.tsx",
+    },
     "menubar-checkbox": {
       name: "menubar-checkbox",
       filePath: "examples/ark/menubar-checkbox.tsx",
@@ -3190,6 +3286,78 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "menubar-submenu": {
       name: "menubar-submenu",
       filePath: "examples/ark/menubar-submenu.tsx",
+    },
+    "message-actions": {
+      name: "message-actions",
+      filePath: "examples/ark/message-actions.tsx",
+    },
+    "message-attachment": {
+      name: "message-attachment",
+      filePath: "examples/ark/message-attachment.tsx",
+    },
+    "message-avatar": {
+      name: "message-avatar",
+      filePath: "examples/ark/message-avatar.tsx",
+    },
+    "message-demo": {
+      name: "message-demo",
+      filePath: "examples/ark/message-demo.tsx",
+    },
+    "message-group": {
+      name: "message-group",
+      filePath: "examples/ark/message-group.tsx",
+    },
+    "message-header-footer": {
+      name: "message-header-footer",
+      filePath: "examples/ark/message-header-footer.tsx",
+    },
+    "message-markdown": {
+      name: "message-markdown",
+      filePath: "examples/ark/message-markdown.tsx",
+    },
+    "message-scroller-anchoring": {
+      name: "message-scroller-anchoring",
+      filePath: "examples/ark/message-scroller-anchoring.tsx",
+    },
+    "message-scroller-animation": {
+      name: "message-scroller-animation",
+      filePath: "examples/ark/message-scroller-animation.tsx",
+    },
+    "message-scroller-commands": {
+      name: "message-scroller-commands",
+      filePath: "examples/ark/message-scroller-commands.tsx",
+    },
+    "message-scroller-demo": {
+      name: "message-scroller-demo",
+      filePath: "examples/ark/message-scroller-demo.tsx",
+    },
+    "message-scroller-group-chat": {
+      name: "message-scroller-group-chat",
+      filePath: "examples/ark/message-scroller-group-chat.tsx",
+    },
+    "message-scroller-load-history": {
+      name: "message-scroller-load-history",
+      filePath: "examples/ark/message-scroller-load-history.tsx",
+    },
+    "message-scroller-opening-position": {
+      name: "message-scroller-opening-position",
+      filePath: "examples/ark/message-scroller-opening-position.tsx",
+    },
+    "message-scroller-previous-context": {
+      name: "message-scroller-previous-context",
+      filePath: "examples/ark/message-scroller-previous-context.tsx",
+    },
+    "message-scroller-scrollable": {
+      name: "message-scroller-scrollable",
+      filePath: "examples/ark/message-scroller-scrollable.tsx",
+    },
+    "message-scroller-streaming": {
+      name: "message-scroller-streaming",
+      filePath: "examples/ark/message-scroller-streaming.tsx",
+    },
+    "message-scroller-visibility": {
+      name: "message-scroller-visibility",
+      filePath: "examples/ark/message-scroller-visibility.tsx",
     },
     "muted-item-group": {
       name: "muted-item-group",
@@ -3278,6 +3446,62 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "progress-rtl": {
       name: "progress-rtl",
       filePath: "examples/ark/progress-rtl.tsx",
+    },
+    "questionnaire-animated": {
+      name: "questionnaire-animated",
+      filePath: "examples/ark/questionnaire-animated.tsx",
+    },
+    "questionnaire-card": {
+      name: "questionnaire-card",
+      filePath: "examples/ark/questionnaire-card.tsx",
+    },
+    "questionnaire-conditional": {
+      name: "questionnaire-conditional",
+      filePath: "examples/ark/questionnaire-conditional.tsx",
+    },
+    "questionnaire-controlled": {
+      name: "questionnaire-controlled",
+      filePath: "examples/ark/questionnaire-controlled.tsx",
+    },
+    "questionnaire-demo": {
+      name: "questionnaire-demo",
+      filePath: "examples/ark/questionnaire-demo.tsx",
+    },
+    "questionnaire-dialog": {
+      name: "questionnaire-dialog",
+      filePath: "examples/ark/questionnaire-dialog.tsx",
+    },
+    "questionnaire-freeform": {
+      name: "questionnaire-freeform",
+      filePath: "examples/ark/questionnaire-freeform.tsx",
+    },
+    "questionnaire-multiple": {
+      name: "questionnaire-multiple",
+      filePath: "examples/ark/questionnaire-multiple.tsx",
+    },
+    "questionnaire-navigation-state": {
+      name: "questionnaire-navigation-state",
+      filePath: "examples/ark/questionnaire-navigation-state.tsx",
+    },
+    "questionnaire-progress": {
+      name: "questionnaire-progress",
+      filePath: "examples/ark/questionnaire-progress.tsx",
+    },
+    "questionnaire-resume": {
+      name: "questionnaire-resume",
+      filePath: "examples/ark/questionnaire-resume.tsx",
+    },
+    "questionnaire-shortcuts": {
+      name: "questionnaire-shortcuts",
+      filePath: "examples/ark/questionnaire-shortcuts.tsx",
+    },
+    "questionnaire-skip": {
+      name: "questionnaire-skip",
+      filePath: "examples/ark/questionnaire-skip.tsx",
+    },
+    "questionnaire-validation": {
+      name: "questionnaire-validation",
+      filePath: "examples/ark/questionnaire-validation.tsx",
     },
     "radio-fields": {
       name: "radio-fields",

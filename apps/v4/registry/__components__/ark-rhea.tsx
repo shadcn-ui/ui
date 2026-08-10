@@ -446,6 +446,54 @@ export const Components: Record<string, any> = {
       ) || "direction"
     return { default: mod.default || mod[exportName] }
   }),
+  attachment: React.lazy(async () => {
+    const mod = await import("@/styles/ark-rhea/ui/attachment")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "attachment"
+    return { default: mod.default || mod[exportName] }
+  }),
+  bubble: React.lazy(async () => {
+    const mod = await import("@/styles/ark-rhea/ui/bubble")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "bubble"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "message-scroller": React.lazy(async () => {
+    const mod = await import("@/styles/ark-rhea/ui/message-scroller")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "message-scroller"
+    return { default: mod.default || mod[exportName] }
+  }),
+  questionnaire: React.lazy(async () => {
+    const mod = await import("@/styles/ark-rhea/ui/questionnaire")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire"
+    return { default: mod.default || mod[exportName] }
+  }),
+  marker: React.lazy(async () => {
+    const mod = await import("@/styles/ark-rhea/ui/marker")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "marker"
+    return { default: mod.default || mod[exportName] }
+  }),
+  message: React.lazy(async () => {
+    const mod = await import("@/styles/ark-rhea/ui/message")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "message"
+    return { default: mod.default || mod[exportName] }
+  }),
   sidebar: React.lazy(async () => {
     const mod = await import("@/styles/ark-rhea/ui/sidebar")
     const exportName =

@@ -1158,6 +1158,10 @@
           "docs": "https://ui.shadcn.com/docs/components/base/questionnaire",
           "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/questionnaire-example.tsx"
         },
+        "ark": {
+          "docs": "https://ui.shadcn.com/docs/components/ark/questionnaire",
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/ark/examples/questionnaire-example.tsx"
+        },
         "aria": {
           "docs": "https://ui.shadcn.com/docs/components/aria/questionnaire",
           "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/questionnaire-example.tsx"
