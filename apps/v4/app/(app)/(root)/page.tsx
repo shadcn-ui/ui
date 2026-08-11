@@ -11,6 +11,7 @@ import {
   PageHeaderHeading,
 } from "@/components/page-header"
 import { Button } from "@/styles/radix-nova/ui/button"
+import { LiquidText } from "@/components/liquid-text"
 
 import { CardsDemo } from "./cards"
 
@@ -50,6 +51,7 @@ export default function IndexPage() {
     <div className="flex flex-1 flex-col">
       <PageHeader className="md:**:[.container]:pb-8 lg:**:[.container]:pb-12">
         <Announcement />
+        <LiquidText text="shadcn/ui" fontSize={100} className="mx-auto h-[120px] md:h-[150px] mb-6 max-w-4xl" />
         <PageHeaderHeading className="max-w-4xl">{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>

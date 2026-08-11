@@ -2764,4 +2764,15 @@ export const examples: Registry["items"] = [
       mobile: "component",
     },
   },
+  {
+    name: "liquid-text-demo",
+    type: "registry:example",
+    registryDependencies: ["liquid-text"],
+    files: [
+      {
+        path: "examples/liquid-text-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

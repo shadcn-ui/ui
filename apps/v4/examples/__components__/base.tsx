@@ -2398,6 +2398,14 @@ export const Components: Record<string, any> = {
       ) || "label-rtl"
     return { default: mod.default || mod[exportName] }
   }),
+  "liquid-text-demo": React.lazy(async () => {
+    const mod = await import("@/examples/base/liquid-text-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "liquid-text-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
   "markdown-demo": React.lazy(async () => {
     const mod = await import("@/examples/base/markdown-demo")
     const exportName =

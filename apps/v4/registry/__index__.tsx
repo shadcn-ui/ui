@@ -989,6 +989,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "liquid-text": {
+      name: "liquid-text",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/new-york-v4/ui/liquid-text.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     "dashboard-01": {
       name: "dashboard-01",
       title: "undefined",
@@ -6947,6 +6963,22 @@ export const Index: Record<string, Record<string, any>> = {
           "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
         mobile: "component",
       },
+    },
+    "liquid-text-demo": {
+      name: "liquid-text-demo",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["liquid-text"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/liquid-text-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
     },
   },
   "base-nova": {

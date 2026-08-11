@@ -758,4 +758,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       },
     ],
   },
+  {
+    name: "liquid-text",
+    type: "registry:ui",
+    dependencies: ["three"],
+    files: [
+      {
+        path: "ui/liquid-text.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

@@ -1201,6 +1201,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "label-rtl",
       filePath: "examples/base/label-rtl.tsx",
     },
+    "liquid-text-demo": {
+      name: "liquid-text-demo",
+      filePath: "examples/base/liquid-text-demo.tsx",
+    },
     "markdown-demo": {
       name: "markdown-demo",
       filePath: "examples/base/markdown-demo.tsx",
@@ -3227,6 +3231,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "label-rtl",
       filePath: "examples/aria/label-rtl.tsx",
     },
+    "liquid-text-demo": {
+      name: "liquid-text-demo",
+      filePath: "examples/aria/liquid-text-demo.tsx",
+    },
     "markdown-demo": {
       name: "markdown-demo",
       filePath: "examples/aria/markdown-demo.tsx",
@@ -5232,6 +5240,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "label-rtl": {
       name: "label-rtl",
       filePath: "examples/radix/label-rtl.tsx",
+    },
+    "liquid-text-demo": {
+      name: "liquid-text-demo",
+      filePath: "examples/radix/liquid-text-demo.tsx",
     },
     "markdown-demo": {
       name: "markdown-demo",
