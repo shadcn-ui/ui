@@ -52,7 +52,9 @@ type Tools = {
   }
 }
 
-const chat = createChat<UIMessage<unknown, Record<string, never>, Tools>>()
+type ChatMessage = UIMessage<unknown, Record<string, never>, Tools>
+
+const chat = createChat<ChatMessage>()
   .user("Check the deployment health for the checkout flow.")
   .sleep(1000)
   .assistant(({ writer }) => {

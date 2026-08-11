@@ -67,9 +67,13 @@ type MessagePartsTools = {
   }
 }
 
-const messagePartsChat = createChat<
-  UIMessage<unknown, MessagePartsData, MessagePartsTools>
->()
+type MessagePartsMessage = UIMessage<
+  unknown,
+  MessagePartsData,
+  MessagePartsTools
+>
+
+const messagePartsChat = createChat<MessagePartsMessage>()
   .user("Can you review this screenshot and check the deployment?", {
     files: [
       {
@@ -126,7 +130,6 @@ const messagePartsChat = createChat<
 
 const messagePartsMessages = messagePartsChat.get()
 
-type MessagePartsMessage = (typeof messagePartsMessages)[number]
 type MessagePartsPart = MessagePartsMessage["parts"][number]
 
 export default function MessageExample() {
