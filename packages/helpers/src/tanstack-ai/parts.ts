@@ -200,17 +200,6 @@ export function materializeParts<
         )
         break
       }
-      case "tool-approval-request": {
-        const toolCallPart = findToolCallPart(event.toolCallId)
-
-        if (toolCallPart) {
-          toolCallPart.approval = {
-            id: event.approvalId,
-            needsApproval: true,
-          }
-        }
-        break
-      }
       case "tool-denied": {
         const toolCallPart = findToolCallPart(event.toolCallId)
 
@@ -235,6 +224,7 @@ export function materializeParts<
       case "reasoning-file":
       case "custom":
       case "step-start":
+      case "tool-approval-request":
         // These events have no TanStack message part.
         break
       default:

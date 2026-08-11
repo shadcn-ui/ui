@@ -1,3 +1,5 @@
+import type { UIMessage } from "ai"
+
 import { createChat } from "@/lib/ai"
 import { type MessagePartRenderProps } from "@/components/message-parts"
 import {
@@ -66,9 +68,7 @@ type MessagePartsTools = {
 }
 
 const messagePartsChat = createChat<
-  unknown,
-  MessagePartsData,
-  MessagePartsTools
+  UIMessage<unknown, MessagePartsData, MessagePartsTools>
 >()
   .user("Can you review this screenshot and check the deployment?", {
     files: [

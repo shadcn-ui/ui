@@ -1,14 +1,18 @@
-import { readUIMessageStream } from "ai"
+import {
+  lastAssistantMessageIsCompleteWithApprovalResponses,
+  lastAssistantMessageIsCompleteWithToolCalls,
+  readUIMessageStream,
+} from "ai"
 import type { ChatTransport, UIMessage } from "ai"
 import { describe, expect, it } from "vitest"
 
 import { createChat } from "./index"
 import { readStream, weatherLoading, weatherOutput } from "./test-utils"
-import type { DataParts, Tools } from "./test-utils"
+import type { DataParts, TestMessage, Tools } from "./test-utils"
 
 describe("AI SDK transport", () => {
   it("chains tool output after an in-stream sleep", async () => {
-    const chat = createChat<unknown, DataParts, Tools>()
+    const chat = createChat<TestMessage>()
       .user("Weather?")
       .assistant(({ writer }) => {
         writer
@@ -42,7 +46,7 @@ describe("AI SDK transport", () => {
   })
 
   it("streams denied static tool parts", async () => {
-    const chat = createChat<unknown, DataParts, Tools>()
+    const chat = createChat<TestMessage>()
       .user("Use the available tools.")
       .assistant([
         {
@@ -88,7 +92,7 @@ describe("AI SDK transport", () => {
   })
 
   it("streams the next scripted assistant response through the transport", async () => {
-    const chat = createChat<unknown, DataParts, Tools>()
+    const chat = createChat<TestMessage>()
       .user("Hello")
       .assistant("Hey, how's it going?")
       .user("What's the weather?")
@@ -423,7 +427,7 @@ describe("AI SDK transport", () => {
     ).toBeGreaterThan(1)
   })
   it("streams hydrated assistant turns through the transport", async () => {
-    const source = createChat<unknown, DataParts, Tools>()
+    const source = createChat<TestMessage>()
       .user("What's the weather?")
       .assistant(({ writer }) => {
         writer
@@ -434,7 +438,7 @@ describe("AI SDK transport", () => {
         writer.text("It's sunny.", { mode: "instant" })
       })
 
-    const replay = createChat<unknown, DataParts, Tools>({
+    const replay = createChat<TestMessage>({
       messages: source.get(),
     })
     const [userMessage] = replay.get(1)
@@ -685,7 +689,7 @@ describe("AI SDK live client integration", () => {
 
 describe("AI SDK human-in-the-loop", () => {
   function createApprovalChat() {
-    return createChat<unknown, DataParts, Tools>()
+    return createChat<TestMessage>()
       .user("Fetch the weather?")
       .assistant(({ writer }) => {
         writer.text("I need your approval first.", { mode: "instant" })
@@ -706,10 +710,13 @@ describe("AI SDK human-in-the-loop", () => {
     transport: ChatTransport<UIMessage<unknown, DataParts, Tools>>,
     messages: Array<UIMessage<unknown, DataParts, Tools>>
   ) {
+    // Mirrors useChat's automatic sends, which pass the last message's id
+    // with the submit-message trigger. The transport must not treat that as
+    // a regeneration of the identified turn.
     const stream = await transport.sendMessages({
       trigger: "submit-message",
       chatId: "chat-1",
-      messageId: undefined,
+      messageId: messages[messages.length - 1]?.id,
       messages,
       abortSignal: undefined,
     })
@@ -789,18 +796,21 @@ describe("AI SDK human-in-the-loop", () => {
 
     expect(chunks.map((chunk) => chunk.type)).toEqual([
       "start",
+      "start-step",
       "tool-output-available",
       "text-start",
       "text-delta",
       "text-end",
       "finish",
     ])
-    expect(chunks[0]).toMatchObject({ messageId: "msg-3" })
-    expect(chunks[1]).toMatchObject({
+    // Continuations omit the message id so the client updates the paused
+    // assistant message in place instead of forking a duplicate.
+    expect(chunks[0]).toMatchObject({ messageId: undefined })
+    expect(chunks[2]).toMatchObject({
       toolCallId: "call-1",
       output: weatherOutput,
     })
-    expect(chunks[3]).toMatchObject({ delta: "Fetched it." })
+    expect(chunks[4]).toMatchObject({ delta: "Fetched it." })
   })
 
   it("streams the denial and denied wording after denial", async () => {
@@ -813,18 +823,65 @@ describe("AI SDK human-in-the-loop", () => {
 
     expect(chunks.map((chunk) => chunk.type)).toEqual([
       "start",
+      "start-step",
       "tool-output-denied",
       "text-start",
       "text-delta",
       "text-end",
       "finish",
     ])
-    expect(chunks[1]).toMatchObject({ toolCallId: "call-1" })
-    expect(chunks[3]).toMatchObject({ delta: "Okay, skipping." })
+    expect(chunks[2]).toMatchObject({ toolCallId: "call-1" })
+    expect(chunks[4]).toMatchObject({ delta: "Okay, skipping." })
+  })
+
+  it("does not retrigger automatic sending after a continuation merges", async () => {
+    const chat = createApprovalChat()
+    const [userMessage, assistantMessage] = chat.get(2)
+    const respondedMessage = respondToApproval(assistantMessage, true)
+    const chunks = await readTurnChunks(
+      chat.transport({ delayMs: undefined }),
+      [userMessage, respondedMessage]
+    )
+
+    // The client merges these chunks into the prior assistant message as a
+    // new step. Rebuild that merged shape and assert the triggers ignore the
+    // already-resolved tool call behind the step boundary.
+    const mergedMessage = {
+      ...respondedMessage,
+      parts: [
+        ...respondedMessage.parts.map((part) =>
+          part.type === "tool-getWeather"
+            ? ({
+                ...part,
+                state: "output-available",
+                output: weatherOutput,
+                approval: { id: "approval-1", approved: true },
+              } as (typeof respondedMessage.parts)[number])
+            : part
+        ),
+        { type: "step-start" } as (typeof respondedMessage.parts)[number],
+        {
+          type: "text",
+          text: "Fetched it.",
+        } as (typeof respondedMessage.parts)[number],
+      ],
+    }
+
+    expect(chunks.some((chunk) => chunk.type === "start-step")).toBe(true)
+    expect(
+      lastAssistantMessageIsCompleteWithToolCalls({
+        messages: [userMessage, mergedMessage],
+      })
+    ).toBe(false)
+    expect(
+      lastAssistantMessageIsCompleteWithApprovalResponses({
+        messages: [userMessage, mergedMessage],
+      })
+    ).toBe(false)
   })
 
   it("continues an elicitation with the user-submitted output", async () => {
-    const chat = createChat<unknown, DataParts, Tools>()
+    const chat = createChat<TestMessage>()
       .user("Help me plan the release.")
       .assistant(({ writer }) => {
         writer.tool("createFile", {
@@ -863,11 +920,12 @@ describe("AI SDK human-in-the-loop", () => {
 
     expect(chunks.map((chunk) => chunk.type)).toEqual([
       "start",
+      "start-step",
       "text-start",
       "text-delta",
       "text-end",
       "finish",
     ])
-    expect(chunks[2]).toMatchObject({ delta: "Saved plan.md." })
+    expect(chunks[3]).toMatchObject({ delta: "Saved plan.md." })
   })
 })

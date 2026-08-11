@@ -77,7 +77,7 @@ const scriptedEvents = [
   { type: "user-left", name: "Aleena", order: 5.5, delayMs: 2000 },
 ] satisfies ScriptedChatEvent[]
 
-const chat = createChat<Metadata>()
+const chat = createChat<UIMessage<Metadata>>()
   .user(
     "Hey everyone — dinner this Saturday? I was thinking something casual at my place."
   )

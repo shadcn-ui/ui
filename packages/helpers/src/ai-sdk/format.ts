@@ -245,8 +245,13 @@ export function createAiSdkFormat<
 
     createTransport(transportContext, options = {}) {
       return {
-        async sendMessages({ messages, messageId, abortSignal }) {
-          const turn = transportContext.resolveTurn(messages, messageId)
+        async sendMessages({ messages, messageId, abortSignal, trigger }) {
+          // Automatic sends after tool results and approvals pass the last
+          // assistant message's id; only regeneration may replay a turn by id.
+          const turn = transportContext.resolveTurn(
+            messages,
+            trigger === "regenerate-message" ? messageId : undefined
+          )
 
           if (!turn) {
             throw new Error("No assistant response found for this transcript.")

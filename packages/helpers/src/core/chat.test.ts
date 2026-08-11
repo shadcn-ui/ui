@@ -446,6 +446,7 @@ describe("human-in-the-loop turns", () => {
 
     expect(turn?.message.id).toBe("msg-3")
     expect(turn?.events).toMatchObject([
+      { kind: "step-start" },
       {
         kind: "tool-output",
         toolCallId: "call-1",
@@ -466,6 +467,7 @@ describe("human-in-the-loop turns", () => {
       ])
 
     expect(turn?.events).toMatchObject([
+      { kind: "step-start" },
       { kind: "tool-denied", toolCallId: "call-1" },
       { kind: "text", text: "Okay, skipping." },
     ])
@@ -512,6 +514,7 @@ describe("human-in-the-loop turns", () => {
       .context.resolveTurn([userMessage, answeredMessage])
 
     expect(turn?.events).toMatchObject([
+      { kind: "step-start" },
       { kind: "text", text: "Temperature 72." },
     ])
   })
@@ -550,15 +553,35 @@ describe("human-in-the-loop turns", () => {
     ])
 
     expect(firstContinuation?.events).toMatchObject([
+      { kind: "step-start" },
       { kind: "text", text: "Thanks." },
     ])
     expect(secondContinuation?.events).toMatchObject([
+      { kind: "step-start" },
       { kind: "text", text: "Pending 0." },
     ])
     expect(warn).toHaveBeenCalledWith(
       expect.stringContaining("without a pending tool call")
     )
     warn.mockRestore()
+  })
+
+  it("starts eager continuation turns with a step boundary", () => {
+    const chat = createTestChat()
+      .user("Plan the release?")
+      .assistant(({ writer }) => {
+        writer.tool("getWeather", { input: { city: "Paris" } })
+      })
+      .assistant("Thanks.")
+    const [userMessage, assistantMessage] = chat.get(2)
+    const turn = chat
+      .transport()
+      .context.resolveTurn([userMessage, assistantMessage])
+
+    expect(turn?.events).toMatchObject([
+      { kind: "step-start" },
+      { kind: "text", text: "Thanks." },
+    ])
   })
 
   it("warns when an approval request has no continuation turn", () => {

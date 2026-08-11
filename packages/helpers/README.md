@@ -28,7 +28,7 @@ after a paused turn becomes a continuation. It materializes when the follow-up
 request arrives and receives the resolved `toolCall` in its context.
 
 For client-executed tools, the user supplies the output through
-`addToolResult` and the continuation reads it:
+`addToolOutput` and the continuation reads it:
 
 ```ts
 const chat = createChat()

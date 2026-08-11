@@ -160,6 +160,9 @@ export function createChatRuntime<
     // Continuation turns carry `resolve` instead of a materialized message.
     message?: MESSAGE
     resolve?: (context: AssistantTurnContext<WRITER, MESSAGE, TOOLS>) => void
+    // Continuations stream without a message id so the client keeps merging
+    // into the assistant message it is already continuing.
+    continuation?: boolean
     // The events last streamed for a continuation turn. Later continuations
     // read pending calls from here so re-runs cannot drift generated ids
     // away from the transcript.
@@ -168,6 +171,7 @@ export function createChatRuntime<
 
   type ResolvedTurn = ChatTurn<MESSAGE, DATA, TOOLS> & {
     metadata?: METADATA
+    continuation?: boolean
   }
 
   const ids = createChatIds(options)
@@ -406,11 +410,10 @@ export function createChatRuntime<
     return -1
   }
 
-  function isPreviousAssistantPaused() {
-    const previousIndex = findPreviousAssistantIndex(turns.length)
-    const previousTurn = turns[previousIndex]
+  function isPreviousTurnPausedAssistant() {
+    const previousTurn = turns[turns.length - 1]
 
-    if (!previousTurn) {
+    if (previousTurn?.role !== "assistant") {
       return false
     }
 
@@ -494,6 +497,12 @@ export function createChatRuntime<
     }
 
     const events = [...turn.events]
+
+    // The client merges a continuation into the prior assistant message as a
+    // new step. The step boundary keeps the resolved tool call out of the
+    // latest step so automatic sending does not retrigger on it.
+    events.push({ kind: "step-start" })
+
     const pending = resolvePendingToolCalls(turnIndex, messages)
 
     if (!pending.length) {
@@ -566,6 +575,7 @@ export function createChatRuntime<
       }),
       events,
       metadata: turnMetadata,
+      continuation: true,
     }
   }
 
@@ -627,8 +637,9 @@ export function createChatRuntime<
       assistantOptions: ChatAssistantOptions<METADATA> = {}
     ) {
       const events = takePendingEvents()
+      const continuation = isPreviousTurnPausedAssistant()
 
-      if (typeof input === "function" && isPreviousAssistantPaused()) {
+      if (typeof input === "function" && continuation) {
         return pushTurn({
           role: "assistant",
           messageId: resolveMessageId(assistantOptions.id),
@@ -638,7 +649,12 @@ export function createChatRuntime<
               ? undefined
               : cloneValue(assistantOptions.metadata),
           resolve: input,
+          continuation,
         })
+      }
+
+      if (continuation) {
+        events.push({ kind: "step-start" })
       }
 
       const messageParts = materializeAssistantInput(input, events)
@@ -660,6 +676,7 @@ export function createChatRuntime<
         messageId,
         events,
         metadata: turnMetadata,
+        continuation: continuation || undefined,
       })
     },
 
@@ -776,7 +793,12 @@ export function createChatRuntime<
             const steps = lowerEvents<METADATA, DATA, TOOLS>(turn.events, {
               delayMs: DEFAULT_STREAM_DELAY_MS,
               ...streamOptions,
-              messageId: format.getMessageId(turn.message),
+              // A continuation stream carries no message id: the client is
+              // already continuing the paused assistant message, and a new
+              // id would fork it into a duplicate instead of updating it.
+              messageId: (turn as ResolvedTurn).continuation
+                ? undefined
+                : format.getMessageId(turn.message),
               messageMetadata: (turn as ResolvedTurn).metadata,
             })
 

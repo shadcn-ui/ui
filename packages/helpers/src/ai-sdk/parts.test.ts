@@ -9,11 +9,11 @@ import {
   weatherOutput,
   weatherSuccess,
 } from "./test-utils"
-import type { DataParts, Tools } from "./test-utils"
+import type { DataParts, TestMessage, Tools } from "./test-utils"
 
 describe("AI SDK parts", () => {
   it("creates typed messages with explicit parts", () => {
-    const [message] = createChat<unknown, DataParts, Tools>()
+    const [message] = createChat<TestMessage>()
       .assistant(({ writer }) => {
         writer.text("Here is the forecast.")
         writer.data({
@@ -57,7 +57,7 @@ describe("AI SDK parts", () => {
   })
 
   it("creates rich messages with the fluent writer", () => {
-    const [message] = createChat<unknown, DataParts, Tools>()
+    const [message] = createChat<TestMessage>()
       .assistant(
         ({ writer }) => {
           writer.stepStart()
@@ -136,7 +136,7 @@ describe("AI SDK parts", () => {
   })
 
   it("materializes all writer part variants", () => {
-    const [message] = createChat<unknown, DataParts, Tools>()
+    const [message] = createChat<TestMessage>()
       .assistant(
         ({ writer }) => {
           writer.stepStart()
@@ -201,7 +201,7 @@ describe("AI SDK parts", () => {
 
 describe("AI SDK approval parts", () => {
   function createApprovalMessage() {
-    const [, assistantMessage] = createChat<unknown, DataParts, Tools>()
+    const [, assistantMessage] = createChat<TestMessage>()
       .user("Fetch the weather?")
       .assistant(({ writer }) => {
         writer.tool("getWeather", {
@@ -254,7 +254,7 @@ describe("AI SDK approval parts", () => {
   })
 
   it("hydrates approval-requested parts back into approval events", () => {
-    const chat = createChat<unknown, DataParts, Tools>({
+    const chat = createChat<TestMessage>({
       messages: [createApprovalMessage()],
     })
     const [message] = chat.get(1)
