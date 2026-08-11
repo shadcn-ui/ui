@@ -208,7 +208,7 @@ function MenubarShortcut({
     <ark.span
       data-slot="menubar-shortcut"
       className={cn(
-        "ml-auto text-xs tracking-widest text-muted-foreground group-focus/menubar-item:text-accent-foreground",
+        "ms-auto text-xs tracking-widest text-muted-foreground group-focus/menubar-item:text-accent-foreground",
         className
       )}
       {...props}
@@ -241,7 +241,7 @@ function MenubarSubTrigger({
       {...props}
     >
       {children}
-      <ChevronRightIcon className="cn-rtl-flip ml-auto size-4" />
+      <ChevronRightIcon className="cn-rtl-flip ms-auto size-4" />
     </MenuPrimitive.TriggerItem>
   )
 }

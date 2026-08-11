@@ -217,7 +217,7 @@ function MenubarShortcut({
   return (
     <ark.span
       data-slot="menubar-shortcut"
-      className={cn("cn-menubar-shortcut ml-auto", className)}
+      className={cn("cn-menubar-shortcut ms-auto", className)}
       {...props}
     />
   )
@@ -254,7 +254,7 @@ function MenubarSubTrigger({
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
         remixicon="RiArrowRightSLine"
-        className="cn-rtl-flip ml-auto size-4"
+        className="cn-rtl-flip ms-auto size-4"
       />
     </MenuPrimitive.TriggerItem>
   )
