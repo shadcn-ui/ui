@@ -437,7 +437,7 @@ function ButtonGroupWithSelectAndInput() {
       <ButtonGroup>
         <Select collection={durationItems} defaultValue={["hours"]}>
           <SelectControl>
-            <SelectTrigger id="duration">
+            <SelectTrigger>
               <SelectValue placeholder="Select duration" />
             </SelectTrigger>
             <SelectIndicator />

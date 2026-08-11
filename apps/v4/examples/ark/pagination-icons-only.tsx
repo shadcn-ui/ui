@@ -33,10 +33,10 @@ export function PaginationIconsOnly() {
   return (
     <div className="flex items-center justify-between gap-4">
       <Field orientation="horizontal" className="w-fit">
-        <FieldLabel htmlFor="select-rows-per-page">Rows per page</FieldLabel>
+        <FieldLabel>Rows per page</FieldLabel>
         <Select collection={rowsPerPageItems} defaultValue={["25"]} positioning={{ placement: "bottom-start" }}>
           <SelectControl className="w-20">
-            <SelectTrigger id="select-rows-per-page">
+            <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
             <SelectIndicator />

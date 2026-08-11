@@ -260,10 +260,10 @@ function SelectFields() {
     <Example title="Select Fields">
       <FieldGroup>
         <Field>
-          <FieldLabel htmlFor="select-basic">Basic Select</FieldLabel>
+          <FieldLabel>Basic Select</FieldLabel>
           <Select collection={optionItems}>
             <SelectControl>
-              <SelectTrigger id="select-basic">
+              <SelectTrigger>
                 <SelectValue placeholder="Choose an option" />
               </SelectTrigger>
               <SelectIndicator />
@@ -281,10 +281,10 @@ function SelectFields() {
           </Select>
         </Field>
         <Field>
-          <FieldLabel htmlFor="select-country">Country</FieldLabel>
+          <FieldLabel>Country</FieldLabel>
           <Select collection={countryItems}>
             <SelectControl>
-              <SelectTrigger id="select-country">
+              <SelectTrigger>
                 <SelectValue placeholder="Select your country" />
               </SelectTrigger>
               <SelectIndicator />
@@ -305,13 +305,13 @@ function SelectFields() {
           </FieldDescription>
         </Field>
         <Field>
-          <FieldLabel htmlFor="select-timezone">Timezone</FieldLabel>
+          <FieldLabel>Timezone</FieldLabel>
           <FieldDescription>
             Choose your local timezone for accurate scheduling.
           </FieldDescription>
           <Select collection={timezoneItems}>
             <SelectControl>
-              <SelectTrigger id="select-timezone">
+              <SelectTrigger>
                 <SelectValue placeholder="Select timezone" />
               </SelectTrigger>
               <SelectIndicator />
@@ -329,10 +329,10 @@ function SelectFields() {
           </Select>
         </Field>
         <Field data-invalid>
-          <FieldLabel htmlFor="select-invalid">Invalid Select</FieldLabel>
+          <FieldLabel>Invalid Select</FieldLabel>
           <Select collection={optionItems}>
             <SelectControl>
-              <SelectTrigger id="select-invalid">
+              <SelectTrigger>
                 <SelectValue placeholder="This field has an error" />
               </SelectTrigger>
               <SelectIndicator />
@@ -353,12 +353,12 @@ function SelectFields() {
           </FieldDescription>
         </Field>
         <Field data-disabled>
-          <FieldLabel htmlFor="select-disabled-field">
+          <FieldLabel>
             Disabled Field
           </FieldLabel>
           <Select collection={optionItems} disabled>
             <SelectControl>
-              <SelectTrigger id="select-disabled-field">
+              <SelectTrigger>
                 <SelectValue placeholder="Cannot select" />
               </SelectTrigger>
               <SelectIndicator />
@@ -1242,12 +1242,12 @@ function HorizontalFields() {
         </Field>
         <Field orientation="horizontal">
           <FieldContent>
-            <FieldLabel htmlFor="horizontal-select">Favorite Fruit</FieldLabel>
+            <FieldLabel>Favorite Fruit</FieldLabel>
             <FieldDescription>Choose your favorite fruit.</FieldDescription>
           </FieldContent>
           <Select collection={fruitItems}>
             <SelectControl>
-              <SelectTrigger id="horizontal-select">
+              <SelectTrigger>
                 <SelectValue placeholder="Select a fruit" />
               </SelectTrigger>
               <SelectIndicator />

@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/registry/bases/ark/ui/button"
 import {
   Card,
@@ -81,14 +83,14 @@ export function TransferFunds() {
             </InputGroup>
           </Field>
           <Field>
-            <FieldLabel htmlFor="from-account">From Account</FieldLabel>
+            <FieldLabel>From Account</FieldLabel>
             <Select
               collection={fromAccounts}
               defaultValue={["checking"]}
               className="w-full"
             >
               <SelectControl>
-                <SelectTrigger id="from-account">
+                <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectIndicatorGroup>
@@ -108,14 +110,14 @@ export function TransferFunds() {
             </Select>
           </Field>
           <Field>
-            <FieldLabel htmlFor="to-account">To Account</FieldLabel>
+            <FieldLabel>To Account</FieldLabel>
             <Select
               collection={toAccounts}
               defaultValue={["savings"]}
               className="w-full"
             >
               <SelectControl>
-                <SelectTrigger id="to-account">
+                <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectIndicatorGroup>

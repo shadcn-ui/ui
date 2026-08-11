@@ -619,10 +619,10 @@ function FormExample() {
                   />
                 </Field>
                 <Field>
-                  <FieldLabel htmlFor="small-form-role">Role</FieldLabel>
+                  <FieldLabel>Role</FieldLabel>
                   <Select collection={roleItems}>
                     <SelectControl>
-                      <SelectTrigger id="small-form-role">
+                      <SelectTrigger>
                         <SelectValue placeholder="Select a role" />
                       </SelectTrigger>
                       <SelectIndicator />

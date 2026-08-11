@@ -348,10 +348,10 @@ function DialogChatSettings() {
                   <FieldSet>
                     <FieldGroup>
                       <Field orientation="horizontal">
-                        <FieldLabel htmlFor="theme">Theme</FieldLabel>
+                        <FieldLabel>Theme</FieldLabel>
                         <Select collection={themeItems} value={[theme]} onValueChange={(details) => setTheme(details.value[0])}>
                           <SelectControl>
-                            <SelectTrigger id="theme">
+                            <SelectTrigger>
                               <SelectValue placeholder="Select" />
                             </SelectTrigger>
                             <SelectIndicator />
@@ -370,7 +370,7 @@ function DialogChatSettings() {
                       </Field>
                       <FieldSeparator />
                       <Field orientation="horizontal">
-                        <FieldLabel htmlFor="accent-color">
+                        <FieldLabel>
                           Accent Color
                         </FieldLabel>
                         <Select
@@ -379,7 +379,7 @@ function DialogChatSettings() {
                           onValueChange={(details) => setAccentColor(details.value[0])}
                         >
                           <SelectControl>
-                            <SelectTrigger id="accent-color">
+                            <SelectTrigger>
                               <SelectValue placeholder="Select" />
                             </SelectTrigger>
                             <SelectIndicator />
@@ -402,7 +402,7 @@ function DialogChatSettings() {
                       <FieldSeparator />
                       <Field orientation="responsive">
                         <FieldContent>
-                          <FieldLabel htmlFor="spoken-language">
+                          <FieldLabel>
                             Spoken Language
                           </FieldLabel>
                           <FieldDescription>
@@ -417,7 +417,7 @@ function DialogChatSettings() {
                           onValueChange={(details) => setSpokenLanguage(details.value[0])}
                         >
                           <SelectControl>
-                            <SelectTrigger id="spoken-language">
+                            <SelectTrigger>
                               <SelectValue placeholder="Select" />
                             </SelectTrigger>
                             <SelectIndicator />
@@ -446,10 +446,10 @@ function DialogChatSettings() {
                       </Field>
                       <FieldSeparator />
                       <Field orientation="horizontal">
-                        <FieldLabel htmlFor="voice">Voice</FieldLabel>
+                        <FieldLabel>Voice</FieldLabel>
                         <Select collection={voiceItems} value={[voice]} onValueChange={(details) => setVoice(details.value[0])}>
                           <SelectControl>
-                            <SelectTrigger id="voice">
+                            <SelectTrigger>
                               <SelectValue placeholder="Select" />
                             </SelectTrigger>
                             <SelectIndicator />

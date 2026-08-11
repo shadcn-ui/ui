@@ -76,7 +76,7 @@ export function PayoutThreshold() {
       <CardContent>
         <FieldGroup>
           <Field>
-            <FieldLabel htmlFor="preferred-currency">
+            <FieldLabel>
               Preferred Currency
             </FieldLabel>
             <Select
@@ -85,7 +85,7 @@ export function PayoutThreshold() {
               className="w-full"
             >
               <SelectControl>
-                <SelectTrigger id="preferred-currency">
+                <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectIndicatorGroup>

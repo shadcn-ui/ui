@@ -429,10 +429,10 @@ function SelectWithField() {
   return (
     <Example title="With Field">
       <Field>
-        <FieldLabel htmlFor="select-fruit">Favorite Fruit</FieldLabel>
+        <FieldLabel>Favorite Fruit</FieldLabel>
         <Select collection={fruitsCollection}>
           <SelectControl>
-            <SelectTrigger id="select-fruit">
+            <SelectTrigger>
               <SelectValue placeholder="Select a fruit" />
             </SelectTrigger>
             <SelectIndicator />
@@ -479,10 +479,10 @@ function SelectInvalid() {
           </SelectContent>
         </Select>
         <Field data-invalid>
-          <FieldLabel htmlFor="select-fruit-invalid">Favorite Fruit</FieldLabel>
+          <FieldLabel>Favorite Fruit</FieldLabel>
           <Select collection={fruitsCollection}>
             <SelectControl>
-              <SelectTrigger id="select-fruit-invalid" >
+              <SelectTrigger >
                 <SelectValue placeholder="Select a fruit" />
               </SelectTrigger>
               <SelectIndicator />

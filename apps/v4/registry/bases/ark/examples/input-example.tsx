@@ -265,10 +265,10 @@ function InputForm() {
               />
             </Field>
             <Field>
-              <FieldLabel htmlFor="form-country">Country</FieldLabel>
+              <FieldLabel>Country</FieldLabel>
               <Select collection={countryItems} defaultValue={["us"]}>
                 <SelectControl>
-                  <SelectTrigger id="form-country">
+                  <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectIndicator />

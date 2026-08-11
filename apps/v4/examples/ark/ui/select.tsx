@@ -56,6 +56,7 @@ const SelectIndicatorGroup = React.forwardRef<
     data-slot="select-indicator-group"
     className={cn(
       "pointer-events-none absolute inset-y-0 right-0 flex items-center gap-1 px-2.5",
+      "[&>[data-slot=select-indicator]]:static [&>[data-slot=select-indicator]]:px-0",
       className
     )}
     {...props}

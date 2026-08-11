@@ -661,7 +661,7 @@ export function DataTable({
           </div>
           <div className="flex w-full items-center gap-8 lg:w-fit">
             <div className="hidden items-center gap-2 lg:flex">
-              <Label htmlFor="rows-per-page" className="text-sm font-medium">
+              <Label className="text-sm font-medium">
                 Rows per page
               </Label>
               <Select
@@ -673,7 +673,7 @@ export function DataTable({
               >
                 <SelectHiddenSelect />
                 <SelectControl>
-                  <SelectTrigger className="w-20" id="rows-per-page">
+                  <SelectTrigger className="w-20">
                     <SelectValue
                       placeholder={`${table.state.pagination.pageSize}`}
                     />

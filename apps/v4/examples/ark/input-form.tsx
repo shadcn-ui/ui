@@ -56,10 +56,10 @@ export function InputForm() {
             <Input id="form-phone" type="tel" placeholder="+1 (555) 123-4567" />
           </Field>
           <Field>
-            <FieldLabel htmlFor="form-country">Country</FieldLabel>
+            <FieldLabel>Country</FieldLabel>
             <Select collection={countryItems} defaultValue={["us"]}>
               <SelectControl>
-                <SelectTrigger id="form-country">
+                <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectIndicator />

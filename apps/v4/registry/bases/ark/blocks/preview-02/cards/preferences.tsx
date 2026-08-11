@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/registry/bases/ark/ui/button"
 import {
   Card,
@@ -70,14 +72,14 @@ export function Preferences() {
       <CardContent>
         <FieldGroup>
           <Field>
-            <FieldLabel htmlFor="default-currency">Default Currency</FieldLabel>
+            <FieldLabel>Default Currency</FieldLabel>
             <Select
               collection={currencies}
               defaultValue={["usd"]}
               className="w-full"
             >
               <SelectControl>
-                <SelectTrigger id="default-currency">
+                <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectIndicatorGroup>
