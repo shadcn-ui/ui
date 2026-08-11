@@ -10,7 +10,12 @@ import type {
 
 import { assertNever } from "../core"
 import type { ChatFormat, ChunkEncoder } from "../core"
-import { eventsFromParts, getMessageText, materializeParts } from "./parts"
+import {
+  eventsFromParts,
+  getMessageText,
+  getToolCalls,
+  materializeParts,
+} from "./parts"
 
 /**
  * The AI SDK `ChatFormat` plugin. Pass to `createChatRuntime` for advanced
@@ -92,6 +97,10 @@ export function createAiSdkFormat<
       return message.metadata
     },
 
+    getToolCalls(message) {
+      return getToolCalls(message)
+    },
+
     encodeChunk(chunk) {
       switch (chunk.type) {
         case "start":
@@ -171,6 +180,12 @@ export function createAiSdkFormat<
             toolMetadata: chunk.toolMetadata,
             dynamic: chunk.dynamic,
             title: chunk.title,
+          } as Chunk
+        case "tool-approval-request":
+          return {
+            type: "tool-approval-request",
+            approvalId: chunk.approvalId,
+            toolCallId: chunk.toolCallId,
           } as Chunk
         case "tool-output-available":
           return {

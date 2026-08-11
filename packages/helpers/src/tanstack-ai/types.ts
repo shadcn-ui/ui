@@ -13,7 +13,12 @@ type TanStackToolWriterOptions<
   NAME extends keyof TanStackToolSet<TOOLS>,
 > = Pick<
   ToolWriterOptions<TanStackToolSet<TOOLS>, NAME>,
-  "errorText" | "input" | "output" | "toolCallId"
+  | "approvalId"
+  | "errorText"
+  | "input"
+  | "needsApproval"
+  | "output"
+  | "toolCallId"
 >
 
 export type TanStackMessageMetadata = {

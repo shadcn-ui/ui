@@ -682,3 +682,192 @@ describe("AI SDK live client integration", () => {
     expect(getText(regenerated)).toBe("Still nothing scripted.")
   })
 })
+
+describe("AI SDK human-in-the-loop", () => {
+  function createApprovalChat() {
+    return createChat<unknown, DataParts, Tools>()
+      .user("Fetch the weather?")
+      .assistant(({ writer }) => {
+        writer.text("I need your approval first.", { mode: "instant" })
+        writer.tool("getWeather", {
+          input: { city: "San Francisco" },
+          needsApproval: true,
+          output: weatherOutput,
+        })
+      })
+      .assistant(({ writer, toolCall }) => {
+        writer.text(toolCall?.approved ? "Fetched it." : "Okay, skipping.", {
+          mode: "instant",
+        })
+      })
+  }
+
+  async function readTurnChunks(
+    transport: ChatTransport<UIMessage<unknown, DataParts, Tools>>,
+    messages: Array<UIMessage<unknown, DataParts, Tools>>
+  ) {
+    const stream = await transport.sendMessages({
+      trigger: "submit-message",
+      chatId: "chat-1",
+      messageId: undefined,
+      messages,
+      abortSignal: undefined,
+    })
+
+    return readStream(stream)
+  }
+
+  function respondToApproval(
+    message: UIMessage<unknown, DataParts, Tools>,
+    approved: boolean
+  ) {
+    return {
+      ...message,
+      parts: message.parts.map((part) =>
+        part.type === "tool-getWeather"
+          ? ({
+              ...part,
+              state: "approval-responded",
+              approval: { id: "approval-1", approved },
+            } as (typeof message.parts)[number])
+          : part
+      ),
+    }
+  }
+
+  it("streams the approval request and the client parks the call", async () => {
+    const chat = createApprovalChat()
+    const chunks = await readTurnChunks(
+      chat.transport({ delayMs: undefined }),
+      chat.get(1)
+    )
+
+    expect(chunks.map((chunk) => chunk.type)).toEqual([
+      "start",
+      "text-start",
+      "text-delta",
+      "text-end",
+      "tool-input-available",
+      "tool-approval-request",
+      "finish",
+    ])
+    expect(chunks[5]).toMatchObject({
+      approvalId: "approval-1",
+      toolCallId: "call-1",
+    })
+
+    const stream = await chat.transport({ delayMs: undefined }).sendMessages({
+      trigger: "submit-message",
+      chatId: "chat-1",
+      messageId: undefined,
+      messages: chat.get(1),
+      abortSignal: undefined,
+    })
+    let clientMessage: UIMessage<unknown, DataParts, Tools> | undefined
+
+    for await (const message of readUIMessageStream({ stream })) {
+      clientMessage = message as UIMessage<unknown, DataParts, Tools>
+    }
+
+    expect(clientMessage?.parts).toMatchObject([
+      { type: "text", text: "I need your approval first." },
+      {
+        type: "tool-getWeather",
+        state: "approval-requested",
+        approval: { id: "approval-1" },
+      },
+    ])
+  })
+
+  it("streams the gated output and approved wording after approval", async () => {
+    const chat = createApprovalChat()
+    const [userMessage, assistantMessage] = chat.get(2)
+    const chunks = await readTurnChunks(
+      chat.transport({ delayMs: undefined }),
+      [userMessage, respondToApproval(assistantMessage, true)]
+    )
+
+    expect(chunks.map((chunk) => chunk.type)).toEqual([
+      "start",
+      "tool-output-available",
+      "text-start",
+      "text-delta",
+      "text-end",
+      "finish",
+    ])
+    expect(chunks[0]).toMatchObject({ messageId: "msg-3" })
+    expect(chunks[1]).toMatchObject({
+      toolCallId: "call-1",
+      output: weatherOutput,
+    })
+    expect(chunks[3]).toMatchObject({ delta: "Fetched it." })
+  })
+
+  it("streams the denial and denied wording after denial", async () => {
+    const chat = createApprovalChat()
+    const [userMessage, assistantMessage] = chat.get(2)
+    const chunks = await readTurnChunks(
+      chat.transport({ delayMs: undefined }),
+      [userMessage, respondToApproval(assistantMessage, false)]
+    )
+
+    expect(chunks.map((chunk) => chunk.type)).toEqual([
+      "start",
+      "tool-output-denied",
+      "text-start",
+      "text-delta",
+      "text-end",
+      "finish",
+    ])
+    expect(chunks[1]).toMatchObject({ toolCallId: "call-1" })
+    expect(chunks[3]).toMatchObject({ delta: "Okay, skipping." })
+  })
+
+  it("continues an elicitation with the user-submitted output", async () => {
+    const chat = createChat<unknown, DataParts, Tools>()
+      .user("Help me plan the release.")
+      .assistant(({ writer }) => {
+        writer.tool("createFile", {
+          dynamic: true,
+          input: { filename: "plan.md", content: "" },
+        })
+      })
+      .assistant(({ writer, toolCall }) => {
+        writer.text(
+          toolCall?.name === "createFile" && toolCall.output
+            ? `Saved ${toolCall.output.filename}.`
+            : "No file yet.",
+          { mode: "instant" }
+        )
+      })
+    const [userMessage, assistantMessage] = chat.get(2)
+    const answeredMessage = {
+      ...assistantMessage,
+      parts: assistantMessage.parts.map((part) =>
+        part.type === "dynamic-tool"
+          ? ({
+              ...part,
+              state: "output-available",
+              output: {
+                filename: "plan.md",
+                url: "https://example.com/plan.md",
+              },
+            } as (typeof assistantMessage.parts)[number])
+          : part
+      ),
+    }
+    const chunks = await readTurnChunks(
+      chat.transport({ delayMs: undefined }),
+      [userMessage, answeredMessage]
+    )
+
+    expect(chunks.map((chunk) => chunk.type)).toEqual([
+      "start",
+      "text-start",
+      "text-delta",
+      "text-end",
+      "finish",
+    ])
+    expect(chunks[2]).toMatchObject({ delta: "Saved plan.md." })
+  })
+})

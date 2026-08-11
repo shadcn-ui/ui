@@ -10,10 +10,17 @@ import type {
   ChatTurn,
   ChatUserOptions,
   DataTypes,
+  MessageRole,
+  PendingToolCall,
   ToolSet,
   TurnStreamOptions,
 } from "./types"
-import { cloneValue, DEFAULT_STREAM_DELAY_MS, DEFAULT_TEXT } from "./utils"
+import {
+  cloneValue,
+  DEFAULT_STREAM_DELAY_MS,
+  DEFAULT_TEXT,
+  devWarn,
+} from "./utils"
 import { createEventWriter } from "./writer"
 import type { EventWriter } from "./writer"
 
@@ -50,6 +57,23 @@ export type ChatTransportOptions<
   fallback?: ChatFallback<MESSAGE, PART, DATA, TOOLS, WRITER>
 }
 
+/**
+ * The context handed to assistant writer callbacks. A continuation turn — a
+ * callback turn scripted after a turn that pauses for user input — also
+ * receives the live transcript and the resolved human-in-the-loop tool
+ * calls; eager turns receive only the writer.
+ */
+export type AssistantTurnContext<
+  WRITER,
+  MESSAGE,
+  TOOLS extends ToolSet = ToolSet,
+> = {
+  writer: WRITER
+  messages?: MESSAGE[]
+  toolCall?: PendingToolCall<TOOLS>
+  toolCalls?: Array<PendingToolCall<TOOLS>>
+}
+
 /** A deterministic conversation: chain turns, then read them back or stream them through a transport. */
 export type Chat<
   MESSAGE,
@@ -68,10 +92,16 @@ export type Chat<
   /**
    * Scripts an assistant turn from a string (one streamed text part), a
    * parts array (static parts, streamed instantly), or a writer callback
-   * (full control over parts and timing).
+   * (full control over parts and timing). A callback turn scripted after a
+   * paused turn — an unresolved tool call or `needsApproval` — becomes a
+   * continuation: it materializes when the follow-up request arrives, with
+   * the live transcript and resolved tool calls in its context.
    */
   assistant(
-    input?: string | PART[] | ((context: { writer: WRITER }) => void),
+    input?:
+      | string
+      | PART[]
+      | ((context: AssistantTurnContext<WRITER, MESSAGE, TOOLS>) => void),
     options?: ChatAssistantOptions<METADATA>
   ): Chat<MESSAGE, PART, TRANSPORT, METADATA, DATA, TOOLS, WRITER>
   /** Scripts an assistant turn that streams a bare error chunk and ends. */
@@ -82,7 +112,12 @@ export type Chat<
   sleep(
     delayMs: number
   ): Chat<MESSAGE, PART, TRANSPORT, METADATA, DATA, TOOLS, WRITER>
-  /** Returns clones of the first `count` configured messages, or all messages when omitted. */
+  /**
+   * Returns clones of the first `count` configured messages, or all
+   * materializable messages when omitted. Continuation turns have no message
+   * without a live transcript, so `get` stops before the first one and
+   * throws when `count` reaches past it.
+   */
   get(count?: number): MESSAGE[]
   /**
    * Returns the next configured user message after the given transcript, or
@@ -117,7 +152,21 @@ export function createChatRuntime<
     messages?: MESSAGE[]
   } = {}
 ): Chat<MESSAGE, PART, TRANSPORT, METADATA, DATA, TOOLS, WRITER> {
-  type InternalTurn = ChatTurn<MESSAGE, DATA, TOOLS> & {
+  type InternalTurn = {
+    role: MessageRole
+    events: ChatEvent<DATA, TOOLS>[]
+    messageId: string
+    metadata?: METADATA
+    // Continuation turns carry `resolve` instead of a materialized message.
+    message?: MESSAGE
+    resolve?: (context: AssistantTurnContext<WRITER, MESSAGE, TOOLS>) => void
+    // The events last streamed for a continuation turn. Later continuations
+    // read pending calls from here so re-runs cannot drift generated ids
+    // away from the transcript.
+    lastEvents?: ChatEvent<DATA, TOOLS>[]
+  }
+
+  type ResolvedTurn = ChatTurn<MESSAGE, DATA, TOOLS> & {
     metadata?: METADATA
   }
 
@@ -134,15 +183,54 @@ export function createChatRuntime<
         event.kind === "tool-input" ||
         event.kind === "tool-output" ||
         event.kind === "tool-error" ||
-        event.kind === "tool-denied"
+        event.kind === "tool-denied" ||
+        event.kind === "tool-approval-request"
       ) {
         ids.reserveToolCallId(event.toolCallId)
+      }
+
+      if (event.kind === "tool-approval-request") {
+        ids.reserveApprovalId(event.approvalId)
       }
 
       if (event.kind === "source-url" || event.kind === "source-document") {
         ids.reserveSourceId(event.part.sourceId)
       }
     }
+  }
+
+  function getPendingToolInputs(events: ChatEvent<DATA, TOOLS>[]) {
+    const resolvedToolCallIds = new Set<string>()
+
+    for (const event of events) {
+      if (
+        event.kind === "tool-output" ||
+        event.kind === "tool-error" ||
+        event.kind === "tool-denied"
+      ) {
+        resolvedToolCallIds.add(event.toolCallId)
+      }
+    }
+
+    return events.flatMap((event) =>
+      event.kind === "tool-input" && !resolvedToolCallIds.has(event.toolCallId)
+        ? [
+            {
+              input: event,
+              approval: events.find(
+                (
+                  candidate
+                ): candidate is Extract<
+                  ChatEvent<DATA, TOOLS>,
+                  { kind: "tool-approval-request" }
+                > =>
+                  candidate.kind === "tool-approval-request" &&
+                  candidate.toolCallId === event.toolCallId
+              ),
+            },
+          ]
+        : []
+    )
   }
 
   function resolveMessageId(id?: string) {
@@ -165,6 +253,7 @@ export function createChatRuntime<
     turns.push({
       role: format.getMessageRole(message),
       message,
+      messageId: format.getMessageId(message),
       events,
       metadata: format.getMessageMetadata?.(message),
     })
@@ -187,7 +276,7 @@ export function createChatRuntime<
     let latestChatIndex = -1
 
     for (let index = 0; index < turns.length; index++) {
-      if (messageIds.has(format.getMessageId(turns[index].message))) {
+      if (messageIds.has(turns[index].messageId)) {
         latestChatIndex = index
       }
     }
@@ -198,8 +287,8 @@ export function createChatRuntime<
       latestChatIndex = turns.findIndex(
         (turn) =>
           lastMessage !== undefined &&
-          format.getMessageRole(turn.message) ===
-            format.getMessageRole(lastMessage) &&
+          turn.message !== undefined &&
+          turn.role === format.getMessageRole(lastMessage) &&
           format.getMessageText(turn.message) ===
             format.getMessageText(lastMessage)
       )
@@ -208,32 +297,33 @@ export function createChatRuntime<
     return latestChatIndex
   }
 
-  function findNextAssistantTurn(messages: MESSAGE[], messageId?: string) {
-    if (messageId) {
-      const index = turns.findIndex(
-        (turn) => format.getMessageId(turn.message) === messageId
-      )
-      const turn = turns[index]
+  function findAssistantTurnIndexAfter(startIndex: number) {
+    for (let index = startIndex; index < turns.length; index++) {
+      if (turns[index].role === "assistant") {
+        return index
+      }
+    }
 
-      if (turn?.role === "assistant") {
-        return turn
+    return -1
+  }
+
+  function findNextAssistantTurnIndex(messages: MESSAGE[], messageId?: string) {
+    if (messageId) {
+      const index = turns.findIndex((turn) => turn.messageId === messageId)
+
+      if (turns[index]?.role === "assistant") {
+        return index
       }
 
       // Unknown ids fall through to transcript matching so regenerating a
       // fallback-produced message falls back again instead of replaying the
       // first configured response.
       if (index !== -1) {
-        return turns
-          .slice(index + 1)
-          .find((nextTurn) => nextTurn.role === "assistant")
+        return findAssistantTurnIndexAfter(index + 1)
       }
     }
 
-    const latestChatIndex = findLatestChatIndex(messages)
-
-    return turns
-      .slice(latestChatIndex + 1)
-      .find((turn) => turn.role === "assistant")
+    return findAssistantTurnIndexAfter(findLatestChatIndex(messages) + 1)
   }
 
   function findNextUserTurn(messages: readonly MESSAGE[]) {
@@ -243,7 +333,10 @@ export function createChatRuntime<
   }
 
   function materializeAssistantInput(
-    input: string | PART[] | ((context: { writer: WRITER }) => void),
+    input:
+      | string
+      | PART[]
+      | ((context: AssistantTurnContext<WRITER, MESSAGE, TOOLS>) => void),
     events: ChatEvent<DATA, TOOLS>[]
   ): PART[] {
     if (typeof input === "string") {
@@ -281,7 +374,7 @@ export function createChatRuntime<
   function createFallbackTurn(
     fallback: ChatFallback<MESSAGE, PART, DATA, TOOLS, WRITER>,
     messages: MESSAGE[]
-  ): InternalTurn {
+  ): ResolvedTurn {
     const events: ChatEvent<DATA, TOOLS>[] = []
     const input =
       typeof fallback === "function"
@@ -294,6 +387,179 @@ export function createChatRuntime<
       role: "assistant",
       message: format.createMessage({
         id: resolveMessageId(),
+        role: "assistant",
+        metadata: turnMetadata,
+        parts,
+      }),
+      events,
+      metadata: turnMetadata,
+    }
+  }
+
+  function findPreviousAssistantIndex(turnIndex: number) {
+    for (let index = turnIndex - 1; index >= 0; index--) {
+      if (turns[index].role === "assistant") {
+        return index
+      }
+    }
+
+    return -1
+  }
+
+  function isPreviousAssistantPaused() {
+    const previousIndex = findPreviousAssistantIndex(turns.length)
+    const previousTurn = turns[previousIndex]
+
+    if (!previousTurn) {
+      return false
+    }
+
+    // A continuation may itself pause, so turns after one stay continuations.
+    return (
+      previousTurn.resolve !== undefined ||
+      getPendingToolInputs(previousTurn.events).length > 0
+    )
+  }
+
+  function resolvePendingToolCalls(turnIndex: number, messages: MESSAGE[]) {
+    const previousIndex = findPreviousAssistantIndex(turnIndex)
+    const previousTurn = turns[previousIndex]
+
+    if (!previousTurn) {
+      return []
+    }
+
+    const previousEvents = previousTurn.resolve
+      ? (previousTurn.lastEvents ??
+        materializeDeferredTurn(previousIndex, messages).events)
+      : previousTurn.events
+    const pendingInputs = getPendingToolInputs(previousEvents)
+
+    if (!pendingInputs.length) {
+      return []
+    }
+
+    const previousMessage = messages.find(
+      (message) => format.getMessageId(message) === previousTurn.messageId
+    )
+    const summaries =
+      previousMessage && format.getToolCalls
+        ? format.getToolCalls(previousMessage)
+        : []
+
+    return pendingInputs.map((pendingInput) => ({
+      ...pendingInput,
+      summary: summaries.find(
+        (summary) => summary.toolCallId === pendingInput.input.toolCallId
+      ),
+    }))
+  }
+
+  function toPendingToolCall(
+    call: ReturnType<typeof resolvePendingToolCalls>[number]
+  ) {
+    const approved = call.approval
+      ? call.summary?.approval?.approved
+      : undefined
+
+    return {
+      name: call.input.name,
+      toolCallId: call.input.toolCallId,
+      input: call.summary?.input ?? call.input.input,
+      output: call.approval
+        ? approved === true
+          ? call.approval.output
+          : undefined
+        : call.summary?.state === "output-available"
+          ? call.summary.output
+          : undefined,
+      ...(call.approval
+        ? {
+            approved: approved === true,
+            denied: approved === false,
+          }
+        : {}),
+    } as PendingToolCall<TOOLS>
+  }
+
+  function materializeDeferredTurn(
+    turnIndex: number,
+    messages: MESSAGE[]
+  ): ResolvedTurn {
+    const turn = turns[turnIndex]
+    const resolve = turn.resolve
+
+    if (!resolve) {
+      throw new Error("Only continuation turns materialize from a transcript.")
+    }
+
+    const events = [...turn.events]
+    const pending = resolvePendingToolCalls(turnIndex, messages)
+
+    if (!pending.length) {
+      devWarn(
+        "A continuation turn resolved without a pending tool call. Its toolCall context is empty."
+      )
+    }
+
+    for (const call of pending) {
+      if (!call.approval || call.summary?.state !== "approval-responded") {
+        continue
+      }
+
+      if (call.summary.approval?.approved) {
+        if (call.approval.errorText !== undefined) {
+          events.push({
+            kind: "tool-error",
+            toolCallId: call.input.toolCallId,
+            errorText: call.approval.errorText,
+            providerExecuted: call.input.providerExecuted,
+            toolMetadata: call.input.toolMetadata,
+            dynamic: call.input.dynamic,
+          })
+        } else {
+          events.push({
+            kind: "tool-output",
+            toolCallId: call.input.toolCallId,
+            output: call.approval.output,
+            providerExecuted: call.input.providerExecuted,
+            toolMetadata: call.input.toolMetadata,
+            dynamic: call.input.dynamic,
+          })
+        }
+      } else {
+        events.push({
+          kind: "tool-denied",
+          toolCallId: call.input.toolCallId,
+        })
+      }
+    }
+
+    const toolCalls = pending.map(toPendingToolCall)
+    // Same cast point as materializeAssistantInput: the full writer passes
+    // through the adapter's narrower callback type.
+    const writer = createEventWriter(events, {
+      ids,
+      payloads,
+    }) as unknown as WRITER
+
+    resolve({
+      writer,
+      messages,
+      toolCall: toolCalls[toolCalls.length - 1],
+      toolCalls,
+    })
+    reserveEventIds(events)
+    turn.lastEvents = events
+
+    const parts = format.materializeParts(events)
+    const turnMetadata =
+      turn.metadata === undefined ? metadata() : cloneValue(turn.metadata)
+
+    return {
+      role: "assistant",
+      message: format.createMessage({
+        id: turn.messageId,
         role: "assistant",
         metadata: turnMetadata,
         parts,
@@ -334,8 +600,9 @@ export function createChatRuntime<
         userOptions.metadata === undefined
           ? metadata()
           : cloneValue(userOptions.metadata)
+      const messageId = resolveMessageId(userOptions.id)
       const userMessage = format.createMessage({
-        id: resolveMessageId(userOptions.id),
+        id: messageId,
         role: "user",
         metadata: turnMetadata,
         parts,
@@ -344,6 +611,7 @@ export function createChatRuntime<
       return pushTurn({
         role: "user",
         message: userMessage,
+        messageId,
         events,
         metadata: turnMetadata,
       })
@@ -353,17 +621,34 @@ export function createChatRuntime<
       input:
         | string
         | PART[]
-        | ((context: { writer: WRITER }) => void) = DEFAULT_TEXT,
+        | ((
+            context: AssistantTurnContext<WRITER, MESSAGE, TOOLS>
+          ) => void) = DEFAULT_TEXT,
       assistantOptions: ChatAssistantOptions<METADATA> = {}
     ) {
       const events = takePendingEvents()
+
+      if (typeof input === "function" && isPreviousAssistantPaused()) {
+        return pushTurn({
+          role: "assistant",
+          messageId: resolveMessageId(assistantOptions.id),
+          events,
+          metadata:
+            assistantOptions.metadata === undefined
+              ? undefined
+              : cloneValue(assistantOptions.metadata),
+          resolve: input,
+        })
+      }
+
       const messageParts = materializeAssistantInput(input, events)
       const turnMetadata =
         assistantOptions.metadata === undefined
           ? metadata()
           : cloneValue(assistantOptions.metadata)
+      const messageId = resolveMessageId(assistantOptions.id)
       const assistantMessage = format.createMessage({
-        id: resolveMessageId(assistantOptions.id),
+        id: messageId,
         role: "assistant",
         metadata: turnMetadata,
         parts: messageParts,
@@ -372,6 +657,7 @@ export function createChatRuntime<
       return pushTurn({
         role: "assistant",
         message: assistantMessage,
+        messageId,
         events,
         metadata: turnMetadata,
       })
@@ -386,15 +672,17 @@ export function createChatRuntime<
       })
 
       const turnMetadata = metadata()
+      const messageId = resolveMessageId()
 
       return pushTurn({
         role: "assistant",
         message: format.createMessage({
-          id: resolveMessageId(),
+          id: messageId,
           role: "assistant",
           metadata: turnMetadata,
           parts: [],
         }),
+        messageId,
         events,
         metadata: turnMetadata,
       })
@@ -410,18 +698,35 @@ export function createChatRuntime<
       return api
     },
 
-    get(count = turns.length) {
+    get(count) {
+      const deferredIndex = turns.findIndex(
+        (turn) => turn.resolve !== undefined
+      )
+      const limit = deferredIndex === -1 ? turns.length : deferredIndex
+
+      if (count === undefined) {
+        count = limit
+      }
+
       if (!Number.isInteger(count) || count < 0) {
         throw new RangeError("count must be a non-negative integer.")
       }
 
-      return turns.slice(0, count).map((turn) => cloneValue(turn.message))
+      if (deferredIndex !== -1 && count > deferredIndex) {
+        throw new Error(
+          "get() cannot materialize a continuation turn without a live transcript."
+        )
+      }
+
+      return turns
+        .slice(0, count)
+        .map((turn) => cloneValue(turn.message as MESSAGE))
     },
 
     next(messages) {
       const turn = findNextUserTurn(messages)
 
-      return turn ? cloneValue(turn.message) : null
+      return turn?.message ? cloneValue(turn.message) : null
     },
 
     transport(
@@ -433,13 +738,35 @@ export function createChatRuntime<
         WRITER
       > = {}
     ) {
+      const lastAssistantIndex = findPreviousAssistantIndex(turns.length)
+      const lastAssistant = turns[lastAssistantIndex]
+
+      if (
+        lastAssistant &&
+        !lastAssistant.resolve &&
+        getPendingToolInputs(lastAssistant.events).some(
+          (pendingInput) => pendingInput.approval
+        )
+      ) {
+        devWarn(
+          "The last scripted assistant turn requests approval but no continuation turn follows. The decision will have no response."
+        )
+      }
+
       return format.createTransport(
         {
           resolveTurn(messages, messageId) {
-            const turn = findNextAssistantTurn(messages, messageId)
+            const turnIndex = findNextAssistantTurnIndex(messages, messageId)
+            const turn = turnIndex === -1 ? undefined : turns[turnIndex]
 
-            if (turn || transportOptions.fallback === undefined) {
-              return turn
+            if (turn) {
+              return turn.resolve
+                ? materializeDeferredTurn(turnIndex, messages)
+                : (turn as ChatTurn<MESSAGE, DATA, TOOLS>)
+            }
+
+            if (transportOptions.fallback === undefined) {
+              return undefined
             }
 
             return createFallbackTurn(transportOptions.fallback, messages)
@@ -450,7 +777,7 @@ export function createChatRuntime<
               delayMs: DEFAULT_STREAM_DELAY_MS,
               ...streamOptions,
               messageId: format.getMessageId(turn.message),
-              messageMetadata: (turn as InternalTurn).metadata,
+              messageMetadata: (turn as ResolvedTurn).metadata,
             })
 
             return createTurnStream(steps, encodeChunk, abortSignal)

@@ -200,6 +200,17 @@ export function materializeParts<
         )
         break
       }
+      case "tool-approval-request": {
+        const toolCallPart = findToolCallPart(event.toolCallId)
+
+        if (toolCallPart) {
+          toolCallPart.approval = {
+            id: event.approvalId,
+            needsApproval: true,
+          }
+        }
+        break
+      }
       case "tool-denied": {
         const toolCallPart = findToolCallPart(event.toolCallId)
 

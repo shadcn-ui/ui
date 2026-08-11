@@ -17,6 +17,24 @@ testChatContract("AI SDK", () =>
 )
 
 describe("AI SDK chat", () => {
+  it("narrows the continuation toolCall by name", () => {
+    createChat<unknown, DataParts, Tools>()
+      .user("Weather?")
+      .assistant(({ writer }) => {
+        writer.tool("getWeather", { input: { city: "San Francisco" } })
+      })
+      .assistant(({ toolCall }) => {
+        if (toolCall?.name === "getWeather") {
+          expectTypeOf(toolCall.input).toEqualTypeOf<
+            Tools["getWeather"]["input"]
+          >()
+          expectTypeOf(toolCall.output).toEqualTypeOf<
+            Tools["getWeather"]["output"] | undefined
+          >()
+        }
+      })
+  })
+
   it("preserves the native message type through get and next", () => {
     type Metadata = { model: string }
 
