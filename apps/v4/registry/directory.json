@@ -1073,6 +1073,13 @@
     "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"330\" height=\"330\" viewBox=\"0 0 330 330\" fill=\"none\"><g clip-path=\"url(#clip0_1543_179)\"><mask id=\"mask0_1543_179\" style=\"mask-type:alpha\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"330\" height=\"330\"><circle cx=\"165\" cy=\"165\" r=\"165\" fill=\"#D9D9D9\"/></mask><g mask=\"url(#mask0_1543_179)\"><path d=\"M165 330C256.127 330 330 256.127 330 165C330 73.873 256.127 0 165 0C73.873 0 0 73.873 0 165C0 256.127 73.873 330 165 330Z\" fill=\"black\"/><path d=\"M330 96H122V111H330V96Z\" fill=\"white\"/><path d=\"M208 219H0V234H208V219Z\" fill=\"white\"/><circle cx=\"165\" cy=\"165\" r=\"157.5\" stroke=\"white\" stroke-width=\"15\" fill=\"none\"/></g></g><defs><clipPath id=\"clip0_1543_179\"><rect width=\"330\" height=\"330\" fill=\"white\"/></clipPath></defs></svg>"
   },
   {
+    "name": "@openmirai",
+    "homepage": "https://www.openmirai.dev",
+    "url": "https://www.openmirai.dev/r/{name}.json",
+    "description": "Open-source React and TypeScript tools from OpenMirai.",
+    "logo": "<svg width='824' height='824' viewBox='0 0 824 824' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='824' height='824' rx='412' fill='white'/><path d='M330.906 275.013L412.234 192L493.561 275.013L412.234 358.026L330.906 275.013Z' fill='#18181B'/><path d='M542.281 313.741L542.205 313.629L414.422 404.958L475.549 449.463L563.409 386.669L542.281 313.741Z' fill='#18181B'/><path d='M473.486 450.921L412.466 494.533L412.332 494.62L412.23 494.471L260.793 386.236L281.264 315.582L282.603 313.629L408.822 403.841L473.486 450.921Z' fill='#18181B'/><path d='M582.2 422.784L582.071 422.596L414.477 542.379L475.605 586.884L603.181 495.704L582.029 422.697L582.2 422.784Z' fill='#18181B'/><path d='M473.554 588.342L412.486 631.989L412.435 631.915L412.384 631.989L221 495.203L241.471 424.549L242.81 422.596L411.995 543.517L473.554 588.342Z' fill='#18181B'/></svg>"
+  },
+  {
     "name": "@optics",
     "homepage": "https://optics.agusmayol.com.ar",
     "url": "https://optics.agusmayol.com.ar/r/{name}.json",
