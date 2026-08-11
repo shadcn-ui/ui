@@ -4,7 +4,7 @@ import {
   Marker,
   MarkerContent,
   MarkerIcon,
-} from "@/styles/radix-rhea/ui/marker"
+} from "@/examples/ark/ui/marker"
 
 export function MarkerBorderDemo() {
   return (

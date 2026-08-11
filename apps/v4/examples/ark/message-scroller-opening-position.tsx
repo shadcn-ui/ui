@@ -2,8 +2,8 @@
 
 import * as React from "react"
 
-import { Bubble, BubbleContent } from "@/styles/radix-rhea/ui/bubble"
-import { Button } from "@/styles/radix-rhea/ui/button"
+import { Bubble, BubbleContent } from "@/examples/ark/ui/bubble"
+import { Button } from "@/examples/ark/ui/button"
 import {
   Card,
   CardContent,
@@ -11,8 +11,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/styles/radix-rhea/ui/card"
-import { Message, MessageContent } from "@/styles/radix-rhea/ui/message"
+} from "@/examples/ark/ui/card"
+import { Message, MessageContent } from "@/examples/ark/ui/message"
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -21,8 +21,8 @@ import {
   MessageScrollerProvider,
   MessageScrollerViewport,
   useMessageScroller,
-} from "@/styles/radix-rhea/ui/message-scroller"
-import { Tabs, TabsList, TabsTrigger } from "@/styles/radix-rhea/ui/tabs"
+} from "@/examples/ark/ui/message-scroller"
+import { Tabs, TabsList, TabsTrigger } from "@/examples/ark/ui/tabs"
 
 const messages = [
   {
@@ -86,7 +86,8 @@ export function MessageScrollerOpeningPosition() {
         <CardFooter className="flex items-center justify-center border-t">
           <Tabs
             value={position}
-            onValueChange={(value) => {
+            onValueChange={(details) => {
+              const value = details.value
               if (
                 value === "start" ||
                 value === "end" ||

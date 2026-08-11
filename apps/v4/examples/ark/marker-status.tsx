@@ -2,8 +2,8 @@ import {
   Marker,
   MarkerContent,
   MarkerIcon,
-} from "@/styles/radix-rhea/ui/marker"
-import { Spinner } from "@/styles/radix-rhea/ui/spinner"
+} from "@/examples/ark/ui/marker"
+import { Spinner } from "@/examples/ark/ui/spinner"
 
 export function MarkerStatusDemo() {
   return (

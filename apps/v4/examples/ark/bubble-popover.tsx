@@ -4,8 +4,8 @@ import {
   Bubble,
   BubbleContent,
   BubbleReactions,
-} from "@/styles/radix-rhea/ui/bubble"
-import { Button } from "@/styles/radix-rhea/ui/button"
+} from "@/examples/ark/ui/bubble"
+import { Button } from "@/examples/ark/ui/button"
 import {
   Popover,
   PopoverContent,
@@ -13,7 +13,7 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/styles/radix-rhea/ui/popover"
+} from "@/examples/ark/ui/popover"
 
 export function BubblePopoverDemo() {
   return (

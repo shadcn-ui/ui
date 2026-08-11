@@ -3,7 +3,7 @@ import {
   Bubble,
   BubbleContent,
   BubbleReactions,
-} from "@/styles/radix-rhea/ui/bubble"
+} from "@/examples/ark/ui/bubble"
 
 export function BubbleVariantsDemo() {
   return (

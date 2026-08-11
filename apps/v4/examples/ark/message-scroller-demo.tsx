@@ -14,7 +14,7 @@ import {
 
 import { createChat, getMessageText } from "@/lib/ai"
 import { MessageAnimated } from "@/components/message-animated"
-import { Button } from "@/styles/radix-rhea/ui/button"
+import { Button } from "@/examples/ark/ui/button"
 import {
   Card,
   CardAction,
@@ -23,38 +23,38 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/styles/radix-rhea/ui/card"
+} from "@/examples/ark/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/styles/radix-rhea/ui/dropdown-menu"
+} from "@/examples/ark/ui/dropdown-menu"
 import {
   Empty,
   EmptyDescription,
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/styles/radix-rhea/ui/empty"
+} from "@/examples/ark/ui/empty"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
-} from "@/styles/radix-rhea/ui/input-group"
+} from "@/examples/ark/ui/input-group"
 import {
   MessageScroller,
   MessageScrollerButton,
   MessageScrollerContent,
   MessageScrollerProvider,
   MessageScrollerViewport,
-} from "@/styles/radix-rhea/ui/message-scroller"
+} from "@/examples/ark/ui/message-scroller"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/styles/radix-rhea/ui/tooltip"
+} from "@/examples/ark/ui/tooltip"
 
 const chat = createChat()
   .user(
@@ -192,25 +192,21 @@ export function MessageScrollerDemo() {
                         <PlusIcon />
                       </InputGroupButton>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent
-                      align="start"
-                      side="top"
-                      className="w-44"
-                    >
-                      <DropdownMenuItem>
+                    <DropdownMenuContent className="w-44">
+                      <DropdownMenuItem value="add-photos-files">
                         <PaperclipIcon />
                         Add Photos & Files
                       </DropdownMenuItem>
                       <DropdownMenuSeparator />
-                      <DropdownMenuItem>
+                      <DropdownMenuItem value="create-image">
                         <ImageIcon />
                         Create Image
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem value="deep-research">
                         <TelescopeIcon />
                         Deep Research
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem value="web-search">
                         <GlobeIcon />
                         Web Search
                       </DropdownMenuItem>

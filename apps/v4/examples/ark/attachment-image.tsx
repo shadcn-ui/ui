@@ -10,7 +10,7 @@ import {
   AttachmentMedia,
   AttachmentTitle,
   AttachmentTrigger,
-} from "@/styles/radix-rhea/ui/attachment"
+} from "@/examples/ark/ui/attachment"
 
 const images = [
   {

@@ -2,20 +2,20 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/styles/radix-rhea/ui/avatar"
+} from "@/examples/ark/ui/avatar"
 import {
   Bubble,
   BubbleContent,
   BubbleGroup,
   BubbleReactions,
-} from "@/styles/radix-rhea/ui/bubble"
-import { Marker, MarkerContent } from "@/styles/radix-rhea/ui/marker"
+} from "@/examples/ark/ui/bubble"
+import { Marker, MarkerContent } from "@/examples/ark/ui/marker"
 import {
   Message,
   MessageAvatar,
   MessageContent,
   MessageFooter,
-} from "@/styles/radix-rhea/ui/message"
+} from "@/examples/ark/ui/message"
 
 export function MessageDemo() {
   return (

@@ -1,5 +1,5 @@
 import { Markdown } from "@/components/markdown"
-import { Bubble, BubbleContent } from "@/styles/radix-rhea/ui/bubble"
+import { Bubble, BubbleContent } from "@/examples/ark/ui/bubble"
 
 export function BubbleMarkdownDemo() {
   return (

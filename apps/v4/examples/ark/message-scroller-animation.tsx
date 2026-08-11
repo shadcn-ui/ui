@@ -14,7 +14,7 @@ import {
   type MessageAnimationId,
 } from "@/lib/message-animations"
 import { MessageAnimated } from "@/components/message-animated"
-import { Button } from "@/styles/radix-rhea/ui/button"
+import { Button } from "@/examples/ark/ui/button"
 import {
   Card,
   CardAction,
@@ -23,29 +23,35 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/styles/radix-rhea/ui/card"
+} from "@/examples/ark/ui/card"
 import {
   Empty,
   EmptyDescription,
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/styles/radix-rhea/ui/empty"
+} from "@/examples/ark/ui/empty"
 import {
   MessageScroller,
   MessageScrollerButton,
   MessageScrollerContent,
   MessageScrollerProvider,
   MessageScrollerViewport,
-} from "@/styles/radix-rhea/ui/message-scroller"
+} from "@/examples/ark/ui/message-scroller"
 import {
+  createListCollection,
   Select,
   SelectContent,
-  SelectGroup,
+  SelectControl,
+  SelectIndicator,
+  SelectIndicatorGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
   SelectTrigger,
   SelectValue,
-} from "@/styles/radix-rhea/ui/select"
+} from "@/examples/ark/ui/select"
 
 const chat = createChat()
   .user("Can user messages pop in like iMessage without breaking anchoring?")
@@ -66,6 +72,13 @@ const chat = createChat()
 
 const initialMessages = chat.get(0)
 const transport = chat.transport({ delayMs: 15 })
+
+const animationCollection = createListCollection({
+  items: Object.values(MESSAGE_ANIMATIONS).map((animation) => ({
+    label: animation.name,
+    value: animation.id,
+  })),
+})
 
 export function MessageScrollerAnimation() {
   const { messages, sendMessage, setMessages, status } = useChat({
@@ -138,22 +151,32 @@ export function MessageScrollerAnimation() {
         </CardContent>
         <CardFooter className="border-t">
           <Select
-            value={presetId}
-            onValueChange={(value) => {
-              setPresetId(value as MessageAnimationId)
+            collection={animationCollection}
+            value={[presetId]}
+            onValueChange={(details) => {
+              const [value] = details.value
+              if (value) {
+                setPresetId(value as MessageAnimationId)
+              }
             }}
           >
-            <SelectTrigger aria-label="Animation preset">
-              <SelectValue>{preset.name}</SelectValue>
-            </SelectTrigger>
-            <SelectContent align="start" side="top" position="popper">
-              <SelectGroup>
-                {Object.values(MESSAGE_ANIMATIONS).map((animation) => (
-                  <SelectItem key={animation.id} value={animation.id}>
-                    {animation.name}
+            <SelectControl>
+              <SelectTrigger aria-label="Animation preset">
+                <SelectValue placeholder={preset.name} />
+              </SelectTrigger>
+              <SelectIndicatorGroup>
+                <SelectIndicator />
+              </SelectIndicatorGroup>
+            </SelectControl>
+            <SelectContent>
+              <SelectItemGroup>
+                {animationCollection.items.map((item) => (
+                  <SelectItem key={item.value} item={item}>
+                    <SelectItemText>{item.label}</SelectItemText>
+                    <SelectItemIndicator />
                   </SelectItem>
                 ))}
-              </SelectGroup>
+              </SelectItemGroup>
             </SelectContent>
           </Select>
           <Button

@@ -3,8 +3,8 @@
 import * as React from "react"
 
 import { createChat, getMessageText } from "@/lib/ai"
-import { Bubble, BubbleContent } from "@/styles/radix-rhea/ui/bubble"
-import { Button } from "@/styles/radix-rhea/ui/button"
+import { Bubble, BubbleContent } from "@/examples/ark/ui/bubble"
+import { Button } from "@/examples/ark/ui/button"
 import {
   Card,
   CardAction,
@@ -12,15 +12,15 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/styles/radix-rhea/ui/card"
+} from "@/examples/ark/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@/styles/radix-rhea/ui/dropdown-menu"
-import { Message, MessageContent } from "@/styles/radix-rhea/ui/message"
+} from "@/examples/ark/ui/dropdown-menu"
+import { Message, MessageContent } from "@/examples/ark/ui/message"
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -29,7 +29,7 @@ import {
   MessageScrollerProvider,
   MessageScrollerViewport,
   useMessageScroller,
-} from "@/styles/radix-rhea/ui/message-scroller"
+} from "@/examples/ark/ui/message-scroller"
 
 const chat = createChat()
   .user(
@@ -136,11 +136,12 @@ function CommandMenu() {
           Jump to...
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" side="bottom" className="w-64">
+      <DropdownMenuContent className="w-64">
         <DropdownMenuLabel>Conversations</DropdownMenuLabel>
         {userMessages.map((message) => (
           <DropdownMenuItem
             key={message.id}
+            value={message.id}
             onSelect={() =>
               scrollToMessage(message.id, {
                 align: "start",

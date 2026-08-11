@@ -4255,6 +4255,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "ui/aspect-ratio",
       filePath: "examples/ark/ui/aspect-ratio.tsx",
     },
+    "ui/attachment": {
+      name: "ui/attachment",
+      filePath: "examples/ark/ui/attachment.tsx",
+    },
     "ui/avatar": {
       name: "ui/avatar",
       filePath: "examples/ark/ui/avatar.tsx",
@@ -4266,6 +4270,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "ui/breadcrumb": {
       name: "ui/breadcrumb",
       filePath: "examples/ark/ui/breadcrumb.tsx",
+    },
+    "ui/bubble": {
+      name: "ui/bubble",
+      filePath: "examples/ark/ui/bubble.tsx",
     },
     "ui/button-group": {
       name: "ui/button-group",
@@ -4367,9 +4375,21 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "ui/label",
       filePath: "examples/ark/ui/label.tsx",
     },
+    "ui/marker": {
+      name: "ui/marker",
+      filePath: "examples/ark/ui/marker.tsx",
+    },
     "ui/menubar": {
       name: "ui/menubar",
       filePath: "examples/ark/ui/menubar.tsx",
+    },
+    "ui/message-scroller": {
+      name: "ui/message-scroller",
+      filePath: "examples/ark/ui/message-scroller.tsx",
+    },
+    "ui/message": {
+      name: "ui/message",
+      filePath: "examples/ark/ui/message.tsx",
     },
     "ui/native-select": {
       name: "ui/native-select",
@@ -4390,6 +4410,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "ui/progress": {
       name: "ui/progress",
       filePath: "examples/ark/ui/progress.tsx",
+    },
+    "ui/questionnaire": {
+      name: "ui/questionnaire",
+      filePath: "examples/ark/ui/questionnaire.tsx",
     },
     "ui/radio-group": {
       name: "ui/radio-group",

@@ -1,20 +1,20 @@
 "use client"
 
 import { createChat, getMessageText } from "@/lib/ai"
-import { Bubble, BubbleContent } from "@/styles/radix-rhea/ui/bubble"
+import { Bubble, BubbleContent } from "@/examples/ark/ui/bubble"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/styles/radix-rhea/ui/card"
+} from "@/examples/ark/ui/card"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/styles/radix-rhea/ui/hover-card"
-import { Message, MessageContent } from "@/styles/radix-rhea/ui/message"
+} from "@/examples/ark/ui/hover-card"
+import { Message, MessageContent } from "@/examples/ark/ui/message"
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -24,7 +24,7 @@ import {
   MessageScrollerViewport,
   useMessageScroller,
   useMessageScrollerVisibility,
-} from "@/styles/radix-rhea/ui/message-scroller"
+} from "@/examples/ark/ui/message-scroller"
 
 const chat = createChat()
   .user("Review the incident handoff and tell me what to read first.", {
@@ -129,7 +129,11 @@ function TranscriptOutline() {
   const { currentAnchorId } = useMessageScrollerVisibility()
 
   return (
-    <HoverCard openDelay={0} closeDelay={0}>
+    <HoverCard
+      openDelay={0}
+      closeDelay={0}
+      positioning={{ placement: "left", offset: { mainAxis: -28 } }}
+    >
       <HoverCardTrigger asChild>
         <button
           type="button"
@@ -145,12 +149,7 @@ function TranscriptOutline() {
           ))}
         </button>
       </HoverCardTrigger>
-      <HoverCardContent
-        align="center"
-        side="left"
-        sideOffset={-28}
-        className="flex w-64 flex-col gap-1 rounded-2xl p-1"
-      >
+      <HoverCardContent className="flex w-64 flex-col gap-1 rounded-2xl p-1">
         {userMessages.map((message) => (
           <button
             key={message.id}

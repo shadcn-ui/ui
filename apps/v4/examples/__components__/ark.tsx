@@ -4398,6 +4398,14 @@ export const Components: Record<string, any> = {
       ) || "ui/aspect-ratio"
     return { default: mod.default || mod[exportName] }
   }),
+  "ui/attachment": React.lazy(async () => {
+    const mod = await import("@/examples/ark/ui/attachment")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "ui/attachment"
+    return { default: mod.default || mod[exportName] }
+  }),
   "ui/avatar": React.lazy(async () => {
     const mod = await import("@/examples/ark/ui/avatar")
     const exportName =
@@ -4420,6 +4428,14 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "ui/breadcrumb"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "ui/bubble": React.lazy(async () => {
+    const mod = await import("@/examples/ark/ui/bubble")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "ui/bubble"
     return { default: mod.default || mod[exportName] }
   }),
   "ui/button-group": React.lazy(async () => {
@@ -4622,12 +4638,36 @@ export const Components: Record<string, any> = {
       ) || "ui/label"
     return { default: mod.default || mod[exportName] }
   }),
+  "ui/marker": React.lazy(async () => {
+    const mod = await import("@/examples/ark/ui/marker")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "ui/marker"
+    return { default: mod.default || mod[exportName] }
+  }),
   "ui/menubar": React.lazy(async () => {
     const mod = await import("@/examples/ark/ui/menubar")
     const exportName =
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "ui/menubar"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "ui/message-scroller": React.lazy(async () => {
+    const mod = await import("@/examples/ark/ui/message-scroller")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "ui/message-scroller"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "ui/message": React.lazy(async () => {
+    const mod = await import("@/examples/ark/ui/message")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "ui/message"
     return { default: mod.default || mod[exportName] }
   }),
   "ui/native-select": React.lazy(async () => {
@@ -4668,6 +4708,14 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "ui/progress"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "ui/questionnaire": React.lazy(async () => {
+    const mod = await import("@/examples/ark/ui/questionnaire")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "ui/questionnaire"
     return { default: mod.default || mod[exportName] }
   }),
   "ui/radio-group": React.lazy(async () => {

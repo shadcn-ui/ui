@@ -3,12 +3,12 @@
 import * as React from "react"
 import { ChevronDownIcon } from "lucide-react"
 
-import { Bubble, BubbleContent } from "@/styles/radix-rhea/ui/bubble"
-import { Button } from "@/styles/radix-rhea/ui/button"
+import { Bubble, BubbleContent } from "@/examples/ark/ui/bubble"
+import { Button } from "@/examples/ark/ui/button"
 import {
   Collapsible,
   CollapsibleTrigger,
-} from "@/styles/radix-rhea/ui/collapsible"
+} from "@/examples/ark/ui/collapsible"
 
 const text = `The accessibility review found two focus states that were visually too subtle in dark mode.
 
@@ -33,7 +33,10 @@ export function BubbleCollapsible() {
 
       <Bubble variant="muted" align="end">
         <BubbleContent className="whitespace-pre-line">
-          <Collapsible open={open} onOpenChange={setOpen}>
+          <Collapsible
+            open={open}
+            onOpenChange={(details) => setOpen(details.open)}
+          >
             <div>{open || !isLong ? text : preview}</div>
             {isLong ? (
               <CollapsibleTrigger asChild>

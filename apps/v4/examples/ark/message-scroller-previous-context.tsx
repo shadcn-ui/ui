@@ -14,7 +14,7 @@ import {
 
 import { createChat, getMessageText } from "@/lib/ai"
 import { MessageAnimated } from "@/components/message-animated"
-import { Button } from "@/styles/radix-rhea/ui/button"
+import { Button } from "@/examples/ark/ui/button"
 import {
   Card,
   CardAction,
@@ -23,32 +23,38 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/styles/radix-rhea/ui/card"
+} from "@/examples/ark/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/styles/radix-rhea/ui/dropdown-menu"
+} from "@/examples/ark/ui/dropdown-menu"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
-} from "@/styles/radix-rhea/ui/input-group"
+} from "@/examples/ark/ui/input-group"
 import {
   MessageScroller,
   MessageScrollerButton,
   MessageScrollerContent,
   MessageScrollerProvider,
   MessageScrollerViewport,
-} from "@/styles/radix-rhea/ui/message-scroller"
-import { Slider } from "@/styles/radix-rhea/ui/slider"
+} from "@/examples/ark/ui/message-scroller"
+import {
+  Slider,
+  SliderControl,
+  SliderRange,
+  SliderThumb,
+  SliderTrack,
+} from "@/examples/ark/ui/slider"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/styles/radix-rhea/ui/tooltip"
+} from "@/examples/ark/ui/tooltip"
 
 const DEFAULT_PEEK = 64
 
@@ -185,25 +191,21 @@ export function MessageScrollerPreviousContext() {
                         <PlusIcon />
                       </InputGroupButton>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent
-                      align="start"
-                      side="top"
-                      className="w-44"
-                    >
-                      <DropdownMenuItem>
+                    <DropdownMenuContent className="w-44">
+                      <DropdownMenuItem value="add-photos-files">
                         <PaperclipIcon />
                         Add Photos & Files
                       </DropdownMenuItem>
                       <DropdownMenuSeparator />
-                      <DropdownMenuItem>
+                      <DropdownMenuItem value="create-image">
                         <ImageIcon />
                         Create Image
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem value="deep-research">
                         <TelescopeIcon />
                         Deep Research
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem value="web-search">
                         <GlobeIcon />
                         Web Search
                       </DropdownMenuItem>
@@ -214,16 +216,23 @@ export function MessageScrollerPreviousContext() {
                       {peek}px
                     </span>
                     <Slider
-                      aria-label="Previous context peek"
+                      aria-label={["Previous context peek"]}
                       value={[peek]}
                       min={64}
                       max={128}
                       step={1}
                       disabled={isBusy}
-                      onValueChange={(value) =>
-                        setPeek(value[0] ?? DEFAULT_PEEK)
+                      onValueChange={(details) =>
+                        setPeek(details.value[0] ?? DEFAULT_PEEK)
                       }
-                    />
+                    >
+                      <SliderControl>
+                        <SliderTrack>
+                          <SliderRange />
+                        </SliderTrack>
+                        <SliderThumb index={0} />
+                      </SliderControl>
+                    </Slider>
                   </div>
                   <InputGroupButton
                     type="submit"

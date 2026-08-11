@@ -9,8 +9,8 @@ import {
   AttachmentGroup,
   AttachmentMedia,
   AttachmentTitle,
-} from "@/styles/radix-rhea/ui/attachment"
-import { Spinner } from "@/styles/radix-rhea/ui/spinner"
+} from "@/examples/ark/ui/attachment"
+import { Spinner } from "@/examples/ark/ui/spinner"
 
 const images = [
   {

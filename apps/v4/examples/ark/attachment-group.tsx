@@ -15,7 +15,7 @@ import {
   AttachmentGroup,
   AttachmentMedia,
   AttachmentTitle,
-} from "@/styles/radix-rhea/ui/attachment"
+} from "@/examples/ark/ui/attachment"
 
 type Item = {
   name: string

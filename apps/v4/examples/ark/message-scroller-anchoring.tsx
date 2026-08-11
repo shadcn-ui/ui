@@ -8,7 +8,7 @@ import {
 } from "lucide-react"
 
 import { MessageAnimated } from "@/components/message-animated"
-import { Button } from "@/styles/radix-rhea/ui/button"
+import { Button } from "@/examples/ark/ui/button"
 import {
   Card,
   CardAction,
@@ -17,25 +17,25 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/styles/radix-rhea/ui/card"
+} from "@/examples/ark/ui/card"
 import {
   Empty,
   EmptyDescription,
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/styles/radix-rhea/ui/empty"
+} from "@/examples/ark/ui/empty"
 import {
   MessageScroller,
   MessageScrollerButton,
   MessageScrollerContent,
   MessageScrollerProvider,
   MessageScrollerViewport,
-} from "@/styles/radix-rhea/ui/message-scroller"
+} from "@/examples/ark/ui/message-scroller"
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from "@/styles/radix-rhea/ui/toggle-group"
+} from "@/examples/ark/ui/toggle-group"
 
 type AnchorRole = "user" | "assistant"
 
@@ -144,10 +144,10 @@ export function MessageScrollerAnchoring() {
         </CardContent>
         <CardFooter>
           <ToggleGroup
-            type="single"
             aria-label="Select scroll anchor role"
-            value={anchorRole}
-            onValueChange={(value) => {
+            value={[anchorRole]}
+            onValueChange={(details) => {
+              const value = details.value[0]
               if (value === "user" || value === "assistant") {
                 setAnchorRole(value)
                 setMessages([])
