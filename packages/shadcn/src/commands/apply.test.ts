@@ -12,6 +12,13 @@ import {
 const SHADCN_URL = REGISTRY_URL.replace(/\/r\/?$/, "")
 
 describe("resolveApplyInitUrl", () => {
+  it("should keep aria as the current base", () => {
+    const initUrl = resolveApplyInitUrl("b0", "aria")
+    const parsed = new URL(initUrl)
+
+    expect(parsed.searchParams.get("base")).toBe("aria")
+  })
+
   it("should include the inferred template for preset codes", () => {
     const initUrl = resolveApplyInitUrl("a0", "base", {
       template: "next",

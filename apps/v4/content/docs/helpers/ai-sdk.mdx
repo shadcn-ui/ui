@@ -1,0 +1,876 @@
+---
+title: AI SDK
+description: Create AI SDK messages and stream predefined conversations through useChat without a model, API route, network request, or API key.
+---
+
+`@shadcn/helpers/ai-sdk` lets you write an AI conversation in code and stream it
+through `useChat`, with no model, API route, network request, or API key.
+
+Because the conversation streams through the real `useChat` lifecycle, your
+components behave exactly as they would in production.
+
+It supports every part type the AI SDK does: reasoning, tools, data, files,
+sources, and custom parts.
+
+```ts showLineNumbers
+import { createChat } from "@shadcn/helpers/ai-sdk"
+
+const chat = createChat()
+  .user("What changed in this release?")
+  .assistant("The release adds keyboard shortcuts and faster search.")
+  .user("Can you show me the shortcuts?")
+  .assistant("Press ⌘K to search and ⌘Enter to submit.")
+```
+
+Pass the chat to `useChat` with its initial messages and local transport.
+`useChat` receives the same typed `UIMessage[]` it would get from a streamed
+response.
+
+```tsx showLineNumbers
+import { useChat } from "@ai-sdk/react"
+
+function Chat() {
+  const { messages, sendMessage } = useChat({
+    messages: chat.get(0), // starts with no messages.
+    transport: chat.transport(),
+  })
+
+  const nextMessage = chat.next(messages)
+
+  return (
+    <button
+      disabled={!nextMessage}
+      onClick={() => {
+        if (nextMessage) {
+          void sendMessage(nextMessage)
+        }
+      }}
+    >
+      Send next message
+    </button>
+  )
+}
+```
+
+`get(0)` starts with no messages. `sendMessage(nextMessage)` sends the next
+predefined user message; the transport then streams its assistant response.
+
+---
+
+## What It's For
+
+The helper decouples your chat UI from the model and the backend, so you can
+work on the frontend on its own. It runs offline, instantly, and the same way every time.
+
+- **Build components.** Develop message bubbles, tool cards, and reasoning
+  panels against realistic streaming output, without wiring up a model first.
+- **Preview and demo.** Ship reproducible previews, screenshots, and videos
+  that never depend on a live model.
+- **Write docs.** Power documentation examples with conversations that render
+  the same way on every load.
+- **Test.** Assert against a deterministic stream in CI, with no network calls,
+  token spend, or flaky model output.
+
+---
+
+## Installation
+
+```bash
+npm install @shadcn/helpers
+```
+
+This helper works alongside your existing AI SDK setup (`ai` and
+`@ai-sdk/react`). Import the helpers from `@shadcn/helpers/ai-sdk`.
+
+---
+
+## Usage
+
+Create a conversation, pass its messages and transport to `useChat`, then send
+each predefined user message with `next()`.
+
+```tsx showLineNumbers {3-4,6-10,12-13,16-21,28-34}
+"use client"
+
+import { useChat } from "@ai-sdk/react"
+import { createChat } from "@shadcn/helpers/ai-sdk"
+
+const chat = createChat()
+  .user("What changed in this release?")
+  .assistant("The release adds keyboard shortcuts and faster search.")
+  .user("Can you show me the shortcuts?")
+  .assistant("Press ⌘K to search and ⌘Enter to submit.")
+
+const initialMessages = chat.get(0)
+const transport = chat.transport()
+
+export function Chat() {
+  const { messages, sendMessage, status } = useChat({
+    messages: initialMessages,
+    transport,
+  })
+  const nextMessage = chat.next(messages)
+  const isBusy = status === "submitted" || status === "streaming"
+
+  return (
+    <div>
+      {messages.map((message) => (
+        <div key={message.id}>{/* Render the message */}</div>
+      ))}
+      <button
+        disabled={!nextMessage || isBusy}
+        onClick={() => {
+          if (nextMessage && !isBusy) {
+            void sendMessage(nextMessage)
+          }
+        }}
+      >
+        Send
+      </button>
+    </div>
+  )
+}
+```
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="ai-sdk-helper-demo"
+  className="rounded-[34px] sm:rounded-4xl"
+  previewClassName="h-auto theme-blue bg-surface p-4 min-[480px]:p-8 min-[560px]:p-10 sm:px-10 sm:py-16 dark:bg-background"
+/>
+
+---
+
+## User Messages
+
+Messages added with this helper use the `user` and `assistant` roles. Use
+`user()` to add a user message. Existing AI SDK messages are preserved when
+you start with `createChat({ messages })`.
+
+```ts
+const chat = createChat().user("What changed in this release?")
+
+const [message] = chat.get()
+
+message.role // "user"
+message.parts // [{ type: "text", text: "What changed in this release?" }]
+```
+
+Pass an `id` or metadata as the second argument when you need them.
+
+```ts
+chat.user("What changed in this release?", {
+  id: "user-release-question",
+  metadata: {
+    source: "docs",
+  },
+})
+```
+
+User messages can also include files. See [Files](#files).
+
+---
+
+## Assistant Messages
+
+Use `assistant()` to add an assistant message.
+
+```ts
+const chat = createChat().assistant(
+  "The release adds keyboard shortcuts and faster search."
+)
+
+const [message] = chat.get()
+
+message.role // "assistant"
+message.parts // [{ type: "text", text: "The release adds...", state: "done" }]
+```
+
+A string creates one text part. You can also pass an array of AI SDK message
+parts.
+
+```ts
+chat.assistant([
+  { type: "text", text: "The release adds keyboard shortcuts." },
+  { type: "text", text: "Search is faster too." },
+])
+```
+
+Use the writer callback when the message has more than plain text.
+
+```ts
+chat.assistant(({ writer }) => {
+  writer.reasoning("I should summarize the release.")
+  writer.text("The release adds keyboard shortcuts and faster search.")
+})
+```
+
+The writer adds parts in the order you call them.
+
+---
+
+## Message Parts
+
+An assistant message can contain many part types. Add them with the `writer`
+passed to `assistant()`, in the order you call them:
+
+- [Text](#text) and [Reasoning](#reasoning)
+- [Tool Calls](#tool-calls)
+- [Data](#data)
+- [Files](#files) and [Sources](#sources)
+- [Step Starts](#step-starts) and [Custom Parts](#custom-parts)
+
+```ts
+chat.assistant(({ writer }) => {
+  writer.reasoning("Let me check the weather.")
+  writer
+    .tool("getWeather", { input: { city: "San Francisco" } })
+    .output({ city: "San Francisco", temperature: 18, condition: "Breezy" })
+  writer.text("It is 18°C and breezy in San Francisco.")
+})
+```
+
+---
+
+## Text
+
+Use `text()` to add a text part.
+
+```ts
+chat.assistant(({ writer }) => {
+  writer.text("The release adds keyboard shortcuts.")
+  writer.text(" Search is faster too.")
+})
+```
+
+Each call creates a separate text part. Text streams word by word when the chat
+is used with `chat.transport()`.
+
+Use `mode: "instant"` to send the whole part at once, or `delayMs` to change the
+delay between its text deltas.
+
+```ts
+writer.text("Done.", { mode: "instant" })
+writer.text("This part streams more slowly.", { delayMs: 100 })
+```
+
+Pass an `id` when the text part needs a stable identifier.
+
+```ts
+writer.text("The final answer.", { id: "answer" })
+```
+
+---
+
+## Reasoning
+
+Use `reasoning()` to add a reasoning part.
+
+```ts
+chat.assistant(({ writer }) => {
+  writer.reasoning("I should check the latest conditions first.")
+  writer.text("Let me check the weather.")
+})
+```
+
+Reasoning uses the same `id`, `delayMs`, and `mode` options as text.
+
+```ts
+writer.reasoning("Checking the forecast.", { mode: "instant" })
+```
+
+---
+
+## Tool Calls
+
+Use `tool()` to add a tool call. It returns a handle that follows the tool from
+input to output.
+
+```ts
+chat.assistant(({ writer }) => {
+  writer
+    .tool("getWeather", {
+      title: "Checking weather",
+      input: { city: "San Francisco" },
+    })
+    .sleep(900)
+    .output({
+      city: "San Francisco",
+      temperature: 18,
+      condition: "Breezy",
+    })
+
+  writer.text("It is 18°C and breezy in San Francisco.")
+})
+```
+
+The tool can finish with `output()`, `error()`, or `denied()`.
+
+```ts
+writer.tool("getWeather", { input: { city: "San Francisco" } }).error()
+
+writer.tool("getWeather", { input: { city: "San Francisco" } }).denied()
+```
+
+Pass `dynamic: true` to create an AI SDK `dynamic-tool` part instead of a typed
+`tool-<name>` part.
+
+```ts
+writer.tool("getWeather", {
+  dynamic: true,
+  input: { city: "San Francisco" },
+  output: { city: "San Francisco", temperature: 18, condition: "Breezy" },
+})
+```
+
+Type the tool name, input, and output by passing your tool definitions to
+`createChat`.
+
+```ts
+type Tools = {
+  getWeather: {
+    input: { city: string }
+    output: { city: string; temperature: number; condition: string }
+  }
+}
+
+type DataParts = Record<string, never>
+
+const chat = createChat<unknown, DataParts, Tools>()
+```
+
+---
+
+## Data
+
+Use `data()` to add a typed `data-*` part.
+
+```ts
+type DataParts = {
+  weather: {
+    city: string
+    status: "loading" | "success"
+    temperature?: number
+    condition?: string
+  }
+}
+
+const chat = createChat<unknown, DataParts>().assistant(({ writer }) => {
+  writer.data({
+    type: "data-weather",
+    id: "weather-sf",
+    data: { city: "San Francisco", status: "loading" },
+  })
+})
+```
+
+Send the same `type` and `id` again to update the part in place. This is useful
+for states such as loading to success.
+
+```ts
+writer.data({
+  type: "data-weather",
+  id: "weather-sf",
+  data: {
+    city: "San Francisco",
+    status: "success",
+    temperature: 27,
+    condition: "Breezy",
+  },
+})
+```
+
+Set `transient: true` for an update that should stream to the client but should
+not remain in the final message.
+
+```ts
+writer.data({
+  type: "data-weather",
+  data: { city: "San Francisco", status: "loading" },
+  transient: true,
+})
+```
+
+---
+
+## Files
+
+Add files to a user message with the `files` option.
+
+```ts
+chat.user("Summarize this report.", {
+  files: [
+    {
+      filename: "report.pdf",
+      mediaType: "application/pdf",
+      url: "https://example.com/report.pdf",
+    },
+  ],
+})
+```
+
+Use `file()` to add a file to an assistant message.
+
+```ts
+chat.assistant(({ writer }) => {
+  writer.file({
+    filename: "summary.md",
+    mediaType: "text/markdown",
+    url: "https://example.com/summary.md",
+  })
+})
+```
+
+Use `reasoningFile()` for a file attached to a reasoning part.
+
+```ts
+writer.reasoningFile({
+  filename: "notes.txt",
+  mediaType: "text/plain",
+  url: "https://example.com/notes.txt",
+})
+```
+
+---
+
+## Sources
+
+Use `sourceUrl()` to add a URL source.
+
+```ts
+writer.sourceUrl({
+  sourceId: "source-1",
+  title: "Release notes",
+  url: "https://example.com/releases",
+})
+```
+
+Use `sourceDocument()` to add a document source.
+
+```ts
+writer.sourceDocument({
+  sourceId: "source-2",
+  title: "Product brief",
+  mediaType: "application/pdf",
+  filename: "brief.pdf",
+})
+```
+
+---
+
+## Step Starts
+
+Use `stepStart()` to add an AI SDK step boundary.
+
+```ts
+chat.assistant(({ writer }) => {
+  writer.stepStart()
+  writer.reasoning("I should search the release notes.")
+  writer.stepStart()
+  writer.text("Here is what changed.")
+})
+```
+
+---
+
+## Custom Parts
+
+Use `custom()` to add a custom part.
+
+```ts
+chat.assistant(({ writer }) => {
+  writer.custom("app.approval")
+})
+```
+
+The message receives a `custom` part with the given `kind`. The AI SDK expects
+kinds in the `{provider}.{provider-type}` format. Calling `custom()` without a
+kind uses `"test.output"`.
+
+---
+
+## Reading Messages
+
+Use `get()` to return messages from the start of the conversation.
+
+```ts
+chat.get() // Every message.
+chat.get(2) // The first two messages.
+chat.get(0) // An empty initial conversation.
+```
+
+`get()` returns cloned messages and does not change the chat.
+
+Use `next()` to find the next predefined user message after the messages already
+shown.
+
+```ts
+const initialMessages = chat.get(2)
+const nextMessage = chat.next(initialMessages)
+```
+
+`next()` always accepts a message transcript, not an index. It returns the next
+user message or `null` when none remain.
+
+---
+
+## Start from Existing Messages
+
+Pass `messages` to continue from a saved conversation or fixture.
+
+```ts
+import { createChat } from "@shadcn/helpers/ai-sdk"
+import type { UIMessage } from "ai"
+
+declare const savedMessages: UIMessage[]
+
+const chat = createChat({ messages: savedMessages })
+  .user("What should we do next?")
+  .assistant("Turn the open questions into a checklist.")
+```
+
+Existing IDs, metadata, and parts are preserved.
+
+---
+
+## Transport
+
+`transport()` creates an AI SDK `ChatTransport` that you can pass directly to
+`useChat`.
+
+```ts
+const transport = chat.transport()
+
+const { messages, sendMessage } = useChat({
+  messages: chat.get(0),
+  transport,
+})
+```
+
+When `sendMessage()` runs, the transport finds the assistant message that
+follows the current transcript and streams it through the normal AI SDK chat
+lifecycle. It uses message IDs first and falls back to matching the role and
+text of the latest message.
+
+### Options
+
+| Option     | Type                                       | Default | Description                                                                   |
+| ---------- | ------------------------------------------ | ------- | ----------------------------------------------------------------------------- |
+| `delayMs`  | `number`                                   | `50`    | Delay between text and reasoning deltas. Use `0` or `undefined` to remove it. |
+| `fallback` | `string`, `UIMessagePart[]`, or a callback | None    | Response to stream when no predefined assistant response remains.             |
+
+The transport-level `delayMs` is the default for every streamed text and
+reasoning part. Override it for one part with `writer.text(..., { delayMs })`
+or `writer.reasoning(..., { delayMs })`.
+
+```ts
+const transport = chat.transport({
+  delayMs: 25,
+})
+```
+
+### Fallback
+
+Use `fallback` when the conversation has no predefined assistant response
+left. This keeps a demo usable after its predefined replies are exhausted.
+
+```ts
+const transport = chat.transport({
+  fallback: "This demo has no more predefined replies.",
+})
+```
+
+A fallback can also be an array of AI SDK message parts or a writer callback.
+The callback receives the incoming transcript, so it can create a response from
+the current state.
+
+```ts
+const transport = chat.transport({
+  fallback: ({ writer, messages }) => {
+    writer.text(`This example already has ${messages.length} messages.`, {
+      mode: "instant",
+    })
+  },
+})
+```
+
+Fallback responses stream like assistant responses but are not added to the
+predefined conversation. Without one, the transport throws
+`"No assistant response found for this transcript."` when the conversation is
+exhausted.
+
+Calling `stop()` from `useChat` aborts the active transport stream.
+Reconnecting is not supported; `reconnectToStream()` returns `null`.
+
+---
+
+## Timing
+
+Use delays to reproduce the pace of a real response.
+
+```ts
+const chat = createChat()
+  .user("Give me a project update.")
+  .sleep(800)
+  .assistant(({ writer }) => {
+    writer.text("The first milestone is complete.", { mode: "instant" })
+    writer.sleep(500)
+    writer.text(" The next one is ready.")
+  })
+
+const transport = chat.transport({ delayMs: 50 })
+```
+
+- `chat.sleep(ms)` waits before the next assistant response starts.
+- `writer.sleep(ms)` waits between parts of an assistant response.
+- `tool.sleep(ms)` waits between a tool's input and its result.
+- `transport({ delayMs })` sets the default delay between text and reasoning
+  deltas.
+- `writer.text(text, { delayMs })` and `writer.reasoning(text, { delayMs })`
+  override that delay for one part.
+- `mode: "instant"` sends a whole text or reasoning part in one delta.
+
+For fast tests, use `chat.transport({ delayMs: 0 })` and instant text.
+
+---
+
+## Errors
+
+Use `error()` on the chat when the whole assistant response should fail.
+
+```ts
+const chat = createChat()
+  .user("Load the report.")
+  .error("The report could not be loaded.")
+```
+
+Use `writer.error()` to fail after other parts have streamed.
+
+```ts
+chat.assistant(({ writer }) => {
+  writer.text("I found the report.")
+  writer.error("The connection closed before it could be read.")
+})
+```
+
+---
+
+## Metadata and IDs
+
+Pass metadata on individual messages. Its type is preserved through `get()`,
+`next()`, and the transport.
+
+```ts
+type Metadata = {
+  model: string
+}
+
+const chat = createChat<Metadata>()
+  .user("Hello", { metadata: { model: "demo" } })
+  .assistant("Hi.", {
+    id: "assistant-welcome",
+    metadata: { model: "demo" },
+  })
+```
+
+Use chat options when a fixture needs custom prefixes or a fixed clock.
+
+```ts
+const chat = createChat({
+  messageIdPrefix: "demo-message",
+  toolCallIdPrefix: "demo-tool",
+  sourceIdPrefix: "demo-source",
+  now: "2026-01-01T00:00:00.000Z",
+})
+```
+
+---
+
+## API Reference
+
+The sections above cover the common flows. This reference lists every public
+export and option.
+
+### `createChat()`
+
+Creates a typed conversation and returns the fluent chat interface.
+
+```ts
+function createChat<
+  METADATA = unknown,
+  DATA_PARTS extends UIDataTypes = UIDataTypes,
+  TOOLS extends UITools = UITools,
+>(
+  options?: CreateChatOptions<METADATA, DATA_PARTS, TOOLS>
+): AiSdkChat<METADATA, DATA_PARTS, TOOLS>
+```
+
+#### Type Parameters
+
+| Parameter    | Description                                               |
+| ------------ | --------------------------------------------------------- |
+| `METADATA`   | The metadata shape stored on each `UIMessage`.            |
+| `DATA_PARTS` | A map of names to payloads for typed `data-*` parts.      |
+| `TOOLS`      | A map of tool names to their `input` and `output` shapes. |
+
+#### Options
+
+| Option             | Type                                       | Default                      | Description                                             |
+| ------------------ | ------------------------------------------ | ---------------------------- | ------------------------------------------------------- |
+| `messages`         | `UIMessage<METADATA, DATA_PARTS, TOOLS>[]` | `[]`                         | Start from an existing transcript. Messages are cloned. |
+| `messageIdPrefix`  | `string`                                   | `"msg"`                      | Prefix for generated message IDs.                       |
+| `toolCallIdPrefix` | `string`                                   | `"call"`                     | Prefix for generated tool call IDs.                     |
+| `sourceIdPrefix`   | `string`                                   | `"source"`                   | Prefix for generated source IDs.                        |
+| `now`              | `Date \| string`                           | `"2026-01-01T00:00:00.000Z"` | Fixed time used for generated `createdAt` metadata.     |
+
+IDs found in `messages` are reserved, so newly generated IDs continue after
+the existing transcript.
+
+### `AiSdkChat`
+
+Every method that adds content returns the same chat, so calls can be chained.
+
+| Method                        | Returns             | Description                                                      |
+| ----------------------------- | ------------------- | ---------------------------------------------------------------- |
+| `user(text?, options?)`       | `AiSdkChat`         | Add a user message with text and optional files.                 |
+| `assistant(input?, options?)` | `AiSdkChat`         | Add an assistant message from text, parts, or a writer callback. |
+| `sleep(delayMs)`              | `AiSdkChat`         | Wait before the next assistant response starts.                  |
+| `error(errorText?)`           | `AiSdkChat`         | Add an assistant response that emits an error.                   |
+| `get(count?)`                 | `UIMessage[]`       | Return cloned messages from the start of the conversation.       |
+| `next(messages)`              | `UIMessage \| null` | Return the next predefined user message after a transcript.      |
+| `transport(options?)`         | `ChatTransport`     | Create the transport used by `useChat`.                          |
+
+Calling `user()` or `assistant()` without content uses
+`"Summarize the uploaded receipt."`. Calling `error()` without a message uses
+`"An error occurred."`. `get(count)` throws when `count` is negative or not an
+integer.
+
+#### `user()` Options
+
+| Option     | Type            | Description                                 |
+| ---------- | --------------- | ------------------------------------------- |
+| `id`       | `string`        | Use a specific message ID.                  |
+| `metadata` | `METADATA`      | Set metadata for this message.              |
+| `files`    | `FilePayload[]` | Append file parts after the user text part. |
+
+A user file has this shape:
+
+```ts
+type FilePayload = {
+  type?: "file"
+  mediaType: string
+  url: string
+  filename?: string
+  providerMetadata?: Record<string, unknown>
+}
+```
+
+#### `assistant()` Input
+
+| Input                  | Result                                                                 |
+| ---------------------- | ---------------------------------------------------------------------- |
+| `string`               | One text part that streams word by word.                               |
+| `UIMessagePart[]`      | Static AI SDK parts that stream in their existing order.               |
+| `({ writer }) => void` | A synchronous callback for scripting parts, tools, errors, and timing. |
+
+#### `assistant()` Options
+
+| Option     | Type       | Description                    |
+| ---------- | ---------- | ------------------------------ |
+| `id`       | `string`   | Use a specific message ID.     |
+| `metadata` | `METADATA` | Set metadata for this message. |
+
+#### `transport()` Options
+
+| Option     | Type                                                          | Default | Description                                                                   |
+| ---------- | ------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------- |
+| `delayMs`  | `number`                                                      | `50`    | Delay between text and reasoning deltas. Use `0` or `undefined` to remove it. |
+| `fallback` | `string \| UIMessagePart[] \| ({ writer, messages }) => void` | None    | Response used when no predefined assistant response remains.                  |
+
+See [Transport](#transport) for matching, fallback, abort, and streaming
+behavior.
+
+### Writer
+
+The writer is available inside `assistant(({ writer }) => {})` and fallback
+callbacks.
+
+| Method                       | Description                                                       |
+| ---------------------------- | ----------------------------------------------------------------- |
+| `text(text?, options?)`      | Add a text part.                                                  |
+| `reasoning(text?, options?)` | Add a reasoning part.                                             |
+| `tool(name, options?)`       | Add a typed or dynamic tool call and return its lifecycle handle. |
+| `data(part)`                 | Add or update a typed data part.                                  |
+| `file(options?)`             | Add a file part.                                                  |
+| `reasoningFile(options?)`    | Add a reasoning file part.                                        |
+| `sourceUrl(options?)`        | Add a URL source part.                                            |
+| `sourceDocument(options?)`   | Add a document source part.                                       |
+| `stepStart()`                | Add an AI SDK step boundary.                                      |
+| `custom(kind?)`              | Add a custom part with the given `kind`.                          |
+| `sleep(delayMs)`             | Pause before the next writer event.                               |
+| `error(errorText?)`          | Emit an error and end the response without a `finish` chunk.      |
+
+Calling `text()` without content uses `"Summarize the uploaded receipt."`.
+Calling `reasoning()` without content uses
+`"I need to inspect the available context before answering."`. Calling
+`error()` without a message uses `"An error occurred."`.
+
+#### Text and Reasoning Options
+
+| Option    | Type                    | Default    | Description                                             |
+| --------- | ----------------------- | ---------- | ------------------------------------------------------- |
+| `id`      | `string`                | Generated  | Use a stable part ID.                                   |
+| `delayMs` | `number`                | Transport  | Override the transport delay for this part.             |
+| `mode`    | `"stream" \| "instant"` | `"stream"` | Stream word deltas or emit the whole part in one delta. |
+
+#### Tool Options
+
+| Option             | Type                      | Description                                          |
+| ------------------ | ------------------------- | ---------------------------------------------------- |
+| `toolCallId`       | `string`                  | Use a specific tool call ID.                         |
+| `title`            | `string`                  | Add a display title to the tool part.                |
+| `toolMetadata`     | `Record<string, unknown>` | Add provider or application metadata.                |
+| `providerExecuted` | `boolean`                 | Mark the call as executed by the provider.           |
+| `input`            | `TOOLS[NAME]["input"]`    | Set the typed tool input.                            |
+| `output`           | `TOOLS[NAME]["output"]`   | Immediately finish with a typed output.              |
+| `errorText`        | `string`                  | Immediately finish with an error.                    |
+| `dynamic`          | `boolean`                 | Emit a `dynamic-tool` part instead of `tool-<name>`. |
+
+`tool()` returns a handle with `sleep(delayMs)`, `output(value)`,
+`error(errorText?)`, and `denied()`. Use the handle when the tool lifecycle
+needs events between its input and result. Calling `tool.error()` without a
+message uses `"Tool call failed."`.
+
+#### Data Input
+
+```ts
+writer.data({
+  type: "data-name",
+  id: "optional-id",
+  data: value,
+  transient: false,
+})
+```
+
+Repeating the same `type` and `id` replaces the earlier data part. A transient
+part streams to the client but is not included in the final message returned by
+`get()`.
+
+#### File and Source Options
+
+| Method             | Fields                                                                |
+| ------------------ | --------------------------------------------------------------------- |
+| `file()`           | `mediaType?`, `url?`, `filename?`, `providerMetadata?`                |
+| `reasoningFile()`  | `mediaType?`, `url?`, `filename?`, `providerMetadata?`                |
+| `sourceUrl()`      | `sourceId?`, `url?`, `title?`, `providerMetadata?`                    |
+| `sourceDocument()` | `sourceId?`, `mediaType?`, `title?`, `filename?`, `providerMetadata?` |
+
+These methods provide sample defaults for omitted fields. Pass explicit values
+when the payload matters to the component or test.
+
+### Types
+
+| Export              | Description                                       |
+| ------------------- | ------------------------------------------------- |
+| `AiSdkChat`         | The typed fluent chat returned by `createChat()`. |
+| `CreateChatOptions` | Options accepted by `createChat()`.               |

@@ -115,9 +115,9 @@ That's usually enough for v1. Fancy diff animations or per-paragraph fade-ins ca
     "Happy to help — send another message when you're ready to keep stepping through the demo."
   )
 
-const initialMessages = chat.get({ count: 0 })
+const initialMessages = chat.get(0)
 const transport = chat.transport({
-  chunkDelayMs: 10,
+  delayMs: 10,
 })
 
 function MessageScrollerDemo() {
@@ -125,7 +125,7 @@ function MessageScrollerDemo() {
     messages: initialMessages,
     transport,
   })
-  const nextMessage = chat.next({ after: messages })
+  const nextMessage = chat.next(messages)
   const isBusy = status === "submitted" || status === "streaming"
 
   function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {

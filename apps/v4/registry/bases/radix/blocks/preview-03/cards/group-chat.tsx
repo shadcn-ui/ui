@@ -60,34 +60,27 @@ type ChatEventUserTyping = {
 
 type ChatEvent = ChatEventUserLeft | ChatEventUserJoined | ChatEventUserTyping
 
-type DataTypes = {
-  event: ChatEvent
+type ScriptedChatEvent = ChatEvent & {
+  order: number
+  delayMs: number
 }
 
-type ChatMessage = UIMessage<Metadata, DataTypes>
+type ChatMessage = UIMessage<Metadata>
 
-const chat = createChat<Metadata, DataTypes>()
+const scriptedEvents = [
+  { type: "user-joined", name: "Stella", order: 0.5, delayMs: 2000 },
+  { type: "user-typing", name: "Stella", order: 0.5, delayMs: 4000 },
+  { type: "user-joined", name: "Marcus", order: 1.5, delayMs: 2000 },
+  { type: "user-typing", name: "Marcus", order: 1.5, delayMs: 4000 },
+  { type: "user-joined", name: "Aleena", order: 2.5, delayMs: 0 },
+  { type: "user-typing", name: "Aleena", order: 3.5, delayMs: 0 },
+  { type: "user-left", name: "Aleena", order: 5.5, delayMs: 2000 },
+] satisfies ScriptedChatEvent[]
+
+const chat = createChat<Metadata>()
   .user(
     "Hey everyone — dinner this Saturday? I was thinking something casual at my place."
   )
-  .sleep(2000)
-  .data({
-    type: "data-event",
-    transient: true,
-    data: {
-      type: "user-joined",
-      name: "Stella",
-    },
-  })
-  .sleep(2000)
-  .data({
-    type: "data-event",
-    transient: true,
-    data: {
-      type: "user-typing",
-      name: "Stella",
-    },
-  })
   .user(
     "I'm in! Should we do potluck or does someone want to cook the whole thing?",
     {
@@ -96,66 +89,19 @@ const chat = createChat<Metadata, DataTypes>()
       },
     }
   )
-  .sleep(2000)
-  .data({
-    type: "data-event",
-    transient: true,
-    data: {
-      type: "user-joined",
-      name: "Marcus",
-    },
-  })
-  .sleep(2000)
-  .data({
-    type: "data-event",
-    transient: true,
-    data: {
-      type: "user-typing",
-      name: "Marcus",
-    },
-  })
-  .sleep(5000)
   .user("Potluck sounds good. I can handle appetizers and drinks.", {
     metadata: {
       name: "Marcus",
     },
   })
-  .data({
-    type: "data-event",
-    transient: true,
-    data: {
-      type: "user-joined",
-      name: "Aleena",
-    },
-  })
-  .sleep(2000)
   .user("Alright! Aleena?")
-  .data({
-    type: "data-event",
-    transient: true,
-    data: {
-      type: "user-typing",
-      name: "Aleena",
-    },
-  })
-  .sleep(3000)
   .user("Can't make it. I'm out of town. 😭", {
     metadata: {
       name: "Aleena",
     },
   })
-  .sleep(2000)
   .user("Sorry guys, let's catch up another time. Bye.", {
     metadata: {
-      name: "Aleena",
-    },
-  })
-  .sleep(2000)
-  .data({
-    type: "data-event",
-    transient: true,
-    data: {
-      type: "user-left",
       name: "Aleena",
     },
   })
@@ -185,59 +131,19 @@ Want me to scale this for **6 guests** or swap the main for something vegetarian
 
 const INITIAL_MESSAGE_COUNT = 0
 
-const initialMessages = chat.get({ count: INITIAL_MESSAGE_COUNT })
+const initialMessages = chat.get(INITIAL_MESSAGE_COUNT)
 const transport = chat.transport()
 
 export function GroupChat() {
   const eventRunRef = React.useRef(0)
-  const [events, setEvents] = React.useState<
-    Array<ChatEvent & { order: number; delayMs: number }>
-  >(() =>
-    chat.getData({ count: INITIAL_MESSAGE_COUNT }).map((part) => ({
-      ...part.data,
-      order: part.order,
-      delayMs: part.delayMs,
-    }))
+  const [events, setEvents] = React.useState<ScriptedChatEvent[]>(() =>
+    scriptedEvents.filter((event) => event.order < INITIAL_MESSAGE_COUNT)
   )
   const { status, messages, sendMessage, setMessages } = useChat<ChatMessage>({
     messages: initialMessages,
     transport,
-    onData: (part) => {
-      if (part.type === "data-event") {
-        if (
-          part.data.type === "user-typing" &&
-          messages.some((message) => message.metadata?.name === part.data.name)
-        ) {
-          return
-        }
-
-        const scriptedPart = chat
-          .getData()
-          .find(
-            (currentPart) =>
-              currentPart.data.type === part.data.type &&
-              currentPart.data.name === part.data.name
-          )
-
-        setEvents((events) =>
-          [
-            ...events.filter(
-              (event) =>
-                !(
-                  event.type === part.data.type && event.name === part.data.name
-                )
-            ),
-            {
-              ...part.data,
-              order: scriptedPart?.order ?? messages.length - 0.5,
-              delayMs: scriptedPart?.delayMs ?? 0,
-            },
-          ].sort((a, b) => a.order - b.order)
-        )
-      }
-    },
   })
-  const nextMessage = chat.next({ after: messages })
+  const nextMessage = chat.next(messages)
   const isBusy = status === "submitted" || status === "streaming"
   const senderName = nextMessage?.metadata?.name ?? "You"
 
@@ -250,15 +156,9 @@ export function GroupChat() {
       const message = nextMessage
       const messageIndex = messages.length
       const eventRun = eventRunRef.current + 1
-      const nextEvents = chat
-        .getData()
-        .filter((part) => part.order > messageIndex)
-        .filter((part) => part.order < messageIndex + 1)
-        .map((part) => ({
-          ...part.data,
-          order: part.order,
-          delayMs: part.delayMs,
-        }))
+      const nextEvents = scriptedEvents
+        .filter((event) => event.order > messageIndex)
+        .filter((event) => event.order < messageIndex + 1)
         .filter(
           (event) =>
             !(
@@ -344,13 +244,9 @@ export function GroupChat() {
                 eventRunRef.current += 1
                 setMessages(initialMessages)
                 setEvents(
-                  chat
-                    .getData({ count: INITIAL_MESSAGE_COUNT })
-                    .map((part) => ({
-                      ...part.data,
-                      order: part.order,
-                      delayMs: part.delayMs,
-                    }))
+                  scriptedEvents.filter(
+                    (event) => event.order < INITIAL_MESSAGE_COUNT
+                  )
                 )
               }}
             >

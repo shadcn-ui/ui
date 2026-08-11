@@ -24,8 +24,12 @@ describe("calendar registry items", () => {
     ...findFiles(resolve(appDir, "registry/new-york-v4"), "calendar.tsx"),
     ...findFiles(resolve(appDir, "styles"), "calendar.tsx"),
   ]
+  // Only the frozen legacy styles are checked here: they have no .tsx source
+  // and are maintained by editing the published JSON directly in git. All
+  // other styles are generated from the sources checked above.
   const publicFiles = [
-    ...findFiles(resolve(appDir, "public/r/styles"), "calendar.json"),
+    ...findFiles(resolve(appDir, "public/r/styles/default"), "calendar.json"),
+    ...findFiles(resolve(appDir, "public/r/styles/new-york"), "calendar.json"),
   ]
 
   it.each(sourceFiles.map((file) => [relative(appDir, file), file]))(

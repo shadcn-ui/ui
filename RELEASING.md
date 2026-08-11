@@ -1,9 +1,10 @@
 # Releasing
 
-This monorepo publishes two packages independently with [Changesets](https://github.com/changesets/changesets):
+This monorepo publishes three packages independently with [Changesets](https://github.com/changesets/changesets):
 
 - **`shadcn`** — the CLI and tooling.
 - **`@shadcn/react`** — headless React primitives.
+- **`@shadcn/helpers`** — small helpers for developing apps.
 
 They version on their own lines. A change to one never bumps the other unless a changeset says so.
 
@@ -15,7 +16,7 @@ Every change that should publish needs a changeset. Run:
 pnpm changeset
 ```
 
-Select the affected package(s) and bump level. One PR can carry separate changesets for `shadcn` and `@shadcn/react` at different levels. A PR with no changeset publishes nothing.
+Select the affected package(s) and bump level. One PR can carry separate changesets for each package at different levels. A PR with no changeset publishes nothing.
 
 ## 2. Stable release
 
@@ -25,7 +26,7 @@ Stable releases are automated by `.github/workflows/release.yml` (the `release` 
 2. The Changesets action opens/updates a **"Version Packages"** PR that bumps versions and writes changelogs.
 3. Merging that PR triggers `changeset publish`, which builds all packages (`pnpm build:packages`) and publishes any whose version is ahead of npm — each to the `latest` tag.
 
-`pnpm build:packages` (`turbo run build --filter=./packages/*`) builds `shadcn` and `@shadcn/react` but never `apps/v4`.
+`pnpm build:packages` (`turbo run build --filter=./packages/*`) builds every package under `packages/` but never `apps/v4`.
 
 ## 3. Prereleases (per-PR snapshots)
 

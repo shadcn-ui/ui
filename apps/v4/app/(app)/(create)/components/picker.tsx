@@ -202,23 +202,54 @@ function PickerCheckboxItem({
   )
 }
 
-function PickerRadioGroup({ ...props }: MenuPrimitive.RadioGroup.Props) {
+// Lets pickers preview an item's value on hover/highlight by declaring a
+// single onItemPreview on the group instead of wiring every radio item.
+const PickerPreviewContext = React.createContext<
+  ((value: string) => void) | null
+>(null)
+
+function PickerRadioGroup({
+  onItemPreview,
+  ...props
+}: MenuPrimitive.RadioGroup.Props & {
+  onItemPreview?: (value: string) => void
+}) {
   return (
-    <MenuPrimitive.RadioGroup
-      data-slot="dropdown-menu-radio-group"
-      {...props}
-    />
+    <PickerPreviewContext.Provider value={onItemPreview ?? null}>
+      <MenuPrimitive.RadioGroup
+        data-slot="dropdown-menu-radio-group"
+        {...props}
+      />
+    </PickerPreviewContext.Provider>
   )
 }
 
 function PickerRadioItem({
   className,
   children,
+  value,
+  onMouseMove,
+  onFocus,
   ...props
 }: MenuPrimitive.RadioItem.Props) {
+  const onItemPreview = React.useContext(PickerPreviewContext)
+
   return (
     <MenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
+      value={value}
+      // Previews apply when the pointer settles: every mousemove re-arms the
+      // provider's trailing timer, so nothing applies while the cursor is in
+      // motion. Base UI moves DOM focus to the highlighted item, so onFocus
+      // covers keyboard (arrow key) browsing.
+      onMouseMove={(event) => {
+        onMouseMove?.(event)
+        onItemPreview?.(value as string)
+      }}
+      onFocus={(event) => {
+        onFocus?.(event)
+        onItemPreview?.(value as string)
+      }}
       className={cn(
         "relative flex cursor-default items-center gap-2 rounded-lg py-1.5 pr-8 pl-2 text-sm font-medium outline-hidden select-none **:text-neutral-100 focus:bg-neutral-600 focus:text-neutral-100 focus:**:text-neutral-100 data-inset:pl-8 dark:focus:bg-neutral-700/80 pointer-coarse:gap-3 pointer-coarse:py-2.5 pointer-coarse:pl-3 pointer-coarse:text-base data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className

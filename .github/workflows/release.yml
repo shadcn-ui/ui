@@ -60,10 +60,10 @@ jobs:
         with:
           version: 10.33.4
 
-      - name: Use Node.js 20
+      - name: Use Node.js 24
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           registry-url: "https://registry.npmjs.org"
           cache: "pnpm"
 
@@ -137,10 +137,10 @@ jobs:
         with:
           version: 10.33.4
 
-      - name: Use Node.js 20
+      - name: Use Node.js 24
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           registry-url: "https://registry.npmjs.org"
           cache: "pnpm"
 
@@ -150,8 +150,8 @@ jobs:
       - name: Install NPM Dependencies
         run: pnpm install
 
-      # Builds every publishable package under packages/* (shadcn, @shadcn/react),
-      # never apps/v4, so each dist is fresh before changeset publish.
+      # Builds every publishable package under packages/* (shadcn, @shadcn/react,
+      # @shadcn/helpers), never apps/v4, so each dist is fresh before publish.
       - name: Build the packages
         run: pnpm build:packages
 

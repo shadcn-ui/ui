@@ -6,8 +6,8 @@ import { Badge } from "@/registry/new-york-v4/ui/badge"
 export function Announcement() {
   return (
     <Badge asChild variant="secondary" className="bg-muted">
-      <Link href="/docs/typeset">
-        Introducing shadcn/typeset <ArrowRightIcon />
+      <Link href="/docs/changelog">
+        New Questionnaire component <ArrowRightIcon />
       </Link>
     </Badge>
   )

@@ -113,10 +113,18 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+
       - name: Install dependencies
         run: pnpm install
 
       - name: Build packages
         run: pnpm build:packages
+
+      # The generated styles under apps/v4/styles are gitignored, and the v4
+      # typecheck imports them. Build them before typechecking.
+      - name: Build registry styles
+        run: pnpm --filter=v4 registry:build --style all
 
       - run: pnpm typecheck
