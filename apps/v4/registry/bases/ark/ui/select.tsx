@@ -35,7 +35,7 @@ const SelectTrigger = React.forwardRef<
     ref={ref}
     data-slot="select-trigger"
     className={cn(
-      "flex h-9 w-full items-center gap-2 rounded-md border border-input bg-transparent py-2 pe-10 ps-3 text-sm shadow-xs transition-[border-color,box-shadow] duration-150 ease-in-out outline-none",
+      "flex h-9 w-full items-center gap-2 rounded-md border border-input bg-transparent py-2 pr-10 pl-3 text-sm shadow-xs transition-[border-color,box-shadow] duration-150 ease-in-out outline-none",
       "data-placeholder-shown:text-muted-foreground",
       "hover:border-ring/50",
       "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/20",
@@ -58,7 +58,7 @@ const SelectIndicatorGroup = React.forwardRef<
     ref={ref}
     data-slot="select-indicator-group"
     className={cn(
-      "pointer-events-none absolute inset-y-0 end-0 flex items-center gap-1 px-2.5",
+      "pointer-events-none absolute inset-y-0 right-0 flex items-center gap-1 px-2.5",
       "[&>[data-slot=select-indicator]]:static [&>[data-slot=select-indicator]]:px-0",
       className
     )}
@@ -77,7 +77,7 @@ const SelectIndicator = React.forwardRef<
     ref={ref}
     data-slot="select-indicator"
     className={cn(
-      "pointer-events-none absolute inset-y-0 end-0 flex items-center px-2.5 text-muted-foreground/60 [&_svg]:size-4",
+      "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-muted-foreground/60 [&_svg]:size-4",
       className
     )}
     {...props}
@@ -184,7 +184,7 @@ const SelectItem = React.forwardRef<
     ref={ref}
     data-slot="select-item"
     className={cn(
-      "relative flex w-full cursor-default items-center gap-2 rounded-md px-2 py-1.5 pe-8 text-sm outline-none select-none",
+      "relative flex w-full cursor-default items-center gap-2 rounded-md px-2 py-1.5 pr-8 text-sm outline-none select-none",
       "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
       "data-[state=checked]:font-medium",
       "data-disabled:pointer-events-none data-disabled:opacity-50",
@@ -207,7 +207,7 @@ const SelectItemIndicator = React.forwardRef<
     ref={ref}
     data-slot="select-item-indicator"
     className={cn(
-      "absolute end-2 flex size-4 items-center justify-center",
+      "absolute right-2 flex size-4 items-center justify-center",
       className
     )}
     {...props}
