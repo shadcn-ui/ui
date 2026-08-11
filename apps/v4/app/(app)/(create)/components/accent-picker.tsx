@@ -10,6 +10,7 @@ import {
   PickerRadioItem,
   PickerTrigger,
 } from "@/app/(app)/(create)/components/picker"
+import { usePreviewOverride } from "@/app/(app)/(create)/components/preview-override"
 import { useDesignSystemSearchParams } from "@/app/(app)/(create)/lib/search-params"
 
 export function MenuAccentPicker({
@@ -20,6 +21,7 @@ export function MenuAccentPicker({
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
   const [params, setParams] = useDesignSystemSearchParams()
+  const { setOverride, clearOverride } = usePreviewOverride()
 
   const currentAccent = MENU_ACCENTS.find(
     (accent) => accent.value === params.menuAccent
@@ -27,7 +29,13 @@ export function MenuAccentPicker({
 
   return (
     <div className="group/picker relative pr-3 md:pr-0">
-      <Picker>
+      <Picker
+        onOpenChange={(open) => {
+          if (!open) {
+            clearOverride()
+          }
+        }}
+      >
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
             <div className="text-xs text-muted-foreground">Menu Accent</div>
@@ -69,12 +77,19 @@ export function MenuAccentPicker({
           anchor={isMobile ? anchorRef : undefined}
           side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
+          onMouseLeave={clearOverride}
         >
           <PickerRadioGroup
             value={currentAccent?.value}
             onValueChange={(value) => {
               setParams({ menuAccent: value as MenuAccentValue })
             }}
+            onItemPreview={
+              isMobile
+                ? undefined
+                : (value) =>
+                    setOverride({ menuAccent: value as MenuAccentValue })
+            }
           >
             <PickerGroup>
               {MENU_ACCENTS.map((accent) => (

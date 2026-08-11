@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
 
 import { META_THEME_COLORS, siteConfig } from "@/lib/config"
+import { DOCS_SIDEBAR_SCROLL_RESTORE_SCRIPT } from "@/lib/docs-sidebar-scroll"
 import { fontVariables } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { ActiveThemeProvider } from "@/components/active-theme"
@@ -11,6 +12,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { TooltipProvider as BaseTooltipProvider } from "@/registry/bases/base/ui/tooltip"
 import { Toaster } from "@/registry/bases/radix/ui/sonner"
 import { TooltipProvider as RadixTooltipProvider } from "@/registry/bases/radix/ui/tooltip"
+import { Toaster as BaseToaster } from "@/styles/base-nova/ui/toast"
 
 import "@/app/globals.css"
 import "@/app/(app)/(typeset)/typeset.css"
@@ -83,6 +85,11 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
+            __html: DOCS_SIDEBAR_SCROLL_RESTORE_SCRIPT,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
             __html: `
               try {
                 if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -106,6 +113,7 @@ export default function RootLayout({
                 <RadixTooltipProvider delayDuration={0}>
                   {children}
                   <Toaster position="top-center" />
+                  <BaseToaster />
                 </RadixTooltipProvider>
               </BaseTooltipProvider>
             </NuqsAdapter>
