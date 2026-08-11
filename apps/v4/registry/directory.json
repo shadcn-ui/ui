@@ -422,7 +422,7 @@
   },
   {
     "name": "@diklein",
-    "homepage": "https://diklein.com",
+    "homepage": "https://diklein.com/components",
     "url": "https://diklein.com/r/{name}.json",
     "description": "A growing collection of design-forward React components by Dave Klein, extracted from the components powering diklein.com.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' width='24' height='24'><circle cx='62' cy='38' r='28' fill='#e10000'/><rect x='12' y='32' width='56' height='56' fill='var(--foreground)'/></svg>"
