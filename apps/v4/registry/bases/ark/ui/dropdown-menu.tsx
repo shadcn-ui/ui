@@ -36,7 +36,7 @@ function DropdownMenuContent({
         <MenuPrimitive.Content
           data-slot="dropdown-menu-content"
           className={cn(
-            "cn-dropdown-menu-content cn-menu-target z-50 overflow-x-hidden overflow-y-auto",
+            "cn-dropdown-menu-content cn-menu-target z-[calc(50_+_var(--layer-index,0))] overflow-x-hidden overflow-y-auto",
             className
           )}
           {...props}
@@ -210,7 +210,7 @@ function DropdownMenuShortcut({
 function DropdownMenuSub({
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.Root>) {
-  return <MenuPrimitive.Root data-slot="dropdown-menu-sub" positioning={{ gutter: 4 }} {...props} />
+  return <MenuPrimitive.Root data-slot="dropdown-menu-sub" {...props} />
 }
 
 function DropdownMenuSubTrigger({
@@ -254,7 +254,7 @@ function DropdownMenuSubContent({
         <MenuPrimitive.Content
           data-slot="dropdown-menu-sub-content"
           className={cn(
-            "cn-dropdown-menu-sub-content cn-menu-target z-50 overflow-hidden",
+            "cn-dropdown-menu-sub-content cn-menu-target z-[calc(50_+_var(--layer-index,0))] overflow-hidden",
             className
           )}
           {...props}

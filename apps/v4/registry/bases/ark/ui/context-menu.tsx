@@ -42,7 +42,7 @@ function ContextMenuPortal({ children }: { children: React.ReactNode }) {
 function ContextMenuSub({
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.Root>) {
-  return <MenuPrimitive.Root data-slot="context-menu-sub" positioning={{ gutter: 4 }} {...props} />
+  return <MenuPrimitive.Root data-slot="context-menu-sub" {...props} />
 }
 
 function ContextMenuRadioGroup({
@@ -66,7 +66,7 @@ function ContextMenuContent({
         <MenuPrimitive.Content
           data-slot="context-menu-content"
           className={cn(
-            "cn-context-menu-content cn-menu-target z-50 overflow-x-hidden overflow-y-auto",
+            "cn-context-menu-content cn-menu-target z-[calc(50_+_var(--layer-index,0))] overflow-x-hidden overflow-y-auto",
             className
           )}
           {...props}
@@ -140,7 +140,7 @@ function ContextMenuSubContent({
         <MenuPrimitive.Content
           data-slot="context-menu-sub-content"
           className={cn(
-            "cn-context-menu-sub-content cn-menu-target z-50 overflow-hidden",
+            "cn-context-menu-sub-content cn-menu-target z-[calc(50_+_var(--layer-index,0))] overflow-hidden",
             className
           )}
           {...props}

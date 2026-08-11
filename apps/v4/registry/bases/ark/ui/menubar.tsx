@@ -77,7 +77,7 @@ function MenubarContent({
         <MenuPrimitive.Content
           data-slot="menubar-content"
           className={cn(
-            "cn-menubar-content cn-menu-target z-50 overflow-hidden",
+            "cn-menubar-content cn-menu-target z-[calc(50_+_var(--layer-index,0))] overflow-hidden",
             className
           )}
           {...props}
@@ -226,7 +226,7 @@ function MenubarShortcut({
 function MenubarSub({
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.Root>) {
-  return <MenuPrimitive.Root data-slot="menubar-sub" positioning={{ gutter: 4 }} {...props} />
+  return <MenuPrimitive.Root data-slot="menubar-sub" {...props} />
 }
 
 function MenubarSubTrigger({
@@ -270,7 +270,7 @@ function MenubarSubContent({
         <MenuPrimitive.Content
           data-slot="menubar-sub-content"
           className={cn(
-            "cn-menubar-sub-content cn-menu-target z-50 overflow-hidden",
+            "cn-menubar-sub-content cn-menu-target z-[calc(50_+_var(--layer-index,0))] overflow-hidden",
             className
           )}
           {...props}
