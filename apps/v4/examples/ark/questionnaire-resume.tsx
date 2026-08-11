@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 import { Button } from "@/examples/ark/ui/button"
 import {
@@ -37,7 +37,7 @@ export function QuestionnaireResume() {
       notes: formData.get("notes"),
     }
 
-    toast("Draft updated", {
+    toast.create({ title: "Draft updated",
       description: `Migration: ${answers.change ?? "None"} · Verification: ${answers.verification.join(", ") || "None"} · Notes: ${answers.notes || "None"}`,
     })
   }
@@ -47,7 +47,7 @@ export function QuestionnaireResume() {
       className="mx-auto max-w-md"
       defaultItem="verification"
       items={items}
-      onReset={() => toast("Saved answers restored")}
+      onReset={() => toast.create({ title: "Saved answers restored" })}
       onSubmit={handleSubmit}
     >
       <QuestionnaireProgress />

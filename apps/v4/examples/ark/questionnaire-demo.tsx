@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 import {
   Questionnaire,
@@ -57,7 +57,7 @@ export function QuestionnaireDemo() {
       timing: formData.get("timing"),
     }
 
-    toast("Agent plan saved", {
+    toast.create({ title: "Agent plan saved",
       description: `Direction: ${answers.direction ?? "None"} · Progress signals: ${answers.signals.join(", ") || "None"} · Timing: ${answers.timing ?? "None"}`,
     })
   }

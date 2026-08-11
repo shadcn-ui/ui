@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "sonner"
+import { toast } from "@/registry/bases/ark/ui/toast"
 
 import {
   Example,
@@ -536,7 +536,7 @@ function ComboboxWithForm() {
     event.preventDefault()
     const formData = new FormData(event.target as HTMLFormElement)
     const framework = formData.get("framework") as string
-    toast(`You selected ${framework} as your framework.`)
+    toast.create({ title: `You selected ${framework} as your framework.` })
   }
 
   return (
@@ -1047,7 +1047,7 @@ function ComboboxInDialog() {
             <Button
               type="button"
               onClick={() => {
-                toast("Framework selected.")
+                toast.create({ title: "Framework selected." })
                 setOpen(false)
               }}
             >

@@ -35,7 +35,7 @@ import {
   TooltipTrigger,
 } from "@/examples/ark/ui/tooltip"
 import { ChevronDownIcon, InfoIcon, StarIcon } from "lucide-react"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 export function InputGroupWithTooltip({
   country,
@@ -129,7 +129,7 @@ export function InputGroupWithTooltip({
           <InputGroupAddon align="inline-end">
             <InputGroupButton
               size="icon-xs"
-              onClick={() => toast("Added to favorites")}
+              onClick={() => toast.create({ title: "Added to favorites" })}
             >
               <StarIcon />
             </InputGroupButton>

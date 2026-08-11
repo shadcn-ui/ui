@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import type { QuestionnaireItemStatus } from "@shadcn/react/questionnaire"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 import {
   Questionnaire,
@@ -42,7 +42,7 @@ export function QuestionnaireSkipExample() {
       review: formData.get("review"),
     }
 
-    toast("Agent brief submitted", {
+    toast.create({ title: "Agent brief submitted",
       description: `Task: ${answers.task ?? "None"} · Constraints: ${
         answers.constraintStatus === "skipped"
           ? "Skipped"

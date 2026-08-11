@@ -1,6 +1,6 @@
 "use client"
 
-import { toast } from "sonner"
+import { toast } from "@/registry/bases/ark/ui/toast"
 
 import {
   Example,
@@ -94,7 +94,7 @@ function MarkerExample() {
       </Marker>
       <Marker asChild>
         <button
-          onClick={() => toast("You clicked the button")}
+          onClick={() => toast.create({ title: "You clicked the button" })}
           className="transition-colors hover:text-foreground"
         >
           <MarkerIcon>

@@ -731,13 +731,13 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "sonner-example",
-    title: "Sonner",
+    name: "toast-example",
+    title: "Toast",
     type: "registry:example",
-    registryDependencies: ["sonner", "example"],
+    registryDependencies: ["toast", "example"],
     files: [
       {
-        path: "examples/sonner-example.tsx",
+        path: "examples/toast-example.tsx",
         type: "registry:example",
       },
     ],
@@ -961,7 +961,7 @@ export const examples: Registry["items"] = [
       "dialog",
       "example",
       "questionnaire",
-      "sonner",
+      "toast",
     ],
     files: [
       {

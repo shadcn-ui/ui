@@ -460,12 +460,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "sonner",
+    name: "toast",
     type: "registry:ui",
     dependencies: ["@ark-ui/react"],
     files: [
       {
-        path: "ui/sonner.tsx",
+        path: "ui/toast.tsx",
         type: "registry:ui",
       },
     ],

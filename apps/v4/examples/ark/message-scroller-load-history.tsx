@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { RotateCwIcon } from "lucide-react"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 import { createChat, getMessageText } from "@/lib/ai"
 import { Bubble, BubbleContent } from "@/examples/ark/ui/bubble"
@@ -146,7 +146,7 @@ export function MessageScrollerLoadHistory() {
               disabled={!canLoadHistory}
               onClick={() => {
                 setVisibleCount(history.length)
-                toast("History loaded", {
+                toast.create({ title: "History loaded",
                   description: "Scroll up to see earlier messages.",
                 })
               }}

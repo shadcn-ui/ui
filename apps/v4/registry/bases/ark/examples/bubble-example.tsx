@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "sonner"
+import { toast } from "@/registry/bases/ark/ui/toast"
 
 import {
   Example,
@@ -373,7 +373,7 @@ function BubbleReactionsButtons() {
               variant="outline"
               size="xs"
               onClick={() =>
-                toast("You clicked the button in the bubble reaction")
+                toast.create({ title: "You clicked the button in the bubble reaction" })
               }
             >
               Button
@@ -386,7 +386,7 @@ function BubbleReactionsButtons() {
             <Button
               variant="ghost"
               size="icon-xs"
-              onClick={() => toast("Confetti!")}
+              onClick={() => toast.create({ title: "Confetti!" })}
             >
               🎉
             </Button>
@@ -401,7 +401,7 @@ function BubbleReactionsButtons() {
               variant="secondary"
               size="icon-xs"
               aria-label="Thumbs up"
-              onClick={() => toast("You agree!")}
+              onClick={() => toast.create({ title: "You agree!" })}
             >
               <IconPlaceholder
                 lucide="ThumbsUpIcon"
@@ -415,7 +415,7 @@ function BubbleReactionsButtons() {
               variant="secondary"
               size="icon-xs"
               aria-label="Thumbs down"
-              onClick={() => toast("You disagree!")}
+              onClick={() => toast.create({ title: "You disagree!" })}
             >
               <IconPlaceholder
                 lucide="ThumbsDownIcon"

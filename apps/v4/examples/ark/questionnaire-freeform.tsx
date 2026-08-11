@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 import {
   Questionnaire,
@@ -34,7 +34,7 @@ export function QuestionnaireFreeform() {
 
     const approach = new FormData(event.currentTarget).get("approach")
 
-    toast("Approach selected", {
+    toast.create({ title: "Approach selected",
       description: `Approach: ${approach ?? "None"}`,
     })
   }

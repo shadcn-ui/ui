@@ -22,7 +22,7 @@ import {
   SearchIcon,
   StarIcon,
 } from "lucide-react"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 export function InputGroupWithAddons() {
   return (
@@ -91,7 +91,7 @@ export function InputGroupWithAddons() {
             <StarIcon />
             <InputGroupButton
               size="icon-xs"
-              onClick={() => toast("Copied to clipboard")}
+              onClick={() => toast.create({ title: "Copied to clipboard" })}
             >
               <CopyIcon />
             </InputGroupButton>

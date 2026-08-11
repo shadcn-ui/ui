@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 import {
   Questionnaire,
@@ -30,7 +30,7 @@ export function QuestionnaireProgressExample() {
 
     const formData = new FormData(event.currentTarget)
 
-    toast("Pull request plan ready", {
+    toast.create({ title: "Pull request plan ready",
       description: `Scope: ${formData.get("scope") ?? "None"} · Commits: ${formData.get("strategy") ?? "None"} · Tests: ${formData.get("tests") ?? "None"} · Delivery: ${formData.get("delivery") ?? "None"}`,
     })
   }

@@ -56,7 +56,7 @@ export const internal: Registry["items"] = [
       "sheet-example",
       "skeleton-example",
       "slider-example",
-      "sonner-example",
+      "toast-example",
       "spinner-example",
       "switch-example",
       "table-example",

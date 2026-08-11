@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 import {
   Questionnaire,
@@ -33,7 +33,7 @@ export function QuestionnaireAnimated() {
 
     const formData = new FormData(event.currentTarget)
 
-    toast("Agent workflow saved", {
+    toast.create({ title: "Agent workflow saved",
       description: `Task: ${formData.get("task") ?? "None"} · Review: ${formData.get("review") ?? "None"} · Delivery: ${formData.get("delivery") ?? "None"}`,
     })
   }

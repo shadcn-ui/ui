@@ -8,7 +8,7 @@ links:
   api: https://ark-ui.com/docs/components/toast#api-reference
 ---
 
-<ComponentPreview styleName="ark-nova" name="sonner-demo" />
+<ComponentPreview styleName="ark-nova" name="toast-demo" />
 
 ## About
 
@@ -29,13 +29,13 @@ The Toast component is built on top of the [Ark UI Toast](https://ark-ui.com/doc
 <Step>Run the following command:</Step>
 
 ```bash
-npx shadcn@latest add sonner
+npx shadcn@latest add toast
 ```
 
 <Step>Add the Toaster component</Step>
 
 ```tsx title="app/layout.tsx" {1,9} showLineNumbers
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/toast"
 
 export default function RootLayout({ children }) {
   return (
@@ -67,15 +67,15 @@ npm install @ark-ui/react
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource
-  name="sonner"
-  title="components/ui/sonner.tsx"
+  name="toast"
+  title="components/ui/toast.tsx"
   styleName="ark-nova"
 />
 
 <Step>Add the Toaster component</Step>
 
 ```tsx showLineNumbers title="app/layout.tsx" {1,8}
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/toast"
 
 export default function RootLayout({ children }) {
   return (
@@ -99,7 +99,7 @@ export default function RootLayout({ children }) {
 ## Usage
 
 ```tsx
-import { toast } from "@/components/ui/sonner"
+import { toast } from "@/components/ui/toast"
 ```
 
 ```tsx
@@ -110,17 +110,17 @@ toast.create({ title: "Event has been created." })
 
 ### Types
 
-<ComponentPreview styleName="ark-nova" name="sonner-types" />
+<ComponentPreview styleName="ark-nova" name="toast-types" />
 
 ### Description
 
-<ComponentPreview styleName="ark-nova" name="sonner-description" />
+<ComponentPreview styleName="ark-nova" name="toast-description" />
 
 ### Position
 
 Use the `placement` prop on `createToaster` to change the position of the toast.
 
-<ComponentPreview styleName="ark-nova" name="sonner-position" />
+<ComponentPreview styleName="ark-nova" name="toast-position" />
 
 ## API Reference
 

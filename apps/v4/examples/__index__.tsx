@@ -3739,22 +3739,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "slider-vertical",
       filePath: "examples/ark/slider-vertical.tsx",
     },
-    "sonner-demo": {
-      name: "sonner-demo",
-      filePath: "examples/ark/sonner-demo.tsx",
-    },
-    "sonner-description": {
-      name: "sonner-description",
-      filePath: "examples/ark/sonner-description.tsx",
-    },
-    "sonner-position": {
-      name: "sonner-position",
-      filePath: "examples/ark/sonner-position.tsx",
-    },
-    "sonner-types": {
-      name: "sonner-types",
-      filePath: "examples/ark/sonner-types.tsx",
-    },
     "spinner-badge": {
       name: "spinner-badge",
       filePath: "examples/ark/spinner-badge.tsx",
@@ -3878,6 +3862,22 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "textarea-rtl": {
       name: "textarea-rtl",
       filePath: "examples/ark/textarea-rtl.tsx",
+    },
+    "toast-demo": {
+      name: "toast-demo",
+      filePath: "examples/ark/toast-demo.tsx",
+    },
+    "toast-description": {
+      name: "toast-description",
+      filePath: "examples/ark/toast-description.tsx",
+    },
+    "toast-position": {
+      name: "toast-position",
+      filePath: "examples/ark/toast-position.tsx",
+    },
+    "toast-types": {
+      name: "toast-types",
+      filePath: "examples/ark/toast-types.tsx",
     },
     "toggle-demo": {
       name: "toggle-demo",
@@ -4203,10 +4203,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "ui-rtl/slider",
       filePath: "examples/ark/ui-rtl/slider.tsx",
     },
-    "ui-rtl/sonner": {
-      name: "ui-rtl/sonner",
-      filePath: "examples/ark/ui-rtl/sonner.tsx",
-    },
     "ui-rtl/spinner": {
       name: "ui-rtl/spinner",
       filePath: "examples/ark/ui-rtl/spinner.tsx",
@@ -4226,6 +4222,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "ui-rtl/textarea": {
       name: "ui-rtl/textarea",
       filePath: "examples/ark/ui-rtl/textarea.tsx",
+    },
+    "ui-rtl/toast": {
+      name: "ui-rtl/toast",
+      filePath: "examples/ark/ui-rtl/toast.tsx",
     },
     "ui-rtl/toggle-group": {
       name: "ui-rtl/toggle-group",
@@ -4451,10 +4451,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "ui/slider",
       filePath: "examples/ark/ui/slider.tsx",
     },
-    "ui/sonner": {
-      name: "ui/sonner",
-      filePath: "examples/ark/ui/sonner.tsx",
-    },
     "ui/spinner": {
       name: "ui/spinner",
       filePath: "examples/ark/ui/spinner.tsx",
@@ -4474,6 +4470,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "ui/textarea": {
       name: "ui/textarea",
       filePath: "examples/ark/ui/textarea.tsx",
+    },
+    "ui/toast": {
+      name: "ui/toast",
+      filePath: "examples/ark/ui/toast.tsx",
     },
     "ui/toggle-group": {
       name: "ui/toggle-group",

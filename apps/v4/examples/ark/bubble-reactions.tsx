@@ -1,6 +1,6 @@
 "use client"
 
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 import {
   Bubble,
@@ -59,7 +59,7 @@ export function BubbleReactionsDemo() {
           <Button
             variant="ghost"
             size="xs"
-            onClick={() => toast.success("You clicked yes, running command...")}
+            onClick={() => toast.success({ title: "You clicked yes, running command..." })}
           >
             Yes, run it
           </Button>

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 import {
   Questionnaire,
@@ -38,7 +38,7 @@ export function QuestionnaireControlled() {
 
     const formData = new FormData(event.currentTarget)
 
-    toast("Agent workflow configured", {
+    toast.create({ title: "Agent workflow configured",
       description: `Scope: ${formData.get("scope") ?? "None"} · Verification: ${formData.get("checks") ?? "None"} · Output: ${formData.get("output") ?? "None"}`,
     })
   }

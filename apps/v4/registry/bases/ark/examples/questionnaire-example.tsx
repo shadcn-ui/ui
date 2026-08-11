@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "sonner"
+import { toast } from "@/registry/bases/ark/ui/toast"
 
 import {
   Example,
@@ -412,7 +412,7 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     timing: formData.get("timing"),
   }
 
-  toast("Questionnaire submitted", {
+  toast.create({ title: "Questionnaire submitted",
     description: `Direction: ${values.direction ?? "None"} · Progress signals: ${values.signals.join(", ") || "None"} · Timing: ${values.timing ?? "None"}`,
   })
 }

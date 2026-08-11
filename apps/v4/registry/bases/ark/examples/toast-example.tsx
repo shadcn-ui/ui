@@ -1,27 +1,27 @@
 "use client"
 
-import { toast } from "sonner"
-
 import {
   Example,
   ExampleWrapper,
 } from "@/registry/bases/ark/components/example"
 import { Button } from "@/registry/bases/ark/ui/button"
+import { Toaster, toast } from "@/registry/bases/ark/ui/toast"
 
-export default function SonnerExample() {
+export default function ToastExample() {
   return (
     <ExampleWrapper>
-      <SonnerBasic />
-      <SonnerWithDescription />
+      <ToastBasic />
+      <ToastWithDescription />
+      <Toaster />
     </ExampleWrapper>
   )
 }
 
-function SonnerBasic() {
+function ToastBasic() {
   return (
     <Example title="Basic" className="items-center justify-center">
       <Button
-        onClick={() => toast("Event has been created")}
+        onClick={() => toast.create({ title: "Event has been created" })}
         variant="outline"
         className="w-fit"
       >
@@ -31,12 +31,13 @@ function SonnerBasic() {
   )
 }
 
-function SonnerWithDescription() {
+function ToastWithDescription() {
   return (
     <Example title="With Description" className="items-center justify-center">
       <Button
         onClick={() =>
-          toast("Event has been created", {
+          toast.create({
+            title: "Event has been created",
             description: "Monday, January 3rd at 6:00pm",
           })
         }

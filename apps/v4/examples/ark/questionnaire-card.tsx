@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 import {
   Card,
@@ -49,7 +49,7 @@ export function QuestionnaireCard() {
 
     const formData = new FormData(event.currentTarget)
 
-    toast("Agent task created", {
+    toast.create({ title: "Agent task created",
       description: `Task: ${formData.get("task") ?? "None"} · Handoff: ${formData.get("output") ?? "None"}`,
     })
   }

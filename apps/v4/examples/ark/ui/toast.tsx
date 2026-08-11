@@ -33,7 +33,7 @@ function Toaster() {
   return (
     <ArkToaster
       toaster={toaster}
-      data-slot="sonner"
+      data-slot="toast"
       className="pointer-events-auto"
     >
       {(toast) => (

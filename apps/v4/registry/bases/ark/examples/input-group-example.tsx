@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { toast } from "@/registry/bases/ark/ui/sonner"
+import { toast } from "@/registry/bases/ark/ui/toast"
 
 import {
   Example,

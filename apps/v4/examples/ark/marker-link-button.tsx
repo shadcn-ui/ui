@@ -1,7 +1,7 @@
 "use client"
 
 import { GitBranchIcon, RotateCcwIcon } from "lucide-react"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 import {
   Marker,
@@ -24,7 +24,7 @@ export function MarkerLinkButtonDemo() {
         <button
           type="button"
           className="transition-colors hover:text-foreground"
-          onClick={() => toast("You clicked the revert button")}
+          onClick={() => toast.create({ title: "You clicked the revert button" })}
         >
           <MarkerIcon>
             <RotateCcwIcon />

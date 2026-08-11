@@ -1,18 +1,19 @@
 "use client"
 
 import { Button } from "@/examples/ark/ui/button"
-import { toast } from "@/examples/ark/ui/sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
-export function SonnerPosition() {
+export function ToastDescription() {
   return (
     <Button
-      variant="outline"
       onClick={() =>
         toast.create({
           title: "Event has been created",
-          description: "The toast position is set on the Toaster component.",
+          description: "Monday, January 3rd at 6:00pm",
         })
       }
+      variant="outline"
+      className="w-fit"
     >
       Show Toast
     </Button>

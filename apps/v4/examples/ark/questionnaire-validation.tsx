@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 import { z } from "zod"
 
 import {
@@ -88,7 +88,7 @@ export function QuestionnaireValidation() {
 
     if (result.success) {
       setErrors({})
-      toast("Agent response configured", {
+      toast.create({ title: "Agent response configured",
         description: `Detail: ${result.data.detail} · Audience: ${result.data.audience}`,
       })
       return

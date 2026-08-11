@@ -1,9 +1,9 @@
 "use client"
 
 import { Button } from "@/examples/ark/ui/button"
-import { toast } from "@/examples/ark/ui/sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
-export function SonnerTypes() {
+export function ToastTypes() {
   return (
     <div className="flex flex-wrap gap-2">
       <Button

@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import type { QuestionnaireItemStatus } from "@shadcn/react/questionnaire"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 import {
   Questionnaire,
@@ -45,7 +45,7 @@ export function QuestionnaireNavigationState() {
 
     const formData = new FormData(event.currentTarget)
 
-    toast("Permissions saved", {
+    toast.create({ title: "Permissions saved",
       description: `Permission: ${formData.get("permission") ?? "None"} · Verification: ${formData.get("verification") ?? "None"}`,
     })
   }

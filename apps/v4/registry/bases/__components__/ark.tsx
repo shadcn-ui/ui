@@ -350,12 +350,12 @@ export const Components: Record<string, any> = {
       ) || "slider"
     return { default: mod.default || mod[exportName] }
   }),
-  sonner: React.lazy(async () => {
-    const mod = await import("@/registry/bases/ark/ui/sonner")
+  toast: React.lazy(async () => {
+    const mod = await import("@/registry/bases/ark/ui/toast")
     const exportName =
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
-      ) || "sonner"
+      ) || "toast"
     return { default: mod.default || mod[exportName] }
   }),
   spinner: React.lazy(async () => {
@@ -914,12 +914,12 @@ export const Components: Record<string, any> = {
       ) || "slider-example"
     return { default: mod.default || mod[exportName] }
   }),
-  "sonner-example": React.lazy(async () => {
-    const mod = await import("@/registry/bases/ark/examples/sonner-example")
+  "toast-example": React.lazy(async () => {
+    const mod = await import("@/registry/bases/ark/examples/toast-example")
     const exportName =
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
-      ) || "sonner-example"
+      ) || "toast-example"
     return { default: mod.default || mod[exportName] }
   }),
   "spinner-example": React.lazy(async () => {

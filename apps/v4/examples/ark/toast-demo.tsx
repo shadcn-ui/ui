@@ -1,9 +1,9 @@
 "use client"
 
 import { Button } from "@/examples/ark/ui/button"
-import { toast } from "@/examples/ark/ui/sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
-export function SonnerDemo() {
+export function ToastDemo() {
   return (
     <Button
       variant="outline"

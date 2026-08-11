@@ -3366,38 +3366,6 @@ export const Components: Record<string, any> = {
       ) || "slider-vertical"
     return { default: mod.default || mod[exportName] }
   }),
-  "sonner-demo": React.lazy(async () => {
-    const mod = await import("@/examples/ark/sonner-demo")
-    const exportName =
-      Object.keys(mod).find(
-        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
-      ) || "sonner-demo"
-    return { default: mod.default || mod[exportName] }
-  }),
-  "sonner-description": React.lazy(async () => {
-    const mod = await import("@/examples/ark/sonner-description")
-    const exportName =
-      Object.keys(mod).find(
-        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
-      ) || "sonner-description"
-    return { default: mod.default || mod[exportName] }
-  }),
-  "sonner-position": React.lazy(async () => {
-    const mod = await import("@/examples/ark/sonner-position")
-    const exportName =
-      Object.keys(mod).find(
-        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
-      ) || "sonner-position"
-    return { default: mod.default || mod[exportName] }
-  }),
-  "sonner-types": React.lazy(async () => {
-    const mod = await import("@/examples/ark/sonner-types")
-    const exportName =
-      Object.keys(mod).find(
-        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
-      ) || "sonner-types"
-    return { default: mod.default || mod[exportName] }
-  }),
   "spinner-badge": React.lazy(async () => {
     const mod = await import("@/examples/ark/spinner-badge")
     const exportName =
@@ -3644,6 +3612,38 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "textarea-rtl"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "toast-demo": React.lazy(async () => {
+    const mod = await import("@/examples/ark/toast-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "toast-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "toast-description": React.lazy(async () => {
+    const mod = await import("@/examples/ark/toast-description")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "toast-description"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "toast-position": React.lazy(async () => {
+    const mod = await import("@/examples/ark/toast-position")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "toast-position"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "toast-types": React.lazy(async () => {
+    const mod = await import("@/examples/ark/toast-types")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "toast-types"
     return { default: mod.default || mod[exportName] }
   }),
   "toggle-demo": React.lazy(async () => {
@@ -4294,14 +4294,6 @@ export const Components: Record<string, any> = {
       ) || "ui-rtl/slider"
     return { default: mod.default || mod[exportName] }
   }),
-  "ui-rtl/sonner": React.lazy(async () => {
-    const mod = await import("@/examples/ark/ui-rtl/sonner")
-    const exportName =
-      Object.keys(mod).find(
-        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
-      ) || "ui-rtl/sonner"
-    return { default: mod.default || mod[exportName] }
-  }),
   "ui-rtl/spinner": React.lazy(async () => {
     const mod = await import("@/examples/ark/ui-rtl/spinner")
     const exportName =
@@ -4340,6 +4332,14 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "ui-rtl/textarea"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "ui-rtl/toast": React.lazy(async () => {
+    const mod = await import("@/examples/ark/ui-rtl/toast")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "ui-rtl/toast"
     return { default: mod.default || mod[exportName] }
   }),
   "ui-rtl/toggle-group": React.lazy(async () => {
@@ -4790,14 +4790,6 @@ export const Components: Record<string, any> = {
       ) || "ui/slider"
     return { default: mod.default || mod[exportName] }
   }),
-  "ui/sonner": React.lazy(async () => {
-    const mod = await import("@/examples/ark/ui/sonner")
-    const exportName =
-      Object.keys(mod).find(
-        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
-      ) || "ui/sonner"
-    return { default: mod.default || mod[exportName] }
-  }),
   "ui/spinner": React.lazy(async () => {
     const mod = await import("@/examples/ark/ui/spinner")
     const exportName =
@@ -4836,6 +4828,14 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "ui/textarea"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "ui/toast": React.lazy(async () => {
+    const mod = await import("@/examples/ark/ui/toast")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "ui/toast"
     return { default: mod.default || mod[exportName] }
   }),
   "ui/toggle-group": React.lazy(async () => {

@@ -42,7 +42,7 @@ import SeparatorExample from "@/registry/bases/ark/examples/separator-example"
 import SheetExample from "@/registry/bases/ark/examples/sheet-example"
 import SkeletonExample from "@/registry/bases/ark/examples/skeleton-example"
 import SliderExample from "@/registry/bases/ark/examples/slider-example"
-import SonnerExample from "@/registry/bases/ark/examples/sonner-example"
+import ToastExample from "@/registry/bases/ark/examples/toast-example"
 import SpinnerExample from "@/registry/bases/ark/examples/spinner-example"
 import SwitchExample from "@/registry/bases/ark/examples/switch-example"
 import TableExample from "@/registry/bases/ark/examples/table-example"
@@ -51,7 +51,7 @@ import TextareaExample from "@/registry/bases/ark/examples/textarea-example"
 import ToggleExample from "@/registry/bases/ark/examples/toggle-example"
 import ToggleGroupExample from "@/registry/bases/ark/examples/toggle-group-example"
 import TooltipExample from "@/registry/bases/ark/examples/tooltip-example"
-import { Toaster } from "@/registry/bases/ark/ui/sonner"
+import { Toaster } from "@/registry/bases/ark/ui/toast"
 
 export default function Page() {
   return (
@@ -100,7 +100,7 @@ export default function Page() {
       <SheetExample />
       <SkeletonExample />
       <SliderExample />
-      <SonnerExample />
+      <ToastExample />
       <SpinnerExample />
       <SwitchExample />
       <TableExample />

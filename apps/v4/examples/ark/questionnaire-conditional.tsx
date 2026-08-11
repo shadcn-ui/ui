@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 import {
   Questionnaire,
@@ -38,7 +38,7 @@ export function QuestionnaireConditional() {
 
     const formData = new FormData(event.currentTarget)
 
-    toast("Execution plan saved", {
+    toast.create({ title: "Execution plan saved",
       description: `Runtime: ${formData.get("runtime") ?? "None"} · Environment: ${formData.get("environment") ?? "Not applicable"} · Approval: ${formData.get("approval") ?? "None"}`,
     })
   }

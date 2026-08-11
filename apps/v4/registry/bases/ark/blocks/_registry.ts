@@ -318,7 +318,7 @@ export const blocks: Registry["items"] = [
       "input",
       "avatar",
       "sheet",
-      "sonner",
+      "toast",
     ],
     files: [
       {

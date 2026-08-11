@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 import { Button } from "@/examples/ark/ui/button"
 import {
@@ -43,7 +43,7 @@ export function QuestionnaireDialog() {
     const formData = new FormData(event.currentTarget)
 
     setOpen(false)
-    toast("Clarification sent", {
+    toast.create({ title: "Clarification sent",
       description: `Scope: ${formData.get("scope") ?? "None"} · Verification: ${formData.get("tests") ?? "None"}`,
     })
   }

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 import {
   Questionnaire,
@@ -34,7 +34,7 @@ export function QuestionnaireMultiple() {
 
     const context = new FormData(event.currentTarget).getAll("context")
 
-    toast("Context selected", {
+    toast.create({ title: "Context selected",
       description: `Context: ${context.join(", ") || "None"}`,
     })
   }

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 import {
   NativeSelect,
@@ -37,7 +37,7 @@ export function QuestionnaireShortcuts() {
 
     const action = new FormData(event.currentTarget).get("action")
 
-    toast("Next action selected", {
+    toast.create({ title: "Next action selected",
       description: `Action: ${action ?? "None"} · Shortcuts: ${shortcuts ?? "none"}`,
     })
   }

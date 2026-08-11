@@ -1,6 +1,6 @@
 "use client"
 
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/toast"
 
 import {
   Bubble,
@@ -17,14 +17,14 @@ export function BubbleLinkButtonDemo() {
       <BubbleGroup>
         <Bubble variant="tinted" align="end">
           <BubbleContent asChild>
-            <button onClick={() => toast("You clicked forgot password")}>
+            <button onClick={() => toast.create({ title: "You clicked forgot password" })}>
               I forgot my password
             </button>
           </BubbleContent>
         </Bubble>
         <Bubble variant="tinted" align="end">
           <BubbleContent asChild>
-            <button onClick={() => toast("You clicked help with subscription")}>
+            <button onClick={() => toast.create({ title: "You clicked help with subscription" })}>
               I need help with my subscription
             </button>
           </BubbleContent>
@@ -33,7 +33,7 @@ export function BubbleLinkButtonDemo() {
           <BubbleContent asChild>
             <button
               onClick={() =>
-                toast("You clicked something else. Talk to a human.")
+                toast.create({ title: "You clicked something else. Talk to a human." })
               }
             >
               Something else. Talk to a human.
