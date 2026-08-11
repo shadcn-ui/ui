@@ -14,7 +14,7 @@ const Slider = React.forwardRef<
   <SliderPrimitive.Root
     ref={ref}
     data-slot="slider"
-    className={cn("cn-slider", className)}
+    className={cn("cn-slider data-horizontal:w-full", className)}
     {...props}
   />
 ))
