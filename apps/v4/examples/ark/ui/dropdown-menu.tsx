@@ -188,7 +188,7 @@ function DropdownMenuShortcut({
     <ark.span
       data-slot="dropdown-menu-shortcut"
       className={cn(
-        "ms-auto text-xs tracking-widest text-muted-foreground group-focus/dropdown-menu-item:text-accent-foreground",
+        "ml-auto text-xs tracking-widest text-muted-foreground group-focus/dropdown-menu-item:text-accent-foreground",
         className
       )}
       {...props}
@@ -221,7 +221,7 @@ function DropdownMenuSubTrigger({
       {...props}
     >
       {children}
-      <ChevronRightIcon className="cn-rtl-flip ms-auto" />
+      <ChevronRightIcon className="cn-rtl-flip ml-auto" />
     </MenuPrimitive.TriggerItem>
   )
 }
