@@ -940,6 +940,13 @@
     "logo": "<svg width='500' height='500' viewBox='0 0 500 500' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(#clip0_2181_32)'><path d='M368.421 0H131.579C58.9099 0 0 58.9099 0 131.579V368.421C0 441.09 58.9099 500 131.579 500H368.421C441.09 500 500 441.09 500 368.421V131.579C500 58.9099 441.09 0 368.421 0Z' fill='url(#paint0_linear_2181_32)'/><path d='M148.245 362.719H97.3682L167.354 126.78C168.498 122.922 173.799 122.512 175.523 126.149L250 283.333L325.75 126.069C327.494 122.45 332.78 122.884 333.91 126.738L403.07 362.719H351.316L317.539 260.968C317.05 259.495 315.029 259.336 314.316 260.715L259.997 365.755C255.772 373.926 244.109 373.988 239.795 365.864L183.97 260.696C183.242 259.325 181.223 259.506 180.75 260.985L148.245 362.719Z' fill='var(--background)'/></g><defs><linearGradient id='paint0_linear_2181_32' x1='0' y1='0' x2='500' y2='500' gradientUnits='userSpaceOnUse'><stop stop-color='var(--foreground)'/><stop offset='1' stop-color='#F472B6'/></linearGradient><clipPath id='clip0_2181_32'><rect width='500' height='500' fill='var(--background)'/></clipPath></defs></svg>"
   },
   {
+    "name": "@motion-menu",
+    "homepage": "https://motion-menu-two.vercel.app",
+    "url": "https://motion-menu-two.vercel.app/r/{name}.json",
+    "description": "596 motion/3D UI patterns — scroll-driven WebGL, shader passes, spring choreography — as ready HTML/CSS/JS. 26 free, or $149 once for the rest.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round'><path d='M4 22c4-10 8 10 12 0s8-10 12 0'/></svg>"
+  },
+  {
     "name": "@motion-primitives",
     "homepage": "https://www.motion-primitives.com",
     "url": "https://motion-primitives.com/c/{name}.json",
