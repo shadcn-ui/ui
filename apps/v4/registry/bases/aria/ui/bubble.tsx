@@ -90,7 +90,7 @@ function BubbleContent({
 }
 
 const bubbleReactionsVariants = cva(
-  "cn-bubble-reactions absolute z-10 flex w-fit items-center justify-center",
+  "cn-bubble-reactions flex w-fit items-center justify-center",
   {
     variants: {
       side: {
