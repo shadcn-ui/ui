@@ -1933,5 +1933,12 @@
     "url": "https://www.atroui.com/r/{name}.json",
     "description": "Dark-first React / Next.js components and marketing blocks. Install with the shadcn CLI and own the source.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect width='32' height='32' rx='8' fill='#0a0a0a'/><path d='M9 24 L16 8 L23 24' stroke='#fafafa' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/><rect x='11.5' y='16.5' width='9' height='2.4' rx='1.2' fill='#0b7bff'/></svg>"
+  },
+  {
+    "name": "@knock-codes",
+    "homepage": "https://knock.codes",
+    "url": "https://knock.codes/r/react/{name}.json",
+    "description": "Copy-paste, session-gated access blocks for React — PIN/Knock Code unlock screens, protected routes/layouts/modals, a headless useKnockCodes hook, and full-page templates.",
+    "logo": "<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><rect width='32' height='32' rx='7' fill='#0A0A0B'/><rect x='9' y='9' width='14' height='14' rx='3' fill='#F59E0B'/></svg>"
   }
 ]
