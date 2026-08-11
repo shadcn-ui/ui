@@ -303,7 +303,7 @@ export function ProjectForm({
       <DialogTrigger render={<Button className={cn(className)} />}>
         Get Code
       </DialogTrigger>
-      <DialogContent className="dark top-[64px] no-scrollbar flex max-h-[calc(100svh-2rem)] translate-y-0 flex-col rounded-2xl p-0 shadow-xl **:data-[slot=dialog-close]:top-4.5 **:data-[slot=dialog-close]:right-4 **:data-[slot=field-separator]:h-2 sm:max-w-md">
+      <DialogContent className="dark top-[64px] no-scrollbar overflow-y-auto flex max-h-[calc(100svh-8rem)] translate-y-0 flex-col rounded-2xl p-0 shadow-xl **:data-[slot=dialog-close]:top-4.5 **:data-[slot=dialog-close]:right-4 **:data-[slot=field-separator]:h-2 sm:max-w-md">
         <div className="flex min-w-0 flex-1 flex-col gap-0 overflow-hidden rounded-2xl">
           <DialogHeader className="border-b px-6 py-5">
             <ToggleGroup
