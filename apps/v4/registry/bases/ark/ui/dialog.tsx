@@ -15,7 +15,14 @@ import { Button } from "@/registry/bases/ark/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Dialog({ ...props }: React.ComponentProps<typeof DialogPrimitive.Root>) {
-  return <DialogPrimitive.Root data-slot="dialog" {...props} />
+  return (
+    <DialogPrimitive.Root
+      data-slot="dialog"
+      lazyMount
+      unmountOnExit
+      {...props}
+    />
+  )
 }
 
 function DialogTrigger({

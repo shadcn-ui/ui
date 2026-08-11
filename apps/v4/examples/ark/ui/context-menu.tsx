@@ -10,7 +10,14 @@ import { CheckIcon, ChevronRightIcon } from "lucide-react"
 function ContextMenu({
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.Root>) {
-  return <MenuPrimitive.Root data-slot="context-menu" {...props} />
+  return (
+    <MenuPrimitive.Root
+      data-slot="context-menu"
+      lazyMount
+      unmountOnExit
+      {...props}
+    />
+  )
 }
 
 function ContextMenuTrigger({
@@ -39,7 +46,14 @@ function ContextMenuPortal({ children }: { children: React.ReactNode }) {
 function ContextMenuSub({
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.Root>) {
-  return <MenuPrimitive.Root data-slot="context-menu-sub" {...props} />
+  return (
+    <MenuPrimitive.Root
+      data-slot="context-menu-sub"
+      lazyMount
+      unmountOnExit
+      {...props}
+    />
+  )
 }
 
 function ContextMenuRadioGroup({

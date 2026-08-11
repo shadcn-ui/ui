@@ -10,7 +10,14 @@ import { CheckIcon, ChevronRightIcon } from "lucide-react"
 function DropdownMenu({
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.Root>) {
-  return <MenuPrimitive.Root data-slot="dropdown-menu" {...props} />
+  return (
+    <MenuPrimitive.Root
+      data-slot="dropdown-menu"
+      lazyMount
+      unmountOnExit
+      {...props}
+    />
+  )
 }
 
 function DropdownMenuPortal({ children }: { children: React.ReactNode }) {
@@ -199,7 +206,14 @@ function DropdownMenuShortcut({
 function DropdownMenuSub({
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.Root>) {
-  return <MenuPrimitive.Root data-slot="dropdown-menu-sub" {...props} />
+  return (
+    <MenuPrimitive.Root
+      data-slot="dropdown-menu-sub"
+      lazyMount
+      unmountOnExit
+      {...props}
+    />
+  )
 }
 
 function DropdownMenuSubTrigger({

@@ -29,7 +29,14 @@ function Menubar({
 function MenubarMenu({
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.Root>) {
-  return <MenuPrimitive.Root data-slot="menubar-menu" {...props} />
+  return (
+    <MenuPrimitive.Root
+      data-slot="menubar-menu"
+      lazyMount
+      unmountOnExit
+      {...props}
+    />
+  )
 }
 
 function MenubarGroup({
@@ -219,7 +226,14 @@ function MenubarShortcut({
 function MenubarSub({
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.Root>) {
-  return <MenuPrimitive.Root data-slot="menubar-sub" {...props} />
+  return (
+    <MenuPrimitive.Root
+      data-slot="menubar-sub"
+      lazyMount
+      unmountOnExit
+      {...props}
+    />
+  )
 }
 
 function MenubarSubTrigger({
