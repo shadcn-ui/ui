@@ -67,7 +67,7 @@ function SheetContent({
           {showCloseButton && (
             <DialogPrimitive.CloseTrigger
               data-slot="sheet-close"
-              className="cn-sheet-close absolute top-3 right-3 inline-flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="cn-sheet-close absolute top-3 end-3 inline-flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <IconPlaceholder
                 lucide="XIcon"
