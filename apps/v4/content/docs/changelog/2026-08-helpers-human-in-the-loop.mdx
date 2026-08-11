@@ -6,13 +6,11 @@ date: 2026-08-12
 
 **@shadcn/helpers** can now mock human-in-the-loop flows for the AI SDK. A
 scripted conversation can pause for real user input, wait for an approval, and
-continue with whatever the user decided. Everything streams through the real
+continue with whatever the user decided.
+
+Everything streams through the real
 `useChat` lifecycle, so your tool cards, approval prompts, and question flows
 behave exactly as they would in production.
-
-A tool call left unresolved pauses the turn. A callback turn scripted after it
-becomes a continuation: it runs when the user responds and reads the real
-answer from the transcript.
 
 ```ts showLineNumbers
 import { createChat } from "@shadcn/helpers/ai-sdk"
@@ -47,26 +45,9 @@ chat
   })
   .assistant(({ writer, toolCall }) => {
     writer.text(
-      toolCall?.approved
-        ? "Archived 3 drafts."
-        : "Okay, leaving them in place."
+      toolCall?.approved ? "Archived 3 drafts." : "Okay, leaving them in place."
     )
   })
-```
-
-The client side is standard AI SDK code: `addToolOutput` for user-supplied
-tool outputs, `addToolApprovalResponse` for decisions, and
-`sendAutomaticallyWhen` to send the follow-up request.
-
-This release also makes `createChat` generic over the UI message type, the
-same type parameter `useChat` accepts. Define the message type once and share
-it between the script and the client.
-
-```ts showLineNumbers
-type ChatMessage = UIMessage<unknown, DataParts, Tools>
-
-const chat = createChat<ChatMessage>()
-const { messages } = useChat<ChatMessage>({ transport: chat.transport() })
 ```
 
 <div className="flex flex-wrap gap-2">
