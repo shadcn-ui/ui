@@ -9,7 +9,7 @@
     "@dnd-kit/modifiers",
     "@dnd-kit/sortable",
     "@dnd-kit/utilities",
-    "@tanstack/react-table",
+    "@tanstack/react-table@^8.0.0",
     "zod"
   ],
   "registryDependencies": [
