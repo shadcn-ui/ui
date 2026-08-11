@@ -219,7 +219,7 @@ function MenubarShortcut({
 function MenubarSub({
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.Root>) {
-  return <MenuPrimitive.Root data-slot="menubar-sub" {...props} />
+  return <MenuPrimitive.Root data-slot="menubar-sub" positioning={{ gutter: 4 }} {...props} />
 }
 
 function MenubarSubTrigger({

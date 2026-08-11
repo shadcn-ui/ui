@@ -39,7 +39,7 @@ function ContextMenuPortal({ children }: { children: React.ReactNode }) {
 function ContextMenuSub({
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.Root>) {
-  return <MenuPrimitive.Root data-slot="context-menu-sub" {...props} />
+  return <MenuPrimitive.Root data-slot="context-menu-sub" positioning={{ gutter: 4 }} {...props} />
 }
 
 function ContextMenuRadioGroup({
