@@ -630,6 +630,67 @@ describe("MessageScroller", () => {
     expect(rendered.state().end).toBe(false)
   })
 
+  it("drains a stranded tail spacer on scroll when the stream ends mid-drain", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    // The submitted turn anchors with tail spacer room for the reply to stream.
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 20, scrollAnchor: true },
+      ],
+      { autoScroll: true }
+    )
+
+    // A manual scroll releases the anchor and strands the reserved spacer.
+    await act(async () => {
+      rendered
+        .viewport()
+        .dispatchEvent(new WheelEvent("wheel", { bubbles: true }))
+      rendered.viewport().scrollTop = 150
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    const strandedSpacer = rendered
+      .content()
+      .querySelector<HTMLElement>("[data-message-scroller-spacer]")
+    expect(strandedSpacer?.hidden).toBe(false)
+
+    // The stream ends before the reply drains the spacer (no further resize).
+    // A scroll to the real bottom - contentBottom plus the remaining spacer -
+    // must finish the drain: the dead space is reclaimed and following re-arms.
+    await act(async () => {
+      rendered.viewport().scrollTop = rendered.viewport().scrollHeight
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    const drainedSpacer = rendered
+      .content()
+      .querySelector<HTMLElement>("[data-message-scroller-spacer]")
+    expect(drainedSpacer?.hidden).toBe(true)
+
+    // The reader reached the live edge: the spacer is gone and the viewport
+    // sits at the real bottom (scrollHeight minus viewport). Following is
+    // re-engaged, so state.end reads false by design (follow-output suppresses
+    // the end button); the re-arm is observable through the settled scrollTop.
+    const finalViewport = rendered.viewport()
+    expect(finalViewport.scrollTop).toBe(
+      finalViewport.scrollHeight - finalViewport.clientHeight
+    )
+  })
+
   it("applies the default end target after async messages mount", async () => {
     const rendered = await renderTestScroller({
       messages: [],
