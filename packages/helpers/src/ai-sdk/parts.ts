@@ -16,7 +16,7 @@ import type {
 } from "ai"
 
 import { assertNever } from "../core"
-import type { ChatEvent } from "../core"
+import type { ChatEvent, ToolCallSummary } from "../core"
 
 /** Concatenates the text of every `text` part in a message. */
 export function getMessageText(message: Pick<UIMessage, "parts">) {
@@ -24,6 +24,56 @@ export function getMessageText(message: Pick<UIMessage, "parts">) {
     .filter((part): part is TextUIPart => part.type === "text")
     .map((part) => part.text)
     .join("")
+}
+
+function toToolCallSummary(
+  name: string,
+  part: ToolUIPart | DynamicToolUIPart,
+  dynamic?: boolean
+): ToolCallSummary {
+  return {
+    toolCallId: part.toolCallId,
+    name,
+    dynamic,
+    input: "input" in part ? part.input : undefined,
+    output: part.state === "output-available" ? part.output : undefined,
+    errorText: part.state === "output-error" ? part.errorText : undefined,
+    state: part.state,
+    approval:
+      "approval" in part && part.approval
+        ? {
+            id: part.approval.id,
+            approved: part.approval.approved,
+            reason: part.approval.reason,
+          }
+        : undefined,
+  }
+}
+
+/** Reads a message's typed and dynamic tool calls into framework-neutral summaries. */
+export function getToolCalls(message: Pick<UIMessage, "parts">) {
+  const summaries: ToolCallSummary[] = []
+
+  for (const part of message.parts) {
+    if (part.type === "dynamic-tool") {
+      const dynamicToolPart = part as DynamicToolUIPart
+
+      summaries.push(
+        toToolCallSummary(dynamicToolPart.toolName, dynamicToolPart, true)
+      )
+      continue
+    }
+
+    if (part.type.startsWith("tool-") && "toolCallId" in part) {
+      const toolPart = part as ToolUIPart
+
+      summaries.push(
+        toToolCallSummary(part.type.replace("tool-", ""), toolPart)
+      )
+    }
+  }
+
+  return summaries
 }
 
 /** Replaces the part with the same `type` + `id` in place, or appends. */
@@ -113,6 +163,18 @@ export function materializeParts<
           state: "input-available",
           input: event.input,
         } as UIMessagePart<DATA_PARTS, TOOLS>)
+        break
+      }
+      case "tool-approval-request": {
+        const index = findToolPartIndex(parts, event.toolCallId)
+
+        if (index !== -1) {
+          parts[index] = {
+            ...parts[index],
+            state: "approval-requested",
+            approval: { id: event.approvalId },
+          } as UIMessagePart<DATA_PARTS, TOOLS>
+        }
         break
       }
       case "tool-output": {
@@ -266,6 +328,17 @@ export function eventsFromParts<
         input: "input" in toolPart ? toolPart.input : {},
       })
 
+      if (
+        toolPart.state === "approval-requested" ||
+        toolPart.state === "approval-responded"
+      ) {
+        events.push({
+          kind: "tool-approval-request",
+          toolCallId: toolPart.toolCallId,
+          approvalId: toolPart.approval.id,
+        })
+      }
+
       if (toolPart.state === "output-available") {
         events.push({
           kind: "tool-output",
@@ -307,6 +380,17 @@ export function eventsFromParts<
         dynamic: true,
         input: "input" in dynamicToolPart ? dynamicToolPart.input : {},
       })
+
+      if (
+        dynamicToolPart.state === "approval-requested" ||
+        dynamicToolPart.state === "approval-responded"
+      ) {
+        events.push({
+          kind: "tool-approval-request",
+          toolCallId: dynamicToolPart.toolCallId,
+          approvalId: dynamicToolPart.approval.id,
+        })
+      }
 
       if (dynamicToolPart.state === "output-available") {
         events.push({

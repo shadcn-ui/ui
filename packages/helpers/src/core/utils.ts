@@ -46,3 +46,10 @@ export function splitTextDeltas(text: string) {
 export function getDataPartName(type: `data-${string}`) {
   return type.slice("data-".length)
 }
+
+/** Logs a development-only warning. */
+export function devWarn(message: string) {
+  if (process.env.NODE_ENV !== "production") {
+    console.warn(`[helpers] ${message}`)
+  }
+}

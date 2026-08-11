@@ -10,7 +10,8 @@ Because the conversation streams through the real `useChat` lifecycle, your
 components behave exactly as they would in production.
 
 It supports every part type the AI SDK does: reasoning, tools, data, files,
-sources, and custom parts.
+sources, and custom parts. Tool calls can also pause for real user input,
+including approvals. See [Human in the Loop](#human-in-the-loop).
 
 ```ts showLineNumbers
 import { createChat } from "@shadcn/helpers/ai-sdk"
@@ -323,10 +324,12 @@ writer.tool("getWeather", {
 })
 ```
 
-Type the tool name, input, and output by passing your tool definitions to
-`createChat`.
+Type the tool name, input, and output by passing your message type to
+`createChat`. It takes the same type parameter as `useChat`.
 
 ```ts
+import type { UIMessage } from "ai"
+
 type Tools = {
   getWeather: {
     input: { city: string }
@@ -334,10 +337,147 @@ type Tools = {
   }
 }
 
-type DataParts = Record<string, never>
+type ChatMessage = UIMessage<unknown, Record<string, never>, Tools>
 
-const chat = createChat<unknown, DataParts, Tools>()
+const chat = createChat<ChatMessage>()
 ```
+
+Define the message type once and use it for both `createChat` and `useChat`.
+
+```ts
+const { messages } = useChat<ChatMessage>({
+  messages: chat.get(0),
+  transport: chat.transport(),
+})
+```
+
+A tool call can also wait for the user instead of finishing in the script.
+See [Human in the Loop](#human-in-the-loop).
+
+---
+
+## Human in the Loop
+
+A tool call can pause and hand control to the real user. The helper supports
+both AI SDK human-in-the-loop flows: client-executed tools, where the user
+supplies the output, and approval-gated tools, where the user approves or
+denies before a scripted output streams.
+
+### Pause a Tool Call
+
+Leave a tool call unresolved to pause the turn. The input streams, the turn
+finishes, and the part stays in the `input-available` state until the client
+supplies its output with `addToolOutput`.
+
+```ts
+chat.assistant(({ writer }) => {
+  writer.text("Answer these and I'll tailor the prototype.")
+  writer.tool("askQuestions", { input: { questions } })
+})
+```
+
+### Require Approval
+
+Pass `needsApproval: true` to pause behind the user's decision. `output` then
+means "stream this after approval" instead of "resolve immediately". Denial
+streams `tool-output-denied` automatically, and `errorText` with
+`needsApproval` scripts a tool that fails after approval.
+
+```ts
+chat.assistant(({ writer }) => {
+  writer.text("That will archive 3 drafts. I need your approval.")
+  writer.tool("archiveDrafts", {
+    input: { count: 3 },
+    needsApproval: true,
+    output: { archived: 3 },
+  })
+})
+```
+
+Calling `output()`, `error()`, or `denied()` on the handle of a
+`needsApproval` call throws. The user's decision resolves it.
+
+### Continuations
+
+A callback turn scripted immediately after a paused turn becomes a
+continuation. It does not materialize when the script is built. It runs when
+the follow-up request arrives, and its context includes `toolCall`: the
+paused call joined with what the user did.
+
+```ts
+chat
+  .assistant(({ writer }) => {
+    writer.tool("askQuestions", { input: { questions } })
+  })
+  .assistant(({ writer, toolCall }) => {
+    writer.text(
+      toolCall?.name === "askQuestions" && toolCall.output
+        ? `Starting with ${toolCall.output.answers.direction}.`
+        : "Starting now."
+    )
+  })
+```
+
+For a client-executed tool, `toolCall.output` is the output the user
+submitted. For an approval, `toolCall.approved` and `toolCall.denied` carry
+the decision, and the scripted output streams before the callback's content.
+
+| Property     | Description                                                    |
+| ------------ | -------------------------------------------------------------- |
+| `name`       | The tool name. Comparing it narrows `input` and `output`.      |
+| `toolCallId` | The paused call's ID.                                          |
+| `input`      | The tool input.                                                |
+| `output`     | The user-submitted output, or the gated output after approval. |
+| `approved`   | `true` when the user approved. Approval calls only.            |
+| `denied`     | `true` when the user denied. Approval calls only.              |
+
+Continuation context also includes `messages`, the live transcript, and
+`toolCalls`, every paused call when a turn has more than one.
+
+Continuations must stay pure. Regenerating re-resolves them against the
+current transcript, so a changed decision produces the other branch.
+
+### Client Wiring
+
+The client side uses the AI SDK as-is. Submit a client-executed tool's output
+with `addToolOutput`, answer an approval with `addToolApprovalResponse`, and
+let `sendAutomaticallyWhen` send the follow-up request.
+
+```tsx
+import {
+  lastAssistantMessageIsCompleteWithApprovalResponses,
+  lastAssistantMessageIsCompleteWithToolCalls,
+} from "ai"
+
+const { messages, addToolOutput, addToolApprovalResponse } = useChat({
+  messages: chat.get(0),
+  transport: chat.transport(),
+  sendAutomaticallyWhen: (options) =>
+    lastAssistantMessageIsCompleteWithToolCalls(options) ||
+    lastAssistantMessageIsCompleteWithApprovalResponses(options),
+})
+```
+
+```tsx
+// In a pending tool part renderer.
+addToolOutput({
+  tool: "askQuestions",
+  toolCallId: part.toolCallId,
+  output: { answers },
+})
+
+// In an approval-requested part renderer.
+addToolApprovalResponse({ id: part.approval.id, approved: true })
+```
+
+The continuation streams as a new step of the paused assistant message. The
+client merges its parts into that message instead of adding a new one, and
+the helper emits the step boundary and omits the continuation's message id so
+the merge stays in place and the automatic send does not re-trigger.
+
+In development, the helper warns when a `needsApproval` call has no
+continuation turn after it, and when a continuation resolves without a
+pending tool call.
 
 ---
 
@@ -355,13 +495,15 @@ type DataParts = {
   }
 }
 
-const chat = createChat<unknown, DataParts>().assistant(({ writer }) => {
-  writer.data({
-    type: "data-weather",
-    id: "weather-sf",
-    data: { city: "San Francisco", status: "loading" },
-  })
-})
+const chat = createChat<UIMessage<unknown, DataParts>>().assistant(
+  ({ writer }) => {
+    writer.data({
+      type: "data-weather",
+      id: "weather-sf",
+      data: { city: "San Francisco", status: "loading" },
+    })
+  }
+)
 ```
 
 Send the same `type` and `id` again to update the part in place. This is useful
@@ -499,7 +641,9 @@ chat.get(2) // The first two messages.
 chat.get(0) // An empty initial conversation.
 ```
 
-`get()` returns cloned messages and does not change the chat.
+`get()` returns cloned messages and does not change the chat. It stops before
+the first [continuation turn](#continuations), since a continuation has no
+message without a live transcript, and throws when `count` reaches past one.
 
 Use `next()` to find the next predefined user message after the messages already
 shown.
@@ -550,7 +694,9 @@ const { messages, sendMessage } = useChat({
 When `sendMessage()` runs, the transport finds the assistant message that
 follows the current transcript and streams it through the normal AI SDK chat
 lifecycle. It uses message IDs first and falls back to matching the role and
-text of the latest message.
+text of the latest message. Automatic sends after tool results and approval
+responses resolve the next [continuation](#continuations); only a
+regeneration replays a turn by its message ID.
 
 ### Options
 
@@ -665,7 +811,7 @@ type Metadata = {
   model: string
 }
 
-const chat = createChat<Metadata>()
+const chat = createChat<UIMessage<Metadata>>()
   .user("Hello", { metadata: { model: "demo" } })
   .assistant("Hi.", {
     id: "assistant-welcome",
@@ -696,32 +842,33 @@ export and option.
 Creates a typed conversation and returns the fluent chat interface.
 
 ```ts
-function createChat<
-  METADATA = unknown,
-  DATA_PARTS extends UIDataTypes = UIDataTypes,
-  TOOLS extends UITools = UITools,
->(
-  options?: CreateChatOptions<METADATA, DATA_PARTS, TOOLS>
-): AiSdkChat<METADATA, DATA_PARTS, TOOLS>
+function createChat<UI_MESSAGE extends UIMessage = UIMessage>(
+  options?: CreateChatOptions<UI_MESSAGE>
+): AiSdkChat<UI_MESSAGE>
 ```
 
 #### Type Parameters
 
-| Parameter    | Description                                               |
-| ------------ | --------------------------------------------------------- |
-| `METADATA`   | The metadata shape stored on each `UIMessage`.            |
-| `DATA_PARTS` | A map of names to payloads for typed `data-*` parts.      |
-| `TOOLS`      | A map of tool names to their `input` and `output` shapes. |
+| Parameter    | Description                                                                                                        |
+| ------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `UI_MESSAGE` | The `UIMessage` type for the conversation, the same type parameter `useChat` accepts. Define it once and share it. |
+
+The message type carries the metadata shape, the typed `data-*` parts, and the
+tool definitions.
+
+```ts
+type ChatMessage = UIMessage<Metadata, DataParts, Tools>
+```
 
 #### Options
 
-| Option             | Type                                       | Default                      | Description                                             |
-| ------------------ | ------------------------------------------ | ---------------------------- | ------------------------------------------------------- |
-| `messages`         | `UIMessage<METADATA, DATA_PARTS, TOOLS>[]` | `[]`                         | Start from an existing transcript. Messages are cloned. |
-| `messageIdPrefix`  | `string`                                   | `"msg"`                      | Prefix for generated message IDs.                       |
-| `toolCallIdPrefix` | `string`                                   | `"call"`                     | Prefix for generated tool call IDs.                     |
-| `sourceIdPrefix`   | `string`                                   | `"source"`                   | Prefix for generated source IDs.                        |
-| `now`              | `Date \| string`                           | `"2026-01-01T00:00:00.000Z"` | Fixed time used for generated `createdAt` metadata.     |
+| Option             | Type             | Default                      | Description                                             |
+| ------------------ | ---------------- | ---------------------------- | ------------------------------------------------------- |
+| `messages`         | `UIMessage[]`    | `[]`                         | Start from an existing transcript. Messages are cloned. |
+| `messageIdPrefix`  | `string`         | `"msg"`                      | Prefix for generated message IDs.                       |
+| `toolCallIdPrefix` | `string`         | `"call"`                     | Prefix for generated tool call IDs.                     |
+| `sourceIdPrefix`   | `string`         | `"source"`                   | Prefix for generated source IDs.                        |
+| `now`              | `Date \| string` | `"2026-01-01T00:00:00.000Z"` | Fixed time used for generated `createdAt` metadata.     |
 
 IDs found in `messages` are reserved, so newly generated IDs continue after
 the existing transcript.
@@ -767,11 +914,11 @@ type FilePayload = {
 
 #### `assistant()` Input
 
-| Input                  | Result                                                                 |
-| ---------------------- | ---------------------------------------------------------------------- |
-| `string`               | One text part that streams word by word.                               |
-| `UIMessagePart[]`      | Static AI SDK parts that stream in their existing order.               |
-| `({ writer }) => void` | A synchronous callback for scripting parts, tools, errors, and timing. |
+| Input                  | Result                                                                                                                                                                                       |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `string`               | One text part that streams word by word.                                                                                                                                                     |
+| `UIMessagePart[]`      | Static AI SDK parts that stream in their existing order.                                                                                                                                     |
+| `({ writer }) => void` | A synchronous callback for scripting parts, tools, errors, and timing. After a paused turn it becomes a [continuation](#continuations) and receives `toolCall`, `toolCalls`, and `messages`. |
 
 #### `assistant()` Options
 
@@ -825,21 +972,24 @@ Calling `reasoning()` without content uses
 
 #### Tool Options
 
-| Option             | Type                      | Description                                          |
-| ------------------ | ------------------------- | ---------------------------------------------------- |
-| `toolCallId`       | `string`                  | Use a specific tool call ID.                         |
-| `title`            | `string`                  | Add a display title to the tool part.                |
-| `toolMetadata`     | `Record<string, unknown>` | Add provider or application metadata.                |
-| `providerExecuted` | `boolean`                 | Mark the call as executed by the provider.           |
-| `input`            | `TOOLS[NAME]["input"]`    | Set the typed tool input.                            |
-| `output`           | `TOOLS[NAME]["output"]`   | Immediately finish with a typed output.              |
-| `errorText`        | `string`                  | Immediately finish with an error.                    |
-| `dynamic`          | `boolean`                 | Emit a `dynamic-tool` part instead of `tool-<name>`. |
+| Option             | Type                      | Description                                                                                     |
+| ------------------ | ------------------------- | ----------------------------------------------------------------------------------------------- |
+| `toolCallId`       | `string`                  | Use a specific tool call ID.                                                                    |
+| `title`            | `string`                  | Add a display title to the tool part.                                                           |
+| `toolMetadata`     | `Record<string, unknown>` | Add provider or application metadata.                                                           |
+| `providerExecuted` | `boolean`                 | Mark the call as executed by the provider.                                                      |
+| `input`            | `TOOLS[NAME]["input"]`    | Set the typed tool input.                                                                       |
+| `output`           | `TOOLS[NAME]["output"]`   | Immediately finish with a typed output. With `needsApproval`, stream it after approval instead. |
+| `errorText`        | `string`                  | Immediately finish with an error. With `needsApproval`, stream it after approval instead.       |
+| `dynamic`          | `boolean`                 | Emit a `dynamic-tool` part instead of `tool-<name>`.                                            |
+| `needsApproval`    | `boolean`                 | Pause the turn behind the user's decision. See [Human in the Loop](#human-in-the-loop).         |
+| `approvalId`       | `string`                  | Use a specific approval ID.                                                                     |
 
 `tool()` returns a handle with `sleep(delayMs)`, `output(value)`,
 `error(errorText?)`, and `denied()`. Use the handle when the tool lifecycle
 needs events between its input and result. Calling `tool.error()` without a
-message uses `"Tool call failed."`.
+message uses `"Tool call failed."`. The resolution methods throw on a
+`needsApproval` call.
 
 #### Data Input
 
