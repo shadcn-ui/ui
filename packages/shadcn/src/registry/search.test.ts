@@ -31,6 +31,7 @@ describe("searchRegistries", () => {
           items: [
             {
               name: "button",
+              title: "Button",
               type: "registry:ui",
               description: "A button component",
             },
@@ -64,6 +65,7 @@ describe("searchRegistries", () => {
       items: [
         {
           name: "button",
+          title: "Button",
           type: "registry:ui",
           description: "A button component",
           registry: "@shadcn",
@@ -91,6 +93,47 @@ describe("searchRegistries", () => {
         hasMore: false,
       },
     })
+
+    mockGetRegistry.mockRestore()
+  })
+
+  it("includes titles in the SDK output and searches them", async () => {
+    vi.mock("./api", () => ({
+      getRegistry: vi.fn(),
+    }))
+
+    const mockGetRegistry = vi.mocked(getRegistry)
+
+    mockGetRegistry.mockResolvedValue({
+      name: "test/registry",
+      homepage: "https://test.com",
+      items: [
+        {
+          name: "account-menu",
+          title: "User Settings",
+          type: "registry:ui",
+          description: "An account menu",
+        },
+        {
+          name: "button",
+          type: "registry:ui",
+          description: "A button component",
+        },
+      ],
+    })
+
+    const results = await searchRegistries(["@test"], { query: "settings" })
+
+    expect(results.items).toEqual([
+      {
+        name: "account-menu",
+        title: "User Settings",
+        type: "registry:ui",
+        description: "An account menu",
+        registry: "@test",
+        addCommandArgument: "@test/account-menu",
+      },
+    ])
 
     mockGetRegistry.mockRestore()
   })

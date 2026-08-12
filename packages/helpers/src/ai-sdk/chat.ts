@@ -10,14 +10,32 @@ import { createChatRuntime, wait } from "../core"
 import type { Chat, ChatOptions } from "../core"
 import { createAiSdkFormat } from "./format"
 
+// Local equivalents of the AI SDK's InferUIMessage* utilities; not all of
+// them are exported from the pinned ai version.
+type MessageMetadata<UI_MESSAGE extends UIMessage> =
+  UI_MESSAGE extends UIMessage<infer METADATA> ? METADATA : unknown
+
+type MessageData<UI_MESSAGE extends UIMessage> =
+  UI_MESSAGE extends UIMessage<unknown, infer DATA_PARTS>
+    ? DATA_PARTS
+    : UIDataTypes
+
+type MessageTools<UI_MESSAGE extends UIMessage> =
+  UI_MESSAGE extends UIMessage<unknown, UIDataTypes, infer TOOLS>
+    ? TOOLS
+    : UITools
+
 /** Options for creating an AI SDK chat, optionally hydrated from existing messages. */
-export type CreateChatOptions<
-  METADATA = unknown,
-  DATA_PARTS extends UIDataTypes = UIDataTypes,
-  TOOLS extends UITools = UITools,
-> = ChatOptions & {
-  messages?: Array<UIMessage<METADATA, DATA_PARTS, TOOLS>>
-}
+export type CreateChatOptions<UI_MESSAGE extends UIMessage = UIMessage> =
+  ChatOptions & {
+    messages?: Array<
+      UIMessage<
+        MessageMetadata<UI_MESSAGE>,
+        MessageData<UI_MESSAGE>,
+        MessageTools<UI_MESSAGE>
+      >
+    >
+  }
 
 export type YieldMessagePartsOptions = {
   /** Also yield an initial snapshot with zero parts. */
@@ -30,17 +48,23 @@ export type StreamMessagePartsOptions = YieldMessagePartsOptions & {
 }
 
 /** The chat type returned by the AI SDK adapter's `createChat`. */
-export type AiSdkChat<
-  METADATA = unknown,
-  DATA_PARTS extends UIDataTypes = UIDataTypes,
-  TOOLS extends UITools = UITools,
-> = Chat<
-  UIMessage<METADATA, DATA_PARTS, TOOLS>,
-  UIMessagePart<DATA_PARTS, TOOLS>,
-  ChatTransport<UIMessage<METADATA, DATA_PARTS, TOOLS>>,
-  METADATA,
-  DATA_PARTS,
-  TOOLS
+export type AiSdkChat<UI_MESSAGE extends UIMessage = UIMessage> = Chat<
+  UIMessage<
+    MessageMetadata<UI_MESSAGE>,
+    MessageData<UI_MESSAGE>,
+    MessageTools<UI_MESSAGE>
+  >,
+  UIMessagePart<MessageData<UI_MESSAGE>, MessageTools<UI_MESSAGE>>,
+  ChatTransport<
+    UIMessage<
+      MessageMetadata<UI_MESSAGE>,
+      MessageData<UI_MESSAGE>,
+      MessageTools<UI_MESSAGE>
+    >
+  >,
+  MessageMetadata<UI_MESSAGE>,
+  MessageData<UI_MESSAGE>,
+  MessageTools<UI_MESSAGE>
 >
 
 /**
@@ -96,16 +120,24 @@ export async function* streamMessageParts<
   }
 }
 
-/** Creates an AI SDK chat, optionally hydrated from existing messages. */
-export function createChat<
-  METADATA = unknown,
-  DATA_PARTS extends UIDataTypes = UIDataTypes,
-  TOOLS extends UITools = UITools,
->(options: CreateChatOptions<METADATA, DATA_PARTS, TOOLS> = {}) {
+/**
+ * Creates an AI SDK chat, optionally hydrated from existing messages. Generic
+ * over the UI message type, mirroring `useChat`.
+ */
+export function createChat<UI_MESSAGE extends UIMessage = UIMessage>(
+  options: CreateChatOptions<UI_MESSAGE> = {}
+) {
   const { messages, ...chatOptions } = options
 
-  return createChatRuntime(createAiSdkFormat<METADATA, DATA_PARTS, TOOLS>(), {
-    ...chatOptions,
-    messages,
-  })
+  return createChatRuntime(
+    createAiSdkFormat<
+      MessageMetadata<UI_MESSAGE>,
+      MessageData<UI_MESSAGE>,
+      MessageTools<UI_MESSAGE>
+    >(),
+    {
+      ...chatOptions,
+      messages,
+    }
+  )
 }

@@ -1596,6 +1596,75 @@
     @apply group-data-[variant=separator]/marker:flex-none group-data-[variant=separator]/marker:text-center *:[a]:hover:text-foreground *:[a]:underline *:[a]:underline-offset-3;
   }
 
+  /* MARK: Questionnaire */
+  .cn-questionnaire {
+    @apply gap-4;
+  }
+
+  .cn-questionnaire-progress {
+    @apply text-[0.625rem];
+  }
+
+  .cn-questionnaire-item {
+    @apply flex flex-col gap-3;
+  }
+
+  .cn-questionnaire-title {
+    @apply text-sm font-semibold [&:not(:has(~[data-slot=questionnaire-description]))]:mb-3;
+  }
+
+  .cn-questionnaire-description {
+    @apply text-xs/relaxed;
+  }
+
+  .cn-questionnaire-choices {
+    @apply gap-1.5;
+  }
+
+  .cn-questionnaire-choice {
+    @apply border-input bg-input/20 hover:bg-input/40 data-checked:border-primary/40 data-checked:bg-primary/10 data-invalid:border-destructive has-[>input:focus-visible]:border-ring has-[>input:focus-visible]:ring-ring/30 gap-2.5 rounded-xl border px-3 py-2.5 text-xs/relaxed has-[>input:focus-visible]:ring-2;
+  }
+
+  .cn-questionnaire-choice-indicator {
+    @apply border-input dark:bg-input/30 group-data-checked/questionnaire-choice:bg-primary dark:group-data-checked/questionnaire-choice:bg-primary group-data-checked/questionnaire-choice:text-primary-foreground group-data-checked/questionnaire-choice:border-primary size-4 translate-y-[--spacing(0.45)] group-has-data-[slot=questionnaire-choice-description]/questionnaire-choice:translate-y-0.5 rounded-[4px];
+  }
+
+  .cn-questionnaire-choice-indicator-dot {
+    @apply bg-primary-foreground size-2;
+  }
+
+  .cn-questionnaire-choice-indicator-check {
+    @apply size-3.5;
+  }
+
+  .cn-questionnaire-choice-content {
+    @apply gap-0.5;
+  }
+
+  .cn-questionnaire-choice-description {
+    @apply text-muted-foreground;
+  }
+
+  .cn-questionnaire-shortcut {
+    @apply border-input bg-background/80 text-muted-foreground size-4 translate-y-[--spacing(0.45)] group-has-data-[slot=questionnaire-choice-description]/questionnaire-choice:translate-y-0.5 items-center justify-center rounded-sm border font-mono text-[0.5625rem] font-medium leading-none;
+  }
+
+  .cn-questionnaire-input-wrapper {
+    @apply w-full;
+  }
+
+  .cn-questionnaire-input {
+    @apply bg-input/20 dark:bg-input/30 border-input focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 h-7 rounded-md border px-2 py-0.5 text-sm focus-visible:ring-2 aria-invalid:ring-2 md:text-xs/relaxed;
+  }
+
+  .cn-questionnaire-error {
+    @apply mt-2 text-xs/relaxed;
+  }
+
+  .cn-questionnaire-actions {
+    @apply gap-1.5 sm:min-h-7;
+  }
+
   /* MARK: Message Scroller */
   .cn-message-scroller-content {
     @apply gap-6;
