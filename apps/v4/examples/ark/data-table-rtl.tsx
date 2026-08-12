@@ -207,8 +207,8 @@ export function DataTableRtl() {
                 table.getIsAllPageRowsSelected() ||
                 (table.getIsSomePageRowsSelected() ? true : false)
               }
-              onCheckedChange={(value) =>
-                table.toggleAllPageRowsSelected(!!value)
+              onCheckedChange={(details) =>
+                table.toggleAllPageRowsSelected(!!details.checked)
               }
               aria-label={t.selectAll}
             />
@@ -216,7 +216,9 @@ export function DataTableRtl() {
           cell: ({ row }) => (
             <Checkbox
               checked={row.getIsSelected()}
-              onCheckedChange={(value) => row.toggleSelected(!!value)}
+              onCheckedChange={(details) =>
+                row.toggleSelected(!!details.checked)
+              }
               aria-label={t.selectRow}
             />
           ),
@@ -347,9 +349,7 @@ export function DataTableRtl() {
               {t.columns} <ChevronDown />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent
-            data-lang={dir === "rtl" ? language : undefined}
-          >
+          <DropdownMenuContent data-lang={dir === "rtl" ? language : undefined}>
             <DropdownMenuGroup>
               {table
                 .getAllColumns()

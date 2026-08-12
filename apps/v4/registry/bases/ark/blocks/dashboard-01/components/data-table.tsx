@@ -39,7 +39,6 @@ import {
   type SortingState,
 } from "@tanstack/react-table"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
-import { toast } from "@/registry/bases/ark/ui/toast"
 import { z } from "zod"
 
 import { useIsMobile } from "@/registry/bases/ark/hooks/use-mobile"
@@ -102,6 +101,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/bases/ark/ui/tabs"
+import { toast } from "@/registry/bases/ark/ui/toast"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 // New in v9: declare the features this table uses — anything you don't
@@ -226,7 +226,9 @@ const columns = columnHelper.columns([
             table.getIsAllPageRowsSelected() ||
             (table.getIsSomePageRowsSelected() && "indeterminate")
           }
-          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+          onCheckedChange={(details) =>
+            table.toggleAllPageRowsSelected(!!details.checked)
+          }
           aria-label="Select all"
         />
       </div>
@@ -235,7 +237,7 @@ const columns = columnHelper.columns([
       <div className="flex items-center justify-center">
         <Checkbox
           checked={row.getIsSelected()}
-          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          onCheckedChange={(details) => row.toggleSelected(!!details.checked)}
           aria-label="Select row"
         />
       </div>
@@ -661,9 +663,7 @@ export function DataTable({
           </div>
           <div className="flex w-full items-center gap-8 lg:w-fit">
             <div className="hidden items-center gap-2 lg:flex">
-              <Label className="text-sm font-medium">
-                Rows per page
-              </Label>
+              <Label className="text-sm font-medium">Rows per page</Label>
               <Select
                 collection={pageSizeCollection}
                 value={[`${table.state.pagination.pageSize}`]}
@@ -919,7 +919,10 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
               </div>
               <div className="flex flex-col gap-3">
                 <Label htmlFor="status">Status</Label>
-                <Select collection={statusCollection} defaultValue={[item.status]}>
+                <Select
+                  collection={statusCollection}
+                  defaultValue={[item.status]}
+                >
                   <SelectHiddenSelect />
                   <SelectControl>
                     <SelectTrigger className="w-full">
@@ -954,7 +957,10 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
             </div>
             <div className="flex flex-col gap-3">
               <Label htmlFor="reviewer">Reviewer</Label>
-              <Select collection={reviewerCollection} defaultValue={[item.reviewer]}>
+              <Select
+                collection={reviewerCollection}
+                defaultValue={[item.reviewer]}
+              >
                 <SelectHiddenSelect />
                 <SelectControl>
                   <SelectTrigger className="w-full">

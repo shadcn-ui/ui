@@ -77,7 +77,7 @@ export function NotificationSettings() {
             <Checkbox
               id="notify-all"
               checked={someChecked ? "indeterminate" : allChecked}
-              onCheckedChange={(v) => handleSelectAll(!!v)}
+              onCheckedChange={(details) => handleSelectAll(!!details.checked)}
             />
             <FieldContent>
               <FieldLabel htmlFor="notify-all">Select all</FieldLabel>
@@ -88,7 +88,9 @@ export function NotificationSettings() {
               <Checkbox
                 id={`notify-${n.id}`}
                 checked={checked[n.id]}
-                onCheckedChange={(v) => handleToggle(n.id, !!v)}
+                onCheckedChange={(details) =>
+                  handleToggle(n.id, !!details.checked)
+                }
               />
               <FieldContent>
                 <FieldLabel htmlFor={`notify-${n.id}`}>{n.label}</FieldLabel>
