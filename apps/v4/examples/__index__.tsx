@@ -3231,6 +3231,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "label-rtl",
       filePath: "examples/ark/label-rtl.tsx",
     },
+    "markdown-demo": {
+      name: "markdown-demo",
+      filePath: "examples/ark/markdown-demo.tsx",
+    },
     "marker-border": {
       name: "marker-border",
       filePath: "examples/ark/marker-border.tsx",
@@ -3562,6 +3566,34 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "scroll-area-rtl": {
       name: "scroll-area-rtl",
       filePath: "examples/ark/scroll-area-rtl.tsx",
+    },
+    "scroll-fade-demo": {
+      name: "scroll-fade-demo",
+      filePath: "examples/ark/scroll-fade-demo.tsx",
+    },
+    "scroll-fade-edge": {
+      name: "scroll-fade-edge",
+      filePath: "examples/ark/scroll-fade-edge.tsx",
+    },
+    "scroll-fade-horizontal": {
+      name: "scroll-fade-horizontal",
+      filePath: "examples/ark/scroll-fade-horizontal.tsx",
+    },
+    "scroll-fade-none": {
+      name: "scroll-fade-none",
+      filePath: "examples/ark/scroll-fade-none.tsx",
+    },
+    "scroll-fade-overflow": {
+      name: "scroll-fade-overflow",
+      filePath: "examples/ark/scroll-fade-overflow.tsx",
+    },
+    "scroll-fade-rtl": {
+      name: "scroll-fade-rtl",
+      filePath: "examples/ark/scroll-fade-rtl.tsx",
+    },
+    "scroll-fade-size": {
+      name: "scroll-fade-size",
+      filePath: "examples/ark/scroll-fade-size.tsx",
     },
     "select-align-item": {
       name: "select-align-item",

@@ -2350,6 +2350,14 @@ export const Components: Record<string, any> = {
       ) || "label-rtl"
     return { default: mod.default || mod[exportName] }
   }),
+  "markdown-demo": React.lazy(async () => {
+    const mod = await import("@/examples/ark/markdown-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "markdown-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
   "marker-border": React.lazy(async () => {
     const mod = await import("@/examples/ark/marker-border")
     const exportName =
@@ -3012,6 +3020,62 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "scroll-area-rtl"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "scroll-fade-demo": React.lazy(async () => {
+    const mod = await import("@/examples/ark/scroll-fade-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "scroll-fade-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "scroll-fade-edge": React.lazy(async () => {
+    const mod = await import("@/examples/ark/scroll-fade-edge")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "scroll-fade-edge"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "scroll-fade-horizontal": React.lazy(async () => {
+    const mod = await import("@/examples/ark/scroll-fade-horizontal")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "scroll-fade-horizontal"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "scroll-fade-none": React.lazy(async () => {
+    const mod = await import("@/examples/ark/scroll-fade-none")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "scroll-fade-none"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "scroll-fade-overflow": React.lazy(async () => {
+    const mod = await import("@/examples/ark/scroll-fade-overflow")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "scroll-fade-overflow"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "scroll-fade-rtl": React.lazy(async () => {
+    const mod = await import("@/examples/ark/scroll-fade-rtl")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "scroll-fade-rtl"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "scroll-fade-size": React.lazy(async () => {
+    const mod = await import("@/examples/ark/scroll-fade-size")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "scroll-fade-size"
     return { default: mod.default || mod[exportName] }
   }),
   "select-align-item": React.lazy(async () => {
