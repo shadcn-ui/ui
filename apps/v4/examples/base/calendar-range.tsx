@@ -16,6 +16,7 @@ export function CalendarRange() {
   return (
     <Calendar
       mode="range"
+      resetOnSelect
       defaultMonth={dateRange?.from}
       selected={dateRange}
       onSelect={setDateRange}
