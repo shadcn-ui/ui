@@ -7602,6 +7602,29 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/aria/ui/hover-card.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/hover-card",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/hover-card-example.tsx",
+          api: "https://react-aria.adobe.com/PreviewTrigger#api",
+        },
+      },
+    },
     input: {
       name: "input",
       title: "undefined",
@@ -8848,6 +8871,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/aria/examples/field-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "hover-card-example": {
+      name: "hover-card-example",
+      title: "Hover Card",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "dialog", "hover-card", "example"],
+      files: [
+        {
+          path: "registry/bases/aria/examples/hover-card-example.tsx",
           type: "registry:example",
           target: "",
         },

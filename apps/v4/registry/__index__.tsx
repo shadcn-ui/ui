@@ -11210,6 +11210,29 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/aria-nova/ui/hover-card.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/hover-card",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/hover-card-example.tsx",
+          api: "https://react-aria.adobe.com/PreviewTrigger#api",
+        },
+      },
+    },
     input: {
       name: "input",
       title: "undefined",
@@ -29225,6 +29248,29 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/aria-vega/ui/hover-card.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/hover-card",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/hover-card-example.tsx",
+          api: "https://react-aria.adobe.com/PreviewTrigger#api",
+        },
+      },
+    },
     input: {
       name: "input",
       title: "undefined",
@@ -30542,6 +30588,29 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/field",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/field-example.tsx",
+        },
+      },
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/aria-maia/ui/hover-card.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/hover-card",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/hover-card-example.tsx",
+          api: "https://react-aria.adobe.com/PreviewTrigger#api",
         },
       },
     },
@@ -31865,6 +31934,29 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/aria-lyra/ui/hover-card.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/hover-card",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/hover-card-example.tsx",
+          api: "https://react-aria.adobe.com/PreviewTrigger#api",
+        },
+      },
+    },
     input: {
       name: "input",
       title: "undefined",
@@ -33182,6 +33274,29 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/field",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/field-example.tsx",
+        },
+      },
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/aria-mira/ui/hover-card.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/hover-card",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/hover-card-example.tsx",
+          api: "https://react-aria.adobe.com/PreviewTrigger#api",
         },
       },
     },
@@ -34505,6 +34620,29 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/aria-luma/ui/hover-card.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/hover-card",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/hover-card-example.tsx",
+          api: "https://react-aria.adobe.com/PreviewTrigger#api",
+        },
+      },
+    },
     input: {
       name: "input",
       title: "undefined",
@@ -35825,6 +35963,29 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/aria-sera/ui/hover-card.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/hover-card",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/hover-card-example.tsx",
+          api: "https://react-aria.adobe.com/PreviewTrigger#api",
+        },
+      },
+    },
     input: {
       name: "input",
       title: "undefined",
@@ -37142,6 +37303,29 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/field",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/field-example.tsx",
+        },
+      },
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/aria-rhea/ui/hover-card.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/hover-card",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/hover-card-example.tsx",
+          api: "https://react-aria.adobe.com/PreviewTrigger#api",
         },
       },
     },
