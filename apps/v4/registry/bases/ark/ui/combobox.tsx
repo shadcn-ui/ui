@@ -3,9 +3,9 @@
 import * as React from "react"
 import { Combobox as ComboboxPrimitive } from "@ark-ui/react/combobox"
 import { Portal } from "@ark-ui/react/portal"
+import { CheckIcon, ChevronDownIcon, XIcon } from "lucide-react"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
-import { ChevronDownIcon, XIcon, CheckIcon } from "lucide-react"
 
 // --- Root ---
 
@@ -86,9 +86,7 @@ function ComboboxClearTrigger({
       )}
       {...props}
     >
-      {children ?? (
-        <XIcon className="pointer-events-none size-3.5" />
-      )}
+      {children ?? <XIcon className="pointer-events-none size-3.5" />}
     </ComboboxPrimitive.ClearTrigger>
   )
 }
@@ -106,7 +104,7 @@ function ComboboxContent({
         <ComboboxPrimitive.Content
           data-slot="combobox-content"
           className={cn(
-            "group/combobox-content z-50 max-h-72 min-w-[--reference-width] overflow-hidden rounded-lg bg-popover text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-8 *:data-[slot=input-group]:border-input/30 *:data-[slot=input-group]:bg-input/30 *:data-[slot=input-group]:shadow-none data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
+            "cn-combobox-content cn-combobox-content-logical cn-menu-target cn-menu-translucent group/combobox-content relative z-50 min-w-[--reference-width] origin-(--transform-origin)",
             className
           )}
           {...props}
@@ -129,13 +127,13 @@ function ComboboxItem({
     <ComboboxPrimitive.Item
       data-slot="combobox-item"
       className={cn(
-        "relative flex w-full cursor-default items-center gap-2 rounded-md py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "cn-combobox-item relative flex w-full cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       {...props}
     >
       {children}
-      <ComboboxPrimitive.ItemIndicator className="pointer-events-none absolute right-2 flex size-4 items-center justify-center">
+      <ComboboxPrimitive.ItemIndicator className="cn-combobox-item-indicator">
         <CheckIcon className="pointer-events-none size-4" />
       </ComboboxPrimitive.ItemIndicator>
     </ComboboxPrimitive.Item>
@@ -171,7 +169,7 @@ function ComboboxItemGroupLabel({
   return (
     <ComboboxPrimitive.ItemGroupLabel
       data-slot="combobox-item-group-label"
-      className={cn("px-2 py-1.5 text-xs text-muted-foreground", className)}
+      className={cn("cn-combobox-label", className)}
       {...props}
     />
   )
@@ -186,7 +184,7 @@ function ComboboxLabel({
   return (
     <ComboboxPrimitive.Label
       data-slot="combobox-label"
-      className={cn("px-2 py-1.5 text-xs text-muted-foreground", className)}
+      className={cn("cn-combobox-label", className)}
       {...props}
     />
   )
@@ -234,7 +232,7 @@ function ComboboxSeparator({
   return (
     <div
       data-slot="combobox-separator"
-      className={cn("-mx-1 my-1 h-px bg-border", className)}
+      className={cn("cn-combobox-separator", className)}
       {...props}
     />
   )

@@ -3,9 +3,7 @@
 import * as React from "react"
 import { ark } from "@ark-ui/react/factory"
 import { Portal } from "@ark-ui/react/portal"
-import {
-  Select as SelectPrimitive,
-} from "@ark-ui/react/select"
+import { Select as SelectPrimitive } from "@ark-ui/react/select"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
@@ -128,7 +126,7 @@ const SelectValue = React.forwardRef<
   <SelectPrimitive.ValueText
     ref={ref}
     data-slot="select-value"
-    className={cn("flex-1 text-left line-clamp-1", className)}
+    className={cn("line-clamp-1 flex-1 text-left", className)}
     {...props}
   />
 ))
@@ -152,17 +150,18 @@ const SelectContent = React.forwardRef<
   React.ComponentProps<typeof SelectPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
   <Portal>
-    <SelectPrimitive.Positioner data-slot="select-positioner" className="outline-none">
+    <SelectPrimitive.Positioner
+      data-slot="select-positioner"
+      className="outline-none"
+    >
       <SelectPrimitive.Content
         ref={ref}
         data-slot="select-content"
         className={cn(
-          "z-50 flex flex-col gap-0.5 rounded-lg border bg-popover p-1 text-popover-foreground shadow-lg outline-none",
+          "cn-select-content relative z-50 flex flex-col gap-0.5 p-1 outline-none",
           "min-w-(--reference-width)",
           "max-h-[min(var(--available-height,300px),300px)] overflow-y-auto",
           "origin-(--transform-origin)",
-          "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%]",
-          "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%]",
           className
         )}
         {...props}
@@ -184,10 +183,7 @@ const SelectItem = React.forwardRef<
     ref={ref}
     data-slot="select-item"
     className={cn(
-      "relative flex w-full cursor-default items-center gap-2 rounded-md px-2 py-1.5 pr-8 text-sm outline-none select-none",
-      "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
-      "data-[state=checked]:font-medium",
-      "data-disabled:pointer-events-none data-disabled:opacity-50",
+      "cn-select-item relative flex w-full cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
       className
     )}
     {...props}
@@ -206,10 +202,7 @@ const SelectItemIndicator = React.forwardRef<
   <SelectPrimitive.ItemIndicator
     ref={ref}
     data-slot="select-item-indicator"
-    className={cn(
-      "absolute right-2 flex size-4 items-center justify-center",
-      className
-    )}
+    className={cn("cn-select-item-indicator", className)}
     {...props}
   >
     {children ?? (
@@ -245,10 +238,7 @@ const SelectItemGroupLabel = React.forwardRef<
   <SelectPrimitive.ItemGroupLabel
     ref={ref}
     data-slot="select-item-group-label"
-    className={cn(
-      "px-2 py-1.5 text-xs font-semibold text-muted-foreground tracking-wide",
-      className
-    )}
+    className={cn("cn-select-label", className)}
     {...props}
   />
 ))
@@ -262,7 +252,7 @@ const SelectLabel = React.forwardRef<
     ref={ref}
     data-slot="select-label"
     className={cn(
-      "text-sm font-medium leading-none select-none data-disabled:opacity-50",
+      "text-sm leading-none font-medium select-none data-disabled:opacity-50",
       className
     )}
     {...props}
@@ -277,7 +267,7 @@ const SelectSeparator = React.forwardRef<
   <ark.div
     ref={ref}
     data-slot="select-separator"
-    className={cn("-mx-1 my-1 h-px bg-border", className)}
+    className={cn("cn-select-separator pointer-events-none", className)}
     {...props}
   />
 ))
