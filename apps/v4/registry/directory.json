@@ -954,6 +954,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round'><path d='M4 22c4-10 8 10 12 0s8-10 12 0'/></svg>"
   },
   {
+    "name": "@motion-lexicon",
+    "homepage": "https://motion-lexicon.pages.dev",
+    "url": "https://motion-lexicon.pages.dev/r/{name}.json",
+    "description": "Copy-ready React page blocks and motion components with bilingual previews, reduced-motion paths, and shadcn Registry delivery.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect width='32' height='32' rx='8' fill='var(--foreground)'/><path d='M8 23V9M8 23h16' stroke='var(--background)' stroke-width='1.5' stroke-linecap='round'/><path d='M8.5 22.5C10 14 14 10 23.5 9.5' stroke='#4568ff' stroke-width='2.5' stroke-linecap='round'/></svg>"
+  },
+  {
     "name": "@motion-primitives",
     "homepage": "https://www.motion-primitives.com",
     "url": "https://motion-primitives.com/c/{name}.json",
