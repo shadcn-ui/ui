@@ -36,6 +36,7 @@ export async function migrateRtl(
         cwd: basePath,
         onlyFiles: true,
         ignore: ["**/node_modules/**"],
+        suppressErrors: true,
       })
     } else {
       const fullPath = path.resolve(basePath, options.path)
