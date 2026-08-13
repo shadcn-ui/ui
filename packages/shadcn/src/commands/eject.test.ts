@@ -148,6 +148,12 @@ describe("runEject", () => {
     expect(output).toContain('@import "tw-animate-css";')
     expect(output).toContain("/* ejected from shadcn@4.8.3 */")
     expect(output).toContain(shadcnCss.trim())
+    expect(shadcnCss).toContain(
+      "--animate-accordion-down: accordion-down 0.2s ease-out;"
+    )
+    expect(shadcnCss).toContain(
+      "--animate-accordion-up: accordion-up 0.2s ease-out;"
+    )
     expect(output).toContain("@layer base")
     expect(output).toContain("@apply bg-background text-foreground;")
     expect(execa).toHaveBeenCalledWith("pnpm", ["remove", "shadcn"], {
