@@ -20,6 +20,13 @@
     ],
     "baseUrl": ".",
     "paths": {
+      // Temp aliases: registry sources import @/app/(create)/* (ships
+      // verbatim in published registry payloads) and a handful still use
+      // the legacy @/app/(app)/create/* path. The files actually live under
+      // app/(app)/(create)/*. Remove once the registry imports (and
+      // payloads) are migrated to the real path.
+      "@/app/(create)/*": ["./app/(app)/(create)/*"],
+      "@/app/(app)/create/*": ["./app/(app)/(create)/*"],
       "@/*": ["./*"],
       "react": ["./node_modules/@types/react"]
     }

@@ -14,6 +14,7 @@ export {
   PRESET_CHART_COLORS,
   V1_CHART_COLOR_MAP,
   DEFAULT_PRESET_CONFIG,
+  isPresetBase,
   toBase62,
   fromBase62,
   encodePreset,
@@ -22,5 +23,6 @@ export {
   isValidPreset,
   generateRandomConfig,
   generateRandomPreset,
+  type PresetBase,
   type PresetConfig,
 } from "./preset"

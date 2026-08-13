@@ -141,7 +141,7 @@ export default async function Page(props: {
               )}
             </div>
           </div>
-          <div className="w-full flex-1 pb-16 *:data-[slot=alert]:first:mt-0 sm:pb-0">
+          <div className="typeset w-full flex-1 pb-16 *:data-[slot=alert]:first:mt-0 sm:pb-0">
             {params.slug &&
               params.slug[0] === "components" &&
               params.slug[1] &&
@@ -185,7 +185,7 @@ export default async function Page(props: {
       <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[90svh] w-(--sidebar-width) flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
         <div className="h-(--top-spacing) shrink-0"></div>
         {doc.toc?.length ? (
-          <div className="no-scrollbar flex flex-col gap-8 overflow-y-auto px-8">
+          <div className="flex scroll-fade scrollbar-none flex-col gap-8 overflow-y-auto px-8">
             <DocsTableOfContents toc={doc.toc} />
           </div>
         ) : null}
