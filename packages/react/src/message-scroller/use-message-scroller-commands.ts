@@ -26,6 +26,7 @@ function useMessageScrollerCommands({
 }) {
   const {
     streamingTurnRef,
+    atEndRef,
     autoScrollRef,
     autoscrollingRef,
     autoscrollingTimeoutRef,
@@ -42,6 +43,7 @@ function useMessageScrollerCommands({
     spacerHeightRef,
     spacerRef,
     viewportRef,
+    viewportWidthRef,
   } = refs
 
   const setAutoScrolling = React.useCallback(
@@ -135,6 +137,7 @@ function useMessageScrollerCommands({
       setTailSpacerHeight(0)
       streamingTurnRef.current = null
       modeRef.current = "free-scrolling"
+      atEndRef.current = false
       scrollToPosition(0, { behavior })
       scheduleVisibilitySync()
 
@@ -156,6 +159,11 @@ function useMessageScrollerCommands({
       modeRef.current = autoScrollRef.current
         ? "following-bottom"
         : "free-scrolling"
+      // Recorded here rather than left to the state commit this schedules: that
+      // commit lands a frame later, and a resize in between would read a stale
+      // answer for a scroller that is, by definition, at the end.
+      atEndRef.current = true
+      viewportWidthRef.current = viewport.clientWidth
       scrollToPosition(getMaxScrollTop(viewport), {
         autoscrolling: true,
         behavior,

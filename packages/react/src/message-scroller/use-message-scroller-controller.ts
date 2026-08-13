@@ -66,6 +66,7 @@ function useMessageScrollerController({
 
   const {
     streamingTurnRef,
+    atEndRef,
     autoScrollRef,
     autoscrollingRef,
     autoscrollingTimeoutRef,
@@ -90,6 +91,7 @@ function useMessageScrollerController({
     stateFrameRef,
     stateStore,
     viewportRef,
+    viewportWidthRef,
     visibilityFrameRef,
     visibilityObserverRef,
     visibilityStore,
@@ -177,6 +179,27 @@ function useMessageScrollerController({
     })
 
     reconcileFollowMode(nextState)
+
+    // Where the reader is, kept for the resize pass, which runs after the
+    // browser has already moved them. Raw geometry rather than the published
+    // state, since follow-output publishes end as false whether or not the
+    // reader is at it.
+    //
+    // Paired with the width it was read at, and only recorded while that width
+    // is still the one on screen. A commit can land between a rewrap and the
+    // resize pass that answers for it, and such a commit is measuring lines
+    // that have already moved: it would report the reader as away from the end
+    // for the very reflow the resize pass is about to undo. Skipping it leaves
+    // the last honest answer in place, and the pass re-arms the width.
+    const width = viewportRef.current?.clientWidth ?? null
+
+    if (
+      viewportWidthRef.current === null ||
+      viewportWidthRef.current === width
+    ) {
+      atEndRef.current = !nextState.end
+      viewportWidthRef.current = width
+    }
 
     // While follow-output is engaged the scroller is already closing any gap a
     // streamed chunk just opened, so publishing it as scrollable toward the
@@ -493,7 +516,30 @@ function useMessageScrollerController({
     scrollToEnd,
   ])
 
+  // Whether the viewport changed width since the last resize pass. Content
+  // growing and content being rewrapped arrive through the same observers, and
+  // they mean opposite things: one is the transcript getting longer, the other
+  // is the same transcript in a new shape. Only a width change can rewrap it.
+  // Measured on every pass, including the ones that return early, so the stored
+  // width never goes stale enough to report a rewrap that did not happen.
+  const didViewportRewrap = React.useCallback(() => {
+    const viewport = viewportRef.current
+
+    if (!viewport) {
+      return false
+    }
+
+    const previous = viewportWidthRef.current
+    const next = viewport.clientWidth
+
+    viewportWidthRef.current = next
+
+    return previous !== null && previous !== next
+  }, [])
+
   const handleResize = React.useCallback(() => {
+    const rewrapped = didViewportRewrap()
+
     if (modeRef.current === "following-bottom" && autoScrollRef.current) {
       scrollToEnd({ behavior: "auto" })
       return
@@ -522,9 +568,23 @@ function useMessageScrollerController({
       return
     }
 
+    // A reader resting at the end is still at the end once the content has been
+    // rewrapped. Narrowing the viewport makes every row taller, all of it above
+    // them, so the end walks away by however much the text grew and stays there:
+    // follow-bottom is the only path back and a transcript with nothing arriving
+    // into it is not following. Their position is not preserved by leaving
+    // scrollTop alone here, because the line it pointed at has moved. A reader
+    // anywhere else is left alone: their position is a place in the transcript,
+    // and the browser's own anchoring is what keeps it.
+    if (rewrapped && atEndRef.current && modeRef.current === "free-scrolling") {
+      scrollToEnd({ behavior: "auto" })
+      return
+    }
+
     scheduleStateCommit()
     scheduleVisibilitySync()
   }, [
+    didViewportRewrap,
     reanchorToAnchoredMessage,
     scheduleStateCommit,
     scheduleVisibilitySync,
