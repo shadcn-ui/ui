@@ -1206,6 +1206,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='155' height='140' viewBox='0 0 155.432 140' fill='none'><path d='M115.228 0.0136719C137.529 0.581528 155.432 18.9209 155.432 41.4615C155.432 64.0022 137.529 82.3415 115.228 82.9094L114.162 82.9231H0V56.9697H25.7268V57.0769H114.162C122.747 57.0769 129.706 50.0856 129.706 41.4615C129.706 32.8374 122.747 25.8462 114.162 25.8462H25.7268V25.7389H0V0H114.162L115.228 0.0136719Z' fill='#DF3B3B'/><path d='M0 82.9231H25.7268V140H23.5829C10.5584 140 0 129.392 0 116.308V82.9231Z' fill='#DF3B3B'/></svg>"
   },
   {
+    "name": "@persianlabsui",
+    "homepage": "https://ui.persian-labs.ir",
+    "url": "https://ui.persian-labs.ir/r/{name}.json",
+    "description": "RTL-first, copy-paste React components and UI blocks for Persian interfaces, built on Base UI and Tailwind CSS. Includes unique Persian-focused patterns with full LTR support.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024' fill='var(--foreground)'><path d='M210 842V330C210 286 226 251 258 219L382 95V842H210Z'/><path fill-rule='evenodd' clip-rule='evenodd' d='M382 95H608C754 95 848 187 848 326C848 465 754 557 608 557H382V405H594C661 405 696 375 696 326C696 277 661 247 594 247H382V95Z'/></svg>"
+  },
+  {
     "name": "@prompt-kit",
     "homepage": "https://www.prompt-kit.com",
     "url": "https://www.prompt-kit.com/c/{name}.json",
