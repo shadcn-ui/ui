@@ -320,7 +320,7 @@
     "homepage": "https://cligentic.railly.dev",
     "url": "https://cligentic.railly.dev/r/{name}.json",
     "description": "Copy-paste TypeScript primitives for agent-first CLIs: trust ladders, killswitches, JSON mode, audit logs, and cross-platform utilities.",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='var(--foreground)'/><rect x='8' y='8' width='16' height='16' fill='#FF6B1A'/><rect x='12' y='12' width='8' height='8' fill='var(--foreground)'/></svg>"
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='#000000'/><rect x='8' y='8' width='16' height='16' fill='#FF6B1A'/><rect x='12' y='12' width='8' height='8' fill='#000000'/></svg>"
   },
   {
     "name": "@cnippet",
