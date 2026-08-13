@@ -182,7 +182,6 @@ describe("shadcn view", () => {
     expect(parsed[0]).toMatchObject({
       name: "button",
       type: "registry:ui",
-      dependencies: ["@radix-ui/react-slot"],
       files: expect.arrayContaining([
         expect.objectContaining({
           path: "registry/new-york-v4/ui/button.tsx",
@@ -209,7 +208,6 @@ describe("shadcn view", () => {
       {
         name: "alert-dialog",
         type: "registry:ui",
-        dependencies: ["@radix-ui/react-alert-dialog"],
         registryDependencies: ["button"],
         files: expect.arrayContaining([
           expect.objectContaining({

@@ -50,6 +50,44 @@ function Foo({ className, ...props }: { className?: string }) {
     `)
   })
 
+  it("adds tailwind classes to cn calls nested in className expressions", async () => {
+    const source = `import * as React from "react"
+import { composeRenderProps, Input as InputPrimitive } from "react-aria-components"
+import { cn } from "@/lib/utils"
+
+function Input({ className, ...props }: React.ComponentProps<typeof InputPrimitive>) {
+  return (
+    <InputPrimitive
+      className={composeRenderProps(className, (className) =>
+        cn("cn-foo existing-class", className)
+      )}
+      {...props}
+    />
+  )
+}
+`
+
+    const result = await applyTransform(source, baseStyleMap)
+
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from \"react\"
+      import { composeRenderProps, Input as InputPrimitive } from \"react-aria-components\"
+      import { cn } from \"@/lib/utils\"
+
+      function Input({ className, ...props }: React.ComponentProps<typeof InputPrimitive>) {
+        return (
+          <InputPrimitive
+            className={composeRenderProps(className, (className) =>
+              cn(\"bg-background gap-4 rounded-xl existing-class\", className)
+            )}
+            {...props}
+          />
+        )
+      }
+      "
+    `)
+  })
+
   it("adds tailwind classes to string literal className", async () => {
     const source = `import * as React from "react"
 
@@ -207,6 +245,30 @@ function Foo({ className, ...props }: { className?: string }) {
       }
       "
     `)
+  })
+
+  it("does not apply base-specific hooks that are absent from the component", async () => {
+    const source = `import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Toggle({ className, ...props }: { className?: string }) {
+  return (
+    <button className={cn("cn-toggle existing-class", className)} {...props} />
+  )
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-toggle": "rounded-md border",
+      "cn-toggle-aria": "data-selected:bg-muted",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    expect(result).toContain(
+      'className={cn("rounded-md border existing-class", className)}'
+    )
+    expect(result).not.toContain("data-selected:bg-muted")
   })
 
   it("skips cn-* classes not in styleMap", async () => {
@@ -538,8 +600,8 @@ function Foo() {
 
   it("applies styles to cn-* classes inside mergeProps within useRender", async () => {
     const source = `import * as React from "react"
-import { mergeProps } from "@base-ui-components/react/merge-props"
-import { useRender } from "@base-ui-components/react/use-render"
+import { mergeProps } from "@base-ui/react/merge-props"
+import { useRender } from "@base-ui/react/use-render"
 import { cn } from "@/lib/utils"
 
 function ButtonGroupText({
@@ -574,8 +636,8 @@ function ButtonGroupText({
 
     expect(result).toMatchInlineSnapshot(`
       "import * as React from "react"
-      import { mergeProps } from "@base-ui-components/react/merge-props"
-      import { useRender } from "@base-ui-components/react/use-render"
+      import { mergeProps } from "@base-ui/react/merge-props"
+      import { useRender } from "@base-ui/react/use-render"
       import { cn } from "@/lib/utils"
 
       function ButtonGroupText({
@@ -599,6 +661,62 @@ function ButtonGroupText({
             slot: "button-group-text",
           },
         })
+      }
+      "
+    `)
+  })
+
+  it("applies styles to cn-* classes inside render prop objects", async () => {
+    const source = `import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function BubbleContent({ className, render, ...props }) {
+  if (render) {
+    const renderProps = {
+      "data-slot": "bubble-content",
+      className: cn("cn-bubble-content w-fit", className),
+      ...props,
+    }
+
+    return render(renderProps)
+  }
+
+  return (
+    <div
+      data-slot="bubble-content"
+      className={cn("cn-bubble-content w-fit", className)}
+      {...props}
+    />
+  )
+}
+`
+
+    const result = await applyTransform(source, {
+      "cn-bubble-content": "rounded-xl border px-3 py-2",
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { cn } from "@/lib/utils"
+
+      function BubbleContent({ className, render, ...props }) {
+        if (render) {
+          const renderProps = {
+            "data-slot": "bubble-content",
+            className: cn("rounded-xl border px-3 py-2 w-fit", className),
+            ...props,
+          }
+
+          return render(renderProps)
+        }
+
+        return (
+          <div
+            data-slot="bubble-content"
+            className={cn("rounded-xl border px-3 py-2 w-fit", className)}
+            {...props}
+          />
+        )
       }
       "
     `)
@@ -657,7 +775,7 @@ function Menu({ className, ...props }: React.ComponentProps<"div">) {
 
       function Menu({ className, ...props }: React.ComponentProps<"div">) {
         return (
-          <div className={cn("z-50 origin-top cn-menu-target", className)} {...props} />
+          <div className={cn("cn-menu-target", className)} {...props} />
         )
       }
       "
@@ -666,8 +784,8 @@ function Menu({ className, ...props }: React.ComponentProps<"div">) {
 
   it("preserves allowlisted classes in mergeProps within useRender", async () => {
     const source = `import * as React from "react"
-import { mergeProps } from "@base-ui-components/react/merge-props"
-import { useRender } from "@base-ui-components/react/use-render"
+import { mergeProps } from "@base-ui/react/merge-props"
+import { useRender } from "@base-ui/react/use-render"
 import { cn } from "@/lib/utils"
 
 function MenuContent({
@@ -702,8 +820,8 @@ function MenuContent({
 
     expect(result).toMatchInlineSnapshot(`
       "import * as React from "react"
-      import { mergeProps } from "@base-ui-components/react/merge-props"
-      import { useRender } from "@base-ui-components/react/use-render"
+      import { mergeProps } from "@base-ui/react/merge-props"
+      import { useRender } from "@base-ui/react/use-render"
       import { cn } from "@/lib/utils"
 
       function MenuContent({
@@ -727,6 +845,248 @@ function MenuContent({
             slot: "menu-content",
           },
         })
+      }
+      "
+    `)
+  })
+
+  it("deduplicates classes when style map classes overlap with existing", async () => {
+    const source = `import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Foo({ className, ...props }: { className?: string }) {
+  return (
+    <div className={cn("cn-foo bg-background", className)} {...props} />
+  )
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-foo": "bg-background gap-4 rounded-xl",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    // bg-background should appear only once, not twice.
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { cn } from "@/lib/utils"
+
+      function Foo({ className, ...props }: { className?: string }) {
+        return (
+          <div className={cn("gap-4 rounded-xl bg-background", className)} {...props} />
+        )
+      }
+      "
+    `)
+  })
+
+  it("handles conflicting tailwind classes with tailwind-merge", async () => {
+    const source = `import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Foo({ className, ...props }: { className?: string }) {
+  return (
+    <div className={cn("cn-foo p-4", className)} {...props} />
+  )
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-foo": "p-2 rounded-xl",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    // p-2 from style map should be overridden by p-4 from existing.
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { cn } from "@/lib/utils"
+
+      function Foo({ className, ...props }: { className?: string }) {
+        return (
+          <div className={cn("rounded-xl p-4", className)} {...props} />
+        )
+      }
+      "
+    `)
+  })
+
+  it("handles conflicting color classes with tailwind-merge", async () => {
+    const source = `import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Foo({ className, ...props }: { className?: string }) {
+  return (
+    <div className={cn("cn-foo bg-primary", className)} {...props} />
+  )
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-foo": "bg-muted text-foreground",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    // bg-muted from style map should be overridden by bg-primary from existing.
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { cn } from "@/lib/utils"
+
+      function Foo({ className, ...props }: { className?: string }) {
+        return (
+          <div className={cn("text-foreground bg-primary", className)} {...props} />
+        )
+      }
+      "
+    `)
+  })
+
+  it("handles conflicting size classes with tailwind-merge", async () => {
+    const source = `import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Foo({ className, ...props }: { className?: string }) {
+  return (
+    <div className={cn("cn-foo text-lg rounded-lg", className)} {...props} />
+  )
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-foo": "text-sm rounded-md border",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    // text-sm and rounded-md from style map should be overridden.
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { cn } from "@/lib/utils"
+
+      function Foo({ className, ...props }: { className?: string }) {
+        return (
+          <div className={cn("border text-lg rounded-lg", className)} {...props} />
+        )
+      }
+      "
+    `)
+  })
+
+  it("handles multiple duplicates in cva base and variants", async () => {
+    const source = `import * as React from "react"
+import { cva } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+
+const buttonVariants = cva(
+  "cn-button rounded-md",
+  {
+    variants: {
+      variant: {
+        default: "cn-button-default bg-primary",
+      },
+    },
+  }
+)
+
+function Button({ className, ...props }: React.ComponentProps<"button">) {
+  return (
+    <button className={cn(buttonVariants({ className }))} {...props} />
+  )
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-button": "rounded-lg border font-medium",
+      "cn-button-default": "bg-muted text-foreground",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    // rounded-lg should be overridden by rounded-md, bg-muted should be overridden by bg-primary.
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { cva } from "class-variance-authority"
+      import { cn } from "@/lib/utils"
+
+      const buttonVariants = cva(
+        "border font-medium rounded-md",
+        {
+          variants: {
+            variant: {
+              default: "text-foreground bg-primary",
+            },
+          },
+        }
+      )
+
+      function Button({ className, ...props }: React.ComponentProps<"button">) {
+        return (
+          <button className={cn(buttonVariants({ className }))} {...props} />
+        )
+      }
+      "
+    `)
+  })
+
+  it("handles conflicting spacing classes with tailwind-merge", async () => {
+    const source = `import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Foo({ className, ...props }: { className?: string }) {
+  return (
+    <div className={cn("cn-foo mx-4 py-2", className)} {...props} />
+  )
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-foo": "mx-2 py-4 flex",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    // mx-2 and py-4 should be overridden by mx-4 and py-2.
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { cn } from "@/lib/utils"
+
+      function Foo({ className, ...props }: { className?: string }) {
+        return (
+          <div className={cn("flex mx-4 py-2", className)} {...props} />
+        )
+      }
+      "
+    `)
+  })
+
+  it("handles arbitrary values with tailwind-merge", async () => {
+    const source = `import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Foo({ className, ...props }: { className?: string }) {
+  return (
+    <div className={cn("cn-foo p-[20px]", className)} {...props} />
+  )
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-foo": "p-4 rounded-xl",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    // p-4 should be overridden by p-[20px].
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { cn } from "@/lib/utils"
+
+      function Foo({ className, ...props }: { className?: string }) {
+        return (
+          <div className={cn("rounded-xl p-[20px]", className)} {...props} />
+        )
       }
       "
     `)

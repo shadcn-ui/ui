@@ -59,6 +59,7 @@ export default function FieldExample() {
       <SliderFields />
       <NativeSelectFields />
       <InputOTPFields />
+      <HorizontalFields />
     </ExampleWrapper>
   )
 }
@@ -437,7 +438,7 @@ function CheckboxFields() {
       <FieldGroup>
         <Field orientation="horizontal">
           <Checkbox id="checkbox-basic" defaultChecked />
-          <FieldLabel htmlFor="checkbox-basic" className="font-normal">
+          <FieldLabel htmlFor="checkbox-basic">
             I agree to the terms and conditions
           </FieldLabel>
         </Field>
@@ -477,19 +478,15 @@ function CheckboxFields() {
           <FieldGroup className="gap-3">
             <Field orientation="horizontal">
               <Checkbox id="pref-dark" />
-              <FieldLabel htmlFor="pref-dark" className="font-normal">
-                Dark mode
-              </FieldLabel>
+              <FieldLabel htmlFor="pref-dark">Dark mode</FieldLabel>
             </Field>
             <Field orientation="horizontal">
               <Checkbox id="pref-compact" />
-              <FieldLabel htmlFor="pref-compact" className="font-normal">
-                Compact view
-              </FieldLabel>
+              <FieldLabel htmlFor="pref-compact">Compact view</FieldLabel>
             </Field>
             <Field orientation="horizontal">
               <Checkbox id="pref-notifications" />
-              <FieldLabel htmlFor="pref-notifications" className="font-normal">
+              <FieldLabel htmlFor="pref-notifications">
                 Enable notifications
               </FieldLabel>
             </Field>
@@ -497,13 +494,11 @@ function CheckboxFields() {
         </FieldSet>
         <Field data-invalid orientation="horizontal">
           <Checkbox id="checkbox-invalid" aria-invalid />
-          <FieldLabel htmlFor="checkbox-invalid" className="font-normal">
-            Invalid checkbox
-          </FieldLabel>
+          <FieldLabel htmlFor="checkbox-invalid">Invalid checkbox</FieldLabel>
         </Field>
         <Field data-disabled orientation="horizontal">
           <Checkbox id="checkbox-disabled-field" disabled />
-          <FieldLabel htmlFor="checkbox-disabled-field" className="font-normal">
+          <FieldLabel htmlFor="checkbox-disabled-field">
             Disabled checkbox
           </FieldLabel>
         </Field>
@@ -521,21 +516,15 @@ function RadioFields() {
           <RadioGroup defaultValue="free">
             <Field orientation="horizontal">
               <RadioGroupItem value="free" id="radio-free" />
-              <FieldLabel htmlFor="radio-free" className="font-normal">
-                Free Plan
-              </FieldLabel>
+              <FieldLabel htmlFor="radio-free">Free Plan</FieldLabel>
             </Field>
             <Field orientation="horizontal">
               <RadioGroupItem value="pro" id="radio-pro" />
-              <FieldLabel htmlFor="radio-pro" className="font-normal">
-                Pro Plan
-              </FieldLabel>
+              <FieldLabel htmlFor="radio-pro">Pro Plan</FieldLabel>
             </Field>
             <Field orientation="horizontal">
               <RadioGroupItem value="enterprise" id="radio-enterprise" />
-              <FieldLabel htmlFor="radio-enterprise" className="font-normal">
-                Enterprise
-              </FieldLabel>
+              <FieldLabel htmlFor="radio-enterprise">Enterprise</FieldLabel>
             </Field>
           </RadioGroup>
         </FieldSet>
@@ -569,18 +558,6 @@ function RadioFields() {
               </FieldDescription>
             </FieldContent>
           </Field>
-          <Field orientation="horizontal">
-            <RadioGroupItem value="option2" id="radio-content-2" />
-            <FieldContent>
-              <FieldLabel htmlFor="radio-content-2">
-                Enable Touch ID and Face ID to make it even faster to unlock
-                your device. This is a long label to test the layout.
-              </FieldLabel>
-              <FieldDescription>
-                Enable Touch ID to quickly unlock your device.
-              </FieldDescription>
-            </FieldContent>
-          </Field>
         </RadioGroup>
         <RadioGroup className="gap-3">
           <FieldLabel htmlFor="radio-title-1">
@@ -588,20 +565,6 @@ function RadioFields() {
               <RadioGroupItem value="title1" id="radio-title-1" />
               <FieldContent>
                 <FieldTitle>Enable Touch ID</FieldTitle>
-                <FieldDescription>
-                  Enable Touch ID to quickly unlock your device.
-                </FieldDescription>
-              </FieldContent>
-            </Field>
-          </FieldLabel>
-          <FieldLabel htmlFor="radio-title-2">
-            <Field orientation="horizontal">
-              <RadioGroupItem value="title2" id="radio-title-2" />
-              <FieldContent>
-                <FieldTitle>
-                  Enable Touch ID and Face ID to make it even faster to unlock
-                  your device. This is a long label to test the layout.
-                </FieldTitle>
                 <FieldDescription>
                   Enable Touch ID to quickly unlock your device.
                 </FieldDescription>
@@ -695,19 +658,15 @@ function SwitchFields() {
           <FieldDescription>Manage your privacy preferences.</FieldDescription>
           <Field orientation="horizontal">
             <Switch id="switch-profile" defaultChecked />
-            <FieldContent>
-              <FieldLabel htmlFor="switch-profile" className="font-normal">
-                Make profile visible to others
-              </FieldLabel>
-            </FieldContent>
+            <FieldLabel htmlFor="switch-profile">
+              Make profile visible to others
+            </FieldLabel>
           </Field>
           <Field orientation="horizontal">
             <Switch id="switch-email" />
-            <FieldContent>
-              <FieldLabel htmlFor="switch-email" className="font-normal">
-                Show email on profile
-              </FieldLabel>
-            </FieldContent>
+            <FieldLabel htmlFor="switch-email">
+              Show email on profile
+            </FieldLabel>
           </Field>
         </Field>
         <Field data-invalid orientation="horizontal">
@@ -968,6 +927,91 @@ function InputOTPFields() {
           <FieldDescription>
             This OTP field is currently disabled.
           </FieldDescription>
+        </Field>
+      </FieldGroup>
+    </Example>
+  )
+}
+
+function HorizontalFields() {
+  const basicItems = [
+    { label: "Select a fruit", value: null },
+    { label: "Apple", value: "apple" },
+    { label: "Banana", value: "banana" },
+    { label: "Orange", value: "orange" },
+  ]
+
+  return (
+    <Example title="Horizontal Fields">
+      <FieldGroup className="**:data-[slot=field-content]:min-w-48">
+        <Field orientation="horizontal">
+          <FieldContent>
+            <FieldLabel htmlFor="horizontal-input">Username</FieldLabel>
+            <FieldDescription>Enter your preferred username.</FieldDescription>
+          </FieldContent>
+          <Input id="horizontal-input" placeholder="johndoe" />
+        </Field>
+        <Field orientation="horizontal">
+          <FieldContent>
+            <FieldLabel htmlFor="horizontal-textarea">Bio</FieldLabel>
+            <FieldDescription>
+              Write a short description about yourself.
+            </FieldDescription>
+          </FieldContent>
+          <Textarea
+            id="horizontal-textarea"
+            placeholder="Tell us about yourself..."
+          />
+        </Field>
+        <Field orientation="horizontal">
+          <FieldContent>
+            <FieldLabel htmlFor="horizontal-switch">
+              Email Notifications
+            </FieldLabel>
+            <FieldDescription>
+              Receive email updates about your account.
+            </FieldDescription>
+          </FieldContent>
+          <Switch id="horizontal-switch" />
+        </Field>
+        <Field orientation="horizontal">
+          <FieldContent>
+            <FieldLabel htmlFor="horizontal-select">Favorite Fruit</FieldLabel>
+            <FieldDescription>Choose your favorite fruit.</FieldDescription>
+          </FieldContent>
+          <Select items={basicItems}>
+            <SelectTrigger id="horizontal-select">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {basicItems.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </Field>
+        <Field orientation="horizontal">
+          <FieldContent>
+            <FieldLabel htmlFor="horizontal-native-select">Country</FieldLabel>
+            <FieldDescription>Select your country.</FieldDescription>
+          </FieldContent>
+          <NativeSelect id="horizontal-native-select">
+            <NativeSelectOption value="">Select a country</NativeSelectOption>
+            <NativeSelectOption value="us">United States</NativeSelectOption>
+            <NativeSelectOption value="uk">United Kingdom</NativeSelectOption>
+            <NativeSelectOption value="ca">Canada</NativeSelectOption>
+          </NativeSelect>
+        </Field>
+        <Field orientation="horizontal">
+          <FieldContent>
+            <FieldLabel htmlFor="horizontal-slider">Volume</FieldLabel>
+            <FieldDescription>Adjust the volume level.</FieldDescription>
+          </FieldContent>
+          <Slider id="horizontal-slider" defaultValue={[50]} max={100} />
         </Field>
       </FieldGroup>
     </Example>

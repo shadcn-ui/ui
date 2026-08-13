@@ -819,6 +819,18 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "toast-example",
+    title: "Toast",
+    type: "registry:example",
+    registryDependencies: ["button", "toast", "example"],
+    files: [
+      {
+        path: "examples/toast-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "toggle-example",
     title: "Toggle",
     type: "registry:example",
@@ -855,6 +867,33 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "demo",
+    title: "Demo",
+    type: "registry:example",
+    registryDependencies: [
+      "alert-dialog",
+      "badge",
+      "button",
+      "button-group",
+      "card",
+      "checkbox",
+      "dropdown-menu",
+      "field",
+      "input-group",
+      "item",
+      "radio-group",
+      "slider",
+      "switch",
+      "textarea",
+    ],
+    files: [
+      {
+        path: "examples/demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "component-example",
     title: "Example",
     type: "registry:example",
@@ -874,6 +913,103 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/component-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "attachment-example",
+    title: "Attachment",
+    type: "registry:example",
+    registryDependencies: ["attachment"],
+    files: [
+      {
+        path: "examples/attachment-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bubble-example",
+    title: "Bubble",
+    type: "registry:example",
+    registryDependencies: ["bubble", "button", "collapsible", "example"],
+    files: [
+      {
+        path: "examples/bubble-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "message-scroller-example",
+    title: "Message Scroller",
+    type: "registry:example",
+    registryDependencies: [
+      "attachment",
+      "bubble",
+      "button",
+      "card",
+      "example",
+      "input-group",
+      "marker",
+      "message",
+      "message-scroller",
+      "spinner",
+    ],
+    files: [
+      {
+        path: "examples/message-scroller-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "questionnaire-example",
+    title: "Questionnaire",
+    type: "registry:example",
+    registryDependencies: [
+      "button",
+      "card",
+      "dialog",
+      "example",
+      "questionnaire",
+      "sonner",
+    ],
+    files: [
+      {
+        path: "examples/questionnaire-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "marker-example",
+    title: "Marker",
+    type: "registry:example",
+    registryDependencies: [
+      "marker",
+      "button",
+      "accordion",
+      "drawer",
+      "spinner",
+      "example",
+    ],
+    files: [
+      {
+        path: "examples/marker-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "message-example",
+    title: "Message",
+    type: "registry:example",
+    registryDependencies: ["bubble", "message", "button", "example"],
+    files: [
+      {
+        path: "examples/message-example.tsx",
         type: "registry:example",
       },
     ],

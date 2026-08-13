@@ -47,12 +47,21 @@ function TooltipSides() {
   return (
     <Example title="Sides">
       <div className="flex flex-wrap gap-2">
-        {(["top", "right", "bottom", "left"] as const).map((side) => (
+        {(
+          [
+            "inline-start",
+            "left",
+            "top",
+            "bottom",
+            "right",
+            "inline-end",
+          ] as const
+        ).map((side) => (
           <Tooltip key={side}>
             <TooltipTrigger
               render={<Button variant="outline" className="w-fit capitalize" />}
             >
-              {side}
+              {side.replace("-", " ")}
             </TooltipTrigger>
             <TooltipContent side={side}>
               <p>Add to library</p>
@@ -74,6 +83,7 @@ function TooltipWithIcon() {
             tabler="IconInfoCircle"
             hugeicons="AlertCircleIcon"
             phosphor="InfoIcon"
+            remixicon="RiInformationLine"
           />
           <span className="sr-only">Info</span>
         </TooltipTrigger>
@@ -128,12 +138,11 @@ function TooltipWithKeyboard() {
             tabler="IconDeviceFloppy"
             hugeicons="FloppyDiskIcon"
             phosphor="FloppyDiskIcon"
+            remixicon="RiSaveLine"
           />
         </TooltipTrigger>
-        <TooltipContent className="pr-1.5">
-          <div className="flex items-center gap-2">
-            Save Changes <Kbd>S</Kbd>
-          </div>
+        <TooltipContent>
+          Save Changes <Kbd>S</Kbd>
         </TooltipContent>
       </Tooltip>
     </Example>
@@ -148,7 +157,7 @@ function TooltipOnLink() {
           render={
             <a
               href="#"
-              className="text-primary w-fit text-sm underline-offset-4 hover:underline"
+              className="w-fit text-sm text-primary underline-offset-4 hover:underline"
               onClick={(e) => e.preventDefault()}
             />
           }

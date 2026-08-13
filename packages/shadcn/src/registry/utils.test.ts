@@ -443,7 +443,7 @@ describe("deduplicateFilesByTarget", () => {
         ui: "/test/project/components/ui",
       },
       ...overrides,
-    } as Config)
+    }) as Config
 
   test("should deduplicate files with same resolved path", async () => {
     const config = createMockConfig()

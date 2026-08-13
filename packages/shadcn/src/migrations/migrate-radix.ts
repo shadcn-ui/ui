@@ -100,29 +100,78 @@ function processNamedImports(
 
 export async function migrateRadix(
   config: Config,
-  options: { yes?: boolean } = {}
+  options: { yes?: boolean; path?: string } = {}
 ) {
-  if (!config.resolvedPaths.ui) {
-    throw new Error(
-      "We could not find a valid `ui` path in your `components.json` file. Please ensure you have a valid `ui` path in your `components.json` file."
-    )
+  // Determine files to migrate.
+  let files: string[]
+  let basePath: string
+
+  if (options.path) {
+    // User provided a path/glob.
+    basePath = config.resolvedPaths.cwd
+    const isGlob = options.path.includes("*")
+
+    if (isGlob) {
+      files = await fg(options.path, {
+        cwd: basePath,
+        onlyFiles: true,
+        ignore: ["**/node_modules/**"],
+      })
+    } else {
+      const fullPath = path.resolve(basePath, options.path)
+      const stat = await fs.stat(fullPath).catch(() => null)
+
+      if (!stat) {
+        throw new Error(`File not found: ${options.path}`)
+      }
+
+      if (stat.isDirectory()) {
+        basePath = fullPath
+        files = await fg("**/*.{js,ts,jsx,tsx}", {
+          cwd: basePath,
+          onlyFiles: true,
+          ignore: ["**/node_modules/**"],
+        })
+      } else if (stat.isFile()) {
+        files = [options.path]
+      } else {
+        throw new Error(`Unsupported path type: ${options.path}`)
+      }
+    }
+
+    if (files.length === 0) {
+      throw new Error(`No files found matching: ${options.path}`)
+    }
+  } else {
+    // Default: use ui path from components.json.
+    if (!config.resolvedPaths.ui) {
+      throw new Error(
+        "We could not find a valid `ui` path in your `components.json` file. Please ensure you have a valid `ui` path in your `components.json` file."
+      )
+    }
+
+    basePath = config.resolvedPaths.ui
+    files = await fg("**/*.{js,ts,jsx,tsx}", {
+      cwd: basePath,
+      onlyFiles: true,
+    })
   }
 
-  const uiPath = config.resolvedPaths.ui
-  const files = await fg("**/*.{js,ts,jsx,tsx}", {
-    cwd: uiPath,
-  })
-
+  // Confirm with user.
   if (!options.yes) {
+    const relativePath = options.path
+      ? options.path
+      : `./${path.relative(config.resolvedPaths.cwd, basePath)}`
+
     const { confirm } = await prompts({
       type: "confirm",
       name: "confirm",
       initial: true,
       message: `We will migrate ${highlighter.info(
         files.length
-      )} files in ${highlighter.info(
-        `./${path.relative(config.resolvedPaths.cwd, uiPath)}`
-      )} to ${highlighter.info("radix-ui")}. Continue?`,
+      )} file(s) in ${highlighter.info(relativePath)} to ${highlighter.info(
+        "radix-ui"
+      )}. Continue?`,
     })
 
     if (!confirm) {
@@ -138,7 +187,7 @@ export async function migrateRadix(
     files.map(async (file) => {
       migrationSpinner.text = `Migrating ${file}...`
 
-      const filePath = path.join(uiPath, file)
+      const filePath = path.join(basePath, file)
       const fileContent = await fs.readFile(filePath, "utf-8")
 
       const { content, replacedPackages } = await migrateRadixFile(fileContent)
@@ -152,7 +201,7 @@ export async function migrateRadix(
 
   migrationSpinner.succeed("Migrating imports.")
 
-  // Update package.json dependencies
+  // Update package.json dependencies.
   const packageSpinner = spinner(`Updating package.json...`)?.start()
 
   try {
@@ -168,38 +217,44 @@ export async function migrateRadix(
 
     const foundPackagesArray = Array.from(foundPackages)
 
-    // Remove packages from both dependencies and devDependencies if found in source files
-    const dependencyTypes = ["dependencies", "devDependencies"] as const
-    for (const depType of dependencyTypes) {
-      if (packageJson[depType]) {
-        for (const pkg of foundPackagesArray) {
-          if (packageJson[depType]![pkg]) {
-            delete packageJson[depType]![pkg]
-          }
-        }
-      }
-    }
-
     // Add radix-ui if we found any Radix packages.
     if (foundPackagesArray.length > 0) {
       if (!packageJson.dependencies) {
         packageJson.dependencies = {}
       }
-      packageJson.dependencies["radix-ui"] = "latest"
 
-      const packageJsonPath = path.join(
-        config.resolvedPaths.cwd,
-        "package.json"
+      // Only add radix-ui if it's not already in dependencies.
+      const hasRadixUi =
+        packageJson.dependencies?.["radix-ui"] ||
+        packageJson.devDependencies?.["radix-ui"]
+
+      if (!hasRadixUi) {
+        packageJson.dependencies["radix-ui"] = "latest"
+
+        const packageJsonPath = path.join(
+          config.resolvedPaths.cwd,
+          "package.json"
+        )
+        await fs.writeFile(
+          packageJsonPath,
+          JSON.stringify(packageJson, null, 2) + "\n"
+        )
+
+        packageSpinner.succeed(`Updated package.json.`)
+
+        // Install radix-ui dependency.
+        await updateDependencies(["radix-ui"], [], config, { silent: false })
+      } else {
+        packageSpinner.succeed(`radix-ui already in package.json.`)
+      }
+
+      // Show a message about old packages that can be removed.
+      logger.info("")
+      logger.info(
+        `Migration complete. The following packages may be removed if no longer in use:`
       )
-      await fs.writeFile(
-        packageJsonPath,
-        JSON.stringify(packageJson, null, 2) + "\n"
-      )
-
-      packageSpinner.succeed(`Updated package.json.`)
-
-      // Install radix-ui dependency.
-      await updateDependencies(["radix-ui"], [], config, { silent: false })
+      logger.info(highlighter.info(foundPackagesArray.join(", ")))
+      logger.info(`Please review your codebase before removing.`)
     } else {
       packageSpinner.succeed("No packages found in source files.")
     }

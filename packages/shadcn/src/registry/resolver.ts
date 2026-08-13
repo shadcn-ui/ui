@@ -1,5 +1,6 @@
 import { createHash } from "crypto"
 import path from "path"
+import { isGitHubItemAddress, resolveItemAddress } from "@/src/registry/address"
 import {
   getRegistryBaseColor,
   getShadcnRegistryIndex,
@@ -14,10 +15,12 @@ import {
   RegistryParseError,
 } from "@/src/registry/errors"
 import { fetchRegistry, fetchRegistryLocal } from "@/src/registry/fetcher"
+import { fetchGitHubRegistryItem } from "@/src/registry/github"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
 import {
   deduplicateFilesByTarget,
   isLocalFile,
+  isUniversalRegistryItem,
   isUrl,
 } from "@/src/registry/utils"
 import {
@@ -34,6 +37,12 @@ import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/updaters/update
 import deepmerge from "deepmerge"
 import { z } from "zod"
 
+type RegistryFetchOptions = {
+  requireUniversal?: boolean
+  useCache?: boolean
+  sourceCache?: Map<string, Promise<string>>
+}
+
 export function resolveRegistryItemsFromRegistries(
   items: string[],
   config: Config
@@ -47,6 +56,10 @@ export function resolveRegistryItemsFromRegistries(
   }
 
   for (let i = 0; i < resolvedItems.length; i++) {
+    if (isGitHubItemAddress(resolvedItems[i])) {
+      continue
+    }
+
     const resolved = buildUrlAndHeadersForRegistryItem(resolvedItems[i], config)
 
     if (resolved) {
@@ -68,10 +81,21 @@ export function resolveRegistryItemsFromRegistries(
 export async function fetchRegistryItems(
   items: string[],
   config: Config,
-  options: { useCache?: boolean } = {}
+  options: RegistryFetchOptions = {}
 ) {
+  options = {
+    ...options,
+    sourceCache: options.sourceCache ?? new Map(),
+  }
+
   const results = await Promise.all(
     items.map(async (item) => {
+      const resolvedAddress = resolveItemAddress(item)
+
+      if (resolvedAddress.scheme === "github") {
+        return fetchGitHubRegistryItem(resolvedAddress, options)
+      }
+
       if (isLocalFile(item)) {
         return fetchRegistryLocal(item)
       }
@@ -124,11 +148,12 @@ const registryItemWithSourceSchema = registryItemCommonSchema
 export async function resolveRegistryTree(
   names: z.infer<typeof registryItemSchema>["name"][],
   config: Config,
-  options: { useCache?: boolean } = {}
+  options: RegistryFetchOptions = {}
 ) {
   options = {
     useCache: true,
     ...options,
+    sourceCache: options.sourceCache ?? new Map(),
   }
 
   let payload: z.infer<typeof registryItemWithSourceSchema>[] = []
@@ -257,6 +282,15 @@ export async function resolveRegistryTree(
     return null
   }
 
+  if (
+    options.requireUniversal &&
+    !payload.every((item) => isUniversalRegistryItem(item))
+  ) {
+    throw new Error(
+      "A full project config is required to add non-universal registry items or dependencies."
+    )
+  }
+
   // No deduplication - we want to support multiple items with the same name from different sources
 
   // If we're resolving the index, we want to fetch
@@ -366,10 +400,10 @@ export async function resolveRegistryTree(
 async function resolveDependenciesRecursively(
   dependencies: string[],
   config: Config,
-  options: { useCache?: boolean } = {},
+  options: RegistryFetchOptions = {},
   visited: Set<string> = new Set()
 ) {
-  const items: z.infer<typeof registryItemSchema>[] = []
+  const items: z.infer<typeof registryItemWithSourceSchema>[] = []
   const registryNames: string[] = []
 
   for (const dep of dependencies) {
@@ -378,11 +412,43 @@ async function resolveDependenciesRecursively(
     }
     visited.add(dep)
 
+    const resolvedAddress = resolveItemAddress(dep)
+
     // Handle URLs and local files directly.
-    if (isUrl(dep) || isLocalFile(dep)) {
+    if (resolvedAddress.scheme === "github") {
       const [item] = await fetchRegistryItems([dep], config, options)
       if (item) {
-        items.push(item)
+        items.push({
+          ...item,
+          _source: dep,
+        })
+        if (item.registryDependencies) {
+          const resolvedDeps = config?.registries
+            ? resolveRegistryItemsFromRegistries(
+                item.registryDependencies,
+                config
+              )
+            : item.registryDependencies
+
+          const nested = await resolveDependenciesRecursively(
+            resolvedDeps,
+            config,
+            options,
+            visited
+          )
+          items.push(...nested.items)
+          registryNames.push(...nested.registryNames)
+        }
+      }
+    }
+    // Handle URLs and local files directly.
+    else if (isUrl(dep) || isLocalFile(dep)) {
+      const [item] = await fetchRegistryItems([dep], config, options)
+      if (item) {
+        items.push({
+          ...item,
+          _source: dep,
+        })
         if (item.registryDependencies) {
           // Resolve namespaced dependencies to set proper headers.
           const resolvedDeps = config?.registries
@@ -475,7 +541,7 @@ async function resolveDependenciesRecursively(
 async function resolveRegistryDependencies(
   url: string,
   config: Config,
-  options: { useCache?: boolean } = {}
+  options: RegistryFetchOptions = {}
 ) {
   if (isUrl(url)) {
     return [url]
@@ -590,6 +656,15 @@ function computeItemHash(
 }
 
 function extractItemIdentifierFromDependency(dependency: string) {
+  const resolvedAddress = resolveItemAddress(dependency)
+
+  if (resolvedAddress.scheme === "github") {
+    return {
+      name: resolvedAddress.item,
+      hash: computeItemHash({ name: resolvedAddress.item }, dependency),
+    }
+  }
+
   if (isUrl(dependency)) {
     const url = new URL(dependency)
     const pathname = url.pathname
@@ -720,7 +795,7 @@ function topologicalSortRegistryItems(
   }
 
   if (sorted.length !== items.length) {
-    console.warn("Circular dependency detected in registry items")
+    // console.warn("Circular dependency detected in registry items")
     // Return all items even if there are circular dependencies
     // Items not in sorted are part of circular dependencies
     const sortedHashes = new Set(

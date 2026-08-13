@@ -1,10 +1,11 @@
 import * as fs from "fs/promises"
 import * as path from "path"
 import { preFlightRegistryBuild } from "@/src/preflights/preflight-registry"
+import { SHADCN_URL } from "@/src/registry/constants"
 import { recursivelyResolveFileImports } from "@/src/registry/utils"
 import { configSchema, registryItemSchema, registrySchema } from "@/src/schema"
 import * as ERRORS from "@/src/utils/errors"
-import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
+import { getProjectInfo, ProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -148,10 +149,14 @@ async function buildRegistry(opts: z.infer<typeof buildOptionsSchema>) {
       }
 
       // Write the registry item to the output directory.
-      await fs.writeFile(
-        path.resolve(resolvePaths.outputDir, `${result.data.name}.json`),
-        JSON.stringify(result.data, null, 2)
+      // Item names can contain path segments (e.g. "extension/foo"), so
+      // ensure the nested output directory exists before writing.
+      const outputPath = path.resolve(
+        resolvePaths.outputDir,
+        `${result.data.name}.json`
       )
+      await fs.mkdir(path.dirname(outputPath), { recursive: true })
+      await fs.writeFile(outputPath, JSON.stringify(result.data, null, 2))
     }
 
     // Copy registry.json to the output directory.

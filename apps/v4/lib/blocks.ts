@@ -1,7 +1,10 @@
 "use server"
 
-import { registryItemSchema } from "shadcn/schema"
+import { registryItemSchema, registrySchema } from "shadcn/schema"
 import { type z } from "zod"
+
+import { registry as baseRegistry } from "@/registry/bases/base/registry"
+import { registry as radixRegistry } from "@/registry/bases/radix/registry"
 
 export async function getAllBlockIds(
   types: z.infer<typeof registryItemSchema>["type"][] = [
@@ -22,23 +25,35 @@ export async function getAllBlocks(
   ],
   categories: string[] = []
 ) {
-  const { Index } = await import("@/registry/__index__")
+  const { Index: StylesIndex } = await import("@/registry/__index__")
 
-  // Collect all blocks from all styles.
-  const allBlocks: z.infer<typeof registryItemSchema>[] = []
+  const allBlocks = new Map<string, z.infer<typeof registryItemSchema>>()
 
-  for (const style in Index) {
-    const styleIndex = Index[style]
-    if (typeof styleIndex === "object" && styleIndex !== null) {
-      for (const itemName in styleIndex) {
-        const item = styleIndex[itemName]
-        allBlocks.push(item)
-      }
+  const baseRegistries = [baseRegistry, radixRegistry]
+    .map((registry) => registrySchema.safeParse(registry))
+    .filter((result) => result.success)
+    .map((result) => result.data)
+
+  for (const registry of baseRegistries) {
+    for (const item of registry.items) {
+      allBlocks.set(`${item.type}:${item.name}`, item)
+    }
+  }
+
+  for (const style in StylesIndex) {
+    const styleIndex = StylesIndex[style]
+    if (typeof styleIndex !== "object" || styleIndex === null) {
+      continue
+    }
+
+    for (const itemName in styleIndex) {
+      const item = styleIndex[itemName]
+      allBlocks.set(`${item.type}:${item.name}`, item)
     }
   }
 
   // Validate each block.
-  const validatedBlocks = allBlocks
+  const validatedBlocks = Array.from(allBlocks.values())
     .map((block) => {
       const result = registryItemSchema.safeParse(block)
       return result.success ? result.data : null
