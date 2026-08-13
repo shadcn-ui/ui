@@ -1940,5 +1940,12 @@
     "url": "https://knock.codes/r/react/{name}.json",
     "description": "Copy-paste, session-gated access blocks for React — PIN/Knock Code unlock screens, protected routes/layouts/modals, a headless useKnockCodes hook, and full-page templates.",
     "logo": "<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><rect width='32' height='32' rx='7' fill='#0A0A0B'/><rect x='9' y='9' width='14' height='14' rx='3' fill='#F59E0B'/></svg>"
+  },
+  {
+    "name": "@sc1m",
+    "homepage": "https://sc1m.vercel.app",
+    "url": "https://sc1m.vercel.app/r/{name}.json",
+    "description": "Multi-brand design system components built on Base UI and Tailwind CSS v4 — semantic tokens, swappable brand layers, dark mode out of the box.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='#252017'/><rect x='6' y='11' width='20' height='10' rx='5' fill='#3d372d'/><circle cx='21' cy='16' r='4' fill='#fcc305'/></svg>"
   }
 ]
