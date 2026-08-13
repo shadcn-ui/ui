@@ -1940,5 +1940,12 @@
     "url": "https://knock.codes/r/react/{name}.json",
     "description": "Copy-paste, session-gated access blocks for React — PIN/Knock Code unlock screens, protected routes/layouts/modals, a headless useKnockCodes hook, and full-page templates.",
     "logo": "<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><rect width='32' height='32' rx='7' fill='#0A0A0B'/><rect x='9' y='9' width='14' height='14' rx='3' fill='#F59E0B'/></svg>"
+  },
+  {
+    "name": "@craftui",
+    "homepage": "https://www.craftui.space",
+    "url": "https://www.craftui.space/r/{name}.json",
+    "description": "Animated, interaction-first components for React: 70+ loaders, interactive SVG icons, plus blocks, sections and UI primitives. Built with Tailwind CSS v4 and Motion, with every animation hand-tuned rather than generated.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='#24a0ed' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'><path d='M18.4 16.3c9.6-.7 18.6-.6 27.7.2 7 .6 10.8 5.1 10.7 11.2-.1 6.3-4 10.7-11 11.2-9 .6-17.9.6-27.2-.1-7-.6-10.8-5-10.7-11.2.1-6.1 3.8-10.7 10.5-11.3Z' /><path d='M45.6 20.3a7.3 7.3 0 0 1 .3 14.6 7.3 7.3 0 0 1-.3-14.6Z' /><path d='M8.3 52.6c15.6-.9 33.1-.8 48.7.1' stroke-width='2.6' /><path d='M8.1 49.6v5.6M56.9 49.8v5.6' stroke-width='2.6' /></svg>"
   }
 ]
