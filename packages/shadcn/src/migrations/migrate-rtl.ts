@@ -52,6 +52,7 @@ export async function migrateRtl(
           cwd: basePath,
           onlyFiles: true,
           ignore: ["**/node_modules/**"],
+          suppressErrors: true,
         })
       } else if (stat.isFile()) {
         files = [options.path]
@@ -75,6 +76,7 @@ export async function migrateRtl(
     files = await fg("**/*.{js,ts,jsx,tsx}", {
       cwd: basePath,
       onlyFiles: true,
+      suppressErrors: true,
     })
   }
 
