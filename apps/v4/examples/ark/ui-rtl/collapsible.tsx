@@ -37,7 +37,7 @@ const CollapsibleContent = React.forwardRef<
     ref={ref}
     data-slot="collapsible-content"
     className={cn(
-      "overflow-hidden data-open:animate-accordion-down data-closed:animate-accordion-up",
+      "overflow-hidden [--accordion-panel-height:var(--height)] data-open:animate-accordion-down data-closed:animate-accordion-up",
       className
     )}
     {...props}
