@@ -84,7 +84,7 @@ function Toaster() {
         <Toast.Root
           key={toast.id}
           className={cn(
-            "cn-toast pointer-events-auto flex w-[356px] items-start gap-3 rounded-lg border border-border bg-popover p-4 text-popover-foreground shadow-lg",
+            "cn-toast pointer-events-auto z-(--z-index) flex h-(--height) w-[356px] translate-x-(--x) translate-y-(--y) scale-(--scale) items-start gap-3 rounded-lg border border-border bg-popover p-4 text-popover-foreground opacity-(--opacity) shadow-lg ease-[cubic-bezier(0.21,1.02,0.73,1)] [will-change:translate,opacity,scale] [transition:translate_400ms,scale_400ms,opacity_400ms,height_400ms,box-shadow_200ms] data-[state=closed]:ease-[cubic-bezier(0.06,0.71,0.55,1)] data-[state=closed]:[transition:translate_400ms,scale_400ms,opacity_200ms]",
             toast.type === "error" && "border-destructive/50",
             toast.type === "success" && "border-emerald-500/50"
           )}
