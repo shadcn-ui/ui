@@ -2,12 +2,12 @@
 
 import {
   Toaster as ArkToaster,
-  Toast,
   createToaster,
+  Toast,
 } from "@ark-ui/react/toast"
 
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 import { cn } from "@/registry/bases/ark/lib/utils"
+import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const icons = {
   success: (
@@ -17,6 +17,7 @@ const icons = {
       hugeicons="CheckmarkCircle02Icon"
       phosphor="CheckCircleIcon"
       remixicon="RiCheckboxCircleLine"
+      aria-hidden="true"
       className="size-4"
     />
   ),
@@ -27,6 +28,7 @@ const icons = {
       hugeicons="InformationCircleIcon"
       phosphor="InfoIcon"
       remixicon="RiInformationLine"
+      aria-hidden="true"
       className="size-4"
     />
   ),
@@ -37,6 +39,7 @@ const icons = {
       hugeicons="Alert02Icon"
       phosphor="WarningIcon"
       remixicon="RiErrorWarningLine"
+      aria-hidden="true"
       className="size-4"
     />
   ),
@@ -47,6 +50,7 @@ const icons = {
       hugeicons="MultiplicationSignCircleIcon"
       phosphor="XCircleIcon"
       remixicon="RiCloseCircleLine"
+      aria-hidden="true"
       className="size-4"
     />
   ),
@@ -57,6 +61,7 @@ const icons = {
       hugeicons="Loading03Icon"
       phosphor="SpinnerIcon"
       remixicon="RiLoaderLine"
+      aria-hidden="true"
       className="size-4 animate-spin"
     />
   ),
@@ -79,7 +84,7 @@ function Toaster() {
         <Toast.Root
           key={toast.id}
           className={cn(
-            "cn-toast bg-popover text-popover-foreground border-border pointer-events-auto flex w-[356px] items-start gap-3 rounded-lg border p-4 shadow-lg",
+            "cn-toast pointer-events-auto flex w-[356px] items-start gap-3 rounded-lg border border-border bg-popover p-4 text-popover-foreground shadow-lg",
             toast.type === "error" && "border-destructive/50",
             toast.type === "success" && "border-emerald-500/50"
           )}
@@ -100,18 +105,20 @@ function Toaster() {
           )}
           <div className="flex flex-1 flex-col gap-1">
             <Toast.Title className="text-sm font-semibold" />
-            <Toast.Description className="text-muted-foreground text-sm" />
-            <Toast.ActionTrigger className="text-primary hover:text-primary/80 mt-1 inline-flex w-fit text-sm font-medium" />
+            <Toast.Description className="text-sm text-muted-foreground" />
+            <Toast.ActionTrigger className="mt-1 inline-flex w-fit text-sm font-medium text-primary hover:text-primary/80" />
           </div>
-          <Toast.CloseTrigger className="text-muted-foreground hover:text-foreground shrink-0 rounded-md p-0.5 opacity-70 transition-opacity hover:opacity-100">
+          <Toast.CloseTrigger className="shrink-0 rounded-md p-0.5 text-muted-foreground opacity-70 transition-opacity hover:text-foreground hover:opacity-100">
             <IconPlaceholder
               lucide="XIcon"
               tabler="IconX"
               hugeicons="Cancel01Icon"
               phosphor="XIcon"
               remixicon="RiCloseLine"
+              aria-hidden="true"
               className="size-4"
             />
+            <span className="sr-only">Close</span>
           </Toast.CloseTrigger>
         </Toast.Root>
       )}

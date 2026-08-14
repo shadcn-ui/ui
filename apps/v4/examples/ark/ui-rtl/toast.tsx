@@ -16,11 +16,11 @@ import {
 } from "lucide-react"
 
 const icons = {
-  success: <CircleCheckIcon className="size-4" />,
-  info: <InfoIcon className="size-4" />,
-  warning: <TriangleAlertIcon className="size-4" />,
-  error: <OctagonXIcon className="size-4" />,
-  loading: <Loader2Icon className="size-4 animate-spin" />,
+  success: <CircleCheckIcon className="size-4" aria-hidden="true" />,
+  info: <InfoIcon className="size-4" aria-hidden="true" />,
+  warning: <TriangleAlertIcon className="size-4" aria-hidden="true" />,
+  error: <OctagonXIcon className="size-4" aria-hidden="true" />,
+  loading: <Loader2Icon className="size-4 animate-spin" aria-hidden="true" />,
 } as const
 
 const toaster = createToaster({
@@ -65,7 +65,8 @@ function Toaster() {
             <Toast.ActionTrigger className="mt-1 inline-flex w-fit text-sm font-medium text-primary hover:text-primary/80" />
           </div>
           <Toast.CloseTrigger className="shrink-0 rounded-md p-0.5 text-muted-foreground opacity-70 transition-opacity hover:text-foreground hover:opacity-100">
-            <XIcon className="size-4" />
+            <XIcon className="size-4" aria-hidden="true" />
+            <span className="sr-only">Close</span>
           </Toast.CloseTrigger>
         </Toast.Root>
       )}
