@@ -1,13 +1,12 @@
 "use client"
 
-import * as React from "react"
-import { ark } from "@ark-ui/react/factory"
+import { ark, type HTMLArkProps } from "@ark-ui/react/factory"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 
 const buttonVariants = cva(
-  "cn-button inline-flex items-center justify-center whitespace-nowrap  transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none shrink-0 [&_svg]:shrink-0 outline-none group/button select-none",
+  "cn-button group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -40,16 +39,10 @@ function Button({
   className,
   variant = "default",
   size = "default",
-  asChild = false,
   ...props
-}: React.ComponentProps<typeof ark.button> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-  }) {
-  const Comp = asChild ? ark.span : ark.button
-
+}: HTMLArkProps<"button"> & VariantProps<typeof buttonVariants>) {
   return (
-    <Comp
+    <ark.button
       data-slot="button"
       data-variant={variant}
       data-size={size}

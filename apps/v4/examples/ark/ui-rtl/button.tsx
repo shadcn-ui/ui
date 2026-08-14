@@ -1,8 +1,7 @@
 "use client"
 
-import * as React from "react"
 import { cn } from "@/examples/ark/lib/utils"
-import { ark } from "@ark-ui/react/factory"
+import { ark, type HTMLArkProps } from "@ark-ui/react/factory"
 import { cva, type VariantProps } from "class-variance-authority"
 
 const buttonVariants = cva(
@@ -46,16 +45,10 @@ function Button({
   className,
   variant = "default",
   size = "default",
-  asChild = false,
   ...props
-}: React.ComponentProps<typeof ark.button> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-  }) {
-  const Comp = asChild ? ark.span : ark.button
-
+}: HTMLArkProps<"button"> & VariantProps<typeof buttonVariants>) {
   return (
-    <Comp
+    <ark.button
       data-slot="button"
       data-variant={variant}
       data-size={size}
