@@ -399,11 +399,11 @@ export const columns = columnHelper.columns([
 
       return (
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
+          <DropdownMenuTrigger
+            render={<Button variant="ghost" className="h-8 w-8 p-0" />}
+          >
+            <span className="sr-only">Open menu</span>
+            <MoreHorizontal className="h-4 w-4" />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
@@ -703,10 +703,8 @@ export function DataTable<TData extends RowData>({
           className="max-w-sm"
         />
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns
-            </Button>
+          <DropdownMenuTrigger render={<Button variant="outline" className="ml-auto" />}>
+            Columns
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {table
