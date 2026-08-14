@@ -10370,15 +10370,15 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    sonner: {
-      name: "sonner",
+    toast: {
+      name: "toast",
       title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
         {
-          path: "styles/ark-nova/ui/sonner.tsx",
+          path: "styles/ark-nova/ui/toast.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -22360,15 +22360,15 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    sonner: {
-      name: "sonner",
+    toast: {
+      name: "toast",
       title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
         {
-          path: "styles/ark-vega/ui/sonner.tsx",
+          path: "styles/ark-vega/ui/toast.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -23368,15 +23368,15 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    sonner: {
-      name: "sonner",
+    toast: {
+      name: "toast",
       title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
         {
-          path: "styles/ark-maia/ui/sonner.tsx",
+          path: "styles/ark-maia/ui/toast.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -24376,15 +24376,15 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    sonner: {
-      name: "sonner",
+    toast: {
+      name: "toast",
       title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
         {
-          path: "styles/ark-lyra/ui/sonner.tsx",
+          path: "styles/ark-lyra/ui/toast.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -25384,15 +25384,15 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    sonner: {
-      name: "sonner",
+    toast: {
+      name: "toast",
       title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
         {
-          path: "styles/ark-mira/ui/sonner.tsx",
+          path: "styles/ark-mira/ui/toast.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -26392,15 +26392,15 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    sonner: {
-      name: "sonner",
+    toast: {
+      name: "toast",
       title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
         {
-          path: "styles/ark-luma/ui/sonner.tsx",
+          path: "styles/ark-luma/ui/toast.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -27400,15 +27400,15 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    sonner: {
-      name: "sonner",
+    toast: {
+      name: "toast",
       title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
         {
-          path: "styles/ark-sera/ui/sonner.tsx",
+          path: "styles/ark-sera/ui/toast.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -28408,15 +28408,15 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    sonner: {
-      name: "sonner",
+    toast: {
+      name: "toast",
       title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
         {
-          path: "styles/ark-rhea/ui/sonner.tsx",
+          path: "styles/ark-rhea/ui/toast.tsx",
           type: "registry:ui",
           target: "",
         },

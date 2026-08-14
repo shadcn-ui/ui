@@ -350,12 +350,12 @@ export const Components: Record<string, any> = {
       ) || "slider"
     return { default: mod.default || mod[exportName] }
   }),
-  sonner: React.lazy(async () => {
-    const mod = await import("@/styles/ark-luma/ui/sonner")
+  toast: React.lazy(async () => {
+    const mod = await import("@/styles/ark-luma/ui/toast")
     const exportName =
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
-      ) || "sonner"
+      ) || "toast"
     return { default: mod.default || mod[exportName] }
   }),
   spinner: React.lazy(async () => {

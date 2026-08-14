@@ -4425,15 +4425,15 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    sonner: {
-      name: "sonner",
+    toast: {
+      name: "toast",
       title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/ark/ui/sonner.tsx",
+          path: "registry/bases/ark/ui/toast.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -5670,15 +5670,15 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "sonner-example": {
-      name: "sonner-example",
-      title: "Sonner",
+    "toast-example": {
+      name: "toast-example",
+      title: "Toast",
       description: "",
       type: "registry:example",
-      registryDependencies: ["sonner", "example"],
+      registryDependencies: ["toast", "example"],
       files: [
         {
-          path: "registry/bases/ark/examples/sonner-example.tsx",
+          path: "registry/bases/ark/examples/toast-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -5958,7 +5958,7 @@ export const Index: Record<string, Record<string, any>> = {
         "dialog",
         "example",
         "questionnaire",
-        "sonner",
+        "toast",
       ],
       files: [
         {
@@ -6381,7 +6381,7 @@ export const Index: Record<string, Record<string, any>> = {
         "input",
         "avatar",
         "sheet",
-        "sonner",
+        "toast",
       ],
       files: [
         {
