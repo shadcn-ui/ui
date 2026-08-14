@@ -66,7 +66,6 @@ function Toaster() {
           </div>
           <Toast.CloseTrigger className="shrink-0 rounded-md p-0.5 text-muted-foreground opacity-70 transition-opacity hover:text-foreground hover:opacity-100">
             <XIcon className="size-4" aria-hidden="true" />
-            <span className="sr-only">Close</span>
           </Toast.CloseTrigger>
         </Toast.Root>
       )}

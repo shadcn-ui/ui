@@ -118,7 +118,6 @@ function Toaster() {
               aria-hidden="true"
               className="size-4"
             />
-            <span className="sr-only">Close</span>
           </Toast.CloseTrigger>
         </Toast.Root>
       )}
