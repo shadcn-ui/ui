@@ -11,7 +11,7 @@ export default defineConfig({
         rehypePrettyCode,
         {
           theme: {
-            dark: "github-dark",
+            dark: "vesper",
             light: "github-light-default",
           },
           transformers,

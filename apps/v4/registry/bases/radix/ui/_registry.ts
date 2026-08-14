@@ -1020,4 +1020,76 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       },
     },
   },
+  {
+    name: "attachment",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/attachment.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "bubble",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/bubble.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "message-scroller",
+    type: "registry:ui",
+    dependencies: ["@shadcn/react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/message-scroller.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "questionnaire",
+    type: "registry:ui",
+    dependencies: ["@shadcn/react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/questionnaire.tsx",
+        type: "registry:ui",
+      },
+    ],
+    meta: {
+      links: {
+        docs: "https://ui.shadcn.com/docs/components/radix/questionnaire",
+        examples:
+          "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/questionnaire-example.tsx",
+      },
+    },
+  },
+  {
+    name: "marker",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/marker.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "message",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/message.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

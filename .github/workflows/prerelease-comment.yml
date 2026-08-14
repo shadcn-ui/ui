@@ -16,50 +16,64 @@ jobs:
     runs-on: ubuntu-latest
     name: Write comment to the PR
     steps:
-      - name: "Comment on PR"
+      # Stable pushes and no-changeset runs upload no artifact, so a missing
+      # download is expected — gate the rest of the job on it succeeding.
+      - name: Download prerelease info
+        id: download
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: prerelease-info
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build comment
+        id: info
+        if: steps.download.outcome == 'success'
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              run_id: context.payload.workflow_run.id,
-            });
+            const fs = require("fs");
+            const info = JSON.parse(fs.readFileSync("prerelease-info.json", "utf8"));
 
-            for (const artifact of allArtifacts.data.artifacts) {
-              // Extract the PR number and package version from the artifact name
-              const match = /^npm-package-shadcn@(.*?)-pr-(\d+)/.exec(artifact.name);
-
-              if (match) {
-                const version = match[1];
-                const channel = version.includes("-rc.") ? "rc" : "beta";
-                require("fs").appendFileSync(
-                  process.env.GITHUB_ENV,
-                  `\nPRERELEASE_PACKAGE_VERSION=${version}` +
-                  `\nPRERELEASE_CHANNEL=${channel}` +
-                  `\nPRERELEASE_LABEL=release: ${channel}` +
-                  `\nWORKFLOW_RUN_PR=${match[2]}` +
-                  `\nWORKFLOW_RUN_ID=${context.payload.workflow_run.id}`
-                );
-                break;
-              }
+            if (!info.packages || info.packages.length === 0) {
+              core.info("No prerelease packages to comment.");
+              return;
             }
 
-      - name: "Comment on PR with Link"
+            const installs = info.packages
+              .map((p) => `pnpm dlx ${p.name}@${p.version}`)
+              .join("\n");
+            const links = info.packages
+              .map(
+                (p) =>
+                  `- [${p.name}@${p.version}](https://www.npmjs.com/package/${p.name}/v/${p.version})`
+              )
+              .join("\n");
+
+            const body = [
+              `A new ${info.channel} prerelease is available for testing:`,
+              "",
+              "```sh",
+              installs,
+              "```",
+              "",
+              links,
+            ].join("\n");
+
+            core.setOutput("pr", info.pr);
+            core.setOutput("channel", info.channel);
+            core.setOutput("body", body);
+
+      - name: Comment on PR
+        if: steps.info.outputs.body
         uses: marocchino/sticky-pull-request-comment@v2
         with:
-          number: ${{ env.WORKFLOW_RUN_PR }}
-          message: |
-            A new ${{ env.PRERELEASE_CHANNEL }} prerelease is available for testing:
+          number: ${{ steps.info.outputs.pr }}
+          message: ${{ steps.info.outputs.body }}
 
-            ```sh
-            pnpm dlx shadcn@${{ env.PRERELEASE_PACKAGE_VERSION }}
-            ```
-
-            View on npm: https://www.npmjs.com/package/shadcn/v/${{ env.PRERELEASE_PACKAGE_VERSION }}
-
-      - name: "Remove the prerelease label once published"
+      - name: Remove the prerelease label once published
+        if: steps.info.outputs.pr
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -68,8 +82,8 @@ jobs:
               await github.rest.issues.removeLabel({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                issue_number: '${{ env.WORKFLOW_RUN_PR }}',
-                name: '${{ env.PRERELEASE_LABEL }}',
+                issue_number: Number("${{ steps.info.outputs.pr }}"),
+                name: `release: ${{ steps.info.outputs.channel }}`,
               });
             } catch (error) {
               if (error.status !== 404) {
