@@ -31,8 +31,7 @@ export type UpdaterTailwindConfig = Omit<TailwindConfig, "plugins"> & {
 
 export async function updateTailwindConfig(
   tailwindConfig:
-    | z.infer<typeof registryItemTailwindSchema>["config"]
-    | undefined,
+    z.infer<typeof registryItemTailwindSchema>["config"] | undefined,
   config: Config,
   options: {
     silent?: boolean

@@ -5,11 +5,7 @@ import Script from "next/script"
 export const TYPESET_COMMAND_MESSAGE = "typeset-command"
 
 export type TypesetCommand =
-  | "shuffle"
-  | "reset"
-  | "undo"
-  | "redo"
-  | "toggle-theme"
+  "shuffle" | "reset" | "undo" | "redo" | "toggle-theme"
 
 export function RandomizeScript() {
   return (

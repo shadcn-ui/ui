@@ -722,8 +722,7 @@ describe("add command", () => {
               (options) =>
                 !Array.isArray(options) && options.name === "components"
             ) as
-            | { choices?: Array<{ value: string }>; name?: string }
-            | undefined
+            { choices?: Array<{ value: string }>; name?: string } | undefined
           const choices = (componentPrompt?.choices ?? []).map(
             (choice) => choice.value
           )

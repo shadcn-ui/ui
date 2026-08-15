@@ -23,8 +23,9 @@ import {
 
 import { type Preset } from "../data/presets"
 
-interface PresetSelectorProps
-  extends React.ComponentProps<typeof PopoverPrimitive.Root> {
+interface PresetSelectorProps extends React.ComponentProps<
+  typeof PopoverPrimitive.Root
+> {
   presets: Preset[]
 }
 
