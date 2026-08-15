@@ -274,6 +274,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='var(--foreground)'><rect x='5' y='5' width='14' height='14'/></svg>"
   },
   {
+    "name": "@brut-ui",
+    "homepage": "https://www.brut-ui.site",
+    "url": "https://www.brut-ui.site/r/{name}.json",
+    "description": "Production-minded neo-brutalist shadcn components with three configurable flavours, strengths, and radius modes.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='7' y='7' width='22' height='22' fill='var(--foreground)'/><rect x='3' y='3' width='22' height='22' fill='#efd34b' stroke='var(--foreground)' stroke-width='2'/><text x='14' y='20' text-anchor='middle' font-family='Arial, sans-serif' font-size='14' font-weight='900' fill='var(--foreground)'>B</text></svg>"
+  },
+  {
     "name": "@bundui",
     "homepage": "https://bundui.io",
     "url": "https://bundui.io/r/{name}.json",
