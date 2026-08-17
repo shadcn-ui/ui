@@ -1845,8 +1845,8 @@
   },
   {
     "name": "@velobits",
-    "homepage": "https://velobits-ui.vercel.app",
-    "url": "https://velobits-ui.vercel.app/r/{name}.json",
+    "homepage": "https://ui.velobits.dev",
+    "url": "https://ui.velobits.dev/r/{name}.json",
     "description": "An open source collection of accessible, contrast-gated React components on a warm neutral palette and a two-tier glass material — the VeloBits design system, authored once and shipped both as an npm package and as this registry.",
     "logo": "<svg version='1.2' viewBox='0 0 720 720' xmlns='http://www.w3.org/2000/svg'><style>.s0 { fill: #c8f135 }</style><g fill-rule='evenodd'><path class='s0' d='m189.22 142.82h428.32l60.17 108.55-68.43 114.45 66.07 115.64-57.81 107.37h-304.43l34.22-57.81h234.81l28.32-53.1-66.08-112.1 64.9-114.45-25.96-51.92-207.67 1.18-83.78 139.24z'/><path class='s0' d='m24.03 144h138.05l27.14 54.27-63.72 3.54 158.11 269.03 123.9-215.93 68.43-1.18-192.33 333.92z'/></g></svg>"
   },
