@@ -114,6 +114,7 @@ function TabsWithIcons() {
               hugeicons="CursorInWindowIcon"
               phosphor="AppWindowIcon"
               remixicon="RiWindowLine"
+              fontawesome="faWindowMaximize"
             />
             Preview
           </TabsTrigger>
@@ -124,6 +125,7 @@ function TabsWithIcons() {
               hugeicons="CodeIcon"
               phosphor="CodeIcon"
               remixicon="RiCodeLine"
+              fontawesome="faCode"
             />
             Code
           </TabsTrigger>
@@ -145,6 +147,7 @@ function TabsIconOnly() {
               hugeicons="HomeIcon"
               phosphor="HouseIcon"
               remixicon="RiHomeLine"
+              fontawesome="faHouse"
             />
           </TabsTrigger>
           <TabsTrigger value="search">
@@ -154,6 +157,7 @@ function TabsIconOnly() {
               hugeicons="SearchIcon"
               phosphor="MagnifyingGlassIcon"
               remixicon="RiSearchLine"
+              fontawesome="faMagnifyingGlass"
             />
           </TabsTrigger>
           <TabsTrigger value="settings">
@@ -163,6 +167,7 @@ function TabsIconOnly() {
               hugeicons="SettingsIcon"
               phosphor="GearIcon"
               remixicon="RiSettingsLine"
+              fontawesome="faGear"
             />
           </TabsTrigger>
         </TabsList>
@@ -272,6 +277,7 @@ function TabsWithDropdown() {
                 hugeicons="MoreHorizontalCircle01Icon"
                 phosphor="DotsThreeOutlineIcon"
                 remixicon="RiMoreLine"
+                fontawesome="faEllipsis"
               />
               <span className="sr-only">More options</span>
             </DropdownMenuTrigger>

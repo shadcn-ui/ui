@@ -76,6 +76,7 @@ export function ActivateAgentDialog() {
                   hugeicons="CheckmarkCircle02Icon"
                   phosphor="CheckCircleIcon"
                   remixicon="RiCheckboxCircleLine"
+                  fontawesome="faCircleCheck"
                   className="size-5 fill-primary text-primary-foreground"
                 />
               </ItemMedia>

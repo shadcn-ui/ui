@@ -62,6 +62,7 @@ export function NavMain({
                     hugeicons="ArrowRight01Icon"
                     phosphor="CaretRightIcon"
                     remixicon="RiArrowRightSLine"
+                    fontawesome="faChevronRight"
                   />
                   <span className="sr-only">Toggle</span>
                 </CollapsibleTrigger>

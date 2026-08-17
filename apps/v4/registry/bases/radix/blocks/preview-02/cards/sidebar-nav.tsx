@@ -34,6 +34,7 @@ export function SidebarNav() {
                           hugeicons="DashboardSquare01Icon"
                           phosphor="SquaresFourIcon"
                           remixicon="RiDashboardLine"
+                          fontawesome="faTableCells"
                         />
                         Dashboard
                       </SidebarMenuButton>
@@ -46,6 +47,7 @@ export function SidebarNav() {
                           hugeicons="ArrowDataTransferHorizontalIcon"
                           phosphor="ArrowsLeftRightIcon"
                           remixicon="RiArrowLeftRightLine"
+                          fontawesome="faRightLeft"
                         />
                         Transactions
                       </SidebarMenuButton>
@@ -58,6 +60,7 @@ export function SidebarNav() {
                           hugeicons="AnalyticsUpIcon"
                           phosphor="TrendUpIcon"
                           remixicon="RiLineChartLine"
+                          fontawesome="faArrowTrendUp"
                         />
                         Investments
                       </SidebarMenuButton>
@@ -70,6 +73,7 @@ export function SidebarNav() {
                           hugeicons="BankIcon"
                           phosphor="BankIcon"
                           remixicon="RiBankLine"
+                          fontawesome="faBuilding"
                         />
                         Accounts
                       </SidebarMenuButton>
@@ -82,6 +86,7 @@ export function SidebarNav() {
                           hugeicons="PieChartIcon"
                           phosphor="ChartPieIcon"
                           remixicon="RiPieChartLine"
+                          fontawesome="faChartPie"
                         />
                         Spending
                       </SidebarMenuButton>
@@ -102,6 +107,7 @@ export function SidebarNav() {
                           hugeicons="Target02Icon"
                           phosphor="TargetIcon"
                           remixicon="RiFocus3Line"
+                          fontawesome="faBullseye"
                         />
                         Goals
                       </SidebarMenuButton>
@@ -114,6 +120,7 @@ export function SidebarNav() {
                           hugeicons="Wallet01Icon"
                           phosphor="WalletIcon"
                           remixicon="RiWalletLine"
+                          fontawesome="faWallet"
                         />
                         Budget
                       </SidebarMenuButton>
@@ -126,6 +133,7 @@ export function SidebarNav() {
                           hugeicons="ChartBarLineIcon"
                           phosphor="ChartBarIcon"
                           remixicon="RiBarChartLine"
+                          fontawesome="faChartColumn"
                         />
                         Reports
                       </SidebarMenuButton>
@@ -138,6 +146,7 @@ export function SidebarNav() {
                           hugeicons="File02Icon"
                           phosphor="FileTextIcon"
                           remixicon="RiFileTextLine"
+                          fontawesome="faFileLines"
                         />
                         Documents
                       </SidebarMenuButton>
@@ -165,6 +174,7 @@ export function SidebarNav() {
                           hugeicons="UserIcon"
                           phosphor="UserIcon"
                           remixicon="RiUserLine"
+                          fontawesome="faUser"
                         />
                         Profile
                       </SidebarMenuButton>
@@ -177,6 +187,7 @@ export function SidebarNav() {
                           hugeicons="CreditCardIcon"
                           phosphor="CreditCardIcon"
                           remixicon="RiBankCardLine"
+                          fontawesome="faCreditCard"
                         />
                         Billing
                       </SidebarMenuButton>
@@ -189,6 +200,7 @@ export function SidebarNav() {
                           hugeicons="Notification03Icon"
                           phosphor="BellIcon"
                           remixicon="RiBellLine"
+                          fontawesome="faBell"
                         />
                         Notifications
                       </SidebarMenuButton>
@@ -201,6 +213,7 @@ export function SidebarNav() {
                           hugeicons="ShieldIcon"
                           phosphor="ShieldIcon"
                           remixicon="RiShieldLine"
+                          fontawesome="faShield"
                         />
                         Security
                       </SidebarMenuButton>
@@ -213,6 +226,7 @@ export function SidebarNav() {
                           hugeicons="PaintBoardIcon"
                           phosphor="PaletteIcon"
                           remixicon="RiPaletteLine"
+                          fontawesome="faPaintbrush"
                         />
                         Appearance
                       </SidebarMenuButton>
@@ -233,6 +247,7 @@ export function SidebarNav() {
                           hugeicons="HelpCircleIcon"
                           phosphor="QuestionIcon"
                           remixicon="RiQuestionLine"
+                          fontawesome="faCircleQuestion"
                         />
                         Help Center
                       </SidebarMenuButton>
@@ -245,6 +260,7 @@ export function SidebarNav() {
                           hugeicons="Message01Icon"
                           phosphor="ChatIcon"
                           remixicon="RiChat1Line"
+                          fontawesome="faComment"
                         />
                         Contact Us
                       </SidebarMenuButton>
@@ -257,6 +273,7 @@ export function SidebarNav() {
                           hugeicons="BookOpen02Icon"
                           phosphor="BookOpenIcon"
                           remixicon="RiBookOpenLine"
+                          fontawesome="faBookOpen"
                         />
                         Documentation
                       </SidebarMenuButton>
@@ -269,6 +286,7 @@ export function SidebarNav() {
                           hugeicons="ActivityIcon"
                           phosphor="ActivityIcon"
                           remixicon="RiPulseLine"
+                          fontawesome="faHeartPulse"
                         />
                         Status
                       </SidebarMenuButton>

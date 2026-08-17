@@ -79,6 +79,7 @@ export function CodespacesCard() {
                         hugeicons="PlusSignIcon"
                         phosphor="PlusIcon"
                         remixicon="RiAddLine"
+                        fontawesome="faPlus"
                       />
                     </Button>
                   </TooltipTrigger>
@@ -95,6 +96,7 @@ export function CodespacesCard() {
                         hugeicons="MoreHorizontalCircle01Icon"
                         phosphor="DotsThreeOutlineIcon"
                         remixicon="RiMoreLine"
+                        fontawesome="faEllipsis"
                       />
                     </Button>
                   </DropdownMenuTrigger>
@@ -107,6 +109,7 @@ export function CodespacesCard() {
                           hugeicons="PlusSignIcon"
                           phosphor="PlusIcon"
                           remixicon="RiAddLine"
+                          fontawesome="faPlus"
                         />
                         New with options...
                       </DropdownMenuItem>
@@ -117,6 +120,7 @@ export function CodespacesCard() {
                           hugeicons="CubeIcon"
                           phosphor="CubeIcon"
                           remixicon="RiBox1Line"
+                          fontawesome="faBox"
                         />
                         Configure container
                       </DropdownMenuItem>
@@ -127,6 +131,7 @@ export function CodespacesCard() {
                           hugeicons="ZapIcon"
                           phosphor="LightningIcon"
                           remixicon="RiFlashlightLine"
+                          fontawesome="faBolt"
                         />
                         Set up prebuilds
                       </DropdownMenuItem>
@@ -140,6 +145,7 @@ export function CodespacesCard() {
                           hugeicons="ServerStackIcon"
                           phosphor="HardDrivesIcon"
                           remixicon="RiHardDriveLine"
+                          fontawesome="faServer"
                         />
                         Manage codespaces
                       </DropdownMenuItem>
@@ -150,6 +156,7 @@ export function CodespacesCard() {
                           hugeicons="Share03Icon"
                           phosphor="ShareIcon"
                           remixicon="RiShareLine"
+                          fontawesome="faShareNodes"
                         />
                         Share deep link
                       </DropdownMenuItem>
@@ -160,6 +167,7 @@ export function CodespacesCard() {
                           hugeicons="AlertCircleIcon"
                           phosphor="InfoIcon"
                           remixicon="RiInformationLine"
+                          fontawesome="faCircleInfo"
                         />
                         What are codespaces?
                       </DropdownMenuItem>
@@ -178,6 +186,7 @@ export function CodespacesCard() {
                     hugeicons="ServerStackIcon"
                     phosphor="HardDrivesIcon"
                     remixicon="RiHardDriveLine"
+                    fontawesome="faServer"
                   />
                 </EmptyMedia>
                 <EmptyTitle>No codespaces</EmptyTitle>
@@ -228,6 +237,7 @@ export function CodespacesCard() {
                     hugeicons="ComputerTerminal01Icon"
                     phosphor="TerminalIcon"
                     remixicon="RiTerminalBoxLine"
+                    fontawesome="faTerminal"
                     className="size-4"
                   />
                   Clone
@@ -243,6 +253,7 @@ export function CodespacesCard() {
                         hugeicons="AlertCircleIcon"
                         phosphor="InfoIcon"
                         remixicon="RiInformationLine"
+                        fontawesome="faCircleInfo"
                       />
                     </Button>
                   </TooltipTrigger>
@@ -276,6 +287,7 @@ export function CodespacesCard() {
                             hugeicons="Copy01Icon"
                             phosphor="CopyIcon"
                             remixicon="RiFileCopyLine"
+                            fontawesome="faCopy"
                           />
                         </InputGroupButton>
                       </InputGroupAddon>
@@ -304,6 +316,7 @@ export function CodespacesCard() {
                             hugeicons="Copy01Icon"
                             phosphor="CopyIcon"
                             remixicon="RiFileCopyLine"
+                            fontawesome="faCopy"
                           />
                         </InputGroupButton>
                       </InputGroupAddon>
@@ -332,6 +345,7 @@ export function CodespacesCard() {
                             hugeicons="Copy01Icon"
                             phosphor="CopyIcon"
                             remixicon="RiFileCopyLine"
+                            fontawesome="faCopy"
                           />
                         </InputGroupButton>
                       </InputGroupAddon>
@@ -362,6 +376,7 @@ export function CodespacesCard() {
                   hugeicons="ComputerIcon"
                   phosphor="MonitorIcon"
                   remixicon="RiComputerLine"
+                  fontawesome="faDesktop"
                   data-icon="inline-start"
                 />
                 Open with GitHub Desktop
@@ -377,6 +392,7 @@ export function CodespacesCard() {
                   hugeicons="DownloadIcon"
                   phosphor="DownloadIcon"
                   remixicon="RiDownloadLine"
+                  fontawesome="faDownload"
                   data-icon="inline-start"
                 />
                 Download ZIP

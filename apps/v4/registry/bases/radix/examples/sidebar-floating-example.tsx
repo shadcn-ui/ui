@@ -207,6 +207,7 @@ export default function SidebarFloatingExample() {
                           hugeicons="MoreHorizontalCircle01Icon"
                           phosphor="DotsThreeOutlineIcon"
                           remixicon="RiMoreLine"
+                          fontawesome="faEllipsis"
                           className="ml-auto"
                         />
                       </SidebarMenuButton>

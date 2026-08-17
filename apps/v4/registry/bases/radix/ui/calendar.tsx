@@ -153,6 +153,7 @@ function Calendar({
                 hugeicons="ArrowLeftIcon"
                 phosphor="CaretLeftIcon"
                 remixicon="RiArrowLeftSLine"
+                fontawesome="faChevronLeft"
                 className={cn("cn-rtl-flip size-4", className)}
                 {...props}
               />
@@ -167,6 +168,7 @@ function Calendar({
                 hugeicons="ArrowRightIcon"
                 phosphor="CaretRightIcon"
                 remixicon="RiArrowRightSLine"
+                fontawesome="faChevronRight"
                 className={cn("cn-rtl-flip size-4", className)}
                 {...props}
               />
@@ -180,6 +182,7 @@ function Calendar({
               hugeicons="ArrowDownIcon"
               phosphor="CaretDownIcon"
               remixicon="RiArrowDownSLine"
+              fontawesome="faChevronDown"
               className={cn("size-4", className)}
               {...props}
             />

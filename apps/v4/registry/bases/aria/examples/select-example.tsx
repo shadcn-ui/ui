@@ -141,6 +141,7 @@ function SelectWithIcons() {
             hugeicons="Chart03Icon"
             phosphor="ChartLineIcon"
             remixicon="RiLineChartLine"
+            fontawesome="faChartLine"
           />
           Line
         </>
@@ -156,6 +157,7 @@ function SelectWithIcons() {
             hugeicons="Chart03Icon"
             phosphor="ChartBarIcon"
             remixicon="RiBarChartLine"
+            fontawesome="faChartBar"
           />
           Bar
         </>
@@ -171,6 +173,7 @@ function SelectWithIcons() {
             hugeicons="Chart03Icon"
             phosphor="ChartPieIcon"
             remixicon="RiPieChartLine"
+            fontawesome="faChartPie"
           />
           Pie
         </>
@@ -193,6 +196,7 @@ function SelectWithIcons() {
                       hugeicons="Chart03Icon"
                       phosphor="ChartLineIcon"
                       remixicon="RiLineChartLine"
+                      fontawesome="faChartLine"
                     />
                     Chart Type
                   </>
@@ -224,6 +228,7 @@ function SelectWithIcons() {
                       hugeicons="Chart03Icon"
                       phosphor="ChartLineIcon"
                       remixicon="RiLineChartLine"
+                      fontawesome="faChartLine"
                     />
                     Chart Type
                   </>

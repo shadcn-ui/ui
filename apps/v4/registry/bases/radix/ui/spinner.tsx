@@ -9,6 +9,7 @@ function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
       hugeicons="Loading03Icon"
       phosphor="SpinnerIcon"
       remixicon="RiLoaderLine"
+      fontawesome="faSpinner"
       data-slot="spinner"
       role="status"
       aria-label="Loading"
