@@ -116,6 +116,7 @@ export async function migrateRadix(
         cwd: basePath,
         onlyFiles: true,
         ignore: ["**/node_modules/**"],
+        suppressErrors: true,
       })
     } else {
       const fullPath = path.resolve(basePath, options.path)
@@ -131,6 +132,7 @@ export async function migrateRadix(
           cwd: basePath,
           onlyFiles: true,
           ignore: ["**/node_modules/**"],
+          suppressErrors: true,
         })
       } else if (stat.isFile()) {
         files = [options.path]
@@ -154,6 +156,7 @@ export async function migrateRadix(
     files = await fg("**/*.{js,ts,jsx,tsx}", {
       cwd: basePath,
       onlyFiles: true,
+      suppressErrors: true,
     })
   }
 
