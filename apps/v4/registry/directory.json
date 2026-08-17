@@ -547,6 +547,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='var(--foreground)'><rect width='32' height='32' rx='4'/></svg>"
   },
   {
+    "name": "@flagcn",
+    "homepage": "https://flagcn.dev",
+    "url": "https://flagcn.dev/r/{name}.json",
+    "description": "Accessible, source-owned flag components for shadcn/ui with 306 flags in SVG, PNG, WebP, and JPEG plus 4:3, 1:1, and original ratios.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='black'/><g transform='translate(7.36 7.36) scale(.77)'><rect x='13' y='7' width='6' height='50' rx='3' fill='white'/><path d='M19 15c8-2 14-4 22-2 7 2 10 5 17 3v23c-7 3-12 0-18-2-8-3-13-1-21 1V15Z' fill='white'/></g></svg>"
+  },
+  {
     "name": "@flightcn",
     "homepage": "https://flightcn.yencheng.dev",
     "url": "https://flightcn.yencheng.dev/r/{name}.json",
