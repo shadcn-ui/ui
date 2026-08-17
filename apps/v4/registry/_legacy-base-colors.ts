@@ -808,7 +808,7 @@ export const baseColorsV4 = {
       "accent-foreground": "oklch(0.985 0.001 106.423)", // --color-stone-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-500
       border: "oklch(1 0 0 / 10%)", // --color-white
-      input: "oklch(1 0 0 / 15%)", // --color-white
+      input: "oklch(1 0 0 / 10%)", // --color-white
       ring: "oklch(0.553 0.013 58.071)", // --color-stone-500
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
@@ -877,7 +877,7 @@ export const baseColorsV4 = {
       "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400
       border: "oklch(1 0 0 / 10%)", // --color-white
-      input: "oklch(1 0 0 / 15%)", // --color-white
+      input: "oklch(1 0 0 / 10%)", // --color-white
       ring: "oklch(0.552 0.016 285.938)", // --color-zinc-500
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
@@ -946,7 +946,7 @@ export const baseColorsV4 = {
       "accent-foreground": "oklch(0.985 0 0)", // --color-neutral-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400
       border: "oklch(1 0 0 / 10%)", // --color-white
-      input: "oklch(1 0 0 / 15%)", // --color-white
+      input: "oklch(1 0 0 / 10%)", // --color-white
       ring: "oklch(0.556 0 0)", // --color-neutral-500
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
@@ -1015,7 +1015,7 @@ export const baseColorsV4 = {
       "accent-foreground": "oklch(0.985 0.002 247.839)", // --color-gray-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400
       border: "oklch(1 0 0 / 10%)", // --color-white
-      input: "oklch(1 0 0 / 15%)", // --color-white
+      input: "oklch(1 0 0 / 10%)", // --color-white
       ring: "oklch(0.551 0.027 264.364)", // --color-gray-500
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
@@ -1084,7 +1084,7 @@ export const baseColorsV4 = {
       "accent-foreground": "oklch(0.984 0.003 247.858)", // --color-slate-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400
       border: "oklch(1 0 0 / 10%)", // --color-white
-      input: "oklch(1 0 0 / 15%)", // --color-white
+      input: "oklch(1 0 0 / 10%)", // --color-white
       ring: "oklch(0.551 0.027 264.364)", // --color-slate-500
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
@@ -1156,7 +1156,7 @@ export const baseColorsOKLCH = {
       "accent-foreground": "oklch(0.985 0 0)", // --color-neutral-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400
       border: "oklch(1 0 0 / 10%)", // --color-white
-      input: "oklch(1 0 0 / 15%)", // --color-white
+      input: "oklch(1 0 0 / 10%)", // --color-white
       ring: "oklch(0.556 0 0)", // --color-neutral-500
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
@@ -1225,7 +1225,7 @@ export const baseColorsOKLCH = {
       "accent-foreground": "oklch(0.985 0 0)", // --color-neutral-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400
       border: "oklch(1 0 0 / 10%)", // --color-white
-      input: "oklch(1 0 0 / 15%)", // --color-white
+      input: "oklch(1 0 0 / 10%)", // --color-white
       ring: "oklch(0.556 0 0)", // --color-neutral-500
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
@@ -1293,7 +1293,7 @@ export const baseColorsOKLCH = {
       "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400
       border: "oklch(1 0 0 / 10%)", // --color-white
-      input: "oklch(1 0 0 / 15%)", // --color-white
+      input: "oklch(1 0 0 / 10%)", // --color-white
       ring: "oklch(0.552 0.016 285.938)", // --color-zinc-500
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
@@ -1361,7 +1361,7 @@ export const baseColorsOKLCH = {
       "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
       border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
-      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
       ring: "oklch(0.396 0.141 25.723)", // --color-red-900
       "chart-1": "oklch(0.808 0.114 19.571)", // --color-red-300
       "chart-2": "oklch(0.637 0.237 25.331)", // --color-red-500
@@ -1429,7 +1429,7 @@ export const baseColorsOKLCH = {
       "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
       border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
-      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
       ring: "oklch(0.41 0.159 10.272)", // --color-rose-900
       "chart-1": "oklch(0.81 0.117 11.638)", // --color-rose-300
       "chart-2": "oklch(0.645 0.246 16.439)", // --color-rose-500
@@ -1497,7 +1497,7 @@ export const baseColorsOKLCH = {
       "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
       border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
-      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
       ring: "oklch(0.408 0.123 38.172)", // --color-orange-900
       "chart-1": "oklch(0.837 0.128 66.29)", // --color-orange-300
       "chart-2": "oklch(0.705 0.213 47.604)", // --color-orange-500
@@ -1565,7 +1565,7 @@ export const baseColorsOKLCH = {
       "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
       border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
-      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
       ring: "oklch(0.405 0.101 131.063)", // --color-lime-900
       "chart-1": "oklch(0.871 0.15 154.449)", // --color-green-300
       "chart-2": "oklch(0.723 0.219 149.579)", // --color-green-500
@@ -1633,7 +1633,7 @@ export const baseColorsOKLCH = {
       "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
       border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
-      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
       ring: "oklch(0.556 0 0)", // default ring (dark)
       "chart-1": "oklch(0.809 0.105 251.813)", // --color-blue-300
       "chart-2": "oklch(0.623 0.214 259.815)", // --color-blue-500
@@ -1701,7 +1701,7 @@ export const baseColorsOKLCH = {
       "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
       border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
-      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
       ring: "oklch(0.421 0.095 57.708)", // --color-yellow-900
       "chart-1": "oklch(0.905 0.182 98.111)", // --color-yellow-300
       "chart-2": "oklch(0.795 0.184 86.047)", // --color-yellow-500
@@ -1769,7 +1769,7 @@ export const baseColorsOKLCH = {
       "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
       border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
-      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
       ring: "oklch(0.38 0.189 293.745)", // --color-violet-900
       "chart-1": "oklch(0.811 0.111 293.571)", // --color-violet-300
       "chart-2": "oklch(0.606 0.25 292.717)", // --color-violet-500
