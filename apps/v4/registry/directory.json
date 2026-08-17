@@ -57,8 +57,8 @@
   },
   {
     "name": "@aevr",
-    "homepage": "https://ui.aevr.space",
-    "url": "https://ui.aevr.space/r/{name}.json",
+    "homepage": "https://ui.aevr.online",
+    "url": "https://ui.aevr.online/r/{name}.json",
     "description": "A small collection of focused, production‑ready components and primitives for React/Next.js projects—built on shadcn/ui and complementary libraries.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='115' height='105' viewBox='0 0 115 105' fill='none'><path d='M111.78 48.3601C117.803 51.2224 113.769 60.4081 105.635 62.3522L72.9714 70.1593C70.4141 70.7705 67.9525 72.2666 66.2322 74.255L44.2597 99.6532C38.7881 105.978 28.7766 105.329 29.0097 98.6642L29.9457 71.9017C30.019 69.8064 28.9714 68.0828 27.0779 67.1829L2.89121 55.6888C-3.13172 52.8266 0.902578 43.6409 9.03642 41.6967L41.7 33.8896C44.2572 33.2784 46.7189 31.7823 48.4391 29.7939L70.4117 4.3957C75.8832 -1.92893 85.8948 -1.27963 85.6617 5.38474L84.7256 32.1472C84.6524 34.2425 85.6999 35.9662 87.5935 36.866L111.78 48.3601Z' fill='var(--foreground)'/></svg>"
   },
@@ -94,8 +94,8 @@
     "name": "@aicanvas",
     "homepage": "https://aicanvas.me",
     "url": "https://aicanvas.me/r/{name}.json",
-    "description": "54 animated React components with AI reproduction prompts for Claude Code, Lovable, and v0. Free and open source.",
-    "logo": "<svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M19.8513 0C20.5626 0 21.2204 0.377823 21.5788 0.992258L22.75 3L26.8243 9.98452C27.5508 11.23 27.5508 12.77 26.8243 14.0155L22.75 21L21.5788 23.0077C21.2204 23.6222 20.5626 24 19.8513 24H8.14874C7.43741 24 6.7796 23.6222 6.42118 23.0077L0.587849 13.0077C0.224593 12.385 0.224593 11.615 0.58785 10.9923L6.42118 0.992257C6.7796 0.377822 7.43741 0 8.14874 0H19.8513ZM4 12L9 21H18.25L13 12L18.25 3H9L4 12Z\" fill=\"url(#paint0_linear_185_248)\"/><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M9 21L4 12H13L18.25 21H9Z\" fill=\"#1E1E1E\"/><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M13 12H4L9 3H18.25L13 12Z\" fill=\"#4F4F4C\"/><defs><linearGradient id=\"paint0_linear_185_248\" x1=\"9\" y1=\"3\" x2=\"24.8756\" y2=\"17\" gradientUnits=\"userSpaceOnUse\"><stop stop-color=\"#666662\"/><stop offset=\"1\" stop-color=\"#4F4F4C\"/></linearGradient></defs></svg>"
+    "description": "Animated React components with AI reproduction prompts, alongside full design systems and templates. Install via CLI or aicanvas MCP, compatible with Claude Code, Codex, and Cursor.",
+    "logo": "<svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M19.8513 0C20.5626 0 21.2204 0.377823 21.5788 0.992258L22.75 3L26.8243 9.98452C27.5508 11.23 27.5508 12.77 26.8243 14.0155L22.75 21L21.5788 23.0077C21.2204 23.6222 20.5626 24 19.8513 24H8.14874C7.43741 24 6.7796 23.6222 6.42118 23.0077L0.587849 13.0077C0.224593 12.385 0.224593 11.615 0.58785 10.9923L6.42118 0.992257C6.7796 0.377822 7.43741 0 8.14874 0H19.8513ZM4 12L9 21H18.25L13 12L18.25 3H9L4 12Z\" fill=\"#FAFAF0\"/></svg>"
   },
   {
     "name": "@algolia",
@@ -194,6 +194,13 @@
     "url": "https://www.baselayer.dev/r/{name}.json",
     "description": "A collection of components built on React Aria, Tailwind CSS, and tailwind-variants.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 24 24'><path fill='var(--foreground)' d='M12 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2M6 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m12 12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2Z'/></svg>"
+  },
+  {
+    "name": "@benday",
+    "homepage": "https://benday.kacemmathlouthi.dev",
+    "url": "https://benday.kacemmathlouthi.dev/r/{name}.json",
+    "description": "Turn any logo into an animated Ben-Day dot field: a thinking indicator for AI and agent interfaces, baked from your own mark.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='1.4 5.99 67 68' fill='currentColor'><path d='m55 23.3c-.6-1.7-1.7-3.3-3.1-4.3L32.7 7.7c-1-.6-2.4-.7-3.5 0L16 15.1c-1 .6-1.6 1.7-1.6 2.9v44c0 1.2.6 2.4 1.7 3.1l12.8 7h.1c-1-.7.9 1.2 3.7.3L51.4 59c2.2-1.4 3.9-4.4 4-8s-1.2-6.9-4.5-8.5L42.7 38l8.1-4.2c2.1-1.2 3.5-2.8 4.2-5.2.4-1.7.5-3.6 0-5.3Zm-4.2 8.8c-1.6 1.1-3.5 2-4.8 2.7l-6 3.1c-.3.2-.2.7.1.8l10.3 5.5c2.3 1.3 3.3 3.7 3.3 6.2-.1 3.5-1.9 6.2-3.6 7.3-.2.1-.3.1-.5 0L20.1 42.3c-1.3-.7-2.2-2.1-2.2-3.8 0-1.6 1-3.2 2.5-3.9l28.3-14.1c2.3-1.4 4.9 1.3 5.1 4.5.2 2.7-1 5.6-3 7.1Z'/></svg>"
   },
   {
     "name": "@beste-ui",
@@ -415,7 +422,7 @@
   },
   {
     "name": "@diklein",
-    "homepage": "https://diklein.com",
+    "homepage": "https://diklein.com/components",
     "url": "https://diklein.com/r/{name}.json",
     "description": "A growing collection of design-forward React components by Dave Klein, extracted from the components powering diklein.com.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' width='24' height='24'><circle cx='62' cy='38' r='28' fill='#e10000'/><rect x='12' y='32' width='56' height='56' fill='var(--foreground)'/></svg>"
@@ -540,6 +547,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='var(--foreground)'><rect width='32' height='32' rx='4'/></svg>"
   },
   {
+    "name": "@flagcn",
+    "homepage": "https://flagcn.dev",
+    "url": "https://flagcn.dev/r/{name}.json",
+    "description": "Accessible, source-owned flag components for shadcn/ui with 306 flags in SVG, PNG, WebP, and JPEG plus 4:3, 1:1, and original ratios.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='black'/><g transform='translate(7.36 7.36) scale(.77)'><rect x='13' y='7' width='6' height='50' rx='3' fill='white'/><path d='M19 15c8-2 14-4 22-2 7 2 10 5 17 3v23c-7 3-12 0-18-2-8-3-13-1-21 1V15Z' fill='white'/></g></svg>"
+  },
+  {
     "name": "@flightcn",
     "homepage": "https://flightcn.yencheng.dev",
     "url": "https://flightcn.yencheng.dev/r/{name}.json",
@@ -600,7 +614,7 @@
     "homepage": "https://framecn.vercel.app",
     "url": "https://framecn.vercel.app/r/{name}.json",
     "description": "Beautiful videos, made simple. Ready to use, customizable video components for React.",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4'/><g stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'><path d='M6.72 4.36v2.36M27.96 25.6H25.6m-4.13 0H13.8c-3.337 0-5.007 0-6.043-1.037S6.72 21.857 6.72 18.52v-7.67M25.6 27.96v-11.8c0-4.45 0-6.675-1.383-8.057S20.61 6.72 16.16 6.72H4.36' stroke-width='1.77'/><path d='m21.824 16.16-5.664 5.664M20.691 9.93 9.93 20.69' stroke-width='2.266'/></g></svg>"
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4'/><g stroke='var(--foreground)' fill='none' stroke-linecap='round' stroke-linejoin='round'><path d='M6.72 4.36v2.36M27.96 25.6H25.6m-4.13 0H13.8c-3.337 0-5.007 0-6.043-1.037S6.72 21.857 6.72 18.52v-7.67M25.6 27.96v-11.8c0-4.45 0-6.675-1.383-8.057S20.61 6.72 16.16 6.72H4.36' stroke-width='1.77'/><path d='m21.824 16.16-5.664 5.664M20.691 9.93 9.93 20.69' stroke-width='2.266'/></g></svg>"
   },
   {
     "name": "@gaia",
@@ -756,6 +770,13 @@
     "url": "https://ui.inference.sh/r/{name}.json",
     "description": "batteries-included agent components by inference.sh. chat interfaces with streaming, tool invocation rendering, syntax-highlighted code blocks, markdown renderer, and more.",
     "logo": "<svg width='18' height='16' viewBox='0 0 18 16' fill='none' xmlns='http://www.w3.org/2000/svg'><path fill='none' d='M16.837 12.659L10.105 1H8.781c-.433 0-.834.232-1.05.608L1 13.266l.662 1.146c.217.375.618.607 1.051.607h13.463l.662-1.146a1.215 1.215 0 000-1.213v-.001z' stroke='var(--foreground)' stroke-width='0.3' stroke-miterlimit='10'/><path fill='none' d='M6.057 11.515v0l3.977-6.888a.08.08 0 01.14 0l6.002 10.392' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/><path fill='none' d='M1 13.266h12.001a.08.08 0 00.07-.122L9.09 6.256' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/><path fill='none' d='M12.13 11.514H4.173a.08.08 0 01-.07-.121L10.105 1' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/></svg>"
+  },
+  {
+    "name": "@initium",
+    "homepage": "https://initium.sh",
+    "url": "https://app.initium.sh/r/styles/{style}/{name}.json",
+    "description": "Conversion-focused marketing blocks and landing page sections for shadcn/ui, with a visual style editor, agent skills, and the first block of every category free to install.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17.5 20'><path d='M17.5 20H0V0H17.5V20ZM10 7.5H17.5L10 0V7.5Z' fill='var(--foreground)'/></svg>"
   },
   {
     "name": "@intentui",
@@ -933,11 +954,25 @@
     "logo": "<svg width='500' height='500' viewBox='0 0 500 500' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(#clip0_2181_32)'><path d='M368.421 0H131.579C58.9099 0 0 58.9099 0 131.579V368.421C0 441.09 58.9099 500 131.579 500H368.421C441.09 500 500 441.09 500 368.421V131.579C500 58.9099 441.09 0 368.421 0Z' fill='url(#paint0_linear_2181_32)'/><path d='M148.245 362.719H97.3682L167.354 126.78C168.498 122.922 173.799 122.512 175.523 126.149L250 283.333L325.75 126.069C327.494 122.45 332.78 122.884 333.91 126.738L403.07 362.719H351.316L317.539 260.968C317.05 259.495 315.029 259.336 314.316 260.715L259.997 365.755C255.772 373.926 244.109 373.988 239.795 365.864L183.97 260.696C183.242 259.325 181.223 259.506 180.75 260.985L148.245 362.719Z' fill='var(--background)'/></g><defs><linearGradient id='paint0_linear_2181_32' x1='0' y1='0' x2='500' y2='500' gradientUnits='userSpaceOnUse'><stop stop-color='var(--foreground)'/><stop offset='1' stop-color='#F472B6'/></linearGradient><clipPath id='clip0_2181_32'><rect width='500' height='500' fill='var(--background)'/></clipPath></defs></svg>"
   },
   {
+    "name": "@motion-menu",
+    "homepage": "https://motion-menu-two.vercel.app",
+    "url": "https://motion-menu-two.vercel.app/r/{name}.json",
+    "description": "596 motion/3D UI patterns — scroll-driven WebGL, shader passes, spring choreography — as ready HTML/CSS/JS. 26 free, or $149 once for the rest.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round'><path d='M4 22c4-10 8 10 12 0s8-10 12 0'/></svg>"
+  },
+  {
     "name": "@motion-primitives",
     "homepage": "https://www.motion-primitives.com",
     "url": "https://motion-primitives.com/c/{name}.json",
     "description": "Beautifully designed motions components. Easy copy-paste. Customizable. Open Source. Built for engineers and designers.",
     "logo": "<svg role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70' aria-label='MP Logo' width='70' height='70' fill='none'><path stroke='currentColor' stroke-linecap='round' stroke-width='3' d='M51.883 26.495c-7.277-4.124-18.08-7.004-26.519-7.425-2.357-.118-4.407-.244-6.364 1.06M59.642 51c-10.47-7.25-26.594-13.426-39.514-15.664-3.61-.625-6.744-1.202-9.991.263'/></svg>"
+  },
+  {
+    "name": "@motiq",
+    "homepage": "https://motiq.dev",
+    "url": "https://motiq.dev/r/{name}.json",
+    "description": "Production-ready animated React and Next.js components — accessible, reduced-motion-safe and RSC-safe — installable as editable source with the shadcn CLI. Free and open source.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><defs><linearGradient id='motiq-logo' x1='0' y1='0' x2='24' y2='24' gradientUnits='userSpaceOnUse'><stop stop-color='#7c5cff'/><stop offset='1' stop-color='#4f7cff'/></linearGradient></defs><rect width='24' height='24' rx='6' fill='url(#motiq-logo)'/><path d='M5.6 17.2V6.8h2.5L12 12.3l3.9-5.5h2.5v10.4h-2.4v-6.6L12 16.1 8 10.6v6.6H5.6Z' fill='#fff'/></svg>"
   },
   {
     "name": "@mozaika",
@@ -1073,6 +1108,13 @@
     "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"330\" height=\"330\" viewBox=\"0 0 330 330\" fill=\"none\"><g clip-path=\"url(#clip0_1543_179)\"><mask id=\"mask0_1543_179\" style=\"mask-type:alpha\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"330\" height=\"330\"><circle cx=\"165\" cy=\"165\" r=\"165\" fill=\"#D9D9D9\"/></mask><g mask=\"url(#mask0_1543_179)\"><path d=\"M165 330C256.127 330 330 256.127 330 165C330 73.873 256.127 0 165 0C73.873 0 0 73.873 0 165C0 256.127 73.873 330 165 330Z\" fill=\"black\"/><path d=\"M330 96H122V111H330V96Z\" fill=\"white\"/><path d=\"M208 219H0V234H208V219Z\" fill=\"white\"/><circle cx=\"165\" cy=\"165\" r=\"157.5\" stroke=\"white\" stroke-width=\"15\" fill=\"none\"/></g></g><defs><clipPath id=\"clip0_1543_179\"><rect width=\"330\" height=\"330\" fill=\"white\"/></clipPath></defs></svg>"
   },
   {
+    "name": "@openmirai",
+    "homepage": "https://www.openmirai.dev",
+    "url": "https://www.openmirai.dev/r/{name}.json",
+    "description": "Open-source React and TypeScript tools from OpenMirai.",
+    "logo": "<svg width='824' height='824' viewBox='0 0 824 824' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='824' height='824' rx='412' fill='white'/><path d='M330.906 275.013L412.234 192L493.561 275.013L412.234 358.026L330.906 275.013Z' fill='#18181B'/><path d='M542.281 313.741L542.205 313.629L414.422 404.958L475.549 449.463L563.409 386.669L542.281 313.741Z' fill='#18181B'/><path d='M473.486 450.921L412.466 494.533L412.332 494.62L412.23 494.471L260.793 386.236L281.264 315.582L282.603 313.629L408.822 403.841L473.486 450.921Z' fill='#18181B'/><path d='M582.2 422.784L582.071 422.596L414.477 542.379L475.605 586.884L603.181 495.704L582.029 422.697L582.2 422.784Z' fill='#18181B'/><path d='M473.554 588.342L412.486 631.989L412.435 631.915L412.384 631.989L221 495.203L241.471 424.549L242.81 422.596L411.995 543.517L473.554 588.342Z' fill='#18181B'/></svg>"
+  },
+  {
     "name": "@optics",
     "homepage": "https://optics.agusmayol.com.ar",
     "url": "https://optics.agusmayol.com.ar/r/{name}.json",
@@ -1162,6 +1204,13 @@
     "url": "https://platejs.org/r/{name}.json",
     "description": "AI-powered rich text editor for React.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-minus-icon lucide-minus'><path d='M5 12h14'/></svg>"
+  },
+  {
+    "name": "@preskok",
+    "homepage": "https://ui-three-mu.vercel.app",
+    "url": "https://ui-three-mu.vercel.app/r/{name}.json",
+    "description": "Accessible, production-ready React components built with React Aria Components and Tailwind CSS.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='155' height='140' viewBox='0 0 155.432 140' fill='none'><path d='M115.228 0.0136719C137.529 0.581528 155.432 18.9209 155.432 41.4615C155.432 64.0022 137.529 82.3415 115.228 82.9094L114.162 82.9231H0V56.9697H25.7268V57.0769H114.162C122.747 57.0769 129.706 50.0856 129.706 41.4615C129.706 32.8374 122.747 25.8462 114.162 25.8462H25.7268V25.7389H0V0H114.162L115.228 0.0136719Z' fill='#DF3B3B'/><path d='M0 82.9231H25.7268V140H23.5829C10.5584 140 0 129.392 0 116.308V82.9231Z' fill='#DF3B3B'/></svg>"
   },
   {
     "name": "@prompt-kit",
@@ -1437,6 +1486,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512' fill='none'><path d='M329.205 6.05469C331.396 0.985458 337.281 -1.34888 342.351 0.84082L355.644 6.58301C356.018 6.74496 356.377 6.93032 356.722 7.13086L439.729 42.9902C444.799 45.1805 447.134 51.066 444.944 56.1357L439.202 69.4277C437.012 74.4976 431.126 76.8315 426.056 74.6416L351.12 42.2705L330.918 89.0332C376.141 114.344 408.567 159.794 416.052 213.239H429.756V278.752H397.765L397.27 282.408L386.144 369.047C383.266 392.108 380.937 415.238 377.957 438.284C376.66 448.318 375.865 459.058 373.398 468.858C372.384 471.375 371.168 473.657 369.527 475.817C353.072 497.475 312.68 504.556 287.003 508.111C273.789 510.037 260.45 510.964 247.098 510.888C217.287 510.485 162.338 502.749 138.37 484.41C133.049 480.338 128.118 475.314 126.057 468.793C124.143 462.739 123.772 455.672 122.899 449.391L117.649 411.719L99.9443 278.752H67.7119V213.239H80.5723C92.1014 130.913 162.808 67.5599 248.312 67.5596C266.066 67.5596 283.183 70.2933 299.265 75.3594L329.205 6.05469ZM298.618 347.714C290.008 349.185 284.699 357.994 277.604 362.6C260.758 373.533 233.532 371.369 217.451 359.928C211.198 355.48 206.551 346.709 197.798 348.069C194.209 348.628 190.796 350.598 188.722 353.611C186.781 356.428 186.276 360.028 186.956 363.345C188.187 369.351 193.243 374.041 197.507 378.105C213.771 391.889 237.722 397.757 258.754 395.938C277.382 394.327 294.852 386.112 306.932 371.629C309.792 368.2 311.798 364.372 311.3 359.786C310.918 356.283 309.287 352.397 306.453 350.188C304.098 348.351 301.526 347.879 298.618 347.714ZM187.43 188.242C177.489 188.242 169.43 196.301 169.43 206.242V305.578C169.43 315.519 177.489 323.578 187.43 323.578H194.529C204.47 323.578 212.529 315.519 212.529 305.578V206.242C212.529 196.301 204.47 188.242 194.529 188.242H187.43ZM302.939 188.242C292.998 188.242 284.94 196.301 284.939 206.242V305.578C284.939 315.519 292.998 323.578 302.939 323.578H310.04C319.981 323.578 328.04 315.519 328.04 305.578V206.242C328.04 196.301 319.981 188.242 310.04 188.242H302.939Z' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@snap-cn",
+    "homepage": "https://snapcn.dev",
+    "url": "https://snapcn.dev/r/{name}.json",
+    "description": "Remotion video components for React. Text reveals, karaoke captions, device mockups, logo stings and full scenes, installed with the CLI and owned as source.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 464 409' fill='currentColor' role='img' aria-label='snap-cn'> <g transform='translate(0,409) scale(0.1,-0.1)'> <path d='M589 3805 c-167 -41 -305 -149 -380 -297 -60 -120 -59 -84 -59 -1239 0 -1004 1 -1059 19 -1112 48 -147 148 -226 331 -262 100 -20 127 -33 186 -87 53 -49 74 -109 74 -212 1 -121 42 -196 133 -244 l52 -27 980 -3 c883 -3 986 -1 1042 13 75 21 133 67 171 139 l27 51 3 315 c2 173 2 342 0 374 l-3 60 -31 -50 c-36 -59 -101 -115 -170 -146 l-49 -23 -810 -3 c-591 -2 -825 0 -865 8 -128 28 -258 121 -325 234 -65 110 -66 128 -63 826 l3 625 24 58 c44 111 147 210 270 259 l56 23 830 3 c809 2 831 2 895 -18 80 -25 149 -74 198 -142 l37 -52 3 334 c3 367 -3 418 -56 494 -30 44 -98 91 -152 106 -22 6 -457 10 -1175 9 -923 -1 -1151 -3 -1196 -14z M3800 2983 c-327 -196 -598 -361 -602 -367 -4 -6 -7 -254 -5 -550 l2 -540 145 -91 c80 -50 208 -130 285 -177 77 -47 283 -174 457 -282 174 -108 326 -196 337 -196 11 0 27 7 35 16 14 14 16 141 16 1254 0 781 -4 1248 -10 1264 -7 20 -16 26 -37 26 -18 -1 -232 -123 -623 -357z'/> </g> </svg>"
+  },
+  {
     "name": "@solaceui",
     "homepage": "https://www.solaceui.com",
     "url": "https://www.solaceui.com/r/{name}.json",
@@ -1553,7 +1609,7 @@
     "homepage": "https://termcn.vercel.app",
     "url": "https://termcn.vercel.app/r/{name}.json",
     "description": "Beautiful terminal UIs, made simple. Ready to use, customizable terminal UI components for React.",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256'><script/><rect x='16' y='16' width='224' height='224' rx='28' stroke='#000' stroke-width='7'/><path d='m42 56 32 24-32 24' stroke='#fff' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='m208.8 156.8-48 48M199.2 104 108 195.2' stroke='#fff' stroke-width='19.2' stroke-linecap='round' fill='none'/></svg>"
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><rect x='16' y='16' width='224' height='224' rx='28' stroke='var(--background)' stroke-width='7'/><path d='m42 56 32 24-32 24' stroke='var(--foreground)' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='m208.8 156.8-48 48M199.2 104 108 195.2' stroke='var(--foreground)' stroke-width='19.2' stroke-linecap='round' fill='none'/></svg>"
   },
   {
     "name": "@tuiparts",
@@ -1788,6 +1844,13 @@
     "logo": "<svg fill='none' viewBox='0 0 500 477' xmlns='http://www.w3.org/2000/svg'><path d='M0 130.79C0 58.5568 58.5474 0 130.769 0H369.231C441.453 0 500 58.5568 500 130.79V346.21C500 418.443 441.453 477 369.231 477H130.769C58.5474 477 0 418.443 0 346.21V130.79Z' fill='#030712'/><path d='M0 130.79C0 58.5568 58.5474 0 130.769 0H369.231C441.453 0 500 58.5568 500 130.79V346.21C500 418.443 441.453 477 369.231 477H130.769C58.5474 477 0 418.443 0 346.21V130.79Z' fill='url(#a)' fill-opacity='.3'/><mask id='f' x='0' y='0' width='500' height='477' style='mask-type:alpha' maskUnits='userSpaceOnUse'><path d='M0 130.79C0 58.5568 58.5474 0 130.769 0H369.231C441.453 0 500 58.5568 500 130.79V346.21C500 418.443 441.453 477 369.231 477H130.769C58.5474 477 0 418.443 0 346.21V130.79Z' fill='#030712'/><path d='M0 130.79C0 58.5568 58.5474 0 130.769 0H369.231C441.453 0 500 58.5568 500 130.79V346.21C500 418.443 441.453 477 369.231 477H130.769C58.5474 477 0 418.443 0 346.21V130.79Z' fill='url(#a)' fill-opacity='.3'/></mask><g mask='url(#f)'><g filter='url(#k)'><path d='M369.23 475V477H130.77V475H369.23ZM498 346.21V130.79C498 59.6609 440.347 2 369.23 2H130.77C59.6526 2 2.00014 59.6609 2 130.79V346.21C2.00016 417.339 59.6527 475 130.77 475V477L129.079 476.989C58.1988 476.091 0.908707 418.792 0.0107422 347.9L0 346.21V130.79C0.00013911 59.121 57.6363 0.915799 129.079 0.0107422L130.77 0H369.23C441.452 0 500 58.5567 500 130.79V346.21L499.989 347.9C499.084 419.355 440.888 477 369.23 477V475C440.347 475 498 417.339 498 346.21Z' fill='url(#d)' fill-opacity='.8'/></g></g><g filter='url(#j)'><path d='m163.29 263.1c0 14.81 3.703 26.212 11.11 34.204 7.407 7.993 18.278 11.989 32.614 11.989 14.335 0 25.326-3.996 32.972-11.989 7.645-7.992 11.468-19.394 11.468-34.204v-148.1h61.286v147.74c0 22.097-4.779 40.785-14.336 56.065s-22.459 26.799-38.706 34.556c-16.008 7.757-33.928 11.636-53.759 11.636s-37.632-3.762-53.402-11.284c-15.53-7.757-27.834-19.275-36.914-34.555-9.079-15.514-13.619-34.321-13.619-56.418v-147.74h61.286v148.1zm248.71 101.9h-59.839v-250h59.839v250z' fill='#000' fill-opacity='.5'/></g><g filter='url(#i)' opacity='.6'><path d='m156.29 262.1c0 14.81 3.703 26.212 11.11 34.204 7.407 7.993 18.278 11.989 32.614 11.989 14.335 0 25.326-3.996 32.972-11.989 7.645-7.992 11.468-19.394 11.468-34.204v-148.1h61.286v147.74c0 22.097-4.779 40.785-14.336 56.065s-22.459 26.799-38.706 34.556c-16.008 7.757-33.928 11.636-53.759 11.636s-37.632-3.762-53.402-11.284c-15.53-7.757-27.834-19.275-36.914-34.555-9.0789-15.514-13.619-34.321-13.619-56.418v-147.74h61.286v148.1zm248.71 101.9h-59.839v-250h59.839v250z' fill='#fff'/></g><path d='m156.29 262.1c0 14.81 3.703 26.212 11.11 34.204 7.407 7.993 18.278 11.989 32.614 11.989 14.335 0 25.326-3.996 32.972-11.989 7.645-7.992 11.468-19.394 11.468-34.204v-148.1h61.286v147.74c0 22.097-4.779 40.785-14.336 56.065s-22.459 26.798-38.706 34.556c-16.008 7.757-33.928 11.636-53.759 11.636s-37.632-3.762-53.402-11.284c-15.53-7.757-27.834-19.275-36.914-34.555-9.0789-15.514-13.619-34.321-13.619-56.418v-147.74h61.286v148.1zm248.71 101.9h-59.839v-250h59.839v250z' fill='url(#c)'/><mask id='e' x='95' y='114' width='310' height='250' style='mask-type:alpha' maskUnits='userSpaceOnUse'><path d='m156.29 262.1c0 14.81 3.703 26.212 11.11 34.204 7.407 7.993 18.278 11.989 32.614 11.989 14.335 0 25.326-3.996 32.972-11.989 7.645-7.992 11.468-19.394 11.468-34.204v-148.1h61.286v147.74c0 22.097-4.779 40.785-14.336 56.065s-22.459 26.798-38.706 34.556c-16.008 7.757-33.928 11.636-53.759 11.636s-37.632-3.762-53.402-11.284c-15.53-7.757-27.834-19.275-36.914-34.555-9.0789-15.514-13.619-34.321-13.619-56.418v-147.74h61.286v148.1zm248.71 101.9h-59.839v-250h59.839v250z' fill='url(#b)'/></mask><g mask='url(#e)'><g fill-opacity='.4' filter='url(#h)'><path d='m152.24 117.26h-58.538l-9.7563-12.37h77.4v162.11l25.366 35.156 35.773 2.604c-11.057 5.86-33.86 10.677-50.082 1.302s-20.163-28.645-20.163-39.062v-149.74z' fill='#1C1C1C'/><path d='m301.83 117.26h-60.49v-8.463h70.896v163.41c0 38.021-17.778 51.867-26.667 54.037 13.008-20.313 16.261-44.488 16.261-54.037v-154.95z' fill='#000'/><path d='m400.7 117.91h-58.537l-5.854-9.765h74.798v259.11h-10.407v-249.35z' fill='#000'/></g><g fill='#fff' fill-opacity='.3' filter='url(#g)'><path d='m100.85 261.14v-148.44c0-4.687-8.2391-5.425-12.358-5.208v153.65c0 90.104 65.475 112.2 98.213 111.98 77.01 15.625 114.47-49.913 123.58-84.636l-4.553-5.859c-11.708 50.781-48.782 80.078-123.58 70.963-59.839-7.291-79.134-64.67-81.302-92.447z'/><path d='m351.92 356.84v-242.19c0-10.416-6.505-7.378-9.757-4.557v259.12h68.294v-12.37h-58.537z'/></g><g opacity='.6'><path d='m304.44 261.74v-146.44h-58.684v146.79c0 15.029-3.882 26.797-11.829 35.105-7.959 8.319-19.332 12.39-33.912 12.39-14.578 0-25.844-4.071-33.568-12.406-7.699-8.308-11.457-20.07-11.457-35.089v-146.79h-58.684v146.44c0 21.918 4.5032 40.485 13.441 55.76 8.951 15.06 21.062 26.396 36.352 34.038l1.464 0.686c15.209 6.972 32.328 10.471 51.377 10.471v1.302c-19.831 0-37.632-3.762-53.402-11.284-15.53-7.757-27.834-19.275-36.914-34.555-9.0789-15.515-13.619-34.321-13.619-56.418v-147.74h61.286v148.1c0 14.81 3.703 26.212 11.11 34.204 7.407 7.993 18.278 11.989 32.614 11.989 14.335 0 25.326-3.996 32.972-11.989 7.645-7.992 11.468-19.394 11.468-34.204v-148.1h61.286v147.74c0 22.097-4.779 40.785-14.336 56.065s-22.459 26.798-38.706 34.556c-16.008 7.757-33.928 11.636-53.759 11.636v-1.302c19.657 0 37.38-3.844 53.192-11.507l7e-3 -2e-3c16.023-7.651 28.737-19.002 38.163-34.072 9.402-15.03 14.138-33.466 14.138-55.374zm100.56-147.74v250h-59.839v-250h59.839zm-58.538 248.7h57.237v-247.4h-57.237v247.4z' fill='#fff'/></g></g><defs><filter id='k' x='-4' y='-4' width='508' height='485' color-interpolation-filters='sRGB' filterUnits='userSpaceOnUse'><feFlood flood-opacity='0' result='BackgroundImageFix'/><feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'/><feGaussianBlur result='effect1_foregroundBlur_3603_1608' stdDeviation='2'/></filter><filter id='j' x='86' y='99' width='342' height='282' color-interpolation-filters='sRGB' filterUnits='userSpaceOnUse'><feFlood flood-opacity='0' result='BackgroundImageFix'/><feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'/><feGaussianBlur result='effect1_foregroundBlur_3603_1608' stdDeviation='8'/></filter><filter id='i' x='75' y='94' width='350' height='290' color-interpolation-filters='sRGB' filterUnits='userSpaceOnUse'><feFlood flood-opacity='0' result='BackgroundImageFix'/><feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'/><feGaussianBlur result='effect1_foregroundBlur_3603_1608'/></filter><filter id='h' x='81.943' y='102.88' width='331.16' height='266.37' color-interpolation-filters='sRGB' filterUnits='userSpaceOnUse'><feFlood flood-opacity='0' result='BackgroundImageFix'/><feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'/><feGaussianBlur result='effect1_foregroundBlur_3603_1608' stdDeviation='1'/></filter><filter id='g' x='84.496' y='103.39' width='329.96' height='276.09' color-interpolation-filters='sRGB' filterUnits='userSpaceOnUse'><feFlood flood-opacity='0' result='BackgroundImageFix'/><feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'/><feGaussianBlur result='effect1_foregroundBlur_3603_1608' stdDeviation='2'/></filter><linearGradient id='a' x1='250' x2='250' y1='-79' y2='428.62' gradientUnits='userSpaceOnUse'><stop stop-color='#F3F4F6' offset='0'/><stop stop-color='#030712' offset='1'/></linearGradient><linearGradient id='d' x1='250' x2='250' y2='477' gradientUnits='userSpaceOnUse'><stop stop-color='#fff' offset='0'/><stop stop-color='#fff' stop-opacity='0' offset='.2'/><stop stop-color='#fff' stop-opacity='0' offset='.8'/><stop stop-color='#fff' offset='1'/></linearGradient><linearGradient id='c' x1='249.8' x2='249.8' y1='239' y2='424.55' gradientUnits='userSpaceOnUse'><stop stop-color='#fff' offset='0'/><stop stop-color='#030712' offset='1'/></linearGradient><linearGradient id='b' x1='300.27' x2='300.27' y1='239' y2='424.55' gradientUnits='userSpaceOnUse'><stop stop-color='#fff' offset='0'/><stop stop-color='#030712' offset='1'/></linearGradient></defs></svg>"
   },
   {
+    "name": "@velobits",
+    "homepage": "https://ui.velobits.dev",
+    "url": "https://ui.velobits.dev/r/{name}.json",
+    "description": "An open source collection of accessible, contrast-gated React components on a warm neutral palette and a two-tier glass material — the VeloBits design system, authored once and shipped both as an npm package and as this registry.",
+    "logo": "<svg version='1.2' viewBox='0 0 720 720' xmlns='http://www.w3.org/2000/svg'><style>.s0 { fill: #c8f135 }</style><g fill-rule='evenodd'><path class='s0' d='m189.22 142.82h428.32l60.17 108.55-68.43 114.45 66.07 115.64-57.81 107.37h-304.43l34.22-57.81h234.81l28.32-53.1-66.08-112.1 64.9-114.45-25.96-51.92-207.67 1.18-83.78 139.24z'/><path class='s0' d='m24.03 144h138.05l27.14 54.27-63.72 3.54 158.11 269.03 123.9-215.93 68.43-1.18-192.33 333.92z'/></g></svg>"
+  },
+  {
     "name": "@vue-bits",
     "homepage": "https://vue-bits.dev",
     "url": "https://vue-bits.dev/r/{name}.json",
@@ -1884,5 +1947,19 @@
     "url": "https://www.atroui.com/r/{name}.json",
     "description": "Dark-first React / Next.js components and marketing blocks. Install with the shadcn CLI and own the source.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect width='32' height='32' rx='8' fill='#0a0a0a'/><path d='M9 24 L16 8 L23 24' stroke='#fafafa' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/><rect x='11.5' y='16.5' width='9' height='2.4' rx='1.2' fill='#0b7bff'/></svg>"
+  },
+  {
+    "name": "@knock-codes",
+    "homepage": "https://knock.codes",
+    "url": "https://knock.codes/r/react/{name}.json",
+    "description": "Copy-paste, session-gated access blocks for React — PIN/Knock Code unlock screens, protected routes/layouts/modals, a headless useKnockCodes hook, and full-page templates.",
+    "logo": "<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><rect width='32' height='32' rx='7' fill='#0A0A0B'/><rect x='9' y='9' width='14' height='14' rx='3' fill='#F59E0B'/></svg>"
+  },
+  {
+    "name": "@remotionui",
+    "homepage": "https://remotionui.com",
+    "url": "https://remotionui.com/r/{name}.json",
+    "description": "Copy-paste motion components for Remotion video projects - 200 captions, charts, transitions, backgrounds, and full compositions.",
+    "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"var(--foreground)\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2L2 7l10 5 10-5-10-5z\"/><path d=\"M2 17l10 5 10-5\"/><path d=\"M2 12l10 5 10-5\"/></svg>"
   }
 ]
