@@ -11,6 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/styles/aria-rhea/ui/card"
+import { HoverCard, HoverCardTrigger } from "@/styles/aria-rhea/ui/hover-card"
 import { Message, MessageContent } from "@/styles/aria-rhea/ui/message"
 import {
   MessageScroller,
@@ -22,7 +23,6 @@ import {
   useMessageScroller,
   useMessageScrollerVisibility,
 } from "@/styles/aria-rhea/ui/message-scroller"
-import { Popover, PopoverTrigger } from "@/styles/aria-rhea/ui/popover"
 
 const chat = createChat()
   .user("Review the incident handoff and tell me what to read first.", {
@@ -127,7 +127,7 @@ function TranscriptOutline() {
   const { currentAnchorId } = useMessageScrollerVisibility()
 
   return (
-    <PopoverTrigger>
+    <HoverCardTrigger>
       <Button
         aria-label="Open transcript outline"
         className="flex h-9 w-9 flex-col items-center justify-center gap-1 rounded-md transition-colors outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
@@ -140,7 +140,7 @@ function TranscriptOutline() {
           />
         ))}
       </Button>
-      <Popover
+      <HoverCard
         placement="left"
         offset={-28}
         className="flex w-64 flex-col gap-1 rounded-2xl p-1"
@@ -165,8 +165,8 @@ function TranscriptOutline() {
             </span>
           </button>
         ))}
-      </Popover>
-    </PopoverTrigger>
+      </HoverCard>
+    </HoverCardTrigger>
   )
 }
 

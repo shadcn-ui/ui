@@ -547,6 +547,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='var(--foreground)'><rect width='32' height='32' rx='4'/></svg>"
   },
   {
+    "name": "@flagcn",
+    "homepage": "https://flagcn.dev",
+    "url": "https://flagcn.dev/r/{name}.json",
+    "description": "Accessible, source-owned flag components for shadcn/ui with 306 flags in SVG, PNG, WebP, and JPEG plus 4:3, 1:1, and original ratios.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='black'/><g transform='translate(7.36 7.36) scale(.77)'><rect x='13' y='7' width='6' height='50' rx='3' fill='white'/><path d='M19 15c8-2 14-4 22-2 7 2 10 5 17 3v23c-7 3-12 0-18-2-8-3-13-1-21 1V15Z' fill='white'/></g></svg>"
+  },
+  {
     "name": "@flightcn",
     "homepage": "https://flightcn.yencheng.dev",
     "url": "https://flightcn.yencheng.dev/r/{name}.json",
@@ -1947,5 +1954,12 @@
     "url": "https://knock.codes/r/react/{name}.json",
     "description": "Copy-paste, session-gated access blocks for React — PIN/Knock Code unlock screens, protected routes/layouts/modals, a headless useKnockCodes hook, and full-page templates.",
     "logo": "<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><rect width='32' height='32' rx='7' fill='#0A0A0B'/><rect x='9' y='9' width='14' height='14' rx='3' fill='#F59E0B'/></svg>"
+  },
+  {
+    "name": "@remotionui",
+    "homepage": "https://remotionui.com",
+    "url": "https://remotionui.com/r/{name}.json",
+    "description": "Copy-paste motion components for Remotion video projects - 200 captions, charts, transitions, backgrounds, and full compositions.",
+    "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"var(--foreground)\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2L2 7l10 5 10-5-10-5z\"/><path d=\"M2 17l10 5 10-5\"/><path d=\"M2 12l10 5 10-5\"/></svg>"
   }
 ]
