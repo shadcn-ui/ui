@@ -1326,6 +1326,28 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    questionnaire: {
+      name: "questionnaire",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/base/ui/questionnaire.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/questionnaire",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/questionnaire-example.tsx",
+        },
+      },
+    },
     marker: {
       name: "marker",
       title: "undefined",
@@ -2572,6 +2594,29 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/base/examples/message-scroller-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "questionnaire-example": {
+      name: "questionnaire-example",
+      title: "Questionnaire",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "card",
+        "dialog",
+        "example",
+        "questionnaire",
+        "sonner",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/questionnaire-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -4212,6 +4257,29 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/aria/ui/hover-card.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/hover-card",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/hover-card-example.tsx",
+          api: "https://react-aria.adobe.com/PreviewTrigger#api",
+        },
+      },
+    },
     input: {
       name: "input",
       title: "undefined",
@@ -4944,6 +5012,28 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    questionnaire: {
+      name: "questionnaire",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/aria/ui/questionnaire.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/questionnaire",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/questionnaire-example.tsx",
+        },
+      },
+    },
     marker: {
       name: "marker",
       title: "undefined",
@@ -5436,6 +5526,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/aria/examples/field-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "hover-card-example": {
+      name: "hover-card-example",
+      title: "Hover Card",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "dialog", "hover-card", "example"],
+      files: [
+        {
+          path: "registry/bases/aria/examples/hover-card-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -6138,6 +6244,29 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/aria/examples/message-scroller-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "questionnaire-example": {
+      name: "questionnaire-example",
+      title: "Questionnaire",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "card",
+        "dialog",
+        "example",
+        "questionnaire",
+        "sonner",
+      ],
+      files: [
+        {
+          path: "registry/bases/aria/examples/questionnaire-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -8557,6 +8686,28 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    questionnaire: {
+      name: "questionnaire",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/radix/ui/questionnaire.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/questionnaire",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/questionnaire-example.tsx",
+        },
+      },
+    },
     marker: {
       name: "marker",
       title: "undefined",
@@ -9787,6 +9938,29 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/radix/examples/message-scroller-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "questionnaire-example": {
+      name: "questionnaire-example",
+      title: "Questionnaire",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "card",
+        "dialog",
+        "example",
+        "questionnaire",
+        "sonner",
+      ],
+      files: [
+        {
+          path: "registry/bases/radix/examples/questionnaire-example.tsx",
           type: "registry:example",
           target: "",
         },
