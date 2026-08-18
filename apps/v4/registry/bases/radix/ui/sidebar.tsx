@@ -371,9 +371,17 @@ function SidebarSeparator({
   )
 }
 
-function SidebarContent({ className, ...props }: React.ComponentProps<"div">) {
+function SidebarContent({
+  className,
+  asChild = false,
+  ...props
+}: React.ComponentProps<"div"> & {
+  asChild?: boolean
+}) {
+  const Comp = asChild ? Slot.Root : "div"
+
   return (
-    <div
+    <Comp
       data-slot="sidebar-content"
       data-sidebar="content"
       className={cn(
