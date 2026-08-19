@@ -20,7 +20,7 @@ jobs:
         id: issue-stale
         name: "Mark stale issues, close stale issues"
         with:
-          repo-token: ${{ github.token }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
           ascending: true
           days-before-issue-close: 7
           days-before-issue-stale: 365
@@ -36,7 +36,7 @@ jobs:
         id: pr-state
         name: "Mark stale PRs, close stale PRs"
         with:
-          repo-token: ${{ github.token }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
           ascending: true
           days-before-issue-close: -1
           days-before-issue-stale: -1
