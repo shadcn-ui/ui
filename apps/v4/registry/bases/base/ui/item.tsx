@@ -61,12 +61,14 @@ function Item({
   variant = "default",
   size = "default",
   render,
+  role,
   ...props
 }: useRender.ComponentProps<"div"> & VariantProps<typeof itemVariants>) {
   return useRender({
     defaultTagName: "div",
     props: mergeProps<"div">(
       {
+        role: role ?? (render ? undefined : "listitem"),
         className: cn(itemVariants({ variant, size, className })),
       },
       props
