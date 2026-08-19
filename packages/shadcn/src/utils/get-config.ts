@@ -54,8 +54,29 @@ export async function resolveConfigPaths(
     ...(config.registries || {}),
   }
 
-  // Read tsconfig.json.
-  const tsConfig = await loadConfig(cwd)
+  // Read tsconfig.json with fallback to tsconfig.app.json / tsconfig.web.json for Vite projects.
+  let tsConfig = await loadConfig(cwd)
+
+  if (
+    tsConfig.resultType === "failed" ||
+    !Object.keys(tsConfig.paths || {}).length
+  ) {
+    for (const fallback of ["tsconfig.app.json", "tsconfig.web.json"]) {
+      const fallbackPath = path.resolve(cwd, fallback)
+      try {
+        const fallbackConfig = await loadConfig(fallbackPath)
+        if (
+          fallbackConfig.resultType === "success" &&
+          Object.keys(fallbackConfig.paths || {}).length
+        ) {
+          tsConfig = fallbackConfig
+          break
+        }
+      } catch {
+        // Continue checking other fallbacks
+      }
+    }
+  }
 
   if (tsConfig.resultType === "failed") {
     throw new Error(
