@@ -779,6 +779,13 @@
     "logo": "<svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M16 3C16 3 7 8 7 16C7 24 12 29 16 29C20 29 25 24 25 16C25 8 16 3 16 3Z' fill='var(--foreground)'/><circle cx='12' cy='14' r='2' fill='var(--background)'/><circle cx='20' cy='14' r='2' fill='var(--background)'/><path d='M11 20C11 20 13 22 16 22C19 22 21 20 21 20' stroke='var(--background)' stroke-width='1.5' stroke-linecap='round'/><path d='M16 3V10' stroke='var(--background)' stroke-width='1.5' stroke-linecap='round' opacity='0.6'/></svg>"
   },
   {
+    "name": "@ilinxa",
+    "homepage": "https://ui.ilinxa.com",
+    "url": "https://ui.ilinxa.com/r/{name}.json",
+    "description": "High-level composed components for shadcn/ui — kanban, gantt, calendar, media editors, story viewers, flow canvas, forms, and more, each with optional demo fixtures.",
+    "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"var(--foreground)\"><rect x=\"6\" y=\"6\" width=\"16\" height=\"16\" rx=\"4\"/><rect x=\"26\" y=\"6\" width=\"16\" height=\"16\" rx=\"8\"/><rect x=\"6\" y=\"26\" width=\"16\" height=\"16\" rx=\"8\"/><rect x=\"26\" y=\"26\" width=\"16\" height=\"16\" rx=\"4\"/></svg>"
+  },
+  {
     "name": "@indiacn",
     "homepage": "https://indiacn.in",
     "url": "https://indiacn.in/r/{name}.json",
