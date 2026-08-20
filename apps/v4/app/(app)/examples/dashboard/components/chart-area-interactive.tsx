@@ -32,6 +32,11 @@ import {
 
 export const description = "An interactive area chart"
 
+function parseDate(date: string) {
+  const [year, month, day] = date.split("-").map(Number)
+  return new Date(year, month - 1, day)
+}
+
 const chartData = [
   { date: "2024-04-01", desktop: 222, mobile: 150 },
   { date: "2024-04-02", desktop: 97, mobile: 180 },
@@ -145,8 +150,8 @@ export function ChartAreaInteractive() {
   const [timeRange, setTimeRange] = React.useState("7d")
 
   const filteredData = chartData.filter((item) => {
-    const date = new Date(item.date)
-    const referenceDate = new Date("2024-06-30")
+    const date = parseDate(item.date)
+    const referenceDate = parseDate("2024-06-30")
     let daysToSubtract = 90
     if (timeRange === "30d") {
       daysToSubtract = 30
@@ -242,7 +247,7 @@ export function ChartAreaInteractive() {
               tickMargin={8}
               minTickGap={32}
               tickFormatter={(value) => {
-                const date = new Date(value)
+                const date = parseDate(value)
                 return date.toLocaleDateString("en-US", {
                   month: "short",
                   day: "numeric",
@@ -255,7 +260,7 @@ export function ChartAreaInteractive() {
               content={
                 <ChartTooltipContent
                   labelFormatter={(value) => {
-                    return new Date(value).toLocaleDateString("en-US", {
+                    return parseDate(value).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
                     })
