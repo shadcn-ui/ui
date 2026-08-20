@@ -120,7 +120,11 @@ const server = setupServer(
       uiItem("sonner"),
       uiItem("toast"),
       uiItem("toaster"),
+      uiItem("menubar"),
     ])
+  ),
+  http.get(`${REGISTRY_URL}/styles/:style/menubar.json`, () =>
+    HttpResponse.json({ error: "not found" }, { status: 404 })
   ),
   ...registerItem("button", uiItem("button")),
   ...registerItem("card", uiItem("card")),
@@ -677,14 +681,19 @@ describe("add command", () => {
       })
     })
 
-    it("filters toast from --all for legacy styles", async () => {
+    it("skips unavailable components from --all and warns", async () => {
       await withFixtureCopy("vite-with-tailwind", async (cwd) => {
+        const { logger } = await import("@/src/utils/logger")
+
         await runAdd(["--all"], cwd)
 
         expect(addComponents).toHaveBeenCalledWith(
           ["button", "sonner"],
           expect.any(Object),
           expect.any(Object)
+        )
+        expect(logger.warn).toHaveBeenCalledWith(
+          expect.stringContaining("menubar")
         )
       })
     })
