@@ -182,7 +182,7 @@ export function parsePnpmWorkspacePackages(content: string) {
     }
 
     const itemMatch = line.match(/^(\s*)-\s*(.+?)\s*(?:#.*)?$/)
-    if (!itemMatch || itemMatch[1].length <= packagesIndent) {
+    if (!itemMatch || itemMatch[1].length < packagesIndent) {
       continue
     }
 

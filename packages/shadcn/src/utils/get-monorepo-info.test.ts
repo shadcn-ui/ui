@@ -90,6 +90,20 @@ describe("getWorkspacePatterns", () => {
       "packages/*",
     ])
   })
+
+  it("should read packages listed at the same indentation as the packages key", async () => {
+    // Valid YAML: a block sequence may sit at the same column as its parent
+    // key. pnpm (via js-yaml) accepts this form, so the CLI must too.
+    await fs.writeFile(
+      path.join(tmpDir, "pnpm-workspace.yaml"),
+      ["packages:", "- apps/*", "- packages/*", ""].join("\n")
+    )
+
+    await expect(getWorkspacePatterns(tmpDir)).resolves.toEqual([
+      "apps/*",
+      "packages/*",
+    ])
+  })
 })
 
 describe("getMonorepoTargets", () => {
