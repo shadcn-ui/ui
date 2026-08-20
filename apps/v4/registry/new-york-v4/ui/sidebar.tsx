@@ -318,6 +318,20 @@ function SidebarInset({ className, ...props }: React.ComponentProps<"main">) {
   )
 }
 
+function SidebarInsetFooter({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="sidebar-inset-footer"
+      data-sidebar="inset-footer"
+      className={cn("flex flex-col gap-2 p-4", className)}
+      {...props}
+    />
+  )
+}
+
 function SidebarInput({
   className,
   ...props
@@ -709,6 +723,7 @@ export {
   SidebarHeader,
   SidebarInput,
   SidebarInset,
+  SidebarInsetFooter,
   SidebarMenu,
   SidebarMenuAction,
   SidebarMenuBadge,
