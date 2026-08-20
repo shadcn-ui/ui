@@ -353,7 +353,20 @@ function getFontVariableName(importName: string, variable: string) {
     return baseName
   }
 
-  return `${baseName}${toPascalCase(variable.replace(/^--font-/, ""))}`
+  return toPascalCase(variable.replace(/^--font-/, ""));
+
+  // const suffix = variable.replace(/^--font-/, "")
+  // // Avoid duplication when variable suffix matches the import name
+  // // e.g. Space_Grotesk + --font-space-grotesk → spaceGrotesk (not spaceGroteskSpaceGrotesk)
+  // if (baseName.toLowerCase() === suffix.replace(/-/g, "").toLowerCase()) {
+  //   return baseName
+  // }
+
+  // return `${baseName}${toPascalCase(suffix)}`
+
+  // return `${baseName}${toPascalCase(variable.replace(/^--font-/, ""))}`
+
+  return baseName
 }
 
 function toCamelCase(str: string) {
