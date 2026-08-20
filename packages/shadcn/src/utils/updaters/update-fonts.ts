@@ -313,6 +313,26 @@ export async function transformLayoutFonts(
     )
   }
 
+  // Clean up unused font imports.
+  const nextFontImport = sourceFile.getImportDeclaration(
+    (decl) => decl.getModuleSpecifierValue() === "next/font/google"
+  )
+  if (nextFontImport) {
+    const namedImports = nextFontImport.getNamedImports()
+    for (const namedImport of namedImports) {
+      const name = namedImport.getName()
+      const isUsed = sourceFile
+        .getDescendantsOfKind(SyntaxKind.CallExpression)
+        .some((callExpr) => callExpr.getExpression().getText() === name)
+      if (!isUsed) {
+        namedImport.remove()
+      }
+    }
+    if (nextFontImport.getNamedImports().length === 0) {
+      nextFontImport.remove()
+    }
+  }
+
   return sourceFile.getFullText()
 }
 
@@ -399,6 +419,14 @@ function findFontVariableDeclaration(
       // Check if any argument contains our variable.
       const argText = args[0].getText()
       if (argText.includes(`variable:`) && argText.includes(variable)) {
+        return declaration
+      }
+
+      // Fallback for Next.js defaults if we're injecting a core font variable.
+      if (variable === "--font-sans" && (argText.includes("--font-geist-sans") || argText.includes("--font-inter"))) {
+        return declaration
+      }
+      if (variable === "--font-mono" && (argText.includes("--font-geist-mono") || argText.includes("--font-roboto-mono"))) {
         return declaration
       }
     }
