@@ -11,6 +11,7 @@ import {
   getMessageScrollerScrollable,
   getMessageScrollerVisibilityState,
   getNewScrollAnchor,
+  getTailSpacerHeight,
   getUnanchoredScrollAnchor,
   hasMultipleNewScrollAnchors,
 } from "./geometry"
@@ -238,6 +239,7 @@ function useMessageScrollerController({
   const {
     flushPendingScrollToMessage,
     reanchorToAnchoredMessage,
+    relaxTailSpacer,
     scrollToElement,
     scrollToEnd,
     scrollToMessage,
@@ -508,15 +510,26 @@ function useMessageScrollerController({
       // The reply streaming below the anchor consumes the tail spacer as it
       // grows. Once the last of it is gone the reply has filled the viewport
       // and the reader is genuinely at the live edge, so autoScroll hands off
-      // from the anchor hold to following the bottom. Requiring the >0 → 0
-      // transition keeps a turn taller than the viewport (placed with no
-      // spacer) held instead of yanked to the end.
-      if (
-        autoScrollRef.current &&
-        previousSpacerHeight > 0 &&
-        spacerHeightRef.current === 0
-      ) {
-        scrollToEnd({ behavior: "auto" })
+      // from the anchor hold to following the bottom. Requiring a >0 spacer
+      // keeps a turn taller than the viewport (placed with no spacer) held
+      // instead of yanked to the end. The held spacer never shrinks itself, so
+      // the handoff keys off the exact height the reply has left to consume.
+      if (autoScrollRef.current && previousSpacerHeight > 0) {
+        const content = contentRef.current
+        const viewport = viewportRef.current
+        const remaining =
+          content && viewport
+            ? getTailSpacerHeight({
+                content,
+                scrollTop: viewport.scrollTop,
+                spacer: spacerRef.current,
+                viewport,
+              })
+            : spacerHeightRef.current
+
+        if (remaining <= 0) {
+          scrollToEnd({ behavior: "auto" })
+        }
       }
 
       return
@@ -629,10 +642,18 @@ function useMessageScrollerController({
     ) {
       // A deliberate gesture releases auto-follow, turn-anchoring, and an in-flight
       // programmatic jump so re-pinning (and re-arming) never fights the reader.
+      const wasAnchored = modeRef.current === "anchored-to-message"
+
       streamingTurnRef.current = null
       modeRef.current = "free-scrolling"
+
+      // Leaving the anchor hold also gives back the held spacer slack, so the
+      // reader cannot scroll into blank space the stream no longer needs.
+      if (wasAnchored) {
+        relaxTailSpacer()
+      }
     }
-  }, [])
+  }, [relaxTailSpacer])
 
   const mirrorStateAttributes = React.useCallback(
     () => writeStateAttributes(stateStore.getSnapshot()),
