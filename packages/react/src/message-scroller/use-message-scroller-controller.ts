@@ -13,6 +13,7 @@ import {
   getNewScrollAnchor,
   getUnanchoredScrollAnchor,
   hasMultipleNewScrollAnchors,
+  markScrollAnchorsHandled,
 } from "./geometry"
 import {
   DEFAULT_SCROLL_EDGE_THRESHOLD,
@@ -448,7 +449,6 @@ function useMessageScrollerController({
             { align: "start" },
             { keepPreviousPeek: true }
           )
-          handledScrollAnchorsRef.current.add(anchor)
           return
         }
       }
@@ -465,7 +465,6 @@ function useMessageScrollerController({
             { align: "start" },
             { keepPreviousPeek: true }
           )
-          handledScrollAnchorsRef.current.add(anchor)
           return
         }
       }
@@ -481,6 +480,9 @@ function useMessageScrollerController({
     }
 
     reconcileScrollPosition()
+    // An anchor only gets the reconcile pass that introduced it; afterwards it
+    // is handled, so a later same-count change can never re-anchor an old turn.
+    markScrollAnchorsHandled(items, handledScrollAnchorsRef.current)
     capturePrependAnchor()
   }, [
     applyDefaultScrollPosition,
