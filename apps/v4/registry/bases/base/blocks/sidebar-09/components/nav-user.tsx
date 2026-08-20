@@ -40,7 +40,7 @@ export function NavUser({
             render={
               <SidebarMenuButton
                 size="lg"
-                className="md:h-8 md:p-0 data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
+                className="md:h-8 md:p-0 aria-expanded:bg-sidebar-accent aria-expanded:text-sidebar-accent-foreground"
               />
             }
           >
