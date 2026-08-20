@@ -47,6 +47,7 @@ export function Calendars({
                     hugeicons="ArrowRight01Icon"
                     phosphor="CaretRightIcon"
                     remixicon="RiArrowRightSLine"
+                    gravityui="ChevronRight"
                     className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90"
                   />
                 </CollapsibleTrigger>
@@ -67,6 +68,7 @@ export function Calendars({
                               hugeicons="Tick02Icon"
                               phosphor="CheckIcon"
                               remixicon="RiCheckLine"
+                              gravityui="Check"
                               className="hidden size-3 group-data-[active=true]/calendar-item:block"
                             />
                           </div>

@@ -39,6 +39,7 @@ export function NotFound() {
                   hugeicons="Search01Icon"
                   phosphor="MagnifyingGlassIcon"
                   remixicon="RiSearchLine"
+                  gravityui="Magnifier"
                 />
               </InputGroupAddon>
               <InputGroupAddon align="inline-end">

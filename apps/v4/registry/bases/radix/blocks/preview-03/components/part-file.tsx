@@ -68,6 +68,7 @@ export function PartFile({
               hugeicons="ImageIcon"
               phosphor="ImageIcon"
               remixicon="RiImageLine"
+              gravityui="Picture"
             />
           </AttachmentMedia>
           <span className="min-w-0 flex-1">
@@ -98,6 +99,7 @@ export function PartFile({
           hugeicons="FileIcon"
           phosphor="FileTextIcon"
           remixicon="RiFileTextLine"
+          gravityui="FileText"
         />
       </AttachmentMedia>
       <AttachmentContent>
@@ -113,6 +115,7 @@ export function PartFile({
               hugeicons="LinkSquare02Icon"
               phosphor="ArrowSquareOutIcon"
               remixicon="RiExternalLinkLine"
+              gravityui="ArrowUpRightFromSquare"
             />
           </span>
         </AttachmentAction>

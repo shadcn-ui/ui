@@ -684,4 +684,156 @@ export function Component() {
       }"
     `)
   })
+
+  test("does not forward library-specific props (gravityui)", async () => {
+    expect(
+      await transform(
+        {
+          filename: "test.tsx",
+          raw: `import * as React from "react"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
+
+export function Component() {
+  return <IconPlaceholder gravityui="Check" lucide="CheckIcon" tabler="IconCheck" className="size-4" />
+}`,
+          config: {
+            ...testConfig,
+            iconLibrary: "gravityui",
+          },
+        },
+        [transformIcons]
+      )
+    ).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { Check } from "@gravity-ui/icons"
+
+      export function Component() {
+        return <Check className="size-4" />
+      }"
+    `)
+  })
+
+  describe("gravityui library", () => {
+    test("transforms IconPlaceholder to icon component", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
+
+export function Component() {
+  return <div><IconPlaceholder gravityui="Check" /></div>
+}`,
+            config: {
+              ...testConfig,
+              iconLibrary: "gravityui",
+            },
+          },
+          [transformIcons]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+        import { Check } from "@gravity-ui/icons"
+
+        export function Component() {
+          return <div><Check /></div>
+        }"
+      `)
+    })
+
+    test("preserves className and other props", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
+
+export function Component() {
+  return <IconPlaceholder gravityui="Check" className="size-4" aria-label="check" />
+}`,
+            config: {
+              ...testConfig,
+              iconLibrary: "gravityui",
+            },
+          },
+          [transformIcons]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+        import { Check } from "@gravity-ui/icons"
+
+        export function Component() {
+          return <Check className="size-4" aria-label="check" />
+        }"
+      `)
+    })
+
+    test("handles multiple icons", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
+
+export function Component() {
+  return (
+    <div>
+      <IconPlaceholder gravityui="Check" />
+      <IconPlaceholder gravityui="ArrowDown" />
+    </div>
+  )
+}`,
+            config: {
+              ...testConfig,
+              iconLibrary: "gravityui",
+            },
+          },
+          [transformIcons]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+        import { Check, ArrowDown } from "@gravity-ui/icons"
+
+        export function Component() {
+          return (
+            <div>
+              <Check />
+              <ArrowDown />
+            </div>
+          )
+        }"
+      `)
+    })
+
+    test("preserves semicolons", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react";
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder";
+
+export function Component() {
+  return <IconPlaceholder gravityui="Check" />;
+}`,
+            config: {
+              ...testConfig,
+              iconLibrary: "gravityui",
+            },
+          },
+          [transformIcons]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react";
+        import { Check } from "@gravity-ui/icons";
+
+        export function Component() {
+          return <Check />;
+        }"
+      `)
+    })
+  })
 })

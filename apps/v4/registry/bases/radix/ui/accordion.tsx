@@ -55,6 +55,7 @@ function AccordionTrigger({
           hugeicons="ArrowDown01Icon"
           phosphor="CaretDownIcon"
           remixicon="RiArrowDownSLine"
+          gravityui="ChevronDown"
           className="cn-accordion-trigger-icon pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
         />
         <IconPlaceholder
@@ -64,6 +65,7 @@ function AccordionTrigger({
           hugeicons="ArrowUp01Icon"
           phosphor="CaretUpIcon"
           remixicon="RiArrowUpSLine"
+          gravityui="ChevronUp"
           className="cn-accordion-trigger-icon pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
         />
       </AccordionPrimitive.Trigger>

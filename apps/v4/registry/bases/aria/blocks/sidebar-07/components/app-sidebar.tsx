@@ -32,6 +32,7 @@ const data = {
           hugeicons="LayoutBottomIcon"
           phosphor="RowsIcon"
           remixicon="RiGalleryLine"
+          gravityui="LayoutList"
         />
       ),
       plan: "Enterprise",
@@ -45,6 +46,7 @@ const data = {
           hugeicons="AudioWave01Icon"
           phosphor="WaveformIcon"
           remixicon="RiPulseLine"
+          gravityui="Volume"
         />
       ),
       plan: "Startup",
@@ -58,6 +60,7 @@ const data = {
           hugeicons="CommandIcon"
           phosphor="CommandIcon"
           remixicon="RiCommandLine"
+          gravityui="Terminal"
         />
       ),
       plan: "Free",
@@ -74,6 +77,7 @@ const data = {
           hugeicons="ComputerTerminalIcon"
           phosphor="TerminalIcon"
           remixicon="RiTerminalBoxLine"
+          gravityui="Terminal"
         />
       ),
       isActive: true,
@@ -102,6 +106,7 @@ const data = {
           hugeicons="RoboticIcon"
           phosphor="RobotIcon"
           remixicon="RiRobotLine"
+          gravityui="FaceRobot"
         />
       ),
       items: [
@@ -129,6 +134,7 @@ const data = {
           hugeicons="BookOpen02Icon"
           phosphor="BookOpenIcon"
           remixicon="RiBookOpenLine"
+          gravityui="BookOpen"
         />
       ),
       items: [
@@ -160,6 +166,7 @@ const data = {
           hugeicons="Settings05Icon"
           phosphor="GearIcon"
           remixicon="RiSettingsLine"
+          gravityui="Gear"
         />
       ),
       items: [
@@ -193,6 +200,7 @@ const data = {
           hugeicons="CropIcon"
           phosphor="CropIcon"
           remixicon="RiCropLine"
+          gravityui="Square"
         />
       ),
     },
@@ -206,6 +214,7 @@ const data = {
           hugeicons="PieChartIcon"
           phosphor="ChartPieIcon"
           remixicon="RiPieChartLine"
+          gravityui="ChartPie"
         />
       ),
     },
@@ -219,6 +228,7 @@ const data = {
           hugeicons="MapsIcon"
           phosphor="MapTrifoldIcon"
           remixicon="RiMapLine"
+          gravityui="MapPin"
         />
       ),
     },

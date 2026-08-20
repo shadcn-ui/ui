@@ -54,6 +54,7 @@ export function NavFavorites({
                   hugeicons="MoreHorizontalCircle01Icon"
                   phosphor="DotsThreeOutlineIcon"
                   remixicon="RiMoreLine"
+                  gravityui="Ellipsis"
                 />
                 <span className="sr-only">More</span>
               </DropdownMenuTrigger>
@@ -70,6 +71,7 @@ export function NavFavorites({
                       hugeicons="StarOffIcon"
                       phosphor="StarIcon"
                       remixicon="RiStarOffLine"
+                      gravityui="StarFill"
                       className="text-muted-foreground"
                     />
                     <span>Remove from Favorites</span>
@@ -84,6 +86,7 @@ export function NavFavorites({
                       hugeicons="LinkIcon"
                       phosphor="LinkIcon"
                       remixicon="RiLinksLine"
+                      gravityui="Link"
                       className="text-muted-foreground"
                     />
                     <span>Copy Link</span>
@@ -95,6 +98,7 @@ export function NavFavorites({
                       hugeicons="ArrowUpRightIcon"
                       phosphor="ArrowUpRightIcon"
                       remixicon="RiArrowRightUpLine"
+                      gravityui="ArrowUpRightFromSquare"
                       className="text-muted-foreground"
                     />
                     <span>Open in New Tab</span>
@@ -107,6 +111,7 @@ export function NavFavorites({
                       hugeicons="Delete02Icon"
                       phosphor="TrashIcon"
                       remixicon="RiDeleteBinLine"
+                      gravityui="TrashBin"
                       className="text-muted-foreground"
                     />
                     <span>Delete</span>
@@ -124,6 +129,7 @@ export function NavFavorites({
               hugeicons="MoreHorizontalCircle01Icon"
               phosphor="DotsThreeOutlineIcon"
               remixicon="RiMoreLine"
+              gravityui="Ellipsis"
             />
             <span>More</span>
           </SidebarMenuButton>

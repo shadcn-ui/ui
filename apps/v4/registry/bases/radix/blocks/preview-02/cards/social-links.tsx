@@ -32,6 +32,7 @@ export function SocialLinks() {
                   hugeicons="PlusSignCircleIcon"
                   phosphor="PlusCircleIcon"
                   remixicon="RiAddCircleLine"
+                  gravityui="CirclePlus"
                 />
               </InputGroupAddon>
               <InputGroupInput
@@ -50,6 +51,7 @@ export function SocialLinks() {
                   hugeicons="Camera01Icon"
                   phosphor="CameraIcon"
                   remixicon="RiCameraLine"
+                  gravityui="Camera"
                 />
               </InputGroupAddon>
               <InputGroupInput
@@ -68,6 +70,7 @@ export function SocialLinks() {
                   hugeicons="CloudUploadIcon"
                   phosphor="CloudIcon"
                   remixicon="RiCloudLine"
+                  gravityui="Cloud"
                 />
               </InputGroupAddon>
               <InputGroupInput
@@ -86,6 +89,7 @@ export function SocialLinks() {
                   hugeicons="Globe02Icon"
                   phosphor="GlobeIcon"
                   remixicon="RiGlobalLine"
+                  gravityui="Globe"
                 />
               </InputGroupAddon>
               <InputGroupInput
