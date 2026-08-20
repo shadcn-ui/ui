@@ -4,7 +4,7 @@ import path from "path"
 import {
   registryItemCssVarsSchema,
   registryItemTailwindSchema,
-} from "@/src/registry/schema"
+} from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { TailwindVersion } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"

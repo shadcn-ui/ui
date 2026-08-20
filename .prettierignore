@@ -3,5 +3,6 @@ node_modules
 .next
 build
 .contentlayer
-apps/www/pages/api/registry.json
 **/fixtures
+deprecated
+apps/v4/registry/styles/**/*.css

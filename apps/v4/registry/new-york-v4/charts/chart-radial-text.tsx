@@ -17,7 +17,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
-import { ChartConfig, ChartContainer } from "@/registry/new-york-v4/ui/chart"
+import {
+  ChartContainer,
+  type ChartConfig,
+} from "@/registry/new-york-v4/ui/chart"
 
 export const description = "A radial chart with text"
 
@@ -51,15 +54,15 @@ export function ChartRadialText() {
             data={chartData}
             startAngle={0}
             endAngle={250}
+            outerRadius={90}
             innerRadius={80}
-            outerRadius={110}
           >
             <PolarGrid
               gridType="circle"
               radialLines={false}
               stroke="none"
               className="first:fill-muted last:fill-background"
-              polarRadius={[86, 74]}
+              polarRadius={[90, 80]}
             />
             <RadialBar dataKey="visitors" background cornerRadius={10} />
             <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
@@ -100,7 +103,7 @@ export function ChartRadialText() {
         <div className="flex items-center gap-2 leading-none font-medium">
           Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
         </div>
-        <div className="text-muted-foreground leading-none">
+        <div className="leading-none text-muted-foreground">
           Showing total visitors for the last 6 months
         </div>
       </CardFooter>

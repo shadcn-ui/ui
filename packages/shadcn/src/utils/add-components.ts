@@ -1,46 +1,65 @@
 import path from "path"
-import {
-  fetchRegistry,
-  getRegistryParentMap,
-  getRegistryTypeAliasMap,
-  registryResolveItemsTree,
-  resolveRegistryItems,
-} from "@/src/registry/api"
-import { registryItemSchema } from "@/src/registry/schema"
+import { getRegistryItems } from "@/src/registry/api"
+import { configWithDefaults } from "@/src/registry/config"
+import { resolveRegistryTree } from "@/src/registry/resolver"
 import {
   configSchema,
+  registryItemFileSchema,
+  registryItemSchema,
+  workspaceConfigSchema,
+} from "@/src/schema"
+import { getSupportedFontMarkers } from "@/src/utils/font-markers"
+import {
   findCommonRoot,
   findPackageRoot,
   getWorkspaceConfig,
-  workspaceConfigSchema,
   type Config,
 } from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
-import { handleError } from "@/src/utils/handle-error"
+import { isSafeTarget } from "@/src/utils/is-safe-target"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
+import {
+  getTargetAliasKey,
+  type TargetAliasKey,
+} from "@/src/utils/target-aliases"
 import { updateCss } from "@/src/utils/updaters/update-css"
-import { updateCssVars } from "@/src/utils/updaters/update-css-vars"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
+import { updateEnvVars } from "@/src/utils/updaters/update-env-vars"
 import { updateFiles } from "@/src/utils/updaters/update-files"
+import {
+  massageTreeForFonts,
+  updateFonts,
+} from "@/src/utils/updaters/update-fonts"
 import { updateTailwindConfig } from "@/src/utils/updaters/update-tailwind-config"
 import { z } from "zod"
+
+export interface AddComponentsOptions {
+  overwrite?: boolean
+  overwriteCssVars?: boolean
+  silent?: boolean
+  interactive?: boolean
+  resolvedTree?: NonNullable<Awaited<ReturnType<typeof resolveRegistryTree>>>
+  isNewProject?: boolean
+  skipFonts?: boolean
+  registryHeaders?: Record<string, Record<string, string>>
+  path?: string
+}
+
+type AddWorkspaceComponentsOptions = AddComponentsOptions & {
+  isRemote?: boolean
+}
 
 export async function addComponents(
   components: string[],
   config: Config,
-  options: {
-    overwrite?: boolean
-    silent?: boolean
-    isNewProject?: boolean
-    style?: string
-  }
+  options: AddComponentsOptions
 ) {
   options = {
     overwrite: false,
     silent: false,
+    interactive: true,
     isNewProject: false,
-    style: "index",
     ...options,
   }
 
@@ -57,58 +76,74 @@ export async function addComponents(
     })
   }
 
-  return await addProjectComponents(components, config, options)
+  return await addProjectComponents(components, config, {
+    ...options,
+    skipFonts: options.skipFonts,
+  })
 }
 
 async function addProjectComponents(
   components: string[],
   config: z.infer<typeof configSchema>,
-  options: {
-    overwrite?: boolean
-    silent?: boolean
-    isNewProject?: boolean
-    style?: string
-  }
+  options: AddComponentsOptions
 ) {
-  const registrySpinner = spinner(`Checking registry.`, {
-    silent: options.silent,
-  })?.start()
-  const tree = await registryResolveItemsTree(components, config)
-
-  if (!tree) {
-    registrySpinner?.fail()
-    return handleError(new Error("Failed to fetch components from registry."))
+  if (!components.length) {
+    return
   }
-  registrySpinner?.succeed()
+
+  let tree = await resolveAndValidateRegistryTree(components, config, options)
 
   const tailwindVersion = await getProjectTailwindVersionFromConfig(config)
+
+  if (!options.skipFonts) {
+    tree = await massageTreeForFonts(tree, config)
+  }
+
+  const supportedFontMarkers = getSupportedFontMarkers([tree])
+
+  await updateDependencies(tree.dependencies, tree.devDependencies, config, {
+    silent: options.silent,
+    interactive: options.interactive,
+  })
 
   await updateTailwindConfig(tree.tailwind?.config, config, {
     silent: options.silent,
     tailwindVersion,
   })
 
-  const overwriteCssVars = await shouldOverwriteCssVars(components, config)
-  await updateCssVars(tree.cssVars, config, {
-    cleanupDefaultNextStyles: options.isNewProject,
-    silent: options.silent,
-    tailwindVersion,
-    tailwindConfig: tree.tailwind?.config,
-    overwriteCssVars,
-    initIndex: options.style ? options.style === "index" : false,
-  })
-
-  // Add CSS updater
-  await updateCss(tree.css, config, {
+  await updateEnvVars(tree.envVars, config, {
     silent: options.silent,
   })
 
-  await updateDependencies(tree.dependencies, tree.devDependencies, config, {
-    silent: options.silent,
-  })
+  if (!options.skipFonts) {
+    await updateFonts(tree.fonts, config, {
+      silent: options.silent,
+    })
+  }
+
   await updateFiles(tree.files, config, {
     overwrite: options.overwrite,
     silent: options.silent,
+    interactive: options.interactive,
+    path: options.path,
+    supportedFontMarkers,
+  })
+
+  // Write CSS last so the file watcher triggers a rebuild
+  // after all component files and dependencies are in place.
+  const overwriteCssVars = await resolveOverwriteCssVars(
+    tree,
+    components,
+    config,
+    options.overwriteCssVars
+  )
+  await updateCss(tree.css, config, {
+    silent: options.silent,
+    cssVars: tree.cssVars,
+    cleanupDefaultNextStyles: options.isNewProject,
+    overwriteCssVars,
+    tailwindVersion,
+    tailwindConfig: tree.tailwind?.config,
   })
 
   if (tree.docs) {
@@ -120,28 +155,13 @@ async function addWorkspaceComponents(
   components: string[],
   config: z.infer<typeof configSchema>,
   workspaceConfig: z.infer<typeof workspaceConfigSchema>,
-  options: {
-    overwrite?: boolean
-    silent?: boolean
-    isNewProject?: boolean
-    isRemote?: boolean
-    style?: string
-  }
+  options: AddWorkspaceComponentsOptions
 ) {
-  const registrySpinner = spinner(`Checking registry.`, {
-    silent: options.silent,
-  })?.start()
-  let registryItems = await resolveRegistryItems(components, config)
-  let result = await fetchRegistry(registryItems)
-  const payload = z.array(registryItemSchema).parse(result)
-  if (!payload) {
-    registrySpinner?.fail()
-    return handleError(new Error("Failed to fetch components from registry."))
+  if (!components.length) {
+    return
   }
-  registrySpinner?.succeed()
 
-  const registryParentMap = getRegistryParentMap(payload)
-  const registryTypeAliasMap = getRegistryTypeAliasMap()
+  let tree = await resolveAndValidateRegistryTree(components, config, options)
 
   const filesCreated: string[] = []
   const filesUpdated: string[] = []
@@ -149,171 +169,303 @@ async function addWorkspaceComponents(
 
   const rootSpinner = spinner(`Installing components.`)?.start()
 
-  for (const component of payload) {
-    const alias = registryTypeAliasMap.get(component.type)
-    const registryParent = registryParentMap.get(component.name)
+  // Process global updates for the main target.
+  // These should typically go to the UI package in a workspace.
+  const mainTargetConfig = workspaceConfig.ui
+  const tailwindVersion =
+    await getProjectTailwindVersionFromConfig(mainTargetConfig)
+  const workspaceRoot = findCommonRoot(
+    config.resolvedPaths.cwd,
+    mainTargetConfig.resolvedPaths.ui
+  )
 
-    // We don't support this type of component.
-    if (!alias) {
-      continue
+  // Massage tree for fonts using the app config for framework detection.
+  // This adds fontsource deps + CSS for non-Next, or next/font CSS vars for Next.
+  tree = await massageTreeForFonts(tree, config)
+  const supportedFontMarkers = getSupportedFontMarkers([tree])
+
+  // 1. Update dependencies.
+  await updateDependencies(
+    tree.dependencies,
+    tree.devDependencies,
+    mainTargetConfig,
+    {
+      silent: true,
+      interactive: options.interactive,
     }
+  )
 
-    // A good start is ui for now.
-    // TODO: Add support for other types.
-    let targetConfig =
-      component.type === "registry:ui" || registryParent?.type === "registry:ui"
-        ? workspaceConfig.ui
-        : config
-
-    const tailwindVersion = await getProjectTailwindVersionFromConfig(
-      targetConfig
+  // 2. Update tailwind config.
+  if (tree.tailwind?.config) {
+    await updateTailwindConfig(tree.tailwind?.config, mainTargetConfig, {
+      silent: true,
+      tailwindVersion,
+    })
+    filesUpdated.push(
+      path.relative(
+        workspaceRoot,
+        mainTargetConfig.resolvedPaths.tailwindConfig
+      )
     )
+  }
 
-    const workspaceRoot = findCommonRoot(
+  // 3. Update environment variables.
+  if (tree.envVars) {
+    await updateEnvVars(tree.envVars, mainTargetConfig, {
+      silent: true,
+    })
+  }
+
+  // 4. Update fonts.
+  // Fonts modify the app's layout file (e.g. app/layout.tsx),
+  // so we use the app config, not the UI workspace config.
+  await updateFonts(tree.fonts, config, {
+    silent: true,
+  })
+
+  // 5. Group files by their target config and update files.
+  const filesByTarget = new Map<TargetAliasKey, typeof tree.files>()
+  const FILE_TYPE_TO_CONFIG_KEY: Record<string, TargetAliasKey> = {
+    "registry:ui": "ui",
+    "registry:hook": "hooks",
+    "registry:lib": "lib",
+  }
+  const getTargetConfigKeyForFile = (
+    file: z.infer<typeof registryItemFileSchema>
+  ) => {
+    return (
+      getTargetAliasKey(file.target) ??
+      FILE_TYPE_TO_CONFIG_KEY[file.type || "registry:ui"] ??
+      "components"
+    )
+  }
+  const getTargetConfigForKey = (configKey: TargetAliasKey) => {
+    return configKey && workspaceConfig[configKey]
+      ? workspaceConfig[configKey]
+      : config
+  }
+
+  for (const file of tree.files ?? []) {
+    const targetKey = getTargetConfigKeyForFile(file)
+    if (!filesByTarget.has(targetKey)) {
+      filesByTarget.set(targetKey, [])
+    }
+    filesByTarget.get(targetKey)!.push(file)
+  }
+
+  // Process each target config with its appropriate workspace config.
+  for (const targetKey of Array.from(filesByTarget.keys())) {
+    const targetFiles = filesByTarget.get(targetKey)!
+    const targetConfig = getTargetConfigForKey(targetKey)
+    const plannedFiles = (tree.files ?? []).filter((file) => {
+      const fileTargetConfig = getTargetConfigForKey(
+        getTargetConfigKeyForFile(file)
+      )
+
+      return (
+        fileTargetConfig.resolvedPaths.cwd === targetConfig.resolvedPaths.cwd
+      )
+    })
+
+    const typeWorkspaceRoot = findCommonRoot(
       config.resolvedPaths.cwd,
-      targetConfig.resolvedPaths.ui
+      targetConfig.resolvedPaths.ui || targetConfig.resolvedPaths.cwd
     )
     const packageRoot =
-      (await findPackageRoot(workspaceRoot, targetConfig.resolvedPaths.cwd)) ??
-      targetConfig.resolvedPaths.cwd
+      (await findPackageRoot(
+        typeWorkspaceRoot,
+        targetConfig.resolvedPaths.cwd
+      )) ?? targetConfig.resolvedPaths.cwd
 
-    // 1. Update tailwind config.
-    if (component.tailwind?.config) {
-      await updateTailwindConfig(component.tailwind?.config, targetConfig, {
-        silent: true,
-        tailwindVersion,
-      })
-      filesUpdated.push(
-        path.relative(workspaceRoot, targetConfig.resolvedPaths.tailwindConfig)
-      )
-    }
-
-    // 2. Update css vars.
-    if (component.cssVars) {
-      const overwriteCssVars = await shouldOverwriteCssVars(components, config)
-      await updateCssVars(component.cssVars, targetConfig, {
-        silent: true,
-        tailwindVersion,
-        tailwindConfig: component.tailwind?.config,
-        overwriteCssVars,
-      })
-      filesUpdated.push(
-        path.relative(workspaceRoot, targetConfig.resolvedPaths.tailwindCss)
-      )
-    }
-
-    // 3. Update CSS
-    if (component.css) {
-      await updateCss(component.css, targetConfig, {
-        silent: true,
-      })
-      filesUpdated.push(
-        path.relative(workspaceRoot, targetConfig.resolvedPaths.tailwindCss)
-      )
-    }
-
-    // 4. Update dependencies.
-    await updateDependencies(
-      component.dependencies,
-      component.devDependencies,
-      targetConfig,
-      {
-        silent: true,
-      }
-    )
-
-    // 5. Update files.
-    const files = await updateFiles(component.files, targetConfig, {
+    // Update files for this target config.
+    const files = await updateFiles(targetFiles, targetConfig, {
       overwrite: options.overwrite,
       silent: true,
+      interactive: options.interactive,
       rootSpinner,
       isRemote: options.isRemote,
+      isWorkspace: true,
+      path: options.path,
+      plannedFiles,
+      supportedFontMarkers,
     })
 
     filesCreated.push(
       ...files.filesCreated.map((file) =>
-        path.relative(workspaceRoot, path.join(packageRoot, file))
+        path.relative(typeWorkspaceRoot, path.join(packageRoot, file))
       )
     )
     filesUpdated.push(
       ...files.filesUpdated.map((file) =>
-        path.relative(workspaceRoot, path.join(packageRoot, file))
+        path.relative(typeWorkspaceRoot, path.join(packageRoot, file))
       )
     )
     filesSkipped.push(
       ...files.filesSkipped.map((file) =>
-        path.relative(workspaceRoot, path.join(packageRoot, file))
+        path.relative(typeWorkspaceRoot, path.join(packageRoot, file))
       )
+    )
+  }
+
+  // 6. Write CSS last so the file watcher triggers a rebuild
+  // after all component files and dependencies are in place.
+  const overwriteCssVars = await resolveOverwriteCssVars(
+    tree,
+    components,
+    config,
+    options.overwriteCssVars
+  )
+  await updateCss(tree.css, mainTargetConfig, {
+    silent: true,
+    cssVars: tree.cssVars,
+    overwriteCssVars,
+    tailwindVersion,
+    tailwindConfig: tree.tailwind?.config,
+  })
+  if (tree.cssVars || tree.css) {
+    filesUpdated.push(
+      path.relative(workspaceRoot, mainTargetConfig.resolvedPaths.tailwindCss)
     )
   }
 
   rootSpinner?.succeed()
 
-  // Sort files.
-  filesCreated.sort()
-  filesUpdated.sort()
-  filesSkipped.sort()
+  // Deduplicate and sort files.
+  const dedupedCreated = Array.from(new Set(filesCreated)).sort()
+  const dedupedUpdated = Array.from(
+    new Set(filesUpdated.filter((file) => !filesCreated.includes(file)))
+  ).sort()
+  const dedupedSkipped = Array.from(new Set(filesSkipped)).sort()
 
-  const hasUpdatedFiles = filesCreated.length || filesUpdated.length
-  if (!hasUpdatedFiles && !filesSkipped.length) {
+  const hasUpdatedFiles = dedupedCreated.length || dedupedUpdated.length
+  if (!hasUpdatedFiles && !dedupedSkipped.length) {
     spinner(`No files updated.`, {
       silent: options.silent,
     })?.info()
   }
 
-  if (filesCreated.length) {
+  if (dedupedCreated.length) {
     spinner(
-      `Created ${filesCreated.length} ${
-        filesCreated.length === 1 ? "file" : "files"
+      `Created ${dedupedCreated.length} ${
+        dedupedCreated.length === 1 ? "file" : "files"
       }:`,
       {
         silent: options.silent,
       }
     )?.succeed()
-    for (const file of filesCreated) {
+    for (const file of dedupedCreated) {
       logger.log(`  - ${file}`)
     }
   }
 
-  if (filesUpdated.length) {
+  if (dedupedUpdated.length) {
     spinner(
-      `Updated ${filesUpdated.length} ${
-        filesUpdated.length === 1 ? "file" : "files"
+      `Updated ${dedupedUpdated.length} ${
+        dedupedUpdated.length === 1 ? "file" : "files"
       }:`,
       {
         silent: options.silent,
       }
     )?.info()
-    for (const file of filesUpdated) {
+    for (const file of dedupedUpdated) {
       logger.log(`  - ${file}`)
     }
   }
 
-  if (filesSkipped.length) {
+  if (dedupedSkipped.length) {
     spinner(
-      `Skipped ${filesSkipped.length} ${
-        filesUpdated.length === 1 ? "file" : "files"
+      `Skipped ${dedupedSkipped.length} ${
+        dedupedSkipped.length === 1 ? "file" : "files"
       }: (use --overwrite to overwrite)`,
       {
         silent: options.silent,
       }
     )?.info()
-    for (const file of filesSkipped) {
+    for (const file of dedupedSkipped) {
       logger.log(`  - ${file}`)
     }
   }
+
+  if (tree.docs) {
+    logger.info(tree.docs)
+  }
+}
+
+async function resolveAndValidateRegistryTree(
+  components: string[],
+  config: z.infer<typeof configSchema>,
+  options: AddComponentsOptions
+) {
+  const registrySpinner = spinner(`Checking registry.`, {
+    silent: options.silent,
+  })?.start()
+  const tree =
+    options.resolvedTree ??
+    (await resolveRegistryTree(components, configWithDefaults(config)))
+
+  if (!tree) {
+    registrySpinner?.fail()
+    throw new Error("Failed to fetch components from registry.")
+  }
+
+  try {
+    validateFilesTarget(tree.files ?? [], config.resolvedPaths.cwd)
+  } catch (error) {
+    registrySpinner?.fail()
+    throw error
+  }
+
+  registrySpinner?.succeed()
+
+  return tree
+}
+
+async function resolveOverwriteCssVars(
+  tree: NonNullable<Awaited<ReturnType<typeof resolveRegistryTree>>>,
+  components: z.infer<typeof registryItemSchema>["name"][],
+  config: z.infer<typeof configSchema>,
+  overwriteCssVars?: boolean
+) {
+  if (!tree.cssVars || Object.keys(tree.cssVars).length === 0) {
+    return undefined
+  }
+
+  return overwriteCssVars ?? shouldOverwriteCssVars(components, config)
 }
 
 async function shouldOverwriteCssVars(
   components: z.infer<typeof registryItemSchema>["name"][],
   config: z.infer<typeof configSchema>
 ) {
-  let registryItems = await resolveRegistryItems(components, config)
-  let result = await fetchRegistry(registryItems)
+  const result = await getRegistryItems(components, { config })
   const payload = z.array(registryItemSchema).parse(result)
 
   return payload.some(
     (component) =>
-      component.type === "registry:theme" || component.type === "registry:style"
+      component.type === "registry:theme" ||
+      component.type === "registry:style" ||
+      component.type === "registry:font" ||
+      component.type === "registry:base"
   )
+}
+
+export function validateFilesTarget(
+  files: z.infer<typeof registryItemFileSchema>[],
+  cwd: string
+) {
+  for (const file of files) {
+    // `target` decides the write location when present; otherwise the path is
+    // derived from `file.path` (see resolveFilePath in update-files.ts). Both
+    // are registry-controlled, so validate whichever one is used.
+    const locationField = file?.target ?? file?.path
+    if (!locationField) {
+      continue
+    }
+
+    if (!isSafeTarget(locationField, cwd)) {
+      throw new Error(
+        `We found an unsafe file path "${locationField}" in the registry item. Installation aborted.`
+      )
+    }
+  }
 }

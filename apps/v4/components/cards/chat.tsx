@@ -32,7 +32,12 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/registry/new-york-v4/ui/dialog"
-import { Input } from "@/registry/new-york-v4/ui/input"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "@/registry/new-york-v4/ui/input-group"
 import {
   Tooltip,
   TooltipContent,
@@ -106,7 +111,7 @@ export function CardsChat() {
             </Avatar>
             <div className="flex flex-col gap-0.5">
               <p className="text-sm leading-none font-medium">Sofia Davis</p>
-              <p className="text-muted-foreground text-xs">m@example.com</p>
+              <p className="text-xs text-muted-foreground">m@example.com</p>
             </div>
           </div>
           <TooltipProvider delayDuration={0}>
@@ -134,7 +139,7 @@ export function CardsChat() {
                 className={cn(
                   "flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm",
                   message.role === "user"
-                    ? "bg-primary text-primary-foreground ml-auto"
+                    ? "ml-auto bg-primary text-primary-foreground"
                     : "bg-muted"
                 )}
               >
@@ -159,23 +164,25 @@ export function CardsChat() {
             }}
             className="relative w-full"
           >
-            <Input
-              id="message"
-              placeholder="Type your message..."
-              className="flex-1 pr-10"
-              autoComplete="off"
-              value={input}
-              onChange={(event) => setInput(event.target.value)}
-            />
-            <Button
-              type="submit"
-              size="icon"
-              className="absolute top-1/2 right-2 size-6 -translate-y-1/2 rounded-full"
-              disabled={inputLength === 0}
-            >
-              <ArrowUpIcon className="size-3.5" />
-              <span className="sr-only">Send</span>
-            </Button>
+            <InputGroup>
+              <InputGroupInput
+                id="message"
+                placeholder="Type your message..."
+                autoComplete="off"
+                value={input}
+                onChange={(event) => setInput(event.target.value)}
+              />
+              <InputGroupAddon align="inline-end">
+                <InputGroupButton
+                  type="submit"
+                  size="icon-xs"
+                  className="rounded-full"
+                >
+                  <ArrowUpIcon />
+                  <span className="sr-only">Send</span>
+                </InputGroupButton>
+              </InputGroupAddon>
+            </InputGroup>
           </form>
         </CardFooter>
       </Card>
@@ -222,12 +229,12 @@ export function CardsChat() {
                       <p className="text-sm leading-none font-medium">
                         {user.name}
                       </p>
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-sm text-muted-foreground">
                         {user.email}
                       </p>
                     </div>
                     {selectedUsers.includes(user) ? (
-                      <CheckIcon className="text-primary ml-auto flex size-4" />
+                      <CheckIcon className="ml-auto flex size-4 text-primary" />
                     ) : null}
                   </CommandItem>
                 ))}
@@ -245,7 +252,7 @@ export function CardsChat() {
                 ))}
               </div>
             ) : (
-              <p className="text-muted-foreground text-sm">
+              <p className="text-sm text-muted-foreground">
                 Select users to add to this thread.
               </p>
             )}

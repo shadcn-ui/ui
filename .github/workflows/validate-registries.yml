@@ -1,0 +1,84 @@
+name: Validate Registries
+
+on:
+  pull_request:
+    paths:
+      - "apps/v4/registry/directory.json"
+  push:
+    branches:
+      - main
+    paths:
+      - "apps/v4/registry/directory.json"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: pnpm validate:registries
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Block reserved registry namespaces
+        env:
+          RESERVED_NAMESPACES: "@shadcn,@ui,@blocks,@components,@block,@component,@util,@utils,@registry,@lib,@hook,@hooks,@theme,@themes,@chart,@charts"
+        run: |
+          node <<'EOF'
+          const fs = require("node:fs")
+
+          const file = "apps/v4/registry/directory.json"
+          const reservedNamespaces = new Set(
+            process.env.RESERVED_NAMESPACES.split(",").filter(Boolean)
+          )
+
+          function readNames() {
+            return JSON.parse(fs.readFileSync(file, "utf8")).map(
+              (entry) => entry.name
+            )
+          }
+
+          const violations = readNames()
+            .filter((name) => reservedNamespaces.has(name))
+            .map((name) => `${file}: ${name}`)
+
+          if (violations.length > 0) {
+            console.error("Reserved registry namespaces are not allowed:")
+
+            for (const violation of violations) {
+              console.error(`- ${violation}`)
+            }
+
+            process.exit(1)
+          }
+          EOF
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 10.33.4
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Validate registries
+        run: pnpm --filter=v4 validate:registries

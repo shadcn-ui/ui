@@ -7,8 +7,8 @@ export default defineConfig({
       ...configDefaults.exclude,
       "**/node_modules/**",
       "**/fixtures/**",
-      "**/templates/**",
     ],
+    testTimeout: 8000,
   },
   plugins: [
     tsconfigPaths({

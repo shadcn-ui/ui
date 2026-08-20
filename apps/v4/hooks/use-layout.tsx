@@ -61,7 +61,10 @@ const Layout = ({
     }
   })
 
-  const attrs = !value ? ["layout-fixed", "layout-full"] : Object.values(value)
+  const attrs = React.useMemo(
+    () => (!value ? ["layout-fixed", "layout-full"] : Object.values(value)),
+    [value]
+  )
 
   const applyLayout = React.useCallback(
     (layout: Layout) => {

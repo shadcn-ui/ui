@@ -11,7 +11,7 @@
   "dependencies": {
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.0.4"
+    "next": "14.2.35"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

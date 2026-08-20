@@ -1,64 +1,290 @@
+import { existsSync } from "fs"
 import path from "path"
-import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
-import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
-import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
-import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/updaters/update-tailwind-config"
-import deepmerge from "deepmerge"
-import { HttpsProxyAgent } from "https-proxy-agent"
-import fetch from "node-fetch"
-import { z } from "zod"
-
+import { resolveGitHubRegistrySource } from "@/src/registry/address"
+import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
+import { configWithDefaults } from "@/src/registry/config"
 import {
+  BASE_COLORS,
+  BUILTIN_REGISTRIES,
+  REGISTRY_URL,
+} from "@/src/registry/constants"
+import { setRegistryHeaders, withRegistryContext } from "@/src/registry/context"
+import {
+  ConfigParseError,
+  RegistriesIndexParseError,
+  RegistryInvalidNamespaceError,
+  RegistryNotFoundError,
+  RegistryParseError,
+  RegistryValidationError,
+} from "@/src/registry/errors"
+import { fetchRegistry } from "@/src/registry/fetcher"
+import { fetchGitHubRegistryCatalog } from "@/src/registry/github"
+import {
+  fetchRegistryItems,
+  resolveRegistryTree,
+} from "@/src/registry/resolver"
+import { isUrl } from "@/src/registry/utils"
+import {
+  configJsonSchema,
   iconsSchema,
+  registriesIndexSchema,
+  registriesSchema,
   registryBaseColorSchema,
+  registryConfigSchema,
   registryIndexSchema,
   registryItemSchema,
-  registryResolvedItemsTreeSchema,
+  registrySchema,
   stylesSchema,
-} from "./schema"
+} from "@/src/schema"
+import { Config, explorer } from "@/src/utils/get-config"
+import { handleError } from "@/src/utils/handle-error"
+import { logger } from "@/src/utils/logger"
+import { cosmiconfig } from "cosmiconfig"
+import { z } from "zod"
 
-const REGISTRY_URL = process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"
+const packageRegistriesExplorer = cosmiconfig("registries", {
+  packageProp: "registries",
+  searchPlaces: ["package.json"],
+})
 
-const agent = process.env.https_proxy
-  ? new HttpsProxyAgent(process.env.https_proxy)
-  : undefined
+const registriesConfigFileSchema = z.object({
+  registries: registryConfigSchema.optional(),
+})
 
-const registryCache = new Map<string, Promise<any>>()
+type RegistryApiOptions = {
+  config?: Partial<Config>
+  useCache?: boolean
+}
 
-export const BASE_COLORS = [
-  {
-    name: "neutral",
-    label: "Neutral",
-  },
-  {
-    name: "gray",
-    label: "Gray",
-  },
-  {
-    name: "zinc",
-    label: "Zinc",
-  },
-  {
-    name: "stone",
-    label: "Stone",
-  },
-  {
-    name: "slate",
-    label: "Slate",
-  },
-] as const
+// Search parameters forwarded to the registry as query params so dynamic
+// registries can filter server-side. Static registries ignore them and return
+// the full catalog. See https://ui.shadcn.com/docs/registry/dynamic-search.
+type RegistrySearchParams = {
+  query?: string
+  types?: string[]
+  limit?: number
+  offset?: number
+}
 
-export async function getRegistryIndex() {
-  try {
-    const [result] = await fetchRegistry(["index.json"])
+type GetRegistryOptions = RegistryApiOptions & {
+  searchParams?: RegistrySearchParams
+}
 
-    return registryIndexSchema.parse(result)
-  } catch (error) {
-    logger.error("\n")
-    handleError(error)
+function appendSearchParamsToUrl(
+  url: string,
+  searchParams?: RegistrySearchParams
+) {
+  if (!searchParams) {
+    return url
   }
+
+  const parsedUrl = new URL(url)
+
+  if (searchParams.query) {
+    parsedUrl.searchParams.set("q", searchParams.query)
+  }
+
+  if (searchParams.types?.length) {
+    parsedUrl.searchParams.set("type", searchParams.types.join(","))
+  }
+
+  if (searchParams.limit !== undefined) {
+    parsedUrl.searchParams.set("limit", String(searchParams.limit))
+  }
+
+  if (searchParams.offset !== undefined) {
+    parsedUrl.searchParams.set("offset", String(searchParams.offset))
+  }
+
+  return parsedUrl.toString()
+}
+
+export async function getRegistry(name: string, options?: GetRegistryOptions) {
+  return withRegistryContext(() => getRegistryWithContext(name, options))
+}
+
+async function getRegistryWithContext(
+  name: string,
+  options?: GetRegistryOptions
+) {
+  const { config, useCache, searchParams } = options || {}
+
+  if (isUrl(name)) {
+    const url = appendSearchParamsToUrl(name, searchParams)
+    const [result] = await fetchRegistry([url], { useCache })
+    return parseRegistryCatalog(name, result)
+  }
+
+  // GitHub registries are raw files. There is no server to run a search, so
+  // search params are not forwarded and filtering happens locally.
+  const githubSource = resolveGitHubRegistrySource(name)
+  if (githubSource) {
+    return fetchGitHubRegistryCatalog(githubSource, { useCache })
+  }
+
+  if (!name.startsWith("@")) {
+    throw new RegistryInvalidNamespaceError(name)
+  }
+
+  let registryName = name
+  if (!registryName.endsWith("/registry")) {
+    registryName = `${registryName}/registry`
+  }
+
+  const urlAndHeaders = buildUrlAndHeadersForRegistryItem(
+    registryName as `@${string}`,
+    configWithDefaults(config)
+  )
+
+  if (!urlAndHeaders?.url) {
+    throw new RegistryNotFoundError(registryName)
+  }
+
+  // Append search params before registering headers so the header lookup key
+  // matches the URL we actually fetch.
+  const url = appendSearchParamsToUrl(urlAndHeaders.url, searchParams)
+
+  if (urlAndHeaders.headers && Object.keys(urlAndHeaders.headers).length > 0) {
+    setRegistryHeaders({
+      [url]: urlAndHeaders.headers,
+    })
+  }
+
+  const [result] = await fetchRegistry([url], { useCache })
+
+  return parseRegistryCatalog(registryName, result)
+}
+
+function parseRegistryCatalog(name: string, result: unknown) {
+  try {
+    const registry = registrySchema.parse(result)
+
+    if (registry.include?.length) {
+      throw new RegistryValidationError(
+        `Registry catalog "${name}" uses "include", but consumer registry endpoints must serve a resolved registry catalog. Run "npx shadcn build" and serve the built registry.json, or use loadRegistry() in a dynamic route.`,
+        {
+          context: {
+            registry: name,
+            include: registry.include,
+          },
+          suggestion:
+            "Serve a flattened registry.json for CLI consumers. Source registry.json files with include are supported by shadcn build and loadRegistry().",
+        }
+      )
+    }
+
+    return registry
+  } catch (error) {
+    if (error instanceof RegistryValidationError) {
+      throw error
+    }
+
+    throw new RegistryParseError(name, error, {
+      subject: "registry catalog",
+      suggestion:
+        "The registry catalog may be corrupted or have an invalid format. Please make sure it returns a valid registry.json object. See https://ui.shadcn.com/schema/registry.json.",
+    })
+  }
+}
+
+export async function getRegistryItems(
+  items: string[],
+  options?: RegistryApiOptions
+) {
+  const { config, useCache = false } = options || {}
+
+  return withRegistryContext(() =>
+    fetchRegistryItems(items, configWithDefaults(config), { useCache })
+  )
+}
+
+export async function resolveRegistryItems(
+  items: string[],
+  options?: RegistryApiOptions
+) {
+  const { config, useCache = false } = options || {}
+
+  return withRegistryContext(() =>
+    resolveRegistryTree(items, configWithDefaults(config), { useCache })
+  )
+}
+
+export async function getRegistriesConfig(
+  cwd: string,
+  options?: { useCache?: boolean }
+) {
+  const { useCache = true } = options || {}
+
+  if (!useCache) {
+    explorer.clearCaches()
+    packageRegistriesExplorer.clearCaches()
+  }
+
+  const packageJsonRegistries = await getPackageJsonRegistries(cwd)
+
+  // Registries are merged from package.json and components.json, with
+  // components.json taking precedence per key.
+  const componentsJsonPath = path.resolve(cwd, "components.json")
+  if (existsSync(componentsJsonPath)) {
+    const configResult = await explorer.load(componentsJsonPath)
+    const config = parseRegistriesConfig(
+      cwd,
+      configResult?.config,
+      "components.json"
+    )
+
+    return {
+      registries: {
+        ...BUILTIN_REGISTRIES,
+        ...packageJsonRegistries,
+        ...config.registries,
+      },
+    }
+  }
+
+  return {
+    registries: packageJsonRegistries,
+  }
+}
+
+export async function getPackageJsonRegistries(
+  cwd: string
+): Promise<z.infer<typeof registryConfigSchema>> {
+  const packageJsonPath = path.resolve(cwd, "package.json")
+  if (!existsSync(packageJsonPath)) {
+    return {}
+  }
+
+  const configResult = await packageRegistriesExplorer.load(packageJsonPath)
+  return parseRegistriesConfig(
+    cwd,
+    {
+      registries: configResult?.config,
+    },
+    "package.json"
+  ).registries
+}
+
+function parseRegistriesConfig(
+  cwd: string,
+  config: unknown,
+  configFile: "components.json" | "package.json"
+) {
+  const result = registriesConfigFileSchema.safeParse(config)
+
+  if (!result.success) {
+    throw new ConfigParseError(cwd, result.error, configFile)
+  }
+
+  return {
+    registries: result.data.registries || {},
+  }
+}
+
+export async function getShadcnRegistryIndex() {
+  const [result] = await fetchRegistry(["index.json"])
+
+  return registryIndexSchema.parse(result)
 }
 
 export async function getRegistryStyles() {
@@ -83,34 +309,19 @@ export async function getRegistryIcons() {
   }
 }
 
-export async function getRegistryItem(name: string, style: string) {
-  try {
-    const [result] = await fetchRegistry([
-      isUrl(name) ? name : `styles/${style}/${name}.json`,
-    ])
-
-    return registryItemSchema.parse(result)
-  } catch (error) {
-    logger.break()
-    handleError(error)
-    return null
-  }
-}
-
 export async function getRegistryBaseColors() {
   return BASE_COLORS
 }
 
 export async function getRegistryBaseColor(baseColor: string) {
-  try {
-    const [result] = await fetchRegistry([`colors/${baseColor}.json`])
+  const [result] = await fetchRegistry([`colors/${baseColor}.json`])
 
-    return registryBaseColorSchema.parse(result)
-  } catch (error) {
-    handleError(error)
-  }
+  return registryBaseColorSchema.parse(result)
 }
 
+/**
+ * @deprecated This function is deprecated and will be removed in a future version.
+ */
 export async function resolveTree(
   index: z.infer<typeof registryIndexSchema>,
   names: string[]
@@ -138,19 +349,26 @@ export async function resolveTree(
   )
 }
 
+/**
+ * @deprecated This function is deprecated and will be removed in a future version.
+ */
 export async function fetchTree(
   style: string,
   tree: z.infer<typeof registryIndexSchema>
 ) {
   try {
     const paths = tree.map((item) => `styles/${style}/${item.name}.json`)
-    const result = await fetchRegistry(paths)
-    return registryIndexSchema.parse(result)
+    const results = await fetchRegistry(paths)
+    return results.map((result) => registryItemSchema.parse(result))
   } catch (error) {
     handleError(error)
+    return []
   }
 }
 
+/**
+ * @deprecated This function is deprecated and will be removed in a future version.
+ */
 export async function getItemTargetPath(
   config: Config,
   item: Pick<z.infer<typeof registryItemSchema>, "type">,
@@ -175,360 +393,64 @@ export async function getItemTargetPath(
   )
 }
 
-export async function fetchRegistry(
-  paths: string[],
-  options: { useCache?: boolean } = {}
-) {
+// Fetch registries with new schema (array of objects with name, homepage, url, featured).
+export async function getRegistries(options?: { useCache?: boolean }) {
   options = {
     useCache: true,
     ...options,
   }
 
-  try {
-    const results = await Promise.all(
-      paths.map(async (path) => {
-        const url = getRegistryUrl(path)
-
-        // Check cache first if caching is enabled
-        if (options.useCache && registryCache.has(url)) {
-          return registryCache.get(url)
-        }
-
-        // Store the promise in the cache before awaiting if caching is enabled
-        const fetchPromise = (async () => {
-          const response = await fetch(url, { agent })
-
-          if (!response.ok) {
-            const errorMessages: { [key: number]: string } = {
-              400: "Bad request",
-              401: "Unauthorized",
-              403: "Forbidden",
-              404: "Not found",
-              500: "Internal server error",
-            }
-
-            if (response.status === 401) {
-              throw new Error(
-                `You are not authorized to access the component at ${highlighter.info(
-                  url
-                )}.\nIf this is a remote registry, you may need to authenticate.`
-              )
-            }
-
-            if (response.status === 404) {
-              throw new Error(
-                `The component at ${highlighter.info(
-                  url
-                )} was not found.\nIt may not exist at the registry. Please make sure it is a valid component.`
-              )
-            }
-
-            if (response.status === 403) {
-              throw new Error(
-                `You do not have access to the component at ${highlighter.info(
-                  url
-                )}.\nIf this is a remote registry, you may need to authenticate or a token.`
-              )
-            }
-
-            const result = await response.json()
-            const message =
-              result && typeof result === "object" && "error" in result
-                ? result.error
-                : response.statusText || errorMessages[response.status]
-            throw new Error(
-              `Failed to fetch from ${highlighter.info(url)}.\n${message}`
-            )
-          }
-
-          return response.json()
-        })()
-
-        if (options.useCache) {
-          registryCache.set(url, fetchPromise)
-        }
-        return fetchPromise
-      })
-    )
-
-    return results
-  } catch (error) {
-    logger.error("\n")
-    handleError(error)
-    return []
-  }
-}
-
-export function clearRegistryCache() {
-  registryCache.clear()
-}
-
-export async function registryResolveItemsTree(
-  names: z.infer<typeof registryItemSchema>["name"][],
-  config: Config
-) {
-  try {
-    const index = await getRegistryIndex()
-    if (!index) {
-      return null
-    }
-
-    // If we're resolving the index, we want it to go first.
-    if (names.includes("index")) {
-      names.unshift("index")
-    }
-
-    let registryItems = await resolveRegistryItems(names, config)
-    let result = await fetchRegistry(registryItems)
-    const payload = z.array(registryItemSchema).parse(result)
-
-    if (!payload) {
-      return null
-    }
-
-    // If we're resolving the index, we want to fetch
-    // the theme item if a base color is provided.
-    // We do this for index only.
-    // Other components will ship with their theme tokens.
-    if (names.includes("index")) {
-      if (config.tailwind.baseColor) {
-        const theme = await registryGetTheme(config.tailwind.baseColor, config)
-        if (theme) {
-          payload.unshift(theme)
-        }
-      }
-    }
-
-    // Sort the payload so that registry:theme is always first.
-    payload.sort((a, b) => {
-      if (a.type === "registry:theme") {
-        return -1
-      }
-      return 1
-    })
-
-    let tailwind = {}
-    payload.forEach((item) => {
-      tailwind = deepmerge(tailwind, item.tailwind ?? {})
-    })
-
-    let cssVars = {}
-    payload.forEach((item) => {
-      cssVars = deepmerge(cssVars, item.cssVars ?? {})
-    })
-
-    let css = {}
-    payload.forEach((item) => {
-      css = deepmerge(css, item.css ?? {})
-    })
-
-    let docs = ""
-    payload.forEach((item) => {
-      if (item.docs) {
-        docs += `${item.docs}\n`
-      }
-    })
-
-    return registryResolvedItemsTreeSchema.parse({
-      dependencies: deepmerge.all(
-        payload.map((item) => item.dependencies ?? [])
-      ),
-      devDependencies: deepmerge.all(
-        payload.map((item) => item.devDependencies ?? [])
-      ),
-      files: deepmerge.all(payload.map((item) => item.files ?? [])),
-      tailwind,
-      cssVars,
-      css,
-      docs,
-    })
-  } catch (error) {
-    handleError(error)
-    return null
-  }
-}
-
-async function resolveRegistryDependencies(
-  url: string,
-  config: Config
-): Promise<string[]> {
-  const visited = new Set<string>()
-  const payload: string[] = []
-
-  const style = config.resolvedPaths?.cwd
-    ? await getTargetStyleFromConfig(config.resolvedPaths.cwd, config.style)
-    : config.style
-
-  async function resolveDependencies(itemUrl: string) {
-    const url = getRegistryUrl(
-      isUrl(itemUrl) ? itemUrl : `styles/${style}/${itemUrl}.json`
-    )
-
-    if (visited.has(url)) {
-      return
-    }
-
-    visited.add(url)
-
-    try {
-      const [result] = await fetchRegistry([url])
-      const item = registryItemSchema.parse(result)
-      payload.push(url)
-
-      if (item.registryDependencies) {
-        for (const dependency of item.registryDependencies) {
-          await resolveDependencies(dependency)
-        }
-      }
-    } catch (error) {
-      console.error(
-        `Error fetching or parsing registry item at ${itemUrl}:`,
-        error
-      )
-    }
-  }
-
-  await resolveDependencies(url)
-  return Array.from(new Set(payload))
-}
-
-export async function registryGetTheme(name: string, config: Config) {
-  const [baseColor, tailwindVersion] = await Promise.all([
-    getRegistryBaseColor(name),
-    getProjectTailwindVersionFromConfig(config),
-  ])
-  if (!baseColor) {
-    return null
-  }
-
-  // TODO: Move this to the registry i.e registry:theme.
-  const theme = {
-    name,
-    type: "registry:theme",
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            borderRadius: {
-              lg: "var(--radius)",
-              md: "calc(var(--radius) - 2px)",
-              sm: "calc(var(--radius) - 4px)",
-            },
-            colors: {},
-          },
-        },
-      },
-    },
-    cssVars: {
-      theme: {},
-      light: {
-        radius: "0.5rem",
-      },
-      dark: {},
-    },
-  } satisfies z.infer<typeof registryItemSchema>
-
-  if (config.tailwind.cssVariables) {
-    theme.tailwind.config.theme.extend.colors = {
-      ...theme.tailwind.config.theme.extend.colors,
-      ...buildTailwindThemeColorsFromCssVars(baseColor.cssVars.dark ?? {}),
-    }
-    theme.cssVars = {
-      theme: {
-        ...baseColor.cssVars.theme,
-        ...theme.cssVars.theme,
-      },
-      light: {
-        ...baseColor.cssVars.light,
-        ...theme.cssVars.light,
-      },
-      dark: {
-        ...baseColor.cssVars.dark,
-        ...theme.cssVars.dark,
-      },
-    }
-
-    if (tailwindVersion === "v4" && baseColor.cssVarsV4) {
-      theme.cssVars = {
-        theme: {
-          ...baseColor.cssVarsV4.theme,
-          ...theme.cssVars.theme,
-        },
-        light: {
-          radius: "0.625rem",
-          ...baseColor.cssVarsV4.light,
-        },
-        dark: {
-          ...baseColor.cssVarsV4.dark,
-        },
-      }
-    }
-  }
-
-  return theme
-}
-
-function getRegistryUrl(path: string) {
-  if (isUrl(path)) {
-    // If the url contains /chat/b/, we assume it's the v0 registry.
-    // We need to add the /json suffix if it's missing.
-    const url = new URL(path)
-    if (url.pathname.match(/\/chat\/b\//) && !url.pathname.endsWith("/json")) {
-      url.pathname = `${url.pathname}/json`
-    }
-
-    return url.toString()
-  }
-
-  return `${REGISTRY_URL}/${path}`
-}
-
-export function isUrl(path: string) {
-  try {
-    new URL(path)
-    return true
-  } catch (error) {
-    return false
-  }
-}
-
-// TODO: We're double-fetching here. Use a cache.
-export async function resolveRegistryItems(names: string[], config: Config) {
-  let registryDependencies: string[] = []
-  for (const name of names) {
-    const itemRegistryDependencies = await resolveRegistryDependencies(
-      name,
-      config
-    )
-    registryDependencies.push(...itemRegistryDependencies)
-  }
-
-  return Array.from(new Set(registryDependencies))
-}
-
-export function getRegistryTypeAliasMap() {
-  return new Map<string, string>([
-    ["registry:ui", "ui"],
-    ["registry:lib", "lib"],
-    ["registry:hook", "hooks"],
-    ["registry:block", "components"],
-    ["registry:component", "components"],
-  ])
-}
-
-// Track a dependency and its parent.
-export function getRegistryParentMap(
-  registryItems: z.infer<typeof registryItemSchema>[]
-) {
-  const map = new Map<string, z.infer<typeof registryItemSchema>>()
-  registryItems.forEach((item) => {
-    if (!item.registryDependencies) {
-      return
-    }
-
-    item.registryDependencies.forEach((dependency) => {
-      map.set(dependency, item)
-    })
+  const url = `${REGISTRY_URL}/registries.json`
+  const [data] = await fetchRegistry([url], {
+    useCache: options.useCache,
   })
-  return map
+
+  try {
+    return registriesSchema.parse(data)
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      throw new RegistriesIndexParseError(error)
+    }
+
+    throw error
+  }
+}
+
+/**
+ * @deprecated Use getRegistries() instead.
+ */
+export async function getRegistriesIndex(options?: { useCache?: boolean }) {
+  // Fetch new format and transform to old Record<string, string> for backward compatibility.
+  const registries = await getRegistries(options)
+  if (!registries) return null
+  return Object.fromEntries(registries.map((r) => [r.name, r.url])) as z.infer<
+    typeof registriesIndexSchema
+  >
+}
+
+export async function getPresets(options?: { useCache?: boolean }) {
+  options = {
+    useCache: true,
+    ...options,
+  }
+
+  const url = `${REGISTRY_URL}/config.json`
+  const [data] = await fetchRegistry([url], {
+    useCache: options.useCache,
+  })
+
+  const result = configJsonSchema.parse(data)
+  return result.presets
+}
+
+export async function getPreset(
+  name: string,
+  options?: { useCache?: boolean }
+) {
+  const presets = await getPresets(options)
+  return (
+    presets.find(
+      (preset) => preset.name.toLowerCase() === name.toLowerCase()
+    ) ?? null
+  )
 }

@@ -1,5 +1,35 @@
-export * from "./schema"
 export {
-  registryResolveItemsTree as internal_registryResolveItemsTree,
-  fetchRegistry,
+  getRegistries,
+  getRegistryItems,
+  resolveRegistryItems,
+  getRegistry,
+  getRegistriesConfig,
+  getRegistriesIndex,
 } from "./api"
+
+export { addRegistryItems } from "./add"
+
+export { searchRegistries } from "./search"
+
+export {
+  loadRegistry,
+  loadRegistryItem,
+  type LoadRegistryOptions,
+} from "./loader"
+
+export {
+  RegistryErrorCode,
+  RegistryError,
+  RegistryNotFoundError,
+  RegistryUnauthorizedError,
+  RegistryForbiddenError,
+  RegistryFetchError,
+  RegistryNotConfiguredError,
+  RegistryLocalFileError,
+  RegistryParseError,
+  RegistryValidationError,
+  RegistryItemNotFoundError,
+  RegistriesIndexParseError,
+  RegistryMissingEnvironmentVariablesError,
+  RegistryInvalidNamespaceError,
+} from "./errors"

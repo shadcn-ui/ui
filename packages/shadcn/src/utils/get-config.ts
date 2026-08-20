@@ -1,10 +1,17 @@
 import path from "path"
+import { parsePresetStyle, type PresetBase } from "@/src/preset/preset"
+import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
+import {
+  configSchema,
+  rawConfigSchema,
+  workspaceConfigSchema,
+} from "@/src/schema"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
-import { resolveImport } from "@/src/utils/resolve-import"
+import { resolveImportWithMetadata } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
 import fg from "fast-glob"
-import { loadConfig } from "tsconfig-paths"
+import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 import { z } from "zod"
 
 export const DEFAULT_STYLE = "default"
@@ -16,54 +23,11 @@ export const DEFAULT_TAILWIND_BASE_COLOR = "slate"
 
 // TODO: Figure out if we want to support all cosmiconfig formats.
 // A simple components.json file would be nice.
-const explorer = cosmiconfig("components", {
+export const explorer = cosmiconfig("components", {
   searchPlaces: ["components.json"],
 })
 
-export const rawConfigSchema = z
-  .object({
-    $schema: z.string().optional(),
-    style: z.string(),
-    rsc: z.coerce.boolean().default(false),
-    tsx: z.coerce.boolean().default(true),
-    tailwind: z.object({
-      config: z.string().optional(),
-      css: z.string(),
-      baseColor: z.string(),
-      cssVariables: z.boolean().default(true),
-      prefix: z.string().default("").optional(),
-    }),
-    aliases: z.object({
-      components: z.string(),
-      utils: z.string(),
-      ui: z.string().optional(),
-      lib: z.string().optional(),
-      hooks: z.string().optional(),
-    }),
-    iconLibrary: z.string().optional(),
-  })
-  .strict()
-
-export type RawConfig = z.infer<typeof rawConfigSchema>
-
-export const configSchema = rawConfigSchema.extend({
-  resolvedPaths: z.object({
-    cwd: z.string(),
-    tailwindConfig: z.string(),
-    tailwindCss: z.string(),
-    utils: z.string(),
-    components: z.string(),
-    lib: z.string(),
-    hooks: z.string(),
-    ui: z.string(),
-  }),
-})
-
 export type Config = z.infer<typeof configSchema>
-
-// TODO: type the key.
-// Okay for now since I don't want a breaking change.
-export const workspaceConfigSchema = z.record(configSchema)
 
 export async function getConfig(cwd: string) {
   const config = await getRawConfig(cwd)
@@ -80,7 +44,16 @@ export async function getConfig(cwd: string) {
   return await resolveConfigPaths(cwd, config)
 }
 
-export async function resolveConfigPaths(cwd: string, config: RawConfig) {
+export async function resolveConfigPaths(
+  cwd: string,
+  config: z.infer<typeof rawConfigSchema>
+) {
+  // Merge built-in registries with user registries
+  config.registries = {
+    ...BUILTIN_REGISTRIES,
+    ...(config.registries || {}),
+  }
+
   // Read tsconfig.json.
   const tsConfig = await loadConfig(cwd)
 
@@ -92,6 +65,37 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
     )
   }
 
+  // Resolve the primary aliases first so fallbacks can reuse their results.
+  const resolvedUtils = await resolveAliasPath(
+    "utils",
+    config.aliases["utils"],
+    cwd,
+    tsConfig
+  )
+  const resolvedComponents = await resolveAliasPath(
+    "components",
+    config.aliases["components"],
+    cwd,
+    tsConfig
+  )
+  const resolvedUi = config.aliases["ui"]
+    ? await resolveAliasPath("ui", config.aliases["ui"], cwd, tsConfig)
+    : path.resolve(resolvedComponents ?? cwd, "ui")
+  const resolvedLib = config.aliases["lib"]
+    ? await resolveAliasPath("lib", config.aliases["lib"], cwd, tsConfig)
+    : path.resolve(resolvedUtils ?? cwd, "..")
+  const resolvedHooks = config.aliases["hooks"]
+    ? await resolveAliasPath("hooks", config.aliases["hooks"], cwd, tsConfig)
+    : path.resolve(resolvedComponents ?? cwd, "..", "hooks")
+
+  assertResolvedAliases(cwd, {
+    components: resolvedComponents,
+    utils: resolvedUtils,
+    ui: resolvedUi,
+    lib: resolvedLib,
+    hooks: resolvedHooks,
+  })
+
   return configSchema.parse({
     ...config,
     resolvedPaths: {
@@ -100,36 +104,96 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
         ? path.resolve(cwd, config.tailwind.config)
         : "",
       tailwindCss: path.resolve(cwd, config.tailwind.css),
-      utils: await resolveImport(config.aliases["utils"], tsConfig),
-      components: await resolveImport(config.aliases["components"], tsConfig),
-      ui: config.aliases["ui"]
-        ? await resolveImport(config.aliases["ui"], tsConfig)
-        : path.resolve(
-            (await resolveImport(config.aliases["components"], tsConfig)) ??
-              cwd,
-            "ui"
-          ),
+      utils: resolvedUtils,
+      components: resolvedComponents,
+      ui: resolvedUi,
       // TODO: Make this configurable.
       // For now, we assume the lib and hooks directories are one level up from the components directory.
-      lib: config.aliases["lib"]
-        ? await resolveImport(config.aliases["lib"], tsConfig)
-        : path.resolve(
-            (await resolveImport(config.aliases["utils"], tsConfig)) ?? cwd,
-            ".."
-          ),
-      hooks: config.aliases["hooks"]
-        ? await resolveImport(config.aliases["hooks"], tsConfig)
-        : path.resolve(
-            (await resolveImport(config.aliases["components"], tsConfig)) ??
-              cwd,
-            "..",
-            "hooks"
-          ),
+      lib: resolvedLib,
+      hooks: resolvedHooks,
     },
   })
 }
 
-export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
+async function resolveAliasPath(
+  aliasKey: "components" | "utils" | "ui" | "lib" | "hooks",
+  alias: string,
+  cwd: string,
+  tsConfig: Pick<ConfigLoaderSuccessResult, "absoluteBaseUrl" | "paths">
+) {
+  const resolved = await resolveImportWithMetadata(alias, {
+    ...tsConfig,
+    cwd,
+  })
+
+  if (!resolved?.path) {
+    return null
+  }
+
+  if (alias.startsWith("#") && resolved.path === path.resolve(cwd, alias)) {
+    return null
+  }
+
+  // For non-utils alias keys backed by package imports or workspace exports,
+  // strip directory-level artifacts so the resolved path points at the
+  // directory root rather than a specific file.
+  if (
+    aliasKey !== "utils" &&
+    (resolved.source === "package_imports" ||
+      resolved.source === "workspace_package_exports")
+  ) {
+    // Exact aliases (e.g. `#hooks` → `./src/hooks/index.ts`) should resolve
+    // to the directory root.
+    if (
+      !resolved.matchedAlias.includes("*") &&
+      /\/index\.[^/]+$/.test(resolved.path)
+    ) {
+      return path.dirname(resolved.path)
+    }
+
+    // Wildcard aliases with explicit extensions (e.g. `#components/*` →
+    // `./src/components/*.tsx`) should strip the source extension so `ui`
+    // resolves to `/src/components/ui` instead of `/src/components/ui.tsx`.
+    if (resolved.matchedAlias.includes("*") && /\.[^/]+$/.test(resolved.path)) {
+      return resolved.path.replace(/\.[^/]+$/, "")
+    }
+  }
+
+  return resolved.path
+}
+
+function assertResolvedAliases(
+  cwd: string,
+  resolvedAliases: Record<
+    "components" | "utils" | "ui" | "lib" | "hooks",
+    string | null
+  >
+) {
+  const missingAliases = ["components", "ui", "lib", "hooks", "utils"].filter(
+    (key) => !resolvedAliases[key as keyof typeof resolvedAliases]
+  )
+
+  if (!missingAliases.length) {
+    return
+  }
+
+  throw new Error(
+    [
+      `Could not resolve the following aliases in ${highlighter.info(cwd)}: ${highlighter.info(
+        missingAliases.join(", ")
+      )}.`,
+      `Configure path aliases in ${highlighter.info(
+        "tsconfig.json"
+      )} or imports in ${highlighter.info(
+        "package.json"
+      )} for this workspace and try again.`,
+    ].join("\n")
+  )
+}
+
+export async function getRawConfig(
+  cwd: string
+): Promise<z.infer<typeof rawConfigSchema> | null> {
   try {
     const configResult = await explorer.search(cwd)
 
@@ -137,9 +201,25 @@ export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
       return null
     }
 
-    return rawConfigSchema.parse(configResult.config)
+    const config = rawConfigSchema.parse(configResult.config)
+
+    // Check if user is trying to override built-in registries
+    if (config.registries) {
+      for (const registryName of Object.keys(config.registries)) {
+        if (registryName in BUILTIN_REGISTRIES) {
+          throw new Error(
+            `"${registryName}" is a built-in registry and cannot be overridden.`
+          )
+        }
+      }
+    }
+
+    return config
   } catch (error) {
     const componentPath = `${cwd}/components.json`
+    if (error instanceof Error && error.message.includes("reserved registry")) {
+      throw error
+    }
     throw new Error(
       `Invalid configuration found in ${highlighter.info(componentPath)}.`
     )
@@ -168,7 +248,20 @@ export async function getWorkspaceConfig(config: Config) {
       continue
     }
 
-    resolvedAliases[key] = await getConfig(packageRoot)
+    const workspaceConfig = await getConfig(packageRoot)
+
+    if (!workspaceConfig) {
+      throw new Error(
+        [
+          `Could not load the workspace config in ${highlighter.info(packageRoot)}.`,
+          `Add ${highlighter.info(
+            "components.json"
+          )} to this workspace and configure its path aliases or package imports, then try again.`,
+        ].join("\n")
+      )
+    }
+
+    resolvedAliases[key] = workspaceConfig
   }
 
   const result = workspaceConfigSchema.safeParse(resolvedAliases)
@@ -187,6 +280,7 @@ export async function findPackageRoot(cwd: string, resolvedPath: string) {
     cwd: commonRoot,
     deep: 3,
     ignore: ["**/node_modules/**", "**/dist/**", "**/build/**", "**/public/**"],
+    suppressErrors: true,
   })
 
   const matchingPackageRoot = packageRoots
@@ -224,4 +318,83 @@ export function findCommonRoot(cwd: string, resolvedPath: string) {
 export async function getTargetStyleFromConfig(cwd: string, fallback: string) {
   const projectInfo = await getProjectInfo(cwd)
   return projectInfo?.tailwindVersion === "v4" ? "new-york-v4" : fallback
+}
+
+export function getBase(style: string | undefined): PresetBase {
+  // An undefined style means no existing config, so default to base.
+  // Any defined style, including empty and unprefixed legacy values
+  // (new-york, new-york-v4, default), stays radix.
+  if (style === undefined) {
+    return "base"
+  }
+
+  return parsePresetStyle(style).base ?? "radix"
+}
+
+export type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]
+}
+
+/**
+ * Creates a config object with sensible defaults.
+ * Useful for universal registry items that bypass framework detection.
+ *
+ * @param partial - Partial config values to override defaults
+ * @returns A complete Config object
+ */
+export function createConfig(partial?: DeepPartial<Config>): Config {
+  const defaultConfig: Config = {
+    resolvedPaths: {
+      cwd: process.cwd(),
+      tailwindConfig: "",
+      tailwindCss: "",
+      utils: "",
+      components: "",
+      ui: "",
+      lib: "",
+      hooks: "",
+    },
+    style: "",
+    tailwind: {
+      config: "",
+      css: "",
+      baseColor: "",
+      cssVariables: false,
+    },
+    rsc: false,
+    tsx: true,
+    aliases: {
+      components: "",
+      utils: "",
+    },
+    registries: {
+      ...BUILTIN_REGISTRIES,
+    },
+  }
+
+  // Deep merge the partial config with defaults
+  if (partial) {
+    return {
+      ...defaultConfig,
+      ...partial,
+      resolvedPaths: {
+        ...defaultConfig.resolvedPaths,
+        ...(partial.resolvedPaths || {}),
+      },
+      tailwind: {
+        ...defaultConfig.tailwind,
+        ...(partial.tailwind || {}),
+      },
+      aliases: {
+        ...defaultConfig.aliases,
+        ...(partial.aliases || {}),
+      },
+      registries: {
+        ...defaultConfig.registries,
+        ...(partial.registries || {}),
+      },
+    }
+  }
+
+  return defaultConfig
 }

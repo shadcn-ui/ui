@@ -1,3 +1,50 @@
+import type { PresetBase } from "@/src/preset/preset"
+import { registryConfigSchema } from "@/src/schema"
+import { z } from "zod"
+
+export const REGISTRY_URL =
+  process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"
+
+export const SHADCN_URL = REGISTRY_URL.replace(/\/r\/?$/, "")
+
+export const FALLBACK_STYLE = "new-york-v4"
+
+export const BASE_COLORS = [
+  {
+    name: "neutral",
+    label: "Neutral",
+  },
+  {
+    name: "zinc",
+    label: "Zinc",
+  },
+  {
+    name: "stone",
+    label: "Stone",
+  },
+  {
+    name: "mauve",
+    label: "Mauve",
+  },
+  {
+    name: "olive",
+    label: "Olive",
+  },
+  {
+    name: "mist",
+    label: "Mist",
+  },
+  {
+    name: "taupe",
+    label: "Taupe",
+  },
+] as const
+
+// Built-in registries that are always available and cannot be overridden
+export const BUILTIN_REGISTRIES: z.infer<typeof registryConfigSchema> = {
+  "@shadcn": `${REGISTRY_URL}/styles/{style}/{name}.json`,
+}
+
 export const BUILTIN_MODULES = new Set([
   [
     // Node.js built-in modules
@@ -121,3 +168,36 @@ export const BUILTIN_MODULES = new Set([
     "bun:internal",
   ],
 ])
+
+type DeprecatedComponent = {
+  name: string
+  deprecatedBy: string
+  message: string
+  availableIn?: PresetBase[]
+}
+
+export const DEPRECATED_COMPONENTS: DeprecatedComponent[] = [
+  {
+    name: "toast",
+    deprecatedBy: "sonner",
+    message:
+      "The toast component is only available for Base UI projects. Use the sonner component instead.",
+    availableIn: ["base"],
+  },
+  {
+    name: "toaster",
+    deprecatedBy: "sonner",
+    message:
+      "The toaster component is deprecated. Use the sonner component instead.",
+  },
+]
+
+export const COMPONENTS_HIDDEN_FROM_SELECTION: {
+  name: string
+  hiddenIn: PresetBase[]
+}[] = [
+  {
+    name: "sonner",
+    hiddenIn: ["base"],
+  },
+]

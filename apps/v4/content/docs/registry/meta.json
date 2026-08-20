@@ -1,10 +1,17 @@
 {
+  "title": "Registry",
   "pages": [
     "index",
     "getting-started",
-    "faq",
-    "open-in-v0",
+    "github",
+    "registry-index",
     "examples",
+    "namespace",
+    "authentication",
+    "dynamic-search",
+    "mcp",
+    "open-in-v0",
+    "api-reference",
     "registry-json",
     "registry-item-json"
   ]
