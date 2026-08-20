@@ -1,16 +1,17 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import {
-  DayPicker,
-  getDefaultClassNames,
-  type DayButton,
-  type Locale,
-} from "react-day-picker"
+import * as React from "react";
+import { DayPicker, getDefaultClassNames, type DayButton, type Locale } from "react-day-picker";
 
-import { cn } from "@/registry/bases/radix/lib/utils"
-import { Button, buttonVariants } from "@/registry/bases/radix/ui/button"
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+
+
+import { cn } from "@/registry/bases/radix/lib/utils";
+import { Button, buttonVariants } from "@/registry/bases/radix/ui/button";
+import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder";
+
+
+
+
 
 function Calendar({
   className,
@@ -40,7 +41,7 @@ function Calendar({
       locale={locale}
       formatters={{
         formatMonthDropdown: (date) =>
-          date.toLocaleString(locale?.code, { month: "short" }),
+          date.toLocaleString(locale?.code ?? "default", { month: "short" }),
         ...formatters,
       }}
       classNames={{
