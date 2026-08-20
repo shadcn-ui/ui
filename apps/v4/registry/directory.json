@@ -2017,5 +2017,12 @@
     "url": "https://verno-studio.vercel.app/r/{name}.json",
     "description": "The full OKLCH scale plus every variable shadcn components read, so anything you install lands on the same tokens instead of its own colors.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'><rect width='64' height='64' fill='var(--foreground)'/><path d='M42.8135 16.0503H48L34.2018 48H29.896L16 16.0503L21.3333 16L32.1468 41.8113L42.8135 16.0503Z' fill='var(--background)'/></svg>"
+  },
+  {
+    "name": "@spiderui",
+    "homepage": "https://spiderui.vercel.app",
+    "url": "https://spiderui.vercel.app/r/{name}.json",
+    "description": "Animated, accessible React components and visual interactions built with TypeScript, Tailwind CSS, and Motion. Copy, customize, and ship.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect width='32' height='32' rx='8' fill='#0a0a0a'/><g stroke='#fafafa' stroke-width='1.8' stroke-linecap='round'><path d='M11 12 7.5 8.5M10 15H5.5M11 19l-3.5 4M21 12l3.5-3.5M22 15h4.5M21 19l3.5 4'/></g><ellipse cx='16' cy='18' rx='5' ry='7' fill='#f97316'/><circle cx='16' cy='10.5' r='3.5' fill='#fafafa'/><path d='M16 14.5v10' stroke='#0a0a0a' stroke-width='1.5'/></svg>"
   }
 ]
