@@ -3956,6 +3956,14 @@ export const Components: Record<string, any> = {
       ) || "toggle-text"
     return { default: mod.default || mod[exportName] }
   }),
+  "tooltip-delay": React.lazy(async () => {
+    const mod = await import("@/examples/base/tooltip-delay")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "tooltip-delay"
+    return { default: mod.default || mod[exportName] }
+  }),
   "tooltip-demo": React.lazy(async () => {
     const mod = await import("@/examples/base/tooltip-demo")
     const exportName =
