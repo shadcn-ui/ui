@@ -1961,5 +1961,12 @@
     "url": "https://remotionui.com/r/{name}.json",
     "description": "Copy-paste motion components for Remotion video projects - 200 captions, charts, transitions, backgrounds, and full compositions.",
     "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"var(--foreground)\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2L2 7l10 5 10-5-10-5z\"/><path d=\"M2 17l10 5 10-5\"/><path d=\"M2 12l10 5 10-5\"/></svg>"
+  },
+  {
+    "name": "@vernostudio",
+    "homepage": "https://verno-studio.vercel.app/components",
+    "url": "https://verno-studio.vercel.app/r/{name}.json",
+    "description": "The full OKLCH scale plus every variable shadcn components read, so anything you install lands on the same tokens instead of its own colors.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'><rect width='64' height='64' fill='var(--foreground)'/><path d='M42.8135 16.0503H48L34.2018 48H29.896L16 16.0503L21.3333 16L32.1468 41.8113L42.8135 16.0503Z' fill='var(--background)'/></svg>"
   }
 ]
