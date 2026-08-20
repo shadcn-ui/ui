@@ -9,6 +9,7 @@ import {
 import {
   DayPicker,
   getDefaultClassNames,
+  useDayPicker,
   type DayButton,
 } from "react-day-picker"
 
@@ -163,6 +164,8 @@ function Calendar({
           )
         },
         DayButton: CalendarDayButton,
+        PreviousMonthButton: CalendarPreviousMonthButton,
+        NextMonthButton: CalendarNextMonthButton,
         WeekNumber: ({ children, ...props }) => {
           return (
             <td {...props}>
@@ -176,6 +179,46 @@ function Calendar({
       }}
       {...props}
     />
+  )
+}
+
+function CalendarPreviousMonthButton(
+  props: React.ComponentProps<"button">
+) {
+  const { previousMonth, goToMonth } = useDayPicker()
+
+  if (!previousMonth) {
+    return <span />
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => goToMonth(previousMonth)}
+      {...props}
+    >
+      <ChevronLeftIcon className="size-4" />
+    </button>
+  )
+}
+
+function CalendarNextMonthButton(
+  props: React.ComponentProps<"button">
+) {
+  const { nextMonth, goToMonth } = useDayPicker()
+
+  if (!nextMonth) {
+    return <span />
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => goToMonth(nextMonth)}
+      {...props}
+    >
+      <ChevronRightIcon className="size-4" />
+    </button>
   )
 }
 
@@ -217,4 +260,9 @@ function CalendarDayButton({
   )
 }
 
-export { Calendar, CalendarDayButton }
+export {
+  Calendar,
+  CalendarDayButton,
+  CalendarPreviousMonthButton,
+  CalendarNextMonthButton,
+}
