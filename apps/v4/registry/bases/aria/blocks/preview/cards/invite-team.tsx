@@ -65,6 +65,7 @@ export function InviteTeam() {
             hugeicons="PlusSignIcon"
             phosphor="PlusIcon"
             remixicon="RiAddLine"
+            fontawesome="faPlus"
             data-icon="inline-start"
           />
           Add another
@@ -86,6 +87,7 @@ export function InviteTeam() {
                   hugeicons="Copy01Icon"
                   phosphor="CopyIcon"
                   remixicon="RiFileCopyLine"
+                  fontawesome="faCopy"
                 />
               </InputGroupButton>
             </InputGroupAddon>

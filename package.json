@@ -10,7 +10,11 @@
   },
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "!**/test/**",
+    "!**/fixtures/**",
+    "!**/temp/**",
+    "!packages/tests/temp/**"
   ],
   "scripts": {
     "build": "turbo run build",
@@ -85,10 +89,6 @@
     "typescript": "^5.5.3"
   },
   "pnpm": {
-    "overrides": {
-      "@types/react": "19.2.2",
-      "@types/react-dom": "19.2.2"
-    },
     "packageExtensions": {
       "@hookform/resolvers": {
         "peerDependencies": {
@@ -96,5 +96,9 @@
         }
       }
     }
+  },
+  "overrides": {
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2"
   }
 }

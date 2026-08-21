@@ -69,6 +69,7 @@ function BreadcrumbItem({
                 hugeicons="ArrowRight01Icon"
                 phosphor="CaretRightIcon"
                 remixicon="RiArrowRightSLine"
+                fontawesome="faChevronRight"
                 className="cn-rtl-flip"
               />
             </span>
@@ -124,6 +125,7 @@ function BreadcrumbEllipsis({
         hugeicons="MoreHorizontalCircle01Icon"
         phosphor="DotsThreeIcon"
         remixicon="RiMoreLine"
+        fontawesome="faEllipsis"
       />
       <span className="sr-only">More</span>
     </span>

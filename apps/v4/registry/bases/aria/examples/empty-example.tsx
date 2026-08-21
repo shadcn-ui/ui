@@ -56,6 +56,7 @@ function EmptyBasic() {
               hugeicons="ArrowUpRight01Icon"
               phosphor="ArrowUpRightIcon"
               remixicon="RiArrowRightUpLine"
+              fontawesome="faArrowUpRightFromSquare"
             />
           </LinkButton>
         </EmptyContent>
@@ -84,6 +85,7 @@ function EmptyWithMutedBackground() {
               hugeicons="ArrowUpRight01Icon"
               phosphor="ArrowUpRightIcon"
               remixicon="RiArrowRightUpLine"
+              fontawesome="faArrowUpRightFromSquare"
             />
           </LinkButton>
         </EmptyContent>
@@ -113,6 +115,7 @@ function EmptyWithBorder() {
                 hugeicons="DashedLineCircleIcon"
                 phosphor="CircleDashedIcon"
                 remixicon="RiLoaderLine"
+                fontawesome="faCircle"
               />
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
@@ -140,6 +143,7 @@ function EmptyWithIcon() {
               hugeicons="Folder01Icon"
               phosphor="FolderIcon"
               remixicon="RiFolderLine"
+              fontawesome="faFolder"
             />
           </EmptyMedia>
           <EmptyTitle>Nothing to see here</EmptyTitle>
@@ -156,6 +160,7 @@ function EmptyWithIcon() {
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
               remixicon="RiAddLine"
+              fontawesome="faPlus"
               data-icon="inline-start"
             />
             New Post
@@ -187,6 +192,7 @@ function EmptyWithMutedBackgroundAlt() {
                 hugeicons="DashedLineCircleIcon"
                 phosphor="CircleDashedIcon"
                 remixicon="RiLoaderLine"
+                fontawesome="faCircle"
               />
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
@@ -214,6 +220,7 @@ function EmptyInCard() {
               hugeicons="Folder01Icon"
               phosphor="FolderIcon"
               remixicon="RiFolderLine"
+              fontawesome="faFolder"
             />
           </EmptyMedia>
           <EmptyTitle>No projects yet</EmptyTitle>
@@ -235,6 +242,7 @@ function EmptyInCard() {
               hugeicons="ArrowUpRight01Icon"
               phosphor="ArrowUpRightIcon"
               remixicon="RiArrowRightUpLine"
+              fontawesome="faArrowUpRightFromSquare"
             />
           </LinkButton>
         </EmptyContent>
