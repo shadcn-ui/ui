@@ -183,7 +183,7 @@ type MessageScrollerContextValue = {
   stateStore: MessageScrollerStore<MessageScrollerScrollable>
   syncAfterScroll: () => void
   unobserveVisibility: () => void
-  userScrollIntent: () => void
+  userScrollIntent: (options?: { deltaY?: number }) => void
   viewportRef: React.RefObject<HTMLDivElement | null>
   visibilityStore: MessageScrollerVisibilityStore
 }

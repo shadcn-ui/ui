@@ -159,7 +159,7 @@ function MessageScrollerViewport({
   }
 
   function handleWheel(event: React.WheelEvent<HTMLDivElement>) {
-    userScrollIntent()
+    userScrollIntent({ deltaY: event.deltaY })
     onWheel?.(event)
   }
 
