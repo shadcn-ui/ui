@@ -1,20 +1,25 @@
 import { cn } from "@/registry/bases/radix/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
+function Spinner({
+  className,
+  label = "Loading",
+  ...props
+}: React.ComponentProps<"svg"> & { label?: string }) {
   return (
-    <IconPlaceholder
-      lucide="Loader2Icon"
-      tabler="IconLoader"
-      hugeicons="Loading03Icon"
-      phosphor="SpinnerIcon"
-      remixicon="RiLoaderLine"
-      data-slot="spinner"
-      role="status"
-      aria-label="Loading"
-      className={cn("size-4 animate-spin", className)}
-      {...props}
-    />
+    <span role="status" aria-label={label}>
+      <IconPlaceholder
+        lucide="Loader2Icon"
+        tabler="IconLoader"
+        hugeicons="Loading03Icon"
+        phosphor="SpinnerIcon"
+        remixicon="RiLoaderLine"
+        data-slot="spinner"
+        aria-hidden="true"
+        className={cn("size-4 animate-spin", className)}
+        {...props}
+      />
+    </span>
   )
 }
 
