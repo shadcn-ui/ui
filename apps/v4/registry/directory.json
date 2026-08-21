@@ -505,6 +505,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'><g clip-path='url(#clip0_18_8)'><path d='M0.248535 7.05071V0.353027H8.03229V7.05071H0.248535ZM8.03229 7.05071V0.353027H15.8161V7.05071H8.03229ZM15.8161 7.05071V0.353027H23.5999V7.05071H15.8161ZM0.248535 15.4228V8.72513H8.03229V15.4228H0.248535ZM8.03229 15.4228V8.72513H15.8161V15.4228H8.03229ZM0.248535 23.7949V17.0972H8.03229V23.7949H0.248535ZM8.03229 23.7949V17.0972H15.8161V23.7949H8.03229ZM15.8161 23.7949V17.0972H23.5999V23.7949H15.8161Z' fill='var(--foreground)'/></g><defs><clipPath id='clip0_18_8'><rect width='24' height='24' fill='var(--background)'/></clipPath></defs></svg>"
   },
   {
+    "name": "@elsecase",
+    "homepage": "https://elsecase.vercel.app",
+    "url": "https://elsecase.vercel.app/r/{name}.json",
+    "description": "Production React workflows for loading, empty, error, responsive data, form validation, retry, and recovery.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5 4h14v3H8v3h8v3H8v4h11v3H5V4Z' fill='var(--foreground)'/></svg>"
+  },
+  {
     "name": "@elevenlabs-ui",
     "homepage": "https://ui.elevenlabs.io",
     "url": "https://ui.elevenlabs.io/r/{name}.json",
