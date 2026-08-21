@@ -1,0 +1,64 @@
+"use client"
+
+import * as React from "react"
+import { Button } from "@/examples/ark/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/examples/ark/ui/dropdown-menu"
+import { BellIcon, MailIcon, MessageSquareIcon } from "lucide-react"
+
+export function DropdownMenuCheckboxesIcons() {
+  const [notifications, setNotifications] = React.useState({
+    email: true,
+    sms: false,
+    push: true,
+  })
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Notifications</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-48">
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>Notification Preferences</DropdownMenuLabel>
+          <DropdownMenuCheckboxItem
+            value="email"
+            checked={notifications.email}
+            onCheckedChange={(checked) =>
+              setNotifications({ ...notifications, email: checked === true })
+            }
+          >
+            <MailIcon />
+            Email notifications
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem
+            value="sms"
+            checked={notifications.sms}
+            onCheckedChange={(checked) =>
+              setNotifications({ ...notifications, sms: checked === true })
+            }
+          >
+            <MessageSquareIcon />
+            SMS notifications
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem
+            value="push"
+            checked={notifications.push}
+            onCheckedChange={(checked) =>
+              setNotifications({ ...notifications, push: checked === true })
+            }
+          >
+            <BellIcon />
+            Push notifications
+          </DropdownMenuCheckboxItem>
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}

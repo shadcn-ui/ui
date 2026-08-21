@@ -1,0 +1,23 @@
+"use client"
+
+import * as React from "react"
+import { cn } from "@/examples/ark/lib/utils"
+import { Field } from "@ark-ui/react/field"
+
+function Label({
+  className,
+  ...props
+}: React.ComponentProps<typeof Field.Label>) {
+  return (
+    <Field.Label
+      data-slot="label"
+      className={cn(
+        "gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:opacity-50 group-data-[disabled=true]/field:pointer-events-none group-data-[disabled=true]/field:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export { Label }

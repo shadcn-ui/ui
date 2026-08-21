@@ -1,0 +1,159 @@
+"use client"
+
+import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
+import {
+  Dialog as DialogPrimitive,
+  useDialog as useSheet,
+  useDialogContext as useSheetContext,
+  type DialogOpenChangeDetails as SheetOpenChangeDetails,
+} from "@ark-ui/react/dialog"
+import { Portal } from "@ark-ui/react/portal"
+
+import { cn } from "@/registry/bases/ark/lib/utils"
+import { Button } from "@/registry/bases/ark/ui/button"
+import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+
+function Sheet({ ...props }: React.ComponentProps<typeof DialogPrimitive.Root>) {
+  return <DialogPrimitive.Root data-slot="sheet" {...props} />
+}
+
+function SheetTrigger({
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Trigger>) {
+  return <DialogPrimitive.Trigger data-slot="sheet-trigger" {...props} />
+}
+
+function SheetClose({
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.CloseTrigger>) {
+  return <DialogPrimitive.CloseTrigger data-slot="sheet-close" {...props} />
+}
+
+function SheetOverlay({
+  className,
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Backdrop>) {
+  return (
+    <DialogPrimitive.Backdrop
+      data-slot="sheet-overlay"
+      className={cn("cn-sheet-overlay fixed inset-0 z-50", className)}
+      {...props}
+    />
+  )
+}
+
+function SheetContent({
+  className,
+  children,
+  side = "right",
+  showCloseButton = true,
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Content> & {
+  side?: "top" | "right" | "bottom" | "left"
+  showCloseButton?: boolean
+}) {
+  return (
+    <Portal>
+      <SheetOverlay />
+      <DialogPrimitive.Positioner className="fixed inset-0 z-50">
+        <DialogPrimitive.Content
+          data-slot="sheet-content"
+          data-side={side}
+          className={cn("cn-sheet-content", className)}
+          {...props}
+        >
+          {children}
+          {showCloseButton && (
+            <DialogPrimitive.CloseTrigger
+              data-slot="sheet-close"
+              className="cn-sheet-close absolute top-3 right-3 inline-flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <IconPlaceholder
+                lucide="XIcon"
+                tabler="IconX"
+                hugeicons="Cancel01Icon"
+                phosphor="XIcon"
+                remixicon="RiCloseLine"
+                className="size-4"
+              />
+              <span className="sr-only">Close</span>
+            </DialogPrimitive.CloseTrigger>
+          )}
+        </DialogPrimitive.Content>
+      </DialogPrimitive.Positioner>
+    </Portal>
+  )
+}
+
+function SheetHeader({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
+  return (
+    <ark.div
+      data-slot="sheet-header"
+      className={cn("cn-sheet-header flex flex-col", className)}
+      {...props}
+    />
+  )
+}
+
+function SheetFooter({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
+  return (
+    <ark.div
+      data-slot="sheet-footer"
+      className={cn("cn-sheet-footer mt-auto flex flex-col", className)}
+      {...props}
+    />
+  )
+}
+
+function SheetTitle({
+  className,
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Title>) {
+  return (
+    <DialogPrimitive.Title
+      data-slot="sheet-title"
+      className={cn("cn-sheet-title", className)}
+      {...props}
+    />
+  )
+}
+
+function SheetDescription({
+  className,
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Description>) {
+  return (
+    <DialogPrimitive.Description
+      data-slot="sheet-description"
+      className={cn("cn-sheet-description", className)}
+      {...props}
+    />
+  )
+}
+
+const SheetContext = DialogPrimitive.Context
+const SheetRootProvider = DialogPrimitive.RootProvider
+
+export {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetContext,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetOverlay,
+  SheetRootProvider,
+  SheetTitle,
+  SheetTrigger,
+  useSheet,
+  useSheetContext,
+  type SheetOpenChangeDetails,
+}
