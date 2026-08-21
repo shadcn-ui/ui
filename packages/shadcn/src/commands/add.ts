@@ -13,6 +13,7 @@ import {
   DEPRECATED_COMPONENTS,
 } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
+import { RegistryNotFoundError } from "@/src/registry/errors"
 import { registryItemTypeSchema } from "@/src/registry/schema"
 import { isUniversalRegistryItem } from "@/src/registry/utils"
 import { getTemplateForFramework } from "@/src/templates/index"
@@ -22,7 +23,7 @@ import { dryRunComponents } from "@/src/utils/dry-run"
 import { formatDryRunResult } from "@/src/utils/dry-run-formatter"
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
-import { createConfig, getConfig } from "@/src/utils/get-config"
+import { createConfig, getConfig, type Config } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
@@ -158,6 +159,22 @@ export const add = new Command()
           options,
           initialConfig.style
         )
+      }
+
+      if (hasExistingConfig && options.all && options.components?.length) {
+        const { available, unavailable } = await getAvailableComponents(
+          options.components,
+          initialConfig
+        )
+        options.components = available
+
+        if (unavailable.length) {
+          logger.warn(
+            `Skipped unavailable components for ${initialConfig.style}: ${unavailable.join(
+              ", "
+            )}`
+          )
+        }
       }
 
       if (!components.length && projectInfo?.tailwindVersion === "v4") {
@@ -382,6 +399,31 @@ async function promptForRegistryComponents(
     return []
   }
   return result.data
+}
+
+async function getAvailableComponents(components: string[], config: Config) {
+  const results = await Promise.allSettled(
+    components.map((component) => getRegistryItems([component], { config }))
+  )
+  const available: string[] = []
+  const unavailable: string[] = []
+
+  for (let index = 0; index < results.length; index++) {
+    const result = results[index]
+    if (result.status === "fulfilled") {
+      available.push(components[index])
+      continue
+    }
+
+    if (result.reason instanceof RegistryNotFoundError) {
+      unavailable.push(components[index])
+      continue
+    }
+
+    throw result.reason
+  }
+
+  return { available, unavailable }
 }
 
 function warnForDeprecatedComponents(
