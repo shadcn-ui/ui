@@ -127,6 +127,10 @@ function getNewScrollAnchor(items: HTMLElement[], previousItemCount: number) {
   return null
 }
 
+function getScrollAnchors(items: HTMLElement[]) {
+  return items.filter((item) => item.dataset.scrollAnchor === "true")
+}
+
 function getUnanchoredScrollAnchor(
   items: HTMLElement[],
   handledAnchors: { has(element: HTMLElement): boolean }
@@ -381,6 +385,7 @@ export {
   getMessageScrollerScrollable,
   getMessageScrollerVisibilityState,
   getNewScrollAnchor,
+  getScrollAnchors,
   getTailSpacerHeight,
   getUnanchoredScrollAnchor,
   hasMultipleNewScrollAnchors,

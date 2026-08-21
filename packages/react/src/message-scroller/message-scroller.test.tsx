@@ -852,6 +852,42 @@ describe("MessageScroller", () => {
     expect(rendered.viewport().scrollTop).toBe(16)
   })
 
+  it("does not re-anchor to a mount-time anchor on a later same-count content swap", async () => {
+    // Regression test for #11128: anchors already on screen at mount were
+    // never registered as "handled", so a later same-count content swap
+    // (e.g. a transient "Typing…" row replaced by a reply row) treated
+    // every mount-time anchor as newly appeared and yanked the viewport
+    // back to the oldest one instead of leaving it resting at the end.
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "seed-1", height: 80, scrollAnchor: true },
+        { id: "seed-2", height: 80 },
+        { id: "seed-3", height: 80, scrollAnchor: true },
+        { id: "typing", height: 40 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(180)
+
+    await rendered.rerender(
+      [
+        { id: "seed-1", height: 80, scrollAnchor: true },
+        { id: "seed-2", height: 80 },
+        { id: "seed-3", height: 80, scrollAnchor: true },
+        { id: "reply", height: 40 },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(180)
+    expect(rendered.state()).toMatchObject({
+      start: true,
+      end: false,
+    })
+  })
+
   it("does not reconcile scroll position when only the parent re-renders", async () => {
     const rendered = await renderTestScrollerWithParent({
       messages: [
