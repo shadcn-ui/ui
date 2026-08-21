@@ -61,6 +61,7 @@ function Item({
   className,
   variant = "default",
   size = "default",
+  role,
   ...props
 }: Omit<LinkProps, "children"> &
   React.HTMLAttributes<HTMLElement> &
@@ -71,6 +72,7 @@ function Item({
       data-slot="item"
       data-variant={variant}
       data-size={size}
+      role={role ?? ("href" in props ? undefined : "listitem")}
       className={cn(itemVariants({ variant, size, className }))}
       {...props}
     />
