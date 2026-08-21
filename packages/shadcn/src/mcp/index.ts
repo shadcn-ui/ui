@@ -1,4 +1,5 @@
 import { getRegistryItems, searchRegistries } from "@/src/registry"
+import { withRegistryContext } from "@/src/registry/context"
 import { RegistryError } from "@/src/registry/errors"
 import {
   resolveSearchRegistries,
@@ -30,11 +31,26 @@ export const server = new Server(
   },
   {
     capabilities: {
+      logging: {},
       resources: {},
       tools: {},
     },
   }
 )
+
+// GitHub authentication notices must reach the MCP client before the first
+// authenticated request. Stdout carries the protocol, so the console is not a
+// usable surface here.
+async function onGitHubAuthNotice(message: string) {
+  try {
+    await server.sendLoggingMessage({
+      level: "info",
+      data: message,
+    })
+  } catch {
+    console.error(message)
+  }
+}
 
 server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
@@ -170,7 +186,13 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
   }
 })
 
-server.setRequestHandler(CallToolRequestSchema, async (request) => {
+server.setRequestHandler(CallToolRequestSchema, async (request) =>
+  withRegistryContext(() => handleCallTool(request), { onGitHubAuthNotice })
+)
+
+async function handleCallTool(request: {
+  params: { name: string; arguments?: Record<string, unknown> }
+}) {
   try {
     if (!request.params.arguments) {
       throw new Error("No tool arguments provided.")
@@ -573,4 +595,4 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       isError: true,
     }
   }
-})
+}
