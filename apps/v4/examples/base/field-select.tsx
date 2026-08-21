@@ -13,7 +13,6 @@ import {
 } from "@/styles/base-nova/ui/select"
 
 const items = [
-  { label: "Choose department", value: null },
   { label: "Engineering", value: "engineering" },
   { label: "Design", value: "design" },
   { label: "Marketing", value: "marketing" },
@@ -30,7 +29,7 @@ export default function FieldSelect() {
       <FieldLabel>Department</FieldLabel>
       <Select items={items}>
         <SelectTrigger>
-          <SelectValue />
+          <SelectValue placeholder="Choose department" />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
