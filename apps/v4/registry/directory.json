@@ -2024,5 +2024,12 @@
     "url": "https://verno-studio.vercel.app/r/{name}.json",
     "description": "The full OKLCH scale plus every variable shadcn components read, so anything you install lands on the same tokens instead of its own colors.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'><rect width='64' height='64' fill='var(--foreground)'/><path d='M42.8135 16.0503H48L34.2018 48H29.896L16 16.0503L21.3333 16L32.1468 41.8113L42.8135 16.0503Z' fill='var(--background)'/></svg>"
+  },
+  {
+    "name": "@atomloader",
+    "url": "https://atomloader.roothq.tech/r/{name}.json",
+    "homepage": "https://atomloader.roothq.tech",
+    "description": "Lightweight, customizable CSS-animated atoms loaders for React.",
+    "logo": "<svg viewBox=\"0 0 256 256\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"256\" height=\"256\" rx=\"64\" fill=\"#0A0A0B\"></rect><path d=\"M72 104L96 80L120 104L96 128L72 104Z\" fill=\"#7FB3FF\"></path><path d=\"M136 72L160 48L184 72L160 96L136 72Z\" fill=\"#7FB3FF\"></path><path d=\"M176 152L200 128L224 152L200 176L176 152Z\" fill=\"#7FB3FF\"></path><path d=\"M88 176L112 152L136 176L112 200L88 176Z\" fill=\"#7FB3FF\"></path><path d=\"M16 80L40 56L64 80L40 104L16 80Z\" fill=\"#7FB3FF\"></path></svg>"
   }
 ]
