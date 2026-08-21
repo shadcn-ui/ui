@@ -1,5 +1,8 @@
 import { getGitHubAuthNoticeFromContext } from "@/src/registry/context"
-import { getEnvGitHubToken, type GitHubAuthMode } from "@/src/registry/github-cli"
+import {
+  getEnvGitHubToken,
+  type GitHubAuthMode,
+} from "@/src/registry/github-cli"
 import type { GitHubSource } from "@/src/registry/github-ref"
 import { logAboveSpinner } from "@/src/utils/spinner"
 import { gray, green } from "kleur/colors"

@@ -132,7 +132,8 @@ describe("github-cli", () => {
         })
       )
 
-      const env = (vi.mocked(execa).mock.calls[0] as any[])[2].env as NodeJS.ProcessEnv
+      const env = (vi.mocked(execa).mock.calls[0] as any[])[2]
+        .env as NodeJS.ProcessEnv
       expect(env.GH_HOST).toBe("github.com")
       expect(env.GH_PROMPT_DISABLED).toBe("1")
       expect(env.GH_NO_UPDATE_NOTIFIER).toBe("1")
@@ -155,7 +156,8 @@ describe("github-cli", () => {
 
       await fetchGitHubFileViaGh(ADDRESS, SHA, "button.tsx")
 
-      const env = (vi.mocked(execa).mock.calls[0] as any[])[2].env as NodeJS.ProcessEnv
+      const env = (vi.mocked(execa).mock.calls[0] as any[])[2]
+        .env as NodeJS.ProcessEnv
       expect(env.GH_HOST).toBe("github.com")
       expect(env).not.toHaveProperty("GH_TOKEN")
       expect(env).not.toHaveProperty("GH_DEBUG")
@@ -194,8 +196,7 @@ describe("github-cli", () => {
     it("classifies an unauthenticated gh", async () => {
       vi.mocked(execa).mockRejectedValueOnce(
         Object.assign(new Error("exit 4"), {
-          stderr:
-            "To get started with GitHub CLI, please run:  gh auth login",
+          stderr: "To get started with GitHub CLI, please run:  gh auth login",
         })
       )
 
@@ -493,8 +494,9 @@ describe("github-cli", () => {
 
     it("rejects malformed SHAs from the API", async () => {
       server.use(
-        http.get("https://api.github.com/repos/acme/ui/commits/heads/main", () =>
-          HttpResponse.json({ sha: "not-a-sha" })
+        http.get(
+          "https://api.github.com/repos/acme/ui/commits/heads/main",
+          () => HttpResponse.json({ sha: "not-a-sha" })
         )
       )
 

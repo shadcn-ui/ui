@@ -105,11 +105,7 @@ export async function readGitHubResponseTextWithLimit(
   return Buffer.concat(chunks).toString("utf8")
 }
 
-async function fetchGitHubApi(
-  endpoint: string,
-  token: string,
-  accept: string
-) {
+async function fetchGitHubApi(endpoint: string, token: string, accept: string) {
   let response: Response
   try {
     response = await fetchWithProxy(`${GITHUB_API_URL}/${endpoint}`, {
@@ -314,7 +310,8 @@ export function getGitHubTransportFailureGuidance(
         }
       : {
           detail: "The GitHub CLI is not authenticated.",
-          suggestion: 'Run "gh auth login --hostname github.com" and try again.',
+          suggestion:
+            'Run "gh auth login --hostname github.com" and try again.',
         }
   }
 

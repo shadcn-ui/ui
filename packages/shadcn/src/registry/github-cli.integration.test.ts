@@ -3,10 +3,7 @@ import { tmpdir } from "os"
 import path from "path"
 import { afterEach, describe, expect, it, vi } from "vitest"
 
-import {
-  fetchGitHubFileViaGh,
-  GitHubTransportError,
-} from "./github-cli"
+import { fetchGitHubFileViaGh, GitHubTransportError } from "./github-cli"
 
 const ADDRESS = { owner: "acme", repo: "ui" }
 const SHA = "1111111111111111111111111111111111111111"

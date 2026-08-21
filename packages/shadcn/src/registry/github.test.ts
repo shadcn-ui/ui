@@ -15,8 +15,8 @@ import {
 import { logger } from "../utils/logger"
 import { withRegistryContext } from "./context"
 import { RegistrySourceFileError, RegistryValidationError } from "./errors"
-import { resetGitHubAuthNotices } from "./github-auth"
 import { fetchGitHubRegistryItem, validateGitHubRegistrySource } from "./github"
+import { resetGitHubAuthNotices } from "./github-auth"
 import {
   fetchRegistryItems,
   resolveRegistryItemsFromRegistries,
@@ -953,14 +953,9 @@ describe("GitHub registry items", () => {
 
       expect(item.files?.[0]?.content).toBe("export function Button() {}")
       expect(rawAuthorization).toBeNull()
-      expect(apiAuthorizations).toEqual([
-        "Bearer ci-token",
-        "Bearer ci-token",
-      ])
+      expect(apiAuthorizations).toEqual(["Bearer ci-token", "Bearer ci-token"])
       expect(
-        vi
-          .mocked(execa)
-          .mock.calls.filter(([command]) => command === "gh")
+        vi.mocked(execa).mock.calls.filter(([command]) => command === "gh")
       ).toHaveLength(0)
     })
 
@@ -985,9 +980,7 @@ describe("GitHub registry items", () => {
           "Check that GH_TOKEN or GITHUB_TOKEN is valid and has read access to the repository.",
       })
       expect(
-        vi
-          .mocked(execa)
-          .mock.calls.filter(([command]) => command === "gh")
+        vi.mocked(execa).mock.calls.filter(([command]) => command === "gh")
       ).toHaveLength(0)
     })
 
@@ -1094,7 +1087,7 @@ describe("GitHub registry items", () => {
       await expect(
         fetchRegistryItems(["acme/ui/button"], {} as any)
       ).rejects.toMatchObject({
-        message: expect.stringContaining('Failed to read GitHub source file'),
+        message: expect.stringContaining("Failed to read GitHub source file"),
         suggestion: expect.stringContaining("private repository"),
       })
     })
@@ -1140,9 +1133,8 @@ describe("GitHub registry items", () => {
           "https://api.github.com/repos/acme/ui/contents/button.tsx",
           () => HttpResponse.text("export function Button() {}")
         ),
-        http.get(
-          "https://api.github.com/repos/acme/ui/contents/card.tsx",
-          () => HttpResponse.text("export function Card() {}")
+        http.get("https://api.github.com/repos/acme/ui/contents/card.tsx", () =>
+          HttpResponse.text("export function Card() {}")
         )
       )
 
@@ -1230,8 +1222,9 @@ describe("GitHub registry items", () => {
         )) as any)
 
       server.use(
-        http.get("https://api.github.com/repos/acme/ui/commits/HEAD", () =>
-          new HttpResponse(null, { status: 404 })
+        http.get(
+          "https://api.github.com/repos/acme/ui/commits/HEAD",
+          () => new HttpResponse(null, { status: 404 })
         )
       )
 

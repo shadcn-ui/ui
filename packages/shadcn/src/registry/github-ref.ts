@@ -3,7 +3,10 @@ import type {
   ResolvedItemAddress,
 } from "@/src/registry/address"
 import { RegistrySourceFileError } from "@/src/registry/errors"
-import { getGitHubAuthState, selectGitHubAuthMode } from "@/src/registry/github-auth"
+import {
+  getGitHubAuthState,
+  selectGitHubAuthMode,
+} from "@/src/registry/github-auth"
 import {
   getGitHubTransportFailureGuidance,
   GitHubTransportError,
@@ -73,7 +76,12 @@ async function resolveGitHubRefUncached(
     )
     stdout = result.stdout
   } catch (error) {
-    const refError = createGitHubRefResolutionError(address, ref, repoUrl, error)
+    const refError = createGitHubRefResolutionError(
+      address,
+      ref,
+      repoUrl,
+      error
+    )
     if (!options.authAnchor) {
       throw refError
     }
