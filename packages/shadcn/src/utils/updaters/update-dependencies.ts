@@ -202,8 +202,8 @@ async function getUpdateDependenciesPackageManager(config: Config) {
  * manager's argument list. A specifier beginning with "-" would be interpreted
  * as a flag rather than a package name, letting a malicious registry alter the
  * install source/behavior (argument injection). Reject those before they reach
- * `execa`; the `--` end-of-options separator added at each call site is the
- * second layer of defense.
+ * `execa`; package manager calls also use an end-of-options separator where
+ * the CLI's argument semantics support it.
  */
 export function assertSafeDependencies(deps: string[]) {
   for (const dep of deps) {
@@ -313,7 +313,10 @@ async function installWithExpo(
   assertSafeDependencies(devDependencies)
 
   if (dependencies.length) {
-    await execa("npx", ["expo", "install", "--", ...dependencies], { cwd })
+    // Expo treats arguments after `--` as package-manager arguments, bypassing
+    // its SDK-compatible version resolution. assertSafeDependencies prevents
+    // dependency strings from being interpreted as Expo CLI flags.
+    await execa("npx", ["expo", "install", ...dependencies], { cwd })
   }
 
   if (devDependencies.length) {

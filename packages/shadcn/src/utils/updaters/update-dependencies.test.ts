@@ -228,7 +228,7 @@ describe("updateDependencies", () => {
     )
   })
 
-  it("does not skip already declared deps for expo projects", async () => {
+  it("passes dependencies to Expo for SDK-aware version resolution", async () => {
     const cwd = getFixturesDir("project-expo-existing-deps")
 
     // recharts is already declared, but `expo install` must still see it so it
@@ -242,9 +242,21 @@ describe("updateDependencies", () => {
 
     expect(execa).toHaveBeenCalledWith(
       "npx",
-      ["expo", "install", "--", "recharts", "react-is"],
+      ["expo", "install", "recharts", "react-is"],
       { cwd }
     )
+  })
+
+  it("rejects Expo dependencies that could be interpreted as flags", async () => {
+    const cwd = getFixturesDir("project-expo-existing-deps")
+
+    await expect(
+      updateDependencies(["--fix"], [], { resolvedPaths: { cwd } } as any, {
+        silent: true,
+      })
+    ).rejects.toThrow(/cannot start with/)
+
+    expect(execa).not.toHaveBeenCalled()
   })
 
   it("rejects registry dependencies that begin with a dash (flag injection)", async () => {
