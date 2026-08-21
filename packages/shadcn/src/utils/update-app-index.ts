@@ -6,7 +6,9 @@ import { Config } from "@/src/utils/get-config"
 export async function updateAppIndex(component: string, config: Config) {
   const indexPath = path.join(config.resolvedPaths.cwd, "app/page.tsx")
 
-  if (!(await fs.stat(indexPath)).isFile()) {
+  const stat = await fs.stat(indexPath).catch(() => null)
+
+  if (!stat?.isFile()) {
     return
   }
 
