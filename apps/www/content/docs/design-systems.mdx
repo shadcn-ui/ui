@@ -1,0 +1,368 @@
+---
+title: Design Systems
+description: A comprehensive guide to building, maintaining, and scaling design systems with shadcn/ui components.
+---
+
+A design system is a collection of reusable components, guided by clear standards, that can be assembled together to build any number of applications. This guide will help you establish and maintain a robust design system using shadcn/ui.
+
+## What is a Design System?
+
+A design system serves as the single source of truth for your organization's design and development teams. It encompasses:
+
+- **Design tokens:** Colors, typography, spacing, and other visual elements
+- **Component library:** Reusable UI components with consistent behavior
+- **Guidelines:** Rules and best practices for implementation
+- **Documentation:** Clear instructions for usage and customization
+
+_Think of a design system as the DNA of your digital products—it defines how everything looks, feels, and behaves across your entire ecosystem._
+
+## Why Use shadcn/ui for Design Systems?
+
+shadcn/ui is particularly well-suited for design systems because:
+
+- **Consistent Foundation:** All components share common patterns and APIs
+- **Customizable:** Full access to component code for extensive customization
+- **Scalable:** Easy to extend and maintain across multiple projects
+- **Developer Experience:** Clear documentation and predictable interfaces
+
+## Setting Up Your Design System
+
+### 1. Define Your Design Tokens
+
+Start by establishing your core design tokens. These form the foundation of your system.
+
+```tsx
+// tokens/colors.ts
+export const colors = {
+  primary: {
+    50: '#eff6ff',
+    100: '#dbeafe',
+    500: '#3b82f6',
+    900: '#1e3a8a',
+  },
+  neutral: {
+    50: '#f9fafb',
+    100: '#f3f4f6',
+    500: '#6b7280',
+    900: '#111827',
+  },
+}
+
+// tokens/typography.ts
+export const typography = {
+  fontFamily: {
+    sans: ['Inter', 'sans-serif'],
+    mono: ['JetBrains Mono', 'monospace'],
+  },
+  fontSize: {
+    sm: ['14px', { lineHeight: '20px' }],
+    base: ['16px', { lineHeight: '24px' }],
+    lg: ['18px', { lineHeight: '28px' }],
+    xl: ['20px', { lineHeight: '28px' }],
+  },
+}
+
+// tokens/spacing.ts
+export const spacing = {
+  xs: '4px',
+  sm: '8px',
+  md: '16px',
+  lg: '24px',
+  xl: '32px',
+}
+```
+
+### 2. Configure Your Theme
+
+Update your CSS variables to reflect your design tokens:
+
+```css title="globals.css"
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --border: 240 5.9% 90%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+  }
+}
+```
+
+### 3. Create Component Variants
+
+Extend existing components to match your design system needs:
+
+```tsx title="components/ui/custom-button.tsx"
+import { Button, ButtonProps } from "@/components/ui/button"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+
+const customButtonVariants = cva(
+  // Base styles from original Button
+  "",
+  {
+    variants: {
+      intent: {
+        primary: "bg-blue-600 text-white hover:bg-blue-700",
+        secondary: "bg-gray-200 text-gray-900 hover:bg-gray-300",
+        success: "bg-green-600 text-white hover:bg-green-700",
+        warning: "bg-yellow-500 text-white hover:bg-yellow-600",
+        danger: "bg-red-600 text-white hover:bg-red-700",
+      },
+      size: {
+        sm: "h-8 px-3 text-sm",
+        md: "h-10 px-4",
+        lg: "h-12 px-6 text-lg",
+      },
+    },
+    defaultVariants: {
+      intent: "primary",
+      size: "md",
+    },
+  }
+)
+
+interface CustomButtonProps 
+  extends ButtonProps, 
+  VariantProps<typeof customButtonVariants> {
+  intent?: "primary" | "secondary" | "success" | "warning" | "danger"
+}
+
+export function CustomButton({ 
+  className, 
+  intent, 
+  size, 
+  ...props 
+}: CustomButtonProps) {
+  return (
+    <Button
+      className={cn(customButtonVariants({ intent, size }), className)}
+      {...props}
+    />
+  )
+}
+```
+
+## Documentation Strategy
+
+### Component Documentation Template
+
+For each component in your design system, follow this documentation structure:
+
+```markdown
+# Component Name
+
+Brief description of the component's purpose.
+
+## Usage
+
+Basic usage example with import statement.
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| variant | string | "default" | Visual style variant |
+| size | string | "medium" | Size of the component |
+
+## Examples
+
+### Basic Example
+[Component demo]
+
+### Advanced Example
+[Component demo with complex props]
+
+## Accessibility
+
+- Keyboard navigation support
+- Screen reader compatibility
+- ARIA attributes included
+
+## Design Guidelines
+
+- When to use this component
+- Spacing and layout considerations
+- Content guidelines
+```
+
+## Best Practices
+
+### Component Composition
+
+Build complex interfaces by composing simple components:
+
+```tsx
+// ✅ Good: Composable components
+function UserProfile() {
+  return (
+    <Card>
+      <CardHeader>
+        <Avatar>
+          <AvatarImage src="/user.jpg" />
+          <AvatarFallback>JD</AvatarFallback>
+        </Avatar>
+        <div>
+          <CardTitle>John Doe</CardTitle>
+          <CardDescription>Software Engineer</CardDescription>
+        </div>
+      </CardHeader>
+      <CardContent>
+        <p>Building amazing user experiences.</p>
+      </CardContent>
+      <CardFooter>
+        <Button variant="outline">Follow</Button>
+        <Button>Message</Button>
+      </CardFooter>
+    </Card>
+  )
+}
+```
+
+### Consistent Naming
+
+Use clear, descriptive names that follow established patterns:
+
+```tsx
+// ✅ Good: Clear, consistent naming
+<Button variant="destructive" size="large">
+  Delete Account
+</Button>
+
+// ❌ Bad: Unclear, inconsistent naming
+<Button type="red" big>
+  Delete Account
+</Button>
+```
+
+### Responsive Design
+
+Ensure all components work across different screen sizes:
+
+```tsx
+// Use responsive utilities
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  {items.map((item) => (
+    <Card key={item.id}>
+      {/* Card content */}
+    </Card>
+  ))}
+</div>
+```
+
+## Maintenance and Evolution
+
+### Version Control
+
+- Use semantic versioning for your design system
+- Document breaking changes clearly
+- Provide migration guides for major updates
+
+### Component Lifecycle
+
+1. **Proposal:** New component needs are identified
+2. **Design:** Visual and interaction design created
+3. **Development:** Component built and tested
+4. **Documentation:** Usage guidelines written
+5. **Release:** Component made available to teams
+6. **Maintenance:** Ongoing updates and improvements
+
+### Deprecation Strategy
+
+When retiring components:
+
+1. Mark as deprecated with clear notices
+2. Provide alternative components or patterns
+3. Set timeline for removal
+4. Support migration process
+
+## Testing Your Design System
+
+Ensure your components work reliably:
+
+```tsx title="__tests__/Button.test.tsx"
+import { render, screen } from '@testing-library/react'
+import { Button } from '@/components/ui/button'
+
+describe('Button', () => {
+  it('renders with correct text', () => {
+    render(<Button>Click me</Button>)
+    expect(screen.getByRole('button')).toHaveTextContent('Click me')
+  })
+
+  it('applies variant classes correctly', () => {
+    render(<Button variant="destructive">Delete</Button>)
+    expect(screen.getByRole('button')).toHaveClass('bg-destructive')
+  })
+})
+```
+
+## Common Pitfalls
+
+### Over-Engineering
+
+Start simple and add complexity only when needed:
+
+```tsx
+// ✅ Good: Start with simple variants
+<Button variant="primary">Submit</Button>
+
+// ❌ Avoid: Too many variants from the start
+<Button 
+  variant="primary" 
+  intensity="high" 
+  mood="confident" 
+  energy="elevated"
+>
+  Submit
+</Button>
+```
+
+### Inconsistent Patterns
+
+Maintain consistency across all components:
+
+```tsx
+// ✅ Good: Consistent prop patterns
+<Button size="large" />
+<Input size="large" />
+<Select size="large" />
+
+// ❌ Bad: Inconsistent patterns
+<Button size="large" />
+<Input big />
+<Select xl />
+```
+
+## Resources
+
+- [Design Systems Handbook](https://www.designbetter.co/design-systems-handbook)
+- [Atomic Design Methodology](https://atomicdesign.bradfrost.com/)
+- [Component Driven Development](https://componentdriven.org/)
+
+## Next Steps
+
+1. **Audit existing components** - Identify patterns and inconsistencies
+2. **Define design tokens** - Establish your visual foundation
+3. **Create component library** - Build reusable components
+4. **Write documentation** - Ensure proper usage guidelines
+5. **Establish governance** - Create processes for updates and additions
+
+A well-crafted design system becomes the foundation for consistent, efficient, and scalable digital products. By following these guidelines and leveraging shadcn/ui's flexible architecture, you can build a system that grows with your organization's needs. 
