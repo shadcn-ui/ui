@@ -63,8 +63,7 @@ function getPageHref(pathname: string, query: string, page: number) {
 function getPageNumbers(current: number, total: number) {
   if (total <= 7) {
     return Array.from({ length: total }, (_, i) => i + 1) as (
-      | number
-      | "ellipsis"
+      number | "ellipsis"
     )[]
   }
 

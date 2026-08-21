@@ -386,9 +386,7 @@ export class ConfigParseError extends RegistryError {
     public readonly cwd: string,
     parseError: unknown,
     public readonly configFile:
-      | "components.json"
-      | "package.json"
-      | "config" = "components.json"
+      "components.json" | "package.json" | "config" = "components.json"
   ) {
     const configName =
       configFile === "package.json"

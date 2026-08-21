@@ -928,9 +928,8 @@ describe("migrateRadix - package.json updates", () => {
     vi.mocked(prompts.default).mockResolvedValue({ confirm: true })
 
     // Mock package manager detection
-    const { getPackageManager } = await import(
-      "@/src/utils/get-package-manager"
-    )
+    const { getPackageManager } =
+      await import("@/src/utils/get-package-manager")
     vi.mocked(getPackageManager).mockResolvedValue("npm")
 
     await migrateRadix(mockConfig)
@@ -953,9 +952,8 @@ describe("migrateRadix - package.json updates", () => {
     const { getPackageInfo } = await import("@/src/utils/get-package-info")
     vi.mocked(getPackageInfo).mockReturnValue(mockPackageJson)
 
-    const { updateDependencies } = await import(
-      "@/src/utils/updaters/update-dependencies"
-    )
+    const { updateDependencies } =
+      await import("@/src/utils/updaters/update-dependencies")
 
     const fg = await import("fast-glob")
     vi.mocked(fg.default).mockResolvedValue(["component.tsx"])
@@ -1006,9 +1004,8 @@ describe("migrateRadix - package.json updates", () => {
     const { getPackageInfo } = await import("@/src/utils/get-package-info")
     vi.mocked(getPackageInfo).mockReturnValue(mockPackageJson)
 
-    const { updateDependencies } = await import(
-      "@/src/utils/updaters/update-dependencies"
-    )
+    const { updateDependencies } =
+      await import("@/src/utils/updaters/update-dependencies")
 
     mockFs.writeFile.mockResolvedValue(undefined)
 
@@ -1061,9 +1058,8 @@ describe("migrateRadix - package.json updates", () => {
     const { getPackageInfo } = await import("@/src/utils/get-package-info")
     vi.mocked(getPackageInfo).mockReturnValue(mockPackageJson)
 
-    const { getPackageManager } = await import(
-      "@/src/utils/get-package-manager"
-    )
+    const { getPackageManager } =
+      await import("@/src/utils/get-package-manager")
     vi.mocked(getPackageManager).mockResolvedValue("npm")
 
     mockFs.writeFile.mockResolvedValue(undefined)
@@ -1116,9 +1112,8 @@ describe("migrateRadix - package.json updates", () => {
     const { getPackageInfo } = await import("@/src/utils/get-package-info")
     vi.mocked(getPackageInfo).mockReturnValue(mockPackageJson)
 
-    const { getPackageManager } = await import(
-      "@/src/utils/get-package-manager"
-    )
+    const { getPackageManager } =
+      await import("@/src/utils/get-package-manager")
     vi.mocked(getPackageManager).mockResolvedValue("npm")
 
     mockFs.writeFile.mockResolvedValue(undefined)

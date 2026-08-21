@@ -38,9 +38,7 @@ export type ChatFallback<
   TOOLS extends ToolSet = ToolSet,
   WRITER = EventWriter<DATA, TOOLS>,
 > =
-  | string
-  | PART[]
-  | ((context: { writer: WRITER; messages: MESSAGE[] }) => void)
+  string | PART[] | ((context: { writer: WRITER; messages: MESSAGE[] }) => void)
 
 /**
  * Transport options: `delayMs` between text and reasoning deltas (default 50,

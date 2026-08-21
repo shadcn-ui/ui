@@ -61,8 +61,7 @@ export async function preFlightInit(
     silent: options.silent,
   }).start()
   const tailwind = options.existingConfig?.tailwind as
-    | Record<string, unknown>
-    | undefined
+    Record<string, unknown> | undefined
   const projectInfo = await getProjectInfo(options.cwd, {
     configCssFile: typeof tailwind?.css === "string" ? tailwind.css : undefined,
   })

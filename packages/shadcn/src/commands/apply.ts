@@ -221,8 +221,7 @@ export const apply = new Command()
             url: cleanUrl,
           } = await resolveRegistryBaseConfig(initUrl, options.cwd, {
             registries: existingConfig.registries as
-              | z.infer<typeof registryConfigSchema>
-              | undefined,
+              z.infer<typeof registryConfigSchema> | undefined,
           })
 
           const applyRegistryBaseConfig = resolveApplyRegistryBaseConfig({
