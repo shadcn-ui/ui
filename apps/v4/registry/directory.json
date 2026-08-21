@@ -1545,7 +1545,7 @@
     "name": "@ssych",
     "homepage": "https://ui.ssych.com",
     "url": "https://ui.ssych.com/r/{name}.json",
-    "description": "Dark, data-dense React components for high-stakes decision surfaces — trading books, screeners, clinical dashboards. Hand-drawn SVG charts, no chart runtime.",
+    "description": "Dark, data-dense React components for high-stakes decision surfaces: trading books, screeners, clinical dashboards. Hand-drawn SVG charts, no chart runtime.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 162 140'><path d='M161.64 50.1549C160.964 64.9054 148.808 76.5175 134.042 76.5179H133.304L144.556 96.9292C146.674 100.772 146.785 105.407 144.852 109.347L139.29 120.682C133.531 132.423 121.594 139.865 108.517 139.865L37.5662 139.868L60.6728 103.062H97.6544C99.3133 103.061 100.358 101.275 99.5446 99.8286L86.4403 76.5165H86.4499L103.597 50.1011C106.311 45.9191 110.958 43.3952 115.944 43.3952H161.949L161.64 50.1549Z' fill='currentColor'/><path d='M124.377 0L101.271 36.8065H64.2891C62.6302 36.8068 61.5859 38.5934 62.3989 40.0395L75.5032 63.3516H75.4991L58.3539 89.767C55.6392 93.949 50.9909 96.4729 46.0051 96.4729H0L0.310202 89.7119C0.986726 74.9613 13.1425 63.3502 27.9085 63.3502H28.6392L17.3879 42.9389C15.2695 39.0959 15.1589 34.4609 17.0915 30.5211L22.653 19.1857C28.4125 7.44524 40.3495 0.00339438 53.4265 0.00275735L124.377 0Z' fill='currentColor'/></svg>"
   },
   {
