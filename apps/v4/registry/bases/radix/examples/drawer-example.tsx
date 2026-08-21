@@ -39,7 +39,10 @@ function DrawerWithSides() {
             }
           >
             <DrawerTrigger asChild>
-              <Button variant="outline" className="capitalize">
+              <Button
+                variant="outline"
+                className="capitalize style-sera:uppercase"
+              >
                 {side}
               </Button>
             </DrawerTrigger>
@@ -54,7 +57,7 @@ function DrawerWithSides() {
                 {Array.from({ length: 10 }).map((_, index) => (
                   <p
                     key={index}
-                    className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
+                    className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed style-sera:leading-relaxed"
                   >
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                     do eiusmod tempor incididunt ut labore et dolore magna
@@ -97,7 +100,7 @@ function DrawerScrollableContent() {
             {Array.from({ length: 10 }).map((_, index) => (
               <p
                 key={index}
-                className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
+                className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed style-sera:leading-relaxed"
               >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut

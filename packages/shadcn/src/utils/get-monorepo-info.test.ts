@@ -6,6 +6,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 import {
   formatMonorepoMessage,
   getMonorepoTargets,
+  getWorkspacePatterns,
   isMonorepoRoot,
 } from "./get-monorepo-info"
 
@@ -68,6 +69,29 @@ describe("isMonorepoRoot", () => {
   })
 })
 
+describe("getWorkspacePatterns", () => {
+  it("should read only the packages section from pnpm-workspace.yaml", async () => {
+    await fs.writeFile(
+      path.join(tmpDir, "pnpm-workspace.yaml"),
+      [
+        "packages:",
+        "  - apps/*",
+        "  - packages/*",
+        "",
+        "ignoredBuiltDependencies:",
+        "  - sharp",
+        "  - unrs-resolver",
+        "",
+      ].join("\n")
+    )
+
+    await expect(getWorkspacePatterns(tmpDir)).resolves.toEqual([
+      "apps/*",
+      "packages/*",
+    ])
+  })
+})
+
 describe("getMonorepoTargets", () => {
   it("should find targets from pnpm-workspace.yaml", async () => {
     // Set up monorepo structure.
@@ -103,6 +127,30 @@ describe("getMonorepoTargets", () => {
 
     const targets = await getMonorepoTargets(tmpDir)
     expect(targets).toEqual([{ name: "apps/web", hasConfig: false }])
+  })
+
+  it("should skip unreadable workspace directories", async () => {
+    await fs.writeFile(
+      path.join(tmpDir, "pnpm-workspace.yaml"),
+      "packages:\n  - apps/**\n"
+    )
+    await fs.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
+
+    const webDir = path.join(tmpDir, "apps", "web")
+    await fs.ensureDir(webDir)
+    await fs.writeJson(path.join(webDir, "package.json"), { name: "web" })
+    await fs.writeFile(path.join(webDir, "vite.config.ts"), "export default {}")
+
+    const unreadableDir = path.join(tmpDir, "apps", "unreadable")
+    await fs.ensureDir(unreadableDir)
+    await fs.chmod(unreadableDir, 0o000)
+
+    try {
+      const targets = await getMonorepoTargets(tmpDir)
+      expect(targets).toEqual([{ name: "apps/web", hasConfig: false }])
+    } finally {
+      await fs.chmod(unreadableDir, 0o755)
+    }
   })
 
   it("should set hasConfig when components.json exists", async () => {

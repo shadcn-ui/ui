@@ -24,6 +24,7 @@ import {
   ItemGroup,
   ItemTitle,
 } from "@/registry/bases/base/ui/item"
+import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const HOLDINGS = [
@@ -81,6 +82,9 @@ const miniChartConfig = {
 } satisfies ChartConfig
 
 export function DividendIncome() {
+  const [params] = useDesignSystemSearchParams()
+  const isRounded = !["lyra", "sera"].includes(params.style)
+
   return (
     <Card>
       <CardHeader>
@@ -123,7 +127,7 @@ export function DividendIncome() {
                   <Bar
                     dataKey="value"
                     fill="var(--color-value)"
-                    radius={[3, 3, 0, 0]}
+                    radius={isRounded ? [3, 3, 0, 0] : 0}
                   />
                 </BarChart>
               </ChartContainer>

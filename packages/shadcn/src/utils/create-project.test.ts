@@ -1,3 +1,8 @@
+import {
+  getPackageManager,
+  getPackageManagerFromUserAgent,
+  getPackageRunnerCommand,
+} from "@/src/utils/get-package-manager"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
@@ -20,6 +25,8 @@ vi.mock("execa")
 vi.mock("prompts")
 vi.mock("@/src/utils/get-package-manager", () => ({
   getPackageManager: vi.fn().mockResolvedValue("npm"),
+  getPackageManagerFromUserAgent: vi.fn(() => "npm"),
+  getPackageRunnerCommand: vi.fn(() => "npx"),
 }))
 vi.mock("@/src/utils/spinner")
 vi.mock("@/src/utils/logger", () => ({
@@ -35,6 +42,9 @@ describe("createProject", () => {
 
   beforeEach(() => {
     vi.clearAllMocks()
+    vi.mocked(getPackageManager).mockResolvedValue("npm")
+    vi.mocked(getPackageManagerFromUserAgent).mockReturnValue("npm")
+    vi.mocked(getPackageRunnerCommand).mockReturnValue("npx")
 
     // Reset all fs mocks
     vi.mocked(fs.access).mockResolvedValue(undefined)

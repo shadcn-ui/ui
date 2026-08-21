@@ -62,6 +62,30 @@ export function SidebarNav() {
                         Investments
                       </SidebarMenuButton>
                     </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton>
+                        <IconPlaceholder
+                          lucide="Building2Icon"
+                          tabler="IconBuildingBank"
+                          hugeicons="BankIcon"
+                          phosphor="BankIcon"
+                          remixicon="RiBankLine"
+                        />
+                        Accounts
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton>
+                        <IconPlaceholder
+                          lucide="PieChartIcon"
+                          tabler="IconChartPie"
+                          hugeicons="PieChartIcon"
+                          phosphor="ChartPieIcon"
+                          remixicon="RiPieChartLine"
+                        />
+                        Spending
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
                   </SidebarMenu>
                 </SidebarGroupContent>
               </SidebarGroup>
@@ -181,6 +205,18 @@ export function SidebarNav() {
                         Security
                       </SidebarMenuButton>
                     </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton>
+                        <IconPlaceholder
+                          lucide="PaintbrushIcon"
+                          tabler="IconPalette"
+                          hugeicons="PaintBoardIcon"
+                          phosphor="PaletteIcon"
+                          remixicon="RiPaletteLine"
+                        />
+                        Appearance
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
                   </SidebarMenu>
                 </SidebarGroupContent>
               </SidebarGroup>
@@ -211,6 +247,18 @@ export function SidebarNav() {
                           remixicon="RiChat1Line"
                         />
                         Contact Us
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton>
+                        <IconPlaceholder
+                          lucide="BookOpenIcon"
+                          tabler="IconBook"
+                          hugeicons="BookOpen02Icon"
+                          phosphor="BookOpenIcon"
+                          remixicon="RiBookOpenLine"
+                        />
+                        Documentation
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                     <SidebarMenuItem>

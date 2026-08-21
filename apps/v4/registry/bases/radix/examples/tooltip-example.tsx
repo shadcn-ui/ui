@@ -52,7 +52,10 @@ function TooltipSides() {
         {(["top", "right", "bottom", "left"] as const).map((side) => (
           <Tooltip key={side}>
             <TooltipTrigger asChild>
-              <Button variant="outline" className="w-fit capitalize">
+              <Button
+                variant="outline"
+                className="w-fit capitalize style-sera:uppercase"
+              >
                 {side}
               </Button>
             </TooltipTrigger>

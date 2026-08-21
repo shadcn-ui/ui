@@ -3,12 +3,31 @@
 @import "shadcn/tailwind.css";
 @import "./legacy-themes.css";
 
-@import "../registry/styles/style-vega.css" layer(base);
-@import "../registry/styles/style-nova.css" layer(base);
-@import "../registry/styles/style-lyra.css" layer(base);
-@import "../registry/styles/style-maia.css" layer(base);
-@import "../registry/styles/style-mira.css" layer(base);
-@import "../registry/styles/style-luma.css" layer(base);
+@source "../node_modules/streamdown/dist/*.js";
+@source "../styles/base-luma/**/*.tsx";
+@source "../styles/base-lyra/**/*.tsx";
+@source "../styles/base-maia/**/*.tsx";
+@source "../styles/base-mira/**/*.tsx";
+@source "../styles/base-nova/**/*.tsx";
+@source "../styles/base-rhea/**/*.tsx";
+@source "../styles/base-sera/**/*.tsx";
+@source "../styles/base-vega/**/*.tsx";
+@source "../styles/aria-luma/**/*.tsx";
+@source "../styles/aria-lyra/**/*.tsx";
+@source "../styles/aria-maia/**/*.tsx";
+@source "../styles/aria-mira/**/*.tsx";
+@source "../styles/aria-nova/**/*.tsx";
+@source "../styles/aria-rhea/**/*.tsx";
+@source "../styles/aria-sera/**/*.tsx";
+@source "../styles/aria-vega/**/*.tsx";
+@source "../styles/radix-luma/**/*.tsx";
+@source "../styles/radix-lyra/**/*.tsx";
+@source "../styles/radix-maia/**/*.tsx";
+@source "../styles/radix-mira/**/*.tsx";
+@source "../styles/radix-nova/**/*.tsx";
+@source "../styles/radix-rhea/**/*.tsx";
+@source "../styles/radix-sera/**/*.tsx";
+@source "../styles/radix-vega/**/*.tsx";
 
 @custom-variant style-vega (&:where(.style-vega *));
 @custom-variant style-nova (&:where(.style-nova *));
@@ -16,6 +35,8 @@
 @custom-variant style-maia (&:where(.style-maia *));
 @custom-variant style-mira (&:where(.style-mira *));
 @custom-variant style-luma (&:where(.style-luma *));
+@custom-variant style-sera (&:where(.style-sera *));
+@custom-variant style-rhea (&:where(.style-rhea *));
 
 @custom-variant dark (&:is(.dark *));
 @custom-variant fixed (&:is(.layout-fixed *));
@@ -78,12 +99,12 @@
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --foreground: oklch(0% 0 0);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0% 0 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --popover-foreground: oklch(0% 0 0);
+  --primary: oklch(0% 0 0);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -102,7 +123,7 @@
   --chart-4: var(--color-blue-700);
   --chart-5: var(--color-blue-800);
   --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-foreground: oklch(0% 0 0);
   --sidebar-primary: oklch(0.205 0 0);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
@@ -115,7 +136,7 @@
   --code-foreground: var(--surface-foreground);
   --code-highlight: oklch(0.96 0 0);
   --code-number: oklch(0.56 0 0);
-  --selection: oklch(0.145 0 0);
+  --selection: oklch(0% 0 0);
   --selection-foreground: oklch(1 0 0);
 }
 
@@ -163,6 +184,11 @@
 }
 
 @layer base {
+  /* Anchor jumps clear the sticky header; typeset's scroll-margin adds air. */
+  html {
+    scroll-padding-top: var(--header-height);
+  }
+
   * {
     @apply border-border outline-ring/50;
   }
@@ -173,6 +199,7 @@
     @apply overscroll-y-none;
   }
   body {
+    position: relative;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
   }
@@ -209,7 +236,7 @@
 }
 
 @utility section-soft {
-  @apply from-background to-surface/40 dark:bg-background 3xl:fixed:bg-none bg-linear-to-b;
+  @apply bg-linear-to-b from-background to-surface/40 dark:bg-background 3xl:fixed:bg-none;
 }
 
 @utility theme-container {
@@ -217,11 +244,11 @@
 }
 
 @utility container-wrapper {
-  @apply 3xl:fixed:max-w-[calc(var(--breakpoint-2xl)+2rem)] mx-auto w-full px-2;
+  @apply mx-auto w-full px-2 3xl:fixed:max-w-[calc(var(--breakpoint-2xl)+2rem)];
 }
 
 @utility container {
-  @apply 3xl:max-w-screen-2xl mx-auto max-w-[1400px] px-4 lg:px-8;
+  @apply mx-auto max-w-[1400px] px-4 3xl:max-w-screen-2xl lg:px-8;
 }
 
 @utility no-scrollbar {
@@ -234,14 +261,14 @@
 }
 
 @utility border-ghost {
-  @apply after:border-border relative after:absolute after:inset-0 after:border after:mix-blend-darken dark:after:mix-blend-lighten;
+  @apply relative after:absolute after:inset-0 after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten;
 }
 
 @utility step {
   counter-increment: step;
 
   &:before {
-    @apply border-background bg-muted mr-2 inline-flex size-6 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute md:mt-[-4px] md:ml-[-50px] md:size-9 md:border-4;
+    @apply mr-2 inline-flex size-6 items-center justify-center rounded-full border-background bg-muted text-center -indent-px font-mono text-sm font-medium md:absolute md:mt-[-4px] md:ml-[-50px] md:size-9 md:border-4;
     content: counter(step);
   }
 }
@@ -253,6 +280,14 @@
 }
 
 @layer components {
+  /* Component links (asChild buttons, cards) keep their own affordances
+     inside typeset prose. Consumer-level rule: this app knows its components
+     carry data-slot. Same layer as typeset, wins on specificity. */
+  .typeset a[data-slot] {
+    font-weight: inherit;
+    text-decoration-line: none;
+  }
+
   .steps {
     &:first-child {
       @apply !mt-0;
@@ -274,7 +309,7 @@
   [data-rehype-pretty-code-figure] {
     background-color: var(--color-code);
     color: var(--color-code-foreground);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-2xl);
     border-width: 0px;
     border-color: var(--border);
     margin-top: calc(var(--spacing) * 6);
@@ -287,6 +322,14 @@
     &:has([data-rehype-pretty-code-title]) [data-slot="copy-button"] {
       top: calc(var(--spacing) * 1.5) !important;
     }
+  }
+
+  [data-rehype-pretty-code-figure] code,
+  [data-rehype-pretty-code-figure] code span {
+    font-variant-ligatures: none;
+    font-feature-settings:
+      "liga" 0,
+      "calt" 0;
   }
 
   [data-rehype-pretty-code-title] {
@@ -330,9 +373,9 @@
   }
 
   [data-line] {
-    padding-top: calc(var(--spacing) * 0.5);
-    padding-bottom: calc(var(--spacing) * 0.5);
-    min-height: calc(var(--spacing) * 1);
+    padding-top: calc(var(--spacing) * 0.25);
+    padding-bottom: calc(var(--spacing) * 0.25);
+    min-height: calc(var(--spacing) * 0.875);
     width: 100%;
     display: inline-block;
   }
@@ -351,14 +394,8 @@
     white-space: pre;
     line-height: 0.95;
     font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      "Liberation Mono",
-      "Courier New",
-      monospace;
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
     font-variant-ligatures: none;
   }
 

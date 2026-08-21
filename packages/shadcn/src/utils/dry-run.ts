@@ -24,9 +24,13 @@ import { transformCss } from "@/src/utils/updaters/update-css"
 import { transformCssVars } from "@/src/utils/updaters/update-css-vars"
 import {
   findCommonRoot,
+  getPlannedFilePaths,
   resolveFilePath,
+  rewriteResolvedImportsInContent,
 } from "@/src/utils/updaters/update-files"
 import { massageTreeForFonts } from "@/src/utils/updaters/update-fonts"
+import { Project } from "ts-morph"
+import { loadConfig } from "tsconfig-paths"
 import type { z } from "zod"
 
 export type DryRunFile = {
@@ -144,6 +148,19 @@ async function processFiles(
       ? getRegistryBaseColor(config.tailwind.baseColor)
       : Promise.resolve(undefined),
   ])
+  let tsConfig: ReturnType<typeof loadConfig>
+  try {
+    tsConfig = loadConfig(config.resolvedPaths.cwd)
+  } catch {
+    tsConfig = { resultType: "failed" } as ReturnType<typeof loadConfig>
+  }
+  const project = new Project({
+    compilerOptions: {},
+  })
+  const plannedFilePaths = getPlannedFilePaths(files, config, {
+    isSrcDir: projectInfo?.isSrcDir,
+    framework: projectInfo?.framework.name,
+  })
 
   for (let index = 0; index < files.length; index++) {
     const file = files[index]
@@ -203,13 +220,25 @@ async function processFiles(
               transformCleanup,
             ]
           )
+    const finalContent =
+      isEnvFile(filePath) || isUniversalItemFile
+        ? content
+        : await rewriteResolvedImportsInContent({
+            config,
+            content,
+            filePaths: plannedFilePaths,
+            project,
+            projectInfo,
+            resolvedPath: filePath,
+            tsConfig,
+          })
 
     // Determine action.
     let action: DryRunFile["action"] = "create"
     let oldContent: string | undefined
     if (existingFile) {
       oldContent = await fs.readFile(filePath, "utf-8")
-      if (isContentSame(oldContent, content)) {
+      if (isContentSame(oldContent, finalContent)) {
         action = "skip"
       } else {
         action = "overwrite"
@@ -219,7 +248,7 @@ async function processFiles(
     result.files.push({
       path: relativePath,
       action,
-      content,
+      content: finalContent,
       ...(action === "overwrite" && { existingContent: oldContent }),
       type: file.type ?? "registry:ui",
     })

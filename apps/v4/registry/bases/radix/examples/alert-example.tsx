@@ -13,10 +13,12 @@ import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Card,
   CardContent,
+  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/registry/bases/radix/ui/card"
+import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
 import {
   Item,
@@ -25,10 +27,10 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/registry/bases/radix/ui/item"
-import { Label } from "@/registry/bases/radix/ui/label"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -49,7 +51,7 @@ export default function AlertExample() {
 
 function AlertExample1() {
   return (
-    <Example title="Basic">
+    <Example title="Basic" className="style-sera:bg-transparent">
       <div className="mx-auto flex w-full max-w-lg flex-col gap-4">
         <Alert>
           <AlertTitle>Success! Your changes have been saved.</AlertTitle>
@@ -72,7 +74,7 @@ function AlertExample1() {
 
 function AlertExample2() {
   return (
-    <Example title="With Icons">
+    <Example title="With Icons" className="style-sera:bg-transparent">
       <div className="mx-auto flex w-full max-w-lg flex-col gap-4">
         <Alert>
           <IconPlaceholder
@@ -170,7 +172,7 @@ function AlertExample2() {
 
 function AlertExample3() {
   return (
-    <Example title="Destructive">
+    <Example title="Destructive" className="style-sera:bg-transparent">
       <div className="mx-auto flex w-full max-w-lg flex-col gap-4">
         <Alert variant="destructive">
           <IconPlaceholder
@@ -213,7 +215,7 @@ function AlertExample3() {
 
 function AlertExample4() {
   return (
-    <Example title="With Actions">
+    <Example title="With Actions" className="style-sera:bg-transparent">
       <div className="mx-auto flex w-full max-w-lg flex-col gap-4">
         <Alert>
           <IconPlaceholder
@@ -252,12 +254,15 @@ function AlertExample4() {
 
 function AlertExample5() {
   return (
-    <Example title="Inside Card">
+    <Example title="Inside Card" className="style-sera:bg-transparent">
       <Card className="mx-auto w-full max-w-lg">
         <CardHeader>
           <CardTitle>Create project</CardTitle>
+          <CardDescription>
+            Fill in the form below to create a new project.
+          </CardDescription>
         </CardHeader>
-        <CardContent className="flex flex-col gap-4">
+        <CardContent className="flex flex-col gap-4 style-sera:gap-8">
           <Alert>
             <IconPlaceholder
               lucide="CircleAlertIcon"
@@ -273,24 +278,28 @@ function AlertExample5() {
               Upgrade to Pro to create unlimited projects.
             </AlertDescription>
           </Alert>
-          <div className="flex flex-col gap-2">
-            <Label htmlFor="project-name">Name</Label>
-            <Input id="project-name" placeholder="My project" />
-          </div>
-          <div className="flex flex-col gap-2">
-            <Label htmlFor="project-framework">Framework</Label>
-            <Select>
-              <SelectTrigger id="project-framework">
-                <SelectValue placeholder="Select a framework" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="next">Next.js</SelectItem>
-                <SelectItem value="remix">Remix</SelectItem>
-                <SelectItem value="astro">Astro</SelectItem>
-                <SelectItem value="nuxt">Nuxt</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+          <FieldGroup>
+            <Field>
+              <FieldLabel htmlFor="project-name">Name</FieldLabel>
+              <Input id="project-name" placeholder="My project" />
+            </Field>
+            <Field>
+              <FieldLabel htmlFor="project-framework">Framework</FieldLabel>
+              <Select>
+                <SelectTrigger id="project-framework">
+                  <SelectValue placeholder="Select a framework" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value="next">Next.js</SelectItem>
+                    <SelectItem value="remix">Remix</SelectItem>
+                    <SelectItem value="astro">Astro</SelectItem>
+                    <SelectItem value="nuxt">Nuxt</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </Field>
+          </FieldGroup>
           <Item variant="outline">
             <ItemMedia variant="image" className="border">
               <IconPlaceholder

@@ -7,6 +7,7 @@ import {
   getMonorepoTargets,
   isMonorepoRoot,
 } from "@/src/utils/get-monorepo-info"
+import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import fs from "fs-extra"
@@ -28,8 +29,19 @@ export async function preFlightApply(options: { cwd: string }) {
   if (!fs.existsSync(path.resolve(options.cwd, "components.json"))) {
     if (await isMonorepoRoot(options.cwd)) {
       const targets = await getMonorepoTargets(options.cwd)
-      if (targets.length > 0) {
-        formatMonorepoMessage("apply --preset <preset>", targets, {
+      const applyTargets: typeof targets = []
+
+      for (const target of targets) {
+        const projectInfo = await getProjectInfo(
+          path.resolve(options.cwd, target.name)
+        )
+        if (projectInfo?.framework && projectInfo.framework.name !== "manual") {
+          applyTargets.push(target)
+        }
+      }
+
+      if (applyTargets.length > 0) {
+        formatMonorepoMessage("apply --preset <preset>", applyTargets, {
           cwdFlag: "-c",
         })
         process.exit(1)

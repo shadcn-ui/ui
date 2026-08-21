@@ -2,8 +2,14 @@ import fsExtra from "fs-extra"
 
 export const FILE_BACKUP_SUFFIX = ".bak"
 
-type WithFileBackupOptions = {
-  onBackupFailure?: (filePath: string) => void
+export class FileBackupError extends Error {
+  filePath: string
+
+  constructor(filePath: string) {
+    super(`Could not back up ${filePath}.`)
+    this.name = "FileBackupError"
+    this.filePath = filePath
+  }
 }
 
 export function createFileBackup(filePath: string): string | null {
@@ -15,8 +21,7 @@ export function createFileBackup(filePath: string): string | null {
   try {
     fsExtra.renameSync(filePath, backupPath)
     return backupPath
-  } catch (error) {
-    console.error(`Failed to create backup of ${filePath}: ${error}`)
+  } catch {
     return null
   }
 }
@@ -57,8 +62,7 @@ export function deleteFileBackup(filePath: string): boolean {
 
 export async function withFileBackup<T>(
   filePath: string,
-  task: () => Promise<T>,
-  options: WithFileBackupOptions = {}
+  task: () => Promise<T>
 ) {
   if (!fsExtra.existsSync(filePath)) {
     return task()
@@ -67,8 +71,7 @@ export async function withFileBackup<T>(
   const backupPath = createFileBackup(filePath)
 
   if (!backupPath) {
-    options.onBackupFailure?.(filePath)
-    throw new Error(`Could not back up ${filePath}.`)
+    throw new FileBackupError(filePath)
   }
 
   const restoreBackupOnExit = () => restoreFileBackup(filePath)
