@@ -660,6 +660,49 @@ test("an anchored turn holds at the top when content below it collapses", async 
   expect(viewportOffsetOf("turn", getViewport())).toBeLessThanOrEqual(peek + 4)
 })
 
+test("does not re-anchor to an old mount anchor on a same-count content swap (#11128)", async () => {
+  // 20 seeds; every even-indexed row is a scroll anchor (the
+  // documented `scrollAnchor={message.role === "user"}` pattern).
+  const seeds = Array.from({ length: 20 }, (_, i) => ({
+    id: `m${i}`,
+    scrollAnchor: i % 2 === 0,
+  }))
+
+  await renderThread({
+    autoScroll: true,
+    defaultScrollPosition: "end",
+    items: seeds,
+  })
+
+  const viewport = getViewport()
+
+  // Opens pinned to the bottom.
+  expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
+
+  // A same-count content swap: the trailing seed is replaced by a fresh
+  // non-anchor row (e.g. a streamed "reply" taking a "typing" row's
+  // place). Item count is unchanged, so the library takes its "item
+  // count unchanged" branch. Without seeding mount-time anchors,
+  // getUnanchoredScrollAnchor returns the oldest mount anchor (m0) and
+  // the viewport is yanked from the bottom up to the top.
+  flushSync(() => {
+    root!.render(
+      <Thread
+        autoScroll
+        defaultScrollPosition="end"
+        items={[
+          ...seeds.slice(0, 19),
+          { id: "reply", scrollAnchor: false },
+        ]}
+      />,
+    )
+  })
+  await settle()
+
+  // The viewport must stay pinned to the bottom, not jump up to m0.
+  expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
+})
+
 test("auto-scroll and content updates survive a StrictMode remount", async () => {
   // StrictMode mounts, unmounts, then remounts on the same refs. The existing
   // StrictMode test covers the visibility frame; this one covers the rest of the
