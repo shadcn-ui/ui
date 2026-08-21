@@ -81,7 +81,7 @@ function ScrollStateFooter() {
 
   return (
     <CardFooter className="justify-center border-t text-center text-sm text-muted-foreground">
-      {status}
+      <span className="flex min-h-[2lh] items-center">{status}</span>
     </CardFooter>
   )
 }
