@@ -1,9 +1,9 @@
 ---
 title: GitHub Registries
-description: Use a public GitHub repository as a registry.
+description: Use a GitHub repository as a registry.
 ---
 
-You can now turn **any public GitHub repository into a registry.**
+You can now turn **any GitHub repository into a registry.**
 
 Add a `registry.json` file to the root of the repo, describe the files you want
 to share, and users can install them with the `shadcn` CLI.
@@ -95,29 +95,33 @@ workflows, rules or project conventions.
 
 Use a GitHub registry when:
 
-- You already have reusable code in a public GitHub repository.
+- You already have reusable code in a GitHub repository.
 - You want users to install directly from `owner/repo/item`.
 - You want to distribute config files, rules, docs, templates, utilities or
   any other files from the same repository.
-- You do not need private repo access or custom request authentication.
+- You do not need a custom registry server or request authentication.
 
 ## Requirements
 
 A GitHub registry must:
 
-- Be a public `github.com` repository.
+- Be a `github.com` repository.
 - Have a `registry.json` file at the repository root.
 - Use valid `registry.json` and `registry-item.json` schemas.
 - Reference source files that exist in the repository.
 
-Private repositories and GitHub Enterprise hosts are not currently supported by
-GitHub addresses. For private or authenticated registries, use a
+Public repositories work with zero configuration. Private repositories work
+with GitHub credentials. See
+[Private repositories](#private-repositories).
+
+GitHub Enterprise hosts are not supported by GitHub addresses. For custom
+registry servers with request authentication, use a
 [namespace](/docs/registry/namespace) with
 [authentication](/docs/registry/authentication).
 
 ## Step 1: Add registry.json
 
-Given an existing public repository:
+Given an existing repository:
 
 ```txt
 .
@@ -595,9 +599,83 @@ The CLI uses Git to resolve branches, tags and short refs into a commit SHA
 before reading files. Full 40-character commit SHAs are used directly and do not
 require Git.
 
+## Private repositories
+
+Private `github.com` repositories work as registries too. You do not set up a
+server or configure anything in the registry itself. If you can read the
+repository, the CLI can install from it.
+
+### Use the GitHub CLI
+
+For local development, authenticate with the GitHub CLI once:
+
+```bash
+gh auth login
+```
+
+Then install from the private repository like any other GitHub registry.
+
+```bash
+npx shadcn@latest add acme/private-toolkit/project-conventions
+```
+
+When a repository is not publicly readable, the CLI reads it through `gh`
+using your stored credentials. The token stays inside the GitHub CLI. It never
+enters the shadcn process.
+
+The first time a command uses your credentials, it prints a notice:
+
+```txt
+✔ Using gh credentials.
+```
+
+### Use a token in CI
+
+Where the GitHub CLI is not installed, set `GH_TOKEN` or `GITHUB_TOKEN`:
+
+```bash
+GH_TOKEN=github_pat_xxx npx shadcn@latest add acme/private-toolkit/project-conventions
+```
+
+- `GH_TOKEN` takes precedence over `GITHUB_TOKEN`.
+- Use a fine-grained personal access token scoped to the repository, with
+  **Contents: Read-only** access. This is the recommended credential.
+- When a token is set, it is used instead of the GitHub CLI and is only ever
+  sent to `api.github.com`.
+
+<Callout>
+  In GitHub Actions, the built-in `GITHUB_TOKEN` can generally only read the
+  repository that owns the workflow. To install from a private registry in
+  another repository, use a fine-grained personal access token or a GitHub App
+  installation token.
+</Callout>
+
+### How it works
+
+- Public repositories are always read anonymously. No credentials are used and
+  the GitHub CLI is never invoked.
+- The CLI tries anonymous access first. It only uses your credentials when the
+  repository's root `registry.json` is not publicly readable.
+- Ref resolution runs `git ls-remote` first. Git may already use a credential
+  helper you have configured, for example one installed by `gh auth setup-git`.
+- Private files are read through GitHub's Contents API, pinned to the resolved
+  commit SHA.
+- GitHub returns the same not-found response for private and missing
+  repositories. If your credentials cannot read the repository either, the CLI
+  cannot tell you which case it was.
+
+### Limits
+
+- Registry source files are limited to 5 MiB per file.
+- GitHub Enterprise hosts are not supported. GitHub addresses always resolve
+  against `github.com`.
+- Avoid symlinks in registry source files. Anonymous reads return the symlink
+  target path as text, while authenticated reads through the Contents API
+  return the target file's content.
+
 ## Review before installing
 
-GitHub registry items install code and project files from public repositories.
+GitHub registry items install code and project files from GitHub repositories.
 Treat a GitHub item address like any other third-party code dependency.
 
 Before installing from a source you do not control:
