@@ -1,10 +1,28 @@
 import { describe, expect, it } from "vitest"
 
 import {
+  projectConfigSchema,
   registryChunkSchema,
   registryConfigSchema,
   registrySchema,
 } from "./schema"
+
+describe("projectConfigSchema", () => {
+  it("accepts framework and source directory overrides", () => {
+    expect(
+      projectConfigSchema.safeParse({
+        framework: "vite",
+        srcDirectory: false,
+      }).success
+    ).toBe(true)
+  })
+
+  it("rejects unsupported frameworks", () => {
+    expect(
+      projectConfigSchema.safeParse({ framework: "wordpress" }).success
+    ).toBe(false)
+  })
+})
 
 describe("registryConfigSchema", () => {
   it("should accept valid registry names starting with @", () => {

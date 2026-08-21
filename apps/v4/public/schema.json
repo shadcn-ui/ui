@@ -60,6 +60,34 @@
     "tsx": {
       "type": "boolean"
     },
+    "project": {
+      "type": "object",
+      "description": "Overrides for project structure that the CLI normally detects automatically.",
+      "properties": {
+        "framework": {
+          "type": "string",
+          "description": "The framework to use instead of automatic detection. Use manual to disable framework-specific behavior.",
+          "enum": [
+            "next-app",
+            "next-pages",
+            "remix",
+            "react-router",
+            "vite",
+            "astro",
+            "laravel",
+            "tanstack-start",
+            "gatsby",
+            "expo",
+            "manual"
+          ]
+        },
+        "srcDirectory": {
+          "type": "boolean",
+          "description": "Whether framework-relative registry targets should be placed under src."
+        }
+      },
+      "additionalProperties": false
+    },
     "iconLibrary": {
       "type": "string"
     },
