@@ -37,6 +37,10 @@ export function TypesetPreviewProvider({
 
   React.useEffect(() => {
     function onMessage(event: MessageEvent) {
+      if (event.origin !== window.location.origin) {
+        return
+      }
+
       if (event.data?.type === TYPESET_PARAMS_MESSAGE && event.data.data) {
         setParams(event.data.data)
       }
