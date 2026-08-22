@@ -669,3 +669,57 @@ async function load() {
     })
   ).toMatchSnapshot()
 })
+
+it("keeps every segment of a workspace alias for unmapped local imports", async () => {
+  const result = await transform({
+    filename: "test.ts",
+    raw: `import { foo } from "@/lib/helpers"
+import { useX } from "@/hooks/use-x"
+`,
+    config: {
+      tsx: true,
+      aliases: {
+        components: "@workspace/ui/components",
+        utils: "@workspace/ui/lib/utils",
+      },
+    } as Config,
+  })
+
+  expect(result).toContain(`import { foo } from "@workspace/ui/lib/helpers"`)
+  expect(result).toContain(`import { useX } from "@workspace/ui/hooks/use-x"`)
+})
+
+it("keeps every segment of a multi-segment scoped workspace alias", async () => {
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import { cx } from "@/lib/primitive"
+`,
+      config: {
+        tsx: true,
+        aliases: {
+          ui: "@packages/intent-ui/components",
+          components: "@packages/intent-ui/components",
+          utils: "@packages/intent-ui/lib/primitive",
+        },
+      } as Config,
+    })
+  ).toContain(`import { cx } from "@packages/intent-ui/lib/primitive"`)
+})
+
+it("falls back to the components alias root when utils is not a workspace package", async () => {
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import { foo } from "@/lib/helpers"
+`,
+      config: {
+        tsx: true,
+        aliases: {
+          components: "#components",
+          utils: "#utils",
+        },
+      } as Config,
+    })
+  ).toContain(`import { foo } from "#components/lib/helpers"`)
+})
