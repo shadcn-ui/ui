@@ -137,8 +137,11 @@ function transformStringLiteralNode(node: StringLiteral) {
 }
 
 export function applyRtlMapping(input: string) {
+  const seen = new Set<string>()
+
   return input
     .split(" ")
+    .filter(Boolean)
     .flatMap((className) => {
       // Skip classes that already have rtl: or ltr: prefix.
       if (className.startsWith("rtl:") || className.startsWith("ltr:")) {
@@ -240,6 +243,14 @@ export function applyRtlMapping(input: string) {
       }
 
       return [result]
+    })
+    .filter((className) => {
+      if (seen.has(className)) {
+        return false
+      }
+
+      seen.add(className)
+      return true
     })
     .join(" ")
 }
