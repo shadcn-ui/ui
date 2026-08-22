@@ -58,12 +58,12 @@ export function ThemeProvider({
   defaultTheme = "system",
   storageKey = "theme",
 }: ThemeProviderProps) {
-  const [theme, setThemeState] = useState<Theme>(defaultTheme)
+  const [theme, setTheme] = useState<Theme>(defaultTheme)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     const stored = localStorage.getItem(storageKey)
-    setThemeState(
+    setTheme(
       stored === "light" || stored === "dark" || stored === "system"
         ? stored
         : defaultTheme
@@ -85,13 +85,13 @@ export function ThemeProvider({
     return () => media.removeEventListener("change", onChange)
   }, [theme, mounted])
 
-  const setTheme = (next: Theme) => {
+  const setThemeHandler = (next: Theme) => {
     localStorage.setItem(storageKey, next)
-    setThemeState(next)
+    setTheme(next)
   }
 
   return (
-    <ThemeProviderContext value={{ theme, setTheme }}>
+    <ThemeProviderContext value={{ theme, setTheme: SetThemeHandler }}>
       <ScriptOnce>{getThemeScript(storageKey, defaultTheme)}</ScriptOnce>
       {children}
     </ThemeProviderContext>
