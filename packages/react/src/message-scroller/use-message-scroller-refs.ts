@@ -18,6 +18,7 @@ import type {
 // controller and the commands so writes are visible across them without prop
 // threading. stateStore and visibilityStore fan out via useSyncExternalStore.
 type MessageScrollerRefs = {
+  atEndRef: React.RefObject<boolean>
   autoScrollRef: React.RefObject<boolean>
   autoscrollingRef: React.RefObject<boolean>
   autoscrollingTimeoutRef: React.RefObject<number | null>
@@ -49,6 +50,7 @@ type MessageScrollerRefs = {
   stateFrameRef: React.RefObject<number | null>
   stateStore: MessageScrollerStore<MessageScrollerScrollable>
   viewportRef: React.RefObject<HTMLDivElement | null>
+  viewportWidthRef: React.RefObject<number | null>
   visibilityFrameRef: React.RefObject<number | null>
   visibilityObserverRef: React.RefObject<IntersectionObserver | null>
   visibilityStore: MessageScrollerVisibilityStore
@@ -69,6 +71,10 @@ function useMessageScrollerRefs({
   scrollMargin: number
   scrollPreviousItemPeek: number
 }): MessageScrollerRefs {
+  // Whether the last state commit found the reader at the end. Read on resize,
+  // which arrives after the browser has already moved scrollTop, so the answer
+  // has to have been recorded before the box changed.
+  const atEndRef = React.useRef(true)
   const autoScrollRef = React.useRef(autoScroll)
   const autoscrollingRef = React.useRef(false)
   const contentRef = React.useRef<HTMLDivElement | null>(null)
@@ -109,6 +115,10 @@ function useMessageScrollerRefs({
     React.useRef<MessageScrollerStore<MessageScrollerScrollable> | null>(null)
   const autoscrollingTimeoutRef = React.useRef<number | null>(null)
   const viewportRef = React.useRef<HTMLDivElement | null>(null)
+  // The viewport's width at the last resize pass, so the next one can tell the
+  // content being rewrapped from the content simply growing. Null until the
+  // first pass, which has nothing to compare against.
+  const viewportWidthRef = React.useRef<number | null>(null)
   const visibilityFrameRef = React.useRef<number | null>(null)
   const visibilityObserverRef = React.useRef<IntersectionObserver | null>(null)
   const visibilityStoreRef =
@@ -135,6 +145,7 @@ function useMessageScrollerRefs({
   scrollPreviousItemPeekRef.current = scrollPreviousItemPeek
 
   return {
+    atEndRef,
     autoScrollRef,
     autoscrollingRef,
     autoscrollingTimeoutRef,
@@ -160,6 +171,7 @@ function useMessageScrollerRefs({
     stateFrameRef,
     stateStore: stateStoreRef.current,
     viewportRef,
+    viewportWidthRef,
     visibilityFrameRef,
     visibilityObserverRef,
     visibilityStore: visibilityStoreRef.current,
