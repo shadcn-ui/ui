@@ -1,14 +1,41 @@
+import { AsyncLocalStorage } from "async_hooks"
+
 interface RegistryContext {
   headers: Record<string, Record<string, string>>
+  env?: NodeJS.ProcessEnv
+  onGitHubAuthNotice?: (message: string) => void | Promise<void>
 }
 
-let context: RegistryContext = {
+const registryContext = new AsyncLocalStorage<RegistryContext>()
+const fallbackContext: RegistryContext = {
   headers: {},
+}
+
+export function withRegistryContext<T>(
+  callback: () => T,
+  options: {
+    env?: NodeJS.ProcessEnv
+    onGitHubAuthNotice?: (message: string) => void | Promise<void>
+  } = {}
+): T {
+  const parentContext = registryContext.getStore()
+
+  return registryContext.run(
+    {
+      headers: {},
+      env: options.env ?? parentContext?.env,
+      onGitHubAuthNotice:
+        options.onGitHubAuthNotice ?? parentContext?.onGitHubAuthNotice,
+    },
+    callback
+  )
 }
 
 export function setRegistryHeaders(
   headers: Record<string, Record<string, string>>
 ) {
+  const context = registryContext.getStore() ?? fallbackContext
+
   // Merge new headers with existing ones to preserve headers for nested dependencies
   context.headers = { ...context.headers, ...headers }
 }
@@ -16,9 +43,23 @@ export function setRegistryHeaders(
 export function getRegistryHeadersFromContext(
   url: string
 ): Record<string, string> {
+  const context = registryContext.getStore() ?? fallbackContext
+
   return context.headers[url] || {}
 }
 
+export function getRegistryEnvFromContext(key: string): string | undefined {
+  const context = registryContext.getStore()
+
+  return context?.env ? context.env[key] : process.env[key]
+}
+
+export function getGitHubAuthNoticeFromContext() {
+  return registryContext.getStore()?.onGitHubAuthNotice
+}
+
 export function clearRegistryContext() {
+  const context = registryContext.getStore() ?? fallbackContext
+
   context.headers = {}
 }
