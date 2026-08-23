@@ -1,6 +1,6 @@
 {
   "name": "@shadcn/react",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Unstyled components for React.",
   "publishConfig": {
     "access": "public"
@@ -37,6 +37,10 @@
     "./message-scroller": {
       "types": "./dist/message-scroller/index.d.ts",
       "default": "./dist/message-scroller/index.js"
+    },
+    "./questionnaire": {
+      "types": "./dist/questionnaire/index.d.ts",
+      "default": "./dist/questionnaire/index.js"
     }
   },
   "scripts": {
@@ -69,6 +73,7 @@
     "rimraf": "^6.0.1",
     "tsup": "^8.5.0",
     "typescript": "^5.9.2",
-    "vite-tsconfig-paths": "^4.3.2"
+    "vite-tsconfig-paths": "^4.3.2",
+    "vitest": "^3.2.6"
   }
 }
