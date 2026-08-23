@@ -990,9 +990,9 @@
   },
   {
     "name": "@motion-menu",
-    "homepage": "https://motion-menu-two.vercel.app",
-    "url": "https://motion-menu-two.vercel.app/r/{name}.json",
-    "description": "596 motion/3D UI patterns — scroll-driven WebGL, shader passes, spring choreography — as ready HTML/CSS/JS. 26 free, or $149 once for the rest.",
+    "homepage": "https://www.motionmenu.ca",
+    "url": "https://www.motionmenu.ca/r/{name}.json",
+    "description": "597 motion/3D UI patterns — scroll-driven WebGL, shader passes, spring choreography — as ready HTML/CSS/JS. 26 free, or $149 once for the rest.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round'><path d='M4 22c4-10 8 10 12 0s8-10 12 0'/></svg>"
   },
   {
