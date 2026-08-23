@@ -1,5 +1,77 @@
 # shadcn
 
+## 4.19.0
+
+### Minor Changes
+
+- [#11582](https://github.com/shadcn-ui/ui/pull/11582) [`33c81f991f1013653444d6819107b2b356563f57`](https://github.com/shadcn-ui/ui/commit/33c81f991f1013653444d6819107b2b356563f57) Thanks [@shadcn](https://github.com/shadcn)! - add private repository support to GitHub registries via GitHub CLI credentials or GH_TOKEN.
+
+- [#11248](https://github.com/shadcn-ui/ui/pull/11248) [`b4f2023b1d5c733db67d4e90eb9485a95c5ed480`](https://github.com/shadcn-ui/ui/commit/b4f2023b1d5c733db67d4e90eb9485a95c5ed480) Thanks [@rbadillap](https://github.com/rbadillap)! - add `npx shadcn migrate base-color` to switch a project's base color.
+
+## 4.18.0
+
+### Minor Changes
+
+- [#11501](https://github.com/shadcn-ui/ui/pull/11501) [`aef1cdca54e8da689351cdddf959342909e45e76`](https://github.com/shadcn-ui/ui/commit/aef1cdca54e8da689351cdddf959342909e45e76) Thanks [@shadcn](https://github.com/shadcn)! - merge registries from package.json and components.json, and support adding registries to package.json when components.json is not present
+
+### Patch Changes
+
+- [#11500](https://github.com/shadcn-ui/ui/pull/11500) [`e66b99b14dd9c54afc434dbf5a702f170b1153b0`](https://github.com/shadcn-ui/ui/commit/e66b99b14dd9c54afc434dbf5a702f170b1153b0) Thanks [@shadcn](https://github.com/shadcn)! - Skip unreadable directories during file scans instead of failing with `EACCES`.
+
+- [#11504](https://github.com/shadcn-ui/ui/pull/11504) [`9f4e3ff26025d16a243ea03cc891c734c4cf0b59`](https://github.com/shadcn-ui/ui/commit/9f4e3ff26025d16a243ea03cc891c734c4cf0b59) Thanks [@shadcn](https://github.com/shadcn)! - Skip unreadable directories when resolving monorepo targets.
+
+- [#11502](https://github.com/shadcn-ui/ui/pull/11502) [`87d71b3629c34f3c38a353a211ec8591c1ff1721`](https://github.com/shadcn-ui/ui/commit/87d71b3629c34f3c38a353a211ec8591c1ff1721) Thanks [@shadcn](https://github.com/shadcn)! - resolve registries declared in package.json when adding components. `shadcn add`, `search`, `view` and `init` now resolve registries from package.json in memory without persisting them to components.json
+
+- [#9248](https://github.com/shadcn-ui/ui/pull/9248) [`03c45b822e60195796dfd3d2fcf7c223ff4ece86`](https://github.com/shadcn-ui/ui/commit/03c45b822e60195796dfd3d2fcf7c223ff4ece86) Thanks [@Grafikart](https://github.com/Grafikart)! - Fix shadcn for projects with unreadable permission files
+
+## 4.17.0
+
+### Minor Changes
+
+- [#10453](https://github.com/shadcn-ui/ui/pull/10453) [`deda4df80fb350230b2fce2b575e769a90cae076`](https://github.com/shadcn-ui/ui/commit/deda4df80fb350230b2fce2b575e769a90cae076) Thanks [@nbouvrette](https://github.com/nbouvrette)! - Add SOCKS4/SOCKS5 proxy support to the registry HTTP stack via `ALL_PROXY=socks5://...` (the curl convention), backed by the `socks` package.
+
+  Proxy selection now goes through a `createProxyDispatcher(env)` factory that checks `ALL_PROXY` / `all_proxy` for a `socks*://` URL before falling back to the existing HTTP/HTTPS handling. `ALL_PROXY` with a non-SOCKS scheme is ignored here — `HTTP_PROXY` / `HTTPS_PROXY` remain the way to configure those. Existing `HTTPS_PROXY` / `HTTP_PROXY` / `NO_PROXY` handling via `undici.EnvHttpProxyAgent` is unchanged.
+
+## 4.16.2
+
+### Patch Changes
+
+- [#11348](https://github.com/shadcn-ui/ui/pull/11348) [`df664e1bba86c6712bc5e08c8626590dca736089`](https://github.com/shadcn-ui/ui/commit/df664e1bba86c6712bc5e08c8626590dca736089) Thanks [@OwenKephart](https://github.com/OwenKephart)! - Include registry item titles in `searchRegistries` results and fuzzy matching.
+
+## 4.16.1
+
+### Patch Changes
+
+- [#11322](https://github.com/shadcn-ui/ui/pull/11322) [`bfa1b5e9a69a155b2f590523d50fda810bde1a9a`](https://github.com/shadcn-ui/ui/commit/bfa1b5e9a69a155b2f590523d50fda810bde1a9a) Thanks [@AndrewBarba](https://github.com/AndrewBarba)! - fix `shadcn build` failing with ENOENT when registry item names contain path segments (e.g. `extension/foo`) by creating nested output directories before writing
+
+- [#11352](https://github.com/shadcn-ui/ui/pull/11352) [`5ca53ca7c7dea390e0e78091ff7c54adc48c773a`](https://github.com/shadcn-ui/ui/commit/5ca53ca7c7dea390e0e78091ff7c54adc48c773a) Thanks [@shadcn](https://github.com/shadcn)! - forward search params to registries for server-side dynamic search
+
+## 4.16.0
+
+### Minor Changes
+
+- [#11307](https://github.com/shadcn-ui/ui/pull/11307) [`431da7169cae753643e67e56e168b93ec31dfe90`](https://github.com/shadcn-ui/ui/commit/431da7169cae753643e67e56e168b93ec31dfe90) Thanks [@shadcn](https://github.com/shadcn)! - make addRegistryItems accept explicit registry configuration instead of loading components.json
+
+- [#11304](https://github.com/shadcn-ui/ui/pull/11304) [`bf906bb8aeebc64d374afb54497b822d587ac6d7`](https://github.com/shadcn-ui/ui/commit/bf906bb8aeebc64d374afb54497b822d587ac6d7) Thanks [@shadcn](https://github.com/shadcn)! - add getRegistriesConfig and registries in package.json support
+
+## 4.15.0
+
+### Minor Changes
+
+- [#11276](https://github.com/shadcn-ui/ui/pull/11276) [`7d90dfc0a5ec70cdc3bd08b741a42440041907ac`](https://github.com/shadcn-ui/ui/commit/7d90dfc0a5ec70cdc3bd08b741a42440041907ac) Thanks [@cmpadden](https://github.com/cmpadden)! - Add a public `addRegistryItems` API for installing registry items programmatically without invoking the CLI.
+
+## 4.14.1
+
+### Patch Changes
+
+- [#11266](https://github.com/shadcn-ui/ui/pull/11266) [`6cd3f4c65c361ab6554e06a77e6a0af9cf8b6e37`](https://github.com/shadcn-ui/ui/commit/6cd3f4c65c361ab6554e06a77e6a0af9cf8b6e37) Thanks [@shadcn](https://github.com/shadcn)! - Add Base UI Toast support.
+
+## 4.14.0
+
+### Minor Changes
+
+- [#11241](https://github.com/shadcn-ui/ui/pull/11241) [`3c26ee2dbd3a772c1cddc2c76249cc1cb0a250d5`](https://github.com/shadcn-ui/ui/commit/3c26ee2dbd3a772c1cddc2c76249cc1cb0a250d5) Thanks [@shadcn](https://github.com/shadcn)! - add support for icon migration
+
 ## 4.13.1
 
 ### Patch Changes

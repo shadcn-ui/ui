@@ -82,6 +82,8 @@ vi.mock("@/src/utils/registries", () => ({
   ensureRegistriesInConfig: vi.fn(() => ({
     config: baseConfig,
     newRegistries: [],
+    discoveredRegistries: {},
+    packageJsonRegistries: {},
   })),
 }))
 
@@ -98,6 +100,7 @@ vi.mock("@/src/registry/search", async (importActual) => ({
 
 vi.mock("@/src/registry/context", () => ({
   clearRegistryContext: vi.fn(),
+  withRegistryContext: vi.fn((callback: () => unknown) => callback()),
 }))
 
 vi.mock("@/src/utils/handle-error", () => ({

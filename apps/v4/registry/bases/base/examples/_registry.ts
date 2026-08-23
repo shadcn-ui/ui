@@ -819,6 +819,18 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "toast-example",
+    title: "Toast",
+    type: "registry:example",
+    registryDependencies: ["button", "toast", "example"],
+    files: [
+      {
+        path: "examples/toast-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "toggle-example",
     title: "Toggle",
     type: "registry:example",
@@ -948,6 +960,25 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/message-scroller-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "questionnaire-example",
+    title: "Questionnaire",
+    type: "registry:example",
+    registryDependencies: [
+      "button",
+      "card",
+      "dialog",
+      "example",
+      "questionnaire",
+      "sonner",
+    ],
+    files: [
+      {
+        path: "examples/questionnaire-example.tsx",
         type: "registry:example",
       },
     ],
