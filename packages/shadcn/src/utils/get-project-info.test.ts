@@ -210,6 +210,20 @@ describe("get project info", async () => {
         aliasPrefix: null,
       },
     },
+    {
+      name: "rsbuild",
+      type: {
+        framework: FRAMEWORKS["rsbuild"],
+        isSrcDir: true,
+        isRSC: false,
+        isTsx: true,
+        tailwindConfigFile: null,
+        tailwindCssFile: "src/App.css",
+        tailwindVersion: "v4",
+        frameworkVersion: null,
+        aliasPrefix: "@",
+      },
+    },
   ])(`getProjectType($name) -> $type`, async ({ name, type }) => {
     expect(
       await getProjectInfo(getFixturesDir("frameworks", name))
