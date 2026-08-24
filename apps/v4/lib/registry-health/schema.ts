@@ -1,11 +1,9 @@
 import { z } from "zod"
 
+import { registryNamespaceSchema } from "../registry-directory"
+
 export const REGISTRY_HEALTH_SCHEMA_VERSION = 1 as const
 export const REGISTRY_HEALTH_SCORE_VERSION = 1 as const
-
-export const registryNamespaceSchema = z
-  .string()
-  .regex(/^@[a-zA-Z0-9][a-zA-Z0-9_-]*$/)
 
 export const registryHealthStatusSchema = z.enum([
   "healthy",
@@ -24,40 +22,6 @@ export const registryHealthStatusReasonCodeSchema = z.enum([
   "item_validation_failures",
   "dry_run_failures",
 ])
-
-export const registryDirectoryEntrySchema = z
-  .object({
-    name: registryNamespaceSchema,
-    homepage: z.string().url(),
-    url: z
-      .string()
-      .url()
-      .refine((url) => url.includes("{name}"), {
-        message: "URL must include {name} placeholder",
-      }),
-    description: z.string(),
-    author: z.string().optional(),
-    logo: z.string(),
-  })
-  .strict()
-
-export const registryDirectorySchema = z
-  .array(registryDirectoryEntrySchema)
-  .superRefine((entries, context) => {
-    const names = new Set<string>()
-
-    entries.forEach((entry, index) => {
-      const name = entry.name.toLowerCase()
-      if (names.has(name)) {
-        context.addIssue({
-          code: "custom",
-          message: `Duplicate registry namespace: ${entry.name}`,
-          path: [index, "name"],
-        })
-      }
-      names.add(name)
-    })
-  })
 
 export const registryHealthBreakdownSchema = z
   .object({
@@ -112,15 +76,6 @@ export const registryHealthSnapshotSchema = z
   })
   .strict()
 
-export const registryHealthOverlayEntrySchema = z.object({
-  name: registryNamespaceSchema,
-  health: registryHealthSchema.optional(),
-})
-
-export const registryHealthOverlaySchema = z.array(
-  registryHealthOverlayEntrySchema
-)
-
 export const registryIndexObservationSchema = z
   .object({
     checkedAt: z.string().datetime(),
@@ -173,11 +128,15 @@ export const registryHealthDailyBucketSchema = z
   })
   .strict()
 
-export const registryMonitorEntryStateSchema = z
+const registryMonitorEntryStateInputSchema = z
   .object({
     firstObservedAt: z.string().datetime(),
     lastSuccessfulCheck: z.string().datetime().optional(),
     status: registryHealthStatusSchema,
+    consecutiveSuccessfulIndexes: z.number().int().nonnegative().optional(),
+    consecutiveIndexFailures: z.number().int().nonnegative().optional(),
+    availabilityOutageSince: z.string().datetime().optional(),
+    availabilityRecoveryRequired: z.boolean().optional(),
     itemCursor: z.number().int().nonnegative(),
     itemNames: z.array(z.string()),
     recentIndex: z.array(registryIndexObservationSchema),
@@ -192,6 +151,77 @@ export const registryMonitorEntryStateSchema = z
       .strict(),
   })
   .strict()
+
+function getLegacyAvailabilityState(
+  entry: z.infer<typeof registryMonitorEntryStateInputSchema>
+) {
+  const observations = entry.recentIndex.filter(
+    (observation) => observation.outcome !== "bot_challenge"
+  )
+  let cursor = observations.length - 1
+  let consecutiveSuccessfulIndexes = 0
+
+  while (cursor >= 0) {
+    const observation = observations[cursor]
+    if (observation.outcome !== "reachable" || !observation.schemaValid) {
+      break
+    }
+    consecutiveSuccessfulIndexes += 1
+    cursor -= 1
+  }
+
+  const failureEnd = cursor
+  let precedingFailures = 0
+  while (cursor >= 0 && observations[cursor].outcome === "unreachable") {
+    precedingFailures += 1
+    cursor -= 1
+  }
+
+  const consecutiveIndexFailures =
+    consecutiveSuccessfulIndexes === 0 ? precedingFailures : 0
+  const recoveryRequired =
+    entry.status === "unavailable" ||
+    (entry.status === "degraded" && precedingFailures >= 3)
+  const failureStart =
+    precedingFailures > 0
+      ? observations[failureEnd - precedingFailures + 1]
+      : undefined
+  const outageStart =
+    consecutiveSuccessfulIndexes > 0
+      ? failureStart?.checkedAt
+      : (entry.lastSuccessfulCheck ?? failureStart?.checkedAt)
+  const availabilityOutageSince =
+    recoveryRequired || consecutiveIndexFailures > 0
+      ? (outageStart ?? entry.firstObservedAt)
+      : undefined
+
+  return {
+    consecutiveSuccessfulIndexes,
+    consecutiveIndexFailures,
+    availabilityOutageSince,
+    availabilityRecoveryRequired: recoveryRequired,
+  }
+}
+
+export const registryMonitorEntryStateSchema =
+  registryMonitorEntryStateInputSchema.transform((entry) => {
+    if (
+      entry.consecutiveSuccessfulIndexes !== undefined &&
+      entry.consecutiveIndexFailures !== undefined &&
+      entry.availabilityRecoveryRequired !== undefined
+    ) {
+      return entry as typeof entry & {
+        consecutiveSuccessfulIndexes: number
+        consecutiveIndexFailures: number
+        availabilityRecoveryRequired: boolean
+      }
+    }
+
+    return {
+      ...entry,
+      ...getLegacyAvailabilityState(entry),
+    }
+  })
 
 export const registryMonitorStateSchema = z
   .object({

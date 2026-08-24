@@ -49,6 +49,9 @@ function createState(overrides: Partial<RegistryMonitorEntryState> = {}) {
     firstObservedAt: "2026-08-22T10:00:00.000Z",
     lastSuccessfulCheck: "2026-08-24T11:00:00.000Z",
     status: "healthy",
+    consecutiveSuccessfulIndexes: 25,
+    consecutiveIndexFailures: 0,
+    availabilityRecoveryRequired: false,
     itemCursor: 0,
     itemNames: [],
     recentIndex: createIndexObservations(),
@@ -179,6 +182,10 @@ describe("calculateRegistryHealth", () => {
       firstObservedAt: "2026-08-01T00:00:00.000Z",
       lastSuccessfulCheck: "2026-08-16T00:00:00.000Z",
       status: "unavailable",
+      consecutiveSuccessfulIndexes: 0,
+      consecutiveIndexFailures: 8,
+      availabilityOutageSince: "2026-08-16T00:00:00.000Z",
+      availabilityRecoveryRequired: true,
       recentIndex: createIndexObservations(8, "unreachable"),
     })
     const health = calculateRegistryHealth({
@@ -201,6 +208,10 @@ describe("calculateRegistryHealth", () => {
       firstObservedAt: "2026-08-01T00:00:00.000Z",
       lastSuccessfulCheck: "2026-08-20T00:00:00.000Z",
       status: "unavailable",
+      consecutiveSuccessfulIndexes: 0,
+      consecutiveIndexFailures: 8,
+      availabilityOutageSince: "2026-08-20T00:00:00.000Z",
+      availabilityRecoveryRequired: true,
       recentIndex: createIndexObservations(8, "unreachable"),
     })
     const health = calculateRegistryHealth({
@@ -214,12 +225,41 @@ describe("calculateRegistryHealth", () => {
     expect(health.hidden).toBe(false)
   })
 
+  it("keeps a long outage hidden through the first recovery success", () => {
+    const recovery = createIndexObservations(1)[0]
+    const state = createState({
+      firstObservedAt: "2026-08-01T00:00:00.000Z",
+      lastSuccessfulCheck: recovery.checkedAt,
+      status: "unavailable",
+      consecutiveSuccessfulIndexes: 1,
+      consecutiveIndexFailures: 0,
+      availabilityOutageSince: "2026-08-16T00:00:00.000Z",
+      availabilityRecoveryRequired: true,
+      recentIndex: [...createIndexObservations(24, "unreachable"), recovery],
+    })
+
+    const health = calculateRegistryHealth({
+      state,
+      registryUrl: "https://example.com/{name}.json",
+      globalMeans: DEFAULT_GLOBAL_MEANS,
+      now: NOW,
+    })
+
+    expect(health.status).toBe("unavailable")
+    expect(health.statusReason?.code).toBe("recovery_pending")
+    expect(health.hidden).toBe(true)
+  })
+
   it("requires two successful checks to recover from availability degradation", () => {
     const history = createIndexObservations()
     const failures = createIndexObservations(3, "unreachable")
     const successes = createIndexObservations(2)
     const state = createState({
       status: "degraded",
+      consecutiveSuccessfulIndexes: 1,
+      consecutiveIndexFailures: 0,
+      availabilityOutageSince: failures[0].checkedAt,
+      availabilityRecoveryRequired: true,
       recentIndex: [...history, ...failures, successes[0]],
     })
 
@@ -230,7 +270,13 @@ describe("calculateRegistryHealth", () => {
       now: NOW,
     })
     const recovered = calculateRegistryHealth({
-      state: { ...state, recentIndex: [...state.recentIndex, successes[1]] },
+      state: {
+        ...state,
+        consecutiveSuccessfulIndexes: 2,
+        availabilityOutageSince: undefined,
+        availabilityRecoveryRequired: false,
+        recentIndex: [...state.recentIndex, successes[1]],
+      },
       registryUrl: "https://example.com/{name}.json",
       globalMeans: DEFAULT_GLOBAL_MEANS,
       now: NOW,
@@ -247,6 +293,10 @@ describe("calculateRegistryHealth", () => {
   it("explains each degraded status condition", () => {
     const failures = calculateRegistryHealth({
       state: createState({
+        consecutiveSuccessfulIndexes: 0,
+        consecutiveIndexFailures: 3,
+        availabilityOutageSince: "2026-08-24T09:00:00.000Z",
+        availabilityRecoveryRequired: true,
         recentIndex: [
           ...createIndexObservations(),
           ...createIndexObservations(3, "unreachable"),

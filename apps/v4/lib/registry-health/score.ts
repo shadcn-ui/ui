@@ -230,66 +230,8 @@ function getNonChallengeObservations(state: RegistryMonitorEntryState) {
   )
 }
 
-function countTrailingFailures(state: RegistryMonitorEntryState) {
-  const observations = getNonChallengeObservations(state)
-  let failures = 0
-
-  for (let index = observations.length - 1; index >= 0; index -= 1) {
-    if (observations[index].outcome !== "unreachable") {
-      break
-    }
-    failures += 1
-  }
-
-  return failures
-}
-
-function countTrailingSuccessfulIndexes(state: RegistryMonitorEntryState) {
-  const observations = getNonChallengeObservations(state)
-  let successes = 0
-
-  for (let index = observations.length - 1; index >= 0; index -= 1) {
-    const observation = observations[index]
-    if (observation.outcome !== "reachable" || !observation.schemaValid) {
-      break
-    }
-    successes += 1
-  }
-
-  return successes
-}
-
-function isRecoveringFromAvailabilityDegradation(
-  state: RegistryMonitorEntryState
-) {
-  const observations = getNonChallengeObservations(state)
-  let index = observations.length - 1
-  let successfulIndexes = 0
-
-  while (index >= 0) {
-    const observation = observations[index]
-    if (observation.outcome !== "reachable" || !observation.schemaValid) {
-      break
-    }
-    successfulIndexes += 1
-    index -= 1
-  }
-
-  if (successfulIndexes >= 2) {
-    return false
-  }
-
-  let failures = 0
-  while (index >= 0 && observations[index].outcome === "unreachable") {
-    failures += 1
-    index -= 1
-  }
-
-  return failures >= 3
-}
-
 function getUnavailableSince(state: RegistryMonitorEntryState) {
-  return state.lastSuccessfulCheck ?? state.firstObservedAt
+  return state.availabilityOutageSince ?? state.firstObservedAt
 }
 
 function deriveStatus(
@@ -302,13 +244,10 @@ function deriveStatus(
   const unavailableFor =
     now.getTime() - new Date(getUnavailableSince(state)).getTime()
   const unavailable =
-    latest?.outcome === "unreachable" && unavailableFor >= DAY_MS
-  const successfulIndexes = countTrailingSuccessfulIndexes(state)
+    unavailableFor >= DAY_MS &&
+    (state.availabilityRecoveryRequired || latest?.outcome === "unreachable")
 
-  if (
-    unavailable ||
-    (state.status === "unavailable" && successfulIndexes < 2)
-  ) {
+  if (unavailable) {
     if (latest?.outcome === "reachable") {
       return {
         status: "unavailable" as const,
@@ -346,7 +285,7 @@ function deriveStatus(
     }
   }
 
-  const trailingFailures = countTrailingFailures(state)
+  const trailingFailures = state.consecutiveIndexFailures
   const latestSchemaInvalid =
     latest?.outcome === "reachable" && latest.schemaValid === false
   const itemDegraded =
@@ -397,10 +336,7 @@ function deriveStatus(
     }
   }
 
-  if (
-    state.status === "degraded" &&
-    isRecoveringFromAvailabilityDegradation(state)
-  ) {
+  if (state.availabilityRecoveryRequired) {
     return {
       status: "degraded" as const,
       statusReason: {
@@ -501,39 +437,6 @@ export function calculateRegistryHealth({
     lastSuccessfulCheck: state.lastSuccessfulCheck,
     hidden,
   }
-}
-
-export function createObservingRegistryHealth({
-  registryUrl,
-  checkedAt,
-  globalMeans,
-}: {
-  registryUrl: string
-  checkedAt: string
-  globalMeans: RegistryHealthGlobalMeans
-}) {
-  const health = calculateRegistryHealth({
-    state: {
-      firstObservedAt: checkedAt,
-      status: "observing",
-      itemCursor: 0,
-      itemNames: [],
-      recentIndex: [],
-      recentDryRuns: [],
-      daily: [],
-      latestHygiene: {
-        contentTypeJson: null,
-        noDuplicateNames: null,
-        nameMatches: null,
-      },
-    },
-    registryUrl,
-    globalMeans,
-    now: new Date(checkedAt),
-  })
-  const { firstObservedAt: _, ...observing } = health
-
-  return observing
 }
 
 export { DEFAULT_GLOBAL_MEANS, PRIOR_WEIGHTS }

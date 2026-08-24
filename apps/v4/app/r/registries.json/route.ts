@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server"
 
+import {
+  createPublicRegistryDirectory,
+  registryDirectorySchema,
+} from "@/lib/registry-directory"
 import { loadRegistryHealthSnapshot } from "@/lib/registry-health/blob"
-import { createObservingRegistryHealth } from "@/lib/registry-health/score"
 import directory from "@/registry/directory.json"
 
 export const dynamic = "force-static"
@@ -9,15 +12,9 @@ export const revalidate = 300
 
 const SNAPSHOT_STALE_AFTER_MS = 6 * 60 * 60 * 1000
 const SNAPSHOT_TIMEOUT_MS = 2500
-
-function getDirectoryPayload() {
-  return directory.map(({ name, homepage, url, description }) => ({
-    name,
-    homepage,
-    url,
-    description,
-  }))
-}
+const registries = createPublicRegistryDirectory(
+  registryDirectorySchema.parse(directory)
+)
 
 async function getHealthSnapshot() {
   const controller = new AbortController()
@@ -48,8 +45,6 @@ async function getHealthSnapshot() {
 }
 
 export async function GET() {
-  const registries = getDirectoryPayload()
-
   if (process.env.REGISTRY_HEALTH_ENABLED !== "1") {
     return NextResponse.json(registries)
   }
@@ -60,15 +55,9 @@ export async function GET() {
   }
 
   return NextResponse.json(
-    registries.map((registry) => ({
-      ...registry,
-      health:
-        snapshot.registries[registry.name] ??
-        createObservingRegistryHealth({
-          registryUrl: registry.url,
-          checkedAt: snapshot.generatedAt,
-          globalMeans: snapshot.globalMeans,
-        }),
-    }))
+    registries.map((registry) => {
+      const health = snapshot.registries[registry.name]
+      return health ? { ...registry, health } : registry
+    })
   )
 }

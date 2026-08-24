@@ -1,14 +1,7 @@
-import { promises as fs } from "node:fs"
-import os from "node:os"
-import path from "node:path"
 import { describe, expect, it, vi } from "vitest"
 
-import {
-  getDryRunEnvironment,
-  runLocalCliDryRun,
-  runRegistryMonitor,
-  type RegistryDirectoryEntry,
-} from "./monitor"
+import type { RegistryDirectoryEntry } from "../registry-directory"
+import { runRegistryMonitor } from "./monitor"
 import type { RegistryMonitorEntryState, RegistryMonitorState } from "./schema"
 
 const NOW = new Date("2026-08-24T12:00:00.000Z")
@@ -18,6 +11,7 @@ const DIRECTORY: RegistryDirectoryEntry[] = [
     homepage: "https://acme.example.com",
     url: "https://acme.example.com/r/{name}.json",
     description: "Acme components",
+    logo: "https://acme.example.com/logo.svg",
   },
 ]
 function createEntryState(overrides: Partial<RegistryMonitorEntryState> = {}) {
@@ -25,6 +19,9 @@ function createEntryState(overrides: Partial<RegistryMonitorEntryState> = {}) {
     firstObservedAt: "2026-08-01T00:00:00.000Z",
     lastSuccessfulCheck: "2026-08-24T10:00:00.000Z",
     status: "healthy",
+    consecutiveSuccessfulIndexes: 0,
+    consecutiveIndexFailures: 0,
+    availabilityRecoveryRequired: false,
     itemCursor: 0,
     itemNames: [],
     recentIndex: [],
@@ -70,6 +67,26 @@ function createSuccessfulFetch(itemCount = 1) {
 }
 
 describe("runRegistryMonitor", () => {
+  it("records completion separately from the observation time", async () => {
+    vi.useFakeTimers()
+    vi.setSystemTime(new Date("2026-08-24T12:05:00.000Z"))
+
+    try {
+      const result = await runRegistryMonitor({
+        directory: DIRECTORY,
+        mode: "hourly",
+        now: NOW,
+        fetchJson: vi.fn(async () => createSuccessfulFetch()),
+        runDryRun: vi.fn(),
+      })
+
+      expect(result.run.startedAt).toBe(NOW.toISOString())
+      expect(result.run.completedAt).toBe("2026-08-24T12:05:00.000Z")
+    } finally {
+      vi.useRealTimers()
+    }
+  })
+
   it("records a successful hourly index observation", async () => {
     const result = await runRegistryMonitor({
       directory: DIRECTORY,
@@ -96,6 +113,103 @@ describe("runRegistryMonitor", () => {
     })
   })
 
+  it("starts an outage from the last successful index check", async () => {
+    const lastSuccessfulCheck = "2026-08-23T11:00:00.000Z"
+    const result = await runRegistryMonitor({
+      directory: DIRECTORY,
+      previousState: createState(
+        createEntryState({
+          firstObservedAt: "2026-08-01T00:00:00.000Z",
+          lastSuccessfulCheck,
+          consecutiveSuccessfulIndexes: 24,
+        })
+      ),
+      mode: "hourly",
+      now: NOW,
+      fetchJson: vi.fn(async () => ({
+        ok: false as const,
+        failureCode: "timeout",
+        reachable: false,
+        botChallenge: false,
+        durationMs: 100,
+        redirectCount: 0,
+        finalUrl: "https://acme.example.com/r/registry.json",
+      })),
+      runDryRun: vi.fn(),
+    })
+
+    expect(result.state.registries["@acme"]).toMatchObject({
+      consecutiveSuccessfulIndexes: 0,
+      consecutiveIndexFailures: 1,
+      availabilityOutageSince: lastSuccessfulCheck,
+      availabilityRecoveryRequired: true,
+    })
+    expect(result.snapshot.registries["@acme"].status).toBe("unavailable")
+  })
+
+  it("clears availability recovery after two valid index checks", async () => {
+    const outageSince = "2026-08-16T00:00:00.000Z"
+    const recentIndex = Array.from({ length: 24 }, (_, index) => ({
+      checkedAt: new Date(
+        NOW.getTime() - (24 - index) * 60 * 60 * 1000
+      ).toISOString(),
+      outcome: "unreachable" as const,
+      durationMs: 100,
+      redirectCount: 0,
+    }))
+    const previousState = createState(
+      createEntryState({
+        firstObservedAt: "2026-08-01T00:00:00.000Z",
+        lastSuccessfulCheck: "2026-08-15T23:00:00.000Z",
+        status: "unavailable",
+        consecutiveSuccessfulIndexes: 0,
+        consecutiveIndexFailures: 24,
+        availabilityOutageSince: outageSince,
+        availabilityRecoveryRequired: true,
+        recentIndex,
+      })
+    )
+
+    const first = await runRegistryMonitor({
+      directory: DIRECTORY,
+      previousState,
+      mode: "hourly",
+      now: NOW,
+      fetchJson: vi.fn(async () => createSuccessfulFetch()),
+      runDryRun: vi.fn(),
+    })
+    const recovering = first.state.registries["@acme"]
+
+    expect(recovering).toMatchObject({
+      consecutiveSuccessfulIndexes: 1,
+      consecutiveIndexFailures: 0,
+      availabilityOutageSince: outageSince,
+      availabilityRecoveryRequired: true,
+    })
+    expect(first.snapshot.registries["@acme"]).toMatchObject({
+      status: "unavailable",
+      hidden: true,
+    })
+
+    const second = await runRegistryMonitor({
+      directory: DIRECTORY,
+      previousState: first.state,
+      mode: "hourly",
+      now: new Date("2026-08-24T13:00:00.000Z"),
+      fetchJson: vi.fn(async () => createSuccessfulFetch()),
+      runDryRun: vi.fn(),
+    })
+    const recovered = second.state.registries["@acme"]
+
+    expect(recovered).toMatchObject({
+      consecutiveSuccessfulIndexes: 2,
+      consecutiveIndexFailures: 0,
+      availabilityRecoveryRequired: false,
+    })
+    expect(recovered).not.toHaveProperty("availabilityOutageSince")
+    expect(second.snapshot.registries["@acme"].status).toBe("healthy")
+  })
+
   it("records a challenge without lowering availability", async () => {
     const result = await runRegistryMonitor({
       directory: DIRECTORY,
@@ -118,9 +232,65 @@ describe("runRegistryMonitor", () => {
     })
 
     const bucket = result.state.registries["@acme"].daily[0]
+    const state = result.state.registries["@acme"]
     expect(bucket.challengeObservations).toBe(1)
     expect(bucket.availabilityObservations).toBe(0)
+    expect(state).toMatchObject({
+      consecutiveSuccessfulIndexes: 0,
+      consecutiveIndexFailures: 0,
+      availabilityRecoveryRequired: false,
+    })
+    expect(state).not.toHaveProperty("availabilityOutageSince")
     expect(result.snapshot.registries["@acme"].monitoringLimited).toBe(true)
+  })
+
+  it("allows an existing outage to become unavailable during a challenge", async () => {
+    const outageSince = "2026-08-23T11:00:00.000Z"
+    const previousState = createState(
+      createEntryState({
+        firstObservedAt: "2026-08-01T00:00:00.000Z",
+        lastSuccessfulCheck: outageSince,
+        consecutiveIndexFailures: 1,
+        availabilityOutageSince: outageSince,
+        recentIndex: [
+          {
+            checkedAt: outageSince,
+            outcome: "unreachable",
+            durationMs: 100,
+            redirectCount: 0,
+          },
+        ],
+      })
+    )
+    const result = await runRegistryMonitor({
+      directory: DIRECTORY,
+      previousState,
+      mode: "hourly",
+      now: NOW,
+      fetchJson: vi.fn(async () => ({
+        ok: false as const,
+        failureCode: "bot_challenge",
+        reachable: false,
+        botChallenge: true,
+        status: 403,
+        durationMs: 80,
+        responseSize: 200,
+        contentType: "text/html",
+        redirectCount: 0,
+        finalUrl: "https://acme.example.com/r/registry.json",
+      })),
+      runDryRun: vi.fn(),
+    })
+
+    expect(result.state.registries["@acme"]).toMatchObject({
+      consecutiveIndexFailures: 1,
+      availabilityOutageSince: outageSince,
+      availabilityRecoveryRequired: false,
+    })
+    expect(result.snapshot.registries["@acme"]).toMatchObject({
+      status: "unavailable",
+      monitoringLimited: true,
+    })
   })
 
   it("refreshes hygiene after a reachable invalid index", async () => {
@@ -405,6 +575,7 @@ describe("runRegistryMonitor", () => {
       homepage: `https://registry${index}.example.com`,
       url: `https://registry${index}.example.com/r/{name}.json`,
       description: `Registry ${index}`,
+      logo: `https://registry${index}.example.com/logo.svg`,
     }))
     const previousState: RegistryMonitorState = {
       schemaVersion: 1,
@@ -438,52 +609,5 @@ describe("runRegistryMonitor", () => {
 
     expect(result.run.totals.dryRuns).toBe(6)
     expect(maximumActive).toBe(4)
-  })
-})
-
-describe("getDryRunEnvironment", () => {
-  it("allowlists process variables and excludes credentials", () => {
-    const environment = getDryRunEnvironment("/tmp/registry-health-test")
-
-    expect(environment).toMatchObject({
-      CI: "1",
-      NO_COLOR: "1",
-      XDG_CACHE_HOME: "/tmp/registry-health-test",
-      XDG_CONFIG_HOME: "/tmp/registry-health-test",
-    })
-    expect(environment).not.toHaveProperty("BLOB_READ_WRITE_TOKEN")
-    expect(environment).not.toHaveProperty("GITHUB_TOKEN")
-    expect(environment).not.toHaveProperty("GH_TOKEN")
-  })
-})
-
-describe("runLocalCliDryRun", () => {
-  it("force kills a CLI process that ignores SIGTERM", async () => {
-    const directory = await fs.mkdtemp(
-      path.join(os.tmpdir(), "registry-health-cli-test-")
-    )
-    const cliPath = path.join(directory, "cli.mjs")
-    await fs.writeFile(
-      cliPath,
-      'process.on("SIGTERM", () => {}); setInterval(() => {}, 1000)'
-    )
-
-    try {
-      const result = await runLocalCliDryRun({
-        namespace: "@acme",
-        item: "button",
-        registryUrl: DIRECTORY[0].url,
-        cliPath,
-        timeoutMs: 25,
-        killGraceMs: 25,
-      })
-
-      expect(result).toMatchObject({
-        success: false,
-        failureCode: "timeout",
-      })
-    } finally {
-      await fs.rm(directory, { recursive: true, force: true })
-    }
   })
 })

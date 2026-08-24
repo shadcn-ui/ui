@@ -1,11 +1,10 @@
-import { spawn, type ChildProcess } from "node:child_process"
-import { promises as fs } from "node:fs"
-import os from "node:os"
-import path from "node:path"
 import { registryItemSchema, registrySchema } from "shadcn/schema"
 
+import {
+  normalizeRegistryName,
+  type RegistryDirectoryEntry,
+} from "../registry-directory"
 import { fetchRegistryJson, type RegistryJsonResult } from "./network"
-import { normalizeRegistryQuery } from "./rank"
 import {
   REGISTRY_HEALTH_SCHEMA_VERSION,
   REGISTRY_HEALTH_SCORE_VERSION,
@@ -23,6 +22,7 @@ import {
   type RegistryMonitorState,
 } from "./schema"
 import { calculateGlobalMeans, calculateRegistryHealth } from "./score"
+import { createRegistryMonitorEntryState } from "./state"
 
 const DAY_MS = 24 * 60 * 60 * 1000
 const RECENT_INDEX_RETENTION_MS = 8 * DAY_MS
@@ -30,17 +30,9 @@ const DAILY_CHECK_INTERVAL_MS = 20 * 60 * 60 * 1000
 const WEEKLY_CHECK_INTERVAL_MS = 6 * DAY_MS
 const MAX_DRY_RUN_CONCURRENCY = 4
 
-export type RegistryDirectoryEntry = {
-  name: string
-  homepage: string
-  url: string
-  description: string
-  logo?: string
-}
-
 export type RegistryMonitorMode = RegistryMonitorRun["mode"]
 
-type DryRunResult = {
+export type RegistryDryRunResult = {
   success: boolean
   failureCode?: string
   durationMs: number
@@ -59,23 +51,6 @@ function createDailyBucket(date: string) {
     dryRunSuccesses: 0,
     dryRunObservations: 0,
   } satisfies RegistryHealthDailyBucket
-}
-
-function createEntryState(now: Date) {
-  return {
-    firstObservedAt: now.toISOString(),
-    status: "observing",
-    itemCursor: 0,
-    itemNames: [],
-    recentIndex: [],
-    recentDryRuns: [],
-    daily: [],
-    latestHygiene: {
-      contentTypeJson: null,
-      noDuplicateNames: null,
-      nameMatches: null,
-    },
-  } satisfies RegistryMonitorEntryState
 }
 
 function getDailyBucket(state: RegistryMonitorEntryState, now: Date) {
@@ -153,8 +128,8 @@ function getIndexObservation(
     ? new Set(itemNames).size !== itemNames.length
     : undefined
   const nameMatches = parsed.success
-    ? normalizeRegistryQuery(parsed.data.name) ===
-      normalizeRegistryQuery(entry.name)
+    ? normalizeRegistryName(parsed.data.name) ===
+      normalizeRegistryName(entry.name)
     : undefined
 
   return {
@@ -184,6 +159,49 @@ function recordIndexObservation(
 ) {
   state.recentIndex.push(observation)
   const bucket = getDailyBucket(state, now)
+
+  if (observation.outcome !== "bot_challenge") {
+    if (observation.outcome === "unreachable") {
+      state.consecutiveSuccessfulIndexes = 0
+      state.consecutiveIndexFailures += 1
+      state.availabilityOutageSince ??=
+        state.lastSuccessfulCheck ?? observation.checkedAt
+      const outageDuration =
+        new Date(observation.checkedAt).getTime() -
+        new Date(state.availabilityOutageSince).getTime()
+      const outageRequiresRecovery = outageDuration >= DAY_MS
+      if (state.consecutiveIndexFailures >= 3 || outageRequiresRecovery) {
+        state.availabilityRecoveryRequired = true
+      }
+    } else {
+      const outageDuration = state.availabilityOutageSince
+        ? new Date(observation.checkedAt).getTime() -
+          new Date(state.availabilityOutageSince).getTime()
+        : 0
+      const outageRequiresRecovery = outageDuration >= DAY_MS
+      state.consecutiveIndexFailures = 0
+
+      if (observation.schemaValid) {
+        state.consecutiveSuccessfulIndexes += 1
+        if (
+          (state.availabilityRecoveryRequired || outageRequiresRecovery) &&
+          state.consecutiveSuccessfulIndexes < 2
+        ) {
+          state.availabilityRecoveryRequired = true
+        } else {
+          state.availabilityRecoveryRequired = false
+          delete state.availabilityOutageSince
+        }
+      } else {
+        state.consecutiveSuccessfulIndexes = 0
+        if (state.availabilityRecoveryRequired || outageRequiresRecovery) {
+          state.availabilityRecoveryRequired = true
+        } else {
+          delete state.availabilityOutageSince
+        }
+      }
+    }
+  }
 
   if (observation.outcome === "bot_challenge") {
     bucket.challengeObservations += 1
@@ -383,7 +401,7 @@ export async function runRegistryMonitor({
     namespace: string
     item: string
     registryUrl: string
-  }) => Promise<DryRunResult>
+  }) => Promise<RegistryDryRunResult>
   concurrency?: number
 }): Promise<RegistryMonitorOutput> {
   const startedAt = now.toISOString()
@@ -413,7 +431,8 @@ export async function runRegistryMonitor({
 
   for (const entry of directory) {
     state.registries[entry.name] = structuredClone(
-      previousState?.registries[entry.name] ?? createEntryState(now)
+      previousState?.registries[entry.name] ??
+        createRegistryMonitorEntryState(now)
     )
     runResults[entry.name] = { items: [] }
   }
@@ -532,7 +551,7 @@ export async function runRegistryMonitor({
   const run: RegistryMonitorRun = {
     schemaVersion: REGISTRY_HEALTH_SCHEMA_VERSION,
     startedAt,
-    completedAt: now.toISOString(),
+    completedAt: new Date().toISOString(),
     mode,
     totals,
     results: runResults,
@@ -544,142 +563,4 @@ export async function runRegistryMonitor({
     snapshot: registryHealthSnapshotSchema.parse(snapshot),
     run: registryMonitorRunSchema.parse(run),
   }
-}
-
-export async function runLocalCliDryRun({
-  namespace,
-  item,
-  registryUrl,
-  cliPath,
-  timeoutMs = 60_000,
-  killGraceMs = 5_000,
-}: {
-  namespace: string
-  item: string
-  registryUrl: string
-  cliPath: string
-  timeoutMs?: number
-  killGraceMs?: number
-}): Promise<DryRunResult> {
-  const startedAt = Date.now()
-  const temporaryDirectory = await fs.mkdtemp(
-    path.join(os.tmpdir(), "shadcn-registry-health-")
-  )
-
-  try {
-    await fs.mkdir(path.join(temporaryDirectory, "app"), { recursive: true })
-    await Promise.all([
-      fs.writeFile(
-        path.join(temporaryDirectory, "components.json"),
-        JSON.stringify(
-          {
-            $schema: "https://ui.shadcn.com/schema.json",
-            style: "new-york",
-            rsc: true,
-            tsx: true,
-            tailwind: {
-              config: "",
-              css: "app/globals.css",
-              baseColor: "neutral",
-              cssVariables: true,
-              prefix: "",
-            },
-            iconLibrary: "lucide",
-            aliases: {
-              components: "@/components",
-              utils: "@/lib/utils",
-              ui: "@/components/ui",
-              lib: "@/lib",
-              hooks: "@/hooks",
-            },
-            registries: {
-              [namespace]: registryUrl,
-            },
-          },
-          null,
-          2
-        )
-      ),
-      fs.writeFile(path.join(temporaryDirectory, "app/globals.css"), ""),
-      fs.writeFile(
-        path.join(temporaryDirectory, "package.json"),
-        JSON.stringify({ private: true })
-      ),
-    ])
-
-    return await new Promise<DryRunResult>((resolve) => {
-      const child: ChildProcess = spawn(
-        process.execPath,
-        [
-          cliPath,
-          "add",
-          `${namespace}/${item}`,
-          "--dry-run",
-          "--yes",
-          "--cwd",
-          temporaryDirectory,
-        ],
-        {
-          cwd: temporaryDirectory,
-          env: getDryRunEnvironment(temporaryDirectory),
-          stdio: "ignore",
-        }
-      )
-      let completed = false
-      let timedOut = false
-      let forceKillTimeout: NodeJS.Timeout | undefined
-      const finish = (result: DryRunResult) => {
-        if (completed) return
-        completed = true
-        clearTimeout(timeout)
-        if (forceKillTimeout) clearTimeout(forceKillTimeout)
-        resolve(result)
-      }
-      const timeout = setTimeout(() => {
-        timedOut = true
-        child.kill("SIGTERM")
-        forceKillTimeout = setTimeout(() => {
-          if (!completed) child.kill("SIGKILL")
-        }, killGraceMs)
-      }, timeoutMs)
-
-      child.on("error", () =>
-        finish({
-          success: false,
-          failureCode: timedOut ? "timeout" : "spawn_error",
-          durationMs: Date.now() - startedAt,
-        })
-      )
-      child.on("exit", (code, signal) => {
-        const failureCode = timedOut
-          ? "timeout"
-          : code === 0
-            ? undefined
-            : signal
-              ? "terminated"
-              : `exit_${code}`
-
-        finish({
-          success: !timedOut && code === 0,
-          failureCode,
-          durationMs: Date.now() - startedAt,
-        })
-      })
-    })
-  } finally {
-    await fs.rm(temporaryDirectory, { recursive: true, force: true })
-  }
-}
-
-export function getDryRunEnvironment(temporaryDirectory: string) {
-  return {
-    PATH: process.env.PATH,
-    TMPDIR: os.tmpdir(),
-    XDG_CACHE_HOME: temporaryDirectory,
-    XDG_CONFIG_HOME: temporaryDirectory,
-    npm_config_userconfig: path.join(temporaryDirectory, ".npmrc"),
-    NODE_ENV: "production",
-    CI: "1",
-    NO_COLOR: "1",
-  } satisfies NodeJS.ProcessEnv
 }

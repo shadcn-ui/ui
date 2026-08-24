@@ -2,18 +2,18 @@ import { spawn } from "node:child_process"
 import { promises as fs } from "node:fs"
 import path from "node:path"
 
+import { registryDirectorySchema } from "../lib/registry-directory"
 import {
   cleanRegistryHealthHistory,
   loadRegistryMonitorState,
   publishRegistryHealth,
 } from "../lib/registry-health/blob"
+import { runLocalCliDryRun } from "../lib/registry-health/dry-run"
 import {
-  runLocalCliDryRun,
   runRegistryMonitor,
   type RegistryMonitorMode,
 } from "../lib/registry-health/monitor"
 import {
-  registryDirectorySchema,
   registryMonitorOutputSchema,
   registryMonitorStateSchema,
 } from "../lib/registry-health/schema"
@@ -40,11 +40,22 @@ type MonitorPhase = "prepare" | "check" | "publish"
 
 function getArgument(name: string) {
   const index = process.argv.indexOf(name)
-  if (index >= 0) return process.argv[index + 1]
+  if (index >= 0) {
+    const value = process.argv[index + 1]
+    if (!value || value.startsWith("--")) {
+      throw new Error(`Missing value for ${name}`)
+    }
+    return value
+  }
 
-  return process.argv
-    .find((argument) => argument.startsWith(`${name}=`))
-    ?.slice(name.length + 1)
+  const argument = process.argv.find((value) => value.startsWith(`${name}=`))
+  if (!argument) return undefined
+
+  const value = argument.slice(name.length + 1)
+  if (!value) {
+    throw new Error(`Missing value for ${name}`)
+  }
+  return value
 }
 
 function getPhase() {

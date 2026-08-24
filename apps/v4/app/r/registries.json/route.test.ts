@@ -109,22 +109,13 @@ describe("GET /r/registries.json", () => {
     })
   })
 
-  it("synthesizes observing health without firstObservedAt", async () => {
+  it("omits health for a registry missing from the snapshot", async () => {
     loadSnapshot.mockResolvedValue(createSnapshot({}))
 
     const response = await GET()
     const payload = await response.json()
 
-    expect(payload[0].health).toMatchObject({
-      status: "observing",
-      statusReason: {
-        code: "collecting_baseline",
-        message: "Collecting baseline data (0 of 24 checks)",
-      },
-      checkedAt: GENERATED_AT,
-      hidden: false,
-    })
-    expect(payload[0].health).not.toHaveProperty("firstObservedAt")
+    expect(payload[0]).not.toHaveProperty("health")
   })
 
   it("returns the original payload when health is disabled", async () => {

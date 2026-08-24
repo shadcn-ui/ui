@@ -119,8 +119,11 @@ registry-health/v1/daily/<date>.json
 with Blob credentials, then the public `/r/registries.json` route merges the
 sanitized health overlay by exact namespace. The route fails open to the
 original directory payload when health is disabled, stale, or unavailable.
+If a newly added registry is not in the latest snapshot yet, it remains in the
+payload without `health` until the monitor first observes it.
 The route uses five-minute ISR, so normal traffic is served from cache and does
 not read Blob on every request.
+
 Each newly generated health entry includes a stable status reason code and a
 human-readable message for its primary status condition. The public route does
 not expose raw monitor diagnostics, and status reasons do not affect scores or
