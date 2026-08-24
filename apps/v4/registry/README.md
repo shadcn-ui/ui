@@ -98,3 +98,89 @@ Notes:
 - `--style new-york-v4` is rejected because it is a legacy source registry, not a
   generated combination. Use `--registry new-york-v4` instead.
 - Unknown targets fail with the list of valid style ids.
+
+## Public registry health monitoring
+
+`directory.json` remains the authored source of truth for public registry
+metadata. The scheduled monitor reads that file, checks each registry, and
+publishes generated state to a private Vercel Blob store. Generated health data
+must never be committed to the repository.
+
+The monitor writes these paths:
+
+```text
+registry-health/v1/state.json
+registry-health/v1/latest.json
+registry-health/v1/runs/<timestamp>.json
+registry-health/v1/daily/<date>.json
+```
+
+`latest.json` is the only Blob document read by the website. The server reads it
+with Blob credentials, then the public `/r/registries.json` route merges the
+sanitized health overlay by exact namespace. The route fails open to the
+original directory payload when health is disabled, stale, or unavailable.
+Each newly generated health entry includes a stable status reason code and a
+human-readable message for its primary status condition. The public route does
+not expose raw monitor diagnostics, and status reasons do not affect scores or
+ranking.
+
+### Authentication and configuration
+
+New Blob connections use Vercel OIDC inside the linked Vercel project. A
+server-only `BLOB_READ_WRITE_TOKEN` is also supported when OIDC is unavailable.
+The website must receive one of these credentials to read `latest.json`; client
+code never receives them.
+
+The monitor runs in GitHub Actions, outside Vercel's OIDC runtime. Configure a
+separate repository Actions secret named `BLOB_READ_WRITE_TOKEN` for that
+workflow. The token is available only while downloading the previous private
+state and publishing the new snapshot. The registry check step, contributor URL
+requests, and CLI dry-run subprocesses run without Blob credentials. Never
+expose the token through a `NEXT_PUBLIC_` variable, logs, or step summaries.
+
+Configure this Vercel server environment variable:
+
+- `REGISTRY_HEALTH_ENABLED`: set to `1` to merge the additive health object into
+  `/r/registries.json`; set to `0` to return the original four-field payload.
+  The Registry Directory does not consume the health object during the initial
+  data-collection phase.
+
+### Running and rollout
+
+The `Monitor Registries` workflow runs hourly and supports manual `hourly`,
+`daily`, `weekly`, and `all` modes. Registry failures are recorded as data. The
+workflow fails only when its own configuration, state, or publication fails.
+Automatic daily and weekly work uses the last successful phase timestamps in
+`state.json`, so a delayed cron run does not skip those checks.
+
+To run the monitor locally with credentials loaded from the linked Vercel
+project, use the workspace-root Turbo command:
+
+```bash
+MONITOR_MODE=hourly vercel env run -- pnpm registry:health
+```
+
+If the local environment file lives under `apps/v4`, run from that directory
+and use `pnpm -w registry:health` so pnpm still selects the workspace-root
+script.
+
+Turbo builds the monitor's workspace dependencies before running it. Local runs
+run the same three phases as the workflow: authenticated state download,
+credential-free registry checks, and authenticated publication. They publish
+health state to the connected Blob store. Valid modes are `auto`, `hourly`,
+`daily`, `weekly`, and `all`.
+
+For the initial rollout:
+
+1. Connect a private Blob store to the Vercel project.
+2. Configure the GitHub Actions write secret.
+3. Set `REGISTRY_HEALTH_ENABLED=1` and deploy the additive API overlay.
+4. Dispatch an hourly run and confirm all four Blob path families.
+5. Collect at least seven days of observations and inspect false positives.
+6. Add the Registry Directory presentation in a follow-up after the data and
+   thresholds have been reviewed.
+
+To roll back the public API overlay immediately, set
+`REGISTRY_HEALTH_ENABLED=0`. Disable the scheduled workflow separately if its
+requests are causing load or false positives. Blob history can remain in place
+for diagnosis.
