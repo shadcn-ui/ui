@@ -77,6 +77,13 @@
     "logo": "<svg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>LiveKit</title><path d='M0 0v24h14.4v-4.799h4.8V24H24v-4.8h-4.799v-4.8h-4.8v4.8H4.8V0H0zm14.4 14.4V9.602h4.801V4.8H24V0h-4.8v4.8h-4.8v4.8H9.6v4.8h4.8z'/></svg>"
   },
   {
+    "name": "@agentui",
+    "homepage": "https://www.agentui.pro",
+    "url": "https://www.agentui.pro/r/{name}.json",
+    "description": "Open-source React components for AI agent conversations, reasoning, tools, approvals, and streamed responses.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024' fill='none'><path d='M512 152H372C250.5 152 152 250.5 152 372V652C152 773.5 250.5 872 372 872H588' stroke='var(--foreground)' stroke-width='144' stroke-linecap='round' stroke-linejoin='round'/><path d='M872 588V372C872 250.5 773.5 152 652 152H512' stroke='var(--foreground)' stroke-width='144' stroke-linecap='round' stroke-linejoin='round'/><rect x='698' y='698' width='174' height='174' rx='56' fill='var(--foreground)'/></svg>"
+  },
+  {
     "name": "@ai-blocks",
     "homepage": "https://webllm.org/blocks",
     "url": "https://webllm.org/r/{name}.json",
