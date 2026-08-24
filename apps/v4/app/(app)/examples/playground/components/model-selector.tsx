@@ -29,8 +29,9 @@ import {
 
 import { type Model, type ModelType } from "../data/models"
 
-interface ModelSelectorProps
-  extends React.ComponentProps<typeof PopoverPrimitive.Root> {
+interface ModelSelectorProps extends React.ComponentProps<
+  typeof PopoverPrimitive.Root
+> {
   types: readonly ModelType[]
   models: Model[]
 }

@@ -13,8 +13,10 @@ import {
 
 import { type TasksTableFeatures } from "./data-table-features"
 
-interface DataTableColumnHeaderProps<TData extends RowData, TValue>
-  extends React.HTMLAttributes<HTMLDivElement> {
+interface DataTableColumnHeaderProps<
+  TData extends RowData,
+  TValue,
+> extends React.HTMLAttributes<HTMLDivElement> {
   column: Column<TasksTableFeatures, TData, TValue>
   title: string
 }

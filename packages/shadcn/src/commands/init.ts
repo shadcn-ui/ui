@@ -562,8 +562,7 @@ export const init = new Command()
           url: cleanUrl,
         } = await resolveRegistryBaseConfig(components[0], cwd, {
           registries: existingConfig?.registries as
-            | z.infer<typeof registryConfigSchema>
-            | undefined,
+            z.infer<typeof registryConfigSchema> | undefined,
         })
 
         // Use the clean URL (track param stripped) for subsequent fetches.
@@ -611,8 +610,7 @@ export async function runInit(
 
   // Resolve the effective template if --monorepo is set.
   const explicitTemplate = options.template as
-    | keyof typeof templates
-    | undefined
+    keyof typeof templates | undefined
   const resolvedTemplateConfig = explicitTemplate
     ? resolveTemplate(templates[explicitTemplate], {
         monorepo: options.monorepo,
