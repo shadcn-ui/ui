@@ -4,6 +4,7 @@ import { loadRegistryHealthSnapshot } from "@/lib/registry-health/blob"
 import { createObservingRegistryHealth } from "@/lib/registry-health/score"
 import directory from "@/registry/directory.json"
 
+export const dynamic = "force-static"
 export const revalidate = 300
 
 const SNAPSHOT_STALE_AFTER_MS = 6 * 60 * 60 * 1000

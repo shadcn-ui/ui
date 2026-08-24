@@ -7,7 +7,7 @@ import type {
 } from "@/lib/registry-health/schema"
 import directory from "@/registry/directory.json"
 
-import { GET } from "./route"
+import { dynamic, GET, revalidate } from "./route"
 
 vi.mock("@/lib/registry-health/blob", () => ({
   loadRegistryHealthSnapshot: vi.fn(),
@@ -73,6 +73,11 @@ describe("GET /r/registries.json", () => {
     vi.useRealTimers()
     vi.unstubAllEnvs()
     vi.restoreAllMocks()
+  })
+
+  it("uses static ISR so requests do not read Blob directly", () => {
+    expect(dynamic).toBe("force-static")
+    expect(revalidate).toBe(300)
   })
 
   it("merges fresh health by exact namespace", async () => {
