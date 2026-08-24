@@ -76,9 +76,18 @@ export function isSafeTarget(targetPath: string, cwd: string): boolean {
   // Check for Windows drive letters (even on non-Windows systems for safety).
   const driveLetterRegex = /^[a-zA-Z]:[\/\\]/
   if (driveLetterRegex.test(decodedPath)) {
-    // On Windows, check if it starts with the project root.
+    // On Windows, check if it is within (or equal to) the project root.
+    // Windows paths are case-insensitive, and we compare against the
+    // normalized target so a sibling directory that merely shares a string
+    // prefix with the root (e.g. "C:\project" vs "C:\project-evil") is not
+    // mistaken for a path inside the root.
     if (process.platform === "win32") {
-      return decodedPath.toLowerCase().startsWith(cwd.toLowerCase())
+      const normalizedRootLower = normalizedRoot.toLowerCase()
+      const normalizedTargetLower = normalizedTarget.toLowerCase()
+      return (
+        normalizedTargetLower === normalizedRootLower ||
+        normalizedTargetLower.startsWith(normalizedRootLower + path.sep)
+      )
     }
     // On non-Windows systems, reject all Windows absolute paths.
     return false
