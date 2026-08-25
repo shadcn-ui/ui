@@ -213,4 +213,66 @@ describe("fetchWithProxy", () => {
       })
     ).rejects.toThrow(/Too many redirects/)
   })
+
+  describe("Authorization across redirect chains", () => {
+    it("keeps Authorization on a same-origin api.github.com redirect", async () => {
+      const fetchMock = vi
+        .fn()
+        .mockResolvedValueOnce(
+          redirectResponse(302, "https://api.github.com/redirected")
+        )
+        .mockResolvedValueOnce(okResponse())
+      vi.stubGlobal("fetch", fetchMock)
+
+      await fetchWithProxy("https://api.github.com/repos/acme/ui/contents/a", {
+        headers: { Authorization: "Bearer token-value" },
+      })
+
+      expect(headersForCall(fetchMock, 1).get("authorization")).toBe(
+        "Bearer token-value"
+      )
+    })
+
+    it("removes Authorization on every cross-origin hop", async () => {
+      const fetchMock = vi
+        .fn()
+        .mockResolvedValueOnce(
+          redirectResponse(302, "https://objects.example.com/blob")
+        )
+        .mockResolvedValueOnce(
+          redirectResponse(302, "https://cdn.example.com/blob")
+        )
+        .mockResolvedValueOnce(okResponse())
+      vi.stubGlobal("fetch", fetchMock)
+
+      await fetchWithProxy("https://api.github.com/repos/acme/ui/contents/a", {
+        headers: { Authorization: "Bearer token-value" },
+      })
+
+      expect(headersForCall(fetchMock, 1).get("authorization")).toBeNull()
+      expect(headersForCall(fetchMock, 2).get("authorization")).toBeNull()
+    })
+
+    it("restores Authorization only after a chain returns to the original origin", async () => {
+      const fetchMock = vi
+        .fn()
+        .mockResolvedValueOnce(
+          redirectResponse(302, "https://objects.example.com/blob")
+        )
+        .mockResolvedValueOnce(
+          redirectResponse(302, "https://api.github.com/final")
+        )
+        .mockResolvedValueOnce(okResponse())
+      vi.stubGlobal("fetch", fetchMock)
+
+      await fetchWithProxy("https://api.github.com/repos/acme/ui/contents/a", {
+        headers: { Authorization: "Bearer token-value" },
+      })
+
+      expect(headersForCall(fetchMock, 1).get("authorization")).toBeNull()
+      expect(headersForCall(fetchMock, 2).get("authorization")).toBe(
+        "Bearer token-value"
+      )
+    })
+  })
 })

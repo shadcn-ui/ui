@@ -1564,8 +1564,8 @@
   },
   {
     "name": "@soralabs",
-    "homepage": "https://ui.soralabs.io.vn",
-    "url": "https://ui.soralabs.io.vn/r/{name}.json",
+    "homepage": "https://ui.soralabs.studio",
+    "url": "https://ui.soralabs.studio/r/{name}.json",
     "description": "Motion-first React primitives and animated UI components for shadcn/ui. Copy, customize, and ship fluid interfaces.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='currentColor'><g transform='translate(100 100) scale(0.8292) translate(-100 -100)'><path d='M 150.245 -0.676 L 150.658 49.581 L 49.237 49.477 L 49.714 -0.758 L 150.245 -0.676 Z M 49.342 150.419 L 49.237 49.477 L -1.04 49.794 L -1.304 150.337 L 49.342 150.419 Z M 150.763 150.523 L 150.658 49.581 L 201.304 49.663 L 201.04 150.206 L 150.763 150.523 Z M 150.763 150.523 L 49.342 150.419 L 49.755 200.676 L 150.286 200.758 L 150.763 150.523 Z'/></g></svg>"
   },
