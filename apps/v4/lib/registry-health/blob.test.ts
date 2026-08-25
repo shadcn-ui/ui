@@ -112,6 +112,7 @@ describe("loadRegistryHealthSnapshot", () => {
     await expect(
       loadRegistryHealthSnapshot({
         token: "test-token",
+        storeId: "test-store-id",
         abortSignal: abortController.signal,
         operations,
       })
@@ -121,6 +122,7 @@ describe("loadRegistryHealthSnapshot", () => {
       {
         access: "private",
         token: "test-token",
+        storeId: "test-store-id",
         useCache: false,
         abortSignal: abortController.signal,
       }

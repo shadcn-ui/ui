@@ -28,6 +28,7 @@ type BlobOperations = {
     options: {
       access: "private"
       token?: string
+      storeId?: string
       useCache: false
       abortSignal?: AbortSignal
     }
@@ -106,16 +107,19 @@ export async function loadRegistryMonitorState({
 
 export async function loadRegistryHealthSnapshot({
   token,
+  storeId,
   abortSignal,
   operations = defaultOperations,
 }: {
   token?: string
+  storeId?: string
   abortSignal?: AbortSignal
   operations?: BlobOperations
 }) {
   const result = await operations.get(LATEST_PATH, {
     access: "private",
     token,
+    storeId,
     useCache: false,
     abortSignal,
   })

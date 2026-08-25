@@ -65,6 +65,7 @@ describe("GET /r/registries.json", () => {
     vi.setSystemTime(new Date("2026-08-24T13:00:00.000Z"))
     vi.stubEnv("REGISTRY_HEALTH_ENABLED", "1")
     vi.stubEnv("BLOB_READ_WRITE_TOKEN", "test-token")
+    vi.stubEnv("REGISTRY_HEALTH_BLOB_STORE_ID", "test-store-id")
     loadSnapshot.mockReset()
     vi.spyOn(console, "warn").mockImplementation(() => {})
   })
@@ -105,6 +106,21 @@ describe("GET /r/registries.json", () => {
     })
     expect(loadSnapshot).toHaveBeenCalledWith({
       token: "test-token",
+      storeId: "test-store-id",
+      abortSignal: expect.any(AbortSignal),
+    })
+  })
+
+  it("falls back to the default Blob store ID", async () => {
+    vi.stubEnv("REGISTRY_HEALTH_BLOB_STORE_ID", "")
+    vi.stubEnv("BLOB_STORE_ID", "default-store-id")
+    loadSnapshot.mockResolvedValue(createSnapshot({}))
+
+    await GET()
+
+    expect(loadSnapshot).toHaveBeenCalledWith({
+      token: "test-token",
+      storeId: "default-store-id",
       abortSignal: expect.any(AbortSignal),
     })
   })
