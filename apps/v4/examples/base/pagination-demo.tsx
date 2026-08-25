@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import {
   Pagination,
   PaginationContent,
@@ -16,7 +18,7 @@ export default function PaginationDemo() {
           <PaginationPrevious href="#" />
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href="#">1</PaginationLink>
+          <PaginationLink render={<Link href="?page=1" />}>1</PaginationLink>
         </PaginationItem>
         <PaginationItem>
           <PaginationLink href="#" isActive>
