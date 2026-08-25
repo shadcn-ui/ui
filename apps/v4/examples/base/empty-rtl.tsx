@@ -8,7 +8,7 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
+import { Button, buttonVariants } from "@/styles/base-nova/ui-rtl/button"
 import {
   Empty,
   EmptyContent,
@@ -69,16 +69,17 @@ export function EmptyRtl() {
         <Button>{t.createProject}</Button>
         <Button variant="outline">{t.importProject}</Button>
       </EmptyContent>
-      <Button
-        variant="link"
-        render={<a href="#" />}
-        className="text-muted-foreground"
-        size="sm"
-        nativeButton={false}
+      <a
+        href="#"
+        className={buttonVariants({
+          variant: "link",
+          size: "sm",
+          className: "text-muted-foreground",
+        })}
       >
         {t.learnMore}{" "}
         <ArrowUpRightIcon className="rtl:rotate-270" data-icon="inline-end" />
-      </Button>
+      </a>
     </Empty>
   )
 }

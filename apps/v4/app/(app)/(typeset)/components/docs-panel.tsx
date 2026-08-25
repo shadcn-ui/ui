@@ -7,7 +7,7 @@ import { CheckIcon, CopyIcon } from "lucide-react"
 import { trackEvent } from "@/lib/events"
 import { absoluteUrl, cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button, buttonVariants } from "@/styles/base-nova/ui/button"
 import {
   Select,
   SelectContent,
@@ -38,15 +38,16 @@ export function TypesetDocsPanel() {
       <div className="isolate flex max-h-[calc(100vh-16rem)] w-full flex-col overflow-hidden rounded-2xl bg-background ring-1 ring-foreground/10">
         <TypesetDocsContent />
       </div>
-      <Button
-        variant="link"
-        size="sm"
-        className="text-muted-foreground"
-        render={<Link href="/docs/typeset" />}
-        nativeButton={false}
+      <Link
+        href="/docs/typeset"
+        className={buttonVariants({
+          variant: "link",
+          size: "sm",
+          className: "text-muted-foreground",
+        })}
       >
         Read the docs
-      </Button>
+      </Link>
     </div>
   )
 }
