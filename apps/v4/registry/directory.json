@@ -2024,5 +2024,12 @@
     "url": "https://verno-studio.vercel.app/r/{name}.json",
     "description": "The full OKLCH scale plus every variable shadcn components read, so anything you install lands on the same tokens instead of its own colors.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'><rect width='64' height='64' fill='var(--foreground)'/><path d='M42.8135 16.0503H48L34.2018 48H29.896L16 16.0503L21.3333 16L32.1468 41.8113L42.8135 16.0503Z' fill='var(--background)'/></svg>"
+  },
+  {
+    "name": "@moumenlab",
+    "homepage": "https://lab.moumen.dev",
+    "url": "https://lab.moumen.dev/r/{name}.json",
+    "description": "A small lab of the components we build every day, rethought for better feel.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none'><style>.ink { stroke: #111111; } .fill { fill: #111111; } @media (prefers-color-scheme: dark) { .ink { stroke: #ffffff; } .fill { fill: #ffffff; }}</style><rect class='ink' x='7' y='7' width='18' height='18' rx='4.5' stroke-width='2'/><circle class='fill' cx='7' cy='7' r='3.5'/><circle class='fill' cx='25' cy='25' r='3.5'/></svg>"
   }
 ]
