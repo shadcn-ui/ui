@@ -30,52 +30,6 @@ export type ToolWriterOptions<
   errorText?: string
   /** Script the call as a `dynamic-tool` part instead of a typed `tool-<name>` part. */
   dynamic?: boolean
-  /**
-   * Pause the turn behind a user approval. `output` (or `errorText`) then
-   * means "stream this after approval" instead of "resolve immediately";
-   * denial streams `tool-output-denied` automatically.
-   */
-  needsApproval?: boolean
-  approvalId?: string
-}
-
-/**
- * A human-in-the-loop tool call as a continuation turn sees it: the scripted
- * input, the user-submitted output (elicitation) or gated output (approval),
- * and the approval decision when one was requested.
- */
-export type PendingToolCall<TOOLS extends ToolSet> = {
-  [NAME in keyof TOOLS & string]: {
-    name: NAME
-    toolCallId: string
-    input: TOOLS[NAME]["input"]
-    output: TOOLS[NAME]["output"] | undefined
-    approved?: boolean
-    denied?: boolean
-  }
-}[keyof TOOLS & string]
-
-/**
- * A framework-neutral summary of one tool call read back from a transcript
- * message. Adapters produce these through `ChatFormat.getToolCalls`.
- */
-export type ToolCallSummary = {
-  toolCallId: string
-  name: string
-  dynamic?: boolean
-  input: unknown
-  output?: unknown
-  errorText?: string
-  state:
-    | "input-streaming"
-    | "input-available"
-    | "approval-requested"
-    | "approval-responded"
-    | "output-available"
-    | "output-error"
-    | "output-denied"
-    | "undefined-input"
-  approval?: { id: string; approved?: boolean; reason?: string }
 }
 
 /**
@@ -172,13 +126,6 @@ export type ChatEvent<
       input: unknown
     }
   | {
-      kind: "tool-approval-request"
-      toolCallId: string
-      approvalId: string
-      output?: unknown
-      errorText?: string
-    }
-  | {
       kind: "tool-output"
       toolCallId: string
       output: unknown
@@ -242,11 +189,6 @@ export type NeutralChunk<
       title?: string
     }
   | {
-      type: "tool-approval-request"
-      approvalId: string
-      toolCallId: string
-    }
-  | {
       type: "tool-output-available"
       toolCallId: string
       output: unknown
@@ -295,11 +237,9 @@ export type ChatIds = {
   nextMessageId(): string
   nextToolCallId(): string
   nextSourceId(): string
-  nextApprovalId(): string
   reserveMessageId(id: string): void
   reserveToolCallId(id: string): void
   reserveSourceId(id: string): void
-  reserveApprovalId(id: string): void
 }
 
 /** Prefixes used by the deterministic chat id generators. */
@@ -307,7 +247,6 @@ export type ChatIdsOptions = {
   messageIdPrefix?: string
   toolCallIdPrefix?: string
   sourceIdPrefix?: string
-  approvalIdPrefix?: string
 }
 
 /** Chat-wide options: id prefixes plus the fixed clock used for default metadata. */
@@ -382,8 +321,6 @@ export type ChatFormat<
   getMessageParts(message: MESSAGE): PART[]
   /** Optional: extract a message's metadata when hydrating chats from existing messages. */
   getMessageMetadata?(message: MESSAGE): METADATA | undefined
-  /** Optional: read a message's tool calls so continuation turns can resolve human-in-the-loop state. */
-  getToolCalls?(message: MESSAGE): ToolCallSummary[]
   createTransport(
     context: TransportContext<MESSAGE, CHUNK, METADATA, DATA, TOOLS>,
     options?: TurnStreamOptions

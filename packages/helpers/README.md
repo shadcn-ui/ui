@@ -20,61 +20,6 @@ const chat = createChat()
   })
 ```
 
-## Human in the loop
-
-A tool call left unresolved pauses the turn: the input streams, the turn
-finishes, and the client decides what happens next. A callback turn scripted
-after a paused turn becomes a continuation. It materializes when the follow-up
-request arrives and receives the resolved `toolCall` in its context.
-
-For client-executed tools, the user supplies the output through
-`addToolOutput` and the continuation reads it:
-
-```ts
-const chat = createChat()
-  .user("Help me plan the release.")
-  .assistant(({ writer }) => {
-    writer.tool("askQuestions", { dynamic: true, input: { questions } })
-  })
-  .assistant(({ writer, toolCall }) => {
-    writer.text(`Got it. Starting with ${toolCall?.output?.answers.direction}.`)
-  })
-```
-
-For approval-gated tools, `needsApproval` pauses behind the user's decision.
-`output` (or `errorText`) then means "stream this if approved"; denial streams
-`tool-output-denied` automatically:
-
-```ts
-const chat = createChat()
-  .user("Clean up old deployments.")
-  .assistant(({ writer }) => {
-    writer.text("This will delete 3 deployments. Approve?")
-    writer.tool("deleteDeployments", {
-      input: { count: 3 },
-      needsApproval: true,
-      output: { deleted: 3 },
-    })
-  })
-  .assistant(({ writer, toolCall }) => {
-    writer.text(
-      toolCall?.approved
-        ? "Deleted 3 deployments."
-        : "Okay, leaving them in place."
-    )
-  })
-```
-
-Wire the client with the AI SDK's own triggers:
-`sendAutomaticallyWhen: lastAssistantMessageIsCompleteWithToolCalls` for
-client-executed tools, or `lastAssistantMessageIsCompleteWithApprovalResponses`
-plus `addToolApprovalResponse({ id: part.approval.id, approved })` for
-approvals.
-
-Continuation callbacks must be pure; regenerating re-resolves them against the
-current transcript. `get()` stops before the first continuation turn, since a
-continuation has no message without a live transcript.
-
 ## Installation
 
 ```bash

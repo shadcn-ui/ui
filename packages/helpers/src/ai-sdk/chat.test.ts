@@ -10,35 +10,17 @@ import {
   weatherOutput,
   weatherSuccess,
 } from "./test-utils"
-import type { DataParts, TestMessage, Tools } from "./test-utils"
+import type { DataParts, Tools } from "./test-utils"
 
 testChatContract("AI SDK", () =>
   createChat().user("One").assistant("A").user("Two").assistant("B")
 )
 
 describe("AI SDK chat", () => {
-  it("narrows the continuation toolCall by name", () => {
-    createChat<TestMessage>()
-      .user("Weather?")
-      .assistant(({ writer }) => {
-        writer.tool("getWeather", { input: { city: "San Francisco" } })
-      })
-      .assistant(({ toolCall }) => {
-        if (toolCall?.name === "getWeather") {
-          expectTypeOf(toolCall.input).toEqualTypeOf<
-            Tools["getWeather"]["input"]
-          >()
-          expectTypeOf(toolCall.output).toEqualTypeOf<
-            Tools["getWeather"]["output"] | undefined
-          >()
-        }
-      })
-  })
-
   it("preserves the native message type through get and next", () => {
     type Metadata = { model: string }
 
-    const chat = createChat<UIMessage<Metadata, DataParts, Tools>>()
+    const chat = createChat<Metadata, DataParts, Tools>()
       .user("Weather?", { metadata: { model: "test" } })
       .assistant("Sunny.", { metadata: { model: "test" } })
     const messages = chat.get()
@@ -115,7 +97,7 @@ describe("AI SDK chat", () => {
   })
 
   it("supports assistant ids and metadata in chat fixtures", () => {
-    const chat = createChat<UIMessage<{ model: string }>>()
+    const chat = createChat<{ model: string }>()
       .user("Hello")
       .assistant("Hey.", {
         id: "assistant-1",
@@ -261,32 +243,34 @@ describe("AI SDK chat", () => {
   })
 
   it("materializes assistant writer parts into the final chat transcript", () => {
-    const chat = createChat<TestMessage>().assistant(({ writer }) => {
-      writer.reasoning("I need to call the weather tool.")
-      writer.data({
-        type: "data-weather",
-        id: "weather-1",
-        data: weatherLoading,
-      })
+    const chat = createChat<unknown, DataParts, Tools>().assistant(
+      ({ writer }) => {
+        writer.reasoning("I need to call the weather tool.")
+        writer.data({
+          type: "data-weather",
+          id: "weather-1",
+          data: weatherLoading,
+        })
 
-      const weather = writer.tool("getWeather", {
-        title: "Checking weather",
-        input: {
-          city: "San Francisco",
-        },
-      })
+        const weather = writer.tool("getWeather", {
+          title: "Checking weather",
+          input: {
+            city: "San Francisco",
+          },
+        })
 
-      writer.sleep(100)
+        writer.sleep(100)
 
-      weather.output(weatherOutput)
+        weather.output(weatherOutput)
 
-      writer.data({
-        type: "data-weather",
-        id: "weather-1",
-        data: weatherSuccess,
-      })
-      writer.text("It's sunny and 72 degrees in San Francisco.")
-    })
+        writer.data({
+          type: "data-weather",
+          id: "weather-1",
+          data: weatherSuccess,
+        })
+        writer.text("It's sunny and 72 degrees in San Francisco.")
+      }
+    )
 
     const [message] = chat.get()
 
@@ -314,7 +298,7 @@ describe("AI SDK chat", () => {
 
   it("produces identical transcripts for identical scripts", () => {
     function script() {
-      return createChat<TestMessage>()
+      return createChat<unknown, DataParts, Tools>()
         .user("Hello")
         .assistant(({ writer }) => {
           writer.reasoning("Checking the forecast.")
@@ -352,7 +336,7 @@ describe("AI SDK chat", () => {
   })
 
   it("hydrates a chat from an existing transcript", () => {
-    const source = createChat<TestMessage>()
+    const source = createChat<unknown, DataParts, Tools>()
       .user("What's the weather?")
       .assistant(({ writer }) => {
         writer

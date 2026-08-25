@@ -220,10 +220,6 @@ export async function getRegistriesConfig(
     packageRegistriesExplorer.clearCaches()
   }
 
-  const packageJsonRegistries = await getPackageJsonRegistries(cwd)
-
-  // Registries are merged from package.json and components.json, with
-  // components.json taking precedence per key.
   const componentsJsonPath = path.resolve(cwd, "components.json")
   if (existsSync(componentsJsonPath)) {
     const configResult = await explorer.load(componentsJsonPath)
@@ -236,33 +232,26 @@ export async function getRegistriesConfig(
     return {
       registries: {
         ...BUILTIN_REGISTRIES,
-        ...packageJsonRegistries,
         ...config.registries,
       },
     }
   }
 
-  return {
-    registries: packageJsonRegistries,
-  }
-}
-
-export async function getPackageJsonRegistries(
-  cwd: string
-): Promise<z.infer<typeof registryConfigSchema>> {
   const packageJsonPath = path.resolve(cwd, "package.json")
-  if (!existsSync(packageJsonPath)) {
-    return {}
+  if (existsSync(packageJsonPath)) {
+    const configResult = await packageRegistriesExplorer.load(packageJsonPath)
+    return parseRegistriesConfig(
+      cwd,
+      {
+        registries: configResult?.config,
+      },
+      "package.json"
+    )
   }
 
-  const configResult = await packageRegistriesExplorer.load(packageJsonPath)
-  return parseRegistriesConfig(
-    cwd,
-    {
-      registries: configResult?.config,
-    },
-    "package.json"
-  ).registries
+  return {
+    registries: {},
+  }
 }
 
 function parseRegistriesConfig(

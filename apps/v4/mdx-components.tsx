@@ -330,12 +330,7 @@ export const mdxComponents = {
     <Button className={cn("not-typeset", className)} {...props} />
   ),
   Callout,
-  Accordion: ({
-    className,
-    ...props
-  }: React.ComponentProps<typeof Accordion>) => (
-    <Accordion className={cn("not-typeset", className)} {...props} />
-  ),
+  Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,

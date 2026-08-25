@@ -6,7 +6,6 @@ import type {
   MessageRole,
   NeutralChunk,
   StreamStep,
-  ToolCallSummary,
   ToolSet,
   TransportContext,
   TurnStreamOptions,
@@ -98,20 +97,6 @@ export function createTestFormat<
           })
         }
 
-        if (event.kind === "tool-approval-request") {
-          const index = parts.findIndex(
-            (part) => part.toolCallId === event.toolCallId
-          )
-
-          if (index !== -1) {
-            parts[index] = {
-              ...parts[index],
-              state: "approval-requested",
-              approval: { id: event.approvalId },
-            }
-          }
-        }
-
         if (event.kind === "tool-output") {
           const index = parts.findIndex(
             (part) => part.toolCallId === event.toolCallId
@@ -174,19 +159,6 @@ export function createTestFormat<
 
     getMessageParts(message) {
       return message.parts
-    },
-
-    getToolCalls(message) {
-      return message.parts
-        .filter((part) => part.type.startsWith("tool-"))
-        .map((part) => ({
-          toolCallId: part.toolCallId as string,
-          name: part.type.replace("tool-", ""),
-          input: part.input,
-          output: part.state === "output-available" ? part.output : undefined,
-          state: part.state as ToolCallSummary["state"],
-          approval: part.approval as ToolCallSummary["approval"],
-        }))
     },
 
     createTransport(context, options) {

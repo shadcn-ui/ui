@@ -190,14 +190,6 @@ export const Components: Record<string, any> = {
       ) || "field"
     return { default: mod.default || mod[exportName] }
   }),
-  "hover-card": React.lazy(async () => {
-    const mod = await import("@/styles/aria-nova/ui/hover-card")
-    const exportName =
-      Object.keys(mod).find(
-        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
-      ) || "hover-card"
-    return { default: mod.default || mod[exportName] }
-  }),
   input: React.lazy(async () => {
     const mod = await import("@/styles/aria-nova/ui/input")
     const exportName =

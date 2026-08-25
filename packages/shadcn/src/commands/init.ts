@@ -712,20 +712,17 @@ export async function runInit(
 
   // Ensure registries are configured for the components we're about to add.
   const fullConfigForRegistry = await resolveConfigPaths(options.cwd, config)
-  const { discoveredRegistries, packageJsonRegistries } =
-    await ensureRegistriesInConfig(components, fullConfigForRegistry, {
+  const { config: configWithRegistries } = await ensureRegistriesInConfig(
+    components,
+    fullConfigForRegistry,
+    {
       silent: true,
-      writeFile: false,
-    })
-
-  // Update config with registries discovered from the registries index.
-  // Registries declared in package.json are resolved in memory below and
-  // never persisted to components.json.
-  if (Object.keys(discoveredRegistries).length > 0) {
-    config.registries = {
-      ...config.registries,
-      ...discoveredRegistries,
     }
+  )
+
+  // Update config with any new registries found.
+  if (configWithRegistries.registries) {
+    config.registries = configWithRegistries.registries
   }
 
   const componentSpinner = spinner(`Writing components.json.`).start()
@@ -778,16 +775,6 @@ export async function runInit(
 
   // Propagate design settings to workspace components.json files.
   const fullConfig = await resolveConfigPaths(options.cwd, config)
-
-  // Include package.json-declared registries for installation. These are
-  // resolved in memory and stay out of the components.json we just wrote.
-  if (Object.keys(packageJsonRegistries).length > 0) {
-    fullConfig.registries = {
-      ...fullConfig.registries,
-      ...packageJsonRegistries,
-    }
-  }
-
   const workspaceConfig = await getWorkspaceConfig(fullConfig)
   if (workspaceConfig) {
     const designSettings: Record<string, unknown> = {}

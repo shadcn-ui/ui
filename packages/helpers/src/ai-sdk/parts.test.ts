@@ -2,18 +2,17 @@ import { describe, expect, it } from "vitest"
 
 import { streamMessageParts, yieldMessageParts } from "./chat"
 import { createChat } from "./index"
-import { getToolCalls } from "./parts"
 import {
   artifact,
   weatherLoading,
   weatherOutput,
   weatherSuccess,
 } from "./test-utils"
-import type { DataParts, TestMessage, Tools } from "./test-utils"
+import type { DataParts, Tools } from "./test-utils"
 
 describe("AI SDK parts", () => {
   it("creates typed messages with explicit parts", () => {
-    const [message] = createChat<TestMessage>()
+    const [message] = createChat<unknown, DataParts, Tools>()
       .assistant(({ writer }) => {
         writer.text("Here is the forecast.")
         writer.data({
@@ -57,7 +56,7 @@ describe("AI SDK parts", () => {
   })
 
   it("creates rich messages with the fluent writer", () => {
-    const [message] = createChat<TestMessage>()
+    const [message] = createChat<unknown, DataParts, Tools>()
       .assistant(
         ({ writer }) => {
           writer.stepStart()
@@ -136,7 +135,7 @@ describe("AI SDK parts", () => {
   })
 
   it("materializes all writer part variants", () => {
-    const [message] = createChat<TestMessage>()
+    const [message] = createChat<unknown, DataParts, Tools>()
       .assistant(
         ({ writer }) => {
           writer.stepStart()
@@ -196,75 +195,5 @@ describe("AI SDK parts", () => {
         data: weatherSuccess,
       })
     )
-  })
-})
-
-describe("AI SDK approval parts", () => {
-  function createApprovalMessage() {
-    const [, assistantMessage] = createChat<TestMessage>()
-      .user("Fetch the weather?")
-      .assistant(({ writer }) => {
-        writer.tool("getWeather", {
-          input: { city: "San Francisco" },
-          needsApproval: true,
-          output: weatherOutput,
-        })
-      })
-      .get(2)
-
-    return assistantMessage
-  }
-
-  it("materializes a needsApproval call as an approval-requested part", () => {
-    expect(createApprovalMessage().parts).toMatchObject([
-      {
-        type: "tool-getWeather",
-        toolCallId: "call-1",
-        state: "approval-requested",
-        input: { city: "San Francisco" },
-        approval: { id: "approval-1" },
-      },
-    ])
-  })
-
-  it("summarizes tool calls with their approval state", () => {
-    const message = createApprovalMessage()
-    const respondedMessage = {
-      ...message,
-      parts: message.parts.map((part) =>
-        part.type === "tool-getWeather"
-          ? ({
-              ...part,
-              state: "approval-responded",
-              approval: { id: "approval-1", approved: true },
-            } as (typeof message.parts)[number])
-          : part
-      ),
-    }
-
-    expect(getToolCalls(respondedMessage)).toMatchObject([
-      {
-        toolCallId: "call-1",
-        name: "getWeather",
-        state: "approval-responded",
-        input: { city: "San Francisco" },
-        approval: { id: "approval-1", approved: true },
-      },
-    ])
-  })
-
-  it("hydrates approval-requested parts back into approval events", () => {
-    const chat = createChat<TestMessage>({
-      messages: [createApprovalMessage()],
-    })
-    const [message] = chat.get(1)
-
-    expect(message.parts).toMatchObject([
-      {
-        type: "tool-getWeather",
-        state: "approval-requested",
-        approval: { id: "approval-1" },
-      },
-    ])
   })
 })

@@ -9,7 +9,6 @@ export function createChatIds(options: ChatIdsOptions = {}): ChatIds {
   const messageIdPrefix = options.messageIdPrefix ?? "msg"
   const toolCallIdPrefix = options.toolCallIdPrefix ?? "call"
   const sourceIdPrefix = options.sourceIdPrefix ?? "source"
-  const approvalIdPrefix = options.approvalIdPrefix ?? "approval"
 
   function createSequence(prefix: string) {
     const reserved = new Set<string>()
@@ -56,7 +55,6 @@ export function createChatIds(options: ChatIdsOptions = {}): ChatIds {
   const messageIds = createSequence(messageIdPrefix)
   const toolCallIds = createSequence(toolCallIdPrefix)
   const sourceIds = createSequence(sourceIdPrefix)
-  const approvalIds = createSequence(approvalIdPrefix)
 
   return {
     nextMessageId() {
@@ -71,10 +69,6 @@ export function createChatIds(options: ChatIdsOptions = {}): ChatIds {
       return sourceIds.next()
     },
 
-    nextApprovalId() {
-      return approvalIds.next()
-    },
-
     reserveMessageId(id) {
       messageIds.reserve(id)
     },
@@ -85,10 +79,6 @@ export function createChatIds(options: ChatIdsOptions = {}): ChatIds {
 
     reserveSourceId(id) {
       sourceIds.reserve(id)
-    },
-
-    reserveApprovalId(id) {
-      approvalIds.reserve(id)
     },
   }
 }

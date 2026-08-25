@@ -61,7 +61,6 @@ export async function getMonorepoTargets(cwd: string) {
     cwd,
     onlyDirectories: true,
     ignore: ["**/node_modules/**"],
-    suppressErrors: true,
   })
 
   const targets: { name: string; hasConfig: boolean }[] = []

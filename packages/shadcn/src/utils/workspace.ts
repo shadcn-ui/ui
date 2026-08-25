@@ -140,7 +140,6 @@ async function loadWorkspacePackages(root: string) {
     {
       cwd: root,
       ignore: ["**/node_modules/**"],
-      suppressErrors: true,
     }
   )
 

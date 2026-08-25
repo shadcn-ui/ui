@@ -1,7 +1,3 @@
-import type { UIMessage } from "ai"
-
-export type TestMessage = UIMessage<unknown, DataParts, Tools>
-
 export type DataParts = {
   weather: {
     city: string

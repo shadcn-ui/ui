@@ -3,7 +3,6 @@ import { AsyncLocalStorage } from "async_hooks"
 interface RegistryContext {
   headers: Record<string, Record<string, string>>
   env?: NodeJS.ProcessEnv
-  onGitHubAuthNotice?: (message: string) => void | Promise<void>
 }
 
 const registryContext = new AsyncLocalStorage<RegistryContext>()
@@ -15,7 +14,6 @@ export function withRegistryContext<T>(
   callback: () => T,
   options: {
     env?: NodeJS.ProcessEnv
-    onGitHubAuthNotice?: (message: string) => void | Promise<void>
   } = {}
 ): T {
   const parentContext = registryContext.getStore()
@@ -24,8 +22,6 @@ export function withRegistryContext<T>(
     {
       headers: {},
       env: options.env ?? parentContext?.env,
-      onGitHubAuthNotice:
-        options.onGitHubAuthNotice ?? parentContext?.onGitHubAuthNotice,
     },
     callback
   )
@@ -52,10 +48,6 @@ export function getRegistryEnvFromContext(key: string): string | undefined {
   const context = registryContext.getStore()
 
   return context?.env ? context.env[key] : process.env[key]
-}
-
-export function getGitHubAuthNoticeFromContext() {
-  return registryContext.getStore()?.onGitHubAuthNotice
 }
 
 export function clearRegistryContext() {

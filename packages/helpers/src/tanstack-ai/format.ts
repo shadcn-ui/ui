@@ -162,7 +162,6 @@ export function createRunEncoder<
           value: chunk.part,
         })
       case "abort":
-      case "tool-approval-request":
       case "tool-output-denied":
       case "start-step":
       case "file":

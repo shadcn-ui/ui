@@ -70,26 +70,19 @@ function pluralize(count: number, singular: string, plural: string) {
   return `${count} ${count === 1 ? singular : plural}`
 }
 
-export async function addRegistriesToConfig(
+async function addRegistriesToConfig(
   registryArgs: string[],
   cwd: string,
   options: { silent?: boolean }
 ) {
-  // Write to components.json when it exists, otherwise fall back to
-  // package.json. This mirrors how registries are resolved.
-  const configPath = ["components.json", "package.json"]
-    .map((file) => path.resolve(cwd, file))
-    .find((file) => fs.existsSync(file))
-
-  if (!configPath) {
+  const configPath = path.resolve(cwd, "components.json")
+  if (!fs.existsSync(configPath)) {
     throw new Error(
-      `No ${highlighter.info("components.json")} or ${highlighter.info(
-        "package.json"
-      )} found. Run ${highlighter.info("shadcn init")} first.`
+      `No ${highlighter.info("components.json")} found. Run ${highlighter.info(
+        "shadcn init"
+      )} first.`
     )
   }
-
-  const configFileName = path.basename(configPath)
 
   const parsed = registryArgs.map(parseRegistryArg)
   const needsLookup = parsed.filter((p) => !p.url)
@@ -186,7 +179,7 @@ export async function addRegistriesToConfig(
     },
   }
 
-  const writeSpinner = spinner(`Updating ${configFileName}.`, {
+  const writeSpinner = spinner("Updating components.json.", {
     silent: options.silent,
   }).start()
   await fs.writeJson(configPath, updatedConfig, { spaces: 2 })

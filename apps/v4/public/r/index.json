@@ -737,11 +737,6 @@
           "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/hover-card-example.tsx",
           "api": "https://base-ui.com/react/components/hover-card.md"
         },
-        "aria": {
-          "docs": "https://ui.shadcn.com/docs/components/aria/hover-card",
-          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/hover-card-example.tsx",
-          "api": "https://react-aria.adobe.com/PreviewTrigger#api"
-        },
         "radix": {
           "docs": "https://ui.shadcn.com/docs/components/radix/hover-card",
           "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/hover-card-example.tsx",

@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { useChat } from "@ai-sdk/react"
-import type { UIMessage } from "ai"
 
 import { createChat, getMessageText } from "@/lib/ai"
 import { PartReasoning } from "@/registry/bases/radix/blocks/preview-03/components/part-reasoning"
@@ -52,9 +51,7 @@ type Tools = {
   }
 }
 
-type ChatMessage = UIMessage<unknown, Record<string, never>, Tools>
-
-const chat = createChat<ChatMessage>()
+const chat = createChat<unknown, Record<string, never>, Tools>()
   .user("Check the deployment health for the checkout flow.")
   .sleep(1000)
   .assistant(({ writer }) => {

@@ -82,8 +82,6 @@ vi.mock("@/src/utils/registries", () => ({
   ensureRegistriesInConfig: vi.fn(() => ({
     config: baseConfig,
     newRegistries: [],
-    discoveredRegistries: {},
-    packageJsonRegistries: {},
   })),
 }))
 

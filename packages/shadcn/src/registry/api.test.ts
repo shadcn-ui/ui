@@ -1539,7 +1539,7 @@ describe("getRegistriesConfig", () => {
     }
   })
 
-  it("should merge registries from components.json and package.json", async () => {
+  it("should prefer components.json over package.json", async () => {
     const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
     const componentsJsonFile = path.join(tempDir, "components.json")
     const packageJsonFile = path.join(tempDir, "package.json")
@@ -1567,8 +1567,8 @@ describe("getRegistriesConfig", () => {
       expect(result.registries).toEqual({
         ...BUILTIN_REGISTRIES,
         "@components": "https://components.com/{name}.json",
-        "@package": "https://package.com/{name}.json",
       })
+      expect(result.registries["@package"]).toBeUndefined()
     } finally {
       await fs.unlink(componentsJsonFile)
       await fs.unlink(packageJsonFile)
@@ -1576,46 +1576,7 @@ describe("getRegistriesConfig", () => {
     }
   })
 
-  it("should prefer components.json over package.json for conflicting registries", async () => {
-    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
-    const componentsJsonFile = path.join(tempDir, "components.json")
-    const packageJsonFile = path.join(tempDir, "package.json")
-
-    await fs.writeFile(
-      componentsJsonFile,
-      JSON.stringify({
-        registries: {
-          "@acme": "https://components.com/{name}.json",
-        },
-      })
-    )
-    await fs.writeFile(
-      packageJsonFile,
-      JSON.stringify({
-        registries: {
-          "@acme": "https://package.com/{name}.json",
-          "@package": "https://package.com/{name}.json",
-        },
-      })
-    )
-
-    try {
-      const result = await getRegistriesConfig(tempDir)
-
-      expect(result.registries["@acme"]).toBe(
-        "https://components.com/{name}.json"
-      )
-      expect(result.registries["@package"]).toBe(
-        "https://package.com/{name}.json"
-      )
-    } finally {
-      await fs.unlink(componentsJsonFile)
-      await fs.unlink(packageJsonFile)
-      await fs.rmdir(tempDir)
-    }
-  })
-
-  it("should merge package.json registries when components.json has no registries", async () => {
+  it("should not fall back to package.json when components.json has no registries", async () => {
     const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
     const componentsJsonFile = path.join(tempDir, "components.json")
     const packageJsonFile = path.join(tempDir, "package.json")
@@ -1638,51 +1599,7 @@ describe("getRegistriesConfig", () => {
     try {
       const result = await getRegistriesConfig(tempDir)
 
-      expect(result.registries).toEqual({
-        ...BUILTIN_REGISTRIES,
-        "@package": "https://package.com/{name}.json",
-      })
-    } finally {
-      await fs.unlink(componentsJsonFile)
-      await fs.unlink(packageJsonFile)
-      await fs.rmdir(tempDir)
-    }
-  })
-
-  it("should throw ConfigParseError for invalid package.json registries even when components.json exists", async () => {
-    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
-    const componentsJsonFile = path.join(tempDir, "components.json")
-    const packageJsonFile = path.join(tempDir, "package.json")
-
-    await fs.writeFile(
-      componentsJsonFile,
-      JSON.stringify({
-        registries: {
-          "@components": "https://components.com/{name}.json",
-        },
-      })
-    )
-    await fs.writeFile(
-      packageJsonFile,
-      JSON.stringify({
-        registries: {
-          "@invalid": {
-            headers: {
-              Authorization: "Bearer token",
-            },
-          },
-        },
-      })
-    )
-
-    try {
-      await getRegistriesConfig(tempDir)
-      expect.fail("Should have thrown ConfigParseError")
-    } catch (error) {
-      expect(error).toBeInstanceOf(ConfigParseError)
-      if (error instanceof ConfigParseError) {
-        expect(error.configFile).toBe("package.json")
-      }
+      expect(result.registries).toEqual(BUILTIN_REGISTRIES)
     } finally {
       await fs.unlink(componentsJsonFile)
       await fs.unlink(packageJsonFile)

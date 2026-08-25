@@ -9,12 +9,15 @@ import {
   Menu as MenuPrimitive,
   MenuSection as MenuSectionPrimitive,
   MenuTrigger as MenuTriggerPrimitive,
+  PopoverContext,
   Popover as PopoverPrimitive,
   Separator as SeparatorPrimitive,
   SubmenuTrigger as SubmenuTriggerPrimitive,
   type MenuItemProps as MenuItemPrimitiveProps,
   type MenuSectionProps as MenuSectionPrimitiveProps,
+  type MenuTriggerProps,
 } from "react-aria-components"
+import { createPortal } from "react-dom"
 
 import { cn } from "@/registry/bases/aria/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
@@ -61,14 +64,79 @@ function ContextMenu({
 }
 
 function ContextMenuTrigger({
+  children,
+  className,
+  onOpenChange,
   ...props
-}: Omit<React.ComponentProps<typeof MenuTriggerPrimitive>, "trigger">) {
+}: Omit<MenuTriggerProps, "trigger" | "isOpen" | "defaultOpen"> & {
+  className?: string
+}) {
+  const [position, setPosition] = React.useState<{
+    x: number
+    y: number
+  } | null>(null)
+  const positionRef = React.useRef<HTMLDivElement>(null)
+
   return (
     <MenuTriggerPrimitive
       data-slot="context-menu"
-      trigger="contextMenu"
       {...props}
-    />
+      isOpen={!!position}
+      onOpenChange={(isOpen) => {
+        if (!isOpen) {
+          setPosition(null)
+          onOpenChange?.(false)
+        }
+      }}
+    >
+      {position &&
+        createPortal(
+          // Position the popover at the pointer.
+          <div
+            data-slot="context-menu-anchor"
+            ref={positionRef}
+            style={{
+              position: "fixed",
+              top: position.y,
+              left: position.x,
+            }}
+          />,
+          document.body
+        )}
+      <div
+        data-slot="context-menu-trigger"
+        className={cn(
+          "cn-context-menu-trigger contents select-none",
+          className
+        )}
+        onContextMenu={(e) => {
+          e.preventDefault()
+          const wasOpen = position !== null
+          setPosition({
+            y: e.clientY,
+            x: e.clientX,
+          })
+          if (!wasOpen) {
+            onOpenChange?.(true)
+          }
+        }}
+      >
+        <PopoverContext.Consumer>
+          {(ctx) => (
+            <PopoverContext.Provider
+              value={{
+                ...ctx,
+                ...position,
+                triggerRef: positionRef,
+                style: undefined,
+              }}
+            >
+              {children}
+            </PopoverContext.Provider>
+          )}
+        </PopoverContext.Consumer>
+      </div>
+    </MenuTriggerPrimitive>
   )
 }
 
