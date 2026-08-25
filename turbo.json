@@ -61,6 +61,45 @@
     },
     "registry:build": {
       "outputs": []
+    },
+    "registry:health": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "env": ["MONITOR_MODE"],
+      "passThroughEnv": [
+        "BLOB_READ_WRITE_TOKEN",
+        "VERCEL_OIDC_TOKEN",
+        "BLOB_STORE_ID",
+        "GITHUB_STEP_SUMMARY"
+      ],
+      "outputs": []
+    },
+    "registry:health:prepare": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "passThroughEnv": [
+        "BLOB_READ_WRITE_TOKEN",
+        "VERCEL_OIDC_TOKEN",
+        "BLOB_STORE_ID"
+      ],
+      "outputs": []
+    },
+    "registry:health:check": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "env": ["MONITOR_MODE"],
+      "outputs": []
+    },
+    "registry:health:publish": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "passThroughEnv": [
+        "BLOB_READ_WRITE_TOKEN",
+        "VERCEL_OIDC_TOKEN",
+        "BLOB_STORE_ID",
+        "GITHUB_STEP_SUMMARY"
+      ],
+      "outputs": []
     }
   }
 }
