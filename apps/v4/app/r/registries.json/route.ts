@@ -23,6 +23,8 @@ async function getHealthSnapshot() {
   try {
     const snapshot = await loadRegistryHealthSnapshot({
       token: process.env.BLOB_READ_WRITE_TOKEN,
+      storeId:
+        process.env.REGISTRY_HEALTH_BLOB_STORE_ID || process.env.BLOB_STORE_ID,
       abortSignal: controller.signal,
     })
     if (!snapshot) throw new Error("missing_snapshot")

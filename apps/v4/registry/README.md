@@ -131,10 +131,12 @@ ranking.
 
 ### Authentication and configuration
 
-New Blob connections use Vercel OIDC inside the linked Vercel project. A
-server-only `BLOB_READ_WRITE_TOKEN` is also supported when OIDC is unavailable.
-The website must receive one of these credentials to read `latest.json`; client
-code never receives them.
+New Blob connections use Vercel OIDC inside the linked Vercel project. The
+connected registry health store exposes `REGISTRY_HEALTH_BLOB_STORE_ID`, which
+the website passes explicitly when reading `latest.json`. The standard
+`BLOB_STORE_ID` name remains supported as a fallback. A server-only
+`BLOB_READ_WRITE_TOKEN` is also supported when OIDC is unavailable. Client code
+never receives these credentials.
 
 The monitor runs in GitHub Actions, outside Vercel's OIDC runtime. Configure a
 separate repository Actions secret named `BLOB_READ_WRITE_TOKEN` for that
@@ -145,6 +147,9 @@ expose the token through a `NEXT_PUBLIC_` variable, logs, or step summaries.
 
 Configure this Vercel server environment variable:
 
+- `REGISTRY_HEALTH_BLOB_STORE_ID`: the ID of the connected private registry
+  health Blob store. Vercel provides this value when the store is connected to
+  the project.
 - `REGISTRY_HEALTH_ENABLED`: set to `1` to merge the additive health object into
   `/r/registries.json`; set to `0` to return the original four-field payload.
   The Registry Directory does not consume the health object during the initial
