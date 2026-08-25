@@ -971,7 +971,7 @@
     "name": "@mischief",
     "homepage": "https://ui.tinkererslabs.com",
     "url": "https://ui.tinkererslabs.com/r/{name}.json",
-    "description": "94 playful, accessible React components for shadcn projects: an agent's chat surface, document viewers, a data table, and WebGL backdrops that read their colours from your theme.",
+    "description": "Playful, accessible React components for shadcn projects: an agent's chat surface, document viewers, a data table, and WebGL backdrops that read their colours from your theme.",
     "logo": "<svg width='24' height='24' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'> <path d='M7.5 36.5C8.8 27.6 9.6 19.6 12.4 11.5C17.1 17.4 20.6 24 24.1 30.7C27.3 24.8 29.1 16.8 33.2 9.8C36.4 17.7 38.4 27.5 40.5 36.5' fill='none' stroke='var(--foreground)' stroke-linecap='round' stroke-linejoin='round' stroke-width='6.5'/> <path d='M40.2 3.8L41.4 7.1L44.8 8.3L41.4 9.5L40.2 12.8L39 9.5L35.7 8.3L39 7.1L40.2 3.8Z' fill='var(--foreground)'/> </svg>"
   },
   {
