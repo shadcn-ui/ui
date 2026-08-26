@@ -6,6 +6,9 @@ import {
   getDefaultClassNames,
   type DayButton,
   type Locale,
+  type RootProps,
+  type ChevronProps,
+  type WeekNumberProps,
 } from "react-day-picker"
 
 import { cn } from "@/registry/bases/radix/lib/utils"
@@ -26,6 +29,19 @@ function Calendar({
   buttonVariant?: React.ComponentProps<typeof Button>["variant"]
 }) {
   const defaultClassNames = getDefaultClassNames()
+
+  const mergedComponents = React.useMemo(
+    () => ({
+      Root: CalendarRoot,
+      Chevron: CalendarChevron,
+      DayButton: (props: React.ComponentProps<typeof DayButton>) => (
+        <CalendarDayButton locale={locale} {...props} />
+      ),
+      WeekNumber: CalendarWeekNumber,
+      ...components,
+    }),
+    [locale, components]
+  )
 
   return (
     <DayPicker
@@ -133,74 +149,76 @@ function Calendar({
         hidden: cn("invisible", defaultClassNames.hidden),
         ...classNames,
       }}
-      components={{
-        Root: ({ className, rootRef, ...props }) => {
-          return (
-            <div
-              data-slot="calendar"
-              ref={rootRef}
-              className={cn(className)}
-              {...props}
-            />
-          )
-        },
-        Chevron: ({ className, orientation, ...props }) => {
-          if (orientation === "left") {
-            return (
-              <IconPlaceholder
-                lucide="ChevronLeftIcon"
-                tabler="IconChevronLeft"
-                hugeicons="ArrowLeftIcon"
-                phosphor="CaretLeftIcon"
-                remixicon="RiArrowLeftSLine"
-                className={cn("cn-rtl-flip size-4", className)}
-                {...props}
-              />
-            )
-          }
-
-          if (orientation === "right") {
-            return (
-              <IconPlaceholder
-                lucide="ChevronRightIcon"
-                tabler="IconChevronRight"
-                hugeicons="ArrowRightIcon"
-                phosphor="CaretRightIcon"
-                remixicon="RiArrowRightSLine"
-                className={cn("cn-rtl-flip size-4", className)}
-                {...props}
-              />
-            )
-          }
-
-          return (
-            <IconPlaceholder
-              lucide="ChevronDownIcon"
-              tabler="IconChevronDown"
-              hugeicons="ArrowDownIcon"
-              phosphor="CaretDownIcon"
-              remixicon="RiArrowDownSLine"
-              className={cn("size-4", className)}
-              {...props}
-            />
-          )
-        },
-        DayButton: ({ ...props }) => (
-          <CalendarDayButton locale={locale} {...props} />
-        ),
-        WeekNumber: ({ children, ...props }) => {
-          return (
-            <td {...props}>
-              <div className="flex size-(--cell-size) items-center justify-center text-center">
-                {children}
-              </div>
-            </td>
-          )
-        },
-        ...components,
-      }}
+      components={mergedComponents}
       {...props}
     />
+  )
+}
+
+function CalendarRoot({ className, rootRef, ...props }: RootProps) {
+  return (
+    <div
+      data-slot="calendar"
+      ref={rootRef}
+      className={cn(className)}
+      {...props}
+    />
+  )
+}
+
+function CalendarChevron({
+  className,
+  orientation,
+  ...props
+}: ChevronProps) {
+  if (orientation === "left") {
+    return (
+      <IconPlaceholder
+        lucide="ChevronLeftIcon"
+        tabler="IconChevronLeft"
+        hugeicons="ArrowLeftIcon"
+        phosphor="CaretLeftIcon"
+        remixicon="RiArrowLeftSLine"
+        className={cn("cn-rtl-flip size-4", className)}
+        {...props}
+      />
+    )
+  }
+
+  if (orientation === "right") {
+    return (
+      <IconPlaceholder
+        lucide="ChevronRightIcon"
+        tabler="IconChevronRight"
+        hugeicons="ArrowRightIcon"
+        phosphor="CaretRightIcon"
+        remixicon="RiArrowRightSLine"
+        className={cn("cn-rtl-flip size-4", className)}
+        {...props}
+      />
+    )
+  }
+
+  return (
+    <IconPlaceholder
+      lucide="ChevronDownIcon"
+      tabler="IconChevronDown"
+      hugeicons="ArrowDownIcon"
+      phosphor="CaretDownIcon"
+      remixicon="RiArrowDownSLine"
+      className={cn("size-4", className)}
+      {...props}
+    />
+  )
+}
+
+function CalendarWeekNumber({ children, ...props }: WeekNumberProps) {
+  return (
+    <td {...props}>
+      <div className="flex size-(--cell-size) items-center justify-center text-center">
+        {children}
+      </div>
+    </td>
   )
 }
 
