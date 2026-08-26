@@ -1,0 +1,75 @@
+name: Monitor Registries
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Registry checks to run
+        required: true
+        default: auto
+        type: choice
+        options:
+          - auto
+          - hourly
+          - daily
+          - weekly
+          - all
+
+permissions:
+  contents: read
+
+concurrency:
+  group: registry-health-monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    name: Monitor registry health
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.19.1
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 10.33.4
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: echo "pnpm_cache_dir=$(pnpm store path)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Download previous health state
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+        run: pnpm registry:health:prepare
+
+      - name: Check registries
+        env:
+          MONITOR_MODE: ${{ inputs.mode || 'auto' }}
+        run: pnpm registry:health:check
+
+      - name: Publish health snapshot
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+        run: pnpm registry:health:publish

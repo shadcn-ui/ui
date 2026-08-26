@@ -18,6 +18,10 @@
     "registry:build": "pnpm --filter=@shadcn/react build && pnpm --filter=@shadcn/helpers build && pnpm --filter=shadcn build && bun run ./scripts/build-registry.mts",
     "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
     "explore:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-explore.mts",
+    "registry:health": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/monitor-registries.mts",
+    "registry:health:prepare": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/monitor-registries.mts --phase prepare",
+    "registry:health:check": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/monitor-registries.mts --phase check",
+    "registry:health:publish": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/monitor-registries.mts --phase publish",
     "validate:registries": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/validate-registries.mts",
     "test:apps": "bun run ./scripts/build-test-app.mts",
     "postinstall": "fumadocs-mdx"
@@ -91,7 +95,7 @@
     "rehype-pretty-code": "^0.14.1",
     "rimraf": "^6.0.1",
     "server-only": "^0.0.1",
-    "shadcn": "4.18.0",
+    "shadcn": "4.19.0",
     "shiki": "^3.23.0",
     "sonner": "^2.0.0",
     "streamdown": "^2.5.0",
@@ -111,6 +115,7 @@
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "@typescript-eslint/parser": "^8.31.0",
+    "@vercel/blob": "^2.8.0",
     "agentation": "^2.2.1",
     "baseline-browser-mapping": "^2.10.0",
     "eslint": "^9",
@@ -121,8 +126,10 @@
     "tw-animate-css": "^1.4.0",
     "typescript": "^5",
     "typescript-eslint": "^8.46.2",
+    "undici": "^7.27.2",
     "unist-builder": "3.0.0",
-    "unist-util-visit": "^4.1.2"
+    "unist-util-visit": "^4.1.2",
+    "vitest": "^3.2.6"
   },
   "prettier": {
     "endOfLine": "lf",
