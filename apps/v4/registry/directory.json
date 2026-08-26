@@ -1844,9 +1844,9 @@
   },
   {
     "name": "@wensity",
-    "homepage": "https://wensity.com",
-    "url": "https://raw.githubusercontent.com/ksparth12/wensity-shadcn-registry/main/{name}.json",
-    "description": "Motion-rich React components for AI interfaces, SaaS blocks, and cinematic interactions. Free Wensity components only.",
+    "homepage": "https://ui.wensity.com/components",
+    "url": "https://raw.githubusercontent.com/wensity/registry/main/{name}.json",
+    "description": "React and Next.js UI primitives, components, and motion, themeable end to end from one design token contract. Built on Base UI and Tailwind CSS v4. Free Wensity components.",
     "logo": "<svg width='512' height='512' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'><rect width='512' height='512' fill='#ffffff'/><path d='M96 352L224 96H352L224 352H96Z' fill='#0a0a0a'/><path d='M160 416L288 160H416L288 416H160Z' fill='#cd1c18'/></svg>"
   },
   {
