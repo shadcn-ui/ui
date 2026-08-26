@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "@/registry/bases/ark/ui/toast"
 
 import {
   Example,
@@ -19,6 +18,7 @@ import {
   CollapsibleTrigger,
 } from "@/registry/bases/ark/ui/collapsible"
 import { Marker, MarkerContent } from "@/registry/bases/ark/ui/marker"
+import { toast } from "@/registry/bases/ark/ui/toast"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function BubbleExample() {
@@ -373,7 +373,9 @@ function BubbleReactionsButtons() {
               variant="outline"
               size="xs"
               onClick={() =>
-                toast.create({ title: "You clicked the button in the bubble reaction" })
+                toast.create({
+                  title: "You clicked the button in the bubble reaction",
+                })
               }
             >
               Button
@@ -507,7 +509,10 @@ function BubbleButtonLinks() {
           {quickReplies.map((reply) => (
             <Bubble key={reply.label} variant="outline" align="end">
               <BubbleContent asChild className="border-dashed border-primary">
-                <button type="button" onClick={() => toast(reply.message)}>
+                <button
+                  type="button"
+                  onClick={() => toast.create({ title: reply.message })}
+                >
                   {reply.label}
                 </button>
               </BubbleContent>

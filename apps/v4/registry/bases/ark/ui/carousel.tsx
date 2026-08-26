@@ -34,7 +34,7 @@ const CarouselContent = React.forwardRef<
     ref={ref}
     data-slot="carousel-content"
     className={cn(
-      "flex flex-1 min-w-0 overflow-hidden rounded-lg [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden",
+      "flex min-w-0 flex-1 [scrollbar-width:none] overflow-hidden rounded-lg [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden",
       className
     )}
     {...props}
@@ -71,68 +71,76 @@ const CarouselControl = React.forwardRef<
 ))
 CarouselControl.displayName = "CarouselControl"
 
-const CarouselPrevious = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(({ className, children, variant = "outline", size = "icon-sm", ...props }, ref) => (
-  <ArkCarousel.PrevTrigger asChild>
-    <Button
-      ref={ref}
-      data-slot="carousel-previous"
-      variant={variant}
-      size={size}
-      className={cn(
-        "touch-manipulation rounded-full disabled:opacity-50",
-        className
-      )}
-      {...props}
-    >
-      {children ?? (
-        <IconPlaceholder
-          lucide="ChevronLeftIcon"
-          tabler="IconChevronLeft"
-          hugeicons="ArrowLeftIcon"
-          phosphor="CaretLeftIcon"
-          remixicon="RiArrowLeftSLine"
-          className="cn-rtl-flip size-4"
-        />
-      )}
-      <span className="sr-only">Previous slide</span>
-    </Button>
-  </ArkCarousel.PrevTrigger>
-))
+function CarouselPrevious({
+  className,
+  children,
+  variant = "outline",
+  size = "icon-sm",
+  ...props
+}: React.ComponentProps<typeof Button>) {
+  return (
+    <ArkCarousel.PrevTrigger asChild>
+      <Button
+        data-slot="carousel-previous"
+        variant={variant}
+        size={size}
+        className={cn(
+          "touch-manipulation rounded-full disabled:opacity-50",
+          className
+        )}
+        {...props}
+      >
+        {children ?? (
+          <IconPlaceholder
+            lucide="ChevronLeftIcon"
+            tabler="IconChevronLeft"
+            hugeicons="ArrowLeftIcon"
+            phosphor="CaretLeftIcon"
+            remixicon="RiArrowLeftSLine"
+            className="cn-rtl-flip size-4"
+          />
+        )}
+        <span className="sr-only">Previous slide</span>
+      </Button>
+    </ArkCarousel.PrevTrigger>
+  )
+}
 CarouselPrevious.displayName = "CarouselPrevious"
 
-const CarouselNext = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(({ className, children, variant = "outline", size = "icon-sm", ...props }, ref) => (
-  <ArkCarousel.NextTrigger asChild>
-    <Button
-      ref={ref}
-      data-slot="carousel-next"
-      variant={variant}
-      size={size}
-      className={cn(
-        "touch-manipulation rounded-full disabled:opacity-50",
-        className
-      )}
-      {...props}
-    >
-      {children ?? (
-        <IconPlaceholder
-          lucide="ChevronRightIcon"
-          tabler="IconChevronRight"
-          hugeicons="ArrowRightIcon"
-          phosphor="CaretRightIcon"
-          remixicon="RiArrowRightSLine"
-          className="cn-rtl-flip size-4"
-        />
-      )}
-      <span className="sr-only">Next slide</span>
-    </Button>
-  </ArkCarousel.NextTrigger>
-))
+function CarouselNext({
+  className,
+  children,
+  variant = "outline",
+  size = "icon-sm",
+  ...props
+}: React.ComponentProps<typeof Button>) {
+  return (
+    <ArkCarousel.NextTrigger asChild>
+      <Button
+        data-slot="carousel-next"
+        variant={variant}
+        size={size}
+        className={cn(
+          "touch-manipulation rounded-full disabled:opacity-50",
+          className
+        )}
+        {...props}
+      >
+        {children ?? (
+          <IconPlaceholder
+            lucide="ChevronRightIcon"
+            tabler="IconChevronRight"
+            hugeicons="ArrowRightIcon"
+            phosphor="CaretRightIcon"
+            remixicon="RiArrowRightSLine"
+            className="cn-rtl-flip size-4"
+          />
+        )}
+        <span className="sr-only">Next slide</span>
+      </Button>
+    </ArkCarousel.NextTrigger>
+  )
+}
 CarouselNext.displayName = "CarouselNext"
 
 const CarouselIndicatorGroup = React.forwardRef<
@@ -159,7 +167,7 @@ const CarouselIndicator = React.forwardRef<
     ref={ref}
     data-slot="carousel-indicator"
     className={cn(
-      "size-2.5 cursor-pointer rounded-full border-0 bg-muted-foreground/30 p-0 transition-colors data-current:bg-primary focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
+      "size-2.5 cursor-pointer rounded-full border-0 bg-muted-foreground/30 p-0 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring data-current:bg-primary",
       className
     )}
     {...props}

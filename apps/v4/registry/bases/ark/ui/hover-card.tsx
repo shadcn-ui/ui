@@ -34,7 +34,10 @@ const HoverCardContent = React.forwardRef<
       <HoverCardPrimitive.Content
         ref={ref}
         data-slot="hover-card-content"
-        className={cn("cn-hover-card-content", className)}
+        className={cn(
+          "cn-hover-card-content origin-(--transform-origin) outline-hidden",
+          className
+        )}
         {...props}
       />
     </HoverCardPrimitive.Positioner>
@@ -49,7 +52,10 @@ function HoverCardArrow({
   return (
     <HoverCardPrimitive.Arrow
       data-slot="hover-card-arrow"
-      className={cn("cn-hover-card-arrow", className)}
+      className={cn(
+        "cn-hover-card-arrow [--arrow-background:var(--color-popover)] [--arrow-size:0.625rem]",
+        className
+      )}
       {...props}
     >
       <HoverCardPrimitive.ArrowTip className="cn-hover-card-arrow-tip" />

@@ -5,7 +5,7 @@ import { ark } from "@ark-ui/react/factory"
 import { Pagination as PaginationPrimitive } from "@ark-ui/react/pagination"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
-import { Button } from "@/registry/bases/ark/ui/button"
+import { Button, buttonVariants } from "@/registry/bases/ark/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Pagination({
@@ -33,10 +33,7 @@ function PaginationContent({
       {() => (
         <ark.ul
           data-slot="pagination-content"
-          className={cn(
-            "cn-pagination-content flex items-center",
-            className
-          )}
+          className={cn("cn-pagination-content flex items-center", className)}
           {...props}
         />
       )}
@@ -52,7 +49,11 @@ function PaginationItem({
   return (
     <PaginationPrimitive.Item
       data-slot="pagination-item"
-      className={cn("cn-pagination-link", className)}
+      className={cn(
+        buttonVariants({ variant: "ghost", size: "icon" }),
+        "cn-pagination-link data-selected:border data-selected:bg-background data-selected:shadow-xs dark:data-selected:border-input dark:data-selected:bg-input/30",
+        className
+      )}
       {...props}
     >
       {children}
@@ -64,7 +65,10 @@ function PaginationPrevious({
   className,
   text = "Previous",
   ...props
-}: Omit<React.ComponentProps<typeof PaginationPrimitive.PrevTrigger>, "children"> & {
+}: Omit<
+  React.ComponentProps<typeof PaginationPrimitive.PrevTrigger>,
+  "children"
+> & {
   text?: string
 }) {
   return (
@@ -97,7 +101,10 @@ function PaginationNext({
   className,
   text = "Next",
   ...props
-}: Omit<React.ComponentProps<typeof PaginationPrimitive.NextTrigger>, "children"> & {
+}: Omit<
+  React.ComponentProps<typeof PaginationPrimitive.NextTrigger>,
+  "children"
+> & {
   text?: string
 }) {
   return (
@@ -155,7 +162,10 @@ function PaginationFirst({
   className,
   text = "First",
   ...props
-}: Omit<React.ComponentProps<typeof PaginationPrimitive.FirstTrigger>, "children"> & {
+}: Omit<
+  React.ComponentProps<typeof PaginationPrimitive.FirstTrigger>,
+  "children"
+> & {
   text?: string
 }) {
   return (
@@ -188,7 +198,10 @@ function PaginationLast({
   className,
   text = "Last",
   ...props
-}: Omit<React.ComponentProps<typeof PaginationPrimitive.LastTrigger>, "children"> & {
+}: Omit<
+  React.ComponentProps<typeof PaginationPrimitive.LastTrigger>,
+  "children"
+> & {
   text?: string
 }) {
   return (

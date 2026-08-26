@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { cn } from "@/examples/ark/lib/utils"
-import { Button } from "@/examples/ark/ui/button"
+import { Button, buttonVariants } from "@/examples/ark/ui/button"
 import { ark } from "@ark-ui/react/factory"
 import { Pagination as PaginationPrimitive } from "@ark-ui/react/pagination"
 import {
@@ -51,7 +51,11 @@ function PaginationItem({
   return (
     <PaginationPrimitive.Item
       data-slot="pagination-item"
-      className={cn(className)}
+      className={cn(
+        buttonVariants({ variant: "ghost", size: "icon" }),
+        "data-selected:border data-selected:bg-background data-selected:shadow-xs dark:data-selected:border-input dark:data-selected:bg-input/30",
+        className
+      )}
       {...props}
     >
       {children}

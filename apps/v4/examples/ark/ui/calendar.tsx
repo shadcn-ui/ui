@@ -284,9 +284,7 @@ function CalendarDayTable({
             {week.map((day, dayIndex) => {
               const isOutside = day.month !== focusedMonth
               if (!showOutsideDays && isOutside) {
-                return (
-                  <td key={dayIndex} className="flex-1 p-0" aria-hidden />
-                )
+                return <td key={dayIndex} className="flex-1 p-0" aria-hidden />
               }
               return (
                 <DatePicker.TableCell
@@ -295,8 +293,8 @@ function CalendarDayTable({
                   visibleRange={visibleRange}
                   className={cn(
                     "group/day relative aspect-square h-full w-full flex-1 rounded-(--cell-radius) p-0 text-center select-none",
-                    "[&:last-child[data-selected]_div]:rounded-r-(--cell-radius)",
-                    "[&:first-child[data-selected]_div]:rounded-l-(--cell-radius)"
+                    "[&:last-child_[data-selected]]:rounded-r-(--cell-radius)",
+                    "[&:first-child_[data-selected]]:rounded-l-(--cell-radius)"
                   )}
                 >
                   <CalendarDayButton>
@@ -410,9 +408,7 @@ function Calendar({
         {children || (
           <>
             {isDualMonth ? (
-              <CalendarDualMonthDayView
-                showOutsideDays={showOutsideDays}
-              />
+              <CalendarDualMonthDayView showOutsideDays={showOutsideDays} />
             ) : (
               <CalendarDayView showOutsideDays={showOutsideDays} />
             )}

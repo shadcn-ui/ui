@@ -104,7 +104,7 @@ function ComboboxContent({
         <ComboboxPrimitive.Content
           data-slot="combobox-content"
           className={cn(
-            "cn-combobox-content cn-combobox-content-logical cn-menu-target cn-menu-translucent group/combobox-content relative z-50 min-w-[--reference-width] origin-(--transform-origin)",
+            "cn-combobox-content cn-combobox-content-logical cn-menu-target cn-menu-translucent group/combobox-content relative z-50 min-w-(--reference-width) origin-(--transform-origin)",
             className
           )}
           {...props}

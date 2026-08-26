@@ -29,7 +29,7 @@ const RadioGroupLabel = React.forwardRef<
   <RadioGroupPrimitive.Label
     ref={ref}
     data-slot="radio-group-label"
-    className={cn("text-sm font-medium leading-none select-none", className)}
+    className={cn("text-sm leading-none font-medium select-none", className)}
     {...props}
   />
 ))
@@ -44,7 +44,10 @@ const RadioGroupItem = React.forwardRef<
   <RadioGroupPrimitive.Item
     ref={ref}
     data-slot="radio-group-item"
-    className={cn("inline-flex items-center gap-2 data-[disabled]:opacity-50", className)}
+    className={cn(
+      "inline-flex items-center gap-2 data-[disabled]:opacity-50",
+      className
+    )}
     {...props}
   />
 ))
@@ -59,7 +62,10 @@ const RadioGroupItemControl = React.forwardRef<
   <RadioGroupPrimitive.ItemControl
     ref={ref}
     data-slot="radio-group-item-control"
-    className={cn("cn-radio-group-item relative inline-flex size-4 shrink-0 items-center justify-center rounded-full border border-input focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive dark:bg-input/30 data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary", className)}
+    className={cn(
+      "cn-radio-group-item relative inline-flex size-4 shrink-0 items-center justify-center rounded-full border border-input focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive data-focus-visible:border-ring data-focus-visible:ring-3 data-focus-visible:ring-ring/50 dark:bg-input/30 data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary",
+      className
+    )}
     {...props}
   >
     <span className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-foreground opacity-0 transition-opacity [[data-state=checked]_&]:opacity-100" />

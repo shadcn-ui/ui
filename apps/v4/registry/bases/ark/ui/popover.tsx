@@ -34,10 +34,7 @@ function PopoverPositioner({
   ...props
 }: React.ComponentProps<typeof PopoverPrimitive.Positioner>) {
   return (
-    <PopoverPrimitive.Positioner
-      data-slot="popover-positioner"
-      {...props}
-    />
+    <PopoverPrimitive.Positioner data-slot="popover-positioner" {...props} />
   )
 }
 
@@ -50,7 +47,10 @@ const PopoverContent = React.forwardRef<
       <PopoverPrimitive.Content
         ref={ref}
         data-slot="popover-content"
-        className={cn("cn-popover-content", className)}
+        className={cn(
+          "cn-popover-content z-50 w-72 origin-(--transform-origin) outline-hidden",
+          className
+        )}
         {...props}
       />
     </PopoverPrimitive.Positioner>
@@ -78,7 +78,10 @@ function PopoverArrow({
   return (
     <PopoverPrimitive.Arrow
       data-slot="popover-arrow"
-      className={cn("cn-popover-arrow", className)}
+      className={cn(
+        "cn-popover-arrow [--arrow-background:var(--color-popover)] [--arrow-size:0.625rem]",
+        className
+      )}
       {...props}
     >
       <PopoverPrimitive.ArrowTip className="cn-popover-arrow-tip" />
@@ -86,7 +89,10 @@ function PopoverArrow({
   )
 }
 
-function PopoverHeader({ className, ...props }: React.ComponentProps<typeof ark.div>) {
+function PopoverHeader({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
   return (
     <ark.div
       data-slot="popover-header"
@@ -96,7 +102,10 @@ function PopoverHeader({ className, ...props }: React.ComponentProps<typeof ark.
   )
 }
 
-function PopoverTitle({ className, ...props }: React.ComponentProps<typeof ark.div>) {
+function PopoverTitle({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
   return (
     <ark.div
       data-slot="popover-title"

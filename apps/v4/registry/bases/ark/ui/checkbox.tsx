@@ -17,14 +17,14 @@ function Checkbox({
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        "inline-flex items-center gap-2 data-[disabled]:opacity-50 group/checkbox",
+        "group/checkbox inline-flex items-center gap-2 data-[disabled]:opacity-50",
         className
       )}
       {...props}
     >
       <CheckboxPrimitive.Control
         data-slot="checkbox-control"
-        className="cn-checkbox inline-flex shrink-0 items-center justify-center"
+        className="cn-checkbox inline-flex shrink-0 items-center justify-center data-focus-visible:border-ring data-focus-visible:ring-3 data-focus-visible:ring-ring/50"
       >
         <CheckboxPrimitive.Indicator
           data-slot="checkbox-indicator"
@@ -55,7 +55,7 @@ function Checkbox({
       {children && (
         <CheckboxPrimitive.Label
           data-slot="checkbox-label"
-          className="text-sm font-medium leading-none select-none peer-disabled:opacity-50"
+          className="text-sm leading-none font-medium select-none peer-disabled:opacity-50"
         >
           {children}
         </CheckboxPrimitive.Label>
@@ -75,7 +75,7 @@ const CheckboxRoot = React.forwardRef<
     ref={ref}
     data-slot="checkbox"
     className={cn(
-      "inline-flex items-center gap-2 data-[disabled]:opacity-50 group/checkbox",
+      "group/checkbox inline-flex items-center gap-2 data-[disabled]:opacity-50",
       className
     )}
     {...props}
@@ -91,7 +91,7 @@ const CheckboxControl = React.forwardRef<
     ref={ref}
     data-slot="checkbox-control"
     className={cn(
-      "cn-checkbox inline-flex shrink-0 items-center justify-center",
+      "cn-checkbox inline-flex shrink-0 items-center justify-center data-focus-visible:border-ring data-focus-visible:ring-3 data-focus-visible:ring-ring/50",
       className
     )}
     {...props}
@@ -130,7 +130,7 @@ const CheckboxLabel = React.forwardRef<
     ref={ref}
     data-slot="checkbox-label"
     className={cn(
-      "text-sm font-medium leading-none select-none peer-disabled:opacity-50",
+      "text-sm leading-none font-medium select-none peer-disabled:opacity-50",
       className
     )}
     {...props}

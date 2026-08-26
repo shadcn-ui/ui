@@ -29,14 +29,13 @@ const SwitchControl = React.forwardRef<
     ref={ref}
     data-slot="switch-control"
     className={cn(
-      "inline-flex h-6 w-10 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent p-0.5 transition-colors focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-2 focus-visible:outline-ring data-[state=checked]:bg-primary data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80 data-[invalid]:border-destructive data-[invalid]:ring-destructive/20 dark:data-[invalid]:border-destructive/50 dark:data-[invalid]:ring-destructive/40",
+      "inline-flex h-6 w-10 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent p-0.5 transition-colors focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-2 focus-visible:outline-ring data-focus-visible:ring-3 data-focus-visible:ring-ring/50 data-focus-visible:outline-2 data-focus-visible:outline-ring data-[invalid]:border-destructive data-[invalid]:ring-destructive/20 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input dark:data-[invalid]:border-destructive/50 dark:data-[invalid]:ring-destructive/40 dark:data-[state=unchecked]:bg-input/80",
       className
     )}
     {...props}
   />
 ))
 SwitchControl.displayName = "SwitchControl"
-
 
 const SwitchThumb = React.forwardRef<
   HTMLSpanElement,
@@ -61,7 +60,10 @@ const SwitchLabel = React.forwardRef<
   <SwitchPrimitive.Label
     ref={ref}
     data-slot="switch-label"
-    className={cn("text-sm font-medium leading-none select-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50", className)}
+    className={cn(
+      "text-sm leading-none font-medium select-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+      className
+    )}
     {...props}
   />
 ))

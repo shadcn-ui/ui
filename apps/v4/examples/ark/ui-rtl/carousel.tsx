@@ -33,7 +33,7 @@ const CarouselContent = React.forwardRef<
     ref={ref}
     data-slot="carousel-content"
     className={cn(
-      "flex min-w-0 flex-1 overflow-hidden rounded-lg [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+      "flex min-w-0 flex-1 [scrollbar-width:none] overflow-hidden rounded-lg [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden",
       className
     )}
     {...props}
@@ -70,17 +70,16 @@ const CarouselControl = React.forwardRef<
 ))
 CarouselControl.displayName = "CarouselControl"
 
-const CarouselPrevious = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(
-  (
-    { className, children, variant = "outline", size = "icon-sm", ...props },
-    ref
-  ) => (
+function CarouselPrevious({
+  className,
+  children,
+  variant = "outline",
+  size = "icon-sm",
+  ...props
+}: React.ComponentProps<typeof Button>) {
+  return (
     <ArkCarousel.PrevTrigger asChild>
       <Button
-        ref={ref}
         data-slot="carousel-previous"
         variant={variant}
         size={size}
@@ -95,20 +94,19 @@ const CarouselPrevious = React.forwardRef<
       </Button>
     </ArkCarousel.PrevTrigger>
   )
-)
+}
 CarouselPrevious.displayName = "CarouselPrevious"
 
-const CarouselNext = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(
-  (
-    { className, children, variant = "outline", size = "icon-sm", ...props },
-    ref
-  ) => (
+function CarouselNext({
+  className,
+  children,
+  variant = "outline",
+  size = "icon-sm",
+  ...props
+}: React.ComponentProps<typeof Button>) {
+  return (
     <ArkCarousel.NextTrigger asChild>
       <Button
-        ref={ref}
         data-slot="carousel-next"
         variant={variant}
         size={size}
@@ -123,7 +121,7 @@ const CarouselNext = React.forwardRef<
       </Button>
     </ArkCarousel.NextTrigger>
   )
-)
+}
 CarouselNext.displayName = "CarouselNext"
 
 const CarouselIndicatorGroup = React.forwardRef<

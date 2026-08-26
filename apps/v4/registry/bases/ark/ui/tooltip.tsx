@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Portal } from "@ark-ui/react/portal"
 import {
   Tooltip as TooltipPrimitive,
   useTooltip,
@@ -30,10 +31,7 @@ function TooltipPositioner({
   ...props
 }: React.ComponentProps<typeof TooltipPrimitive.Positioner>) {
   return (
-    <TooltipPrimitive.Positioner
-      data-slot="tooltip-positioner"
-      {...props}
-    />
+    <TooltipPrimitive.Positioner data-slot="tooltip-positioner" {...props} />
   )
 }
 
@@ -41,16 +39,21 @@ const TooltipContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<typeof TooltipPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
-  <TooltipPrimitive.Positioner>
-    <TooltipPrimitive.Content
-      ref={ref}
-      data-slot="tooltip-content"
-      className={cn("cn-tooltip-content", className)}
-      {...props}
-    >
-      {children}
-    </TooltipPrimitive.Content>
-  </TooltipPrimitive.Positioner>
+  <Portal>
+    <TooltipPrimitive.Positioner>
+      <TooltipPrimitive.Content
+        ref={ref}
+        data-slot="tooltip-content"
+        className={cn(
+          "cn-tooltip-content z-50 w-fit max-w-xs origin-(--transform-origin) bg-foreground text-background",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </TooltipPrimitive.Content>
+    </TooltipPrimitive.Positioner>
+  </Portal>
 ))
 TooltipContent.displayName = "TooltipContent"
 
@@ -61,7 +64,10 @@ function TooltipArrow({
   return (
     <TooltipPrimitive.Arrow
       data-slot="tooltip-arrow"
-      className={cn("cn-tooltip-arrow", className)}
+      className={cn(
+        "cn-tooltip-arrow [--arrow-background:var(--color-foreground)] [--arrow-size:0.625rem]",
+        className
+      )}
       {...props}
     >
       <TooltipPrimitive.ArrowTip className="cn-tooltip-arrow-tip" />

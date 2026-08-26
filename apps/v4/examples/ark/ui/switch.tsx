@@ -28,7 +28,7 @@ const SwitchControl = React.forwardRef<
     ref={ref}
     data-slot="switch-control"
     className={cn(
-      "inline-flex h-6 w-10 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent p-0.5 transition-colors focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-2 focus-visible:outline-ring data-[invalid]:border-destructive data-[invalid]:ring-destructive/20 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input dark:data-[invalid]:border-destructive/50 dark:data-[invalid]:ring-destructive/40 dark:data-[state=unchecked]:bg-input/80",
+      "inline-flex h-6 w-10 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent p-0.5 transition-colors focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-2 focus-visible:outline-ring data-focus-visible:ring-3 data-focus-visible:ring-ring/50 data-focus-visible:outline-2 data-focus-visible:outline-ring data-[invalid]:border-destructive data-[invalid]:ring-destructive/20 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input dark:data-[invalid]:border-destructive/50 dark:data-[invalid]:ring-destructive/40 dark:data-[state=unchecked]:bg-input/80",
       className
     )}
     {...props}

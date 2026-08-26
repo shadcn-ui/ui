@@ -89,7 +89,7 @@ const TabsIndicator = React.forwardRef<
     ref={ref}
     data-slot="tabs-indicator"
     className={cn(
-      "cn-tabs-indicator absolute z-[-1] rounded-md bg-background shadow-xs transition-all duration-200",
+      "cn-tabs-indicator absolute z-[-1] h-(--height) w-(--width) rounded-md bg-background shadow-xs transition-all duration-200",
       className
     )}
     {...props}

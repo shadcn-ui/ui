@@ -1,8 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { cn } from "@/registry/bases/ark/lib/utils"
-import { Button } from "@/registry/bases/ark/ui/button"
 import { DatePicker as DatePickerPrimitive } from "@ark-ui/react/date-picker"
 import { Portal } from "@ark-ui/react/portal"
 import {
@@ -11,6 +9,9 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from "lucide-react"
+
+import { cn } from "@/registry/bases/ark/lib/utils"
+import { Button } from "@/registry/bases/ark/ui/button"
 
 function DatePicker(
   props: React.ComponentProps<typeof DatePickerPrimitive.Root>
@@ -139,7 +140,7 @@ const DatePickerContent = React.forwardRef<
         data-slot="date-picker-content"
         className={cn(
           "z-50 rounded-lg border bg-popover p-2 text-popover-foreground shadow-lg outline-none",
-          "[--cell-size:--spacing(7)] [--cell-radius:var(--radius-md)]",
+          "[--cell-radius:var(--radius-md)] [--cell-size:--spacing(7)]",
           "origin-(--transform-origin)",
           "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%]",
           "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%]",
@@ -291,8 +292,8 @@ const DatePickerTableCell = React.forwardRef<
     data-slot="date-picker-table-cell"
     className={cn(
       "group/day relative aspect-square h-full w-full flex-1 rounded-(--cell-radius) p-0 text-center select-none",
-      "[&:last-child[data-selected]_div]:rounded-r-(--cell-radius)",
-      "[&:first-child[data-selected]_div]:rounded-l-(--cell-radius)",
+      "[&:last-child_[data-selected]]:rounded-r-(--cell-radius)",
+      "[&:first-child_[data-selected]]:rounded-l-(--cell-radius)",
       className
     )}
     {...props}
@@ -334,11 +335,7 @@ const DatePickerRootProvider = DatePickerPrimitive.RootProvider
 
 // --- Composed View Helpers ---
 
-function DatePickerSelectHeader({
-  className,
-}: {
-  className?: string
-}) {
+function DatePickerSelectHeader({ className }: { className?: string }) {
   return (
     <DatePickerViewControl className={className}>
       <DatePickerPrevTrigger />
@@ -361,10 +358,7 @@ function DatePickerSelectHeader({
 
 function DatePickerDayView({ className }: { className?: string }) {
   return (
-    <DatePickerView
-      view="day"
-      className={cn("flex flex-col gap-4", className)}
-    >
+    <DatePickerView view="day" className={cn("flex flex-col gap-4", className)}>
       <DatePickerContext>
         {(api) => (
           <>
