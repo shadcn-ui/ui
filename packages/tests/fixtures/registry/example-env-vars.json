@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "example-env-vars",
+  "type": "registry:item",
+  "envVars": {
+    "APP_URL": "https://example.com",
+    "EMPTY_VAR": "",
+    "MULTILINE_VAR": "\"line1\nline2\nline3\""
+  }
+}

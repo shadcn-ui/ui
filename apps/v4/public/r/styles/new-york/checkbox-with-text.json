@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-with-text",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "checkbox"
+  ],
+  "files": [
+    {
+      "path": "examples/checkbox-with-text.tsx",
+      "content": "\"use client\"\n\nimport { Checkbox } from \"@/registry/new-york/ui/checkbox\"\n\nexport default function CheckboxWithText() {\n  return (\n    <div className=\"items-top flex space-x-2\">\n      <Checkbox id=\"terms1\" />\n      <div className=\"grid gap-1.5 leading-none\">\n        <label\n          htmlFor=\"terms1\"\n          className=\"text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\"\n        >\n          Accept terms and conditions\n        </label>\n        <p className=\"text-sm text-muted-foreground\">\n          You agree to our Terms of Service and Privacy Policy.\n        </p>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-13",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "With Month and Year Dropdown",
+  "registryDependencies": [
+    "calendar",
+    "label",
+    "select"
+  ],
+  "files": [
+    {
+      "path": "blocks/calendar-13.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Calendar } from \"@/registry/default/ui/calendar\"\nimport { Label } from \"@/registry/default/ui/label\"\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/registry/default/ui/select\"\n\nexport default function Calendar13() {\n  const [dropdown, setDropdown] =\n    React.useState<React.ComponentProps<typeof Calendar>[\"captionLayout\"]>(\n      \"dropdown\"\n    )\n  const [date, setDate] = React.useState<Date | undefined>(\n    new Date(2025, 5, 12)\n  )\n\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <Calendar\n        mode=\"single\"\n        defaultMonth={date}\n        selected={date}\n        onSelect={setDate}\n        captionLayout={dropdown}\n        className=\"rounded-lg border shadow-sm\"\n      />\n      <div className=\"flex flex-col gap-3\">\n        <Label htmlFor=\"dropdown\" className=\"px-1\">\n          Dropdown\n        </Label>\n        <Select\n          value={dropdown}\n          onValueChange={(value) =>\n            setDropdown(\n              value as React.ComponentProps<typeof Calendar>[\"captionLayout\"]\n            )\n          }\n        >\n          <SelectTrigger id=\"dropdown\" className=\"bg-background w-full\">\n            <SelectValue placeholder=\"Dropdown\" />\n          </SelectTrigger>\n          <SelectContent align=\"center\">\n            <SelectItem value=\"dropdown\">Month and Year</SelectItem>\n            <SelectItem value=\"dropdown-months\">Month Only</SelectItem>\n            <SelectItem value=\"dropdown-years\">Year Only</SelectItem>\n          </SelectContent>\n        </Select>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "meta": {
+    "iframeHeight": "600px",
+    "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    "mobile": "component"
+  },
+  "categories": [
+    "calendar",
+    "date"
+  ]
+}

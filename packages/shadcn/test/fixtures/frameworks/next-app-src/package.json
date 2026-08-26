@@ -1,0 +1,14 @@
+{
+  "name": "next-app-src",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "tailwindcss": "3.1.2"
+  }
+}

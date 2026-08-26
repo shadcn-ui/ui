@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-disabled",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "checkbox"
+  ],
+  "files": [
+    {
+      "path": "examples/checkbox-disabled.tsx",
+      "content": "import { Checkbox } from \"@/registry/new-york/ui/checkbox\"\n\nexport default function CheckboxDisabled() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Checkbox id=\"terms2\" disabled />\n      <label\n        htmlFor=\"terms2\"\n        className=\"text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\"\n      >\n        Accept terms and conditions\n      </label>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

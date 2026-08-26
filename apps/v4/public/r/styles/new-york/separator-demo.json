@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator-demo",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "examples/separator-demo.tsx",
+      "content": "import { Separator } from \"@/registry/new-york/ui/separator\"\n\nexport default function SeparatorDemo() {\n  return (\n    <div>\n      <div className=\"space-y-1\">\n        <h4 className=\"text-sm font-medium leading-none\">Radix Primitives</h4>\n        <p className=\"text-sm text-muted-foreground\">\n          An open-source UI component library.\n        </p>\n      </div>\n      <Separator className=\"my-4\" />\n      <div className=\"flex h-5 items-center space-x-4 text-sm\">\n        <div>Blog</div>\n        <Separator orientation=\"vertical\" />\n        <div>Docs</div>\n        <Separator orientation=\"vertical\" />\n        <div>Source</div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

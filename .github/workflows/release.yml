@@ -1,0 +1,177 @@
+# Adapted from create-t3-app.
+
+name: Release
+
+run-name: ${{ github.event_name == 'pull_request' && format('Release Prerelease - PR {0}', github.event.number) || 'Release Stable' }}
+
+on:
+  pull_request:
+    types: [labeled]
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  prerelease:
+    if: "${{ github.event_name == 'pull_request' && github.repository_owner == 'shadcn-ui' && (contains(github.event.pull_request.labels.*.name, 'release: beta') || contains(github.event.pull_request.labels.*.name, 'release: rc')) }}"
+    name: Publish Prerelease to NPM
+    runs-on: ubuntu-latest
+    environment: Preview
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Select prerelease channel
+        id: prerelease
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prereleaseLabels = [
+              { name: "release: beta", channel: "beta" },
+              { name: "release: rc", channel: "rc" },
+            ];
+            const labels = context.payload.pull_request.labels.map((label) => label.name);
+            const selectedLabels = prereleaseLabels.filter((label) =>
+              labels.includes(label.name)
+            );
+
+            if (selectedLabels.length !== 1) {
+              throw new Error(
+                `Expected exactly one prerelease label, found: ${
+                  selectedLabels.map((label) => label.name).join(", ") || "none"
+                }.`
+              );
+            }
+
+            core.setOutput("channel", selectedLabels[0].channel);
+            core.setOutput("label", selectedLabels[0].name);
+
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Use PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.4
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
+          cache: "pnpm"
+
+      - name: Update npm for OIDC support
+        run: npm install -g npm@latest
+
+      - name: Install NPM Dependencies
+        run: pnpm install
+
+      # A snapshot prerelease needs changesets to compute versions. The
+      # Changesets version PR consumes them, so a label on that PR is a no-op.
+      - name: Check for changesets
+        id: changesets
+        run: |
+          shopt -s nullglob
+          present=false
+          for file in .changeset/*.md; do
+            if [ "$(basename "$file")" != "README.md" ]; then
+              present=true
+              break
+            fi
+          done
+          echo "present=$present" >> "$GITHUB_OUTPUT"
+
+      - name: No changesets to prerelease
+        if: steps.changesets.outputs.present == 'false'
+        run: echo "::notice::No changesets found on this branch; nothing to prerelease."
+
+      # Snapshot versions are stamped per run (timestamped), so each publish is
+      # unique and can never collide with a real release on the latest tag.
+      - name: Version snapshot
+        if: steps.changesets.outputs.present == 'true'
+        run: pnpm exec changeset version --snapshot ${{ steps.prerelease.outputs.channel }}
+
+      - name: Build packages
+        if: steps.changesets.outputs.present == 'true'
+        run: pnpm build:packages
+
+      - name: Publish snapshot to NPM
+        if: steps.changesets.outputs.present == 'true'
+        run: pnpm exec changeset publish --tag ${{ steps.prerelease.outputs.channel }} --no-git-tag
+
+      - name: Collect prerelease info
+        if: steps.changesets.outputs.present == 'true'
+        run: node .github/collect-prerelease-info.js "${{ github.event.number }}" "${{ steps.prerelease.outputs.channel }}"
+
+      - name: Upload prerelease info
+        if: steps.changesets.outputs.present == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: prerelease-info
+          path: prerelease-info.json
+
+  release:
+    if: ${{ github.event_name == 'push' && github.repository_owner == 'shadcn-ui' }}
+    name: Create Version PR or Publish Stable Release
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.4
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
+          cache: "pnpm"
+
+      - name: Update npm for OIDC support
+        run: npm install -g npm@latest
+
+      - name: Install NPM Dependencies
+        run: pnpm install
+
+      # Builds every publishable package under packages/* (shadcn, @shadcn/react,
+      # @shadcn/helpers), never apps/v4, so each dist is fresh before publish.
+      - name: Build the packages
+        run: pnpm build:packages
+
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.RELEASE_GPG_PRIVATE_KEY }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+          git_tag_gpgsign: true
+
+      - name: Create Version PR or Publish to NPM
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          setupGitUser: false
+          commit: "chore(release): version packages"
+          title: "chore(release): version packages"
+          version: node .github/changeset-version.js
+          publish: npx changeset publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_ENV: "production"

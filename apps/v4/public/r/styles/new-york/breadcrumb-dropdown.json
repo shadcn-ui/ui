@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-dropdown",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "breadcrumb"
+  ],
+  "files": [
+    {
+      "path": "examples/breadcrumb-dropdown.tsx",
+      "content": "import { ChevronDown, Slash } from \"lucide-react\"\n\nimport {\n  Breadcrumb,\n  BreadcrumbItem,\n  BreadcrumbLink,\n  BreadcrumbList,\n  BreadcrumbPage,\n  BreadcrumbSeparator,\n} from \"@/registry/new-york/ui/breadcrumb\"\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuTrigger,\n} from \"@/registry/new-york/ui/dropdown-menu\"\n\nexport default function BreadcrumbWithDropdown() {\n  return (\n    <Breadcrumb>\n      <BreadcrumbList>\n        <BreadcrumbItem>\n          <BreadcrumbLink href=\"/\">Home</BreadcrumbLink>\n        </BreadcrumbItem>\n        <BreadcrumbSeparator>\n          <Slash />\n        </BreadcrumbSeparator>\n        <BreadcrumbItem>\n          <DropdownMenu>\n            <DropdownMenuTrigger className=\"flex items-center gap-1\">\n              Components\n              <ChevronDown />\n            </DropdownMenuTrigger>\n            <DropdownMenuContent align=\"start\">\n              <DropdownMenuItem>Documentation</DropdownMenuItem>\n              <DropdownMenuItem>Themes</DropdownMenuItem>\n              <DropdownMenuItem>GitHub</DropdownMenuItem>\n            </DropdownMenuContent>\n          </DropdownMenu>\n        </BreadcrumbItem>\n        <BreadcrumbSeparator>\n          <Slash />\n        </BreadcrumbSeparator>\n        <BreadcrumbItem>\n          <BreadcrumbPage>Breadcrumb</BreadcrumbPage>\n        </BreadcrumbItem>\n      </BreadcrumbList>\n    </Breadcrumb>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

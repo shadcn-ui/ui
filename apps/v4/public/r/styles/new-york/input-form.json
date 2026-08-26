@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-form",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "input",
+    "button",
+    "form"
+  ],
+  "files": [
+    {
+      "path": "examples/input-form.tsx",
+      "content": "\"use client\"\n\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { useForm } from \"react-hook-form\"\nimport { z } from \"zod\"\n\nimport { toast } from \"@/registry/new-york/hooks/use-toast\"\nimport { Button } from \"@/registry/new-york/ui/button\"\nimport {\n  Form,\n  FormControl,\n  FormDescription,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormMessage,\n} from \"@/registry/new-york/ui/form\"\nimport { Input } from \"@/registry/new-york/ui/input\"\n\nconst FormSchema = z.object({\n  username: z.string().min(2, {\n    message: \"Username must be at least 2 characters.\",\n  }),\n})\n\nexport default function InputForm() {\n  const form = useForm<z.infer<typeof FormSchema>>({\n    resolver: zodResolver(FormSchema),\n    defaultValues: {\n      username: \"\",\n    },\n  })\n\n  function onSubmit(data: z.infer<typeof FormSchema>) {\n    toast({\n      title: \"You submitted the following values:\",\n      description: (\n        <pre className=\"mt-2 w-[340px] rounded-md bg-slate-950 p-4\">\n          <code className=\"text-white\">{JSON.stringify(data, null, 2)}</code>\n        </pre>\n      ),\n    })\n  }\n\n  return (\n    <Form {...form}>\n      <form onSubmit={form.handleSubmit(onSubmit)} className=\"w-2/3 space-y-6\">\n        <FormField\n          control={form.control}\n          name=\"username\"\n          render={({ field }) => (\n            <FormItem>\n              <FormLabel>Username</FormLabel>\n              <FormControl>\n                <Input placeholder=\"shadcn\" {...field} />\n              </FormControl>\n              <FormDescription>\n                This is your public display name.\n              </FormDescription>\n              <FormMessage />\n            </FormItem>\n          )}\n        />\n        <Button type=\"submit\">Submit</Button>\n      </form>\n    </Form>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

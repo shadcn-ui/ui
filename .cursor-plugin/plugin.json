@@ -1,0 +1,41 @@
+{
+  "name": "shadcn",
+  "displayName": "shadcn/ui",
+  "version": "1.0.0",
+  "description": "UI component and design system framework. Search registries, install components as source code, and audit your project.",
+  "author": {
+    "name": "shadcn"
+  },
+  "homepage": "https://ui.shadcn.com",
+  "repository": "https://github.com/shadcn-ui/ui",
+  "license": "MIT",
+  "logo": "skills/shadcn/assets/shadcn.png",
+  "keywords": [
+    "shadcn",
+    "shadcn-ui",
+    "ui",
+    "components",
+    "tailwind",
+    "tailwindcss",
+    "radix",
+    "react",
+    "design-system",
+    "registry",
+    "mcp"
+  ],
+  "category": "developer-tools",
+  "tags": [
+    "ui",
+    "components",
+    "design-system",
+    "react",
+    "tailwind"
+  ],
+  "skills": "./skills/",
+  "mcpServers": {
+    "shadcn": {
+      "command": "npx",
+      "args": ["shadcn@latest", "mcp"]
+    }
+  }
+}

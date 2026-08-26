@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "description": "A shadcn registry of components, hooks, pages, etc.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "name": {
+      "description": "The registry name. Required when this file is used as the root registry, optional for included registry chunks.",
+      "type": "string"
+    },
+    "homepage": {
+      "description": "The registry homepage. Required when this file is used as the root registry, optional for included registry chunks.",
+      "type": "string"
+    },
+    "include": {
+      "type": "array",
+      "description": "An array of relative paths to registry.json files to include in this registry.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "items": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "$ref": "https://ui.shadcn.com/schema/registry-item.json"
+      }
+    },
+    "pagination": {
+      "type": "object",
+      "description": "Pagination metadata returned by registries that implement dynamic search. Its presence on a catalog response signals that the items are already filtered and paginated server-side.",
+      "properties": {
+        "total": {
+          "type": "number",
+          "description": "Total number of items matching the query."
+        },
+        "offset": {
+          "type": "number",
+          "description": "Number of items skipped."
+        },
+        "limit": {
+          "type": "number",
+          "description": "Maximum number of items in this response."
+        },
+        "hasMore": {
+          "type": "boolean",
+          "description": "Whether more items are available beyond this page."
+        }
+      },
+      "required": ["total", "offset", "limit", "hasMore"]
+    }
+  },
+  "anyOf": [{ "required": ["items"] }, { "required": ["include"] }]
+}

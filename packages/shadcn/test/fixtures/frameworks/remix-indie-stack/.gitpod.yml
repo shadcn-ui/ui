@@ -1,0 +1,48 @@
+# https://www.gitpod.io/docs/config-gitpod-file
+
+image:
+  file: .gitpod.Dockerfile
+
+ports:
+  - port: 3000
+    onOpen: notify
+
+tasks:
+  - name: Restore .env file
+    command: |
+      if [ -f .env ]; then
+        # If this workspace already has a .env, don't override it
+        # Local changes survive a workspace being opened and closed
+        # but they will not persist between separate workspaces for the same repo
+
+        echo "Found .env in workspace"
+      else
+        # There is no .env
+        if [ ! -n "${ENV}" ]; then
+          # There is no $ENV from a previous workspace
+          # Default to the example .env
+          echo "Setting example .env"
+
+          cp .env.example .env 
+        else
+          # After making changes to .env, run this line to persist it to $ENV
+          #   eval $(gp env -e ENV="$(base64 .env | tr -d '\n')")
+          # 
+          # Environment variables set this way are shared between all your workspaces for this repo
+          # The lines below will read $ENV and print a .env file
+
+          echo "Restoring .env from Gitpod"
+
+          echo "${ENV}" | base64 -d | tee .env > /dev/null
+        fi
+      fi
+
+  - init: npm install
+    command: npm run setup && npm run dev
+
+vscode:
+  extensions:
+    - ms-azuretools.vscode-docker
+    - esbenp.prettier-vscode
+    - dbaeumer.vscode-eslint
+    - bradlc.vscode-tailwindcss

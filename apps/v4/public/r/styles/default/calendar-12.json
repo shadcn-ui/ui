@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-12",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "Localized calendar",
+  "registryDependencies": [
+    "calendar",
+    "card",
+    "select"
+  ],
+  "files": [
+    {
+      "path": "blocks/calendar-12.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { type DateRange } from \"react-day-picker\"\nimport { enUS, es } from \"react-day-picker/locale\"\n\nimport { Calendar } from \"@/registry/default/ui/calendar\"\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/default/ui/card\"\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/registry/default/ui/select\"\n\nconst localizedStrings = {\n  en: {\n    title: \"Book an appointment\",\n    description: \"Select the dates for your appointment\",\n  },\n  es: {\n    title: \"Reserva una cita\",\n    description: \"Selecciona las fechas para tu cita\",\n  },\n} as const\n\nexport default function Calendar12() {\n  const [locale, setLocale] =\n    React.useState<keyof typeof localizedStrings>(\"es\")\n  const [dateRange, setDateRange] = React.useState<DateRange | undefined>({\n    from: new Date(2025, 8, 9),\n    to: new Date(2025, 8, 17),\n  })\n\n  return (\n    <Card>\n      <CardHeader className=\"relative border-b\">\n        <CardTitle>{localizedStrings[locale].title}</CardTitle>\n        <CardDescription>\n          {localizedStrings[locale].description}\n        </CardDescription>\n        <Select\n          value={locale}\n          onValueChange={(value) =>\n            setLocale(value as keyof typeof localizedStrings)\n          }\n        >\n          <SelectTrigger className=\"absolute right-4 top-4 w-[100px]\">\n            <SelectValue placeholder=\"Language\" />\n          </SelectTrigger>\n          <SelectContent align=\"end\">\n            <SelectItem value=\"es\">Español</SelectItem>\n            <SelectItem value=\"en\">English</SelectItem>\n          </SelectContent>\n        </Select>\n      </CardHeader>\n      <CardContent className=\"pt-4\">\n        <Calendar\n          mode=\"range\"\n          selected={dateRange}\n          onSelect={setDateRange}\n          defaultMonth={dateRange?.from}\n          numberOfMonths={2}\n          locale={locale === \"es\" ? es : enUS}\n          className=\"bg-transparent p-0\"\n          buttonVariant=\"outline\"\n        />\n      </CardContent>\n    </Card>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "meta": {
+    "iframeHeight": "600px",
+    "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    "mobile": "component"
+  },
+  "categories": [
+    "calendar",
+    "date"
+  ]
+}

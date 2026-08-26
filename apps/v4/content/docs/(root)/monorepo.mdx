@@ -1,0 +1,254 @@
+---
+title: Monorepo
+description: Using shadcn/ui components and CLI in a monorepo.
+---
+
+Until now, using shadcn/ui in a monorepo was a bit of a pain. You could add
+components using the CLI, but you had to manage where the components
+were installed and manually fix import paths.
+
+With the new monorepo support in the CLI, we've made it a lot easier to use
+shadcn/ui in a monorepo.
+
+The CLI now understands the monorepo structure and will install the components,
+dependencies and registry dependencies to the correct paths and handle imports
+for you.
+
+## Getting started
+
+<Steps>
+
+### Create a new monorepo project
+
+To create a new monorepo project, run the `init` command with the `--monorepo` flag.
+
+```bash
+npx shadcn@latest init --monorepo
+```
+
+Then select the template you want to use.
+
+```bash
+? Select a template ›
+❯   Next.js
+    Vite
+    TanStack Start
+    React Router
+    Astro
+```
+
+This will create a new monorepo project with two workspaces: `web` and `ui`,
+and [Turborepo](https://turbo.build/repo/docs) as the build system.
+
+Everything is set up for you, so you can start adding components to your project.
+
+### Add components to your project
+
+To add components to your project, run the `add` command **in the path of your app**.
+
+```bash
+cd apps/web
+```
+
+```bash
+npx shadcn@latest add [COMPONENT]
+```
+
+The CLI will figure out what type of component you are adding and install the
+correct files to the correct path.
+
+For example, if you run `npx shadcn@latest add button`, the CLI will install the button component under `packages/ui` and update the import path for components in `apps/web`.
+
+If you run `npx shadcn@latest add login-01`, the CLI will install the `button`, `label`, `input` and `card` components under `packages/ui` and the `login-form` component under `apps/web/components`.
+
+### Importing components
+
+You can import components from the `@workspace/ui` package as follows:
+
+```tsx
+import { Button } from "@workspace/ui/components/button"
+```
+
+You can also import hooks and utilities from the `@workspace/ui` package.
+
+```tsx
+import { useTheme } from "@workspace/ui/hooks/use-theme"
+import { cn } from "@workspace/ui/lib/utils"
+```
+
+</Steps>
+
+## File Structure
+
+When you create a new monorepo project, the CLI will create the following file structure:
+
+```txt
+apps
+└── web         # Your app goes here.
+    ├── app
+    │   └── page.tsx
+    ├── components
+    │   └── login-form.tsx
+    ├── components.json
+    └── package.json
+packages
+└── ui          # Your components and dependencies are installed here.
+    ├── src
+    │   ├── components
+    │   │   └── button.tsx
+    │   ├── hooks
+    │   ├── lib
+    │   │   └── utils.ts
+    │   └── styles
+    │       └── globals.css
+    ├── components.json
+    └── package.json
+package.json
+turbo.json
+```
+
+## Requirements
+
+1. Every workspace must have a `components.json` file. A `package.json` file tells npm how to install the dependencies. A `components.json` file tells the CLI how and where to install components.
+
+2. The `components.json` file must properly define aliases for the workspace. This tells the CLI how to import components, hooks, utilities, etc.
+
+```json showLineNumbers title="apps/web/components.json"
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "base-nova",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "../../packages/ui/src/styles/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "iconLibrary": "lucide",
+  "aliases": {
+    "components": "@/components",
+    "hooks": "@/hooks",
+    "lib": "@/lib",
+    "utils": "@workspace/ui/lib/utils",
+    "ui": "@workspace/ui/components"
+  }
+}
+```
+
+```json showLineNumbers title="packages/ui/components.json"
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "base-nova",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/styles/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "iconLibrary": "lucide",
+  "aliases": {
+    "components": "@workspace/ui/components",
+    "utils": "@workspace/ui/lib/utils",
+    "hooks": "@workspace/ui/hooks",
+    "lib": "@workspace/ui/lib",
+    "ui": "@workspace/ui/components"
+  }
+}
+```
+
+3. Ensure you have the same `style`, `iconLibrary` and `baseColor` in both `components.json` files.
+
+4. **For Tailwind CSS v4, leave the `tailwind` config empty in the `components.json` file.**
+
+By following these requirements, the CLI will be able to install ui components, blocks, libs and hooks to the correct paths and handle imports for you.
+
+<Callout className="mt-6">
+  `package.json#imports` works well for package-local aliases inside a
+  workspace, for example inside `packages/ui`. For shared workspace imports such
+  as `@workspace/ui/components`, keep explicit aliases in `components.json`. The
+  CLI uses those aliases to route files across workspace boundaries.
+</Callout>
+
+## Using `package.json#imports`
+
+For a monorepo that uses package imports and does not rely on
+`tsconfig.json` `paths`, use:
+
+- local `#...` aliases for files inside each workspace
+- workspace package `exports` for shared imports such as
+  `@workspace/ui/components`
+
+For example, an app workspace can use local package imports:
+
+```json showLineNumbers title="apps/web/package.json"
+{
+  "name": "web",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#components/*": "./src/components/*.tsx",
+    "#lib/*": "./src/lib/*.ts",
+    "#hooks/*": "./src/hooks/*.ts"
+  },
+  "dependencies": {
+    "@workspace/ui": "workspace:*"
+  }
+}
+```
+
+```json showLineNumbers title="apps/web/components.json"
+{
+  "aliases": {
+    "components": "#components",
+    "ui": "@workspace/ui/components",
+    "lib": "#lib",
+    "hooks": "#hooks",
+    "utils": "@workspace/ui/lib/utils"
+  }
+}
+```
+
+And the shared UI package can expose its install targets with `exports`:
+
+```json showLineNumbers title="packages/ui/package.json"
+{
+  "name": "@workspace/ui",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#components/*": "./src/components/*.tsx",
+    "#lib/*": "./src/lib/*.ts",
+    "#hooks/*": "./src/hooks/*.ts"
+  },
+  "exports": {
+    "./globals.css": "./src/styles/globals.css",
+    "./components/*": "./src/components/*.tsx",
+    "./lib/*": "./src/lib/*.ts",
+    "./hooks/*": "./src/hooks/*.ts"
+  }
+}
+```
+
+```json showLineNumbers title="packages/ui/components.json"
+{
+  "aliases": {
+    "components": "#components",
+    "ui": "#components",
+    "lib": "#lib",
+    "hooks": "#hooks",
+    "utils": "#lib/utils"
+  }
+}
+```
+
+In this setup:
+
+- files added from the app to the shared UI package are routed through
+  `@workspace/ui/...`
+- files added inside `packages/ui` use the package-local `#...` aliases
+- the shared package must export any path referenced by another workspace
+
+For framework-specific package import setup, see the [package imports guide](/docs/package-imports).

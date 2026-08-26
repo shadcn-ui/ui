@@ -1,0 +1,1 @@
+export const showMcpDocs = true
