@@ -968,6 +968,13 @@
     "logo": "<svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='32' height='32' rx='8' fill='var(--foreground)'/><path d='M16 6C12.134 6 9 9.134 9 13C9 18.25 16 26 16 26C16 26 23 18.25 23 13C23 9.134 19.866 6 16 6Z' fill='var(--background)'/><circle cx='16' cy='13' r='3' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@materialcn",
+    "homepage": "https://github.com/guillermo-rebolledo/materialcn",
+    "url": "https://guillermo-rebolledo.github.io/materialcn/r/{name}.json",
+    "description": "Material 3 Expressive for shadcn/ui. Base UI primitives restyled with M3 tokens extracted from the official Figma kit, so stock shadcn markup renders as Material — retheme an existing project with a single item.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><circle cx='12' cy='12' r='7.2'/><circle cx='18.6' cy='12.0' r='3.4'/><circle cx='16.67' cy='16.67' r='3.4'/><circle cx='12.0' cy='18.6' r='3.4'/><circle cx='7.33' cy='16.67' r='3.4'/><circle cx='5.4' cy='12.0' r='3.4'/><circle cx='7.33' cy='7.33' r='3.4'/><circle cx='12.0' cy='5.4' r='3.4'/><circle cx='16.67' cy='7.33' r='3.4'/></svg>"
+  },
+  {
     "name": "@mksingh",
     "homepage": "https://mksingh.dev/docs",
     "url": "https://mksingh.dev/r/{name}.json",
