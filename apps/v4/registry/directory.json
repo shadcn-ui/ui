@@ -2045,5 +2045,12 @@
     "url": "https://afterglow.thebuilder.dk/r/{name}.json",
     "description": "A complete terminal UI system for shadcn with Base UI components, terminal-specific building blocks, and eight phosphor color themes.",
     "logo": "<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg' fill='currentColor'><path d='M6.45 5.9L18.23 16L6.45 26.1L3 22.07L10.09 16L3 9.93Z'/><path d='M18.4 20.24H29V24.48H18.4Z'/></svg>"
+  },
+  {
+    "name": "@uniquel",
+    "homepage": "https://uniquel.io",
+    "url": "https://uniquel.io/r/{name}.json",
+    "description": "Minimalist components for React / Next.js: animated backgrounds, galleries, badges, and conversion blocks. Built with Tailwind CSS and Motion, installable with the shadcn CLI.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none'><path fill='var(--foreground)' d='M37 23h31v117l10 10h44l10-10V23h31v128l-25 25H62L37 151V23z' /><rect x='132' y='22' width='31' height='31' fill='#4BC4BE' /></svg>"
   }
 ]
