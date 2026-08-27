@@ -1557,8 +1557,8 @@
   },
   {
     "name": "@soralabs",
-    "homepage": "https://ui.soralabs.io.vn",
-    "url": "https://ui.soralabs.io.vn/r/{name}.json",
+    "homepage": "https://ui.soralabs.studio",
+    "url": "https://ui.soralabs.studio/r/{name}.json",
     "description": "Motion-first React primitives and animated UI components for shadcn/ui. Copy, customize, and ship fluid interfaces.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='currentColor'><g transform='translate(100 100) scale(0.8292) translate(-100 -100)'><path d='M 150.245 -0.676 L 150.658 49.581 L 49.237 49.477 L 49.714 -0.758 L 150.245 -0.676 Z M 49.342 150.419 L 49.237 49.477 L -1.04 49.794 L -1.304 150.337 L 49.342 150.419 Z M 150.763 150.523 L 150.658 49.581 L 201.304 49.663 L 201.04 150.206 L 150.763 150.523 Z M 150.763 150.523 L 49.342 150.419 L 49.755 200.676 L 150.286 200.758 L 150.763 150.523 Z'/></g></svg>"
   },
@@ -2031,5 +2031,10 @@
     "homepage": "https://atomloader.roothq.tech",
     "description": "Lightweight, customizable CSS-animated atoms loaders for React.",
     "logo": "<svg viewBox=\"0 0 256 256\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"256\" height=\"256\" rx=\"64\" fill=\"#0A0A0B\"></rect><path d=\"M72 104L96 80L120 104L96 128L72 104Z\" fill=\"#7FB3FF\"></path><path d=\"M136 72L160 48L184 72L160 96L136 72Z\" fill=\"#7FB3FF\"></path><path d=\"M176 152L200 128L224 152L200 176L176 152Z\" fill=\"#7FB3FF\"></path><path d=\"M88 176L112 152L136 176L112 200L88 176Z\" fill=\"#7FB3FF\"></path><path d=\"M16 80L40 56L64 80L40 104L16 80Z\" fill=\"#7FB3FF\"></path></svg>"
+    "name": "@onchain-ui",
+    "homepage": "https://onchain-ui.dev",
+    "url": "https://onchain-ui.dev/r/{name}.json",
+    "description": "Web3 components for shadcn apps. Wallet identity, token logos, balances, and market UI primitives for EVM products.",
+    "logo": "<svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M32 8L58 54H6L32 8Z\" fill=\"currentColor\"/><path d=\"M24 38H40\" stroke=\"var(--background)\" stroke-width=\"4\" stroke-linecap=\"round\"/><circle cx=\"24\" cy=\"38\" r=\"3\" fill=\"var(--background)\"/><circle cx=\"40\" cy=\"38\" r=\"3\" fill=\"var(--background)\"/></svg>"
   }
 ]
