@@ -1,4 +1,5 @@
 import path from "path"
+import { parsePresetStyle, type PresetBase } from "@/src/preset/preset"
 import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import {
   configSchema,
@@ -312,6 +313,7 @@ export async function findPackageRoot(cwd: string, resolvedPath: string) {
     cwd: commonRoot,
     deep: 3,
     ignore: ["**/node_modules/**", "**/dist/**", "**/build/**", "**/public/**"],
+    suppressErrors: true,
   })
 
   const matchingPackageRoot = packageRoots
@@ -351,8 +353,15 @@ export async function getTargetStyleFromConfig(cwd: string, fallback: string) {
   return projectInfo?.tailwindVersion === "v4" ? "new-york-v4" : fallback
 }
 
-export function getBase(style: string | undefined) {
-  return style?.startsWith("base-") ? "base" : "radix"
+export function getBase(style: string | undefined): PresetBase {
+  // An undefined style means no existing config, so default to base.
+  // Any defined style, including empty and unprefixed legacy values
+  // (new-york, new-york-v4, default), stays radix.
+  if (style === undefined) {
+    return "base"
+  }
+
+  return parsePresetStyle(style).base ?? "radix"
 }
 
 export type DeepPartial<T> = {

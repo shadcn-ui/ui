@@ -1,10 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { Minus, Plus } from "lucide-react"
-import { Bar, BarChart, ResponsiveContainer } from "recharts"
+import { toast } from "sonner"
 
-import { Button } from "@/styles/base-nova/ui/button"
+import { useIsMobile } from "@/hooks/use-mobile"
+import { Badge } from "@/styles/base-rhea/ui/badge"
+import { Button } from "@/styles/base-rhea/ui/button"
 import {
   Drawer,
   DrawerClose,
@@ -14,121 +15,117 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/styles/base-nova/ui/drawer"
+} from "@/styles/base-rhea/ui/drawer"
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldLabel,
+  FieldTitle,
+} from "@/styles/base-rhea/ui/field"
+import { RadioGroup, RadioGroupItem } from "@/styles/base-rhea/ui/radio-group"
 
-const data = [
+const deliveryTimes = [
   {
-    goal: 400,
+    value: "asap",
+    id: "delivery-asap",
+    label: "Standard delivery",
+    description: "25–35 min · Driver assigned now",
+    badge: "Fastest",
   },
   {
-    goal: 300,
+    value: "5-00",
+    id: "delivery-5-00",
+    label: "5:00 PM – 5:15 PM",
+    description: "Prep starts at 4:45 PM",
   },
   {
-    goal: 200,
+    value: "5-30",
+    id: "delivery-5-30",
+    label: "5:30 PM – 5:45 PM",
+    description: "Good if you're heading home",
   },
   {
-    goal: 300,
+    value: "6-00",
+    id: "delivery-6-00",
+    label: "6:00 PM – 6:15 PM",
+    description: "Most popular · High demand",
   },
   {
-    goal: 200,
-  },
-  {
-    goal: 278,
-  },
-  {
-    goal: 189,
-  },
-  {
-    goal: 239,
-  },
-  {
-    goal: 300,
-  },
-  {
-    goal: 200,
-  },
-  {
-    goal: 278,
-  },
-  {
-    goal: 189,
-  },
-  {
-    goal: 349,
+    value: "6-30",
+    id: "delivery-6-30",
+    label: "6:30 PM – 6:45 PM",
+    description: "Last slot before kitchen closes",
   },
 ]
 
 export function DrawerDemo() {
-  const [goal, setGoal] = React.useState(350)
+  const [open, setOpen] = React.useState(false)
+  const [deliveryTime, setDeliveryTime] = React.useState("asap")
+  const isMobile = useIsMobile()
 
-  function onClick(adjustment: number) {
-    setGoal(Math.max(200, Math.min(400, goal + adjustment)))
+  function handleConfirm() {
+    const selected = deliveryTimes.find((time) => time.value === deliveryTime)
+
+    if (!selected) {
+      return
+    }
+
+    setOpen(false)
+    toast("Delivery time confirmed", {
+      description: selected.label,
+    })
   }
 
   return (
-    <Drawer>
-      <DrawerTrigger asChild>
-        <Button variant="outline">Open Drawer</Button>
+    <Drawer
+      open={open}
+      onOpenChange={setOpen}
+      showSwipeHandle={isMobile}
+      swipeDirection={isMobile ? "down" : "right"}
+    >
+      <DrawerTrigger render={<Button variant="secondary" />}>
+        Open Drawer
       </DrawerTrigger>
       <DrawerContent>
-        <div className="mx-auto w-full max-w-sm">
-          <DrawerHeader>
-            <DrawerTitle>Move Goal</DrawerTitle>
-            <DrawerDescription>Set your daily activity goal.</DrawerDescription>
-          </DrawerHeader>
-          <div className="p-4 pb-0">
-            <div className="flex items-center justify-center space-x-2">
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(-10)}
-                disabled={goal <= 200}
-              >
-                <Minus />
-                <span className="sr-only">Decrease</span>
-              </Button>
-              <div className="flex-1 text-center">
-                <div className="text-7xl font-bold tracking-tighter">
-                  {goal}
-                </div>
-                <div className="text-[0.70rem] text-muted-foreground uppercase">
-                  Calories/day
-                </div>
-              </div>
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(10)}
-                disabled={goal >= 400}
-              >
-                <Plus />
-                <span className="sr-only">Increase</span>
-              </Button>
-            </div>
-            <div className="mt-3 h-[120px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={data}>
-                  <Bar
-                    dataKey="goal"
-                    style={
-                      {
-                        fill: "var(--chart-1)",
-                      } as React.CSSProperties
-                    }
-                  />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-          <DrawerFooter>
-            <Button>Submit</Button>
-            <DrawerClose asChild>
-              <Button variant="outline">Cancel</Button>
-            </DrawerClose>
-          </DrawerFooter>
+        <DrawerHeader>
+          <DrawerTitle>Pick a delivery time</DrawerTitle>
+          <DrawerDescription>
+            We&apos;ll prepare your order as soon as possible.
+          </DrawerDescription>
+        </DrawerHeader>
+        <div className="flex-1 scroll-fade overflow-y-auto p-4">
+          <RadioGroup
+            value={deliveryTime}
+            onValueChange={setDeliveryTime}
+            className="gap-2"
+          >
+            {deliveryTimes.map((time) => (
+              <FieldLabel key={time.value} htmlFor={time.id}>
+                <Field orientation="horizontal">
+                  <FieldContent>
+                    <FieldTitle className="flex items-center gap-2">
+                      {time.label}
+                      {time.badge ? (
+                        <Badge variant="secondary">{time.badge}</Badge>
+                      ) : null}
+                    </FieldTitle>
+                    <FieldDescription>{time.description}</FieldDescription>
+                  </FieldContent>
+                  <RadioGroupItem value={time.value} id={time.id} />
+                </Field>
+              </FieldLabel>
+            ))}
+          </RadioGroup>
         </div>
+        <DrawerFooter>
+          <Button onClick={handleConfirm} className="h-[34px]">
+            Confirm Delivery Time
+          </Button>
+          <DrawerClose render={<Button variant="outline" />}>
+            Cancel
+          </DrawerClose>
+        </DrawerFooter>
       </DrawerContent>
     </Drawer>
   )

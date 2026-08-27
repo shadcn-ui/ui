@@ -6,6 +6,7 @@
     "components-json",
     "package-imports",
     "theming",
+    "typeset",
     "[Dark Mode](/docs/dark-mode)",
     "[RTL](/docs/rtl)",
     "[CLI](/docs/cli)",

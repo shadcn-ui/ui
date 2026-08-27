@@ -157,27 +157,28 @@ export async function createRegistryItem(
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
   }
 
-  for (let index = 0; index < (item.files?.length ?? 0); index++) {
-    const sourceFile = item.files?.[index]
-    const file = registryItem.files?.[index]
-    if (!file || !sourceFile) {
-      continue
-    }
+  await Promise.all(
+    (item.files ?? []).map(async (sourceFile, index) => {
+      const file = registryItem.files?.[index]
+      if (!file) {
+        return
+      }
 
-    const source = result.itemSourcesByItem.get(item)
-    const sourcePath = getRegistryItemFileSourceForItem(
-      item,
-      sourceFile.path,
-      result.itemSourcesByItem,
-      fallbackDir
-    )
-    file.content = await readRegistryItemFileContent(
-      item.name,
-      sourceFile.path,
-      sourcePath,
-      source
-    )
-  }
+      const source = result.itemSourcesByItem.get(item)
+      const sourcePath = getRegistryItemFileSourceForItem(
+        item,
+        sourceFile.path,
+        result.itemSourcesByItem,
+        fallbackDir
+      )
+      file.content = await readRegistryItemFileContent(
+        item.name,
+        sourceFile.path,
+        sourcePath,
+        source
+      )
+    })
+  )
 
   return registryItemSchema.parse(registryItem)
 }

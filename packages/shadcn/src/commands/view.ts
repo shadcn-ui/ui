@@ -19,7 +19,7 @@ const viewOptionsSchema = z.object({
 export const view = new Command()
   .name("view")
   .description("view items from the registry")
-  .argument("<items...>", "the item names or URLs to view")
+  .argument("<items...>", "item addresses to view")
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",

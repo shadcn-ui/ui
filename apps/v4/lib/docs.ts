@@ -1,8 +1,12 @@
 export const PAGES_NEW = [
-  "/create",
-  "/docs/registry",
-  "/docs/registry/getting-started",
   "/docs/changelog",
+  "/docs/changelog/2026-08-questionnaire",
+  "/docs/registry/dynamic-search",
+  "/docs/components/radix/questionnaire",
+  "/docs/components/base/questionnaire",
+  "/docs/components/aria/questionnaire",
+  "/docs/react/questionnaire",
+  "/docs/registry/health",
 ]
 
-export const PAGES_UPDATED = ["/docs/components/button"]
+export const PAGES_UPDATED = []

@@ -1,6 +1,7 @@
 import fs from "fs"
 import { ExamplesIndex } from "@/examples/__index__"
 
+import { PAGES_NEW } from "@/lib/docs"
 import { getPagesFromFolder, type PageTreeFolder } from "@/lib/page-tree"
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
@@ -37,24 +38,37 @@ function getRegistryEntry(name: string, styleName: string) {
   )
 }
 
-export function replaceComponentsList(content: string) {
+function getComponentsList(variant: "all" | "new") {
   const componentsFolder = source.pageTree.children.find(
     (page) => page.$id === "components"
   )
-  const list =
-    componentsFolder?.type === "folder"
-      ? getPagesFromFolder(componentsFolder as PageTreeFolder, "radix")
-          .map((component) => {
-            const slug = component.url.replace(/^\/docs\//, "").split("/")
-            const description = source.getPage(slug)?.data.description?.trim()
-            const url = absoluteUrl(component.url.replace("/radix/", "/"))
-            return `- [${component.name}](${url})${
-              description ? `: ${description}` : ""
-            }`
-          })
-          .join("\n")
-      : ""
-  return content.replace(/<ComponentsList\s*\/>/g, list)
+
+  if (componentsFolder?.type !== "folder") {
+    return ""
+  }
+
+  return getPagesFromFolder(componentsFolder as PageTreeFolder, "base")
+    .filter(
+      (component) => variant === "all" || PAGES_NEW.includes(component.url)
+    )
+    .map((component) => {
+      const slug = component.url.replace(/^\/docs\//, "").split("/")
+      const description = source.getPage(slug)?.data.description?.trim()
+      const url = absoluteUrl(component.url.replace("/base/", "/"))
+      return `- [${component.name}](${url})${
+        description ? `: ${description}` : ""
+      }`
+    })
+    .join("\n")
+}
+
+export function replaceComponentsList(content: string) {
+  return content
+    .replace(
+      /<ComponentsList\s+variant=["']new["']\s*\/>/g,
+      getComponentsList("new")
+    )
+    .replace(/<ComponentsList\s*\/>/g, getComponentsList("all"))
 }
 
 export function processMdxForLLMs(content: string, style: Style["name"]) {

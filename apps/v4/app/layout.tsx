@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
 
 import { META_THEME_COLORS, siteConfig } from "@/lib/config"
+import { DOCS_SIDEBAR_SCROLL_RESTORE_SCRIPT } from "@/lib/docs-sidebar-scroll"
 import { fontVariables } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { ActiveThemeProvider } from "@/components/active-theme"
@@ -11,8 +12,10 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { TooltipProvider as BaseTooltipProvider } from "@/registry/bases/base/ui/tooltip"
 import { Toaster } from "@/registry/bases/radix/ui/sonner"
 import { TooltipProvider as RadixTooltipProvider } from "@/registry/bases/radix/ui/tooltip"
+import { Toaster as BaseToaster } from "@/styles/base-nova/ui/toast"
 
 import "@/app/globals.css"
+import "@/app/(app)/(typeset)/typeset.css"
 
 export const metadata: Metadata = {
   title: {
@@ -71,8 +74,20 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={fontVariables}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={cn(
+        fontVariables,
+        "[--header-height:calc(var(--spacing)*14)] lg:[--header-height:calc(var(--spacing)*16)]"
+      )}
+    >
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: DOCS_SIDEBAR_SCROLL_RESTORE_SCRIPT,
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -88,7 +103,7 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "group/body overscroll-none antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] lg:[--header-height:calc(var(--spacing)*16)] xl:[--footer-height:calc(var(--spacing)*24)]"
+          "group/body overscroll-none antialiased [--footer-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]"
         )}
       >
         <ThemeProvider>
@@ -98,6 +113,7 @@ export default function RootLayout({
                 <RadixTooltipProvider delayDuration={0}>
                   {children}
                   <Toaster position="top-center" />
+                  <BaseToaster />
                 </RadixTooltipProvider>
               </BaseTooltipProvider>
             </NuqsAdapter>
