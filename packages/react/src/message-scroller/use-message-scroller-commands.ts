@@ -1,6 +1,7 @@
 import * as React from "react"
 
 import {
+  getContentBlockPadding,
   getElementScrollTop,
   getElementViewportTop,
   getMaxScrollTop,
@@ -188,15 +189,18 @@ function useMessageScrollerCommands({
         return false
       }
 
-      const scrollTop = getElementScrollTop({
-        align,
-        element,
-        scrollMargin: keepPreviousPeek
-          ? scrollMargin + scrollPreviousItemPeekRef.current
-          : scrollMargin,
-        spacer: spacerRef.current,
-        viewport,
-      })
+      const effectiveScrollMargin = keepPreviousPeek
+        ? scrollMargin + scrollPreviousItemPeekRef.current
+        : scrollMargin
+      const getTargetScrollTop = () =>
+        getElementScrollTop({
+          align,
+          element,
+          scrollMargin: effectiveScrollMargin,
+          spacer: spacerRef.current,
+          viewport,
+        })
+      const scrollTop = getTargetScrollTop()
 
       const nextSpacerHeight = getTailSpacerHeight({
         content,
@@ -220,7 +224,59 @@ function useMessageScrollerCommands({
         : "settling-jump"
       streamingTurnRef.current = keepPreviousPeek ? element : null
 
-      scrollToPosition(scrollTop, { behavior })
+      if (typeof element.scrollIntoView !== "function") {
+        scrollToPosition(scrollTop, { behavior })
+        scheduleVisibilitySync()
+        return true
+      }
+
+      // Let the browser target the element directly. In particular, this makes
+      // content-visibility lay out the target before positioning it and honors
+      // viewport scroll-padding. Temporary logical scroll margins preserve the
+      // component's own content-padding and scrollMargin alignment contract.
+      const contentPadding = getContentBlockPadding(spacerRef.current)
+      const previousMarginStart = element.style.scrollMarginBlockStart
+      const previousMarginEnd = element.style.scrollMarginBlockEnd
+
+      if (align === "center") {
+        element.style.scrollMarginBlockStart = `${contentPadding.start + effectiveScrollMargin * 2}px`
+        element.style.scrollMarginBlockEnd = `${contentPadding.end}px`
+      } else if (align === "end") {
+        element.style.scrollMarginBlockEnd = `${contentPadding.end + effectiveScrollMargin}px`
+      } else if (align === "nearest") {
+        element.style.scrollMarginBlockStart = `${contentPadding.start + effectiveScrollMargin}px`
+        element.style.scrollMarginBlockEnd = `${contentPadding.end + effectiveScrollMargin}px`
+      } else {
+        element.style.scrollMarginBlockStart = `${contentPadding.start + effectiveScrollMargin}px`
+      }
+
+      const scrollIntoView = () =>
+        element.scrollIntoView({
+          behavior,
+          block: align,
+          inline: "nearest",
+        })
+
+      scrollIntoView()
+
+      // An automatic jump settles synchronously, so recompute the tail spacer
+      // once the browser has replaced any intrinsic-size estimate with the
+      // target's real layout. A smooth scroll must retain its native animation.
+      if (behavior !== "smooth") {
+        setTailSpacerHeight(
+          getTailSpacerHeight({
+            content,
+            scrollTop: getTargetScrollTop(),
+            spacer: spacerRef.current,
+            viewport,
+          })
+        )
+        scrollIntoView()
+      }
+
+      element.style.scrollMarginBlockStart = previousMarginStart
+      element.style.scrollMarginBlockEnd = previousMarginEnd
+      scheduleStateCommit()
       scheduleVisibilitySync()
 
       return true
