@@ -2031,5 +2031,13 @@
     "url": "https://onchain-ui.dev/r/{name}.json",
     "description": "Web3 components for shadcn apps. Wallet identity, token logos, balances, and market UI primitives for EVM products.",
     "logo": "<svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M32 8L58 54H6L32 8Z\" fill=\"currentColor\"/><path d=\"M24 38H40\" stroke=\"var(--background)\" stroke-width=\"4\" stroke-linecap=\"round\"/><circle cx=\"24\" cy=\"38\" r=\"3\" fill=\"var(--background)\"/><circle cx=\"40\" cy=\"38\" r=\"3\" fill=\"var(--background)\"/></svg>"
+  },
+  {
+    "name": "@morphiq",
+    "homepage": "https://morphiq.prathampatel.design",
+    "url": "https://morphiq.prathampatel.design/r/{name}.json",
+    "description": "Interfaces that move. Refractive glass, motion and depth for React — a GPU-accelerated prism lens and a cursor-reactive ASCII field, with every setting exposed as a prop.",
+    "author": "Pratham Patel",
+    "logo": "<svg viewBox='0 0 122 52' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M86.8335 0.209699C101.613 -0.971824 104.02 8.1449 108.631 19.4437C111.827 27.2461 115.069 35.0293 118.357 42.7934C119.356 45.1039 120.928 49.2801 121.976 51.2324C114.276 51.3797 106.187 51.3199 98.4736 51.2753C94.7443 43.6968 92.1345 35.0152 88.4279 27.8349C86.967 29.6906 84.5798 33.646 83.2296 35.7387C79.6606 41.0148 77.0127 47.5234 71.047 49.9502C66.249 51.9019 62.033 52.2625 57.1903 50.3412C51.4917 48.0803 49.4986 44.1664 46.8156 39.0636C45.6288 36.8068 44.4263 34.7481 43.4023 32.391C43.6904 32.6454 43.9908 32.8853 44.3025 33.11C47.0279 35.041 50.5958 36.1196 53.93 35.5442C55.6862 35.2519 57.3042 34.4093 58.5504 33.138C60.161 31.5226 62.8102 26.8512 64.2082 24.6691C67.9646 18.8061 71.7504 12.8566 75.6476 7.08572C78.3666 3.05942 82.1099 0.997175 86.8335 0.209699Z' fill='var(--foreground)'/><path d='M41.6246 0.0226607C55.7255 -0.581614 57.4159 11.0234 63.4618 19.9965C59.8173 17.6921 57.385 15.9211 52.8688 16.2727C47.3696 16.7006 45.0229 22.2872 42.3285 26.4801L31.7109 42.6912C30.0622 45.2261 28.5059 47.9685 26.7189 50.399C26.1835 51.1273 26.0498 51.0499 25.327 51.1186C16.8855 51.2622 8.44256 51.3099 0 51.2614C3.1225 46.1245 6.29163 41.4337 9.52741 36.3978L19.3036 20.9303C22.0898 16.5941 24.8866 12.2299 27.6752 7.89432C31.1687 2.46266 35.2914 0.457557 41.6246 0.0226607Z' fill='var(--foreground)'/></svg>"
   }
 ]
