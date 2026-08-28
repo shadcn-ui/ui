@@ -2033,7 +2033,7 @@
     "logo": "<svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M32 8L58 54H6L32 8Z\" fill=\"currentColor\"/><path d=\"M24 38H40\" stroke=\"var(--background)\" stroke-width=\"4\" stroke-linecap=\"round\"/><circle cx=\"24\" cy=\"38\" r=\"3\" fill=\"var(--background)\"/><circle cx=\"40\" cy=\"38\" r=\"3\" fill=\"var(--background)\"/></svg>"
   },
   {
-    "name": "@morph",
+    "name": "@morphiq",
     "homepage": "https://morphiq.prathampatel.design",
     "url": "https://morphiq.prathampatel.design/r/{name}.json",
     "description": "Interfaces that move. Refractive glass, motion and depth for React — a GPU-accelerated prism lens and a cursor-reactive ASCII field, with every setting exposed as a prop.",
