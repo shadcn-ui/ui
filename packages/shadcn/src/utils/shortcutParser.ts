@@ -1,0 +1,1 @@
+export function formatShortcut(keys: string[], isMac = false): string { return keys.map(k => k === 'mod' ? (isMac ? '⌘' : 'Ctrl') : k.toUpperCase()).join(isMac ? '' : '+'); }
