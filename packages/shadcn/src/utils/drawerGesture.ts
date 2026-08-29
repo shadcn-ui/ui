@@ -1,0 +1,1 @@
+export function shouldDismissDrawer(deltaY: number, velocityY: number, thresholdPx = 100): boolean { return deltaY > thresholdPx || velocityY > 0.5; }
