@@ -1,0 +1,1 @@
+export function generateClamp(minPx: number, maxPx: number, minVw = 320, maxVw = 1280): string { const slope = (maxPx - minPx) / (maxVw - minVw); const yAxis = -minVw * slope + minPx; return `clamp(${minPx}px, ${(yAxis).toFixed(2)}px + ${(slope * 100).toFixed(2)}vw, ${maxPx}px)`; }
