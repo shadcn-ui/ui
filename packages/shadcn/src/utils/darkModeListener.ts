@@ -1,0 +1,1 @@
+export function listenPrefersDark(onChange: (dark: boolean) => void): () => void { const mq = window.matchMedia('(prefers-color-scheme: dark)'); const handler = (e: MediaQueryListEvent) => onChange(e.matches); mq.addEventListener('change', handler); return () => mq.removeEventListener('change', handler); }
