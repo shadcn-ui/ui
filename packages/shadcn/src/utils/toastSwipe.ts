@@ -1,0 +1,1 @@
+export function isToastSwipeDismiss(deltaX: number, threshold = 80): boolean { return Math.abs(deltaX) >= threshold; }
