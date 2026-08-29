@@ -1,0 +1,1 @@
+export function getContrastRatio(l1: number, l2: number): number { const lighter = Math.max(l1, l2); const darker = Math.min(l1, l2); return (lighter + 0.05) / (darker + 0.05); }
