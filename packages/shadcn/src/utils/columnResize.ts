@@ -1,0 +1,1 @@
+export function calcResizedWidth(startWidth: number, deltaX: number, minWidth = 50): number { return Math.max(minWidth, startWidth + deltaX); }
