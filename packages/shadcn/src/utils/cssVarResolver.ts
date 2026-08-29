@@ -1,0 +1,1 @@
+export function parseHslVar(varStr: string, fallback = '0 0% 100%'): string { return varStr.replace(/var\((--[^)]+)\)/g, (_, name) => name ? 'hsl(' + fallback + ')' : fallback); }
