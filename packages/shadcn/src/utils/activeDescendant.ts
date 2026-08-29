@@ -1,0 +1,1 @@
+export function formatDescendantId(prefix: string, index: number): string { return `${prefix}-item-${index}`; }
