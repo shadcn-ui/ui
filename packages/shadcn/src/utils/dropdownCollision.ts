@@ -1,0 +1,1 @@
+export function solveDropdownPosition(rect: { right: number; bottom: number }, vw: number, vh: number) { return { flipX: rect.right > vw, flipY: rect.bottom > vh }; }
