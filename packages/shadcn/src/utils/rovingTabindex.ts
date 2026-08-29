@@ -1,0 +1,1 @@
+export function getNextRovingIndex(current: number, total: number, dir: 'next' | 'prev'): number { if (dir === 'next') return (current + 1) % total; return (current - 1 + total) % total; }
