@@ -1,0 +1,1 @@
+export function focusFirstError(form: HTMLFormElement): boolean { const err = form.querySelector('[aria-invalid="true"]') as HTMLElement; if (err) { err.focus(); return true; } return false; }
