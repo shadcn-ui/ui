@@ -1,0 +1,1 @@
+export function setInert(el: HTMLElement, inert: boolean) { if (inert) el.setAttribute('inert', ''); else el.removeAttribute('inert'); }
