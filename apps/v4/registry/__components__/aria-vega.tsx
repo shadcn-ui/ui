@@ -190,6 +190,14 @@ export const Components: Record<string, any> = {
       ) || "field"
     return { default: mod.default || mod[exportName] }
   }),
+  "hover-card": React.lazy(async () => {
+    const mod = await import("@/styles/aria-vega/ui/hover-card")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "hover-card"
+    return { default: mod.default || mod[exportName] }
+  }),
   input: React.lazy(async () => {
     const mod = await import("@/styles/aria-vega/ui/input")
     const exportName =
@@ -444,6 +452,14 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "message-scroller"
+    return { default: mod.default || mod[exportName] }
+  }),
+  questionnaire: React.lazy(async () => {
+    const mod = await import("@/styles/aria-vega/ui/questionnaire")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire"
     return { default: mod.default || mod[exportName] }
   }),
   marker: React.lazy(async () => {
