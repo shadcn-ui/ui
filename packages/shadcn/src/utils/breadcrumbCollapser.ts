@@ -1,0 +1,1 @@
+export function collapseBreadcrumbs<T>(items: T[], maxVisible = 4): { visible: T[]; collapsed: T[] } { if (items.length <= maxVisible) return { visible: items, collapsed: [] }; return { visible: [items[0], items[items.length - 2], items[items.length - 1]], collapsed: items.slice(1, items.length - 2) }; }
