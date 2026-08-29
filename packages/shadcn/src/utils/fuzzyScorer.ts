@@ -1,0 +1,1 @@
+export function scoreFuzzy(pattern: string, text: string): number { let pIdx = 0, score = 0; for (let i = 0; i < text.length && pIdx < pattern.length; i++) { if (text[i].toLowerCase() === pattern[pIdx].toLowerCase()) { score += 10 + (i === 0 ? 5 : 0); pIdx++; } } return pIdx === pattern.length ? score : 0; }
