@@ -57,8 +57,8 @@
   },
   {
     "name": "@aevr",
-    "homepage": "https://ui.aevr.space",
-    "url": "https://ui.aevr.space/r/{name}.json",
+    "homepage": "https://ui.aevr.online",
+    "url": "https://ui.aevr.online/r/{name}.json",
     "description": "A small collection of focused, production‑ready components and primitives for React/Next.js projects—built on shadcn/ui and complementary libraries.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='115' height='105' viewBox='0 0 115 105' fill='none'><path d='M111.78 48.3601C117.803 51.2224 113.769 60.4081 105.635 62.3522L72.9714 70.1593C70.4141 70.7705 67.9525 72.2666 66.2322 74.255L44.2597 99.6532C38.7881 105.978 28.7766 105.329 29.0097 98.6642L29.9457 71.9017C30.019 69.8064 28.9714 68.0828 27.0779 67.1829L2.89121 55.6888C-3.13172 52.8266 0.902578 43.6409 9.03642 41.6967L41.7 33.8896C44.2572 33.2784 46.7189 31.7823 48.4391 29.7939L70.4117 4.3957C75.8832 -1.92893 85.8948 -1.27963 85.6617 5.38474L84.7256 32.1472C84.6524 34.2425 85.6999 35.9662 87.5935 36.866L111.78 48.3601Z' fill='var(--foreground)'/></svg>"
   },
@@ -94,8 +94,8 @@
     "name": "@aicanvas",
     "homepage": "https://aicanvas.me",
     "url": "https://aicanvas.me/r/{name}.json",
-    "description": "54 animated React components with AI reproduction prompts for Claude Code, Lovable, and v0. Free and open source.",
-    "logo": "<svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M19.8513 0C20.5626 0 21.2204 0.377823 21.5788 0.992258L22.75 3L26.8243 9.98452C27.5508 11.23 27.5508 12.77 26.8243 14.0155L22.75 21L21.5788 23.0077C21.2204 23.6222 20.5626 24 19.8513 24H8.14874C7.43741 24 6.7796 23.6222 6.42118 23.0077L0.587849 13.0077C0.224593 12.385 0.224593 11.615 0.58785 10.9923L6.42118 0.992257C6.7796 0.377822 7.43741 0 8.14874 0H19.8513ZM4 12L9 21H18.25L13 12L18.25 3H9L4 12Z\" fill=\"url(#paint0_linear_185_248)\"/><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M9 21L4 12H13L18.25 21H9Z\" fill=\"#1E1E1E\"/><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M13 12H4L9 3H18.25L13 12Z\" fill=\"#4F4F4C\"/><defs><linearGradient id=\"paint0_linear_185_248\" x1=\"9\" y1=\"3\" x2=\"24.8756\" y2=\"17\" gradientUnits=\"userSpaceOnUse\"><stop stop-color=\"#666662\"/><stop offset=\"1\" stop-color=\"#4F4F4C\"/></linearGradient></defs></svg>"
+    "description": "Animated React components with AI reproduction prompts, alongside full design systems and templates. Install via CLI or aicanvas MCP, compatible with Claude Code, Codex, and Cursor.",
+    "logo": "<svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M19.8513 0C20.5626 0 21.2204 0.377823 21.5788 0.992258L22.75 3L26.8243 9.98452C27.5508 11.23 27.5508 12.77 26.8243 14.0155L22.75 21L21.5788 23.0077C21.2204 23.6222 20.5626 24 19.8513 24H8.14874C7.43741 24 6.7796 23.6222 6.42118 23.0077L0.587849 13.0077C0.224593 12.385 0.224593 11.615 0.58785 10.9923L6.42118 0.992257C6.7796 0.377822 7.43741 0 8.14874 0H19.8513ZM4 12L9 21H18.25L13 12L18.25 3H9L4 12Z\" fill=\"#FAFAF0\"/></svg>"
   },
   {
     "name": "@algolia",
@@ -196,11 +196,25 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 24 24'><path fill='var(--foreground)' d='M12 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2M6 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m12 12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2Z'/></svg>"
   },
   {
+    "name": "@benday",
+    "homepage": "https://benday.kacemmathlouthi.dev",
+    "url": "https://benday.kacemmathlouthi.dev/r/{name}.json",
+    "description": "Turn any logo into an animated Ben-Day dot field: a thinking indicator for AI and agent interfaces, baked from your own mark.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='1.4 5.99 67 68' fill='currentColor'><path d='m55 23.3c-.6-1.7-1.7-3.3-3.1-4.3L32.7 7.7c-1-.6-2.4-.7-3.5 0L16 15.1c-1 .6-1.6 1.7-1.6 2.9v44c0 1.2.6 2.4 1.7 3.1l12.8 7h.1c-1-.7.9 1.2 3.7.3L51.4 59c2.2-1.4 3.9-4.4 4-8s-1.2-6.9-4.5-8.5L42.7 38l8.1-4.2c2.1-1.2 3.5-2.8 4.2-5.2.4-1.7.5-3.6 0-5.3Zm-4.2 8.8c-1.6 1.1-3.5 2-4.8 2.7l-6 3.1c-.3.2-.2.7.1.8l10.3 5.5c2.3 1.3 3.3 3.7 3.3 6.2-.1 3.5-1.9 6.2-3.6 7.3-.2.1-.3.1-.5 0L20.1 42.3c-1.3-.7-2.2-2.1-2.2-3.8 0-1.6 1-3.2 2.5-3.9l28.3-14.1c2.3-1.4 4.9 1.3 5.1 4.5.2 2.7-1 5.6-3 7.1Z'/></svg>"
+  },
+  {
     "name": "@beste-ui",
     "homepage": "https://ui.beste.co",
     "url": "https://ui.beste.co/r/{name}.json",
     "description": "Production-ready UI blocks for landing pages, dashboards, and web apps.",
     "logo": "<svg width='40' height='40' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M26.0654 20.4591C26.0654 21.2317 25.2265 21.7125 24.5599 21.3219L7.92682 11.5768C7.4534 11.2994 7.2919 10.6923 7.56491 10.2164L8.42702 8.71343C8.70389 8.23075 9.32153 8.06692 9.80124 8.34893L20.8425 14.8398C21.5091 15.2317 22.3493 14.7511 22.3493 13.9778V1C22.3493 0.447716 22.797 0 23.3493 0H25.0654C25.6177 0 26.0654 0.447715 26.0654 1V20.4591ZM38.7193 21.3219C38.0526 21.7125 37.2137 21.2317 37.2137 20.4591V1C37.2137 0.447715 37.6615 0 38.2137 0H39.9298C40.4821 0 40.9298 0.447715 40.9298 1V13.9778C40.9298 14.7511 41.77 15.2317 42.4366 14.8398L53.4778 8.34896C53.9575 8.06694 54.5752 8.23079 54.8521 8.71351L55.714 10.2164C55.987 10.6923 55.8255 11.2994 55.3521 11.5767L38.7193 21.3219ZM44.214 32.8372C43.5533 32.4511 43.5533 31.4964 44.214 31.1103L60.9113 21.3542C61.3908 21.074 62.0068 21.2383 62.2832 21.72L63.1465 23.2251C63.4196 23.7012 63.258 24.3083 62.7845 24.5856L51.642 31.1108C50.9825 31.4971 50.9825 32.4504 51.642 32.8367L62.7845 39.3618C63.258 39.6392 63.4196 40.2463 63.1465 40.7223L62.2832 42.2275C62.0068 42.7092 61.3908 42.8735 60.9113 42.5933L44.214 32.8372ZM37.2137 43.4884C37.2137 42.7157 38.0526 42.235 38.7193 42.6256L55.3521 52.3707C55.8255 52.6481 55.987 53.2551 55.714 53.7311L54.8506 55.2365C54.5743 55.7182 53.9584 55.8825 53.4789 55.6025L42.4341 49.1525C41.7675 48.7632 40.9298 49.2441 40.9298 50.0161V62.9477C40.9298 63.5 40.4821 63.9477 39.9298 63.9477H38.2137C37.6615 63.9477 37.2137 63.5 37.2137 62.9477V43.4884ZM24.5598 42.6255C25.2265 42.235 26.0654 42.7157 26.0654 43.4884V62.9477C26.0654 63.5 25.6177 63.9477 25.0654 63.9477H23.3493C22.797 63.9477 22.3493 63.5 22.3493 62.9477V50.0161C22.3493 49.2441 21.5116 48.7632 20.845 49.1525L9.80019 55.6025C9.32065 55.8826 8.70478 55.7183 8.42847 55.2366L7.56491 53.7311C7.2919 53.2551 7.45339 52.6481 7.92682 52.3707L24.5598 42.6255ZM19.0185 31.1109C19.6778 31.4972 19.6778 32.4503 19.0185 32.8366L2.36849 42.5917C1.88887 42.8727 1.27213 42.7086 0.995546 42.2264L0.132762 40.7223C-0.140291 40.2463 0.0212938 39.6391 0.494843 39.3618L11.6371 32.8367C12.2966 32.4504 12.2966 31.4971 11.6371 31.1108L0.494846 24.5856C0.0212955 24.3083 -0.140287 23.7012 0.132771 23.2251L0.995544 21.7211C1.27213 21.2389 1.88886 21.0748 2.36848 21.3558L19.0185 31.1109ZM3.78864 47.1992C3.51994 46.7232 3.68321 46.1197 4.15523 45.8441L26.344 32.888C27.0044 32.5024 27.0051 31.5483 26.3453 31.1617L4.15309 18.1562C3.68204 17.8801 3.51948 17.2773 3.78788 16.8018L4.66272 15.2521C4.93728 14.7657 5.557 14.5985 6.03894 14.8808L28.2761 27.9051C28.9428 28.2955 29.7815 27.8148 29.7815 27.0422V0.999999C29.7815 0.447714 30.2292 0 30.7815 0H32.4976C33.0499 0 33.4976 0.447715 33.4976 1V26.9913C33.4976 27.7636 34.3358 28.2444 35.0025 27.8545L57.1951 14.8763C57.6747 14.5959 58.2909 14.7601 58.5673 15.242L59.4301 16.746C59.7033 17.2223 59.5413 17.8299 59.0672 18.1069L36.7323 31.1611C36.0712 31.5475 36.0719 32.5032 36.7337 32.8886L59.0651 45.8933C59.5401 46.17 59.7028 46.7782 59.4293 47.255L58.5665 48.7591C58.2904 49.2405 57.6752 49.4049 57.1957 49.1256L35.0011 36.1934C34.3344 35.805 33.4976 36.2859 33.4976 37.0575V63C33.4976 63.5523 33.0499 64 32.4976 64H30.7815C30.2292 64 29.7815 63.5523 29.7815 63V37.0066C29.7815 36.2347 28.9442 35.7538 28.2775 36.1429L6.03837 49.1211C5.55652 49.4023 4.93776 49.2349 4.66351 48.749L3.78864 47.1992Z' fill='var(--foreground)'/></svg>"
+  },
+  {
+    "name": "@better-auth-ui",
+    "homepage": "https://better-auth-ui.com",
+    "url": "https://better-auth-ui.com/r/{style}/{name}.json",
+    "description": "Drop-in authentication components for Better Auth applications.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 -7.5 60 60' fill='none'><path fill='currentColor' d='M0 0H15V45H0V0ZM45 0H60V45H45V0ZM20 0H40V15H20V0ZM20 30H40V45H20V30Z'/></svg>"
   },
   {
     "name": "@better-upload",
@@ -238,11 +252,26 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><path stroke='none' d='M0 0h24v24H0z' fill='none'/><path d='M12 2c-.218 0 -.432 .002 -.642 .005l-.616 .017l-.299 .013l-.579 .034l-.553 .046c-4.785 .464 -6.732 2.411 -7.196 7.196l-.046 .553l-.034 .579c-.005 .098 -.01 .198 -.013 .299l-.017 .616l-.004 .318l-.001 .324c0 .218 .002 .432 .005 .642l.017 .616l.013 .299l.034 .579l.046 .553c.464 4.785 2.411 6.732 7.196 7.196l.553 .046l.579 .034c.098 .005 .198 .01 .299 .013l.616 .017l.642 .005l.642 -.005l.616 -.017l.299 -.013l.579 -.034l.553 -.046c4.785 -.464 6.732 -2.411 7.196 -7.196l.046 -.553l.034 -.579c.005 -.098 .01 -.198 .013 -.299l.017 -.616l.005 -.642l-.005 -.642l-.017 -.616l-.013 -.299l-.034 -.579l-.046 -.553c-.464 -4.785 -2.411 -6.732 -7.196 -7.196l-.553 -.046l-.579 -.034a28.058 28.058 0 0 0 -.299 -.013l-.616 -.017l-.318 -.004l-.324 -.001z'/></svg>"
   },
   {
+    "name": "@blockforge",
+    "homepage": "https://blockforge.terravidhal.me",
+    "url": "https://blockforge.terravidhal.me/r/{name}.json",
+    "description": "170+ production-grade shadcn/ui blocks, forged to ship. Full source in TypeScript + Tailwind CSS, plus a page builder and starter pages. Copy, paste, ship.",
+    "author": "terravidhal",
+    "logo": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'><path d='M10 22V7a1 1 0 0 0-1-1H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a1 1 0 0 0-1-1H2'/><rect x='14.5' y='2.5' width='7' height='7' rx='1' transform='rotate(-8 18 6)'/></svg>"
+  },
+  {
     "name": "@blockus",
     "homepage": "https://blockus.lndevui.com",
     "url": "https://blockus.lndevui.com/r/{name}.json",
     "description": "Production-ready React blocks built on shadcn/ui and Tailwind — drop them in, swap the copy, ship the page. Heroes, pricing and footer sections crafted by hand.",
     "logo": "<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 24 A24 24 0 0 1 24 0 L24 24 Z' fill='var(--foreground)'/></svg>"
+  },
+  {
+    "name": "@blode",
+    "homepage": "https://blode.co/ui",
+    "url": "https://blode.co/ui/r/{name}.json",
+    "description": "An open-source registry of accessible React components built on Base UI and Tailwind CSS v4. Install with one command, then own the source.",
+    "logo": "<svg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg' fill='var(--foreground)'><path d='M379.712 166H388.667V834H379.711C349.838 834 325.183 834 305.099 832.359C284.239 830.656 265.063 826.997 247.052 817.819C219.12 803.587 196.411 780.879 182.18 752.949C173.002 734.935 169.344 715.76 167.64 694.9C165.999 674.815 166 650.163 166 620.288V379.712C166 349.839 165.999 325.183 167.64 305.099C169.344 284.239 173.002 265.063 182.18 247.052C196.411 219.12 219.12 196.411 247.052 182.18C265.063 173.002 284.239 169.344 305.099 167.64C325.183 165.999 349.839 166 379.712 166Z'/><path d='M462.889 834H620.288C650.163 834 674.816 834 694.9 832.36C715.76 830.656 734.936 826.997 752.949 817.82C780.879 803.588 803.588 780.879 817.82 752.949C826.997 734.936 830.656 715.76 832.36 694.9C834 674.816 834 650.163 834 620.288V537.111H462.889V834Z'/><path d='M834 462.889V379.711C834 349.838 834 325.183 832.36 305.099C830.656 284.239 826.997 265.063 817.82 247.052C803.588 219.12 780.879 196.411 752.949 182.18C734.936 173.002 715.76 169.344 694.9 167.64C674.816 165.999 650.163 166 620.288 166H462.889V462.889H834Z'/></svg>"
   },
   {
     "name": "@boldkit",
@@ -257,6 +286,13 @@
     "url": "https://brainless.swerdlow.dev/r/{name}.json",
     "description": "Claude Code, Codex, and Grok interfaces as shadcn components — accessible React terminal-agent UI for docs, demos, and product surfaces.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='var(--foreground)'><rect x='5' y='5' width='14' height='14'/></svg>"
+  },
+  {
+    "name": "@brut-ui",
+    "homepage": "https://www.brut-ui.site",
+    "url": "https://www.brut-ui.site/r/{name}.json",
+    "description": "Production-minded neo-brutalist shadcn components with three configurable flavours, strengths, and radius modes.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='7' y='7' width='22' height='22' fill='var(--foreground)'/><rect x='3' y='3' width='22' height='22' fill='#efd34b' stroke='var(--foreground)' stroke-width='2'/><text x='14' y='20' text-anchor='middle' font-family='Arial, sans-serif' font-size='14' font-weight='900' fill='var(--foreground)'>B</text></svg>"
   },
   {
     "name": "@bundui",
@@ -407,7 +443,7 @@
   },
   {
     "name": "@diklein",
-    "homepage": "https://diklein.com",
+    "homepage": "https://diklein.com/components",
     "url": "https://diklein.com/r/{name}.json",
     "description": "A growing collection of design-forward React components by Dave Klein, extracted from the components powering diklein.com.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' width='24' height='24'><circle cx='62' cy='38' r='28' fill='#e10000'/><rect x='12' y='32' width='56' height='56' fill='var(--foreground)'/></svg>"
@@ -532,6 +568,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='var(--foreground)'><rect width='32' height='32' rx='4'/></svg>"
   },
   {
+    "name": "@flagcn",
+    "homepage": "https://flagcn.dev",
+    "url": "https://flagcn.dev/r/{name}.json",
+    "description": "Accessible, source-owned flag components for shadcn/ui with 306 flags in SVG, PNG, WebP, and JPEG plus 4:3, 1:1, and original ratios.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='black'/><g transform='translate(7.36 7.36) scale(.77)'><rect x='13' y='7' width='6' height='50' rx='3' fill='white'/><path d='M19 15c8-2 14-4 22-2 7 2 10 5 17 3v23c-7 3-12 0-18-2-8-3-13-1-21 1V15Z' fill='white'/></g></svg>"
+  },
+  {
     "name": "@flightcn",
     "homepage": "https://flightcn.yencheng.dev",
     "url": "https://flightcn.yencheng.dev/r/{name}.json",
@@ -592,7 +635,7 @@
     "homepage": "https://framecn.vercel.app",
     "url": "https://framecn.vercel.app/r/{name}.json",
     "description": "Beautiful videos, made simple. Ready to use, customizable video components for React.",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4'/><g stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'><path d='M6.72 4.36v2.36M27.96 25.6H25.6m-4.13 0H13.8c-3.337 0-5.007 0-6.043-1.037S6.72 21.857 6.72 18.52v-7.67M25.6 27.96v-11.8c0-4.45 0-6.675-1.383-8.057S20.61 6.72 16.16 6.72H4.36' stroke-width='1.77'/><path d='m21.824 16.16-5.664 5.664M20.691 9.93 9.93 20.69' stroke-width='2.266'/></g></svg>"
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4'/><g stroke='var(--foreground)' fill='none' stroke-linecap='round' stroke-linejoin='round'><path d='M6.72 4.36v2.36M27.96 25.6H25.6m-4.13 0H13.8c-3.337 0-5.007 0-6.043-1.037S6.72 21.857 6.72 18.52v-7.67M25.6 27.96v-11.8c0-4.45 0-6.675-1.383-8.057S20.61 6.72 16.16 6.72H4.36' stroke-width='1.77'/><path d='m21.824 16.16-5.664 5.664M20.691 9.93 9.93 20.69' stroke-width='2.266'/></g></svg>"
   },
   {
     "name": "@gaia",
@@ -715,6 +758,13 @@
     "logo": "<svg x='6' y='6' width='58' height='58' viewBox='80 104 352 352'><title>Hirael</title><path d='M160 340V235C160 171 203 128 256 128C309 128 352 171 352 235V340' fill='none' stroke='currentColor' stroke-width='18' stroke-linecap='square'></path><path d='M256 220C262 242 274 254 296 260C274 266 262 278 256 300C250 278 238 266 216 260C238 254 250 242 256 220Z' fill='currentColor'></path><path d='M95 372C160 364 352 364 417 372C352 380 160 380 95 372Z' fill='currentColor'></path><path d='M135 405C185 399 327 399 377 405C327 411 185 411 135 405Z' fill='currentColor'></path><path d='M190 438C220 434 292 434 322 438C292 442 220 442 190 438Z' fill='currentColor'></path></svg>"
   },
   {
+    "name": "@honestui",
+    "homepage": "https://www.honestui.com",
+    "url": "https://www.honestui.com/r/{name}.json",
+    "description": "React UI components, animated interactions, shaders, and charts distributed as editable source.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 530 569' fill='none'><path fill='var(--foreground)' d='M0 0h362v115H112v453H0V0Z'/><path fill='var(--foreground)' d='M419 0h111v115H419V0Z'/><path fill='var(--foreground)' d='M419 181h111v388H168V451h251V181Z'/></svg>"
+  },
+  {
     "name": "@hugeicons-animated",
     "homepage": "https://hugeicons-animated.com",
     "url": "https://hugeicons-animated.com/r/{name}.json",
@@ -736,6 +786,13 @@
     "logo": "<svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M16 3C16 3 7 8 7 16C7 24 12 29 16 29C20 29 25 24 25 16C25 8 16 3 16 3Z' fill='var(--foreground)'/><circle cx='12' cy='14' r='2' fill='var(--background)'/><circle cx='20' cy='14' r='2' fill='var(--background)'/><path d='M11 20C11 20 13 22 16 22C19 22 21 20 21 20' stroke='var(--background)' stroke-width='1.5' stroke-linecap='round'/><path d='M16 3V10' stroke='var(--background)' stroke-width='1.5' stroke-linecap='round' opacity='0.6'/></svg>"
   },
   {
+    "name": "@ilinxa",
+    "homepage": "https://ui.ilinxa.com",
+    "url": "https://ui.ilinxa.com/r/{name}.json",
+    "description": "High-level composed components for shadcn/ui — kanban, gantt, calendar, media editors, story viewers, flow canvas, forms, and more, each with optional demo fixtures.",
+    "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"var(--foreground)\"><rect x=\"6\" y=\"6\" width=\"16\" height=\"16\" rx=\"4\"/><rect x=\"26\" y=\"6\" width=\"16\" height=\"16\" rx=\"8\"/><rect x=\"6\" y=\"26\" width=\"16\" height=\"16\" rx=\"8\"/><rect x=\"26\" y=\"26\" width=\"16\" height=\"16\" rx=\"4\"/></svg>"
+  },
+  {
     "name": "@indiacn",
     "homepage": "https://indiacn.in",
     "url": "https://indiacn.in/r/{name}.json",
@@ -748,6 +805,13 @@
     "url": "https://ui.inference.sh/r/{name}.json",
     "description": "batteries-included agent components by inference.sh. chat interfaces with streaming, tool invocation rendering, syntax-highlighted code blocks, markdown renderer, and more.",
     "logo": "<svg width='18' height='16' viewBox='0 0 18 16' fill='none' xmlns='http://www.w3.org/2000/svg'><path fill='none' d='M16.837 12.659L10.105 1H8.781c-.433 0-.834.232-1.05.608L1 13.266l.662 1.146c.217.375.618.607 1.051.607h13.463l.662-1.146a1.215 1.215 0 000-1.213v-.001z' stroke='var(--foreground)' stroke-width='0.3' stroke-miterlimit='10'/><path fill='none' d='M6.057 11.515v0l3.977-6.888a.08.08 0 01.14 0l6.002 10.392' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/><path fill='none' d='M1 13.266h12.001a.08.08 0 00.07-.122L9.09 6.256' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/><path fill='none' d='M12.13 11.514H4.173a.08.08 0 01-.07-.121L10.105 1' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/></svg>"
+  },
+  {
+    "name": "@initium",
+    "homepage": "https://initium.sh",
+    "url": "https://app.initium.sh/r/styles/{style}/{name}.json",
+    "description": "Conversion-focused marketing blocks and landing page sections for shadcn/ui, with a visual style editor, agent skills, and the first block of every category free to install.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17.5 20'><path d='M17.5 20H0V0H17.5V20ZM10 7.5H17.5L10 0V7.5Z' fill='var(--foreground)'/></svg>"
   },
   {
     "name": "@intentui",
@@ -925,11 +989,32 @@
     "logo": "<svg width='500' height='500' viewBox='0 0 500 500' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(#clip0_2181_32)'><path d='M368.421 0H131.579C58.9099 0 0 58.9099 0 131.579V368.421C0 441.09 58.9099 500 131.579 500H368.421C441.09 500 500 441.09 500 368.421V131.579C500 58.9099 441.09 0 368.421 0Z' fill='url(#paint0_linear_2181_32)'/><path d='M148.245 362.719H97.3682L167.354 126.78C168.498 122.922 173.799 122.512 175.523 126.149L250 283.333L325.75 126.069C327.494 122.45 332.78 122.884 333.91 126.738L403.07 362.719H351.316L317.539 260.968C317.05 259.495 315.029 259.336 314.316 260.715L259.997 365.755C255.772 373.926 244.109 373.988 239.795 365.864L183.97 260.696C183.242 259.325 181.223 259.506 180.75 260.985L148.245 362.719Z' fill='var(--background)'/></g><defs><linearGradient id='paint0_linear_2181_32' x1='0' y1='0' x2='500' y2='500' gradientUnits='userSpaceOnUse'><stop stop-color='var(--foreground)'/><stop offset='1' stop-color='#F472B6'/></linearGradient><clipPath id='clip0_2181_32'><rect width='500' height='500' fill='var(--background)'/></clipPath></defs></svg>"
   },
   {
+    "name": "@motion-menu",
+    "homepage": "https://motion-menu-two.vercel.app",
+    "url": "https://motion-menu-two.vercel.app/r/{name}.json",
+    "description": "596 motion/3D UI patterns — scroll-driven WebGL, shader passes, spring choreography — as ready HTML/CSS/JS. 26 free, or $149 once for the rest.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round'><path d='M4 22c4-10 8 10 12 0s8-10 12 0'/></svg>"
+  },
+  {
+    "name": "@motion-lexicon",
+    "homepage": "https://motion-lexicon.pages.dev",
+    "url": "https://motion-lexicon.pages.dev/r/{name}.json",
+    "description": "Copy-ready React page blocks and motion components with bilingual previews, reduced-motion paths, and shadcn Registry delivery.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect width='32' height='32' rx='8' fill='var(--foreground)'/><path d='M8 23V9M8 23h16' stroke='var(--background)' stroke-width='1.5' stroke-linecap='round'/><path d='M8.5 22.5C10 14 14 10 23.5 9.5' stroke='#4568ff' stroke-width='2.5' stroke-linecap='round'/></svg>"
+  },
+  {
     "name": "@motion-primitives",
     "homepage": "https://www.motion-primitives.com",
     "url": "https://motion-primitives.com/c/{name}.json",
     "description": "Beautifully designed motions components. Easy copy-paste. Customizable. Open Source. Built for engineers and designers.",
     "logo": "<svg role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70' aria-label='MP Logo' width='70' height='70' fill='none'><path stroke='currentColor' stroke-linecap='round' stroke-width='3' d='M51.883 26.495c-7.277-4.124-18.08-7.004-26.519-7.425-2.357-.118-4.407-.244-6.364 1.06M59.642 51c-10.47-7.25-26.594-13.426-39.514-15.664-3.61-.625-6.744-1.202-9.991.263'/></svg>"
+  },
+  {
+    "name": "@motiq",
+    "homepage": "https://motiq.dev",
+    "url": "https://motiq.dev/r/{name}.json",
+    "description": "Production-ready animated React and Next.js components — accessible, reduced-motion-safe and RSC-safe — installable as editable source with the shadcn CLI. Free and open source.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><defs><linearGradient id='motiq-logo' x1='0' y1='0' x2='24' y2='24' gradientUnits='userSpaceOnUse'><stop stop-color='#7c5cff'/><stop offset='1' stop-color='#4f7cff'/></linearGradient></defs><rect width='24' height='24' rx='6' fill='url(#motiq-logo)'/><path d='M5.6 17.2V6.8h2.5L12 12.3l3.9-5.5h2.5v10.4h-2.4v-6.6L12 16.1 8 10.6v6.6H5.6Z' fill='#fff'/></svg>"
   },
   {
     "name": "@mozaika",
@@ -1065,6 +1150,13 @@
     "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"330\" height=\"330\" viewBox=\"0 0 330 330\" fill=\"none\"><g clip-path=\"url(#clip0_1543_179)\"><mask id=\"mask0_1543_179\" style=\"mask-type:alpha\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"330\" height=\"330\"><circle cx=\"165\" cy=\"165\" r=\"165\" fill=\"#D9D9D9\"/></mask><g mask=\"url(#mask0_1543_179)\"><path d=\"M165 330C256.127 330 330 256.127 330 165C330 73.873 256.127 0 165 0C73.873 0 0 73.873 0 165C0 256.127 73.873 330 165 330Z\" fill=\"black\"/><path d=\"M330 96H122V111H330V96Z\" fill=\"white\"/><path d=\"M208 219H0V234H208V219Z\" fill=\"white\"/><circle cx=\"165\" cy=\"165\" r=\"157.5\" stroke=\"white\" stroke-width=\"15\" fill=\"none\"/></g></g><defs><clipPath id=\"clip0_1543_179\"><rect width=\"330\" height=\"330\" fill=\"white\"/></clipPath></defs></svg>"
   },
   {
+    "name": "@openmirai",
+    "homepage": "https://www.openmirai.dev",
+    "url": "https://www.openmirai.dev/r/{name}.json",
+    "description": "Open-source React and TypeScript tools from OpenMirai.",
+    "logo": "<svg width='824' height='824' viewBox='0 0 824 824' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='824' height='824' rx='412' fill='white'/><path d='M330.906 275.013L412.234 192L493.561 275.013L412.234 358.026L330.906 275.013Z' fill='#18181B'/><path d='M542.281 313.741L542.205 313.629L414.422 404.958L475.549 449.463L563.409 386.669L542.281 313.741Z' fill='#18181B'/><path d='M473.486 450.921L412.466 494.533L412.332 494.62L412.23 494.471L260.793 386.236L281.264 315.582L282.603 313.629L408.822 403.841L473.486 450.921Z' fill='#18181B'/><path d='M582.2 422.784L582.071 422.596L414.477 542.379L475.605 586.884L603.181 495.704L582.029 422.697L582.2 422.784Z' fill='#18181B'/><path d='M473.554 588.342L412.486 631.989L412.435 631.915L412.384 631.989L221 495.203L241.471 424.549L242.81 422.596L411.995 543.517L473.554 588.342Z' fill='#18181B'/></svg>"
+  },
+  {
     "name": "@optics",
     "homepage": "https://optics.agusmayol.com.ar",
     "url": "https://optics.agusmayol.com.ar/r/{name}.json",
@@ -1154,6 +1246,20 @@
     "url": "https://platejs.org/r/{name}.json",
     "description": "AI-powered rich text editor for React.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-minus-icon lucide-minus'><path d='M5 12h14'/></svg>"
+  },
+  {
+    "name": "@preskok",
+    "homepage": "https://ui-three-mu.vercel.app",
+    "url": "https://ui-three-mu.vercel.app/r/{name}.json",
+    "description": "Accessible, production-ready React components built with React Aria Components and Tailwind CSS.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='155' height='140' viewBox='0 0 155.432 140' fill='none'><path d='M115.228 0.0136719C137.529 0.581528 155.432 18.9209 155.432 41.4615C155.432 64.0022 137.529 82.3415 115.228 82.9094L114.162 82.9231H0V56.9697H25.7268V57.0769H114.162C122.747 57.0769 129.706 50.0856 129.706 41.4615C129.706 32.8374 122.747 25.8462 114.162 25.8462H25.7268V25.7389H0V0H114.162L115.228 0.0136719Z' fill='#DF3B3B'/><path d='M0 82.9231H25.7268V140H23.5829C10.5584 140 0 129.392 0 116.308V82.9231Z' fill='#DF3B3B'/></svg>"
+  },
+  {
+    "name": "@persianlabsui",
+    "homepage": "https://ui.persian-labs.ir",
+    "url": "https://ui.persian-labs.ir/r/{name}.json",
+    "description": "RTL-first, copy-paste React components and UI blocks for Persian interfaces, built on Base UI and Tailwind CSS. Includes unique Persian-focused patterns with full LTR support.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024' fill='var(--foreground)'><path d='M210 842V330C210 286 226 251 258 219L382 95V842H210Z'/><path fill-rule='evenodd' clip-rule='evenodd' d='M382 95H608C754 95 848 187 848 326C848 465 754 557 608 557H382V405H594C661 405 696 375 696 326C696 277 661 247 594 247H382V95Z'/></svg>"
   },
   {
     "name": "@prompt-kit",
@@ -1429,6 +1535,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512' fill='none'><path d='M329.205 6.05469C331.396 0.985458 337.281 -1.34888 342.351 0.84082L355.644 6.58301C356.018 6.74496 356.377 6.93032 356.722 7.13086L439.729 42.9902C444.799 45.1805 447.134 51.066 444.944 56.1357L439.202 69.4277C437.012 74.4976 431.126 76.8315 426.056 74.6416L351.12 42.2705L330.918 89.0332C376.141 114.344 408.567 159.794 416.052 213.239H429.756V278.752H397.765L397.27 282.408L386.144 369.047C383.266 392.108 380.937 415.238 377.957 438.284C376.66 448.318 375.865 459.058 373.398 468.858C372.384 471.375 371.168 473.657 369.527 475.817C353.072 497.475 312.68 504.556 287.003 508.111C273.789 510.037 260.45 510.964 247.098 510.888C217.287 510.485 162.338 502.749 138.37 484.41C133.049 480.338 128.118 475.314 126.057 468.793C124.143 462.739 123.772 455.672 122.899 449.391L117.649 411.719L99.9443 278.752H67.7119V213.239H80.5723C92.1014 130.913 162.808 67.5599 248.312 67.5596C266.066 67.5596 283.183 70.2933 299.265 75.3594L329.205 6.05469ZM298.618 347.714C290.008 349.185 284.699 357.994 277.604 362.6C260.758 373.533 233.532 371.369 217.451 359.928C211.198 355.48 206.551 346.709 197.798 348.069C194.209 348.628 190.796 350.598 188.722 353.611C186.781 356.428 186.276 360.028 186.956 363.345C188.187 369.351 193.243 374.041 197.507 378.105C213.771 391.889 237.722 397.757 258.754 395.938C277.382 394.327 294.852 386.112 306.932 371.629C309.792 368.2 311.798 364.372 311.3 359.786C310.918 356.283 309.287 352.397 306.453 350.188C304.098 348.351 301.526 347.879 298.618 347.714ZM187.43 188.242C177.489 188.242 169.43 196.301 169.43 206.242V305.578C169.43 315.519 177.489 323.578 187.43 323.578H194.529C204.47 323.578 212.529 315.519 212.529 305.578V206.242C212.529 196.301 204.47 188.242 194.529 188.242H187.43ZM302.939 188.242C292.998 188.242 284.94 196.301 284.939 206.242V305.578C284.939 315.519 292.998 323.578 302.939 323.578H310.04C319.981 323.578 328.04 315.519 328.04 305.578V206.242C328.04 196.301 319.981 188.242 310.04 188.242H302.939Z' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@snapcn",
+    "homepage": "https://snapcn.dev",
+    "url": "https://snapcn.dev/r/{name}.json",
+    "description": "Remotion video components for React. Text reveals, karaoke captions, device mockups, logo stings and full scenes, installed with the CLI and owned as source.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 464 409' fill='currentColor' role='img' aria-label='snapcn'> <g transform='translate(0,409) scale(0.1,-0.1)'> <path d='M589 3805 c-167 -41 -305 -149 -380 -297 -60 -120 -59 -84 -59 -1239 0 -1004 1 -1059 19 -1112 48 -147 148 -226 331 -262 100 -20 127 -33 186 -87 53 -49 74 -109 74 -212 1 -121 42 -196 133 -244 l52 -27 980 -3 c883 -3 986 -1 1042 13 75 21 133 67 171 139 l27 51 3 315 c2 173 2 342 0 374 l-3 60 -31 -50 c-36 -59 -101 -115 -170 -146 l-49 -23 -810 -3 c-591 -2 -825 0 -865 8 -128 28 -258 121 -325 234 -65 110 -66 128 -63 826 l3 625 24 58 c44 111 147 210 270 259 l56 23 830 3 c809 2 831 2 895 -18 80 -25 149 -74 198 -142 l37 -52 3 334 c3 367 -3 418 -56 494 -30 44 -98 91 -152 106 -22 6 -457 10 -1175 9 -923 -1 -1151 -3 -1196 -14z M3800 2983 c-327 -196 -598 -361 -602 -367 -4 -6 -7 -254 -5 -550 l2 -540 145 -91 c80 -50 208 -130 285 -177 77 -47 283 -174 457 -282 174 -108 326 -196 337 -196 11 0 27 7 35 16 14 14 16 141 16 1254 0 781 -4 1248 -10 1264 -7 20 -16 26 -37 26 -18 -1 -232 -123 -623 -357z'/> </g> </svg>"
+  },
+  {
     "name": "@solaceui",
     "homepage": "https://www.solaceui.com",
     "url": "https://www.solaceui.com/r/{name}.json",
@@ -1444,8 +1557,8 @@
   },
   {
     "name": "@soralabs",
-    "homepage": "https://ui.soralabs.io.vn",
-    "url": "https://ui.soralabs.io.vn/r/{name}.json",
+    "homepage": "https://ui.soralabs.studio",
+    "url": "https://ui.soralabs.studio/r/{name}.json",
     "description": "Motion-first React primitives and animated UI components for shadcn/ui. Copy, customize, and ship fluid interfaces.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='currentColor'><g transform='translate(100 100) scale(0.8292) translate(-100 -100)'><path d='M 150.245 -0.676 L 150.658 49.581 L 49.237 49.477 L 49.714 -0.758 L 150.245 -0.676 Z M 49.342 150.419 L 49.237 49.477 L -1.04 49.794 L -1.304 150.337 L 49.342 150.419 Z M 150.763 150.523 L 150.658 49.581 L 201.304 49.663 L 201.04 150.206 L 150.763 150.523 Z M 150.763 150.523 L 49.342 150.419 L 49.755 200.676 L 150.286 200.758 L 150.763 150.523 Z'/></g></svg>"
   },
@@ -1545,7 +1658,7 @@
     "homepage": "https://termcn.vercel.app",
     "url": "https://termcn.vercel.app/r/{name}.json",
     "description": "Beautiful terminal UIs, made simple. Ready to use, customizable terminal UI components for React.",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256'><script/><rect x='16' y='16' width='224' height='224' rx='28' stroke='#000' stroke-width='7'/><path d='m42 56 32 24-32 24' stroke='#fff' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='m208.8 156.8-48 48M199.2 104 108 195.2' stroke='#fff' stroke-width='19.2' stroke-linecap='round' fill='none'/></svg>"
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><rect x='16' y='16' width='224' height='224' rx='28' stroke='var(--background)' stroke-width='7'/><path d='m42 56 32 24-32 24' stroke='var(--foreground)' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='m208.8 156.8-48 48M199.2 104 108 195.2' stroke='var(--foreground)' stroke-width='19.2' stroke-linecap='round' fill='none'/></svg>"
   },
   {
     "name": "@tuiparts",
@@ -1709,6 +1822,13 @@
     "logo": "<svg width='84' height='84' viewBox='0 0 84 84' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='42' cy='42' r='42' fill='var(--foreground)'/><path d='M60.0895 26L55.3658 53.4595H54.5338L47.5557 26H37.33L30.2445 53.5389H29.3857L23.9105 26H15L22.4076 59.7882C22.4344 59.9206 22.5417 60 22.6759 60H35.5318C35.8002 60 36.0149 59.8146 36.0686 59.5763L41.6511 36.3271H42.4026L47.7972 59.5498C47.8509 59.8146 48.0924 60 48.3877 60H61.163C61.3509 60 61.4851 59.8676 61.5388 59.7087L69 26H60.0895Z' fill='var(--background)'/><path d='M75 26C72.7925 26 71 27.7925 71 30C71 32.2075 72.7925 34 75 34C77.2075 34 79 32.2075 79 30C79 27.7925 77.2075 26 75 26ZM71.6038 30C71.6038 28.1321 73.1321 26.6038 75 26.6038C75.6981 26.6038 76.3208 26.8679 76.8491 27.2264L76.2453 27.9623C76 27.8302 75.7359 27.6981 75.3962 27.6981H73.5472V31.3019L72.6415 32.4151C72.0189 31.8113 71.6038 30.9623 71.6038 30ZM76.3774 29C76.3774 29.2453 76.283 29.434 76.1132 29.5849C75.9434 29.7358 75.6981 29.8113 75.3962 29.8113H75.2642L76.2076 28.6415C76.283 28.7358 76.3774 28.8491 76.3774 29ZM74.1132 29.8113V28.1887H75.4151C75.6415 28.1887 75.8113 28.2642 75.9623 28.3585L74.7925 29.8113H74.1132ZM74.3962 30.283L74.1132 30.6415V30.283H74.3962ZM75 33.3962C74.2264 33.3962 73.5472 33.0943 72.9623 32.6415L73.5472 31.9057V31.9245H74.0943V31.2264L74.8679 30.2642H74.8868L76.3585 31.9245H77.0377L75.5094 30.2453H75.5849C75.9811 30.2264 76.3019 30.0943 76.566 29.8679C76.8113 29.6415 76.9434 29.3396 76.9434 28.9811C76.9434 28.6415 76.7925 28.3962 76.5849 28.1887L77.1887 27.434C77.9245 28.0566 77.3962 28.9434 78.3962 29.9811C78.3962 31.8679 76.8679 33.3962 75 33.3962Z' fill='var(--background)'/></svg>"
   },
   {
+    "name": "@washiveil",
+    "homepage": "https://washiveil.alexchih.com",
+    "url": "https://washiveil.alexchih.com/r/{name}.json",
+    "description": "Washi at the ground, veils above, three lights beneath. A design system with Chinese & Japanese typography considered from the start.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><filter id='s' x='-50%' y='-50%' width='200%' height='200%'><feGaussianBlur stdDeviation='4.5'/></filter></defs><rect width='64' height='64' rx='16' fill='var(--background)'/><g filter='url(#s)'><circle cx='18' cy='16' r='13' fill='#2e63b8' fill-opacity='0.75'/><circle cx='50' cy='32' r='12' fill='#7b68c8' fill-opacity='0.7'/><circle cx='20' cy='50' r='13' fill='#d0722e' fill-opacity='0.7'/></g><rect x='10' y='10' width='44' height='44' rx='10' fill='var(--foreground)' fill-opacity='0.12'/><rect x='10' y='10' width='44' height='44' rx='10' fill='none' stroke='var(--foreground)' stroke-opacity='0.2'/></svg>"
+  },
+  {
     "name": "@waves-cn",
     "homepage": "https://waves-cn.vercel.app",
     "url": "https://waves-cn.vercel.app/r/{name}.json",
@@ -1778,6 +1898,13 @@
     "url": "https://uiable.com/r/{name}.json",
     "description": "Free, open-source UI component library built with Next.js, React 19, Tailwind CSS v4, and shadcn/ui — beautifully designed components you can copy, customize, and make your own.",
     "logo": "<svg fill='none' viewBox='0 0 500 477' xmlns='http://www.w3.org/2000/svg'><path d='M0 130.79C0 58.5568 58.5474 0 130.769 0H369.231C441.453 0 500 58.5568 500 130.79V346.21C500 418.443 441.453 477 369.231 477H130.769C58.5474 477 0 418.443 0 346.21V130.79Z' fill='#030712'/><path d='M0 130.79C0 58.5568 58.5474 0 130.769 0H369.231C441.453 0 500 58.5568 500 130.79V346.21C500 418.443 441.453 477 369.231 477H130.769C58.5474 477 0 418.443 0 346.21V130.79Z' fill='url(#a)' fill-opacity='.3'/><mask id='f' x='0' y='0' width='500' height='477' style='mask-type:alpha' maskUnits='userSpaceOnUse'><path d='M0 130.79C0 58.5568 58.5474 0 130.769 0H369.231C441.453 0 500 58.5568 500 130.79V346.21C500 418.443 441.453 477 369.231 477H130.769C58.5474 477 0 418.443 0 346.21V130.79Z' fill='#030712'/><path d='M0 130.79C0 58.5568 58.5474 0 130.769 0H369.231C441.453 0 500 58.5568 500 130.79V346.21C500 418.443 441.453 477 369.231 477H130.769C58.5474 477 0 418.443 0 346.21V130.79Z' fill='url(#a)' fill-opacity='.3'/></mask><g mask='url(#f)'><g filter='url(#k)'><path d='M369.23 475V477H130.77V475H369.23ZM498 346.21V130.79C498 59.6609 440.347 2 369.23 2H130.77C59.6526 2 2.00014 59.6609 2 130.79V346.21C2.00016 417.339 59.6527 475 130.77 475V477L129.079 476.989C58.1988 476.091 0.908707 418.792 0.0107422 347.9L0 346.21V130.79C0.00013911 59.121 57.6363 0.915799 129.079 0.0107422L130.77 0H369.23C441.452 0 500 58.5567 500 130.79V346.21L499.989 347.9C499.084 419.355 440.888 477 369.23 477V475C440.347 475 498 417.339 498 346.21Z' fill='url(#d)' fill-opacity='.8'/></g></g><g filter='url(#j)'><path d='m163.29 263.1c0 14.81 3.703 26.212 11.11 34.204 7.407 7.993 18.278 11.989 32.614 11.989 14.335 0 25.326-3.996 32.972-11.989 7.645-7.992 11.468-19.394 11.468-34.204v-148.1h61.286v147.74c0 22.097-4.779 40.785-14.336 56.065s-22.459 26.799-38.706 34.556c-16.008 7.757-33.928 11.636-53.759 11.636s-37.632-3.762-53.402-11.284c-15.53-7.757-27.834-19.275-36.914-34.555-9.079-15.514-13.619-34.321-13.619-56.418v-147.74h61.286v148.1zm248.71 101.9h-59.839v-250h59.839v250z' fill='#000' fill-opacity='.5'/></g><g filter='url(#i)' opacity='.6'><path d='m156.29 262.1c0 14.81 3.703 26.212 11.11 34.204 7.407 7.993 18.278 11.989 32.614 11.989 14.335 0 25.326-3.996 32.972-11.989 7.645-7.992 11.468-19.394 11.468-34.204v-148.1h61.286v147.74c0 22.097-4.779 40.785-14.336 56.065s-22.459 26.799-38.706 34.556c-16.008 7.757-33.928 11.636-53.759 11.636s-37.632-3.762-53.402-11.284c-15.53-7.757-27.834-19.275-36.914-34.555-9.0789-15.514-13.619-34.321-13.619-56.418v-147.74h61.286v148.1zm248.71 101.9h-59.839v-250h59.839v250z' fill='#fff'/></g><path d='m156.29 262.1c0 14.81 3.703 26.212 11.11 34.204 7.407 7.993 18.278 11.989 32.614 11.989 14.335 0 25.326-3.996 32.972-11.989 7.645-7.992 11.468-19.394 11.468-34.204v-148.1h61.286v147.74c0 22.097-4.779 40.785-14.336 56.065s-22.459 26.798-38.706 34.556c-16.008 7.757-33.928 11.636-53.759 11.636s-37.632-3.762-53.402-11.284c-15.53-7.757-27.834-19.275-36.914-34.555-9.0789-15.514-13.619-34.321-13.619-56.418v-147.74h61.286v148.1zm248.71 101.9h-59.839v-250h59.839v250z' fill='url(#c)'/><mask id='e' x='95' y='114' width='310' height='250' style='mask-type:alpha' maskUnits='userSpaceOnUse'><path d='m156.29 262.1c0 14.81 3.703 26.212 11.11 34.204 7.407 7.993 18.278 11.989 32.614 11.989 14.335 0 25.326-3.996 32.972-11.989 7.645-7.992 11.468-19.394 11.468-34.204v-148.1h61.286v147.74c0 22.097-4.779 40.785-14.336 56.065s-22.459 26.798-38.706 34.556c-16.008 7.757-33.928 11.636-53.759 11.636s-37.632-3.762-53.402-11.284c-15.53-7.757-27.834-19.275-36.914-34.555-9.0789-15.514-13.619-34.321-13.619-56.418v-147.74h61.286v148.1zm248.71 101.9h-59.839v-250h59.839v250z' fill='url(#b)'/></mask><g mask='url(#e)'><g fill-opacity='.4' filter='url(#h)'><path d='m152.24 117.26h-58.538l-9.7563-12.37h77.4v162.11l25.366 35.156 35.773 2.604c-11.057 5.86-33.86 10.677-50.082 1.302s-20.163-28.645-20.163-39.062v-149.74z' fill='#1C1C1C'/><path d='m301.83 117.26h-60.49v-8.463h70.896v163.41c0 38.021-17.778 51.867-26.667 54.037 13.008-20.313 16.261-44.488 16.261-54.037v-154.95z' fill='#000'/><path d='m400.7 117.91h-58.537l-5.854-9.765h74.798v259.11h-10.407v-249.35z' fill='#000'/></g><g fill='#fff' fill-opacity='.3' filter='url(#g)'><path d='m100.85 261.14v-148.44c0-4.687-8.2391-5.425-12.358-5.208v153.65c0 90.104 65.475 112.2 98.213 111.98 77.01 15.625 114.47-49.913 123.58-84.636l-4.553-5.859c-11.708 50.781-48.782 80.078-123.58 70.963-59.839-7.291-79.134-64.67-81.302-92.447z'/><path d='m351.92 356.84v-242.19c0-10.416-6.505-7.378-9.757-4.557v259.12h68.294v-12.37h-58.537z'/></g><g opacity='.6'><path d='m304.44 261.74v-146.44h-58.684v146.79c0 15.029-3.882 26.797-11.829 35.105-7.959 8.319-19.332 12.39-33.912 12.39-14.578 0-25.844-4.071-33.568-12.406-7.699-8.308-11.457-20.07-11.457-35.089v-146.79h-58.684v146.44c0 21.918 4.5032 40.485 13.441 55.76 8.951 15.06 21.062 26.396 36.352 34.038l1.464 0.686c15.209 6.972 32.328 10.471 51.377 10.471v1.302c-19.831 0-37.632-3.762-53.402-11.284-15.53-7.757-27.834-19.275-36.914-34.555-9.0789-15.515-13.619-34.321-13.619-56.418v-147.74h61.286v148.1c0 14.81 3.703 26.212 11.11 34.204 7.407 7.993 18.278 11.989 32.614 11.989 14.335 0 25.326-3.996 32.972-11.989 7.645-7.992 11.468-19.394 11.468-34.204v-148.1h61.286v147.74c0 22.097-4.779 40.785-14.336 56.065s-22.459 26.798-38.706 34.556c-16.008 7.757-33.928 11.636-53.759 11.636v-1.302c19.657 0 37.38-3.844 53.192-11.507l7e-3 -2e-3c16.023-7.651 28.737-19.002 38.163-34.072 9.402-15.03 14.138-33.466 14.138-55.374zm100.56-147.74v250h-59.839v-250h59.839zm-58.538 248.7h57.237v-247.4h-57.237v247.4z' fill='#fff'/></g></g><defs><filter id='k' x='-4' y='-4' width='508' height='485' color-interpolation-filters='sRGB' filterUnits='userSpaceOnUse'><feFlood flood-opacity='0' result='BackgroundImageFix'/><feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'/><feGaussianBlur result='effect1_foregroundBlur_3603_1608' stdDeviation='2'/></filter><filter id='j' x='86' y='99' width='342' height='282' color-interpolation-filters='sRGB' filterUnits='userSpaceOnUse'><feFlood flood-opacity='0' result='BackgroundImageFix'/><feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'/><feGaussianBlur result='effect1_foregroundBlur_3603_1608' stdDeviation='8'/></filter><filter id='i' x='75' y='94' width='350' height='290' color-interpolation-filters='sRGB' filterUnits='userSpaceOnUse'><feFlood flood-opacity='0' result='BackgroundImageFix'/><feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'/><feGaussianBlur result='effect1_foregroundBlur_3603_1608'/></filter><filter id='h' x='81.943' y='102.88' width='331.16' height='266.37' color-interpolation-filters='sRGB' filterUnits='userSpaceOnUse'><feFlood flood-opacity='0' result='BackgroundImageFix'/><feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'/><feGaussianBlur result='effect1_foregroundBlur_3603_1608' stdDeviation='1'/></filter><filter id='g' x='84.496' y='103.39' width='329.96' height='276.09' color-interpolation-filters='sRGB' filterUnits='userSpaceOnUse'><feFlood flood-opacity='0' result='BackgroundImageFix'/><feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'/><feGaussianBlur result='effect1_foregroundBlur_3603_1608' stdDeviation='2'/></filter><linearGradient id='a' x1='250' x2='250' y1='-79' y2='428.62' gradientUnits='userSpaceOnUse'><stop stop-color='#F3F4F6' offset='0'/><stop stop-color='#030712' offset='1'/></linearGradient><linearGradient id='d' x1='250' x2='250' y2='477' gradientUnits='userSpaceOnUse'><stop stop-color='#fff' offset='0'/><stop stop-color='#fff' stop-opacity='0' offset='.2'/><stop stop-color='#fff' stop-opacity='0' offset='.8'/><stop stop-color='#fff' offset='1'/></linearGradient><linearGradient id='c' x1='249.8' x2='249.8' y1='239' y2='424.55' gradientUnits='userSpaceOnUse'><stop stop-color='#fff' offset='0'/><stop stop-color='#030712' offset='1'/></linearGradient><linearGradient id='b' x1='300.27' x2='300.27' y1='239' y2='424.55' gradientUnits='userSpaceOnUse'><stop stop-color='#fff' offset='0'/><stop stop-color='#030712' offset='1'/></linearGradient></defs></svg>"
+  },
+  {
+    "name": "@velobits",
+    "homepage": "https://ui.velobits.dev",
+    "url": "https://ui.velobits.dev/r/{name}.json",
+    "description": "An open source collection of accessible, contrast-gated React components on a warm neutral palette and a two-tier glass material — the VeloBits design system, authored once and shipped both as an npm package and as this registry.",
+    "logo": "<svg version='1.2' viewBox='0 0 720 720' xmlns='http://www.w3.org/2000/svg'><style>.s0 { fill: #c8f135 }</style><g fill-rule='evenodd'><path class='s0' d='m189.22 142.82h428.32l60.17 108.55-68.43 114.45 66.07 115.64-57.81 107.37h-304.43l34.22-57.81h234.81l28.32-53.1-66.08-112.1 64.9-114.45-25.96-51.92-207.67 1.18-83.78 139.24z'/><path class='s0' d='m24.03 144h138.05l27.14 54.27-63.72 3.54 158.11 269.03 123.9-215.93 68.43-1.18-192.33 333.92z'/></g></svg>"
   },
   {
     "name": "@vue-bits",
@@ -1869,5 +1996,40 @@
     "url": "https://whiskeyjack.net/r/{name}.json",
     "description": "A Tauri-first design system: thumb-first components with Metro-style pivot navigation, frosted bottom nav, and tap-again confirmations, on a CSS-variable token pipeline. Hardened across nine shipping apps before extraction.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' width='24' height='24'><rect x='0' y='0' width='256' height='256' rx='57.5' ry='57.5' fill='var(--foreground)'/><g fill='var(--background)'><path d='M63,229.55h175.28l-10.39-10.22h-52.54l-2.87-2.82-18.78-18.48c24.86-10.06,42.4-34.44,42.4-62.91l-.37-7.09v-.02s0-.06,0-.06l-.92-17.82-1.6-30.76,25.11-8.99-25.77-3.73-5.23-.76h0c-7.9-13.71-22.69-22.94-39.65-22.94-15.49,0-29.18,7.7-37.45,19.49l-1.41,2.51c3.08.85,6.08,1.89,8.97,3.13.72.31,1.43.62,2.13.95.38-.47.76-.93,1.16-1.37,6.17-6.94,15.18-11.31,25.2-11.31,18.63,0,33.73,15.1,33.73,33.73,0,.39,0,.78-.02,1.16-.07,2-.31,3.95-.71,5.85-4.87-2.99-10.14-5.37-15.72-7.06,4.86,5,8.84,10.86,11.69,17.33,1.97,4.47,3.41,9.22,4.21,14.19.51,3.1.77,6.3.77,9.54,0,28.23-19.85,51.82-46.36,57.58,0,0,0,0,0,0q-1.05.23,0,0s0,0,0,0c16.06-12.68,26.47-32.18,26.89-54.13v-.09c0-.12,0-.24,0-.36,0-.31,0-.62,0-.93,0-.11,0-.22,0-.33v-.11c0-.07,0-.15,0-.22,0-.1,0-.2,0-.3,0-.04,0-.08,0-.12v-.03h0v-.12c0-.34-.02-.68-.04-1.01-.16-3.33-.67-6.56-1.5-9.67-4.1-15.38-15.94-27.62-31.1-32.25h0c-4.28-1.31-8.82-2.02-13.53-2.02-.64,0-1.27.01-1.91.04,0-.01,0-.02,0-.04h-16.21l-2.8,5-4.67,8.32h21.41c.22,0,.45,0,.67,0h3.02c.02.07.04.14.07.22,4.93.64,9.62,2.68,13.47,5.91.05.04.12.09.17.14.59.5,1.15,1.02,1.7,1.58.18.18.36.37.53.55.18.2.36.4.54.6.14.16.29.33.42.5.05.05.1.11.14.17.16.19.32.39.46.59.13.17.26.34.39.52.07.09.13.18.19.27.12.16.24.34.35.5.03.04.06.08.08.12.1.15.2.3.3.45.13.21.26.42.39.63.02.03.04.06.06.1.1.16.2.33.29.5.21.37.41.74.6,1.13.78,1.55,1.38,3.13,1.83,4.74,0,.01,0,.03.01.05.18.65.35,1.3.48,1.97.23,1.11.39,2.24.47,3.39.16,2.26.03,4.58-.42,6.91-.07.39-.16.78-.26,1.16.18.05.36.09.53.14-.18-.04-.36-.09-.53-.13-1.54,6.4-5.34,11.71-10.37,15.26-2.15,1.51-4.53,2.71-7.05,3.52l-33.86,16.93-6.34,3.17h0l-.55.28-1.94.97-30.42,15.21-8.59,4.29h0s0,0,0,0l-14.96,26.71-5.73,10.22h35.9l5.58-10.22,10.31-18.88,7.66-14.03,16.49,12.87h.01s5.27,4.13,5.27,4.13h0l20.36,15.9h-42.1l-13.08,10.22ZM116.03,201.86,128.26,202.96c3.99,0,7.9-.35,11.7-1l17.65,17.37h-19.22l-22.36-17.47c3.96.72,8.05,1.1,12.22,1.1Z'/><path d='M158.77,70.94c0-.06,0-.12,0-.18,0-1.37.51-2.63,1.36-3.58.49-.56,1.1-1.01,1.79-1.32-1.29-.7-2.77-1.11-4.34-1.11-2.71,0-5.14,1.18-6.82,3.06-1.44,1.61-2.31,3.74-2.31,6.07,0,.1,0,.21,0,.31.16,4.89,4.18,8.82,9.12,8.82,2.04,0,3.93-.67,5.45-1.8,1.8-1.34,3.09-3.34,3.52-5.63-.72.36-1.54.57-2.4.57-2.91,0-5.28-2.31-5.37-5.2Z'/><path d='M65.42,160.73l3.88-1.94,5.25-2.63,1.5-.75,17.82-8.91,21.18-10.59c4.09-2.05,6.05-6.63,4.94-10.88h0c-.16-.63-.39-1.25-.69-1.86-1.35-2.7-3.82-4.48-6.56-5.05-.06-.06-.12-.13-.17-.2h-33.43l-10.58,18.87-4.54,8.1-2.21,3.95-10.66,19.02,14.27-7.13h0Z'/></g></svg>"
+  },
+  {
+    "name": "@atroui",
+    "homepage": "https://www.atroui.com",
+    "url": "https://www.atroui.com/r/{name}.json",
+    "description": "Dark-first React / Next.js components and marketing blocks. Install with the shadcn CLI and own the source.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect width='32' height='32' rx='8' fill='#0a0a0a'/><path d='M9 24 L16 8 L23 24' stroke='#fafafa' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/><rect x='11.5' y='16.5' width='9' height='2.4' rx='1.2' fill='#0b7bff'/></svg>"
+  },
+  {
+    "name": "@knock-codes",
+    "homepage": "https://knock.codes",
+    "url": "https://knock.codes/r/react/{name}.json",
+    "description": "Copy-paste, session-gated access blocks for React — PIN/Knock Code unlock screens, protected routes/layouts/modals, a headless useKnockCodes hook, and full-page templates.",
+    "logo": "<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><rect width='32' height='32' rx='7' fill='#0A0A0B'/><rect x='9' y='9' width='14' height='14' rx='3' fill='#F59E0B'/></svg>"
+  },
+  {
+    "name": "@remotionui",
+    "homepage": "https://remotionui.com",
+    "url": "https://remotionui.com/r/{name}.json",
+    "description": "Copy-paste motion components for Remotion video projects - 200 captions, charts, transitions, backgrounds, and full compositions.",
+    "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"var(--foreground)\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2L2 7l10 5 10-5-10-5z\"/><path d=\"M2 17l10 5 10-5\"/><path d=\"M2 12l10 5 10-5\"/></svg>"
+  },
+  {
+    "name": "@vernostudio",
+    "homepage": "https://verno-studio.vercel.app/components",
+    "url": "https://verno-studio.vercel.app/r/{name}.json",
+    "description": "The full OKLCH scale plus every variable shadcn components read, so anything you install lands on the same tokens instead of its own colors.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'><rect width='64' height='64' fill='var(--foreground)'/><path d='M42.8135 16.0503H48L34.2018 48H29.896L16 16.0503L21.3333 16L32.1468 41.8113L42.8135 16.0503Z' fill='var(--background)'/></svg>"
+  },
+  {
+    "name": "@onchain-ui",
+    "homepage": "https://onchain-ui.dev",
+    "url": "https://onchain-ui.dev/r/{name}.json",
+    "description": "Web3 components for shadcn apps. Wallet identity, token logos, balances, and market UI primitives for EVM products.",
+    "logo": "<svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M32 8L58 54H6L32 8Z\" fill=\"currentColor\"/><path d=\"M24 38H40\" stroke=\"var(--background)\" stroke-width=\"4\" stroke-linecap=\"round\"/><circle cx=\"24\" cy=\"38\" r=\"3\" fill=\"var(--background)\"/><circle cx=\"40\" cy=\"38\" r=\"3\" fill=\"var(--background)\"/></svg>"
   }
 ]

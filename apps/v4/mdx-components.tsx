@@ -175,7 +175,7 @@ export const mdxComponents = {
   // Typeset tables stay real tables and wrap to fit; wrap them to scroll
   // wide ones horizontally instead.
   table: (props: React.ComponentProps<"table">) => (
-    <div className="typeset-scroll scroll-fade-x scrollbar-none">
+    <div className="typeset-scroll scroll-fade-x scrollbar-none *:[table]:w-full">
       <table {...props} />
     </div>
   ),
@@ -330,7 +330,12 @@ export const mdxComponents = {
     <Button className={cn("not-typeset", className)} {...props} />
   ),
   Callout,
-  Accordion,
+  Accordion: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof Accordion>) => (
+    <Accordion className={cn("not-typeset", className)} {...props} />
+  ),
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
