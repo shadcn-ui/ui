@@ -1,0 +1,1 @@
+export function clampRange(val: [number, number], min: number, max: number, step = 1): [number, number] { const lower = Math.max(min, Math.min(val[0], val[1])); const upper = Math.min(max, Math.max(val[0], val[1])); return [Math.round(lower / step) * step, Math.round(upper / step) * step]; }
