@@ -1,0 +1,1 @@
+export class PresenceManager { private visible = false; setVisible(v: boolean, onUnmount: () => void, durationMs = 150) { this.visible = v; if (!v) setTimeout(onUnmount, durationMs); } isPresent() { return this.visible; } }
