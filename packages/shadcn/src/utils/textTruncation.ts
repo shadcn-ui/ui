@@ -1,0 +1,1 @@
+export function isTextClamped(el: HTMLElement): boolean { return el.scrollHeight > el.clientHeight || el.scrollWidth > el.clientWidth; }
