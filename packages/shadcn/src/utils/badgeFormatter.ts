@@ -1,0 +1,1 @@
+export function formatBadgeCount(count: number, max = 99): string { if (count > max) return max + '+'; return String(count); }
