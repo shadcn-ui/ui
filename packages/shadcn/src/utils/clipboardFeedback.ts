@@ -1,0 +1,1 @@
+export class ClipboardFeedbackTimer { private timer: any; start(cb: (copied: boolean) => void, timeoutMs = 2000) { cb(true); clearTimeout(this.timer); this.timer = setTimeout(() => cb(false), timeoutMs); } }
