@@ -3,7 +3,7 @@ import { promises as fs } from "node:fs"
 import os from "node:os"
 import path from "node:path"
 
-import type { RegistryDryRunResult } from "./monitor"
+import { DEFAULT_STYLE, type RegistryDryRunResult } from "./monitor"
 
 async function runLocalCliDryRun({
   namespace,
@@ -33,7 +33,7 @@ async function runLocalCliDryRun({
         JSON.stringify(
           {
             $schema: "https://ui.shadcn.com/schema.json",
-            style: "new-york",
+            style: DEFAULT_STYLE,
             rsc: true,
             tsx: true,
             tailwind: {

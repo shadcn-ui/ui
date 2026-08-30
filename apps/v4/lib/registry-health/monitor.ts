@@ -30,6 +30,10 @@ const DAILY_CHECK_INTERVAL_MS = 20 * 60 * 60 * 1000
 const WEEKLY_CHECK_INTERVAL_MS = 6 * DAY_MS
 const MAX_DRY_RUN_CONCURRENCY = 4
 
+// Registries cannot declare a default style yet, so resolve {style} urls
+// with the canonical first base and style combination.
+export const DEFAULT_STYLE = "radix-vega"
+
 export type RegistryMonitorMode = RegistryMonitorRun["mode"]
 
 export type RegistryDryRunResult = {
@@ -279,7 +283,7 @@ function recordDryRunObservation(
 }
 
 function replaceRegistryItem(url: string, item: string) {
-  return url.replace("{name}", item)
+  return url.replace("{name}", item).replace("{style}", DEFAULT_STYLE)
 }
 
 function hasIntervalElapsed(
