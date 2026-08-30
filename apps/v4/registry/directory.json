@@ -2031,5 +2031,12 @@
     "url": "https://onchain-ui.dev/r/{name}.json",
     "description": "Web3 components for shadcn apps. Wallet identity, token logos, balances, and market UI primitives for EVM products.",
     "logo": "<svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M32 8L58 54H6L32 8Z\" fill=\"currentColor\"/><path d=\"M24 38H40\" stroke=\"var(--background)\" stroke-width=\"4\" stroke-linecap=\"round\"/><circle cx=\"24\" cy=\"38\" r=\"3\" fill=\"var(--background)\"/><circle cx=\"40\" cy=\"38\" r=\"3\" fill=\"var(--background)\"/></svg>"
+  },
+  {
+    "name": "@afterglow",
+    "homepage": "https://afterglow.thebuilder.dk",
+    "url": "https://afterglow.thebuilder.dk/r/{name}.json",
+    "description": "A complete terminal UI system for shadcn with Base UI components, terminal-specific building blocks, and eight phosphor color themes.",
+    "logo": "<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg' fill='currentColor'><path d='M6.45 5.9L18.23 16L6.45 26.1L3 22.07L10.09 16L3 9.93Z'/><path d='M18.4 20.24H29V24.48H18.4Z'/></svg>"
   }
 ]
