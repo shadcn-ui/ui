@@ -137,6 +137,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/official",
+        destination: "/docs/official",
+        permanent: true,
+      },
+      {
         source: "/docs/primitives/:path*",
         destination: "/docs/components/:path*",
         permanent: true,
