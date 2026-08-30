@@ -22,7 +22,7 @@ export default function InputGroupTextExample() {
         <InputGroupAddon>
           <InputGroupText>https://</InputGroupText>
         </InputGroupAddon>
-        <InputGroupInput placeholder="example.com" className="!pl-0.5" />
+        <InputGroupInput placeholder="example.com" className="pl-0.5!" />
         <InputGroupAddon align="inline-end">
           <InputGroupText>.com</InputGroupText>
         </InputGroupAddon>
@@ -36,7 +36,7 @@ export default function InputGroupTextExample() {
       <InputGroup>
         <InputGroupTextarea placeholder="Enter your message" />
         <InputGroupAddon align="block-end">
-          <InputGroupText className="text-muted-foreground text-xs">
+          <InputGroupText className="text-xs text-muted-foreground">
             120 characters left
           </InputGroupText>
         </InputGroupAddon>

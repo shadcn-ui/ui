@@ -2,13 +2,19 @@ import { REGISTRY_URL } from "@/src/registry/constants"
 import {
   RegistryFetchError,
   RegistryForbiddenError,
+  RegistryGoneError,
   RegistryNotFoundError,
   RegistryUnauthorizedError,
 } from "@/src/registry/errors"
-import { HttpResponse, http } from "msw"
+import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest"
 
+import {
+  clearRegistryContext,
+  setRegistryHeaders,
+  withRegistryContext,
+} from "./context"
 import { clearRegistryCache, fetchRegistry } from "./fetcher"
 
 const server = setupServer(
@@ -29,6 +35,9 @@ const server = setupServer(
   }),
   http.get(`${REGISTRY_URL}/forbidden.json`, () => {
     return new HttpResponse(null, { status: 403 })
+  }),
+  http.get(`${REGISTRY_URL}/gone.json`, () => {
+    return new HttpResponse(null, { status: 410 })
   }),
   http.get("https://external.com/component.json", () => {
     return HttpResponse.json({
@@ -81,6 +90,37 @@ describe("fetchRegistry", () => {
     expect(result2[0]).toMatchObject({ name: "test" })
   })
 
+  it("should separate cached responses by registry headers", async () => {
+    const url = `${REGISTRY_URL}/authenticated.json`
+    server.use(
+      http.get(url, ({ request }) =>
+        HttpResponse.json({
+          authorization: request.headers.get("authorization"),
+        })
+      )
+    )
+
+    const fetchWithToken = (token: string) =>
+      withRegistryContext(async () => {
+        setRegistryHeaders({
+          [url]: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+
+        const [result] = await fetchRegistry([url], { useCache: true })
+        return result
+      })
+
+    const [first, second] = await Promise.all([
+      fetchWithToken("first"),
+      fetchWithToken("second"),
+    ])
+
+    expect(first).toEqual({ authorization: "Bearer first" })
+    expect(second).toEqual({ authorization: "Bearer second" })
+  })
+
   it("should not use cache when disabled", async () => {
     // Mock the server to return different responses
     let callCount = 0
@@ -120,6 +160,12 @@ describe("fetchRegistry", () => {
   it("should handle 403 errors", async () => {
     await expect(fetchRegistry(["forbidden.json"])).rejects.toThrow(
       RegistryForbiddenError
+    )
+  })
+
+  it("should handle 410 errors", async () => {
+    await expect(fetchRegistry(["gone.json"])).rejects.toThrow(
+      RegistryGoneError
     )
   })
 
@@ -193,6 +239,134 @@ describe("fetchRegistry", () => {
     expect(result).toHaveLength(2)
     expect(result[0]).toMatchObject({ name: "button" })
     expect(result[1]).toMatchObject({ name: "card" })
+  })
+
+  it("should send specific Accept and User-Agent headers", async () => {
+    let acceptHeader: string | null = null
+    let userAgentHeader: string | null = null
+    server.use(
+      http.get(`${REGISTRY_URL}/header-test.json`, ({ request }) => {
+        acceptHeader = request.headers.get("accept")
+        userAgentHeader = request.headers.get("user-agent")
+        return HttpResponse.json({
+          name: "header-test",
+          type: "registry:ui",
+        })
+      })
+    )
+
+    await fetchRegistry(["header-test.json"], { useCache: false })
+    expect(acceptHeader).toBe(
+      "application/vnd.shadcn.v1+json, application/json;q=0.9"
+    )
+    expect(userAgentHeader).toBe("shadcn")
+  })
+
+  it("should allow per-registry headers to override the default Accept and User-Agent", async () => {
+    let acceptHeader: string | null = null
+    let userAgentHeader: string | null = null
+    server.use(
+      http.get(`${REGISTRY_URL}/override-test.json`, ({ request }) => {
+        acceptHeader = request.headers.get("accept")
+        userAgentHeader = request.headers.get("user-agent")
+        return HttpResponse.json({
+          name: "override-test",
+          type: "registry:ui",
+        })
+      })
+    )
+
+    setRegistryHeaders({
+      [`${REGISTRY_URL}/override-test.json`]: {
+        Accept: "application/custom+json",
+        "User-Agent": "custom-client/1.0",
+      },
+    })
+
+    await fetchRegistry(["override-test.json"], { useCache: false })
+
+    expect(acceptHeader).toBe("application/custom+json")
+    expect(userAgentHeader).toBe("custom-client/1.0")
+
+    clearRegistryContext()
+  })
+
+  it("should allow lowercase per-registry headers to override the default Accept and User-Agent", async () => {
+    let acceptHeader: string | null = null
+    let userAgentHeader: string | null = null
+    server.use(
+      http.get(
+        `${REGISTRY_URL}/lowercase-override-test.json`,
+        ({ request }) => {
+          acceptHeader = request.headers.get("accept")
+          userAgentHeader = request.headers.get("user-agent")
+          return HttpResponse.json({
+            name: "lowercase-override-test",
+            type: "registry:ui",
+          })
+        }
+      )
+    )
+
+    setRegistryHeaders({
+      [`${REGISTRY_URL}/lowercase-override-test.json`]: {
+        accept: "application/custom+json",
+        "user-agent": "custom-client/1.0",
+      },
+    })
+
+    await fetchRegistry(["lowercase-override-test.json"], { useCache: false })
+
+    expect(acceptHeader).toBe("application/custom+json")
+    expect(userAgentHeader).toBe("custom-client/1.0")
+
+    clearRegistryContext()
+  })
+
+  it("should send specific Accept header for direct external URLs", async () => {
+    let acceptHeader: string | null = null
+    server.use(
+      http.get("https://external.com/registry/item.json", ({ request }) => {
+        acceptHeader = request.headers.get("accept")
+        return HttpResponse.json({
+          name: "item",
+          type: "registry:ui",
+        })
+      })
+    )
+
+    await fetchRegistry(["https://external.com/registry/item.json"], {
+      useCache: false,
+    })
+    expect(acceptHeader).toBe(
+      "application/vnd.shadcn.v1+json, application/json;q=0.9"
+    )
+  })
+
+  it("should successfully fetch when the server requires the specific Shadcn Accept header (Content Negotiation)", async () => {
+    server.use(
+      http.get(`${REGISTRY_URL}/content-negotiation.json`, ({ request }) => {
+        const accept = request.headers.get("accept")
+        if (!accept?.includes("application/vnd.shadcn.v1+json")) {
+          return new HttpResponse(
+            "<!DOCTYPE html><html><body>Error: Specific header missing</body></html>",
+            {
+              status: 200,
+              headers: { "Content-Type": "text/html" },
+            }
+          )
+        }
+        return HttpResponse.json({
+          name: "content-negotiation",
+          type: "registry:ui",
+        })
+      })
+    )
+
+    const [result] = await fetchRegistry(["content-negotiation.json"], {
+      useCache: false,
+    })
+    expect(result).toMatchObject({ name: "content-negotiation" })
   })
 })
 

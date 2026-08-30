@@ -3,35 +3,60 @@ import {
   type IconLibrary,
   type IconLibraryName,
 } from "shadcn/icons"
+import { registryItemSchema, type RegistryItem } from "shadcn/schema"
 import { z } from "zod"
 
 import { BASE_COLORS, type BaseColor } from "@/registry/base-colors"
 import { BASES, type Base } from "@/registry/bases"
-import { fonts } from "@/registry/fonts"
+import { bodyFonts, fonts, headingFonts } from "@/registry/fonts"
 import { STYLES, type Style } from "@/registry/styles"
 import { THEMES, type Theme } from "@/registry/themes"
 
 const SHADCN_VERSION = "latest"
+const DEFAULT_RADIUS_VALUE = "0.625rem"
 
 export { BASES, type Base }
 export { STYLES, type Style }
 export { THEMES, type Theme }
 export { BASE_COLORS, type BaseColor }
-export { fonts }
+export { bodyFonts, headingFonts, fonts }
 export { iconLibraries, type IconLibrary, type IconLibraryName }
 
 export type BaseName = Base["name"]
 export type StyleName = Style["name"]
 export type ThemeName = Theme["name"]
 export type BaseColorName = BaseColor["name"]
+export type ChartColorName = Theme["name"]
+export const REGISTRY_BASE_PARTS = ["theme", "font"] as const
+export type RegistryBasePart = (typeof REGISTRY_BASE_PARTS)[number]
+export const POINTER_CURSOR_SELECTOR =
+  'button:not(:disabled), [role="button"]:not(:disabled)'
 
 // Derive font values from registry fonts (e.g., "font-inter" -> "inter").
-const fontValues = fonts.map((f) => f.name.replace("font-", "")) as [
+const fontValues = bodyFonts.map((f) => f.name.replace("font-", "")) as [
   string,
   ...string[],
 ]
+const fontHeadingValues = ["inherit", ...fontValues] as const
 
 export type FontValue = (typeof fontValues)[number]
+export type FontHeadingValue = (typeof fontHeadingValues)[number]
+
+export function getBodyFont(font: FontValue) {
+  return bodyFonts.find((item) => item.name === `font-${font}`)
+}
+
+export function getHeadingFont(
+  fontHeading: Exclude<FontHeadingValue, "inherit">
+) {
+  return headingFonts.find(
+    (item) => item.name === `font-heading-${fontHeading}`
+  )
+}
+
+export function getInheritedHeadingFontValue(font: FontValue) {
+  return `var(${getBodyFont(font)?.font.variable ?? "--font-sans"})`
+}
 
 export const MENU_ACCENTS = [
   { value: "subtle", label: "Subtle" },
@@ -44,6 +69,8 @@ export type MenuAccentValue = MenuAccent["value"]
 export const MENU_COLORS = [
   { value: "default", label: "Default" },
   { value: "inverted", label: "Inverted" },
+  { value: "default-translucent", label: "Default Translucent" },
+  { value: "inverted-translucent", label: "Inverted Translucent" },
 ] as const
 
 export type MenuColor = (typeof MENU_COLORS)[number]
@@ -75,8 +102,14 @@ export const designSystemConfigSchema = z
       )
       .default("neutral"),
     theme: z.enum(THEMES.map((t) => t.name) as [ThemeName, ...ThemeName[]]),
+    chartColor: z
+      .enum(THEMES.map((t) => t.name) as [ChartColorName, ...ChartColorName[]])
+      .optional(),
     font: z.enum(fontValues).default("inter"),
+    fontHeading: z.enum(fontHeadingValues).default("inherit"),
     item: z.string().optional(),
+    rtl: z.boolean().default(false),
+    pointer: z.boolean().default(false),
     menuAccent: z
       .enum(
         MENU_ACCENTS.map((a) => a.value) as [
@@ -93,8 +126,27 @@ export const designSystemConfigSchema = z
     radius: z
       .enum(RADII.map((r) => r.name) as [RadiusValue, ...RadiusValue[]])
       .default("default"),
-    template: z.enum(["next", "start", "vite"]).default("next").optional(),
+    template: z
+      .enum([
+        "next",
+        "next-monorepo",
+        "start",
+        "react-router",
+        "vite",
+        "vite-monorepo",
+        "react-router-monorepo",
+        "start-monorepo",
+        "astro",
+        "astro-monorepo",
+        "laravel",
+      ])
+      .default("next")
+      .optional(),
   })
+  .transform((data) => ({
+    ...data,
+    chartColor: data.chartColor ?? data.theme,
+  }))
   .refine(
     (data) => {
       const availableThemes = getThemesForBaseColor(data.baseColor)
@@ -105,17 +157,31 @@ export const designSystemConfigSchema = z
       path: ["theme"],
     })
   )
+  .refine(
+    (data) => {
+      const availableThemes = getThemesForBaseColor(data.baseColor)
+      return availableThemes.some((t) => t.name === data.chartColor)
+    },
+    (data) => ({
+      message: `Chart color "${data.chartColor}" is not available for base color "${data.baseColor}"`,
+      path: ["chartColor"],
+    })
+  )
 
 export type DesignSystemConfig = z.infer<typeof designSystemConfigSchema>
 
 export const DEFAULT_CONFIG: DesignSystemConfig = {
-  base: "radix",
-  style: "vega",
+  base: "base",
+  style: "nova",
   baseColor: "neutral",
   theme: "neutral",
+  chartColor: "neutral",
   iconLibrary: "lucide",
   font: "inter",
+  fontHeading: "inherit",
   item: "Item",
+  rtl: false,
+  pointer: false,
   menuAccent: "subtle",
   menuColor: "default",
   radius: "default",
@@ -126,21 +192,24 @@ export type Preset = {
   name: string
   title: string
   description: string
-} & DesignSystemConfig
+} & Omit<DesignSystemConfig, "pointer">
 
 export const PRESETS: Preset[] = [
   // Radix.
   {
     name: "radix-vega",
     title: "Vega (Radix)",
-    description: "Vega / Lucide / Geist Sans",
+    description: "Vega / Lucide / Inter",
     base: "radix",
     style: "vega",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "lucide",
-    font: "geist",
+    font: "inter",
+    fontHeading: "inherit",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -148,14 +217,17 @@ export const PRESETS: Preset[] = [
   {
     name: "radix-nova",
     title: "Nova (Radix)",
-    description: "Nova / Hugeicons / Inter",
+    description: "Nova / Lucide / Geist",
     base: "radix",
     style: "nova",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "hugeicons",
-    font: "inter",
+    chartColor: "neutral",
+    iconLibrary: "lucide",
+    font: "geist",
+    fontHeading: "inherit",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -168,9 +240,12 @@ export const PRESETS: Preset[] = [
     style: "maia",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "hugeicons",
     font: "figtree",
+    fontHeading: "inherit",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -183,9 +258,157 @@ export const PRESETS: Preset[] = [
     style: "lyra",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "hugeicons",
+    chartColor: "neutral",
+    iconLibrary: "phosphor",
     font: "jetbrains-mono",
+    fontHeading: "inherit",
     item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  {
+    name: "radix-mira",
+    title: "Mira (Radix)",
+    description: "Mira / Hugeicons / Inter",
+    base: "radix",
+    style: "mira",
+    baseColor: "neutral",
+    theme: "neutral",
+    chartColor: "neutral",
+    iconLibrary: "hugeicons",
+    font: "inter",
+    fontHeading: "inherit",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  {
+    name: "radix-luma",
+    title: "Luma (Radix)",
+    description: "Luma / Lucide / Inter",
+    base: "radix",
+    style: "luma",
+    baseColor: "neutral",
+    theme: "neutral",
+    chartColor: "neutral",
+    iconLibrary: "lucide",
+    font: "inter",
+    fontHeading: "inherit",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  // Aria.
+  {
+    name: "aria-vega",
+    title: "Vega (Aria)",
+    description: "Vega / Lucide / Inter",
+    base: "aria",
+    style: "vega",
+    baseColor: "neutral",
+    theme: "neutral",
+    chartColor: "neutral",
+    iconLibrary: "lucide",
+    font: "inter",
+    fontHeading: "inherit",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  {
+    name: "base-nova",
+    title: "Nova (Base)",
+    description: "Nova / Lucide / Geist",
+    base: "base",
+    style: "nova",
+    baseColor: "neutral",
+    theme: "neutral",
+    chartColor: "neutral",
+    iconLibrary: "lucide",
+    font: "geist",
+    fontHeading: "inherit",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  {
+    name: "base-maia",
+    title: "Maia (Base)",
+    description: "Maia / Hugeicons / Figtree",
+    base: "base",
+    style: "maia",
+    baseColor: "neutral",
+    theme: "neutral",
+    chartColor: "neutral",
+    iconLibrary: "hugeicons",
+    font: "figtree",
+    fontHeading: "inherit",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  {
+    name: "base-lyra",
+    title: "Lyra (Base)",
+    description: "Lyra / Tabler / JetBrains Mono",
+    base: "base",
+    style: "lyra",
+    baseColor: "neutral",
+    theme: "neutral",
+    chartColor: "neutral",
+    iconLibrary: "phosphor",
+    font: "jetbrains-mono",
+    fontHeading: "inherit",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  {
+    name: "base-mira",
+    title: "Mira (Base)",
+    description: "Mira / Hugeicons / Inter",
+    base: "base",
+    style: "mira",
+    baseColor: "neutral",
+    theme: "neutral",
+    chartColor: "neutral",
+    iconLibrary: "hugeicons",
+    font: "inter",
+    fontHeading: "inherit",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  {
+    name: "base-luma",
+    title: "Luma (Base)",
+    description: "Luma / Lucide / Inter",
+    base: "base",
+    style: "luma",
+    baseColor: "neutral",
+    theme: "neutral",
+    chartColor: "neutral",
+    iconLibrary: "lucide",
+    font: "inter",
+    fontHeading: "inherit",
+    item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -199,84 +422,212 @@ export const PRESETS: Preset[] = [
     style: "vega",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "lucide",
     font: "inter",
+    fontHeading: "inherit",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
   },
   {
-    name: "base-nova",
-    title: "Nova (Base)",
-    description: "Nova / Hugeicons / Inter",
-    base: "base",
+    name: "aria-nova",
+    title: "Nova (Aria)",
+    description: "Nova / Lucide / Geist",
+    base: "aria",
     style: "nova",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "hugeicons",
-    font: "inter",
+    chartColor: "neutral",
+    iconLibrary: "lucide",
+    font: "geist",
+    fontHeading: "inherit",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
   },
   {
-    name: "base-maia",
-    title: "Maia (Base)",
+    name: "aria-maia",
+    title: "Maia (Aria)",
     description: "Maia / Hugeicons / Figtree",
-    base: "base",
+    base: "aria",
     style: "maia",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "hugeicons",
     font: "figtree",
+    fontHeading: "inherit",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
   },
   {
-    name: "base-lyra",
-    title: "Lyra (Base)",
+    name: "aria-lyra",
+    title: "Lyra (Aria)",
     description: "Lyra / Tabler / JetBrains Mono",
-    base: "base",
+    base: "aria",
     style: "lyra",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "hugeicons",
+    chartColor: "neutral",
+    iconLibrary: "phosphor",
     font: "jetbrains-mono",
+    fontHeading: "inherit",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
   },
   {
-    name: "radix-mira",
-    title: "Mira (Radix)",
+    name: "aria-mira",
+    title: "Mira (Aria)",
     description: "Mira / Hugeicons / Inter",
+    base: "aria",
+    style: "mira",
+    baseColor: "neutral",
+    theme: "neutral",
+    chartColor: "neutral",
+    iconLibrary: "hugeicons",
+    font: "inter",
+    fontHeading: "inherit",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  {
+    name: "aria-luma",
+    title: "Luma (Aria)",
+    description: "Luma / Lucide / Inter",
+    base: "aria",
+    style: "luma",
+    baseColor: "neutral",
+    theme: "neutral",
+    chartColor: "neutral",
+    iconLibrary: "lucide",
+    font: "inter",
+    fontHeading: "inherit",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  // Rhea.
+  {
+    name: "radix-rhea",
+    title: "Rhea (Radix)",
+    description: "Rhea / Lucide / Inter",
     base: "radix",
-    style: "mira",
+    style: "rhea",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "hugeicons",
+    chartColor: "neutral",
+    iconLibrary: "lucide",
     font: "inter",
+    fontHeading: "inherit",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
   },
   {
-    name: "base-mira",
-    title: "Mira (Base)",
-    description: "Mira / Hugeicons / Inter",
+    name: "base-rhea",
+    title: "Rhea (Base)",
+    description: "Rhea / Lucide / Inter",
     base: "base",
-    style: "mira",
+    style: "rhea",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "hugeicons",
+    chartColor: "neutral",
+    iconLibrary: "lucide",
     font: "inter",
+    fontHeading: "inherit",
     item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  {
+    name: "aria-rhea",
+    title: "Rhea (Aria)",
+    description: "Rhea / Lucide / Inter",
+    base: "aria",
+    style: "rhea",
+    baseColor: "neutral",
+    theme: "neutral",
+    chartColor: "neutral",
+    iconLibrary: "lucide",
+    font: "inter",
+    fontHeading: "inherit",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  // Sera.
+  {
+    name: "radix-sera",
+    title: "Sera (Radix)",
+    description: "Sera / Lucide / Noto Sans + Playfair Display",
+    base: "radix",
+    style: "sera",
+    baseColor: "taupe",
+    theme: "taupe",
+    chartColor: "taupe",
+    iconLibrary: "lucide",
+    font: "noto-sans",
+    fontHeading: "playfair-display",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  {
+    name: "base-sera",
+    title: "Sera (Base)",
+    description: "Sera / Lucide / Noto Sans + Playfair Display",
+    base: "base",
+    style: "sera",
+    baseColor: "taupe",
+    theme: "taupe",
+    chartColor: "taupe",
+    iconLibrary: "lucide",
+    font: "noto-sans",
+    fontHeading: "playfair-display",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  {
+    name: "aria-sera",
+    title: "Sera (Aria)",
+    description: "Sera / Lucide / Noto Sans + Playfair Display",
+    base: "aria",
+    style: "sera",
+    baseColor: "taupe",
+    theme: "taupe",
+    chartColor: "taupe",
+    iconLibrary: "lucide",
+    font: "noto-sans",
+    fontHeading: "playfair-display",
+    item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -314,6 +665,35 @@ export function getIconLibrary(name: IconLibraryName) {
   return iconLibraries[name]
 }
 
+export function parseRegistryBaseParts(value: string | null) {
+  if (value === null) {
+    return { success: true as const, parts: undefined }
+  }
+
+  const aliases: Record<string, RegistryBasePart> = {
+    theme: "theme",
+    font: "font",
+    fonts: "font",
+  }
+  const rawParts = value
+    .split(",")
+    .map((part) => part.trim().toLowerCase())
+    .filter(Boolean)
+  const invalid = rawParts.filter((part) => !aliases[part])
+
+  if (!rawParts.length || invalid.length) {
+    return {
+      success: false as const,
+      error: `Invalid only value. Use one or more of: ${REGISTRY_BASE_PARTS.join(", ")}`,
+    }
+  }
+
+  return {
+    success: true as const,
+    parts: Array.from(new Set(rawParts.map((part) => aliases[part]))),
+  }
+}
+
 // Builds a registry:theme item from a design system config.
 export function buildRegistryTheme(config: DesignSystemConfig) {
   const baseColor = getBaseColor(config.baseColor)
@@ -336,16 +716,28 @@ export function buildRegistryTheme(config: DesignSystemConfig) {
   }
   const themeVars: Record<string, string> = {}
 
+  // Apply chart color override.
+  const chartTheme = getTheme(config.chartColor)
+  if (chartTheme) {
+    const chartLight = chartTheme.cssVars?.light as Record<string, string>
+    const chartDark = chartTheme.cssVars?.dark as Record<string, string>
+    for (let i = 1; i <= 5; i++) {
+      const key = `chart-${i}`
+      if (chartLight?.[key]) lightVars[key] = chartLight[key]
+      if (chartDark?.[key]) darkVars[key] = chartDark[key]
+    }
+  }
+
   // Apply menu accent transformation.
   if (config.menuAccent === "bold") {
     lightVars.accent = lightVars.primary
     lightVars["accent-foreground"] = lightVars["primary-foreground"]
     darkVars.accent = darkVars.primary
     darkVars["accent-foreground"] = darkVars["primary-foreground"]
-    lightVars["sidebar-accent"] = lightVars.primary
-    lightVars["sidebar-accent-foreground"] = lightVars["primary-foreground"]
-    darkVars["sidebar-accent"] = darkVars.primary
-    darkVars["sidebar-accent-foreground"] = darkVars["primary-foreground"]
+    // lightVars["sidebar-accent"] = lightVars.primary
+    // lightVars["sidebar-accent-foreground"] = lightVars["primary-foreground"]
+    // darkVars["sidebar-accent"] = darkVars.primary
+    // darkVars["sidebar-accent-foreground"] = darkVars["primary-foreground"]
   }
 
   // Apply radius transformation.
@@ -367,10 +759,34 @@ export function buildRegistryTheme(config: DesignSystemConfig) {
   }
 }
 
+export function buildThemeForPreset(config: DesignSystemConfig) {
+  const registryTheme = buildRegistryTheme(config)
+  const radius = RADII.find((r) => r.name === config.radius)
+  const radiusValue =
+    config.radius === "default"
+      ? (registryTheme.cssVars?.light?.radius ?? DEFAULT_RADIUS_VALUE)
+      : (radius?.value ?? registryTheme.cssVars?.light?.radius)
+
+  return registryItemSchema.parse({
+    $schema: "https://ui.shadcn.com/schema/registry-item.json",
+    name: registryTheme.name,
+    type: "registry:theme",
+    cssVars: {
+      ...registryTheme.cssVars,
+      light: {
+        ...registryTheme.cssVars.light,
+        ...(radiusValue && { radius: radiusValue }),
+      },
+    },
+  })
+}
+
 // Builds a registry:base item from a design system config.
 export function buildRegistryBase(config: DesignSystemConfig) {
   const baseItem = getBase(config.base)
   const iconLibraryItem = getIconLibrary(config.iconLibrary)
+  const normalizedFontHeading =
+    config.fontHeading === config.font ? "inherit" : config.fontHeading
 
   if (!baseItem || !iconLibraryItem) {
     throw new Error(
@@ -390,9 +806,19 @@ export function buildRegistryBase(config: DesignSystemConfig) {
   ]
 
   const registryDependencies = ["utils"]
+  const themeVars = {
+    ...(registryTheme.cssVars?.theme ?? {}),
+    ...(normalizedFontHeading === "inherit"
+      ? { "--font-heading": getInheritedHeadingFontValue(config.font) }
+      : {}),
+  }
 
   if (config.font) {
     registryDependencies.push(`font-${config.font}`)
+  }
+
+  if (normalizedFontHeading !== "inherit") {
+    registryDependencies.push(`font-heading-${normalizedFontHeading}`)
   }
 
   return {
@@ -402,6 +828,7 @@ export function buildRegistryBase(config: DesignSystemConfig) {
     config: {
       style: `${config.base}-${config.style}`,
       iconLibrary: iconLibraryItem.name,
+      rtl: config.rtl,
       menuColor: config.menuColor,
       menuAccent: config.menuAccent,
       tailwind: {
@@ -410,14 +837,90 @@ export function buildRegistryBase(config: DesignSystemConfig) {
     },
     dependencies,
     registryDependencies,
-    cssVars: registryTheme.cssVars,
+    cssVars: {
+      ...registryTheme.cssVars,
+      theme: Object.keys(themeVars).length > 0 ? themeVars : undefined,
+    },
     css: {
       '@import "tw-animate-css"': {},
       '@import "shadcn/tailwind.css"': {},
       "@layer base": {
         "*": { "@apply border-border outline-ring/50": {} },
         body: { "@apply bg-background text-foreground": {} },
+        ...(config.pointer && {
+          [POINTER_CURSOR_SELECTOR]: {
+            cursor: "pointer",
+          },
+        }),
       },
     },
+    ...(config.rtl && {
+      docs: `To learn how to set up the RTL provider and fonts for your app, see https://ui.shadcn.com/docs/rtl/${config.template === "next-monorepo" ? "next" : (config.template ?? "next")}`,
+    }),
   }
+}
+
+export function buildPartialRegistryBase(
+  config: DesignSystemConfig,
+  parts: RegistryBasePart[]
+) {
+  const uniqueParts = Array.from(new Set(parts))
+  const normalizedFontHeading =
+    config.fontHeading === config.font ? "inherit" : config.fontHeading
+  const partialConfig: {
+    menuColor?: DesignSystemConfig["menuColor"]
+    menuAccent?: DesignSystemConfig["menuAccent"]
+    tailwind?: {
+      baseColor?: string
+    }
+  } = {}
+  const registryDependencies: string[] = []
+  const cssVars: NonNullable<RegistryItem["cssVars"]> = {}
+
+  if (uniqueParts.includes("theme")) {
+    const registryTheme = buildRegistryTheme(config)
+
+    partialConfig.menuColor = config.menuColor
+    partialConfig.menuAccent = config.menuAccent
+    partialConfig.tailwind = {
+      baseColor: config.baseColor,
+    }
+
+    if (registryTheme.cssVars.theme) {
+      cssVars.theme = {
+        ...(cssVars.theme ?? {}),
+        ...registryTheme.cssVars.theme,
+      }
+    }
+    cssVars.light = {
+      ...(cssVars.light ?? {}),
+      ...registryTheme.cssVars.light,
+    }
+    cssVars.dark = {
+      ...(cssVars.dark ?? {}),
+      ...registryTheme.cssVars.dark,
+    }
+  }
+
+  if (uniqueParts.includes("font")) {
+    registryDependencies.push(`font-${config.font}`)
+
+    if (normalizedFontHeading !== "inherit") {
+      registryDependencies.push(`font-heading-${normalizedFontHeading}`)
+    } else {
+      cssVars.theme = {
+        ...(cssVars.theme ?? {}),
+        "--font-heading": getInheritedHeadingFontValue(config.font),
+      }
+    }
+  }
+
+  return {
+    name: `${config.base}-${config.style}-${uniqueParts.join("-")}`,
+    extends: "none",
+    type: "registry:base" as const,
+    ...(Object.keys(partialConfig).length > 0 && { config: partialConfig }),
+    ...(registryDependencies.length > 0 && { registryDependencies }),
+    ...(Object.keys(cssVars).length > 0 && { cssVars }),
+  } satisfies RegistryItem
 }

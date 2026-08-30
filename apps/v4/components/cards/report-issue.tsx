@@ -61,7 +61,7 @@ export function CardsReportIssue() {
               <Select defaultValue="2">
                 <SelectTrigger
                   id={`security-level-${id}`}
-                  className="w-full [&_span]:!block [&_span]:truncate"
+                  className="w-full [&_span]:block! [&_span]:truncate"
                   aria-label="Security Level"
                 >
                   <SelectValue placeholder="Select level" />

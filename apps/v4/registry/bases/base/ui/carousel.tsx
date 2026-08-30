@@ -187,7 +187,7 @@ function CarouselPrevious({
       className={cn(
         "cn-carousel-previous absolute touch-manipulation",
         orientation === "horizontal"
-          ? "top-1/2 -left-12 -translate-y-1/2"
+          ? "inset-y-0 -left-12 my-auto"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
@@ -200,6 +200,8 @@ function CarouselPrevious({
         tabler="IconChevronLeft"
         hugeicons="ArrowLeft01Icon"
         phosphor="CaretLeftIcon"
+        remixicon="RiArrowLeftSLine"
+        className="cn-rtl-flip"
       />
       <span className="sr-only">Previous slide</span>
     </Button>
@@ -222,7 +224,7 @@ function CarouselNext({
       className={cn(
         "cn-carousel-next absolute touch-manipulation",
         orientation === "horizontal"
-          ? "top-1/2 -right-12 -translate-y-1/2"
+          ? "inset-y-0 -right-12 my-auto"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
@@ -235,6 +237,8 @@ function CarouselNext({
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
+        remixicon="RiArrowRightSLine"
+        className="cn-rtl-flip"
       />
       <span className="sr-only">Next slide</span>
     </Button>

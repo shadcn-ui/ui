@@ -9,7 +9,7 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { Button } from "@/registry/new-york-v4/ui/button"
+import { Button } from "@/styles/radix-luma/ui/button"
 
 const title = "Tailwind Colors in Every Format"
 const description =
@@ -51,10 +51,10 @@ export default function ColorsLayout({
         <PageHeaderHeading>{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
-          <Button asChild size="sm">
+          <Button asChild className="h-[35px]">
             <a href="#colors">Browse Colors</a>
           </Button>
-          <Button asChild variant="ghost" size="sm">
+          <Button asChild variant="secondary">
             <Link href="/docs/theming">Documentation</Link>
           </Button>
         </PageActions>
@@ -62,7 +62,7 @@ export default function ColorsLayout({
       <div className="hidden">
         <div className="container-wrapper">
           <div className="container flex items-center justify-between gap-8 py-4">
-            <ColorsNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
+            <ColorsNav className="flex-1 overflow-hidden [&>a:first-child]:text-primary" />
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ import {
   PageHeaderHeading,
 } from "@/components/page-header"
 import { PageNav } from "@/components/page-nav"
-import { Button } from "@/registry/new-york-v4/ui/button"
+import { Button } from "@/styles/radix-luma/ui/button"
 
 const title = "Building Blocks for the Web"
 const description =
@@ -52,11 +52,11 @@ export default function BlocksLayout({
         <PageHeaderHeading>{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
-          <Button asChild size="sm">
+          <Button asChild className="h-[35px]">
             <a href="#blocks">Browse Blocks</a>
           </Button>
-          <Button asChild variant="ghost" size="sm">
-            <Link href="/docs/blocks">Add a block</Link>
+          <Button asChild variant="secondary">
+            <Link href="/docs/components">View Components</Link>
           </Button>
         </PageActions>
       </PageHeader>
@@ -71,7 +71,7 @@ export default function BlocksLayout({
           <Link href="/blocks/sidebar">Browse all blocks</Link>
         </Button>
       </PageNav>
-      <div className="container-wrapper section-soft flex-1 md:py-12">
+      <div className="container-wrapper flex-1 section-soft md:py-12">
         <div className="container">{children}</div>
       </div>
     </>

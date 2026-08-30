@@ -1,3 +1,4 @@
+import { createHash } from "crypto"
 import { promises as fs } from "fs"
 import { homedir } from "os"
 import path from "path"
@@ -6,19 +7,15 @@ import { getRegistryHeadersFromContext } from "@/src/registry/context"
 import {
   RegistryFetchError,
   RegistryForbiddenError,
+  RegistryGoneError,
   RegistryLocalFileError,
   RegistryNotFoundError,
   RegistryParseError,
   RegistryUnauthorizedError,
 } from "@/src/registry/errors"
+import { fetchWithProxy } from "@/src/registry/proxy"
 import { registryItemSchema } from "@/src/schema"
-import { HttpsProxyAgent } from "https-proxy-agent"
-import fetch from "node-fetch"
 import { z } from "zod"
-
-const agent = process.env.https_proxy
-  ? new HttpsProxyAgent(process.env.https_proxy)
-  : undefined
 
 const registryCache = new Map<string, Promise<any>>()
 
@@ -39,22 +36,27 @@ export async function fetchRegistry(
     const results = await Promise.all(
       paths.map(async (path) => {
         const url = resolveRegistryUrl(path)
+        const headers = getRegistryHeadersFromContext(url)
+        const cacheKey = getRegistryCacheKey(url, headers)
 
         // Check cache first if caching is enabled
-        if (options.useCache && registryCache.has(url)) {
-          return registryCache.get(url)
+        if (options.useCache && registryCache.has(cacheKey)) {
+          return registryCache.get(cacheKey)
         }
 
         // Store the promise in the cache before awaiting if caching is enabled.
         const fetchPromise = (async () => {
-          // Get headers from context for this URL.
-          const headers = getRegistryHeadersFromContext(url)
+          const requestHeaders = new Headers({
+            Accept: "application/vnd.shadcn.v1+json, application/json;q=0.9",
+            "User-Agent": "shadcn",
+          })
 
-          const response = await fetch(url, {
-            agent,
-            headers: {
-              ...headers,
-            },
+          for (const [key, value] of Object.entries(headers)) {
+            requestHeaders.set(key, value)
+          }
+
+          const response = await fetchWithProxy(url, {
+            headers: requestHeaders,
           })
 
           if (!response.ok) {
@@ -93,6 +95,10 @@ export async function fetchRegistry(
               throw new RegistryNotFoundError(url, messageFromServer)
             }
 
+            if (response.status === 410) {
+              throw new RegistryGoneError(url, messageFromServer)
+            }
+
             if (response.status === 403) {
               throw new RegistryForbiddenError(url, messageFromServer)
             }
@@ -108,7 +114,7 @@ export async function fetchRegistry(
         })()
 
         if (options.useCache) {
-          registryCache.set(url, fetchPromise)
+          registryCache.set(cacheKey, fetchPromise)
         }
         return fetchPromise
       })
@@ -118,6 +124,20 @@ export async function fetchRegistry(
   } catch (error) {
     throw error
   }
+}
+
+function getRegistryCacheKey(
+  url: string,
+  headers: Record<string, string>
+): string {
+  const normalizedHeaders = Object.entries(headers)
+    .map(([key, value]) => [key.toLowerCase(), value] as const)
+    .sort(([a], [b]) => a.localeCompare(b))
+  const headersHash = createHash("sha256")
+    .update(JSON.stringify(normalizedHeaders))
+    .digest("hex")
+
+  return `${url}:${headersHash}`
 }
 
 export async function fetchRegistryLocal(filePath: string) {

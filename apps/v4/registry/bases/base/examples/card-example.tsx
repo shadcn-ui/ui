@@ -1,4 +1,6 @@
-import Image from "next/image"
+"use client"
+
+import * as React from "react"
 
 import {
   Example,
@@ -23,13 +25,42 @@ import {
 } from "@/registry/bases/base/ui/card"
 import { Field, FieldGroup, FieldLabel } from "@/registry/bases/base/ui/field"
 import { Input } from "@/registry/bases/base/ui/input"
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/registry/bases/base/ui/toggle-group"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+
+const spacingOptions = [
+  {
+    className: "[--card-spacing:--spacing(4)]",
+    label: "16px",
+    value: "4",
+  },
+  {
+    className: "[--card-spacing:--spacing(5)]",
+    label: "20px",
+    value: "5",
+  },
+  {
+    className: "[--card-spacing:--spacing(6)]",
+    label: "24px",
+    value: "6",
+  },
+  {
+    className: "[--card-spacing:--spacing(8)]",
+    label: "32px",
+    value: "8",
+  },
+]
 
 export default function CardExample() {
   return (
     <ExampleWrapper>
       <CardDefault />
       <CardSmall />
+      <CardContentEdgeToEdge />
+      <CardCustomSpacing />
       <CardHeaderWithBorder />
       <CardFooterWithBorder />
       <CardHeaderWithBorderSmall />
@@ -39,6 +70,97 @@ export default function CardExample() {
       <CardLogin />
       <CardMeetingNotes />
     </ExampleWrapper>
+  )
+}
+
+function CardContentEdgeToEdge() {
+  return (
+    <Example title="Content Edge to Edge">
+      <Card className="mx-auto w-full max-w-sm">
+        <CardHeader>
+          <CardTitle>Terms of Service</CardTitle>
+          <CardDescription>
+            Review the terms before accepting the agreement.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="-mb-(--card-spacing) px-0">
+          <div className="max-h-48 space-y-4 overflow-y-scroll border-t bg-muted/50 px-(--card-spacing) py-4 text-sm leading-relaxed">
+            <p>
+              These terms govern your use of the workspace, including access to
+              shared documents, project files, and collaboration tools.
+            </p>
+            <p>
+              You are responsible for the content you upload and for ensuring
+              that your team has the appropriate permissions to view or edit it.
+            </p>
+            <p>
+              We may update features or limits as the service evolves. When
+              those changes materially affect your workflow, we will notify your
+              workspace administrators.
+            </p>
+            <p>
+              By continuing, you agree to keep your account credentials secure
+              and to follow your organization&apos;s acceptable use policies.
+            </p>
+          </div>
+        </CardContent>
+        <CardFooter className="justify-end gap-2">
+          <Button variant="outline">Decline</Button>
+          <Button>Accept</Button>
+        </CardFooter>
+      </Card>
+    </Example>
+  )
+}
+
+function CardCustomSpacing() {
+  const [spacing, setSpacing] = React.useState("4")
+  const selectedSpacing = spacingOptions.find(
+    (option) => option.value === spacing
+  )
+
+  return (
+    <Example title="Custom Spacing">
+      <div className="mx-auto grid w-full max-w-sm gap-4">
+        <ToggleGroup
+          value={[spacing]}
+          onValueChange={(value) => {
+            if (value[0]) {
+              setSpacing(value[0])
+            }
+          }}
+          variant="outline"
+          size="sm"
+          className="justify-center"
+        >
+          {spacingOptions.map((option) => (
+            <ToggleGroupItem key={option.value} value={option.value}>
+              {option.label}
+            </ToggleGroupItem>
+          ))}
+        </ToggleGroup>
+        <Card className={selectedSpacing?.className}>
+          <CardHeader>
+            <CardTitle>Release Health</CardTitle>
+            <CardDescription>
+              Track readiness across launch signals.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-2 rounded-lg bg-muted/50 p-3 text-sm style-lyra:rounded-none style-sera:rounded-none">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-muted-foreground">Checks passed</span>
+                <span className="font-medium">24 / 26</span>
+              </div>
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-muted-foreground">Open blockers</span>
+                <span className="font-medium">2</span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </Example>
   )
 }
 
@@ -114,6 +236,7 @@ function CardMeetingNotes() {
                 tabler="IconTextCaption"
                 hugeicons="TextCheckIcon"
                 phosphor="TextTIcon"
+                remixicon="RiTextWrap"
                 data-icon="inline-start"
               />
               Transcribe
@@ -165,7 +288,7 @@ function CardWithImage() {
   return (
     <Example title="With Image">
       <Card size="default" className="relative mx-auto w-full max-w-sm pt-0">
-        <div className="bg-primary absolute inset-0 z-30 aspect-video opacity-50 mix-blend-color" />
+        <div className="absolute inset-0 z-30 aspect-video bg-primary opacity-50 mix-blend-color" />
         <img
           src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Photo by mymind on Unsplash"
@@ -185,6 +308,7 @@ function CardWithImage() {
               tabler="IconPlus"
               hugeicons="Add01Icon"
               phosphor="PlusIcon"
+              remixicon="RiAddLine"
               data-icon="inline-start"
             />
             Button
@@ -199,7 +323,7 @@ function CardWithImageSmall() {
   return (
     <Example title="With Image (Small)">
       <Card size="sm" className="relative mx-auto w-full max-w-sm pt-0">
-        <div className="bg-primary absolute inset-0 z-30 aspect-video opacity-50 mix-blend-color" />
+        <div className="absolute inset-0 z-30 aspect-video bg-primary opacity-50 mix-blend-color" />
         <img
           src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Photo by mymind on Unsplash"
@@ -219,6 +343,7 @@ function CardWithImageSmall() {
               tabler="IconPlus"
               hugeicons="Add01Icon"
               phosphor="PlusIcon"
+              remixicon="RiAddLine"
               data-icon="inline-start"
             />
             Button

@@ -1,6 +1,8 @@
 import path from "path"
+import { migrateBaseColor } from "@/src/migrations/migrate-base-color"
 import { migrateIcons } from "@/src/migrations/migrate-icons"
 import { migrateRadix } from "@/src/migrations/migrate-radix"
+import { migrateRtl } from "@/src/migrations/migrate-rtl"
 import { preFlightMigrate } from "@/src/preflights/preflight-migrate"
 import * as ERRORS from "@/src/utils/errors"
 import { handleError } from "@/src/utils/handle-error"
@@ -14,8 +16,16 @@ export const migrations = [
     description: "migrate your ui components to a different icon library.",
   },
   {
+    name: "base-color",
+    description: "migrate your theme to a different base color.",
+  },
+  {
     name: "radix",
     description: "migrate to radix-ui.",
+  },
+  {
+    name: "rtl",
+    description: "migrate your components to support RTL (right-to-left).",
   },
 ] as const
 
@@ -23,6 +33,8 @@ export const migrateOptionsSchema = z.object({
   cwd: z.string(),
   list: z.boolean(),
   yes: z.boolean(),
+  from: z.string().optional(),
+  to: z.string().optional(),
   migration: z
     .string()
     .refine(
@@ -34,12 +46,14 @@ export const migrateOptionsSchema = z.object({
       }
     )
     .optional(),
+  path: z.string().optional(),
 })
 
 export const migrate = new Command()
   .name("migrate")
   .description("run a migration.")
   .argument("[migration]", "the migration to run.")
+  .argument("[path]", "optional path or glob pattern to migrate.")
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
@@ -47,13 +61,21 @@ export const migrate = new Command()
   )
   .option("-l, --list", "list all migrations.", false)
   .option("-y, --yes", "skip confirmation prompt.", false)
-  .action(async (migration, opts) => {
+  .option(
+    "-f, --from <name>",
+    "the base color or icon library to migrate from."
+  )
+  .option("-t, --to <name>", "the base color or icon library to migrate to.")
+  .action(async (migration, migratePath, opts) => {
     try {
       const options = migrateOptionsSchema.parse({
         cwd: path.resolve(opts.cwd),
         migration,
+        path: migratePath,
         list: opts.list,
         yes: opts.yes,
+        from: opts.from,
+        to: opts.to,
       })
 
       if (options.list || !options.migration) {
@@ -88,11 +110,28 @@ export const migrate = new Command()
       }
 
       if (options.migration === "icons") {
-        await migrateIcons(config)
+        await migrateIcons(config, {
+          from: options.from,
+          to: options.to,
+          path: options.path,
+          yes: options.yes,
+        })
+      }
+
+      if (options.migration === "base-color") {
+        await migrateBaseColor(config, {
+          from: options.from,
+          to: options.to,
+          yes: options.yes,
+        })
       }
 
       if (options.migration === "radix") {
-        await migrateRadix(config, { yes: options.yes })
+        await migrateRadix(config, { yes: options.yes, path: options.path })
+      }
+
+      if (options.migration === "rtl") {
+        await migrateRtl(config, { yes: options.yes, path: options.path })
       }
     } catch (error) {
       logger.break()

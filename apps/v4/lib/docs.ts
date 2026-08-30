@@ -1,13 +1,12 @@
 export const PAGES_NEW = [
-  "/create",
-  "/docs/components/button-group",
-  "/docs/components/empty",
-  "/docs/components/field",
-  "/docs/components/input-group",
-  "/docs/components/item",
-  "/docs/components/kbd",
-  "/docs/components/spinner",
-  "/docs/components/native-select",
+  "/docs/changelog",
+  "/docs/changelog/2026-08-questionnaire",
+  "/docs/registry/dynamic-search",
+  "/docs/components/radix/questionnaire",
+  "/docs/components/base/questionnaire",
+  "/docs/components/aria/questionnaire",
+  "/docs/react/questionnaire",
+  "/docs/registry/health",
 ]
 
-export const PAGES_UPDATED = ["/docs/components/button"]
+export const PAGES_UPDATED = []

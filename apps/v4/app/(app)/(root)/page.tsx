@@ -1,34 +1,52 @@
 import { type Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { PlusSignIcon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
 
+import { siteConfig } from "@/lib/config"
 import { Announcement } from "@/components/announcement"
-import { ExamplesNav } from "@/components/examples-nav"
 import {
   PageActions,
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { PageNav } from "@/components/page-nav"
-import { ThemeSelector } from "@/components/theme-selector"
-import { Button } from "@/registry/new-york-v4/ui/button"
+import { Button } from "@/styles/radix-luma/ui/button"
 
-import { RootComponents } from "./components"
+import { CardsDemo } from "./cards"
 
 const title = "The Foundation for your Design System"
-const description =
-  "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code."
+const metadataTitle = `${siteConfig.name} - ${title}`
+const description = siteConfig.description
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteConfig.url}/#website`,
+  url: siteConfig.url,
+  name: siteConfig.name,
+  alternateName: ["shadcn", "ui.shadcn.com"],
+  description: siteConfig.description,
+  inLanguage: "en-US",
+  sameAs: [siteConfig.links.github, siteConfig.links.twitter],
+}
 
 export const dynamic = "force-static"
 export const revalidate = false
 
 export const metadata: Metadata = {
-  title,
+  title: {
+    absolute: metadataTitle,
+  },
   description,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
+    type: "website",
+    url: siteConfig.url,
+    title: metadataTitle,
+    description,
+    siteName: siteConfig.name,
     images: [
       {
         url: `/og?title=${encodeURIComponent(
@@ -39,6 +57,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    title: metadataTitle,
+    description,
     images: [
       {
         url: `/og?title=${encodeURIComponent(
@@ -52,48 +72,47 @@ export const metadata: Metadata = {
 export default function IndexPage() {
   return (
     <div className="flex flex-1 flex-col">
-      <PageHeader>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+      <PageHeader className="md:**:[.container]:pb-8 lg:**:[.container]:pb-12">
         <Announcement />
         <PageHeaderHeading className="max-w-4xl">{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
-          <Button asChild size="sm" className="h-[31px] rounded-lg">
-            <Link href="/create">
-              <HugeiconsIcon icon={PlusSignIcon} />
-              New Project
-            </Link>
+          <Button asChild className="h-[35px]">
+            <Link href="/docs/installation">Get Started</Link>
           </Button>
-          <Button asChild size="sm" variant="ghost" className="rounded-lg">
+          <Button asChild variant="secondary">
             <Link href="/docs/components">View Components</Link>
           </Button>
         </PageActions>
       </PageHeader>
-      <PageNav className="hidden md:flex">
-        <ExamplesNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
-        <ThemeSelector className="mr-4 hidden md:flex" />
-      </PageNav>
-      <div className="container-wrapper section-soft flex-1 pb-6">
-        <div className="container overflow-hidden">
-          <section className="border-border/50 -mx-4 w-[160vw] overflow-hidden rounded-lg border md:hidden md:w-[150vw]">
+      <div className="container-wrapper flex-1 p-0">
+        <div className="container overflow-hidden md:px-0 lg:max-w-none">
+          <section className="-mx-4 w-[140vw] overflow-hidden md:hidden">
             <Image
-              src="/r/styles/new-york-v4/dashboard-01-light.png"
-              width={1400}
-              height={875}
+              src="/images/full-light.png"
+              width={2560}
+              height={2764}
               alt="Dashboard"
-              className="block dark:hidden"
+              className="block h-auto w-full dark:hidden"
               priority
             />
             <Image
-              src="/r/styles/new-york-v4/dashboard-01-dark.png"
-              width={1400}
-              height={875}
+              src="/images/full-dark.png"
+              width={2560}
+              height={2764}
               alt="Dashboard"
-              className="hidden dark:block"
+              className="hidden h-auto w-full dark:block"
               priority
             />
           </section>
-          <section className="theme-container hidden md:block">
-            <RootComponents />
+          <section className="hidden md:block">
+            <CardsDemo />
           </section>
         </div>
       </div>

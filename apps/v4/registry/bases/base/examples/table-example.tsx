@@ -275,6 +275,7 @@ function TableWithActions() {
                     tabler="IconDots"
                     hugeicons="MoreHorizontalCircle01Icon"
                     phosphor="DotsThreeOutlineIcon"
+                    remixicon="RiMoreLine"
                   />
                   <span className="sr-only">Open menu</span>
                 </DropdownMenuTrigger>
@@ -304,6 +305,7 @@ function TableWithActions() {
                     tabler="IconDots"
                     hugeicons="MoreHorizontalCircle01Icon"
                     phosphor="DotsThreeOutlineIcon"
+                    remixicon="RiMoreLine"
                   />
                   <span className="sr-only">Open menu</span>
                 </DropdownMenuTrigger>
@@ -333,6 +335,7 @@ function TableWithActions() {
                     tabler="IconDots"
                     hugeicons="MoreHorizontalCircle01Icon"
                     phosphor="DotsThreeOutlineIcon"
+                    remixicon="RiMoreLine"
                   />
                   <span className="sr-only">Open menu</span>
                 </DropdownMenuTrigger>

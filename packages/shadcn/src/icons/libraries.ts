@@ -32,6 +32,14 @@ export const iconLibraries = {
     usage: "<ICON strokeWidth={2} />",
     export: "@phosphor-icons/react",
   },
+  remixicon: {
+    name: "remixicon",
+    title: "Remix Icon",
+    packages: ["@remixicon/react"],
+    import: "import { ICON } from '@remixicon/react'",
+    usage: "<ICON />",
+    export: "@remixicon/react",
+  },
 } as const
 
 export type IconLibraries = typeof iconLibraries

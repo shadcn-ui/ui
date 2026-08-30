@@ -64,7 +64,7 @@ function InputGroupAddon({
 }
 
 const inputGroupButtonVariants = cva(
-  "cn-input-group-button shadow-none flex items-center",
+  "cn-input-group-button flex items-center shadow-none",
   {
     variants: {
       size: {

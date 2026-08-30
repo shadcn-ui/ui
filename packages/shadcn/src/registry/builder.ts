@@ -1,3 +1,4 @@
+import { isGitHubItemAddress } from "@/src/registry/address"
 import { BUILTIN_REGISTRIES, REGISTRY_URL } from "@/src/registry/constants"
 import { expandEnvVars } from "@/src/registry/env"
 import { RegistryNotConfiguredError } from "@/src/registry/errors"
@@ -27,7 +28,12 @@ export function buildUrlAndHeadersForRegistryItem(
   // If no registry prefix, check if it's a URL or local path.
   // These should be handled directly, not through a registry.
   if (!registry) {
-    if (isUrl(name) || isLocalFile(name) || isLocalPath(name)) {
+    if (
+      isUrl(name) ||
+      isLocalFile(name) ||
+      isLocalPath(name) ||
+      isGitHubItemAddress(name)
+    ) {
       return null
     }
     registry = "@shadcn"

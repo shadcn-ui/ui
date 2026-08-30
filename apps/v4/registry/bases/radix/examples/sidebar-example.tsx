@@ -56,7 +56,7 @@ export default function SidebarExample() {
         ],
       },
       {
-        title: "Building Your Application",
+        title: "Build Your Application",
         url: "#",
         items: [
           {
@@ -194,6 +194,7 @@ export default function SidebarExample() {
                           tabler="IconSelector"
                           hugeicons="UnfoldMoreIcon"
                           phosphor="CaretUpDownIcon"
+                          remixicon="RiArrowUpDownLine"
                         />
                       </ItemActions>
                     </Item>
@@ -213,6 +214,7 @@ export default function SidebarExample() {
                             tabler="IconCheck"
                             hugeicons="Tick02Icon"
                             phosphor="CheckIcon"
+                            remixicon="RiCheckLine"
                             className="ml-auto"
                           />
                         )}
@@ -239,6 +241,7 @@ export default function SidebarExample() {
                   tabler="IconSearch"
                   hugeicons="SearchIcon"
                   phosphor="MagnifyingGlassIcon"
+                  remixicon="RiSearchLine"
                   className="pointer-events-none absolute top-1/2 left-2 size-4 -translate-y-1/2 opacity-50 select-none"
                 />
               </SidebarGroupContent>
@@ -271,11 +274,11 @@ export default function SidebarExample() {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
+            <div className="aspect-video rounded-xl bg-muted/50" />
+            <div className="aspect-video rounded-xl bg-muted/50" />
+            <div className="aspect-video rounded-xl bg-muted/50" />
           </div>
-          <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
         </div>
       </SidebarInset>
     </SidebarProvider>

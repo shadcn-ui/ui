@@ -23,7 +23,7 @@ export default function BadgeExample() {
 function BadgeVariants() {
   return (
     <Example title="Variants">
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 style-sera:gap-6">
         <Badge>Default</Badge>
         <Badge variant="secondary">Secondary</Badge>
         <Badge variant="destructive">Destructive</Badge>
@@ -38,13 +38,14 @@ function BadgeVariants() {
 function BadgeWithIconLeft() {
   return (
     <Example title="Icon Left" className="max-w-fit">
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 style-sera:gap-6">
         <Badge>
           <IconPlaceholder
             lucide="BadgeCheck"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
+            remixicon="RiCheckboxCircleLine"
             data-icon="inline-start"
           />
           Default
@@ -55,6 +56,7 @@ function BadgeWithIconLeft() {
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
+            remixicon="RiCheckboxCircleLine"
             data-icon="inline-start"
           />
           Secondary
@@ -65,6 +67,7 @@ function BadgeWithIconLeft() {
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
+            remixicon="RiCheckboxCircleLine"
             data-icon="inline-start"
           />
           Destructive
@@ -75,6 +78,7 @@ function BadgeWithIconLeft() {
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
+            remixicon="RiCheckboxCircleLine"
             data-icon="inline-start"
           />
           Outline
@@ -85,6 +89,7 @@ function BadgeWithIconLeft() {
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
+            remixicon="RiCheckboxCircleLine"
             data-icon="inline-start"
           />
           Ghost
@@ -95,6 +100,7 @@ function BadgeWithIconLeft() {
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
+            remixicon="RiCheckboxCircleLine"
             data-icon="inline-start"
           />
           Link
@@ -107,7 +113,7 @@ function BadgeWithIconLeft() {
 function BadgeWithIconRight() {
   return (
     <Example title="Icon Right" className="max-w-fit">
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 style-sera:gap-6">
         <Badge>
           Default
           <IconPlaceholder
@@ -115,6 +121,7 @@ function BadgeWithIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Badge>
@@ -125,6 +132,7 @@ function BadgeWithIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Badge>
@@ -135,6 +143,7 @@ function BadgeWithIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Badge>
@@ -145,6 +154,7 @@ function BadgeWithIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Badge>
@@ -155,6 +165,7 @@ function BadgeWithIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Badge>
@@ -165,6 +176,7 @@ function BadgeWithIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Badge>
@@ -176,7 +188,7 @@ function BadgeWithIconRight() {
 function BadgeWithSpinner() {
   return (
     <Example title="With Spinner" className="max-w-fit">
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 style-sera:gap-6">
         <Badge>
           <Spinner data-icon="inline-start" />
           Default
@@ -209,7 +221,7 @@ function BadgeWithSpinner() {
 function BadgeAsLink() {
   return (
     <Example title="asChild">
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 style-sera:gap-6">
         <Badge asChild>
           <a href="#">
             Link{" "}
@@ -218,6 +230,7 @@ function BadgeAsLink() {
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRightIcon"
               phosphor="ArrowUpRightIcon"
+              remixicon="RiArrowRightUpLine"
               data-icon="inline-end"
             />
           </a>
@@ -230,6 +243,7 @@ function BadgeAsLink() {
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRightIcon"
               phosphor="ArrowUpRightIcon"
+              remixicon="RiArrowRightUpLine"
               data-icon="inline-end"
             />
           </a>
@@ -242,6 +256,7 @@ function BadgeAsLink() {
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRightIcon"
               phosphor="ArrowUpRightIcon"
+              remixicon="RiArrowRightUpLine"
               data-icon="inline-end"
             />
           </a>
@@ -254,6 +269,7 @@ function BadgeAsLink() {
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRightIcon"
               phosphor="ArrowUpRightIcon"
+              remixicon="RiArrowRightUpLine"
               data-icon="inline-end"
             />
           </a>
@@ -266,6 +282,7 @@ function BadgeAsLink() {
               tabler="IconArrowRight"
               hugeicons="ArrowRight02Icon"
               phosphor="ArrowUpRightIcon"
+              remixicon="RiArrowRightUpLine"
               data-icon="inline-end"
             />
           </a>
@@ -278,6 +295,7 @@ function BadgeAsLink() {
               tabler="IconArrowUpRight"
               hugeicons="ArrowRight02Icon"
               phosphor="ArrowUpRightIcon"
+              remixicon="RiArrowRightUpLine"
               data-icon="inline-end"
             />
           </a>
@@ -290,7 +308,7 @@ function BadgeAsLink() {
 function BadgeLongText() {
   return (
     <Example title="Long Text">
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 style-sera:gap-6">
         <Badge variant="secondary">
           A badge with a lot of text to see how it wraps
         </Badge>
@@ -302,7 +320,7 @@ function BadgeLongText() {
 function BadgeCustomColors() {
   return (
     <Example title="Custom Colors" className="max-w-fit">
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 style-sera:gap-6">
         <Badge className="bg-blue-600 text-blue-50 dark:bg-blue-600 dark:text-blue-50">
           Blue
         </Badge>

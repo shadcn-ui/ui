@@ -1,0 +1,12 @@
+{
+  "name": "vite-root-imports",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "dependencies": {
+    "tailwindcss": "^4.1.11"
+  },
+  "imports": {
+    "#*": "./src/*"
+  }
+}

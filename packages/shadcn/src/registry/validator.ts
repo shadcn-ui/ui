@@ -1,6 +1,10 @@
+import { isGitHubRegistrySource } from "@/src/registry/address"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
-import { clearRegistryContext } from "@/src/registry/context"
+import {
+  clearRegistryContext,
+  getRegistryEnvFromContext,
+} from "@/src/registry/context"
 import { extractEnvVars } from "@/src/registry/env"
 import { RegistryMissingEnvironmentVariablesError } from "@/src/registry/errors"
 import { registryConfigItemSchema } from "@/src/schema"
@@ -38,7 +42,7 @@ export function validateRegistryConfig(
   config: z.infer<typeof registryConfigItemSchema>
 ): void {
   const requiredVars = extractEnvVarsFromRegistryConfig(config)
-  const missing = requiredVars.filter((v) => !process.env[v])
+  const missing = requiredVars.filter((v) => !getRegistryEnvFromContext(v))
 
   if (missing.length > 0) {
     throw new RegistryMissingEnvironmentVariablesError(registryName, missing)
@@ -50,6 +54,10 @@ export function validateRegistryConfigForItems(
   config?: Config
 ): void {
   for (const item of items) {
+    if (isGitHubRegistrySource(item)) {
+      continue
+    }
+
     buildUrlAndHeadersForRegistryItem(item, configWithDefaults(config))
   }
 

@@ -1,4 +1,5 @@
 import { TransformerStyle } from "@/src/styles/transform"
+import { twMerge } from "tailwind-merge"
 import {
   Node,
   type CallExpression,
@@ -14,7 +15,14 @@ import { type StyleMap } from "./create-style-map"
  * These are typically used as CSS selectors or for other purposes
  * that require the class name to remain in the code.
  */
-const ALLOWLIST = new Set(["cn-menu-target"])
+// TODO: all cn-* classes to be allowedlisted.
+const ALLOWLIST = new Set([
+  "cn-menu-target",
+  "cn-menu-translucent",
+  "cn-logical-sides",
+  "cn-rtl-flip",
+  "cn-font-heading",
+])
 
 function isStringLiteralLike(
   node: Node
@@ -32,9 +40,34 @@ export const transformStyleMap: TransformerStyle<SourceFile> = async ({
 
   applyToCvaCalls(sourceFile, styleMap, matchedClasses)
   applyToClassNameAttributes(sourceFile, styleMap, matchedClasses)
+  applyToClassNameProperties(sourceFile, styleMap, matchedClasses)
   applyToMergePropsCalls(sourceFile, styleMap, matchedClasses)
 
   return sourceFile
+}
+
+function applyToClassNameProperties(
+  sourceFile: SourceFile,
+  styleMap: StyleMap,
+  matchedClasses: Set<string>
+) {
+  sourceFile.forEachDescendant((node) => {
+    if (
+      !Node.isPropertyAssignment(node) ||
+      node.getNameNode().getText() !== "className"
+    ) {
+      return
+    }
+
+    const initializer = node.getInitializer()
+    if (!initializer || !Node.isCallExpression(initializer)) {
+      return
+    }
+
+    if (isCnCall(initializer)) {
+      applyStyleToCnCall(initializer, styleMap, matchedClasses)
+    }
+  })
 }
 
 function applyStyleToCvaString(
@@ -61,7 +94,12 @@ function applyStyleToCvaString(
     return
   }
 
-  const tailwindClassesToApply = unmatchedClasses
+  // Skip allowlisted classes — they are handled at CLI install time.
+  const classesToInline = unmatchedClasses.filter(
+    (cnClass) => !ALLOWLIST.has(cnClass)
+  )
+
+  const tailwindClassesToApply = classesToInline
     .map((cnClass) => styleMap[cnClass])
     .filter((classes): classes is string => Boolean(classes))
 
@@ -71,7 +109,7 @@ function applyStyleToCvaString(
     stringNode.setLiteralValue(updated)
     unmatchedClasses.forEach((cnClass) => matchedClasses.add(cnClass))
   } else {
-    // No styles to apply, but still need to clean up non-allowlisted classes
+    // No styles to apply, but still need to clean up non-allowlisted classes.
     const updated = removeCnClasses(stringValue)
     stringNode.setLiteralValue(updated)
   }
@@ -162,6 +200,14 @@ function applyToClassNameAttributes(
       return
     }
 
+    const nestedCnCalls = getNestedCnCallsFromAttribute(initializer)
+    if (nestedCnCalls.length > 0) {
+      nestedCnCalls.forEach((cnCall) =>
+        applyStyleToCnCall(cnCall, styleMap, matchedClasses)
+      )
+      return
+    }
+
     const cnClasses = extractCnClassesFromAttribute(initializer)
 
     if (cnClasses.length === 0) {
@@ -187,7 +233,12 @@ function applyToClassNameAttributes(
       return
     }
 
-    const tailwindClassesToApply = unmatchedClasses
+    // Skip allowlisted classes — they are handled at CLI install time.
+    const classesToInline = unmatchedClasses.filter(
+      (cnClass) => !ALLOWLIST.has(cnClass)
+    )
+
+    const tailwindClassesToApply = classesToInline
       .map((cnClass) => styleMap[cnClass])
       .filter((classes): classes is string => Boolean(classes))
 
@@ -198,6 +249,29 @@ function applyToClassNameAttributes(
       cleanCnClassesFromAttribute(initializer)
     }
   })
+}
+
+function getNestedCnCallsFromAttribute(initializer: Node) {
+  if (!Node.isJsxExpression(initializer)) {
+    return []
+  }
+
+  const expression = initializer.getExpression()
+  if (
+    !expression ||
+    (Node.isCallExpression(expression) && isCnCall(expression))
+  ) {
+    return []
+  }
+
+  const cnCalls: CallExpression[] = []
+  expression.forEachDescendant((node) => {
+    if (Node.isCallExpression(node) && isCnCall(node)) {
+      cnCalls.push(node)
+    }
+  })
+
+  return cnCalls
 }
 
 function extractCnClassesFromAttribute(initializer: Node) {
@@ -414,10 +488,7 @@ function applyClassesToElement(element: Node, tailwindClasses: string) {
 }
 
 function mergeClasses(newClasses: string, existing: string) {
-  const existingParts = existing.split(/\s+/).filter(Boolean)
-  const newParts = newClasses.split(/\s+/).filter(Boolean)
-  const combined = [...newParts, ...existingParts]
-  return combined.join(" ").trim()
+  return twMerge(newClasses, existing)
 }
 
 function isCnCall(call: CallExpression) {
@@ -473,40 +544,52 @@ function applyToMergePropsCalls(
         Node.isCallExpression(classNameInitializer) &&
         isCnCall(classNameInitializer)
       ) {
-        const cnClasses = extractCnClassesFromCnCall(classNameInitializer)
-
-        if (cnClasses.length === 0) {
-          continue
-        }
-
-        const unmatchedClasses = cnClasses.filter(
-          (cnClass) => !matchedClasses.has(cnClass)
-        )
-
-        if (unmatchedClasses.length === 0) {
-          // Clean up cn-* classes even if already matched
-          cleanCnClassesFromCnCall(classNameInitializer)
-          continue
-        }
-
-        const tailwindClassesToApply = unmatchedClasses
-          .map((cnClass) => styleMap[cnClass])
-          .filter((classes): classes is string => Boolean(classes))
-
-        if (tailwindClassesToApply.length > 0) {
-          const mergedClasses = tailwindClassesToApply.join(" ")
-          applyClassesToCnCall(
-            classNameInitializer,
-            mergedClasses,
-            matchedClasses,
-            unmatchedClasses
-          )
-        } else {
-          cleanCnClassesFromCnCall(classNameInitializer)
-        }
+        applyStyleToCnCall(classNameInitializer, styleMap, matchedClasses, true)
       }
     }
   })
+}
+
+function applyStyleToCnCall(
+  cnCall: CallExpression,
+  styleMap: StyleMap,
+  matchedClasses: Set<string>,
+  markMatches = false
+) {
+  const cnClasses = extractCnClassesFromCnCall(cnCall)
+
+  if (cnClasses.length === 0) {
+    return
+  }
+
+  const unmatchedClasses = cnClasses.filter(
+    (cnClass) => !matchedClasses.has(cnClass)
+  )
+
+  if (unmatchedClasses.length === 0) {
+    cleanCnClassesFromCnCall(cnCall)
+    return
+  }
+
+  // Skip allowlisted classes — they are handled at CLI install time.
+  const classesToInline = unmatchedClasses.filter(
+    (cnClass) => !ALLOWLIST.has(cnClass)
+  )
+
+  const tailwindClassesToApply = classesToInline
+    .map((cnClass) => styleMap[cnClass])
+    .filter((classes): classes is string => Boolean(classes))
+
+  if (tailwindClassesToApply.length === 0) {
+    cleanCnClassesFromCnCall(cnCall)
+    return
+  }
+
+  applyClassesToCnCall(cnCall, tailwindClassesToApply.join(" "))
+
+  if (markMatches) {
+    unmatchedClasses.forEach((cnClass) => matchedClasses.add(cnClass))
+  }
 }
 
 function extractCnClassesFromCnCall(cnCall: CallExpression): string[] {
@@ -532,21 +615,13 @@ function cleanCnClassesFromCnCall(cnCall: CallExpression) {
   removeEmptyArgumentsFromCnCall(cnCall)
 }
 
-function applyClassesToCnCall(
-  cnCall: CallExpression,
-  tailwindClasses: string,
-  matchedClasses: Set<string>,
-  unmatchedClasses: string[]
-) {
+function applyClassesToCnCall(cnCall: CallExpression, tailwindClasses: string) {
   const firstArg = cnCall.getArguments()[0]
 
   if (isStringLiteralLike(firstArg)) {
     const existing = firstArg.getLiteralText()
     const updated = removeCnClasses(mergeClasses(tailwindClasses, existing))
     firstArg.setLiteralValue(updated)
-
-    // Mark classes as matched
-    unmatchedClasses.forEach((cnClass) => matchedClasses.add(cnClass))
 
     // Clean up cn-* classes from remaining arguments
     for (let i = 1; i < cnCall.getArguments().length; i++) {
@@ -577,9 +652,6 @@ function applyClassesToCnCall(
     .filter((arg): arg is string => arg !== null)
 
   const updatedArguments = [JSON.stringify(tailwindClasses), ...argumentTexts]
-
-  // Mark classes as matched
-  unmatchedClasses.forEach((cnClass) => matchedClasses.add(cnClass))
 
   const parent = cnCall.getParent()
   if (parent) {
