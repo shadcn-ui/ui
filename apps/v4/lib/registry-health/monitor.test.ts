@@ -610,4 +610,25 @@ describe("runRegistryMonitor", () => {
     expect(result.run.totals.dryRuns).toBe(6)
     expect(maximumActive).toBe(4)
   })
+
+  it("resolves {style} urls with the default style", async () => {
+    const fetchJson = vi.fn(async () => createSuccessfulFetch())
+    await runRegistryMonitor({
+      directory: [
+        {
+          ...DIRECTORY[0],
+          url: "https://acme.example.com/r/{style}/{name}.json",
+        },
+      ],
+      mode: "daily",
+      now: NOW,
+      previousState: createState(createEntryState({ itemNames: ["button"] })),
+      fetchJson,
+      runDryRun: vi.fn(),
+    })
+
+    expect(fetchJson).toHaveBeenCalledWith(
+      "https://acme.example.com/r/radix-vega/button.json"
+    )
+  })
 })
