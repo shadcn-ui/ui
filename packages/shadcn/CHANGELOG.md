@@ -1,5 +1,11 @@
 # shadcn
 
+## 4.19.1
+
+### Patch Changes
+
+- [#11713](https://github.com/shadcn-ui/ui/pull/11713) [`f9ea1e600ea5dd7b1b79769b7b25cafa400cee6f`](https://github.com/shadcn-ui/ui/commit/f9ea1e600ea5dd7b1b79769b7b25cafa400cee6f) Thanks [@shadcn](https://github.com/shadcn)! - Add the official shadcn/ui website to the package metadata.
+
 ## 4.19.0
 
 ### Minor Changes
