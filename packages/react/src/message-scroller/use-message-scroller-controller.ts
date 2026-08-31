@@ -28,7 +28,11 @@ import type {
   MessageScrollerScrollable,
 } from "./types"
 import { useMessageScrollerCommands } from "./use-message-scroller-commands"
-import { useMessageScrollerRefs } from "./use-message-scroller-refs"
+import {
+  clearPendingDefaultScroll,
+  markDefaultScrollPositionApplied,
+  useMessageScrollerRefs,
+} from "./use-message-scroller-refs"
 
 // Builds a ref callback that stores the node and runs onMount once it attaches.
 function useElementRef(
@@ -59,6 +63,7 @@ function useMessageScrollerController({
 }: MessageScrollerProviderProps) {
   const refs = useMessageScrollerRefs({
     autoScroll,
+    defaultScrollPosition,
     scrollEdgeThreshold,
     scrollMargin,
     scrollPreviousItemPeek,
@@ -80,6 +85,7 @@ function useMessageScrollerController({
     pendingScrollToMessageRef,
     prependRestoreRef,
     preserveScrollOnPrependRef,
+    pendingDefaultScrollStore,
     rootRef,
     scrollEdgeThresholdRef,
     scrollMarginRef,
@@ -102,6 +108,8 @@ function useMessageScrollerController({
   if (previousDefaultScrollPositionRef.current !== defaultScrollPosition) {
     previousDefaultScrollPositionRef.current = defaultScrollPosition
     defaultScrollPositionAppliedRef.current = false
+    // The pending-scroll hold is mount-only. A live prop change re-applies the
+    // opening position in layout; it does not hide the viewport again.
   }
 
   const writeStateAttributes = React.useCallback(
@@ -367,7 +375,7 @@ function useMessageScrollerController({
       return false
     }
 
-    defaultScrollPositionAppliedRef.current = true
+    markDefaultScrollPositionApplied(refs)
 
     return true
   }, [defaultScrollPosition, scrollToElement, scrollToEnd, scrollToStart])
@@ -694,6 +702,7 @@ function useMessageScrollerController({
       handleContentChange,
       handleResize,
       observeVisibility,
+      pendingDefaultScrollStore,
       preserveScrollOnPrependRef,
       scrollToEnd,
       scrollToMessage,
@@ -713,6 +722,7 @@ function useMessageScrollerController({
       handleContentChange,
       handleResize,
       observeVisibility,
+      pendingDefaultScrollStore,
       scrollToEnd,
       scrollToMessage,
       scrollToStart,
@@ -729,7 +739,13 @@ function useMessageScrollerController({
   )
 
   React.useLayoutEffect(() => {
-    applyDefaultScrollPosition()
+    if (applyDefaultScrollPosition()) {
+      return
+    }
+
+    if (itemCountRef.current === 0) {
+      clearPendingDefaultScroll(refs)
+    }
   }, [applyDefaultScrollPosition])
 
   React.useEffect(() => {
