@@ -98,6 +98,14 @@
     "logo": "<svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M19.8513 0C20.5626 0 21.2204 0.377823 21.5788 0.992258L22.75 3L26.8243 9.98452C27.5508 11.23 27.5508 12.77 26.8243 14.0155L22.75 21L21.5788 23.0077C21.2204 23.6222 20.5626 24 19.8513 24H8.14874C7.43741 24 6.7796 23.6222 6.42118 23.0077L0.587849 13.0077C0.224593 12.385 0.224593 11.615 0.58785 10.9923L6.42118 0.992257C6.7796 0.377822 7.43741 0 8.14874 0H19.8513ZM4 12L9 21H18.25L13 12L18.25 3H9L4 12Z\" fill=\"#FAFAF0\"/></svg>"
   },
   {
+    "name": "@akoder",
+    "homepage": "https://akoder.xyz",
+    "url": "https://akoder.xyz/r/{name}.json",
+    "description": "Motion-rich React components and data visualizations — dotted world maps, GitHub activity maps, sliders, carousels, and terminal-style blocks built on Tailwind CSS v4 and Radix UI.",
+    "author": "Aditya Ojha",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='10' fill='#18181b'/><path d='M16 8 L22 24 L19 24 L16 14.5 L13 24 L10 24 Z' fill='white' stroke='white' stroke-width='2' stroke-linejoin='round'/></svg>"
+  },
+  {
     "name": "@algolia",
     "homepage": "https://sitesearch.algolia.com",
     "url": "https://sitesearch.algolia.com/r/{name}.json",
