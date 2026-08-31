@@ -1,24 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/styles/ark-nova/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "@/styles/ark-nova/ui/dropdown-menu"
 import {
   BellIcon,
   CreditCardIcon,
@@ -46,6 +28,24 @@ import {
   SunIcon,
   UserIcon,
 } from "lucide-react"
+
+import { Button } from "@/styles/ark-nova/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/styles/ark-nova/ui/dropdown-menu"
 
 export function DropdownMenuComplex() {
   const [notifications, setNotifications] = React.useState({
@@ -78,46 +78,42 @@ export function DropdownMenuComplex() {
               <FolderOpenIcon />
               Open Recent
             </DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuGroup>
-                  <DropdownMenuLabel>Recent Projects</DropdownMenuLabel>
-                  <DropdownMenuItem value="project-alpha">
-                    <FileCodeIcon />
-                    Project Alpha
-                  </DropdownMenuItem>
-                  <DropdownMenuItem value="project-beta">
-                    <FileCodeIcon />
-                    Project Beta
-                  </DropdownMenuItem>
-                  <DropdownMenuSub>
-                    <DropdownMenuSubTrigger>
-                      <MoreHorizontalIcon />
-                      More Projects
-                    </DropdownMenuSubTrigger>
-                    <DropdownMenuPortal>
-                      <DropdownMenuSubContent>
-                        <DropdownMenuItem value="project-gamma">
-                          <FileCodeIcon />
-                          Project Gamma
-                        </DropdownMenuItem>
-                        <DropdownMenuItem value="project-delta">
-                          <FileCodeIcon />
-                          Project Delta
-                        </DropdownMenuItem>
-                      </DropdownMenuSubContent>
-                    </DropdownMenuPortal>
-                  </DropdownMenuSub>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  <DropdownMenuItem value="browse">
-                    <FolderSearchIcon />
-                    Browse...
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
+            <DropdownMenuSubContent>
+              <DropdownMenuGroup>
+                <DropdownMenuLabel>Recent Projects</DropdownMenuLabel>
+                <DropdownMenuItem value="project-alpha">
+                  <FileCodeIcon />
+                  Project Alpha
+                </DropdownMenuItem>
+                <DropdownMenuItem value="project-beta">
+                  <FileCodeIcon />
+                  Project Beta
+                </DropdownMenuItem>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>
+                    <MoreHorizontalIcon />
+                    More Projects
+                  </DropdownMenuSubTrigger>
+                  <DropdownMenuSubContent>
+                    <DropdownMenuItem value="project-gamma">
+                      <FileCodeIcon />
+                      Project Gamma
+                    </DropdownMenuItem>
+                    <DropdownMenuItem value="project-delta">
+                      <FileCodeIcon />
+                      Project Delta
+                    </DropdownMenuItem>
+                  </DropdownMenuSubContent>
+                </DropdownMenuSub>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem value="browse">
+                  <FolderSearchIcon />
+                  Browse...
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuSubContent>
           </DropdownMenuSub>
           <DropdownMenuSeparator />
           <DropdownMenuItem value="save">
@@ -159,30 +155,28 @@ export function DropdownMenuComplex() {
               <PaletteIcon />
               Theme
             </DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuGroup>
-                  <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-                  <DropdownMenuRadioGroup
-                    value={theme}
-                    onValueChange={(details) => setTheme(details.value)}
-                  >
-                    <DropdownMenuRadioItem value="light">
-                      <SunIcon />
-                      Light
-                    </DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="dark">
-                      <MoonIcon />
-                      Dark
-                    </DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="system">
-                      <MonitorIcon />
-                      System
-                    </DropdownMenuRadioItem>
-                  </DropdownMenuRadioGroup>
-                </DropdownMenuGroup>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
+            <DropdownMenuSubContent>
+              <DropdownMenuGroup>
+                <DropdownMenuLabel>Appearance</DropdownMenuLabel>
+                <DropdownMenuRadioGroup
+                  value={theme}
+                  onValueChange={(details) => setTheme(details.value)}
+                >
+                  <DropdownMenuRadioItem value="light">
+                    <SunIcon />
+                    Light
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="dark">
+                    <MoonIcon />
+                    Dark
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="system">
+                    <MonitorIcon />
+                    System
+                  </DropdownMenuRadioItem>
+                </DropdownMenuRadioGroup>
+              </DropdownMenuGroup>
+            </DropdownMenuSubContent>
           </DropdownMenuSub>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
@@ -202,69 +196,63 @@ export function DropdownMenuComplex() {
               <SettingsIcon />
               Settings
             </DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuGroup>
-                  <DropdownMenuLabel>Preferences</DropdownMenuLabel>
-                  <DropdownMenuItem value="keyboard-shortcuts">
-                    <KeyboardIcon />
-                    Keyboard Shortcuts
-                  </DropdownMenuItem>
-                  <DropdownMenuItem value="language">
-                    <LanguagesIcon />
-                    Language
-                  </DropdownMenuItem>
-                  <DropdownMenuSub>
-                    <DropdownMenuSubTrigger>
-                      <BellIcon />
-                      Notifications
-                    </DropdownMenuSubTrigger>
-                    <DropdownMenuPortal>
-                      <DropdownMenuSubContent>
-                        <DropdownMenuGroup>
-                          <DropdownMenuLabel>
-                            Notification Types
-                          </DropdownMenuLabel>
-                          <DropdownMenuCheckboxItem
-                            value="push-notifications"
-                            checked={notifications.push}
-                            onCheckedChange={(checked) =>
-                              setNotifications({
-                                ...notifications,
-                                push: checked === true,
-                              })
-                            }
-                          >
-                            <BellIcon />
-                            Push Notifications
-                          </DropdownMenuCheckboxItem>
-                          <DropdownMenuCheckboxItem
-                            value="email-notifications"
-                            checked={notifications.email}
-                            onCheckedChange={(checked) =>
-                              setNotifications({
-                                ...notifications,
-                                email: checked === true,
-                              })
-                            }
-                          >
-                            <MailIcon />
-                            Email Notifications
-                          </DropdownMenuCheckboxItem>
-                        </DropdownMenuGroup>
-                      </DropdownMenuSubContent>
-                    </DropdownMenuPortal>
-                  </DropdownMenuSub>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  <DropdownMenuItem value="privacy-security">
-                    <ShieldIcon />
-                    Privacy & Security
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
+            <DropdownMenuSubContent>
+              <DropdownMenuGroup>
+                <DropdownMenuLabel>Preferences</DropdownMenuLabel>
+                <DropdownMenuItem value="keyboard-shortcuts">
+                  <KeyboardIcon />
+                  Keyboard Shortcuts
+                </DropdownMenuItem>
+                <DropdownMenuItem value="language">
+                  <LanguagesIcon />
+                  Language
+                </DropdownMenuItem>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>
+                    <BellIcon />
+                    Notifications
+                  </DropdownMenuSubTrigger>
+                  <DropdownMenuSubContent>
+                    <DropdownMenuGroup>
+                      <DropdownMenuLabel>Notification Types</DropdownMenuLabel>
+                      <DropdownMenuCheckboxItem
+                        value="push-notifications"
+                        checked={notifications.push}
+                        onCheckedChange={(checked) =>
+                          setNotifications({
+                            ...notifications,
+                            push: checked === true,
+                          })
+                        }
+                      >
+                        <BellIcon />
+                        Push Notifications
+                      </DropdownMenuCheckboxItem>
+                      <DropdownMenuCheckboxItem
+                        value="email-notifications"
+                        checked={notifications.email}
+                        onCheckedChange={(checked) =>
+                          setNotifications({
+                            ...notifications,
+                            email: checked === true,
+                          })
+                        }
+                      >
+                        <MailIcon />
+                        Email Notifications
+                      </DropdownMenuCheckboxItem>
+                    </DropdownMenuGroup>
+                  </DropdownMenuSubContent>
+                </DropdownMenuSub>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem value="privacy-security">
+                  <ShieldIcon />
+                  Privacy & Security
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuSubContent>
           </DropdownMenuSub>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />

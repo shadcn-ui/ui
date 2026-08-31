@@ -5,7 +5,6 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuSub,
@@ -41,16 +40,14 @@ export function DropdownMenuDemo() {
           <DropdownMenuItem value="team">Team</DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem value="email">Email</DropdownMenuItem>
-                <DropdownMenuItem value="message">Message</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem value="more">More...</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
+            <DropdownMenuSubContent>
+              <DropdownMenuItem value="email">Email</DropdownMenuItem>
+              <DropdownMenuItem value="message">Message</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem value="more">More...</DropdownMenuItem>
+            </DropdownMenuSubContent>
           </DropdownMenuSub>
-          <DropdownMenuItem value="new-team"  >
+          <DropdownMenuItem value="new-team">
             New Team
             <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
           </DropdownMenuItem>

@@ -1,6 +1,12 @@
 "use client"
 
 import * as React from "react"
+import { CreditCardIcon, SettingsIcon, UserIcon } from "lucide-react"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 import { Button } from "@/styles/ark-nova/ui-rtl/button"
 import {
   DropdownMenu,
@@ -9,7 +15,6 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
@@ -19,12 +24,6 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/styles/ark-nova/ui-rtl/dropdown-menu"
-import { CreditCardIcon, SettingsIcon, UserIcon } from "lucide-react"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
 
 const translations: Translations = {
   en: {
@@ -138,26 +137,24 @@ export function DropdownMenuRtl() {
         <DropdownMenuGroup>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>{t.account}</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent
-                data-lang={dir === "rtl" ? language : undefined}
-              >
-                <DropdownMenuGroup>
-                  <DropdownMenuItem value="profile">
-                    <UserIcon />
-                    {t.profile}
-                  </DropdownMenuItem>
-                  <DropdownMenuItem value="billing">
-                    <CreditCardIcon />
-                    {t.billing}
-                  </DropdownMenuItem>
-                  <DropdownMenuItem value="settings">
-                    <SettingsIcon />
-                    {t.settings}
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
+            <DropdownMenuSubContent
+              data-lang={dir === "rtl" ? language : undefined}
+            >
+              <DropdownMenuGroup>
+                <DropdownMenuItem value="profile">
+                  <UserIcon />
+                  {t.profile}
+                </DropdownMenuItem>
+                <DropdownMenuItem value="billing">
+                  <CreditCardIcon />
+                  {t.billing}
+                </DropdownMenuItem>
+                <DropdownMenuItem value="settings">
+                  <SettingsIcon />
+                  {t.settings}
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuSubContent>
           </DropdownMenuSub>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
@@ -166,29 +163,29 @@ export function DropdownMenuRtl() {
           <DropdownMenuItem value="team">{t.team}</DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>{t.inviteUsers}</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent
-                data-lang={dir === "rtl" ? language : undefined}
-              >
-                <DropdownMenuItem value="email">{t.email}</DropdownMenuItem>
-                <DropdownMenuItem value="message">{t.message}</DropdownMenuItem>
-                <DropdownMenuSub>
-                  <DropdownMenuSubTrigger>{t.more}</DropdownMenuSubTrigger>
-                  <DropdownMenuPortal>
-                    <DropdownMenuSubContent
-                      data-lang={dir === "rtl" ? language : undefined}
-                    >
-                      <DropdownMenuItem value="calendar">{t.calendar}</DropdownMenuItem>
-                      <DropdownMenuItem value="chat">{t.chat}</DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem value="webhook">{t.webhook}</DropdownMenuItem>
-                    </DropdownMenuSubContent>
-                  </DropdownMenuPortal>
-                </DropdownMenuSub>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem value="advanced">{t.advanced}</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
+            <DropdownMenuSubContent
+              data-lang={dir === "rtl" ? language : undefined}
+            >
+              <DropdownMenuItem value="email">{t.email}</DropdownMenuItem>
+              <DropdownMenuItem value="message">{t.message}</DropdownMenuItem>
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>{t.more}</DropdownMenuSubTrigger>
+                <DropdownMenuSubContent
+                  data-lang={dir === "rtl" ? language : undefined}
+                >
+                  <DropdownMenuItem value="calendar">
+                    {t.calendar}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem value="chat">{t.chat}</DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem value="webhook">
+                    {t.webhook}
+                  </DropdownMenuItem>
+                </DropdownMenuSubContent>
+              </DropdownMenuSub>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem value="advanced">{t.advanced}</DropdownMenuItem>
+            </DropdownMenuSubContent>
           </DropdownMenuSub>
           <DropdownMenuItem value="new-team">
             {t.newTeam}
@@ -239,7 +236,9 @@ export function DropdownMenuRtl() {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem value="logout" variant="destructive">{t.logout}</DropdownMenuItem>
+          <DropdownMenuItem value="logout" variant="destructive">
+            {t.logout}
+          </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

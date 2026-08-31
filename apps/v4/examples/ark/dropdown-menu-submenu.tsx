@@ -4,7 +4,6 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuSub,
@@ -24,25 +23,21 @@ export function DropdownMenuSubmenu() {
           <DropdownMenuItem value="team">Team</DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem value="email">Email</DropdownMenuItem>
-                <DropdownMenuItem value="message">Message</DropdownMenuItem>
-                <DropdownMenuSub>
-                  <DropdownMenuSubTrigger>More options</DropdownMenuSubTrigger>
-                  <DropdownMenuPortal>
-                    <DropdownMenuSubContent>
-                      <DropdownMenuItem value="calendly">Calendly</DropdownMenuItem>
-                      <DropdownMenuItem value="slack">Slack</DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem value="webhook">Webhook</DropdownMenuItem>
-                    </DropdownMenuSubContent>
-                  </DropdownMenuPortal>
-                </DropdownMenuSub>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem value="advanced">Advanced...</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
+            <DropdownMenuSubContent>
+              <DropdownMenuItem value="email">Email</DropdownMenuItem>
+              <DropdownMenuItem value="message">Message</DropdownMenuItem>
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>More options</DropdownMenuSubTrigger>
+                <DropdownMenuSubContent>
+                  <DropdownMenuItem value="calendly">Calendly</DropdownMenuItem>
+                  <DropdownMenuItem value="slack">Slack</DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem value="webhook">Webhook</DropdownMenuItem>
+                </DropdownMenuSubContent>
+              </DropdownMenuSub>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem value="advanced">Advanced...</DropdownMenuItem>
+            </DropdownMenuSubContent>
           </DropdownMenuSub>
           <DropdownMenuItem value="new-team">
             New Team

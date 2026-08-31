@@ -27,7 +27,6 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
@@ -79,7 +78,9 @@ function DropdownMenuBasic() {
           <DropdownMenuGroup>
             <DropdownMenuItem value="dm-menuitem4">GitHub</DropdownMenuItem>
             <DropdownMenuItem value="dm-menuitem5">Support</DropdownMenuItem>
-            <DropdownMenuItem value="dm-api" disabled>API</DropdownMenuItem>
+            <DropdownMenuItem value="dm-api" disabled>
+              API
+            </DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -204,18 +205,22 @@ function DropdownMenuWithSubmenu() {
             <DropdownMenuItem value="dm-menuitem14">Team</DropdownMenuItem>
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
-              <DropdownMenuPortal>
-                <DropdownMenuSubContent>
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem value="dm-menuitem15">Email</DropdownMenuItem>
-                    <DropdownMenuItem value="dm-menuitem16">Message</DropdownMenuItem>
-                  </DropdownMenuGroup>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem value="dm-menuitem17">More...</DropdownMenuItem>
-                  </DropdownMenuGroup>
-                </DropdownMenuSubContent>
-              </DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                <DropdownMenuGroup>
+                  <DropdownMenuItem value="dm-menuitem15">
+                    Email
+                  </DropdownMenuItem>
+                  <DropdownMenuItem value="dm-menuitem16">
+                    Message
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem value="dm-menuitem17">
+                    More...
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuSubContent>
             </DropdownMenuSub>
             <DropdownMenuItem value="dm-menuitem18">
               New Team
@@ -631,9 +636,7 @@ function DropdownMenuWithAvatar() {
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            {menuContent}
-          </DropdownMenuContent>
+          <DropdownMenuContent>{menuContent}</DropdownMenuContent>
         </DropdownMenu>
       </div>
     </Example>
@@ -696,23 +699,32 @@ function DropdownMenuInDialog() {
               <DropdownMenuSeparator />
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger>More Options</DropdownMenuSubTrigger>
-                <DropdownMenuPortal>
-                  <DropdownMenuSubContent>
-                    <DropdownMenuGroup>
-                      <DropdownMenuItem value="dm-menuitem29">Save Page...</DropdownMenuItem>
-                      <DropdownMenuItem value="dm-menuitem30">Create Shortcut...</DropdownMenuItem>
-                      <DropdownMenuItem value="dm-menuitem31">Name Window...</DropdownMenuItem>
-                    </DropdownMenuGroup>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuGroup>
-                      <DropdownMenuItem value="dm-menuitem32">Developer Tools</DropdownMenuItem>
-                    </DropdownMenuGroup>
-                  </DropdownMenuSubContent>
-                </DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem value="dm-menuitem29">
+                      Save Page...
+                    </DropdownMenuItem>
+                    <DropdownMenuItem value="dm-menuitem30">
+                      Create Shortcut...
+                    </DropdownMenuItem>
+                    <DropdownMenuItem value="dm-menuitem31">
+                      Name Window...
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem value="dm-menuitem32">
+                      Developer Tools
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuSubContent>
               </DropdownMenuSub>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
-                <DropdownMenuItem value="dm-delete-dialog" variant="destructive">
+                <DropdownMenuItem
+                  value="dm-delete-dialog"
+                  variant="destructive"
+                >
                   <IconPlaceholder
                     lucide="TrashIcon"
                     tabler="IconTrash"
@@ -767,7 +779,9 @@ function DropdownMenuWithInset() {
               />
               Cut
             </DropdownMenuItem>
-            <DropdownMenuItem value="dm-paste-inset" inset>Paste</DropdownMenuItem>
+            <DropdownMenuItem value="dm-paste-inset" inset>
+              Paste
+            </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
@@ -810,14 +824,16 @@ function DropdownMenuWithInset() {
           <DropdownMenuSeparator />
           <DropdownMenuSub>
             <DropdownMenuSubTrigger inset>More Options</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuGroup>
-                  <DropdownMenuItem value="dm-menuitem35">Save Page...</DropdownMenuItem>
-                  <DropdownMenuItem value="dm-menuitem36">Create Shortcut...</DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
+            <DropdownMenuSubContent>
+              <DropdownMenuGroup>
+                <DropdownMenuItem value="dm-menuitem35">
+                  Save Page...
+                </DropdownMenuItem>
+                <DropdownMenuItem value="dm-menuitem36">
+                  Create Shortcut...
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuSubContent>
           </DropdownMenuSub>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -877,82 +893,78 @@ function DropdownMenuComplex() {
                 />
                 Open Recent
               </DropdownMenuSubTrigger>
-              <DropdownMenuPortal>
-                <DropdownMenuSubContent>
-                  <DropdownMenuGroup>
-                    <DropdownMenuLabel>Recent Projects</DropdownMenuLabel>
-                    <DropdownMenuItem value="dm-menuitem39">
+              <DropdownMenuSubContent>
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>Recent Projects</DropdownMenuLabel>
+                  <DropdownMenuItem value="dm-menuitem39">
+                    <IconPlaceholder
+                      lucide="FileCodeIcon"
+                      tabler="IconFileCode"
+                      hugeicons="CodeIcon"
+                      phosphor="CodeIcon"
+                      remixicon="RiCodeLine"
+                    />
+                    Project Alpha
+                  </DropdownMenuItem>
+                  <DropdownMenuItem value="dm-menuitem40">
+                    <IconPlaceholder
+                      lucide="FileCodeIcon"
+                      tabler="IconFileCode"
+                      hugeicons="CodeIcon"
+                      phosphor="CodeIcon"
+                      remixicon="RiCodeLine"
+                    />
+                    Project Beta
+                  </DropdownMenuItem>
+                  <DropdownMenuSub>
+                    <DropdownMenuSubTrigger>
                       <IconPlaceholder
-                        lucide="FileCodeIcon"
-                        tabler="IconFileCode"
-                        hugeicons="CodeIcon"
-                        phosphor="CodeIcon"
-                        remixicon="RiCodeLine"
+                        lucide="MoreHorizontalIcon"
+                        tabler="IconDots"
+                        hugeicons="MoreHorizontalCircle01Icon"
+                        phosphor="DotsThreeOutlineIcon"
+                        remixicon="RiMoreLine"
                       />
-                      Project Alpha
-                    </DropdownMenuItem>
-                    <DropdownMenuItem value="dm-menuitem40">
-                      <IconPlaceholder
-                        lucide="FileCodeIcon"
-                        tabler="IconFileCode"
-                        hugeicons="CodeIcon"
-                        phosphor="CodeIcon"
-                        remixicon="RiCodeLine"
-                      />
-                      Project Beta
-                    </DropdownMenuItem>
-                    <DropdownMenuSub>
-                      <DropdownMenuSubTrigger>
+                      More Projects
+                    </DropdownMenuSubTrigger>
+                    <DropdownMenuSubContent>
+                      <DropdownMenuItem value="dm-menuitem41">
                         <IconPlaceholder
-                          lucide="MoreHorizontalIcon"
-                          tabler="IconDots"
-                          hugeicons="MoreHorizontalCircle01Icon"
-                          phosphor="DotsThreeOutlineIcon"
-                          remixicon="RiMoreLine"
+                          lucide="FileCodeIcon"
+                          tabler="IconFileCode"
+                          hugeicons="CodeIcon"
+                          phosphor="CodeIcon"
+                          remixicon="RiCodeLine"
                         />
-                        More Projects
-                      </DropdownMenuSubTrigger>
-                      <DropdownMenuPortal>
-                        <DropdownMenuSubContent>
-                          <DropdownMenuItem value="dm-menuitem41">
-                            <IconPlaceholder
-                              lucide="FileCodeIcon"
-                              tabler="IconFileCode"
-                              hugeicons="CodeIcon"
-                              phosphor="CodeIcon"
-                              remixicon="RiCodeLine"
-                            />
-                            Project Gamma
-                          </DropdownMenuItem>
-                          <DropdownMenuItem value="dm-menuitem42">
-                            <IconPlaceholder
-                              lucide="FileCodeIcon"
-                              tabler="IconFileCode"
-                              hugeicons="CodeIcon"
-                              phosphor="CodeIcon"
-                              remixicon="RiCodeLine"
-                            />
-                            Project Delta
-                          </DropdownMenuItem>
-                        </DropdownMenuSubContent>
-                      </DropdownMenuPortal>
-                    </DropdownMenuSub>
-                  </DropdownMenuGroup>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem value="dm-menuitem43">
-                      <IconPlaceholder
-                        lucide="FolderSearchIcon"
-                        tabler="IconFolderSearch"
-                        hugeicons="SearchIcon"
-                        phosphor="MagnifyingGlassIcon"
-                        remixicon="RiSearchLine"
-                      />
-                      Browse...
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                </DropdownMenuSubContent>
-              </DropdownMenuPortal>
+                        Project Gamma
+                      </DropdownMenuItem>
+                      <DropdownMenuItem value="dm-menuitem42">
+                        <IconPlaceholder
+                          lucide="FileCodeIcon"
+                          tabler="IconFileCode"
+                          hugeicons="CodeIcon"
+                          phosphor="CodeIcon"
+                          remixicon="RiCodeLine"
+                        />
+                        Project Delta
+                      </DropdownMenuItem>
+                    </DropdownMenuSubContent>
+                  </DropdownMenuSub>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem value="dm-menuitem43">
+                    <IconPlaceholder
+                      lucide="FolderSearchIcon"
+                      tabler="IconFolderSearch"
+                      hugeicons="SearchIcon"
+                      phosphor="MagnifyingGlassIcon"
+                      remixicon="RiSearchLine"
+                    />
+                    Browse...
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuSubContent>
             </DropdownMenuSub>
             <DropdownMenuSeparator />
             <DropdownMenuItem value="dm-menuitem44">
@@ -1024,48 +1036,46 @@ function DropdownMenuComplex() {
                 />
                 Theme
               </DropdownMenuSubTrigger>
-              <DropdownMenuPortal>
-                <DropdownMenuSubContent>
-                  <DropdownMenuGroup>
-                    <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-                    <DropdownMenuRadioGroup
-                      value={theme}
-                      onValueChange={(details) => setTheme(details.value)}
-                    >
-                      <DropdownMenuRadioItem value="light">
-                        <IconPlaceholder
-                          lucide="SunIcon"
-                          tabler="IconSun"
-                          hugeicons="SunIcon"
-                          phosphor="SunIcon"
-                          remixicon="RiSunLine"
-                        />
-                        Light
-                      </DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem value="dark">
-                        <IconPlaceholder
-                          lucide="MoonIcon"
-                          tabler="IconMoon"
-                          hugeicons="MoonIcon"
-                          phosphor="MoonIcon"
-                          remixicon="RiMoonLine"
-                        />
-                        Dark
-                      </DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem value="system">
-                        <IconPlaceholder
-                          lucide="MonitorIcon"
-                          tabler="IconDeviceDesktop"
-                          hugeicons="ComputerIcon"
-                          phosphor="MonitorIcon"
-                          remixicon="RiComputerLine"
-                        />
-                        System
-                      </DropdownMenuRadioItem>
-                    </DropdownMenuRadioGroup>
-                  </DropdownMenuGroup>
-                </DropdownMenuSubContent>
-              </DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>Appearance</DropdownMenuLabel>
+                  <DropdownMenuRadioGroup
+                    value={theme}
+                    onValueChange={(details) => setTheme(details.value)}
+                  >
+                    <DropdownMenuRadioItem value="light">
+                      <IconPlaceholder
+                        lucide="SunIcon"
+                        tabler="IconSun"
+                        hugeicons="SunIcon"
+                        phosphor="SunIcon"
+                        remixicon="RiSunLine"
+                      />
+                      Light
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="dark">
+                      <IconPlaceholder
+                        lucide="MoonIcon"
+                        tabler="IconMoon"
+                        hugeicons="MoonIcon"
+                        phosphor="MoonIcon"
+                        remixicon="RiMoonLine"
+                      />
+                      Dark
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="system">
+                      <IconPlaceholder
+                        lucide="MonitorIcon"
+                        tabler="IconDeviceDesktop"
+                        hugeicons="ComputerIcon"
+                        phosphor="MonitorIcon"
+                        remixicon="RiComputerLine"
+                      />
+                      System
+                    </DropdownMenuRadioItem>
+                  </DropdownMenuRadioGroup>
+                </DropdownMenuGroup>
+              </DropdownMenuSubContent>
             </DropdownMenuSub>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
@@ -1103,105 +1113,101 @@ function DropdownMenuComplex() {
                 />
                 Settings
               </DropdownMenuSubTrigger>
-              <DropdownMenuPortal>
-                <DropdownMenuSubContent>
-                  <DropdownMenuGroup>
-                    <DropdownMenuLabel>Preferences</DropdownMenuLabel>
-                    <DropdownMenuItem value="dm-menuitem48">
+              <DropdownMenuSubContent>
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>Preferences</DropdownMenuLabel>
+                  <DropdownMenuItem value="dm-menuitem48">
+                    <IconPlaceholder
+                      lucide="KeyboardIcon"
+                      tabler="IconKeyboard"
+                      hugeicons="KeyboardIcon"
+                      phosphor="KeyboardIcon"
+                      remixicon="RiKeyboardLine"
+                    />
+                    Keyboard Shortcuts
+                  </DropdownMenuItem>
+                  <DropdownMenuItem value="dm-menuitem49">
+                    <IconPlaceholder
+                      lucide="LanguagesIcon"
+                      tabler="IconLanguage"
+                      hugeicons="LanguageCircleIcon"
+                      phosphor="TranslateIcon"
+                      remixicon="RiTranslate"
+                    />
+                    Language
+                  </DropdownMenuItem>
+                  <DropdownMenuSub>
+                    <DropdownMenuSubTrigger>
                       <IconPlaceholder
-                        lucide="KeyboardIcon"
-                        tabler="IconKeyboard"
-                        hugeicons="KeyboardIcon"
-                        phosphor="KeyboardIcon"
-                        remixicon="RiKeyboardLine"
+                        lucide="BellIcon"
+                        tabler="IconBell"
+                        hugeicons="NotificationIcon"
+                        phosphor="BellIcon"
+                        remixicon="RiNotificationLine"
                       />
-                      Keyboard Shortcuts
-                    </DropdownMenuItem>
-                    <DropdownMenuItem value="dm-menuitem49">
-                      <IconPlaceholder
-                        lucide="LanguagesIcon"
-                        tabler="IconLanguage"
-                        hugeicons="LanguageCircleIcon"
-                        phosphor="TranslateIcon"
-                        remixicon="RiTranslate"
-                      />
-                      Language
-                    </DropdownMenuItem>
-                    <DropdownMenuSub>
-                      <DropdownMenuSubTrigger>
-                        <IconPlaceholder
-                          lucide="BellIcon"
-                          tabler="IconBell"
-                          hugeicons="NotificationIcon"
-                          phosphor="BellIcon"
-                          remixicon="RiNotificationLine"
-                        />
-                        Notifications
-                      </DropdownMenuSubTrigger>
-                      <DropdownMenuPortal>
-                        <DropdownMenuSubContent>
-                          <DropdownMenuGroup>
-                            <DropdownMenuLabel>
-                              Notification Types
-                            </DropdownMenuLabel>
-                            <DropdownMenuCheckboxItem
-                              value="push-notifications"
-                              checked={notifications.push}
-                              onCheckedChange={(checked) =>
-                                setNotifications({
-                                  ...notifications,
-                                  push: checked === true,
-                                })
-                              }
-                            >
-                              <IconPlaceholder
-                                lucide="BellIcon"
-                                tabler="IconBell"
-                                hugeicons="NotificationIcon"
-                                phosphor="BellIcon"
-                                remixicon="RiNotificationLine"
-                              />
-                              Push Notifications
-                            </DropdownMenuCheckboxItem>
-                            <DropdownMenuCheckboxItem
-                              value="email-notifications"
-                              checked={notifications.email}
-                              onCheckedChange={(checked) =>
-                                setNotifications({
-                                  ...notifications,
-                                  email: checked === true,
-                                })
-                              }
-                            >
-                              <IconPlaceholder
-                                lucide="MailIcon"
-                                tabler="IconMail"
-                                hugeicons="MailIcon"
-                                phosphor="EnvelopeIcon"
-                                remixicon="RiMailLine"
-                              />
-                              Email Notifications
-                            </DropdownMenuCheckboxItem>
-                          </DropdownMenuGroup>
-                        </DropdownMenuSubContent>
-                      </DropdownMenuPortal>
-                    </DropdownMenuSub>
-                  </DropdownMenuGroup>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem value="dm-menuitem50">
-                      <IconPlaceholder
-                        lucide="ShieldIcon"
-                        tabler="IconShield"
-                        hugeicons="ShieldIcon"
-                        phosphor="ShieldIcon"
-                        remixicon="RiShieldLine"
-                      />
-                      Privacy & Security
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                </DropdownMenuSubContent>
-              </DropdownMenuPortal>
+                      Notifications
+                    </DropdownMenuSubTrigger>
+                    <DropdownMenuSubContent>
+                      <DropdownMenuGroup>
+                        <DropdownMenuLabel>
+                          Notification Types
+                        </DropdownMenuLabel>
+                        <DropdownMenuCheckboxItem
+                          value="push-notifications"
+                          checked={notifications.push}
+                          onCheckedChange={(checked) =>
+                            setNotifications({
+                              ...notifications,
+                              push: checked === true,
+                            })
+                          }
+                        >
+                          <IconPlaceholder
+                            lucide="BellIcon"
+                            tabler="IconBell"
+                            hugeicons="NotificationIcon"
+                            phosphor="BellIcon"
+                            remixicon="RiNotificationLine"
+                          />
+                          Push Notifications
+                        </DropdownMenuCheckboxItem>
+                        <DropdownMenuCheckboxItem
+                          value="email-notifications"
+                          checked={notifications.email}
+                          onCheckedChange={(checked) =>
+                            setNotifications({
+                              ...notifications,
+                              email: checked === true,
+                            })
+                          }
+                        >
+                          <IconPlaceholder
+                            lucide="MailIcon"
+                            tabler="IconMail"
+                            hugeicons="MailIcon"
+                            phosphor="EnvelopeIcon"
+                            remixicon="RiMailLine"
+                          />
+                          Email Notifications
+                        </DropdownMenuCheckboxItem>
+                      </DropdownMenuGroup>
+                    </DropdownMenuSubContent>
+                  </DropdownMenuSub>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem value="dm-menuitem50">
+                    <IconPlaceholder
+                      lucide="ShieldIcon"
+                      tabler="IconShield"
+                      hugeicons="ShieldIcon"
+                      phosphor="ShieldIcon"
+                      remixicon="RiShieldLine"
+                    />
+                    Privacy & Security
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuSubContent>
             </DropdownMenuSub>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
