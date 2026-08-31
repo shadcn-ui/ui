@@ -14,7 +14,7 @@ import {
   ComboboxTrigger,
   useFilter,
   useListCollection,
-} from "@/examples/ark/ui/combobox"
+} from "@/styles/ark-nova/ui/combobox"
 
 const americasItems = [
   { label: "(GMT-5) New York", value: "gmt-5-new-york" },

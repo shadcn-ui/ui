@@ -1,4 +1,4 @@
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Card,
   CardContent,
@@ -6,14 +6,14 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/ark/ui/card"
-import { Field, FieldDescription, FieldLabel } from "@/examples/ark/ui/field"
+} from "@/styles/ark-nova/ui/card"
+import { Field, FieldDescription, FieldLabel } from "@/styles/ark-nova/ui/field"
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/examples/ark/ui/input-otp"
+} from "@/styles/ark-nova/ui/input-otp"
 import { RefreshCwIcon } from "lucide-react"
 
 export function InputOTPForm() {

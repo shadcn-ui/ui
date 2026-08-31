@@ -3,7 +3,7 @@
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from "@/examples/ark/ui-rtl/toggle-group"
+} from "@/styles/ark-nova/ui-rtl/toggle-group"
 
 import {
   useTranslation,

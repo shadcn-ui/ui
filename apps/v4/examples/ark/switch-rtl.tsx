@@ -7,7 +7,7 @@ import {
   SwitchHiddenInput,
   SwitchLabel,
   SwitchThumb,
-} from "@/examples/ark/ui-rtl/switch"
+} from "@/styles/ark-nova/ui-rtl/switch"
 
 import {
   useTranslation,

@@ -1,5 +1,5 @@
-import { Button } from "@/examples/ark/ui/button"
-import { Textarea } from "@/examples/ark/ui/textarea"
+import { Button } from "@/styles/ark-nova/ui/button"
+import { Textarea } from "@/styles/ark-nova/ui/textarea"
 
 export function TextareaButton() {
   return (

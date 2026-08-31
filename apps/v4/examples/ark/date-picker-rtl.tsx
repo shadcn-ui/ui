@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/examples/ark/ui-rtl/button"
+import { Button } from "@/styles/ark-nova/ui-rtl/button"
 import {
   DatePicker,
   DatePickerContent,
@@ -10,7 +10,7 @@ import {
   DatePickerTrigger,
   DatePickerValueText,
   DatePickerYearView,
-} from "@/examples/ark/ui-rtl/date-picker"
+} from "@/styles/ark-nova/ui-rtl/date-picker"
 import { ChevronDownIcon } from "lucide-react"
 
 import {

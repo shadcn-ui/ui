@@ -2,20 +2,20 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/examples/ark/ui/avatar"
+} from "@/styles/ark-nova/ui/avatar"
 import {
   Bubble,
   BubbleContent,
   BubbleGroup,
   BubbleReactions,
-} from "@/examples/ark/ui/bubble"
-import { Marker, MarkerContent } from "@/examples/ark/ui/marker"
+} from "@/styles/ark-nova/ui/bubble"
+import { Marker, MarkerContent } from "@/styles/ark-nova/ui/marker"
 import {
   Message,
   MessageAvatar,
   MessageContent,
   MessageFooter,
-} from "@/examples/ark/ui/message"
+} from "@/styles/ark-nova/ui/message"
 
 export function MessageDemo() {
   return (

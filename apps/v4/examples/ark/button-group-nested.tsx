@@ -1,16 +1,16 @@
-import { Button } from "@/examples/ark/ui/button"
-import { ButtonGroup } from "@/examples/ark/ui/button-group"
-import { Input } from "@/examples/ark/ui/input"
+import { Button } from "@/styles/ark-nova/ui/button"
+import { ButtonGroup } from "@/styles/ark-nova/ui/button-group"
+import { Input } from "@/styles/ark-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/ark/ui/input-group"
+} from "@/styles/ark-nova/ui/input-group"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/ark/ui/tooltip"
+} from "@/styles/ark-nova/ui/tooltip"
 import { AudioLinesIcon, PlusIcon } from "lucide-react"
 
 export function ButtonGroupNested() {

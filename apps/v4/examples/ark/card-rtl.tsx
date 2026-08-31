@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/ark/ui-rtl/button"
+import { Button } from "@/styles/ark-nova/ui-rtl/button"
 import {
   Card,
   CardAction,
@@ -10,9 +10,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/ark/ui-rtl/card"
-import { Input } from "@/examples/ark/ui-rtl/input"
-import { Label } from "@/examples/ark/ui-rtl/label"
+} from "@/styles/ark-nova/ui-rtl/card"
+import { Input } from "@/styles/ark-nova/ui-rtl/input"
+import { Label } from "@/styles/ark-nova/ui-rtl/label"
 
 import {
   useTranslation,

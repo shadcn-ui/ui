@@ -1,5 +1,5 @@
-import { Checkbox } from "@/examples/ark/ui/checkbox"
-import { Field, FieldGroup } from "@/examples/ark/ui/field"
+import { Checkbox } from "@/styles/ark-nova/ui/checkbox"
+import { Field, FieldGroup } from "@/styles/ark-nova/ui/field"
 
 export function CheckboxInvalid() {
   return (

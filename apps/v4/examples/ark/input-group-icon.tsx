@@ -2,7 +2,7 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/ark/ui/input-group"
+} from "@/styles/ark-nova/ui/input-group"
 import {
   CheckIcon,
   CreditCardIcon,

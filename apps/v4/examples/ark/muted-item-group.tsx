@@ -1,4 +1,4 @@
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Item,
   ItemActions,
@@ -6,7 +6,7 @@ import {
   ItemDescription,
   ItemGroup,
   ItemTitle,
-} from "@/examples/ark/ui/item"
+} from "@/styles/ark-nova/ui/item"
 
 export function MutedItemGroup() {
   return (

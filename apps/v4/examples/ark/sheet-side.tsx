@@ -1,4 +1,4 @@
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Sheet,
   SheetClose,
@@ -8,7 +8,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/examples/ark/ui/sheet"
+} from "@/styles/ark-nova/ui/sheet"
 
 const SHEET_SIDES = ["top", "right", "bottom", "left"] as const
 

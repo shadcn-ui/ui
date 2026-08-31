@@ -12,7 +12,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   SidebarProvider,
-} from "@/examples/ark/ui/sidebar"
+} from "@/styles/ark-nova/ui/sidebar"
 
 const items = [
   {

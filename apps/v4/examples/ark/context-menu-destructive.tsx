@@ -5,7 +5,7 @@ import {
   ContextMenuItem,
   ContextMenuSeparator,
   ContextMenuTrigger,
-} from "@/examples/ark/ui/context-menu"
+} from "@/styles/ark-nova/ui/context-menu"
 import { PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
 
 export function ContextMenuDestructive() {

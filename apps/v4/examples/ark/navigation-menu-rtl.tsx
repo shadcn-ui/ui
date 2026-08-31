@@ -10,7 +10,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/examples/ark/ui-rtl/navigation-menu"
+} from "@/styles/ark-nova/ui-rtl/navigation-menu"
 
 import {
   useTranslation,

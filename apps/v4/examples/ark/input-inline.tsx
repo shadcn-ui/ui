@@ -1,6 +1,6 @@
-import { Button } from "@/examples/ark/ui/button"
-import { Field } from "@/examples/ark/ui/field"
-import { Input } from "@/examples/ark/ui/input"
+import { Button } from "@/styles/ark-nova/ui/button"
+import { Field } from "@/styles/ark-nova/ui/field"
+import { Input } from "@/styles/ark-nova/ui/input"
 
 export function InputInline() {
   return (

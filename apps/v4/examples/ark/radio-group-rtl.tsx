@@ -7,11 +7,11 @@ import {
   RadioGroupItemControl,
   RadioGroupItemHiddenInput,
   RadioGroupItemText,
-} from "@/examples/ark/ui-rtl/radio-group"
+} from "@/styles/ark-nova/ui-rtl/radio-group"
 import {
   FieldContent,
   FieldDescription,
-} from "@/examples/ark/ui-rtl/field"
+} from "@/styles/ark-nova/ui-rtl/field"
 
 import {
   useTranslation,

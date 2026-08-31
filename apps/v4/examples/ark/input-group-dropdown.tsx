@@ -4,13 +4,13 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/ark/ui/dropdown-menu"
+} from "@/styles/ark-nova/ui/dropdown-menu"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/ark/ui/input-group"
+} from "@/styles/ark-nova/ui/input-group"
 import { ChevronDownIcon, MoreHorizontal } from "lucide-react"
 
 export default function InputGroupDropdown() {

@@ -1,11 +1,11 @@
-import { Button } from "@/examples/ark/ui/button"
-import { ButtonGroup } from "@/examples/ark/ui/button-group"
-import { Kbd, KbdGroup } from "@/examples/ark/ui/kbd"
+import { Button } from "@/styles/ark-nova/ui/button"
+import { ButtonGroup } from "@/styles/ark-nova/ui/button-group"
+import { Kbd, KbdGroup } from "@/styles/ark-nova/ui/kbd"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/ark/ui/tooltip"
+} from "@/styles/ark-nova/ui/tooltip"
 
 export default function KbdTooltip() {
   return (

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Command,
   CommandDialog,
@@ -11,7 +11,7 @@ import {
   CommandItemText,
   CommandList,
   useListCollection,
-} from "@/examples/ark/ui/command"
+} from "@/styles/ark-nova/ui/command"
 
 export function CommandBasic() {
   const [open, setOpen] = React.useState(false)

@@ -1,9 +1,9 @@
-import { Field, FieldDescription, FieldLabel } from "@/examples/ark/ui/field"
+import { Field, FieldDescription, FieldLabel } from "@/styles/ark-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/ark/ui/input-group"
+} from "@/styles/ark-nova/ui/input-group"
 import { EyeOffIcon } from "lucide-react"
 
 export function InputGroupInlineEnd() {

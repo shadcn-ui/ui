@@ -1,19 +1,19 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/ark/ui/button"
-import { ButtonGroup } from "@/examples/ark/ui/button-group"
+import { Button } from "@/styles/ark-nova/ui/button"
+import { ButtonGroup } from "@/styles/ark-nova/ui/button-group"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/ark/ui/input-group"
+} from "@/styles/ark-nova/ui/input-group"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/ark/ui/tooltip"
+} from "@/styles/ark-nova/ui/tooltip"
 import { AudioLinesIcon, PlusIcon } from "lucide-react"
 
 export default function ButtonGroupInputGroup() {

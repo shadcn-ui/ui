@@ -1,21 +1,21 @@
 "use client"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/ark/ui/avatar"
-import { Button } from "@/examples/ark/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/styles/ark-nova/ui/avatar"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/ark/ui/dropdown-menu"
+} from "@/styles/ark-nova/ui/dropdown-menu"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/examples/ark/ui/item"
+} from "@/styles/ark-nova/ui/item"
 import { ChevronDownIcon } from "lucide-react"
 
 const people = [

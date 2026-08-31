@@ -7,7 +7,7 @@ import {
   SliderRange,
   SliderThumb,
   SliderTrack,
-} from "@/examples/ark/ui-rtl/slider"
+} from "@/styles/ark-nova/ui-rtl/slider"
 
 import {
   useTranslation,

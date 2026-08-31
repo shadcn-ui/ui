@@ -9,14 +9,14 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/examples/ark/ui-rtl/breadcrumb"
+} from "@/styles/ark-nova/ui-rtl/breadcrumb"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/ark/ui-rtl/dropdown-menu"
+} from "@/styles/ark-nova/ui-rtl/dropdown-menu"
 import { ChevronDownIcon, DotIcon } from "lucide-react"
 
 import {

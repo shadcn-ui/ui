@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Sidebar,
   SidebarContent,
@@ -13,7 +13,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/examples/ark/ui/sidebar"
+} from "@/styles/ark-nova/ui/sidebar"
 import {
   FrameIcon,
   LifeBuoyIcon,

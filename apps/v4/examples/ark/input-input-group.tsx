@@ -1,10 +1,10 @@
-import { Field, FieldLabel } from "@/examples/ark/ui/field"
+import { Field, FieldLabel } from "@/styles/ark-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
-} from "@/examples/ark/ui/input-group"
+} from "@/styles/ark-nova/ui/input-group"
 import { InfoIcon } from "lucide-react"
 
 export function InputInputGroup() {

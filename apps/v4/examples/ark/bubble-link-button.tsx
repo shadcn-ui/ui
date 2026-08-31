@@ -1,12 +1,12 @@
 "use client"
 
-import { toast } from "@/examples/ark/ui/toast"
+import { toast } from "@/styles/ark-nova/ui/toast"
 
 import {
   Bubble,
   BubbleContent,
   BubbleGroup,
-} from "@/examples/ark/ui/bubble"
+} from "@/styles/ark-nova/ui/bubble"
 
 export function BubbleLinkButtonDemo() {
   return (

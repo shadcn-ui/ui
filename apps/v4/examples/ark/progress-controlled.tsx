@@ -5,14 +5,14 @@ import {
   Progress,
   ProgressRange,
   ProgressTrack,
-} from "@/examples/ark/ui/progress"
+} from "@/styles/ark-nova/ui/progress"
 import {
   Slider,
   SliderControl,
   SliderRange,
   SliderThumb,
   SliderTrack,
-} from "@/examples/ark/ui/slider"
+} from "@/styles/ark-nova/ui/slider"
 
 export function ProgressControlled() {
   const [value, setValue] = React.useState([50])

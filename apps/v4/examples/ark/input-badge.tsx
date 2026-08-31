@@ -1,6 +1,6 @@
-import { Badge } from "@/examples/ark/ui/badge"
-import { Field, FieldLabel } from "@/examples/ark/ui/field"
-import { Input } from "@/examples/ark/ui/input"
+import { Badge } from "@/styles/ark-nova/ui/badge"
+import { Field, FieldLabel } from "@/styles/ark-nova/ui/field"
+import { Input } from "@/styles/ark-nova/ui/input"
 
 export function InputBadge() {
   return (

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Checkbox } from "@/examples/ark/ui-rtl/checkbox"
+import { Checkbox } from "@/styles/ark-nova/ui-rtl/checkbox"
 import {
   Field,
   FieldContent,
@@ -9,8 +9,8 @@ import {
   FieldGroup,
   FieldLabel,
   FieldTitle,
-} from "@/examples/ark/ui-rtl/field"
-import { Label } from "@/examples/ark/ui-rtl/label"
+} from "@/styles/ark-nova/ui-rtl/field"
+import { Label } from "@/styles/ark-nova/ui-rtl/label"
 
 import {
   useTranslation,

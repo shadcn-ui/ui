@@ -1,9 +1,9 @@
-import { Field, FieldLabel } from "@/examples/ark/ui/field"
+import { Field, FieldLabel } from "@/styles/ark-nova/ui/field"
 import {
   Progress,
   ProgressRange,
   ProgressTrack,
-} from "@/examples/ark/ui/progress"
+} from "@/styles/ark-nova/ui/progress"
 
 export function ProgressWithLabel() {
   return (

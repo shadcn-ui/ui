@@ -1,4 +1,4 @@
-import { Tabs, TabsList, TabsTrigger } from "@/examples/ark/ui/tabs"
+import { Tabs, TabsList, TabsTrigger } from "@/styles/ark-nova/ui/tabs"
 
 export function TabsDisabled() {
   return (

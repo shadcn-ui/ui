@@ -6,7 +6,7 @@ import {
   CalendarDate,
   type DatePickerValueChangeDetails,
   type DateValue,
-} from "@/examples/ark/ui/calendar"
+} from "@/styles/ark-nova/ui/calendar"
 
 export default function CalendarDemo() {
   const [value, setValue] = React.useState<DateValue[]>([

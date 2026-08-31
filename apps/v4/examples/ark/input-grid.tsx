@@ -1,5 +1,5 @@
-import { Field, FieldGroup, FieldLabel } from "@/examples/ark/ui/field"
-import { Input } from "@/examples/ark/ui/input"
+import { Field, FieldGroup, FieldLabel } from "@/styles/ark-nova/ui/field"
+import { Input } from "@/styles/ark-nova/ui/input"
 
 export function InputGrid() {
   return (

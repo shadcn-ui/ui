@@ -104,9 +104,21 @@ function Toaster() {
             </span>
           )}
           <div className="flex flex-1 flex-col gap-1">
-            <Toast.Title className="text-sm font-semibold" />
-            <Toast.Description className="text-sm text-muted-foreground" />
-            <Toast.ActionTrigger className="mt-1 inline-flex w-fit text-sm font-medium text-primary hover:text-primary/80" />
+            {toast.title && (
+              <Toast.Title className="text-sm font-semibold">
+                {toast.title}
+              </Toast.Title>
+            )}
+            {toast.description && (
+              <Toast.Description className="text-sm text-muted-foreground">
+                {toast.description}
+              </Toast.Description>
+            )}
+            {toast.action && (
+              <Toast.ActionTrigger className="mt-1 inline-flex w-fit text-sm font-medium text-primary hover:text-primary/80">
+                {toast.action.label}
+              </Toast.ActionTrigger>
+            )}
           </div>
           <Toast.CloseTrigger className="shrink-0 rounded-md p-0.5 text-muted-foreground opacity-70 transition-opacity hover:text-foreground hover:opacity-100">
             <IconPlaceholder

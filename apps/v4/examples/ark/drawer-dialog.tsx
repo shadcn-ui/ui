@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/ark/ui/dialog"
+} from "@/styles/ark-nova/ui/dialog"
 import {
   Drawer,
   DrawerClose,
@@ -19,9 +19,9 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/examples/ark/ui/drawer"
-import { Input } from "@/examples/ark/ui/input"
-import { Label } from "@/examples/ark/ui/label"
+} from "@/styles/ark-nova/ui/drawer"
+import { Input } from "@/styles/ark-nova/ui/input"
+import { Label } from "@/styles/ark-nova/ui/label"
 
 import { cn } from "@/lib/utils"
 import { useMediaQuery } from "@/hooks/use-media-query"

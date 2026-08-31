@@ -4,8 +4,8 @@ import {
   Calendar,
   CalendarDate,
   CalendarDayView,
-} from "@/examples/ark/ui/calendar"
-import { Card, CardContent } from "@/examples/ark/ui/card"
+} from "@/styles/ark-nova/ui/calendar"
+import { Card, CardContent } from "@/styles/ark-nova/ui/card"
 import { isWeekend } from "@internationalized/date"
 
 export function CalendarCustomDays() {

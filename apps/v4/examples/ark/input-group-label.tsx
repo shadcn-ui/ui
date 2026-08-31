@@ -3,13 +3,13 @@ import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/ark/ui/input-group"
-import { Label } from "@/examples/ark/ui/label"
+} from "@/styles/ark-nova/ui/input-group"
+import { Label } from "@/styles/ark-nova/ui/label"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/ark/ui/tooltip"
+} from "@/styles/ark-nova/ui/tooltip"
 import { InfoIcon } from "lucide-react"
 
 export default function InputGroupLabel() {

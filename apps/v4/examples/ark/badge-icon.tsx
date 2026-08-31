@@ -1,4 +1,4 @@
-import { Badge } from "@/examples/ark/ui/badge"
+import { Badge } from "@/styles/ark-nova/ui/badge"
 import { BadgeCheck, BookmarkIcon } from "lucide-react"
 
 export function BadgeWithIconLeft() {

@@ -14,7 +14,7 @@ import {
   DatePickerYearView,
   CalendarDate,
   type DateValue,
-} from "@/examples/ark/ui/date-picker"
+} from "@/styles/ark-nova/ui/date-picker"
 
 function toCalendarDate(date: Date): CalendarDate {
   return new CalendarDate(

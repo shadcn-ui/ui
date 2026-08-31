@@ -4,13 +4,13 @@ import {
   Bubble,
   BubbleContent,
   BubbleReactions,
-} from "@/examples/ark/ui/bubble"
-import { Button } from "@/examples/ark/ui/button"
+} from "@/styles/ark-nova/ui/bubble"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/ark/ui/tooltip"
+} from "@/styles/ark-nova/ui/tooltip"
 
 export function BubbleTooltipDemo() {
   return (

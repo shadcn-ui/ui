@@ -1,4 +1,4 @@
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 
 export default function ButtonDefault() {
   return <Button>Button</Button>

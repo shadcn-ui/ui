@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/examples/ark/ui-rtl/button"
+import { Button } from "@/styles/ark-nova/ui-rtl/button"
 import {
   Popover,
   PopoverContent,
@@ -8,7 +8,7 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/examples/ark/ui-rtl/popover"
+} from "@/styles/ark-nova/ui-rtl/popover"
 
 import {
   useTranslation,

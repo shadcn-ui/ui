@@ -4,7 +4,7 @@ import {
   RadioGroupItemControl,
   RadioGroupItemHiddenInput,
   RadioGroupItemText,
-} from "@/examples/ark/ui/radio-group"
+} from "@/styles/ark-nova/ui/radio-group"
 
 export function RadioGroupDisabled() {
   return (

@@ -51,6 +51,7 @@ const TooltipContent = React.forwardRef<
         {...props}
       >
         {children}
+        <TooltipArrow />
       </TooltipPrimitive.Content>
     </TooltipPrimitive.Positioner>
   </Portal>

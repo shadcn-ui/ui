@@ -4,13 +4,13 @@ import {
   FieldLabel,
   FieldLegend,
   FieldSet,
-} from "@/examples/ark/ui/field"
+} from "@/styles/ark-nova/ui/field"
 import {
   RadioGroup,
   RadioGroupItem,
   RadioGroupItemControl,
   RadioGroupItemHiddenInput,
-} from "@/examples/ark/ui/radio-group"
+} from "@/styles/ark-nova/ui/radio-group"
 
 export function FieldRadio() {
   return (

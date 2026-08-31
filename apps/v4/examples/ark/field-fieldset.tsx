@@ -5,8 +5,8 @@ import {
   FieldLabel,
   FieldLegend,
   FieldSet,
-} from "@/examples/ark/ui/field"
-import { Input } from "@/examples/ark/ui/input"
+} from "@/styles/ark-nova/ui/field"
+import { Input } from "@/styles/ark-nova/ui/input"
 
 export function FieldFieldset() {
   return (

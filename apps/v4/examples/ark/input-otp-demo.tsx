@@ -2,7 +2,7 @@ import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@/examples/ark/ui/input-otp"
+} from "@/styles/ark-nova/ui/input-otp"
 
 export function InputOTPDemo() {
   return (

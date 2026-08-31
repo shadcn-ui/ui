@@ -16,7 +16,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "@/examples/ark/ui-rtl/context-menu"
+} from "@/styles/ark-nova/ui-rtl/context-menu"
 import { ArrowLeftIcon, ArrowRightIcon, RotateCwIcon } from "lucide-react"
 
 import {

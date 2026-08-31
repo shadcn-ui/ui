@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Kbd, KbdGroup } from "@/examples/ark/ui-rtl/kbd"
+import { Kbd, KbdGroup } from "@/styles/ark-nova/ui-rtl/kbd"
 
 import {
   useTranslation,

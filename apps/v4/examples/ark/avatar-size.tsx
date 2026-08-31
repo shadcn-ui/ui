@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/ark/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/styles/ark-nova/ui/avatar"
 
 export function AvatarSizeExample() {
   return (

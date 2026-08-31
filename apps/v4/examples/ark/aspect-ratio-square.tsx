@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { AspectRatio } from "@/examples/ark/ui/aspect-ratio"
+import { AspectRatio } from "@/styles/ark-nova/ui/aspect-ratio"
 
 export function AspectRatioSquare() {
   return (

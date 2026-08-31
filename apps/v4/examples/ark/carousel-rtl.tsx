@@ -1,6 +1,6 @@
 "use client"
 
-import { Card, CardContent } from "@/examples/ark/ui-rtl/card"
+import { Card, CardContent } from "@/styles/ark-nova/ui-rtl/card"
 import {
   Carousel,
   CarouselContent,
@@ -8,7 +8,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/examples/ark/ui-rtl/carousel"
+} from "@/styles/ark-nova/ui-rtl/carousel"
 
 import {
   useTranslation,

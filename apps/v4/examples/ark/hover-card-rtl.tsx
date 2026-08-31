@@ -1,11 +1,11 @@
 "use client"
 
-import { Button } from "@/examples/ark/ui-rtl/button"
+import { Button } from "@/styles/ark-nova/ui-rtl/button"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/examples/ark/ui-rtl/hover-card"
+} from "@/styles/ark-nova/ui-rtl/hover-card"
 
 import {
   useTranslation,

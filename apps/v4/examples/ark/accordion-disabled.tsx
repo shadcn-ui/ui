@@ -3,7 +3,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/examples/ark/ui/accordion"
+} from "@/styles/ark-nova/ui/accordion"
 
 export default function AccordionDisabled() {
   return (

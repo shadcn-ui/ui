@@ -1,13 +1,13 @@
 "use client"
 
 import { GitBranchIcon, RotateCcwIcon } from "lucide-react"
-import { toast } from "@/examples/ark/ui/toast"
+import { toast } from "@/styles/ark-nova/ui/toast"
 
 import {
   Marker,
   MarkerContent,
   MarkerIcon,
-} from "@/examples/ark/ui/marker"
+} from "@/styles/ark-nova/ui/marker"
 
 export function MarkerLinkButtonDemo() {
   return (

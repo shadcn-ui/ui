@@ -1,18 +1,20 @@
 "use client"
 
 import * as React from "react"
-import { ark } from "@ark-ui/react/factory"
 import {
   Drawer as DrawerPrimitive,
   useDrawer,
   useDrawerContext,
   type DrawerOpenChangeDetails,
 } from "@ark-ui/react/drawer"
+import { ark } from "@ark-ui/react/factory"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 
-function Drawer({ ...props }: React.ComponentProps<typeof DrawerPrimitive.Root>) {
+function Drawer({
+  ...props
+}: React.ComponentProps<typeof DrawerPrimitive.Root>) {
   return <DrawerPrimitive.Root data-slot="drawer" {...props} />
 }
 
@@ -52,11 +54,11 @@ function DrawerContent({
   return (
     <Portal>
       <DrawerOverlay />
-      <DrawerPrimitive.Positioner className="fixed inset-0 z-50">
+      <DrawerPrimitive.Positioner className="fixed inset-0 z-50 flex data-[swipe-direction=down]:items-end data-[swipe-direction=left]:justify-start data-[swipe-direction=right]:justify-end data-[swipe-direction=up]:items-start">
         <DrawerPrimitive.Content
           data-slot="drawer-content"
           className={cn(
-            "cn-drawer-content group/drawer-content z-50 w-full outline-none",
+            "cn-drawer-content group/drawer-content relative z-50 flex flex-col outline-none data-[swipe-direction=down]:max-h-[80vh] data-[swipe-direction=down]:w-full data-[swipe-direction=left]:h-full data-[swipe-direction=left]:w-3/4 data-[swipe-direction=right]:h-full data-[swipe-direction=right]:w-3/4 data-[swipe-direction=up]:max-h-[80vh] data-[swipe-direction=up]:w-full data-[swipe-direction=left]:sm:max-w-sm data-[swipe-direction=right]:sm:max-w-sm",
             className
           )}
           {...props}
@@ -76,10 +78,22 @@ function DrawerHandle({
   return (
     <DrawerPrimitive.Grabber
       data-slot="drawer-handle"
-      className={cn("cn-drawer-handle-wrapper", className)}
+      className={cn(
+        "cn-drawer-handle-wrapper flex shrink-0 items-center justify-center",
+        "group-data-[swipe-direction=left]/drawer-content:absolute group-data-[swipe-direction=left]/drawer-content:inset-y-0 group-data-[swipe-direction=left]/drawer-content:right-0 group-data-[swipe-direction=left]/drawer-content:px-2",
+        "group-data-[swipe-direction=right]/drawer-content:absolute group-data-[swipe-direction=right]/drawer-content:inset-y-0 group-data-[swipe-direction=right]/drawer-content:left-0 group-data-[swipe-direction=right]/drawer-content:px-2",
+        className
+      )}
       {...props}
     >
-      <DrawerPrimitive.GrabberIndicator className="cn-drawer-handle mx-auto shrink-0" />
+      <DrawerPrimitive.GrabberIndicator
+        className={cn(
+          "cn-drawer-handle mx-auto shrink-0",
+          "group-data-[swipe-direction=down]/drawer-content:block group-data-[swipe-direction=up]/drawer-content:block",
+          "group-data-[swipe-direction=left]/drawer-content:mt-0 group-data-[swipe-direction=left]/drawer-content:block group-data-[swipe-direction=left]/drawer-content:rotate-90",
+          "group-data-[swipe-direction=right]/drawer-content:mt-0 group-data-[swipe-direction=right]/drawer-content:block group-data-[swipe-direction=right]/drawer-content:rotate-90"
+        )}
+      />
     </DrawerPrimitive.Grabber>
   )
 }

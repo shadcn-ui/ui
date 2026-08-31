@@ -9,7 +9,7 @@ import {
   AttachmentMedia,
   AttachmentTitle,
   AttachmentTrigger,
-} from "@/examples/ark/ui/attachment"
+} from "@/styles/ark-nova/ui/attachment"
 import {
   Dialog,
   DialogContent,
@@ -17,7 +17,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/ark/ui/dialog"
+} from "@/styles/ark-nova/ui/dialog"
 
 export function AttachmentTriggerDemo() {
   return (

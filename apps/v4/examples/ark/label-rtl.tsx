@@ -1,17 +1,11 @@
 "use client"
 
 import {
-  Checkbox,
-  CheckboxControl,
-  CheckboxHiddenInput,
-  CheckboxIndicator,
-} from "@/examples/ark/ui-rtl/checkbox"
-import { Label } from "@/examples/ark/ui-rtl/label"
-
-import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Checkbox } from "@/styles/ark-nova/ui-rtl/checkbox"
+import { Label } from "@/styles/ark-nova/ui-rtl/label"
 
 const translations: Translations = {
   en: {
@@ -39,15 +33,8 @@ export function LabelRtl() {
 
   return (
     <div className="flex gap-2" dir={dir}>
-      <Checkbox id="terms-rtl">
-        <CheckboxControl>
-          <CheckboxIndicator />
-        </CheckboxControl>
-        <CheckboxHiddenInput />
-      </Checkbox>
-      <Label htmlFor="terms-rtl">
-        {t.label}
-      </Label>
+      <Checkbox id="terms-rtl" />
+      <Label htmlFor="terms-rtl">{t.label}</Label>
     </div>
   )
 }

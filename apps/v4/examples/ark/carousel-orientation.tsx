@@ -1,11 +1,11 @@
-import { Card, CardContent } from "@/examples/ark/ui/card"
+import { Card, CardContent } from "@/styles/ark-nova/ui/card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/examples/ark/ui/carousel"
+} from "@/styles/ark-nova/ui/carousel"
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 
 const SLIDE_COUNT = 5

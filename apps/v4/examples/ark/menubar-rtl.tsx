@@ -16,7 +16,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "@/examples/ark/ui-rtl/menubar"
+} from "@/styles/ark-nova/ui-rtl/menubar"
 
 import {
   useTranslation,

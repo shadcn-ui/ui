@@ -5,7 +5,7 @@ import {
   Progress,
   ProgressRange,
   ProgressTrack,
-} from "@/examples/ark/ui/progress"
+} from "@/styles/ark-nova/ui/progress"
 
 export default function ProgressDemo() {
   const [progress, setProgress] = React.useState(13)

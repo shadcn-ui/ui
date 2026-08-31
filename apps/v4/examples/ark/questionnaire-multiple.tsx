@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "@/examples/ark/ui/toast"
+import { toast } from "@/styles/ark-nova/ui/toast"
 
 import {
   Questionnaire,
@@ -13,7 +13,7 @@ import {
   QuestionnaireItem,
   QuestionnaireSubmit,
   QuestionnaireTitle,
-} from "@/examples/ark/ui/questionnaire"
+} from "@/styles/ark-nova/ui/questionnaire"
 
 const items = [
   {

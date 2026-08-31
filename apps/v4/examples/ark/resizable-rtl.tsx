@@ -5,7 +5,7 @@ import {
   SplitterPanel,
   SplitterResizeTrigger,
   SplitterRoot,
-} from "@/examples/ark/ui-rtl/resizable"
+} from "@/styles/ark-nova/ui-rtl/resizable"
 
 import {
   useTranslation,

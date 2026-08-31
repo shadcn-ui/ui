@@ -1,4 +1,4 @@
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -6,8 +6,8 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/examples/ark/ui/empty"
-import { Spinner } from "@/examples/ark/ui/spinner"
+} from "@/styles/ark-nova/ui/empty"
+import { Spinner } from "@/styles/ark-nova/ui/spinner"
 
 export function SpinnerEmpty() {
   return (

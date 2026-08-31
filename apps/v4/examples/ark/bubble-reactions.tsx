@@ -1,13 +1,13 @@
 "use client"
 
-import { toast } from "@/examples/ark/ui/toast"
+import { toast } from "@/styles/ark-nova/ui/toast"
 
 import {
   Bubble,
   BubbleContent,
   BubbleReactions,
-} from "@/examples/ark/ui/bubble"
-import { Button } from "@/examples/ark/ui/button"
+} from "@/styles/ark-nova/ui/bubble"
+import { Button } from "@/styles/ark-nova/ui/button"
 
 export function BubbleReactionsDemo() {
   return (

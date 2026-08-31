@@ -2,8 +2,8 @@ import {
   Marker,
   MarkerContent,
   MarkerIcon,
-} from "@/examples/ark/ui/marker"
-import { Spinner } from "@/examples/ark/ui/spinner"
+} from "@/styles/ark-nova/ui/marker"
+import { Spinner } from "@/styles/ark-nova/ui/spinner"
 
 export function MarkerStatusDemo() {
   return (

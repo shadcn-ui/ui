@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/ark/ui-rtl/button"
+import { Button } from "@/styles/ark-nova/ui-rtl/button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -18,7 +18,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/examples/ark/ui-rtl/dropdown-menu"
+} from "@/styles/ark-nova/ui-rtl/dropdown-menu"
 import { CreditCardIcon, SettingsIcon, UserIcon } from "lucide-react"
 
 import {

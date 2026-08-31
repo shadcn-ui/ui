@@ -1,10 +1,10 @@
-import { Field, FieldLabel } from "@/examples/ark/ui/field"
+import { Field, FieldLabel } from "@/styles/ark-nova/ui/field"
 import {
   Switch,
   SwitchControl,
   SwitchHiddenInput,
   SwitchThumb,
-} from "@/examples/ark/ui/switch"
+} from "@/styles/ark-nova/ui/switch"
 
 export default function FieldSwitch() {
   return (

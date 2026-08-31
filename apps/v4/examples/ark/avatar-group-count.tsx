@@ -4,7 +4,7 @@ import {
   AvatarGroup,
   AvatarGroupCount,
   AvatarImage,
-} from "@/examples/ark/ui/avatar"
+} from "@/styles/ark-nova/ui/avatar"
 
 export function AvatarGroupCountExample() {
   return (

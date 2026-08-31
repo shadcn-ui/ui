@@ -4,8 +4,8 @@ import {
   FieldGroup,
   FieldLabel,
   FieldSet,
-} from "@/examples/ark/ui/field"
-import { Textarea } from "@/examples/ark/ui/textarea"
+} from "@/styles/ark-nova/ui/field"
+import { Textarea } from "@/styles/ark-nova/ui/textarea"
 
 export default function FieldTextarea() {
   return (

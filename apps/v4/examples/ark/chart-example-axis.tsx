@@ -1,6 +1,6 @@
 "use client"
 
-import { ChartContainer, type ChartConfig } from "@/examples/ark/ui/chart"
+import { ChartContainer, type ChartConfig } from "@/styles/ark-nova/ui/chart"
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
 const chartData = [

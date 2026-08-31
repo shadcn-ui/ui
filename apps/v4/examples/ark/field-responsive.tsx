@@ -1,4 +1,4 @@
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Field,
   FieldContent,
@@ -7,8 +7,8 @@ import {
   FieldLabel,
   FieldLegend,
   FieldSet,
-} from "@/examples/ark/ui/field"
-import { Input } from "@/examples/ark/ui/input"
+} from "@/styles/ark-nova/ui/field"
+import { Input } from "@/styles/ark-nova/ui/input"
 
 export function FieldResponsive() {
   return (

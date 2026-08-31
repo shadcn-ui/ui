@@ -5,13 +5,13 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/examples/ark/ui-rtl/avatar"
+} from "@/styles/ark-nova/ui-rtl/avatar"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/ark/ui-rtl/collapsible"
-import { DirectionProvider } from "@/examples/ark/ui-rtl/direction"
+} from "@/styles/ark-nova/ui-rtl/collapsible"
+import { DirectionProvider } from "@/styles/ark-nova/ui-rtl/direction"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,7 +20,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/examples/ark/ui-rtl/dropdown-menu"
+} from "@/styles/ark-nova/ui-rtl/dropdown-menu"
 import {
   Sidebar,
   SidebarContent,
@@ -40,7 +40,7 @@ import {
   SidebarRail,
   SidebarTrigger,
   useSidebar,
-} from "@/examples/ark/ui-rtl/sidebar"
+} from "@/styles/ark-nova/ui-rtl/sidebar"
 import {
   BadgeCheck,
   Bell,

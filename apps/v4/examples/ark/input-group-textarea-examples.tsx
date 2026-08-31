@@ -3,16 +3,16 @@ import {
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/examples/ark/ui/field"
-import { Input } from "@/examples/ark/ui/input"
+} from "@/styles/ark-nova/ui/field"
+import { Input } from "@/styles/ark-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupText,
   InputGroupTextarea,
-} from "@/examples/ark/ui/input-group"
-import { Textarea } from "@/examples/ark/ui/textarea"
+} from "@/styles/ark-nova/ui/input-group"
+import { Textarea } from "@/styles/ark-nova/ui/textarea"
 import {
   ArrowUpIcon,
   CodeIcon,

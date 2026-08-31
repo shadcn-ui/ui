@@ -1,4 +1,4 @@
-import { Badge } from "@/examples/ark/ui/badge"
+import { Badge } from "@/styles/ark-nova/ui/badge"
 
 export default function BadgeDemo() {
   return (

@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/ark/ui-rtl/button"
+import { Button } from "@/styles/ark-nova/ui-rtl/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/ark/ui-rtl/collapsible"
+} from "@/styles/ark-nova/ui-rtl/collapsible"
 import { ChevronsUpDown } from "lucide-react"
 
 import {

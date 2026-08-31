@@ -3,7 +3,7 @@ import {
   AvatarBadge,
   AvatarFallback,
   AvatarImage,
-} from "@/examples/ark/ui/avatar"
+} from "@/styles/ark-nova/ui/avatar"
 
 export function AvatarWithBadge() {
   return (

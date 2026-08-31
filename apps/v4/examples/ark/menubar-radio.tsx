@@ -10,7 +10,7 @@ import {
   MenubarRadioItem,
   MenubarSeparator,
   MenubarTrigger,
-} from "@/examples/ark/ui/menubar"
+} from "@/styles/ark-nova/ui/menubar"
 
 export function MenubarRadio() {
   const [user, setUser] = React.useState("benoit")

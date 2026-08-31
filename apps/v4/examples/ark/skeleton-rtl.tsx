@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Skeleton } from "@/examples/ark/ui-rtl/skeleton"
+import { Skeleton } from "@/styles/ark-nova/ui-rtl/skeleton"
 
 import {
   useTranslation,

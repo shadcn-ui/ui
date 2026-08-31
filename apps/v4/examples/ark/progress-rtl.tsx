@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Field, FieldLabel } from "@/examples/ark/ui-rtl/field"
+import { Field, FieldLabel } from "@/styles/ark-nova/ui-rtl/field"
 import {
   Progress,
   ProgressRange,
   ProgressTrack,
-} from "@/examples/ark/ui-rtl/progress"
+} from "@/styles/ark-nova/ui-rtl/progress"
 
 import {
   useTranslation,

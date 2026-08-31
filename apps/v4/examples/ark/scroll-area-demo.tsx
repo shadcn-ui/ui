@@ -1,6 +1,6 @@
 import * as React from "react"
-import { ScrollArea } from "@/examples/ark/ui/scroll-area"
-import { Separator } from "@/examples/ark/ui/separator"
+import { ScrollArea } from "@/styles/ark-nova/ui/scroll-area"
+import { Separator } from "@/styles/ark-nova/ui/separator"
 
 const tags = Array.from({ length: 50 }).map(
   (_, i, a) => `v1.2.0-beta.${a.length - i}`

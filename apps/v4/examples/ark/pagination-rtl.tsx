@@ -7,7 +7,7 @@ import {
   PaginationItem,
   PaginationNext,
   PaginationPrevious,
-} from "@/examples/ark/ui-rtl/pagination"
+} from "@/styles/ark-nova/ui-rtl/pagination"
 
 import {
   useTranslation,

@@ -10,7 +10,7 @@ import {
   ComboboxList,
   ComboboxTrigger,
   useListCollection,
-} from "@/examples/ark/ui/combobox"
+} from "@/styles/ark-nova/ui/combobox"
 
 const frameworkItems = [
   { label: "Next.js", value: "nextjs" },

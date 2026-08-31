@@ -7,13 +7,13 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/examples/ark/ui-rtl/card"
+} from "@/styles/ark-nova/ui-rtl/card"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/examples/ark/ui-rtl/tabs"
+} from "@/styles/ark-nova/ui-rtl/tabs"
 
 import {
   useTranslation,

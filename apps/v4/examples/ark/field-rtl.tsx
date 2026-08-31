@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@/examples/ark/ui-rtl/button"
-import { Checkbox } from "@/examples/ark/ui-rtl/checkbox"
+import { Button } from "@/styles/ark-nova/ui-rtl/button"
+import { Checkbox } from "@/styles/ark-nova/ui-rtl/checkbox"
 import {
   Field,
   FieldDescription,
@@ -10,8 +10,8 @@ import {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-} from "@/examples/ark/ui-rtl/field"
-import { Input } from "@/examples/ark/ui-rtl/input"
+} from "@/styles/ark-nova/ui-rtl/field"
+import { Input } from "@/styles/ark-nova/ui-rtl/input"
 import {
   createListCollection,
   Select,
@@ -24,8 +24,8 @@ import {
   SelectItemText,
   SelectTrigger,
   SelectValue,
-} from "@/examples/ark/ui-rtl/select"
-import { Textarea } from "@/examples/ark/ui-rtl/textarea"
+} from "@/styles/ark-nova/ui-rtl/select"
+import { Textarea } from "@/styles/ark-nova/ui-rtl/textarea"
 
 import {
   useTranslation,

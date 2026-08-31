@@ -1,5 +1,5 @@
-import { Badge } from "@/examples/ark/ui/badge"
-import { Spinner } from "@/examples/ark/ui/spinner"
+import { Badge } from "@/styles/ark-nova/ui/badge"
+import { Spinner } from "@/styles/ark-nova/ui/spinner"
 
 export function BadgeWithSpinner() {
   return (

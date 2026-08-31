@@ -13,7 +13,7 @@ const Tabs = React.forwardRef<
   <TabsPrimitive.Root
     ref={ref}
     data-slot="tabs"
-    className={cn("cn-tabs", className)}
+    className={cn("cn-tabs group/tabs flex data-horizontal:flex-col", className)}
     {...props}
   />
 ))
@@ -75,7 +75,7 @@ const TabsContent = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     data-slot="tabs-content"
-    className={cn("cn-tabs-content", className)}
+    className={cn("cn-tabs-content flex-1 outline-none", className)}
     {...props}
   />
 ))

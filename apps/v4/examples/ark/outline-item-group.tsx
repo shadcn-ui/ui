@@ -5,7 +5,7 @@ import {
   ItemGroup,
   ItemMedia,
   ItemTitle,
-} from "@/examples/ark/ui/item"
+} from "@/styles/ark-nova/ui/item"
 import { InboxIcon } from "lucide-react"
 
 export function OutlineItemGroup() {

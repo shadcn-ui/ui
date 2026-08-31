@@ -6,7 +6,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
   type PinInputValueChangeDetails,
-} from "@/examples/ark/ui/input-otp"
+} from "@/styles/ark-nova/ui/input-otp"
 
 export default function InputOTPControlled() {
   const [value, setValue] = React.useState<string[]>([])

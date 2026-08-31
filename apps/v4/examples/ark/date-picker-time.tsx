@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { CalendarDateTime } from "@internationalized/date"
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   DatePicker,
   DatePickerContent,
@@ -13,9 +13,9 @@ import {
   DatePickerValueText,
   DatePickerYearView,
   type DatePickerValueChangeDetails,
-} from "@/examples/ark/ui/date-picker"
-import { Field, FieldGroup, FieldLabel } from "@/examples/ark/ui/field"
-import { Input } from "@/examples/ark/ui/input"
+} from "@/styles/ark-nova/ui/date-picker"
+import { Field, FieldGroup, FieldLabel } from "@/styles/ark-nova/ui/field"
+import { Input } from "@/styles/ark-nova/ui/input"
 import { ChevronDownIcon } from "lucide-react"
 
 export function DatePickerTime() {

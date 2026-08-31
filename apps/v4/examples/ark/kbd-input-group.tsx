@@ -2,8 +2,8 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/ark/ui/input-group"
-import { Kbd } from "@/examples/ark/ui/kbd"
+} from "@/styles/ark-nova/ui/input-group"
+import { Kbd } from "@/styles/ark-nova/ui/kbd"
 import { SearchIcon } from "lucide-react"
 
 export default function KbdInputGroup() {

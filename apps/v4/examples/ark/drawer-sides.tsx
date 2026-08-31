@@ -1,4 +1,4 @@
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Drawer,
   DrawerClose,
@@ -8,7 +8,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/examples/ark/ui/drawer"
+} from "@/styles/ark-nova/ui/drawer"
 
 const DRAWER_SIDES = [
   { label: "top", swipeDirection: "up" },

@@ -1,5 +1,5 @@
-import { Button } from "@/examples/ark/ui/button"
-import { Kbd } from "@/examples/ark/ui/kbd"
+import { Button } from "@/styles/ark-nova/ui/button"
+import { Kbd } from "@/styles/ark-nova/ui/kbd"
 
 export default function KbdButton() {
   return (

@@ -1,10 +1,10 @@
-import { Button } from "@/examples/ark/ui/button"
-import { Card, CardContent } from "@/examples/ark/ui/card"
+import { Button } from "@/styles/ark-nova/ui/button"
+import { Card, CardContent } from "@/styles/ark-nova/ui/card"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/ark/ui/collapsible"
+} from "@/styles/ark-nova/ui/collapsible"
 
 import { ChevronDownIcon } from "@/registry/icons/__lucide__"
 

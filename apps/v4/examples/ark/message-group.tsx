@@ -2,14 +2,14 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/examples/ark/ui/avatar"
-import { Bubble, BubbleContent } from "@/examples/ark/ui/bubble"
+} from "@/styles/ark-nova/ui/avatar"
+import { Bubble, BubbleContent } from "@/styles/ark-nova/ui/bubble"
 import {
   Message,
   MessageAvatar,
   MessageContent,
   MessageGroup,
-} from "@/examples/ark/ui/message"
+} from "@/styles/ark-nova/ui/message"
 
 export function MessageGroupDemo() {
   return (

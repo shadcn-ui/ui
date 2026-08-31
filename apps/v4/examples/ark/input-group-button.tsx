@@ -6,12 +6,12 @@ import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/ark/ui/input-group"
+} from "@/styles/ark-nova/ui/input-group"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/examples/ark/ui/popover"
+} from "@/styles/ark-nova/ui/popover"
 import {
   IconCheck,
   IconCopy,

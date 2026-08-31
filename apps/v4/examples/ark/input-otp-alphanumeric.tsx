@@ -3,7 +3,7 @@ import {
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/examples/ark/ui/input-otp"
+} from "@/styles/ark-nova/ui/input-otp"
 
 export function InputOTPAlphanumeric() {
   return (

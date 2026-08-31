@@ -1,6 +1,6 @@
 import * as React from "react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/ark/ui/avatar"
-import { Button } from "@/examples/ark/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/styles/ark-nova/ui/avatar"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Item,
   ItemActions,
@@ -10,7 +10,7 @@ import {
   ItemMedia,
   ItemSeparator,
   ItemTitle,
-} from "@/examples/ark/ui/item"
+} from "@/styles/ark-nova/ui/item"
 import { PlusIcon } from "lucide-react"
 
 const people = [

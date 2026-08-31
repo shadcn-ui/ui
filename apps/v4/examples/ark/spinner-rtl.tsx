@@ -6,8 +6,8 @@ import {
   ItemContent,
   ItemMedia,
   ItemTitle,
-} from "@/examples/ark/ui-rtl/item"
-import { Spinner } from "@/examples/ark/ui-rtl/spinner"
+} from "@/styles/ark-nova/ui-rtl/item"
+import { Spinner } from "@/styles/ark-nova/ui-rtl/spinner"
 
 import {
   useTranslation,

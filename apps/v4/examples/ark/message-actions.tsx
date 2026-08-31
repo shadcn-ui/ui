@@ -5,13 +5,13 @@ import {
   ThumbsUpIcon,
 } from "lucide-react"
 
-import { Bubble, BubbleContent } from "@/examples/ark/ui/bubble"
-import { Button } from "@/examples/ark/ui/button"
+import { Bubble, BubbleContent } from "@/styles/ark-nova/ui/bubble"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Message,
   MessageContent,
   MessageFooter,
-} from "@/examples/ark/ui/message"
+} from "@/styles/ark-nova/ui/message"
 
 export function MessageActionsDemo() {
   return (

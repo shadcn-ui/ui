@@ -1,4 +1,4 @@
-import { Marker, MarkerContent } from "@/examples/ark/ui/marker"
+import { Marker, MarkerContent } from "@/styles/ark-nova/ui/marker"
 
 export function MarkerVariantsDemo() {
   return (

@@ -7,7 +7,7 @@ import {
   PaginationItem,
   PaginationNext,
   PaginationPrevious,
-} from "@/examples/ark/ui/pagination"
+} from "@/styles/ark-nova/ui/pagination"
 
 export function PaginationSimple() {
   return (

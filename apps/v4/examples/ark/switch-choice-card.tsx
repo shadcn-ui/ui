@@ -5,13 +5,13 @@ import {
   FieldGroup,
   FieldLabel,
   FieldTitle,
-} from "@/examples/ark/ui/field"
+} from "@/styles/ark-nova/ui/field"
 import {
   Switch,
   SwitchControl,
   SwitchHiddenInput,
   SwitchThumb,
-} from "@/examples/ark/ui/switch"
+} from "@/styles/ark-nova/ui/switch"
 
 export function SwitchChoiceCard() {
   return (

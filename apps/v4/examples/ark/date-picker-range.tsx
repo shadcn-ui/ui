@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   DatePicker,
   DatePickerContent,
@@ -20,7 +20,7 @@ import {
   DatePickerValueText,
   DatePickerView,
   DatePickerYearView,
-} from "@/examples/ark/ui/date-picker"
+} from "@/styles/ark-nova/ui/date-picker"
 import { CalendarIcon } from "lucide-react"
 
 export function DatePickerWithRange() {

@@ -9,8 +9,8 @@ import {
   AttachmentGroup,
   AttachmentMedia,
   AttachmentTitle,
-} from "@/examples/ark/ui/attachment"
-import { Spinner } from "@/examples/ark/ui/spinner"
+} from "@/styles/ark-nova/ui/attachment"
+import { Spinner } from "@/styles/ark-nova/ui/spinner"
 
 const images = [
   {

@@ -1,5 +1,5 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/ark/ui/avatar"
-import { Button } from "@/examples/ark/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/styles/ark-nova/ui/avatar"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -7,7 +7,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/examples/ark/ui/empty"
+} from "@/styles/ark-nova/ui/empty"
 import { PlusIcon } from "lucide-react"
 
 export default function EmptyAvatarGroup() {

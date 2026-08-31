@@ -3,8 +3,8 @@
 import * as React from "react"
 import { RotateCwIcon } from "lucide-react"
 
-import { Bubble, BubbleContent } from "@/examples/ark/ui/bubble"
-import { Button } from "@/examples/ark/ui/button"
+import { Bubble, BubbleContent } from "@/styles/ark-nova/ui/bubble"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Card,
   CardAction,
@@ -13,13 +13,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/ark/ui/card"
-import { Marker, MarkerContent } from "@/examples/ark/ui/marker"
+} from "@/styles/ark-nova/ui/card"
+import { Marker, MarkerContent } from "@/styles/ark-nova/ui/marker"
 import {
   Message,
   MessageContent,
   MessageHeader,
-} from "@/examples/ark/ui/message"
+} from "@/styles/ark-nova/ui/message"
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -27,12 +27,12 @@ import {
   MessageScrollerItem,
   MessageScrollerProvider,
   MessageScrollerViewport,
-} from "@/examples/ark/ui/message-scroller"
+} from "@/styles/ark-nova/ui/message-scroller"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/ark/ui/tooltip"
+} from "@/styles/ark-nova/ui/tooltip"
 
 const currentUser = "Grace"
 

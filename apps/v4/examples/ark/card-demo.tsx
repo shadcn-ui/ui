@@ -1,4 +1,4 @@
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Card,
   CardAction,
@@ -7,9 +7,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/ark/ui/card"
-import { Input } from "@/examples/ark/ui/input"
-import { Label } from "@/examples/ark/ui/label"
+} from "@/styles/ark-nova/ui/card"
+import { Input } from "@/styles/ark-nova/ui/input"
+import { Label } from "@/styles/ark-nova/ui/label"
 
 export default function CardDemo() {
   return (

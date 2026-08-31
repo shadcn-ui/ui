@@ -1,9 +1,9 @@
-import { Field, FieldLabel } from "@/examples/ark/ui/field"
+import { Field, FieldLabel } from "@/styles/ark-nova/ui/field"
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@/examples/ark/ui/input-otp"
+} from "@/styles/ark-nova/ui/input-otp"
 
 export function InputOTPPattern() {
   return (

@@ -14,8 +14,8 @@ import {
   ComboboxTrigger,
   useFilter,
   useListCollection,
-} from "@/examples/ark/ui-rtl/combobox"
-import { Field, FieldLabel } from "@/examples/ark/ui-rtl/field"
+} from "@/styles/ark-nova/ui-rtl/combobox"
+import { Field, FieldLabel } from "@/styles/ark-nova/ui-rtl/field"
 
 import {
   useTranslation,

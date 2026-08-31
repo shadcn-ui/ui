@@ -7,7 +7,7 @@ import {
   MenubarSeparator,
   MenubarShortcut,
   MenubarTrigger,
-} from "@/examples/ark/ui/menubar"
+} from "@/styles/ark-nova/ui/menubar"
 import {
   FileIcon,
   FolderIcon,

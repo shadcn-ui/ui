@@ -1,4 +1,4 @@
-import { Kbd, KbdGroup } from "@/examples/ark/ui/kbd"
+import { Kbd, KbdGroup } from "@/styles/ark-nova/ui/kbd"
 
 export default function KbdDemo() {
   return (

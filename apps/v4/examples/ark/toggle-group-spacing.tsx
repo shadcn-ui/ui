@@ -1,4 +1,4 @@
-import { ToggleGroup, ToggleGroupItem } from "@/examples/ark/ui/toggle-group"
+import { ToggleGroup, ToggleGroupItem } from "@/styles/ark-nova/ui/toggle-group"
 
 export function ToggleGroupSpacing() {
   return (

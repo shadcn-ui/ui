@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Separator } from "@/examples/ark/ui-rtl/separator"
+import { Separator } from "@/styles/ark-nova/ui-rtl/separator"
 
 import {
   useTranslation,

@@ -4,8 +4,8 @@ import {
   Bubble,
   BubbleContent,
   BubbleReactions,
-} from "@/examples/ark/ui/bubble"
-import { Button } from "@/examples/ark/ui/button"
+} from "@/styles/ark-nova/ui/bubble"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Popover,
   PopoverContent,
@@ -13,7 +13,7 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/examples/ark/ui/popover"
+} from "@/styles/ark-nova/ui/popover"
 
 export function BubblePopoverDemo() {
   return (

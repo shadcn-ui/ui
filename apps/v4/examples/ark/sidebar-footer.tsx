@@ -5,7 +5,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/ark/ui/dropdown-menu"
+} from "@/styles/ark-nova/ui/dropdown-menu"
 import {
   Sidebar,
   SidebarContent,
@@ -17,7 +17,7 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   SidebarTrigger,
-} from "@/examples/ark/ui/sidebar"
+} from "@/styles/ark-nova/ui/sidebar"
 import { ChevronUpIcon } from "lucide-react"
 
 export default function AppSidebar() {

@@ -1,5 +1,5 @@
-import { Calendar } from "@/examples/ark/ui/calendar"
-import { Card, CardContent } from "@/examples/ark/ui/card"
+import { Calendar } from "@/styles/ark-nova/ui/calendar"
+import { Card, CardContent } from "@/styles/ark-nova/ui/card"
 
 export function CalendarMultiple() {
   return (

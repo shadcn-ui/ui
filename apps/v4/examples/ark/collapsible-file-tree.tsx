@@ -1,11 +1,11 @@
-import { Button } from "@/examples/ark/ui/button"
-import { Card, CardContent, CardHeader } from "@/examples/ark/ui/card"
+import { Button } from "@/styles/ark-nova/ui/button"
+import { Card, CardContent, CardHeader } from "@/styles/ark-nova/ui/card"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/ark/ui/collapsible"
-import { Tabs, TabsList, TabsTrigger } from "@/examples/ark/ui/tabs"
+} from "@/styles/ark-nova/ui/collapsible"
+import { Tabs, TabsList, TabsTrigger } from "@/styles/ark-nova/ui/tabs"
 import { ChevronRightIcon, FileIcon, FolderIcon } from "lucide-react"
 
 type FileTreeItem = { name: string } | { name: string; items: FileTreeItem[] }

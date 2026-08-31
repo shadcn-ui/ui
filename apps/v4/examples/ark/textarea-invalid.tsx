@@ -1,5 +1,5 @@
-import { Field, FieldDescription, FieldLabel } from "@/examples/ark/ui/field"
-import { Textarea } from "@/examples/ark/ui/textarea"
+import { Field, FieldDescription, FieldLabel } from "@/styles/ark-nova/ui/field"
+import { Textarea } from "@/styles/ark-nova/ui/textarea"
 
 export function TextareaInvalid() {
   return (

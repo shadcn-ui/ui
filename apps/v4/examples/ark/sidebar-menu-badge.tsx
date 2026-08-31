@@ -11,7 +11,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/examples/ark/ui/sidebar"
+} from "@/styles/ark-nova/ui/sidebar"
 import {
   FrameIcon,
   LifeBuoyIcon,

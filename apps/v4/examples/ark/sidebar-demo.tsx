@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/ark/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/styles/ark-nova/ui/avatar"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/ark/ui/collapsible"
+} from "@/styles/ark-nova/ui/collapsible"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,7 +16,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/examples/ark/ui/dropdown-menu"
+} from "@/styles/ark-nova/ui/dropdown-menu"
 import {
   Sidebar,
   SidebarContent,
@@ -36,7 +36,7 @@ import {
   SidebarRail,
   SidebarTrigger,
   useSidebar,
-} from "@/examples/ark/ui/sidebar"
+} from "@/styles/ark-nova/ui/sidebar"
 import {
   AudioWaveform,
   BadgeCheck,

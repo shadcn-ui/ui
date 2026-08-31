@@ -5,7 +5,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/examples/ark/ui/breadcrumb"
+} from "@/styles/ark-nova/ui/breadcrumb"
 
 export function BreadcrumbBasic() {
   return (

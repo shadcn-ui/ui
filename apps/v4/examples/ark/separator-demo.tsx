@@ -1,4 +1,4 @@
-import { Separator } from "@/examples/ark/ui/separator"
+import { Separator } from "@/styles/ark-nova/ui/separator"
 
 export default function SeparatorDemo() {
   return (

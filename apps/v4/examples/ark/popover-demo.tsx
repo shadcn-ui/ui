@@ -1,11 +1,11 @@
-import { Button } from "@/examples/ark/ui/button"
-import { Input } from "@/examples/ark/ui/input"
-import { Label } from "@/examples/ark/ui/label"
+import { Button } from "@/styles/ark-nova/ui/button"
+import { Input } from "@/styles/ark-nova/ui/input"
+import { Label } from "@/styles/ark-nova/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/examples/ark/ui/popover"
+} from "@/styles/ark-nova/ui/popover"
 
 export default function PopoverDemo() {
   return (

@@ -8,7 +8,7 @@ import {
   AvatarGroup,
   AvatarGroupCount,
   AvatarImage,
-} from "@/examples/ark/ui-rtl/avatar"
+} from "@/styles/ark-nova/ui-rtl/avatar"
 
 import {
   useTranslation,

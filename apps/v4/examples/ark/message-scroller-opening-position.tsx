@@ -2,8 +2,8 @@
 
 import * as React from "react"
 
-import { Bubble, BubbleContent } from "@/examples/ark/ui/bubble"
-import { Button } from "@/examples/ark/ui/button"
+import { Bubble, BubbleContent } from "@/styles/ark-nova/ui/bubble"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Card,
   CardContent,
@@ -11,8 +11,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/ark/ui/card"
-import { Message, MessageContent } from "@/examples/ark/ui/message"
+} from "@/styles/ark-nova/ui/card"
+import { Message, MessageContent } from "@/styles/ark-nova/ui/message"
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -21,8 +21,8 @@ import {
   MessageScrollerProvider,
   MessageScrollerViewport,
   useMessageScroller,
-} from "@/examples/ark/ui/message-scroller"
-import { Tabs, TabsList, TabsTrigger } from "@/examples/ark/ui/tabs"
+} from "@/styles/ark-nova/ui/message-scroller"
+import { Tabs, TabsList, TabsTrigger } from "@/styles/ark-nova/ui/tabs"
 
 const messages = [
   {

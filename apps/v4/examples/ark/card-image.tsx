@@ -1,5 +1,5 @@
-import { Badge } from "@/examples/ark/ui/badge"
-import { Button } from "@/examples/ark/ui/button"
+import { Badge } from "@/styles/ark-nova/ui/badge"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Card,
   CardAction,
@@ -7,7 +7,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/ark/ui/card"
+} from "@/styles/ark-nova/ui/card"
 
 export function CardImage() {
   return (

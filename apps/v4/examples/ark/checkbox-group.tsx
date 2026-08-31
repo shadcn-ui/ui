@@ -1,7 +1,7 @@
 import {
   Checkbox,
   CheckboxGroup as CheckboxGroupPrimitive,
-} from "@/examples/ark/ui/checkbox"
+} from "@/styles/ark-nova/ui/checkbox"
 import {
   Field,
   FieldDescription,
@@ -9,7 +9,7 @@ import {
   FieldLabel,
   FieldLegend,
   FieldSet,
-} from "@/examples/ark/ui/field"
+} from "@/styles/ark-nova/ui/field"
 
 export function CheckboxGroup() {
   return (

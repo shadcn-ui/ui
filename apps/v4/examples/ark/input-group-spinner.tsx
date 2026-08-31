@@ -3,8 +3,8 @@ import {
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
-} from "@/examples/ark/ui/input-group"
-import { Spinner } from "@/examples/ark/ui/spinner"
+} from "@/styles/ark-nova/ui/input-group"
+import { Spinner } from "@/styles/ark-nova/ui/spinner"
 import { LoaderIcon } from "lucide-react"
 
 export default function InputGroupSpinner() {

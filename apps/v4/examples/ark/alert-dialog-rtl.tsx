@@ -12,8 +12,8 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/examples/ark/ui-rtl/alert-dialog"
-import { Button } from "@/examples/ark/ui-rtl/button"
+} from "@/styles/ark-nova/ui-rtl/alert-dialog"
+import { Button } from "@/styles/ark-nova/ui-rtl/button"
 import { BluetoothIcon } from "lucide-react"
 
 import {

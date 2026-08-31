@@ -1,11 +1,11 @@
 "use client"
 
-import { Button } from "@/examples/ark/ui-rtl/button"
+import { Button } from "@/styles/ark-nova/ui-rtl/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/ark/ui-rtl/tooltip"
+} from "@/styles/ark-nova/ui-rtl/tooltip"
 
 import {
   useTranslation,

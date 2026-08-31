@@ -1,12 +1,12 @@
-import { Button } from "@/examples/ark/ui/button"
-import { Field, FieldGroup, FieldLabel } from "@/examples/ark/ui/field"
-import { Input } from "@/examples/ark/ui/input"
+import { Button } from "@/styles/ark-nova/ui/button"
+import { Field, FieldGroup, FieldLabel } from "@/styles/ark-nova/ui/field"
+import { Input } from "@/styles/ark-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/ark/ui/input-group"
+} from "@/styles/ark-nova/ui/input-group"
 import { CopyIcon, TrashIcon } from "lucide-react"
 
 export function InputGroupWithButtons() {

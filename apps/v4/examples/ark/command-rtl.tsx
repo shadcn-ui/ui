@@ -12,7 +12,7 @@ import {
   CommandList,
   CommandShortcut,
   useListCollection,
-} from "@/examples/ark/ui-rtl/command"
+} from "@/styles/ark-nova/ui-rtl/command"
 import {
   Calculator,
   Calendar,

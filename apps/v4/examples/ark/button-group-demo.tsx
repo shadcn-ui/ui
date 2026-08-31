@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/ark/ui/button"
-import { ButtonGroup } from "@/examples/ark/ui/button-group"
+import { Button } from "@/styles/ark-nova/ui/button"
+import { ButtonGroup } from "@/styles/ark-nova/ui/button-group"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,7 +15,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/examples/ark/ui/dropdown-menu"
+} from "@/styles/ark-nova/ui/dropdown-menu"
 import {
   ArchiveIcon,
   ArrowLeftIcon,

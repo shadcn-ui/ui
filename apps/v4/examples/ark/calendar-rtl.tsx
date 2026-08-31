@@ -6,7 +6,7 @@ import {
   CalendarDate,
   type DatePickerValueChangeDetails,
   type DateValue,
-} from "@/examples/ark/ui-rtl/calendar"
+} from "@/styles/ark-nova/ui-rtl/calendar"
 
 import {
   useTranslation,

@@ -1,6 +1,6 @@
-import { Button } from "@/examples/ark/ui/button"
-import { Field, FieldGroup, FieldLabel } from "@/examples/ark/ui/field"
-import { Input } from "@/examples/ark/ui/input"
+import { Button } from "@/styles/ark-nova/ui/button"
+import { Field, FieldGroup, FieldLabel } from "@/styles/ark-nova/ui/field"
+import { Input } from "@/styles/ark-nova/ui/input"
 import {
   Popover,
   PopoverContent,
@@ -8,7 +8,7 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/examples/ark/ui/popover"
+} from "@/styles/ark-nova/ui/popover"
 
 export function PopoverForm() {
   return (

@@ -5,14 +5,14 @@ import {
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/examples/ark/ui/field"
+} from "@/styles/ark-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
   InputGroupText,
-} from "@/examples/ark/ui/input-group"
+} from "@/styles/ark-nova/ui/input-group"
 import {
   CopyIcon,
   EyeOffIcon,
@@ -22,7 +22,7 @@ import {
   SearchIcon,
   StarIcon,
 } from "lucide-react"
-import { toast } from "@/examples/ark/ui/toast"
+import { toast } from "@/styles/ark-nova/ui/toast"
 
 export function InputGroupWithAddons() {
   return (

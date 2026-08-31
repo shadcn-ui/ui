@@ -4,7 +4,7 @@ import * as React from "react"
 import {
   NativeSelect,
   NativeSelectOption,
-} from "@/examples/ark/ui-rtl/native-select"
+} from "@/styles/ark-nova/ui-rtl/native-select"
 
 import {
   useTranslation,

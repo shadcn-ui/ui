@@ -3,14 +3,14 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/examples/ark/ui/accordion"
+} from "@/styles/ark-nova/ui/accordion"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/examples/ark/ui/card"
+} from "@/styles/ark-nova/ui/card"
 
 const items = [
   {

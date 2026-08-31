@@ -10,7 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/examples/ark/ui/sidebar"
+} from "@/styles/ark-nova/ui/sidebar"
 import { LifeBuoyIcon, SendIcon } from "lucide-react"
 
 export default function AppSidebar() {

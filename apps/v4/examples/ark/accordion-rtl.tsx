@@ -5,7 +5,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/examples/ark/ui-rtl/accordion"
+} from "@/styles/ark-nova/ui-rtl/accordion"
 
 import {
   useTranslation,

@@ -1,5 +1,5 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/ark/ui/avatar"
-import { Button } from "@/examples/ark/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/styles/ark-nova/ui/avatar"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Item,
   ItemActions,
@@ -7,7 +7,7 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/examples/ark/ui/item"
+} from "@/styles/ark-nova/ui/item"
 import { Plus } from "lucide-react"
 
 export function ItemAvatar() {

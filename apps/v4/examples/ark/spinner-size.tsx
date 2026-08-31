@@ -1,4 +1,4 @@
-import { Spinner } from "@/examples/ark/ui/spinner"
+import { Spinner } from "@/styles/ark-nova/ui/spinner"
 
 export function SpinnerSize() {
   return (

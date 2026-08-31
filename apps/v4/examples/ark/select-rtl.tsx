@@ -18,7 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
   type SelectValueChangeDetails,
-} from "@/examples/ark/ui-rtl/select"
+} from "@/styles/ark-nova/ui-rtl/select"
 
 import {
   useTranslation,

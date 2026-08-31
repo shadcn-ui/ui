@@ -8,8 +8,8 @@ import {
   ItemGroup,
   ItemMedia,
   ItemTitle,
-} from "@/examples/ark/ui/item"
-import { Progress } from "@/examples/ark/ui/progress"
+} from "@/styles/ark-nova/ui/item"
+import { Progress } from "@/styles/ark-nova/ui/progress"
 import { FileIcon } from "lucide-react"
 
 export function FileUploadList() {

@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/examples/ark/ui/card"
+import { Card, CardContent } from "@/styles/ark-nova/ui/card"
 import {
   Carousel,
   CarouselContent,
@@ -6,7 +6,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/examples/ark/ui/carousel"
+} from "@/styles/ark-nova/ui/carousel"
 
 export function CarouselMultiple() {
   return (

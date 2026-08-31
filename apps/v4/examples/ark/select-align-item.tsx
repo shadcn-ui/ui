@@ -7,7 +7,7 @@ import {
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/examples/ark/ui/field"
+} from "@/styles/ark-nova/ui/field"
 import {
   createListCollection,
   Select,
@@ -22,13 +22,13 @@ import {
   SelectItemText,
   SelectTrigger,
   SelectValue,
-} from "@/examples/ark/ui/select"
+} from "@/styles/ark-nova/ui/select"
 import {
   Switch,
   SwitchControl,
   SwitchHiddenInput,
   SwitchThumb,
-} from "@/examples/ark/ui/switch"
+} from "@/styles/ark-nova/ui/switch"
 
 const fruits = createListCollection({
   items: [

@@ -6,7 +6,7 @@ import {
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/examples/ark/ui-rtl/field"
+} from "@/styles/ark-nova/ui-rtl/field"
 import {
   InputGroup,
   InputGroupAddon,
@@ -14,8 +14,8 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/examples/ark/ui-rtl/input-group"
-import { Spinner } from "@/examples/ark/ui-rtl/spinner"
+} from "@/styles/ark-nova/ui-rtl/input-group"
+import { Spinner } from "@/styles/ark-nova/ui-rtl/spinner"
 import { Search } from "lucide-react"
 
 import {

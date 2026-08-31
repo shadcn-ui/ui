@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/examples/ark/ui-rtl/button"
+import { Button } from "@/styles/ark-nova/ui-rtl/button"
 import {
   Dialog,
   DialogClose,
@@ -10,10 +10,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/ark/ui-rtl/dialog"
-import { Field, FieldGroup } from "@/examples/ark/ui-rtl/field"
-import { Input } from "@/examples/ark/ui-rtl/input"
-import { Label } from "@/examples/ark/ui-rtl/label"
+} from "@/styles/ark-nova/ui-rtl/dialog"
+import { Field, FieldGroup } from "@/styles/ark-nova/ui-rtl/field"
+import { Input } from "@/styles/ark-nova/ui-rtl/input"
+import { Label } from "@/styles/ark-nova/ui-rtl/label"
 
 import {
   useTranslation,

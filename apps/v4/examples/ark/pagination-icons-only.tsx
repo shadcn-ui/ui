@@ -1,11 +1,11 @@
 "use client"
 
-import { Field, FieldLabel } from "@/examples/ark/ui/field"
+import { Field, FieldLabel } from "@/styles/ark-nova/ui/field"
 import {
   Pagination,
   PaginationNext,
   PaginationPrevious,
-} from "@/examples/ark/ui/pagination"
+} from "@/styles/ark-nova/ui/pagination"
 import {
   createListCollection,
   Select,
@@ -18,7 +18,7 @@ import {
   SelectItemText,
   SelectTrigger,
   SelectValue,
-} from "@/examples/ark/ui/select"
+} from "@/styles/ark-nova/ui/select"
 
 const rowsPerPageItems = createListCollection({
   items: [

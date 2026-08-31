@@ -1,4 +1,4 @@
-import { Toggle } from "@/examples/ark/ui/toggle"
+import { Toggle } from "@/styles/ark-nova/ui/toggle"
 
 export function ToggleSizes() {
   return (

@@ -6,14 +6,14 @@ import {
   CalendarDate,
   type DatePickerValueChangeDetails,
   type DateValue,
-} from "@/examples/ark/ui/calendar"
-import { Card, CardContent, CardFooter } from "@/examples/ark/ui/card"
-import { Field, FieldGroup, FieldLabel } from "@/examples/ark/ui/field"
+} from "@/styles/ark-nova/ui/calendar"
+import { Card, CardContent, CardFooter } from "@/styles/ark-nova/ui/card"
+import { Field, FieldGroup, FieldLabel } from "@/styles/ark-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/ark/ui/input-group"
+} from "@/styles/ark-nova/ui/input-group"
 import { Clock2Icon } from "lucide-react"
 
 export function CalendarWithTime() {

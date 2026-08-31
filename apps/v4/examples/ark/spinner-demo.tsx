@@ -1,5 +1,5 @@
-import { Item, ItemContent, ItemMedia, ItemTitle } from "@/examples/ark/ui/item"
-import { Spinner } from "@/examples/ark/ui/spinner"
+import { Item, ItemContent, ItemMedia, ItemTitle } from "@/styles/ark-nova/ui/item"
+import { Spinner } from "@/styles/ark-nova/ui/spinner"
 
 export function SpinnerDemo() {
   return (

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/ark/ui-rtl/button"
+import { Button } from "@/styles/ark-nova/ui-rtl/button"
 import {
   Item,
   ItemActions,
@@ -9,7 +9,7 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/examples/ark/ui-rtl/item"
+} from "@/styles/ark-nova/ui-rtl/item"
 import { BadgeCheckIcon, ChevronRightIcon } from "lucide-react"
 
 import {

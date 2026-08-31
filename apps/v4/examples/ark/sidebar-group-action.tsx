@@ -11,10 +11,10 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/examples/ark/ui/sidebar"
+} from "@/styles/ark-nova/ui/sidebar"
 import { FrameIcon, MapIcon, PieChartIcon, PlusIcon } from "lucide-react"
 
-import { toast } from "@/examples/ark/ui/toast"
+import { toast } from "@/styles/ark-nova/ui/toast"
 
 export default function AppSidebar() {
   return (

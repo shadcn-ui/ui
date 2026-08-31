@@ -1,5 +1,5 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/ark/ui/avatar"
-import { Button } from "@/examples/ark/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/styles/ark-nova/ui/avatar"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/examples/ark/ui/dropdown-menu"
+} from "@/styles/ark-nova/ui/dropdown-menu"
 
 export function AvatarDropdown() {
   return (

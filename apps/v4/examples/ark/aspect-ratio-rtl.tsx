@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Image from "next/image"
-import { AspectRatio } from "@/examples/ark/ui-rtl/aspect-ratio"
+import { AspectRatio } from "@/styles/ark-nova/ui-rtl/aspect-ratio"
 
 import {
   useTranslation,

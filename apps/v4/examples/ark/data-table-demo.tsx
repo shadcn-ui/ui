@@ -1,31 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/ark/ui/button"
-import {
-  Checkbox,
-  CheckboxControl,
-  CheckboxHiddenInput,
-  CheckboxIndicator,
-} from "@/examples/ark/ui/checkbox"
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from "@/examples/ark/ui/dropdown-menu"
-import { Input } from "@/examples/ark/ui/input"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/examples/ark/ui/table"
 import {
   columnFilteringFeature,
   columnVisibilityFeature,
@@ -46,6 +21,27 @@ import {
   type SortingState,
 } from "@tanstack/react-table"
 import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react"
+
+import { Button } from "@/styles/ark-nova/ui/button"
+import { Checkbox } from "@/styles/ark-nova/ui/checkbox"
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/styles/ark-nova/ui/dropdown-menu"
+import { Input } from "@/styles/ark-nova/ui/input"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/styles/ark-nova/ui/table"
 
 // New in v9: declare the features this table uses — anything you don't
 // register is tree-shaken out of the bundle.
@@ -117,24 +113,14 @@ export const columns = columnHelper.columns([
           table.toggleAllPageRowsSelected(!!details.checked)
         }
         aria-label="Select all"
-      >
-        <CheckboxControl>
-          <CheckboxIndicator />
-        </CheckboxControl>
-        <CheckboxHiddenInput />
-      </Checkbox>
+      />
     ),
     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
         onCheckedChange={(details) => row.toggleSelected(!!details.checked)}
         aria-label="Select row"
-      >
-        <CheckboxControl>
-          <CheckboxIndicator />
-        </CheckboxControl>
-        <CheckboxHiddenInput />
-      </Checkbox>
+      />
     ),
     enableSorting: false,
     enableHiding: false,
@@ -199,7 +185,9 @@ export const columns = columnHelper.columns([
             </DropdownMenuGroup>
             <DropdownMenuGroup>
               <DropdownMenuItem value="1">View customer</DropdownMenuItem>
-              <DropdownMenuItem value="2">View payment details</DropdownMenuItem>
+              <DropdownMenuItem value="2">
+                View payment details
+              </DropdownMenuItem>
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>

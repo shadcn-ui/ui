@@ -4,7 +4,7 @@ import {
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/examples/ark/ui/item"
+} from "@/styles/ark-nova/ui/item"
 import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react"
 
 export function ItemLink() {

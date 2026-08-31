@@ -1,4 +1,4 @@
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -8,10 +8,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/ark/ui/dialog"
-import { Field, FieldGroup } from "@/examples/ark/ui/field"
-import { Input } from "@/examples/ark/ui/input"
-import { Label } from "@/examples/ark/ui/label"
+} from "@/styles/ark-nova/ui/dialog"
+import { Field, FieldGroup } from "@/styles/ark-nova/ui/field"
+import { Input } from "@/styles/ark-nova/ui/input"
+import { Label } from "@/styles/ark-nova/ui/label"
 
 export function DialogDemo() {
   return (

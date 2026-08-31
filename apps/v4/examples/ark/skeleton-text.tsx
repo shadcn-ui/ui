@@ -1,4 +1,4 @@
-import { Skeleton } from "@/examples/ark/ui/skeleton"
+import { Skeleton } from "@/styles/ark-nova/ui/skeleton"
 
 export function SkeletonText() {
   return (

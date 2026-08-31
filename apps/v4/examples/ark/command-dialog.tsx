@@ -13,7 +13,7 @@ import {
   CommandList,
   CommandShortcut,
   useListCollection,
-} from "@/examples/ark/ui/command"
+} from "@/styles/ark-nova/ui/command"
 import {
   Calculator,
   Calendar,

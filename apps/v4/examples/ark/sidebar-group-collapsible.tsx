@@ -4,7 +4,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/ark/ui/collapsible"
+} from "@/styles/ark-nova/ui/collapsible"
 import {
   Sidebar,
   SidebarContent,
@@ -15,7 +15,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/examples/ark/ui/sidebar"
+} from "@/styles/ark-nova/ui/sidebar"
 import { ChevronDownIcon, LifeBuoyIcon, SendIcon } from "lucide-react"
 
 export default function AppSidebar() {

@@ -3,7 +3,7 @@ import {
   Bubble,
   BubbleContent,
   BubbleReactions,
-} from "@/examples/ark/ui/bubble"
+} from "@/styles/ark-nova/ui/bubble"
 
 export function BubbleVariantsDemo() {
   return (

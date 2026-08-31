@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Field, FieldDescription, FieldLabel } from "@/examples/ark/ui/field"
-import { ToggleGroup, ToggleGroupItem } from "@/examples/ark/ui/toggle-group"
+import { Field, FieldDescription, FieldLabel } from "@/styles/ark-nova/ui/field"
+import { ToggleGroup, ToggleGroupItem } from "@/styles/ark-nova/ui/toggle-group"
 
 export function ToggleGroupFontWeightSelector() {
   const [fontWeight, setFontWeight] = React.useState("normal")

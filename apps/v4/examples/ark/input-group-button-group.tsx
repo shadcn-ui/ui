@@ -1,10 +1,10 @@
-import { ButtonGroup, ButtonGroupText } from "@/examples/ark/ui/button-group"
+import { ButtonGroup, ButtonGroupText } from "@/styles/ark-nova/ui/button-group"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/ark/ui/input-group"
-import { Label } from "@/examples/ark/ui/label"
+} from "@/styles/ark-nova/ui/input-group"
+import { Label } from "@/styles/ark-nova/ui/label"
 import { Link2Icon } from "lucide-react"
 
 export default function InputGroupButtonGroup() {

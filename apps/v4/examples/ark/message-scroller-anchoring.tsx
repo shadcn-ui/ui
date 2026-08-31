@@ -8,7 +8,7 @@ import {
 } from "lucide-react"
 
 import { MessageAnimated } from "@/components/message-animated"
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Card,
   CardAction,
@@ -17,25 +17,25 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/ark/ui/card"
+} from "@/styles/ark-nova/ui/card"
 import {
   Empty,
   EmptyDescription,
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/examples/ark/ui/empty"
+} from "@/styles/ark-nova/ui/empty"
 import {
   MessageScroller,
   MessageScrollerButton,
   MessageScrollerContent,
   MessageScrollerProvider,
   MessageScrollerViewport,
-} from "@/examples/ark/ui/message-scroller"
+} from "@/styles/ark-nova/ui/message-scroller"
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from "@/examples/ark/ui/toggle-group"
+} from "@/styles/ark-nova/ui/toggle-group"
 
 type AnchorRole = "user" | "assistant"
 

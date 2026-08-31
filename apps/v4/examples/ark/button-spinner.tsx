@@ -1,5 +1,5 @@
-import { Button } from "@/examples/ark/ui/button"
-import { Spinner } from "@/examples/ark/ui/spinner"
+import { Button } from "@/styles/ark-nova/ui/button"
+import { Spinner } from "@/styles/ark-nova/ui/spinner"
 
 export default function ButtonSpinner() {
   return (

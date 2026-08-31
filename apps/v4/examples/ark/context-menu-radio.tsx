@@ -10,7 +10,7 @@ import {
   ContextMenuRadioItem,
   ContextMenuSeparator,
   ContextMenuTrigger,
-} from "@/examples/ark/ui/context-menu"
+} from "@/styles/ark-nova/ui/context-menu"
 
 export function ContextMenuRadio() {
   const [user, setUser] = React.useState("pedro")

@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader } from "@/examples/ark/ui/card"
-import { Skeleton } from "@/examples/ark/ui/skeleton"
+import { Card, CardContent, CardHeader } from "@/styles/ark-nova/ui/card"
+import { Skeleton } from "@/styles/ark-nova/ui/skeleton"
 
 export function SkeletonCard() {
   return (

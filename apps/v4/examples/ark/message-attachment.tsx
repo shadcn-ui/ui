@@ -10,9 +10,9 @@ import {
   AttachmentDescription,
   AttachmentMedia,
   AttachmentTitle,
-} from "@/examples/ark/ui/attachment"
-import { Bubble, BubbleContent } from "@/examples/ark/ui/bubble"
-import { Message, MessageContent } from "@/examples/ark/ui/message"
+} from "@/styles/ark-nova/ui/attachment"
+import { Bubble, BubbleContent } from "@/styles/ark-nova/ui/bubble"
+import { Message, MessageContent } from "@/styles/ark-nova/ui/message"
 
 export function MessageAttachmentDemo() {
   return (

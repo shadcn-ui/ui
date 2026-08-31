@@ -1,6 +1,6 @@
 "use client"
 
-import { Checkbox } from "@/examples/ark/ui/checkbox"
+import { Checkbox } from "@/styles/ark-nova/ui/checkbox"
 import {
   Field,
   FieldContent,
@@ -8,7 +8,7 @@ import {
   FieldGroup,
   FieldLabel,
   FieldTitle,
-} from "@/examples/ark/ui/field"
+} from "@/styles/ark-nova/ui/field"
 
 export default function CheckboxDemo() {
   return (

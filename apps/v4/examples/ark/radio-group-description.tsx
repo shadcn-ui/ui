@@ -4,11 +4,11 @@ import {
   RadioGroupItemControl,
   RadioGroupItemHiddenInput,
   RadioGroupItemText,
-} from "@/examples/ark/ui/radio-group"
+} from "@/styles/ark-nova/ui/radio-group"
 import {
   FieldContent,
   FieldDescription,
-} from "@/examples/ark/ui/field"
+} from "@/styles/ark-nova/ui/field"
 
 export function RadioGroupDescription() {
   return (

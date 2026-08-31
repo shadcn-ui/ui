@@ -4,7 +4,7 @@ import {
   ContextMenuContent,
   ContextMenuGroup,
   ContextMenuTrigger,
-} from "@/examples/ark/ui/context-menu"
+} from "@/styles/ark-nova/ui/context-menu"
 
 export function ContextMenuCheckboxes() {
   return (

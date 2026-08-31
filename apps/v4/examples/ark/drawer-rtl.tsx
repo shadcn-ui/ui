@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/ark/ui-rtl/button"
+import { Button } from "@/styles/ark-nova/ui-rtl/button"
 import {
   Drawer,
   DrawerClose,
@@ -11,7 +11,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/examples/ark/ui-rtl/drawer"
+} from "@/styles/ark-nova/ui-rtl/drawer"
 import { Minus, Plus } from "lucide-react"
 import { Bar, BarChart, ResponsiveContainer, XAxis } from "recharts"
 

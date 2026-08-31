@@ -1,7 +1,7 @@
-import { Button } from "@/examples/ark/ui/button"
-import { ButtonGroup } from "@/examples/ark/ui/button-group"
-import { Field, FieldLabel } from "@/examples/ark/ui/field"
-import { Input } from "@/examples/ark/ui/input"
+import { Button } from "@/styles/ark-nova/ui/button"
+import { ButtonGroup } from "@/styles/ark-nova/ui/button-group"
+import { Field, FieldLabel } from "@/styles/ark-nova/ui/field"
+import { Input } from "@/styles/ark-nova/ui/input"
 
 export function InputButtonGroup() {
   return (

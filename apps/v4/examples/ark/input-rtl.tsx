@@ -5,8 +5,8 @@ import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/examples/ark/ui-rtl/field"
-import { Input } from "@/examples/ark/ui-rtl/input"
+} from "@/styles/ark-nova/ui-rtl/field"
+import { Input } from "@/styles/ark-nova/ui-rtl/input"
 
 import {
   useTranslation,

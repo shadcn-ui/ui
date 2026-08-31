@@ -1,6 +1,6 @@
 "use client"
 
-import { Field, FieldDescription, FieldLabel } from "@/examples/ark/ui/field"
+import { Field, FieldDescription, FieldLabel } from "@/styles/ark-nova/ui/field"
 import {
   createListCollection,
   Select,
@@ -13,7 +13,7 @@ import {
   SelectItemText,
   SelectTrigger,
   SelectValue,
-} from "@/examples/ark/ui/select"
+} from "@/styles/ark-nova/ui/select"
 
 const departmentItems = createListCollection({
   items: [

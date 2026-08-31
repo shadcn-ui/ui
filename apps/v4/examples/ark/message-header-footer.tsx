@@ -1,10 +1,10 @@
-import { Bubble, BubbleContent } from "@/examples/ark/ui/bubble"
+import { Bubble, BubbleContent } from "@/styles/ark-nova/ui/bubble"
 import {
   Message,
   MessageContent,
   MessageFooter,
   MessageHeader,
-} from "@/examples/ark/ui/message"
+} from "@/styles/ark-nova/ui/message"
 
 export function MessageHeaderFooterDemo() {
   return (

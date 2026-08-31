@@ -1,21 +1,21 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/examples/ark/ui/card"
+} from "@/styles/ark-nova/ui/card"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/ark/ui/collapsible"
-import { Field, FieldGroup, FieldLabel } from "@/examples/ark/ui/field"
-import { Input } from "@/examples/ark/ui/input"
+} from "@/styles/ark-nova/ui/collapsible"
+import { Field, FieldGroup, FieldLabel } from "@/styles/ark-nova/ui/field"
+import { Input } from "@/styles/ark-nova/ui/input"
 import { MaximizeIcon, MinimizeIcon } from "lucide-react"
 
 export function CollapsibleSettings() {

@@ -5,7 +5,7 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@/examples/ark/ui-rtl/alert"
+} from "@/styles/ark-nova/ui-rtl/alert"
 import { CheckCircle2Icon, InfoIcon } from "lucide-react"
 
 import {

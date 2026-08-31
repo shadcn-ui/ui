@@ -4,7 +4,7 @@ import {
   Marker,
   MarkerContent,
   MarkerIcon,
-} from "@/examples/ark/ui/marker"
+} from "@/styles/ark-nova/ui/marker"
 
 export function MarkerBorderDemo() {
   return (

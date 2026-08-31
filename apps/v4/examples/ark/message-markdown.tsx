@@ -1,6 +1,6 @@
 import { Markdown } from "@/components/markdown"
-import { Bubble, BubbleContent } from "@/examples/ark/ui/bubble"
-import { Message, MessageContent } from "@/examples/ark/ui/message"
+import { Bubble, BubbleContent } from "@/styles/ark-nova/ui/bubble"
+import { Message, MessageContent } from "@/styles/ark-nova/ui/message"
 
 const response = `Here's how to render markdown in a message:
 

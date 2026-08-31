@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Badge } from "@/examples/ark/ui-rtl/badge"
+import { Badge } from "@/styles/ark-nova/ui-rtl/badge"
 import { BadgeCheck, BookmarkIcon } from "lucide-react"
 
 import {

@@ -4,7 +4,7 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
-} from "@/examples/ark/ui/input-group"
+} from "@/styles/ark-nova/ui/input-group"
 import TextareaAutosize from "react-textarea-autosize"
 
 export default function InputGroupCustom() {

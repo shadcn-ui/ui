@@ -1,6 +1,6 @@
-import { Field, FieldGroup, FieldLabel } from "@/examples/ark/ui/field"
-import { Input } from "@/examples/ark/ui/input"
-import { InputGroup, InputGroupInput } from "@/examples/ark/ui/input-group"
+import { Field, FieldGroup, FieldLabel } from "@/styles/ark-nova/ui/field"
+import { Input } from "@/styles/ark-nova/ui/input"
+import { InputGroup, InputGroupInput } from "@/styles/ark-nova/ui/input-group"
 
 export function InputGroupBasic() {
   return (

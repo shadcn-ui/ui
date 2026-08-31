@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Toggle } from "@/examples/ark/ui-rtl/toggle"
+import { Toggle } from "@/styles/ark-nova/ui-rtl/toggle"
 import { BookmarkIcon } from "lucide-react"
 
 import {

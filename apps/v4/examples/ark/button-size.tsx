@@ -1,4 +1,4 @@
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import { ArrowUpRightIcon } from "lucide-react"
 
 export default function ButtonSize() {

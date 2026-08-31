@@ -3,8 +3,8 @@
 import * as React from "react"
 
 import { createChat, getMessageText } from "@/lib/ai"
-import { Bubble, BubbleContent } from "@/examples/ark/ui/bubble"
-import { Button } from "@/examples/ark/ui/button"
+import { Bubble, BubbleContent } from "@/styles/ark-nova/ui/bubble"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Card,
   CardAction,
@@ -12,15 +12,15 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/examples/ark/ui/card"
+} from "@/styles/ark-nova/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@/examples/ark/ui/dropdown-menu"
-import { Message, MessageContent } from "@/examples/ark/ui/message"
+} from "@/styles/ark-nova/ui/dropdown-menu"
+import { Message, MessageContent } from "@/styles/ark-nova/ui/message"
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -29,7 +29,7 @@ import {
   MessageScrollerProvider,
   MessageScrollerViewport,
   useMessageScroller,
-} from "@/examples/ark/ui/message-scroller"
+} from "@/styles/ark-nova/ui/message-scroller"
 
 const chat = createChat()
   .user(

@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/ark/ui-rtl/button"
-import { Checkbox } from "@/examples/ark/ui-rtl/checkbox"
+import { Button } from "@/styles/ark-nova/ui-rtl/button"
+import { Checkbox } from "@/styles/ark-nova/ui-rtl/checkbox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -12,8 +12,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/examples/ark/ui-rtl/dropdown-menu"
-import { Input } from "@/examples/ark/ui-rtl/input"
+} from "@/styles/ark-nova/ui-rtl/dropdown-menu"
+import { Input } from "@/styles/ark-nova/ui-rtl/input"
 import {
   Table,
   TableBody,
@@ -21,7 +21,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/examples/ark/ui-rtl/table"
+} from "@/styles/ark-nova/ui-rtl/table"
 import {
   columnFilteringFeature,
   columnVisibilityFeature,

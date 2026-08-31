@@ -4,7 +4,7 @@ import * as React from "react"
 import {
   Checkbox,
   type CheckboxCheckedChangeDetails,
-} from "@/examples/ark/ui/checkbox"
+} from "@/styles/ark-nova/ui/checkbox"
 import {
   Table,
   TableBody,
@@ -12,7 +12,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/examples/ark/ui/table"
+} from "@/styles/ark-nova/ui/table"
 
 const tableData = [
   {

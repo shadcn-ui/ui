@@ -4,7 +4,7 @@ import {
   SliderRange,
   SliderThumb,
   SliderTrack,
-} from "@/examples/ark/ui/slider"
+} from "@/styles/ark-nova/ui/slider"
 
 export function SliderDemo() {
   return (

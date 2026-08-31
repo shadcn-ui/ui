@@ -1,6 +1,6 @@
-import { Button } from "@/examples/ark/ui/button"
-import { ButtonGroup } from "@/examples/ark/ui/button-group"
-import { Field, FieldDescription, FieldLabel } from "@/examples/ark/ui/field"
+import { Button } from "@/styles/ark-nova/ui/button"
+import { ButtonGroup } from "@/styles/ark-nova/ui/button-group"
+import { Field, FieldDescription, FieldLabel } from "@/styles/ark-nova/ui/field"
 import {
   Popover,
   PopoverContent,
@@ -8,8 +8,8 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/examples/ark/ui/popover"
-import { Textarea } from "@/examples/ark/ui/textarea"
+} from "@/styles/ark-nova/ui/popover"
+import { Textarea } from "@/styles/ark-nova/ui/textarea"
 import { BotIcon, ChevronDownIcon } from "lucide-react"
 
 export default function ButtonGroupPopover() {

@@ -1,12 +1,12 @@
 "use client"
 
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Calendar,
   CalendarDayView,
   CalendarPresetTrigger,
-} from "@/examples/ark/ui/calendar"
-import { Card, CardContent, CardFooter } from "@/examples/ark/ui/card"
+} from "@/styles/ark-nova/ui/calendar"
+import { Card, CardContent, CardFooter } from "@/styles/ark-nova/ui/card"
 import { CalendarDate } from "@internationalized/date"
 
 function daysFromNow(days: number) {

@@ -1,6 +1,6 @@
 "use client"
 
-import { Card, CardContent } from "@/examples/ark/ui/card"
+import { Card, CardContent } from "@/styles/ark-nova/ui/card"
 import {
   CarouselContent,
   CarouselControl,
@@ -9,7 +9,7 @@ import {
   CarouselPrevious,
   CarouselRootProvider,
   useCarouselApi,
-} from "@/examples/ark/ui/carousel"
+} from "@/styles/ark-nova/ui/carousel"
 
 const SLIDE_COUNT = 5
 

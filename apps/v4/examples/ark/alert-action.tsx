@@ -3,8 +3,8 @@ import {
   AlertAction,
   AlertDescription,
   AlertTitle,
-} from "@/examples/ark/ui/alert"
-import { Button } from "@/examples/ark/ui/button"
+} from "@/styles/ark-nova/ui/alert"
+import { Button } from "@/styles/ark-nova/ui/button"
 
 export default function AlertActionExample() {
   return (

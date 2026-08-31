@@ -1,9 +1,9 @@
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/examples/ark/ui/popover"
+} from "@/styles/ark-nova/ui/popover"
 
 export function PopoverAlignments() {
   return (

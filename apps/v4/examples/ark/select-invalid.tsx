@@ -1,6 +1,6 @@
 "use client"
 
-import { Field, FieldError, FieldLabel } from "@/examples/ark/ui/field"
+import { Field, FieldError, FieldLabel } from "@/styles/ark-nova/ui/field"
 import {
   createListCollection,
   Select,
@@ -15,7 +15,7 @@ import {
   SelectItemText,
   SelectTrigger,
   SelectValue,
-} from "@/examples/ark/ui/select"
+} from "@/styles/ark-nova/ui/select"
 
 const fruits = createListCollection({
   items: [

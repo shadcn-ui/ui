@@ -1,4 +1,4 @@
-import { Alert, AlertDescription, AlertTitle } from "@/examples/ark/ui/alert"
+import { Alert, AlertDescription, AlertTitle } from "@/styles/ark-nova/ui/alert"
 import { AlertCircleIcon } from "lucide-react"
 
 export default function AlertDestructive() {

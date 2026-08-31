@@ -1,14 +1,14 @@
 "use client"
 
 import * as React from "react"
-import { Field, FieldDescription, FieldTitle } from "@/examples/ark/ui/field"
+import { Field, FieldDescription, FieldTitle } from "@/styles/ark-nova/ui/field"
 import {
   Slider,
   SliderControl,
   SliderRange,
   SliderThumb,
   SliderTrack,
-} from "@/examples/ark/ui/slider"
+} from "@/styles/ark-nova/ui/slider"
 
 export default function FieldSlider() {
   const [value, setValue] = React.useState([200, 800])

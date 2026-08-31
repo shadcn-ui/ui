@@ -1,4 +1,4 @@
-import { Bubble, BubbleContent } from "@/examples/ark/ui/bubble"
+import { Bubble, BubbleContent } from "@/styles/ark-nova/ui/bubble"
 
 export function BubbleAlignmentDemo() {
   return (

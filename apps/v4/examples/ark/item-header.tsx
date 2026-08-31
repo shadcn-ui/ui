@@ -6,7 +6,7 @@ import {
   ItemGroup,
   ItemHeader,
   ItemTitle,
-} from "@/examples/ark/ui/item"
+} from "@/styles/ark-nova/ui/item"
 
 const models = [
   {

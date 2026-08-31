@@ -1,6 +1,6 @@
 import * as React from "react"
 import Image from "next/image"
-import { ScrollArea, ScrollBar } from "@/examples/ark/ui/scroll-area"
+import { ScrollArea, ScrollBar } from "@/styles/ark-nova/ui/scroll-area"
 
 export interface Artwork {
   artist: string

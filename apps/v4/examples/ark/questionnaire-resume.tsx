@@ -1,9 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "@/examples/ark/ui/toast"
+import { toast } from "@/styles/ark-nova/ui/toast"
 
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Questionnaire,
   QuestionnaireActions,
@@ -18,7 +18,7 @@ import {
   QuestionnaireProgress,
   QuestionnaireSubmit,
   QuestionnaireTitle,
-} from "@/examples/ark/ui/questionnaire"
+} from "@/styles/ark-nova/ui/questionnaire"
 
 const items = [
   { name: "change", required: true },

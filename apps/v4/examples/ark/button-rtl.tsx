@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@/examples/ark/ui-rtl/button"
-import { Spinner } from "@/examples/ark/ui-rtl/spinner"
+import { Button } from "@/styles/ark-nova/ui-rtl/button"
+import { Spinner } from "@/styles/ark-nova/ui-rtl/spinner"
 import { ArrowRightIcon, PlusIcon } from "lucide-react"
 
 import {

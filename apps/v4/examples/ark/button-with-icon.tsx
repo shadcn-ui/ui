@@ -1,4 +1,4 @@
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import { IconGitBranch } from "@tabler/icons-react"
 
 export default function ButtonWithIcon() {

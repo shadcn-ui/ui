@@ -10,7 +10,12 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/examples/ark/ui/navigation-menu"
+} from "@/styles/ark-nova/ui/navigation-menu"
+import {
+  CircleAlertIcon,
+  CircleCheckIcon,
+  CircleDashedIcon,
+} from "lucide-react"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -87,6 +92,33 @@ export default function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem value="item-3">
+          <NavigationMenuTrigger>With Icon</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[200px]">
+              <li>
+                <NavigationMenuLink asChild>
+                  <Link href="#" className="flex-row items-center gap-2">
+                    <CircleAlertIcon />
+                    Backlog
+                  </Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link href="#" className="flex-row items-center gap-2">
+                    <CircleDashedIcon />
+                    To Do
+                  </Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link href="#" className="flex-row items-center gap-2">
+                    <CircleCheckIcon />
+                    Done
+                  </Link>
+                </NavigationMenuLink>
+              </li>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem value="item-4">
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
             <Link href="/docs">Docs</Link>
           </NavigationMenuLink>

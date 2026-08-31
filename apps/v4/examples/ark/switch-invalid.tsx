@@ -4,7 +4,7 @@ import {
   SwitchHiddenInput,
   SwitchLabel,
   SwitchThumb,
-} from "@/examples/ark/ui/switch"
+} from "@/styles/ark-nova/ui/switch"
 
 export function SwitchInvalid() {
   return (

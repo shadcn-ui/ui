@@ -9,8 +9,8 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/examples/ark/ui/alert-dialog"
-import { Button } from "@/examples/ark/ui/button"
+} from "@/styles/ark-nova/ui/alert-dialog"
+import { Button } from "@/styles/ark-nova/ui/button"
 import { CircleFadingPlusIcon } from "lucide-react"
 
 export function AlertDialogWithMedia() {

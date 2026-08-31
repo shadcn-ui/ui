@@ -6,7 +6,7 @@ import {
   CalendarMonthView,
   CalendarViewHeader,
   CalendarYearView,
-} from "@/examples/ark/ui/calendar"
+} from "@/styles/ark-nova/ui/calendar"
 
 export default function CalendarViews() {
   return (

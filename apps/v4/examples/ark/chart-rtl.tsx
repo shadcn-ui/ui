@@ -7,7 +7,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/examples/ark/ui-rtl/chart"
+} from "@/styles/ark-nova/ui-rtl/chart"
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
 import {

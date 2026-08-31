@@ -10,7 +10,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/examples/ark/ui-rtl/table"
+} from "@/styles/ark-nova/ui-rtl/table"
 
 import {
   useTranslation,

@@ -6,8 +6,8 @@ import {
   CalendarDate,
   type DatePickerValueChangeDetails,
   type DateValue,
-} from "@/examples/ark/ui/calendar"
-import { Card, CardContent } from "@/examples/ark/ui/card"
+} from "@/styles/ark-nova/ui/calendar"
+import { Card, CardContent } from "@/styles/ark-nova/ui/card"
 
 export function CalendarBookedDates() {
   const [value, setValue] = React.useState<DateValue[]>([

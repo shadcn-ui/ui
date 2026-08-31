@@ -1,8 +1,8 @@
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   ButtonGroup,
   ButtonGroupSeparator,
-} from "@/examples/ark/ui/button-group"
+} from "@/styles/ark-nova/ui/button-group"
 import { IconPlus } from "@tabler/icons-react"
 
 export default function ButtonGroupSplit() {

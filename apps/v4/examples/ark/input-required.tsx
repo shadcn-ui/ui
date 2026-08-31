@@ -1,5 +1,5 @@
-import { Field, FieldDescription, FieldLabel } from "@/examples/ark/ui/field"
-import { Input } from "@/examples/ark/ui/input"
+import { Field, FieldDescription, FieldLabel } from "@/styles/ark-nova/ui/field"
+import { Input } from "@/styles/ark-nova/ui/input"
 
 export function InputRequired() {
   return (

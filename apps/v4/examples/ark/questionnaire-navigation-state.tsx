@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import type { QuestionnaireItemStatus } from "@shadcn/react/questionnaire"
-import { toast } from "@/examples/ark/ui/toast"
+import { toast } from "@/styles/ark-nova/ui/toast"
 
 import {
   Questionnaire,
@@ -17,7 +17,7 @@ import {
   QuestionnaireProgress,
   QuestionnaireSubmit,
   QuestionnaireTitle,
-} from "@/examples/ark/ui/questionnaire"
+} from "@/styles/ark-nova/ui/questionnaire"
 
 const items = [
   { name: "permission", required: true },

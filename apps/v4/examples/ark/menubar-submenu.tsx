@@ -9,7 +9,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "@/examples/ark/ui/menubar"
+} from "@/styles/ark-nova/ui/menubar"
 
 export function MenubarSubmenu() {
   return (

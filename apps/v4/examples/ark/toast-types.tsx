@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@/examples/ark/ui/button"
-import { toast } from "@/examples/ark/ui/toast"
+import { Button } from "@/styles/ark-nova/ui/button"
+import { toast } from "@/styles/ark-nova/ui/toast"
 
 export function ToastTypes() {
   return (

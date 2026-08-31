@@ -6,7 +6,7 @@ import {
   ItemGroup,
   ItemMedia,
   ItemTitle,
-} from "@/examples/ark/ui/item"
+} from "@/styles/ark-nova/ui/item"
 
 const music = [
   {

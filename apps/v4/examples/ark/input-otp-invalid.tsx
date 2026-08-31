@@ -7,7 +7,7 @@ import {
   InputOTPSeparator,
   InputOTPSlot,
   type PinInputValueChangeDetails,
-} from "@/examples/ark/ui/input-otp"
+} from "@/styles/ark-nova/ui/input-otp"
 
 export function InputOTPInvalid() {
   const [value, setValue] = React.useState(["0", "0", "0", "0", "0", "0"])

@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { ScrollArea } from "@/examples/ark/ui-rtl/scroll-area"
-import { Separator } from "@/examples/ark/ui-rtl/separator"
+import { ScrollArea } from "@/styles/ark-nova/ui-rtl/scroll-area"
+import { Separator } from "@/styles/ark-nova/ui-rtl/separator"
 
 import {
   useTranslation,

@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Field, FieldLabel } from "@/examples/ark/ui-rtl/field"
+import { Field, FieldLabel } from "@/styles/ark-nova/ui-rtl/field"
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@/examples/ark/ui-rtl/input-otp"
+} from "@/styles/ark-nova/ui-rtl/input-otp"
 
 import {
   useTranslation,

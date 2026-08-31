@@ -3,15 +3,15 @@ import {
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/examples/ark/ui/field"
-import { Input } from "@/examples/ark/ui/input"
+} from "@/styles/ark-nova/ui/field"
+import { Input } from "@/styles/ark-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/ark/ui/input-group"
-import { Kbd, KbdGroup } from "@/examples/ark/ui/kbd"
-import { Spinner } from "@/examples/ark/ui/spinner"
+} from "@/styles/ark-nova/ui/input-group"
+import { Kbd, KbdGroup } from "@/styles/ark-nova/ui/kbd"
+import { Spinner } from "@/styles/ark-nova/ui/spinner"
 import { CheckIcon, InfoIcon, SearchIcon, SparklesIcon } from "lucide-react"
 
 export function InputGroupWithKbd() {

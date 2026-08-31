@@ -7,7 +7,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/examples/ark/ui/table"
+} from "@/styles/ark-nova/ui/table"
 
 const invoices = [
   {

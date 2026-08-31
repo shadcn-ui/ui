@@ -2,7 +2,7 @@ import {
   SplitterPanel,
   SplitterResizeTrigger,
   SplitterRoot,
-} from "@/examples/ark/ui/resizable"
+} from "@/styles/ark-nova/ui/resizable"
 
 export default function ResizableHandleDemo() {
   return (

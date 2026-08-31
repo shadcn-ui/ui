@@ -12,13 +12,13 @@ import {
   ComboboxTrigger,
   useFilter,
   useListCollection,
-} from "@/examples/ark/ui/combobox"
+} from "@/styles/ark-nova/ui/combobox"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/examples/ark/ui/item"
+} from "@/styles/ark-nova/ui/item"
 
 const countryItems = [
   { code: "ar", value: "argentina", label: "Argentina", continent: "South America" },

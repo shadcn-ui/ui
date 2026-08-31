@@ -1,14 +1,14 @@
 "use client"
 
 import * as React from "react"
-import { Label } from "@/examples/ark/ui/label"
+import { Label } from "@/styles/ark-nova/ui/label"
 import {
   Slider,
   SliderControl,
   SliderRange,
   SliderThumb,
   SliderTrack,
-} from "@/examples/ark/ui/slider"
+} from "@/styles/ark-nova/ui/slider"
 
 export function SliderControlled() {
   const [value, setValue] = React.useState([0.3, 0.7])

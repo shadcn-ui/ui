@@ -7,15 +7,15 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/examples/ark/ui/breadcrumb"
-import { Button } from "@/examples/ark/ui/button"
+} from "@/styles/ark-nova/ui/breadcrumb"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/ark/ui/dropdown-menu"
+} from "@/styles/ark-nova/ui/dropdown-menu"
 
 export function BreadcrumbDemo() {
   return (

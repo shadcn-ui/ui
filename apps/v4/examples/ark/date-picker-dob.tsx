@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   DatePicker,
   DatePickerContent,
@@ -8,8 +8,8 @@ import {
   DatePickerDayView,
   DatePickerTrigger,
   DatePickerValueText,
-} from "@/examples/ark/ui/date-picker"
-import { Field, FieldLabel } from "@/examples/ark/ui/field"
+} from "@/styles/ark-nova/ui/date-picker"
+import { Field, FieldLabel } from "@/styles/ark-nova/ui/field"
 
 export function DatePickerSimple() {
   return (

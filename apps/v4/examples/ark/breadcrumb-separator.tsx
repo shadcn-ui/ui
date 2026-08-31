@@ -6,7 +6,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/examples/ark/ui/breadcrumb"
+} from "@/styles/ark-nova/ui/breadcrumb"
 import { DotIcon } from "lucide-react"
 
 export function BreadcrumbSeparatorDemo() {

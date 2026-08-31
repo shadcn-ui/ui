@@ -1,20 +1,20 @@
 "use client"
 
 import { createChat, getMessageText } from "@/lib/ai"
-import { Bubble, BubbleContent } from "@/examples/ark/ui/bubble"
+import { Bubble, BubbleContent } from "@/styles/ark-nova/ui/bubble"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/examples/ark/ui/card"
+} from "@/styles/ark-nova/ui/card"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/examples/ark/ui/hover-card"
-import { Message, MessageContent } from "@/examples/ark/ui/message"
+} from "@/styles/ark-nova/ui/hover-card"
+import { Message, MessageContent } from "@/styles/ark-nova/ui/message"
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -24,7 +24,7 @@ import {
   MessageScrollerViewport,
   useMessageScroller,
   useMessageScrollerVisibility,
-} from "@/examples/ark/ui/message-scroller"
+} from "@/styles/ark-nova/ui/message-scroller"
 
 const chat = createChat()
   .user("Review the incident handoff and tell me what to read first.", {

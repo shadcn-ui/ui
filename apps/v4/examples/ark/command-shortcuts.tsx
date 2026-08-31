@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/ark/ui/button"
+import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Command,
   CommandDialog,
@@ -14,7 +14,7 @@ import {
   CommandList,
   CommandShortcut,
   useListCollection,
-} from "@/examples/ark/ui/command"
+} from "@/styles/ark-nova/ui/command"
 import { CreditCardIcon, SettingsIcon, UserIcon } from "lucide-react"
 
 export function CommandWithShortcuts() {

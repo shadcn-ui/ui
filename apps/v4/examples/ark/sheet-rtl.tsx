@@ -1,8 +1,8 @@
 "use client"
 
-import { Button } from "@/examples/ark/ui-rtl/button"
-import { Field, FieldGroup, FieldLabel } from "@/examples/ark/ui-rtl/field"
-import { Input } from "@/examples/ark/ui-rtl/input"
+import { Button } from "@/styles/ark-nova/ui-rtl/button"
+import { Field, FieldGroup, FieldLabel } from "@/styles/ark-nova/ui-rtl/field"
+import { Input } from "@/styles/ark-nova/ui-rtl/input"
 import {
   Sheet,
   SheetClose,
@@ -12,7 +12,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/examples/ark/ui-rtl/sheet"
+} from "@/styles/ark-nova/ui-rtl/sheet"
 
 import {
   useTranslation,

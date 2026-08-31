@@ -1,12 +1,7 @@
 "use client"
 
-import { Button } from "@/examples/ark/ui/button"
-import {
-  Checkbox,
-  CheckboxControl,
-  CheckboxHiddenInput,
-  CheckboxIndicator,
-} from "@/examples/ark/ui/checkbox"
+import { Button } from "@/styles/ark-nova/ui/button"
+import { Checkbox } from "@/styles/ark-nova/ui/checkbox"
 import {
   Field,
   FieldDescription,
@@ -15,8 +10,8 @@ import {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-} from "@/examples/ark/ui/field"
-import { Input } from "@/examples/ark/ui/input"
+} from "@/styles/ark-nova/ui/field"
+import { Input } from "@/styles/ark-nova/ui/input"
 import {
   createListCollection,
   Select,
@@ -30,8 +25,8 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/examples/ark/ui/select"
-import { Textarea } from "@/examples/ark/ui/textarea"
+} from "@/styles/ark-nova/ui/select"
+import { Textarea } from "@/styles/ark-nova/ui/textarea"
 
 const monthItems = createListCollection({
   items: [
@@ -156,12 +151,7 @@ export default function FieldDemo() {
                 <Checkbox
                   id="checkout-7j9-same-as-shipping-wgm"
                   defaultChecked
-                >
-                  <CheckboxControl>
-                    <CheckboxIndicator />
-                  </CheckboxControl>
-                  <CheckboxHiddenInput />
-                </Checkbox>
+                />
                 <FieldLabel
                   htmlFor="checkout-7j9-same-as-shipping-wgm"
                   className="font-normal"

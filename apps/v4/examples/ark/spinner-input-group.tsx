@@ -4,8 +4,8 @@ import {
   InputGroupButton,
   InputGroupInput,
   InputGroupTextarea,
-} from "@/examples/ark/ui/input-group"
-import { Spinner } from "@/examples/ark/ui/spinner"
+} from "@/styles/ark-nova/ui/input-group"
+import { Spinner } from "@/styles/ark-nova/ui/spinner"
 import { ArrowUpIcon } from "lucide-react"
 
 export function SpinnerInputGroup() {

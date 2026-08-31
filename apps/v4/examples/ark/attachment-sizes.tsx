@@ -6,7 +6,7 @@ import {
   AttachmentDescription,
   AttachmentMedia,
   AttachmentTitle,
-} from "@/examples/ark/ui/attachment"
+} from "@/styles/ark-nova/ui/attachment"
 
 export function AttachmentSizes() {
   return (
