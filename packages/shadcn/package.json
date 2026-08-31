@@ -1,7 +1,8 @@
 {
   "name": "shadcn",
-  "version": "4.13.1",
+  "version": "4.19.0",
   "description": "Add components to your apps.",
+  "homepage": "https://ui.shadcn.com",
   "publishConfig": {
     "access": "public"
   },
@@ -109,6 +110,7 @@
     "postcss-selector-parser": "^7.1.0",
     "prompts": "^2.4.2",
     "recast": "^0.23.11",
+    "socks": "^2.8.8",
     "stringify-object": "^5.0.0",
     "tailwind-merge": "^3.0.1",
     "ts-morph": "^26.0.0",
