@@ -40,6 +40,9 @@ export async function generateMetadata(props: {
   return {
     title: doc.title,
     description: doc.description,
+    alternates: {
+      canonical: page.url,
+    },
     openGraph: {
       title: doc.title,
       description: doc.description,
