@@ -180,6 +180,7 @@ type MessageScrollerContextValue = {
   setRootElement: (element: HTMLDivElement | null) => void
   setSpacerElement: (element: HTMLDivElement | null) => void
   setViewportElement: (element: HTMLDivElement | null) => void
+  pendingDefaultScrollStore: MessageScrollerStore<boolean>
   stateStore: MessageScrollerStore<MessageScrollerScrollable>
   syncAfterScroll: () => void
   unobserveVisibility: () => void
