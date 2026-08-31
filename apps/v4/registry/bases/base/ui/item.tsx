@@ -26,6 +26,7 @@ function ItemSeparator({
 }: React.ComponentProps<typeof Separator>) {
   return (
     <Separator
+      aria-hidden="true"
       data-slot="item-separator"
       orientation="horizontal"
       className={cn("cn-item-separator", className)}
