@@ -440,7 +440,7 @@ describe("getProjectComponents", () => {
     expect(result).toEqual(["button"])
   })
 
-  it("should return empty array when registry index returns undefined", async () => {
+  it("should throw when the registry index cannot be loaded", async () => {
     const uiDir = path.join(tmpDir, "ui")
     await fs.mkdir(uiDir, { recursive: true })
     await fs.writeFile(path.join(uiDir, "button.tsx"), "")
@@ -449,11 +449,13 @@ describe("getProjectComponents", () => {
     vi.mocked(resolveConfigPaths).mockResolvedValue({
       resolvedPaths: { ui: uiDir },
     } as any)
-    vi.mocked(getShadcnRegistryIndex).mockResolvedValue(undefined)
+    vi.mocked(getShadcnRegistryIndex).mockRejectedValue(
+      new Error("Failed to load registry index.")
+    )
 
-    const result = await getProjectComponents(tmpDir)
-
-    expect(result).toEqual([])
+    await expect(getProjectComponents(tmpDir)).rejects.toThrow(
+      "Failed to load registry index."
+    )
   })
 
   it("should return empty array when ui directory is empty", async () => {
