@@ -966,7 +966,16 @@ export const examples: Registry["items"] = [
         path: "examples/form-next-demo.tsx",
         type: "registry:example",
       },
+      {
+        path: "examples/form-next-demo-action.ts",
+        type: "registry:example",
+      },
+      {
+        path: "examples/form-next-demo-schema.ts",
+        type: "registry:example",
+      },
     ],
+    dependencies: ["zod"],
   },
   {
     name: "form-next-complex",
@@ -989,7 +998,16 @@ export const examples: Registry["items"] = [
         path: "examples/form-next-complex.tsx",
         type: "registry:example",
       },
+      {
+        path: "examples/form-next-complex-action.ts",
+        type: "registry:example",
+      },
+      {
+        path: "examples/form-next-complex-schema.ts",
+        type: "registry:example",
+      },
     ],
+    dependencies: ["zod"],
   },
   {
     name: "form-rhf-demo",
