@@ -17,7 +17,7 @@ function Kbd({ className, ...props }: React.ComponentProps<"kbd">) {
   )
 }
 
-function KbdGroup({ className, ...props }: React.ComponentProps<"div">) {
+function KbdGroup({ className, ...props }: React.ComponentProps<"kbd">) {
   return (
     <KbdPrimitive
       data-slot="kbd-group"
