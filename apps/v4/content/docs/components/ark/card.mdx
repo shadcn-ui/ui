@@ -77,9 +77,21 @@ import {
 </Card>
 ```
 
-## Examples
+## Composition
 
-### Size
+Use the following composition to build a `Card`:
+
+```text
+Card
+├── CardHeader
+│   ├── CardTitle
+│   ├── CardDescription
+│   └── CardAction
+├── CardContent
+└── CardFooter
+```
+
+## Size
 
 Use the `size="sm"` prop to set the size of the card to small. The small size variant uses smaller spacing.
 
@@ -89,7 +101,25 @@ Use the `size="sm"` prop to set the size of the card to small. The small size va
   previewClassName="h-96"
 />
 
-### Image
+## Spacing
+
+In addition to the `size` prop, you can use the `--card-spacing` CSS variable to control the spacing between sections and the inset of card parts.
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="card-spacing"
+  previewClassName="h-[34rem]"
+/>
+
+Use negative margins with `-mx-(--card-spacing)` to make content go edge to edge while keeping it aligned with the card inset. When the edge-to-edge content sits above a footer, use `-mb-(--card-spacing)` on `CardContent` to remove the section gap.
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="card-edge-to-edge"
+  previewClassName="h-[24rem]"
+/>
+
+## Image
 
 Add an image before the card header to create a card with an image.
 

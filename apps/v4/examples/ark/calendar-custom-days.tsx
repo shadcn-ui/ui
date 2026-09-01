@@ -1,12 +1,14 @@
 "use client"
 
+import { isWeekend } from "@internationalized/date"
+
 import {
   Calendar,
-  CalendarDate,
   CalendarDayView,
+  getLocalTimeZone,
+  today,
 } from "@/styles/ark-nova/ui/calendar"
 import { Card, CardContent } from "@/styles/ark-nova/ui/card"
-import { isWeekend } from "@internationalized/date"
 
 export function CalendarCustomDays() {
   return (
@@ -14,9 +16,7 @@ export function CalendarCustomDays() {
       <CardContent className="p-0">
         <Calendar
           selectionMode="range"
-          defaultFocusedValue={
-            new CalendarDate(new Date().getFullYear(), 12, 8)
-          }
+          defaultFocusedValue={today(getLocalTimeZone())}
           className="[--cell-size:--spacing(10)] md:[--cell-size:--spacing(12)]"
         >
           <CalendarDayView

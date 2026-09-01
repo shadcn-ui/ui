@@ -1,3 +1,5 @@
+import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
+
 import { Card, CardContent } from "@/styles/ark-nova/ui/card"
 import {
   Carousel,
@@ -6,7 +8,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/styles/ark-nova/ui/carousel"
-import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 
 const SLIDE_COUNT = 5
 const SLIDES_PER_PAGE = 2
@@ -22,13 +23,11 @@ export default function CarouselOrientation() {
       <CarouselContent className="h-80">
         {Array.from({ length: SLIDE_COUNT }).map((_, index) => (
           <CarouselItem key={index} index={index}>
-            <p className="p-1">
-              <Card className="flex min-h-full items-center justify-center">
-                <CardContent className="flex items-center justify-center p-6">
-                  <span className="text-3xl font-semibold">{index + 1}</span>
-                </CardContent>
-              </Card>
-            </p>
+            <Card className="flex min-h-full items-center justify-center">
+              <CardContent className="flex items-center justify-center p-6">
+                <span className="text-3xl font-semibold">{index + 1}</span>
+              </CardContent>
+            </Card>
           </CarouselItem>
         ))}
       </CarouselContent>

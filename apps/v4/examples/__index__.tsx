@@ -2471,6 +2471,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "card-demo",
       filePath: "examples/ark/card-demo.tsx",
     },
+    "card-edge-to-edge": {
+      name: "card-edge-to-edge",
+      filePath: "examples/ark/card-edge-to-edge.tsx",
+    },
     "card-image": {
       name: "card-image",
       filePath: "examples/ark/card-image.tsx",
@@ -2482,6 +2486,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "card-small": {
       name: "card-small",
       filePath: "examples/ark/card-small.tsx",
+    },
+    "card-spacing": {
+      name: "card-spacing",
+      filePath: "examples/ark/card-spacing.tsx",
     },
     "carousel-api": {
       name: "carousel-api",

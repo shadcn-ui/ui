@@ -1,9 +1,12 @@
 "use client"
 
 import * as React from "react"
+import { Clock2Icon } from "lucide-react"
+
 import {
   Calendar,
-  CalendarDate,
+  getLocalTimeZone,
+  today,
   type DatePickerValueChangeDetails,
   type DateValue,
 } from "@/styles/ark-nova/ui/calendar"
@@ -14,12 +17,10 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/styles/ark-nova/ui/input-group"
-import { Clock2Icon } from "lucide-react"
 
 export function CalendarWithTime() {
-  const now = new Date()
   const [value, setValue] = React.useState<DateValue[]>([
-    new CalendarDate(now.getFullYear(), now.getMonth() + 1, 12),
+    today(getLocalTimeZone()),
   ])
 
   return (

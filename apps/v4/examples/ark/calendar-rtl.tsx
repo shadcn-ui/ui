@@ -1,17 +1,18 @@
 "use client"
 
 import * as React from "react"
-import {
-  Calendar,
-  CalendarDate,
-  type DatePickerValueChangeDetails,
-  type DateValue,
-} from "@/styles/ark-nova/ui-rtl/calendar"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import {
+  Calendar,
+  getLocalTimeZone,
+  today,
+  type DatePickerValueChangeDetails,
+  type DateValue,
+} from "@/styles/ark-nova/ui-rtl/calendar"
 
 const translations: Translations = {
   en: {
@@ -37,7 +38,7 @@ const locales: Record<string, string> = {
 export function CalendarRtl() {
   const { dir, language } = useTranslation(translations, "ar")
   const [value, setValue] = React.useState<DateValue[]>([
-    new CalendarDate(2026, 3, 21),
+    today(getLocalTimeZone()),
   ])
 
   return (

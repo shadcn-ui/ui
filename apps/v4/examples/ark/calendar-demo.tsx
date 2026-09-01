@@ -1,16 +1,18 @@
 "use client"
 
 import * as React from "react"
+
 import {
   Calendar,
-  CalendarDate,
+  getLocalTimeZone,
+  today,
   type DatePickerValueChangeDetails,
   type DateValue,
 } from "@/styles/ark-nova/ui/calendar"
 
 export default function CalendarDemo() {
   const [value, setValue] = React.useState<DateValue[]>([
-    new CalendarDate(2026, 3, 21),
+    today(getLocalTimeZone()),
   ])
 
   return (

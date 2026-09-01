@@ -830,6 +830,14 @@ export const Components: Record<string, any> = {
       ) || "card-demo"
     return { default: mod.default || mod[exportName] }
   }),
+  "card-edge-to-edge": React.lazy(async () => {
+    const mod = await import("@/examples/ark/card-edge-to-edge")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "card-edge-to-edge"
+    return { default: mod.default || mod[exportName] }
+  }),
   "card-image": React.lazy(async () => {
     const mod = await import("@/examples/ark/card-image")
     const exportName =
@@ -852,6 +860,14 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "card-small"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "card-spacing": React.lazy(async () => {
+    const mod = await import("@/examples/ark/card-spacing")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "card-spacing"
     return { default: mod.default || mod[exportName] }
   }),
   "carousel-api": React.lazy(async () => {

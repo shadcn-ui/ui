@@ -1,9 +1,11 @@
 "use client"
 
 import * as React from "react"
+
 import {
   Calendar,
-  CalendarDate,
+  getLocalTimeZone,
+  today,
   type DatePickerValueChangeDetails,
   type DateValue,
 } from "@/styles/ark-nova/ui/calendar"
@@ -11,7 +13,7 @@ import { Card, CardContent } from "@/styles/ark-nova/ui/card"
 
 export function CalendarWeekNumbers() {
   const [value, setValue] = React.useState<DateValue[]>([
-    new CalendarDate(2026, 2, 3),
+    today(getLocalTimeZone()),
   ])
 
   return (
@@ -19,7 +21,7 @@ export function CalendarWeekNumbers() {
       <CardContent className="p-0">
         <Calendar
           selectionMode="single"
-          defaultFocusedValue={new CalendarDate(2026, 2, 3)}
+          defaultFocusedValue={today(getLocalTimeZone())}
           value={value}
           onValueChange={(details: DatePickerValueChangeDetails) =>
             setValue(details.value)

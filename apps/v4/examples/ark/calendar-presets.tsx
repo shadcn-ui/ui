@@ -5,14 +5,13 @@ import {
   Calendar,
   CalendarDayView,
   CalendarPresetTrigger,
+  getLocalTimeZone,
+  today,
 } from "@/styles/ark-nova/ui/calendar"
 import { Card, CardContent, CardFooter } from "@/styles/ark-nova/ui/card"
-import { CalendarDate } from "@internationalized/date"
 
 function daysFromNow(days: number) {
-  const d = new Date()
-  d.setDate(d.getDate() + days)
-  return [new CalendarDate(d.getFullYear(), d.getMonth() + 1, d.getDate())]
+  return [today(getLocalTimeZone()).add({ days })]
 }
 
 export function CalendarWithPresets() {
