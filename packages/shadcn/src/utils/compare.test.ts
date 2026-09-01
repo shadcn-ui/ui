@@ -256,5 +256,21 @@ import "./global.css"
         true
       )
     })
+
+    it("should handle side-effect imports with different aliases", () => {
+      const content1 = `import "@/styles/globals.css"`
+      const content2 = `import "~/styles/globals.css"`
+      expect(isContentSame(content1, content2, { ignoreImports: true })).toBe(
+        true
+      )
+    })
+
+    it("should preserve relative side-effect imports and require exact match", () => {
+      const content1 = `import "./globals.css"`
+      const content2 = `import "../globals.css"`
+      expect(isContentSame(content1, content2, { ignoreImports: true })).toBe(
+        false
+      )
+    })
   })
 })
