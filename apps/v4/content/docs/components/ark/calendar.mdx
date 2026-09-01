@@ -63,9 +63,10 @@ The `Calendar` component uses the `Button` component. Make sure you have it inst
 ## Usage
 
 ```tsx showLineNumbers
-import { Calendar } from "@/components/ui/calendar"
-import { CalendarDate, type DateValue } from "@internationalized/date"
 import { type DatePickerValueChangeDetails } from "@ark-ui/react/date-picker"
+import { CalendarDate, type DateValue } from "@internationalized/date"
+
+import { Calendar } from "@/components/ui/calendar"
 ```
 
 ```tsx showLineNumbers
@@ -192,4 +193,46 @@ Pass the `locale` and `dir` props for RTL support:
 
 ## API Reference
 
-See the [Ark UI DatePicker](https://ark-ui.com/docs/components/date-picker#api-reference) documentation for the full API reference.
+`Calendar` is built on the Ark UI DatePicker and forwards every prop to
+`DatePicker.Root`. Dates are `@internationalized/date` values, not JavaScript
+`Date` objects, and `value` is always an array — even in single selection mode.
+
+The component re-exports `CalendarDate`, `today`, `getLocalTimeZone` and the
+`DateValue` type, so a calendar defaulting to the current day needs no extra
+dependency:
+
+```tsx showLineNumbers
+import { Calendar, getLocalTimeZone, today } from "@/components/ui/calendar"
+
+const [value, setValue] = React.useState([today(getLocalTimeZone())])
+```
+
+Use `.add()` and `.subtract()` for date maths — `today(getLocalTimeZone()).add({ days: 30 })` —
+rather than mutating a `Date`.
+
+| Prop                   | Type                                           | Default    | Description                                               |
+| ---------------------- | ---------------------------------------------- | ---------- | --------------------------------------------------------- |
+| `selectionMode`        | `"single" \| "multiple" \| "range"`            | `"single"` | How many dates can be selected.                           |
+| `value`                | `DateValue[]`                                  | —          | Controlled selection. An array in every mode.             |
+| `defaultValue`         | `DateValue[]`                                  | —          | Initial selection when uncontrolled.                      |
+| `onValueChange`        | `(details: { value: DateValue[] }) => void`    | —          | Called with a details object, not a bare value.           |
+| `focusedValue`         | `DateValue`                                    | —          | Controlled focused date, which drives the visible month.  |
+| `defaultFocusedValue`  | `DateValue`                                    | —          | Month to open on without selecting anything.              |
+| `min` / `max`          | `DateValue`                                    | —          | Selectable bounds.                                        |
+| `isDateUnavailable`    | `(date: DateValue, locale: string) => boolean` | —          | Disable individual dates, for booked ranges and the like. |
+| `numOfMonths`          | `number`                                       | `1`        | Months shown side by side.                                |
+| `startOfWeek`          | `number`                                       | —          | First weekday, `0` being Sunday.                          |
+| `fixedWeeks`           | `boolean`                                      | `false`    | Always render six weeks so the height doesn't jump.       |
+| `showWeekNumbers`      | `boolean`                                      | `false`    | Render the ISO week number column.                        |
+| `outsideDaySelectable` | `boolean`                                      | `false`    | Allow selecting the leading and trailing days.            |
+| `maxSelectedDates`     | `number`                                       | —          | Cap selections in `multiple` mode.                        |
+| `locale`               | `string`                                       | —          | BCP 47 locale for labels and week order.                  |
+| `timeZone`             | `string`                                       | —          | Time zone used to resolve "today".                        |
+| `createCalendar`       | `(identifier) => Calendar`                     | —          | Swap the calendar system, for Hijri or Persian.           |
+| `view` / `defaultView` | `"day" \| "month" \| "year"`                   | `"day"`    | Current view.                                             |
+| `minView` / `maxView`  | `"day" \| "month" \| "year"`                   | —          | Limit how far the view switcher goes.                     |
+| `disabled`             | `boolean`                                      | `false`    | Disable the whole calendar.                               |
+| `readOnly`             | `boolean`                                      | `false`    | Render but don't accept input.                            |
+| `invalid`              | `boolean`                                      | `false`    | Show invalid styles.                                      |
+
+See the [Ark UI DatePicker](https://ark-ui.com/docs/components/date-picker#api-reference) documentation for the complete reference.

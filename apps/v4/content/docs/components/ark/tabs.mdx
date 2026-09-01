@@ -103,4 +103,26 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Ark UI Tabs](https://ark-ui.com/docs/components/tabs#api-reference) documentation.
+`Tabs` forwards every prop to `Tabs.Root`.
+
+| Prop             | Type                                   | Default        | Description                                          |
+| ---------------- | -------------------------------------- | -------------- | ---------------------------------------------------- |
+| `value`          | `string \| null`                       | —              | Controlled selected tab.                             |
+| `defaultValue`   | `string \| null`                       | —              | Initial selected tab when uncontrolled.              |
+| `onValueChange`  | `(details: { value: string }) => void` | —              | Called with a details object, not a bare string.     |
+| `orientation`    | `"horizontal" \| "vertical"`           | `"horizontal"` | Layout and arrow-key direction.                      |
+| `activationMode` | `"manual" \| "automatic"`              | `"automatic"`  | Whether arrow keys select or only move focus.        |
+| `deselectable`   | `boolean`                              | `false`        | Allow clicking the active tab to deselect it.        |
+| `loopFocus`      | `boolean`                              | `true`         | Wrap arrow-key focus at the ends.                    |
+| `onFocusChange`  | `(details) => void`                    | —              | Fires as focus moves between triggers.               |
+| `navigate`       | `(details) => void \| null`            | —              | Intercept navigation for triggers rendered as links. |
+
+`TabsList` takes a `variant` of `"default"` or `"line"`.
+
+### Data attributes
+
+Zag sets `data-orientation` on the root and `data-selected` on the active
+trigger. Tailwind's `data-horizontal:` and `data-vertical:` variants both
+compile down to `data-orientation`, so either form works.
+
+See the [Ark UI Tabs](https://ark-ui.com/docs/components/tabs#api-reference) documentation for the complete reference.

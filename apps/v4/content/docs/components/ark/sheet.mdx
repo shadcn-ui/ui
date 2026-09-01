@@ -79,6 +79,36 @@ import {
 </Sheet>
 ```
 
+## Composition
+
+`Sheet` is built on the Ark UI Dialog. `SheetContent` renders the portal,
+backdrop and positioner for you, so you only compose what goes inside it:
+
+```text
+Sheet                     — Dialog.Root
+├── SheetTrigger          — Dialog.Trigger
+└── SheetContent          — Portal > Backdrop > Positioner > Content
+    ├── SheetHeader
+    │   ├── SheetTitle    — Dialog.Title
+    │   └── SheetDescription
+    ├── SheetFooter
+    └── SheetClose        — Dialog.CloseTrigger
+```
+
+## Motion
+
+Zag sets `data-state="open" | "closed"` on the backdrop and the content, so CSS
+drives the motion: the content slides in from its edge and the backdrop fades.
+The edge itself comes from `data-side`, so you can style or animate per side:
+
+```tsx showLineNumbers
+<SheetContent className="data-[side=right]:sm:max-w-md" />
+```
+
+Unlike the popover family, a sheet is not positioned against a trigger, so
+there is no `positioning` prop — the side is a styling concern and `side` sets
+it.
+
 ## Examples
 
 ### Side
@@ -101,4 +131,38 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Ark UI Dialog](https://ark-ui.com/docs/components/dialog#api-reference) documentation.
+`Sheet` forwards every prop to `Dialog.Root`, so anything Ark UI's Dialog
+accepts works here.
+
+### Sheet
+
+| Prop                     | Type                                   | Default    | Description                                       |
+| ------------------------ | -------------------------------------- | ---------- | ------------------------------------------------- |
+| `open`                   | `boolean`                              | —          | Controlled open state.                            |
+| `defaultOpen`            | `boolean`                              | —          | Initial open state when uncontrolled.             |
+| `onOpenChange`           | `(details: { open: boolean }) => void` | —          | Called with a details object, not a bare boolean. |
+| `modal`                  | `boolean`                              | `true`     | `false` leaves the rest of the page interactive.  |
+| `closeOnInteractOutside` | `boolean`                              | `true`     | Dismiss on an outside press.                      |
+| `closeOnEscape`          | `boolean`                              | `true`     | Dismiss on <Kbd>Esc</Kbd>.                        |
+| `preventScroll`          | `boolean`                              | `true`     | Lock body scroll while open.                      |
+| `trapFocus`              | `boolean`                              | `true`     | Keep focus inside the sheet.                      |
+| `restoreFocus`           | `boolean`                              | `true`     | Return focus to the trigger on close.             |
+| `initialFocusEl`         | `() => HTMLElement \| null`            | —          | Element to focus on open.                         |
+| `finalFocusEl`           | `() => HTMLElement \| null`            | —          | Element to focus after close.                     |
+| `role`                   | `"dialog" \| "alertdialog"`            | `"dialog"` | ARIA role for the content.                        |
+
+### SheetContent
+
+| Prop              | Type                                     | Default   | Description                       |
+| ----------------- | ---------------------------------------- | --------- | --------------------------------- |
+| `side`            | `"top" \| "right" \| "bottom" \| "left"` | `"right"` | Edge the sheet appears from.      |
+| `showCloseButton` | `boolean`                                | `true`    | Render the built-in close button. |
+
+### Data attributes
+
+| Attribute    | On                | Value                                  |
+| ------------ | ----------------- | -------------------------------------- |
+| `data-state` | content, backdrop | `open` \| `closed`                     |
+| `data-side`  | content           | `top` \| `right` \| `bottom` \| `left` |
+
+See the [Ark UI Dialog](https://ark-ui.com/docs/components/dialog#api-reference) documentation for the complete reference.

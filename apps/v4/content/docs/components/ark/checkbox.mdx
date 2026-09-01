@@ -74,7 +74,11 @@ Use `defaultChecked` for uncontrolled checkboxes, or `checked` and `onCheckedCha
 
 ```tsx showLineNumbers
 import * as React from "react"
-import { Checkbox, type CheckboxCheckedChangeDetails } from "@/components/ui/checkbox"
+
+import {
+  Checkbox,
+  type CheckboxCheckedChangeDetails,
+} from "@/components/ui/checkbox"
 
 export function Example() {
   const [checked, setChecked] = React.useState(false)
@@ -143,4 +147,30 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Ark UI Checkbox](https://ark-ui.com/docs/components/checkbox#api-reference) documentation for more information.
+### Checkbox
+
+`Checkbox` is a closed composition: it renders `Checkbox.Control`, both
+indicators and `Checkbox.HiddenInput` internally, and wraps any children in
+`Checkbox.Label`. Passing your own control as children renders a second one.
+Every prop is forwarded to `Checkbox.Root`.
+
+| Prop              | Type                                                         | Default | Description                                       |
+| ----------------- | ------------------------------------------------------------ | ------- | ------------------------------------------------- |
+| `checked`         | `boolean \| "indeterminate"`                                 | —       | Controlled checked state.                         |
+| `defaultChecked`  | `boolean \| "indeterminate"`                                 | —       | Initial state when uncontrolled.                  |
+| `onCheckedChange` | `(details: { checked: boolean \| "indeterminate" }) => void` | —       | Called with a details object, not a bare boolean. |
+| `disabled`        | `boolean`                                                    | `false` | Disable the checkbox.                             |
+| `readOnly`        | `boolean`                                                    | `false` | Render but don't accept input.                    |
+| `invalid`         | `boolean`                                                    | `false` | Show invalid styles.                              |
+| `required`        | `boolean`                                                    | `false` | Mark required for form validation.                |
+| `name`            | `string`                                                     | —       | Name of the hidden input.                         |
+| `value`           | `string`                                                     | —       | Value submitted with a form.                      |
+| `form`            | `string`                                                     | —       | Id of the form to associate with.                 |
+
+### Composed parts
+
+For layouts the closed component can't express, build it yourself from
+`CheckboxRoot`, `CheckboxControl`, `CheckboxIndicator`, `CheckboxLabel` and
+`CheckboxHiddenInput`. Use these _instead of_ `Checkbox`, never inside it.
+
+See the [Ark UI Checkbox](https://ark-ui.com/docs/components/checkbox#api-reference) documentation for the complete reference.

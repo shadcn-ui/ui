@@ -106,4 +106,36 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Ark UI Tooltip](https://ark-ui.com/docs/components/tooltip#api-reference) documentation.
+`Tooltip` forwards every prop to `Tooltip.Root`. There is no `side`,
+`align` or `sideOffset` prop — Zag takes a single `positioning` object whose
+`placement` folds the side and the alignment together.
+
+### Tooltip
+
+| Prop                 | Type                                   | Default | Description                                            |
+| -------------------- | -------------------------------------- | ------- | ------------------------------------------------------ |
+| `positioning`        | `PositioningOptions`                   | —       | `{ placement, gutter, offset, flip, sameWidth, ... }`. |
+| `openDelay`          | `number`                               | —       | Delay before opening on hover.                         |
+| `closeDelay`         | `number`                               | —       | Delay before closing.                                  |
+| `open`               | `boolean`                              | —       | Controlled open state.                                 |
+| `defaultOpen`        | `boolean`                              | —       | Initial open state when uncontrolled.                  |
+| `onOpenChange`       | `(details: { open: boolean }) => void` | —       | Called with a details object, not a bare boolean.      |
+| `interactive`        | `boolean`                              | `false` | Keep open while the pointer is over the tooltip.       |
+| `closeOnPointerDown` | `boolean`                              | `true`  | Close when the trigger is pressed.                     |
+| `closeOnEscape`      | `boolean`                              | `true`  | Close on <Kbd>Esc</Kbd>.                               |
+| `closeOnScroll`      | `boolean`                              | `true`  | Close when an ancestor scrolls.                        |
+| `closeOnClick`       | `boolean`                              | `true`  | Close on click.                                        |
+| `disabled`           | `boolean`                              | `false` | Never open.                                            |
+
+`TooltipContent` renders `TooltipArrow` for you. The arrow is sized and coloured
+through Zag's `--arrow-size` and `--arrow-background` variables rather than by
+styling the element directly.
+
+### Data attributes
+
+| Attribute        | On      | Value                                    |
+| ---------------- | ------- | ---------------------------------------- |
+| `data-state`     | content | `open` \| `closed` \| `delayed-open`     |
+| `data-placement` | content | the resolved placement, e.g. `top-start` |
+
+See the [Ark UI Tooltip](https://ark-ui.com/docs/components/tooltip#api-reference) documentation for the complete reference.
