@@ -1,20 +1,22 @@
 "use client"
 
 import * as React from "react"
-import { ark } from "@ark-ui/react/factory"
 import {
   Dialog as DialogPrimitive,
   useDialog as useSheet,
   useDialogContext as useSheetContext,
   type DialogOpenChangeDetails as SheetOpenChangeDetails,
 } from "@ark-ui/react/dialog"
+import { ark } from "@ark-ui/react/factory"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { Button } from "@/registry/bases/ark/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-function Sheet({ ...props }: React.ComponentProps<typeof DialogPrimitive.Root>) {
+function Sheet({
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Root>) {
   return <DialogPrimitive.Root data-slot="sheet" {...props} />
 }
 
@@ -37,7 +39,12 @@ function SheetOverlay({
   return (
     <DialogPrimitive.Backdrop
       data-slot="sheet-overlay"
-      className={cn("cn-sheet-overlay fixed inset-0 z-50", className)}
+      className={cn(
+        "cn-sheet-overlay fixed inset-0 z-50",
+        "data-[state=open]:animate-in data-[state=open]:fade-in-0",
+        "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+        className
+      )}
       {...props}
     />
   )
@@ -60,14 +67,22 @@ function SheetContent({
         <DialogPrimitive.Content
           data-slot="sheet-content"
           data-side={side}
-          className={cn("cn-sheet-content", className)}
+          className={cn(
+            "cn-sheet-content",
+            "data-[state=closed]:animate-out data-[state=open]:animate-in",
+            "data-[side=top]:data-[state=closed]:slide-out-to-top data-[side=top]:data-[state=open]:slide-in-from-top",
+            "data-[side=right]:data-[state=closed]:slide-out-to-right data-[side=right]:data-[state=open]:slide-in-from-right",
+            "data-[side=bottom]:data-[state=closed]:slide-out-to-bottom data-[side=bottom]:data-[state=open]:slide-in-from-bottom",
+            "data-[side=left]:data-[state=closed]:slide-out-to-left data-[side=left]:data-[state=open]:slide-in-from-left",
+            className
+          )}
           {...props}
         >
           {children}
           {showCloseButton && (
             <DialogPrimitive.CloseTrigger
               data-slot="sheet-close"
-              className="cn-sheet-close absolute top-3 right-3 inline-flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="cn-sheet-close absolute top-3 right-3 inline-flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
             >
               <IconPlaceholder
                 lucide="XIcon"

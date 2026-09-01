@@ -89,7 +89,14 @@ A simple popover with a header, title, and description.
 
 ### Align
 
-Use the `align` prop on `PopoverContent` to control the horizontal alignment.
+Ark UI has no `side` or `align` prop. Pass Zag's `positioning` object on
+`Popover` instead, where `placement` is a single value combining the side and
+the alignment: `"bottom"`, `"bottom-start"`, `"bottom-end"`, and the same for
+`top`, `left` and `right`.
+
+```tsx showLineNumbers
+<Popover positioning={{ placement: "bottom-start" }}>
+```
 
 <ComponentPreview styleName="ark-nova" name="popover-alignments" />
 

@@ -89,16 +89,20 @@ closes.
 
 ## Positioning
 
-Use the `side` and `align` props on `HoverCardContent` to control placement.
+Ark UI has no `side` or `align` prop. Pass Zag's `positioning` object on
+`HoverCard`, where `placement` combines the side and the alignment into one
+value: `"top"`, `"top-start"`, `"top-end"`, and the same for `bottom`, `left`
+and `right`.
 
 ```tsx showLineNumbers
-<HoverCard>
+<HoverCard positioning={{ placement: "top-start" }}>
   <HoverCardTrigger>Hover</HoverCardTrigger>
-  <HoverCardContent side="top" align="start">
-    Content
-  </HoverCardContent>
+  <HoverCardContent>Content</HoverCardContent>
 </HoverCard>
 ```
+
+`positioning` also takes `gutter`, `offset`, `flip`, `sameWidth` and the other
+Zag popper options.
 
 ## Examples
 
