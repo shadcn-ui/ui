@@ -228,6 +228,9 @@ importers:
       cmdk:
         specifier: ^1.1.1
         version: 1.1.1(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      cn:
+        specifier: ^0.2.2
+        version: 0.2.2
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
@@ -5144,6 +5147,11 @@ packages:
     peerDependencies:
       react: ^18 || ^19 || ^19.0.0-rc
       react-dom: ^18 || ^19 || ^19.0.0-rc
+
+  cn@0.2.2:
+    resolution: {integrity: sha512-1TjHp2yGdFzu5Td2bc2bnceh/WKPEvLYVtcg6czWSifHBy5oN/bK5/I0eFNIr839Hlh5cxrV93Yh2ByrpO5Stw==}
+    engines: {node: '>=20'}
+    hasBin: true
 
   code-block-writer@13.0.3:
     resolution: {integrity: sha512-Oofo0pq3IKnsFtuHqSF7TqBfr71aeyZDVJ0HpmqB7FBM2qEigL0iPONSCZSO9pE9dZTAxANe5XHG9Uy0YMv8cg==}
@@ -14248,6 +14256,8 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
       - '@types/react-dom'
+
+  cn@0.2.2: {}
 
   code-block-writer@13.0.3: {}
 
