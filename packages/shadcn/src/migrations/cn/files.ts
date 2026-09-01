@@ -68,7 +68,7 @@ function findSourceFiles(cwd: string, pattern = SOURCE_PATTERN) {
 
 export function getScriptRegions(content: string, filename: string) {
   const regions: SourceRegion[] = []
-  const pattern = /<script\b([^>]*)>([\s\S]*?)<\/script>/gi
+  const pattern = /<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi
   let match: RegExpExecArray | null
 
   while ((match = pattern.exec(content)) !== null) {

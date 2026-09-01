@@ -529,6 +529,24 @@ import { clsx } from "clsx"
     )
   })
 
+  it("transforms script blocks with whitespace in the closing tag", () => {
+    const result = transformCnSource(
+      `<script setup lang="ts">
+import { clsx } from "clsx"
+
+const classes = clsx("flex")
+</script >
+
+<template><div :class="classes" /></template>
+`,
+      "component.vue"
+    )
+
+    expect(result.content).toContain('import { clsx } from "cn"')
+    expect(result.content).toContain('const classes = clsx("flex")')
+    expect(result.content).toContain("</script >")
+  })
+
   it("preserves Svelte imports referenced only by the markup", () => {
     const result = transformCnSource(
       `<script lang="ts">
