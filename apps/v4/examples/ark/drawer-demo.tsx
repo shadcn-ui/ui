@@ -7,6 +7,7 @@ import { Badge } from "@/styles/ark-nova/ui/badge"
 import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Drawer,
+  DrawerBody,
   DrawerClose,
   DrawerContent,
   DrawerDescription,
@@ -93,7 +94,7 @@ export function DrawerDemo() {
             We&apos;ll prepare your order as soon as possible.
           </DrawerDescription>
         </DrawerHeader>
-        <div className="scroll-fade flex-1 overflow-y-auto p-4">
+        <DrawerBody className="scroll-fade p-4">
           <RadioGroup
             value={deliveryTime}
             onValueChange={(details) =>
@@ -123,7 +124,7 @@ export function DrawerDemo() {
               </RadioGroupItem>
             ))}
           </RadioGroup>
-        </div>
+        </DrawerBody>
         <DrawerFooter>
           <Button onClick={handleConfirm} className="h-[34px]">
             Confirm Delivery Time

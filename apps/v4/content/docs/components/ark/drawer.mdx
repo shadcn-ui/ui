@@ -61,6 +61,7 @@ npm install @ark-ui/react
 ```tsx showLineNumbers
 import {
   Drawer,
+  DrawerBody,
   DrawerClose,
   DrawerContent,
   DrawerDescription,
@@ -73,21 +74,83 @@ import {
 
 ```tsx showLineNumbers
 <Drawer>
-  <DrawerTrigger>Open</DrawerTrigger>
+  <DrawerTrigger asChild>
+    <Button variant="outline">Open</Button>
+  </DrawerTrigger>
   <DrawerContent>
     <DrawerHeader>
       <DrawerTitle>Are you absolutely sure?</DrawerTitle>
       <DrawerDescription>This action cannot be undone.</DrawerDescription>
     </DrawerHeader>
+    <DrawerBody className="p-4">Content</DrawerBody>
     <DrawerFooter>
       <Button>Submit</Button>
-      <DrawerClose>
+      <DrawerClose asChild>
         <Button variant="outline">Cancel</Button>
       </DrawerClose>
     </DrawerFooter>
   </DrawerContent>
 </Drawer>
 ```
+
+## Composition
+
+Ark UI models a drawer as the dialog anatomy extended with a header, body and
+footer. `DrawerContent` renders the portal, backdrop and positioner for you, so
+you only compose what goes inside it:
+
+```text
+Drawer                     — Drawer.Root
+├── DrawerTrigger          — Drawer.Trigger
+└── DrawerContent          — Portal > Backdrop > Positioner > Content
+    ├── DrawerHandle       — Drawer.Grabber (rendered by showHandle)
+    ├── DrawerHeader
+    │   ├── DrawerTitle
+    │   └── DrawerDescription
+    ├── DrawerBody
+    ├── DrawerFooter
+    └── DrawerClose        — Drawer.CloseTrigger
+```
+
+`DrawerHeader` and `DrawerFooter` keep their intrinsic size and `DrawerBody`
+takes the remaining space and scrolls, so actions stay visible however long the
+content is.
+
+## Placement
+
+Ark UI has no `side` or `direction` prop. Zag models a drawer with a single
+`swipeDirection`, which is the direction you swipe to dismiss it, and that
+determines which edge the drawer sits on:
+
+| `swipeDirection` | Drawer sits on | Available |
+| ---------------- | -------------- | --------- |
+| `down`           | bottom         | default   |
+| `up`             | top            |           |
+| `left`           | left           |           |
+| `right`          | right          |           |
+
+```tsx showLineNumbers
+<Drawer swipeDirection="right">{/* ... */}</Drawer>
+```
+
+<ComponentPreview styleName="ark-nova" name="drawer-sides" />
+
+Where the drawer sits is a styling concern rather than a machine one — the
+positioner is a full-viewport flex container and the placement comes from its
+alignment, keyed off the `data-swipe-direction` attribute Zag sets. Style any
+part per edge with the same attribute:
+
+```tsx showLineNumbers
+<DrawerContent className="data-[swipe-direction=right]:sm:max-w-md">
+```
+
+## Motion
+
+Zag puts `data-state="open" | "closed"` on the content and the backdrop, and
+holds the machine in a closing state until the exit animation reports back, so
+CSS drives the motion. The content slides in from its edge and the backdrop
+fades. While a drag is in progress Zag writes an inline transform and sets
+`data-swiping`, which suspends the animation so the drawer tracks your finger.
 
 ## Examples
 
@@ -96,12 +159,6 @@ import {
 Keep actions visible while the content scrolls.
 
 <ComponentPreview styleName="ark-nova" name="drawer-scrollable-content" />
-
-### Sides
-
-Use the `swipeDirection` prop to set the side of the drawer. Available options are `up`, `right`, `down`, and `left`.
-
-<ComponentPreview styleName="ark-nova" name="drawer-sides" />
 
 ### Swipe Handle
 
@@ -143,4 +200,49 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Ark UI Drawer documentation](https://ark-ui.com/docs/components/drawer#api-reference) for the full API reference.
+`Drawer` forwards every prop to `Drawer.Root`, so anything Ark UI accepts works
+here. The ones worth knowing:
+
+### Drawer
+
+| Prop                     | Type                                   | Default  | Description                                                                                                              |
+| ------------------------ | -------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `swipeDirection`         | `"up" \| "down" \| "left" \| "right"`  | `"down"` | Direction you swipe to dismiss, and the edge the drawer sits on.                                                         |
+| `open`                   | `boolean`                              | —        | Controlled open state.                                                                                                   |
+| `defaultOpen`            | `boolean`                              | —        | Initial open state when uncontrolled.                                                                                    |
+| `onOpenChange`           | `(details: { open: boolean }) => void` | —        | Called with a details object, not a bare boolean.                                                                        |
+| `snapPoints`             | `(number \| string)[]`                 | —        | Heights to snap to. `0`–`1` are viewport fractions, `>1` are pixels, strings take `px` and `rem`. Vertical drawers only. |
+| `snapPoint`              | `number \| string \| null`             | —        | Controlled active snap point.                                                                                            |
+| `defaultSnapPoint`       | `number \| string \| null`             | —        | Initial snap point when uncontrolled.                                                                                    |
+| `onSnapPointChange`      | `(details) => void`                    | —        | Called when the active snap point changes.                                                                               |
+| `snapToSequentialPoints` | `boolean`                              | `false`  | Snap one point at a time instead of to the nearest.                                                                      |
+| `closeThreshold`         | `number`                               | —        | Fraction of the drawer that must be swiped away to dismiss.                                                              |
+| `swipeVelocityThreshold` | `number`                               | —        | Velocity that dismisses regardless of distance.                                                                          |
+| `preventDragOnScroll`    | `boolean`                              | —        | Don't start a drag from a scrolled region.                                                                               |
+| `modal`                  | `boolean`                              | `true`   | `false` leaves the rest of the page interactive.                                                                         |
+| `closeOnInteractOutside` | `boolean`                              | `true`   | Dismiss on an outside press.                                                                                             |
+| `closeOnEscape`          | `boolean`                              | `true`   | Dismiss on <Kbd>Esc</Kbd>.                                                                                               |
+| `preventScroll`          | `boolean`                              | `true`   | Lock body scroll while open.                                                                                             |
+| `trapFocus`              | `boolean`                              | `true`   | Keep focus inside the drawer.                                                                                            |
+| `restoreFocus`           | `boolean`                              | `true`   | Return focus to the trigger on close.                                                                                    |
+| `initialFocusEl`         | `() => HTMLElement \| null`            | —        | Element to focus on open.                                                                                                |
+
+### DrawerContent
+
+| Prop         | Type      | Default | Description                                                                          |
+| ------------ | --------- | ------- | ------------------------------------------------------------------------------------ |
+| `showHandle` | `boolean` | `true`  | Render the swipe grabber. Shown for vertical drawers; horizontal gets a rotated bar. |
+
+### Data attributes
+
+Zag sets these, so you can style any part per state or edge:
+
+| Attribute              | On                  | Value                               |
+| ---------------------- | ------------------- | ----------------------------------- |
+| `data-state`           | content, backdrop   | `open` \| `closed`                  |
+| `data-swipe-direction` | positioner, content | `up` \| `down` \| `left` \| `right` |
+| `data-swiping`         | content, backdrop   | present while dragging              |
+| `data-dragging`        | content             | present while dragging              |
+| `data-expanded`        | content             | present at the full snap point      |
+
+See the [Ark UI Drawer documentation](https://ark-ui.com/docs/components/drawer#api-reference) for the complete reference.

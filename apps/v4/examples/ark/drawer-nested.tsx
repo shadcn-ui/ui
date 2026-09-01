@@ -4,6 +4,7 @@ import { useIsMobile } from "@/hooks/use-mobile"
 import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Drawer,
+  DrawerBody,
   DrawerClose,
   DrawerContent,
   DrawerDescription,
@@ -33,9 +34,9 @@ export function DrawerNested() {
             Open another drawer from the same direction.
           </DrawerDescription>
         </DrawerHeader>
-        <div className="flex-1 p-4">
+        <DrawerBody className="p-4">
           <div className={placeholder} />
-        </div>
+        </DrawerBody>
         <DrawerFooter>
           <Drawer swipeDirection={swipeDirection}>
             <DrawerTrigger asChild>
@@ -48,9 +49,9 @@ export function DrawerNested() {
                   The parent drawer stays mounted behind this one.
                 </DrawerDescription>
               </DrawerHeader>
-              <div className="flex-1 p-4">
+              <DrawerBody className="p-4">
                 <div className={placeholder} />
-              </div>
+              </DrawerBody>
               <DrawerFooter>
                 <Drawer swipeDirection={swipeDirection}>
                   <DrawerTrigger asChild>
@@ -63,9 +64,9 @@ export function DrawerNested() {
                         Two drawers are stacked behind this one.
                       </DrawerDescription>
                     </DrawerHeader>
-                    <div className="flex-1 p-4">
+                    <DrawerBody className="p-4">
                       <div className={placeholder} />
-                    </div>
+                    </DrawerBody>
                     <DrawerFooter>
                       <Drawer swipeDirection={swipeDirection}>
                         <DrawerTrigger asChild>
@@ -78,9 +79,9 @@ export function DrawerNested() {
                               This is the frontmost drawer in the stack.
                             </DrawerDescription>
                           </DrawerHeader>
-                          <div className="flex-1 p-4">
+                          <DrawerBody className="p-4">
                             <div className={placeholder} />
-                          </div>
+                          </DrawerBody>
                           <DrawerFooter>
                             <DrawerClose asChild>
                               <Button variant="outline">Close</Button>

@@ -37,7 +37,12 @@ function DrawerOverlay({
   return (
     <DrawerPrimitive.Backdrop
       data-slot="drawer-overlay"
-      className={cn("cn-drawer-overlay fixed inset-0 z-50", className)}
+      className={cn(
+        "cn-drawer-overlay fixed inset-0 z-50",
+        "data-[state=open]:animate-in data-[state=open]:fade-in-0",
+        "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+        className
+      )}
       {...props}
     />
   )
@@ -54,11 +59,27 @@ function DrawerContent({
   return (
     <Portal>
       <DrawerOverlay />
-      <DrawerPrimitive.Positioner className="fixed inset-0 z-50 flex data-[swipe-direction=down]:items-end data-[swipe-direction=left]:justify-start data-[swipe-direction=right]:justify-end data-[swipe-direction=up]:items-start">
+      <DrawerPrimitive.Positioner
+        className={cn(
+          "fixed inset-0 z-50 flex items-stretch overscroll-y-none",
+          "data-[swipe-direction=down]:flex-col data-[swipe-direction=down]:justify-end",
+          "data-[swipe-direction=up]:flex-col data-[swipe-direction=up]:justify-start",
+          "data-[swipe-direction=left]:flex-row data-[swipe-direction=left]:justify-start",
+          "data-[swipe-direction=right]:flex-row data-[swipe-direction=right]:justify-end"
+        )}
+      >
         <DrawerPrimitive.Content
           data-slot="drawer-content"
           className={cn(
-            "cn-drawer-content group/drawer-content relative z-50 flex flex-col outline-none data-[swipe-direction=down]:max-h-[80vh] data-[swipe-direction=down]:w-full data-[swipe-direction=left]:h-full data-[swipe-direction=left]:w-3/4 data-[swipe-direction=right]:h-full data-[swipe-direction=right]:w-3/4 data-[swipe-direction=up]:max-h-[80vh] data-[swipe-direction=up]:w-full data-[swipe-direction=left]:sm:max-w-sm data-[swipe-direction=right]:sm:max-w-sm",
+            "cn-drawer-content group/drawer-content relative z-50 flex max-h-[100dvh] flex-col outline-none",
+            "data-[swipe-direction=down]:max-h-[80vh] data-[swipe-direction=up]:max-h-[80vh]",
+            "data-[swipe-direction=left]:w-3/4 data-[swipe-direction=right]:w-3/4 data-[swipe-direction=left]:sm:max-w-sm data-[swipe-direction=right]:sm:max-w-sm",
+            "data-[state=closed]:animate-out data-[state=open]:animate-in",
+            "data-[state=closed]:data-[swipe-direction=down]:slide-out-to-bottom data-[state=open]:data-[swipe-direction=down]:slide-in-from-bottom",
+            "data-[state=closed]:data-[swipe-direction=up]:slide-out-to-top data-[state=open]:data-[swipe-direction=up]:slide-in-from-top",
+            "data-[state=closed]:data-[swipe-direction=left]:slide-out-to-left data-[state=open]:data-[swipe-direction=left]:slide-in-from-left",
+            "data-[state=closed]:data-[swipe-direction=right]:slide-out-to-right data-[state=open]:data-[swipe-direction=right]:slide-in-from-right",
+            "data-[swiping]:animate-none",
             className
           )}
           {...props}
@@ -105,7 +126,7 @@ function DrawerHeader({
   return (
     <ark.div
       data-slot="drawer-header"
-      className={cn("cn-drawer-header flex flex-col", className)}
+      className={cn("cn-drawer-header flex shrink-0 flex-col", className)}
       {...props}
     />
   )
@@ -118,7 +139,26 @@ function DrawerFooter({
   return (
     <ark.div
       data-slot="drawer-footer"
-      className={cn("cn-drawer-footer mt-auto flex flex-col", className)}
+      className={cn(
+        "cn-drawer-footer mt-auto flex shrink-0 flex-col",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function DrawerBody({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
+  return (
+    <ark.div
+      data-slot="drawer-body"
+      className={cn(
+        "flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain",
+        className
+      )}
       {...props}
     />
   )
@@ -155,6 +195,7 @@ const DrawerRootProvider = DrawerPrimitive.RootProvider
 
 export {
   Drawer,
+  DrawerBody,
   DrawerClose,
   DrawerContent,
   DrawerContext,

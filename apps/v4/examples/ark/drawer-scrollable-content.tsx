@@ -1,6 +1,7 @@
 import { Button } from "@/styles/ark-nova/ui/button"
 import {
   Drawer,
+  DrawerBody,
   DrawerClose,
   DrawerContent,
   DrawerDescription,
@@ -21,7 +22,7 @@ export function DrawerScrollableContent() {
           <DrawerTitle>Move Goal</DrawerTitle>
           <DrawerDescription>Set your daily activity goal.</DrawerDescription>
         </DrawerHeader>
-        <div className="no-scrollbar overflow-y-auto px-4">
+        <DrawerBody className="no-scrollbar px-4">
           {Array.from({ length: 10 }).map((_, index) => (
             <p
               key={index}
@@ -36,7 +37,7 @@ export function DrawerScrollableContent() {
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
           ))}
-        </div>
+        </DrawerBody>
         <DrawerFooter>
           <Button>Submit</Button>
           <DrawerClose asChild>
