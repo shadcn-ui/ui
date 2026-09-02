@@ -1,7 +1,8 @@
 {
   "name": "shadcn",
-  "version": "4.19.0",
+  "version": "4.20.1",
   "description": "Add components to your apps.",
+  "homepage": "https://ui.shadcn.com",
   "publishConfig": {
     "access": "public"
   },
