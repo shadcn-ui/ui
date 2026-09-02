@@ -220,6 +220,30 @@ const merged = twMerge("px-2 px-4")
     expect(result.content).toContain('const merged = twMerge("px-2 px-4")')
   })
 
+  it("swaps cnfast module specifiers without changing its API", () => {
+    const result =
+      transformCnSource(`import { cn, clsx, twMerge, twJoin } from "cnfast"
+
+export { cn as merge } from "cnfast"
+export * from "cnfast"
+export const loadCn = () => import("cnfast")
+export const runtime = require("cnfast")
+export const classes = cn(clsx("px-2"), twMerge("px-4"), twJoin("flex"))
+`)
+
+    expect(result.content).not.toContain('"cnfast"')
+    expect(result.content).toContain(
+      'import { cn, clsx, twMerge, twJoin } from "cn"'
+    )
+    expect(result.content).toContain('export { cn as merge } from "cn"')
+    expect(result.content).toContain('export * from "cn"')
+    expect(result.content).toContain('import("cn")')
+    expect(result.content).toContain('require("cn")')
+    expect(result.migratedPackages).toEqual(["cnfast"])
+    expect(result.remainingPackages).toEqual([])
+    expect(result.unsupported).toEqual([])
+  })
+
   it("splits root and custom-config imports", () => {
     const result = transformCnSource(`import {
   twMerge,
@@ -879,6 +903,21 @@ export const classes = clsx("flex")
 
     expect(installDependencies).toHaveBeenCalledWith(cwd, ["cn"])
     expect(removeDependencies).toHaveBeenCalledWith(cwd, ["clsx"])
+  })
+
+  it("migrates cnfast and removes its dependency", async () => {
+    await setupProject({
+      source: `export { cn } from "cnfast"
+`,
+      dependencies: { cnfast: "^0.1.0" },
+    })
+    await migrateCn({ cwd, yes: true })
+
+    expect(
+      (await fs.readFile(path.join(cwd, "src/classes.ts"), "utf-8")).trim()
+    ).toBe('export { cn } from "cn"')
+    expect(installDependencies).toHaveBeenCalledWith(cwd, ["cn"])
+    expect(removeDependencies).toHaveBeenCalledWith(cwd, ["cnfast"])
   })
 
   it("scans dot directories before removing old dependencies", async () => {

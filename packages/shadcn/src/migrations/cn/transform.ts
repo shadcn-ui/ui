@@ -2,6 +2,7 @@ import path from "path"
 import { Project } from "ts-morph"
 
 import { collapseCanonicalWrappers, findCompositions } from "./bindings"
+import { migrateCnfastSpecifiers } from "./cnfast"
 import { collectBindings } from "./collect-bindings"
 import { addCommonJsCnRequire } from "./emit"
 import {
@@ -77,12 +78,9 @@ function transformScriptSource(
   const pendingImports: PendingImport[] = []
   const unsupported: CnMigrationIssue[] = []
   const migratedPackages = new Set<OldPackage>()
+  let changes = migrateCnfastSpecifiers(sourceFile, migratedPackages)
   const bindings = collectBindings(sourceFile)
-  let changes = collapseCanonicalWrappers(
-    sourceFile,
-    bindings,
-    migratedPackages
-  )
+  changes += collapseCanonicalWrappers(sourceFile, bindings, migratedPackages)
 
   const compositions = findCompositions(sourceFile, bindings)
   if (compositions.length) {

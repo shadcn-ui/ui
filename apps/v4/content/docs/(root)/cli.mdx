@@ -440,7 +440,7 @@ Options:
 
 ### migrate cn
 
-The `cn` migration replaces `clsx` and `tailwind-merge` with [`cn`](https://github.com/shadcn-ui/cn).
+The `cn` migration replaces `clsx`, `tailwind-merge` and `cnfast` with [`cn`](https://github.com/shadcn-ui/cn).
 
 ```bash
 npx shadcn@latest migrate cn
@@ -450,7 +450,7 @@ Unlike the other migrations, `migrate cn` does not require a `components.json` f
 
 This will:
 
-1. Rewrite imports from `clsx`, `clsx/lite` and `tailwind-merge`.
+1. Rewrite imports from `clsx`, `clsx/lite`, `tailwind-merge` and `cnfast`.
 2. Replace `twMerge(clsx(...))` compositions with direct `cn(...)` calls.
 3. Replace the standard shadcn utility with a direct re-export.
 4. Install `cn` and remove the old packages when no references remain.
@@ -478,6 +478,13 @@ The migration also preserves separate APIs when they are used independently:
 - import { clsx } from "clsx"
 - import { twMerge } from "tailwind-merge"
 + import { clsx, twMerge } from "cn"
+```
+
+Because `cnfast` has the same root API, its module specifiers are replaced directly:
+
+```diff
+- import { cn } from "cnfast"
++ import { cn } from "cn"
 ```
 
 Custom configuration APIs are moved to `cn/config`. Existing local names are preserved when an export was renamed:
@@ -508,7 +515,7 @@ npx shadcn@latest migrate cn src/lib/utils.ts
 npx shadcn@latest migrate cn "src/**/*.{ts,tsx}"
 ```
 
-Scoped migrations install `cn` but keep `clsx` and `tailwind-merge` in `package.json`, because files outside the selected path may still use them.
+Scoped migrations install `cn` but keep `clsx`, `tailwind-merge` and `cnfast` in `package.json`, because files outside the selected path may still use them.
 
 The command leaves unsupported imports unchanged and reports them for manual review. This includes `experimentalParseClassName`, namespace imports, dynamic import shapes, direct calls to `validators` and variadic `createTailwindMerge` calls that cannot be migrated safely. An old dependency is retained whenever one of its references remains.
 

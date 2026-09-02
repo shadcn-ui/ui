@@ -50,7 +50,7 @@ export async function migrateCn(options: {
   )
 
   if (!changedFiles.length) {
-    logger.info("No supported clsx or tailwind-merge usage found.")
+    logger.info("No supported clsx, tailwind-merge or cnfast usage found.")
     printUnsupportedIssues(unsupported, options.cwd)
     return
   }
@@ -115,7 +115,7 @@ export async function migrateCn(options: {
 
   if (options.path) {
     logger.info(
-      "Kept clsx and tailwind-merge dependencies because this was a scoped migration."
+      "Kept clsx, tailwind-merge and cnfast dependencies because this was a scoped migration."
     )
   }
 

@@ -1,6 +1,6 @@
 import type { Identifier } from "ts-morph"
 
-export const OLD_PACKAGES = ["clsx", "tailwind-merge"] as const
+export const OLD_PACKAGES = ["clsx", "tailwind-merge", "cnfast"] as const
 
 export const TAILWIND_ROOT_EXPORTS = new Set([
   "twMerge",
@@ -21,7 +21,7 @@ export const TAILWIND_CONFIG_EXPORTS = new Map([
 ])
 
 export type OldPackage = (typeof OLD_PACKAGES)[number]
-export type OldModule = OldPackage | "clsx/lite"
+export type OldModule = Exclude<OldPackage, "cnfast"> | "clsx/lite"
 export type CnModule = "cn" | "cn/config" | "cn/lite"
 
 export type CnMigrationIssue = {
