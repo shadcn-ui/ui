@@ -749,6 +749,40 @@ export const cn = (value) => twMerge(clsx(value))
 
     expect(transformCnSource(input).content).toBe(input)
   })
+
+  it("preserves leading comments in unchanged files", () => {
+    const input = `/**
+ * This component is adapted from an external example.
+ */
+"use client"
+
+export const classes = "flex"
+`
+    const result = transformCnSource(input)
+
+    expect(result.content).toBe(input)
+    expect(result.changes).toBe(0)
+  })
+
+  it("preserves leading comments in migrated files", () => {
+    const result =
+      transformCnSource(`// Copyright Example Authors. Licensed under MIT.
+// This file is generated.
+
+import { clsx } from "clsx"
+
+export const classes = clsx("flex")
+`)
+
+    expect(result.content)
+      .toBe(`// Copyright Example Authors. Licensed under MIT.
+// This file is generated.
+
+import { clsx } from "cn";
+
+export const classes = clsx("flex")
+`)
+  })
 })
 
 describe("migrateCn", () => {
