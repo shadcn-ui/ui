@@ -41,6 +41,17 @@ npx shadcn@latest add field
 
 <Step>Update the import paths to match your project setup.</Step>
 
+<Step>
+  Make sure your global CSS includes the base component styles:
+
+```css
+@import "shadcn/tailwind.css";
+```
+
+  Without this import, layout details such as `FieldSeparator` can render with
+  incorrect sizing.
+</Step>
+
 </Steps>
 
 </TabsContent>
