@@ -1,8 +1,12 @@
 import { cn } from "@/registry/bases/base/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
-  return (
+function Spinner({
+  className,
+  label = "Loading",
+  ...props
+}: React.ComponentProps<"svg"> & { label?: string | null }) {
+  const icon = (
     <IconPlaceholder
       lucide="Loader2Icon"
       tabler="IconLoader"
@@ -10,11 +14,23 @@ function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
       phosphor="SpinnerIcon"
       remixicon="RiLoaderLine"
       data-slot="spinner"
-      role="status"
-      aria-label="Loading"
+      aria-hidden="true"
       className={cn("size-4 animate-spin", className)}
       {...props}
     />
+  )
+
+  if (label == null || label === "") {
+    return icon
+  }
+
+  return (
+    <>
+      {icon}
+      <span role="status" className="sr-only">
+        {label}
+      </span>
+    </>
   )
 }
 
