@@ -23,9 +23,13 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const body = "Can you sign the commits please? See https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits. Thank you."
+            const label = "blocked by: unverified commits"
 
             const { owner, repo } = context.repo
             const pullNumber = context.payload.pull_request.number
+            const hasLabel = context.payload.pull_request.labels.some(
+              (existingLabel) => existingLabel.name === label
+            )
 
             const commits = await github.paginate(github.rest.pulls.listCommits, {
               owner,
@@ -61,6 +65,15 @@ jobs:
                 })
               }
 
+              if (!hasLabel) {
+                await github.rest.issues.addLabels({
+                  owner,
+                  repo,
+                  issue_number: pullNumber,
+                  labels: [label],
+                })
+              }
+
               return
             }
 
@@ -71,5 +84,14 @@ jobs:
                 owner,
                 repo,
                 comment_id: comment.id,
+              })
+            }
+
+            if (hasLabel) {
+              await github.rest.issues.removeLabel({
+                owner,
+                repo,
+                issue_number: pullNumber,
+                name: label,
               })
             }
