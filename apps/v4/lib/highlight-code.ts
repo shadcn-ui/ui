@@ -48,7 +48,7 @@ export const transformers = [
         } else if (raw.startsWith("npm run")) {
           // npm run.
           node.properties["__npm__"] = raw
-          node.properties["__yarn__"] = raw.replace("npm run", "yarn")
+          node.properties["__yarn__"] = raw.replace("npm run", "yarn dlx")
           node.properties["__pnpm__"] = raw.replace("npm run", "pnpm")
           node.properties["__bun__"] = raw.replace("npm run", "bun")
         }
