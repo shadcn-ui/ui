@@ -657,9 +657,10 @@ describe("MessageScroller", () => {
     expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
 
     // A manual scroll during the anchored (pre-handoff) phase releases the
-    // anchor and strands the reserved tail spacer. The reader is still inside
-    // the spacer zone, so scrollable.end reads false and the re-arm branch
-    // would otherwise flip them back into following on their own gesture.
+    // anchor and strands the reserved tail spacer. The reader scrolls up out of
+    // the spacer zone entirely, so the reply growing below must NOT yank them
+    // back to the live edge - the spacer is left untouched until they reach the
+    // real bottom.
     await act(async () => {
       rendered
         .viewport()
@@ -669,9 +670,8 @@ describe("MessageScroller", () => {
       await flushAnimationFrames()
     })
 
-    // The reply keeps streaming below the released anchor. Instead of freezing
-    // the spacer (dead space) or collapsing it in one frame (yank), the resize
-    // drains it toward zero as the reply fills the reserved room.
+    // The reply keeps streaming below the released anchor. The reader is above
+    // the spacer zone, so the drain must not move them or collapse the spacer.
     await rendered.rerender(
       [
         { id: "message-1", height: 80 },
@@ -684,15 +684,24 @@ describe("MessageScroller", () => {
     )
     await triggerResize(rendered.content())
 
-    // The reply filled the reserved room: the spacer drained to zero and
-    // autoScroll re-engaged following at the live edge (268 - 100 = 168). The
-    // reader was not yanked mid-stream - the spacer shrank to absorb the new
-    // content instead of collapsing in a single frame.
-    expect(rendered.viewport().scrollTop).toBe(168)
+    expect(rendered.viewport().scrollTop).toBe(150)
 
     const spacer = rendered
       .content()
       .querySelector<HTMLElement>("[data-message-scroller-spacer]")
+    expect(spacer?.hidden).toBe(false)
+
+    // Scrolling to the real bottom - contentBottom plus the remaining spacer -
+    // drains the dead space and re-engages following at the live edge (268 -
+    // 100 = 168). The reader was not yanked mid-stream - the spacer shrank to
+    // absorb the new content instead of collapsing in a single frame.
+    await act(async () => {
+      rendered.viewport().scrollTop = rendered.viewport().scrollHeight
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(168)
     expect(spacer?.hidden).toBe(true)
 
     // Follow-output stays engaged for the rest of the stream.
