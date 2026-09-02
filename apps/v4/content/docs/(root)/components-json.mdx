@@ -149,6 +149,25 @@ You can back these aliases with either:
 
 The aliases in `components.json` are still required when using the CLI. They tell the CLI which import roots map to `components`, `ui`, `lib`, `hooks`, and `utils`.
 
+### How aliases are used
+
+The CLI uses these aliases in two ways:
+
+1. **Install location** — where files are written when you run `shadcn add`
+2. **Import rewriting** — registry templates ship with `@/…` imports; the CLI rewrites them to match your aliases
+
+| Alias | Default | Used for | Registry types |
+| --- | --- | --- | --- |
+| `ui` | `@/components/ui` | Primitives such as `button`, `dialog`, and `input` | `registry:ui` |
+| `components` | `@/components` | Blocks and composite components (for example `dashboard-01`) | `registry:block`, `registry:component` |
+| `lib` | `@/lib` | Shared library files installed by the CLI | `registry:lib` |
+| `hooks` | `@/hooks` | React hooks installed by the CLI | `registry:hook` |
+| `utils` | `@/lib/utils` | The `cn()` helper import path | import rewriting only |
+
+Running `shadcn add button` writes files under `aliases.ui`, not `aliases.components`. That is why `add --all` populates `@/lib`, `@/hooks`, and `@/ui`, but you may not see new top-level folders for `components` or `utils` until you install a block or customize those paths.
+
+`aliases.utils` does not need to be a separate directory from `lib`. It is the import specifier the CLI uses for `cn()` (by default `@/lib/utils`). You can point it elsewhere if you keep the `cn` helper at a different path.
+
 <Callout className="mt-6">
   **Important:** If you're using package imports, enable
   `resolvePackageJsonImports` and use `moduleResolution: "bundler"` in your
@@ -227,7 +246,9 @@ For framework-specific setup, see the [package imports guide](/docs/package-impo
 
 ### aliases.utils
 
-Import alias for your utility functions.
+Import alias for the `cn()` utility.
+
+The CLI rewrites registry imports of `@/lib/utils` to this value. It does not install a separate `utils` folder unless a registry item targets that path.
 
 ```json title="components.json"
 {
@@ -239,7 +260,9 @@ Import alias for your utility functions.
 
 ### aliases.components
 
-Import alias for your components.
+Import alias for blocks and composite components.
+
+The CLI installs `registry:block` and `registry:component` items under this path. UI primitives use `aliases.ui` instead.
 
 ```json title="components.json"
 {
@@ -251,9 +274,9 @@ Import alias for your components.
 
 ### aliases.ui
 
-Import alias for `ui` components.
+Import alias for UI primitives.
 
-The CLI will use the `aliases.ui` value to determine where to place your `ui` components. Use this config if you want to customize the installation directory for your `ui` components.
+The CLI installs `registry:ui` items here. This is the directory used by `shadcn add button`, `shadcn add dialog`, and other primitives from the [components](/docs/components) catalog.
 
 ```json title="components.json"
 {
