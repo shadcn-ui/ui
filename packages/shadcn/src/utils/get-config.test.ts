@@ -467,6 +467,23 @@ describe("getConfig", () => {
       },
     })
   })
+
+  it("get config from vite project with tsconfig.app.json fallback", async () => {
+    const cwd = getFixturesDir("vite-with-tsconfig-app")
+    const config = await getConfig(cwd)
+
+    expect(config).not.toBeNull()
+    expect(config!.resolvedPaths).toEqual({
+      cwd,
+      tailwindConfig: path.resolve(cwd, "tailwind.config.ts"),
+      tailwindCss: path.resolve(cwd, "src/globals.css"),
+      components: path.resolve(cwd, "src/components"),
+      ui: path.resolve(cwd, "src/components/ui"),
+      lib: path.resolve(cwd, "src/lib"),
+      hooks: path.resolve(cwd, "src/hooks"),
+      utils: path.resolve(cwd, "src/lib/utils"),
+    })
+  })
 })
 
 describe("getWorkspaceConfig", () => {
