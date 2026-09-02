@@ -70,6 +70,14 @@ git checkout -b my-new-branch
 pnpm install
 ```
 
+### Set up environment variables
+
+Create a local environment file from the `.env.example` by executing the command below or manually rename `apps/v4/.env.example` to `.env`:
+
+```bash
+cp apps/v4/.env.example apps/v4/.env
+```
+
 ### Run a workspace
 
 You can use the `pnpm --filter=[WORKSPACE]` command to start the development process for a workspace.
