@@ -360,10 +360,7 @@ const BarVisualizerComponent = React.forwardRef<
       }
     }, [demo, state, barCount])
 
-    const volumeBands = useMemo(
-      () => (demo ? fakeVolumeBands : realVolumeBands),
-      [demo, fakeVolumeBands, realVolumeBands]
-    )
+    const volumeBands = demo ? fakeVolumeBands : realVolumeBands
 
     const highlightedIndices = useBarAnimator(
       state,
