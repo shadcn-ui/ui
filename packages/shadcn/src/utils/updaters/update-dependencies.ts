@@ -1,3 +1,4 @@
+import path from "path"
 import { SHADCN_URL } from "@/src/registry/constants"
 import { RegistryItem } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
@@ -6,6 +7,7 @@ import { getPackageManager } from "@/src/utils/get-package-manager"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
+import fsExtra from "fs-extra"
 import prompts from "prompts"
 
 export async function updateDependencies(
@@ -84,6 +86,64 @@ export async function updateDependencies(
   )
 
   dependenciesSpinner?.succeed()
+}
+
+export async function installDependencies(
+  cwd: string,
+  dependencies: string[],
+  devDependencies: string[] = []
+) {
+  const packageInfo = getPackageInfo(cwd, false)
+  dependencies = normalizeDependencyRequests(dependencies, packageInfo)
+  devDependencies = normalizeDependencyRequests(devDependencies, packageInfo)
+
+  if (!dependencies.length && !devDependencies.length) {
+    return
+  }
+
+  await installWithPackageManager(
+    await getPackageManager(cwd),
+    dependencies,
+    devDependencies,
+    cwd
+  )
+}
+
+export async function removeDependencies(cwd: string, dependencies: string[]) {
+  assertSafeDependencies(dependencies)
+  const packageInfo = getPackageInfo(cwd, false)
+  dependencies = dependencies.filter((dependency) =>
+    hasDeclaredDependency(packageInfo, dependency)
+  )
+
+  if (!dependencies.length) {
+    return
+  }
+
+  const packageManager = await getPackageManager(cwd)
+  if (packageManager === "npm") {
+    await execa("npm", ["uninstall", "--", ...dependencies], { cwd })
+    return
+  }
+
+  if (packageManager === "deno") {
+    const packageJsonPath = path.resolve(cwd, "package.json")
+    const packageJson = await fsExtra.readJson(packageJsonPath)
+    for (const field of [
+      "dependencies",
+      "devDependencies",
+      "optionalDependencies",
+      "peerDependencies",
+    ]) {
+      for (const dependency of dependencies) {
+        delete packageJson[field]?.[dependency]
+      }
+    }
+    await fsExtra.writeJson(packageJsonPath, packageJson, { spaces: 2 })
+    return
+  }
+
+  await execa(packageManager, ["remove", "--", ...dependencies], { cwd })
 }
 
 /**
@@ -166,6 +226,18 @@ function parsePackageRequest(dependency: string) {
     name: match[1],
     hasSpecifier: Boolean(match[2]),
   }
+}
+
+function hasDeclaredDependency(
+  packageInfo: ReturnType<typeof getPackageInfo>,
+  dependency: string
+) {
+  return Boolean(
+    packageInfo?.dependencies?.[dependency] ??
+      packageInfo?.devDependencies?.[dependency] ??
+      packageInfo?.optionalDependencies?.[dependency] ??
+      packageInfo?.peerDependencies?.[dependency]
+  )
 }
 
 function shouldPromptForNpmFlag(config: Config) {

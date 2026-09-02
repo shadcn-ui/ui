@@ -1,5 +1,17 @@
 # shadcn
 
+## 4.20.0
+
+### Minor Changes
+
+- [#11728](https://github.com/shadcn-ui/ui/pull/11728) [`51f3e12203b0026ea106cafb4f770bda9abead87`](https://github.com/shadcn-ui/ui/commit/51f3e12203b0026ea106cafb4f770bda9abead87) Thanks [@shadcn](https://github.com/shadcn)! - add `npx shadcn migrate cn` to replace `clsx`, `tailwind-merge` and `cnfast` in Tailwind CSS v4 projects.
+
+## 4.19.1
+
+### Patch Changes
+
+- [#11713](https://github.com/shadcn-ui/ui/pull/11713) [`f9ea1e600ea5dd7b1b79769b7b25cafa400cee6f`](https://github.com/shadcn-ui/ui/commit/f9ea1e600ea5dd7b1b79769b7b25cafa400cee6f) Thanks [@shadcn](https://github.com/shadcn)! - Add the official shadcn/ui website to the package metadata.
+
 ## 4.19.0
 
 ### Minor Changes
