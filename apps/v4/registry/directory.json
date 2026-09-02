@@ -1101,6 +1101,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'><path fill='var(--foreground)' d='M13.5 6.745L0 20.25v9h9l13.5-13.505v-9zm9 9v13.5H36c0-7.456-6.044-13.5-13.5-13.5z'/></svg>"
   },
   {
+    "name": "@ns-ui",
+    "homepage": "https://design.helpmarq.com",
+    "url": "https://design.helpmarq.com/r/{name}.json",
+    "description": "389 animated React components for Tailwind v4 and React 19, with a CLI and an MCP server.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='var(--background)'/><circle cx='16' cy='16' r='5' fill='none' stroke='var(--foreground)' stroke-width='2'/></svg>"
+  },
+  {
     "name": "@nteract",
     "homepage": "https://nteract-elements.vercel.app/",
     "url": "https://nteract-elements.vercel.app/r/{name}.json",
