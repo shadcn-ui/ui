@@ -313,10 +313,10 @@ async function handleCallTool(request: {
             {
               type: "text",
               text:
-                formatSearchResultsWithPagination(results, {
+                (await formatSearchResultsWithPagination(results, {
                   query: args.query,
                   registries,
-                }) + skippedNote,
+                })) + skippedNote,
             },
           ],
         }
@@ -389,9 +389,9 @@ async function handleCallTool(request: {
             {
               type: "text",
               text:
-                formatSearchResultsWithPagination(results, {
+                (await formatSearchResultsWithPagination(results, {
                   registries,
-                }) + skippedNote,
+                })) + skippedNote,
             },
           ],
         }
