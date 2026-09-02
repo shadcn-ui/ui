@@ -1,5 +1,11 @@
 # shadcn
 
+## 4.20.1
+
+### Patch Changes
+
+- [#11742](https://github.com/shadcn-ui/ui/pull/11742) [`04bb134c52af23af7d77673618ef4e3862b7c310`](https://github.com/shadcn-ui/ui/commit/04bb134c52af23af7d77673618ef4e3862b7c310) Thanks [@shadcn](https://github.com/shadcn)! - preserve leading comments when running `shadcn migrate cn`.
+
 ## 4.20.0
 
 ### Minor Changes
