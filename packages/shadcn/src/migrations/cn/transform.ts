@@ -75,6 +75,10 @@ function transformScriptSource(
       overwrite: true,
     }
   )
+  const leadingTrivia = content.slice(0, sourceFile.getStart())
+  if (leadingTrivia) {
+    sourceFile.replaceText([0, leadingTrivia.length], "")
+  }
   const pendingImports: PendingImport[] = []
   const unsupported: CnMigrationIssue[] = []
   const migratedPackages = new Set<OldPackage>()
@@ -116,11 +120,12 @@ function transformScriptSource(
     externalContent
   )
 
+  const transformed = `${leadingTrivia}${sourceFile.getFullText()}`
   const result = {
-    content: sourceFile.getText(),
+    content: transformed,
     changes,
     migratedPackages: Array.from(migratedPackages),
-    remainingPackages: getRemainingPackages(sourceFile.getText()),
+    remainingPackages: getRemainingPackages(transformed),
     unsupported: dedupeIssues(unsupported),
   }
   project.removeSourceFile(sourceFile)
