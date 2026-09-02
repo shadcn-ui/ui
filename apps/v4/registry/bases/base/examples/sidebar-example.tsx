@@ -179,7 +179,7 @@ export default function SidebarExample() {
                   render={
                     <SidebarMenuButton
                       size="lg"
-                      className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
+                      className="aria-expanded:bg-sidebar-accent aria-expanded:text-sidebar-accent-foreground"
                     />
                   }
                 >
