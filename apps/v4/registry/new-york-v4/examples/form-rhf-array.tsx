@@ -79,8 +79,8 @@ export default function FormRhfArray() {
         <CardTitle>Contact Emails</CardTitle>
         <CardDescription>Manage your contact email addresses.</CardDescription>
       </CardHeader>
-      <CardContent>
-        <form id="form-rhf-array" onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        <CardContent>
           <FieldSet className="gap-4">
             <FieldLegend variant="label">Email Addresses</FieldLegend>
             <FieldDescription>
@@ -143,18 +143,18 @@ export default function FormRhfArray() {
               <FieldError errors={[form.formState.errors.emails.root]} />
             )}
           </FieldSet>
-        </form>
-      </CardContent>
-      <CardFooter className="border-t">
-        <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
-            Reset
-          </Button>
-          <Button type="submit" form="form-rhf-array">
-            Save
-          </Button>
-        </Field>
-      </CardFooter>
+        </CardContent>
+        <CardFooter className="border-t">
+          <Field orientation="horizontal">
+            <Button type="button" variant="outline" onClick={() => form.reset()}>
+              Reset
+            </Button>
+            <Button type="submit">
+              Save
+            </Button>
+          </Field>
+        </CardFooter>
+      </form>
     </Card>
   )
 }

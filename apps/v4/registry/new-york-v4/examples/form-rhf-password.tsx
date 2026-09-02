@@ -131,8 +131,8 @@ export default function FormRhfPassword() {
           Choose a strong password to secure your account.
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form id="form-rhf-password" onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        <CardContent>
           <FieldGroup>
             <Controller
               name="password"
@@ -207,18 +207,18 @@ export default function FormRhfPassword() {
               )}
             />
           </FieldGroup>
-        </form>
-      </CardContent>
-      <CardFooter className="border-t">
-        <Field>
-          <Button type="submit" form="form-rhf-password">
-            Create Password
-          </Button>
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
-            Reset
-          </Button>
-        </Field>
-      </CardFooter>
+        </CardContent>
+        <CardFooter className="border-t">
+          <Field>
+            <Button type="submit">
+              Create Password
+            </Button>
+            <Button type="button" variant="outline" onClick={() => form.reset()}>
+              Reset
+            </Button>
+          </Field>
+        </CardFooter>
+      </form>
     </Card>
   )
 }
