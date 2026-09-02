@@ -4,6 +4,8 @@ import { registryNamespaceSchema } from "../registry-directory"
 
 export const REGISTRY_HEALTH_SCHEMA_VERSION = 1 as const
 export const REGISTRY_HEALTH_SCORE_VERSION = 1 as const
+export const REGISTRY_DRY_RUN_VERSION = 1 as const
+export const REGISTRY_DRY_RUN_FAILURE_MESSAGE_MAX_LENGTH = 1000
 
 export const registryHealthStatusSchema = z.enum([
   "healthy",
@@ -109,6 +111,10 @@ export const registryDryRunObservationSchema = z
     item: z.string(),
     success: z.boolean(),
     failureCode: z.string().optional(),
+    failureMessage: z
+      .string()
+      .max(REGISTRY_DRY_RUN_FAILURE_MESSAGE_MAX_LENGTH)
+      .optional(),
     durationMs: z.number().int().nonnegative(),
   })
   .strict()
@@ -227,6 +233,7 @@ export const registryMonitorStateSchema = z
   .object({
     schemaVersion: z.literal(REGISTRY_HEALTH_SCHEMA_VERSION),
     scoreVersion: z.literal(REGISTRY_HEALTH_SCORE_VERSION),
+    dryRunVersion: z.number().int().nonnegative().optional(),
     updatedAt: z.string().datetime(),
     lastDailyRunAt: z.string().datetime().optional(),
     lastWeeklyRunAt: z.string().datetime().optional(),
