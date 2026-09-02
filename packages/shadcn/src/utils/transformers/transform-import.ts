@@ -104,7 +104,8 @@ function updateImportAliases(
       return moduleSpecifier.replace(/^@\/lib/, config.aliases.lib)
     }
 
-    const alias = config.aliases.components.split("/")[0]
+    const alias =
+      getWorkspaceAlias(config) ?? config.aliases.components.split("/")[0]
     return moduleSpecifier.replace(/^@\//, `${alias}/`)
   }
 
@@ -153,6 +154,19 @@ function updateImportAliases(
     /^@\/registry\/[^/]+/,
     config.aliases.components
   )
+}
+
+// The root of the workspace package the aliases point at, e.g. `@workspace/ui`
+// for `utils: "@workspace/ui/lib/utils"`. Returns `null` when the config does
+// not describe one so callers can keep their existing fallback.
+function getWorkspaceAlias(config: Config) {
+  const utilsAlias = config.aliases?.utils
+
+  if (typeof utilsAlias !== "string") {
+    return null
+  }
+
+  return getWorkspaceAliasFromUtilsAlias(utilsAlias) || null
 }
 
 function getWorkspaceAliasFromUtilsAlias(utilsAlias: string) {
