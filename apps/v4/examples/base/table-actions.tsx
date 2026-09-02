@@ -33,13 +33,11 @@ export function TableActions() {
           <TableCell>$29.99</TableCell>
           <TableCell className="text-right">
             <DropdownMenu>
-              <DropdownMenuTrigger
-                render={
-                  <Button variant="ghost" size="icon" className="size-8" />
-                }
-              >
-                <MoreHorizontalIcon />
-                <span className="sr-only">Open menu</span>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="size-8">
+                  <MoreHorizontalIcon />
+                  <span className="sr-only">Open menu</span>
+                </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem>Edit</DropdownMenuItem>
@@ -57,13 +55,11 @@ export function TableActions() {
           <TableCell>$129.99</TableCell>
           <TableCell className="text-right">
             <DropdownMenu>
-              <DropdownMenuTrigger
-                render={
-                  <Button variant="ghost" size="icon" className="size-8" />
-                }
-              >
-                <MoreHorizontalIcon />
-                <span className="sr-only">Open menu</span>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="size-8">
+                  <MoreHorizontalIcon />
+                  <span className="sr-only">Open menu</span>
+                </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem>Edit</DropdownMenuItem>
@@ -81,13 +77,11 @@ export function TableActions() {
           <TableCell>$49.99</TableCell>
           <TableCell className="text-right">
             <DropdownMenu>
-              <DropdownMenuTrigger
-                render={
-                  <Button variant="ghost" size="icon" className="size-8" />
-                }
-              >
-                <MoreHorizontalIcon />
-                <span className="sr-only">Open menu</span>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="size-8">
+                  <MoreHorizontalIcon />
+                  <span className="sr-only">Open menu</span>
+                </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem>Edit</DropdownMenuItem>
