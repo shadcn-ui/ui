@@ -1,7 +1,9 @@
 import * as React from "react"
+import { mergeProps } from "@base-ui/react/merge-props"
+import { useRender } from "@base-ui/react/use-render"
 
 import { cn } from "@/registry/bases/base/lib/utils"
-import { Button } from "@/registry/bases/base/ui/button"
+import { buttonVariants, type Button } from "@/registry/bases/base/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
@@ -39,30 +41,37 @@ function PaginationItem({ ...props }: React.ComponentProps<"li">) {
 type PaginationLinkProps = {
   isActive?: boolean
 } & Pick<React.ComponentProps<typeof Button>, "size"> &
-  React.ComponentProps<"a">
+  useRender.ComponentProps<"a">
 
 function PaginationLink({
   className,
   isActive,
   size = "icon",
+  render,
   ...props
 }: PaginationLinkProps) {
-  return (
-    <Button
-      variant={isActive ? "outline" : "ghost"}
-      size={size}
-      className={cn("cn-pagination-link", className)}
-      nativeButton={false}
-      render={
-        <a
-          aria-current={isActive ? "page" : undefined}
-          data-slot="pagination-link"
-          data-active={isActive}
-          {...props}
-        />
-      }
-    />
-  )
+  return useRender({
+    defaultTagName: "a",
+    render,
+    props: mergeProps<"a">(
+      {
+        "aria-current": isActive ? "page" : undefined,
+        "data-active": isActive,
+        className: cn(
+          "cn-pagination-link",
+          buttonVariants({
+            variant: isActive ? "outline" : "ghost",
+            size,
+          }),
+          className
+        ),
+      } as React.ComponentProps<"a">,
+      props
+    ),
+    state: {
+      slot: "pagination-link",
+    },
+  })
 }
 
 function PaginationPrevious({

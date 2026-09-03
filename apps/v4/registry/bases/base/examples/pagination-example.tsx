@@ -1,5 +1,7 @@
 "use client"
 
+import Link from "next/link"
+
 import {
   Example,
   ExampleWrapper,
@@ -42,7 +44,7 @@ function PaginationBasic() {
             <PaginationPrevious href="#" />
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href="#">1</PaginationLink>
+            <PaginationLink render={<Link href="?page=1" />}>1</PaginationLink>
           </PaginationItem>
           <PaginationItem>
             <PaginationLink href="#" isActive>

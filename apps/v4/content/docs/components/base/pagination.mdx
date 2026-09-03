@@ -109,7 +109,7 @@ A simple pagination with only page numbers.
 
 ## Icons Only
 
-Use just the previous and next buttons without page numbers. This is useful for data tables with a rows per page selector.
+Use just the previous and next links without page numbers. This is useful for data tables with a rows per page selector.
 
 <ComponentPreview styleName="base-nova" name="pagination-icons-only" />
 
@@ -117,31 +117,13 @@ Use just the previous and next buttons without page numbers. This is useful for 
 
 By default the `<PaginationLink />` component will render an `<a />` tag.
 
-To use the Next.js `<Link />` component, make the following updates to `pagination.tsx`.
+Use the `render` prop to compose it with the Next.js `<Link />` component.
 
-```diff showLineNumbers /typeof Link/ {1}
-+ import Link from "next/link"
+```tsx showLineNumbers
+import Link from "next/link"
 
-- type PaginationLinkProps = ... & React.ComponentProps<"a">
-+ type PaginationLinkProps = ... & React.ComponentProps<typeof Link>
-
-const PaginationLink = ({...props }: ) => (
-  <PaginationItem>
--   <a>
-+   <Link>
-      // ...
--   </a>
-+   </Link>
-  </PaginationItem>
-)
-
+;<PaginationLink render={<Link href="/page/2" />}>2</PaginationLink>
 ```
-
-<Callout className="mt-6">
-
-**Note:** We are making updates to the cli to automatically do this for you.
-
-</Callout>
 
 ## RTL
 
