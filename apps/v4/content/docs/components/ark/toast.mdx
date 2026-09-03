@@ -1,0 +1,183 @@
+---
+title: Toast
+description: A succinct message that is displayed temporarily.
+base: ark
+component: true
+links:
+  doc: https://ark-ui.com/docs/components/toast
+  api: https://ark-ui.com/docs/components/toast#api-reference
+---
+
+<ComponentPreview styleName="ark-nova" name="toast-demo" />
+
+## About
+
+The Toast component is built on top of the [Ark UI Toast](https://ark-ui.com/docs/components/toast) primitive.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Run the following command:</Step>
+
+```bash
+npx shadcn@latest add toast
+```
+
+<Step>Add the Toaster component</Step>
+
+```tsx title="app/layout.tsx" {1,9} showLineNumbers
+import { Toaster } from "@/components/ui/toast"
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head />
+      <body>
+        <main>{children}</main>
+        <Toaster />
+      </body>
+    </html>
+  )
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="toast"
+  title="components/ui/toast.tsx"
+  styleName="ark-nova"
+/>
+
+<Step>Add the Toaster component</Step>
+
+```tsx showLineNumbers title="app/layout.tsx" {1,8}
+import { Toaster } from "@/components/ui/toast"
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head />
+      <body>
+        <Toaster />
+        <main>{children}</main>
+      </body>
+    </html>
+  )
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { toast } from "@/components/ui/toast"
+```
+
+```tsx
+toast.create({ title: "Event has been created." })
+```
+
+Ark UI drives toasts from a toaster store rather than from JSX. `createToaster`
+sets up the store and the `Toaster` component renders whatever the store holds,
+calling your render function once per toast:
+
+```tsx showLineNumbers
+const toaster = createToaster({
+  placement: "bottom-end",
+  overlap: true,
+  gap: 16,
+})
+```
+
+`toast.create(options)` queues one, and `toast.success`, `toast.error`,
+`toast.info`, `toast.warning` and `toast.loading` are shorthands that set
+`type`. The store also exposes `toast.update`, `toast.dismiss`, `toast.remove`
+and `toast.promise`.
+
+<Callout>
+
+`Toast.Title`, `Toast.Description` and `Toast.ActionTrigger` are unstyled
+elements — unlike some other libraries they do not read from the toast for you,
+so the render function has to pass `toast.title`, `toast.description` and
+`toast.action.label` through as children. Rendering them self-closing gives you
+an empty toast.
+
+</Callout>
+
+## Examples
+
+### Types
+
+<ComponentPreview styleName="ark-nova" name="toast-types" />
+
+### Description
+
+<ComponentPreview styleName="ark-nova" name="toast-description" />
+
+### Position
+
+Use the `placement` prop on `createToaster` to change the position of the toast.
+
+<ComponentPreview styleName="ark-nova" name="toast-position" />
+
+## API Reference
+
+### createToaster
+
+| Option            | Type                                                                              | Default    | Description                                                      |
+| ----------------- | --------------------------------------------------------------------------------- | ---------- | ---------------------------------------------------------------- |
+| `placement`       | `"top-start" \| "top" \| "top-end" \| "bottom-start" \| "bottom" \| "bottom-end"` | `"bottom"` | Corner the toasts stack in.                                      |
+| `max`             | `number`                                                                          | —          | Maximum visible toasts. Extras queue.                            |
+| `overlap`         | `boolean`                                                                         | —          | Stack the toasts on top of each other instead of listing them.   |
+| `gap`             | `number`                                                                          | —          | Space between toasts, in pixels.                                 |
+| `duration`        | `number`                                                                          | —          | Default lifetime for every toast.                                |
+| `removeDelay`     | `number`                                                                          | —          | Delay before a dismissed toast unmounts, for the exit animation. |
+| `offsets`         | `string \| { top, right, bottom, left }`                                          | —          | Distance from the viewport edges.                                |
+| `hotkey`          | `string[]`                                                                        | —          | Keys that focus the toast region.                                |
+| `pauseOnPageIdle` | `boolean`                                                                         | —          | Pause timers while the page is idle.                             |
+
+### toast.create
+
+| Option           | Type                                                                      | Description                                             |
+| ---------------- | ------------------------------------------------------------------------- | ------------------------------------------------------- |
+| `title`          | `ReactNode`                                                               | Rendered by your render function through `Toast.Title`. |
+| `description`    | `ReactNode`                                                               | Rendered through `Toast.Description`.                   |
+| `type`           | `"success" \| "error" \| "loading" \| "info" \| "warning"`                | Drives the icon and colour in this component.           |
+| `duration`       | `number`                                                                  | Overrides the toaster default for this toast.           |
+| `removeDelay`    | `number`                                                                  | Overrides the unmount delay for this toast.             |
+| `id`             | `string`                                                                  | Provide one to `toast.update` it later.                 |
+| `action`         | `{ label: string; onClick: () => void }`                                  | Rendered through `Toast.ActionTrigger`.                 |
+| `closable`       | `boolean`                                                                 | Whether the toast can be dismissed.                     |
+| `onStatusChange` | `(details: { status: "visible" \| "dismissing" \| "unmounted" }) => void` | Fires as the toast moves through its lifecycle.         |
+| `meta`           | `Record<string, any>`                                                     | Arbitrary data available in the render function.        |
+
+See the [Ark UI Toast documentation](https://ark-ui.com/docs/components/toast#api-reference) for the complete reference.

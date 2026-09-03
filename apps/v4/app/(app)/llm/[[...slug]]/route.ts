@@ -9,18 +9,17 @@ export const revalidate = false
 export const dynamic = "force-static"
 export const dynamicParams = true
 
+const DEFAULT_STYLE_BY_BASE: Record<string, string> = {
+  base: "base-nova",
+  ark: "ark-nova",
+  aria: "aria-nova",
+  radix: "new-york-v4", // radix's default style is new-york, not radix-nova
+}
+
+// Map /docs/components/<base> to its default style.
 function getStyleFromSlug(slug: string[] | undefined, fallbackStyle: string) {
-  // Detect base from URL: /docs/components/base, /radix, or /aria.
-  if (slug && slug[0] === "components" && slug[1]) {
-    if (slug[1] === "base") {
-      return "base-nova"
-    }
-    if (slug[1] === "aria") {
-      return "aria-nova"
-    }
-    if (slug[1] === "radix") {
-      return "new-york-v4"
-    }
+  if (slug?.[0] === "components" && slug[1]) {
+    return DEFAULT_STYLE_BY_BASE[slug[1]] ?? fallbackStyle
   }
   return fallbackStyle
 }
