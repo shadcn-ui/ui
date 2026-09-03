@@ -21,7 +21,7 @@ function Checkbox({
     >
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
-        className="cn-checkbox-indicator grid place-content-center text-current transition-none"
+        className="cn-checkbox-indicator grid place-content-center text-current transition-none print:text-foreground"
       >
         <IconPlaceholder
           lucide="CheckIcon"
