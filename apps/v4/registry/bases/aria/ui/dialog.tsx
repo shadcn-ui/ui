@@ -98,6 +98,7 @@ function Dialog({
                 hugeicons="Cancel01Icon"
                 phosphor="XIcon"
                 remixicon="RiCloseLine"
+                fontawesome="faXmark"
               />
               <span className="sr-only">Close</span>
             </DialogClose>

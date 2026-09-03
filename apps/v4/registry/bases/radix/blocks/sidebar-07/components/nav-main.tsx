@@ -53,6 +53,7 @@ export function NavMain({
                     hugeicons="ArrowRight01Icon"
                     phosphor="CaretRightIcon"
                     remixicon="RiArrowRightSLine"
+                    fontawesome="faChevronRight"
                     className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90"
                   />
                 </SidebarMenuButton>

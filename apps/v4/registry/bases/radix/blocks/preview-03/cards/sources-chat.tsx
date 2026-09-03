@@ -109,6 +109,7 @@ export function SourcesChat() {
                 hugeicons="PlusSignIcon"
                 phosphor="PlusIcon"
                 remixicon="RiAddLine"
+                fontawesome="faPlus"
               />
             </Button>
           </CardAction>

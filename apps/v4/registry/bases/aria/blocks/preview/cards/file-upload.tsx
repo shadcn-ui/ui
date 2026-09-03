@@ -35,6 +35,7 @@ export function FileUpload() {
                 hugeicons="CloudUploadIcon"
                 phosphor="CloudArrowUpIcon"
                 remixicon="RiUploadCloudLine"
+                fontawesome="faCloudArrowUp"
               />
             </EmptyMedia>
             <EmptyTitle>Upload files</EmptyTitle>

@@ -5,7 +5,8 @@
     "tabler": "IconAlertCircle",
     "hugeicons": "AlertCircleIcon",
     "phosphor": "WarningCircleIcon",
-    "remixicon": "RiErrorWarningLine"
+    "remixicon": "RiErrorWarningLine",
+    "fontawesome": "faCircleExclamation"
   },
   "ArrowLeft": {
     "lucide": "ArrowLeft",
@@ -13,7 +14,8 @@
     "tabler": "IconArrowLeft",
     "hugeicons": "ArrowLeft02Icon",
     "phosphor": "ArrowLeftIcon",
-    "remixicon": "RiArrowLeftLine"
+    "remixicon": "RiArrowLeftLine",
+    "fontawesome": "faArrowLeft"
   },
   "ArrowRight": {
     "lucide": "ArrowRight",
@@ -21,7 +23,8 @@
     "tabler": "IconArrowRight",
     "hugeicons": "ArrowRight01Icon",
     "phosphor": "ArrowRightIcon",
-    "remixicon": "RiArrowRightLine"
+    "remixicon": "RiArrowRightLine",
+    "fontawesome": "faArrowRight"
   },
   "ArrowUpDown": {
     "lucide": "ArrowUpDown",
@@ -37,7 +40,8 @@
     "tabler": "IconBold",
     "hugeicons": "TextBoldIcon",
     "phosphor": "TextBIcon",
-    "remixicon": "RiBold"
+    "remixicon": "RiBold",
+    "fontawesome": "faBold"
   },
   "Calculator": {
     "lucide": "Calculator",
@@ -45,7 +49,8 @@
     "tabler": "IconCalculator",
     "hugeicons": "CalculatorIcon",
     "phosphor": "CalculatorIcon",
-    "remixicon": "RiCalculatorLine"
+    "remixicon": "RiCalculatorLine",
+    "fontawesome": "faCalculator"
   },
   "Calendar": {
     "lucide": "Calendar",
@@ -53,7 +58,8 @@
     "tabler": "IconCalendar",
     "hugeicons": "Calendar03Icon",
     "phosphor": "CalendarIcon",
-    "remixicon": "RiCalendarLine"
+    "remixicon": "RiCalendarLine",
+    "fontawesome": "faCalendar"
   },
   "Check": {
     "lucide": "Check",
@@ -61,7 +67,8 @@
     "tabler": "IconCheck",
     "hugeicons": "Tick02Icon",
     "phosphor": "CheckIcon",
-    "remixicon": "RiCheckLine"
+    "remixicon": "RiCheckLine",
+    "fontawesome": "faCheck"
   },
   "ChevronDown": {
     "lucide": "ChevronDown",
@@ -69,7 +76,8 @@
     "tabler": "IconChevronDown",
     "hugeicons": "ArrowDown01Icon",
     "phosphor": "CaretDownIcon",
-    "remixicon": "RiArrowDownSLine"
+    "remixicon": "RiArrowDownSLine",
+    "fontawesome": "faChevronDown"
   },
   "ChevronLeft": {
     "lucide": "ChevronLeft",
@@ -77,7 +85,8 @@
     "tabler": "IconChevronLeft",
     "hugeicons": "ArrowLeft01Icon",
     "phosphor": "CaretLeftIcon",
-    "remixicon": "RiArrowLeftSLine"
+    "remixicon": "RiArrowLeftSLine",
+    "fontawesome": "faChevronLeft"
   },
   "ChevronRight": {
     "lucide": "ChevronRight",
@@ -85,7 +94,8 @@
     "tabler": "IconChevronRight",
     "hugeicons": "ArrowRight01Icon",
     "phosphor": "CaretRightIcon",
-    "remixicon": "RiArrowRightSLine"
+    "remixicon": "RiArrowRightSLine",
+    "fontawesome": "faChevronRight"
   },
   "ChevronUp": {
     "lucide": "ChevronUp",
@@ -93,7 +103,8 @@
     "tabler": "IconChevronUp",
     "hugeicons": "ArrowUp01Icon",
     "phosphor": "CaretUpIcon",
-    "remixicon": "RiArrowUpSLine"
+    "remixicon": "RiArrowUpSLine",
+    "fontawesome": "faChevronUp"
   },
   "ChevronsUpDown": {
     "lucide": "ChevronsUpDown",
@@ -101,7 +112,8 @@
     "tabler": "IconSelector",
     "hugeicons": "UnfoldMoreIcon",
     "phosphor": "CaretUpDownIcon",
-    "remixicon": "RiArrowUpDownLine"
+    "remixicon": "RiArrowUpDownLine",
+    "fontawesome": "faUpDown"
   },
   "Circle": {
     "lucide": "Circle",
@@ -113,7 +125,8 @@
     "tabler": "IconCopy",
     "hugeicons": "Copy01Icon",
     "phosphor": "CopyIcon",
-    "remixicon": "RiFileCopyLine"
+    "remixicon": "RiFileCopyLine",
+    "fontawesome": "faCopy"
   },
   "CreditCard": {
     "lucide": "CreditCard",
@@ -121,7 +134,8 @@
     "tabler": "IconCreditCard",
     "hugeicons": "CreditCardIcon",
     "phosphor": "CreditCardIcon",
-    "remixicon": "RiBankCardLine"
+    "remixicon": "RiBankCardLine",
+    "fontawesome": "faCreditCard"
   },
   "GripVertical": {
     "lucide": "GripVertical",
@@ -129,7 +143,8 @@
     "tabler": "IconGripVertical",
     "hugeicons": "DragDropVerticalIcon",
     "phosphor": "DotsSixVerticalIcon",
-    "remixicon": "RiDraggable"
+    "remixicon": "RiDraggable",
+    "fontawesome": "faGripVertical"
   },
   "Italic": {
     "lucide": "Italic",
@@ -137,7 +152,8 @@
     "tabler": "IconItalic",
     "hugeicons": "TextItalicIcon",
     "phosphor": "TextItalicIcon",
-    "remixicon": "RiItalic"
+    "remixicon": "RiItalic",
+    "fontawesome": "faItalic"
   },
   "Loader2": {
     "lucide": "Loader2",
@@ -145,7 +161,8 @@
     "tabler": "IconLoader",
     "hugeicons": "Loading03Icon",
     "phosphor": "SpinnerIcon",
-    "remixicon": "RiLoaderLine"
+    "remixicon": "RiLoaderLine",
+    "fontawesome": "faSpinner"
   },
   "Mail": {
     "lucide": "Mail",
@@ -153,7 +170,8 @@
     "tabler": "IconMail",
     "hugeicons": "Mail01Icon",
     "phosphor": "EnvelopeIcon",
-    "remixicon": "RiMailLine"
+    "remixicon": "RiMailLine",
+    "fontawesome": "faEnvelope"
   },
   "MailOpen": {
     "lucide": "MailOpen",
@@ -165,7 +183,8 @@
     "tabler": "IconMinus",
     "hugeicons": "MinusSignIcon",
     "phosphor": "MinusIcon",
-    "remixicon": "RiSubtractLine"
+    "remixicon": "RiSubtractLine",
+    "fontawesome": "faMinus"
   },
   "Moon": {
     "lucide": "Moon",
@@ -173,7 +192,8 @@
     "tabler": "IconMoon",
     "hugeicons": "MoonIcon",
     "phosphor": "MoonIcon",
-    "remixicon": "RiMoonLine"
+    "remixicon": "RiMoonLine",
+    "fontawesome": "faMoon"
   },
   "MoreHorizontal": {
     "lucide": "MoreHorizontal",
@@ -181,7 +201,8 @@
     "tabler": "IconDots",
     "hugeicons": "MoreHorizontalCircle01Icon",
     "phosphor": "DotsThreeOutlineIcon",
-    "remixicon": "RiMoreLine"
+    "remixicon": "RiMoreLine",
+    "fontawesome": "faEllipsis"
   },
   "PanelLeft": {
     "lucide": "PanelLeft",
@@ -189,7 +210,8 @@
     "tabler": "IconLayoutSidebar",
     "hugeicons": "SidebarLeftIcon",
     "phosphor": "SidebarIcon",
-    "remixicon": "RiLayoutLeftLine"
+    "remixicon": "RiLayoutLeftLine",
+    "fontawesome": "faTableColumns"
   },
   "Plus": {
     "lucide": "Plus",
@@ -197,7 +219,8 @@
     "tabler": "IconPlus",
     "hugeicons": "Add01Icon",
     "phosphor": "PlusIcon",
-    "remixicon": "RiAddLine"
+    "remixicon": "RiAddLine",
+    "fontawesome": "faPlus"
   },
   "Search": {
     "lucide": "Search",
@@ -205,7 +228,8 @@
     "tabler": "IconSearch",
     "hugeicons": "SearchIcon",
     "phosphor": "MagnifyingGlassIcon",
-    "remixicon": "RiSearchLine"
+    "remixicon": "RiSearchLine",
+    "fontawesome": "faMagnifyingGlass"
   },
   "Send": {
     "lucide": "Send",
@@ -213,7 +237,8 @@
     "tabler": "IconSend",
     "hugeicons": "SentIcon",
     "phosphor": "PaperPlaneTiltIcon",
-    "remixicon": "RiSendPlaneLine"
+    "remixicon": "RiSendPlaneLine",
+    "fontawesome": "faPaperPlane"
   },
   "Settings": {
     "lucide": "Settings",
@@ -221,7 +246,8 @@
     "tabler": "IconSettings",
     "hugeicons": "SettingsIcon",
     "phosphor": "GearIcon",
-    "remixicon": "RiSettingsLine"
+    "remixicon": "RiSettingsLine",
+    "fontawesome": "faGear"
   },
   "Slash": {
     "lucide": "Slash",
@@ -233,7 +259,8 @@
     "tabler": "IconMoodSmile",
     "hugeicons": "SmileIcon",
     "phosphor": "SmileyIcon",
-    "remixicon": "RiEmotionLine"
+    "remixicon": "RiEmotionLine",
+    "fontawesome": "faFaceSmile"
   },
   "Sun": {
     "lucide": "Sun",
@@ -241,7 +268,8 @@
     "tabler": "IconSun",
     "hugeicons": "Sun03Icon",
     "phosphor": "SunIcon",
-    "remixicon": "RiSunLine"
+    "remixicon": "RiSunLine",
+    "fontawesome": "faSun"
   },
   "Terminal": {
     "lucide": "Terminal",
@@ -249,7 +277,8 @@
     "tabler": "IconTerminal",
     "hugeicons": "ComputerTerminal01Icon",
     "phosphor": "TerminalIcon",
-    "remixicon": "RiTerminalBoxLine"
+    "remixicon": "RiTerminalBoxLine",
+    "fontawesome": "faTerminal"
   },
   "Underline": {
     "lucide": "Underline",
@@ -257,7 +286,8 @@
     "tabler": "IconUnderline",
     "hugeicons": "TextUnderlineIcon",
     "phosphor": "TextUnderlineIcon",
-    "remixicon": "RiUnderline"
+    "remixicon": "RiUnderline",
+    "fontawesome": "faUnderline"
   },
   "User": {
     "lucide": "User",
@@ -265,7 +295,8 @@
     "tabler": "IconUser",
     "hugeicons": "UserIcon",
     "phosphor": "UserIcon",
-    "remixicon": "RiUserLine"
+    "remixicon": "RiUserLine",
+    "fontawesome": "faUser"
   },
   "X": {
     "lucide": "X",
@@ -273,1084 +304,1239 @@
     "tabler": "IconX",
     "hugeicons": "Cancel01Icon",
     "phosphor": "XIcon",
-    "remixicon": "RiCloseLine"
+    "remixicon": "RiCloseLine",
+    "fontawesome": "faXmark"
   },
   "ActivityIcon": {
     "lucide": "ActivityIcon",
     "tabler": "IconActivity",
     "hugeicons": "ActivityIcon",
     "phosphor": "ActivityIcon",
-    "remixicon": "RiPulseLine"
+    "remixicon": "RiPulseLine",
+    "fontawesome": "faHeartPulse"
   },
   "AlertTriangleIcon": {
     "lucide": "AlertTriangleIcon",
     "tabler": "IconAlertTriangle",
     "hugeicons": "AlertCircleIcon",
     "phosphor": "WarningIcon",
-    "remixicon": "RiErrorWarningLine"
+    "remixicon": "RiErrorWarningLine",
+    "fontawesome": "faTriangleExclamation"
   },
   "AppWindowIcon": {
     "lucide": "AppWindowIcon",
     "tabler": "IconAppWindow",
     "hugeicons": "CursorInWindowIcon",
     "phosphor": "AppWindowIcon",
-    "remixicon": "RiWindowLine"
+    "remixicon": "RiWindowLine",
+    "fontawesome": "faWindowMaximize"
   },
   "ArchiveIcon": {
     "lucide": "ArchiveIcon",
     "tabler": "IconArchive",
     "hugeicons": "Archive02Icon",
     "phosphor": "ArchiveIcon",
-    "remixicon": "RiArchiveLine"
+    "remixicon": "RiArchiveLine",
+    "fontawesome": "faBoxArchive"
   },
   "ArchiveXIcon": {
     "lucide": "ArchiveXIcon",
     "tabler": "IconArchiveOff",
     "hugeicons": "ArchiveIcon",
     "phosphor": "ArchiveIcon",
-    "remixicon": "RiArchiveLine"
+    "remixicon": "RiArchiveLine",
+    "fontawesome": "faBoxArchive"
   },
   "ArrowDownIcon": {
     "lucide": "ArrowDownIcon",
     "tabler": "IconArrowDown",
     "hugeicons": "ArrowDownIcon",
     "phosphor": "ArrowDownIcon",
-    "remixicon": "RiArrowDownLine"
+    "remixicon": "RiArrowDownLine",
+    "fontawesome": "faArrowDown"
   },
   "ArrowLeftCircleIcon": {
     "lucide": "ArrowLeftCircleIcon",
     "tabler": "IconCircleArrowLeft",
     "hugeicons": "CircleArrowLeft02Icon",
     "phosphor": "ArrowCircleLeftIcon",
-    "remixicon": "RiArrowLeftCircleLine"
+    "remixicon": "RiArrowLeftCircleLine",
+    "fontawesome": "faCircleArrowLeft"
   },
   "ArrowLeftRightIcon": {
     "lucide": "ArrowLeftRightIcon",
     "tabler": "IconArrowsLeftRight",
     "hugeicons": "ArrowDataTransferHorizontalIcon",
     "phosphor": "ArrowsLeftRightIcon",
-    "remixicon": "RiArrowLeftRightLine"
+    "remixicon": "RiArrowLeftRightLine",
+    "fontawesome": "faRightLeft"
   },
   "ArrowUpIcon": {
     "lucide": "ArrowUpIcon",
     "tabler": "IconArrowUp",
     "hugeicons": "ArrowUpIcon",
     "phosphor": "ArrowUpIcon",
-    "remixicon": "RiArrowUpLine"
+    "remixicon": "RiArrowUpLine",
+    "fontawesome": "faArrowUp"
   },
   "ArrowUpRightIcon": {
     "lucide": "ArrowUpRightIcon",
     "tabler": "IconArrowUpRight",
     "hugeicons": "ArrowUpRightIcon",
     "phosphor": "ArrowUpRightIcon",
-    "remixicon": "RiArrowRightUpLine"
+    "remixicon": "RiArrowRightUpLine",
+    "fontawesome": "faArrowUpRightFromSquare"
   },
   "AudioLinesIcon": {
     "lucide": "AudioLinesIcon",
     "tabler": "IconPlayerRecordFilled",
     "hugeicons": "AudioWave01Icon",
     "phosphor": "RecordIcon",
-    "remixicon": "RiRecordCircleLine"
+    "remixicon": "RiRecordCircleLine",
+    "fontawesome": "faWaveSquare"
   },
   "BadgeCheck": {
     "lucide": "BadgeCheck",
     "tabler": "IconRosetteDiscountCheck",
     "hugeicons": "CheckmarkBadge02Icon",
     "phosphor": "CheckCircleIcon",
-    "remixicon": "RiCheckboxCircleLine"
+    "remixicon": "RiCheckboxCircleLine",
+    "fontawesome": "faCertificate"
   },
   "BadgeCheckIcon": {
     "lucide": "BadgeCheckIcon",
     "tabler": "IconRosetteDiscountCheck",
     "hugeicons": "CheckmarkBadgeIcon",
     "phosphor": "CheckCircleIcon",
-    "remixicon": "RiCheckboxCircleLine"
+    "remixicon": "RiCheckboxCircleLine",
+    "fontawesome": "faCertificate"
   },
   "BellIcon": {
     "lucide": "BellIcon",
     "tabler": "IconNotification",
     "hugeicons": "Notification03Icon",
     "phosphor": "BellIcon",
-    "remixicon": "RiNotification3Line"
+    "remixicon": "RiNotification3Line",
+    "fontawesome": "faBell"
   },
   "BlocksIcon": {
     "lucide": "BlocksIcon",
     "tabler": "IconCube",
     "hugeicons": "CubeIcon",
     "phosphor": "CubeIcon",
-    "remixicon": "RiBox3Line"
+    "remixicon": "RiBox3Line",
+    "fontawesome": "faCubesStacked"
   },
   "BluetoothIcon": {
     "lucide": "BluetoothIcon",
     "tabler": "IconBluetooth",
     "hugeicons": "BluetoothIcon",
     "phosphor": "BluetoothIcon",
-    "remixicon": "RiBluetoothLine"
+    "remixicon": "RiBluetoothLine",
+    "fontawesome": "faWifi"
   },
   "BookOpen": {
     "lucide": "BookOpen",
     "tabler": "IconBook",
     "hugeicons": "BookOpen02Icon",
     "phosphor": "BookOpenIcon",
-    "remixicon": "RiBookOpenLine"
+    "remixicon": "RiBookOpenLine",
+    "fontawesome": "faBookOpen"
   },
   "BookOpenIcon": {
     "lucide": "BookOpenIcon",
     "tabler": "IconBook",
     "hugeicons": "BookOpen02Icon",
     "phosphor": "BookOpenIcon",
-    "remixicon": "RiBookOpenLine"
+    "remixicon": "RiBookOpenLine",
+    "fontawesome": "faBookOpen"
   },
   "BookmarkIcon": {
     "lucide": "BookmarkIcon",
     "tabler": "IconBookmark",
     "hugeicons": "BookmarkIcon",
     "phosphor": "BookmarkIcon",
-    "remixicon": "RiBookmarkLine"
+    "remixicon": "RiBookmarkLine",
+    "fontawesome": "faBookmark"
   },
   "BotIcon": {
     "lucide": "BotIcon",
     "tabler": "IconRobot",
     "hugeicons": "RoboticIcon",
     "phosphor": "RobotIcon",
-    "remixicon": "RiRobotLine"
+    "remixicon": "RiRobotLine",
+    "fontawesome": "faRobot"
   },
   "BrainIcon": {
     "lucide": "BrainIcon",
     "tabler": "IconBrain",
     "hugeicons": "AiBrainIcon",
     "phosphor": "BrainIcon",
-    "remixicon": "RiBrainLine"
+    "remixicon": "RiBrainLine",
+    "fontawesome": "faBrain"
   },
   "Building2Icon": {
     "lucide": "Building2Icon",
     "tabler": "IconBuildingBank",
     "hugeicons": "BankIcon",
     "phosphor": "BankIcon",
-    "remixicon": "RiBankLine"
+    "remixicon": "RiBankLine",
+    "fontawesome": "faBuilding"
   },
   "CameraIcon": {
     "lucide": "CameraIcon",
     "tabler": "IconCamera",
     "hugeicons": "Camera01Icon",
     "phosphor": "CameraIcon",
-    "remixicon": "RiCameraLine"
+    "remixicon": "RiCameraLine",
+    "fontawesome": "faCamera"
   },
   "CaptionsIcon": {
     "lucide": "CaptionsIcon",
     "tabler": "IconTextCaption",
     "hugeicons": "TextCheckIcon",
     "phosphor": "TextTIcon",
-    "remixicon": "RiTextWrap"
+    "remixicon": "RiTextWrap",
+    "fontawesome": "faClosedCaptioning"
   },
   "CarIcon": {
     "lucide": "CarIcon",
     "tabler": "IconCar",
     "hugeicons": "Car01Icon",
     "phosphor": "CarIcon",
-    "remixicon": "RiCarLine"
+    "remixicon": "RiCarLine",
+    "fontawesome": "faCar"
   },
   "ChartBarIcon": {
     "lucide": "ChartBarIcon",
     "tabler": "IconChartBar",
     "hugeicons": "ChartHistogramIcon",
     "phosphor": "ChartBarIcon",
-    "remixicon": "RiBarChartLine"
+    "remixicon": "RiBarChartLine",
+    "fontawesome": "faChartBar"
   },
   "ChartLineIcon": {
     "lucide": "ChartLineIcon",
     "tabler": "IconChartLine",
     "hugeicons": "ChartIcon",
     "phosphor": "ChartLineIcon",
-    "remixicon": "RiLineChartLine"
+    "remixicon": "RiLineChartLine",
+    "fontawesome": "faChartLine"
   },
   "ChartPieIcon": {
     "lucide": "ChartPieIcon",
     "tabler": "IconChartPie",
     "hugeicons": "Chart03Icon",
     "phosphor": "ChartPieIcon",
-    "remixicon": "RiPieChartLine"
+    "remixicon": "RiPieChartLine",
+    "fontawesome": "faChartPie"
   },
   "CheckCircle2Icon": {
     "lucide": "CheckCircle2Icon",
     "tabler": "IconCircleCheckFilled",
     "hugeicons": "CheckmarkCircle02Icon",
     "phosphor": "CheckCircleIcon",
-    "remixicon": "RiCheckboxCircleLine"
+    "remixicon": "RiCheckboxCircleLine",
+    "fontawesome": "faCircleCheck"
   },
   "ChevronsLeftIcon": {
     "lucide": "ChevronsLeftIcon",
     "tabler": "IconChevronsLeft",
     "hugeicons": "ArrowLeftDoubleIcon",
     "phosphor": "CaretDoubleLeftIcon",
-    "remixicon": "RiSkipLeftLine"
+    "remixicon": "RiSkipLeftLine",
+    "fontawesome": "faAnglesLeft"
   },
   "ChevronsRightIcon": {
     "lucide": "ChevronsRightIcon",
     "tabler": "IconChevronsRight",
     "hugeicons": "ArrowRightDoubleIcon",
     "phosphor": "CaretDoubleRightIcon",
-    "remixicon": "RiSkipRightLine"
+    "remixicon": "RiSkipRightLine",
+    "fontawesome": "faAnglesRight"
   },
   "CircleAlertIcon": {
     "lucide": "CircleAlertIcon",
     "tabler": "IconExclamationCircle",
     "hugeicons": "AlertCircleIcon",
     "phosphor": "WarningCircleIcon",
-    "remixicon": "RiErrorWarningLine"
+    "remixicon": "RiErrorWarningLine",
+    "fontawesome": "faCircleExclamation"
   },
   "CircleCheckIcon": {
     "lucide": "CircleCheckIcon",
     "tabler": "IconCircleCheckFilled",
     "hugeicons": "CheckmarkCircle01Icon",
     "phosphor": "CheckCircleIcon",
-    "remixicon": "RiCheckboxCircleFill"
+    "remixicon": "RiCheckboxCircleFill",
+    "fontawesome": "faCircleCheck"
   },
   "CircleDashedIcon": {
     "lucide": "CircleDashedIcon",
     "tabler": "IconCircleDashed",
     "hugeicons": "DashedLineCircleIcon",
     "phosphor": "CircleDashedIcon",
-    "remixicon": "RiLoaderLine"
+    "remixicon": "RiLoaderLine",
+    "fontawesome": "faCircle"
   },
   "CircleHelpIcon": {
     "lucide": "CircleHelpIcon",
     "tabler": "IconHelp",
     "hugeicons": "HelpCircleIcon",
     "phosphor": "QuestionIcon",
-    "remixicon": "RiQuestionLine"
+    "remixicon": "RiQuestionLine",
+    "fontawesome": "faCircleQuestion"
   },
   "CirclePlusIcon": {
     "lucide": "CirclePlusIcon",
     "tabler": "IconCirclePlusFilled",
     "hugeicons": "PlusSignCircleIcon",
     "phosphor": "PlusCircleIcon",
-    "remixicon": "RiAddCircleFill"
+    "remixicon": "RiAddCircleFill",
+    "fontawesome": "faCirclePlus"
   },
   "CircleUserIcon": {
     "lucide": "CircleUserIcon",
     "tabler": "IconUserCircle",
     "hugeicons": "UserCircleIcon",
     "phosphor": "UserCircleIcon",
-    "remixicon": "RiUserSmileLine"
+    "remixicon": "RiUserSmileLine",
+    "fontawesome": "faCircleUser"
   },
   "CircleUserRoundIcon": {
     "lucide": "CircleUserRoundIcon",
     "tabler": "IconUserCircle",
     "hugeicons": "UserCircle02Icon",
     "phosphor": "UserCircleIcon",
-    "remixicon": "RiUserLine"
+    "remixicon": "RiUserLine",
+    "fontawesome": "faCircleUser"
   },
   "ClipboardPasteIcon": {
     "lucide": "ClipboardPasteIcon",
     "tabler": "IconClipboard",
     "hugeicons": "ClipboardIcon",
     "phosphor": "ClipboardIcon",
-    "remixicon": "RiClipboardLine"
+    "remixicon": "RiClipboardLine",
+    "fontawesome": "faClipboard"
   },
   "Clock2Icon": {
     "lucide": "Clock2Icon",
     "tabler": "IconClockHour2",
     "hugeicons": "Clock03Icon",
     "phosphor": "ClockIcon",
-    "remixicon": "RiTimeLine"
+    "remixicon": "RiTimeLine",
+    "fontawesome": "faClock"
   },
   "ClockIcon": {
     "lucide": "ClockIcon",
     "tabler": "IconClock",
     "hugeicons": "Clock01Icon",
     "phosphor": "ClockIcon",
-    "remixicon": "RiTimeLine"
+    "remixicon": "RiTimeLine",
+    "fontawesome": "faClock"
   },
   "CloudIcon": {
     "lucide": "CloudIcon",
     "tabler": "IconCloud",
     "hugeicons": "CloudUploadIcon",
     "phosphor": "CloudIcon",
-    "remixicon": "RiCloudLine"
+    "remixicon": "RiCloudLine",
+    "fontawesome": "faCloud"
   },
   "CodeIcon": {
     "lucide": "CodeIcon",
     "tabler": "IconCode",
     "hugeicons": "CodeIcon",
     "phosphor": "CodeIcon",
-    "remixicon": "RiCodeLine"
+    "remixicon": "RiCodeLine",
+    "fontawesome": "faCode"
   },
   "CoffeeIcon": {
     "lucide": "CoffeeIcon",
     "tabler": "IconCoffee",
     "hugeicons": "CoffeeIcon",
     "phosphor": "CoffeeIcon",
-    "remixicon": "RiCupLine"
+    "remixicon": "RiCupLine",
+    "fontawesome": "faMugHot"
   },
   "Columns3Icon": {
     "lucide": "Columns3Icon",
     "tabler": "IconLayoutColumns",
     "hugeicons": "LeftToRightListBulletIcon",
     "phosphor": "ColumnsIcon",
-    "remixicon": "RiLayoutColumnLine"
+    "remixicon": "RiLayoutColumnLine",
+    "fontawesome": "faTableColumns"
   },
   "CommandIcon": {
     "lucide": "CommandIcon",
     "tabler": "IconInnerShadowTop",
     "hugeicons": "CommandIcon",
     "phosphor": "CommandIcon",
-    "remixicon": "RiCommandLine"
+    "remixicon": "RiCommandLine",
+    "fontawesome": "faTerminal"
   },
   "ContainerIcon": {
     "lucide": "ContainerIcon",
     "tabler": "IconBox",
     "hugeicons": "CubeIcon",
     "phosphor": "CubeIcon",
-    "remixicon": "RiBox1Line"
+    "remixicon": "RiBox1Line",
+    "fontawesome": "faBox"
   },
   "CornerUpLeftIcon": {
     "lucide": "CornerUpLeftIcon",
     "tabler": "IconCornerUpLeft",
     "hugeicons": "UndoIcon",
     "phosphor": "ArrowBendUpLeftIcon",
-    "remixicon": "RiCornerUpLeftLine"
+    "remixicon": "RiCornerUpLeftLine",
+    "fontawesome": "faReply"
   },
   "CornerUpRightIcon": {
     "lucide": "CornerUpRightIcon",
     "tabler": "IconCornerUpRight",
     "hugeicons": "RedoIcon",
     "phosphor": "ArrowBendUpRightIcon",
-    "remixicon": "RiCornerUpRightLine"
+    "remixicon": "RiCornerUpRightLine",
+    "fontawesome": "faShare"
   },
   "DatabaseIcon": {
     "lucide": "DatabaseIcon",
     "tabler": "IconDatabase",
     "hugeicons": "Database01Icon",
     "phosphor": "DatabaseIcon",
-    "remixicon": "RiDatabase2Line"
+    "remixicon": "RiDatabase2Line",
+    "fontawesome": "faDatabase"
   },
   "DownloadIcon": {
     "lucide": "DownloadIcon",
     "tabler": "IconDownload",
     "hugeicons": "DownloadIcon",
     "phosphor": "DownloadIcon",
-    "remixicon": "RiDownloadLine"
+    "remixicon": "RiDownloadLine",
+    "fontawesome": "faDownload"
   },
   "EllipsisVerticalIcon": {
     "lucide": "EllipsisVerticalIcon",
     "tabler": "IconDotsVertical",
     "hugeicons": "MoreVerticalCircle01Icon",
     "phosphor": "DotsThreeVerticalIcon",
-    "remixicon": "RiMore2Line"
+    "remixicon": "RiMore2Line",
+    "fontawesome": "faEllipsisVertical"
   },
   "ExternalLinkIcon": {
     "lucide": "ExternalLinkIcon",
     "tabler": "IconExternalLink",
     "hugeicons": "LinkSquare02Icon",
     "phosphor": "ArrowSquareOutIcon",
-    "remixicon": "RiExternalLinkLine"
+    "remixicon": "RiExternalLinkLine",
+    "fontawesome": "faArrowUpRightFromSquare"
   },
   "EyeIcon": {
     "lucide": "EyeIcon",
     "tabler": "IconEye",
     "hugeicons": "EyeIcon",
     "phosphor": "EyeIcon",
-    "remixicon": "RiEyeLine"
+    "remixicon": "RiEyeLine",
+    "fontawesome": "faEye"
   },
   "EyeOffIcon": {
     "lucide": "EyeOffIcon",
     "tabler": "IconEyeClosed",
     "hugeicons": "ViewOffIcon",
     "phosphor": "EyeSlashIcon",
-    "remixicon": "RiEyeOffLine"
+    "remixicon": "RiEyeOffLine",
+    "fontawesome": "faEyeSlash"
   },
   "FileArchiveIcon": {
     "lucide": "FileArchiveIcon",
     "tabler": "IconFileZip",
     "hugeicons": "File01Icon",
     "phosphor": "FileZipIcon",
-    "remixicon": "RiFileZipLine"
+    "remixicon": "RiFileZipLine",
+    "fontawesome": "faFileZipper"
   },
   "FileBarChartIcon": {
     "lucide": "FileBarChartIcon",
     "tabler": "IconReportAnalytics",
     "hugeicons": "ChartBarLineIcon",
     "phosphor": "ChartBarIcon",
-    "remixicon": "RiBarChartLine"
+    "remixicon": "RiBarChartLine",
+    "fontawesome": "faChartColumn"
   },
   "FileChartColumnIcon": {
     "lucide": "FileChartColumnIcon",
     "tabler": "IconReport",
     "hugeicons": "Analytics01Icon",
     "phosphor": "ChartLineIcon",
-    "remixicon": "RiFileChartLine"
+    "remixicon": "RiFileChartLine",
+    "fontawesome": "faChartColumn"
   },
   "FileCodeIcon": {
     "lucide": "FileCodeIcon",
     "tabler": "IconFileCode",
     "hugeicons": "File01Icon",
     "phosphor": "FileCodeIcon",
-    "remixicon": "RiFileCodeLine"
+    "remixicon": "RiFileCodeLine",
+    "fontawesome": "faFileCode"
   },
   "FileIcon": {
     "lucide": "FileIcon",
     "tabler": "IconFileWord",
     "hugeicons": "File01Icon",
     "phosphor": "FileIcon",
-    "remixicon": "RiFileLine"
+    "remixicon": "RiFileLine",
+    "fontawesome": "faFile"
   },
   "FileSearchIcon": {
     "lucide": "FileSearchIcon",
     "tabler": "IconFileSearch",
     "hugeicons": "FileSearchIcon",
     "phosphor": "FileSearchIcon",
-    "remixicon": "RiFileSearchLine"
+    "remixicon": "RiFileSearchLine",
+    "fontawesome": "faMagnifyingGlass"
   },
   "FileTextIcon": {
     "lucide": "FileTextIcon",
     "tabler": "IconFileDescription",
     "hugeicons": "File01Icon",
     "phosphor": "FileTextIcon",
-    "remixicon": "RiFileTextLine"
+    "remixicon": "RiFileTextLine",
+    "fontawesome": "faFileLines"
   },
   "FileWarningIcon": {
     "lucide": "FileWarningIcon",
     "tabler": "IconFileAlert",
     "hugeicons": "FileCorruptIcon",
     "phosphor": "FileXIcon",
-    "remixicon": "RiFileWarningLine"
+    "remixicon": "RiFileWarningLine",
+    "fontawesome": "faFileCircleExclamation"
   },
   "FlipHorizontalIcon": {
     "lucide": "FlipHorizontalIcon",
     "tabler": "IconFlipHorizontal",
     "hugeicons": "FlipHorizontalIcon",
     "phosphor": "ArrowsHorizontalIcon",
-    "remixicon": "RiArrowLeftRightLine"
+    "remixicon": "RiArrowLeftRightLine",
+    "fontawesome": "faLeftRight"
   },
   "FlipVerticalIcon": {
     "lucide": "FlipVerticalIcon",
     "tabler": "IconFlipVertical",
     "hugeicons": "FlipVerticalIcon",
     "phosphor": "ArrowsVerticalIcon",
-    "remixicon": "RiArrowUpDownLine"
+    "remixicon": "RiArrowUpDownLine",
+    "fontawesome": "faUpDown"
   },
   "FolderIcon": {
     "lucide": "FolderIcon",
     "tabler": "IconFolder",
     "hugeicons": "Folder01Icon",
     "phosphor": "FolderIcon",
-    "remixicon": "RiFolderLine"
+    "remixicon": "RiFolderLine",
+    "fontawesome": "faFolder"
   },
   "FolderOpenIcon": {
     "lucide": "FolderOpenIcon",
     "tabler": "IconFolderOpen",
     "hugeicons": "FolderOpenIcon",
     "phosphor": "FolderOpenIcon",
-    "remixicon": "RiFolderOpenLine"
+    "remixicon": "RiFolderOpenLine",
+    "fontawesome": "faFolderOpen"
   },
   "FolderPlusIcon": {
     "lucide": "FolderPlusIcon",
     "tabler": "IconFolderPlus",
     "hugeicons": "FolderAddIcon",
     "phosphor": "FolderPlusIcon",
-    "remixicon": "RiFolderAddLine"
+    "remixicon": "RiFolderAddLine",
+    "fontawesome": "faFolderPlus"
   },
   "FolderSearchIcon": {
     "lucide": "FolderSearchIcon",
     "tabler": "IconFolderSearch",
     "hugeicons": "SearchIcon",
     "phosphor": "MagnifyingGlassIcon",
-    "remixicon": "RiSearchLine"
+    "remixicon": "RiSearchLine",
+    "fontawesome": "faFolderOpen"
   },
   "FrameIcon": {
     "lucide": "FrameIcon",
     "tabler": "IconFrame",
     "hugeicons": "CropIcon",
     "phosphor": "CropIcon",
-    "remixicon": "RiCropLine"
+    "remixicon": "RiCropLine",
+    "fontawesome": "faBorderAll"
   },
   "GalleryVerticalEndIcon": {
     "lucide": "GalleryVerticalEndIcon",
     "tabler": "IconLayoutRows",
     "hugeicons": "LayoutBottomIcon",
     "phosphor": "RowsIcon",
-    "remixicon": "RiGalleryLine"
+    "remixicon": "RiGalleryLine",
+    "fontawesome": "faTableList"
   },
   "GaugeIcon": {
     "lucide": "GaugeIcon",
     "tabler": "IconGauge",
     "hugeicons": "Settings01Icon",
     "phosphor": "GaugeIcon",
-    "remixicon": "RiDashboardLine"
+    "remixicon": "RiDashboardLine",
+    "fontawesome": "faGauge"
   },
   "GitBranchIcon": {
     "lucide": "GitBranchIcon",
     "tabler": "IconGitBranch",
     "hugeicons": "GitBranchIcon",
     "phosphor": "GitBranchIcon",
-    "remixicon": "RiGitBranchLine"
+    "remixicon": "RiGitBranchLine",
+    "fontawesome": "faCodeBranch"
   },
   "GlobeIcon": {
     "lucide": "GlobeIcon",
     "tabler": "IconWorld",
     "hugeicons": "Globe02Icon",
     "phosphor": "GlobeIcon",
-    "remixicon": "RiGlobalLine"
+    "remixicon": "RiGlobalLine",
+    "fontawesome": "faGlobe"
   },
   "HeartIcon": {
     "lucide": "HeartIcon",
     "tabler": "IconBell",
     "hugeicons": "Notification02Icon",
     "phosphor": "HeartIcon",
-    "remixicon": "RiHeartLine"
+    "remixicon": "RiHeartLine",
+    "fontawesome": "faHeart"
   },
   "HelpCircleIcon": {
     "lucide": "HelpCircleIcon",
     "tabler": "IconHelpCircle",
     "hugeicons": "HelpCircleIcon",
     "phosphor": "QuestionIcon",
-    "remixicon": "RiQuestionLine"
+    "remixicon": "RiQuestionLine",
+    "fontawesome": "faCircleQuestion"
   },
   "HomeIcon": {
     "lucide": "HomeIcon",
     "tabler": "IconHome",
     "hugeicons": "HomeIcon",
     "phosphor": "HouseIcon",
-    "remixicon": "RiHomeLine"
+    "remixicon": "RiHomeLine",
+    "fontawesome": "faHouse"
   },
   "ImageIcon": {
     "lucide": "ImageIcon",
     "tabler": "IconPhoto",
     "hugeicons": "Image01Icon",
     "phosphor": "ImageIcon",
-    "remixicon": "RiImageLine"
+    "remixicon": "RiImageLine",
+    "fontawesome": "faImage"
   },
   "InboxIcon": {
     "lucide": "InboxIcon",
     "tabler": "IconInbox",
     "hugeicons": "InboxIcon",
     "phosphor": "TrayIcon",
-    "remixicon": "RiInboxLine"
+    "remixicon": "RiInboxLine",
+    "fontawesome": "faInbox"
   },
   "InfoIcon": {
     "lucide": "InfoIcon",
     "tabler": "IconInfoCircle",
     "hugeicons": "AlertCircleIcon",
     "phosphor": "InfoIcon",
-    "remixicon": "RiInformationLine"
+    "remixicon": "RiInformationLine",
+    "fontawesome": "faCircleInfo"
   },
   "KeyboardIcon": {
     "lucide": "KeyboardIcon",
     "tabler": "IconKeyboard",
     "hugeicons": "KeyboardIcon",
     "phosphor": "KeyboardIcon",
-    "remixicon": "RiKeyboardLine"
+    "remixicon": "RiKeyboardLine",
+    "fontawesome": "faKeyboard"
   },
   "LanguagesIcon": {
     "lucide": "LanguagesIcon",
     "tabler": "IconLanguage",
     "hugeicons": "LanguageCircleIcon",
     "phosphor": "TranslateIcon",
-    "remixicon": "RiTranslate"
+    "remixicon": "RiTranslate",
+    "fontawesome": "faLanguage"
   },
   "LayoutDashboardIcon": {
     "lucide": "LayoutDashboardIcon",
     "tabler": "IconDashboard",
     "hugeicons": "DashboardSquare01Icon",
     "phosphor": "SquaresFourIcon",
-    "remixicon": "RiDashboardLine"
+    "remixicon": "RiDashboardLine",
+    "fontawesome": "faTableCells"
   },
   "LayoutGridIcon": {
     "lucide": "LayoutGridIcon",
     "tabler": "IconLayoutGrid",
     "hugeicons": "GridIcon",
     "phosphor": "GridFourIcon",
-    "remixicon": "RiGridLine"
+    "remixicon": "RiGridLine",
+    "fontawesome": "faTableCells"
   },
   "LayoutIcon": {
     "lucide": "LayoutIcon",
     "tabler": "IconLayout",
     "hugeicons": "LayoutIcon",
     "phosphor": "LayoutIcon",
-    "remixicon": "RiLayoutLine"
+    "remixicon": "RiLayoutLine",
+    "fontawesome": "faTableCells"
   },
   "LifeBuoy": {
     "lucide": "LifeBuoy",
     "tabler": "IconLifebuoy",
     "hugeicons": "ChartRingIcon",
     "phosphor": "LifebuoyIcon",
-    "remixicon": "RiLifebuoyLine"
+    "remixicon": "RiLifebuoyLine",
+    "fontawesome": "faLifeRing"
   },
   "LifeBuoyIcon": {
     "lucide": "LifeBuoyIcon",
     "tabler": "IconLifebuoy",
     "hugeicons": "ChartRingIcon",
     "phosphor": "LifebuoyIcon",
-    "remixicon": "RiLifebuoyLine"
+    "remixicon": "RiLifebuoyLine",
+    "fontawesome": "faLifeRing"
   },
   "LinkIcon": {
     "lucide": "LinkIcon",
     "tabler": "IconLink",
     "hugeicons": "LinkIcon",
     "phosphor": "LinkIcon",
-    "remixicon": "RiLinksLine"
+    "remixicon": "RiLinksLine",
+    "fontawesome": "faLink"
   },
   "ListIcon": {
     "lucide": "ListIcon",
     "tabler": "IconListDetails",
     "hugeicons": "Menu01Icon",
     "phosphor": "ListIcon",
-    "remixicon": "RiListUnordered"
+    "remixicon": "RiListUnordered",
+    "fontawesome": "faList"
   },
   "LoaderIcon": {
     "lucide": "LoaderIcon",
     "tabler": "IconLoader",
     "hugeicons": "Loading03Icon",
     "phosphor": "SpinnerIcon",
-    "remixicon": "RiLoader4Line"
+    "remixicon": "RiLoader4Line",
+    "fontawesome": "faSpinner"
   },
   "LockIcon": {
     "lucide": "LockIcon",
     "tabler": "IconLock",
     "hugeicons": "SquareLock02Icon",
     "phosphor": "LockKeyIcon",
-    "remixicon": "RiLockLine"
+    "remixicon": "RiLockLine",
+    "fontawesome": "faLock"
   },
   "LockKeyholeIcon": {
     "lucide": "LockKeyholeIcon",
     "tabler": "IconLock",
     "hugeicons": "SquareLock02Icon",
     "phosphor": "LockKeyIcon",
-    "remixicon": "RiLockLine"
+    "remixicon": "RiLockLine",
+    "fontawesome": "faLockOpen"
   },
   "LogOutIcon": {
     "lucide": "LogOutIcon",
     "tabler": "IconLogout",
     "hugeicons": "Logout01Icon",
     "phosphor": "SignOutIcon",
-    "remixicon": "RiLogoutBoxLine"
+    "remixicon": "RiLogoutBoxLine",
+    "fontawesome": "faRightFromBracket"
   },
   "MapIcon": {
     "lucide": "MapIcon",
     "tabler": "IconMap",
     "hugeicons": "MapsIcon",
     "phosphor": "MapTrifoldIcon",
-    "remixicon": "RiMapLine"
+    "remixicon": "RiMapLine",
+    "fontawesome": "faMap"
   },
   "MaximizeIcon": {
     "lucide": "MaximizeIcon",
     "tabler": "IconMaximize",
     "hugeicons": "PlusSignIcon",
     "phosphor": "PlusIcon",
-    "remixicon": "RiAddLine"
+    "remixicon": "RiAddLine",
+    "fontawesome": "faMaximize"
   },
   "MenuIcon": {
     "lucide": "MenuIcon",
     "tabler": "IconMenu",
     "hugeicons": "Menu09Icon",
     "phosphor": "ListIcon",
-    "remixicon": "RiMenuLine"
+    "remixicon": "RiMenuLine",
+    "fontawesome": "faBars"
   },
   "MessageCircleIcon": {
     "lucide": "MessageCircleIcon",
     "tabler": "IconMessageQuestion",
     "hugeicons": "MessageIcon",
     "phosphor": "ChatCircleIcon",
-    "remixicon": "RiChat1Line"
+    "remixicon": "RiChat1Line",
+    "fontawesome": "faCommentDots"
   },
   "MessageCircleQuestionIcon": {
     "lucide": "MessageCircleQuestionIcon",
     "tabler": "IconMessageQuestion",
     "hugeicons": "MessageQuestionIcon",
     "phosphor": "ChatCircleIcon",
-    "remixicon": "RiQuestionLine"
+    "remixicon": "RiQuestionLine",
+    "fontawesome": "faCommentDots"
   },
   "MessageSquareIcon": {
     "lucide": "MessageSquareIcon",
     "tabler": "IconMessage",
     "hugeicons": "Message01Icon",
     "phosphor": "ChatIcon",
-    "remixicon": "RiChat1Line"
+    "remixicon": "RiChat1Line",
+    "fontawesome": "faComment"
   },
   "MicIcon": {
     "lucide": "MicIcon",
     "tabler": "IconMicrophone",
     "hugeicons": "VoiceIcon",
     "phosphor": "MicrophoneIcon",
-    "remixicon": "RiMicLine"
+    "remixicon": "RiMicLine",
+    "fontawesome": "faMicrophone"
   },
   "MinimizeIcon": {
     "lucide": "MinimizeIcon",
     "tabler": "IconMinimize",
     "hugeicons": "MinusSignIcon",
     "phosphor": "MinusIcon",
-    "remixicon": "RiSubtractLine"
+    "remixicon": "RiSubtractLine",
+    "fontawesome": "faMinimize"
   },
   "MonitorIcon": {
     "lucide": "MonitorIcon",
     "tabler": "IconDeviceDesktop",
     "hugeicons": "ComputerIcon",
     "phosphor": "MonitorIcon",
-    "remixicon": "RiComputerLine"
+    "remixicon": "RiComputerLine",
+    "fontawesome": "faDesktop"
   },
   "MoreVerticalIcon": {
     "lucide": "MoreVerticalIcon",
     "tabler": "IconDotsVertical",
     "hugeicons": "MoreVerticalCircle01Icon",
     "phosphor": "DotsThreeVerticalIcon",
-    "remixicon": "RiMore2Line"
+    "remixicon": "RiMore2Line",
+    "fontawesome": "faEllipsisVertical"
   },
   "OctagonXIcon": {
     "lucide": "OctagonXIcon",
     "tabler": "IconAlertOctagon",
     "hugeicons": "MultiplicationSignCircleIcon",
     "phosphor": "XCircleIcon",
-    "remixicon": "RiCloseCircleLine"
+    "remixicon": "RiCloseCircleLine",
+    "fontawesome": "faCircleXmark"
   },
   "PaintbrushIcon": {
     "lucide": "PaintbrushIcon",
     "tabler": "IconPalette",
     "hugeicons": "PaintBoardIcon",
     "phosphor": "PaletteIcon",
-    "remixicon": "RiPaletteLine"
+    "remixicon": "RiPaletteLine",
+    "fontawesome": "faPaintbrush"
   },
   "PaletteIcon": {
     "lucide": "PaletteIcon",
     "tabler": "IconPalette",
     "hugeicons": "PaintBoardIcon",
     "phosphor": "PaletteIcon",
-    "remixicon": "RiPaletteLine"
+    "remixicon": "RiPaletteLine",
+    "fontawesome": "faPalette"
   },
   "PaperclipIcon": {
     "lucide": "PaperclipIcon",
     "tabler": "IconPaperclip",
     "hugeicons": "AttachmentIcon",
     "phosphor": "PaperclipIcon",
-    "remixicon": "RiAttachmentLine"
+    "remixicon": "RiAttachmentLine",
+    "fontawesome": "faPaperclip"
   },
   "PencilIcon": {
     "lucide": "PencilIcon",
     "tabler": "IconPencil",
     "hugeicons": "EditIcon",
     "phosphor": "PencilIcon",
-    "remixicon": "RiPencilLine"
+    "remixicon": "RiPencilLine",
+    "fontawesome": "faPencil"
   },
   "PieChartIcon": {
     "lucide": "PieChartIcon",
     "tabler": "IconChartPie",
     "hugeicons": "PieChartIcon",
     "phosphor": "ChartPieIcon",
-    "remixicon": "RiPieChartLine"
+    "remixicon": "RiPieChartLine",
+    "fontawesome": "faChartPie"
   },
   "PlusCircleIcon": {
     "lucide": "PlusCircleIcon",
     "tabler": "IconCirclePlus",
     "hugeicons": "AddCircleIcon",
     "phosphor": "PlusCircleIcon",
-    "remixicon": "RiAddCircleLine"
+    "remixicon": "RiAddCircleLine",
+    "fontawesome": "faCirclePlus"
   },
   "PresentationIcon": {
     "lucide": "PresentationIcon",
     "tabler": "IconPresentation",
     "hugeicons": "Presentation01Icon",
     "phosphor": "PresentationIcon",
-    "remixicon": "RiSlideshowLine"
+    "remixicon": "RiSlideshowLine",
+    "fontawesome": "faChalkboard"
   },
   "RadioIcon": {
     "lucide": "RadioIcon",
     "tabler": "IconPlayerRecordFilled",
     "hugeicons": "RecordIcon",
     "phosphor": "RecordIcon",
-    "remixicon": "RiRecordCircleLine"
+    "remixicon": "RiRecordCircleLine",
+    "fontawesome": "faTowerBroadcast"
   },
   "RefreshCcwIcon": {
     "lucide": "RefreshCcwIcon",
     "tabler": "IconRefresh",
     "hugeicons": "ReloadIcon",
     "phosphor": "ArrowClockwiseIcon",
-    "remixicon": "RiRefreshLine"
+    "remixicon": "RiRefreshLine",
+    "fontawesome": "faRotateLeft"
   },
   "RefreshCwIcon": {
     "lucide": "RefreshCwIcon",
     "tabler": "IconRefresh",
     "hugeicons": "RepeatIcon",
     "phosphor": "ArrowsClockwiseIcon",
-    "remixicon": "RiRefreshLine"
+    "remixicon": "RiRefreshLine",
+    "fontawesome": "faRotateRight"
   },
   "RepeatIcon": {
     "lucide": "RepeatIcon",
     "tabler": "IconRepeat",
     "hugeicons": "RepeatIcon",
     "phosphor": "RepeatIcon",
-    "remixicon": "RiRepeatLine"
+    "remixicon": "RiRepeatLine",
+    "fontawesome": "faRepeat"
   },
   "RotateCwIcon": {
     "lucide": "RotateCwIcon",
     "tabler": "IconRotateClockwise2",
     "hugeicons": "Rotate01Icon",
     "phosphor": "ArrowClockwiseIcon",
-    "remixicon": "RiRefreshLine"
+    "remixicon": "RiRefreshLine",
+    "fontawesome": "faRotateRight"
   },
   "SaveIcon": {
     "lucide": "SaveIcon",
     "tabler": "IconDeviceFloppy",
     "hugeicons": "FloppyDiskIcon",
     "phosphor": "FloppyDiskIcon",
-    "remixicon": "RiSaveLine"
+    "remixicon": "RiSaveLine",
+    "fontawesome": "faFloppyDisk"
   },
   "ScissorsIcon": {
     "lucide": "ScissorsIcon",
     "tabler": "IconCut",
     "hugeicons": "ScissorIcon",
     "phosphor": "ScissorsIcon",
-    "remixicon": "RiScissorsLine"
+    "remixicon": "RiScissorsLine",
+    "fontawesome": "faScissors"
   },
   "SendIcon": {
     "lucide": "SendIcon",
     "tabler": "IconSend",
     "hugeicons": "SentIcon",
     "phosphor": "PaperPlaneTiltIcon",
-    "remixicon": "RiSendPlaneLine"
+    "remixicon": "RiSendPlaneLine",
+    "fontawesome": "faPaperPlane"
   },
   "ServerIcon": {
     "lucide": "ServerIcon",
     "tabler": "IconServer",
     "hugeicons": "ServerStackIcon",
     "phosphor": "HardDrivesIcon",
-    "remixicon": "RiHardDriveLine"
+    "remixicon": "RiHardDriveLine",
+    "fontawesome": "faServer"
   },
   "Settings2Icon": {
     "lucide": "Settings2Icon",
     "tabler": "IconSettings",
     "hugeicons": "Settings05Icon",
     "phosphor": "GearIcon",
-    "remixicon": "RiSettingsLine"
+    "remixicon": "RiSettingsLine",
+    "fontawesome": "faSliders"
   },
   "ShareIcon": {
     "lucide": "ShareIcon",
     "tabler": "IconShare3",
     "hugeicons": "Share01Icon",
     "phosphor": "ShareIcon",
-    "remixicon": "RiShareLine"
+    "remixicon": "RiShareLine",
+    "fontawesome": "faShareNodes"
   },
   "ShieldIcon": {
     "lucide": "ShieldIcon",
     "tabler": "IconShield",
     "hugeicons": "ShieldIcon",
     "phosphor": "ShieldIcon",
-    "remixicon": "RiShieldLine"
+    "remixicon": "RiShieldLine",
+    "fontawesome": "faShield"
   },
   "ShoppingBagIcon": {
     "lucide": "ShoppingBagIcon",
     "tabler": "IconShoppingBag",
     "hugeicons": "ShoppingBag01Icon",
     "phosphor": "BagIcon",
-    "remixicon": "RiShoppingBagLine"
+    "remixicon": "RiShoppingBagLine",
+    "fontawesome": "faBagShopping"
   },
   "ShoppingCartIcon": {
     "lucide": "ShoppingCartIcon",
     "tabler": "IconShoppingCart",
     "hugeicons": "ShoppingCart01Icon",
     "phosphor": "ShoppingCartIcon",
-    "remixicon": "RiShoppingCartLine"
+    "remixicon": "RiShoppingCartLine",
+    "fontawesome": "faCartShopping"
   },
   "SparklesIcon": {
     "lucide": "SparklesIcon",
     "tabler": "IconSparkles",
     "hugeicons": "SparklesIcon",
     "phosphor": "SparkleIcon",
-    "remixicon": "RiSparklingLine"
+    "remixicon": "RiSparklingLine",
+    "fontawesome": "faStar"
   },
   "SquareIcon": {
     "lucide": "SquareIcon",
     "tabler": "IconPlayerStop",
     "hugeicons": "StopCircleIcon",
     "phosphor": "StopCircleIcon",
-    "remixicon": "RiStopCircleLine"
+    "remixicon": "RiStopCircleLine",
+    "fontawesome": "faSquare"
   },
   "StarIcon": {
     "lucide": "StarIcon",
     "tabler": "IconStar",
     "hugeicons": "StarIcon",
     "phosphor": "StarIcon",
-    "remixicon": "RiStarLine"
+    "remixicon": "RiStarLine",
+    "fontawesome": "faStar"
   },
   "StarOffIcon": {
     "lucide": "StarOffIcon",
     "tabler": "IconStarOff",
     "hugeicons": "StarOffIcon",
     "phosphor": "StarIcon",
-    "remixicon": "RiStarOffLine"
+    "remixicon": "RiStarOffLine",
+    "fontawesome": "faStarHalfStroke"
   },
   "StopCircleIcon": {
     "lucide": "StopCircleIcon",
     "tabler": "IconPlayerStop",
     "hugeicons": "StopCircleIcon",
     "phosphor": "StopCircleIcon",
-    "remixicon": "RiStopCircleLine"
+    "remixicon": "RiStopCircleLine",
+    "fontawesome": "faCircleStop"
   },
   "TableIcon": {
     "lucide": "TableIcon",
     "tabler": "IconTable",
     "hugeicons": "TableIcon",
     "phosphor": "TableIcon",
-    "remixicon": "RiTableLine"
+    "remixicon": "RiTableLine",
+    "fontawesome": "faTable"
   },
   "TargetIcon": {
     "lucide": "TargetIcon",
     "tabler": "IconTarget",
     "hugeicons": "Target02Icon",
     "phosphor": "TargetIcon",
-    "remixicon": "RiFocus3Line"
+    "remixicon": "RiFocus3Line",
+    "fontawesome": "faBullseye"
   },
   "TerminalSquareIcon": {
     "lucide": "TerminalSquareIcon",
     "tabler": "IconTerminal2",
     "hugeicons": "ComputerTerminalIcon",
     "phosphor": "TerminalIcon",
-    "remixicon": "RiTerminalBoxLine"
+    "remixicon": "RiTerminalBoxLine",
+    "fontawesome": "faTerminal"
   },
   "ThermometerIcon": {
     "lucide": "ThermometerIcon",
     "tabler": "IconThermometer",
     "hugeicons": "ThermometerWarmIcon",
     "phosphor": "ThermometerIcon",
-    "remixicon": "RiThermometerLine"
+    "remixicon": "RiThermometerLine",
+    "fontawesome": "faTemperatureHalf"
   },
   "ThumbsDownIcon": {
     "lucide": "ThumbsDownIcon",
     "tabler": "IconThumbDown",
     "hugeicons": "ThumbsDownIcon",
     "phosphor": "ThumbsDownIcon",
-    "remixicon": "RiThumbDownLine"
+    "remixicon": "RiThumbDownLine",
+    "fontawesome": "faThumbsDown"
   },
   "ThumbsUpIcon": {
     "lucide": "ThumbsUpIcon",
     "tabler": "IconThumbUp",
     "hugeicons": "ThumbsUpIcon",
     "phosphor": "ThumbsUpIcon",
-    "remixicon": "RiThumbUpLine"
+    "remixicon": "RiThumbUpLine",
+    "fontawesome": "faThumbsUp"
   },
   "TimerIcon": {
     "lucide": "TimerIcon",
     "tabler": "IconClock",
     "hugeicons": "Clock03Icon",
     "phosphor": "TimerIcon",
-    "remixicon": "RiTimerLine"
+    "remixicon": "RiTimerLine",
+    "fontawesome": "faStopwatch"
   },
   "Trash2Icon": {
     "lucide": "Trash2Icon",
     "tabler": "IconTrash",
     "hugeicons": "Delete02Icon",
     "phosphor": "TrashIcon",
-    "remixicon": "RiDeleteBinLine"
+    "remixicon": "RiDeleteBinLine",
+    "fontawesome": "faTrashCan"
   },
   "TrashIcon": {
     "lucide": "TrashIcon",
     "tabler": "IconTrash",
     "hugeicons": "DeleteIcon",
     "phosphor": "TrashIcon",
-    "remixicon": "RiDeleteBinLine"
+    "remixicon": "RiDeleteBinLine",
+    "fontawesome": "faTrash"
   },
   "TrendingDownIcon": {
     "lucide": "TrendingDownIcon",
     "tabler": "IconTrendingDown",
     "hugeicons": "ChartDownIcon",
     "phosphor": "TrendDownIcon",
-    "remixicon": "RiArrowDownLine"
+    "remixicon": "RiArrowDownLine",
+    "fontawesome": "faArrowTrendDown"
   },
   "TrendingUpIcon": {
     "lucide": "TrendingUpIcon",
     "tabler": "IconTrendingUp",
     "hugeicons": "ChartUpIcon",
     "phosphor": "TrendUpIcon",
-    "remixicon": "RiArrowUpLine"
+    "remixicon": "RiArrowUpLine",
+    "fontawesome": "faArrowTrendUp"
   },
   "TriangleAlertIcon": {
     "lucide": "TriangleAlertIcon",
     "tabler": "IconAlertTriangle",
     "hugeicons": "Alert02Icon",
     "phosphor": "WarningIcon",
-    "remixicon": "RiErrorWarningLine"
+    "remixicon": "RiErrorWarningLine",
+    "fontawesome": "faTriangleExclamation"
   },
   "TvIcon": {
     "lucide": "TvIcon",
     "tabler": "IconDeviceTv",
     "hugeicons": "Tv01Icon",
     "phosphor": "TelevisionIcon",
-    "remixicon": "RiTvLine"
+    "remixicon": "RiTvLine",
+    "fontawesome": "faTv"
   },
   "UploadCloudIcon": {
     "lucide": "UploadCloudIcon",
     "tabler": "IconCloudUpload",
     "hugeicons": "CloudUploadIcon",
     "phosphor": "CloudArrowUpIcon",
-    "remixicon": "RiUploadCloudLine"
+    "remixicon": "RiUploadCloudLine",
+    "fontawesome": "faCloudArrowUp"
   },
   "UserRoundXIcon": {
     "lucide": "UserRoundXIcon",
     "tabler": "IconUserX",
     "hugeicons": "UserRemove01Icon",
     "phosphor": "UserMinusIcon",
-    "remixicon": "RiUserUnfollowLine"
+    "remixicon": "RiUserUnfollowLine",
+    "fontawesome": "faUserXmark"
   },
   "UsersIcon": {
     "lucide": "UsersIcon",
     "tabler": "IconUsers",
     "hugeicons": "UserGroupIcon",
     "phosphor": "UsersIcon",
-    "remixicon": "RiGroupLine"
+    "remixicon": "RiGroupLine",
+    "fontawesome": "faUsers"
   },
   "VideoIcon": {
     "lucide": "VideoIcon",
     "tabler": "IconVideoPlus",
     "hugeicons": "RecordIcon",
     "phosphor": "VideoIcon",
-    "remixicon": "RiVideoLine"
+    "remixicon": "RiVideoLine",
+    "fontawesome": "faVideo"
   },
   "Volume2Icon": {
     "lucide": "Volume2Icon",
     "tabler": "IconVolume",
     "hugeicons": "VolumeHighIcon",
     "phosphor": "SpeakerHighIcon",
-    "remixicon": "RiVolumeUpLine"
+    "remixicon": "RiVolumeUpLine",
+    "fontawesome": "faVolumeHigh"
   },
   "VolumeOffIcon": {
     "lucide": "VolumeOffIcon",
     "tabler": "IconVolume",
     "hugeicons": "VolumeOffIcon",
     "phosphor": "SpeakerSlashIcon",
-    "remixicon": "RiVolumeMuteLine"
+    "remixicon": "RiVolumeMuteLine",
+    "fontawesome": "faVolumeOff"
   },
   "VolumeX": {
     "lucide": "VolumeX",
     "tabler": "IconVolume",
     "hugeicons": "VolumeOffIcon",
     "phosphor": "SpeakerSlashIcon",
-    "remixicon": "RiVolumeMuteLine"
+    "remixicon": "RiVolumeMuteLine",
+    "fontawesome": "faVolumeXmark"
   },
   "WalletIcon": {
     "lucide": "WalletIcon",
     "tabler": "IconWallet",
     "hugeicons": "Wallet01Icon",
     "phosphor": "WalletIcon",
-    "remixicon": "RiWalletLine"
+    "remixicon": "RiWalletLine",
+    "fontawesome": "faWallet"
   },
   "ZapIcon": {
     "lucide": "ZapIcon",
     "tabler": "IconBolt",
     "hugeicons": "ZapIcon",
     "phosphor": "LightningIcon",
-    "remixicon": "RiFlashlightLine"
+    "remixicon": "RiFlashlightLine",
+    "fontawesome": "faBolt"
   },
   "ZoomInIcon": {
     "lucide": "ZoomInIcon",
     "tabler": "IconZoomIn",
     "hugeicons": "ZoomInAreaIcon",
     "phosphor": "MagnifyingGlassPlusIcon",
-    "remixicon": "RiZoomInLine"
+    "remixicon": "RiZoomInLine",
+    "fontawesome": "faMagnifyingGlassPlus"
   },
   "ZoomOutIcon": {
     "lucide": "ZoomOutIcon",
     "tabler": "IconZoomOut",
     "hugeicons": "ZoomOutAreaIcon",
     "phosphor": "MagnifyingGlassMinusIcon",
-    "remixicon": "RiSearchEyeLine"
+    "remixicon": "RiSearchEyeLine",
+    "fontawesome": "faMagnifyingGlassMinus"
   }
 }

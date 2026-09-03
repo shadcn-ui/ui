@@ -40,6 +40,20 @@ export const iconLibraries = {
     usage: "<ICON />",
     export: "@remixicon/react",
   },
+  fontawesome: {
+    name: "fontawesome",
+    title: "Font Awesome",
+    packages: [
+      "@fortawesome/fontawesome-svg-core",
+      "@fortawesome/free-solid-svg-icons",
+      "@fortawesome/free-brands-svg-icons",
+      "@fortawesome/react-fontawesome",
+    ],
+    import:
+      "import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'\nimport { ICON } from '@fortawesome/free-solid-svg-icons'",
+    usage: "<FontAwesomeIcon icon={ICON} />",
+    export: "@fortawesome/free-solid-svg-icons",
+  },
 } as const
 
 export type IconLibraries = typeof iconLibraries
