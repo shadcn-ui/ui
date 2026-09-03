@@ -82,6 +82,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                       hugeicons="FileIcon"
                       phosphor="FileIcon"
                       remixicon="RiFileLine"
+                      gravityui="File"
                     />
                     {item.file}
                   </SidebarMenuButton>
@@ -121,6 +122,7 @@ function Tree({ item }: { item: TreeItem }) {
           hugeicons="FileIcon"
           phosphor="FileIcon"
           remixicon="RiFileLine"
+          gravityui="File"
         />
         {name}
       </SidebarMenuButton>
@@ -139,6 +141,7 @@ function Tree({ item }: { item: TreeItem }) {
             hugeicons="ArrowRight01Icon"
             phosphor="CaretRightIcon"
             remixicon="RiArrowRightSLine"
+            gravityui="ChevronRight"
             className="transition-transform"
           />
           <IconPlaceholder
@@ -147,6 +150,7 @@ function Tree({ item }: { item: TreeItem }) {
             hugeicons="FolderIcon"
             phosphor="FolderIcon"
             remixicon="RiFolderLine"
+            gravityui="Folder"
           />
           {name}
         </SidebarMenuButton>

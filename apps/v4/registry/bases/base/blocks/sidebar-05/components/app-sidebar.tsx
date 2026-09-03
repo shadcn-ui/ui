@@ -177,6 +177,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   hugeicons="LayoutBottomIcon"
                   phosphor="RowsIcon"
                   remixicon="RiGalleryLine"
+                  gravityui="LayoutList"
                   className="size-4"
                 />
               </div>
@@ -207,6 +208,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                       hugeicons="PlusSignIcon"
                       phosphor="PlusIcon"
                       remixicon="RiAddLine"
+                      gravityui="Plus"
                       className="ml-auto group-aria-expanded/menu-button:hidden"
                     />
                     <IconPlaceholder
@@ -215,6 +217,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                       hugeicons="MinusSignIcon"
                       phosphor="MinusIcon"
                       remixicon="RiSubtractLine"
+                      gravityui="Minus"
                       className="ml-auto hidden group-aria-expanded/menu-button:block"
                     />
                   </SidebarMenuButton>

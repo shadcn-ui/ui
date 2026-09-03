@@ -40,6 +40,14 @@ export const iconLibraries = {
     usage: "<ICON />",
     export: "@remixicon/react",
   },
+  gravityui: {
+    name: "gravityui",
+    title: "Gravity UI Icons",
+    packages: ["@gravity-ui/icons"],
+    import: "import { ICON } from '@gravity-ui/icons'",
+    usage: "<ICON />",
+    export: "@gravity-ui/icons",
+  },
 } as const
 
 export type IconLibraries = typeof iconLibraries

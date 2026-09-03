@@ -116,6 +116,7 @@ function MessageScrollerButton({
             hugeicons="ArrowDown02Icon"
             phosphor="ArrowDownIcon"
             remixicon="RiArrowDownLine"
+            gravityui="ArrowDown"
           />
           <span className="sr-only">
             {direction === "end" ? "Scroll to end" : "Scroll to start"}
