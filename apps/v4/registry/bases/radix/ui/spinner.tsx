@@ -1,7 +1,9 @@
 import { cn } from "@/registry/bases/radix/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
+type SpinnerProps = Omit<React.ComponentProps<"svg">, "children">
+
+function Spinner({ className, ...props }: SpinnerProps) {
   return (
     <IconPlaceholder
       lucide="Loader2Icon"
