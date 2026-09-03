@@ -414,6 +414,14 @@
     "logo": "<svg width='75' height='43' viewBox='0 0 75 43' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M0 5H6.23601V37H0V5Z' fill='var(--foreground)'/><rect x='6.23602' y='37' width='23.1623' height='5' fill='var(--foreground)'/><rect x='6.23602' width='23.1623' height='5' fill='var(--foreground)'/><rect width='4.8923' height='17.1299' transform='matrix(0.932438 -0.361329 0.293952 0.95582 29.4029 4.76758)' fill='var(--foreground)'/><rect width='4.88783' height='17.1429' transform='matrix(0.937045 0.349208 -0.283616 0.958938 34.2604 21)' fill='var(--foreground)'/><rect x='49' width='22' height='5' fill='var(--foreground)'/><rect x='44' y='5' width='5' height='17' fill='var(--foreground)'/><path d='M49 22H71V27H49V22Z' fill='var(--foreground)'/><rect x='71' y='25' width='4' height='13' fill='var(--foreground)'/><rect x='49' y='38' width='22' height='5' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@dashboardcn",
+    "homepage": "https://dashboardcn.com",
+    "url": "https://dashboardcn.com/r/{name}.json",
+    "description": "Dashboard and analytics components for shadcn/ui. KPI cards, charts, funnels, ranked lists, heatmaps, data tables, and the cards that combine them. Free and MIT licensed.",
+    "author": "NoahGdev",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'><rect width='1024' height='1024' rx='160' fill='var(--foreground)'/><path fill='var(--background)' d='M304 212H545C680 212 789 321 789 455C789 557 738 646 658 700V421C658 397 639 378 615 378H611C587 378 568 397 568 421V739H541V513C541 488 521 468 496 468H495C470 468 450 488 450 513V739H429V608C429 584 410 565 386 565H381C357 565 338 584 338 608V739H304C288 739 275 726 275 710V241C275 225 288 212 304 212Z'/></svg>"
+  },
+  {
     "name": "@delego",
     "homepage": "https://github.com/Delego-Dev/registry",
     "url": "https://raw.githubusercontent.com/Delego-Dev/registry/main/public/r/{name}.json",
