@@ -42,7 +42,11 @@ function Button({
   return (
     <ButtonPrimitive
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={
+        typeof className === "function"
+          ? (state) => cn(buttonVariants({ variant, size }), className(state))
+          : cn(buttonVariants({ variant, size, className }))
+      }
       {...props}
     />
   )
