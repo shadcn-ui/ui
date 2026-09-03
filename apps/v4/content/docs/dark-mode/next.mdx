@@ -15,6 +15,12 @@ npm install next-themes
 
 ## Create a theme provider
 
+<Callout>
+
+**React 19 + Next.js 16.2+:** You may see an _"Encountered a script tag while rendering React component"_ warning in development. This is a [known false positive](https://github.com/shadcn-ui/ui/issues/10104) caused by `next-themes` using an inline `<script>` to prevent a flash of unstyled content (FOUC). The script works correctly during SSR — the warning can be safely ignored.
+
+</Callout>
+
 ```tsx title="components/theme-provider.tsx" showLineNumbers
 "use client"
 
