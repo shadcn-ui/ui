@@ -521,6 +521,9 @@ importers:
       browserslist:
         specifier: ^4.26.2
         version: 4.26.2
+      cn:
+        specifier: ^0.2.4
+        version: 0.2.4
       commander:
         specifier: ^14.0.0
         version: 14.0.0
@@ -575,9 +578,6 @@ importers:
       stringify-object:
         specifier: ^5.0.0
         version: 5.0.0
-      tailwind-merge:
-        specifier: ^3.0.1
-        version: 3.3.1
       ts-morph:
         specifier: ^26.0.0
         version: 26.0.0
@@ -5153,6 +5153,11 @@ packages:
     engines: {node: '>=20'}
     hasBin: true
 
+  cn@0.2.4:
+    resolution: {integrity: sha512-SzQvoh5FwizWtQg9+JueKdjWhlfCZMdu5DqNHm9q1wUlRVmKb9WXlepR9bTTbPwzEOyX1ujJ6lcCppmn3bNUCg==}
+    engines: {node: '>=20'}
+    hasBin: true
+
   code-block-writer@13.0.3:
     resolution: {integrity: sha512-Oofo0pq3IKnsFtuHqSF7TqBfr71aeyZDVJ0HpmqB7FBM2qEigL0iPONSCZSO9pE9dZTAxANe5XHG9Uy0YMv8cg==}
 
@@ -9033,9 +9038,6 @@ packages:
 
   symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
-
-  tailwind-merge@3.3.1:
-    resolution: {integrity: sha512-gBXpgUm/3rp1lMZZrM/w7D8GKqshif0zAymAhbCyIt8KMe+0v9DQ7cdYLR4FHH/cKpdTXb+A/tKKU3eolfsI+g==}
 
   tailwind-merge@3.6.0:
     resolution: {integrity: sha512-uxL7qAVQriqRQPAyK3pj66VqskWqoZ37PW94jwOTwNfq/z9oyu1V+eqrZqtR2+fCiXdYOZe/Modt8GtvqNzu+w==}
@@ -14259,6 +14261,8 @@ snapshots:
 
   cn@0.2.2: {}
 
+  cn@0.2.4: {}
+
   code-block-writer@13.0.3: {}
 
   collapse-white-space@2.1.0: {}
@@ -19066,8 +19070,6 @@ snapshots:
       use-sync-external-store: 1.6.0(react@19.2.3)
 
   symbol-tree@3.2.4: {}
-
-  tailwind-merge@3.3.1: {}
 
   tailwind-merge@3.6.0: {}
 
