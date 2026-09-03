@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import Script from "next/script"
+import { cn } from "cn"
 
-import { cn } from "@/lib/utils"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { Button } from "@/styles/base-nova/ui/button"
 import {

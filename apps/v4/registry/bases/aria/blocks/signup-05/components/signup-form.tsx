@@ -1,6 +1,7 @@
 "use client"
 
-import { cn } from "@/registry/bases/aria/lib/utils"
+import { cn } from "cn"
+
 import { Button } from "@/registry/bases/aria/ui/button"
 import {
   Field,
