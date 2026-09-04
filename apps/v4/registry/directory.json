@@ -1206,6 +1206,13 @@
     "logo": "<svg width='16' height='16' viewBox='0 0 72 72' xmlns='http://www.w3.org/2000/svg'><path fill='currentColor' d='M36,45 v-36 a28,28 0 0 0 0 56 z'/><circle cx='36' cy='36' r='28' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='3'/></svg>"
   },
   {
+    "name": "@pane",
+    "homepage": "https://pane.theui.company",
+    "url": "https://pane.theui.company/r/{name}.json",
+    "description": "Liquid glass components for React.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='16' height='16'><path fill-rule='evenodd' clip-rule='evenodd' d='M11 2h10c4.971 0 9 4.029 9 9v10c0 4.971-4.029 9-9 9H11c-4.971 0-9-4.029-9-9V11c0-4.971 4.029-9 9-9Zm0 5.5h10A3.5 3.5 0 0 1 24.5 11v10a3.5 3.5 0 0 1-3.5 3.5H11A3.5 3.5 0 0 1 7.5 21V11A3.5 3.5 0 0 1 11 7.5Z' fill='var(--foreground)'/></svg>"
+  },
+  {
     "name": "@payload-components",
     "homepage": "https://www.payload-components.xyz",
     "url": "https://www.payload-components.xyz/r/{name}.json",
