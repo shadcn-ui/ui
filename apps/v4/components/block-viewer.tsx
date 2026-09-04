@@ -3,6 +3,7 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { cn } from "cn"
 import {
   Check,
   ChevronRight,
@@ -28,7 +29,6 @@ import {
   type createFileTreeForRegistryItemFiles,
   type FileTree,
 } from "@/lib/registry"
-import { cn } from "@/lib/utils"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { getIconForLanguageExtension } from "@/components/icons"
 import { OpenInV0Button } from "@/components/open-in-v0-button"

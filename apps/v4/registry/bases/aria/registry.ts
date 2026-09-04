@@ -16,6 +16,7 @@ const ARIA_STYLE = {
   type: "registry:style",
   dependencies: [
     "class-variance-authority",
+    "cn",
     "lucide-react",
     "react-aria-components",
   ],

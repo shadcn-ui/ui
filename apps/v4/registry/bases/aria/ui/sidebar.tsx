@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "cn"
 import {
   Button as ButtonPrimitive,
   Link as LinkPrimitive,
@@ -10,7 +11,6 @@ import {
 } from "react-aria-components"
 
 import { useIsMobile } from "@/registry/bases/aria/hooks/use-mobile"
-import { cn } from "@/registry/bases/aria/lib/utils"
 import { Button } from "@/registry/bases/aria/ui/button"
 import { Input } from "@/registry/bases/aria/ui/input"
 import { Separator } from "@/registry/bases/aria/ui/separator"

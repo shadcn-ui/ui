@@ -314,8 +314,7 @@ function buildPackageJson(dependencies: string[]) {
     "react-dom": "^19.2.4",
     // Utility deps.
     "class-variance-authority": "^0.7.1",
-    clsx: "^2.1.1",
-    "tailwind-merge": "^3.3.1",
+    cn: "^0.2.4",
     // Component peer deps.
     "date-fns": "4.1.0",
     "embla-carousel-react": "8.5.1",
