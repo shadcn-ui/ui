@@ -1,0 +1,1 @@
+export function useClickOutsideDetector() { return { isListening: true }; }
