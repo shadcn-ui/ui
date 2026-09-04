@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 
-import { cn } from "@/registry/bases/radix/lib/utils"
 import { Badge } from "@/registry/bases/radix/ui/badge"
 import { Separator } from "@/registry/bases/radix/ui/separator"
 import { IconPlaceholder } from "@/app/(app)/create/components/icon-placeholder"
