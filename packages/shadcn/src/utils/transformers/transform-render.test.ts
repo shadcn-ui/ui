@@ -374,7 +374,7 @@ export function Component() {
 
 export function Component() {
   return (
-    <Button render={<a href="/home" />}>Go Home</Button>
+    <NavigationMenuLink render={<a href="/home" />}>Go Home</NavigationMenuLink>
   )
 }`,
             config: testConfig,
@@ -386,7 +386,7 @@ export function Component() {
 
         export function Component() {
           return (
-            <Button render={<a href="/home">Go Home</a>} />
+            <NavigationMenuLink render={<a href="/home">Go Home</a>} />
           )
         }"
       `)
