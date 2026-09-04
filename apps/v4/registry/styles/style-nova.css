@@ -155,7 +155,7 @@
   }
 
   .cn-button-variant-outline {
-    @apply border-border bg-background hover:bg-muted hover:text-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 aria-expanded:bg-muted aria-expanded:text-foreground;
+    @apply border-border bg-background hover:bg-muted hover:text-foreground dark:bg-background dark:border-border dark:hover:bg-muted aria-expanded:bg-muted aria-expanded:text-foreground;
   }
 
   .cn-button-variant-secondary {
@@ -224,7 +224,7 @@
   }
 
   .cn-button-group-separator {
-    @apply bg-input;
+    @apply bg-border;
   }
 
   /* MARK: Calendar */
@@ -233,7 +233,7 @@
   }
 
   .cn-calendar-dropdown-root {
-    @apply has-focus:border-ring border-input has-focus:ring-ring/50 border has-focus:ring-3;
+    @apply has-focus:border-ring border-border has-focus:ring-ring/50 border has-focus:ring-3;
   }
 
   .cn-calendar-caption-label {
@@ -1248,11 +1248,11 @@
 
   /* MARK: Switch */
   .cn-switch {
-    @apply data-checked:bg-primary data-unchecked:bg-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 dark:data-unchecked:bg-input/80 shrink-0 rounded-full border border-transparent focus-visible:ring-3 aria-invalid:ring-3 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:border-transparent data-[size=default]:h-[18.4px] data-[size=default]:w-[32px] data-[size=sm]:h-[14px] data-[size=sm]:w-[24px];
+    @apply data-checked:bg-primary data-unchecked:bg-muted focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 dark:data-unchecked:bg-muted/80 shrink-0 rounded-full border border-transparent focus-visible:ring-3 aria-invalid:ring-3 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:border-transparent data-[size=default]:h-[18.4px] data-[size=default]:w-[32px] data-[size=sm]:h-[14px] data-[size=sm]:w-[24px];
   }
 
   .cn-switch-aria {
-    @apply data-selected:bg-primary not-data-selected:bg-input data-focus-visible:border-ring data-focus-visible:ring-ring/50 dark:not-data-selected:bg-input/80 data-focus-visible:ring-3 data-invalid:ring-destructive/20 dark:data-invalid:ring-destructive/40 data-invalid:border-destructive dark:data-invalid:border-destructive/50 data-invalid:ring-3;
+    @apply data-selected:bg-primary not-data-selected:bg-muted data-focus-visible:border-ring data-focus-visible:ring-ring/50 dark:not-data-selected:bg-muted/80 data-focus-visible:ring-3 data-invalid:ring-destructive/20 dark:data-invalid:ring-destructive/40 data-invalid:border-destructive dark:data-invalid:border-destructive/50 data-invalid:ring-3;
   }
 
   .cn-switch-thumb {
@@ -1352,7 +1352,7 @@
   }
 
   .cn-toggle-variant-outline {
-    @apply border-input hover:bg-muted border bg-transparent;
+    @apply border-border hover:bg-muted border bg-transparent;
   }
 
   .cn-toggle-size-default {
@@ -1481,7 +1481,7 @@
   }
 
   .cn-bubble-variant-outline {
-    @apply *:data-[slot=bubble-content]:bg-background *:data-[slot=bubble-content]:border-border [&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:text-foreground dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-input/30;
+    @apply *:data-[slot=bubble-content]:bg-background *:data-[slot=bubble-content]:border-border [&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:text-foreground dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted;
   }
 
   .cn-bubble-variant-ghost {
