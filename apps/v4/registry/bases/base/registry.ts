@@ -14,7 +14,12 @@ import { ui } from "./ui/_registry"
 // Shared between index and style.
 const BASE_STYLE = {
   type: "registry:style",
-  dependencies: ["class-variance-authority", "lucide-react", "@base-ui/react"],
+  dependencies: [
+    "class-variance-authority",
+    "cn",
+    "lucide-react",
+    "@base-ui/react",
+  ],
   devDependencies: ["tw-animate-css", "shadcn"],
   registryDependencies: ["utils"],
   css: {

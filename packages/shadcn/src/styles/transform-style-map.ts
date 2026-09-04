@@ -1,5 +1,5 @@
 import { TransformerStyle } from "@/src/styles/transform"
-import { twMerge } from "tailwind-merge"
+import { twMerge } from "cn"
 import {
   Node,
   type CallExpression,

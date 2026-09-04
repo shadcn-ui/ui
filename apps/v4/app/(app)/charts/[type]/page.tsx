@@ -1,8 +1,8 @@
 import * as React from "react"
 import { type Metadata } from "next"
 import { notFound } from "next/navigation"
+import { cn } from "cn"
 
-import { cn } from "@/lib/utils"
 import {
   ChartDisplay,
   getCachedRegistryItem,

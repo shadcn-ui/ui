@@ -16,7 +16,7 @@ Components are styled using Tailwind CSS. You need to install Tailwind CSS in yo
 Add the following dependencies to your project:
 
 ```bash
-npm install shadcn class-variance-authority clsx tailwind-merge lucide-react tw-animate-css
+npm install shadcn class-variance-authority cn lucide-react tw-animate-css
 ```
 
 ### Configure import aliases
@@ -200,13 +200,10 @@ Add the following to your styles/globals.css file. You can learn more about usin
 
 ### Add a cn helper
 
-```ts showLineNumbers title="lib/utils.ts"
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+Components import `cn` directly from the `cn` package. Re-export it from `lib/utils.ts` so your own code has a single place to import helpers from.
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
+```ts showLineNumbers title="lib/utils.ts"
+export { cn } from "cn"
 ```
 
 ### Create a `components.json` file
