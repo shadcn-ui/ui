@@ -1,0 +1,1 @@
+export function useMeasure() { return { width: 0, height: 0 }; }
