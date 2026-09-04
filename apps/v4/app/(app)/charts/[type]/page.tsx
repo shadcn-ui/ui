@@ -1,7 +1,8 @@
 import * as React from "react"
+import { type Metadata } from "next"
 import { notFound } from "next/navigation"
+import { cn } from "cn"
 
-import { cn } from "@/lib/utils"
 import {
   ChartDisplay,
   getCachedRegistryItem,
@@ -35,6 +36,23 @@ export async function generateStaticParams() {
   return chartTypes.map((type) => ({
     type,
   }))
+}
+
+export async function generateMetadata({ params }: ChartPageProps) {
+  const { type } = await params
+
+  if (!chartTypes.includes(type as ChartType)) {
+    return notFound()
+  }
+
+  const title = `${type.charAt(0).toUpperCase() + type.slice(1)} Charts`
+
+  return {
+    title,
+    alternates: {
+      canonical: `/charts/${type}`,
+    },
+  } satisfies Metadata
 }
 
 export default async function ChartPage({ params }: ChartPageProps) {

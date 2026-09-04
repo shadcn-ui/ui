@@ -1,13 +1,12 @@
 "use client"
 
+import { cn } from "cn"
 import {
   Popover as PopoverPrimitive,
   PreviewTrigger as PreviewTriggerPrimitive,
   type PopoverProps as PopoverPrimitiveProps,
   type PreviewTriggerProps,
 } from "react-aria-components"
-
-import { cn } from "@/registry/bases/aria/lib/utils"
 
 function HoverCardTrigger({ children, ...props }: PreviewTriggerProps) {
   return (

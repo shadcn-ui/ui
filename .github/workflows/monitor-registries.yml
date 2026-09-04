@@ -27,6 +27,7 @@ concurrency:
 jobs:
   monitor:
     name: Monitor registry health
+    if: github.repository == 'shadcn-ui/ui'
     runs-on: ubuntu-latest
     timeout-minutes: 120
     steps:
