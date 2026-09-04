@@ -1,0 +1,2 @@
+import { useDebounceCallback } from './useDebounceCallback'; import assert from 'node:assert/strict';
+let called = 0; const deb = useDebounceCallback(() => called++, 50); deb(); assert.equal(called, 0);
