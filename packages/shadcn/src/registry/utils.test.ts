@@ -1,7 +1,11 @@
-import { describe, expect, it, test, vi } from "vitest"
+import * as fs from "fs/promises"
+import { tmpdir } from "os"
+import * as path from "path"
+import { afterEach, beforeEach, describe, expect, it, test, vi } from "vitest"
 import { z } from "zod"
 
 import { Config } from "../utils/get-config"
+import { ProjectInfo } from "../utils/get-project-info"
 import { registryItemFileSchema } from "./schema"
 import {
   canDeduplicateFiles,
@@ -10,6 +14,7 @@ import {
   isLocalFile,
   isUniversalRegistryItem,
   isUrl,
+  recursivelyResolveFileImports,
 } from "./utils"
 
 describe("getDependencyFromModuleSpecifier", () => {
@@ -676,5 +681,82 @@ describe("isUrl", () => {
     expect(isUrl("/path/to/file")).toBe(false)
     expect(isUrl("./relative/path")).toBe(false)
     expect(isUrl("~/home/path")).toBe(false)
+  })
+})
+
+describe("recursivelyResolveFileImports", () => {
+  let fixtureDir: string
+
+  beforeEach(async () => {
+    fixtureDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-registry-"))
+    await fs.writeFile(
+      path.join(fixtureDir, "tsconfig.json"),
+      JSON.stringify({
+        compilerOptions: {
+          paths: { "@/*": ["./*"] },
+        },
+      })
+    )
+    await fs.mkdir(path.join(fixtureDir, "components", "ui"), {
+      recursive: true,
+    })
+    await fs.writeFile(
+      path.join(fixtureDir, "components", "ui", "button.tsx"),
+      `import { cn } from "cn"\n\nexport function Button() {\n  return <div className={cn("flex")} />\n}\n`
+    )
+  })
+
+  afterEach(async () => {
+    await fs.rm(fixtureDir, { recursive: true, force: true })
+  })
+
+  it("resolves cn as a dependency for a component importing it", async () => {
+    const config = {
+      style: "new-york",
+      rsc: true,
+      tsx: true,
+      tailwind: {
+        css: "app/globals.css",
+        baseColor: "neutral",
+        cssVariables: true,
+      },
+      aliases: {
+        components: "@/components",
+        utils: "@/lib/utils",
+      },
+      resolvedPaths: {
+        cwd: fixtureDir,
+        tailwindConfig: "",
+        tailwindCss: path.join(fixtureDir, "app/globals.css"),
+        utils: path.join(fixtureDir, "lib/utils.ts"),
+        components: path.join(fixtureDir, "components"),
+        lib: path.join(fixtureDir, "lib"),
+        hooks: path.join(fixtureDir, "hooks"),
+        ui: path.join(fixtureDir, "components/ui"),
+      },
+    } as Config
+
+    const projectInfo: ProjectInfo = {
+      framework: {
+        name: "next-app",
+        label: "Next.js",
+      } as ProjectInfo["framework"],
+      isSrcDir: false,
+      isRSC: true,
+      isTsx: true,
+      tailwindConfigFile: null,
+      tailwindCssFile: "app/globals.css",
+      tailwindVersion: "v4",
+      frameworkVersion: null,
+      aliasPrefix: "@",
+    }
+
+    const result = await recursivelyResolveFileImports(
+      "components/ui/button.tsx",
+      config,
+      projectInfo
+    )
+
+    expect(result.dependencies).toContain("cn")
   })
 })

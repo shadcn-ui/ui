@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { cva } from "class-variance-authority"
+import { cn } from "cn"
 import {
   composeRenderProps,
   Header as HeaderPrimitive,
@@ -16,7 +17,6 @@ import {
   type MenuSectionProps as MenuSectionPrimitiveProps,
 } from "react-aria-components"
 
-import { cn } from "@/registry/bases/aria/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function ContextMenu({

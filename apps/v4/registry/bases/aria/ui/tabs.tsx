@@ -2,14 +2,13 @@
 
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "cn"
 import {
   TabList as TabListPrimitive,
   TabPanel as TabPanelPrimitive,
   Tab as TabPrimitive,
   Tabs as TabsPrimitive,
 } from "react-aria-components"
-
-import { cn } from "@/registry/bases/aria/lib/utils"
 
 function Tabs({
   className,
