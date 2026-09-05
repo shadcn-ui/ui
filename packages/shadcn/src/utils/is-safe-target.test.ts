@@ -153,4 +153,41 @@ describe("isSafeTarget", () => {
       expect(isSafeTarget("/foo/test.txt", cwd)).toBe(false)
     })
   })
+
+  // These exercise the win32-only branch of isSafeTarget, which relies on
+  // native `path` (backslash-separator) semantics. They only run on a real
+  // Windows host — stubbing `process.platform` under Linux CI would not
+  // change which `path` implementation is bound, so it can't validate this
+  // branch's actual behavior.
+  describe.skipIf(process.platform !== "win32")(
+    "Windows drive-letter paths",
+    () => {
+      const winCwd = "C:\\Users\\victim\\myapp"
+
+      test("rejects a sibling directory that merely shares a string prefix with the root", () => {
+        expect(
+          isSafeTarget(
+            "C:\\Users\\victim\\myapp-EVIL\\startup\\payload.js",
+            winCwd
+          )
+        ).toBe(false)
+      })
+
+      test("accepts a real path inside the root", () => {
+        expect(
+          isSafeTarget("C:\\Users\\victim\\myapp\\src\\file.tsx", winCwd)
+        ).toBe(true)
+      })
+
+      test("accepts the root path itself", () => {
+        expect(isSafeTarget(winCwd, winCwd)).toBe(true)
+      })
+
+      test("matches the root case-insensitively", () => {
+        expect(
+          isSafeTarget("c:\\users\\victim\\MYAPP\\src\\file.tsx", winCwd)
+        ).toBe(true)
+      })
+    }
+  )
 })
