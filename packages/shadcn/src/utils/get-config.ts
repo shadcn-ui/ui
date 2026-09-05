@@ -146,7 +146,7 @@ async function resolveAliasPath(
     // to the directory root.
     if (
       !resolved.matchedAlias.includes("*") &&
-      /\/index\.[^/]+$/.test(resolved.path)
+      isIndexFile(resolved.path)
     ) {
       return path.dirname(resolved.path)
     }
@@ -154,12 +154,45 @@ async function resolveAliasPath(
     // Wildcard aliases with explicit extensions (e.g. `#components/*` →
     // `./src/components/*.tsx`) should strip the source extension so `ui`
     // resolves to `/src/components/ui` instead of `/src/components/ui.tsx`.
-    if (resolved.matchedAlias.includes("*") && /\.[^/]+$/.test(resolved.path)) {
-      return resolved.path.replace(/\.[^/]+$/, "")
+    if (resolved.matchedAlias.includes("*")) {
+      const stripped = stripFileExtension(resolved.path)
+      if (stripped !== resolved.path) {
+        return stripped
+      }
     }
   }
 
   return resolved.path
+}
+
+/**
+ * Strip the file extension from an absolute resolved path, returning the path
+ * unchanged when there is no extension to strip. Uses `path.extname`, which
+ * dispatches to `path.win32` on Windows and `path.posix` elsewhere, so paths
+ * with dots in ancestor directory names (e.g. `C:\2.MY_APP\packages\ui\src\components`)
+ * are not mistaken for a file extension on Windows. See
+ * https://github.com/shadcn-ui/ui/issues/10799.
+ *
+ * @internal exported for tests only.
+ */
+export function stripFileExtension(p: string): string {
+  const ext = path.extname(p)
+  return ext ? p.slice(0, -ext.length) : p
+}
+
+/**
+ * Return true when the final path segment is `index.<ext>` (e.g. `index.ts`,
+ * `index.tsx`). Uses `path.basename` + `path.extname` so the check is OS-aware
+ * and does not mistake `\index.ts` on Windows for a non-index file.
+ *
+ * @internal exported for tests only.
+ */
+export function isIndexFile(p: string): boolean {
+  const ext = path.extname(p)
+  if (!ext) {
+    return false
+  }
+  return path.basename(p, ext) === "index"
 }
 
 function assertResolvedAliases(
