@@ -37,18 +37,20 @@ Add the `dir="rtl"` and `lang="ar"` attributes to the `html` tag. Update `lang="
 
 Then wrap your app with the `DirectionProvider` component with the `direction="rtl"` prop in your `__root.tsx`:
 
-```tsx title="src/routes/__root.tsx" showLineNumbers {1,9,14-16}
+```tsx title="src/routes/__root.tsx" showLineNumbers {3,11,16}
+import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router"
+
 import { DirectionProvider } from "@/components/ui/direction"
 
 export const Route = createRootRoute({
-  component: RootComponent,
+  shellComponent: RootDocument,
 })
 
-function RootComponent() {
+function RootDocument({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ar" dir="rtl">
       <head>
-        <Meta />
+        <HeadContent />
       </head>
       <body>
         <DirectionProvider direction="rtl">{children}</DirectionProvider>
