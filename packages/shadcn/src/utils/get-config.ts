@@ -276,6 +276,13 @@ export async function findPackageRoot(cwd: string, resolvedPath: string) {
   const commonRoot = findCommonRoot(cwd, resolvedPath)
   const relativePath = path.relative(commonRoot, resolvedPath)
 
+  // fast-glob always returns POSIX-style ("/") paths, even on Windows, so
+  // segments must be split on either separator -- not path.sep alone --
+  // or a multi-segment glob result (e.g. "packages/ui") never splits at
+  // all on Windows and can never match relativeSegments.
+  const SEPARATOR = /[\\/]+/
+  const relativeSegments = relativePath.split(SEPARATOR)
+
   const packageRoots = await fg.glob("**/package.json", {
     cwd: commonRoot,
     deep: 3,
@@ -283,9 +290,26 @@ export async function findPackageRoot(cwd: string, resolvedPath: string) {
     suppressErrors: true,
   })
 
+  // Compare path segments rather than raw strings. A naive `startsWith`
+  // check here would let a sibling directory whose name is a string
+  // prefix of another (e.g. "react-demo" vs. "react-demo2") match
+  // incorrectly, since "react-demo2/...".startsWith("react-demo") is
+  // true even though "react-demo" isn't actually an ancestor directory.
   const matchingPackageRoot = packageRoots
-    .map((pkgPath) => path.dirname(pkgPath))
-    .find((pkgDir) => relativePath.startsWith(pkgDir))
+    .map((pkgPath) => path.posix.dirname(pkgPath)) // pkgPath is always POSIX-style
+    .filter((pkgDir) => {
+      if (pkgDir === ".") {
+        return true
+      }
+
+      const pkgSegments = pkgDir.split(SEPARATOR)
+      return pkgSegments.every(
+        (segment, index) => relativeSegments[index] === segment
+      )
+    })
+    // Prefer the most specific (deepest) match, in case a resolved path
+    // sits inside more than one nested package.json along the way.
+    .sort((a, b) => b.split(SEPARATOR).length - a.split(SEPARATOR).length)[0]
 
   return matchingPackageRoot ? path.join(commonRoot, matchingPackageRoot) : null
 }
