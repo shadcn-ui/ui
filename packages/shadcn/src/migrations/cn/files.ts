@@ -1,6 +1,6 @@
 import { promises as fs } from "fs"
 import path from "path"
-import fg from "fast-glob"
+import globby from "globby"
 import { ScriptKind } from "ts-morph"
 
 import type { SourceRegion } from "./types"
@@ -56,13 +56,14 @@ export async function resolveMigrationFiles(cwd: string, migratePath?: string) {
 }
 
 function findSourceFiles(cwd: string, pattern = SOURCE_PATTERN) {
-  return fg(pattern, {
+  return globby(pattern, {
     cwd,
     absolute: true,
     onlyFiles: true,
     ignore: SOURCE_IGNORE,
     suppressErrors: true,
     dot: true,
+    gitignore: true,
   })
 }
 
