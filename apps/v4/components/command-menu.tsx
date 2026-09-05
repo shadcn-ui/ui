@@ -390,7 +390,16 @@ export function CommandMenu({
         e.preventDefault()
         setOpen((open) => !open)
       }
+    }
 
+    document.addEventListener("keydown", down)
+    return () => document.removeEventListener("keydown", down)
+  }, [])
+
+  React.useEffect(() => {
+    if (!open) return
+
+    const down = (e: KeyboardEvent) => {
       if (e.key === "c" && (e.metaKey || e.ctrlKey)) {
         runCommand(() => {
           if (selectedType === "color") {
@@ -419,7 +428,7 @@ export function CommandMenu({
 
     document.addEventListener("keydown", down)
     return () => document.removeEventListener("keydown", down)
-  }, [copyPayload, runCommand, selectedType, packageManager])
+  }, [open, copyPayload, runCommand, selectedType, packageManager])
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
