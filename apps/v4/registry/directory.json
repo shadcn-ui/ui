@@ -2045,5 +2045,12 @@
     "url": "https://afterglow.thebuilder.dk/r/{name}.json",
     "description": "A complete terminal UI system for shadcn with Base UI components, terminal-specific building blocks, and eight phosphor color themes.",
     "logo": "<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg' fill='currentColor'><path d='M6.45 5.9L18.23 16L6.45 26.1L3 22.07L10.09 16L3 9.93Z'/><path d='M18.4 20.24H29V24.48H18.4Z'/></svg>"
+  },
+  {
+    "name": "@zenoadmin",
+    "homepage": "https://github.com/zeno-admin/shadcn-editor",
+    "url": "https://shadcn-editor-nu.vercel.app/r/{name}.json",
+    "description": "A bilingual Lexical rich text editor built with shadcn/ui, with extensible plugins, nodes, and toolbar controls.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect width='32' height='32' rx='8' fill='var(--foreground)'/><path d='M9 9h14L9 23h14' stroke='var(--background)' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/></svg>"
   }
 ]
