@@ -204,6 +204,34 @@ Use `multiple` for an item that accepts more than one fixed answer.
   previewClassName="min-h-[420px] p-4 sm:p-8"
 />
 
+## Auto Submit
+
+Set `autoSubmit` on an item to continue after a fixed choice is selected.
+`true` continues as soon as the item is answered. Pass a function to wait
+until the selected values meet a condition. The last item submits the form.
+
+<ComponentPreview
+  align="end"
+  styleName="radix-nova"
+  name="questionnaire-auto-submit"
+  previewClassName="min-h-[420px] p-4 sm:p-8"
+/>
+
+```tsx
+<QuestionnaireItem autoSubmit name="task" required>
+  {/* radios continue as soon as one is selected */}
+</QuestionnaireItem>
+
+<QuestionnaireItem
+  autoSubmit={(value) => value.length > 1}
+  multiple
+  name="context"
+  required
+>
+  {/* checkboxes continue after two values are selected */}
+</QuestionnaireItem>
+```
+
 ## Freeform Answer
 
 Compose `QuestionnaireInput` with fixed choices when the user can provide another answer.
