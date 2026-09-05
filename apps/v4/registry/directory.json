@@ -1374,6 +1374,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' id='Layer_2' data-name='Layer 2' viewBox='0 0 463.07 463.07'><defs><style>.cls-1{fill:var(--muted);stroke:var(--foreground);stroke-miterlimit:10;stroke-width:12px}</style></defs><g id='Layer_1-2' data-name='Layer 1'><path d='M459.07 231.54c0 41.45-11.07 80.3-30.44 113.76H231.54c6.42 0 12.72-.52 18.86-1.57 53.85-8.99 94.91-55.81 94.91-112.2s-41.05-103.21-94.91-112.2c-6.14-1.05-12.45-1.57-18.86-1.57V4c26.62 0 52.15 4.58 75.88 12.97a225 225 0 0 1 37.89 17.47 227.1 227.1 0 0 1 56.88 46.63 225 225 0 0 1 26.44 36.7c19.37 33.47 30.44 72.31 30.44 113.77Z' class='cls-1'/><path d='M345.31 231.54c0 56.38-41.05 103.21-94.91 112.2a113 113 0 0 1-18.86 1.57c-62.82 0-113.77-50.95-113.77-113.76s50.95-113.77 113.77-113.77c6.42 0 12.72.52 18.86 1.57 53.85 8.99 94.91 55.81 94.91 112.2Z' class='cls-1'/><path d='M231.53 4v113.77c-62.82 0-113.77 50.95-113.77 113.77V345.3H4V231.54c0-41.46 11.07-80.3 30.44-113.77 19.97-34.54 48.78-63.35 83.32-83.33C151.24 15.08 190.08 4 231.53 4Z' class='cls-1'/></g></svg>"
   },
   {
+    "name": "@saastro",
+    "homepage": "https://ui.saastro.io",
+    "url": "https://ui.saastro.io/r/{name}.json",
+    "description": "Landing page blocks for Astro. Zero-JS .astro blocks with no dependencies — installable in an Astro project without React — plus interactive React blocks on Base UI.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='3' y='3' width='26' height='26' rx='7' fill='var(--foreground)'/><path d='M20.5 11.2c-.7-1.4-2.3-2.2-4.3-2.2-2.8 0-4.8 1.5-4.8 3.7 0 1.9 1.4 3 3.9 3.5l1.7.4c1.6.3 2.3.8 2.3 1.7 0 1-1.1 1.7-2.7 1.7-1.7 0-2.9-.7-3.3-2h-2.5c.4 2.6 2.6 4.2 5.7 4.2 3.1 0 5.3-1.6 5.3-4 0-2-1.3-3.1-4-3.6l-1.7-.4c-1.5-.3-2.2-.8-2.2-1.6 0-1 1-1.6 2.4-1.6 1.4 0 2.4.6 2.7 1.7z' fill='var(--background)'/></svg>"
+  },
+  {
     "name": "@sabraman",
     "homepage": "https://sabraman.ru/components",
     "url": "https://sabraman.ru/r/{name}.json",
