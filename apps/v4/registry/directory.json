@@ -968,6 +968,13 @@
     "logo": "<svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='32' height='32' rx='8' fill='var(--foreground)'/><path d='M16 6C12.134 6 9 9.134 9 13C9 18.25 16 26 16 26C16 26 23 18.25 23 13C23 9.134 19.866 6 16 6Z' fill='var(--background)'/><circle cx='16' cy='13' r='3' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@mischief",
+    "homepage": "https://ui.tinkererslabs.com",
+    "url": "https://ui.tinkererslabs.com/r/{name}.json",
+    "description": "A playful, high-utility shadcn registry: PDF, DOCX and JSON viewers, redaction and bounding boxes, agent chat with tool calls, data tables, command palettes, OTP inputs, and shader fields.",
+    "logo": "<svg width='24' height='24' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'> <path d='M7.5 36.5C8.8 27.6 9.6 19.6 12.4 11.5C17.1 17.4 20.6 24 24.1 30.7C27.3 24.8 29.1 16.8 33.2 9.8C36.4 17.7 38.4 27.5 40.5 36.5' fill='none' stroke='var(--foreground)' stroke-linecap='round' stroke-linejoin='round' stroke-width='6.5'/> <path d='M40.2 3.8L41.4 7.1L44.8 8.3L41.4 9.5L40.2 12.8L39 9.5L35.7 8.3L39 7.1L40.2 3.8Z' fill='var(--foreground)'/> </svg>"
+  },
+  {
     "name": "@mksingh",
     "homepage": "https://mksingh.dev/docs",
     "url": "https://mksingh.dev/r/{name}.json",
