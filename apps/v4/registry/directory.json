@@ -109,7 +109,7 @@
     "homepage": "https://designali.com",
     "url": "https://designali.com/r/{name}.json",
     "description": "Where thoughtful design meets production-ready code. I design and build digital experiences that look great, feel intuitive, and work beautifully.",
-    "logo": "<svg width='658' height='376' viewBox="0 0 658 376" xmlns='http://www.w3.org/2000/svg'><path d='M326.063 0L376.777 137.054L513.831 187.768L376.777 238.482L326.063 375.536L275.349 238.482L138.295 187.768L275.349 137.054L326.063 0Z' fill='#00A8FF'/> <path d='M420.049 321.622V277.733L627.998 184.731V189.956L420.049 96.9536V53.0649L657.257 159.652V215.035L420.049 321.622Z' fill='#00A8FF'/> <path d='M237.208 321.622L0 215.035V159.652L237.208 53.0649V96.9536L29.2591 189.956V184.731L237.208 277.733V321.622Z' fill='#00A8FF'/></svg>"
+    "logo": "<svg width='658' height='376' viewBox='0 0 658 376' xmlns='http://www.w3.org/2000/svg'><path d='M326.063 0L376.777 137.054L513.831 187.768L376.777 238.482L326.063 375.536L275.349 238.482L138.295 187.768L275.349 137.054L326.063 0Z' fill='#00A8FF'/> <path d='M420.049 321.622V277.733L627.998 184.731V189.956L420.049 96.9536V53.0649L657.257 159.652V215.035L420.049 321.622Z' fill='#00A8FF'/> <path d='M237.208 321.622L0 215.035V159.652L237.208 53.0649V96.9536L29.2591 189.956V184.731L237.208 277.733V321.622Z' fill='#00A8FF'/></svg>"
   },
   {
     "name": "@amicro",
