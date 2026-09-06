@@ -7,8 +7,8 @@ import {
   IconChevronLeft,
   IconChevronRight,
 } from "@tabler/icons-react"
+import { cn } from "cn"
 
-import { cn } from "@/lib/utils"
 import { useSearchRegistry } from "@/hooks/use-search-registry"
 import {
   DirectoryAddButton,
@@ -162,7 +162,7 @@ function DirectoryPaginationNext({
 export function DirectoryList() {
   return (
     <DirectoryAddProvider>
-      <div className="mt-6">
+      <div data-not-typeset className="mt-6">
         <React.Suspense fallback={<DirectoryListSkeleton />}>
           <DirectoryListContent />
         </React.Suspense>

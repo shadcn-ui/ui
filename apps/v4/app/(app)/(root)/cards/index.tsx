@@ -1,3 +1,5 @@
+import { MessageScrollerDemo } from "@/examples/radix/message-scroller-demo"
+
 import { AccountAccess } from "./account-access"
 import { AnalyticsCard } from "./analytics-card"
 import { ClaimableBalance } from "./claimable-balance"
@@ -93,17 +95,20 @@ export function CardsDemo() {
           <ClaimableBalance />
           <DividendIncome />
         </div>
-        <div className="hidden flex-col gap-(--gap) 3xl:flex!">
+        <div className="hidden flex-col gap-(--gap) min-[1400px]:flex">
           <NewMilestone />
           <PayoutThreshold />
           <AccountAccess />
         </div>
         <div className="hidden flex-col gap-(--gap) md:flex">
           <QrConnect />
-          <TransferFunds />
+          <div className="**:[.text-center.text-xs]:hidden">
+            <MessageScrollerDemo />
+          </div>
+          {/* <TransferFunds /> */}
           <Payments />
         </div>
-        <div className="hidden flex-col gap-(--gap) min-[1400px]:flex">
+        <div className="hidden flex-col gap-(--gap) min-[1900px]:flex">
           <EmptyDistributeTrack />
           <AnalyticsCard />
           <NotificationSettings />

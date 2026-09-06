@@ -21,6 +21,10 @@ namespaces such as `@acme`.
 
 Once you have submitted your request, it will be validated and reviewed by the team.
 
+Once the pull request is merged, your registry is published immediately.
+[Registry Health](/docs/registry/health) starts monitoring it after publication
+and does not delay or gate publication while it collects baseline data.
+
 ## Requirements
 
 1. The registry must be open source and publicly accessible.

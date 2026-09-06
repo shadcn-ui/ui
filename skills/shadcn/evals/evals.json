@@ -42,6 +42,36 @@
         "Uses gap-* instead of space-y-* or space-x-* for spacing",
         "Uses size-* when width and height are equal instead of separate w-* h-*"
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "I'm building a Next.js app with shadcn/ui (base-nova preset, lucide icons). Build a chat conversation view: a scrollable thread of messages from two different people, each with an avatar, sender name, timestamp, and message bubble. A couple of messages include an image attachment and a PDF file attachment, and there's a 'Today' divider separating the days.",
+      "expected_output": "A React component composing MessageScroller, Message, Bubble, Attachment, and Marker from the registry instead of hand-rolled bubble/divider/attachment markup.",
+      "files": [],
+      "expectations": [
+        "Uses MessageScroller (MessageScrollerProvider, MessageScrollerViewport, MessageScrollerContent, MessageScrollerItem) for the scrollable thread instead of a raw overflow-y-auto div or ScrollArea",
+        "Wraps each row in MessageScrollerItem inside MessageScrollerContent",
+        "Uses Message with MessageAvatar/MessageContent/MessageHeader for row layout instead of custom flex divs",
+        "Uses Bubble + BubbleContent for the message surface instead of a styled div with bg-muted/bg-primary",
+        "Uses Attachment (AttachmentMedia, AttachmentContent, AttachmentTitle, AttachmentDescription) for the file and image attachments instead of Item or a custom card",
+        "Uses Marker (variant=\"separator\") for the 'Today' divider instead of Separator plus a centered label",
+        "Uses semantic color tokens and gap-* spacing; no raw colors like bg-emerald-500 and no space-y-*",
+        "Includes \"use client\" when the component uses state or event handlers (isRSC)"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Using shadcn/ui (base-nova preset, lucide icons), build a streaming AI chat UI. The assistant's reply streams in while it generates, the view auto-scrolls to follow the latest content but stops following if the user scrolls up to read earlier messages, a 'jump to latest' button appears when the user has scrolled away from the bottom, and a subtle 'thinking…' shimmer shows while the model is generating.",
+      "expected_output": "A React component that delegates scroll/anchor behavior to MessageScroller and uses MessageScrollerButton for jump-to-latest and the shimmer utility for the thinking indicator — no hand-rolled scroll logic or custom shimmer keyframes.",
+      "files": [],
+      "expectations": [
+        "Uses MessageScroller with MessageScrollerProvider (autoScroll) and scrollAnchor on message items for the stick-to-bottom/follow behavior instead of a custom useStickToBottom hook or ResizeObserver/scrollTop wiring",
+        "Uses MessageScrollerButton for the jump-to-latest control instead of a hand-built conditional button driven by manual scroll-position state",
+        "Uses the shimmer utility class for the 'thinking…' indicator instead of a custom @keyframes or bg-clip-text gradient animation",
+        "Wraps each message row in MessageScrollerItem inside MessageScrollerContent",
+        "Uses Message + Bubble + BubbleContent for the conversation rows instead of hand-rolled bubble divs",
+        "Uses semantic color tokens and gap-* spacing; includes \"use client\" (isRSC)"
+      ]
     }
   ]
 }

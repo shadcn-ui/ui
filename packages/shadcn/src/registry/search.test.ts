@@ -31,6 +31,7 @@ describe("searchRegistries", () => {
           items: [
             {
               name: "button",
+              title: "Button",
               type: "registry:ui",
               description: "A button component",
             },
@@ -64,6 +65,7 @@ describe("searchRegistries", () => {
       items: [
         {
           name: "button",
+          title: "Button",
           type: "registry:ui",
           description: "A button component",
           registry: "@shadcn",
@@ -91,6 +93,47 @@ describe("searchRegistries", () => {
         hasMore: false,
       },
     })
+
+    mockGetRegistry.mockRestore()
+  })
+
+  it("includes titles in the SDK output and searches them", async () => {
+    vi.mock("./api", () => ({
+      getRegistry: vi.fn(),
+    }))
+
+    const mockGetRegistry = vi.mocked(getRegistry)
+
+    mockGetRegistry.mockResolvedValue({
+      name: "test/registry",
+      homepage: "https://test.com",
+      items: [
+        {
+          name: "account-menu",
+          title: "User Settings",
+          type: "registry:ui",
+          description: "An account menu",
+        },
+        {
+          name: "button",
+          type: "registry:ui",
+          description: "A button component",
+        },
+      ],
+    })
+
+    const results = await searchRegistries(["@test"], { query: "settings" })
+
+    expect(results.items).toEqual([
+      {
+        name: "account-menu",
+        title: "User Settings",
+        type: "registry:ui",
+        description: "An account menu",
+        registry: "@test",
+        addCommandArgument: "@test/account-menu",
+      },
+    ])
 
     mockGetRegistry.mockRestore()
   })
@@ -1085,5 +1128,298 @@ describe("findUnknownSearchTypes", () => {
     expect(SEARCHABLE_TYPES).not.toContain("example")
     expect(SEARCHABLE_TYPES).not.toContain("internal")
     expect(findUnknownSearchTypes(["internal"])).toEqual(["internal"])
+  })
+})
+
+describe("searchRegistries with dynamic registries", () => {
+  it("forwards search params to the registry", async () => {
+    const mockGetRegistry = vi.mocked(getRegistry)
+
+    mockGetRegistry.mockResolvedValue({
+      name: "acme",
+      homepage: "https://acme.com",
+      items: [],
+    })
+
+    await searchRegistries(["@acme"], {
+      query: "button",
+      types: ["ui", "registry:block"],
+      limit: 20,
+      offset: 40,
+    })
+
+    expect(mockGetRegistry).toHaveBeenCalledWith(
+      "@acme",
+      expect.objectContaining({
+        searchParams: {
+          query: "button",
+          types: ["registry:ui", "registry:block"],
+          limit: 20,
+          offset: 40,
+        },
+      })
+    )
+
+    mockGetRegistry.mockRestore()
+  })
+
+  it("pushes down filters but not offset when searching multiple registries", async () => {
+    const mockGetRegistry = vi.mocked(getRegistry)
+
+    mockGetRegistry.mockResolvedValue({
+      name: "acme",
+      homepage: "https://acme.com",
+      items: [],
+    })
+
+    await searchRegistries(["@one", "@two"], {
+      query: "button",
+      limit: 10,
+      offset: 20,
+    })
+
+    // Each registry is over-fetched (offset + limit) so the requested page
+    // can be filled after the merge.
+    for (const registry of ["@one", "@two"]) {
+      expect(mockGetRegistry).toHaveBeenCalledWith(
+        registry,
+        expect.objectContaining({
+          searchParams: {
+            query: "button",
+            types: undefined,
+            limit: 30,
+            offset: undefined,
+          },
+        })
+      )
+    }
+
+    mockGetRegistry.mockRestore()
+  })
+
+  it("trusts server results when a single dynamic registry is searched", async () => {
+    const mockGetRegistry = vi.mocked(getRegistry)
+
+    // The server returns items that would not match a local fuzzy search to
+    // prove no local filtering is applied on top.
+    mockGetRegistry.mockResolvedValue({
+      name: "acme",
+      homepage: "https://acme.com",
+      items: [
+        {
+          name: "unrelated-item",
+          type: "registry:ui",
+          description: "Does not mention the query.",
+        },
+      ],
+      pagination: {
+        total: 500,
+        offset: 10,
+        limit: 1,
+        hasMore: true,
+      },
+    })
+
+    const results = await searchRegistries(["@acme"], {
+      query: "button",
+      limit: 1,
+      offset: 10,
+    })
+
+    expect(results).toEqual({
+      items: [
+        {
+          name: "unrelated-item",
+          type: "registry:ui",
+          description: "Does not mention the query.",
+          registry: "@acme",
+          addCommandArgument: "@acme/unrelated-item",
+        },
+      ],
+      pagination: {
+        total: 500,
+        offset: 10,
+        limit: 1,
+        hasMore: true,
+      },
+    })
+
+    mockGetRegistry.mockRestore()
+  })
+
+  it("merges dynamic and static registries", async () => {
+    const mockGetRegistry = vi.mocked(getRegistry)
+
+    mockGetRegistry.mockImplementation(async (name: string) => {
+      if (name === "@dynamic") {
+        return {
+          name: "dynamic",
+          homepage: "https://dynamic.com",
+          items: [
+            {
+              name: "button",
+              type: "registry:ui",
+              description: "A server-filtered button.",
+            },
+          ],
+          pagination: {
+            total: 42,
+            offset: 0,
+            limit: 1,
+            hasMore: true,
+          },
+        }
+      }
+      if (name === "@static") {
+        return {
+          name: "static",
+          homepage: "https://static.com",
+          items: [
+            {
+              name: "button-group",
+              type: "registry:ui",
+              description: "A button group.",
+            },
+            {
+              name: "card",
+              type: "registry:ui",
+              description: "A card component.",
+            },
+          ],
+        }
+      }
+      throw new Error(`Unknown registry: ${name}`)
+    })
+
+    const results = await searchRegistries(["@dynamic", "@static"], {
+      query: "button",
+    })
+
+    // Server-filtered items are kept as-is. Static items still go through
+    // the local fuzzy filter, which drops "card".
+    expect(results.items).toEqual([
+      {
+        name: "button",
+        type: "registry:ui",
+        description: "A server-filtered button.",
+        registry: "@dynamic",
+        addCommandArgument: "@dynamic/button",
+      },
+      {
+        name: "button-group",
+        type: "registry:ui",
+        description: "A button group.",
+        registry: "@static",
+        addCommandArgument: "@static/button-group",
+      },
+    ])
+
+    // The dynamic registry's total includes matches beyond the returned
+    // items. No limit was requested, so the identical request would be sent
+    // again for a deeper page — the tail is unreachable and hasMore is false.
+    expect(results.pagination.total).toBe(43)
+    expect(results.pagination.hasMore).toBe(false)
+
+    mockGetRegistry.mockRestore()
+  })
+
+  it("reports more pages when a dynamic registry fills the requested limit", async () => {
+    const mockGetRegistry = vi.mocked(getRegistry)
+
+    mockGetRegistry.mockImplementation(async (name: string) => {
+      if (name === "@dynamic") {
+        return {
+          name: "dynamic",
+          homepage: "https://dynamic.com",
+          items: [
+            { name: "button", type: "registry:ui" },
+            { name: "button-group", type: "registry:ui" },
+          ],
+          pagination: {
+            total: 42,
+            offset: 0,
+            limit: 2,
+            hasMore: true,
+          },
+        }
+      }
+      return {
+        name: "static",
+        homepage: "https://static.com",
+        items: [],
+      }
+    })
+
+    const results = await searchRegistries(["@dynamic", "@static"], {
+      query: "button",
+      limit: 2,
+    })
+
+    // The registry filled the requested limit, so deeper pages re-request it
+    // with a larger limit and can surface the remaining matches.
+    expect(results.items).toHaveLength(2)
+    expect(results.pagination.total).toBe(42)
+    expect(results.pagination.hasMore).toBe(true)
+
+    mockGetRegistry.mockRestore()
+  })
+
+  it("does not report more pages when a dynamic registry caps its response", async () => {
+    const mockGetRegistry = vi.mocked(getRegistry)
+
+    // The registry claims 500 matches but caps every response at one item,
+    // regardless of the requested limit.
+    mockGetRegistry.mockResolvedValue({
+      name: "capped",
+      homepage: "https://capped.com",
+      items: [{ name: "item-0", type: "registry:ui" }],
+      pagination: {
+        total: 500,
+        offset: 0,
+        limit: 1,
+        hasMore: true,
+      },
+    })
+
+    const results = await searchRegistries(["@capped", "@static"], {
+      limit: 5,
+      offset: 10,
+    })
+
+    // The page beyond the cap is empty. hasMore must be false so paging
+    // stops instead of looping through empty pages toward total.
+    expect(results.items).toEqual([])
+    expect(results.pagination.hasMore).toBe(false)
+
+    mockGetRegistry.mockRestore()
+  })
+
+  it("keeps local pagination when no registry returns pagination", async () => {
+    const mockGetRegistry = vi.mocked(getRegistry)
+
+    mockGetRegistry.mockResolvedValue({
+      name: "static",
+      homepage: "https://static.com",
+      items: [
+        { name: "button", type: "registry:ui" },
+        { name: "card", type: "registry:ui" },
+        { name: "input", type: "registry:ui" },
+      ],
+    })
+
+    const results = await searchRegistries(["@static"], {
+      limit: 2,
+      offset: 1,
+    })
+
+    expect(results.items.map((item) => item.name)).toEqual(["card", "input"])
+    expect(results.pagination).toEqual({
+      total: 3,
+      offset: 1,
+      limit: 2,
+      hasMore: false,
+    })
+
+    mockGetRegistry.mockRestore()
   })
 })

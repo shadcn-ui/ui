@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "v4",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter=v4", "dev"],
+      "port": 4000
+    }
+  ]
+}

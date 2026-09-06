@@ -17,7 +17,6 @@ const chartData = [
   { month: "Feb", amount: 900 },
   { month: "Mar", amount: 1300 },
   { month: "Apr", amount: 750 },
-  { month: "May", amount: 1400 },
 ]
 
 export function ContributionHistory() {
@@ -35,13 +34,14 @@ export function ContributionHistory() {
           role="img"
           aria-label="Last 6 months of contribution activity"
         >
-          {chartData.map((item) => (
+          {chartData.map((item, index) => (
             <div
               key={item.month}
               className="flex h-full flex-1 flex-col justify-end gap-2"
             >
               <div
-                className="min-h-2 rounded-t-md bg-chart-2"
+                data-index={index}
+                className="data-[index=5]:bg-chart-6 min-h-2 rounded-lg data-[index=0]:bg-chart-1 data-[index=1]:bg-chart-2 data-[index=2]:bg-chart-3 data-[index=3]:bg-chart-4 data-[index=4]:bg-chart-5"
                 style={{ height: `${(item.amount / maxAmount) * 100}%` }}
               />
               <span className="text-center text-xs text-muted-foreground">

@@ -10,7 +10,11 @@ import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest"
 
-import { clearRegistryContext, setRegistryHeaders } from "./context"
+import {
+  clearRegistryContext,
+  setRegistryHeaders,
+  withRegistryContext,
+} from "./context"
 import { clearRegistryCache, fetchRegistry } from "./fetcher"
 
 const server = setupServer(
@@ -84,6 +88,37 @@ describe("fetchRegistry", () => {
     // Second fetch - should use cache
     const result2 = await fetchRegistry(["test.json"], { useCache: true })
     expect(result2[0]).toMatchObject({ name: "test" })
+  })
+
+  it("should separate cached responses by registry headers", async () => {
+    const url = `${REGISTRY_URL}/authenticated.json`
+    server.use(
+      http.get(url, ({ request }) =>
+        HttpResponse.json({
+          authorization: request.headers.get("authorization"),
+        })
+      )
+    )
+
+    const fetchWithToken = (token: string) =>
+      withRegistryContext(async () => {
+        setRegistryHeaders({
+          [url]: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+
+        const [result] = await fetchRegistry([url], { useCache: true })
+        return result
+      })
+
+    const [first, second] = await Promise.all([
+      fetchWithToken("first"),
+      fetchWithToken("second"),
+    ])
+
+    expect(first).toEqual({ authorization: "Bearer first" })
+    expect(second).toEqual({ authorization: "Bearer second" })
   })
 
   it("should not use cache when disabled", async () => {

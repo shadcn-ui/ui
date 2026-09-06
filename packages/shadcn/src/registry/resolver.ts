@@ -20,6 +20,7 @@ import { parseRegistryAndItemFromString } from "@/src/registry/parser"
 import {
   deduplicateFilesByTarget,
   isLocalFile,
+  isUniversalRegistryItem,
   isUrl,
 } from "@/src/registry/utils"
 import {
@@ -37,6 +38,7 @@ import deepmerge from "deepmerge"
 import { z } from "zod"
 
 type RegistryFetchOptions = {
+  requireUniversal?: boolean
   useCache?: boolean
   sourceCache?: Map<string, Promise<string>>
 }
@@ -278,6 +280,15 @@ export async function resolveRegistryTree(
 
   if (!payload.length) {
     return null
+  }
+
+  if (
+    options.requireUniversal &&
+    !payload.every((item) => isUniversalRegistryItem(item))
+  ) {
+    throw new Error(
+      "A full project config is required to add non-universal registry items or dependencies."
+    )
   }
 
   // No deduplication - we want to support multiple items with the same name from different sources

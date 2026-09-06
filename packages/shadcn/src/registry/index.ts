@@ -3,8 +3,11 @@ export {
   getRegistryItems,
   resolveRegistryItems,
   getRegistry,
+  getRegistriesConfig,
   getRegistriesIndex,
 } from "./api"
+
+export { addRegistryItems } from "./add"
 
 export { searchRegistries } from "./search"
 

@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 
 import {
@@ -5,6 +7,14 @@ import {
   ExampleWrapper,
 } from "@/registry/bases/radix/components/example"
 import { Button } from "@/registry/bases/radix/ui/button"
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/registry/bases/radix/ui/drawer"
 import {
   Item,
   ItemActions,
@@ -41,6 +51,7 @@ export default function ItemExample() {
       <ItemHeaderExamples />
       <ItemFooterExamples />
       <ItemHeaderAndFooterExamples />
+      <ItemWithDrawer />
       <DefaultVariantItemsWithImage />
       <OutlineVariantItemsWithImage />
       <OutlineVariantItemsWithImageSmall />
@@ -1691,6 +1702,65 @@ function ItemHeaderAndFooterExamples() {
           </span>
         </ItemFooter>
       </Item>
+    </Example>
+  )
+}
+
+function ItemWithDrawer() {
+  return (
+    <Example title="Item with Drawer">
+      <Drawer>
+        <Item asChild variant="outline">
+          <DrawerTrigger>
+            <ItemMedia variant="icon">
+              <IconPlaceholder
+                lucide="FileSearchIcon"
+                tabler="IconFileSearch"
+                hugeicons="FileSearchIcon"
+                phosphor="FileSearchIcon"
+                remixicon="RiFileSearchLine"
+              />
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle>Explored 4 files</ItemTitle>
+              <ItemDescription>
+                Review the files that were searched for this answer.
+              </ItemDescription>
+            </ItemContent>
+          </DrawerTrigger>
+        </Item>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle>Explored files</DrawerTitle>
+            <DrawerDescription>
+              Files opened while generating the response.
+            </DrawerDescription>
+          </DrawerHeader>
+          <div className="grid gap-3 p-4">
+            {[
+              "app/chat/page.tsx",
+              "components/message.tsx",
+              "lib/ai.ts",
+              "app/api/chat/route.ts",
+            ].map((file) => (
+              <Item key={file} variant="muted" size="sm">
+                <ItemMedia variant="icon">
+                  <IconPlaceholder
+                    lucide="FileIcon"
+                    tabler="IconFile"
+                    hugeicons="File01Icon"
+                    phosphor="FileIcon"
+                    remixicon="RiFileLine"
+                  />
+                </ItemMedia>
+                <ItemContent>
+                  <ItemTitle>{file}</ItemTitle>
+                </ItemContent>
+              </Item>
+            ))}
+          </div>
+        </DrawerContent>
+      </Drawer>
     </Example>
   )
 }

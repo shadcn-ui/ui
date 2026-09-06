@@ -21,6 +21,7 @@ import {
   resolveImportWithMetadata,
 } from "@/src/utils/resolve-import"
 import { spinner } from "@/src/utils/spinner"
+import { isTargetAliasKey } from "@/src/utils/target-aliases"
 import { transform } from "@/src/utils/transformers"
 import { transformAsChild } from "@/src/utils/transformers/transform-aschild"
 import { transformCleanup } from "@/src/utils/transformers/transform-cleanup"
@@ -40,9 +41,6 @@ import { z } from "zod"
 
 const CODE_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx"]
 const NON_ALIAS_RESOLVED_PATH_KEYS = new Set(["tailwindConfig", "tailwindCss"])
-const TARGET_ALIAS_KEYS = ["components", "ui", "lib", "hooks"] as const
-
-type TargetAliasKey = (typeof TARGET_ALIAS_KEYS)[number]
 
 export async function updateFiles(
   files: RegistryItem["files"],
@@ -51,6 +49,7 @@ export async function updateFiles(
     overwrite?: boolean
     force?: boolean
     silent?: boolean
+    interactive?: boolean
     rootSpinner?: ReturnType<typeof spinner>
     isRemote?: boolean
     isWorkspace?: boolean
@@ -70,6 +69,7 @@ export async function updateFiles(
     overwrite: false,
     force: false,
     silent: false,
+    interactive: true,
     isRemote: false,
     isWorkspace: false,
     ...options,
@@ -225,6 +225,11 @@ export async function updateFiles(
 
     // Skip overwrite prompt for .env files - we'll handle them specially
     if (existingFile && !options.overwrite && !isEnvFile(filePath)) {
+      if (!options.interactive) {
+        filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
+        continue
+      }
+
       filesCreatedSpinner.stop()
       if (options.rootSpinner) {
         options.rootSpinner.stop()
@@ -293,7 +298,9 @@ export async function updateFiles(
     }
   }
 
-  const allFiles = [...filesCreated, ...filesUpdated, ...filesSkipped]
+  const allFiles = options.interactive
+    ? [...filesCreated, ...filesUpdated, ...filesSkipped]
+    : [...filesCreated, ...filesUpdated]
   const updatedFiles = await resolveImports(allFiles, config, plannedFilePaths)
 
   // Let's update filesUpdated with the updated files.
@@ -473,10 +480,6 @@ function resolveAliasTarget(target: string, config: Config) {
   return {
     resolvedPath,
   }
-}
-
-function isTargetAliasKey(aliasKey: string): aliasKey is TargetAliasKey {
-  return TARGET_ALIAS_KEYS.includes(aliasKey as TargetAliasKey)
 }
 
 function resolveFileTargetDirectory(

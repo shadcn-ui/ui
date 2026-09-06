@@ -1,3 +1,4 @@
+import path from "path"
 import { SHADCN_URL } from "@/src/registry/constants"
 import { RegistryItem } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
@@ -6,6 +7,7 @@ import { getPackageManager } from "@/src/utils/get-package-manager"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
+import fsExtra from "fs-extra"
 import prompts from "prompts"
 
 export async function updateDependencies(
@@ -14,6 +16,7 @@ export async function updateDependencies(
   config: Config,
   options: {
     silent?: boolean
+    interactive?: boolean
   }
 ) {
   const packageInfo = getPackageInfo(config.resolvedPaths.cwd, false)
@@ -36,6 +39,7 @@ export async function updateDependencies(
 
   options = {
     silent: false,
+    interactive: true,
     ...options,
   }
 
@@ -46,7 +50,7 @@ export async function updateDependencies(
   // Offer to use --force or --legacy-peer-deps if using React 19 with npm.
   let flag = ""
   if (shouldPromptForNpmFlag(config) && packageManager === "npm") {
-    if (options.silent) {
+    if (options.silent || !options.interactive) {
       flag = "force"
     } else {
       dependenciesSpinner.stopAndPersist()
@@ -82,6 +86,64 @@ export async function updateDependencies(
   )
 
   dependenciesSpinner?.succeed()
+}
+
+export async function installDependencies(
+  cwd: string,
+  dependencies: string[],
+  devDependencies: string[] = []
+) {
+  const packageInfo = getPackageInfo(cwd, false)
+  dependencies = normalizeDependencyRequests(dependencies, packageInfo)
+  devDependencies = normalizeDependencyRequests(devDependencies, packageInfo)
+
+  if (!dependencies.length && !devDependencies.length) {
+    return
+  }
+
+  await installWithPackageManager(
+    await getPackageManager(cwd),
+    dependencies,
+    devDependencies,
+    cwd
+  )
+}
+
+export async function removeDependencies(cwd: string, dependencies: string[]) {
+  assertSafeDependencies(dependencies)
+  const packageInfo = getPackageInfo(cwd, false)
+  dependencies = dependencies.filter((dependency) =>
+    hasDeclaredDependency(packageInfo, dependency)
+  )
+
+  if (!dependencies.length) {
+    return
+  }
+
+  const packageManager = await getPackageManager(cwd)
+  if (packageManager === "npm") {
+    await execa("npm", ["uninstall", "--", ...dependencies], { cwd })
+    return
+  }
+
+  if (packageManager === "deno") {
+    const packageJsonPath = path.resolve(cwd, "package.json")
+    const packageJson = await fsExtra.readJson(packageJsonPath)
+    for (const field of [
+      "dependencies",
+      "devDependencies",
+      "optionalDependencies",
+      "peerDependencies",
+    ]) {
+      for (const dependency of dependencies) {
+        delete packageJson[field]?.[dependency]
+      }
+    }
+    await fsExtra.writeJson(packageJsonPath, packageJson, { spaces: 2 })
+    return
+  }
+
+  await execa(packageManager, ["remove", "--", ...dependencies], { cwd })
 }
 
 /**
@@ -166,6 +228,18 @@ function parsePackageRequest(dependency: string) {
   }
 }
 
+function hasDeclaredDependency(
+  packageInfo: ReturnType<typeof getPackageInfo>,
+  dependency: string
+) {
+  return Boolean(
+    packageInfo?.dependencies?.[dependency] ??
+      packageInfo?.devDependencies?.[dependency] ??
+      packageInfo?.optionalDependencies?.[dependency] ??
+      packageInfo?.peerDependencies?.[dependency]
+  )
+}
+
 function shouldPromptForNpmFlag(config: Config) {
   const packageInfo = getPackageInfo(config.resolvedPaths.cwd, false)
 
@@ -195,6 +269,24 @@ async function getUpdateDependenciesPackageManager(config: Config) {
   return getPackageManager(config.resolvedPaths.cwd)
 }
 
+/**
+ * Registry-supplied dependency strings are forwarded directly into the package
+ * manager's argument list. A specifier beginning with "-" would be interpreted
+ * as a flag rather than a package name, letting a malicious registry alter the
+ * install source/behavior (argument injection). Reject those before they reach
+ * `execa`; the `--` end-of-options separator added at each call site is the
+ * second layer of defense.
+ */
+export function assertSafeDependencies(deps: string[]) {
+  for (const dep of deps) {
+    if (dep.trim().startsWith("-")) {
+      throw new Error(
+        `Invalid dependency "${dep}": dependency names cannot start with "-".`
+      )
+    }
+  }
+}
+
 async function installWithPackageManager(
   packageManager: Awaited<
     ReturnType<typeof getUpdateDependenciesPackageManager>
@@ -216,14 +308,19 @@ async function installWithPackageManager(
     return installWithExpo(dependencies, devDependencies, cwd)
   }
 
+  assertSafeDependencies(dependencies)
+  assertSafeDependencies(devDependencies)
+
   if (dependencies?.length) {
-    await execa(packageManager, ["add", ...dependencies], {
+    await execa(packageManager, ["add", "--", ...dependencies], {
       cwd,
     })
   }
 
   if (devDependencies?.length) {
-    await execa(packageManager, ["add", "-D", ...devDependencies], { cwd })
+    await execa(packageManager, ["add", "-D", "--", ...devDependencies], {
+      cwd,
+    })
   }
 }
 
@@ -233,10 +330,13 @@ async function installWithNpm(
   cwd: string,
   flag?: string
 ) {
+  assertSafeDependencies(dependencies)
+  assertSafeDependencies(devDependencies)
+
   if (dependencies.length) {
     await execa(
       "npm",
-      ["install", ...(flag ? [`--${flag}`] : []), ...dependencies],
+      ["install", ...(flag ? [`--${flag}`] : []), "--", ...dependencies],
       { cwd }
     )
   }
@@ -244,7 +344,13 @@ async function installWithNpm(
   if (devDependencies.length) {
     await execa(
       "npm",
-      ["install", ...(flag ? [`--${flag}`] : []), "-D", ...devDependencies],
+      [
+        "install",
+        ...(flag ? [`--${flag}`] : []),
+        "-D",
+        "--",
+        ...devDependencies,
+      ],
       { cwd }
     )
   }
@@ -275,12 +381,15 @@ async function installWithExpo(
   devDependencies: string[],
   cwd: string
 ) {
+  assertSafeDependencies(dependencies)
+  assertSafeDependencies(devDependencies)
+
   if (dependencies.length) {
-    await execa("npx", ["expo", "install", ...dependencies], { cwd })
+    await execa("npx", ["expo", "install", "--", ...dependencies], { cwd })
   }
 
   if (devDependencies.length) {
-    await execa("npx", ["expo", "install", "-- -D", ...devDependencies], {
+    await execa("npx", ["expo", "install", "-- -D", "--", ...devDependencies], {
       cwd,
     })
   }

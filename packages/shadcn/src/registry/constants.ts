@@ -1,3 +1,4 @@
+import type { PresetBase } from "@/src/preset/preset"
 import { registryConfigSchema } from "@/src/schema"
 import { z } from "zod"
 
@@ -168,17 +169,35 @@ export const BUILTIN_MODULES = new Set([
   ],
 ])
 
-export const DEPRECATED_COMPONENTS = [
+type DeprecatedComponent = {
+  name: string
+  deprecatedBy: string
+  message: string
+  availableIn?: PresetBase[]
+}
+
+export const DEPRECATED_COMPONENTS: DeprecatedComponent[] = [
   {
     name: "toast",
     deprecatedBy: "sonner",
     message:
-      "The toast component is deprecated. Use the sonner component instead.",
+      "The toast component is only available for Base UI projects. Use the sonner component instead.",
+    availableIn: ["base"],
   },
   {
     name: "toaster",
     deprecatedBy: "sonner",
     message:
       "The toaster component is deprecated. Use the sonner component instead.",
+  },
+]
+
+export const COMPONENTS_HIDDEN_FROM_SELECTION: {
+  name: string
+  hiddenIn: PresetBase[]
+}[] = [
+  {
+    name: "sonner",
+    hiddenIn: ["base"],
   },
 ]

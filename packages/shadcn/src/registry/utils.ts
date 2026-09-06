@@ -279,7 +279,7 @@ export function isLocalFile(path: string) {
  * A universal registry item must:
  * 1. Have type "registry:item" or "registry:file"
  * 2. If it has files, all files must have explicit targets and be type "registry:file" or "registry:item"
- * It can be installed without framework detection or components.json.
+ * It can be installed without framework detection or a full project config.
  */
 export function isUniversalRegistryItem(
   registryItem:

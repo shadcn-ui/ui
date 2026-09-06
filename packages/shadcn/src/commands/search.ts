@@ -1,5 +1,6 @@
 import path from "path"
 import { configWithDefaults } from "@/src/registry/config"
+import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import {
   findUnknownSearchTypes,
@@ -143,13 +144,20 @@ export const search = new Command()
         process.exit(1)
       }
 
-      // Only namespace registries passed explicitly need to be discovered and
-      // added to the config. Registries already configured in components.json
-      // are resolved directly from the config below.
+      // Only namespace registries that are not already configured need to be
+      // discovered and added to the config. Registries in components.json (or
+      // builtins) are resolved directly from the config below. Skipping
+      // configured registries also avoids the discovery step downloading the
+      // full catalog before the search request.
       const { config: updatedConfig, newRegistries } =
         await ensureRegistriesInConfig(
           registries
-            .filter((registry) => registry.startsWith("@"))
+            .filter(
+              (registry) =>
+                registry.startsWith("@") &&
+                !config.registries?.[registry] &&
+                !(registry in BUILTIN_REGISTRIES)
+            )
             .map((registry) => `${registry}/registry`),
           config,
           {

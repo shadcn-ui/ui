@@ -22,7 +22,15 @@
         "base-mira",
         "base-luma",
         "base-sera",
-        "base-rhea"
+        "base-rhea",
+        "aria-vega",
+        "aria-nova",
+        "aria-maia",
+        "aria-lyra",
+        "aria-mira",
+        "aria-luma",
+        "aria-sera",
+        "aria-rhea"
       ]
     },
     "tailwind": {

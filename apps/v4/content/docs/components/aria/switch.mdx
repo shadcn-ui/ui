@@ -1,0 +1,101 @@
+---
+title: Switch
+description: A control that allows the user to toggle between checked and not checked.
+base: aria
+component: true
+links:
+  doc: https://react-aria.adobe.com/Switch
+  api: https://react-aria.adobe.com/Switch#api
+---
+
+<ComponentPreview styleName="aria-nova" name="switch-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add switch
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install react-aria-components
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="switch"
+  title="components/ui/switch.tsx"
+  styleName="aria-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Switch } from "@/components/ui/switch"
+```
+
+```tsx
+<Switch />
+```
+
+## Description
+
+<ComponentPreview styleName="aria-nova" name="switch-description" />
+
+## Choice Card
+
+Card-style selection where `FieldLabel` wraps the entire `Field` for a clickable card pattern.
+
+<ComponentPreview styleName="aria-nova" name="switch-choice-card" />
+
+## Disabled
+
+Add the `isDisabled` prop to the `Switch` component to disable the switch. Add the `data-disabled` prop to the `Field` component for styling.
+
+<ComponentPreview styleName="aria-nova" name="switch-disabled" />
+
+## Invalid
+
+Add the `data-invalid` prop to the `Switch` component to indicate an invalid state. Add the `data-invalid` prop to the `Field` component for styling.
+
+<ComponentPreview styleName="aria-nova" name="switch-invalid" />
+
+## Size
+
+Use the `size` prop to change the size of the switch.
+
+<ComponentPreview styleName="aria-nova" name="switch-sizes" />
+
+## RTL
+
+To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview styleName="aria-nova" name="switch-rtl" direction="rtl" />
+
+## API Reference
+
+See the [React Aria Switch](https://react-aria.adobe.com/Switch#api) documentation.
