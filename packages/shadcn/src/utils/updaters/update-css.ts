@@ -15,7 +15,7 @@ import AtRule from "postcss/lib/at-rule"
 import Declaration from "postcss/lib/declaration"
 import Root from "postcss/lib/root"
 import Rule from "postcss/lib/rule"
-import { twMerge } from "tailwind-merge"
+import { twMerge } from "cn"
 import { z } from "zod"
 
 export async function updateCss(

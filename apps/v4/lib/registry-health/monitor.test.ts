@@ -2,7 +2,11 @@ import { describe, expect, it, vi } from "vitest"
 
 import type { RegistryDirectoryEntry } from "../registry-directory"
 import { runRegistryMonitor } from "./monitor"
-import type { RegistryMonitorEntryState, RegistryMonitorState } from "./schema"
+import {
+  REGISTRY_DRY_RUN_VERSION,
+  type RegistryMonitorEntryState,
+  type RegistryMonitorState,
+} from "./schema"
 
 const NOW = new Date("2026-08-24T12:00:00.000Z")
 const DIRECTORY: RegistryDirectoryEntry[] = [
@@ -40,6 +44,7 @@ function createState(entry = createEntryState()) {
   return {
     schemaVersion: 1,
     scoreVersion: 1,
+    dryRunVersion: REGISTRY_DRY_RUN_VERSION,
     updatedAt: "2026-08-24T10:00:00.000Z",
     registries: { "@acme": entry },
   } satisfies RegistryMonitorState
@@ -422,6 +427,113 @@ describe("runRegistryMonitor", () => {
     expect(result.state.lastWeeklyRunAt).toBe(NOW.toISOString())
   })
 
+  it("discards invalid pre-tsconfig dry runs and reruns the weekly check", async () => {
+    const now = new Date("2026-09-02T12:00:00.000Z")
+    const recentIndex = Array.from({ length: 24 }, (_, index) => ({
+      checkedAt: new Date(
+        now.getTime() - (24 - index) * 60 * 60 * 1000
+      ).toISOString(),
+      outcome: "reachable" as const,
+      status: 200,
+      durationMs: 100,
+      redirectCount: 0,
+      schemaValid: true,
+    }))
+    const previousState = {
+      ...createState(
+        createEntryState({
+          itemNames: ["button"],
+          recentIndex,
+          recentDryRuns: [
+            {
+              checkedAt: "2026-08-25T12:04:27.443Z",
+              item: "button",
+              success: false,
+              failureCode: "exit_1",
+              durationMs: 1500,
+            },
+            {
+              checkedAt: "2026-08-31T12:38:36.084Z",
+              item: "dialog",
+              success: false,
+              failureCode: "exit_1",
+              durationMs: 1700,
+            },
+          ],
+          daily: [
+            {
+              date: "2026-08-25",
+              availabilitySuccesses: 0,
+              availabilityObservations: 0,
+              challengeObservations: 0,
+              schemaSuccesses: 0,
+              schemaObservations: 0,
+              itemSuccesses: 0,
+              itemObservations: 0,
+              dryRunSuccesses: 0,
+              dryRunObservations: 1,
+            },
+            {
+              date: "2026-08-31",
+              availabilitySuccesses: 0,
+              availabilityObservations: 0,
+              challengeObservations: 0,
+              schemaSuccesses: 0,
+              schemaObservations: 0,
+              itemSuccesses: 0,
+              itemObservations: 0,
+              dryRunSuccesses: 0,
+              dryRunObservations: 1,
+            },
+          ],
+          latestHygiene: {
+            contentTypeJson: true,
+            noDuplicateNames: true,
+            nameMatches: true,
+          },
+        })
+      ),
+      dryRunVersion: 0,
+      lastDailyRunAt: "2026-09-02T11:00:00.000Z",
+      lastWeeklyRunAt: "2026-08-31T12:38:36.084Z",
+    }
+    const runDryRun = vi.fn(async () => ({
+      success: true,
+      durationMs: 250,
+    }))
+
+    const result = await runRegistryMonitor({
+      directory: DIRECTORY,
+      previousState,
+      mode: "auto",
+      now,
+      fetchJson: vi.fn(async () => createSuccessfulFetch()),
+      runDryRun,
+    })
+
+    expect(runDryRun).toHaveBeenCalledOnce()
+    expect(result.state.registries["@acme"].recentDryRuns).toEqual([
+      {
+        checkedAt: now.toISOString(),
+        item: "item-0",
+        success: true,
+        durationMs: 250,
+      },
+    ])
+    expect(result.state.registries["@acme"].daily.slice(0, 2)).toMatchObject([
+      { date: "2026-08-25", dryRunSuccesses: 0, dryRunObservations: 0 },
+      { date: "2026-08-31", dryRunSuccesses: 0, dryRunObservations: 0 },
+    ])
+    expect(result.state.lastWeeklyRunAt).toBe(now.toISOString())
+    expect(result.run.diagnostics).toEqual([
+      "Discarded 2 invalid CLI dry-run observations from the pre-tsconfig scaffold.",
+    ])
+    expect(result.snapshot.registries["@acme"]).toMatchObject({
+      status: "healthy",
+      breakdown: { installability: 18.5 },
+    })
+  })
+
   it("continues weekly rotation after dry-run history is trimmed", async () => {
     const runDryRun = vi.fn(async () => ({
       success: true,
@@ -609,5 +721,26 @@ describe("runRegistryMonitor", () => {
 
     expect(result.run.totals.dryRuns).toBe(6)
     expect(maximumActive).toBe(4)
+  })
+
+  it("resolves {style} urls with the default style", async () => {
+    const fetchJson = vi.fn(async () => createSuccessfulFetch())
+    await runRegistryMonitor({
+      directory: [
+        {
+          ...DIRECTORY[0],
+          url: "https://acme.example.com/r/{style}/{name}.json",
+        },
+      ],
+      mode: "daily",
+      now: NOW,
+      previousState: createState(createEntryState({ itemNames: ["button"] })),
+      fetchJson,
+      runDryRun: vi.fn(),
+    })
+
+    expect(fetchJson).toHaveBeenCalledWith(
+      "https://acme.example.com/r/radix-vega/button.json"
+    )
   })
 })

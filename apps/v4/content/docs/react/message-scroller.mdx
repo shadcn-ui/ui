@@ -132,6 +132,53 @@ export function Chat() {
 }
 ```
 
+## Avoiding a Flash on Reload
+
+A scroll container always opens at the top. HTML has no way to set `scrollTop`,
+so a server-rendered transcript shows the oldest messages first. After
+JavaScript runs, `defaultScrollPosition` moves the view, and you see a jump.
+
+When `defaultScrollPosition` is `"end"` or `"last-anchor"`, the viewport has
+`data-pending-scroll` until that position is applied. Give the viewport an `id`
+and hide it while the attribute is present. Scope the rule to that id so you do
+not hide the root.
+
+```css
+#messages[data-pending-scroll] {
+  visibility: hidden;
+}
+```
+
+If you want `"end"` visible on first paint, add an inline script right after the
+viewport. Using the same `id`, scroll it to the bottom and remove
+`data-pending-scroll`.
+
+```tsx
+const scrollToEndScript = `(function () {
+  var viewport = document.getElementById("messages")
+  if (!viewport) {
+    return
+  }
+  viewport.scrollTop = viewport.scrollHeight
+  viewport.removeAttribute("data-pending-scroll")
+})()`
+
+<MessageScroller.Root>
+  <MessageScroller.Viewport id="messages" suppressHydrationWarning>
+    <MessageScroller.Content>{/* transcript */}</MessageScroller.Content>
+  </MessageScroller.Viewport>
+  <script dangerouslySetInnerHTML={{ __html: scrollToEndScript }} />
+  <MessageScroller.Button />
+</MessageScroller.Root>
+```
+
+Put the script in your page, not in the primitive. It only works for `"end"`, and
+only when the messages are already in the HTML. Add `suppressHydrationWarning` on
+the viewport. If you use a Content Security Policy, pass a `nonce`.
+
+Do not use this script with `"last-anchor"`. Skip it when messages load on the
+client.
+
 ## API Reference
 
 ### MessageScroller.Provider
@@ -139,13 +186,13 @@ export function Chat() {
 The headless root. It owns scroll state and the behavior props, and provides
 them to the parts and the hooks. It renders no DOM of its own.
 
-| Prop                     | Type                                | Default | Description                                                                                                                                                                          |
-| ------------------------ | ----------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `autoScroll`             | `boolean`                           | `false` | Follow new content only while the reader is already at the live edge. Wheel, touch, keyboard scroll, and explicit jumps release it.                                                  |
-| `defaultScrollPosition`  | `"start" \| "end" \| "last-anchor"` | `"end"` | Opening position on the first non-empty render, applied once. `"last-anchor"` opens at the last `scrollAnchor` row and falls back to `"end"` when the turn fits or no anchor exists. |
-| `scrollEdgeThreshold`    | `number`                            | `8`     | Distance from either edge that still counts as being at the start or end. Controls state attributes and scroll button visibility.                                                    |
-| `scrollMargin`           | `number`                            | `0`     | Margin applied to the aligned edge for `scrollToMessage`, visibility, and programmatic targets.                                                                                      |
-| `scrollPreviousItemPeek` | `number`                            | `64`    | Extra margin added to `scrollMargin` when a newly appended `scrollAnchor` item is positioned so part of the previous item stays visible.                                             |
+| Prop                     | Type                                | Default | Description                                                                                                                                                                                                                                                                                                                                                |
+| ------------------------ | ----------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `autoScroll`             | `boolean`                           | `false` | Follow new content only while the reader is already at the live edge. Wheel, touch, keyboard scroll, and explicit jumps release it.                                                                                                                                                                                                                        |
+| `defaultScrollPosition`  | `"start" \| "end" \| "last-anchor"` | `"end"` | Opening position on the first non-empty render, applied once. `"last-anchor"` opens at the last `scrollAnchor` row and falls back to `"end"` when the turn fits or no anchor exists. For `"end"` and `"last-anchor"`, the viewport has `data-pending-scroll` until the position is applied. See [Avoiding a Flash on Reload](#avoiding-a-flash-on-reload). |
+| `scrollEdgeThreshold`    | `number`                            | `8`     | Distance from either edge that still counts as being at the start or end. Controls state attributes and scroll button visibility.                                                                                                                                                                                                                          |
+| `scrollMargin`           | `number`                            | `0`     | Margin applied to the aligned edge for `scrollToMessage`, visibility, and programmatic targets.                                                                                                                                                                                                                                                            |
+| `scrollPreviousItemPeek` | `number`                            | `64`    | Extra margin added to `scrollMargin` when a newly appended `scrollAnchor` item is positioned so part of the previous item stays visible.                                                                                                                                                                                                                   |
 
 ### MessageScroller.Root
 
@@ -158,12 +205,15 @@ height-constrained layout, within a `MessageScroller.Provider`.
 
 The root mirrors the scroll-state attributes below (the viewport carries them
 too), so you can style the container by scroll state, such as edge fades on the
-frame.
+frame. Headless usage should hide the viewport while `data-pending-scroll` is
+present, using `visibility: hidden` so layout still exists for the opening
+scroll.
 
-| Data attribute       | Value                                             | Description                                                                                            |
-| -------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| `data-scrollable`    | `"start"` \| `"end"` \| `"start end"` \| _absent_ | Edges the viewport can scroll toward. Query one with `[data-scrollable~="end"]`; absent means it fits. |
-| `data-autoscrolling` | present                                           | Present while the viewport is programmatically scrolling to the latest message.                        |
+| Data attribute        | Value                                             | Description                                                                                                                                                                                                          |
+| --------------------- | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data-scrollable`     | `"start"` \| `"end"` \| `"start end"` \| _absent_ | Edges the viewport can scroll toward. Query one with `[data-scrollable~="end"]`; absent means it fits.                                                                                                               |
+| `data-autoscrolling`  | present                                           | Present while the viewport is programmatically scrolling to the latest message.                                                                                                                                      |
+| `data-pending-scroll` | present                                           | Present until `defaultScrollPosition` (`"end"` or `"last-anchor"`) is applied, or skipped for an empty transcript. Hide the viewport while it is set. See [Avoiding a Flash on Reload](#avoiding-a-flash-on-reload). |
 
 ### MessageScroller.Viewport
 
@@ -177,10 +227,11 @@ The scrollable viewport.
 | `tabIndex`                | `number`                      | `0`          | Makes the transcript viewport keyboard-scrollable.                        |
 | `...props`                | `React.ComponentProps<"div">` | -            | Props spread to the viewport element.                                     |
 
-| Data attribute       | Value                                             | Description                                                                                            |
-| -------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| `data-scrollable`    | `"start"` \| `"end"` \| `"start end"` \| _absent_ | Edges the viewport can scroll toward. Query one with `[data-scrollable~="end"]`; absent means it fits. |
-| `data-autoscrolling` | present                                           | Present while the viewport is programmatically scrolling to the latest message.                        |
+| Data attribute        | Value                                             | Description                                                                                                                                                                                                          |
+| --------------------- | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data-scrollable`     | `"start"` \| `"end"` \| `"start end"` \| _absent_ | Edges the viewport can scroll toward. Query one with `[data-scrollable~="end"]`; absent means it fits.                                                                                                               |
+| `data-autoscrolling`  | present                                           | Present while the viewport is programmatically scrolling to the latest message.                                                                                                                                      |
+| `data-pending-scroll` | present                                           | Present until `defaultScrollPosition` (`"end"` or `"last-anchor"`) is applied, or skipped for an empty transcript. Hide the viewport while it is set. See [Avoiding a Flash on Reload](#avoiding-a-flash-on-reload). |
 
 ### MessageScroller.Content
 

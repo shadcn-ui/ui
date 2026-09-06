@@ -6,6 +6,7 @@ import {
 } from "../registry-directory"
 import { fetchRegistryJson, type RegistryJsonResult } from "./network"
 import {
+  REGISTRY_DRY_RUN_VERSION,
   REGISTRY_HEALTH_SCHEMA_VERSION,
   REGISTRY_HEALTH_SCORE_VERSION,
   registryHealthSnapshotSchema,
@@ -30,11 +31,16 @@ const DAILY_CHECK_INTERVAL_MS = 20 * 60 * 60 * 1000
 const WEEKLY_CHECK_INTERVAL_MS = 6 * DAY_MS
 const MAX_DRY_RUN_CONCURRENCY = 4
 
+// Registries cannot declare a default style yet, so resolve {style} urls
+// with the canonical first base and style combination.
+export const DEFAULT_STYLE = "radix-vega"
+
 export type RegistryMonitorMode = RegistryMonitorRun["mode"]
 
 export type RegistryDryRunResult = {
   success: boolean
   failureCode?: string
+  failureMessage?: string
   durationMs: number
 }
 
@@ -51,6 +57,42 @@ function createDailyBucket(date: string) {
     dryRunSuccesses: 0,
     dryRunObservations: 0,
   } satisfies RegistryHealthDailyBucket
+}
+
+function discardInvalidDryRunHistory(
+  previousState: RegistryMonitorState | null | undefined
+) {
+  if (!previousState) {
+    return { state: previousState, discardedDryRuns: 0 }
+  }
+
+  const state = structuredClone(previousState)
+  if (state.dryRunVersion === REGISTRY_DRY_RUN_VERSION) {
+    return { state, discardedDryRuns: 0 }
+  }
+
+  let discardedRecentDryRuns = 0
+  let discardedDailyDryRuns = 0
+
+  for (const entry of Object.values(state.registries)) {
+    discardedRecentDryRuns += entry.recentDryRuns.length
+    entry.recentDryRuns = []
+
+    for (const bucket of entry.daily) {
+      discardedDailyDryRuns += bucket.dryRunObservations
+      bucket.dryRunSuccesses = 0
+      bucket.dryRunObservations = 0
+    }
+  }
+
+  const discardedDryRuns = Math.max(
+    discardedRecentDryRuns,
+    discardedDailyDryRuns
+  )
+  state.dryRunVersion = REGISTRY_DRY_RUN_VERSION
+  delete state.lastWeeklyRunAt
+
+  return { state, discardedDryRuns }
 }
 
 function getDailyBucket(state: RegistryMonitorEntryState, now: Date) {
@@ -279,7 +321,7 @@ function recordDryRunObservation(
 }
 
 function replaceRegistryItem(url: string, item: string) {
-  return url.replace("{name}", item)
+  return url.replace("{name}", item).replace("{style}", DEFAULT_STYLE)
 }
 
 function hasIntervalElapsed(
@@ -405,16 +447,19 @@ export async function runRegistryMonitor({
   concurrency?: number
 }): Promise<RegistryMonitorOutput> {
   const startedAt = now.toISOString()
-  const checks = getChecks(mode, now, previousState)
+  const { state: repairedPreviousState, discardedDryRuns } =
+    discardInvalidDryRunHistory(previousState)
+  const checks = getChecks(mode, now, repairedPreviousState)
   const state: RegistryMonitorState = {
     schemaVersion: REGISTRY_HEALTH_SCHEMA_VERSION,
     scoreVersion: REGISTRY_HEALTH_SCORE_VERSION,
+    dryRunVersion: REGISTRY_DRY_RUN_VERSION,
     updatedAt: now.toISOString(),
-    ...(previousState?.lastDailyRunAt
-      ? { lastDailyRunAt: previousState.lastDailyRunAt }
+    ...(repairedPreviousState?.lastDailyRunAt
+      ? { lastDailyRunAt: repairedPreviousState.lastDailyRunAt }
       : {}),
-    ...(previousState?.lastWeeklyRunAt
-      ? { lastWeeklyRunAt: previousState.lastWeeklyRunAt }
+    ...(repairedPreviousState?.lastWeeklyRunAt
+      ? { lastWeeklyRunAt: repairedPreviousState.lastWeeklyRunAt }
       : {}),
     registries: {},
   }
@@ -430,10 +475,9 @@ export async function runRegistryMonitor({
   }
 
   for (const entry of directory) {
-    state.registries[entry.name] = structuredClone(
-      previousState?.registries[entry.name] ??
-        createRegistryMonitorEntryState(now)
-    )
+    state.registries[entry.name] =
+      repairedPreviousState?.registries[entry.name] ??
+      createRegistryMonitorEntryState(now)
     runResults[entry.name] = { items: [] }
   }
 
@@ -555,7 +599,12 @@ export async function runRegistryMonitor({
     mode,
     totals,
     results: runResults,
-    diagnostics: [],
+    diagnostics:
+      discardedDryRuns > 0
+        ? [
+            `Discarded ${discardedDryRuns} invalid CLI dry-run observations from the pre-tsconfig scaffold.`,
+          ]
+        : [],
   }
 
   return {
