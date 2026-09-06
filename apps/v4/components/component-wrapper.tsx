@@ -1,8 +1,7 @@
 "use client"
 
 import * as React from "react"
-
-import { cn } from "@/registry/new-york-v4/lib/utils"
+import { cn } from "cn"
 
 export function ComponentWrapper({
   className,

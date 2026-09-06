@@ -1,8 +1,8 @@
 import * as React from "react"
 import { cva } from "class-variance-authority"
+import { cn } from "cn"
 import { NavigationMenu as NavigationMenuPrimitive } from "radix-ui"
 
-import { cn } from "@/registry/bases/radix/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function NavigationMenu({
