@@ -750,7 +750,7 @@
   }
 
   .cn-drawer-popup {
-    @apply bg-popover text-popover-foreground rounded-[min(var(--radius-4xl),24px)] border border-popover dark:border-border text-sm shadow-xl [--drawer-bleed-background:transparent] [--drawer-inset:--spacing(2)] [--drawer-stacked-shadow:0_-20px_25px_-5px_rgb(0_0_0/0.1),0_-8px_10px_-6px_rgb(0_0_0/0.1)] data-[swipe-direction=down]:data-nested-drawer-open:shadow-(--drawer-stacked-shadow);
+    @apply bg-popover text-popover-foreground rounded-[min(var(--radius-4xl),24px)] border border-border text-sm shadow-xl [--drawer-bleed-background:transparent] [--drawer-inset:--spacing(2)] [--drawer-stacked-shadow:0_-20px_25px_-5px_rgb(0_0_0/0.1),0_-8px_10px_-6px_rgb(0_0_0/0.1)] data-[swipe-direction=down]:data-nested-drawer-open:shadow-(--drawer-stacked-shadow);
   }
 
   .cn-drawer-handle {

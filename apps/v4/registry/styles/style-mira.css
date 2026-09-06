@@ -498,7 +498,7 @@
   }
 
   .cn-drawer-popup {
-    @apply bg-popover text-popover-foreground border-popover dark:border-border rounded-xl border text-xs/relaxed [--drawer-bleed-background:transparent] [--drawer-inset:--spacing(2)];
+    @apply bg-popover text-popover-foreground border-border rounded-xl border text-xs/relaxed [--drawer-bleed-background:transparent] [--drawer-inset:--spacing(2)];
   }
 
   .cn-drawer-handle {
