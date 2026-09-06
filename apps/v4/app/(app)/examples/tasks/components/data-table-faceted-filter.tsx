@@ -1,8 +1,8 @@
 import * as React from "react"
 import { type Column, type RowData } from "@tanstack/react-table"
+import { cn } from "cn"
 import { Check, PlusCircle } from "lucide-react"
 
-import { cn } from "@/lib/utils"
 import { Badge } from "@/registry/new-york-v4/ui/badge"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {

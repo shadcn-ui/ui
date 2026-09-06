@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 
-import { cn } from "@/lib/utils"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { Button } from "@/styles/base-rhea/ui/button"
 import {

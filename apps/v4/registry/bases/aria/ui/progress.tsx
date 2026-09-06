@@ -1,14 +1,13 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 import {
   Label as LabelPrimitive,
   ProgressBar as ProgressPrimitive,
   type LabelProps,
   type ProgressBarProps as ProgressPrimitiveProps,
 } from "react-aria-components"
-
-import { cn } from "@/registry/bases/aria/lib/utils"
 
 type ProgressContextValue = {
   percentage?: number

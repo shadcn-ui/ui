@@ -26,8 +26,7 @@ import {
   Source_Sans_3,
   Space_Grotesk,
 } from "next/font/google"
-
-import { cn } from "@/lib/utils"
+import { cn } from "cn"
 
 const geistSans = Geist({
   subsets: ["latin"],

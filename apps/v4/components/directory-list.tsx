@@ -7,8 +7,8 @@ import {
   IconChevronLeft,
   IconChevronRight,
 } from "@tabler/icons-react"
+import { cn } from "cn"
 
-import { cn } from "@/lib/utils"
 import { useSearchRegistry } from "@/hooks/use-search-registry"
 import {
   DirectoryAddButton,
