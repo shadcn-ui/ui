@@ -1759,6 +1759,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'><rect width='500' height='500' fill='var(--foreground)'/><path d='M150 100 C150 100, 170 80, 200 90 C230 100, 250 120, 250 120 C250 120, 270 100, 300 110 C330 120, 350 100, 350 100 L360 150 C360 150, 380 130, 400 140 C420 150, 400 170, 400 170 L400 330 C400 330, 420 310, 400 320 C380 330, 360 310, 360 310 L350 360 C350 360, 330 340, 300 350 C270 360, 250 340, 250 340 C250 340, 230 360, 200 350 C170 340, 150 360, 150 360 L140 310 C140 310, 120 330, 100 320 C80 310, 100 290, 100 290 L100 170 C100 170, 80 190, 100 180 C120 170, 140 190, 140 190 Z' fill='var(--background)'/><rect x='280' y='180' width='60' height='140' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@ui-shrushank",
+    "homepage": "https://www.shrutishankarnarayanan.com/components",
+    "url": "https://raw.githubusercontent.com/Shrootiiii/ui/main/r/{name}.json",
+    "description": "Free React and Tailwind components with Framer Motion interaction states and Tailwind CSS styling: buttons, badge, text field, toggle switch and breadcrumbs.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='#4D6B34'/><rect x='6' y='6' width='12' height='12' rx='3.5' fill='none' stroke='#F5F3EF' stroke-width='2'/><rect x='17' y='17' width='9' height='9' rx='2.5' fill='#F5F3EF'/></svg>"
+  },
+  {
     "name": "@uicapsule",
     "homepage": "https://uicapsule.com",
     "url": "https://uicapsule.com/r/{name}.json",
