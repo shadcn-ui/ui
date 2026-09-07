@@ -19,8 +19,7 @@ function toPascalCase(str: string): string {
 function processNamedImports(
   namedImports: string,
   isTypeOnly: boolean,
-  imports: Array<{ name: string; alias?: string; isType?: boolean }>,
-  packageName: string
+  imports: Array<{ name: string; alias?: string; isType?: boolean }>
 ) {
   // Clean up multi-line imports.
   // Remove comments and whitespace.
@@ -44,56 +43,27 @@ function processNamedImports(
       const importName = inlineTypeMatch[1]
       const importAlias = inlineTypeMatch[2]
 
-      if (packageName === "slot" && importName === "Slot" && !importAlias) {
-        imports.push({
-          name: "Slot",
-          alias: "SlotPrimitive",
-          isType: true,
-        })
-      } else {
-        imports.push({
-          name: importName,
-          alias: importAlias,
-          isType: true,
-        })
-      }
+      imports.push({
+        name: importName,
+        alias: importAlias,
+        isType: true,
+      })
     } else if (aliasMatch) {
       // Regular import with alias: "Root as DialogRoot"
       const importName = aliasMatch[1]
       const importAlias = aliasMatch[2]
 
-      if (
-        packageName === "slot" &&
-        importName === "Slot" &&
-        importAlias === "Slot"
-      ) {
-        imports.push({
-          name: "Slot",
-          alias: "SlotPrimitive",
-          isType: isTypeOnly,
-        })
-      } else {
-        imports.push({
-          name: importName,
-          alias: importAlias,
-          isType: isTypeOnly,
-        })
-      }
+      imports.push({
+        name: importName,
+        alias: importAlias,
+        isType: isTypeOnly,
+      })
     } else {
       // Simple import: "Root"
-      // Special handling for Slot: always alias it as SlotPrimitive
-      if (packageName === "slot" && importItem === "Slot") {
-        imports.push({
-          name: "Slot",
-          alias: "SlotPrimitive",
-          isType: isTypeOnly,
-        })
-      } else {
-        imports.push({
-          name: importItem,
-          isType: isTypeOnly,
-        })
-      }
+      imports.push({
+        name: importItem,
+        isType: isTypeOnly,
+      })
     }
   }
 }
@@ -329,7 +299,7 @@ export async function migrateRadixFile(
       // or import type { DialogProps } from "@radix-ui/react-dialog"
       // or import { type DialogProps, Root } from "@radix-ui/react-dialog"
 
-      processNamedImports(namedImports, isTypeOnly, imports, packageName)
+      processNamedImports(namedImports, isTypeOnly, imports)
     }
   }
 
@@ -376,11 +346,11 @@ export async function migrateRadixFile(
   result = result.replace(/\n\s*\n\s*\n/g, "\n\n")
 
   // Handle special case for Slot usage transformation
-  // Now that we import { Slot as SlotPrimitive }, we need to:
-  // 1. Transform: const Comp = asChild ? Slot : [ANYTHING] -> const Comp = asChild ? SlotPrimitive.Slot : [ANYTHING]
-  // 2. Transform: React.ComponentProps<typeof Slot> -> React.ComponentProps<typeof SlotPrimitive.Slot>
+  // Keep `import { Slot } from "radix-ui"` (matching registry) and rewrite usages to Slot.Root:
+  // 1. Transform: const Comp = asChild ? Slot : [ANYTHING] -> const Comp = asChild ? Slot.Root : [ANYTHING]
+  // 2. Transform: React.ComponentProps<typeof Slot> -> React.ComponentProps<typeof Slot.Root>
   const hasSlotImport = uniqueImports.some(
-    (imp) => imp.name === "Slot" && imp.alias === "SlotPrimitive"
+    (imp) => imp.name === "Slot" && (!imp.alias || imp.alias === "Slot")
   )
 
   if (hasSlotImport) {
@@ -436,10 +406,10 @@ export async function migrateRadixFile(
         }
       )
 
-      // Finally, replace all placeholders with SlotPrimitive.Slot
+      // Finally, replace all placeholders with Slot.Root
       transformedLine = transformedLine.replace(
         /__SLOT_PLACEHOLDER__/g,
-        "SlotPrimitive.Slot"
+        "Slot.Root"
       )
 
       return transformedLine
