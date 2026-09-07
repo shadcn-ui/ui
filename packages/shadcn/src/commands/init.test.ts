@@ -192,7 +192,12 @@ describe("runInit", () => {
       createProjectConfig(projectCwd)
     )
     vi.mocked(ensureRegistriesInConfig).mockImplementation(
-      async (_components, config) => ({ config, newRegistries: [] })
+      async (_components, config) => ({
+        config,
+        newRegistries: [],
+        discoveredRegistries: {},
+        packageJsonRegistries: {},
+      })
     )
     vi.mocked(addComponents).mockResolvedValue(undefined)
   })

@@ -224,6 +224,7 @@ export function materializeParts<
       case "reasoning-file":
       case "custom":
       case "step-start":
+      case "tool-approval-request":
         // These events have no TanStack message part.
         break
       default:

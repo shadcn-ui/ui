@@ -12,8 +12,11 @@ import {
   vi,
 } from "vitest"
 
+import { logger } from "../utils/logger"
+import { withRegistryContext } from "./context"
 import { RegistrySourceFileError, RegistryValidationError } from "./errors"
-import { validateGitHubRegistrySource } from "./github"
+import { fetchGitHubRegistryItem, validateGitHubRegistrySource } from "./github"
+import { resetGitHubAuthNotices } from "./github-auth"
 import {
   fetchRegistryItems,
   resolveRegistryItemsFromRegistries,
@@ -39,22 +42,35 @@ describe("GitHub registry items", () => {
   })
 
   beforeEach(() => {
-    vi.mocked(execa).mockResolvedValue({
-      stdout: [
-        `ref: refs/heads/main\tHEAD`,
-        `${HEAD_SHA}\tHEAD`,
-        `${HEAD_SHA}\trefs/heads/main`,
-        `${TAG_OBJECT_SHA}\trefs/tags/v1.2.0`,
-        `${TAG_SHA}\trefs/tags/v1.2.0^{}`,
-        `${BRANCH_SHA}\trefs/heads/feature/forms`,
-        `${V1_SHA}\trefs/tags/v1.0.0`,
-      ].join("\n"),
-    } as any)
+    // Keep host and CI credentials out of the auth ladder: no env tokens, and
+    // the gh binary behaves as missing unless a test overrides it.
+    vi.stubEnv("GH_TOKEN", "")
+    vi.stubEnv("GITHUB_TOKEN", "")
+    resetGitHubAuthNotices()
+    vi.mocked(execa).mockImplementation(((command: string) => {
+      if (command === "gh") {
+        return Promise.reject(
+          Object.assign(new Error("spawn gh ENOENT"), { code: "ENOENT" })
+        )
+      }
+      return Promise.resolve({
+        stdout: [
+          `ref: refs/heads/main\tHEAD`,
+          `${HEAD_SHA}\tHEAD`,
+          `${HEAD_SHA}\trefs/heads/main`,
+          `${TAG_OBJECT_SHA}\trefs/tags/v1.2.0`,
+          `${TAG_SHA}\trefs/tags/v1.2.0^{}`,
+          `${BRANCH_SHA}\trefs/heads/feature/forms`,
+          `${V1_SHA}\trefs/tags/v1.0.0`,
+        ].join("\n"),
+      })
+    }) as any)
   })
 
   afterEach(() => {
     server.resetHandlers()
     vi.mocked(execa).mockReset()
+    vi.unstubAllEnvs()
   })
 
   afterAll(() => {
@@ -876,6 +892,348 @@ describe("GitHub registry items", () => {
         addCommandArgument: "acme/ui/card",
       },
     ])
+  })
+
+  describe("private GitHub registries", () => {
+    const PRIVATE_REGISTRY = {
+      name: "acme-ui",
+      homepage: "https://github.com/acme/ui",
+      items: [
+        {
+          name: "button",
+          type: "registry:ui",
+          files: [{ path: "button.tsx", type: "registry:ui" }],
+        },
+        {
+          name: "card",
+          type: "registry:ui",
+          files: [{ path: "card.tsx", type: "registry:ui" }],
+        },
+      ],
+    }
+
+    beforeEach(() => {
+      vi.spyOn(logger, "log").mockImplementation(() => {})
+    })
+
+    afterEach(() => {
+      vi.restoreAllMocks()
+    })
+
+    it("upgrades a root 404 to the env token and sends it only to api.github.com", async () => {
+      vi.stubEnv("GH_TOKEN", "ci-token")
+      let rawAuthorization: string | null = "unset"
+      const apiAuthorizations: Array<string | null> = []
+
+      server.use(
+        http.get(
+          "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/registry.json",
+          ({ request }) => {
+            rawAuthorization = request.headers.get("authorization")
+            return new HttpResponse(null, { status: 404 })
+          }
+        ),
+        http.get(
+          "https://api.github.com/repos/acme/ui/contents/registry.json",
+          ({ request }) => {
+            apiAuthorizations.push(request.headers.get("authorization"))
+            return HttpResponse.json(PRIVATE_REGISTRY)
+          }
+        ),
+        http.get(
+          "https://api.github.com/repos/acme/ui/contents/button.tsx",
+          ({ request }) => {
+            apiAuthorizations.push(request.headers.get("authorization"))
+            return HttpResponse.text("export function Button() {}")
+          }
+        )
+      )
+
+      const [item] = await fetchRegistryItems(["acme/ui/button"], {} as any)
+
+      expect(item.files?.[0]?.content).toBe("export function Button() {}")
+      expect(rawAuthorization).toBeNull()
+      expect(apiAuthorizations).toEqual(["Bearer ci-token", "Bearer ci-token"])
+      expect(
+        vi.mocked(execa).mock.calls.filter(([command]) => command === "gh")
+      ).toHaveLength(0)
+    })
+
+    it("keeps env-token failures terminal without falling through to gh", async () => {
+      vi.stubEnv("GH_TOKEN", "expired-token")
+
+      server.use(
+        http.get(
+          "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/registry.json",
+          () => new HttpResponse(null, { status: 404 })
+        ),
+        http.get(
+          "https://api.github.com/repos/acme/ui/contents/registry.json",
+          () => new HttpResponse(null, { status: 401 })
+        )
+      )
+
+      await expect(
+        fetchRegistryItems(["acme/ui/button"], {} as any)
+      ).rejects.toMatchObject({
+        suggestion:
+          "Check that GH_TOKEN or GITHUB_TOKEN is valid and has read access to the repository.",
+      })
+      expect(
+        vi.mocked(execa).mock.calls.filter(([command]) => command === "gh")
+      ).toHaveLength(0)
+    })
+
+    it("upgrades a root 404 through gh once across concurrent items", async () => {
+      let ghRootCalls = 0
+      vi.mocked(execa).mockImplementation(((
+        command: string,
+        args?: readonly string[]
+      ) => {
+        if (command === "git") {
+          return Promise.resolve({
+            stdout: "1111111111111111111111111111111111111111\tHEAD",
+          })
+        }
+        const endpoint = args?.[3] ?? ""
+        if (endpoint.includes("contents/registry.json")) {
+          ghRootCalls += 1
+          return Promise.resolve({ stdout: JSON.stringify(PRIVATE_REGISTRY) })
+        }
+        if (endpoint.includes("contents/button.tsx")) {
+          return Promise.resolve({ stdout: "export function Button() {}" })
+        }
+        if (endpoint.includes("contents/card.tsx")) {
+          return Promise.resolve({ stdout: "export function Card() {}" })
+        }
+        return Promise.reject(
+          Object.assign(new Error("exit 1"), {
+            stderr: "gh: Not Found (HTTP 404)",
+          })
+        )
+      }) as any)
+
+      server.use(
+        http.get(
+          "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/registry.json",
+          () => new HttpResponse(null, { status: 404 })
+        )
+      )
+
+      const [button, card] = await fetchRegistryItems(
+        ["acme/ui/button", "acme/ui/card"],
+        {} as any
+      )
+
+      expect(button.files?.[0]?.content).toBe("export function Button() {}")
+      expect(card.files?.[0]?.content).toBe("export function Card() {}")
+      expect(ghRootCalls).toBe(1)
+      expect(vi.mocked(logger.log)).toHaveBeenCalledTimes(1)
+      expect(vi.mocked(logger.log)).toHaveBeenCalledWith(
+        expect.stringContaining("Using gh credentials.")
+      )
+    })
+
+    it("awaits the context notice callback before the first authenticated request", async () => {
+      const order: string[] = []
+      vi.stubEnv("GH_TOKEN", "ci-token")
+
+      server.use(
+        http.get(
+          "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/registry.json",
+          () => new HttpResponse(null, { status: 404 })
+        ),
+        http.get(
+          "https://api.github.com/repos/acme/ui/contents/registry.json",
+          () => {
+            order.push("request")
+            return HttpResponse.json(PRIVATE_REGISTRY)
+          }
+        ),
+        http.get(
+          "https://api.github.com/repos/acme/ui/contents/button.tsx",
+          () => HttpResponse.text("export function Button() {}")
+        )
+      )
+
+      await withRegistryContext(
+        () => fetchRegistryItems(["acme/ui/button"], {} as any),
+        {
+          onGitHubAuthNotice: async (message) => {
+            order.push(message)
+          },
+        }
+      )
+
+      expect(order[0]).toBe("Using GH_TOKEN credentials.")
+      expect(order[1]).toBe("request")
+      expect(vi.mocked(logger.log)).not.toHaveBeenCalled()
+    })
+
+    it("reports the original anonymous error when the authenticated root also 404s", async () => {
+      vi.stubEnv("GH_TOKEN", "ci-token")
+
+      server.use(
+        http.get(
+          "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/registry.json",
+          () => new HttpResponse(null, { status: 404 })
+        ),
+        http.get(
+          "https://api.github.com/repos/acme/ui/contents/registry.json",
+          () => new HttpResponse(null, { status: 404 })
+        )
+      )
+
+      await expect(
+        fetchRegistryItems(["acme/ui/button"], {} as any)
+      ).rejects.toMatchObject({
+        message: expect.stringContaining("Failed to read GitHub source file"),
+        suggestion: expect.stringContaining("private repository"),
+      })
+    })
+
+    it("locks a public source to anonymous so a missing child never authenticates", async () => {
+      vi.stubEnv("GH_TOKEN", "ci-token")
+
+      server.use(
+        http.get(
+          "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/registry.json",
+          () => HttpResponse.json(PRIVATE_REGISTRY)
+        ),
+        http.get(
+          "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/button.tsx",
+          () => new HttpResponse(null, { status: 404 })
+        )
+      )
+
+      // No api.github.com handler is registered, so an authenticated attempt
+      // would fail the unhandled-request guard.
+      await expect(
+        fetchRegistryItems(["acme/ui/button"], {} as any)
+      ).rejects.toMatchObject({
+        suggestion:
+          "Check that the file path exists in the public GitHub repository.",
+      })
+      expect(vi.mocked(logger.log)).not.toHaveBeenCalled()
+    })
+
+    it("prints the notice once across separate top-level calls for the same source", async () => {
+      vi.stubEnv("GH_TOKEN", "ci-token")
+
+      server.use(
+        http.get(
+          "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/registry.json",
+          () => new HttpResponse(null, { status: 404 })
+        ),
+        http.get(
+          "https://api.github.com/repos/acme/ui/contents/registry.json",
+          () => HttpResponse.json(PRIVATE_REGISTRY)
+        ),
+        http.get(
+          "https://api.github.com/repos/acme/ui/contents/button.tsx",
+          () => HttpResponse.text("export function Button() {}")
+        ),
+        http.get("https://api.github.com/repos/acme/ui/contents/card.tsx", () =>
+          HttpResponse.text("export function Card() {}")
+        )
+      )
+
+      // Separate calls create separate sourceCaches, as the add command's
+      // phases do. The notice must still print only once.
+      await fetchRegistryItems(["acme/ui/button"], {} as any)
+      await fetchRegistryItems(["acme/ui/card"], {} as any)
+
+      expect(vi.mocked(logger.log)).toHaveBeenCalledTimes(1)
+    })
+
+    it("evicts rejected source promises so a retry can succeed", async () => {
+      const sourceCache = new Map<string, Promise<string>>()
+
+      server.use(
+        http.get(
+          "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/registry.json",
+          () => new HttpResponse(null, { status: 500 })
+        )
+      )
+
+      await expect(
+        fetchGitHubRegistryItem(
+          { scheme: "github", owner: "acme", repo: "ui", item: "button" },
+          { sourceCache }
+        )
+      ).rejects.toThrow(RegistrySourceFileError)
+
+      server.resetHandlers()
+      server.use(
+        http.get(
+          "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/registry.json",
+          () => HttpResponse.json(PRIVATE_REGISTRY)
+        ),
+        http.get(
+          "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/button.tsx",
+          () => HttpResponse.text("export function Button() {}")
+        )
+      )
+
+      const item = await fetchGitHubRegistryItem(
+        { scheme: "github", owner: "acme", repo: "ui", item: "button" },
+        { sourceCache }
+      )
+
+      expect(item.files?.[0]?.content).toBe("export function Button() {}")
+    })
+
+    it("falls back to authenticated ref resolution when git ls-remote fails", async () => {
+      vi.stubEnv("GH_TOKEN", "ci-token")
+      vi.mocked(execa).mockImplementation((() =>
+        Promise.reject(
+          Object.assign(new Error("exit 128"), { exitCode: 128 })
+        )) as any)
+
+      server.use(
+        http.get("https://api.github.com/repos/acme/ui/commits/HEAD", () =>
+          HttpResponse.json({
+            sha: "1111111111111111111111111111111111111111",
+          })
+        ),
+        http.get(
+          "https://api.github.com/repos/acme/ui/contents/registry.json",
+          () => HttpResponse.json(PRIVATE_REGISTRY)
+        ),
+        http.get(
+          "https://api.github.com/repos/acme/ui/contents/button.tsx",
+          () => HttpResponse.text("export function Button() {}")
+        )
+      )
+
+      // No raw.githubusercontent.com handler: once the ref fallback selects
+      // the token mode, content must go through the Contents API directly.
+      const [item] = await fetchRegistryItems(["acme/ui/button"], {} as any)
+
+      expect(item.files?.[0]?.content).toBe("export function Button() {}")
+      expect(vi.mocked(logger.log)).toHaveBeenCalledTimes(1)
+    })
+
+    it("preserves the original ref error when authenticated resolution 404s", async () => {
+      vi.stubEnv("GH_TOKEN", "ci-token")
+      vi.mocked(execa).mockImplementation((() =>
+        Promise.reject(
+          Object.assign(new Error("exit 128"), { exitCode: 128 })
+        )) as any)
+
+      server.use(
+        http.get(
+          "https://api.github.com/repos/acme/ui/commits/HEAD",
+          () => new HttpResponse(null, { status: 404 })
+        )
+      )
+
+      await expect(
+        fetchRegistryItems(["acme/ui/button"], {} as any)
+      ).rejects.toMatchObject({
+        message: expect.stringContaining('Failed to resolve GitHub ref "HEAD"'),
+      })
+    })
   })
 
   it("searches items from a GitHub source registry with an explicit ref", async () => {

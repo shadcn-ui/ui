@@ -1,4 +1,6 @@
 import path from "path"
+import { migrateBaseColor } from "@/src/migrations/migrate-base-color"
+import { migrateCn } from "@/src/migrations/migrate-cn"
 import { migrateIcons } from "@/src/migrations/migrate-icons"
 import { migrateRadix } from "@/src/migrations/migrate-radix"
 import { migrateRtl } from "@/src/migrations/migrate-rtl"
@@ -11,8 +13,16 @@ import { z } from "zod"
 
 export const migrations = [
   {
+    name: "cn",
+    description: "migrate clsx and tailwind-merge to cn.",
+  },
+  {
     name: "icons",
     description: "migrate your ui components to a different icon library.",
+  },
+  {
+    name: "base-color",
+    description: "migrate your theme to a different base color.",
   },
   {
     name: "radix",
@@ -57,13 +67,10 @@ export const migrate = new Command()
   .option("-l, --list", "list all migrations.", false)
   .option("-y, --yes", "skip confirmation prompt.", false)
   .option(
-    "-f, --from <library>",
-    "the icon library to migrate from (icons migration only)."
+    "-f, --from <name>",
+    "the base color or icon library to migrate from."
   )
-  .option(
-    "-t, --to <library>",
-    "the icon library to migrate to (icons migration only)."
-  )
+  .option("-t, --to <name>", "the base color or icon library to migrate to.")
   .action(async (migration, migratePath, opts) => {
     try {
       const options = migrateOptionsSchema.parse({
@@ -84,18 +91,24 @@ export const migrate = new Command()
         return
       }
 
-      if (!options.migration) {
+      if (options.migration === "cn") {
+        await migrateCn({
+          cwd: options.cwd,
+          path: options.path,
+          yes: options.yes,
+        })
+        return
+      }
+
+      const { errors, config } = await preFlightMigrate(options)
+
+      if (errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
         throw new Error(
-          "You must specify a migration. Run `shadcn migrate --list` to see available migrations."
+          "No `components.json` file found. Ensure you are at the root of your project."
         )
       }
 
-      let { errors, config } = await preFlightMigrate(options)
-
-      if (
-        errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT] ||
-        errors[ERRORS.MISSING_CONFIG]
-      ) {
+      if (errors[ERRORS.MISSING_CONFIG]) {
         throw new Error(
           "No `components.json` file found. Ensure you are at the root of your project."
         )
@@ -112,6 +125,14 @@ export const migrate = new Command()
           from: options.from,
           to: options.to,
           path: options.path,
+          yes: options.yes,
+        })
+      }
+
+      if (options.migration === "base-color") {
+        await migrateBaseColor(config, {
+          from: options.from,
+          to: options.to,
           yes: options.yes,
         })
       }

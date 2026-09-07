@@ -1,12 +1,11 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 import {
   composeRenderProps,
   TextArea as TextareaPrimitive,
 } from "react-aria-components"
-
-import { cn } from "@/registry/bases/aria/lib/utils"
 
 function Textarea({
   className,

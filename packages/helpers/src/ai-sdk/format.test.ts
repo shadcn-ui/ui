@@ -1,14 +1,18 @@
-import { readUIMessageStream } from "ai"
+import {
+  lastAssistantMessageIsCompleteWithApprovalResponses,
+  lastAssistantMessageIsCompleteWithToolCalls,
+  readUIMessageStream,
+} from "ai"
 import type { ChatTransport, UIMessage } from "ai"
 import { describe, expect, it } from "vitest"
 
 import { createChat } from "./index"
 import { readStream, weatherLoading, weatherOutput } from "./test-utils"
-import type { DataParts, Tools } from "./test-utils"
+import type { DataParts, TestMessage, Tools } from "./test-utils"
 
 describe("AI SDK transport", () => {
   it("chains tool output after an in-stream sleep", async () => {
-    const chat = createChat<unknown, DataParts, Tools>()
+    const chat = createChat<TestMessage>()
       .user("Weather?")
       .assistant(({ writer }) => {
         writer
@@ -42,7 +46,7 @@ describe("AI SDK transport", () => {
   })
 
   it("streams denied static tool parts", async () => {
-    const chat = createChat<unknown, DataParts, Tools>()
+    const chat = createChat<TestMessage>()
       .user("Use the available tools.")
       .assistant([
         {
@@ -88,7 +92,7 @@ describe("AI SDK transport", () => {
   })
 
   it("streams the next scripted assistant response through the transport", async () => {
-    const chat = createChat<unknown, DataParts, Tools>()
+    const chat = createChat<TestMessage>()
       .user("Hello")
       .assistant("Hey, how's it going?")
       .user("What's the weather?")
@@ -423,7 +427,7 @@ describe("AI SDK transport", () => {
     ).toBeGreaterThan(1)
   })
   it("streams hydrated assistant turns through the transport", async () => {
-    const source = createChat<unknown, DataParts, Tools>()
+    const source = createChat<TestMessage>()
       .user("What's the weather?")
       .assistant(({ writer }) => {
         writer
@@ -434,7 +438,7 @@ describe("AI SDK transport", () => {
         writer.text("It's sunny.", { mode: "instant" })
       })
 
-    const replay = createChat<unknown, DataParts, Tools>({
+    const replay = createChat<TestMessage>({
       messages: source.get(),
     })
     const [userMessage] = replay.get(1)
@@ -680,5 +684,248 @@ describe("AI SDK live client integration", () => {
     })
 
     expect(getText(regenerated)).toBe("Still nothing scripted.")
+  })
+})
+
+describe("AI SDK human-in-the-loop", () => {
+  function createApprovalChat() {
+    return createChat<TestMessage>()
+      .user("Fetch the weather?")
+      .assistant(({ writer }) => {
+        writer.text("I need your approval first.", { mode: "instant" })
+        writer.tool("getWeather", {
+          input: { city: "San Francisco" },
+          needsApproval: true,
+          output: weatherOutput,
+        })
+      })
+      .assistant(({ writer, toolCall }) => {
+        writer.text(toolCall?.approved ? "Fetched it." : "Okay, skipping.", {
+          mode: "instant",
+        })
+      })
+  }
+
+  async function readTurnChunks(
+    transport: ChatTransport<UIMessage<unknown, DataParts, Tools>>,
+    messages: Array<UIMessage<unknown, DataParts, Tools>>
+  ) {
+    // Mirrors useChat's automatic sends, which pass the last message's id
+    // with the submit-message trigger. The transport must not treat that as
+    // a regeneration of the identified turn.
+    const stream = await transport.sendMessages({
+      trigger: "submit-message",
+      chatId: "chat-1",
+      messageId: messages[messages.length - 1]?.id,
+      messages,
+      abortSignal: undefined,
+    })
+
+    return readStream(stream)
+  }
+
+  function respondToApproval(
+    message: UIMessage<unknown, DataParts, Tools>,
+    approved: boolean
+  ) {
+    return {
+      ...message,
+      parts: message.parts.map((part) =>
+        part.type === "tool-getWeather"
+          ? ({
+              ...part,
+              state: "approval-responded",
+              approval: { id: "approval-1", approved },
+            } as (typeof message.parts)[number])
+          : part
+      ),
+    }
+  }
+
+  it("streams the approval request and the client parks the call", async () => {
+    const chat = createApprovalChat()
+    const chunks = await readTurnChunks(
+      chat.transport({ delayMs: undefined }),
+      chat.get(1)
+    )
+
+    expect(chunks.map((chunk) => chunk.type)).toEqual([
+      "start",
+      "text-start",
+      "text-delta",
+      "text-end",
+      "tool-input-available",
+      "tool-approval-request",
+      "finish",
+    ])
+    expect(chunks[5]).toMatchObject({
+      approvalId: "approval-1",
+      toolCallId: "call-1",
+    })
+
+    const stream = await chat.transport({ delayMs: undefined }).sendMessages({
+      trigger: "submit-message",
+      chatId: "chat-1",
+      messageId: undefined,
+      messages: chat.get(1),
+      abortSignal: undefined,
+    })
+    let clientMessage: UIMessage<unknown, DataParts, Tools> | undefined
+
+    for await (const message of readUIMessageStream({ stream })) {
+      clientMessage = message as UIMessage<unknown, DataParts, Tools>
+    }
+
+    expect(clientMessage?.parts).toMatchObject([
+      { type: "text", text: "I need your approval first." },
+      {
+        type: "tool-getWeather",
+        state: "approval-requested",
+        approval: { id: "approval-1" },
+      },
+    ])
+  })
+
+  it("streams the gated output and approved wording after approval", async () => {
+    const chat = createApprovalChat()
+    const [userMessage, assistantMessage] = chat.get(2)
+    const chunks = await readTurnChunks(
+      chat.transport({ delayMs: undefined }),
+      [userMessage, respondToApproval(assistantMessage, true)]
+    )
+
+    expect(chunks.map((chunk) => chunk.type)).toEqual([
+      "start",
+      "start-step",
+      "tool-output-available",
+      "text-start",
+      "text-delta",
+      "text-end",
+      "finish",
+    ])
+    // Continuations omit the message id so the client updates the paused
+    // assistant message in place instead of forking a duplicate.
+    expect(chunks[0]).toMatchObject({ messageId: undefined })
+    expect(chunks[2]).toMatchObject({
+      toolCallId: "call-1",
+      output: weatherOutput,
+    })
+    expect(chunks[4]).toMatchObject({ delta: "Fetched it." })
+  })
+
+  it("streams the denial and denied wording after denial", async () => {
+    const chat = createApprovalChat()
+    const [userMessage, assistantMessage] = chat.get(2)
+    const chunks = await readTurnChunks(
+      chat.transport({ delayMs: undefined }),
+      [userMessage, respondToApproval(assistantMessage, false)]
+    )
+
+    expect(chunks.map((chunk) => chunk.type)).toEqual([
+      "start",
+      "start-step",
+      "tool-output-denied",
+      "text-start",
+      "text-delta",
+      "text-end",
+      "finish",
+    ])
+    expect(chunks[2]).toMatchObject({ toolCallId: "call-1" })
+    expect(chunks[4]).toMatchObject({ delta: "Okay, skipping." })
+  })
+
+  it("does not retrigger automatic sending after a continuation merges", async () => {
+    const chat = createApprovalChat()
+    const [userMessage, assistantMessage] = chat.get(2)
+    const respondedMessage = respondToApproval(assistantMessage, true)
+    const chunks = await readTurnChunks(
+      chat.transport({ delayMs: undefined }),
+      [userMessage, respondedMessage]
+    )
+
+    // The client merges these chunks into the prior assistant message as a
+    // new step. Rebuild that merged shape and assert the triggers ignore the
+    // already-resolved tool call behind the step boundary.
+    const mergedMessage = {
+      ...respondedMessage,
+      parts: [
+        ...respondedMessage.parts.map((part) =>
+          part.type === "tool-getWeather"
+            ? ({
+                ...part,
+                state: "output-available",
+                output: weatherOutput,
+                approval: { id: "approval-1", approved: true },
+              } as (typeof respondedMessage.parts)[number])
+            : part
+        ),
+        { type: "step-start" } as (typeof respondedMessage.parts)[number],
+        {
+          type: "text",
+          text: "Fetched it.",
+        } as (typeof respondedMessage.parts)[number],
+      ],
+    }
+
+    expect(chunks.some((chunk) => chunk.type === "start-step")).toBe(true)
+    expect(
+      lastAssistantMessageIsCompleteWithToolCalls({
+        messages: [userMessage, mergedMessage],
+      })
+    ).toBe(false)
+    expect(
+      lastAssistantMessageIsCompleteWithApprovalResponses({
+        messages: [userMessage, mergedMessage],
+      })
+    ).toBe(false)
+  })
+
+  it("continues an elicitation with the user-submitted output", async () => {
+    const chat = createChat<TestMessage>()
+      .user("Help me plan the release.")
+      .assistant(({ writer }) => {
+        writer.tool("createFile", {
+          dynamic: true,
+          input: { filename: "plan.md", content: "" },
+        })
+      })
+      .assistant(({ writer, toolCall }) => {
+        writer.text(
+          toolCall?.name === "createFile" && toolCall.output
+            ? `Saved ${toolCall.output.filename}.`
+            : "No file yet.",
+          { mode: "instant" }
+        )
+      })
+    const [userMessage, assistantMessage] = chat.get(2)
+    const answeredMessage = {
+      ...assistantMessage,
+      parts: assistantMessage.parts.map((part) =>
+        part.type === "dynamic-tool"
+          ? ({
+              ...part,
+              state: "output-available",
+              output: {
+                filename: "plan.md",
+                url: "https://example.com/plan.md",
+              },
+            } as (typeof assistantMessage.parts)[number])
+          : part
+      ),
+    }
+    const chunks = await readTurnChunks(
+      chat.transport({ delayMs: undefined }),
+      [userMessage, answeredMessage]
+    )
+
+    expect(chunks.map((chunk) => chunk.type)).toEqual([
+      "start",
+      "start-step",
+      "text-start",
+      "text-delta",
+      "text-end",
+      "finish",
+    ])
+    expect(chunks[3]).toMatchObject({ delta: "Saved plan.md." })
   })
 })
