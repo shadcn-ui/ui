@@ -25,6 +25,27 @@ export const registryConfigSchema = z.record(
   registryConfigItemSchema
 )
 
+export const projectConfigSchema = z
+  .object({
+    framework: z
+      .enum([
+        "next-app",
+        "next-pages",
+        "remix",
+        "react-router",
+        "vite",
+        "astro",
+        "laravel",
+        "tanstack-start",
+        "gatsby",
+        "expo",
+        "manual",
+      ])
+      .optional(),
+    srcDirectory: z.boolean().optional(),
+  })
+  .strict()
+
 export const rawConfigSchema = z
   .object({
     $schema: z.string().optional(),
@@ -50,6 +71,7 @@ export const rawConfigSchema = z
       .default("default")
       .optional(),
     menuAccent: z.enum(["subtle", "bold"]).default("subtle").optional(),
+    project: projectConfigSchema.optional(),
     aliases: z.object({
       components: z.string(),
       utils: z.string(),
