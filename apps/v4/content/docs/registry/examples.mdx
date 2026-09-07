@@ -48,7 +48,7 @@ It can be used to create a new style from scratch, i.e. custom components, css v
 
 On `npx shadcn add`, the following will:
 
-- Install `tailwind-merge` and `clsx` as dependencies.
+- Install `cn` as a dependency.
 - Add the `utils` registry item from the shadcn/ui registry.
 - Add the `button`, `input`, `label`, and `select` components from a remote registry.
 - Install new css vars: `main`, `bg`, `border`, `text`, `ring`.
@@ -59,7 +59,7 @@ On `npx shadcn add`, the following will:
   "extends": "none",
   "name": "new-style",
   "type": "registry:style",
-  "dependencies": ["tailwind-merge", "clsx"],
+  "dependencies": ["cn"],
   "registryDependencies": [
     "utils",
     "https://example.com/r/button.json",
@@ -259,11 +259,11 @@ A `registry:lib` item is a utility library. Use it to share helper functions, co
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "utils",
   "type": "registry:lib",
-  "dependencies": ["clsx", "tailwind-merge"],
+  "dependencies": ["cn"],
   "files": [
     {
       "path": "lib/utils.ts",
-      "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}",
+      "content": "export { cn } from \"cn\"",
       "type": "registry:lib"
     }
   ]
@@ -569,7 +569,7 @@ Use `extends: none` to create a base that doesn't extend shadcn/ui defaults.
       "baseColor": "slate"
     }
   },
-  "dependencies": ["tailwind-merge", "clsx", "tw-animate-css", "lucide-react"],
+  "dependencies": ["cn", "tw-animate-css", "lucide-react"],
   "registryDependencies": ["utils", "font-geist"],
   "cssVars": {
     "light": {

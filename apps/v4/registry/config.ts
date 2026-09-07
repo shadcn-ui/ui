@@ -945,6 +945,7 @@ export function buildRegistryBase(config: DesignSystemConfig) {
   const dependencies = [
     `shadcn@${SHADCN_VERSION}`,
     "class-variance-authority",
+    "cn",
     "tw-animate-css",
     ...(baseItem.dependencies ?? []),
     ...iconLibraryItem.packages,
