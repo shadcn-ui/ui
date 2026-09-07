@@ -5,7 +5,7 @@ API differences between `base` and `radix`. Check the `base` field from `npx sha
 ## Contents
 
 - Composition: asChild vs render
-- Button / trigger as non-button element
+- Links styled as buttons and non-native buttons
 - Select (items prop, placeholder, positioning, multiple, object values)
 - ToggleGroup (type vs multiple)
 - Slider (scalar vs array)
@@ -45,23 +45,31 @@ This applies to all trigger and close components: `DialogTrigger`, `SheetTrigger
 
 ---
 
-## Button / trigger as non-button element (base only)
+## Links styled as buttons and non-native buttons
 
-When `render` changes an element to a non-button (`<a>`, `<span>`), add `nativeButton={false}`.
+Base UI `Button` always owns button semantics. Do not render links through it.
+Apply `buttonVariants` directly to the link so the `<a>` or router link keeps
+its native semantics.
 
-**Incorrect (base):** missing `nativeButton={false}`.
-
-```tsx
-<Button render={<a href="/docs" />}>Read the docs</Button>
-```
-
-**Correct (base):**
+**Incorrect (base):**
 
 ```tsx
 <Button render={<a href="/docs" />} nativeButton={false}>
   Read the docs
 </Button>
 ```
+
+**Correct (base):**
+
+```tsx
+<a href="/docs" className={buttonVariants()}>
+  Read the docs
+</a>
+```
+
+When spreads or composed props require runtime merging, use a local
+`useRender` helper and remove Button-only props instead of forwarding them to
+the link.
 
 **Correct (radix):**
 
@@ -71,14 +79,17 @@ When `render` changes an element to a non-button (`<a>`, `<span>`), add `nativeB
 </Button>
 ```
 
-Same for triggers whose `render` is not a `Button`:
+Use `nativeButton={false}` only when a Base UI button or trigger still owns
+button behavior but renders a non-button element such as a `<span>`:
 
 ```tsx
-// base.
 <PopoverTrigger render={<InputGroupAddon />} nativeButton={false}>
   Pick date
 </PopoverTrigger>
 ```
+
+Do not combine a navigation link with another button action, such as a
+`DialogTrigger`. Keep the dialog action and navigation as separate elements.
 
 ---
 

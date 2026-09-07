@@ -1,6 +1,6 @@
 import { ArrowUpRightIcon, FolderIcon } from "lucide-react"
 
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button, buttonVariants } from "@/styles/base-nova/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -25,19 +25,20 @@ export function EmptyInCard() {
       </EmptyHeader>
       <EmptyContent>
         <div className="flex gap-2">
-          <Button render={<a href="#" />} nativeButton={false}>
+          <a href="#" className={buttonVariants()}>
             Create project
-          </Button>
+          </a>
           <Button variant="outline">Import project</Button>
         </div>
-        <Button
-          variant="link"
-          render={<a href="#" />}
-          className="text-muted-foreground"
-          nativeButton={false}
+        <a
+          href="#"
+          className={buttonVariants({
+            variant: "link",
+            className: "text-muted-foreground",
+          })}
         >
           Learn more <ArrowUpRightIcon />
-        </Button>
+        </a>
       </EmptyContent>
     </Empty>
   )

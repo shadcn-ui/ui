@@ -5,7 +5,7 @@ Sources: radix-ui.com primitives docs + base-ui.com `.md` docs, cross-checked ag
 
 Conventions that apply to every component below:
 
-- `asChild` (boolean, default `false`) → `render` (`ReactElement | (props: HTMLProps, state) => ReactElement`). Signature changed: instead of a lone child element, pass the element to `render`; Base UI merges props onto it. Button-rendering parts additionally accept `nativeButton` (default `true`), set it to `false` when `render` produces a non-`<button>` element.
+- `asChild` (boolean, default `false`) → `render` (`ReactElement | (props: HTMLProps, state) => ReactElement`). Signature changed: instead of a lone child element, pass the element to `render`; Base UI merges props onto it. Button-rendering parts additionally accept `nativeButton` (default `true`); set it to `false` only when the rendered element still owns button behavior. Navigation links keep link semantics and receive styles directly.
 - Base UI `className` and `style` also accept a `(state) => value` function form.
 - Radix `data-[state=...]` value attributes become Base UI presence attributes (`data-open`, `data-closed`, `data-pressed`, `data-active`).
 - Base UI change callbacks all gained a second `eventDetails` argument (`{ reason, event, cancel(), ... }`).
