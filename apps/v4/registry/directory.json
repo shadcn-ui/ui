@@ -968,6 +968,14 @@
     "logo": "<svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='32' height='32' rx='8' fill='var(--foreground)'/><path d='M16 6C12.134 6 9 9.134 9 13C9 18.25 16 26 16 26C16 26 23 18.25 23 13C23 9.134 19.866 6 16 6Z' fill='var(--background)'/><circle cx='16' cy='13' r='3' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@microkit",
+    "homepage": "https://microkit.co",
+    "url": "https://microkit.co/r/{name}.json",
+    "description": "Copy-paste microinteractions for React: animated buttons, hover effects, tabs and inputs. Each one installs as a single self-contained TypeScript and Tailwind file. MIT licensed.",
+    "author": "henriquegpb <https://github.com/henriquegpb>",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='none'><rect x='80' y='80' width='352' height='352' rx='96' fill='#f97316'/></svg>"
+  },
+  {
     "name": "@mksingh",
     "homepage": "https://mksingh.dev/docs",
     "url": "https://mksingh.dev/r/{name}.json",
