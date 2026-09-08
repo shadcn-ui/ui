@@ -226,10 +226,24 @@ const nextConfig = {
       },
       // The OIDC registry (shadcn-ui/oidc-ui) is a separate Vercel project
       // served under /oidc. It sets basePath: "/oidc", so the prefix is
-      // forwarded as-is.
+      // forwarded as-is. The zone's home page serves its RSC payloads at
+      // /oidc.rsc, /oidc.prefetch.rsc and /oidc.segments/* (dot, not
+      // slash), which /oidc/:path* does not match.
       {
         source: "/oidc",
         destination: "https://oidc.shadcn.com/oidc",
+      },
+      {
+        source: "/oidc.rsc",
+        destination: "https://oidc.shadcn.com/oidc.rsc",
+      },
+      {
+        source: "/oidc.prefetch.rsc",
+        destination: "https://oidc.shadcn.com/oidc.prefetch.rsc",
+      },
+      {
+        source: "/oidc.segments/:path*",
+        destination: "https://oidc.shadcn.com/oidc.segments/:path*",
       },
       {
         source: "/oidc/:path*",
