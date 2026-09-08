@@ -24,4 +24,9 @@ export const registryCategories = [
     slug: "signup",
     hidden: false,
   },
+  {
+    name: "Onboarding",
+    slug: "onboarding",
+    hidden: false,
+  },
 ]
