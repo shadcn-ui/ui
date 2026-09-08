@@ -1577,6 +1577,13 @@
     "logo": "<svg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='0' y='8.1' width='3' height='9.9' rx='1.5' fill='currentColor'/><rect x='3.75' y='1.8' width='3' height='16.2' rx='1.5' fill='currentColor'/><rect x='7.5' y='11.7' width='3' height='6.3' rx='1.5' fill='currentColor'/><rect x='11.25' y='4.5' width='3' height='13.5' rx='1.5' fill='currentColor'/><rect x='15' y='9.9' width='3' height='8.1' rx='1.5' fill='currentColor'/></svg>"
   },
   {
+    "name": "@spaceui",
+    "homepage": "https://www.spaceui.one",
+    "url": "https://www.spaceui.one/r/{name}.json",
+    "description": "An open-source design library built for humans and AI to create expressive, polished, and high-quality interfaces, helping you build better products, faster",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='32' fill='#fff'/><circle cx='24.91' cy='45.29' r='6.33' fill='#59adef'/><circle cx='22.11' cy='18.92' r='4.64' fill='#0a1a4a'/><circle cx='15.67' cy='31.1' r='5.41' fill='#6073ff'/><circle cx='21.71' cy='28.75' r='5.21' fill='#1f4fd8'/><circle cx='46.37' cy='35.5' r='5.59' fill='#59adef'/><circle cx='43.13' cy='41.9' r='7.54' fill='#6073ff'/><circle cx='44.28' cy='18.99' r='6.48' fill='#59adef'/><circle cx='48.52' cy='35.9' r='5.59' fill='#0a1a4a'/></svg>"
+  },
+  {
     "name": "@spectrumui",
     "homepage": "https://ui.spectrumhq.in",
     "url": "https://ui.spectrumhq.in/r/{name}.json",
