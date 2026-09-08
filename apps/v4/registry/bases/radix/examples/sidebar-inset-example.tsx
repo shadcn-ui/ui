@@ -40,6 +40,7 @@ export default function SidebarInsetExample() {
             hugeicons="Home01Icon"
             phosphor="HouseIcon"
             remixicon="RiHomeLine"
+            fontawesome="faHouse"
           />
         ),
         isActive: true,
@@ -64,6 +65,7 @@ export default function SidebarInsetExample() {
             hugeicons="ChartIcon"
             phosphor="ChartLineIcon"
             remixicon="RiLineChartLine"
+            fontawesome="faChartLine"
           />
         ),
         items: [
@@ -87,6 +89,7 @@ export default function SidebarInsetExample() {
             hugeicons="ShoppingBag01Icon"
             phosphor="BagIcon"
             remixicon="RiShoppingBagLine"
+            fontawesome="faBagShopping"
           />
         ),
         items: [
@@ -114,6 +117,7 @@ export default function SidebarInsetExample() {
             hugeicons="ShoppingCart01Icon"
             phosphor="ShoppingCartIcon"
             remixicon="RiShoppingCartLine"
+            fontawesome="faCartShopping"
           />
         ),
         items: [
@@ -137,6 +141,7 @@ export default function SidebarInsetExample() {
             hugeicons="File01Icon"
             phosphor="FileIcon"
             remixicon="RiFileLine"
+            fontawesome="faFile"
           />
         ),
       },
@@ -150,6 +155,7 @@ export default function SidebarInsetExample() {
             hugeicons="UserIcon"
             phosphor="UserIcon"
             remixicon="RiUserLine"
+            fontawesome="faUser"
           />
         ),
       },
@@ -163,6 +169,7 @@ export default function SidebarInsetExample() {
             hugeicons="Settings05Icon"
             phosphor="GearIcon"
             remixicon="RiSettingsLine"
+            fontawesome="faSliders"
           />
         ),
       },
@@ -178,6 +185,7 @@ export default function SidebarInsetExample() {
             hugeicons="ChartRingIcon"
             phosphor="LifebuoyIcon"
             remixicon="RiLifebuoyLine"
+            fontawesome="faLifeRing"
           />
         ),
       },
@@ -191,6 +199,7 @@ export default function SidebarInsetExample() {
             hugeicons="SentIcon"
             phosphor="PaperPlaneTiltIcon"
             remixicon="RiSendPlaneLine"
+            fontawesome="faPaperPlane"
           />
         ),
       },
@@ -231,6 +240,7 @@ export default function SidebarInsetExample() {
                               hugeicons="ArrowRight01Icon"
                               phosphor="CaretRightIcon"
                               remixicon="RiArrowRightSLine"
+                              fontawesome="faChevronRight"
                             />
                             <span className="sr-only">Toggle</span>
                           </SidebarMenuAction>

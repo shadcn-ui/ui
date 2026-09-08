@@ -33,6 +33,7 @@ export function SignupForm({
                   hugeicons="LayoutBottomIcon"
                   phosphor="RowsIcon"
                   remixicon="RiGalleryLine"
+                  fontawesome="faTableList"
                   className="size-6"
                 />
               </div>

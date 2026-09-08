@@ -188,6 +188,7 @@ function BubbleCollapsible() {
                     hugeicons="ArrowDown01Icon"
                     phosphor="CaretDownIcon"
                     remixicon="RiArrowDownSLine"
+                    fontawesome="faChevronDown"
                     data-icon="inline-end"
                     className="group-data-panel-open/button:rotate-180"
                   />
@@ -408,6 +409,7 @@ function BubbleReactionsButtons() {
                 hugeicons="ThumbsUpIcon"
                 phosphor="ThumbsUpIcon"
                 remixicon="RiThumbUpLine"
+                fontawesome="faThumbsUp"
               />
             </Button>
             <Button
@@ -422,6 +424,7 @@ function BubbleReactionsButtons() {
                 hugeicons="ThumbsDownIcon"
                 phosphor="ThumbsDownIcon"
                 remixicon="RiThumbDownLine"
+                fontawesome="faThumbsDown"
               />
             </Button>
           </BubbleReactions>

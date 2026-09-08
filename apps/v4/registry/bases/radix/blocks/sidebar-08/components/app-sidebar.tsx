@@ -34,6 +34,7 @@ const data = {
           hugeicons="ComputerTerminalIcon"
           phosphor="TerminalIcon"
           remixicon="RiTerminalBoxLine"
+          fontawesome="faTerminal"
         />
       ),
       isActive: true,
@@ -62,6 +63,7 @@ const data = {
           hugeicons="RoboticIcon"
           phosphor="RobotIcon"
           remixicon="RiRobotLine"
+          fontawesome="faRobot"
         />
       ),
       items: [
@@ -89,6 +91,7 @@ const data = {
           hugeicons="BookOpen02Icon"
           phosphor="BookOpenIcon"
           remixicon="RiBookOpenLine"
+          fontawesome="faBookOpen"
         />
       ),
       items: [
@@ -120,6 +123,7 @@ const data = {
           hugeicons="Settings05Icon"
           phosphor="GearIcon"
           remixicon="RiSettingsLine"
+          fontawesome="faSliders"
         />
       ),
       items: [
@@ -153,6 +157,7 @@ const data = {
           hugeicons="ChartRingIcon"
           phosphor="LifebuoyIcon"
           remixicon="RiLifebuoyLine"
+          fontawesome="faLifeRing"
         />
       ),
     },
@@ -166,6 +171,7 @@ const data = {
           hugeicons="SentIcon"
           phosphor="PaperPlaneTiltIcon"
           remixicon="RiSendPlaneLine"
+          fontawesome="faPaperPlane"
         />
       ),
     },
@@ -181,6 +187,7 @@ const data = {
           hugeicons="CropIcon"
           phosphor="CropIcon"
           remixicon="RiCropLine"
+          fontawesome="faBorderAll"
         />
       ),
     },
@@ -194,6 +201,7 @@ const data = {
           hugeicons="PieChartIcon"
           phosphor="ChartPieIcon"
           remixicon="RiPieChartLine"
+          fontawesome="faChartPie"
         />
       ),
     },
@@ -207,6 +215,7 @@ const data = {
           hugeicons="MapsIcon"
           phosphor="MapTrifoldIcon"
           remixicon="RiMapLine"
+          fontawesome="faMap"
         />
       ),
     },
@@ -228,6 +237,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     hugeicons="CommandIcon"
                     phosphor="CommandIcon"
                     remixicon="RiCommandLine"
+                    fontawesome="faTerminal"
                     className="size-4"
                   />
                 </div>

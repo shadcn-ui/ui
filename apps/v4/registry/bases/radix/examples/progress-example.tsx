@@ -120,6 +120,7 @@ function FileUploadList() {
                 hugeicons="FileIcon"
                 phosphor="FileIcon"
                 remixicon="RiFileLine"
+                fontawesome="faFile"
                 className="size-5"
               />
             </ItemMedia>

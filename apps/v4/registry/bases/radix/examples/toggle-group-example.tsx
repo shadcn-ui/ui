@@ -59,6 +59,7 @@ function ToggleGroupBasic() {
             hugeicons="TextBoldIcon"
             phosphor="TextBIcon"
             remixicon="RiBold"
+            fontawesome="faBold"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="italic" aria-label="Toggle italic">
@@ -68,6 +69,7 @@ function ToggleGroupBasic() {
             hugeicons="TextItalicIcon"
             phosphor="TextItalicIcon"
             remixicon="RiItalic"
+            fontawesome="faItalic"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="underline" aria-label="Toggle underline">
@@ -77,6 +79,7 @@ function ToggleGroupBasic() {
             hugeicons="TextUnderlineIcon"
             phosphor="TextUnderlineIcon"
             remixicon="RiUnderline"
+            fontawesome="faUnderline"
           />
         </ToggleGroupItem>
       </ToggleGroup>
@@ -110,6 +113,7 @@ function ToggleGroupOutlineWithIcons() {
             hugeicons="TextBoldIcon"
             phosphor="TextBIcon"
             remixicon="RiBold"
+            fontawesome="faBold"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="italic" aria-label="Toggle italic">
@@ -119,6 +123,7 @@ function ToggleGroupOutlineWithIcons() {
             hugeicons="TextItalicIcon"
             phosphor="TextItalicIcon"
             remixicon="RiItalic"
+            fontawesome="faItalic"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="underline" aria-label="Toggle underline">
@@ -128,6 +133,7 @@ function ToggleGroupOutlineWithIcons() {
             hugeicons="TextUnderlineIcon"
             phosphor="TextUnderlineIcon"
             remixicon="RiUnderline"
+            fontawesome="faUnderline"
           />
         </ToggleGroupItem>
       </ToggleGroup>
@@ -213,6 +219,7 @@ function ToggleGroupWithIcons() {
             hugeicons="StarIcon"
             phosphor="StarIcon"
             remixicon="RiStarLine"
+            fontawesome="faStar"
             data-icon="inline-start"
           />
           Star
@@ -228,6 +235,7 @@ function ToggleGroupWithIcons() {
             hugeicons="FavouriteIcon"
             phosphor="HeartIcon"
             remixicon="RiHeartLine"
+            fontawesome="faHeart"
             data-icon="inline-start"
           />
           Heart
@@ -243,6 +251,7 @@ function ToggleGroupWithIcons() {
             hugeicons="BookmarkIcon"
             phosphor="BookmarkIcon"
             remixicon="RiBookmarkLine"
+            fontawesome="faBookmark"
             data-icon="inline-start"
           />
           Bookmark
@@ -316,6 +325,7 @@ function ToggleGroupSort() {
             hugeicons="ArrowDownIcon"
             phosphor="ArrowDownIcon"
             remixicon="RiArrowDownLine"
+            fontawesome="faArrowDown"
             data-icon="inline-start"
           />
           Newest
@@ -327,6 +337,7 @@ function ToggleGroupSort() {
             hugeicons="ArrowUpIcon"
             phosphor="ArrowUpIcon"
             remixicon="RiArrowUpLine"
+            fontawesome="faArrowUp"
             data-icon="inline-start"
           />
           Oldest
@@ -338,6 +349,7 @@ function ToggleGroupSort() {
             hugeicons="TradeUpIcon"
             phosphor="TrendUpIcon"
             remixicon="RiLineChartLine"
+            fontawesome="faArrowTrendUp"
             data-icon="inline-start"
           />
           Popular
@@ -388,6 +400,7 @@ function ToggleGroupVertical() {
             hugeicons="TextBoldIcon"
             phosphor="TextBIcon"
             remixicon="RiBold"
+            fontawesome="faBold"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="italic" aria-label="Toggle italic">
@@ -397,6 +410,7 @@ function ToggleGroupVertical() {
             hugeicons="TextItalicIcon"
             phosphor="TextItalicIcon"
             remixicon="RiItalic"
+            fontawesome="faItalic"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="underline" aria-label="Toggle underline">
@@ -406,6 +420,7 @@ function ToggleGroupVertical() {
             hugeicons="TextUnderlineIcon"
             phosphor="TextUnderlineIcon"
             remixicon="RiUnderline"
+            fontawesome="faUnderline"
           />
         </ToggleGroupItem>
       </ToggleGroup>
@@ -456,6 +471,7 @@ function ToggleGroupVerticalOutlineWithIcons() {
             hugeicons="TextBoldIcon"
             phosphor="TextBIcon"
             remixicon="RiBold"
+            fontawesome="faBold"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="italic" aria-label="Toggle italic">
@@ -465,6 +481,7 @@ function ToggleGroupVerticalOutlineWithIcons() {
             hugeicons="TextItalicIcon"
             phosphor="TextItalicIcon"
             remixicon="RiItalic"
+            fontawesome="faItalic"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="underline" aria-label="Toggle underline">
@@ -474,6 +491,7 @@ function ToggleGroupVerticalOutlineWithIcons() {
             hugeicons="TextUnderlineIcon"
             phosphor="TextUnderlineIcon"
             remixicon="RiUnderline"
+            fontawesome="faUnderline"
           />
         </ToggleGroupItem>
       </ToggleGroup>

@@ -136,6 +136,7 @@ function MenubarCheckboxItem({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
+            fontawesome="faCheck"
           />
         </MenubarPrimitive.ItemIndicator>
       </span>
@@ -170,6 +171,7 @@ function MenubarRadioItem({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
+            fontawesome="faCheck"
           />
         </MenubarPrimitive.ItemIndicator>
       </span>
@@ -252,6 +254,7 @@ function MenubarSubTrigger({
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
         remixicon="RiArrowRightSLine"
+        fontawesome="faChevronRight"
         className="cn-rtl-flip ml-auto size-4"
       />
     </MenubarPrimitive.SubTrigger>

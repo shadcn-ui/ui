@@ -102,6 +102,7 @@ export function SimpleChat() {
                 hugeicons="PlusSignIcon"
                 phosphor="PlusIcon"
                 remixicon="RiAddLine"
+                fontawesome="faPlus"
               />
             </Button>
           </CardAction>

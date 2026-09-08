@@ -53,6 +53,7 @@ export function NavDocuments({
                   hugeicons="MoreHorizontalCircle01Icon"
                   phosphor="DotsThreeOutlineIcon"
                   remixicon="RiMoreLine"
+                  fontawesome="faEllipsis"
                 />
                 <span className="sr-only">More</span>
               </DropdownMenuTrigger>
@@ -68,6 +69,7 @@ export function NavDocuments({
                     hugeicons="Folder01Icon"
                     phosphor="FolderIcon"
                     remixicon="RiFolderLine"
+                    fontawesome="faFolder"
                   />
                   <span>Open</span>
                 </DropdownMenuItem>
@@ -78,6 +80,7 @@ export function NavDocuments({
                     hugeicons="Share01Icon"
                     phosphor="ShareIcon"
                     remixicon="RiShareLine"
+                    fontawesome="faShareNodes"
                   />
                   <span>Share</span>
                 </DropdownMenuItem>
@@ -89,6 +92,7 @@ export function NavDocuments({
                     hugeicons="Delete02Icon"
                     phosphor="TrashIcon"
                     remixicon="RiDeleteBinLine"
+                    fontawesome="faTrashCan"
                   />
                   <span>Delete</span>
                 </DropdownMenuItem>
@@ -104,6 +108,7 @@ export function NavDocuments({
               hugeicons="MoreHorizontalCircle01Icon"
               phosphor="DotsThreeOutlineIcon"
               remixicon="RiMoreLine"
+              fontawesome="faEllipsis"
               className="text-sidebar-foreground/70"
             />
             <span>More</span>

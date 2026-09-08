@@ -99,6 +99,7 @@ function SelectTrigger({
         hugeicons="UnfoldMoreIcon"
         phosphor="CaretDownIcon"
         remixicon="RiArrowDownSLine"
+        fontawesome="faChevronDown"
         className="cn-select-trigger-icon pointer-events-none"
       />
     </ButtonPrimitive>
@@ -199,6 +200,7 @@ function SelectInput({ className, ...props }: SearchFieldProps) {
             hugeicons="SearchIcon"
             phosphor="MagnifyingGlassIcon"
             remixicon="RiSearchLine"
+            fontawesome="faMagnifyingGlass"
             className="cn-command-input-icon"
           />
         </InputGroupAddon>
@@ -248,6 +250,7 @@ function SelectItem({
                 hugeicons="Tick02Icon"
                 phosphor="CheckIcon"
                 remixicon="RiCheckLine"
+                fontawesome="faCheck"
                 className="cn-select-item-indicator-icon pointer-events-none"
               />
             ) : null}

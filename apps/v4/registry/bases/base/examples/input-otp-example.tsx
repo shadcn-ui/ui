@@ -248,6 +248,7 @@ function InputOTPForm() {
                     tabler="IconRefresh"
                     phosphor="ArrowClockwiseIcon"
                     remixicon="RiRefreshLine"
+                    fontawesome="faRotateRight"
                     data-icon="inline-start"
                   />
                   Resend Code

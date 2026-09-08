@@ -51,6 +51,7 @@ export function TeamSwitcher({
               hugeicons="ArrowDown01Icon"
               phosphor="CaretDownIcon"
               remixicon="RiArrowDownSLine"
+              fontawesome="faChevronDown"
               className="opacity-50"
             />
           </DropdownMenuTrigger>
@@ -88,6 +89,7 @@ export function TeamSwitcher({
                     hugeicons="PlusSignIcon"
                     phosphor="PlusIcon"
                     remixicon="RiAddLine"
+                    fontawesome="faPlus"
                     className="size-4"
                   />
                 </div>

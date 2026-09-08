@@ -2,6 +2,8 @@
 "use client"
 
 import { use } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core"
 import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react"
 
 const iconPromiseCaches = new Map<string, Map<string, Promise<any>>>()
@@ -15,6 +17,16 @@ function getCache(libraryName: string) {
 
 function isIconData(data: any): data is IconSvgElement {
   return Array.isArray(data)
+}
+
+function isFontAwesomeIcon(data: any): data is IconDefinition {
+  return (
+    data !== null &&
+    typeof data === "object" &&
+    "prefix" in data &&
+    "iconName" in data &&
+    "icon" in data
+  )
 }
 
 export function createIconLoader(libraryName: string) {
@@ -43,6 +55,10 @@ export function createIconLoader(libraryName: string) {
 
     if (isIconData(iconData)) {
       return <HugeiconsIcon icon={iconData} strokeWidth={2} {...props} />
+    }
+
+    if (isFontAwesomeIcon(iconData)) {
+      return <FontAwesomeIcon icon={iconData} {...(props as any)} />
     }
 
     const IconComponent = iconData

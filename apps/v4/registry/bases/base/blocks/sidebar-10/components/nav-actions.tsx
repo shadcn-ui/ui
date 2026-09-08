@@ -30,6 +30,7 @@ const data = [
           hugeicons="Settings05Icon"
           phosphor="GearIcon"
           remixicon="RiSettingsLine"
+          fontawesome="faSliders"
         />
       ),
     },
@@ -42,6 +43,7 @@ const data = [
           hugeicons="File01Icon"
           phosphor="FileTextIcon"
           remixicon="RiFileTextLine"
+          fontawesome="faFileLines"
         />
       ),
     },
@@ -56,6 +58,7 @@ const data = [
           hugeicons="LinkIcon"
           phosphor="LinkIcon"
           remixicon="RiLinksLine"
+          fontawesome="faLink"
         />
       ),
     },
@@ -68,6 +71,7 @@ const data = [
           hugeicons="Copy01Icon"
           phosphor="CopyIcon"
           remixicon="RiFileCopyLine"
+          fontawesome="faCopy"
         />
       ),
     },
@@ -80,6 +84,7 @@ const data = [
           hugeicons="RedoIcon"
           phosphor="ArrowBendUpRightIcon"
           remixicon="RiCornerUpRightLine"
+          fontawesome="faShare"
         />
       ),
     },
@@ -92,6 +97,7 @@ const data = [
           hugeicons="Delete02Icon"
           phosphor="TrashIcon"
           remixicon="RiDeleteBinLine"
+          fontawesome="faTrashCan"
         />
       ),
     },
@@ -106,6 +112,7 @@ const data = [
           hugeicons="UndoIcon"
           phosphor="ArrowBendUpLeftIcon"
           remixicon="RiCornerUpLeftLine"
+          fontawesome="faReply"
         />
       ),
     },
@@ -118,6 +125,7 @@ const data = [
           hugeicons="ChartIcon"
           phosphor="ChartLineIcon"
           remixicon="RiLineChartLine"
+          fontawesome="faChartLine"
         />
       ),
     },
@@ -130,6 +138,7 @@ const data = [
           hugeicons="LayoutBottomIcon"
           phosphor="RowsIcon"
           remixicon="RiGalleryLine"
+          fontawesome="faTableList"
         />
       ),
     },
@@ -142,6 +151,7 @@ const data = [
           hugeicons="DeleteIcon"
           phosphor="TrashIcon"
           remixicon="RiDeleteBinLine"
+          fontawesome="faTrash"
         />
       ),
     },
@@ -154,6 +164,7 @@ const data = [
           hugeicons="NotificationIcon"
           phosphor="BellIcon"
           remixicon="RiNotificationLine"
+          fontawesome="faBell"
         />
       ),
     },
@@ -168,6 +179,7 @@ const data = [
           hugeicons="ArrowUpIcon"
           phosphor="ArrowUpIcon"
           remixicon="RiArrowUpLine"
+          fontawesome="faArrowUp"
         />
       ),
     },
@@ -180,6 +192,7 @@ const data = [
           hugeicons="ArrowDownIcon"
           phosphor="ArrowDownIcon"
           remixicon="RiArrowDownLine"
+          fontawesome="faArrowDown"
         />
       ),
     },
@@ -202,6 +215,7 @@ export function NavActions() {
           hugeicons="StarIcon"
           phosphor="StarIcon"
           remixicon="RiStarLine"
+          fontawesome="faStar"
         />
       </Button>
       <Popover open={isOpen} onOpenChange={setIsOpen}>
@@ -220,6 +234,7 @@ export function NavActions() {
             hugeicons="MoreHorizontalCircle01Icon"
             phosphor="DotsThreeOutlineIcon"
             remixicon="RiMoreLine"
+            fontawesome="faEllipsis"
           />
         </PopoverTrigger>
         <PopoverContent

@@ -145,6 +145,7 @@ function DropdownMenuItem({
                     hugeicons="Tick02Icon"
                     phosphor="CheckIcon"
                     remixicon="RiCheckLine"
+                    fontawesome="faCheck"
                   />
                 ) : null}
               </span>
@@ -191,6 +192,7 @@ function DropdownMenuSubTrigger({
             hugeicons="ArrowRight01Icon"
             phosphor="CaretRightIcon"
             remixicon="RiArrowRightSLine"
+            fontawesome="faChevronRight"
             className="cn-rtl-flip ml-auto"
           />
         </>

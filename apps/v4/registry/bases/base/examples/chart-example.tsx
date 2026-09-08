@@ -124,6 +124,7 @@ function ChartAreaExample() {
                   hugeicons="ChartUpIcon"
                   phosphor="TrendUpIcon"
                   remixicon="RiLineChartLine"
+                  fontawesome="faArrowTrendUp"
                   className="size-4"
                 />
               </div>
@@ -195,6 +196,7 @@ function ChartBarExample() {
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
               remixicon="RiLineChartLine"
+              fontawesome="faArrowTrendUp"
               className="size-4"
             />
           </div>
@@ -282,6 +284,7 @@ function ChartLineExample() {
                   hugeicons="ChartUpIcon"
                   phosphor="TrendUpIcon"
                   remixicon="RiLineChartLine"
+                  fontawesome="faArrowTrendUp"
                   className="size-4"
                 />
               </div>
@@ -401,6 +404,7 @@ function ChartPieExample() {
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
               remixicon="RiLineChartLine"
+              fontawesome="faArrowTrendUp"
               className="size-4"
             />
           </div>
@@ -473,6 +477,7 @@ function ChartRadarExample() {
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
               remixicon="RiLineChartLine"
+              fontawesome="faArrowTrendUp"
               className="size-4"
             />
           </div>
@@ -569,6 +574,7 @@ function ChartRadialExample() {
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
               remixicon="RiLineChartLine"
+              fontawesome="faArrowTrendUp"
               className="size-4"
             />
           </div>

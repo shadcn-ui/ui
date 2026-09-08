@@ -50,6 +50,7 @@ export function Preferences() {
               hugeicons="Cancel01Icon"
               phosphor="XIcon"
               remixicon="RiCloseLine"
+              fontawesome="faXmark"
             />
           </Button>
         </CardAction>
