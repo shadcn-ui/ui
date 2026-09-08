@@ -1136,6 +1136,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6'/><g transform='translate(4 4)' stroke='var(--foreground)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'><path d='M10 6.6 8.6 8M12 18v4m3-14.5L9.5 13M7 22h10'/><circle cx='12' cy='10' r='8'/></g></svg>"
   },
   {
+    "name": "@oidc",
+    "homepage": "https://ui.shadcn.com/oidc",
+    "url": "https://ui.shadcn.com/oidc/r/{name}.json",
+    "description": "A component registry for OIDC policy forms. Pick identity providers, a form library, and a validation library, preview in the builder, then copy the code into your app.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='none'><line x1='208' y1='128' x2='128' y2='208' stroke='var(--foreground)' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/><line x1='192' y1='40' x2='40' y2='192' stroke='var(--foreground)' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/></svg>"
+  },
+  {
     "name": "@openpolicy",
     "homepage": "https://www.openpolicy.sh",
     "url": "https://www.openpolicy.sh/r/{name}.json",
