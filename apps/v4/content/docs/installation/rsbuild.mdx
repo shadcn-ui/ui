@@ -1,0 +1,106 @@
+---
+title: Rsbuild
+description: Install and configure shadcn/ui for Rsbuild.
+---
+
+<Steps>
+
+### Create Project
+
+If you need a new Rsbuild project, create one first and select the **React**
+template with **TypeScript**. Otherwise, skip this step.
+
+```bash
+npm create rsbuild@latest
+```
+
+### Add Tailwind CSS
+
+If your project already has Tailwind CSS configured, skip this step.
+
+Install `tailwindcss` and the Rsbuild Tailwind CSS plugin:
+
+```bash
+npm install -D tailwindcss @rsbuild/plugin-tailwindcss
+```
+
+Register the plugin in `rsbuild.config.ts`:
+
+```ts title="rsbuild.config.ts" showLineNumbers {3,6}
+import { defineConfig } from "@rsbuild/core"
+import { pluginReact } from "@rsbuild/plugin-react"
+import { pluginTailwindcss } from "@rsbuild/plugin-tailwindcss"
+
+export default defineConfig({
+  plugins: [pluginReact(), pluginTailwindcss()],
+})
+```
+
+Replace everything in `src/App.css` with the following:
+
+```css title="src/App.css"
+@import "tailwindcss";
+```
+
+### Edit tsconfig.json file
+
+If your project already has the `@/*` alias configured, skip this step.
+
+Add the `baseUrl` and `paths` properties to the `compilerOptions` section of
+`tsconfig.json`:
+
+```ts title="tsconfig.json" {3-6} showLineNumbers
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+    // ...
+  }
+}
+```
+
+<Callout>
+
+Rsbuild automatically resolves path aliases from `tsconfig.json`, so you don't
+need to configure `resolve.alias` in `rsbuild.config.ts`.
+
+</Callout>
+
+### Run the CLI
+
+Run the `shadcn` init command to set up shadcn/ui in your project:
+
+```bash
+npx shadcn@latest init
+```
+
+### Add Components
+
+You can now start adding components to your project.
+
+```bash
+npx shadcn@latest add button
+```
+
+The command above will add the `Button` component to your project. You can then
+import it like this:
+
+```tsx showLineNumbers title="src/App.tsx"
+import { Button } from "@/components/ui/button"
+
+import "./App.css"
+
+const App = () => {
+  return (
+    <div className="flex min-h-svh flex-col items-center justify-center">
+      <Button>Click me</Button>
+    </div>
+  )
+}
+
+export default App
+```
+
+</Steps>
