@@ -144,10 +144,12 @@ export async function updateFiles(
     const existingFile = existsSync(filePath)
 
     // TODO: revisit this when we implement utils transform instead of override.
+    // Never replace an existing lib/utils.ts. The registry copy is boilerplate,
+    // but users are encouraged to customize this file, so we skip it instead
+    // of overwriting their changes (previously this only applied to Laravel).
     if (
       file.type === "registry:lib" &&
       basename(file.path) === "utils.ts" &&
-      projectInfo?.framework.name === "laravel" &&
       existingFile
     ) {
       filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
