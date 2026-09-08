@@ -24,4 +24,9 @@ export const registryCategories = [
     slug: "signup",
     hidden: false,
   },
+  {
+    name: "Data Grid",
+    slug: "data-grid",
+    hidden: false,
+  },
 ]
