@@ -68,6 +68,15 @@ function SidebarProvider({
   const isMobile = useIsMobile()
   const [openMobile, setOpenMobile] = React.useState(false)
 
+  // Reset the mobile sidebar state when crossing back over the mobile
+  // breakpoint so it doesn't reopen unexpectedly next time the viewport
+  // shrinks below the breakpoint again.
+  React.useEffect(() => {
+    if (!isMobile) {
+      setOpenMobile(false)
+    }
+  }, [isMobile])
+
   // This is the internal state of the sidebar.
   // We use openProp and setOpenProp for control from outside the component.
   const [_open, _setOpen] = React.useState(defaultOpen)
