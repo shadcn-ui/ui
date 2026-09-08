@@ -224,6 +224,17 @@ const nextConfig = {
         source: "/init.md",
         destination: "/init/md",
       },
+      // The OIDC registry (shadcn-ui/oidc-ui) is a separate Vercel project
+      // served under /oidc. It sets basePath: "/oidc", so the prefix is
+      // forwarded as-is.
+      {
+        source: "/oidc",
+        destination: "https://oidc.shadcn.com/oidc",
+      },
+      {
+        source: "/oidc/:path*",
+        destination: "https://oidc.shadcn.com/oidc/:path*",
+      },
     ]
   },
 }
