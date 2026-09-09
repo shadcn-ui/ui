@@ -20,6 +20,7 @@
     "@tanstack/react-router-ssr-query": "latest",
     "@tanstack/react-start": "latest",
     "@tanstack/router-plugin": "latest",
+    "cn": "^0.2.4",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "tailwindcss": "^4"

@@ -6,6 +6,8 @@ import { afterEach, describe, expect, it, vi } from "vitest"
 
 import {
   assertSafeDependencies,
+  installDependencies,
+  removeDependencies,
   updateDependencies,
 } from "./update-dependencies"
 
@@ -282,5 +284,31 @@ describe("assertSafeDependencies", () => {
 
   it("throws when a dash follows leading whitespace", () => {
     expect(() => assertSafeDependencies(["  -D"])).toThrow(/cannot start with/)
+  })
+})
+
+describe("dependency commands", () => {
+  afterEach(() => {
+    vi.restoreAllMocks()
+  })
+
+  it("installs dependencies from a cwd without a shadcn config", async () => {
+    const cwd = getFixturesDir("project-pnpm")
+
+    await installDependencies(cwd, ["cn"])
+
+    expect(execa).toHaveBeenCalledWith("pnpm", ["add", "--", "cn"], {
+      cwd,
+    })
+  })
+
+  it("removes only dependencies declared by the project", async () => {
+    const cwd = getFixturesDir("project-pnpm-existing-deps")
+
+    await removeDependencies(cwd, ["recharts", "not-installed"])
+
+    expect(execa).toHaveBeenCalledWith("pnpm", ["remove", "--", "recharts"], {
+      cwd,
+    })
   })
 })

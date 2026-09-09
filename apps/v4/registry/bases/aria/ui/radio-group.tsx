@@ -1,5 +1,6 @@
 "use client"
 
+import { cn } from "cn"
 import {
   composeRenderProps,
   RadioGroup as RadioGroupPrimitive,
@@ -7,8 +8,6 @@ import {
   type RadioGroupProps,
   type RadioProps,
 } from "react-aria-components"
-
-import { cn } from "@/registry/bases/aria/lib/utils"
 
 function RadioGroup({ className, ...props }: RadioGroupProps) {
   return (
