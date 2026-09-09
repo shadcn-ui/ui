@@ -669,3 +669,68 @@ async function load() {
     })
   ).toMatchSnapshot()
 })
+
+it.each([
+  {
+    name: "default aliases",
+    isRemote: false,
+    aliases: {
+      components: "@/components",
+      utils: "@/lib/utils",
+      ui: "@/components/ui",
+      lib: "@/lib",
+      hooks: "@/hooks",
+    },
+  },
+  {
+    name: "monorepo aliases",
+    isRemote: false,
+    aliases: {
+      components: "@workspace/ui/components",
+      utils: "@workspace/ui/lib/utils",
+      ui: "@workspace/ui/components",
+      lib: "@workspace/ui/lib",
+      hooks: "@workspace/ui/hooks",
+    },
+  },
+  {
+    name: "package imports aliases",
+    isRemote: false,
+    aliases: {
+      components: "#components",
+      utils: "#lib/utils",
+      ui: "#components/ui",
+      lib: "#lib",
+      hooks: "#hooks",
+    },
+  },
+  {
+    name: "remote registry",
+    isRemote: true,
+    aliases: {
+      components: "@/components",
+      utils: "@/lib/utils",
+      ui: "@/components/ui",
+      lib: "@/lib",
+      hooks: "@/hooks",
+    },
+  },
+])(
+  "leaves the cn package import untouched: $name",
+  async ({ aliases, isRemote }) => {
+    const result = await transform({
+      filename: "test.ts",
+      raw: `import { cn } from "cn"
+import { Button } from "@/registry/new-york/ui/button"
+`,
+      config: {
+        tsx: true,
+        aliases,
+      } as Config,
+      isRemote,
+    })
+
+    expect(result).toContain(`import { cn } from "cn"`)
+    expect(result).not.toContain("lib/utils")
+  }
+)

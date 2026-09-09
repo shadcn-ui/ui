@@ -1,7 +1,8 @@
 "use client"
 
+import { cn } from "cn"
+
 import { THEMES } from "@/lib/themes"
-import { cn } from "@/lib/utils"
 import { useThemeConfig } from "@/components/active-theme"
 import { Label } from "@/styles/base-nova/ui/label"
 import {
