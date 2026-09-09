@@ -162,6 +162,98 @@ function Button({ className, ...props }: React.ComponentProps<"button">) {
     `)
   })
 
+  it("preserves functional className callbacks when applying button cva classes", async () => {
+    const source = `import { Button as ButtonPrimitive } from "@base-ui/react/button"
+import { cva, type VariantProps } from "class-variance-authority"
+
+import { cn } from "@/lib/utils"
+
+const buttonVariants = cva(
+  "cn-button inline-flex items-center",
+  {
+    variants: {
+      variant: {
+        default: "cn-button-variant-default",
+      },
+      size: {
+        default: "cn-button-size-default",
+      },
+    },
+  }
+)
+
+function Button({
+  className,
+  variant = "default",
+  size = "default",
+  ...props
+}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+  const buttonClassName = buttonVariants({ variant, size })
+
+  return (
+    <ButtonPrimitive
+      className={
+        typeof className === "function"
+          ? (state) => cn(buttonClassName, className(state))
+          : cn(buttonClassName, className)
+      }
+      {...props}
+    />
+  )
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-button": "rounded-lg border text-sm",
+      "cn-button-variant-default": "bg-primary text-primary-foreground",
+      "cn-button-size-default": "h-9 px-4",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    expect(result).toMatchInlineSnapshot(`
+      "import { Button as ButtonPrimitive } from "@base-ui/react/button"
+      import { cva, type VariantProps } from "class-variance-authority"
+
+      import { cn } from "@/lib/utils"
+
+      const buttonVariants = cva(
+        "rounded-lg border text-sm inline-flex items-center",
+        {
+          variants: {
+            variant: {
+              default: "bg-primary text-primary-foreground",
+            },
+            size: {
+              default: "h-9 px-4",
+            },
+          },
+        }
+      )
+
+      function Button({
+        className,
+        variant = "default",
+        size = "default",
+        ...props
+      }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+        const buttonClassName = buttonVariants({ variant, size })
+
+        return (
+          <ButtonPrimitive
+            className={
+              typeof className === "function"
+                ? (state) => cn(buttonClassName, className(state))
+                : cn(buttonClassName, className)
+            }
+            {...props}
+          />
+        )
+      }
+      "
+    `)
+  })
+
   it("applies variant classes to cva variant entries", async () => {
     const source = `import * as React from "react"
 import { cva } from "class-variance-authority"

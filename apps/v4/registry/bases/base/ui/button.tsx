@@ -38,10 +38,16 @@ function Button({
   size = "default",
   ...props
 }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+  const buttonClassName = buttonVariants({ variant, size })
+
   return (
     <ButtonPrimitive
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={
+        typeof className === "function"
+          ? (state) => cn(buttonClassName, className(state))
+          : cn(buttonClassName, className)
+      }
       {...props}
     />
   )
