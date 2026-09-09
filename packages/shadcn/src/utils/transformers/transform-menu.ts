@@ -1,5 +1,5 @@
 import { Transformer } from "@/src/utils/transformers"
-import { twMerge } from "tailwind-merge"
+import { twMerge } from "cn"
 import { SyntaxKind } from "ts-morph"
 
 // Hardcoded translucent classes inlined at install time.

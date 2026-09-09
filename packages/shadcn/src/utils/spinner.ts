@@ -15,6 +15,14 @@ export function spinner(
   })
   activeSpinners.add(instance)
 
+  // Every ora terminal method (succeed, fail, info, warn, stopAndPersist)
+  // funnels through stop, so wrapping it unregisters finished instances.
+  const stop = instance.stop.bind(instance)
+  instance.stop = () => {
+    activeSpinners.delete(instance)
+    return stop()
+  }
+
   return instance
 }
 
