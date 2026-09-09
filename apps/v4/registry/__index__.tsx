@@ -4453,6 +4453,16 @@ export const Index: Record<string, Record<string, any>> = {
           type: "registry:example",
           target: "",
         },
+        {
+          path: "registry/new-york-v4/examples/form-next-demo-action.ts",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/new-york-v4/examples/form-next-demo-schema.ts",
+          type: "registry:example",
+          target: "",
+        },
       ],
       categories: undefined,
       meta: undefined,
@@ -4478,6 +4488,16 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/new-york-v4/examples/form-next-complex.tsx",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/new-york-v4/examples/form-next-complex-action.ts",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/new-york-v4/examples/form-next-complex-schema.ts",
           type: "registry:example",
           target: "",
         },
