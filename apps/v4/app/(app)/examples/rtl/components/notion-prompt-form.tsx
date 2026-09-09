@@ -203,9 +203,8 @@ export function NotionPromptForm() {
   const [mentions, setMentions] = useState<string[]>([])
   const [mentionPopoverOpen, setMentionPopoverOpen] = useState(false)
   const [modelPopoverOpen, setModelPopoverOpen] = useState(false)
-  const [selectedModel, setSelectedModel] = useState<
-    (typeof SAMPLE_DATA.models)[0]
-  >(SAMPLE_DATA.models[0])
+  const [selectedModelIndex, setSelectedModelIndex] = useState(0)
+  const selectedModel = SAMPLE_DATA.models[selectedModelIndex]
   const [scopeMenuOpen, setScopeMenuOpen] = useState(false)
 
   const grouped = useMemo(() => {
@@ -361,7 +360,7 @@ export function NotionPromptForm() {
                         checked={model.name === selectedModel.name}
                         onCheckedChange={(checked) => {
                           if (checked) {
-                            setSelectedModel(model)
+                            setSelectedModelIndex(SAMPLE_DATA.models.indexOf(model))
                           }
                         }}
                         className="pr-2 *:[span:first-child]:right-auto *:[span:first-child]:left-2"
