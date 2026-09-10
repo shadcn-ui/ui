@@ -1,8 +1,7 @@
 "use client"
 
 import * as React from "react"
-
-import { cn } from "@/registry/bases/aria/lib/utils"
+import { cn } from "cn"
 
 function ScrollArea({
   className,

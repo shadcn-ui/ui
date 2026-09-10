@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { Combobox as ComboboxPrimitive } from "@base-ui/react"
+import { cn } from "cn"
 
-import { cn } from "@/registry/bases/radix/lib/utils"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   InputGroup,

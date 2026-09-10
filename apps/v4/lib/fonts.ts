@@ -4,8 +4,7 @@ import {
   Noto_Sans_Hebrew as FontNotoSansHebrew,
   Geist as FontSans,
 } from "next/font/google"
-
-import { cn } from "@/lib/utils"
+import { cn } from "cn"
 
 const fontSans = FontSans({
   subsets: ["latin"],
