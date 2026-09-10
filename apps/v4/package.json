@@ -115,7 +115,7 @@
     "@typescript-eslint/parser": "^8.31.0",
     "@vercel/blob": "^2.8.0",
     "agentation": "^2.2.1",
-    "baseline-browser-mapping": "^2.10.0",
+    "baseline-browser-mapping": "^2.11.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.0",
     "prettier": "^3.4.2",

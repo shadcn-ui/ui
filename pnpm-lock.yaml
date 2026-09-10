@@ -212,7 +212,7 @@ importers:
         version: 1.5.0(next@16.3.0-canary.97(@babel/core@7.28.0)(@opentelemetry/api@1.9.0)(@types/node@20.19.10)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
       ai:
         specifier: canary
-        version: 7.0.0-canary.159(zod@3.25.76)
+        version: 7.0.0-canary.176(zod@3.25.76)
       change-case:
         specifier: ^5.4.4
         version: 5.4.4
@@ -383,8 +383,8 @@ importers:
         specifier: ^2.2.1
         version: 2.2.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       baseline-browser-mapping:
-        specifier: ^2.10.0
-        version: 2.10.0
+        specifier: ^2.11.0
+        version: 2.11.21
       eslint:
         specifier: ^9
         version: 9.26.0(hono@4.12.23)(jiti@2.7.0)
@@ -663,6 +663,12 @@ packages:
 
   '@ai-sdk/anthropic@4.0.0-canary.66':
     resolution: {integrity: sha512-7sVN9mapkqAPfF9ZnZ1cKtAPxdgiq9b8Zffh0drQ1DKqJusdNSkNFQiC9mLB+3k6Py/k+auQs81DHwhCzgeTUQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      zod: ^3.25.76 || ^4.1.8
+
+  '@ai-sdk/gateway@4.0.0-canary.107':
+    resolution: {integrity: sha512-BPmARy2rc0ChkmoMhrmHa+L5lg7HWO8BZ1bMEWx3m3wH6lSy7a2CFu4T28PC2qaCPuWgpu5+PnSWC9eMpZh9rQ==}
     engines: {node: '>=22'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -4728,6 +4734,12 @@ packages:
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
+  ai@7.0.0-canary.176:
+    resolution: {integrity: sha512-0a+PeTou1uLouzrlLaEZNyBj21oFyYCI1BeOrP9uLJ2YGW6tsUAGME6zetfDdbl/bouIc4neUA36sH7mNjNp1g==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      zod: ^3.25.76 || ^4.1.8
+
   ajv-formats@3.0.1:
     resolution: {integrity: sha512-8iUql50EUR+uUcdRQ3HDqa6EVyo3docL8g5WJ3FNcWmu62IbkGUue/pEyLBW8VGKKucTPgqeks4fIU1DA4yowQ==}
     peerDependencies:
@@ -4937,8 +4949,8 @@ packages:
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
 
-  baseline-browser-mapping@2.10.0:
-    resolution: {integrity: sha512-lIyg0szRfYbiy67j9KN8IyeD7q7hcmqnJ1ddWmNt19ItGpNN64mnllmxUNFIOdOm6by97jlL6wfpTTJrmnjWAA==}
+  baseline-browser-mapping@2.11.21:
+    resolution: {integrity: sha512-uh8vpY/1/YyFkunIDFH/12p7/7VdPKA1hejMVEbdkEaWnUz0Hesvx5EbiU6XxjyHZIOju+ZMbQJkRh+es3/spQ==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -5966,6 +5978,7 @@ packages:
   eslint@9.26.0:
     resolution: {integrity: sha512-Hx0MOjPh6uK9oq9nVsATZKE/Wlbai7KFjfCuw9UHaguDW3x+HF0O5nIi3ud39TWgrTjTO5nHxmL3R1eANinWHQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -6038,6 +6051,10 @@ packages:
 
   eventsource-parser@3.1.0:
     resolution: {integrity: sha512-kJezFj9YFAMLeORyi7aCLxLbD5/qWMQnoMVlVPyHIll7lgRJCc3JVln9Vgl9nwQi0YkMnhdGTMNn7CkRRAptMg==}
+    engines: {node: '>=18.0.0'}
+
+  eventsource-parser@3.1.1:
+    resolution: {integrity: sha512-EKN1vKAMcZ8MlYMpaNuxN6R9yakzH6uajHcHVTqWJzvu5pWw9DyhbP35HH8MVBQ+dZjAfDxk+A8NiR9KWaXiyQ==}
     engines: {node: '>=18.0.0'}
 
   eventsource@3.0.7:
@@ -6461,7 +6478,7 @@ packages:
   git-raw-commits@4.0.0:
     resolution: {integrity: sha512-ICsMM1Wk8xSGMowkOmPrzo2Fgmfo4bMHLNX6ytHjajRJUqvHOw/TFapQ+QG75c3X/tTDDhOSRPGC52dDbNM8FQ==}
     engines: {node: '>=16'}
-    deprecated: This package is no longer maintained. For the JavaScript API, please use @conventional-changelog/git-client instead.
+    deprecated: Deprecated and no longer maintained. Use @conventional-changelog/git-client instead.
     hasBin: true
 
   github-slugger@2.0.0:
@@ -9195,6 +9212,7 @@ packages:
   tsconfck@3.1.6:
     resolution: {integrity: sha512-ks6Vjr/jEw0P1gmOVwutM3B7fWxoWBL2KRDb1JfqGVawBmO5UsvmWOQFGHBPl5yxYz4eERr19E6L7NMv+Fej4w==}
     engines: {node: ^18 || >=20}
+    deprecated: unmaintained
     hasBin: true
     peerDependencies:
       typescript: ^5.0.0
@@ -9826,6 +9844,13 @@ snapshots:
       '@ai-sdk/provider-utils': 5.0.0-canary.48(zod@3.25.76)
       zod: 3.25.76
 
+  '@ai-sdk/gateway@4.0.0-canary.107(zod@3.25.76)':
+    dependencies:
+      '@ai-sdk/provider': 4.0.0-canary.18
+      '@ai-sdk/provider-utils': 5.0.0-canary.48(zod@3.25.76)
+      '@vercel/oidc': 3.2.0
+      zod: 3.25.76
+
   '@ai-sdk/gateway@4.0.0-canary.93(zod@3.25.76)':
     dependencies:
       '@ai-sdk/provider': 4.0.0-canary.17
@@ -9859,7 +9884,7 @@ snapshots:
       '@ai-sdk/provider': 4.0.0-canary.18
       '@standard-schema/spec': 1.1.0
       '@workflow/serde': 4.1.0
-      eventsource-parser: 3.1.0
+      eventsource-parser: 3.1.1
       zod: 3.25.76
 
   '@ai-sdk/provider@4.0.0-canary.17':
@@ -13817,6 +13842,13 @@ snapshots:
       '@ai-sdk/provider-utils': 5.0.0-canary.44(zod@3.25.76)
       zod: 3.25.76
 
+  ai@7.0.0-canary.176(zod@3.25.76):
+    dependencies:
+      '@ai-sdk/gateway': 4.0.0-canary.107(zod@3.25.76)
+      '@ai-sdk/provider': 4.0.0-canary.18
+      '@ai-sdk/provider-utils': 5.0.0-canary.48(zod@3.25.76)
+      zod: 3.25.76
+
   ajv-formats@3.0.1(ajv@8.17.1):
     optionalDependencies:
       ajv: 8.17.1
@@ -14036,7 +14068,7 @@ snapshots:
 
   base64-js@1.5.1: {}
 
-  baseline-browser-mapping@2.10.0: {}
+  baseline-browser-mapping@2.11.21: {}
 
   basic-ftp@5.0.5: {}
 
@@ -14081,7 +14113,7 @@ snapshots:
 
   browserslist@4.26.2:
     dependencies:
-      baseline-browser-mapping: 2.10.0
+      baseline-browser-mapping: 2.11.21
       caniuse-lite: 1.0.30001759
       electron-to-chromium: 1.5.218
       node-releases: 2.0.21
@@ -15495,6 +15527,8 @@ snapshots:
   eventsource-parser@3.0.6: {}
 
   eventsource-parser@3.1.0: {}
+
+  eventsource-parser@3.1.1: {}
 
   eventsource@3.0.7:
     dependencies:
@@ -17433,7 +17467,7 @@ snapshots:
     dependencies:
       '@next/env': 16.3.0-canary.97
       '@swc/helpers': 0.5.15
-      baseline-browser-mapping: 2.10.0
+      baseline-browser-mapping: 2.11.21
       caniuse-lite: 1.0.30001759
       postcss: 8.5.10
       react: 19.2.3
