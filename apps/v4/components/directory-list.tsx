@@ -9,7 +9,7 @@ import {
 } from "@tabler/icons-react"
 import { cn } from "cn"
 
-import { useSearchRegistry } from "@/hooks/use-search-registry"
+import { PAGE_SIZE, useSearchRegistry } from "@/hooks/use-search-registry"
 import {
   DirectoryAddButton,
   DirectoryAddProvider,
@@ -333,7 +333,7 @@ function DirectoryListSkeleton() {
     <>
       <Skeleton className="h-8 w-full rounded-lg" />
       <ItemGroup className="my-8">
-        {Array.from({ length: 10 }, (_, index) => (
+        {Array.from({ length: PAGE_SIZE }, (_, index) => (
           <React.Fragment key={index}>
             <Item className="relative items-start gap-6 px-0">
               <Skeleton className="size-8 rounded-lg" />
@@ -350,7 +350,7 @@ function DirectoryListSkeleton() {
                 <Skeleton className="h-9 w-24 rounded-lg" />
               </ItemFooter>
             </Item>
-            {index < 9 && <ItemSeparator className="my-1" />}
+            {index < PAGE_SIZE - 1 && <ItemSeparator className="my-1" />}
           </React.Fragment>
         ))}
       </ItemGroup>
