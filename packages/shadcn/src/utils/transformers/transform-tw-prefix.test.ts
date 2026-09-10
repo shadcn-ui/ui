@@ -1,4 +1,5 @@
 import type { Config } from "@/src/utils/get-config"
+import ts from "typescript"
 import { describe, expect, it } from "vitest"
 
 import { transform } from "."
@@ -182,4 +183,100 @@ export function Foo() {
       "v4"
     )
   ).toMatchSnapshot()
+})
+
+describe("transformTwPrefixes preserves quotes in class values", () => {
+  async function run(raw: string) {
+    return await transform({
+      filename: "test.tsx",
+      raw: `import * as React from "react"\n${raw}\n`,
+      config: {
+        tailwind: {
+          baseColor: "stone",
+          cssVariables: false,
+          prefix: "tw:",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      } as Config,
+      baseColor: stone,
+    })
+  }
+
+  it("preserves quotes in a className attribute", async () => {
+    const result = await run(
+      `export function Foo() {
+  return <div className="[&_svg:not([class*='size-'])]:size-4" />
+}`
+    )
+
+    expect(result).toContain("[&_svg:not([class*='size-'])]:tw:size-4")
+  })
+
+  it("preserves quotes in cn() arguments", async () => {
+    const result = await run(
+      `export function Foo({ x }) {
+  return <div className={cn("[&_svg:not([class*='size-'])]:size-4", x && "after:content-['']", x ? "data-[a='b']:p-1" : "data-[a='c']:p-2")} />
+}`
+    )
+
+    expect(result).toContain("[&_svg:not([class*='size-'])]:tw:size-4")
+    expect(result).toContain("after:tw:content-['']")
+    expect(result).toContain("data-[a='b']:tw:p-1")
+    expect(result).toContain("data-[a='c']:tw:p-2")
+  })
+
+  it("preserves quotes in cva base and variants", async () => {
+    const result = await run(
+      `const foo = cva("[&_svg:not([class*='size-'])]:size-4", {
+  variants: { size: { sm: "data-[state='open']:block" } },
+})`
+    )
+
+    expect(result).toContain("[&_svg:not([class*='size-'])]:tw:size-4")
+    expect(result).toContain("data-[state='open']:tw:block")
+  })
+
+  it("preserves quotes in a classNames object", async () => {
+    const result = await run(
+      `export function Foo({ x }) {
+  return <div classNames={{ day: "after:content-['']", month: cn("data-[a='b']:p-1", x ? "data-[a='c']:p-2" : "data-[a='d']:p-3") }} />
+}`
+    )
+
+    expect(result).toContain("after:tw:content-['']")
+    expect(result).toContain("data-[a='b']:tw:p-1")
+    expect(result).toContain("data-[a='c']:tw:p-2")
+    expect(result).toContain("data-[a='d']:tw:p-3")
+  })
+
+  it("escapes quotes that match the enclosing delimiter", async () => {
+    const result = await run(
+      String.raw`export function Foo() {
+  return <div className={cn('[&_svg:not([class*=\'size-\'])]:size-4')} />
+}`
+    )
+
+    const sourceFile = ts.createSourceFile(
+      "test.tsx",
+      result,
+      ts.ScriptTarget.Latest,
+      true,
+      ts.ScriptKind.TSX
+    )
+    const stringLiterals: string[] = []
+
+    function visit(node: ts.Node) {
+      if (ts.isStringLiteral(node)) {
+        stringLiterals.push(node.text)
+      }
+      ts.forEachChild(node, visit)
+    }
+    visit(sourceFile)
+
+    expect((sourceFile as any).parseDiagnostics).toHaveLength(0)
+    expect(stringLiterals).toContain("[&_svg:not([class*='size-'])]:tw:size-4")
+  })
 })
