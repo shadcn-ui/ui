@@ -435,6 +435,13 @@
     "logo": "<svg width=\"256\" height=\"256\" viewBox=\"0 0 256 256\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"14\" y=\"160\" font-family=\"ui-monospace, SFMono-Regular, Menlo, monospace\" font-size=\"84\" font-weight=\"700\" letter-spacing=\"-4\" fill=\"#0A0A0A\">devl</text><rect x=\"208\" y=\"128\" width=\"16\" height=\"32\" fill=\"#0A0A0A\"><animate attributeName=\"opacity\" values=\"1;0;1\" dur=\"1s\" repeatCount=\"indefinite\"/></rect></svg>"
   },
   {
+    "name": "@diarmuradi",
+    "homepage": "https://diarmuradi.com",
+    "url": "https://diarmuradi.com/r/{name}.json",
+    "description": "A shadcn/ui registry for blocks & templates.",
+    "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\" fill=\"none\"><rect width=\"32\" height=\"32\" rx=\"8\" fill=\"var(--foreground)\"/><path d=\"M11 8.5h6.2c4.1 0 6.8 2.5 6.8 6.5S21.3 21.5 17.2 21.5H14.2V23.5H11V8.5Zm3.2 2.7v7.6h2.8c2.4 0 3.8-1.4 3.8-3.8s-1.4-3.8-3.8-3.8h-2.8Z\" fill=\"var(--background)\"/></svg>"
+  },
+  {
     "name": "@diceui",
     "homepage": "https://www.diceui.com/",
     "url": "https://diceui.com/r/{style}/{name}.json",
