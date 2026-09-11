@@ -4,6 +4,7 @@ import type { UseRenderComponentProps } from "../use-render"
 
 type QuestionnaireItemStatus = "unanswered" | "answered" | "skipped"
 type QuestionnaireShortcutMode = "letters" | "numbers"
+type QuestionnaireAutoSubmit = boolean | ((value: string[]) => boolean)
 
 type QuestionnaireChoiceDefinition = {
   disabled?: boolean
@@ -55,6 +56,7 @@ type QuestionnaireItemProps = Omit<
   React.ComponentPropsWithRef<"fieldset">,
   "name" | "value"
 > & {
+  autoSubmit?: QuestionnaireAutoSubmit
   invalid?: boolean
   name: string
   multiple?: boolean
@@ -226,6 +228,7 @@ type QuestionnaireContextValue = QuestionnaireRootState & {
   activeItemName: string | null
   activeItemRequired: boolean | null
   activeItemStatus: QuestionnaireItemStatus | null
+  confirmCurrent: () => void
   domVersion: number
   goNext: () => void
   goPrevious: () => void
@@ -233,6 +236,7 @@ type QuestionnaireContextValue = QuestionnaireRootState & {
   itemDefinitionByName: ReadonlyMap<string, QuestionnaireItemDefinition> | null
   registerItem: (registration: ItemRegistration) => () => void
   shortcuts: QuestionnaireShortcutMode | null
+  shouldSuppressAutoSubmit: () => boolean
   skipCurrent: () => void
 }
 
@@ -250,6 +254,10 @@ type QuestionnaireItemContextValue = {
   ) => () => void
   registerDescription: (descriptionId: string) => () => void
   registerError: (errorId: string) => () => void
+  requestAutoSubmitFromChoiceInteraction: (
+    answerId: string,
+    selected: boolean
+  ) => void
   required: boolean
   resetVersion: number
   selectedAnswerIds: string[]
@@ -277,6 +285,7 @@ export type {
   QuestionnaireChoiceProps,
   QuestionnaireChoiceShortcutProps,
   QuestionnaireChoiceShortcutState,
+  QuestionnaireAutoSubmit,
   QuestionnaireChoiceState,
   QuestionnaireChoicesProps,
   QuestionnaireChoicesState,
