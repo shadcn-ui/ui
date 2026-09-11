@@ -11,6 +11,7 @@ import { highlighter } from "@/src/utils/highlighter"
 import { resolveImportWithMetadata } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
 import fg from "fast-glob"
+import fs from "fs-extra"
 import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 import { z } from "zod"
 
@@ -54,13 +55,15 @@ export async function resolveConfigPaths(
     ...(config.registries || {}),
   }
 
-  // Read tsconfig.json.
-  const tsConfig = await loadConfig(cwd)
+  // Read tsconfig.json, with fallback to alternate tsconfig files
+  // (e.g. tsconfig.app.json, tsconfig.node.json) for projects that use
+  // a references-only root tsconfig.json (common in Vite + create-vite).
+  const tsConfig = await loadTsConfigPaths(cwd)
 
-  if (tsConfig.resultType === "failed") {
+  if (!tsConfig) {
     throw new Error(
       `Failed to load ${config.tsx ? "tsconfig" : "jsconfig"}.json. ${
-        tsConfig.message ?? ""
+        "No tsconfig.json, tsconfig.web.json, or tsconfig.app.json found."
       }`.trim()
     )
   }
@@ -113,6 +116,138 @@ export async function resolveConfigPaths(
       hooks: resolvedHooks,
     },
   })
+}
+
+/**
+ * Load tsconfig paths with fallback to alternate tsconfig files.
+ *
+ * `tsconfig-paths`'s `loadConfig` only reads `tsconfig.json`, but many
+ * Vite + create-vite projects store their compiler options in
+ * `tsconfig.app.json` (or `tsconfig.web.json`) with a references-only
+ * root `tsconfig.json`. This helper tries `loadConfig` first, then falls
+ * back to reading the alternate files directly.
+ */
+async function loadTsConfigPaths(
+  cwd: string
+): Promise<Pick<ConfigLoaderSuccessResult, "absoluteBaseUrl" | "paths"> | null> {
+  // Try tsconfig-paths loadConfig first (reads tsconfig.json).
+  const tsConfig = loadConfig(cwd)
+
+  if (tsConfig.resultType === "success" && Object.keys(tsConfig.paths).length > 0) {
+    return {
+      absoluteBaseUrl: tsConfig.absoluteBaseUrl,
+      paths: tsConfig.paths,
+    }
+  }
+
+  // Fall back to reading alternate tsconfig files directly
+  // (tsconfig.json → tsconfig.web.json → tsconfig.app.json).
+  for (const fallback of ["tsconfig.json", "tsconfig.web.json", "tsconfig.app.json"]) {
+    const filePath = path.resolve(cwd, fallback)
+    if (!(await fs.pathExists(filePath))) {
+      continue
+    }
+
+    const contents = await fs.readFile(filePath, "utf8")
+    let parsed: {
+      compilerOptions?: { baseUrl?: string; paths?: Record<string, string | string[]> }
+    }
+
+    try {
+      parsed = JSON.parse(stripJsonCommentsAndTrailingCommas(contents))
+    } catch {
+      continue
+    }
+
+    const paths = parsed?.compilerOptions?.paths
+    if (!paths || !Object.keys(paths).length) {
+      continue
+    }
+
+    // Normalize paths to always be arrays (tsconfig allows a single string).
+    const normalizedPaths: Record<string, string[]> = {}
+    for (const [key, targets] of Object.entries(paths)) {
+      normalizedPaths[key] = Array.isArray(targets) ? targets : [targets]
+    }
+
+    // Compute absoluteBaseUrl. If no baseUrl is set, use the cwd.
+    const baseUrl = parsed?.compilerOptions?.baseUrl
+    const absoluteBaseUrl = baseUrl ? path.resolve(cwd, baseUrl) : cwd
+
+    return { absoluteBaseUrl, paths: normalizedPaths }
+  }
+
+  // No tsconfig paths found in any file. Return a default config so that
+  // projects using package imports (not tsconfig paths) can still work.
+  // The actual alias resolution failure will surface in assertResolvedAliases.
+  return {
+    absoluteBaseUrl: cwd,
+    paths: {},
+  }
+}
+
+function stripJsonCommentsAndTrailingCommas(value: string) {
+  let result = ""
+  let inString = false
+  let escaped = false
+
+  for (let index = 0; index < value.length; index++) {
+    const current = value[index]
+    const next = value[index + 1]
+
+    if (inString) {
+      result += current
+
+      if (escaped) {
+        escaped = false
+        continue
+      }
+
+      if (current === "\\") {
+        escaped = true
+        continue
+      }
+
+      if (current === '"') {
+        inString = false
+      }
+
+      continue
+    }
+
+    if (current === '"') {
+      inString = true
+      result += current
+      continue
+    }
+
+    // Strip line comments and trailing commas.
+    // A trailing comma is one followed only by whitespace, then } or ].
+    if (
+      (current === "/" && (next === "/" || next === "*")) ||
+      (current === "," && /^\s*[}\]]/.test(value.slice(index + 1)))
+    ) {
+      if (current === "/" && next === "/") {
+        while (index < value.length && value[index] !== "\n") {
+          index++
+        }
+      } else if (current === "/" && next === "*") {
+        index += 2
+        while (
+          index < value.length &&
+          !(value[index] === "*" && value[index + 1] === "/")
+        ) {
+          index++
+        }
+        index++ // skip the closing '/'
+      }
+      continue
+    }
+
+    result += current
+  }
+
+  return result
 }
 
 async function resolveAliasPath(
