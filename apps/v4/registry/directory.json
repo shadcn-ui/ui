@@ -1122,6 +1122,13 @@
     "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 108 108\" fill=\"none\"><path fill=\"#18181b\" fill-opacity=\"0.42\" d=\"M44.4287 7.16278C47.943 1.06871 56.7287 1.0687 60.243 7.16277L97.954 72.5568C101.468 78.6508 97.0755 86.2684 90.0469 86.2684H14.6248C7.59624 86.2684 3.20336 78.6509 6.71765 72.5568L44.4287 7.16278Z\"/><path fill=\"#18181b\" fill-opacity=\"0.42\" d=\"M63.711 7.86367C69.3114 3.61171 77.4091 7.0239 78.2869 14.0056L87.7066 88.9249C88.5844 95.9066 81.584 101.222 75.1058 98.4918L5.58994 69.1994C-0.888245 66.4697 -1.98553 57.7425 3.61483 53.4905L63.711 7.86367Z\"/><path fill=\"#18181b\" fill-opacity=\"0.42\" d=\"M81.2118 15.9985C88.0211 14.2546 94.1626 20.5446 92.2664 27.3205L71.9195 100.031C70.0233 106.807 61.5117 108.987 56.5985 103.955L3.87631 49.9581C-1.03687 44.9261 1.3333 36.4562 8.14261 34.7123L81.2118 15.9985Z\"/><path fill=\"#18181b\" fill-opacity=\"0.42\" d=\"M94.1901 30.2933C101.142 31.3305 104.365 39.5132 99.9921 45.0221L53.0652 104.137C48.6921 109.646 40.0023 108.349 37.4236 101.803L9.75232 31.558C7.17363 25.0119 12.64 18.1258 19.5918 19.163L94.1901 30.2933Z\"/><path fill=\"#18181b\" fill-opacity=\"0.42\" d=\"M100.613 48.5092C106.619 52.1651 106.419 60.9589 100.254 64.3379L34.0967 100.598C27.9315 103.977 20.4246 99.407 20.5842 92.372L22.2977 16.881C22.4573 9.84596 30.1638 5.62213 36.1693 9.27807L100.613 48.5092Z\"/></svg>"
   },
   {
+    "name": "@nysgpt",
+    "homepage": "https://gov.nysgpt.com",
+    "url": "https://gov.nysgpt.com/r/{name}.json",
+    "description": "The legislative record as installable parts: flags and seals for every U.S. jurisdiction, state district boundaries with a point-to-representative join, and the policy filters, imagery and directory search every GovBlock page reads.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='12' r='9' stroke='#0a3161' stroke-width='2'/><path d='M12 3a9 9 0 0 0 0 18z' fill='#0a3161'/><g stroke='#b31942' stroke-width='2' stroke-linecap='round'><path d='M12 9l4.65-4.65'/><path d='M12 14.3l7.37-7.37'/><path d='M12 19.6l8.85-8.85'/></g></svg>"
+  },
+  {
     "name": "@odysseyui",
     "homepage": "https://www.odysseyui.com/docs",
     "url": "https://www.odysseyui.com/r/{name}.json",
