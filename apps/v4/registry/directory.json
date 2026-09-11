@@ -1126,7 +1126,7 @@
     "homepage": "https://gov.nysgpt.com",
     "url": "https://gov.nysgpt.com/r/{name}.json",
     "description": "The legislative record as installable parts: flags and seals for every U.S. jurisdiction, state district boundaries with a point-to-representative join, and the policy filters, imagery and directory search every GovBlock page reads.",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><clipPath id='r'><path d='M12 3h5a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4h-5z'/></clipPath><rect x='3' y='3' width='18' height='18' rx='4' stroke='#0a3161' stroke-width='2'/><path d='M3 7a4 4 0 0 1 4-4h5v18H7a4 4 0 0 1-4-4z' fill='#0a3161'/><g clip-path='url(#r)' stroke='#b31942' stroke-width='2' stroke-linecap='round'><path d='M12 9l4.65-4.65'/><path d='M12 14.3l7.37-7.37'/><path d='M12 19.6l8.85-8.85'/><path d='M14 22l7-7'/></g></svg>"
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M10 22V7c0-.6-.4-1-1-1H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-5c0-.6-.4-1-1-1H2' stroke='#0a3161'/><path d='M15 2h6a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z' stroke='#b31942'/></svg>"
   },
   {
     "name": "@odysseyui",
