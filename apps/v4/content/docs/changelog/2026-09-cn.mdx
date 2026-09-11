@@ -16,9 +16,9 @@ drop-in replacement for `twMerge(clsx(...))`. It is smaller, faster and ships
 the same API, so nothing changes at the call site.
 
 ```tsx
-import { cn } from "cn"
+import { cn } from "cn";
 
-;<div className={cn("flex items-center", className)} />
+<div className={cn("flex items-center", className)} />;
 ```
 
 ## What changed
@@ -35,7 +35,7 @@ The `utils` registry item still exists. It now re-exports `cn` so your own code
 keeps working and you still have a single place for project helpers.
 
 ```ts title="lib/utils.ts"
-export { cn } from "cn"
+export { cn } from "cn";
 ```
 
 ## Existing projects
