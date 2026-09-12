@@ -1,0 +1,124 @@
+---
+title: Astro
+description: Create a new Astro project with RTL support.
+---
+
+<Callout className="mb-6 border-emerald-600 bg-emerald-100 dark:border-emerald-400 dark:bg-emerald-900">
+
+**Starting a new project?** Use [shadcn/create](/create?template=astro&base=base&rtl=true) for a fully configured Astro app with custom themes, Base UI or Radix, and icon libraries.
+
+</Callout>
+
+<Steps>
+
+### Create Project
+
+Create a new project using the `--rtl` flag and the `astro` template.
+
+**You can skip this step if you have already created a project using [shadcn/create](/create?template=astro&base=base&rtl=true).**
+
+```bash
+npx shadcn@latest create --template astro --rtl
+```
+
+**For a monorepo project, use `--monorepo` flag:**
+
+```bash
+npx shadcn@latest init -t astro --monorepo --rtl
+```
+
+This will create a `components.json` file with the `rtl: true` flag.
+
+```json title="components.json" showLineNumbers {4}
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "base-nova",
+  "rtl": true
+}
+```
+
+### Add DirectionProvider
+
+Add the `dir="rtl"` and `lang="ar"` attributes to the `html` tag in your layout file (`src/layouts/main.astro`). Update `lang="ar"` to your target language.
+
+```astro title="src/layouts/main.astro" showLineNumbers {5}
+---
+import "@/styles/global.css"
+---
+
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Astro App</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+```
+
+For interactive React components that rely on directional context (e.g. Radix or Base UI popovers and tooltips), wrap the component or island with the `DirectionProvider` from `@/components/ui/direction`:
+
+```tsx title="src/components/react-island.tsx" showLineNumbers {1,6-8}
+import { DirectionProvider } from "@/components/ui/direction"
+
+export function ReactIsland({ children }: { children: React.ReactNode }) {
+  return (
+    <DirectionProvider direction="rtl">
+      {children}
+    </DirectionProvider>
+  )
+}
+```
+
+### Add Font
+
+For the best RTL experience, we recommend using fonts that have proper support for your target language. [Noto](https://fonts.google.com/noto) is a great font family for this and it pairs well with Inter and Geist.
+
+Install the font using [Fontsource](https://fontsource.org/fonts/noto-sans-arabic):
+
+```bash
+npm install @fontsource-variable/noto-sans-arabic
+```
+
+Import the font in your global stylesheet (`src/styles/global.css`):
+
+```css title="src/styles/global.css" showLineNumbers {4,7}
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/noto-sans-arabic";
+
+@theme inline {
+  --font-sans: "Noto Sans Arabic Variable", sans-serif;
+}
+```
+
+For other languages, eg. Hebrew, you can use `@fontsource-variable/noto-sans-hebrew`.
+
+### Add Components
+
+You are now ready to add components to your project. The CLI will take care of handling RTL support for you.
+
+```bash
+npx shadcn@latest add button
+```
+
+Then import it into your Astro page:
+
+```astro title="src/pages/index.astro" showLineNumbers
+---
+import Layout from "@/layouts/main.astro"
+import { Button } from "@/components/ui/button"
+---
+
+<Layout>
+  <Button client:load>Button</Button>
+</Layout>
+```
+
+If you created a monorepo, update `apps/web/src/pages/index.astro` and import from `@workspace/ui/components/button` instead.
+
+</Steps>
