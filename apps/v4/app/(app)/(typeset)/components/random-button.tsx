@@ -1,6 +1,7 @@
 "use client"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cn"
+
 import { Button } from "@/styles/base-nova/ui/button"
 import { useShuffle } from "@/app/(app)/(typeset)/hooks/use-shuffle"
 

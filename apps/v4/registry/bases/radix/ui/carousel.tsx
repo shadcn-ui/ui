@@ -1,11 +1,11 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
 
-import { cn } from "@/registry/bases/radix/lib/utils"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 

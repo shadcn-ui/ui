@@ -20,8 +20,9 @@
     "@tanstack/react-router-ssr-query": "latest",
     "@tanstack/react-start": "latest",
     "@tanstack/router-plugin": "latest",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
+    "cn": "^0.2.6",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "tailwindcss": "^4"
   },
   "devDependencies": {
@@ -35,8 +36,8 @@
     "@vitejs/plugin-react": "^6",
     "eslint": "^9",
     "jsdom": "^28",
-    "prettier": "^3.8.3",
-    "prettier-plugin-tailwindcss": "^0.8.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
     "typescript": "^6",
     "vite": "^8",
     "vitest": "^4"
