@@ -45,6 +45,11 @@ export async function isMonorepoRoot(cwd: string) {
     return true
   }
 
+  // Turborepo.
+  if (fs.existsSync(path.resolve(cwd, "turbo.json"))) {
+    return true
+  }
+
   return false
 }
 
@@ -153,6 +158,19 @@ export async function getWorkspacePatterns(cwd: string) {
     } catch {
       // Ignore parse errors.
     }
+  }
+
+  // Read turbo.json workspace patterns.
+  // Turborepo does not define workspace globs directly — it relies on the
+  // package manager's workspace config (pnpm-workspace.yaml / package.json).
+  // However some projects use turbo.json as the sole monorepo signal without
+  // the other workspace files. In that case we fall back to conventional
+  // Turborepo directory conventions so we can still discover workspace apps.
+  if (
+    patterns.length === 0 &&
+    fs.existsSync(path.resolve(cwd, "turbo.json"))
+  ) {
+    patterns.push("apps/*", "packages/*")
   }
 
   return Array.from(new Set(patterns))
