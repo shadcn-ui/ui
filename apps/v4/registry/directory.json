@@ -197,6 +197,20 @@
     "logo": "<svg width='53' height='64' viewBox='0 0 53 64' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M3.37163 27.7823C13.8466 26.0536 22.0585 17.3818 23.7786 6.88966L24.3558 1.84681C24.4986 1.04545 23.9557 -0.0707301 22.9442 0.00940596C15.0295 0.627599 7.56046 3.24347 3.40592 4.9435C1.34294 5.79065 0 7.79405 0 10.0264V26.4772C0 27.4503 0.874338 28.1944 1.8344 28.0399L3.37163 27.788V27.7823Z' fill='var(--foreground)'/><path d='M28.8312 6.89002C30.557 17.3821 38.7689 26.054 49.2381 27.7826L50.7753 28.0345C51.7354 28.1948 52.6097 27.4507 52.6097 26.4718V10.0211C52.6097 7.78869 51.2668 5.78529 49.2038 4.93814C45.0436 3.23238 37.5803 0.622239 29.6655 0.00404612C28.6483 -0.07609 28.1282 1.05154 28.2483 1.84145L28.8254 6.8843L28.8312 6.89002Z' fill='var(--foreground)'/><path d='M49.2301 32.3907C34.915 35.2184 28.2689 44.7488 28.2689 62.7909C28.2689 63.6953 29.166 64.3249 29.9204 63.8212C36.5036 59.3737 50.9902 47.7654 52.4818 33.2436C52.5389 31.4176 50.2588 32.2762 49.2301 32.3907Z' fill='var(--foreground)'/><path d='M3.37691 32.3907C17.6921 35.2184 24.3382 44.7488 24.3382 62.7909C24.3382 63.6953 23.441 64.3249 22.6867 63.8212C16.1034 59.3737 1.6168 47.7654 0.125285 33.2436C0.0681382 31.4176 2.34828 32.2762 3.37691 32.3907Z' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@awwwardedui",
+    "homepage": "https://awwwardedui.vercel.app",
+    "url": "https://awwwardedui.vercel.app/r/{name}.json",
+    "description": "A curated registry of production-ready creative components and motion effects for React.",
+    "logo": " "
+  },
+  {
+    "name": "@axicharts",
+    "homepage": "https://axidify.github.io/axicharts/shadcn/registry",
+    "url": "https://axidify.github.io/axicharts/registry/{name}.json",
+    "description": "MIT React chart blocks for dashboards — composable ChartContainer + shadcn-compatible chartConfig, live uPlot canvas, and ECharts adapters. Six installable registry items.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' role='img' aria-label='AxiCharts'><rect x='6' y='24' width='7' height='14' rx='1.5' fill='var(--foreground)'/><rect x='18' y='16' width='7' height='22' rx='1.5' fill='var(--foreground)'/><rect x='30' y='8' width='7' height='30' rx='1.5' fill='var(--foreground)'/></svg>"
+  },
+  {
     "name": "@baraile-loader",
     "homepage": "https://shadcn-braille-loader.vercel.app",
     "description": "A simple braille-inspired loader components for shadcn/ui.",
@@ -661,6 +675,13 @@
     "logo": "<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 43 41'><g transform='translate(0,0) rotate(0 21 20.5)'><path fill-rule='evenodd' clip-rule='evenodd' d='M23.4822 1.69633C22.0194 0.234143 19.6482 0.234623 18.1861 1.69742L5.98295 13.9055L5.97255 13.9025L5.93399 13.9066C5.94987 13.9142 5.96546 13.9218 5.98074 13.9294C3.84006 14.1537 2.9318 14.797 2.92152 15.6231C2.92514 15.9304 3.05122 16.2623 3.28281 16.6068L3.27168 16.6179C5.21778 19.5531 14.8587 23.4251 21.6793 20.8017C16.5675 23.3576 4.52892 23.8642 0.992995 18.9016C0.225104 19.7323 -0.0961769 20.824 0.0248128 21.8731C0.958907 27.0216 11.4021 28.4262 21.8454 20.9667L24.1053 23.2266C21.2932 26.1157 17.1394 42.897 23.3115 40.3349C23.4579 40.2355 23.5822 40.1465 23.7512 40.0187L24.0263 39.7589C24.0104 39.7629 23.9947 39.7666 23.979 39.7703L40.5092 24.1648C42.044 22.7158 42.0788 20.2853 40.5859 18.793L23.4822 1.69633ZM21.6821 6.782L22.247 4.52213L22.812 6.782L24.5069 7.34698L22.812 7.91196L22.247 10.1718L21.6821 7.91196L19.9872 7.34698L21.6821 6.782ZM14.6892 14.1593L15.0658 12.6526L15.4424 14.1593L16.5724 14.5359L15.4424 14.9125L15.0658 16.4191L14.6892 14.9125L13.5593 14.5359L14.6892 14.1593ZM27.8072 26.8673L27.4305 28.3738L26.3007 28.7505L27.4305 29.1271L27.8072 30.6336L28.1838 29.1271L29.3138 28.7505L28.1838 28.3738L27.8072 26.8673Z' fill='#4845D2'/><path fill-rule='evenodd' clip-rule='evenodd' d='M41.7822 3.19183C38.2483 3.19183 34.8969 4.76153 32.6344 7.47638L24.5858 17.1349L29.2334 10.1633L21.5187 13.4697C20.5389 13.8896 20.2931 15.1661 21.0467 15.9198L23.5294 18.4024L22.2618 19.9235L25.0505 22.7121L26.5715 21.4445L29.0542 23.9272C29.8079 24.6808 31.0844 24.435 31.5043 23.4554L34.8106 15.7406L27.8391 20.3883L37.4976 12.3395C40.2125 10.0772 41.7822 6.72577 41.7822 3.19183ZM34.1135 10.8607C34.8835 11.6307 36.132 11.6307 36.9021 10.8607C37.6721 10.0906 37.6721 8.84209 36.9021 8.07208C36.132 7.30199 34.8835 7.30199 34.1135 8.07208C33.3434 8.84209 33.3434 10.0906 34.1135 10.8607Z' fill='#A3A2FF'/><path opacity='0.6' d='M0.903381 18.7718C2.74977 25.0977 13.9754 24.7679 21.6773 20.8027C16.52 23.3797 4.3201 23.8719 0.903381 18.7718Z' fill='#424242'/><path opacity='0.6' d='M23.3115 40.3349C18.1107 42.4938 20.2416 30.9184 22.7235 25.4932C20.9144 30.3153 19.3701 40.9455 24.0262 39.759L23.7512 40.0187C23.5821 40.1466 23.4579 40.2355 23.3115 40.3349Z' fill='#424242'/></g></svg>"
   },
   {
+    "name": "@fluent2-react-kit",
+    "homepage": "https://fluent2-react-kit.graund.io",
+    "url": "https://fluent2-react-kit.graund.io/r/{name}.json",
+    "description": "Fluent 2-inspired React components with shadcn-style APIs. Design tokens with light, dark, and high-contrast themes, Base UI primitives, Tailwind CSS v4. Independent open-source project, not affiliated with Microsoft.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='var(--foreground)' x='40' y='72' width='432' height='400' rx='60'/><path fill='var(--background)' d='M216 200h40v112h-40a32 32 0 0 1-32-32v-48a32 32 0 0 1 32-32Z'/><path fill='var(--background)' d='M256 200h40a32 32 0 0 1 32 32v48a32 32 0 0 1-32 32h-40V200Z'/><rect fill='var(--foreground)' x='249' y='200' width='14' height='112'/></svg>"
+  },
+  {
     "name": "@flowkit-ui",
     "homepage": "https://flowkit-ui.vzkiss.com",
     "url": "https://flowkit-ui.vzkiss.com/r/{name}.json",
@@ -1019,6 +1040,13 @@
     "logo": "<svg viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M17.0713 5.75875C16.2913 6.53875 15.0212 6.53875 14.2412 5.75875C13.4613 4.97875 13.4613 3.70875 14.2412 2.92875C15.0212 2.14875 16.2913 2.14875 17.0713 2.92875C17.8513 3.70875 17.8513 4.97875 17.0713 5.75875Z' fill='var(--foreground)' fill-opacity='0.3'/><path d='M14.2412 17.0713C13.4612 16.2913 13.4612 15.0212 14.2412 14.2412C15.0212 13.4613 16.2913 13.4613 17.0713 14.2412C17.8512 15.0212 17.8512 16.2913 17.0713 17.0713C16.2913 17.8513 15.0212 17.8513 14.2412 17.0713Z' fill='var(--foreground)' fill-opacity='0.5'/><path d='M10 0C9.46957 0 8.96086 0.210714 8.58579 0.585786C8.21071 0.960859 8 1.46957 8 2C8 2.53043 8.21071 3.03914 8.58579 3.41421C8.96086 3.78929 9.46957 4 10 4C10.5304 4 11.0391 3.78929 11.4142 3.41421C11.7893 3.03914 12 2.53043 12 2C12 1.46957 11.7893 0.960859 11.4142 0.585786C11.0391 0.210714 10.5304 0 10 0Z' fill='var(--foreground)'/><path d='M20 10C20 9.46957 19.7893 8.96086 19.4142 8.58579C19.0391 8.21071 18.5304 8 18 8C17.4696 8 16.9609 8.21071 16.5858 8.58579C16.2107 8.96086 16 9.46957 16 10C16 10.5304 16.2107 11.0391 16.5858 11.4142C16.9609 11.7893 17.4696 12 18 12C18.5304 12 19.0391 11.7893 19.4142 11.4142C19.7893 11.0391 20 10.5304 20 10Z' fill='var(--foreground)' fill-opacity='0.4'/><path d='M5.75875 2.92875C6.53875 3.70875 6.53875 4.97875 5.75875 5.75875C4.97875 6.53875 3.70875 6.53875 2.92875 5.75875C2.14875 4.97875 2.14875 3.70875 2.92875 2.92875C3.70875 2.14875 4.97875 2.14875 5.75875 2.92875Z' fill='var(--foreground)' fill-opacity='0.9'/><path d='M0 10C0 10.5304 0.210714 11.0391 0.585786 11.4142C0.960859 11.7893 1.46957 12 2 12C2.53043 12 3.03914 11.7893 3.41421 11.4142C3.78929 11.0391 4 10.5304 4 10C4 9.46957 3.78929 8.96086 3.41421 8.58579C3.03914 8.21071 2.53043 8 2 8C1.46957 8 0.960859 8.21071 0.585786 8.58579C0.210714 8.96086 0 9.46957 0 10Z' fill='var(--foreground)' fill-opacity='0.8'/><path d='M2.92875 14.2412C3.70875 13.4612 4.97875 13.4612 5.75875 14.2412C6.53875 15.0212 6.53875 16.2913 5.75875 17.0713C4.97875 17.8512 3.70875 17.8512 2.92875 17.0713C2.14875 16.2913 2.14875 15.0212 2.92875 14.2412Z' fill='var(--foreground)' fill-opacity='0.7'/><path d='M10 20C10.5304 20 11.0391 19.7893 11.4142 19.4142C11.7893 19.0391 12 18.5304 12 18C12 17.4696 11.7893 16.9609 11.4142 16.5858C11.0391 16.2107 10.5304 16 10 16C9.46957 16 8.96086 16.2107 8.58579 16.5858C8.21071 16.9609 8 17.4696 8 18C8 18.5304 8.21071 19.0391 8.58579 19.4142C8.96086 19.7893 9.46957 20 10 20Z' fill='var(--foreground)' fill-opacity='0.6'/></svg>"
   },
   {
+    "name": "@localmode",
+    "homepage": "https://localmode.ai",
+    "url": "https://localmode.ai/r/{name}.json",
+    "description": "Local-first, offline AI UI primitives + blocks - run ML models (chat, RAG, vision, audio) entirely in the browser. No servers, no API keys.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m2 2 20 20'/><path d='M5.782 5.782A7 7 0 0 0 9 19h8.5a4.5 4.5 0 0 0 1.307-.193'/><path d='M21.532 16.5A4.5 4.5 0 0 0 17.5 10h-1.79A7.008 7.008 0 0 0 10 5.07'/></svg>"
+  },
+  {
     "name": "@lucide-animated",
     "homepage": "https://lucide-animated.com",
     "url": "https://lucide-animated.com/r/{name}.json",
@@ -1231,11 +1259,25 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'><path fill-rule='evenodd' clip-rule='evenodd' d='M0 12C7.62742 12 12 7.62742 12 0C12 7.62742 16.3726 12 24 12C16.3726 12 12 16.3726 12 24C12 16.3726 7.62742 12 0 12Z' fill='currentColor'/></svg>"
   },
   {
+    "name": "@niko-table",
+    "homepage": "https://niko-table.com",
+    "url": "https://niko-table.com/r/{name}.json",
+    "description": "Composable, open-code data tables and an editable data grid built on TanStack Table: faceted and advanced filters, sorting, row and column drag-and-drop, virtualization, column resizing, and server-side pagination, installed a la carte.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><g transform='translate(2, 2) scale(0.83)'><path d='M12 3v17a1 1 0 0 1-1 1H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a1 1 0 0 1-1 1H3'/></g><line x1='21.125' y1='17.5' x2='17.5' y2='21.125' fill='none' stroke='var(--foreground)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/><line x1='20.75' y1='13.75' x2='13.75' y2='20.75' fill='none' stroke='var(--foreground)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/></svg>"
+  },
+  {
     "name": "@nordaun",
     "homepage": "https://ui.nordaun.com",
     "url": "https://ui.nordaun.com/r/{name}.json",
     "description": "Simple components for your extraordinary creations.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'><path fill='var(--foreground)' d='M13.5 6.745L0 20.25v9h9l13.5-13.505v-9zm9 9v13.5H36c0-7.456-6.044-13.5-13.5-13.5z'/></svg>"
+  },
+  {
+    "name": "@ns-ui",
+    "homepage": "https://design.helpmarq.com",
+    "url": "https://design.helpmarq.com/r/{name}.json",
+    "description": "389 animated React components for Tailwind v4 and React 19, with a CLI and an MCP server.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='var(--background)'/><circle cx='16' cy='16' r='5' fill='none' stroke='var(--foreground)' stroke-width='2'/></svg>"
   },
   {
     "name": "@nteract",
@@ -1600,6 +1642,13 @@
     "url": "https://sevenui.dev/r/{name}.json",
     "description": "Base UI powered components, distributed through the shadcn registry.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='24' height='24' fill='none'><path d='M9.08426 12.4419C9.65668 8.91164 12.987 6.51285 16.5232 7.08412L49.549 12.4213C53.0852 12.9928 55.488 16.3176 54.9157 19.8479C54.3433 23.3782 51.013 25.7769 47.4768 25.2057L14.451 19.8685C10.9148 19.297 8.51204 15.9722 9.08426 12.4419Z' fill='currentColor'></path><path d='M43.1816 15.1254C45.222 12.1858 49.2627 11.4541 52.2072 13.4911C55.1516 15.528 55.8845 19.562 53.8442 22.5016L25.5487 54.2121C23.5083 57.1517 19.4676 57.8834 16.5232 55.8464C13.5787 53.8095 12.8458 49.7755 14.8861 46.8359L43.1816 15.1254Z' fill='currentColor'></path></svg>"
+  },
+  {
+    "name": "@sf-fleet-hud",
+    "homepage": "https://sf-fleet-hud.vercel.app",
+    "url": "https://sf-fleet-hud.vercel.app/r/{name}.json",
+    "description": "A dark sci-fi fleet-ops UI kit. Restyled primitives plus HUD widgets: radar, gauges, telemetry bars, an interactive dot globe and dependency-free charts. Dark-only, radius 0.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'><path d='M2 8V2h6' fill='none' stroke='var(--foreground)' stroke-width='2'/><path d='M22 16v6h-6' fill='none' stroke='var(--foreground)' stroke-width='2'/><rect x='9' y='9' width='6' height='6' fill='var(--foreground)' transform='rotate(45 12 12)'/></svg>"
   },
   {
     "name": "@shadcn-editor",
@@ -2050,6 +2099,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='108' height='99' viewBox='0 0 108 99' fill='none'><path d='M9.21908 12.2295C-0.78092 25.4295 18.3857 42.3961 29.2191 49.2295C15.8858 52.5628 -8.08085 63.1295 2.71915 78.7295C13.5191 94.3295 32.1667 79.1667 39 70.5C43.3333 80.5 44.9383 103.959 63.2191 97.2295C81.5 90.5 70.1667 72.5 67.5 65C79.5 69 104 75.5 107.219 56.7295C109.589 42.9084 82.5525 38.2295 70.7191 37.7295C80.8858 29.2295 96.0191 10.1295 75.2191 1.72948C54.4191 -6.67053 45.2191 17.5628 43.2191 30.7295C36.0525 19.0628 19.2191 -0.970524 9.21908 12.2295Z' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@vectorstudio-ir",
+    "homepage": "https://github.com/vectorstudio-ir/ui",
+    "url": "https://raw.githubusercontent.com/vectorstudio-ir/ui/develop/public/r/{name}.json",
+    "description": "Vectorstudio UI design system: 60 shadcn-compatible primitives on @base-ui/react, RTL/Persian first, 578-icon pixel-icon library, Tailwind v4 + orange brand palette.",
+    "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"8\" fill=\"#FE5000\"/><path d=\"M9 9 L16 23 L23 9\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"/></svg>"
+  },
+  {
     "name": "@utilcn",
     "homepage": "https://utilcn.dev",
     "url": "https://utilcn.dev/r/{name}.json",
@@ -2227,6 +2283,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='128' height='128' rx='28' fill='var(--foreground)'/><text x='64' y='64' text-anchor='middle' dominant-baseline='central' font-family='ui-sans-serif, system-ui, sans-serif' font-size='26' font-weight='700' letter-spacing='-1' fill='var(--background)'>VLLNT</text></svg>"
   },
   {
+    "name": "@voraui",
+    "homepage": "https://voraui.vercel.app",
+    "url": "https://voraui.vercel.app/r/{name}.json",
+    "description": "Open source crypto market analytics components for shadcn/ui - candlestick trading charts, BTC rainbow chart, Fear & Greed and Altseason gauges, live from free public APIs.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 275 144' fill='none'><path d='M10 133.625C10 100.838 23.433 69.3931 47.3439 46.2089C71.2548 23.0247 103.685 10 137.5 10C171.315 10 203.745 23.0247 227.656 46.2089C251.567 69.3931 265 100.838 265 133.625' stroke='var(--foreground)' stroke-width='20' stroke-linecap='round'/><path d='M41.875 133.625C41.875 109.034 51.9497 85.4511 69.8829 68.063C87.8161 50.6748 112.139 40.9063 137.5 40.9062C162.861 40.9063 187.184 50.6748 205.117 68.063C223.05 85.4511 233.125 109.034 233.125 133.625' stroke='var(--foreground)' stroke-width='20' stroke-linecap='round'/><path d='M73.75 133.625C73.75 117.231 80.4665 101.509 92.4219 89.917C104.377 78.3249 120.592 71.8125 137.5 71.8125C154.408 71.8125 170.623 78.3249 182.578 89.917C194.534 101.509 201.25 117.231 201.25 133.625' stroke='var(--foreground)' stroke-width='20' stroke-linecap='round'/></svg>"
+  },
+  {
     "name": "@grainly-icons",
     "homepage": "https://grainlyicons.abhii.space",
     "url": "https://grainlyicons.abhii.space/r/{name}.json",
@@ -2337,6 +2400,13 @@
     "url": "https://afterglow.thebuilder.dk/r/{name}.json",
     "description": "A complete terminal UI system for shadcn with Base UI components, terminal-specific building blocks, and eight phosphor color themes.",
     "logo": "<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg' fill='currentColor'><path d='M6.45 5.9L18.23 16L6.45 26.1L3 22.07L10.09 16L3 9.93Z'/><path d='M18.4 20.24H29V24.48H18.4Z'/></svg>"
+  },
+  {
+    "name": "@agentblog",
+    "homepage": "https://agentblog.dev",
+    "url": "https://agentblog.dev/r/{name}.json",
+    "description": "A complete blog for Next.js, installed like a component. Built to be read and cited by AI search engines.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='var(--foreground)'><path d='M71.636 87.9201C70.1262 91.271 68.2494 94.5527 65.9993 97.3921C84.6675 91.1076 98.41 74.1286 99.9228 53.75H93.2775C85.1677 53.75 78.6534 60.2152 77.3352 68.2073C76.12 75.5742 74.176 82.2825 71.636 87.9201Z'/><path d='M56.9374 53.75C65.4281 53.75 72.3738 60.8247 70.8143 69.1607C67.4269 87.2668 59.3834 100 50 100C38.1267 100 28.3987 79.6127 27.5347 53.75H56.9374Z'/><path d='M77.5078 32.8754C78.7495 40.9421 85.2939 47.5 93.4654 47.5H100C98.968 26.5678 85.0479 9.02042 65.9993 2.60793C68.2494 5.44729 70.1262 8.72899 71.636 12.0799C74.2999 17.9925 76.3083 25.0827 77.5078 32.8754Z'/><path d='M71.065 32.2393C72.4854 40.5332 65.5698 47.5 57.1451 47.5H27.5C28.0869 21.0472 37.936 0 50 0C59.6235 0 67.8376 13.393 71.065 32.2393Z'/><path d='M21.2409 47.5C21.5252 33.9792 24.1078 21.5265 28.364 12.0799C29.8738 8.72899 31.7506 5.44729 34.0007 2.60792C14.9521 9.02042 1.032 26.5678 0 47.5H21.2409Z'/><path d='M0.0771896 53.75C1.59005 74.1286 15.3325 91.1076 34.0007 97.3921C31.7506 94.5527 29.8738 91.271 28.364 87.9201C24.2393 78.7654 21.6864 66.7873 21.2738 53.75H0.0771896Z'/></svg>"
   },
   {
     "name": "@quiz-ui",
