@@ -2,6 +2,7 @@
   {
     "name": "accordion",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/accordion.tsx",
@@ -57,7 +58,7 @@
   {
     "name": "alert-dialog",
     "type": "registry:ui",
-    "registryDependencies": ["button"],
+    "registryDependencies": ["button", "compose-class-name"],
     "files": [
       {
         "path": "ui/alert-dialog.tsx",
@@ -114,7 +115,7 @@
   {
     "name": "attachment",
     "type": "registry:ui",
-    "registryDependencies": ["button"],
+    "registryDependencies": ["button", "compose-class-name"],
     "files": [
       {
         "path": "ui/attachment.tsx",
@@ -133,6 +134,7 @@
   {
     "name": "avatar",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/avatar.tsx",
@@ -232,6 +234,7 @@
   {
     "name": "button",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/button.tsx",
@@ -259,7 +262,7 @@
   {
     "name": "button-group",
     "type": "registry:ui",
-    "registryDependencies": ["separator"],
+    "registryDependencies": ["separator", "compose-class-name"],
     "files": [
       {
         "path": "ui/button-group.tsx",
@@ -349,7 +352,7 @@
         "type": "registry:ui"
       }
     ],
-    "registryDependencies": ["button"],
+    "registryDependencies": ["button", "compose-class-name"],
     "dependencies": ["embla-carousel-react"],
     "meta": {
       "links": {
@@ -402,6 +405,7 @@
   {
     "name": "checkbox",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/checkbox.tsx",
@@ -460,7 +464,7 @@
   {
     "name": "combobox",
     "type": "registry:ui",
-    "registryDependencies": ["button", "input-group"],
+    "registryDependencies": ["button", "input-group", "compose-class-name"],
     "dependencies": ["@base-ui/react"],
     "files": [
       {
@@ -522,6 +526,7 @@
   {
     "name": "context-menu",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/context-menu.tsx",
@@ -551,7 +556,7 @@
   {
     "name": "dialog",
     "type": "registry:ui",
-    "registryDependencies": ["button"],
+    "registryDependencies": ["button", "compose-class-name"],
     "files": [
       {
         "path": "ui/dialog.tsx",
@@ -608,6 +613,7 @@
   {
     "name": "drawer",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "dependencies": ["@base-ui/react"],
     "files": [
       {
@@ -638,6 +644,7 @@
   {
     "name": "dropdown-menu",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/dropdown-menu.tsx",
@@ -724,6 +731,7 @@
   {
     "name": "hover-card",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/hover-card.tsx",
@@ -780,7 +788,12 @@
   {
     "name": "input-group",
     "type": "registry:ui",
-    "registryDependencies": ["button", "input", "textarea"],
+    "registryDependencies": [
+      "button",
+      "input",
+      "textarea",
+      "compose-class-name"
+    ],
     "files": [
       {
         "path": "ui/input-group.tsx",
@@ -838,7 +851,7 @@
   {
     "name": "item",
     "type": "registry:ui",
-    "registryDependencies": ["separator"],
+    "registryDependencies": ["separator", "compose-class-name"],
     "files": [
       {
         "path": "ui/item.tsx",
@@ -939,7 +952,7 @@
   {
     "name": "menubar",
     "type": "registry:ui",
-    "registryDependencies": ["dropdown-menu"],
+    "registryDependencies": ["dropdown-menu", "compose-class-name"],
     "files": [
       {
         "path": "ui/menubar.tsx",
@@ -1028,6 +1041,7 @@
   {
     "name": "navigation-menu",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/navigation-menu.tsx",
@@ -1079,6 +1093,7 @@
   {
     "name": "popover",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/popover.tsx",
@@ -1108,6 +1123,7 @@
   {
     "name": "progress",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/progress.tsx",
@@ -1165,6 +1181,7 @@
   {
     "name": "radio-group",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/radio-group.tsx",
@@ -1224,6 +1241,7 @@
   {
     "name": "scroll-area",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/scroll-area.tsx",
@@ -1252,6 +1270,7 @@
   {
     "name": "select",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/select.tsx",
@@ -1281,6 +1300,7 @@
   {
     "name": "separator",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/separator.tsx",
@@ -1310,7 +1330,7 @@
   {
     "name": "sheet",
     "type": "registry:ui",
-    "registryDependencies": ["button"],
+    "registryDependencies": ["button", "compose-class-name"],
     "files": [
       {
         "path": "ui/sheet.tsx",
@@ -1347,7 +1367,8 @@
       "sheet",
       "skeleton",
       "tooltip",
-      "use-mobile"
+      "use-mobile",
+      "compose-class-name"
     ],
     "files": [
       {
@@ -1401,6 +1422,7 @@
   {
     "name": "slider",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/slider.tsx",
@@ -1486,6 +1508,7 @@
   {
     "name": "switch",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/switch.tsx",
@@ -1542,6 +1565,7 @@
   {
     "name": "tabs",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/tabs.tsx",
@@ -1599,7 +1623,7 @@
     "name": "toast",
     "type": "registry:ui",
     "dependencies": ["@base-ui/react"],
-    "registryDependencies": ["button"],
+    "registryDependencies": ["button", "compose-class-name"],
     "files": [
       {
         "path": "ui/toast.tsx",
@@ -1619,6 +1643,7 @@
   {
     "name": "toggle",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "files": [
       {
         "path": "ui/toggle.tsx",
@@ -1648,7 +1673,7 @@
   {
     "name": "toggle-group",
     "type": "registry:ui",
-    "registryDependencies": ["toggle"],
+    "registryDependencies": ["toggle", "compose-class-name"],
     "files": [
       {
         "path": "ui/toggle-group.tsx",
@@ -1678,6 +1703,7 @@
   {
     "name": "tooltip",
     "type": "registry:ui",
+    "registryDependencies": ["compose-class-name"],
     "docs": "The `tooltip` component has been added. Remember to wrap your app with the `TooltipProvider` component.\n\n```tsx title=\"app/layout.tsx\"\nimport { TooltipProvider } from \"@/components/ui/tooltip\"\n\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang=\"en\">\n      <body>\n        <TooltipProvider>{children}</TooltipProvider>\n      </body>\n    </html>\n  )\n}\n```\n",
     "files": [
       {

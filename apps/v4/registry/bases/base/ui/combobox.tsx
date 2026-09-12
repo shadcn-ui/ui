@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { Combobox as ComboboxPrimitive } from "@base-ui/react"
-import { cn } from "cn"
 
+import { cn } from "@/lib/compose-class-name"
 import { Button } from "@/registry/bases/base/ui/button"
 import {
   InputGroup,
@@ -75,8 +75,14 @@ function ComboboxInput({
   showClear?: boolean
 }) {
   return (
-    <InputGroup className={cn("cn-combobox-input w-auto", className)}>
+    <InputGroup
+      className={cn(
+        "cn-combobox-input w-auto",
+        typeof className === "function" ? undefined : className
+      )}
+    >
       <ComboboxPrimitive.Input
+        className={typeof className === "function" ? className : undefined}
         render={<InputGroupInput disabled={disabled} />}
         {...props}
       />
