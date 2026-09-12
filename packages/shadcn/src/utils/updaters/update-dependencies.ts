@@ -77,15 +77,19 @@ export async function updateDependencies(
 
   dependenciesSpinner?.start()
 
-  await installWithPackageManager(
-    packageManager,
-    dependencies,
-    devDependencies,
-    config.resolvedPaths.cwd,
-    flag
-  )
-
-  dependenciesSpinner?.succeed()
+  try {
+    await installWithPackageManager(
+      packageManager,
+      dependencies,
+      devDependencies,
+      config.resolvedPaths.cwd,
+      flag
+    )
+    dependenciesSpinner?.succeed()
+  } catch (error) {
+    dependenciesSpinner?.fail("Failed to install dependencies.")
+    throw error
+  }
 }
 
 export async function installDependencies(
@@ -122,7 +126,7 @@ export async function removeDependencies(cwd: string, dependencies: string[]) {
 
   const packageManager = await getPackageManager(cwd)
   if (packageManager === "npm") {
-    await execa("npm", ["uninstall", "--", ...dependencies], { cwd })
+    await execa("npm", ["uninstall", "--", ...dependencies], execaOptions(cwd))
     return
   }
 
@@ -143,7 +147,11 @@ export async function removeDependencies(cwd: string, dependencies: string[]) {
     return
   }
 
-  await execa(packageManager, ["remove", "--", ...dependencies], { cwd })
+  await execa(
+    packageManager,
+    ["remove", "--", ...dependencies],
+    execaOptions(cwd)
+  )
 }
 
 /**
@@ -312,15 +320,19 @@ async function installWithPackageManager(
   assertSafeDependencies(devDependencies)
 
   if (dependencies?.length) {
-    await execa(packageManager, ["add", "--", ...dependencies], {
-      cwd,
-    })
+    await execa(
+      packageManager,
+      ["add", "--", ...dependencies],
+      execaOptions(cwd)
+    )
   }
 
   if (devDependencies?.length) {
-    await execa(packageManager, ["add", "-D", "--", ...devDependencies], {
-      cwd,
-    })
+    await execa(
+      packageManager,
+      ["add", "-D", "--", ...devDependencies],
+      execaOptions(cwd)
+    )
   }
 }
 
@@ -337,7 +349,7 @@ async function installWithNpm(
     await execa(
       "npm",
       ["install", ...(flag ? [`--${flag}`] : []), "--", ...dependencies],
-      { cwd }
+      execaOptions(cwd)
     )
   }
 
@@ -351,7 +363,7 @@ async function installWithNpm(
         "--",
         ...devDependencies,
       ],
-      { cwd }
+      execaOptions(cwd)
     )
   }
 }
@@ -362,16 +374,18 @@ async function installWithDeno(
   cwd: string
 ) {
   if (dependencies?.length) {
-    await execa("deno", ["add", ...dependencies.map((dep) => `npm:${dep}`)], {
-      cwd,
-    })
+    await execa(
+      "deno",
+      ["add", ...dependencies.map((dep) => `npm:${dep}`)],
+      execaOptions(cwd)
+    )
   }
 
   if (devDependencies?.length) {
     await execa(
       "deno",
       ["add", "-D", ...devDependencies.map((dep) => `npm:${dep}`)],
-      { cwd }
+      execaOptions(cwd)
     )
   }
 }
@@ -385,12 +399,23 @@ async function installWithExpo(
   assertSafeDependencies(devDependencies)
 
   if (dependencies.length) {
-    await execa("npx", ["expo", "install", "--", ...dependencies], { cwd })
+    await execa(
+      "npx",
+      ["expo", "install", "--", ...dependencies],
+      execaOptions(cwd)
+    )
   }
 
   if (devDependencies.length) {
-    await execa("npx", ["expo", "install", "-- -D", "--", ...devDependencies], {
-      cwd,
-    })
+    await execa(
+      "npx",
+      ["expo", "install", "-- -D", "--", ...devDependencies],
+      execaOptions(cwd)
+    )
   }
+}
+
+function execaOptions(cwd: string) {
+  // Ignore stdin so a 404 or auth prompt cannot block the spinner forever.
+  return { cwd, stdin: "ignore" as const }
 }
