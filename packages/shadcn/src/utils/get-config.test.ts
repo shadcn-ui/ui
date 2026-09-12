@@ -7,6 +7,7 @@ import { describe, expect, it } from "vitest"
 
 import {
   createConfig,
+  findPackageRoot,
   getBase,
   getConfig,
   getRawConfig,
@@ -468,6 +469,70 @@ describe("getConfig", () => {
     })
   })
 })
+
+describe("findPackageRoot", () => {
+  it("does not match a sibling directory whose name is a string prefix of the target directory", async () => {
+    const tempDir = await fs.mkdtemp(
+      path.join(os.tmpdir(), "shadcn-find-package-root-")
+    )
+
+    try {
+      // Sibling directory that shares a name *prefix* with the real
+      // project directory, but is not an ancestor of it.
+      await fs.ensureDir(path.join(tempDir, "react-demo"))
+      await fs.writeJson(path.join(tempDir, "react-demo", "package.json"), {
+        name: "react-demo",
+      })
+
+      await fs.ensureDir(
+        path.join(tempDir, "react-demo2", "src", "components", "ui")
+      )
+      await fs.writeJson(path.join(tempDir, "react-demo2", "package.json"), {
+        name: "react-demo2",
+      })
+
+      const resolvedPath = path.join(
+        tempDir,
+        "react-demo2",
+        "src",
+        "components",
+        "ui"
+      )
+
+      expect(await findPackageRoot(tempDir, resolvedPath)).toBe(
+        path.join(tempDir, "react-demo2")
+      )
+    } finally {
+      await fs.remove(tempDir)
+    }
+  })
+
+  it("still resolves a normal nested monorepo package", async () => {
+    const tempDir = await fs.mkdtemp(
+      path.join(os.tmpdir(), "shadcn-find-package-root-")
+    )
+
+    try {
+      await fs.writeJson(path.join(tempDir, "package.json"), {
+        name: "root",
+      })
+      await fs.ensureDir(path.join(tempDir, "packages", "ui", "src"))
+      await fs.writeJson(
+        path.join(tempDir, "packages", "ui", "package.json"),
+        { name: "ui" }
+      )
+
+      const resolvedPath = path.join(tempDir, "packages", "ui", "src")
+
+      expect(await findPackageRoot(tempDir, resolvedPath)).toBe(
+        path.join(tempDir, "packages", "ui")
+      )
+    } finally {
+      await fs.remove(tempDir)
+    }
+  })
+})
+
 
 describe("getWorkspaceConfig", () => {
   it("get workspace config resolves cross-package aliases without tsconfig paths", async () => {
