@@ -8,6 +8,9 @@ updates:
       deps:
         applies-to: "version-updates"
         update-types: ["minor", "patch"]
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "npm"
     directory: "/templates/astro-app"
     schedule:
@@ -16,6 +19,9 @@ updates:
       deps:
         applies-to: "version-updates"
         update-types: ["minor", "patch"]
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "npm"
     directory: "/templates/astro-monorepo"
     schedule:
@@ -24,6 +30,9 @@ updates:
       deps:
         applies-to: "version-updates"
         update-types: ["minor", "patch"]
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "npm"
     directory: "/templates/next-app"
     schedule:
@@ -32,6 +41,9 @@ updates:
       deps:
         applies-to: "version-updates"
         update-types: ["minor", "patch"]
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "npm"
     directory: "/templates/next-monorepo"
     schedule:
@@ -40,6 +52,9 @@ updates:
       deps:
         applies-to: "version-updates"
         update-types: ["minor", "patch"]
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "npm"
     directory: "/templates/react-router-app"
     schedule:
@@ -48,6 +63,9 @@ updates:
       deps:
         applies-to: "version-updates"
         update-types: ["minor", "patch"]
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "npm"
     directory: "/templates/react-router-monorepo"
     schedule:
@@ -56,6 +74,9 @@ updates:
       deps:
         applies-to: "version-updates"
         update-types: ["minor", "patch"]
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "npm"
     directory: "/templates/start-app"
     schedule:
@@ -64,6 +85,9 @@ updates:
       deps:
         applies-to: "version-updates"
         update-types: ["minor", "patch"]
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "npm"
     directory: "/templates/start-monorepo"
     schedule:
@@ -72,6 +96,9 @@ updates:
       deps:
         applies-to: "version-updates"
         update-types: ["minor", "patch"]
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "npm"
     directory: "/templates/vite-app"
     schedule:
@@ -80,6 +107,9 @@ updates:
       deps:
         applies-to: "version-updates"
         update-types: ["minor", "patch"]
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "npm"
     directory: "/templates/vite-monorepo"
     schedule:
@@ -88,3 +118,6 @@ updates:
       deps:
         applies-to: "version-updates"
         update-types: ["minor", "patch"]
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
