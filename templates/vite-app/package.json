@@ -29,7 +29,7 @@
     "globals": "^17",
     "prettier": "^3.8.3",
     "prettier-plugin-tailwindcss": "^0.8.0",
-    "typescript": "~6",
+    "typescript": "~7",
     "typescript-eslint": "^8",
     "vite": "^8"
   }
