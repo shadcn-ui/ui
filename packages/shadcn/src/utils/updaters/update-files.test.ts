@@ -2108,10 +2108,10 @@ DATABASE_URL=postgres://localhost:5432/mydb`,
         "filesCreated": [
           "custom/my-button.tsx",
         ],
-        "filesSkipped": [],
-        "filesUpdated": [
+        "filesSkipped": [
           "src/lib/utils.ts",
         ],
+        "filesUpdated": [],
       }
     `)
   })
