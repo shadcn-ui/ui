@@ -17,7 +17,7 @@
     "@eslint/js": "^10",
     "@tailwindcss/vite": "^4",
     "@turbo/gen": "^2.9.15",
-    "@types/node": "^24",
+    "@types/node": "^26",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^10",
