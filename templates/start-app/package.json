@@ -40,6 +40,6 @@
     "prettier-plugin-tailwindcss": "^0.8.0",
     "typescript": "^6",
     "vite": "^8",
-    "vitest": "^4"
+    "vitest": "^5"
   }
 }
