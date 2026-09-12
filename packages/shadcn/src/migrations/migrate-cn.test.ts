@@ -972,6 +972,29 @@ export const classes = clsx("flex")
     expect(removeDependencies).not.toHaveBeenCalled()
   })
 
+  it("does not migrate files ignored by .gitignore", async () => {
+    const source = `import { clsx } from "clsx"
+
+export const classes = clsx("flex")
+`
+    await setupProject({
+      source,
+      dependencies: { clsx: "^2.1.1" },
+    })
+    await fs.mkdir(path.join(cwd, "ignored"), { recursive: true })
+    await fs.writeFile(path.join(cwd, ".gitignore"), "ignored/\n")
+    await fs.writeFile(path.join(cwd, "ignored/classes.ts"), source)
+
+    await migrateCn({ cwd, yes: true })
+
+    expect(
+      (await fs.readFile(path.join(cwd, "src/classes.ts"), "utf-8")).trim()
+    ).toBe('import { clsx } from "cn";\n\nexport const classes = clsx("flex")')
+    expect(
+      await fs.readFile(path.join(cwd, "ignored/classes.ts"), "utf-8")
+    ).toBe(source)
+  })
+
   it("throws when an explicit glob matches no files", async () => {
     await setupProject({
       source: `export const classes = "flex"
