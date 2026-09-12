@@ -54,7 +54,8 @@
 }
 
 @custom-variant data-selected {
-  &:where([data-selected="true"]) {
+  &:where([data-state="selected"]),
+  &:where([data-selected]:not([data-selected="false"])) {
     @slot;
   }
 }
@@ -126,12 +127,18 @@
       --scroll-fade-t: 0px;
     }
     to {
-      --scroll-fade-t: var(--_scroll-fade-size-t, var(--scroll-fade-size, min(12%, calc(var(--spacing) * 10))));
+      --scroll-fade-t: var(
+        --_scroll-fade-size-t,
+        var(--scroll-fade-size, min(12%, calc(var(--spacing) * 10)))
+      );
     }
   }
   @keyframes scroll-fade-reveal-b {
     from {
-      --scroll-fade-b: var(--_scroll-fade-size-b, var(--scroll-fade-size, min(12%, calc(var(--spacing) * 10))));
+      --scroll-fade-b: var(
+        --_scroll-fade-size-b,
+        var(--scroll-fade-size, min(12%, calc(var(--spacing) * 10)))
+      );
     }
     to {
       --scroll-fade-b: 0px;
@@ -142,12 +149,18 @@
       --scroll-fade-s: 0px;
     }
     to {
-      --scroll-fade-s: var(--_scroll-fade-size-s, var(--scroll-fade-size, min(12%, calc(var(--spacing) * 10))));
+      --scroll-fade-s: var(
+        --_scroll-fade-size-s,
+        var(--scroll-fade-size, min(12%, calc(var(--spacing) * 10)))
+      );
     }
   }
   @keyframes scroll-fade-reveal-e {
     from {
-      --scroll-fade-e: var(--_scroll-fade-size-e, var(--scroll-fade-size, min(12%, calc(var(--spacing) * 10))));
+      --scroll-fade-e: var(
+        --_scroll-fade-size-e,
+        var(--scroll-fade-size, min(12%, calc(var(--spacing) * 10)))
+      );
     }
     to {
       --scroll-fade-e: 0px;

@@ -1,0 +1,167 @@
+---
+title: Select
+description: Displays a list of options for the user to pick from—triggered by a button.
+base: ark
+component: true
+featured: true
+links:
+  doc: https://ark-ui.com/docs/components/select
+  api: https://ark-ui.com/docs/components/select#api-reference
+---
+
+<ComponentPreview styleName="ark-nova" name="select-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add select
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="select"
+  title="components/ui/select.tsx"
+  styleName="ark-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  createListCollection,
+  Select,
+  SelectClearTrigger,
+  SelectContent,
+  SelectControl,
+  SelectHiddenSelect,
+  SelectIndicator,
+  SelectIndicatorGroup,
+  SelectItem,
+  SelectItemGroup,
+  SelectItemGroupLabel,
+  SelectItemIndicator,
+  SelectItemText,
+  SelectPositioner,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+```
+
+```tsx showLineNumbers
+const frameworks = createListCollection({
+  items: [
+    { label: "React", value: "react" },
+    { label: "Vue", value: "vue" },
+    { label: "Svelte", value: "svelte" },
+  ],
+})
+
+<Select collection={frameworks}>
+  <SelectHiddenSelect />
+  <SelectControl>
+    <SelectTrigger>
+      <SelectValue placeholder="Select a framework" />
+    </SelectTrigger>
+    <SelectIndicatorGroup>
+      <SelectClearTrigger />
+      <SelectIndicator />
+    </SelectIndicatorGroup>
+  </SelectControl>
+  <SelectPositioner>
+    <SelectContent>
+      <SelectItemGroup>
+        <SelectItemGroupLabel>Frameworks</SelectItemGroupLabel>
+        {frameworks.items.map((item) => (
+          <SelectItem key={item.value} item={item}>
+            <SelectItemText>{item.label}</SelectItemText>
+            <SelectItemIndicator />
+          </SelectItem>
+        ))}
+      </SelectItemGroup>
+    </SelectContent>
+  </SelectPositioner>
+</Select>
+```
+
+## Examples
+
+### Positioning
+
+Use the `positioning` prop on `Select` to control dropdown placement (e.g. `top`, `bottom`).
+
+<ComponentPreview styleName="ark-nova" name="select-align-item" />
+
+### Groups
+
+Use `SelectItemGroup`, `SelectItemGroupLabel` to organize items. Use `groupBy` in `createListCollection` for automatic grouping.
+
+<ComponentPreview styleName="ark-nova" name="select-groups" />
+
+### Scrollable
+
+A select with many items that scrolls.
+
+<ComponentPreview styleName="ark-nova" name="select-scrollable" />
+
+### Disabled
+
+<ComponentPreview styleName="ark-nova" name="select-disabled" />
+
+### Invalid
+
+Pass the `invalid` prop to the `Select` root to show an error state.
+
+```tsx showLineNumbers /invalid/
+<Select collection={items} invalid>
+  <SelectControl>
+    <SelectTrigger>
+      <SelectValue placeholder="Select" />
+    </SelectTrigger>
+    <SelectIndicatorGroup>
+      <SelectIndicator />
+    </SelectIndicatorGroup>
+  </SelectControl>
+  ...
+</Select>
+```
+
+<ComponentPreview styleName="ark-nova" name="select-invalid" />
+
+## RTL
+
+To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview styleName="ark-nova" name="select-rtl" direction="rtl" />
+
+## API Reference
+
+See the [Ark UI Select](https://ark-ui.com/docs/components/select#api-reference) documentation.
