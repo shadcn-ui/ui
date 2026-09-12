@@ -161,6 +161,18 @@ Use the `AlertDialogAction` component to add a destructive action button to the 
   previewClassName="h-56"
 />
 
+## Nested Alert Dialog Backdrops
+
+Base UI does not render backdrops for nested alert dialogs by default. Pass
+`forceRender` through `overlayProps` to render a backdrop for a nested alert
+dialog.
+
+```tsx showLineNumbers
+<AlertDialogContent overlayProps={{ forceRender: true }}>
+  {/* Nested alert dialog content */}
+</AlertDialogContent>
+```
+
 ## RTL
 
 To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
