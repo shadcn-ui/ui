@@ -28,6 +28,7 @@ const chartTypes = [
   "pie",
   "radar",
   "radial",
+  "scatter",
   "tooltip",
 ] as const
 type ChartType = (typeof chartTypes)[number]
