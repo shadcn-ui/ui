@@ -1,4 +1,5 @@
 import { createHash } from "crypto"
+import { promises as fs } from "fs"
 import path from "path"
 import { isGitHubItemAddress, resolveItemAddress } from "@/src/registry/address"
 import {
@@ -377,8 +378,18 @@ export async function resolveRegistryTree(
       font: item.font!,
     }))
 
+  const dependencies = deepmerge.all(
+    payload.map((item) => item.dependencies ?? [])
+  ) as string[]
+
+  // Registry components import `cn`, but projects with an existing utility
+  // module should use that implementation rather than install the package.
+  // Keep the dependency when the configured utility itself still re-exports
+  // `cn` from the package (the default initialized-project path).
   const parsed = registryResolvedItemsTreeSchema.parse({
-    dependencies: deepmerge.all(payload.map((item) => item.dependencies ?? [])),
+    dependencies: (await shouldSkipCnDependency(config))
+      ? dependencies.filter((dependency) => dependency !== "cn")
+      : dependencies,
     devDependencies: deepmerge.all(
       payload.map((item) => item.devDependencies ?? [])
     ),
@@ -395,6 +406,35 @@ export async function resolveRegistryTree(
   }
 
   return parsed
+}
+
+async function shouldSkipCnDependency(config: Config) {
+  const utilsPath = config.resolvedPaths?.utils
+  if (!utilsPath) {
+    return false
+  }
+
+  const candidates = [
+    utilsPath,
+    ...[".ts", ".tsx", ".js", ".jsx"].map((extension) =>
+      utilsPath.endsWith(extension) ? utilsPath : `${utilsPath}${extension}`
+    ),
+    ...["index.ts", "index.tsx", "index.js", "index.jsx"].map((filename) =>
+      path.join(utilsPath, filename)
+    ),
+  ]
+
+  for (const candidate of candidates) {
+    try {
+      const content = await fs.readFile(candidate, "utf8")
+      return !/\b(?:from|import)\s*["']cn(?:\/[^"']*)?["']/.test(content)
+    } catch {
+      // Alias resolution can produce an extensionless path. Try the next
+      // supported source-file shape before retaining the dependency.
+    }
+  }
+
+  return false
 }
 
 async function resolveDependenciesRecursively(

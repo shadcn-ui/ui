@@ -443,6 +443,109 @@ describe("resolveRegistryTree universal validation", () => {
   })
 })
 
+describe("resolveRegistryTree cn dependency", () => {
+  it("omits cn when the configured utility does not import the package", async () => {
+    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-cn-alias-"))
+    const utilsPath = path.join(tempDir, "lib", "utils.ts")
+    const itemUrl = "https://example.com/button.json"
+    const mockServer = setupServer(
+      http.get(itemUrl, () =>
+        HttpResponse.json({
+          name: "button",
+          type: "registry:ui",
+          files: [
+            {
+              path: "components/ui/button.tsx",
+              type: "registry:ui",
+              content:
+                'import { cn } from "cn"\nexport function Button() { return cn("button") }',
+            },
+          ],
+          dependencies: ["cn", "class-variance-authority"],
+        })
+      )
+    )
+
+    await fs.mkdir(path.dirname(utilsPath), { recursive: true })
+    await fs.writeFile(
+      utilsPath,
+      'export function cn(...inputs: string[]) { return inputs.join(" ") }\n'
+    )
+    mockServer.listen({ onUnhandledRequest: "bypass" })
+
+    try {
+      const result = await resolveRegistryTree(
+        [itemUrl],
+        createConfig({
+          aliases: {
+            components: "./components",
+            utils: "./lib/utils",
+            ui: "./components/ui",
+          },
+          resolvedPaths: {
+            cwd: tempDir,
+            utils: utilsPath,
+          },
+        })
+      )
+
+      expect(result?.dependencies).toEqual(["class-variance-authority"])
+    } finally {
+      mockServer.close()
+      await fs.rm(tempDir, { recursive: true, force: true })
+    }
+  })
+
+  it("keeps cn when the configured utility re-exports the package", async () => {
+    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-cn-package-"))
+    const utilsPath = path.join(tempDir, "lib", "utils.ts")
+    const itemUrl = "https://example.com/button-with-cn.json"
+    const mockServer = setupServer(
+      http.get(itemUrl, () =>
+        HttpResponse.json({
+          name: "button",
+          type: "registry:ui",
+          files: [
+            {
+              path: "components/ui/button.tsx",
+              type: "registry:ui",
+              content:
+                'import { cn } from "cn"\nexport function Button() { return cn("button") }',
+            },
+          ],
+          dependencies: ["cn"],
+        })
+      )
+    )
+
+    await fs.mkdir(path.dirname(utilsPath), { recursive: true })
+    await fs.writeFile(utilsPath, 'export { cn } from "cn"\n')
+    mockServer.listen({ onUnhandledRequest: "bypass" })
+
+    try {
+      const result = await resolveRegistryTree(
+        [itemUrl],
+        createConfig({
+          aliases: {
+            components: "./components",
+            utils: "./lib/utils",
+            ui: "./components/ui",
+          },
+          resolvedPaths: {
+            cwd: tempDir,
+            utils: utilsPath,
+          },
+        })
+      )
+
+      expect(result?.dependencies).toEqual(["cn"])
+    } finally {
+      mockServer.close()
+      await fs.rm(tempDir, { recursive: true, force: true })
+    }
+  })
+})
+
 describe("resolveRegistryItems with URL dependencies", () => {
   it("should resolve URL dependencies from local files", async () => {
     const dependencyUrl = "https://example.com/dependency.json"

@@ -716,7 +716,7 @@ it.each([
     },
   },
 ])(
-  "leaves the cn package import untouched: $name",
+  "rewrites the cn package import to the configured utils alias: $name",
   async ({ aliases, isRemote }) => {
     const result = await transform({
       filename: "test.ts",
@@ -730,7 +730,38 @@ import { Button } from "@/registry/new-york/ui/button"
       isRemote,
     })
 
-    expect(result).toContain(`import { cn } from "cn"`)
-    expect(result).not.toContain("lib/utils")
+    expect(result).toContain(`import { cn } from "${aliases.utils}"`)
+    expect(result).not.toContain(`from "cn"`)
   }
 )
+
+it("leaves cn package imports without a configured utils alias untouched", async () => {
+  const result = await transform({
+    filename: "test.ts",
+    raw: `import { cn } from "cn"\n`,
+    config: {
+      tsx: true,
+      aliases: {
+        components: "@/components",
+      },
+    } as Config,
+  })
+
+  expect(result).toContain(`import { cn } from "cn"`)
+})
+
+it("does not rewrite other cn package exports", async () => {
+  const result = await transform({
+    filename: "test.ts",
+    raw: `import { clsx } from "cn"\n`,
+    config: {
+      tsx: true,
+      aliases: {
+        components: "@/components",
+        utils: "@/lib/utils",
+      },
+    } as Config,
+  })
+
+  expect(result).toContain(`import { clsx } from "cn"`)
+})

@@ -121,7 +121,7 @@ describe("shadcn init - vite-app", () => {
     expect(alertDialogContent).toContain(
       'import { Button } from "#custom/components/ui/button"'
     )
-    expect(alertDialogContent).toContain('import { cn } from "cn"')
+    expect(alertDialogContent).toContain('import { cn } from "@/lib/utils"')
   })
 })
 

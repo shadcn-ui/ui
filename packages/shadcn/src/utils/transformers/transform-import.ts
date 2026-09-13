@@ -21,6 +21,21 @@ export const transformImport: Transformer = async ({
   }
 
   for (const specifier of sourceFile.getImportStringLiterals()) {
+    const importDeclaration = specifier.getFirstAncestorByKind(
+      SyntaxKind.ImportDeclaration
+    )
+    const isCnImport = importDeclaration
+      ?.getNamedImports()
+      .some((namedImport) => namedImport.getName() === "cn")
+
+    // Registry components import `cn` from the package. Route that import
+    // through the project's configured utility module so custom merge
+    // configuration remains in effect after installation.
+    if (specifier.getLiteralValue() === "cn" && isCnImport && utilsAlias) {
+      specifier.setLiteralValue(utilsAlias)
+      continue
+    }
+
     const updated = updateImportAliases(
       specifier.getLiteralValue(),
       config,
@@ -30,13 +45,6 @@ export const transformImport: Transformer = async ({
 
     // Replace `import { cn } from "@/lib/utils"`
     if (utilsImport === updated || updated === "@/lib/utils") {
-      const importDeclaration = specifier.getFirstAncestorByKind(
-        SyntaxKind.ImportDeclaration
-      )
-      const isCnImport = importDeclaration
-        ?.getNamedImports()
-        .some((namedImport) => namedImport.getName() === "cn")
-
       if (!isCnImport || !config.aliases.utils) {
         continue
       }
