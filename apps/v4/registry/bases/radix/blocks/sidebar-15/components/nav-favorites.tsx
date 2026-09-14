@@ -53,6 +53,7 @@ export function NavFavorites({
                     hugeicons="MoreHorizontalCircle01Icon"
                     phosphor="DotsThreeOutlineIcon"
                     remixicon="RiMoreLine"
+                    solar="MenuDotsIcon"
                   />
                   <span className="sr-only">More</span>
                 </SidebarMenuAction>
@@ -70,6 +71,7 @@ export function NavFavorites({
                     phosphor="StarIcon"
                     remixicon="RiStarOffLine"
                     className="text-muted-foreground"
+                    solar="StarOffIcon"
                   />
                   <span>Remove from Favorites</span>
                 </DropdownMenuItem>
@@ -82,6 +84,7 @@ export function NavFavorites({
                     phosphor="LinkIcon"
                     remixicon="RiLinksLine"
                     className="text-muted-foreground"
+                    solar="LinkIcon"
                   />
                   <span>Copy Link</span>
                 </DropdownMenuItem>
@@ -93,6 +96,7 @@ export function NavFavorites({
                     phosphor="ArrowUpRightIcon"
                     remixicon="RiArrowRightUpLine"
                     className="text-muted-foreground"
+                    solar="ArrowRightUpIcon"
                   />
                   <span>Open in New Tab</span>
                 </DropdownMenuItem>
@@ -105,6 +109,7 @@ export function NavFavorites({
                     phosphor="TrashIcon"
                     remixicon="RiDeleteBinLine"
                     className="text-muted-foreground"
+                    solar="TrashBinMinimalisticIcon"
                   />
                   <span>Delete</span>
                 </DropdownMenuItem>
@@ -120,6 +125,7 @@ export function NavFavorites({
               hugeicons="MoreHorizontalCircle01Icon"
               phosphor="DotsThreeOutlineIcon"
               remixicon="RiMoreLine"
+              solar="MenuDotsIcon"
             />
             <span>More</span>
           </SidebarMenuButton>

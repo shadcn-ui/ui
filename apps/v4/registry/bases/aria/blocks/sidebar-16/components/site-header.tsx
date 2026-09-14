@@ -31,6 +31,7 @@ export function SiteHeader() {
             hugeicons="SidebarLeftIcon"
             phosphor="SidebarIcon"
             remixicon="RiLayoutLeftLine"
+            solar="SidebarIcon"
           />
         </Button>
         <Separator

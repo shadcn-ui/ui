@@ -133,6 +133,7 @@ function ToastClose({
           phosphor="XIcon"
           remixicon="RiCloseLine"
           aria-hidden="true"
+          solar="CloseIcon"
         />
       )}
     </ToastPrimitive.Close>
@@ -151,6 +152,7 @@ function ToastIcon({ type }: { type: string | undefined }) {
         phosphor="CheckCircleIcon"
         remixicon="RiCheckboxCircleLine"
         aria-hidden="true"
+        solar="CheckCircleIcon"
       />
     )
   }
@@ -164,6 +166,7 @@ function ToastIcon({ type }: { type: string | undefined }) {
         phosphor="InfoIcon"
         remixicon="RiInformationLine"
         aria-hidden="true"
+        solar="InfoCircleIcon"
       />
     )
   }
@@ -177,6 +180,7 @@ function ToastIcon({ type }: { type: string | undefined }) {
         phosphor="WarningIcon"
         remixicon="RiErrorWarningLine"
         aria-hidden="true"
+        solar="DangerTriangleIcon"
       />
     )
   }
@@ -191,6 +195,7 @@ function ToastIcon({ type }: { type: string | undefined }) {
         remixicon="RiCloseCircleLine"
         className="text-destructive"
         aria-hidden="true"
+        solar="CloseSquareIcon"
       />
     )
   }
@@ -205,6 +210,7 @@ function ToastIcon({ type }: { type: string | undefined }) {
         remixicon="RiLoaderLine"
         className="animate-spin"
         aria-hidden="true"
+        solar="LoaderIcon"
       />
     )
   }

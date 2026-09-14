@@ -141,6 +141,7 @@ function ContextMenuSubTrigger({
         phosphor="CaretRightIcon"
         remixicon="RiArrowRightSLine"
         className="cn-rtl-flip ml-auto"
+        solar="AltArrowRightIcon"
       />
     </ContextMenuPrimitive.SubmenuTrigger>
   )
@@ -187,6 +188,7 @@ function ContextMenuCheckboxItem({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
+            solar="CheckReadIcon"
           />
         </ContextMenuPrimitive.CheckboxItemIndicator>
       </span>
@@ -232,6 +234,7 @@ function ContextMenuRadioItem({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
+            solar="CheckReadIcon"
           />
         </ContextMenuPrimitive.RadioItemIndicator>
       </span>

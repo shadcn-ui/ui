@@ -88,6 +88,7 @@ function CommandInput({
             phosphor="MagnifyingGlassIcon"
             remixicon="RiSearchLine"
             className="cn-command-input-icon"
+            solar="MagnifierIcon"
           />
         </InputGroupAddon>
       </InputGroup>
@@ -172,6 +173,7 @@ function CommandItem({
         phosphor="CheckIcon"
         remixicon="RiCheckLine"
         className="cn-command-item-indicator ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100"
+        solar="CheckReadIcon"
       />
     </CommandPrimitive.Item>
   )

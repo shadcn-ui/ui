@@ -79,6 +79,7 @@ function NavigationMenuTrigger({
         remixicon="RiArrowDownSLine"
         className="cn-navigation-menu-trigger-icon"
         aria-hidden="true"
+        solar="AltArrowDownIcon"
       />
     </NavigationMenuPrimitive.Trigger>
   )

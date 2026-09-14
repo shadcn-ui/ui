@@ -131,6 +131,7 @@ function ButtonGroupWithDropdown() {
                 hugeicons="ArrowDown01Icon"
                 phosphor="CaretDownIcon"
                 remixicon="RiArrowDownSLine"
+                solar="AltArrowDownIcon"
               />
             </Button>
             <DropdownMenu placement="bottom end">
@@ -152,6 +153,7 @@ function ButtonGroupWithDropdown() {
                 hugeicons="ArrowDown01Icon"
                 phosphor="CaretDownIcon"
                 remixicon="RiArrowDownSLine"
+                solar="AltArrowDownIcon"
               />
             </Button>
             <DropdownMenu placement="bottom end" className="w-50">
@@ -163,6 +165,7 @@ function ButtonGroupWithDropdown() {
                     hugeicons="VolumeOffIcon"
                     phosphor="SpeakerSlashIcon"
                     remixicon="RiVolumeMuteLine"
+                    solar="VolumeCrossIcon"
                   />
                   Mute Conversation
                 </DropdownMenuItem>
@@ -173,6 +176,7 @@ function ButtonGroupWithDropdown() {
                     hugeicons="Tick02Icon"
                     phosphor="CheckIcon"
                     remixicon="RiCheckLine"
+                    solar="CheckReadIcon"
                   />
                   Mark as Read
                 </DropdownMenuItem>
@@ -183,6 +187,7 @@ function ButtonGroupWithDropdown() {
                     hugeicons="AlertCircleIcon"
                     phosphor="WarningIcon"
                     remixicon="RiErrorWarningLine"
+                    solar="DangerTriangleIcon"
                   />
                   Report Conversation
                 </DropdownMenuItem>
@@ -193,6 +198,7 @@ function ButtonGroupWithDropdown() {
                     hugeicons="UserRemove01Icon"
                     phosphor="UserMinusIcon"
                     remixicon="RiUserUnfollowLine"
+                    solar="UserBlockRoundedIcon"
                   />
                   Block User
                 </DropdownMenuItem>
@@ -203,6 +209,7 @@ function ButtonGroupWithDropdown() {
                     hugeicons="Share03Icon"
                     phosphor="ShareIcon"
                     remixicon="RiShareLine"
+                    solar="ShareIcon"
                   />
                   Share Conversation
                 </DropdownMenuItem>
@@ -213,6 +220,7 @@ function ButtonGroupWithDropdown() {
                     hugeicons="Copy01Icon"
                     phosphor="CopyIcon"
                     remixicon="RiFileCopyLine"
+                    solar="CopyIcon"
                   />
                   Copy Conversation
                 </DropdownMenuItem>
@@ -226,6 +234,7 @@ function ButtonGroupWithDropdown() {
                     hugeicons="Delete02Icon"
                     phosphor="TrashIcon"
                     remixicon="RiDeleteBinLine"
+                    solar="TrashBin2Icon"
                   />
                   Delete Conversation
                 </DropdownMenuItem>
@@ -272,6 +281,7 @@ function ButtonGroupWithSelect() {
               hugeicons="ArrowRight01Icon"
               phosphor="ArrowRightIcon"
               remixicon="RiArrowRightLine"
+              solar="ArrowRightIcon"
             />
           </Button>
         </ButtonGroup>
@@ -292,6 +302,7 @@ function ButtonGroupWithIcons() {
               hugeicons="FlipHorizontalIcon"
               phosphor="ArrowsHorizontalIcon"
               remixicon="RiArrowLeftRightLine"
+              solar="FlipHorizontalIcon"
             />
           </Button>
           <Button variant="outline">
@@ -301,6 +312,7 @@ function ButtonGroupWithIcons() {
               hugeicons="FlipVerticalIcon"
               phosphor="ArrowsVerticalIcon"
               remixicon="RiArrowUpDownLine"
+              solar="FlipVerticalIcon"
             />
           </Button>
           <Button variant="outline">
@@ -310,6 +322,7 @@ function ButtonGroupWithIcons() {
               hugeicons="Rotate01Icon"
               phosphor="ArrowClockwiseIcon"
               remixicon="RiRefreshLine"
+              solar="RestartIcon"
             />
           </Button>
         </ButtonGroup>
@@ -334,6 +347,7 @@ function ButtonGroupWithInputGroup() {
               hugeicons="Search01Icon"
               phosphor="MagnifyingGlassIcon"
               remixicon="RiSearchLine"
+              solar="MagnifierIcon"
             />
           </InputGroupAddon>
         </InputGroup>
@@ -368,6 +382,7 @@ function ButtonGroupWithFields() {
                 hugeicons="MinusSignIcon"
                 phosphor="MinusIcon"
                 remixicon="RiSubtractLine"
+                solar="MinusIcon"
               />
             </Button>
             <Button variant="outline" size="icon">
@@ -377,6 +392,7 @@ function ButtonGroupWithFields() {
                 hugeicons="PlusSignIcon"
                 phosphor="PlusIcon"
                 remixicon="RiAddLine"
+                solar="AddIcon"
               />
             </Button>
           </ButtonGroup>
@@ -398,6 +414,7 @@ function ButtonGroupWithLike() {
             phosphor="HeartIcon"
             remixicon="RiHeartLine"
             data-icon="inline-start"
+            solar="HeartIcon"
           />{" "}
           Like
         </Button>
@@ -458,6 +475,7 @@ function ButtonGroupNested() {
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
               remixicon="RiAddLine"
+              solar="AddIcon"
             />
           </Button>
         </ButtonGroup>
@@ -473,6 +491,7 @@ function ButtonGroupNested() {
                     hugeicons="AudioWave01Icon"
                     phosphor="MicrophoneIcon"
                     remixicon="RiMicLine"
+                    solar="SoundwaveIcon"
                   />
                 </InputGroupAddon>
               </Focusable>
@@ -497,6 +516,7 @@ function ButtonGroupPagination() {
             phosphor="ArrowLeftIcon"
             remixicon="RiArrowLeftLine"
             data-icon="inline-start"
+            solar="ArrowLeftIcon"
           />
           Previous
         </Button>
@@ -524,6 +544,7 @@ function ButtonGroupPagination() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
       </ButtonGroup>
@@ -560,6 +581,7 @@ function ButtonGroupPaginationSplit() {
               hugeicons="ArrowLeft01Icon"
               phosphor="ArrowLeftIcon"
               remixicon="RiArrowLeftLine"
+              solar="ArrowLeftIcon"
             />
           </Button>
           <Button variant="outline" size="icon-xs">
@@ -569,6 +591,7 @@ function ButtonGroupPaginationSplit() {
               hugeicons="ArrowRight01Icon"
               phosphor="ArrowRightIcon"
               remixicon="RiArrowRightLine"
+              solar="ArrowRightIcon"
             />
           </Button>
         </ButtonGroup>
@@ -589,6 +612,7 @@ function ButtonGroupNavigation() {
               hugeicons="ArrowLeft01Icon"
               phosphor="ArrowLeftIcon"
               remixicon="RiArrowLeftLine"
+              solar="ArrowLeftIcon"
             />
           </Button>
           <Button variant="outline">
@@ -598,6 +622,7 @@ function ButtonGroupNavigation() {
               hugeicons="ArrowRight01Icon"
               phosphor="ArrowRightIcon"
               remixicon="RiArrowRightLine"
+              solar="ArrowRightIcon"
             />
           </Button>
         </ButtonGroup>
@@ -609,6 +634,7 @@ function ButtonGroupNavigation() {
               hugeicons="ArrowLeft01Icon"
               phosphor="ArrowLeftIcon"
               remixicon="RiArrowLeftLine"
+              solar="ArrowLeftIcon"
             />
           </Button>
         </ButtonGroup>
@@ -657,6 +683,7 @@ function ButtonGroupVertical() {
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
               remixicon="RiAddLine"
+              solar="AddIcon"
             />
           </Button>
           <Button variant="outline" size="icon">
@@ -666,6 +693,7 @@ function ButtonGroupVertical() {
               hugeicons="MinusSignIcon"
               phosphor="MinusIcon"
               remixicon="RiSubtractLine"
+              solar="MinusIcon"
             />
           </Button>
         </ButtonGroup>
@@ -686,6 +714,7 @@ function ButtonGroupVerticalNested() {
               hugeicons="Search01Icon"
               phosphor="MagnifyingGlassIcon"
               remixicon="RiSearchLine"
+              solar="MagnifierIcon"
             />
           </Button>
           <Button variant="outline" size="icon">
@@ -695,6 +724,7 @@ function ButtonGroupVerticalNested() {
               hugeicons="Copy01Icon"
               phosphor="CopyIcon"
               remixicon="RiFileCopyLine"
+              solar="CopyIcon"
             />
           </Button>
           <Button variant="outline" size="icon">
@@ -704,6 +734,7 @@ function ButtonGroupVerticalNested() {
               hugeicons="Share03Icon"
               phosphor="ShareIcon"
               remixicon="RiShareLine"
+              solar="ShareIcon"
             />
           </Button>
         </ButtonGroup>
@@ -715,6 +746,7 @@ function ButtonGroupVerticalNested() {
               hugeicons="FlipHorizontalIcon"
               phosphor="ArrowsHorizontalIcon"
               remixicon="RiArrowLeftRightLine"
+              solar="FlipHorizontalIcon"
             />
           </Button>
           <Button variant="outline" size="icon">
@@ -724,6 +756,7 @@ function ButtonGroupVerticalNested() {
               hugeicons="FlipVerticalIcon"
               phosphor="ArrowsVerticalIcon"
               remixicon="RiArrowUpDownLine"
+              solar="FlipVerticalIcon"
             />
           </Button>
           <Button variant="outline" size="icon">
@@ -733,6 +766,7 @@ function ButtonGroupVerticalNested() {
               hugeicons="Rotate01Icon"
               phosphor="ArrowClockwiseIcon"
               remixicon="RiRefreshLine"
+              solar="RestartIcon"
             />
           </Button>
         </ButtonGroup>
@@ -744,6 +778,7 @@ function ButtonGroupVerticalNested() {
               hugeicons="Delete02Icon"
               phosphor="TrashIcon"
               remixicon="RiDeleteBinLine"
+              solar="TrashBin2Icon"
             />
           </Button>
         </ButtonGroup>

@@ -47,6 +47,7 @@ export function Calendars({
                   phosphor="CaretRightIcon"
                   remixicon="RiArrowRightSLine"
                   className="ml-auto transition-transform group-data-open/collapsible:rotate-90"
+                  solar="AltArrowRightIcon"
                 />
               </SidebarGroupLabel>
               <CollapsibleContent>
@@ -66,6 +67,7 @@ export function Calendars({
                               phosphor="CheckIcon"
                               remixicon="RiCheckLine"
                               className="hidden size-3 group-data-[active=true]/calendar-item:block"
+                              solar="CheckReadIcon"
                             />
                           </div>
                           {item}

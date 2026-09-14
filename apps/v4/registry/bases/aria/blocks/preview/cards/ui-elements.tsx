@@ -106,6 +106,7 @@ export function UIElements() {
                     hugeicons="Search01Icon"
                     phosphor="MagnifyingGlassIcon"
                     remixicon="RiSearchLine"
+                    solar="MagnifierIcon"
                   />
                 </InputGroupText>
               </InputGroupAddon>
@@ -166,6 +167,7 @@ export function UIElements() {
                   hugeicons="ArrowUp01Icon"
                   phosphor="CaretUpIcon"
                   remixicon="RiArrowUpSLine"
+                  solar="AltArrowUpIcon"
                 />
               </Button>
               <DropdownMenu placement="top end" className="w-fit">

@@ -41,6 +41,7 @@ export function ReceivingMethod() {
               hugeicons="Cancel01Icon"
               phosphor="XIcon"
               remixicon="RiCloseLine"
+              solar="CloseIcon"
             />
           </Button>
         </CardAction>

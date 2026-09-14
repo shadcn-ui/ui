@@ -238,6 +238,7 @@ function CardMeetingNotes() {
                 phosphor="TextTIcon"
                 remixicon="RiTextWrap"
                 data-icon="inline-start"
+                solar="SubtitlesIcon"
               />
               Transcribe
             </Button>
@@ -310,6 +311,7 @@ function CardWithImage() {
               phosphor="PlusIcon"
               remixicon="RiAddLine"
               data-icon="inline-start"
+              solar="AddIcon"
             />
             Button
           </Button>
@@ -345,6 +347,7 @@ function CardWithImageSmall() {
               phosphor="PlusIcon"
               remixicon="RiAddLine"
               data-icon="inline-start"
+              solar="AddIcon"
             />
             Button
           </Button>

@@ -57,6 +57,7 @@ function MarkerExample() {
             hugeicons="File01Icon"
             phosphor="FileTextIcon"
             remixicon="RiFileTextLine"
+            solar="FileTextIcon"
           />
         </MarkerIcon>
         <MarkerContent>Marker with icon</MarkerContent>
@@ -86,6 +87,7 @@ function MarkerExample() {
             hugeicons="GitBranchIcon"
             phosphor="GitBranchIcon"
             remixicon="RiGitBranchLine"
+            solar="GitBranchIcon"
           />
         </MarkerIcon>
         <MarkerContent>Marker as a link</MarkerContent>
@@ -103,6 +105,7 @@ function MarkerExample() {
             hugeicons="Clock01Icon"
             phosphor="ClockIcon"
             remixicon="RiTimeLine"
+            solar="ClockCircleIcon"
           />
         </MarkerIcon>
         <MarkerContent className="flex-1">
@@ -115,6 +118,7 @@ function MarkerExample() {
             hugeicons="ArrowRight01Icon"
             phosphor="CaretRightIcon"
             remixicon="RiArrowRightSLine"
+            solar="AltArrowRightIcon"
           />
         </MarkerIcon>
       </Marker>
@@ -126,6 +130,7 @@ function MarkerExample() {
             hugeicons="UserCircleIcon"
             phosphor="UserCircleIcon"
             remixicon="RiUserSmileLine"
+            solar="UserCircleIcon"
           />
         </MarkerIcon>
         <MarkerContent>Rhea joined the chat</MarkerContent>
@@ -143,6 +148,7 @@ function MarkerExample() {
             hugeicons="File01Icon"
             phosphor="FileTextIcon"
             remixicon="RiFileTextLine"
+            solar="FileTextIcon"
           />
         </MarkerIcon>
         <MarkerContent>Marker with icon at the top</MarkerContent>
@@ -162,6 +168,7 @@ function MarkerBorder() {
             hugeicons="GitBranchIcon"
             phosphor="GitBranchIcon"
             remixicon="RiGitBranchLine"
+            solar="GitBranchIcon"
           />
         </MarkerIcon>
         <MarkerContent>Switched to release-candidate</MarkerContent>
@@ -174,6 +181,7 @@ function MarkerBorder() {
             hugeicons="Search01Icon"
             phosphor="MagnifyingGlassIcon"
             remixicon="RiSearchLine"
+            solar="MagnifierIcon"
           />
         </MarkerIcon>
         <MarkerContent>Reviewed 8 related files</MarkerContent>
@@ -186,6 +194,7 @@ function MarkerBorder() {
             hugeicons="File01Icon"
             phosphor="FileTextIcon"
             remixicon="RiFileTextLine"
+            solar="FileTextIcon"
           />
         </MarkerIcon>
         <MarkerContent>Opened implementation notes</MarkerContent>
@@ -217,6 +226,7 @@ function MarkerSeparator() {
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
+            solar="CheckReadIcon"
           />
         </MarkerIcon>
         <MarkerContent>Conversation compacted</MarkerContent>
@@ -235,6 +245,7 @@ function MarkerSeparator() {
               hugeicons="GitBranchIcon"
               phosphor="GitBranchIcon"
               remixicon="RiGitBranchLine"
+              solar="GitBranchIcon"
             />
             Button
           </Button>
@@ -258,6 +269,7 @@ function MarkerAccordion() {
                   hugeicons="Clock01Icon"
                   phosphor="ClockIcon"
                   remixicon="RiTimeLine"
+                  solar="ClockCircleIcon"
                 />
               </MarkerIcon>
               <MarkerContent>Worked for 42s</MarkerContent>
@@ -289,6 +301,7 @@ function MarkerDrawer() {
               phosphor="MagnifyingGlassIcon"
               remixicon="RiSearchLine"
               data-icon="inline-start"
+              solar="MagnifierIcon"
             />
             Explored 4 files
           </DrawerTrigger>

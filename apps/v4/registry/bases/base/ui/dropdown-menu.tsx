@@ -126,6 +126,7 @@ function DropdownMenuSubTrigger({
         phosphor="CaretRightIcon"
         remixicon="RiArrowRightSLine"
         className="cn-rtl-flip ml-auto"
+        solar="AltArrowRightIcon"
       />
     </MenuPrimitive.SubmenuTrigger>
   )
@@ -186,6 +187,7 @@ function DropdownMenuCheckboxItem({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
+            solar="CheckReadIcon"
           />
         </MenuPrimitive.CheckboxItemIndicator>
       </span>
@@ -232,6 +234,7 @@ function DropdownMenuRadioItem({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
+            solar="CheckReadIcon"
           />
         </MenuPrimitive.RadioItemIndicator>
       </span>

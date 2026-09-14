@@ -155,6 +155,7 @@ function Calendar({
                 remixicon="RiArrowLeftSLine"
                 className={cn("cn-rtl-flip size-4", className)}
                 {...props}
+                solar="AltArrowLeftIcon"
               />
             )
           }
@@ -169,6 +170,7 @@ function Calendar({
                 remixicon="RiArrowRightSLine"
                 className={cn("cn-rtl-flip size-4", className)}
                 {...props}
+                solar="AltArrowRightIcon"
               />
             )
           }
@@ -182,6 +184,7 @@ function Calendar({
               remixicon="RiArrowDownSLine"
               className={cn("size-4", className)}
               {...props}
+              solar="AltArrowDownIcon"
             />
           )
         },

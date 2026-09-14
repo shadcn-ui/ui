@@ -77,6 +77,7 @@ export function ActivateAgentDialog() {
                   phosphor="CheckCircleIcon"
                   remixicon="RiCheckboxCircleLine"
                   className="size-5 fill-primary text-primary-foreground"
+                  solar="CheckCircleIcon"
                 />
               </ItemMedia>
               <ItemContent>

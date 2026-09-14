@@ -67,6 +67,7 @@ export function AccountAccess() {
             hugeicons="SquareLock02Icon"
             phosphor="LockKeyIcon"
             remixicon="RiLockLine"
+            solar="LockKeyholeIcon"
           />
           Update Security
         </Button>
@@ -79,6 +80,7 @@ export function AccountAccess() {
               phosphor="WarningCircleIcon"
               remixicon="RiErrorWarningLine"
               className="text-destructive"
+              solar="DangerCircleIcon"
             />
           </ItemMedia>
           <ItemContent>
@@ -94,6 +96,7 @@ export function AccountAccess() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             className="size-4"
+            solar="ArrowRightIcon"
           />
         </Item>
       </CardFooter>

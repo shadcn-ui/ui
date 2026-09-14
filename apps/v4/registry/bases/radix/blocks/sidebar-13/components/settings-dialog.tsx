@@ -41,6 +41,7 @@ const data = {
           hugeicons="NotificationIcon"
           phosphor="BellIcon"
           remixicon="RiNotificationLine"
+          solar="BellIcon"
         />
       ),
     },
@@ -53,6 +54,7 @@ const data = {
           hugeicons="Menu09Icon"
           phosphor="ListIcon"
           remixicon="RiMenuLine"
+          solar="HamburgerMenuIcon"
         />
       ),
     },
@@ -65,6 +67,7 @@ const data = {
           hugeicons="HomeIcon"
           phosphor="HouseIcon"
           remixicon="RiHomeLine"
+          solar="HomeIcon"
         />
       ),
     },
@@ -77,6 +80,7 @@ const data = {
           hugeicons="PaintBoardIcon"
           phosphor="PaletteIcon"
           remixicon="RiPaletteLine"
+          solar="PaintBrushIcon"
         />
       ),
     },
@@ -89,6 +93,7 @@ const data = {
           hugeicons="MessageIcon"
           phosphor="ChatCircleIcon"
           remixicon="RiChat1Line"
+          solar="ChatRoundIcon"
         />
       ),
     },
@@ -101,6 +106,7 @@ const data = {
           hugeicons="Globe02Icon"
           phosphor="GlobeIcon"
           remixicon="RiGlobalLine"
+          solar="GlobeIcon"
         />
       ),
     },
@@ -113,6 +119,7 @@ const data = {
           hugeicons="KeyboardIcon"
           phosphor="KeyboardIcon"
           remixicon="RiKeyboardLine"
+          solar="KeyboardIcon"
         />
       ),
     },
@@ -125,6 +132,7 @@ const data = {
           hugeicons="Tick02Icon"
           phosphor="CheckIcon"
           remixicon="RiCheckLine"
+          solar="CheckReadIcon"
         />
       ),
     },
@@ -137,6 +145,7 @@ const data = {
           hugeicons="RecordIcon"
           phosphor="VideoIcon"
           remixicon="RiVideoLine"
+          solar="VideocameraIcon"
         />
       ),
     },
@@ -149,6 +158,7 @@ const data = {
           hugeicons="LinkIcon"
           phosphor="LinkIcon"
           remixicon="RiLinksLine"
+          solar="LinkIcon"
         />
       ),
     },
@@ -161,6 +171,7 @@ const data = {
           hugeicons="ShieldIcon"
           phosphor="LockIcon"
           remixicon="RiLockLine"
+          solar="LockIcon"
         />
       ),
     },
@@ -173,6 +184,7 @@ const data = {
           hugeicons="SettingsIcon"
           phosphor="GearIcon"
           remixicon="RiSettingsLine"
+          solar="SettingsIcon"
         />
       ),
     },

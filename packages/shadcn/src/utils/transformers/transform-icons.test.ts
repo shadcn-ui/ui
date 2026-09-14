@@ -155,6 +155,36 @@ export function Component() {
     })
   })
 
+  describe("Solar Icons library", () => {
+    test("transforms IconPlaceholder to a Linear Solar component", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
+
+export function Component() {
+  return <IconPlaceholder solar="AddIcon" className="size-4" />
+}`,
+            config: {
+              ...testConfig,
+              iconLibrary: "solar",
+            },
+          },
+          [transformIcons]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+        import { AddIcon } from "@solar-icons/react/linear"
+
+        export function Component() {
+          return <AddIcon className="size-4" />
+        }"
+      `)
+    })
+  })
+
   describe("tabler library", () => {
     test("transforms IconPlaceholder to icon component", async () => {
       expect(

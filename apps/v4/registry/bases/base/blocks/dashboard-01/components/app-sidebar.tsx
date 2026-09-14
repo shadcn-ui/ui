@@ -34,6 +34,7 @@ const data = {
           hugeicons="DashboardSquare01Icon"
           phosphor="SquaresFourIcon"
           remixicon="RiDashboardLine"
+          solar="Widget2Icon"
         />
       ),
     },
@@ -47,6 +48,7 @@ const data = {
           hugeicons="Menu01Icon"
           phosphor="ListIcon"
           remixicon="RiListUnordered"
+          solar="ListIcon"
         />
       ),
     },
@@ -60,6 +62,7 @@ const data = {
           hugeicons="ChartHistogramIcon"
           phosphor="ChartBarIcon"
           remixicon="RiBarChartLine"
+          solar="ChartIcon"
         />
       ),
     },
@@ -73,6 +76,7 @@ const data = {
           hugeicons="Folder01Icon"
           phosphor="FolderIcon"
           remixicon="RiFolderLine"
+          solar="FolderIcon"
         />
       ),
     },
@@ -86,6 +90,7 @@ const data = {
           hugeicons="UserGroupIcon"
           phosphor="UsersIcon"
           remixicon="RiGroupLine"
+          solar="UsersGroupRoundedIcon"
         />
       ),
     },
@@ -100,6 +105,7 @@ const data = {
           hugeicons="Camera01Icon"
           phosphor="CameraIcon"
           remixicon="RiCameraLine"
+          solar="CameraIcon"
         />
       ),
       isActive: true,
@@ -124,6 +130,7 @@ const data = {
           hugeicons="File01Icon"
           phosphor="FileTextIcon"
           remixicon="RiFileTextLine"
+          solar="FileTextIcon"
         />
       ),
       url: "#",
@@ -147,6 +154,7 @@ const data = {
           hugeicons="File01Icon"
           phosphor="FileTextIcon"
           remixicon="RiFileTextLine"
+          solar="FileTextIcon"
         />
       ),
       url: "#",
@@ -173,6 +181,7 @@ const data = {
           hugeicons="Settings05Icon"
           phosphor="GearIcon"
           remixicon="RiSettingsLine"
+          solar="SettingsMinimalisticIcon"
         />
       ),
     },
@@ -186,6 +195,7 @@ const data = {
           hugeicons="HelpCircleIcon"
           phosphor="QuestionIcon"
           remixicon="RiQuestionLine"
+          solar="QuestionCircleIcon"
         />
       ),
     },
@@ -199,6 +209,7 @@ const data = {
           hugeicons="SearchIcon"
           phosphor="MagnifyingGlassIcon"
           remixicon="RiSearchLine"
+          solar="MagnifierIcon"
         />
       ),
     },
@@ -214,6 +225,7 @@ const data = {
           hugeicons="Database01Icon"
           phosphor="DatabaseIcon"
           remixicon="RiDatabase2Line"
+          solar="DatabaseIcon"
         />
       ),
     },
@@ -227,6 +239,7 @@ const data = {
           hugeicons="Analytics01Icon"
           phosphor="ChartLineIcon"
           remixicon="RiFileChartLine"
+          solar="FileChartIcon"
         />
       ),
     },
@@ -240,6 +253,7 @@ const data = {
           hugeicons="File01Icon"
           phosphor="FileIcon"
           remixicon="RiFileLine"
+          solar="FileIcon"
         />
       ),
     },
@@ -262,6 +276,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 phosphor="CommandIcon"
                 remixicon="RiCommandLine"
                 className="size-5!"
+                solar="CommandIcon"
               />
               <span className="text-base font-semibold">Acme Inc.</span>
             </SidebarMenuButton>

@@ -11,6 +11,7 @@ const FULL_MAPPING = {
     hugeicons: "Tick02Icon",
     phosphor: "CheckIcon",
     remixicon: "RiCheckLine",
+    solar: "CheckReadIcon",
   },
   ChevronDown: {
     lucide: "ChevronDown",
@@ -19,6 +20,7 @@ const FULL_MAPPING = {
     hugeicons: "ArrowDown01Icon",
     phosphor: "CaretDownIcon",
     remixicon: "RiArrowDownSLine",
+    solar: "AltArrowDownIcon",
   },
 }
 
@@ -419,6 +421,36 @@ describe("migrateIconsFile (cross-library)", () => {
               return <CheckIcon className="size-4" strokeWidth={3} />
             }"
     `)
+  })
+
+  it("should migrate from lucide to solar linear icons", async () => {
+    const input = `
+      import { Check, ChevronDown } from "lucide-react"
+
+      export function Component() {
+        return (
+          <div>
+            <Check className="size-4" />
+            <ChevronDown />
+          </div>
+        )
+      }
+    `
+
+    expect(await migrateIconsFile(input, "lucide", "solar", FULL_MAPPING))
+      .toMatchInlineSnapshot(`
+        "import { CheckReadIcon, AltArrowDownIcon } from "@solar-icons/react/linear";
+
+                    export function Component() {
+                return (
+                  <div>
+                    <CheckReadIcon className="size-4" />
+                    <AltArrowDownIcon />
+                  </div>
+                )
+              }
+            "
+      `)
   })
 
   it("should migrate from phosphor to lucide stripping template defaults", async () => {

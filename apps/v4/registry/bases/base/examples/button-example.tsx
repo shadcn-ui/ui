@@ -102,6 +102,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="xs" variant="secondary">
@@ -113,6 +114,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="xs" variant="outline">
@@ -124,6 +126,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="xs" variant="ghost">
@@ -135,6 +138,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="xs" variant="destructive">
@@ -146,6 +150,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="xs" variant="link">
@@ -157,6 +162,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
       </div>
@@ -170,6 +176,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="sm" variant="secondary">
@@ -181,6 +188,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="sm" variant="outline">
@@ -191,6 +199,7 @@ function ButtonIconRight() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="sm" variant="ghost">
@@ -202,6 +211,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="sm" variant="destructive">
@@ -213,6 +223,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="sm" variant="link">
@@ -224,6 +235,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
       </div>
@@ -237,6 +249,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button variant="secondary">
@@ -248,6 +261,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button variant="outline">
@@ -259,6 +273,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button variant="ghost">
@@ -270,6 +285,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button variant="destructive">
@@ -281,6 +297,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button variant="link">
@@ -292,6 +309,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
       </div>
@@ -305,6 +323,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="lg" variant="secondary">
@@ -316,6 +335,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="lg" variant="outline">
@@ -327,6 +347,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="lg" variant="ghost">
@@ -338,6 +359,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="lg" variant="destructive">
@@ -349,6 +371,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="lg" variant="link">
@@ -360,6 +383,7 @@ function ButtonIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Button>
       </div>
@@ -379,6 +403,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Default
         </Button>
@@ -390,6 +415,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Secondary
         </Button>
@@ -401,6 +427,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Outline
         </Button>
@@ -412,6 +439,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Ghost
         </Button>
@@ -423,6 +451,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Destructive
         </Button>
@@ -434,6 +463,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Link
         </Button>
@@ -447,6 +477,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Default
         </Button>
@@ -458,6 +489,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Secondary
         </Button>
@@ -469,6 +501,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Outline
         </Button>
@@ -480,6 +513,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Ghost
         </Button>
@@ -491,6 +525,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Destructive
         </Button>
@@ -502,6 +537,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Link
         </Button>
@@ -515,6 +551,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Default
         </Button>
@@ -526,6 +563,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Secondary
         </Button>
@@ -537,6 +575,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Outline
         </Button>
@@ -548,6 +587,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Ghost
         </Button>
@@ -559,6 +599,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Destructive
         </Button>
@@ -570,6 +611,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Link
         </Button>
@@ -583,6 +625,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Default
         </Button>
@@ -594,6 +637,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Secondary
         </Button>
@@ -605,6 +649,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Outline
         </Button>
@@ -616,6 +661,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Ghost
         </Button>
@@ -627,6 +673,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Destructive
         </Button>
@@ -638,6 +685,7 @@ function ButtonIconLeft() {
             phosphor="ArrowCircleLeftIcon"
             remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
+            solar="RoundArrowLeftIcon"
           />{" "}
           Link
         </Button>
@@ -657,6 +705,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon-xs" variant="secondary">
@@ -666,6 +715,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon-xs" variant="outline">
@@ -675,6 +725,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon-xs" variant="ghost">
@@ -684,6 +735,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon-xs" variant="destructive">
@@ -693,6 +745,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon-xs" variant="link">
@@ -702,6 +755,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
       </div>
@@ -713,6 +767,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon-sm" variant="secondary">
@@ -722,6 +777,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon-sm" variant="outline">
@@ -731,6 +787,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon-sm" variant="ghost">
@@ -740,6 +797,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon-sm" variant="destructive">
@@ -749,6 +807,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon-sm" variant="link">
@@ -758,6 +817,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
       </div>
@@ -769,6 +829,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon" variant="secondary">
@@ -778,6 +839,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon" variant="outline">
@@ -787,6 +849,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon" variant="ghost">
@@ -796,6 +859,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon" variant="destructive">
@@ -805,6 +869,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon" variant="link">
@@ -814,6 +879,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
       </div>
@@ -825,6 +891,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon-lg" variant="secondary">
@@ -834,6 +901,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon-lg" variant="outline">
@@ -843,6 +911,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon-lg" variant="ghost">
@@ -852,6 +921,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon-lg" variant="destructive">
@@ -861,6 +931,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
         <Button size="icon-lg" variant="link">
@@ -870,6 +941,7 @@ function ButtonIconOnly() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Button>
       </div>
@@ -892,6 +964,7 @@ function ButtonExamples() {
               phosphor="ArrowRightIcon"
               remixicon="RiArrowRightLine"
               data-icon="inline-end"
+              solar="ArrowRightIcon"
             />
           </Button>
         </div>
@@ -905,6 +978,7 @@ function ButtonExamples() {
               phosphor="ArrowRightIcon"
               remixicon="RiArrowRightLine"
               data-icon="inline-end"
+              solar="ArrowRightIcon"
             />
           </Button>
         </div>

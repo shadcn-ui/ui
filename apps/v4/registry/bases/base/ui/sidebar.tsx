@@ -278,6 +278,7 @@ function SidebarTrigger({
         phosphor="SidebarIcon"
         remixicon="RiSideBarLine"
         className="cn-rtl-flip"
+        solar="SidebarIcon"
       />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
