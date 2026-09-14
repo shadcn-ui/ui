@@ -127,6 +127,13 @@
     "logo": "<svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='m12 3 9 18h-3.5l-1.8-3.8H8.3L6.5 21H3L12 3Zm0 6.5-2.2 4.7h4.4L12 9.5Z' fill='currentColor'/></svg>"
   },
   {
+    "name": "@cojeev",
+    "homepage": "https://000h.cojeev.com",
+    "url": "https://000h.cojeev.com/r/{name}.json",
+    "description": "Expressive React components with organic shapes, purposeful motion, and source you can make your own.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='var(--foreground)'><path fill-rule='evenodd' d='M58 9C77 10 87 27 86 45C84 66 63 87 43 86C25 85 10 71 10 52C10 33 36 7 58 9ZM56 30C47 27 35 36 31 47C26 60 32 70 40 69C52 68 64 54 65 43C66 37 62 32 56 30Z'/></svg>"
+  },
+  {
     "name": "@designali",
     "homepage": "https://designali.com",
     "url": "https://designali.com/r/{name}.json",
