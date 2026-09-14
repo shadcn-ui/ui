@@ -1976,7 +1976,7 @@
     "name": "@toggles",
     "homepage": "https://toggles.dev",
     "url": "https://toggles.dev/r/{name}.json",
-    "description": "Open-source animated theme toggle components for React, built with Tailwind CSS.",
+    "description": "Animated dark/light mode toggles",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><g fill='none' stroke='currentColor' stroke-linecap='round' stroke-width='1.2'><path d='M15 6v2.5M8.6 8.6l1.8 1.8M6 15h2.5M8.6 21.4l1.8-1.8M15 24v-2.5'/><circle cx='15' cy='15' r='6'/></g><circle cx='20' cy='15' r='6.5' fill='currentColor'/></svg>"
   },
   {
