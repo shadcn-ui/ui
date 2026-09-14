@@ -998,6 +998,13 @@
     "logo": "<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M10.5 12.75H3L6 9.75H9L15.75 3H20.25L10.5 12.75Z' fill='currentColor'/><path d='M11.25 15V13.5L21 3.75V5.25L11.25 15Z' fill='currentColor'/><path d='M11.25 18V16.5L21 6.75V8.25L11.25 18Z' fill='currentColor'/><path d='M11.25 21V19.5L15 15.75V17.25L11.25 21Z' fill='currentColor'/></svg>"
   },
   {
+    "name": "@layish",
+    "homepage": "https://layish.vercel.app",
+    "url": "https://layish.vercel.app/r/{name}.json",
+    "description": "Composed shadcn blocks. Ask wraps Questionnaire with review, cancel, auto-advance, and HITL results for AI SDK addToolOutput.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='currentColor'/><path d='M10 8h4v12h8v4H10z' fill='var(--background)'/></svg>"
+  },
+  {
     "name": "@lens-blocks",
     "homepage": "https://lensblocks.com",
     "url": "https://lensblocks.com/r/{name}.json",
