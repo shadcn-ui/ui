@@ -1976,7 +1976,8 @@
     "name": "@theme-toggles",
     "homepage": "https://toggles.dev",
     "url": "https://toggles.dev/r/{name}.json",
-    "description": "Open-source animated theme toggle components for React, built with Tailwind CSS."
+    "description": "Open-source animated theme toggle components for React, built with Tailwind CSS.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='var(--foreground)'/><g transform='translate(4 4)' stroke='var(--background)' stroke-linecap='round'><circle cx='12' cy='12' r='5' fill='var(--background)'/><path d='M12 1.4v2.4M20.3 3.7l-2.5 2.5M22.6 12h-2.4M12 22.6v-2.4M1.4 12h2.4M20.3 20.3l-2.5-2.5M3.7 20.3l2.5-2.5M3.7 3.7l2.5 2.5' fill='none' stroke-width='2'/></g></svg>"
   },
   {
     "name": "@text-ui",
