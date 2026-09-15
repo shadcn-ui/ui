@@ -1770,6 +1770,13 @@
     "logo": "<svg width='256' height='256' viewBox='0 0 256 256' fill='none' xmlns='http://www.w3.org/2000/svg' class='fill-none!' stroke='var(--foreground)'><rect width='256' height='256' rx='68' fill='var(--background)' stroke='none'/><path d='M220 128.5C220 179.034 179.034 220 128.5 220C77.9659 220 37 179.034 37 128.5C37 77.9659 77.9659 37 128.5 37C179.034 37 220 77.9659 220 128.5Z' class='fill-none!' stroke-width='16'/><path d='M178.219 130.589L130.589 178.219' class='fill-none!' stroke-width='16' stroke-linecap='round' stroke-linejoin='round'/><path d='M169.027 78.7808L78.7809 169.027' class='fill-none!' stroke-width='16' stroke-linecap='round' stroke-linejoin='round'/><path d='M197.125 196.289L215.425 214.589' class='fill-none!' stroke-width='15' stroke-linecap='round' stroke-linejoin='round'/></svg>"
   },
   {
+    "name": "@simple-ai",
+    "homepage": "https://www.simple-ai.dev",
+    "url": "https://www.simple-ai.dev/r/{name}.json",
+    "description": "Curated agent examples you can copy into your app. Chat page, input, tools, and a worked fold.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' fill='none'><path d='M789.791 252.068C774.259 222.856 737.986 211.767 708.774 227.299C679.563 242.831 668.473 279.102 684.005 308.314L763.197 457.248C778.729 486.46 815.001 497.549 844.213 482.017C873.425 466.485 884.514 430.213 868.982 401.002L789.791 252.068Z' fill='#47B2E4'/><path d='M439.536 224.19C408.933 240.462 397.315 278.46 413.587 309.063L649.95 753.589C666.222 784.192 704.221 795.809 734.824 779.537C765.427 763.266 777.045 725.267 760.773 694.665L524.41 250.138C508.138 219.536 470.139 207.918 439.536 224.19Z' fill='var(--foreground)'/><path d='M158.617 220.763C128.014 237.035 116.396 275.034 132.668 305.636L369.03 750.162C385.302 780.765 423.302 792.382 453.905 776.11C484.508 759.839 496.125 721.84 479.853 691.238L243.491 246.711C227.219 216.109 189.22 204.492 158.617 220.763Z' fill='var(--foreground)'/></svg>"
+  },
+  {
     "name": "@skecher-ui",
     "homepage": "https://skecher-ui.com",
     "url": "https://skecher-ui.com/r/{name}.json",
