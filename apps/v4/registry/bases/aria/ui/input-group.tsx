@@ -2,9 +2,9 @@
 
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "cn"
 import { Group, type GroupProps } from "react-aria-components"
 
-import { cn } from "@/registry/bases/aria/lib/utils"
 import { Button } from "@/registry/bases/aria/ui/button"
 import { Input } from "@/registry/bases/aria/ui/input"
 import { Textarea } from "@/registry/bases/aria/ui/textarea"
