@@ -66,7 +66,11 @@ export function applyCleanup(sourceFile: SourceFile) {
   // Process all JSX className attributes.
   for (const attr of sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute)) {
     const attrName = attr.getNameNode().getText()
-    if (attrName !== "className" && attrName !== "classNames") {
+    if (
+      attrName !== "className" &&
+      attrName !== "classNames" &&
+      !attrName.endsWith("ClassName")
+    ) {
       continue
     }
 
