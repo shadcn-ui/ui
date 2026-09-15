@@ -1,5 +1,7 @@
 "use client"
 
+import * as React from "react"
+import { cn } from "cn"
 import {
   DisclosurePanel as CollapsibleContentPrimitive,
   Disclosure as CollapsiblePrimitive,
@@ -23,9 +25,21 @@ function CollapsibleTrigger({ ...props }: ButtonProps) {
   )
 }
 
-function CollapsibleContent({ ...props }: DisclosurePanelProps) {
+function CollapsibleContent({
+  className,
+  children,
+  ...props
+}: Omit<DisclosurePanelProps, "className" | "children"> & {
+  className?: string
+  children?: React.ReactNode
+}) {
+  // React Aria keeps a collapsed panel in the DOM with hidden="until-found"
+  // (content-visibility: hidden), so the panel still paints its own padding,
+  // border and background. Styles go on an inner wrapper, like AccordionContent.
   return (
-    <CollapsibleContentPrimitive data-slot="collapsible-content" {...props} />
+    <CollapsibleContentPrimitive data-slot="collapsible-content" {...props}>
+      <div className={cn(className)}>{children}</div>
+    </CollapsibleContentPrimitive>
   )
 }
 
