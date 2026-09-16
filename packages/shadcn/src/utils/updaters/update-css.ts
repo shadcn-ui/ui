@@ -10,12 +10,12 @@ import { TailwindVersion } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { spinner } from "@/src/utils/spinner"
 import { transformCssVars } from "@/src/utils/updaters/update-css-vars"
+import { twMerge } from "cn"
 import postcss from "postcss"
 import AtRule from "postcss/lib/at-rule"
 import Declaration from "postcss/lib/declaration"
 import Root from "postcss/lib/root"
 import Rule from "postcss/lib/rule"
-import { twMerge } from "cn"
 import { z } from "zod"
 
 export async function updateCss(
