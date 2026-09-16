@@ -217,6 +217,70 @@ describe("get project info", async () => {
   })
 })
 
+describe("project config overrides", () => {
+  let cwd: string
+
+  beforeEach(async () => {
+    cwd = await fs.mkdtemp(path.join(tmpdir(), "shadcn-project-overrides-"))
+    await fs.mkdir(path.join(cwd, "src"))
+    await fs.writeFile(path.join(cwd, "composer.json"), "{}")
+    await fs.writeFile(path.join(cwd, "vite.config.ts"), "")
+  })
+
+  afterEach(async () => {
+    await fs.rm(cwd, { recursive: true, force: true })
+  })
+
+  it("overrides framework and source directory detection", async () => {
+    await writeComponentsConfig(cwd, {
+      framework: "vite",
+      srcDirectory: false,
+    })
+
+    const projectInfo = await getProjectInfo(cwd)
+
+    expect(projectInfo?.framework).toBe(FRAMEWORKS.vite)
+    expect(projectInfo?.isSrcDir).toBe(false)
+  })
+
+  it("allows framework-specific detection to be disabled", async () => {
+    await writeComponentsConfig(cwd, {
+      framework: "manual",
+    })
+
+    const projectInfo = await getProjectInfo(cwd)
+
+    expect(projectInfo?.framework).toBe(FRAMEWORKS.manual)
+    expect(projectInfo?.isSrcDir).toBe(true)
+  })
+})
+
+async function writeComponentsConfig(
+  cwd: string,
+  project: { framework?: "vite" | "manual"; srcDirectory?: boolean }
+) {
+  await fs.writeFile(
+    path.join(cwd, "components.json"),
+    JSON.stringify({
+      $schema: "https://ui.shadcn.com/schema.json",
+      style: "new-york",
+      rsc: false,
+      tsx: true,
+      tailwind: {
+        config: "",
+        css: "resources/styles.css",
+        baseColor: "zinc",
+        cssVariables: true,
+      },
+      aliases: {
+        components: "@/components",
+        utils: "@/lib/utils",
+      },
+      project,
+    })
+  )
+}
+
 describe("getFrameworkVersion", () => {
   describe("Next.js version detection", () => {
     it.each([

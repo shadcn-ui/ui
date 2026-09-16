@@ -2,7 +2,7 @@ import { promises as fsPromises } from "fs"
 import path from "path"
 import { getShadcnRegistryIndex } from "@/src/registry/api"
 import { SHADCN_URL } from "@/src/registry/constants"
-import { rawConfigSchema } from "@/src/schema"
+import { projectConfigSchema, rawConfigSchema } from "@/src/schema"
 import { Framework, FRAMEWORKS } from "@/src/utils/frameworks"
 import { Config, getConfig, resolveConfigPaths } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
@@ -56,6 +56,7 @@ export async function getProjectInfo(
     tailwindVersion,
     aliasPrefixInfo,
     packageJson,
+    projectConfig,
   ] = await Promise.all([
     fg.glob(
       "**/{next,vite,astro,app}.config.*|gatsby-config.*|composer.json|react-router.config.*",
@@ -73,6 +74,7 @@ export async function getProjectInfo(
     getTailwindVersion(cwd),
     getProjectAliasInfo(cwd),
     getPackageInfo(cwd, false),
+    getProjectConfigOverrides(cwd),
   ])
 
   const isUsingAppDir = await fs.pathExists(
@@ -91,6 +93,16 @@ export async function getProjectInfo(
     aliasPrefix: aliasPrefixInfo.prefix,
   }
 
+  if (projectConfig?.framework !== undefined) {
+    type.framework = FRAMEWORKS[projectConfig.framework]
+    type.isRSC = projectConfig.framework === "next-app"
+    type.frameworkVersion = await getFrameworkVersion(
+      type.framework,
+      packageJson
+    )
+    return applySourceDirectoryOverride(type, projectConfig)
+  }
+
   // Next.js.
   if (configFiles.find((file) => file.startsWith("next.config."))?.length) {
     type.framework = isUsingAppDir
@@ -101,25 +113,25 @@ export async function getProjectInfo(
       type.framework,
       packageJson
     )
-    return type
+    return applySourceDirectoryOverride(type, projectConfig)
   }
 
   // Astro.
   if (configFiles.find((file) => file.startsWith("astro.config."))?.length) {
     type.framework = FRAMEWORKS["astro"]
-    return type
+    return applySourceDirectoryOverride(type, projectConfig)
   }
 
   // Gatsby.
   if (configFiles.find((file) => file.startsWith("gatsby-config."))?.length) {
     type.framework = FRAMEWORKS["gatsby"]
-    return type
+    return applySourceDirectoryOverride(type, projectConfig)
   }
 
   // Laravel.
   if (configFiles.find((file) => file.startsWith("composer.json"))?.length) {
     type.framework = FRAMEWORKS["laravel"]
-    return type
+    return applySourceDirectoryOverride(type, projectConfig)
   }
 
   // Remix.
@@ -129,7 +141,7 @@ export async function getProjectInfo(
     )
   ) {
     type.framework = FRAMEWORKS["remix"]
-    return type
+    return applySourceDirectoryOverride(type, projectConfig)
   }
 
   // TanStack Start.
@@ -140,7 +152,7 @@ export async function getProjectInfo(
     ].find((dep) => dep.startsWith("@tanstack/react-start"))
   ) {
     type.framework = FRAMEWORKS["tanstack-start"]
-    return type
+    return applySourceDirectoryOverride(type, projectConfig)
   }
 
   // React Router.
@@ -148,7 +160,7 @@ export async function getProjectInfo(
     configFiles.find((file) => file.startsWith("react-router.config."))?.length
   ) {
     type.framework = FRAMEWORKS["react-router"]
-    return type
+    return applySourceDirectoryOverride(type, projectConfig)
   }
 
   // Vite.
@@ -156,7 +168,7 @@ export async function getProjectInfo(
   // We'll assume that it got caught by the Remix check above.
   if (configFiles.find((file) => file.startsWith("vite.config."))?.length) {
     type.framework = FRAMEWORKS["vite"]
-    return type
+    return applySourceDirectoryOverride(type, projectConfig)
   }
 
   // Vinxi-based (such as @tanstack/start and @solidjs/solid-start)
@@ -169,17 +181,44 @@ export async function getProjectInfo(
     )
     if (appConfigContents.includes("defineConfig")) {
       type.framework = FRAMEWORKS["vite"]
-      return type
+      return applySourceDirectoryOverride(type, projectConfig)
     }
   }
 
   // Expo.
   if (packageJson?.dependencies?.expo) {
     type.framework = FRAMEWORKS["expo"]
-    return type
+    return applySourceDirectoryOverride(type, projectConfig)
   }
 
-  return type
+  return applySourceDirectoryOverride(type, projectConfig)
+}
+
+async function getProjectConfigOverrides(cwd: string) {
+  const configPath = path.resolve(cwd, "components.json")
+
+  if (!(await fs.pathExists(configPath))) {
+    return null
+  }
+
+  try {
+    const config = await fs.readJson(configPath)
+    const result = projectConfigSchema.safeParse(config.project)
+    return result.success ? result.data : null
+  } catch {
+    return null
+  }
+}
+
+function applySourceDirectoryOverride(
+  projectInfo: ProjectInfo,
+  projectConfig: z.infer<typeof projectConfigSchema> | null
+) {
+  if (projectConfig?.srcDirectory !== undefined) {
+    projectInfo.isSrcDir = projectConfig.srcDirectory
+  }
+
+  return projectInfo
 }
 
 export async function getFrameworkVersion(

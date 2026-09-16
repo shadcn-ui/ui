@@ -138,6 +138,32 @@ Setting this option to `false` allows components to be added as JavaScript with 
 }
 ```
 
+## project
+
+Optional overrides for project structure that the CLI normally detects
+automatically. Most projects should omit this field.
+
+Use `project.framework` when a project contains files from multiple frameworks
+or when framework detection selects the wrong integration. Set it to `manual`
+to disable framework-specific behavior.
+
+Use `project.srcDirectory` when the project has a `src` directory that does not
+contain the frontend source. This controls whether framework-relative registry
+targets are placed under `src`.
+
+For example, a PHP or WordPress project can contain `composer.json` and a
+backend `src` directory while its React application is built by Vite from
+`resources`:
+
+```json title="components.json"
+{
+  "project": {
+    "framework": "vite",
+    "srcDirectory": false
+  }
+}
+```
+
 ## aliases
 
 The CLI uses these values to place generated components in the correct location and rewrite imports.
