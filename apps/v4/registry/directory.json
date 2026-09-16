@@ -1439,8 +1439,8 @@
     "name": "@pantoken",
     "homepage": "https://pantoken.app",
     "url": "https://pantoken.app/r/{name}.json",
-    "description": "Instructure design tokens, themes, React components, and interaction hooks for shadcn/ui.",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' fill='var(--foreground)' viewBox='101.782 121.756 123.284 123.284'> <path d='M222 386V589H331C400 589 442 550 442 487C442 426 400 386 331 386ZM348 267C488 267 581 359 581 488C581 616 488 709 348 709H83V0H221V267Z' transform='translate(100.000 238.000) scale(0.156000 -0.156000)'/> <circle cx='200' cy='225.5' r='13.9' /> </svg>"
+    "description": "InstUI design tokens, themes, components, and interactions.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='101.782 121.756 123.284 123.284'><path fill='#0C1924' d='M222 386V589H331C400 589 442 550 442 487C442 426 400 386 331 386ZM348 267C488 267 581 359 581 488C581 616 488 709 348 709H83V0H221V267Z' transform='translate(100.000 238.000) scale(0.156000 -0.156000)'/><circle cx='200' cy='225.5' r='13.9' fill='#236AA4'/></svg>"
   },
   {
     "name": "@payload-components",
