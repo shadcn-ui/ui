@@ -20,7 +20,7 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
+    "eslint": "^10",
     "tailwindcss": "^4",
     "typescript": "^6"
   },

@@ -30,7 +30,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^6",
-    "eslint": "^9",
+    "eslint": "^10",
     "typescript": "^6",
     "vite": "^8"
   }
