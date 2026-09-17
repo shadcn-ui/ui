@@ -501,6 +501,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'><rect width='1024' height='1024' rx='160' fill='var(--foreground)'/><path fill='var(--background)' d='M304 212H545C680 212 789 321 789 455C789 557 738 646 658 700V421C658 397 639 378 615 378H611C587 378 568 397 568 421V739H541V513C541 488 521 468 496 468H495C470 468 450 488 450 513V739H429V608C429 584 410 565 386 565H381C357 565 338 584 338 608V739H304C288 739 275 726 275 710V241C275 225 288 212 304 212Z'/></svg>"
   },
   {
+    "name": "@data-table-filters",
+    "homepage": "https://data-table.openstatus.dev",
+    "url": "https://data-table.openstatus.dev/r/{name}.json",
+    "description": "Data tables for React and shadcn/ui: faceted filters, sorting, infinite scroll, row detail sheet, and server-side filtering with Drizzle. Built on TanStack Table. Powered by openstatus.",
+    "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"330\" height=\"330\" viewBox=\"0 0 330 330\" fill=\"none\"><g clip-path=\"url(#clip0_1543_179)\"><mask id=\"mask0_1543_179\" style=\"mask-type:alpha\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"330\" height=\"330\"><circle cx=\"165\" cy=\"165\" r=\"165\" fill=\"#D9D9D9\"/></mask><g mask=\"url(#mask0_1543_179)\"><path d=\"M165 330C256.127 330 330 256.127 330 165C330 73.873 256.127 0 165 0C73.873 0 0 73.873 0 165C0 256.127 73.873 330 165 330Z\" fill=\"black\"/><path d=\"M330 96H122V111H330V96Z\" fill=\"white\"/><path d=\"M208 219H0V234H208V219Z\" fill=\"white\"/><circle cx=\"165\" cy=\"165\" r=\"157.5\" stroke=\"white\" stroke-width=\"15\" fill=\"none\"/></g></g><defs><clipPath id=\"clip0_1543_179\"><rect width=\"330\" height=\"330\" fill=\"white\"/></clipPath></defs></svg>"
+  },
+  {
     "name": "@delego",
     "homepage": "https://github.com/Delego-Dev/registry",
     "url": "https://raw.githubusercontent.com/Delego-Dev/registry/main/public/r/{name}.json",
