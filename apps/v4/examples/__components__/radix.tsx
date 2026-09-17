@@ -30,6 +30,14 @@ export const Components: Record<string, any> = {
       ) || "accordion-card"
     return { default: mod.default || mod[exportName] }
   }),
+  "accordion-chevron-left": React.lazy(async () => {
+    const mod = await import("@/examples/radix/accordion-chevron-left")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "accordion-chevron-left"
+    return { default: mod.default || mod[exportName] }
+  }),
   "accordion-demo": React.lazy(async () => {
     const mod = await import("@/examples/radix/accordion-demo")
     const exportName =
@@ -60,6 +68,14 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "accordion-rtl"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "accordion-with-icon": React.lazy(async () => {
+    const mod = await import("@/examples/radix/accordion-with-icon")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "accordion-with-icon"
     return { default: mod.default || mod[exportName] }
   }),
   "alert-action": React.lazy(async () => {
