@@ -17,9 +17,9 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@workspace/ui": "workspace:*",
-    "astro": "^7.2.8",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "astro": "^7.3.2",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9",
@@ -28,7 +28,7 @@
     "@types/node": "^24",
     "eslint": "^10",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
+    "eslint-plugin-react-refresh": "^0.5.7",
     "globals": "^17",
     "typescript": "~6",
     "typescript-eslint": "^8"
