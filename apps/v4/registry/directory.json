@@ -401,6 +401,13 @@
     "logo": "<svg fill='none' viewBox='0 0 388 440' xmlns='http://www.w3.org/2000/svg'><rect x='25.867' width='336.27' height='336.27' rx='96' fill='color(display-p3 0.9804 0.9804 0.9804)'/><rect x='29.867' y='4' width='328.27' height='328.27' rx='92' stroke='color(display-p3 0.0392 0.0392 0.0392)' stroke-opacity='.9' stroke-width='8'/><rect x='12.933' y='25.867' width='362.13' height='362.13' rx='96' fill='color(display-p3 0.9804 0.9804 0.9804)'/><rect x='16.933' y='29.867' width='354.13' height='354.13' rx='92' stroke='color(display-p3 0.0392 0.0392 0.0392)' stroke-opacity='.95' stroke-width='8'/><rect x='4' y='55.733' width='380' height='380' rx='92' fill='color(display-p3 0.9804 0.9804 0.9804)' stroke='color(display-p3 0.0392 0.0392 0.0392)' stroke-width='8'/><line x1='129.33' x2='229.51' y1='281.25' y2='181.07' stroke='color(display-p3 0.0392 0.0392 0.0392)' stroke-linecap='round' stroke-width='25'/><line x1='212.67' x2='253.92' y1='305.66' y2='264.4' stroke='color(display-p3 0.0392 0.0392 0.0392)' stroke-linecap='round' stroke-width='25'/></svg>"
   },
   {
+    "name": "@catalogs",
+    "homepage": "https://catalogs.dev",
+    "url": "https://api.catalogs.dev/shadcn/{name}.json",
+    "description": "Discover components, blocks, and more from independent teams. Browse previews and bring the source into your project.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 359' fill='var(--foreground)'><path d='M0 37.2407C0 16.6732 16.8372 0 37.6068 0L220.392 0C230.862 0 240.858 4.32199 247.974 11.9261L283.565 49.9536C290.682 57.5577 300.678 61.8797 311.148 61.8797H474.393C495.163 61.8797 512 78.5529 512 99.1203L498.556 321.759C498.556 342.327 481.718 359 460.949 359H53.2917C32.5221 359 15.6849 342.327 15.6849 321.759L0 37.2407Z'/></svg>"
+  },
+  {
     "name": "@chamaac",
     "homepage": "https://chamaac.com",
     "url": "https://chamaac.com/r/{name}.json",
