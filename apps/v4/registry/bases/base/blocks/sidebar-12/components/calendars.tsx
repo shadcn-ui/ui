@@ -67,7 +67,7 @@ export function Calendars({
                               phosphor="CheckIcon"
                               remixicon="RiCheckLine"
                               className="hidden size-3 group-data-[active=true]/calendar-item:block"
-                              solar="CheckReadIcon"
+                              solar="CheckIcon"
                             />
                           </div>
                           {item}

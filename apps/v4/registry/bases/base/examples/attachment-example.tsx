@@ -546,7 +546,7 @@ function AttachmentStates() {
                 hugeicons="Tick02Icon"
                 phosphor="CheckIcon"
                 remixicon="RiCheckLine"
-                solar="CheckReadIcon"
+                solar="CheckIcon"
               />
             </AttachmentMedia>
             <AttachmentContent>
@@ -696,7 +696,7 @@ function AttachmentStates() {
                 hugeicons="Tick02Icon"
                 phosphor="CheckIcon"
                 remixicon="RiCheckLine"
-                solar="CheckReadIcon"
+                solar="CheckIcon"
               />
             </AttachmentMedia>
             <AttachmentContent>

@@ -131,7 +131,7 @@ function MenubarCheckboxItem({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
-            solar="CheckReadIcon"
+            solar="CheckIcon"
           />
         </MenuPrimitive.CheckboxItemIndicator>
       </span>
@@ -172,7 +172,7 @@ function MenubarRadioItem({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
-            solar="CheckReadIcon"
+            solar="CheckIcon"
           />
         </MenuPrimitive.RadioItemIndicator>
       </span>

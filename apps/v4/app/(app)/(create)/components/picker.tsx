@@ -195,7 +195,7 @@ function PickerCheckboxItem({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
-            solar="CheckReadIcon"
+            solar="CheckIcon"
           />
         </MenuPrimitive.CheckboxItemIndicator>
       </span>
@@ -269,7 +269,7 @@ function PickerRadioItem({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
-            solar="CheckReadIcon"
+            solar="CheckIcon"
             className="size-4 pointer-coarse:size-5"
           />
         </MenuPrimitive.RadioItemIndicator>

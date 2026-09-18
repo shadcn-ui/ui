@@ -228,7 +228,7 @@ function MarkerSeparator() {
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
-            solar="CheckReadIcon"
+            solar="CheckIcon"
           />
         </MarkerIcon>
         <MarkerContent>Conversation compacted</MarkerContent>

@@ -132,7 +132,7 @@ const data = {
           hugeicons="Tick02Icon"
           phosphor="CheckIcon"
           remixicon="RiCheckLine"
-          solar="CheckReadIcon"
+          solar="CheckIcon"
         />
       ),
     },

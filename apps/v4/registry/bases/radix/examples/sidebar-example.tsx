@@ -217,7 +217,7 @@ export default function SidebarExample() {
                             phosphor="CheckIcon"
                             remixicon="RiCheckLine"
                             className="ml-auto"
-                            solar="CheckReadIcon"
+                            solar="CheckIcon"
                           />
                         )}
                       </DropdownMenuItem>

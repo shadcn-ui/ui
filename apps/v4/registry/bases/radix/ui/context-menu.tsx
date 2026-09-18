@@ -177,7 +177,7 @@ function ContextMenuCheckboxItem({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
-            solar="CheckReadIcon"
+            solar="CheckIcon"
           />
         </ContextMenuPrimitive.ItemIndicator>
       </span>
@@ -212,7 +212,7 @@ function ContextMenuRadioItem({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
-            solar="CheckReadIcon"
+            solar="CheckIcon"
           />
         </ContextMenuPrimitive.ItemIndicator>
       </span>

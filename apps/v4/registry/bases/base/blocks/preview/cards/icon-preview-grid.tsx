@@ -100,7 +100,7 @@ const PREVIEW_ICONS = [
     hugeicons: "Tick02Icon",
     phosphor: "CheckIcon",
     remixicon: "RiCheckLine",
-    solar: "CheckReadIcon",
+    solar: "CheckIcon",
   },
   {
     lucide: "ChevronDownIcon",

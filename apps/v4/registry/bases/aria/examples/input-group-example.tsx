@@ -577,7 +577,7 @@ function InputGroupWithKbd() {
                   phosphor="CheckIcon"
                   remixicon="RiCheckLine"
                   className="size-3 text-white"
-                  solar="CheckReadIcon"
+                  solar="CheckIcon"
                 />
               </div>
             </InputGroupAddon>

@@ -223,7 +223,7 @@ function ComboboxItem<T extends object>({
                 phosphor="CheckIcon"
                 remixicon="RiCheckLine"
                 className="cn-combobox-item-indicator-icon pointer-events-none"
-                solar="CheckReadIcon"
+                solar="CheckIcon"
               />
             ) : null}
           </span>

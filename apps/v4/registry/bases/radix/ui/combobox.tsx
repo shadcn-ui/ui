@@ -177,7 +177,7 @@ function ComboboxItem({
           phosphor="CheckIcon"
           remixicon="RiCheckLine"
           className="cn-combobox-item-indicator-icon pointer-events-none"
-          solar="CheckReadIcon"
+          solar="CheckIcon"
         />
       </ComboboxPrimitive.ItemIndicator>
     </ComboboxPrimitive.Item>

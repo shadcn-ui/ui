@@ -181,7 +181,7 @@ function ButtonGroupWithDropdown() {
                     hugeicons="Tick02Icon"
                     phosphor="CheckIcon"
                     remixicon="RiCheckLine"
-                    solar="CheckReadIcon"
+                    solar="CheckIcon"
                   />
                   Mark as Read
                 </DropdownMenuItem>

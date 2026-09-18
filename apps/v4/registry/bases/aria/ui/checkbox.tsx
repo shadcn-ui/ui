@@ -34,7 +34,7 @@ function Checkbox({ className, children, ...props }: CheckboxProps) {
                   hugeicons="Tick02Icon"
                   phosphor="CheckIcon"
                   remixicon="RiCheckLine"
-                  solar="CheckReadIcon"
+                  solar="CheckIcon"
                 />
               )}
             </span>

@@ -75,7 +75,7 @@ export function VersionSwitcher({
                     phosphor="CheckIcon"
                     remixicon="RiCheckLine"
                     className="ml-auto"
-                    solar="CheckReadIcon"
+                    solar="CheckIcon"
                   />
                 )}
               </DropdownMenuItem>

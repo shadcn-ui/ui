@@ -180,7 +180,7 @@ function AvatarWithBadgeIcon() {
               hugeicons="Tick02Icon"
               phosphor="CheckIcon"
               remixicon="RiCheckLine"
-              solar="CheckReadIcon"
+              solar="CheckIcon"
             />
           </AvatarBadge>
         </Avatar>
@@ -193,7 +193,7 @@ function AvatarWithBadgeIcon() {
               hugeicons="Tick02Icon"
               phosphor="CheckIcon"
               remixicon="RiCheckLine"
-              solar="CheckReadIcon"
+              solar="CheckIcon"
             />
           </AvatarBadge>
         </Avatar>
@@ -206,7 +206,7 @@ function AvatarWithBadgeIcon() {
               hugeicons="Tick02Icon"
               phosphor="CheckIcon"
               remixicon="RiCheckLine"
-              solar="CheckReadIcon"
+              solar="CheckIcon"
             />
           </AvatarBadge>
         </Avatar>

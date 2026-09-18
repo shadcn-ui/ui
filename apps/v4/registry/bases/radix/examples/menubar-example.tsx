@@ -521,7 +521,7 @@ function MenubarInsert() {
                   hugeicons="Tick02Icon"
                   phosphor="CheckIcon"
                   remixicon="RiCheckLine"
-                  solar="CheckReadIcon"
+                  solar="CheckIcon"
                 />
                 Spell Check
               </MenubarItem>

@@ -187,7 +187,7 @@ function DropdownMenuCheckboxItem({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
-            solar="CheckReadIcon"
+            solar="CheckIcon"
           />
         </MenuPrimitive.CheckboxItemIndicator>
       </span>
@@ -234,7 +234,7 @@ function DropdownMenuRadioItem({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
-            solar="CheckReadIcon"
+            solar="CheckIcon"
           />
         </MenuPrimitive.RadioItemIndicator>
       </span>

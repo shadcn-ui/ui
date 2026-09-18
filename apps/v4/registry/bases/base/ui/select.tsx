@@ -146,7 +146,7 @@ function SelectItem({
           phosphor="CheckIcon"
           remixicon="RiCheckLine"
           className="cn-select-item-indicator-icon pointer-events-none"
-          solar="CheckReadIcon"
+          solar="CheckIcon"
         />
       </SelectPrimitive.ItemIndicator>
     </SelectPrimitive.Item>

@@ -237,7 +237,7 @@ export function Demo() {
                     hugeicons="Tick02Icon"
                     phosphor="CheckIcon"
                     remixicon="RiCheckLine"
-                    solar="CheckReadIcon"
+                    solar="CheckIcon"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">

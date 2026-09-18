@@ -217,7 +217,7 @@ function CommandItem<T extends object>({
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
             className="cn-command-item-indicator ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100"
-            solar="CheckReadIcon"
+            solar="CheckIcon"
           />
         </>
       ))}

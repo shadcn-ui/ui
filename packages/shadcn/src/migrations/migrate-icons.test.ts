@@ -11,7 +11,7 @@ const FULL_MAPPING = {
     hugeicons: "Tick02Icon",
     phosphor: "CheckIcon",
     remixicon: "RiCheckLine",
-    solar: "CheckReadIcon",
+    solar: "CheckIcon",
   },
   ChevronDown: {
     lucide: "ChevronDown",
@@ -439,12 +439,12 @@ describe("migrateIconsFile (cross-library)", () => {
 
     expect(await migrateIconsFile(input, "lucide", "solar", FULL_MAPPING))
       .toMatchInlineSnapshot(`
-        "import { CheckReadIcon, AltArrowDownIcon } from "@solar-icons/react/linear";
+        "import { CheckIcon, AltArrowDownIcon } from "@solar-icons/react/linear";
 
                     export function Component() {
                 return (
                   <div>
-                    <CheckReadIcon className="size-4" />
+                    <CheckIcon className="size-4" />
                     <AltArrowDownIcon />
                   </div>
                 )
