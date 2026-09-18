@@ -84,7 +84,7 @@ export function ChartBarActive() {
             <Bar
               dataKey="visitors"
               strokeWidth={2}
-              radius={8}
+              radius={[8, 8, 0, 0]}
               shape={({ index, ...props }: BarShapeProps) =>
                 index === ACTIVE_INDEX ? (
                   <Rectangle
