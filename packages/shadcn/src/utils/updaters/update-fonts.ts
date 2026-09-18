@@ -379,26 +379,31 @@ function findFontVariableDeclaration(
   sourceFile: ReturnType<Project["createSourceFile"]>,
   variable: string
 ) {
-  // Find variable declarations that call a font function with matching variable.
   const variableStatements = sourceFile.getVariableStatements()
+
+  // Map of known font aliases (create-next-app uses --font-geist-sans)
+  const fontAliases: Record<string, string[]> = {
+    "--font-sans": ["--font-geist-sans"],
+    "--font-mono": ["--font-geist-mono"],
+  }
+  const aliasesToCheck = [variable, ...(fontAliases[variable] ?? [])]
 
   for (const statement of variableStatements) {
     for (const declaration of statement.getDeclarations()) {
       const initializer = declaration.getInitializer()
       if (!initializer) continue
 
-      // Check if it's a call expression.
       if (initializer.getKind() !== SyntaxKind.CallExpression) continue
 
       const callExpr = initializer as CallExpression
-
-      // Get the arguments.
       const args = callExpr.getArguments()
       if (args.length === 0) continue
 
-      // Check if any argument contains our variable.
       const argText = args[0].getText()
-      if (argText.includes(`variable:`) && argText.includes(variable)) {
+      if (
+        argText.includes(`variable:`) &&
+        aliasesToCheck.some((alias) => argText.includes(alias))
+      ) {
         return declaration
       }
     }
@@ -406,7 +411,6 @@ function findFontVariableDeclaration(
 
   return null
 }
-
 function hasHeadingFontDeclaration(
   sourceFile: ReturnType<Project["createSourceFile"]>,
   importName: string
