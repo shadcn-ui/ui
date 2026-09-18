@@ -49,6 +49,7 @@ function Carousel({
   plugins,
   className,
   children,
+  "aria-label": ariaLabel,
   ...props
 }: React.ComponentProps<"div"> & CarouselProps) {
   const [carouselRef, api] = useEmblaCarousel(
@@ -60,11 +61,15 @@ function Carousel({
   )
   const [canScrollPrev, setCanScrollPrev] = React.useState(false)
   const [canScrollNext, setCanScrollNext] = React.useState(false)
+  const [currentSlide, setCurrentSlide] = React.useState(0)
+  const [slideCount, setSlideCount] = React.useState(0)
 
   const onSelect = React.useCallback((api: CarouselApi) => {
     if (!api) return
     setCanScrollPrev(api.canScrollPrev())
     setCanScrollNext(api.canScrollNext())
+    setCurrentSlide(api.selectedScrollSnap() + 1)
+    setSlideCount(api.scrollSnapList().length)
   }, [])
 
   const scrollPrev = React.useCallback(() => {
@@ -77,15 +82,18 @@ function Carousel({
 
   const handleKeyDown = React.useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === "ArrowLeft") {
+      const prevKey = orientation === "vertical" ? "ArrowUp" : "ArrowLeft"
+      const nextKey = orientation === "vertical" ? "ArrowDown" : "ArrowRight"
+
+      if (event.key === prevKey) {
         event.preventDefault()
         scrollPrev()
-      } else if (event.key === "ArrowRight") {
+      } else if (event.key === nextKey) {
         event.preventDefault()
         scrollNext()
       }
     },
-    [scrollPrev, scrollNext]
+    [orientation, scrollPrev, scrollNext]
   )
 
   React.useEffect(() => {
@@ -100,6 +108,7 @@ function Carousel({
     api.on("select", onSelect)
 
     return () => {
+      api?.off("reInit", onSelect)
       api?.off("select", onSelect)
     }
   }, [api, onSelect])
@@ -123,10 +132,20 @@ function Carousel({
         className={cn("relative", className)}
         role="region"
         aria-roledescription="carousel"
+        aria-label={ariaLabel}
         data-slot="carousel"
         {...props}
       >
         {children}
+        <span
+          aria-live="polite"
+          aria-atomic="true"
+          className="sr-only"
+        >
+          {slideCount > 0
+            ? `Slide ${currentSlide} of ${slideCount}`
+            : ""}
+        </span>
       </div>
     </CarouselContext.Provider>
   )
