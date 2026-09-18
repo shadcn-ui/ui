@@ -75,8 +75,8 @@ export default function BugReportForm() {
           Help us improve by reporting bugs you encounter.
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        <CardContent>
           <FieldGroup>
             <Controller
               name="title"
@@ -133,18 +133,18 @@ export default function BugReportForm() {
               )}
             />
           </FieldGroup>
-        </form>
-      </CardContent>
-      <CardFooter>
-        <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
-            Reset
-          </Button>
-          <Button type="submit" form="form-rhf-demo">
-            Submit
-          </Button>
-        </Field>
-      </CardFooter>
+        </CardContent>
+        <CardFooter>
+          <Field orientation="horizontal">
+            <Button type="button" variant="outline" onClick={() => form.reset()}>
+              Reset
+            </Button>
+            <Button type="submit">
+              Submit
+            </Button>
+          </Field>
+        </CardFooter>
+      </form>
     </Card>
   )
 }
