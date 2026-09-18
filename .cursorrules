@@ -1,0 +1,103 @@
+# shadcn/ui — Cursor Rules
+
+You are working on **shadcn/ui**, an open-source component library built with React, TypeScript, Tailwind CSS, and Radix UI primitives. Components are designed to be copied into projects and customized.
+
+## Project Structure
+
+This is a monorepo using **pnpm** workspaces and **Turborepo**.
+
+- `apps/v4/` — the Next.js documentation site (ui.shadcn.com)
+  - `app/` — Next.js App Router pages and layouts
+  - `components/` — website-specific React components
+  - `content/` — MDX documentation content
+  - `registry/new-york-v4/ui/` — the canonical component source (this is the registry)
+  - `registry/new-york-v4/example/` — component usage examples
+- `packages/shadcn/` — the `shadcn` CLI package
+- `templates/` — starter templates for new projects
+
+## TypeScript & Code Style
+
+- Strict TypeScript with `strict: true` in `tsconfig.json`.
+- **No semicolons** — Prettier is configured with `semi: false`.
+- Double quotes for strings (`singleQuote: false`).
+- Trailing commas in ES5 positions (`trailingComma: "es5"`).
+- Tab width: 2 spaces. Line width: 80 characters.
+- Import order is enforced by `@ianvs/prettier-plugin-sort-imports`:
+  1. `react` / `react/*`
+  2. `next` / `next/*`
+  3. Third-party modules
+  4. `@workspace/*`
+  5. `@/types`, `@/config`, `@/lib`, `@/hooks`, `@/components/ui`, `@/components`, `@/registry`, `@/styles`, `@/app`, `@/www`
+  6. Relative imports
+- Use `@commitlint/config-conventional` commit message format.
+
+## Component Patterns
+
+- Components use **Radix UI** primitives (imported from `radix-ui` package).
+- Styling uses **Tailwind CSS v4** utility classes.
+- Use **`cva`** (class-variance-authority) for component variants:
+  ```tsx
+  const buttonVariants = cva("base-classes", {
+    variants: { variant: { default: "...", destructive: "..." } },
+    defaultVariants: { variant: "default" },
+  })
+  ```
+- Use the **`cn()`** utility from `@/lib/utils` to merge Tailwind classes (wraps `clsx` + `tailwind-merge`).
+- Tailwind functions `cn` and `cva` are configured in Prettier for class sorting.
+- Components are **function declarations** (not arrow functions), exported as named exports:
+  ```tsx
+  function Button({ className, variant, ...props }: ButtonProps) {
+    return <button className={cn(buttonVariants({ variant, className }))} {...props} />
+  }
+  export { Button, buttonVariants }
+  ```
+- Use `React.ComponentProps<"element">` for extending HTML element props.
+- Use `VariantProps<typeof variants>` for variant prop types.
+- Use `data-slot` attributes for component identification and styling hooks.
+- Use `data-variant` and `data-size` attributes to expose variant/size info to CSS.
+- Support `asChild` pattern via Radix `Slot.Root` for composition.
+
+## Styling Conventions
+
+- Use Tailwind CSS semantic color tokens: `bg-primary`, `text-destructive`, `border-input`, etc.
+- Dark mode uses `dark:` variant prefix.
+- Accessibility states: `focus-visible:`, `disabled:`, `aria-invalid:` variants.
+- Size variants follow the pattern: `xs`, `sm`, `default`, `lg`, `icon`.
+- Use `[&_svg]` selectors for nested SVG styling within components.
+
+## Testing
+
+- Test runner: **Vitest** with config in `vitest.config.ts` and `vitest.workspace.ts`.
+- Run tests: `pnpm test` (requires the dev server for integration tests via `start-server-and-test`).
+- The shadcn CLI package has its own test suite: `pnpm shadcn:test`.
+
+## Build & Tooling
+
+- Package manager: **pnpm 9.x**. Do not use npm or yarn.
+- Build system: **Turborepo** (`turbo run build`).
+- Next.js App Router for the documentation site.
+- Changesets for release management.
+- Lint: `pnpm lint` / `pnpm lint:fix`.
+- Format: `pnpm format:write` / `pnpm format:check`.
+- Type check: `pnpm typecheck`.
+
+## Registry System
+
+- Components in `registry/new-york-v4/ui/` are the source of truth.
+- Each component file has a `_registry.ts` that defines metadata.
+- Registry is built with `pnpm registry:build` and validated with `pnpm validate:registries`.
+- When adding or modifying components, update the registry and run validation.
+
+## Naming Conventions
+
+- Files: `kebab-case.tsx` for components (e.g., `alert-dialog.tsx`, `button-group.tsx`).
+- Components: `PascalCase` (e.g., `Button`, `AlertDialog`).
+- Variant definitions: `camelCase` suffixed with `Variants` (e.g., `buttonVariants`).
+- CSS variables: `--prefix-name` pattern following Tailwind v4 conventions.
+
+## Contributing
+
+- PRs target the `main` branch.
+- Run `pnpm check` (lint + typecheck + format) before submitting.
+- Follow the conventional commits specification.
+- Component changes must update the registry.
