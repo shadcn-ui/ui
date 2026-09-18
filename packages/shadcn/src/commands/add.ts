@@ -22,8 +22,12 @@ import { dryRunComponents } from "@/src/utils/dry-run"
 import { formatDryRunResult } from "@/src/utils/dry-run-formatter"
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
+import { scanImportsForComponents } from "@/src/utils/get-components-from-imports"
 import { createConfig, getConfig } from "@/src/utils/get-config"
-import { getProjectInfo } from "@/src/utils/get-project-info"
+import {
+  getProjectComponents,
+  getProjectInfo,
+} from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -45,6 +49,7 @@ export const addOptionsSchema = z.object({
   dryRun: z.boolean(),
   diff: z.union([z.string(), z.literal(true)]).optional(),
   view: z.union([z.string(), z.literal(true)]).optional(),
+  fromImports: z.boolean(),
 })
 
 export const add = new Command()
@@ -64,6 +69,11 @@ export const add = new Command()
   .option("--dry-run", "preview changes without writing files.", false)
   .option("--diff [path]", "show diff for a file.")
   .option("--view [path]", "show file contents.")
+  .option(
+    "--from-imports",
+    "scan project files for component imports and add missing components.",
+    false
+  )
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -85,6 +95,55 @@ export const add = new Command()
             cwd: options.cwd,
           },
         })
+      }
+
+      if (options.fromImports) {
+        if (options.components?.length || options.all) {
+          throw new Error(
+            "The --from-imports flag cannot be combined with component arguments or --all."
+          )
+        }
+
+        const aliasUi = initialConfig.aliases?.ui
+        if (!aliasUi) {
+          throw new Error(
+            `No shadcn/ui configuration found. Run ${highlighter.info("shadcn init")} to set up your project first.`
+          )
+        }
+
+        const found = await scanImportsForComponents(options.cwd, aliasUi)
+        if (found.length === 0) {
+          logger.log("No shadcn/ui component imports found in your project.")
+          return
+        }
+
+        const installed = await getProjectComponents(options.cwd)
+        const missing = found.filter((c) => !installed.includes(c))
+
+        if (missing.length === 0) {
+          logger.log("All imported shadcn/ui components are already installed.")
+          return
+        }
+
+        logger.log(
+          `${highlighter.info(String(missing.length))} missing shadcn/ui component(s) found: ${highlighter.info(missing.join(", "))}`
+        )
+
+        if (!options.yes) {
+          const { confirm } = await prompts({
+            type: "confirm",
+            name: "confirm",
+            message: `Install ${missing.length} component(s)?`,
+            initial: true,
+          })
+          if (!confirm) {
+            logger.break()
+            logger.log("Installation cancelled.")
+            return
+          }
+        }
+
+        options.components = missing
       }
 
       let hasNewRegistries = false
