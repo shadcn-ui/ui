@@ -262,6 +262,11 @@ function determineFileType(
 
 // Additional utility functions for local file support
 export function isUrl(path: string) {
+  // On Windows, absolute local paths like C:\... are not URLs.
+  if (/^[a-zA-Z]:[\\/]/.test(path)) {
+    return false
+  }
+
   try {
     new URL(path)
     return true
