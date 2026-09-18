@@ -42,6 +42,59 @@ import { z } from "zod"
 const CODE_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx"]
 const NON_ALIAS_RESOLVED_PATH_KEYS = new Set(["tailwindConfig", "tailwindCss"])
 
+// helper functions
+function stripExtension(filePath: string) {
+  return filePath.replace(/\.(tsx|ts|jsx|js)$/, "")
+}
+
+function normalizePath(filePath: string) {
+  return filePath.replace(/\\/g, "/")
+}
+
+function isInternalRegistryImport(
+  importSource: string,
+  currentFilePath: string,
+  registryFiles: string[]
+) {
+  if (!importSource.startsWith(".")) {
+    return false
+  }
+
+  const currentDir = path.dirname(currentFilePath)
+
+  const resolvedPath = normalizePath(
+    stripExtension(path.normalize(path.join(currentDir, importSource)))
+  )
+
+  return registryFiles.some((file) => {
+    const normalizedRegistryPath = normalizePath(
+      stripExtension(file)
+    )
+
+    return normalizedRegistryPath === resolvedPath
+  })
+}
+
+function removeInternalRegistryImports(
+  content: string,
+  currentFilePath: string,
+  registryFiles: string[]
+) {
+  return content.replace(
+    /^import\s+.*?\s+from\s+["'](.+?)["'];?\n?/gm,
+    (fullMatch, importSource) => {
+      if (
+        importSource.startsWith(".") &&
+        registryFiles.some((f) => f.includes(importSource))
+      ) {
+        return ""
+      }
+
+      return fullMatch
+    }
+  )
+}
+
 export async function updateFiles(
   files: RegistryItem["files"],
   config: Config,
@@ -106,6 +159,8 @@ export async function updateFiles(
 
   for (let index = 0; index < files.length; index++) {
     const file = files[index]
+
+    const registryFiles = files.map((f) => f.path)
     if (!file.content) {
       continue
     }
