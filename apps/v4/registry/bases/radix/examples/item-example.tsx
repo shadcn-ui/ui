@@ -826,11 +826,17 @@ function DefaultVariantItemsExtraSmall() {
       <Item size="xs">
         <ItemContent>
           <ItemTitle>Title + Description</ItemTitle>
+          <ItemDescription>
+            This is a description that provides additional context.
+          </ItemDescription>
         </ItemContent>
       </Item>
       <Item size="xs">
         <ItemContent>
           <ItemTitle>Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            This item includes a title, description, and action button.
+          </ItemDescription>
         </ItemContent>
         <ItemActions>
           <Button variant="outline" size="sm">
@@ -881,6 +887,9 @@ function DefaultVariantItemsExtraSmall() {
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Media + Title + Description</ItemTitle>
+          <ItemDescription>
+            This item includes media, title, and description.
+          </ItemDescription>
         </ItemContent>
       </Item>
       <Item size="xs">
@@ -895,6 +904,10 @@ function DefaultVariantItemsExtraSmall() {
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Media + Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            Complete item with all components: media, title, description, and
+            button.
+          </ItemDescription>
         </ItemContent>
         <ItemActions>
           <Button size="sm">Action</Button>
@@ -903,6 +916,9 @@ function DefaultVariantItemsExtraSmall() {
       <Item size="xs">
         <ItemContent>
           <ItemTitle>Multiple Actions</ItemTitle>
+          <ItemDescription>
+            Item with multiple action buttons in the actions area.
+          </ItemDescription>
         </ItemContent>
         <ItemActions>
           <Button variant="outline" size="sm">
@@ -936,11 +952,17 @@ function OutlineVariantItemsExtraSmall() {
       <Item variant="outline" size="xs">
         <ItemContent>
           <ItemTitle>Title + Description</ItemTitle>
+          <ItemDescription>
+            This is a description that provides additional context.
+          </ItemDescription>
         </ItemContent>
       </Item>
       <Item variant="outline" size="xs">
         <ItemContent>
           <ItemTitle>Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            This item includes a title, description, and action button.
+          </ItemDescription>
         </ItemContent>
         <ItemActions>
           <Button variant="outline" size="sm">
@@ -991,6 +1013,9 @@ function OutlineVariantItemsExtraSmall() {
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Media + Title + Description</ItemTitle>
+          <ItemDescription>
+            This item includes media, title, and description.
+          </ItemDescription>
         </ItemContent>
       </Item>
       <Item variant="outline" size="xs">
@@ -1005,6 +1030,10 @@ function OutlineVariantItemsExtraSmall() {
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Media + Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            Complete item with all components: media, title, description, and
+            button.
+          </ItemDescription>
         </ItemContent>
         <ItemActions>
           <Button size="sm">Action</Button>
@@ -1013,6 +1042,9 @@ function OutlineVariantItemsExtraSmall() {
       <Item variant="outline" size="xs">
         <ItemContent>
           <ItemTitle>Multiple Actions</ItemTitle>
+          <ItemDescription>
+            Item with multiple action buttons in the actions area.
+          </ItemDescription>
         </ItemContent>
         <ItemActions>
           <Button variant="outline" size="sm">
@@ -1046,11 +1078,17 @@ function MutedVariantItemsExtraSmall() {
       <Item variant="muted" size="xs">
         <ItemContent>
           <ItemTitle>Title + Description</ItemTitle>
+          <ItemDescription>
+            This is a description that provides additional context.
+          </ItemDescription>
         </ItemContent>
       </Item>
       <Item variant="muted" size="xs">
         <ItemContent>
           <ItemTitle>Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            This item includes a title, description, and action button.
+          </ItemDescription>
         </ItemContent>
         <ItemActions>
           <Button variant="outline" size="sm">
@@ -1101,6 +1139,9 @@ function MutedVariantItemsExtraSmall() {
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Media + Title + Description</ItemTitle>
+          <ItemDescription>
+            This item includes media, title, and description.
+          </ItemDescription>
         </ItemContent>
       </Item>
       <Item variant="muted" size="xs">
@@ -1115,6 +1156,10 @@ function MutedVariantItemsExtraSmall() {
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Media + Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            Complete item with all components: media, title, description, and
+            button.
+          </ItemDescription>
         </ItemContent>
         <ItemActions>
           <Button size="sm">Action</Button>
@@ -1123,6 +1168,9 @@ function MutedVariantItemsExtraSmall() {
       <Item variant="muted" size="xs">
         <ItemContent>
           <ItemTitle>Multiple Actions</ItemTitle>
+          <ItemDescription>
+            Item with multiple action buttons in the actions area.
+          </ItemDescription>
         </ItemContent>
         <ItemActions>
           <Button variant="outline" size="sm">
