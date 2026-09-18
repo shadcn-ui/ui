@@ -91,7 +91,7 @@ function SelectContent({
           data-slot="select-content"
           data-align-trigger={alignItemWithTrigger}
           className={cn(
-            "cn-select-content cn-select-content-logical cn-menu-target cn-menu-translucent relative isolate z-50 max-h-(--available-height) w-(--anchor-width) origin-(--transform-origin) overflow-x-hidden overflow-y-auto data-[align-trigger=true]:animate-none",
+            "cn-select-content cn-select-content-logical cn-menu-target cn-menu-translucent relative isolate z-50 max-h-(--available-height) w-(--anchor-width) origin-(--transform-origin) overflow-x-hidden overflow-y-auto data-[align-trigger=true]:animate-none data-[align-trigger=true]:-translate-x-px",
             className
           )}
           {...props}
@@ -132,7 +132,7 @@ function SelectItem({
       )}
       {...props}
     >
-      <SelectPrimitive.ItemText className="cn-select-item-text shrink-0 whitespace-nowrap">
+      <SelectPrimitive.ItemText className="cn-select-item-text shrink-0 whitespace-nowrap pl-px">
         {children}
       </SelectPrimitive.ItemText>
       <SelectPrimitive.ItemIndicator
