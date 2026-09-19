@@ -44,6 +44,20 @@ function ToggleGroup({
         "cn-toggle-group group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] data-vertical:flex-col data-vertical:items-stretch",
         className
       )}
+      onKeyDown={(event) => {
+        if (event.key === "Home" || event.key === "End") {
+          const items = event.currentTarget.querySelectorAll<HTMLElement>(
+            '[data-slot="toggle-group-item"]:not([data-disabled]):not([disabled])'
+          )
+          if (items.length > 0) {
+            event.preventDefault()
+            const target =
+              event.key === "Home" ? items[0] : items[items.length - 1]
+            target?.focus()
+          }
+        }
+        props.onKeyDown?.(event)
+      }}
       {...props}
     >
       <ToggleGroupContext.Provider
