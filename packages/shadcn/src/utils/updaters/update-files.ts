@@ -855,13 +855,17 @@ export function resolveModuleByProbablePath(
   // 5a) Fast‑path: [base + ext] and [base/index + ext]
   for (const e of tryExts) {
     const absCand = absBase + e
-    const relCand = path.posix.normalize(path.relative(cwd, absCand))
+    const relCand = path.posix.normalize(
+      path.relative(cwd, absCand).split(path.sep).join(path.posix.sep)
+    )
     if (fileSet.has(relCand) || existsSync(absCand)) {
       candidates.add(relCand)
     }
 
     const absIdx = path.join(absBase, `index${e}`)
-    const relIdx = path.posix.normalize(path.relative(cwd, absIdx))
+    const relIdx = path.posix.normalize(
+      path.relative(cwd, absIdx).split(path.sep).join(path.posix.sep)
+    )
     if (fileSet.has(relIdx) || existsSync(absIdx)) {
       candidates.add(relIdx)
     }
