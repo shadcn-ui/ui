@@ -67,6 +67,9 @@ function Item({
     defaultTagName: "div",
     props: mergeProps<"div">(
       {
+        // Only when Item renders its own div. A custom render target keeps
+        // its own role rather than being overridden to listitem.
+        role: render ? undefined : "listitem",
         className: cn(itemVariants({ variant, size, className })),
       },
       props
