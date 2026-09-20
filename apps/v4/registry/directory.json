@@ -2298,6 +2298,14 @@
     "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"8\" fill=\"#FE5000\"/><path d=\"M9 9 L16 23 L23 9\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"/></svg>"
   },
   {
+    "name": "@vlkoss",
+    "homepage": "https://cue.vlkstudio.com",
+    "url": "https://cue.vlkstudio.com/r/{name}.json",
+    "description": "Imperative React overlays for shadcn/ui. Create programmatic dialogs and modal flows with typed overlay handles, isolated Cue environments, stacked overlays, and one shared backdrop.",
+    "author": "VLK Studio",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' fill='var(--foreground)'><path d='m147 118.4-89.3-103.9c-0.4-0.4-1-0.8-1.7-0.7-0.3 0.1-0.5 0.2-0.8 0.4l-41.4 22.1c-2.1 1.2-4 2.7-5.7 4.4l-1.4 1.8c-2.7 3.4-4.7 8.3-5.2 13.5l-0.1 64.3c0 1.4 0.9 2.5 1.9 2.5l59.9 8.8c7.8 2.5 19.3 4.5 36.1 4.5 7 0 14.4-0.3 21.3-1.1 10.2-1.1 27.8-4.7 27.9-13-0.1-1-0.5-2.5-1.5-3.6zm-89.6-101.1 83.5 97c-9.3-3.8-22.3-6.9-40.9-7-3.7 0-7.1 0.2-10.9 0.4l-31.5-14.7-0.2-75.7zm-51.8 103.8 50.9-26.5 28.1 13.4c-2.3 0.4-5.4 0.6-7.5 1-8.2 1.4-25 5.2-25 13 0 2.6 2 4.7 4.5 6.5l-9.6-1.6-41.4-5.8zm114.9 11.8c-6.5 0.7-13.8 1.2-21.2 1.2-12.2 0-22.2-1-31-3.2-6-1.4-13.9-4.7-13.9-8.8 0-4.2 9.9-7.8 15.7-8.9 7.6-1.8 18.3-3.6 29.9-3.6 16.3 0 29 2.1 37.4 5.5 2.5 0.9 3.7 1.6 5.1 2.3l1.9 1.4c0.9 0.7 1.8 1.9 1.8 3.1 0 5-13.3 9.4-25.7 11z'/></svg>"
+  },
+  {
     "name": "@utilcn",
     "homepage": "https://utilcn.dev",
     "url": "https://utilcn.dev/r/{name}.json",
