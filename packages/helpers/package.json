@@ -1,6 +1,6 @@
 {
   "name": "@shadcn/helpers",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Small helpers for developing apps.",
   "publishConfig": {
     "access": "public"
@@ -71,7 +71,8 @@
   "devDependencies": {
     "@tanstack/ai": "0.40.0",
     "@tanstack/ai-client": "0.20.0",
-    "ai": "7.0.22",
+    "ai": "7.0.0-canary.159",
+    "zod": "3.25.76",
     "rimraf": "^6.0.1",
     "tsup": "^8.5.0",
     "typescript": "^5.9.2",

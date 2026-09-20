@@ -1,0 +1,83 @@
+---
+title: August 2026 - Private GitHub Registries
+description: Install registry items from private GitHub repositories using the GitHub CLI or a token.
+date: 2026-08-24
+---
+
+**GitHub registries now work with private repositories.**
+
+In June, we made it possible to turn any public GitHub repository into a
+registry. Teams asked for the same thing for their internal code: design
+systems, feature kits, agent rules and conventions that should not be public.
+
+You can now install from private repositories. If you can read the repository,
+the CLI can install from it.
+
+```bash
+npx shadcn@latest add acme/internal-toolkit/auth-kit
+```
+
+## Zero configuration
+
+If you are logged in to the GitHub CLI, there is nothing to set up.
+
+```bash
+gh auth login
+```
+
+When a repository is not publicly readable, the CLI reads it through `gh` using
+your stored credentials. The token stays inside the GitHub CLI. It never enters
+the shadcn process.
+
+```txt
+✔ Using gh credentials.
+✔ Checking registry.
+✔ Created 1 file:
+  - lib/auth.ts
+```
+
+## CI support
+
+Where the GitHub CLI is not installed, set `GH_TOKEN` or `GITHUB_TOKEN`:
+
+```bash
+GH_TOKEN=github_pat_xxx npx shadcn@latest add acme/internal-toolkit/auth-kit
+```
+
+We recommend a fine-grained personal access token scoped to the repository with
+**Contents: Read-only** access.
+
+## Works with every command
+
+Private repositories work with the same commands as public GitHub registries.
+
+```bash
+npx shadcn@latest list acme/internal-toolkit
+```
+
+```bash
+npx shadcn@latest search acme/internal-toolkit --query auth
+```
+
+```bash
+npx shadcn@latest view acme/internal-toolkit/auth-kit
+```
+
+```bash
+npx shadcn@latest registry validate acme/internal-toolkit
+```
+
+## How it works
+
+- Public repositories are read anonymously, exactly as before. No credentials
+  are used and the GitHub CLI is never invoked.
+- The CLI tries anonymous access first and only uses your credentials when the
+  repository is not publicly readable.
+- Private files are read through GitHub's Contents API, pinned to the resolved
+  commit SHA.
+- A token from `GH_TOKEN` is only ever sent to `api.github.com`. Stored GitHub
+  CLI credentials are read by `gh`, not by the CLI.
+
+See the
+[Private repositories](/docs/registry/github#private-repositories) docs for
+the full guide.

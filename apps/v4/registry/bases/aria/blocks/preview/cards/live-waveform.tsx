@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { useEffect, useRef, useState } from "react"
+import { cn } from "cn"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/registry/bases/aria/ui/button"
 import {
   Card,

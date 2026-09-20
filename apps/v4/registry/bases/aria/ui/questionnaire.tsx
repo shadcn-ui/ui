@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { Questionnaire as QuestionnairePrimitive } from "@shadcn/react/questionnaire"
+import { cn } from "cn"
 
-import { cn } from "@/registry/bases/aria/lib/utils"
 import { buttonVariants, type Button } from "@/registry/bases/aria/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
@@ -146,9 +146,22 @@ function QuestionnaireChoice({
       </QuestionnairePrimitive.ChoiceLabel>
       <QuestionnairePrimitive.ChoiceShortcut
         data-slot="questionnaire-choice-shortcut"
-        className="cn-questionnaire-choice-shortcut cn-questionnaire-shortcut pointer-events-none ms-auto mt-0.5 hidden shrink-0 group-data-[shortcut]/questionnaire-choice:inline-flex"
+        className="cn-questionnaire-choice-shortcut cn-questionnaire-shortcut pointer-events-none ms-auto hidden shrink-0 group-data-[shortcut]/questionnaire-choice:inline-flex"
       />
     </QuestionnairePrimitive.Choice>
+  )
+}
+
+function QuestionnaireChoiceDescription({
+  className,
+  ...props
+}: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="questionnaire-choice-description"
+      className={cn("cn-questionnaire-choice-description", className)}
+      {...props}
+    />
   )
 }
 
@@ -307,6 +320,7 @@ export {
   Questionnaire,
   QuestionnaireActions,
   QuestionnaireChoice,
+  QuestionnaireChoiceDescription,
   QuestionnaireChoices,
   QuestionnaireDescription,
   QuestionnaireError,

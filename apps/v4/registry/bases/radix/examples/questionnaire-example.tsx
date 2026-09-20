@@ -30,6 +30,7 @@ import {
   Questionnaire,
   QuestionnaireActions,
   QuestionnaireChoice,
+  QuestionnaireChoiceDescription,
   QuestionnaireChoices,
   QuestionnaireDescription,
   QuestionnaireError,
@@ -80,6 +81,18 @@ const taskItems = [
   },
 ] as const
 
+const planItems = [
+  {
+    choices: [
+      { value: "plus" },
+      { value: "pro" },
+      { value: "enterprise", disabled: true },
+    ],
+    name: "plan",
+    required: true,
+  },
+] as const
+
 export default function QuestionnaireExample() {
   return (
     <ExampleWrapper>
@@ -87,7 +100,50 @@ export default function QuestionnaireExample() {
       <QuestionnaireCard />
       <QuestionnaireDialog />
       <QuestionnaireNoDescription />
+      <QuestionnaireDisabled />
     </ExampleWrapper>
+  )
+}
+
+function QuestionnaireDisabled() {
+  return (
+    <Example title="Disabled" containerClassName="md:col-span-2">
+      <Questionnaire
+        className="mx-auto max-w-lg"
+        defaultItem="plan"
+        items={planItems}
+        onSubmit={handleSubmit}
+      >
+        <QuestionnaireItem name="plan" required>
+          <QuestionnaireTitle>Choose a plan</QuestionnaireTitle>
+          <QuestionnaireDescription>
+            Enterprise is not available on your account.
+          </QuestionnaireDescription>
+          <QuestionnaireChoices>
+            <QuestionnaireChoice value="plus">
+              <span className="font-medium">Plus</span>
+              <QuestionnaireChoiceDescription>
+                For individuals and small teams
+              </QuestionnaireChoiceDescription>
+            </QuestionnaireChoice>
+            <QuestionnaireChoice value="pro">
+              <span className="font-medium">Pro</span>
+              <QuestionnaireChoiceDescription>
+                For growing businesses
+              </QuestionnaireChoiceDescription>
+            </QuestionnaireChoice>
+            <QuestionnaireChoice value="enterprise" disabled>
+              <span className="font-medium">Enterprise</span>
+              <QuestionnaireChoiceDescription>
+                For large teams and enterprises
+              </QuestionnaireChoiceDescription>
+            </QuestionnaireChoice>
+          </QuestionnaireChoices>
+          <QuestionnaireError />
+        </QuestionnaireItem>
+        <QuestionnaireNavigation />
+      </Questionnaire>
+    </Example>
   )
 }
 
@@ -230,21 +286,21 @@ function QuestionnaireCardQuestions() {
             <QuestionnaireChoices>
               <QuestionnaireChoice value="delegation">
                 <span className="font-medium">Sub-agent delegation</span>
-                <span className="text-muted-foreground">
+                <QuestionnaireChoiceDescription>
                   Show when work is delegated and what comes back.
-                </span>
+                </QuestionnaireChoiceDescription>
               </QuestionnaireChoice>
               <QuestionnaireChoice value="questions">
                 <span className="font-medium">Question prompts</span>
-                <span className="text-muted-foreground">
+                <QuestionnaireChoiceDescription>
                   Show choices while the agent waits for input.
-                </span>
+                </QuestionnaireChoiceDescription>
               </QuestionnaireChoice>
               <QuestionnaireChoice value="both">
                 <span className="font-medium">Both together</span>
-                <span className="text-muted-foreground">
+                <QuestionnaireChoiceDescription>
                   Explore one unified interaction pattern.
-                </span>
+                </QuestionnaireChoiceDescription>
               </QuestionnaireChoice>
               <QuestionnaireInput
                 aria-label="Another direction"
@@ -337,21 +393,21 @@ function QuestionnaireQuestions() {
         <QuestionnaireChoices>
           <QuestionnaireChoice value="delegation">
             <span className="font-medium">Sub-agent delegation</span>
-            <span className="text-muted-foreground">
+            <QuestionnaireChoiceDescription>
               Show when work is delegated and what comes back.
-            </span>
+            </QuestionnaireChoiceDescription>
           </QuestionnaireChoice>
           <QuestionnaireChoice value="questions">
             <span className="font-medium">Question prompts</span>
-            <span className="text-muted-foreground">
+            <QuestionnaireChoiceDescription>
               Show choices while the agent waits for input.
-            </span>
+            </QuestionnaireChoiceDescription>
           </QuestionnaireChoice>
           <QuestionnaireChoice value="both">
             <span className="font-medium">Both together</span>
-            <span className="text-muted-foreground">
+            <QuestionnaireChoiceDescription>
               Explore one unified interaction pattern.
-            </span>
+            </QuestionnaireChoiceDescription>
           </QuestionnaireChoice>
           <QuestionnaireInput
             aria-label="Another direction"

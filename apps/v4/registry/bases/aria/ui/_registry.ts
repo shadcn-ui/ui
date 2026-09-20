@@ -423,6 +423,24 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
   },
   {
+    name: "hover-card",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/hover-card.tsx",
+        type: "registry:ui",
+      },
+    ],
+    meta: {
+      links: {
+        docs: "https://ui.shadcn.com/docs/components/aria/hover-card",
+        examples:
+          "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/hover-card-example.tsx",
+        api: "https://react-aria.adobe.com/PreviewTrigger#api",
+      },
+    },
+  },
+  {
     name: "input",
     type: "registry:ui",
     files: [

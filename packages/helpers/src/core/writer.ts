@@ -157,6 +157,14 @@ export function createEventWriter<
         input: clonedOptions.input ?? {},
       })
 
+      function assertResolvable(method: string) {
+        if (clonedOptions.needsApproval) {
+          throw new Error(
+            `A needsApproval tool call resolves from the user's decision; remove the ${method}() call.`
+          )
+        }
+      }
+
       const handle: ToolHandle<TOOLS[NAME]["output"]> = {
         sleep(delayMs: number) {
           events.push({
@@ -169,6 +177,7 @@ export function createEventWriter<
         },
 
         output(output: TOOLS[NAME]["output"]) {
+          assertResolvable("output")
           events.push({
             kind: "tool-output",
             toolCallId,
@@ -182,6 +191,7 @@ export function createEventWriter<
         },
 
         error(errorText = "Tool call failed.") {
+          assertResolvable("error")
           events.push({
             kind: "tool-error",
             toolCallId,
@@ -195,6 +205,7 @@ export function createEventWriter<
         },
 
         denied() {
+          assertResolvable("denied")
           events.push({
             kind: "tool-denied",
             toolCallId,
@@ -202,6 +213,25 @@ export function createEventWriter<
 
           return handle
         },
+      }
+
+      if (clonedOptions.needsApproval) {
+        const approvalId =
+          clonedOptions.approvalId ?? context.ids.nextApprovalId()
+
+        if (clonedOptions.approvalId !== undefined) {
+          context.ids.reserveApprovalId(clonedOptions.approvalId)
+        }
+
+        events.push({
+          kind: "tool-approval-request",
+          toolCallId,
+          approvalId,
+          output: clonedOptions.output,
+          errorText: clonedOptions.errorText,
+        })
+
+        return handle
       }
 
       if (clonedOptions.output !== undefined) {
