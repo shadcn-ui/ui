@@ -1,0 +1,14 @@
+{
+  "style": "new-york",
+  "tailwind": {
+    "css": "app/globals.css",
+    "baseColor": "neutral"
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  },
+  "dependencies": {
+    "foo": "1.0.0"
+  }
+}

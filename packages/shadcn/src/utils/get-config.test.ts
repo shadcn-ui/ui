@@ -37,6 +37,20 @@ describe("getRawConfig", () => {
       getRawConfig(getFixturesDir("config-invalid"))
     ).rejects.toThrowError()
   })
+
+  it("get raw config reports which key is invalid", async () => {
+    await expect(
+      getRawConfig(getFixturesDir("config-unknown-key"))
+    ).rejects.toThrowError(/Unrecognized key\(s\) in object: 'dependencies'/)
+  })
+
+  it("get raw config reports built-in registry overrides", async () => {
+    await expect(
+      getRawConfig(getFixturesDir("config-builtin-registry"))
+    ).rejects.toThrowError(
+      /"@shadcn" is a built-in registry and cannot be overridden/
+    )
+  })
 })
 
 describe("getProjectConfig", () => {
