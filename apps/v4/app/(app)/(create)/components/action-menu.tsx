@@ -75,7 +75,7 @@ export function ActionMenuScript() {
                     window.parent.postMessage({
                       type: '${CMD_K_FORWARD_TYPE}',
                       key: e.key
-                    }, '*');
+                    }, window.location.origin);
                   }
                 }
               });
