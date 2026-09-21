@@ -39,6 +39,20 @@ function ToggleGroup({
         "group/toggle-group flex w-fit items-center gap-[--spacing(var(--gap))] rounded-md data-[spacing=default]:data-[variant=outline]:shadow-xs",
         className
       )}
+      onKeyDown={(event) => {
+        if (event.key === "Home" || event.key === "End") {
+          const items = event.currentTarget.querySelectorAll<HTMLElement>(
+            '[data-slot="toggle-group-item"]:not([data-disabled]):not([disabled])'
+          )
+          if (items.length > 0) {
+            event.preventDefault()
+            const target =
+              event.key === "Home" ? items[0] : items[items.length - 1]
+            target?.focus()
+          }
+        }
+        props.onKeyDown?.(event)
+      }}
       {...props}
     >
       <ToggleGroupContext.Provider value={{ variant, size, spacing }}>
