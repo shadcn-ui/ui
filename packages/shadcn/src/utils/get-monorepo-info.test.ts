@@ -59,6 +59,11 @@ describe("isMonorepoRoot", () => {
     expect(await isMonorepoRoot(tmpDir)).toBe(true)
   })
 
+  it("should detect turbo.json", async () => {
+    await fs.writeJson(path.join(tmpDir, "turbo.json"), { pipeline: {} })
+    expect(await isMonorepoRoot(tmpDir)).toBe(true)
+  })
+
   it("should return false for a regular project", async () => {
     await fs.writeJson(path.join(tmpDir, "package.json"), { name: "my-app" })
     expect(await isMonorepoRoot(tmpDir)).toBe(false)
@@ -89,6 +94,27 @@ describe("getWorkspacePatterns", () => {
       "apps/*",
       "packages/*",
     ])
+  })
+
+  it("should fall back to apps/* and packages/* for turbo.json-only monorepos", async () => {
+    // Only turbo.json present, no pnpm-workspace.yaml or package.json workspaces.
+    await fs.writeJson(path.join(tmpDir, "turbo.json"), { pipeline: {} })
+    await fs.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
+
+    await expect(getWorkspacePatterns(tmpDir)).resolves.toEqual([
+      "apps/*",
+      "packages/*",
+    ])
+  })
+
+  it("should not add turbo fallbacks when pnpm-workspace.yaml already provides patterns", async () => {
+    await fs.writeFile(
+      path.join(tmpDir, "pnpm-workspace.yaml"),
+      "packages:\n  - apps/*\n"
+    )
+    await fs.writeJson(path.join(tmpDir, "turbo.json"), { pipeline: {} })
+
+    await expect(getWorkspacePatterns(tmpDir)).resolves.toEqual(["apps/*"])
   })
 })
 
@@ -242,6 +268,23 @@ describe("getMonorepoTargets", () => {
     await fs.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
     const targets = await getMonorepoTargets(tmpDir)
     expect(targets).toEqual([])
+  })
+
+  it("should find targets in a turbo.json-only monorepo using convention fallbacks", async () => {
+    // turbo.json present but no pnpm-workspace.yaml or package.json workspaces.
+    await fs.writeJson(path.join(tmpDir, "turbo.json"), { pipeline: {} })
+    await fs.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
+
+    const webDir = path.join(tmpDir, "apps", "web")
+    await fs.ensureDir(webDir)
+    await fs.writeJson(path.join(webDir, "package.json"), { name: "web" })
+    await fs.writeFile(
+      path.join(webDir, "next.config.mjs"),
+      "export default {}"
+    )
+
+    const targets = await getMonorepoTargets(tmpDir)
+    expect(targets).toEqual([{ name: "apps/web", hasConfig: false }])
   })
 
   it("should detect astro, remix, and svelte configs", async () => {
