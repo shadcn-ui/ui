@@ -13,7 +13,7 @@
     "@next/eslint-plugin-next": "^16.2.6",
     "@typescript-eslint/eslint-plugin": "^8.60.0",
     "@typescript-eslint/parser": "^8.60.0",
-    "eslint": "^9",
+    "eslint": "^10",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-only-warn": "^1.2.1",
     "eslint-plugin-react": "^7.37.5",
