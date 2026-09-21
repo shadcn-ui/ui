@@ -22,7 +22,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "tailwindcss": "^4",
-    "typescript": "^6"
+    "typescript": "^7"
   },
   "exports": {
     "./globals.css": "./src/styles/globals.css",
