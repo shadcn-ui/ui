@@ -1,0 +1,14 @@
+{
+  "style": "new-york",
+  "tailwind": {
+    "css": "app/globals.css",
+    "baseColor": "neutral"
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  },
+  "registries": {
+    "@shadcn": "https://example.com/r/{name}.json"
+  }
+}
