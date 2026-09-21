@@ -19,7 +19,7 @@ export function PreviewSwitcher() {
   }
 
   return (
-    <div className="dark absolute right-3 bottom-3 z-20 flex items-center gap-1 rounded-xl bg-card/90 p-1 shadow-xl backdrop-blur-xl">
+    <div className="absolute right-3 bottom-3 z-20 flex items-center gap-1 rounded-xl bg-card/90 p-1 shadow-xl backdrop-blur-xl">
       {PREVIEW_ITEMS.map((item) => (
         <Button
           key={item.value}
