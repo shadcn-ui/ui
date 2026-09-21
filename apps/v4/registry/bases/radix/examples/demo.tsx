@@ -120,6 +120,7 @@ export function Demo() {
                     hugeicons="Copy01Icon"
                     phosphor="CopyIcon"
                     remixicon="RiFileCopyLine"
+                    solar="CopyIcon"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -129,6 +130,7 @@ export function Demo() {
                     hugeicons="AlertCircleIcon"
                     phosphor="WarningCircleIcon"
                     remixicon="RiErrorWarningLine"
+                    solar="DangerCircleIcon"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -138,6 +140,7 @@ export function Demo() {
                     hugeicons="Delete02Icon"
                     phosphor="TrashIcon"
                     remixicon="RiDeleteBinLine"
+                    solar="TrashBin2Icon"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -147,6 +150,7 @@ export function Demo() {
                     hugeicons="Share03Icon"
                     phosphor="ShareIcon"
                     remixicon="RiShareLine"
+                    solar="ShareIcon"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -156,6 +160,7 @@ export function Demo() {
                     hugeicons="ShoppingBag01Icon"
                     phosphor="BagIcon"
                     remixicon="RiShoppingBagLine"
+                    solar="BagIcon"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -165,6 +170,7 @@ export function Demo() {
                     hugeicons="MoreHorizontalCircle01Icon"
                     phosphor="DotsThreeIcon"
                     remixicon="RiMoreLine"
+                    solar="MenuDotsIcon"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -174,6 +180,7 @@ export function Demo() {
                     hugeicons="Loading03Icon"
                     phosphor="SpinnerIcon"
                     remixicon="RiLoaderLine"
+                    solar="LoaderIcon"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -183,6 +190,7 @@ export function Demo() {
                     hugeicons="PlusSignIcon"
                     phosphor="PlusIcon"
                     remixicon="RiAddLine"
+                    solar="AddIcon"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -192,6 +200,7 @@ export function Demo() {
                     hugeicons="MinusSignIcon"
                     phosphor="MinusIcon"
                     remixicon="RiSubtractLine"
+                    solar="MinusIcon"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -201,6 +210,7 @@ export function Demo() {
                     hugeicons="ArrowLeft02Icon"
                     phosphor="ArrowLeftIcon"
                     remixicon="RiArrowLeftLine"
+                    solar="ArrowLeftIcon"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -210,6 +220,7 @@ export function Demo() {
                     hugeicons="ArrowRight02Icon"
                     phosphor="ArrowRightIcon"
                     remixicon="RiArrowRightLine"
+                    solar="ArrowRightIcon"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -219,6 +230,7 @@ export function Demo() {
                     hugeicons="Tick02Icon"
                     phosphor="CheckIcon"
                     remixicon="RiCheckLine"
+                    solar="CheckIcon"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -228,6 +240,7 @@ export function Demo() {
                     hugeicons="ArrowDown01Icon"
                     phosphor="CaretDownIcon"
                     remixicon="RiArrowDownSLine"
+                    solar="AltArrowDownIcon"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -237,6 +250,7 @@ export function Demo() {
                     hugeicons="ArrowRight01Icon"
                     phosphor="CaretRightIcon"
                     remixicon="RiArrowRightSLine"
+                    solar="AltArrowRightIcon"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -246,6 +260,7 @@ export function Demo() {
                     hugeicons="Search01Icon"
                     phosphor="MagnifyingGlassIcon"
                     remixicon="RiSearchLine"
+                    solar="MagnifierIcon"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -255,6 +270,7 @@ export function Demo() {
                     hugeicons="Settings01Icon"
                     phosphor="GearIcon"
                     remixicon="RiSettingsLine"
+                    solar="SettingsIcon"
                   />
                 </Card>
               </div>
@@ -306,6 +322,7 @@ export function Demo() {
                           hugeicons="Search01Icon"
                           phosphor="MagnifyingGlassIcon"
                           remixicon="RiSearchLine"
+                          solar="MagnifierIcon"
                         />
                       </InputGroupText>
                     </InputGroupAddon>
@@ -368,6 +385,7 @@ export function Demo() {
                           hugeicons="ArrowUp01Icon"
                           phosphor="CaretUpIcon"
                           remixicon="RiArrowUpSLine"
+                          solar="AltArrowUpIcon"
                         />
                       </Button>
                     </DropdownMenuTrigger>

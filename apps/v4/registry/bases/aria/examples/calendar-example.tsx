@@ -70,6 +70,7 @@ function CalendarInPopover() {
             phosphor="CalendarBlankIcon"
             remixicon="RiCalendarLine"
             data-icon="inline-start"
+            solar="CalendarIcon"
           />
           Open Calendar
         </Button>
@@ -219,6 +220,7 @@ function CalendarWithTime() {
                     phosphor="ClockIcon"
                     remixicon="RiTimeLine"
                     className="text-muted-foreground"
+                    solar="ClockCircleIcon"
                   />
                 </InputGroupAddon>
               </InputGroup>
@@ -241,6 +243,7 @@ function CalendarWithTime() {
                     phosphor="ClockIcon"
                     remixicon="RiTimeLine"
                     className="text-muted-foreground"
+                    solar="ClockCircleIcon"
                   />
                 </InputGroupAddon>
               </InputGroup>
@@ -356,6 +359,7 @@ function DatePickerSimple() {
               phosphor="CalendarBlankIcon"
               remixicon="RiCalendarLine"
               data-icon="inline-start"
+              solar="CalendarIcon"
             />
             {date ? (
               date
@@ -397,6 +401,7 @@ function DatePickerWithRange() {
               phosphor="CalendarBlankIcon"
               remixicon="RiCalendarLine"
               data-icon="inline-start"
+              solar="CalendarIcon"
             />
             {date?.start && date.end ? (
               new Intl.DateTimeFormat(undefined, {
@@ -449,6 +454,7 @@ function DataPickerWithDropdowns() {
               remixicon="RiArrowDownSLine"
               data-icon="inline-start"
               className="ml-auto"
+              solar="AltArrowDownIcon"
             />
           </Button>
           <Popover className="w-auto p-0" placement="bottom start">

@@ -58,6 +58,7 @@ function SelectTrigger({
           phosphor="CaretDownIcon"
           remixicon="RiArrowDownSLine"
           className="cn-select-trigger-icon pointer-events-none"
+          solar="AltArrowDownIcon"
         />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
@@ -138,6 +139,7 @@ function SelectItem({
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
             className="cn-select-item-indicator-icon pointer-events-none"
+            solar="CheckIcon"
           />
         </SelectPrimitive.ItemIndicator>
       </span>
@@ -175,6 +177,7 @@ function SelectScrollUpButton({
         hugeicons="ArrowUp01Icon"
         phosphor="CaretUpIcon"
         remixicon="RiArrowUpSLine"
+        solar="AltArrowUpIcon"
       />
     </SelectPrimitive.ScrollUpButton>
   )
@@ -196,6 +199,7 @@ function SelectScrollDownButton({
         hugeicons="ArrowDown01Icon"
         phosphor="CaretDownIcon"
         remixicon="RiArrowDownSLine"
+        solar="AltArrowDownIcon"
       />
     </SelectPrimitive.ScrollDownButton>
   )

@@ -136,6 +136,7 @@ function QuestionnaireChoice({
           hugeicons="Tick02Icon"
           phosphor="CheckIcon"
           remixicon="RiCheckLine"
+          solar="CheckIcon"
         />
       </span>
       <QuestionnairePrimitive.ChoiceLabel

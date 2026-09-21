@@ -42,6 +42,7 @@ export function PartSource({
             phosphor="ArrowSquareOutIcon"
             remixicon="RiExternalLinkLine"
             className="size-4"
+            solar="ExitIcon"
           />
         </span>
         <span className="min-w-0 flex-1">
@@ -77,6 +78,7 @@ export function PartSource({
             phosphor="FileSearchIcon"
             remixicon="RiFileSearchLine"
             className="size-4"
+            solar="FileSearchIcon"
           />
         </span>
         <span className="min-w-0 flex-1">

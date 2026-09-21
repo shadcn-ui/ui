@@ -101,6 +101,7 @@ function Sheet({
                 hugeicons="Cancel01Icon"
                 phosphor="XIcon"
                 remixicon="RiCloseLine"
+                solar="CloseIcon"
               />
               <span className="sr-only">Close</span>
             </SheetClose>

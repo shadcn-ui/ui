@@ -25,6 +25,7 @@ export function FrontDoor() {
               phosphor="LockKeyIcon"
               remixicon="RiLockLine"
               className="size-4"
+              solar="LockIcon"
             />
           </div>
         </CardAction>

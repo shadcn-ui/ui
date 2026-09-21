@@ -208,6 +208,7 @@ export default function SidebarFloatingExample() {
                           phosphor="DotsThreeOutlineIcon"
                           remixicon="RiMoreLine"
                           className="ml-auto"
+                          solar="MenuDotsIcon"
                         />
                       </SidebarMenuButton>
                     </DropdownMenuTrigger>

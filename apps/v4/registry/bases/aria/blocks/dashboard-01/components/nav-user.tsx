@@ -53,6 +53,7 @@ export function NavUser({
               phosphor="DotsThreeVerticalIcon"
               remixicon="RiMore2Line"
               className="ml-auto size-4"
+              solar="MenuDotsVerticalIcon"
             />
           </SidebarMenuButton>
           <DropdownMenu
@@ -85,6 +86,7 @@ export function NavUser({
                   hugeicons="UserCircle02Icon"
                   phosphor="UserCircleIcon"
                   remixicon="RiUserLine"
+                  solar="UserCircleIcon"
                 />
                 Account
               </DropdownMenuItem>
@@ -95,6 +97,7 @@ export function NavUser({
                   hugeicons="CreditCardIcon"
                   phosphor="CreditCardIcon"
                   remixicon="RiBankCardLine"
+                  solar="CardIcon"
                 />
                 Billing
               </DropdownMenuItem>
@@ -105,6 +108,7 @@ export function NavUser({
                   hugeicons="Notification03Icon"
                   phosphor="BellIcon"
                   remixicon="RiNotification3Line"
+                  solar="BellIcon"
                 />
                 Notifications
               </DropdownMenuItem>
@@ -117,6 +121,7 @@ export function NavUser({
                 hugeicons="Logout01Icon"
                 phosphor="SignOutIcon"
                 remixicon="RiLogoutBoxLine"
+                solar="LogoutIcon"
               />
               Log out
             </DropdownMenuItem>

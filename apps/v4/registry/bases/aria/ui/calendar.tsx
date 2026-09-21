@@ -157,6 +157,7 @@ function CalendarInner({
             phosphor="CaretLeftIcon"
             remixicon="RiArrowLeftSLine"
             className="cn-rtl-flip size-4"
+            solar="AltArrowLeftIcon"
           />
         </Button>
         <Button
@@ -171,6 +172,7 @@ function CalendarInner({
             phosphor="CaretRightIcon"
             remixicon="RiArrowRightSLine"
             className="cn-rtl-flip size-4"
+            solar="AltArrowRightIcon"
           />
         </Button>
       </header>

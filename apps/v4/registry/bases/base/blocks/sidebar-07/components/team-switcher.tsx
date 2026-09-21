@@ -60,6 +60,7 @@ export function TeamSwitcher({
               phosphor="CaretUpDownIcon"
               remixicon="RiArrowUpDownLine"
               className="ml-auto"
+              solar="RoundSortVerticalIcon"
             />
           </DropdownMenuTrigger>
           <DropdownMenuContent
@@ -97,6 +98,7 @@ export function TeamSwitcher({
                     phosphor="PlusIcon"
                     remixicon="RiAddLine"
                     className="size-4"
+                    solar="AddIcon"
                   />
                 </div>
                 <div className="font-medium text-muted-foreground">

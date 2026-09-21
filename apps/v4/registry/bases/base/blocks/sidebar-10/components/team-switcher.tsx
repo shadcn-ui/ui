@@ -50,6 +50,7 @@ export function TeamSwitcher({
               phosphor="CaretDownIcon"
               remixicon="RiArrowDownSLine"
               className="opacity-50"
+              solar="AltArrowDownIcon"
             />
           </DropdownMenuTrigger>
           <DropdownMenuContent
@@ -87,6 +88,7 @@ export function TeamSwitcher({
                     phosphor="PlusIcon"
                     remixicon="RiAddLine"
                     className="size-4"
+                    solar="AddIcon"
                   />
                 </div>
                 <div className="font-medium text-muted-foreground">

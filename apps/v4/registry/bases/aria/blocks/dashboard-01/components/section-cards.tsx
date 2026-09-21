@@ -28,6 +28,7 @@ export function SectionCards() {
                 hugeicons="ChartUpIcon"
                 phosphor="TrendUpIcon"
                 remixicon="RiArrowUpLine"
+                solar="CourseUpIcon"
               />
               +12.5%
             </Badge>
@@ -43,6 +44,7 @@ export function SectionCards() {
               phosphor="TrendUpIcon"
               remixicon="RiArrowUpLine"
               className="size-4"
+              solar="CourseUpIcon"
             />
           </div>
           <div className="text-muted-foreground">
@@ -64,6 +66,7 @@ export function SectionCards() {
                 hugeicons="ChartDownIcon"
                 phosphor="TrendDownIcon"
                 remixicon="RiArrowDownLine"
+                solar="DiagramDownIcon"
               />
               -20%
             </Badge>
@@ -79,6 +82,7 @@ export function SectionCards() {
               phosphor="TrendDownIcon"
               remixicon="RiArrowDownLine"
               className="size-4"
+              solar="DiagramDownIcon"
             />
           </div>
           <div className="text-muted-foreground">
@@ -100,6 +104,7 @@ export function SectionCards() {
                 hugeicons="ChartUpIcon"
                 phosphor="TrendUpIcon"
                 remixicon="RiArrowUpLine"
+                solar="CourseUpIcon"
               />
               +12.5%
             </Badge>
@@ -115,6 +120,7 @@ export function SectionCards() {
               phosphor="TrendUpIcon"
               remixicon="RiArrowUpLine"
               className="size-4"
+              solar="CourseUpIcon"
             />
           </div>
           <div className="text-muted-foreground">Engagement exceed targets</div>
@@ -134,6 +140,7 @@ export function SectionCards() {
                 hugeicons="ChartUpIcon"
                 phosphor="TrendUpIcon"
                 remixicon="RiArrowUpLine"
+                solar="CourseUpIcon"
               />
               +4.5%
             </Badge>
@@ -149,6 +156,7 @@ export function SectionCards() {
               phosphor="TrendUpIcon"
               remixicon="RiArrowUpLine"
               className="size-4"
+              solar="CourseUpIcon"
             />
           </div>
           <div className="text-muted-foreground">Meets growth projections</div>

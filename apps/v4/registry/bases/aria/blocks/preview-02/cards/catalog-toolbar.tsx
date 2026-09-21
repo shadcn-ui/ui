@@ -23,6 +23,7 @@ export function CatalogToolbar() {
             hugeicons="Search01Icon"
             phosphor="MagnifyingGlassIcon"
             remixicon="RiSearchLine"
+            solar="MagnifierIcon"
           />
         </InputGroupAddon>
         <InputGroupInput placeholder="Search releases or catalog..." />
@@ -34,6 +35,7 @@ export function CatalogToolbar() {
           hugeicons="Add01Icon"
           phosphor="PlusIcon"
           remixicon="RiAddLine"
+          solar="AddIcon"
         />
         Upload New Release
       </Button>

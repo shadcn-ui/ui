@@ -183,6 +183,9 @@ importers:
       '@shadcn/react':
         specifier: workspace:*
         version: link:../../packages/react
+      '@solar-icons/react':
+        specifier: ^2.3.0
+        version: 2.3.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@streamdown/code':
         specifier: ^1.1.1
         version: 1.1.1(react@19.2.3)
@@ -3839,6 +3842,13 @@ packages:
   '@sindresorhus/merge-streams@4.0.0':
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
+
+  '@solar-icons/react@2.3.0':
+    resolution: {integrity: sha512-ihrnDrdksuX76wsea9i0jlEtln0Vgkzj0TxhIJ2JRWhDSwvX+ItXT3KR30C6ldMmFrEMcbpRCfGxOIHNlOZr0g==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      react: '>= 16.8'
+      react-dom: '>= 16.8'
 
   '@standard-schema/spec@1.0.0':
     resolution: {integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==}
@@ -12841,6 +12851,11 @@ snapshots:
   '@sindresorhus/is@0.14.0': {}
 
   '@sindresorhus/merge-streams@4.0.0': {}
+
+  '@solar-icons/react@2.3.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+    dependencies:
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
 
   '@standard-schema/spec@1.0.0': {}
 

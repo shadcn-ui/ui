@@ -251,6 +251,7 @@ function MenubarWithIcons() {
                   hugeicons="FileIcon"
                   phosphor="FileIcon"
                   remixicon="RiFileLine"
+                  solar="FileIcon"
                 />
                 New File <MenubarShortcut>⌘N</MenubarShortcut>
               </MenubarItem>
@@ -261,6 +262,7 @@ function MenubarWithIcons() {
                   hugeicons="FolderIcon"
                   phosphor="FolderIcon"
                   remixicon="RiFolderLine"
+                  solar="FolderIcon"
                 />
                 Open Folder
               </MenubarItem>
@@ -274,6 +276,7 @@ function MenubarWithIcons() {
                   hugeicons="FloppyDiskIcon"
                   phosphor="FloppyDiskIcon"
                   remixicon="RiSaveLine"
+                  solar="DisketteIcon"
                 />
                 Save <MenubarShortcut>⌘S</MenubarShortcut>
               </MenubarItem>
@@ -291,6 +294,7 @@ function MenubarWithIcons() {
                   hugeicons="DashedLineCircleIcon"
                   phosphor="CircleDashedIcon"
                   remixicon="RiLoaderLine"
+                  solar="CircleDashedIcon"
                 />
                 Settings
               </MenubarItem>
@@ -301,6 +305,7 @@ function MenubarWithIcons() {
                   hugeicons="DashedLineCircleIcon"
                   phosphor="CircleDashedIcon"
                   remixicon="RiLoaderLine"
+                  solar="CircleDashedIcon"
                 />
                 Help
               </MenubarItem>
@@ -312,6 +317,7 @@ function MenubarWithIcons() {
                   hugeicons="DashedLineCircleIcon"
                   phosphor="CircleDashedIcon"
                   remixicon="RiLoaderLine"
+                  solar="CircleDashedIcon"
                 />
                 Delete
               </MenubarItem>
@@ -388,6 +394,7 @@ function MenubarFormat() {
                   hugeicons="TextBoldIcon"
                   phosphor="TextBIcon"
                   remixicon="RiBold"
+                  solar="TextBoldIcon"
                 />
                 Bold <MenubarShortcut>⌘B</MenubarShortcut>
               </MenubarItem>
@@ -398,6 +405,7 @@ function MenubarFormat() {
                   hugeicons="TextItalicIcon"
                   phosphor="TextItalicIcon"
                   remixicon="RiItalic"
+                  solar="TextItalicIcon"
                 />
                 Italic <MenubarShortcut>⌘I</MenubarShortcut>
               </MenubarItem>
@@ -408,6 +416,7 @@ function MenubarFormat() {
                   hugeicons="TextUnderlineIcon"
                   phosphor="TextUnderlineIcon"
                   remixicon="RiUnderline"
+                  solar="TextUnderlineIcon"
                 />
                 Underline <MenubarShortcut>⌘U</MenubarShortcut>
               </MenubarItem>
@@ -451,6 +460,7 @@ function MenubarInsert() {
                   hugeicons="ImageIcon"
                   phosphor="ImageIcon"
                   remixicon="RiImageLine"
+                  solar="GalleryIcon"
                 />
                 Media
               </MenubarSubTrigger>
@@ -471,6 +481,7 @@ function MenubarInsert() {
                   hugeicons="LinkIcon"
                   phosphor="LinkIcon"
                   remixicon="RiLinksLine"
+                  solar="LinkIcon"
                 />
                 Link <MenubarShortcut>⌘K</MenubarShortcut>
               </MenubarItem>
@@ -481,6 +492,7 @@ function MenubarInsert() {
                   hugeicons="TableIcon"
                   phosphor="TableIcon"
                   remixicon="RiTableLine"
+                  solar="TableIcon"
                 />
                 Table
               </MenubarItem>
@@ -498,6 +510,7 @@ function MenubarInsert() {
                   hugeicons="SearchIcon"
                   phosphor="MagnifyingGlassIcon"
                   remixicon="RiSearchLine"
+                  solar="MagnifierIcon"
                 />
                 Find & Replace <MenubarShortcut>⌘F</MenubarShortcut>
               </MenubarItem>
@@ -508,6 +521,7 @@ function MenubarInsert() {
                   hugeicons="Tick02Icon"
                   phosphor="CheckIcon"
                   remixicon="RiCheckLine"
+                  solar="CheckIcon"
                 />
                 Spell Check
               </MenubarItem>
@@ -534,6 +548,7 @@ function MenubarDestructive() {
                   hugeicons="FileIcon"
                   phosphor="FileIcon"
                   remixicon="RiFileLine"
+                  solar="FileIcon"
                 />
                 New File <MenubarShortcut>⌘N</MenubarShortcut>
               </MenubarItem>
@@ -544,6 +559,7 @@ function MenubarDestructive() {
                   hugeicons="FolderIcon"
                   phosphor="FolderIcon"
                   remixicon="RiFolderLine"
+                  solar="FolderIcon"
                 />
                 Open Folder
               </MenubarItem>
@@ -557,6 +573,7 @@ function MenubarDestructive() {
                   hugeicons="DeleteIcon"
                   phosphor="TrashIcon"
                   remixicon="RiDeleteBinLine"
+                  solar="TrashBin2Icon"
                 />
                 Delete File <MenubarShortcut>⌘⌫</MenubarShortcut>
               </MenubarItem>
@@ -574,6 +591,7 @@ function MenubarDestructive() {
                   hugeicons="UserIcon"
                   phosphor="UserIcon"
                   remixicon="RiUserLine"
+                  solar="UserIcon"
                 />
                 Profile
               </MenubarItem>
@@ -584,6 +602,7 @@ function MenubarDestructive() {
                   hugeicons="SettingsIcon"
                   phosphor="GearIcon"
                   remixicon="RiSettingsLine"
+                  solar="SettingsIcon"
                 />
                 Settings
               </MenubarItem>
@@ -597,6 +616,7 @@ function MenubarDestructive() {
                   hugeicons="LogoutIcon"
                   phosphor="SignOutIcon"
                   remixicon="RiLogoutBoxLine"
+                  solar="LogoutIcon"
                 />
                 Sign out
               </MenubarItem>
@@ -610,6 +630,7 @@ function MenubarDestructive() {
                   hugeicons="DeleteIcon"
                   phosphor="TrashIcon"
                   remixicon="RiDeleteBinLine"
+                  solar="TrashBin2Icon"
                 />
                 Delete
               </MenubarItem>
@@ -647,6 +668,7 @@ function MenubarInDialog() {
                       hugeicons="CopyIcon"
                       phosphor="CopyIcon"
                       remixicon="RiFileCopyLine"
+                      solar="CopyIcon"
                     />
                     Copy
                   </MenubarItem>
@@ -657,6 +679,7 @@ function MenubarInDialog() {
                       hugeicons="ScissorIcon"
                       phosphor="ScissorsIcon"
                       remixicon="RiScissorsLine"
+                      solar="ScissorsIcon"
                     />
                     Cut
                   </MenubarItem>
@@ -667,6 +690,7 @@ function MenubarInDialog() {
                       hugeicons="ClipboardIcon"
                       phosphor="ClipboardIcon"
                       remixicon="RiClipboardLine"
+                      solar="ClipboardPasteIcon"
                     />
                     Paste
                   </MenubarItem>
@@ -695,6 +719,7 @@ function MenubarInDialog() {
                       hugeicons="DeleteIcon"
                       phosphor="TrashIcon"
                       remixicon="RiDeleteBinLine"
+                      solar="TrashBin2Icon"
                     />
                     Delete
                   </MenubarItem>
@@ -741,6 +766,7 @@ function MenubarWithInset() {
                   hugeicons="CopyIcon"
                   phosphor="CopyIcon"
                   remixicon="RiFileCopyLine"
+                  solar="CopyIcon"
                 />
                 Copy
               </MenubarItem>
@@ -751,6 +777,7 @@ function MenubarWithInset() {
                   hugeicons="ScissorIcon"
                   phosphor="ScissorsIcon"
                   remixicon="RiScissorsLine"
+                  solar="ScissorsIcon"
                 />
                 Cut
               </MenubarItem>

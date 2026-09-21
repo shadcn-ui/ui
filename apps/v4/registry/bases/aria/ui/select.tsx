@@ -100,6 +100,7 @@ function SelectTrigger({
         phosphor="CaretDownIcon"
         remixicon="RiArrowDownSLine"
         className="cn-select-trigger-icon pointer-events-none"
+        solar="AltArrowDownIcon"
       />
     </ButtonPrimitive>
   )
@@ -200,6 +201,7 @@ function SelectInput({ className, ...props }: SearchFieldProps) {
             phosphor="MagnifyingGlassIcon"
             remixicon="RiSearchLine"
             className="cn-command-input-icon"
+            solar="MagnifierIcon"
           />
         </InputGroupAddon>
       </InputGroup>
@@ -249,6 +251,7 @@ function SelectItem({
                 phosphor="CheckIcon"
                 remixicon="RiCheckLine"
                 className="cn-select-item-indicator-icon pointer-events-none"
+                solar="CheckIcon"
               />
             ) : null}
           </span>

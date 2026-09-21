@@ -44,6 +44,7 @@ export function NavMain({
                   phosphor="DotsThreeOutlineIcon"
                   remixicon="RiMoreLine"
                   className="ml-auto"
+                  solar="MenuDotsIcon"
                 />
               </SidebarMenuButton>
               {item.items?.length ? (

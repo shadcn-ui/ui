@@ -43,6 +43,7 @@ export function VersionSwitcher({
                 phosphor="RowsIcon"
                 remixicon="RiGalleryLine"
                 className="size-4"
+                solar="GalleryIcon"
               />
             </div>
             <div className="flex flex-col gap-0.5 leading-none">
@@ -56,6 +57,7 @@ export function VersionSwitcher({
               phosphor="CaretUpDownIcon"
               remixicon="RiArrowUpDownLine"
               className="ml-auto"
+              solar="RoundSortVerticalIcon"
             />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start">
@@ -73,6 +75,7 @@ export function VersionSwitcher({
                     phosphor="CheckIcon"
                     remixicon="RiCheckLine"
                     className="ml-auto"
+                    solar="CheckIcon"
                   />
                 )}
               </DropdownMenuItem>

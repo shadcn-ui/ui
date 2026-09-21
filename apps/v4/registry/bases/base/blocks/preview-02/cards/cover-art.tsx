@@ -31,6 +31,7 @@ export function CoverArt() {
               phosphor="ImageIcon"
               remixicon="RiImageLine"
               className="size-10 text-muted-foreground/50"
+              solar="GalleryIcon"
             />
           </label>
         </Item>

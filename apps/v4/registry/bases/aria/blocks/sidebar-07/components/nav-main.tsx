@@ -51,6 +51,7 @@ export function NavMain({
                 phosphor="CaretRightIcon"
                 remixicon="RiArrowRightSLine"
                 className="ml-auto transition-transform duration-200 group-data-expanded/collapsible:rotate-90"
+                solar="AltArrowRightIcon"
               />
             </SidebarMenuButton>
             <CollapsibleContent>

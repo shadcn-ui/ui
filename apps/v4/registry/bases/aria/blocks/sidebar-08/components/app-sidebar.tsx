@@ -34,6 +34,7 @@ const data = {
           hugeicons="ComputerTerminalIcon"
           phosphor="TerminalIcon"
           remixicon="RiTerminalBoxLine"
+          solar="ProgrammingIcon"
         />
       ),
       isActive: true,
@@ -62,6 +63,7 @@ const data = {
           hugeicons="RoboticIcon"
           phosphor="RobotIcon"
           remixicon="RiRobotLine"
+          solar="BotIcon"
         />
       ),
       items: [
@@ -89,6 +91,7 @@ const data = {
           hugeicons="BookOpen02Icon"
           phosphor="BookOpenIcon"
           remixicon="RiBookOpenLine"
+          solar="Book2Icon"
         />
       ),
       items: [
@@ -120,6 +123,7 @@ const data = {
           hugeicons="Settings05Icon"
           phosphor="GearIcon"
           remixicon="RiSettingsLine"
+          solar="SettingsMinimalisticIcon"
         />
       ),
       items: [
@@ -153,6 +157,7 @@ const data = {
           hugeicons="ChartRingIcon"
           phosphor="LifebuoyIcon"
           remixicon="RiLifebuoyLine"
+          solar="HelpIcon"
         />
       ),
     },
@@ -166,6 +171,7 @@ const data = {
           hugeicons="SentIcon"
           phosphor="PaperPlaneTiltIcon"
           remixicon="RiSendPlaneLine"
+          solar="FileSendIcon"
         />
       ),
     },
@@ -181,6 +187,7 @@ const data = {
           hugeicons="CropIcon"
           phosphor="CropIcon"
           remixicon="RiCropLine"
+          solar="FrameIcon"
         />
       ),
     },
@@ -194,6 +201,7 @@ const data = {
           hugeicons="PieChartIcon"
           phosphor="ChartPieIcon"
           remixicon="RiPieChartLine"
+          solar="PieChartIcon"
         />
       ),
     },
@@ -207,6 +215,7 @@ const data = {
           hugeicons="MapsIcon"
           phosphor="MapTrifoldIcon"
           remixicon="RiMapLine"
+          solar="MapIcon"
         />
       ),
     },
@@ -227,6 +236,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   phosphor="CommandIcon"
                   remixicon="RiCommandLine"
                   className="size-4"
+                  solar="ProgrammingIcon"
                 />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">

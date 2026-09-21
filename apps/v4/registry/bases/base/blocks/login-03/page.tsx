@@ -16,6 +16,7 @@ export default function LoginPage() {
               phosphor="RowsIcon"
               remixicon="RiGalleryLine"
               className="size-4"
+              solar="GalleryIcon"
             />
           </div>
           Acme Inc.

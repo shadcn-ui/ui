@@ -62,6 +62,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 hugeicons="PlusSignIcon"
                 phosphor="PlusIcon"
                 remixicon="RiAddLine"
+                solar="AddIcon"
               />
               <span>New Calendar</span>
             </SidebarMenuButton>

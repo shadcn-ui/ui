@@ -223,6 +223,7 @@ function MessageScrollerDemo() {
                     hugeicons="ArrowUp02Icon"
                     phosphor="ArrowUpIcon"
                     remixicon="RiArrowUpLine"
+                    solar="ArrowUpIcon"
                   />
                   <span className="sr-only">Send</span>
                 </InputGroupButton>
@@ -239,6 +240,7 @@ function MessageScrollerDemo() {
                     hugeicons="StopCircleIcon"
                     phosphor="StopCircleIcon"
                     remixicon="RiStopCircleLine"
+                    solar="StopCircleIcon"
                   />
                   <span className="sr-only">Stop</span>
                 </InputGroupButton>

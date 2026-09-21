@@ -163,6 +163,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     phosphor="RowsIcon"
                     remixicon="RiGalleryLine"
                     className="size-4"
+                    solar="GalleryIcon"
                   />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
