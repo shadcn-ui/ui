@@ -213,7 +213,7 @@ export const ui: Registry["items"] = [
         docs: "https://ui.shadcn.com/docs/components/radix/carousel",
         examples:
           "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/carousel-example.tsx",
-        api: "https://www.embla-carousel.com/get-started/react",
+        api: "https://www.embla-carousel.com/docs/get-started/react",
       },
     },
   },
@@ -287,7 +287,7 @@ export const ui: Registry["items"] = [
         docs: "https://ui.shadcn.com/docs/components/radix/combobox",
         examples:
           "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/combobox-example.tsx",
-        api: "https://base-ui.com/react/components/combobox",
+        api: "https://base-ui.com/react/components/combobox.md",
       },
     },
   },
