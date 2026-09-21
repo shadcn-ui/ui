@@ -71,6 +71,8 @@ function Item({
       data-slot="item"
       data-variant={variant}
       data-size={size}
+      // Only when Item renders a plain div. As a link it keeps its link role.
+      role={"href" in props ? undefined : "listitem"}
       className={cn(itemVariants({ variant, size, className }))}
       {...props}
     />
