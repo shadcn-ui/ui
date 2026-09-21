@@ -300,8 +300,10 @@ function isAliasKey(
 }
 
 export function findCommonRoot(cwd: string, resolvedPath: string) {
-  const parts1 = cwd.split(path.sep)
-  const parts2 = resolvedPath.split(path.sep)
+  // Split on either separator so mixed slashes (e.g. a backslash cwd and a
+  // forward-slash resolvedPath on Windows) still share their common segments.
+  const parts1 = cwd.split(/[\\/]/)
+  const parts2 = resolvedPath.split(/[\\/]/)
   const commonParts = []
 
   for (let i = 0; i < Math.min(parts1.length, parts2.length); i++) {
