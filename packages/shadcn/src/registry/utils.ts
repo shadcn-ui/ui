@@ -1,6 +1,7 @@
 import * as fs from "fs/promises"
 import { tmpdir } from "os"
 import * as path from "path"
+import { BUILTIN_MODULES } from "@/src/registry/constants"
 import {
   configSchema,
   registryItemFileSchema,
@@ -38,6 +39,15 @@ export function getDependencyFromModuleSpecifier(
 ): string | null {
   // Skip if the dependency matches any pattern in the skip list
   if (DEPENDENCY_SKIP_LIST.some((pattern) => pattern.test(moduleSpecifier))) {
+    return null
+  }
+
+  // Skip Node.js/Bun built-in modules. These are not npm dependencies and
+  // should never be added to package.json.
+  if (
+    BUILTIN_MODULES.has(moduleSpecifier) ||
+    BUILTIN_MODULES.has(moduleSpecifier.split("/")[0])
+  ) {
     return null
   }
 

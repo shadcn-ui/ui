@@ -69,6 +69,19 @@ describe("getDependencyFromModuleSpecifier", () => {
   })
 
   it.each([
+    // Bare Node.js built-in modules
+    "fs",
+    "path",
+    "crypto",
+    "fs/promises",
+    "stream/promises",
+    // Bun built-in modules
+    "bun:sqlite",
+  ])("should return null for built-in module %s", (moduleSpecifier) => {
+    expect(getDependencyFromModuleSpecifier(moduleSpecifier)).toBe(null)
+  })
+
+  it.each([
     ["", ""],
     [" ", " "],
     ["/", ""],
