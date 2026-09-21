@@ -247,7 +247,7 @@ describe("transformCssVarsV4", () => {
                 --primary: oklch(0.72 0.11 178);
               }
 
-              @theme inline {
+      @theme inline {
                 --color-background: var(--background);
                 --color-foreground: var(--foreground);
                 --color-primary: var(--primary);
@@ -865,7 +865,7 @@ describe("transformCssVarsV4", () => {
       @custom-variant dark (&:is(.dark *));
               @plugin "tailwindcss-animate";
 
-              @plugin "@tailwindcss/typography";
+      @plugin "@tailwindcss/typography";
               "
     `)
   })
