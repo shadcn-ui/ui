@@ -1,7 +1,7 @@
 "use client"
 
 import { FrameIcon, MapIcon, PieChartIcon, PlusIcon } from "lucide-react"
-import { toast, Toaster } from "sonner"
+import { toast } from "sonner"
 
 import {
   Sidebar,
@@ -19,19 +19,18 @@ import {
 export default function AppSidebar() {
   return (
     <SidebarProvider>
-      <Toaster
-        position="bottom-left"
-        toastOptions={{
-          className: "ml-[160px]",
-        }}
-      />
       <Sidebar>
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupLabel>Projects</SidebarGroupLabel>
             <SidebarGroupAction
               title="Add Project"
-              onClick={() => toast("You clicked the group action!")}
+              onClick={() =>
+                toast("You clicked the group action!", {
+                  position: "bottom-left",
+                  className: "ml-[160px]",
+                })
+              }
             >
               <PlusIcon /> <span className="sr-only">Add Project</span>
             </SidebarGroupAction>
