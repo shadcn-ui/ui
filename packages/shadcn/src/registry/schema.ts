@@ -102,12 +102,14 @@ export const registryItemFileSchema = z.discriminatedUnion("type", [
   z.object({
     path: z.string(),
     content: z.string().optional(),
+    encoding: z.literal("base64").optional(),
     type: z.enum(["registry:file", "registry:page"]),
     target: z.string(),
   }),
   z.object({
     path: z.string(),
     content: z.string().optional(),
+    encoding: z.literal("base64").optional(),
     type: registryItemTypeSchema.exclude(["registry:file", "registry:page"]),
     target: z.string().optional(),
   }),

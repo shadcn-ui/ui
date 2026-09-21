@@ -171,11 +171,14 @@ export async function createRegistryItem(
         result.itemSourcesByItem,
         fallbackDir
       )
-      file.content = await readRegistryItemFileContent(
-        item.name,
-        sourceFile.path,
-        sourcePath,
-        source
+      Object.assign(
+        file,
+        await readRegistryItemFileContent(
+          item.name,
+          sourceFile.path,
+          sourcePath,
+          source
+        )
       )
     })
   )
@@ -190,7 +193,22 @@ async function readRegistryItemFileContent(
   source: RegistryItemSource | undefined
 ) {
   try {
-    return await fs.readFile(sourcePath, "utf-8")
+    const content = await fs.readFile(sourcePath)
+    const utf8Content = content.toString("utf-8")
+
+    if (
+      content.includes(0) ||
+      !content.equals(Buffer.from(utf8Content, "utf-8"))
+    ) {
+      return {
+        content: content.toString("base64"),
+        encoding: "base64" as const,
+      }
+    }
+
+    return {
+      content: utf8Content,
+    }
   } catch (error) {
     throw new RegistryLocalFileError(sourcePath, error, {
       message: `Failed to read file "${filePath}" for registry item "${itemName}" (${formatItemSource(
