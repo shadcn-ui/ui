@@ -30,7 +30,15 @@
         "aria-mira",
         "aria-luma",
         "aria-sera",
-        "aria-rhea"
+        "aria-rhea",
+        "ark-vega",
+        "ark-nova",
+        "ark-maia",
+        "ark-lyra",
+        "ark-mira",
+        "ark-luma",
+        "ark-sera",
+        "ark-rhea"
       ]
     },
     "tailwind": {

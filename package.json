@@ -91,7 +91,8 @@
   "pnpm": {
     "overrides": {
       "@types/react": "19.2.2",
-      "@types/react-dom": "19.2.2"
+      "@types/react-dom": "19.2.2",
+      "@internationalized/date": "3.12.2"
     },
     "packageExtensions": {
       "@hookform/resolvers": {

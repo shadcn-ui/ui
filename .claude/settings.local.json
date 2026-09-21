@@ -9,6 +9,5 @@
       "WebFetch(domain:github.com)"
     ],
     "deny": []
-  },
-  "outputStyle": "Explanatory"
+  }
 }

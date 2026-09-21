@@ -12,6 +12,10 @@ export const legacyStyles = [
     title: "Radix Nova",
   },
   {
+    name: "ark-nova",
+    title: "Ark Nova",
+  },
+  {
     name: "aria-nova",
     title: "React Aria Nova",
   },
