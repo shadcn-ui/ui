@@ -6,6 +6,7 @@ import {
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
+import path from "path"
 import prompts from "prompts"
 import {
   afterEach,
@@ -111,7 +112,7 @@ describe("createProject", () => {
     })
 
     expect(result).toEqual({
-      projectPath: "/test/my-app",
+      projectPath: path.join("/test", "my-app"),
       projectName: "my-app",
       template: "next",
     })
@@ -130,7 +131,7 @@ describe("createProject", () => {
     })
 
     expect(result).toEqual({
-      projectPath: "/test/my-monorepo",
+      projectPath: path.join("/test", "my-monorepo"),
       projectName: "my-monorepo",
       template: "next",
     })
@@ -148,8 +149,10 @@ describe("createProject", () => {
 
   it("should throw error if project path already exists", async () => {
     // Mock fs.existsSync to return true only for the specific package.json path
-    vi.mocked(fs.existsSync).mockImplementation((path: any) => {
-      return path.toString().includes("existing-app/package.json")
+    vi.mocked(fs.existsSync).mockImplementation((inputPath: any) => {
+      return inputPath
+        .toString()
+        .includes(path.join("existing-app", "package.json"))
     })
     vi.mocked(prompts).mockResolvedValue({ type: "next", name: "existing-app" })
 
