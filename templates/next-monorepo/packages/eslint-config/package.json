@@ -20,7 +20,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-turbo": "^2.9.15",
     "globals": "^17.6.0",
-    "typescript": "^5",
+    "typescript": "^7",
     "typescript-eslint": "^8.60.0"
   }
 }
