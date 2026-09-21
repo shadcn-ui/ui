@@ -2257,6 +2257,22 @@ describe("resolveModuleByProbablePath", () => {
     ).toBe("components/button.jsx")
   })
 
+  it("should resolve an index file under a platform-native project root", () => {
+    // path.resolve makes the root native (C:\foo\bar on Windows), which is what
+    // a real project root looks like. The index candidate is only reachable
+    // through the fast path, so a non-POSIX separator here loses it entirely.
+    const cwd = path.resolve("/foo/bar")
+    const files = ["components/button/index.tsx", "components/card.tsx"]
+    const config = { resolvedPaths: { cwd } } as Config
+    expect(
+      resolveModuleByProbablePath(
+        path.join(cwd, "components", "button"),
+        files,
+        config
+      )
+    ).toBe("components/button/index.tsx")
+  })
+
   it("should fallback to basename matching", () => {
     const files = ["components/ui/button.tsx", "components/card.tsx"]
     const config = {
