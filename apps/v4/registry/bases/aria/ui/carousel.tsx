@@ -1,11 +1,11 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
 
-import { cn } from "@/registry/bases/aria/lib/utils"
 import { Button } from "@/registry/bases/aria/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 

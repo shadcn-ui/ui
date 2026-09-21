@@ -50,6 +50,8 @@ plans
 # vitest browser mode writes these only on test failure.
 __screenshots__
 .codex-artifacts
+.registry-health
+.vercel
 .tmp*
 
 CONTEXT.md

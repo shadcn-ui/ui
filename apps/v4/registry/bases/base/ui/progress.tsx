@@ -1,8 +1,7 @@
 "use client"
 
 import { Progress as ProgressPrimitive } from "@base-ui/react/progress"
-
-import { cn } from "@/registry/bases/base/lib/utils"
+import { cn } from "cn"
 
 function Progress({
   className,

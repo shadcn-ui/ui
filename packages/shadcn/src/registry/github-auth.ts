@@ -26,10 +26,10 @@ const coordinators = new WeakMap<object, Map<string, GitHubSourceAuthState>>()
 // A command can make several top-level registry calls (preflight, catalog,
 // tree resolution), each with its own sourceCache. The notice dedupes
 // process-wide per credential mode so it prints once, not once per phase.
-const notifiedSources = new Set<string>()
+const notifiedModes = new Set<GitHubAuthMode>()
 
 export function resetGitHubAuthNotices() {
-  notifiedSources.clear()
+  notifiedModes.clear()
 }
 
 export function getGitHubAuthState(anchor: object, source: GitHubSource) {
@@ -68,7 +68,7 @@ export function selectGitHubAuthMode(
 async function decideAndNotify() {
   const mode: GitHubAuthMode = getEnvGitHubToken() ? "token" : "gh"
 
-  if (notifiedSources.has(mode)) {
+  if (notifiedModes.has(mode)) {
     return mode
   }
 
@@ -82,7 +82,7 @@ async function decideAndNotify() {
     // surrounding spinner output.
     logAboveSpinner(`${green("✔")} ${gray(notice)}`)
   }
-  notifiedSources.add(mode)
+  notifiedModes.add(mode)
 
   return mode
 }

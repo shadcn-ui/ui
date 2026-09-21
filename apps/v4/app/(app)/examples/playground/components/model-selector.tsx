@@ -1,10 +1,10 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 import { Check, ChevronsUpDown } from "lucide-react"
 import type { Popover as PopoverPrimitive } from "radix-ui"
 
-import { cn } from "@/lib/utils"
 import { useMutationObserver } from "@/hooks/use-mutation-observer"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {

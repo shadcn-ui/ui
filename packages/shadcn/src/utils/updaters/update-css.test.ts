@@ -409,9 +409,8 @@ describe("transformCss", () => {
     expect(result).toMatchInlineSnapshot(`
       "@import "tailwindcss";
 
-      @plugin \"foo\";
-
-      @plugin \"bar\";
+      @plugin "foo";
+      @plugin "bar";
 
       @layer base {
         body {
@@ -503,7 +502,7 @@ describe("transformCss", () => {
 
     expect(result).toMatchInlineSnapshot(`
       "
-      @plugin \"foo\""
+      @plugin "foo";"
     `)
   })
 
