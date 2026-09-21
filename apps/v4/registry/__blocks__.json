@@ -30,6 +30,11 @@
     "categories": ["authentication", "login"]
   },
   {
+    "name": "onboarding-01",
+    "description": "A multi-step onboarding wizard with per-step validation and a review step.",
+    "categories": ["onboarding"]
+  },
+  {
     "name": "preview"
   },
   {

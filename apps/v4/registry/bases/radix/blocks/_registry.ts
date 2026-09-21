@@ -917,4 +917,62 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["sidebar", "dashboard"],
   },
+  {
+    name: "onboarding-01",
+    title: "Onboarding 01",
+    description:
+      "A multi-step onboarding wizard with per-step validation and a review step.",
+    type: "registry:block",
+    dependencies: ["@hookform/resolvers", "react-hook-form", "zod"],
+    registryDependencies: [
+      "button",
+      "card",
+      "empty",
+      "field",
+      "input",
+      "input-group",
+      "item",
+      "progress",
+      "radio-group",
+      "select",
+      "spinner",
+      "switch",
+    ],
+    files: [
+      {
+        path: "blocks/onboarding-01/page.tsx",
+        target: "app/onboarding/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/onboarding-01/components/onboarding-wizard.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/onboarding-01/components/onboarding-stepper.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/onboarding-01/components/onboarding-schema.ts",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/onboarding-01/components/step-account.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/onboarding-01/components/step-workspace.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/onboarding-01/components/step-preferences.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/onboarding-01/components/step-review.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["onboarding"],
+  },
 ]
