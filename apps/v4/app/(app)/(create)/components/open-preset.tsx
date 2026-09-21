@@ -117,7 +117,7 @@ export function OpenPreset({
           {label}
         </DrawerTrigger>
 
-        <DrawerContent className="dark rounded-t-2xl!">
+        <DrawerContent className="rounded-t-2xl!">
           <DrawerHeader>
             <DrawerTitle className="text-xl">{PRESET_TITLE}</DrawerTitle>
             <DrawerDescription>{PRESET_DESCRIPTION}</DrawerDescription>
@@ -145,7 +145,7 @@ export function OpenPreset({
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger render={desktopTrigger}>{label}</DialogTrigger>
-      <DialogContent className="dark">
+      <DialogContent>
         <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle>{PRESET_TITLE}</DialogTitle>
