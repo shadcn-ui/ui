@@ -396,7 +396,7 @@ Accessible error container that accepts children or an `errors` array (e.g., fro
 | `className` | `string`                                   |         |
 
 ```tsx
-<FieldError errors={errors.username} />
+<FieldError errors={[errors.username]} />
 ```
 
 When the `errors` array contains multiple messages, the component renders a list automatically.
