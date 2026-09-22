@@ -111,7 +111,14 @@ Select
 
 ## Align Item With Trigger
 
-Use `alignItemWithTrigger` on `SelectContent` to control whether the selected item aligns with the trigger. When `true` (default), the popup positions so the selected item appears over the trigger. When `false`, the popup aligns to the trigger edge.
+Use `alignItemWithTrigger` on `SelectContent` to control whether the selected item aligns with the trigger. When `true`, the popup positions so the selected item appears over the trigger. When `false` (default), the popup aligns to the trigger edge.
+
+<Callout>
+  Item-aligned positioning locks page scroll while the popup is open, which
+  breaks window-scroll virtualization. It is opt-in for this reason. Setting
+  `alignItemWithTrigger` back to `true` re-enables the scroll lock even when
+  `modal` is `false`.
+</Callout>
 
 <ComponentPreview styleName="base-nova" name="select-align-item" />
 
@@ -155,3 +162,5 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 ## API Reference
 
 See the [Base UI Select](https://base-ui.com/react/components/select#api-reference) documentation.
+
+Two defaults differ from Base UI: `modal` on `Select` and `alignItemWithTrigger` on `SelectContent` both default to `false`. Base UI defaults both to `true`, which locks page scroll whenever the popup opens. Pass either prop explicitly to opt back in.
