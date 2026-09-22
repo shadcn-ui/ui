@@ -143,6 +143,7 @@ const shards: Record<
       "questionnaire-example",
       "marker-example",
       "message-example",
+      "compose-class-name",
       "utils",
       "example",
       "preview",
