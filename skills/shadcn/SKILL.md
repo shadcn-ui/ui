@@ -14,10 +14,10 @@ A framework for building ui, components and design systems. Components are added
 ## Current Project Context
 
 ```json
-!`npx shadcn@latest info --json`
+!`npx shadcn@latest info --json || true`
 ```
 
-The JSON above contains the project config and installed components. Use `npx shadcn@latest docs <component>` to get documentation and example URLs for any component.
+The JSON above contains the project config and installed components. If it contains `"error": "monorepo_root"`, re-run `npx shadcn@latest info --json -c <workspace>` with one of the listed `targets` and use that output as the project context. Use `npx shadcn@latest docs <component>` to get documentation and example URLs for any component.
 
 ## Principles
 
