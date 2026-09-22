@@ -905,7 +905,7 @@
     "name": "@gridcn",
     "homepage": "https://gridcn.vercel.app",
     "url": "https://gridcn.vercel.app/r/{name}.json",
-    "description": "An editable, composable data grid for the shadcn/ui ecosystem: range selection, spreadsheet clipboard, fill handle, pinning, undo/redo, and streaming updates. Real DOM cells, shadcn styling.",
+    "description": "A composable, high-performance data grid: range selection, spreadsheet clipboard, typed cell editors, validation, and windowed rendering at 100k+ rows.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='none'> <rect x='2.5' y='2.5' width='19' height='19' rx='2.5' fill='none' stroke='currentColor' stroke-width='1.7'/> <path d='M2.5 12h19M12 2.5v19' fill='none' stroke='currentColor' stroke-width='1.7'/> <path d='M12 2.5h9.5v9.5z' fill='currentColor'/> <path d='M2.5 12h9.5v9.5z' fill='currentColor' opacity='0.35'/> </svg>"
   },
   {
