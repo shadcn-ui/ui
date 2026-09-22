@@ -141,6 +141,14 @@
     "logo": "<svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='m12 3 9 18h-3.5l-1.8-3.8H8.3L6.5 21H3L12 3Zm0 6.5-2.2 4.7h4.4L12 9.5Z' fill='currentColor'/></svg>"
   },
   {
+    "name": "@asharca",
+    "homepage": "https://asharca.github.io/ui/",
+    "url": "https://asharca.github.io/ui/r/{name}.json",
+    "description": "React components for forms, data tables, charts, AI chat and workspaces. Built with Tailwind CSS and installed as editable source.",
+    "author": "asharca",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='var(--foreground)'/><path d='m8 23 8-15 8 15M11 18h10' fill='none' stroke='var(--background)' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+  },
+  {
     "name": "@designali",
     "homepage": "https://designali.com",
     "url": "https://designali.com/r/{name}.json",
