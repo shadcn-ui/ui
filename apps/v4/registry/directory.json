@@ -2580,6 +2580,14 @@
     "logo": "<svg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='20' fill='#053B25'/><path d='M32.1327 19.501C31.5178 19.6123 30.8844 19.6705 30.2375 19.6705C24.3886 19.6705 19.6471 14.9189 19.6471 9.05765C19.6471 8.89469 19.6507 8.73258 19.658 8.57141C13.8411 9.10533 9.28516 14.0074 9.28516 19.9759C9.28516 26.301 14.4019 31.4286 20.7137 31.4286C27.0256 31.4286 32.1423 26.301 32.1423 19.9759C32.1423 19.8168 32.1391 19.6585 32.1327 19.501Z' fill='#C2FD75'/></svg>"
   },
   {
+    "name": "@useplanes",
+    "homepage": "https://useplanes.com",
+    "url": "https://useplanes.com/r/{name}.json",
+    "description": "Animated React components built with Motion and Tailwind: AI chat and agent UI, carousels, pickers and controls, physics, text effects, and WebGL backdrops. Free components install straight from the registry; Pro components need a license.",
+    "author": "Ashish Gogula",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 159.686213 204.630419' fill='var(--foreground)'><path transform='translate(-48.172763,230.649935) scale(0.1,-0.1)' d='M835 2099 c-176 -115 -329 -218 -339 -229 -10 -10 -16 -24 -14 -32 3 -7 301 -179 661 -383 361 -203 655 -371 653 -372 -1 -1 -121 33 -266 76 -167 49 -271 75 -280 70 -8 -4 -88 -81 -177 -171 l-162 -163 -11 -309 c-10 -269 -9 -311 3 -324 13 -13 85 28 594 340 l578 354 3 415 c2 386 1 417 -15 431 -32 27 -867 502 -888 504 -12 2 -141 -76 -340 -207z'/></svg>"
+  },
+  {
     "name": "@usva",
     "homepage": "https://usva.build",
     "url": "https://usva.build/r/{name}.json",
