@@ -1534,6 +1534,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' class='fill-none!' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/></svg>"
   },
   {
+    "name": "@overtrue",
+    "homepage": "https://ui.overtrue.xyz",
+    "url": "https://ui.overtrue.xyz/r/{name}.json",
+    "description": "Editable components and blocks for admin panels, dashboards, and consoles. Built with shadcn/ui and Tailwind CSS.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='var(--foreground)'><path d='M5 5h5v14a6 6 0 0 0 12 0v-6h5v6a11 11 0 0 1-22 0V5Z'/><rect x='22' y='4' width='5' height='5' rx='1'/></svg>"
+  },
+  {
     "name": "@paceui",
     "homepage": "https://paceui.com",
     "url": "https://paceui.com/r/{name}.json",
