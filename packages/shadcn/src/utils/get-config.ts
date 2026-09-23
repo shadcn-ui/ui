@@ -115,6 +115,11 @@ export async function resolveConfigPaths(
   })
 }
 
+// Both separators are accepted so these keep working against normalized
+// Windows paths.
+const INDEX_FILE_REGEX = /[\\/]index\.[^\\/]+$/
+const FILE_EXTENSION_REGEX = /\.[^\\/]+$/
+
 async function resolveAliasPath(
   aliasKey: "components" | "utils" | "ui" | "lib" | "hooks",
   alias: string,
@@ -130,7 +135,13 @@ async function resolveAliasPath(
     return null
   }
 
-  if (alias.startsWith("#") && resolved.path === path.resolve(cwd, alias)) {
+  // Alias targets come back with posix separators for the matched portion, so
+  // on Windows they are a mix of both (e.g. `C:\app\src/components`). Normalize
+  // once here so every comparison below and every consumer of `resolvedPaths`
+  // sees a platform-native path.
+  const resolvedPath = path.normalize(resolved.path)
+
+  if (alias.startsWith("#") && resolvedPath === path.resolve(cwd, alias)) {
     return null
   }
 
@@ -146,20 +157,23 @@ async function resolveAliasPath(
     // to the directory root.
     if (
       !resolved.matchedAlias.includes("*") &&
-      /\/index\.[^/]+$/.test(resolved.path)
+      INDEX_FILE_REGEX.test(resolvedPath)
     ) {
-      return path.dirname(resolved.path)
+      return path.dirname(resolvedPath)
     }
 
     // Wildcard aliases with explicit extensions (e.g. `#components/*` →
     // `./src/components/*.tsx`) should strip the source extension so `ui`
     // resolves to `/src/components/ui` instead of `/src/components/ui.tsx`.
-    if (resolved.matchedAlias.includes("*") && /\.[^/]+$/.test(resolved.path)) {
-      return resolved.path.replace(/\.[^/]+$/, "")
+    if (
+      resolved.matchedAlias.includes("*") &&
+      FILE_EXTENSION_REGEX.test(resolvedPath)
+    ) {
+      return resolvedPath.replace(FILE_EXTENSION_REGEX, "")
     }
   }
 
-  return resolved.path
+  return resolvedPath
 }
 
 function assertResolvedAliases(
@@ -274,7 +288,9 @@ export async function getWorkspaceConfig(config: Config) {
 
 export async function findPackageRoot(cwd: string, resolvedPath: string) {
   const commonRoot = findCommonRoot(cwd, resolvedPath)
-  const relativePath = path.relative(commonRoot, resolvedPath)
+  // fast-glob reports posix-style paths on every platform, so the relative path
+  // has to use the same separator before the two can be compared.
+  const relativePath = toPosixPath(path.relative(commonRoot, resolvedPath))
 
   const packageRoots = await fg.glob("**/package.json", {
     cwd: commonRoot,
@@ -284,10 +300,21 @@ export async function findPackageRoot(cwd: string, resolvedPath: string) {
   })
 
   const matchingPackageRoot = packageRoots
-    .map((pkgPath) => path.dirname(pkgPath))
-    .find((pkgDir) => relativePath.startsWith(pkgDir))
+    .map((pkgPath) => path.posix.dirname(pkgPath))
+    .find((pkgDir) => isPathInsideDir(relativePath, pkgDir))
 
   return matchingPackageRoot ? path.join(commonRoot, matchingPackageRoot) : null
+}
+
+function toPosixPath(value: string) {
+  return value.split(path.sep).join(path.posix.sep)
+}
+
+// Match on segment boundaries so `apps/web` does not also claim `apps/web-docs`.
+function isPathInsideDir(relativePath: string, dir: string) {
+  return (
+    relativePath === dir || relativePath.startsWith(`${dir}${path.posix.sep}`)
+  )
 }
 
 function isAliasKey(
@@ -300,8 +327,11 @@ function isAliasKey(
 }
 
 export function findCommonRoot(cwd: string, resolvedPath: string) {
-  const parts1 = cwd.split(path.sep)
-  const parts2 = resolvedPath.split(path.sep)
+  // Alias targets resolved from tsconfig paths can carry mixed separators on
+  // Windows (e.g. `C:\app\src/components`), which would split into the wrong
+  // segments below.
+  const parts1 = path.normalize(cwd).split(path.sep)
+  const parts2 = path.normalize(resolvedPath).split(path.sep)
   const commonParts = []
 
   for (let i = 0; i < Math.min(parts1.length, parts2.length); i++) {
