@@ -430,7 +430,7 @@
   },
   {
     "name": "@chardesk",
-    "homepage": "https://github.com/Sayhi-bzb/CharDesk/tree/main/packages/cell-ui",
+    "homepage": "https://ui.chardesk.com/",
     "url": "https://sayhi-bzb.github.io/CharDesk/{name}.json",
     "description": "Cell-native React UI primitives with headless layout, Canvas presentation, semantics, and editable source.",
     "author": "CharDesk",
