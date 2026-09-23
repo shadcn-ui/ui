@@ -2443,7 +2443,7 @@
     "url": "https://wxcn.dev/r/react/{name}.json",
     "description": "Theme-aware React weather, tide, and moon forecast components built with shadcn/ui.",
     "author": "maxffarrell",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'><path d='M5 12a7 7 0 0 1 14 0M3 18c6-6 12 6 18 0'/></svg>"
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round'><path fill='none' d='M5 12a7 7 0 0 1 14 0M3 18c6-6 12 6 18 0'/></svg>"
   },
   {
     "name": "@xcn",
