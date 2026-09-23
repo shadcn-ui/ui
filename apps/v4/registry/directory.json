@@ -1583,6 +1583,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='101.782 121.756 123.284 123.284'><path fill='#0C1924' d='M222 386V589H331C400 589 442 550 442 487C442 426 400 386 331 386ZM348 267C488 267 581 359 581 488C581 616 488 709 348 709H83V0H221V267Z' transform='translate(100.000 238.000) scale(0.156000 -0.156000)'/><circle cx='200' cy='225.5' r='13.9' fill='#236AA4'/></svg>"
   },
   {
+    "name": "@pastaui",
+    "homepage": "https://pastaui.com",
+    "url": "https://pastaui.com/r/{name}.json",
+    "description": "Open-source React components for AI agent interfaces: conversations, tool calls, approvals, background runs, and rich outputs.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'><path fill='var(--foreground)' d='M25 6h69v69L75 94H6V25L25 6Z'/><path fill='var(--background)' d='M29 23h29c13.8 0 22 10.6 22 23.5S71.8 69 58 69H44v14H29V23Z'/></svg>"
+  },
+  {
     "name": "@payload-components",
     "homepage": "https://www.payload-components.xyz",
     "url": "https://www.payload-components.xyz/r/{name}.json",
