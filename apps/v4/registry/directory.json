@@ -968,8 +968,8 @@
     "name": "@hirael",
     "homepage": "https://hirael.com",
     "url": "https://hirael.com/r/{name}.json",
-    "description": "The components shadcn/ui doesn't ship. A collection of high-utility React components built on top of shadcn/ui.",
-    "logo": "<svg x='6' y='6' width='58' height='58' viewBox='80 104 352 352'><title>Hirael</title><path d='M160 340V235C160 171 203 128 256 128C309 128 352 171 352 235V340' fill='none' stroke='currentColor' stroke-width='18' stroke-linecap='square'></path><path d='M256 220C262 242 274 254 296 260C274 266 262 278 256 300C250 278 238 266 216 260C238 254 250 242 256 220Z' fill='currentColor'></path><path d='M95 372C160 364 352 364 417 372C352 380 160 380 95 372Z' fill='currentColor'></path><path d='M135 405C185 399 327 399 377 405C327 411 185 411 135 405Z' fill='currentColor'></path><path d='M190 438C220 434 292 434 322 438C292 442 220 442 190 438Z' fill='currentColor'></path></svg>"
+    "description": "A collection of shadcn/ui components, blocks and page templates for building modern, fast and beautiful websites. Built on Radix UI and Base UI. Works with the shadcn CLI and any preset, in light, dark and RTL",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='var(--foreground)'><title>Hirael</title><path d='M2.3 12h2.4v10.95h6.2V14.6h4.6v8.35h6.2V12h-2.4V1.05h-6.2V9.4H8.5V1.05H2.3Z'/></svg>"
   },
   {
     "name": "@honestui",
