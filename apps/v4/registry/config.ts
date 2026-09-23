@@ -856,9 +856,24 @@ export function buildRegistryBase(config: DesignSystemConfig) {
       },
     },
     ...(config.rtl && {
-      docs: `To learn how to set up the RTL provider and fonts for your app, see https://ui.shadcn.com/docs/rtl/${config.template === "next-monorepo" ? "next" : (config.template ?? "next")}`,
+      docs: `To learn how to set up the RTL provider and fonts for your app, see ${rtlDocsUrl(config.template)}`,
     }),
   }
+}
+
+// RTL setup guides are only written for these frameworks. Any other template —
+// and any framework added to the enum later — links to the RTL index instead of
+// a per-framework URL that does not exist.
+const RTL_DOCS_FRAMEWORKS = new Set(["next", "start", "vite"])
+
+export function rtlDocsUrl(template: DesignSystemConfig["template"]) {
+  // A monorepo template shares its framework's guide, so `vite-monorepo` and
+  // `vite` both point at /docs/rtl/vite.
+  const framework = (template ?? "next").replace(/-monorepo$/, "")
+
+  return RTL_DOCS_FRAMEWORKS.has(framework)
+    ? `https://ui.shadcn.com/docs/rtl/${framework}`
+    : "https://ui.shadcn.com/docs/rtl"
 }
 
 export function buildPartialRegistryBase(
