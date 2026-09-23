@@ -383,24 +383,27 @@ describe("github-cli", () => {
       ).resolves.toBe(BRANCH_SHA)
     })
 
-    it("falls back to the tag only on a branch 404", async () => {
-      server.use(
-        http.get(
-          "https://api.github.com/repos/acme/ui/commits/heads/v1.0.0",
-          () => new HttpResponse(null, { status: 404 })
-        ),
-        http.get(
-          "https://api.github.com/repos/acme/ui/commits/tags/v1.0.0",
-          () => HttpResponse.json({ sha: TAG_SHA })
+    it.each([404, 422])(
+      "falls back to the tag when a branch lookup returns %i",
+      async (status) => {
+        server.use(
+          http.get(
+            "https://api.github.com/repos/acme/ui/commits/heads/v1.0.0",
+            () => new HttpResponse(null, { status })
+          ),
+          http.get(
+            "https://api.github.com/repos/acme/ui/commits/tags/v1.0.0",
+            () => HttpResponse.json({ sha: TAG_SHA })
+          )
         )
-      )
 
-      await expect(
-        resolveGitHubRefViaAuth(ADDRESS, "v1.0.0", "token")
-      ).resolves.toBe(TAG_SHA)
-    })
+        await expect(
+          resolveGitHubRefViaAuth(ADDRESS, "v1.0.0", "token")
+        ).resolves.toBe(TAG_SHA)
+      }
+    )
 
-    it("treats a non-404 branch failure as terminal", async () => {
+    it("treats an unrelated branch failure as terminal", async () => {
       let tagRequests = 0
       server.use(
         http.get(
@@ -507,6 +510,22 @@ describe("github-cli", () => {
   })
 
   describe("resolveGitHubRefViaAuth (gh mode)", () => {
+    it("tries a tag after gh reports a missing branch as 422", async () => {
+      vi.mocked(execa)
+        .mockRejectedValueOnce({ stderr: "gh: No commit found (HTTP 422)" })
+        .mockResolvedValueOnce({
+          stdout: JSON.stringify({ sha: TAG_SHA }),
+        } as any)
+
+      await expect(
+        resolveGitHubRefViaAuth(ADDRESS, "v1.0.0", "gh")
+      ).resolves.toBe(TAG_SHA)
+      expect(vi.mocked(execa).mock.calls.map(([, args]) => args)).toEqual([
+        expect.arrayContaining(["repos/acme/ui/commits/heads/v1.0.0"]),
+        expect.arrayContaining(["repos/acme/ui/commits/tags/v1.0.0"]),
+      ])
+    })
+
     it("resolves through gh api and validates the SHA", async () => {
       vi.mocked(execa).mockResolvedValueOnce({
         stdout: JSON.stringify({ sha: SHA }),
