@@ -2109,6 +2109,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'><circle cx='32' cy='32' r='28' stroke='var(--foreground)' stroke-opacity='.55' stroke-width='2'/><g stroke='var(--foreground)' stroke-opacity='.55' stroke-width='1.6'><path d='M32 10v14M32 40v14M10 32h14M40 32h14M16.4 16.4l9.9 9.9M37.7 37.7l9.9 9.9M47.6 16.4l-9.9 9.9M26.3 37.7l-9.9 9.9'/></g><g fill='var(--foreground)'><circle cx='32' cy='13' r='2.6'/><circle cx='51' cy='32' r='2.6'/><circle cx='32' cy='51' r='2.6'/><circle cx='13' cy='32' r='2.6'/><circle cx='45.4' cy='18.6' r='1.8'/><circle cx='45.4' cy='45.4' r='1.8'/><circle cx='18.6' cy='45.4' r='1.8'/><circle cx='18.6' cy='18.6' r='1.8'/></g><circle cx='32' cy='32' r='6' stroke='var(--foreground)' stroke-width='2.4'/><circle cx='32' cy='32' r='2.4' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@stealth",
+    "homepage": "https://www.stealth.pm/ui",
+    "url": "https://www.stealth.pm/r/{name}.json",
+    "description": "Components that feel alive. A micro-interaction-rich React library: rich motion on every interaction, production-ready with full keyboard, screen reader and reduced-motion support.",
+    "author": "Paragon",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='#0c0c0b'/><g transform='translate(0.52 1.77) scale(1.29)'><path d='M12 4.8 3.45 15.75 6.6 16.65 8.13 13.95 9.93 17.73 12 14.85Z' fill='#ecebe7'/><path d='M12 4.8 20.55 15.75 17.4 16.65 15.87 13.95 14.07 17.73 12 14.85Z' fill='#ecebe7' opacity='.55'/></g></svg>"
+  },
+  {
     "name": "@stepper",
     "homepage": "https://francozeta-stepper.vercel.app",
     "url": "https://francozeta-stepper.vercel.app/{name}.json",
