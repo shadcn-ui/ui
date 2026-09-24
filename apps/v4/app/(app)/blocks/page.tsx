@@ -1,3 +1,4 @@
+import { type Metadata } from "next"
 import Link from "next/link"
 
 import { BlockDisplay } from "@/components/block-display"
@@ -6,6 +7,12 @@ import { Button } from "@/registry/new-york-v4/ui/button"
 
 export const dynamic = "force-static"
 export const revalidate = false
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/blocks",
+  },
+}
 
 const FEATURED_BLOCKS = [
   "dashboard-01",

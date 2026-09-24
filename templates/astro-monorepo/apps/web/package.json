@@ -17,7 +17,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@workspace/ui": "workspace:*",
-    "astro": "^7",
+    "astro": "^7.2.8",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },

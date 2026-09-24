@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { type VariantProps } from "class-variance-authority"
+import { cn } from "cn"
 import {
   ToggleButtonGroup as ToggleGroupPrimitive,
   ToggleButton as TogglePrimitive,
@@ -9,7 +10,6 @@ import {
   type ToggleButtonProps,
 } from "react-aria-components"
 
-import { cn } from "@/registry/bases/aria/lib/utils"
 import { toggleVariants } from "@/registry/bases/aria/ui/toggle"
 
 const ToggleGroupContext = React.createContext<

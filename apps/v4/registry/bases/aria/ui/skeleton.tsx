@@ -1,4 +1,4 @@
-import { cn } from "@/registry/bases/aria/lib/utils"
+import { cn } from "cn"
 
 function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
   return (

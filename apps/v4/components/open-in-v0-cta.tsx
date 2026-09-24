@@ -1,4 +1,5 @@
-import { cn } from "@/lib/utils"
+import { cn } from "cn"
+
 import { Button } from "@/styles/base-nova/ui/button"
 
 export function OpenInV0Cta({ className }: React.ComponentProps<"div">) {

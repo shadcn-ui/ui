@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { type ChatStatus } from "ai"
+import { cn } from "cn"
 
-import { cn } from "@/lib/utils"
 import {
   DropdownMenu,
   DropdownMenuContent,
