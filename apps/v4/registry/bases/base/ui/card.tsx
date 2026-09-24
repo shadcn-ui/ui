@@ -1,6 +1,5 @@
 import * as React from "react"
-
-import { cn } from "@/registry/bases/base/lib/utils"
+import { cn } from "cn"
 
 function Card({
   className,

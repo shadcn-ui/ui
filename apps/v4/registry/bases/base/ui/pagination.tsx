@@ -1,8 +1,8 @@
 import * as React from "react"
 import { mergeProps } from "@base-ui/react/merge-props"
 import { useRender } from "@base-ui/react/use-render"
+import { cn } from "cn"
 
-import { cn } from "@/registry/bases/base/lib/utils"
 import { buttonVariants, type Button } from "@/registry/bases/base/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
