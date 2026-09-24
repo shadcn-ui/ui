@@ -177,6 +177,7 @@ function AccordionInCard() {
               hugeicons="ArrowUpRight01Icon"
               phosphor="ArrowUpRightIcon"
               remixicon="RiArrowRightUpLine"
+              fontawesome="faArrowUpRightFromSquare"
             />
           </Button>
         </>

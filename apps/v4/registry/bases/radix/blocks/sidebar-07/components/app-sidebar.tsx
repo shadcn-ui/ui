@@ -32,6 +32,7 @@ const data = {
           hugeicons="LayoutBottomIcon"
           phosphor="RowsIcon"
           remixicon="RiGalleryLine"
+          fontawesome="faTableList"
         />
       ),
       plan: "Enterprise",
@@ -45,6 +46,7 @@ const data = {
           hugeicons="AudioWave01Icon"
           phosphor="WaveformIcon"
           remixicon="RiPulseLine"
+          fontawesome="faWaveSquare"
         />
       ),
       plan: "Startup",
@@ -58,6 +60,7 @@ const data = {
           hugeicons="CommandIcon"
           phosphor="CommandIcon"
           remixicon="RiCommandLine"
+          fontawesome="faTerminal"
         />
       ),
       plan: "Free",
@@ -74,6 +77,7 @@ const data = {
           hugeicons="ComputerTerminalIcon"
           phosphor="TerminalIcon"
           remixicon="RiTerminalBoxLine"
+          fontawesome="faTerminal"
         />
       ),
       isActive: true,
@@ -102,6 +106,7 @@ const data = {
           hugeicons="RoboticIcon"
           phosphor="RobotIcon"
           remixicon="RiRobotLine"
+          fontawesome="faRobot"
         />
       ),
       items: [
@@ -129,6 +134,7 @@ const data = {
           hugeicons="BookOpen02Icon"
           phosphor="BookOpenIcon"
           remixicon="RiBookOpenLine"
+          fontawesome="faBookOpen"
         />
       ),
       items: [
@@ -160,6 +166,7 @@ const data = {
           hugeicons="Settings05Icon"
           phosphor="GearIcon"
           remixicon="RiSettingsLine"
+          fontawesome="faSliders"
         />
       ),
       items: [
@@ -193,6 +200,7 @@ const data = {
           hugeicons="CropIcon"
           phosphor="CropIcon"
           remixicon="RiCropLine"
+          fontawesome="faBorderAll"
         />
       ),
     },
@@ -206,6 +214,7 @@ const data = {
           hugeicons="PieChartIcon"
           phosphor="ChartPieIcon"
           remixicon="RiPieChartLine"
+          fontawesome="faChartPie"
         />
       ),
     },
@@ -219,6 +228,7 @@ const data = {
           hugeicons="MapsIcon"
           phosphor="MapTrifoldIcon"
           remixicon="RiMapLine"
+          fontawesome="faMap"
         />
       ),
     },

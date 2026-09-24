@@ -22,6 +22,7 @@ export function EmptyDistributeTrack() {
               hugeicons="Add01Icon"
               phosphor="PlusIcon"
               remixicon="RiAddLine"
+              fontawesome="faPlus"
             />
           </EmptyMedia>
           <EmptyHeader>

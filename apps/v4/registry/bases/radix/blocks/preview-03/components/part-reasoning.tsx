@@ -27,6 +27,7 @@ function PartReasoningTrigger({ label }: { label?: string }) {
         hugeicons="AiBrainIcon"
         phosphor="BrainIcon"
         remixicon="RiBrainLine"
+        fontawesome="faBrain"
         data-slot="reasoning-trigger-icon"
         className="cn-reasoning-trigger-icon size-4 shrink-0"
       />

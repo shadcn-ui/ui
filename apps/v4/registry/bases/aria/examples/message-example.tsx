@@ -630,6 +630,7 @@ function MessageAttachment() {
                   hugeicons="FileIcon"
                   phosphor="FileTextIcon"
                   remixicon="RiFileTextLine"
+                  fontawesome="faFileLines"
                 />
               </AttachmentMedia>
               <AttachmentContent>
@@ -649,6 +650,7 @@ function MessageAttachment() {
                     hugeicons="Download01Icon"
                     phosphor="DownloadIcon"
                     remixicon="RiDownloadLine"
+                    fontawesome="faDownload"
                   />
                 </AttachmentAction>
               </AttachmentActions>
@@ -722,6 +724,7 @@ function MessageAttachmentGroup() {
                     hugeicons="FileIcon"
                     phosphor="FileTextIcon"
                     remixicon="RiFileTextLine"
+                    fontawesome="faFileLines"
                   />
                 </AttachmentMedia>
                 <AttachmentContent>
@@ -741,6 +744,7 @@ function MessageAttachmentGroup() {
                       hugeicons="Download01Icon"
                       phosphor="DownloadIcon"
                       remixicon="RiDownloadLine"
+                      fontawesome="faDownload"
                     />
                   </AttachmentAction>
                 </AttachmentActions>
@@ -753,6 +757,7 @@ function MessageAttachmentGroup() {
                     hugeicons="Presentation01Icon"
                     phosphor="PresentationIcon"
                     remixicon="RiSlideshowLine"
+                    fontawesome="faChalkboard"
                   />
                 </AttachmentMedia>
                 <AttachmentContent>
@@ -772,6 +777,7 @@ function MessageAttachmentGroup() {
                       hugeicons="Download01Icon"
                       phosphor="DownloadIcon"
                       remixicon="RiDownloadLine"
+                      fontawesome="faDownload"
                     />
                   </AttachmentAction>
                 </AttachmentActions>
@@ -784,6 +790,7 @@ function MessageAttachmentGroup() {
                     hugeicons="File01Icon"
                     phosphor="FileZipIcon"
                     remixicon="RiFileZipLine"
+                    fontawesome="faFileZipper"
                   />
                 </AttachmentMedia>
                 <AttachmentContent>
@@ -803,6 +810,7 @@ function MessageAttachmentGroup() {
                       hugeicons="Download01Icon"
                       phosphor="DownloadIcon"
                       remixicon="RiDownloadLine"
+                      fontawesome="faDownload"
                     />
                   </AttachmentAction>
                 </AttachmentActions>
@@ -834,6 +842,7 @@ function MessageActions() {
                   hugeicons="Copy01Icon"
                   phosphor="CopyIcon"
                   remixicon="RiFileCopyLine"
+                  fontawesome="faCopy"
                 />
               </Button>
               <Button variant="ghost" size="icon" aria-label="Retry">
@@ -843,6 +852,7 @@ function MessageActions() {
                   hugeicons="ReloadIcon"
                   phosphor="ArrowClockwiseIcon"
                   remixicon="RiRefreshLine"
+                  fontawesome="faRotateLeft"
                 />
               </Button>
             </MessageFooter>
@@ -873,6 +883,7 @@ function MessageActions() {
                   hugeicons="Copy01Icon"
                   phosphor="CopyIcon"
                   remixicon="RiFileCopyLine"
+                  fontawesome="faCopy"
                 />
               </Button>
               <Button variant="ghost" size="icon" aria-label="Like: thumbs up">
@@ -882,6 +893,7 @@ function MessageActions() {
                   hugeicons="ThumbsUpIcon"
                   phosphor="ThumbsUpIcon"
                   remixicon="RiThumbUpLine"
+                  fontawesome="faThumbsUp"
                 />
               </Button>
               <Button
@@ -895,6 +907,7 @@ function MessageActions() {
                   hugeicons="ThumbsDownIcon"
                   phosphor="ThumbsDownIcon"
                   remixicon="RiThumbDownLine"
+                  fontawesome="faThumbsDown"
                 />
               </Button>
             </MessageFooter>

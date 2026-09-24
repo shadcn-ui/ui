@@ -125,6 +125,7 @@ export function Demo() {
                     hugeicons="Copy01Icon"
                     phosphor="CopyIcon"
                     remixicon="RiFileCopyLine"
+                    fontawesome="faCopy"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -134,6 +135,7 @@ export function Demo() {
                     hugeicons="AlertCircleIcon"
                     phosphor="WarningCircleIcon"
                     remixicon="RiErrorWarningLine"
+                    fontawesome="faCircleExclamation"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -143,6 +145,7 @@ export function Demo() {
                     hugeicons="Delete02Icon"
                     phosphor="TrashIcon"
                     remixicon="RiDeleteBinLine"
+                    fontawesome="faTrash"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -152,6 +155,7 @@ export function Demo() {
                     hugeicons="Share03Icon"
                     phosphor="ShareIcon"
                     remixicon="RiShareLine"
+                    fontawesome="faShareNodes"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -161,6 +165,7 @@ export function Demo() {
                     hugeicons="ShoppingBag01Icon"
                     phosphor="BagIcon"
                     remixicon="RiShoppingBagLine"
+                    fontawesome="faBagShopping"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -170,6 +175,7 @@ export function Demo() {
                     hugeicons="MoreHorizontalCircle01Icon"
                     phosphor="DotsThreeIcon"
                     remixicon="RiMoreLine"
+                    fontawesome="faEllipsis"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -179,6 +185,7 @@ export function Demo() {
                     hugeicons="Loading03Icon"
                     phosphor="SpinnerIcon"
                     remixicon="RiLoaderLine"
+                    fontawesome="faSpinner"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -188,6 +195,7 @@ export function Demo() {
                     hugeicons="PlusSignIcon"
                     phosphor="PlusIcon"
                     remixicon="RiAddLine"
+                    fontawesome="faPlus"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -197,6 +205,7 @@ export function Demo() {
                     hugeicons="MinusSignIcon"
                     phosphor="MinusIcon"
                     remixicon="RiSubtractLine"
+                    fontawesome="faMinus"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -206,6 +215,7 @@ export function Demo() {
                     hugeicons="ArrowLeft02Icon"
                     phosphor="ArrowLeftIcon"
                     remixicon="RiArrowLeftLine"
+                    fontawesome="faArrowLeft"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -215,6 +225,7 @@ export function Demo() {
                     hugeicons="ArrowRight02Icon"
                     phosphor="ArrowRightIcon"
                     remixicon="RiArrowRightLine"
+                    fontawesome="faArrowRight"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -224,6 +235,7 @@ export function Demo() {
                     hugeicons="Tick02Icon"
                     phosphor="CheckIcon"
                     remixicon="RiCheckLine"
+                    fontawesome="faCheck"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -233,6 +245,7 @@ export function Demo() {
                     hugeicons="ArrowDown01Icon"
                     phosphor="CaretDownIcon"
                     remixicon="RiArrowDownSLine"
+                    fontawesome="faChevronDown"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -242,6 +255,7 @@ export function Demo() {
                     hugeicons="ArrowRight01Icon"
                     phosphor="CaretRightIcon"
                     remixicon="RiArrowRightSLine"
+                    fontawesome="faChevronRight"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -251,6 +265,7 @@ export function Demo() {
                     hugeicons="Search01Icon"
                     phosphor="MagnifyingGlassIcon"
                     remixicon="RiSearchLine"
+                    fontawesome="faMagnifyingGlass"
                   />
                 </Card>
                 <Card className="flex size-8 items-center justify-center p-0 shadow-none *:[svg]:size-4">
@@ -260,6 +275,7 @@ export function Demo() {
                     hugeicons="Settings01Icon"
                     phosphor="GearIcon"
                     remixicon="RiSettingsLine"
+                    fontawesome="faGear"
                   />
                 </Card>
               </div>
@@ -311,6 +327,7 @@ export function Demo() {
                           hugeicons="Search01Icon"
                           phosphor="MagnifyingGlassIcon"
                           remixicon="RiSearchLine"
+                          fontawesome="faMagnifyingGlass"
                         />
                       </InputGroupText>
                     </InputGroupAddon>
@@ -370,6 +387,7 @@ export function Demo() {
                         hugeicons="ArrowUp01Icon"
                         phosphor="CaretUpIcon"
                         remixicon="RiArrowUpSLine"
+                        fontawesome="faChevronUp"
                       />
                     </Button>
                     <DropdownMenu placement="top end" className="w-fit">

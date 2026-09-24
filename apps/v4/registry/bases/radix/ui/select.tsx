@@ -57,6 +57,7 @@ function SelectTrigger({
           hugeicons="UnfoldMoreIcon"
           phosphor="CaretDownIcon"
           remixicon="RiArrowDownSLine"
+          fontawesome="faChevronDown"
           className="cn-select-trigger-icon pointer-events-none"
         />
       </SelectPrimitive.Icon>
@@ -137,6 +138,7 @@ function SelectItem({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
+            fontawesome="faCheck"
             className="cn-select-item-indicator-icon pointer-events-none"
           />
         </SelectPrimitive.ItemIndicator>
@@ -175,6 +177,7 @@ function SelectScrollUpButton({
         hugeicons="ArrowUp01Icon"
         phosphor="CaretUpIcon"
         remixicon="RiArrowUpSLine"
+        fontawesome="faChevronUp"
       />
     </SelectPrimitive.ScrollUpButton>
   )
@@ -196,6 +199,7 @@ function SelectScrollDownButton({
         hugeicons="ArrowDown01Icon"
         phosphor="CaretDownIcon"
         remixicon="RiArrowDownSLine"
+        fontawesome="faChevronDown"
       />
     </SelectPrimitive.ScrollDownButton>
   )

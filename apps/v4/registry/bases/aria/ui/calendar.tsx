@@ -156,6 +156,7 @@ function CalendarInner({
             hugeicons="ArrowLeftIcon"
             phosphor="CaretLeftIcon"
             remixicon="RiArrowLeftSLine"
+            fontawesome="faChevronLeft"
             className="cn-rtl-flip size-4"
           />
         </Button>
@@ -170,6 +171,7 @@ function CalendarInner({
             hugeicons="ArrowRightIcon"
             phosphor="CaretRightIcon"
             remixicon="RiArrowRightSLine"
+            fontawesome="faChevronRight"
             className="cn-rtl-flip size-4"
           />
         </Button>

@@ -128,6 +128,7 @@ function CommandInput({ className, ...props }: InputProps) {
             hugeicons="SearchIcon"
             phosphor="MagnifyingGlassIcon"
             remixicon="RiSearchLine"
+            fontawesome="faMagnifyingGlass"
             className="cn-command-input-icon"
           />
         </InputGroupAddon>
@@ -215,6 +216,7 @@ function CommandItem<T extends object>({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
+            fontawesome="faCheck"
             className="cn-command-item-indicator ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100"
           />
         </>

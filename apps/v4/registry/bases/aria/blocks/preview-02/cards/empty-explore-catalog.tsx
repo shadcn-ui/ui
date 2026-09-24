@@ -22,6 +22,7 @@ export function EmptyExploreCatalog() {
               hugeicons="AudioWave01Icon"
               phosphor="RecordIcon"
               remixicon="RiRecordCircleLine"
+              fontawesome="faWaveSquare"
             />
           </EmptyMedia>
           <EmptyHeader>

@@ -68,6 +68,7 @@ export function SidebarRight({
                 hugeicons="PlusSignIcon"
                 phosphor="PlusIcon"
                 remixicon="RiAddLine"
+                fontawesome="faPlus"
               />
               <span>New Calendar</span>
             </SidebarMenuButton>

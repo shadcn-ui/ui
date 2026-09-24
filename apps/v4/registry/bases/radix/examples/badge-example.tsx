@@ -46,6 +46,7 @@ function BadgeWithIconLeft() {
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
             remixicon="RiCheckboxCircleLine"
+            fontawesome="faCertificate"
             data-icon="inline-start"
           />
           Default
@@ -57,6 +58,7 @@ function BadgeWithIconLeft() {
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
             remixicon="RiCheckboxCircleLine"
+            fontawesome="faCertificate"
             data-icon="inline-start"
           />
           Secondary
@@ -68,6 +70,7 @@ function BadgeWithIconLeft() {
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
             remixicon="RiCheckboxCircleLine"
+            fontawesome="faCertificate"
             data-icon="inline-start"
           />
           Destructive
@@ -79,6 +82,7 @@ function BadgeWithIconLeft() {
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
             remixicon="RiCheckboxCircleLine"
+            fontawesome="faCertificate"
             data-icon="inline-start"
           />
           Outline
@@ -90,6 +94,7 @@ function BadgeWithIconLeft() {
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
             remixicon="RiCheckboxCircleLine"
+            fontawesome="faCertificate"
             data-icon="inline-start"
           />
           Ghost
@@ -101,6 +106,7 @@ function BadgeWithIconLeft() {
             hugeicons="CheckmarkBadge02Icon"
             phosphor="CheckCircleIcon"
             remixicon="RiCheckboxCircleLine"
+            fontawesome="faCertificate"
             data-icon="inline-start"
           />
           Link
@@ -122,6 +128,7 @@ function BadgeWithIconRight() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            fontawesome="faArrowRight"
             data-icon="inline-end"
           />
         </Badge>
@@ -133,6 +140,7 @@ function BadgeWithIconRight() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            fontawesome="faArrowRight"
             data-icon="inline-end"
           />
         </Badge>
@@ -144,6 +152,7 @@ function BadgeWithIconRight() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            fontawesome="faArrowRight"
             data-icon="inline-end"
           />
         </Badge>
@@ -155,6 +164,7 @@ function BadgeWithIconRight() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            fontawesome="faArrowRight"
             data-icon="inline-end"
           />
         </Badge>
@@ -166,6 +176,7 @@ function BadgeWithIconRight() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            fontawesome="faArrowRight"
             data-icon="inline-end"
           />
         </Badge>
@@ -177,6 +188,7 @@ function BadgeWithIconRight() {
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            fontawesome="faArrowRight"
             data-icon="inline-end"
           />
         </Badge>
@@ -231,6 +243,7 @@ function BadgeAsLink() {
               hugeicons="ArrowUpRightIcon"
               phosphor="ArrowUpRightIcon"
               remixicon="RiArrowRightUpLine"
+              fontawesome="faArrowUpRightFromSquare"
               data-icon="inline-end"
             />
           </a>
@@ -244,6 +257,7 @@ function BadgeAsLink() {
               hugeicons="ArrowUpRightIcon"
               phosphor="ArrowUpRightIcon"
               remixicon="RiArrowRightUpLine"
+              fontawesome="faArrowUpRightFromSquare"
               data-icon="inline-end"
             />
           </a>
@@ -257,6 +271,7 @@ function BadgeAsLink() {
               hugeicons="ArrowUpRightIcon"
               phosphor="ArrowUpRightIcon"
               remixicon="RiArrowRightUpLine"
+              fontawesome="faArrowUpRightFromSquare"
               data-icon="inline-end"
             />
           </a>
@@ -270,6 +285,7 @@ function BadgeAsLink() {
               hugeicons="ArrowUpRightIcon"
               phosphor="ArrowUpRightIcon"
               remixicon="RiArrowRightUpLine"
+              fontawesome="faArrowUpRightFromSquare"
               data-icon="inline-end"
             />
           </a>
@@ -283,6 +299,7 @@ function BadgeAsLink() {
               hugeicons="ArrowRight02Icon"
               phosphor="ArrowUpRightIcon"
               remixicon="RiArrowRightUpLine"
+              fontawesome="faArrowUpRightFromSquare"
               data-icon="inline-end"
             />
           </a>
@@ -296,6 +313,7 @@ function BadgeAsLink() {
               hugeicons="ArrowRight02Icon"
               phosphor="ArrowUpRightIcon"
               remixicon="RiArrowRightUpLine"
+              fontawesome="faArrowUpRightFromSquare"
               data-icon="inline-end"
             />
           </a>

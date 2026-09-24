@@ -43,6 +43,7 @@ export function Payments() {
                     hugeicons="MoreHorizontalCircle01Icon"
                     phosphor="DotsThreeIcon"
                     remixicon="RiMoreLine"
+                    fontawesome="faEllipsis"
                   />
                   <span className="sr-only">Account options</span>
                 </Button>
@@ -71,6 +72,7 @@ export function Payments() {
                 hugeicons="Settings01Icon"
                 phosphor="GaugeIcon"
                 remixicon="RiDashboardLine"
+                fontawesome="faGauge"
               />
             </ItemMedia>
             <ItemContent>
@@ -85,6 +87,7 @@ export function Payments() {
               hugeicons="ArrowRight01Icon"
               phosphor="CaretRightIcon"
               remixicon="RiArrowRightSLine"
+              fontawesome="faChevronRight"
               className="size-4 shrink-0 text-muted-foreground"
             />
           </Item>
@@ -96,6 +99,7 @@ export function Payments() {
                 hugeicons="Calendar03Icon"
                 phosphor="CalendarIcon"
                 remixicon="RiCalendarLine"
+                fontawesome="faCalendar"
               />
             </ItemMedia>
             <ItemContent>
@@ -110,6 +114,7 @@ export function Payments() {
               hugeicons="ArrowRight01Icon"
               phosphor="CaretRightIcon"
               remixicon="RiArrowRightSLine"
+              fontawesome="faChevronRight"
               className="size-4 shrink-0 text-muted-foreground"
             />
           </Item>
@@ -121,6 +126,7 @@ export function Payments() {
                 hugeicons="RepeatIcon"
                 phosphor="RepeatIcon"
                 remixicon="RiRepeatLine"
+                fontawesome="faRepeat"
               />
             </ItemMedia>
             <ItemContent>
@@ -135,6 +141,7 @@ export function Payments() {
               hugeicons="ArrowRight01Icon"
               phosphor="CaretRightIcon"
               remixicon="RiArrowRightSLine"
+              fontawesome="faChevronRight"
               className="size-4 shrink-0 text-muted-foreground"
             />
           </Item>
@@ -146,6 +153,7 @@ export function Payments() {
                 hugeicons="RepeatIcon"
                 phosphor="ArrowsClockwiseIcon"
                 remixicon="RiRefreshLine"
+                fontawesome="faRotateRight"
               />
             </ItemMedia>
             <ItemContent>
@@ -160,6 +168,7 @@ export function Payments() {
               hugeicons="ArrowRight01Icon"
               phosphor="CaretRightIcon"
               remixicon="RiArrowRightSLine"
+              fontawesome="faChevronRight"
               className="size-4 shrink-0 text-muted-foreground"
             />
           </Item>

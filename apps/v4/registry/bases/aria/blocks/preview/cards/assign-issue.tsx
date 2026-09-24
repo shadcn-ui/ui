@@ -58,6 +58,7 @@ export function AssignIssue() {
                 hugeicons="PlusSignIcon"
                 phosphor="PlusIcon"
                 remixicon="RiAddLine"
+                fontawesome="faPlus"
               />
             </Button>
             <Tooltip>Add user</Tooltip>

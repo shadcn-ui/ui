@@ -82,6 +82,7 @@ export default function SidebarIconExample() {
             hugeicons="ComputerTerminalIcon"
             phosphor="TerminalIcon"
             remixicon="RiTerminalBoxLine"
+            fontawesome="faTerminal"
           />
         ),
         isActive: true,
@@ -110,6 +111,7 @@ export default function SidebarIconExample() {
             hugeicons="RoboticIcon"
             phosphor="RobotIcon"
             remixicon="RiRobotLine"
+            fontawesome="faRobot"
           />
         ),
         items: [
@@ -137,6 +139,7 @@ export default function SidebarIconExample() {
             hugeicons="BookOpen02Icon"
             phosphor="BookOpenIcon"
             remixicon="RiBookOpenLine"
+            fontawesome="faBookOpen"
           />
         ),
         items: [
@@ -168,6 +171,7 @@ export default function SidebarIconExample() {
             hugeicons="Settings05Icon"
             phosphor="GearIcon"
             remixicon="RiSettingsLine"
+            fontawesome="faSliders"
           />
         ),
         items: [
@@ -201,6 +205,7 @@ export default function SidebarIconExample() {
             hugeicons="CropIcon"
             phosphor="CropIcon"
             remixicon="RiCropLine"
+            fontawesome="faBorderAll"
           />
         ),
       },
@@ -214,6 +219,7 @@ export default function SidebarIconExample() {
             hugeicons="PieChartIcon"
             phosphor="ChartPieIcon"
             remixicon="RiPieChartLine"
+            fontawesome="faChartPie"
           />
         ),
       },
@@ -227,6 +233,7 @@ export default function SidebarIconExample() {
             hugeicons="MapsIcon"
             phosphor="MapTrifoldIcon"
             remixicon="RiMapLine"
+            fontawesome="faMap"
           />
         ),
       },
@@ -293,6 +300,7 @@ export default function SidebarIconExample() {
                       hugeicons="UnfoldMoreIcon"
                       phosphor="CaretUpDownIcon"
                       remixicon="RiArrowUpDownLine"
+                      fontawesome="faUpDown"
                     />
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>
@@ -335,6 +343,7 @@ export default function SidebarIconExample() {
                           hugeicons="ArrowRight01Icon"
                           phosphor="CaretRightIcon"
                           remixicon="RiArrowRightSLine"
+                          fontawesome="faChevronRight"
                           className="ml-auto transition-transform duration-100 group-data-open/collapsible:rotate-90"
                         />
                       </CollapsibleTrigger>
@@ -401,6 +410,7 @@ export default function SidebarIconExample() {
                       hugeicons="UnfoldMoreIcon"
                       phosphor="CaretUpDownIcon"
                       remixicon="RiArrowUpDownLine"
+                      fontawesome="faUpDown"
                     />
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>

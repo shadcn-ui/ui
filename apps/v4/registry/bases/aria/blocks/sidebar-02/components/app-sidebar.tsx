@@ -194,6 +194,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   hugeicons="ArrowRight01Icon"
                   phosphor="CaretRightIcon"
                   remixicon="RiArrowRightSLine"
+                  fontawesome="faChevronRight"
                   className="ml-auto transition-transform group-data-expanded/collapsible:rotate-90"
                 />
               </SidebarGroupLabel>

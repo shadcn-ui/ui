@@ -66,6 +66,7 @@ function ComboboxTrigger({
         hugeicons="ArrowDown01Icon"
         phosphor="CaretDownIcon"
         remixicon="RiArrowDownSLine"
+        fontawesome="faChevronDown"
         className="cn-combobox-trigger-icon pointer-events-none"
       />
     </ButtonPrimitive>
@@ -100,6 +101,7 @@ function ComboboxClear({
         hugeicons="Cancel01Icon"
         phosphor="XIcon"
         remixicon="RiCloseLine"
+        fontawesome="faXmark"
         className="cn-combobox-clear-icon pointer-events-none"
       />
     </InputGroupButton>
@@ -135,6 +137,7 @@ function ComboboxInput({
               hugeicons="ArrowDown01Icon"
               phosphor="CaretDownIcon"
               remixicon="RiArrowDownSLine"
+              fontawesome="faChevronDown"
               className="cn-combobox-trigger-icon pointer-events-none"
             />
           </InputGroupButton>
@@ -219,6 +222,7 @@ function ComboboxItem<T extends object>({
                 hugeicons="Tick02Icon"
                 phosphor="CheckIcon"
                 remixicon="RiCheckLine"
+                fontawesome="faCheck"
                 className="cn-combobox-item-indicator-icon pointer-events-none"
               />
             ) : null}
@@ -346,6 +350,7 @@ function ComboboxChip({
             hugeicons="Cancel01Icon"
             phosphor="XIcon"
             remixicon="RiCloseLine"
+            fontawesome="faXmark"
             className="cn-combobox-chip-indicator-icon pointer-events-none"
           />
         </Button>

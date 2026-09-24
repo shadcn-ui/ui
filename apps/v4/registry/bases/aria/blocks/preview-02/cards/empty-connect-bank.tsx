@@ -22,6 +22,7 @@ export function EmptyConnectBank() {
               hugeicons="CreditCardIcon"
               phosphor="CreditCardIcon"
               remixicon="RiBankCardLine"
+              fontawesome="faCreditCard"
             />
           </EmptyMedia>
           <EmptyHeader>
