@@ -38,7 +38,7 @@ Base UI `Select.Root` renders no HTML element (Radix Root doesn't either).
 
 | Radix prop | Type / default | Base UI equivalent | Migration note |
 | --- | --- | --- | --- |
-| `asChild` | `boolean`, `false` | `render` | See global conventions. Base UI Trigger renders `<button>` by default; `nativeButton` defaults to `true` here, set it to `false` when rendering a non-button via `render`. |
+| `asChild` | `boolean`, `false` | `render` | See global conventions. Base UI Trigger renders `<button>` by default; set `nativeButton={false}` only when a non-button target still owns trigger behavior, never for navigation links. |
 | (none) | - | `disabled: boolean` | Base UI allows disabling just the trigger. |
 
 ## Select.Value → Select.Value

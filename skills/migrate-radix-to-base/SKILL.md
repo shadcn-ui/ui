@@ -113,6 +113,11 @@ full build.
   Indicator have no equivalent: inert passthrough + flag.
 - `button.tsx` migrates to the REAL `@base-ui/react/button` primitive, never
   a hand-rolled useRender wrapper.
+- `nativeButton={false}` is only for a component that still owns button
+  behavior while rendering a non-`<button>` element. Never render a navigation
+  link through `Button` or add button semantics to it; apply `buttonVariants`
+  to the `<a>` or router link instead. Flag links that also act as triggers or
+  close controls for manual separation.
 - Behavior deltas are FLAGGED, never silently patched (tabs manual
   activation, menu items not closing on click, nav-menu 50ms delay). The
   target is idiomatic Base UI matching the shadcn base registry.
