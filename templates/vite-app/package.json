@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "tailwindcss": "^4"
   },
   "devDependencies": {
@@ -27,7 +27,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17",
-    "prettier": "^3.9.6",
+    "prettier": "^3.9.8",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "typescript": "~6",
     "typescript-eslint": "^8",
