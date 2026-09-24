@@ -22,17 +22,17 @@ export const transformTwPrefixes: Transformer = async ({
     .filter((node) => node.getExpression().getText() === "cva")
     .forEach((node) => {
       // cva(base, ...)
-      if (node.getArguments()[0]?.isKind(SyntaxKind.StringLiteral)) {
-        const defaultClassNames = node.getArguments()[0]
-        if (defaultClassNames) {
-          defaultClassNames.replaceWithText(
-            `"${applyPrefix(
-              defaultClassNames.getText()?.replace(/"|'/g, ""),
-              config.tailwind.prefix,
-              tailwindVersion
-            )}"`
+      const defaultClassNames = node
+        .getArguments()[0]
+        ?.asKind(SyntaxKind.StringLiteral)
+      if (defaultClassNames) {
+        defaultClassNames.setLiteralValue(
+          applyPrefix(
+            defaultClassNames.getLiteralText(),
+            config.tailwind.prefix,
+            tailwindVersion
           )
-        }
+        )
       }
 
       // cva(..., { variants: { ... } })
@@ -50,12 +50,12 @@ export const transformTwPrefixes: Transformer = async ({
                   SyntaxKind.StringLiteral
                 )
                 if (classNames) {
-                  classNames?.replaceWithText(
-                    `"${applyPrefix(
-                      classNames.getText()?.replace(/"|'/g, ""),
+                  classNames.setLiteralValue(
+                    applyPrefix(
+                      classNames.getLiteralText(),
                       config.tailwind.prefix,
                       tailwindVersion
-                    )}"`
+                    )
                   )
                 }
               })
@@ -67,17 +67,15 @@ export const transformTwPrefixes: Transformer = async ({
   sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute).forEach((node) => {
     if (node.getNameNode().getText() === "className") {
       // className="..."
-      if (node.getInitializer()?.isKind(SyntaxKind.StringLiteral)) {
-        const value = node.getInitializer()
-        if (value) {
-          value.replaceWithText(
-            `"${applyPrefix(
-              value.getText()?.replace(/"|'/g, ""),
-              config.tailwind.prefix,
-              tailwindVersion
-            )}"`
+      const value = node.getInitializer()?.asKind(SyntaxKind.StringLiteral)
+      if (value) {
+        value.setLiteralValue(
+          applyPrefix(
+            value.getLiteralText(),
+            config.tailwind.prefix,
+            tailwindVersion
           )
-        }
+        )
       }
 
       // className={...}
@@ -97,23 +95,23 @@ export const transformTwPrefixes: Transformer = async ({
               node
                 .getChildrenOfKind(SyntaxKind.StringLiteral)
                 .forEach((node) => {
-                  node.replaceWithText(
-                    `"${applyPrefix(
-                      node.getText()?.replace(/"|'/g, ""),
+                  node.setLiteralValue(
+                    applyPrefix(
+                      node.getLiteralText(),
                       config.tailwind.prefix,
                       tailwindVersion
-                    )}"`
+                    )
                   )
                 })
             }
 
             if (node.isKind(SyntaxKind.StringLiteral)) {
-              node.replaceWithText(
-                `"${applyPrefix(
-                  node.getText()?.replace(/"|'/g, ""),
+              node.setLiteralValue(
+                applyPrefix(
+                  node.getLiteralText(),
                   config.tailwind.prefix,
                   tailwindVersion
-                )}"`
+                )
               )
             }
           })
@@ -138,41 +136,41 @@ export const transformTwPrefixes: Transformer = async ({
                     arg
                       .getChildrenOfKind(SyntaxKind.StringLiteral)
                       .forEach((node) => {
-                        node.replaceWithText(
-                          `"${applyPrefix(
-                            node.getText()?.replace(/"|'/g, ""),
+                        node.setLiteralValue(
+                          applyPrefix(
+                            node.getLiteralText(),
                             config.tailwind.prefix,
                             tailwindVersion
-                          )}"`
+                          )
                         )
                       })
                   }
 
                   if (arg.isKind(SyntaxKind.StringLiteral)) {
-                    arg.replaceWithText(
-                      `"${applyPrefix(
-                        arg.getText()?.replace(/"|'/g, ""),
+                    arg.setLiteralValue(
+                      applyPrefix(
+                        arg.getLiteralText(),
                         config.tailwind.prefix,
                         tailwindVersion
-                      )}"`
+                      )
                     )
                   }
                 })
               }
             }
 
-            if (node.getInitializer()?.isKind(SyntaxKind.StringLiteral)) {
-              if (node.getNameNode().getText() !== "variant") {
-                const classNames = node.getInitializer()
-                if (classNames) {
-                  classNames.replaceWithText(
-                    `"${applyPrefix(
-                      classNames.getText()?.replace(/"|'/g, ""),
-                      config.tailwind.prefix,
-                      tailwindVersion
-                    )}"`
+            if (node.getNameNode().getText() !== "variant") {
+              const classNames = node.getInitializerIfKind(
+                SyntaxKind.StringLiteral
+              )
+              if (classNames) {
+                classNames.setLiteralValue(
+                  applyPrefix(
+                    classNames.getLiteralText(),
+                    config.tailwind.prefix,
+                    tailwindVersion
                   )
-                }
+                )
               }
             }
           })
