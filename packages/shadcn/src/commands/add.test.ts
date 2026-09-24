@@ -1,6 +1,7 @@
 import path from "path"
 import { runInit } from "@/src/commands/init"
 import { REGISTRY_URL, SHADCN_URL } from "@/src/registry/constants"
+import { clearRegistryCache } from "@/src/registry/fetcher"
 import { getFixturesDir, withTempDir } from "@/src/test-helpers"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
@@ -158,7 +159,10 @@ const server = setupServer(
 )
 
 beforeAll(() => server.listen())
-afterEach(() => server.resetHandlers())
+afterEach(() => {
+  server.resetHandlers()
+  clearRegistryCache()
+})
 afterAll(() => server.close())
 
 // --- Test helpers. ---
@@ -700,6 +704,61 @@ describe("add command", () => {
           expect.objectContaining({ style: "base-nova" }),
           expect.any(Object)
         )
+      })
+    })
+
+    it("skips items missing from the configured style with --all", async () => {
+      await withFixtureCopy("vite-with-tailwind", async (cwd) => {
+        const { logger } = await import("@/src/utils/logger")
+        await setConfigStyle(cwd, "aria-mira")
+        server.use(
+          http.get(`${REGISTRY_URL}/styles/aria-mira/button.json`, () =>
+            HttpResponse.json(uiItem("button"))
+          ),
+          http.get(
+            `${REGISTRY_URL}/styles/aria-mira/sonner.json`,
+            () => new HttpResponse(null, { status: 404 })
+          )
+        )
+
+        await runAdd(["--all"], cwd)
+
+        expect(addComponents).toHaveBeenCalledWith(
+          ["button"],
+          expect.objectContaining({ style: "aria-mira" }),
+          expect.any(Object)
+        )
+        expect(logger.warn).toHaveBeenCalledWith(
+          expect.stringContaining("sonner")
+        )
+      })
+    })
+
+    it("still fails for an explicitly requested missing item", async () => {
+      await withFixtureCopy("vite-with-tailwind", async (cwd) => {
+        server.use(
+          http.get(
+            `${REGISTRY_URL}/styles/new-york-v4/sonner.json`,
+            () => new HttpResponse(null, { status: 404 })
+          )
+        )
+
+        await expect(runAdd(["sonner"], cwd)).rejects.toThrow("was not found")
+        expect(addComponents).not.toHaveBeenCalled()
+      })
+    })
+
+    it("does not skip registry failures other than 404 with --all", async () => {
+      await withFixtureCopy("vite-with-tailwind", async (cwd) => {
+        server.use(
+          http.get(
+            `${REGISTRY_URL}/styles/new-york-v4/sonner.json`,
+            () => new HttpResponse(null, { status: 500 })
+          )
+        )
+
+        await expect(runAdd(["--all"], cwd)).rejects.toThrow()
+        expect(addComponents).not.toHaveBeenCalled()
       })
     })
 
