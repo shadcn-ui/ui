@@ -10,9 +10,9 @@
     "typecheck": "turbo typecheck"
   },
   "devDependencies": {
-    "prettier": "^3.9.6",
+    "prettier": "^3.9.8",
     "prettier-plugin-tailwindcss": "^0.8.1",
-    "turbo": "^2.9.18",
+    "turbo": "^2.11.2",
     "typescript": "~6"
   },
   "packageManager": "pnpm@10.33.4",
