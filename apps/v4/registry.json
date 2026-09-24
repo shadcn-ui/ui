@@ -2206,6 +2206,18 @@
       "categories": ["charts", "charts-radial"]
     },
     {
+      "name": "chart-scatter-default",
+      "type": "registry:block",
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/charts/chart-scatter-default.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "categories": ["charts", "charts-scatter"]
+    },
+    {
       "name": "chart-tooltip-default",
       "type": "registry:block",
       "registryDependencies": ["card", "chart"],
