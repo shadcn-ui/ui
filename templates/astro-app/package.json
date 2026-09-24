@@ -20,9 +20,9 @@
     "@tailwindcss/vite": "^4",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "astro": "^7.2.8",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
+    "astro": "^7.3.3",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "tailwindcss": "^4"
   },
   "devDependencies": {
@@ -30,11 +30,11 @@
     "@eslint/js": "^10",
     "eslint": "^10",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
+    "eslint-plugin-react-refresh": "^0.5.7",
     "globals": "^17",
-    "prettier": "^3.8.3",
+    "prettier": "^3.9.8",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.8.0",
+    "prettier-plugin-tailwindcss": "^0.8.1",
     "typescript": "~6",
     "typescript-eslint": "^8"
   }
