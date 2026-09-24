@@ -19,8 +19,8 @@
     "@tanstack/react-start": "latest",
     "@tanstack/router-plugin": "latest",
     "@workspace/ui": "workspace:*",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "tailwindcss": "^4"
   },
   "devDependencies": {
