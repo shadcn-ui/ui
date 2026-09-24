@@ -36,6 +36,41 @@ describe("shadcn add", () => {
     ).toBe(true)
   })
 
+  it("should preserve native link semantics in Base UI pagination", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--defaults"])
+
+    const result = await npxShadcn(fixturePath, ["add", "pagination", "--yes"])
+    expectCommandSuccess(result)
+
+    const paginationContent = await fs.readFile(
+      path.join(fixturePath, "components/ui/pagination.tsx"),
+      "utf-8"
+    )
+
+    expect(paginationContent).toContain('defaultTagName: "a"')
+    expect(paginationContent).toContain("buttonVariants({")
+    expect(paginationContent).not.toContain('role="button"')
+    expect(paginationContent).not.toContain("nativeButton={false}")
+    expect(paginationContent).not.toContain("<Button")
+
+    const appUrl = getRegistryUrl().replace(/\/r\/?$/, "")
+    const response = await fetch(`${appUrl}/examples/base/pagination-demo`)
+    expect(response.ok).toBe(true)
+
+    const html = await response.text()
+    const links =
+      html.match(/<a\b[^>]*data-slot="pagination-link"[^>]*>/g) ?? []
+
+    expect(links.length).toBeGreaterThan(0)
+    expect(links.some((link) => link.includes('href="?page=1"'))).toBe(true)
+    expect(links.some((link) => link.includes('aria-current="page"'))).toBe(
+      true
+    )
+    expect(links.some((link) => link.includes('data-active="true"'))).toBe(true)
+    expect(links.every((link) => !link.includes('role="button"'))).toBe(true)
+  })
+
   it("should add multiple items to project", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, ["init", "--defaults"])
