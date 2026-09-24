@@ -1380,6 +1380,13 @@
     "logo": "<svg width='120' height='120' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'><defs><linearGradient id='bg' x1='0' y1='0' x2='120' y2='120' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='#18181B'/><stop offset='1' stop-color='#3F3F46'/></linearGradient><linearGradient id='n' x1='30' y1='30' x2='90' y2='90' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='#FAFAFA'/><stop offset='1' stop-color='#A1A1AA'/></linearGradient></defs><rect width='120' height='120' rx='28' fill='url(#bg)'/><path d='M36 84V36H46.5L73.5 72.5V36H84V84H73.5L46.5 47.5V84H36Z' fill='url(#n)'/></svg>"
   },
   {
+    "name": "@neobrutal-ui",
+    "homepage": "https://neobrutal-ui.andongmin.com",
+    "url": "https://neobrutal-ui.andongmin.com/r/{name}.json",
+    "description": "Neobrutalist React UI with staged press feedback, shared themes, and editable Next.js page templates, built with Base UI.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none'><rect width='200' height='200' rx='50' fill='url(#neobrutal-ui-logo-gradient)'/><rect x='4' y='4' width='192' height='192' rx='46' stroke='white' stroke-opacity='0.3' stroke-width='8'/><rect x='75' y='75' width='75' height='75' rx='5' fill='#808080'/><rect x='50' y='50' width='75' height='75' rx='5' fill='white'/><defs><linearGradient id='neobrutal-ui-logo-gradient' x1='100' y1='0' x2='100' y2='200' gradientUnits='userSpaceOnUse'><stop stop-color='#3D3D3D'/><stop offset='1' stop-color='#0B0B0B'/></linearGradient></defs></svg>"
+  },
+  {
     "name": "@neobrutalism",
     "homepage": "https://www.neobrutalism.dev",
     "url": "https://www.neobrutalism.dev/r/{name}.json",
