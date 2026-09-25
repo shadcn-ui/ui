@@ -266,14 +266,20 @@ function DirectionProviderWrapper({
   }
 
   if (base === "aria") {
+    // Only use I18nProvider when the locale is non-default (RTL).
+    // When the locale is "en" (LTR), the I18nProvider is redundant and
+    // can interfere with MenuTrigger's OverlayTriggerContext when
+    // multiple previews are on the same page.
+    const locale = explicitDir === "ltr"
+      ? "en"
+      : (translation.locale ?? translation.language)
+
+    if (locale === "en") {
+      return <>{children}</>
+    }
+
     return (
-      <I18nProvider
-        locale={
-          explicitDir === "ltr"
-            ? "en"
-            : (translation.locale ?? translation.language)
-        }
-      >
+      <I18nProvider locale={locale}>
         {children}
       </I18nProvider>
     )
