@@ -20,6 +20,11 @@ describe("getPackageManager", () => {
     expect(await getPackageManager(getFixturesDir("project-bun-lock"))).toBe(
       "bun"
     )
+    expect(await getPackageManager(getFixturesDir("project-nub"))).toBe("nub")
+
+    expect(await getPackageManager(getFixturesDir("project-nub-lock"))).toBe(
+      "nub"
+    )
 
     expect(await getPackageManager(getFixturesDir("next"))).toBe("pnpm")
   })
@@ -33,6 +38,9 @@ describe("getPackageManagerFromUserAgent", () => {
     expect(getPackageManagerFromUserAgent("bun/1.2.0 npm/? node/v22")).toBe(
       "bun"
     )
+    expect(getPackageManagerFromUserAgent("nub/0.6.0 npm/? node/v22")).toBe(
+      "nub"
+    )
     expect(getPackageManagerFromUserAgent("npm/10.0.0 node/v22")).toBe("npm")
     expect(getPackageManagerFromUserAgent("")).toBeNull()
   })
@@ -43,6 +51,7 @@ describe("getPackageRunnerCommand", () => {
     expect(getPackageRunnerCommand("pnpm")).toBe("pnpm dlx")
     expect(getPackageRunnerCommand("bun")).toBe("bunx")
     expect(getPackageRunnerCommand("npm")).toBe("npx")
+    expect(getPackageRunnerCommand("nub")).toBe("nubx")
     expect(getPackageRunnerCommand(null)).toBe("npx")
   })
 })
