@@ -23,11 +23,10 @@ export default function FieldCheckbox() {
           </FieldDescription>
           <FieldGroup className="gap-3">
             <Field orientation="horizontal">
-              <Checkbox id="finder-pref-9k2-hard-disks-ljj" />
+              <Checkbox id="finder-pref-9k2-hard-disks-ljj" defaultChecked />
               <FieldLabel
                 htmlFor="finder-pref-9k2-hard-disks-ljj"
                 className="font-normal"
-                defaultChecked
               >
                 Hard disks
               </FieldLabel>
