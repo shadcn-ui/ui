@@ -182,6 +182,7 @@ type MessageScrollerContextValue = {
   setViewportElement: (element: HTMLDivElement | null) => void
   pendingDefaultScrollStore: MessageScrollerStore<boolean>
   stateStore: MessageScrollerStore<MessageScrollerScrollable>
+  shouldSuspendContentResizeObserver: () => boolean
   syncAfterScroll: () => void
   unobserveVisibility: () => void
   userScrollIntent: () => void
