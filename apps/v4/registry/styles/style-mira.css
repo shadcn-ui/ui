@@ -1499,19 +1499,19 @@
   }
 
   .cn-bubble-reactions-side-top {
-    @apply top-0 -translate-y-3/4;
+    @apply order-first;
   }
 
   .cn-bubble-reactions-side-bottom {
-    @apply bottom-0 translate-y-3/4;
+    @apply order-last;
   }
 
   .cn-bubble-reactions-align-start {
-    @apply left-3;
+    @apply self-start;
   }
 
   .cn-bubble-reactions-align-end {
-    @apply right-3;
+    @apply self-end;
   }
 
   .cn-bubble-group {
