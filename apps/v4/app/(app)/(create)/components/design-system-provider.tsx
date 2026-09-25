@@ -227,7 +227,7 @@ export function DesignSystemProvider({
     styleElement.textContent = buildThemeCssText(registryTheme.cssVars, pointer)
   }, [registryTheme, pointer])
 
-  // Handle menu color inversion by adding/removing dark class to elements with cn-menu-target.
+  // Handle menu color inversion by updating the theme and native color scheme.
   // useLayoutEffect to apply classes synchronously before paint, avoiding flash.
   React.useLayoutEffect(() => {
     if (!menuColor) {
@@ -258,9 +258,9 @@ export function DesignSystemProvider({
       allElements.forEach((element) => {
         if (element.classList.contains("cn-menu-target")) {
           if (isInvertedMenu) {
-            element.classList.add("dark")
+            element.classList.add("dark", "[color-scheme:dark]")
           } else {
-            element.classList.remove("dark")
+            element.classList.remove("dark", "[color-scheme:dark]")
           }
         }
 
