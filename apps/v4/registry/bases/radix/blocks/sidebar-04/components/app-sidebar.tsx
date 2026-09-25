@@ -172,6 +172,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     hugeicons="LayoutBottomIcon"
                     phosphor="RowsIcon"
                     remixicon="RiGalleryLine"
+                    gravityui="LayoutList"
                     className="size-4"
                   />
                 </div>

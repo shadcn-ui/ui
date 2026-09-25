@@ -38,6 +38,7 @@ const data = {
           hugeicons="InboxIcon"
           phosphor="TrayIcon"
           remixicon="RiInboxLine"
+          gravityui="Tray"
         />
       ),
       isActive: true,
@@ -52,6 +53,7 @@ const data = {
           hugeicons="FileIcon"
           phosphor="FileIcon"
           remixicon="RiFileLine"
+          gravityui="File"
         />
       ),
       isActive: false,
@@ -66,6 +68,7 @@ const data = {
           hugeicons="SentIcon"
           phosphor="PaperPlaneTiltIcon"
           remixicon="RiSendPlaneLine"
+          gravityui="PaperPlane"
         />
       ),
       isActive: false,
@@ -80,6 +83,7 @@ const data = {
           hugeicons="ArchiveIcon"
           phosphor="ArchiveIcon"
           remixicon="RiArchiveLine"
+          gravityui="Archive"
         />
       ),
       isActive: false,
@@ -94,6 +98,7 @@ const data = {
           hugeicons="Delete02Icon"
           phosphor="TrashIcon"
           remixicon="RiDeleteBinLine"
+          gravityui="TrashBin"
         />
       ),
       isActive: false,
@@ -215,6 +220,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                       hugeicons="CommandIcon"
                       phosphor="CommandIcon"
                       remixicon="RiCommandLine"
+                      gravityui="Terminal"
                       className="size-4"
                     />
                   </div>

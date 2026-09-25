@@ -467,6 +467,7 @@ function DialogChatSettings() {
                                 hugeicons="AlertCircleIcon"
                                 phosphor="InfoIcon"
                                 remixicon="RiInformationLine"
+                                gravityui="CircleInfo"
                               />
                             </InputGroupButton>
                             <Tooltip className="flex items-center gap-2">

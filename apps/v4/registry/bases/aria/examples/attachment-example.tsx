@@ -59,6 +59,7 @@ function AttachmentFiles() {
                 hugeicons="FileIcon"
                 phosphor="FileTextIcon"
                 remixicon="RiFileTextLine"
+                gravityui="FileText"
               />
             </AttachmentMedia>
             <AttachmentContent>
@@ -73,6 +74,7 @@ function AttachmentFiles() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -85,6 +87,7 @@ function AttachmentFiles() {
                 hugeicons="TableIcon"
                 phosphor="TableIcon"
                 remixicon="RiTableLine"
+                gravityui="LayoutCellsLarge"
               />
             </AttachmentMedia>
             <AttachmentContent>
@@ -99,6 +102,7 @@ function AttachmentFiles() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -111,6 +115,7 @@ function AttachmentFiles() {
                 hugeicons="File01Icon"
                 phosphor="FileCodeIcon"
                 remixicon="RiFileCodeLine"
+                gravityui="FileCode"
               />
             </AttachmentMedia>
             <AttachmentContent>
@@ -125,6 +130,7 @@ function AttachmentFiles() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -144,6 +150,7 @@ function AttachmentFiles() {
                 hugeicons="FileIcon"
                 phosphor="FileTextIcon"
                 remixicon="RiFileTextLine"
+                gravityui="FileText"
               />
             </AttachmentMedia>
             <AttachmentContent>
@@ -158,6 +165,7 @@ function AttachmentFiles() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -170,6 +178,7 @@ function AttachmentFiles() {
                 hugeicons="TableIcon"
                 phosphor="TableIcon"
                 remixicon="RiTableLine"
+                gravityui="LayoutCellsLarge"
               />
             </AttachmentMedia>
             <AttachmentContent>
@@ -184,6 +193,7 @@ function AttachmentFiles() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -196,6 +206,7 @@ function AttachmentFiles() {
                 hugeicons="File01Icon"
                 phosphor="FileCodeIcon"
                 remixicon="RiFileCodeLine"
+                gravityui="FileCode"
               />
             </AttachmentMedia>
             <AttachmentContent>
@@ -210,6 +221,7 @@ function AttachmentFiles() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -222,6 +234,7 @@ function AttachmentFiles() {
                 hugeicons="File01Icon"
                 phosphor="FileZipIcon"
                 remixicon="RiFileZipLine"
+                gravityui="FileZipper"
               />
             </AttachmentMedia>
             <AttachmentContent>
@@ -236,6 +249,7 @@ function AttachmentFiles() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -248,6 +262,7 @@ function AttachmentFiles() {
                 hugeicons="Presentation01Icon"
                 phosphor="PresentationIcon"
                 remixicon="RiSlideshowLine"
+                gravityui="Display"
               />
             </AttachmentMedia>
             <AttachmentContent>
@@ -262,6 +277,7 @@ function AttachmentFiles() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -292,6 +308,7 @@ function AttachmentContentOnly() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -308,6 +325,7 @@ function AttachmentContentOnly() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -350,6 +368,7 @@ function AttachmentContentOnly() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -367,6 +386,7 @@ function AttachmentContentOnly() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -410,6 +430,7 @@ function AttachmentStates() {
                 hugeicons="Clock01Icon"
                 phosphor="ClockIcon"
                 remixicon="RiTimeLine"
+                gravityui="Clock"
               />
             </AttachmentMedia>
             <AttachmentContent>
@@ -424,6 +445,7 @@ function AttachmentStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -444,6 +466,7 @@ function AttachmentStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -456,6 +479,7 @@ function AttachmentStates() {
                 hugeicons="FileIcon"
                 phosphor="FileTextIcon"
                 remixicon="RiFileTextLine"
+                gravityui="FileText"
               />
             </AttachmentMedia>
             <AttachmentContent>
@@ -470,6 +494,7 @@ function AttachmentStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -482,6 +507,7 @@ function AttachmentStates() {
                 hugeicons="FileCorruptIcon"
                 phosphor="FileXIcon"
                 remixicon="RiFileWarningLine"
+                gravityui="FileExclamation"
               />
             </AttachmentMedia>
             <AttachmentContent>
@@ -498,6 +524,7 @@ function AttachmentStates() {
                   hugeicons="RefreshIcon"
                   phosphor="ArrowClockwiseIcon"
                   remixicon="RiRefreshLine"
+                  gravityui="ArrowRotateRight"
                 />
               </AttachmentAction>
               <AttachmentAction aria-label="Remove attachment">
@@ -507,6 +534,7 @@ function AttachmentStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -519,6 +547,7 @@ function AttachmentStates() {
                 hugeicons="Tick02Icon"
                 phosphor="CheckIcon"
                 remixicon="RiCheckLine"
+                gravityui="Check"
               />
             </AttachmentMedia>
             <AttachmentContent>
@@ -533,6 +562,7 @@ function AttachmentStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -552,6 +582,7 @@ function AttachmentStates() {
                 hugeicons="Clock01Icon"
                 phosphor="ClockIcon"
                 remixicon="RiTimeLine"
+                gravityui="Clock"
               />
             </AttachmentMedia>
             <AttachmentContent>
@@ -566,6 +597,7 @@ function AttachmentStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -586,6 +618,7 @@ function AttachmentStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -598,6 +631,7 @@ function AttachmentStates() {
                 hugeicons="FileIcon"
                 phosphor="FileTextIcon"
                 remixicon="RiFileTextLine"
+                gravityui="FileText"
               />
             </AttachmentMedia>
             <AttachmentContent>
@@ -612,6 +646,7 @@ function AttachmentStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -624,6 +659,7 @@ function AttachmentStates() {
                 hugeicons="FileCorruptIcon"
                 phosphor="FileXIcon"
                 remixicon="RiFileWarningLine"
+                gravityui="FileExclamation"
               />
             </AttachmentMedia>
             <AttachmentContent>
@@ -638,6 +674,7 @@ function AttachmentStates() {
                   hugeicons="RefreshIcon"
                   phosphor="ArrowClockwiseIcon"
                   remixicon="RiRefreshLine"
+                  gravityui="ArrowRotateRight"
                 />
               </AttachmentAction>
               <AttachmentAction aria-label="Remove financial-model.xlsx">
@@ -647,6 +684,7 @@ function AttachmentStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -659,6 +697,7 @@ function AttachmentStates() {
                 hugeicons="Tick02Icon"
                 phosphor="CheckIcon"
                 remixicon="RiCheckLine"
+                gravityui="Check"
               />
             </AttachmentMedia>
             <AttachmentContent>
@@ -673,6 +712,7 @@ function AttachmentStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -710,6 +750,7 @@ function AttachmentImages() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -744,6 +785,7 @@ function AttachmentImages() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -778,6 +820,7 @@ function AttachmentImages() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -819,6 +862,7 @@ function AttachmentImages() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -853,6 +897,7 @@ function AttachmentImages() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -887,6 +932,7 @@ function AttachmentImages() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -921,6 +967,7 @@ function AttachmentImages() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -955,6 +1002,7 @@ function AttachmentImages() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -1003,6 +1051,7 @@ function AttachmentImageStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -1026,6 +1075,7 @@ function AttachmentImageStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -1049,6 +1099,7 @@ function AttachmentImageStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -1072,6 +1123,7 @@ function AttachmentImageStates() {
                   hugeicons="RefreshIcon"
                   phosphor="ArrowClockwiseIcon"
                   remixicon="RiRefreshLine"
+                  gravityui="ArrowRotateRight"
                 />
               </AttachmentAction>
               <AttachmentAction aria-label="Remove attachment">
@@ -1081,6 +1133,7 @@ function AttachmentImageStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -1104,6 +1157,7 @@ function AttachmentImageStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -1134,6 +1188,7 @@ function AttachmentImageStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -1157,6 +1212,7 @@ function AttachmentImageStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -1180,6 +1236,7 @@ function AttachmentImageStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -1203,6 +1260,7 @@ function AttachmentImageStates() {
                   hugeicons="RefreshIcon"
                   phosphor="ArrowClockwiseIcon"
                   remixicon="RiRefreshLine"
+                  gravityui="ArrowRotateRight"
                 />
               </AttachmentAction>
               <AttachmentAction aria-label="Remove office-reference.jpg">
@@ -1212,6 +1270,7 @@ function AttachmentImageStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -1235,6 +1294,7 @@ function AttachmentImageStates() {
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
+                  gravityui="Xmark"
                 />
               </AttachmentAction>
             </AttachmentActions>
@@ -1256,6 +1316,7 @@ function AttachmentSizes() {
             hugeicons="FileIcon"
             phosphor="FileTextIcon"
             remixicon="RiFileTextLine"
+            gravityui="FileText"
           />
         </AttachmentMedia>
         <AttachmentContent>
@@ -1271,6 +1332,7 @@ function AttachmentSizes() {
             hugeicons="FileIcon"
             phosphor="FileTextIcon"
             remixicon="RiFileTextLine"
+            gravityui="FileText"
           />
         </AttachmentMedia>
         <AttachmentContent>
@@ -1286,6 +1348,7 @@ function AttachmentSizes() {
             hugeicons="FileIcon"
             phosphor="FileTextIcon"
             remixicon="RiFileTextLine"
+            gravityui="FileText"
           />
         </AttachmentMedia>
         <AttachmentContent>
@@ -1308,6 +1371,7 @@ function AttachmentScrollableGroup() {
               hugeicons="FileIcon"
               phosphor="FileTextIcon"
               remixicon="RiFileTextLine"
+              gravityui="FileText"
             />
           </AttachmentMedia>
           <AttachmentContent>
@@ -1322,6 +1386,7 @@ function AttachmentScrollableGroup() {
                 hugeicons="Cancel01Icon"
                 phosphor="XIcon"
                 remixicon="RiCloseLine"
+                gravityui="Xmark"
               />
             </AttachmentAction>
           </AttachmentActions>
@@ -1345,6 +1410,7 @@ function AttachmentScrollableGroup() {
                 hugeicons="Cancel01Icon"
                 phosphor="XIcon"
                 remixicon="RiCloseLine"
+                gravityui="Xmark"
               />
             </AttachmentAction>
           </AttachmentActions>
@@ -1357,6 +1423,7 @@ function AttachmentScrollableGroup() {
               hugeicons="TableIcon"
               phosphor="TableIcon"
               remixicon="RiTableLine"
+              gravityui="LayoutCellsLarge"
             />
           </AttachmentMedia>
           <AttachmentContent>
@@ -1371,6 +1438,7 @@ function AttachmentScrollableGroup() {
                 hugeicons="Cancel01Icon"
                 phosphor="XIcon"
                 remixicon="RiCloseLine"
+                gravityui="Xmark"
               />
             </AttachmentAction>
           </AttachmentActions>
@@ -1383,6 +1451,7 @@ function AttachmentScrollableGroup() {
               hugeicons="File01Icon"
               phosphor="FileCodeIcon"
               remixicon="RiFileCodeLine"
+              gravityui="FileCode"
             />
           </AttachmentMedia>
           <AttachmentContent>
@@ -1397,6 +1466,7 @@ function AttachmentScrollableGroup() {
                 hugeicons="Cancel01Icon"
                 phosphor="XIcon"
                 remixicon="RiCloseLine"
+                gravityui="Xmark"
               />
             </AttachmentAction>
           </AttachmentActions>
@@ -1411,6 +1481,7 @@ function AttachmentScrollableGroup() {
               hugeicons="FileIcon"
               phosphor="FileTextIcon"
               remixicon="RiFileTextLine"
+              gravityui="FileText"
             />
           </AttachmentMedia>
           <AttachmentContent>
@@ -1425,6 +1496,7 @@ function AttachmentScrollableGroup() {
                 hugeicons="Cancel01Icon"
                 phosphor="XIcon"
                 remixicon="RiCloseLine"
+                gravityui="Xmark"
               />
             </AttachmentAction>
           </AttachmentActions>
@@ -1448,6 +1520,7 @@ function AttachmentScrollableGroup() {
                 hugeicons="Cancel01Icon"
                 phosphor="XIcon"
                 remixicon="RiCloseLine"
+                gravityui="Xmark"
               />
             </AttachmentAction>
           </AttachmentActions>
@@ -1460,6 +1533,7 @@ function AttachmentScrollableGroup() {
               hugeicons="File01Icon"
               phosphor="FileZipIcon"
               remixicon="RiFileZipLine"
+              gravityui="FileZipper"
             />
           </AttachmentMedia>
           <AttachmentContent>
@@ -1474,6 +1548,7 @@ function AttachmentScrollableGroup() {
                 hugeicons="Cancel01Icon"
                 phosphor="XIcon"
                 remixicon="RiCloseLine"
+                gravityui="Xmark"
               />
             </AttachmentAction>
           </AttachmentActions>
@@ -1497,6 +1572,7 @@ function AttachmentScrollableGroup() {
                 hugeicons="Cancel01Icon"
                 phosphor="XIcon"
                 remixicon="RiCloseLine"
+                gravityui="Xmark"
               />
             </AttachmentAction>
           </AttachmentActions>
@@ -1509,6 +1585,7 @@ function AttachmentScrollableGroup() {
               hugeicons="FileIcon"
               phosphor="FileTextIcon"
               remixicon="RiFileTextLine"
+              gravityui="FileText"
             />
           </AttachmentMedia>
           <AttachmentContent>
@@ -1523,6 +1600,7 @@ function AttachmentScrollableGroup() {
                 hugeicons="Cancel01Icon"
                 phosphor="XIcon"
                 remixicon="RiCloseLine"
+                gravityui="Xmark"
               />
             </AttachmentAction>
           </AttachmentActions>
@@ -1546,6 +1624,7 @@ function AttachmentTriggers() {
               hugeicons="FileIcon"
               phosphor="FileTextIcon"
               remixicon="RiFileTextLine"
+              gravityui="FileText"
             />
           </AttachmentMedia>
           <AttachmentContent>
@@ -1560,6 +1639,7 @@ function AttachmentTriggers() {
                 hugeicons="Download01Icon"
                 phosphor="DownloadIcon"
                 remixicon="RiDownloadLine"
+                gravityui="ArrowDownToLine"
               />
             </AttachmentAction>
             <AttachmentAction
@@ -1572,6 +1652,7 @@ function AttachmentTriggers() {
                 hugeicons="Cancel01Icon"
                 phosphor="XIcon"
                 remixicon="RiCloseLine"
+                gravityui="Xmark"
               />
             </AttachmentAction>
           </AttachmentActions>
@@ -1601,6 +1682,7 @@ function AttachmentTriggers() {
               hugeicons="FileSearchIcon"
               phosphor="FileSearchIcon"
               remixicon="RiFileSearchLine"
+              gravityui="FileText"
             />
           </AttachmentMedia>
           <AttachmentContent>
@@ -1615,6 +1697,7 @@ function AttachmentTriggers() {
                 hugeicons="Copy01Icon"
                 phosphor="CopyIcon"
                 remixicon="RiFileCopyLine"
+                gravityui="Copy"
               />
             </AttachmentAction>
             <AttachmentAction aria-label="Remove research-summary.pdf">
@@ -1624,6 +1707,7 @@ function AttachmentTriggers() {
                 hugeicons="Cancel01Icon"
                 phosphor="XIcon"
                 remixicon="RiCloseLine"
+                gravityui="Xmark"
               />
             </AttachmentAction>
           </AttachmentActions>

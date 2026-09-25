@@ -48,6 +48,7 @@ export function NavMain({
                   hugeicons="MoreHorizontalCircle01Icon"
                   phosphor="DotsThreeOutlineIcon"
                   remixicon="RiMoreLine"
+                  gravityui="Ellipsis"
                   className="ml-auto"
                 />
               </DropdownMenuTrigger>

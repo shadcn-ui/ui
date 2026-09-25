@@ -20,6 +20,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             hugeicons="CheckmarkCircle02Icon"
             phosphor="CheckCircleIcon"
             remixicon="RiCheckboxCircleLine"
+            gravityui="CircleCheck"
             className="size-4"
           />
         ),
@@ -30,6 +31,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             hugeicons="InformationCircleIcon"
             phosphor="InfoIcon"
             remixicon="RiInformationLine"
+            gravityui="CircleInfo"
             className="size-4"
           />
         ),
@@ -40,6 +42,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             hugeicons="Alert02Icon"
             phosphor="WarningIcon"
             remixicon="RiErrorWarningLine"
+            gravityui="TriangleExclamation"
             className="size-4"
           />
         ),
@@ -50,6 +53,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             hugeicons="MultiplicationSignCircleIcon"
             phosphor="XCircleIcon"
             remixicon="RiCloseCircleLine"
+            gravityui="CircleXmark"
             className="size-4"
           />
         ),
@@ -60,6 +64,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             hugeicons="Loading03Icon"
             phosphor="SpinnerIcon"
             remixicon="RiLoaderLine"
+            gravityui="ArrowRotateLeft"
             className="size-4 animate-spin"
           />
         ),

@@ -27,6 +27,7 @@ const data = {
           hugeicons="CommandIcon"
           phosphor="CommandIcon"
           remixicon="RiCommandLine"
+          gravityui="Terminal"
         />
       ),
       plan: "Enterprise",
@@ -40,6 +41,7 @@ const data = {
           hugeicons="AudioWave01Icon"
           phosphor="WaveformIcon"
           remixicon="RiPulseLine"
+          gravityui="Volume"
         />
       ),
       plan: "Startup",
@@ -53,6 +55,7 @@ const data = {
           hugeicons="CommandIcon"
           phosphor="CommandIcon"
           remixicon="RiCommandLine"
+          gravityui="Terminal"
         />
       ),
       plan: "Free",
@@ -69,6 +72,7 @@ const data = {
           hugeicons="SearchIcon"
           phosphor="MagnifyingGlassIcon"
           remixicon="RiSearchLine"
+          gravityui="Magnifier"
         />
       ),
     },
@@ -82,6 +86,7 @@ const data = {
           hugeicons="SparklesIcon"
           phosphor="SparkleIcon"
           remixicon="RiSparklingLine"
+          gravityui="Sparkles"
         />
       ),
     },
@@ -95,6 +100,7 @@ const data = {
           hugeicons="HomeIcon"
           phosphor="HouseIcon"
           remixicon="RiHomeLine"
+          gravityui="House"
         />
       ),
       isActive: true,
@@ -109,6 +115,7 @@ const data = {
           hugeicons="InboxIcon"
           phosphor="TrayIcon"
           remixicon="RiInboxLine"
+          gravityui="Tray"
         />
       ),
       badge: "10",
@@ -125,6 +132,7 @@ const data = {
           hugeicons="CalendarIcon"
           phosphor="CalendarIcon"
           remixicon="RiCalendarLine"
+          gravityui="Calendar"
         />
       ),
     },
@@ -138,6 +146,7 @@ const data = {
           hugeicons="Settings05Icon"
           phosphor="GearIcon"
           remixicon="RiSettingsLine"
+          gravityui="Gear"
         />
       ),
     },
@@ -151,6 +160,7 @@ const data = {
           hugeicons="CubeIcon"
           phosphor="CubeIcon"
           remixicon="RiBox3Line"
+          gravityui="LayoutCells"
         />
       ),
     },
@@ -164,6 +174,7 @@ const data = {
           hugeicons="Delete02Icon"
           phosphor="TrashIcon"
           remixicon="RiDeleteBinLine"
+          gravityui="TrashBin"
         />
       ),
     },
@@ -177,6 +188,7 @@ const data = {
           hugeicons="MessageQuestionIcon"
           phosphor="ChatCircleIcon"
           remixicon="RiQuestionLine"
+          gravityui="CircleQuestion"
         />
       ),
     },

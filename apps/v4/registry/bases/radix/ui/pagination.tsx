@@ -82,6 +82,7 @@ function PaginationPrevious({
         hugeicons="ArrowLeft01Icon"
         phosphor="CaretLeftIcon"
         remixicon="RiArrowLeftSLine"
+        gravityui="ChevronLeft"
         data-icon="inline-start"
         className="cn-rtl-flip"
       />
@@ -111,6 +112,7 @@ function PaginationNext({
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
         remixicon="RiArrowRightSLine"
+        gravityui="ChevronRight"
         data-icon="inline-end"
         className="cn-rtl-flip"
       />
@@ -138,6 +140,7 @@ function PaginationEllipsis({
         hugeicons="MoreHorizontalCircle01Icon"
         phosphor="DotsThreeIcon"
         remixicon="RiMoreLine"
+        gravityui="Ellipsis"
       />
       <span className="sr-only">More pages</span>
     </span>

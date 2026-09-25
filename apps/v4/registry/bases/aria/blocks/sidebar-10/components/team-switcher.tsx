@@ -46,6 +46,7 @@ export function TeamSwitcher({
               hugeicons="ArrowDown01Icon"
               phosphor="CaretDownIcon"
               remixicon="RiArrowDownSLine"
+              gravityui="ChevronDown"
               className="opacity-50"
             />
           </SidebarMenuButton>
@@ -82,6 +83,7 @@ export function TeamSwitcher({
                     hugeicons="PlusSignIcon"
                     phosphor="PlusIcon"
                     remixicon="RiAddLine"
+                    gravityui="Plus"
                     className="size-4"
                   />
                 </div>

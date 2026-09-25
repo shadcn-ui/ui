@@ -28,6 +28,7 @@ export function SectionCards() {
                 hugeicons="ChartUpIcon"
                 phosphor="TrendUpIcon"
                 remixicon="RiArrowUpLine"
+                gravityui="ArrowUpToLine"
               />
               +12.5%
             </Badge>
@@ -42,6 +43,7 @@ export function SectionCards() {
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
               remixicon="RiArrowUpLine"
+              gravityui="ArrowUpToLine"
               className="size-4"
             />
           </div>
@@ -64,6 +66,7 @@ export function SectionCards() {
                 hugeicons="ChartDownIcon"
                 phosphor="TrendDownIcon"
                 remixicon="RiArrowDownLine"
+                gravityui="ArrowDownToLine"
               />
               -20%
             </Badge>
@@ -78,6 +81,7 @@ export function SectionCards() {
               hugeicons="ChartDownIcon"
               phosphor="TrendDownIcon"
               remixicon="RiArrowDownLine"
+              gravityui="ArrowDownToLine"
               className="size-4"
             />
           </div>
@@ -100,6 +104,7 @@ export function SectionCards() {
                 hugeicons="ChartUpIcon"
                 phosphor="TrendUpIcon"
                 remixicon="RiArrowUpLine"
+                gravityui="ArrowUpToLine"
               />
               +12.5%
             </Badge>
@@ -114,6 +119,7 @@ export function SectionCards() {
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
               remixicon="RiArrowUpLine"
+              gravityui="ArrowUpToLine"
               className="size-4"
             />
           </div>
@@ -134,6 +140,7 @@ export function SectionCards() {
                 hugeicons="ChartUpIcon"
                 phosphor="TrendUpIcon"
                 remixicon="RiArrowUpLine"
+                gravityui="ArrowUpToLine"
               />
               +4.5%
             </Badge>
@@ -148,6 +155,7 @@ export function SectionCards() {
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
               remixicon="RiArrowUpLine"
+              gravityui="ArrowUpToLine"
               className="size-4"
             />
           </div>

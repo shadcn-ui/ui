@@ -30,6 +30,7 @@ export function CoverArt() {
               hugeicons="Image01Icon"
               phosphor="ImageIcon"
               remixicon="RiImageLine"
+              gravityui="Picture"
               className="size-10 text-muted-foreground/50"
             />
           </label>

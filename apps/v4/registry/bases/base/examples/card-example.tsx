@@ -237,6 +237,7 @@ function CardMeetingNotes() {
                 hugeicons="TextCheckIcon"
                 phosphor="TextTIcon"
                 remixicon="RiTextWrap"
+                gravityui="TextAlignLeft"
                 data-icon="inline-start"
               />
               Transcribe
@@ -309,6 +310,7 @@ function CardWithImage() {
               hugeicons="Add01Icon"
               phosphor="PlusIcon"
               remixicon="RiAddLine"
+              gravityui="Plus"
               data-icon="inline-start"
             />
             Button
@@ -344,6 +346,7 @@ function CardWithImageSmall() {
               hugeicons="Add01Icon"
               phosphor="PlusIcon"
               remixicon="RiAddLine"
+              gravityui="Plus"
               data-icon="inline-start"
             />
             Button

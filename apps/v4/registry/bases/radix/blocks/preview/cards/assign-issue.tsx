@@ -65,6 +65,7 @@ export function AssignIssue() {
                   hugeicons="PlusSignIcon"
                   phosphor="PlusIcon"
                   remixicon="RiAddLine"
+                  gravityui="Plus"
                 />
               </Button>
             </TooltipTrigger>

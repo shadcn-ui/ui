@@ -133,6 +133,7 @@ function InputGroupWithAddons() {
                 hugeicons="SearchIcon"
                 phosphor="MagnifyingGlassIcon"
                 remixicon="RiSearchLine"
+                gravityui="Magnifier"
                 className="text-muted-foreground"
               />
             </InputGroupAddon>
@@ -151,6 +152,7 @@ function InputGroupWithAddons() {
                 hugeicons="ViewOffIcon"
                 phosphor="EyeSlashIcon"
                 remixicon="RiEyeOffLine"
+                gravityui="EyeSlash"
               />
             </InputGroupAddon>
           </InputGroup>
@@ -168,6 +170,7 @@ function InputGroupWithAddons() {
                 hugeicons="VoiceIcon"
                 phosphor="MicrophoneIcon"
                 remixicon="RiMicLine"
+                gravityui="Microphone"
                 className="text-muted-foreground"
               />
             </InputGroupAddon>
@@ -178,6 +181,7 @@ function InputGroupWithAddons() {
                 hugeicons="RecordIcon"
                 phosphor="RecordIcon"
                 remixicon="RiRecordCircleLine"
+                gravityui="AntennaSignal"
                 className="animate-pulse text-red-500"
               />
             </InputGroupAddon>
@@ -195,6 +199,7 @@ function InputGroupWithAddons() {
                 hugeicons="AlertCircleIcon"
                 phosphor="InfoIcon"
                 remixicon="RiInformationLine"
+                gravityui="CircleInfo"
                 className="ml-auto text-muted-foreground"
               />
             </InputGroupAddon>
@@ -212,6 +217,7 @@ function InputGroupWithAddons() {
                 hugeicons="AlertCircleIcon"
                 phosphor="InfoIcon"
                 remixicon="RiInformationLine"
+                gravityui="CircleInfo"
                 className="ml-auto text-muted-foreground"
               />
             </InputGroupAddon>
@@ -228,6 +234,7 @@ function InputGroupWithAddons() {
                 hugeicons="StarIcon"
                 phosphor="StarIcon"
                 remixicon="RiStarLine"
+                gravityui="Star"
               />
               <InputGroupButton
                 size="icon-xs"
@@ -239,6 +246,7 @@ function InputGroupWithAddons() {
                   hugeicons="CopyIcon"
                   phosphor="CopyIcon"
                   remixicon="RiFileCopyLine"
+                  gravityui="Copy"
                 />
               </InputGroupButton>
             </InputGroupAddon>
@@ -249,6 +257,7 @@ function InputGroupWithAddons() {
                 hugeicons="RecordIcon"
                 phosphor="RecordIcon"
                 remixicon="RiRecordCircleLine"
+                gravityui="AntennaSignal"
                 className="animate-pulse text-red-500"
               />
             </InputGroupAddon>
@@ -265,6 +274,7 @@ function InputGroupWithAddons() {
                 hugeicons="AlertCircleIcon"
                 phosphor="InfoIcon"
                 remixicon="RiInformationLine"
+                gravityui="CircleInfo"
               />
             </InputGroupAddon>
           </InputGroup>
@@ -332,6 +342,7 @@ function InputGroupWithButtons() {
                   hugeicons="CopyIcon"
                   phosphor="CopyIcon"
                   remixicon="RiFileCopyLine"
+                  gravityui="Copy"
                 />
               </InputGroupButton>
             </InputGroupAddon>
@@ -346,6 +357,7 @@ function InputGroupWithButtons() {
                   hugeicons="DeleteIcon"
                   phosphor="TrashIcon"
                   remixicon="RiDeleteBinLine"
+                  gravityui="TrashBin"
                 />
               </InputGroupButton>
             </InputGroupAddon>
@@ -383,6 +395,7 @@ function InputGroupWithTooltip({
                     hugeicons="AlertCircleIcon"
                     phosphor="InfoIcon"
                     remixicon="RiInformationLine"
+                    gravityui="CircleInfo"
                   />
                 </TooltipTrigger>
                 <TooltipContent>This is content in a tooltip.</TooltipContent>
@@ -411,6 +424,7 @@ function InputGroupWithTooltip({
                     hugeicons="ArrowDownIcon"
                     phosphor="CaretDownIcon"
                     remixicon="RiArrowDownSLine"
+                    gravityui="ChevronDown"
                   />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
@@ -448,6 +462,7 @@ function InputGroupWithTooltip({
                     hugeicons="AlertCircleIcon"
                     phosphor="InfoIcon"
                     remixicon="RiInformationLine"
+                    gravityui="CircleInfo"
                   />
                 </InputGroupButton>
               </PopoverTrigger>
@@ -475,6 +490,7 @@ function InputGroupWithTooltip({
                   hugeicons="StarIcon"
                   phosphor="StarIcon"
                   remixicon="RiStarLine"
+                  gravityui="Star"
                 />
               </InputGroupButton>
             </InputGroupAddon>
@@ -496,6 +512,7 @@ function InputGroupWithTooltip({
                   hugeicons="AlertCircleIcon"
                   phosphor="InfoIcon"
                   remixicon="RiInformationLine"
+                  gravityui="CircleInfo"
                 />
               </InputGroupAddon>
             </InputGroup>
@@ -550,6 +567,7 @@ function InputGroupWithKbd() {
                 hugeicons="SparklesIcon"
                 phosphor="SparkleIcon"
                 remixicon="RiSparklingLine"
+                gravityui="Sparkles"
               />
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
@@ -572,6 +590,7 @@ function InputGroupWithKbd() {
                   hugeicons="Tick02Icon"
                   phosphor="CheckIcon"
                   remixicon="RiCheckLine"
+                  gravityui="Check"
                   className="size-3 text-white"
                 />
               </div>
@@ -593,6 +612,7 @@ function InputGroupWithKbd() {
               hugeicons="SearchIcon"
               phosphor="MagnifyingGlassIcon"
               remixicon="RiSearchLine"
+              gravityui="Magnifier"
             />
           </InputGroupAddon>
           <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
@@ -610,6 +630,7 @@ function InputGroupWithKbd() {
               hugeicons="SearchIcon"
               phosphor="MagnifyingGlassIcon"
               remixicon="RiSearchLine"
+              gravityui="Magnifier"
             />
           </InputGroupAddon>
           <InputGroupAddon align="inline-end">Disabled</InputGroupAddon>
@@ -626,6 +647,7 @@ function InputGroupWithKbd() {
                   hugeicons="AlertCircleIcon"
                   phosphor="InfoIcon"
                   remixicon="RiInformationLine"
+                  gravityui="CircleInfo"
                 />
               </InputGroupAddon>
             </InputGroup>
@@ -641,6 +663,7 @@ function InputGroupWithKbd() {
                   hugeicons="AlertCircleIcon"
                   phosphor="InfoIcon"
                   remixicon="RiInformationLine"
+                  gravityui="CircleInfo"
                 />
               </InputGroupAddon>
             </InputGroup>
@@ -694,6 +717,7 @@ function InputGroupInCard() {
                     hugeicons="MailIcon"
                     phosphor="EnvelopeIcon"
                     remixicon="RiMailLine"
+                    gravityui="Envelope"
                   />
                 </InputGroupAddon>
               </InputGroup>
@@ -712,6 +736,7 @@ function InputGroupInCard() {
                     hugeicons="LinkSquare02Icon"
                     phosphor="ArrowSquareOutIcon"
                     remixicon="RiExternalLinkLine"
+                    gravityui="ArrowUpRightFromSquare"
                   />
                 </InputGroupAddon>
               </InputGroup>
@@ -807,6 +832,7 @@ function InputGroupTextareaExamples() {
                 hugeicons="AlertCircleIcon"
                 phosphor="InfoIcon"
                 remixicon="RiInformationLine"
+                gravityui="CircleInfo"
                 className="ml-auto text-muted-foreground"
               />
             </InputGroupAddon>
@@ -837,6 +863,7 @@ function InputGroupTextareaExamples() {
                   hugeicons="ArrowUpIcon"
                   phosphor="ArrowUpIcon"
                   remixicon="RiArrowUpLine"
+                  gravityui="ArrowUp"
                 />
                 <span className="sr-only">Send</span>
               </InputGroupButton>
@@ -877,6 +904,7 @@ function InputGroupTextareaExamples() {
                   hugeicons="CodeIcon"
                   phosphor="CodeIcon"
                   remixicon="RiCodeLine"
+                  gravityui="Code"
                 />
                 script.js
               </InputGroupText>
@@ -887,6 +915,7 @@ function InputGroupTextareaExamples() {
                   hugeicons="RefreshIcon"
                   phosphor="ArrowClockwiseIcon"
                   remixicon="RiRefreshLine"
+                  gravityui="ArrowRotateRight"
                 />
               </InputGroupButton>
               <InputGroupButton size="icon-xs" variant="ghost">
@@ -896,6 +925,7 @@ function InputGroupTextareaExamples() {
                   hugeicons="CopyIcon"
                   phosphor="CopyIcon"
                   remixicon="RiFileCopyLine"
+                  gravityui="Copy"
                 />
               </InputGroupButton>
             </InputGroupAddon>

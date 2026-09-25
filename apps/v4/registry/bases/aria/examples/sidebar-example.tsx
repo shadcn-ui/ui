@@ -190,6 +190,7 @@ export default function SidebarExample() {
                         hugeicons="UnfoldMoreIcon"
                         phosphor="CaretUpDownIcon"
                         remixicon="RiArrowUpDownLine"
+                        gravityui="ChevronsExpandUpRight"
                       />
                     </ItemActions>
                   </Item>
@@ -208,6 +209,7 @@ export default function SidebarExample() {
                           hugeicons="Tick02Icon"
                           phosphor="CheckIcon"
                           remixicon="RiCheckLine"
+                          gravityui="Check"
                           className="ml-auto"
                         />
                       )}
@@ -234,6 +236,7 @@ export default function SidebarExample() {
                   hugeicons="SearchIcon"
                   phosphor="MagnifyingGlassIcon"
                   remixicon="RiSearchLine"
+                  gravityui="Magnifier"
                   className="pointer-events-none absolute top-1/2 left-2 size-4 -translate-y-1/2 opacity-50 select-none"
                 />
               </SidebarGroupContent>

@@ -77,6 +77,7 @@ function NavigationMenuTrigger({
         hugeicons="ArrowDown01Icon"
         phosphor="CaretDownIcon"
         remixicon="RiArrowDownSLine"
+        gravityui="ChevronDown"
         className="cn-navigation-menu-trigger-icon"
         aria-hidden="true"
       />

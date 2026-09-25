@@ -81,6 +81,7 @@ export default function SidebarIconExample() {
             hugeicons="ComputerTerminalIcon"
             phosphor="TerminalIcon"
             remixicon="RiTerminalBoxLine"
+            gravityui="Terminal"
           />
         ),
         isActive: true,
@@ -109,6 +110,7 @@ export default function SidebarIconExample() {
             hugeicons="RoboticIcon"
             phosphor="RobotIcon"
             remixicon="RiRobotLine"
+            gravityui="FaceRobot"
           />
         ),
         items: [
@@ -136,6 +138,7 @@ export default function SidebarIconExample() {
             hugeicons="BookOpen02Icon"
             phosphor="BookOpenIcon"
             remixicon="RiBookOpenLine"
+            gravityui="BookOpen"
           />
         ),
         items: [
@@ -167,6 +170,7 @@ export default function SidebarIconExample() {
             hugeicons="Settings05Icon"
             phosphor="GearIcon"
             remixicon="RiSettingsLine"
+            gravityui="Gear"
           />
         ),
         items: [
@@ -200,6 +204,7 @@ export default function SidebarIconExample() {
             hugeicons="CropIcon"
             phosphor="CropIcon"
             remixicon="RiCropLine"
+            gravityui="Square"
           />
         ),
       },
@@ -213,6 +218,7 @@ export default function SidebarIconExample() {
             hugeicons="PieChartIcon"
             phosphor="ChartPieIcon"
             remixicon="RiPieChartLine"
+            gravityui="ChartPie"
           />
         ),
       },
@@ -226,6 +232,7 @@ export default function SidebarIconExample() {
             hugeicons="MapsIcon"
             phosphor="MapTrifoldIcon"
             remixicon="RiMapLine"
+            gravityui="MapPin"
           />
         ),
       },
@@ -296,6 +303,7 @@ export default function SidebarIconExample() {
                     hugeicons="UnfoldMoreIcon"
                     phosphor="CaretUpDownIcon"
                     remixicon="RiArrowUpDownLine"
+                    gravityui="ChevronsExpandUpRight"
                   />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
@@ -339,6 +347,7 @@ export default function SidebarIconExample() {
                         hugeicons="ArrowRight01Icon"
                         phosphor="CaretRightIcon"
                         remixicon="RiArrowRightSLine"
+                        gravityui="ChevronRight"
                         className="ml-auto transition-transform duration-100 group-data-open/collapsible:rotate-90"
                       />
                     </CollapsibleTrigger>
@@ -402,6 +411,7 @@ export default function SidebarIconExample() {
                     hugeicons="UnfoldMoreIcon"
                     phosphor="CaretUpDownIcon"
                     remixicon="RiArrowUpDownLine"
+                    gravityui="ChevronsExpandUpRight"
                   />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>

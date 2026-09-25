@@ -73,6 +73,7 @@ export function PartTool({
             hugeicons="SettingsIcon"
             phosphor="TerminalIcon"
             remixicon="RiSettingsLine"
+            gravityui="Gear"
             className="size-4"
           />
         </span>

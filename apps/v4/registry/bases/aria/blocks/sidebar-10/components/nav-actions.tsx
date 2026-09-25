@@ -26,6 +26,7 @@ const data = [
           hugeicons="Settings05Icon"
           phosphor="GearIcon"
           remixicon="RiSettingsLine"
+          gravityui="Gear"
         />
       ),
     },
@@ -38,6 +39,7 @@ const data = [
           hugeicons="File01Icon"
           phosphor="FileTextIcon"
           remixicon="RiFileTextLine"
+          gravityui="FileText"
         />
       ),
     },
@@ -52,6 +54,7 @@ const data = [
           hugeicons="LinkIcon"
           phosphor="LinkIcon"
           remixicon="RiLinksLine"
+          gravityui="Link"
         />
       ),
     },
@@ -64,6 +67,7 @@ const data = [
           hugeicons="Copy01Icon"
           phosphor="CopyIcon"
           remixicon="RiFileCopyLine"
+          gravityui="Copy"
         />
       ),
     },
@@ -76,6 +80,7 @@ const data = [
           hugeicons="RedoIcon"
           phosphor="ArrowBendUpRightIcon"
           remixicon="RiCornerUpRightLine"
+          gravityui="ArrowShapeUpFromLine"
         />
       ),
     },
@@ -88,6 +93,7 @@ const data = [
           hugeicons="Delete02Icon"
           phosphor="TrashIcon"
           remixicon="RiDeleteBinLine"
+          gravityui="TrashBin"
         />
       ),
     },
@@ -102,6 +108,7 @@ const data = [
           hugeicons="UndoIcon"
           phosphor="ArrowBendUpLeftIcon"
           remixicon="RiCornerUpLeftLine"
+          gravityui="ArrowShapeUpFromLine"
         />
       ),
     },
@@ -114,6 +121,7 @@ const data = [
           hugeicons="ChartIcon"
           phosphor="ChartLineIcon"
           remixicon="RiLineChartLine"
+          gravityui="ChartLine"
         />
       ),
     },
@@ -126,6 +134,7 @@ const data = [
           hugeicons="LayoutBottomIcon"
           phosphor="RowsIcon"
           remixicon="RiGalleryLine"
+          gravityui="LayoutList"
         />
       ),
     },
@@ -138,6 +147,7 @@ const data = [
           hugeicons="DeleteIcon"
           phosphor="TrashIcon"
           remixicon="RiDeleteBinLine"
+          gravityui="TrashBin"
         />
       ),
     },
@@ -150,6 +160,7 @@ const data = [
           hugeicons="NotificationIcon"
           phosphor="BellIcon"
           remixicon="RiNotificationLine"
+          gravityui="Bell"
         />
       ),
     },
@@ -164,6 +175,7 @@ const data = [
           hugeicons="ArrowUpIcon"
           phosphor="ArrowUpIcon"
           remixicon="RiArrowUpLine"
+          gravityui="ArrowUp"
         />
       ),
     },
@@ -176,6 +188,7 @@ const data = [
           hugeicons="ArrowDownIcon"
           phosphor="ArrowDownIcon"
           remixicon="RiArrowDownLine"
+          gravityui="ArrowDown"
         />
       ),
     },
@@ -198,6 +211,7 @@ export function NavActions() {
           hugeicons="StarIcon"
           phosphor="StarIcon"
           remixicon="RiStarLine"
+          gravityui="Star"
         />
       </Button>
       <PopoverTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
@@ -212,6 +226,7 @@ export function NavActions() {
             hugeicons="MoreHorizontalCircle01Icon"
             phosphor="DotsThreeOutlineIcon"
             remixicon="RiMoreLine"
+            gravityui="Ellipsis"
           />
         </Button>
         <Popover
