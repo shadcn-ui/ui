@@ -176,3 +176,78 @@ export function Foo() {
     })
   ).toMatchSnapshot()
 })
+
+describe("transform css vars leaves non-class string literals alone", () => {
+  const config = {
+    tsx: true,
+    tailwind: {
+      baseColor: "stone",
+      cssVariables: false,
+    },
+    aliases: {
+      components: "@/components",
+      utils: "@/lib/utils",
+    },
+  } as Config
+
+  it.each([
+    {
+      name: "a whitespace separator passed to join",
+      raw: `export function Foo(parts: string[]) {
+  return parts.join(" ")
+}`,
+      expected: `parts.join(" ")`,
+    },
+    {
+      name: "repeated words in a message",
+      raw: `export function Foo() {
+  return "very very good"
+}`,
+      expected: `"very very good"`,
+    },
+    {
+      name: "surrounding whitespace in a template separator",
+      raw: `export function Foo() {
+  const separator = " - "
+  return separator
+}`,
+      expected: `" - "`,
+    },
+    {
+      name: "the word border inside prose",
+      raw: `export function Foo() {
+  return "click the border of the element"
+}`,
+      expected: `"click the border of the element"`,
+    },
+  ])("preserves $name", async ({ raw, expected }) => {
+    const output = await transform({
+      filename: "test.ts",
+      raw,
+      config,
+      baseColor: stone,
+    })
+
+    expect(output).toContain(expected)
+  })
+
+  it("still maps colors in className and cn()", async () => {
+    const output = await transform({
+      filename: "test.tsx",
+      raw: `export function Foo() {
+  return (
+    <div className="bg-background">
+      <span className={cn("text-primary-foreground", true && "bg-muted")} />
+    </div>
+  )
+}`,
+      config,
+      baseColor: stone,
+    })
+
+    expect(output).toContain("bg-white")
+    expect(output).toContain("dark:bg-stone-950")
+    expect(output).toContain("text-stone-900")
+    expect(output).toContain("bg-stone-100")
+  })
+})
