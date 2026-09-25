@@ -43,6 +43,9 @@ type TestItem = {
   height?: number
   id: string
   scrollAnchor?: boolean
+  // Rows carrying text take their height from how the text wraps, so a change
+  // of viewport width reflows them the way real message content does.
+  text?: string
 }
 
 let root: Root | null = null
@@ -63,6 +66,7 @@ function Thread({
   showButton = false,
   showJumpButton = false,
   showVisibility = false,
+  viewportWidth,
 }: {
   autoScroll?: boolean
   defaultScrollPosition?: React.ComponentProps<
@@ -73,6 +77,7 @@ function Thread({
   showButton?: boolean
   showJumpButton?: boolean
   showVisibility?: boolean
+  viewportWidth?: number
 }) {
   return (
     <MessageScrollerProvider
@@ -83,7 +88,11 @@ function Thread({
       <MessageScroller>
         <MessageScrollerViewport
           aria-label="viewport"
-          style={{ height: VIEWPORT_HEIGHT, overflowY: "auto" }}
+          style={{
+            height: VIEWPORT_HEIGHT,
+            overflowY: "auto",
+            width: viewportWidth,
+          }}
         >
           <MessageScrollerContent
             style={{ display: "flex", flexDirection: "column" }}
@@ -93,12 +102,13 @@ function Thread({
                 key={item.id}
                 messageId={item.id}
                 scrollAnchor={item.scrollAnchor}
-                style={{
-                  height: item.height ?? ITEM_HEIGHT,
-                  flex: "none",
-                }}
+                style={
+                  item.text
+                    ? { flex: "none" }
+                    : { height: item.height ?? ITEM_HEIGHT, flex: "none" }
+                }
               >
-                {item.id}
+                {item.text ?? item.id}
               </MessageScrollerItem>
             ))}
           </MessageScrollerContent>
@@ -224,6 +234,15 @@ function createItems(count: number) {
   }))
 }
 
+// Rows of prose rather than fixed boxes, so their height is a function of the
+// width they are given and narrowing the viewport reflows the whole transcript.
+function createWrappingItems(count: number) {
+  return Array.from({ length: count }, (_, index) => ({
+    id: `m${index}`,
+    text: `Message ${index}. ${"The quick brown fox jumps over the lazy dog. ".repeat(4)}`,
+  }))
+}
+
 test("keeps the visible message in place when older messages are prepended", async () => {
   const initial = createItems(8)
 
@@ -327,6 +346,78 @@ test("does not keep the end pinned when appending after the default bottom open"
   await settle()
 
   expect(getScrollTop(viewport)).toBe(scrollTop)
+  expect(getDistanceToBottom(viewport)).toBeGreaterThan(0)
+})
+
+test("holds an idle transcript at the end when a narrower viewport rewraps it", async () => {
+  const items = createWrappingItems(8)
+
+  await renderThread({ items, viewportWidth: 480 })
+
+  const viewport = getViewport()
+  const heightBefore = viewport.scrollHeight
+
+  expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
+
+  // A pane opening beside the transcript: every row rewraps taller, which is
+  // growth the reader did not ask for and cannot see, all of it above them.
+  flushSync(() => {
+    root!.render(<Thread items={items} viewportWidth={200} />)
+  })
+  await settle()
+
+  expect(viewport.scrollHeight).toBeGreaterThan(heightBefore)
+  expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
+})
+
+test("holds the end when the narrowing lands in the frame the scroller mounted in", async () => {
+  const items = createWrappingItems(8)
+
+  container = document.createElement("div")
+  document.body.appendChild(container)
+  root = createRoot(container)
+  flushSync(() => {
+    root!.render(<Thread items={items} viewportWidth={480} />)
+  })
+
+  // Deliberately no settle: a layout applied one commit after mount (a resizable
+  // pane sizing itself, a container query resolving) reaches the observer before
+  // its coalescing frame runs, so mount and narrowing arrive as a single resize
+  // pass with no earlier one to have measured the old width.
+  flushSync(() => {
+    root!.render(<Thread items={items} viewportWidth={200} />)
+  })
+  await settle()
+
+  expect(getDistanceToBottom(getViewport())).toBeLessThanOrEqual(1)
+})
+
+test("leaves a reader parked mid-transcript where they are when the viewport resizes", async () => {
+  const items = createWrappingItems(8)
+
+  await renderThread({ items, viewportWidth: 480 })
+
+  const viewport = getViewport()
+
+  viewport.dispatchEvent(
+    new WheelEvent("wheel", { bubbles: true, deltaY: -ITEM_HEIGHT })
+  )
+  viewport.scrollTop = 0
+  viewport.dispatchEvent(new Event("scroll", { bubbles: true }))
+  await settle()
+
+  expect(getDistanceToBottom(viewport)).toBeGreaterThan(0)
+
+  flushSync(() => {
+    root!.render(<Thread items={items} viewportWidth={200} />)
+  })
+  await settle()
+
+  // Only a reader at the end is moved by a resize. Anywhere else the position
+  // is theirs to keep, so the reflow leaves them where they were reading rather
+  // than dropping them at the bottom of a transcript they were scrolled up in.
+  // scrollTop itself is not asserted: the rewrap moves content above them, and
+  // the browser's own anchoring is entitled to shift it to compensate.
   expect(getDistanceToBottom(viewport)).toBeGreaterThan(0)
 })
 
