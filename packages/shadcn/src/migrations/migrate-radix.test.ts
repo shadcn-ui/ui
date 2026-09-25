@@ -532,11 +532,11 @@ export const Accordion = AccordionPrimitive.Root
 export const AlertDialog = AlertDialogPrimitive.Root
 export const Button = Slot`
 
-    const expected = `import { Accordion as AccordionPrimitive, AlertDialog as AlertDialogPrimitive, AspectRatio as AspectRatioPrimitive, Avatar as AvatarPrimitive, Slot as SlotPrimitive, Checkbox as CheckboxPrimitive, Collapsible as CollapsiblePrimitive, ContextMenu as ContextMenuPrimitive, Dialog as DialogPrimitive, DropdownMenu as DropdownMenuPrimitive, HoverCard as HoverCardPrimitive, Label as LabelPrimitive, Menubar as MenubarPrimitive, NavigationMenu as NavigationMenuPrimitive, Popover as PopoverPrimitive, Progress as ProgressPrimitive, RadioGroup as RadioGroupPrimitive, ScrollArea as ScrollAreaPrimitive, Select as SelectPrimitive, Separator as SeparatorPrimitive, Slider as SliderPrimitive, Switch as SwitchPrimitive, Tabs as TabsPrimitive, Toggle as TogglePrimitive, ToggleGroup as ToggleGroupPrimitive, Tooltip as TooltipPrimitive } from "radix-ui"
+    const expected = `import { Accordion as AccordionPrimitive, AlertDialog as AlertDialogPrimitive, AspectRatio as AspectRatioPrimitive, Avatar as AvatarPrimitive, Slot, Checkbox as CheckboxPrimitive, Collapsible as CollapsiblePrimitive, ContextMenu as ContextMenuPrimitive, Dialog as DialogPrimitive, DropdownMenu as DropdownMenuPrimitive, HoverCard as HoverCardPrimitive, Label as LabelPrimitive, Menubar as MenubarPrimitive, NavigationMenu as NavigationMenuPrimitive, Popover as PopoverPrimitive, Progress as ProgressPrimitive, RadioGroup as RadioGroupPrimitive, ScrollArea as ScrollAreaPrimitive, Select as SelectPrimitive, Separator as SeparatorPrimitive, Slider as SliderPrimitive, Switch as SwitchPrimitive, Tabs as TabsPrimitive, Toggle as TogglePrimitive, ToggleGroup as ToggleGroupPrimitive, Tooltip as TooltipPrimitive } from "radix-ui"
 
 export const Accordion = AccordionPrimitive.Root
 export const AlertDialog = AlertDialogPrimitive.Root
-export const Button = SlotPrimitive.Slot`
+export const Button = Slot.Root`
 
     const result = await migrateRadixFile(input)
     expect(result.content.trim()).toBe(expected.trim())
@@ -597,10 +597,10 @@ import { Slot } from "@radix-ui/react-slot"
 export const FormLabel = LabelPrimitive.Root
 export const FormControl = Slot`
 
-    const expected = `import { Label as LabelPrimitive, Slot as SlotPrimitive } from "radix-ui"
+    const expected = `import { Label as LabelPrimitive, Slot } from "radix-ui"
 
 export const FormLabel = LabelPrimitive.Root
-export const FormControl = SlotPrimitive.Slot`
+export const FormControl = Slot.Root`
 
     const result = await migrateRadixFile(input)
     expect(result.content.trim()).toBe(expected.trim())
@@ -666,7 +666,8 @@ export const FormControl = SlotPrimitive.Slot`
     // Should be a single unified import from radix-ui
     expect(result.content).toContain('from "radix-ui"')
     expect(result.content.startsWith("import {")).toBe(true)
-    expect(result.content).toContain("Slot as SlotPrimitive") // Slot should be aliased as SlotPrimitive
+    expect(result.content).toMatch(/[{,]\s*Slot\s*[,}]/) // Slot kept unaliased to match registry Slot.Root usage
+    expect(result.content).not.toContain("Slot as SlotPrimitive")
     expect(result.content).toContain("Accordion as AccordionPrimitive") // Namespace should be aliased
 
     // Should have transformed all imports into a single statement
@@ -685,11 +686,11 @@ const Button = ({ asChild, children }) => {
   return <Comp>{children}</Comp>
 }`
 
-    const expected = `import { Slot as SlotPrimitive } from "radix-ui"
+    const expected = `import { Slot } from "radix-ui"
 
 const Button = ({ asChild, children }) => {
-  const Comp = asChild ? SlotPrimitive.Slot : "button"
-  const Element = asChild ? SlotPrimitive.Slot : "div"
+  const Comp = asChild ? Slot.Root : "button"
+  const Element = asChild ? Slot.Root : "div"
   return <Comp>{children}</Comp>
 }`
 
@@ -708,12 +709,12 @@ const Button = ({ asChild }) => {
   return null
 }`
 
-    const expected = `import { Slot as SlotPrimitive } from "radix-ui"
+    const expected = `import { Slot } from "radix-ui"
 
 const Button = ({ asChild }) => {
-  const Comp1 = asChild ? SlotPrimitive.Slot : "button"
-  const Comp2 = asChild?SlotPrimitive.Slot:"button"
-  const Comp3 = asChild  ?  SlotPrimitive.Slot  :  "button"
+  const Comp1 = asChild ? Slot.Root : "button"
+  const Comp2 = asChild?Slot.Root:"button"
+  const Comp3 = asChild  ?  Slot.Root  :  "button"
   return null
 }`
 
@@ -754,13 +755,13 @@ const Button = ({ asChild }) => {
   return <Slot />
 }`
 
-    const expected = `import { Slot as SlotPrimitive } from "radix-ui"
+    const expected = `import { Slot } from "radix-ui"
 
 const Button = ({ asChild }) => {
   const SlotName = "Slot"
   const someSlot = slot
-  const Comp = asChild ? SlotPrimitive.Slot : "button"
-  return <SlotPrimitive.Slot />
+  const Comp = asChild ? Slot.Root : "button"
+  return <Slot.Root />
 }`
 
     const result = await migrateRadixFile(input)
@@ -781,15 +782,15 @@ const Button = ({ asChild, ...props }: ButtonProps) => {
   return <Comp {...props} />
 }`
 
-    const expected = `import { Slot as SlotPrimitive } from "radix-ui"
+    const expected = `import { Slot } from "radix-ui"
 import React from "react"
 
-type ButtonProps = React.ComponentProps<typeof SlotPrimitive.Slot> & {
+type ButtonProps = React.ComponentProps<typeof Slot.Root> & {
   variant?: string
 }
 
 const Button = ({ asChild, ...props }: ButtonProps) => {
-  const Comp = asChild ? SlotPrimitive.Slot : "button"
+  const Comp = asChild ? Slot.Root : "button"
   return <Comp {...props} />
 }`
 
@@ -811,15 +812,15 @@ const Button = ({ asChild, ...props }: ButtonProps) => {
   return <Comp {...props} />
 }`
 
-    const expected = `import { Slot as SlotPrimitive } from "radix-ui"
+    const expected = `import { Slot } from "radix-ui"
 import { ComponentProps } from "react"
 
-type ButtonProps = ComponentProps<typeof SlotPrimitive.Slot> & {
+type ButtonProps = ComponentProps<typeof Slot.Root> & {
   variant?: string
 }
 
 const Button = ({ asChild, ...props }: ButtonProps) => {
-  const Comp = asChild ? SlotPrimitive.Slot : "button"
+  const Comp = asChild ? Slot.Root : "button"
   return <Comp {...props} />
 }`
 
