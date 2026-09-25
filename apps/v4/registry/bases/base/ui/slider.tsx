@@ -7,8 +7,11 @@ function Slider({
   value,
   min = 0,
   max = 100,
+  thumbLabels,
   ...props
-}: SliderPrimitive.Root.Props) {
+}: SliderPrimitive.Root.Props & {
+  thumbLabels?: string[]
+}) {
   const _values = Array.isArray(value)
     ? value
     : Array.isArray(defaultValue)
@@ -41,6 +44,7 @@ function Slider({
             data-slot="slider-thumb"
             key={index}
             className="cn-slider-thumb block shrink-0 select-none disabled:pointer-events-none disabled:opacity-50"
+            aria-label={thumbLabels?.[index]}
           />
         ))}
       </SliderPrimitive.Control>
