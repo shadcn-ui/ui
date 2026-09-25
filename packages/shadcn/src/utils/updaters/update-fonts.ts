@@ -19,6 +19,14 @@ const ROOT_FONT_VARIABLES = new Set([
   "--font-mono",
 ])
 
+// Default fonts scaffolded by create-next-app, keyed by the root font
+// variable that supersedes them. Once a registry font takes over the root
+// slot, the default font becomes unused but would still be downloaded.
+const NEXT_DEFAULT_FONT_VARIABLES: Record<string, string> = {
+  "--font-sans": "--font-geist-sans",
+  "--font-mono": "--font-geist-mono",
+}
+
 export async function massageTreeForFonts(
   tree: z.infer<typeof registryResolvedItemsTreeSchema>,
   config: Config
@@ -205,6 +213,7 @@ export async function transformLayoutFonts(
   // Track which font variables and utility classes we're adding.
   const fontVariableNames: string[] = []
   const fontUtilityClasses: string[] = []
+  const addedFontVariables: string[] = []
 
   // Process Google fonts.
   for (const font of googleFonts) {
@@ -285,8 +294,19 @@ export async function transformLayoutFonts(
     }
 
     fontVariableNames.push(resolvedVarName)
+    addedFontVariables.push(font.font.variable)
     if (shouldApplyFontUtilityToHtml(font)) {
       fontUtilityClasses.push(font.font.variable.replace("--", ""))
+    }
+  }
+
+  // Remove default create-next-app fonts superseded by the fonts we added.
+  // e.g. adding a --font-sans font makes the default Geist (--font-geist-sans)
+  // unused since the theme mapping for --font-sans is overwritten.
+  for (const addedVariable of addedFontVariables) {
+    const defaultVariable = NEXT_DEFAULT_FONT_VARIABLES[addedVariable]
+    if (defaultVariable) {
+      removeDefaultNextFont(sourceFile, defaultVariable)
     }
   }
 
@@ -405,6 +425,137 @@ function findFontVariableDeclaration(
   }
 
   return null
+}
+
+function removeDefaultNextFont(
+  sourceFile: ReturnType<Project["createSourceFile"]>,
+  variable: string
+) {
+  const declaration = findFontVariableDeclaration(sourceFile, variable)
+  if (!declaration) {
+    return
+  }
+
+  const varName = declaration.getName()
+
+  // Only remove the declaration when every reference is a `varName.variable`
+  // usage we know how to clean up.
+  const references = sourceFile
+    .getDescendantsOfKind(SyntaxKind.Identifier)
+    .filter(
+      (id) => id.getText() === varName && id !== declaration.getNameNode()
+    )
+  const isOnlyVariableUsages = references.every((id) => {
+    const parent = id.getParent()
+    return (
+      parent?.getKind() === SyntaxKind.PropertyAccessExpression &&
+      parent.getText() === `${varName}.variable`
+    )
+  })
+  if (!isOnlyVariableUsages) {
+    return
+  }
+
+  // Capture the font import name (e.g. Geist) before removing the declaration.
+  const initializer = declaration.getInitializer()
+  const importName =
+    initializer?.getKind() === SyntaxKind.CallExpression
+      ? (initializer as CallExpression).getExpression().getText()
+      : null
+
+  removeFontVariableReferences(sourceFile, varName)
+
+  const statement = declaration.getVariableStatement()
+  if (statement && statement.getDeclarations().length === 1) {
+    statement.remove()
+  } else {
+    declaration.remove()
+  }
+
+  if (importName) {
+    removeUnusedNextFontImport(sourceFile, importName)
+  }
+}
+
+function removeFontVariableReferences(
+  sourceFile: ReturnType<Project["createSourceFile"]>,
+  varName: string
+) {
+  const refText = `${varName}.variable`
+  const propertyAccesses = sourceFile
+    .getDescendantsOfKind(SyntaxKind.PropertyAccessExpression)
+    .filter((node) => node.getText() === refText)
+
+  for (const node of propertyAccesses) {
+    if (node.wasForgotten()) {
+      continue
+    }
+
+    // `${varName.variable} ...` inside a template literal className.
+    const template = node.getFirstAncestorByKind(SyntaxKind.TemplateExpression)
+    if (template) {
+      const cleaned = template
+        .getText()
+        .replace(new RegExp(`\\$\\{${varName}\\.variable\\}\\s*`, "g"), "")
+        .replace(/[ \t]+`$/, "`")
+      template.replaceWithText(cleaned)
+      continue
+    }
+
+    // cn(varName.variable, ...) className.
+    const callExpr = node.getFirstAncestorByKind(SyntaxKind.CallExpression)
+    if (callExpr && callExpr.getExpression().getText() === "cn") {
+      callExpr.replaceWithText(
+        removeFontVariablesFromCn(callExpr.getText(), [refText])
+      )
+      continue
+    }
+
+    // Bare className={varName.variable}.
+    const jsxExpression = node.getFirstAncestorByKind(SyntaxKind.JsxExpression)
+    if (jsxExpression && jsxExpression.getExpression() === node) {
+      const jsxAttribute = jsxExpression.getFirstAncestorByKind(
+        SyntaxKind.JsxAttribute
+      )
+      jsxAttribute?.remove()
+    }
+  }
+}
+
+function removeUnusedNextFontImport(
+  sourceFile: ReturnType<Project["createSourceFile"]>,
+  importName: string
+) {
+  const importDecl = sourceFile.getImportDeclaration(
+    (decl) => decl.getModuleSpecifierValue() === "next/font/google"
+  )
+  if (!importDecl) {
+    return
+  }
+
+  const namedImport = importDecl
+    .getNamedImports()
+    .find((imp) => imp.getName() === importName)
+  if (!namedImport) {
+    return
+  }
+
+  const isUsed = sourceFile
+    .getDescendantsOfKind(SyntaxKind.Identifier)
+    .some(
+      (id) =>
+        id.getText() === importName &&
+        !id.getFirstAncestorByKind(SyntaxKind.ImportDeclaration)
+    )
+  if (isUsed) {
+    return
+  }
+
+  if (importDecl.getNamedImports().length === 1) {
+    importDecl.remove()
+  } else {
+    namedImport.remove()
+  }
 }
 
 function hasHeadingFontDeclaration(
