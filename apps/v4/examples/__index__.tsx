@@ -1977,6 +1977,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "toggle-text",
       filePath: "examples/base/toggle-text.tsx",
     },
+    "tooltip-delay": {
+      name: "tooltip-delay",
+      filePath: "examples/base/tooltip-delay.tsx",
+    },
     "tooltip-demo": {
       name: "tooltip-demo",
       filePath: "examples/base/tooltip-demo.tsx",
@@ -3982,6 +3986,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "toggle-text": {
       name: "toggle-text",
       filePath: "examples/aria/toggle-text.tsx",
+    },
+    "tooltip-delay": {
+      name: "tooltip-delay",
+      filePath: "examples/aria/tooltip-delay.tsx",
     },
     "tooltip-demo": {
       name: "tooltip-demo",
@@ -6016,6 +6024,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "toggle-text": {
       name: "toggle-text",
       filePath: "examples/radix/toggle-text.tsx",
+    },
+    "tooltip-delay": {
+      name: "tooltip-delay",
+      filePath: "examples/radix/tooltip-delay.tsx",
     },
     "tooltip-demo": {
       name: "tooltip-demo",
