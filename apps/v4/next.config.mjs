@@ -214,6 +214,24 @@ const nextConfig = {
       },
     ]
   },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "Link",
+            value:
+              '</.well-known/ai-catalog.json>; rel="service"; type="application/json", </docs/mcp>; rel="service-doc"; type="text/html", </docs/installation.md>; rel="alternate"; type="text/markdown"',
+          },
+          {
+            key: "Vary",
+            value: "Accept",
+          },
+        ],
+      },
+    ]
+  },
   rewrites() {
     return [
       {
