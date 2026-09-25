@@ -29,9 +29,9 @@ export function isContentSame(
   // - import { export1 as alias1 } from "module"
   // - import defaultExport, { export1 } from "module"
   // - import type { Type } from "module"
-  // - This Regex written by Claude Code.
+  // - import "module" (side-effect imports)
   const importRegex =
-    /^(import\s+(?:type\s+)?(?:\*\s+as\s+\w+|\{[^}]*\}|\w+)?(?:\s*,\s*(?:\{[^}]*\}|\w+))?\s+from\s+["'])([^"']+)(["'])/gm
+    /^(import\s+(?:(?:type\s+)?(?:\*\s+as\s+\w+|\{[^}]*\}|\w+)?(?:\s*,\s*(?:\{[^}]*\}|\w+))?\s+from\s+)?["'])([^"']+)(["'])/gm
 
   // Function to normalize import paths - remove alias differences.
   const normalizeImports = (content: string) => {
