@@ -2151,6 +2151,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256' fill='none'><rect width='256' height='256' rx='36.34' fill='url(#paint0_radial_778_219)'/><path d='M95.1844 111.183H74.0907C66.7166 111.183 60.7384 117.161 60.7382 124.535V178.72C60.7383 186.094 66.7165 192.072 74.0907 192.072H128.275C135.65 192.072 141.628 186.094 141.628 178.72V165.366H161.366V178.72C161.366 196.995 146.551 211.81 128.275 211.811H74.0907C55.8155 211.81 41.0001 196.996 40.9999 178.72V124.535C41.0001 106.26 55.8154 91.4445 74.0907 91.4443H95.1844V111.183ZM114.923 111.183V132.275C114.923 139.65 120.901 145.628 128.275 145.628H141.628V165.366H128.275C110 165.366 95.1847 150.551 95.1844 132.275V111.183H114.923ZM182.46 45C200.736 45.0003 215.551 59.8155 215.551 78.0908V132.275C215.55 150.551 200.735 165.366 182.46 165.366H161.366V145.628H182.46C189.834 145.628 195.812 139.65 195.812 132.275V78.0908C195.812 70.7165 189.834 64.7386 182.46 64.7383H128.275C120.901 64.7383 114.923 70.7165 114.923 78.0908V91.4443H95.1844V78.0908C95.1845 59.8153 110 45.0001 128.275 45H182.46ZM128.275 91.4443C146.551 91.4445 161.366 106.26 161.366 124.535V145.628H141.628V124.535C141.628 117.161 135.65 111.183 128.275 111.183H114.923V91.4443H128.275Z' fill='white'/><defs><radialGradient id='paint0_radial_778_219' cx='0' cy='0' r='1' gradientUnits='userSpaceOnUse' gradientTransform='translate(234.5 14) rotate(112.372) scale(279.812)'><stop stop-color='#38332E'/><stop offset='1' stop-color='#0B0A09'/></radialGradient></defs></svg>"
   },
   {
+    "name": "@tablecn",
+    "homepage": "https://table-cn.vercel.app",
+    "url": "https://table-cn.vercel.app/r/{style}/{name}.json",
+    "description": "Data table and filter builder blocks with search, sorting, pagination and URL-synced filters. Built for Radix UI, Base UI and React Aria.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='18' height='18' rx='2'/><path d='M3 9h18M3 15h18M9 3v18'/></svg>"
+  },
+  {
     "name": "@tailark",
     "homepage": "https://tailark.com",
     "url": "https://tailark.com/r/{name}.json",
