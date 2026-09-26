@@ -2664,6 +2664,13 @@
     "logo": "<svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M32 8L58 54H6L32 8Z\" fill=\"currentColor\"/><path d=\"M24 38H40\" stroke=\"var(--background)\" stroke-width=\"4\" stroke-linecap=\"round\"/><circle cx=\"24\" cy=\"38\" r=\"3\" fill=\"var(--background)\"/><circle cx=\"40\" cy=\"38\" r=\"3\" fill=\"var(--background)\"/></svg>"
   },
   {
+    "name": "@opaline",
+    "homepage": "https://opaline.buildlab.in",
+    "url": "https://opaline.buildlab.in/r/{name}.json",
+    "description": "Liquid glass components for React — real backdrop refraction, Apple-inspired, minimal and premium. Docks, sheets, command palette, knobs and more.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill-rule='evenodd'><path d='M16 2a14 14 0 1 1 0 28a14 14 0 1 1 0-28Zm0 3.2a10.8 10.8 0 1 0 0 21.6a10.8 10.8 0 1 0 0-21.6ZM8.6 15.2a7.6 7.6 0 0 1 6.6-6.6a1.3 1.3 0 0 1 .3 2.6a5 5 0 0 0-4.3 4.3a1.3 1.3 0 0 1-2.6-.3Z'/></svg>"
+  },
+  {
     "name": "@afterglow",
     "homepage": "https://afterglow.thebuilder.dk",
     "url": "https://afterglow.thebuilder.dk/r/{name}.json",
