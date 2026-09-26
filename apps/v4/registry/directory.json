@@ -642,6 +642,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><polygon points='8.27,3 15.73,3 21,8.27 21,15.73 15.73,21 8.27,21 3,15.73 3,8.27' stroke='#18181b' stroke-width='3.5' stroke-linejoin='round'/></svg>"
   },
   {
+    "name": "@ecomcn",
+    "homepage": "https://ecomcn.vercel.app",
+    "url": "https://ecomcn.vercel.app/r/{name}.json",
+    "description": "E-commerce blocks for shadcn/ui, organised by the purchase funnel — product cards and grids, URL-driven filters, sort, load more, quick view, empty states and the order summary.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='3 3 26 26'><path transform='translate(7.401 25.254) scale(0.03848 -0.03848)' d='M129 -9Q76 -9 44.0 32.5Q12 74 12 150Q12 216 35.5 281.0Q59 346 97.0 399.0Q135 452 180.5 484.0Q226 516 269 516Q316 516 336.5 493.5Q357 471 357 433Q357 388 325.5 343.5Q294 299 237.5 264.0Q181 229 105 212Q83 207 82 187Q81 180 81.0 172.5Q81 165 81 158Q81 101 100.5 72.0Q120 43 154 43Q192 43 227.5 78.0Q263 113 287 177Q290 186 299 186Q305 186 306.5 181.0Q308 176 306 169Q274 81 228.5 36.0Q183 -9 129 -9ZM92 250Q90 243 94.5 238.5Q99 234 106 236Q168 253 210.0 287.5Q252 322 273.5 365.0Q295 408 295 449Q295 491 262 491Q233 491 199.0 457.0Q165 423 136.0 368.0Q107 313 92 250Z' fill='var(--foreground)' stroke='var(--foreground)' stroke-width='36' stroke-linejoin='round'/><circle cx='24.3' cy='23.3' r='2.5' fill='#e0451f'/></svg>"
+  },
+  {
     "name": "@efferd",
     "homepage": "https://efferd.com/",
     "url": "https://efferd.com/r/{name}.json",
