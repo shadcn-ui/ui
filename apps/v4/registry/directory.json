@@ -2284,6 +2284,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='#045f64'/><path d='M5 19 C 9.5 8.9, 5 5, 19 5' fill='none' stroke='#c6f56f' stroke-width='2' stroke-linecap='round'/><circle cx='19' cy='5' r='1.8' fill='#c6f56f'/></svg>"
   },
   {
+    "name": "@tweenly",
+    "homepage": "https://trytweenly.vercel.app",
+    "url": "https://trytweenly.vercel.app/r/{name}.json",
+    "description": "Animated React components built on Motion and GSAP. Tweak every prop live, copy the code, and own it.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='7' fill='var(--foreground)'/><circle cx='15' cy='15' r='6' fill='#ff4d12'/></svg>"
+  },
+  {
     "name": "@typedora-ui",
     "homepage": "https://typedora-ui.netlify.app",
     "url": "https://typedora-ui.netlify.app/r/{name}.json",
