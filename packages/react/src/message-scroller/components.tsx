@@ -1,7 +1,9 @@
 import * as React from "react"
 
+
+
 import { composeRefs, mergeProps, useRender } from "../use-render"
-import { USER_SCROLL_KEYS } from "./types"
+import { USER_SCROLL_KEYS, UPWARD_SCROLL_KEYS } from "./types"
 import type {
   MessageScrollerButtonProps,
   MessageScrollerContentProps,
@@ -175,7 +177,7 @@ function MessageScrollerViewport({
   }
 
   function handleWheel(event: React.WheelEvent<HTMLDivElement>) {
-    userScrollIntent()
+    userScrollIntent(event.deltaY < 0 ? "up" : "down")
     onWheel?.(event)
   }
 
@@ -186,9 +188,11 @@ function MessageScrollerViewport({
 
   function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
     if (USER_SCROLL_KEYS.has(event.key)) {
-      userScrollIntent()
+      const isUp =
+        UPWARD_SCROLL_KEYS.has(event.key) ||
+        (event.key === " " && event.shiftKey)
+      userScrollIntent(isUp ? "up" : "down")
     }
-
     onKeyDown?.(event)
   }
 

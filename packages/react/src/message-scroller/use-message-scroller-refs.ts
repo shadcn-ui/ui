@@ -28,6 +28,8 @@ type MessageScrollerRefs = {
   firstItemRef: React.RefObject<HTMLElement | null>
   itemCountRef: React.RefObject<number>
   lastScrollTopRef: React.RefObject<number>
+  lastDistanceFromEndRef: React.RefObject<number>
+  movedAwayFromEndRef: React.RefObject<boolean>
   messageElementsRef: React.RefObject<Map<string, HTMLElement>>
   modeRef: React.RefObject<MessageScrollerMode>
   pendingScrollFrameRef: React.RefObject<number | null>
@@ -83,6 +85,12 @@ function useMessageScrollerRefs({
   // The scrollTop seen by the previous state commit, so follow-release can tell
   // a reader scrolling up from content growing past the live edge.
   const lastScrollTopRef = React.useRef(0)
+  // Distance from the end at the previous commit, and whether the reader is
+  // currently moving away from it. Tracked by distance-from-end (not scrollTop)
+  // so scroll anchoring — which moves scrollTop when rows above resize — can't
+  // be mistaken for the reader moving.
+  const lastDistanceFromEndRef = React.useRef(0)
+  const movedAwayFromEndRef = React.useRef(false)
   const modeRef = React.useRef<MessageScrollerMode>(
     autoScroll ? "following-bottom" : "free-scrolling"
   )
@@ -158,6 +166,8 @@ function useMessageScrollerRefs({
     firstItemRef,
     itemCountRef,
     lastScrollTopRef,
+    lastDistanceFromEndRef,
+    movedAwayFromEndRef,
     messageElementsRef,
     modeRef,
     pendingScrollFrameRef,
