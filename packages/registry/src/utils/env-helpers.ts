@@ -48,7 +48,10 @@ export function parseEnvContent(content: string) {
       continue
     }
 
-    const key = trimmed.substring(0, equalIndex).trim()
+    const key = trimmed
+      .substring(0, equalIndex)
+      .trim()
+      .replace(/^export\s+/, "")
     const value = trimmed.substring(equalIndex + 1).trim()
 
     if (key) {
