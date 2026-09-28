@@ -239,6 +239,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' role='img' aria-label='AxiCharts'><rect x='6' y='24' width='7' height='14' rx='1.5' fill='var(--foreground)'/><rect x='18' y='16' width='7' height='22' rx='1.5' fill='var(--foreground)'/><rect x='30' y='8' width='7' height='30' rx='1.5' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@balick",
+    "homepage": "https://ui.balick.me",
+    "url": "https://ui.balick.me/r/{name}.json",
+    "description": "Blocks for shadcn/ui designed to fit together: compose a page, then install it with one command.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='2' y='2' width='13' height='13' rx='3' fill='var(--foreground)'/><rect x='9.75' y='9.75' width='12.25' height='12.25' rx='3' fill='none' stroke='var(--foreground)' stroke-width='1.5'/></svg>"
+  },
+  {
     "name": "@baraile-loader",
     "homepage": "https://shadcn-braille-loader.vercel.app",
     "description": "A simple braille-inspired loader components for shadcn/ui.",
