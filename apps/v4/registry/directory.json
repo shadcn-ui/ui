@@ -2187,6 +2187,13 @@
     "logo": "<svg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>Supabase</title><path d='M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z'/></svg>"
   },
   {
+    "name": "@sureui",
+    "homepage": "https://sureui.com",
+    "url": "https://sureui.com/r/{name}.json",
+    "description": "Open source confirmation components for shadcn/ui: undo, hold to confirm, type to confirm and more. Built on Base UI.",
+    "logo": "<svg class='text-foreground' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><title>SureUI Logo</title><path fill-rule='evenodd' fill='rgba(120,120,120,0.35)' d='M16 5a11 11 0 1 1 0 22a11 11 0 1 1 0-22Zm0 3a8 8 0 1 0 0 16a8 8 0 1 0 0-16Z'/><path fill='currentColor' d='M16 5A11 11 0 1 1 5 16h3a8 8 0 1 0 8-8Z'/><circle fill='currentColor' cx='16' cy='6.5' r='1.5'/><circle fill='currentColor' cx='6.5' cy='16' r='1.5'/><rect fill='currentColor' x='9.58' y='16.55' width='7.35' height='2.4' rx='1.2' transform='rotate(45 13.25 17.75)'/><rect fill='currentColor' x='12.2' y='14.9' width='11.2' height='2.4' rx='1.2' transform='rotate(-50.5 17.8 16.1)'/></svg>"
+  },
+  {
     "name": "@svgl",
     "description": "A beautiful library with SVG logos.",
     "homepage": "https://svgl.app",
