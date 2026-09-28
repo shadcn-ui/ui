@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "cn"
 
-import { cn } from "@/registry/bases/aria/lib/utils"
 import { Separator } from "@/registry/bases/aria/ui/separator"
 
 const buttonGroupVariants = cva(

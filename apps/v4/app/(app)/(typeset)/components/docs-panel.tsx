@@ -2,10 +2,11 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { cn } from "cn"
 import { CheckIcon, CopyIcon } from "lucide-react"
 
 import { trackEvent } from "@/lib/events"
-import { absoluteUrl, cn } from "@/lib/utils"
+import { absoluteUrl } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
 import { Button } from "@/styles/base-nova/ui/button"
 import {

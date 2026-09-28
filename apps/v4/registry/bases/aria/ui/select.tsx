@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 import {
   Button as ButtonPrimitive,
   composeRenderProps,
@@ -20,7 +21,6 @@ import {
   type SelectValueProps,
 } from "react-aria-components"
 
-import { cn } from "@/registry/bases/aria/lib/utils"
 import {
   InputGroup,
   InputGroupAddon,
