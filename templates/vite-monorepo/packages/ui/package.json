@@ -9,20 +9,20 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
-    "zod": "^4.4.3"
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "zod": "^4.5.4"
   },
   "devDependencies": {
     "@eslint/js": "^10",
     "@tailwindcss/vite": "^4",
-    "@turbo/gen": "^2.9.15",
+    "@turbo/gen": "^2.10.12",
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^10",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
+    "eslint-plugin-react-refresh": "^0.5.6",
     "globals": "^17",
     "tailwindcss": "^4",
     "typescript": "~6",
