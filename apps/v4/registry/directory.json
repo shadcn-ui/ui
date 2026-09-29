@@ -1119,6 +1119,14 @@
     "logo": "<svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'><rect fill='var(--foreground)' width='32' height='32' rx='6.4'/><rect x='8' y='8' width='16' height='16' fill='var(--background)'/></svg>"
   },
   {
+    "name": "@jpmarques",
+    "homepage": "https://piemenu.jpmarqu.es",
+    "url": "https://piemenu.jpmarqu.es/r/{name}.json",
+    "description": "A radial pie menu for React. Press, drag toward an item, and release. Full keyboard support, ARIA menu roles, and animations.",
+    "author": "João P. Marques",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='var(--foreground)'><path d='M14 6A12 12 0 1 0 26 18H14Z'/><path d='M18 2A12 12 0 0 1 30 14H18Z' opacity='.5'/></svg>"
+  },
+  {
     "name": "@kanpeki",
     "homepage": "https://kanpeki.vercel.app",
     "url": "https://kanpeki.vercel.app/r/{name}.json",
