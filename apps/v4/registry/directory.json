@@ -1475,7 +1475,7 @@
     "homepage": "https://ui.usenotra.com",
     "url": "https://ui.usenotra.com/r/{name}.json",
     "description": "Components and blocks for building modern dashboards, straight from the design system behind Notra.",
-    "logo": "<svg width='800' height='800' viewBox='0 0 800 800' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='800' height='800' rx='160' fill='#f6f3f1'/><g transform='translate(120 120) scale(0.7)'><path d='M572.881 462.223c-12.712 43.22-290.678 105.932-394.068 83.898l-48.305-10.169 48.305-78.814 68.644-104.237 73.729-106.78 251.695-127.119 78.814-22.881 17.796 17.796h10.17c17.796 35.593 3.945 147.458-12.712 195.763-25.424 73.729-124.576 96.61-177.966 114.407-4.064 1.355 96.61-5.085 83.898 38.136Z' fill='#c8b2ee' stroke='#1e1e1e' stroke-width='35' stroke-linecap='round'/><path d='M700 96.111c-162.712-4.237-510.508 111.356-600 607.627' stroke='#1e1e1e' stroke-width='75' stroke-linecap='round'/></g></svg>"
+    "logo": "<svg width='800' height='800' viewBox='0 0 800 800' fill='none' xmlns='http://www.w3.org/2000/svg' role='img'><title>Notra Logo</title><rect width='800' height='800' rx='160' fill='#f6f3f1'/><g transform='translate(120 120) scale(0.7)'><path d='M572.881 462.223c-12.712 43.22-290.678 105.932-394.068 83.898l-48.305-10.169 48.305-78.814 68.644-104.237 73.729-106.78 251.695-127.119 78.814-22.881 17.796 17.796h10.17c17.796 35.593 3.945 147.458-12.712 195.763-25.424 73.729-124.576 96.61-177.966 114.407-4.064 1.355 96.61-5.085 83.898 38.136Z' fill='#c8b2ee' stroke='#1e1e1e' stroke-width='35' stroke-linecap='round'/><path d='M700 96.111c-162.712-4.237-510.508 111.356-600 607.627' stroke='#1e1e1e' stroke-width='75' stroke-linecap='round'/></g></svg>"
   },
   {
     "name": "@ns-ui",
