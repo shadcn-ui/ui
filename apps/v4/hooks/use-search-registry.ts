@@ -3,7 +3,7 @@ import { debounce, parseAsInteger, useQueryState } from "nuqs"
 import { useMounted } from "@/hooks/use-mounted"
 import globalRegistries from "@/registry/directory.json"
 
-const PAGE_SIZE = 10
+export const PAGE_SIZE = 8
 
 const normalizeQuery = (query: string) =>
   query.toLowerCase().replaceAll(" ", "").replaceAll("@", "")
