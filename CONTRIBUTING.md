@@ -70,6 +70,23 @@ git checkout -b my-new-branch
 pnpm install
 ```
 
+### Set up environment variables
+
+The v4 website requires environment variables to run locally.
+Copy the example file to get started:
+
+```bash
+cp apps/v4/.env.example apps/v4/.env.local
+```
+
+### Build the shadcn package
+
+The v4 website depends on compiled output from the `shadcn` package:
+
+```bash
+pnpm --filter=shadcn build
+```
+
 ### Run a workspace
 
 You can use the `pnpm --filter=[WORKSPACE]` command to start the development process for a workspace.
