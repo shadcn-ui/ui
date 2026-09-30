@@ -5,7 +5,6 @@ import { CardsCookieSettings } from "@/components/cards/cookie-settings"
 import { CardsCreateAccount } from "@/components/cards/create-account"
 import { CardsExerciseMinutes } from "@/components/cards/exercise-minutes"
 import { CardsForms } from "@/components/cards/forms"
-import { CardsPayments } from "@/components/cards/payments"
 import { CardsReportIssue } from "@/components/cards/report-issue"
 import { CardsShare } from "@/components/cards/share"
 import { CardsStats } from "@/components/cards/stats"
@@ -49,9 +48,6 @@ export function CardsDemo() {
           <div className="pt-3 sm:col-span-2 xl:pt-3">
             <CardsExerciseMinutes />
           </div>
-        </div>
-        <div className="hidden md:block">
-          <CardsPayments />
         </div>
         <CardsShare />
         <div className="xl:hidden">

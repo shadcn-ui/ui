@@ -44,6 +44,7 @@ npm install radix-ui
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource
+  styleName="radix-nova"
   name="navigation-menu"
   title="components/ui/navigation-menu.tsx"
 />
@@ -79,6 +80,17 @@ import {
       </NavigationMenuContent>
     </NavigationMenuItem>
   </NavigationMenuList>
+</NavigationMenu>
+```
+
+### Without a viewport
+
+Set `viewport={false}` on `NavigationMenu` to render each dropdown next to its
+trigger. The dropdown uses `z-50`, matching the shared viewport's stacking level.
+
+```tsx
+<NavigationMenu viewport={false}>
+  {/* NavigationMenuList and menu items */}
 </NavigationMenu>
 ```
 

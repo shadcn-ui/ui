@@ -1,8 +1,8 @@
 "use client"
 
+import { cn } from "cn"
 import { ChevronLeftIcon, ChevronRightIcon, SearchIcon } from "lucide-react"
 
-import { cn } from "@/lib/utils"
 import { Badge } from "@/styles/base-sera/ui/badge"
 import {
   Card,

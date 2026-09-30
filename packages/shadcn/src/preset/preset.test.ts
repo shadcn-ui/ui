@@ -6,9 +6,12 @@ import {
   encodePreset,
   fromBase62,
   generateRandomPreset,
+  isPresetBase,
   isPresetCode,
   isValidPreset,
+  parsePresetStyle,
   PRESET_BASE_COLORS,
+  PRESET_BASES,
   PRESET_CHART_COLORS,
   PRESET_FONT_HEADINGS,
   PRESET_FONTS,
@@ -21,6 +24,33 @@ import {
   toBase62,
   type PresetConfig,
 } from "./preset"
+
+describe("preset bases", () => {
+  it("should include aria without changing preset code versions", () => {
+    expect(PRESET_BASES).toEqual(["radix", "base", "aria"])
+    expect(isPresetBase("aria")).toBe(true)
+    expect(encodePreset({})[0]).toBe("b")
+  })
+
+  it("parses prefixed and legacy preset styles", () => {
+    expect(parsePresetStyle("aria-nova")).toEqual({
+      base: "aria",
+      style: "nova",
+    })
+    expect(parsePresetStyle("base-vega")).toEqual({
+      base: "base",
+      style: "vega",
+    })
+    expect(parsePresetStyle("new-york")).toEqual({
+      base: undefined,
+      style: "new-york",
+    })
+    expect(parsePresetStyle(undefined)).toEqual({
+      base: undefined,
+      style: undefined,
+    })
+  })
+})
 
 describe("base62", () => {
   it("should round-trip numbers", () => {

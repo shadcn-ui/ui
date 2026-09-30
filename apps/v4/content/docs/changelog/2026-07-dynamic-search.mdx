@@ -1,0 +1,44 @@
+---
+title: July 2026 - Dynamic Search
+description: Registries can now handle search server-side.
+date: 2026-07-31
+---
+
+**Registries can now handle search server-side.**
+
+When you run `shadcn search`, the CLI forwards the search parameters to your
+registry as query params:
+
+```txt
+GET /r/registry.json?q=button&limit=50&offset=0
+```
+
+Return the matching items with a `pagination` object and the CLI uses your
+results as-is. This makes search fast for large registries: no more downloading
+the full catalog to search it.
+
+```json title="registry.json?q=button&limit=1"
+{
+  "name": "acme",
+  "homepage": "https://acme.com",
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "description": "A button component."
+    }
+  ],
+  "pagination": {
+    "total": 12,
+    "offset": 0,
+    "limit": 1,
+    "hasMore": true
+  }
+}
+```
+
+Dynamic search is opt-in. Static registries ignore the query params and keep
+working without any changes.
+
+See the [Dynamic Search](/docs/registry/dynamic-search) docs for the full
+guide.

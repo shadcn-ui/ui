@@ -3,15 +3,19 @@ title: Getting Started
 description: Learn how to get setup and run your own component registry.
 ---
 
-This guide will walk you through the process of setting up your own component registry. It assumes you already have a project with components and would like to turn it into a registry.
+This guide will walk you through the process of setting up your own registry. It assumes you already have a project with components, hooks, utilities or other files you would like to distribute.
+
+**If you have an existing public GitHub repository, you can turn it into a
+registry by adding a `registry.json` file at the root.** See
+[GitHub Registries](/docs/registry/github) for details.
 
 If you're starting a new registry project, you can use the [registry template](https://github.com/shadcn-ui/registry-template) as a starting point. We have already configured it for you.
 
 ## Requirements
 
-You are free to design and host your custom registry as you see fit. The only requirement is that your registry catalog and registry items must be valid JSON files that conform to the [registry schema specification](/docs/registry/registry-json) and [registry-item schema specification](/docs/registry/registry-item-json).
+You are free to design and publish your custom registry as you see fit. The only requirement is that your registry catalog and registry items must conform to the [registry schema specification](/docs/registry/registry-json) and [registry-item schema specification](/docs/registry/registry-item-json).
 
-Your registry can be a Next.js, Vite, Vue, Svelte, PHP or any other framework as long as it supports serving JSON over HTTP.
+Your registry can be a Next.js, Vite, Vue, Svelte, PHP or any other framework as long as it supports serving JSON over HTTP. It can also be a public GitHub repository with a `registry.json` file at the root.
 
 If you'd like to see an example of a registry, we have a [template project](https://github.com/shadcn-ui/registry-template) for you to use as a starting point.
 
@@ -638,7 +642,7 @@ Here are some guidelines to follow when building components for a registry.
 - Place your registry item in the `registry/[STYLE]/[NAME]` directory. I'm using `default` as an example. It can be anything you want as long as it's nested under the `registry` directory.
 - For blocks, the following properties are required: `name`, `description`, `type` and `files`.
 - It is recommended to add a proper name and description to your registry item. This helps LLMs understand the component and its purpose.
-- Make sure to list all registry dependencies in `registryDependencies`. A registry dependency is the name of the component in the registry eg. `input`, `button`, `card`, etc or a URL to a registry item eg. `http://localhost:3000/r/editor.json`.
+- Make sure to list all registry dependencies in `registryDependencies`. A registry dependency is an item address such as `button`, `@acme/input-form`, `acme/ui/button` or `http://localhost:3000/r/editor.json`.
 - Make sure to list all dependencies in `dependencies`. A dependency is the name of the package in the registry eg. `zod`, `sonner`, etc. To set a version, you can use the `name@version` format eg. `zod@^3.20.0`.
 - **Imports should always use the `@/registry` path.** eg. `import { HelloWorld } from "@/registry/default/hello-world/hello-world"`
 - Ideally, place your files within a registry item in `components`, `hooks`, `lib` directories.

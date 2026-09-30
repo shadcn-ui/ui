@@ -80,4 +80,54 @@ describe("registrySchema", () => {
 
     expect(result.success).toBe(false)
   })
+
+  it("should accept registries with pagination", () => {
+    const result = registrySchema.safeParse({
+      name: "example",
+      homepage: "https://example.com",
+      items: [{ name: "button", type: "registry:ui" }],
+      pagination: {
+        total: 100,
+        offset: 0,
+        limit: 1,
+        hasMore: true,
+      },
+    })
+
+    expect(result.success).toBe(true)
+    if (result.success) {
+      expect(result.data.pagination).toEqual({
+        total: 100,
+        offset: 0,
+        limit: 1,
+        hasMore: true,
+      })
+    }
+  })
+
+  it("should accept registries without pagination", () => {
+    const result = registrySchema.safeParse({
+      name: "example",
+      homepage: "https://example.com",
+      items: [{ name: "button", type: "registry:ui" }],
+    })
+
+    expect(result.success).toBe(true)
+    if (result.success) {
+      expect(result.data.pagination).toBeUndefined()
+    }
+  })
+
+  it("should reject registries with invalid pagination", () => {
+    const result = registrySchema.safeParse({
+      name: "example",
+      homepage: "https://example.com",
+      items: [{ name: "button", type: "registry:ui" }],
+      pagination: {
+        total: "100",
+      },
+    })
+
+    expect(result.success).toBe(false)
+  })
 })

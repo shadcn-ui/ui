@@ -2,9 +2,9 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { cn } from "cn"
 
 import { PAGES_NEW } from "@/lib/docs"
-import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
 export function MainNav({

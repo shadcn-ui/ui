@@ -14,7 +14,7 @@ import { ui } from "./ui/_registry"
 // Shared between index and style.
 const RADIX_STYLE = {
   type: "registry:style",
-  dependencies: ["class-variance-authority", "lucide-react", "radix-ui"],
+  dependencies: ["class-variance-authority", "cn", "lucide-react", "radix-ui"],
   devDependencies: ["tw-animate-css", "shadcn"],
   registryDependencies: ["utils"],
   css: {

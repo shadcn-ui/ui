@@ -1,4 +1,6 @@
-import Image from "next/image"
+"use client"
+
+import * as React from "react"
 
 import {
   Example,
@@ -23,13 +25,42 @@ import {
 } from "@/registry/bases/radix/ui/card"
 import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/registry/bases/radix/ui/toggle-group"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+
+const spacingOptions = [
+  {
+    className: "[--card-spacing:--spacing(4)]",
+    label: "16px",
+    value: "4",
+  },
+  {
+    className: "[--card-spacing:--spacing(5)]",
+    label: "20px",
+    value: "5",
+  },
+  {
+    className: "[--card-spacing:--spacing(6)]",
+    label: "24px",
+    value: "6",
+  },
+  {
+    className: "[--card-spacing:--spacing(8)]",
+    label: "32px",
+    value: "8",
+  },
+]
 
 export default function CardExample() {
   return (
     <ExampleWrapper>
       <CardDefault />
       <CardSmall />
+      <CardContentEdgeToEdge />
+      <CardCustomSpacing />
       <CardHeaderWithBorder />
       <CardFooterWithBorder />
       <CardHeaderWithBorderSmall />
@@ -39,6 +70,98 @@ export default function CardExample() {
       <CardLogin />
       <CardMeetingNotes />
     </ExampleWrapper>
+  )
+}
+
+function CardContentEdgeToEdge() {
+  return (
+    <Example title="Content Edge to Edge">
+      <Card className="mx-auto w-full max-w-sm">
+        <CardHeader>
+          <CardTitle>Terms of Service</CardTitle>
+          <CardDescription>
+            Review the terms before accepting the agreement.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="-mb-(--card-spacing) px-0">
+          <div className="max-h-48 space-y-4 overflow-y-scroll border-t bg-muted/50 px-(--card-spacing) py-4 text-sm leading-relaxed">
+            <p>
+              These terms govern your use of the workspace, including access to
+              shared documents, project files, and collaboration tools.
+            </p>
+            <p>
+              You are responsible for the content you upload and for ensuring
+              that your team has the appropriate permissions to view or edit it.
+            </p>
+            <p>
+              We may update features or limits as the service evolves. When
+              those changes materially affect your workflow, we will notify your
+              workspace administrators.
+            </p>
+            <p>
+              By continuing, you agree to keep your account credentials secure
+              and to follow your organization&apos;s acceptable use policies.
+            </p>
+          </div>
+        </CardContent>
+        <CardFooter className="justify-end gap-2">
+          <Button variant="outline">Decline</Button>
+          <Button>Accept</Button>
+        </CardFooter>
+      </Card>
+    </Example>
+  )
+}
+
+function CardCustomSpacing() {
+  const [spacing, setSpacing] = React.useState("4")
+  const selectedSpacing = spacingOptions.find(
+    (option) => option.value === spacing
+  )
+
+  return (
+    <Example title="Custom Spacing">
+      <div className="mx-auto grid w-full max-w-sm gap-4">
+        <ToggleGroup
+          type="single"
+          value={spacing}
+          onValueChange={(value) => {
+            if (value) {
+              setSpacing(value)
+            }
+          }}
+          variant="outline"
+          size="sm"
+          className="justify-center"
+        >
+          {spacingOptions.map((option) => (
+            <ToggleGroupItem key={option.value} value={option.value}>
+              {option.label}
+            </ToggleGroupItem>
+          ))}
+        </ToggleGroup>
+        <Card className={selectedSpacing?.className}>
+          <CardHeader>
+            <CardTitle>Release Health</CardTitle>
+            <CardDescription>
+              Track readiness across launch signals.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-2 rounded-lg bg-muted/50 p-3 text-sm style-lyra:rounded-none style-sera:rounded-none">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-muted-foreground">Checks passed</span>
+                <span className="font-medium">24 / 26</span>
+              </div>
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-muted-foreground">Open blockers</span>
+                <span className="font-medium">2</span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </Example>
   )
 }
 

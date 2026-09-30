@@ -1,4 +1,4 @@
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/styles/base-rhea/ui/button"
 import {
   Drawer,
   DrawerClose,
@@ -8,55 +8,26 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/styles/base-nova/ui/drawer"
-
-const DRAWER_SIDES = ["top", "right", "bottom", "left"] as const
+} from "@/styles/base-rhea/ui/drawer"
 
 export function DrawerWithSides() {
   return (
-    <div className="flex flex-wrap gap-2">
-      {DRAWER_SIDES.map((side) => (
-        <Drawer
-          key={side}
-          direction={
-            side === "bottom" ? undefined : (side as "top" | "right" | "left")
-          }
-        >
-          <DrawerTrigger asChild>
-            <Button variant="outline" className="capitalize">
-              {side}
-            </Button>
-          </DrawerTrigger>
-          <DrawerContent className="data-[vaul-drawer-direction=bottom]:max-h-[50vh] data-[vaul-drawer-direction=top]:max-h-[50vh]">
-            <DrawerHeader>
-              <DrawerTitle>Move Goal</DrawerTitle>
-              <DrawerDescription>
-                Set your daily activity goal.
-              </DrawerDescription>
-            </DrawerHeader>
-            <div className="no-scrollbar overflow-y-auto px-4">
-              {Array.from({ length: 10 }).map((_, index) => (
-                <p key={index} className="mb-4 leading-normal">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
-                </p>
-              ))}
-            </div>
-            <DrawerFooter>
-              <Button>Submit</Button>
-              <DrawerClose asChild>
-                <Button variant="outline">Cancel</Button>
-              </DrawerClose>
-            </DrawerFooter>
-          </DrawerContent>
-        </Drawer>
-      ))}
-    </div>
+    <Drawer swipeDirection="left">
+      <DrawerTrigger render={<Button variant="secondary" />}>
+        Open Left Drawer
+      </DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Move Goal</DrawerTitle>
+          <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+        </DrawerHeader>
+        <div className="flex-1 p-4">
+          <div className="size-full rounded-2xl bg-muted" />
+        </div>
+        <DrawerFooter>
+          <DrawerClose render={<Button />}>Close</DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
   )
 }

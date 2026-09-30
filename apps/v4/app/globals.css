@@ -3,6 +3,32 @@
 @import "shadcn/tailwind.css";
 @import "./legacy-themes.css";
 
+@source "../node_modules/streamdown/dist/*.js";
+@source "../styles/base-luma/**/*.tsx";
+@source "../styles/base-lyra/**/*.tsx";
+@source "../styles/base-maia/**/*.tsx";
+@source "../styles/base-mira/**/*.tsx";
+@source "../styles/base-nova/**/*.tsx";
+@source "../styles/base-rhea/**/*.tsx";
+@source "../styles/base-sera/**/*.tsx";
+@source "../styles/base-vega/**/*.tsx";
+@source "../styles/aria-luma/**/*.tsx";
+@source "../styles/aria-lyra/**/*.tsx";
+@source "../styles/aria-maia/**/*.tsx";
+@source "../styles/aria-mira/**/*.tsx";
+@source "../styles/aria-nova/**/*.tsx";
+@source "../styles/aria-rhea/**/*.tsx";
+@source "../styles/aria-sera/**/*.tsx";
+@source "../styles/aria-vega/**/*.tsx";
+@source "../styles/radix-luma/**/*.tsx";
+@source "../styles/radix-lyra/**/*.tsx";
+@source "../styles/radix-maia/**/*.tsx";
+@source "../styles/radix-mira/**/*.tsx";
+@source "../styles/radix-nova/**/*.tsx";
+@source "../styles/radix-rhea/**/*.tsx";
+@source "../styles/radix-sera/**/*.tsx";
+@source "../styles/radix-vega/**/*.tsx";
+
 @custom-variant style-vega (&:where(.style-vega *));
 @custom-variant style-nova (&:where(.style-nova *));
 @custom-variant style-lyra (&:where(.style-lyra *));
@@ -158,6 +184,11 @@
 }
 
 @layer base {
+  /* Anchor jumps clear the sticky header; typeset's scroll-margin adds air. */
+  html {
+    scroll-padding-top: var(--header-height);
+  }
+
   * {
     @apply border-border outline-ring/50;
   }
@@ -168,6 +199,7 @@
     @apply overscroll-y-none;
   }
   body {
+    position: relative;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
   }
@@ -248,6 +280,14 @@
 }
 
 @layer components {
+  /* Component links (asChild buttons, cards) keep their own affordances
+     inside typeset prose. Consumer-level rule: this app knows its components
+     carry data-slot. Same layer as typeset, wins on specificity. */
+  .typeset a[data-slot] {
+    font-weight: inherit;
+    text-decoration-line: none;
+  }
+
   .steps {
     &:first-child {
       @apply !mt-0;
@@ -269,7 +309,7 @@
   [data-rehype-pretty-code-figure] {
     background-color: var(--color-code);
     color: var(--color-code-foreground);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-2xl);
     border-width: 0px;
     border-color: var(--border);
     margin-top: calc(var(--spacing) * 6);
@@ -282,6 +322,14 @@
     &:has([data-rehype-pretty-code-title]) [data-slot="copy-button"] {
       top: calc(var(--spacing) * 1.5) !important;
     }
+  }
+
+  [data-rehype-pretty-code-figure] code,
+  [data-rehype-pretty-code-figure] code span {
+    font-variant-ligatures: none;
+    font-feature-settings:
+      "liga" 0,
+      "calt" 0;
   }
 
   [data-rehype-pretty-code-title] {
@@ -325,9 +373,9 @@
   }
 
   [data-line] {
-    padding-top: calc(var(--spacing) * 0.5);
-    padding-bottom: calc(var(--spacing) * 0.5);
-    min-height: calc(var(--spacing) * 1);
+    padding-top: calc(var(--spacing) * 0.25);
+    padding-bottom: calc(var(--spacing) * 0.25);
+    min-height: calc(var(--spacing) * 0.875);
     width: 100%;
     display: inline-block;
   }

@@ -15,6 +15,7 @@
   "search.exclude": {
     "apps/v4/registry/radix-*": true,
     "apps/v4/public/r/*": true,
-    "packages/shadcn/test/fixtures/*": true
+    "packages/shadcn/test/fixtures/*": true,
+    "apps/v4/styles/*": true
   }
 }

@@ -1,5 +1,10 @@
 import { getRegistryItems, searchRegistries } from "@/src/registry"
+import { withRegistryContext } from "@/src/registry/context"
 import { RegistryError } from "@/src/registry/errors"
+import {
+  resolveSearchRegistries,
+  SEARCHABLE_TYPES,
+} from "@/src/registry/search"
 import { Server } from "@modelcontextprotocol/sdk/server/index.js"
 import {
   CallToolRequestSchema,
@@ -10,9 +15,11 @@ import { z } from "zod"
 import { zodToJsonSchema } from "zod-to-json-schema"
 
 import {
+  findUnknownTypesMessage,
   formatItemExamples,
   formatRegistryItems,
   formatSearchResultsWithPagination,
+  formatSkippedRegistries,
   getMcpConfig,
   npxShadcn,
 } from "./utils"
@@ -24,11 +31,26 @@ export const server = new Server(
   },
   {
     capabilities: {
+      logging: {},
       resources: {},
       tools: {},
     },
   }
 )
+
+// GitHub authentication notices must reach the MCP client before the first
+// authenticated request. Stdout carries the protocol, so the console is not a
+// usable surface here.
+async function onGitHubAuthNotice(message: string) {
+  try {
+    await server.sendLoggingMessage({
+      level: "info",
+      data: message,
+    })
+  } catch {
+    console.error(message)
+  }
+}
 
 server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
@@ -47,13 +69,22 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           z.object({
             registries: z
               .array(z.string())
+              .optional()
               .describe(
-                "Array of registry names to search (e.g., ['@shadcn', '@acme'])"
+                "Array of registry names to list (e.g., ['@shadcn', '@acme']). Omit to list from every registry configured in components.json."
+              ),
+            types: z
+              .array(z.string())
+              .optional()
+              .describe(
+                `Filter by item type. One of: ${SEARCHABLE_TYPES.join(", ")}.`
               ),
             limit: z
               .number()
               .optional()
-              .describe("Maximum number of items to return"),
+              .describe(
+                "Maximum number of items to return (defaults to 100; use 0 for no limit)"
+              ),
             offset: z
               .number()
               .optional()
@@ -69,18 +100,27 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           z.object({
             registries: z
               .array(z.string())
+              .optional()
               .describe(
-                "Array of registry names to search (e.g., ['@shadcn', '@acme'])"
+                "Array of registry names to search (e.g., ['@shadcn', '@acme']). Omit to search every registry configured in components.json."
               ),
             query: z
               .string()
               .describe(
                 "Search query string for fuzzy matching against item names and descriptions"
               ),
+            types: z
+              .array(z.string())
+              .optional()
+              .describe(
+                `Filter by item type. One of: ${SEARCHABLE_TYPES.join(", ")}.`
+              ),
             limit: z
               .number()
               .optional()
-              .describe("Maximum number of items to return"),
+              .describe(
+                "Maximum number of items to return (defaults to 100; use 0 for no limit)"
+              ),
             offset: z
               .number()
               .optional()
@@ -110,8 +150,9 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           z.object({
             registries: z
               .array(z.string())
+              .optional()
               .describe(
-                "Array of registry names to search (e.g., ['@shadcn', '@acme'])"
+                "Array of registry names to search (e.g., ['@shadcn', '@acme']). Omit to search every registry configured in components.json."
               ),
             query: z
               .string()
@@ -145,7 +186,13 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
   }
 })
 
-server.setRequestHandler(CallToolRequestSchema, async (request) => {
+server.setRequestHandler(CallToolRequestSchema, async (request) =>
+  withRegistryContext(() => handleCallTool(request), { onGitHubAuthNotice })
+)
+
+async function handleCallTool(request: {
+  params: { name: string; arguments?: Record<string, unknown> }
+}) {
   try {
     if (!request.params.arguments) {
       throw new Error("No tool arguments provided.")
@@ -196,20 +243,55 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
       case "search_items_in_registries": {
         const inputSchema = z.object({
-          registries: z.array(z.string()),
+          registries: z.array(z.string()).optional(),
           query: z.string(),
+          types: z.array(z.string()).optional(),
           limit: z.number().optional(),
           offset: z.number().optional(),
         })
 
         const args = inputSchema.parse(request.params.arguments)
-        const results = await searchRegistries(args.registries, {
+
+        const unknownTypesMessage = findUnknownTypesMessage(args.types)
+        if (unknownTypesMessage) {
+          return {
+            content: [{ type: "text", text: unknownTypesMessage }],
+            isError: true,
+          }
+        }
+
+        const config = await getMcpConfig(process.cwd())
+
+        // When registries are omitted, search every configured registry and
+        // tolerate individual failures.
+        const searchAll = !args.registries?.length
+        const registries = resolveSearchRegistries(
+          args.registries ?? [],
+          config
+        )
+
+        if (registries.length === 0) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: dedent`No registries are configured. Add registries to components.json (use get_project_registries to inspect) or pass them explicitly.`,
+              },
+            ],
+          }
+        }
+
+        const results = await searchRegistries(registries, {
           query: args.query,
-          limit: args.limit,
+          types: args.types,
+          limit: args.limit ?? 100,
           offset: args.offset,
-          config: await getMcpConfig(process.cwd()),
+          config,
           useCache: false,
+          continueOnError: searchAll,
         })
+
+        const skippedNote = formatSkippedRegistries(results)
 
         if (results.items.length === 0) {
           return {
@@ -218,9 +300,9 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                 type: "text",
                 text: dedent`No items found matching "${
                   args.query
-                }" in registries ${args.registries.join(
+                }" in registries ${registries.join(
                   ", "
-                )}, Try searching with a different query or registry.`,
+                )}, Try searching with a different query or registry.${skippedNote}`,
               },
             ],
           }
@@ -230,10 +312,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           content: [
             {
               type: "text",
-              text: formatSearchResultsWithPagination(results, {
-                query: args.query,
-                registries: args.registries,
-              }),
+              text:
+                formatSearchResultsWithPagination(results, {
+                  query: args.query,
+                  registries,
+                }) + skippedNote,
             },
           ],
         }
@@ -241,28 +324,61 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
       case "list_items_in_registries": {
         const inputSchema = z.object({
-          registries: z.array(z.string()),
+          registries: z.array(z.string()).optional(),
+          types: z.array(z.string()).optional(),
           limit: z.number().optional(),
           offset: z.number().optional(),
           cwd: z.string().optional(),
         })
 
         const args = inputSchema.parse(request.params.arguments)
-        const results = await searchRegistries(args.registries, {
-          limit: args.limit,
+
+        const unknownTypesMessage = findUnknownTypesMessage(args.types)
+        if (unknownTypesMessage) {
+          return {
+            content: [{ type: "text", text: unknownTypesMessage }],
+            isError: true,
+          }
+        }
+
+        const config = await getMcpConfig(process.cwd())
+
+        const listAll = !args.registries?.length
+        const registries = resolveSearchRegistries(
+          args.registries ?? [],
+          config
+        )
+
+        if (registries.length === 0) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: dedent`No registries are configured. Add registries to components.json (use get_project_registries to inspect) or pass them explicitly.`,
+              },
+            ],
+          }
+        }
+
+        const results = await searchRegistries(registries, {
+          types: args.types,
+          limit: args.limit ?? 100,
           offset: args.offset,
-          config: await getMcpConfig(process.cwd()),
+          config,
           useCache: false,
+          continueOnError: listAll,
         })
+
+        const skippedNote = formatSkippedRegistries(results)
 
         if (results.items.length === 0) {
           return {
             content: [
               {
                 type: "text",
-                text: dedent`No items found in registries ${args.registries.join(
+                text: dedent`No items found in registries ${registries.join(
                   ", "
-                )}.`,
+                )}.${skippedNote}`,
               },
             ],
           }
@@ -272,9 +388,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           content: [
             {
               type: "text",
-              text: formatSearchResultsWithPagination(results, {
-                registries: args.registries,
-              }),
+              text:
+                formatSearchResultsWithPagination(results, {
+                  registries,
+                }) + skippedNote,
             },
           ],
         }
@@ -321,16 +438,34 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       case "get_item_examples_from_registries": {
         const inputSchema = z.object({
           query: z.string(),
-          registries: z.array(z.string()),
+          registries: z.array(z.string()).optional(),
         })
 
         const args = inputSchema.parse(request.params.arguments)
         const config = await getMcpConfig()
 
-        const results = await searchRegistries(args.registries, {
+        const searchAll = !args.registries?.length
+        const registries = resolveSearchRegistries(
+          args.registries ?? [],
+          config
+        )
+
+        if (registries.length === 0) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: dedent`No registries are configured. Add registries to components.json (use get_project_registries to inspect) or pass them explicitly.`,
+              },
+            ],
+          }
+        }
+
+        const results = await searchRegistries(registries, {
           query: args.query,
           config,
           useCache: false,
+          continueOnError: searchAll,
         })
 
         if (results.items.length === 0) {
@@ -460,4 +595,4 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       isError: true,
     }
   }
-})
+}

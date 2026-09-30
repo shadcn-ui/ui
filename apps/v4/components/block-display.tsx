@@ -1,4 +1,5 @@
 import * as React from "react"
+import { cn } from "cn"
 import { type registryItemFileSchema } from "shadcn/schema"
 import { type z } from "zod"
 
@@ -7,7 +8,6 @@ import {
   createFileTreeForRegistryItemFiles,
   getRegistryItem,
 } from "@/lib/registry"
-import { cn } from "@/lib/utils"
 import { BlockViewer } from "@/components/block-viewer"
 import { ComponentPreview } from "@/components/component-preview"
 import { type Style } from "@/registry/_legacy-styles"
