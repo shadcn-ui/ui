@@ -19,6 +19,7 @@ import {
 import { Project, ScriptKind } from "ts-morph"
 import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
+import { BUILTIN_MODULES } from "@/src/registry/constants"
 
 const FILE_EXTENSIONS_FOR_LOOKUP = [".tsx", ".ts", ".jsx", ".js", ".css"]
 const FILE_PATH_SKIP_LIST = ["lib/utils.ts"]
@@ -38,6 +39,14 @@ export function getDependencyFromModuleSpecifier(
 ): string | null {
   // Skip if the dependency matches any pattern in the skip list
   if (DEPENDENCY_SKIP_LIST.some((pattern) => pattern.test(moduleSpecifier))) {
+    return null
+  }
+
+  // Skip if the module specifier is a Node.js built-in module
+  if (
+    BUILTIN_MODULES.has(moduleSpecifier) ||
+    BUILTIN_MODULES.has(moduleSpecifier.split("/")[0])
+  ) {
     return null
   }
 
