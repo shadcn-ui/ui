@@ -1253,6 +1253,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m2 2 20 20'/><path d='M5.782 5.782A7 7 0 0 0 9 19h8.5a4.5 4.5 0 0 0 1.307-.193'/><path d='M21.532 16.5A4.5 4.5 0 0 0 17.5 10h-1.79A7.008 7.008 0 0 0 10 5.07'/></svg>"
   },
   {
+    "name": "@logoforge",
+    "homepage": "https://logoforge.terravidhal.me",
+    "url": "https://logoforge.terravidhal.me/r/{name}.json",
+    "description": "900+ brand logos for developers as typed React components with automatic dark mode and mono variants. Includes logo cloud sections and African brands. Free and open source.",
+    "author": "terravidhal",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><path d='M4 6h4.8a1.7 1.7 0 0 1 1.7 1.7v6.3h6.3a1.7 1.7 0 0 1 1.7 1.7v4.6a2.7 2.7 0 0 1-2.7 2.7H4a2.7 2.7 0 0 1-2.7-2.7V8.7A2.7 2.7 0 0 1 4 6z'/><rect x='14.2' y='1.8' width='8' height='8' rx='1.7' transform='rotate(-8 18.2 5.8)'/></svg>"
+  },
+  {
     "name": "@lucide-animated",
     "homepage": "https://lucide-animated.com",
     "url": "https://lucide-animated.com/r/{name}.json",
