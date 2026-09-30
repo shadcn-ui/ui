@@ -2,20 +2,20 @@ import { randomBytes } from "crypto"
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
-import { iconLibraries } from "@/src/icons/libraries"
 import {
   getIconModuleSpecifier,
   parseImportTemplate,
   parseUsageTemplate,
   type ParsedUsage,
 } from "@/src/icons/templates"
-import { iconsSchema } from "@/src/schema"
-import { Config } from "@/src/utils/get-config"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
 import { getRegistryIcons } from "@/src/utils/registry-api"
-import { spinner } from "@/src/utils/spinner"
-import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
+import { iconLibraries } from "@shadcn/registry/internal/icons/libraries"
+import { Config } from "@shadcn/registry/internal/utils/get-config"
+import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
+import { logger } from "@shadcn/registry/internal/utils/logger"
+import { spinner } from "@shadcn/registry/internal/utils/spinner"
+import { updateDependencies } from "@shadcn/registry/internal/utils/updaters/update-dependencies"
+import { iconsSchema } from "@shadcn/registry/schema"
 import fg from "fast-glob"
 import fsExtra from "fs-extra"
 import prompts from "prompts"

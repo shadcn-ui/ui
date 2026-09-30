@@ -1,18 +1,18 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { SHADCN_URL } from "@/src/registry/constants"
-import { getConfig } from "@/src/utils/get-config"
+import { handleError } from "@/src/utils/handle-error"
+import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
+import { getConfig } from "@shadcn/registry/internal/utils/get-config"
 import {
   formatMonorepoMessage,
   getMonorepoTargets,
   isMonorepoRoot,
-} from "@/src/utils/get-monorepo-info"
-import { getPackageInfo } from "@/src/utils/get-package-info"
-import { getPackageManager } from "@/src/utils/get-package-manager"
-import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
-import { spinner } from "@/src/utils/spinner"
+} from "@shadcn/registry/internal/utils/get-monorepo-info"
+import { getPackageInfo } from "@shadcn/registry/internal/utils/get-package-info"
+import { getPackageManager } from "@shadcn/registry/internal/utils/get-package-manager"
+import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
+import { logger } from "@shadcn/registry/internal/utils/logger"
+import { spinner } from "@shadcn/registry/internal/utils/spinner"
 import { Command } from "commander"
 import { execa } from "execa"
 import fsExtra from "fs-extra"

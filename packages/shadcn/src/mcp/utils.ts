@@ -1,7 +1,13 @@
-import { getRegistriesConfig } from "@/src/registry/api"
-import { findUnknownSearchTypes, SEARCHABLE_TYPES } from "@/src/registry/search"
-import { registryItemSchema, searchResultsSchema } from "@/src/schema"
-import { getPackageRunner } from "@/src/utils/get-package-manager"
+import { getRegistriesConfig } from "@shadcn/registry/internal/registry/api"
+import {
+  findUnknownSearchTypes,
+  SEARCHABLE_TYPES,
+} from "@shadcn/registry/internal/registry/search"
+import { getPackageRunner } from "@shadcn/registry/internal/utils/get-package-manager"
+import {
+  registryItemSchema,
+  searchResultsSchema,
+} from "@shadcn/registry/schema"
 import { z } from "zod"
 
 const SHADCN_CLI_COMMAND = "shadcn@latest"

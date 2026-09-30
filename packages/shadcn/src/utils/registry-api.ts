@@ -1,12 +1,12 @@
-import { fetchRegistry } from "@/src/registry/fetcher"
+import { handleError } from "@/src/utils/handle-error"
+import { fetchRegistry } from "@shadcn/registry/internal/registry/fetcher"
+import { logger } from "@shadcn/registry/internal/utils/logger"
 import {
   iconsSchema,
   registryIndexSchema,
   registryItemSchema,
   stylesSchema,
-} from "@/src/schema"
-import { handleError } from "@/src/utils/handle-error"
-import { logger } from "@/src/utils/logger"
+} from "@shadcn/registry/schema"
 import { z } from "zod"
 
 // Registry API helpers that print the error and exit the process on failure.
