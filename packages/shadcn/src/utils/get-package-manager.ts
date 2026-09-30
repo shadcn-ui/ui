@@ -1,6 +1,14 @@
 import { detect } from "@antfu/ni"
+import fs from "fs-extra"
+import path from "path"
 
-export type PackageManager = "yarn" | "pnpm" | "bun" | "npm" | "deno"
+export type PackageManager =
+  | "yarn"
+  | "pnpm"
+  | "bun"
+  | "npm"
+  | "deno"
+  | "nub"
 
 export async function getPackageManager(
   targetDir: string,
@@ -8,6 +16,17 @@ export async function getPackageManager(
     withFallback: false,
   }
 ): Promise<PackageManager> {
+  const packageJsonPath = path.join(targetDir, "package.json")
+  const packageJson = await fs.readJson(packageJsonPath).catch(() => null)
+
+  if (packageJson?.packageManager?.startsWith("nub@")) {
+    return "nub"
+  }
+
+  if (await fs.pathExists(path.join(targetDir, "nub.lock"))) {
+    return "nub"
+  }
+
   const packageManager = await detect({ programmatic: true, cwd: targetDir })
 
   if (packageManager === "yarn@berry") return "yarn"
@@ -41,6 +60,10 @@ export function getPackageManagerFromUserAgent(
     return "deno"
   }
 
+  if (userAgent.startsWith("nub")) {
+    return "nub"
+  }
+
   if (userAgent.startsWith("npm")) {
     return "npm"
   }
@@ -52,6 +75,8 @@ export function getPackageRunnerCommand(packageManager: PackageManager | null) {
   if (packageManager === "pnpm") return "pnpm dlx"
 
   if (packageManager === "bun") return "bunx"
+
+  if (packageManager === "nub") return "nubx"
 
   return "npx"
 }
