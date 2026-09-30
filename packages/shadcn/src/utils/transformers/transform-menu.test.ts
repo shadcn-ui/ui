@@ -32,7 +32,7 @@ const testConfig: Config = {
 
 describe("transformMenu", () => {
   describe("menuColor is inverted", () => {
-    test("replaces cn-menu-target with dark in string literal", async () => {
+    test("replaces cn-menu-target with inverted menu classes in string literal", async () => {
       expect(
         await transform(
           {
@@ -53,12 +53,12 @@ export function Component() {
         "import * as React from "react"
 
         export function Component() {
-          return <div className="dark p-4">Content</div>
+          return <div className="dark [color-scheme:dark] p-4">Content</div>
         }"
       `)
     })
 
-    test("replaces cn-menu-target with dark in cn() call", async () => {
+    test("replaces cn-menu-target with inverted menu classes in cn() call", async () => {
       expect(
         await transform(
           {
@@ -79,7 +79,7 @@ export function Component() {
         "import * as React from "react"
 
         export function Component() {
-          return <div className={cn("dark", "p-4")}>Content</div>
+          return <div className={cn("dark [color-scheme:dark]", "p-4")}>Content</div>
         }"
       `)
     })
@@ -112,8 +112,8 @@ export function Component() {
         export function Component() {
           return (
             <div>
-              <div className="dark p-4">First</div>
-              <div className={cn("dark", "mt-2")}>Second</div>
+              <div className="dark [color-scheme:dark] p-4">First</div>
+              <div className={cn("dark [color-scheme:dark]", "mt-2")}>Second</div>
             </div>
           )
         }"
@@ -367,7 +367,7 @@ export function Component() {
   })
 
   describe("menuColor is inverted-translucent", () => {
-    test("replaces cn-menu-target with dark and inlines cn-menu-translucent", async () => {
+    test("replaces cn-menu-target with inverted menu classes and inlines cn-menu-translucent", async () => {
       expect(
         await transform(
           {
@@ -388,12 +388,12 @@ export function Component() {
         "import * as React from "react"
 
         export function Component() {
-          return <div className="dark p-4 animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!">Content</div>
+          return <div className="dark [color-scheme:dark] p-4 animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!">Content</div>
         }"
       `)
     })
 
-    test("replaces cn-menu-target with dark and inlines cn-menu-translucent in cn() call", async () => {
+    test("replaces cn-menu-target with inverted menu classes and inlines cn-menu-translucent in cn() call", async () => {
       expect(
         await transform(
           {
@@ -414,14 +414,14 @@ export function Component() {
         "import * as React from "react"
 
         export function Component() {
-          return <div className={cn("dark animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!", "p-4")}>Content</div>
+          return <div className={cn("dark [color-scheme:dark] animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!", "p-4")}>Content</div>
         }"
       `)
     })
   })
 
   describe("menuColor is inverted removes cn-menu-translucent", () => {
-    test("replaces cn-menu-target with dark and removes cn-menu-translucent", async () => {
+    test("replaces cn-menu-target with inverted menu classes and removes cn-menu-translucent", async () => {
       expect(
         await transform(
           {
@@ -442,7 +442,7 @@ export function Component() {
         "import * as React from "react"
 
         export function Component() {
-          return <div className="dark p-4">Content</div>
+          return <div className="dark [color-scheme:dark] p-4">Content</div>
         }"
       `)
     })
@@ -497,7 +497,7 @@ export function Component() {
       "import * as React from "react";
 
       export function Component() {
-        return <div className="dark p-4">Content</div>;
+        return <div className="dark [color-scheme:dark] p-4">Content</div>;
       }"
     `)
   })

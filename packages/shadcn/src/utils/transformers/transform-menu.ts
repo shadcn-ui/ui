@@ -7,9 +7,9 @@ const TRANSLUCENT_CLASSES =
   "animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!"
 
 // Transforms cn-menu-target and cn-menu-translucent classes based on config.menuColor.
-// If menuColor is "inverted", replaces cn-menu-target with "dark" and removes cn-menu-translucent.
+// If menuColor is "inverted", replaces cn-menu-target with inverted menu classes and removes cn-menu-translucent.
 // If menuColor is "default-translucent", removes cn-menu-target and inlines cn-menu-translucent styles.
-// If menuColor is "inverted-translucent", replaces cn-menu-target with "dark" and inlines cn-menu-translucent styles.
+// If menuColor is "inverted-translucent", replaces cn-menu-target with inverted menu classes and inlines cn-menu-translucent styles.
 // Otherwise, removes both cn-menu-target and cn-menu-translucent.
 export const transformMenu: Transformer = async ({ sourceFile, config }) => {
   const menuColor = config.menuColor
@@ -39,8 +39,8 @@ export const transformMenu: Transformer = async ({ sourceFile, config }) => {
     let needsCleanup = false
 
     if (menuColor === "inverted" || menuColor === "inverted-translucent") {
-      // Replace cn-menu-target with "dark".
-      newText = newText.replace(/cn-menu-target/g, "dark")
+      // Match native controls, including scrollbars, to the inverted menu.
+      newText = newText.replace(/cn-menu-target/g, "dark [color-scheme:dark]")
     } else {
       // Remove cn-menu-target for both "default-translucent" and "default".
       newText = newText.replace(/cn-menu-target/g, "")
