@@ -1936,8 +1936,8 @@
   },
   {
     "name": "@sekei",
-    "homepage": "https://www.sekei.xyz/shad-fx",
-    "url": "https://www.sekei.xyz/registry/{name}.json",
+    "homepage": "https://www.sekei.design/shad-fx",
+    "url": "https://www.sekei.design/registry/{name}.json",
     "description": "Canvas effects for React, copied into your project as source. Starts with ordered dither: fire, lightning, sonar rings, a light beam, a sloshing fluid, rain and snow.",
     "author": "Piergiorgio Gonni",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='var(--foreground)'><path d='M18 12H26V14H28V16H26V18H24V20H22V22H20V24H18V26H16V28H14V20H6V18H4V16H6V14H8V12H10V10H12V8H14V6H16V4H18V12Z'/></svg>"
