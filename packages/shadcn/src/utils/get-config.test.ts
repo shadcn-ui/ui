@@ -7,6 +7,7 @@ import { describe, expect, it } from "vitest"
 
 import {
   createConfig,
+  findCommonRoot,
   getBase,
   getConfig,
   getRawConfig,
@@ -717,5 +718,25 @@ describe("createConfig", () => {
     expect(config1.resolvedPaths).not.toBe(config2.resolvedPaths)
     expect(config1.tailwind).not.toBe(config2.tailwind)
     expect(config1.aliases).not.toBe(config2.aliases)
+  })
+})
+
+describe("findCommonRoot", () => {
+  it("finds the common root when both paths use the same separator", () => {
+    const cwd = ["", "home", "user", "project"].join(path.sep)
+    const resolvedPath = ["", "home", "user", "project", "src", "ui"].join(
+      path.sep
+    )
+    expect(findCommonRoot(cwd, resolvedPath)).toBe(cwd)
+  })
+
+  it("finds the common root when the paths mix separators", () => {
+    // On Windows cwd can arrive with backslashes while resolvedPath uses
+    // forward slashes; both should still share their common segments.
+    const cwd = "C:\Users\me\project"
+    const resolvedPath = "C:/Users/me/project/src/components"
+    expect(findCommonRoot(cwd, resolvedPath)).toBe(
+      ["C:", "Users", "me", "project"].join(path.sep)
+    )
   })
 })
