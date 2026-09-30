@@ -1,7 +1,44 @@
 import { registryBaseColorSchema } from "@/src/schema"
 import { Transformer } from "@/src/utils/transformers"
-import { ScriptKind, SyntaxKind } from "ts-morph"
+import { Node, ScriptKind, SyntaxKind } from "ts-morph"
 import { z } from "zod"
+
+// JSX attributes whose value is a list of class names.
+const CLASS_ATTRIBUTES = ["className", "class"]
+
+// Helpers whose arguments are lists of class names.
+const CLASS_UTILITIES = [
+  "cn",
+  "clsx",
+  "classNames",
+  "cva",
+  "tv",
+  "twMerge",
+  "twJoin",
+]
+
+// Color mapping rewrites a class list: it splits on whitespace, dedupes and
+// trims. Applied to a string that is not a class list, that is silent data
+// loss (`join(" ")` -> `join("")`), so only rewrite literals we can attribute
+// to a class name. The nearest enclosing call or JSX attribute decides, which
+// keeps `cn(foo("..."))` out while keeping `cn("...", cond && "...")` in.
+function isClassNameLiteral(node: Node) {
+  for (const ancestor of node.getAncestors()) {
+    if (Node.isCallExpression(ancestor)) {
+      const expression = ancestor.getExpression()
+      const name = Node.isPropertyAccessExpression(expression)
+        ? expression.getName()
+        : expression.getText()
+      return CLASS_UTILITIES.includes(name)
+    }
+
+    if (Node.isJsxAttribute(ancestor)) {
+      return CLASS_ATTRIBUTES.includes(ancestor.getNameNode().getText())
+    }
+  }
+
+  return false
+}
 
 export const transformCssVars: Transformer = async ({
   sourceFile,
@@ -13,24 +50,11 @@ export const transformCssVars: Transformer = async ({
     return sourceFile
   }
 
-  // Find jsx attributes with the name className.
-  // const openingElements = sourceFile.getDescendantsOfKind(SyntaxKind.JsxElement)
-  // console.log(openingElements)
-  // const jsxAttributes = sourceFile
-  //   .getDescendantsOfKind(SyntaxKind.JsxAttribute)
-  //   .filter((node) => node.getName() === "className")
-
-  // for (const jsxAttribute of jsxAttributes) {
-  //   const value = jsxAttribute.getInitializer()?.getText()
-  //   if (value) {
-  //     const valueWithColorMapping = applyColorMapping(
-  //       value.replace(/"/g, ""),
-  //       baseColor.inlineColors
-  //     )
-  //     jsxAttribute.setInitializer(`"${valueWithColorMapping}"`)
-  //   }
-  // }
   sourceFile.getDescendantsOfKind(SyntaxKind.StringLiteral).forEach((node) => {
+    if (!isClassNameLiteral(node)) {
+      return
+    }
+
     const raw = node.getLiteralText()
     const mapped = applyColorMapping(raw, baseColor.inlineColors).trim()
     if (mapped !== raw) {
