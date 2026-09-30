@@ -30,7 +30,7 @@ const testConfig: Config = {
   },
 }
 
-vi.mock("@/src/registry/api", () => ({
+vi.mock("@/src/utils/registry-api", () => ({
   getRegistryIcons: () => ({
     Check: {
       lucide: "Check",

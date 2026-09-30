@@ -1,7 +1,6 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
 import {
-  fetchTree,
   getItemTargetPath,
   getRegistryBaseColor,
   getShadcnRegistryIndex,
@@ -17,6 +16,7 @@ import {
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { fetchTree } from "@/src/utils/registry-api"
 import { transform } from "@/src/utils/transformers"
 import { transformCleanup } from "@/src/utils/transformers/transform-cleanup"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"

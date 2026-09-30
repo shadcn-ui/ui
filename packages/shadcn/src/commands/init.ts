@@ -15,7 +15,7 @@ import {
   resolveInitUrl,
   resolveRegistryBaseConfig,
 } from "@/src/preset/presets"
-import { getRegistryBaseColors, getRegistryStyles } from "@/src/registry/api"
+import { getRegistryBaseColors } from "@/src/registry/api"
 import { BUILTIN_REGISTRIES, SHADCN_URL } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { registryConfigSchema } from "@/src/registry/schema"
@@ -64,6 +64,7 @@ import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
+import { getRegistryStyles } from "@/src/utils/registry-api"
 import { spinner } from "@/src/utils/spinner"
 import { Command } from "commander"
 import deepmerge from "deepmerge"

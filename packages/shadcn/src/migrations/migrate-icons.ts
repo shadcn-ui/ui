@@ -9,11 +9,11 @@ import {
   parseUsageTemplate,
   type ParsedUsage,
 } from "@/src/icons/templates"
-import { getRegistryIcons } from "@/src/registry/api"
 import { iconsSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { getRegistryIcons } from "@/src/utils/registry-api"
 import { spinner } from "@/src/utils/spinner"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import fg from "fast-glob"

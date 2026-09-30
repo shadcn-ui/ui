@@ -52,3 +52,4 @@ async function main() {
 main()
 
 export * from "./registry/api"
+export * from "./utils/registry-api"

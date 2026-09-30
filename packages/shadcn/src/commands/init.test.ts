@@ -39,6 +39,9 @@ vi.mock("@/src/registry/api", () => ({
       name: "zinc",
     },
   ]),
+}))
+
+vi.mock("@/src/utils/registry-api", () => ({
   getRegistryStyles: vi.fn().mockResolvedValue([
     {
       label: "New York",
