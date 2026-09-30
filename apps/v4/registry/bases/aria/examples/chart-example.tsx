@@ -125,6 +125,7 @@ function ChartAreaExample() {
                   phosphor="TrendUpIcon"
                   remixicon="RiLineChartLine"
                   className="size-4"
+                  solar="CourseUpIcon"
                 />
               </div>
               <div className="flex items-center gap-2 leading-none text-muted-foreground">
@@ -196,6 +197,7 @@ function ChartBarExample() {
               phosphor="TrendUpIcon"
               remixicon="RiLineChartLine"
               className="size-4"
+              solar="CourseUpIcon"
             />
           </div>
           <div className="leading-none text-muted-foreground">
@@ -283,6 +285,7 @@ function ChartLineExample() {
                   phosphor="TrendUpIcon"
                   remixicon="RiLineChartLine"
                   className="size-4"
+                  solar="CourseUpIcon"
                 />
               </div>
               <div className="flex items-center gap-2 leading-none text-muted-foreground">
@@ -402,6 +405,7 @@ function ChartPieExample() {
               phosphor="TrendUpIcon"
               remixicon="RiLineChartLine"
               className="size-4"
+              solar="CourseUpIcon"
             />
           </div>
           <div className="leading-none text-muted-foreground">
@@ -474,6 +478,7 @@ function ChartRadarExample() {
               phosphor="TrendUpIcon"
               remixicon="RiLineChartLine"
               className="size-4"
+              solar="CourseUpIcon"
             />
           </div>
           <div className="flex items-center gap-2 leading-none text-muted-foreground">
@@ -570,6 +575,7 @@ function ChartRadialExample() {
               phosphor="TrendUpIcon"
               remixicon="RiLineChartLine"
               className="size-4"
+              solar="CourseUpIcon"
             />
           </div>
           <div className="leading-none text-muted-foreground">

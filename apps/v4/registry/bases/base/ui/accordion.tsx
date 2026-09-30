@@ -47,6 +47,7 @@ function AccordionTrigger({
           phosphor="CaretDownIcon"
           remixicon="RiArrowDownSLine"
           className="cn-accordion-trigger-icon pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
+          solar="AltArrowDownIcon"
         />
         <IconPlaceholder
           lucide="ChevronUpIcon"
@@ -56,6 +57,7 @@ function AccordionTrigger({
           phosphor="CaretUpIcon"
           remixicon="RiArrowUpSLine"
           className="cn-accordion-trigger-icon pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
+          solar="AltArrowUpIcon"
         />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>

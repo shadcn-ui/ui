@@ -43,6 +43,7 @@ export function Payments() {
                     hugeicons="MoreHorizontalCircle01Icon"
                     phosphor="DotsThreeIcon"
                     remixicon="RiMoreLine"
+                    solar="MenuDotsIcon"
                   />
                   <span className="sr-only">Account options</span>
                 </Button>
@@ -71,6 +72,7 @@ export function Payments() {
                 hugeicons="Settings01Icon"
                 phosphor="GaugeIcon"
                 remixicon="RiDashboardLine"
+                solar="SpeedometerMiddleIcon"
               />
             </ItemMedia>
             <ItemContent>
@@ -86,6 +88,7 @@ export function Payments() {
               phosphor="CaretRightIcon"
               remixicon="RiArrowRightSLine"
               className="size-4 shrink-0 text-muted-foreground"
+              solar="AltArrowRightIcon"
             />
           </Item>
           <Item variant="muted" href="#">
@@ -96,6 +99,7 @@ export function Payments() {
                 hugeicons="Calendar03Icon"
                 phosphor="CalendarIcon"
                 remixicon="RiCalendarLine"
+                solar="CalendarIcon"
               />
             </ItemMedia>
             <ItemContent>
@@ -111,6 +115,7 @@ export function Payments() {
               phosphor="CaretRightIcon"
               remixicon="RiArrowRightSLine"
               className="size-4 shrink-0 text-muted-foreground"
+              solar="AltArrowRightIcon"
             />
           </Item>
           <Item variant="muted" href="#">
@@ -121,6 +126,7 @@ export function Payments() {
                 hugeicons="RepeatIcon"
                 phosphor="RepeatIcon"
                 remixicon="RiRepeatLine"
+                solar="RepeatIcon"
               />
             </ItemMedia>
             <ItemContent>
@@ -136,6 +142,7 @@ export function Payments() {
               phosphor="CaretRightIcon"
               remixicon="RiArrowRightSLine"
               className="size-4 shrink-0 text-muted-foreground"
+              solar="AltArrowRightIcon"
             />
           </Item>
           <Item variant="muted" href="#">
@@ -146,6 +153,7 @@ export function Payments() {
                 hugeicons="RepeatIcon"
                 phosphor="ArrowsClockwiseIcon"
                 remixicon="RiRefreshLine"
+                solar="RefreshIcon"
               />
             </ItemMedia>
             <ItemContent>
@@ -161,6 +169,7 @@ export function Payments() {
               phosphor="CaretRightIcon"
               remixicon="RiArrowRightSLine"
               className="size-4 shrink-0 text-muted-foreground"
+              solar="AltArrowRightIcon"
             />
           </Item>
         </ItemGroup>

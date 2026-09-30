@@ -190,6 +190,7 @@ function BubbleCollapsible() {
                     remixicon="RiArrowDownSLine"
                     data-icon="inline-end"
                     className="group-data-panel-open/button:rotate-180"
+                    solar="AltArrowDownIcon"
                   />
                 </CollapsibleTrigger>
               ) : null}
@@ -408,6 +409,7 @@ function BubbleReactionsButtons() {
                 hugeicons="ThumbsUpIcon"
                 phosphor="ThumbsUpIcon"
                 remixicon="RiThumbUpLine"
+                solar="LikeIcon"
               />
             </Button>
             <Button
@@ -422,6 +424,7 @@ function BubbleReactionsButtons() {
                 hugeicons="ThumbsDownIcon"
                 phosphor="ThumbsDownIcon"
                 remixicon="RiThumbDownLine"
+                solar="DislikeIcon"
               />
             </Button>
           </BubbleReactions>

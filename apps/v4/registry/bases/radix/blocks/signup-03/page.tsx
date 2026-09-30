@@ -16,6 +16,7 @@ export default function SignupPage() {
               phosphor="RowsIcon"
               remixicon="RiGalleryLine"
               className="size-4"
+              solar="GalleryIcon"
             />
           </div>
           Acme Inc.

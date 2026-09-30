@@ -76,6 +76,7 @@ export function PromptInput({
                     hugeicons="PlusSignIcon"
                     phosphor="PlusIcon"
                     remixicon="RiAddLine"
+                    solar="AddIcon"
                   />
                   <span className="sr-only">Add</span>
                 </InputGroupButton>
@@ -89,6 +90,7 @@ export function PromptInput({
                       hugeicons="AttachmentIcon"
                       phosphor="PaperclipIcon"
                       remixicon="RiAttachmentLine"
+                      solar="PaperclipIcon"
                     />
                     Add Photos and Files
                   </DropdownMenuItem>
@@ -99,6 +101,7 @@ export function PromptInput({
                       hugeicons="ComputerIcon"
                       phosphor="MonitorIcon"
                       remixicon="RiComputerLine"
+                      solar="MonitorIcon"
                     />
                     Take a Screenshot
                   </DropdownMenuItem>
@@ -112,6 +115,7 @@ export function PromptInput({
                       hugeicons="ImageIcon"
                       phosphor="ImageIcon"
                       remixicon="RiImageLine"
+                      solar="GalleryIcon"
                     />
                     Create Image
                   </DropdownMenuItem>
@@ -122,6 +126,7 @@ export function PromptInput({
                       hugeicons="AiBrainIcon"
                       phosphor="BrainIcon"
                       remixicon="RiBrainLine"
+                      solar="BrainIcon"
                     />
                     Deep Research
                   </DropdownMenuItem>
@@ -132,6 +137,7 @@ export function PromptInput({
                       hugeicons="Globe02Icon"
                       phosphor="GlobeIcon"
                       remixicon="RiGlobeLine"
+                      solar="GlobeIcon"
                     />
                     Web Search
                   </DropdownMenuItem>
@@ -146,6 +152,7 @@ export function PromptInput({
                         hugeicons="MoreHorizontalCircle01Icon"
                         phosphor="DotsThreeOutlineIcon"
                         remixicon="RiMoreLine"
+                        solar="MenuDotsIcon"
                       />
                       More
                     </DropdownMenuSubTrigger>
@@ -157,6 +164,7 @@ export function PromptInput({
                           hugeicons="RoboticIcon"
                           phosphor="RobotIcon"
                           remixicon="RiRobotLine"
+                          solar="BotIcon"
                         />
                         Agent Mode
                       </DropdownMenuItem>
@@ -167,6 +175,7 @@ export function PromptInput({
                           hugeicons="BookOpen02Icon"
                           phosphor="BookOpenIcon"
                           remixicon="RiBookOpenLine"
+                          solar="Book2Icon"
                         />
                         Add Sources
                       </DropdownMenuItem>
@@ -177,6 +186,7 @@ export function PromptInput({
                           hugeicons="Tick02Icon"
                           phosphor="CheckIcon"
                           remixicon="RiCheckLine"
+                          solar="CheckIcon"
                         />
                         Create Tasks
                       </DropdownMenuItem>
@@ -199,6 +209,7 @@ export function PromptInput({
                 hugeicons="ArrowUp02Icon"
                 phosphor="ArrowUpIcon"
                 remixicon="RiArrowUpLine"
+                solar="ArrowUpIcon"
               />
               <span className="sr-only">Send</span>
             </InputGroupButton>
@@ -216,6 +227,7 @@ export function PromptInput({
                 phosphor="StopCircleIcon"
                 remixicon="RiStopCircleLine"
                 className="fill-foreground"
+                solar="BluetoothSquareIcon"
               />
               <span className="sr-only">Stop</span>
             </InputGroupButton>

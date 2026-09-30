@@ -32,6 +32,7 @@ const data = {
           hugeicons="LayoutBottomIcon"
           phosphor="RowsIcon"
           remixicon="RiGalleryLine"
+          solar="GalleryIcon"
         />
       ),
       plan: "Enterprise",
@@ -45,6 +46,7 @@ const data = {
           hugeicons="AudioWave01Icon"
           phosphor="WaveformIcon"
           remixicon="RiPulseLine"
+          solar="SoundwaveIcon"
         />
       ),
       plan: "Startup",
@@ -58,6 +60,7 @@ const data = {
           hugeicons="CommandIcon"
           phosphor="CommandIcon"
           remixicon="RiCommandLine"
+          solar="ProgrammingIcon"
         />
       ),
       plan: "Free",
@@ -74,6 +77,7 @@ const data = {
           hugeicons="ComputerTerminalIcon"
           phosphor="TerminalIcon"
           remixicon="RiTerminalBoxLine"
+          solar="ProgrammingIcon"
         />
       ),
       isActive: true,
@@ -102,6 +106,7 @@ const data = {
           hugeicons="RoboticIcon"
           phosphor="RobotIcon"
           remixicon="RiRobotLine"
+          solar="BotIcon"
         />
       ),
       items: [
@@ -129,6 +134,7 @@ const data = {
           hugeicons="BookOpen02Icon"
           phosphor="BookOpenIcon"
           remixicon="RiBookOpenLine"
+          solar="Book2Icon"
         />
       ),
       items: [
@@ -160,6 +166,7 @@ const data = {
           hugeicons="Settings05Icon"
           phosphor="GearIcon"
           remixicon="RiSettingsLine"
+          solar="SettingsMinimalisticIcon"
         />
       ),
       items: [
@@ -193,6 +200,7 @@ const data = {
           hugeicons="CropIcon"
           phosphor="CropIcon"
           remixicon="RiCropLine"
+          solar="FrameIcon"
         />
       ),
     },
@@ -206,6 +214,7 @@ const data = {
           hugeicons="PieChartIcon"
           phosphor="ChartPieIcon"
           remixicon="RiPieChartLine"
+          solar="PieChartIcon"
         />
       ),
     },
@@ -219,6 +228,7 @@ const data = {
           hugeicons="MapsIcon"
           phosphor="MapTrifoldIcon"
           remixicon="RiMapLine"
+          solar="MapIcon"
         />
       ),
     },

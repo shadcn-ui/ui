@@ -121,6 +121,7 @@ function FileUploadList() {
                 phosphor="FileIcon"
                 remixicon="RiFileLine"
                 className="size-5"
+                solar="FileIcon"
               />
             </ItemMedia>
             <ItemContent className="inline-block truncate">

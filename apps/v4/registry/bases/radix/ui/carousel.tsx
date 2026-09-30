@@ -202,6 +202,7 @@ function CarouselPrevious({
         phosphor="CaretLeftIcon"
         remixicon="RiArrowLeftSLine"
         className="cn-rtl-flip"
+        solar="AltArrowLeftIcon"
       />
       <span className="sr-only">Previous slide</span>
     </Button>
@@ -239,6 +240,7 @@ function CarouselNext({
         phosphor="CaretRightIcon"
         remixicon="RiArrowRightSLine"
         className="cn-rtl-flip"
+        solar="AltArrowRightIcon"
       />
       <span className="sr-only">Next slide</span>
     </Button>

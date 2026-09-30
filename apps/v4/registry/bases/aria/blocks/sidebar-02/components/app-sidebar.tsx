@@ -195,6 +195,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   phosphor="CaretRightIcon"
                   remixicon="RiArrowRightSLine"
                   className="ml-auto transition-transform group-data-expanded/collapsible:rotate-90"
+                  solar="AltArrowRightIcon"
                 />
               </SidebarGroupLabel>
               <CollapsibleContent>

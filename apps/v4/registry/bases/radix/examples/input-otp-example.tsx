@@ -249,6 +249,7 @@ function InputOTPForm() {
                     phosphor="ArrowClockwiseIcon"
                     remixicon="RiRefreshLine"
                     data-icon="inline-start"
+                    solar="RefreshIcon"
                   />
                   Resend Code
                 </Button>

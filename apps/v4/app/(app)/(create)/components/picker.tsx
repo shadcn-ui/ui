@@ -140,6 +140,7 @@ function PickerSubTrigger({
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
         remixicon="RiArrowRightSLine"
+        solar="AltArrowRightIcon"
         className="ml-auto"
       />
     </MenuPrimitive.SubmenuTrigger>
@@ -194,6 +195,7 @@ function PickerCheckboxItem({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
+            solar="CheckIcon"
           />
         </MenuPrimitive.CheckboxItemIndicator>
       </span>
@@ -267,6 +269,7 @@ function PickerRadioItem({
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
+            solar="CheckIcon"
             className="size-4 pointer-coarse:size-5"
           />
         </MenuPrimitive.RadioItemIndicator>

@@ -177,6 +177,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   phosphor="RowsIcon"
                   remixicon="RiGalleryLine"
                   className="size-4"
+                  solar="GalleryIcon"
                 />
               </div>
               <div className="flex flex-col gap-0.5 leading-none">
@@ -207,6 +208,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                       phosphor="PlusIcon"
                       remixicon="RiAddLine"
                       className="ml-auto group-aria-expanded/menu-button:hidden"
+                      solar="AddIcon"
                     />
                     <IconPlaceholder
                       lucide="MinusIcon"
@@ -215,6 +217,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                       phosphor="MinusIcon"
                       remixicon="RiSubtractLine"
                       className="ml-auto hidden group-aria-expanded/menu-button:block"
+                      solar="MinusIcon"
                     />
                   </SidebarMenuButton>
                   {item.items?.length ? (

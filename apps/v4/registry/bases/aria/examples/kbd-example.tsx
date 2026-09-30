@@ -87,6 +87,7 @@ function KbdWithIcons() {
             hugeicons="DashedLineCircleIcon"
             phosphor="CircleDashedIcon"
             remixicon="RiLoaderLine"
+            solar="CircleDashedIcon"
           />
         </Kbd>
         <Kbd>
@@ -96,6 +97,7 @@ function KbdWithIcons() {
             hugeicons="ArrowLeft01Icon"
             phosphor="ArrowLeftIcon"
             remixicon="RiArrowLeftLine"
+            solar="ArrowLeftIcon"
           />
         </Kbd>
         <Kbd>
@@ -105,6 +107,7 @@ function KbdWithIcons() {
             hugeicons="ArrowRight01Icon"
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
+            solar="ArrowRightIcon"
           />
         </Kbd>
       </KbdGroup>
@@ -123,6 +126,7 @@ function KbdWithIconsAndText() {
             hugeicons="ArrowLeft01Icon"
             phosphor="ArrowLeftIcon"
             remixicon="RiArrowLeftLine"
+            solar="ArrowLeftIcon"
           />
           Left
         </Kbd>
@@ -133,6 +137,7 @@ function KbdWithIconsAndText() {
             hugeicons="DashedLineCircleIcon"
             phosphor="CircleDashedIcon"
             remixicon="RiLoaderLine"
+            solar="CircleDashedIcon"
           />
           Voice Enabled
         </Kbd>
@@ -165,6 +170,7 @@ function KbdInTooltip() {
             hugeicons="FloppyDiskIcon"
             phosphor="FloppyDiskIcon"
             remixicon="RiSaveLine"
+            solar="DisketteIcon"
           />
         </Button>
         <Tooltip className="pr-1.5">

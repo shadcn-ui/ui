@@ -46,6 +46,7 @@ export function NavProjects({
                   hugeicons="MoreHorizontalCircle01Icon"
                   phosphor="DotsThreeOutlineIcon"
                   remixicon="RiMoreLine"
+                  solar="MenuDotsIcon"
                 />
                 <span className="sr-only">More</span>
               </SidebarMenuAction>
@@ -60,6 +61,7 @@ export function NavProjects({
                     hugeicons="FolderIcon"
                     phosphor="FolderIcon"
                     remixicon="RiFolderLine"
+                    solar="FolderIcon"
                   />
                   <span>View Project</span>
                 </DropdownMenuItem>
@@ -70,6 +72,7 @@ export function NavProjects({
                     hugeicons="ArrowRightIcon"
                     phosphor="ShareFatIcon"
                     remixicon="RiShareForwardLine"
+                    solar="ArrowRightIcon"
                   />
                   <span>Share Project</span>
                 </DropdownMenuItem>
@@ -81,6 +84,7 @@ export function NavProjects({
                     hugeicons="Delete02Icon"
                     phosphor="TrashIcon"
                     remixicon="RiDeleteBinLine"
+                    solar="TrashBinMinimalisticIcon"
                   />
                   <span>Delete Project</span>
                 </DropdownMenuItem>
@@ -97,6 +101,7 @@ export function NavProjects({
               phosphor="DotsThreeOutlineIcon"
               remixicon="RiMoreLine"
               className="text-sidebar-foreground/70"
+              solar="MenuDotsIcon"
             />
             <span>More</span>
           </SidebarMenuButton>

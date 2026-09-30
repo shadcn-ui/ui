@@ -59,6 +59,7 @@ export function RecentTransactions() {
                     hugeicons="CoffeeIcon"
                     phosphor="CoffeeIcon"
                     remixicon="RiCupLine"
+                    solar="CupHotIcon"
                   />
                 </div>
               </TableCell>
@@ -87,6 +88,7 @@ export function RecentTransactions() {
                       hugeicons="MoreVerticalCircle01Icon"
                       phosphor="DotsThreeIcon"
                       remixicon="RiMore2Line"
+                      solar="MenuDotsIcon"
                     />
                   </Button>
                   <DropdownMenu placement="bottom end">
@@ -109,6 +111,7 @@ export function RecentTransactions() {
                     hugeicons="ShoppingCart01Icon"
                     phosphor="ShoppingCartIcon"
                     remixicon="RiShoppingCartLine"
+                    solar="CartIcon"
                   />
                 </div>
               </TableCell>
@@ -137,6 +140,7 @@ export function RecentTransactions() {
                       hugeicons="MoreVerticalCircle01Icon"
                       phosphor="DotsThreeIcon"
                       remixicon="RiMore2Line"
+                      solar="MenuDotsIcon"
                     />
                   </Button>
                   <DropdownMenu placement="bottom end">
@@ -159,6 +163,7 @@ export function RecentTransactions() {
                     hugeicons="Wallet01Icon"
                     phosphor="WalletIcon"
                     remixicon="RiWalletLine"
+                    solar="WalletIcon"
                   />
                 </div>
               </TableCell>
@@ -185,6 +190,7 @@ export function RecentTransactions() {
                       hugeicons="MoreVerticalCircle01Icon"
                       phosphor="DotsThreeIcon"
                       remixicon="RiMore2Line"
+                      solar="MenuDotsIcon"
                     />
                   </Button>
                   <DropdownMenu placement="bottom end">
@@ -207,6 +213,7 @@ export function RecentTransactions() {
                     hugeicons="Car01Icon"
                     phosphor="CarIcon"
                     remixicon="RiCarLine"
+                    solar="CarIcon"
                   />
                 </div>
               </TableCell>
@@ -235,6 +242,7 @@ export function RecentTransactions() {
                       hugeicons="MoreVerticalCircle01Icon"
                       phosphor="DotsThreeIcon"
                       remixicon="RiMore2Line"
+                      solar="MenuDotsIcon"
                     />
                   </Button>
                   <DropdownMenu placement="bottom end">
@@ -257,6 +265,7 @@ export function RecentTransactions() {
                     hugeicons="Tv01Icon"
                     phosphor="TelevisionIcon"
                     remixicon="RiTvLine"
+                    solar="TvIcon"
                   />
                 </div>
               </TableCell>
@@ -285,6 +294,7 @@ export function RecentTransactions() {
                       hugeicons="MoreVerticalCircle01Icon"
                       phosphor="DotsThreeIcon"
                       remixicon="RiMore2Line"
+                      solar="MenuDotsIcon"
                     />
                   </Button>
                   <DropdownMenu placement="bottom end">

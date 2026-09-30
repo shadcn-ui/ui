@@ -145,6 +145,7 @@ function DragHandle({ id }: { id: number }) {
         phosphor="DotsSixVerticalIcon"
         remixicon="RiDraggable"
         className="size-3 text-muted-foreground"
+        solar="GripVerticalIcon"
       />
       <span className="sr-only">Drag to reorder</span>
     </Button>
@@ -212,6 +213,7 @@ const columns = columnHelper.columns([
             phosphor="CheckCircleIcon"
             remixicon="RiCheckboxCircleFill"
             className="fill-green-500 dark:fill-green-400"
+            solar="CheckCircleIcon"
           />
         ) : (
           <IconPlaceholder
@@ -220,6 +222,7 @@ const columns = columnHelper.columns([
             hugeicons="Loading03Icon"
             phosphor="SpinnerIcon"
             remixicon="RiLoader4Line"
+            solar="LoaderIcon"
           />
         )}
         {row.original.status}
@@ -331,6 +334,7 @@ const columns = columnHelper.columns([
             hugeicons="MoreVerticalCircle01Icon"
             phosphor="DotsThreeVerticalIcon"
             remixicon="RiMore2Line"
+            solar="MenuDotsVerticalIcon"
           />
           <span className="sr-only">Open menu</span>
         </DropdownMenuTrigger>
@@ -484,6 +488,7 @@ export function DataTable({
                 phosphor="ColumnsIcon"
                 remixicon="RiLayoutColumnLine"
                 data-icon="inline-start"
+                solar="Columns3Icon"
               />
               Columns
               <IconPlaceholder
@@ -493,6 +498,7 @@ export function DataTable({
                 phosphor="CaretDownIcon"
                 remixicon="RiArrowDownSLine"
                 data-icon="inline-end"
+                solar="AltArrowDownIcon"
               />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-32">
@@ -526,6 +532,7 @@ export function DataTable({
               hugeicons="Add01Icon"
               phosphor="PlusIcon"
               remixicon="RiAddLine"
+              solar="AddIcon"
             />
             <span className="hidden lg:inline">Add Section</span>
           </Button>
@@ -635,6 +642,7 @@ export function DataTable({
                   hugeicons="ArrowLeftDoubleIcon"
                   phosphor="CaretDoubleLeftIcon"
                   remixicon="RiSkipLeftLine"
+                  solar="DoubleAltArrowLeftIcon"
                 />
               </Button>
               <Button
@@ -651,6 +659,7 @@ export function DataTable({
                   hugeicons="ArrowLeft01Icon"
                   phosphor="CaretLeftIcon"
                   remixicon="RiArrowLeftSLine"
+                  solar="AltArrowLeftIcon"
                 />
               </Button>
               <Button
@@ -667,6 +676,7 @@ export function DataTable({
                   hugeicons="ArrowRight01Icon"
                   phosphor="CaretRightIcon"
                   remixicon="RiArrowRightSLine"
+                  solar="AltArrowRightIcon"
                 />
               </Button>
               <Button
@@ -683,6 +693,7 @@ export function DataTable({
                   hugeicons="ArrowRightDoubleIcon"
                   phosphor="CaretDoubleRightIcon"
                   remixicon="RiSkipRightLine"
+                  solar="DoubleAltArrowRightIcon"
                 />
               </Button>
             </div>
@@ -824,6 +835,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                     phosphor="TrendUpIcon"
                     remixicon="RiArrowUpLine"
                     className="size-4"
+                    solar="CourseUpIcon"
                   />
                 </div>
                 <div className="text-muted-foreground">

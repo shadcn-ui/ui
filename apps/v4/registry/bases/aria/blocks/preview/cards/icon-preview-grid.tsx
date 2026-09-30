@@ -12,6 +12,7 @@ const PREVIEW_ICONS = [
     hugeicons: "Copy01Icon",
     phosphor: "CopyIcon",
     remixicon: "RiFileCopyLine",
+    solar: "CopyIcon",
   },
   {
     lucide: "CircleAlertIcon",
@@ -19,6 +20,7 @@ const PREVIEW_ICONS = [
     hugeicons: "AlertCircleIcon",
     phosphor: "WarningCircleIcon",
     remixicon: "RiErrorWarningLine",
+    solar: "DangerCircleIcon",
   },
   {
     lucide: "TrashIcon",
@@ -26,6 +28,7 @@ const PREVIEW_ICONS = [
     hugeicons: "Delete02Icon",
     phosphor: "TrashIcon",
     remixicon: "RiDeleteBinLine",
+    solar: "TrashBin2Icon",
   },
   {
     lucide: "ShareIcon",
@@ -33,6 +36,7 @@ const PREVIEW_ICONS = [
     hugeicons: "Share03Icon",
     phosphor: "ShareIcon",
     remixicon: "RiShareLine",
+    solar: "ShareIcon",
   },
   {
     lucide: "ShoppingBagIcon",
@@ -40,6 +44,7 @@ const PREVIEW_ICONS = [
     hugeicons: "ShoppingBag01Icon",
     phosphor: "BagIcon",
     remixicon: "RiShoppingBagLine",
+    solar: "BagIcon",
   },
   {
     lucide: "MoreHorizontalIcon",
@@ -47,6 +52,7 @@ const PREVIEW_ICONS = [
     hugeicons: "MoreHorizontalCircle01Icon",
     phosphor: "DotsThreeIcon",
     remixicon: "RiMoreLine",
+    solar: "MenuDotsIcon",
   },
   {
     lucide: "Loader2Icon",
@@ -54,6 +60,7 @@ const PREVIEW_ICONS = [
     hugeicons: "Loading03Icon",
     phosphor: "SpinnerIcon",
     remixicon: "RiLoaderLine",
+    solar: "LoaderIcon",
   },
   {
     lucide: "PlusIcon",
@@ -61,6 +68,7 @@ const PREVIEW_ICONS = [
     hugeicons: "PlusSignIcon",
     phosphor: "PlusIcon",
     remixicon: "RiAddLine",
+    solar: "AddIcon",
   },
   {
     lucide: "MinusIcon",
@@ -68,6 +76,7 @@ const PREVIEW_ICONS = [
     hugeicons: "MinusSignIcon",
     phosphor: "MinusIcon",
     remixicon: "RiSubtractLine",
+    solar: "MinusIcon",
   },
   {
     lucide: "ArrowLeftIcon",
@@ -75,6 +84,7 @@ const PREVIEW_ICONS = [
     hugeicons: "ArrowLeft02Icon",
     phosphor: "ArrowLeftIcon",
     remixicon: "RiArrowLeftLine",
+    solar: "ArrowLeftIcon",
   },
   {
     lucide: "ArrowRightIcon",
@@ -82,6 +92,7 @@ const PREVIEW_ICONS = [
     hugeicons: "ArrowRight02Icon",
     phosphor: "ArrowRightIcon",
     remixicon: "RiArrowRightLine",
+    solar: "ArrowRightIcon",
   },
   {
     lucide: "CheckIcon",
@@ -89,6 +100,7 @@ const PREVIEW_ICONS = [
     hugeicons: "Tick02Icon",
     phosphor: "CheckIcon",
     remixicon: "RiCheckLine",
+    solar: "CheckIcon",
   },
   {
     lucide: "ChevronDownIcon",
@@ -96,6 +108,7 @@ const PREVIEW_ICONS = [
     hugeicons: "ArrowDown01Icon",
     phosphor: "CaretDownIcon",
     remixicon: "RiArrowDownSLine",
+    solar: "AltArrowDownIcon",
   },
   {
     lucide: "ChevronRightIcon",
@@ -103,6 +116,7 @@ const PREVIEW_ICONS = [
     hugeicons: "ArrowRight01Icon",
     phosphor: "CaretRightIcon",
     remixicon: "RiArrowRightSLine",
+    solar: "AltArrowRightIcon",
   },
   {
     lucide: "SearchIcon",
@@ -110,6 +124,7 @@ const PREVIEW_ICONS = [
     hugeicons: "Search01Icon",
     phosphor: "MagnifyingGlassIcon",
     remixicon: "RiSearchLine",
+    solar: "MagnifierIcon",
   },
   {
     lucide: "SettingsIcon",
@@ -117,6 +132,7 @@ const PREVIEW_ICONS = [
     hugeicons: "Settings01Icon",
     phosphor: "GearIcon",
     remixicon: "RiSettingsLine",
+    solar: "SettingsIcon",
   },
 ] satisfies Record<IconLibraryName, string>[]
 
@@ -136,6 +152,7 @@ export function IconPreviewGrid() {
                 hugeicons={icon.hugeicons}
                 phosphor={icon.phosphor}
                 remixicon={icon.remixicon}
+                solar={icon.solar}
               />
             </div>
           ))}

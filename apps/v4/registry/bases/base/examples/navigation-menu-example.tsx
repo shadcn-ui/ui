@@ -117,6 +117,7 @@ function NavigationMenuBasic() {
                       hugeicons="AlertCircleIcon"
                       phosphor="WarningCircleIcon"
                       remixicon="RiErrorWarningLine"
+                      solar="DangerCircleIcon"
                     />
                     Backlog
                   </NavigationMenuLink>
@@ -131,6 +132,7 @@ function NavigationMenuBasic() {
                       hugeicons="AlertCircleIcon"
                       phosphor="WarningCircleIcon"
                       remixicon="RiErrorWarningLine"
+                      solar="DangerCircleIcon"
                     />
                     To Do
                   </NavigationMenuLink>
@@ -145,6 +147,7 @@ function NavigationMenuBasic() {
                       hugeicons="AlertCircleIcon"
                       phosphor="WarningCircleIcon"
                       remixicon="RiErrorWarningLine"
+                      solar="DangerCircleIcon"
                     />
                     Done
                   </NavigationMenuLink>

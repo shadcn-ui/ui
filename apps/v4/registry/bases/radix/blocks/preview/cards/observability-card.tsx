@@ -39,6 +39,7 @@ export function ObservabilityCard() {
             phosphor="PlusIcon"
             remixicon="RiAddLine"
             data-icon="inline-end"
+            solar="AddIcon"
           />
         </Button>
         <Badge variant="secondary" className="ml-auto">

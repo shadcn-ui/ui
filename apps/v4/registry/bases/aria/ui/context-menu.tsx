@@ -151,6 +151,7 @@ function ContextMenuItem({
                     hugeicons="Tick02Icon"
                     phosphor="CheckIcon"
                     remixicon="RiCheckLine"
+                    solar="CheckIcon"
                   />
                 ) : null}
               </span>
@@ -198,6 +199,7 @@ function ContextMenuSubTrigger({
             phosphor="CaretRightIcon"
             remixicon="RiArrowRightSLine"
             className="cn-rtl-flip ml-auto"
+            solar="AltArrowRightIcon"
           />
         </>
       ))}

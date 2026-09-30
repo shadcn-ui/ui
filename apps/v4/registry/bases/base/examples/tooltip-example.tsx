@@ -84,6 +84,7 @@ function TooltipWithIcon() {
             hugeicons="AlertCircleIcon"
             phosphor="InfoIcon"
             remixicon="RiInformationLine"
+            solar="InfoCircleIcon"
           />
           <span className="sr-only">Info</span>
         </TooltipTrigger>
@@ -139,6 +140,7 @@ function TooltipWithKeyboard() {
             hugeicons="FloppyDiskIcon"
             phosphor="FloppyDiskIcon"
             remixicon="RiSaveLine"
+            solar="DisketteIcon"
           />
         </TooltipTrigger>
         <TooltipContent>

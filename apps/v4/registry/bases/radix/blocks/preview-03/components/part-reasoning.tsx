@@ -29,6 +29,7 @@ function PartReasoningTrigger({ label }: { label?: string }) {
         remixicon="RiBrainLine"
         data-slot="reasoning-trigger-icon"
         className="cn-reasoning-trigger-icon size-4 shrink-0"
+        solar="BrainIcon"
       />
       <span
         data-slot="reasoning-trigger-label"

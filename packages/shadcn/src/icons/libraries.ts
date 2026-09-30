@@ -40,6 +40,14 @@ export const iconLibraries = {
     usage: "<ICON />",
     export: "@remixicon/react",
   },
+  solar: {
+    name: "solar",
+    title: "Solar Icons",
+    packages: ["@solar-icons/react"],
+    import: "import { ICON } from '@solar-icons/react/linear'",
+    usage: "<ICON />",
+    export: "@solar-icons/react/linear",
+  },
 } as const
 
 export type IconLibraries = typeof iconLibraries

@@ -105,6 +105,7 @@ function CollapsibleFileTree() {
                 phosphor="CaretRightIcon"
                 remixicon="RiArrowRightSLine"
                 className="transition-transform group-data-[state=open]:rotate-90"
+                solar="AltArrowRightIcon"
               />
               <IconPlaceholder
                 lucide="FolderIcon"
@@ -112,6 +113,7 @@ function CollapsibleFileTree() {
                 hugeicons="Folder01Icon"
                 phosphor="FolderIcon"
                 remixicon="RiFolderLine"
+                solar="FolderIcon"
               />
               {fileItem.name}
             </Button>
@@ -137,6 +139,7 @@ function CollapsibleFileTree() {
           hugeicons="File01Icon"
           phosphor="FileIcon"
           remixicon="RiFileLine"
+          solar="FileIcon"
         />
         <span>{fileItem.name}</span>
       </Button>
@@ -219,6 +222,7 @@ function CollapsibleSettings() {
                     hugeicons="MinusSignIcon"
                     phosphor="MinusIcon"
                     remixicon="RiSubtractLine"
+                    solar="MinimizeIcon"
                   />
                 ) : (
                   <IconPlaceholder
@@ -227,6 +231,7 @@ function CollapsibleSettings() {
                     hugeicons="PlusSignIcon"
                     phosphor="PlusIcon"
                     remixicon="RiAddLine"
+                    solar="MaximizeIcon"
                   />
                 )}
               </Button>

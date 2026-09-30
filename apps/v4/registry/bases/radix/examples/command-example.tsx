@@ -50,6 +50,7 @@ function CommandInline() {
                     hugeicons="CalendarIcon"
                     phosphor="CalendarBlankIcon"
                     remixicon="RiCalendarLine"
+                    solar="CalendarIcon"
                   />
                   <span>Calendar</span>
                 </CommandItem>
@@ -60,6 +61,7 @@ function CommandInline() {
                     hugeicons="SmileIcon"
                     phosphor="SmileyIcon"
                     remixicon="RiEmotionLine"
+                    solar="SmileCircleIcon"
                   />
                   <span>Search Emoji</span>
                 </CommandItem>
@@ -70,6 +72,7 @@ function CommandInline() {
                     hugeicons="CalculatorIcon"
                     phosphor="CalculatorIcon"
                     remixicon="RiCalculatorLine"
+                    solar="CalculatorIcon"
                   />
                   <span>Calculator</span>
                 </CommandItem>
@@ -83,6 +86,7 @@ function CommandInline() {
                     hugeicons="UserIcon"
                     phosphor="UserIcon"
                     remixicon="RiUserLine"
+                    solar="UserIcon"
                   />
                   <span>Profile</span>
                   <CommandShortcut>⌘P</CommandShortcut>
@@ -94,6 +98,7 @@ function CommandInline() {
                     hugeicons="CreditCardIcon"
                     phosphor="CreditCardIcon"
                     remixicon="RiBankCardLine"
+                    solar="CardIcon"
                   />
                   <span>Billing</span>
                   <CommandShortcut>⌘B</CommandShortcut>
@@ -105,6 +110,7 @@ function CommandInline() {
                     hugeicons="SettingsIcon"
                     phosphor="GearIcon"
                     remixicon="RiSettingsLine"
+                    solar="SettingsIcon"
                   />
                   <span>Settings</span>
                   <CommandShortcut>⌘S</CommandShortcut>
@@ -175,6 +181,7 @@ function CommandWithShortcuts() {
                     hugeicons="UserIcon"
                     phosphor="UserIcon"
                     remixicon="RiUserLine"
+                    solar="UserIcon"
                   />
                   <span>Profile</span>
                   <CommandShortcut>⌘P</CommandShortcut>
@@ -186,6 +193,7 @@ function CommandWithShortcuts() {
                     hugeicons="CreditCardIcon"
                     phosphor="CreditCardIcon"
                     remixicon="RiBankCardLine"
+                    solar="CardIcon"
                   />
                   <span>Billing</span>
                   <CommandShortcut>⌘B</CommandShortcut>
@@ -197,6 +205,7 @@ function CommandWithShortcuts() {
                     hugeicons="SettingsIcon"
                     phosphor="GearIcon"
                     remixicon="RiSettingsLine"
+                    solar="SettingsIcon"
                   />
                   <span>Settings</span>
                   <CommandShortcut>⌘S</CommandShortcut>
@@ -236,6 +245,7 @@ function CommandWithGroups() {
                     hugeicons="CalendarIcon"
                     phosphor="CalendarBlankIcon"
                     remixicon="RiCalendarLine"
+                    solar="CalendarIcon"
                   />
                   <span>Calendar</span>
                 </CommandItem>
@@ -246,6 +256,7 @@ function CommandWithGroups() {
                     hugeicons="SmileIcon"
                     phosphor="SmileyIcon"
                     remixicon="RiEmotionLine"
+                    solar="SmileCircleIcon"
                   />
                   <span>Search Emoji</span>
                 </CommandItem>
@@ -256,6 +267,7 @@ function CommandWithGroups() {
                     hugeicons="CalculatorIcon"
                     phosphor="CalculatorIcon"
                     remixicon="RiCalculatorLine"
+                    solar="CalculatorIcon"
                   />
                   <span>Calculator</span>
                 </CommandItem>
@@ -269,6 +281,7 @@ function CommandWithGroups() {
                     hugeicons="UserIcon"
                     phosphor="UserIcon"
                     remixicon="RiUserLine"
+                    solar="UserIcon"
                   />
                   <span>Profile</span>
                   <CommandShortcut>⌘P</CommandShortcut>
@@ -280,6 +293,7 @@ function CommandWithGroups() {
                     hugeicons="CreditCardIcon"
                     phosphor="CreditCardIcon"
                     remixicon="RiBankCardLine"
+                    solar="CardIcon"
                   />
                   <span>Billing</span>
                   <CommandShortcut>⌘B</CommandShortcut>
@@ -291,6 +305,7 @@ function CommandWithGroups() {
                     hugeicons="SettingsIcon"
                     phosphor="GearIcon"
                     remixicon="RiSettingsLine"
+                    solar="SettingsIcon"
                   />
                   <span>Settings</span>
                   <CommandShortcut>⌘S</CommandShortcut>
@@ -330,6 +345,7 @@ function CommandManyItems() {
                     hugeicons="HomeIcon"
                     phosphor="HouseIcon"
                     remixicon="RiHomeLine"
+                    solar="HomeIcon"
                   />
                   <span>Home</span>
                   <CommandShortcut>⌘H</CommandShortcut>
@@ -341,6 +357,7 @@ function CommandManyItems() {
                     hugeicons="InboxIcon"
                     phosphor="TrayIcon"
                     remixicon="RiInboxLine"
+                    solar="InboxIcon"
                   />
                   <span>Inbox</span>
                   <CommandShortcut>⌘I</CommandShortcut>
@@ -352,6 +369,7 @@ function CommandManyItems() {
                     hugeicons="File02Icon"
                     phosphor="FileTextIcon"
                     remixicon="RiFileTextLine"
+                    solar="FileTextIcon"
                   />
                   <span>Documents</span>
                   <CommandShortcut>⌘D</CommandShortcut>
@@ -363,6 +381,7 @@ function CommandManyItems() {
                     hugeicons="FolderIcon"
                     phosphor="FolderIcon"
                     remixicon="RiFolderLine"
+                    solar="FolderIcon"
                   />
                   <span>Folders</span>
                   <CommandShortcut>⌘F</CommandShortcut>
@@ -377,6 +396,7 @@ function CommandManyItems() {
                     hugeicons="PlusSignIcon"
                     phosphor="PlusIcon"
                     remixicon="RiAddLine"
+                    solar="AddIcon"
                   />
                   <span>New File</span>
                   <CommandShortcut>⌘N</CommandShortcut>
@@ -388,6 +408,7 @@ function CommandManyItems() {
                     hugeicons="FolderAddIcon"
                     phosphor="FolderPlusIcon"
                     remixicon="RiFolderAddLine"
+                    solar="AddFolderIcon"
                   />
                   <span>New Folder</span>
                   <CommandShortcut>⇧⌘N</CommandShortcut>
@@ -399,6 +420,7 @@ function CommandManyItems() {
                     hugeicons="CopyIcon"
                     phosphor="CopyIcon"
                     remixicon="RiFileCopyLine"
+                    solar="CopyIcon"
                   />
                   <span>Copy</span>
                   <CommandShortcut>⌘C</CommandShortcut>
@@ -410,6 +432,7 @@ function CommandManyItems() {
                     hugeicons="ScissorIcon"
                     phosphor="ScissorsIcon"
                     remixicon="RiScissorsLine"
+                    solar="ScissorsIcon"
                   />
                   <span>Cut</span>
                   <CommandShortcut>⌘X</CommandShortcut>
@@ -421,6 +444,7 @@ function CommandManyItems() {
                     hugeicons="ClipboardIcon"
                     phosphor="ClipboardIcon"
                     remixicon="RiClipboardLine"
+                    solar="ClipboardPasteIcon"
                   />
                   <span>Paste</span>
                   <CommandShortcut>⌘V</CommandShortcut>
@@ -432,6 +456,7 @@ function CommandManyItems() {
                     hugeicons="DeleteIcon"
                     phosphor="TrashIcon"
                     remixicon="RiDeleteBinLine"
+                    solar="TrashBin2Icon"
                   />
                   <span>Delete</span>
                   <CommandShortcut>⌫</CommandShortcut>
@@ -446,6 +471,7 @@ function CommandManyItems() {
                     hugeicons="GridIcon"
                     phosphor="GridFourIcon"
                     remixicon="RiGridLine"
+                    solar="WidgetIcon"
                   />
                   <span>Grid View</span>
                 </CommandItem>
@@ -456,6 +482,7 @@ function CommandManyItems() {
                     hugeicons="Menu05Icon"
                     phosphor="ListIcon"
                     remixicon="RiListUnordered"
+                    solar="ListIcon"
                   />
                   <span>List View</span>
                 </CommandItem>
@@ -466,6 +493,7 @@ function CommandManyItems() {
                     hugeicons="ZoomInAreaIcon"
                     phosphor="MagnifyingGlassMinusIcon"
                     remixicon="RiSearchEyeLine"
+                    solar="MagnifierZoomInIcon"
                   />
                   <span>Zoom In</span>
                   <CommandShortcut>⌘+</CommandShortcut>
@@ -477,6 +505,7 @@ function CommandManyItems() {
                     hugeicons="ZoomOutAreaIcon"
                     phosphor="MagnifyingGlassPlusIcon"
                     remixicon="RiZoomInLine"
+                    solar="MagnifierZoomOutIcon"
                   />
                   <span>Zoom Out</span>
                   <CommandShortcut>⌘-</CommandShortcut>
@@ -491,6 +520,7 @@ function CommandManyItems() {
                     hugeicons="UserIcon"
                     phosphor="UserIcon"
                     remixicon="RiUserLine"
+                    solar="UserIcon"
                   />
                   <span>Profile</span>
                   <CommandShortcut>⌘P</CommandShortcut>
@@ -502,6 +532,7 @@ function CommandManyItems() {
                     hugeicons="CreditCardIcon"
                     phosphor="CreditCardIcon"
                     remixicon="RiBankCardLine"
+                    solar="CardIcon"
                   />
                   <span>Billing</span>
                   <CommandShortcut>⌘B</CommandShortcut>
@@ -513,6 +544,7 @@ function CommandManyItems() {
                     hugeicons="SettingsIcon"
                     phosphor="GearIcon"
                     remixicon="RiSettingsLine"
+                    solar="SettingsIcon"
                   />
                   <span>Settings</span>
                   <CommandShortcut>⌘S</CommandShortcut>
@@ -524,6 +556,7 @@ function CommandManyItems() {
                     hugeicons="NotificationIcon"
                     phosphor="BellIcon"
                     remixicon="RiNotificationLine"
+                    solar="BellIcon"
                   />
                   <span>Notifications</span>
                 </CommandItem>
@@ -534,6 +567,7 @@ function CommandManyItems() {
                     hugeicons="HelpCircleIcon"
                     phosphor="QuestionIcon"
                     remixicon="RiQuestionLine"
+                    solar="QuestionCircleIcon"
                   />
                   <span>Help & Support</span>
                 </CommandItem>
@@ -547,6 +581,7 @@ function CommandManyItems() {
                     hugeicons="CalculatorIcon"
                     phosphor="CalculatorIcon"
                     remixicon="RiCalculatorLine"
+                    solar="CalculatorIcon"
                   />
                   <span>Calculator</span>
                 </CommandItem>
@@ -557,6 +592,7 @@ function CommandManyItems() {
                     hugeicons="CalendarIcon"
                     phosphor="CalendarBlankIcon"
                     remixicon="RiCalendarLine"
+                    solar="CalendarIcon"
                   />
                   <span>Calendar</span>
                 </CommandItem>
@@ -567,6 +603,7 @@ function CommandManyItems() {
                     hugeicons="ImageIcon"
                     phosphor="ImageIcon"
                     remixicon="RiImageLine"
+                    solar="GalleryIcon"
                   />
                   <span>Image Editor</span>
                 </CommandItem>
@@ -577,6 +614,7 @@ function CommandManyItems() {
                     hugeicons="CodeIcon"
                     phosphor="CodeIcon"
                     remixicon="RiCodeLine"
+                    solar="CodeIcon"
                   />
                   <span>Code Editor</span>
                 </CommandItem>

@@ -85,6 +85,7 @@ function PaginationPrevious({
         remixicon="RiArrowLeftSLine"
         data-icon="inline-start"
         className="cn-rtl-flip"
+        solar="AltArrowLeftIcon"
       />
       <span className="cn-pagination-previous-text hidden sm:block">
         {text}
@@ -114,6 +115,7 @@ function PaginationNext({
         remixicon="RiArrowRightSLine"
         data-icon="inline-end"
         className="cn-rtl-flip"
+        solar="AltArrowRightIcon"
       />
     </PaginationLink>
   )
@@ -139,6 +141,7 @@ function PaginationEllipsis({
         hugeicons="MoreHorizontalCircle01Icon"
         phosphor="DotsThreeIcon"
         remixicon="RiMoreLine"
+        solar="MenuDotsIcon"
       />
       <span className="sr-only">More pages</span>
     </span>

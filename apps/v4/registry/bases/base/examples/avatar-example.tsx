@@ -131,6 +131,7 @@ function AvatarWithBadgeIcon() {
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
               remixicon="RiAddLine"
+              solar="AddIcon"
             />
           </AvatarBadge>
         </Avatar>
@@ -147,6 +148,7 @@ function AvatarWithBadgeIcon() {
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
               remixicon="RiAddLine"
+              solar="AddIcon"
             />
           </AvatarBadge>
         </Avatar>
@@ -163,6 +165,7 @@ function AvatarWithBadgeIcon() {
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
               remixicon="RiAddLine"
+              solar="AddIcon"
             />
           </AvatarBadge>
         </Avatar>
@@ -177,6 +180,7 @@ function AvatarWithBadgeIcon() {
               hugeicons="Tick02Icon"
               phosphor="CheckIcon"
               remixicon="RiCheckLine"
+              solar="CheckIcon"
             />
           </AvatarBadge>
         </Avatar>
@@ -189,6 +193,7 @@ function AvatarWithBadgeIcon() {
               hugeicons="Tick02Icon"
               phosphor="CheckIcon"
               remixicon="RiCheckLine"
+              solar="CheckIcon"
             />
           </AvatarBadge>
         </Avatar>
@@ -201,6 +206,7 @@ function AvatarWithBadgeIcon() {
               hugeicons="Tick02Icon"
               phosphor="CheckIcon"
               remixicon="RiCheckLine"
+              solar="CheckIcon"
             />
           </AvatarBadge>
         </Avatar>
@@ -375,6 +381,7 @@ function AvatarGroupWithIconCount() {
             hugeicons="PlusSignIcon"
             phosphor="PlusIcon"
             remixicon="RiAddLine"
+            solar="AddIcon"
           />
         </AvatarGroupCount>
       </AvatarGroup>
@@ -404,6 +411,7 @@ function AvatarGroupWithIconCount() {
             hugeicons="PlusSignIcon"
             phosphor="PlusIcon"
             remixicon="RiAddLine"
+            solar="AddIcon"
           />
         </AvatarGroupCount>
       </AvatarGroup>
@@ -439,6 +447,7 @@ function AvatarGroupWithIconCount() {
             hugeicons="PlusSignIcon"
             phosphor="PlusIcon"
             remixicon="RiAddLine"
+            solar="AddIcon"
           />
         </AvatarGroupCount>
       </AvatarGroup>
@@ -484,6 +493,7 @@ function AvatarInEmpty() {
                   hugeicons="PlusSignIcon"
                   phosphor="PlusIcon"
                   remixicon="RiAddLine"
+                  solar="AddIcon"
                 />
               </AvatarGroupCount>
             </AvatarGroup>
@@ -501,6 +511,7 @@ function AvatarInEmpty() {
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
               remixicon="RiAddLine"
+              solar="AddIcon"
             />
             Invite Members
           </Button>

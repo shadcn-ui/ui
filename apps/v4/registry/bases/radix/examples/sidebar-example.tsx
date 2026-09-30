@@ -195,6 +195,7 @@ export default function SidebarExample() {
                           hugeicons="UnfoldMoreIcon"
                           phosphor="CaretUpDownIcon"
                           remixicon="RiArrowUpDownLine"
+                          solar="RoundSortVerticalIcon"
                         />
                       </ItemActions>
                     </Item>
@@ -216,6 +217,7 @@ export default function SidebarExample() {
                             phosphor="CheckIcon"
                             remixicon="RiCheckLine"
                             className="ml-auto"
+                            solar="CheckIcon"
                           />
                         )}
                       </DropdownMenuItem>
@@ -243,6 +245,7 @@ export default function SidebarExample() {
                   phosphor="MagnifyingGlassIcon"
                   remixicon="RiSearchLine"
                   className="pointer-events-none absolute top-1/2 left-2 size-4 -translate-y-1/2 opacity-50 select-none"
+                  solar="MagnifierIcon"
                 />
               </SidebarGroupContent>
             </SidebarGroup>

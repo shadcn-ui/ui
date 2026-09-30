@@ -74,6 +74,7 @@ export function PartTool({
             phosphor="TerminalIcon"
             remixicon="RiSettingsLine"
             className="size-4"
+            solar="SettingsIcon"
           />
         </span>
         <div className="min-w-0 flex-1">

@@ -46,6 +46,7 @@
     "@remixicon/react": "^4.7.0",
     "@shadcn/helpers": "workspace:*",
     "@shadcn/react": "workspace:*",
+    "@solar-icons/react": "^2.3.0",
     "@streamdown/code": "^1.1.1",
     "@tabler/icons-react": "^3.31.0",
     "@tailwindcss/postcss": "^4.3.0",

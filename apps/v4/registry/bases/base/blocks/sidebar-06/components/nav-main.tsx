@@ -49,6 +49,7 @@ export function NavMain({
                   phosphor="DotsThreeOutlineIcon"
                   remixicon="RiMoreLine"
                   className="ml-auto"
+                  solar="MenuDotsIcon"
                 />
               </DropdownMenuTrigger>
               {item.items?.length ? (

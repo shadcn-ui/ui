@@ -56,6 +56,7 @@ function EmptyBasic() {
               hugeicons="ArrowUpRight01Icon"
               phosphor="ArrowUpRightIcon"
               remixicon="RiArrowRightUpLine"
+              solar="ArrowRightUpIcon"
             />
           </LinkButton>
         </EmptyContent>
@@ -84,6 +85,7 @@ function EmptyWithMutedBackground() {
               hugeicons="ArrowUpRight01Icon"
               phosphor="ArrowUpRightIcon"
               remixicon="RiArrowRightUpLine"
+              solar="ArrowRightUpIcon"
             />
           </LinkButton>
         </EmptyContent>
@@ -113,6 +115,7 @@ function EmptyWithBorder() {
                 hugeicons="DashedLineCircleIcon"
                 phosphor="CircleDashedIcon"
                 remixicon="RiLoaderLine"
+                solar="CircleDashedIcon"
               />
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
@@ -140,6 +143,7 @@ function EmptyWithIcon() {
               hugeicons="Folder01Icon"
               phosphor="FolderIcon"
               remixicon="RiFolderLine"
+              solar="FolderIcon"
             />
           </EmptyMedia>
           <EmptyTitle>Nothing to see here</EmptyTitle>
@@ -157,6 +161,7 @@ function EmptyWithIcon() {
               phosphor="PlusIcon"
               remixicon="RiAddLine"
               data-icon="inline-start"
+              solar="AddIcon"
             />
             New Post
           </Button>
@@ -187,6 +192,7 @@ function EmptyWithMutedBackgroundAlt() {
                 hugeicons="DashedLineCircleIcon"
                 phosphor="CircleDashedIcon"
                 remixicon="RiLoaderLine"
+                solar="CircleDashedIcon"
               />
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
@@ -214,6 +220,7 @@ function EmptyInCard() {
               hugeicons="Folder01Icon"
               phosphor="FolderIcon"
               remixicon="RiFolderLine"
+              solar="FolderIcon"
             />
           </EmptyMedia>
           <EmptyTitle>No projects yet</EmptyTitle>
@@ -235,6 +242,7 @@ function EmptyInCard() {
               hugeicons="ArrowUpRight01Icon"
               phosphor="ArrowUpRightIcon"
               remixicon="RiArrowRightUpLine"
+              solar="ArrowRightUpIcon"
             />
           </LinkButton>
         </EmptyContent>

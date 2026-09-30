@@ -34,6 +34,7 @@ export function LoginForm({
                   phosphor="RowsIcon"
                   remixicon="RiGalleryLine"
                   className="size-6"
+                  solar="GalleryIcon"
                 />
               </div>
               <span className="sr-only">Acme Inc.</span>

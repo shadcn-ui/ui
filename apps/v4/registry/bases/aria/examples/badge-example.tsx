@@ -47,6 +47,7 @@ function BadgeWithIconLeft() {
             phosphor="CheckCircleIcon"
             remixicon="RiCheckboxCircleLine"
             data-icon="inline-start"
+            solar="VerifiedCheckIcon"
           />
           Default
         </Badge>
@@ -58,6 +59,7 @@ function BadgeWithIconLeft() {
             phosphor="CheckCircleIcon"
             remixicon="RiCheckboxCircleLine"
             data-icon="inline-start"
+            solar="VerifiedCheckIcon"
           />
           Secondary
         </Badge>
@@ -69,6 +71,7 @@ function BadgeWithIconLeft() {
             phosphor="CheckCircleIcon"
             remixicon="RiCheckboxCircleLine"
             data-icon="inline-start"
+            solar="VerifiedCheckIcon"
           />
           Destructive
         </Badge>
@@ -80,6 +83,7 @@ function BadgeWithIconLeft() {
             phosphor="CheckCircleIcon"
             remixicon="RiCheckboxCircleLine"
             data-icon="inline-start"
+            solar="VerifiedCheckIcon"
           />
           Outline
         </Badge>
@@ -91,6 +95,7 @@ function BadgeWithIconLeft() {
             phosphor="CheckCircleIcon"
             remixicon="RiCheckboxCircleLine"
             data-icon="inline-start"
+            solar="VerifiedCheckIcon"
           />
           Ghost
         </Badge>
@@ -102,6 +107,7 @@ function BadgeWithIconLeft() {
             phosphor="CheckCircleIcon"
             remixicon="RiCheckboxCircleLine"
             data-icon="inline-start"
+            solar="VerifiedCheckIcon"
           />
           Link
         </Badge>
@@ -123,6 +129,7 @@ function BadgeWithIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Badge>
         <Badge variant="secondary">
@@ -134,6 +141,7 @@ function BadgeWithIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Badge>
         <Badge variant="destructive">
@@ -145,6 +153,7 @@ function BadgeWithIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Badge>
         <Badge variant="outline">
@@ -156,6 +165,7 @@ function BadgeWithIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Badge>
         <Badge variant="ghost">
@@ -167,6 +177,7 @@ function BadgeWithIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Badge>
         <Badge variant="link">
@@ -178,6 +189,7 @@ function BadgeWithIconRight() {
             phosphor="ArrowRightIcon"
             remixicon="RiArrowRightLine"
             data-icon="inline-end"
+            solar="ArrowRightIcon"
           />
         </Badge>
       </div>
@@ -233,6 +245,7 @@ function BadgeAsLink() {
                 phosphor="ArrowUpRightIcon"
                 remixicon="RiArrowRightUpLine"
                 data-icon="inline-end"
+                solar="ArrowRightUpIcon"
               />
             </a>
           )}
@@ -249,6 +262,7 @@ function BadgeAsLink() {
                 phosphor="ArrowUpRightIcon"
                 remixicon="RiArrowRightUpLine"
                 data-icon="inline-end"
+                solar="ArrowRightUpIcon"
               />
             </a>
           )}
@@ -265,6 +279,7 @@ function BadgeAsLink() {
                 phosphor="ArrowUpRightIcon"
                 remixicon="RiArrowRightUpLine"
                 data-icon="inline-end"
+                solar="ArrowRightUpIcon"
               />
             </a>
           )}
@@ -281,6 +296,7 @@ function BadgeAsLink() {
                 phosphor="ArrowUpRightIcon"
                 remixicon="RiArrowRightUpLine"
                 data-icon="inline-end"
+                solar="ArrowRightUpIcon"
               />
             </a>
           )}
