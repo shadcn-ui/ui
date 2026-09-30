@@ -7,6 +7,7 @@ import fs from "fs-extra"
 const FRAMEWORK_CONFIG_FILES = [
   "next.config.*",
   "vite.config.*",
+  "rsbuild.config.*",
   "astro.config.*",
   "remix.config.*",
   "nuxt.config.*",
