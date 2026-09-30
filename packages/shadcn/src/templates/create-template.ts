@@ -296,15 +296,6 @@ function defaultScaffold({
       createSpinner?.fail(
         `Something went wrong creating a new ${title} project.`
       )
-      if (
-        process.env.CI &&
-        error &&
-        typeof error === "object" &&
-        "stderr" in error &&
-        typeof error.stderr === "string"
-      ) {
-        process.stderr.write(`${error.stderr}\n`)
-      }
       handleError(error)
     }
   }

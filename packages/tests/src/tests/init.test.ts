@@ -485,7 +485,10 @@ describe("shadcn init - --name flag", () => {
       { timeout: 120000 }
     )
 
-    expect(result.exitCode, result.stderr || result.stdout).toBe(0)
+    expect(
+      result.exitCode,
+      [result.stderr, result.stdout].filter(Boolean).join("\n")
+    ).toBe(0)
 
     const projectPath = path.join(emptyDir, projectName)
 
