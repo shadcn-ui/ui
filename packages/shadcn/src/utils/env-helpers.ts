@@ -7,8 +7,21 @@ export function isEnvFile(filePath: string) {
 }
 
 /**
- * Finds a file variant in the project.
- * TODO: abstract this to a more generic function.
+ * Finds the first existing file variant in a directory.
+ */
+export function findExistingFileVariant(targetDir: string, variants: string[]) {
+  for (const variant of variants) {
+    const filePath = path.join(targetDir, variant)
+    if (existsSync(filePath)) {
+      return filePath
+    }
+  }
+
+  return null
+}
+
+/**
+ * Finds a .env file variant in the project.
  */
 export function findExistingEnvFile(targetDir: string) {
   const variants = [
@@ -18,14 +31,7 @@ export function findExistingEnvFile(targetDir: string) {
     ".env.development",
   ]
 
-  for (const variant of variants) {
-    const filePath = path.join(targetDir, variant)
-    if (existsSync(filePath)) {
-      return filePath
-    }
-  }
-
-  return null
+  return findExistingFileVariant(targetDir, variants)
 }
 
 /**
