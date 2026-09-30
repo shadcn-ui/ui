@@ -13,6 +13,7 @@ import {
   DEPRECATED_COMPONENTS,
 } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
+import { RegistryNotFoundError } from "@/src/registry/errors"
 import { registryItemTypeSchema } from "@/src/registry/schema"
 import { isUniversalRegistryItem } from "@/src/registry/utils"
 import { getTemplateForFramework } from "@/src/templates/index"
@@ -22,7 +23,7 @@ import { dryRunComponents } from "@/src/utils/dry-run"
 import { formatDryRunResult } from "@/src/utils/dry-run-formatter"
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
-import { createConfig, getConfig } from "@/src/utils/get-config"
+import { createConfig, getConfig, type Config } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
@@ -156,7 +157,7 @@ export const add = new Command()
       if (!options.components?.length) {
         options.components = await promptForRegistryComponents(
           options,
-          initialConfig.style
+          initialConfig
         )
       }
 
@@ -329,7 +330,7 @@ export const add = new Command()
 
 async function promptForRegistryComponents(
   options: z.infer<typeof addOptionsSchema>,
-  style: string
+  config: Config
 ) {
   const registryIndex = await getShadcnRegistryIndex()
   if (!registryIndex) {
@@ -338,12 +339,42 @@ async function promptForRegistryComponents(
     return []
   }
 
-  const { base } = parsePresetStyle(style)
+  const { base } = parsePresetStyle(config.style)
 
   if (options.all) {
-    return registryIndex
+    const candidates = registryIndex
       .map((entry) => entry.name)
       .filter((component) => isComponentSelectable(component, base))
+
+    const results = await Promise.allSettled(
+      candidates.map((component) =>
+        getRegistryItems([component], { config, useCache: true })
+      )
+    )
+    const available: string[] = []
+    const unavailable: string[] = []
+
+    results.forEach((result, index) => {
+      if (result.status === "fulfilled") {
+        available.push(candidates[index])
+      } else if (result.reason instanceof RegistryNotFoundError) {
+        unavailable.push(candidates[index])
+      } else {
+        throw result.reason
+      }
+    })
+
+    if (unavailable.length && !options.silent) {
+      logger.warn(
+        `Skipping components unavailable for ${config.style}: ${unavailable.join(", ")}`
+      )
+    }
+
+    if (!available.length) {
+      throw new Error(`No components available for ${config.style}.`)
+    }
+
+    return available
   }
 
   if (options.components?.length) {
