@@ -274,6 +274,12 @@ Two rules:
 2. Always cast object literals containing `data-*` keys passed to
    `mergeProps` (`as React.ComponentProps<"tag">`), or tsc fails on every one.
 
+Links styled as buttons are the exception to the Button `render` pattern.
+Keep the `<a>` or router link as the final element and apply `buttonVariants`
+directly. Do not use `nativeButton={false}` for navigation; it intentionally
+adds button semantics. If a navigation link is also a trigger or close
+control, flag it for manual separation instead of choosing either behavior.
+
 ## Positioner props: Pick means FORWARD
 
 When a wrapper exposes positioning props via

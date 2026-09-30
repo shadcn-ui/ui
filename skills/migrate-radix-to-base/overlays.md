@@ -6,7 +6,7 @@ Sources: radix-ui.com primitives docs (fetched 2026-07-02) and base-ui.com `/rea
 
 Global conventions that apply to every component below:
 
-- `asChild` (Radix, every part) → `render` (Base UI, every part). Radix: `asChild?: boolean` merges props onto the single child. Base UI: `render?: ReactElement | ((props: HTMLProps, state: Part.State) => ReactElement)`. For buttons replaced with non-button elements, also set `nativeButton={false}`.
+- `asChild` (Radix, every part) → `render` (Base UI, every part). Radix: `asChild?: boolean` merges props onto the single child. Base UI: `render?: ReactElement | ((props: HTMLProps, state: Part.State) => ReactElement)`. Set `nativeButton={false}` only when a non-button target still owns button behavior. Navigation links keep link semantics; links that also act as triggers or close controls require manual separation.
 - `onOpenChange` signature changed everywhere. Radix: `(open: boolean) => void`. Base UI: `(open: boolean, eventDetails: X.Root.ChangeEventDetails) => void` where `eventDetails` is `{ reason, event, trigger, cancel(), allowPropagation(), isCanceled, isPropagationAllowed, preventUnmountOnClose() }`.
 - Radix per-interaction dismiss callbacks (`onEscapeKeyDown`, `onPointerDownOutside`, `onFocusOutside`, `onInteractOutside`) have NO 1:1 Base UI props. They are replaced by `onOpenChange`'s `eventDetails.reason` (`'escape-key'`, `'outside-press'`, `'focus-out'`) + `eventDetails.cancel()` to prevent the close (the equivalent of Radix `event.preventDefault()`).
 - `forceMount` (Radix, Portal/Overlay/Content) → `keepMounted` on Base UI `Portal` only (`boolean`, default `false`). For exit animations Base UI does not need it: it holds the popup mounted itself and exposes `data-starting-style` / `data-ending-style`, `onOpenChangeComplete`, and `actionsRef.current.unmount()` for externally-controlled animations.
@@ -32,7 +32,7 @@ Part mapping: Root→Root, Trigger→Trigger, Portal→Portal, Overlay→Backdro
 
 | Radix prop | Type / default | Base UI equivalent | Migration note |
 | --- | --- | --- | --- |
-| `asChild` | `boolean` / `false` | `render` | `render={<MyButton />}`; add `nativeButton={false}` if the rendered element is not a `<button>`. |
+| `asChild` | `boolean` / `false` | `render` | `render={<MyButton />}`; set `nativeButton={false}` only when the target still owns trigger behavior. Do not use a navigation link as the trigger. |
 
 ## Portal → Portal
 

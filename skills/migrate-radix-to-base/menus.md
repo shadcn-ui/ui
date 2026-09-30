@@ -34,7 +34,7 @@ Cross-cutting rules (apply to every part below):
 
 | Radix prop | Type / default | Base UI equivalent | Migration note |
 | --- | --- | --- | --- |
-| `asChild` | `boolean` / `false` | `render` | See cross-cutting rules. When rendering a non-button, also set `nativeButton={false}`. |
+| `asChild` | `boolean` / `false` | `render` | See cross-cutting rules. Set `nativeButton={false}` only when a non-button target still owns trigger behavior, never for navigation links. |
 
 ## Portal → Menu.Portal
 
@@ -274,7 +274,7 @@ Note: `Menu.Root` inside a Menubar accepts all Menu.Root props (`open`, `default
 
 | Radix prop | Type / default | Base UI equivalent | Migration note |
 | --- | --- | --- | --- |
-| `asChild` | `boolean` / `false` | `render` (+ `nativeButton={false}` for non-buttons) | Radix Menubar.Trigger data attrs `[data-state]`/`[data-highlighted]`/`[data-disabled]` → `data-popup-open`/`data-pressed` (no highlighted state on Base trigger). |
+| `asChild` | `boolean` / `false` | `render` | Set `nativeButton={false}` only when a non-button target still owns trigger behavior, never for navigation links. Radix Menubar.Trigger data attrs `[data-state]`/`[data-highlighted]`/`[data-disabled]` → `data-popup-open`/`data-pressed` (no highlighted state on Base trigger). |
 
 ## Portal / Content / Arrow / Item / Group / Label / CheckboxItem / RadioGroup / RadioItem / ItemIndicator / Separator / Sub / SubTrigger / SubContent
 

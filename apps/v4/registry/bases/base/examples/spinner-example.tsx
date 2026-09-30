@@ -3,7 +3,7 @@ import {
   ExampleWrapper,
 } from "@/registry/bases/base/components/example"
 import { Badge } from "@/registry/bases/base/ui/badge"
-import { Button } from "@/registry/bases/base/ui/button"
+import { Button, buttonVariants } from "@/registry/bases/base/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -123,16 +123,17 @@ function SpinnerInEmpty() {
         </EmptyHeader>
         <EmptyContent>
           <div className="flex gap-2">
-            <Button render={<a href="#" />} nativeButton={false}>
+            <a href="#" className={buttonVariants()}>
               Create project
-            </Button>
+            </a>
             <Button variant="outline">Import project</Button>
           </div>
-          <Button
-            variant="link"
-            render={<a href="#" />}
-            nativeButton={false}
-            className="text-muted-foreground"
+          <a
+            href="#"
+            className={buttonVariants({
+              variant: "link",
+              className: "text-muted-foreground",
+            })}
           >
             Learn more{" "}
             <IconPlaceholder
@@ -142,7 +143,7 @@ function SpinnerInEmpty() {
               phosphor="ArrowRightIcon"
               remixicon="RiArrowRightLine"
             />
-          </Button>
+          </a>
         </EmptyContent>
       </Empty>
     </Example>

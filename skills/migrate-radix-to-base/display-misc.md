@@ -253,7 +253,7 @@ Base UI only on Root: `toast` (required `Toast.Root.ToastObject`: `id`, `title`,
 | `asChild` | `boolean` / `false` | `render` | Signature changed. |
 | `altText` (required) | `string` / - | Dropped | No equivalent prop. When creating toasts via the manager, pass the button's props (including handlers and aria attributes) through `add({ actionProps })`. |
 
-Base UI only: `nativeButton` (`boolean`, default `true`, set `false` when `render` is not a button).
+Base UI only: `nativeButton` (`boolean`, default `true`; set `false` only when the rendered element still owns the toast action's button behavior, never for navigation links).
 
 ## Toast.Close → Toast.Close
 
