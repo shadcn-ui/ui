@@ -174,7 +174,6 @@ export function DirectoryList() {
 function DirectoryListContent() {
   const pathname = usePathname()
   const {
-    isLoading,
     paginatedRegistries,
     page,
     query,
@@ -215,10 +214,6 @@ function DirectoryListContent() {
     },
     [page, setPage]
   )
-
-  if (isLoading) {
-    return <DirectoryListSkeleton />
-  }
 
   return (
     <>
