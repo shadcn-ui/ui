@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 "use client"
 
 import * as React from "react"
@@ -119,9 +118,8 @@ export default function FormTanstackComplex() {
           }}
         >
           <FieldGroup>
-            <form.Field
-              name="plan"
-              children={(field) => {
+            <form.Field name="plan">
+              {(field) => {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
@@ -178,11 +176,10 @@ export default function FormTanstackComplex() {
                   </FieldSet>
                 )
               }}
-            />
+            </form.Field>
             <FieldSeparator />
-            <form.Field
-              name="billingPeriod"
-              children={(field) => {
+            <form.Field name="billingPeriod">
+              {(field) => {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
@@ -211,12 +208,10 @@ export default function FormTanstackComplex() {
                   </Field>
                 )
               }}
-            />
+            </form.Field>
             <FieldSeparator />
-            <form.Field
-              name="addons"
-              mode="array"
-              children={(field) => {
+            <form.Field name="addons" mode="array">
+              {(field) => {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
@@ -267,11 +262,10 @@ export default function FormTanstackComplex() {
                   </FieldSet>
                 )
               }}
-            />
+            </form.Field>
             <FieldSeparator />
-            <form.Field
-              name="emailNotifications"
-              children={(field) => {
+            <form.Field name="emailNotifications">
+              {(field) => {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
@@ -297,7 +291,7 @@ export default function FormTanstackComplex() {
                   </Field>
                 )
               }}
-            />
+            </form.Field>
           </FieldGroup>
         </form>
       </CardContent>

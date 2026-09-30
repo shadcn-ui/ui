@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 "use client"
 
 import * as React from "react"
@@ -95,10 +94,8 @@ export default function FormTanstackArray() {
                   </FieldDescription>
                   <FieldGroup className="gap-4">
                     {field.state.value.map((_, index) => (
-                      <form.Field
-                        key={index}
-                        name={`emails[${index}].address`}
-                        children={(subField) => {
+                      <form.Field key={index} name={`emails[${index}].address`}>
+                        {(subField) => {
                           const isSubFieldInvalid =
                             subField.state.meta.isTouched &&
                             !subField.state.meta.isValid
@@ -145,7 +142,7 @@ export default function FormTanstackArray() {
                             </Field>
                           )
                         }}
-                      />
+                      </form.Field>
                     ))}
                     <Button
                       type="button"
