@@ -62,7 +62,15 @@ function Item({
   size = "default",
   render,
   ...props
-}: useRender.ComponentProps<"div"> & VariantProps<typeof itemVariants>) {
+}: useRender.ComponentProps<
+  "div",
+  {
+    slot: "item"
+    variant: VariantProps<typeof itemVariants>["variant"]
+    size: VariantProps<typeof itemVariants>["size"]
+  }
+> &
+  VariantProps<typeof itemVariants>) {
   return useRender({
     defaultTagName: "div",
     props: mergeProps<"div">(
