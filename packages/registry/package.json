@@ -67,6 +67,7 @@
     "@babel/core": "^7.28.0",
     "@babel/parser": "^7.28.0",
     "@babel/plugin-transform-typescript": "^7.28.0",
+    "@babel/preset-typescript": "^7.27.1",
     "@dotenvx/dotenvx": "^1.48.4",
     "cn": "^0.2.4",
     "cosmiconfig": "^9.0.0",
@@ -84,6 +85,7 @@
     "stringify-object": "^5.0.0",
     "ts-morph": "^26.0.0",
     "tsconfig-paths": "^4.2.0",
+    "type-fest": "^4.41.0",
     "undici": "^7.29.0",
     "zod": "^3.24.1"
   },
@@ -96,7 +98,6 @@
     "msw": "^2.10.4",
     "rimraf": "^6.0.1",
     "tsup": "^8.5.0",
-    "type-fest": "^4.41.0",
     "typescript": "^5.9.2"
   }
 }

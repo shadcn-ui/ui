@@ -500,6 +500,9 @@ importers:
       '@babel/plugin-transform-typescript':
         specifier: ^7.28.0
         version: 7.28.0(@babel/core@7.28.0)
+      '@babel/preset-typescript':
+        specifier: ^7.27.1
+        version: 7.27.1(@babel/core@7.28.0)
       '@dotenvx/dotenvx':
         specifier: ^1.48.4
         version: 1.48.4
@@ -551,6 +554,9 @@ importers:
       tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0
+      type-fest:
+        specifier: ^4.41.0
+        version: 4.41.0
       undici:
         specifier: ^7.29.0
         version: 7.29.1
@@ -582,9 +588,6 @@ importers:
       tsup:
         specifier: ^8.5.0
         version: 8.5.0(jiti@2.7.0)(postcss@8.5.28)(tsx@4.20.3)(typescript@5.9.2)(yaml@2.8.1)
-      type-fest:
-        specifier: ^4.41.0
-        version: 4.41.0
       typescript:
         specifier: ^5.9.2
         version: 5.9.2

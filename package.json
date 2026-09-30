@@ -27,7 +27,7 @@
     "shadcn": "pnpm --filter=shadcn start:dev",
     "shadcn:prod": "pnpm --filter=shadcn start:prod",
     "shadcn:build": "pnpm --filter=shadcn... build",
-    "shadcn:test": "pnpm --filter=shadcn test",
+    "shadcn:test": "pnpm --filter=shadcn... test",
     "v4:dev": "pnpm --filter=v4 dev",
     "v4:build": "pnpm --filter=v4 build",
     "lint": "turbo run lint",
