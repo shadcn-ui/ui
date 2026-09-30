@@ -39,6 +39,7 @@ export const iconLibraries = {
     import: "import { ICON } from '@remixicon/react'",
     usage: "<ICON />",
     export: "@remixicon/react",
+    componentType: "RemixiconComponentType",
   },
 } as const
 

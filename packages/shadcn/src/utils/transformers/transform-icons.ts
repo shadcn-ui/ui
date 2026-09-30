@@ -198,6 +198,29 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
         importDecl.replaceWithText(importDecl.getText().replace(";", ""))
       }
     }
+
+    // Transform React.ComponentProps<"svg"> to library-specific type if defined
+    if ("componentType" in libraryConfig && libraryConfig.componentType) {
+      const componentType = libraryConfig.componentType
+      const typeRefs = sourceFile
+        .getDescendantsOfKind(SyntaxKind.TypeReference)
+        .filter((ref) => /^React\.ComponentProps<["']svg["']>$/.test(ref.getText()))
+
+      for (const typeRef of typeRefs) {
+        typeRef.replaceWithText(`React.ComponentProps<${componentType}>`)
+      }
+
+      // Add type import only if we transformed a type
+      if (typeRefs.length > 0) {
+        const importDecl = sourceFile
+          .getImportDeclarations()
+          .find((d) => d.getModuleSpecifier().getText() === `"${libraryConfig.export}"`)
+
+        if (importDecl && !importDecl.getNamedImports().some((n) => n.getName() === componentType)) {
+          importDecl.addNamedImport({ name: componentType, isTypeOnly: true })
+        }
+      }
+    }
   }
 
   return sourceFile
