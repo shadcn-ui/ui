@@ -217,9 +217,31 @@ export async function getRawConfig(
     return config
   } catch (error) {
     const componentPath = `${cwd}/components.json`
-    if (error instanceof Error && error.message.includes("reserved registry")) {
+
+    if (error instanceof z.ZodError) {
+      const issues = error.issues
+        .map((issue) => {
+          const issuePath = issue.path.join(".")
+          return issuePath
+            ? `  - ${issuePath}: ${issue.message}`
+            : `  - ${issue.message}`
+        })
+        .join("\n")
+
+      throw new Error(
+        `Invalid configuration found in ${highlighter.info(
+          componentPath
+        )}.\n${issues}`
+      )
+    }
+
+    if (
+      error instanceof Error &&
+      error.message.includes("is a built-in registry")
+    ) {
       throw error
     }
+
     throw new Error(
       `Invalid configuration found in ${highlighter.info(componentPath)}.`
     )
