@@ -479,9 +479,13 @@ describe("shadcn init - --name flag", () => {
     const emptyDir = path.join(testBaseDir, "empty-next")
     await fs.ensureDir(emptyDir)
 
-    await npxShadcn(emptyDir, ["init", "--defaults", "--name", projectName], {
-      timeout: 120000,
-    })
+    const result = await npxShadcn(
+      emptyDir,
+      ["init", "--defaults", "--name", projectName],
+      { timeout: 120000 }
+    )
+
+    expect(result.exitCode, result.stderr || result.stdout).toBe(0)
 
     const projectPath = path.join(emptyDir, projectName)
 
