@@ -789,6 +789,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='var(--foreground)'><rect width='32' height='32' rx='4'/></svg>"
   },
   {
+    "name": "@facade",
+    "homepage": "https://facadeui.dev",
+    "url": "https://facadeui.dev/r/{name}.json",
+    "description": "Accessible sections and page templates for marketing websites: heroes, feature grids, pricing tables, FAQs and footers. Built with Base UI and Tailwind CSS v4.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='9' fill='#f54900'/><rect x='9' y='9' width='30' height='6' rx='2' fill='#0c0a09'/><rect x='9' y='21' width='21' height='6' rx='2' fill='#0c0a09'/><rect x='9' y='33' width='12' height='6' rx='2' fill='#0c0a09'/></svg>"
+  },
+  {
     "name": "@fibo",
     "homepage": "https://fibo.toribryan.com",
     "url": "https://fibo.toribryan.com/r/{name}.json",
