@@ -3,6 +3,7 @@ import { iconLibraries, type IconLibraryName } from "@/src/icons/libraries"
 import { configWithDefaults } from "@/src/registry/config"
 import { resolveRegistryTree } from "@/src/registry/resolver"
 import { rawConfigSchema } from "@/src/schema"
+import type { TemplateOptions } from "@/src/templates"
 import { addComponents } from "@/src/utils/add-components"
 import { resolveConfigPaths } from "@/src/utils/get-config"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
@@ -11,6 +12,7 @@ import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import { updateFonts } from "@/src/utils/updaters/update-fonts"
 import dedent from "dedent"
 import deepmerge from "deepmerge"
+import { execa } from "execa"
 import fs from "fs-extra"
 
 import { createTemplate } from "./create-template"
@@ -21,6 +23,9 @@ export const next = createTemplate({
   defaultProjectName: "next-app",
   templateDir: "next-app",
   frameworks: ["next-app", "next-pages"],
+  scaffold: async (options) => {
+    await scaffoldNextApp(options)
+  },
   create: async () => {
     // Empty for now.
   },
@@ -158,3 +163,59 @@ export default function Page() {
     ],
   },
 })
+
+async function scaffoldNextApp({
+  projectPath,
+  packageManager,
+  cwd,
+}: TemplateOptions) {
+  const projectName = path.basename(projectPath)
+  const createCommand = getCreateNextAppCommand(packageManager)
+
+  await execa(createCommand.command, createCommand.args(projectName), {
+    cwd,
+    stdio: "inherit",
+  })
+}
+
+function getCreateNextAppCommand(packageManager: string) {
+  switch (packageManager) {
+    case "pnpm":
+      return {
+        command: "pnpm",
+        args: (projectName: string) => [
+          "dlx",
+          "create-next-app@latest",
+          projectName,
+          "--use-pnpm",
+        ],
+      }
+    case "bun":
+      return {
+        command: "bunx",
+        args: (projectName: string) => [
+          "create-next-app@latest",
+          projectName,
+          "--use-bun",
+        ],
+      }
+    default:
+      return {
+        command: "npx",
+        args: (projectName: string) => [
+          "create-next-app@latest",
+          projectName,
+          getPackageManagerFlag(packageManager),
+        ].filter(Boolean) as string[],
+      }
+  }
+}
+
+function getPackageManagerFlag(packageManager: string) {
+  switch (packageManager) {
+    case "yarn":
+      return "--use-yarn"
+    default:
+      return "--use-npm"
+  }
+}
