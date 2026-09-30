@@ -224,7 +224,7 @@
   }
 
   .cn-button-group-separator {
-    @apply bg-input;
+    @apply bg-border;
   }
 
   /* MARK: Calendar */
@@ -1349,7 +1349,7 @@
   }
 
   .cn-toggle-variant-outline {
-    @apply border-input hover:bg-muted border bg-transparent;
+    @apply border-border hover:bg-muted border bg-transparent;
   }
 
   .cn-toggle-size-default {

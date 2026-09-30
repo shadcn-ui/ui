@@ -216,11 +216,11 @@
   }
 
   .cn-button-group-text {
-    @apply gap-2 border border-transparent border-b-input bg-transparent px-2.5 text-xs font-semibold [&_svg:not([class*='size-'])]:size-3.5 group-has-[>[data-variant=outline]]/button-group:border-border uppercase;
+    @apply gap-2 border border-transparent border-b-border bg-transparent px-2.5 text-xs font-semibold [&_svg:not([class*='size-'])]:size-3.5 group-has-[>[data-variant=outline]]/button-group:border-border uppercase;
   }
 
   .cn-button-group-separator {
-    @apply bg-input;
+    @apply bg-border;
   }
 
   /* MARK: Calendar */
@@ -1339,7 +1339,7 @@
   }
 
   .cn-toggle-variant-outline {
-    @apply border-input hover:bg-muted border bg-transparent;
+    @apply border-border hover:bg-muted border bg-transparent;
   }
 
   .cn-toggle-size-default {
