@@ -54,6 +54,7 @@ export function NavWorkspaces({
                     hugeicons="ArrowRight01Icon"
                     phosphor="CaretRightIcon"
                     remixicon="RiArrowRightSLine"
+                    fontawesome="faChevronRight"
                   />
                 </SidebarMenuAction>
                 <SidebarMenuAction showOnHover>
@@ -63,6 +64,7 @@ export function NavWorkspaces({
                     hugeicons="PlusSignIcon"
                     phosphor="PlusIcon"
                     remixicon="RiAddLine"
+                    fontawesome="faPlus"
                   />
                 </SidebarMenuAction>
                 <CollapsibleContent>
@@ -88,6 +90,7 @@ export function NavWorkspaces({
                 hugeicons="MoreHorizontalCircle01Icon"
                 phosphor="DotsThreeOutlineIcon"
                 remixicon="RiMoreLine"
+                fontawesome="faEllipsis"
               />
               <span>More</span>
             </SidebarMenuButton>

@@ -40,6 +40,7 @@ export function VersionSwitcher({
                   hugeicons="LayoutBottomIcon"
                   phosphor="RowsIcon"
                   remixicon="RiGalleryLine"
+                  fontawesome="faTableList"
                   className="size-4"
                 />
               </div>
@@ -53,6 +54,7 @@ export function VersionSwitcher({
                 hugeicons="UnfoldMoreIcon"
                 phosphor="CaretUpDownIcon"
                 remixicon="RiArrowUpDownLine"
+                fontawesome="faUpDown"
                 className="ml-auto"
               />
             </SidebarMenuButton>
@@ -74,6 +76,7 @@ export function VersionSwitcher({
                     hugeicons="Tick02Icon"
                     phosphor="CheckIcon"
                     remixicon="RiCheckLine"
+                    fontawesome="faCheck"
                     className="ml-auto"
                   />
                 )}

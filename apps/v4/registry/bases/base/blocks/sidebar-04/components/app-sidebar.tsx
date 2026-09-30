@@ -170,6 +170,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   hugeicons="LayoutBottomIcon"
                   phosphor="RowsIcon"
                   remixicon="RiGalleryLine"
+                  fontawesome="faTableList"
                   className="size-4"
                 />
               </div>

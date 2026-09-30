@@ -86,6 +86,7 @@ function ContextMenuWithIcons() {
                 hugeicons="CopyIcon"
                 phosphor="CopyIcon"
                 remixicon="RiFileCopyLine"
+                fontawesome="faCopy"
               />
               Copy
             </ContextMenuItem>
@@ -96,6 +97,7 @@ function ContextMenuWithIcons() {
                 hugeicons="ScissorIcon"
                 phosphor="ScissorsIcon"
                 remixicon="RiScissorsLine"
+                fontawesome="faScissors"
               />
               Cut
             </ContextMenuItem>
@@ -106,6 +108,7 @@ function ContextMenuWithIcons() {
                 hugeicons="ClipboardIcon"
                 phosphor="ClipboardIcon"
                 remixicon="RiClipboardLine"
+                fontawesome="faClipboard"
               />
               Paste
             </ContextMenuItem>
@@ -119,6 +122,7 @@ function ContextMenuWithIcons() {
                 hugeicons="DeleteIcon"
                 phosphor="TrashIcon"
                 remixicon="RiDeleteBinLine"
+                fontawesome="faTrash"
               />
               Delete
             </ContextMenuItem>
@@ -362,6 +366,7 @@ function ContextMenuWithDestructive() {
                 hugeicons="EditIcon"
                 phosphor="PencilIcon"
                 remixicon="RiPencilLine"
+                fontawesome="faPencil"
               />
               Edit
             </ContextMenuItem>
@@ -372,6 +377,7 @@ function ContextMenuWithDestructive() {
                 hugeicons="ShareIcon"
                 phosphor="ShareIcon"
                 remixicon="RiShareLine"
+                fontawesome="faShareNodes"
               />
               Share
             </ContextMenuItem>
@@ -385,6 +391,7 @@ function ContextMenuWithDestructive() {
                 hugeicons="Archive02Icon"
                 phosphor="ArchiveIcon"
                 remixicon="RiArchiveLine"
+                fontawesome="faBoxArchive"
               />
               Archive
             </ContextMenuItem>
@@ -395,6 +402,7 @@ function ContextMenuWithDestructive() {
                 hugeicons="DeleteIcon"
                 phosphor="TrashIcon"
                 remixicon="RiDeleteBinLine"
+                fontawesome="faTrash"
               />
               Delete
             </ContextMenuItem>
@@ -489,6 +497,7 @@ function ContextMenuInDialog() {
                     hugeicons="CopyIcon"
                     phosphor="CopyIcon"
                     remixicon="RiFileCopyLine"
+                    fontawesome="faCopy"
                   />
                   Copy
                 </ContextMenuItem>
@@ -499,6 +508,7 @@ function ContextMenuInDialog() {
                     hugeicons="ScissorIcon"
                     phosphor="ScissorsIcon"
                     remixicon="RiScissorsLine"
+                    fontawesome="faScissors"
                   />
                   Cut
                 </ContextMenuItem>
@@ -509,6 +519,7 @@ function ContextMenuInDialog() {
                     hugeicons="ClipboardIcon"
                     phosphor="ClipboardIcon"
                     remixicon="RiClipboardLine"
+                    fontawesome="faClipboard"
                   />
                   Paste
                 </ContextMenuItem>
@@ -537,6 +548,7 @@ function ContextMenuInDialog() {
                     hugeicons="DeleteIcon"
                     phosphor="TrashIcon"
                     remixicon="RiDeleteBinLine"
+                    fontawesome="faTrash"
                   />
                   Delete
                 </ContextMenuItem>
@@ -570,6 +582,7 @@ function ContextMenuWithInset() {
                 hugeicons="CopyIcon"
                 phosphor="CopyIcon"
                 remixicon="RiFileCopyLine"
+                fontawesome="faCopy"
               />
               Copy
             </ContextMenuItem>
@@ -580,6 +593,7 @@ function ContextMenuWithInset() {
                 hugeicons="ScissorIcon"
                 phosphor="ScissorsIcon"
                 remixicon="RiScissorsLine"
+                fontawesome="faScissors"
               />
               Cut
             </ContextMenuItem>

@@ -27,6 +27,7 @@ const data = {
           hugeicons="CommandIcon"
           phosphor="CommandIcon"
           remixicon="RiCommandLine"
+          fontawesome="faTerminal"
         />
       ),
       plan: "Enterprise",
@@ -40,6 +41,7 @@ const data = {
           hugeicons="AudioWave01Icon"
           phosphor="WaveformIcon"
           remixicon="RiPulseLine"
+          fontawesome="faWaveSquare"
         />
       ),
       plan: "Startup",
@@ -53,6 +55,7 @@ const data = {
           hugeicons="CommandIcon"
           phosphor="CommandIcon"
           remixicon="RiCommandLine"
+          fontawesome="faTerminal"
         />
       ),
       plan: "Free",
@@ -69,6 +72,7 @@ const data = {
           hugeicons="SearchIcon"
           phosphor="MagnifyingGlassIcon"
           remixicon="RiSearchLine"
+          fontawesome="faMagnifyingGlass"
         />
       ),
     },
@@ -82,6 +86,7 @@ const data = {
           hugeicons="SparklesIcon"
           phosphor="SparkleIcon"
           remixicon="RiSparklingLine"
+          fontawesome="faStar"
         />
       ),
     },
@@ -95,6 +100,7 @@ const data = {
           hugeicons="HomeIcon"
           phosphor="HouseIcon"
           remixicon="RiHomeLine"
+          fontawesome="faHouse"
         />
       ),
       isActive: true,
@@ -109,6 +115,7 @@ const data = {
           hugeicons="InboxIcon"
           phosphor="TrayIcon"
           remixicon="RiInboxLine"
+          fontawesome="faInbox"
         />
       ),
       badge: "10",
@@ -125,6 +132,7 @@ const data = {
           hugeicons="CalendarIcon"
           phosphor="CalendarIcon"
           remixicon="RiCalendarLine"
+          fontawesome="faCalendar"
         />
       ),
     },
@@ -138,6 +146,7 @@ const data = {
           hugeicons="Settings05Icon"
           phosphor="GearIcon"
           remixicon="RiSettingsLine"
+          fontawesome="faSliders"
         />
       ),
     },
@@ -151,6 +160,7 @@ const data = {
           hugeicons="CubeIcon"
           phosphor="CubeIcon"
           remixicon="RiBox3Line"
+          fontawesome="faCubesStacked"
         />
       ),
     },
@@ -164,6 +174,7 @@ const data = {
           hugeicons="Delete02Icon"
           phosphor="TrashIcon"
           remixicon="RiDeleteBinLine"
+          fontawesome="faTrashCan"
         />
       ),
     },
@@ -177,6 +188,7 @@ const data = {
           hugeicons="MessageQuestionIcon"
           phosphor="ChatCircleIcon"
           remixicon="RiQuestionLine"
+          fontawesome="faCommentDots"
         />
       ),
     },

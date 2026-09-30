@@ -281,6 +281,7 @@ function SidebarTrigger({
         hugeicons="SidebarLeftIcon"
         phosphor="SidebarIcon"
         remixicon="RiSideBarLine"
+        fontawesome="faTableColumns"
         className="cn-rtl-flip"
       />
       <span className="sr-only">Toggle Sidebar</span>

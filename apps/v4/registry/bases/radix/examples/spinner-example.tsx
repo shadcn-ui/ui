@@ -137,6 +137,7 @@ function SpinnerInEmpty() {
                 hugeicons="ArrowRight02Icon"
                 phosphor="ArrowRightIcon"
                 remixicon="RiArrowRightLine"
+                fontawesome="faArrowRight"
               />
             </a>
           </Button>

@@ -24,6 +24,7 @@ export function FrontDoor() {
               hugeicons="SquareLock02Icon"
               phosphor="LockKeyIcon"
               remixicon="RiLockLine"
+              fontawesome="faLock"
               className="size-4"
             />
           </div>

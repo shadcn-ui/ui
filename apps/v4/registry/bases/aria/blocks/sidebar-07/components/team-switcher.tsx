@@ -54,6 +54,7 @@ export function TeamSwitcher({
               hugeicons="UnfoldMoreIcon"
               phosphor="CaretUpDownIcon"
               remixicon="RiArrowUpDownLine"
+              fontawesome="faUpDown"
               className="ml-auto"
             />
           </SidebarMenuButton>
@@ -90,6 +91,7 @@ export function TeamSwitcher({
                     hugeicons="PlusSignIcon"
                     phosphor="PlusIcon"
                     remixicon="RiAddLine"
+                    fontawesome="faPlus"
                     className="size-4"
                   />
                 </div>

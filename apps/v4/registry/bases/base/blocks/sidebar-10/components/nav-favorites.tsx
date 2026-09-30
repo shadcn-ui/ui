@@ -54,6 +54,7 @@ export function NavFavorites({
                   hugeicons="MoreHorizontalCircle01Icon"
                   phosphor="DotsThreeOutlineIcon"
                   remixicon="RiMoreLine"
+                  fontawesome="faEllipsis"
                 />
                 <span className="sr-only">More</span>
               </DropdownMenuTrigger>
@@ -70,6 +71,7 @@ export function NavFavorites({
                       hugeicons="StarOffIcon"
                       phosphor="StarIcon"
                       remixicon="RiStarOffLine"
+                      fontawesome="faStarHalfStroke"
                       className="text-muted-foreground"
                     />
                     <span>Remove from Favorites</span>
@@ -84,6 +86,7 @@ export function NavFavorites({
                       hugeicons="LinkIcon"
                       phosphor="LinkIcon"
                       remixicon="RiLinksLine"
+                      fontawesome="faLink"
                       className="text-muted-foreground"
                     />
                     <span>Copy Link</span>
@@ -95,6 +98,7 @@ export function NavFavorites({
                       hugeicons="ArrowUpRightIcon"
                       phosphor="ArrowUpRightIcon"
                       remixicon="RiArrowRightUpLine"
+                      fontawesome="faArrowUpRightFromSquare"
                       className="text-muted-foreground"
                     />
                     <span>Open in New Tab</span>
@@ -107,6 +111,7 @@ export function NavFavorites({
                       hugeicons="Delete02Icon"
                       phosphor="TrashIcon"
                       remixicon="RiDeleteBinLine"
+                      fontawesome="faTrashCan"
                       className="text-muted-foreground"
                     />
                     <span>Delete</span>
@@ -124,6 +129,7 @@ export function NavFavorites({
               hugeicons="MoreHorizontalCircle01Icon"
               phosphor="DotsThreeOutlineIcon"
               remixicon="RiMoreLine"
+              fontawesome="faEllipsis"
             />
             <span>More</span>
           </SidebarMenuButton>

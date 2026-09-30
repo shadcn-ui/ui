@@ -259,6 +259,7 @@ function MenubarWithIcons() {
                 hugeicons="FileIcon"
                 phosphor="FileIcon"
                 remixicon="RiFileLine"
+                fontawesome="faFile"
               />
               New File <MenubarShortcut>⌘N</MenubarShortcut>
             </MenubarItem>
@@ -269,6 +270,7 @@ function MenubarWithIcons() {
                 hugeicons="FolderIcon"
                 phosphor="FolderIcon"
                 remixicon="RiFolderLine"
+                fontawesome="faFolder"
               />
               Open Folder
             </MenubarItem>
@@ -280,6 +282,7 @@ function MenubarWithIcons() {
                 hugeicons="FloppyDiskIcon"
                 phosphor="FloppyDiskIcon"
                 remixicon="RiSaveLine"
+                fontawesome="faFloppyDisk"
               />
               Save <MenubarShortcut>⌘S</MenubarShortcut>
             </MenubarItem>
@@ -296,6 +299,7 @@ function MenubarWithIcons() {
                   hugeicons="DashedLineCircleIcon"
                   phosphor="CircleDashedIcon"
                   remixicon="RiLoaderLine"
+                  fontawesome="faCircle"
                 />
                 Settings
               </MenubarItem>
@@ -306,6 +310,7 @@ function MenubarWithIcons() {
                   hugeicons="DashedLineCircleIcon"
                   phosphor="CircleDashedIcon"
                   remixicon="RiLoaderLine"
+                  fontawesome="faCircle"
                 />
                 Help
               </MenubarItem>
@@ -317,6 +322,7 @@ function MenubarWithIcons() {
                   hugeicons="DashedLineCircleIcon"
                   phosphor="CircleDashedIcon"
                   remixicon="RiLoaderLine"
+                  fontawesome="faCircle"
                 />
                 Delete
               </MenubarItem>
@@ -386,6 +392,7 @@ function MenubarFormat() {
                 hugeicons="TextBoldIcon"
                 phosphor="TextBIcon"
                 remixicon="RiBold"
+                fontawesome="faBold"
               />
               Bold <MenubarShortcut>⌘B</MenubarShortcut>
             </MenubarItem>
@@ -396,6 +403,7 @@ function MenubarFormat() {
                 hugeicons="TextItalicIcon"
                 phosphor="TextItalicIcon"
                 remixicon="RiItalic"
+                fontawesome="faItalic"
               />
               Italic <MenubarShortcut>⌘I</MenubarShortcut>
             </MenubarItem>
@@ -406,6 +414,7 @@ function MenubarFormat() {
                 hugeicons="TextUnderlineIcon"
                 phosphor="TextUnderlineIcon"
                 remixicon="RiUnderline"
+                fontawesome="faUnderline"
               />
               Underline <MenubarShortcut>⌘U</MenubarShortcut>
             </MenubarItem>
@@ -444,6 +453,7 @@ function MenubarInsert() {
                   hugeicons="ImageIcon"
                   phosphor="ImageIcon"
                   remixicon="RiImageLine"
+                  fontawesome="faImage"
                 />
                 Media
               </MenubarSubTrigger>
@@ -461,6 +471,7 @@ function MenubarInsert() {
                 hugeicons="LinkIcon"
                 phosphor="LinkIcon"
                 remixicon="RiLinksLine"
+                fontawesome="faLink"
               />
               Link <MenubarShortcut>⌘K</MenubarShortcut>
             </MenubarItem>
@@ -471,6 +482,7 @@ function MenubarInsert() {
                 hugeicons="TableIcon"
                 phosphor="TableIcon"
                 remixicon="RiTableLine"
+                fontawesome="faTable"
               />
               Table
             </MenubarItem>
@@ -486,6 +498,7 @@ function MenubarInsert() {
                 hugeicons="SearchIcon"
                 phosphor="MagnifyingGlassIcon"
                 remixicon="RiSearchLine"
+                fontawesome="faMagnifyingGlass"
               />
               Find & Replace <MenubarShortcut>⌘F</MenubarShortcut>
             </MenubarItem>
@@ -496,6 +509,7 @@ function MenubarInsert() {
                 hugeicons="Tick02Icon"
                 phosphor="CheckIcon"
                 remixicon="RiCheckLine"
+                fontawesome="faCheck"
               />
               Spell Check
             </MenubarItem>
@@ -520,6 +534,7 @@ function MenubarDestructive() {
                 hugeicons="FileIcon"
                 phosphor="FileIcon"
                 remixicon="RiFileLine"
+                fontawesome="faFile"
               />
               New File <MenubarShortcut>⌘N</MenubarShortcut>
             </MenubarItem>
@@ -530,6 +545,7 @@ function MenubarDestructive() {
                 hugeicons="FolderIcon"
                 phosphor="FolderIcon"
                 remixicon="RiFolderLine"
+                fontawesome="faFolder"
               />
               Open Folder
             </MenubarItem>
@@ -541,6 +557,7 @@ function MenubarDestructive() {
                 hugeicons="DeleteIcon"
                 phosphor="TrashIcon"
                 remixicon="RiDeleteBinLine"
+                fontawesome="faTrash"
               />
               Delete File <MenubarShortcut>⌘⌫</MenubarShortcut>
             </MenubarItem>
@@ -556,6 +573,7 @@ function MenubarDestructive() {
                 hugeicons="UserIcon"
                 phosphor="UserIcon"
                 remixicon="RiUserLine"
+                fontawesome="faUser"
               />
               Profile
             </MenubarItem>
@@ -566,6 +584,7 @@ function MenubarDestructive() {
                 hugeicons="SettingsIcon"
                 phosphor="GearIcon"
                 remixicon="RiSettingsLine"
+                fontawesome="faGear"
               />
               Settings
             </MenubarItem>
@@ -577,6 +596,7 @@ function MenubarDestructive() {
                 hugeicons="LogoutIcon"
                 phosphor="SignOutIcon"
                 remixicon="RiLogoutBoxLine"
+                fontawesome="faRightFromBracket"
               />
               Sign out
             </MenubarItem>
@@ -588,6 +608,7 @@ function MenubarDestructive() {
                 hugeicons="DeleteIcon"
                 phosphor="TrashIcon"
                 remixicon="RiDeleteBinLine"
+                fontawesome="faTrash"
               />
               Delete
             </MenubarItem>
@@ -623,6 +644,7 @@ function MenubarInDialog() {
                     hugeicons="CopyIcon"
                     phosphor="CopyIcon"
                     remixicon="RiFileCopyLine"
+                    fontawesome="faCopy"
                   />
                   Copy
                 </MenubarItem>
@@ -633,6 +655,7 @@ function MenubarInDialog() {
                     hugeicons="ScissorIcon"
                     phosphor="ScissorsIcon"
                     remixicon="RiScissorsLine"
+                    fontawesome="faScissors"
                   />
                   Cut
                 </MenubarItem>
@@ -643,6 +666,7 @@ function MenubarInDialog() {
                     hugeicons="ClipboardIcon"
                     phosphor="ClipboardIcon"
                     remixicon="RiClipboardLine"
+                    fontawesome="faClipboard"
                   />
                   Paste
                 </MenubarItem>
@@ -665,6 +689,7 @@ function MenubarInDialog() {
                     hugeicons="DeleteIcon"
                     phosphor="TrashIcon"
                     remixicon="RiDeleteBinLine"
+                    fontawesome="faTrash"
                   />
                   Delete
                 </MenubarItem>
@@ -708,6 +733,7 @@ function MenubarWithInset() {
                   hugeicons="CopyIcon"
                   phosphor="CopyIcon"
                   remixicon="RiFileCopyLine"
+                  fontawesome="faCopy"
                 />
                 Copy
               </MenubarItem>
@@ -718,6 +744,7 @@ function MenubarWithInset() {
                   hugeicons="ScissorIcon"
                   phosphor="ScissorsIcon"
                   remixicon="RiScissorsLine"
+                  fontawesome="faScissors"
                 />
                 Cut
               </MenubarItem>

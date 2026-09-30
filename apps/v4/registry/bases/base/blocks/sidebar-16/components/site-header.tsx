@@ -32,6 +32,7 @@ export function SiteHeader() {
             hugeicons="SidebarLeftIcon"
             phosphor="SidebarIcon"
             remixicon="RiLayoutLeftLine"
+            fontawesome="faTableColumns"
           />
         </Button>
         <Separator

@@ -46,6 +46,7 @@ export function Calendars({
                   hugeicons="ArrowRight01Icon"
                   phosphor="CaretRightIcon"
                   remixicon="RiArrowRightSLine"
+                  fontawesome="faChevronRight"
                   className="ml-auto transition-transform group-data-expanded/collapsible:rotate-90"
                 />
               </SidebarGroupLabel>
@@ -65,6 +66,7 @@ export function Calendars({
                               hugeicons="Tick02Icon"
                               phosphor="CheckIcon"
                               remixicon="RiCheckLine"
+                              fontawesome="faCheck"
                               className="hidden size-3 group-data-[active=true]/calendar-item:block"
                             />
                           </div>
