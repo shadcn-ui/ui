@@ -7,6 +7,8 @@ import { describe, expect, it } from "vitest"
 
 import {
   createConfig,
+  findCommonRoot,
+  findPackageRoot,
   getBase,
   getConfig,
   getRawConfig,
@@ -527,7 +529,7 @@ describe("getWorkspaceConfig", () => {
 
       await expect(getWorkspaceConfig(config)).rejects.toThrowError(
         new RegExp(
-          "Could not resolve the following aliases.*packages/ui.*components, ui, lib, hooks, utils",
+          "Could not resolve the following aliases.*packages[\\\\/]ui.*components, ui, lib, hooks, utils",
           "s"
         )
       )
@@ -553,13 +555,70 @@ describe("getWorkspaceConfig", () => {
 
       await expect(getWorkspaceConfig(config)).rejects.toThrowError(
         new RegExp(
-          "Could not load the workspace config.*packages/ui.*components.json.*path aliases or package imports",
+          "Could not load the workspace config.*packages[\\\\/]ui.*components.json.*path aliases or package imports",
           "s"
         )
       )
     } finally {
       await fs.remove(tempDir)
     }
+  })
+})
+
+describe("findCommonRoot", () => {
+  it("finds the common root of two paths", () => {
+    const root = path.resolve("/tmp/monorepo")
+
+    expect(
+      findCommonRoot(
+        path.join(root, "apps", "web"),
+        path.join(root, "packages", "ui", "src", "components")
+      )
+    ).toBe(root)
+  })
+
+  it("finds the common root when the resolved path uses posix separators", () => {
+    // tsconfig-paths returns the matched portion with posix separators, so on
+    // Windows the resolved path is a mix of both.
+    const root = path.resolve("/tmp/monorepo")
+    const cwd = path.join(root, "apps", "web")
+
+    expect(findCommonRoot(cwd, `${cwd}/src/components`)).toBe(cwd)
+  })
+})
+
+describe("findPackageRoot", () => {
+  const fixtureRoot = getFixturesDir("frameworks/vite-monorepo-imports")
+
+  it("finds the workspace package that owns a resolved path", async () => {
+    expect(
+      await findPackageRoot(
+        path.join(fixtureRoot, "apps", "web"),
+        path.join(fixtureRoot, "packages", "ui", "src", "components")
+      )
+    ).toBe(path.join(fixtureRoot, "packages", "ui"))
+  })
+
+  it("finds the workspace package when the resolved path uses posix separators", async () => {
+    // fast-glob always reports posix paths, so the relative path built with
+    // `path` has to be normalized before the two are compared.
+    const uiRoot = path.join(fixtureRoot, "packages", "ui")
+
+    expect(
+      await findPackageRoot(
+        path.join(fixtureRoot, "apps", "web"),
+        `${uiRoot}/src/components`
+      )
+    ).toBe(uiRoot)
+  })
+
+  it("returns null when no workspace package owns the resolved path", async () => {
+    expect(
+      await findPackageRoot(
+        path.join(fixtureRoot, "apps", "web"),
+        path.join(fixtureRoot, "does-not-exist", "src")
+      )
+    ).toBe(null)
   })
 })
 
