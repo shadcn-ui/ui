@@ -122,6 +122,10 @@ jobs:
       - name: Build packages
         run: pnpm build:packages
 
+      # Fails if a public export of shadcn is removed or changes kind.
+      - name: Check shadcn exports
+        run: node packages/shadcn/scripts/check-exports.mjs
+
       # The generated styles under apps/v4/styles are gitignored, and the v4
       # typecheck imports them. Build them before typechecking.
       - name: Build registry styles

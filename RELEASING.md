@@ -1,12 +1,13 @@
 # Releasing
 
-This monorepo publishes three packages independently with [Changesets](https://github.com/changesets/changesets):
+This monorepo publishes four packages independently with [Changesets](https://github.com/changesets/changesets):
 
 - **`shadcn`** — the CLI and tooling.
+- **`@shadcn/registry`** — the registry engine used by the CLI.
 - **`@shadcn/react`** — headless React primitives.
 - **`@shadcn/helpers`** — small helpers for developing apps.
 
-They version on their own lines. A change to one never bumps the other unless a changeset says so.
+They version on their own lines. A change to one never bumps the other unless a changeset says so. The exception is `@shadcn/registry`: `shadcn` depends on an exact version of it, so every `@shadcn/registry` release also bumps `shadcn` (patch) to pick it up.
 
 ## 1. Add a changeset
 
