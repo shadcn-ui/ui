@@ -1119,6 +1119,21 @@
     "logo": "<svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'><rect fill='var(--foreground)' width='32' height='32' rx='6.4'/><rect x='8' y='8' width='16' height='16' fill='var(--background)'/></svg>"
   },
   {
+    "name": "@jpmarques",
+    "homepage": "https://piemenu.jpmarqu.es",
+    "url": "https://piemenu.jpmarqu.es/r/{name}.json",
+    "description": "A radial pie menu for React. Press, drag toward an item, and release. Full keyboard support, ARIA menu roles, and animations.",
+    "author": "João P. Marques",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='var(--foreground)'><path d='M14 6A12 12 0 1 0 26 18H14Z'/><path d='M18 2A12 12 0 0 1 30 14H18Z' opacity='.5'/></svg>"
+  },
+  {
+    "name": "@json-view-cn",
+    "homepage": "https://json-view-cn.vercel.app",
+    "url": "https://json-view-cn.vercel.app/r/{name}.json",
+    "description": "A collapsible, syntax-highlighted JSON tree viewer component for React, built with Base UI",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='var(--foreground, #0a0a0a)' stroke-linecap='round' stroke-linejoin='round'><g stroke-width='2.2'><path d='M12.5 6.5c-2.2 0-2.2 2.2-2.2 3.3v3.9c0 1.1-1.1 1.7-2.2 2.3 1.1.6 2.2 1.2 2.2 2.3v3.9c0 1.1 0 3.3 2.2 3.3'/><path d='M19.5 6.5c2.2 0 2.2 2.2 2.2 3.3v3.9c0 1.1 1.1 1.7 2.2 2.3-1.1.6-2.2 1.2-2.2 2.3v3.9c0 1.1 0 3.3-2.2 3.3'/></g><g stroke-width='2.4'><path d='M13.4 12.8h5.2'/><path d='M15.6 19.2h3'/></g></svg>"
+  },
+  {
     "name": "@kanpeki",
     "homepage": "https://kanpeki.vercel.app",
     "url": "https://kanpeki.vercel.app/r/{name}.json",
@@ -1646,6 +1661,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='101.782 121.756 123.284 123.284'><path fill='#0C1924' d='M222 386V589H331C400 589 442 550 442 487C442 426 400 386 331 386ZM348 267C488 267 581 359 581 488C581 616 488 709 348 709H83V0H221V267Z' transform='translate(100.000 238.000) scale(0.156000 -0.156000)'/><circle cx='200' cy='225.5' r='13.9' fill='#236AA4'/></svg>"
   },
   {
+    "name": "@pastaui",
+    "homepage": "https://pastaui.com",
+    "url": "https://pastaui.com/r/{name}.json",
+    "description": "Open-source React components for AI agent interfaces: conversations, tool calls, approvals, background runs, and rich outputs.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'><path fill='var(--foreground)' d='M25 6h69v69L75 94H6V25L25 6Z'/><path fill='var(--background)' d='M29 23h29c13.8 0 22 10.6 22 23.5S71.8 69 58 69H44v14H29V23Z'/></svg>"
+  },
+  {
     "name": "@payload-components",
     "homepage": "https://www.payload-components.xyz",
     "url": "https://www.payload-components.xyz/r/{name}.json",
@@ -2075,6 +2097,13 @@
     "logo": "<svg width='55' height='55' viewBox='0 0 55 55' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='54.2938' height='54.0121' rx='27.006' fill='url(#paint0_radial_46_2)'/><defs><radialGradient id='paint0_radial_46_2' cx='0' cy='0' r='1' gradientTransform='matrix(54.2938 54.0121 -54.2938 54.0121 0 0)' gradientUnits='userSpaceOnUse'><stop offset='0.352001' stop-color='#090909'/><stop offset='0.591494' stop-color='#2770EA'/><stop offset='0.793825' stop-color='#06C4F8'/><stop offset='0.972489' stop-color='#0CBFF9'/></radialGradient></defs></svg>"
   },
   {
+    "name": "@skrewww",
+    "homepage": "https://skrewww.com",
+    "url": "https://skrewww.com/r/{name}.json",
+    "description": "Open-source React and TypeScript design system with a token-driven foundation, live documentation, and machine-readable component contracts for coding agents.",
+    "logo": "<svg width='170' height='170' viewBox='0 0 170 170' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M0 76.8C0 49.9175 0 36.4762 5.23169 26.2085C9.83361 17.1767 17.1767 9.83361 26.2085 5.23169C36.4762 0 49.9175 0 76.8 0H93.2C120.083 0 133.524 0 143.792 5.23169C152.823 9.83361 160.166 17.1767 164.768 26.2085C170 36.4762 170 49.9175 170 76.8V93.2C170 120.083 170 133.524 164.768 143.792C160.166 152.823 152.823 160.166 143.792 164.768C133.524 170 120.083 170 93.2 170H76.8C49.9175 170 36.4762 170 26.2085 164.768C17.1767 160.166 9.83361 152.823 5.23169 143.792C0 133.524 0 120.083 0 93.2V76.8Z' fill='#6C4CF2'/><path d='M80.5 36L32 84.5L80.5 133' stroke='white' stroke-width='7'/><path d='M90.5 36L139 84.5L90.5 133' stroke='white' stroke-width='7'/><path d='M85.5 107.5L85.5 61.5' stroke='white' stroke-width='7'/><path d='M62.505 84.495L108.505 84.495' stroke='white' stroke-width='7'/></svg>"
+  },
+  {
     "name": "@slide-cn",
     "homepage": "https://slide-cn.com",
     "url": "https://slide-cn.com/r/{name}.json",
@@ -2199,6 +2228,14 @@
     "url": "https://starseam.astroicers.link/r/{name}.json",
     "description": "A registry modelled on the star-riveted helmet: plates on a lacquer ground, rivets only on real seams, console/report as two materials, ink-only code highlighting, and first-class CJK typography.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'><circle cx='32' cy='32' r='28' stroke='var(--foreground)' stroke-opacity='.55' stroke-width='2'/><g stroke='var(--foreground)' stroke-opacity='.55' stroke-width='1.6'><path d='M32 10v14M32 40v14M10 32h14M40 32h14M16.4 16.4l9.9 9.9M37.7 37.7l9.9 9.9M47.6 16.4l-9.9 9.9M26.3 37.7l-9.9 9.9'/></g><g fill='var(--foreground)'><circle cx='32' cy='13' r='2.6'/><circle cx='51' cy='32' r='2.6'/><circle cx='32' cy='51' r='2.6'/><circle cx='13' cy='32' r='2.6'/><circle cx='45.4' cy='18.6' r='1.8'/><circle cx='45.4' cy='45.4' r='1.8'/><circle cx='18.6' cy='45.4' r='1.8'/><circle cx='18.6' cy='18.6' r='1.8'/></g><circle cx='32' cy='32' r='6' stroke='var(--foreground)' stroke-width='2.4'/><circle cx='32' cy='32' r='2.4' fill='var(--foreground)'/></svg>"
+  },
+  {
+    "name": "@stealth",
+    "homepage": "https://www.stealth.pm/ui",
+    "url": "https://www.stealth.pm/r/{name}.json",
+    "description": "Components that feel alive. A micro-interaction-rich React library: rich motion on every interaction, production-ready with full keyboard, screen reader and reduced-motion support.",
+    "author": "Paragon",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='#0c0c0b'/><g transform='translate(0.52 1.77) scale(1.29)'><path d='M12 4.8 3.45 15.75 6.6 16.65 8.13 13.95 9.93 17.73 12 14.85Z' fill='#ecebe7'/><path d='M12 4.8 20.55 15.75 17.4 16.65 15.87 13.95 14.07 17.73 12 14.85Z' fill='#ecebe7' opacity='.55'/></g></svg>"
   },
   {
     "name": "@stepper",
@@ -2416,6 +2453,14 @@
     "url": "https://raw.githubusercontent.com/Shrootiiii/ui/main/r/{name}.json",
     "description": "Free React and Tailwind components with Framer Motion interaction states and Tailwind CSS styling: buttons, badge, text field, toggle switch and breadcrumbs.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='#4D6B34'/><rect x='6' y='6' width='12' height='12' rx='3.5' fill='none' stroke='#F5F3EF' stroke-width='2'/><rect x='17' y='17' width='9' height='9' rx='2.5' fill='#F5F3EF'/></svg>"
+  },
+  {
+    "name": "@uiarc",
+    "homepage": "https://uiarc.dev",
+    "url": "https://uiarc.dev/r/{name}.json",
+    "description": "React components and blocks with motion built in. Source you own, with Markdown docs and llms.txt so AI tools install them correctly.",
+    "author": "Elia Kuratli",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='var(--foreground)' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'><path d='M9 48V29C9 15 19 7 32 7s23 8 23 22v19'/><path d='M20 48V31c0-8 5-13 12-13s12 5 12 13v17'/><path d='M32 38v10'/></svg>"
   },
   {
     "name": "@uicapsule",
