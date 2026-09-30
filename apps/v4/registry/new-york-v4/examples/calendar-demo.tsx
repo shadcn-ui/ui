@@ -12,6 +12,7 @@ export default function CalendarDemo() {
       mode="single"
       selected={date}
       onSelect={setDate}
+      defaultMonth={date}
       className="rounded-md border shadow-sm"
       captionLayout="dropdown"
     />
