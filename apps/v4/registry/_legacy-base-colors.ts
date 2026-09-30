@@ -781,7 +781,6 @@ export const baseColorsV4 = {
       "chart-3": "oklch(0.398 0.07 227.392)", // --color-cyan-900
       "chart-4": "oklch(0.828 0.189 84.429)", // --color-amber-400
       "chart-5": "oklch(0.769 0.188 70.08)", // --color-amber-500
-      radius: "0.625rem",
       sidebar: "oklch(0.985 0.001 106.423)", // --color-stone-50
       "sidebar-foreground": "oklch(0.147 0.004 49.25)", // --color-stone-950
       "sidebar-primary": "oklch(0.216 0.006 56.043)", // --color-stone-900
@@ -850,7 +849,6 @@ export const baseColorsV4 = {
       "chart-3": "oklch(0.398 0.07 227.392)", // --color-cyan-900
       "chart-4": "oklch(0.828 0.189 84.429)", // --color-amber-400
       "chart-5": "oklch(0.769 0.188 70.08)", // --color-amber-500
-      radius: "0.625rem",
       sidebar: "oklch(0.985 0 0)", // --color-zinc-50
       "sidebar-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950
       "sidebar-primary": "oklch(0.21 0.006 285.885)", // --color-zinc-900
@@ -919,7 +917,6 @@ export const baseColorsV4 = {
       "chart-3": "oklch(0.398 0.07 227.392)", // --color-cyan-900
       "chart-4": "oklch(0.828 0.189 84.429)", // --color-amber-400
       "chart-5": "oklch(0.769 0.188 70.08)", // --color-amber-500
-      radius: "0.625rem",
       sidebar: "oklch(0.985 0 0)", // --color-neutral-50
       "sidebar-foreground": "oklch(0.145 0 0)", // --color-neutral-950
       "sidebar-primary": "oklch(0.205 0 0)", // --color-neutral-900
@@ -988,7 +985,6 @@ export const baseColorsV4 = {
       "chart-3": "oklch(0.398 0.07 227.392)", // --color-cyan-900
       "chart-4": "oklch(0.828 0.189 84.429)", // --color-amber-400
       "chart-5": "oklch(0.769 0.188 70.08)", // --color-amber-500
-      radius: "0.625rem",
       sidebar: "oklch(0.985 0.002 247.839)", // --color-gray-50
       "sidebar-foreground": "oklch(0.13 0.028 261.692)", // --color-gray-950
       "sidebar-primary": "oklch(0.21 0.034 264.665)", // --color-gray-900
@@ -1057,7 +1053,6 @@ export const baseColorsV4 = {
       "chart-3": "oklch(0.398 0.07 227.392)", // --color-cyan-900
       "chart-4": "oklch(0.828 0.189 84.429)", // --color-amber-400
       "chart-5": "oklch(0.769 0.188 70.08)", // --color-amber-500
-      radius: "0.625rem",
       sidebar: "oklch(0.984 0.003 247.858)", // --color-slate-50
       "sidebar-foreground": "oklch(0.129 0.042 264.695)", // --color-slate-950
       "sidebar-primary": "oklch(0.208 0.042 265.755)", // --color-slate-900
@@ -1129,7 +1124,6 @@ export const baseColorsOKLCH = {
       "chart-3": "oklch(0.398 0.07 227.392)", // --color-cyan-900
       "chart-4": "oklch(0.828 0.189 84.429)", // --color-amber-400
       "chart-5": "oklch(0.769 0.188 70.08)", // --color-amber-500
-      radius: "0.625rem",
       sidebar: "oklch(0.985 0 0)", // --color-neutral-50
       "sidebar-foreground": "oklch(0.145 0 0)", // --color-neutral-950
       "sidebar-primary": "oklch(0.205 0 0)", // --color-neutral-900
@@ -1198,7 +1192,6 @@ export const baseColorsOKLCH = {
       "chart-3": "oklch(0.398 0.07 227.392)", // --color-cyan-900
       "chart-4": "oklch(0.828 0.189 84.429)", // --color-amber-400
       "chart-5": "oklch(0.769 0.188 70.08)", // --color-amber-500
-      radius: "0.625rem",
       sidebar: "oklch(0.985 0 0)", // --color-neutral-50
       "sidebar-foreground": "oklch(0.145 0 0)", // --color-neutral-950
       "sidebar-primary": "oklch(0.205 0 0)", // --color-neutral-900
