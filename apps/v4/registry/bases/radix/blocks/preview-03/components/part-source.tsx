@@ -41,6 +41,7 @@ export function PartSource({
             hugeicons="LinkSquare02Icon"
             phosphor="ArrowSquareOutIcon"
             remixicon="RiExternalLinkLine"
+            gravityui="ArrowUpRightFromSquare"
             className="size-4"
           />
         </span>
@@ -76,6 +77,7 @@ export function PartSource({
             hugeicons="FileSearchIcon"
             phosphor="FileSearchIcon"
             remixicon="RiFileSearchLine"
+            gravityui="FileText"
             className="size-4"
           />
         </span>

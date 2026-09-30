@@ -36,6 +36,12 @@ const IconRemixicon = lazy(() =>
   }))
 )
 
+const IconGravityui = lazy(() =>
+  import("@/registry/icons/icon-gravityui").then((mod) => ({
+    default: mod.IconGravityui,
+  }))
+)
+
 // Preload all icon renderer modules so switching libraries is instant.
 // These warm the browser module cache; React.lazy resolves immediately
 // for modules that are already loaded.
@@ -44,6 +50,7 @@ void import("@/registry/icons/icon-tabler")
 void import("@/registry/icons/icon-hugeicons")
 void import("@/registry/icons/icon-phosphor")
 void import("@/registry/icons/icon-remixicon")
+void import("@/registry/icons/icon-gravityui")
 
 export function IconPlaceholder({
   ...props
@@ -69,6 +76,9 @@ export function IconPlaceholder({
       )}
       {iconLibrary === "remixicon" && (
         <IconRemixicon name={iconName} {...props} />
+      )}
+      {iconLibrary === "gravityui" && (
+        <IconGravityui name={iconName} {...props} />
       )}
     </Suspense>
   )

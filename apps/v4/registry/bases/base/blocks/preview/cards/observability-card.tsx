@@ -38,6 +38,7 @@ export function ObservabilityCard() {
             hugeicons="PlusSignIcon"
             phosphor="PlusIcon"
             remixicon="RiAddLine"
+            gravityui="Plus"
             data-icon="inline-end"
           />
         </Button>

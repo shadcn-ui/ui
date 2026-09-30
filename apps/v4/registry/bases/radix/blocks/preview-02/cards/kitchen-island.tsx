@@ -94,6 +94,7 @@ export function KitchenIsland() {
                 hugeicons="Sun03Icon"
                 phosphor="SunIcon"
                 remixicon="RiSunLine"
+                gravityui="Sun"
               />
             </ItemMedia>
             <ItemContent className="flex-row items-center gap-3">
@@ -117,6 +118,7 @@ export function KitchenIsland() {
                 hugeicons="ThermometerWarmIcon"
                 phosphor="ThermometerIcon"
                 remixicon="RiThermometerLine"
+                gravityui="Stethoscope"
               />
             </ItemMedia>
             <ItemContent className="flex-row items-center gap-3">
@@ -139,6 +141,7 @@ export function KitchenIsland() {
                 hugeicons="VolumeHighIcon"
                 phosphor="SpeakerHighIcon"
                 remixicon="RiVolumeUpLine"
+                gravityui="Volume"
               />
             </ItemMedia>
             <ItemContent className="flex-row items-center gap-3">
@@ -161,6 +164,7 @@ export function KitchenIsland() {
                 hugeicons="Clock03Icon"
                 phosphor="TimerIcon"
                 remixicon="RiTimerLine"
+                gravityui="Stopwatch"
               />
             </ItemMedia>
             <ItemContent className="flex-row items-center gap-3">

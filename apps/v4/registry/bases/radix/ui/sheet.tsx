@@ -77,6 +77,7 @@ function SheetContent({
                 hugeicons="Cancel01Icon"
                 phosphor="XIcon"
                 remixicon="RiCloseLine"
+                gravityui="Xmark"
               />
               <span className="sr-only">Close</span>
             </Button>

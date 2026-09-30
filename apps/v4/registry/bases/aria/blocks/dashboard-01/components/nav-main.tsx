@@ -34,6 +34,7 @@ export function NavMain({
                 hugeicons="PlusSignCircleIcon"
                 phosphor="PlusCircleIcon"
                 remixicon="RiAddCircleFill"
+                gravityui="CirclePlus"
               />
               <span>Quick Create</span>
             </SidebarMenuButton>
@@ -48,6 +49,7 @@ export function NavMain({
                 hugeicons="Mail01Icon"
                 phosphor="EnvelopeIcon"
                 remixicon="RiMailLine"
+                gravityui="Envelope"
               />
               <span className="sr-only">Inbox</span>
             </Button>

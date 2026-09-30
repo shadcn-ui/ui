@@ -132,6 +132,7 @@ function ToastClose({
           hugeicons="Cancel01Icon"
           phosphor="XIcon"
           remixicon="RiCloseLine"
+          gravityui="Xmark"
           aria-hidden="true"
         />
       )}
@@ -150,6 +151,7 @@ function ToastIcon({ type }: { type: string | undefined }) {
         hugeicons="CheckmarkCircle02Icon"
         phosphor="CheckCircleIcon"
         remixicon="RiCheckboxCircleLine"
+        gravityui="CircleCheck"
         aria-hidden="true"
       />
     )
@@ -163,6 +165,7 @@ function ToastIcon({ type }: { type: string | undefined }) {
         hugeicons="InformationCircleIcon"
         phosphor="InfoIcon"
         remixicon="RiInformationLine"
+        gravityui="CircleInfo"
         aria-hidden="true"
       />
     )
@@ -176,6 +179,7 @@ function ToastIcon({ type }: { type: string | undefined }) {
         hugeicons="Alert02Icon"
         phosphor="WarningIcon"
         remixicon="RiErrorWarningLine"
+        gravityui="TriangleExclamation"
         aria-hidden="true"
       />
     )
@@ -189,6 +193,7 @@ function ToastIcon({ type }: { type: string | undefined }) {
         hugeicons="MultiplicationSignCircleIcon"
         phosphor="XCircleIcon"
         remixicon="RiCloseCircleLine"
+        gravityui="CircleXmark"
         className="text-destructive"
         aria-hidden="true"
       />
@@ -203,6 +208,7 @@ function ToastIcon({ type }: { type: string | undefined }) {
         hugeicons="Loading03Icon"
         phosphor="SpinnerIcon"
         remixicon="RiLoaderLine"
+        gravityui="ArrowRotateLeft"
         className="animate-spin"
         aria-hidden="true"
       />

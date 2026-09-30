@@ -146,6 +146,7 @@ export function ReasoningChat() {
                 hugeicons="PlusSignIcon"
                 phosphor="PlusIcon"
                 remixicon="RiAddLine"
+                gravityui="Plus"
               />
             </Button>
           </CardAction>

@@ -55,6 +55,7 @@ export function NavMain({
                         hugeicons="ArrowRight01Icon"
                         phosphor="CaretRightIcon"
                         remixicon="RiArrowRightSLine"
+                        gravityui="ChevronRight"
                       />
                       <span className="sr-only">Toggle</span>
                     </SidebarMenuAction>

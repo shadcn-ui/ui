@@ -40,6 +40,7 @@ export default function SidebarInsetExample() {
             hugeicons="Home01Icon"
             phosphor="HouseIcon"
             remixicon="RiHomeLine"
+            gravityui="House"
           />
         ),
         isActive: true,
@@ -64,6 +65,7 @@ export default function SidebarInsetExample() {
             hugeicons="ChartIcon"
             phosphor="ChartLineIcon"
             remixicon="RiLineChartLine"
+            gravityui="ChartLine"
           />
         ),
         items: [
@@ -87,6 +89,7 @@ export default function SidebarInsetExample() {
             hugeicons="ShoppingBag01Icon"
             phosphor="BagIcon"
             remixicon="RiShoppingBagLine"
+            gravityui="ShoppingBag"
           />
         ),
         items: [
@@ -114,6 +117,7 @@ export default function SidebarInsetExample() {
             hugeicons="ShoppingCart01Icon"
             phosphor="ShoppingCartIcon"
             remixicon="RiShoppingCartLine"
+            gravityui="ShoppingCart"
           />
         ),
         items: [
@@ -137,6 +141,7 @@ export default function SidebarInsetExample() {
             hugeicons="File01Icon"
             phosphor="FileIcon"
             remixicon="RiFileLine"
+            gravityui="File"
           />
         ),
       },
@@ -150,6 +155,7 @@ export default function SidebarInsetExample() {
             hugeicons="UserIcon"
             phosphor="UserIcon"
             remixicon="RiUserLine"
+            gravityui="Person"
           />
         ),
       },
@@ -163,6 +169,7 @@ export default function SidebarInsetExample() {
             hugeicons="Settings05Icon"
             phosphor="GearIcon"
             remixicon="RiSettingsLine"
+            gravityui="Gear"
           />
         ),
       },
@@ -178,6 +185,7 @@ export default function SidebarInsetExample() {
             hugeicons="ChartRingIcon"
             phosphor="LifebuoyIcon"
             remixicon="RiLifebuoyLine"
+            gravityui="LifeRing"
           />
         ),
       },
@@ -191,6 +199,7 @@ export default function SidebarInsetExample() {
             hugeicons="SentIcon"
             phosphor="PaperPlaneTiltIcon"
             remixicon="RiSendPlaneLine"
+            gravityui="PaperPlane"
           />
         ),
       },
@@ -230,6 +239,7 @@ export default function SidebarInsetExample() {
                           hugeicons="ArrowRight01Icon"
                           phosphor="CaretRightIcon"
                           remixicon="RiArrowRightSLine"
+                          gravityui="ChevronRight"
                         />
                         <span className="sr-only">Toggle</span>
                       </CollapsibleTrigger>

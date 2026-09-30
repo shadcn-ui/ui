@@ -630,6 +630,7 @@ function MessageAttachment() {
                   hugeicons="FileIcon"
                   phosphor="FileTextIcon"
                   remixicon="RiFileTextLine"
+                  gravityui="FileText"
                 />
               </AttachmentMedia>
               <AttachmentContent>
@@ -650,6 +651,7 @@ function MessageAttachment() {
                     hugeicons="Download01Icon"
                     phosphor="DownloadIcon"
                     remixicon="RiDownloadLine"
+                    gravityui="ArrowDownToLine"
                   />
                 </AttachmentAction>
               </AttachmentActions>
@@ -723,6 +725,7 @@ function MessageAttachmentGroup() {
                     hugeicons="FileIcon"
                     phosphor="FileTextIcon"
                     remixicon="RiFileTextLine"
+                    gravityui="FileText"
                   />
                 </AttachmentMedia>
                 <AttachmentContent>
@@ -743,6 +746,7 @@ function MessageAttachmentGroup() {
                       hugeicons="Download01Icon"
                       phosphor="DownloadIcon"
                       remixicon="RiDownloadLine"
+                      gravityui="ArrowDownToLine"
                     />
                   </AttachmentAction>
                 </AttachmentActions>
@@ -755,6 +759,7 @@ function MessageAttachmentGroup() {
                     hugeicons="Presentation01Icon"
                     phosphor="PresentationIcon"
                     remixicon="RiSlideshowLine"
+                    gravityui="Display"
                   />
                 </AttachmentMedia>
                 <AttachmentContent>
@@ -775,6 +780,7 @@ function MessageAttachmentGroup() {
                       hugeicons="Download01Icon"
                       phosphor="DownloadIcon"
                       remixicon="RiDownloadLine"
+                      gravityui="ArrowDownToLine"
                     />
                   </AttachmentAction>
                 </AttachmentActions>
@@ -787,6 +793,7 @@ function MessageAttachmentGroup() {
                     hugeicons="File01Icon"
                     phosphor="FileZipIcon"
                     remixicon="RiFileZipLine"
+                    gravityui="FileZipper"
                   />
                 </AttachmentMedia>
                 <AttachmentContent>
@@ -807,6 +814,7 @@ function MessageAttachmentGroup() {
                       hugeicons="Download01Icon"
                       phosphor="DownloadIcon"
                       remixicon="RiDownloadLine"
+                      gravityui="ArrowDownToLine"
                     />
                   </AttachmentAction>
                 </AttachmentActions>
@@ -843,6 +851,7 @@ function MessageActions() {
                   hugeicons="Copy01Icon"
                   phosphor="CopyIcon"
                   remixicon="RiFileCopyLine"
+                  gravityui="Copy"
                 />
               </Button>
               <Button
@@ -857,6 +866,7 @@ function MessageActions() {
                   hugeicons="ReloadIcon"
                   phosphor="ArrowClockwiseIcon"
                   remixicon="RiRefreshLine"
+                  gravityui="ArrowRotateLeft"
                 />
               </Button>
             </MessageFooter>
@@ -892,6 +902,7 @@ function MessageActions() {
                   hugeicons="Copy01Icon"
                   phosphor="CopyIcon"
                   remixicon="RiFileCopyLine"
+                  gravityui="Copy"
                 />
               </Button>
               <Button
@@ -906,6 +917,7 @@ function MessageActions() {
                   hugeicons="ThumbsUpIcon"
                   phosphor="ThumbsUpIcon"
                   remixicon="RiThumbUpLine"
+                  gravityui="ThumbsUp"
                 />
               </Button>
               <Button
@@ -920,6 +932,7 @@ function MessageActions() {
                   hugeicons="ThumbsDownIcon"
                   phosphor="ThumbsDownIcon"
                   remixicon="RiThumbDownLine"
+                  gravityui="ThumbsDown"
                 />
               </Button>
             </MessageFooter>

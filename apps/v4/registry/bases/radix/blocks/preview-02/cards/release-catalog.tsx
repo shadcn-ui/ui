@@ -69,6 +69,7 @@ export function ReleaseCatalog() {
                 hugeicons="Search01Icon"
                 phosphor="MagnifyingGlassIcon"
                 remixicon="RiSearchLine"
+                gravityui="Magnifier"
               />
             </InputGroupAddon>
             <InputGroupInput placeholder="Search holdings or tickers..." />

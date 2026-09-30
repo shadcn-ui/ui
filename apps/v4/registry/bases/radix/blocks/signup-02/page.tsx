@@ -16,6 +16,7 @@ export default function SignupPage() {
                 hugeicons="LayoutBottomIcon"
                 phosphor="RowsIcon"
                 remixicon="RiGalleryLine"
+                gravityui="LayoutList"
                 className="size-4"
               />
             </div>

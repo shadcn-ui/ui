@@ -281,6 +281,7 @@ function SidebarTrigger({
         hugeicons="SidebarLeftIcon"
         phosphor="SidebarIcon"
         remixicon="RiSideBarLine"
+        gravityui="LayoutSideContent"
         className="cn-rtl-flip"
       />
       <span className="sr-only">Toggle Sidebar</span>

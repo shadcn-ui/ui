@@ -271,6 +271,7 @@ function TableWithActions() {
                       hugeicons="MoreHorizontalCircle01Icon"
                       phosphor="DotsThreeOutlineIcon"
                       remixicon="RiMoreLine"
+                      gravityui="Ellipsis"
                     />
                     <span className="sr-only">Open menu</span>
                   </Button>
@@ -299,6 +300,7 @@ function TableWithActions() {
                       hugeicons="MoreHorizontalCircle01Icon"
                       phosphor="DotsThreeOutlineIcon"
                       remixicon="RiMoreLine"
+                      gravityui="Ellipsis"
                     />
                     <span className="sr-only">Open menu</span>
                   </Button>
@@ -327,6 +329,7 @@ function TableWithActions() {
                       hugeicons="MoreHorizontalCircle01Icon"
                       phosphor="DotsThreeOutlineIcon"
                       remixicon="RiMoreLine"
+                      gravityui="Ellipsis"
                     />
                     <span className="sr-only">Open menu</span>
                   </Button>

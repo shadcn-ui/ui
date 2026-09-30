@@ -29,6 +29,7 @@ function Checkbox({
           hugeicons="Tick02Icon"
           phosphor="CheckIcon"
           remixicon="RiCheckLine"
+          gravityui="Check"
         />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>

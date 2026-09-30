@@ -25,6 +25,7 @@ function Checkbox({ className, ...props }: CheckboxPrimitive.Root.Props) {
           hugeicons="Tick02Icon"
           phosphor="CheckIcon"
           remixicon="RiCheckLine"
+          gravityui="Check"
         />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>

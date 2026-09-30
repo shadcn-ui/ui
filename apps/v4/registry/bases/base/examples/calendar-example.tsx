@@ -71,6 +71,7 @@ function CalendarInPopover() {
             hugeicons="CalendarIcon"
             phosphor="CalendarBlankIcon"
             remixicon="RiCalendarLine"
+            gravityui="Calendar"
             data-icon="inline-start"
           />
           Open Calendar
@@ -241,6 +242,7 @@ function CalendarWithTime() {
                     hugeicons="Clock03Icon"
                     phosphor="ClockIcon"
                     remixicon="RiTimeLine"
+                    gravityui="Clock"
                     className="text-muted-foreground"
                   />
                 </InputGroupAddon>
@@ -263,6 +265,7 @@ function CalendarWithTime() {
                     hugeicons="Clock03Icon"
                     phosphor="ClockIcon"
                     remixicon="RiTimeLine"
+                    gravityui="Clock"
                     className="text-muted-foreground"
                   />
                 </InputGroupAddon>
@@ -395,6 +398,7 @@ function DatePickerSimple() {
               hugeicons="CalendarIcon"
               phosphor="CalendarBlankIcon"
               remixicon="RiCalendarLine"
+              gravityui="Calendar"
               data-icon="inline-start"
             />
             {date ? format(date, "PPP") : <span>Pick a date</span>}
@@ -434,6 +438,7 @@ function DatePickerWithRange() {
               hugeicons="CalendarIcon"
               phosphor="CalendarBlankIcon"
               remixicon="RiCalendarLine"
+              gravityui="Calendar"
               data-icon="inline-start"
             />
             {date?.from ? (
@@ -491,6 +496,7 @@ function DataPickerWithDropdowns() {
               hugeicons="ArrowDownIcon"
               phosphor="CaretDownIcon"
               remixicon="RiArrowDownSLine"
+              gravityui="ChevronDown"
               data-icon="inline-start"
               className="ml-auto"
             />

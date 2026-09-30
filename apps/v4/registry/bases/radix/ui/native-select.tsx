@@ -33,6 +33,7 @@ function NativeSelect({
         hugeicons="UnfoldMoreIcon"
         phosphor="CaretDownIcon"
         remixicon="RiArrowDownSLine"
+        gravityui="ChevronDown"
         className="cn-native-select-icon pointer-events-none absolute select-none"
         aria-hidden="true"
         data-slot="native-select-icon"

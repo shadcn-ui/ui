@@ -114,6 +114,7 @@ export function FilesChat() {
                 hugeicons="PlusSignIcon"
                 phosphor="PlusIcon"
                 remixicon="RiAddLine"
+                gravityui="Plus"
               />
             </Button>
           </CardAction>

@@ -67,6 +67,7 @@ export function AccountAccess() {
             hugeicons="SquareLock02Icon"
             phosphor="LockKeyIcon"
             remixicon="RiLockLine"
+            gravityui="Lock"
           />
           Update Security
         </Button>
@@ -79,6 +80,7 @@ export function AccountAccess() {
                 hugeicons="AlertCircleIcon"
                 phosphor="WarningCircleIcon"
                 remixicon="RiErrorWarningLine"
+                gravityui="CircleExclamation"
                 className="text-destructive"
               />
             </ItemMedia>
@@ -94,6 +96,7 @@ export function AccountAccess() {
               hugeicons="ArrowRight01Icon"
               phosphor="ArrowRightIcon"
               remixicon="RiArrowRightLine"
+              gravityui="ArrowRight"
               className="size-4"
             />
           </a>

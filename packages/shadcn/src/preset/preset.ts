@@ -100,6 +100,7 @@ export const PRESET_ICON_LIBRARIES = [
   "tabler",
   "phosphor",
   "remixicon",
+  "gravityui",
 ] as const
 
 export const PRESET_FONTS = [
