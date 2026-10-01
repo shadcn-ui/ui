@@ -56,17 +56,26 @@ function publish() {
   })
 }
 
+// Only a 404 from npm means "not published". Any other error throws, so a
+// flaky lookup stops the release instead of skipping a check.
 function isPublished(name, version) {
+  let output
   try {
-    const published = execFileSync(
+    output = execFileSync(
       "npm",
-      ["view", `${name}@${version}`, "version"],
-      { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }
-    ).trim()
-    return published === version
-  } catch {
-    return false
+      ["view", `${name}@${version}`, "version", "--json"],
+      { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }
+    )
+  } catch (error) {
+    output = error.stdout
+    if (JSON.parse(output || "{}").error?.code === "E404") {
+      return false
+    }
+    throw new Error(
+      `Could not check whether ${name}@${version} is on npm.\n${error.stderr || output}`
+    )
   }
+  return JSON.parse(output || "null") === version
 }
 
 function sleep(ms) {
@@ -110,7 +119,16 @@ try {
 
 // 2. Make sure the registry version they pin is on npm and matches this tree.
 const deadline = Date.now() + PUBLISH_TIMEOUT_MS
-while (!isPublished(REGISTRY, version)) {
+for (;;) {
+  let published = false
+  try {
+    published = isPublished(REGISTRY, version)
+  } catch (error) {
+    console.log(error.message)
+  }
+  if (published) {
+    break
+  }
   if (Date.now() > deadline) {
     fail(`${registryTag} is not on npm.`)
   }
