@@ -2,23 +2,13 @@ import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightApply } from "@/src/preflights/preflight-apply"
 import {
-  decodePreset,
-  isPresetCode,
-  type PresetBase,
-} from "@/src/preset/preset"
-import {
   DEFAULT_PRESETS,
   promptToOpenPresetBuilder,
   resolveCreateUrl,
   resolveInitUrl,
   resolveRegistryBaseConfig,
 } from "@/src/preset/presets"
-import { SHADCN_URL } from "@/src/registry/constants"
-import { clearRegistryContext } from "@/src/registry/context"
-import { registryConfigSchema } from "@/src/registry/schema"
-import { isUrl } from "@/src/registry/utils"
 import { getTemplateForFramework } from "@/src/templates/index"
-import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
 import {
   createFileBackup,
@@ -27,18 +17,28 @@ import {
   restoreFileBackup,
   withFileBackup,
 } from "@/src/utils/file-helper"
+import { handleError } from "@/src/utils/handle-error"
+import {
+  decodePreset,
+  isPresetCode,
+  type PresetBase,
+} from "@shadcn/registry/internal/preset/preset"
+import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
+import { clearRegistryContext } from "@shadcn/registry/internal/registry/context"
+import { registryConfigSchema } from "@shadcn/registry/internal/registry/schema"
+import { isUrl } from "@shadcn/registry/internal/registry/utils"
+import { loadEnvFiles } from "@shadcn/registry/internal/utils/env-loader"
 import {
   getBase,
   getWorkspaceConfig,
   type Config,
-} from "@/src/utils/get-config"
+} from "@shadcn/registry/internal/utils/get-config"
 import {
   getProjectComponents,
   getProjectInfo,
-} from "@/src/utils/get-project-info"
-import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
+} from "@shadcn/registry/internal/utils/get-project-info"
+import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
+import { logger } from "@shadcn/registry/internal/utils/logger"
 import { Command } from "commander"
 import fs from "fs-extra"
 import prompts from "prompts"

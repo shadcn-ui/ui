@@ -1,6 +1,6 @@
-import { getRegistryIcons } from "@/src/registry/api"
 import { LEGACY_ICON_LIBRARIES } from "@/src/utils/legacy-icon-libraries"
-import { Transformer } from "@/src/utils/transformers"
+import { getRegistryIcons } from "@/src/utils/registry-api"
+import { Transformer } from "@shadcn/registry/internal/utils/transformers/index"
 import { SourceFile, SyntaxKind } from "ts-morph"
 
 // Lucide is the default icon library in the registry.

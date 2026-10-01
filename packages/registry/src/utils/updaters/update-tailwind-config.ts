@@ -11,7 +11,6 @@ import { highlighter } from "@/src/utils/highlighter"
 import { spinner } from "@/src/utils/spinner"
 import deepmerge from "deepmerge"
 import objectToString from "stringify-object"
-import { type Config as TailwindConfig } from "tailwindcss"
 import {
   ArrayLiteralExpression,
   ObjectLiteralExpression,
@@ -23,6 +22,10 @@ import {
   VariableStatement,
 } from "ts-morph"
 import { z } from "zod"
+
+// Stands in for tailwindcss's Config, which has an index signature, so the
+// published types do not depend on tailwindcss.
+type TailwindConfig = { [key: string]: any; [key: number]: any }
 
 export type UpdaterTailwindConfig = Omit<TailwindConfig, "plugins"> & {
   // We only want string plugins for now.

@@ -1,4 +1,4 @@
-import type { Config } from "@/src/utils/get-config"
+import type { Config } from "@shadcn/registry/internal/utils/get-config"
 import { describe, expect, it } from "vitest"
 
 import { transformTailwindContent } from "./update-tailwind-content"
