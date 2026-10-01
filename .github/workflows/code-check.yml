@@ -5,6 +5,23 @@ on:
     branches: ["*"]
 
 jobs:
+  registry-changeset:
+    runs-on: ubuntu-latest
+    name: "@shadcn/registry changeset"
+    # The version PR consumes the changesets, so there is nothing to check.
+    if: ${{ !startsWith(github.head_ref, 'changeset-release/') }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - run: node .github/check-registry-changeset.js origin/${{ github.base_ref }}
+
   lint:
     runs-on: ubuntu-latest
     name: pnpm lint

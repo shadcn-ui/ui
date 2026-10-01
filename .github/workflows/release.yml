@@ -104,7 +104,7 @@ jobs:
 
       - name: Publish snapshot to NPM
         if: steps.changesets.outputs.present == 'true'
-        run: pnpm exec changeset publish --tag ${{ steps.prerelease.outputs.channel }} --no-git-tag
+        run: node .github/changeset-publish.js --tag ${{ steps.prerelease.outputs.channel }} --no-git-tag
 
       - name: Collect prerelease info
         if: steps.changesets.outputs.present == 'true'
@@ -172,7 +172,7 @@ jobs:
           commit: "chore(release): version packages"
           title: "chore(release): version packages"
           version: node .github/changeset-version.js
-          publish: npx changeset publish
+          publish: node .github/changeset-publish.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_ENV: "production"
