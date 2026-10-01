@@ -75,7 +75,24 @@ function isPublished(name, version) {
       `Could not check whether ${name}@${version} is on npm.\n${error.stderr || output}`
     )
   }
-  return JSON.parse(output || "null") === version
+  // npm 12 wraps the result in an array.
+  const parsed = JSON.parse(output || "null")
+  return (Array.isArray(parsed) ? parsed : [parsed]).includes(version)
+}
+
+function hasTag(tag) {
+  try {
+    execFileSync(
+      "git",
+      ["rev-parse", "--verify", "--quiet", `refs/tags/${tag}`],
+      {
+        stdio: "ignore",
+      }
+    )
+    return true
+  } catch {
+    return false
+  }
 }
 
 function sleep(ms) {
@@ -136,24 +153,37 @@ for (;;) {
   sleep(POLL_INTERVAL_MS)
 }
 
-// A registry published by this run was built from this tree. An existing one
-// must come from the same registry source, which its release tag records.
-if (registryPublishedBefore) {
-  let changes
-  try {
-    execFileSync(
-      "git",
-      ["rev-parse", "--verify", "--quiet", `refs/tags/${registryTag}`],
-      {
-        stdio: "ignore",
-      }
-    )
-    changes = changedRegistrySource(registryTag)
-  } catch {
+// Every registry release is tagged, so check against its tag that the version
+// shadcn pins was released from the registry source in this tree. Snapshots
+// are not tagged; a snapshot version that was not on npm before this run is
+// unique to it, so this run published it from this tree.
+const createsTags = !args.includes("--no-git-tag")
+if (createsTags || registryPublishedBefore) {
+  if (!hasTag(registryTag)) {
     fail(
-      `Could not find the git tag ${registryTag}, so it is not possible to check that the published ${REGISTRY} matches this tree.`
+      [
+        `Could not find the git tag ${registryTag}, so it is not possible to check that the published ${REGISTRY} matches this tree.`,
+        "If it was published from this repository, tag the commit it was published from and push the tag, then re-run:",
+        `  git tag -a ${registryTag} -m ${registryTag} <commit> && git push origin refs/tags/${registryTag}`,
+      ].join("\n")
     )
   }
+
+  // Push the tag this run created now, so it is not lost if the job fails
+  // before changesets/action pushes it. Later runs depend on it.
+  if (createsTags && !registryPublishedBefore) {
+    try {
+      execFileSync("git", ["push", "origin", `refs/tags/${registryTag}`], {
+        stdio: "inherit",
+      })
+    } catch {
+      console.warn(
+        `Could not push ${registryTag}. changesets/action pushes it after publishing.`
+      )
+    }
+  }
+
+  const changes = changedRegistrySource(registryTag)
   if (changes.length > 0) {
     fail(
       [

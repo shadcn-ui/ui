@@ -19,6 +19,11 @@ jobs:
     name: Publish Prerelease to NPM
     runs-on: ubuntu-latest
     environment: Preview
+    # One prerelease at a time, so two runs never publish the same snapshot
+    # version of a package.
+    concurrency:
+      group: prerelease
+      cancel-in-progress: false
     permissions:
       id-token: write
       contents: read
@@ -121,6 +126,11 @@ jobs:
     if: ${{ github.event_name == 'push' && github.repository_owner == 'shadcn-ui' }}
     name: Create Version PR or Publish Stable Release
     runs-on: ubuntu-latest
+    # One release at a time: changeset-publish.js checks npm and git tags, and a
+    # second run must see what the first one published.
+    concurrency:
+      group: release
+      cancel-in-progress: false
     permissions:
       id-token: write
       contents: write

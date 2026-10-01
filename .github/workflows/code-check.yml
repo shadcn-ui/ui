@@ -8,8 +8,6 @@ jobs:
   registry-changeset:
     runs-on: ubuntu-latest
     name: "@shadcn/registry changeset"
-    # The version PR consumes the changesets, so there is nothing to check.
-    if: ${{ !startsWith(github.head_ref, 'changeset-release/') }}
     steps:
       - uses: actions/checkout@v3
         with:

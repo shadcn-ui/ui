@@ -10,8 +10,8 @@ const SOURCE_FILES = [
   "packages/registry/src",
   "packages/registry/tsconfig.json",
   "packages/registry/tsup.config.ts",
-  ":(exclude)packages/registry/src/**/*.test.ts",
-  ":(exclude)packages/registry/src/**/__snapshots__",
+  ":(exclude,glob)packages/registry/src/**/*.test.ts",
+  ":(exclude,glob)packages/registry/src/**/__snapshots__/**",
   ":(exclude)packages/registry/src/test-helpers",
 ]
 
@@ -34,6 +34,10 @@ const PUBLISHED_FIELDS = [
   "types",
   "typesVersions",
 ]
+
+// Dev dependencies that the build bundles into the published package. Keep in
+// sync with `noExternal` in packages/registry/tsup.config.ts.
+const BUNDLED_DEV_DEPENDENCIES = ["@antfu/ni", "tinyexec"]
 
 function readPackageJson(revision) {
   try {
@@ -60,10 +64,16 @@ export function changedRegistrySource(from, to = "HEAD") {
 
   const before = readPackageJson(from)
   const after = readPackageJson(to)
-  const fields = PUBLISHED_FIELDS.filter(
-    (field) =>
-      JSON.stringify(before?.[field]) !== JSON.stringify(after?.[field])
-  )
+  const fields = [
+    ...PUBLISHED_FIELDS.filter(
+      (field) =>
+        JSON.stringify(before?.[field]) !== JSON.stringify(after?.[field])
+    ),
+    ...BUNDLED_DEV_DEPENDENCIES.filter(
+      (name) =>
+        before?.devDependencies?.[name] !== after?.devDependencies?.[name]
+    ).map((name) => `devDependencies.${name}`),
+  ]
   if (!before || !after || fields.length > 0) {
     changes.push(
       `${PACKAGE_JSON}${fields.length > 0 ? ` (${fields.join(", ")})` : ""}`
