@@ -125,6 +125,41 @@ describe("GET /r/registries.json", () => {
     })
   })
 
+  it("adds ranking metadata without reordering or replacing authored fields", async () => {
+    const first = directory[0]
+    const snapshot: RegistryHealthSnapshot = createSnapshot({
+      [first.name]: createHealth(),
+    })
+    snapshot.rankings = {
+      [first.name]: { version: 1, score: 93.248, itemCount: 100 },
+      "@unknown": { version: 1, score: 100, itemCount: 500 },
+      [directory[1].name]: { version: 1, score: 100, itemCount: 500 },
+    }
+    loadSnapshot.mockResolvedValue(snapshot)
+    const payload = await (await GET()).json()
+    expect(payload.map((entry: { name: string }) => entry.name)).toEqual(
+      directory.map(({ name }) => name)
+    )
+    expect(payload[0]).toMatchObject({
+      name: first.name,
+      homepage: first.homepage,
+      url: first.url,
+      description: first.description,
+      ranking: { version: 1, score: 93.248, itemCount: 100 },
+    })
+    expect(payload[0]).not.toHaveProperty("logo")
+    expect(payload[1]).not.toHaveProperty("ranking")
+  })
+
+  it("continues to serve health from snapshots without ranking metadata", async () => {
+    loadSnapshot.mockResolvedValue(
+      createSnapshot({ [directory[0].name]: createHealth() })
+    )
+    const payload = await (await GET()).json()
+    expect(payload[0]).toHaveProperty("health")
+    expect(payload[0]).not.toHaveProperty("ranking")
+  })
+
   it("omits health for a registry missing from the snapshot", async () => {
     loadSnapshot.mockResolvedValue(createSnapshot({}))
 
