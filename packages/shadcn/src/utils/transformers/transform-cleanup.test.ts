@@ -126,6 +126,27 @@ export function Component() {
     expect(result).not.toContain("cn-rtl-flip")
   })
 
+  test("removes cn-* markers from *ClassName props", async () => {
+    const result = await transform(
+      {
+        filename: "test.tsx",
+        raw: `import * as React from "react"
+export function Component({ containerClassName }) {
+  return (
+    <OTPInput
+      containerClassName={cn("cn-input-otp flex items-center", containerClassName)}
+    />
+  )
+}`,
+        config: testConfig,
+      },
+      [transformCleanup]
+    )
+
+    expect(result).toContain('cn("flex items-center", containerClassName)')
+    expect(result).not.toContain("cn-input-otp")
+  })
+
   test("removes className attribute when only cn-* marker", async () => {
     const result = await transform(
       {
