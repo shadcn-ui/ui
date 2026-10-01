@@ -20,7 +20,8 @@ import { join } from "node:path"
 
 import { changedRegistrySource, REGISTRY } from "./registry-source.js"
 
-const PUBLISH_TIMEOUT_MS = 5 * 60 * 1000
+// npm can take several minutes to serve a new version of a busy package.
+const PUBLISH_TIMEOUT_MS = 15 * 60 * 1000
 const POLL_INTERVAL_MS = 10 * 1000
 
 const args = process.argv.slice(2)
