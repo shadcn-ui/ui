@@ -11,7 +11,7 @@ vi.mock("@/src/utils/handle-error", () => ({
   }),
 }))
 
-vi.mock("@/src/utils/spinner", () => ({
+vi.mock("@shadcn/registry/internal/utils/spinner", () => ({
   spinner: () => ({
     start: vi.fn(),
     succeed: vi.fn(),

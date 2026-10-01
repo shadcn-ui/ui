@@ -1,16 +1,16 @@
 import path from "path"
 import { initOptionsSchema } from "@/src/commands/init"
-import { SHADCN_URL } from "@/src/registry/constants"
 import * as ERRORS from "@/src/utils/errors"
+import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
 import {
   formatMonorepoMessage,
   getMonorepoTargets,
   isMonorepoRoot,
-} from "@/src/utils/get-monorepo-info"
-import { getProjectInfo } from "@/src/utils/get-project-info"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
-import { spinner } from "@/src/utils/spinner"
+} from "@shadcn/registry/internal/utils/get-monorepo-info"
+import { getProjectInfo } from "@shadcn/registry/internal/utils/get-project-info"
+import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
+import { logger } from "@shadcn/registry/internal/utils/logger"
+import { spinner } from "@shadcn/registry/internal/utils/spinner"
 import fs from "fs-extra"
 import { z } from "zod"
 
