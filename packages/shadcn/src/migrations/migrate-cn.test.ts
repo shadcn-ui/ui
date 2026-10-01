@@ -4,13 +4,13 @@ import path from "path"
 import {
   installDependencies,
   removeDependencies,
-} from "@/src/utils/updaters/update-dependencies"
+} from "@shadcn/registry/internal/utils/updaters/update-dependencies"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
 import { createCnTransformer } from "./cn/transform"
 import { migrateCn, transformCnSource } from "./migrate-cn"
 
-vi.mock("@/src/utils/spinner", () => ({
+vi.mock("@shadcn/registry/internal/utils/spinner", () => ({
   spinner: vi.fn(() => ({
     start: vi.fn().mockReturnThis(),
     succeed: vi.fn(),
@@ -19,7 +19,7 @@ vi.mock("@/src/utils/spinner", () => ({
   })),
 }))
 
-vi.mock("@/src/utils/logger", () => ({
+vi.mock("@shadcn/registry/internal/utils/logger", () => ({
   logger: {
     info: vi.fn(),
     warn: vi.fn(),
@@ -27,7 +27,7 @@ vi.mock("@/src/utils/logger", () => ({
   },
 }))
 
-vi.mock("@/src/utils/updaters/update-dependencies", () => ({
+vi.mock("@shadcn/registry/internal/utils/updaters/update-dependencies", () => ({
   installDependencies: vi.fn(),
   removeDependencies: vi.fn(),
 }))
