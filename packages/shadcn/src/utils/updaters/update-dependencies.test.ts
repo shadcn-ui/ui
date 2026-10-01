@@ -1,8 +1,7 @@
 import { getFixturesDir } from "@/src/test-helpers"
-import type { Config } from "@/src/utils/get-config"
 import { execa } from "execa"
 import prompts from "prompts"
-import { afterEach, describe, expect, it, vi } from "vitest"
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
 import {
   assertSafeDependencies,
@@ -11,10 +10,33 @@ import {
   updateDependencies,
 } from "./update-dependencies"
 
+const { spinnerInstance } = vi.hoisted(() => {
+  const spinner = {
+    start: vi.fn(),
+    succeed: vi.fn(),
+    fail: vi.fn(),
+    stop: vi.fn(),
+    stopAndPersist: vi.fn(),
+  }
+  spinner.start.mockReturnValue(spinner)
+  return { spinnerInstance: spinner }
+})
+
 vi.mock("execa")
 vi.mock("prompts")
+vi.mock("@/src/utils/spinner", () => ({
+  spinner: vi.fn(() => spinnerInstance),
+}))
+
+function packageManagerExecaOptions(cwd: string) {
+  return { cwd, stdin: "ignore" as const }
+}
 
 describe("updateDependencies", () => {
+  beforeEach(() => {
+    spinnerInstance.start.mockReturnValue(spinnerInstance)
+  })
+
   afterEach(() => {
     vi.restoreAllMocks()
   })
@@ -167,14 +189,16 @@ describe("updateDependencies", () => {
         expect(prompts).not.toHaveBeenCalled()
       }
 
-      expect(execa).toHaveBeenCalledWith(expectedPackageManager, expectedArgs, {
-        cwd: config?.resolvedPaths.cwd,
-      })
+      expect(execa).toHaveBeenCalledWith(
+        expectedPackageManager,
+        expectedArgs,
+        packageManagerExecaOptions(config?.resolvedPaths.cwd)
+      )
 
       expect(execa).toHaveBeenCalledWith(
         expectedPackageManager,
         expectedDevArgs,
-        { cwd: config?.resolvedPaths.cwd }
+        packageManagerExecaOptions(config?.resolvedPaths.cwd)
       )
     }
   )
@@ -201,14 +225,12 @@ describe("updateDependencies", () => {
     expect(execa).toHaveBeenCalledWith(
       "pnpm",
       ["add", "--", "react-is", "recharts@3.8.0"],
-      { cwd }
+      packageManagerExecaOptions(cwd)
     )
     expect(execa).toHaveBeenCalledWith(
       "pnpm",
       ["add", "-D", "--", "typescript"],
-      {
-        cwd,
-      }
+      packageManagerExecaOptions(cwd)
     )
   })
 
@@ -226,7 +248,7 @@ describe("updateDependencies", () => {
     expect(execa).toHaveBeenCalledWith(
       "pnpm",
       ["add", "--", "recharts@3.8.0", "@base-ui/react@1.4.1"],
-      { cwd }
+      packageManagerExecaOptions(cwd)
     )
   })
 
@@ -245,7 +267,7 @@ describe("updateDependencies", () => {
     expect(execa).toHaveBeenCalledWith(
       "npx",
       ["expo", "install", "--", "recharts", "react-is"],
-      { cwd }
+      packageManagerExecaOptions(cwd)
     )
   })
 
@@ -266,6 +288,27 @@ describe("updateDependencies", () => {
       expect.arrayContaining(["--registry=http://malicious"]),
       expect.anything()
     )
+  })
+
+  it("stops the spinner and rethrows when the package manager cannot install a dependency (#8851)", async () => {
+    const cwd = getFixturesDir("project-npm")
+    vi.mocked(execa).mockRejectedValueOnce(
+      Object.assign(new Error("404 Not Found"), { exitCode: 1 })
+    )
+
+    await expect(
+      updateDependencies(
+        ["this-package-definitely-does-not-exist-xyz-8851"],
+        [],
+        { resolvedPaths: { cwd } } as any,
+        { silent: true }
+      )
+    ).rejects.toThrow(/404 Not Found/)
+
+    expect(spinnerInstance.fail).toHaveBeenCalledWith(
+      "Failed to install dependencies."
+    )
+    expect(spinnerInstance.succeed).not.toHaveBeenCalled()
   })
 })
 
@@ -297,9 +340,11 @@ describe("dependency commands", () => {
 
     await installDependencies(cwd, ["cn"])
 
-    expect(execa).toHaveBeenCalledWith("pnpm", ["add", "--", "cn"], {
-      cwd,
-    })
+    expect(execa).toHaveBeenCalledWith(
+      "pnpm",
+      ["add", "--", "cn"],
+      packageManagerExecaOptions(cwd)
+    )
   })
 
   it("removes only dependencies declared by the project", async () => {
@@ -307,8 +352,10 @@ describe("dependency commands", () => {
 
     await removeDependencies(cwd, ["recharts", "not-installed"])
 
-    expect(execa).toHaveBeenCalledWith("pnpm", ["remove", "--", "recharts"], {
-      cwd,
-    })
+    expect(execa).toHaveBeenCalledWith(
+      "pnpm",
+      ["remove", "--", "recharts"],
+      packageManagerExecaOptions(cwd)
+    )
   })
 })
