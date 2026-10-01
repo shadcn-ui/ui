@@ -27,6 +27,8 @@ jobs:
     permissions:
       id-token: write
       contents: read
+      # The changelog plugin looks up the pull request of each changeset.
+      pull-requests: read
 
     steps:
       - name: Select prerelease channel
@@ -102,6 +104,9 @@ jobs:
       - name: Version snapshot
         if: steps.changesets.outputs.present == 'true'
         run: pnpm exec changeset version --snapshot ${{ steps.prerelease.outputs.channel }}
+        env:
+          # @changesets/changelog-github needs a token to read pull request info.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build packages
         if: steps.changesets.outputs.present == 'true'
