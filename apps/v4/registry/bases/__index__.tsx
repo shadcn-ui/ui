@@ -2547,7 +2547,13 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Attachment",
       description: "",
       type: "registry:example",
-      registryDependencies: ["attachment"],
+      registryDependencies: [
+        "attachment",
+        "button",
+        "dialog",
+        "example",
+        "spinner",
+      ],
       files: [
         {
           path: "registry/bases/base/examples/attachment-example.tsx",
@@ -2563,7 +2569,14 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Bubble",
       description: "",
       type: "registry:example",
-      registryDependencies: ["bubble", "button", "collapsible", "example"],
+      registryDependencies: [
+        "bubble",
+        "button",
+        "collapsible",
+        "example",
+        "marker",
+        "sonner",
+      ],
       files: [
         {
           path: "registry/bases/base/examples/bubble-example.tsx",
@@ -9542,7 +9555,13 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Attachment",
       description: "",
       type: "registry:example",
-      registryDependencies: ["attachment"],
+      registryDependencies: [
+        "attachment",
+        "button",
+        "dialog",
+        "example",
+        "spinner",
+      ],
       files: [
         {
           path: "registry/bases/aria/examples/attachment-example.tsx",
@@ -9558,7 +9577,14 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Bubble",
       description: "",
       type: "registry:example",
-      registryDependencies: ["bubble", "button", "collapsible", "example"],
+      registryDependencies: [
+        "bubble",
+        "button",
+        "collapsible",
+        "example",
+        "marker",
+        "sonner",
+      ],
       files: [
         {
           path: "registry/bases/aria/examples/bubble-example.tsx",
@@ -13236,7 +13262,13 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Attachment",
       description: "",
       type: "registry:example",
-      registryDependencies: ["attachment"],
+      registryDependencies: [
+        "attachment",
+        "button",
+        "dialog",
+        "example",
+        "spinner",
+      ],
       files: [
         {
           path: "registry/bases/radix/examples/attachment-example.tsx",
@@ -13252,7 +13284,14 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Bubble",
       description: "",
       type: "registry:example",
-      registryDependencies: ["bubble", "button", "collapsible", "example"],
+      registryDependencies: [
+        "bubble",
+        "button",
+        "collapsible",
+        "example",
+        "marker",
+        "sonner",
+      ],
       files: [
         {
           path: "registry/bases/radix/examples/bubble-example.tsx",
