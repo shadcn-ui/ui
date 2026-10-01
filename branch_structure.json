@@ -1,0 +1,18 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "fix/combobox-chip-input-typography",
+    "main",
+    "origin"
+  ],
+  "parent": {
+    "fix/combobox-chip-input-typography": "main",
+    "main": null,
+    "origin": "main"
+  },
+  "order": [
+    "main",
+    "fix/combobox-chip-input-typography",
+    "origin"
+  ]
+}

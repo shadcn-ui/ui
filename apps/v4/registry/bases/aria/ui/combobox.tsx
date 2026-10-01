@@ -360,7 +360,7 @@ function ComboboxChipsInput({ className, ...props }: InputProps) {
     <InputPrimitive
       data-slot="combobox-chip-input"
       className={cn(
-        "cn-combobox-chip-input min-w-16 flex-1 outline-none",
+        "cn-combobox-chip-input min-w-16 flex-1 text-base outline-none placeholder:text-muted-foreground md:text-sm",
         className
       )}
       onKeyDown={(e) => {

@@ -13,7 +13,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
+    "build": "node api.js && turbo run build",
     "build:packages": "turbo run build --filter=./packages/*",
     "registry:build": "pnpm --filter=v4 registry:build && pnpm lint:fix && pnpm format:write -- --loglevel silent",
     "registry:capture": "pnpm --filter=v4 registry:capture",
@@ -22,7 +22,7 @@
     "registry:health:check": "turbo run registry:health:check --filter=v4",
     "registry:health:publish": "turbo run registry:health:publish --filter=v4",
     "explore:capture": "pnpm --filter=v4 explore:capture",
-    "dev": "turbo run dev",
+    "dev": "node api.js && turbo run dev",
     "shadcn:dev": "turbo run dev --filter=shadcn",
     "shadcn": "pnpm --filter=shadcn start:dev",
     "shadcn:prod": "pnpm --filter=shadcn start:prod",
