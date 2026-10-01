@@ -1,4 +1,4 @@
-import { Transformer } from "@/src/utils/transformers"
+import { Transformer } from "@shadcn/registry/internal/utils/transformers/index"
 import { SyntaxKind } from "ts-morph"
 
 interface TransformInfo {

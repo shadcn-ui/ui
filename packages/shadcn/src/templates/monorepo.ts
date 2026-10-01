@@ -1,14 +1,17 @@
 import path from "path"
-import { iconLibraries, type IconLibraryName } from "@/src/icons/libraries"
-import { configWithDefaults } from "@/src/registry/config"
-import { resolveRegistryTree } from "@/src/registry/resolver"
-import { rawConfigSchema } from "@/src/schema"
-import { addComponents } from "@/src/utils/add-components"
-import { resolveConfigPaths } from "@/src/utils/get-config"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
-import { updateCss } from "@/src/utils/updaters/update-css"
-import { updateCssVars } from "@/src/utils/updaters/update-css-vars"
-import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
+import {
+  iconLibraries,
+  type IconLibraryName,
+} from "@shadcn/registry/internal/icons/libraries"
+import { configWithDefaults } from "@shadcn/registry/internal/registry/config"
+import { resolveRegistryTree } from "@shadcn/registry/internal/registry/resolver"
+import { addComponents } from "@shadcn/registry/internal/utils/add-components"
+import { resolveConfigPaths } from "@shadcn/registry/internal/utils/get-config"
+import { updateCss } from "@shadcn/registry/internal/utils/updaters/update-css"
+import { updateCssVars } from "@shadcn/registry/internal/utils/updaters/update-css-vars"
+import { updateDependencies } from "@shadcn/registry/internal/utils/updaters/update-dependencies"
+import { rawConfigSchema } from "@shadcn/registry/schema"
 import deepmerge from "deepmerge"
 import fs from "fs-extra"
 

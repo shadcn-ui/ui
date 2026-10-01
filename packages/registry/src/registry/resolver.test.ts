@@ -31,12 +31,6 @@ vi.mock("./context", () => ({
   withRegistryContext: vi.fn((callback: () => unknown) => callback()),
 }))
 
-vi.mock("@/src/utils/handle-error", () => ({
-  handleError: vi.fn((error) => {
-    console.error("Test error:", error)
-  }),
-}))
-
 vi.mock("@/src/utils/logger", () => ({
   logger: {
     error: vi.fn(),
