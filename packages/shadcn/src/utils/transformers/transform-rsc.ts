@@ -1,7 +1,7 @@
 import { Transformer } from "@/src/utils/transformers"
 import { SyntaxKind } from "ts-morph"
 
-const directiveRegex = /^["']use client["']$/g
+const directiveRegex = /^["']use client["']$/
 
 export const transformRsc: Transformer = async ({ sourceFile, config }) => {
   if (config.rsc) {
