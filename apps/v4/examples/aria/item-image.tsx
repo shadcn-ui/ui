@@ -35,7 +35,7 @@ export function ItemImage() {
     <div className="flex w-full max-w-md flex-col gap-6">
       <ItemGroup className="gap-4">
         {music.map((song) => (
-          <Item href="#" key={song.title} variant="outline" role="listitem">
+          <Item href="#" key={song.title} variant="outline">
             <ItemMedia variant="image">
               <Image
                 src={`https://avatar.vercel.sh/${song.title}`}
