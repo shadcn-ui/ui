@@ -451,8 +451,8 @@ export async function resolveGitHubRefViaAuth(
     return resolveQualifiedGitRefSha(address, request, ref)
   }
 
-  // A shorthand ref prefers the branch. Only a missing branch may resolve as
-  // a tag, matching the git ls-remote candidate ordering.
+  // A shorthand ref prefers the branch. GitHub may return either 404 or 422
+  // for a missing branch, so try the tag for both statuses.
   try {
     return await resolveCommitishSha(
       address,
@@ -463,7 +463,7 @@ export async function resolveGitHubRefViaAuth(
     if (
       error instanceof GitHubTransportError &&
       error.kind === "http" &&
-      error.statusCode === 404
+      (error.statusCode === 404 || error.statusCode === 422)
     ) {
       return resolveCommitishSha(
         address,
