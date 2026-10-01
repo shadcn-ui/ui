@@ -15,6 +15,10 @@ import { registryItemSchema } from "@shadcn/registry/schema"
 
 See the [registry API reference](https://ui.shadcn.com/docs/registry/api-reference) for the available functions.
 
+## Status
+
+Before 1.0, minor versions may change the API. The package will narrow to the registry itself (the spec, validation, fetching, resolving and installing items) and leave consumer logic, such as code transforms, CSS updates and `components.json`, to consumers like `shadcn`.
+
 ## Entry points
 
 | Entry                         | Description                                                                                |
