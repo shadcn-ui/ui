@@ -115,11 +115,11 @@ export function resolveDocsBase(base: unknown, style: string | undefined) {
   return resolvedBase
 }
 
-function normalizeLinks(links: Record<string, string>) {
+export function normalizeLinks(links: Record<string, string>) {
   return Object.fromEntries(
     Object.entries(links).map(([key, value]) => [
       key,
-      value.startsWith(SHADCN_BASE_URL)
+      value === SHADCN_BASE_URL || value.startsWith(`${SHADCN_BASE_URL}/`)
         ? `${SHADCN_URL}${value.slice(SHADCN_BASE_URL.length)}`
         : value,
     ])

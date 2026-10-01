@@ -8,6 +8,8 @@ jobs:
   registry-changeset:
     runs-on: ubuntu-latest
     name: "@shadcn/registry changeset"
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v3
         with:
