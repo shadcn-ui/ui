@@ -25,7 +25,7 @@ ESM only. Requires Node.js 20.18.1 or later.
 | [`getRegistries`](#discover-registries)                 | List the registries in the [directory](https://ui.shadcn.com/docs/directory). |
 | [`getRegistriesConfig`](#configure-registries)          | Read a project's registries from `components.json` and `package.json`.        |
 | [`RegistryError`, `RegistryErrorCode`](#errors)         | The errors the API throws.                                                    |
-| [Schemas](#validate)                                    | Zod schemas, from `@shadcn/registry/schema`.                                  |
+| [Schemas](#schemas)                                     | Zod schemas, from `@shadcn/registry/schema`.                                  |
 
 ## Fetch items
 
@@ -145,7 +145,7 @@ const item = await loadRegistryItem("login-form")
 
 Both read from the current directory. Pass `cwd` or `registryFile` to change that.
 
-## Validate
+## Schemas
 
 ```ts
 import { registryItemSchema } from "@shadcn/registry/schema"
