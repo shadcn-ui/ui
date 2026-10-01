@@ -1,22 +1,22 @@
 import { existsSync } from "fs"
 import path from "path"
 import { printPresetInfo } from "@/src/commands/info"
+import { resolveProjectPreset } from "@/src/preset/resolve"
+import { handleError } from "@/src/utils/handle-error"
 import {
   decodePreset,
   V1_CHART_COLOR_MAP,
   type PresetConfig,
-} from "@/src/preset/preset"
-import { resolveProjectPreset } from "@/src/preset/resolve"
-import { SHADCN_URL } from "@/src/registry/constants"
-import { getConfig } from "@/src/utils/get-config"
+} from "@shadcn/registry/internal/preset/preset"
+import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
+import { getConfig } from "@shadcn/registry/internal/utils/get-config"
 import {
   formatMonorepoMessage,
   getMonorepoTargets,
   isMonorepoRoot,
-} from "@/src/utils/get-monorepo-info"
-import { getProjectInfo } from "@/src/utils/get-project-info"
-import { handleError } from "@/src/utils/handle-error"
-import { logger } from "@/src/utils/logger"
+} from "@shadcn/registry/internal/utils/get-monorepo-info"
+import { getProjectInfo } from "@shadcn/registry/internal/utils/get-project-info"
+import { logger } from "@shadcn/registry/internal/utils/logger"
 import { Command } from "commander"
 import open from "open"
 

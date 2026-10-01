@@ -26,7 +26,6 @@ import {
 import { isUrl } from "@/src/registry/utils"
 import {
   configJsonSchema,
-  iconsSchema,
   registriesIndexSchema,
   registriesSchema,
   registryBaseColorSchema,
@@ -34,11 +33,8 @@ import {
   registryIndexSchema,
   registryItemSchema,
   registrySchema,
-  stylesSchema,
 } from "@/src/schema"
 import { Config, explorer } from "@/src/utils/get-config"
-import { handleError } from "@/src/utils/handle-error"
-import { logger } from "@/src/utils/logger"
 import { cosmiconfig } from "cosmiconfig"
 import { z } from "zod"
 
@@ -287,28 +283,6 @@ export async function getShadcnRegistryIndex() {
   return registryIndexSchema.parse(result)
 }
 
-export async function getRegistryStyles() {
-  try {
-    const [result] = await fetchRegistry(["styles/index.json"])
-
-    return stylesSchema.parse(result)
-  } catch (error) {
-    logger.error("\n")
-    handleError(error)
-    return []
-  }
-}
-
-export async function getRegistryIcons() {
-  try {
-    const [result] = await fetchRegistry(["icons/index.json"])
-    return iconsSchema.parse(result)
-  } catch (error) {
-    handleError(error)
-    return {}
-  }
-}
-
 export async function getRegistryBaseColors() {
   return BASE_COLORS
 }
@@ -347,23 +321,6 @@ export async function resolveTree(
     (component, index, self) =>
       self.findIndex((c) => c.name === component.name) === index
   )
-}
-
-/**
- * @deprecated This function is deprecated and will be removed in a future version.
- */
-export async function fetchTree(
-  style: string,
-  tree: z.infer<typeof registryIndexSchema>
-) {
-  try {
-    const paths = tree.map((item) => `styles/${style}/${item.name}.json`)
-    const results = await fetchRegistry(paths)
-    return results.map((result) => registryItemSchema.parse(result))
-  } catch (error) {
-    handleError(error)
-    return []
-  }
 }
 
 /**
