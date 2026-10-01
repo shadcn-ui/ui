@@ -1,10 +1,10 @@
-import { RegistryNotFoundError } from "@/src/registry/errors"
 import {
   getPreviousMinorCommand,
   getPreviousMinorVersion,
   handleError,
 } from "@/src/utils/handle-error"
-import { logger } from "@/src/utils/logger"
+import { RegistryNotFoundError } from "@shadcn/registry/internal/registry/errors"
+import { logger } from "@shadcn/registry/internal/utils/logger"
 import {
   afterAll,
   afterEach,
@@ -15,14 +15,14 @@ import {
   vi,
 } from "vitest"
 
-vi.mock("@/src/utils/highlighter", () => ({
+vi.mock("@shadcn/registry/internal/utils/highlighter", () => ({
   highlighter: {
     error: (value: string) => value,
     info: (value: string) => value,
   },
 }))
 
-vi.mock("@/src/utils/logger", () => ({
+vi.mock("@shadcn/registry/internal/utils/logger", () => ({
   logger: {
     break: vi.fn(),
     error: vi.fn(),
