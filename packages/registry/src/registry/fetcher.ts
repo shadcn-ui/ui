@@ -109,9 +109,27 @@ export async function fetchRegistry(
               messageFromServer
             )
           }
+          const contentType = response.headers.get("content-type")
+          if (
+            contentType &&
+            !contentType.includes("application/json") &&
+            !contentType.includes("application/vnd.shadcn.v1+json")
+          ) {
+            throw new RegistryParseError(
+              url,
+              new Error(
+                `Expected JSON response from registry, but received "${contentType}". The URL may be returning a webpage (HTML) instead of component JSON.`
+              )
+            )
+          }
 
-          return response.json()
+          try {
+            return await response.json()
+          } catch (error) {
+            throw new RegistryParseError(url, error)
+          }
         })()
+
 
         if (options.useCache) {
           registryCache.set(cacheKey, fetchPromise)
