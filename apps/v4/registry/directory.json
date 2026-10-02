@@ -930,6 +930,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' fill='none'><rect x='0.5' y='0.5' width='51' height='51' rx='13.5' fill='var(--background)' fill-opacity='.08' stroke='var(--foreground)' stroke-opacity='.2'/><rect x='14.5' y='14.5' width='51' height='51' rx='13.5' fill='var(--background)' fill-opacity='.12' stroke='var(--foreground)' stroke-opacity='.3'/><rect x='28.5' y='28.5' width='51' height='51' rx='13.5' fill='var(--background)' fill-opacity='.18' stroke='var(--foreground)' stroke-opacity='.45'/><line x1='34' y1='36' x2='34' y2='56' stroke='var(--foreground)' stroke-opacity='.35' stroke-width='1.5' stroke-linecap='round'/></svg>"
   },
   {
+    "name": "@glint-ui",
+    "homepage": "https://glint-ui-seven.vercel.app",
+    "url": "https://glint-ui-seven.vercel.app/r/{name}.json",
+    "description": "354 animated React components you copy, paste and own: text effects, cursors, WebGL backgrounds, micro-interactions, UI primitives and mascots. Built with Tailwind CSS v4 and shadcn tokens.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><clipPath id='glint-ui-head'><rect x='1.5' y='4' width='29' height='24' rx='6'/></clipPath></defs><rect x='1.5' y='4' width='29' height='24' rx='6' fill='#b5e61d'/><rect x='1.5' y='6.2' width='29' height='2.4' fill='#f4b860' clip-path='url(#glint-ui-head)'/><rect x='4.5' y='10.5' width='23' height='14.5' rx='3.2' fill='#141a0f'/><circle cx='11.2' cy='16.3' r='4.1' fill='#0b0f08' stroke='#cfd3c5' stroke-width='0.9'/><circle cx='20.8' cy='16.3' r='4.1' fill='#0b0f08' stroke='#cfd3c5' stroke-width='0.9'/><circle cx='11.2' cy='16.3' r='2.5' fill='#d9ff6b'/><circle cx='20.8' cy='16.3' r='2.5' fill='#d9ff6b'/><circle cx='11.2' cy='16.3' r='0.8' fill='#141a0f'/><circle cx='20.8' cy='16.3' r='0.8' fill='#141a0f'/><circle cx='13.6' cy='22.4' r='0.75' fill='#d9ff6b'/><circle cx='16' cy='22.4' r='0.75' fill='#d9ff6b'/><circle cx='18.4' cy='22.4' r='0.75' fill='#d9ff6b'/></svg>"
+  },
+  {
     "name": "@gooseui",
     "homepage": "https://gooseui.pro",
     "url": "https://gooseui.pro/r/{name}.json",
