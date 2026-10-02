@@ -28,8 +28,18 @@ const coordinators = new WeakMap<object, Map<string, GitHubSourceAuthState>>()
 // process-wide per credential mode so it prints once, not once per phase.
 const notifiedModes = new Set<GitHubAuthMode>()
 
+// Library calls never print the notice themselves, since stdout may carry a
+// protocol (an MCP stdio server, an agent). The shadcn CLI opts in at startup;
+// other callers pass onGitHubAuthNotice through the registry context.
+let printNotices = false
+
+export function enableGitHubAuthNotices() {
+  printNotices = true
+}
+
 export function resetGitHubAuthNotices() {
   notifiedModes.clear()
+  printNotices = false
 }
 
 export function getGitHubAuthState(anchor: object, source: GitHubSource) {
@@ -67,14 +77,14 @@ export function selectGitHubAuthMode(
 
 async function decideAndNotify() {
   const mode: GitHubAuthMode = getEnvGitHubToken() ? "token" : "gh"
+  const onNotice = getGitHubAuthNoticeFromContext()
 
-  if (notifiedModes.has(mode)) {
+  if (notifiedModes.has(mode) || (!onNotice && !printNotices)) {
     return mode
   }
 
   // The notice is awaited so it lands before the first authenticated request.
   const notice = `Using ${mode === "token" ? "GH_TOKEN" : "gh"} credentials.`
-  const onNotice = getGitHubAuthNoticeFromContext()
   if (onNotice) {
     await onNotice(notice)
   } else {

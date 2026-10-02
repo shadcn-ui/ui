@@ -13,10 +13,11 @@ import {
 } from "vitest"
 
 import { logger } from "../utils/logger"
+import { getRegistryItems, resolveRegistryItems } from "./api"
 import { withRegistryContext } from "./context"
 import { RegistrySourceFileError, RegistryValidationError } from "./errors"
 import { fetchGitHubRegistryItem, validateGitHubRegistrySource } from "./github"
-import { resetGitHubAuthNotices } from "./github-auth"
+import { enableGitHubAuthNotices, resetGitHubAuthNotices } from "./github-auth"
 import {
   fetchRegistryItems,
   resolveRegistryItemsFromRegistries,
@@ -913,6 +914,8 @@ describe("GitHub registry items", () => {
     }
 
     beforeEach(() => {
+      // Run as the shadcn CLI does, which opts in to printing the notice.
+      enableGitHubAuthNotices()
       vi.spyOn(logger, "log").mockImplementation(() => {})
     })
 
@@ -1144,6 +1147,68 @@ describe("GitHub registry items", () => {
       await fetchRegistryItems(["acme/ui/card"], {} as any)
 
       expect(vi.mocked(logger.log)).toHaveBeenCalledTimes(1)
+    })
+
+    describe("outside the CLI", () => {
+      let apiAuthorizations: Array<string | null>
+
+      beforeEach(() => {
+        // Library consumers never opt in, so stdout stays theirs.
+        resetGitHubAuthNotices()
+        vi.stubEnv("GH_TOKEN", "ci-token")
+        apiAuthorizations = []
+
+        server.use(
+          http.get(
+            "https://raw.githubusercontent.com/acme/ui/1111111111111111111111111111111111111111/registry.json",
+            () => new HttpResponse(null, { status: 404 })
+          ),
+          http.get(
+            "https://api.github.com/repos/acme/ui/contents/registry.json",
+            ({ request }) => {
+              apiAuthorizations.push(request.headers.get("authorization"))
+              return HttpResponse.json(PRIVATE_REGISTRY)
+            }
+          ),
+          http.get(
+            "https://api.github.com/repos/acme/ui/contents/button.tsx",
+            () => HttpResponse.text("export function Button() {}")
+          )
+        )
+      })
+
+      it.each([
+        ["getRegistryItems", () => getRegistryItems(["acme/ui/button"])],
+        [
+          "resolveRegistryItems",
+          () => resolveRegistryItems(["acme/ui/button"]),
+        ],
+        ["searchRegistries", () => searchRegistries(["acme/ui"])],
+      ])(
+        "keeps %s off stdout when it falls back to credentials",
+        async (_name, call) => {
+          await call()
+
+          // The fallback must actually authenticate, or silence proves nothing.
+          expect(apiAuthorizations).toEqual(["Bearer ci-token"])
+          expect(vi.mocked(logger.log)).not.toHaveBeenCalled()
+        }
+      )
+
+      it("still sends the notice to a context callback after a silent call", async () => {
+        const notices: string[] = []
+
+        await getRegistryItems(["acme/ui/button"])
+        await withRegistryContext(() => getRegistryItems(["acme/ui/button"]), {
+          onGitHubAuthNotice: (message) => {
+            notices.push(message)
+          },
+        })
+
+        // A silent call must not consume the process-wide dedupe.
+        expect(notices).toEqual(["Using GH_TOKEN credentials."])
+        expect(vi.mocked(logger.log)).not.toHaveBeenCalled()
+      })
     })
 
     it("evicts rejected source promises so a retry can succeed", async () => {
