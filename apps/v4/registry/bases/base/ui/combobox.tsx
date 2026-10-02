@@ -27,6 +27,7 @@ function ComboboxTrigger({
   return (
     <ComboboxPrimitive.Trigger
       data-slot="combobox-trigger"
+      aria-label={children == null ? "Open popup" : undefined}
       className={cn("cn-combobox-trigger", className)}
       {...props}
     >
@@ -47,6 +48,7 @@ function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
   return (
     <ComboboxPrimitive.Clear
       data-slot="combobox-clear"
+      aria-label="Clear selection"
       render={<InputGroupButton variant="ghost" size="icon-xs" />}
       className={cn("cn-combobox-clear", className)}
       {...props}
@@ -265,6 +267,7 @@ function ComboboxChip({
       {children}
       {showRemove && (
         <ComboboxPrimitive.ChipRemove
+          aria-label="Remove"
           render={<Button variant="ghost" size="icon-xs" />}
           className="cn-combobox-chip-remove"
           data-slot="combobox-chip-remove"
@@ -306,6 +309,7 @@ function useComboboxAnchor() {
 export {
   Combobox,
   ComboboxInput,
+  ComboboxClear,
   ComboboxContent,
   ComboboxList,
   ComboboxItem,
