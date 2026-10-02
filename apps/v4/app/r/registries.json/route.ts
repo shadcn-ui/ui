@@ -59,7 +59,10 @@ export async function GET() {
   return NextResponse.json(
     registries.map((registry) => {
       const health = snapshot.registries[registry.name]
-      return health ? { ...registry, health } : registry
+      const ranking = snapshot.rankings?.[registry.name]
+      return health
+        ? { ...registry, health, ...(ranking ? { ranking } : {}) }
+        : registry
     })
   )
 }
