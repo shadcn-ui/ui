@@ -65,6 +65,9 @@ function Item({
       data-slot="item"
       data-variant={variant}
       data-size={size}
+      // Only when Item renders its own element. Under asChild the role would
+      // land on the caller's element and override its implicit role.
+      role={asChild ? undefined : "listitem"}
       className={cn(itemVariants({ variant, size, className }))}
       {...props}
     />
