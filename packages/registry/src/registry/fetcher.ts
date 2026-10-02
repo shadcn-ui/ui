@@ -109,6 +109,7 @@ export async function fetchRegistry(
               messageFromServer
             )
           }
+          
           const contentType = response.headers.get("content-type")
           if (
             contentType &&
