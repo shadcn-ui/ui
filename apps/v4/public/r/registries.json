@@ -724,5 +724,11 @@
     "homepage": "https://sona-ui.vercel.app",
     "url": "https://sona-ui.vercel.app/r/{name}.json",
     "description": "A modern UI component library built with React and TailwindCSS to help you build beautiful and accessible web applications faster."
+  },
+  {
+    "name": "@audiocn",
+    "homepage": "https://audiocn.dev",
+    "url": "https://www.audiocn.dev/r/{name}.json",
+    "description": "Audio components for React, built the shadcn way. Level meters, visualizers, faders, knobs, channel strips, a complete mixer, players and sound pads."
   }
 ]
