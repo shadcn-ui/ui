@@ -235,6 +235,15 @@ KEY3=value3
 `)
   })
 
+  test("should not duplicate keys declared with export", () => {
+    const existing = `export KEY1=value1`
+    const newContent = `KEY1=ignored`
+    const result = mergeEnvContent(existing, newContent)
+
+    expect(result).toBe(`export KEY1=value1
+`)
+  })
+
   test("should handle multiple new keys", () => {
     const existing = `KEY1=value1`
     const newContent = `KEY2=value2
