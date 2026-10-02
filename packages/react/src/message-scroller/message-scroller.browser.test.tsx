@@ -436,6 +436,56 @@ test("preserves a scrolled-to turn across a prepend (command-path anchor)", asyn
   ).toBeLessThanOrEqual(1)
 })
 
+test("keeps following after a wheel toward the end at the clamped bottom", async () => {
+  // Trailing trackpad momentum: wheel events with a positive deltaY keep
+  // firing after the viewport clamps at max scrollTop. They produce no scroll
+  // event, so releasing follow here leaves nothing to re-arm it.
+  const initial = createItems(8)
+
+  await renderThread({ autoScroll: true, items: initial })
+
+  const viewport = getViewport()
+
+  expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
+
+  viewport.dispatchEvent(
+    new WheelEvent("wheel", { bubbles: true, deltaY: ITEM_HEIGHT })
+  )
+  await settle()
+
+  flushSync(() => {
+    root!.render(<Thread autoScroll items={[...initial, { id: "new" }]} />)
+  })
+  await settle()
+
+  expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
+})
+
+test("keeps following after a gesture that does not move the viewport", async () => {
+  // A horizontal pan, or a wheel consumed by a nested scrollable (a code
+  // block inside a message), bubbles to the viewport without moving it. No
+  // scroll event follows, so the release must reconcile on its own and keep
+  // following while the viewport is still at the live edge.
+  const initial = createItems(8)
+
+  await renderThread({ autoScroll: true, items: initial })
+
+  const viewport = getViewport()
+
+  expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
+
+  // touchmove fires, scroll never does: nothing moved.
+  viewport.dispatchEvent(new TouchEvent("touchmove", { bubbles: true }))
+  await settle()
+
+  flushSync(() => {
+    root!.render(<Thread autoScroll items={[...initial, { id: "new" }]} />)
+  })
+  await settle()
+
+  expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
+})
+
 test("user scroll intent cancels follow-bottom", async () => {
   const initial = createItems(8)
 
