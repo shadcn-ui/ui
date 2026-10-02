@@ -1,22 +1,25 @@
 import path from "path"
-import { configWithDefaults } from "@/src/registry/config"
-import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
-import { clearRegistryContext } from "@/src/registry/context"
+import { handleError } from "@/src/utils/handle-error"
+import { ensureRegistriesInConfig } from "@/src/utils/registries"
+import { configWithDefaults } from "@shadcn/registry/internal/registry/config"
+import { BUILTIN_REGISTRIES } from "@shadcn/registry/internal/registry/constants"
+import { clearRegistryContext } from "@shadcn/registry/internal/registry/context"
 import {
   findUnknownSearchTypes,
   printSearchResults,
   resolveSearchRegistries,
   SEARCHABLE_TYPES,
   searchRegistries,
-} from "@/src/registry/search"
-import { validateRegistryConfigForItems } from "@/src/registry/validator"
-import { rawConfigSchema } from "@/src/schema"
-import { loadEnvFiles } from "@/src/utils/env-loader"
-import { createConfig, getConfig } from "@/src/utils/get-config"
-import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
-import { ensureRegistriesInConfig } from "@/src/utils/registries"
+} from "@shadcn/registry/internal/registry/search"
+import { validateRegistryConfigForItems } from "@shadcn/registry/internal/registry/validator"
+import { loadEnvFiles } from "@shadcn/registry/internal/utils/env-loader"
+import {
+  createConfig,
+  getConfig,
+} from "@shadcn/registry/internal/utils/get-config"
+import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
+import { logger } from "@shadcn/registry/internal/utils/logger"
+import { rawConfigSchema } from "@shadcn/registry/schema"
 import { Command } from "commander"
 import fsExtra from "fs-extra"
 import { z } from "zod"

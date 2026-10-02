@@ -1,35 +1,44 @@
 import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
-import { parsePresetStyle, type PresetBase } from "@/src/preset/preset"
 import {
   promptForBase,
   promptForPreset,
   resolveRegistryBaseConfig,
 } from "@/src/preset/presets"
-import { getRegistryItems, getShadcnRegistryIndex } from "@/src/registry/api"
-import {
-  COMPONENTS_HIDDEN_FROM_SELECTION,
-  DEPRECATED_COMPONENTS,
-} from "@/src/registry/constants"
-import { clearRegistryContext } from "@/src/registry/context"
-import { registryItemTypeSchema } from "@/src/registry/schema"
-import { isUniversalRegistryItem } from "@/src/registry/utils"
 import { getTemplateForFramework } from "@/src/templates/index"
-import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import { dryRunComponents } from "@/src/utils/dry-run"
 import { formatDryRunResult } from "@/src/utils/dry-run-formatter"
-import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
-import { createConfig, getConfig } from "@/src/utils/get-config"
-import { getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
-import { spinner } from "@/src/utils/spinner"
 import { updateAppIndex } from "@/src/utils/update-app-index"
+import {
+  parsePresetStyle,
+  type PresetBase,
+} from "@shadcn/registry/internal/preset/preset"
+import {
+  getRegistryItems,
+  getShadcnRegistryIndex,
+} from "@shadcn/registry/internal/registry/api"
+import {
+  COMPONENTS_HIDDEN_FROM_SELECTION,
+  DEPRECATED_COMPONENTS,
+} from "@shadcn/registry/internal/registry/constants"
+import { clearRegistryContext } from "@shadcn/registry/internal/registry/context"
+import { registryItemTypeSchema } from "@shadcn/registry/internal/registry/schema"
+import { isUniversalRegistryItem } from "@shadcn/registry/internal/registry/utils"
+import { addComponents } from "@shadcn/registry/internal/utils/add-components"
+import { loadEnvFiles } from "@shadcn/registry/internal/utils/env-loader"
+import {
+  createConfig,
+  getConfig,
+} from "@shadcn/registry/internal/utils/get-config"
+import { getProjectInfo } from "@shadcn/registry/internal/utils/get-project-info"
+import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
+import { logger } from "@shadcn/registry/internal/utils/logger"
+import { spinner } from "@shadcn/registry/internal/utils/spinner"
 import { Command } from "commander"
 import prompts from "prompts"
 import { z } from "zod"
