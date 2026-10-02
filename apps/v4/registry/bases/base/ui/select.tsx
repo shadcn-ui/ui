@@ -6,7 +6,12 @@ import { cn } from "cn"
 
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-const Select = SelectPrimitive.Root
+function Select<Value, Multiple extends boolean | undefined = false>({
+  modal = false,
+  ...props
+}: SelectPrimitive.Root.Props<Value, Multiple>) {
+  return <SelectPrimitive.Root data-slot="select" modal={modal} {...props} />
+}
 
 function SelectGroup({ className, ...props }: SelectPrimitive.Group.Props) {
   return (
@@ -70,7 +75,7 @@ function SelectContent({
   sideOffset = 4,
   align = "center",
   alignOffset = 0,
-  alignItemWithTrigger = true,
+  alignItemWithTrigger = false,
   ...props
 }: SelectPrimitive.Popup.Props &
   Pick<
