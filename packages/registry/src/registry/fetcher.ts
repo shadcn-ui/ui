@@ -2,7 +2,6 @@ import { createHash } from "crypto"
 import { promises as fs } from "fs"
 import { homedir } from "os"
 import path from "path"
-import { resolveRegistryUrl } from "@/src/registry/builder"
 import { getRegistryHeadersFromContext } from "@/src/registry/context"
 import {
   RegistryFetchError,
@@ -14,6 +13,7 @@ import {
   RegistryUnauthorizedError,
 } from "@/src/registry/errors"
 import { fetchWithProxy } from "@/src/registry/proxy"
+import { resolveRegistryUrl } from "@/src/registry/url"
 import { registryItemSchema } from "@/src/schema"
 import { z } from "zod"
 

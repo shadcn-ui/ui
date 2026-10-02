@@ -5,10 +5,7 @@ import {
   getRegistryBaseColor,
   getShadcnRegistryIndex,
 } from "@/src/registry/api"
-import {
-  buildUrlAndHeadersForRegistryItem,
-  resolveRegistryUrl,
-} from "@/src/registry/builder"
+import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { setRegistryHeaders } from "@/src/registry/context"
 import {
   RegistryNotConfiguredError,
@@ -17,6 +14,7 @@ import {
 import { fetchRegistry, fetchRegistryLocal } from "@/src/registry/fetcher"
 import { fetchGitHubRegistryItem } from "@/src/registry/github"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
+import { resolveRegistryUrl } from "@/src/registry/url"
 import {
   deduplicateFilesByTarget,
   isLocalFile,
