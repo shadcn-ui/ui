@@ -119,7 +119,7 @@ const translations: Translations = {
       more: "المزيد",
       upgradeToPro: "ترقية إلى Pro",
       account: "الحساب",
-      billing: "الفوترة",
+      billing: "الفاتورة",
       notifications: "الإشعارات",
       logOut: "تسجيل الخروج",
       playground: "ملعب",
