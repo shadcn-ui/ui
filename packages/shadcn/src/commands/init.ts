@@ -833,8 +833,10 @@ export async function runInit(
     // Reinstall should overwrite existing CSS variables.
     overwriteCssVars: options.reinstall || undefined,
     silent: options.silent,
+    // Apply/re-init on a configured Next.js app must keep its existing colors.
     isNewProject:
-      options.isNewProject || projectInfo?.framework.name === "next-app",
+      options.isNewProject ||
+      (!options.existingConfig && projectInfo?.framework.name === "next-app"),
   })
 
   // Run postInit only for newly scaffolded projects.
