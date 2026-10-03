@@ -456,3 +456,12 @@
     @apply rounded-xl border-none bg-clip-padding shadow-2xl ring-4 ring-neutral-200/80 dark:bg-neutral-900 dark:ring-neutral-800;
   }
 }
+
+html:has(
+    [data-slot="dialog-overlay"],
+    [data-slot="alert-dialog-overlay"],
+    [data-slot="sheet-overlay"]
+  ) {
+  background-color: color-mix(in srgb, black 80%, var(--background));
+}
+
