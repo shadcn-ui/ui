@@ -19,15 +19,15 @@
     "@tanstack/react-router-devtools": "latest",
     "@tanstack/react-start": "latest",
     "cn": "^0.4.0",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "tailwindcss": "^4"
   },
   "devDependencies": {
     "@tanstack/devtools-vite": "latest",
     "@tanstack/eslint-config": "latest",
     "@tanstack/router-cli": "^1.167.39",
-    "@types/node": "^22",
+    "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^6",
