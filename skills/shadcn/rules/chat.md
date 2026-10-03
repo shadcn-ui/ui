@@ -3,7 +3,7 @@
 Components for conversation and chat UI. Compose these instead of hand-rolling
 bubbles, scroll containers, dividers, or attachment cards.
 
-Install: `npx shadcn@latest add message-scroller message bubble attachment marker`
+Install: `npx shadcn@4.18.0 add message-scroller message bubble attachment marker`
 
 The same component names and props ship for both `base` and `radix`; only
 composition differs (`render` vs `asChild`). See [base-vs-radix.md](./base-vs-radix.md).
