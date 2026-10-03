@@ -110,7 +110,7 @@
   "@taki": "https://taki-ui.com/r/{name}.json",
   "@square-ui": "https://square.lndev.me/registry/{name}.json",
   "@moleculeui": "https://moleculeui.design/r/{name}.json",
-  "@uicapsule": "https://uicapsule.com/r/{name}.json",
+  "@uicapsule": "https://www.uicapsule.com/r/{name}.json",
   "@uitripled": "https://ui.tripled.work/r/{name}.json",
   "@ui-layouts": "https://ui-layouts.com/r/{name}.json",
   "@pureui": "https://pure.kam-ui.com/r/{name}.json",
