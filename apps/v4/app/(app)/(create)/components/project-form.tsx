@@ -303,7 +303,7 @@ export function ProjectForm({
       <DialogTrigger render={<Button className={cn(className)} />}>
         Get Code
       </DialogTrigger>
-      <DialogContent className="dark top-[64px] no-scrollbar flex max-h-[calc(100svh-2rem)] translate-y-0 flex-col rounded-2xl p-0 shadow-xl **:data-[slot=dialog-close]:top-4.5 **:data-[slot=dialog-close]:right-4 **:data-[slot=field-separator]:h-2 sm:max-w-md">
+      <DialogContent className="top-[64px] no-scrollbar flex max-h-[calc(100svh-2rem)] translate-y-0 flex-col rounded-2xl p-0 shadow-xl **:data-[slot=dialog-close]:top-4.5 **:data-[slot=dialog-close]:right-4 **:data-[slot=field-separator]:h-2 sm:max-w-md">
         <div className="flex min-w-0 flex-1 flex-col gap-0 overflow-hidden rounded-2xl">
           <DialogHeader className="border-b px-6 py-5">
             <ToggleGroup
@@ -313,7 +313,6 @@ export function ProjectForm({
               }
               aria-label="Project type"
               spacing={2}
-              className="**:data-[slot=toggle-group-item]:data-pressed:bg-neutral-700/70"
             >
               <ToggleGroupItem value="new-project">New Project</ToggleGroupItem>
               <ToggleGroupItem value="existing-project">
@@ -365,7 +364,7 @@ export function ProjectForm({
                   >
                     <FieldLabel htmlFor="monorepo">
                       <span
-                        className="size-4 text-neutral-100 [&_svg]:size-4 [&_svg]:fill-current"
+                        className="size-4 [&_svg]:size-4 [&_svg]:fill-current"
                         dangerouslySetInnerHTML={{
                           __html: TURBOREPO_LOGO,
                         }}
@@ -626,7 +625,7 @@ const TemplateGrid = React.memo(function TemplateGrid({
           >
             <FieldContent className="flex flex-row items-center gap-2 px-2.5 py-1.5">
               <div
-                className="size-4 text-neutral-100 [&_svg]:size-4 *:[svg]:text-neutral-100!"
+                className="size-4 [&_svg]:size-4"
                 dangerouslySetInnerHTML={{
                   __html: item.logo,
                 }}
@@ -706,7 +705,7 @@ const BaseGrid = React.memo(function BaseGrid({
           >
             <FieldContent className="flex flex-row items-center gap-2 py-1">
               <div
-                className="size-4 shrink-0 text-neutral-100 [&_svg]:size-4 *:[svg]:text-neutral-100!"
+                className="size-4 shrink-0 [&_svg]:size-4"
                 dangerouslySetInnerHTML={{
                   __html: item.meta?.logo ?? "",
                 }}
