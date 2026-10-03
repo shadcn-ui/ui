@@ -1376,6 +1376,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='none'><rect x='80' y='80' width='352' height='352' rx='96' fill='#f97316'/></svg>"
   },
   {
+  "name": "@minidev",
+  "homepage": "https://ui.minidev.pro",
+  "url": "https://ui.minidev.pro/r/{name}.json",
+  "description": "500+ free components, blocks and motion pieces for product UI: data tables, billing, settings, command palettes and AI chat. Built on Base UI, Tailwind CSS v4 and motion.",
+  "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='15' fill='var(--foreground)'/><path d='M17 44V20l15 15 15-15v24' fill='none' stroke='var(--background)' stroke-width='4' stroke-linejoin='round' stroke-linecap='round'/><circle cx='47' cy='20' r='4.2' fill='#8b7cff'/></svg>"
+},
+  {
     "name": "@mischief",
     "homepage": "https://ui.tinkererslabs.com",
     "url": "https://ui.tinkererslabs.com/r/{name}.json",
