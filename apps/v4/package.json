@@ -127,7 +127,7 @@
     "undici": "^7.29.0",
     "unist-builder": "3.0.0",
     "unist-util-visit": "^4.1.2",
-    "vitest": "^3.2.6"
+    "vitest": "^4.1.11"
   },
   "prettier": {
     "endOfLine": "lf",
