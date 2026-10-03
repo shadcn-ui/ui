@@ -856,7 +856,15 @@ export function buildRegistryBase(config: DesignSystemConfig) {
       },
     },
     ...(config.rtl && {
-      docs: `To learn how to set up the RTL provider and fonts for your app, see https://ui.shadcn.com/docs/rtl/${config.template === "next-monorepo" ? "next" : (config.template ?? "next")}`,
+      docs: `To learn how to set up the RTL provider and fonts for your app, see https://ui.shadcn.com/docs/rtl${
+        (config.template === "next" || config.template === "next-monorepo")
+          ? "/next"
+          : config.template === "vite"
+          ? "/vite"
+          : config.template === "start"
+          ? "/start"
+          : ""
+      }`,
     }),
   }
 }
