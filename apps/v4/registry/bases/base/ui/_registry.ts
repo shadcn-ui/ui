@@ -212,7 +212,7 @@ export const ui: Registry["items"] = [
         docs: "https://ui.shadcn.com/docs/components/base/carousel",
         examples:
           "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/carousel-example.tsx",
-        api: "https://www.embla-carousel.com/get-started/react",
+        api: "https://www.embla-carousel.com/docs/get-started/react",
       },
     },
   },
@@ -438,7 +438,7 @@ export const ui: Registry["items"] = [
         docs: "https://ui.shadcn.com/docs/components/base/hover-card",
         examples:
           "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/hover-card-example.tsx",
-        api: "https://base-ui.com/react/components/hover-card.md",
+        api: "https://base-ui.com/react/components/preview-card.md",
       },
     },
   },
@@ -528,7 +528,6 @@ export const ui: Registry["items"] = [
         docs: "https://ui.shadcn.com/docs/components/base/label",
         examples:
           "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/label-example.tsx",
-        api: "https://base-ui.com/react/components/label.md",
       },
     },
   },
@@ -637,7 +636,7 @@ export const ui: Registry["items"] = [
         docs: "https://ui.shadcn.com/docs/components/base/radio-group",
         examples:
           "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/radio-group-example.tsx",
-        api: "https://base-ui.com/react/components/radio-group.md",
+        api: "https://base-ui.com/react/components/radio.md",
       },
     },
   },
