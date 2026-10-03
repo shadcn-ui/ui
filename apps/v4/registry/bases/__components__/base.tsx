@@ -1072,6 +1072,14 @@ export const Components: Record<string, any> = {
       ) || "message-example"
     return { default: mod.default || mod[exportName] }
   }),
+  "compose-class-name": React.lazy(async () => {
+    const mod = await import("@/registry/bases/base/lib/compose-class-name")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "compose-class-name"
+    return { default: mod.default || mod[exportName] }
+  }),
   utils: React.lazy(async () => {
     const mod = await import("@/registry/bases/base/lib/utils")
     const exportName =
