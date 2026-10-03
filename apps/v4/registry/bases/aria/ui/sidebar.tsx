@@ -376,9 +376,13 @@ function SidebarSeparator({
   )
 }
 
-function SidebarContent({ className, ...props }: React.ComponentProps<"div">) {
+function SidebarContent({
+  className,
+  elementType: Element = "div",
+  ...props
+}: React.HTMLAttributes<HTMLElement> & { elementType?: React.ElementType }) {
   return (
-    <div
+    <Element
       data-slot="sidebar-content"
       data-sidebar="content"
       className={cn(
