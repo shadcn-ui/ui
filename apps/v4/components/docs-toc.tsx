@@ -66,6 +66,29 @@ export function DocsTableOfContents({
     [toc]
   )
   const activeHeading = useActiveItem(itemIds)
+  const tocRef = React.useRef<HTMLDivElement>(null)
+  const activeItemRef = React.useRef<HTMLAnchorElement>(null)
+
+  React.useEffect(() => {
+    const container = tocRef.current?.parentElement
+    const activeItem = activeItemRef.current
+
+    if (!container || !activeItem) {
+      return
+    }
+
+    const containerRect = container.getBoundingClientRect()
+    const activeItemRect = activeItem.getBoundingClientRect()
+
+    container.scrollTo({
+      behavior: "smooth",
+      top:
+        container.scrollTop +
+        activeItemRect.top -
+        containerRect.top -
+        (container.clientHeight - activeItemRect.height) / 2,
+    })
+  }, [activeHeading])
 
   if (!toc?.length) {
     return null
@@ -106,13 +129,17 @@ export function DocsTableOfContents({
   }
 
   return (
-    <div className={cn("flex flex-col gap-2 p-4 pt-0 text-sm", className)}>
+    <div
+      ref={tocRef}
+      className={cn("flex flex-col gap-2 p-4 pt-0 text-sm", className)}
+    >
       <p className="h-6 bg-background text-xs font-medium text-muted-foreground">
         On This Page
       </p>
       {toc.map((item) => (
         <a
           key={item.url}
+          ref={item.url === `#${activeHeading}` ? activeItemRef : undefined}
           href={item.url}
           className="text-[0.8rem] text-muted-foreground no-underline transition-colors hover:text-foreground data-[active=true]:font-medium data-[active=true]:text-foreground data-[depth=3]:pl-4 data-[depth=4]:pl-6"
           data-active={item.url === `#${activeHeading}`}
