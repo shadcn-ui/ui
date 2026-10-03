@@ -15,3 +15,5 @@ Please read the [contributing guide](/CONTRIBUTING.md).
 ## License
 
 Licensed under the [MIT license](./LICENSE.md).
+
+This repository was modified as part of my Git and GitHub collaboration assignment.
