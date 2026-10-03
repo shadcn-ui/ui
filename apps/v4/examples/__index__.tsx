@@ -17,6 +17,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "accordion-card",
       filePath: "examples/base/accordion-card.tsx",
     },
+    "accordion-chevron-left": {
+      name: "accordion-chevron-left",
+      filePath: "examples/base/accordion-chevron-left.tsx",
+    },
     "accordion-demo": {
       name: "accordion-demo",
       filePath: "examples/base/accordion-demo.tsx",
@@ -32,6 +36,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "accordion-rtl": {
       name: "accordion-rtl",
       filePath: "examples/base/accordion-rtl.tsx",
+    },
+    "accordion-with-icon": {
+      name: "accordion-with-icon",
+      filePath: "examples/base/accordion-with-icon.tsx",
     },
     "ai-sdk-helper-demo": {
       name: "ai-sdk-helper-demo",
@@ -2071,6 +2079,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "accordion-card",
       filePath: "examples/aria/accordion-card.tsx",
     },
+    "accordion-chevron-left": {
+      name: "accordion-chevron-left",
+      filePath: "examples/aria/accordion-chevron-left.tsx",
+    },
     "accordion-demo": {
       name: "accordion-demo",
       filePath: "examples/aria/accordion-demo.tsx",
@@ -2086,6 +2098,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "accordion-rtl": {
       name: "accordion-rtl",
       filePath: "examples/aria/accordion-rtl.tsx",
+    },
+    "accordion-with-icon": {
+      name: "accordion-with-icon",
+      filePath: "examples/aria/accordion-with-icon.tsx",
     },
     "alert-action": {
       name: "alert-action",
@@ -4077,6 +4093,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "accordion-card",
       filePath: "examples/radix/accordion-card.tsx",
     },
+    "accordion-chevron-left": {
+      name: "accordion-chevron-left",
+      filePath: "examples/radix/accordion-chevron-left.tsx",
+    },
     "accordion-demo": {
       name: "accordion-demo",
       filePath: "examples/radix/accordion-demo.tsx",
@@ -4092,6 +4112,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "accordion-rtl": {
       name: "accordion-rtl",
       filePath: "examples/radix/accordion-rtl.tsx",
+    },
+    "accordion-with-icon": {
+      name: "accordion-with-icon",
+      filePath: "examples/radix/accordion-with-icon.tsx",
     },
     "alert-action": {
       name: "alert-action",
