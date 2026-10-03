@@ -1762,6 +1762,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'><rect width='600' height='600' fill='var(--foreground)'/><path d='M0 190H245V275H0zM0 360H245V445H0z' fill='var(--background)'/><circle cx='422.5' cy='220.5' r='75.5' fill='var(--background)'/></svg>"
   },
   {
+    "name": "@pixel-openspace",
+    "homepage": "https://pixel-openspace.vercel.app",
+    "url": "https://pixel-openspace.vercel.app/r/{name}.json",
+    "description": "A pixel-art open space where your scheduled jobs and AI agents come to work: running jobs sit and type, failed ones smoke.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='var(--foreground)' shape-rendering='crispEdges'><path fill-rule='evenodd' d='M2 1h12v8H2zM3 2v6h10V2z'/><path d='M4 3h5v1H4zM5 5h4v1H5zM4 7h2v1H4zM7 9h2v2H7zM0 11h16v2H0zM1 13h2v3H1zM13 13h2v3h-2z'/></svg>"
+  },
+  {
     "name": "@pixelact-ui",
     "homepage": "https://pixelactui.com",
     "url": "https://pixelactui.com/r/{name}.json",
