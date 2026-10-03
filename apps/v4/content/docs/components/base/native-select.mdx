@@ -104,6 +104,17 @@ Use `NativeSelectOptGroup` to organize options into categories.
 
 <ComponentPreview styleName="base-nova" name="native-select-groups" />
 
+## Size
+
+Use the `size` prop to change the size of the select.
+
+```tsx
+<NativeSelect size="sm">
+  <NativeSelectOption value="apple">Apple</NativeSelectOption>
+  <NativeSelectOption value="banana">Banana</NativeSelectOption>
+</NativeSelect>
+```
+
 ## Disabled
 
 Add the `disabled` prop to the `NativeSelect` component to disable the select.
@@ -136,6 +147,11 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 ### NativeSelect
 
 The main select component that wraps the native HTML select element.
+
+| Prop        | Type                  | Default     |
+| ----------- | --------------------- | ----------- |
+| `size`      | `"sm" \| "default"`   | `"default"` |
+| `className` | `string`              |             |
 
 ```tsx
 <NativeSelect>
